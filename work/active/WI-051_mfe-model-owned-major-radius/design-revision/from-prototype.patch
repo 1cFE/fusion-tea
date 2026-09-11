@@ -1,0 +1,23 @@
+--- a/designs/generic_mfe/mfe_plant.sysml
++++ b/designs/generic_mfe/mfe_plant.sysml
+@@ -56,10 +56,16 @@
+ 
+         // MFE-divergent power core (WI-009 mfe_power_core).
+         part magnet : 'Magnet System' {
+-            // Major plasma/axis radius [m], owned by the containing plant.
+-            // Source: models/library/cost_structure/mfe_power_core.sysml; R0.
+-            // Basis: T-021 source-meaning assessment at 2f8856b7; WI-051.
+-            :>> R0 = R;
++            :>> R0 = R {
++                doc /*
++                Major plasma/axis radius [m], owned by the containing plant.
++
++                Source: work/analysis/20260911-230953_radius-ownership-evidence/source-meaning.md
++                Ref: ## Model and existing source interpretation; ## Assessment; revision 2f8856b7
++                Basis: [INHERITED: T-021@2f8856b7] Existing model-intent interpretation: one shared plasma/axis scale. This does not equate real modular-coil surfaces; coil-bore and coil-centre minor radii remain distinct.
++                Last Updated: 2026-09-11
++                */
++            }
+             :>> capital_cost = magnet_capital_rollup.capital_cost;   // WI-035: decomposed rollup
+             :>> r_coil = rb.r_coil;   // coil bore = radial-build vessel_or (WI-021)
+             // WI-035: the axis field is COMPUTED from the coil-set current

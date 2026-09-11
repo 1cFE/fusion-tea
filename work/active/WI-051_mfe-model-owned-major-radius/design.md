@@ -5,15 +5,16 @@ Updated: 2026-09-11
 Related Artifacts:
   Spec: ./spec.md
   Prototype: ./prototype/
+  Revision Evidence: ./design-revision/
 ---
 
 # WI-051: one model-owned major radius
 
 ## Design outcome and authority
 
-[AGENT] Bind the generic plant's magnet usage to its containing plant's `R`, and remove the stellarator magnet's duplicate literal. Native generation proves that this produces one public radius entry feeding all nine required consumer/formal pairs. The isolated package has 246 inputs, preserves the complete baseline, and reproduces the pre-repair coordinated R14 result when only plant R changes. This is a working design prototype, not production implementation or independent certification.
+[AGENT] Bind the generic plant's magnet usage to its containing plant's `R`, and remove the stellarator magnet's duplicate literal. The original prototype's native generation proves that this produces one public radius entry feeding all nine required consumer/formal pairs. Its isolated package has 246 inputs, preserves the complete baseline, and reproduces the pre-repair coordinated R14 result when only plant R changes. The revision below changes only the binding documentation; it has native parsing evidence and requires fresh generation during implementation.
 
-[INHERITED] Authority is the accepted [spec](spec.md) at `99aee8cd`, immutable [alignment](../../orchestration/mfe-model-owned-major-radius.md) at `b847558b`, and T-021 assessment/evidence at `2f8856b7`. Parent holds orchestration and routine approvals. All new choices in this design remain agent-originated. No approval or independent review is claimed here.
+[INHERITED] Authority is the accepted [spec](spec.md) at `99aee8cd`, immutable [alignment](../../orchestration/mfe-model-owned-major-radius.md) at `b847558b`, and T-021 assessment/evidence at `2f8856b7`. Parent holds orchestration and routine approvals. All new choices in this design remain agent-originated. Parent accepted R1 and R2 in [the disposition](stage-provenance/design-review.md); this revision implements those bounded corrections. The original independent [review](review.md) remains `concerns`; this author supplies no replacement verdict.
 
 [INHERITED, REFERENT] T-021's source meaning is inherited, not independently re-reviewed: [frozen-source-meaning.md](prototype/frozen-source-meaning.md). Table 2 names major plasma radius 12.7 m and minor plasma radius 1.3 m. The existing axis-field calculation uses that same major radius, while the reusable magnet definition distinguishes major radius from coil bore. This expresses the current model's intended plasma/axis scale; it does not equate every real modular-coil surface or establish an operating envelope. The source index, AD-001–AD-007, model inventory and process were read. No new source or quantitative calibration is proposed.
 
@@ -29,14 +30,20 @@ Related Artifacts:
 | `'Magnet System'::R0` in `models/library/cost_structure/mfe_power_core.sysml:89` | Retain reusable, explicit major-radius formal | MR-051-02; AD-006/007 |
 | Radius-bearing library calculations | Retain formulas, formal names, defaults and documentation | MR-051-02/06; no new physics equation |
 
-The exact source delta is [proposed.patch](prototype/proposed.patch); the parseable family is [prototype/models](prototype/models/). The core stencil is:
+The revised exact source delta against the retained entering family is [proposed.patch](design-revision/proposed.patch); apply it relative to each canonical/twin family root. The isolated parseable family is [design-revision/models](design-revision/models/). [from-prototype.patch](design-revision/from-prototype.patch) records the documentation-only difference from the original proven [prototype/models](prototype/models/), whose patch and evidence remain unchanged. The core stencil is:
 
 ```sysml
 part magnet : 'Magnet System' {
-    // Major plasma/axis radius [m], owned by the containing plant.
-    // Source: models/library/cost_structure/mfe_power_core.sysml; R0.
-    // Basis: T-021 source-meaning assessment at 2f8856b7; WI-051.
-    :>> R0 = R;
+    :>> R0 = R {
+        doc /*
+        Major plasma/axis radius [m], owned by the containing plant.
+
+        Source: work/analysis/20260911-230953_radius-ownership-evidence/source-meaning.md
+        Ref: ## Model and existing source interpretation; ## Assessment; revision 2f8856b7
+        Basis: [INHERITED: T-021@2f8856b7] Existing model-intent interpretation: one shared plasma/axis scale. This does not equate real modular-coil surfaces; coil-bore and coil-centre minor radii remain distinct.
+        Last Updated: 2026-09-11
+        */
+    }
     // Existing bindings follow unchanged.
 }
 ```
@@ -108,7 +115,7 @@ See [direct-prototype.json](prototype/direct-prototype.json), [results.json](pro
 
 [INHERITED, REFERENT] [expectations.json](prototype/expectations.json) was written at `2026-09-11T23:28:01.937500+00:00`, before prototype generation, from git objects at `2f8856b7`. It freezes complete input controls, 158-channel coverage, 19 response IDs, the nine edges, retired-key controls, invalid radii, component cases and independent ratios. It records source hashes; [execution-start.json](prototype/execution-start.json) records the expectation hash before generation. `frozen-results.json` retains the original plant-zero and magnet-zero evidence as well as coordinated controls. Expectations were never derived from repaired outputs.
 
-[AGENT] Before repaired execution, `direct.py entering` captured all 177 raw baseline and tied-R14 channels through the original single runner, including all 18 structured evaluations and the aggregate report. There are no additional numeric direct-runner channels beyond the 158 frozen native outputs. This extends raw representation coverage without replacing the independent pre-repair numeric oracle.
+[AGENT] After prototype generation but before repaired execution, `direct.py entering` captured all 177 raw baseline and tied-R14 channels through the unchanged original single runner, including all 18 structured evaluations and the aggregate report. The 158 numeric expectations were frozen before generation; the extra raw representation was captured before repaired execution. There are no additional numeric direct-runner channels beyond those 158 outputs. The original `expectations.json` description incorrectly says the extra raw outputs were captured before generation; preserve that frozen record and its hash, and use this corrected chronology in reproduction descriptions. This extends raw representation coverage without replacing the independent pre-repair numeric oracle.
 
 [AGENT] [numerical-report.md](prototype/numerical-report.md) lists every baseline expected/actual and R14 expected/actual number, including all downstream cost and finance channels, and all exact named verdict IDs. Baseline scalars, raw evaluations, observed operands, margins and report are exact after serialization. Off-baseline scalars use relative and absolute tolerance `1e-9` in each channel's existing documented units; sets and verdicts are exact. Both LCOE channels are included. No metadata change is excused as a numeric change.
 
@@ -137,9 +144,9 @@ The precise executed ratios are in [checks.json](prototype/checks.json). Decompo
 
 [INHERITED] Original F07 remains open. The unchanged peak component returns `-792.6499999999979 T` for original_negative, which still satisfies the upper-bound comparison. Live equality and reference equality still raise `ZeroDivisionError`. The inverted reference returns `-0.7821989528795832 T`, also satisfying the upper comparison. Full inputs and exact results are in the frozen and executed evidence. These finite probes do not certify a general model domain or close F07. No new binding-induced accepted-invalid case was observed.
 
-## Native generation and quality report
+## Original prototype generation and quality report
 
-[AGENT] Generation starts in an isolated empty package seeded with exactly four known handwritten implementations. It freshly generates the other 65 bodies, all schemas, contracts, pipeline and seal. This avoids the L-006 failure mode where preservation retains stale autogenerated implementations. The actual changed binding is verified in the generated pipeline and by R-only execution. No hand-edited generated body substitutes for source translation.
+[AGENT] The original prototype was generated in an isolated fresh package seeded with exactly four known handwritten implementations. It freshly generated the other 65 bodies, all schemas, contracts, pipeline and seal, as independently reproduced by the retained review. The original scripts assume a fresh destination without enforcing it; the reproduction precondition below corrects that gap. The actual changed binding is verified in the original generated pipeline and by R-only execution. No hand-edited generated body substitutes for source translation.
 
 [AGENT] [manual-preservation.json](prototype/manual-preservation.json) records exact unchanged hashes for lifecycle calendar, DT fusion power, plasma sustainment and power-cycle efficiency. [generated-hashes.json](prototype/generated-hashes.json) inventories the complete isolated package. A fresh native instance-graph snapshot and a second generation from that snapshot produce a byte-identical package, including those manual bodies. [preservation.json](prototype/preservation.json) records this and verifies the entering production package and canonical sources remained unchanged and all 23 twins remain equal. No IFE/shared source is changed. Full production family regression and current census/snapshot updates belong to implementation.
 
@@ -167,7 +174,15 @@ The precise executed ratios are in [checks.json](prototype/checks.json). Decompo
 | Current `studies/manifest.json`, `study_route.py:63,95`, `ANNEX.md` | Retire the radius tie and proposal injection, describe the model-owned producer, refresh package identities and live contract/census expectations. Preserve the distinction between study validity masks and native failure/constraint behavior. |
 | `tests/study/` current fixtures and expectations | Refresh declared package/fixture identities, adapter mapping, no-tie R-only controls, contract census, graph reachability and any changed independent-axis expectations. Compare baseline and R14 against this frozen full record at stated tolerances. Preserve generic tie-mechanism tests and historical study records/pins. |
 
-[AGENT] The handoff payload is the exact pair delta/full census in `contract-delta.json`, nine pairs in `edges.json`, baseline/tied expectations in `frozen-results.json`, ordinary R14 execution and invalid controls in `results.json`, raw direct controls in `direct-entering.json`, exact four reference anchors in `checks.json`, complete source/manual/package hashes, and every channel/verdict in `numerical-report.md`. The prototype semantic fingerprint is `15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e`; executable fingerprint is `89a5531397080ad76734fe09d098aea9e5c56f2020976ca9f9a56a5d48a3d943`. Production identities must be re-derived, not copied as an assertion.
+[AGENT] The handoff payload is the exact pair delta/full census in `contract-delta.json`, nine pairs in `edges.json`, baseline/tied expectations in `frozen-results.json`, ordinary R14 execution and invalid controls in `results.json`, raw direct controls in `direct-entering.json`, exact four reference anchors in `checks.json`, complete source/manual/package hashes, and every channel/verdict in `numerical-report.md`. These files remain under `prototype/`. The original prototype semantic fingerprint is `15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e`; its executable fingerprint is `89a5531397080ad76734fe09d098aea9e5c56f2020976ca9f9a56a5d48a3d943`. Neither identifies the revised source. The changed source hashes are recorded in [source-identity.json](design-revision/source-identity.json); revised semantic/executable fingerprints are unmeasured until fresh generation and must be re-derived for implementation and the final handoff.
+
+## Revision evidence and reproduction preconditions
+
+[AGENT] R1 evidence: [parse.json](design-revision/parse.json) records all 23 revised family files with zero parser or semantic errors and verifies that SysIDE attaches the structured doc to `mfe_plant::'MFE Power Plant'::magnet::R0` as a `ReferenceUsage`. [validation-l1.log](design-revision/validation-l1.log) records native L1 PASS. Only the generic plant source bytes differ from the original prototype; the stellarator literal removal and other 22 family files are identical. The citation file matches its git object at `2f8856b7` and the frozen source-meaning copy. [README.md](design-revision/README.md) records commands, preservation checks and the initial probe's corrected element-kind assumption. No numerical replay or package generation was needed for this documentation revision; the original six-level results and independent numerical review above retain their original scope.
+
+[AGENT] R2 obligation: before any seed copy or native generator call, both direct-source and snapshot generation must record the destination path and demonstrate that it is absent or a real empty directory, including hidden entries. Reject a populated destination, a non-directory or a symlink without modifying it. Create an absent destination exclusively; retain any failed attempt and use a different fresh destination on retry. Apply this precondition to any copied reproduction scripts as well as production generation; do not rerun the original unguarded scripts into retained evidence.
+
+[AGENT] After recording that precondition, seed exactly the four paths and byte hashes in [manual-preservation.json](prototype/manual-preservation.json): lifecycle calendar, DT fusion power, plasma sustainment and power-cycle efficiency. Verify the seed inventory exactly equals that manifest before generation. Freshly generate every other body from the revised source with native tooling; independently seed a second absent/empty destination for snapshot generation. Record before/after manual hashes, complete package hashes, fresh source/snapshot agreement, actual public census and edges, semantic/executable identities and the required full-output comparisons. Documentation can affect extracted metadata and package identity even when equations are unchanged; the original package's fingerprints or byte-equality result cannot discharge these revised-source obligations.
 
 ## Remaining implementation obligations and stopping point
 
@@ -175,4 +190,4 @@ The precise executed ratios are in [checks.json](prototype/checks.json). Decompo
 
 [AGENT] Implementation must apply the two canonical/twin deltas and bounded direct-caller patch, regenerate with verified manual preservation, update the current MFE census/snapshot, add exact edge/refusal/full-output controls in model tests, run focused and required model regression, and record native validation/traceability through the appropriate operations. Preserve source citations on the plant-owned radius and the usage binding; no new requirement promotion is needed. This list states review obligations, not an implementation plan or completed production work.
 
-[AGENT] No source, premise, supported-scope or native generation capability blocker was found. The inherited direct-helper failure is surfaced above with a working bounded repair. Parent must assess the design and its inherited validation limitations before planning. No goal state, production source, generated package, direct runner, current study/oracle/metadata/fixture, plan or review was edited. No commit, self-review, archive, source approval, finance change or residual acceptance occurred. Stop here for the parent's independent design-review dispatch.
+[AGENT] No new blocker was found in this bounded revision. The inherited direct-helper failure and validation limitations remain as described above. Parent verifies the objective R1/R2 corrections before fresh native planning; the original independent verdict remains `concerns`, with no ceremonial replacement review. Production implementation still requires the fresh independent audit specified by the accepted spec. This revision changes only `design.md` and `design-revision/`; it stops before planning and production implementation.
