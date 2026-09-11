@@ -24,3 +24,31 @@ Append-only judgment record. Procedure: `work/orchestration/GOAL_RUNBOOK.md`.
 ### T-001 start — 2026-09-10
 
 T-001 · native modeling PM Standard item, registered by the spec stage · expected artifacts: `spec.md`, `design.md`, `plan.md`, implementation/validation evidence, and independent `audit.md` under its native work-item directory.
+
+### T-001 return — 2026-09-10
+
+**Outcome:** COMPLETE.
+
+**Evidence:** `work/active/WI-048_ife-operating-point-repair/audit.md@6a964967bc6d736c9efe99642ef01c79c92ff196`; `work/analysis/20260911-045617_audit_WI-048_ife-operating-point-repair-r1.md@6a964967bc6d736c9efe99642ef01c79c92ff196`, with its incorporated numerical appendix and fresh execution evidence. The native item carries the spec/design/plan, original negative audit, bounded repair and positive fresh re-audit.
+
+**Goal reading:** F01–F03 are repaired within the declared IFE execution scope. The source facts, selected assumptions and computed operating point are distinguishable; both price paths now refer to that computed point and reject non-generation. The audit does not normalize financial bases, establish engineering completeness, accept the reported static-check limitations, or resolve the other historical findings. Item close/archive remains owner-held.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Linked F01–F03 source and dependency defects | Accept the independently audited coherent-point repair; its evidence demonstrates the intended identities and original counterexamples. | execution detail | Parent round agent, under owner-approved alignment; fresh native auditors supply the verdicts | WI-048 artifact chain and production at `d8a8b065bf1e7e5358151a8b52f62de5152fc84d`, audited at the refs above |
+| Pinned generator cannot render the required conditional | Accept the documented bounded handwritten quotient route; arithmetic remains model-generated and regeneration preserves the implementation. The limitation was surfaced during design. | premise surprise | Parent round agent, supported by fresh design review and native audit | WI-048 `design.md`, `review.md` and typed implementation, cited through the audited item |
+| Native audit A01/A02 found incomplete current source claims | Repair the provenance and locators while retaining the existing estimates; a fresh re-audit verifies the correction. | execution detail | Parent round agent; fresh repair author and fresh re-auditor | WI-048 `repair-1.md@d8a8b065bf1e7e5358151a8b52f62de5152fc84d`; positive report above |
+| IFE has no native study annex, manifest, snapshot or package route | Prepare the package-owned inputs required by the existing integration/study procedures. This supports the round's intended study without changing its physical or financial interpretation. | execution detail | Parent round agent | Next native coding task below; no pin promoted and no study executed |
+
+### T-002 scope
+
+- **Objective:** Make the audited IFE package consumable by the native integration and study workflow with one verifiable candidate identity.
+- **Why now:** T-001 supplies a corrected executable operating point. Repository inspection finds only legacy IFE sweep callers, while the native integration guide requires package-specific metadata and a baseline route.
+- **Scope:** Authorized: one bounded coding-PM item for the IFE study annex, manifest, native snapshot/census, qualified oracle bindings, stock execution route and meaningful tests, followed by independent coding audit and the existing integration procedure. Preserve the audited equations, finance, source assumptions, semantic fingerprint and shared MFE artifacts. Generic seam/toolchain repairs, study execution, comparison changes and owner-held close/archive are excluded.
+- **Inputs:** `goal.md@6a964967bc6d736c9efe99642ef01c79c92ff196`; T-001's audited item at that revision; `docs/integration_seam_operator_guide.md@6a964967bc6d736c9efe99642ef01c79c92ff196`; `.claude/skills/run-study/runbook.md@6a964967bc6d736c9efe99642ef01c79c92ff196`.
+- **Done when:** The native coding item has a positive independent audit and the unchanged integration procedure returns one candidate for the corrected IFE package, or a bounded negative identifies the missing capability precisely.
+- **Stop when:** Generic seam repair is required, the model/comparison interpretation would change, an owner gate binds, or a declared limit is reached.
+
+### T-002 start — 2026-09-10
+
+T-002 · native coding PM `.project/active/ife-native-study-package/` · expected artifacts: spec/design/plan, package-owned implementation and validation, independent coding audit, and the native integration return.
