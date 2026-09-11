@@ -13,6 +13,7 @@ in the cost curve.
 *Source**: knowledge/sources/energy_from_inertial_fusion/output.md
 *Ref**: Components section (fusion cycle gain discussion)
 *Basis**: DI-001 — eta*G must exceed ~10 for viability
+*Last Updated**: 2026-09-11
 
 Inputs:
     - gain_in: gain_in parameter
@@ -66,6 +67,7 @@ in the cost curve.
 *Source**: knowledge/sources/energy_from_inertial_fusion/output.md
 *Ref**: Components section (fusion cycle gain discussion)
 *Basis**: DI-001 — eta*G must exceed ~10 for viability
+*Last Updated**: 2026-09-11
 
 Inputs:
     - gain_in: gain_in parameter
@@ -96,6 +98,7 @@ in the cost curve.
 *Source**: knowledge/sources/energy_from_inertial_fusion/output.md
 *Ref**: Components section (fusion cycle gain discussion)
 *Basis**: DI-001 — eta*G must exceed ~10 for viability
+*Last Updated**: 2026-09-11
 
     IMPLEMENTATION: See ife_tea.handwritten.fusion_cycle.recirculating_power_fraction_impl
     for manual implementation.

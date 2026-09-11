@@ -108,7 +108,7 @@ package ife_subsystems {
         No default values — each driver type must provide its own.
 
         **Source**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md
-        **Ref**: Table 1 (parameters mu_d, gamma, E_d, N_d)
+        **Ref**: Table 2 (parameter definitions mu_d, gamma, E_d, N_d)
         **Basis**: DI-004 — driver cost reference points span 3 orders
             of magnitude by driver type
         */
@@ -130,7 +130,7 @@ package ife_subsystems {
         ~$10/target, further reduction provides limited LCOE benefit.
 
         **Source**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md
-        **Ref**: Table 1 (parameter delta)
+        **Ref**: Table 2 (parameter definition delta)
         **Basis**: DI-003 — target cost is a unique IFE operating cost
         */
 

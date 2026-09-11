@@ -18,7 +18,7 @@ the scaled energy denominator when cost is in billions and price in cents/kWh.
 *Last Updated**: 2026-09-10
 *Basis**: Meier 1986 COE formula. Year-dollars: 1988$.
 
-SysML Source: root-0/analyses/hif_economics.sysml:86
+SysML Source: root-0/analyses/hif_economics.sysml:88
     """
     energy_denominator: float = Field(description="energy_denominator output")
     annualized_cost: float = Field(description="annualized_cost output")

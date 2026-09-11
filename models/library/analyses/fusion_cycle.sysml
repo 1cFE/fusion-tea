@@ -14,6 +14,7 @@ package fusion_cycle {
         **Source**: knowledge/sources/energy_from_inertial_fusion/output.md
         **Ref**: Components section (fusion cycle gain discussion)
         **Basis**: DI-001 — eta*G must exceed ~10 for viability
+        **Last Updated**: 2026-09-11
         */
 
         in attribute eta : Real;

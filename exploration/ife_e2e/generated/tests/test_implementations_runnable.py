@@ -256,7 +256,7 @@ class TestGenerating_Electricity_PriceRunnable:
 class TestMeier_Total_Capital_CostRunnable:
     """Verify meier_total_capital_cost implementation runs without error.
 
-    SysML Source: root-0/analyses/hif_economics.sysml:67
+    SysML Source: root-0/analyses/hif_economics.sysml:68
     """
 
     def test_import_and_run(self):
@@ -296,7 +296,7 @@ class TestMeier_Total_Capital_CostRunnable:
 class TestMeier_COERunnable:
     """Verify meier_coe implementation runs without error.
 
-    SysML Source: root-0/analyses/hif_economics.sysml:86
+    SysML Source: root-0/analyses/hif_economics.sysml:88
     """
 
     def test_import_and_run(self):

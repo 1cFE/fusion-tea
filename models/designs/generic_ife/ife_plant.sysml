@@ -14,7 +14,9 @@ package ife_plant {
         The driver is abstract — concrete instantiations (HIF, laser,
         pulser) specialize the driver with specific parameter values.
         All other subsystem and plant-level parameters can be set
-        directly via feature redefinition.
+        directly via feature redefinition. Table 2 defines parameters and
+        Table 3 gives sampled ranges, not default values; concrete designs
+        supply their source-backed inputs or explicitly chosen scenarios.
 
         **Source**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md
         **Ref**: Equations 2.1-2.16 (complete IFE LCOE model)
@@ -36,7 +38,8 @@ package ife_plant {
             doc /*
             Plant availability factor (fraction of time operating).
             Hawker parameter mu_a. 6th highest sensitivity (-0.127).
-            Source: Hawker 2020 Table 1. Units: dimensionless fraction.
+            Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md,
+            Table 2 (definition); Table 3 (sampled ranges and correlations). Units: dimensionless fraction.
             */
         }
 
@@ -44,7 +47,8 @@ package ife_plant {
             doc /*
             Target shot repetition rate.
             Hawker parameter f. Units: Hz.
-            Source: Hawker 2020 Table 1.
+            Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md,
+            Table 2 (definition); Table 3 (sampled ranges and correlations).
             */
         }
 
@@ -54,7 +58,8 @@ package ife_plant {
             Hawker parameter G. 4th highest sensitivity (-0.164).
             Plant-level because gain depends on the target-driver
             interaction, not on any single subsystem.
-            Source: Hawker 2020 Table 1. Units: dimensionless.
+            Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md,
+            Table 2 (definition); Table 3 (sampled ranges and correlations). Units: dimensionless.
             */
         }
 
@@ -62,7 +67,8 @@ package ife_plant {
             doc /*
             Thermal-to-electric conversion efficiency.
             Hawker parameter mu_th. Units: dimensionless fraction.
-            Source: Hawker 2020 Table 1.
+            Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md,
+            Table 2 (definition); Table 3 (sampled ranges and correlations).
             */
         }
 
@@ -73,7 +79,8 @@ package ife_plant {
             Discount rate for DCF calculation. Highest sensitivity
             parameter in the model (+0.247).
             Hawker parameter d. Units: dimensionless fraction.
-            Source: Hawker 2020 Table 1.
+            Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md,
+            Table 2 (definition); Table 3 (sampled ranges and correlations).
             */
         }
 
@@ -83,7 +90,8 @@ package ife_plant {
             exchangers, turbines, generator, grid connection, land,
             buildings. 2nd highest sensitivity (+0.210).
             Hawker parameter alpha. Units: $/kWe.
-            Source: Hawker 2020 Table 1.
+            Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md,
+            Table 2 (definition); Table 3 (sampled ranges and correlations).
             */
         }
 
@@ -91,7 +99,8 @@ package ife_plant {
             doc /*
             Annual operations and maintenance cost per kWe capacity.
             Hawker parameter epsilon. Units: $/kWe-year.
-            Source: Hawker 2020 Table 1.
+            Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md,
+            Table 2 (definition); Table 3 (sampled ranges and correlations).
             */
         }
 

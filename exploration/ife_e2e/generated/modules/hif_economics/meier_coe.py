@@ -25,9 +25,9 @@ Outputs:
     - energy_denominator: energy_denominator result
     - annualized_cost: annualized_cost result
 
-SysML Source: root-0/analyses/hif_economics.sysml:86
+SysML Source: root-0/analyses/hif_economics.sysml:88
 
-SysML Source: root-0/analyses/hif_economics.sysml:86
+SysML Source: root-0/analyses/hif_economics.sysml:88
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/hif_economics/meier_coe_impl.py
@@ -79,9 +79,9 @@ Outputs:
     - energy_denominator: energy_denominator result
     - annualized_cost: annualized_cost result
 
-SysML Source: root-0/analyses/hif_economics.sysml:86
+SysML Source: root-0/analyses/hif_economics.sysml:88
 
-    SysML Source: root-0/analyses/hif_economics.sysml:86
+    SysML Source: root-0/analyses/hif_economics.sysml:88
 
     Calculation Specification:
         annualized_cost = 0.113 * total_capital_billions

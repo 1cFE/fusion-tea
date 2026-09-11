@@ -9,6 +9,7 @@ at 1.53 and nuclear-best at 2.07).
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Ref**: Eq. 2 (lines 102-117)
 *Basis**: Meier 1986 indirect cost multiplier. Year-dollars: 1988$.
+*Last Updated**: 2026-09-11
 
 Inputs:
     - reactor_cost: reactor_cost parameter
@@ -18,9 +19,9 @@ Inputs:
 Outputs:
     - total_capital_billions: total_capital_billions result
 
-SysML Source: root-0/analyses/hif_economics.sysml:67
+SysML Source: root-0/analyses/hif_economics.sysml:68
 
-SysML Source: root-0/analyses/hif_economics.sysml:67
+SysML Source: root-0/analyses/hif_economics.sysml:68
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/hif_economics/meier_total_capital_cost_impl.py
@@ -55,6 +56,7 @@ at 1.53 and nuclear-best at 2.07).
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Ref**: Eq. 2 (lines 102-117)
 *Basis**: Meier 1986 indirect cost multiplier. Year-dollars: 1988$.
+*Last Updated**: 2026-09-11
 
 Inputs:
     - reactor_cost: reactor_cost parameter
@@ -64,9 +66,9 @@ Inputs:
 Outputs:
     - total_capital_billions: total_capital_billions result
 
-SysML Source: root-0/analyses/hif_economics.sysml:67
+SysML Source: root-0/analyses/hif_economics.sysml:68
 
-    SysML Source: root-0/analyses/hif_economics.sysml:67
+    SysML Source: root-0/analyses/hif_economics.sysml:68
 
     Calculation Specification:
         total_capital_billions = 1.83 * (reactor_cost + driver_cost + target_factory_cost)
@@ -79,6 +81,7 @@ at 1.53 and nuclear-best at 2.07).
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Ref**: Eq. 2 (lines 102-117)
 *Basis**: Meier 1986 indirect cost multiplier. Year-dollars: 1988$.
+*Last Updated**: 2026-09-11
 
     IMPLEMENTATION: See ife_tea.handwritten.hif_economics.meier_total_capital_cost_impl
     for manual implementation.

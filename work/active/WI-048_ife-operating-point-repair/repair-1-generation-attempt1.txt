@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-048_ife-operating-point-repair/repair-1-verify.py", line 35, in <module>
+    assert len(verdicts)==2
+           ^^^^^^^^^^^^^^^^
+AssertionError

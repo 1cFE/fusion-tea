@@ -40,14 +40,15 @@ package hif_plant_pkg {
 
         part :>> target_factory {
             doc /*
-            HIF target factory. Per-target cost from EIF-1992 era
-            estimates. IFE targets are cryogenic indirect-drive hohlraums.
+            HIF target factory with retained $10/target scenario assumption.
+            IFE targets are cryogenic indirect-drive hohlraums.
 
             **Source**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md
-            **Ref**: Table 1 (parameter delta, range $1-100)
+            **Ref**: Table 2 (parameter delta); Table 3 (sampled range $1-100/target)
             **Basis**: DI-003 — target cost as IFE operating cost.
-                Hawker default $10 used; HIF-specific target cost data
-                is sparse. Year-dollars: generic.
+                [INHERITED ESTIMATE] $10 is a selected scenario, not a
+                published default. Prior choice: work/completed/20260303_WI-008_hif-concept-instantiation/design.md, subsystem diagram.
+                Year-dollars: generic.
             */
 
             :>> cost_per_target = 10.0;
@@ -65,8 +66,10 @@ package hif_plant_pkg {
             */
 
             :>> wall_type = 'Wall Type'::liquid_wall;
-            // Later Hawker approximation, not an Osiris table value.
-            // Source: a_simplified_economic_model_for_inertial_fusion/output.md Table 1.
+            // Retained scenario assumption 1.15, not an Osiris fact or Hawker default.
+            // Prior choice: work/completed/20260303_WI-008_hif-concept-instantiation/design.md, parameter table.
+            // Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md,
+            // Table 2 defines E_b; Table 3 samples 0.6-1.4 without selecting 1.15.
             :>> blanket_energy_multiple = 1.15;
             :>> yield_cost_constant = 5.0e6;
         }
@@ -115,42 +118,46 @@ package hif_plant_pkg {
 
         :>> discount_rate = 0.08 {
             doc /*
-            Discount rate — financial parameter, not concept-specific.
-            Matches Hawker's default. Meier uses 8.3% fixed charge rate
-            which is comparable.
+            Retained 8% discount-rate scenario for Hawker DCF.
+            Meier's separate 8.3% fixed charge rate is unchanged.
 
             **Source**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md
-            **Ref**: Table 1 (parameter d, default 0.08)
-            **Basis**: Hawker 2020 default. Year-dollars: generic.
+            **Ref**: Table 2 (parameter d); Table 3 (sampled discount range 2-12%)
+            **Basis**: [INHERITED ESTIMATE] Selected 8%, not a published default.
+                Prior choice: work/completed/20260303_WI-008_hif-concept-instantiation/design.md, parameter table.
+                Year-dollars: generic.
             */
         }
 
         :>> plant_cost_constant = 2000.0 {
             doc /*
-            Balance-of-plant capital cost per kWe. Derived from Meier's
-            reactor cost: C_rd ≈ $0.73B at 2.054 GWt, with 1.83x indirect
-            multiplier = $1.34B for 1.0 GWe → $1340/kWe. Rounded up to
-            $2000/kWe to account for BOP elements beyond Meier's C_rd.
-            Within Hawker's range ($1000-6000/kWe).
+            Balance-of-plant capital coefficient retained at $2000/kWe.
+            This prior modeling estimate mapped Meier reactor cost to Hawker
+            alpha. Its historical derivation used erroneous 2.054 GWt and held
+            1.0 GWe, then added an estimated BOP allowance. Those are neither
+            the image-verified 2.504 GWt nor the current computed power basis.
+            The coefficient is retained without recalibration in this repair.
 
-            **Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
-            **Ref**: Eqs. 2-3 (reactor cost structure)
-            **Basis**: [ESTIMATED] Approximate mapping of Meier reactor
-                cost to Hawker alpha. Year-dollars: 1988$.
+            **Source**: work/completed/20260303_WI-008_hif-concept-instantiation/design.md
+            **Ref**: DD-WI008-5; parameter table; Meier validation at 2.054 GWt
+            **Basis**: [INHERITED ESTIMATE] Prior approximate mapping, not a
+                source-derived coefficient for the corrected case. Year-dollars: 1988$.
             */
         }
 
         :>> om_cost_constant = 65.0 {
             doc /*
-            Annual O&M cost per kWe capacity. Meier uses 3% of total
-            capital for O&M: 0.03 × ~$3.3B / 1e6 kW ≈ $99/kWe-yr.
-            Reduced to $65/kWe-yr as Meier's rate includes items that
-            Hawker captures elsewhere. Within Hawker's range ($10-100).
+            Annual O&M coefficient retained at $65/kWe-year.
+            The prior estimate used 3% of approximately $3.3B at held 1 GWe
+            (about $99/kWe-year), then reduced it for assumed Hawker scope
+            overlap. That historical estimate is not recomputed from the
+            corrected operating point; the scope adjustment remains an assumption.
 
-            **Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
-            **Ref**: Eq. 1 (M = 3% of C_T, line 101)
-            **Basis**: [ESTIMATED] Meier's 3% O&M rate, adjusted for
-                Hawker model scope. Year-dollars: 1988$.
+            **Source**: work/completed/20260303_WI-008_hif-concept-instantiation/design.md;
+                knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
+            **Ref**: Prior DD-WI008-5 and parameter table; Meier Eq. 1 discussion (M = 3% of C_T)
+            **Basis**: [INHERITED ESTIMATE] Prior O&M mapping retained.
+                Year-dollars: 1988$.
             */
         }
 

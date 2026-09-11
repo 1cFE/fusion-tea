@@ -12,6 +12,7 @@ b = 0.49 (power scaling exponent).
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Ref**: Eq. 3 (lines 119-137)
 *Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$.
+*Last Updated**: 2026-09-11
 
 Inputs:
     - thermal_power_gw_in: thermal_power_gw_in parameter
@@ -58,6 +59,7 @@ b = 0.49 (power scaling exponent).
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Ref**: Eq. 3 (lines 119-137)
 *Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$.
+*Last Updated**: 2026-09-11
 
 Inputs:
     - thermal_power_gw_in: thermal_power_gw_in parameter
@@ -84,6 +86,7 @@ b = 0.49 (power scaling exponent).
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Ref**: Eq. 3 (lines 119-137)
 *Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$.
+*Last Updated**: 2026-09-11
 
     IMPLEMENTATION: See ife_tea.handwritten.hif_economics.meier_reactor_cost_impl
     for manual implementation.

@@ -93,3 +93,7 @@ Native `pm update-validation SV-073/074/075 --status passing` records implementa
 | MR-WI048-8 | L1–3 pass for IFE; all quality levels and exact interface changes reported; regression 122/13; independent audit remains the next stage | Implementation evidence complete; independent audit pending |
 
 No source conflict, new financial convention, unexplained blocking IFE failure, or numerical tuning was introduced. The parent must arrange a fresh native `$audit-models` report evaluating F01, F02 and F03 separately. This implementation record is not that audit. Item close/archive, goal close and merge/push remain outside this stage.
+
+## Repair attempt 1 — 2026-09-11
+
+[AGENT] The record above describes the prior production revision. The negative independent audit identified incomplete current source claims (A01/A02) despite passing numerical checks. The bounded correction, native trace additions, synchronized generation, exact unchanged baseline and new package identity are recorded separately in [repair-1.md](repair-1.md) and [repair-1-identity.json](repair-1-identity.json). Original numerical/identity evidence remains historical and unchanged. Fresh independent re-audit is required.

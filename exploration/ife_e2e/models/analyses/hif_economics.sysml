@@ -54,6 +54,7 @@ package hif_economics {
         **Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
         **Ref**: Eq. 3 (lines 119-137)
         **Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$.
+        **Last Updated**: 2026-09-11
         */
 
         in attribute thermal_power_gw_in : Real;
@@ -73,6 +74,7 @@ package hif_economics {
         **Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
         **Ref**: Eq. 2 (lines 102-117)
         **Basis**: Meier 1986 indirect cost multiplier. Year-dollars: 1988$.
+        **Last Updated**: 2026-09-11
         */
 
         in attribute reactor_cost : Real;
