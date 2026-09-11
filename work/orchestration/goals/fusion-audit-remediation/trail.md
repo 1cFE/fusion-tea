@@ -389,3 +389,27 @@ T-010 · native Standard IFE zero-discount repair under `work/active/` · expect
 ### T-011 start — 2026-09-11
 
 T-011 · `.project/active/ife-zero-discount-study-package/` · expected artifacts: bounded native spec/plan, package refresh and fresh coding audit; no promoted pin or executed study.
+
+### T-011 return — 2026-09-11
+
+**Outcome:** COMPLETE. Native coding certificate: `.project/active/ife-zero-discount-study-package/audit.md@f04c0622`, product-lens ledger at the same revision. Implementation and preparation evidence are `811a611b`. All four criteria pass: thirty-two published/verified numeric channels, both predicates, current duration keys with explicit oracle-coverage rejection, and reproducible current metadata. Fresh audit ran 45 tests without skips and reproduced all four metadata hashes. All fifty-five generated package files remain unchanged from WI-049.
+
+**Goal reading:** The declared package refresh is certified. This repairs the ten stale route failures recorded by T-010. The changed axis declaration is preparation for the round's question, not a sensitivity result. The product lens's duplicate-oracle smell is explicitly disposed in the coding audit because independent arithmetic supplies a separate verification check; it does not establish model completeness. No pin was promoted and no study executed.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Current study consumers need the audited key/channel interface | Retain the certified refresh and invoke native integration against WI-049 plus the coding certificate. | execution detail | Parent [AGENT] | T-012 scope below |
+| Physical-axis regression assumed the previous live study declaration | Preserve its beam/rate assertions with explicit test input, and separately assert the new discount declaration. | execution detail | Parent implementer [AGENT], independently certified | `tests/study/test_indicator_operands.py@811a611b` |
+
+### T-012 scope
+
+- **Objective:** Obtain this round's one verified native IFE integration candidate for the audited discount-limit repair.
+- **Why now:** T-010 and T-011 have positive independent certification and current metadata reproduces without changing the audited package.
+- **Scope:** Invoke the native integration seam with the two audited-work citations, current IFE models/package/manifest/axis/census and expected lineage; retain the return and producer evidence. No model, metadata, shared-tool or historical-record repair; no study execution.
+- **Inputs:** `goal.md` and round-2 strategy; WI-049 audit `c99b2187`; coding certificate `f04c0622`; package/metadata at `811a611b`; native integration operator guide and sealed TEAx revision `8d877460ac4f6f264561d916e40c1708adb13397`.
+- **Done when:** The seam returns one CANDIDATE with all required gates passing and native identity, or a named blocker.
+- **Stop when:** Native refusal, prerequisite, strategy/comparison conflict, owner gate or declared limit.
+
+### T-012 start — 2026-09-11
+
+T-012 · native `scripts/integrate.py` · return/evidence at `work/orchestration/goals/fusion-audit-remediation/evidence/T-012_pin/`; this round has promoted no earlier pin.
