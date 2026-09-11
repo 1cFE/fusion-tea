@@ -8,7 +8,7 @@ Tests verify that handwritten implementation functions:
 4. Tolerate NotImplementedError (before agent implements)
 5. Validate return types (after agent implements)
 
-Generated from 8 calculation definitions.
+Generated from 9 calculation definitions.
 """
 
 import importlib
@@ -83,6 +83,48 @@ class TestMeier_HIF_Driver_CostRunnable:
             # If implemented, verify return type
             assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
             assert len(result) == 3, f"Expected 3 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestIFE_Present_Value_FactorsRunnable:
+    """Verify ife_present_value_factors implementation runs without error.
+
+    SysML Source: root-0/analyses/ife_lcoe.sysml:126
+    """
+
+    def test_import_and_run(self):
+        """Test that run_ife_present_value_factors can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("ife_tea.handwritten.ife_lcoe.ife_present_value_factors_impl")
+        func = getattr(impl, "run_ife_present_value_factors")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("ife_tea.modules.ife_lcoe.ife_present_value_factors")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 2, f"Expected 2 outputs"
             assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
 
         except NotImplementedError:
@@ -214,7 +256,7 @@ class TestMeier_Reactor_CostRunnable:
 class TestGenerating_Electricity_PriceRunnable:
     """Verify generating_electricity_price implementation runs without error.
 
-    SysML Source: root-0/analyses/ife_lcoe.sysml:141
+    SysML Source: root-0/analyses/ife_lcoe.sysml:150
     """
 
     def test_import_and_run(self):
@@ -338,7 +380,7 @@ class TestMeier_COERunnable:
 class TestGenerating_Electricity_PriceRunnable:
     """Verify generating_electricity_price implementation runs without error.
 
-    SysML Source: root-0/analyses/ife_lcoe.sysml:141
+    SysML Source: root-0/analyses/ife_lcoe.sysml:150
     """
 
     def test_import_and_run(self):

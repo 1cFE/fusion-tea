@@ -21,15 +21,16 @@ def test_invalid_price_cannot_win_or_anchor(price, generating, verdict):
         require_price(price, generating, verdict)
 
 
+@pytest.mark.parametrize("rate", [0.0, 1e-12, -1e-12, 0.08])
 @pytest.mark.parametrize("thermal,expected", [(0.18, "violated"),
                                                (0.20, "violated"),
                                                (0.21, "satisfied")])
-def test_generated_boundary_cannot_certify_invalid_anchor(tmp_path, monkeypatch, thermal, expected):
+def test_generated_boundary_cannot_certify_invalid_anchor(tmp_path, monkeypatch, thermal, expected, rate):
     # The generated wrapper owns output ordering and production arithmetic.
     root = Path(__file__).resolve().parents[1]
     (tmp_path / "ife_tea").symlink_to(root / "exploration/ife_e2e/generated", target_is_directory=True)
     monkeypatch.syspath_prepend(str(tmp_path))
-    params = dict(availability=0.9, blanket_energy_multiple=1.0, discount_rate=0.08,
+    params = dict(availability=0.9, blanket_energy_multiple=1.0, discount_rate=rate,
                   driver_cost_constant=55.0, driver_efficiency=0.1, driver_energy=50e6,
                   driver_lifetime_shots=6e9, frequency=5.0, gain=100.0,
                   om_cost_constant=65.0, plant_cost_constant=2000.0,

@@ -8,6 +8,7 @@ from ife_tea.modules.hif_economics.meier_reactor_cost import Meier_Reactor_CostM
 from ife_tea.modules.hif_economics.meier_total_capital_cost import Meier_Total_Capital_CostModule
 from ife_tea.modules.ife_lcoe.generating_electricity_price import Generating_Electricity_PriceModule
 from ife_tea.modules.ife_lcoe.ife_lcoe import IFE_LCOEModule
+from ife_tea.modules.ife_lcoe.ife_present_value_factors import IFE_Present_Value_FactorsModule
 from ife_tea.modules.constraints.constraintreportaggregatormodule import ConstraintReportAggregatorModule
 from ife_tea.modules.hif_plant_pkg.hifplantnetpositiveconstraintmodule import HifPlantNetPositiveConstraintModule
 from ife_tea.modules.hif_plant_pkg.hifplantviabilityconstraintmodule import HifPlantViabilityConstraintModule
@@ -15,7 +16,6 @@ from ife_tea.modules.hif_plant_pkg.hifplantviabilityconstraintmodule import HifP
 from ife_tea.schemas.constraint_types import ConstraintEvaluation as ConstraintEvaluation, ConstraintReport as ConstraintReport
 from ife_tea.schemas.hif_driver_params import HifDriverParams as HifDriverParams
 from ife_tea.schemas.hif_plant_params import HifPlantParams as HifPlantParams
-from ife_tea.schemas.ife_lcoe_params import IfeLcoeParams as IfeLcoeParams
 from ife_tea.schemas.ife_plant_params import IfePlantParams as IfePlantParams
 
 from ife_tea.primitives import Float
@@ -33,11 +33,11 @@ def create_ife_tea_registry() -> PipelineModuleRegistry:
     while keeping Python class names unchanged (e.g., "AlphaNeutronSplitModule").
     """
     return create_registry(
-        [            ConstraintReportAggregatorModule,            Recirculating_Power_FractionModule,            Meier_COEModule,            Meier_HIF_Driver_CostModule,            Meier_Reactor_CostModule,            Meier_Total_Capital_CostModule,            HifPlantNetPositiveConstraintModule,            HifPlantViabilityConstraintModule,            Generating_Electricity_PriceModule,            IFE_LCOEModule,        ],
-        module_type_override={            ConstraintReportAggregatorModule: "constraints.ConstraintReportAggregatorModule",            Recirculating_Power_FractionModule: "fusion_cycle.Recirculating_Power_FractionModule",            Meier_COEModule: "hif_economics.Meier_COEModule",            Meier_HIF_Driver_CostModule: "hif_economics.Meier_HIF_Driver_CostModule",            Meier_Reactor_CostModule: "hif_economics.Meier_Reactor_CostModule",            Meier_Total_Capital_CostModule: "hif_economics.Meier_Total_Capital_CostModule",            HifPlantNetPositiveConstraintModule: "hif_plant_pkg.HifPlantNetPositiveConstraintModule",            HifPlantViabilityConstraintModule: "hif_plant_pkg.HifPlantViabilityConstraintModule",            Generating_Electricity_PriceModule: "ife_lcoe.Generating_Electricity_PriceModule",            IFE_LCOEModule: "ife_lcoe.IFE_LCOEModule",        },
+        [            ConstraintReportAggregatorModule,            Recirculating_Power_FractionModule,            Meier_COEModule,            Meier_HIF_Driver_CostModule,            Meier_Reactor_CostModule,            Meier_Total_Capital_CostModule,            HifPlantNetPositiveConstraintModule,            HifPlantViabilityConstraintModule,            Generating_Electricity_PriceModule,            IFE_LCOEModule,            IFE_Present_Value_FactorsModule,        ],
+        module_type_override={            ConstraintReportAggregatorModule: "constraints.ConstraintReportAggregatorModule",            Recirculating_Power_FractionModule: "fusion_cycle.Recirculating_Power_FractionModule",            Meier_COEModule: "hif_economics.Meier_COEModule",            Meier_HIF_Driver_CostModule: "hif_economics.Meier_HIF_Driver_CostModule",            Meier_Reactor_CostModule: "hif_economics.Meier_Reactor_CostModule",            Meier_Total_Capital_CostModule: "hif_economics.Meier_Total_Capital_CostModule",            HifPlantNetPositiveConstraintModule: "hif_plant_pkg.HifPlantNetPositiveConstraintModule",            HifPlantViabilityConstraintModule: "hif_plant_pkg.HifPlantViabilityConstraintModule",            Generating_Electricity_PriceModule: "ife_lcoe.Generating_Electricity_PriceModule",            IFE_LCOEModule: "ife_lcoe.IFE_LCOEModule",            IFE_Present_Value_FactorsModule: "ife_lcoe.IFE_Present_Value_FactorsModule",        },
     )
 
 
 # Custom schema types for TEAx pipeline registration
 # Use with: execute_pipeline(..., custom_schema_types=CUSTOM_SCHEMA_TYPES)
-CUSTOM_SCHEMA_TYPES = [    HifDriverParams,    HifPlantParams,    IfeLcoeParams,    IfePlantParams,    ConstraintEvaluation,    ConstraintReport,    Float,]
+CUSTOM_SCHEMA_TYPES = [    HifDriverParams,    HifPlantParams,    IfePlantParams,    ConstraintEvaluation,    ConstraintReport,    Float,]

@@ -11,8 +11,8 @@ is the regression spine for both, replacing the migration-era
 * **generation** -- each family's materialized canonical subset generates with zero
   readiness diagnostics (which seals), and the v6 snapshot route reproduces the live
   package byte for byte;
-* **census** -- the entry-point classification is exact: IFE has 19 entry points / 16
-  design attributes after WI-048 derives bank/rate/power inputs and names two literals;
+* **census** -- the entry-point classification is exact: IFE has 19 entry points / 18
+  design attributes after WI-049 shares two Real durations between factors and costs;
   MFE is the census captured from
   its first clean 2.0.0 package (`data/mfe_census.json`), bound to the semantic
   fingerprint it was derived against;
@@ -52,7 +52,10 @@ DATA = Path(__file__).resolve().parent / "data"
 # ------------------------------------------------------------------ IFE expectations
 #: WI-048 retires independent bank/rate/thermal/net inputs and names two literals.
 #: Historical table facts are reference attributes, not execution entry points.
+# WI-049 shares Real durations between factors and cost calculation.
 IFE_DESIGN_ATTRIBUTES = {
+    "hif_plant_pkg__hif_plant__construction_duration",
+    "hif_plant_pkg__hif_plant__operational_duration",
     "hif_plant_pkg__hif_plant__reactor_units",
     "hif_plant_pkg__hif_plant__target_factory_direct_cost_billions",
     "hif_plant_pkg__hif_plant__availability",
@@ -71,8 +74,6 @@ IFE_DESIGN_ATTRIBUTES = {
     "hif_plant_pkg__hif_plant__target_factory__cost_per_target",
 }
 IFE_LIBRARY_DEFAULTS = {
-    "hif_plant_pkg__hif_plant__lcoe_calc__construction_years",
-    "hif_plant_pkg__hif_plant__lcoe_calc__operational_years",
     "hif_plant_pkg__hif_plant__viability__threshold",
 }
 IFE_USAGE_LITERALS: set[str] = set()
@@ -324,12 +325,12 @@ def test_family_subset_generates_and_live_equals_snapshot(family: str, tmp_path:
 # --------------------------------------------------------------------- censuses
 
 
-def test_ife_census_is_19_entry_points_16_design_attributes(baselines) -> None:
+def test_ife_census_is_19_entry_points_18_design_attributes(baselines) -> None:
     output = baselines["ife"]
     by_type = _by_entry_type(output)
     assert len(_contract(output)["parameters"]) == 19
     assert by_type["design_attribute"] == IFE_DESIGN_ATTRIBUTES
-    assert len(by_type["design_attribute"]) == 16
+    assert len(by_type["design_attribute"]) == 18
     assert by_type["library_default"] == IFE_LIBRARY_DEFAULTS
     assert by_type.get("usage_literal", set()) == IFE_USAGE_LITERALS
 

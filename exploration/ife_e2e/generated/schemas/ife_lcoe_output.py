@@ -13,9 +13,9 @@ are spread evenly across construction; operating costs accrue
 during operation. Both cost and energy streams are discounted
 to present value.
 
-Closed-form present value factors replace year-by-year iteration:
-  PVF_con = (1 - (1+d)^(-Yc)) / d
-  PVF_op  = (1+d)^(-Yc) * (1 - (1+d)^(-N_op)) / d
+IFE Present Value Factors supplies stable geometric factors, including
+the exact-zero limit. This calculation multiplies each annual stream
+by its supplied factor before the guarded price division.
 
 Net electric power per Hawker Eq. 2.12-2.16:
   P_e = E_d * f * (mu_th * E_b * G * mu_d - 2)
@@ -27,8 +27,8 @@ where the factor of 2 approximates recirculating power as
 *Basis**: Hawker 2020 DCF LCOE model with 14 technology-agnostic parameters;
 closed-form PVF replaces year-by-year iteration per DD-3.
 Final guarded division is delegated to Generating Electricity Price.
-*Reference**: Hawker Eqs. 2.1-2.16
-*Last Updated**: 2026-09-10
+*Reference**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md:141-148 and following Eqs. 2.2-2.16
+*Last Updated**: 2026-09-11
 
 SysML Source: root-0/analyses/ife_lcoe.sysml:4
     """

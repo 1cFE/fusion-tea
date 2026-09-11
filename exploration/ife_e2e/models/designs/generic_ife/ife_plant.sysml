@@ -106,6 +106,33 @@ package ife_plant {
 
         // === LCOE Calculation ===
 
+        attribute construction_duration : Real = 5.0 {
+            doc /*
+            Construction duration in years, supplied to both factor and cost calculations.
+            **Source**: Hawker, A simplified economic model for inertial fusion
+            **Reference**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md:148
+            **Ref**: Construction and operational durations following Eq. 2.1
+            **Basis**: Existing Hawker default, retained as Real.
+            **Last Updated**: 2026-09-11
+            */
+        }
+        attribute operational_duration : Real = 40.0 {
+            doc /*
+            Operation duration in years, supplied to both factor and cost calculations.
+            **Source**: Hawker, A simplified economic model for inertial fusion
+            **Reference**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md:148
+            **Ref**: Construction and operational durations following Eq. 2.1
+            **Basis**: Existing Hawker default, retained as Real.
+            **Last Updated**: 2026-09-11
+            */
+        }
+
+        calc pv_factors : 'IFE Present Value Factors' {
+            in discount_rate_in = discount_rate;
+            in construction_years_in = construction_duration;
+            in operational_years_in = operational_duration;
+        }
+
         calc lcoe_calc : 'IFE LCOE' {
             doc /*
             Binds all 14 Hawker parameters from their physical subsystem
@@ -136,6 +163,10 @@ package ife_plant {
             in target_cost_constant = target_factory.cost_per_target;
             in thermal_efficiency_in = thermal_efficiency;
             in yield_cost_constant = chamber.yield_cost_constant;
+            in construction_years = construction_duration;
+            in operational_years = operational_duration;
+            in pvf_construction = pv_factors.construction_factor;
+            in pvf_operation = pv_factors.operation_factor;
         }
 
         calc hawker_price : 'Generating Electricity Price' {

@@ -46,4 +46,12 @@ def lcoe_inputs(params):
 def module_balance(params):
     """Use the generated wrapper's named outputs, avoiding positional tuple guesses."""
     from ife_tea.modules.ife_lcoe.ife_lcoe import IFE_LCOEModule
-    return IFE_LCOEModule().run(**lcoe_inputs(params)).data
+    from ife_tea.modules.ife_lcoe.ife_present_value_factors import IFE_Present_Value_FactorsModule
+    inputs = lcoe_inputs(params)
+    factors = IFE_Present_Value_FactorsModule().run(
+        discount_rate_in=inputs['discount_rate_in'],
+        construction_years_in=inputs.get('construction_years', 5.0),
+        operational_years_in=inputs.get('operational_years', 40.0)).data
+    return IFE_LCOEModule().run(
+        **inputs, pvf_construction=factors.construction_factor,
+        pvf_operation=factors.operation_factor).data

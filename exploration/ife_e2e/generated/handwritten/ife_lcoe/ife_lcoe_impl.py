@@ -27,10 +27,6 @@ SysML Expressions:
     annual_capital_cost = (plant_cost_constant_in * net_electric_kw + yield_cost_constant * fusion_energy_per_shot / 1000000000.0 + driver_capital_cost) / construction_years
     annual_operating_cost = target_cost_constant * shots_per_year + om_cost_constant_in * net_electric_kw + annual_driver_replacement_cost
     annual_energy = 8760.0 * net_electric_kw * availability_in / 1000.0
-    discount_factor_con = (1.0 + discount_rate_in) ** construction_years
-    pvf_construction = (1.0 - 1.0 / discount_factor_con) / discount_rate_in
-    discount_factor_op = (1.0 + discount_rate_in) ** operational_years
-    pvf_operation = 1.0 / discount_factor_con * (1.0 - 1.0 / discount_factor_op) / discount_rate_in
     discounted_cost = annual_capital_cost * pvf_construction + annual_operating_cost * pvf_operation
     discounted_energy = annual_energy * pvf_operation
     
@@ -44,9 +40,9 @@ are spread evenly across construction; operating costs accrue
 during operation. Both cost and energy streams are discounted
 to present value.
 
-Closed-form present value factors replace year-by-year iteration:
-  PVF_con = (1 - (1+d)^(-Yc)) / d
-  PVF_op  = (1+d)^(-Yc) * (1 - (1+d)^(-N_op)) / d
+IFE Present Value Factors supplies stable geometric factors, including
+the exact-zero limit. This calculation multiplies each annual stream
+by its supplied factor before the guarded price division.
 
 Net electric power per Hawker Eq. 2.12-2.16:
   P_e = E_d * f * (mu_th * E_b * G * mu_d - 2)
@@ -58,8 +54,8 @@ where the factor of 2 approximates recirculating power as
 *Basis**: Hawker 2020 DCF LCOE model with 14 technology-agnostic parameters;
 closed-form PVF replaces year-by-year iteration per DD-3.
 Final guarded division is delegated to Generating Electricity Price.
-*Reference**: Hawker Eqs. 2.1-2.16
-*Last Updated**: 2026-09-10
+*Reference**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md:141-148 and following Eqs. 2.2-2.16
+*Last Updated**: 2026-09-11
 """
 
 AUTO_IMPLEMENTED = True
@@ -79,9 +75,9 @@ are spread evenly across construction; operating costs accrue
 during operation. Both cost and energy streams are discounted
 to present value.
 
-Closed-form present value factors replace year-by-year iteration:
-  PVF_con = (1 - (1+d)^(-Yc)) / d
-  PVF_op  = (1+d)^(-Yc) * (1 - (1+d)^(-N_op)) / d
+IFE Present Value Factors supplies stable geometric factors, including
+the exact-zero limit. This calculation multiplies each annual stream
+by its supplied factor before the guarded price division.
 
 Net electric power per Hawker Eq. 2.12-2.16:
   P_e = E_d * f * (mu_th * E_b * G * mu_d - 2)
@@ -93,8 +89,8 @@ where the factor of 2 approximates recirculating power as
 *Basis**: Hawker 2020 DCF LCOE model with 14 technology-agnostic parameters;
 closed-form PVF replaces year-by-year iteration per DD-3.
 Final guarded division is delegated to Generating Electricity Price.
-*Reference**: Hawker Eqs. 2.1-2.16
-*Last Updated**: 2026-09-10
+*Reference**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md:141-148 and following Eqs. 2.2-2.16
+*Last Updated**: 2026-09-11
 
 SysML Source: root-0/analyses/ife_lcoe.sysml:4
 
@@ -121,10 +117,6 @@ SysML Expressions:
     annual_capital_cost = (plant_cost_constant_in * net_electric_kw + yield_cost_constant * fusion_energy_per_shot / 1000000000.0 + driver_capital_cost) / construction_years
     annual_operating_cost = target_cost_constant * shots_per_year + om_cost_constant_in * net_electric_kw + annual_driver_replacement_cost
     annual_energy = 8760.0 * net_electric_kw * availability_in / 1000.0
-    discount_factor_con = (1.0 + discount_rate_in) ** construction_years
-    pvf_construction = (1.0 - 1.0 / discount_factor_con) / discount_rate_in
-    discount_factor_op = (1.0 + discount_rate_in) ** operational_years
-    pvf_operation = 1.0 / discount_factor_con * (1.0 - 1.0 / discount_factor_op) / discount_rate_in
     discounted_cost = annual_capital_cost * pvf_construction + annual_operating_cost * pvf_operation
     discounted_energy = annual_energy * pvf_operation
     
@@ -138,9 +130,9 @@ are spread evenly across construction; operating costs accrue
 during operation. Both cost and energy streams are discounted
 to present value.
 
-Closed-form present value factors replace year-by-year iteration:
-  PVF_con = (1 - (1+d)^(-Yc)) / d
-  PVF_op  = (1+d)^(-Yc) * (1 - (1+d)^(-N_op)) / d
+IFE Present Value Factors supplies stable geometric factors, including
+the exact-zero limit. This calculation multiplies each annual stream
+by its supplied factor before the guarded price division.
 
 Net electric power per Hawker Eq. 2.12-2.16:
   P_e = E_d * f * (mu_th * E_b * G * mu_d - 2)
@@ -152,8 +144,8 @@ where the factor of 2 approximates recirculating power as
 *Basis**: Hawker 2020 DCF LCOE model with 14 technology-agnostic parameters;
 closed-form PVF replaces year-by-year iteration per DD-3.
 Final guarded division is delegated to Generating Electricity Price.
-*Reference**: Hawker Eqs. 2.1-2.16
-*Last Updated**: 2026-09-10
+*Reference**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md:141-148 and following Eqs. 2.2-2.16
+*Last Updated**: 2026-09-11
 
 Args:
     inputs: Input parameters validated against IFE_LCOEInput schema
@@ -165,11 +157,7 @@ Example:
     >>> inputs = IFE_LCOEInput(...)
     >>> thermal_power, fusion_energy_per_shot, discounted_energy, net_electric_power_gw, fusion_power, shots_per_year, driver_recirculating_fraction, other_parasitic_power, net_electric_power, discounted_cost, driver_electric_power, annual_driver_replacement_cost, driver_capital_cost, thermal_power_gw, gross_electric_power, total_recirculating_fraction, energy_on_target, driver_lifetime_years = run_ife_lcoe(inputs)
     """
-    discount_factor_op = ((1.0 + inputs.discount_rate_in) ** inputs.operational_years)
     shots_per_year = ((31557600.0 * inputs.frequency_in) * inputs.availability_in)
-    discount_factor_con = ((1.0 + inputs.discount_rate_in) ** inputs.construction_years)
-    pvf_construction = ((1.0 - (1.0 / discount_factor_con)) / inputs.discount_rate_in)
-    pvf_operation = (((1.0 / discount_factor_con) * (1.0 - (1.0 / discount_factor_op))) / inputs.discount_rate_in)
     driver_electric_power = (inputs.driver_energy * inputs.frequency_in)
     other_parasitic_power = driver_electric_power
     driver_capital_cost = (inputs.driver_cost_constant * inputs.driver_energy)
@@ -188,14 +176,14 @@ Example:
     return (
         thermal_power,
         fusion_energy_per_shot,
-        (annual_energy * pvf_operation),  # discounted_energy
+        (annual_energy * inputs.pvf_operation),  # discounted_energy
         (net_electric_power / 1000000000.0),  # net_electric_power_gw
         fusion_power,
         shots_per_year,
         (driver_electric_power / gross_electric_power),  # driver_recirculating_fraction
         other_parasitic_power,
         net_electric_power,
-        ((annual_capital_cost * pvf_construction) + (annual_operating_cost * pvf_operation)),  # discounted_cost
+        ((annual_capital_cost * inputs.pvf_construction) + (annual_operating_cost * inputs.pvf_operation)),  # discounted_cost
         driver_electric_power,
         annual_driver_replacement_cost,
         driver_capital_cost,

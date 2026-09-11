@@ -18,9 +18,9 @@ arithmetic renderer does not support this conditional. No finance is duplicated.
 knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Reference**: Hawker Eq. 2.1 and Eqs. 2.12-2.16; Meier Eq. 1
 *Basis**: [DERIVED] A generating price requires strictly positive net output.
-*Last Updated**: 2026-09-10
+*Last Updated**: 2026-09-11
 
-SysML Source: root-0/analyses/ife_lcoe.sysml:141
+SysML Source: root-0/analyses/ife_lcoe.sysml:150
     """
     price: float = Field(description="price output")
     generating: float = Field(description="generating output")

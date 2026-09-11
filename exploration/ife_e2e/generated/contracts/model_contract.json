@@ -110,6 +110,16 @@
       "python_type": "float"
     },
     {
+      "channel_name": "hif_plant_pkg__hif_plant__pv_factors__operation_factor",
+      "field_name": "operation_factor",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "hif_plant_pkg__hif_plant__pv_factors__construction_factor",
+      "field_name": "construction_factor",
+      "python_type": "float"
+    },
+    {
       "channel_name": "hif_plant_pkg__hif_plant__recirc_calc__f_recirc",
       "field_name": "root",
       "python_type": "float"
@@ -375,17 +385,17 @@
     },
     {
       "default_value": 5.0,
-      "entry_type": "library_default",
-      "param_group": "ife_lcoe_params",
+      "entry_type": "design_attribute",
+      "param_group": "ife_plant_params",
       "python_type": "float",
-      "qualified_name": "hif_plant_pkg__hif_plant__lcoe_calc__construction_years"
+      "qualified_name": "hif_plant_pkg__hif_plant__construction_duration"
     },
     {
       "default_value": 40.0,
-      "entry_type": "library_default",
-      "param_group": "ife_lcoe_params",
+      "entry_type": "design_attribute",
+      "param_group": "ife_plant_params",
       "python_type": "float",
-      "qualified_name": "hif_plant_pkg__hif_plant__lcoe_calc__operational_years"
+      "qualified_name": "hif_plant_pkg__hif_plant__operational_duration"
     },
     {
       "default_value": 10.0,
@@ -395,5 +405,5 @@
       "qualified_name": "hif_plant_pkg__hif_plant__viability__threshold"
     }
   ],
-  "semantic_fingerprint": "8b7a76a631e6e55dbd45cf617a68fae87def408e4f8494015e40c0c8aac585dd"
+  "semantic_fingerprint": "8596c899df17f763bbce6eb50a18c1b5bca83080c40233e40bc01a7bb1aa1888"
 }

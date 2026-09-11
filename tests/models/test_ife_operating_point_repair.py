@@ -15,7 +15,7 @@ def test_library_output_contract_and_strict_generation():
         assert f'out attribute {name} : Real' in lcoe
     assert 'out attribute lcoe :' not in lcoe
     assert 'out attribute generating : Boolean' not in lcoe
-    assert len(re.findall(r'in attribute \w+ : Real;', lcoe.split("calc def 'Generating")[0])) == 14
+    assert len(re.findall(r'in attribute \w+ : Real;', lcoe.split("calc def 'IFE Present")[0])) == 16
     cycle = (ROOT / 'models/library/analyses/fusion_cycle.sysml').read_text()
     assert "constraint def 'Positive Net Generation'" in cycle
     assert 'net_power > 0.0' in cycle

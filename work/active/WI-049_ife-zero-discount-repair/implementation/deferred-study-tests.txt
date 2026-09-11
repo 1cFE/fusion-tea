@@ -1,0 +1,362 @@
+FF.....FFFFFFFF..                                                        [100%]
+=================================== FAILURES ===================================
+_____________________ test_stored_outputs_and_eligibility ______________________
+
+executed = ([CaseView(candidate_id='ife-native-validation:c0000', state='completed', inputs={}, outputs={'hif_plant_pkg__hif_plan...__driver__efficiency': 0.1, 'hif_plant_pkg__hif_plant__frequency': 5.0, 'hif_plant_pkg__hif_plant__gain': 100.0, ...}])
+
+    def test_stored_outputs_and_eligibility(executed):
+        cases, _, _, points = executed
+        by_point = {tuple(sorted(c.inputs.items())): c for c in cases}
+        for point in points:
+            case = by_point[tuple(sorted(point.items()))]
+            assert_source_outputs(case.outputs, {k.removeprefix(P): v for k, v in point.items()})
+>           assert set(case.outputs) == set(route.CHANNELS.values())
+E           AssertionError: assert {'hif_plant_p...nt_cost', ...} == {'hif_plant_p...nt_cost', ...}
+E
+E             Extra items in the left set:
+E             'hif_plant_pkg__hif_plant__pv_factors__construction_factor'
+E             'hif_plant_pkg__hif_plant__pv_factors__operation_factor'
+E             Use -v to get more diff
+
+tests/study/test_ife_native_route.py:32: AssertionError
+__________ test_generic_verifier_compares_all_channels_and_predicates __________
+
+executed = ([CaseView(candidate_id='ife-native-validation:c0000', state='completed', inputs={}, outputs={'hif_plant_pkg__hif_plan...__driver__efficiency': 0.1, 'hif_plant_pkg__hif_plant__frequency': 5.0, 'hif_plant_pkg__hif_plant__gain': 100.0, ...}])
+
+    def test_generic_verifier_compares_all_channels_and_predicates(executed):
+        _, db, identity, _ = executed
+>       summary = verify.build_summary(route.PACKAGE_DIR, route.MANIFEST_PATH, identity, [db], 100, None, [])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_ife_native_route.py:45:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts/study/verify.py:481: in build_summary
+    common.assert_tree_clean(package_root)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tree = PosixPath('/home/reid/1cfe/fusion-tea-codex-test/exploration/ife_e2e/generated')
+
+    def assert_tree_clean(tree: Path | str) -> None:
+        """The gate: a package tree must be byte-untouched. Names every offending file."""
+        dirty = git_status_porcelain(tree)
+        if dirty:
+>           raise ToolError(
+                f"package tree is not git-clean: {manifest_mod.repo_relative_posix(tree)}\n{dirty}"
+            )
+E           scripts.study.common.ToolError: package tree is not git-clean: exploration/ife_e2e/generated
+E           M exploration/ife_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E            M exploration/ife_e2e/generated/__init__.py
+E            M exploration/ife_e2e/generated/contracts/generation_manifest.json
+E            M exploration/ife_e2e/generated/contracts/model_contract.json
+E            M exploration/ife_e2e/generated/contracts/package_contract.json
+E            M exploration/ife_e2e/generated/handwritten/fusion_cycle/recirculating_power_fraction_impl.py
+E            M exploration/ife_e2e/generated/handwritten/hif_economics/meier_coe_impl.py
+E            M exploration/ife_e2e/generated/handwritten/hif_economics/meier_reactor_cost_impl.py
+E            M exploration/ife_e2e/generated/handwritten/hif_economics/meier_total_capital_cost_impl.py
+E            M exploration/ife_e2e/generated/handwritten/ife_lcoe/ife_lcoe_impl.py
+E            D exploration/ife_e2e/generated/inputs/ife_lcoe_params.json
+E            M exploration/ife_e2e/generated/inputs/ife_plant_params.json
+E            M exploration/ife_e2e/generated/modules/ife_lcoe/generating_electricity_price.py
+E            M exploration/ife_e2e/generated/modules/ife_lcoe/ife_lcoe.py
+E            M exploration/ife_e2e/generated/pipelines/pipeline.yaml
+E            M exploration/ife_e2e/generated/schemas/generating_electricity_price_output.py
+E            M exploration/ife_e2e/generated/schemas/ife_lcoe_output.py
+E            D exploration/ife_e2e/generated/schemas/ife_lcoe_params.py
+E            M exploration/ife_e2e/generated/schemas/ife_plant_params.py
+E            M exploration/ife_e2e/generated/tests/test_implementations_runnable.py
+E           ?? exploration/ife_e2e/generated/handwritten/ife_lcoe/ife_present_value_factors_impl.py
+E           ?? exploration/ife_e2e/generated/modules/ife_lcoe/ife_present_value_factors.py
+E           ?? exploration/ife_e2e/generated/schemas/ife_present_value_factors_output.py
+
+scripts/study/common.py:81: ToolError
+__________ test_oracle_does_not_truncate_years[construction_years-0] ___________
+
+name = 'construction_years', years = 0
+
+    @pytest.mark.parametrize("years", [0, -1, 1.5])
+    @pytest.mark.parametrize("name", ["construction_years", "operational_years"])
+    def test_oracle_does_not_truncate_years(name, years):
+        with pytest.raises(oracle.OracleSeamError, match="positive integral"):
+>           oracle.evaluate({P + "lcoe_calc__" + name: years})
+
+tests/study/test_ife_native_route.py:83:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+point = {'hif_plant_pkg__hif_plant__lcoe_calc__construction_years': 0}
+
+    def evaluate(point):
+        """Map qualified inputs to independent annual cash flows and qualified outputs."""
+        unknown = set(point) - ENTRY_KEYS.keys()
+        if unknown:
+>           raise OracleSeamError(f"undeclared entry keys: {sorted(unknown)}")
+E           exploration.ife_e2e.studies.oracle_entry.OracleSeamError: undeclared entry keys: ['hif_plant_pkg__hif_plant__lcoe_calc__construction_years']
+
+exploration/ife_e2e/studies/oracle_entry.py:16: OracleSeamError
+
+During handling of the above exception, another exception occurred:
+
+name = 'construction_years', years = 0
+
+    @pytest.mark.parametrize("years", [0, -1, 1.5])
+    @pytest.mark.parametrize("name", ["construction_years", "operational_years"])
+    def test_oracle_does_not_truncate_years(name, years):
+>       with pytest.raises(oracle.OracleSeamError, match="positive integral"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'positive integral'
+E         Actual message: "undeclared entry keys: ['hif_plant_pkg__hif_plant__lcoe_calc__construction_years']"
+
+tests/study/test_ife_native_route.py:82: AssertionError
+__________ test_oracle_does_not_truncate_years[construction_years--1] __________
+
+name = 'construction_years', years = -1
+
+    @pytest.mark.parametrize("years", [0, -1, 1.5])
+    @pytest.mark.parametrize("name", ["construction_years", "operational_years"])
+    def test_oracle_does_not_truncate_years(name, years):
+        with pytest.raises(oracle.OracleSeamError, match="positive integral"):
+>           oracle.evaluate({P + "lcoe_calc__" + name: years})
+
+tests/study/test_ife_native_route.py:83:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+point = {'hif_plant_pkg__hif_plant__lcoe_calc__construction_years': -1}
+
+    def evaluate(point):
+        """Map qualified inputs to independent annual cash flows and qualified outputs."""
+        unknown = set(point) - ENTRY_KEYS.keys()
+        if unknown:
+>           raise OracleSeamError(f"undeclared entry keys: {sorted(unknown)}")
+E           exploration.ife_e2e.studies.oracle_entry.OracleSeamError: undeclared entry keys: ['hif_plant_pkg__hif_plant__lcoe_calc__construction_years']
+
+exploration/ife_e2e/studies/oracle_entry.py:16: OracleSeamError
+
+During handling of the above exception, another exception occurred:
+
+name = 'construction_years', years = -1
+
+    @pytest.mark.parametrize("years", [0, -1, 1.5])
+    @pytest.mark.parametrize("name", ["construction_years", "operational_years"])
+    def test_oracle_does_not_truncate_years(name, years):
+>       with pytest.raises(oracle.OracleSeamError, match="positive integral"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'positive integral'
+E         Actual message: "undeclared entry keys: ['hif_plant_pkg__hif_plant__lcoe_calc__construction_years']"
+
+tests/study/test_ife_native_route.py:82: AssertionError
+_________ test_oracle_does_not_truncate_years[construction_years-1.5] __________
+
+name = 'construction_years', years = 1.5
+
+    @pytest.mark.parametrize("years", [0, -1, 1.5])
+    @pytest.mark.parametrize("name", ["construction_years", "operational_years"])
+    def test_oracle_does_not_truncate_years(name, years):
+        with pytest.raises(oracle.OracleSeamError, match="positive integral"):
+>           oracle.evaluate({P + "lcoe_calc__" + name: years})
+
+tests/study/test_ife_native_route.py:83:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+point = {'hif_plant_pkg__hif_plant__lcoe_calc__construction_years': 1.5}
+
+    def evaluate(point):
+        """Map qualified inputs to independent annual cash flows and qualified outputs."""
+        unknown = set(point) - ENTRY_KEYS.keys()
+        if unknown:
+>           raise OracleSeamError(f"undeclared entry keys: {sorted(unknown)}")
+E           exploration.ife_e2e.studies.oracle_entry.OracleSeamError: undeclared entry keys: ['hif_plant_pkg__hif_plant__lcoe_calc__construction_years']
+
+exploration/ife_e2e/studies/oracle_entry.py:16: OracleSeamError
+
+During handling of the above exception, another exception occurred:
+
+name = 'construction_years', years = 1.5
+
+    @pytest.mark.parametrize("years", [0, -1, 1.5])
+    @pytest.mark.parametrize("name", ["construction_years", "operational_years"])
+    def test_oracle_does_not_truncate_years(name, years):
+>       with pytest.raises(oracle.OracleSeamError, match="positive integral"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'positive integral'
+E         Actual message: "undeclared entry keys: ['hif_plant_pkg__hif_plant__lcoe_calc__construction_years']"
+
+tests/study/test_ife_native_route.py:82: AssertionError
+___________ test_oracle_does_not_truncate_years[operational_years-0] ___________
+
+name = 'operational_years', years = 0
+
+    @pytest.mark.parametrize("years", [0, -1, 1.5])
+    @pytest.mark.parametrize("name", ["construction_years", "operational_years"])
+    def test_oracle_does_not_truncate_years(name, years):
+        with pytest.raises(oracle.OracleSeamError, match="positive integral"):
+>           oracle.evaluate({P + "lcoe_calc__" + name: years})
+
+tests/study/test_ife_native_route.py:83:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+point = {'hif_plant_pkg__hif_plant__lcoe_calc__operational_years': 0}
+
+    def evaluate(point):
+        """Map qualified inputs to independent annual cash flows and qualified outputs."""
+        unknown = set(point) - ENTRY_KEYS.keys()
+        if unknown:
+>           raise OracleSeamError(f"undeclared entry keys: {sorted(unknown)}")
+E           exploration.ife_e2e.studies.oracle_entry.OracleSeamError: undeclared entry keys: ['hif_plant_pkg__hif_plant__lcoe_calc__operational_years']
+
+exploration/ife_e2e/studies/oracle_entry.py:16: OracleSeamError
+
+During handling of the above exception, another exception occurred:
+
+name = 'operational_years', years = 0
+
+    @pytest.mark.parametrize("years", [0, -1, 1.5])
+    @pytest.mark.parametrize("name", ["construction_years", "operational_years"])
+    def test_oracle_does_not_truncate_years(name, years):
+>       with pytest.raises(oracle.OracleSeamError, match="positive integral"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'positive integral'
+E         Actual message: "undeclared entry keys: ['hif_plant_pkg__hif_plant__lcoe_calc__operational_years']"
+
+tests/study/test_ife_native_route.py:82: AssertionError
+__________ test_oracle_does_not_truncate_years[operational_years--1] ___________
+
+name = 'operational_years', years = -1
+
+    @pytest.mark.parametrize("years", [0, -1, 1.5])
+    @pytest.mark.parametrize("name", ["construction_years", "operational_years"])
+    def test_oracle_does_not_truncate_years(name, years):
+        with pytest.raises(oracle.OracleSeamError, match="positive integral"):
+>           oracle.evaluate({P + "lcoe_calc__" + name: years})
+
+tests/study/test_ife_native_route.py:83:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+point = {'hif_plant_pkg__hif_plant__lcoe_calc__operational_years': -1}
+
+    def evaluate(point):
+        """Map qualified inputs to independent annual cash flows and qualified outputs."""
+        unknown = set(point) - ENTRY_KEYS.keys()
+        if unknown:
+>           raise OracleSeamError(f"undeclared entry keys: {sorted(unknown)}")
+E           exploration.ife_e2e.studies.oracle_entry.OracleSeamError: undeclared entry keys: ['hif_plant_pkg__hif_plant__lcoe_calc__operational_years']
+
+exploration/ife_e2e/studies/oracle_entry.py:16: OracleSeamError
+
+During handling of the above exception, another exception occurred:
+
+name = 'operational_years', years = -1
+
+    @pytest.mark.parametrize("years", [0, -1, 1.5])
+    @pytest.mark.parametrize("name", ["construction_years", "operational_years"])
+    def test_oracle_does_not_truncate_years(name, years):
+>       with pytest.raises(oracle.OracleSeamError, match="positive integral"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'positive integral'
+E         Actual message: "undeclared entry keys: ['hif_plant_pkg__hif_plant__lcoe_calc__operational_years']"
+
+tests/study/test_ife_native_route.py:82: AssertionError
+__________ test_oracle_does_not_truncate_years[operational_years-1.5] __________
+
+name = 'operational_years', years = 1.5
+
+    @pytest.mark.parametrize("years", [0, -1, 1.5])
+    @pytest.mark.parametrize("name", ["construction_years", "operational_years"])
+    def test_oracle_does_not_truncate_years(name, years):
+        with pytest.raises(oracle.OracleSeamError, match="positive integral"):
+>           oracle.evaluate({P + "lcoe_calc__" + name: years})
+
+tests/study/test_ife_native_route.py:83:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+point = {'hif_plant_pkg__hif_plant__lcoe_calc__operational_years': 1.5}
+
+    def evaluate(point):
+        """Map qualified inputs to independent annual cash flows and qualified outputs."""
+        unknown = set(point) - ENTRY_KEYS.keys()
+        if unknown:
+>           raise OracleSeamError(f"undeclared entry keys: {sorted(unknown)}")
+E           exploration.ife_e2e.studies.oracle_entry.OracleSeamError: undeclared entry keys: ['hif_plant_pkg__hif_plant__lcoe_calc__operational_years']
+
+exploration/ife_e2e/studies/oracle_entry.py:16: OracleSeamError
+
+During handling of the above exception, another exception occurred:
+
+name = 'operational_years', years = 1.5
+
+    @pytest.mark.parametrize("years", [0, -1, 1.5])
+    @pytest.mark.parametrize("name", ["construction_years", "operational_years"])
+    def test_oracle_does_not_truncate_years(name, years):
+>       with pytest.raises(oracle.OracleSeamError, match="positive integral"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'positive integral'
+E         Actual message: "undeclared entry keys: ['hif_plant_pkg__hif_plant__lcoe_calc__operational_years']"
+
+tests/study/test_ife_native_route.py:82: AssertionError
+_____________________ test_metadata_and_full_input_mapping _____________________
+
+    def test_metadata_and_full_input_mapping():
+        loaded = manifest.load(route.MANIFEST_PATH)
+        contract = json.loads((route.PACKAGE_DIR / "contracts/model_contract.json").read_text())
+        assert set(oracle.ENTRY_KEYS) == {p["qualified_name"] for p in contract["parameters"]}
+        assert len(loaded.data["objective_catalog"]) == 30
+        assert len(oracle.operand_bindings()) == 2
+>       assert_source_outputs(oracle.evaluate(loaded.data["baseline"]["point"]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_ife_native_route.py:92:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+point = {'hif_plant_pkg__hif_plant__availability': 0.9, 'hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple': 1.15, 'hif_plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...}
+
+    def evaluate(point):
+        """Map qualified inputs to independent annual cash flows and qualified outputs."""
+        unknown = set(point) - ENTRY_KEYS.keys()
+        if unknown:
+>           raise OracleSeamError(f"undeclared entry keys: {sorted(unknown)}")
+E           exploration.ife_e2e.studies.oracle_entry.OracleSeamError: undeclared entry keys: ['hif_plant_pkg__hif_plant__lcoe_calc__construction_years', 'hif_plant_pkg__hif_plant__lcoe_calc__operational_years']
+
+exploration/ife_e2e/studies/oracle_entry.py:16: OracleSeamError
+_______________ test_baseline_documents_use_the_stored_identity ________________
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12199/test_baseline_documents_use_th0')
+
+    def test_baseline_documents_use_the_stored_identity(tmp_path):
+>       paths = route.execute_baseline(tmp_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_ife_native_route.py:96:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+out_dir = PosixPath('/tmp/pytest-of-reid/pytest-12199/test_baseline_documents_use_th0')
+
+    def execute_baseline(
+        out_dir: Path,
+        *,
+        package_dir: Path = PACKAGE_DIR,
+        manifest_path: Path = MANIFEST_PATH,
+    ) -> dict[str, Path]:
+        """Load the route and execute the manifest's pinned baseline point.
+
+        Deposits `package_identity.json` and `baseline_result.json` into ``out_dir``: the
+        runbook's route-preparation step (step 5), and the only producer of the two
+        documents preflight's identity and baseline gates consume.
+        """
+        out_dir = Path(out_dir)
+        point = _baseline_point(manifest_path)
+        cases, db = run_points("ife-baseline-point-v1", [point], out_dir / "_work", package_dir)
+>       case = _completed(cases, "baseline point")[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+exploration/ife_e2e/studies/study_route.py:300: IndexError
+=========================== short test summary info ============================
+FAILED tests/study/test_ife_native_route.py::test_stored_outputs_and_eligibility
+FAILED tests/study/test_ife_native_route.py::test_generic_verifier_compares_all_channels_and_predicates
+FAILED tests/study/test_ife_native_route.py::test_oracle_does_not_truncate_years[construction_years-0]
+FAILED tests/study/test_ife_native_route.py::test_oracle_does_not_truncate_years[construction_years--1]
+FAILED tests/study/test_ife_native_route.py::test_oracle_does_not_truncate_years[construction_years-1.5]
+FAILED tests/study/test_ife_native_route.py::test_oracle_does_not_truncate_years[operational_years-0]
+FAILED tests/study/test_ife_native_route.py::test_oracle_does_not_truncate_years[operational_years--1]
+FAILED tests/study/test_ife_native_route.py::test_oracle_does_not_truncate_years[operational_years-1.5]
+FAILED tests/study/test_ife_native_route.py::test_metadata_and_full_input_mapping
+FAILED tests/study/test_ife_native_route.py::test_baseline_documents_use_the_stored_identity
+10 failed, 7 passed in 0.76s

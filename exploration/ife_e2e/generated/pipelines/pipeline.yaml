@@ -14,7 +14,6 @@ modules:
     inputs:
       hif_driver_params: HifDriverParams ../inputs/hif_driver_params.json
       hif_plant_params: HifPlantParams ../inputs/hif_plant_params.json
-      ife_lcoe_params: IfeLcoeParams ../inputs/ife_lcoe_params.json
       ife_plant_params: IfePlantParams ../inputs/ife_plant_params.json
 
 
@@ -31,6 +30,17 @@ modules:
       bank_energy_joules: float hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules
       cost_billions: float hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions
 
+  # ife_lcoe.IFE_Present_Value_FactorsModule
+  hif_plant_pkg__hif_plant__pv_factors:
+    module_type: ife_lcoe.IFE_Present_Value_FactorsModule
+    inputs:
+      construction_years_in: float ife_plant_params.hif_plant_pkg__hif_plant__construction_duration
+      discount_rate_in: float hif_plant_params.hif_plant_pkg__hif_plant__discount_rate
+      operational_years_in: float ife_plant_params.hif_plant_pkg__hif_plant__operational_duration
+    outputs:
+      operation_factor: float hif_plant_pkg__hif_plant__pv_factors__operation_factor
+      construction_factor: float hif_plant_pkg__hif_plant__pv_factors__construction_factor
+
   # fusion_cycle.Recirculating_Power_FractionModule
   hif_plant_pkg__hif_plant__recirc_calc:
     module_type: fusion_cycle.Recirculating_Power_FractionModule
@@ -46,19 +56,21 @@ modules:
   hif_plant_pkg__hif_plant__lcoe_calc:
     module_type: ife_lcoe.IFE_LCOEModule
     inputs:
+      pvf_construction: float hif_plant_pkg__hif_plant__pv_factors__construction_factor
       thermal_efficiency_in: float hif_plant_params.hif_plant_pkg__hif_plant__thermal_efficiency
       discount_rate_in: float hif_plant_params.hif_plant_pkg__hif_plant__discount_rate
       driver_lifetime_shots: float hif_driver_params.hif_plant_pkg__hif_plant__driver__lifetime_shots
-      operational_years: float ife_lcoe_params.hif_plant_pkg__hif_plant__lcoe_calc__operational_years
+      construction_years: float ife_plant_params.hif_plant_pkg__hif_plant__construction_duration
       availability_in: float hif_plant_params.hif_plant_pkg__hif_plant__availability
       driver_cost_constant: float hif_plant_pkg__hif_plant__driver__meier_cost__gamma
       om_cost_constant_in: float hif_plant_params.hif_plant_pkg__hif_plant__om_cost_constant
       driver_efficiency: float hif_driver_params.hif_plant_pkg__hif_plant__driver__efficiency
       plant_cost_constant_in: float hif_plant_params.hif_plant_pkg__hif_plant__plant_cost_constant
+      operational_years: float ife_plant_params.hif_plant_pkg__hif_plant__operational_duration
       yield_cost_constant: float hif_plant_params.hif_plant_pkg__hif_plant__chamber__yield_cost_constant
       blanket_energy_multiple: float hif_plant_params.hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple
       target_cost_constant: float hif_plant_params.hif_plant_pkg__hif_plant__target_factory__cost_per_target
-      construction_years: float ife_lcoe_params.hif_plant_pkg__hif_plant__lcoe_calc__construction_years
+      pvf_operation: float hif_plant_pkg__hif_plant__pv_factors__operation_factor
       gain_in: float hif_plant_params.hif_plant_pkg__hif_plant__gain
       driver_energy: float hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules
       frequency_in: float hif_plant_params.hif_plant_pkg__hif_plant__frequency
@@ -169,6 +181,8 @@ modules:
       hif_plant_pkg__hif_plant__driver__meier_cost__gamma: float hif_plant__driver__cost_per_joule.json
       hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules: float hif_plant__driver__energy.json
       hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions: float hif_plant__driver__driver_cost_billions.json
+      hif_plant_pkg__hif_plant__pv_factors__operation_factor: float hif_plant_pkg__hif_plant__pv_factors__operation_factor.json
+      hif_plant_pkg__hif_plant__pv_factors__construction_factor: float hif_plant_pkg__hif_plant__pv_factors__construction_factor.json
       hif_plant_pkg__hif_plant__recirc_calc__f_recirc: RootModel[float] hif_plant__recirculating_fraction.json
       hif_plant_pkg__hif_plant__lcoe_calc__thermal_power: float hif_plant__thermal_power.json
       hif_plant_pkg__hif_plant__lcoe_calc__fusion_energy_per_shot: float hif_plant_pkg__hif_plant__lcoe_calc__fusion_energy_per_shot.json

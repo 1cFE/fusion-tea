@@ -18,6 +18,7 @@ b = 0.49 (power scaling exponent).
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Ref**: Eq. 3 (lines 119-137)
 *Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$.
+*Last Updated**: 2026-09-11
 """
 
 AUTO_IMPLEMENTED = True
@@ -38,6 +39,7 @@ b = 0.49 (power scaling exponent).
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Ref**: Eq. 3 (lines 119-137)
 *Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$.
+*Last Updated**: 2026-09-11
 
 SysML Source: root-0/analyses/hif_economics.sysml:45
 
@@ -55,6 +57,7 @@ b = 0.49 (power scaling exponent).
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Ref**: Eq. 3 (lines 119-137)
 *Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$.
+*Last Updated**: 2026-09-11
 
 Args:
     inputs: Input parameters validated against Meier_Reactor_CostInput schema

@@ -16,7 +16,7 @@ arithmetic renderer does not support this conditional. No finance is duplicated.
 knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Reference**: Hawker Eq. 2.1 and Eqs. 2.12-2.16; Meier Eq. 1
 *Basis**: [DERIVED] A generating price requires strictly positive net output.
-*Last Updated**: 2026-09-10
+*Last Updated**: 2026-09-11
 
 Inputs:
     - net_power: net_power parameter
@@ -27,9 +27,9 @@ Outputs:
     - price: price result
     - generating: generating result
 
-SysML Source: root-0/analyses/ife_lcoe.sysml:141
+SysML Source: root-0/analyses/ife_lcoe.sysml:150
 
-SysML Source: root-0/analyses/ife_lcoe.sysml:141
+SysML Source: root-0/analyses/ife_lcoe.sysml:150
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/ife_lcoe/generating_electricity_price_impl.py
@@ -72,7 +72,7 @@ arithmetic renderer does not support this conditional. No finance is duplicated.
 knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Reference**: Hawker Eq. 2.1 and Eqs. 2.12-2.16; Meier Eq. 1
 *Basis**: [DERIVED] A generating price requires strictly positive net output.
-*Last Updated**: 2026-09-10
+*Last Updated**: 2026-09-11
 
 Inputs:
     - net_power: net_power parameter
@@ -83,9 +83,9 @@ Outputs:
     - price: price result
     - generating: generating result
 
-SysML Source: root-0/analyses/ife_lcoe.sysml:141
+SysML Source: root-0/analyses/ife_lcoe.sysml:150
 
-    SysML Source: root-0/analyses/ife_lcoe.sysml:141
+    SysML Source: root-0/analyses/ife_lcoe.sysml:150
 
     Calculation Specification:
         See documentation:
@@ -103,7 +103,7 @@ arithmetic renderer does not support this conditional. No finance is duplicated.
 knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Reference**: Hawker Eq. 2.1 and Eqs. 2.12-2.16; Meier Eq. 1
 *Basis**: [DERIVED] A generating price requires strictly positive net output.
-*Last Updated**: 2026-09-10
+*Last Updated**: 2026-09-11
 
     IMPLEMENTATION: See ife_tea.handwritten.ife_lcoe.generating_electricity_price_impl
     for manual implementation.

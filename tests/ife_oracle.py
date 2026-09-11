@@ -16,7 +16,7 @@ BASE = {
     'reactor_units': 1.0, 'target_factory_direct_cost_billions': 0.1,
     'discount_rate': 0.08, 'plant_cost_constant': 2000.0, 'om_cost_constant': 65.0,
     'target_factory__cost_per_target': 10.0, 'chamber__yield_cost_constant': 5.0e6,
-    'lcoe_calc__construction_years': 5.0, 'lcoe_calc__operational_years': 40.0,
+    'construction_duration': 5.0, 'operational_duration': 40.0,
 }
 MUTATIONS = {
     'baseline': {}, 'beam10': {'driver__beam_energy_mj': 10.0},
@@ -59,8 +59,10 @@ def source_oracle(overrides=None):
     capex = v['plant_cost_constant'] * net / 1000 + v['chamber__yield_cost_constant'] * yield_j / 1e9 + driver_dollars
     opex = v['target_factory__cost_per_target'] * shots + v['om_cost_constant'] * net / 1000 + replacement
     annual_mwh = net / 1e6 * 8760 * v['availability']
-    construction = int(v['lcoe_calc__construction_years'])
-    operation = int(v['lcoe_calc__operational_years'])
+    construction = int(v['construction_duration'])
+    operation = int(v['operational_duration'])
+    assert construction == v['construction_duration'] and operation == v['operational_duration'], (
+        'source_oracle is the integer dated-stream reference; use decimal_present_value_reference for Real durations')
     # Explicit cash flows by calendar year; the production core uses geometric-series factors.
     cashflows = [(year, capex / construction, 0.0) for year in range(1, construction + 1)]
     cashflows += [(year, opex, annual_mwh) for year in range(construction + 1, construction + operation + 1)]
@@ -82,6 +84,8 @@ def source_oracle(overrides=None):
         'meier_capital_calc__total_capital_billions':total, 'meier_coe_calc__annualized_cost':annualized,
         'meier_coe_calc__energy_denominator':meier_denominator,
         'recirc_calc__f_recirc':driver / gross,
+        'pv_factors__construction_factor':sum((1 + v['discount_rate']) ** -year for year in range(1, construction + 1)),
+        'pv_factors__operation_factor':sum((1 + v['discount_rate']) ** -year for year in range(construction + 1, construction + operation + 1)),
         'hawker_price__price':discounted_cost / discounted_energy if net > 0 else 0,
         'meier_price__price':annualized / meier_denominator if net > 0 else 0,
         'hawker_price__generating':float(net > 0), 'meier_price__generating':float(net > 0),
@@ -95,3 +99,57 @@ def assert_source_outputs(actual, overrides=None):
     for name, value in expected.items():
         absolute_watts = 1e-6 if name.endswith(("fusion_power", "thermal_power", "gross_electric_power", "driver_electric_power", "other_parasitic_power", "net_electric_power")) else 0.0
         assert isclose(actual[name], value, rel_tol=1e-9, abs_tol=absolute_watts), (name, actual[name], value)
+
+
+def decimal_present_value_reference(overrides=None):
+    """80-digit independent annual reconstruction; integer dates or fractional algebra.
+
+    Integer factors explicitly sum dated payments. Fractional factors evaluate
+    the inherited difference-of-powers extension, never the production algorithm.
+    Returned Decimal values retain the full reference precision for comparisons.
+    """
+    from decimal import Decimal as D, localcontext
+
+    with localcontext() as context:
+        context.prec = 80
+        v = {key: D(str(value)) for key, value in (BASE | (overrides or {})).items()}
+        beam = v['driver__beam_energy_mj'] * D('1e6')
+        bank = beam / v['driver__efficiency']
+        frequency = v['frequency']
+        fusion_per_shot = beam * v['gain']
+        net = (fusion_per_shot * frequency * v['chamber__blanket_energy_multiple']
+               * v['thermal_efficiency'] - 2 * bank * frequency)
+        # Hawker uses 365.25 days for shots and 8760 hours for annual energy.
+        shots = D(31557600) * frequency * v['availability']
+        procurement = ((D('.32') + D('.088') * beam / D('1e6'))
+                       * (D('1.25') + D('.05') * v['driver__num_chambers'])
+                       * (1 + D('.0088') * (frequency - 5)) * D('1e9'))
+        capital = (v['plant_cost_constant'] * net / 1000
+                   + v['chamber__yield_cost_constant'] * fusion_per_shot / D('1e9')
+                   + procurement)
+        operating = (v['target_factory__cost_per_target'] * shots
+                     + v['om_cost_constant'] * net / 1000
+                     + procurement * shots / v['driver__lifetime_shots'])
+        annual_mwh = net / D('1e6') * 8760 * v['availability']
+        construction = v['construction_duration']
+        operation = v['operational_duration']
+        rate = v['discount_rate']
+        integer = construction == int(construction) and operation == int(operation)
+        if integer:
+            construction_factor = sum((1 + rate) ** -year
+                                      for year in range(1, int(construction) + 1))
+            operation_factor = sum((1 + rate) ** -year for year in range(
+                int(construction) + 1, int(construction + operation) + 1))
+        elif rate == 0:
+            construction_factor, operation_factor = construction, operation
+        else:
+            construction_factor = (1 - (1 + rate) ** -construction) / rate
+            operation_factor = ((1 + rate) ** -construction
+                                - (1 + rate) ** (-construction - operation)) / rate
+        cost = capital / construction * construction_factor + operating * operation_factor
+        energy = annual_mwh * operation_factor
+        return {
+            'discounted_cost': cost, 'discounted_energy': energy,
+            'price': cost / energy if net > 0 else D(0),
+            'construction_factor': construction_factor, 'operation_factor': operation_factor,
+        }, 'dated_integer_sums' if integer else 'fractional_power_extension'

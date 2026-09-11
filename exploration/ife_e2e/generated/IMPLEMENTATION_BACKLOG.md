@@ -9,7 +9,7 @@ Complete all stages in order for a production-ready system.
 
 **Objective**: Implement each calculation definition in its handwritten file.
 
-**Total**: 2 functions to implement
+**Total**: 3 functions to implement
 
 **Instructions for each function**:
 1. Open the SysML source file at the line number shown below
@@ -26,8 +26,9 @@ Complete all stages in order for a production-ready system.
 
 | Status | Module | Function | SysML Source | Complexity |
 |--------|--------|----------|--------------|------------|
-| [ ] | Generating_Electricity_Price | `run_generating_electricity_price` | `root-0/analyses/ife_lcoe.sysml:141` | High |
-| [ ] | Generating_Electricity_Price | `run_generating_electricity_price` | `root-0/analyses/ife_lcoe.sysml:141` | High |
+| [ ] | IFE_Present_Value_Factors | `run_ife_present_value_factors` | `root-0/analyses/ife_lcoe.sysml:126` | High |
+| [ ] | Generating_Electricity_Price | `run_generating_electricity_price` | `root-0/analyses/ife_lcoe.sysml:150` | High |
+| [ ] | Generating_Electricity_Price | `run_generating_electricity_price` | `root-0/analyses/ife_lcoe.sysml:150` | High |
 
 ---
 
@@ -52,7 +53,7 @@ pytest tests/test_implementations_runnable.py -v
 All tests should pass (or pytest.skip for NotImplementedError stubs)
 
 **Test Coverage**:
-- 2 implementation functions
+- 3 implementation functions
 - Each function tested for: imports, signature, return type
 - Tests tolerate NotImplementedError (pass before implementation)
 - Tests verify return types (pass after implementation)
@@ -87,7 +88,7 @@ All tests should pass (or pytest.skip for NotImplementedError stubs)
 ## Completion Criteria
 
 The implementation is complete when:
-- Stage 1: All 2 functions implemented
+- Stage 1: All 3 functions implemented
 - Stage 2: All validations pass
 - Stage 3: Integration tests pass
 

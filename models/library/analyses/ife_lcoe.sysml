@@ -12,9 +12,9 @@ package ife_lcoe {
         during operation. Both cost and energy streams are discounted
         to present value.
 
-        Closed-form present value factors replace year-by-year iteration:
-          PVF_con = (1 - (1+d)^(-Yc)) / d
-          PVF_op  = (1+d)^(-Yc) * (1 - (1+d)^(-N_op)) / d
+        IFE Present Value Factors supplies stable geometric factors, including
+        the exact-zero limit. This calculation multiplies each annual stream
+        by its supplied factor before the guarded price division.
 
         Net electric power per Hawker Eq. 2.12-2.16:
           P_e = E_d * f * (mu_th * E_b * G * mu_d - 2)
@@ -26,8 +26,8 @@ package ife_lcoe {
         **Basis**: Hawker 2020 DCF LCOE model with 14 technology-agnostic parameters;
             closed-form PVF replaces year-by-year iteration per DD-3.
             Final guarded division is delegated to Generating Electricity Price.
-        **Reference**: Hawker Eqs. 2.1-2.16
-        **Last Updated**: 2026-09-10
+        **Reference**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md:141-148 and following Eqs. 2.2-2.16
+        **Last Updated**: 2026-09-11
         */
 
         // === The 14 Hawker parameters ===
@@ -49,6 +49,9 @@ package ife_lcoe {
         // === Fixed model constants ===
         in attribute construction_years : Real default 5.0;
         in attribute operational_years : Real default 40.0;
+
+        in attribute pvf_construction : Real;
+        in attribute pvf_operation : Real;
 
         // === Intermediate: physics ===
 
@@ -115,30 +118,36 @@ package ife_lcoe {
 
         // === Intermediate: present value factors ===
 
-        // Capital recovery factor for construction period
-        // PVF_con = (1 - (1+d)^(-Yc)) / d
-        attribute discount_factor_con : Real =
-            (1.0 + discount_rate_in) ** construction_years;
-
-        attribute pvf_construction : Real =
-            (1.0 - 1.0 / discount_factor_con) / discount_rate_in;
-
-        // Present value factor for operation period
-        // PVF_op = (1+d)^(-Yc) * (1 - (1+d)^(-N_op)) / d
-        attribute discount_factor_op : Real =
-            (1.0 + discount_rate_in) ** operational_years;
-
-        attribute pvf_operation : Real =
-            (1.0 / discount_factor_con)
-            * (1.0 - 1.0 / discount_factor_op)
-            / discount_rate_in;
-
         // Hawker Eq. 2.1 numerator [discounted dollars] and denominator [discounted MWh].
         out attribute discounted_cost : Real = annual_capital_cost * pvf_construction + annual_operating_cost * pvf_operation;
         out attribute discounted_energy : Real = annual_energy * pvf_operation;
     }
 
-    calc def 'Generating Electricity Price' {
+    calc def 'IFE Present Value Factors' {
+        doc /*
+        Continuous closed-form factors for existing Hawker streams.
+        Integer construction payments occur in years 1 through Yc; operation
+        payments and energy occur in years Yc+1 through Yc+Nop. Real durations
+        retain the same algebraic extension, with exact-zero factors Yc and Nop.
+        A(n,d) = -expm1(-n*log1p(d))/d; A(n,0)=n.
+        Construction = A(Yc,d); operation = exp(-Yc*log1p(d))*A(Nop,d).
+        Rate dimensionless; durations and factors in years.
+        Native typed manual completion supplies stable transcendental evaluation.
+        **Source**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md
+        **Ref**: Eq. 2.1 and construction/operation definition following Eq. 2.1
+        **Reference**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md:141-148
+        **Basis**: [DERIVED] Algebraically identical geometric streams and finite zero limit;
+            work/active/WI-049_ife-zero-discount-repair/design.md, Evaluation and numerical argument.
+        **Last Updated**: 2026-09-11
+        */
+        in attribute discount_rate_in : Real;
+        in attribute construction_years_in : Real;
+        in attribute operational_years_in : Real;
+        out attribute construction_factor : Real;
+        out attribute operation_factor : Real;
+    }
+
+    calc def 'Generating Electricity Price'  {
         doc /*
         Guard only the final price division, using actual net power in W.
         If net_power > 0, price = numerator / denominator and generating = 1.
@@ -154,7 +163,7 @@ package ife_lcoe {
             knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
         **Reference**: Hawker Eq. 2.1 and Eqs. 2.12-2.16; Meier Eq. 1
         **Basis**: [DERIVED] A generating price requires strictly positive net output.
-        **Last Updated**: 2026-09-10
+        **Last Updated**: 2026-09-11
         */
         in attribute numerator : Real;
         in attribute denominator : Real;
