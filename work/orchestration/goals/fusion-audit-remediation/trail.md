@@ -463,3 +463,53 @@ T-013 · native run-study execute · expected record `exploration/ife_e2e/studie
 ### T-014 start — 2026-09-11
 
 T-014 · native run-study administer · expected artifact `exploration/ife_e2e/studies/20260911-ife-zero-discount/synthesis.md`; all existing record artifacts remain immutable.
+
+### T-014 return — 2026-09-11
+
+**Outcome:** COMPLETE. Native record-only reading is `exploration/ife_e2e/studies/20260911-ife-zero-discount/synthesis.md@5fd978e7`, against the frozen record at `a66f962d`. The administrator found no required reading facts missing, retained all four findings and their limits, and made no external factual recovery or execution. Its existing package-review context is disclosed. Parent corrected one input-count sentence before commit: nineteen keys, eighteen held inputs in ordinary cases, separately specified diagnostics. The frozen executor record is unchanged.
+
+**Goal reading:** The reading supports the bounded IFE numerical repair and sensitivity framing. It supplies no engineering boundary, normalized financial comparison or fractional-duration study coverage. All handling remains proposed until the separate-session checkpoint. This valid reading closes the round; no semantic follow-up starts.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Complete native reading supports bounded numerical credit and retains unresolved limits | Propose the dispositions below and close on trigger 1. | execution detail | Parent [AGENT] | Round 2 result below |
+| Goal checkpoint and round review require a separate session | Hand back the completed reading and round; no self-review or next task. | reserved gate | Inherited owner rule in GOAL_RUNBOOK § What “fresh” means | Handoff below; no review verdict or accepted learning added |
+
+### Round 2 result — 2026-09-11
+
+**Intent met within the IFE scope.** The original exact-zero division failure and near-zero cancellation are repaired and independently audited. The retained study verifies cost, energy and eligible price separately at zero and both signs of small rates, preserves the ordinary 8% baseline, and excludes every non-generating diagnostic. This does not answer the broader audit goal.
+
+**Task sequence:** T-009 assessed the failure (`work/analysis/20260911-141041_ife-zero-discount-assessment.md@cc0cd821`, citation finalization `692c9f94`); T-010 repaired and audited WI-049 (`work/active/WI-049_ife-zero-discount-repair/audit.md@c99b2187`); T-011 certified the study-package migration (`.project/active/ife-zero-discount-study-package/audit.md@f04c0622`); T-012 promoted the native candidate (`evidence/T-012_pin/integration_return.json@8f72a642`); T-013 committed the reviewed study (`exploration/ife_e2e/studies/20260911-ife-zero-discount/@a66f962d`); T-014 supplied its record-only synthesis (`synthesis.md@5fd978e7` in that directory). These native homes retain requirements, implementation, audit failures and repairs, and reproduction evidence.
+
+**Last semantic outcome and derived stop:** A valid study reading, so close on trigger 1. This round promoted exactly one pin, `8e859f0d05c4dcd8dee695779326caad6040172246f0b638a3e851ffa57e47d3`, and committed one study. The citation-only audit repair resolved A01 and preserved the original negative audit. No mechanical retry, checkpoint revision or declared limit was exhausted. The separate-session disposition checkpoint and round review are pending; the broader goal remains open.
+
+**Evidence and limits:** Native model verification reports 376 passed / 13 inherited skips, with 268 numerical cases and maximum relative residual 5.995204332975845e-15. The certified package refresh passes 45 focused tests and reproduces metadata. The study records twenty cases, all thirty-two channels and both predicates verified; its independent Decimal maximum residual is 1.370305843545424e-15. IFE Levels 1–5 pass and all fifty inherited Level 6 findings remain individually accounted for. Wider model failures remain as recorded in WI-049. The study's integer-duration window is narrower than WI-049's separately verified Real-valued duration behavior. Native study critics and administrator used disclosed existing non-author contexts after the host refused new threads; those reviews do not satisfy the goal's separate-session gates.
+
+**Proposed finding dispositions [AGENT], submitted for C-002.r1:** No residual acceptance or goal-wide closure is implied by this table. Original audit IDs refer to `.project/reports/20260907-fusion-model-audit.md`; study IDs retain their native producer homes and statuses.
+
+| Finding | Proposed disposition and reason | Evidence / remaining scope |
+|---|---|---|
+| F05, IFE zero/near-zero subissue; 20260911-ife-zero-discount#1 | Retain independently audited numerical repair credit. | WI-049 positive audit `c99b2187`; study `a66f962d` and synthesis `5fd978e7`. Cost and energy verified separately; no wider financial-policy claim. |
+| F05, MFE and other unresolved subissues | Carry unresolved. | This round changes no shared MFE models and supplies no evidence closing those subissues. |
+| 20260911-ife-zero-discount#2 | Retain declared seam and sensitivity framing. | Conservative module reach includes unused formal inputs; unchanged ordinary net power supplies no financial boundary. Native record and synthesis above. |
+| 20260911-ife-zero-discount#3; F09 and earlier financial residuals | Carry distinct monetary bases and study-coverage limits without accepting residuals. | Hawker remains mixed-basis $/MWh, Meier 1988 cents/kWh. This study holds durations at 5/40; separate model tests do not extend its sampled coverage. |
+| 20260911-ife-zero-discount#4 | Retain native resolved process correction; no open semantic work follows from it alone. | Four critique findings corrected before execution, preserved in native pre-review. Do not relabel this as a model repair or unresolved seam. |
+| F01–F03 | Retain prior bounded IFE repair credit. | Round 1 checkpoint/review `749cf52e`; this round preserves the operating-point baseline and strict net-generation exclusion. Engineering residuals remain unresolved. |
+| F17 | Credit only the scoped corrected Source fields. | WI-049 citation repair `0c6c36a5` and positive re-audit; no whole-audit traceability closure. |
+| F04, F06–F08, F10–F16, F18–F20 and remaining distinct subissues | Carry unresolved, with prior dispositions unchanged. | No new closure evidence this round. Pending plant-closure work and owner-reserved source, engineering, financial and scope decisions remain in their existing homes. |
+
+**Proposed learning delta [AGENT], not yet accepted:** (1) Verify discounted cost and energy separately: their common numerical error can cancel in a quotient and hide a defective calculation. Evidence: T-009 assessment, WI-049 numerical verification, and this study's Decimal checks. (2) Keep oracle coverage separate from the model's input domain: integer annual sums cannot justify narrowing Real-valued duration inputs; fractional algebra requires separate evidence. Evidence: WI-049 spec/audit and the synthesis's explicit integer-window limit. Reinforce existing L-002 with this round's concrete unused-formal-input example of possible reach without actual response; do not duplicate the accepted learning. The fresh reviewer must accept, correct or reject this delta before changing `learnings.md`.
+
+**Round verification:** The three existing native record-contract checks pass when applied to this IFE study: closed record, shared-store identity and discovery-log joins. Final goal-document check result is recorded below before handoff.
+
+**Final goal-document check:** `.codex-test/run python -m pytest tests/orchestration/test_goal_contract.py -q` reports 28 passed and one known unrelated failure, `test_narratives_are_separate_from_the_goal_contract`, on the owner-retained `work/orchestration/goals/wall-and-heating/trail.md` reference. This matches the entering failure; no unrelated trail was edited.
+
+### Stop — 2026-09-11
+
+Kind: handoff
+
+What is true on disk: Round 2 is closed on a valid study reading. T-009–T-014 are complete, WI-049 and its package refresh have positive independent audits, one candidate and one study are retained, and the reading and proposed dispositions are ready. No C-002 verdict or Round 2 review exists. Accepted learnings remain L-001–L-003. The broader goal is unresolved. Work is committed locally; setup files and the CURRENT_WORK pointer remain intentionally uncommitted. No push, merge, item archive or goal close occurred.
+
+What the owner must see: A fresh owner-started session is needed to review the reading's proposed dispositions at C-002.r1 and then the closed Round 2. The same fresh session may perform both gates. The round author's session and its subagents cannot satisfy this boundary. No semantic follow-up or Round 3 begins before the required reviews.
+
+The material to review: `goal.md`, `learnings.md`, this trail's Round 2 strategy through result, `exploration/ife_e2e/studies/20260911-ife-zero-discount/{record.md,synthesis.md}`, and the native audit/integration evidence cited above. Resume at `work/orchestration/GOAL_RUNBOOK.md` § The pre-execution disposition checkpoint, then § The fresh review. Accept, correct or reject the proposed learning delta only through that review. Remaining engineering and financial residuals are not accepted by this handoff.
