@@ -1,5 +1,5 @@
 ---
-Status: draft
+Status: accepted
 Created: 2026-09-10
 Updated: 2026-09-10
 Related Artifacts:
@@ -24,7 +24,7 @@ The source record in `work/orchestration/goals/fusion-audit-remediation/evidence
 
 The design author visually verified Meier Eq. 5 at `knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/images/page_004_eq_0.png`: `(0.32 + 0.088 E_d)(1.25 + 0.05 N_c)(1 + 0.0088(v − 5))` billion dollars. Its beam-energy convention and frequency factor match the existing calculation. No coefficients change. Hawker's existing Eqs. 2.12–2.16 power balance is retained: cooling power equals driver power. The 1.15 blanket factor and 0.90 availability are later modeling assumptions, not historical Osiris facts.
 
-`modeling_project/ARCHITECTURE.md` AD-001/003/004/006 supports plain Real values with documented units, a closed-form DCF, reusable analysis definitions and separate parameter metadata. The existing IFE definition placement stays unchanged under the item's bounded scope. Definitions introduced here belong in library analyses. The family has eleven source files; three shared foundation/cost hierarchy files remain untouched.
+`modeling_project/ARCHITECTURE.md` AD-001/003/004/006 supports plain Real values with documented units, a closed-form DCF, reusable analysis definitions and separate parameter metadata. [AGENT] Item-specific AD-003 structural departure (R-001, accepted by parent on 2026-09-10): retain one unchanged closed-form DCF arithmetic core and move its final division to the shared guarded quotient because the pinned generator cannot compile the conditional guard. Finance conventions are unchanged. This bounded decision does not amend AD-003 or project requirements. The existing IFE definition placement stays unchanged under the item's bounded scope. Definitions introduced here belong in library analyses. The family has eleven source files; three shared foundation/cost hierarchy files remain untouched.
 
 ## Proposed elements and equations
 
@@ -92,4 +92,4 @@ Installed `sysml-expert` verified conditional language semantics but found the p
 
 [AGENT] Zero-net rounding is a test-fixture concern, not permission to change strict greater-than semantics. Use an exactly representable boundary and report near-zero absolute residuals. Gross-zero, invalid efficiency, and discount-zero domain hardening are outside these fixtures and are not silently expanded into this repair.
 
-Design remains draft pending parent review. Parent approved common physical balance and native handwritten quotient direction on 2026-09-10; these remain agent-originated decisions. No owner reserved gates were exercised.
+[AGENT] Parent accepted this design for planning on 2026-09-10 under the owner-approved alignment, with R-001 incorporated above. The common physical balance, native handwritten quotient and bounded AD-003 departure remain agent-originated decisions. No owner reserved gates were exercised.

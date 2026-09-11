@@ -1,0 +1,50 @@
+{
+  "zero": {
+    "net_w": 0.0,
+    "hawker_price": 0.0,
+    "meier_price": 0.0,
+    "hawker_valid": 0.0,
+    "meier_valid": 0.0,
+    "responses": {
+      "headline": "violated",
+      "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c": "violated",
+      "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b": "satisfied"
+    }
+  },
+  "roundoff_positive": {
+    "net_w": 5.960464477539063e-08,
+    "hawker_price": 3.032497190611114e+18,
+    "meier_price": 8.169971093777246e+16,
+    "hawker_valid": 1.0,
+    "meier_valid": 1.0,
+    "responses": {
+      "headline": "satisfied",
+      "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c": "satisfied",
+      "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b": "satisfied"
+    }
+  },
+  "near_positive": {
+    "net_w": 2.5,
+    "hawker_price": 78180428830.54074,
+    "meier_price": 1985302515.6646385,
+    "hawker_valid": 1.0,
+    "meier_valid": 1.0,
+    "responses": {
+      "headline": "satisfied",
+      "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c": "satisfied",
+      "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b": "satisfied"
+    }
+  },
+  "near_negative": {
+    "net_w": -2.5,
+    "hawker_price": 0.0,
+    "meier_price": 0.0,
+    "hawker_valid": 0.0,
+    "meier_valid": 0.0,
+    "responses": {
+      "headline": "violated",
+      "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c": "violated",
+      "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b": "satisfied"
+    }
+  }
+}
