@@ -358,3 +358,7 @@ T-009 · native `analyze-models` aspect-focused report under `work/analysis/` ·
 ### T-010 start — 2026-09-11
 
 T-010 · native Standard IFE zero-discount repair under `work/active/` · expected artifacts: spec, validated design, plan, implementation evidence and fresh independent audit; `work/orchestration/ife-zero-discount-repair.md` records inherited alignment.
+
+### Amendment — 2026-09-11
+
+**Amends:** T-009 evidence citation. The assessment author's finalization corrected the annual oracle line reference from `74-79` to `62-67` after the parent staged its report. This citation-only completion is retained in native history; all numerical evidence and conclusions at `cc0cd821` remain unchanged. It is part of the same native assessment, not an external semantic mutation or a reopened task.
