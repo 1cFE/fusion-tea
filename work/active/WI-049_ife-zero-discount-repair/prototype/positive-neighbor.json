@@ -1,0 +1,90 @@
+[
+  {
+    "rate": 0.0,
+    "actual": {
+      "discounted_cost": 58729547275.49999,
+      "discounted_energy": 0.7884000000000001,
+      "price": 74492069096.2709
+    },
+    "expected": {
+      "discounted_cost": 58729547275.5,
+      "discounted_energy": 0.7884,
+      "price": 74492069096.27094,
+      "construction_factor": 5.0,
+      "operation_factor": 40.0
+    },
+    "errors": {
+      "discounted_cost": 1.2990725938104973e-16,
+      "discounted_energy": 1.4081976466579864e-16,
+      "price": 4.0967553318407833e-16
+    },
+    "net": 2.5,
+    "generating": 1.0
+  },
+  {
+    "rate": 1e-12,
+    "actual": {
+      "discounted_cost": 58729547274.02468,
+      "discounted_energy": 0.788399999979896,
+      "price": 74492069096.29918
+    },
+    "expected": {
+      "discounted_cost": 58729547274.02468,
+      "discounted_energy": 0.7883999999798958,
+      "price": 74492069096.2992,
+      "construction_factor": 4.999999999985,
+      "operation_factor": 39.99999999898
+    },
+    "errors": {
+      "discounted_cost": 0.0,
+      "discounted_energy": 1.4081976466938953e-16,
+      "price": 2.0483776659196146e-16
+    },
+    "net": 2.5,
+    "generating": 1.0
+  },
+  {
+    "rate": -1e-12,
+    "actual": {
+      "discounted_cost": 58729547276.97531,
+      "discounted_energy": 0.7884000000201044,
+      "price": 74492069096.24265
+    },
+    "expected": {
+      "discounted_cost": 58729547276.97532,
+      "discounted_energy": 0.7884000000201042,
+      "price": 74492069096.24266,
+      "construction_factor": 5.000000000015,
+      "operation_factor": 40.00000000102
+    },
+    "errors": {
+      "discounted_cost": 1.2990725937778638e-16,
+      "discounted_energy": 1.4081976466220775e-16,
+      "price": 2.0483776659211692e-16
+    },
+    "net": 2.5,
+    "generating": 1.0
+  },
+  {
+    "rate": 0.08,
+    "actual": {
+      "discounted_cost": 12505763192.14656,
+      "discounted_energy": 0.15996027879628688,
+      "price": 78180428830.54074
+    },
+    "expected": {
+      "discounted_cost": 12505763192.146564,
+      "discounted_energy": 0.15996027879628688,
+      "price": 78180428830.54076,
+      "construction_factor": 3.9927100370780853,
+      "operation_factor": 8.115691466072395
+    },
+    "errors": {
+      "discounted_cost": 3.0503514315868176e-16,
+      "discounted_energy": 0.0,
+      "price": 1.9517402616931204e-16
+    },
+    "net": 2.5,
+    "generating": 1.0
+  }
+]

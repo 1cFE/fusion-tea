@@ -1,0 +1,4 @@
+PASS byte equality: preserve and smart regeneration
+PASS 264 sealed public executions; maximum channel error 6.026965908260528e-15
+zero baseline {'discounted_cost': 58111257843.81798, 'discounted_energy': 274751655.9428571, 'price': 211.50466825904763, 'construction_factor': 5.0, 'operation_factor': 40.0}
+positive-neighbor ideal-decimal maximum 4.0967553318407833e-16
