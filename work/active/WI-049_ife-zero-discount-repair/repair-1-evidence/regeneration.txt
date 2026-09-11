@@ -1,0 +1,3 @@
+PASS: four Source fields resolve, exact citation-only diff, equal twins; unchanged semantic/executable identity and all 32 baseline outputs/two responses through three regeneration passes.
+Changed files on first regeneration: []
+{"semantic": "8596c899df17f763bbce6eb50a18c1b5bca83080c40233e40bc01a7bb1aa1888", "executable": "2810897c4ef9db8cb646aec5616884de42963c41e3b92ac20c2947450ffcbfd7"}

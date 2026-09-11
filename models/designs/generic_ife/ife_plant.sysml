@@ -109,7 +109,7 @@ package ife_plant {
         attribute construction_duration : Real = 5.0 {
             doc /*
             Construction duration in years, supplied to both factor and cost calculations.
-            **Source**: Hawker, A simplified economic model for inertial fusion
+            **Source**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md
             **Reference**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md:148
             **Ref**: Construction and operational durations following Eq. 2.1
             **Basis**: Existing Hawker default, retained as Real.
@@ -119,7 +119,7 @@ package ife_plant {
         attribute operational_duration : Real = 40.0 {
             doc /*
             Operation duration in years, supplied to both factor and cost calculations.
-            **Source**: Hawker, A simplified economic model for inertial fusion
+            **Source**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md
             **Reference**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md:148
             **Ref**: Construction and operational durations following Eq. 2.1
             **Basis**: Existing Hawker default, retained as Real.
