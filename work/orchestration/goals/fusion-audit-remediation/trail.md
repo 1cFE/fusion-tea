@@ -102,3 +102,54 @@ T-003 · native coding PM `.project/active/study-verifier-multiplication/` · ex
 ### T-004 start — 2026-09-10
 
 T-004 · native coding PM `.project/active/ife-native-study-package/` · expected artifacts: resumed implementation/validation, independent audit and native integration return.
+
+### T-004 return — 2026-09-10
+
+**Outcome:** COMPLETE.
+
+**Evidence:** `.project/active/ife-native-study-package/audit.md@f0d2f67096a69c26add06d137f532d55bf3361d2`, preserving its original negative audit and verified repair; native `integration/integration_return.json` beneath that item at the same revision.
+
+**Goal reading:** The independently certified package route and native integration candidate support the intended IFE study on the audited operating point. The reported manifest read-set coverage limitation remains unresolved broader evidence, not an accepted residual. Package preparation and its test cases are not a committed goal study.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Native integration returns one candidate and fresh coding audit certifies its package contract | Promote pin `0539f0d5cbf2443512ea71ac93c19a2b80341bbf618337405993e4cab447daa1` for this round; the native return supplies its unchanged semantic/executable lineage. | execution detail | Parent round agent, supported by native integration and fresh independent certification | The one promoted candidate is the return cited above; no model or financial meaning changed |
+| Coding audit found opaque-ID dependence and inaccurate exporter prose | Accept the bounded repair verified by a fresh auditor; named verdict interpretation survives regenerated IDs. | execution detail | Parent round agent; fresh audit and re-audit supply findings and verification | Native `audit-r0.md`, `repair-1.md`, `audit.md` and complete product-lens ledger in the cited item |
+
+### T-005 scope
+
+- **Objective:** Execute and commit the round's native IFE operating-point study on the promoted candidate.
+- **Why now:** T-004 supplies independently certified package readiness; the strategy's response and non-generation questions can now be tested with a durable native record.
+- **Scope:** Native study execute workflow for beam-energy/rate sensitivity around the corrected baseline and the audited negative/zero-net diagnostic points. Preserve the promoted package, both historical price interpretations and all held assumptions except explicitly declared study inputs. No model fixes, monetary normalization, new promoted pin, semantic follow-up or owner-held action.
+- **Inputs:** `goal.md@f0d2f67096a69c26add06d137f532d55bf3361d2`; T-004 native audit/integration at that revision; package manifest/annex/route and independent oracle at that revision; native run-study runbook and policy.
+- **Done when:** One complete native study record is committed with framing critique, execution, verification, findings and immutable evidence, or its producer returns a precise blocker.
+- **Stop when:** A required protocol ruling, model/comparison change, missing seam capability or declared limit binds.
+
+### T-005 start — 2026-09-10
+
+T-005 · native study execute `exploration/ife_e2e/studies/20260910-ife-operating-point/` · expected artifacts: intake/axis/indicator/framing record, reviewed protocol, executed/verified results and committed snapshot.
+
+### T-005 return — 2026-09-10
+
+**Outcome:** PREREQUISITE.
+
+**Evidence:** `exploration/ife_e2e/studies/preparation/20260910-ife-operating-point-prerequisite.md` (unpinned; no native digest until the next local commit). The native indicator command refused at step 3 before emitting a report; no study point executed or study record committed.
+
+**Goal reading:** Package integration established verification readiness, but the separate indicator tracer cannot yet inspect the existing nested multiplication. This is a missing shared consumer capability, not a new physical finding or a changed comparison. The promoted candidate remains the same.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Native indicator refuses the actual IFE predicate's nested operator | End study execution as a prerequisite and scope a separate bounded traversal correction. Retain the predicate and indicator obligations. | premise surprise | Parent round agent, using the native producer refusal above | Native prerequisite record; no model, pin or committed-study change |
+
+### T-006 scope
+
+- **Objective:** Let native indicators conservatively trace the leaves of the existing IFE binary multiplication predicate.
+- **Why now:** T-005's producer refusal blocks the required pre-execution indicator report despite successful integration verification.
+- **Scope:** Bounded coding-PM correction to nested binary multiplication operand traversal in `scripts/study/indicators.py`, actual-catalog and negative tests, current indicator regression and fresh coding audit. Preserve indicator vocabulary, conservative reachability meaning, report schema, models/packages/finance, promoted pin and all other operators' refusal behavior.
+- **Inputs:** `goal.md@f0d2f670`; T-005 native prerequisite above; current IFE catalog, manifest and axes; existing indicator implementation and tests.
+- **Done when:** Actual IFE indicators are emitted with all multiplication leaves correctly classified and existing behavior preserved, independently certified; or a bounded negative identifies why the correction cannot fit this contract.
+- **Stop when:** Broader seam/schema change, model/comparison change, owner gate or declared limit is required.
+
+### T-006 start — 2026-09-10
+
+T-006 · native coding PM `.project/active/study-indicator-multiplication/` · expected artifacts: bounded spec/design/plan, traversal correction, tests and fresh coding audit.

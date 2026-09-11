@@ -1,0 +1,520 @@
+FFFFFFFF.F                                                               [100%]
+=================================== FAILURES ===================================
+_______________ test_actual_multiplication_leaves_remain_ordered _______________
+
+    def test_actual_multiplication_leaves_remain_ordered():
+>       operator, leaves = tool.predicate_operands(actual_entry())
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_indicator_operands.py:21:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+
+    def predicate_operands(entry: dict) -> tuple[str, list[dict]]:
+        """The operator and ordered operand descriptors from ``predicate_ir`` (R7, R8).
+
+        Literal operands exist only here — they appear in no YAML and no input file.
+        Any operand kind other than ``feature_ref`` or ``literal`` raises.
+        """
+        cid = entry["constraint_id"]
+        try:
+            ir = json.loads(entry["predicate_ir"])
+        except (TypeError, json.JSONDecodeError) as exc:
+            raise IndicatorError(f"constraint {cid}: predicate_ir is not valid JSON: {exc}") from exc
+        if ir.get("kind") != "operator":
+            raise IndicatorError(f"constraint {cid}: predicate_ir root is not an operator")
+        operands = []
+        for operand in ir["operands"]:
+            if operand["kind"] == "feature_ref":
+                operands.append({"kind": "feature_ref", "name": operand["reference"]["source_name"]})
+            elif operand["kind"] == "literal":
+                operands.append({"kind": "literal", "value": operand["literal"]["value"]})
+            else:
+>               raise IndicatorError(
+                    f"constraint {cid}: unknown predicate operand kind {operand['kind']!r}"
+                )
+E               scripts.study.indicators.IndicatorError: constraint hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: unknown predicate operand kind 'operator'
+
+scripts/study/indicators.py:470: IndicatorError
+_________ test_nested_products_preserve_literals_and_repeated_features _________
+
+    def test_nested_products_preserve_literals_and_repeated_features():
+        entry = actual_entry()
+        ir = json.loads(entry["predicate_ir"])
+        eta = ir["operands"][0]["operands"][0]
+        ir["operands"][0] = {"kind": "operator", "operator": "*", "operands": [
+            {"kind": "operator", "operator": "*", "operands": [eta, deepcopy(eta)]},
+            {"kind": "literal", "literal": {"value": 2.0}},
+        ]}
+        entry["predicate_ir"] = json.dumps(ir)
+>       assert tool.predicate_operands(entry)[1] == [
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            {"kind": "feature_ref", "name": "eta"}, {"kind": "feature_ref", "name": "eta"},
+            {"kind": "literal", "value": 2.0}, {"kind": "feature_ref", "name": "threshold"}]
+
+tests/study/test_indicator_operands.py:35:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+
+    def predicate_operands(entry: dict) -> tuple[str, list[dict]]:
+        """The operator and ordered operand descriptors from ``predicate_ir`` (R7, R8).
+
+        Literal operands exist only here — they appear in no YAML and no input file.
+        Any operand kind other than ``feature_ref`` or ``literal`` raises.
+        """
+        cid = entry["constraint_id"]
+        try:
+            ir = json.loads(entry["predicate_ir"])
+        except (TypeError, json.JSONDecodeError) as exc:
+            raise IndicatorError(f"constraint {cid}: predicate_ir is not valid JSON: {exc}") from exc
+        if ir.get("kind") != "operator":
+            raise IndicatorError(f"constraint {cid}: predicate_ir root is not an operator")
+        operands = []
+        for operand in ir["operands"]:
+            if operand["kind"] == "feature_ref":
+                operands.append({"kind": "feature_ref", "name": operand["reference"]["source_name"]})
+            elif operand["kind"] == "literal":
+                operands.append({"kind": "literal", "value": operand["literal"]["value"]})
+            else:
+>               raise IndicatorError(
+                    f"constraint {cid}: unknown predicate operand kind {operand['kind']!r}"
+                )
+E               scripts.study.indicators.IndicatorError: constraint hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: unknown predicate operand kind 'operator'
+
+scripts/study/indicators.py:470: IndicatorError
+__________________ test_other_nested_operators_are_refused[+] __________________
+
+operator = '+'
+
+    @pytest.mark.parametrize("operator", ["+", "/", "**"])
+    def test_other_nested_operators_are_refused(operator):
+        entry = actual_entry()
+        ir = json.loads(entry["predicate_ir"])
+        ir["operands"][0]["operator"] = operator
+        entry["predicate_ir"] = json.dumps(ir)
+        with pytest.raises(tool.IndicatorError, match="unsupported nested"):
+>           tool.predicate_operands(entry)
+
+tests/study/test_indicator_operands.py:47:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+
+    def predicate_operands(entry: dict) -> tuple[str, list[dict]]:
+        """The operator and ordered operand descriptors from ``predicate_ir`` (R7, R8).
+
+        Literal operands exist only here — they appear in no YAML and no input file.
+        Any operand kind other than ``feature_ref`` or ``literal`` raises.
+        """
+        cid = entry["constraint_id"]
+        try:
+            ir = json.loads(entry["predicate_ir"])
+        except (TypeError, json.JSONDecodeError) as exc:
+            raise IndicatorError(f"constraint {cid}: predicate_ir is not valid JSON: {exc}") from exc
+        if ir.get("kind") != "operator":
+            raise IndicatorError(f"constraint {cid}: predicate_ir root is not an operator")
+        operands = []
+        for operand in ir["operands"]:
+            if operand["kind"] == "feature_ref":
+                operands.append({"kind": "feature_ref", "name": operand["reference"]["source_name"]})
+            elif operand["kind"] == "literal":
+                operands.append({"kind": "literal", "value": operand["literal"]["value"]})
+            else:
+>               raise IndicatorError(
+                    f"constraint {cid}: unknown predicate operand kind {operand['kind']!r}"
+                )
+E               scripts.study.indicators.IndicatorError: constraint hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: unknown predicate operand kind 'operator'
+
+scripts/study/indicators.py:470: IndicatorError
+
+During handling of the above exception, another exception occurred:
+
+operator = '+'
+
+    @pytest.mark.parametrize("operator", ["+", "/", "**"])
+    def test_other_nested_operators_are_refused(operator):
+        entry = actual_entry()
+        ir = json.loads(entry["predicate_ir"])
+        ir["operands"][0]["operator"] = operator
+        entry["predicate_ir"] = json.dumps(ir)
+>       with pytest.raises(tool.IndicatorError, match="unsupported nested"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'unsupported nested'
+E         Actual message: "constraint hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: unknown predicate operand kind 'operator'"
+
+tests/study/test_indicator_operands.py:46: AssertionError
+__________________ test_other_nested_operators_are_refused[/] __________________
+
+operator = '/'
+
+    @pytest.mark.parametrize("operator", ["+", "/", "**"])
+    def test_other_nested_operators_are_refused(operator):
+        entry = actual_entry()
+        ir = json.loads(entry["predicate_ir"])
+        ir["operands"][0]["operator"] = operator
+        entry["predicate_ir"] = json.dumps(ir)
+        with pytest.raises(tool.IndicatorError, match="unsupported nested"):
+>           tool.predicate_operands(entry)
+
+tests/study/test_indicator_operands.py:47:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+
+    def predicate_operands(entry: dict) -> tuple[str, list[dict]]:
+        """The operator and ordered operand descriptors from ``predicate_ir`` (R7, R8).
+
+        Literal operands exist only here — they appear in no YAML and no input file.
+        Any operand kind other than ``feature_ref`` or ``literal`` raises.
+        """
+        cid = entry["constraint_id"]
+        try:
+            ir = json.loads(entry["predicate_ir"])
+        except (TypeError, json.JSONDecodeError) as exc:
+            raise IndicatorError(f"constraint {cid}: predicate_ir is not valid JSON: {exc}") from exc
+        if ir.get("kind") != "operator":
+            raise IndicatorError(f"constraint {cid}: predicate_ir root is not an operator")
+        operands = []
+        for operand in ir["operands"]:
+            if operand["kind"] == "feature_ref":
+                operands.append({"kind": "feature_ref", "name": operand["reference"]["source_name"]})
+            elif operand["kind"] == "literal":
+                operands.append({"kind": "literal", "value": operand["literal"]["value"]})
+            else:
+>               raise IndicatorError(
+                    f"constraint {cid}: unknown predicate operand kind {operand['kind']!r}"
+                )
+E               scripts.study.indicators.IndicatorError: constraint hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: unknown predicate operand kind 'operator'
+
+scripts/study/indicators.py:470: IndicatorError
+
+During handling of the above exception, another exception occurred:
+
+operator = '/'
+
+    @pytest.mark.parametrize("operator", ["+", "/", "**"])
+    def test_other_nested_operators_are_refused(operator):
+        entry = actual_entry()
+        ir = json.loads(entry["predicate_ir"])
+        ir["operands"][0]["operator"] = operator
+        entry["predicate_ir"] = json.dumps(ir)
+>       with pytest.raises(tool.IndicatorError, match="unsupported nested"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'unsupported nested'
+E         Actual message: "constraint hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: unknown predicate operand kind 'operator'"
+
+tests/study/test_indicator_operands.py:46: AssertionError
+_________________ test_other_nested_operators_are_refused[**] __________________
+
+operator = '**'
+
+    @pytest.mark.parametrize("operator", ["+", "/", "**"])
+    def test_other_nested_operators_are_refused(operator):
+        entry = actual_entry()
+        ir = json.loads(entry["predicate_ir"])
+        ir["operands"][0]["operator"] = operator
+        entry["predicate_ir"] = json.dumps(ir)
+        with pytest.raises(tool.IndicatorError, match="unsupported nested"):
+>           tool.predicate_operands(entry)
+
+tests/study/test_indicator_operands.py:47:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+
+    def predicate_operands(entry: dict) -> tuple[str, list[dict]]:
+        """The operator and ordered operand descriptors from ``predicate_ir`` (R7, R8).
+
+        Literal operands exist only here — they appear in no YAML and no input file.
+        Any operand kind other than ``feature_ref`` or ``literal`` raises.
+        """
+        cid = entry["constraint_id"]
+        try:
+            ir = json.loads(entry["predicate_ir"])
+        except (TypeError, json.JSONDecodeError) as exc:
+            raise IndicatorError(f"constraint {cid}: predicate_ir is not valid JSON: {exc}") from exc
+        if ir.get("kind") != "operator":
+            raise IndicatorError(f"constraint {cid}: predicate_ir root is not an operator")
+        operands = []
+        for operand in ir["operands"]:
+            if operand["kind"] == "feature_ref":
+                operands.append({"kind": "feature_ref", "name": operand["reference"]["source_name"]})
+            elif operand["kind"] == "literal":
+                operands.append({"kind": "literal", "value": operand["literal"]["value"]})
+            else:
+>               raise IndicatorError(
+                    f"constraint {cid}: unknown predicate operand kind {operand['kind']!r}"
+                )
+E               scripts.study.indicators.IndicatorError: constraint hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: unknown predicate operand kind 'operator'
+
+scripts/study/indicators.py:470: IndicatorError
+
+During handling of the above exception, another exception occurred:
+
+operator = '**'
+
+    @pytest.mark.parametrize("operator", ["+", "/", "**"])
+    def test_other_nested_operators_are_refused(operator):
+        entry = actual_entry()
+        ir = json.loads(entry["predicate_ir"])
+        ir["operands"][0]["operator"] = operator
+        entry["predicate_ir"] = json.dumps(ir)
+>       with pytest.raises(tool.IndicatorError, match="unsupported nested"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'unsupported nested'
+E         Actual message: "constraint hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: unknown predicate operand kind 'operator'"
+
+tests/study/test_indicator_operands.py:46: AssertionError
+__________________ test_malformed_product_arity_is_refused[0] __________________
+
+arity = 0
+
+    @pytest.mark.parametrize("arity", [0, 1, 3])
+    def test_malformed_product_arity_is_refused(arity):
+        entry = actual_entry()
+        ir = json.loads(entry["predicate_ir"])
+        product = ir["operands"][0]
+        product["operands"] = [product["operands"][0]] * arity
+        entry["predicate_ir"] = json.dumps(ir)
+        with pytest.raises(tool.IndicatorError, match="exactly two"):
+>           tool.predicate_operands(entry)
+
+tests/study/test_indicator_operands.py:58:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+
+    def predicate_operands(entry: dict) -> tuple[str, list[dict]]:
+        """The operator and ordered operand descriptors from ``predicate_ir`` (R7, R8).
+
+        Literal operands exist only here — they appear in no YAML and no input file.
+        Any operand kind other than ``feature_ref`` or ``literal`` raises.
+        """
+        cid = entry["constraint_id"]
+        try:
+            ir = json.loads(entry["predicate_ir"])
+        except (TypeError, json.JSONDecodeError) as exc:
+            raise IndicatorError(f"constraint {cid}: predicate_ir is not valid JSON: {exc}") from exc
+        if ir.get("kind") != "operator":
+            raise IndicatorError(f"constraint {cid}: predicate_ir root is not an operator")
+        operands = []
+        for operand in ir["operands"]:
+            if operand["kind"] == "feature_ref":
+                operands.append({"kind": "feature_ref", "name": operand["reference"]["source_name"]})
+            elif operand["kind"] == "literal":
+                operands.append({"kind": "literal", "value": operand["literal"]["value"]})
+            else:
+>               raise IndicatorError(
+                    f"constraint {cid}: unknown predicate operand kind {operand['kind']!r}"
+                )
+E               scripts.study.indicators.IndicatorError: constraint hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: unknown predicate operand kind 'operator'
+
+scripts/study/indicators.py:470: IndicatorError
+
+During handling of the above exception, another exception occurred:
+
+arity = 0
+
+    @pytest.mark.parametrize("arity", [0, 1, 3])
+    def test_malformed_product_arity_is_refused(arity):
+        entry = actual_entry()
+        ir = json.loads(entry["predicate_ir"])
+        product = ir["operands"][0]
+        product["operands"] = [product["operands"][0]] * arity
+        entry["predicate_ir"] = json.dumps(ir)
+>       with pytest.raises(tool.IndicatorError, match="exactly two"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'exactly two'
+E         Actual message: "constraint hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: unknown predicate operand kind 'operator'"
+
+tests/study/test_indicator_operands.py:57: AssertionError
+__________________ test_malformed_product_arity_is_refused[1] __________________
+
+arity = 1
+
+    @pytest.mark.parametrize("arity", [0, 1, 3])
+    def test_malformed_product_arity_is_refused(arity):
+        entry = actual_entry()
+        ir = json.loads(entry["predicate_ir"])
+        product = ir["operands"][0]
+        product["operands"] = [product["operands"][0]] * arity
+        entry["predicate_ir"] = json.dumps(ir)
+        with pytest.raises(tool.IndicatorError, match="exactly two"):
+>           tool.predicate_operands(entry)
+
+tests/study/test_indicator_operands.py:58:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+
+    def predicate_operands(entry: dict) -> tuple[str, list[dict]]:
+        """The operator and ordered operand descriptors from ``predicate_ir`` (R7, R8).
+
+        Literal operands exist only here — they appear in no YAML and no input file.
+        Any operand kind other than ``feature_ref`` or ``literal`` raises.
+        """
+        cid = entry["constraint_id"]
+        try:
+            ir = json.loads(entry["predicate_ir"])
+        except (TypeError, json.JSONDecodeError) as exc:
+            raise IndicatorError(f"constraint {cid}: predicate_ir is not valid JSON: {exc}") from exc
+        if ir.get("kind") != "operator":
+            raise IndicatorError(f"constraint {cid}: predicate_ir root is not an operator")
+        operands = []
+        for operand in ir["operands"]:
+            if operand["kind"] == "feature_ref":
+                operands.append({"kind": "feature_ref", "name": operand["reference"]["source_name"]})
+            elif operand["kind"] == "literal":
+                operands.append({"kind": "literal", "value": operand["literal"]["value"]})
+            else:
+>               raise IndicatorError(
+                    f"constraint {cid}: unknown predicate operand kind {operand['kind']!r}"
+                )
+E               scripts.study.indicators.IndicatorError: constraint hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: unknown predicate operand kind 'operator'
+
+scripts/study/indicators.py:470: IndicatorError
+
+During handling of the above exception, another exception occurred:
+
+arity = 1
+
+    @pytest.mark.parametrize("arity", [0, 1, 3])
+    def test_malformed_product_arity_is_refused(arity):
+        entry = actual_entry()
+        ir = json.loads(entry["predicate_ir"])
+        product = ir["operands"][0]
+        product["operands"] = [product["operands"][0]] * arity
+        entry["predicate_ir"] = json.dumps(ir)
+>       with pytest.raises(tool.IndicatorError, match="exactly two"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'exactly two'
+E         Actual message: "constraint hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: unknown predicate operand kind 'operator'"
+
+tests/study/test_indicator_operands.py:57: AssertionError
+__________________ test_malformed_product_arity_is_refused[3] __________________
+
+arity = 3
+
+    @pytest.mark.parametrize("arity", [0, 1, 3])
+    def test_malformed_product_arity_is_refused(arity):
+        entry = actual_entry()
+        ir = json.loads(entry["predicate_ir"])
+        product = ir["operands"][0]
+        product["operands"] = [product["operands"][0]] * arity
+        entry["predicate_ir"] = json.dumps(ir)
+        with pytest.raises(tool.IndicatorError, match="exactly two"):
+>           tool.predicate_operands(entry)
+
+tests/study/test_indicator_operands.py:58:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+
+    def predicate_operands(entry: dict) -> tuple[str, list[dict]]:
+        """The operator and ordered operand descriptors from ``predicate_ir`` (R7, R8).
+
+        Literal operands exist only here — they appear in no YAML and no input file.
+        Any operand kind other than ``feature_ref`` or ``literal`` raises.
+        """
+        cid = entry["constraint_id"]
+        try:
+            ir = json.loads(entry["predicate_ir"])
+        except (TypeError, json.JSONDecodeError) as exc:
+            raise IndicatorError(f"constraint {cid}: predicate_ir is not valid JSON: {exc}") from exc
+        if ir.get("kind") != "operator":
+            raise IndicatorError(f"constraint {cid}: predicate_ir root is not an operator")
+        operands = []
+        for operand in ir["operands"]:
+            if operand["kind"] == "feature_ref":
+                operands.append({"kind": "feature_ref", "name": operand["reference"]["source_name"]})
+            elif operand["kind"] == "literal":
+                operands.append({"kind": "literal", "value": operand["literal"]["value"]})
+            else:
+>               raise IndicatorError(
+                    f"constraint {cid}: unknown predicate operand kind {operand['kind']!r}"
+                )
+E               scripts.study.indicators.IndicatorError: constraint hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: unknown predicate operand kind 'operator'
+
+scripts/study/indicators.py:470: IndicatorError
+
+During handling of the above exception, another exception occurred:
+
+arity = 3
+
+    @pytest.mark.parametrize("arity", [0, 1, 3])
+    def test_malformed_product_arity_is_refused(arity):
+        entry = actual_entry()
+        ir = json.loads(entry["predicate_ir"])
+        product = ir["operands"][0]
+        product["operands"] = [product["operands"][0]] * arity
+        entry["predicate_ir"] = json.dumps(ir)
+>       with pytest.raises(tool.IndicatorError, match="exactly two"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'exactly two'
+E         Actual message: "constraint hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: unknown predicate operand kind 'operator'"
+
+tests/study/test_indicator_operands.py:57: AssertionError
+___ test_actual_ife_report_preserves_schema_and_conservative_classification ____
+
+    def test_actual_ife_report_preserves_schema_and_conservative_classification():
+        declaration = tool.read_axis_declaration(STUDIES / "axes.json")
+>       report = tool.build_report(PACKAGE, manifest.load(STUDIES / "manifest.json"), declaration, [])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_indicator_operands.py:72:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts/study/indicators.py:833: in build_report
+    groups = sorted(
+scripts/study/indicators.py:834: in <genexpr>
+    (trace_group(g, graph, contract, objective_catalog, ties) for g in traced),
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts/study/indicators.py:705: in trace_group
+    bounds = sorted(
+scripts/study/indicators.py:707: in <genexpr>
+    _constraint_entry(entry, graph, contract, declared, tainted)
+scripts/study/indicators.py:608: in _constraint_entry
+    operator, operands = predicate_operands(entry)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+
+    def predicate_operands(entry: dict) -> tuple[str, list[dict]]:
+        """The operator and ordered operand descriptors from ``predicate_ir`` (R7, R8).
+
+        Literal operands exist only here — they appear in no YAML and no input file.
+        Any operand kind other than ``feature_ref`` or ``literal`` raises.
+        """
+        cid = entry["constraint_id"]
+        try:
+            ir = json.loads(entry["predicate_ir"])
+        except (TypeError, json.JSONDecodeError) as exc:
+            raise IndicatorError(f"constraint {cid}: predicate_ir is not valid JSON: {exc}") from exc
+        if ir.get("kind") != "operator":
+            raise IndicatorError(f"constraint {cid}: predicate_ir root is not an operator")
+        operands = []
+        for operand in ir["operands"]:
+            if operand["kind"] == "feature_ref":
+                operands.append({"kind": "feature_ref", "name": operand["reference"]["source_name"]})
+            elif operand["kind"] == "literal":
+                operands.append({"kind": "literal", "value": operand["literal"]["value"]})
+            else:
+>               raise IndicatorError(
+                    f"constraint {cid}: unknown predicate operand kind {operand['kind']!r}"
+                )
+E               scripts.study.indicators.IndicatorError: constraint hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: unknown predicate operand kind 'operator'
+
+scripts/study/indicators.py:470: IndicatorError
+=========================== short test summary info ============================
+FAILED tests/study/test_indicator_operands.py::test_actual_multiplication_leaves_remain_ordered
+FAILED tests/study/test_indicator_operands.py::test_nested_products_preserve_literals_and_repeated_features
+FAILED tests/study/test_indicator_operands.py::test_other_nested_operators_are_refused[+]
+FAILED tests/study/test_indicator_operands.py::test_other_nested_operators_are_refused[/]
+FAILED tests/study/test_indicator_operands.py::test_other_nested_operators_are_refused[**]
+FAILED tests/study/test_indicator_operands.py::test_malformed_product_arity_is_refused[0]
+FAILED tests/study/test_indicator_operands.py::test_malformed_product_arity_is_refused[1]
+FAILED tests/study/test_indicator_operands.py::test_malformed_product_arity_is_refused[3]
+FAILED tests/study/test_indicator_operands.py::test_actual_ife_report_preserves_schema_and_conservative_classification
+9 failed, 1 passed in 0.35s

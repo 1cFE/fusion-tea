@@ -451,7 +451,8 @@ def predicate_operands(entry: dict) -> tuple[str, list[dict]]:
     """The operator and ordered operand descriptors from ``predicate_ir`` (R7, R8).
 
     Literal operands exist only here — they appear in no YAML and no input file.
-    Any operand kind other than ``feature_ref`` or ``literal`` raises.
+    Feature/literal leaves inside binary multiplication are traversed in occurrence
+    order. Other nested expressions raise; no numerical response is inferred.
     """
     cid = entry["constraint_id"]
     try:
@@ -460,17 +461,25 @@ def predicate_operands(entry: dict) -> tuple[str, list[dict]]:
         raise IndicatorError(f"constraint {cid}: predicate_ir is not valid JSON: {exc}") from exc
     if ir.get("kind") != "operator":
         raise IndicatorError(f"constraint {cid}: predicate_ir root is not an operator")
-    operands = []
-    for operand in ir["operands"]:
-        if operand["kind"] == "feature_ref":
-            operands.append({"kind": "feature_ref", "name": operand["reference"]["source_name"]})
-        elif operand["kind"] == "literal":
-            operands.append({"kind": "literal", "value": operand["literal"]["value"]})
-        else:
-            raise IndicatorError(
-                f"constraint {cid}: unknown predicate operand kind {operand['kind']!r}"
-            )
+    operands = [leaf for operand in ir["operands"] for leaf in operand_leaves(cid, operand)]
     return ir["operator"], operands
+
+
+def operand_leaves(cid: str, operand: dict) -> list[dict]:
+    """Return ordered leaf occurrences through binary multiplication, without evaluation."""
+    kind = operand["kind"]
+    if kind == "feature_ref":
+        return [{"kind": kind, "name": operand["reference"]["source_name"]}]
+    if kind == "literal":
+        return [{"kind": kind, "value": operand["literal"]["value"]}]
+    if kind == "operator":
+        if operand.get("operator") != "*":
+            raise IndicatorError(f"constraint {cid}: unsupported nested operator {operand.get('operator')!r}")
+        children = operand.get("operands", [])
+        if len(children) != 2:
+            raise IndicatorError(f"constraint {cid}: multiplication requires exactly two operands")
+        return [leaf for child in children for leaf in operand_leaves(cid, child)]
+    raise IndicatorError(f"constraint {cid}: unknown predicate operand kind {kind!r}")
 
 
 # ------------------------------------------------------ the axis declaration
