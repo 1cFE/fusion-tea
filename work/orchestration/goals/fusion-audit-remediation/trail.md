@@ -766,3 +766,29 @@ No goal-level mechanical retry occurred. Native design corrections and generatio
 ### T-017 start — 2026-09-11
 
 T-017 · native coding package migration · expected `.project/active/mfe-operating-heating-study-package/` requirements/design/plan, implementation evidence and fresh coding audit. Parent approves the bounded migration under existing goal authorization; no renewed preservation ruling is needed.
+
+### T-017 return — 2026-09-11
+
+**Outcome: COMPLETE.** Current package consumers are independently certified by `.project/active/mfe-operating-heating-study-package/audit.md@07c33fee`, with implementation evidence at `676c7308`. Actual stored controls and the full assertion/operand contract agree with the audited model and independent oracle. Metadata and graph fixtures reproduce; model, generated package and historical evidence remain unchanged. This supplies package-consumer readiness, not a candidate promotion or engineering residual acceptance.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Current study adapters and metadata lag audited operating heat | Migrate current consumers through existing native producers and obtain a fresh coding certificate | execution detail | Parent, implementer and independent auditor | Coding implementation `676c7308`, certificate `07c33fee` |
+| Broad regression finds 86 historical local-export failures | Preserve and classify the unchanged historical failures separately; verify current fail-closed behavior without weakening tests or repairing excluded history | execution detail | Implementer, parent and fresh auditor | `implementation/historical-failures.json@676c7308`, `audit.md@07c33fee`; historical sources unchanged |
+| Host thread limit refuses required fresh product lens | Use installed Codex CLI for a fresh read-only native-stage reviewer, retaining exact invocation and independent session provenance; no author self-review | execution detail | Parent on host/tool evidence | `audit-evidence/product-lens-provenance.md@07c33fee`; no goal checkpoint or round review performed |
+| Product lens flags duplicated regression expectations | Dispose the agent-grade maintenance finding explicitly while retaining independently reviewed qualitative expectations and exact native metadata reproduction | execution detail | Fresh coding auditor | `product-lens.md@07c33fee`, finding audit-F1 disposition |
+
+No goal-level mechanical retry, pin or study occurred. Existing optional historical-store absence and historical exporter failures remain disclosed, with no fresh historical-study interpretation or discovery disposition implied.
+
+### T-018 scope
+
+- **Objective:** Establish one verified study-ready candidate for the audited operating-heating model and certified current package.
+- **Why now:** T-016 and T-017 supply positive native model and consumer certificates; integration can now test their exact combined lineage.
+- **Scope:** Invoke the documented native integration seam once with the audited model/package references, current census, manifest, expected fingerprints and sealed runtime. Retain native evidence and return. No model/package mutation, seam repair, study execution, second candidate, historical rewrite or owner-held close.
+- **Inputs:** `goal.md`, Round 4 strategy; WI-050 audit `55456198`; coding certificate `07c33fee`; current native identities and `docs/integration_seam_operator_guide.md`.
+- **Done when:** The native seam returns exactly one CANDIDATE or a named bounded blocker with its producer evidence.
+- **Stop when:** Any native blocker, required mutation, owner gate, strategy contradiction or declared cap; classify according to the native operator guide.
+
+### T-018 start — 2026-09-11
+
+T-018 · native integrate · expected evidence at `work/orchestration/goals/fusion-audit-remediation/evidence/T-018_integration/`; no candidate is promoted before the seam returns CANDIDATE.
