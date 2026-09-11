@@ -792,3 +792,22 @@ No goal-level mechanical retry, pin or study occurred. Existing optional histori
 ### T-018 start — 2026-09-11
 
 T-018 · native integrate · expected evidence at `work/orchestration/goals/fusion-audit-remediation/evidence/T-018_integration/`; no candidate is promoted before the seam returns CANDIDATE.
+
+### T-018 return — 2026-09-11
+
+**Outcome: COMPLETE.** Native integration returns CANDIDATE on all ten gates: `evidence/T-018_integration/integration_return.json@0f6e4bef` with native producer evidence beside it. This is Round 4's one promoted pin. Its exact identity is the candidate in that return; no second goal-layer identity was computed. Temporary backup and execution-store directories remain local and excluded, as in prior native integration records.
+
+**Reading and decision:** The audited model and certified consumers form one study-ready lineage. Trigger: both native certificates are positive and fixed-point integration passes. Decision: use this candidate for the bounded operating/reserve comparison because regeneration, census/snapshot, manifest, preflight and independent verification agree. Tier: execution detail. Who: parent on native seam evidence. What changed: candidate evidence `0f6e4bef`; no model or package bytes changed. The seam's declared read-set-coverage limitation remains disclosed. No study, mechanical retry, historical replacement or engineering residual acceptance occurred.
+
+### T-019 scope
+
+- **Objective:** Execute and commit the bounded Round 4 comparison of installed reserve and operating demand against its single promoted candidate.
+- **Why now:** T-018 proves one current lineage after independent model and package certification; a native study can test the intended operating/cost separation across declared controls.
+- **Scope:** Native run-study execute at `exploration/stellarator_e2e/studies/20260911-operating-heating/`, including indicators, framing, pre-execution critique, oracle scan, independent expectations, stock lifecycle execution, verification, reports and findings. Use the T-018 candidate only. Preserve installed procurement, fixed-efficiency interpretation and unchanged finance; disclose zero/negative/capacity-limited diagnostics and any inability to represent a requested boundary through supported public inputs. No model/package mutation, new pin, shared seam repair, invented empirical law, historical rewrite, residual acceptance or goal close.
+- **Inputs:** `goal.md`, Round 4 intended study question and constraints; native T-018 return `0f6e4bef`; model audit `55456198`; package certificate `07c33fee`; current run-study runbook/policy/annex. Owner intake remains the original audit-remediation request; specific comparison design remains agent-originated.
+- **Done when:** One native committed record answers the bounded comparison with independently checked channels/verdicts and explicit limits, or a named native blocker is returned.
+- **Stop when:** Required owner ruling for a no-constraint-response axis, source/scope/finance gate, native prerequisite, changed comparison meaning, strategy blocker or declared cap. No point executes before the required framing review and rulings.
+
+### T-019 start — 2026-09-11
+
++T-019 · native run-study execute · expected committed record at `exploration/stellarator_e2e/studies/20260911-operating-heating/`; start with preparation and pre-execution critique. Study reading follows as a separate native task.
