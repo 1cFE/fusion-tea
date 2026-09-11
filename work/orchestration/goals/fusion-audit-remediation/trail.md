@@ -362,3 +362,30 @@ T-010 · native Standard IFE zero-discount repair under `work/active/` · expect
 ### Amendment — 2026-09-11
 
 **Amends:** T-009 evidence citation. The assessment author's finalization corrected the annual oracle line reference from `74-79` to `62-67` after the parent staged its report. This citation-only completion is retained in native history; all numerical evidence and conclusions at `cc0cd821` remain unchanged. It is part of the same native assessment, not an external semantic mutation or a reopened task.
+
+### T-010 return — 2026-09-11
+
+**Outcome:** COMPLETE. Native WI-049 has a positive fresh re-audit: `work/active/WI-049_ife-zero-discount-repair/audit.md` and `work/analysis/20260911-145626_audit_WI-049_ife-zero-discount-repair-r1.md@c99b2187`. Production implementation is `2ee44883`, original independent FAIL A01 is `c926a36d`, and the bounded citation repair is `0c6c36a5`. The original negative audit remains preserved. One repair resolved A01; no mechanical retry or goal limit was consumed.
+
+**Goal reading:** The IFE portion of F05 now has an independently checked numerical repair. Independent dated sums and fractional algebra verify cost, energy and eligible price separately, with exact non-generation exclusions. Original audit evidence: 268 cases, maximum relative residual 5.995204332975845e-15; 376 tests passed and 13 inherited skips; all thirty prior baseline channels retained within tolerance. Re-audit freshly establishes citation resolution, unchanged package bytes and baseline, while explicitly inheriting the broader numerical evidence. IFE Levels 1–5 pass; all fifty Level 6 findings are individually retained with none introduced. Wider failures and F05's MFE subissues remain unresolved. No financial interpretation or supported-domain policy changed; residuals are not accepted.
+
+**Native interface consequence:** Two duration inputs moved to plant keys and two factor outputs were added. Current study metadata is stale; the native implementation records ten failing and seven passing study-route tests in `implementation/migration.md@2ee44883`. This is the declared separate refresh, not a study result or candidate. Semantic `8596c899df17f763bbce6eb50a18c1b5bca83080c40233e40bc01a7bb1aa1888` and executable `2810897c4ef9db8cb646aec5616884de42963c41e3b92ac20c2947450ffcbfd7` are read from the native audit records.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Pinned generator rejects native stable-function invocation and old calc-input containment references | Accept separate typed factor completion and two-key migration, preserving financial algebra and Real durations. | execution detail | Parent [AGENT], independently reviewed | WI-049 design/review at `3a2bc1e5`, implementation at `2ee44883` |
+| Audit A01 finds title-valued Source fields | Correct four fields through fresh author and re-audit; retain original failure. | execution detail | Parent [AGENT] | Repair `0c6c36a5`, positive audit `c99b2187` |
+| Audited package interface invalidates current study metadata | Refresh package-owned consumers/metadata through native coding work before integration. | execution detail | Parent [AGENT] | T-011 scope below |
+
+### T-011 scope
+
+- **Objective:** Restore the native IFE study package's compatibility with audited WI-049 and declare this round's discount-rate axis.
+- **Why now:** T-010's explicit two-key/two-channel migration leaves current study metadata and oracle duration validation stale.
+- **Scope:** Bounded coding-PM package refresh: current route channel catalog, oracle adapter validation, metadata producer and native metadata/snapshot, affected tests and annex. Reuse the audited model and independent oracle; preserve strict stock execution and eligibility. No model or financial changes, shared tooling repair, historical study mutation, pin promotion or study execution.
+- **Inputs:** `goal.md` and round-2 strategy at `749cf52e`; WI-049 audit at `c99b2187`, its migration note at `2ee44883`; prior package certification at `f0d2f670` and current native route.
+- **Done when:** Current metadata reproduces natively, all thirty-two numerical channels and both predicates verify, new duration keys preserve explicit oracle-coverage rejection, bounded actual execution tests pass and fresh coding audit certifies the refresh.
+- **Stop when:** Missing shared seam capability, source/comparison/supported-scope conflict, owner-reserved gate or declared limit.
+
+### T-011 start — 2026-09-11
+
+T-011 · `.project/active/ife-zero-discount-study-package/` · expected artifacts: bounded native spec/plan, package refresh and fresh coding audit; no promoted pin or executed study.

@@ -47,9 +47,9 @@ def prepare_metadata(work_dir: Path):
     common.write_document(doc, route.MANIFEST_PATH)
     common.write_document(census, route.HERE / "census.json")
     common.write_document({"schema_version": "study-axis-declaration/v1", "groups": [
-        {"axis": axis, "note": "One authoritative WI-048 entry point; window belongs to the study.",
+        {"axis": axis, "note": "WI-049 discount-rate continuity question; framing and window belong to the study.",
          "keys": [{"key": route.P + key, "provenance": "fan_out"}]}
-        for axis, key in (("beam_energy_mj", "driver__beam_energy_mj"), ("frequency", "frequency"))
+        for axis, key in (("discount_rate", "discount_rate"),)
     ]}, route.HERE / "axes.json")
 
 

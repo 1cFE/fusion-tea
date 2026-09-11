@@ -15,9 +15,12 @@ def executed(tmp_path_factory):
     work = tmp_path_factory.mktemp("ife-native-route")
     overrides = [{}, {"driver__beam_energy_mj": 10.0}, {"frequency": 5.0},
                  BOUNDARIES["counterexample"], BOUNDARIES["zero"]]
+    overrides += [point | {"discount_rate": rate}
+                  for rate in (0.0, 1e-12, -1e-12, 1e-16, -1e-16)
+                  for point in ({}, BOUNDARIES["counterexample"], BOUNDARIES["zero"])]
     points = [{P + k: v for k, v in p.items()} for p in overrides]
     cases, db = route.run_points("ife-native-validation", points, work)
-    assert len(cases) == 5
+    assert len(cases) == len(points) == 20
     assert all(c.state == "completed" for c in cases)
     identity = route.write_identity_document(route.PACKAGE_DIR, work / "identity.json")
     return cases, db, identity, points
@@ -35,18 +38,18 @@ def test_stored_outputs_and_eligibility(executed):
         generating = case.outputs[P + "lcoe_calc__net_electric_power"] > 0
         assert verdicts["net_positive"] == ("satisfied" if generating else "violated")
         assert set(route.eligible_prices(case).values()) == {generating}
-    zero = by_point[tuple(sorted(points[-1].items()))]
+    zero = by_point[tuple(sorted(points[4].items()))]
     assert zero.outputs[P + "lcoe_calc__net_electric_power"] == 0.0
     assert zero.outputs[P + "hawker_price__price"] == zero.outputs[P + "meier_price__price"] == 0.0
 
 
 def test_generic_verifier_compares_all_channels_and_predicates(executed):
-    _, db, identity, _ = executed
+    _, db, identity, points = executed
     summary = verify.build_summary(route.PACKAGE_DIR, route.MANIFEST_PATH, identity, [db], 100, None, [])
-    assert len(summary["channels_checked"]) == 30
+    assert len(summary["channels_checked"]) == 32
     assert summary["verdicts_rederived"] is True
     assert len(summary["constraints_rederived"]) == 2
-    assert summary["stores"][0]["sampling"]["sampled_rows"] == 5
+    assert summary["stores"][0]["sampling"]["sampled_rows"] == len(points)
 
 
 def test_incompatible_store_is_preserved(executed):
@@ -58,10 +61,12 @@ def test_incompatible_store_is_preserved(executed):
     assert db.read_bytes() == before
 
 
-def test_missing_numeric_or_verdict_evidence_is_refused(executed):
+@pytest.mark.parametrize("channel", ["hawker_price__price", "pv_factors__construction_factor",
+                                     "pv_factors__operation_factor"])
+def test_missing_numeric_or_verdict_evidence_is_refused(executed, channel):
     case = executed[0][0]
     outputs = dict(case.outputs)
-    outputs.pop(P + "hawker_price__price")
+    outputs.pop(P + channel)
     with pytest.raises(route.RouteError, match="missing required"):
         route.eligible_prices(replace(case, outputs=outputs))
     with pytest.raises(route.RouteError, match="verdicts do not match"):
@@ -77,18 +82,30 @@ def test_invalid_proposals_are_refused(point):
 
 
 @pytest.mark.parametrize("years", [0, -1, 1.5])
-@pytest.mark.parametrize("name", ["construction_years", "operational_years"])
+@pytest.mark.parametrize("name", ["construction_duration", "operational_duration"])
 def test_oracle_does_not_truncate_years(name, years):
     with pytest.raises(oracle.OracleSeamError, match="positive integral"):
-        oracle.evaluate({P + "lcoe_calc__" + name: years})
+        oracle.evaluate({P + name: years})
+
+
+@pytest.mark.parametrize("name", ["construction_years", "operational_years"])
+def test_retired_duration_keys_are_refused(name):
+    point = {P + "lcoe_calc__" + name: 5.0}
+    assert route.validate_proposal(point) is None
+    with pytest.raises(oracle.OracleSeamError, match="undeclared entry keys"):
+        oracle.evaluate(point)
 
 
 def test_metadata_and_full_input_mapping():
     loaded = manifest.load(route.MANIFEST_PATH)
     contract = json.loads((route.PACKAGE_DIR / "contracts/model_contract.json").read_text())
     assert set(oracle.ENTRY_KEYS) == {p["qualified_name"] for p in contract["parameters"]}
-    assert len(loaded.data["objective_catalog"]) == 30
+    assert len(loaded.data["objective_catalog"]) == 32
     assert len(oracle.operand_bindings()) == 2
+    axes = json.loads((route.HERE / "axes.json").read_text())["groups"]
+    assert len(axes) == 1
+    assert axes[0]["axis"] == "discount_rate"
+    assert axes[0]["keys"] == [{"key": P + "discount_rate", "provenance": "fan_out"}]
     assert_source_outputs(oracle.evaluate(loaded.data["baseline"]["point"]))
 
 

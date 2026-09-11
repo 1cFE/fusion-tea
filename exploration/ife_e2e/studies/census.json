@@ -5,6 +5,7 @@
       "hif_plant_pkg__hif_plant__availability",
       "hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple",
       "hif_plant_pkg__hif_plant__chamber__yield_cost_constant",
+      "hif_plant_pkg__hif_plant__construction_duration",
       "hif_plant_pkg__hif_plant__discount_rate",
       "hif_plant_pkg__hif_plant__driver__beam_energy_mj",
       "hif_plant_pkg__hif_plant__driver__efficiency",
@@ -13,6 +14,7 @@
       "hif_plant_pkg__hif_plant__frequency",
       "hif_plant_pkg__hif_plant__gain",
       "hif_plant_pkg__hif_plant__om_cost_constant",
+      "hif_plant_pkg__hif_plant__operational_duration",
       "hif_plant_pkg__hif_plant__plant_cost_constant",
       "hif_plant_pkg__hif_plant__reactor_units",
       "hif_plant_pkg__hif_plant__target_factory__cost_per_target",
@@ -20,10 +22,8 @@
       "hif_plant_pkg__hif_plant__thermal_efficiency"
     ],
     "library_default": [
-      "hif_plant_pkg__hif_plant__lcoe_calc__construction_years",
-      "hif_plant_pkg__hif_plant__lcoe_calc__operational_years",
       "hif_plant_pkg__hif_plant__viability__threshold"
     ]
   },
-  "derived_against_semantic_fingerprint": "8b7a76a631e6e55dbd45cf617a68fae87def408e4f8494015e40c0c8aac585dd"
+  "derived_against_semantic_fingerprint": "8596c899df17f763bbce6eb50a18c1b5bca83080c40233e40bc01a7bb1aa1888"
 }

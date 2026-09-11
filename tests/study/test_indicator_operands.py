@@ -67,8 +67,15 @@ def test_unknown_nested_kind_is_refused():
         tool.predicate_operands(entry)
 
 
-def test_actual_ife_report_preserves_schema_and_conservative_classification():
-    declaration = tool.read_axis_declaration(STUDIES / "axes.json")
+def test_actual_ife_report_preserves_schema_and_conservative_classification(tmp_path):
+    # This regression exercises the physical axes independently of the current study question.
+    path = tmp_path / "physical-axes.json"
+    prefix = "hif_plant_pkg__hif_plant__"
+    path.write_text(json.dumps({"schema_version": "study-axis-declaration/v1", "groups": [
+        {"axis": axis, "keys": [{"key": prefix + key, "provenance": "fan_out"}]}
+        for axis, key in (("beam_energy_mj", "driver__beam_energy_mj"), ("frequency", "frequency"))
+    ]}))
+    declaration = tool.read_axis_declaration(path)
     report = tool.build_report(PACKAGE, manifest.load(STUDIES / "manifest.json"), declaration, [])
     jsonschema.validate(report, json.loads((ROOT / "scripts/study/schemas/indicators.v1.schema.json").read_text()))
     assert len(report["groups"]) == 2

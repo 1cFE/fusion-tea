@@ -17,6 +17,8 @@ P = "hif_plant_pkg__hif_plant__"
 BASELINE_RESULT_SCHEMA_VERSION = "study-baseline-result/v1"
 EXPECTED_CONSTRAINT_COUNT = 2
 CHANNELS = {'lcoe_calc__energy_on_target': 'hif_plant_pkg__hif_plant__lcoe_calc__energy_on_target',
+ 'pv_factors__construction_factor': 'hif_plant_pkg__hif_plant__pv_factors__construction_factor',
+ 'pv_factors__operation_factor': 'hif_plant_pkg__hif_plant__pv_factors__operation_factor',
  'lcoe_calc__fusion_energy_per_shot': 'hif_plant_pkg__hif_plant__lcoe_calc__fusion_energy_per_shot',
  'lcoe_calc__fusion_power': 'hif_plant_pkg__hif_plant__lcoe_calc__fusion_power',
  'lcoe_calc__thermal_power': 'hif_plant_pkg__hif_plant__lcoe_calc__thermal_power',

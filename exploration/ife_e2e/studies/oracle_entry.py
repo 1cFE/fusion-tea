@@ -19,7 +19,7 @@ def evaluate(point):
         if isinstance(value, bool) or not isinstance(value, (int, float)) or not isfinite(value):
             raise OracleSeamError(f"finite numeric input required: {key}")
         name = ENTRY_KEYS[key]
-        if name.endswith(("construction_years", "operational_years")):
+        if name in ("construction_duration", "operational_duration"):
             if value <= 0 or not float(value).is_integer():
                 raise OracleSeamError(f"oracle requires positive integral years: {key}")
         if name != "viability__threshold":
