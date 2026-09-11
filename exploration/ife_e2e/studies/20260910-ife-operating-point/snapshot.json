@@ -1,0 +1,655 @@
+{
+  "snapshot_schema_version": "1",
+  "study_id": "20260910-ife-operating-point",
+  "package": {
+    "path": "exploration/ife_e2e/generated",
+    "package_name": "ife_tea",
+    "repo_commit": "adab59d9087f321c21a2a15f68151165a96579b7",
+    "git_clean": true
+  },
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "0539f0d5cbf2443512ea71ac93c19a2b80341bbf618337405993e4cab447daa1",
+      "files": [
+        {
+          "path": "contracts/model_contract.json",
+          "sha256": "aaf05bc2d40b7274ca080701116f1d26aabc02db907c685d7fe51af5cbd76dc4"
+        },
+        {
+          "path": "inputs/hif_driver_params.json",
+          "sha256": "b4d483781b037e744e8b9c7e931236b2f3b8638baa8ea57e228bbd6b1966615e"
+        },
+        {
+          "path": "inputs/hif_plant_params.json",
+          "sha256": "a3ec7359041c3d29bf13d38aae048c264cc200973eb84fcac221b3a79bd4fde7"
+        },
+        {
+          "path": "inputs/ife_lcoe_params.json",
+          "sha256": "6266c1e48e38971157011c5729c0f31751a2b66a06dd4b105107c09ee699270c"
+        },
+        {
+          "path": "inputs/ife_plant_params.json",
+          "sha256": "bd2fe10036d6f4d8633d72620c4cc96c9ffead9e3b5115fe3e1e45810e158d63"
+        },
+        {
+          "path": "pipelines/pipeline.yaml",
+          "sha256": "a1ec5b4a85afe003621985716fa533ae748f6d503e8fdd9b2e4e9f4345497dbe"
+        }
+      ]
+    },
+    "recorded_provenance.executable_fingerprint": "045417b231573653d754b68c8e26eec26fcec72fdc3814df27e504416639fe63",
+    "recorded_provenance.semantic_fingerprint": "8b7a76a631e6e55dbd45cf617a68fae87def408e4f8494015e40c0c8aac585dd"
+  },
+  "manifest": {
+    "path": "exploration/ife_e2e/studies/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "843c21a9ef59520612b83c8cd1f91ae12a73efbbc7d216cd82da6d07e4175b10",
+    "content_used": {
+      "ties": [],
+      "objective_catalog": [
+        {
+          "name": "driver__meier_cost__bank_energy_joules",
+          "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules"
+        },
+        {
+          "name": "driver__meier_cost__cost_billions",
+          "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions"
+        },
+        {
+          "name": "driver__meier_cost__gamma",
+          "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__gamma"
+        },
+        {
+          "name": "hawker_price__generating",
+          "channel": "hif_plant_pkg__hif_plant__hawker_price__generating"
+        },
+        {
+          "name": "hawker_price__price",
+          "channel": "hif_plant_pkg__hif_plant__hawker_price__price"
+        },
+        {
+          "name": "lcoe_calc__annual_driver_replacement_cost",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__annual_driver_replacement_cost"
+        },
+        {
+          "name": "lcoe_calc__discounted_cost",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost"
+        },
+        {
+          "name": "lcoe_calc__discounted_energy",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy"
+        },
+        {
+          "name": "lcoe_calc__driver_capital_cost",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_capital_cost"
+        },
+        {
+          "name": "lcoe_calc__driver_electric_power",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power"
+        },
+        {
+          "name": "lcoe_calc__driver_lifetime_years",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_lifetime_years"
+        },
+        {
+          "name": "lcoe_calc__driver_recirculating_fraction",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction"
+        },
+        {
+          "name": "lcoe_calc__energy_on_target",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__energy_on_target"
+        },
+        {
+          "name": "lcoe_calc__fusion_energy_per_shot",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__fusion_energy_per_shot"
+        },
+        {
+          "name": "lcoe_calc__fusion_power",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__fusion_power"
+        },
+        {
+          "name": "lcoe_calc__gross_electric_power",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power"
+        },
+        {
+          "name": "lcoe_calc__net_electric_power",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power"
+        },
+        {
+          "name": "lcoe_calc__net_electric_power_gw",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw"
+        },
+        {
+          "name": "lcoe_calc__other_parasitic_power",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power"
+        },
+        {
+          "name": "lcoe_calc__shots_per_year",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__shots_per_year"
+        },
+        {
+          "name": "lcoe_calc__thermal_power",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power"
+        },
+        {
+          "name": "lcoe_calc__thermal_power_gw",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw"
+        },
+        {
+          "name": "lcoe_calc__total_recirculating_fraction",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction"
+        },
+        {
+          "name": "meier_capital_calc__total_capital_billions",
+          "channel": "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions"
+        },
+        {
+          "name": "meier_coe_calc__annualized_cost",
+          "channel": "hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost"
+        },
+        {
+          "name": "meier_coe_calc__energy_denominator",
+          "channel": "hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator"
+        },
+        {
+          "name": "meier_price__generating",
+          "channel": "hif_plant_pkg__hif_plant__meier_price__generating"
+        },
+        {
+          "name": "meier_price__price",
+          "channel": "hif_plant_pkg__hif_plant__meier_price__price"
+        },
+        {
+          "name": "meier_reactor_cost_calc__reactor_cost_billions",
+          "channel": "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions"
+        },
+        {
+          "name": "recirc_calc__f_recirc",
+          "channel": "hif_plant_pkg__hif_plant__recirc_calc__f_recirc"
+        }
+      ],
+      "baseline": {
+        "point": {
+          "hif_plant_pkg__hif_plant__driver__efficiency": 0.28,
+          "hif_plant_pkg__hif_plant__driver__lifetime_shots": 6000000000.0,
+          "hif_plant_pkg__hif_plant__availability": 0.9,
+          "hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple": 1.15,
+          "hif_plant_pkg__hif_plant__chamber__yield_cost_constant": 5000000.0,
+          "hif_plant_pkg__hif_plant__discount_rate": 0.08,
+          "hif_plant_pkg__hif_plant__driver__beam_energy_mj": 5.0,
+          "hif_plant_pkg__hif_plant__driver__num_chambers": 1.0,
+          "hif_plant_pkg__hif_plant__frequency": 4.6,
+          "hif_plant_pkg__hif_plant__gain": 87.0,
+          "hif_plant_pkg__hif_plant__om_cost_constant": 65.0,
+          "hif_plant_pkg__hif_plant__plant_cost_constant": 2000.0,
+          "hif_plant_pkg__hif_plant__reactor_units": 1.0,
+          "hif_plant_pkg__hif_plant__target_factory__cost_per_target": 10.0,
+          "hif_plant_pkg__hif_plant__target_factory_direct_cost_billions": 0.1,
+          "hif_plant_pkg__hif_plant__thermal_efficiency": 0.45,
+          "hif_plant_pkg__hif_plant__lcoe_calc__construction_years": 5.0,
+          "hif_plant_pkg__hif_plant__lcoe_calc__operational_years": 40.0,
+          "hif_plant_pkg__hif_plant__viability__threshold": 10.0
+        },
+        "headline": {
+          "channel": "hif_plant_pkg__hif_plant__hawker_price__price",
+          "value": 240.66646063955096
+        },
+        "verdicts": [
+          {
+            "source_local_identity": "net_positive",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "viability",
+            "expected": "satisfied"
+          }
+        ]
+      },
+      "oracle": {
+        "kind": "python_callable",
+        "module": "exploration.ife_e2e.studies.oracle_entry",
+        "callable": "evaluate",
+        "sys_path": ".",
+        "source_digest": {
+          "recipe": "tool-source-digest/v1",
+          "digest": "de2f6dd3e26336dc8f86583c66ed828c2ab838454e6754e44be455a7e770ecc2",
+          "files": [
+            {
+              "path": "exploration/ife_e2e/studies/oracle_entry.py",
+              "sha256": "61e15aac15503618b3d9b9a37b52592b49c165b5ba1322bb26567013b3d1b523"
+            },
+            {
+              "path": "tests/ife_oracle.py",
+              "sha256": "0bd016a877a6fb92ea8c5b07add0bf6c9927464acba18602c650930320da333d"
+            }
+          ]
+        }
+      },
+      "fingerprint_names": [
+        "indicator_inputs",
+        "recorded_provenance.executable_fingerprint",
+        "recorded_provenance.semantic_fingerprint"
+      ]
+    }
+  },
+  "stores": [
+    {
+      "store_id": "ife-main",
+      "path": "exploration/ife_e2e/studies/20260910-ife-operating-point/results/_work/20260910-ife-operating-point.db",
+      "compatibility_tuple": {
+        "evidence_schema_version": "v3",
+        "executable_fingerprint": "045417b231573653d754b68c8e26eec26fcec72fdc3814df27e504416639fe63",
+        "input_schema_version": "input-v1",
+        "model_contract_fingerprint": "8b7a76a631e6e55dbd45cf617a68fae87def408e4f8494015e40c0c8aac585dd",
+        "strategy_config": "2e741391cf2e15c5abc68b01b9e8496948eb98751586f8240ac76e20e5287571",
+        "strategy_identity": "prepared-list/v1",
+        "study_definition_fingerprint": "208dc54a885c5f5b636db2716470b2f235427c98f3ef3933c54a237e46ebc03d",
+        "study_id": "20260910-ife-operating-point"
+      }
+    }
+  ],
+  "arms": [
+    {
+      "arm_id": "arm-ife",
+      "store_id": "ife-main",
+      "effective_executable_fingerprint": {
+        "value": "045417b231573653d754b68c8e26eec26fcec72fdc3814df27e504416639fe63",
+        "inputs": null,
+        "no_adapter": true,
+        "note": "No adapter exists; the sealed fingerprint is the identity."
+      },
+      "entry_models": {
+        "hif_driver_params": "ife_tea.schemas.hif_driver_params.HifDriverParams",
+        "hif_plant_params": "ife_tea.schemas.hif_plant_params.HifPlantParams",
+        "ife_lcoe_params": "ife_tea.schemas.ife_lcoe_params.IfeLcoeParams",
+        "ife_plant_params": "ife_tea.schemas.ife_plant_params.IfePlantParams"
+      },
+      "strategy": "prepared-list/v1",
+      "window": {
+        "provenance": "engineered",
+        "bounds": {
+          "beam_energy_mj": {
+            "values": [
+              4,
+              5,
+              6
+            ],
+            "held_frequency_hz": 4.6
+          },
+          "frequency": {
+            "values": [
+              3.6,
+              4.6,
+              5.6
+            ],
+            "held_beam_energy_mj": 5
+          }
+        },
+        "scheme": "five unique one-factor points plus fixed counterexample and zero diagnostics",
+        "diagnostics": [
+          "counterexample",
+          "zero"
+        ]
+      },
+      "verification": {
+        "command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python exploration/ife_e2e/studies/20260910-ife-operating-point/execute.py execute'",
+        "tool_revision": {
+          "recipe": "tool-source-digest/v1",
+          "digest": "a7e8ee5802b778bc11507571a03856203af9d90a64a9da5fa1db1646cf1fff2d",
+          "files": [
+            {
+              "path": "scripts/study/common.py",
+              "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+            },
+            {
+              "path": "scripts/study/identity.py",
+              "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+            },
+            {
+              "path": "scripts/study/manifest.py",
+              "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+            },
+            {
+              "path": "scripts/study/schemas/package_identity.v1.schema.json",
+              "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+            },
+            {
+              "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+              "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+            },
+            {
+              "path": "scripts/study/verify.py",
+              "sha256": "4cf1fb8faf9459a0522dea39116a772b4b5067288552ea4fdcf4741908bca77e"
+            }
+          ]
+        },
+        "sampling_scheme": {
+          "scheme": "stratified-by-verdict-combination/v1",
+          "seed": "85844fa524f29528",
+          "seed_source": "derived",
+          "sample_size_requested": 100,
+          "strata_observed": 2,
+          "sampled_rows": 7,
+          "sampled_case_ids": [
+            "20260910-ife-operating-point:c0001",
+            "20260910-ife-operating-point:c0005",
+            "20260910-ife-operating-point:c0000",
+            "20260910-ife-operating-point:c0006",
+            "20260910-ife-operating-point:c0004",
+            "20260910-ife-operating-point:c0003",
+            "20260910-ife-operating-point:c0002"
+          ]
+        },
+        "tolerance": 1e-09,
+        "summary_sha256": "5169caaf6f0a4e24646907b3e5c8e66b2488ebd34956f42593a766a19778d2f8"
+      },
+      "glue_ledger": [],
+      "glue_ledger_none": true,
+      "artifacts": [
+        {
+          "path": "results/1costingfe-driver-identities.json",
+          "sha256": "350d6e634b08ebdd22931b49d2f3542d4a2cf7701b58d6bffd3545a1ebe4cfbc"
+        },
+        {
+          "path": "results/_work/20260910-ife-operating-point.db",
+          "sha256": "9975eab120aee4579e673a52be85e68ef1e623554a5cdb4e92f01ec218aa0dde"
+        },
+        {
+          "path": "results/_work/artifacts/0a47c32206d9cff52781cde19a8be060a085548a7ef266498599b326a820aff3.json",
+          "sha256": "0a47c32206d9cff52781cde19a8be060a085548a7ef266498599b326a820aff3"
+        },
+        {
+          "path": "results/_work/artifacts/790369337e489282c5cb9259dce20ccde3d047e000d486778afc192426b059d5.json",
+          "sha256": "790369337e489282c5cb9259dce20ccde3d047e000d486778afc192426b059d5"
+        },
+        {
+          "path": "results/_work/artifacts/7a8df1939eaa4ecae94ee260b120c642589e392db8ce9be31ddd8bf45d862cdb.json",
+          "sha256": "7a8df1939eaa4ecae94ee260b120c642589e392db8ce9be31ddd8bf45d862cdb"
+        },
+        {
+          "path": "results/_work/artifacts/82186e695d7fbab4bbfd315f5f87adcffe721e4cf4ee24c693df9cfc9349ae2f.json",
+          "sha256": "82186e695d7fbab4bbfd315f5f87adcffe721e4cf4ee24c693df9cfc9349ae2f"
+        },
+        {
+          "path": "results/_work/artifacts/b7e90673f6d1681d87253e4290bdf4fb38cdd3dbdf29e67eca6e75cfb4385f76.json",
+          "sha256": "b7e90673f6d1681d87253e4290bdf4fb38cdd3dbdf29e67eca6e75cfb4385f76"
+        },
+        {
+          "path": "results/_work/artifacts/d6766eb41b0541778b627e0b8db34836f40ecf14bd96b8ebcffd7668542dd0e3.json",
+          "sha256": "d6766eb41b0541778b627e0b8db34836f40ecf14bd96b8ebcffd7668542dd0e3"
+        },
+        {
+          "path": "results/_work/artifacts/f31aff6291c49a7950b4a7217cd8dd1941e0f63216b429d2f006a05714ba3154.json",
+          "sha256": "f31aff6291c49a7950b4a7217cd8dd1941e0f63216b429d2f006a05714ba3154"
+        },
+        {
+          "path": "results/baseline/_work/artifacts/b7e90673f6d1681d87253e4290bdf4fb38cdd3dbdf29e67eca6e75cfb4385f76.json",
+          "sha256": "b7e90673f6d1681d87253e4290bdf4fb38cdd3dbdf29e67eca6e75cfb4385f76"
+        },
+        {
+          "path": "results/baseline/_work/ife-baseline-point-v1.db",
+          "sha256": "a3978b90abadd597ed17ee89946d085ea21a08141d5c4a525ec2efc3cab4789f"
+        },
+        {
+          "path": "results/baseline/baseline_result.json",
+          "sha256": "8449437c827959c8a23a743e05e3447a8879507216367d92a3d756ebba44b0da"
+        },
+        {
+          "path": "results/baseline/package_identity.json",
+          "sha256": "769d47a5fbbe2567ebfe0e419d34f33985a1f6a3bbf2646394f0070b7d64be3f"
+        },
+        {
+          "path": "results/cases.json",
+          "sha256": "894c652efa3503015b629e95214a2487ec9997790c6f5e389271567898ec45c4"
+        },
+        {
+          "path": "results/context/1costingfe-excerpts.txt",
+          "sha256": "00c4b6495c864d6cd20d76f92aacb3c4dc5e61f7041aac7fa5b4c8ccea1ea47a"
+        },
+        {
+          "path": "results/context/ANNEX.md",
+          "sha256": "5b7b3aaf6a0ab71b4e1befa3a75a9017020f919dd19e5d5e9e538f2d78676743"
+        },
+        {
+          "path": "results/context/WI048-audit.md",
+          "sha256": "f89cba925dfe7406afd9ea04f53299be61fd57383362b6693965ed81d2ff2b82"
+        },
+        {
+          "path": "results/context/eligibility.py",
+          "sha256": "c25d2641c332c9d064c19bed6f50f412db9c7bae2481709d3ad27fac442d9fbc"
+        },
+        {
+          "path": "results/context/generating_electricity_price_impl.py",
+          "sha256": "67bc0ed6241856920c8380b4ddcc0293d41f6d6fa131abc6c97b6cc74d1d9377"
+        },
+        {
+          "path": "results/context/ife_oracle.py",
+          "sha256": "0bd016a877a6fb92ea8c5b07add0bf6c9927464acba18602c650930320da333d"
+        },
+        {
+          "path": "results/context/indicator-audit.md",
+          "sha256": "159abee03a73085851cff8b5f3c8f16b22d3a58778ce903bce45f55b7ba659d9"
+        },
+        {
+          "path": "results/context/integration_return.json",
+          "sha256": "ed8ecd6f6d756082ad084b06961b48ce12f4c2d6badd04370e99622e9e4c6998"
+        },
+        {
+          "path": "results/context/manifest.json",
+          "sha256": "843c21a9ef59520612b83c8cd1f91ae12a73efbbc7d216cd82da6d07e4175b10"
+        },
+        {
+          "path": "results/context/model_contract.json",
+          "sha256": "aaf05bc2d40b7274ca080701116f1d26aabc02db907c685d7fe51af5cbd76dc4"
+        },
+        {
+          "path": "results/context/oracle_entry.py",
+          "sha256": "61e15aac15503618b3d9b9a37b52592b49c165b5ba1322bb26567013b3d1b523"
+        },
+        {
+          "path": "results/context/package-audit.md",
+          "sha256": "5cb4480924d7aa7f6928c1d1041c4e8e792152f4b5dd7cb1b7ec378b19e96a69"
+        },
+        {
+          "path": "results/context/study_route.py",
+          "sha256": "5ae34ea2545e425bfe9ee0178a0ff68ea0a15f61101c4553daf04e4ded49f526"
+        },
+        {
+          "path": "results/entry-models.json",
+          "sha256": "06f83e6966d289b5c91acb4b864a0f1534b054883e3deb12ca8edcefb0a55369"
+        },
+        {
+          "path": "results/oracle-scan.json",
+          "sha256": "9f50adaf4eaf88051398148785cb2d8c0d30bff8eb7d2a23fc35098089dc5f57"
+        },
+        {
+          "path": "results/points.csv",
+          "sha256": "efc9e2a90485d908ab0c1891b2e9a4033e823d906ff535961cf61fac57c17aab"
+        },
+        {
+          "path": "results/post-run-clean.json",
+          "sha256": "edc6d63b212ea282d5f3f684a9ae603ee6977e27e56d115268da232e9a9a2157"
+        },
+        {
+          "path": "results/preflight.json",
+          "sha256": "0bf83e86fdd3a76fb2d67bf8d180cd2afb29ded4f289c13898d10b4c49e1da62"
+        },
+        {
+          "path": "results/proposals.json",
+          "sha256": "1822b1f64f5a8b45c70b8a6728ad8a6b54a9e0afd883864d723aa04e381d8be2"
+        },
+        {
+          "path": "results/reference-applicability.md",
+          "sha256": "c7b886ab108c11fd97bbf76234f5929221287c42b2c6b0d1201aa2ec445c30fb"
+        },
+        {
+          "path": "results/verification_summary.json",
+          "sha256": "5169caaf6f0a4e24646907b3e5c8e66b2488ebd34956f42593a766a19778d2f8"
+        },
+        {
+          "path": "results/window.json",
+          "sha256": "3939211e3d3572303354d0c8c97c8b7ee554593e29a0ada4fc94c186a0155bd2"
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "path": "scripts/study/indicators.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "55509c0ee55e03411acb8d0007554396ace3cfe9e66b27f94c121023c9aa25b9",
+        "files": [
+          {
+            "path": "scripts/study/indicators.py",
+            "sha256": "a1035fa2fdc505d7478039bc05e0e1eb2dab156f08d8ad7cac26d21d4ac4e8a0"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/schemas/axis_declaration.v1.schema.json",
+            "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+          },
+          {
+            "path": "scripts/study/schemas/indicators.v1.schema.json",
+            "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+          },
+          {
+            "path": "scripts/study/schemas/study_package_manifest.v1.schema.json",
+            "sha256": "5fd44712cd032647df701a24f237f2dda7ccd75c2f101a5c6244c9b6bca47032"
+          }
+        ]
+      }
+    },
+    {
+      "path": "scripts/study/preflight.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "fee08e143c556b0ea0bd7d32035257283220f8f671b3b2f2aa52ecf8a3c92681",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/preflight.py",
+            "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+          },
+          {
+            "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+            "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+            "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+          }
+        ]
+      }
+    },
+    {
+      "path": "scripts/study/verify.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "a7e8ee5802b778bc11507571a03856203af9d90a64a9da5fa1db1646cf1fff2d",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+            "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+          },
+          {
+            "path": "scripts/study/verify.py",
+            "sha256": "4cf1fb8faf9459a0522dea39116a772b4b5067288552ea4fdcf4741908bca77e"
+          }
+        ]
+      }
+    },
+    {
+      "path": "exploration/ife_e2e/studies/20260910-ife-operating-point/execute.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "0acf32c445eee9f422cbc6549d56eeedbcf5561699c52e897350c1e09eae3135",
+        "files": [
+          {
+            "path": "exploration/ife_e2e/studies/20260910-ife-operating-point/execute.py",
+            "sha256": "25068e1e1163e69da00af5dfeb1ab103a4fcdaefd70fa814808b1533f16b22c9"
+          },
+          {
+            "path": "exploration/ife_e2e/studies/study_route.py",
+            "sha256": "5ae34ea2545e425bfe9ee0178a0ff68ea0a15f61101c4553daf04e4ded49f526"
+          },
+          {
+            "path": "exploration/ife_e2e/eligibility.py",
+            "sha256": "c25d2641c332c9d064c19bed6f50f412db9c7bae2481709d3ad27fac442d9fbc"
+          }
+        ]
+      }
+    }
+  ],
+  "indicators": {
+    "path": "indicators.json",
+    "sha256": "143e2e5fb2fedea117ea67006015beb88c92160444d99754e1793c3d387b2ee7",
+    "output_schema_version": "study-indicators/v1",
+    "axis_declaration": {
+      "path": "exploration/ife_e2e/studies/20260910-ife-operating-point/axes.json",
+      "schema_version": "study-axis-declaration/v1",
+      "digest": "6f38ef26a45dc1a7b74bccea0ecab37ba30f6bd64e49f21039e2e64dae3accf4",
+      "groups_declared": [
+        "beam_energy_mj",
+        "frequency"
+      ],
+      "subset": false
+    }
+  },
+  "protocol": {
+    "path": "protocol.md",
+    "sha256": "daf2c0aae3260fd03dbf6ff204f3bd9c292d11121031a535065d2c8d29e22844",
+    "pre_execution_review": {
+      "path": "pre-execution-review.md",
+      "sha256": "4d9bb290c460433b99e857d5bc50436ecc67e057b9240ffb220a5a460f4af64c"
+    }
+  },
+  "reference_check": {
+    "path": "exploration/ife_e2e/studies/20260910-ife-operating-point/reference_check.py",
+    "sha256": "f9f1b0e4f3f60031e83d7029bf60e12ee41952de4af14249333bc67e523864be",
+    "command": "PYTHONDONTWRITEBYTECODE=1 .codex-test/run python exploration/ife_e2e/studies/20260910-ife-operating-point/reference_check.py"
+  },
+  "preparation_commands": [
+    ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python exploration/ife_e2e/studies/20260910-ife-operating-point/execute.py baseline'",
+    ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python exploration/ife_e2e/studies/20260910-ife-operating-point/execute.py scan'"
+  ],
+  "teax": {
+    "revision": "8d877460ac4f6f264561d916e40c1708adb13397",
+    "era_pin": null
+  }
+}

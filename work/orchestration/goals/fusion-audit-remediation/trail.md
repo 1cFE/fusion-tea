@@ -153,3 +153,28 @@ T-005 · native study execute `exploration/ife_e2e/studies/20260910-ife-operatin
 ### T-006 start — 2026-09-10
 
 T-006 · native coding PM `.project/active/study-indicator-multiplication/` · expected artifacts: bounded spec/design/plan, traversal correction, tests and fresh coding audit.
+
+### T-006 return — 2026-09-10
+
+**Outcome:** COMPLETE.
+
+**Evidence:** `.project/active/study-indicator-multiplication/audit.md@adab59d9087f321c21a2a15f68151165a96579b7`, its fresh product-lens ledger, actual indicator report and regression evidence.
+
+**Goal reading:** The native indicator can now traverse the existing IFE multiplication leaves and conservatively classify both declared axes. Its actual report also executes the package read-set coverage assertion absent from the integration gate; the historical integration limitation remains correctly reported as such. No numerical response or feasibility follows from reachability alone.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Fresh audit certifies the actual IFE report and preserved conservative semantics | Accept the bounded shared indicator correction and resume the same unexecuted study preparation under a new task with changed producer inputs. | execution detail | Parent round agent, supported by fresh independent coding audit | Native correction/certification at the ref above; promoted pin and model unchanged |
+
+### T-007 scope
+
+- **Objective:** Complete and commit the native IFE operating-point study previously stopped in T-005.
+- **Why now:** T-006 certifies the indicator capability needed for pre-execution framing.
+- **Scope:** Resume the uncommitted `20260910-ife-operating-point` record through the native execute workflow. Retain T-005's beam/rate sensitivity and negative/zero-net diagnostics, promoted candidate and separate historical cost interpretations. No model/finance changes, new pin, semantic follow-up or owner-held actions.
+- **Inputs:** `goal.md@adab59d9087f321c21a2a15f68151165a96579b7`; T-004 audited candidate at `f0d2f67096a69c26add06d137f532d55bf3361d2`; T-006 audit above; native study runbook/policy and the package annex.
+- **Done when:** One complete reviewed/verified native study record is committed, or a precise producer blocker is recorded.
+- **Stop when:** Required protocol ruling, broader seam repair, changed model/comparison meaning, owner gate or declared limit.
+
+### T-007 start — 2026-09-10
+
+T-007 · native study execute `exploration/ife_e2e/studies/20260910-ife-operating-point/` · expected artifacts: completed native study record and immutable execution evidence, resuming the unexecuted T-005 draft.

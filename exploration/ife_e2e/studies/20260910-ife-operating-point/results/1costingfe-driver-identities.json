@@ -1,0 +1,63 @@
+{
+  "revision": "02543850089be175ea7c28b92a8b2a4184e1637e",
+  "scope": "Bank energy and driver wall-plug power only; non-driver recirculating inputs set to zero solely to isolate that identity. No net-power or LCOE parity claim.",
+  "rows": [
+    {
+      "role": "baseline",
+      "bank_energy_joules": 17857142.857142854,
+      "driver_electric_watts": 82142857.14285713
+    },
+    {
+      "role": "beam-4.0",
+      "bank_energy_joules": 14285714.285714285,
+      "driver_electric_watts": 65714285.71428571
+    },
+    {
+      "role": "beam-6.0",
+      "bank_energy_joules": 21428571.428571425,
+      "driver_electric_watts": 98571428.57142855
+    },
+    {
+      "role": "rate-3.6",
+      "bank_energy_joules": 17857142.857142854,
+      "driver_electric_watts": 64285714.285714276
+    },
+    {
+      "role": "rate-5.6",
+      "bank_energy_joules": 17857142.857142854,
+      "driver_electric_watts": 99999999.99999999
+    },
+    {
+      "role": "counterexample",
+      "bank_energy_joules": 50000000.0,
+      "driver_electric_watts": 230000000.0
+    },
+    {
+      "role": "zero",
+      "bank_energy_joules": 50000000.0,
+      "driver_electric_watts": 250000000.0
+    }
+  ],
+  "sources": [
+    {
+      "path": "src/costingfe/layers/physics.py",
+      "sha256": "40cc5a3bcba1e2f6ab1e5581f574704370b3841237087e497e146ec7f46af4c4"
+    },
+    {
+      "path": "src/costingfe/types.py",
+      "sha256": "7af80374f0862b3a33b46cd2cf1962aa8b43ec53b13f61e60acaf89a0a8c7f5c"
+    },
+    {
+      "path": "src/costingfe/layers/cas22.py",
+      "sha256": "66e8102965cab6cc6673eb6f4fed9fee817c962884b243faf5e6ad026cb89f10"
+    },
+    {
+      "path": "src/costingfe/defaults.py",
+      "sha256": "4f492fe4c55d607ca6b3957f0348baf081db930b13e8b5b837d11cbfc5143996"
+    },
+    {
+      "path": "src/costingfe/data/defaults/pulsed_heavy_ion.yaml",
+      "sha256": "b60a70a767cd22977e8d88bd791c212523fdebda6a4467ba004591f0a445ed4e"
+    }
+  ]
+}

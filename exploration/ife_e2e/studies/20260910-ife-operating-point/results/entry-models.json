@@ -1,0 +1,6 @@
+{
+  "hif_driver_params": "ife_tea.schemas.hif_driver_params.HifDriverParams",
+  "hif_plant_params": "ife_tea.schemas.hif_plant_params.HifPlantParams",
+  "ife_lcoe_params": "ife_tea.schemas.ife_lcoe_params.IfeLcoeParams",
+  "ife_plant_params": "ife_tea.schemas.ife_plant_params.IfePlantParams"
+}
