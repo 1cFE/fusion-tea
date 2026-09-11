@@ -1,0 +1,39 @@
+[
+  {
+    "command": [
+      ".codex-test/run",
+      "python",
+      "/tmp/wi051-review-aSYTns/direct-prototype/run_stellaris_single.py"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      ".codex-test/run",
+      "python",
+      "/tmp/wi051-review-aSYTns/direct-prototype/run_stellaris_single.py",
+      "stellarator_09__stellaris__magnet__R0=14"
+    ],
+    "exit": 1
+  },
+  {
+    "command": [
+      ".codex-test/run",
+      "python",
+      "/tmp/wi051-review-aSYTns/direct-prototype/run_stellaris_single.py",
+      "stellarator_09__stellaris__R=14",
+      "stellarator_09__stellaris__magnet__R0=14"
+    ],
+    "exit": 1
+  },
+  {
+    "command": [
+      ".codex-test/run",
+      "python",
+      "/tmp/wi051-review-aSYTns/direct-prototype/run_stellaris_single.py",
+      "stellarator_09__stellaris__R=14",
+      "stellarator_09__stellaris__magnet__R0=12.7"
+    ],
+    "exit": 1
+  }
+]
