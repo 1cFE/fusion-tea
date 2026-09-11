@@ -811,3 +811,32 @@ T-018 · native integrate · expected evidence at `work/orchestration/goals/fusi
 ### T-019 start — 2026-09-11
 
 +T-019 · native run-study execute · expected committed record at `exploration/stellarator_e2e/studies/20260911-operating-heating/`; start with preparation and pre-execution critique. Study reading follows as a separate native task.
+
+### T-019 return — 2026-09-11
+
+**Outcome: COMPLETE.** One native study is committed at `exploration/stellarator_e2e/studies/20260911-operating-heating/@91b0d96e`. Fifteen cases executed through the stock lifecycle in one shared store against T-018's sole candidate. All eighteen predicates and 141 reported channels are retained. Stock verification passes every case; additional checks pass 566 identities and 2,115 channel comparisons. Fresh final review is FINDINGS with its single minor identity-label correction dispositioned; correctness, honesty and readability otherwise pass. The original negative reviews and failed additional checker remain in the record. All 37 native record-contract checks pass; snapshot and artifact hashes resolve. The native CSV retains CRLF; staged whitespace checks pass with `core.whitespace=cr-at-eol`.
+
+**Goal-level reading:** Reserve changes procurement while measured operation stays fixed; demand changes propagate through the operating chain while installed heating procurement stays fixed. Other equipment costs retain their declared design-point sizing interpretation. Every case still violates divertor heat; negative-demand prices remain invalid diagnostics. The study preserves the distinct sustainment/source alpha fractions and reports no full-plant exact-zero execution. The next task is a separate record-only reading, not semantic follow-up or residual acceptance.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Fresh pre-execution critique finds per-arm store splitting and an ill-conditioned algebraic center | Use one stock shared store and decline the center before execution; retain signed brackets and inherited component-zero evidence | execution detail | Parent on fresh native critique | `preparation/pre-execution-review.md@0a271657`, corrections and authorization `0f2acaab`; final record `91b0d96e` |
+| Effective proposal metadata still says sixteen after the center was removed | Correct the declared count to fifteen before formal scan and sweep; no input point changes | execution detail | Parent and executor | `execution/corrections.md@91b0d96e` and effective proposal |
+| Additional checker substitutes the source heat fraction for the recorded sustainment fraction | Correct only the checker to the actual input; retain first failure and disclose the inherited model-basis difference | execution detail | Parent on executor source/input evidence; fresh critic checks the account | `execution/corrections.md`, both checker versions and both result files at `91b0d96e` |
+| Fresh final review finds an executable fingerprint labeled as the candidate | Apply the exact wording correction and verify against captured native identities; retain FINDINGS, with no numerical rerun | execution detail | Parent on fresh native critic | `execution/final-review.md` and `execution/finalization.md@91b0d96e` |
+| Complete native record is ready for independent reading | Obtain record-only administration before proposing goal dispositions | execution detail | Parent | T-020 scope below |
+
+No goal-level mechanical retry or second pin/study occurred. Native execution corrections remained inside T-019. The six discovery rows are native first sightings; no goal disposition or accepted learning is asserted by this return.
+
+### T-020 scope
+
+- **Objective:** Obtain a native record-only synthesis of the committed operating-heating study.
+- **Why now:** T-019 deposited the reviewed, frozen record; the goal needs its independent reading before closing Round 4 and proposing dispositions.
+- **Scope:** Native run-study administer mode, using only the committed record directory for facts and writing only its `synthesis.md`. Preserve executor evidence; no execution, external factual recovery, discovery update, model/package change or semantic follow-up.
+- **Inputs:** `exploration/stellarator_e2e/studies/20260911-operating-heating/@91b0d96e` and native administrator instructions. The administrator must have no study authorship.
+- **Done when:** A committed native synthesis recovers the framing, numerical result, every named constraint and finding, with missing facts and unsupported claims explicit.
+- **Stop when:** Missing or inconsistent record evidence, native prerequisite, owner-reserved gate or declared limit.
+
+### T-020 start — 2026-09-11
+
+T-020 · native run-study administer · expected artifact `exploration/stellarator_e2e/studies/20260911-operating-heating/synthesis.md`; all existing record artifacts remain immutable.
