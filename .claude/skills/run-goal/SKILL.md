@@ -47,6 +47,26 @@ To tell whether a round is open, read `trail.md`'s headings — `GOAL_RUNBOOK.md
 
 `work/orchestration/goals/<goal-slug>/`, holding `goal.md`, `trail.md`, and `learnings.md`. Confirm the slug with the operator before creating it. Templates are at `work/orchestration/goal-templates/`; copy them rather than writing the files from scratch.
 
+## Dispatch patterns
+
+The runbook prescribes obligations (fresh critics, bounded scope, one task at a time) but not dispatch mechanisms. These patterns have proven effective across eleven completed goals.
+
+### Model changes
+
+For a single work item, drive it inline through the modeling PM stages: read `.claude/commands/spec-model.md`, `design-model.md`, `plan-model.md`, `implement-model.md` in sequence and follow each procedure directly. Use `uv run agentic-mbse pm add-item` to register the work item, `uv run syside check` for model validation, and `uv run python scripts/integrate.py` for integration proofs.
+
+For multiple independent work items, fork each one as a parallel `Agent` (`subagent_type: "fork"`). Each fork inherits the goal context and drives its own item through the modeling PM stages. Designs and prototypes may run in parallel; integration is always sequential and runs in the main session after all forks return. Write a basis packet (`evidence/`) before forking to fix the shared interface — channel names, file ownership, integration order — so the forks don't collide.
+
+### Research
+
+Start with internal sources: `knowledge/SOURCE_INDEX.md` (registered sources), `knowledge/KNOWLEDGE.md` (domain insights), and `knowledge/research/` (prior research). Use `docs/research_seam_operator_guide.md` for the full protocol.
+
+When external sources are needed, form request files (`knowledge/research/requests/REQ-*.json`) and dispatch each as a parallel `Agent` (`subagent_type: "general-purpose"`) carrying the `/research-acquire` protocol. Each subagent runs the search-triage-register cycle independently: `scripts/research_seam.py` for run bookkeeping, `scripts/source_registry.py register` for ingestion. Deposit the spawn prompt at `evidence/` before spawning. Every search subagent must carry the clean-room screen (`knowledge/holdout/aries-cs/PROTOCOL.md`) in its instructions before any fetch.
+
+### Fresh critics
+
+When the runbook requires a fresh non-author session (disposition checkpoint, round review, study administrator), spawn an `Agent` (`subagent_type: "general-purpose"`) with a deposited prompt — commit the prompt to `evidence/` before spawning. The session must inherit no execution context. If a fresh session cannot be obtained, write the handoff stop per `GOAL_RUNBOOK.md` § What "fresh" means and halt.
+
 ## Then go here
 
 - **`work/orchestration/GOAL_RUNBOOK.md`** — the procedure, stage by stage. Read the section for your mode before writing anything.
