@@ -988,3 +988,28 @@ The material to resume: This strategy, `goal.md`, accepted `learnings.md`, origi
 ### T-021 start — 2026-09-11
 
 T-021 · native analyze-models · expected timestamped F06 radius-ownership assessment under `work/analysis/`, with reproducible evidence and no production changes.
+
+### T-021 return — 2026-09-11
+
+**Outcome: COMPLETE.** Native assessment `work/analysis/20260911-230953_radius-ownership.md@2f8856b7` and adjacent evidence establish the split and the oracle mismatch. Plant-only R14 and magnet-only R0=14 execute with 106 and 107 shared-channel disagreements; baseline and coordinated R14 agree. Correcting only the oracle helper's radius operand in memory restores all 141 compared channels. No production source changed. Parent-supplied image/source evidence supports one intended major plasma/axis scale; the assessment found no other concrete canonical caller requiring distinct surfaces. Standalone reusable magnet inputs and fixed reference anchors remain legitimate and distinct.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| One intended quantity has two public owners, and the oracle reads the wrong sustainment owner | Proceed with a bounded native model repair and separately certified current consumer migration | execution detail | Parent on native assessment | T-022 scope and immutable alignment below |
+| Invalid coherent-radius probes already fail; negative peak-field component still passes its upper comparison | Retain explicit invalid-case evidence and leave broader F07 guards unresolved; revisit only if the binding introduces a new defect | execution detail | Parent on native numerical and domain evidence | Assessment's scope recommendation; no domain law or residual acceptance |
+| Host refuses another fresh analysis thread | Reuse an existing non-author analysis context and disclose it; this is not an independent audit or goal review | execution detail | Parent | Native assessment provenance at `2f8856b7`; independent repair audit remains required |
+
+No pin, study, mechanical retry or reserved decision occurred. The source interpretation is agent-derived from existing intent and registered evidence; it is not a new owner-originated settled requirement.
+
+### T-022 scope
+
+- **Objective:** Implement and independently audit one authoritative major-radius producer in the supported MFE plant.
+- **Why now:** T-021 establishes duplicate ownership and the bounded repair interpretation with original counterexamples and current caller evidence.
+- **Scope:** One Standard native modeling item through spec, design/prototype, independent review, plan, implementation and fresh audit. Align canonical/twin/generated geometry and affected direct model callers/tests. Retire the duplicate public degree of freedom, retain reusable standalone formals and reference anchors, verify ordinary R-only behavior and disclose existing invalid-domain failures. Publish an exact handoff for current study-oracle/adapter/metadata migration. No current study-package mutation, integration/study, broader F07 redesign, alpha normalization, finance/supported-scope change, historical rewrite, item archive or goal close.
+- **Inputs:** `goal.md`, accepted learnings and Round 5 strategy `eed3b976`; T-021 assessment `2f8856b7`; current model audit `55456198`; native modeling process and sealed runtime; immutable alignment `work/orchestration/mfe-model-owned-major-radius.md`.
+- **Done when:** Fresh independent native audit verifies the written model scope, all nine radius-consumer bindings, ordinary-input counterexample, unchanged baseline, retained reference/standalone contracts and exact consumer handoff, with validation/engineering limits separate.
+- **Stop when:** Source/physical-reference conflict, supported-caller scope gate, new binding-induced invalid behavior requiring changed semantics, native prerequisite, strategy blocker or declared limit.
+
+### T-022 start — 2026-09-11
+
+T-022 · native orchestrate-modeling Standard repair · expected native work-item artifacts, regenerated model, direct-caller verification, consumer handoff and fresh independent audit. Existing goal authorization supplies alignment; no new preservation approval is required.
