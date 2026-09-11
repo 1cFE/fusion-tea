@@ -1,5 +1,5 @@
 ---
-Status: draft
+Status: approved
 Created: 2026-09-11
 Updated: 2026-09-11
 Related Artifacts:
@@ -106,3 +106,7 @@ Integer reference factors are explicit 80-digit dated sums applied to independen
 Manual return order and generated signatures are easy to misread. Use the emitted typed signature and named output schema; keep factor scope limited to the documented equations. Duration migration can hide in old callers; census tests and actual baseline mutations must detect it. Passing the quotient alone is insufficient: cost and energy assertions are mandatory. The finite window does not certify arbitrarily extreme IEEE inputs. Financial normalization, source rulings, MFE, study refresh and residual acceptance remain parent/owner reservations from the alignment.
 
 [AGENT] Prototype PASS for feasibility and the documented numerical window. The parent owns design acceptance; final acceptance requires the later independent audit. No production implementation, PM close/archive, study execution or dependency change occurred in this stage.
+
+## Parent stage acceptance — 2026-09-11
+
+[AGENT] Accepted after fresh `review.md` PASS. The bounded AD-003 structural departure and two-key duration migration preserve the existing finance and Real-valued duration behavior. Carry the review's citation and retained-assertion follow-through into the plan. The parent captured all thirty current production outputs and both verdicts in `entry-baseline/` before implementation; use it for SV-078's before/after comparison. No owner-reserved decision was exercised.
