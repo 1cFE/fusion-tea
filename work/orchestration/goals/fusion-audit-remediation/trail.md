@@ -178,3 +178,30 @@ T-006 · native coding PM `.project/active/study-indicator-multiplication/` · e
 ### T-007 start — 2026-09-10
 
 T-007 · native study execute `exploration/ife_e2e/studies/20260910-ife-operating-point/` · expected artifacts: completed native study record and immutable execution evidence, resuming the unexecuted T-005 draft.
+
+### T-007 return — 2026-09-10
+
+**Outcome:** COMPLETE.
+
+**Evidence:** `exploration/ife_e2e/studies/20260910-ife-operating-point/record.md@9f09f6971c8a1b5c558fbf66d5de1bc97568099e`, with its immutable snapshot, results, pre-execution critique and post-execution review; the joined IFE discovery log at the same revision.
+
+**Goal reading:** One native study now records the corrected operating-point response and the non-generation diagnostics under the round's one promoted candidate. Its engineering and financial limitations are explicit unresolved seams, not accepted residuals. The study is ready for a record-only administrator reading; execution alone does not supply that reading.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Complete native execution and reviews support committing the bounded study | Accept the native record and request a record-only reading. Retain its separate price interpretations and named diagnostic exclusions. | execution detail | Parent round agent, supported by the native framing and final study reviewers | Committed record and three joined findings at the ref above |
+| Both axes report a possible constraint path; scan supports sensitivity framing | Proceed without the no-constraint-response ruling, whose condition does not bind. Claim no engineering boundary or optimum. | execution detail | Parent executor; fresh pre-execution critique confirms protocol applicability | `protocol.md`, `pre-execution-review.md`, scan/window and record framing inside the committed record |
+| Pinned 1costingFE has applicable driver identities but different plant conventions | Compare the shared driver identities directly and limit parity claims accordingly; do not normalize or silently change the machine. | execution detail | Parent executor; fresh final review checks evidence and limitations | `results/1costingfe-driver-identities.json` and `results/reference-applicability.md` inside the record |
+
+### T-008 scope
+
+- **Objective:** Obtain the native administrator's evidence-linked reading of the committed IFE study.
+- **Why now:** T-007 has supplied a complete immutable record; its findings need an independent record-only synthesis before round closure.
+- **Scope:** Native run-study administer mode. A fresh administrator reads only the committed record directory and writes its first `synthesis.md`. No result edits, model/finance changes, discovery-log updates, semantic follow-up or goal review.
+- **Inputs:** `goal.md@9f09f6971c8a1b5c558fbf66d5de1bc97568099e` for the parent task authority; administrator input is only `exploration/ife_e2e/studies/20260910-ife-operating-point/` at that commit, with snapshot digest `3edebbe53943050eba7de55102f8773e21b09db8cf3b2c2b5dd92c5e2103179e`.
+- **Done when:** Native synthesis recovers the requested facts, framing, constraints and findings or explicitly reports missing record facts.
+- **Stop when:** Record unavailable/invalid, administrator boundary cannot be preserved, or a declared limit binds.
+
+### T-008 start — 2026-09-10
+
+T-008 · native study administer, same committed record · expected artifact: first `synthesis.md` from a fresh record-only administrator.
