@@ -413,3 +413,26 @@ T-011 · `.project/active/ife-zero-discount-study-package/` · expected artifact
 ### T-012 start — 2026-09-11
 
 T-012 · native `scripts/integrate.py` · return/evidence at `work/orchestration/goals/fusion-audit-remediation/evidence/T-012_pin/`; this round has promoted no earlier pin.
+
+### T-012 return — 2026-09-11
+
+**Outcome:** COMPLETE. Native `integration_return.json@8f72a642` under `evidence/T-012_pin/` returns CANDIDATE, all ten gates passing on the first invocation. It records both audited-work citations, the exact command, lineage, nineteen entry points, thirty-two-channel verification and producer evidence.
+
+**Goal reading:** Promote this round's one candidate pin `8e859f0d05c4dcd8dee695779326caad6040172246f0b638a3e851ffa57e47d3`. Native semantic/executable identities remain `8596c899…` / `2810897c…`; baseline Hawker price remains 240.66646063955096. Integration's manifest gate explicitly did not execute `assert_read_set_covered`; retain that producer limitation. The later native indicator path must supply its own evidence, as in round 1. Baseline validation storage is not an additional study.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Native fixed-point, lineage, baseline and oracle gates pass | Promote the one recorded candidate and run the round's bounded continuity study under native framing/review gates. | execution detail | Parent [AGENT] | This return and T-013 scope; no package mutation |
+
+### T-013 scope
+
+- **Objective:** Execute and record the native IFE discount-rate continuity study against this round's promoted candidate.
+- **Why now:** Audited model and package work have produced one native CANDIDATE; the strategy's numerical continuity question can now be evaluated in a retained study.
+- **Scope:** Native run-study execute mode, one record `exploration/ife_e2e/studies/20260911-ife-zero-discount/`, one current discount-rate axis, reviewed sensitivity framing, an independently scanned engineered window around zero with the ordinary baseline, and coordinated non-generation diagnostics. Preserve separately labeled Hawker/Meier interpretations, complete numeric/verdict evidence and current source limitations. No model, package, financial-policy or MFE changes; no second pin or study; no synthesis or semantic follow-up in this task.
+- **Inputs:** `goal.md`, accepted learnings and round-2 strategy; native candidate `evidence/T-012_pin/integration_return.json@8f72a642`; WI-049 and coding audits cited there; native run-study runbook, current annex, manifest and axis declaration.
+- **Done when:** A complete reviewed native record with committed results, findings and joined discovery rows establishes the observed continuity and its limits, or returns a native blocker.
+- **Stop when:** Native prerequisite/refusal, a required unresolved owner framing ruling, source/comparison conflict, strategy blocker or declared limit. No point executes before the required pre-execution critique and any applicable owner ruling.
+
+### T-013 start — 2026-09-11
+
+T-013 · native run-study execute · expected record `exploration/ife_e2e/studies/20260911-ife-zero-discount/`; all proposed additions to owner intake remain explicitly agent-originated.
