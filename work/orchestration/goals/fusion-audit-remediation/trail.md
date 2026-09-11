@@ -581,3 +581,52 @@ The material to review: `goal.md`, `learnings.md`, this trail's Round 2 strategy
 - **Abandonment conditions:** Current execution disproves the defect; the required operating relation lacks source support; the owner redirects the pending comparison; a financial or supported-scope change is required; or a declared limit binds. An unresolved owner gate closes the round under the runbook.
 - **Intended model increment:** Subject to current evidence and the owner's pending-comparison ruling, separate priced operating heating from installed capacity while retaining capacity costing and coherent thermal/electrical accounting. No shared MFE change is authorized by this strategy alone, and no new efficiency or part-load relation is assumed.
 - **Intended study question:** If an audited correction and owner ruling permit this round to reach a study, does priced net generation follow required operating heating while installed reserve capacity remains correctly costed? Any study requires its own native framing and this round's one candidate; pending plant-closure evidence and its pin remain preserved under the eventual owner ruling.
+
+### T-015 scope
+
+- **Objective:** Assess current F04 operating-heating behavior and make the pending plant-closure preservation decision concrete.
+- **Why now:** Round 3 selects a read-only MFE operating-state assessment; shared mutation requires a grounded owner ruling.
+- **Scope:** Native analyze-models assessment of required heating, installed capacity, thermal/electrical accounting and current executable counterexamples; read pending plant-closure evidence to identify affected assumptions and preservation options. Retain scripts/results under work/analysis. No shared model/package mutation, new pin, study, financial interpretation or invented part-load law.
+- **Inputs:** `goal.md`, accepted learnings and Round 3 strategy; original audit F04 and evidence; current generic-MFE/stellarator models and executable package; pending plant-closure goal and T-007 integration evidence; installed runtime instructions.
+- **Done when:** A reproducible current assessment distinguishes operating-demand and capacity paths, states source and execution limits, and gives the owner concrete preservation options with their consequences.
+- **Stop when:** Native prerequisite, strategy blocker, unresolved owner gate, changed comparison meaning or declared limit.
+
+### T-015 start — 2026-09-11
+
+T-015 · native analyze-models · expected timestamped F04 assessment and adjacent reproducible evidence under `work/analysis/`; pending shared MFE artifacts remain read-only.
+
+### T-015 return — 2026-09-11
+
+**Outcome:** OWNER_GATE. The read-only assessment is complete; the next semantic step requires the reserved pending-comparison decision. Native evidence is `work/analysis/20260911-190758_mfe-operating-state.md@0dce6053` and its adjacent evidence directory; preservation choices are `work/analysis/20260911-190740_mfe-pending-comparison-preservation.md@0dce6053`.
+
+**Goal reading:** F04 persists in current execution. Increasing installed wall-plug capacity from 100 to 120 MW leaves required coupled heating at 49.079600788 MW and fusion output unchanged, but decreases net generation by 17.029497549 MW and increases LCOE from 224.609524728 to 229.541287969. Heating procurement also increases, a legitimate capacity effect; the total LCOE difference is not attributed solely to operation. Both cases retain thirteen satisfied assertions and the violated divertor assertion. The current primary-loop and divertor dependencies make a power-balance-only correction insufficient. The separate held-efficiency demand substitution predicts +1.567062654 MW at baseline algebraically; it is not a corrected model or corrected LCOE.
+
+**Preservation consequence:** The pending plant-closure round explicitly retains installed heating for its thermal/divertor basis and exact attribution bridge. It has one promoted pin and no started study. Shared models, package and pending goal remain unchanged. The companion report makes two owner choices concrete: retain its historical evidence and supersede the unfinished comparison after repair (recommended [AGENT]), or finish its installed-basis comparison before repair. No choice is selected by this return.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Current reserve-capacity counterexample reproduces F04 | Retain F04 as unresolved and require a coherent operating/capacity design across thermal, electrical, divertor and cost paths. | execution detail | Parent [AGENT], based on native assessment | Assessment at `0dce6053`; no model changes |
+| Pending comparison explicitly fixes installed heating | Recommend retaining historical evidence and superseding the unfinished comparison; ask the owner before any shared mutation. | reserved gate | Recommendation [AGENT]; ruling remains owner-held in `goal.md` | Preservation report at `0dce6053`; no pending-goal amendment |
+| Probe helper assumed two obsolete financial aliases | Record the missing alias and non-equivalent O&M comparison; restrict parity to eleven explicit relevant correspondences. | execution detail | Native assessor [AGENT] | Report's Compliance and health section, final probe/results; no output manipulation |
+
+### Round 3 result — 2026-09-11
+
+**Intent:** Assessment intent met; conditional model/study intent unmet. T-015 is the sole task. It established a current counterexample, traced the affected operating and capacity paths, and deposited concrete preservation choices with execution evidence at `0dce6053`. No model repair, promoted candidate or study was attempted.
+
+**Last semantic outcome and derived stop:** OWNER_GATE. The grounded contract reserves how to preserve, finish or supersede the pending plant-closure comparison before shared MFE changes. The assessment makes that decision reviewable but cannot decide it. Close this round on trigger 4, an unresolved owner gate. There is no study reading and no disposition checkpoint submission in this round. No retry, checkpoint revision or round limit was exhausted; two probe-construction mapping corrections were documented within the assessment, not recast as model fixes.
+
+**Verification and limits:** Two full strict-loaded executions of the unchanged stellarator package completed. Eleven relevant baseline channels match the existing mirror with maximum relative error 2.531e-16; this is translation parity, not independent physical validation. The targeted power-balance suite passes 25 tests without skips. Source citations and assumptions were traced, but no new source-image audit or load-dependent efficiency law is claimed. Both executed plants violate the divertor fence. The goal-document suite reports 28 passed and the same known unrelated `test_narratives_are_separate_from_the_goal_contract` failure in the owner-retained wall-and-heating trail. No shared MFE/stellarator model, executable package, manifest, census or pending plant-closure artifact changed.
+
+**Finding dispositions proposed [AGENT]:** F04 remains unresolved, now with current numerical evidence and a concrete owner decision before correction. No residual is accepted. All other audit findings and distinct subissues retain the latest reviewed dispositions from Round 2. These targeted assessment runs are not a study and mint no discovery-log IDs.
+
+**Proposed learning delta [AGENT]:** No new accepted entry proposed. Retain the assessment-specific observation in its native report: heating-capacity inequalities can pass while the operating flow uses a different heating state, and the correction reaches the loop and divertor as well as electric subtraction. The fresh reviewer may determine whether this warrants a broader lesson; `learnings.md` remains unchanged from the accepted L-001–L-005.
+
+### Stop — 2026-09-11
+
+Kind: handoff
+
+What is true on disk: Round 3 is closed at the owner preservation gate. T-015's current assessment and concrete choice packet are committed at `0dce6053`; Round 2's supplied fresh review and accepted learnings are committed at `b14ed1b2`. No shared mutation or new pin/study occurred. The broader goal and F04 remain open.
+
+What the owner must see: Decide whether to retain the historical plant-closure pin/evidence and supersede its unfinished comparison after the repair (agent recommendation), or finish the existing installed-basis comparison first. This is the reserved decision in this goal's `goal.md`, not a request to reauthorize the read-only work. A fresh owner-started session must review closed Round 3 before authoring the next strategy; this author's session cannot supply that review. An owner ruling resolves the preservation choice but does not silently waive the fresh-round review.
+
+The material to review: This trail's Round 3 strategy, T-015 and result; `work/analysis/20260911-190758_mfe-operating-state.md@0dce6053` with its retained evidence; `work/analysis/20260911-190740_mfe-pending-comparison-preservation.md@0dce6053`; the unchanged pending plant-closure goal and T-007 evidence cited there. Resume at `work/orchestration/GOAL_RUNBOOK.md` § The fresh review after recording any owner ruling append-only. No disposition checkpoint is needed for a round with no study reading. Setup and CURRENT_WORK remain intentionally uncommitted; no push, merge, archive or goal close occurred.
