@@ -1,0 +1,3 @@
+# Full outputs are retained in each case's all_outputs.json.
+outputs/
+__pycache__/
