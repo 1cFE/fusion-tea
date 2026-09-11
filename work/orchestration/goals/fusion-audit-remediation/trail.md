@@ -253,3 +253,71 @@ What is true on disk: round 1 is closed with one promoted IFE pin, one committed
 What the owner must see: a fresh session is needed to review the study reading's proposed dispositions and the closed round. The author's session cannot supply either goal critic. The broader goal remains open, and engineering/finance residuals are not accepted.
 
 The material to review: `work/orchestration/goals/fusion-audit-remediation/{goal.md,trail.md,learnings.md}`; `exploration/ife_e2e/studies/20260910-ife-operating-point/{record.md,synthesis.md,snapshot.json}`; the native audits and integration evidence cited in the task returns; the IFE discovery log. Resume at this runbook's **The pre-execution disposition checkpoint**, then **The fresh review**. Do not resume closed round 1; a passing fresh review may propose round 2 under the existing reserved gates.
+
+### Checkpoint C-001.r1 — 2026-09-11
+
+**Reviewer:** [AGENT] Codex `/root`, fresh owner-started review session. This session authored no round-1 task, study, synthesis or proposed disposition. The owner requested both this checkpoint and the fresh round review; the same non-author session can perform these distinct checks.
+
+**Reading reviewed:** `exploration/ife_e2e/studies/20260910-ife-operating-point/synthesis.md@697b82287f0620208a8e5c15da72b7be42b295c4`, against the native `record.md`, reviews and result evidence at `9f09f6971c8a1b5c558fbf66d5de1bc97568099e`.
+
+**Dispositions reviewed:** Round 1 result, “Proposed finding dispositions for checkpoint and review,” at `6204b527`; the study's three findings and their latest rows in `exploration/ife_e2e/studies/DISCOVERY_LOG.md@9f09f697`.
+
+**Verdict:** PASS. The reading follows the committed evidence and the proposed dispositions retain its limits. No semantic follow-up has executed since the reading. This passes the disposition checkpoint, not the goal's Answered when conditions.
+
+| Proposed disposition | Review and evidence |
+|---|---|
+| F01–F03 / study #1: retain the model fix | Supported by WI-048's independent re-audit at `6a964967` and the study's `results/cases.json`, `results/verification_summary.json` and post-execution review at `9f09f697`. The diagnostic cases support the strict generation gate; the ordinary cases support the recorded sensitivity. |
+| Study #2 / F07/F16: retain unresolved engineering coverage | Supported by the study's copied `results/context/ANNEX.md` and record §§ 6, 13, 17. Held gain and absent capacity relations still restrict interpretation. This does not dispose of all F07/F16 subissues or accept an engineering residual. |
+| Study #3 / F09: retain separate historical price interpretations | Supported by record § 3 and `results/reference-applicability.md`. Reference agreement covers the shared driver identities only. A common financial basis and residual acceptance remain owner-held. |
+| F17: credit only the audited citation repair | Supported by WI-048 re-audit §§ Source findings and Validation and remaining limitations. Its bounded correction does not establish whole-project traceability. |
+| Remaining findings and unaffected subissues: carry unresolved | Consistent with the round's IFE scope and `goal.md` Answered when. The pending plant-closure comparison remains protected; later MFE work still needs the reserved ruling. |
+
+**What the author changed:** None; first submission passes unchanged. No discovery-log update is needed because the reviewed dispositions retain the existing latest rows. Acceptance of residual findings has not been delegated to this reviewer.
+
+### Round 1 review — 2026-09-11
+
+**Reviewer:** [AGENT] Codex `/root`, the fresh session identified in C-001.r1. **Verdict:** PASS for the closed round. The broader goal remains unanswered.
+
+**Checks:** Read the strategy, every T-001–T-008 scope/start/return, the round result, the native audit and repair chains, the committed study and synthesis, and all three joined discovery rows. The following checks use native evidence by citation; they do not repeat the native implementation audits.
+
+| Task | Scope and outcome assessment |
+|---|---|
+| T-001 | The positive WI-048 audit and incorporated original numerical appendix support the linked source/dependency/net-generation repair. The original negative audit is retained; the bounded provenance repair and fresh re-audit address its defects. The guarded quotient deviation is disclosed in the native design/review and certified within the item. Evidence: `work/active/WI-048_ife-operating-point-repair/audit.md` and `work/analysis/20260911-045617_audit_WI-048_ife-operating-point-repair-r1.md`, both at `6a964967`. |
+| T-002 | The native refusal establishes a missing verifier capability. Package work stopped at its shared-tool boundary. Evidence: `.project/active/ife-native-study-package/prerequisite.md@5d245388` and its retained reproducer. |
+| T-003 | The separate coding item repairs exactly the required multiplication grammar, with explicit refusals and existing MFE regression evidence. It does not alter the model or promote a package. Evidence: `.project/active/study-verifier-multiplication/audit.md@10a426ee`, including its product lens and stated inherited skip. |
+| T-004 | The package audit certifies metadata, native execution and named-verdict eligibility while preserving the audited machine. Its first negative audit and repaired consumer remain inspectable. The native integration return is CANDIDATE with ten reported passing gates and the one promoted pin. Evidence: `.project/active/ife-native-study-package/{audit.md,audit-r0.md,integration/integration_return.json}@f0d2f670`. |
+| T-005 | The separate indicator refusal occurred before study execution. This is a prerequisite, not an adverse physical result or a mechanical retry. Evidence: `exploration/ife_e2e/studies/preparation/20260910-ife-operating-point-prerequisite.md@1bde8771`; the formerly unpinned note is now retained in native history. |
+| T-006 | The separately scoped indicator correction preserves conservative reachability and supplies the actual IFE report. Its audit also establishes that the indicator path exercised read-set coverage. Evidence: `.project/active/study-indicator-multiplication/audit.md@adab59d9` and its actual report. This does not rewrite the integration gate's historical omission. |
+| T-007 | The native pre-execution critique, protocol, scan, fixed window, case roles, verification and final review support the committed sensitivity study. Coordinated non-generation diagnostics remain separate from the ordinary axes. Evidence: `exploration/ife_e2e/studies/20260910-ife-operating-point/record.md@9f09f697` and its cited native artifacts. No whole-plant reference parity or engineering boundary is claimed. |
+| T-008 | The record-only synthesis recovers the observed response, both named predicates and every finding without changing the executor's record or accepting residuals. Its authority is explicitly limited to the committed record. Evidence: `exploration/ife_e2e/studies/20260910-ife-operating-point/synthesis.md@697b8228`. |
+
+**Strategy fidelity and bounds:** The work delivers the declared coherent IFE operating point and its intended sensitivity/diagnostic reading. The two missing expression consumers were returned as prerequisites and repaired through separately scoped native coding items. Resumptions use new task IDs because producer inputs changed. No goal-level mechanical retry is claimed. One promoted pin and one committed study are recorded; baseline/integration validation stores are not additional studies. The last semantic outcome is the valid T-008 reading, so close trigger 1 is correct. The round stopped for a fresh-session handoff before semantic follow-up; C-001.r1 now passes. No limit was exhausted.
+
+**Discovery dispositions landed:** Study #1's model-fix home resolves to the copied native audit, supported by the case evidence. Study #2's declared-seam home resolves to the annex's held-gain and engineering limitations. Study #3's declared-seam home resolves to the reference-applicability record and separate financial interpretations. All three IDs join exactly between record § 15 and the latest discovery-log rows at `9f09f697`; none is unrouted. The movement is a verified repair for #1 and concrete interpretation restrictions for #2/#3. The latter remain unresolved toward the goal's owner-accepted-residual requirement. No new finding or disposition was minted by this review.
+
+**Citation and mutation check:** Read the cited native files and their path histories at review base `6204b527`. The cited audit reports, prerequisite records, integration return, source report, goal contract and study record resolve at their stated revisions. T-001's short `repair-1.md@d8a8b065` citation resolves within its named WI-048 directory. No later changes affect the final cited audits, audited generated IFE package or independent oracle. The only post-execution addition inside the study directory is the authorized T-008 synthesis. The pending `plant-closure` goal and stellarator package, and the generic-MFE/stellarator models, have no changes since the grounding base `a9ec0b76`. The working tree's pre-existing setup edits affect neither the cited native evidence nor the model. No external mutation voids a task. Native fingerprints were read as citations; this review did not recompute a goal-layer digest.
+
+**Evidence limits retained:** WI-048's native source re-audit and independent numerical checks are credited as their authors' evidence, not a new source-image or numerical execution by this session. Syntax/translation, independent arithmetic/source checks and engineering coverage remain separate. The WI-048 Level 6 failure remains reported; native broader-suite skips and inherited evidence are not upgraded to fresh passes. The synthesis correctly discloses `unrecorded` TEAx revision in the verifier summary while the snapshot supplies its separately recorded revision. That provenance limitation remains unresolved. No whole-repository regression or new study was run for this review.
+
+**Learning delta:** Accept proposed deltas 1–3 as L-001–L-003, appended to `learnings.md` with native evidence and bounded scope. These remain agent conclusions, not owner-settled requirements.
+
+**Recommendation and carried constraints:** Retain the round's result. Do not recommend goal close: current-revision final dispositions for the remaining audit subissues and owner acceptance of residuals are still missing. The next bounded strategy below addresses the IFE portion of F05, whose zero-discount division remains visible in `models/library/analyses/ife_lcoe.sysml@6204b527`. It preserves both historical financial methods and avoids the unresolved shared-MFE gate. Other findings remain carried, including F05's MFE subissues. The present request ends at review and strategy handoff; no round-2 task starts here.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| C-001.r1 and round evidence support the bounded result | Pass checkpoint and round review; retain existing dispositions and accept the three scoped learnings. | execution detail | Fresh reviewer [AGENT] | This checkpoint/review and `learnings.md` L-001–L-003 |
+| IFE's F05 zero-discount expression remains; shared MFE changes require an owner ruling | Select an IFE-only financial-limit strategy under unchanged historical conventions; assess its current counterexample before choosing native work. | execution detail | Fresh reviewer [AGENT] | Round 2 strategy below; no task, model, pin or study change |
+
+## Round 2 — ife-zero-discount-limit
+
+### Strategy revision — 2026-09-11
+
+- **Approach:** [AGENT] Assess the remaining IFE zero-discount counterexample from F05 against the current executable and native contracts, then pursue a bounded correction of the removable limit with independent finite cash-flow evidence.
+- **Assumptions:** The IFE failure is still present; its zero-rate limit follows from the same dated cash flows; stable evaluation near zero can preserve the existing nonzero baseline and both separately labeled historical price interpretations. Current source inspection supports the first assumption but is not yet fresh execution evidence.
+- **Abandonment conditions:** The current counterexample does not support this repair; a source conflict or financial/supported-scope decision requires the owner; the correction requires shared MFE changes without the pending plant-closure ruling; or a goal limit binds.
+- **Intended model increment:** Correct the IFE removable discount-rate singularity and near-zero numerical behavior within its existing financial interpretation, if current assessment confirms the defect. Preserve the strict net-generation and price-eligibility contract accepted in L-001. F05's other model families remain unresolved.
+- **Intended study question:** Does the corrected IFE discounted-cost interpretation approach the independently summed zero-rate cash-flow result continuously while preserving the ordinary baseline and non-generation exclusions? Any native study uses this round's own candidate under the existing one-pin/one-study bound.
+
+### Amendment — 2026-09-11
+
+**Amends:** Round 1 review, validation evidence only. Fresh `.codex-test/run python -m pytest tests/orchestration/test_goal_contract.py -q` returned 28 passed and one failed. The sole failure is `test_narratives_are_separate_from_the_goal_contract` on the existing `wall-and-heating/trail.md` line retained by that goal's owner ruling, as already recorded in project context. It does not concern this goal's review changes. `git diff --check` passed. These are document checks; no new model, integration or study execution is claimed. The round-review PASS and unresolved broader goal remain unchanged.
