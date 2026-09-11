@@ -25,3 +25,19 @@ Append-only, newest last. Entries are appended only after fresh round review acc
 - **Implication:** A native integration candidate does not discharge the study's indicator step. Read each producer's actual outcome; separately scope any missing shared capability. The later indicator's coverage evidence does not rewrite the earlier integration gate's omission.
 - **Supersedes:** none.
 - **Accepted by:** Round 1 review, 2026-09-11.
+
+## L-004 — A correct price ratio can conceal errors in discounted cost and energy
+
+- **Evidence:** `work/analysis/20260911-141041_ife-zero-discount-assessment.md@692c9f94` and its numerical evidence at `cc0cd821`; `work/analysis/20260911-144931_audit_WI-049_ife-zero-discount-repair.md@c926a36d`; `exploration/ife_e2e/studies/20260911-ife-zero-discount/results/decimal-verification.json@a66f962d`.
+- **Scope:** [AGENT] The IFE present-value calculation near zero discount. The original cost and energy errors partly cancel in their quotient. Independent dated sums and the bounded repaired cases establish numerical behavior, not the validity of financial assumptions.
+- **Implication:** Verify discounted cost and energy separately against independent references before crediting the price quotient. Preserve exact non-generation exclusions alongside numerical accuracy checks.
+- **Supersedes:** none.
+- **Accepted by:** Round 2 review, 2026-09-11.
+
+## L-005 — An oracle's coverage does not define the model's input domain
+
+- **Evidence:** `work/active/WI-049_ife-zero-discount-repair/spec.md@165d2bbf`; `work/analysis/20260911-144931_audit_WI-049_ife-zero-discount-repair.md@c926a36d`; `.project/active/ife-zero-discount-study-package/audit.md@f04c0622`; `exploration/ife_e2e/studies/20260911-ife-zero-discount/synthesis.md@5fd978e7`.
+- **Scope:** [AGENT] Existing Real-valued IFE durations and an annual-sum oracle restricted to positive integer durations. The model audit separately checks fractional algebra; the study samples only five construction and forty operating years. Neither supplies a new fractional-year timing convention or unrestricted Real-domain certification.
+- **Implication:** Keep oracle refusal, model-domain policy and sampled study coverage distinct. Preserving fractional algebra needs its own numerical evidence; integer-only verification cannot silently narrow the model contract or claim fractional study coverage.
+- **Supersedes:** none.
+- **Accepted by:** Round 2 review, 2026-09-11.
