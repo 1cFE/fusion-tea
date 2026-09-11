@@ -1,6 +1,6 @@
 # Spec: IFE native study package
 
-**Status:** Blocked on shared verifier prerequisite; package implementation not started
+**Status:** Implementation in progress under goal T-004
 **Created:** 2026-09-10
 **Owner:** reid
 **Scope:** One package-specific integration task

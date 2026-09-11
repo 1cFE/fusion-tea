@@ -24,3 +24,5 @@ Native snapshot capture and census derivation produce files beside the IFE model
 [AGENT] Use one implementation phase with direct tests and a fresh final audit. A separate concept stage and pre-implementation review would repeat the established package contract; the native integration gate and independent coding audit supply the useful checks. Do not extract a new shared route abstraction while adding the second package. Keep this route limited to the IFE contract and stock APIs.
 
 [AGENT] Preserve the existing independent oracle in place so earlier test and verification imports remain stable. The annex names both the adapter and its implementation dependency; a future immutable study record must capture both. Any need to change generic seams returns to the goal as a separately owned prerequisite.
+
+[AGENT] Import the new route and oracle by qualified modules under `exploration.ife_e2e.studies`, with repository-root `sys_path`. Reusing the existing MFE flat module names would allow Python module-cache collisions when both packages are verified in one process.
