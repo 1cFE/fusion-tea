@@ -1,6 +1,6 @@
 # Plan: IFE native study package
 
-**Status:** Approved; remaining work authorized by goal T-004
+**Status:** Needs Work — audit-F1 and audit-C1 require repair and fresh verification; see audit.md
 **Created:** 2026-09-10
 
 ## One phase — package preparation and verification
@@ -31,3 +31,7 @@ Metadata command is documented in the annex; its temporary validation store is `
 ### Integration — 2026-09-10
 
 The existing producer returned `CANDIDATE` with all ten gates passing. Native evidence is in `integration/integration_return.json` and the producer summaries. The manifest gate explicitly states that `assert_read_set_covered` was not run and is not covered elsewhere; this inherited filed seam limitation remains visible and is not accepted as a goal residual. No candidate has been promoted. The integration return records the exact request, command, toolchain and identities.
+
+### Audit repair — 2026-09-10
+
+The first independent audit (`audit-r0.md`, audited `8f1d74f3`) requested named-verdict consumption and removal of the unsupported exporter claim. `repair-1.md` records the two changes and the new generated-ID-change regression. The combined test command passes 31 tests. Fresh certification remains pending; the original negative audit and lens block are preserved.

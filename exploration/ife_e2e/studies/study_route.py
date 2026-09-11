@@ -4,7 +4,7 @@ import json
 import math
 from pathlib import Path
 from scripts.study import common, identity
-from exploration.ife_e2e.eligibility import price_eligible, NET_POSITIVE_ID
+from exploration.ife_e2e.eligibility import price_eligible
 from exploration.ife_e2e.studies.oracle_entry import ENTRY_KEYS
 
 HERE = Path(__file__).resolve().parent
@@ -65,10 +65,10 @@ def validate_proposal(raw):
 def eligible_prices(case):
     """Return the two eligibility flags from stored price, generation and net evidence."""
     require_published(case, CHANNELS)
-    short_verdicts(case)
+    verdicts = short_verdicts(case)
     return {name: price_eligible(case.outputs[P + name + "__price"],
                                 case.outputs[P + name + "__generating"],
-                                case.verdicts[NET_POSITIVE_ID])
+                                verdicts["net_positive"])
             for name in ("hawker_price", "meier_price")}
 
 
@@ -163,8 +163,8 @@ def run_points(
     """Execute proposals through `StudyRunner`. Returns (cases, db path).
 
     Every declared column must be published: existing completed cases are checked under
-    the lease, new evidence before it is persisted. A nonfinite value is a model result and
-    is kept; the exporter refuses it. The store is left on disk so incompatible evidence
+    the lease, new evidence before it is persisted. Nonfinite model outputs remain in
+    stored evidence. The store is left on disk so incompatible evidence
     cannot silently replace it.
     """
     from simkit.study.query import StudyQuery

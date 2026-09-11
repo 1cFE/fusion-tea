@@ -105,10 +105,22 @@ def test_baseline_documents_use_the_stored_identity(tmp_path):
 def test_contradictory_recorded_verdict_is_refused(executed):
     case = executed[0][0]
     changed = dict(case.verdicts)
-    changed[route.NET_POSITIVE_ID] = "violated" if changed[route.NET_POSITIVE_ID] == "satisfied" else "satisfied"
+    changed[oracle.NET_GATE] = "violated" if changed[oracle.NET_GATE] == "satisfied" else "satisfied"
     loaded = manifest.load(route.MANIFEST_PATH)
     with pytest.raises(verify.VerifyError, match="verdict mismatch"):
         verify.check_case(replace(case, verdicts=changed), oracle.evaluate, oracle.operand_bindings(),
                           route._catalog_by_constraint_id(route.PACKAGE_DIR),
                           verify.objective_channels(loaded), verify.package_input_values(route.PACKAGE_DIR),
                           case.executable_fingerprint)
+
+
+def test_eligibility_uses_catalog_names_when_emitted_ids_change(executed, monkeypatch):
+    catalog = route._catalog_by_constraint_id(route.PACKAGE_DIR)
+    renamed = {cid: f"regenerated-{index}" for index, cid in enumerate(catalog)}
+    new_catalog = {renamed[cid]: entry | {"constraint_id": renamed[cid]}
+                   for cid, entry in catalog.items()}
+    expected = [route.eligible_prices(case) for case in executed[0]]
+    monkeypatch.setattr(route, "_catalog_by_constraint_id", lambda package: new_catalog)
+    for case, flags in zip(executed[0], expected, strict=True):
+        changed = replace(case, verdicts={renamed[cid]: value for cid, value in case.verdicts.items()})
+        assert route.eligible_prices(changed) == flags

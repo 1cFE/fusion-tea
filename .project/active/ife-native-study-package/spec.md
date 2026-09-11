@@ -1,6 +1,6 @@
 # Spec: IFE native study package
 
-**Status:** Implemented; independent certification pending under goal T-004
+**Status:** Needs Work — audit-F1 and audit-C1 at 8f1d74f3; see audit.md
 **Created:** 2026-09-10
 **Owner:** reid
 **Scope:** One package-specific integration task
@@ -13,12 +13,12 @@
 
 ## Requirements and success criteria
 
-- [INFERRED] SC1: Preserve the audited IFE equations, inputs, price conventions, semantic fingerprint and generated package bytes. Package preparation must not alter MFE or generic integration/study tooling.
-- [INFERRED] SC2: Provide an IFE annex, native captured snapshot, re-derived census, validated manifest and qualified beam/rate axis declarations. Baseline metadata must reproduce the audited baseline and both named verdicts; native producers compute fingerprints and census values.
-- [INFERRED] SC3: Execute the manifest baseline and finite proposed points through stock `ProvisionalPackageLoader`, `PreparedEvaluator`, `StudyRunner` and `StudyStore`. Persist all thirty numerical channels and both constraint verdicts. Missing publication or incompatible stored evidence must fail visibly. Validation fixtures do not constitute the goal's committed study.
-- [INFERRED] SC4: Publish a package-owned oracle entry and explicit predicate-operand bindings, reusing the independently audited annual cash-flow oracle. Reject unknown qualified keys and unsupported fractional year counts rather than silently ignoring or truncating them. Describe the oracle's limits separately from model claims.
-- [INFERRED] SC5: Demonstrate baseline, beam/rate mutations, negative net and exact zero through the route and generic verifier. Preserve both invalid-price indicators and named net verdicts. A zero sentinel must not appear as an eligible generating price in package-facing result interpretation.
-- [INFERRED] SC6: Obtain a positive independent coding audit and one native integration `CANDIDATE` with all gates passing against WI-048's audited lineage. Record exact commands, identities, failures and checks.
+- [x] [INFERRED] SC1: Preserve the audited IFE equations, inputs, price conventions, semantic fingerprint and generated package bytes. Package preparation must not alter MFE or generic integration/study tooling.
+- [x] [INFERRED] SC2: Provide an IFE annex, native captured snapshot, re-derived census, validated manifest and qualified beam/rate axis declarations. Baseline metadata must reproduce the audited baseline and both named verdicts; native producers compute fingerprints and census values.
+- [x] [INFERRED] SC3: Execute the manifest baseline and finite proposed points through stock `ProvisionalPackageLoader`, `PreparedEvaluator`, `StudyRunner` and `StudyStore`. Persist all thirty numerical channels and both constraint verdicts. Missing publication or incompatible stored evidence must fail visibly. Validation fixtures do not constitute the goal's committed study.
+- [x] [INFERRED] SC4: Publish a package-owned oracle entry and explicit predicate-operand bindings, reusing the independently audited annual cash-flow oracle. Reject unknown qualified keys and unsupported fractional year counts rather than silently ignoring or truncating them. Describe the oracle's limits separately from model claims.
+- [x] [INFERRED] SC5: Demonstrate baseline, beam/rate mutations, negative net and exact zero through the route and generic verifier. Preserve both invalid-price indicators and named net verdicts. A zero sentinel must not appear as an eligible generating price in package-facing result interpretation.
+- [ ] [INFERRED] SC6: Obtain a positive independent coding audit and one native integration `CANDIDATE` with all gates passing against WI-048's audited lineage. Record exact commands, identities, failures and checks.
 
 ## Non-goals
 
