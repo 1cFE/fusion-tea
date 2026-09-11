@@ -5,7 +5,7 @@
 - [x] Add meaningful actual-catalog and malformed/unsupported traversal tests.
 - [x] Implement the bounded recursive leaf traversal.
 - [x] Run actual IFE report and existing indicator regression; document limits.
-- [ ] Obtain fresh `$my-audit` certification; retain findings/repairs as needed.
+- [x] Obtain fresh `$my-audit` certification; retain findings/repairs as needed.
 
 All Python uses `.codex-test/run`. Study execution remains stopped in its native prerequisite record. No extra owner decision is needed for this unchanged-meaning seam correction.
 
@@ -19,4 +19,4 @@ Actual report: `.codex-test/run python scripts/study/indicators.py --package exp
 
 The indicator procedure also executes the read-set assertion that the integration manifest gate explicitly cannot reach. This report supplies that package-specific evidence without changing the historical integration report or accepting a broader goal residual. No model, package, schema, manifest, oracle or runtime dependency changed.
 
-Supported grammar is literal/feature leaves plus nested binary multiplication. No other arithmetic traversal, evaluation, Boolean expression support or malformed-schema expansion is claimed. Fresh independent certification is pending.
+Supported grammar is literal/feature leaves plus nested binary multiplication. No other arithmetic traversal, evaluation, Boolean expression support or malformed-schema expansion is claimed. Fresh independent certification at `1bde8771` is recorded in `audit.md`; the product-lens gate is CLEAR.
