@@ -195,6 +195,11 @@ epics:
     scale: standard
     status: backlog
     completed: null
+  - id: WI-051
+    name: MFE model-owned major radius
+    scale: standard
+    status: backlog
+    completed: null
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -304,6 +309,7 @@ standalone:
 | WI-046 | Lifecycle Calendar: Component Life into Availability and Dated Replacement | standard | backlog |  |
 | WI-047 | Fuel-Cycle, Divertor-Heat and Vacuum Reduced Flows | standard | backlog |  |
 | WI-050 | MFE coherent operating heating | standard | backlog |  |
+| WI-051 | MFE model-owned major radius | standard | backlog |  |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active
