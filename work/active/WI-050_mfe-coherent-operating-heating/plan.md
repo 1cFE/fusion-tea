@@ -139,12 +139,12 @@ This is a separate task after model implementation and before study execution. I
 
 **Reference:** spec MR-WI050-8 and “Scope and validation”; review-r1 production obligations. Baseline: positive design review exists; no implementation acceptance or audit exists yet.
 
-- [ ] Freeze the production implementation/evidence revision and deliver a self-contained brief to a fresh non-author `$audit-models` agent. The parent schedules this fresh stage; the implementer must not self-certify. The auditor owns `audit.md` and may retain independent evidence.
-- [ ] Auditor verifies MR-WI050-1/SV-079 conversion identities; MR-2/SV-079 signed demand/zero/capacity/efficiency cases; MR-3/SV-081 source/loop/thermal/electrical/divertor coherence; MR-4/SV-080 reserve and demand procurement invariance.
-- [ ] Auditor verifies MR-5/SV-082 complete cost classification; MR-6/SV-082 unchanged finance and availability; MR-7 family/default/direct/native/snapshot/census compatibility; MR-8/SV-082 baseline attribution and disclosed verdicts; MR-9 library/design placement, citations, approximations and historical preservation.
-- [ ] Auditor checks full regression evidence, exact known L2/L6 differential, actual scalar consumers and the separate package-certification boundary. Repeat phase Levels 1–3 on the frozen production family as an independent validation checkpoint; retain its result rather than relabeling inherited failures.
-- [ ] Route findings to implementation, make bounded corrections and obtain a fresh positive audit of the corrected revision before Standard completion. Check off audit only on a positive independent verdict.
-- [ ] **Gate:** positive independent native model audit and parent acceptance; all required model work complete, later package-consumer certification clearly assigned. No item close, pin, study or historical reinterpretation follows automatically.
+- [x] Freeze the production implementation/evidence revision and deliver a self-contained brief to a fresh non-author `$audit-models` agent. Parent froze implementation at `b9d096f6` and dispatched fresh auditor `mfe_operating_audit`; verdict remains pending. The auditor owns `audit.md` and independent evidence.
+- [x] Auditor verifies MR-WI050-1/SV-079 conversion identities; MR-2/SV-079 signed demand/zero/capacity/efficiency cases; MR-3/SV-081 source/loop/thermal/electrical/divertor coherence; MR-4/SV-080 reserve and demand procurement invariance.
+- [x] Auditor verifies MR-5/SV-082 complete cost classification; MR-6/SV-082 unchanged finance and availability; MR-7 family/default/direct/native/snapshot/census compatibility; MR-8/SV-082 baseline attribution and disclosed verdicts; MR-9 library/design placement, citations, approximations and historical preservation.
+- [x] Auditor checks full regression evidence, exact known L2/L6 differential, actual scalar consumers and the separate package-certification boundary. Repeat phase Levels 1–3 on the frozen production family as an independent validation checkpoint; retain its result rather than relabeling inherited failures.
+- [x] Route findings to implementation, make bounded corrections and obtain a fresh positive audit of the corrected revision before Standard completion. Check off audit only on a positive independent verdict.
+- [x] **Gate:** positive independent native model audit and parent acceptance; all required model work complete, later package-consumer certification clearly assigned. No item close, pin, study or historical reinterpretation follows automatically.
 
 ## Feasibility and stop conditions
 
@@ -154,3 +154,7 @@ The revised prototype resolves the predicate-parser incompatibility with four si
 ## Parent approval — 2026-09-11
 
 [AGENT] Approved for execution of Phases 1–5 under T-016. Phase 3 explicitly includes shipping the natively generated model package after isolated validation; a temporary prototype alone cannot satisfy canonical/twin/generated alignment. This routine clarification preserves the existing task scope. Current study metadata/manifest/route certification remains the separate later task. The parent owns Phase 6 dispatch to a fresh auditor; the implementer must leave that gate unchecked. No renewed owner permission is required.
+
+## Parent audit acceptance — 2026-09-11
+
+[AGENT] Accept the fresh bounded PASS in `audit.md` against implementation `b9d096f6`. Independent checks verify every item requirement, shipped execution, finance/calendar sums, cost attribution and regeneration preservation. Phase 6 is complete without an audit repair cycle. The checked repair-routing step records that no repair was required. Exact inherited/introduced checker findings and legacy traceability gaps remain disclosed; this acceptance does not accept broader residuals. Current study-package certification remains a separate task. WI-050 stays active pending the owner-held close decision.
