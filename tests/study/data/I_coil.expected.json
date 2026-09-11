@@ -1,5 +1,5 @@
 {
- "derived_against_semantic_fingerprint": "42237b2b07673bfde916b9749bab93634eafa91f1205abde4b7a70dd1881038f",
+ "derived_against_semantic_fingerprint": "8f4912c20870b8e0090f9836292403d9d05b0b0e6d46dabf53713772737666cf",
  "group": {
   "axis": "I_coil",
   "declared_keys": [
@@ -343,6 +343,106 @@
   ],
   "constraints_unreachable": [
    {
+    "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+    "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Positive'",
+    "source_local_identity": "heating_couple_positive_ok",
+    "operator": ">",
+    "operand_classes": [
+     "bound"
+    ],
+    "bound_vs_bound": true,
+    "operands": [
+     {
+      "operand": "efficiency",
+      "class": "bound",
+      "ref": "stellarator_09__stellaris__eta_couple_heat",
+      "reached": false,
+      "entry_type": "design_attribute"
+     },
+     {
+      "operand": "<literal>",
+      "class": "literal",
+      "reached": false,
+      "value": 0.0
+     }
+    ]
+   },
+   {
+    "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+    "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
+    "source_local_identity": "heating_couple_upper_ok",
+    "operator": "<=",
+    "operand_classes": [
+     "bound"
+    ],
+    "bound_vs_bound": true,
+    "operands": [
+     {
+      "operand": "efficiency",
+      "class": "bound",
+      "ref": "stellarator_09__stellaris__eta_couple_heat",
+      "reached": false,
+      "entry_type": "design_attribute"
+     },
+     {
+      "operand": "<literal>",
+      "class": "literal",
+      "reached": false,
+      "value": 1.0
+     }
+    ]
+   },
+   {
+    "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+    "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Positive'",
+    "source_local_identity": "heating_source_positive_ok",
+    "operator": ">",
+    "operand_classes": [
+     "bound"
+    ],
+    "bound_vs_bound": true,
+    "operands": [
+     {
+      "operand": "efficiency",
+      "class": "bound",
+      "ref": "stellarator_09__stellaris__eta_source_heat",
+      "reached": false,
+      "entry_type": "design_attribute"
+     },
+     {
+      "operand": "<literal>",
+      "class": "literal",
+      "reached": false,
+      "value": 0.0
+     }
+    ]
+   },
+   {
+    "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+    "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
+    "source_local_identity": "heating_source_upper_ok",
+    "operator": "<=",
+    "operand_classes": [
+     "bound"
+    ],
+    "bound_vs_bound": true,
+    "operands": [
+     {
+      "operand": "efficiency",
+      "class": "bound",
+      "ref": "stellarator_09__stellaris__eta_source_heat",
+      "reached": false,
+      "entry_type": "design_attribute"
+     },
+     {
+      "operand": "<literal>",
+      "class": "literal",
+      "reached": false,
+      "value": 1.0
+     }
+    ]
+   },
+   {
     "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
     "definition_qualified_name": "mfe_viability::'TBR Floor'",
     "source_local_identity": "tbr_ok",
@@ -493,6 +593,106 @@
       "ref": "stellarator_09__stellaris__q_target_limit",
       "reached": false,
       "entry_type": "design_attribute"
+     }
+    ]
+   },
+   {
+    "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+    "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Positive'",
+    "source_local_identity": "heating_couple_positive_ok",
+    "operator": ">",
+    "operand_classes": [
+     "bound"
+    ],
+    "bound_vs_bound": true,
+    "operands": [
+     {
+      "operand": "efficiency",
+      "class": "bound",
+      "ref": "stellarator_09__stellaris__eta_couple_heat",
+      "reached": false,
+      "entry_type": "design_attribute"
+     },
+     {
+      "operand": "<literal>",
+      "class": "literal",
+      "reached": false,
+      "value": 0.0
+     }
+    ]
+   },
+   {
+    "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+    "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
+    "source_local_identity": "heating_couple_upper_ok",
+    "operator": "<=",
+    "operand_classes": [
+     "bound"
+    ],
+    "bound_vs_bound": true,
+    "operands": [
+     {
+      "operand": "efficiency",
+      "class": "bound",
+      "ref": "stellarator_09__stellaris__eta_couple_heat",
+      "reached": false,
+      "entry_type": "design_attribute"
+     },
+     {
+      "operand": "<literal>",
+      "class": "literal",
+      "reached": false,
+      "value": 1.0
+     }
+    ]
+   },
+   {
+    "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+    "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Positive'",
+    "source_local_identity": "heating_source_positive_ok",
+    "operator": ">",
+    "operand_classes": [
+     "bound"
+    ],
+    "bound_vs_bound": true,
+    "operands": [
+     {
+      "operand": "efficiency",
+      "class": "bound",
+      "ref": "stellarator_09__stellaris__eta_source_heat",
+      "reached": false,
+      "entry_type": "design_attribute"
+     },
+     {
+      "operand": "<literal>",
+      "class": "literal",
+      "reached": false,
+      "value": 0.0
+     }
+    ]
+   },
+   {
+    "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+    "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
+    "source_local_identity": "heating_source_upper_ok",
+    "operator": "<=",
+    "operand_classes": [
+     "bound"
+    ],
+    "bound_vs_bound": true,
+    "operands": [
+     {
+      "operand": "efficiency",
+      "class": "bound",
+      "ref": "stellarator_09__stellaris__eta_source_heat",
+      "reached": false,
+      "entry_type": "design_attribute"
+     },
+     {
+      "operand": "<literal>",
+      "class": "literal",
+      "reached": false,
+      "value": 1.0
      }
     ]
    },
@@ -733,6 +933,9 @@
    "lcoe_1cfe",
    "magnet_capital",
    "magnet_capital_1cfe",
+   "operating_heat_coupled",
+   "operating_heat_delivered",
+   "operating_heat_wallplug",
    "p_aux_required",
    "tau_E",
    "total_capital"
@@ -742,8 +945,8 @@
   ],
   "sibling_candidates": [],
   "trace_size": {
-   "modules_fired": 83,
-   "channels_tainted": 152
+   "modules_fired": 84,
+   "channels_tainted": 155
   },
   "warnings": [],
   "not_derivable": {

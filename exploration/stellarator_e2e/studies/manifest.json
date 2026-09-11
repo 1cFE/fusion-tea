@@ -7,7 +7,7 @@
  "fingerprints": {
   "indicator_inputs": {
    "recipe": "indicator-input-fingerprint/v1",
-   "digest": "e2b0fe3979af1c75a92d8b58f310e0f07f6059af3f3236f4a812bf2227baa7d9",
+   "digest": "0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204",
    "files": [
     "contracts/model_contract.json",
     "inputs/mfe_account_costs_params.json",
@@ -23,8 +23,8 @@
    ]
   },
   "recorded_provenance": {
-   "executable_fingerprint": "234d0b27d2b5327ede2cae1c05a2e1c1ead1d89337fd019782bdda03d841e81d",
-   "semantic_fingerprint": "42237b2b07673bfde916b9749bab93634eafa91f1205abde4b7a70dd1881038f"
+   "executable_fingerprint": "a9514eb6505dea1589f47cb20bd004e480d61b3be98e7d793bf195b1b2d773b0",
+   "semantic_fingerprint": "8f4912c20870b8e0090f9836292403d9d05b0b0e6d46dabf53713772737666cf"
   }
  },
  "objective_catalog": [
@@ -82,6 +82,21 @@
    "name": "tau_E",
    "channel": "stellarator_09__stellaris__sustain__tau_E",
    "note": "WI-037 ISS04 energy confinement time (closed form, line-averaged density)."
+  },
+  {
+   "name": "operating_heat_coupled",
+   "channel": "stellarator_09__stellaris__operating_heat__p_coupled",
+   "note": "WI-050 signed operating demand at held source/coupling efficiencies."
+  },
+  {
+   "name": "operating_heat_delivered",
+   "channel": "stellarator_09__stellaris__operating_heat__p_delivered",
+   "note": "WI-050 signed operating demand at held source/coupling efficiencies."
+  },
+  {
+   "name": "operating_heat_wallplug",
+   "channel": "stellarator_09__stellaris__operating_heat__p_wallplug",
+   "note": "WI-050 signed operating demand at held source/coupling efficiencies."
   }
  ],
  "ties": [
@@ -102,7 +117,7 @@
   },
   "headline": {
    "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
-   "value": 224.60952472804465
+   "value": 224.26923288439
   },
   "verdicts": [
    {
@@ -124,6 +139,22 @@
    {
     "source_local_identity": "divertor_heat_ok",
     "expected": "violated"
+   },
+   {
+    "source_local_identity": "heating_couple_positive_ok",
+    "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "heating_couple_upper_ok",
+    "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "heating_source_positive_ok",
+    "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "heating_source_upper_ok",
+    "expected": "satisfied"
    },
    {
     "source_local_identity": "loop_capacity_ok",

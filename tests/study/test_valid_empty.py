@@ -27,7 +27,11 @@ def test_a_group_with_no_constraint_reach_exits_zero(tmp_path):
     assert group["no_constraint_response"] is True
     assert group["constraints_reachable"] == []
     assert group["objectives_reachable"] == ["lcoe", "lcoe_1cfe", "total_capital"]
-    assert group["objectives_unreachable"] == ["beta", "cas27", "cas72", "fuel", "magnet_capital", "magnet_capital_1cfe", "p_aux_required", "tau_E"]
+    assert group["objectives_unreachable"] == [
+        "beta", "cas27", "cas72", "fuel", "magnet_capital", "magnet_capital_1cfe",
+        "operating_heat_coupled", "operating_heat_delivered", "operating_heat_wallplug",
+        "p_aux_required", "tau_E",
+    ]
 
 
 def test_the_empty_result_still_carries_the_whole_catalog(tmp_path):
@@ -36,8 +40,8 @@ def test_the_empty_result_still_carries_the_whole_catalog(tmp_path):
     rc, out, err = run_tool_raw(REAL_PACKAGE, REAL_MANIFEST, EXTRAS)
     assert rc == 0, err
     group = group_by_axis(json.loads(out), "land_cost")
-    assert len(group["bounds"]) == 14  # WI-047 (2026-09-08): divertor_heat_ok joined the thirteen (WI-045: three loop/cycle fences joined the ten; WI-043: burn_hold_ok joined the nine)
-    assert len(group["constraints_unreachable"]) == 14
+    assert len(group["bounds"]) == 18
+    assert len(group["constraints_unreachable"]) == 18
     assert all(not any(o["reached"] for o in c["operands"]) for c in group["bounds"])
 
 

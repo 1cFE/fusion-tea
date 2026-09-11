@@ -53,7 +53,7 @@ BASELINE_POINT = {
 # Predictions) and re-pinned from the executed baseline after the oracle read bit-exact
 # on every channel, the eleven calendar channels included. The held mode
 # (availability_direct 0.85) reproduces WI-045's 237.2528002420958 bit-for-bit.
-PINNED_LCOE = 224.60952472804465
+PINNED_LCOE = 224.26923288439  # WI-050 audited operating demand.
 
 
 @pytest.fixture
@@ -91,11 +91,13 @@ def package_inputs(package_path):
 
 def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
     entries = catalog_entries(real_package_path)
-    assert len(entries) == 14, f"expected the fourteen viability constraints (WI-047: divertor_heat_ok joined the thirteen; WI-045: the two loop fences and the cycle domain fence joined the ten; WI-043: burn_hold_ok joined the nine), found {len(entries)}"
+    assert len(entries) == 18
     bindings = oracle_entry.operand_bindings()
     channels = oracle_entry.evaluate(BASELINE_POINT)
     inputs = package_inputs(real_package_path)
 
+    assert set(bindings) == {entry["constraint_id"] for entry in entries}
+    assert len(inputs) == 247
     resolved = 0
     for entry in entries:
         cid = entry["constraint_id"]
@@ -112,7 +114,7 @@ def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
                 f"a package {binding['kind']}"
             )
             resolved += 1
-    assert resolved == 24, f"expected twenty-four feature_ref operands across the fourteen (WI-047 adds two: the computed target peak and the adopted threshold; WI-045 added four: one, two, one; WI-043 added one), found {resolved}"
+    assert resolved == 28
 
 
 def test_the_operand_that_resolves_to_nothing_by_name_is_bound_explicitly(
@@ -170,3 +172,26 @@ def test_an_unmapped_oracle_output_fails_closed_naming_the_channel(oracle_entry,
     with pytest.raises(oracle_entry.OracleSeamError) as exc:
         oracle_entry.evaluate(BASELINE_POINT)
     assert "no_such_output" in str(exc.value) and "pkg__nowhere" in str(exc.value)
+
+
+@pytest.mark.parametrize("stage", ["source", "couple"])
+@pytest.mark.parametrize("value", [-0.5, 0.0, 1.0, 1.01])
+def test_scalar_efficiency_domains_use_current_input_bindings(
+    real_package_path, oracle_entry, stage, value
+):
+    from scripts.study.verify import derive_verdict
+
+    entries = catalog_entries(real_package_path)
+    point = {f"stellarator_09__stellaris__eta_{stage}_heat": value}
+    for entry in entries:
+        name = entry["source_local_identity"]
+        if name.startswith(f"heating_{stage}_"):
+            expected = value > 0 if "positive" in name else value <= 1
+            assert derive_verdict(entry["constraint_id"], entry, oracle_entry.operand_bindings(),
+                                  point, package_inputs(real_package_path), {}) == (expected, 1)
+
+
+@pytest.mark.parametrize("stage", ["source", "couple"])
+def test_zero_efficiency_fails_in_the_independent_oracle(oracle_entry, stage):
+    with pytest.raises(ZeroDivisionError):
+        oracle_entry.evaluate({f"stellarator_09__stellaris__eta_{stage}_heat": 0})

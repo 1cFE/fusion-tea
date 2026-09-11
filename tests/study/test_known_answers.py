@@ -20,17 +20,7 @@ from tests.study.conftest import DATA_DIR, run_tool
 # held-mode switch (design D5). The known answer is re-derived, its no-response claim kept.
 CASES = ["availability_direct", "interest_rate", "R", "R+tie", "a", "I_coil"]
 
-EXPECTED_SEMANTIC_FINGERPRINT = (
-    # WI-047 the fuel-cycle flows, the divertor heat ledger and the exhaust gas load
-    # (goal plant-closure round 1, 2026-09-08); was e6a7baa5... at WI-046 (the lifecycle
-    # calendar, 2026-09-08), a331cd82... at WI-045 (the primary loop and the temperature-compatible cycle,
-    # 2026-09-08), 39e931fa... at WI-044 (the magnet
-    # chain sees the coil bore, 2026-09-07), baab7e4c... at WI-043 (two-sided sustainment condition,
-    # 2026-09-07), c37fb58a... at WI-042 (sourced helium-ash profile, 2026-09-05),
-    # d468f3b6... at WI-041 (source-anchored wall-load fence, 2026-09-04) and
-    # 48731d15... at WI-039 (heating power chain, 2026-09-03)
-    "42237b2b07673bfde916b9749bab93634eafa91f1205abde4b7a70dd1881038f"
-)
+EXPECTED_SEMANTIC_FINGERPRINT = "8f4912c20870b8e0090f9836292403d9d05b0b0e6d46dabf53713772737666cf"
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
 #:          modules fired, channels tainted). Read straight off the Item 1 fixture
@@ -39,48 +29,128 @@ EXPECTED_SEMANTIC_FINGERPRINT = (
 #: qualitative contract is unchanged; R and a fire one more module and taint one
 #: more channel because CAS27 is now computed in-package and declared as the
 #: `cas27` objective, and each swept attribute is one plant-level entry point.
-FIXTURE_CONTRACT = {
-    # WI-047 (goal plant-closure round 1, 2026-09-08) re-derived every expectation file on
-    # the fuel / divertor-heat / vacuum package. One verdict added (divertor_heat_ok, on the
-    # computed target peak). What moved, read off the report: the three flat calcs and the
-    # new constraint module sit downstream of the fusion power and the sustainment chain,
-    # so every axis that reaches `fusion` (R, R+tie, a, I_coil) fires four more modules and
-    # taints twenty more channels (the nineteen new ones plus the constraint's evaluation
-    # channel) and reaches divertor_heat_ok (R, a: 77 -> 81 fired, 137 -> 157 tainted;
-    # R+tie: 82 -> 86, 142 -> 162; I_coil: 79 -> 83, 132 -> 152). availability_direct and
-    # interest_rate are unchanged (6/18 and 9/22) with all fourteen constraints unreachable.
-    # Counts are read from the report, never fitted.
-    # WI-046 (goal plant-closure round 1, 2026-09-08) re-derived every expectation file on
-    # the lifecycle-calendar package. No verdict added (thirteen). What moved, read off the
-    # report: 'Lifecycle Calendar' publishes eleven channels where the retired CAS72 calc
-    # published one, so every axis reaching it taints ten more channels (R, a: 127 -> 137;
-    # R+tie: 132 -> 142; I_coil: 122 -> 132; availability_direct: 8 -> 18; interest_rate:
-    # 11 -> 22 with one more module fired, 8 -> 9); `availability_direct` reaches the same
-    # four objectives `availability` did (every nonzero value selects the held mode, whose
-    # response is the retired chain's); `interest_rate` now also reaches `fuel` -- the trace
-    # is module-level (the report's own not_derivable statement), and the calendar module
-    # takes the discount rate and produces the availability the fuel calc reads, though the
-    # executed live availability F/N does not depend on the rate. Counts from the report.
-    # WI-045 (goal plant-closure round 1, 2026-09-08) re-derived every expectation file on
-    # the loop-and-cycle package. Three verdicts added (loop_pressure_ok, loop_capacity_ok,
-    # cycle_domain_ok). What moved, read off the report: the reactor source heat, the
-    # primary loop and the cycle sit downstream of the fusion power, so every axis that
-    # reaches `fusion` (R, R+tie, a, I_coil) fires the three new modules and reaches the
-    # three new constraints, and their traces grow (R, a: 71 -> 77 fired, 104 -> 127
-    # tainted; R+tie: 76 -> 82, 109 -> 132; I_coil: 73 -> 79, 99 -> 122). availability
-    # and interest_rate are unchanged (6/8 and 8/11): neither reaches the loop, and the
-    # thirteen constraints are all unreachable from them. Counts are read from the report,
-    # never fitted.
-    # WI-044 (goal minor-radius round 1, 2026-09-07) had re-derived every file on the
-    # coil-bore package; WI-043 (goal burn-control round 1, 2026-09-07) had added
-    # burn_hold_ok on every axis reaching the sustainment operand; earlier history in git.
-    "availability_direct": (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 6, 18),
-    "interest_rate": (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 9, 22),
-    "R": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'cycle_domain_ok', 'divertor_heat_ok', 'loop_capacity_ok', 'loop_pressure_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 81, 157),
-    "R+tie": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'cycle_domain_ok', 'divertor_heat_ok', 'loop_capacity_ok', 'loop_pressure_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 86, 162),
-    "a": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'cycle_domain_ok', 'divertor_heat_ok', 'loop_capacity_ok', 'loop_pressure_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 81, 157),
-    "I_coil": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'cycle_domain_ok', 'divertor_heat_ok', 'loop_capacity_ok', 'loop_pressure_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 83, 152),
-}
+# WI-050: re-derived by implementation/refresh_metadata.py from the native graph.
+FIXTURE_CONTRACT = {'I_coil': (False,
+            ['beta_ok',
+             'burn_hold_ok',
+             'cond_strain_ok',
+             'cycle_domain_ok',
+             'divertor_heat_ok',
+             'loop_capacity_ok',
+             'loop_pressure_ok',
+             'net_positive',
+             'peak_field_ok',
+             'recirc_ok',
+             'sustainment_ok',
+             'wall_load_ok',
+             'wp_stress_ok'],
+            ['beta',
+             'cas72',
+             'fuel',
+             'lcoe',
+             'lcoe_1cfe',
+             'magnet_capital',
+             'magnet_capital_1cfe',
+             'operating_heat_coupled',
+             'operating_heat_delivered',
+             'operating_heat_wallplug',
+             'p_aux_required',
+             'tau_E',
+             'total_capital'],
+            84,
+            155),
+ 'R': (False,
+       ['beta_ok',
+        'burn_hold_ok',
+        'cond_strain_ok',
+        'cycle_domain_ok',
+        'divertor_heat_ok',
+        'loop_capacity_ok',
+        'loop_pressure_ok',
+        'net_positive',
+        'peak_field_ok',
+        'recirc_ok',
+        'sustainment_ok',
+        'wall_load_ok',
+        'wp_stress_ok'],
+       ['beta',
+        'cas27',
+        'cas72',
+        'fuel',
+        'lcoe',
+        'lcoe_1cfe',
+        'magnet_capital',
+        'magnet_capital_1cfe',
+        'operating_heat_coupled',
+        'operating_heat_delivered',
+        'operating_heat_wallplug',
+        'p_aux_required',
+        'tau_E',
+        'total_capital'],
+       82,
+       160),
+ 'R+tie': (False,
+           ['beta_ok',
+            'burn_hold_ok',
+            'cond_strain_ok',
+            'cycle_domain_ok',
+            'divertor_heat_ok',
+            'loop_capacity_ok',
+            'loop_pressure_ok',
+            'net_positive',
+            'peak_field_ok',
+            'recirc_ok',
+            'sustainment_ok',
+            'wall_load_ok',
+            'wp_stress_ok'],
+           ['beta',
+            'cas27',
+            'cas72',
+            'fuel',
+            'lcoe',
+            'lcoe_1cfe',
+            'magnet_capital',
+            'magnet_capital_1cfe',
+            'operating_heat_coupled',
+            'operating_heat_delivered',
+            'operating_heat_wallplug',
+            'p_aux_required',
+            'tau_E',
+            'total_capital'],
+           87,
+           165),
+ 'a': (False,
+       ['beta_ok',
+        'burn_hold_ok',
+        'cond_strain_ok',
+        'cycle_domain_ok',
+        'divertor_heat_ok',
+        'loop_capacity_ok',
+        'loop_pressure_ok',
+        'net_positive',
+        'peak_field_ok',
+        'recirc_ok',
+        'sustainment_ok',
+        'wall_load_ok',
+        'wp_stress_ok'],
+       ['beta',
+        'cas27',
+        'cas72',
+        'fuel',
+        'lcoe',
+        'lcoe_1cfe',
+        'magnet_capital',
+        'magnet_capital_1cfe',
+        'operating_heat_coupled',
+        'operating_heat_delivered',
+        'operating_heat_wallplug',
+        'p_aux_required',
+        'tau_E',
+        'total_capital'],
+       82,
+       160),
+ 'availability_direct': (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 6, 18),
+ 'interest_rate': (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 9, 22)}
 
 
 @pytest.fixture(scope="module")
@@ -142,7 +212,7 @@ def test_availability_direct_reaches_no_constraint(report):
     group = group_by_axis(report, "availability_direct")
     assert group["no_constraint_response"] is True
     assert group["constraints_reachable"] == []
-    assert len(group["constraints_unreachable"]) == 14  # WI-047: divertor_heat_ok joined the thirteen (WI-045: three loop/cycle fences joined the ten; WI-043: burn_hold_ok joined the nine)
+    assert len(group["constraints_unreachable"]) == 18
 
 
 def test_I_coil_reaches_the_field_constraints_through_calcs(report):
@@ -270,3 +340,35 @@ def test_every_constraint_carries_all_three_identities(report):
             # R9: the id is the pipeline module name, which carries the local identity
             # plus a hash suffix that does not survive regeneration.
             assert constraint["source_local_identity"] in constraint["constraint_id"]
+
+
+def test_current_heating_reachability(real_package_path, real_manifest_path, tmp_path):
+    """Module reachability distinguishes installed reserve from operating demand."""
+    axes = tmp_path / "heating-axes.json"
+    names = ["p_wallplug_heat", "eta_source_heat", "eta_couple_heat"]
+    axes.write_text(json.dumps({"schema_version": "study-axis-declaration/v1", "groups": [
+        {"axis": name, "keys": [
+            {"key": f"stellarator_09__stellaris__{name}", "provenance": "fan_out"}
+        ]}
+        for name in names
+    ]}))
+    doc = run_tool(real_package_path, real_manifest_path, axes)
+    reserve = group_by_axis(doc, "p_wallplug_heat")
+    assert {c["source_local_identity"] for c in reserve["constraints_reachable"]} == {
+        "sustainment_ok", "divertor_heat_ok"
+    }
+    assert reserve["trace_size"] == {"modules_fired": 21, "channels_tainted": 32}
+    assert reserve["objectives_reachable"] == ["lcoe", "lcoe_1cfe", "total_capital"]
+    for stage in ("source", "couple"):
+        group = group_by_axis(doc, f"eta_{stage}_heat")
+        assert {c["source_local_identity"] for c in group["constraints_reachable"]} == {
+            "cycle_domain_ok", "divertor_heat_ok", "loop_capacity_ok", "loop_pressure_ok",
+            "net_positive", "recirc_ok", "sustainment_ok",
+            f"heating_{stage}_positive_ok", f"heating_{stage}_upper_ok",
+        }
+        assert group["trace_size"] == {"modules_fired": 62, "channels_tainted": 112}
+        assert {
+            "operating_heat_coupled", "operating_heat_delivered", "operating_heat_wallplug"
+        } <= set(
+            group["objectives_reachable"]
+        )

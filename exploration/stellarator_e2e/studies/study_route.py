@@ -46,7 +46,7 @@ PACKAGE_DIR = E2E / "generated"
 MANIFEST_PATH = HERE / "manifest.json"
 P = "stellarator_09__stellaris__"
 BASELINE_RESULT_SCHEMA_VERSION = "study-baseline-result/v1"
-EXPECTED_CONSTRAINT_COUNT = 14  # WI-047 (2026-09-08): divertor_heat_ok joins the thirteen (WI-045: three loop/cycle fences joined the ten; WI-043: burn_hold_ok joined the nine)
+EXPECTED_CONSTRAINT_COUNT = 18  # WI-050: four scalar efficiency bounds.
 
 # --- Axis declarations: SysML attribute -> complete entry-key expansion ------
 AXES: dict[str, list[str]] = {
@@ -74,6 +74,9 @@ AVAIL_VALUES = [round(0.50 + 0.025 * i, 3) for i in range(19)]
 #: Exported columns: the proof-of-life's own column names, so the after-migration
 #: CSVs join the before-migration ones by coordinate and column.
 CHANNELS = {
+    "operating_heat_coupled": f"{P}operating_heat__p_coupled",
+    "operating_heat_delivered": f"{P}operating_heat__p_delivered",
+    "operating_heat_wallplug": f"{P}operating_heat__p_wallplug",
     "lcoe": f"{P}lcoe_calc__lcoe",
     "wall_load": f"{P}wall_load_calc__wall_load",
     "p_fus": f"{P}fusion__p_fus",

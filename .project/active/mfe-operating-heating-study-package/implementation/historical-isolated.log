@@ -1,0 +1,46 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-absent] _
+
+local_study = <module '20260830-stress-fence' from '/home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/studies/20260830-stress-fence/study.py'>
+bad_value = 'absent', bad_index = 0
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12224/test_local_export_refuses_inco0')
+
+    @pytest.mark.parametrize(
+        "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+        ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+    )
+    @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+    def test_local_export_refuses_incomplete_results_before_publishing(
+        local_study, bad_value, bad_index, tmp_path
+    ):
+        cases = [_local_case(local_study), _local_case(local_study)]
+        channel = next(reversed(local_study.CHANNELS.values()))
+        if bad_value == "absent":
+            del cases[bad_index].outputs[channel]
+        else:
+            cases[bad_index].outputs[channel] = bad_value
+        output = tmp_path / "points.csv"
+        previous = b"previous evidence\n"
+        output.write_bytes(previous)
+    
+>       with pytest.raises(local_study.route.RouteError, match=channel):
+E       Failed: DID NOT RAISE <class 'study_route.RouteError'>
+
+tests/study/test_study_publication_fail_closed.py:146: Failed
+_ test_local_export_preserves_all_complete_values_including_zero[20260907-minor-radius] _
+
+local_study = <module '20260907-minor-radius' from '/home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/studies/20260907-minor-radius/study.py'>
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12224/test_local_export_preserves_al0')
+
+    def test_local_export_preserves_all_complete_values_including_zero(local_study, tmp_path):
+        case = _local_case(local_study)
+>       output = local_study.export([case], tmp_path / "points.csv")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+
+tests/study/test_study_publication_fail_closed.py:154: TypeError
+=========================== short test summary info ============================
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260907-minor-radius]
+2 failed in 0.23s

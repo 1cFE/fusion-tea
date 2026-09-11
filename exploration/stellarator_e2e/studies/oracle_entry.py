@@ -189,6 +189,9 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
 #: Oracle output name -> qualified channel name. Only channels the package records
 #: as single-field floats appear; the oracle returns more than the package does.
 ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
+    "operating_heat_coupled": f"{P}operating_heat__p_coupled",
+    "operating_heat_delivered": f"{P}operating_heat__p_delivered",
+    "operating_heat_wallplug": f"{P}operating_heat__p_wallplug",
     "V": f"{P}geom__V",
     "p_fus": f"{P}fusion__p_fus",
     "p_th": f"{P}pb__p_th",
@@ -353,6 +356,19 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
 #: could be name-matched use three different composition rules. A tool that guessed
 #: would compare the wrong number and read as a pass.
 OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
+    # WI-050 scalar domains, IDs and formal names read from the current contract.
+    "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": {
+        "efficiency": {"kind": "input", "key": f"{P}eta_couple_heat"},
+    },
+    "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": {
+        "efficiency": {"kind": "input", "key": f"{P}eta_source_heat"},
+    },
+    "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": {
+        "efficiency": {"kind": "input", "key": f"{P}eta_couple_heat"},
+    },
+    "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": {
+        "efficiency": {"kind": "input", "key": f"{P}eta_source_heat"},
+    },
     # Operand names are the constraint definitions' formal names as the catalog's
     # predicate IR spells them: `_in`-suffixed where the D-5 rename touched the formal
     # (beta, beta_limit, tbr, tbr_floor, wall_load_limit), bare where it did not

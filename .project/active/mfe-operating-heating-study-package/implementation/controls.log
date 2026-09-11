@@ -1,0 +1,6 @@
+{
+  "cases": 3,
+  "verdicts": 18,
+  "worst_channel_rel_dev": 1.3031089676201858e-16,
+  "store": "/tmp/wi050-package-controls/_work/operating-controls.db"
+}

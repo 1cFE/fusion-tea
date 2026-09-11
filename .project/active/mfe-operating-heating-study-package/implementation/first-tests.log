@@ -1,0 +1,30 @@
+......................s..F...............................                [100%]
+=================================== FAILURES ===================================
+_______________ test_a_group_with_no_constraint_reach_exits_zero _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12218/test_a_group_with_no_constrain0')
+
+    def test_a_group_with_no_constraint_reach_exits_zero(tmp_path):
+        out_path = tmp_path / "indicators.json"
+        rc, out, err = run_tool_raw(REAL_PACKAGE, REAL_MANIFEST, EXTRAS, out=out_path)
+        assert rc == 0, err
+        assert out == ""  # --out was given, so the document went to the file
+        doc = json.loads(out_path.read_text())
+    
+        group = group_by_axis(doc, "land_cost")
+        assert group["group_valid"] is True
+        assert group["no_constraint_response"] is True
+        assert group["constraints_reachable"] == []
+        assert group["objectives_reachable"] == ["lcoe", "lcoe_1cfe", "total_capital"]
+>       assert group["objectives_unreachable"] == ["beta", "cas27", "cas72", "fuel", "magnet_capital", "magnet_capital_1cfe", "operating_heat_coupled", "operating_heat_delivered", "operating_heat_wallplug", "p_aux_required", "tau_E"]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert ['beta', 'cas...al_1cfe', ...] == ['beta', 'cas...al_1cfe', ...]
+E         
+E         At index 6 diff: 'operating_heat_coupled' != 'p_aux_required'
+E         Left contains 3 more items, first extra item: 'operating_heat_wallplug'
+E         Use -v to get more diff
+
+tests/study/test_valid_empty.py:30: AssertionError
+=========================== short test summary info ============================
+FAILED tests/study/test_valid_empty.py::test_a_group_with_no_constraint_reach_exits_zero
+1 failed, 55 passed, 1 skipped in 168.63s (0:02:48)
