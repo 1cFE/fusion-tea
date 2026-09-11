@@ -1,11 +1,11 @@
 ---
-Verdict: FAIL
-Implementation: 243625b476c6761e6c74dbafa7e9413402eafe90
+Verdict: PASS
+Implementation: d8a8b065bf1e7e5358151a8b52f62de5152fc84d
 Created: 2026-09-11
 ---
 
 # Independent audit
 
-The fresh native audit is [20260911-044526_audit_WI-048_ife-operating-point-repair.md](../../analysis/20260911-044526_audit_WI-048_ife-operating-point-repair.md).
+The current fresh native re-audit is [20260911-045617_audit_WI-048_ife-operating-point-repair-r1.md](../../analysis/20260911-045617_audit_WI-048_ife-operating-point-repair-r1.md): **PASS** for all eight item requirements and F01/F02/F03. A01/A02/T01 are corrected. Fresh focused tests: 72 passed, no skips. All 30 baseline numbers and two verdicts are exactly unchanged. IFE Levels 1–5 pass; Level 6 retains 50 reported issues. No residual acceptance or close/archive was performed.
 
-The executable F02/F03 repair and all thirteen source literals pass; 122 tests pass with 13 inherited skips. IFE Levels 1–5 pass, Level 6 retains 50 attributed issues. The item verdict is FAIL because active alpha provenance still presents the corrupted 2.054-GW historical basis without qualification (A01, MR-WI048-1). The report specifies a bounded documentation correction and records further citation/traceability limitations. No coefficient/finance change, close/archive, or residual acceptance was performed.
+The [original negative audit](../../analysis/20260911-044526_audit_WI-048_ife-operating-point-repair.md) of implementation `243625b476c6761e6c74dbafa7e9413402eafe90` remains unchanged. Its A01 source-provenance defect prompted the bounded repair documented in [repair-1.md](repair-1.md).

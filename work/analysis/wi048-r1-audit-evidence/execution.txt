@@ -1,0 +1,16 @@
+{
+  "head": "d8a8b065bf1e7e5358151a8b52f62de5152fc84d",
+  "canonical_file_count": 11,
+  "tokens_equal": true,
+  "twins_equal": true,
+  "matrix_add_only": true,
+  "models": "/tmp/wi048-r1-audit-7x8kplf4/models",
+  "semantic_fingerprint": "8b7a76a631e6e55dbd45cf617a68fae87def408e4f8494015e40c0c8aac585dd",
+  "loaded_fingerprint": "045417b231573653d754b68c8e26eec26fcec72fdc3814df27e504416639fe63",
+  "guard_sha256": "67bc0ed6241856920c8380b4ddcc0293d41f6d6fa131abc6c97b6cc74d1d9377",
+  "numeric_count": 30,
+  "verdict_count": 2,
+  "max_absolute_residual": 0,
+  "max_relative_residual": 0
+}
+Validation exit code: 1
