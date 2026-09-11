@@ -436,3 +436,30 @@ T-012 · native `scripts/integrate.py` · return/evidence at `work/orchestration
 ### T-013 start — 2026-09-11
 
 T-013 · native run-study execute · expected record `exploration/ife_e2e/studies/20260911-ife-zero-discount/`; all proposed additions to owner intake remain explicitly agent-originated.
+
+### T-013 return — 2026-09-11
+
+**Outcome:** COMPLETE. Reviewed native record committed at `exploration/ife_e2e/studies/20260911-ife-zero-discount/@a66f962d`, including snapshot, results, copied context, native pre/post reviews and four joined discovery rows. Snapshot identity is retained by the record. One ordinary discount axis and coordinated diagnostics produced twenty completed cases; every case carries nineteen inputs, thirty-two numerical outputs and both predicates. Native verification covered all twenty; its maximum relative residual is 2.603280896889104e-15. The independent Decimal calculation's maximum residual is 1.370305843545424e-15.
+
+**Goal reading:** The observed zero-rate Hawker price is 211.50466825904763 mixed-basis $/MWh, approaching the independently summed finite limit from both sides. The 8% baseline remains 240.66646063955096. All six non-generating diagnostics retain invalid price sentinels and are excluded by actual net power. Twenty-seven ordinary output channels and both predicates stay unchanged; conservative reachability to net generation does not establish financial resistance. The engineered window supplies sensitivity evidence, not a boundary or optimum. Meier remains separately labeled in 1988 cents/kWh. Applicable 1costingFE driver identities pass; whole-plant and financial parity are not claimed.
+
+**Native review and record limits:** The host refused new reviewer threads. Native protocol and post-execution reviews used an existing independent non-author who had audited the model, with that context explicitly disclosed; no blank-context or new-session review is claimed. The native run-study critique contract has no goal-layer new-session requirement. The goal disposition checkpoint and round review remain reserved for a separate session. Four native pre-execution findings were resolved before points ran. Post-review corrected discovery-log home paths before commit. The producer's resolved process finding remains a process finding, not a fabricated model change. Reviewed CSV CRLF bytes and two trailing spaces in the copied native implementation were preserved to keep recorded hashes intact; the whitespace check passed with CRLF allowed and that exact copied file excluded. No model/package changed.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Native indicators show a possible net path, no sound-negative flag | Proceed with reviewed sensitivity framing and explicitly distinguish possible reach from observed numerical response. | execution detail | Executor [AGENT], independent native reviewer and parent | Committed protocol, indicators and record §§ 5–8 |
+| Native critique identifies missing intake deposit, imprecise indicator wording, rounded reference error and missing clean-gate refusal | Correct before execution, then obtain PASS; retain original findings and dispositions. | execution detail | Executor [AGENT], independently reviewed | Committed pre-review and execution protocol/code |
+| Complete reviewed record supports a separate reading | Invoke record-only native administration; no semantic follow-up before the goal checkpoint. | execution detail | Parent [AGENT] | T-014 scope below |
+
+### T-014 scope
+
+- **Objective:** Obtain a native record-only synthesis of the committed IFE zero-discount study.
+- **Why now:** T-013 deposited the complete reviewed record; the goal needs a reading before proposing dispositions and closing this round.
+- **Scope:** Native run-study administer mode using only the committed record directory for facts; write its `synthesis.md`. No new execution, outside factual research, model/package change, record/result mutation, discovery update or semantic follow-up.
+- **Inputs:** `exploration/ife_e2e/studies/20260911-ife-zero-discount/@a66f962d`; native administrator instructions. The administrator has no study authorship.
+- **Done when:** A committed native synthesis states what the record establishes, its findings and missing evidence, without importing outside facts.
+- **Stop when:** Missing or inconsistent record evidence, native prerequisite, owner-reserved gate or declared limit.
+
+### T-014 start — 2026-09-11
+
+T-014 · native run-study administer · expected artifact `exploration/ife_e2e/studies/20260911-ife-zero-discount/synthesis.md`; all existing record artifacts remain immutable.
