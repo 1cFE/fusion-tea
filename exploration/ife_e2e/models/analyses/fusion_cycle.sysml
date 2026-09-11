@@ -28,19 +28,17 @@ package fusion_cycle {
 
     constraint def 'Viability Threshold' {
         doc /*
-        The product of driver efficiency (eta) and target gain (G)
-        must exceed ~10 for economically viable IFE. This threshold
-        ensures the recirculating power fraction remains manageable
-        (<25%) and creates fundamentally different gain requirements
-        by driver type:
-        - Heavy-ion (eta=0.25): G > 40
-        - Laser (eta=0.07): G > 143
-        - Pulser (eta=0.10): G > 100
+        Eta-times-gain economic heuristic, retained for compatibility.
+        Passing this threshold does not establish positive net generation:
+        blanket and conversion efficiency and other parasitic loads also matter.
+        Use Positive Net Generation on the actual priced power balance.
 
         **Source**: knowledge/sources/energy_from_inertial_fusion/output.md,
             knowledge/sources/accelerators_for_inertial_fusion_energy_production/output.md
         **Ref**: EIF-1992 Components section; Accel-2013 Section 3
-        **Basis**: DI-001 — physics-derived minimum for economic viability
+        **Basis**: DI-001 — approximate economic heuristic
+        **Reference**: EIF-1992 Components section; Accel-2013 Section 3
+        **Last Updated**: 2026-09-10
         */
 
         in attribute eta : Real;
@@ -48,5 +46,17 @@ package fusion_cycle {
         in attribute threshold : Real default 10.0;
 
         eta * gain_in >= threshold
+    }
+    constraint def 'Positive Net Generation' {
+        doc /*
+        A generating operating point must export strictly positive net electricity.
+        net_power is the actual priced balance in W. Exact zero fails.
+        **Source**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md
+        **Reference**: Eqs. 2.12-2.16
+        **Basis**: [DERIVED] Positive net electricity is required for generation.
+        **Last Updated**: 2026-09-10
+        */
+        in attribute net_power : Real;
+        net_power > 0.0
     }
 }

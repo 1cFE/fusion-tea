@@ -70,7 +70,12 @@ def _norm0(x):
     """Normalize an exact-boundary signed zero (-0.0) to 0.0 (`[HARD]`)."""
     return 0.0 if x == 0.0 else x
 
+# definition:fusion_cycle::'Positive Net Generation'
+def constraint_pred_definition_fusion_cycle__positive_net_generation(net_power):
+    value = _cmp('>', net_power, 0.0)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((net_power - 0.0)) if (_fin(net_power) and _fin(0.0)) else None))
+
 # definition:fusion_cycle::'Viability Threshold'
-def constraint_pred_definition_fusion_cycle__viability_threshold(eta, gain, threshold):
-    value = _cmp('>=', (eta * gain), threshold)
-    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0(((eta * gain) - threshold)) if (_fin((eta * gain)) and _fin(threshold)) else None))
+def constraint_pred_definition_fusion_cycle__viability_threshold(eta, gain_in, threshold):
+    value = _cmp('>=', (eta * gain_in), threshold)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0(((eta * gain_in) - threshold)) if (_fin((eta * gain_in)) and _fin(threshold)) else None))

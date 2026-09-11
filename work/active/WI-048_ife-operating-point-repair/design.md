@@ -79,12 +79,12 @@ Installed `sysml-expert` verified conditional language semantics but found the p
 
 ## Implementation and acceptance work
 
-- [ ] Implement source facts and library outputs, quotient contract and net constraint with complete current citations; declare numeric 0/1 validity honestly.
-- [ ] Wire HIF energy/rate and common power denominators; expose all required powers/fractions and preserve compatibility aliases.
-- [ ] Synchronize IFE twin only; generate supported package, implement the tiny typed handwritten quotient and verify native regeneration preserves it and seals.
-- [ ] Migrate exact consumer/channel expectations and scripts; require valid price plus satisfied net verdict when using results. A printed sentinel alone is insufficient.
-- [ ] Add independent baseline and mutation arithmetic, annual shots/lifetime/capital/replacement checks, exact source literals, negative/zero/positive public execution, live/snapshot parity and family checks.
-- [ ] Record all validation levels and skipped/pre-existing failures; request fresh independent review/audit against MR-WI048-1–8 and SV-073–075.
+- [x] Implement source facts and library outputs, quotient contract and net constraint with complete current citations; declare numeric 0/1 validity honestly.
+- [x] Wire HIF energy/rate and common power denominators; expose all required powers/fractions and preserve compatibility aliases.
+- [x] Synchronize IFE twin only; generate supported package, implement the tiny typed handwritten quotient and verify native regeneration preserves it and seals.
+- [x] Migrate exact consumer/channel expectations and scripts; require valid price plus satisfied net verdict when using results. A printed sentinel alone is insufficient.
+- [x] Add independent baseline and mutation arithmetic, annual shots/lifetime/capital/replacement checks, exact source literals, negative/zero/positive public execution, live/snapshot parity and family checks.
+- [x] Record all validation levels and skipped/pre-existing failures; request fresh independent review/audit against MR-WI048-1–8 and SV-073–075.
 
 ## Risks and approval
 
@@ -93,3 +93,7 @@ Installed `sysml-expert` verified conditional language semantics but found the p
 [AGENT] Zero-net rounding is a test-fixture concern, not permission to change strict greater-than semantics. Use an exactly representable boundary and report near-zero absolute residuals. Gross-zero, invalid efficiency, and discount-zero domain hardening are outside these fixtures and are not silently expanded into this repair.
 
 [AGENT] Parent accepted this design for planning on 2026-09-10 under the owner-approved alignment, with R-001 incorporated above. The common physical balance, native handwritten quotient and bounded AD-003 departure remain agent-originated decisions. No owner reserved gates were exercised.
+
+## Implementation evidence — 2026-09-10
+
+[AGENT] Implemented under the approved plan. See [implementation-evidence.md](implementation-evidence.md) for the final 19-entry/33-channel contract, six additional directly observable shot/energy/cost intermediates approved during implementation, source/cash-flow oracles, regeneration proofs, consumer migration and all validation levels. The independent audit is requested through the parent and has not been performed by this implementation author.

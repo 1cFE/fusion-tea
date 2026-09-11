@@ -1,0 +1,6 @@
+.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" MPLCONFIGDIR=/tmp/wi048-mplconfig python -m pytest tests/test_ife_consumer_eligibility.py -q'
+
+............                                                             [100%]
+12 passed in 0.60s
+
+Exit code: 0

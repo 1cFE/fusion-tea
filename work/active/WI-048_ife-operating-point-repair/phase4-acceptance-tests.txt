@@ -1,0 +1,54 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /home/reid/1cfe/fusion-tea/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/reid/1cfe/fusion-tea-codex-test
+configfile: pyproject.toml
+plugins: anyio-4.13.0, Faker-40.18.0
+collecting ... collected 44 items
+
+tests/models/test_ife_operating_point_repair.py::test_library_output_contract_and_strict_generation PASSED [  2%]
+tests/models/test_ife_operating_point_repair.py::test_osiris_exact_source_facts_and_computed_bindings PASSED [  4%]
+tests/models/test_ife_operating_point_repair.py::test_sv073_sv074_independent_source_and_cashflow_execution[baseline] PASSED [  6%]
+tests/models/test_ife_operating_point_repair.py::test_sv073_sv074_independent_source_and_cashflow_execution[beam10] PASSED [  9%]
+tests/models/test_ife_operating_point_repair.py::test_sv073_sv074_independent_source_and_cashflow_execution[eff35] PASSED [ 11%]
+tests/models/test_ife_operating_point_repair.py::test_sv073_sv074_independent_source_and_cashflow_execution[rate5] PASSED [ 13%]
+tests/models/test_ife_operating_point_repair.py::test_sv074_mutation_identities PASSED [ 15%]
+tests/models/test_ife_operating_point_repair.py::test_sv075_strict_boundary_and_named_net_verdict[counterexample] PASSED [ 18%]
+tests/models/test_ife_operating_point_repair.py::test_sv075_strict_boundary_and_named_net_verdict[zero] PASSED [ 20%]
+tests/models/test_ife_operating_point_repair.py::test_sv075_strict_boundary_and_named_net_verdict[negative_neighbor] PASSED [ 22%]
+tests/models/test_ife_operating_point_repair.py::test_sv075_strict_boundary_and_named_net_verdict[positive_neighbor] PASSED [ 25%]
+tests/models/test_ife_operating_point_repair.py::test_sv075_strict_boundary_and_named_net_verdict[roundoff_positive] PASSED [ 27%]
+tests/test_codegen_teax_acceptance.py::test_imports_and_execution_use_only_recorded_real_roots[primary] PASSED [ 29%]
+tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[primary] PASSED [ 31%]
+tests/test_codegen_teax_acceptance.py::test_complete_model_tree_and_constraint_verdict_execute[primary] PASSED [ 34%]
+tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[primary-False] PASSED [ 36%]
+tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[primary-True] PASSED [ 38%]
+tests/test_codegen_teax_acceptance.py::test_imports_and_execution_use_only_recorded_real_roots[exploration] PASSED [ 40%]
+tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[exploration] PASSED [ 43%]
+tests/test_codegen_teax_acceptance.py::test_complete_model_tree_and_constraint_verdict_execute[exploration] PASSED [ 45%]
+tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[exploration-False] PASSED [ 47%]
+tests/test_codegen_teax_acceptance.py::test_typed_handwritten_quotient_survives_supported_regeneration[exploration-True] PASSED [ 50%]
+tests/test_occurrence_mutation_teax.py::test_gain_has_one_source_and_exact_consumer_ports[primary-live] PASSED [ 52%]
+tests/test_occurrence_mutation_teax.py::test_gain_has_one_source_and_exact_consumer_ports[primary-snapshot] PASSED [ 54%]
+tests/test_occurrence_mutation_teax.py::test_gain_mutates_every_and_only_its_outputs_and_constraint[primary-live] PASSED [ 56%]
+tests/test_occurrence_mutation_teax.py::test_gain_mutates_every_and_only_its_outputs_and_constraint[primary-snapshot] PASSED [ 59%]
+tests/test_occurrence_mutation_teax.py::test_availability_mutates_shots_replacements_and_both_costs[primary-live] PASSED [ 61%]
+tests/test_occurrence_mutation_teax.py::test_availability_mutates_shots_replacements_and_both_costs[primary-snapshot] PASSED [ 63%]
+tests/test_occurrence_mutation_teax.py::test_live_and_snapshot_mutations_are_equal[primary] PASSED [ 65%]
+tests/test_occurrence_mutation_teax.py::test_sv074_source_cashflow_and_dependency_mutations[primary-live] PASSED [ 68%]
+tests/test_occurrence_mutation_teax.py::test_sv074_source_cashflow_and_dependency_mutations[primary-snapshot] PASSED [ 70%]
+tests/test_occurrence_mutation_teax.py::test_sv075_non_generators_survive_execution_with_named_rejection[primary-live] PASSED [ 72%]
+tests/test_occurrence_mutation_teax.py::test_sv075_non_generators_survive_execution_with_named_rejection[primary-snapshot] PASSED [ 75%]
+tests/test_occurrence_mutation_teax.py::test_gain_has_one_source_and_exact_consumer_ports[exploration-live] PASSED [ 77%]
+tests/test_occurrence_mutation_teax.py::test_gain_has_one_source_and_exact_consumer_ports[exploration-snapshot] PASSED [ 79%]
+tests/test_occurrence_mutation_teax.py::test_gain_mutates_every_and_only_its_outputs_and_constraint[exploration-live] PASSED [ 81%]
+tests/test_occurrence_mutation_teax.py::test_gain_mutates_every_and_only_its_outputs_and_constraint[exploration-snapshot] PASSED [ 84%]
+tests/test_occurrence_mutation_teax.py::test_availability_mutates_shots_replacements_and_both_costs[exploration-live] PASSED [ 86%]
+tests/test_occurrence_mutation_teax.py::test_availability_mutates_shots_replacements_and_both_costs[exploration-snapshot] PASSED [ 88%]
+tests/test_occurrence_mutation_teax.py::test_live_and_snapshot_mutations_are_equal[exploration] PASSED [ 90%]
+tests/test_occurrence_mutation_teax.py::test_sv074_source_cashflow_and_dependency_mutations[exploration-live] PASSED [ 93%]
+tests/test_occurrence_mutation_teax.py::test_sv074_source_cashflow_and_dependency_mutations[exploration-snapshot] PASSED [ 95%]
+tests/test_occurrence_mutation_teax.py::test_sv075_non_generators_survive_execution_with_named_rejection[exploration-live] PASSED [ 97%]
+tests/test_occurrence_mutation_teax.py::test_sv075_non_generators_survive_execution_with_named_rejection[exploration-snapshot] PASSED [100%]
+
+============================== 44 passed in 8.43s ==============================

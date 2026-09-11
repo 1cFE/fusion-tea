@@ -15,10 +15,10 @@ in the cost curve.
 *Basis**: DI-001 — eta*G must exceed ~10 for viability
 
 Inputs:
+    - gain_in: gain_in parameter
+    - thermal_efficiency_in: thermal_efficiency_in parameter
     - eta: eta parameter
-    - gain: gain parameter
     - blanket_multiplier: blanket_multiplier parameter
-    - thermal_efficiency: thermal_efficiency parameter
 
 Outputs:
     - f_recirc: f_recirc result
@@ -41,15 +41,15 @@ class Recirculating_Power_FractionInput(BaseModel):
     """Input model for Recirculating_Power_FractionModule.
 
     Attributes:
+        gain_in: gain_in input
+        thermal_efficiency_in: thermal_efficiency_in input
         eta: eta input
-        gain: gain input
         blanket_multiplier: blanket_multiplier input
-        thermal_efficiency: thermal_efficiency input
     """
+    gain_in: float = Field(..., description="gain_in input")
+    thermal_efficiency_in: float = Field(..., description="thermal_efficiency_in input")
     eta: float = Field(..., description="eta input")
-    gain: float = Field(..., description="gain input")
     blanket_multiplier: float = Field(..., description="blanket_multiplier input")
-    thermal_efficiency: float = Field(..., description="thermal_efficiency input")
 
 
 class Recirculating_Power_FractionModule(ModuleBase[Recirculating_Power_FractionInput, Float]):
@@ -68,10 +68,10 @@ in the cost curve.
 *Basis**: DI-001 — eta*G must exceed ~10 for viability
 
 Inputs:
+    - gain_in: gain_in parameter
+    - thermal_efficiency_in: thermal_efficiency_in parameter
     - eta: eta parameter
-    - gain: gain parameter
     - blanket_multiplier: blanket_multiplier parameter
-    - thermal_efficiency: thermal_efficiency parameter
 
 Outputs:
     - f_recirc: f_recirc result
@@ -81,7 +81,7 @@ SysML Source: root-0/analyses/fusion_cycle.sysml:4
     SysML Source: root-0/analyses/fusion_cycle.sysml:4
 
     Calculation Specification:
-        fusion_cycle_gain = eta * gain * blanket_multiplier * thermal_efficiency
+        fusion_cycle_gain = eta * gain_in * blanket_multiplier * thermal_efficiency_in
         f_recirc = 1.0 / fusion_cycle_gain
         
 Documentation:
@@ -107,35 +107,35 @@ in the cost curve.
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, eta: float, gain: float, blanket_multiplier: float, thermal_efficiency: float    ) -> Recirculating_Power_FractionInput:
+        self, gain_in: float, thermal_efficiency_in: float, eta: float, blanket_multiplier: float    ) -> Recirculating_Power_FractionInput:
         """Validate inputs and fill defaults.
 
         Args:
+            gain_in: gain_in input
+            thermal_efficiency_in: thermal_efficiency_in input
             eta: eta input
-            gain: gain input
             blanket_multiplier: blanket_multiplier input
-            thermal_efficiency: thermal_efficiency input
 
         Returns:
             Validated input model
         """
-        return Recirculating_Power_FractionInput(eta=eta, gain=gain, blanket_multiplier=blanket_multiplier, thermal_efficiency=thermal_efficiency)
+        return Recirculating_Power_FractionInput(gain_in=gain_in, thermal_efficiency_in=thermal_efficiency_in, eta=eta, blanket_multiplier=blanket_multiplier)
 
     def run(
-        self, eta: float, gain: float, blanket_multiplier: float, thermal_efficiency: float    ) -> ModuleResult[Float]:
+        self, gain_in: float, thermal_efficiency_in: float, eta: float, blanket_multiplier: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
+            gain_in: gain_in input
+            thermal_efficiency_in: thermal_efficiency_in input
             eta: eta input
-            gain: gain input
             blanket_multiplier: blanket_multiplier input
-            thermal_efficiency: thermal_efficiency input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(eta, gain, blanket_multiplier, thermal_efficiency)
+        validated_inputs = self.validate_and_fill_default(gain_in, thermal_efficiency_in, eta, blanket_multiplier)
 
         # Import handwritten implementation
         from ife_tea.handwritten.fusion_cycle.recirculating_power_fraction_impl import (

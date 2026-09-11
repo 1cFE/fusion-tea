@@ -5,7 +5,7 @@ AUTO_IMPLEMENTED = True
 SysML Source: root-0/analyses/fusion_cycle.sysml:4
 
 SysML Expressions:
-    fusion_cycle_gain = eta * gain * blanket_multiplier * thermal_efficiency
+    fusion_cycle_gain = eta * gain_in * blanket_multiplier * thermal_efficiency_in
     f_recirc = 1.0 / fusion_cycle_gain
     
 Documentation:
@@ -45,7 +45,7 @@ in the cost curve.
 SysML Source: root-0/analyses/fusion_cycle.sysml:4
 
 SysML Expressions:
-    fusion_cycle_gain = eta * gain * blanket_multiplier * thermal_efficiency
+    fusion_cycle_gain = eta * gain_in * blanket_multiplier * thermal_efficiency_in
     f_recirc = 1.0 / fusion_cycle_gain
     
 Documentation:
@@ -71,5 +71,5 @@ Example:
     >>> inputs = Recirculating_Power_FractionInput(...)
     >>> result = run_recirculating_power_fraction(inputs)
     """
-    fusion_cycle_gain = (((inputs.eta * inputs.gain) * inputs.blanket_multiplier) * inputs.thermal_efficiency)
+    fusion_cycle_gain = (((inputs.eta * inputs.gain_in) * inputs.blanket_multiplier) * inputs.thermal_efficiency_in)
     return (1.0 / fusion_cycle_gain)

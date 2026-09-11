@@ -1,0 +1,20 @@
+.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" MPLCONFIGDIR=/tmp/wi048-mplconfig python exploration/ife_e2e/run_anchors.py --output-dir /tmp/wi048-final-anchors'
+
+=== Run A: historical Hawker defaults (module-level: generated impls called directly) ===
+  LCOE $/MWh                             actual=      252.29996307 expected=      252.29996307  OK
+  f_recirc                               actual=        0.04166667 expected=        0.04166667  OK
+=== Run B: historical realistic HIF (module-level: generated impls called directly) ===
+  LCOE $/MWh                             actual=       68.69020165 expected=       68.69020165  OK
+  f_recirc                               actual=        0.08333333 expected=        0.08333333  OK
+=== Computed Osiris-based point (435 MJ, equal driver/cooling allowance) ===
+  Meier driver $B                        actual=        0.98452224 expected=        0.98452224  OK
+  Meier gamma $/J                        actual=       55.13324544 expected=       55.13324544  OK
+  Meier capital $B                       actual=        3.39791911 expected=        3.39791911  OK
+  Meier 1988 cents/kWh                   actual=        5.58999156 expected=        5.58999156  OK
+  Hawker $/MWh                           actual=      240.66646064 expected=      240.66646064  OK
+  Driver-only fraction                   actual=        0.07932542 expected=        0.07932542  OK
+  Gain 87 -> 100 Hawker $/MWh            actual=      209.38179810 expected=      209.38179810  OK
+Output: /tmp/wi048-final-anchors
+ALL ANCHOR CHECKS PASSED (rel tol 1e-9) — run C wired, single pass, JSON consumed
+
+Exit code: 0

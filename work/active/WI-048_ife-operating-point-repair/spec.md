@@ -15,7 +15,7 @@ Repair audit F01–F03 together: correct the Osiris facts, connect the represent
 
 ## Goals and authority
 
-[NEED] The owner requested remediation of `.project/reports/20260907-fusion-model-audit.md` through run-goal and approved grounding with “yes ground and proceed” on 2026-09-10. Source: `work/orchestration/goals/fusion-audit-remediation/goal.md`, Objective and Reserved gates; `work/orchestration/ife-operating-point-repair.md` records this item's alignment. The parent orchestrator approved routine spec scope and requirements on 2026-09-10.
+[NEED] The owner requested remediation of `.project/reports/20260907-fusion-model-audit.md` through run-goal and approved grounding with “yes ground and proceed” on 2026-09-10. Source: `work/orchestration/goals/fusion-audit-remediation/goal.md`, Question and Reserved gates; `work/orchestration/ife-operating-point-repair.md` records this item's alignment. The parent orchestrator approved routine spec scope and requirements on 2026-09-10.
 
 [INHERITED] RQ-1, RQ-2 and RQ-5 in `modeling_project/OVERVIEW.md:25-43` motivate credible cost dependencies and sensitivity results; this project uses RQ identifiers rather than an invented G/AQ register. MR-3/MR-4 govern organization and citations. Existing MR-1/MR-2/MR-5/MR-6 obligations remain applicable, but the broader CAS-interface defect F08 is outside this repair.
 
@@ -85,3 +85,7 @@ SV-073, SV-074 and SV-075 were registered pending using native `pm add-validatio
 ## Parent stage acceptance — 2026-09-10
 
 [AGENT] Accepted for design under the owner-approved alignment. The eight requirements cover the coupled F01–F03 repair and preserve the reserved finance/source gates. Fresh entry execution with the documented TEAx PYTHONPATH passed all 20 tests in `tests/test_codegen_teax_acceptance.py` and `tests/test_occurrence_mutation_teax.py`; evidence is `work/orchestration/goals/fusion-audit-remediation/evidence/entry-ife-tests.txt`. The first attempt failed at setup because TEAx was absent from PYTHONPATH; the configured rerun changed no model or dependency.
+
+## Implementation verification — 2026-09-10
+
+[AGENT] SV-073–075 have passing implementation evidence in [implementation-evidence.md](implementation-evidence.md), including named tests and execution records. Native status updates do not constitute the required fresh independent audit. The contract and source facts above are unchanged.

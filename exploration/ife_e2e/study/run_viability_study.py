@@ -1,28 +1,20 @@
-"""W4 acceptance: run the (eta, gain) viability grid through teax's study layer
-against the sealed, regenerated fusion-tea IFE package, and build the
-comparison table against sweep_ife.py's retiring hand rule.
+"""Replay the historical eta-gain heuristic comparison on the repaired IFE package.
 
-Multi-entry via the stock bridge (Lifecycle Item 9): this package's whole-plant
-`EntryPoint` (`pipelines/pipeline.yaml`) emits THREE channels (`hif_plant_params`,
-`ife_plant_params`, `system_design`), and the swept fields live in *different*
-channels — eta (`driver__efficiency`) in `ife_plant_params`, gain in
-`hif_plant_params`. Stock teax handles this directly: `StudyDefinition` carries the
-complete `entry_models` map (`PreparedEvaluator.entry_models`), and
-`simkit.study.bridge.CandidateBridge` routes each swept field to its owning channel and
-builds a complete typed model per channel (unselected fields keep their modeled defaults).
-No consumer wrapper — the former `MultiChannelEvaluator` (which hardcoded the pre-Item-8
-four-channel decomposition) is deleted; the plain `PreparedEvaluator` is the evaluator.
-
-Run:  uv run python exploration/ife_e2e/study/run_viability_study.py
-(fusion-tea's own venv; PYTHONPATH must carry teax's teax-simkit package — see wrapper
- shell invocation in the sibling `run.sh`.)
-"""
+The named net_positive verdict and generating output are recorded separately.
+Only eligible prices enter the table; passing the heuristic alone is insufficient.
+The stock multi-entry bridge supplies all other modeled defaults.
+Use --limit N for an N-by-N smoke grid and --output-dir PATH to retain new outputs.
+Historical study artifacts remain unchanged."""
 
 from __future__ import annotations
 
 import csv
+import argparse
 import json
+import tempfile
 from pathlib import Path
+
+from exploration.ife_e2e.eligibility import NET_POSITIVE_ID, P, price_eligible
 
 from simkit.evaluation.evaluator import PreparedEvaluator
 from simkit.evaluation.package_load import ProvisionalPackageLoader
@@ -84,12 +76,22 @@ def build_definition(prepared: PreparedEvaluator) -> StudyDefinition:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output-dir", type=Path)
+    parser.add_argument("--limit", type=int)
+    args = parser.parse_args()
+    output = args.output_dir or Path(tempfile.mkdtemp(prefix="ife-study-"))
+    output.mkdir(parents=True, exist_ok=True)
+    global STORE_PATH, ETA_GRID, G_GRID
+    STORE_PATH = output / "viability_study.db"
+    if args.limit:
+        ETA_GRID, G_GRID = ETA_GRID[:args.limit], G_GRID[:args.limit]
     STORE_PATH.parent.mkdir(parents=True, exist_ok=True)
     loader = ProvisionalPackageLoader(
-        package_dir=PACKAGE_DIR, package_name=PACKAGE_NAME, link_root=LINK_ROOT
+        package_dir=PACKAGE_DIR, package_name=PACKAGE_NAME, link_root=output / "pkg"
     )
     module, _ = loader.load()
-    prepared = PreparedEvaluator(loader, SPEC_PATH)
+    prepared = PreparedEvaluator(loader, SPEC_PATH, expects_constraint_report=True)
     # Stock teax multi-channel bridge — the plain PreparedEvaluator is the evaluator.
     evaluator = prepared
     definition = build_definition(prepared)
@@ -110,12 +112,11 @@ def main() -> None:
     # No standalone constraint_catalog.json, no materializer.
     query = StudyQuery(store, PACKAGE_DIR)
     cases = query.cases(constraint=CONSTRAINT_ID)
-    # Phase-3 gate: the IFE package carries exactly one eligible entry (B4, thin margin). Zero
-    # cases means the viability constraint stopped being eligible — a regression, not an empty pass.
+    # Query the named viability verdict; net_positive is a separate physical gate.
     if not cases:
         raise SystemExit(
             f"REGRESSION: no cases carry a verdict for {CONSTRAINT_ID!r} — the embedded catalog "
-            "has zero eligible entries where exactly one was expected (B4)."
+            "did not return the named viability verdict."
         )
     print(f"{len(cases)} cases carry a verdict for {CONSTRAINT_ID!r} "
           f"(of {len(ETA_GRID) * len(G_GRID)} grid points)")
@@ -136,13 +137,20 @@ def main() -> None:
             boundary_rows += 1
         if not match:
             mismatches += 1
+        net_positive = case.verdicts.get(NET_POSITIVE_ID)
+        price = case.outputs.get(P + "hawker_price__price")
+        generating = case.outputs.get(P + "hawker_price__generating")
+        eligible = price_eligible(price, generating, net_positive)
         rows.append({
             "eta": eta, "gain": gain, "eta_g": eta_g,
+            "net_positive": net_positive, "generating": generating,
+            "price_eligible": eligible,
+            "hawker_price": price if eligible else None,
             "old_viable": old_viable, "new_verdict": verdict,
             "new_viable": new_viable, "at_boundary": at_boundary, "match": match,
         })
 
-    out_csv = HERE / "acceptance_table.csv"
+    out_csv = output / "acceptance_table.csv"
     with out_csv.open("w", newline="") as fh:
         writer = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
         writer.writeheader()

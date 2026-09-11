@@ -1,0 +1,26 @@
+COMMAND: .codex-test/run agentic-mbse validate --level=3 /tmp/wi048-check
+
+======================================================================
+SysML Quality Validation
+Models path: /tmp/wi048-check
+Mode: Fail-fast
+Running: Level 3 only
+======================================================================
+
+============================================================
+Level 3: Dataflow Integrity
+============================================================
+Found 11 SysML files
+
+✅ Level 3: Dataflow Integrity
+   Documents analyzed: 6
+   Circular dependencies: 0
+
+======================================================================
+Summary
+======================================================================
+Checks run: 1
+✅ Passed: 1
+❌ Failed: 0
+
+✅ All quality checks passed!

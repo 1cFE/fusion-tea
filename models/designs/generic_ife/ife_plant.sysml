@@ -20,6 +20,8 @@ package ife_plant {
         **Ref**: Equations 2.1-2.16 (complete IFE LCOE model)
         **Basis**: Hawker 2020 parametric IFE LCOE model with 14
             technology-agnostic parameters mapped to physical subsystems
+        **Reference**: Hawker Eqs. 2.1-2.16
+        **Last Updated**: 2026-09-10
         */
 
         // === Subsystems ===
@@ -127,7 +129,27 @@ package ife_plant {
             in yield_cost_constant = chamber.yield_cost_constant;
         }
 
-        attribute lcoe : Real = lcoe_calc.lcoe;
+        calc hawker_price : 'Generating Electricity Price' {
+            in numerator = lcoe_calc.discounted_cost;
+            in denominator = lcoe_calc.discounted_energy;
+            in net_power = lcoe_calc.net_electric_power;
+        }
+        // Dollars/MWh. Zero is invalid unless generating=1 and net_positive is satisfied.
+        attribute lcoe : Real = hawker_price.price;
+        attribute generating : Real = hawker_price.generating;
+        // Hawker Eqs. 2.12-2.16; all powers in W, fractions dimensionless.
+        attribute fusion_power : Real = lcoe_calc.fusion_power;
+        attribute thermal_power : Real = lcoe_calc.thermal_power;
+        attribute gross_electric_power : Real = lcoe_calc.gross_electric_power;
+        attribute driver_electric_power : Real = lcoe_calc.driver_electric_power;
+        attribute other_parasitic_power : Real = lcoe_calc.other_parasitic_power;
+        attribute net_electric_power : Real = lcoe_calc.net_electric_power;
+        attribute driver_recirculating_fraction : Real = lcoe_calc.driver_recirculating_fraction;
+        attribute total_recirculating_fraction : Real = lcoe_calc.total_recirculating_fraction;
+
+        assert constraint net_positive : 'Positive Net Generation' {
+            in net_power = net_electric_power;
+        }
 
         // === Power Balance ===
 
@@ -148,20 +170,20 @@ package ife_plant {
             in thermal_efficiency_in = thermal_efficiency;
         }
 
+        // Compatibility alias: driver-only fraction of gross output, excludes cooling.
         attribute recirculating_fraction : Real = recirc_calc.f_recirc;
 
         // === Viability Constraint ===
 
         assert constraint viability : 'Viability Threshold' {
             doc /*
-            The product of driver efficiency and target gain must
-            exceed ~10 for economically viable IFE. Failing this
-            constraint means the plant recirculates too much power.
+            Retained eta-times-gain economic heuristic. Passing does not imply
+            positive net electricity; net_positive checks the actual priced balance.
 
             **Source**: knowledge/sources/energy_from_inertial_fusion/output.md,
                 knowledge/sources/accelerators_for_inertial_fusion_energy_production/output.md
             **Ref**: EIF-1992 Components section; Accel-2013 Section 3
-            **Basis**: DI-001 — physics-derived viability threshold
+            **Basis**: DI-001 — approximate economic viability heuristic
             */
 
             in eta = driver.efficiency;

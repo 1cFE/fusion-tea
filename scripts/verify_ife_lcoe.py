@@ -2,11 +2,10 @@
 Verify IFE LCOE calculation with Hawker default parameters.
 
 Implements Hawker's closed-form DCF LCOE model (Equations 2.1-2.16) using
-the default parameter values from ife_cost_parameters.sysml. The computation
-mirrors the SysML calc def 'IFE LCOE' in models/library/analyses/ife_lcoe.sysml.
+historical module defaults. The independent check sums discounted annual cash
+flows explicitly; the production model uses closed-form present-value factors.
 
-SV-008: LCOE with default parameters should fall within $25-120/MWh range
-(Hawker 2020 reported range for IFE concepts).
+The historical broad range is not a source-fidelity acceptance criterion.
 
 Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md
 Ref: Equations 2.1-2.16, Table 1
@@ -31,7 +30,12 @@ def compute_ife_lcoe(
     construction_years: float = 5.0,
     operational_years: float = 40.0,
 ) -> dict:
-    """Compute LCOE and intermediate values, mirroring ife_lcoe.sysml exactly."""
+    """Source-equation oracle; historical defaults are not the computed Osiris plant."""
+
+    if int(construction_years) != construction_years:
+        raise ValueError("Annual-sum oracle requires whole construction years")
+    if int(operational_years) != operational_years:
+        raise ValueError("Annual-sum oracle requires whole operating years")
 
     # Physics intermediates
     energy_on_target = driver_efficiency * driver_energy
@@ -65,22 +69,17 @@ def compute_ife_lcoe(
     # Annual energy [MWh/year]
     annual_energy = 8760.0 * net_electric_kw * availability / 1000.0
 
-    # Present value factors
-    discount_factor_con = (1.0 + discount_rate) ** construction_years
-    pvf_construction = (1.0 - 1.0 / discount_factor_con) / discount_rate
-
-    discount_factor_op = (1.0 + discount_rate) ** operational_years
-    pvf_operation = (
-        (1.0 / discount_factor_con)
-        * (1.0 - 1.0 / discount_factor_op)
-        / discount_rate
-    )
-
-    # LCOE [$/MWh]
-    lcoe = (
-        annual_capital_cost * pvf_construction
-        + annual_operating_cost * pvf_operation
-    ) / (annual_energy * pvf_operation)
+    # Independent annual cash-flow sums (Hawker Eq. 2.1), retaining the
+    # model's construction/operation timing and 8760 h / Julian-shot-year bases.
+    pvf_construction = sum((1 + discount_rate) ** -year
+                           for year in range(1, int(construction_years) + 1))
+    pvf_operation = sum((1 + discount_rate) ** -year
+                        for year in range(int(construction_years) + 1,
+                                          int(construction_years + operational_years) + 1))
+    generating = net_electric_power > 0
+    lcoe = ((annual_capital_cost * pvf_construction
+             + annual_operating_cost * pvf_operation)
+            / (annual_energy * pvf_operation)) if generating else float("nan")
 
     # Recirculating power fraction
     fusion_cycle_gain = (
@@ -89,6 +88,7 @@ def compute_ife_lcoe(
     f_recirc = 1.0 / fusion_cycle_gain
 
     return {
+        "generating": generating,
         "energy_on_target_J": energy_on_target,
         "fusion_energy_per_shot_J": fusion_energy_per_shot,
         "net_electric_power_W": net_electric_power,
@@ -107,52 +107,15 @@ def compute_ife_lcoe(
 
 
 if __name__ == "__main__":
-    results = compute_ife_lcoe()
-
-    print("=== IFE LCOE Verification (Hawker Defaults) ===\n")
-    print("Physics:")
-    print(f"  Energy on target:        {results['energy_on_target_J']:.2e} J")
-    print(f"  Fusion energy/shot:      {results['fusion_energy_per_shot_J']:.2e} J")
-    print(f"  Net electric power:      {results['net_electric_power_W']:.2e} W")
-    print(f"  Net electric power:      {results['net_electric_kw']:.1f} kW")
-    print(f"  Fusion cycle gain:       {results['fusion_cycle_gain']:.1f}")
-    print(f"  Recirculating fraction:  {results['recirculating_fraction']:.4f}")
-
-    print("\nEconomics:")
-    print(f"  Shots per year:          {results['shots_per_year']:.2e}")
-    print(f"  Driver lifetime:         {results['driver_lifetime_years']:.1f} years")
-    print(f"  Annual capital cost:     ${results['annual_capital_cost']:,.0f}")
-    print(f"  Annual operating cost:   ${results['annual_operating_cost']:,.0f}")
-    print(f"  Annual energy:           {results['annual_energy_MWh']:,.0f} MWh")
-    print(f"  PVF construction:        {results['pvf_construction']:.4f}")
-    print(f"  PVF operation:           {results['pvf_operation']:.4f}")
-
-    lcoe = results["lcoe_per_MWh"]
-    print(f"\n{'='*50}")
-    print(f"  LCOE: ${lcoe:.2f}/MWh")
-    print(f"{'='*50}")
-
-    # SV-008 check at defaults
-    if 25.0 <= lcoe <= 120.0:
-        print(f"\n  SV-008 (defaults): PASS — ${lcoe:.2f}/MWh within $25-120/MWh")
-    else:
-        print(f"\n  SV-008 (defaults): ${lcoe:.2f}/MWh outside $25-120/MWh")
-        print("    Note: Monte Carlo center values (esp. f=0.2 Hz, delta=$10)")
-        print("    produce a 44 MW plant — too small for capital assumptions.")
-        print("    This is expected: LCOE is nonlinear, center params ≠ center LCOE.")
-
-    # Cross-check with HIF-like design point
-    hif = compute_ife_lcoe(
-        availability=0.85,
-        driver_efficiency=0.25,
-        driver_energy=5.0e6,
-        driver_lifetime_shots=1.0e9,
-        frequency=5.0,
-        gain=100.0,
-        discount_rate=0.05,
-        target_cost_constant=0.50,
-    )
-    hif_lcoe = hif["lcoe_per_MWh"]
-    print(f"\n  HIF design point:  ${hif_lcoe:.2f}/MWh ({hif['net_electric_kw']/1000:.0f} MW)")
-    if 25.0 <= hif_lcoe <= 120.0:
-        print(f"  SV-008 (HIF):      PASS — ${hif_lcoe:.2f}/MWh within $25-120/MWh")
+    cases = {
+        "Historical Hawker default module scenario": compute_ife_lcoe(),
+        "Historical realistic-HIF module scenario": compute_ife_lcoe(
+            availability=0.85, driver_efficiency=0.25, driver_energy=5e6,
+            driver_lifetime_shots=1e9, frequency=5.0, gain=100.0,
+            discount_rate=0.05, target_cost_constant=0.50),
+    }
+    for label, result in cases.items():
+        print(f"{label}: {result['lcoe_per_MWh']:.8f} $/MWh; "
+              f"net {result['net_electric_power_W'] / 1e6:.4f} MW")
+    print("Annual cash-flow oracle; use run_anchors.py to compare generated execution.")
+    print("These historical module scenarios do not represent the computed Osiris point.")

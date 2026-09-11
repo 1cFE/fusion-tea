@@ -2,10 +2,10 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/hif_economics.sysml:43
+SysML Source: root-0/analyses/hif_economics.sysml:45
 
 SysML Expressions:
-    reactor_cost_billions = 0.66 * (thermal_power_gw / 1.67) ** 0.49 * (0.72 * num_units + 0.28)
+    reactor_cost_billions = 0.66 * (thermal_power_gw_in / 1.67) ** 0.49 * (0.72 * num_units + 0.28)
     
 Documentation:
 HIF reactor plant direct cost (excluding driver and target factory).
@@ -39,10 +39,10 @@ b = 0.49 (power scaling exponent).
 *Ref**: Eq. 3 (lines 119-137)
 *Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$.
 
-SysML Source: root-0/analyses/hif_economics.sysml:43
+SysML Source: root-0/analyses/hif_economics.sysml:45
 
 SysML Expressions:
-    reactor_cost_billions = 0.66 * (thermal_power_gw / 1.67) ** 0.49 * (0.72 * num_units + 0.28)
+    reactor_cost_billions = 0.66 * (thermal_power_gw_in / 1.67) ** 0.49 * (0.72 * num_units + 0.28)
     
 Documentation:
 HIF reactor plant direct cost (excluding driver and target factory).
@@ -66,4 +66,4 @@ Example:
     >>> inputs = Meier_Reactor_CostInput(...)
     >>> result = run_meier_reactor_cost(inputs)
     """
-    return ((0.66 * ((inputs.thermal_power_gw / 1.67) ** 0.49)) * ((0.72 * inputs.num_units) + 0.28))
+    return ((0.66 * ((inputs.thermal_power_gw_in / 1.67) ** 0.49)) * ((0.72 * inputs.num_units) + 0.28))

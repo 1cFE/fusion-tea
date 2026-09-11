@@ -1,0 +1,137 @@
+smart regen changed files: []
+parameters 19
+[
+  {
+    "default_value": 0.28,
+    "entry_type": "design_attribute",
+    "param_group": "hif_driver_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__driver__efficiency"
+  },
+  {
+    "default_value": 6000000000.0,
+    "entry_type": "design_attribute",
+    "param_group": "hif_driver_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__driver__lifetime_shots"
+  },
+  {
+    "default_value": 0.9,
+    "entry_type": "design_attribute",
+    "param_group": "hif_plant_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__availability"
+  },
+  {
+    "default_value": 1.15,
+    "entry_type": "design_attribute",
+    "param_group": "hif_plant_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple"
+  },
+  {
+    "default_value": 5000000.0,
+    "entry_type": "design_attribute",
+    "param_group": "hif_plant_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__chamber__yield_cost_constant"
+  },
+  {
+    "default_value": 0.08,
+    "entry_type": "design_attribute",
+    "param_group": "hif_plant_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__discount_rate"
+  },
+  {
+    "default_value": 5.0,
+    "entry_type": "design_attribute",
+    "param_group": "hif_plant_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__driver__beam_energy_mj"
+  },
+  {
+    "default_value": 1.0,
+    "entry_type": "design_attribute",
+    "param_group": "hif_plant_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__driver__num_chambers"
+  },
+  {
+    "default_value": 4.6,
+    "entry_type": "design_attribute",
+    "param_group": "hif_plant_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__frequency"
+  },
+  {
+    "default_value": 87.0,
+    "entry_type": "design_attribute",
+    "param_group": "hif_plant_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__gain"
+  },
+  {
+    "default_value": 65.0,
+    "entry_type": "design_attribute",
+    "param_group": "hif_plant_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__om_cost_constant"
+  },
+  {
+    "default_value": 2000.0,
+    "entry_type": "design_attribute",
+    "param_group": "hif_plant_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__plant_cost_constant"
+  },
+  {
+    "default_value": 1.0,
+    "entry_type": "design_attribute",
+    "param_group": "hif_plant_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__reactor_units"
+  },
+  {
+    "default_value": 10.0,
+    "entry_type": "design_attribute",
+    "param_group": "hif_plant_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__target_factory__cost_per_target"
+  },
+  {
+    "default_value": 0.1,
+    "entry_type": "design_attribute",
+    "param_group": "hif_plant_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__target_factory_direct_cost_billions"
+  },
+  {
+    "default_value": 0.45,
+    "entry_type": "design_attribute",
+    "param_group": "hif_plant_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__thermal_efficiency"
+  },
+  {
+    "default_value": 5.0,
+    "entry_type": "library_default",
+    "param_group": "ife_lcoe_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__lcoe_calc__construction_years"
+  },
+  {
+    "default_value": 40.0,
+    "entry_type": "library_default",
+    "param_group": "ife_lcoe_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__lcoe_calc__operational_years"
+  },
+  {
+    "default_value": 10.0,
+    "entry_type": "library_default",
+    "param_group": "ife_plant_params",
+    "python_type": "float",
+    "qualified_name": "hif_plant_pkg__hif_plant__viability__threshold"
+  }
+]

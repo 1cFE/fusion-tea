@@ -1,12 +1,13 @@
-"""W4: prepare-once vs rebuild-per-case benchmark on the real, sealed fusion-tea
-IFE package (S5 carry-forward (2)). A recorded measurement, not a tuning target.
+"""Benchmark prepared vs rebuilt evaluation on the repaired sealed IFE package.
 
-Run:  uv run python exploration/ife_e2e/study/bench_prepare_once.py
-"""
+This compares response parity and elapsed time, without ranking candidates.
+Use --limit N for a bounded smoke run and --output-dir PATH for new outputs."""
 
 from __future__ import annotations
 
+import argparse
 import json
+import tempfile
 import time
 from pathlib import Path
 
@@ -31,11 +32,20 @@ def _points(n: int) -> list[tuple[float, float]]:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output-dir", type=Path)
+    parser.add_argument("--limit", type=int)
+    args = parser.parse_args()
+    output = args.output_dir or Path(tempfile.mkdtemp(prefix="ife-study-"))
+    output.mkdir(parents=True, exist_ok=True)
+    global N
+    if args.limit:
+        N = args.limit
     loader = ProvisionalPackageLoader(
-        package_dir=PACKAGE_DIR, package_name=PACKAGE_NAME, link_root=LINK_ROOT
+        package_dir=PACKAGE_DIR, package_name=PACKAGE_NAME, link_root=output / "pkg"
     )
     module, _ = loader.load()
-    prepared = PreparedEvaluator(loader, SPEC_PATH)
+    prepared = PreparedEvaluator(loader, SPEC_PATH, expects_constraint_report=True)
     bridge = CandidateBridge(prepared.entry_models)  # stock Item-9 multi-channel bridge
     points = _points(N)
 
@@ -54,10 +64,10 @@ def main() -> None:
     rebuild_verdicts = []
     for eta, gain in points:
         loader_i = ProvisionalPackageLoader(
-            package_dir=PACKAGE_DIR, package_name=PACKAGE_NAME, link_root=LINK_ROOT
+            package_dir=PACKAGE_DIR, package_name=PACKAGE_NAME, link_root=output / "pkg"
         )
         module_i, _ = loader_i.load()
-        prepared_i = PreparedEvaluator(loader_i, SPEC_PATH)
+        prepared_i = PreparedEvaluator(loader_i, SPEC_PATH, expects_constraint_report=True)
         bridge_i = CandidateBridge(prepared_i.entry_models)
         typed = bridge_i.build({ETA_FIELD: eta, GAIN_FIELD: gain})
         evidence = prepared_i.evaluate(typed)
@@ -75,7 +85,7 @@ def main() -> None:
         "verdict_parity_cases": parity,
     }
     print(json.dumps(report, indent=2))
-    out = Path(__file__).parent / "prepare_once_benchmark.json"
+    out = output / "prepare_once_benchmark.json"
     out.write_text(json.dumps(report, indent=2) + "\n")
     print(f"wrote {out}")
 

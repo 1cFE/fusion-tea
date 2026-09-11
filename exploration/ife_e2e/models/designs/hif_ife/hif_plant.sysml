@@ -4,10 +4,11 @@ package hif_plant_pkg {
     private import ife_subsystems::*;
     private import hif_driver::*;
     private import hif_economics::*;
+    private import ife_lcoe::*;
 
     part hif_plant : 'IFE Power Plant' {
         doc /*
-        HIF power plant — Osiris baseline instantiation.
+        HIF computed operating point using selected Osiris source inputs.
 
         Specializes the generic IFE power plant with Heavy Ion Fusion
         parameters from EIF-1992 (Osiris design), Meier 1986, and
@@ -15,9 +16,13 @@ package hif_plant_pkg {
         - Hawker LCOE (inherited from IFE Power Plant)
         - Meier COE (added as HIF-specific feature)
 
-        **Source**: knowledge/sources/energy_from_inertial_fusion/output.md
+        **Source**: knowledge/sources/energy_from_inertial_fusion/images/page_007_table_0.png
         **Ref**: Power plant operating parameters table — Osiris column
-        **Basis**: Osiris 1.0 GWe HIF plant with liquid-wall chamber
+        **Basis**: Gain 87 is executable, so 5 MJ beam gives 435 MJ computed yield.
+            Historical gain 87 and yield 432 MJ are independently rounded facts.
+            Hawker and Meier share computed powers, not historical denominators.
+        **Reference**: Osiris operating table image
+        **Last Updated**: 2026-09-10
         */
 
         // === Subsystem specializations ===
@@ -25,12 +30,12 @@ package hif_plant_pkg {
         part :>> driver : 'HIF Driver' {
             doc /*
             HIF induction linac driver at Osiris operating point.
-            Beam energy 5.0 MJ, single chamber, 3.5 Hz.
+            Beam energy 5.0 MJ, single chamber; rate bound to plant frequency.
             */
 
             :>> beam_energy_mj = 5.0;
             :>> num_chambers = 1.0;
-            :>> pulse_rate_ref = 3.5;
+            :>> pulse_rate_ref = frequency;
         }
 
         part :>> target_factory {
@@ -60,6 +65,8 @@ package hif_plant_pkg {
             */
 
             :>> wall_type = 'Wall Type'::liquid_wall;
+            // Later Hawker approximation, not an Osiris table value.
+            // Source: a_simplified_economic_model_for_inertial_fusion/output.md Table 1.
             :>> blanket_energy_multiple = 1.15;
             :>> yield_cost_constant = 5.0e6;
         }
@@ -68,40 +75,38 @@ package hif_plant_pkg {
 
         :>> availability = 0.90 {
             doc /*
-            90% plant availability — HIF reliability target.
+            90% plant availability — later HIF reliability assumption, not an Osiris table fact.
             **Source**: knowledge/sources/accelerators_for_inertial_fusion_energy_production/output.md
             **Ref**: Line 672 (5 Hz, 40 years, 90% availability)
             **Basis**: Bangerter 2013 HIF reliability requirement
             */
         }
 
-        :>> frequency = 3.5 {
+        :>> frequency = 4.6 {
             doc /*
-            3.5 Hz pulse repetition rate (Osiris design point).
-            **Source**: knowledge/sources/energy_from_inertial_fusion/output.md
-            **Ref**: Osiris operating parameters — Pulse rate: 3.5 Hz
+            4.6 Hz pulse repetition rate (Osiris design point).
+            **Source**: knowledge/sources/energy_from_inertial_fusion/images/page_007_table_0.png
+            **Ref**: Osiris operating parameters — Pulse rate: 4.6 Hz
             **Basis**: EIF-1992 Osiris design
             */
         }
 
-        :>> gain = 80.0 {
+        :>> gain = 87.0 {
             doc /*
-            Target gain = yield / beam energy (physics convention).
-            Osiris: 412 MJ yield / 5.0 MJ beam ≈ 82, rounded to 80.
-            Consistent with Bangerter Table 1 Hybrid target (G=60)
-            and Close-Coupled target (G=130) range.
+            Printed gain 87 is the executable input. With 5 MJ beam this yields
+            435 MJ; the independently rounded historical yield is 432 MJ.
 
-            **Source**: knowledge/sources/energy_from_inertial_fusion/output.md
-            **Ref**: Osiris operating parameters — Gain: 80
+            **Source**: knowledge/sources/energy_from_inertial_fusion/images/page_007_table_0.png
+            **Ref**: Osiris operating parameters — Gain: 87
             **Basis**: EIF-1992 Osiris indirect-drive HIF target
             */
         }
 
-        :>> thermal_efficiency = 0.43 {
+        :>> thermal_efficiency = 0.45 {
             doc /*
             Thermal-to-electric conversion efficiency.
-            **Source**: knowledge/sources/energy_from_inertial_fusion/output.md
-            **Ref**: Osiris operating parameters — Thermal efficiency: 43%
+            **Source**: knowledge/sources/energy_from_inertial_fusion/images/page_007_table_0.png
+            **Ref**: Osiris operating parameters — Thermal efficiency: 45%
             **Basis**: EIF-1992 Osiris steam cycle
             */
         }
@@ -151,32 +156,17 @@ package hif_plant_pkg {
 
         // === HIF-specific: Meier COE chain ===
 
-        attribute thermal_power_gw : Real = 2.054 {
-            doc /*
-            Thermal power in GW. From Osiris operating parameters table.
-            Used as input to Meier's reactor cost formula.
-
-            **Source**: knowledge/sources/energy_from_inertial_fusion/output.md
-            **Ref**: Osiris operating parameters — Thermal power: 2054 MW
-            **Basis**: EIF-1992 Osiris design. Note: cannot be cleanly
-                derived from Hawker's simplified power balance formula.
-            */
-        }
-
-        attribute net_electric_power_gw : Real = 1.0 {
-            doc /*
-            Net electric power in GW. Osiris design target.
-            Used in Meier's COE formula denominator.
-
-            **Source**: knowledge/sources/energy_from_inertial_fusion/output.md
-            **Ref**: Osiris operating parameters — Net electric power: 1000 MWe
-            **Basis**: EIF-1992 Osiris design target
-            */
-        }
+        // Hawker Eqs. 2.12-2.16: common computed powers for both price channels.
+        // These are not the historical Osiris thermal/net values retained below.
+        attribute thermal_power_gw : Real = lcoe_calc.thermal_power_gw;
+        attribute net_electric_power_gw : Real = lcoe_calc.net_electric_power_gw;
+        // Meier Eqs. 2-3: one reactor unit; reference factory direct cost [$B, 1988$].
+        attribute reactor_units : Real = 1.0;
+        attribute target_factory_direct_cost_billions : Real = 0.1;
 
         calc meier_reactor_cost_calc : 'Meier Reactor Cost' {
             doc /*
-            Meier's reactor cost at Osiris thermal power, single unit.
+            Meier's reactor cost at computed thermal power, single unit.
 
             **Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
             **Ref**: Eq. 3
@@ -184,7 +174,7 @@ package hif_plant_pkg {
             */
 
             in thermal_power_gw_in = thermal_power_gw;
-            in num_units = 1.0;
+            in num_units = reactor_units;
         }
 
         calc meier_capital_calc : 'Meier Total Capital Cost' {
@@ -199,7 +189,7 @@ package hif_plant_pkg {
             in reactor_cost = meier_reactor_cost_calc.reactor_cost_billions;
             in driver_cost = driver.driver_cost_billions;
             // C_tfd = $0.1B target factory direct cost (Meier 1986 reference, 1988$)
-            in target_factory_cost = 0.1;
+            in target_factory_cost = target_factory_direct_cost_billions;
         }
 
         calc meier_coe_calc : 'Meier COE' {
@@ -222,13 +212,36 @@ package hif_plant_pkg {
         // recirculating_fraction is inherited from IFE Power Plant
         // viability constraint is inherited from IFE Power Plant
 
-        attribute meier_coe : Real = meier_coe_calc.coe_cents_kwh {
+        calc meier_price : 'Generating Electricity Price' {
+            in numerator = meier_coe_calc.annualized_cost;
+            in denominator = meier_coe_calc.energy_denominator;
+            in net_power = net_electric_power;
+        }
+        attribute meier_coe : Real = meier_price.price {
             doc /*
-            Meier COE output in cents/kWh (1988$). Independent validation
-            output alongside the inherited Hawker LCOE ($/MWh).
-
-            Expected: ~5 cents/kWh at Meier reference parameters.
+            Meier COE in 1988 cents/kWh. Uses computed net power and 0.90 availability,
+            8.3% fixed charge plus 3% O&M and 1.83 capital multiplier.
+            Require meier_price.generating=1 and satisfied net_positive before use.
+            Hawker uses its separate DCF and mixed inherited dollar conventions.
             */
         }
+        // Historical Osiris reference facts, not executable constraints or price inputs.
+        // Source: knowledge/sources/energy_from_inertial_fusion/images/page_007_table_0.png
+        // Reference: Osiris column, visually verified 2026-09-10. Units are in names.
+        // The later 1.15 blanket multiplier, 0.90 availability and equal driver/cooling
+        // assumption produce different computed powers and are not table transcriptions.
+        attribute osiris_reference_beam_energy_mj : Real = 5.0;
+        attribute osiris_reference_gain : Real = 87.0;
+        attribute osiris_reference_yield_mj : Real = 432.0;
+        attribute osiris_reference_frequency_hz : Real = 4.6;
+        attribute osiris_reference_driver_efficiency_percent : Real = 28.0;
+        attribute osiris_reference_fusion_power_mw : Real = 1987.0;
+        attribute osiris_reference_thermal_power_mw : Real = 2504.0;
+        attribute osiris_reference_thermal_efficiency_percent : Real = 45.0;
+        attribute osiris_reference_gross_electric_power_mw : Real = 1127.0;
+        attribute osiris_reference_driver_electric_power_mw : Real = 82.0;
+        attribute osiris_reference_auxiliary_electric_power_mw : Real = 45.0;
+        attribute osiris_reference_net_electric_power_mw : Real = 1000.0;
+        attribute osiris_reference_coe_1992_cents_kwh : Real = 5.6;
     }
 }

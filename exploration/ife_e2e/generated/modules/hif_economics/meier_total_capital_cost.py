@@ -12,15 +12,15 @@ at 1.53 and nuclear-best at 2.07).
 
 Inputs:
     - reactor_cost: reactor_cost parameter
-    - driver_cost: driver_cost parameter
     - target_factory_cost: target_factory_cost parameter
+    - driver_cost: driver_cost parameter
 
 Outputs:
     - total_capital_billions: total_capital_billions result
 
-SysML Source: root-0/analyses/hif_economics.sysml:65
+SysML Source: root-0/analyses/hif_economics.sysml:67
 
-SysML Source: root-0/analyses/hif_economics.sysml:65
+SysML Source: root-0/analyses/hif_economics.sysml:67
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/hif_economics/meier_total_capital_cost_impl.py
@@ -37,12 +37,12 @@ class Meier_Total_Capital_CostInput(BaseModel):
 
     Attributes:
         reactor_cost: reactor_cost input
-        driver_cost: driver_cost input
         target_factory_cost: target_factory_cost input
+        driver_cost: driver_cost input
     """
     reactor_cost: float = Field(..., description="reactor_cost input")
-    driver_cost: float = Field(..., description="driver_cost input")
     target_factory_cost: float = Field(..., description="target_factory_cost input")
+    driver_cost: float = Field(..., description="driver_cost input")
 
 
 class Meier_Total_Capital_CostModule(ModuleBase[Meier_Total_Capital_CostInput, Float]):
@@ -58,15 +58,15 @@ at 1.53 and nuclear-best at 2.07).
 
 Inputs:
     - reactor_cost: reactor_cost parameter
-    - driver_cost: driver_cost parameter
     - target_factory_cost: target_factory_cost parameter
+    - driver_cost: driver_cost parameter
 
 Outputs:
     - total_capital_billions: total_capital_billions result
 
-SysML Source: root-0/analyses/hif_economics.sysml:65
+SysML Source: root-0/analyses/hif_economics.sysml:67
 
-    SysML Source: root-0/analyses/hif_economics.sysml:65
+    SysML Source: root-0/analyses/hif_economics.sysml:67
 
     Calculation Specification:
         total_capital_billions = 1.83 * (reactor_cost + driver_cost + target_factory_cost)
@@ -90,33 +90,33 @@ at 1.53 and nuclear-best at 2.07).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, reactor_cost: float, driver_cost: float, target_factory_cost: float    ) -> Meier_Total_Capital_CostInput:
+        self, reactor_cost: float, target_factory_cost: float, driver_cost: float    ) -> Meier_Total_Capital_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
             reactor_cost: reactor_cost input
-            driver_cost: driver_cost input
             target_factory_cost: target_factory_cost input
+            driver_cost: driver_cost input
 
         Returns:
             Validated input model
         """
-        return Meier_Total_Capital_CostInput(reactor_cost=reactor_cost, driver_cost=driver_cost, target_factory_cost=target_factory_cost)
+        return Meier_Total_Capital_CostInput(reactor_cost=reactor_cost, target_factory_cost=target_factory_cost, driver_cost=driver_cost)
 
     def run(
-        self, reactor_cost: float, driver_cost: float, target_factory_cost: float    ) -> ModuleResult[Float]:
+        self, reactor_cost: float, target_factory_cost: float, driver_cost: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
             reactor_cost: reactor_cost input
-            driver_cost: driver_cost input
             target_factory_cost: target_factory_cost input
+            driver_cost: driver_cost input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(reactor_cost, driver_cost, target_factory_cost)
+        validated_inputs = self.validate_and_fill_default(reactor_cost, target_factory_cost, driver_cost)
 
         # Import handwritten implementation
         from ife_tea.handwritten.hif_economics.meier_total_capital_cost_impl import (
