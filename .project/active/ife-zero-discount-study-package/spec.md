@@ -1,6 +1,6 @@
 # IFE zero-discount study package
 
-Status: Implementation complete; independent audit pending, 2026-09-11.
+Status: Certified by independent coding audit, 2026-09-11. See audit.md.
 
 ## Problem and authority
 
@@ -10,10 +10,10 @@ Status: Implementation complete; independent audit pending, 2026-09-11.
 
 All implementation requirements are [INFERRED] from the audited interface and native study contract. They are agent decisions, not owner-settled policy.
 
-- [ ] SC-1: The current package route declares and persists every one of the 32 numerical outputs, preserves both named constraint responses and strict price eligibility, and agrees with the existing independent oracle at baseline, exact zero, signed near-zero and non-generating diagnostics.
-- [ ] SC-2: The oracle adapter maps the new duration keys and explicitly rejects non-positive or fractional durations as an oracle-coverage limitation. Old keys and undeclared inputs remain rejected. The model's Real-valued duration behavior is unchanged.
-- [ ] SC-3: The existing metadata producer reproduces the current manifest, census, snapshot and a discount-rate-only axis declaration. All fingerprints derive from native producers. Baseline and all ordinary model outputs remain unchanged from the WI-049 audit.
-- [ ] SC-4: Relevant native route tests and shared verifier/indicator regression tests pass. The model, generated package, shared tooling, prior committed studies and prior audits remain unchanged. Fresh independent coding audit certifies this scope before integration.
+- [x] SC-1: The current package route declares and persists every one of the 32 numerical outputs, preserves both named constraint responses and strict price eligibility, and agrees with the existing independent oracle at baseline, exact zero, signed near-zero and non-generating diagnostics.
+- [x] SC-2: The oracle adapter maps the new duration keys and explicitly rejects non-positive or fractional durations as an oracle-coverage limitation. Old keys and undeclared inputs remain rejected. The model's Real-valued duration behavior is unchanged.
+- [x] SC-3: The existing metadata producer reproduces the current manifest, census, snapshot and a discount-rate-only axis declaration. All fingerprints derive from native producers. Baseline and all ordinary model outputs remain unchanged from the WI-049 audit.
+- [x] SC-4: Relevant native route tests and shared verifier/indicator regression tests pass. The model, generated package, shared tooling, prior committed studies and prior audits remain unchanged. Fresh independent coding audit certifies this scope before integration.
 
 ## Scope and limits
 
