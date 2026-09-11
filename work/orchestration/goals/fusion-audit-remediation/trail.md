@@ -725,3 +725,16 @@ What is true on disk: Round 3 review continuation passes against the resolved ow
 What the owner must see: The requested review and strategy boundary is reached. F04 and broader engineering/financial findings remain unresolved. Plant-closure's PC-R1-01 records continuation remains separate; it does not reopen the preservation approval.
 
 The material to resume: This strategy, amended `goal.md`, accepted `learnings.md`, both T-015 reports at `0dce6053`, and plant-closure's review/amendment. Resume under `GOAL_RUNBOOK.md` § Running one task, choosing and recording the first bounded native task from this evidence. Use `.codex-test/run` per `.project/codex-test-setup.md` (unpinned; no native digest). This session stops before that task.
+
+### T-016 scope
+
+- **Objective:** Implement and independently audit the coherent MFE operating-heating correction described by Round 4, preserving installed capacity and its costing.
+- **Why now:** T-015 confirms F04; the owner preservation ruling is resolved and the fresh reviewer opened the repair strategy at `fa3e7f2d`.
+- **Scope:** One Standard native modeling item through spec, design/prototype, independent design review, plan, implementation and fresh audit. Classify affected cost operands before changing them; verify demand/reserve separation, zero/invalid/capacity-limited behavior and coherent thermal/electrical/divertor accounting. Keep canonical/twin/generated artifacts and direct model consumers aligned. Separate study-package preparation if required. No new integration candidate or study in this task, financial/supported-scope change, historical evidence mutation, plant-closure records continuation, item archive or goal closure.
+- **Inputs:** `goal.md`, accepted learnings, Round 4 strategy at `fa3e7f2d`; owner ruling `dde47316`; T-015 reports/evidence `0dce6053`; current registered source and model authorities; native modeling process and runtime adapter.
+- **Done when:** A positive independent native work-item audit verifies written requirements and original counterexamples, explains baseline/cost changes, and reports validation and remaining limits separately.
+- **Stop when:** Reserved finance/scope/source decision, premise surprise including unresolved cost-sizing semantics, native prerequisite, strategy blocker or declared cap.
+
+### T-016 start — 2026-09-11
+
+T-016 · native orchestrate-modeling Standard repair · immutable alignment `work/orchestration/mfe-operating-heating-repair.md`; expected native spec/design/plan, implementation and independent audit. Existing owner authorization supplies alignment; no renewed preservation approval is required.
