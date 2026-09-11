@@ -1,9 +1,9 @@
 # Audit: IFE native study package
 
-**Verdict:** Needs Work
+**Verdict:** Certify
 **Audited:** 2026-09-10
 **Branch:** test/codex-native-skills
-**Commit:** 8f1d74f35cf990779c5229b4d0172b4d875643e3 (implementation at 738df5ca59538f321449eef6442a91e0280b3b1e)
+**Commit:** e37caf843f4e01e24c8ba589659e99d05f72d2bc
 
 ## The Point
 
@@ -11,46 +11,48 @@ Make the corrected IFE model usable by the existing native study workflow, so a 
 
 ## Summary
 
-The native package executes and verifies all thirty numerical channels and both predicates. Baseline, beam/rate mutations, negative generation and exact zero pass real stored execution. Certification waits on one consumer dependence on a generated internal ID and one inaccurate documentation claim.
+Both findings from the first independent audit are fixed. This fresh bounded re-audit certifies SC1–SC6 using fresh repair verification and seventeen passing route tests, together with the explicitly inherited SC1–SC5 and integration evidence in `audit-r0.md`. The original audit remains unchanged.
 
 ## Product Judgment
 
-This is the right piece of work, but it is not yet ready to certify. The fresh product-lens ledger is DISPOSED with audit-F1 routed for repair; there are no earlier blocks or referenced epic gates. The structural smell **Correctness depends on downstream knowledge of an internal representation** remains unresolved: eligibility already obtains named verdicts, then ignores them and directly indexes an emitted ID. The dependency is unnecessary and a controlled probe reproduces the failure. See `product-lens.md` for the independently derived source obligation and authority grade.
+This is the right piece of work and it is ready to certify within the package contract. The fresh product-lens derived its oracle from durable owner purpose before inspecting implementation. The complete ledger has no unresolved BLOCK and no referenced epic gate; its latest gate is CLEAR with an explicit resolution of audit-F1. See `product-lens.md` for the fresh verdict and resolution-by-citation.
+
+The earlier smell **Correctness depends on downstream knowledge of an internal representation** is resolved by evidence, not by the newer CLEAR alone. Eligibility now consumes the catalog-resolved `net_positive` verdict at `exploration/ife_e2e/studies/study_route.py:68`. The kept regression at `tests/study/test_ife_native_route.py:117` renames every emitted ID consistently across the catalog and all five actual executed cases. Eligibility is unchanged, including negative and exact-zero generation; the separate assertions at `:26` establish expected eligibility from net generation. No favorable case or assertion is selected to conceal the defect. This implementation obligation retains its original `[AGENT]` inference grade.
 
 ## Findings
 
 ### Plan completion
 
-The first five implementation/validation checklist entries are verified. The final certification/return entry remains open. The prerequisite stop is explicitly superseded by the resumption note; the historical implementation note's pending integration is answered by the later Integration section.
+The first five phase entries retain the original independent verification in `audit-r0.md`. The final entry now has positive independent certification; this report returns the reviewed candidate to the coordinating agent. Historical prerequisite, integration and repair notes remain evidence of their respective revisions.
 
 ### Spec conformance
 
-- **SC1 verified:** `git diff --exit-code 6a964967 HEAD -- exploration/ife_e2e/generated exploration/ife_e2e/models tests/ife_oracle.py` is empty. No changes to generic scripts, MFE models or stellarator package occurred between prerequisite `10a426ee` and this audit HEAD. Native regeneration and handwritten-preservation gates pass; both fingerprints retain the WI-048 lineage.
-- **SC2 verified:** `exploration/ife_e2e/studies/prepare_metadata.py:14` derives defaults from the contract, independently checks the executed baseline, uses native fingerprint/census/snapshot producers and validates the manifest. Annex, manifest, census, axes and snapshot are committed. The native return reports nineteen re-derived entry points, byte-identical snapshot recapture, recomputed manifest pin and six passing preflight gates.
-- **SC3 verified:** `exploration/ife_e2e/studies/study_route.py:83`, `:98` and `:159` use stock loader/evaluator/runner/store APIs. `:150` checks numeric publication and exact predicate-response keys before persistence; `:189` and `:203` check reused and returned completed cases. Independent fault injection removed a numeric output and predicate response from actual evaluator evidence: both raised `RouteError`, and each resulting store contained no case. The kept incompatible-store test verifies byte preservation.
-- **SC4 verified:** `exploration/ife_e2e/studies/oracle_entry.py:12` refuses unknown/nonfinite inputs and unsupported year counts; `:30` explicitly binds both predicates. The unchanged `tests/ife_oracle.py:37` computes source physics and annual discounted cash flows without generated-code imports. The annex names both oracle files as immutable-record dependencies and separates oracle limits from model claims. All nineteen qualified input keys match the contract in the kept test.
-- **SC5 verified for the pinned package:** `tests/study/test_ife_native_route.py:14` executes baseline, beam/rate changes, negative net and exact zero; `:26` checks outputs, generating flags, named verdicts and both price eligibility results; `:43` independently verifies all thirty channels and both predicates over five cases. Exact zero remains a stored zero sentinel and is ineligible. Audit-F1 prevents broader certification of the interpretation implementation.
-- **SC6 partial:** The native return is `CANDIDATE`, exit zero, with all ten gates passing against WI-048 audit commit `6a964967bc6d736c9efe99642ef01c79c92ff196`. This independent coding audit is not positive yet. Commands, identities, producer summaries and test results are recorded; no pin promotion is certified.
+- **SC1 verified:** Fresh empty diffs against `6a964967` confirm unchanged models, generated package and independent oracle. The repair diff against `8f1d74f3` changes only post-execution eligibility, its tests and prose. Inherit the original audit's generic/MFE scope checks and native fixed-point evidence.
+- **SC2 verified:** Inherit the original audit's metadata-producer inspection, nineteen-entry census, snapshot recapture, manifest and preflight verification. Fresh comparison confirms metadata and its producer are unchanged; the route suite again checks the nineteen qualified inputs and thirty-channel manifest at `tests/study/test_ife_native_route.py:86`.
+- **SC3 verified:** Fresh actual stored execution and tests cover all thirty channels, both verdicts, incompatible-store byte preservation and missing publication refusal at `tests/study/test_ife_native_route.py:14`, `:26`, `:43`, `:52` and `:61`. Inherit the original independent pre-persistence fault-injection probes and stock API inspection; those probes were not repeated.
+- **SC4 verified:** Fresh tests cover unknown/nonfinite proposals, integral-year refusals, full input mapping and independent verification at `tests/study/test_ife_native_route.py:43`, `:71`, `:79` and `:86`. Inherit the original oracle arithmetic and annex dependency review; neither changed.
+- **SC5 verified:** Baseline, beam/rate mutations, negative net and exact zero pass fresh stored execution and generic verification. Both zero prices remain stored and ineligible at `tests/study/test_ife_native_route.py:26`. The new all-ID regression at `:117` closes the original eligibility implementation gap.
+- **SC6 verified:** This positive independent coding audit completes the remaining requirement. The committed native return at `integration/integration_return.json` is `CANDIDATE`, exit zero, with all ten gates passing against WI-048 audit commit `6a964967bc6d736c9efe99642ef01c79c92ff196`. Its command, request, identities and producer evidence remain recorded and applicable to the unchanged package and baseline path.
 
-All six criteria are `[INFERRED]`; no provenance grade was promoted. Non-goals were respected.
+All six criteria remain `[INFERRED]`; no provenance grade changed. No non-goal work was introduced.
 
 ### Design conformance
 
-The package owns its route, metadata and oracle adapter. Stores and loader aliases stay outside generated bytes. Qualified imports avoid collisions with the MFE route. Verification observables remain separate from optimization policy, and no plant arithmetic was copied into the route. The explicit choice to retain a package route without extracting a shared abstraction is followed. Audit-F1 violates the intended use of named stored verdicts at the consumer boundary.
+Inherit the original audit's package-ownership, stock execution, qualified-import, oracle-separation and no-shared-abstraction findings. The repaired consumer now follows the intended named-verdict boundary at `exploration/ife_e2e/studies/study_route.py:65`. There is no new design deviation in the repair.
 
 ### Code integrity
 
-- **audit-F1 — repair required:** `exploration/ife_e2e/studies/study_route.py:68` discards the `short_verdicts` mapping; `:71` reads `case.verdicts[NET_POSITIVE_ID]`. A probe consistently renamed the net constraint ID in the catalog and retained native baseline case while preserving `source_local_identity: net_positive`. Named resolution remained correct, but eligibility raised `KeyError` on the obsolete ID. Consume the resolved named verdict and add a regression covering emitted-ID change. This is the unresolved product-lens smell.
-- **audit-C1 — minor documentation correction:** `exploration/ife_e2e/studies/study_route.py:166` says a nonfinite result is retained and “the exporter refuses it.” This package has no such exporter; baseline output conversion at `:313` writes through `scripts/study/common.py:88`, whose default `json.dumps` permits NaN/Infinity. Remove or narrow the unsupported claim. No new exporter or model behavior change is required by this finding.
+- **audit-F1 fixed:** `exploration/ife_e2e/studies/study_route.py:7` no longer imports the opaque net ID; `:68–71` consumes the resolved name. The passing regression changes all emitted IDs across all five stored cases, directly exercising the original failure mechanism.
+- **audit-C1 fixed:** `exploration/ife_e2e/studies/study_route.py:163–168` removes the unsupported exporter-refusal claim and describes retained evidence. No exporter or unrelated behavior was added.
 
-No silent arithmetic fallbacks or missing-evidence substitutions were found. The wrapper preserves stock execution-failure handling and raises publication defects visibly. No duplicate axis inputs or manual ties were introduced. Relevant saved project feedback on fallbacks, workaround defects and tests across component boundaries was checked.
+No new integrity finding in the bounded diff. Broader unchanged-code conclusions are inherited from `audit-r0.md`, not claimed as a repeated full audit.
 
 ## Certification
 
-Marked SC1–SC5 verified and left SC6 and the final plan entry open. The item status is Needs Work. The author may repair these findings and request a fresh independent re-audit; this report and lens block remain the record of this revision.
+SC1–SC6 and the plan's certification entry are complete. Spec, plan and the coding-PM pointer now identify the item as certified. The fresh independent product-lens result is appended with explicit resolution of audit-F1; `audit-r0.md` is preserved.
 
-Independent validation: `.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" STUDY_REQUIRE_TEAX=1 python -m pytest tests/study/test_ife_native_route.py -q'` returned **16 passed in 0.68s**. The recorded combined suite reports thirty passes. Temporary probes confirmed pre-persistence output/response refusal, absence of persisted cases after each refusal, and audit-F1's failure. SHA256 checks matched both retained integration store/artifact files against `integration/validation-store-sha256.txt`.
+Fresh command: `.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" STUDY_REQUIRE_TEAX=1 python -m pytest tests/study/test_ife_native_route.py -q'` returned **17 passed in 0.69s**. The author's combined suite result, **31 passed**, is retained in `repair-tests.txt` and was not rerun here. Fresh source comparisons and repair review support inheriting the earlier integration proof rather than rerunning unchanged generation and baseline gates.
 
-Candidate identity: pin `0539f0d5cbf2443512ea71ac93c19a2b80341bbf618337405993e4cab447daa1`; semantic `8b7a76a631e6e55dbd45cf617a68fae87def408e4f8494015e40c0c8aac585dd`; executable `045417b231573653d754b68c8e26eec26fcec72fdc3814df27e504416639fe63`. Integration verification reports one baseline case, thirty channels, both predicates re-derived and worst relative deviation `8.019282484345631e-16`. Its nested summary says TEAx revision `unrecorded`; the enclosing return separately verifies the checkout at `8d877460ac4f6f264561d916e40c1708adb13397`.
+Inherited candidate identity: pin `0539f0d5cbf2443512ea71ac93c19a2b80341bbf618337405993e4cab447daa1`; semantic `8b7a76a631e6e55dbd45cf617a68fae87def408e4f8494015e40c0c8aac585dd`; executable `045417b231573653d754b68c8e26eec26fcec72fdc3814df27e504416639fe63`. The integration return verifies TEAx `8d877460ac4f6f264561d916e40c1708adb13397`; the nested verifier's `unrecorded` revision limitation remains as recorded in `audit-r0.md`.
 
-**Not checked:** No expensive regeneration/integration rerun, source-document audit, quarantined reads, whole-repository suite, engineering-completeness claim, price normalization, arbitrary-domain guarantee or exhaustive corrupted-store probes. Native manifest read-set coverage (`assert_read_set_covered`) remains explicitly unperformed and uncovered; this audit does not discharge that inherited limitation. The local validation store is hashed evidence, not a committed goal study. No goal writes, pin promotion, close/archive, production edits or commits occurred during this audit.
+**Not checked:** No expensive integration/regeneration rerun, repeat of the original fault-injection or retained-store hash probes, source/physics audit, financial normalization, engineering-completeness claim, arbitrary-domain guarantee, whole-repository suite or exhaustive corrupt-store testing. Native manifest read-set coverage (`assert_read_set_covered`) remains unperformed and uncovered; certification does not accept or discharge that inherited limitation as a goal residual. Validation stores are not a committed goal study. No holdout reads, installs, production edits, commits, goal writes, pin promotion or close/archive occurred.

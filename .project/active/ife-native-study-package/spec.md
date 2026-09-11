@@ -1,6 +1,6 @@
 # Spec: IFE native study package
 
-**Status:** Needs Work — audit-F1 and audit-C1 at 8f1d74f3; see audit.md
+**Status:** Certified at e37caf84 — fresh bounded re-audit; see audit.md for inherited evidence and limits
 **Created:** 2026-09-10
 **Owner:** reid
 **Scope:** One package-specific integration task
@@ -18,7 +18,7 @@
 - [x] [INFERRED] SC3: Execute the manifest baseline and finite proposed points through stock `ProvisionalPackageLoader`, `PreparedEvaluator`, `StudyRunner` and `StudyStore`. Persist all thirty numerical channels and both constraint verdicts. Missing publication or incompatible stored evidence must fail visibly. Validation fixtures do not constitute the goal's committed study.
 - [x] [INFERRED] SC4: Publish a package-owned oracle entry and explicit predicate-operand bindings, reusing the independently audited annual cash-flow oracle. Reject unknown qualified keys and unsupported fractional year counts rather than silently ignoring or truncating them. Describe the oracle's limits separately from model claims.
 - [x] [INFERRED] SC5: Demonstrate baseline, beam/rate mutations, negative net and exact zero through the route and generic verifier. Preserve both invalid-price indicators and named net verdicts. A zero sentinel must not appear as an eligible generating price in package-facing result interpretation.
-- [ ] [INFERRED] SC6: Obtain a positive independent coding audit and one native integration `CANDIDATE` with all gates passing against WI-048's audited lineage. Record exact commands, identities, failures and checks.
+- [x] [INFERRED] SC6: Obtain a positive independent coding audit and one native integration `CANDIDATE` with all gates passing against WI-048's audited lineage. Record exact commands, identities, failures and checks.
 
 ## Non-goals
 

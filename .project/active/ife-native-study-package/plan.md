@@ -1,6 +1,6 @@
 # Plan: IFE native study package
 
-**Status:** Needs Work — audit-F1 and audit-C1 require repair and fresh verification; see audit.md
+**Status:** Certified at e37caf84 — see audit.md for fresh checks, inherited evidence and limits
 **Created:** 2026-09-10
 
 ## One phase — package preparation and verification
@@ -10,7 +10,7 @@
 - [x] Add reproducible metadata preparation, native snapshot/census, manifest, beam/rate groups and package annex.
 - [x] Test real baseline, mutations, non-generation, verifier parity and refusal behavior; prove the audited generated package is unchanged.
 - [x] Run the existing integration procedure, resolving only package-specific preparation defects within scope; retain its native return.
-- [ ] Obtain a fresh `$my-audit` certification, repair concrete findings if necessary, and return the reviewed candidate to the goal. Owner-held close/archive remains separate.
+- [x] Obtain a fresh `$my-audit` certification, repair concrete findings if necessary, and return the reviewed candidate to the goal. Owner-held close/archive remains separate.
 
 ## Implementation notes
 
@@ -35,3 +35,7 @@ The existing producer returned `CANDIDATE` with all ten gates passing. Native ev
 ### Audit repair — 2026-09-10
 
 The first independent audit (`audit-r0.md`, audited `8f1d74f3`) requested named-verdict consumption and removal of the unsupported exporter claim. `repair-1.md` records the two changes and the new generated-ID-change regression. The combined test command passes 31 tests. Fresh certification remains pending; the original negative audit and lens block are preserved.
+
+### Fresh certification — 2026-09-10
+
+`audit.md` certifies SC1–SC6 at `e37caf84`: both repairs verified, seventeen route tests passed, and the earlier independent integration evidence explicitly inherited for the unchanged package and baseline path. `product-lens.md` resolves audit-F1 by citation. The reviewed candidate is returned to the coordinating goal agent; this audit performs no goal mutation or pin promotion. Manifest read-set coverage remains unproven.
