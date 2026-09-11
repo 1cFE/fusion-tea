@@ -5,3 +5,7 @@
 [AGENT] Accept R3's bounded disposition: retain the pure generic producer default with two explicitly introduced Level 6 checker findings, supported by successful native generation/default execution and no new stellarator demand parameter. Repeat the differential for the revised prototype and production implementation. Level 6 remains failing; this decision neither suppresses findings nor certifies general checker correctness.
 
 The original negative design review remains authoritative for the original prototype. Fresh review of the corrected interface and evidence is required before planning. These are routine execution and verification decisions under the approved spec/alignment; no owner source, scope, finance or residual ruling is exercised.
+
+## Corrected design acceptance — 2026-09-11
+
+[AGENT] Fresh `review-r1.md` passes the correction at `60535433`. Its reviewer independently exercised the real consumers and native boundary fixtures, reconfirmed the exact Level 2/6 differential and preserved operation/cost contract. Accept the corrected design for planning. R1/R2 are resolved at design stage; R3 retains the explicit bounded checker limitation. Production regression and positive independent audit remain mandatory. Original `review.md@d28ac7e3` stays preserved.
