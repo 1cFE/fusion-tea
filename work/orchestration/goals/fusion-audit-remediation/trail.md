@@ -52,3 +52,28 @@ T-001 · native modeling PM Standard item, registered by the spec stage · expec
 ### T-002 start — 2026-09-10
 
 T-002 · native coding PM `.project/active/ife-native-study-package/` · expected artifacts: spec/design/plan, package-owned implementation and validation, independent coding audit, and the native integration return.
+
+### T-002 return — 2026-09-10
+
+**Outcome:** PREREQUISITE.
+
+**Evidence:** `.project/active/ife-native-study-package/prerequisite.md@5d245388043eda338e5a33e88843e9d680bbcbbf` and its native verifier reproducer/JSON. Package implementation stopped at the declared seam boundary.
+
+**Goal reading:** The shared verifier cannot re-derive the multiplication operand in IFE's existing heuristic. Correct package metadata cannot discharge that failure. The physical strategy and comparison meaning remain intact; a separately owned coding correction is needed before package preparation resumes.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Actual audited IFE predicate is refused by `derive_verdict` | End package preparation as a prerequisite and scope a separate verifier correction. Preserve the model expression and the generic workflow's verification obligation. | premise surprise | Parent round agent, using the native producer's reproducible refusal | Native prerequisite artifacts at the commit above; no model, package, pin or study change |
+
+### T-003 scope
+
+- **Objective:** Enable the shared verifier to independently re-derive the existing IFE multiplication operand while preserving its explicit refusal behavior and existing MFE comparison results.
+- **Why now:** T-002's native reproducer establishes a missing verifier capability that package-owned bindings cannot supply.
+- **Scope:** Authorized: one bounded coding-PM item in `scripts/study/verify.py` for nested binary multiplication operands, actual catalog/negative tests, existing verifier regression, documentation and independent coding audit. Preserve model/package inputs, predicates, finance, runtime dependencies, study records and the pending MFE pin. Other arithmetic operators, general expression evaluation and unrelated seam repairs are excluded.
+- **Inputs:** `goal.md@5d245388043eda338e5a33e88843e9d680bbcbbf`; T-002 prerequisite at that revision; the actual IFE catalog and existing shared verifier/tests at that revision.
+- **Done when:** Independent coding audit certifies correct re-derivation of the actual IFE predicate and unchanged supported MFE behavior, or a bounded negative shows why this correction cannot safely fit the contract.
+- **Stop when:** A model/comparison change, broader seam repair, owner-held gate, or declared limit is required.
+
+### T-003 start — 2026-09-10
+
+T-003 · native coding PM `.project/active/study-verifier-multiplication/` · expected artifacts: bounded spec/design/plan, verifier correction, regression evidence and independent coding audit.

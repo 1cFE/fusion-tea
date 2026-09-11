@@ -171,6 +171,39 @@ def resolve_operand(constraint_id: str, operand: dict, bindings: dict,
     raise VerifyError(f"{constraint_id}: operand {name!r} has an unknown binding kind {kind!r}")
 
 
+def evaluate_operand(constraint_id: str, operand: dict, bindings: dict,
+                     case_inputs, package_inputs, channels) -> tuple[float, int]:
+    """Evaluate literals, bound features and binary products; count feature occurrences.
+
+    Other arithmetic remains unsupported and refuses explicitly. Values come from
+    declared inputs and independent oracle channels, never generated predicates.
+    """
+    kind = operand["kind"]
+    if kind == "literal":
+        return float(operand["literal"]["value"]), 0
+    if kind == "feature_ref":
+        return resolve_operand(
+            constraint_id, operand, bindings, case_inputs, package_inputs, channels
+        ), 1
+    if kind == "operator":
+        operator = operand.get("operator")
+        if operator != "*":
+            raise VerifyError(f"{constraint_id}: unsupported arithmetic operator {operator!r}")
+        children = operand.get("operands", [])
+        if len(children) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected two multiplication operands, found {len(children)}"
+            )
+        left, left_count = evaluate_operand(
+            constraint_id, children[0], bindings, case_inputs, package_inputs, channels
+        )
+        right, right_count = evaluate_operand(
+            constraint_id, children[1], bindings, case_inputs, package_inputs, channels
+        )
+        return left * right, left_count + right_count
+    raise VerifyError(f"{constraint_id}: operand kind {kind!r} cannot be re-derived")
+
+
 def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
                    case_inputs, package_inputs, channels) -> tuple[bool, int]:
     """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
@@ -187,17 +220,11 @@ def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
         )
     values, resolved = [], 0
     for operand in operands:
-        if operand["kind"] == "literal":
-            values.append(float(operand["literal"]["value"]))
-        elif operand["kind"] == "feature_ref":
-            values.append(resolve_operand(
-                constraint_id, operand, bindings, case_inputs, package_inputs, channels
-            ))
-            resolved += 1
-        else:
-            raise VerifyError(
-                f"{constraint_id}: operand kind {operand['kind']!r} cannot be re-derived"
-            )
+        value, count = evaluate_operand(
+            constraint_id, operand, bindings, case_inputs, package_inputs, channels
+        )
+        values.append(value)
+        resolved += count
     result = OPERATORS[ir["operator"]](values[0], values[1])
     if entry.get("is_negated"):
         result = not result
