@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "checks": [
+    "native record/store/arm stencil",
+    "all fingerprint names populated",
+    "all result/context/execution artifact digests",
+    "seventeen headings, no placeholders"
+  ],
+  "artifact_digest_count": 69,
+  "explicitly_not_run": "Full tests/study/test_records.py discovery-log join is deferred until parent authorizes registration; draft is not closed."
+}

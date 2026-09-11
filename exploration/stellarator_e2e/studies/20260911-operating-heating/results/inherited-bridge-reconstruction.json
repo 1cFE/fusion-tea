@@ -1,0 +1,56 @@
+{
+  "evidence_class": "Copied inherited model-audit scalar ledger, recomputed accounting only; old package was not rerun",
+  "before": {
+    "capital_head": 1579754018.6783638,
+    "capital_comparison": 1545622298.933045,
+    "annual": 218496530.2659393,
+    "energy": 8006118.846124664,
+    "headline_lcoe": 224.60952472804465,
+    "comparison_lcoe": 220.34632049621635
+  },
+  "after": {
+    "proposal_index": 2,
+    "label": "installed-100",
+    "capital_head": 1579773868.182265,
+    "capital_comparison": 1545641719.5741634,
+    "annual": 218531599.6394876,
+    "energy": 8018511.699947588,
+    "total_capital": 14955400261.631914,
+    "overnight_capital": 14955400261.631914,
+    "idc": 4224531491.5086827,
+    "cas71": 79552063.13280472,
+    "cas72": 138187030.54156843,
+    "cas80": 792505.9651144511,
+    "crf": 0.08058640351111124,
+    "bridge_head": {
+      "capital": 0.0,
+      "annual": 0.0,
+      "energy": 0.0,
+      "sum": 0.0,
+      "delta": 0.0
+    },
+    "bridge_comparison": {
+      "capital": 0.0,
+      "annual": 0.0,
+      "energy": 0.0,
+      "sum": 0.0,
+      "delta": 0.0
+    }
+  },
+  "copied_bridge": {
+    "headline": {
+      "capital": 0.00247929168711395,
+      "annual": 0.004380321379475186,
+      "energy": -0.34715145672126246,
+      "delta": -0.34029184365465426,
+      "residual": 1.9040324872321435e-14
+    },
+    "comparison": {
+      "capital": 0.002425724810209001,
+      "annual": 0.004380321379475186,
+      "energy": -0.3405624620691572,
+      "delta": -0.3337564158794635,
+      "residual": 9.547918011776346e-15
+    }
+  }
+}

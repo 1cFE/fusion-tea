@@ -1,0 +1,1583 @@
+{
+  "mfe_account_costs_params": {
+    "class": "stellarator_tea.schemas.mfe_account_costs_params.MfeAccountCostsParams",
+    "schema": {
+      "additionalProperties": false,
+      "description": "Parameters from mfe_account_costs.\n\nGenerated from SysML calculation definitions.",
+      "properties": {
+        "stellarator_09__stellaris__aux_cooling__alpha": {
+          "default": 0.7,
+          "description": "Entry point: alpha",
+          "title": "Stellarator 09  Stellaris  Aux Cooling  Alpha",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__aux_cooling__p_cryo_ref": {
+          "default": 30.0,
+          "description": "Entry point: p_cryo_ref",
+          "title": "Stellarator 09  Stellaris  Aux Cooling  P Cryo Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__blanket_cost__alpha": {
+          "default": 0.6,
+          "description": "Entry point: alpha",
+          "title": "Stellarator 09  Stellaris  Blanket Cost  Alpha",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__blanket_cost__p_th_ref": {
+          "default": 2500.0,
+          "description": "Entry point: p_th_ref",
+          "title": "Stellarator 09  Stellaris  Blanket Cost  P Th Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__buildings_cost__n_mod_in": {
+          "default": 1.0,
+          "description": "Entry point: n_mod_in",
+          "title": "Stellarator 09  Stellaris  Buildings Cost  N Mod In",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__buildings_cost__p_et_ref": {
+          "default": 1100.0,
+          "description": "Entry point: p_et_ref",
+          "title": "Stellarator 09  Stellaris  Buildings Cost  P Et Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__buildings_cost__p_fus_ref": {
+          "default": 2300.0,
+          "description": "Entry point: p_fus_ref",
+          "title": "Stellarator 09  Stellaris  Buildings Cost  P Fus Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__buildings_cost__p_th_ref": {
+          "default": 2500.0,
+          "description": "Entry point: p_th_ref",
+          "title": "Stellarator 09  Stellaris  Buildings Cost  P Th Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__buildings_cost__p_the_ref": {
+          "default": 1100.0,
+          "description": "Entry point: p_the_ref",
+          "title": "Stellarator 09  Stellaris  Buildings Cost  P The Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__coolant__alpha": {
+          "default": 0.55,
+          "description": "Entry point: alpha",
+          "title": "Stellarator 09  Stellaris  Coolant  Alpha",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__coolant__p_th_ref": {
+          "default": 3500.0,
+          "description": "Entry point: p_th_ref",
+          "title": "Stellarator 09  Stellaris  Coolant  P Th Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__coolant__ref_net_power": {
+          "default": 1000.0,
+          "description": "Entry point: ref_net_power",
+          "title": "Stellarator 09  Stellaris  Coolant  Ref Net Power",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__divertor_cost__alpha": {
+          "default": 0.5,
+          "description": "Entry point: alpha",
+          "title": "Stellarator 09  Stellaris  Divertor Cost  Alpha",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__divertor_cost__p_th_ref": {
+          "default": 1000.0,
+          "description": "Entry point: p_th_ref",
+          "title": "Stellarator 09  Stellaris  Divertor Cost  P Th Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__fuel_handling__alpha": {
+          "default": 0.7,
+          "description": "Entry point: alpha",
+          "title": "Stellarator 09  Stellaris  Fuel Handling  Alpha",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__fuel_handling__ref_power": {
+          "default": 1000.0,
+          "description": "Entry point: ref_power",
+          "title": "Stellarator 09  Stellaris  Fuel Handling  Ref Power",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__inc_cost__alpha": {
+          "default": 0.65,
+          "description": "Entry point: alpha",
+          "title": "Stellarator 09  Stellaris  Inc Cost  Alpha",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__inc_cost__ref_power": {
+          "default": 3500.0,
+          "description": "Entry point: ref_power",
+          "title": "Stellarator 09  Stellaris  Inc Cost  Ref Power",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__indirect__reference_construction_time": {
+          "default": 6.0,
+          "description": "Entry point: reference_construction_time",
+          "title": "Stellarator 09  Stellaris  Indirect  Reference Construction Time",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__om_cost__alpha": {
+          "default": 0.5,
+          "description": "Entry point: alpha",
+          "title": "Stellarator 09  Stellaris  Om Cost  Alpha",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__om_cost__n_mod_in": {
+          "default": 1.0,
+          "description": "Entry point: n_mod_in",
+          "title": "Stellarator 09  Stellaris  Om Cost  N Mod In",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__om_cost__om_direct": {
+          "default": 0.0,
+          "description": "Entry point: om_direct",
+          "title": "Stellarator 09  Stellaris  Om Cost  Om Direct",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__om_cost__ref_net_power": {
+          "default": 1000.0,
+          "description": "Entry point: ref_net_power",
+          "title": "Stellarator 09  Stellaris  Om Cost  Ref Net Power",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__other_rpe__alpha": {
+          "default": 0.8,
+          "description": "Entry point: alpha",
+          "title": "Stellarator 09  Stellaris  Other Rpe  Alpha",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__other_rpe__ref_power": {
+          "default": 1000.0,
+          "description": "Entry point: ref_power",
+          "title": "Stellarator 09  Stellaris  Other Rpe  Ref Power",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__owner__alpha": {
+          "default": 0.5,
+          "description": "Entry point: alpha",
+          "title": "Stellarator 09  Stellaris  Owner  Alpha",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__owner__ref_power": {
+          "default": 1000.0,
+          "description": "Entry point: ref_power",
+          "title": "Stellarator 09  Stellaris  Owner  Ref Power",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__power_supplies_cost__alpha": {
+          "default": 0.7,
+          "description": "Entry point: alpha",
+          "title": "Stellarator 09  Stellaris  Power Supplies Cost  Alpha",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__power_supplies_cost__p_et_ref": {
+          "default": 1100.0,
+          "description": "Entry point: p_et_ref",
+          "title": "Stellarator 09  Stellaris  Power Supplies Cost  P Et Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__precon_cost__land_cost": {
+          "default": 10000.0,
+          "description": "Entry point: land_cost",
+          "title": "Stellarator 09  Stellaris  Precon Cost  Land Cost",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__precon_cost__land_intensity": {
+          "default": 0.25,
+          "description": "Entry point: land_intensity",
+          "title": "Stellarator 09  Stellaris  Precon Cost  Land Intensity",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__precon_cost__n_mod_in": {
+          "default": 1.0,
+          "description": "Entry point: n_mod_in",
+          "title": "Stellarator 09  Stellaris  Precon Cost  N Mod In",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__precon_cost__ref_net_power": {
+          "default": 1000.0,
+          "description": "Entry point: ref_net_power",
+          "title": "Stellarator 09  Stellaris  Precon Cost  Ref Net Power",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__remote_handling__alpha": {
+          "default": 0.5,
+          "description": "Entry point: alpha",
+          "title": "Stellarator 09  Stellaris  Remote Handling  Alpha",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__remote_handling__p_et_ref": {
+          "default": 1100.0,
+          "description": "Entry point: p_et_ref",
+          "title": "Stellarator 09  Stellaris  Remote Handling  P Et Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__shield_cost__alpha": {
+          "default": 0.6,
+          "description": "Entry point: alpha",
+          "title": "Stellarator 09  Stellaris  Shield Cost  Alpha",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__shield_cost__p_th_ref": {
+          "default": 2500.0,
+          "description": "Entry point: p_th_ref",
+          "title": "Stellarator 09  Stellaris  Shield Cost  P Th Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__structure_cost__alpha": {
+          "default": 0.5,
+          "description": "Entry point: alpha",
+          "title": "Stellarator 09  Stellaris  Structure Cost  Alpha",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__structure_cost__p_et_ref": {
+          "default": 1100.0,
+          "description": "Entry point: p_et_ref",
+          "title": "Stellarator 09  Stellaris  Structure Cost  P Et Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__supplementary__contingency_rate_in": {
+          "default": 0.0,
+          "description": "Entry point: contingency_rate_in",
+          "title": "Stellarator 09  Stellaris  Supplementary  Contingency Rate In",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__supplementary__insurance_frac": {
+          "default": 0.015,
+          "description": "Entry point: insurance_frac",
+          "title": "Stellarator 09  Stellaris  Supplementary  Insurance Frac",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__supplementary__ref_net_power": {
+          "default": 1000.0,
+          "description": "Entry point: ref_net_power",
+          "title": "Stellarator 09  Stellaris  Supplementary  Ref Net Power",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__supplementary__shipping_frac": {
+          "default": 0.015,
+          "description": "Entry point: shipping_frac",
+          "title": "Stellarator 09  Stellaris  Supplementary  Shipping Frac",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__supplementary__tax_frac": {
+          "default": 0.01,
+          "description": "Entry point: tax_frac",
+          "title": "Stellarator 09  Stellaris  Supplementary  Tax Frac",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__vessel_cost__alpha": {
+          "default": 0.6,
+          "description": "Entry point: alpha",
+          "title": "Stellarator 09  Stellaris  Vessel Cost  Alpha",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__vessel_cost__p_et_ref": {
+          "default": 1100.0,
+          "description": "Entry point: p_et_ref",
+          "title": "Stellarator 09  Stellaris  Vessel Cost  P Et Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__waste__alpha": {
+          "default": 1.0,
+          "description": "Entry point: alpha",
+          "title": "Stellarator 09  Stellaris  Waste  Alpha",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__waste__ref_power": {
+          "default": 1000.0,
+          "description": "Entry point: ref_power",
+          "title": "Stellarator 09  Stellaris  Waste  Ref Power",
+          "type": "number"
+        }
+      },
+      "title": "MfeAccountCostsParams",
+      "type": "object"
+    }
+  },
+  "mfe_fuel_cycle_params": {
+    "class": "stellarator_tea.schemas.mfe_fuel_cycle_params.MfeFuelCycleParams",
+    "schema": {
+      "additionalProperties": false,
+      "description": "Parameters from mfe_fuel_cycle.\n\nGenerated from SysML calculation definitions.",
+      "properties": {
+        "stellarator_09__stellaris__fuel__s_per_fpy_in": {
+          "default": 31536000.0,
+          "description": "Entry point: s_per_fpy_in",
+          "title": "Stellarator 09  Stellaris  Fuel  S Per Fpy In",
+          "type": "number"
+        }
+      },
+      "title": "MfeFuelCycleParams",
+      "type": "object"
+    }
+  },
+  "mfe_magnet_cost_params": {
+    "class": "stellarator_tea.schemas.mfe_magnet_cost_params.MfeMagnetCostParams",
+    "schema": {
+      "additionalProperties": false,
+      "description": "Parameters from mfe_magnet_cost.\n\nGenerated from SysML calculation definitions.",
+      "properties": {
+        "stellarator_09__stellaris__magnet_cost__mu0": {
+          "default": 1.25663706212e-06,
+          "description": "Entry point: mu0",
+          "title": "Stellarator 09  Stellaris  Magnet Cost  Mu0",
+          "type": "number"
+        }
+      },
+      "title": "MfeMagnetCostParams",
+      "type": "object"
+    }
+  },
+  "mfe_magnet_field_params": {
+    "class": "stellarator_tea.schemas.mfe_magnet_field_params.MfeMagnetFieldParams",
+    "schema": {
+      "additionalProperties": false,
+      "description": "Parameters from mfe_magnet_field.\n\nGenerated from SysML calculation definitions.",
+      "properties": {
+        "stellarator_09__stellaris__field_calc__mu0": {
+          "default": 1.25663706212e-06,
+          "description": "Entry point: mu0",
+          "title": "Stellarator 09  Stellaris  Field Calc  Mu0",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__field_calc__two_pi": {
+          "default": 6.283185307179586,
+          "description": "Entry point: two_pi",
+          "title": "Stellarator 09  Stellaris  Field Calc  Two Pi",
+          "type": "number"
+        }
+      },
+      "title": "MfeMagnetFieldParams",
+      "type": "object"
+    }
+  },
+  "mfe_plant_params": {
+    "class": "stellarator_tea.schemas.mfe_plant_params.MfePlantParams",
+    "schema": {
+      "additionalProperties": false,
+      "description": "Parameters from mfe_plant.\n\nGenerated from SysML calculation definitions.",
+      "properties": {
+        "stellarator_09__stellaris__n_mod": {
+          "default": 1.0,
+          "description": "Entry point: n_mod",
+          "title": "Stellarator 09  Stellaris  N Mod",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__recirc_ok__threshold": {
+          "default": 0.5,
+          "description": "Entry point: threshold",
+          "title": "Stellarator 09  Stellaris  Recirc Ok  Threshold",
+          "type": "number"
+        }
+      },
+      "title": "MfePlantParams",
+      "type": "object"
+    }
+  },
+  "mfe_plasma_scaling_params": {
+    "class": "stellarator_tea.schemas.mfe_plasma_scaling_params.MfePlasmaScalingParams",
+    "schema": {
+      "additionalProperties": false,
+      "description": "Parameters from mfe_plasma_scaling.\n\nGenerated from SysML calculation definitions.",
+      "properties": {
+        "stellarator_09__stellaris__beta_calc__mu0": {
+          "default": 1.25663706212e-06,
+          "description": "Entry point: mu0",
+          "title": "Stellarator 09  Stellaris  Beta Calc  Mu0",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__geom__pi": {
+          "default": 3.14159265358979,
+          "description": "Entry point: pi",
+          "title": "Stellarator 09  Stellaris  Geom  Pi",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__rb__pi": {
+          "default": 3.14159265358979,
+          "description": "Entry point: pi",
+          "title": "Stellarator 09  Stellaris  Rb  Pi",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__wall_load_calc__ash_frac_in": {
+          "default": 0.2002,
+          "description": "Entry point: ash_frac_in",
+          "title": "Stellarator 09  Stellaris  Wall Load Calc  Ash Frac In",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__wall_peak_cal__ash_frac_in": {
+          "default": 0.2002,
+          "description": "Entry point: ash_frac_in",
+          "title": "Stellarator 09  Stellaris  Wall Peak Cal  Ash Frac In",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__wall_peak_cal__pi": {
+          "default": 3.14159265358979,
+          "description": "Entry point: pi",
+          "title": "Stellarator 09  Stellaris  Wall Peak Cal  Pi",
+          "type": "number"
+        }
+      },
+      "title": "MfePlasmaScalingParams",
+      "type": "object"
+    }
+  },
+  "mfe_plasma_sustainment_params": {
+    "class": "stellarator_tea.schemas.mfe_plasma_sustainment_params.MfePlasmaSustainmentParams",
+    "schema": {
+      "additionalProperties": false,
+      "description": "Parameters from mfe_plasma_sustainment.\n\nGenerated from SysML calculation definitions.",
+      "properties": {
+        "stellarator_09__stellaris__sustain__R_w_sync_in": {
+          "default": 0.6,
+          "description": "Entry point: R_w_sync_in",
+          "title": "Stellarator 09  Stellaris  Sustain  R W Sync In",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__sustain__ash_frac_in": {
+          "default": 0.2002,
+          "description": "Entry point: ash_frac_in",
+          "title": "Stellarator 09  Stellaris  Sustain  Ash Frac In",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__sustain__kappa_sync_in": {
+          "default": 1.0,
+          "description": "Entry point: kappa_sync_in",
+          "title": "Stellarator 09  Stellaris  Sustain  Kappa Sync In",
+          "type": "number"
+        }
+      },
+      "title": "MfePlasmaSustainmentParams",
+      "type": "object"
+    }
+  },
+  "mfe_vacuum_params": {
+    "class": "stellarator_tea.schemas.mfe_vacuum_params.MfeVacuumParams",
+    "schema": {
+      "additionalProperties": false,
+      "description": "Parameters from mfe_vacuum.\n\nGenerated from SysML calculation definitions.",
+      "properties": {
+        "stellarator_09__stellaris__vacuum__k_B_in": {
+          "default": 1.380649e-23,
+          "description": "Entry point: k_B_in",
+          "title": "Stellarator 09  Stellaris  Vacuum  K B In",
+          "type": "number"
+        }
+      },
+      "title": "MfeVacuumParams",
+      "type": "object"
+    }
+  },
+  "stellarator_plant_params": {
+    "class": "stellarator_tea.schemas.stellarator_plant_params.StellaratorPlantParams",
+    "schema": {
+      "additionalProperties": false,
+      "description": "Parameters from stellarator_plant.\n\nGenerated from SysML calculation definitions.",
+      "properties": {
+        "stellarator_09__stellaris__E_fus": {
+          "default": 2.817e-12,
+          "description": "Entry point: E_fus",
+          "title": "Stellarator 09  Stellaris  E Fus",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__G_stock": {
+          "default": 0.0,
+          "description": "Entry point: G_stock",
+          "title": "Stellarator 09  Stellaris  G Stock",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__I_total": {
+          "default": 0.0,
+          "description": "Entry point: I_total",
+          "title": "Stellarator 09  Stellaris  I Total",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__R": {
+          "default": 12.7,
+          "description": "Entry point: R",
+          "title": "Stellarator 09  Stellaris  R",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__R_ref_divertor": {
+          "default": 12.7,
+          "description": "Entry point: R_ref_divertor",
+          "title": "Stellarator 09  Stellaris  R Ref Divertor",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__T2_max": {
+          "default": 642.0,
+          "description": "Entry point: T2_max",
+          "title": "Stellarator 09  Stellaris  T2 Max",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__T2_min": {
+          "default": 384.0,
+          "description": "Entry point: T2_min",
+          "title": "Stellarator 09  Stellaris  T2 Min",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__T_amb_cryo": {
+          "default": 300.0,
+          "description": "Entry point: T_amb_cryo",
+          "title": "Stellarator 09  Stellaris  T Amb Cryo",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__T_cold_cryo": {
+          "default": 20.0,
+          "description": "Entry point: T_cold_cryo",
+          "title": "Stellarator 09  Stellaris  T Cold Cryo",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__T_gas": {
+          "default": 300.0,
+          "description": "Entry point: T_gas",
+          "title": "Stellarator 09  Stellaris  T Gas",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__T_i0": {
+          "default": 14.63,
+          "description": "Entry point: T_i0",
+          "title": "Stellarator 09  Stellaris  T I0",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__T_offset_fit": {
+          "default": 273.0,
+          "description": "Entry point: T_offset_fit",
+          "title": "Stellarator 09  Stellaris  T Offset Fit",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__Ti_over_Te": {
+          "default": 0.95,
+          "description": "Entry point: Ti_over_Te",
+          "title": "Stellarator 09  Stellaris  Ti Over Te",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__Z_eff_core": {
+          "default": 1.2,
+          "description": "Entry point: Z_eff_core",
+          "title": "Stellarator 09  Stellaris  Z Eff Core",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__a": {
+          "default": 1.3,
+          "description": "Entry point: a",
+          "title": "Stellarator 09  Stellaris  A",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__a_fit": {
+          "default": 0.1802,
+          "description": "Entry point: a_fit",
+          "title": "Stellarator 09  Stellaris  A Fit",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__alpha_T": {
+          "default": 1.19,
+          "description": "Entry point: alpha_T",
+          "title": "Stellarator 09  Stellaris  Alpha T",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__alpha_n": {
+          "default": 0.33,
+          "description": "Entry point: alpha_n",
+          "title": "Stellarator 09  Stellaris  Alpha N",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__aux_cryo_base": {
+          "default": 200000000.0,
+          "description": "Entry point: aux_cryo_base",
+          "title": "Stellarator 09  Stellaris  Aux Cryo Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__aux_per_mw": {
+          "default": 1100.0,
+          "description": "Entry point: aux_per_mw",
+          "title": "Stellarator 09  Stellaris  Aux Per Mw",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__availability_direct": {
+          "default": 0.0,
+          "description": "Entry point: availability_direct",
+          "title": "Stellarator 09  Stellaris  Availability Direct",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__b_fit": {
+          "default": 0.7823,
+          "description": "Entry point: b_fit",
+          "title": "Stellarator 09  Stellaris  B Fit",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__beta_limit": {
+          "default": 0.05,
+          "description": "Entry point: beta_limit",
+          "title": "Stellarator 09  Stellaris  Beta Limit",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__blanket__structure_factor": {
+          "default": 1.0,
+          "description": "Entry point: structure_factor",
+          "title": "Stellarator 09  Stellaris  Blanket  Structure Factor",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__blanket__unit_cost": {
+          "default": 600000.0,
+          "description": "Entry point: unit_cost",
+          "title": "Stellarator 09  Stellaris  Blanket  Unit Cost",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__blanket_t": {
+          "default": 0.8,
+          "description": "Entry point: blanket_t",
+          "title": "Stellarator 09  Stellaris  Blanket T",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__bldg_et_base": {
+          "default": 29000000.0,
+          "description": "Entry point: bldg_et_base",
+          "title": "Stellarator 09  Stellaris  Bldg Et Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__bldg_fixed_base": {
+          "default": 168500000.0,
+          "description": "Entry point: bldg_fixed_base",
+          "title": "Stellarator 09  Stellaris  Bldg Fixed Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__bldg_fus_base": {
+          "default": 288000000.0,
+          "description": "Entry point: bldg_fus_base",
+          "title": "Stellarator 09  Stellaris  Bldg Fus Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__bldg_staff_base": {
+          "default": 9000000.0,
+          "description": "Entry point: bldg_staff_base",
+          "title": "Stellarator 09  Stellaris  Bldg Staff Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__bldg_th_base": {
+          "default": 26000000.0,
+          "description": "Entry point: bldg_th_base",
+          "title": "Stellarator 09  Stellaris  Bldg Th Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__bldg_the_base": {
+          "default": 58000000.0,
+          "description": "Entry point: bldg_the_base",
+          "title": "Stellarator 09  Stellaris  Bldg The Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__burn_fraction": {
+          "default": 0.05,
+          "description": "Entry point: burn_fraction",
+          "title": "Stellarator 09  Stellaris  Burn Fraction",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__cas28_capital": {
+          "default": 5000000.0,
+          "description": "Entry point: cas28_capital",
+          "title": "Stellarator 09  Stellaris  Cas28 Capital",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__coil_life_fpy": {
+          "default": 10.0,
+          "description": "Entry point: coil_life_fpy",
+          "title": "Stellarator 09  Stellaris  Coil Life Fpy",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__coil_t": {
+          "default": 0.3,
+          "description": "Entry point: coil_t",
+          "title": "Stellarator 09  Stellaris  Coil T",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__concept_scale": {
+          "default": 1.0,
+          "description": "Entry point: concept_scale",
+          "title": "Stellarator 09  Stellaris  Concept Scale",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__construction_years": {
+          "default": 8.0,
+          "description": "Entry point: construction_years",
+          "title": "Stellarator 09  Stellaris  Construction Years",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__contingency_rate": {
+          "default": 0.1,
+          "description": "Entry point: contingency_rate",
+          "title": "Stellarator 09  Stellaris  Contingency Rate",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__coolant_intermediate_base": {
+          "default": 40600000.0,
+          "description": "Entry point: coolant_intermediate_base",
+          "title": "Stellarator 09  Stellaris  Coolant Intermediate Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__coolant_primary_base": {
+          "default": 166000000.0,
+          "description": "Entry point: coolant_primary_base",
+          "title": "Stellarator 09  Stellaris  Coolant Primary Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__cycle_live": {
+          "default": 1.0,
+          "description": "Entry point: cycle_live",
+          "title": "Stellarator 09  Stellaris  Cycle Live",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__dT_approach": {
+          "default": 20.0,
+          "description": "Entry point: dT_approach",
+          "title": "Stellarator 09  Stellaris  Dt Approach",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__delta_eta": {
+          "default": 0.0,
+          "description": "Entry point: delta_eta",
+          "title": "Stellarator 09  Stellaris  Delta Eta",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__discount_rate": {
+          "default": 0.07,
+          "description": "Entry point: discount_rate",
+          "title": "Stellarator 09  Stellaris  Discount Rate",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__divertor_base": {
+          "default": 60000000.0,
+          "description": "Entry point: divertor_base",
+          "title": "Stellarator 09  Stellaris  Divertor Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__dp_loop_ref": {
+          "default": 329187.1856931558,
+          "description": "Entry point: dp_loop_ref",
+          "title": "Stellarator 09  Stellaris  Dp Loop Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__electric_plant__cost_per_mw": {
+          "default": 86400.0,
+          "description": "Entry point: cost_per_mw",
+          "title": "Stellarator 09  Stellaris  Electric Plant  Cost Per Mw",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__eta_couple_heat": {
+          "default": 1.0,
+          "description": "Entry point: eta_couple_heat",
+          "title": "Stellarator 09  Stellaris  Eta Couple Heat",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__eta_drive": {
+          "default": 1.0,
+          "description": "Entry point: eta_drive",
+          "title": "Stellarator 09  Stellaris  Eta Drive",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__eta_extract": {
+          "default": 1.0,
+          "description": "Entry point: eta_extract",
+          "title": "Stellarator 09  Stellaris  Eta Extract",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__eta_is": {
+          "default": 0.772796639536644,
+          "description": "Entry point: eta_is",
+          "title": "Stellarator 09  Stellaris  Eta Is",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__eta_p_direct": {
+          "default": 0.0,
+          "description": "Entry point: eta_p_direct",
+          "title": "Stellarator 09  Stellaris  Eta P Direct",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__eta_source_heat": {
+          "default": 0.5,
+          "description": "Entry point: eta_source_heat",
+          "title": "Stellarator 09  Stellaris  Eta Source Heat",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__eta_th_direct": {
+          "default": 0.0,
+          "description": "Entry point: eta_th_direct",
+          "title": "Stellarator 09  Stellaris  Eta Th Direct",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__f_W_core": {
+          "default": 7.76e-06,
+          "description": "Entry point: f_W_core",
+          "title": "Stellarator 09  Stellaris  F W Core",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__f_alpha_fast": {
+          "default": 0.95,
+          "description": "Entry point: f_alpha_fast",
+          "title": "Stellarator 09  Stellaris  F Alpha Fast",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__f_carnot_cryo": {
+          "default": 0.2,
+          "description": "Entry point: f_carnot_cryo",
+          "title": "Stellarator 09  Stellaris  F Carnot Cryo",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__f_loss": {
+          "default": 1.0,
+          "description": "Entry point: f_loss",
+          "title": "Stellarator 09  Stellaris  F Loss",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__f_rad_total": {
+          "default": 0.9,
+          "description": "Entry point: f_rad_total",
+          "title": "Stellarator 09  Stellaris  F Rad Total",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__f_ren": {
+          "default": 1.0,
+          "description": "Entry point: f_ren",
+          "title": "Stellarator 09  Stellaris  F Ren",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__f_shape": {
+          "default": 1.0031567,
+          "description": "Entry point: f_shape",
+          "title": "Stellarator 09  Stellaris  F Shape",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__f_sub": {
+          "default": 0.03,
+          "description": "Entry point: f_sub",
+          "title": "Stellarator 09  Stellaris  F Sub",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__f_suppr_ash": {
+          "default": 0.5,
+          "description": "Entry point: f_suppr_ash",
+          "title": "Stellarator 09  Stellaris  F Suppr Ash",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__f_uplift_cryo": {
+          "default": 1.0,
+          "description": "Entry point: f_uplift_cryo",
+          "title": "Stellarator 09  Stellaris  F Uplift Cryo",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__firstwall_t": {
+          "default": 0.05,
+          "description": "Entry point: firstwall_t",
+          "title": "Stellarator 09  Stellaris  Firstwall T",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__fluence_limit": {
+          "default": 18.0,
+          "description": "Entry point: fluence_limit",
+          "title": "Stellarator 09  Stellaris  Fluence Limit",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__fuel_cost_per_rxn": {
+          "default": 1.7260641119988767e-23,
+          "description": "Entry point: fuel_cost_per_rxn",
+          "title": "Stellarator 09  Stellaris  Fuel Cost Per Rxn",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__fuel_handling_base": {
+          "default": 120000000.0,
+          "description": "Entry point: fuel_handling_base",
+          "title": "Stellarator 09  Stellaris  Fuel Handling Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__fuel_q_eff": {
+          "default": 17.58,
+          "description": "Entry point: fuel_q_eff",
+          "title": "Stellarator 09  Stellaris  Fuel Q Eff",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__fuel_recovery": {
+          "default": 0.99,
+          "description": "Entry point: fuel_recovery",
+          "title": "Stellarator 09  Stellaris  Fuel Recovery",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__gap1_t": {
+          "default": 0.1,
+          "description": "Entry point: gap1_t",
+          "title": "Stellarator 09  Stellaris  Gap1 T",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__gap2_t": {
+          "default": 0.1,
+          "description": "Entry point: gap2_t",
+          "title": "Stellarator 09  Stellaris  Gap2 T",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__heat_rejection__cost_per_mw": {
+          "default": 35060.0,
+          "description": "Entry point: cost_per_mw",
+          "title": "Stellarator 09  Stellaris  Heat Rejection  Cost Per Mw",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__heating_ecrh_per_mw": {
+          "default": 5282900.0,
+          "description": "Entry point: heating_ecrh_per_mw",
+          "title": "Stellarator 09  Stellaris  Heating Ecrh Per Mw",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__heating_icrf_per_mw": {
+          "default": 0.0,
+          "description": "Entry point: heating_icrf_per_mw",
+          "title": "Stellarator 09  Stellaris  Heating Icrf Per Mw",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__heating_lhcd_per_mw": {
+          "default": 0.0,
+          "description": "Entry point: heating_lhcd_per_mw",
+          "title": "Stellarator 09  Stellaris  Heating Lhcd Per Mw",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__heating_nbi_per_mw": {
+          "default": 0.0,
+          "description": "Entry point: heating_nbi_per_mw",
+          "title": "Stellarator 09  Stellaris  Heating Nbi Per Mw",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__ht_shield_t": {
+          "default": 0.2,
+          "description": "Entry point: ht_shield_t",
+          "title": "Stellarator 09  Stellaris  Ht Shield T",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__inc_base": {
+          "default": 85000000.0,
+          "description": "Entry point: inc_base",
+          "title": "Stellarator 09  Stellaris  Inc Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__indirect_fraction": {
+          "default": 0.2,
+          "description": "Entry point: indirect_fraction",
+          "title": "Stellarator 09  Stellaris  Indirect Fraction",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__inflation_rate": {
+          "default": 0.02,
+          "description": "Entry point: inflation_rate",
+          "title": "Stellarator 09  Stellaris  Inflation Rate",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__installation_frac": {
+          "default": 0.14,
+          "description": "Entry point: installation_frac",
+          "title": "Stellarator 09  Stellaris  Installation Frac",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__iota_23": {
+          "default": 0.92,
+          "description": "Entry point: iota_23",
+          "title": "Stellarator 09  Stellaris  Iota 23",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__kappa": {
+          "default": 1.0,
+          "description": "Entry point: kappa",
+          "title": "Stellarator 09  Stellaris  Kappa",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__lambda_T": {
+          "default": 1.782785958230312e-09,
+          "description": "Entry point: lambda_T",
+          "title": "Stellarator 09  Stellaris  Lambda T",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__loop_T_in": {
+          "default": 573.15,
+          "description": "Entry point: loop_T_in",
+          "title": "Stellarator 09  Stellaris  Loop T In",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__loop_cp": {
+          "default": 5193.0,
+          "description": "Entry point: loop_cp",
+          "title": "Stellarator 09  Stellaris  Loop Cp",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__loop_dT_blanket": {
+          "default": 200.0,
+          "description": "Entry point: loop_dT_blanket",
+          "title": "Stellarator 09  Stellaris  Loop Dt Blanket",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__loop_gamma": {
+          "default": 1.6666666666666667,
+          "description": "Entry point: loop_gamma",
+          "title": "Stellarator 09  Stellaris  Loop Gamma",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__loop_live": {
+          "default": 1.0,
+          "description": "Entry point: loop_live",
+          "title": "Stellarator 09  Stellaris  Loop Live",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__loop_p": {
+          "default": 8000000.0,
+          "description": "Entry point: loop_p",
+          "title": "Stellarator 09  Stellaris  Loop P",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__lt_shield_t": {
+          "default": 0.15,
+          "description": "Entry point: lt_shield_t",
+          "title": "Stellarator 09  Stellaris  Lt Shield T",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__m_T_kg": {
+          "default": 5.008267663228036e-27,
+          "description": "Entry point: m_T_kg",
+          "title": "Stellarator 09  Stellaris  M T Kg",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__B_max": {
+          "default": 24.9,
+          "description": "Entry point: B_max",
+          "title": "Stellarator 09  Stellaris  Magnet  B Max",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__E_wp": {
+          "default": 200000000000.0,
+          "description": "Entry point: E_wp",
+          "title": "Stellarator 09  Stellaris  Magnet  E Wp",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__G": {
+          "default": 78.95683520871486,
+          "description": "Entry point: G",
+          "title": "Stellarator 09  Stellaris  Magnet  G",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__I_coil": {
+          "default": 15400000.0,
+          "description": "Entry point: I_coil",
+          "title": "Stellarator 09  Stellaris  Magnet  I Coil",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__I_ref": {
+          "default": 15400000.0,
+          "description": "Entry point: I_ref",
+          "title": "Stellarator 09  Stellaris  Magnet  I Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__R0": {
+          "default": 12.7,
+          "description": "Entry point: R0",
+          "title": "Stellarator 09  Stellaris  Magnet  R0",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__R_ref": {
+          "default": 12.7,
+          "description": "Entry point: R_ref",
+          "title": "Stellarator 09  Stellaris  Magnet  R Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__W_mag_ref": {
+          "default": 111000000000.0,
+          "description": "Entry point: W_mag_ref",
+          "title": "Stellarator 09  Stellaris  Magnet  W Mag Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__a_coil_ref": {
+          "default": 3.1500000000000004,
+          "description": "Entry point: a_coil_ref",
+          "title": "Stellarator 09  Stellaris  Magnet  A Coil Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__coil_markup": {
+          "default": 5.87,
+          "description": "Entry point: coil_markup",
+          "title": "Stellarator 09  Stellaris  Magnet  Coil Markup",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__cost_per_kAm": {
+          "default": 50.0,
+          "description": "Entry point: cost_per_kAm",
+          "title": "Stellarator 09  Stellaris  Magnet  Cost Per Kam",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__eps_cond_allow": {
+          "default": 0.004,
+          "description": "Entry point: eps_cond_allow",
+          "title": "Stellarator 09  Stellaris  Magnet  Eps Cond Allow",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__f_cond": {
+          "default": 0.6666666666666666,
+          "description": "Entry point: f_cond",
+          "title": "Stellarator 09  Stellaris  Magnet  F Cond",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__f_set": {
+          "default": 0.8701298701298701,
+          "description": "Entry point: f_set",
+          "title": "Stellarator 09  Stellaris  Magnet  F Set",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__f_steel_fab": {
+          "default": 3.0,
+          "description": "Entry point: f_steel_fab",
+          "title": "Stellarator 09  Stellaris  Magnet  F Steel Fab",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__f_wp_fab": {
+          "default": 6.65,
+          "description": "Entry point: f_wp_fab",
+          "title": "Stellarator 09  Stellaris  Magnet  F Wp Fab",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__f_wp_vol": {
+          "default": 0.8780864197530865,
+          "description": "Entry point: f_wp_vol",
+          "title": "Stellarator 09  Stellaris  Magnet  F Wp Vol",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__j_wp": {
+          "default": 118.8271604938272,
+          "description": "Entry point: j_wp",
+          "title": "Stellarator 09  Stellaris  Magnet  J Wp",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__k_coil": {
+          "default": 1.968503937007874,
+          "description": "Entry point: k_coil",
+          "title": "Stellarator 09  Stellaris  Magnet  K Coil",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__k_link": {
+          "default": 0.7731331164622419,
+          "description": "Entry point: k_link",
+          "title": "Stellarator 09  Stellaris  Magnet  K Link",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__k_sigma": {
+          "default": 0.6102331403536223,
+          "description": "Entry point: k_sigma",
+          "title": "Stellarator 09  Stellaris  Magnet  K Sigma",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__m_casing_ref": {
+          "default": 63000.0,
+          "description": "Entry point: m_casing_ref",
+          "title": "Stellarator 09  Stellaris  Magnet  M Casing Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__n_coils": {
+          "default": 48.0,
+          "description": "Entry point: n_coils",
+          "title": "Stellarator 09  Stellaris  Magnet  N Coils",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__peak_ratio": {
+          "default": 2.7666666666666666,
+          "description": "Entry point: peak_ratio",
+          "title": "Stellarator 09  Stellaris  Magnet  Peak Ratio",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__sigma_allow": {
+          "default": 800000000.0,
+          "description": "Entry point: sigma_allow",
+          "title": "Stellarator 09  Stellaris  Magnet  Sigma Allow",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__magnet__steel_price": {
+          "default": 6.0,
+          "description": "Entry point: steel_price",
+          "title": "Stellarator 09  Stellaris  Magnet  Steel Price",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__mdot_loop_ref": {
+          "default": 225.07777777777778,
+          "description": "Entry point: mdot_loop_ref",
+          "title": "Stellarator 09  Stellaris  Mdot Loop Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__mev_to_joules": {
+          "default": 1.6021766339999998e-13,
+          "description": "Entry point: mev_to_joules",
+          "title": "Stellarator 09  Stellaris  Mev To Joules",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__misc_plant__cost_per_mw": {
+          "default": 52590.0,
+          "description": "Entry point: cost_per_mw",
+          "title": "Stellarator 09  Stellaris  Misc Plant  Cost Per Mw",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__mn": {
+          "default": 1.2,
+          "description": "Entry point: mn",
+          "title": "Stellarator 09  Stellaris  Mn",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__n_e": {
+          "default": 3.17e+20,
+          "description": "Entry point: n_e",
+          "title": "Stellarator 09  Stellaris  N E",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__n_e0": {
+          "default": 5.06e+20,
+          "description": "Entry point: n_e0",
+          "title": "Stellarator 09  Stellaris  N E0",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__n_loops": {
+          "default": 14.0,
+          "description": "Entry point: n_loops",
+          "title": "Stellarator 09  Stellaris  N Loops",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__om_annual_ref": {
+          "default": 54900000.0,
+          "description": "Entry point: om_annual_ref",
+          "title": "Stellarator 09  Stellaris  Om Annual Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__operational_years": {
+          "default": 30.0,
+          "description": "Entry point: operational_years",
+          "title": "Stellarator 09  Stellaris  Operational Years",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__other_rpe_base": {
+          "default": 11500000.0,
+          "description": "Entry point: other_rpe_base",
+          "title": "Stellarator 09  Stellaris  Other Rpe Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__outage_years": {
+          "default": 0.5833333333333334,
+          "description": "Entry point: outage_years",
+          "title": "Stellarator 09  Stellaris  Outage Years",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__owner_base": {
+          "default": 41200000.0,
+          "description": "Entry point: owner_base",
+          "title": "Stellarator 09  Stellaris  Owner Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_coupled_direct_heat": {
+          "default": 0.0,
+          "description": "Entry point: p_coupled_direct_heat",
+          "title": "Stellarator 09  Stellaris  P Coupled Direct Heat",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_cryo": {
+          "default": 0.0,
+          "description": "Entry point: p_cryo",
+          "title": "Stellarator 09  Stellaris  P Cryo",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_delivered_direct_heat": {
+          "default": 0.0,
+          "description": "Entry point: p_delivered_direct_heat",
+          "title": "Stellarator 09  Stellaris  P Delivered Direct Heat",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_exhaust": {
+          "default": 1.0,
+          "description": "Entry point: p_exhaust",
+          "title": "Stellarator 09  Stellaris  P Exhaust",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_fixed_cryo": {
+          "default": 0.0075,
+          "description": "Entry point: p_fixed_cryo",
+          "title": "Stellarator 09  Stellaris  P Fixed Cryo",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_house": {
+          "default": 4.0,
+          "description": "Entry point: p_house",
+          "title": "Stellarator 09  Stellaris  P House",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_icrf": {
+          "default": 0.0,
+          "description": "Entry point: p_icrf",
+          "title": "Stellarator 09  Stellaris  P Icrf",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_lhcd": {
+          "default": 0.0,
+          "description": "Entry point: p_lhcd",
+          "title": "Stellarator 09  Stellaris  P Lhcd",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_nbi": {
+          "default": 0.0,
+          "description": "Entry point: p_nbi",
+          "title": "Stellarator 09  Stellaris  P Nbi",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_nonrad_ref": {
+          "default": 50.0,
+          "description": "Entry point: p_nonrad_ref",
+          "title": "Stellarator 09  Stellaris  P Nonrad Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_pf": {
+          "default": 0.0,
+          "description": "Entry point: p_pf",
+          "title": "Stellarator 09  Stellaris  P Pf",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_pfcool": {
+          "default": 0.0,
+          "description": "Entry point: p_pfcool",
+          "title": "Stellarator 09  Stellaris  P Pfcool",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_pump_direct": {
+          "default": 0.0,
+          "description": "Entry point: p_pump_direct",
+          "title": "Stellarator 09  Stellaris  P Pump Direct",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_tf": {
+          "default": 0.0,
+          "description": "Entry point: p_tf",
+          "title": "Stellarator 09  Stellaris  P Tf",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_tfcool": {
+          "default": 15.0,
+          "description": "Entry point: p_tfcool",
+          "title": "Stellarator 09  Stellaris  P Tfcool",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_trit": {
+          "default": 10.0,
+          "description": "Entry point: p_trit",
+          "title": "Stellarator 09  Stellaris  P Trit",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__p_wallplug_heat": {
+          "default": 100.0,
+          "description": "Entry point: p_wallplug_heat",
+          "title": "Stellarator 09  Stellaris  P Wallplug Heat",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__power_supplies__base": {
+          "default": 80000000.0,
+          "description": "Entry point: base",
+          "title": "Stellarator 09  Stellaris  Power Supplies  Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__precon_fixed_base": {
+          "default": 16000000.0,
+          "description": "Entry point: precon_fixed_base",
+          "title": "Stellarator 09  Stellaris  Precon Fixed Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__q_nuc_cryo": {
+          "default": 35.5,
+          "description": "Entry point: q_nuc_cryo",
+          "title": "Stellarator 09  Stellaris  Q Nuc Cryo",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__q_target_limit": {
+          "default": 10.0,
+          "description": "Entry point: q_target_limit",
+          "title": "Stellarator 09  Stellaris  Q Target Limit",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__q_target_ref": {
+          "default": 9.5,
+          "description": "Entry point: q_target_ref",
+          "title": "Stellarator 09  Stellaris  Q Target Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__reflector_t": {
+          "default": 0.2,
+          "description": "Entry point: reflector_t",
+          "title": "Stellarator 09  Stellaris  Reflector T",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__remote_handling_base": {
+          "default": 150000000.0,
+          "description": "Entry point: remote_handling_base",
+          "title": "Stellarator 09  Stellaris  Remote Handling Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__shield__shield_scale": {
+          "default": 1.0,
+          "description": "Entry point: shield_scale",
+          "title": "Stellarator 09  Stellaris  Shield  Shield Scale",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__shield__unit_cost": {
+          "default": 740000.0,
+          "description": "Entry point: unit_cost",
+          "title": "Stellarator 09  Stellaris  Shield  Unit Cost",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__sigma_v": {
+          "default": 0.0,
+          "description": "Entry point: sigma_v",
+          "title": "Stellarator 09  Stellaris  Sigma V",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__structure__unit_cost": {
+          "default": 150000.0,
+          "description": "Entry point: unit_cost",
+          "title": "Stellarator 09  Stellaris  Structure  Unit Cost",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__structure_t": {
+          "default": 0.15,
+          "description": "Entry point: structure_t",
+          "title": "Stellarator 09  Stellaris  Structure T",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__supplementary_decom_base": {
+          "default": 272000000.0,
+          "description": "Entry point: supplementary_decom_base",
+          "title": "Stellarator 09  Stellaris  Supplementary Decom Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__supplementary_spares_frac": {
+          "default": 0.03,
+          "description": "Entry point: supplementary_spares_frac",
+          "title": "Stellarator 09  Stellaris  Supplementary Spares Frac",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__supplementary_startup_base": {
+          "default": 40000000.0,
+          "description": "Entry point: supplementary_startup_base",
+          "title": "Stellarator 09  Stellaris  Supplementary Startup Base",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__t_recycle": {
+          "default": 0.99,
+          "description": "Entry point: t_recycle",
+          "title": "Stellarator 09  Stellaris  T Recycle",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__tau_ratio_ash": {
+          "default": 8.0,
+          "description": "Entry point: tau_ratio_ash",
+          "title": "Stellarator 09  Stellaris  Tau Ratio Ash",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__tbr": {
+          "default": 1.074,
+          "description": "Entry point: tbr",
+          "title": "Stellarator 09  Stellaris  Tbr",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__tbr_floor": {
+          "default": 1.05,
+          "description": "Entry point: tbr_floor",
+          "title": "Stellarator 09  Stellaris  Tbr Floor",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__turbine__cost_per_mw": {
+          "default": 202840.0,
+          "description": "Entry point: cost_per_mw",
+          "title": "Stellarator 09  Stellaris  Turbine  Cost Per Mw",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__unplanned_fraction": {
+          "default": 0.0,
+          "description": "Entry point: unplanned_fraction",
+          "title": "Stellarator 09  Stellaris  Unplanned Fraction",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__vacuum_t": {
+          "default": 0.1,
+          "description": "Entry point: vacuum_t",
+          "title": "Stellarator 09  Stellaris  Vacuum T",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__vessel__unit_cost": {
+          "default": 720000.0,
+          "description": "Entry point: unit_cost",
+          "title": "Stellarator 09  Stellaris  Vessel  Unit Cost",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__vessel_t": {
+          "default": 0.1,
+          "description": "Entry point: vessel_t",
+          "title": "Stellarator 09  Stellaris  Vessel T",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__vol_cold_cryo": {
+          "default": 0.0,
+          "description": "Entry point: vol_cold_cryo",
+          "title": "Stellarator 09  Stellaris  Vol Cold Cryo",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__wall_load_limit": {
+          "default": 4.05,
+          "description": "Entry point: wall_load_limit",
+          "title": "Stellarator 09  Stellaris  Wall Load Limit",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__wall_peak_R_ref": {
+          "default": 12.7,
+          "description": "Entry point: wall_peak_R_ref",
+          "title": "Stellarator 09  Stellaris  Wall Peak R Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__wall_peak_a_ref": {
+          "default": 1.3,
+          "description": "Entry point: wall_peak_a_ref",
+          "title": "Stellarator 09  Stellaris  Wall Peak A Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__wall_peak_calibration_direct": {
+          "default": 0.0,
+          "description": "Entry point: wall_peak_calibration_direct",
+          "title": "Stellarator 09  Stellaris  Wall Peak Calibration Direct",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__wall_peak_kappa_ref": {
+          "default": 1.0,
+          "description": "Entry point: wall_peak_kappa_ref",
+          "title": "Stellarator 09  Stellaris  Wall Peak Kappa Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__wall_peak_p_fus_ref": {
+          "default": 2700.0,
+          "description": "Entry point: wall_peak_p_fus_ref",
+          "title": "Stellarator 09  Stellaris  Wall Peak P Fus Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__wall_peak_q_ref": {
+          "default": 4.05,
+          "description": "Entry point: wall_peak_q_ref",
+          "title": "Stellarator 09  Stellaris  Wall Peak Q Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__wall_peak_standoff_ref": {
+          "default": 0.1,
+          "description": "Entry point: wall_peak_standoff_ref",
+          "title": "Stellarator 09  Stellaris  Wall Peak Standoff Ref",
+          "type": "number"
+        },
+        "stellarator_09__stellaris__waste_base": {
+          "default": 1960000.0,
+          "description": "Entry point: waste_base",
+          "title": "Stellarator 09  Stellaris  Waste Base",
+          "type": "number"
+        }
+      },
+      "title": "StellaratorPlantParams",
+      "type": "object"
+    }
+  }
+}

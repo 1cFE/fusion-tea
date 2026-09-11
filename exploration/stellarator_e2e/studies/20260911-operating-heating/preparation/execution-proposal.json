@@ -24,7 +24,7 @@
           }
         },
         {
-          "label": "installed-98.1592015758536",
+          "label": "installed-equality",
           "point": {
             "stellarator_09__stellaris__R": 12.7,
             "stellarator_09__stellaris__magnet__R0": 12.7,
@@ -189,7 +189,7 @@
       ]
     }
   ],
-  "case_count": 16,
+  "case_count": 15,
   "held": {
     "eta_source_heat": 0.5,
     "eta_couple_heat": 1.0,
