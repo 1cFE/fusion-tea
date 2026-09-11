@@ -334,3 +334,27 @@ The material to review: `work/orchestration/goals/fusion-audit-remediation/{goal
 ### T-009 start — 2026-09-11
 
 T-009 · native `analyze-models` aspect-focused report under `work/analysis/` · expected artifacts: current executable probe, independent numerical comparison and source/domain assessment; no production mutation.
+
+### T-009 return — 2026-09-11
+
+**Outcome:** COMPLETE. Native assessment: `work/analysis/20260911-141041_ife-zero-discount-assessment.md@cc0cd821`, with adjacent probe, complete numerical results and console log at the same commit. The probe uses the stock strict loader and directly executes the sealed calculation and price guard; it is not a pipeline study or candidate promotion.
+
+**Goal reading:** F05's IFE counterexample is confirmed. All three operating scenarios fail at exact zero before price eligibility can be evaluated. Nearby cancellation corrupts cost and energy separately and can be masked by their ratio. Independent finite dated sums establish the existing baseline's zero-rate price as $211.50466825904758/MWh. Fractional-duration acceptance is existing algebraic behavior, not a newly certified timing convention. Source extraction supports the dated streams; fresh equation-image certification is not claimed. The bounded numerical repair remains within this strategy; other F05 families and residual acceptance remain open.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Current sealed execution confirms zero and near-zero defects | Route one Standard IFE numerical repair through fresh native modeling stages; separately verify cost, energy and price because ratio cancellation conceals errors. | execution detail | Parent round agent [AGENT] | T-010 scope and `work/orchestration/ife-zero-discount-repair.md` |
+| Model durations are Real; annual oracle has narrower coverage | Preserve the existing algebraic duration behavior and require explicit numerical evidence without imposing integer-only model policy. | execution detail | Parent round agent [AGENT] | T-010 inherited scope; no supported-scope decision |
+
+### T-010 scope
+
+- **Objective:** Repair the IFE removable zero-discount singularity and nearby numerical cancellation, with independent positive audit.
+- **Why now:** T-009 confirms both exact-zero failure and masked intermediate errors in the current executable under the round strategy.
+- **Scope:** One native Standard model item through spec, design/prototype, plan, implementation and fresh audit; affected IFE model definitions, generated execution copies, numerical tests and direct traceability. Preserve existing financial interpretation, Real-valued duration behavior, ordinary baseline, Meier method and strict net-generation eligibility. No shared MFE mutation, monetary normalization, new domain policy, study metadata/pin promotion, study execution or item close/archive.
+- **Inputs:** `goal.md` and round-2 strategy at `749cf52e`; T-009 report and retained probe at `cc0cd821`; WI-048's current model, native audit and generated-execution contract; current project modeling requirements and registered Hawker source.
+- **Done when:** Native spec/design/plan and positive independent audit establish stable cost, energy and price at zero and both sides nearby, ordinary baseline continuity, preserved non-generation exclusions and an explained executable implementation under the installed toolchain.
+- **Stop when:** Missing seam capability requiring separate repair, source/finance/supported-scope conflict, shared-MFE dependency, owner-reserved gate or declared limit.
+
+### T-010 start — 2026-09-11
+
+T-010 · native Standard IFE zero-discount repair under `work/active/` · expected artifacts: spec, validated design, plan, implementation evidence and fresh independent audit; `work/orchestration/ife-zero-discount-repair.md` records inherited alignment.
