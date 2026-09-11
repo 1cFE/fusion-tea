@@ -8,16 +8,21 @@ from pathlib import Path
 from exploration.stellarator_e2e.studies import study_route
 
 HERE = Path(__file__).resolve().parent
-PROPOSAL = json.loads((HERE / 'preparation/proposal.json').read_text())
+PROPOSAL = json.loads((HERE / 'preparation/execution-proposal.json').read_text())
 CHANNELS = json.loads((HERE / 'preparation/required-channels.json').read_text())
 
 
-def run_arm(arm_id, output_directory):
-    """Run the named prepared arm through the strict stock study lifecycle."""
-    arm = next(a for a in PROPOSAL['arms'] if a['arm_id'] == arm_id)
+def labelled_proposals():
+    """Preserve arm labels and proposal order separately from native case IDs."""
+    return [dict(arm_id=arm['arm_id'], **case)
+            for arm in PROPOSAL['arms'] for case in arm['cases']]
+
+
+def run_all(output_directory):
+    """Execute all arms in one stock store for the single package fingerprint."""
     return study_route.run_points(
-        PROPOSAL['study_id'] + '-' + arm_id,
-        [case['point'] for case in arm['cases']],
+        PROPOSAL['study_id'],
+        [case['point'] for case in labelled_proposals()],
         Path(output_directory),
         required_channels=CHANNELS,
     )
