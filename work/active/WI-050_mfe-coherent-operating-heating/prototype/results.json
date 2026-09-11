@@ -1,0 +1,2400 @@
+{
+  "baseline": {
+    "outputs": {
+      "stellarator_09__stellaris__wp_sizing__wp_side": 0.35999999999999993,
+      "stellarator_09__stellaris__coil_length__c_coil": 25.0,
+      "stellarator_09__stellaris__winding_pack_cost__cost": 5346600000.0,
+      "stellarator_09__stellaris__wall_peak_cal__calibration": 1.3164408570995383,
+      "stellarator_09__stellaris__rb__wall_area": 701.9262650054739,
+      "stellarator_09__stellaris__rb__shield_vol": 517.043900562068,
+      "stellarator_09__stellaris__rb__structure_vol": 204.93740058641953,
+      "stellarator_09__stellaris__rb__r_coil_centre": 3.1500000000000004,
+      "stellarator_09__stellaris__rb__r_coil": 3.0000000000000004,
+      "stellarator_09__stellaris__rb__blanket_vol": 1013.4060451016529,
+      "stellarator_09__stellaris__rb__vessel_vol": 147.90589155472523,
+      "stellarator_09__stellaris__heat__p_wallplug_total": 100.0,
+      "stellarator_09__stellaris__heat__p_delivered": 50.0,
+      "stellarator_09__stellaris__heat__p_coupled": 50.0,
+      "stellarator_09__stellaris__heat__eta_pin_eff": 0.5,
+      "stellarator_09__stellaris__heating_cost__cost": 264145000.0,
+      "stellarator_09__stellaris__field_calc__B_axis": 8.999999999999998,
+      "stellarator_09__stellaris__peak_field_calc__B_peak": 24.899999999999995,
+      "stellarator_09__stellaris__wp_stress__sigma_wp": 650000000.0,
+      "stellarator_09__stellaris__cond_strain__eps_cond": 0.0021666666666666666,
+      "stellarator_09__stellaris__magnet_cost__capital_cost": 6323469946.334224,
+      "stellarator_09__stellaris__geom__A": 9.769230769230768,
+      "stellarator_09__stellaris__geom__V": 425.0000143721807,
+      "stellarator_09__stellaris__sustain__n_bar19": 37.7766145111016,
+      "stellarator_09__stellaris__sustain__n_T0": 1.9256443867349644e+20,
+      "stellarator_09__stellaris__sustain__W_th": 519.9142139884984,
+      "stellarator_09__stellaris__sustain__p_avg": 815551.6806378263,
+      "stellarator_09__stellaris__sustain__p_brems": 91.44723357920653,
+      "stellarator_09__stellaris__sustain__n_He0": 6.043556132650356e+19,
+      "stellarator_09__stellaris__sustain__n_D0": 1.9256443867349644e+20,
+      "stellarator_09__stellaris__sustain__alpha_n_e_eff": 0.595339224411896,
+      "stellarator_09__stellaris__sustain__p_aux_required": 49.07960078792678,
+      "stellarator_09__stellaris__sustain__p_rad": 219.7216452237653,
+      "stellarator_09__stellaris__sustain__p_alpha_heat": 504.49100689822046,
+      "stellarator_09__stellaris__sustain__tau_E": 1.5573336222276932,
+      "stellarator_09__stellaris__sustain__p_sync": 14.262578426977447,
+      "stellarator_09__stellaris__sustain__p_line": 114.01183321758131,
+      "stellarator_09__stellaris__sustain__n_e_volav": 3.171739227978496e+20,
+      "stellarator_09__stellaris__sustain__alpha_He_eff": 4.051846993560424,
+      "stellarator_09__stellaris__sustain__T_e0": 15.400000000000002,
+      "stellarator_09__stellaris__fusion__p_fus": 2652.5632625175904,
+      "stellarator_09__stellaris__fuel__burn_kg_per_fpy": 148.74097510492368,
+      "stellarator_09__stellaris__fuel__inject_rate": 1.8835037171313755e+22,
+      "stellarator_09__stellaris__fuel__burn_rate": 9.417518585656878e+20,
+      "stellarator_09__stellaris__fuel__tbr_margin": -0.1160000000000001,
+      "stellarator_09__stellaris__fuel__tbr_required": 1.1900000000000002,
+      "stellarator_09__stellaris__fuel__loss_rate": 1.7893285312748084e+20,
+      "stellarator_09__stellaris__fuel__exhaust_rate": 1.7893285312748067e+22,
+      "stellarator_09__stellaris__operating_heat__p_wallplug": 98.15920157585356,
+      "stellarator_09__stellaris__operating_heat__p_coupled": 49.07960078792678,
+      "stellarator_09__stellaris__operating_heat__p_delivered": 49.07960078792678,
+      "stellarator_09__stellaris__vacuum__S_eff_required": 78.0137257066115,
+      "stellarator_09__stellaris__vacuum__Q_total": 78.0137257066115,
+      "stellarator_09__stellaris__vacuum__n_molecules": 1.8835037171313755e+22,
+      "stellarator_09__stellaris__beta_calc__beta": 0.025304999208981403,
+      "stellarator_09__stellaris__divheat__q_target_peak_area_scaled": 10.517841546036793,
+      "stellarator_09__stellaris__divheat__p_heat_abs": 553.5706076861472,
+      "stellarator_09__stellaris__divheat__f_rad_edge_in_range": 0.1383201756794708,
+      "stellarator_09__stellaris__divheat__q_target_margin": -0.5178415460367933,
+      "stellarator_09__stellaris__divheat__p_target_nonrad": 55.3570607686147,
+      "stellarator_09__stellaris__divheat__f_rad_edge": 0.8341853143400069,
+      "stellarator_09__stellaris__divheat__p_heat_operating_minus_installed": 0.0,
+      "stellarator_09__stellaris__divheat__p_sep": 333.8489624623819,
+      "stellarator_09__stellaris__divheat__q_target_peak": 10.517841546036793,
+      "stellarator_09__stellaris__wall_load_calc__wall_load": 3.0224258631282654,
+      "stellarator_09__stellaris__stored_energy__W_mag": 111000000000.0,
+      "stellarator_09__stellaris__casing_mass__m_casing": 63000.0,
+      "stellarator_09__stellaris__magnet_structure_cost__cost": 54432000.0,
+      "stellarator_09__stellaris__magnet_capital_rollup__capital_cost": 5401032000.0,
+      "stellarator_09__stellaris__wp_volume__vol_cold_total": 136.55999999999997,
+      "stellarator_09__stellaris__cryo_elec__p_elec": 0.8643515999999999,
+      "stellarator_09__stellaris__source_heat__q_source": 3125.9322770825056,
+      "stellarator_09__stellaris__primary_loop__p_loop_margin": 7699680.103536234,
+      "stellarator_09__stellaris__primary_loop__q_recovered_total": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__p_elec": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__p_pump_total": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__T_out": 773.15,
+      "stellarator_09__stellaris__primary_loop__T_comp_in": 561.9353658449644,
+      "stellarator_09__stellaris__primary_loop__dp_loop": 300319.8964637657,
+      "stellarator_09__stellaris__primary_loop__mdot_loop": 214.98255048571605,
+      "stellarator_09__stellaris__primary_loop__w_fluid": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__capacity_margin": 10.095227292061736,
+      "stellarator_09__stellaris__primary_loop__q_ihx": 3301.2132114869937,
+      "stellarator_09__stellaris__primary_loop__mdot": 3009.7557068000247,
+      "stellarator_09__stellaris__primary_loop__r_comp": 1.039004204385821,
+      "stellarator_09__stellaris__cycle__margin_low": 96.0,
+      "stellarator_09__stellaris__cycle__T2_C": 480.0,
+      "stellarator_09__stellaris__cycle__margin_high": 162.0,
+      "stellarator_09__stellaris__cycle__eta_th": 0.41135655404954075,
+      "stellarator_09__stellaris__cycle__eta_fit": 0.41135655404954075,
+      "stellarator_09__stellaris__cycle__domain_product": 15552.0,
+      "stellarator_09__stellaris__pb__p_the": 1357.9756908601075,
+      "stellarator_09__stellaris__pb__p_et": 1357.9756908601075,
+      "stellarator_09__stellaris__pb__q_eng": 3.9471016638869605,
+      "stellarator_09__stellaris__pb__p_th": 3301.2132114869937,
+      "stellarator_09__stellaris__pb__p_net": 1013.9319325539626,
+      "stellarator_09__stellaris__pb__rec_frac": 0.25335045437244624,
+      "stellarator_09__stellaris__vessel_cost__cost": 120841903.15294513,
+      "stellarator_09__stellaris__blanket_cost__cost": 718414154.606785,
+      "stellarator_09__stellaris__fuel_handling__cost": 121167851.33791968,
+      "stellarator_09__stellaris__owner__cost": 41486005.10526891,
+      "stellarator_09__stellaris__other_rpe__cost": 11627996.196228182,
+      "stellarator_09__stellaris__electric_cost__cost": 117329099.6903133,
+      "stellarator_09__stellaris__heat_rejection_cost__cost": 115740535.19473399,
+      "stellarator_09__stellaris__remote_handling__cost": 166663659.79080695,
+      "stellarator_09__stellaris__coolant__cost": 207627772.78611118,
+      "stellarator_09__stellaris__aux_cooling__aux_cost": 3631334.532635693,
+      "stellarator_09__stellaris__aux_cooling__cryo_cost": 16700459.69057127,
+      "stellarator_09__stellaris__aux_cooling__cost": 20331794.223206963,
+      "stellarator_09__stellaris__buildings_cost__cost": 652383020.902597,
+      "stellarator_09__stellaris__misc_cost__cost": 71415941.58233306,
+      "stellarator_09__stellaris__om_cost__annual_om": 55281108.74464231,
+      "stellarator_09__stellaris__cas71_calc__levelized": 79552063.13280472,
+      "stellarator_09__stellaris__cas71_calc__crf": 0.08058640351111118,
+      "stellarator_09__stellaris__shield_cost__cost": 452063328.57909954,
+      "stellarator_09__stellaris__divertor_cost__cost": 109015446.43468271,
+      "stellarator_09__stellaris__power_supplies_cost__cost": 92712758.81167144,
+      "stellarator_09__stellaris__turbine_cost__cost": 275451789.1340642,
+      "stellarator_09__stellaris__structure_cost__cost": 34155617.209747344,
+      "stellarator_09__stellaris__precon_cost__cost": 18517354.678717773,
+      "stellarator_09__stellaris__waste__cost": 6470377.894514508,
+      "stellarator_09__stellaris__inc_cost__cost": 81829994.18345366,
+      "stellarator_09__stellaris__wall_peak_calc__wall_load_peak": 3.9788448937763854,
+      "stellarator_09__stellaris__powercore_capital__powercore_capital": 7192380208.794931,
+      "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal": 7359043868.585738,
+      "stellarator_09__stellaris__installation__cost": 1030266141.6020035,
+      "stellarator_09__stellaris__cas22_capital__cas22_capital": 8838365796.809175,
+      "stellarator_09__stellaris__bop_capital__bop_capital": 579937365.6014445,
+      "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event": 827429601.0414678,
+      "stellarator_09__stellaris__calendar__availability": 0.9027777777777779,
+      "stellarator_09__stellaris__calendar__coil_life_margin_fpy": -17.083333333333336,
+      "stellarator_09__stellaris__calendar__replacement_pv": 1714768553.0167048,
+      "stellarator_09__stellaris__calendar__planned_downtime_yr": 2.916666666666667,
+      "stellarator_09__stellaris__calendar__terminal_downtime_yr": 0.0,
+      "stellarator_09__stellaris__calendar__unplanned_downtime_yr": 0.0,
+      "stellarator_09__stellaris__calendar__productive_fpy": 27.083333333333336,
+      "stellarator_09__stellaris__calendar__dated_energy_ratio": 1.0051616112988944,
+      "stellarator_09__stellaris__calendar__cas72_annual": 138187030.54156843,
+      "stellarator_09__stellaris__calendar__n_replacements": 5.0,
+      "stellarator_09__stellaris__calendar__physical_life_fpy": 4.5239260339489915,
+      "stellarator_09__stellaris__fuel_calc__annual_fuel": 550716.1814915092,
+      "stellarator_09__stellaris__cas80_calc__levelized": 792505.9651144511,
+      "stellarator_09__stellaris__cas80_calc__crf": 0.08058640351111118,
+      "stellarator_09__stellaris__cas70_calc__cas70": 217739093.67437315,
+      "stellarator_09__stellaris__cas70_calc__annual_total": 218531599.6394876,
+      "stellarator_09__stellaris__special_materials_capital__special_materials_capital": 23815042.059888843,
+      "stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital": 608752407.6613333,
+      "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency": 10099501225.373106,
+      "stellarator_09__stellaris__contingency__cost": 1009950122.5373106,
+      "stellarator_09__stellaris__cas20_capital__cas20_capital": 11109451347.910416,
+      "stellarator_09__stellaris__indirect__cost": 2962520359.4427776,
+      "stellarator_09__stellaris__supplementary__cost": 823425194.4947345,
+      "stellarator_09__stellaris__overnight_capital__overnight_capital": 14955400261.631914,
+      "stellarator_09__stellaris__idc__cost": 4224531491.5086827,
+      "stellarator_09__stellaris__cas90_1cfe_calc__cas90": 1545641719.5741622,
+      "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe": 220.0125640803369,
+      "stellarator_09__stellaris__total_capital__total_capital": 14955400261.631914,
+      "stellarator_09__stellaris__lcoe_calc__lcoe": 224.26923288439
+    },
+    "responses": {
+      "headline": "violated",
+      "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied",
+      "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+      "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "satisfied",
+      "stellarator_09__stellaris__heating_efficiency_ok__e7d023b396814481": "satisfied",
+      "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+      "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+      "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": "violated",
+      "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+      "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+      "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+      "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+      "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+      "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+      "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "satisfied",
+      "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied"
+    },
+    "report": {
+      "catalog_fingerprint": "43b1825bec87ff184d00543bfc065e35b8ec96c0590491ced5c1888cbf46fc7b",
+      "assessed_entry_count": 15,
+      "headline": "violation",
+      "coverage": {
+        "authored_usage_total": 15,
+        "applicable_gate_total": 15,
+        "assessed_gate_count": 15,
+        "unassessed_gate_count": 0,
+        "inapplicable_gate_count": 0,
+        "unassessed_reasons": {},
+        "coverage_state": "complete"
+      },
+      "results": [
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 150000000.0,
+          "observed": {
+            "sigma_in": 650000000.0,
+            "sigma_allow_in": 800000000.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0018333333333333335,
+          "observed": {
+            "eps_cond": 0.0021666666666666666,
+            "eps_cond_allow_in": 0.004
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.24664954562755376,
+          "observed": {
+            "rec_frac": 0.25335045437244624,
+            "threshold": 0.5
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_efficiency_ok__e7d023b396814481",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "eta_source_in": 0.5,
+            "eta_couple_in": 1.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 15552.0,
+          "observed": {
+            "domain_product_in": 15552.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0246950007910186,
+          "observed": {
+            "beta_in": 0.025304999208981403,
+            "beta_limit_in": 0.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "actual_value": false,
+          "status": "violated",
+          "margin": -0.5178415460367933,
+          "observed": {
+            "q_target_peak_in": 10.517841546036793,
+            "q_target_limit_in": 10.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 1013.9319325539626,
+          "observed": {
+            "net_electric": 1013.9319325539626
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 49.07960078792678,
+          "observed": {
+            "p_aux_required_in": 49.07960078792678
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.07115510622361443,
+          "observed": {
+            "wall_load": 3.9788448937763854,
+            "wall_load_limit_in": 4.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.02400000000000002,
+          "observed": {
+            "tbr_in": 1.074,
+            "tbr_floor_in": 1.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 3.552713678800501e-15,
+          "observed": {
+            "B_peak": 24.899999999999995,
+            "B_max_in": 24.9
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.920399212073221,
+          "observed": {
+            "p_aux_required_in": 49.07960078792678,
+            "p_aux_installed_in": 50.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 10.095227292061736,
+          "observed": {
+            "mdot_loop_in": 214.98255048571605,
+            "mdot_loop_rated_in": 225.07777777777778
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 7699680.103536234,
+          "observed": {
+            "p_loop_margin_in": 7699680.103536234
+          }
+        }
+      ]
+    }
+  },
+  "reserve": {
+    "outputs": {
+      "stellarator_09__stellaris__wp_sizing__wp_side": 0.35999999999999993,
+      "stellarator_09__stellaris__coil_length__c_coil": 25.0,
+      "stellarator_09__stellaris__winding_pack_cost__cost": 5346600000.0,
+      "stellarator_09__stellaris__wall_peak_cal__calibration": 1.3164408570995383,
+      "stellarator_09__stellaris__rb__wall_area": 701.9262650054739,
+      "stellarator_09__stellaris__rb__shield_vol": 517.043900562068,
+      "stellarator_09__stellaris__rb__structure_vol": 204.93740058641953,
+      "stellarator_09__stellaris__rb__r_coil_centre": 3.1500000000000004,
+      "stellarator_09__stellaris__rb__r_coil": 3.0000000000000004,
+      "stellarator_09__stellaris__rb__blanket_vol": 1013.4060451016529,
+      "stellarator_09__stellaris__rb__vessel_vol": 147.90589155472523,
+      "stellarator_09__stellaris__heat__p_wallplug_total": 120.0,
+      "stellarator_09__stellaris__heat__p_delivered": 60.0,
+      "stellarator_09__stellaris__heat__p_coupled": 60.0,
+      "stellarator_09__stellaris__heat__eta_pin_eff": 0.5,
+      "stellarator_09__stellaris__heating_cost__cost": 316974000.0,
+      "stellarator_09__stellaris__field_calc__B_axis": 8.999999999999998,
+      "stellarator_09__stellaris__peak_field_calc__B_peak": 24.899999999999995,
+      "stellarator_09__stellaris__wp_stress__sigma_wp": 650000000.0,
+      "stellarator_09__stellaris__cond_strain__eps_cond": 0.0021666666666666666,
+      "stellarator_09__stellaris__magnet_cost__capital_cost": 6323469946.334224,
+      "stellarator_09__stellaris__geom__A": 9.769230769230768,
+      "stellarator_09__stellaris__geom__V": 425.0000143721807,
+      "stellarator_09__stellaris__sustain__n_bar19": 37.7766145111016,
+      "stellarator_09__stellaris__sustain__n_T0": 1.9256443867349644e+20,
+      "stellarator_09__stellaris__sustain__W_th": 519.9142139884984,
+      "stellarator_09__stellaris__sustain__p_avg": 815551.6806378263,
+      "stellarator_09__stellaris__sustain__p_brems": 91.44723357920653,
+      "stellarator_09__stellaris__sustain__n_He0": 6.043556132650356e+19,
+      "stellarator_09__stellaris__sustain__n_D0": 1.9256443867349644e+20,
+      "stellarator_09__stellaris__sustain__alpha_n_e_eff": 0.595339224411896,
+      "stellarator_09__stellaris__sustain__p_aux_required": 49.07960078792678,
+      "stellarator_09__stellaris__sustain__p_rad": 219.7216452237653,
+      "stellarator_09__stellaris__sustain__p_alpha_heat": 504.49100689822046,
+      "stellarator_09__stellaris__sustain__tau_E": 1.5573336222276932,
+      "stellarator_09__stellaris__sustain__p_sync": 14.262578426977447,
+      "stellarator_09__stellaris__sustain__p_line": 114.01183321758131,
+      "stellarator_09__stellaris__sustain__n_e_volav": 3.171739227978496e+20,
+      "stellarator_09__stellaris__sustain__alpha_He_eff": 4.051846993560424,
+      "stellarator_09__stellaris__sustain__T_e0": 15.400000000000002,
+      "stellarator_09__stellaris__fusion__p_fus": 2652.5632625175904,
+      "stellarator_09__stellaris__fuel__burn_kg_per_fpy": 148.74097510492368,
+      "stellarator_09__stellaris__fuel__inject_rate": 1.8835037171313755e+22,
+      "stellarator_09__stellaris__fuel__burn_rate": 9.417518585656878e+20,
+      "stellarator_09__stellaris__fuel__tbr_margin": -0.1160000000000001,
+      "stellarator_09__stellaris__fuel__tbr_required": 1.1900000000000002,
+      "stellarator_09__stellaris__fuel__loss_rate": 1.7893285312748084e+20,
+      "stellarator_09__stellaris__fuel__exhaust_rate": 1.7893285312748067e+22,
+      "stellarator_09__stellaris__operating_heat__p_wallplug": 98.15920157585356,
+      "stellarator_09__stellaris__operating_heat__p_coupled": 49.07960078792678,
+      "stellarator_09__stellaris__operating_heat__p_delivered": 49.07960078792678,
+      "stellarator_09__stellaris__vacuum__S_eff_required": 78.0137257066115,
+      "stellarator_09__stellaris__vacuum__Q_total": 78.0137257066115,
+      "stellarator_09__stellaris__vacuum__n_molecules": 1.8835037171313755e+22,
+      "stellarator_09__stellaris__beta_calc__beta": 0.025304999208981403,
+      "stellarator_09__stellaris__divheat__q_target_peak_area_scaled": 10.517841546036793,
+      "stellarator_09__stellaris__divheat__p_heat_abs": 553.5706076861472,
+      "stellarator_09__stellaris__divheat__f_rad_edge_in_range": 0.1383201756794708,
+      "stellarator_09__stellaris__divheat__q_target_margin": -0.5178415460367933,
+      "stellarator_09__stellaris__divheat__p_target_nonrad": 55.3570607686147,
+      "stellarator_09__stellaris__divheat__f_rad_edge": 0.8341853143400069,
+      "stellarator_09__stellaris__divheat__p_heat_operating_minus_installed": 0.0,
+      "stellarator_09__stellaris__divheat__p_sep": 333.8489624623819,
+      "stellarator_09__stellaris__divheat__q_target_peak": 10.517841546036793,
+      "stellarator_09__stellaris__wall_load_calc__wall_load": 3.0224258631282654,
+      "stellarator_09__stellaris__stored_energy__W_mag": 111000000000.0,
+      "stellarator_09__stellaris__casing_mass__m_casing": 63000.0,
+      "stellarator_09__stellaris__magnet_structure_cost__cost": 54432000.0,
+      "stellarator_09__stellaris__magnet_capital_rollup__capital_cost": 5401032000.0,
+      "stellarator_09__stellaris__wp_volume__vol_cold_total": 136.55999999999997,
+      "stellarator_09__stellaris__cryo_elec__p_elec": 0.8643515999999999,
+      "stellarator_09__stellaris__source_heat__q_source": 3125.9322770825056,
+      "stellarator_09__stellaris__primary_loop__p_loop_margin": 7699680.103536234,
+      "stellarator_09__stellaris__primary_loop__q_recovered_total": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__p_elec": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__p_pump_total": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__T_out": 773.15,
+      "stellarator_09__stellaris__primary_loop__T_comp_in": 561.9353658449644,
+      "stellarator_09__stellaris__primary_loop__dp_loop": 300319.8964637657,
+      "stellarator_09__stellaris__primary_loop__mdot_loop": 214.98255048571605,
+      "stellarator_09__stellaris__primary_loop__w_fluid": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__capacity_margin": 10.095227292061736,
+      "stellarator_09__stellaris__primary_loop__q_ihx": 3301.2132114869937,
+      "stellarator_09__stellaris__primary_loop__mdot": 3009.7557068000247,
+      "stellarator_09__stellaris__primary_loop__r_comp": 1.039004204385821,
+      "stellarator_09__stellaris__cycle__margin_low": 96.0,
+      "stellarator_09__stellaris__cycle__T2_C": 480.0,
+      "stellarator_09__stellaris__cycle__margin_high": 162.0,
+      "stellarator_09__stellaris__cycle__eta_th": 0.41135655404954075,
+      "stellarator_09__stellaris__cycle__eta_fit": 0.41135655404954075,
+      "stellarator_09__stellaris__cycle__domain_product": 15552.0,
+      "stellarator_09__stellaris__pb__p_the": 1357.9756908601075,
+      "stellarator_09__stellaris__pb__p_et": 1357.9756908601075,
+      "stellarator_09__stellaris__pb__q_eng": 3.9471016638869605,
+      "stellarator_09__stellaris__pb__p_th": 3301.2132114869937,
+      "stellarator_09__stellaris__pb__p_net": 1013.9319325539626,
+      "stellarator_09__stellaris__pb__rec_frac": 0.25335045437244624,
+      "stellarator_09__stellaris__vessel_cost__cost": 120841903.15294513,
+      "stellarator_09__stellaris__blanket_cost__cost": 718414154.606785,
+      "stellarator_09__stellaris__fuel_handling__cost": 121167851.33791968,
+      "stellarator_09__stellaris__owner__cost": 41486005.10526891,
+      "stellarator_09__stellaris__other_rpe__cost": 11627996.196228182,
+      "stellarator_09__stellaris__electric_cost__cost": 117329099.6903133,
+      "stellarator_09__stellaris__heat_rejection_cost__cost": 115740535.19473399,
+      "stellarator_09__stellaris__remote_handling__cost": 166663659.79080695,
+      "stellarator_09__stellaris__coolant__cost": 207627772.78611118,
+      "stellarator_09__stellaris__aux_cooling__aux_cost": 3631334.532635693,
+      "stellarator_09__stellaris__aux_cooling__cryo_cost": 16700459.69057127,
+      "stellarator_09__stellaris__aux_cooling__cost": 20331794.223206963,
+      "stellarator_09__stellaris__buildings_cost__cost": 652383020.902597,
+      "stellarator_09__stellaris__misc_cost__cost": 71415941.58233306,
+      "stellarator_09__stellaris__om_cost__annual_om": 55281108.74464231,
+      "stellarator_09__stellaris__cas71_calc__levelized": 79552063.13280472,
+      "stellarator_09__stellaris__cas71_calc__crf": 0.08058640351111118,
+      "stellarator_09__stellaris__shield_cost__cost": 452063328.57909954,
+      "stellarator_09__stellaris__divertor_cost__cost": 109015446.43468271,
+      "stellarator_09__stellaris__power_supplies_cost__cost": 92712758.81167144,
+      "stellarator_09__stellaris__turbine_cost__cost": 275451789.1340642,
+      "stellarator_09__stellaris__structure_cost__cost": 34155617.209747344,
+      "stellarator_09__stellaris__precon_cost__cost": 18517354.678717773,
+      "stellarator_09__stellaris__waste__cost": 6470377.894514508,
+      "stellarator_09__stellaris__inc_cost__cost": 81829994.18345366,
+      "stellarator_09__stellaris__wall_peak_calc__wall_load_peak": 3.9788448937763854,
+      "stellarator_09__stellaris__powercore_capital__powercore_capital": 7245209208.794931,
+      "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal": 7411872868.585738,
+      "stellarator_09__stellaris__installation__cost": 1037662201.6020035,
+      "stellarator_09__stellaris__cas22_capital__cas22_capital": 8898590856.809175,
+      "stellarator_09__stellaris__bop_capital__bop_capital": 579937365.6014445,
+      "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event": 827429601.0414678,
+      "stellarator_09__stellaris__calendar__availability": 0.9027777777777779,
+      "stellarator_09__stellaris__calendar__coil_life_margin_fpy": -17.083333333333336,
+      "stellarator_09__stellaris__calendar__replacement_pv": 1714768553.0167048,
+      "stellarator_09__stellaris__calendar__planned_downtime_yr": 2.916666666666667,
+      "stellarator_09__stellaris__calendar__terminal_downtime_yr": 0.0,
+      "stellarator_09__stellaris__calendar__unplanned_downtime_yr": 0.0,
+      "stellarator_09__stellaris__calendar__productive_fpy": 27.083333333333336,
+      "stellarator_09__stellaris__calendar__dated_energy_ratio": 1.0051616112988944,
+      "stellarator_09__stellaris__calendar__cas72_annual": 138187030.54156843,
+      "stellarator_09__stellaris__calendar__n_replacements": 5.0,
+      "stellarator_09__stellaris__calendar__physical_life_fpy": 4.5239260339489915,
+      "stellarator_09__stellaris__fuel_calc__annual_fuel": 550716.1814915092,
+      "stellarator_09__stellaris__cas80_calc__levelized": 792505.9651144511,
+      "stellarator_09__stellaris__cas80_calc__crf": 0.08058640351111118,
+      "stellarator_09__stellaris__cas70_calc__cas70": 217739093.67437315,
+      "stellarator_09__stellaris__cas70_calc__annual_total": 218531599.6394876,
+      "stellarator_09__stellaris__special_materials_capital__special_materials_capital": 23815042.059888843,
+      "stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital": 608752407.6613333,
+      "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency": 10159726285.373106,
+      "stellarator_09__stellaris__contingency__cost": 1015972628.5373106,
+      "stellarator_09__stellaris__cas20_capital__cas20_capital": 11175698913.910416,
+      "stellarator_09__stellaris__indirect__cost": 2980186377.042777,
+      "stellarator_09__stellaris__supplementary__cost": 826340087.3987346,
+      "stellarator_09__stellaris__overnight_capital__overnight_capital": 15042228738.135916,
+      "stellarator_09__stellaris__idc__cost": 4249058393.2922425,
+      "stellarator_09__stellaris__cas90_1cfe_calc__cas90": 1554615449.021976,
+      "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe": 221.13169064441888,
+      "stellarator_09__stellaris__total_capital__total_capital": 15042228738.135916,
+      "stellarator_09__stellaris__lcoe_calc__lcoe": 225.41307293395366
+    },
+    "responses": {
+      "headline": "violated",
+      "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied",
+      "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+      "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "satisfied",
+      "stellarator_09__stellaris__heating_efficiency_ok__e7d023b396814481": "satisfied",
+      "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+      "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+      "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": "violated",
+      "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+      "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+      "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+      "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+      "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+      "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+      "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "satisfied",
+      "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied"
+    },
+    "report": {
+      "catalog_fingerprint": "43b1825bec87ff184d00543bfc065e35b8ec96c0590491ced5c1888cbf46fc7b",
+      "assessed_entry_count": 15,
+      "headline": "violation",
+      "coverage": {
+        "authored_usage_total": 15,
+        "applicable_gate_total": 15,
+        "assessed_gate_count": 15,
+        "unassessed_gate_count": 0,
+        "inapplicable_gate_count": 0,
+        "unassessed_reasons": {},
+        "coverage_state": "complete"
+      },
+      "results": [
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 150000000.0,
+          "observed": {
+            "sigma_in": 650000000.0,
+            "sigma_allow_in": 800000000.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0018333333333333335,
+          "observed": {
+            "eps_cond": 0.0021666666666666666,
+            "eps_cond_allow_in": 0.004
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.24664954562755376,
+          "observed": {
+            "rec_frac": 0.25335045437244624,
+            "threshold": 0.5
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_efficiency_ok__e7d023b396814481",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "eta_source_in": 0.5,
+            "eta_couple_in": 1.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 15552.0,
+          "observed": {
+            "domain_product_in": 15552.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0246950007910186,
+          "observed": {
+            "beta_in": 0.025304999208981403,
+            "beta_limit_in": 0.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "actual_value": false,
+          "status": "violated",
+          "margin": -0.5178415460367933,
+          "observed": {
+            "q_target_peak_in": 10.517841546036793,
+            "q_target_limit_in": 10.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 1013.9319325539626,
+          "observed": {
+            "net_electric": 1013.9319325539626
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 49.07960078792678,
+          "observed": {
+            "p_aux_required_in": 49.07960078792678
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.07115510622361443,
+          "observed": {
+            "wall_load": 3.9788448937763854,
+            "wall_load_limit_in": 4.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.02400000000000002,
+          "observed": {
+            "tbr_in": 1.074,
+            "tbr_floor_in": 1.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 3.552713678800501e-15,
+          "observed": {
+            "B_peak": 24.899999999999995,
+            "B_max_in": 24.9
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 10.920399212073221,
+          "observed": {
+            "p_aux_required_in": 49.07960078792678,
+            "p_aux_installed_in": 60.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 10.095227292061736,
+          "observed": {
+            "mdot_loop_in": 214.98255048571605,
+            "mdot_loop_rated_in": 225.07777777777778
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 7699680.103536234,
+          "observed": {
+            "p_loop_margin_in": 7699680.103536234
+          }
+        }
+      ]
+    }
+  },
+  "demand": {
+    "outputs": {
+      "stellarator_09__stellaris__wp_sizing__wp_side": 0.35999999999999993,
+      "stellarator_09__stellaris__coil_length__c_coil": 25.0,
+      "stellarator_09__stellaris__winding_pack_cost__cost": 5346600000.0,
+      "stellarator_09__stellaris__wall_peak_cal__calibration": 1.3164408570995383,
+      "stellarator_09__stellaris__rb__wall_area": 701.9262650054739,
+      "stellarator_09__stellaris__rb__shield_vol": 517.043900562068,
+      "stellarator_09__stellaris__rb__structure_vol": 204.93740058641953,
+      "stellarator_09__stellaris__rb__r_coil_centre": 3.1500000000000004,
+      "stellarator_09__stellaris__rb__r_coil": 3.0000000000000004,
+      "stellarator_09__stellaris__rb__blanket_vol": 1013.4060451016529,
+      "stellarator_09__stellaris__rb__vessel_vol": 147.90589155472523,
+      "stellarator_09__stellaris__heat__p_wallplug_total": 100.0,
+      "stellarator_09__stellaris__heat__p_delivered": 50.0,
+      "stellarator_09__stellaris__heat__p_coupled": 50.0,
+      "stellarator_09__stellaris__heat__eta_pin_eff": 0.5,
+      "stellarator_09__stellaris__heating_cost__cost": 264145000.0,
+      "stellarator_09__stellaris__field_calc__B_axis": 8.999999999999998,
+      "stellarator_09__stellaris__peak_field_calc__B_peak": 24.899999999999995,
+      "stellarator_09__stellaris__wp_stress__sigma_wp": 650000000.0,
+      "stellarator_09__stellaris__cond_strain__eps_cond": 0.0021666666666666666,
+      "stellarator_09__stellaris__magnet_cost__capital_cost": 6323469946.334224,
+      "stellarator_09__stellaris__geom__A": 9.769230769230768,
+      "stellarator_09__stellaris__geom__V": 425.0000143721807,
+      "stellarator_09__stellaris__sustain__n_bar19": 37.7766145111016,
+      "stellarator_09__stellaris__sustain__n_T0": 1.9256443867349644e+20,
+      "stellarator_09__stellaris__sustain__W_th": 519.9142139884984,
+      "stellarator_09__stellaris__sustain__p_avg": 815551.6806378263,
+      "stellarator_09__stellaris__sustain__p_brems": 91.44723357920653,
+      "stellarator_09__stellaris__sustain__n_He0": 6.043556132650356e+19,
+      "stellarator_09__stellaris__sustain__n_D0": 1.9256443867349644e+20,
+      "stellarator_09__stellaris__sustain__alpha_n_e_eff": 0.595339224411896,
+      "stellarator_09__stellaris__sustain__p_aux_required": 43.7691691363666,
+      "stellarator_09__stellaris__sustain__p_rad": 219.7216452237653,
+      "stellarator_09__stellaris__sustain__p_alpha_heat": 509.80143854978064,
+      "stellarator_09__stellaris__sustain__tau_E": 1.5573336222276932,
+      "stellarator_09__stellaris__sustain__p_sync": 14.262578426977447,
+      "stellarator_09__stellaris__sustain__p_line": 114.01183321758131,
+      "stellarator_09__stellaris__sustain__n_e_volav": 3.171739227978496e+20,
+      "stellarator_09__stellaris__sustain__alpha_He_eff": 4.051846993560424,
+      "stellarator_09__stellaris__sustain__T_e0": 15.400000000000002,
+      "stellarator_09__stellaris__fusion__p_fus": 2652.5632625175904,
+      "stellarator_09__stellaris__fuel__burn_kg_per_fpy": 148.74097510492368,
+      "stellarator_09__stellaris__fuel__inject_rate": 1.8835037171313755e+22,
+      "stellarator_09__stellaris__fuel__burn_rate": 9.417518585656878e+20,
+      "stellarator_09__stellaris__fuel__tbr_margin": -0.1160000000000001,
+      "stellarator_09__stellaris__fuel__tbr_required": 1.1900000000000002,
+      "stellarator_09__stellaris__fuel__loss_rate": 1.7893285312748084e+20,
+      "stellarator_09__stellaris__fuel__exhaust_rate": 1.7893285312748067e+22,
+      "stellarator_09__stellaris__operating_heat__p_wallplug": 87.5383382727332,
+      "stellarator_09__stellaris__operating_heat__p_coupled": 43.7691691363666,
+      "stellarator_09__stellaris__operating_heat__p_delivered": 43.7691691363666,
+      "stellarator_09__stellaris__vacuum__S_eff_required": 78.0137257066115,
+      "stellarator_09__stellaris__vacuum__Q_total": 78.0137257066115,
+      "stellarator_09__stellaris__vacuum__n_molecules": 1.8835037171313755e+22,
+      "stellarator_09__stellaris__beta_calc__beta": 0.025304999208981403,
+      "stellarator_09__stellaris__divheat__q_target_peak_area_scaled": 10.517841546036793,
+      "stellarator_09__stellaris__divheat__p_heat_abs": 553.5706076861472,
+      "stellarator_09__stellaris__divheat__f_rad_edge_in_range": 0.1383201756794708,
+      "stellarator_09__stellaris__divheat__q_target_margin": -0.5178415460367933,
+      "stellarator_09__stellaris__divheat__p_target_nonrad": 55.3570607686147,
+      "stellarator_09__stellaris__divheat__f_rad_edge": 0.8341853143400069,
+      "stellarator_09__stellaris__divheat__p_heat_operating_minus_installed": 0.0,
+      "stellarator_09__stellaris__divheat__p_sep": 333.8489624623819,
+      "stellarator_09__stellaris__divheat__q_target_peak": 10.517841546036793,
+      "stellarator_09__stellaris__wall_load_calc__wall_load": 3.0224258631282654,
+      "stellarator_09__stellaris__stored_energy__W_mag": 111000000000.0,
+      "stellarator_09__stellaris__casing_mass__m_casing": 63000.0,
+      "stellarator_09__stellaris__magnet_structure_cost__cost": 54432000.0,
+      "stellarator_09__stellaris__magnet_capital_rollup__capital_cost": 5401032000.0,
+      "stellarator_09__stellaris__wp_volume__vol_cold_total": 136.55999999999997,
+      "stellarator_09__stellaris__cryo_elec__p_elec": 0.8643515999999999,
+      "stellarator_09__stellaris__source_heat__q_source": 3120.6218454309455,
+      "stellarator_09__stellaris__primary_loop__p_loop_margin": 7700699.622495963,
+      "stellarator_09__stellaris__primary_loop__q_recovered_total": 174.38493016566096,
+      "stellarator_09__stellaris__primary_loop__p_elec": 174.38493016566096,
+      "stellarator_09__stellaris__primary_loop__p_pump_total": 174.38493016566096,
+      "stellarator_09__stellaris__primary_loop__T_out": 773.15,
+      "stellarator_09__stellaris__primary_loop__T_comp_in": 561.9737063762797,
+      "stellarator_09__stellaris__primary_loop__dp_loop": 299300.37750403717,
+      "stellarator_09__stellaris__primary_loop__mdot_loop": 214.6173313960376,
+      "stellarator_09__stellaris__primary_loop__w_fluid": 174.38493016566096,
+      "stellarator_09__stellaris__primary_loop__capacity_margin": 10.460446381740184,
+      "stellarator_09__stellaris__primary_loop__q_ihx": 3295.0067755966065,
+      "stellarator_09__stellaris__primary_loop__mdot": 3004.6426395445264,
+      "stellarator_09__stellaris__primary_loop__r_comp": 1.0388666474705355,
+      "stellarator_09__stellaris__cycle__margin_low": 96.0,
+      "stellarator_09__stellaris__cycle__T2_C": 480.0,
+      "stellarator_09__stellaris__cycle__margin_high": 162.0,
+      "stellarator_09__stellaris__cycle__eta_th": 0.41135655404954075,
+      "stellarator_09__stellaris__cycle__eta_fit": 0.41135655404954075,
+      "stellarator_09__stellaris__cycle__domain_product": 15552.0,
+      "stellarator_09__stellaris__pb__p_the": 1355.4226327793085,
+      "stellarator_09__stellaris__pb__p_et": 1355.4226327793085,
+      "stellarator_09__stellaris__pb__q_eng": 4.077068472393033,
+      "stellarator_09__stellaris__pb__p_th": 3295.0067755966065,
+      "stellarator_09__stellaris__pb__p_net": 1022.9723337575351,
+      "stellarator_09__stellaris__pb__rec_frac": 0.24527427164181292,
+      "stellarator_09__stellaris__vessel_cost__cost": 120705538.78072089,
+      "stellarator_09__stellaris__blanket_cost__cost": 717603458.2122904,
+      "stellarator_09__stellaris__fuel_handling__cost": 121923091.99242328,
+      "stellarator_09__stellaris__owner__cost": 41670543.0515777,
+      "stellarator_09__stellaris__other_rpe__cost": 11710864.366466265,
+      "stellarator_09__stellaris__electric_cost__cost": 117108515.47213225,
+      "stellarator_09__stellaris__heat_rejection_cost__cost": 115522937.55241702,
+      "stellarator_09__stellaris__remote_handling__cost": 166506918.33165383,
+      "stellarator_09__stellaris__coolant__cost": 209087809.3736544,
+      "stellarator_09__stellaris__aux_cooling__aux_cost": 3624507.4531562673,
+      "stellarator_09__stellaris__aux_cooling__cryo_cost": 16700459.69057127,
+      "stellarator_09__stellaris__aux_cooling__cost": 20324967.143727537,
+      "stellarator_09__stellaris__buildings_cost__cost": 652107145.7972155,
+      "stellarator_09__stellaris__misc_cost__cost": 71281676.25786383,
+      "stellarator_09__stellaris__om_cost__annual_om": 55527010.037175134,
+      "stellarator_09__stellaris__cas71_calc__levelized": 79905926.42520668,
+      "stellarator_09__stellaris__cas71_calc__crf": 0.08058640351111118,
+      "stellarator_09__stellaris__shield_cost__cost": 451553196.49412847,
+      "stellarator_09__stellaris__divertor_cost__cost": 108912921.14413139,
+      "stellarator_09__stellaris__power_supplies_cost__cost": 92590711.3362755,
+      "stellarator_09__stellaris__turbine_cost__cost": 274933926.83295494,
+      "stellarator_09__stellaris__structure_cost__cost": 34123495.022544384,
+      "stellarator_09__stellaris__precon_cost__cost": 18528552.36963457,
+      "stellarator_09__stellaris__waste__cost": 6458213.280169348,
+      "stellarator_09__stellaris__inc_cost__cost": 81729962.50405823,
+      "stellarator_09__stellaris__wall_peak_calc__wall_load_peak": 3.9788448937763854,
+      "stellarator_09__stellaris__powercore_capital__powercore_capital": 7190666320.99009,
+      "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal": 7357173239.321744,
+      "stellarator_09__stellaris__installation__cost": 1030004253.5050442,
+      "stellarator_09__stellaris__cas22_capital__cas22_capital": 8838412401.48729,
+      "stellarator_09__stellaris__bop_capital__bop_capital": 578847056.1153681,
+      "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event": 826516379.3564218,
+      "stellarator_09__stellaris__calendar__availability": 0.9027777777777779,
+      "stellarator_09__stellaris__calendar__coil_life_margin_fpy": -17.083333333333336,
+      "stellarator_09__stellaris__calendar__replacement_pv": 1712875988.59131,
+      "stellarator_09__stellaris__calendar__planned_downtime_yr": 2.916666666666667,
+      "stellarator_09__stellaris__calendar__terminal_downtime_yr": 0.0,
+      "stellarator_09__stellaris__calendar__unplanned_downtime_yr": 0.0,
+      "stellarator_09__stellaris__calendar__productive_fpy": 27.083333333333336,
+      "stellarator_09__stellaris__calendar__dated_energy_ratio": 1.0051616112988944,
+      "stellarator_09__stellaris__calendar__cas72_annual": 138034515.58111277,
+      "stellarator_09__stellaris__calendar__n_replacements": 5.0,
+      "stellarator_09__stellaris__calendar__physical_life_fpy": 4.5239260339489915,
+      "stellarator_09__stellaris__fuel_calc__annual_fuel": 550716.1814915092,
+      "stellarator_09__stellaris__cas80_calc__levelized": 792505.9651144511,
+      "stellarator_09__stellaris__cas80_calc__crf": 0.08058640351111118,
+      "stellarator_09__stellaris__cas70_calc__cas70": 217940442.00631946,
+      "stellarator_09__stellaris__cas70_calc__annual_total": 218732947.9714339,
+      "stellarator_09__stellaris__special_materials_capital__special_materials_capital": 23815042.059888843,
+      "stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital": 607662098.175257,
+      "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency": 10098181645.45976,
+      "stellarator_09__stellaris__contingency__cost": 1009818164.5459762,
+      "stellarator_09__stellaris__cas20_capital__cas20_capital": 11107999810.005737,
+      "stellarator_09__stellaris__indirect__cost": 2962133282.6681967,
+      "stellarator_09__stellaris__supplementary__cost": 826149222.717861,
+      "stellarator_09__stellaris__overnight_capital__overnight_capital": 14956481410.813007,
+      "stellarator_09__stellaris__idc__cost": 4224836889.4707994,
+      "stellarator_09__stellaris__cas90_1cfe_calc__cas90": 1545753456.421732,
+      "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe": 218.10692840453243,
+      "stellarator_09__stellaris__total_capital__total_capital": 14956481410.813007,
+      "stellarator_09__stellaris__lcoe_calc__lcoe": 222.32628438579454
+    },
+    "responses": {
+      "headline": "violated",
+      "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied",
+      "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+      "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "satisfied",
+      "stellarator_09__stellaris__heating_efficiency_ok__e7d023b396814481": "satisfied",
+      "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+      "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+      "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": "violated",
+      "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+      "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+      "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+      "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+      "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+      "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+      "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "satisfied",
+      "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied"
+    },
+    "report": {
+      "catalog_fingerprint": "43b1825bec87ff184d00543bfc065e35b8ec96c0590491ced5c1888cbf46fc7b",
+      "assessed_entry_count": 15,
+      "headline": "violation",
+      "coverage": {
+        "authored_usage_total": 15,
+        "applicable_gate_total": 15,
+        "assessed_gate_count": 15,
+        "unassessed_gate_count": 0,
+        "inapplicable_gate_count": 0,
+        "unassessed_reasons": {},
+        "coverage_state": "complete"
+      },
+      "results": [
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 150000000.0,
+          "observed": {
+            "sigma_in": 650000000.0,
+            "sigma_allow_in": 800000000.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0018333333333333335,
+          "observed": {
+            "eps_cond": 0.0021666666666666666,
+            "eps_cond_allow_in": 0.004
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.2547257283581871,
+          "observed": {
+            "rec_frac": 0.24527427164181292,
+            "threshold": 0.5
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_efficiency_ok__e7d023b396814481",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "eta_source_in": 0.5,
+            "eta_couple_in": 1.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 15552.0,
+          "observed": {
+            "domain_product_in": 15552.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0246950007910186,
+          "observed": {
+            "beta_in": 0.025304999208981403,
+            "beta_limit_in": 0.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "actual_value": false,
+          "status": "violated",
+          "margin": -0.5178415460367933,
+          "observed": {
+            "q_target_peak_in": 10.517841546036793,
+            "q_target_limit_in": 10.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 1022.9723337575351,
+          "observed": {
+            "net_electric": 1022.9723337575351
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 43.7691691363666,
+          "observed": {
+            "p_aux_required_in": 43.7691691363666
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.07115510622361443,
+          "observed": {
+            "wall_load": 3.9788448937763854,
+            "wall_load_limit_in": 4.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.02400000000000002,
+          "observed": {
+            "tbr_in": 1.074,
+            "tbr_floor_in": 1.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 3.552713678800501e-15,
+          "observed": {
+            "B_peak": 24.899999999999995,
+            "B_max_in": 24.9
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 6.2308308636334,
+          "observed": {
+            "p_aux_required_in": 43.7691691363666,
+            "p_aux_installed_in": 50.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 10.460446381740184,
+          "observed": {
+            "mdot_loop_in": 214.6173313960376,
+            "mdot_loop_rated_in": 225.07777777777778
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 7700699.622495963,
+          "observed": {
+            "p_loop_margin_in": 7700699.622495963
+          }
+        }
+      ]
+    }
+  },
+  "efficiency": {
+    "outputs": {
+      "stellarator_09__stellaris__wp_sizing__wp_side": 0.35999999999999993,
+      "stellarator_09__stellaris__coil_length__c_coil": 25.0,
+      "stellarator_09__stellaris__winding_pack_cost__cost": 5346600000.0,
+      "stellarator_09__stellaris__wall_peak_cal__calibration": 1.3164408570995383,
+      "stellarator_09__stellaris__rb__wall_area": 701.9262650054739,
+      "stellarator_09__stellaris__rb__shield_vol": 517.043900562068,
+      "stellarator_09__stellaris__rb__structure_vol": 204.93740058641953,
+      "stellarator_09__stellaris__rb__r_coil_centre": 3.1500000000000004,
+      "stellarator_09__stellaris__rb__r_coil": 3.0000000000000004,
+      "stellarator_09__stellaris__rb__blanket_vol": 1013.4060451016529,
+      "stellarator_09__stellaris__rb__vessel_vol": 147.90589155472523,
+      "stellarator_09__stellaris__heat__p_wallplug_total": 100.0,
+      "stellarator_09__stellaris__heat__p_delivered": 50.0,
+      "stellarator_09__stellaris__heat__p_coupled": 40.0,
+      "stellarator_09__stellaris__heat__eta_pin_eff": 0.4,
+      "stellarator_09__stellaris__heating_cost__cost": 264145000.0,
+      "stellarator_09__stellaris__field_calc__B_axis": 8.999999999999998,
+      "stellarator_09__stellaris__peak_field_calc__B_peak": 24.899999999999995,
+      "stellarator_09__stellaris__wp_stress__sigma_wp": 650000000.0,
+      "stellarator_09__stellaris__cond_strain__eps_cond": 0.0021666666666666666,
+      "stellarator_09__stellaris__magnet_cost__capital_cost": 6323469946.334224,
+      "stellarator_09__stellaris__geom__A": 9.769230769230768,
+      "stellarator_09__stellaris__geom__V": 425.0000143721807,
+      "stellarator_09__stellaris__sustain__n_bar19": 37.7766145111016,
+      "stellarator_09__stellaris__sustain__n_T0": 1.9256443867349644e+20,
+      "stellarator_09__stellaris__sustain__W_th": 519.9142139884984,
+      "stellarator_09__stellaris__sustain__p_avg": 815551.6806378263,
+      "stellarator_09__stellaris__sustain__p_brems": 91.44723357920653,
+      "stellarator_09__stellaris__sustain__n_He0": 6.043556132650356e+19,
+      "stellarator_09__stellaris__sustain__n_D0": 1.9256443867349644e+20,
+      "stellarator_09__stellaris__sustain__alpha_n_e_eff": 0.595339224411896,
+      "stellarator_09__stellaris__sustain__p_aux_required": 49.07960078792678,
+      "stellarator_09__stellaris__sustain__p_rad": 219.7216452237653,
+      "stellarator_09__stellaris__sustain__p_alpha_heat": 504.49100689822046,
+      "stellarator_09__stellaris__sustain__tau_E": 1.5573336222276932,
+      "stellarator_09__stellaris__sustain__p_sync": 14.262578426977447,
+      "stellarator_09__stellaris__sustain__p_line": 114.01183321758131,
+      "stellarator_09__stellaris__sustain__n_e_volav": 3.171739227978496e+20,
+      "stellarator_09__stellaris__sustain__alpha_He_eff": 4.051846993560424,
+      "stellarator_09__stellaris__sustain__T_e0": 15.400000000000002,
+      "stellarator_09__stellaris__fusion__p_fus": 2652.5632625175904,
+      "stellarator_09__stellaris__fuel__burn_kg_per_fpy": 148.74097510492368,
+      "stellarator_09__stellaris__fuel__inject_rate": 1.8835037171313755e+22,
+      "stellarator_09__stellaris__fuel__burn_rate": 9.417518585656878e+20,
+      "stellarator_09__stellaris__fuel__tbr_margin": -0.1160000000000001,
+      "stellarator_09__stellaris__fuel__tbr_required": 1.1900000000000002,
+      "stellarator_09__stellaris__fuel__loss_rate": 1.7893285312748084e+20,
+      "stellarator_09__stellaris__fuel__exhaust_rate": 1.7893285312748067e+22,
+      "stellarator_09__stellaris__operating_heat__p_wallplug": 122.69900196981695,
+      "stellarator_09__stellaris__operating_heat__p_coupled": 49.07960078792678,
+      "stellarator_09__stellaris__operating_heat__p_delivered": 61.349500984908474,
+      "stellarator_09__stellaris__vacuum__S_eff_required": 78.0137257066115,
+      "stellarator_09__stellaris__vacuum__Q_total": 78.0137257066115,
+      "stellarator_09__stellaris__vacuum__n_molecules": 1.8835037171313755e+22,
+      "stellarator_09__stellaris__beta_calc__beta": 0.025304999208981403,
+      "stellarator_09__stellaris__divheat__q_target_peak_area_scaled": 10.517841546036793,
+      "stellarator_09__stellaris__divheat__p_heat_abs": 553.5706076861472,
+      "stellarator_09__stellaris__divheat__f_rad_edge_in_range": 0.1383201756794708,
+      "stellarator_09__stellaris__divheat__q_target_margin": -0.5178415460367933,
+      "stellarator_09__stellaris__divheat__p_target_nonrad": 55.3570607686147,
+      "stellarator_09__stellaris__divheat__f_rad_edge": 0.8341853143400069,
+      "stellarator_09__stellaris__divheat__p_heat_operating_minus_installed": 0.0,
+      "stellarator_09__stellaris__divheat__p_sep": 333.8489624623819,
+      "stellarator_09__stellaris__divheat__q_target_peak": 10.517841546036793,
+      "stellarator_09__stellaris__wall_load_calc__wall_load": 3.0224258631282654,
+      "stellarator_09__stellaris__stored_energy__W_mag": 111000000000.0,
+      "stellarator_09__stellaris__casing_mass__m_casing": 63000.0,
+      "stellarator_09__stellaris__magnet_structure_cost__cost": 54432000.0,
+      "stellarator_09__stellaris__magnet_capital_rollup__capital_cost": 5401032000.0,
+      "stellarator_09__stellaris__wp_volume__vol_cold_total": 136.55999999999997,
+      "stellarator_09__stellaris__cryo_elec__p_elec": 0.8643515999999999,
+      "stellarator_09__stellaris__source_heat__q_source": 3125.9322770825056,
+      "stellarator_09__stellaris__primary_loop__p_loop_margin": 7699680.103536234,
+      "stellarator_09__stellaris__primary_loop__q_recovered_total": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__p_elec": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__p_pump_total": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__T_out": 773.15,
+      "stellarator_09__stellaris__primary_loop__T_comp_in": 561.9353658449644,
+      "stellarator_09__stellaris__primary_loop__dp_loop": 300319.8964637657,
+      "stellarator_09__stellaris__primary_loop__mdot_loop": 214.98255048571605,
+      "stellarator_09__stellaris__primary_loop__w_fluid": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__capacity_margin": 10.095227292061736,
+      "stellarator_09__stellaris__primary_loop__q_ihx": 3301.2132114869937,
+      "stellarator_09__stellaris__primary_loop__mdot": 3009.7557068000247,
+      "stellarator_09__stellaris__primary_loop__r_comp": 1.039004204385821,
+      "stellarator_09__stellaris__cycle__margin_low": 96.0,
+      "stellarator_09__stellaris__cycle__T2_C": 480.0,
+      "stellarator_09__stellaris__cycle__margin_high": 162.0,
+      "stellarator_09__stellaris__cycle__eta_th": 0.41135655404954075,
+      "stellarator_09__stellaris__cycle__eta_fit": 0.41135655404954075,
+      "stellarator_09__stellaris__cycle__domain_product": 15552.0,
+      "stellarator_09__stellaris__pb__p_the": 1357.9756908601075,
+      "stellarator_09__stellaris__pb__p_et": 1357.9756908601075,
+      "stellarator_09__stellaris__pb__q_eng": 3.6843089139659684,
+      "stellarator_09__stellaris__pb__p_th": 3301.2132114869937,
+      "stellarator_09__stellaris__pb__p_net": 989.3921321599993,
+      "stellarator_09__stellaris__pb__rec_frac": 0.271421323062607,
+      "stellarator_09__stellaris__vessel_cost__cost": 120841903.15294513,
+      "stellarator_09__stellaris__blanket_cost__cost": 718414154.606785,
+      "stellarator_09__stellaris__fuel_handling__cost": 119107514.70553029,
+      "stellarator_09__stellaris__owner__cost": 40980895.314935096,
+      "stellarator_09__stellaris__other_rpe__cost": 11402303.649309732,
+      "stellarator_09__stellaris__electric_cost__cost": 117329099.6903133,
+      "stellarator_09__stellaris__heat_rejection_cost__cost": 115740535.19473399,
+      "stellarator_09__stellaris__remote_handling__cost": 166663659.79080695,
+      "stellarator_09__stellaris__coolant__cost": 203554165.92071328,
+      "stellarator_09__stellaris__aux_cooling__aux_cost": 3631334.532635693,
+      "stellarator_09__stellaris__aux_cooling__cryo_cost": 16700459.69057127,
+      "stellarator_09__stellaris__aux_cooling__cost": 20331794.223206963,
+      "stellarator_09__stellaris__buildings_cost__cost": 652383020.902597,
+      "stellarator_09__stellaris__misc_cost__cost": 71415941.58233306,
+      "stellarator_09__stellaris__om_cost__annual_om": 54608037.68907613,
+      "stellarator_09__stellaris__cas71_calc__levelized": 78583482.86512959,
+      "stellarator_09__stellaris__cas71_calc__crf": 0.08058640351111118,
+      "stellarator_09__stellaris__shield_cost__cost": 452063328.57909954,
+      "stellarator_09__stellaris__divertor_cost__cost": 109015446.43468271,
+      "stellarator_09__stellaris__power_supplies_cost__cost": 92712758.81167144,
+      "stellarator_09__stellaris__turbine_cost__cost": 275451789.1340642,
+      "stellarator_09__stellaris__structure_cost__cost": 34155617.209747344,
+      "stellarator_09__stellaris__precon_cost__cost": 18486704.81279946,
+      "stellarator_09__stellaris__waste__cost": 6470377.894514508,
+      "stellarator_09__stellaris__inc_cost__cost": 81829994.18345366,
+      "stellarator_09__stellaris__wall_peak_calc__wall_load_peak": 3.9788448937763854,
+      "stellarator_09__stellaris__powercore_capital__powercore_capital": 7192380208.794931,
+      "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal": 7359043868.585738,
+      "stellarator_09__stellaris__installation__cost": 1030266141.6020035,
+      "stellarator_09__stellaris__cas22_capital__cas22_capital": 8832006160.76447,
+      "stellarator_09__stellaris__bop_capital__bop_capital": 579937365.6014445,
+      "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event": 827429601.0414678,
+      "stellarator_09__stellaris__calendar__availability": 0.9027777777777779,
+      "stellarator_09__stellaris__calendar__coil_life_margin_fpy": -17.083333333333336,
+      "stellarator_09__stellaris__calendar__replacement_pv": 1714768553.0167048,
+      "stellarator_09__stellaris__calendar__planned_downtime_yr": 2.916666666666667,
+      "stellarator_09__stellaris__calendar__terminal_downtime_yr": 0.0,
+      "stellarator_09__stellaris__calendar__unplanned_downtime_yr": 0.0,
+      "stellarator_09__stellaris__calendar__productive_fpy": 27.083333333333336,
+      "stellarator_09__stellaris__calendar__dated_energy_ratio": 1.0051616112988944,
+      "stellarator_09__stellaris__calendar__cas72_annual": 138187030.54156843,
+      "stellarator_09__stellaris__calendar__n_replacements": 5.0,
+      "stellarator_09__stellaris__calendar__physical_life_fpy": 4.5239260339489915,
+      "stellarator_09__stellaris__fuel_calc__annual_fuel": 550716.1814915092,
+      "stellarator_09__stellaris__cas80_calc__levelized": 792505.9651144511,
+      "stellarator_09__stellaris__cas80_calc__crf": 0.08058640351111118,
+      "stellarator_09__stellaris__cas70_calc__cas70": 216770513.40669802,
+      "stellarator_09__stellaris__cas70_calc__annual_total": 217563019.37181246,
+      "stellarator_09__stellaris__special_materials_capital__special_materials_capital": 23815042.059888843,
+      "stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital": 608752407.6613333,
+      "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency": 10093141589.3284,
+      "stellarator_09__stellaris__contingency__cost": 1009314158.93284,
+      "stellarator_09__stellaris__cas20_capital__cas20_capital": 11102455748.26124,
+      "stellarator_09__stellaris__indirect__cost": 2960654866.202997,
+      "stellarator_09__stellaris__supplementary__cost": 815460970.3872542,
+      "stellarator_09__stellaris__overnight_capital__overnight_capital": 14938039184.979227,
+      "stellarator_09__stellaris__idc__cost": 4219627415.8060794,
+      "stellarator_09__stellaris__cas90_1cfe_calc__cas90": 1543847451.0222223,
+      "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe": 225.11641023618174,
+      "stellarator_09__stellaris__total_capital__total_capital": 14938039184.979227,
+      "stellarator_09__stellaris__lcoe_calc__lcoe": 229.4735928547649
+    },
+    "responses": {
+      "headline": "violated",
+      "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied",
+      "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+      "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "satisfied",
+      "stellarator_09__stellaris__heating_efficiency_ok__e7d023b396814481": "satisfied",
+      "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+      "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+      "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": "violated",
+      "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+      "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+      "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+      "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+      "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+      "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "violated",
+      "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "satisfied",
+      "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied"
+    },
+    "report": {
+      "catalog_fingerprint": "43b1825bec87ff184d00543bfc065e35b8ec96c0590491ced5c1888cbf46fc7b",
+      "assessed_entry_count": 15,
+      "headline": "violation",
+      "coverage": {
+        "authored_usage_total": 15,
+        "applicable_gate_total": 15,
+        "assessed_gate_count": 15,
+        "unassessed_gate_count": 0,
+        "inapplicable_gate_count": 0,
+        "unassessed_reasons": {},
+        "coverage_state": "complete"
+      },
+      "results": [
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 150000000.0,
+          "observed": {
+            "sigma_in": 650000000.0,
+            "sigma_allow_in": 800000000.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0018333333333333335,
+          "observed": {
+            "eps_cond": 0.0021666666666666666,
+            "eps_cond_allow_in": 0.004
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.22857867693739298,
+          "observed": {
+            "rec_frac": 0.271421323062607,
+            "threshold": 0.5
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_efficiency_ok__e7d023b396814481",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "eta_source_in": 0.5,
+            "eta_couple_in": 0.8
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 15552.0,
+          "observed": {
+            "domain_product_in": 15552.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0246950007910186,
+          "observed": {
+            "beta_in": 0.025304999208981403,
+            "beta_limit_in": 0.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "actual_value": false,
+          "status": "violated",
+          "margin": -0.5178415460367933,
+          "observed": {
+            "q_target_peak_in": 10.517841546036793,
+            "q_target_limit_in": 10.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 989.3921321599993,
+          "observed": {
+            "net_electric": 989.3921321599993
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 49.07960078792678,
+          "observed": {
+            "p_aux_required_in": 49.07960078792678
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.07115510622361443,
+          "observed": {
+            "wall_load": 3.9788448937763854,
+            "wall_load_limit_in": 4.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.02400000000000002,
+          "observed": {
+            "tbr_in": 1.074,
+            "tbr_floor_in": 1.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 3.552713678800501e-15,
+          "observed": {
+            "B_peak": 24.899999999999995,
+            "B_max_in": 24.9
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "actual_value": false,
+          "status": "violated",
+          "margin": -9.079600787926779,
+          "observed": {
+            "p_aux_required_in": 49.07960078792678,
+            "p_aux_installed_in": 40.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 10.095227292061736,
+          "observed": {
+            "mdot_loop_in": 214.98255048571605,
+            "mdot_loop_rated_in": 225.07777777777778
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 7699680.103536234,
+          "observed": {
+            "p_loop_margin_in": 7699680.103536234
+          }
+        }
+      ]
+    }
+  },
+  "availability": {
+    "outputs": {
+      "stellarator_09__stellaris__wp_sizing__wp_side": 0.35999999999999993,
+      "stellarator_09__stellaris__coil_length__c_coil": 25.0,
+      "stellarator_09__stellaris__winding_pack_cost__cost": 5346600000.0,
+      "stellarator_09__stellaris__wall_peak_cal__calibration": 1.3164408570995383,
+      "stellarator_09__stellaris__rb__wall_area": 701.9262650054739,
+      "stellarator_09__stellaris__rb__shield_vol": 517.043900562068,
+      "stellarator_09__stellaris__rb__structure_vol": 204.93740058641953,
+      "stellarator_09__stellaris__rb__r_coil_centre": 3.1500000000000004,
+      "stellarator_09__stellaris__rb__r_coil": 3.0000000000000004,
+      "stellarator_09__stellaris__rb__blanket_vol": 1013.4060451016529,
+      "stellarator_09__stellaris__rb__vessel_vol": 147.90589155472523,
+      "stellarator_09__stellaris__heat__p_wallplug_total": 100.0,
+      "stellarator_09__stellaris__heat__p_delivered": 50.0,
+      "stellarator_09__stellaris__heat__p_coupled": 50.0,
+      "stellarator_09__stellaris__heat__eta_pin_eff": 0.5,
+      "stellarator_09__stellaris__heating_cost__cost": 264145000.0,
+      "stellarator_09__stellaris__field_calc__B_axis": 8.999999999999998,
+      "stellarator_09__stellaris__peak_field_calc__B_peak": 24.899999999999995,
+      "stellarator_09__stellaris__wp_stress__sigma_wp": 650000000.0,
+      "stellarator_09__stellaris__cond_strain__eps_cond": 0.0021666666666666666,
+      "stellarator_09__stellaris__magnet_cost__capital_cost": 6323469946.334224,
+      "stellarator_09__stellaris__geom__A": 9.769230769230768,
+      "stellarator_09__stellaris__geom__V": 425.0000143721807,
+      "stellarator_09__stellaris__sustain__n_bar19": 37.7766145111016,
+      "stellarator_09__stellaris__sustain__n_T0": 1.9256443867349644e+20,
+      "stellarator_09__stellaris__sustain__W_th": 519.9142139884984,
+      "stellarator_09__stellaris__sustain__p_avg": 815551.6806378263,
+      "stellarator_09__stellaris__sustain__p_brems": 91.44723357920653,
+      "stellarator_09__stellaris__sustain__n_He0": 6.043556132650356e+19,
+      "stellarator_09__stellaris__sustain__n_D0": 1.9256443867349644e+20,
+      "stellarator_09__stellaris__sustain__alpha_n_e_eff": 0.595339224411896,
+      "stellarator_09__stellaris__sustain__p_aux_required": 49.07960078792678,
+      "stellarator_09__stellaris__sustain__p_rad": 219.7216452237653,
+      "stellarator_09__stellaris__sustain__p_alpha_heat": 504.49100689822046,
+      "stellarator_09__stellaris__sustain__tau_E": 1.5573336222276932,
+      "stellarator_09__stellaris__sustain__p_sync": 14.262578426977447,
+      "stellarator_09__stellaris__sustain__p_line": 114.01183321758131,
+      "stellarator_09__stellaris__sustain__n_e_volav": 3.171739227978496e+20,
+      "stellarator_09__stellaris__sustain__alpha_He_eff": 4.051846993560424,
+      "stellarator_09__stellaris__sustain__T_e0": 15.400000000000002,
+      "stellarator_09__stellaris__fusion__p_fus": 2652.5632625175904,
+      "stellarator_09__stellaris__fuel__burn_kg_per_fpy": 148.74097510492368,
+      "stellarator_09__stellaris__fuel__inject_rate": 1.8835037171313755e+22,
+      "stellarator_09__stellaris__fuel__burn_rate": 9.417518585656878e+20,
+      "stellarator_09__stellaris__fuel__tbr_margin": -0.1160000000000001,
+      "stellarator_09__stellaris__fuel__tbr_required": 1.1900000000000002,
+      "stellarator_09__stellaris__fuel__loss_rate": 1.7893285312748084e+20,
+      "stellarator_09__stellaris__fuel__exhaust_rate": 1.7893285312748067e+22,
+      "stellarator_09__stellaris__operating_heat__p_wallplug": 98.15920157585356,
+      "stellarator_09__stellaris__operating_heat__p_coupled": 49.07960078792678,
+      "stellarator_09__stellaris__operating_heat__p_delivered": 49.07960078792678,
+      "stellarator_09__stellaris__vacuum__S_eff_required": 78.0137257066115,
+      "stellarator_09__stellaris__vacuum__Q_total": 78.0137257066115,
+      "stellarator_09__stellaris__vacuum__n_molecules": 1.8835037171313755e+22,
+      "stellarator_09__stellaris__beta_calc__beta": 0.025304999208981403,
+      "stellarator_09__stellaris__divheat__q_target_peak_area_scaled": 10.517841546036793,
+      "stellarator_09__stellaris__divheat__p_heat_abs": 553.5706076861472,
+      "stellarator_09__stellaris__divheat__f_rad_edge_in_range": 0.1383201756794708,
+      "stellarator_09__stellaris__divheat__q_target_margin": -0.5178415460367933,
+      "stellarator_09__stellaris__divheat__p_target_nonrad": 55.3570607686147,
+      "stellarator_09__stellaris__divheat__f_rad_edge": 0.8341853143400069,
+      "stellarator_09__stellaris__divheat__p_heat_operating_minus_installed": 0.0,
+      "stellarator_09__stellaris__divheat__p_sep": 333.8489624623819,
+      "stellarator_09__stellaris__divheat__q_target_peak": 10.517841546036793,
+      "stellarator_09__stellaris__wall_load_calc__wall_load": 3.0224258631282654,
+      "stellarator_09__stellaris__stored_energy__W_mag": 111000000000.0,
+      "stellarator_09__stellaris__casing_mass__m_casing": 63000.0,
+      "stellarator_09__stellaris__magnet_structure_cost__cost": 54432000.0,
+      "stellarator_09__stellaris__magnet_capital_rollup__capital_cost": 5401032000.0,
+      "stellarator_09__stellaris__wp_volume__vol_cold_total": 136.55999999999997,
+      "stellarator_09__stellaris__cryo_elec__p_elec": 0.8643515999999999,
+      "stellarator_09__stellaris__source_heat__q_source": 3125.9322770825056,
+      "stellarator_09__stellaris__primary_loop__p_loop_margin": 7699680.103536234,
+      "stellarator_09__stellaris__primary_loop__q_recovered_total": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__p_elec": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__p_pump_total": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__T_out": 773.15,
+      "stellarator_09__stellaris__primary_loop__T_comp_in": 561.9353658449644,
+      "stellarator_09__stellaris__primary_loop__dp_loop": 300319.8964637657,
+      "stellarator_09__stellaris__primary_loop__mdot_loop": 214.98255048571605,
+      "stellarator_09__stellaris__primary_loop__w_fluid": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__capacity_margin": 10.095227292061736,
+      "stellarator_09__stellaris__primary_loop__q_ihx": 3301.2132114869937,
+      "stellarator_09__stellaris__primary_loop__mdot": 3009.7557068000247,
+      "stellarator_09__stellaris__primary_loop__r_comp": 1.039004204385821,
+      "stellarator_09__stellaris__cycle__margin_low": 96.0,
+      "stellarator_09__stellaris__cycle__T2_C": 480.0,
+      "stellarator_09__stellaris__cycle__margin_high": 162.0,
+      "stellarator_09__stellaris__cycle__eta_th": 0.41135655404954075,
+      "stellarator_09__stellaris__cycle__eta_fit": 0.41135655404954075,
+      "stellarator_09__stellaris__cycle__domain_product": 15552.0,
+      "stellarator_09__stellaris__pb__p_the": 1357.9756908601075,
+      "stellarator_09__stellaris__pb__p_et": 1357.9756908601075,
+      "stellarator_09__stellaris__pb__q_eng": 3.9471016638869605,
+      "stellarator_09__stellaris__pb__p_th": 3301.2132114869937,
+      "stellarator_09__stellaris__pb__p_net": 1013.9319325539626,
+      "stellarator_09__stellaris__pb__rec_frac": 0.25335045437244624,
+      "stellarator_09__stellaris__vessel_cost__cost": 120841903.15294513,
+      "stellarator_09__stellaris__blanket_cost__cost": 718414154.606785,
+      "stellarator_09__stellaris__fuel_handling__cost": 121167851.33791968,
+      "stellarator_09__stellaris__owner__cost": 41486005.10526891,
+      "stellarator_09__stellaris__other_rpe__cost": 11627996.196228182,
+      "stellarator_09__stellaris__electric_cost__cost": 117329099.6903133,
+      "stellarator_09__stellaris__heat_rejection_cost__cost": 115740535.19473399,
+      "stellarator_09__stellaris__remote_handling__cost": 166663659.79080695,
+      "stellarator_09__stellaris__coolant__cost": 207627772.78611118,
+      "stellarator_09__stellaris__aux_cooling__aux_cost": 3631334.532635693,
+      "stellarator_09__stellaris__aux_cooling__cryo_cost": 16700459.69057127,
+      "stellarator_09__stellaris__aux_cooling__cost": 20331794.223206963,
+      "stellarator_09__stellaris__buildings_cost__cost": 652383020.902597,
+      "stellarator_09__stellaris__misc_cost__cost": 71415941.58233306,
+      "stellarator_09__stellaris__om_cost__annual_om": 55281108.74464231,
+      "stellarator_09__stellaris__cas71_calc__levelized": 79552063.13280472,
+      "stellarator_09__stellaris__cas71_calc__crf": 0.08058640351111118,
+      "stellarator_09__stellaris__shield_cost__cost": 452063328.57909954,
+      "stellarator_09__stellaris__divertor_cost__cost": 109015446.43468271,
+      "stellarator_09__stellaris__power_supplies_cost__cost": 92712758.81167144,
+      "stellarator_09__stellaris__turbine_cost__cost": 275451789.1340642,
+      "stellarator_09__stellaris__structure_cost__cost": 34155617.209747344,
+      "stellarator_09__stellaris__precon_cost__cost": 18517354.678717773,
+      "stellarator_09__stellaris__waste__cost": 6470377.894514508,
+      "stellarator_09__stellaris__inc_cost__cost": 81829994.18345366,
+      "stellarator_09__stellaris__wall_peak_calc__wall_load_peak": 3.9788448937763854,
+      "stellarator_09__stellaris__powercore_capital__powercore_capital": 7192380208.794931,
+      "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal": 7359043868.585738,
+      "stellarator_09__stellaris__installation__cost": 1030266141.6020035,
+      "stellarator_09__stellaris__cas22_capital__cas22_capital": 8838365796.809175,
+      "stellarator_09__stellaris__bop_capital__bop_capital": 579937365.6014445,
+      "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event": 827429601.0414678,
+      "stellarator_09__stellaris__calendar__availability": 0.8125000000000002,
+      "stellarator_09__stellaris__calendar__coil_life_margin_fpy": -14.375000000000007,
+      "stellarator_09__stellaris__calendar__replacement_pv": 1585033591.7093987,
+      "stellarator_09__stellaris__calendar__planned_downtime_yr": 2.916666666666667,
+      "stellarator_09__stellaris__calendar__terminal_downtime_yr": 0.0,
+      "stellarator_09__stellaris__calendar__unplanned_downtime_yr": 2.7083333333333344,
+      "stellarator_09__stellaris__calendar__productive_fpy": 24.375000000000007,
+      "stellarator_09__stellaris__calendar__dated_energy_ratio": 1.0134202110184956,
+      "stellarator_09__stellaris__calendar__cas72_annual": 127732156.60015947,
+      "stellarator_09__stellaris__calendar__n_replacements": 5.0,
+      "stellarator_09__stellaris__calendar__physical_life_fpy": 4.5239260339489915,
+      "stellarator_09__stellaris__fuel_calc__annual_fuel": 495644.5633423584,
+      "stellarator_09__stellaris__cas80_calc__levelized": 713255.3686030061,
+      "stellarator_09__stellaris__cas80_calc__crf": 0.08058640351111118,
+      "stellarator_09__stellaris__cas70_calc__cas70": 207284219.7329642,
+      "stellarator_09__stellaris__cas70_calc__annual_total": 207997475.1015672,
+      "stellarator_09__stellaris__special_materials_capital__special_materials_capital": 23815042.059888843,
+      "stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital": 608752407.6613333,
+      "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency": 10099501225.373106,
+      "stellarator_09__stellaris__contingency__cost": 1009950122.5373106,
+      "stellarator_09__stellaris__cas20_capital__cas20_capital": 11109451347.910416,
+      "stellarator_09__stellaris__indirect__cost": 2962520359.4427776,
+      "stellarator_09__stellaris__supplementary__cost": 823425194.4947345,
+      "stellarator_09__stellaris__overnight_capital__overnight_capital": 14955400261.631914,
+      "stellarator_09__stellaris__idc__cost": 4224531491.5086827,
+      "stellarator_09__stellaris__cas90_1cfe_calc__cas90": 1545641719.5741622,
+      "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe": 242.99870936109997,
+      "stellarator_09__stellaris__total_capital__total_capital": 14955400261.631914,
+      "stellarator_09__stellaris__lcoe_calc__lcoe": 247.72834136560343
+    },
+    "responses": {
+      "headline": "violated",
+      "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied",
+      "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+      "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "satisfied",
+      "stellarator_09__stellaris__heating_efficiency_ok__e7d023b396814481": "satisfied",
+      "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+      "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+      "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": "violated",
+      "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+      "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+      "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+      "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+      "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+      "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+      "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "satisfied",
+      "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied"
+    },
+    "report": {
+      "catalog_fingerprint": "43b1825bec87ff184d00543bfc065e35b8ec96c0590491ced5c1888cbf46fc7b",
+      "assessed_entry_count": 15,
+      "headline": "violation",
+      "coverage": {
+        "authored_usage_total": 15,
+        "applicable_gate_total": 15,
+        "assessed_gate_count": 15,
+        "unassessed_gate_count": 0,
+        "inapplicable_gate_count": 0,
+        "unassessed_reasons": {},
+        "coverage_state": "complete"
+      },
+      "results": [
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 150000000.0,
+          "observed": {
+            "sigma_in": 650000000.0,
+            "sigma_allow_in": 800000000.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0018333333333333335,
+          "observed": {
+            "eps_cond": 0.0021666666666666666,
+            "eps_cond_allow_in": 0.004
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.24664954562755376,
+          "observed": {
+            "rec_frac": 0.25335045437244624,
+            "threshold": 0.5
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_efficiency_ok__e7d023b396814481",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "eta_source_in": 0.5,
+            "eta_couple_in": 1.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 15552.0,
+          "observed": {
+            "domain_product_in": 15552.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0246950007910186,
+          "observed": {
+            "beta_in": 0.025304999208981403,
+            "beta_limit_in": 0.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "actual_value": false,
+          "status": "violated",
+          "margin": -0.5178415460367933,
+          "observed": {
+            "q_target_peak_in": 10.517841546036793,
+            "q_target_limit_in": 10.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 1013.9319325539626,
+          "observed": {
+            "net_electric": 1013.9319325539626
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 49.07960078792678,
+          "observed": {
+            "p_aux_required_in": 49.07960078792678
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.07115510622361443,
+          "observed": {
+            "wall_load": 3.9788448937763854,
+            "wall_load_limit_in": 4.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.02400000000000002,
+          "observed": {
+            "tbr_in": 1.074,
+            "tbr_floor_in": 1.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 3.552713678800501e-15,
+          "observed": {
+            "B_peak": 24.899999999999995,
+            "B_max_in": 24.9
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.920399212073221,
+          "observed": {
+            "p_aux_required_in": 49.07960078792678,
+            "p_aux_installed_in": 50.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 10.095227292061736,
+          "observed": {
+            "mdot_loop_in": 214.98255048571605,
+            "mdot_loop_rated_in": 225.07777777777778
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 7699680.103536234,
+          "observed": {
+            "p_loop_margin_in": 7699680.103536234
+          }
+        }
+      ]
+    }
+  },
+  "negative_efficiency": {
+    "outputs": {
+      "stellarator_09__stellaris__wp_sizing__wp_side": 0.35999999999999993,
+      "stellarator_09__stellaris__coil_length__c_coil": 25.0,
+      "stellarator_09__stellaris__winding_pack_cost__cost": 5346600000.0,
+      "stellarator_09__stellaris__wall_peak_cal__calibration": 1.3164408570995383,
+      "stellarator_09__stellaris__rb__wall_area": 701.9262650054739,
+      "stellarator_09__stellaris__rb__shield_vol": 517.043900562068,
+      "stellarator_09__stellaris__rb__structure_vol": 204.93740058641953,
+      "stellarator_09__stellaris__rb__r_coil_centre": 3.1500000000000004,
+      "stellarator_09__stellaris__rb__r_coil": 3.0000000000000004,
+      "stellarator_09__stellaris__rb__blanket_vol": 1013.4060451016529,
+      "stellarator_09__stellaris__rb__vessel_vol": 147.90589155472523,
+      "stellarator_09__stellaris__heat__p_wallplug_total": 100.0,
+      "stellarator_09__stellaris__heat__p_delivered": -50.0,
+      "stellarator_09__stellaris__heat__p_coupled": -50.0,
+      "stellarator_09__stellaris__heat__eta_pin_eff": -0.5,
+      "stellarator_09__stellaris__heating_cost__cost": -264145000.0,
+      "stellarator_09__stellaris__field_calc__B_axis": 8.999999999999998,
+      "stellarator_09__stellaris__peak_field_calc__B_peak": 24.899999999999995,
+      "stellarator_09__stellaris__wp_stress__sigma_wp": 650000000.0,
+      "stellarator_09__stellaris__cond_strain__eps_cond": 0.0021666666666666666,
+      "stellarator_09__stellaris__magnet_cost__capital_cost": 6323469946.334224,
+      "stellarator_09__stellaris__geom__A": 9.769230769230768,
+      "stellarator_09__stellaris__geom__V": 425.0000143721807,
+      "stellarator_09__stellaris__sustain__n_bar19": 37.7766145111016,
+      "stellarator_09__stellaris__sustain__n_T0": 1.9256443867349644e+20,
+      "stellarator_09__stellaris__sustain__W_th": 519.9142139884984,
+      "stellarator_09__stellaris__sustain__p_avg": 815551.6806378263,
+      "stellarator_09__stellaris__sustain__p_brems": 91.44723357920653,
+      "stellarator_09__stellaris__sustain__n_He0": 6.043556132650356e+19,
+      "stellarator_09__stellaris__sustain__n_D0": 1.9256443867349644e+20,
+      "stellarator_09__stellaris__sustain__alpha_n_e_eff": 0.595339224411896,
+      "stellarator_09__stellaris__sustain__p_aux_required": 49.07960078792678,
+      "stellarator_09__stellaris__sustain__p_rad": 219.7216452237653,
+      "stellarator_09__stellaris__sustain__p_alpha_heat": 504.49100689822046,
+      "stellarator_09__stellaris__sustain__tau_E": 1.5573336222276932,
+      "stellarator_09__stellaris__sustain__p_sync": 14.262578426977447,
+      "stellarator_09__stellaris__sustain__p_line": 114.01183321758131,
+      "stellarator_09__stellaris__sustain__n_e_volav": 3.171739227978496e+20,
+      "stellarator_09__stellaris__sustain__alpha_He_eff": 4.051846993560424,
+      "stellarator_09__stellaris__sustain__T_e0": 15.400000000000002,
+      "stellarator_09__stellaris__fusion__p_fus": 2652.5632625175904,
+      "stellarator_09__stellaris__fuel__burn_kg_per_fpy": 148.74097510492368,
+      "stellarator_09__stellaris__fuel__inject_rate": 1.8835037171313755e+22,
+      "stellarator_09__stellaris__fuel__burn_rate": 9.417518585656878e+20,
+      "stellarator_09__stellaris__fuel__tbr_margin": -0.1160000000000001,
+      "stellarator_09__stellaris__fuel__tbr_required": 1.1900000000000002,
+      "stellarator_09__stellaris__fuel__loss_rate": 1.7893285312748084e+20,
+      "stellarator_09__stellaris__fuel__exhaust_rate": 1.7893285312748067e+22,
+      "stellarator_09__stellaris__operating_heat__p_wallplug": -98.15920157585356,
+      "stellarator_09__stellaris__operating_heat__p_coupled": 49.07960078792678,
+      "stellarator_09__stellaris__operating_heat__p_delivered": 49.07960078792678,
+      "stellarator_09__stellaris__vacuum__S_eff_required": 78.0137257066115,
+      "stellarator_09__stellaris__vacuum__Q_total": 78.0137257066115,
+      "stellarator_09__stellaris__vacuum__n_molecules": 1.8835037171313755e+22,
+      "stellarator_09__stellaris__beta_calc__beta": 0.025304999208981403,
+      "stellarator_09__stellaris__divheat__q_target_peak_area_scaled": 10.517841546036793,
+      "stellarator_09__stellaris__divheat__p_heat_abs": 553.5706076861472,
+      "stellarator_09__stellaris__divheat__f_rad_edge_in_range": 0.1383201756794708,
+      "stellarator_09__stellaris__divheat__q_target_margin": -0.5178415460367933,
+      "stellarator_09__stellaris__divheat__p_target_nonrad": 55.3570607686147,
+      "stellarator_09__stellaris__divheat__f_rad_edge": 0.8341853143400069,
+      "stellarator_09__stellaris__divheat__p_heat_operating_minus_installed": 0.0,
+      "stellarator_09__stellaris__divheat__p_sep": 333.8489624623819,
+      "stellarator_09__stellaris__divheat__q_target_peak": 10.517841546036793,
+      "stellarator_09__stellaris__wall_load_calc__wall_load": 3.0224258631282654,
+      "stellarator_09__stellaris__stored_energy__W_mag": 111000000000.0,
+      "stellarator_09__stellaris__casing_mass__m_casing": 63000.0,
+      "stellarator_09__stellaris__magnet_structure_cost__cost": 54432000.0,
+      "stellarator_09__stellaris__magnet_capital_rollup__capital_cost": 5401032000.0,
+      "stellarator_09__stellaris__wp_volume__vol_cold_total": 136.55999999999997,
+      "stellarator_09__stellaris__cryo_elec__p_elec": 0.8643515999999999,
+      "stellarator_09__stellaris__source_heat__q_source": 3125.9322770825056,
+      "stellarator_09__stellaris__primary_loop__p_loop_margin": 7699680.103536234,
+      "stellarator_09__stellaris__primary_loop__q_recovered_total": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__p_elec": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__p_pump_total": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__T_out": 773.15,
+      "stellarator_09__stellaris__primary_loop__T_comp_in": 561.9353658449644,
+      "stellarator_09__stellaris__primary_loop__dp_loop": 300319.8964637657,
+      "stellarator_09__stellaris__primary_loop__mdot_loop": 214.98255048571605,
+      "stellarator_09__stellaris__primary_loop__w_fluid": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__capacity_margin": 10.095227292061736,
+      "stellarator_09__stellaris__primary_loop__q_ihx": 3301.2132114869937,
+      "stellarator_09__stellaris__primary_loop__mdot": 3009.7557068000247,
+      "stellarator_09__stellaris__primary_loop__r_comp": 1.039004204385821,
+      "stellarator_09__stellaris__cycle__margin_low": 96.0,
+      "stellarator_09__stellaris__cycle__T2_C": 480.0,
+      "stellarator_09__stellaris__cycle__margin_high": 162.0,
+      "stellarator_09__stellaris__cycle__eta_th": 0.41135655404954075,
+      "stellarator_09__stellaris__cycle__eta_fit": 0.41135655404954075,
+      "stellarator_09__stellaris__cycle__domain_product": 15552.0,
+      "stellarator_09__stellaris__pb__p_the": 1357.9756908601075,
+      "stellarator_09__stellaris__pb__p_et": 1357.9756908601075,
+      "stellarator_09__stellaris__pb__q_eng": 9.192570154530534,
+      "stellarator_09__stellaris__pb__p_th": 3301.2132114869937,
+      "stellarator_09__stellaris__pb__p_net": 1210.2503357056698,
+      "stellarator_09__stellaris__pb__rec_frac": 0.1087835048511599,
+      "stellarator_09__stellaris__vessel_cost__cost": 120841903.15294513,
+      "stellarator_09__stellaris__blanket_cost__cost": 718414154.606785,
+      "stellarator_09__stellaris__fuel_handling__cost": 137149394.40927818,
+      "stellarator_09__stellaris__owner__cost": 45324687.862579174,
+      "stellarator_09__stellaris__other_rpe__cost": 13396705.481616955,
+      "stellarator_09__stellaris__electric_cost__cost": 117329099.6903133,
+      "stellarator_09__stellaris__heat_rejection_cost__cost": 115740535.19473399,
+      "stellarator_09__stellaris__remote_handling__cost": 166663659.79080695,
+      "stellarator_09__stellaris__coolant__cost": 240216627.70929456,
+      "stellarator_09__stellaris__aux_cooling__aux_cost": 3631334.532635693,
+      "stellarator_09__stellaris__aux_cooling__cryo_cost": 16700459.69057127,
+      "stellarator_09__stellaris__aux_cooling__cost": 20331794.223206963,
+      "stellarator_09__stellaris__buildings_cost__cost": 652383020.902597,
+      "stellarator_09__stellaris__misc_cost__cost": 71415941.58233306,
+      "stellarator_09__stellaris__om_cost__annual_om": 60396246.69066982,
+      "stellarator_09__stellaris__cas71_calc__levelized": 86912982.37006265,
+      "stellarator_09__stellaris__cas71_calc__crf": 0.08058640351111118,
+      "stellarator_09__stellaris__shield_cost__cost": 452063328.57909954,
+      "stellarator_09__stellaris__divertor_cost__cost": 109015446.43468271,
+      "stellarator_09__stellaris__power_supplies_cost__cost": 92712758.81167144,
+      "stellarator_09__stellaris__turbine_cost__cost": 275451789.1340642,
+      "stellarator_09__stellaris__structure_cost__cost": 34155617.209747344,
+      "stellarator_09__stellaris__precon_cost__cost": 18750284.457680777,
+      "stellarator_09__stellaris__waste__cost": 6470377.894514508,
+      "stellarator_09__stellaris__inc_cost__cost": 81829994.18345366,
+      "stellarator_09__stellaris__wall_peak_calc__wall_load_peak": 3.9788448937763854,
+      "stellarator_09__stellaris__powercore_capital__powercore_capital": 6664090208.794931,
+      "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal": 6830753868.585738,
+      "stellarator_09__stellaris__installation__cost": 956305541.6020035,
+      "stellarator_09__stellaris__cas22_capital__cas22_capital": 8286454304.089105,
+      "stellarator_09__stellaris__bop_capital__bop_capital": 579937365.6014445,
+      "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event": 827429601.0414678,
+      "stellarator_09__stellaris__calendar__availability": 0.9027777777777779,
+      "stellarator_09__stellaris__calendar__coil_life_margin_fpy": -17.083333333333336,
+      "stellarator_09__stellaris__calendar__replacement_pv": 1714768553.0167048,
+      "stellarator_09__stellaris__calendar__planned_downtime_yr": 2.916666666666667,
+      "stellarator_09__stellaris__calendar__terminal_downtime_yr": 0.0,
+      "stellarator_09__stellaris__calendar__unplanned_downtime_yr": 0.0,
+      "stellarator_09__stellaris__calendar__productive_fpy": 27.083333333333336,
+      "stellarator_09__stellaris__calendar__dated_energy_ratio": 1.0051616112988944,
+      "stellarator_09__stellaris__calendar__cas72_annual": 138187030.54156843,
+      "stellarator_09__stellaris__calendar__n_replacements": 5.0,
+      "stellarator_09__stellaris__calendar__physical_life_fpy": 4.5239260339489915,
+      "stellarator_09__stellaris__fuel_calc__annual_fuel": 550716.1814915092,
+      "stellarator_09__stellaris__cas80_calc__levelized": 792505.9651144511,
+      "stellarator_09__stellaris__cas80_calc__crf": 0.08058640351111118,
+      "stellarator_09__stellaris__cas70_calc__cas70": 225100012.91163108,
+      "stellarator_09__stellaris__cas70_calc__annual_total": 225892518.87674552,
+      "stellarator_09__stellaris__special_materials_capital__special_materials_capital": 23815042.059888843,
+      "stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital": 608752407.6613333,
+      "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency": 9547589732.653034,
+      "stellarator_09__stellaris__contingency__cost": 954758973.2653035,
+      "stellarator_09__stellaris__cas20_capital__cas20_capital": 10502348705.918337,
+      "stellarator_09__stellaris__indirect__cost": 2800626321.578223,
+      "stellarator_09__stellaris__supplementary__cost": 857964020.0304158,
+      "stellarator_09__stellaris__overnight_capital__overnight_capital": 14225014019.847239,
+      "stellarator_09__stellaris__idc__cost": 4018215403.312769,
+      "stellarator_09__stellaris__cas90_1cfe_calc__cas90": 1470156247.6405485,
+      "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe": 177.20589174265808,
+      "stellarator_09__stellaris__total_capital__total_capital": 14225014019.847239,
+      "stellarator_09__stellaris__lcoe_calc__lcoe": 180.597909459363
+    },
+    "responses": {
+      "headline": "violated",
+      "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied",
+      "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+      "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "satisfied",
+      "stellarator_09__stellaris__heating_efficiency_ok__e7d023b396814481": "violated",
+      "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+      "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+      "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": "violated",
+      "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+      "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+      "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+      "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+      "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+      "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "violated",
+      "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "satisfied",
+      "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied"
+    },
+    "report": {
+      "catalog_fingerprint": "43b1825bec87ff184d00543bfc065e35b8ec96c0590491ced5c1888cbf46fc7b",
+      "assessed_entry_count": 15,
+      "headline": "violation",
+      "coverage": {
+        "authored_usage_total": 15,
+        "applicable_gate_total": 15,
+        "assessed_gate_count": 15,
+        "unassessed_gate_count": 0,
+        "inapplicable_gate_count": 0,
+        "unassessed_reasons": {},
+        "coverage_state": "complete"
+      },
+      "results": [
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 150000000.0,
+          "observed": {
+            "sigma_in": 650000000.0,
+            "sigma_allow_in": 800000000.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0018333333333333335,
+          "observed": {
+            "eps_cond": 0.0021666666666666666,
+            "eps_cond_allow_in": 0.004
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.3912164951488401,
+          "observed": {
+            "rec_frac": 0.1087835048511599,
+            "threshold": 0.5
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_efficiency_ok__e7d023b396814481",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "eta_source_in": -0.5,
+            "eta_couple_in": 1.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 15552.0,
+          "observed": {
+            "domain_product_in": 15552.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0246950007910186,
+          "observed": {
+            "beta_in": 0.025304999208981403,
+            "beta_limit_in": 0.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "actual_value": false,
+          "status": "violated",
+          "margin": -0.5178415460367933,
+          "observed": {
+            "q_target_peak_in": 10.517841546036793,
+            "q_target_limit_in": 10.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 1210.2503357056698,
+          "observed": {
+            "net_electric": 1210.2503357056698
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 49.07960078792678,
+          "observed": {
+            "p_aux_required_in": 49.07960078792678
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.07115510622361443,
+          "observed": {
+            "wall_load": 3.9788448937763854,
+            "wall_load_limit_in": 4.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.02400000000000002,
+          "observed": {
+            "tbr_in": 1.074,
+            "tbr_floor_in": 1.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 3.552713678800501e-15,
+          "observed": {
+            "B_peak": 24.899999999999995,
+            "B_max_in": 24.9
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "actual_value": false,
+          "status": "violated",
+          "margin": -99.07960078792678,
+          "observed": {
+            "p_aux_required_in": 49.07960078792678,
+            "p_aux_installed_in": -50.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 10.095227292061736,
+          "observed": {
+            "mdot_loop_in": 214.98255048571605,
+            "mdot_loop_rated_in": 225.07777777777778
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 7699680.103536234,
+          "observed": {
+            "p_loop_margin_in": 7699680.103536234
+          }
+        }
+      ]
+    }
+  },
+  "zero_efficiency": {
+    "error": "EvaluationFailed",
+    "message": "module_execution: ZeroDivisionError: float division by zero"
+  },
+  "overunit_efficiency": {
+    "outputs": {
+      "stellarator_09__stellaris__wp_sizing__wp_side": 0.35999999999999993,
+      "stellarator_09__stellaris__coil_length__c_coil": 25.0,
+      "stellarator_09__stellaris__winding_pack_cost__cost": 5346600000.0,
+      "stellarator_09__stellaris__wall_peak_cal__calibration": 1.3164408570995383,
+      "stellarator_09__stellaris__rb__wall_area": 701.9262650054739,
+      "stellarator_09__stellaris__rb__shield_vol": 517.043900562068,
+      "stellarator_09__stellaris__rb__structure_vol": 204.93740058641953,
+      "stellarator_09__stellaris__rb__r_coil_centre": 3.1500000000000004,
+      "stellarator_09__stellaris__rb__r_coil": 3.0000000000000004,
+      "stellarator_09__stellaris__rb__blanket_vol": 1013.4060451016529,
+      "stellarator_09__stellaris__rb__vessel_vol": 147.90589155472523,
+      "stellarator_09__stellaris__heat__p_wallplug_total": 100.0,
+      "stellarator_09__stellaris__heat__p_delivered": 101.0,
+      "stellarator_09__stellaris__heat__p_coupled": 101.0,
+      "stellarator_09__stellaris__heat__eta_pin_eff": 1.01,
+      "stellarator_09__stellaris__heating_cost__cost": 533572900.0,
+      "stellarator_09__stellaris__field_calc__B_axis": 8.999999999999998,
+      "stellarator_09__stellaris__peak_field_calc__B_peak": 24.899999999999995,
+      "stellarator_09__stellaris__wp_stress__sigma_wp": 650000000.0,
+      "stellarator_09__stellaris__cond_strain__eps_cond": 0.0021666666666666666,
+      "stellarator_09__stellaris__magnet_cost__capital_cost": 6323469946.334224,
+      "stellarator_09__stellaris__geom__A": 9.769230769230768,
+      "stellarator_09__stellaris__geom__V": 425.0000143721807,
+      "stellarator_09__stellaris__sustain__n_bar19": 37.7766145111016,
+      "stellarator_09__stellaris__sustain__n_T0": 1.9256443867349644e+20,
+      "stellarator_09__stellaris__sustain__W_th": 519.9142139884984,
+      "stellarator_09__stellaris__sustain__p_avg": 815551.6806378263,
+      "stellarator_09__stellaris__sustain__p_brems": 91.44723357920653,
+      "stellarator_09__stellaris__sustain__n_He0": 6.043556132650356e+19,
+      "stellarator_09__stellaris__sustain__n_D0": 1.9256443867349644e+20,
+      "stellarator_09__stellaris__sustain__alpha_n_e_eff": 0.595339224411896,
+      "stellarator_09__stellaris__sustain__p_aux_required": 49.07960078792678,
+      "stellarator_09__stellaris__sustain__p_rad": 219.7216452237653,
+      "stellarator_09__stellaris__sustain__p_alpha_heat": 504.49100689822046,
+      "stellarator_09__stellaris__sustain__tau_E": 1.5573336222276932,
+      "stellarator_09__stellaris__sustain__p_sync": 14.262578426977447,
+      "stellarator_09__stellaris__sustain__p_line": 114.01183321758131,
+      "stellarator_09__stellaris__sustain__n_e_volav": 3.171739227978496e+20,
+      "stellarator_09__stellaris__sustain__alpha_He_eff": 4.051846993560424,
+      "stellarator_09__stellaris__sustain__T_e0": 15.400000000000002,
+      "stellarator_09__stellaris__fusion__p_fus": 2652.5632625175904,
+      "stellarator_09__stellaris__fuel__burn_kg_per_fpy": 148.74097510492368,
+      "stellarator_09__stellaris__fuel__inject_rate": 1.8835037171313755e+22,
+      "stellarator_09__stellaris__fuel__burn_rate": 9.417518585656878e+20,
+      "stellarator_09__stellaris__fuel__tbr_margin": -0.1160000000000001,
+      "stellarator_09__stellaris__fuel__tbr_required": 1.1900000000000002,
+      "stellarator_09__stellaris__fuel__loss_rate": 1.7893285312748084e+20,
+      "stellarator_09__stellaris__fuel__exhaust_rate": 1.7893285312748067e+22,
+      "stellarator_09__stellaris__operating_heat__p_wallplug": 48.59366414646216,
+      "stellarator_09__stellaris__operating_heat__p_coupled": 49.07960078792678,
+      "stellarator_09__stellaris__operating_heat__p_delivered": 49.07960078792678,
+      "stellarator_09__stellaris__vacuum__S_eff_required": 78.0137257066115,
+      "stellarator_09__stellaris__vacuum__Q_total": 78.0137257066115,
+      "stellarator_09__stellaris__vacuum__n_molecules": 1.8835037171313755e+22,
+      "stellarator_09__stellaris__beta_calc__beta": 0.025304999208981403,
+      "stellarator_09__stellaris__divheat__q_target_peak_area_scaled": 10.517841546036793,
+      "stellarator_09__stellaris__divheat__p_heat_abs": 553.5706076861472,
+      "stellarator_09__stellaris__divheat__f_rad_edge_in_range": 0.1383201756794708,
+      "stellarator_09__stellaris__divheat__q_target_margin": -0.5178415460367933,
+      "stellarator_09__stellaris__divheat__p_target_nonrad": 55.3570607686147,
+      "stellarator_09__stellaris__divheat__f_rad_edge": 0.8341853143400069,
+      "stellarator_09__stellaris__divheat__p_heat_operating_minus_installed": 0.0,
+      "stellarator_09__stellaris__divheat__p_sep": 333.8489624623819,
+      "stellarator_09__stellaris__divheat__q_target_peak": 10.517841546036793,
+      "stellarator_09__stellaris__wall_load_calc__wall_load": 3.0224258631282654,
+      "stellarator_09__stellaris__stored_energy__W_mag": 111000000000.0,
+      "stellarator_09__stellaris__casing_mass__m_casing": 63000.0,
+      "stellarator_09__stellaris__magnet_structure_cost__cost": 54432000.0,
+      "stellarator_09__stellaris__magnet_capital_rollup__capital_cost": 5401032000.0,
+      "stellarator_09__stellaris__wp_volume__vol_cold_total": 136.55999999999997,
+      "stellarator_09__stellaris__cryo_elec__p_elec": 0.8643515999999999,
+      "stellarator_09__stellaris__source_heat__q_source": 3125.9322770825056,
+      "stellarator_09__stellaris__primary_loop__p_loop_margin": 7699680.103536234,
+      "stellarator_09__stellaris__primary_loop__q_recovered_total": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__p_elec": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__p_pump_total": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__T_out": 773.15,
+      "stellarator_09__stellaris__primary_loop__T_comp_in": 561.9353658449644,
+      "stellarator_09__stellaris__primary_loop__dp_loop": 300319.8964637657,
+      "stellarator_09__stellaris__primary_loop__mdot_loop": 214.98255048571605,
+      "stellarator_09__stellaris__primary_loop__w_fluid": 175.28093440448808,
+      "stellarator_09__stellaris__primary_loop__capacity_margin": 10.095227292061736,
+      "stellarator_09__stellaris__primary_loop__q_ihx": 3301.2132114869937,
+      "stellarator_09__stellaris__primary_loop__mdot": 3009.7557068000247,
+      "stellarator_09__stellaris__primary_loop__r_comp": 1.039004204385821,
+      "stellarator_09__stellaris__cycle__margin_low": 96.0,
+      "stellarator_09__stellaris__cycle__T2_C": 480.0,
+      "stellarator_09__stellaris__cycle__margin_high": 162.0,
+      "stellarator_09__stellaris__cycle__eta_th": 0.41135655404954075,
+      "stellarator_09__stellaris__cycle__eta_fit": 0.41135655404954075,
+      "stellarator_09__stellaris__cycle__domain_product": 15552.0,
+      "stellarator_09__stellaris__pb__p_the": 1357.9756908601075,
+      "stellarator_09__stellaris__pb__p_et": 1357.9756908601075,
+      "stellarator_09__stellaris__pb__q_eng": 4.611463920207718,
+      "stellarator_09__stellaris__pb__p_th": 3301.2132114869937,
+      "stellarator_09__stellaris__pb__p_net": 1063.4974699833542,
+      "stellarator_09__stellaris__pb__rec_frac": 0.21685087800816108,
+      "stellarator_09__stellaris__vessel_cost__cost": 120841903.15294513,
+      "stellarator_09__stellaris__blanket_cost__cost": 718414154.606785,
+      "stellarator_09__stellaris__fuel_handling__cost": 125284334.04023753,
+      "stellarator_09__stellaris__owner__cost": 42487917.64076635,
+      "stellarator_09__stellaris__other_rpe__cost": 12080558.401535252,
+      "stellarator_09__stellaris__electric_cost__cost": 117329099.6903133,
+      "stellarator_09__stellaris__heat_rejection_cost__cost": 115740535.19473399,
+      "stellarator_09__stellaris__remote_handling__cost": 166663659.79080695,
+      "stellarator_09__stellaris__coolant__cost": 215855651.99939018,
+      "stellarator_09__stellaris__aux_cooling__aux_cost": 3631334.532635693,
+      "stellarator_09__stellaris__aux_cooling__cryo_cost": 16700459.69057127,
+      "stellarator_09__stellaris__aux_cooling__cost": 20331794.223206963,
+      "stellarator_09__stellaris__buildings_cost__cost": 652383020.902597,
+      "stellarator_09__stellaris__misc_cost__cost": 71415941.58233306,
+      "stellarator_09__stellaris__om_cost__annual_om": 56616181.51645807,
+      "stellarator_09__stellaris__cas71_calc__levelized": 81473294.37874404,
+      "stellarator_09__stellaris__cas71_calc__crf": 0.08058640351111118,
+      "stellarator_09__stellaris__shield_cost__cost": 452063328.57909954,
+      "stellarator_09__stellaris__divertor_cost__cost": 109015446.43468271,
+      "stellarator_09__stellaris__power_supplies_cost__cost": 92712758.81167144,
+      "stellarator_09__stellaris__turbine_cost__cost": 275451789.1340642,
+      "stellarator_09__stellaris__structure_cost__cost": 34155617.209747344,
+      "stellarator_09__stellaris__precon_cost__cost": 18578150.342279512,
+      "stellarator_09__stellaris__waste__cost": 6470377.894514508,
+      "stellarator_09__stellaris__inc_cost__cost": 81829994.18345366,
+      "stellarator_09__stellaris__wall_peak_calc__wall_load_peak": 3.9788448937763854,
+      "stellarator_09__stellaris__powercore_capital__powercore_capital": 7461808108.794931,
+      "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal": 7628471768.585738,
+      "stellarator_09__stellaris__installation__cost": 1067986047.6020035,
+      "stellarator_09__stellaris__cas22_capital__cas22_capital": 9158310526.93008,
+      "stellarator_09__stellaris__bop_capital__bop_capital": 579937365.6014445,
+      "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event": 827429601.0414678,
+      "stellarator_09__stellaris__calendar__availability": 0.9027777777777779,
+      "stellarator_09__stellaris__calendar__coil_life_margin_fpy": -17.083333333333336,
+      "stellarator_09__stellaris__calendar__replacement_pv": 1714768553.0167048,
+      "stellarator_09__stellaris__calendar__planned_downtime_yr": 2.916666666666667,
+      "stellarator_09__stellaris__calendar__terminal_downtime_yr": 0.0,
+      "stellarator_09__stellaris__calendar__unplanned_downtime_yr": 0.0,
+      "stellarator_09__stellaris__calendar__productive_fpy": 27.083333333333336,
+      "stellarator_09__stellaris__calendar__dated_energy_ratio": 1.0051616112988944,
+      "stellarator_09__stellaris__calendar__cas72_annual": 138187030.54156843,
+      "stellarator_09__stellaris__calendar__n_replacements": 5.0,
+      "stellarator_09__stellaris__calendar__physical_life_fpy": 4.5239260339489915,
+      "stellarator_09__stellaris__fuel_calc__annual_fuel": 550716.1814915092,
+      "stellarator_09__stellaris__cas80_calc__levelized": 792505.9651144511,
+      "stellarator_09__stellaris__cas80_calc__crf": 0.08058640351111118,
+      "stellarator_09__stellaris__cas70_calc__cas70": 219660324.92031246,
+      "stellarator_09__stellaris__cas70_calc__annual_total": 220452830.8854269,
+      "stellarator_09__stellaris__special_materials_capital__special_materials_capital": 23815042.059888843,
+      "stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital": 608752407.6613333,
+      "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency": 10419445955.49401,
+      "stellarator_09__stellaris__contingency__cost": 1041944595.5494012,
+      "stellarator_09__stellaris__cas20_capital__cas20_capital": 11461390551.043411,
+      "stellarator_09__stellaris__indirect__cost": 3056370813.6115766,
+      "stellarator_09__stellaris__supplementary__cost": 854374967.1105566,
+      "stellarator_09__stellaris__overnight_capital__overnight_capital": 15433202399.748589,
+      "stellarator_09__stellaris__idc__cost": 4359498803.90904,
+      "stellarator_09__stellaris__cas90_1cfe_calc__cas90": 1595022605.7728097,
+      "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe": 215.85839811776862,
+      "stellarator_09__stellaris__total_capital__total_capital": 15433202399.748589,
+      "stellarator_09__stellaris__lcoe_calc__lcoe": 220.04633580705027
+    },
+    "responses": {
+      "headline": "violated",
+      "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied",
+      "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+      "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "satisfied",
+      "stellarator_09__stellaris__heating_efficiency_ok__e7d023b396814481": "violated",
+      "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+      "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+      "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": "violated",
+      "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+      "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+      "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+      "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+      "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+      "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+      "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "satisfied",
+      "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied"
+    },
+    "report": {
+      "catalog_fingerprint": "43b1825bec87ff184d00543bfc065e35b8ec96c0590491ced5c1888cbf46fc7b",
+      "assessed_entry_count": 15,
+      "headline": "violation",
+      "coverage": {
+        "authored_usage_total": 15,
+        "applicable_gate_total": 15,
+        "assessed_gate_count": 15,
+        "unassessed_gate_count": 0,
+        "inapplicable_gate_count": 0,
+        "unassessed_reasons": {},
+        "coverage_state": "complete"
+      },
+      "results": [
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 150000000.0,
+          "observed": {
+            "sigma_in": 650000000.0,
+            "sigma_allow_in": 800000000.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0018333333333333335,
+          "observed": {
+            "eps_cond": 0.0021666666666666666,
+            "eps_cond_allow_in": 0.004
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.28314912199183895,
+          "observed": {
+            "rec_frac": 0.21685087800816108,
+            "threshold": 0.5
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__heating_efficiency_ok__e7d023b396814481",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "eta_source_in": 1.01,
+            "eta_couple_in": 1.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 15552.0,
+          "observed": {
+            "domain_product_in": 15552.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0246950007910186,
+          "observed": {
+            "beta_in": 0.025304999208981403,
+            "beta_limit_in": 0.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "actual_value": false,
+          "status": "violated",
+          "margin": -0.5178415460367933,
+          "observed": {
+            "q_target_peak_in": 10.517841546036793,
+            "q_target_limit_in": 10.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 1063.4974699833542,
+          "observed": {
+            "net_electric": 1063.4974699833542
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 49.07960078792678,
+          "observed": {
+            "p_aux_required_in": 49.07960078792678
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.07115510622361443,
+          "observed": {
+            "wall_load": 3.9788448937763854,
+            "wall_load_limit_in": 4.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.02400000000000002,
+          "observed": {
+            "tbr_in": 1.074,
+            "tbr_floor_in": 1.05
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 3.552713678800501e-15,
+          "observed": {
+            "B_peak": 24.899999999999995,
+            "B_max_in": 24.9
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 51.92039921207322,
+          "observed": {
+            "p_aux_required_in": 49.07960078792678,
+            "p_aux_installed_in": 101.0
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 10.095227292061736,
+          "observed": {
+            "mdot_loop_in": 214.98255048571605,
+            "mdot_loop_rated_in": 225.07777777777778
+          }
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 7699680.103536234,
+          "observed": {
+            "p_loop_margin_in": 7699680.103536234
+          }
+        }
+      ]
+    }
+  }
+}
