@@ -321,3 +321,16 @@ The material to review: `work/orchestration/goals/fusion-audit-remediation/{goal
 ### Amendment — 2026-09-11
 
 **Amends:** Round 1 review, validation evidence only. Fresh `.codex-test/run python -m pytest tests/orchestration/test_goal_contract.py -q` returned 28 passed and one failed. The sole failure is `test_narratives_are_separate_from_the_goal_contract` on the existing `wall-and-heating/trail.md` line retained by that goal's owner ruling, as already recorded in project context. It does not concern this goal's review changes. `git diff --check` passed. These are document checks; no new model, integration or study execution is claimed. The round-review PASS and unresolved broader goal remain unchanged.
+
+### T-009 scope
+
+- **Objective:** Establish the current IFE zero-discount failure and nearby numerical behavior against independent finite cash-flow sums.
+- **Why now:** The fresh round-1 review selected the remaining IFE portion of F05 as round 2's next strategy; source inspection alone is not fresh execution evidence.
+- **Scope:** Native aspect-focused model analysis of IFE discounted cost/energy and guarded prices. Reproduce exact zero and a bounded near-zero/ordinary-rate set at the current baseline and relevant non-generation cases; inspect the current time-domain and source contract. Read-only production work; no model/package/finance changes, pin promotion, study or shared-MFE changes.
+- **Inputs:** `goal.md`, accepted learnings and round 2 strategy at `749cf52e006fc005bf7ae3a28daa0e002247ba96`; audit F05 at `e341dc3449b968125d11dc6162e3112bb9c5c169`; current IFE model/package and independent cash-flow oracle; WI-048 audit and round-1 native study.
+- **Done when:** A native timestamped analysis report and retained probe evidence establish the defect, its numerical consequences and the bounded repair obligations, or disprove the strategy premise.
+- **Stop when:** Source or financial-scope conflict, unavailable native execution, an owner-reserved decision or declared limit.
+
+### T-009 start — 2026-09-11
+
+T-009 · native `analyze-models` aspect-focused report under `work/analysis/` · expected artifacts: current executable probe, independent numerical comparison and source/domain assessment; no production mutation.

@@ -1,0 +1,17 @@
+0.08 {'discounted_cost': -2.843404533861197e-16, 'discounted_energy': -5.34618832289708e-16, 'price': 2.3619169330762336e-16}
+0.0 None CORE ERROR
+0.0001 {'discounted_cost': -9.331193892560031e-14, 'discounted_energy': -9.591476811007093e-14, 'price': 2.4185597300127394e-15}
+-0.0001 {'discounted_cost': -1.0359632366681198e-13, 'discounted_energy': -1.1165590381987238e-13, 'price': 8.06356974019191e-15}
+1e-08 {'discounted_cost': -6.1325961235027345e-09, 'discounted_energy': -6.1912046925063414e-09, 'price': 5.860857082054025e-11}
+-1e-08 {'discounted_cost': 4.815307279022586e-09, 'discounted_energy': 4.860877609098633e-09, 'price': -4.557021573000395e-11}
+1e-12 {'discounted_cost': 8.890060202051194e-05, 'discounted_energy': 8.890060284227404e-05, 'price': -8.215909979087333e-13}
+-1e-12 {'discounted_cost': -2.1078920461655054e-05, 'discounted_energy': -2.2121740621202815e-05, 'price': 1.0428432291437716e-06}
+1e-14 {'discounted_cost': -0.0007992778371625698, 'discounted_energy': -0.0007992778371546135, 'price': -8.197096969657369e-15}
+-1e-14 {'discounted_cost': -0.0007992778375559159, 'discounted_energy': -0.0007992778375642227, 'price': 8.465854247351233e-15}
+1e-16 {'discounted_cost': -1.0, 'discounted_energy': -1.0} PRICE ERROR
+-1e-16 {'discounted_cost': 0.12065121800171576, 'discounted_energy': 0.11022302462515428, 'price': 0.00939288156096581}
+1e-18 {'discounted_cost': -1.0, 'discounted_energy': -1.0} PRICE ERROR
+-1e-18 {'discounted_cost': -1.0, 'discounted_energy': -1.0} PRICE ERROR
+identity 045417b231573653d754b68c8e26eec26fcec72fdc3814df27e504416639fe63
+zero reference {'discounted_cost': 58111257843.81798, 'discounted_energy': 274751655.94285715, 'price': 211.50466825904758}
+fractional durations [{'rate': 0.08, 'accepted': True, 'cost': 12972701680.587824, 'energy': 53738349.31342377}, {'rate': 0.0, 'accepted': True, 'error': "ZeroDivisionError('float division by zero')"}]
