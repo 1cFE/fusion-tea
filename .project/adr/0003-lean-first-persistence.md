@@ -76,6 +76,10 @@ Two things this run adds that Item 4's could not:
 
 Two measurements are now on this record, taken on different goal shapes, and neither promotes anything. A future round re-opening the hardening question starts from both.
 
+### Amendment — 2026-09-11: native fresh-reviewer dispatch
+
+[OWNER-VERBATIM] "yeah I am fine with the automatic reviewer, as long as it is a subagent with fresh context". A goal agent may use the host’s native subagent tool to obtain a reviewer with no inherited conversation context. This supersedes the operator-only dispatch restriction in the goal runbook; the recorded handoff remains the fallback when a fresh session cannot be obtained.
+
 ## Rejected alternatives
 
 - **A first-build control plane** — envelopes, ledger, digests, idempotency keys, and reconciliation before any observed friction. Cost is certain, benefit is hypothetical.

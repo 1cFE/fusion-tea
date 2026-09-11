@@ -12,7 +12,15 @@ supersedes: null
 promoted_to: null
 ---
 
-## Decision
+## Amendment — 2026-09-11: bounded parallel tasks
+
+[AGENT] Ratified by owner, 2026-09-11: the owner accepted the following replacement for the serial-task rule and requested its implementation. It supersedes the serial-only portions of the original decision below.
+
+A task is one bounded objective and may span several native stages. Tasks may run in parallel when write-conflict risk is low and neither task’s result is likely to invalidate the other’s scope or justification. Record that judgment and file ownership before dispatch. Each task retains its own scope, start, and return; the round agent integrates results sequentially and pauses affected work when new evidence undermines its justification.
+
+The stale-authority rationale still applies: low write-conflict risk alone is insufficient when one task’s evidence could invalidate another’s justification.
+
+## Original decision
 
 A round runs under one `StrategyRevision` — approach, assumptions, abandonment conditions, intended model increment, intended study question — and that revision contains no future task list. At most one task is active at a time. A task is one bounded objective, not one native stage: it may advance a work item across several native stages until it reaches its objective or a genuine stop. Each task records a six-line scope — Objective, Why now, Scope, Inputs, Done when, Stop when — written before work begins.
 

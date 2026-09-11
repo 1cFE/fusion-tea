@@ -214,16 +214,17 @@ def test_fresh_is_defined_at_owner_strength_with_an_agent_move(repo_root):
 
     `.project/concepts/goal-driven-model-development-harness.md:47` ([OWNER], SC 5)
     reads "The critic is never the author's session" — a session boundary, not a
-    work boundary. An agent cannot start a session and dispatch stays barred
-    (ADR-0003), so the contract has to define the move it makes instead: a recorded
-    handoff stop. Without that, the gate has no agent path and gets waved through.
+    work boundary. The owner permitted native fresh-subagent dispatch on
+    2026-09-11; a recorded handoff remains required when it is unavailable.
     """
     runbook = (repo_root / RUNBOOK).read_text()
     assert re.search(r"critic is never the author's session", runbook, re.I)
     assert re.search(r"session\W{0,2} boundary, not a work boundary", runbook, re.I)
     # The agent's defined move, and the stop kind that records it.
     assert re.search(r"Kind: handoff", runbook)
-    assert re.search(r"cannot start a session", runbook, re.I)
+    assert "new reviewer subagent with no inherited conversation context" in runbook
+    assert "If a fresh session cannot be obtained, stop and hand back" in runbook
+    assert "a resumed authoring agent, does not satisfy freshness" in runbook
     # The stop kind is in the trail vocabulary too, or the move has nowhere to land.
     trail = (repo_root / TEMPLATES[1]).read_text()
     assert "handoff" in trail

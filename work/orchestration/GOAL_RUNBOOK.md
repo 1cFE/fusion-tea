@@ -8,7 +8,7 @@ This runbook states obligations, not decisions. What question is worth asking, w
 
 ## What this is, and what it is not
 
-A goal is a grounded question someone wants answered, pursued in rounds. A round is one agent's bounded attempt at one strategy. Under a strategy the agent runs one bounded task at a time. Each round ends in a mandatory written result and a review by a fresh agent — one whose session did not do the work (§ What "fresh" means).
+A goal is a grounded question someone wants answered, pursued in rounds. A round is one agent's bounded attempt at one strategy. Under a strategy the round agent coordinates bounded tasks. Each round ends in a mandatory written result and a review by a fresh agent — one whose session did not do the work (§ What "fresh" means).
 
 The goal layer decides *what to work on next and what the evidence means*. It does not do the work. The work happens in the native workflows — the coding PM in `.project/`, the modeling PM in `work/`, the research pipeline, the study runbook — and each of those keeps its own stage records exactly as it does today.
 
@@ -16,7 +16,7 @@ So the goal layer **cites, and never restates**. If you find yourself copying a 
 
 Three things this is not:
 
-- **Not a plan.** A strategy carries no future task list. The next task is chosen from the evidence in hand, after the previous one returned.
+- **Not a plan.** A strategy carries no future task list. Tasks are chosen from the evidence in hand; parallel execution follows § Running one task.
 - **Not a control plane.** There are no envelope files, no event ledger, no idempotency keys, and no digests that a procedure compares. That machinery is on a hardening path and is promoted only when a real run demonstrates prose failing, with the failure recorded (ADR-0003).
 - **Not an automation of the owner's judgment.** Merge, push, item close, archive, and every reserved gate stay owner-held.
 
@@ -45,9 +45,9 @@ That is a *session* boundary, not a work boundary. It is stronger than "someone 
 **Who obtains the reviewer, by path:**
 
 - **A human operator** starts a new session for the reviewer, or asks a second person. Nothing else is needed.
-- **A goal agent cannot start a session.** It has no dispatch, and building one is barred — unattended dispatch is on the hardening path, not in this build (ADR-0003). So when an agent reaches a gate that needs a fresh critic, its move is **to stop and hand back**. It does not review its own work, and it does not wave the gate through.
+- **A goal agent** may spawn a new reviewer subagent with no inherited conversation context. Commit a self-contained brief and evidence references under `evidence/` before dispatch. A fork carrying the author’s conversation, or a resumed authoring agent, does not satisfy freshness. If a fresh session cannot be obtained, stop and hand back using the handoff below. See ADR-0003’s 2026-09-11 amendment.
 
-**The agent's handoff, exactly.** Append to `trail.md`:
+**If a fresh session is unavailable, the agent’s handoff is:** Append to `trail.md`:
 
 ```text
 ### Stop — YYYY-MM-DD
@@ -104,7 +104,7 @@ A round may close with neither a pin nor a study. An honest empty round is a res
 
 ## Running one task
 
-At most one task is active at a time. A task is one bounded objective, not one native stage — it may carry a work item through spec, design, plan, and implement if that is what the one objective needs.
+A task is one bounded objective and may span several native stages. Tasks may run in parallel when write-conflict risk is low and neither task’s result is likely to invalidate the other’s scope or justification. Record that judgment and file ownership before dispatch. Each task retains its own scope, start, and return; the round agent integrates results sequentially and pauses affected work when new evidence undermines its justification.
 
 **1. Write the scope, before any work.** `### T-00N scope`, six lines: Objective (one question or change), Why now (the connection to the strategy and the triggering evidence), Scope (what is authorized and what is explicitly excluded), Inputs (native refs; cite `goal.md` and state only any *narrower* constraint), Done when (a useful positive or a bounded negative), Stop when (prerequisite, strategy blocker, owner gate, or declared limit).
 
@@ -209,11 +209,11 @@ A task's authority rests on the native artifacts it cited. If one of them change
 
 ## Resuming an interruption
 
-An invocation with no return is an interruption. You will see it as a `### T-00N start` with no matching `### T-00N return` and no stop.
+On resume, inspect every invocation with no return or stop, including parallel tasks. You will see each as a `### T-00N start` with no matching `### T-00N return` and no stop.
 
 **Do, in this order:**
 
-1. Read `goal.md`, then the trail from the top of the open round. You now know the strategy and the scope that was authorized.
+1. Read `goal.md`, then the trail from the top of the open round. Identify every unfinished task and its authorized scope; establish whether any worker is still running before resuming its work.
 2. **Inspect the native artifacts as truth.** Whatever the trail says was expected, the native artifact says what actually happened. Look at the work item, the study record, the commits.
 3. Walk the round's cited refs for external mutation (§ When a cited artifact moves).
 4. Write either the missing return — if the native evidence shows the task reached an outcome — or `### Stop — YYYY-MM-DD` of kind `interruption`, saying what was in flight and what the native state shows.
