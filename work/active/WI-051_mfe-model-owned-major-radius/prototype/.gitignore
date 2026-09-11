@@ -1,0 +1,8 @@
+# Reproducible runtime copies; aggregate inputs/results, patches and hashes are retained.
+/direct-entering/
+/direct-prototype/
+/from-snapshot/
+/link/
+/standalone-link/
+__pycache__/
+*.pyc

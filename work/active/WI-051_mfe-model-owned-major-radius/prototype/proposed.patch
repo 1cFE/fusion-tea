@@ -1,0 +1,25 @@
+--- designs/stellarator_09/stellarator_plant.sysml
++++ designs/stellarator_09/stellarator_plant.sysml
+@@ -134,9 +134,6 @@
+             // cross-check: computed B_axis = 9.0 T minus one ulp
+             // (8.999999999999998), low side bound so peak_field_ok cannot
+             // flip on rounding (WI-035 design D2).
+-            // Major radius [m]. Source: stellaris-design-details.md Table 2 /
+-            //   line 251 (R ~= 12.7 m).
+-            :>> R0 = 12.7;
+             // Coil-bore radius [m] = radial-build vessel_or. Forward-computed
+             // (WI-021): the generic plant binds magnet.r_coil = rb.r_coil, so
+             // r_coil = 3.00 m falls out of the radial build (was an injected
+--- designs/generic_mfe/mfe_plant.sysml
++++ designs/generic_mfe/mfe_plant.sysml
+@@ -56,6 +56,10 @@
+ 
+         // MFE-divergent power core (WI-009 mfe_power_core).
+         part magnet : 'Magnet System' {
++            // Major plasma/axis radius [m], owned by the containing plant.
++            // Source: models/library/cost_structure/mfe_power_core.sysml; R0.
++            // Basis: T-021 source-meaning assessment at 2f8856b7; WI-051.
++            :>> R0 = R;
+             :>> capital_cost = magnet_capital_rollup.capital_cost;   // WI-035: decomposed rollup
+             :>> r_coil = rb.r_coil;   // coil bore = radial-build vessel_or (WI-021)
+             // WI-035: the axis field is COMPUTED from the coil-set current

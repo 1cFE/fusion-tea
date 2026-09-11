@@ -1,0 +1,17 @@
+{
+  "live_equals_snapshot": true,
+  "production_package_unchanged": true,
+  "canonical_unchanged": true,
+  "twins_equal": 23,
+  "prototype_changed_logical_files": [
+    "designs/generic_mfe/mfe_plant.sysml",
+    "designs/stellarator_09/stellarator_plant.sysml"
+  ],
+  "manual_hashes": {
+    "handwritten/mfe_lifecycle/lifecycle_calendar_impl.py": "cbb20033c1e30d640b0f46e6dccbef2fd00633572e21aaff5fb64c761c07237f",
+    "handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py": "30aee9ecd9820a24929de992e70a8c47d65bcd07895633930946d11b86527308",
+    "handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py": "4f86ff9c90f465893c6684b2d336056ffa0fa2b0671df73ab8ba15c53fa9da37",
+    "handwritten/mfe_power_cycle/power_cycle_efficiency_impl.py": "ed5872f52003434c873cbd60e17b580427c861f97a088e5dd6c14bcebca5db11"
+  },
+  "fresh_generated_body_count": 65
+}
