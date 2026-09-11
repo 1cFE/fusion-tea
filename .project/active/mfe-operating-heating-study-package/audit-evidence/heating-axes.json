@@ -1,0 +1,32 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "p_wallplug_heat",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__p_wallplug_heat",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "eta_source_heat",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__eta_source_heat",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "eta_couple_heat",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__eta_couple_heat",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

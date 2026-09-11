@@ -13,7 +13,7 @@
 
 ## Audit gate
 
-- [ ] Fresh independent `my-audit` verifies SC-1–4, product fit and actual current-package tests. Parent freezes the certificate before any integration task.
+- [x] Fresh independent `my-audit` verifies SC-1–4, product fit and actual current-package tests. Parent freezes the certificate before any integration task.
 
 ## Implementation notes
 

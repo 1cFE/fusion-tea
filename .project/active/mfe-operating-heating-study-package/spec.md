@@ -1,6 +1,6 @@
 # MFE operating-heating study package
 
-Status: Implementation complete within scope; fresh independent coding audit pending under T-017.
+Status: Certified by fresh independent coding audit, 2026-09-11. See `audit.md`; item close remains owner-held.
 
 ## Problem and authority
 
@@ -13,7 +13,7 @@ All implementation requirements below are [INFERRED] from the audited interface 
 - [x] SC-1: The current route publishes the audited operating-heating channels and all 18 individual assertions. The independent oracle adapter binds all assertion operands correctly, including four scalar efficiency assertions, installed-capacity sustainment and signed burn hold. Actual baseline/reserve/demand controls agree with the independent oracle at the existing tolerance.
 - [x] SC-2: Current metadata and manifest identities derive through existing native producers and reproduce without changes. Exact assertion identities, 247 public inputs, 28 feature references, reachability and unreachable sets derive from the current generated graph. Historical records remain at their own identities.
 - [x] SC-3: Actual package-dependent consumer tests pass, including the four modules named by the model handoff and relevant route tests. Missing-binding, altered-channel and verdict-mismatch failures remain effective. No test silently skips required TEAx execution or substitutes stale fixture metadata.
-- [ ] SC-4: The audited model, generated package, retained evidence, historical studies and shared tooling remain unchanged. The annex describes the current interface and remaining limitations. A fresh independent coding audit certifies this scope before integration.
+- [x] SC-4: The audited model, generated package, retained evidence, historical studies and shared tooling remain unchanged. The annex describes the current interface and remaining limitations. A fresh independent coding audit certifies this scope before integration.
 
 ## Scope and limits
 

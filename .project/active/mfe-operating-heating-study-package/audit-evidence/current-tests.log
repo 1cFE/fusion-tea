@@ -1,0 +1,6 @@
+........................................................................ [ 43%]
+......................s................................................. [ 87%]
+.....................                                                    [100%]
+=========================== short test summary info ============================
+SKIPPED [1] tests/study/test_verify.py:263: proof-of-life store unavailable: /home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/study/_work/availability_sweep.db
+164 passed, 1 skipped in 197.58s (0:03:17)
