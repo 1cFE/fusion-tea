@@ -1305,3 +1305,16 @@ WI-052 specification/native registration committed at `050054bd` with no product
 ### Owner ruling — 2026-09-12: wait for plant-closure before production
 
 [OWNER-VERBATIM] "Wait for plant-closure before production changes" answers the pending coordination preference. T-029 production work is held in both checkouts. The isolated worktree already contains the specification, design and prototype; no financial production change has occurred. Independent design review and implementation planning may finish, after which work waits for the plant-closure condition. This timing instruction supersedes the agent's earlier operational choice to proceed with isolated production. The economic scope and original answer contract are unchanged.
+
+### T-029 return — 2026-09-12
+
+**Outcome: PREREQUISITE.** The owner's plant-closure timing condition prevents production work. Native preparation is ready at `/tmp/fusion-mfe-financial-rate-limits/work/active/WI-052_mfe-financial-rate-limits/stage-provenance/preparation-result.md@abe5f459`; the independently reviewed design and unstarted implementation plan are linked there. Implementation and its independent audit remain outstanding, so T-029's Done when condition is unmet and F05 receives no additional repair credit.
+
+The round agent verified the isolated branch's scoped production diff against 050054bd is empty for `models`, `exploration`, `tests` and `scripts`. Native stage Markdown diff formatting passes; the broader prototype diff reports trailing whitespace in retained generated code. These are preparation/preservation checks, not a production numerical certificate. The branch remains `work/mfe-financial-rate-limits`; no merge, pin, study, source adoption or historical evidence mutation occurred under T-029.
+
+Round 7 remains OPEN with the same strategy and comparison meaning. Resume only after the plant-closure timing condition is recorded as satisfied. Then scope a continuation task for the existing WI-052 plan, recheck the current baseline, and obtain fresh implementation and independent audit stages. This scheduling prerequisite consumes no retry and does not resolve the goal's answer contract or reserved gates.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Concurrent plant-closure work and owner's timing instruction | Hold financial production in both checkouts until plant-closure; retain completed preparation for continuation | reserved gate | [OWNER-VERBATIM] "Wait for plant-closure before production changes" | This return; native `stage-provenance/production-hold.md@c96f26ee` and `plan.md@abe5f459` |
+| Native preparation is ready but implementation/audit have not run | Return PREREQUISITE, preserving Round 7 strategy and giving no new F05 repair credit | execution detail | Round agent [AGENT], applying the owner instruction and native preparation result | This T-029 return; native `stage-provenance/preparation-result.md@abe5f459` |
