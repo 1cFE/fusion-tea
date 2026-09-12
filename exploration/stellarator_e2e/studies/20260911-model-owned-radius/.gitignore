@@ -1,0 +1,6 @@
+__pycache__/
+results/runtime-links/
+results/store/pkg_link/
+*.db-shm
+*.db-wal
+execution/pytest-cache/

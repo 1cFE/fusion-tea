@@ -1,0 +1,9 @@
+{
+  "delegation": "native collaboration.spawn_agent",
+  "freshness": "fork_turns=none for each reviewer; independent of executor and each other",
+  "commit_rule": "Briefs deposited before spawn; kept commit-ready. Owner forbids executor commits; parent owns freeze.",
+  "reviews": [
+    {"task": "/root/pre_execution_critique", "brief": "reviews/pre-execution-brief.md", "output": "reviews/pre-execution-review.md", "disposition": "reviews/pre-execution-disposition.md", "timing": "Before preparatory baseline, oracle scan or native study points. Same reviewer followed up only to inspect deposited native schema and corrected record sections.", "verdict": "Positive after F1/F2 dispositions"},
+    {"task": "/root/final_study_critique", "brief": "reviews/final-review-brief.md", "output": "reviews/final-review.md", "disposition": "reviews/final-disposition.md", "timing": "After complete numerical execution/verification; no model or oracle rerun by reviewer", "verdict": "Correctness positive, honesty positive, readability positive with minor F1 corrected"}
+  ]
+}

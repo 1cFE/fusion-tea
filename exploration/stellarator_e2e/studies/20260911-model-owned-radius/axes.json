@@ -1,0 +1,15 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "R",
+      "note": "AGENT: engineered sensitivity of model-owned plant radius; all other inputs fixed; no external tie.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__R",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

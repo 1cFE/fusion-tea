@@ -1,0 +1,63 @@
+[
+  {
+    "R": 12.0,
+    "lcoe": 219.8604904631552,
+    "violations": [
+      "peak_field_ok"
+    ]
+  },
+  {
+    "R": 12.35,
+    "lcoe": 221.57975682168168,
+    "violations": [
+      "peak_field_ok"
+    ]
+  },
+  {
+    "R": 12.7,
+    "lcoe": 224.26923288439002,
+    "violations": [
+      "divertor_heat_ok"
+    ]
+  },
+  {
+    "R": 13.0,
+    "lcoe": 231.41462669668093,
+    "violations": [
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ]
+  },
+  {
+    "R": 13.35,
+    "lcoe": 238.44219055440314,
+    "violations": [
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ]
+  },
+  {
+    "R": 13.7,
+    "lcoe": 244.54898949541945,
+    "violations": [
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ]
+  },
+  {
+    "R": 14.0,
+    "lcoe": 250.89832244487584,
+    "violations": [
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ]
+  }
+]

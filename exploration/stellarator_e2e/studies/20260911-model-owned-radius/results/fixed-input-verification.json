@@ -1,0 +1,89 @@
+{
+  "outcome": "pass",
+  "public_inputs": 246,
+  "cases": [
+    {
+      "candidate_id": "20260911-model-owned-radius:c0000",
+      "changed_fields": [
+        {
+          "group": "stellarator_plant_params",
+          "key": "stellarator_09__stellaris__R",
+          "baseline": 12.7,
+          "actual": 12.0
+        }
+      ],
+      "all_other_fields_identical": true
+    },
+    {
+      "candidate_id": "20260911-model-owned-radius:c0001",
+      "changed_fields": [
+        {
+          "group": "stellarator_plant_params",
+          "key": "stellarator_09__stellaris__R",
+          "baseline": 12.7,
+          "actual": 12.35
+        }
+      ],
+      "all_other_fields_identical": true
+    },
+    {
+      "candidate_id": "20260911-model-owned-radius:c0002",
+      "changed_fields": [],
+      "all_other_fields_identical": true
+    },
+    {
+      "candidate_id": "20260911-model-owned-radius:c0003",
+      "changed_fields": [
+        {
+          "group": "stellarator_plant_params",
+          "key": "stellarator_09__stellaris__R",
+          "baseline": 12.7,
+          "actual": 13.0
+        }
+      ],
+      "all_other_fields_identical": true
+    },
+    {
+      "candidate_id": "20260911-model-owned-radius:c0004",
+      "changed_fields": [
+        {
+          "group": "stellarator_plant_params",
+          "key": "stellarator_09__stellaris__R",
+          "baseline": 12.7,
+          "actual": 13.35
+        }
+      ],
+      "all_other_fields_identical": true
+    },
+    {
+      "candidate_id": "20260911-model-owned-radius:c0005",
+      "changed_fields": [
+        {
+          "group": "stellarator_plant_params",
+          "key": "stellarator_09__stellaris__R",
+          "baseline": 12.7,
+          "actual": 13.7
+        }
+      ],
+      "all_other_fields_identical": true
+    },
+    {
+      "candidate_id": "20260911-model-owned-radius:c0006",
+      "changed_fields": [
+        {
+          "group": "stellarator_plant_params",
+          "key": "stellarator_09__stellaris__R",
+          "baseline": 12.7,
+          "actual": 14.0
+        }
+      ],
+      "all_other_fields_identical": true
+    }
+  ],
+  "reference_anchors": {
+    "stellarator_09__stellaris__R_ref_divertor": 12.7,
+    "stellarator_09__stellaris__magnet__R_ref": 12.7,
+    "stellarator_09__stellaris__magnet__a_coil_ref": 3.1500000000000004,
+    "stellarator_09__stellaris__wall_peak_R_ref": 12.7
+  }
+}

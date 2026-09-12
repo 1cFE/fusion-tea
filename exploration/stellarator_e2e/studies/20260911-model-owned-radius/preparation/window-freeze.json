@@ -1,0 +1,15 @@
+{
+  "provenance": "engineered",
+  "R_m": [
+    12.0,
+    12.35,
+    12.7,
+    13.0,
+    13.35,
+    13.7,
+    14.0
+  ],
+  "decision": "All seven scan points have finite declared channels and individually derived verdicts. Retain this modest neighborhood including required controls to expose local coherent radius response. No feasible anchor is assumed or envelope sought; violations are expected and retained. Edges are not physical fences and are not claimed caught.",
+  "held_fixed": "Every public input except plant R, including reference radii and installed heating.",
+  "validity_mask": "R > a + 2.25 = 3.55 m at fixed a=1.3; all selected points pass. This geometric exclusion alone does not guarantee execution or physical validity."
+}

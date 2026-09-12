@@ -1,0 +1,36 @@
+# Retained diagnostics, not T-026 execution
+
+Every case below is copied historical evidence. No invalid-radius, retired-input or standalone component case ran during this study. Exact original inputs/results are in the cited JSON; source paths, last source commits and byte digests are in context/provenance.json. T-021 assessment is at 2f8856b7; WI-051 production acceptance is at 641c1051 and certified by bf3376be.
+
+## Five unified-radius failure controls
+
+| WI-051 case | Plant R (m) | Retained native failure |
+|---|---|---|
+| invalid_0 | 4.0 | module_execution: SustainmentError: non-positive fuel density: n_e0=5.0600e+20, n_He0=5.2131e+20 |
+| invalid_1 | 3.1500000000000004 | module_execution: ZeroDivisionError: float division by zero |
+| invalid_2 | 3.0 | module_execution: SustainmentError: non-positive fuel density: n_e0=5.0600e+20, n_He0=9.4751e+20 |
+| invalid_3 | 0.0 | module_execution: ZeroDivisionError: float division by zero |
+| invalid_4 | -1.0 | module_execution: TypeError: must be real number, not complex |
+
+These map exactly to context/expectations.json invalid_R order and context/WI-051-results.json. The held geometric study mask is distinct from native execution failure; R=4 passes the mask but fails native sustainment. This is retained evidence, not a new scan at R=4.
+
+## Retired-input controls
+
+| WI-051 case | Exact proposal overlay on complete baseline | Retained result |
+|---|---|---|
+| retired_0 | `{"stellarator_09__stellaris__magnet__R0": 14.0}` | entry_validation: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel) |
+| retired_1 | `{"stellarator_09__stellaris__R": 14.0, "stellarator_09__stellaris__magnet__R0": 14.0}` | entry_validation: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel) |
+| retired_2 | `{"stellarator_09__stellaris__R": 14.0, "stellarator_09__stellaris__magnet__R0": 12.7}` | entry_validation: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel) |
+| retired_3 | `{"stellarator_09__stellaris__magnet__R0": 0.0}` | entry_validation: Unknown entry field 'stellarator_09__stellaris__magnet__R0' (declared by no channel) |
+
+The generated schema refusals are also retained in context/WI-051-schema-refusals.json. The consumer audit supplies bounded oracle/local-alias refusal certification; this study does not claim new adapter-refusal execution.
+
+## Original split-radius and component counterexamples
+
+context/frozen-results.json retains baseline, plant_only_R14, magnet_only_R14, tied_R14, tied_R4, tied_bore_equal, tied_bore_below, plant_zero, magnet_zero and tied_negative with their original points and native/oracle outcomes. The original independently owned magnet-zero input is now retired; it is not equivalent to a current unified-zero proposal. The current model baseline/R14 scalar comparisons use the original baseline/coordinated R14 controls, never the erroneous untied values.
+
+context/frozen-results.json component retains all five component cases. original_negative produces -792.6499999999979 T and reference_inverted produces -0.7821989528795832 T; both pass the existing upper-bound comparison. equality and reference_equal fail with ZeroDivisionError. valid is the retained 24.9 T baseline. context/WI-051-checks.json retains the subsequent component reproduction. These controls establish neither a physical negative field nor a general admissible domain. Broader F07 remains unresolved.
+
+## Provenance and chronology
+
+The 158 numeric controls were frozen before prototype generation from T-021 git objects. The additional raw 177-output representation was captured after prototype generation, despite an unchanged stale sentence in expectations.json. The original entering helper failed with missing constraint-schema routing. context/consumer-handoff.md corrects the chronology and excludes a claimed successful old-helper baseline. The copied handoff predates final audit/consumer certification; the later copied certificates supersede only their bounded certification states.
