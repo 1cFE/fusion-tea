@@ -218,3 +218,114 @@ The material to review: This goal, trail, basis packet and T-001–T-007 native 
 | PC-R1-02: held-mode prose disagrees with native record | Correct the trail by dated amendment, relying on native evidence. | execution detail | Fresh reviewer [AGENT] | Amendment above; native evidence unchanged |
 
 **Recommendation:** Preserve the interruption closure. Complete PC-R1-01 under a separately scoped records continuation before treating this round's disposition accounting as passed. No replacement plant-closure strategy is opened here. F04 repair proceeds under fusion-audit-remediation; any replacement plant comparison needs its own compatibility/attribution contract and review. The absent study, consolidated rubric packet, demo statement, engineering gaps and financial limitations remain unresolved.
+
+## Round 2 — closure-preparation
+
+### Strategy revision — 2026-09-11
+
+**Approach [AGENT]:** Complete the historical accounting and make the replacement comparison reviewable while remediation owns production repairs. This session is fresh to Round 1. It carries forward that round's FINDINGS verdict; it does not reopen or certify it. The owner authorized this preparation in `/tmp/handoff-20260911-170312.md` and the current instruction, “Read /tmp/handoff-20260911-170312.md and proceed with the authorized plant-closure preparation.” The task split is an agent recommendation ratified by the owner, not an owner-originated settled rule.
+
+**Assumptions [AGENT]:** Historical implementation credit can be recorded independently of unmeasured study consequences. A proposed comparison contract and pointer-only rubric packet can be prepared before a final package exists. The goal's 2026-09-11 amendment requires the replacement execution strategy after audited operating-state repair and integration; this preparation round promotes no pin and executes no study. Its proposals remain subject to the later interface handoff and native critique.
+
+**Intended increment and question [AGENT]:** No model increment. Establish which evidence and comparison distinctions a later study needs to answer the existing plant-closure question without attributing the operating-heating or radius corrections to the three closures. Preserve the historical pin and the owner-held acceptance/reveal gates.
+
+**Abandonment and limit [AGENT]:** Stop affected preparation if evidence contradicts its comparison premise. This round ends at a reviewed preparation packet, with zero pins and zero studies; final execution and grading are outside this round's declared bound. The goal's six-round and retry/checkpoint caps remain unchanged. No future task list is prescribed.
+
+### T-008 scope
+
+- **Objective:** Complete PC-R1-01's joined historical discovery dispositions.
+- **Why now:** Round 1 review identifies implementation evidence omitted from current routes; the owner authorized the separate records continuation.
+- **Scope:** Append dispositions under the six touched open primary IDs named in PC-R1-01 and its “Other touched sightings”; preserve the answered pump re-base and PC-R1-02 correction. No model, study, historical sighting edit or finding closure.
+- **Inputs:** `goal.md` including its amendment; Round 1 review at `fa3e7f2d`; WI-046 `plan.md` and evidence at `1c87c343`; current discovery-log row histories.
+- **Done when:** Each touched open ID carries its implementation evidence or continuing owner/reference, with unmeasured consequences explicit, and the native join checks pass.
+- **Stop when:** An ID has no committed sighting, native evidence contradicts the proposed credit, or a reserved decision is needed.
+
+### T-008 start — 2026-09-11
+
+T-008 · goal-owned append-only discovery dispositions · expected artifact: six joined rows in `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` and the native record-check result.
+
+### T-008 return — 2026-09-11
+
+**Outcome: COMPLETE.** Six append-only primary-ID dispositions landed in `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md`. WI-046's `plan.md@1c87c343` Phase 3 and the retained compatibility diff support the implementation credit; the inherited window consequences remain unmeasured. `.codex-test/run python -B -m pytest tests/study/test_records.py -q -p no:cacheprovider` reports 37 passed. No execution, discovery closure or historical rewrite occurred.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| PC-R1-01's two stale lifecycle routes | Credit native implementation while keeping the absent final study and source limits open | execution detail | Round agent [AGENT] | Joined updates for `20260821-power-cycle-ab#1`, `20260904-wall-and-heating#5` |
+| Four other touched open sightings | Preserve their existing owners and concrete references explicitly | execution detail | Round agent [AGENT] | Joined updates for `20260829-p-pump-fence#1/#2`, `20260823-magnet-technology-ab#1`, `20260907-minor-radius#2` |
+| Historical answered pump re-base and corrected held CAS72 number | Preserve the existing records; no repeated correction or new certification | execution detail | Round agent [AGENT] | none |
+
+### T-009 scope
+
+- **Objective:** Prepare a reviewable replacement-study contract that separates plant-closure effects from corrected operating heating and geometry ownership.
+- **Why now:** Historical accounting is explicit; production remediation continues independently, so study meaning and evidence needs can be prepared now.
+- **Scope:** A provisional goal evidence packet using native run-study conventions: compatibility/attribution proposal, scenario matrix, output requirements, validity/acceptance rules and package-handoff criteria. No study record, exact entry-key certification, model/consumer edit, point execution, pin promotion or final comparison ruling.
+- **Inputs:** `goal.md` and its amendment; native run-study runbook, policy and ANNEX; WI-045/046/047 evidence; WI-050 audit and operating-heating study; WI-051 design/plan; original fusion audit and accepted remediation Round 4 review.
+- **Done when:** A future executor can see which comparison is proposed, how every arm is attributed, what must be bound to the final census, and which remaining findings constrain each claim.
+- **Stop when:** Preparation requires a new source value, changed comparison authority or production repair; name the unresolved choice instead of implementing it.
+
+### T-009 start — 2026-09-11
+
+T-009 · preparation using native study-contract conventions · expected artifacts under `evidence/round2_preparation/`, provisional until the certified package handoff and native pre-execution critique.
+
+### T-009 return — 2026-09-11
+
+**Outcome: COMPLETE for preparation.** `evidence/round2_preparation/study-contract.md`, `scenario-matrix.md`, `output-contract.md`, `required-channels.provisional.json` and `audit-impact.md` provide the proposed comparison and candidate acceptance basis. The 141-column provisional map is copied from the operating-heating record; no final key/axis certificate or executed study is claimed.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Heating repair changes historical compatibility meaning | Propose separate historical, corrected-package factorial and cross-revision bridges; park final adoption until replacement strategy | execution detail | Round agent [AGENT] under owner-authorized preparation | `study-contract.md` |
+| Goal's “two cases” radiation wording differs from retained paired transport evidence | Surface the distinction; make the transport cases source-conditioned and radiation fractions explicitly engineered proposals | premise surprise | Round agent [AGENT]; interpretation not finally adopted | `scenario-matrix.md` Premise conflict; dependent radiation claims remain proposed |
+| Radius repair has no final accepted handoff here | Define concrete audit/consumer/integration acceptance evidence without treating all twenty findings as universal blockers | execution detail | Round agent [AGENT] | `audit-impact.md`; no production edits or pin |
+
+### T-010 scope
+
+- **Objective:** Assemble a pointer-only rubric evidence map and proposed dispositions for every historically below-target cell.
+- **Why now:** T-009 identifies the eventual runtime evidence and claim limits, allowing a complete grading handoff without pre-scoring the result.
+- **Scope:** Goal evidence packet covering all 23 scored cells and three not-applicable cells, source/native/runtime pointers, missing evidence, and B-2/B-3/B-4 implications. No new scores, rubric edit, accepted disposition, research approval, demo acceptance or reveal.
+- **Inputs:** `goal.md` Answered when (c)/(d); rubric v1 `dc0f0b6d`; historical grading/re-grades; admissible native model/item/study records; T-009 contract and audit impact assessment; quarantine protocol.
+- **Done when:** All twelve historical gaps have a proposed disposition with evidence and consequences, and every previously at-target cell has a final-pin reconfirmation route.
+- **Stop when:** A grade needs an unpromoted runtime, a source is inadmissible/missing, or an owner-held comparison/reveal ruling would be required; leave that evidence open explicitly.
+
+### T-010 start — 2026-09-11
+
+T-010 · rubric preparation under the existing grading protocol · expected artifacts: pointer-only evidence map and separately labeled proposed dispositions in `evidence/round2_preparation/`; final grading remains a fresh non-author act at the eventual promoted pin.
+
+### T-010 return — 2026-09-11
+
+**Outcome: COMPLETE for preparation.** `evidence/round2_preparation/rubric-evidence-map.md` covers the twenty-three numeric cells and three not-applicable records; `proposed-dispositions.md` covers all twelve historical gaps without scores or accepted residuals. `verification.md` records 37 native record checks passing and the combined 65-pass/one-known-unrelated-failure result. No final grading or source approval occurred.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Historical grades span pins and cannot certify the future package | Supply pointer-only evidence for every cell, with final-pin reconfirmation required | execution detail | Round agent [AGENT] | `rubric-evidence-map.md` |
+| Full fuel/vacuum/structural anchors exceed current evidence | Preserve exact missing conjuncts and B-2/B-3/B-4 consequences rather than pre-score them | execution detail | Round agent [AGENT] | `proposed-dispositions.md` |
+| Final rubric packet/demo acceptance and reveal are owner-held | Prepare evidence slots only; retain every gate | reserved gate | Owner-held; no new ruling | No grade, acceptance or reveal |
+
+### Round 2 result — 2026-09-11
+
+**Intent met within the preparation bound; goal still unanswered.** T-008 completed six joined discovery dispositions, crediting WI-046's bounded implementation and keeping study consequences open. T-009 prepared the replacement compatibility/attribution, scenario, output and audit-impact contract. T-010 assembled the complete pointer-only rubric evidence map and twelve proposed gap dispositions. Evidence is `evidence/round2_preparation/` and the appended discovery rows; the native checks and their limits are in `verification.md`.
+
+**Last semantic outcome and derived stop:** T-010 COMPLETE finishes the authorized preparation packet. Close on trigger 5, the declared preparation limit, with zero promoted pins and zero committed studies. Final execution and final grading require the accepted stable package handoff described in `study-contract.md`; the read-only remediation observation had T-022 still active. No failed mechanical retry, checkpoint submission or owner refusal occurred.
+
+**Comparison and scope:** Historical Round 1 remains closed by redirection. Preparation proposes the corrected-package closure factorial and a separate historical bridge; it does not replace the final execution strategy, assert exact old-headline reproduction at the changed heating basis, or adopt a new radiation/source interpretation. All production model/package/consumer repairs remain with remediation. No merge, push, archive, work-item close or reveal occurred.
+
+**Discovery accounting and proposed dispositions:** The six PC-R1-01 rows now carry native evidence or continuing owners/references; their first sightings are preserved. The answered pump re-base and PC-R1-02 correction were not repeated. No other discovery ID was minted or given new closure credit. `audit-impact.md` references operating-heating findings only through their existing checkpointed routes. Rubric dispositions remain proposals awaiting final-pin grading and owner acceptance.
+
+**Proposed learning delta:** None. This round supplies preparation and historical accounting, not new model execution knowledge. Fresh review must verify the packet and PC-R1-01 accounting before it is treated as reviewed. The goal's study, consolidated final grading, demo statement and owner acceptance remain unmet.
+
+### Round 2 review — 2026-09-11
+
+**Reviewer:** [AGENT] Codex `/root/review_closure_preparation`, a fresh non-author session with only the committed review brief and repository evidence. **Verdict: PASS for preparation**, after the objectively verified citation correction at `cc167984`. The full review is `evidence/round2_preparation/round2-review.md`; the original packet remains at `9d58b5ea`.
+
+**Checks and evidence:** Read the goal/amendment, Round 1 review and PC-R1-02 correction, Round 2 end to end, native WI-045/046/047 evidence, WI-050/model-consumer certificates, remediation Round 4 review, WI-051 plan, rubric/history and all preparation artifacts. Six appended discovery updates preserve the original log bytes and join their native sightings. The 141-channel provisional map exactly matches its inherited source. All twelve proposed dispositions, all 23 numeric evidence rows and the three applicability records retain final-pin grading and owner acceptance. The native study framing, validity and pre-execution gates remain future obligations. No comparison strategy, source interpretation or reveal gate was silently adopted.
+
+**Accounting decision:** PC-R1-01 is satisfied as records accounting only. WI-046's bounded implementation now has an explicit route without claiming the absent window study or accepting the remaining source/cost limitations. Round 1's original FINDINGS history and PC-R1-02 amendment remain intact. The other four open sightings retain their existing owners/references; the historical answered pump-rebase row is unchanged.
+
+**Review observation PC-R2-01:** The original R2c.P evidence-map pointer named the coil-life comment at `stellarator_plant.sysml:1307`. The author corrected it to the achieved-TBR binding at `:1525` in `cc167984`; the reviewer verified the source at the declared base. This minor correction changes no claim or disposition and leaves no open preparation defect.
+
+**Fidelity and limits:** Every task has a return. Zero pins and zero studies respect the declared preparation bound; trigger 5 is supported. No retry or checkpoint cap was consumed. Native histories show no out-of-task production mutation; the moving remediation worktree is a dated observation, not an accepted handoff. T-007 remains historical, STEP remains pending, and the radiation-case interpretation remains proposed. This PASS does not certify engineering, rubric scores, owner acceptance or goal closure.
+
+**Verification:** Fresh native record/goal checks returned 65 passed and the known unrelated narrative-reference failure in the unchanged wall-and-heating trail. Read-only consistency checks confirmed map equality, unique cell counts and unchanged discovery prefix. No model, oracle, integration or study execution occurred in this review.
+
+**Learning decision:** Accept the proposed empty delta. `learnings.md` remains unchanged.
+
+**Recommendation:** Keep Round 2 closed. Obtain the immutable remediation handoff named in `study-contract.md`: independent radius audit, separately certified consumer migration, native integration identities and supported-domain evidence against unresolved findings. After accepting that handoff, write the replacement execution strategy and finalize the native study contract, including the radiation-case interpretation and required owner axis rulings. No execution round is opened here; final grading, the demo statement and owner acceptance remain outstanding.
