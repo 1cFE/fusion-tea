@@ -1,0 +1,24 @@
+........................................................................ [  9%]
+.....................................................................F.. [ 18%]
+....
+=================================== FAILURES ===================================
+_______________ test_simkit_probe_refuses_without_the_teax_root ________________
+
+full_env = {'CODEX_CI': '1', 'CODEX_PERMISSION_PROFILE': ':workspace', 'CODEX_SANDBOX_NETWORK_DISABLED': '1', 'CODEX_SESSION_ID': '01a096e3-5347-7413-bde9-e9b2b7e0b938', ...}
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x74c17f075580>
+
+    def test_simkit_probe_refuses_without_the_teax_root(full_env, monkeypatch):
+        monkeypatch.delenv("STOP_PARSER_TEAX_ROOT", raising=False)
+        env = integrate.seam_env()
+>       assert integrate.simkit_module_path(env) is None
+E       AssertionError: assert '/home/reid/1cfe/teax/packages/teax-simkit/simkit' is None
+E        +  where '/home/reid/1cfe/teax/packages/teax-simkit/simkit' = <function simkit_module_path at 0x74c1a4ee2480>({'CODEX_CI': '1', 'CODEX_PERMISSION_PROFILE': ':workspace', 'CODEX_SANDBOX_NETWORK_DISABLED': '1', 'CODEX_SESSION_ID': '01a096e3-5347-7413-bde9-e9b2b7e0b938', ...})
+E        +    where <function simkit_module_path at 0x74c1a4ee2480> = integrate.simkit_module_path
+
+tests/study/test_integrate_preconditions.py:182: AssertionError
+=========================== short test summary info ============================
+FAILED tests/study/test_integrate_preconditions.py::test_simkit_probe_refuses_without_the_teax_root
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! KeyboardInterrupt !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/usr/lib/python3.12/selectors.py:415: KeyboardInterrupt
+(to show a full traceback on KeyboardInterrupt use --full-trace)
+1 failed, 147 passed in 128.19s (0:02:08)

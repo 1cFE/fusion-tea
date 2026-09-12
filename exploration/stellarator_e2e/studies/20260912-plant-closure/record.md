@@ -506,3 +506,11 @@ Every axis remains sensitivity-framed. Coordinated control terms are interpreted
 - **Schema version:** 1
 
 Fresh correctness/honesty/readability review and its disposition are in `reviews/final-review.md` and `reviews/final-disposition.md`. No executor self-certification replaces that review. The four sensitivity rulings remain as quoted in the retained intake and trail.
+
+## Addendum 2026-09-12 — post-record validation limits
+
+The first final snapshot and its results remain unchanged. Additional validation is in `addendum/20260912-post-record-validation/reading.md`, with complete logs and failure accounting. The focused battery reports 130 passes / 120 failures, including eleven new plant-record fixture failures before export; numerical verification remains passed. No green full-suite claim is made.
+
+| Id | Kind | Finding | Disposition | Home |
+|---|---|---|---|---|
+| `20260912-plant-closure#13` | process | Generic publication tests require a legacy module API absent from this study; the focused validation battery is not green. | Proposed bounded numerical use with explicit test/entrypoint gap; direct-writer failure behavior and generic API compatibility remain tooling follow-up. | `addendum/20260912-post-record-validation/reading.md` |
