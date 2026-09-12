@@ -1,0 +1,12 @@
+Child identity: `/root/t027_fresh_administrator`  
+Freshness: `agent_type: default`, `fork_turns: none`; complete brief supplied with no inherited conversation history.
+
+Complete child final answer:
+
+> Fresh administrator: `/root/t027_fresh_administrator`.
+>
+> Wrote [synthesis.md](/home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/studies/20260911-model-owned-radius/synthesis.md).
+>
+> Bounded finding: seven R-only points support sampled propagation/arithmetic fidelity; none is fully feasible. Both LCOEs, all 18 constraints and six findings are recovered.
+>
+> Missing: executable environment, directory-contained freeze receipt, external discovery rows and subsequent dispositions. Oracle, physics, finance and quarantine limits remain explicit. Only `synthesis.md` was written; no broader goal certification.
