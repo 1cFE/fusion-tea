@@ -354,3 +354,25 @@ Stop when: A mechanical prerequisite, premise conflict, reserved owner decision 
 ### T-011 start — 2026-09-12
 
 T-011 invokes aspect-focused analyze-models at `work/analysis/20260912-plant-comparison-candidate.md` and native run-study indicator preparation under `evidence/T-011_candidate-assessment/`. One parallel reader owns `audit-applicability.md` there; the parent owns axis/coverage probes, synthesis and the trail. Their read-only scopes are independent and neither alters production or the other's files. Native numerical certificates are retained evidence, not rerun.
+
+### T-011 return — 2026-09-12
+
+**Outcome: COMPLETE for candidate assessment.** Native report `work/analysis/20260912-plant-comparison-candidate.md` and `evidence/T-011_candidate-assessment/` identify supported inputs, expanded publication coverage, remaining independent-check obligations, audit applicability and four required axis rulings. No numerical point, study or plant-closure pin promotion occurred. Artifacts are unpinned until this assessment commit.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Audited radius/consumer/candidate evidence now exists | Credit the bounded handoff and test actual scenario mappings instead of waiting for whole-audit closure | execution detail | Round agent [AGENT] with parallel analysis reader | Native report and coverage probe |
+| Provisional map omits seventeen numeric outputs | Retain all 158 scalar channels for future publication; preserve seventeen independent-oracle omissions as verification obligations | execution detail | Round agent [AGENT] | `required-channels.json`, `coverage.json` |
+| Four axes have no possible path to a constraint | Recommend sensitivity-only use with missing-model findings; await the policy-required owner ruling before points | reserved gate | Owner-held; proposal by round agent [AGENT] | Report axis table and pending owner question; no execution |
+| T-025 historically omitted its read-set check | Run the native full-group indicators, which check the actual parsed read set and current identity | execution detail | Round agent [AGENT] | `indicators.json`; historical integration unchanged |
+| Concurrent remediation re-grounded at f0bbb7e7 and began financial repair | Preserve the separate work; require isolated accepted candidate or explicit later-package assessment before execution | execution detail | Round agent [AGENT] | Report concurrency boundary; no shared production edit |
+
+The two existing lifecycle findings `20260821-power-cycle-ab#1` and `20260904-wall-and-heating#5` retain the newer T-028 dispositions at `bfc60b91`; this assessment adds no implementation or numerical closure credit. Other preparation sightings retain existing owners. Four prospective study-axis findings are recorded in the report for native intake, not minted as a nonexistent study.
+
+### Round 3 result — 2026-09-12
+
+**Assessment intent met; study and grading intent unmet.** T-011 COMPLETE supplies concrete candidate applicability and coverage evidence. Derived stop: trigger 4, unresolved owner ruling on four `no_constraint_response` axes under the existing study policy. Zero promoted pins and zero committed studies. The next execution strategy can preserve the prepared comparison meaning once the owner rules; this is not a strategy blocker or a whole-audit prerequisite.
+
+Evidence: `work/analysis/20260912-plant-comparison-candidate.md`, `evidence/T-011_candidate-assessment/`, merge `2529d904`, task scope `31f6ca8f`. Native checks are 68 passes and the unchanged known narrative-reference failure; the initial wrong test-path command is retained. No task retry, model change, source adoption or residual acceptance occurred. The concurrent financial repair is a newly observed owner-authorized task, not an unexplained production mutation; no affected production change was observed at assessment close.
+
+Finding dispositions: existing discovery rows retain their latest bounded meanings. The report records missing resistance for the four proposed axes and the output-verification limits for the future study; no study ID, numerical result or new historical disposition is fabricated. Proposed learning delta: none. Final grader and owner packet/demo/reveal gates remain untouched.

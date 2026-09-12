@@ -1,0 +1,216 @@
+{
+  "scope": "metadata and adapter translation only; no evaluate/compute calls",
+  "native_inputs": 246,
+  "mapped_inputs": 99,
+  "candidate_axes": 25,
+  "families": [
+    {
+      "family": "closure-factorial",
+      "keys": [
+        "loop_live",
+        "cycle_live",
+        "availability_direct",
+        "p_pump_direct",
+        "eta_p_direct",
+        "eta_th_direct"
+      ],
+      "missing_native": [],
+      "missing_oracle": [],
+      "translation_result": "accepted translation only; no numerical execution"
+    },
+    {
+      "family": "inherited-window",
+      "keys": [
+        "R",
+        "a",
+        "magnet__I_coil",
+        "n_e0",
+        "T_i0",
+        "p_wallplug_heat"
+      ],
+      "missing_native": [],
+      "missing_oracle": [],
+      "translation_result": "accepted translation only; no numerical execution"
+    },
+    {
+      "family": "fixed-loop",
+      "keys": [
+        "n_loops"
+      ],
+      "missing_native": [],
+      "missing_oracle": [],
+      "translation_result": "accepted translation only; no numerical execution"
+    },
+    {
+      "family": "sized-loop",
+      "keys": [
+        "n_loops"
+      ],
+      "missing_native": [],
+      "missing_oracle": [],
+      "translation_result": "accepted translation only; no numerical execution"
+    },
+    {
+      "family": "loop-loss",
+      "keys": [
+        "f_loss",
+        "loop_dT_blanket"
+      ],
+      "missing_native": [],
+      "missing_oracle": [],
+      "translation_result": "accepted translation only; no numerical execution"
+    },
+    {
+      "family": "cycle",
+      "keys": [
+        "loop_T_in",
+        "loop_dT_blanket",
+        "dT_approach",
+        "a_fit",
+        "b_fit",
+        "T_offset_fit",
+        "T2_min",
+        "T2_max",
+        "delta_eta"
+      ],
+      "missing_native": [],
+      "missing_oracle": [],
+      "translation_result": "accepted translation only; no numerical execution"
+    },
+    {
+      "family": "calendar",
+      "keys": [
+        "outage_years",
+        "unplanned_fraction"
+      ],
+      "missing_native": [],
+      "missing_oracle": [],
+      "translation_result": "accepted translation only; no numerical execution"
+    },
+    {
+      "family": "fuel",
+      "keys": [
+        "burn_fraction"
+      ],
+      "missing_native": [],
+      "missing_oracle": [],
+      "translation_result": "accepted translation only; no numerical execution"
+    },
+    {
+      "family": "divertor-transport",
+      "keys": [
+        "q_target_ref"
+      ],
+      "missing_native": [],
+      "missing_oracle": [],
+      "translation_result": "accepted translation only; no numerical execution"
+    },
+    {
+      "family": "divertor-radiation",
+      "keys": [
+        "f_rad_total"
+      ],
+      "missing_native": [],
+      "missing_oracle": [],
+      "translation_result": "accepted translation only; no numerical execution"
+    },
+    {
+      "family": "reserve",
+      "keys": [
+        "p_wallplug_heat"
+      ],
+      "missing_native": [],
+      "missing_oracle": [],
+      "translation_result": "accepted translation only; no numerical execution"
+    },
+    {
+      "family": "vacuum",
+      "keys": [],
+      "missing_native": [],
+      "missing_oracle": [],
+      "translation_result": "accepted translation only; no numerical execution"
+    },
+    {
+      "family": "area-shadow",
+      "keys": [],
+      "missing_native": [],
+      "missing_oracle": [],
+      "translation_result": "accepted translation only; no numerical execution"
+    },
+    {
+      "family": "baseline",
+      "keys": [],
+      "missing_native": [],
+      "missing_oracle": [],
+      "translation_result": "accepted translation only; no numerical execution"
+    }
+  ],
+  "native_scalars": 158,
+  "provisional_columns": 141,
+  "missing_provisional_channels": [],
+  "native_scalars_missing_from_provisional": [
+    "stellarator_09__stellaris__cas70_calc__annual_total",
+    "stellarator_09__stellaris__cas70_calc__cas70",
+    "stellarator_09__stellaris__cas71_calc__crf",
+    "stellarator_09__stellaris__cas71_calc__levelized",
+    "stellarator_09__stellaris__cas80_calc__crf",
+    "stellarator_09__stellaris__cas80_calc__levelized",
+    "stellarator_09__stellaris__coil_length__c_coil",
+    "stellarator_09__stellaris__rb__blanket_vol",
+    "stellarator_09__stellaris__rb__r_coil",
+    "stellarator_09__stellaris__rb__shield_vol",
+    "stellarator_09__stellaris__rb__structure_vol",
+    "stellarator_09__stellaris__rb__vessel_vol",
+    "stellarator_09__stellaris__rb__wall_area",
+    "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal",
+    "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event",
+    "stellarator_09__stellaris__wp_sizing__wp_side",
+    "stellarator_09__stellaris__wp_volume__vol_cold_total"
+  ],
+  "expanded_columns": 158,
+  "oracle_channels": 141,
+  "independent_omissions": [
+    "stellarator_09__stellaris__cas70_calc__annual_total",
+    "stellarator_09__stellaris__cas70_calc__cas70",
+    "stellarator_09__stellaris__cas71_calc__crf",
+    "stellarator_09__stellaris__cas71_calc__levelized",
+    "stellarator_09__stellaris__cas80_calc__crf",
+    "stellarator_09__stellaris__cas80_calc__levelized",
+    "stellarator_09__stellaris__coil_length__c_coil",
+    "stellarator_09__stellaris__rb__blanket_vol",
+    "stellarator_09__stellaris__rb__r_coil",
+    "stellarator_09__stellaris__rb__shield_vol",
+    "stellarator_09__stellaris__rb__structure_vol",
+    "stellarator_09__stellaris__rb__vessel_vol",
+    "stellarator_09__stellaris__rb__wall_area",
+    "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal",
+    "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event",
+    "stellarator_09__stellaris__wp_sizing__wp_side",
+    "stellarator_09__stellaris__wp_volume__vol_cold_total"
+  ],
+  "expanded_missing_oracle": [
+    "stellarator_09__stellaris__cas70_calc__annual_total",
+    "stellarator_09__stellaris__cas70_calc__cas70",
+    "stellarator_09__stellaris__cas71_calc__crf",
+    "stellarator_09__stellaris__cas71_calc__levelized",
+    "stellarator_09__stellaris__cas80_calc__crf",
+    "stellarator_09__stellaris__cas80_calc__levelized",
+    "stellarator_09__stellaris__coil_length__c_coil",
+    "stellarator_09__stellaris__rb__blanket_vol",
+    "stellarator_09__stellaris__rb__r_coil",
+    "stellarator_09__stellaris__rb__shield_vol",
+    "stellarator_09__stellaris__rb__structure_vol",
+    "stellarator_09__stellaris__rb__vessel_vol",
+    "stellarator_09__stellaris__rb__wall_area",
+    "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal",
+    "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event",
+    "stellarator_09__stellaris__wp_sizing__wp_side",
+    "stellarator_09__stellaris__wp_volume__vol_cold_total"
+  ],
+  "constraints": 18,
+  "unbound_constraints": [],
+  "retired_key": {
+    "refused": true,
+    "message": "retired entry key stellarator_09__stellaris__magnet__R0; use plant R"
+  }
+}
