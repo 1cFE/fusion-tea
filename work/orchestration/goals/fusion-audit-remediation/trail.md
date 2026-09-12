@@ -1094,3 +1094,28 @@ Independent checks and every exclusion are in the certificate. Host fresh-thread
 ### T-025 start — 2026-09-11
 
 T-025 · native integration · expected `evidence/T-025_pin/integration_return.json` and complete producer records; this is the Round 5 candidate attempt, with no earlier pin or study in this round.
+
+### T-025 return — 2026-09-11
+
+**Outcome: COMPLETE.** Native `evidence/T-025_pin/integration_return.json@b23b2327` returns CANDIDATE with all ten gates passing on the first attempt. Regeneration/snapshot/handwritten preservation are fixed points and lineage matches both audits. This promotes Round 5's sole pin, `609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d`; its semantic and executable identities remain distinct as recorded natively. Baseline verification passes while retaining its violated divertor verdict.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| One audited package passes the native candidate gates | Use this exact candidate for the Round 5 radius-coherence study | execution detail | Parent on native return | Candidate `b23b2327`; T-026 below |
+| Native manifest gate does not run assert_read_set_covered | Carry the seam's explicit limitation; do not claim it checked that assertion | execution detail | Native return, retained by parent | No seam repair or expanded verification claim |
+| Audit provenance calls its parent-issued audit-only scope OWNER | Correct that grade in the goal reading: the detailed audit scope was parent-agent-authored under broad owner goal authorization | execution detail | Parent | This correction; certificate evidence remains unchanged and no detail becomes owner-originated settled authority |
+
+No mechanical retry, changed comparison, source approval or residual acceptance occurred. The quarantine incident and all certificate limitations carry forward. Study execution is not yet complete.
+
+### T-026 scope
+
+- **Objective:** Test ordinary major-radius propagation across the integrated plant without a study-specific radius tie, with complete numerical/verdict evidence and explicit invalid-domain limits.
+- **Why now:** T-025 establishes one candidate that reproduces the independently audited model and current consumers.
+- **Scope:** Native run-study execute mode for one bounded engineered radius-sensitivity record at `exploration/stellarator_e2e/studies/20260911-model-owned-radius/`. Declare only the supported plant-R axis, retain all other modeled inputs, obtain fresh pre-execution critique, scan through the independent oracle, and compare ordinary R-only execution including baseline and R14 against frozen controls and independent ratios. Preserve explicit retired-key/invalid-geometry diagnostics separately from valid lifecycle study cases. No new physics, limits, source adoption, financial convention, optimization/feasible-envelope claim, historical mutation or seam repair. At most one committed study and no further pin.
+- **Inputs:** `goal.md`, Round 5 strategy and accepted learnings, T-025 candidate `b23b2327`, WI-051 audit `bf3376be`, consumer audit `7fe8d351`, native run-study skill/runbook/policy and current ANNEX. The STEP reading is pending context only.
+- **Done when:** One committed self-contained native record verifies the bounded ordinary-input study and records limitations/findings, or a useful native blocker is retained.
+- **Stop when:** Unresolved axis ruling, execution/verification failure, prerequisite, changed comparison meaning, reserved decision or declared limit.
+
+### T-026 start — 2026-09-11
+
+T-026 · native run-study execute · expected `exploration/stellarator_e2e/studies/20260911-model-owned-radius/`, first-sighting discovery rows and fresh native reviews. Parent coordinates; the executor owns only its new study and native discovery registrations.
