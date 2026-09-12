@@ -18,7 +18,12 @@ def main():
  for arm in sorted({r['arm_id'] for r in corr}):
   rows=[r for r in corr if r['arm_id']==arm];ids={r['candidate_id'] for r in rows if r['scan_status']=='eligible'};cs=[points[i] for i in ids];full=[c for c in cs if c['full_satisfied']]
   arms.append({'arm_id':arm,'correlation_status_counts':dict(Counter(r['scan_status'] for r in rows)),'unique_cases':len(cs),'fully_satisfied_unique_cases':len(full),'satisfaction_counts':{era:sum(all(c['verdicts'][k]=='satisfied' for k in keys) for c in cs) for era,keys in sets.items()},'best_full_current_sample':view(min(full,key=lambda c:c['lcoe'])) if full else None,'lcoe_extrema_all_diagnostics':[min(c['lcoe'] for c in cs),max(c['lcoe'] for c in cs)] if cs else None})
- summary={'unique_cases':len(points),'fully_satisfied':sum(c['full_satisfied'] for c in points.values()),'constraint_counts':{cid:{'source_local_identity':e['source_local_identity'],**dict(Counter(c['verdicts'][cid] for c in points.values()))} for cid,e in cat.items()},'arms':arms}
+ for arm in arms:
+  rows=[r for r in corr if r['arm_id']==arm['arm_id']];levels=sorted({r['inputs'].get(P+'p_wallplug_heat',defaults[P+'p_wallplug_heat']) for r in rows});arm['power_levels']=[]
+  for power in levels:
+   selected=[r for r in rows if r['inputs'].get(P+'p_wallplug_heat',defaults[P+'p_wallplug_heat'])==power];cs=[points[cid] for cid in {r['candidate_id'] for r in selected if r['scan_status']=='eligible'}];full=[c for c in cs if c['full_satisfied']]
+   arm['power_levels'].append({'installed_power_MW':power,'correlation_status_counts':dict(Counter(r['scan_status'] for r in selected)),'unique_cases':len(cs),'satisfaction_counts':{era:sum(all(c['verdicts'][k]=='satisfied' for k in keys) for c in cs) for era,keys in sets.items()},'fully_satisfied_unique_cases':len(full),'best_full_current_sample':view(min(full,key=lambda c:c['lcoe'])) if full else None})
+ summary={'satisfaction_counts':{era:sum(all(c['verdicts'][k]=='satisfied' for k in keys) for c in points.values()) for era,keys in sets.items()},'unique_cases':len(points),'fully_satisfied':sum(c['full_satisfied'] for c in points.values()),'constraint_counts':{cid:{'source_local_identity':e['source_local_identity'],**dict(Counter(c['verdicts'][cid] for c in points.values()))} for cid,e in cat.items()},'arms':arms}
  write(R/'report-summary.json',summary)
  factorial=[];bridges=[]
  for anchor in sorted({r['anchor'] for r in corr if r['arm_id']=='arm-closure-factorial'}):
@@ -53,6 +58,19 @@ def main():
   else:item['reason']=r['exclusion_reason']
   comparison.append(item)
  write(R/'historical-comparison.json',{'meaning':'Historical actual ten-predicate execution versus current views of identical predicates; upstream model changes are intentional. Cross-revision deltas are not closure-only attribution.','rows':comparison})
+ windows={};historical_correlations={(r['arm_id'],r['historical_id']):r for r in corr if 'historical_id' in r}
+ for row in comparison:
+  raw=historical_correlations[(row['arm_id'],row['historical_id'])]
+  power=raw['inputs'].get(P+'p_wallplug_heat',defaults[P+'p_wallplug_heat']);windows.setdefault((row['arm_id'],row['historical_arm'],power),[]).append(row)
+ window_summary=[]
+ for (arm,oldarm,power),rows in sorted(windows.items()):
+  old=[historical[r['historical_id']] for r in rows if r.get('historical_feasible')];bestold=min(old,key=lambda r:float(r['lcoe'])) if old else None;current=[r for r in rows if r['current_status']=='eligible']
+  best={}
+  for era in sets:
+   eligible=[r for r in current if r['satisfied_sets'][era]];best[era]=min(eligible,key=lambda r:r['lcoe']) if eligible else None
+  flips={r['source_local_identity']:dict(Counter(x['historical_verdicts'][r['source_local_identity']]+' to '+points[x['candidate_id']]['verdicts'][r['current_id']] for x in current if 'historical_verdicts' in x)) for r in predicates if r['era']=='old-ten'}
+  window_summary.append({'arm_id':arm,'historical_arm':oldarm,'installed_power_MW':power,'historical_feasible_rows':len(old),'current_satisfaction_counts':{era:sum(r['satisfied_sets'][era] for r in current) for era in sets},'current_status_counts':dict(Counter(r['current_status'] for r in rows)),'historical_best_ten_predicates':{k:bestold[k] for k in ['case_id','R','a','I_coil_A','n_e0','T_i0_keV','eta_source_heat','tau_ratio_ash','lcoe','lcoe_1cfe']} if bestold else None,'current_best_by_predicate_set':best,'old_ten_predicate_transitions':flips})
+ write(R/'historical-window-summary.json',window_summary)
  # Full per-axis observed values and violations; correlated variation implies no causal slope.
  accounts=[]
  for group in read(H/'axes.json')['groups']:
