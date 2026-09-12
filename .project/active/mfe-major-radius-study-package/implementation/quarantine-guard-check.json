@@ -1,0 +1,8 @@
+{
+  "quarantined_entries_in_original_metadata": 7,
+  "permitted_entries": 14363,
+  "guarded_read_calls": 14363,
+  "quarantined_read_attempts": 0,
+  "protected_delta": {},
+  "basis": "existing digest metadata only; no quarantine bytes read by this verification"
+}
