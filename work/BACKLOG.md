@@ -200,6 +200,11 @@ epics:
     scale: standard
     status: backlog
     completed: null
+  - id: WI-052
+    name: MFE financial rate limits
+    scale: standard
+    status: backlog
+    completed: null
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -310,6 +315,7 @@ standalone:
 | WI-047 | Fuel-Cycle, Divertor-Heat and Vacuum Reduced Flows | standard | backlog |  |
 | WI-050 | MFE coherent operating heating | standard | backlog |  |
 | WI-051 | MFE model-owned major radius | standard | backlog |  |
+| WI-052 | MFE financial rate limits | standard | backlog |  |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active
