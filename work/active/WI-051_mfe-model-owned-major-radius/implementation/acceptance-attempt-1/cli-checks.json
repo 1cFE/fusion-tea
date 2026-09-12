@@ -1,0 +1,68 @@
+[
+  {
+    "command": [
+      ".codex-test/run",
+      "python",
+      "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/cli_entry.py",
+      "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/acceptance-attempt-1/cli-output-0"
+    ],
+    "exit": 0,
+    "arguments": []
+  },
+  {
+    "command": [
+      ".codex-test/run",
+      "python",
+      "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/cli_entry.py",
+      "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/acceptance-attempt-1/cli-output-1",
+      "stellarator_09__stellaris__magnet__R0=14"
+    ],
+    "exit": 1,
+    "arguments": [
+      "stellarator_09__stellaris__magnet__R0=14"
+    ]
+  },
+  {
+    "command": [
+      ".codex-test/run",
+      "python",
+      "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/cli_entry.py",
+      "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/acceptance-attempt-1/cli-output-2",
+      "stellarator_09__stellaris__R=14",
+      "stellarator_09__stellaris__magnet__R0=14"
+    ],
+    "exit": 1,
+    "arguments": [
+      "stellarator_09__stellaris__R=14",
+      "stellarator_09__stellaris__magnet__R0=14"
+    ]
+  },
+  {
+    "command": [
+      ".codex-test/run",
+      "python",
+      "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/cli_entry.py",
+      "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/acceptance-attempt-1/cli-output-3",
+      "stellarator_09__stellaris__R=14",
+      "stellarator_09__stellaris__magnet__R0=12.7"
+    ],
+    "exit": 1,
+    "arguments": [
+      "stellarator_09__stellaris__R=14",
+      "stellarator_09__stellaris__magnet__R0=12.7"
+    ]
+  },
+  {
+    "command": [
+      ".codex-test/run",
+      "python",
+      "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/cli_entry.py",
+      "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/acceptance-attempt-1/cli-output-4",
+      "stellarator_09__stellaris__magnet__R0=0"
+    ],
+    "exit": 1,
+    "arguments": [
+      "stellarator_09__stellaris__magnet__R0=0"
+    ]
+  }
+]

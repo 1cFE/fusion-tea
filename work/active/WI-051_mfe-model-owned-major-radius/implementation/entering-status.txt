@@ -1,0 +1,9 @@
+ M .gitignore
+ M .project/CURRENT_WORK.md
+ M work/orchestration/goals/fusion-audit-remediation/trail.md
+?? .agentic-mbse/
+?? .agents/
+?? .codex/
+?? .project/codex-test-setup.md
+?? AGENTS.md
+?? work/active/WI-051_mfe-model-owned-major-radius/implementation/

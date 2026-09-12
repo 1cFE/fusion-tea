@@ -134,9 +134,6 @@ package stellarator_09 {
             // cross-check: computed B_axis = 9.0 T minus one ulp
             // (8.999999999999998), low side bound so peak_field_ok cannot
             // flip on rounding (WI-035 design D2).
-            // Major radius [m]. Source: stellaris-design-details.md Table 2 /
-            //   line 251 (R ~= 12.7 m).
-            :>> R0 = 12.7;
             // Coil-bore radius [m] = radial-build vessel_or. Forward-computed
             // (WI-021): the generic plant binds magnet.r_coil = rb.r_coil, so
             // r_coil = 3.00 m falls out of the radial build (was an injected

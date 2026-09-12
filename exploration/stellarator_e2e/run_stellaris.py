@@ -113,18 +113,19 @@ def check(label, actual, expected):
         failures.append(label)
 
 
-def run_pipeline(tag):
-    router = create_output_router_with_json_schemas(["RootModel[float]"])
+def run_pipeline(tag, *, pipeline_path=None, output_dir=None):
+    router = create_output_router_with_json_schemas(list(dict.fromkeys(["RootModel[float]"] + [s.__name__ for s in CUSTOM_SCHEMA_TYPES])))
     router.register_handler(
         "float",
         WriteHandler(fn=lambda v, p: Path(p).write_text(json.dumps(v)), extension=".json"),
     )
     result = execute_pipeline(
-        PIPELINE,
-        output_dir=E2E / "outputs" / tag,
+        pipeline_path or PIPELINE,
+        output_dir=output_dir or E2E / "outputs" / tag,
         registry=create_stellarator_tea_registry(),
         output_router=router,
         custom_schema_types=CUSTOM_SCHEMA_TYPES,
     )
     return {c: (float(v.root) if hasattr(v, "root") else float(v))
-            for c, v in result.outputs.items()}
+            for c, v in result.outputs.items()
+            if hasattr(v, "root") or isinstance(v, (int, float))}

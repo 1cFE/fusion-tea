@@ -1,0 +1,28 @@
+{
+  "elements": [
+    {
+      "element": "mfe_plant::'MFE Power Plant'::magnet::R0",
+      "kind": "ReferenceUsage",
+      "documentation": [
+        "Major plasma/axis radius [m], owned by the containing plant.\n\nSource: work/analysis/20260911-230953_radius-ownership-evidence/source-meaning.md\nRef: ## Model and existing source interpretation; ## Assessment; revision 2f8856b7\nBasis: [INHERITED: T-021@2f8856b7] Existing model-intent interpretation: one shared plasma/axis scale. This does not equate real modular-coil surfaces; coil-bore and coil-centre minor radii remain distinct.\nLast Updated: 2026-09-11"
+      ]
+    },
+    {
+      "element": "stellarator_09::stellaris::R",
+      "kind": "ReferenceUsage",
+      "documentation": [
+        "*Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: major plasma radius 12.7 m); prose line 251 **Basis**: Stellaris major radius"
+      ]
+    }
+  ],
+  "source": "work/analysis/20260911-230953_radius-ownership-evidence/source-meaning.md",
+  "revision": "2f8856b7",
+  "sha256": "92110f6a826da0ed3031db2c361565209271fd43bd20c18798d5bb8a297c1c36",
+  "retained_table2_sha256": "433306f0a4522a08a1889d8c76a3de64b51b73d148e61c33a0261c89b66eae73",
+  "source_assessment": "Inherited T-021, not independently re-reviewed",
+  "MR_links": [
+    "MR-051-01",
+    "MR-051-03",
+    "MR-051-08"
+  ]
+}

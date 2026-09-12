@@ -104,7 +104,7 @@ EXPECTED_HEADLINE = "violation"  # WI-047: one verdict violated by design (WI-04
 EXPECTED_VERDICT_COUNT = 18  # WI-050 adds four scalar efficiency bounds.
 
 
-def _execute_package():
+def _execute_package(*, pipeline_path=None, output_dir=None):
     """Execute the sealed package once and return every output, including verdicts."""
     schema_names = dict.fromkeys(
         ["RootModel[float]"] + [schema.__name__ for schema in CUSTOM_SCHEMA_TYPES]
@@ -118,8 +118,8 @@ def _execute_package():
         ),
     )
     result = execute_pipeline(
-        rs.PIPELINE,
-        output_dir=rs.E2E / "outputs" / "single",
+        pipeline_path or rs.PIPELINE,
+        output_dir=output_dir or rs.E2E / "outputs" / "single",
         registry=create_stellarator_tea_registry(),
         output_router=router,
         custom_schema_types=CUSTOM_SCHEMA_TYPES,
@@ -585,4 +585,6 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    if len(sys.argv) != 1:
+        raise SystemExit("Unsupported command-line arguments: " + " ".join(sys.argv[1:]))
     raise SystemExit(main())

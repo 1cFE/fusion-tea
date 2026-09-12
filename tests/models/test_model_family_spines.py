@@ -14,7 +14,7 @@ is the regression spine for both, replacing the migration-era
 * **census** -- the entry-point classification is exact: IFE has 19 entry points / 18
   design attributes after WI-049 shares two Real durations between factors and costs;
   MFE is the census captured from
-  the current WI-050 native package (`data/mfe_census.json`), bound to the semantic
+  the current WI-051 native package (`data/mfe_census.json`), bound to the semantic
   fingerprint it was derived against;
 * **mutations** -- an off-default mutation of one authored design attribute reaches
   **every and only** its bound consumers, read off shipped public artifacts
@@ -118,6 +118,10 @@ def license_must_be_loaded() -> None:
 
 
 def _generate(models: Path, output: Path, package_name: str) -> bool:
+    if package_name == "stellarator_tea":
+        from tests.models.test_mfe_major_radius import H, seed_and_generate
+        seed_and_generate(output, H / "entering-package", models_path=models)
+        return True
     return run_codegen(
         GenerationConfig(
             output_path=output,
@@ -311,14 +315,18 @@ def test_family_subset_generates_and_live_equals_snapshot(family: str, tmp_path:
     snapshot = tmp_path / "instance_graph_snapshot.json"
     capture_instance_graph_snapshot([models], snapshot)
     from_snapshot = tmp_path / "from_snapshot"
-    assert run_codegen(
-        GenerationConfig(
-            output_path=from_snapshot,
-            from_snapshot=snapshot,
-            package_name=spec.package_name,
-            overwrite=True,
+    if family == "mfe":
+        from tests.models.test_mfe_major_radius import H, seed_and_generate
+        seed_and_generate(from_snapshot, H / "entering-package", from_snapshot=snapshot)
+    else:
+        assert run_codegen(
+            GenerationConfig(
+                output_path=from_snapshot,
+                from_snapshot=snapshot,
+                package_name=spec.package_name,
+                overwrite=True,
+            )
         )
-    )
     assert _tree_bytes(live) == _tree_bytes(from_snapshot)
 
 
@@ -349,7 +357,7 @@ def test_mfe_census_matches_current_generated_public_contract(baselines) -> None
     assert _contract(output)["semantic_fingerprint"] == (
         expected["derived_against_semantic_fingerprint"]
     ), "model meaning moved — re-derive tests/models/data/mfe_census.json from the new package"
-    assert len(_contract(output)["parameters"]) == expected["entry_points"] == 247
+    assert len(_contract(output)["parameters"]) == expected["entry_points"] == 246
     assert not any("p_operating_coupled_heat" in str(p) for p in _contract(output)["parameters"])
     assert {k: sorted(v) for k, v in _by_entry_type(output).items()} == expected["by_entry_type"]
     _entry_sources(output)  # identity uniqueness both ways
