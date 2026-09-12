@@ -1270,3 +1270,28 @@ Validation: 14 existing stellarator discovery-join checks passed, 26 unrelated t
 - **Evidence:** `evidence/R6_review/review.md` and `record-checks.txt` (unpinned; no native digest at authoring). Independent read-only log checks passed; original rows remain unchanged and exact F01–F20 summary coverage passes. Native execution certificates are inherited, not rerun. No unexplained mutation voiding T-028 was found on inspected paths.
 - **Limits:** R5-F1 remains an actual seven-file unauthorized hashing incident; corrected guards do not erase it. R5-F2 remains partly attested administrator provenance. Source, parity, independent arithmetic and engineering evidence remain distinct. Pending STEP research supplies no adopted physical authority. No quarantine read/hash, model/study rerun, historical store access, source adoption or PM transition occurred in this review.
 - **Learning and recommendation:** No learning delta; leave learnings unchanged. Recommend owner re-grounding against the assessment's concrete residuals, or redirection/close without certifying the original goal answered. Existing finance, scope, requirements, source, residual-acceptance, close/archive and merge/push gates remain. The historical plant-preservation ruling remains resolved.
+
+### Owner ruling — 2026-09-12: re-ground and continue
+
+[OWNER-VERBATIM] "yes re-ground and continue" responds to the proposed continuation focused first on MFE financial/domain defects and documentation repairs. The proposed ordering remains [AGENT] (ratified by owner, 2026-09-12). `goal.md` now records current grounding evidence and the renewed bounded cycle; Round 6 remains closed and reviewed. This resolves the cap gate for continuation without accepting residual findings or changing finance/scope/source meanings.
+
+## Round 7 — finite-mfe-financial-limits
+
+### Strategy revision — 2026-09-12
+
+[AGENT] Repair the remaining F05 removable singularities in the existing MFE financial calculations while preserving their current economic interpretations. Independent finite sums, high-precision limits and ordinary-baseline controls should distinguish a numerical correction from a changed comparison. Intended model increment: stable equal-rate/zero-rate CRF, escalating-annuity, reported IDC and lifecycle replacement arithmetic, including live/held consumers where affected. Intended study question: does the native current MFE plant execute coherently at and near the repaired rates under both retained financing channels, without changing the physical operating state or claiming normalized cross-concept prices?
+
+Assumptions: the current formulas and retained source implementation fix the mathematical limits without requiring a new monetary or cash-flow convention. Abandon or park the affected branch if source timing, Real-duration behavior, baseline attribution or supported-domain meaning requires an owner ruling. Carry the original answer contract, current residual assessment and all reserved gates. No other physical input-domain or engineering repair is inferred from finite financial arithmetic. Model/consumer histories remain at the reviewed production revisions; only scoped goal/assessment/review changes occurred after ab66658c.
+
+### T-029 scope
+
+Objective: Implement and independently audit the remaining MFE F05 rate-limit corrections, retaining the existing financial interpretations and original ordinary controls.
+Why now: T-028 and fresh Round 6 review identify unresolved MFE singularities after the bounded IFE repair, and the owner re-grounded continuation with financial/domain defects first.
+Scope: One native Standard modeling item for common MFE CRF/levelized annual cost, reported IDC and live/held lifecycle replacement rate limits; necessary generated family artifacts and direct-call verification belong to the native item. Exclude monetary normalization, changed timing conventions, integer-only duration restrictions, physical plant changes, current study-oracle/adapter migration, new pin/study, source adoption and work-item close/archive. Report any required separate consumer migration as a handoff.
+Inputs: amended `goal.md`; `work/analysis/20260912-fusion-audit-current-assessment.md@bfc60b91` F05 and `evidence/T-028_assessment/f01-f07.md@bfc60b91`; original audit F05/probe evidence `e341dc34`; current financial/lifecycle source and prior WI-049/WI-046 native contracts. Preserve Real durations and the distinction between held compatibility and live calendar behavior unless new evidence is surfaced.
+Done when: A fresh positive item audit verifies exact and near-limit behavior against independent references, original counterexamples, both lifecycle modes as applicable, ordinary full-plant preservation and clearly attributed output changes; model/consumer interface and required downstream handoff are documented.
+Stop when: Source/cash-flow/domain meaning conflicts, intentional major baseline deviation, unresolved owner gate, unavailable native prerequisite, or declared retry/repair limit binds.
+
+### T-029 start — 2026-09-12
+
+T-029 invokes orchestrate-modeling from immutable alignment `work/orchestration/mfe-financial-rate-limits.md`; expected return is one registered Standard native item, its model changes and a fresh independent audit, or a named blocker. Round agent owns this trail and later sequential integration. Native stages run fresh with self-contained briefs. No concurrent production writer is dispatched.
