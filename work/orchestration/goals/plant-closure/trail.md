@@ -499,3 +499,9 @@ Intent met for a reduced, current-pin numerical comparison with explicit evidenc
 Evidence: study freeze e1ba37f4, additive validation59351f7d, synthesis in this commit; prior accepted candidate/static evidence remain in their native homes. The owner changed the native case coverage for runtime/risk reasons; this was a scope amendment, not a mechanical retry. The non-green validation battery and publication API gap remain findings, not erased by numeric agreement. No model/domain/finance/source prerequisite was repaired inside the study.
 
 Proposed finding dispositions and learning delta are in `evidence/C-001_reading/proposed-dispositions.md`. No proposed residual is accepted yet. Fresh checkpoint must assess these before grading; approved joins land before the distinct round review. Final packet/demo wording, unresolved source/claim acceptance and reveal stay owner-held. The next strategy, if permitted by fresh review, is consolidation and grading from existing evidence, with no new sweep or production repair.
+
+### Checkpoint C-001.r1 — 2026-09-12
+
+Reviewer: fresh non-author `/root/plant_reading_checkpoint`, committed brief ca7529d7. Verdict: PASS for the study reading and bounded proposed dispositions. Review `evidence/C-001_reading/checkpoint-review.md` permits existing-evidence grading while retaining non-green validation and untested writer failure paths as unmet requirements. Numerical agreement does not waive them. No correction or extra case was required.
+
+All twenty approved joins now append to the native discovery log: thirteen current study findings and seven touched historical IDs. Original sightings and earlier dispositions remain intact. This checkpoint authorizes no model/source/financial repair, residual acceptance, source adoption or reveal. The distinct closed-round review follows before grading; no semantic follow-up has started. Proposed learning remains unaccepted until that review.
