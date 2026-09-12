@@ -1,0 +1,11 @@
+# Current consumer observations for T-029 handoff
+
+[AGENT] Parent read-only inspection at production revision ab66658c / consumer f5737119, before T-029 changes, 2026-09-12. These observations inform the later scoped consumer task; they do not authorize that implementation or make a future task list part of the round strategy.
+
+`exploration/stellarator_e2e/verify_stellaris.py:394` retains the held replacement geometric sum and unstable CRF, and `:490` only special-cases exact zero in live mode. Reported IDC at `:759` and common annual cost at `:781` retain direct singular formulas. A corrected native model therefore cannot establish independent near-limit parity through this unchanged oracle. Model audit should use independent references and direct native execution; current consumer migration requires its own coding work item after the audited native contract is known.
+
+`exploration/stellarator_e2e/studies/oracle_entry.py:157` already maps the public discount rate. Current mapping search found no inflation-rate, construction-duration or operating-duration mapping. Ordinary discount-only intervention can hit zero and the held 0.02 escalation equality without adding those inputs. Broader input-map coverage would need an explicit justified scope, rather than assuming native exposure obliges this adapter to support every input. Preserve the 99 supported/147 unsupported input distinction until the actual audited interface is known.
+
+`exploration/stellarator_e2e/studies/ANNEX.md:74` lists `cas71_calc__crf`, `cas71_calc__levelized`, `cas80_calc__crf` and `cas80_calc__levelized` among omitted independent scalar channels. Those channels matter directly to the F05 repair; any added oracle coverage should have a stated independent calculation and comparisons, without relabeling other frozen controls as independent computations. Both headline and 1cfe-form LCOE and reported IDC are current public consumers.
+
+The existing study route uses the current strict stock loader, eighteen constraints and live calendar default; its original grid/validity mask is not a financial-domain proof. Integration remains the documented sequential fixed-point seam after native model and current-consumer work, with one candidate promotion and one committed study at most. Historical records, stores and pins remain evidence rather than migration targets.
