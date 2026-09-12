@@ -1027,3 +1027,15 @@ T-022 · native orchestrate-modeling Standard repair · expected native work-ite
 ### T-023 start — 2026-09-11
 
 T-023 · native PDF analysis / research reading · expected pending source assessment and retained page evidence; T-022 implementation remains active independently.
+
+### T-023 return — 2026-09-11
+
+**Outcome: COMPLETE for the bounded reading.** Native pending research `knowledge/research/pending/20260911-170548_step-divertor-exhaust-proxy.md@2a55615b` and adjacent page evidence read all five pages of the owner-supplied PDF and directly inspect Table I/Figures 3–4. The source uses P_sep/R limits of 40/60/80 MW/m in double-null STEP scans and cites a DEMO example linking 20 MW/m to about 10 MW/m². It distinguishes allowable fluence from instantaneous heat flux and admits incomplete fluence-to-availability coupling. These findings motivate assessing geometry-sensitive exhaust handling; they do not justify raising the current target-flux threshold or transplanting a tokamak conversion into the stellarator.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Paper's exhaust proxy permits radius/radiation tradeoffs; current live target case holds geometry fixed | Retain the pending source reading and explicit applicability gap; no new physical relation or limit adopted | execution detail | Parent [AGENT] | Native pending report and page evidence at `2a55615b` |
+| No contradiction of the current shared-major-radius interpretation was found | Continue T-022 under its frozen comparison contract; report fixed-target assumptions separately from a future exhaust model | execution detail | Parent [AGENT] | No model/study change from this reading |
+| Research/source approval and possible insight adoption remain outstanding | Keep the report pending; no DI entry, source approval or residual acceptance | reserved gate | Owner-held, undecided | None |
+
+PDF extraction and native save-research operations passed. No model/study execution was claimed by T-023. The raw extractor output retains its original whitespace; the full commit whitespace check therefore reports those extraction-file findings, not a clean result. Authored research/trail prose is separate from that retained source transcription. T-022 remains active; no pin, study or round-limit change occurred.
