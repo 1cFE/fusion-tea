@@ -1,0 +1,81 @@
+{
+  "mapping_old": 100,
+  "mapping_new": 99,
+  "survivors_unchanged": true,
+  "controls": {
+    "baseline": {
+      "native_scalars": 158,
+      "oracle_channels": 141,
+      "verdicts": {
+        "beta_ok": "satisfied",
+        "burn_hold_ok": "satisfied",
+        "cond_strain_ok": "satisfied",
+        "cycle_domain_ok": "satisfied",
+        "divertor_heat_ok": "violated",
+        "heating_couple_positive_ok": "satisfied",
+        "heating_couple_upper_ok": "satisfied",
+        "heating_source_positive_ok": "satisfied",
+        "heating_source_upper_ok": "satisfied",
+        "loop_capacity_ok": "satisfied",
+        "loop_pressure_ok": "satisfied",
+        "net_positive": "satisfied",
+        "peak_field_ok": "satisfied",
+        "recirc_ok": "satisfied",
+        "sustainment_ok": "satisfied",
+        "tbr_ok": "satisfied",
+        "wall_load_ok": "satisfied",
+        "wp_stress_ok": "satisfied"
+      },
+      "responses_exact": true
+    },
+    "R14": {
+      "native_scalars": 158,
+      "oracle_channels": 141,
+      "verdicts": {
+        "beta_ok": "satisfied",
+        "burn_hold_ok": "satisfied",
+        "cond_strain_ok": "satisfied",
+        "cycle_domain_ok": "satisfied",
+        "divertor_heat_ok": "violated",
+        "heating_couple_positive_ok": "satisfied",
+        "heating_couple_upper_ok": "satisfied",
+        "heating_source_positive_ok": "satisfied",
+        "heating_source_upper_ok": "satisfied",
+        "loop_capacity_ok": "violated",
+        "loop_pressure_ok": "satisfied",
+        "net_positive": "satisfied",
+        "peak_field_ok": "satisfied",
+        "recirc_ok": "satisfied",
+        "sustainment_ok": "violated",
+        "tbr_ok": "satisfied",
+        "wall_load_ok": "violated",
+        "wp_stress_ok": "satisfied"
+      },
+      "responses_exact": true
+    }
+  },
+  "ratios": {
+    "stellarator_09__stellaris__geom__V": {
+      "expected": 1.1023622047244095,
+      "actual": 1.1023622047244095
+    },
+    "stellarator_09__stellaris__coil_length__c_coil": {
+      "expected": 1.1023622047244095,
+      "actual": 1.1023622047244095
+    },
+    "stellarator_09__stellaris__field_calc__B_axis": {
+      "expected": 0.9071428571428571,
+      "actual": 0.9071428571428571
+    },
+    "stellarator_09__stellaris__stored_energy__W_mag": {
+      "expected": 0.9071428571428571,
+      "actual": 0.9071428571428571
+    },
+    "stellarator_09__stellaris__peak_field_calc__B_peak": {
+      "expected": 0.880184331797235,
+      "actual": 0.8801843317972349
+    }
+  },
+  "worst_all_oracle_deviation": 2.209043823690201e-16,
+  "expectations_handoff_hash_exact": true
+}

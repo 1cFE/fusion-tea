@@ -1,0 +1,9 @@
+{
+  "synthetic_quarantined_paths": 1,
+  "quarantine_byte_reads": 0,
+  "allowed_reads": [
+    "/home/reid/1cfe/fusion-tea-codex-test/safe.txt"
+  ],
+  "filter_before_read": true,
+  "old_metadata_filtered": true
+}
