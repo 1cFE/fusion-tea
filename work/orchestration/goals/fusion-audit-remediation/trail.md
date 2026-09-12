@@ -1119,3 +1119,29 @@ No mechanical retry, changed comparison, source approval or residual acceptance 
 ### T-026 start — 2026-09-11
 
 T-026 · native run-study execute · expected `exploration/stellarator_e2e/studies/20260911-model-owned-radius/`, first-sighting discovery rows and fresh native reviews. Parent coordinates; the executor owns only its new study and native discovery registrations.
+
+### T-026 return — 2026-09-11
+
+**Outcome: COMPLETE.** The native study `exploration/stellarator_e2e/studies/20260911-model-owned-radius/@d55e806e` contains seven ordinary R-only cases in one store, full promised channel/verdict verification, complete baseline/R14 frozen comparisons, explicit retained diagnostics and six registered findings. Native framing and final reviews are positive with their objective corrections retained. The record supports sampled coherent propagation, with no feasible plant, sourced radius envelope, new domain law or residual acceptance. The successful execution is not yet a goal-level reading or disposition approval.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Native study and self-contained evidence pass their publication/review checks | Freeze the record and dispatch a fresh record-only administrator | execution detail | Parent on native executor return | Study `d55e806e`; T-027 below |
+| Pre-execution review required explicit record framing and truthful preparatory baseline provenance | Resolve through the native schema/bridge/preflight contract before points; final baseline remains in the sole lifecycle store | execution detail | Native executor on fresh critique | Study reviews/pre-execution-disposition.md; original conditional review retained |
+| Report builder lacked its import path; final review found a ratio-count wording error | Correct only environment and prose; preserve original attempts and numerical evidence | execution detail | Native executor on concrete failures/review | Study execution/commands.md and reviews/final-disposition.md; no model rerun or changed comparison |
+| Some native review prose calls the parent no-commit boundary an owner instruction | Read that boundary as parent-authored staging under owner goal authorization, not an owner-originated settled requirement | execution detail | Parent | This provenance correction; no numerical or workflow authority broadened |
+
+Record integrity, native record tests, native publication tests and fail-closed controls are cited inside the study. The executor did not write a synthesis. Six first-sighting rows are native registrations; their goal dispositions remain proposed pending the fresh reading and checkpoint. No second pin/study, mechanical goal-task retry, source approval or changed comparison occurred.
+
+### T-027 scope
+
+- **Objective:** Recover and assess the completed radius study from its committed record alone.
+- **Why now:** T-026 deposited the one study; its independently recoverable meaning must precede goal dispositions.
+- **Scope:** Native run-study administer mode in a fresh no-history subagent. Read only `exploration/stellarator_e2e/studies/20260911-model-owned-radius/` and write only synthesis.md there. No model/oracle execution, external artifact lookup, discovery-log mutation, source approval or semantic follow-up.
+- **Inputs:** The committed record directory at `d55e806e`; the administrator obligations supplied in the deposited brief. Copied context inside the record is available, but references outside it must not be followed.
+- **Done when:** Native synthesis recovers the framing, both LCOEs, every constraint outcome and finding with explicit limits/missing facts, or a bounded record insufficiency.
+- **Stop when:** Record absence/insufficiency, unavailable qualifying fresh session, reserved decision or declared limit.
+
+### T-027 start — 2026-09-11
+
+T-027 · native run-study administer · expected synthesis.md written by a fresh no-history subagent from the committed directory only. The parent owns the goal trail; a separate dispatcher may obtain the fresh child but cannot substitute its own reading.
