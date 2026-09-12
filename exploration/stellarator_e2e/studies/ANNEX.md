@@ -8,11 +8,9 @@ Four sections, named exactly as the runbook links them. The two the runbook trea
 
 ## § Declared ties
 
-`stellarator_09__stellaris__magnet__R0` rides with the major radius `stellarator_09__stellaris__R` (one plant-level entry point since the model migration; before it, the `geom__R` / `rb__R` fan-out).
+The current model owns one operational major radius, `stellarator_09__stellaris__R`, across plasma geometry, sustainment and live magnet operands (WI-051). The 246 public inputs contain no independent magnet radius. Current proposals require no tie or injection. The retired flat key `stellarator_09__stellaris__magnet__R0` and local oracle alias `magnet_R0` are rejected explicitly, including equal and zero submissions.
 
-It is the same physical quantity under a separately authored attribute. The magnet-cost model runs Ampère's law on the coil major radius (`total_kAm = G · B · R0 · r_coil / µ0`), and that radius *is* the plasma major radius — sweeping `R` while holding `magnet__R0` fixed would price coils for a machine that does not exist.
-
-Its suffix is `R0`, not `R`, so no suffix scan will ever surface it. That is why the tie has to be declared rather than found. The tie **data** lives in the manifest (`manifest.json` → `ties`); this section says why it is there and never restates it.
+Fixed magnet, wall and divertor reference radii remain fixed anchors. The divertor constraint retains its fixed target area; the radius-scaled alternative is a reported shadow. Native invalid geometry retains its execution failures, while the study validity mask remains a separate screen. Negative peak-component behavior remains unresolved. Engineering scaling, installed-capacity costing and financial assumptions retain their audited limits.
 
 The former `p_input`/`p_ecrh` tie was retired by WI-039. Installed powers descend from one wall-plug input and the declared source/coupling efficiencies. WI-050 separately derives signed online operation from sustained demand.
 
@@ -20,7 +18,7 @@ The former `p_input`/`p_ecrh` tie was retired by WI-039. Installed powers descen
 
 ## § Baseline pin
 
-The current point, headline and individual verdicts are in `manifest.json` → `baseline`. The WI-050 package has 247 public inputs and 18 assertions with 28 feature-reference operands. At `R = 12.7 m`, `a = 1.3 m` and live-calendar mode (`availability_direct = 0`), the headline is 224.26923288439 $/MWh. Seventeen assertions are satisfied; `divertor_heat_ok` is violated (10.517841546 MW/m² against 10). This baseline is not a feasible plant.
+The current point, headline and individual verdicts are in `manifest.json` → `baseline`. The WI-051 package has 246 public inputs and 18 assertions with 28 feature-reference operands. At `R = 12.7 m`, `a = 1.3 m` and live-calendar mode (`availability_direct = 0`), the headline is 224.26923288439 $/MWh. Seventeen assertions are satisfied; `divertor_heat_ok` is violated (10.517841546 MW/m² against 10). This baseline is not a feasible plant.
 
 The installed heating chain remains 100 MW electric → 50 MW delivered → 50 MW coupled at held source/coupling efficiencies 0.50/1.00. Procurement remains $264,145,000. The operating chain publishes signed coupled demand 49.07960078792678 MW, delivered power 49.07960078792678 MW and electric draw 98.15920157585356 MW. Increasing installed reserve to 120 MW raises procurement to $316,974,000 and leaves online flows unchanged. Physical demand changes affect online power while procurement remains fixed.
 
@@ -30,7 +28,7 @@ The efficiencies are held assumptions. Existing design-point equipment scaling, 
 
 The route executes exactly that point before preflight runs and deposits `baseline_result.json`; preflight's `baseline_headline` gate compares the two at rel < 1e-9 and matches the verdicts by `source_local_identity`.
 
-**After the package is regenerated, the baseline and the ties are pinned against a generation that no longer exists, and preflight fails until they are re-declared.** That is `manifest_currency`, and it is deliberate: the pin is a claim about a specific package, and a stale claim gating a new package is worse than no gate.
+**After the package is regenerated, the baseline and metadata are pinned against a generation that no longer exists, and preflight fails until they are re-declared.** That is `manifest_currency`, and it is deliberate: the pin is a claim about a specific package, and a stale claim gating a new package is worse than no gate.
 
 **Numeric publication (evidence v3).** `study_route.run_points(..., required_channels=CHANNELS)` checks each successful evaluation against the exporter's column map before storing it or advancing to another proposal. Execution failures remain recorded cases under the runner's normal rules. Execution refuses evidence that lacks a declared column (absent or null) before persisting it. A nonfinite value is a model result: the run keeps it, and the exporter refuses it before writing any CSV byte. The map is presentation configuration: adding a column already present in stored evidence reuses the store without execution. The shared route defaults to its own `CHANNELS` map. A new study with its own exporter passes its own map.
 
@@ -62,6 +60,33 @@ Worth knowing before you edit anything here: `oracle_entry.py`'s first channel m
 Known verification-coverage delta (Item 4 audit, 2026-08-20): `p_fus` is not compared by generic `verify.py` — coverage is the manifest's objective catalog plus predicate-resolved operands, and that channel is neither. `magnet_capital` was in the same position until Item 6 added it to the objective catalog (design D9, 2026-08-21); recovering `p_fus` is the same data-only addition, not a tool change.
 
 ---
+
+### Current oracle comparison coverage
+
+The adapter supports 99 mapped inputs, preserving the entering map except for the retired magnet radius. The other 147 native inputs remain unsupported oracle overrides and are explicitly refused. Native input support does not imply oracle coverage for arbitrary sweeps.
+
+The independent oracle declares 141 numeric channels. Baseline and ordinary R-only14 controls compare every declared channel, both LCOEs and all eighteen authored verdicts. The native frozen comparator additionally covers all 158 scalars and nineteen responses, including the aggregate. The generic verifier requires the manifest objectives and predicate channels; its `channels_checked` field names the actual comparisons.
+
+The following seventeen native channels are outside the independent oracle channel map. They remain covered by the complete frozen native comparator and are not independent-oracle claims (prefix `stellarator_09__stellaris__`):
+
+- `cas70_calc__annual_total`
+- `cas70_calc__cas70`
+- `cas71_calc__crf`
+- `cas71_calc__levelized`
+- `cas80_calc__crf`
+- `cas80_calc__levelized`
+- `coil_length__c_coil`
+- `rb__blanket_vol`
+- `rb__r_coil`
+- `rb__shield_vol`
+- `rb__structure_vol`
+- `rb__vessel_vol`
+- `rb__wall_area`
+- `reactor_equipment_subtotal__reactor_equipment_subtotal`
+- `replacement_cost_per_event__replacement_cost_per_event`
+- `wp_sizing__wp_side`
+- `wp_volume__vol_cold_total`
+
 
 ## § Validity masks
 

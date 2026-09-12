@@ -1,6 +1,6 @@
 # Current study consumers for model-owned major radius
 
-Status: Implementation In Progress; independent coding audit required.
+Status: Bounded implementation complete; independent coding audit required.
 
 ## Problem and authority
 

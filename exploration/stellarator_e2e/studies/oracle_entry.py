@@ -9,8 +9,8 @@ nothing else. Everything that is *this package's* knowledge lives here —
   (`operand_bindings`, design D12).
 
 Two published surfaces and nothing else: `evaluate` and `operand_bindings`. The
-independent oracle `verify_stellaris.py` is imported and never modified — it stays
-independent evidence, and a study-seam edit to it would compromise that.
+independent oracle `verify_stellaris.py` recomputes the current model equations.
+Its live radius operands use plant R; fixed reference anchors stay unchanged.
 
 Everything here fails closed. An entry key with no declared mapping, two keys
 that map to one oracle input but disagree, or an oracle output with no channel
@@ -33,7 +33,7 @@ E2E = Path(__file__).resolve().parent.parent
 if str(E2E) not in sys.path:
     sys.path.insert(0, str(E2E))
 
-import verify_stellaris as vs  # noqa: E402  (the independent oracle, unmodified)
+import verify_stellaris as vs  # noqa: E402  (the independent oracle)
 
 # The profile integral depends only on (alpha_n, alpha_T, T_i0), none of which any
 # study sweeps, so memoizing it is exact rather than an approximation. Applied once
@@ -47,10 +47,9 @@ P = "stellarator_09__stellaris__"
 #: or in a recorded case's inputs is declared here; an undeclared key is a failure.
 #: One key per swept plant attribute since the model migration (the library formals
 #: are bound by the `_in` convention, so codegen projects one entry point per
-#: authored attribute); `magnet__R0` is the separately authored tie.
+#: authored attribute). Plant R also owns the live magnet radius.
 ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}R": "R",
-    f"{P}magnet__R0": "magnet_R0",
     f"{P}a": "a",
     # WI-046 (goal plant-closure round 1, 2026-09-08): availability retired as an entry
     # key -- the lifecycle calendar produces it. The four calendar levers replace it;
@@ -468,12 +467,9 @@ class OracleSeamError(Exception):
 
 
 def _oracle_overrides(point: Mapping[str, float]) -> dict[str, float]:
-    """Translate qualified entry keys into oracle inputs, refusing anything undeclared.
-
-    Several keys carry one physical quantity (``geom__R`` and ``rb__R`` are both the
-    major radius). They must agree: a proposal that set them apart would be two
-    different geometries, and the oracle can only be given one.
-    """
+    """Translate qualified current entry keys, refusing undeclared inputs."""
+    if f"{P}magnet__R0" in point:
+        raise OracleSeamError(f"retired entry key {P}magnet__R0; use plant R")
     overrides: dict[str, float] = {}
     for key, value in point.items():
         name = ENTRY_KEY_TO_ORACLE_INPUT.get(key)
@@ -493,6 +489,8 @@ def _oracle_overrides(point: Mapping[str, float]) -> dict[str, float]:
 
 def _compute(overrides: Mapping[str, float]) -> dict[str, float]:
     """Run the independent oracle at a point, restoring its module globals after."""
+    if "magnet_R0" in overrides:
+        raise OracleSeamError("retired oracle input magnet_R0; use plant R")
     saved = dict(vs.IN)
     vs.IN.update(overrides)
     try:

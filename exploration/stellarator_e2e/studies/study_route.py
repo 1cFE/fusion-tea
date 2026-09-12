@@ -2,7 +2,7 @@
 
 Everything here is study knowledge, not tool knowledge: how this package is loaded
 (the stock strict loader, nothing else), how a proposal is spelled (the axis
-expansions and the one declared tie), the two proof-of-life studies' windows and
+expansions), the two proof-of-life studies' windows and
 validity mask, the exported column names, and the baseline-point executor that
 deposits the two documents the generic preflight gates read. A generic tool in
 `scripts/study/` holds none of it, which is why this module is package-owned.
@@ -19,10 +19,9 @@ contract); this module only imports ``simkit`` lazily, inside the functions that
 
 Entry-key shape (after the stellarator model migration, 2026-08-21): the swept axes
 are plant-level design attributes, one key each — ``stellarator_09__stellaris__R``,
-``__a``, ``__availability`` — because the library formals are now bound by the
+``__a``, ``__availability_direct`` — because the library formals are now bound by the
 ``_in`` convention and codegen projects one entry point per authored attribute. The
-magnet major radius ``magnet__R0`` is still separately authored, so it is still a
-declared physical-identity tie (`ANNEX.md § Declared ties`), never fan-out.
+model binds all live magnet radius operands to plant R (WI-051).
 """
 
 from __future__ import annotations
@@ -57,11 +56,6 @@ AXES: dict[str, list[str]] = {
     # its held-mode switch (0 = live; (0, 1] = the retired periodic chain at that value).
     "availability_direct": [f"{P}availability_direct"],
 }
-#: Declared physical-identity tie: the magnet-cost Ampere's-law current runs on the
-#: major radius, so this is the same physical quantity under a separately authored
-#: attribute — a tie, not mechanical fan-out. The tie *data* is in the manifest.
-R_TIE = f"{P}magnet__R0"
-
 BASELINE = {"R": 12.7, "a": 1.3, "availability_direct": 0.0}  # WI-046: the instance is live
 #: The plasma plus the held-fixed radial-build stack must fit inside the major radius
 #: or the torus self-intersects. A derived geometric bound from held-fixed inputs, not
@@ -93,11 +87,10 @@ class RouteError(Exception):
 
 
 def proposal_for(R: float, a: float, availability_direct: float) -> dict[str, float]:
-    """One proposal: the axis expansions plus the declared tie. Nothing else."""
+    """One proposal containing the three model-owned axis inputs."""
     point: dict[str, float] = {}
     for key in AXES["R"]:
         point[key] = R
-    point[R_TIE] = R
     for key in AXES["a"]:
         point[key] = a
     for key in AXES["availability_direct"]:
@@ -106,6 +99,8 @@ def proposal_for(R: float, a: float, availability_direct: float) -> dict[str, fl
 
 
 def validate_proposal(raw):
+    if f"{P}magnet__R0" in raw:
+        raise RouteError(f"retired entry key {P}magnet__R0; use plant R")
     out = {}
     for key, value in raw.items():
         if not isinstance(value, (int, float)) or isinstance(value, bool):

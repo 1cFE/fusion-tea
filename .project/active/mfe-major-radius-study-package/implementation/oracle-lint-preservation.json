@@ -1,0 +1,166 @@
+{
+  "entering": [
+    {
+      "code": "E501",
+      "message": "Line too long (103 > 100)",
+      "line": "    \"\"\"I = trapezoid_{rho in [0,1]} (1-rho^2)^(2*alpha_n) * sigv_dt(T_i0*(1-rho^2)^alpha_T) * 2*rho.\"\"\""
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (103 > 100)",
+      "line": "    I_line_fuel = _trapz_rho(lambda u, rho: u ** alpha_n)             # chord average of the fuel shape"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (103 > 100)",
+      "line": "    I_line_S = _trapz_rho(lambda u, rho: S(u))                         # chord average of the ash shape"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (114 > 100)",
+      "line": "    q_nuc_cryo=35.5, vol_cold_cryo=0.0, p_fixed_cryo=0.0075,  # WI-036: additive slot; the pack volume is computed"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (106 > 100)",
+      "line": "    supp_contingency_rate=0.0,  # CAS50 c59 internal contingency: library default 0.0 (not instance-bound)"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (145 > 100)",
+      "line": "    tbr=1.074,  # the achieved TBR the instance binds (Table 6); the oracle never needed it before WI-047 -- tbr_ok binds package inputs directly"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (104 > 100)",
+      "line": "    if not math.isfinite(availability_direct) or availability_direct < 0.0 or availability_direct > 1.0:"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (104 > 100)",
+      "line": "        raise ValueError(f\"oracle calendar: availability_direct {availability_direct!r} outside [0, 1]\")"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (126 > 100)",
+      "line": "        raise RuntimeError(\"oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)\")"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (102 > 100)",
+      "line": "    p_cold = ((((p[\"q_nuc_cryo\"] * vol_cold_total) * 1e-06) + p[\"p_fixed_cryo\"]) * p[\"f_uplift_cryo\"])"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (130 > 100)",
+      "line": "    magnet_structure = p[\"magnet_n_coils\"] * m_casing * p[\"magnet_steel_price\"] * p[\"magnet_f_steel_fab\"]  # WI-044: computed mass"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (114 > 100)",
+      "line": "    annual_om_unlevelized = ((p[\"om_annual_ref\"] * (((p_net * p[\"n_mod\"]) / p[\"ref_net_power\"]) ** p[\"om_alpha\"]))"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (107 > 100)",
+      "line": "               + p[\"coolant_intermediate_base\"] * (n * p_th / p[\"coolant_p_th_ref\"]) ** p[\"coolant_alpha\"])"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (109 > 100)",
+      "line": "    #   p_heat_abs   = p_alpha_heat + p_coupled (sustained operating basis);  p_sep = p_heat_abs - p_rad_core"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (107 > 100)",
+      "line": "    #   f_rad_edge   = (f_total*p_heat_abs - p_rad_core)/p_sep;  p_target = p_heat_abs - f_total*p_heat_abs"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (104 > 100)",
+      "line": "    fuel_tbr_required = ((fuel_burn_rate + fuel_loss_rate + p[\"lambda_T\"] * p[\"I_total\"] + p[\"G_stock\"])"
+    }
+  ],
+  "current": [
+    {
+      "code": "E501",
+      "message": "Line too long (103 > 100)",
+      "line": "    \"\"\"I = trapezoid_{rho in [0,1]} (1-rho^2)^(2*alpha_n) * sigv_dt(T_i0*(1-rho^2)^alpha_T) * 2*rho.\"\"\""
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (103 > 100)",
+      "line": "    I_line_fuel = _trapz_rho(lambda u, rho: u ** alpha_n)             # chord average of the fuel shape"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (103 > 100)",
+      "line": "    I_line_S = _trapz_rho(lambda u, rho: S(u))                         # chord average of the ash shape"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (114 > 100)",
+      "line": "    q_nuc_cryo=35.5, vol_cold_cryo=0.0, p_fixed_cryo=0.0075,  # WI-036: additive slot; the pack volume is computed"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (106 > 100)",
+      "line": "    supp_contingency_rate=0.0,  # CAS50 c59 internal contingency: library default 0.0 (not instance-bound)"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (145 > 100)",
+      "line": "    tbr=1.074,  # the achieved TBR the instance binds (Table 6); the oracle never needed it before WI-047 -- tbr_ok binds package inputs directly"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (104 > 100)",
+      "line": "    if not math.isfinite(availability_direct) or availability_direct < 0.0 or availability_direct > 1.0:"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (104 > 100)",
+      "line": "        raise ValueError(f\"oracle calendar: availability_direct {availability_direct!r} outside [0, 1]\")"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (126 > 100)",
+      "line": "        raise RuntimeError(\"oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)\")"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (102 > 100)",
+      "line": "    p_cold = ((((p[\"q_nuc_cryo\"] * vol_cold_total) * 1e-06) + p[\"p_fixed_cryo\"]) * p[\"f_uplift_cryo\"])"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (130 > 100)",
+      "line": "    magnet_structure = p[\"magnet_n_coils\"] * m_casing * p[\"magnet_steel_price\"] * p[\"magnet_f_steel_fab\"]  # WI-044: computed mass"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (114 > 100)",
+      "line": "    annual_om_unlevelized = ((p[\"om_annual_ref\"] * (((p_net * p[\"n_mod\"]) / p[\"ref_net_power\"]) ** p[\"om_alpha\"]))"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (107 > 100)",
+      "line": "               + p[\"coolant_intermediate_base\"] * (n * p_th / p[\"coolant_p_th_ref\"]) ** p[\"coolant_alpha\"])"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (109 > 100)",
+      "line": "    #   p_heat_abs   = p_alpha_heat + p_coupled (sustained operating basis);  p_sep = p_heat_abs - p_rad_core"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (107 > 100)",
+      "line": "    #   f_rad_edge   = (f_total*p_heat_abs - p_rad_core)/p_sep;  p_target = p_heat_abs - f_total*p_heat_abs"
+    },
+    {
+      "code": "E501",
+      "message": "Line too long (104 > 100)",
+      "line": "    fuel_tbr_required = ((fuel_burn_rate + fuel_loss_rate + p[\"lambda_T\"] * p[\"I_total\"] + p[\"G_stock\"])"
+    }
+  ]
+}

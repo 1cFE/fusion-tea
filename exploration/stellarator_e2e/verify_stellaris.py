@@ -108,7 +108,7 @@ def _sustainment(p, V, B_axis):
     n_e0 = p["n_e0"]
     T_i0 = p["T_i0"]
     a = p["a"]
-    R = p["magnet_R0"]
+    R = p["R"]
     B = B_axis
     alpha_n = p["alpha_n"]
     alpha_T = p["alpha_T"]
@@ -281,7 +281,7 @@ IN = dict(
     # magnet (WI-035, inversion): B is COMPUTED from the coil-set current; the
     #   held magnet_B=9.0 is retired. Lever and coil-set facts mirror the
     #   stellarator_plant bindings (Table 2/8 images; design D2/D3/D4/D5).
-    magnet_G=78.95683520871486, magnet_R0=12.7,
+    magnet_G=78.95683520871486,
     magnet_cost_per_kAm=50.0, magnet_coil_markup=5.87,  # 1cfe-form comparison channel
     magnet_n_coils=48.0, magnet_I_coil=15400000.0,
     magnet_k_link=0.7731331164622419, magnet_two_pi=6.283185307179586,
@@ -507,6 +507,8 @@ def _oracle_lifecycle_calendar(cost_per_event, q_n, fluence_limit, interest_rate
 
 
 def compute():
+    if "magnet_R0" in IN:
+        raise ValueError("retired oracle input magnet_R0; use plant R")
     p = IN
     # --- Plasma Geometry ---
     V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
@@ -543,27 +545,27 @@ def compute():
     # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
     # of the plasma chain at WI-037 because sustainment reads B_axis) ---
     B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
-              / (p["magnet_two_pi"] * p["magnet_R0"]))
+              / (p["magnet_two_pi"] * p["R"]))
     # WI-044: the peak field sees the coil bore. Lion 2021 eq. 39 has the field on the
     # coil rising as R / (R - a_coil); with B_axis ~ N I / R the peak/axis ratio carries
     # that factor. The printed ratio is the anchor at the reference geometry, the factor
     # is applied normalised there (exactly 1.0 at the design point), and the winding-pack
     # term of eq. 39 is not carried (a1(C) unprinted, design D2).
-    bore_factor = p["magnet_R0"] / (p["magnet_R0"] - r_coil_centre)
+    bore_factor = p["R"] / (p["R"] - r_coil_centre)
     bore_factor_ref = p["magnet_R_ref"] / (p["magnet_R_ref"] - p["magnet_a_coil_ref"])
     bore_norm = bore_factor / bore_factor_ref
     B_peak = B_axis * p["magnet_peak_ratio"] * bore_norm
     # WI-044: stored magnetic energy from the coil-set inductance shape, thesis eq. 2.82
     # L = L(C) (a_coil/a_ref)^2 (R_ref/R) with W = 1/2 L I^2, anchored at the printed 111 GJ.
     W_mag = (p["magnet_W_mag_ref"] * (p["magnet_I_coil"] / p["magnet_I_ref"]) ** 2
-             * (r_coil_centre / p["magnet_a_coil_ref"]) ** 2 * (p["magnet_R_ref"] / p["magnet_R0"]))
+             * (r_coil_centre / p["magnet_a_coil_ref"]) ** 2 * (p["magnet_R_ref"] / p["R"]))
     # WI-044: casing mass from stored energy, Lion 2021 eq. 56 M = 1.348 W^0.78 with the
     # constant absorbed by the anchor (no units printed); the 63 t floor keeps its seam.
     m_casing = p["magnet_m_casing_ref"] * (W_mag / p["magnet_W_mag_ref"]) ** 0.78
     # WI-036: the pack sizes itself from the current, and the winding length from
     # machine scale; both were held inputs before this item.
     wp_side = (p["magnet_I_coil"] / p["magnet_j_wp"]) ** 0.5 / 1000.0
-    c_coil = p["magnet_k_coil"] * p["magnet_R0"]
+    c_coil = p["magnet_k_coil"] * p["R"]
     sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / wp_side
     # WI-036: the conductor's own operand, checked separately from the structure's.
     eps_cond = p["magnet_f_cond"] * sigma_wp / p["magnet_E_wp"]
@@ -668,7 +670,7 @@ def compute():
     p_net = (1.0 - rec_frac) * p_et
 
     # --- Account costs ($) ---
-    total_kAm = (p["magnet_G"] * B_axis * p["magnet_R0"] * r_coil
+    total_kAm = (p["magnet_G"] * B_axis * p["R"] * r_coil
                  / (p["mu0"] * 1000.0))
     magnet = total_kAm * p["magnet_cost_per_kAm"] * p["magnet_coil_markup"]
     # WI-035 decomposed magnet accounts (design D4/D5/D6); `magnet` above stays

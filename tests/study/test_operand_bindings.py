@@ -24,7 +24,6 @@ STUDIES = REPO_ROOT / "exploration" / "stellarator_e2e" / "studies"
 
 BASELINE_POINT = {
     "stellarator_09__stellaris__R": 12.7,
-    "stellarator_09__stellaris__magnet__R0": 12.7,
     "stellarator_09__stellaris__a": 1.3,
     # WI-046: availability retired as an entry key; availability_direct 0.0 = the live calendar
     "stellarator_09__stellaris__availability_direct": 0.0,
@@ -97,7 +96,7 @@ def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
     inputs = package_inputs(real_package_path)
 
     assert set(bindings) == {entry["constraint_id"] for entry in entries}
-    assert len(inputs) == 247
+    assert len(inputs) == 246
     resolved = 0
     for entry in entries:
         cid = entry["constraint_id"]

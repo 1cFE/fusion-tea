@@ -7,7 +7,7 @@
  "fingerprints": {
   "indicator_inputs": {
    "recipe": "indicator-input-fingerprint/v1",
-   "digest": "0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204",
+   "digest": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
    "files": [
     "contracts/model_contract.json",
     "inputs/mfe_account_costs_params.json",
@@ -23,8 +23,8 @@
    ]
   },
   "recorded_provenance": {
-   "executable_fingerprint": "a9514eb6505dea1589f47cb20bd004e480d61b3be98e7d793bf195b1b2d773b0",
-   "semantic_fingerprint": "8f4912c20870b8e0090f9836292403d9d05b0b0e6d46dabf53713772737666cf"
+   "executable_fingerprint": "cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c",
+   "semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e"
   }
  },
  "objective_catalog": [
@@ -99,19 +99,10 @@
    "note": "WI-050 signed operating demand at held source/coupling efficiencies."
   }
  ],
- "ties": [
-  {
-   "key": "stellarator_09__stellaris__magnet__R0",
-   "rides_with": [
-    "stellarator_09__stellaris__R"
-   ],
-   "note": "Magnet coil major radius is the same physical quantity as the plasma major radius. Its suffix is R0, not R, so no suffix scan will ever surface it -- the tie must be declared. Advisory here: a group holding R but not this key earns a tie_candidate warning, never an added key. Since the model migration the plasma major radius is one plant-level entry point (R), not the geom__R / rb__R fan-out."
-  }
- ],
+ "ties": [],
  "baseline": {
   "point": {
    "stellarator_09__stellaris__R": 12.7,
-   "stellarator_09__stellaris__magnet__R0": 12.7,
    "stellarator_09__stellaris__a": 1.3,
    "stellarator_09__stellaris__availability_direct": 0.0
   },
@@ -199,6 +190,6 @@
   "module": "oracle_entry",
   "callable": "evaluate",
   "sys_path": "exploration/stellarator_e2e/studies",
-  "note": "Package-owned oracle seam. evaluate(point) takes a mapping of qualified entry keys to floats and returns a mapping of qualified channel names to floats; it wraps the independent pure-Python oracle verify_stellaris.py, which is imported and never modified. The module also publishes a fixed-name companion, operand_bindings() -> {constraint_id: {source_name: {kind, key}}}, which says which qualified input key or channel each predicate operand means. A generic verifier requires both and fails closed on anything unresolved: on this package one operand of five constraints resolves to nothing by name at all, so a tool that inferred bindings would compare the wrong number and read as a pass."
+  "note": "Package-owned oracle seam. evaluate(point) takes a mapping of qualified entry keys to floats and returns a mapping of qualified channel names to floats; it wraps the independent pure-Python oracle verify_stellaris.py, whose current live radius operands follow model-owned plant R. ANNEX.md section Current oracle comparison coverage lists the seventeen native channels outside its 141-channel map. The module also publishes a fixed-name companion, operand_bindings() -> {constraint_id: {source_name: {kind, key}}}, which says which qualified input key or channel each predicate operand means. A generic verifier requires both and fails closed on anything unresolved: on this package one operand of five constraints resolves to nothing by name at all, so a tool that inferred bindings would compare the wrong number and read as a pass."
  }
 }

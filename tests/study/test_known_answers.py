@@ -1,4 +1,4 @@
-"""The six Item 1 cases, field for field, against the committed package.
+"""The five current axis cases, field for field, against the committed package.
 
 The expectation files in ``data/`` are bound to the semantic fingerprint they were
 derived against. If the package is regenerated they are re-derived from the new
@@ -18,9 +18,9 @@ from tests.study.conftest import DATA_DIR, run_tool
 # WI-046 (goal plant-closure round 1, 2026-09-08): the `availability` axis is renamed
 # `availability_direct` -- the lifecycle calendar produces availability; the lever is its
 # held-mode switch (design D5). The known answer is re-derived, its no-response claim kept.
-CASES = ["availability_direct", "interest_rate", "R", "R+tie", "a", "I_coil"]
+CASES = ["availability_direct", "interest_rate", "R", "a", "I_coil"]
 
-EXPECTED_SEMANTIC_FINGERPRINT = "8f4912c20870b8e0090f9836292403d9d05b0b0e6d46dabf53713772737666cf"
+EXPECTED_SEMANTIC_FINGERPRINT = '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e'
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
 #:          modules fired, channels tainted). Read straight off the Item 1 fixture
@@ -29,7 +29,7 @@ EXPECTED_SEMANTIC_FINGERPRINT = "8f4912c20870b8e0090f9836292403d9d05b0b0e6d46dab
 #: qualitative contract is unchanged; R and a fire one more module and taint one
 #: more channel because CAS27 is now computed in-package and declared as the
 #: `cas27` objective, and each swept attribute is one plant-level entry point.
-# WI-050: re-derived by implementation/refresh_metadata.py from the native graph.
+# WI-051: re-derived by the radius item metadata caller from the native graph.
 FIXTURE_CONTRACT = {'I_coil': (False,
             ['beta_ok',
              'burn_hold_ok',
@@ -87,38 +87,8 @@ FIXTURE_CONTRACT = {'I_coil': (False,
         'p_aux_required',
         'tau_E',
         'total_capital'],
-       82,
-       160),
- 'R+tie': (False,
-           ['beta_ok',
-            'burn_hold_ok',
-            'cond_strain_ok',
-            'cycle_domain_ok',
-            'divertor_heat_ok',
-            'loop_capacity_ok',
-            'loop_pressure_ok',
-            'net_positive',
-            'peak_field_ok',
-            'recirc_ok',
-            'sustainment_ok',
-            'wall_load_ok',
-            'wp_stress_ok'],
-           ['beta',
-            'cas27',
-            'cas72',
-            'fuel',
-            'lcoe',
-            'lcoe_1cfe',
-            'magnet_capital',
-            'magnet_capital_1cfe',
-            'operating_heat_coupled',
-            'operating_heat_delivered',
-            'operating_heat_wallplug',
-            'p_aux_required',
-            'tau_E',
-            'total_capital'],
-           87,
-           165),
+       87,
+       165),
  'a': (False,
        ['beta_ok',
         'burn_hold_ok',
@@ -149,7 +119,11 @@ FIXTURE_CONTRACT = {'I_coil': (False,
         'total_capital'],
        82,
        160),
- 'availability_direct': (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 6, 18),
+ 'availability_direct': (True,
+                         [],
+                         ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'],
+                         6,
+                         18),
  'interest_rate': (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 9, 22)}
 
 
@@ -288,45 +262,12 @@ def test_r_reaches_net_positive_through_a_computed_operand(report):
     assert literal["value"] == 0.0
 
 
-def test_the_declared_tie_extends_reach_through_the_field(report):
-    """WI-035 inverted the old invariant: magnet__R0 now feeds 'Coil Set Axis
-    Field', so declaring the physical-identity tie ADDS the field-side reach —
-    beta_ok, peak_field_ok, wp_stress_ok — that plain R (plant geometry only)
-    cannot see. Before WI-035 the tie changed nothing; that this test had to
-    flip is the design response the rubric row asked for.
-
-    WI-044 (goal minor-radius round 1, 2026-09-07) flipped it again, at the
-    REACHABILITY level only: 'Conductor Peak Field' now takes the radial
-    build's coil-centre radius (r_coil_centre), the radial build takes plain R,
-    and the trace is module-level (the report's own not_derivable statement:
-    intra-module operand dependency is not resolved), so every rb output --
-    r_coil_centre included -- counts as tainted when R moves, and plain R
-    "reaches" the three magnet fences and magnet_capital exactly as the tie
-    does. The executed response still differs: bore_factor, W_mag and the
-    winding length read magnet__R0, not plant R, so plain R moves none of
-    them (WI-044 evidence/offdesign_points, design D1). The tie's exclusive
-    reach is therefore empty on the report; what the tie adds is now only
-    visible in executed channels, not in reachability. Restated from the
-    report, never patched; the tie-exclusive sets are asserted empty so a
-    future package that separates them again has to say so here."""
+def test_model_owned_radius_reaches_magnet_and_plasma(report):
     plain = group_by_axis(report, "R")
-    tied = group_by_axis(report, "R+tie")
-    plain_reach = {c["source_local_identity"] for c in plain["constraints_reachable"]}
-    tied_reach = {c["source_local_identity"] for c in tied["constraints_reachable"]}
-    assert plain_reach == tied_reach
-    assert tied_reach - plain_reach == set()
-    assert {"peak_field_ok", "wp_stress_ok", "cond_strain_ok"} <= tied_reach
-    # WI-044: magnet_capital is reachable from plain R through the same
-    # module-level path (rb -> stored energy -> casing mass -> structure cost).
-    assert set(tied["objectives_reachable"]) - set(plain["objectives_reachable"]) == set()
-    assert "beta" in tied["objectives_reachable"]
-    # WI-036 closed the disclosed WI-035 limitation recorded here: the winding
-    # length was the held c_coil, so the decomposed rollup could not respond to R.
-    # It is now c_coil = k_coil * R0, so magnet_capital DOES respond to the major
-    # radius through the winding length (MR-WI036-4).
-    assert "magnet_capital_1cfe" in tied["objectives_reachable"]
-    assert "magnet_capital" in tied["objectives_reachable"]
-    assert len(tied["declared_keys"]) == 2
+    reached = {c["source_local_identity"] for c in plain["constraints_reachable"]}
+    assert {"peak_field_ok", "wp_stress_ok", "cond_strain_ok", "sustainment_ok"} <= reached
+    assert {"beta", "magnet_capital", "magnet_capital_1cfe"} <= set(plain["objectives_reachable"])
+    assert len(plain["declared_keys"]) == 1
 
 
 def test_every_constraint_carries_all_three_identities(report):
