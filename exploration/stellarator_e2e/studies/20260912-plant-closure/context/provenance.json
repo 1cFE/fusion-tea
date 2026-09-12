@@ -1,0 +1,205 @@
+[
+  {
+    "path": "context/goal.md",
+    "source_path": "work/orchestration/goals/plant-closure/goal.md",
+    "source_commit": "dde473160ea1a51a3f8b2129f815737f1af55fff",
+    "sha256": "fd571136de52648168191ce25da13c090aa2b766cc4acd871f7e1115eece50f9",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/goal-trail.md",
+    "source_path": "work/orchestration/goals/plant-closure/trail.md",
+    "source_commit": "bf0579b69ee3580b37a9cbaa690d581bf8b6ef80",
+    "sha256": "dff71b70758e436194f20d6685f4ff9bce564ad914a27a9860f331064428ae7b",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/study-policy.md",
+    "source_path": "modeling_project/STUDY_POLICY.md",
+    "source_commit": "ad2fb4ea1bb5c77ebe5e60e277fb320b481b0872",
+    "sha256": "5f166202b553867af16ff2c349ad5e39988dd73e9a07407ece576314e01ad8ef",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/runbook.md",
+    "source_path": ".claude/skills/run-study/runbook.md",
+    "source_commit": "769c47edeb7ae05bc3a1f51d59231774e1bc5ac8",
+    "sha256": "850ac4e94249f14b73eff220424ad0fcd350bd5e5a7f7bbb1303db0e8b356ae6",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/record-template.md",
+    "source_path": ".claude/skills/run-study/record-template.md",
+    "source_commit": "ad2fb4ea1bb5c77ebe5e60e277fb320b481b0872",
+    "sha256": "fffc66bf3958698a6d6348f646590cdea0ad6512fc1d3d05c7e227912260e9c3",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/ANNEX.md",
+    "source_path": "exploration/stellarator_e2e/studies/ANNEX.md",
+    "source_commit": "f5737119a65ef8dd9306589e499260c127e97bb7",
+    "sha256": "bb56f205558990849aea0f09ca2e4996a929249036e7a765f55cae0e07b68f55",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/manifest.json",
+    "source_path": "exploration/stellarator_e2e/studies/manifest.json",
+    "source_commit": "f5737119a65ef8dd9306589e499260c127e97bb7",
+    "sha256": "0ad528c8a14fed079c895229172db697639bba44e4462122a9561cd33f1c8b72",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/oracle_entry.py",
+    "source_path": "exploration/stellarator_e2e/studies/oracle_entry.py",
+    "source_commit": "f5737119a65ef8dd9306589e499260c127e97bb7",
+    "sha256": "d1e96a65b59728aa5c92827fb2a4ede99a3a33ccf93ba291bf31661928d77df8",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/verify_stellaris.py",
+    "source_path": "exploration/stellarator_e2e/verify_stellaris.py",
+    "source_commit": "f5737119a65ef8dd9306589e499260c127e97bb7",
+    "sha256": "90951874257194cb36ee790faebd2fd27dfcebbe2317c36e1b9869f7ff2aefff",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/study_route.py",
+    "source_path": "exploration/stellarator_e2e/studies/study_route.py",
+    "source_commit": "f5737119a65ef8dd9306589e499260c127e97bb7",
+    "sha256": "3601df5f04cb0561a54864b77d6df88cdba466cc2f47f99c3048dff1b7a46d0e",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/model_contract.json",
+    "source_path": "exploration/stellarator_e2e/generated/contracts/model_contract.json",
+    "source_commit": "641c10512076cc21fac78715de2effc2c33b9194",
+    "sha256": "d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/package_contract.json",
+    "source_path": "exploration/stellarator_e2e/generated/contracts/package_contract.json",
+    "source_commit": "641c10512076cc21fac78715de2effc2c33b9194",
+    "sha256": "7afe83954c8b591c7b30c94b64940f9904d9f25ea9cf4fc6da5bbb87f171c9f7",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/pipeline.yaml",
+    "source_path": "exploration/stellarator_e2e/generated/pipelines/pipeline.yaml",
+    "source_commit": "641c10512076cc21fac78715de2effc2c33b9194",
+    "sha256": "84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/candidate.json",
+    "source_path": "work/orchestration/goals/fusion-audit-remediation/evidence/T-025_pin/integration_return.json",
+    "source_commit": "b23b2327c8c9f8209775b5484d81d78122d636be",
+    "sha256": "dfc969f2da345fc77bb769615ebaf8e76ddf1e1d6c40bd9e17288f5e543492e1",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/consumer-audit.md",
+    "source_path": ".project/active/mfe-major-radius-study-package/audit.md",
+    "source_commit": "7fe8d351208986ff62abc43080c51b796645ee11",
+    "sha256": "c08b9245ea45f256f143094c18b482d40fd3f577c72c242d143f1b6e1976f406",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/radius-audit.md",
+    "source_path": "work/active/WI-051_mfe-model-owned-major-radius/audit.md",
+    "source_commit": "bf3376bea45b0b01e2ab840c6bfcfe154a3becf2",
+    "sha256": "bc627a16ccc3c3561129d83edc436353aa3981018a6a86b33f2b22f8dbba1662",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/candidate-assessment.md",
+    "source_path": "work/analysis/20260912-plant-comparison-candidate.md",
+    "source_commit": "662ac8f3b49a4ff43e97281fc37c6d996024c015",
+    "sha256": "4a4f733f98a944ac3eb8b3bcf74d86facc40e904529b6c6246dee28b404e7ede",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/historical-record.md",
+    "source_path": "exploration/stellarator_e2e/studies/20260907-minor-radius/record.md",
+    "source_commit": "cc44c041cd883a4f500a2f5e671e51ca6e40ba08",
+    "sha256": "d05dce249a28c8e4e4374674f7d19c30d5fd5c918954883a02475f0ecf14d8b4",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/historical-snapshot.json",
+    "source_path": "exploration/stellarator_e2e/studies/20260907-minor-radius/snapshot.json",
+    "source_commit": "16ce343eeace4bb1a194ebe5f29441d41e2eabc9",
+    "sha256": "3edd21dd652f9b4cd783d4266ca7dac7927bc818ddbcb668b20a42806f64a1a7",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/historical-points.csv",
+    "source_path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/points.csv",
+    "source_commit": "16ce343eeace4bb1a194ebe5f29441d41e2eabc9",
+    "sha256": "68ce9e6f489179e17b415f704898c457940a880945503250c7aac09674a8ae6f",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/historical-excluded.csv",
+    "source_path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/excluded_points.csv",
+    "source_commit": "afe24102c81e9a9ecf2836f2559c4a194af9e7ca",
+    "sha256": "ec4eee8c7a1ea6f99ead3f2e4c91332d971d5ee54edfed686bb1efb3651f4856",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/WI045-design.md",
+    "source_path": "work/active/WI-045_primary-loop-and-cycle/design.md",
+    "source_commit": "8aa7bc489e71f24b81c48735ed867a11916125f9",
+    "sha256": "aa271939a8aebb36ea5fb743d376b5d114869c7f55817576ff8370eedd734be2",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/WI046-design.md",
+    "source_path": "work/active/WI-046_lifecycle-calendar/design.md",
+    "source_commit": "8aa7bc489e71f24b81c48735ed867a11916125f9",
+    "sha256": "8a89ce373974d10bfdfb26d09737a80ff763a6642ec24ae9ef66056c93f5697e",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/WI047-design.md",
+    "source_path": "work/active/WI-047_fuel-divertor-vacuum-flows/design.md",
+    "source_commit": "8aa7bc489e71f24b81c48735ed867a11916125f9",
+    "sha256": "5d3c0ad6126f6973b510d9c675293e2147b31c2c9e2b67eac1b6678a5adc269d",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/study-contract.md",
+    "source_path": "work/orchestration/goals/plant-closure/evidence/round2_preparation/study-contract.md",
+    "source_commit": "9d58b5eab20b99ce21a89660c87f175eaf5638f9",
+    "sha256": "71eb5abc9043f31a59b5403a77e3d52725bc09e17786f3e5108a8e85d69215cc",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/scenario-matrix.md",
+    "source_path": "work/orchestration/goals/plant-closure/evidence/round2_preparation/scenario-matrix.md",
+    "source_commit": "9d58b5eab20b99ce21a89660c87f175eaf5638f9",
+    "sha256": "6b5ab2eaa9462dc690c4d9f2c58d6e86672139c67422085781bb9f00d8ed2dac",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/output-contract.md",
+    "source_path": "work/orchestration/goals/plant-closure/evidence/round2_preparation/output-contract.md",
+    "source_commit": "9d58b5eab20b99ce21a89660c87f175eaf5638f9",
+    "sha256": "0c3c2442fee9eea8219cda5e8b58d2ab110e110c1256ed9f5c71da63f4d1d67a",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/rubric-evidence-map.md",
+    "source_path": "work/orchestration/goals/plant-closure/evidence/round2_preparation/rubric-evidence-map.md",
+    "source_commit": "cc1679843832973c35def79417af276ce0142f5c",
+    "sha256": "d688e090fe4e97a874e878f3e82b53120149cd78ff67d3aff12ce294f024b0fd",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/proposed-dispositions.md",
+    "source_path": "work/orchestration/goals/plant-closure/evidence/round2_preparation/proposed-dispositions.md",
+    "source_commit": "9d58b5eab20b99ce21a89660c87f175eaf5638f9",
+    "sha256": "eed9c926946db46b3b8bd860549c8641a676ffc240b0b9585053540a5a7f42ff",
+    "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  }
+]
