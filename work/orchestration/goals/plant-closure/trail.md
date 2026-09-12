@@ -505,3 +505,29 @@ Proposed finding dispositions and learning delta are in `evidence/C-001_reading/
 Reviewer: fresh non-author `/root/plant_reading_checkpoint`, committed brief ca7529d7. Verdict: PASS for the study reading and bounded proposed dispositions. Review `evidence/C-001_reading/checkpoint-review.md` permits existing-evidence grading while retaining non-green validation and untested writer failure paths as unmet requirements. Numerical agreement does not waive them. No correction or extra case was required.
 
 All twenty approved joins now append to the native discovery log: thirteen current study findings and seven touched historical IDs. Original sightings and earlier dispositions remain intact. This checkpoint authorizes no model/source/financial repair, residual acceptance, source adoption or reveal. The distinct closed-round review follows before grading; no semantic follow-up has started. Proposed learning remains unaccepted until that review.
+
+### Round 4 review — 2026-09-12
+
+Fresh non-author `/root/plant_reading_checkpoint` reviewed the closed result and landed joins under `round-review-brief.md@c4dbc5f6`. Verdict: PASS for the bounded result and progression to existing-evidence grading. `evidence/C-001_reading/round4-review.md` independently checks scope, owner-directed coverage reduction, all twenty append-only joins and frozen numerical immutability. Broad validation remains unmet; this is not an engineering certificate or owner acceptance. The proposed learning is accepted as agent interpretation and appended below in its native learning home. The reviewer authored the following next strategy; it is transcribed without changing its meaning.
+
+## Round 5 — consolidated-current-pin-grading
+
+### Strategy revision — 2026-09-12
+
+[AGENT] Consolidate the existing admissible model, audit, static-inventory and frozen-study evidence into a fresh non-author grade and proposed demo packet at unchanged pin `609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d`. Apply the complete anchors to all 23 scored cells and three applicability records, state the highest supported level and why the next level is unsupported, and explain every below-target disposition's consequences under unchanged B-2/B-3/B-4. Retain numerical, source, engineering and validation limits at the affected claims. Packet creation alone does not answer the goal.
+
+The strategy assumes the retained evidence is sufficient to distinguish supported behavior from missing behavior without new execution. If a material identity, source-authority or evidence conflict prevents a defensible grade, stop the dependent conclusion and report that prerequisite; do not repair it through grading. Intended model increment: none. No new study, sweep or pin promotion is intended. The question is what the current evidence earns under the rubric and what remains for owner decision. Production and finance repairs remain outside this strategy. Final packet/demo acceptance, residual acceptance, source adoption, comparison-contract changes and reveal remain reserved.
+
+
+### T-015 scope
+
+Objective: Produce the consolidated fresh rubric grade and proposed demo packet at the unchanged accepted pin.
+Why now: The frozen numerical study, fresh administration, C-001.r1 PASS and closed Round 4 review support bounded existing-evidence grading.
+Scope: Aspect-focused analyze-models grading of all 23 scored cells and three applicability records; every below-target cell and integrity limit receives a consequence, no new source/model/numerical work.
+Inputs: Committed grader brief in `evidence/T-015_grading/`, T-013 static inventory, rubric/protocol, current canonical model and claim-specific audits, study e1ba37f4 with validation addendum59351f7d and synthesis ca7529d7, C-001 and Round 4 review.
+Done when: A fresh non-author report and cell records apply every exact anchor, cite behavior and give why-not-next and B-2/B-3/B-4 consequences; proposed demo wording is marked for owner acceptance.
+Stop when: A material identity, authority or evidence conflict prevents a defensible grade; dependent conclusions stay ungraded and the missing prerequisite is named.
+
+### T-015 start — 2026-09-12
+
+Resume fresh non-author `/root/plant_fresh_grader`, who authored only the earlier static inventory, with the deposited grader brief. It owns `work/analysis/20260912-plant-closure-consolidated-grade.md` and `evidence/T-015_grading/cells.json`. Parent owns trail and packet integration. No score from earlier revisions is inherited, and the non-green validation finding is not waived. No new study or pin is opened in this round.
