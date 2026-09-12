@@ -1212,3 +1212,26 @@ Other Round 4 and earlier findings keep their recorded dispositions. The fresh r
 ### Amendment — 2026-09-12: workflow applicability confirmed
 
 [OWNER-VERBATIM] "Yes, apply the updated workflow" — responding to the question whether the concurrent goal-skill, runbook and ADR changes allowing parallel tasks and fresh subagent goal reviews were intended for this run. This confirms application of the workflow update at `6a303bac`, including ADR-0001's bounded parallel-task conditions and ADR-0003's fresh-context subagent review rule. The detailed parallel-task formulation retains its recorded agent-originated, owner-ratified grade; this confirmation does not reclassify it as owner-originated text.
+
+## Round 6 — current-audit-dispositions
+
+### Strategy revision — 2026-09-12
+
+[AGENT] Pursue an evidence-linked current assessment of F01–F20 and their distinct subissues. The owner requested continuation from the reviewed Round 5 boundary; this strategy adopts the fresh review's assessment recommendation as an agent decision under the grounded authorization, not as an owner-originated plan. Existing audited repairs and retained studies should establish exactly which original defects moved and expose the remaining decisions needed to answer the goal.
+
+Assumptions: native records and current model/code inspection can separate bounded correction evidence from engineering, research, accounting, finance and supported-scope residuals without repeating certified implementations. Abandon or pause affected conclusions if cited artifacts have moved outside their authorized tasks or evidence cannot support the claimed repair. Intended model increment: none for this assessment. Intended study question: none; use retained studies as evidence with their original comparison meanings. No new pin or study is intended. The sixth-round limit and all reserved gates remain in force; assessment cannot accept residuals or close the goal.
+
+Resume inspection: the trail records returns for T-001–T-027 and results/reviews for Rounds 1–5; no task is unfinished. Current worktree changes are the known setup/pointer changes. Latest histories of WI-051, its consumer item and the radius study match the cited production/audit/freeze/synthesis sequence, with no later native mutation found. The assessment will inspect the earlier cited paths before crediting their evidence. Round 5's FINDINGS and the precise R5-F1/R5-F2 limits remain historical facts.
+
+### T-028 scope
+
+Objective: Assess every original audit finding and distinct subissue against current artifacts, with bounded repair credit, evidence-linked residual dispositions and concrete effects on permitted model use.
+Why now: Round 5 review `evidence/C-004_round5-review/review.md@01f8d22c` leaves the broader answer unestablished; the final allowed round needs a current evidence basis for owner decisions.
+Scope: Read-only native analyze-models assessment of the original F01–F20 scope, current models/consumers and existing native certificates, studies and pending research. Write an analysis report and supporting evidence only. Excludes implementation, source adoption, new physical/financial relations, supported-scope changes, residual acceptance, historical-store mutation and quarantine reads (including hashing).
+Inputs: `goal.md@dde47316` and subsequent recorded workflow amendment; original audit `.project/reports/20260907-fusion-model-audit.md@e341dc34`; native evidence cited by Rounds 1–5 and current permitted model/code surfaces. Narrower constraint: reuse certified execution evidence unless a specific unresolved concern justifies a targeted read-only check.
+Done when: All twenty IDs and distinct subissues have a current assessment, citation-backed repair limits, explicit unresolved use implications and concrete next evidence/decision references; goal answer conditions are assessed without certifying unavailable evidence.
+Stop when: Evidence cannot be obtained within the permitted surface, a premise mutation invalidates affected authority, a reserved owner decision is required, or the declared round limit binds.
+
+### T-028 start — 2026-09-12
+
+T-028 invokes native analyze-models for `work/analysis/20260912-fusion-audit-current-assessment.md`, supported by `evidence/T-028_assessment/`. Parallel readers own disjoint evidence notes for F01–F07 and F12–F16; the round agent owns F08–F11/F17–F20, report synthesis and the goal trail. Read-only analyses cannot invalidate each other's scopes; integrate their findings sequentially before returning. All agents must preserve each other's edits.
