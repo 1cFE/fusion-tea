@@ -483,3 +483,19 @@ Stop when: The record cannot support a valid reading; preserve any missing fact 
 ### T-014 start — 2026-09-12
 
 Fresh non-author administration invokes the committed brief at `exploration/stellarator_e2e/studies/20260912-plant-closure/reviews/administrator-brief.md@e1ba37f4`. Administrator owns only `synthesis.md`; parent owns trail/checks. Post-record validation can proceed independently because it does not mutate the frozen record or supply the administrator external facts.
+
+### T-014 return — COMPLETE
+
+Fresh non-author `/root/plant_record_administrator` produced `exploration/stellarator_e2e/studies/20260912-plant-closure/synthesis.md` under the committed record-only brief. It checked native counts, all qualified predicates, complete factorials and oracle group minima from in-record artifacts. It incorporates finding13 and the non-green post-record validation addendum, and retains missing physics/equipment/source facts. No external recovery, model execution, grading or acceptance occurred. The reading is valid bounded evidence; it does not waive the tooling limitation.
+
+### Amendment — post-record validation scope and outcome
+
+[AGENT] Under the owner's risk-focused direction, the unchanged model-tooling suite was stopped after147 passes/one environment-sensitive precondition failure and replaced with focused record, numeric-evidence, publication and goal-contract checks. The focused result is130 passes/120 failures. Ninety-seven failure names match the retained consumer audit; eleven affect the earlier radius record, eleven this plant record and one the known unrelated narrative-reference check. This study's eleven fail in the legacy test fixture before export because it expects a different module API. The original inherited broad green-battery expectation is not met. Do not silently count a scoped battery as full validation. Exact logs and failure accounting are committed in the study's additive validation record at59351f7d; frozen snapshot/results are unchanged. Proposed bounded use goes to the fresh checkpoint before grading.
+
+### Round 4 result — 2026-09-12
+
+Intent met for a reduced, current-pin numerical comparison with explicit evidence limits; final consolidated grading and owner acceptance remain unmet. T-012 executed the study; parallel T-013 completed only the independent static rubric inventory; T-014 returned a valid record-only reading. Last semantic outcome: COMPLETE for T-014. Round closes on trigger1, a valid study reading. One promoted pin609e6cca and one committed study record, with a stopped supporting native attempt and reduced primary store at the same pin. No second package or production change.
+
+Evidence: study freeze e1ba37f4, additive validation59351f7d, synthesis in this commit; prior accepted candidate/static evidence remain in their native homes. The owner changed the native case coverage for runtime/risk reasons; this was a scope amendment, not a mechanical retry. The non-green validation battery and publication API gap remain findings, not erased by numeric agreement. No model/domain/finance/source prerequisite was repaired inside the study.
+
+Proposed finding dispositions and learning delta are in `evidence/C-001_reading/proposed-dispositions.md`. No proposed residual is accepted yet. Fresh checkpoint must assess these before grading; approved joins land before the distinct round review. Final packet/demo wording, unresolved source/claim acceptance and reveal stay owner-held. The next strategy, if permitted by fresh review, is consolidation and grading from existing evidence, with no new sweep or production repair.
