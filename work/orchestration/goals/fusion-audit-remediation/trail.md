@@ -1013,3 +1013,17 @@ No pin, study, mechanical retry or reserved decision occurred. The source interp
 ### T-022 start — 2026-09-11
 
 T-022 · native orchestrate-modeling Standard repair · expected native work-item artifacts, regenerated model, direct-caller verification, consumer handoff and fresh independent audit. Existing goal authorization supplies alignment; no new preservation approval is required.
+
+### T-023 scope
+
+- **Objective:** Read the owner-supplied STEP paper and assess its relevance to the current divertor heat limit.
+- **Why now:** [OWNER-VERBATIM] "Related to the divertor heat limit, you should look at ~/1cfe/UKAEA-STEP-CP2502.pdf if you haven't already." This steering adds a bounded source reading while the Round 5 radius implementation proceeds.
+- **Scope:** Native PDF analysis and pending research synthesis of the five-page local paper, its exact heat-load/limit meaning and the current model's corresponding assumptions. Preserve page images for quantitative interpretation where needed. No source approval, accepted insight, physics/limit change, model or study mutation, or residual acceptance.
+- **Inputs:** `/home/reid/1cfe/UKAEA-STEP-CP2502.pdf`, current divertor model and existing source/knowledge records, original audit and Round 4 limitations.
+- **Done when:** A page-cited reading states what the paper supports, what remains design-specific, and whether it provides evidence relevant to the existing model limit, with recommendations pending native research approval.
+- **Stop when:** Missing/unreadable source, provenance conflict, or a conclusion requiring a source/physics decision rather than source reading.
+- **Parallelism and ownership:** [AGENT] Under the runbook update at `6a303bac`, T-022 owns its approved model/direct-caller surfaces and T-023 owns only new pending research/evidence; the parent owns this trail. Write-conflict risk is low. T-023 introduces no physical change and does not alter T-022's frozen radius-comparison contract. If the paper contradicts a premise needed by that repair, surface it and pause the affected conclusion before integration. Any later model adoption requires separate disposition and scope.
+
+### T-023 start — 2026-09-11
+
+T-023 · native PDF analysis / research reading · expected pending source assessment and retained page evidence; T-022 implementation remains active independently.
