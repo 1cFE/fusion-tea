@@ -270,6 +270,36 @@
           "provenance": "fan_out"
         }
       ]
+    },
+    {
+      "axis": "p_pump_direct",
+      "note": "Factorial direct-control value varies with its live/held selector; declared explicitly after fresh critique.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__p_pump_direct",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "eta_p_direct",
+      "note": "Factorial direct-control value varies with its live/held selector; declared explicitly after fresh critique.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__eta_p_direct",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "eta_th_direct",
+      "note": "Factorial direct-control value varies with its live/held selector; declared explicitly after fresh critique.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__eta_th_direct",
+          "provenance": "fan_out"
+        }
+      ]
     }
   ]
 }

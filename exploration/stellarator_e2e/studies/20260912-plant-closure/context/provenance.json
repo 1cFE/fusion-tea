@@ -201,5 +201,75 @@
     "source_commit": "9d58b5eab20b99ce21a89660c87f175eaf5638f9",
     "sha256": "eed9c926946db46b3b8bd860549c8641a676ffc240b0b9585053540a5a7f42ff",
     "kind": "retained evidence; goal-trail includes current uncommitted intake at capture"
+  },
+  {
+    "path": "context/historical-model-contract.json",
+    "source_path": "exploration/stellarator_e2e/generated/contracts/model_contract.json",
+    "source_commit": "cc44c041",
+    "sha256": "3831150e6bacfc90d8e7429c7b5868b79c1921ad715fd18e7f067e407c4b2576",
+    "kind": "retained historical contract"
+  },
+  {
+    "path": "context/round1-model-contract.json",
+    "source_path": "exploration/stellarator_e2e/generated/contracts/model_contract.json",
+    "source_commit": "9dd59883",
+    "sha256": "ec8730f4d960c910eae5239c0b1a8975b7e4ab9937442e8dc657d7751ca5ff38",
+    "kind": "retained historical contract"
+  },
+  {
+    "path": "context/compatibility/WI-045_primary-loop-and-cycle/plan.md",
+    "source_path": "work/active/WI-045_primary-loop-and-cycle/plan.md",
+    "source_commit": "693a4dffbe38371cc8d8661ef6827dd6beecfbc8",
+    "sha256": "66a6eae747baa6298ebe28955e8a8f7318ba7c3b0a7d12f4789125dd1deb0c8c",
+    "kind": "retained native implementation compatibility evidence; not current re-execution"
+  },
+  {
+    "path": "context/compatibility/WI-045_primary-loop-and-cycle/evidence/compat_mode/diff_vs_pin.json",
+    "source_path": "work/active/WI-045_primary-loop-and-cycle/evidence/compat_mode/diff_vs_pin.json",
+    "source_commit": "5eccf3bb5f97dc63db59def4b7a8350360719614",
+    "sha256": "41ebedaa29a334eb6866651d2fc68693b36f43b5b30c4c3689ef9079ce0e8137",
+    "kind": "retained native implementation compatibility evidence; not current re-execution"
+  },
+  {
+    "path": "context/compatibility/WI-045_primary-loop-and-cycle/evidence/compat_mode/result.json",
+    "source_path": "work/active/WI-045_primary-loop-and-cycle/evidence/compat_mode/result.json",
+    "source_commit": "5eccf3bb5f97dc63db59def4b7a8350360719614",
+    "sha256": "1245519837b1a69815afa6b1829998fae6aea32507a98b01e002ce4893ca61c3",
+    "kind": "retained native implementation compatibility evidence; not current re-execution"
+  },
+  {
+    "path": "context/compatibility/WI-046_lifecycle-calendar/plan.md",
+    "source_path": "work/active/WI-046_lifecycle-calendar/plan.md",
+    "source_commit": "1c87c3430b028813caf2b8514ce9f4c2feafc172",
+    "sha256": "4d39ea278078bd018fe9ccd33ab0e754313e3309be4b0d7552bceaf275ae9967",
+    "kind": "retained native implementation compatibility evidence; not current re-execution"
+  },
+  {
+    "path": "context/compatibility/WI-046_lifecycle-calendar/evidence/compat_mode/diff_vs_before.json",
+    "source_path": "work/active/WI-046_lifecycle-calendar/evidence/compat_mode/diff_vs_before.json",
+    "source_commit": "9f6058f64012bc3d2c41f9c8b5f4e73c57254624",
+    "sha256": "34b4441f9ac987d9a79328ce00d779855dc0535c1f5bdeb908b431e68d274cb2",
+    "kind": "retained native implementation compatibility evidence; not current re-execution"
+  },
+  {
+    "path": "context/compatibility/WI-046_lifecycle-calendar/evidence/compat_mode/result.json",
+    "source_path": "work/active/WI-046_lifecycle-calendar/evidence/compat_mode/result.json",
+    "source_commit": "9f6058f64012bc3d2c41f9c8b5f4e73c57254624",
+    "sha256": "132cb0fcca798d9f733681af3935b1a959c27b887ebdb5280e3959b5b104f783",
+    "kind": "retained native implementation compatibility evidence; not current re-execution"
+  },
+  {
+    "path": "context/compatibility/WI-047_fuel-divertor-vacuum-flows/plan.md",
+    "source_path": "work/active/WI-047_fuel-divertor-vacuum-flows/plan.md",
+    "source_commit": "0b9a2e1c6ee287ed81a4b296e1ffec6cdc528fbb",
+    "sha256": "176fee6bdc02b9e15a6e25288cc9bad99d834835ab12ce22c7d9058c86633d57",
+    "kind": "retained native implementation compatibility evidence; not current re-execution"
+  },
+  {
+    "path": "context/historical-study.py",
+    "source_path": "exploration/stellarator_e2e/studies/20260907-minor-radius/study.py",
+    "source_commit": "cc44c041",
+    "sha256": "19dc3e35f41dd473cc69af9f04e8c4f30ccbe2e4c254fb7ff696aa5c3e1f9fe6",
+    "kind": "retained historical input-construction evidence"
   }
 ]

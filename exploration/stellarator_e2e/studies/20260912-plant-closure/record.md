@@ -26,11 +26,11 @@ Search accounts: not applicable before a valid search anchor is established. Sen
 
 ## 7. Axis groups
 
-Complete proposed groups are in axes.json, including inherited source efficiency and ash-residence ratio discovered in the historical tuples.
+Complete proposed groups are in axes.json, including inherited source efficiency, ash-residence ratio, and all three changing direct controls.
 
 ## 8. Indicators and rulings
 
-Four owner-approved sound-negative sensitivities: availability_direct, outage_years, unplanned_fraction, burn_fraction. Missing resistance findings persist. Native indicators pending for the complete 27-axis declaration. Reachability is possible dependency, not observed response; monotonicity, physical identity across names and intra-module dependencies are not derivable.
+Four owner-approved sound-negative sensitivities: availability_direct, outage_years, unplanned_fraction, burn_fraction. Missing resistance findings persist. Native indicators pass the complete 30-axis declaration. The three changing direct controls have possible constraint paths; no additional sound negative is introduced. All groups are sensitivity/control framed. Reachability is possible dependency, not observed response; monotonicity, physical identity across names and intra-module dependencies are not derivable.
 
 ## 9. Preflight results
 
@@ -54,7 +54,7 @@ Not executed. Required generic verifier plus all declared oracle channels, conse
 
 ## 14. Review outcomes
 
-Fresh pre-execution critique pending. No numerical point may execute until its disposition permits.
+Fresh pre-execution review returned CORRECTIONS REQUIRED for PC-PRE-01. All three direct controls were added and full indicators rerun; reviews/pre-execution-disposition.md closes this objective correction and carries the remaining execution conditions.
 
 ## 15. Findings
 
