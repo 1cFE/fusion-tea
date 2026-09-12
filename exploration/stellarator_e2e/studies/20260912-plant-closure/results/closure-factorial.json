@@ -1,0 +1,1277 @@
+[
+  {
+    "anchor": "20260907-minor-radius:c2823",
+    "complete_factorial": true,
+    "corners": [
+      {
+        "modes": [
+          0,
+          0,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0023",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 199.01645213474393,
+        "lcoe_1cfe": 195.4223577464618,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          0,
+          0,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0024",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 189.1610972878935,
+        "lcoe_1cfe": 185.77711918692634,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          0,
+          1,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0025",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 161.89919148546323,
+        "lcoe_1cfe": 158.97259383164362,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          0,
+          1,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0026",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 153.8307540976815,
+        "lcoe_1cfe": 151.0752498451621,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          0,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0027",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+        },
+        "lcoe": 378.6237797232109,
+        "lcoe_1cfe": 371.78229098515123,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "recirc_ok",
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          0,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0028",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+        },
+        "lcoe": 360.1746499727325,
+        "lcoe_1cfe": 353.73312519166717,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "recirc_ok",
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          1,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0029",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+        },
+        "lcoe": 245.03012427718616,
+        "lcoe_1cfe": 240.60485424606222,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "recirc_ok",
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          1,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0030",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+        },
+        "lcoe": 232.9883960503632,
+        "lcoe_1cfe": 228.8218341133665,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "recirc_ok",
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      }
+    ],
+    "effects": {
+      "lcoe": {
+        "single_effects_L_C_A_from_all_held": [
+          179.60732758846694,
+          -37.117260649280695,
+          -9.855354846850418
+        ],
+        "loop_then_cycle_then_calendar": [
+          179.60732758846694,
+          -133.5936554460247,
+          -12.041728226822954
+        ],
+        "all_live_minus_all_held": 33.97194391561928,
+        "interaction_residual": -98.66276817671655,
+        "inclusion_exclusion_interactions": {
+          "110": -96.47639479674402,
+          "101": -8.593774903627946,
+          "011": 1.7869174590686896,
+          "111": 4.620484064586748
+        }
+      },
+      "lcoe_1cfe": {
+        "single_effects_L_C_A_from_all_held": [
+          176.35993323868942,
+          -36.44976391481819,
+          -9.645238559535471
+        ],
+        "loop_then_cycle_then_calendar": [
+          176.35993323868942,
+          -131.17743673908902,
+          -11.783020132695725
+        ],
+        "all_live_minus_all_held": 33.39947636690468,
+        "interaction_residual": -96.86545439743108,
+        "inclusion_exclusion_interactions": {
+          "110": -94.72767282427085,
+          "101": -8.403927233948593,
+          "011": 1.7478945730539408,
+          "111": 4.518251087734427
+        }
+      }
+    }
+  },
+  {
+    "anchor": "20260907-minor-radius:c3343",
+    "complete_factorial": false,
+    "corners": [
+      {
+        "modes": [
+          0,
+          0,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0069",
+        "inputs": {
+          "stellarator_09__stellaris__R": 17.2,
+          "stellarator_09__stellaris__T_i0": 18.0,
+          "stellarator_09__stellaris__a": 1.8,
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 157.916185068999,
+        "lcoe_1cfe": 155.5567618894433,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "beta_ok",
+          "divertor_heat_ok",
+          "wall_load_ok",
+          "sustainment_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          0,
+          0,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0070",
+        "inputs": {
+          "stellarator_09__stellaris__R": 17.2,
+          "stellarator_09__stellaris__T_i0": 18.0,
+          "stellarator_09__stellaris__a": 1.8,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 168.0025126067512,
+        "lcoe_1cfe": 165.4513341864542,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "beta_ok",
+          "divertor_heat_ok",
+          "wall_load_ok",
+          "sustainment_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          0,
+          1,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0071",
+        "inputs": {
+          "stellarator_09__stellaris__R": 17.2,
+          "stellarator_09__stellaris__T_i0": 18.0,
+          "stellarator_09__stellaris__a": 1.8,
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 129.84598100793139,
+        "lcoe_1cfe": 127.88423875987579,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "beta_ok",
+          "divertor_heat_ok",
+          "wall_load_ok",
+          "sustainment_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          0,
+          1,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0072",
+        "inputs": {
+          "stellarator_09__stellaris__R": 17.2,
+          "stellarator_09__stellaris__T_i0": 18.0,
+          "stellarator_09__stellaris__a": 1.8,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 138.22659923341476,
+        "lcoe_1cfe": 136.10542210300835,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "beta_ok",
+          "divertor_heat_ok",
+          "wall_load_ok",
+          "sustainment_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          0,
+          0
+        ],
+        "status": "excluded",
+        "exclusion_reason": "TypeError: float() argument must be a string or a real number, not 'complex'"
+      },
+      {
+        "modes": [
+          1,
+          0,
+          1
+        ],
+        "status": "excluded",
+        "exclusion_reason": "TypeError: float() argument must be a string or a real number, not 'complex'"
+      },
+      {
+        "modes": [
+          1,
+          1,
+          0
+        ],
+        "status": "excluded",
+        "exclusion_reason": "TypeError: float() argument must be a string or a real number, not 'complex'"
+      },
+      {
+        "modes": [
+          1,
+          1,
+          1
+        ],
+        "status": "excluded",
+        "exclusion_reason": "TypeError: float() argument must be a string or a real number, not 'complex'"
+      }
+    ]
+  },
+  {
+    "anchor": "20260907-minor-radius:c3598",
+    "complete_factorial": true,
+    "corners": [
+      {
+        "modes": [
+          0,
+          0,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0046",
+        "inputs": {
+          "stellarator_09__stellaris__R": 17.2,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 203.8837039387669,
+        "lcoe_1cfe": 200.20003806763543,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          0,
+          0,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0047",
+        "inputs": {
+          "stellarator_09__stellaris__R": 17.2,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 195.6917580032133,
+        "lcoe_1cfe": 192.18916991835528,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          0,
+          1,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0048",
+        "inputs": {
+          "stellarator_09__stellaris__R": 17.2,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 165.91951023990092,
+        "lcoe_1cfe": 162.91825024523487,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          0,
+          1,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0049",
+        "inputs": {
+          "stellarator_09__stellaris__R": 17.2,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 159.2024574192663,
+        "lcoe_1cfe": 156.34873021798532,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          0,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0050",
+        "inputs": {
+          "stellarator_09__stellaris__R": 17.2,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+        },
+        "lcoe": 532.7448486317671,
+        "lcoe_1cfe": 523.1161435131846,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "recirc_ok",
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          0,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0051",
+        "inputs": {
+          "stellarator_09__stellaris__R": 17.2,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+        },
+        "lcoe": 511.8771523313935,
+        "lcoe_1cfe": 502.7217650077872,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "recirc_ok",
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          1,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0052",
+        "inputs": {
+          "stellarator_09__stellaris__R": 17.2,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+        },
+        "lcoe": 297.6599983253052,
+        "lcoe_1cfe": 292.2852899427983,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "recirc_ok",
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          1,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0053",
+        "inputs": {
+          "stellarator_09__stellaris__R": 17.2,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.2,
+          "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+        },
+        "lcoe": 285.8710498639662,
+        "lcoe_1cfe": 280.7605457632312,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "recirc_ok",
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      }
+    ],
+    "effects": {
+      "lcoe": {
+        "single_effects_L_C_A_from_all_held": [
+          328.86114469300026,
+          -37.964193698865984,
+          -8.191945935553605
+        ],
+        "loop_then_cycle_then_calendar": [
+          328.86114469300026,
+          -235.08485030646193,
+          -11.788948461338975
+        ],
+        "all_live_minus_all_held": 81.98734592519932,
+        "interaction_residual": -200.71765913338137,
+        "inclusion_exclusion_interactions": {
+          "110": -197.12065660759595,
+          "101": -12.675750364820033,
+          "011": 1.4748931149189843,
+          "111": 7.603854724115649
+        }
+      },
+      "lcoe_1cfe": {
+        "single_effects_L_C_A_from_all_held": [
+          322.9161054455492,
+          -37.28178782240056,
+          -8.010868149280157
+        ],
+        "loop_then_cycle_then_calendar": [
+          322.9161054455492,
+          -230.83085357038635,
+          -11.524744179567051
+        ],
+        "all_live_minus_all_held": 80.56050769559579,
+        "interaction_residual": -197.06294177827272,
+        "inclusion_exclusion_interactions": {
+          "110": -193.54906574798576,
+          "101": -12.383510356117199,
+          "011": 1.441348122030604,
+          "111": 7.4282862037997575
+        }
+      }
+    }
+  },
+  {
+    "anchor": "20260907-minor-radius:c7752",
+    "complete_factorial": true,
+    "corners": [
+      {
+        "modes": [
+          0,
+          0,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0073",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.1,
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 208.93134695115398,
+        "lcoe_1cfe": 205.13660146355176,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          0,
+          0,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0074",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.1,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 201.05243567535487,
+        "lcoe_1cfe": 197.4330156999281,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          0,
+          1,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0075",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.1,
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 168.89485380932408,
+        "lcoe_1cfe": 165.8253372646681,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          0,
+          1,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0076",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.1,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 162.47600230503426,
+        "lcoe_1cfe": 159.54830411475302,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          0,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0077",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.1,
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 385.8859275770859,
+        "lcoe_1cfe": 378.87379894659836,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "recirc_ok",
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          0,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0078",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.1,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 371.6156571020207,
+        "lcoe_1cfe": 364.9275040971968,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "recirc_ok",
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          1,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0079",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.1,
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 250.37462432178563,
+        "lcoe_1cfe": 245.82860978966153,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "recirc_ok",
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          1,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0080",
+        "inputs": {
+          "stellarator_09__stellaris__R": 15.7,
+          "stellarator_09__stellaris__T_i0": 13.0,
+          "stellarator_09__stellaris__a": 2.1,
+          "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+          "stellarator_09__stellaris__p_wallplug_heat": 220.0
+        },
+        "lcoe": 241.01918284457696,
+        "lcoe_1cfe": 236.68320409187623,
+        "satisfied_sets": {
+          "old-ten": false,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "recirc_ok",
+          "divertor_heat_ok",
+          "loop_capacity_ok"
+        ]
+      }
+    ],
+    "effects": {
+      "lcoe": {
+        "single_effects_L_C_A_from_all_held": [
+          176.95458062593192,
+          -40.03649314182991,
+          -7.878911275799112
+        ],
+        "loop_then_cycle_then_calendar": [
+          176.95458062593192,
+          -135.51130325530028,
+          -9.355441477208672
+        ],
+        "all_live_minus_all_held": 32.08783589342298,
+        "interaction_residual": -96.95134031487993,
+        "inclusion_exclusion_interactions": {
+          "110": -95.47481011347037,
+          "101": -6.391359199266105,
+          "011": 1.4600597715092931,
+          "111": 3.4547692263472243
+        }
+      },
+      "lcoe_1cfe": {
+        "single_effects_L_C_A_from_all_held": [
+          173.7371974830466,
+          -39.31126419888366,
+          -7.703585763623664
+        ],
+        "loop_then_cycle_then_calendar": [
+          173.7371974830466,
+          -133.04518915693683,
+          -9.145405697785293
+        ],
+        "all_live_minus_all_held": 31.54660262832448,
+        "interaction_residual": -95.1757448922148,
+        "inclusion_exclusion_interactions": {
+          "110": -93.7339249580532,
+          "101": -6.2427090857779035,
+          "011": 1.4265526137085942,
+          "111": 3.374336537907709
+        }
+      }
+    }
+  },
+  {
+    "anchor": "baseline",
+    "complete_factorial": true,
+    "corners": [
+      {
+        "modes": [
+          0,
+          0,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0001",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 321.64281633419273,
+        "lcoe_1cfe": 315.4786304580261,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ]
+      },
+      {
+        "modes": [
+          0,
+          0,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0002",
+        "inputs": {
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__eta_th_direct": 0.333,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 304.5443013492753,
+        "lcoe_1cfe": 298.7404832627923,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ]
+      },
+      {
+        "modes": [
+          0,
+          1,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0003",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 247.33514389123462,
+        "lcoe_1cfe": 242.60859975419243,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ]
+      },
+      {
+        "modes": [
+          0,
+          1,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0004",
+        "inputs": {
+          "stellarator_09__stellaris__eta_p_direct": 0.5,
+          "stellarator_09__stellaris__loop_live": 0.0,
+          "stellarator_09__stellaris__p_pump_direct": 195.0
+        },
+        "lcoe": 234.14701961776797,
+        "lcoe_1cfe": 229.6967965225836,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          0,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0005",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.85,
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_th_direct": 0.333
+        },
+        "lcoe": 305.16895418598216,
+        "lcoe_1cfe": 299.32916847393227,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          0,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0006",
+        "inputs": {
+          "stellarator_09__stellaris__cycle_live": 0.0,
+          "stellarator_09__stellaris__eta_th_direct": 0.333
+        },
+        "lcoe": 288.95581605904255,
+        "lcoe_1cfe": 283.4574332040048,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          1,
+          0
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0007",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.85
+        },
+        "lcoe": 236.89364071350943,
+        "lcoe_1cfe": 232.37266894449874,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ]
+      },
+      {
+        "modes": [
+          1,
+          1,
+          1
+        ],
+        "status": "eligible",
+        "candidate_id": "20260912-plant-closure:c0000",
+        "inputs": {},
+        "lcoe": 224.26923288439,
+        "lcoe_1cfe": 220.0125640803369,
+        "satisfied_sets": {
+          "old-ten": true,
+          "round1-fourteen": false,
+          "current-eighteen": false
+        },
+        "violations": [
+          "divertor_heat_ok"
+        ]
+      }
+    ],
+    "effects": {
+      "lcoe": {
+        "single_effects_L_C_A_from_all_held": [
+          -16.47386214821057,
+          -74.30767244295811,
+          -17.098514984917415
+        ],
+        "loop_then_cycle_then_calendar": [
+          -16.47386214821057,
+          -68.27531347247273,
+          -12.624407829119434
+        ],
+        "all_live_minus_all_held": -97.37358344980274,
+        "interaction_residual": 10.506466126283357,
+        "inclusion_exclusion_interactions": {
+          "110": 6.032358970485376,
+          "101": 0.8853768579778034,
+          "011": 3.9103907114507592,
+          "111": -0.3216604136305534
+        }
+      },
+      "lcoe_1cfe": {
+        "single_effects_L_C_A_from_all_held": [
+          -16.14946198409382,
+          -72.87003070383366,
+          -16.738147195233807
+        ],
+        "loop_then_cycle_then_calendar": [
+          -16.14946198409382,
+          -66.95649952943353,
+          -12.360104864161855
+        ],
+        "all_live_minus_all_held": -95.4660663776892,
+        "interaction_residual": 10.291573505472087,
+        "inclusion_exclusion_interactions": {
+          "110": 5.913531174400134,
+          "101": 0.8664119253063518,
+          "011": 3.8263439636249927,
+          "111": -0.31471355785933497
+        }
+      }
+    }
+  }
+]

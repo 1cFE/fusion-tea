@@ -1,0 +1,4100 @@
+[
+  {
+    "axis": "R",
+    "entry_key": "stellarator_09__stellaris__R",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 11.2,
+        "cases": 29,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          119.71273699703309,
+          518.1408232652656
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 9,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 12,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 18,
+          "wall_load_ok": 14,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 29,
+          "sustainment_ok": 5,
+          "loop_capacity_ok": 10,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 12.7,
+        "cases": 142,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          132.5570400941816,
+          536.8905813906381
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 4,
+          "cond_strain_ok": 0,
+          "recirc_ok": 5,
+          "cycle_domain_ok": 2,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 108,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 60,
+          "wall_load_ok": 16,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 50,
+          "sustainment_ok": 12,
+          "loop_capacity_ok": 41,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 14.2,
+        "cases": 50,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          115.56923288351543,
+          271.44152140289333
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 50,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 7,
+          "wall_load_ok": 8,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 1,
+          "sustainment_ok": 8,
+          "loop_capacity_ok": 23,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 15.7,
+        "cases": 110,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          119.16997803913515,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 71,
+          "cycle_domain_ok": 0,
+          "beta_ok": 10,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 109,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 2,
+          "wall_load_ok": 20,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 24,
+          "loop_capacity_ok": 77,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 17.2,
+        "cases": 40,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          129.84598100793139,
+          28343.446671305803
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 27,
+          "cycle_domain_ok": 0,
+          "beta_ok": 14,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 40,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 3,
+          "wall_load_ok": 5,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 12,
+          "loop_capacity_ok": 32,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "T2_max",
+    "entry_key": "stellarator_09__stellaris__T2_max",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 642.0,
+        "cases": 370,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 107,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 318,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 63,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 61,
+          "loop_capacity_ok": 183,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 750.0,
+        "cases": 1,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          249.68761641421526,
+          249.68761641421526
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "T2_min",
+    "entry_key": "stellarator_09__stellaris__T2_min",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 135.0,
+        "cases": 1,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          249.68761641421526,
+          249.68761641421526
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 384.0,
+        "cases": 370,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 107,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 318,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 63,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 61,
+          "loop_capacity_ok": 183,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "T_i0",
+    "entry_key": "stellarator_09__stellaris__T_i0",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 13.0,
+        "cases": 175,
+        "full_satisfied": 2,
+        "lcoe_range": [
+          153.8307540976815,
+          536.8905813906381
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 2,
+          "cond_strain_ok": 0,
+          "recirc_ok": 86,
+          "cycle_domain_ok": 0,
+          "beta_ok": 4,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 166,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 12,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 6,
+          "sustainment_ok": 31,
+          "loop_capacity_ok": 117,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 14.63,
+        "cases": 141,
+        "full_satisfied": 17,
+        "lcoe_range": [
+          130.0280489023503,
+          28343.446671305803
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 4,
+          "cond_strain_ok": 0,
+          "recirc_ok": 10,
+          "cycle_domain_ok": 2,
+          "beta_ok": 7,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 106,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 60,
+          "wall_load_ok": 9,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 54,
+          "sustainment_ok": 16,
+          "loop_capacity_ok": 36,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 16.0,
+        "cases": 9,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          127.39210447339454,
+          266.1619261521601
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 4,
+          "cycle_domain_ok": 0,
+          "beta_ok": 2,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 9,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 5,
+          "wall_load_ok": 4,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 1,
+          "loop_capacity_ok": 6,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 17.0,
+        "cases": 11,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          131.7005026549003,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 5,
+          "cycle_domain_ok": 0,
+          "beta_ok": 3,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 9,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 4,
+          "wall_load_ok": 8,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 4,
+          "sustainment_ok": 4,
+          "loop_capacity_ok": 7,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 18.0,
+        "cases": 35,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          115.56923288351543,
+          294.0830888956693
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 7,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 8,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 29,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 21,
+          "wall_load_ok": 30,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 16,
+          "sustainment_ok": 9,
+          "loop_capacity_ok": 17,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "T_offset_fit",
+    "entry_key": "stellarator_09__stellaris__T_offset_fit",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 273.0,
+        "cases": 371,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 107,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 319,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 63,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 61,
+          "loop_capacity_ok": 183,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "a",
+    "entry_key": "stellarator_09__stellaris__a",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 1.3,
+        "cases": 76,
+        "full_satisfied": 11,
+        "lcoe_range": [
+          165.9610264634045,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 11,
+          "cycle_domain_ok": 2,
+          "beta_ok": 2,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 57,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 2,
+          "wall_load_ok": 15,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 8,
+          "sustainment_ok": 17,
+          "loop_capacity_ok": 11,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 1.4,
+        "cases": 8,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          203.04016598997984,
+          420.3956131972158
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 4,
+          "cycle_domain_ok": 0,
+          "beta_ok": 4,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 8,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 4,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 4,
+          "sustainment_ok": 4,
+          "loop_capacity_ok": 4,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 1.5,
+        "cases": 6,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          191.5642732233026,
+          536.8905813906381
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 1,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 5,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 4,
+          "wall_load_ok": 1,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 4,
+          "sustainment_ok": 1,
+          "loop_capacity_ok": 3,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 1.6,
+        "cases": 8,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          181.98864203658152,
+          302.906368062223
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 8,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 4,
+          "wall_load_ok": 4,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 4,
+          "sustainment_ok": 4,
+          "loop_capacity_ok": 4,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 1.7,
+        "cases": 37,
+        "full_satisfied": 8,
+        "lcoe_range": [
+          150.69573393691638,
+          345.7059150218498
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 4,
+          "cond_strain_ok": 0,
+          "recirc_ok": 3,
+          "cycle_domain_ok": 0,
+          "beta_ok": 5,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 19,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 20,
+          "wall_load_ok": 9,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 12,
+          "sustainment_ok": 9,
+          "loop_capacity_ok": 9,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 1.8,
+        "cases": 23,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          127.39210447339454,
+          274.67106536796877
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 2,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 7,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 21,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 10,
+          "wall_load_ok": 14,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 6,
+          "sustainment_ok": 6,
+          "loop_capacity_ok": 13,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 1.9,
+        "cases": 8,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          174.3814021006961,
+          253.09188276313733
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 8,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 4,
+          "wall_load_ok": 4,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 4,
+          "sustainment_ok": 4,
+          "loop_capacity_ok": 4,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 2.0,
+        "cases": 16,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          119.71273699703309,
+          266.1619261521601
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 4,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 3,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 12,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 11,
+          "wall_load_ok": 6,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 11,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 9,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 2.1,
+        "cases": 33,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          162.47600230503426,
+          385.8859275770859
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 19,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 32,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 4,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 4,
+          "sustainment_ok": 2,
+          "loop_capacity_ok": 27,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 2.2,
+        "cases": 76,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          115.56923288351543,
+          532.7448486317671
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 3,
+          "cond_strain_ok": 0,
+          "recirc_ok": 41,
+          "cycle_domain_ok": 0,
+          "beta_ok": 3,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 69,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 23,
+          "wall_load_ok": 6,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 15,
+          "sustainment_ok": 2,
+          "loop_capacity_ok": 59,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 2.3,
+        "cases": 12,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          157.9471951903463,
+          238.70304375671677
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 12,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 4,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 4,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 6,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 2.4,
+        "cases": 12,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          157.5040662785948,
+          241.1803899614773
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 12,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 4,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 4,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 6,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 2.5,
+        "cases": 8,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          157.83422100524373,
+          244.76269522319447
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 8,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 4,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 2.6,
+        "cases": 8,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          157.56908110013802,
+          249.33808700287295
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 8,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 4,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 2.7,
+        "cases": 8,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          159.1322252364522,
+          254.85203090144213
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 8,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 4,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 2.8,
+        "cases": 8,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          161.25041574451296,
+          261.29593414261734
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 8,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 2,
+          "loop_capacity_ok": 4,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 2.9,
+        "cases": 8,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          159.0111647752024,
+          260.54996040556614
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 8,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 2,
+          "loop_capacity_ok": 4,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 3.0,
+        "cases": 8,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          162.03148945599443,
+          268.64319805505244
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 8,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 4,
+          "loop_capacity_ok": 4,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 3.1,
+        "cases": 4,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          165.6816412417272,
+          278.03576704665596
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 4,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 2,
+          "loop_capacity_ok": 2,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 3.2,
+        "cases": 4,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          169.86211456283272,
+          288.677957504983
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 4,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 2,
+          "loop_capacity_ok": 2,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "a_fit",
+    "entry_key": "stellarator_09__stellaris__a_fit",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 0.1802,
+        "cases": 370,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 107,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 318,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 63,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 61,
+          "loop_capacity_ok": 183,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 0.4347,
+        "cases": 1,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          249.68761641421526,
+          249.68761641421526
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "availability_direct",
+    "entry_key": "stellarator_09__stellaris__availability_direct",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 0.0,
+        "cases": 353,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 101,
+          "cycle_domain_ok": 2,
+          "beta_ok": 22,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 301,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 61,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 59,
+          "loop_capacity_ok": 169,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 0.85,
+        "cases": 18,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          129.84598100793139,
+          532.7448486317671
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 6,
+          "cycle_domain_ok": 0,
+          "beta_ok": 2,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 18,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 2,
+          "loop_capacity_ok": 14,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "b_fit",
+    "entry_key": "stellarator_09__stellaris__b_fit",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 0.7823,
+        "cases": 370,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 107,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 318,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 63,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 61,
+          "loop_capacity_ok": 183,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 2.5043,
+        "cases": 1,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          249.68761641421526,
+          249.68761641421526
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "burn_fraction",
+    "entry_key": "stellarator_09__stellaris__burn_fraction",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 0.025,
+        "cases": 4,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          224.2858437324919,
+          285.89694295668926
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 3,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 4,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 3,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 0.05,
+        "cases": 363,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 101,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 311,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 63,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 61,
+          "loop_capacity_ok": 177,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 0.1,
+        "cases": 4,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          224.26092746033905,
+          285.85810331760473
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 3,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 4,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 3,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "cycle_live",
+    "entry_key": "stellarator_09__stellaris__cycle_live",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 0.0,
+        "cases": 18,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          157.916185068999,
+          532.7448486317671
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 6,
+          "cycle_domain_ok": 0,
+          "beta_ok": 2,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 18,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 2,
+          "loop_capacity_ok": 14,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 1.0,
+        "cases": 353,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 101,
+          "cycle_domain_ok": 2,
+          "beta_ok": 22,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 301,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 61,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 59,
+          "loop_capacity_ok": 169,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "dT_approach",
+    "entry_key": "stellarator_09__stellaris__dT_approach",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 20.0,
+        "cases": 371,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 107,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 319,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 63,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 61,
+          "loop_capacity_ok": 183,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "delta_eta",
+    "entry_key": "stellarator_09__stellaris__delta_eta",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 0.0,
+        "cases": 371,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 107,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 319,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 63,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 61,
+          "loop_capacity_ok": 183,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "f_loss",
+    "entry_key": "stellarator_09__stellaris__f_loss",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 0.8,
+        "cases": 3,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          204.75785092199806,
+          239.81106872152355
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 3,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 1,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 1.0,
+        "cases": 365,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 107,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 313,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 63,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 61,
+          "loop_capacity_ok": 181,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 1.2,
+        "cases": 3,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          208.9503044751999,
+          261.1193056390885
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 3,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 1,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "f_rad_total",
+    "entry_key": "stellarator_09__stellaris__f_rad_total",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 0.8,
+        "cases": 4,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          224.26923288439,
+          285.8710498639662
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 3,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 4,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 3,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 0.9,
+        "cases": 363,
+        "full_satisfied": 18,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 101,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 313,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 63,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 61,
+          "loop_capacity_ok": 177,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 0.95,
+        "cases": 4,
+        "full_satisfied": 1,
+        "lcoe_range": [
+          224.26923288439,
+          285.8710498639662
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 3,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 2,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 3,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "loop_T_in",
+    "entry_key": "stellarator_09__stellaris__loop_T_in",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 476.15,
+        "cases": 1,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          236.2090952036544,
+          236.2090952036544
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 1,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 477.15,
+        "cases": 1,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          236.06721853447524,
+          236.06721853447524
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 573.15,
+        "cases": 367,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 107,
+          "cycle_domain_ok": 0,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 315,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 63,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 61,
+          "loop_capacity_ok": 183,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 735.15,
+        "cases": 1,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          210.0875121500581,
+          210.0875121500581
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 736.15,
+        "cases": 1,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          210.0156701125407,
+          210.0156701125407
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 1,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "loop_dT_blanket",
+    "entry_key": "stellarator_09__stellaris__loop_dT_blanket",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 166.66666666666669,
+        "cases": 3,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          239.81106872152355,
+          261.1193056390885
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 3,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 3,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 200.0,
+        "cases": 365,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 107,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 313,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 63,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 61,
+          "loop_capacity_ok": 180,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 250.0,
+        "cases": 3,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          204.75785092199806,
+          208.9503044751999
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 3,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "loop_live",
+    "entry_key": "stellarator_09__stellaris__loop_live",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 0.0,
+        "cases": 20,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          129.84598100793139,
+          321.64281633419273
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 4,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 20,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 4,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 4,
+          "loop_capacity_ok": 16,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 1.0,
+        "cases": 351,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 107,
+          "cycle_domain_ok": 2,
+          "beta_ok": 20,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 299,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 59,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 57,
+          "loop_capacity_ok": 167,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "magnet__I_coil",
+    "entry_key": "stellarator_09__stellaris__magnet__I_coil",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 13000000.0,
+        "cases": 213,
+        "full_satisfied": 8,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 84,
+          "cycle_domain_ok": 0,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 187,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 30,
+          "wall_load_ok": 42,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 16,
+          "sustainment_ok": 53,
+          "loop_capacity_ok": 119,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 14000000.0,
+        "cases": 45,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          127.39210447339454,
+          28343.446671305803
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 22,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 41,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 7,
+          "wall_load_ok": 10,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 6,
+          "sustainment_ok": 4,
+          "loop_capacity_ok": 31,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 14250000.0,
+        "cases": 1,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          237.9456794030686,
+          237.9456794030686
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 1,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 1,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 1,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 14500000.0,
+        "cases": 1,
+        "full_satisfied": 1,
+        "lcoe_range": [
+          332.6079028166511,
+          332.6079028166511
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 0,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 14750000.0,
+        "cases": 10,
+        "full_satisfied": 6,
+        "lcoe_range": [
+          203.0604780637506,
+          311.3631512658669
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 4,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 4,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 2,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 15000000.0,
+        "cases": 7,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          136.83304313048524,
+          247.36150046561264
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 7,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 4,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 5,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 7,
+          "sustainment_ok": 1,
+          "loop_capacity_ok": 3,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 15250000.0,
+        "cases": 5,
+        "full_satisfied": 2,
+        "lcoe_range": [
+          165.9610264634045,
+          266.41465764406786
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 3,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 2,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 1,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 15400000.0,
+        "cases": 82,
+        "full_satisfied": 2,
+        "lcoe_range": [
+          169.66262400889067,
+          338.015872605521
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 2,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 78,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 40,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 44,
+          "sustainment_ok": 2,
+          "loop_capacity_ok": 25,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 16000000.0,
+        "cases": 2,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          149.233743243564,
+          155.48300305575
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 2,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 0,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 2,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 2,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 1,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 18000000.0,
+        "cases": 5,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          259.2548298707907,
+          283.5536596384734
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 4,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 4,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 5,
+          "sustainment_ok": 1,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "n_e0",
+    "entry_key": "stellarator_09__stellaris__n_e0",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 3.036e+20,
+        "cases": 10,
+        "full_satisfied": 4,
+        "lcoe_range": [
+          263.87268456006996,
+          28343.446671305803
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 6,
+          "cycle_domain_ok": 0,
+          "beta_ok": 1,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 3,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 2,
+          "sustainment_ok": 4,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 3.542e+20,
+        "cases": 3,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          237.51096482989755,
+          387.90694142904744
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 3,
+          "cycle_domain_ok": 0,
+          "beta_ok": 1,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 2,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 1,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 1,
+          "loop_capacity_ok": 2,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 4.048e+20,
+        "cases": 47,
+        "full_satisfied": 7,
+        "lcoe_range": [
+          127.39210447339454,
+          345.7059150218498
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 4,
+          "cond_strain_ok": 0,
+          "recirc_ok": 7,
+          "cycle_domain_ok": 0,
+          "beta_ok": 8,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 23,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 22,
+          "wall_load_ok": 9,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 10,
+          "sustainment_ok": 14,
+          "loop_capacity_ok": 13,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 4.554e+20,
+        "cases": 26,
+        "full_satisfied": 6,
+        "lcoe_range": [
+          130.0280489023503,
+          274.4932840973543
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 1,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 2,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 16,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 10,
+          "wall_load_ok": 12,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 7,
+          "sustainment_ok": 1,
+          "loop_capacity_ok": 8,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 5.06e+20,
+        "cases": 280,
+        "full_satisfied": 2,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 8,
+          "cond_strain_ok": 0,
+          "recirc_ok": 88,
+          "cycle_domain_ok": 2,
+          "beta_ok": 12,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 270,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 55,
+          "wall_load_ok": 37,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 61,
+          "sustainment_ok": 41,
+          "loop_capacity_ok": 157,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 5.5660000000000007e+20,
+        "cases": 5,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          165.9610264634045,
+          237.9456794030686
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 1,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 5,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 2,
+          "wall_load_ok": 5,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 3,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "n_loops",
+    "entry_key": "stellarator_09__stellaris__n_loops",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 6.0,
+        "cases": 3,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          493.5276862331681,
+          536.8905813906381
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 3,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 0,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 2,
+          "sustainment_ok": 1,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 9.0,
+        "cases": 4,
+        "full_satisfied": 2,
+        "lcoe_range": [
+          275.02978010764883,
+          291.7513237450657
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 2,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 0,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 2,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 2,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 10.0,
+        "cases": 3,
+        "full_satisfied": 2,
+        "lcoe_range": [
+          311.3631512658669,
+          338.015872605521
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 0,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 1,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 11.0,
+        "cases": 6,
+        "full_satisfied": 1,
+        "lcoe_range": [
+          198.28173228526654,
+          342.89752595242544
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 2,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 2,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 2,
+          "sustainment_ok": 3,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 12.0,
+        "cases": 5,
+        "full_satisfied": 3,
+        "lcoe_range": [
+          264.8963484856248,
+          28343.446671305803
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 2,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 2,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 13.0,
+        "cases": 1,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          259.94877875608654,
+          259.94877875608654
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 14.0,
+        "cases": 244,
+        "full_satisfied": 11,
+        "lcoe_range": [
+          129.84598100793139,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 8,
+          "cond_strain_ok": 0,
+          "recirc_ok": 96,
+          "cycle_domain_ok": 2,
+          "beta_ok": 14,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 213,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 46,
+          "wall_load_ok": 35,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 43,
+          "sustainment_ok": 34,
+          "loop_capacity_ok": 183,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 15.0,
+        "cases": 7,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          165.62023529600225,
+          209.07724497351978
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 5,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 4,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 5,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 16.0,
+        "cases": 12,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          171.47738602113196,
+          209.86499374458992
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 12,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 10,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 10,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 17.0,
+        "cases": 10,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          149.233743243564,
+          207.66209618828805
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 1,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 9,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 9,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 9,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 18.0,
+        "cases": 3,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          131.7005026549003,
+          203.0604780637506
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 2,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 2,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 2,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 19.0,
+        "cases": 6,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          136.83304313048524,
+          173.64029570212236
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 2,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 6,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 4,
+          "wall_load_ok": 5,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 4,
+          "sustainment_ok": 1,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 20.0,
+        "cases": 2,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          325.90868400512244,
+          334.32104714068583
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 2,
+          "cycle_domain_ok": 0,
+          "beta_ok": 2,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 2,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 2,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 21.0,
+        "cases": 2,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          150.69573393691638,
+          154.68493480869873
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 2,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 2,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 22.0,
+        "cases": 9,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          132.5570400941816,
+          235.97388611599044
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 9,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 1,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 2,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 23.0,
+        "cases": 14,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          119.71273699703309,
+          271.44152140289333
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 1,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 14,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 1,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 1,
+          "sustainment_ok": 4,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 24.0,
+        "cases": 2,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          165.9610264634045,
+          294.0830888956693
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 1,
+          "cycle_domain_ok": 0,
+          "beta_ok": 1,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 2,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 1,
+          "wall_load_ok": 1,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 1,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 25.0,
+        "cases": 4,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          181.3057902138705,
+          234.95823726602586
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 2,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 4,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 4,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 27.0,
+        "cases": 4,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          160.60036483005675,
+          168.56723847648485
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 4,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 1,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 28.0,
+        "cases": 7,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          157.5040662785948,
+          176.78635331469133
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 1,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 7,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 29.0,
+        "cases": 15,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          157.56908110013802,
+          172.94627551988344
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 15,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 1,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 4,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 30.0,
+        "cases": 2,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          127.39210447339454,
+          155.3092125895528
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 1,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 2,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 2,
+          "wall_load_ok": 1,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 31.0,
+        "cases": 1,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          130.0280489023503,
+          130.0280489023503
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 1,
+          "wall_load_ok": 1,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 40.0,
+        "cases": 1,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          145.50201605663548,
+          145.50201605663548
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 1,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 1,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 41.0,
+        "cases": 2,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          115.56923288351543,
+          117.36570550864316
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 2,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 2,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 51.0,
+        "cases": 1,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          119.16997803913515,
+          119.16997803913515
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 1,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 1,
+          "wall_load_ok": 1,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 56.0,
+        "cases": 1,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          150.1278563075687,
+          150.1278563075687
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 1,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 1,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 1,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "outage_years",
+    "entry_key": "stellarator_09__stellaris__outage_years",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 0.4166666666666667,
+        "cases": 12,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          222.26708944891968,
+          302.45346368950703
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 9,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 12,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 9,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 0.5833333333333334,
+        "cases": 347,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 89,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 295,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 63,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 61,
+          "loop_capacity_ok": 165,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 0.8333333333333334,
+        "cases": 12,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          234.71493374414237,
+          325.2569682349723
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 9,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 12,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 9,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "p_wallplug_heat",
+    "entry_key": "stellarator_09__stellaris__p_wallplug_heat",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 100.0,
+        "cases": 220,
+        "full_satisfied": 5,
+        "lcoe_range": [
+          115.56923288351543,
+          144164.55993512966
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 11,
+          "cond_strain_ok": 0,
+          "recirc_ok": 62,
+          "cycle_domain_ok": 2,
+          "beta_ok": 16,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 192,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 54,
+          "wall_load_ok": 39,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 51,
+          "sustainment_ok": 48,
+          "loop_capacity_ok": 109,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 120.0,
+        "cases": 4,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          225.41307293395366,
+          286.67064153363
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 3,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 4,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 3,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 220.0,
+        "cases": 147,
+        "full_satisfied": 14,
+        "lcoe_range": [
+          117.36570550864316,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 2,
+          "cond_strain_ok": 0,
+          "recirc_ok": 42,
+          "cycle_domain_ok": 0,
+          "beta_ok": 8,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 123,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 36,
+          "wall_load_ok": 24,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 29,
+          "sustainment_ok": 13,
+          "loop_capacity_ok": 71,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "q_target_ref",
+    "entry_key": "stellarator_09__stellaris__q_target_ref",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 5.0,
+        "cases": 4,
+        "full_satisfied": 1,
+        "lcoe_range": [
+          224.26923288439,
+          285.8710498639662
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 3,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 3,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 3,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 9.5,
+        "cases": 367,
+        "full_satisfied": 18,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 104,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 316,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 63,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 61,
+          "loop_capacity_ok": 180,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "unplanned_fraction",
+    "entry_key": "stellarator_09__stellaris__unplanned_fraction",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 0.0,
+        "cases": 347,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 89,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 295,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 63,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 61,
+          "loop_capacity_ok": 165,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 0.05,
+        "cases": 12,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          228.6309468574465,
+          309.8072556979543
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 9,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 12,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 9,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 0.1,
+        "cases": 12,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          240.58881145665336,
+          325.2569682349723
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 9,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 12,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 9,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "eta_source_heat",
+    "entry_key": "stellarator_09__stellaris__eta_source_heat",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 0.45,
+        "cases": 6,
+        "full_satisfied": 3,
+        "lcoe_range": [
+          165.9610264634045,
+          332.6079028166511
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 2,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 2,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 1,
+          "loop_capacity_ok": 1,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 0.5,
+        "cases": 352,
+        "full_satisfied": 10,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 107,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 310,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 88,
+          "wall_load_ok": 57,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 60,
+          "loop_capacity_ok": 180,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 0.6,
+        "cases": 13,
+        "full_satisfied": 6,
+        "lcoe_range": [
+          203.0604780637506,
+          311.3631512658669
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 7,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 4,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 2,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "tau_ratio_ash",
+    "entry_key": "stellarator_09__stellaris__tau_ratio_ash",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 2.0,
+        "cases": 2,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          127.39210447339454,
+          130.0280489023503
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 2,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 2,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 4.0,
+        "cases": 2,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          177.52174913710493,
+          185.98438073509715
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 2,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 2,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 2,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 8.0,
+        "cases": 360,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 107,
+          "cycle_domain_ok": 2,
+          "beta_ok": 24,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 310,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 86,
+          "wall_load_ok": 59,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 59,
+          "loop_capacity_ok": 179,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 12.0,
+        "cases": 4,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          198.76831983162447,
+          217.45626188009382
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 4,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 0,
+          "loop_capacity_ok": 2,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 16.0,
+        "cases": 3,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          252.343495580791,
+          338.015872605521
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 0,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 1,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 0,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 2,
+          "loop_capacity_ok": 0,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "p_pump_direct",
+    "entry_key": "stellarator_09__stellaris__p_pump_direct",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 0.0,
+        "cases": 351,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 107,
+          "cycle_domain_ok": 2,
+          "beta_ok": 20,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 299,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 59,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 57,
+          "loop_capacity_ok": 167,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 195.0,
+        "cases": 20,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          129.84598100793139,
+          321.64281633419273
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 4,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 20,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 4,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 4,
+          "loop_capacity_ok": 16,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "eta_p_direct",
+    "entry_key": "stellarator_09__stellaris__eta_p_direct",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 0.0,
+        "cases": 351,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 107,
+          "cycle_domain_ok": 2,
+          "beta_ok": 20,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 299,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 59,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 57,
+          "loop_capacity_ok": 167,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 0.5,
+        "cases": 20,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          129.84598100793139,
+          321.64281633419273
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 0,
+          "cycle_domain_ok": 0,
+          "beta_ok": 4,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 20,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 4,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 4,
+          "loop_capacity_ok": 16,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  },
+  {
+    "axis": "eta_th_direct",
+    "entry_key": "stellarator_09__stellaris__eta_th_direct",
+    "framing": "sensitivity",
+    "boundary_claim": false,
+    "confounding_note": "These aggregate bins include coordinated changes; causal effects only in explicitly paired families.",
+    "values": [
+      {
+        "value": 0.0,
+        "cases": 353,
+        "full_satisfied": 19,
+        "lcoe_range": [
+          115.56923288351543,
+          146982.20585272106
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 13,
+          "cond_strain_ok": 0,
+          "recirc_ok": 101,
+          "cycle_domain_ok": 2,
+          "beta_ok": 22,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 301,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 90,
+          "wall_load_ok": 61,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 80,
+          "sustainment_ok": 59,
+          "loop_capacity_ok": 169,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      },
+      {
+        "value": 0.333,
+        "cases": 18,
+        "full_satisfied": 0,
+        "lcoe_range": [
+          157.916185068999,
+          532.7448486317671
+        ],
+        "violated_counts": {
+          "wp_stress_ok": 0,
+          "cond_strain_ok": 0,
+          "recirc_ok": 6,
+          "cycle_domain_ok": 0,
+          "beta_ok": 2,
+          "heating_couple_positive_ok": 0,
+          "divertor_heat_ok": 18,
+          "heating_source_upper_ok": 0,
+          "net_positive": 0,
+          "burn_hold_ok": 0,
+          "wall_load_ok": 2,
+          "tbr_ok": 0,
+          "heating_couple_upper_ok": 0,
+          "peak_field_ok": 0,
+          "sustainment_ok": 2,
+          "loop_capacity_ok": 14,
+          "heating_source_positive_ok": 0,
+          "loop_pressure_ok": 0
+        }
+      }
+    ]
+  }
+]

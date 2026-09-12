@@ -1,0 +1,506 @@
+[
+  {
+    "anchor": "20260907-minor-radius:c2823",
+    "objective": "lcoe",
+    "from_modes": [
+      0,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      0,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0023",
+    "to_candidate": "20260912-plant-closure:c0027",
+    "capital_term": 4.808018207653948,
+    "annual_term": 0.8300066686703209,
+    "energy_term": 173.96930271214273,
+    "direct_delta": 179.60732758846694,
+    "residual": 5.684341886080802e-14
+  },
+  {
+    "anchor": "20260907-minor-radius:c2823",
+    "objective": "lcoe",
+    "from_modes": [
+      1,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0027",
+    "to_candidate": "20260912-plant-closure:c0029",
+    "capital_term": 14.00385679138247,
+    "annual_term": 2.9432475225747514,
+    "energy_term": -150.54075975998202,
+    "direct_delta": -133.5936554460247,
+    "residual": -8.526512829121202e-14
+  },
+  {
+    "anchor": "20260907-minor-radius:c2823",
+    "objective": "lcoe",
+    "from_modes": [
+      1,
+      1,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      1
+    ],
+    "from_candidate": "20260912-plant-closure:c0029",
+    "to_candidate": "20260912-plant-closure:c0030",
+    "capital_term": 0.0,
+    "annual_term": 2.424871527938176,
+    "energy_term": -14.466599754761154,
+    "direct_delta": -12.041728226822954,
+    "residual": -2.3092638912203256e-14
+  },
+  {
+    "anchor": "20260907-minor-radius:c2823",
+    "objective": "lcoe_1cfe",
+    "from_modes": [
+      0,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      0,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0023",
+    "to_candidate": "20260912-plant-closure:c0027",
+    "capital_term": 4.704137522399347,
+    "annual_term": 0.8300066686703209,
+    "energy_term": 170.82578904761985,
+    "direct_delta": 176.35993323868942,
+    "residual": 8.526512829121202e-14
+  },
+  {
+    "anchor": "20260907-minor-radius:c2823",
+    "objective": "lcoe_1cfe",
+    "from_modes": [
+      1,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0027",
+    "to_candidate": "20260912-plant-closure:c0029",
+    "capital_term": 13.701293411447628,
+    "annual_term": 2.9432475225747514,
+    "energy_term": -147.82197767311146,
+    "direct_delta": -131.17743673908902,
+    "residual": -5.684341886080802e-14
+  },
+  {
+    "anchor": "20260907-minor-radius:c2823",
+    "objective": "lcoe_1cfe",
+    "from_modes": [
+      1,
+      1,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      1
+    ],
+    "from_candidate": "20260912-plant-closure:c0029",
+    "to_candidate": "20260912-plant-closure:c0030",
+    "capital_term": 0.0,
+    "annual_term": 2.424871527938176,
+    "energy_term": -14.207891660633907,
+    "direct_delta": -11.783020132695725,
+    "residual": -5.329070518200751e-15
+  },
+  {
+    "anchor": "20260907-minor-radius:c3598",
+    "objective": "lcoe",
+    "from_modes": [
+      0,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      0,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0046",
+    "to_candidate": "20260912-plant-closure:c0050",
+    "capital_term": 6.087423691972095,
+    "annual_term": 1.118762180794557,
+    "energy_term": 321.6549588202339,
+    "direct_delta": 328.86114469300026,
+    "residual": 2.8421709430404007e-13
+  },
+  {
+    "anchor": "20260907-minor-radius:c3598",
+    "objective": "lcoe",
+    "from_modes": [
+      1,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0050",
+    "to_candidate": "20260912-plant-closure:c0052",
+    "capital_term": 19.86445216304763,
+    "annual_term": 4.4128790491048315,
+    "energy_term": -259.36218151861465,
+    "direct_delta": -235.08485030646193,
+    "residual": -2.5579538487363607e-13
+  },
+  {
+    "anchor": "20260907-minor-radius:c3598",
+    "objective": "lcoe",
+    "from_modes": [
+      1,
+      1,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      1
+    ],
+    "from_candidate": "20260912-plant-closure:c0052",
+    "to_candidate": "20260912-plant-closure:c0053",
+    "capital_term": 0.0,
+    "annual_term": 2.9900936683455215,
+    "energy_term": -14.779042129684477,
+    "direct_delta": -11.788948461338975,
+    "residual": 1.9539925233402755e-14
+  },
+  {
+    "anchor": "20260907-minor-radius:c3598",
+    "objective": "lcoe_1cfe",
+    "from_modes": [
+      0,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      0,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0046",
+    "to_candidate": "20260912-plant-closure:c0050",
+    "capital_term": 5.955900532689852,
+    "annual_term": 1.118762180794557,
+    "energy_term": 315.84144273206505,
+    "direct_delta": 322.9161054455492,
+    "residual": 2.8421709430404007e-13
+  },
+  {
+    "anchor": "20260907-minor-radius:c3598",
+    "objective": "lcoe_1cfe",
+    "from_modes": [
+      1,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0050",
+    "to_candidate": "20260912-plant-closure:c0052",
+    "capital_term": 19.435266412540322,
+    "annual_term": 4.4128790491048315,
+    "energy_term": -254.6789990320317,
+    "direct_delta": -230.83085357038635,
+    "residual": -1.9895196601282805e-13
+  },
+  {
+    "anchor": "20260907-minor-radius:c3598",
+    "objective": "lcoe_1cfe",
+    "from_modes": [
+      1,
+      1,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      1
+    ],
+    "from_candidate": "20260912-plant-closure:c0052",
+    "to_candidate": "20260912-plant-closure:c0053",
+    "capital_term": 0.0,
+    "annual_term": 2.9900936683455215,
+    "energy_term": -14.514837847912577,
+    "direct_delta": -11.524744179567051,
+    "residual": -5.329070518200751e-15
+  },
+  {
+    "anchor": "20260907-minor-radius:c7752",
+    "objective": "lcoe",
+    "from_modes": [
+      0,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      0,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0073",
+    "to_candidate": "20260912-plant-closure:c0077",
+    "capital_term": 4.6217384530975245,
+    "annual_term": 0.7715481084156959,
+    "energy_term": 171.5612940644188,
+    "direct_delta": 176.95458062593192,
+    "residual": 8.526512829121202e-14
+  },
+  {
+    "anchor": "20260907-minor-radius:c7752",
+    "objective": "lcoe",
+    "from_modes": [
+      1,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0077",
+    "to_candidate": "20260912-plant-closure:c0079",
+    "capital_term": 13.875893702690522,
+    "annual_term": 2.947196006764488,
+    "energy_term": -152.33439296475532,
+    "direct_delta": -135.51130325530028,
+    "residual": -2.842170943040401e-14
+  },
+  {
+    "anchor": "20260907-minor-radius:c7752",
+    "objective": "lcoe",
+    "from_modes": [
+      1,
+      1,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      1
+    ],
+    "from_candidate": "20260912-plant-closure:c0079",
+    "to_candidate": "20260912-plant-closure:c0080",
+    "capital_term": 0.0,
+    "annual_term": 2.319581582626381,
+    "energy_term": -11.675023059835071,
+    "direct_delta": -9.355441477208672,
+    "residual": -1.9539925233402755e-14
+  },
+  {
+    "anchor": "20260907-minor-radius:c7752",
+    "objective": "lcoe_1cfe",
+    "from_modes": [
+      0,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      0,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0073",
+    "to_candidate": "20260912-plant-closure:c0077",
+    "capital_term": 4.521882475678157,
+    "annual_term": 0.7715481084156959,
+    "energy_term": 168.44376689895282,
+    "direct_delta": 173.7371974830466,
+    "residual": 5.684341886080802e-14
+  },
+  {
+    "anchor": "20260907-minor-radius:c7752",
+    "objective": "lcoe_1cfe",
+    "from_modes": [
+      1,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0077",
+    "to_candidate": "20260912-plant-closure:c0079",
+    "capital_term": 13.576095057156907,
+    "annual_term": 2.947196006764488,
+    "energy_term": -149.56848022085822,
+    "direct_delta": -133.04518915693683,
+    "residual": 0.0
+  },
+  {
+    "anchor": "20260907-minor-radius:c7752",
+    "objective": "lcoe_1cfe",
+    "from_modes": [
+      1,
+      1,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      1
+    ],
+    "from_candidate": "20260912-plant-closure:c0079",
+    "to_candidate": "20260912-plant-closure:c0080",
+    "capital_term": 0.0,
+    "annual_term": 2.319581582626381,
+    "energy_term": -11.464987280411739,
+    "direct_delta": -9.145405697785293,
+    "residual": -6.572520305780927e-14
+  },
+  {
+    "anchor": "baseline",
+    "objective": "lcoe",
+    "from_modes": [
+      0,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      0,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0001",
+    "to_candidate": "20260912-plant-closure:c0005",
+    "capital_term": 1.8623228236650016,
+    "annual_term": 0.7186045511130451,
+    "energy_term": -19.05478952298864,
+    "direct_delta": -16.47386214821057,
+    "residual": -2.1316282072803006e-14
+  },
+  {
+    "anchor": "baseline",
+    "objective": "lcoe",
+    "from_modes": [
+      1,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0005",
+    "to_candidate": "20260912-plant-closure:c0007",
+    "capital_term": 7.769328031068255,
+    "annual_term": 1.8554369288089112,
+    "energy_term": -77.90007843234999,
+    "direct_delta": -68.27531347247273,
+    "residual": -8.526512829121202e-14
+  },
+  {
+    "anchor": "baseline",
+    "objective": "lcoe",
+    "from_modes": [
+      1,
+      1,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      1
+    ],
+    "from_candidate": "20260912-plant-closure:c0007",
+    "to_candidate": "20260912-plant-closure:c0000",
+    "capital_term": 0.0,
+    "annual_term": 1.3008059774277227,
+    "energy_term": -13.925213806547147,
+    "direct_delta": -12.624407829119434,
+    "residual": 1.0658141036401503e-14
+  },
+  {
+    "anchor": "baseline",
+    "objective": "lcoe_1cfe",
+    "from_modes": [
+      0,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      0,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0001",
+    "to_candidate": "20260912-plant-closure:c0005",
+    "capital_term": 1.8220860020199134,
+    "annual_term": 0.7186045511130451,
+    "energy_term": -18.69015253722681,
+    "direct_delta": -16.14946198409382,
+    "residual": -3.197442310920451e-14
+  },
+  {
+    "anchor": "baseline",
+    "objective": "lcoe_1cfe",
+    "from_modes": [
+      1,
+      0,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      0
+    ],
+    "from_candidate": "20260912-plant-closure:c0005",
+    "to_candidate": "20260912-plant-closure:c0007",
+    "capital_term": 7.601466121030093,
+    "annual_term": 1.8554369288089112,
+    "energy_term": -76.41340257927257,
+    "direct_delta": -66.95649952943353,
+    "residual": -4.263256414560601e-14
+  },
+  {
+    "anchor": "baseline",
+    "objective": "lcoe_1cfe",
+    "from_modes": [
+      1,
+      1,
+      0
+    ],
+    "to_modes": [
+      1,
+      1,
+      1
+    ],
+    "from_candidate": "20260912-plant-closure:c0007",
+    "to_candidate": "20260912-plant-closure:c0000",
+    "capital_term": 0.0,
+    "annual_term": 1.3008059774277227,
+    "energy_term": -13.660910841589601,
+    "direct_delta": -12.360104864161855,
+    "residual": -2.3092638912203256e-14
+  }
+]

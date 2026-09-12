@@ -1,0 +1,10 @@
+{
+  "study_id": "20260912-plant-closure",
+  "executable_fingerprint": "cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c",
+  "model_contract_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e",
+  "study_definition_fingerprint": "137c96719ed58312301acd2b18d20ea59e2ff618e6f306522872e2b5ecf3fbab",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "f092e7bb00b233d42914eddfcb0dcb06873c2cf26d6c088789cae141d558ceec"
+}
