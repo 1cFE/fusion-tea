@@ -1,0 +1,42 @@
+{
+  "native_session_initialization_events": {
+    "audit-session.jsonl": {
+      "type": "thread.started",
+      "thread_id": "01a09301-8103-7671-a1ce-e275b97edfce"
+    },
+    "design-review-session.jsonl": {
+      "type": "thread.started",
+      "thread_id": "01a092d9-6700-7920-bc0b-781d2c15eaeb"
+    },
+    "design-revision-session.jsonl": {
+      "type": "thread.started",
+      "thread_id": "01a092e1-274e-7b80-8ce6-6bfcc4e274ff"
+    },
+    "design-session.jsonl": {
+      "type": "thread.started",
+      "thread_id": "01a092cb-26dd-7b50-88c7-ba88b6c8d165"
+    },
+    "implementation-session.jsonl": {
+      "type": "thread.started",
+      "thread_id": "01a092ec-6f72-75d0-923a-fe40057c60fd"
+    },
+    "plan-session.jsonl": {
+      "type": "thread.started",
+      "thread_id": "01a092e7-897f-7551-ae3f-5a5dff32ce47"
+    },
+    "spec-session.jsonl": {
+      "type": "thread.started",
+      "thread_id": "01a092c5-c9b6-7360-8851-3e3e92edd1e0"
+    },
+    "consumer/audit-session.jsonl": {
+      "type": "thread.started",
+      "thread_id": "01a09323-949d-7370-8d9e-1b986a2939f2"
+    },
+    "consumer/implementation-session.jsonl": {
+      "type": "thread.started",
+      "thread_id": "01a0930f-898f-7a80-93c8-ab100361401f"
+    }
+  },
+  "quarantine_entries_in_retained_metadata_only": 7,
+  "administrator_provenance_limit": "dispatcher-session.jsonl records a fresh child identity and fork_turns none in dispatcher messages, but its serialized collab events contain waits rather than the actual spawn arguments; no direct launch-event verification claimed"
+}

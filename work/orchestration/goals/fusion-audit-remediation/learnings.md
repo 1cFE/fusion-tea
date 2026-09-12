@@ -57,3 +57,19 @@ Append-only, newest last. Entries are appended only after fresh round review acc
 - **Implication:** Classify affected downstream cost operands and trace their dependent accounts before attributing demand changes. Separate capacity procurement, design-point sizing and operating consumption; check the actual capital, annual and energy contributions to price.
 - **Supersedes:** none.
 - **Accepted by:** Round 4 review, 2026-09-11.
+
+## L-008 — A shared physical quantity needs one live producer across model and public consumers
+
+- **Evidence:** `work/active/WI-051_mfe-model-owned-major-radius/audit.md@bf3376be`; `.project/active/mfe-major-radius-study-package/audit.md@7fe8d351`; `exploration/stellarator_e2e/studies/20260911-model-owned-radius/record.md@d55e806e` and `synthesis.md@2cbd305d`.
+- **Scope:** [AGENT] The supported plant major radius, its nine bindings, strict retired-key boundaries and distinct fixed reference anchors. Seven ordinary R-only points establish sampled dependency/arithmetic fidelity, with engineering violations retained. No general geometric validity interval follows.
+- **Implication:** Verify ordinary untied input changes and off-design independent arithmetic alongside graph/schema changes. Keep genuine reference quantities distinct from the live shared producer.
+- **Supersedes:** none.
+- **Accepted by:** Round 5 review, 2026-09-11; bounded learning accepted while the round verdict remains FINDINGS.
+
+## L-009 — Hashing protected files is still reading them
+
+- **Evidence:** `.project/active/mfe-major-radius-study-package/implementation/protect-before-quarantine-fix.py` and retained original metadata at `56b06a58`; corrected `implementation/protect.py@56b06a58`; independent incident and permitted-surface guard assessment in `audit.md@7fe8d351`.
+- **Scope:** [AGENT] This preservation helper's seven unauthorized quarantine reads and its subsequently corrected permitted-surface path. The inspected helper emitted digests; that observation does not certify every historical action or reasoning step.
+- **Implication:** Exclude quarantined paths before file I/O. Report historical compliance separately from unchanged bytes and from whether scientific content was emitted or used. Corrected checks cannot retroactively certify the original stage.
+- **Supersedes:** none.
+- **Accepted by:** Round 5 review, 2026-09-11; the historical violation remains the reason for FINDINGS.
