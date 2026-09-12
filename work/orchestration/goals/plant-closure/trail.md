@@ -531,3 +531,17 @@ Stop when: A material identity, authority or evidence conflict prevents a defens
 ### T-015 start — 2026-09-12
 
 Resume fresh non-author `/root/plant_fresh_grader`, who authored only the earlier static inventory, with the deposited grader brief. It owns `work/analysis/20260912-plant-closure-consolidated-grade.md` and `evidence/T-015_grading/cells.json`. Parent owns trail and packet integration. No score from earlier revisions is inherited, and the non-green validation finding is not waived. No new study or pin is opened in this round.
+
+### T-015 return — COMPLETE
+
+Fresh non-author `/root/plant_fresh_grader` completed `work/analysis/20260912-plant-closure-consolidated-grade.md` and `evidence/T-015_grading/cells.json`, applying the frozen rubric/protocol at the accepted current pin. Seventeen of twenty-three scored cells meet target; six remain below; three applicability records are confirmed and none is ungraded. Six target-reaching changes relative to latest historical grades are R2b.P 2→3, R5.P 1→3, R6.P 1→2, R7.P 1→3, R8.P 1→3 and R11.P 1→3. Every cell has exact anchors, model/runtime/study evidence and why-not-next. Six below-target records carry B-2/B-3/B-4 consequences and responsible missing-evidence homes. Proposed demo wording includes the baseline, ordered attribution, verified candidate minima and load-bearing limitations.
+
+Structural packet checks pass for all twenty-six records and six dispositions; the grader checked references and protocol coverage. No numerical execution, model/source change, re-grade of the rubric itself, source adoption, new remedial finding closure or owner acceptance occurred. Existing study/discovery dispositions remain unchanged: a higher depth grade does not resolve reliability, breeding, equipment, inventory, audit or tooling gaps. The non-green 130/120 validation result and uncertified writer failure paths remain explicit unmet requirements.
+
+Decision fields: trigger — completed reviewed study and C-001/reround review; decision/reason — grade existing evidence under complete anchors without more computation; tier — delegated evidence assessment within the reviewed strategy; authority — fresh grader under T-015 brief and predecessor PASS; changed — consolidated grade, cell records and proposed owner wording only. The six below-target cells are R2c.P, R7.S, R9.S, R10.P, R10.S and R12.S.
+
+### Round 5 result — 2026-09-12
+
+Intent met for existing-evidence consolidation; goal acceptance remains unmet. Task sequence: T-015 COMPLETE. No new pin promotion or study; the grade references Round 4's accepted pin and frozen evidence. The result is a complete proposed packet, not a passed engineering or validation contract. Round closes on trigger4, the unresolved owner-held packet/demo acceptance gate. The owner may accept, correct or decline bounded use; no grade or disposition silently changes B-2/B-3/B-4 or authorizes reveal.
+
+Evidence: consolidated report and cell records in this commit, structural validation in `evidence/T-015_grading/validation.json`, predecessor C-001/round review and native study. Existing discovery dispositions remain unchanged because grading performs no remediation; all integrity findings refer to already retained limits. Proposed learning delta: none beyond accepted L-001. Final fresh round review follows. No further execution strategy or owner-held close is opened here.
