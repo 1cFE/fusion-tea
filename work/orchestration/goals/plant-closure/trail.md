@@ -462,3 +462,24 @@ The edge reread covers 84 samples at six full-current-predicate anchors: 36 caug
 [AGENT] The unchanged native lifecycle, all 158 scalar requirements, all eighteen qualified predicates, full selected-case independent checks and stratified native verifier remain. The initial 844-case prefix check is retained. No equation, integration resolution, source, threshold, tolerance or package changes. Fresh final review and record-only administration remain after numerical evidence. Exact-native full-window coverage is relinquished under the owner's direction; no global optimum, buildability, final grade or owner acceptance is inferred.
 
 The trigger is observed runtime and the owner’s quoted direction; decision tier is reserved scope ruling by the owner, with the 371-case selection supplied by the agent. This amends T-012’s exhaustive native replay and one-store preparation, preserving the closure question and final grading obligation. It is not a mechanical retry. Selection and coverage evidence are in the study’s `preparation/reduced-*` artifacts.
+
+### T-012 return — COMPLETE
+
+The reduced native study is frozen at `exploration/stellarator_e2e/studies/20260912-plant-closure/@e1ba37f4`, after fresh reduction and final reviews. All 371 primary cases completed; 19 satisfy eighteen predicates. Both independent verification routes pass: all selected cases across 141 oracle channels, eighteen rederived predicates and seventeen added scalar identities; generic 128 samples cover all 73 observed verdict patterns, maximum relative deviation 7.7964e-16. Snapshot checks passed for 3,042 referenced artifacts. All twelve first sightings joined the discovery log. Required post-record study tests follow as round validation.
+
+The full oracle scan remains separate from selected native coverage. The stopped exhaustive store retains 2,525 completed cases, an owner-directed stop and its exact definition; it is not a mechanical retry or part of primary counts. Four fixed-loop c3343 corners are excluded, leaving that factorial unavailable. The design point remains divertor-violating; all nineteen full-predicate passes retain negative physical TBR margin. No buildability, global optimum, source adoption, financial repair, separate WI-045/046/047 item audit, final grade or owner acceptance is credited.
+
+Decision fields: trigger — measured runtime and explicit owner reduction; decision/reason — complete the reviewed risk-selected set and preserve the full oracle and stopped evidence; tier — owner scope ruling plus agent execution selection; authority — quoted amendment and fresh reviews; changed — reduced preparation, primary store and final study at e1ba37f4, no production change. The modeling/scientific gaps remain for fresh disposition and grading.
+
+### T-014 scope
+
+Objective: Obtain a fresh record-only reading of the frozen reduced plant comparison.
+Why now: T-012 returned a committed, independently reviewed study.
+Scope: Run-study administer; write only the study's first synthesis, no new execution, external fact recovery or grading.
+Inputs: The committed record directory at e1ba37f4 and its deposited `reviews/administrator-brief.md`; no outside domain evidence.
+Done when: A cited synthesis recovers the findings and states missing facts and unsupported claims.
+Stop when: The record cannot support a valid reading; preserve any missing fact rather than repair it in the administrator role.
+
+### T-014 start — 2026-09-12
+
+Fresh non-author administration invokes the committed brief at `exploration/stellarator_e2e/studies/20260912-plant-closure/reviews/administrator-brief.md@e1ba37f4`. Administrator owns only `synthesis.md`; parent owns trail/checks. Post-record validation can proceed independently because it does not mutate the frozen record or supply the administrator external facts.
