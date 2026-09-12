@@ -1,0 +1,20 @@
+--- entering/handwritten/mfe_account_costs/supplementary_cost_impl.py
++++ production/handwritten/mfe_account_costs/supplementary_cost_impl.py
+@@ -2,7 +2,7 @@
+ 
+ AUTO_IMPLEMENTED = True
+ 
+-SysML Source: root-0/analyses/mfe_account_costs.sysml:591
++SysML Source: root-0/analyses/mfe_account_costs.sysml:593
+ 
+ SysML Expressions:
+     n_mod_in = 1.0
+@@ -55,7 +55,7 @@
+ *Ref**: costs.py:259-283 (cas50_supplementary); model.py:1492 (spares base = c23..c28)
+ *Basis**: Fraction-of-aggregate supplementary cost with internal contingency
+ 
+-SysML Source: root-0/analyses/mfe_account_costs.sysml:591
++SysML Source: root-0/analyses/mfe_account_costs.sysml:593
+ 
+ SysML Expressions:
+     n_mod_in = 1.0

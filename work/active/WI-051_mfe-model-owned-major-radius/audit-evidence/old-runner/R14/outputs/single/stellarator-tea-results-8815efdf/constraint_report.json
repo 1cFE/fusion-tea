@@ -1,0 +1,188 @@
+{
+  "assessed_entry_count": 18,
+  "catalog_fingerprint": "ee23c3202e4cc383ab0a81baa8e7af5dcc43e1a684a4a9d823b1ff8f30bf4cbb",
+  "coverage": {
+    "applicable_gate_total": 18,
+    "assessed_gate_count": 18,
+    "authored_usage_total": 18,
+    "coverage_state": "complete",
+    "inapplicable_gate_count": 0,
+    "unassessed_gate_count": 0,
+    "unassessed_reasons": {}
+  },
+  "headline": "violation",
+  "results": [
+    {
+      "actual_value": true,
+      "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+      "margin": 227880184.33179736,
+      "observed": {
+        "sigma_allow_in": 800000000.0,
+        "sigma_in": 572119815.6682026
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+      "margin": 0.002092933947772658,
+      "observed": {
+        "eps_cond": 0.001907066052227342,
+        "eps_cond_allow_in": 0.004
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+      "margin": 0.12923194709607488,
+      "observed": {
+        "rec_frac": 0.3707680529039251,
+        "threshold": 0.5
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+      "margin": 15552.0,
+      "observed": {
+        "domain_product_in": 15552.0
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+      "margin": 0.01852073029202004,
+      "observed": {
+        "beta_in": 0.031479269707979964,
+        "beta_limit_in": 0.05
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+      "margin": 1.0,
+      "observed": {
+        "efficiency": 1.0
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": false,
+      "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+      "margin": -3.640021124159775,
+      "observed": {
+        "q_target_limit_in": 10.0,
+        "q_target_peak_in": 13.640021124159775
+      },
+      "status": "violated"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+      "margin": 0.5,
+      "observed": {
+        "efficiency": 0.5
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+      "margin": 1061.0482801192898,
+      "observed": {
+        "net_electric": 1061.0482801192898
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+      "margin": 116.0531121260143,
+      "observed": {
+        "p_aux_required_in": 116.0531121260143
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": false,
+      "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+      "margin": -0.2558836391395065,
+      "observed": {
+        "wall_load": 4.305883639139506,
+        "wall_load_limit_in": 4.05
+      },
+      "status": "violated"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+      "margin": 0.02400000000000002,
+      "observed": {
+        "tbr_floor_in": 1.05,
+        "tbr_in": 1.074
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+      "margin": 0.0,
+      "observed": {
+        "efficiency": 1.0
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+      "margin": 2.9834101382488534,
+      "observed": {
+        "B_max_in": 24.9,
+        "B_peak": 21.916589861751145
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": false,
+      "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+      "margin": -66.0531121260143,
+      "observed": {
+        "p_aux_installed_in": 50.0,
+        "p_aux_required_in": 116.0531121260143
+      },
+      "status": "violated"
+    },
+    {
+      "actual_value": false,
+      "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+      "margin": -35.34467685529256,
+      "observed": {
+        "mdot_loop_in": 260.42245463307034,
+        "mdot_loop_rated_in": 225.07777777777778
+      },
+      "status": "violated"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+      "margin": 0.5,
+      "observed": {
+        "efficiency": 0.5
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+      "margin": 7559308.636099397,
+      "observed": {
+        "p_loop_margin_in": 7559308.636099397
+      },
+      "status": "satisfied"
+    }
+  ]
+}

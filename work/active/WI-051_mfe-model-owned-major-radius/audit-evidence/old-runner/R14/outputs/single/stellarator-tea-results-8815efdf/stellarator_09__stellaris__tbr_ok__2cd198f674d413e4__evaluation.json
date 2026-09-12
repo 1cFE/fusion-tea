@@ -1,0 +1,10 @@
+{
+  "actual_value": true,
+  "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+  "margin": 0.02400000000000002,
+  "observed": {
+    "tbr_floor_in": 1.05,
+    "tbr_in": 1.074
+  },
+  "status": "satisfied"
+}

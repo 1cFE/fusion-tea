@@ -1,0 +1,20 @@
+--- entering/handwritten/mfe_plasma_scaling/neutron_wall_load_impl.py
++++ production/handwritten/mfe_plasma_scaling/neutron_wall_load_impl.py
+@@ -2,7 +2,7 @@
+ 
+ AUTO_IMPLEMENTED = True
+ 
+-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:221
++SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:236
+ 
+ SysML Expressions:
+     ash_frac_in = 0.2002
+@@ -56,7 +56,7 @@
+ (ash_frac = (E_total-E_neutron)/E_total; p_neutron = p_fus*(1-ash_frac))
+ *Basis**: Neutron wall load = neutron power / wall area; MFE-generic
+ 
+-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:221
++SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:236
+ 
+ SysML Expressions:
+     ash_frac_in = 0.2002

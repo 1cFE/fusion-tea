@@ -1,0 +1,10 @@
+{
+  "actual_value": false,
+  "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+  "margin": -35.34467685529256,
+  "observed": {
+    "mdot_loop_in": 260.42245463307034,
+    "mdot_loop_rated_in": 225.07777777777778
+  },
+  "status": "violated"
+}

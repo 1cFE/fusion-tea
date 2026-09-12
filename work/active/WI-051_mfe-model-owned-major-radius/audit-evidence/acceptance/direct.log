@@ -1,0 +1,12 @@
+production baseline {'single': 177, 'helper': 158}
+production R14 {'single': 177, 'helper': 158}
+production retired_0 {'single': 'ValidationError', 'helper': 'ValidationError'}
+production retired_1 {'single': 'ValidationError', 'helper': 'ValidationError'}
+production retired_2 {'single': 'ValidationError', 'helper': 'ValidationError'}
+production retired_3 {'single': 'ValidationError', 'helper': 'ValidationError'}
+production invalid_0 {'single': 'SustainmentError', 'helper': 'SustainmentError'}
+production invalid_1 {'single': 'ZeroDivisionError', 'helper': 'ZeroDivisionError'}
+production invalid_2 {'single': 'SustainmentError', 'helper': 'SustainmentError'}
+production invalid_3 {'single': 'ZeroDivisionError', 'helper': 'ZeroDivisionError'}
+production invalid_4 {'single': 'TypeError', 'helper': 'TypeError'}
+PASS both direct callers: full raw/scalar comparisons, retired key refusal, invalid failures

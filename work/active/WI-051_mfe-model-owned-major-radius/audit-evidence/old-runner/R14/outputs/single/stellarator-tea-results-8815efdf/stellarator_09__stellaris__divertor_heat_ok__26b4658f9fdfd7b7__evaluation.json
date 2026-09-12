@@ -1,0 +1,10 @@
+{
+  "actual_value": false,
+  "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+  "margin": -3.640021124159775,
+  "observed": {
+    "q_target_limit_in": 10.0,
+    "q_target_peak_in": 13.640021124159775
+  },
+  "status": "violated"
+}

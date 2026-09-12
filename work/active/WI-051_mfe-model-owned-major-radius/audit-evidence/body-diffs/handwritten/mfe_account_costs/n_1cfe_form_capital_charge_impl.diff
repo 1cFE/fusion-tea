@@ -1,0 +1,20 @@
+--- entering/handwritten/mfe_account_costs/n_1cfe_form_capital_charge_impl.py
++++ production/handwritten/mfe_account_costs/n_1cfe_form_capital_charge_impl.py
+@@ -2,7 +2,7 @@
+ 
+ AUTO_IMPLEMENTED = True
+ 
+-SysML Source: root-0/analyses/mfe_account_costs.sysml:913
++SysML Source: root-0/analyses/mfe_account_costs.sysml:828
+ 
+ SysML Expressions:
+     cas90 = crf * (overnight_cost + idc_cost)
+@@ -55,7 +55,7 @@
+ costs.py:286-297 (cas60_idc); model.py:1483-1605 (total_cap = overnight + c60)
+ *Basis**: 1costingFE annualized capital charge over overnight + IDC
+ 
+-SysML Source: root-0/analyses/mfe_account_costs.sysml:913
++SysML Source: root-0/analyses/mfe_account_costs.sysml:828
+ 
+ SysML Expressions:
+     cas90 = crf * (overnight_cost + idc_cost)

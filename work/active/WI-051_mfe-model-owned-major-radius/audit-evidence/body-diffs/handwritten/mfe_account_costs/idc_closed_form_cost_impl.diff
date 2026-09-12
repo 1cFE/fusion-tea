@@ -1,0 +1,20 @@
+--- entering/handwritten/mfe_account_costs/idc_closed_form_cost_impl.py
++++ production/handwritten/mfe_account_costs/idc_closed_form_cost_impl.py
+@@ -2,7 +2,7 @@
+ 
+ AUTO_IMPLEMENTED = True
+ 
+-SysML Source: root-0/analyses/mfe_account_costs.sysml:643
++SysML Source: root-0/analyses/mfe_account_costs.sysml:645
+ 
+ SysML Expressions:
+     f_idc = ((1.0 + interest_rate) ** construction_years_in - 1.0) / (interest_rate * construction_years_in) - 1.0
+@@ -48,7 +48,7 @@
+ *Ref**: costs.py:286-297 (cas60_idc)
+ *Basis**: Uniform-spend closed-form interest during construction
+ 
+-SysML Source: root-0/analyses/mfe_account_costs.sysml:643
++SysML Source: root-0/analyses/mfe_account_costs.sysml:645
+ 
+ SysML Expressions:
+     f_idc = ((1.0 + interest_rate) ** construction_years_in - 1.0) / (interest_rate * construction_years_in) - 1.0

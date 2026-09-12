@@ -1,0 +1,54 @@
+{
+  "protected_manifest_entries": 10390,
+  "changed": {
+    "tests/models/test_mfe_operating_heating.py": {
+      "before": {
+        "sha256": "2cfd3ddb17ad4e424786429ca8e7c315f68cefedb31d51bf67e3aa54bdd75a3f"
+      },
+      "actual": {
+        "sha256": "9abbacb1264e0d9f259e30d9879a2a4406f1e555c382900ea9fd4d0061742a6e"
+      }
+    },
+    "work/orchestration/goals/fusion-audit-remediation/trail.md": {
+      "before": {
+        "sha256": "43bb8642b5afb916995390cea6bb0586c20bd65f959229fbaf71e3b8fb9ed7ce"
+      },
+      "actual": {
+        "sha256": "0b4b2481e3ba2b94b2c76bfe7f908ff3dc08eb7140e0e1f84066fc202fd93e3e"
+      }
+    }
+  },
+  "parent_commits": [
+    "2a55615b",
+    "4fc05302"
+  ],
+  "parent_paths_verified": [
+    "knowledge/research/pending/20260911-170548_step-divertor-exhaust-proxy.md",
+    "knowledge/research/pending/step-cp2502-evidence/README.md",
+    "knowledge/research/pending/step-cp2502-evidence/step-cp2502-page-0.md",
+    "knowledge/research/pending/step-cp2502-evidence/step-cp2502-page-1.md",
+    "knowledge/research/pending/step-cp2502-evidence/step-cp2502-page-2.md",
+    "knowledge/research/pending/step-cp2502-evidence/step-cp2502-page-2.png",
+    "knowledge/research/pending/step-cp2502-evidence/step-cp2502-page-3.md",
+    "knowledge/research/pending/step-cp2502-evidence/step-cp2502-page-3.png",
+    "knowledge/research/pending/step-cp2502-evidence/step-cp2502-page-4.md",
+    "work/orchestration/goals/fusion-audit-remediation/trail.md"
+  ],
+  "git_byte_comparison_paths": [
+    "work/active/WI-051_mfe-model-owned-major-radius/prototype",
+    "work/active/WI-051_mfe-model-owned-major-radius/review-evidence",
+    "work/active/WI-051_mfe-model-owned-major-radius/design-revision",
+    "work/analysis/20260911-230953_radius-ownership-evidence",
+    "exploration/stellarator_e2e/verify_stellaris.py",
+    "exploration/stellarator_e2e/studies",
+    "exploration/stellarator_e2e/study_route.py",
+    "exploration/stellarator_e2e/ANNEX.md",
+    "tests/study",
+    "models/library",
+    "knowledge/SOURCE_INDEX.md",
+    "knowledge/KNOWLEDGE.md",
+    "modeling_project/REQUIREMENTS.md",
+    "modeling_project/ARCHITECTURE.md"
+  ],
+  "unexpected_deltas": []
+}

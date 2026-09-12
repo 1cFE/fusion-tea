@@ -1,0 +1,10 @@
+{
+  "actual_value": true,
+  "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+  "margin": 0.24664954562755376,
+  "observed": {
+    "rec_frac": 0.25335045437244624,
+    "threshold": 0.5
+  },
+  "status": "satisfied"
+}

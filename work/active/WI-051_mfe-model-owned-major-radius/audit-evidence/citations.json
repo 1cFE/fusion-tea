@@ -1,0 +1,25 @@
+{
+  "native_attached_documents": [
+    {
+      "name": "mfe_plant::'MFE Power Plant'::magnet::R0",
+      "docs": [
+        "Major plasma/axis radius [m], owned by the containing plant.\n\nSource: work/analysis/20260911-230953_radius-ownership-evidence/source-meaning.md\nRef: ## Model and existing source interpretation; ## Assessment; revision 2f8856b7\nBasis: [INHERITED: T-021@2f8856b7] Existing model-intent interpretation: one shared plasma/axis scale. This does not equate real modular-coil surfaces; coil-bore and coil-centre minor radii remain distinct.\nLast Updated: 2026-09-11"
+      ]
+    },
+    {
+      "name": "stellarator_09::stellaris::R",
+      "docs": [
+        "*Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: major plasma radius 12.7 m); prose line 251 **Basis**: Stellaris major radius"
+      ]
+    }
+  ],
+  "resolved_source": "work/analysis/20260911-230953_radius-ownership-evidence/source-meaning.md",
+  "source_sha256": "92110f6a826da0ed3031db2c361565209271fd43bd20c18798d5bb8a297c1c36",
+  "stellarator_parent_source_path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+  "table2_image_sha256": "433306f0a4522a08a1889d8c76a3de64b51b73d148e61c33a0261c89b66eae73",
+  "independent_visual_observation": {
+    "major_plasma_radius_m": 12.7,
+    "minor_plasma_radius_m": 1.3
+  },
+  "meaning": "Existing plasma/axis model-intent interpretation; no equality of real modular-coil surfaces or new operating envelope."
+}

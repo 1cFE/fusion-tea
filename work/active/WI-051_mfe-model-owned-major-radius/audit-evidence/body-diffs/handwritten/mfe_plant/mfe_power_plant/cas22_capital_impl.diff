@@ -1,0 +1,20 @@
+--- entering/handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py
++++ production/handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py
+@@ -2,7 +2,7 @@
+ 
+ AUTO_IMPLEMENTED = True
+ 
+-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:529
++SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:901
+ 
+ SysML Expressions:
+ """
+@@ -15,7 +15,7 @@
+ def run_cas22_capital(inputs: cas22_capitalInput) -> float:
+     """Execute cas22_capital calculation.
+ 
+-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:529
++SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:901
+ 
+ Args:
+     inputs: Input parameters validated against cas22_capitalInput schema

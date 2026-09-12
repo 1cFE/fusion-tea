@@ -1,0 +1,10 @@
+{
+  "command": [
+    ".codex-test/run",
+    "agentic-mbse",
+    "validate",
+    "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/audit-evidence/models",
+    "--complete"
+  ],
+  "exit": 1
+}
