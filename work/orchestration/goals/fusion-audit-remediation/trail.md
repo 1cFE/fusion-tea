@@ -1318,3 +1318,33 @@ Round 7 remains OPEN with the same strategy and comparison meaning. Resume only 
 |---|---|---|---|---|
 | Concurrent plant-closure work and owner's timing instruction | Hold financial production in both checkouts until plant-closure; retain completed preparation for continuation | reserved gate | [OWNER-VERBATIM] "Wait for plant-closure before production changes" | This return; native `stage-provenance/production-hold.md@c96f26ee` and `plan.md@abe5f459` |
 | Native preparation is ready but implementation/audit have not run | Return PREREQUISITE, preserving Round 7 strategy and giving no new F05 repair credit | execution detail | Round agent [AGENT], applying the owner instruction and native preparation result | This T-029 return; native `stage-provenance/preparation-result.md@abe5f459` |
+
+### Amendment — 2026-09-12: independent documentation during the production hold
+
+[OWNER-VERBATIM] "please proceed with the documentation stuff" authorizes the proposed documentation work after the active plant-closure checkout was established. [AGENT] Amend Round 7's working scope to permit the independent README/catalog correction while financial production remains held. This changes no comparison meaning or model behavior. Model-resident comments remain outside this task because the active study and grader depend on the unchanged model/package sources.
+
+### T-030 scope
+
+Objective: Correct the missing MFE catalog and stale archive/reuse guidance in `models/README.md`, a bounded F20 documentation subissue.
+Why now: The owner authorized independent documentation during the plant-closure production hold.
+Scope: README navigation and descriptions verified against current canonical declarations; goal record and current-work pointer. No SysML, generated package, study, source, financial or physical change.
+Inputs: T-028 F20 assessment and current `models/README.md`, explicit library/design declarations and archive directory.
+Done when: Current MFE files are discoverable, archived models are identified as historical rather than ready for reuse, and file/package references and diff formatting are checked.
+Stop when: A proposed correction requires changed model semantics, source adoption or mutation of plant-closure-owned files.
+
+### T-030 start — 2026-09-12
+
+T-030 performs a single-file documentation correction at `models/README.md`, with declaration/path checks as evidence. No native model item or model validation run is needed for this Markdown-only change.
+
+### T-030 return — 2026-09-12
+
+**Outcome: COMPLETE.** `models/README.md` now catalogs all sixteen current MFE analysis files, the power-core types, generic assembly and Stellaris instance. It identifies the current confinement/heating applicability, points to the execution package and existing assessment, and replaces the unsupported archive-revival guidance with historical status and application-specific revalidation. This resolves the README/catalog portion of F20 only. F20's model-resident wording, year convention and alpha-fraction subissues remain open; F17/F19 receive no correction credit.
+
+Verification: a read-only `.codex-test/run python` check resolved all 24 local Markdown links, confirmed complete coverage and matching package declarations for all sixteen `mfe_*.sysml` analysis files, checked the three named MFE design declarations, and confirmed removal of the old archive-revival sentence. Scoped `git diff --check` passed. No model execution or numerical certificate was needed or claimed. Only the README, this goal trail and the uncommitted current-work pointer were edited by T-030; active plant-closure files and all model/package sources were preserved.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| F20 missing MFE catalog and stale archive guidance | Correct navigation against current declarations and label archive reuse as requiring revalidation | execution detail | Round agent [AGENT], under owner's documentation authorization | `models/README.md` in this commit |
+| Active plant-closure execution and static grading read model/package sources | Complete the independent README correction; retain model-resident documentation and financial production hold | reserved gate | Owner production hold, applied by round agent | T-030 scope/return; no model/package change |
+
+Round 7 remains open. The authorized README correction is complete; financial implementation and model-resident documentation remain held pending plant-closure. No new pin, study, finding disposition in a study log, or accepted learning is introduced by this task.
