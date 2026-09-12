@@ -1,0 +1,11 @@
+# Fresh record-only administration
+
+Role: administrator of the committed study record at `/home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/studies/20260912-plant-closure/`. Read that directory only. Do not resolve any external reference, inspect a live package, follow runtime symlinks, read a goal trail or discovery log, or execute any model. Do not read, search, traverse or hash quarantine or barred sources. Everything needed for this role must come from the committed record. A missing fact is reported as missing.
+
+Write only `synthesis.md` in that record directory. You are not alone in the checkout; preserve others' edits. Do not commit. Stamp date, administrator identity and the SHA256 of `snapshot.json` read. Keep recorded facts, missing facts and your own evidence-linked interpretations distinct. Use concise paragraphs and clear tables, with references only inside the record. Check the key summary claims against the actual tabular/JSON evidence with bounded static calculations where useful; no new numerical model run.
+
+Recover: what the study asked; what changed at the design point; the loop/cycle/calendar contribution and interactions; full-set candidate minima at installed heating levels; every qualified constraint outcome; all thirty axis framings and their conditional meanings; unavailable factorials and arithmetic exclusions; every finding and its disposition. Distinguish the reduced 371-case native result from the complete oracle scan and the stopped exhaustive prefix. Do not turn selected native agreement into exhaustive native coverage, model satisfaction into buildability, or a deterministic envelope into probability.
+
+Required synthesis sections: what the study set out to do; what it found; framing verdict per axis; constraint structure; findings carried forward; **What the record does not support**. Dates derived from operands are not native output dates. Retain finance convention, source/calibration transfer, missing reliability/equipment/fuel inventory/startup/vacuum limits and historical audit/process scope. No scoring, discovery mutation, source adoption, final owner acceptance or reveal is part of this role.
+
+The administrator reading closes this role. Return the synthesis path and any material missing fact. Parent handles the goal's checkpoint and separate grading.
