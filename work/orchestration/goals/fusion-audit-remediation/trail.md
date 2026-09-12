@@ -1039,3 +1039,30 @@ T-023 · native PDF analysis / research reading · expected pending source asses
 | Research/source approval and possible insight adoption remain outstanding | Keep the report pending; no DI entry, source approval or residual acceptance | reserved gate | Owner-held, undecided | None |
 
 PDF extraction and native save-research operations passed. No model/study execution was claimed by T-023. The raw extractor output retains its original whitespace; the full commit whitespace check therefore reports those extraction-file findings, not a clean result. Authored research/trail prose is separate from that retained source transcription. T-022 remains active; no pin, study or round-limit change occurred.
+
+### T-022 return — 2026-09-11
+
+**Outcome: COMPLETE.** WI-051's native independent certificate is `work/active/WI-051_mfe-model-owned-major-radius/audit.md@bf3376be`, linking `work/analysis/20260912-003541_audit_WI-051.md`; production implementation and exact consumer handoff are at `641c1051`. All nine radius edges use the plant producer, the duplicate public input is retired, complete baseline and R-only14 controls agree, standalone/reference contracts survive, and original invalid cases remain explicit. Independent regression: 428 passed / 13 inherited skips, including 64 new executed tests. L1/L3/L4/L5 pass; L2 ten and L6 229 inherited findings remain failing without diagnostic additions/removals. SV-083–089 pass within this bounded contract. Current-study compatibility remains incomplete and F06 has no whole-system closure credit yet.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Model and direct callers now enforce one major-radius producer | Accept the fresh bounded native certificate and route the exact remaining consumer contract | execution detail | Parent on independent audit | WI-051 implementation `641c1051`, audit `bf3376be`; T-024 below |
+| Design review requested structured binding citations and guarded fresh generation | Accepted and verified both corrections before production; original concerns verdict and prototype retained | execution detail | Parent and fresh native stages | Review `412c91ee`, correction/approval `a14de5b0`, plan `45003717` |
+| Existing helper was broken; one current regression expected the old census | Preserve original helper failure, repair its schema/output handling within direct-caller scope, and update only the stale 247→246 assertion | execution detail | Native author, independently checked by auditor | Explicit implementation and audit evidence |
+| A test helper rewrites deterministic evidence; native trace rows use CRLF | Retain the nonblocking findings and successful isolated independent replay; no claim that these maintenance issues were fixed | execution detail | Independent auditor; accepted bounded certificate by parent | `audit.md@bf3376be`; original tool output retained |
+| Host thread limit prevented fresh native stage spawns | Use separately initialized Codex CLI sessions with self-contained committed briefs and inner workspace sandbox; preserve stage provenance | execution detail | Parent on host refusal evidence | WI-051 `stage-provenance/`; no goal checkpoint/review substituted |
+
+The STEP reading T-023 ran independently and its parent commits were reconciled against exact git objects. No pending source was adopted. Historical evidence, finance/alpha/installed-capacity conventions and F07 residuals remain unchanged. No pin, study, archive, goal-level mechanical retry or owner-reserved decision occurred.
+
+### T-024 scope
+
+- **Objective:** Certify current stellarator study/oracle consumers against the audited single-radius model contract.
+- **Why now:** T-022 independently certifies the producer and identifies unchanged consumers that still map, use or inject the retired magnet-radius input.
+- **Scope:** One native coding item for current `verify_stellaris.py`, study oracle adapter, manifest/route/annex, current metadata and affected study tests/fixtures. Use plant R consistently in independent oracle calculations, reject obsolete input requests before filtering, remove the external radius tie/injection, and refresh identities through existing native producers. Preserve audited model/generated/direct-caller bytes, fixed references, physical/financial meaning and historical study records. No shared-tool repair, new physics or source adoption, integration/pin/study, archive or goal close.
+- **Inputs:** Round 5 strategy and accepted learnings; WI-051 audit `bf3376be`, production and `implementation/consumer-handoff.md@641c1051`; existing current study contract and native runtime. T-023 is pending context only, not approved physics.
+- **Done when:** Complete baseline and ordinary R-only14 agreement, strict retired-key refusal, current consumer/negative-path tests, native metadata reproduction and preservation checks pass, with fresh independent coding audit of the written scope.
+- **Stop when:** Model/source/supported-caller contradiction, missing native capability, an unexplained regression requiring excluded changes, reserved gate, strategy blocker or declared limit.
+
+### T-024 start — 2026-09-11
+
+T-024 · native coding package migration · expected `.project/active/mfe-major-radius-study-package/` requirements/design/plan, implementation and independent coding audit. Parent authorizes the bounded migration under the existing goal authorization. T-022 and T-023 are complete; this task runs sequentially against the frozen model certificate.
