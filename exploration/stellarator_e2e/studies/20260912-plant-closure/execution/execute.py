@@ -20,7 +20,7 @@ assert len(cases)==len(study.proposals())
 if failures:raise RuntimeError('Native cases failed; store retained, publication stopped')
 channels=study.channels();catalog=route._catalog_by_constraint_id(route.PACKAGE_DIR)
 fieldnames=['candidate_id',*channels,*catalog,'full_satisfied']
-with (R/'points.csv').open('w',newline='') as f:
+with (R/'native-points.csv').open('w',newline='') as f:
  w=csv.DictWriter(f,fieldnames=fieldnames,lineterminator='\n');w.writeheader()
  for c in cases:
   values=route.required_outputs(c,channels)
@@ -32,6 +32,12 @@ correlation=json.loads((H/'preparation/correlation.json').read_text())
 for row in correlation:
  if row['scan_status']=='eligible':row['candidate_id']=by_key[row['proposal_key']]
 write(R/'correlation.json',correlation)
+with (R/'native-points.csv').open() as f:
+ exported={row['candidate_id']:row for row in csv.DictReader(f)}
+with (R/'points.csv').open('w',newline='') as f:
+ w=csv.DictWriter(f,fieldnames=['arm_id','label',*fieldnames],lineterminator='\n');w.writeheader()
+ for row in correlation:
+  if row['scan_status']=='eligible':w.writerow({'arm_id':row['arm_id'],'label':row['label'],**exported[row['candidate_id']]})
 store=StudyStore(db)
 try:write(R/'store-compatibility.json',verify.compatibility_digest(store)[1])
 finally:store.close()

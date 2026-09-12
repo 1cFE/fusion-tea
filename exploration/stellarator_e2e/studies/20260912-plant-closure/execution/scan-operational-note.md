@@ -1,0 +1,3 @@
+# Preparation scan operational change
+
+[AGENT] Serial scan attempt 1 was stopped by the executor for CPU throughput after observing one busy core. Its original script and log are retained. No native store or final scan result was produced. Attempt 2 uses eight separate oracle processes on the same declared input set, with complete-result exact equality controls at baseline and R14 before batch work. Each process owns its own oracle globals; no equation, threshold, input, model/consumer file or study meaning changes. Deduplication preserves all correlation rows. This is a disclosed preparation execution optimization, not a physics correction or a new goal-task semantic retry.

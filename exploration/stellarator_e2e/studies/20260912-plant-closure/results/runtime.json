@@ -1,0 +1,11 @@
+{
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "python_executable": "/home/reid/1cfe/fusion-tea/.venv/bin/python",
+  "teax_root": "/home/reid/1cfe/teax",
+  "teax_revision": "8d877460ac4f6f264561d916e40c1708adb13397",
+  "repo_revision": "8eee3fed119e62bcb403bb8681eec452b958f6d3",
+  "launcher": ".codex-test/run",
+  "pythonpath": "$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit",
+  "STUDY_REQUIRE_TEAX": "1",
+  "era_pin": null
+}

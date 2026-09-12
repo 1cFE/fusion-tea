@@ -2,8 +2,6 @@
 import csv, json, math, sys, time, traceback
 from pathlib import Path
 from collections import Counter
-from concurrent.futures import ProcessPoolExecutor
-import multiprocessing
 from exploration.stellarator_e2e.studies import oracle_entry as oracle, study_route as route
 from scripts.study import verify
 H=Path(__file__).resolve().parents[1]; P=route.P
@@ -45,19 +43,6 @@ def evaluate(point):
  except Exception as exc:result={'status':'excluded','reason':type(exc).__name__+': '+str(exc),'traceback':traceback.format_exc()}
  CACHE[k]=result
  return result
-def evaluate_pair(point):
- return key(point),evaluate(point)
-
-def precompute(points,stage):
- unique={key(p):canonical(p) for p in points if key(p) not in CACHE}
- print('Parallel',stage,':',len(unique),'independent oracle evaluations',flush=True)
- # Separate processes isolate the oracle's saved/restored module-global IN.
- with ProcessPoolExecutor(max_workers=8,mp_context=multiprocessing.get_context('spawn')) as pool:
-  for i,(k,result) in enumerate(pool.map(evaluate_pair,unique.values(),chunksize=4)):
-   CACHE[k]=result
-   if i%100==0:print(stage,i,'/',len(unique),flush=True)
-
-
 def sized(point,label):
  scout={**point,P+'n_loops':1000.0};result=evaluate(scout)
  if result['status']!='eligible':
@@ -78,14 +63,6 @@ def main():
  witnesses=[('baseline',{})]
  for suffix in ['c2823','c3598','c3343','c7752']:
   row=next(r for r in historical if r['case_id'].endswith(':'+suffix));witnesses.append((row['case_id'],from_row(row)))
- # Exact full-result control equality tests the process transport without changing arithmetic.
- controls=[{}, {P+'R':14.0}]
- serial=[evaluate(p) for p in controls]
- with ProcessPoolExecutor(max_workers=2,mp_context=multiprocessing.get_context('spawn')) as pool:
-  parallel=list(pool.map(evaluate_pair,controls))
- assert [r for k,r in parallel]==serial
- write(H/'preparation/parallel-control-check.json',{'outcome':'pass','controls':controls,'comparison':'complete outputs/verdicts equal between serial and isolated-process oracle','processes':8})
- precompute([{**from_row(r),P+'n_loops':1000.0} for r in historical+excluded],'sizing-scouts')
  rows=[]
  def add(arm,label,point,**meta):rows.append({'arm_id':arm,'label':label,'inputs':canonical(point),**meta})
  add('arm-baseline','manifest',{})
@@ -113,7 +90,6 @@ def main():
   for flow in [.8,1,1.2]:add('arm-loop-loss',f'loss{loss}:flow{flow}',{P+'f_loss':loss,P+'loop_dT_blanket':200/flow})
  for t in [383,384,480,642,643]:add('arm-cycle',f'Rankine-T2-{t}',{P+'loop_T_in':t+273.15+20-200})
  add('arm-cycle','sCO2-T2-480',{P+'a_fit':.4347,P+'b_fit':2.5043,P+'T2_min':135,P+'T2_max':750,P+'T_offset_fit':273,P+'delta_eta':0})
- precompute([row['inputs'] for row in rows if not row.get('sizing_error')],'actual-proposals')
  proposals={};out=[];scan=[]
  for i,row in enumerate(rows):
   point=row['inputs'];r={'status':'excluded','reason':row['sizing_error']} if row.get('sizing_error') else evaluate(point)

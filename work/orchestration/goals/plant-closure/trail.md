@@ -413,3 +413,9 @@ Stop when: An unresolved native gate, invalid execution meaning, package mutatio
 ### T-012 start — 2026-09-12
 
 T-012 invokes run-study execute at `exploration/stellarator_e2e/studies/20260912-plant-closure/`. The executor owns that directory and its first-sighting discovery rows; fresh pre-execution/final reviewers and record-only administrator are separate sessions. No point runs before the fresh pre-execution disposition. Existing candidate identity is accepted for this round's study only after the native identity/indicator checks; no second package runs in the comparison.
+
+### T-012 progress — accepted candidate and baseline
+
+[AGENT] The existing candidate is accepted as Round 4’s one execution pin after the full declared-group indicator check, native strict baseline and all six preflight gates passed. Pin `609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d`; semantic `15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e`; executable `cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c`. The preparatory baseline carries explicit non-study provenance and no store. Full evidence is in the study’s `results/`; a normal baseline remains in the eventual native proposal list.
+
+Fresh pre-execution review required declaration of three direct control terms. All three were declared and indicators rechecked before execution, as permitted by its objective correction disposition. Thirty axis groups now cover the comparison; only the four owner-approved groups have no constraint response. The historical scan retains 7,781 evaluated rows and 168 exclusions for reconsideration. The first serial attempt was stopped for performance, with its script/log retained; exact full-result controls passed before eight isolated oracle worker processes began the unchanged proposal set. Native execution remains the stock lifecycle and one store. No production, adapter, source or tolerance change.
