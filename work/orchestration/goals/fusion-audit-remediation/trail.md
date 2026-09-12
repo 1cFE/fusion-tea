@@ -1066,3 +1066,31 @@ The STEP reading T-023 ran independently and its parent commits were reconciled 
 ### T-024 start — 2026-09-11
 
 T-024 · native coding package migration · expected `.project/active/mfe-major-radius-study-package/` requirements/design/plan, implementation and independent coding audit. Parent authorizes the bounded migration under the existing goal authorization. T-022 and T-023 are complete; this task runs sequentially against the frozen model certificate.
+
+### T-024 return — 2026-09-11
+
+**Outcome: COMPLETE for the bounded consumer migration.** Implementation is `f5737119`; fresh coding certificate `.project/active/mfe-major-radius-study-package/audit.md@7fe8d351` independently verifies ordinary R-only execution, complete frozen controls, native metadata reproduction and strict retired-input refusal. The fresh product-lens gate is DISPOSED. The certificate preserves the existing model/package and historical evidence, separates inherited failures from restored current behavior, and expressly excludes full process compliance and physical validity. F06 has bounded model/consumer repair evidence; study-level closure remains untested.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Current consumers pass independent off-design and preservation checks | Accept the bounded certificate and invoke native integration on the exact audited identities | execution detail | Parent on independent coding audit | Certificate `7fe8d351`; T-025 below |
+| Initial SC-1 conflated native inputs with existing adapter coverage | Correct the agent-originated requirement to preserve the measured interface; unsupported inputs remain explicit refusals | premise surprise | Parent, independently verified by auditor | `parent-disposition.md@dbba6262`; no owner-originated requirement or numerical comparator weakened |
+| Initial preservation helper read seven quarantined files into SHA256 | Retain the unauthorized-read violation and original evidence; use the corrected exclusion for permitted-surface checks only | execution detail | Parent correction; fresh auditor verified recurrence guard | `56b06a58`, incident and guard evidence in certificate `7fe8d351`; no claim of full quarantine compliance |
+| No scientific content was emitted by the inspected hashing helper or introduced through the consumer diff | Continue the bounded arithmetic/integration work on its existing frozen authority; this limited observation does not establish clean-room compliance or approve any source | execution detail | Parent on the audit's explicitly limited inspection | No physical/source/comparison change; historical violation remains unresolved as a compliance claim |
+| Kept tests depend on active work-item paths | Retain the audit's concrete completion-preparation finding; address before either item is archived | execution detail | Fresh product-lens and auditor, accepted by parent | `audit.md` audit-F1 at `7fe8d351`; no archive authorized |
+| Current arithmetic oracle remains a second representation | Retain the scoped demo oracle under the re-derived ADR-0010 rationale; generated graph fixtures are reproduction evidence, not independent correctness | execution detail | Fresh product-lens and auditor | `product-lens.md@7fe8d351`; no broader oracle contract approved |
+
+Independent checks and every exclusion are in the certificate. Host fresh-thread refusal and separate CLI audit provenance are retained in the item's stage records; the audit dispatched a fresh product-lens subagent. No goal critic was substituted, pin promoted, study committed, residual accepted or owner-reserved decision made. Parent updated only the intentionally uncommitted CURRENT_WORK pointer during the audit; the auditor detected and preserved that difference.
+
+### T-025 scope
+
+- **Objective:** Establish one native study-ready candidate for the audited model-owned radius and current consumers.
+- **Why now:** T-022's native model certificate and T-024's independent coding certificate now agree on the producer and current consumer contract.
+- **Scope:** Invoke the documented native integration seam sequentially against the exact audited package, manifest, census and lineage. Retain its complete return and producer evidence. No seam repair, source/physics/finance change, historical rewrite, model repair, study execution, archive or goal close.
+- **Inputs:** `goal.md`, Round 5 strategy and accepted learnings; WI-051 certificate `bf3376be`, current-consumer certificate `7fe8d351`, `docs/integration_seam_operator_guide.md`, and the runtime in `.project/codex-test-setup.md`.
+- **Done when:** The native seam returns one CANDIDATE with the expected identities, or a named useful blocker with producer evidence.
+- **Stop when:** Native prerequisite/refusal, mechanical failure, lineage/comparison change, reserved decision or declared limit.
+
+### T-025 start — 2026-09-11
+
+T-025 · native integration · expected `evidence/T-025_pin/integration_return.json` and complete producer records; this is the Round 5 candidate attempt, with no earlier pin or study in this round.
