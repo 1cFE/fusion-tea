@@ -1,0 +1,767 @@
+[
+  {
+    "label": "20260907-minor-radius:c3343:extra-sized-anchor",
+    "scout_inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 12971.527596057198,
+    "mdot": 12489.435390003078,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 56,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-fence-p100:100.0:R:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2398.0523231621914,
+    "mdot": 2308.927713424024,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 11,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-fence-p100:100.0:R:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 5669.28559121515,
+    "mdot": 5458.584239567832,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 25,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-fence-p100:100.0:a:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2558.657085925305,
+    "mdot": 2463.5635335310085,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 11,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-fence-p100:100.0:a:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 3492.473036724113,
+    "mdot": 3362.673827001842,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 15,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-fence-p100:100.0:magnet__I_coil:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 3122.178020580611,
+    "mdot": 3006.1409787989705,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 14,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-fence-p100:100.0:magnet__I_coil:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 18000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2102.65942407193,
+    "mdot": 2024.5132140111016,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 9,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-fence-p100:100.0:n_e0:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 3.036e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 1978.0124091204912,
+    "mdot": 1904.4987570965638,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 9,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-fence-p100:100.0:n_e0:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 4422.155539953142,
+    "mdot": 4257.804294197132,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 19,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-fence-p100:100.0:T_i0:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2458.8620584161868,
+    "mdot": 2367.477429632377,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 11,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-fence-p100:100.0:T_i0:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 4726.5644104239045,
+    "mdot": 4550.899682672737,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 21,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-fence-p100:100.0:eta_source_heat:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 3122.178020580611,
+    "mdot": 3006.1409787989705,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 14,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-fence-p100:100.0:eta_source_heat:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 3122.178020580611,
+    "mdot": 3006.1409787989705,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 14,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-fence-p100:100.0:tau_ratio_ash:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 3122.178020580611,
+    "mdot": 3006.1409787989705,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 14,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-fence-p100:100.0:tau_ratio_ash:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 3122.178020580611,
+    "mdot": 3006.1409787989705,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 14,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-reread-p220:220.0:R:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2756.3492795960615,
+    "mdot": 2653.9084147853473,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 12,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-reread-p220:220.0:R:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2756.3492795960615,
+    "mdot": 2653.9084147853473,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 12,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-reread-p220:220.0:a:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2756.3492795960615,
+    "mdot": 2653.9084147853473,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 12,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-reread-p220:220.0:a:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2756.3492795960615,
+    "mdot": 2653.9084147853473,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 12,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-reread-p220:220.0:magnet__I_coil:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2898.6198170468797,
+    "mdot": 2790.891408672135,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 13,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-reread-p220:220.0:magnet__I_coil:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 15250000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2667.060836101591,
+    "mdot": 2567.938413346419,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 12,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-reread-p220:220.0:n_e0:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2277.4356478501427,
+    "mdot": 2192.7938069036613,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 10,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-reread-p220:220.0:n_e0:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 5.5660000000000007e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 3805.330842821364,
+    "mdot": 3663.904142905222,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 17,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-reread-p220:220.0:T_i0:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2756.3492795960615,
+    "mdot": 2653.9084147853473,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 12,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-reread-p220:220.0:T_i0:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 4199.158085075393,
+    "mdot": 4043.094632269779,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 18,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-reread-p220:220.0:eta_source_heat:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.45,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2756.3492795960615,
+    "mdot": 2653.9084147853473,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 12,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-reread-p220:220.0:eta_source_heat:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2756.3492795960615,
+    "mdot": 2653.9084147853473,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 12,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-reread-p220:220.0:tau_ratio_ash:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2756.3492795960615,
+    "mdot": 2653.9084147853473,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 12,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-reread-p220:220.0:tau_ratio_ash:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 1000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2756.3492795960615,
+    "mdot": 2653.9084147853473,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 12,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-search-p220:220.0:R:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2398.0523231621914,
+    "mdot": 2308.927713424024,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 11,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-search-p220:220.0:R:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 5669.28559121515,
+    "mdot": 5458.584239567832,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 25,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-search-p220:220.0:a:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2558.657085925305,
+    "mdot": 2463.5635335310085,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 11,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-search-p220:220.0:a:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 3492.473036724113,
+    "mdot": 3362.673827001842,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 15,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-search-p220:220.0:magnet__I_coil:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 3122.178020580611,
+    "mdot": 3006.1409787989705,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 14,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-search-p220:220.0:magnet__I_coil:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 18000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2102.65942407193,
+    "mdot": 2024.5132140111016,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 9,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-search-p220:220.0:n_e0:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 3.036e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 1978.0124091204912,
+    "mdot": 1904.4987570965638,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 9,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-search-p220:220.0:n_e0:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 4422.155539953142,
+    "mdot": 4257.804294197132,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 19,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-search-p220:220.0:T_i0:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 2458.8620584161868,
+    "mdot": 2367.477429632377,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 11,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-search-p220:220.0:T_i0:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 4726.5644104239045,
+    "mdot": 4550.899682672737,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 21,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-search-p220:220.0:eta_source_heat:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 3122.178020580611,
+    "mdot": 3006.1409787989705,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 14,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-search-p220:220.0:eta_source_heat:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 3122.178020580611,
+    "mdot": 3006.1409787989705,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 14,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-search-p220:220.0:tau_ratio_ash:low",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 3122.178020580611,
+    "mdot": 3006.1409787989705,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 14,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  },
+  {
+    "label": "arm-window-sized:arm-search-p220:220.0:tau_ratio_ash:high",
+    "scout_inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__n_loops": 1000.0
+    },
+    "status": "scout complete; actual proposal separately screened",
+    "scout_n_loops": 1000,
+    "q_source": 3122.178020580611,
+    "mdot": 3006.1409787989705,
+    "mdot_loop_ref": 225.07777777777778,
+    "selected_n_loops": 14,
+    "candidate_pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "source_heat_and_total_flow_equal": true
+  }
+]

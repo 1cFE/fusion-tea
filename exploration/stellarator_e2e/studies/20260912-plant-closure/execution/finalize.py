@@ -1,6 +1,8 @@
 """Freeze the first final snapshot and append execution facts to preparatory record."""
 import json,hashlib,os,re
 from pathlib import Path
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from scripts.study import common
 H=Path(__file__).resolve().parents[1];R=H/'results'
 read=lambda p:json.loads(p.read_text())
@@ -16,6 +18,7 @@ def artifacts(directory):
    out.append({'path':str(p.relative_to(H)),'sha256':sha(p)})
  return sorted(out,key=lambda x:x['path'])
 def main():
+ today=datetime.now(ZoneInfo('America/Los_Angeles')).date().isoformat()
  assert read(H/'reviews/final-approval.json')['approved']
  assert read(R/'all-channel-verification.json')['outcome']=='pass'
  assert not (H/'snapshot.json').exists(),'Final snapshot is write-once'
@@ -43,6 +46,7 @@ def main():
  write(H/'preparation/findings.json',findings)
  snap={'snapshot_schema_version':'1','study_id':H.name,'status':'Final executor record; fresh review dispositioned; administration and owner acceptance remain separate','package':{'path':manifest['package']['path'],'package_name':'stellarator_tea','repo_commit':execution['repo_revision'],'git_clean':True},'fingerprints':{'indicator_inputs':ind['package']['indicator_input_fingerprint'],'recorded_provenance.executable_fingerprint':compat['executable_fingerprint'],'recorded_provenance.semantic_fingerprint':compat['model_contract_fingerprint']},'manifest':{'path':'context/manifest.json','schema_version':manifest['schema_version'],'digest':sha(H/'context/manifest.json'),'content_used':content},'stores':[{'store_id':'plant-native','path':'results/store/'+H.name+'.db','sha256':sha(R/'store'/f'{H.name}.db'),'compatibility_tuple':compat}],'arms':arms,'declined_arms':[a for a in summary['arms'] if not a['unique_cases']],'tools':[ind['tool'],gates['tool'],ver['tool']],'teax':{'revision':rt['teax_revision'],'era_pin':None,'runtime':'results/runtime.json'},'indicators':{'path':'indicators.json','sha256':sha(H/'indicators.json'),'output_schema_version':ind['schema_version'],'axis_declaration':{'path':'axes.json','schema_version':'study-axis-declaration/v1','digest':sha(H/'axes.json'),'groups_declared':[g['axis'] for g in axes],'subset':False}},'result_artifacts':outputs,'support_artifacts':[{'path':p,'sha256':sha(H/p)} for p in ['study.py','axes.json','.gitignore','execution-reading.md']],'gaps':['The sealed generated package and runtime installation are not copied; re-execution requires their named identities.','The binary native store is retained locally with digest but is gitignored; complete numeric exports, verdicts, inputs and compatibility are committed.','No fresh administrator synthesis, consolidated grading or owner acceptance is claimed by this executor.']}
  for k,d in [('context_artifacts','context'),('preparation_artifacts','preparation'),('execution_artifacts','execution'),('review_artifacts','reviews')]:snap[k]=artifacts(H/d)
+ snap['date_completed']=today
  write(H/'snapshot.json',snap)
  text='\n## Addendum 2026-09-12 — completed execution\n\nThis addendum supersedes the preparatory status statements above with completed execution evidence. Earlier preparatory text is retained. The complete numerical reading is `execution-reading.md`; resolved values and digests are in the first final `snapshot.json`.\n\n'
  text+=(H/'execution-reading.md').read_text().replace('# Plant-closure execution reading','### Completed study reading',1)
@@ -51,6 +55,7 @@ def main():
   a=accounts[g['axis']];text+=f"#### {g['axis']} — feasible structure (search framing)\n\n**Applies:** not applicable — sensitivity-framed.\n\n#### {g['axis']} — observed response (sensitivity framing)\n\n**Applies:** yes. The exact {len(a['values'])} observed values, objective ranges and locations of every violated predicate are retained in `results/axis-accounts.json` under axis `{g['axis']}`. Interpretation is conditional on the coordinated arms in `results/correlation.json`; aggregate bins do not establish a causal slope.\n\n"
  text+='### Execution findings\n\n| Id | Kind | Finding | Disposition | Home |\n|---|---|---|---|---|\n'+'\n'.join(f'| `{H.name}#{n}` | {k} | {f} | {d} | `{home}` |' for n,k,f,d,home in findings)+'\n\n'
  text+='### Final snapshot and review\n\n- **File:** snapshot.json\n- **sha256:** '+sha(H/'snapshot.json')+'\n- **Schema version:** 1\n\nFresh correctness/honesty/readability review and its disposition are in `reviews/final-review.md` and `reviews/final-disposition.md`. No executor self-certification replaces that review. The four sensitivity rulings remain as quoted in the retained intake and trail.\n'
+ text=text.replace('## Addendum 2026-09-12','## Addendum '+today)
  assert '<' not in text
  with (H/'record.md').open('a') as f:f.write(text)
  log=H.parent/'DISCOVERY_LOG.md';existing=log.read_text();rows=[]
@@ -58,7 +63,7 @@ def main():
   identifier=H.name+'#'+n
   if '| `'+identifier+'` |' not in existing:
    resolved=H.name+'/'+home if home.startswith(('context/','reviews/','execution/')) else home
-   rows.append(f'| 2026-09-12 | `{k}` | `{identifier}` | {f} | {d} | `{resolved}` |')
+   rows.append(f'| {today} | `{k}` | `{identifier}` | {f} | {d} | `{resolved}` |')
  with log.open('a') as f:f.write('\n'.join(rows)+'\n')
  print('First final snapshot frozen; completed execution appended; native first sightings registered')
 if __name__=='__main__':main()

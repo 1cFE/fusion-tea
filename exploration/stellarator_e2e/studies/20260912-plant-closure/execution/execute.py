@@ -1,6 +1,7 @@
 """Execute the frozen list through the stock lifecycle and export complete evidence."""
 import csv,json,math,sys,time,hashlib,subprocess
 from pathlib import Path
+from datetime import datetime,timezone
 from collections import Counter
 from exploration.stellarator_e2e.studies import study_route as route
 from scripts.study import preflight,verify
@@ -19,12 +20,12 @@ for copied,current in [('oracle_entry.py','exploration/stellarator_e2e/studies/o
 clean=preflight.run_clean(route.PACKAGE_DIR);write(R/'execution-clean-before.json',clean);assert clean['outcome']=='pass'
 route.write_identity_document(route.PACKAGE_DIR,R/'execution-package-identity.json')
 assert json.loads((R/'execution-package-identity.json').read_text())==json.loads((R/'package_identity.json').read_text())
-write(R/'execution-runtime.json',{'repo_revision':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'study_definition':'study.py','preparation_digests':freeze['digests']})
+write(R/'execution-runtime.json',{'started_at_utc':datetime.now(timezone.utc).isoformat(),'repo_revision':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'study_definition':'study.py','preparation_digests':freeze['digests']})
 start=time.time();print('Starting native lifecycle',len(study.proposals()),'unique proposals',flush=True)
 cases,db=study.run()
 print('Native lifecycle returned',len(cases),'cases in',time.time()-start,'seconds',flush=True)
 failures=[{'candidate_id':c.candidate_id,'state':c.state,'inputs':dict(c.inputs)} for c in cases if c.state!='completed']
-write(R/'execution-summary.json',{'cases':len(cases),'states':dict(Counter(c.state for c in cases)),'elapsed_seconds':time.time()-start,'failures':failures})
+write(R/'execution-summary.json',{'finished_at_utc':datetime.now(timezone.utc).isoformat(),'cases':len(cases),'states':dict(Counter(c.state for c in cases)),'elapsed_seconds':time.time()-start,'failures':failures})
 assert len(cases)==len(study.proposals())
 if failures:raise RuntimeError('Native cases failed; store retained, publication stopped')
 channels=study.channels();catalog=route._catalog_by_constraint_id(route.PACKAGE_DIR)

@@ -49,11 +49,16 @@ def main():
   else:
    row.update(exclusion_reason=r['reason'],failure_traceback=r.get('traceback'));detail.update(status='arithmetic/domain exclusion; not a predicate boundary',reason=r['reason'])
   rows.append(row)
+ # Only independently diagnosed negative-net-power cases may classify the complex-output error.
+ diagnostics=read(H/'preparation/complex-domain-diagnostics.json')
+ assert diagnostics['outcome']=='pass'
+ complex_keys={scan.key(c['inputs']) for c in diagnostics['cases'] if c['negative_net_power_confirmed'] and c['complex_outputs']}
  # Unexpected interface/programming exceptions are prerequisites, not scientific exclusions.
  for row in rows:
   if row['scan_status']!='excluded':continue
   reason=row['exclusion_reason']
   if 'ash fixed point did not converge' in reason:kind='oracle nonconvergence; physical validity undetermined'
+  elif reason=="TypeError: float() argument must be a string or a real number, not 'complex'" and row['proposal_key'] in complex_keys:kind='negative-net-power fractional-cost arithmetic exclusion'
   elif 'oracle sustainment: non-positive fuel' in reason:kind='oracle fuel-domain exclusion'
   elif 'oracle loop: pressure domain' in reason:kind='oracle pressure-domain exclusion'
   elif reason.startswith(('ZeroDivisionError:','OverflowError:','ValueError: math domain error')):kind='oracle arithmetic exclusion'
