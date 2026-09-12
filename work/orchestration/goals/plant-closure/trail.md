@@ -432,3 +432,13 @@ Stop when: Candidate mutation, missing required evidence, unresolved source/clai
 ### T-013 start — static preparation in parallel with T-012
 
 [AGENT] The fresh non-author grader owns only `evidence/T-013_grading/static-evidence.md` during this phase. T-012 continues to own study execution; parent owns trail and final integration. These reads can proceed in parallel because static canonical evidence neither changes nor assumes the pending numerical result. A later study reading may invalidate a proposed grade, so no grade is assigned now and final grading does not bypass the disposition checkpoint. Deposited brief: `evidence/T-013_grading/static-brief.md`. A timed repeat of the approved unstored baseline matched all retained outputs/responses exactly and took 3.717 seconds to evaluate; this is runtime planning evidence, not another study case.
+
+### Amendment — T-013 completion boundary
+
+[AGENT] This amends T-013’s eventual-grading wording. The native runbook closes Round 4 on a valid study reading. T-013 is therefore bounded to the independent static evidence inventory; protocol-complete grading will need its own scope after the reading, disposition checkpoint and fresh round review permit follow-up. This sequencing correction does not assign a score or change the goal’s final-grading obligation. The earlier brief already prohibited final grading during this phase.
+
+### T-013 return — COMPLETE for static evidence
+
+Fresh non-author `/root/plant_fresh_grader` read committed brief `071a2994` without the executor’s conversation and wrote `evidence/T-013_grading/static-evidence.md`. All 23 scored cells and three applicability records carry exact anchors, current canonical bindings, already available evidence with its scope, integrity limits and required final-study facts. No grades or acceptance were assigned. The reader found no new blocking premise conflict. It directly checked the three relevant source renders and distinguished those new image reads from inherited source claims.
+
+Two presentation traps are retained for the final reader: the generic divertor comment still says installed heating although the actual input is operating heat, and an assessment shorthand mentions inventory more broadly than the canonical fuel model implements. Actual bindings and explicit missing inventory/startup terms govern the final packet. No model/doc repair is folded into this study. Checks: 26 unique rows, referenced model/implementation files exist, whitespace clean. Only the assigned file was written; no numerical point, protected-source access, source adoption, native study mutation or residual acceptance occurred. T-012 continues independently.
