@@ -545,3 +545,9 @@ Decision fields: trigger — completed reviewed study and C-001/reround review; 
 Intent met for existing-evidence consolidation; goal acceptance remains unmet. Task sequence: T-015 COMPLETE. No new pin promotion or study; the grade references Round 4's accepted pin and frozen evidence. The result is a complete proposed packet, not a passed engineering or validation contract. Round closes on trigger4, the unresolved owner-held packet/demo acceptance gate. The owner may accept, correct or decline bounded use; no grade or disposition silently changes B-2/B-3/B-4 or authorizes reveal.
 
 Evidence: consolidated report and cell records in this commit, structural validation in `evidence/T-015_grading/validation.json`, predecessor C-001/round review and native study. Existing discovery dispositions remain unchanged because grading performs no remediation; all integrity findings refer to already retained limits. Proposed learning delta: none beyond accepted L-001. Final fresh round review follows. No further execution strategy or owner-held close is opened here.
+
+### Round 5 review — 2026-09-12
+
+Fresh non-author `/root/plant_reading_checkpoint` reviewed the closed round under `evidence/R5_review/reviewer-brief.md@36b6a86b`. Verdict: OWNER_GATE, no material correction required. Review: `evidence/R5_review/review.md`. The reviewer checked scope, identity, complete grading records, load-bearing anchors, proposed comparison wording and unchanged discovery dispositions. Engineering and non-green validation limits remain unmet. Learning delta: none; L-001 remains unchanged.
+
+The consolidated report is ready for the owner to accept, correct or decline its bounded grade, dispositions and proposed demo wording. No further execution strategy is warranted. Packet acceptance, residual acceptance, comparison decisions, source adoption, reveal and goal closure remain reserved under the existing goal. No new round or production work is opened.
