@@ -329,3 +329,28 @@ T-010 · rubric preparation under the existing grading protocol · expected arti
 **Learning decision:** Accept the proposed empty delta. `learnings.md` remains unchanged.
 
 **Recommendation:** Keep Round 2 closed. Obtain the immutable remediation handoff named in `study-contract.md`: independent radius audit, separately certified consumer migration, native integration identities and supported-domain evidence against unresolved findings. After accepting that handoff, write the replacement execution strategy and finalize the native study contract, including the radiation-case interpretation and required owner axis rulings. No execution round is opened here; final grading, the demo statement and owner acceptance remain outstanding.
+
+### Amendment — 2026-09-12: preparation merge authorized and completed
+
+[OWNER-VERBATIM] “yes proceed” approved the explicit request to merge the three preparation commits into `test/codex-native-skills` and continue the plant-study assessment. Merge `2529d904` preserves preparation `8234a8e6` and target `99c3b332`, including all six preparation and 39 target discovery additions. Newer remediation dispositions remain after the earlier preparation rows. Local setup and CURRENT_WORK changes remain uncommitted. Remediation's separate Round 6 is now closed and reviewed OWNER_GATE at its cap; this plant-closure continuation does not reopen it or accept its residuals.
+
+## Round 3 — current-package-plant-comparison
+
+### Strategy revision — 2026-09-12
+
+[AGENT] Pursue the prepared replacement comparison on the existing audited operating-heating/model-owned-radius package, beginning with claim-specific candidate assessment. The reviewed handoff now exists at WI-051 audit `bf3376be`, consumer certificate `7fe8d351`, native candidate `b23b2327`, radius synthesis `2cbd305d`, and current residual assessment `bfc60b91` / fresh review `99c3b332`. Assume the supported native inputs and output evidence can express the required plant comparison without shared model or consumer changes. Abandon that assumption if actual coverage or audit applicability fails; preserve comparison meaning and return a concrete prerequisite or owner gate rather than silently narrowing claims.
+
+Intended model increment: none unless this assessment justifies a separately scoped native prerequisite. Intended study question: the loop/cycle/calendar effects and interactions under corrected operating heating, with bounded engineering sensitivities and historical evidence kept distinct. Adopt the preparation's three bridges as an agent decision under the 2026-09-11 redirection: retained historical compatibility, eight same-package closure combinations, and separately labeled cross-revision differences. This does not amend the external comparison contract or promise old-headline reproduction. The source's two divertor alternatives are transport cases at one radiated fraction; the separate proposed radiation sweep remains engineered. This interpretation follows the preserved source-case evidence and changes no source values or threshold. Pin promotion and execution await this assessment and native pre-execution gates. No final rubric score, residual, demo acceptance or reveal decision is made.
+
+### T-011 scope
+
+Objective: Determine whether the existing candidate supports the replacement plant comparison's actual axis keys, publication channels and claim-specific audit requirements.
+Why now: Reviewed preparation is merged and remediation's audited radius candidate and final evidence assessment are available.
+Scope: Native analyze-models assessment using retained certificates and current package metadata, plus run-study axis/indicator preparation without any numerical points. Write a coverage probe and evidence-linked report. No production edits, source adoption, pin promotion, study execution or residual acceptance.
+Inputs: `goal.md` and amendment; preparation `8234a8e6`; candidate `b23b2327`; consumer audit `7fe8d351`; residual report `bfc60b91` and fresh review `99c3b332`. Narrower constraint: inspect explicit permitted paths only, never quarantine contents or hashes.
+Done when: Every proposed scenario family has an input route or concrete missing key, required numeric outputs have explicit coverage, and relevant residuals have stated consequences for execution and claims.
+Stop when: A mechanical prerequisite, premise conflict, reserved owner decision or declared limit prevents further assessment.
+
+### T-011 start — 2026-09-12
+
+T-011 invokes aspect-focused analyze-models at `work/analysis/20260912-plant-comparison-candidate.md` and native run-study indicator preparation under `evidence/T-011_candidate-assessment/`. One parallel reader owns `audit-applicability.md` there; the parent owns axis/coverage probes, synthesis and the trail. Their read-only scopes are independent and neither alters production or the other's files. Native numerical certificates are retained evidence, not rerun.
