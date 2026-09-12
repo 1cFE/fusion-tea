@@ -1,0 +1,7 @@
+Both fresh experts completed. Saved their final notes verbatim, including identities and evidence grades:
+
+- [Mathematical expert](/tmp/fusion-mfe-financial-rate-limits/work/active/WI-052_mfe-financial-rate-limits/stage-provenance/external-math-expert.md)
+- [KerML expert](/tmp/fusion-mfe-financial-rate-limits/work/active/WI-052_mfe-financial-rate-limits/stage-provenance/external-language-expert.md)
+- [Spawn transcript](/tmp/fusion-mfe-financial-rate-limits/work/active/WI-052_mfe-financial-rate-limits/stage-provenance/external-experts-spawn-transcript.md), explicitly labeled as transcription, not raw events.
+
+No design/spec/plan, goal trail, or production edits. No commit.

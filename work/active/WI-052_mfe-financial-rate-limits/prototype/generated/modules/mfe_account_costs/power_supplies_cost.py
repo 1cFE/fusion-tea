@@ -1,0 +1,151 @@
+"""Power_Supplies_CostModule Module Wrapper
+
+TEAx module for Power_Supplies_Cost calculation.
+
+CAS22.1.7 Power supplies (steady-state: high-current DC for SC magnets,
+switchgear). Power-law in gross electric:
+
+  cost = base * (p_et/p_et_ref)^alpha
+
+`base` is the account cost at the calibration power (power_supplies_base,
+M$ at 1 GWe in the source) -- a concept input (WI-011).
+
+*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
+*Ref**: cas22.py:554 (c220107 steady-state), cas22.py:224 (P_ET_REF)
+*Basis**: Power-scaled power-supply cost
+
+Inputs:
+    - p_et_ref: p_et_ref parameter
+    - base: base parameter
+    - alpha: alpha parameter
+    - p_et_in: p_et_in parameter
+
+Outputs:
+    - cost: cost result
+
+SysML Source: root-0/analyses/mfe_account_costs.sysml:140
+
+SysML Source: root-0/analyses/mfe_account_costs.sysml:140
+
+GAP: Code generator does NOT implement calc logic - only wrapper structure.
+Handwritten implementation required in handwritten/mfe_account_costs/power_supplies_cost_impl.py
+"""
+
+from pydantic import BaseModel, Field, RootModel
+from simkit.core.base import ModuleBase, ModuleResult
+
+from wi052_probe.primitives import Float
+
+
+class Power_Supplies_CostInput(BaseModel):
+    """Input model for Power_Supplies_CostModule.
+
+    Attributes:
+        p_et_ref: p_et_ref input
+        base: base input
+        alpha: alpha input
+        p_et_in: p_et_in input
+    """
+    p_et_ref: float = Field(..., description="p_et_ref input")
+    base: float = Field(..., description="base input")
+    alpha: float = Field(..., description="alpha input")
+    p_et_in: float = Field(..., description="p_et_in input")
+
+
+class Power_Supplies_CostModule(ModuleBase[Power_Supplies_CostInput, Float]):
+    """TEAx module for Power_Supplies_Cost calculation.
+
+CAS22.1.7 Power supplies (steady-state: high-current DC for SC magnets,
+switchgear). Power-law in gross electric:
+
+  cost = base * (p_et/p_et_ref)^alpha
+
+`base` is the account cost at the calibration power (power_supplies_base,
+M$ at 1 GWe in the source) -- a concept input (WI-011).
+
+*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
+*Ref**: cas22.py:554 (c220107 steady-state), cas22.py:224 (P_ET_REF)
+*Basis**: Power-scaled power-supply cost
+
+Inputs:
+    - p_et_ref: p_et_ref parameter
+    - base: base parameter
+    - alpha: alpha parameter
+    - p_et_in: p_et_in parameter
+
+Outputs:
+    - cost: cost result
+
+SysML Source: root-0/analyses/mfe_account_costs.sysml:140
+
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:140
+
+    Calculation Specification:
+        p_et_ref = 1100.0
+        alpha = 0.7
+        cost = base * (p_et_in / p_et_ref) ** alpha
+        
+Documentation:
+CAS22.1.7 Power supplies (steady-state: high-current DC for SC magnets,
+switchgear). Power-law in gross electric:
+
+  cost = base * (p_et/p_et_ref)^alpha
+
+`base` is the account cost at the calibration power (power_supplies_base,
+M$ at 1 GWe in the source) -- a concept input (WI-011).
+
+*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
+*Ref**: cas22.py:554 (c220107 steady-state), cas22.py:224 (P_ET_REF)
+*Basis**: Power-scaled power-supply cost
+
+    IMPLEMENTATION: See wi052_probe.handwritten.mfe_account_costs.power_supplies_cost_impl
+    for manual implementation.
+
+    NOTE: Single-output module - returns Float directly (no MultiOutput needed).
+    """
+
+    name: str = "Power_Supplies_CostModule"
+    version: str = "v0.1"
+
+    def validate_and_fill_default(
+        self, p_et_ref: float, base: float, alpha: float, p_et_in: float    ) -> Power_Supplies_CostInput:
+        """Validate inputs and fill defaults.
+
+        Args:
+            p_et_ref: p_et_ref input
+            base: base input
+            alpha: alpha input
+            p_et_in: p_et_in input
+
+        Returns:
+            Validated input model
+        """
+        return Power_Supplies_CostInput(p_et_ref=p_et_ref, base=base, alpha=alpha, p_et_in=p_et_in)
+
+    def run(
+        self, p_et_ref: float, base: float, alpha: float, p_et_in: float    ) -> ModuleResult[Float]:
+        """Execute calculation.
+
+        Args:
+            p_et_ref: p_et_ref input
+            base: base input
+            alpha: alpha input
+            p_et_in: p_et_in input
+
+        Returns:
+            Module result with Float (single-output mode)
+        """
+        # Validate inputs
+        validated_inputs = self.validate_and_fill_default(p_et_ref, base, alpha, p_et_in)
+
+        # Import handwritten implementation
+        from wi052_probe.handwritten.mfe_account_costs.power_supplies_cost_impl import (
+            run_power_supplies_cost,
+        )
+
+        # Execute implementation - returns single value
+        cost = run_power_supplies_cost(validated_inputs)
+
+        # Single output - return Float directly (RootModel[float])
+        # TEAx assigns entire return value to the one channel declared in YAML
+        return ModuleResult(data=Float(cost))
