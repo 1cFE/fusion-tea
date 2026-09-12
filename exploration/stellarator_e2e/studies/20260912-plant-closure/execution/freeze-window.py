@@ -49,10 +49,30 @@ def main():
   else:
    row.update(exclusion_reason=r['reason'],failure_traceback=r.get('traceback'));detail.update(status='arithmetic/domain exclusion; not a predicate boundary',reason=r['reason'])
   rows.append(row)
+ # Unexpected interface/programming exceptions are prerequisites, not scientific exclusions.
+ for row in rows:
+  if row['scan_status']!='excluded':continue
+  reason=row['exclusion_reason']
+  if 'ash fixed point did not converge' in reason:kind='oracle nonconvergence; physical validity undetermined'
+  elif 'oracle sustainment: non-positive fuel' in reason:kind='oracle fuel-domain exclusion'
+  elif 'oracle loop: pressure domain' in reason:kind='oracle pressure-domain exclusion'
+  elif reason.startswith(('ZeroDivisionError:','OverflowError:','ValueError: math domain error')):kind='oracle arithmetic exclusion'
+  elif reason.startswith('ValueError: oracle calendar:'):kind='oracle calendar-domain exclusion'
+  elif reason.startswith(('ValueError: derived radial-stack','ValueError: nonpositive','ValueError: efficiency outside','ValueError: unrepaired financial','ValueError: outside single-module','ValueError: nonfinite')):kind='declared domain/finite-value screen'
+  else:raise RuntimeError('Unexpected oracle failure must be resolved before native execution: '+reason)
+  row['exclusion_class']=kind
  # Every retained historical row remains correlated; no scan exclusion disappears.
  assert sum(r['arm_id']=='arm-window-fixed' for r in rows)==7949
  assert sum(r['arm_id']=='arm-window-sized' for r in rows)==7949
  write(H/'preparation/correlation.json',rows);write(H/'preparation/oracle-scan.json',list(by_key.values()));write(H/'preparation/proposals.json',[r['inputs'] for r in by_key.values()])
+ for q in scan.SIZING:
+  if 'selected_n_loops' not in q:continue
+  actual=scan.canonical({**q['scout_inputs'],P+'n_loops':float(q['selected_n_loops'])});r=scan.evaluate(actual)
+  if r['status']=='eligible':
+   for name,suffix in [('q_source','source_heat__q_source'),('mdot','primary_loop__mdot')]:
+    assert abs(q[name]-r['channels'][P+suffix])<=1e-9+1e-9*abs(q[name])
+   q['source_heat_and_total_flow_equal']=True
+  else:q['actual_failure']=r['reason']
  write(H/'preparation/window-edges.json',edges);write(H/'preparation/extra-sizing-queries.json',scan.SIZING)
  digests={name:hashlib.sha256((H/'preparation'/name).read_bytes()).hexdigest() for name in ['correlation.json','oracle-scan.json','proposals.json','window-edges.json']}
  write(H/'preparation/window-freeze.json',{'frozen':True,'provenance':'engineered','unique_native_proposals':len(by_key),'correlation_rows':len(rows),'excluded_correlations':sum(r['scan_status']=='excluded' for r in rows),'arms':{a:dict(Counter(r['scan_status'] for r in rows if r['arm_id']==a)) for a in sorted({r['arm_id'] for r in rows})},'digests':digests,'claims':'Sampled predicate and exclusion evidence only. Uncaught edges remain uncaught; no extrapolated optimum or whole feasible-region claim. Four owner-approved sensitivities make no boundary claims.'})

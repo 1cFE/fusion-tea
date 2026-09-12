@@ -1,5 +1,5 @@
 """Execute the frozen list through the stock lifecycle and export complete evidence."""
-import csv,json,math,sys,time
+import csv,json,math,sys,time,hashlib,subprocess
 from pathlib import Path
 from collections import Counter
 from exploration.stellarator_e2e.studies import study_route as route
@@ -11,6 +11,15 @@ def write(p,data):p.write_text(json.dumps(data,indent=2,allow_nan=False)+'\n')
 def key(p):return json.dumps(dict(p),sort_keys=True,separators=(',',':'))
 assert json.loads((H/'reviews/pre-execution-approval.json').read_text())['approved']
 assert json.loads((R/'preflight.json').read_text())['outcome']=='pass'
+freeze=json.loads((H/'preparation/window-freeze.json').read_text());assert freeze['frozen']
+for name,digest in freeze['digests'].items():
+ assert hashlib.sha256((H/'preparation'/name).read_bytes()).hexdigest()==digest,name
+for copied,current in [('oracle_entry.py','exploration/stellarator_e2e/studies/oracle_entry.py'),('verify_stellaris.py','exploration/stellarator_e2e/verify_stellaris.py'),('study_route.py','exploration/stellarator_e2e/studies/study_route.py'),('manifest.json','exploration/stellarator_e2e/studies/manifest.json')]:
+ assert (H/'context'/copied).read_bytes()==Path(current).read_bytes(),current
+clean=preflight.run_clean(route.PACKAGE_DIR);write(R/'execution-clean-before.json',clean);assert clean['outcome']=='pass'
+route.write_identity_document(route.PACKAGE_DIR,R/'execution-package-identity.json')
+assert json.loads((R/'execution-package-identity.json').read_text())==json.loads((R/'package_identity.json').read_text())
+write(R/'execution-runtime.json',{'repo_revision':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'study_definition':'study.py','preparation_digests':freeze['digests']})
 start=time.time();print('Starting native lifecycle',len(study.proposals()),'unique proposals',flush=True)
 cases,db=study.run()
 print('Native lifecycle returned',len(cases),'cases in',time.time()-start,'seconds',flush=True)
@@ -19,13 +28,14 @@ write(R/'execution-summary.json',{'cases':len(cases),'states':dict(Counter(c.sta
 assert len(cases)==len(study.proposals())
 if failures:raise RuntimeError('Native cases failed; store retained, publication stopped')
 channels=study.channels();catalog=route._catalog_by_constraint_id(route.PACKAGE_DIR)
-fieldnames=['candidate_id',*channels,*catalog,'full_satisfied']
+fieldnames=['candidate_id',*channels,*catalog,'full_satisfied','headline']
 with (R/'native-points.csv').open('w',newline='') as f:
  w=csv.DictWriter(f,fieldnames=fieldnames,lineterminator='\n');w.writeheader()
  for c in cases:
   values=route.required_outputs(c,channels)
   assert set(c.verdicts)==set(catalog)
-  w.writerow({'candidate_id':c.candidate_id,**values,**c.verdicts,'full_satisfied':all(v=='satisfied' for v in c.verdicts.values())})
+  assert c.headline==('satisfied' if all(v=='satisfied' for v in c.verdicts.values()) else 'violated')
+  w.writerow({'candidate_id':c.candidate_id,**values,**c.verdicts,'full_satisfied':all(v=='satisfied' for v in c.verdicts.values()),'headline':c.headline})
 write(R/'case-inputs.json',[{'candidate_id':c.candidate_id,'inputs':dict(c.inputs),'state':c.state} for c in cases])
 by_key={key(c.inputs):c.candidate_id for c in cases}
 correlation=json.loads((H/'preparation/correlation.json').read_text())

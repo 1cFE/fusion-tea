@@ -23,6 +23,15 @@ def main():
   for row in csv.DictReader(f):
    cid=row['candidate_id'];point=inputs[cid];p={**defaults,**point};v=lambda n:float(p[P+n]);y={a:float(row[a]) for a in channelmap}
    e=expected[key(point)];native={channelmap[a]:z for a,z in y.items()}
+   assert set(point)<=set(oracle.ENTRY_KEY_TO_ORACLE_INPUT),'Unsupported oracle override'
+   for fixed in ['discount_rate','inflation_rate','construction_years','operational_years','n_mod']:
+    assert v(fixed)==float(defaults[P+fixed]),fixed
+   if not point:
+    baseline=read(R/'baseline-native-evidence.json')
+    for channel,actual in native.items():
+     if actual!=baseline['outputs'][channel]:failures.append({'candidate_id':cid,'exact_baseline_channel':channel,'native':actual,'baseline':baseline['outputs'][channel]})
+    for q in catalog:
+     if row[q]!=baseline['responses'][q]:failures.append({'candidate_id':cid,'exact_baseline_predicate':q})
    assert set(e['channels'])==set(oracle.ORACLE_OUTPUT_TO_CHANNEL.values())
    for channel,want in e['channels'].items():check(cid,channel,native[channel],want)
    for q,entry in catalog.items():
