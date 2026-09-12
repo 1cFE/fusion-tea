@@ -11,8 +11,9 @@ R=H/'results'
 def write(p,data):p.write_text(json.dumps(data,indent=2,allow_nan=False)+'\n')
 def key(p):return json.dumps(dict(p),sort_keys=True,separators=(',',':'))
 assert json.loads((H/'reviews/pre-execution-approval.json').read_text())['approved']
+assert json.loads((H/'reviews/reduction-approval.json').read_text())['approved']
 assert json.loads((R/'preflight.json').read_text())['outcome']=='pass'
-freeze=json.loads((H/'preparation/window-freeze.json').read_text());assert freeze['frozen']
+freeze=json.loads((H/'preparation/reduced-window-freeze.json').read_text());assert freeze['frozen']
 for name,digest in freeze['digests'].items():
  assert hashlib.sha256((H/'preparation'/name).read_bytes()).hexdigest()==digest,name
 for copied,current in [('oracle_entry.py','exploration/stellarator_e2e/studies/oracle_entry.py'),('verify_stellaris.py','exploration/stellarator_e2e/verify_stellaris.py'),('study_route.py','exploration/stellarator_e2e/studies/study_route.py'),('manifest.json','exploration/stellarator_e2e/studies/manifest.json')]:
@@ -39,7 +40,7 @@ with (R/'native-points.csv').open('w',newline='') as f:
   w.writerow({'candidate_id':c.candidate_id,**values,**c.verdicts,'full_satisfied':all(v=='satisfied' for v in c.verdicts.values()),'headline':c.headline})
 write(R/'case-inputs.json',[{'candidate_id':c.candidate_id,'inputs':dict(c.inputs),'state':c.state} for c in cases])
 by_key={key(c.inputs):c.candidate_id for c in cases}
-correlation=json.loads((H/'preparation/correlation.json').read_text())
+correlation=json.loads((H/'preparation/reduced-correlation.json').read_text())
 for row in correlation:
  if row['scan_status']=='eligible':row['candidate_id']=by_key[row['proposal_key']]
 write(R/'correlation.json',correlation)

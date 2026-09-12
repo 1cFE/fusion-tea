@@ -1,0 +1,563 @@
+{
+  "basis": "Full independent oracle scan; selected candidate minima and verdict patterns are separately native-verified.",
+  "groups": [
+    {
+      "arm_id": "arm-window-fixed",
+      "historical_arm": "arm-fence-p100",
+      "installed_power_MW": 100.0,
+      "oracle_status_counts": {
+        "eligible": 3624,
+        "excluded": 127
+      },
+      "oracle_satisfaction_counts": {
+        "old-ten": 291,
+        "round1-fourteen": 132,
+        "current-eighteen": 132
+      },
+      "oracle_minima": {
+        "old-ten": {
+          "historical_id": "20260907-minor-radius:c1207",
+          "inputs": {
+            "stellarator_09__stellaris__T_i0": 13.0,
+            "stellarator_09__stellaris__a": 2.0,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+          },
+          "lcoe": 183.71529782440456,
+          "lcoe_1cfe": 180.28150848902374,
+          "aspect_ratio": 6.35
+        },
+        "round1-fourteen": {
+          "historical_id": "20260907-minor-radius:c0960",
+          "inputs": {
+            "stellarator_09__stellaris__a": 1.7,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+            "stellarator_09__stellaris__n_e0": 4.048e+20
+          },
+          "lcoe": 191.7581690876428,
+          "lcoe_1cfe": 188.12676969778198,
+          "aspect_ratio": 7.470588235294118
+        },
+        "current-eighteen": {
+          "historical_id": "20260907-minor-radius:c0960",
+          "inputs": {
+            "stellarator_09__stellaris__a": 1.7,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+            "stellarator_09__stellaris__n_e0": 4.048e+20
+          },
+          "lcoe": 191.7581690876428,
+          "lcoe_1cfe": 188.12676969778198,
+          "aspect_ratio": 7.470588235294118
+        }
+      }
+    },
+    {
+      "arm_id": "arm-window-fixed",
+      "historical_arm": "arm-reread-p220",
+      "installed_power_MW": 220.0,
+      "oracle_status_counts": {
+        "eligible": 360
+      },
+      "oracle_satisfaction_counts": {
+        "old-ten": 76,
+        "round1-fourteen": 42,
+        "current-eighteen": 42
+      },
+      "oracle_minima": {
+        "old-ten": {
+          "historical_id": "20260907-minor-radius:c7683",
+          "inputs": {
+            "stellarator_09__stellaris__eta_source_heat": 0.6,
+            "stellarator_09__stellaris__magnet__I_coil": 15250000.0,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0
+          },
+          "lcoe": 230.93791309592447,
+          "lcoe_1cfe": 226.53740431751723,
+          "aspect_ratio": 9.769230769230768
+        },
+        "round1-fourteen": {
+          "historical_id": "20260907-minor-radius:c7650",
+          "inputs": {
+            "stellarator_09__stellaris__eta_source_heat": 0.6,
+            "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+            "stellarator_09__stellaris__n_e0": 4.554e+20,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0
+          },
+          "lcoe": 256.53337415978604,
+          "lcoe_1cfe": 251.58931540937974,
+          "aspect_ratio": 9.769230769230768
+        },
+        "current-eighteen": {
+          "historical_id": "20260907-minor-radius:c7650",
+          "inputs": {
+            "stellarator_09__stellaris__eta_source_heat": 0.6,
+            "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+            "stellarator_09__stellaris__n_e0": 4.554e+20,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0
+          },
+          "lcoe": 256.53337415978604,
+          "lcoe_1cfe": 251.58931540937974,
+          "aspect_ratio": 9.769230769230768
+        }
+      }
+    },
+    {
+      "arm_id": "arm-window-fixed",
+      "historical_arm": "arm-search-p220",
+      "installed_power_MW": 220.0,
+      "oracle_status_counts": {
+        "eligible": 3623,
+        "excluded": 127
+      },
+      "oracle_satisfaction_counts": {
+        "old-ten": 522,
+        "round1-fourteen": 227,
+        "current-eighteen": 227
+      },
+      "oracle_minima": {
+        "old-ten": {
+          "historical_id": "20260907-minor-radius:c4854",
+          "inputs": {
+            "stellarator_09__stellaris__T_i0": 13.0,
+            "stellarator_09__stellaris__a": 2.0,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0
+          },
+          "lcoe": 189.13740619857188,
+          "lcoe_1cfe": 185.5864683190078,
+          "aspect_ratio": 6.35
+        },
+        "round1-fourteen": {
+          "historical_id": "20260907-minor-radius:c4609",
+          "inputs": {
+            "stellarator_09__stellaris__a": 1.7,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+            "stellarator_09__stellaris__n_e0": 4.048e+20,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0
+          },
+          "lcoe": 198.00258969214127,
+          "lcoe_1cfe": 194.23627511198842,
+          "aspect_ratio": 7.470588235294118
+        },
+        "current-eighteen": {
+          "historical_id": "20260907-minor-radius:c4609",
+          "inputs": {
+            "stellarator_09__stellaris__a": 1.7,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+            "stellarator_09__stellaris__n_e0": 4.048e+20,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0
+          },
+          "lcoe": 198.00258969214127,
+          "lcoe_1cfe": 194.23627511198842,
+          "aspect_ratio": 7.470588235294118
+        }
+      }
+    },
+    {
+      "arm_id": "arm-window-fixed",
+      "historical_arm": "arm-transect-a",
+      "installed_power_MW": 100.0,
+      "oracle_status_counts": {
+        "eligible": 34,
+        "excluded": 2
+      },
+      "oracle_satisfaction_counts": {
+        "old-ten": 6,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "oracle_minima": {
+        "old-ten": {
+          "historical_id": "20260907-minor-radius:c7766",
+          "inputs": {
+            "stellarator_09__stellaris__R": 14.2,
+            "stellarator_09__stellaris__T_i0": 13.0,
+            "stellarator_09__stellaris__a": 2.5,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+          },
+          "lcoe": 197.77996233456452,
+          "lcoe_1cfe": 194.14469274230078,
+          "aspect_ratio": 5.68
+        },
+        "round1-fourteen": null,
+        "current-eighteen": null
+      }
+    },
+    {
+      "arm_id": "arm-window-fixed",
+      "historical_arm": "arm-transect-a",
+      "installed_power_MW": 220.0,
+      "oracle_status_counts": {
+        "eligible": 35,
+        "excluded": 2
+      },
+      "oracle_satisfaction_counts": {
+        "old-ten": 10,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "oracle_minima": {
+        "old-ten": {
+          "historical_id": "20260907-minor-radius:c7775",
+          "inputs": {
+            "stellarator_09__stellaris__R": 14.2,
+            "stellarator_09__stellaris__T_i0": 13.0,
+            "stellarator_09__stellaris__a": 2.5,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0
+          },
+          "lcoe": 202.28305777537213,
+          "lcoe_1cfe": 198.55049557314834,
+          "aspect_ratio": 5.68
+        },
+        "round1-fourteen": null,
+        "current-eighteen": null
+      }
+    },
+    {
+      "arm_id": "arm-window-fixed",
+      "historical_arm": "arm-transect-ash",
+      "installed_power_MW": 100.0,
+      "oracle_status_counts": {
+        "eligible": 10
+      },
+      "oracle_satisfaction_counts": {
+        "old-ten": 1,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "oracle_minima": {
+        "old-ten": {
+          "historical_id": "20260907-minor-radius:c7700",
+          "inputs": {
+            "stellarator_09__stellaris__R": 14.2,
+            "stellarator_09__stellaris__T_i0": 16.0,
+            "stellarator_09__stellaris__a": 1.8,
+            "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+            "stellarator_09__stellaris__n_e0": 4.048e+20,
+            "stellarator_09__stellaris__tau_ratio_ash": 12.0
+          },
+          "lcoe": 205.83774130161788,
+          "lcoe_1cfe": 201.93619937401897,
+          "aspect_ratio": 7.888888888888888
+        },
+        "round1-fourteen": null,
+        "current-eighteen": null
+      }
+    },
+    {
+      "arm_id": "arm-window-fixed",
+      "historical_arm": "arm-transect-ash",
+      "installed_power_MW": 220.0,
+      "oracle_status_counts": {
+        "eligible": 5
+      },
+      "oracle_satisfaction_counts": {
+        "old-ten": 2,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "oracle_minima": {
+        "old-ten": {
+          "historical_id": "20260907-minor-radius:c7705",
+          "inputs": {
+            "stellarator_09__stellaris__R": 14.2,
+            "stellarator_09__stellaris__a": 1.8,
+            "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+            "stellarator_09__stellaris__n_e0": 4.554e+20,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+            "stellarator_09__stellaris__tau_ratio_ash": 12.0
+          },
+          "lcoe": 217.45626188009373,
+          "lcoe_1cfe": 213.31486931800302,
+          "aspect_ratio": 7.888888888888888
+        },
+        "round1-fourteen": null,
+        "current-eighteen": null
+      }
+    },
+    {
+      "arm_id": "arm-window-sized",
+      "historical_arm": "arm-fence-p100",
+      "installed_power_MW": 100.0,
+      "oracle_status_counts": {
+        "eligible": 3690,
+        "excluded": 61
+      },
+      "oracle_satisfaction_counts": {
+        "old-ten": 294,
+        "round1-fourteen": 132,
+        "current-eighteen": 132
+      },
+      "oracle_minima": {
+        "old-ten": {
+          "historical_id": "20260907-minor-radius:c2823",
+          "inputs": {
+            "stellarator_09__stellaris__R": 15.7,
+            "stellarator_09__stellaris__T_i0": 13.0,
+            "stellarator_09__stellaris__a": 2.2,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+            "stellarator_09__stellaris__n_loops": 27.0
+          },
+          "lcoe": 160.60036483005675,
+          "lcoe_1cfe": 157.72606980697495,
+          "aspect_ratio": 7.136363636363636
+        },
+        "round1-fourteen": {
+          "historical_id": "20260907-minor-radius:c0960",
+          "inputs": {
+            "stellarator_09__stellaris__a": 1.7,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+            "stellarator_09__stellaris__n_e0": 4.048e+20
+          },
+          "lcoe": 191.7581690876428,
+          "lcoe_1cfe": 188.12676969778198,
+          "aspect_ratio": 7.470588235294118
+        },
+        "current-eighteen": {
+          "historical_id": "20260907-minor-radius:c0960",
+          "inputs": {
+            "stellarator_09__stellaris__a": 1.7,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+            "stellarator_09__stellaris__n_e0": 4.048e+20
+          },
+          "lcoe": 191.7581690876428,
+          "lcoe_1cfe": 188.12676969778198,
+          "aspect_ratio": 7.470588235294118
+        }
+      }
+    },
+    {
+      "arm_id": "arm-window-sized",
+      "historical_arm": "arm-reread-p220",
+      "installed_power_MW": 220.0,
+      "oracle_status_counts": {
+        "eligible": 360
+      },
+      "oracle_satisfaction_counts": {
+        "old-ten": 76,
+        "round1-fourteen": 42,
+        "current-eighteen": 42
+      },
+      "oracle_minima": {
+        "old-ten": {
+          "historical_id": "20260907-minor-radius:c7683",
+          "inputs": {
+            "stellarator_09__stellaris__eta_source_heat": 0.6,
+            "stellarator_09__stellaris__magnet__I_coil": 15250000.0,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0
+          },
+          "lcoe": 230.93791309592447,
+          "lcoe_1cfe": 226.53740431751723,
+          "aspect_ratio": 9.769230769230768
+        },
+        "round1-fourteen": {
+          "historical_id": "20260907-minor-radius:c7650",
+          "inputs": {
+            "stellarator_09__stellaris__eta_source_heat": 0.6,
+            "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+            "stellarator_09__stellaris__n_e0": 4.554e+20,
+            "stellarator_09__stellaris__n_loops": 12.0,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0
+          },
+          "lcoe": 264.89634848562486,
+          "lcoe_1cfe": 259.79005886729595,
+          "aspect_ratio": 9.769230769230768
+        },
+        "current-eighteen": {
+          "historical_id": "20260907-minor-radius:c7650",
+          "inputs": {
+            "stellarator_09__stellaris__eta_source_heat": 0.6,
+            "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+            "stellarator_09__stellaris__n_e0": 4.554e+20,
+            "stellarator_09__stellaris__n_loops": 12.0,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0
+          },
+          "lcoe": 264.89634848562486,
+          "lcoe_1cfe": 259.79005886729595,
+          "aspect_ratio": 9.769230769230768
+        }
+      }
+    },
+    {
+      "arm_id": "arm-window-sized",
+      "historical_arm": "arm-search-p220",
+      "installed_power_MW": 220.0,
+      "oracle_status_counts": {
+        "eligible": 3689,
+        "excluded": 61
+      },
+      "oracle_satisfaction_counts": {
+        "old-ten": 524,
+        "round1-fourteen": 224,
+        "current-eighteen": 224
+      },
+      "oracle_minima": {
+        "old-ten": {
+          "historical_id": "20260907-minor-radius:c6466",
+          "inputs": {
+            "stellarator_09__stellaris__R": 15.7,
+            "stellarator_09__stellaris__T_i0": 13.0,
+            "stellarator_09__stellaris__a": 2.2,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+            "stellarator_09__stellaris__n_loops": 27.0,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0
+          },
+          "lcoe": 163.803944808063,
+          "lcoe_1cfe": 160.8604341395717,
+          "aspect_ratio": 7.136363636363636
+        },
+        "round1-fourteen": {
+          "historical_id": "20260907-minor-radius:c4609",
+          "inputs": {
+            "stellarator_09__stellaris__a": 1.7,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+            "stellarator_09__stellaris__n_e0": 4.048e+20,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0
+          },
+          "lcoe": 198.00258969214127,
+          "lcoe_1cfe": 194.23627511198842,
+          "aspect_ratio": 7.470588235294118
+        },
+        "current-eighteen": {
+          "historical_id": "20260907-minor-radius:c4609",
+          "inputs": {
+            "stellarator_09__stellaris__a": 1.7,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+            "stellarator_09__stellaris__n_e0": 4.048e+20,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0
+          },
+          "lcoe": 198.00258969214127,
+          "lcoe_1cfe": 194.23627511198842,
+          "aspect_ratio": 7.470588235294118
+        }
+      }
+    },
+    {
+      "arm_id": "arm-window-sized",
+      "historical_arm": "arm-transect-a",
+      "installed_power_MW": 100.0,
+      "oracle_status_counts": {
+        "eligible": 34,
+        "excluded": 2
+      },
+      "oracle_satisfaction_counts": {
+        "old-ten": 13,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "oracle_minima": {
+        "old-ten": {
+          "historical_id": "20260907-minor-radius:c7740",
+          "inputs": {
+            "stellarator_09__stellaris__R": 15.7,
+            "stellarator_09__stellaris__T_i0": 13.0,
+            "stellarator_09__stellaris__a": 2.4,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+            "stellarator_09__stellaris__n_loops": 28.0
+          },
+          "lcoe": 157.50406627859482,
+          "lcoe_1cfe": 154.6906208870215,
+          "aspect_ratio": 6.541666666666667
+        },
+        "round1-fourteen": null,
+        "current-eighteen": null
+      }
+    },
+    {
+      "arm_id": "arm-window-sized",
+      "historical_arm": "arm-transect-a",
+      "installed_power_MW": 220.0,
+      "oracle_status_counts": {
+        "eligible": 35,
+        "excluded": 2
+      },
+      "oracle_satisfaction_counts": {
+        "old-ten": 21,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "oracle_minima": {
+        "old-ten": {
+          "historical_id": "20260907-minor-radius:c7756",
+          "inputs": {
+            "stellarator_09__stellaris__R": 15.7,
+            "stellarator_09__stellaris__T_i0": 13.0,
+            "stellarator_09__stellaris__a": 2.6,
+            "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+            "stellarator_09__stellaris__n_loops": 29.0,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0
+          },
+          "lcoe": 160.53262822891787,
+          "lcoe_1cfe": 157.65392440258236,
+          "aspect_ratio": 6.038461538461538
+        },
+        "round1-fourteen": null,
+        "current-eighteen": null
+      }
+    },
+    {
+      "arm_id": "arm-window-sized",
+      "historical_arm": "arm-transect-ash",
+      "installed_power_MW": 100.0,
+      "oracle_status_counts": {
+        "eligible": 10
+      },
+      "oracle_satisfaction_counts": {
+        "old-ten": 1,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "oracle_minima": {
+        "old-ten": {
+          "historical_id": "20260907-minor-radius:c7700",
+          "inputs": {
+            "stellarator_09__stellaris__R": 14.2,
+            "stellarator_09__stellaris__T_i0": 16.0,
+            "stellarator_09__stellaris__a": 1.8,
+            "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+            "stellarator_09__stellaris__n_e0": 4.048e+20,
+            "stellarator_09__stellaris__n_loops": 16.0,
+            "stellarator_09__stellaris__tau_ratio_ash": 12.0
+          },
+          "lcoe": 198.7683198316245,
+          "lcoe_1cfe": 195.00145176469877,
+          "aspect_ratio": 7.888888888888888
+        },
+        "round1-fourteen": null,
+        "current-eighteen": null
+      }
+    },
+    {
+      "arm_id": "arm-window-sized",
+      "historical_arm": "arm-transect-ash",
+      "installed_power_MW": 220.0,
+      "oracle_status_counts": {
+        "eligible": 5
+      },
+      "oracle_satisfaction_counts": {
+        "old-ten": 2,
+        "round1-fourteen": 0,
+        "current-eighteen": 0
+      },
+      "oracle_minima": {
+        "old-ten": {
+          "historical_id": "20260907-minor-radius:c7705",
+          "inputs": {
+            "stellarator_09__stellaris__R": 14.2,
+            "stellarator_09__stellaris__a": 1.8,
+            "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+            "stellarator_09__stellaris__n_e0": 4.554e+20,
+            "stellarator_09__stellaris__n_loops": 16.0,
+            "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+            "stellarator_09__stellaris__tau_ratio_ash": 12.0
+          },
+          "lcoe": 209.8649937445898,
+          "lcoe_1cfe": 205.86888853001633,
+          "aspect_ratio": 7.888888888888888
+        },
+        "round1-fourteen": null,
+        "current-eighteen": null
+      }
+    }
+  ]
+}
