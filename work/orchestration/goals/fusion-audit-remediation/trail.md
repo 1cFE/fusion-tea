@@ -1235,3 +1235,29 @@ Stop when: Evidence cannot be obtained within the permitted surface, a premise m
 ### T-028 start — 2026-09-12
 
 T-028 invokes native analyze-models for `work/analysis/20260912-fusion-audit-current-assessment.md`, supported by `evidence/T-028_assessment/`. Parallel readers own disjoint evidence notes for F01–F07 and F12–F16; the round agent owns F08–F11/F17–F20, report synthesis and the goal trail. Read-only analyses cannot invalidate each other's scopes; integrate their findings sequentially before returning. All agents must preserve each other's edits.
+
+### T-028 return — 2026-09-12
+
+**Outcome: COMPLETE.** Native assessment `work/analysis/20260912-fusion-audit-current-assessment.md@bfc60b91` and its three evidence notes assess every original finding and distinct subissue, credit demonstrated repairs and identify current residual effects and enforcement gaps. This completes the assessment objective, not the grounded remediation goal. No native production change, pin promotion or study was executed.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Five rounds left no consolidated current assessment | Assess original subissues against current code and native certificates; distinguish source, execution, numerical and engineering strength | execution detail | Round agent [AGENT], supported by separate bounded readers | Native report and `evidence/T-028_assessment/` at bfc60b91 |
+| Earlier engineering increments postdate the original audit | Credit only the documented live-calendar/thermal/breadth changes, preserving missing independent item-audit evidence and current residuals | execution detail | Round agent [AGENT], from native analysis | Report F12–F16; joined live-calendar updates for `20260821-power-cycle-ab#1` and `20260904-wall-and-heating#5` at bfc60b91 |
+| Existing findings carry unresolved limitations | Append current assessment references under 33 existing IDs, preserve prior bounded meanings and concrete routes; no original sighting edited and no residual accepted | execution detail | Round agent [AGENT] under runbook discovery obligation | Both discovery logs at bfc60b91; report Discovery updates and document checks |
+| Assessment does not execute a new study reading or semantic repair | Use already passed C-001–C-004 interpretations; require fresh whole-round review of this assessment and its disposition updates | execution detail | Round agent [AGENT]; fresh reviewer checks applicability | `evidence/R6_review/brief.md`; no new checkpoint entry |
+| Finance/scope/engineering residuals and incomplete correction remain | No whole-goal resolution; owner decisions and further native work remain necessary. Documentary cautions do not satisfy enforceability | reserved gate | Existing owner-held gate; agent identifies evidence, makes no ruling | Report Answer-contract assessment; no goal/scope/requirement/source mutation |
+
+Validation: 14 existing stellarator discovery-join checks passed, 26 unrelated tests deselected; both IFE joins and exact twenty-finding summary coverage passed; diff formatting passed. Evidence: `evidence/T-028_assessment/checks.md@bfc60b91` and retained log. Current native path histories showed authorized successors and no unexplained mutation on inspected paths. Existing unrelated failures, skips, coverage limits and R5-F1/R5-F2 remain explicit; no broad certificate was rerun or upgraded.
+
+### Round 6 result — 2026-09-12
+
+**Intent met:** the final current-revision assessment is written with subissue evidence and actionable residuals. **Goal answer contract unmet:** reproducible defects, accounting/reuse/comparison contracts, enforcement, source/engineering limitations and owner-accepted residuals remain. Native evidence: `work/analysis/20260912-fusion-audit-current-assessment.md@bfc60b91` and its cited notes/certificates.
+
+**Task sequence and last semantic outcome:** T-028 COMPLETE, a read-only native analysis. **Derived stop reason:** declared limit reached, six of six rounds used with the goal unanswered; further pursuit requires owner re-grounding or close/redirection under goal Limits and Close rule. This is not an automatic seventh round and does not certify remediation complete. No pin and no study were promoted/committed in Round 6. No task retry or semantic comparison change occurred.
+
+**Finding dispositions:** report and both discovery logs at bfc60b91 carry current decisions. Thirty-three existing study IDs received joined updates; the two lifecycle sightings receive bounded live-calendar credit and retain open reliability/audit limits, while the others retain prior meaning with current evidence attached. Findings without study IDs remain in the native assessment by original F identifier; none is minted into the discovery log. The report distinguishes implemented guards, documented limits and proposed use restrictions. Pending research remains pending, owner-closed historical items are not reopened, and R5-F1/R5-F2 remain recorded.
+
+**Proposed learning delta:** none. L-001–L-009 remain as accepted by earlier fresh reviews. The assessment consolidates existing evidence without proposing a new durable law.
+
+**Fresh review:** required now, on the completed assessment and the entire bounded round, through the committed self-contained prompt at `evidence/R6_review/brief.md`. The reviewer must test all subissue coverage, native authority/mutation, dispositions and checkpoint applicability, then report the owner decision required at the cap. Goal close, residual acceptance, finance/scope/requirement changes, source adoption, work-item close/archive and merge/push remain owner-held.
