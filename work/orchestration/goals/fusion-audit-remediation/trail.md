@@ -1145,3 +1145,46 @@ Record integrity, native record tests, native publication tests and fail-closed 
 ### T-027 start — 2026-09-11
 
 T-027 · native run-study administer · expected synthesis.md written by a fresh no-history subagent from the committed directory only. The parent owns the goal trail; a separate dispatcher may obtain the fresh child but cannot substitute its own reading.
+
+### T-027 return — 2026-09-11
+
+**Outcome: COMPLETE.** Fresh record-only synthesis `exploration/stellarator_e2e/studies/20260911-model-owned-radius/synthesis.md@2cbd305d` recovers the framing, both objectives, every named constraint and all six findings. It supports sampled R-only propagation/arithmetic fidelity and explicitly rejects a feasible-plant, radius-envelope or general-domain conclusion. Its missing-fact list distinguishes absent executable environment, directory-contained freeze receipt, external discovery rows and subsequent decisions from the numerical/framing facts that were recovered. This is a valid study reading and closes Round 5 under the runbook.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Record-only administrator recovered the required study facts | Accept the reading as valid and write the round result; submit proposed dispositions to a fresh checkpoint before follow-up | execution detail | Parent on fresh native synthesis | Synthesis `2cbd305d`; Round 5 result below |
+| Synthesis cannot recover subsequent commit/discovery history from its directory | Preserve that limit; the goal layer cites the actual freeze and joined log separately, without rewriting immutable executor evidence | execution detail | Parent | Study `d55e806e`, native discovery rows at that commit, synthesis `2cbd305d` |
+| All sampled cases violate at least one assertion and broader coverage remains explicit | Retain engineering/domain/source/finance limitations and propose only bounded repair credit | execution detail | Parent on administrator reading | Proposed dispositions below; no residual acceptance |
+
+The required fresh administrator was an actual new default subagent with fork_turns none, obtained by a separate CLI dispatcher after host thread limits; complete provenance is in `evidence/T-027_administrator/@2cbd305d`. Neither dispatcher nor administrator authored the study. No semantic follow-up has executed.
+
+### Round 5 result — 2026-09-11
+
+**Intent met within the bounded strategy.** T-021 established the duplicate-radius and oracle defect. T-022 implemented and independently audited the model-owned producer and direct callers. T-023 read the owner-supplied STEP paper in parallel as pending research. T-024 independently certified current study consumers. T-025 established one native candidate. T-026 ran one seven-point sensitivity study, and T-027 independently recovered its result from the frozen record. The ordinary supported R-only path now reaches the intended plasma/magnet/sustainment/cost consumers without an external tie, with retained fixed anchors and full baseline/R14 controls. This does not answer the broader remediation goal.
+
+**Stop reason: valid study reading.** The last semantic outcome is T-027 COMPLETE at `2cbd305d`. Round 5 is closed with one promoted pin, one committed study, no goal-task mechanical retries and no checkpoint submission yet. A fresh C-004 checkpoint must assess the proposed dispositions before any semantic follow-up, and a fresh Round 5 review must assess the whole round before opening another strategy. The six-round limit remains unchanged.
+
+**Evidence:** T-021 assessment `2f8856b7`; WI-051 production `641c1051` and independent audit `bf3376be`; pending STEP reading `2a55615b`; consumer implementation `f5737119` and independent certificate `7fe8d351`; native candidate `b23b2327`; study `d55e806e`; fresh synthesis `2cbd305d`. Native failures, scope corrections, original diagnostic evidence, review findings and CLI/fresh-subagent provenance remain at those cited homes. Verification, physical validity and historical process compliance are separate claims.
+
+**Process and authority limits:** The original T-024 preservation helper read seven quarantined files while hashing, violating the no-read rule. Its corrected guard and independent permitted-surface checks prevent that recurrence in the inspected path; they do not erase the violation or certify every historical reasoning step. No scientific-source authority or clean-room-compliance claim follows. The full-adapter requirement was a parent-authored error, corrected to measured existing scope before certification. Native prose that called parent staging instructions owner-originated is corrected in T-025/T-026's returns. None of these corrections changes owner-originated requirements or grants residual acceptance. The STEP report remains pending, with no source/DI adoption or changed divertor limit.
+
+**Proposed finding dispositions — pending C-004, not executed:**
+
+| Finding | Proposed disposition | Responsible party and concrete home | Limit |
+|---|---|---|---|
+| `20260911-model-owned-radius#1` | `model fix` — bounded identified ownership/oracle mismatch repaired and sampled coherence verified | WI-051 audit `bf3376be`, consumer audit `7fe8d351`, synthesis `2cbd305d`; parent carries repair evidence into the final F06 assessment | No arbitrary-radius/domain, physical-source or whole-goal closure |
+| `20260911-model-owned-radius#2` | `declared seam` — open engineering/feasibility and F07 limitations, routed | Goal round agent for later bounded assessment; owner for residual/supported-scope decisions. Native evidence: synthesis `2cbd305d`, T-021 domain assessment `2f8856b7`, pending exhaust research `2a55615b` | No feasible interval, shadow substitution, new threshold or accepted residual |
+| `20260911-model-owned-radius#3` | `declared seam` — open current oracle coverage limits | Current ANNEX and consumer audit `7fe8d351`, synthesis `2cbd305d`; parent for scoped follow-up, owner for residual/scope decisions | 147 unsupported inputs and 17 omitted independent channels remain explicit; frozen comparisons are not independent computation |
+| `20260911-model-owned-radius#4` | `declared seam` — native preparation finding resolved in this study | Study pre-execution review/disposition at `d55e806e`; native executor's truthful preparatory document contract | No general new baseline-producer or store-policy approval |
+| `20260911-model-owned-radius#5` | `declared seam` — report invocation corrected, original failed attempt retained | Study execution/commands.md at `d55e806e` | Local reporting correction, no goal-task retry or numerical rerun |
+| `20260911-model-owned-radius#6` | `declared seam` — review wording correction verified | Study reviews/final-disposition.md at `d55e806e` | Six ratios at seven points; no numerical evidence altered |
+| `20260911-operating-heating#2` | `declared seam` — open, re-sighted by the radius cases | Retain its C-003 disposition and append this current evidence: synthesis `2cbd305d`; pending STEP assessment `2a55615b` | Earlier heating-study verdicts remain historical; no engineering closure |
+
+Other Round 4 and earlier findings keep their recorded dispositions. The fresh review must check every row actually touched by this round's evidence and correct this proposed set if incomplete. Work-item close/archive, the active-path test dependency, historical publication repairs, source approval and broader engineering/financial residuals remain outside the repair credit.
+
+**Learning delta proposed for fresh review, not yet accepted:**
+
+- **L-008 — A shared physical quantity needs one live producer across model and public consumers.** Evidence: WI-051 audit `bf3376be`, consumer audit `7fe8d351`, study/synthesis `d55e806e`/`2cbd305d`. Scope: the supported plant major radius, its nine bindings, strict retired-key boundaries and fixed reference anchors. Implication: verify ordinary untied input changes and off-design independent arithmetic alongside graph/schema changes; keep genuine reference quantities distinct. This establishes no general geometric validity interval.
+- **L-009 — Hashing protected files is still reading them.** Evidence: original helper/metadata and correction `56b06a58`, independent incident/guard assessment `7fe8d351`. Scope: this preservation helper's seven unauthorized reads and corrected permitted-surface path. Implication: exclude quarantined paths before I/O; report historical compliance separately from unchanged bytes and from whether scientific content was emitted or used. Corrected checks cannot retroactively certify the original stage.
+
+**Checks and remaining work:** Native model and consumer certificates, ten integration gates, study verification/publication/record checks and fresh reading are retained at the cited native homes. Goal checks at T-025: 28 passed / one known unrelated narrative-reference failure (`evidence/round5_record_checks_t025.log`). The broader F01–F20 final assessment and owner-accepted residuals are not complete. The reviewer should decide the next strategy from current evidence without treating the pending paper or remaining sixth round as approval to alter physical/financial conventions.
