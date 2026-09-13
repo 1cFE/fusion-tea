@@ -1529,3 +1529,36 @@ Stop when: Production or shared-seam repair is needed, a meaningful expectation 
 ### T-036 start — 2026-09-13
 
 T-036 resumes the continuing coding author under evidence/T-036_domain-regressions/author-brief.md. Owned current test files are test_mfe_major_radius.py, test_mfe_operating_heating.py and test_model_family_spines.py under tests/models/. Native production remains fixed at 3d9711e2; T-035's distinct remaining public-route acceptance can finish before this migration. Fresh independent audit follows the coherent result; coordinator integrates sequentially afterward.
+
+### T-035 return — 2026-09-13
+
+**Outcome: COMPLETE.** Current oracle implementation `c6c04d32`, route acceptance `1176eabf` and independent coding audit `67631900` support the bounded oracle correction. Native audit and coding judgment are separate reports: `.project/active/mfe-domain-study-package/audit.md@67631900` and `work/analysis/20260913-145502_audit_WI-053_magnet-cryo-domains.md@67631900`. The author retained 27 focused passes and 167 current-route passes; independent review adds direct domain/identity checks and public baseline/R14 controls. One clean-package prerequisite was rerun after the native commit; it did not change numerical meaning or consume a goal mechanical retry.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Independent oracle still admitted invalid clearance/temperature arithmetic | Add the two bounded refusals, preserving valid results and existing adapter contract | execution detail | Coding author [AGENT], certified by fresh auditor | verify_stellaris.py@c6c04d32; acceptance@1176eabf; audit@67631900 |
+| Current mapping covers 99 of 246 inputs and 141 of 158 outputs | Retain explicit unsupported/omitted coverage; neither refusal tests nor exact baseline controls establish broader independent computation | execution detail | Fresh auditor [AGENT], adopted by coordinator | coding audit@67631900; no adapter expansion |
+
+### T-036 return — 2026-09-13
+
+**Outcome: COMPLETE.** Current regression migration `e2b68b67` and fresh native/coding audits `67631900` resolve T-034's completion prerequisite. Read `.project/active/mfe-domain-study-package/implementation/regressions-verification.md@e2b68b67` and the two independent reports above. Current full model suite: 566 passed, thirteen exact inherited skips, no failure/error. The auditor independently joins entering/candidate/final JUnit identities: all 63 new nodes and the affected inherited stale receipt pass, with no candidate node removed. It independently executes 54 focused tests and 66 affected regression checks, alongside direct component and full-plant probes. These are attributed native evidence, not coordinator reruns.
+
+The two PM completion contracts are positive. SV-093 passes; the existing L2/L6 issue identities remain, as do broader geometry/efficiency/engineering and oracle coverage limits. Historical model drivers, receipts, scientific results and separately owned publication work remain preserved. This supplies bounded F07 magnet-clearance and cryogenic-temperature credit only. Source inspection and inherited transcription evidence retain the audit's explicit limits.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Current tests expected eight seeds and old incidental failures | Use the current ten-seed producer and specific deliberate-error expectations; preserve historical helpers and independent valid equations | execution detail | Coding author [AGENT], freshly certified | three current test files and current_domain_support.py@e2b68b67 |
+| New regressions and stale receipt now have exact passing identities | Accept coherent bounded native/coding completion and proceed to native integration | execution detail | Coordinator [AGENT] on independent audit | native/coding reports and SV-093@67631900 |
+
+### T-037 scope
+
+Objective: Prove one study-ready candidate for the independently audited bounded domain correction.
+Why now: Native and current consumer completion are independently positive at 67631900, including all affected regressions and prepared metadata.
+Scope: Sequential documented integration invocation and retained native producer evidence. No model/consumer/seam repair, new physical/financial meaning, committed study, merge/push or closure/archive.
+Inputs: amended goal.md; WI-053 and coding audits@67631900; native production@3d9711e2 and current consumers@e2b68b67; docs/integration_seam_operator_guide.md and .codex-test/run. Expected semantic 15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e; executable 0d6a7572481fc35c165d650a96a28764d18a2238c4f6d6430985dd5752e5bacf; TEAx 8d877460ac4f6f264561d916e40c1708adb13397.
+Done when: Native seam returns CANDIDATE with expected lineage, or a named blocker with producer evidence.
+Stop when: Native refusal/prerequisite, mechanical failure, changed lineage/comparison meaning, owner gate or declared limit binds.
+
+### T-037 start — 2026-09-13
+
+T-037 invokes scripts/integrate.py against the audited current package. Expected evidence: evidence/T-037_integration/integration_return.json and native producer records. This is Round 8's first integration attempt; no pin is yet promoted and no study committed.
