@@ -11,7 +11,7 @@ Related Artifacts: spec.md, design.md
 - [x] Retain entering component/public counterexamples and positive controls before production. Capture package and seed identities.
 - [x] Implement canonical/twin domain contract and typed completion preserving all ordered arithmetic and outputs; create checked thirteen-seed fresh-generation API/receipt.
 - [x] Refresh coherent native metadata; prove exact fresh package equality and preserved twelve seed bytes.
-- [ ] Run focused component/public acceptance, independent physical identities and representative prior-domain controls. Run changed model suite and complete validator with exact attribution against entering Round 10 evidence. Update SV/traceability and return committed native candidate for independent audit.
+- [x] Run focused component/public acceptance, independent physical identities and representative prior-domain controls. Run changed model suite and complete validator with exact attribution against entering Round 10 evidence. Update SV/traceability and return committed native candidate for independent audit.
 
 | Outcome | Check | Basis | Evidence |
 |---|---|---|---|
@@ -22,3 +22,5 @@ Related Artifacts: spec.md, design.md
 Native result remains pending fresh independent audit, separately owned consumer migration and coordinator integration. The entering native audit `c08ccf41` and integration `43baa981` provide inherited broad evidence at their original scope.
 
 Implementation note: initial body extraction matched the generated documentation's k_isen line and yielded invalid Python. The first native/component checks caught SyntaxError. Original failure logs and initial seed/package receipts remain retained. The repair selects the executable occurrence and compile-checks it; corrected component tests pass 59/59 and public acceptance passes. Reproducible fresh bytes do not themselves establish syntactic or numerical correctness. The earlier local capture also needed complex-value JSON serialization; its original failed log remains.
+
+Final native validation is in `evidence/report.md`: 59 focused passes; exact native controls and 65 deliberate local/public invalid refusals; independent published identities; exact fresh package equality. The full suite retains 652 passes, thirteen exact inherited skips and one current-test source-freeze failure routed to T-046. All-level canonical diagnostic identities match entering evidence exactly. Final native artifacts are ready for independent audit; consumer correction evidence joins the retained full-run failure separately.
