@@ -1367,3 +1367,29 @@ Stop when: Native prerequisite failure, source/domain/timing conflict, unexplain
 ### T-031 start — 2026-09-12
 
 T-031 resumes WI-052 through a fresh implement-model stage in its isolated checkout, followed by a separate fresh audit-models stage. The round coordinator owns this trail and sequential downstream routing; the native stage owns only its scoped implementation surfaces. Dispatch brief: evidence/T-031_implementation/implement-brief.md in this commit.
+
+### T-031 return — 2026-09-12
+
+**Outcome: PREREQUISITE.** Isolated implementation/evidence `75d21061` and fresh independent audit `59b1ff97` establish the scoped numerical repair but not the item's final completion contract. Native audit: `/tmp/fusion-mfe-financial-rate-limits/work/analysis/20260912-wi052-financial-rate-limits-audit.md@59b1ff97`; item `audit.md` at the same revision. The independent auditor substantiates MR-WI052-1–5, leaves MR-6 partial/SV-092 pending for 22 new current-consumer failures, and requires bounded documentation corrections under MR-7. No new scoped numerical or structural concern was found. No final F05 closure credit, manifest migration, integration pin, study or merge is claimed.
+
+The full new-failure classification is native `implementation/new-downstream-failures.json@75d21061`: 21 stale-manifest consequences and one exact frozen-finance assertion. These were excluded downstream consumers, not inherited failures or a formal integration-seam return. Native `consumer-handoff.md@75d21061` fixes the unchanged public interface and actual finance channels. The audit also identifies four supplemental Source fields needing direct paths and an incorrect manual-execution description on unchanged DT Fuel Cost. These corrections and current-consumer compatibility are concrete prerequisites to fresh completion review.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Plant timing released and prepared native plan unchanged | Resume isolated implementation without repeating completed preparation | execution detail | Round coordinator [AGENT], applying recorded owner timing instruction | T-031; native production 75bb4824/evidence 75d21061 |
+| Add-only trace-element cannot amend a stale Calendar assumption | Use implement-model's explicit traceability update operation for one existing cell; create missing LCOE row through PM | execution detail | Round coordinator [AGENT] | data/traceability_matrix.csv@75bb4824; native routing notes |
+| Deferred consumers fail after the repaired package changes executable identity and finance roundoff | Preserve strict final gate, return PREREQUISITE and scope the known follow-up; do not relabel as inherited or silently widen T-031 | execution detail | Round coordinator [AGENT], supported by fresh audit /root/financial_audit | This return; native audit 59b1ff97; SV-092 remains pending |
+| Fresh audit identifies inaccurate/malformed source documentation | Correct those exact findings before completion review | execution detail | Fresh auditor [AGENT]; coordinator routes correction | Native audit findings; production correction not yet performed |
+
+### T-032 scope
+
+Objective: Resolve the audited WI-052 documentation and current-consumer prerequisites so the native financial repair can receive a fresh completion assessment.
+Why now: T-031's independent audit verifies bounded numerical behavior but identifies exact documentation and downstream compatibility blockers.
+Scope: Sequential native documentation repair, then a bounded coding-PM current-consumer migration using the existing oracle/manifest/metadata producers and preserved interface, followed by independent checks. Current consumer finance must honor the same retained equations at zero/equal/near rates. Preserve frozen study/control evidence, all physical semantics, 246 native inputs and existing adapter scope. No integration promotion/study, branch merge, source adoption, economic reinterpretation or close/archive.
+Inputs: amended goal.md; isolated native audit@59b1ff97, consumer-handoff.md@75d21061, spec/design/plan and preserved implementation evidence; existing current-consumer migration records in .project/active/mfe-major-radius-study-package/ read as precedent, not new authority.
+Done when: Exact audit findings are corrected, current consumers and metadata reproduce against the repaired package with new failures resolved or precisely bounded, and fresh independent native/coding review supplies a positive scoped result or a concrete blocker.
+Stop when: A source/domain/finance conflict, scope expansion, shared-seam defect, unexplained numerical/physical change, reserved gate or declared repair limit binds.
+
+### T-032 start — 2026-09-12
+
+T-032 first invokes a fresh implement-model correction stage for the exact documentation findings in the isolated WI-052 item. The next dependent current-consumer stage will use its returned package identity; no concurrent production writers are dispatched. The coordinator owns this trail; native stages retain their own records and the coding migration will receive written requirements before implementation. Prior failed acceptance evidence remains historical and unchanged.
