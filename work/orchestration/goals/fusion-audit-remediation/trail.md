@@ -1491,3 +1491,16 @@ Stop when: New source/scope/meaning decision, unexpected valid-baseline change, 
 ### T-034 start — 2026-09-13
 
 T-034 enters the native modeling workflow for a new Standard item, with continuing author dispatched under evidence/T-034_domains/author-brief.md. Expected result: registered item with spec/design/plan, committed implementation and acceptance evidence, followed by a fresh independent audit. The coordinator owns the goal trail and later sequential integration; native stages remain in their own records.
+
+### T-035 scope
+
+Objective: Make the current independent MFE oracle reject the two invalid domain families consistently with T-034, preserving valid numerical results and public input coverage.
+Why now: T-034 author inspection found an existing native manual-calculation mechanism for deliberate pre-arithmetic errors; current oracle equations independently retain unguarded clearance and COP divisions.
+Scope: Current oracle and adapter acceptance through the coding PM, with proportional written requirements and independent completion audit. No added public inputs, changed financial/physical equations, shared tooling, historical study/publication edits, generated-package writes or broader domain policy.
+Inputs: amended goal.md; Round 8 strategy; T-034 scope and native item as it develops; verify_stellaris.py:554–556,662–665 and oracle_entry.py. Preserve unsupported-input boundaries, including ambient-temperature coverage limits.
+Done when: Independently checked current oracle rejects live/reference nonpositive clearance and invalid cryogenic temperature order before their arithmetic, preserves valid outputs, and public adapter coverage/limitations remain explicit.
+Stop when: Native interface changes invalidate scope, a shared consumer/seam repair is required, supported meaning changes, an owner gate or declared limit binds.
+
+### T-035 start — 2026-09-13
+
+T-035 enters the coding PM under evidence/T-035_domain-consumers/author-brief.md. T-034 and T-035 may execute in parallel: generated/native model surfaces belong exclusively to T-034, current oracle/adapter code and a new focused coding test belong exclusively to T-035. Shared interfaces remain unchanged; if the native mechanism changes that premise, affected work pauses. Coordinator owns goal entries and later sequential integration. Each author obtains stable-package acceptance after native regeneration ends; neither treats a mid-edit package as final evidence.
