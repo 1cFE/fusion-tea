@@ -1,6 +1,6 @@
 # Verification
 
-Status: Oracle implementation verified; native package acceptance pending. Independent audit has not run.
+Status: Oracle and current-route implementation verified; independent audit pending.
 
 The entering oracle is recorded at `dab391ed`. Before edits, `.codex-test/run python -m pytest tests/study/test_domain_consumers.py -q` returned 21 failed and five passed; `tests-before.txt` records every failed identity. All 21 failures are new tests exposing the two existing oracle defects, including unintended division/type errors and missing rejection. No historical expectation was changed.
 
@@ -8,4 +8,10 @@ After the six-line guard correction, the same 26 tests passed. One additional ex
 
 Four valid controls in `oracle-before.json` cover baseline, R=14, changed cold/ambient temperatures, and zero cold load plus 2 MW direct electrical power. Full oracle output maps remain exactly equal. Field normalization and refrigeration energy balance are also independently checked by multiplied-through identities. The input mapping remains exactly 99 entries and output mapping is unchanged. Ambient temperature is tested through the oracle parameter interface; its qualified adapter key remains unsupported and is explicitly rejected.
 
-No package-dependent acceptance has been attempted while native regeneration is in flight. The oracle itself does not publish full-plant engineering verdicts. Existing baseline and R=14 verdict checks will run after the native author signals stability. Broad historical suites are not claimed passing by these focused checks.
+After the native author declared regenerated code and metadata stable, `.codex-test/run python -m pytest tests/study/test_major_radius.py -q --tb=short` returned 166 passed and one prerequisite failure. `test_current_radius_controls_match_frozen_model_and_independent_oracle` passed its baseline/R=14 numerical comparisons, then stopped at the verifier's clean-package requirement because the native changes were still uncommitted. `current-route-tests.txt` retains the exact identity and diagnostic. The failed check must be rerun after the native production commit; no verifier bypass or expectation change is warranted.
+
+The oracle itself does not publish full-plant engineering verdicts. Broad historical suites are not claimed passing by these focused checks.
+
+After native production commit `3d9711e2`, `.codex-test/run python -m pytest tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle -q --tb=short` passed (`current-route-retry.txt`). All 167 current-route tests therefore pass across the initial attempt and bounded retry. Retained controls compare baseline and R=14 native outputs to frozen physics, independently checked finance and the current oracle. The baseline retains `divertor_heat_ok` violated; R=14 retains `divertor_heat_ok`, `wall_load_ok`, `sustainment_ok` and `loop_capacity_ok` violated. Those engineering verdicts are not invalid-input errors and were not changed.
+
+`current-controls.json`, `current-package-identity.json` and `current-verification-summary.json` retain final numerical and identity evidence. The package executable fingerprint is `0d6a7572481fc35c165d650a96a28764d18a2238c4f6d6430985dd5752e5bacf`; semantic and indicator fingerprints remain unchanged. Current coverage is 246 native inputs, 99 mapped inputs, 147 explicitly unsupported inputs, 158 native outputs and 141 independently recomputed outputs. The 17 outputs outside oracle computation remain outside coverage. The failed clean-package attempt is fully resolved; no new failing identity remains within this item's tests. Separate native harness migration prerequisites are owned by T-036 and receive no disposition here.

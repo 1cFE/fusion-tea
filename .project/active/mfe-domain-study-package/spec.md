@@ -1,6 +1,6 @@
 # MFE domain study package
 
-Status: Implementation in progress. Created: 2026-09-13.
+Status: Implementation complete; independent audit pending. Created: 2026-09-13.
 
 [INHERITED] T-035 author brief at `work/orchestration/goals/fusion-audit-remediation/evidence/T-035_domain-consumers/author-brief.md@dab391ed` scopes this routine correction to the current independent oracle and its existing adapter.
 
