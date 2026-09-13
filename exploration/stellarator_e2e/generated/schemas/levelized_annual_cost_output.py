@@ -35,12 +35,13 @@ operating payment is discounted at year one. CRF(0,N)=1/N and
 PV(i,i,N)=A1*N/(1+i). log1p/expm1 retain nearby represented rate differences.
 Public outputs remain levelized and crf in the emitted wrapper order.
 
-*Source**: native equation retained above; preceding external citations are inherited and not reverified in WI-052
-*Ref**: work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification; native financial_factors.py
+*Source**: models/library/analyses/mfe_account_costs.sysml
+*Ref**: Levelized Annual Cost, CRF, construction-escalated A1, growing-annuity PV and levelized equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
 *Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
 *Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:679
+SysML Source: root-0/analyses/mfe_account_costs.sysml:680
     """
     levelized: float = Field(description="levelized output")
     crf: float = Field(description="crf output")

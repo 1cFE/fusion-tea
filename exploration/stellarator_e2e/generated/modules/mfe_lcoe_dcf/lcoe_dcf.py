@@ -28,8 +28,9 @@ CRF(0,N)=1/N; otherwise i/-expm1(-N*log1p(i)). The distinct midpoint
 construction multiplier is exp((T/2)*log1p(i)), equal to one at zero
 interest. Real construction and operating durations retain their meanings.
 
-*Source**: native equation retained above; preceding external citations are inherited and not reverified in WI-052
-*Ref**: work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification; native financial_factors.py
+*Source**: models/library/analyses/mfe_lcoe_dcf.sysml
+*Ref**: LCOE DCF, CRF, midpoint IDC multiplier, annual capital, annual energy and LCOE equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
 *Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
 *Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
@@ -109,8 +110,9 @@ CRF(0,N)=1/N; otherwise i/-expm1(-N*log1p(i)). The distinct midpoint
 construction multiplier is exp((T/2)*log1p(i)), equal to one at zero
 interest. Real construction and operating durations retain their meanings.
 
-*Source**: native equation retained above; preceding external citations are inherited and not reverified in WI-052
-*Ref**: work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification; native financial_factors.py
+*Source**: models/library/analyses/mfe_lcoe_dcf.sysml
+*Ref**: LCOE DCF, CRF, midpoint IDC multiplier, annual capital, annual energy and LCOE equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
 *Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
 *Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
@@ -158,8 +160,9 @@ CRF(0,N)=1/N; otherwise i/-expm1(-N*log1p(i)). The distinct midpoint
 construction multiplier is exp((T/2)*log1p(i)), equal to one at zero
 interest. Real construction and operating durations retain their meanings.
 
-*Source**: native equation retained above; preceding external citations are inherited and not reverified in WI-052
-*Ref**: work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification; native financial_factors.py
+*Source**: models/library/analyses/mfe_lcoe_dcf.sysml
+*Ref**: LCOE DCF, CRF, midpoint IDC multiplier, annual capital, annual energy and LCOE equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
 *Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
 *Last Updated**: 2026-09-12 (native equation and numerical method verification)
 

@@ -21,8 +21,9 @@ series avoids cancellation; outside its documented switch, factoring T-1
 retains the one-year zero. Reported IDC remains excluded from headline
 total capital and is distinct from the headline midpoint multiplier.
 
-*Source**: native equation retained above; preceding external citations are inherited and not reverified in WI-052
-*Ref**: work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification; native financial_factors.py
+*Source**: models/library/analyses/mfe_account_costs.sysml
+*Ref**: IDC Closed-Form Cost, uniform-spend f_idc and cost equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
 *Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
 *Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
@@ -83,8 +84,9 @@ series avoids cancellation; outside its documented switch, factoring T-1
 retains the one-year zero. Reported IDC remains excluded from headline
 total capital and is distinct from the headline midpoint multiplier.
 
-*Source**: native equation retained above; preceding external citations are inherited and not reverified in WI-052
-*Ref**: work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification; native financial_factors.py
+*Source**: models/library/analyses/mfe_account_costs.sysml
+*Ref**: IDC Closed-Form Cost, uniform-spend f_idc and cost equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
 *Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
 *Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
@@ -121,8 +123,9 @@ series avoids cancellation; outside its documented switch, factoring T-1
 retains the one-year zero. Reported IDC remains excluded from headline
 total capital and is distinct from the headline midpoint multiplier.
 
-*Source**: native equation retained above; preceding external citations are inherited and not reverified in WI-052
-*Ref**: work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification; native financial_factors.py
+*Source**: models/library/analyses/mfe_account_costs.sysml
+*Ref**: IDC Closed-Form Cost, uniform-spend f_idc and cost equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
 *Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
 *Last Updated**: 2026-09-12 (native equation and numerical method verification)
 

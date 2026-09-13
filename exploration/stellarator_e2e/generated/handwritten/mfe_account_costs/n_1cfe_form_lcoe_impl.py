@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:861
+SysML Source: root-0/analyses/mfe_account_costs.sysml:864
 
 SysML Expressions:
     n_mod_in = 1.0
@@ -45,7 +45,7 @@ and its convention is untouched. Both channels coexist by design.
 *Ref**: economics.py:88-92 (compute_lcoe)
 *Basis**: Annual cost over annual energy sold, 1costingFE denominator form
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:861
+SysML Source: root-0/analyses/mfe_account_costs.sysml:864
 
 SysML Expressions:
     n_mod_in = 1.0

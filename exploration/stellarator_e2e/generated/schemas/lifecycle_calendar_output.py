@@ -81,8 +81,9 @@ diagnostic artifact of the impl, not outputs.
 *Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf (Stellaris, sec. 2.11, pp. 28-29; Table 6, p. 21 -- read as the renders under work/orchestration/goals/plant-closure/evidence/grounding_sources/); knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2/output.md (Kovari et al. 2016, sec. 8); /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)
 *Ref**: Stellaris p. 29 (seven months estimated; five months and 90 % targets; four years between major maintenance); p. 28 (cooldown and recommissioning ~30 days each, inside the estimate); Table 6 (first-wall structure lifetime ~4-6 FPY; coil lifetime ~10 FPY); Kovari 2016 sec. 8 eq. 54 (planned / unplanned overlap), eqs. 55-59 (blanket / divertor lifetimes and outages -- the precedent for distinct lives, not adopted); economics.py:53-75, model.py:102-111 (the held chain); knowledge/research/pending/20260907-163520_lifetime-availability-closure-prework.md sec. Option B
 *Basis**: deterministic finite-horizon replacement calendar on the peak wall load; annual-equivalent economics with the exact-dated shadow
-*Source**: native calendar equations above; the preceding external citations are inherited and not reverified by WI-052
-*Ref**: work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+*Source**: models/library/analyses/mfe_lifecycle.sysml
+*Ref**: Lifecycle Calendar, LIVE MODE and HELD MODE replacement PV, annualization and dated-energy equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
 *Basis**: stable CRF, held periodic PV and dated log1p discount weights; event walk, clipping, count and yearly-bin accumulation retained
 *Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
