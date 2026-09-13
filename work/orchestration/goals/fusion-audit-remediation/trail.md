@@ -1642,3 +1642,15 @@ Stop when: Package content/meaning differs from the native receipt, the change r
 ### T-039 start — 2026-09-13
 
 T-039 begins the current receipt correction in the coding PM. A draft spec was written immediately before this scope/start entry; no test or production code had changed. That preparation-order deviation is retained for fresh round review. Coordinator owns the one current test change and coding evidence; T-038 author retains native model/package/receipt ownership. The test will execute after the native receipt is committed and stable. The native independent auditor will inspect this dependency before declaring coherent completion.
+
+### T-038 return — 2026-09-13
+
+**Outcome: PREREQUISITE.** Native documentation/coherence implementation and evidence are committed at `4ca1f299`. Read `work/active/WI-054_faithful-model-equations-and-citations/evidence/report.md` and its claim, source, dimensional and preservation evidence at that revision. Seven canonical comment files and their twins are corrected; native author evidence shows preserved executable SysML tokens, final regenerated Python ASTs/public contracts, ten native scenarios and existing diagnostic identities. The focused run retains 305 passes and one current receipt failure. Current receipt migration and fresh independent audit remain necessary; no final finding-resolution credit is granted here.
+
+Hawker Table 2/3 and target-energy wording rely on existing extracted text and inherited audit evidence. The raw table-image/PDF was not found in the exact admissible locations checked; numerical ranges remain unchanged and fresh transcription verification is not claimed. Available Stellaris source material and radiation dimensions receive their separately documented checks. No source/DI adoption, alpha/calendar choice, scientific correction or supported-scope change occurs. Native generation invocation corrections remain in the native record, not goal mechanical retries.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Existing coefficient/integral dimensions produce watts before conversion | Correct displayed MW equations with explicit conversion and normalized integration measure, preserving executable arithmetic | execution detail | Native author [AGENT] on source/dimensional evidence | WI-054 documentation/evidence@4ca1f299 |
+| Hawker table images unavailable but existing text establishes table roles and target-energy label | Limit correction to supported wording/attribution; retain numerical values and explicit unverified fresh transcription | execution detail | Coordinator [AGENT] with native author evidence | WI-054 source/claim record@4ca1f299; no adoption or residual acceptance |
+| Documentation metadata changes package bytes while executable meaning is preserved | Prepare new native receipt and route the stale current test to T-039; keep historical receipts | execution detail | Coordinator [AGENT] | native receipt@4ca1f299; T-039 coding migration |
