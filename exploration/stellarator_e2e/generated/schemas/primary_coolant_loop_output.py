@@ -51,6 +51,15 @@ are the old scalars to the bit for finite p_elec and w_fluid; the power
 balance then reproduces the pre-WI-045 accounting exactly. The chain
 always evaluates; only what it hands to the power balance is switched.
 
+INPUT DOMAIN (WI-056): cp_in and dT_blanket_in must each be finite
+and strictly positive. cp is specific heat [J/(kg K)]; dT_blanket
+is the positive coolant heating rise [K]. A negative pair is invalid.
+Native typed manual completion raises ValueError before arithmetic.
+This domain also applies for q_source = 0 and loop_live = 0 because
+the chain always evaluates. Reference values are examples, not bounds.
+The thirteen outputs below require this guarded manual completion;
+the ordered equations above remain the normative valid calculation.
+
 Constant ideal-gas helium properties (cp, gamma) over the reference
 window; the reference's own implied cp is 0.10 % under ideal helium.
 

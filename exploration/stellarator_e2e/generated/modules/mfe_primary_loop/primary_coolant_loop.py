@@ -49,6 +49,15 @@ are the old scalars to the bit for finite p_elec and w_fluid; the power
 balance then reproduces the pre-WI-045 accounting exactly. The chain
 always evaluates; only what it hands to the power balance is switched.
 
+INPUT DOMAIN (WI-056): cp_in and dT_blanket_in must each be finite
+and strictly positive. cp is specific heat [J/(kg K)]; dT_blanket
+is the positive coolant heating rise [K]. A negative pair is invalid.
+Native typed manual completion raises ValueError before arithmetic.
+This domain also applies for q_source = 0 and loop_live = 0 because
+the chain always evaluates. Reference values are examples, not bounds.
+The thirteen outputs below require this guarded manual completion;
+the ordered equations above remain the normative valid calculation.
+
 Constant ideal-gas helium properties (cp, gamma) over the reference
 window; the reference's own implied cp is 0.10 % under ideal helium.
 
@@ -195,6 +204,15 @@ are the old scalars to the bit for finite p_elec and w_fluid; the power
 balance then reproduces the pre-WI-045 accounting exactly. The chain
 always evaluates; only what it hands to the power balance is switched.
 
+INPUT DOMAIN (WI-056): cp_in and dT_blanket_in must each be finite
+and strictly positive. cp is specific heat [J/(kg K)]; dT_blanket
+is the positive coolant heating rise [K]. A negative pair is invalid.
+Native typed manual completion raises ValueError before arithmetic.
+This domain also applies for q_source = 0 and loop_live = 0 because
+the chain always evaluates. Reference values are examples, not bounds.
+The thirteen outputs below require this guarded manual completion;
+the ordered equations above remain the normative valid calculation.
+
 Constant ideal-gas helium properties (cp, gamma) over the reference
 window; the reference's own implied cp is 0.10 % under ideal helium.
 
@@ -249,20 +267,6 @@ SysML Source: root-0/analyses/mfe_primary_loop.sysml:4
         loop_live_in = 0.0
         p_pump_direct_in = 0.0
         eta_p_direct_in = 0.0
-        mdot = q_source_in * 1000000.0 / (cp_in * dT_blanket_in)
-        T_out = T_in_in + dT_blanket_in
-        mdot_loop = mdot / n_loops_in
-        dp_loop = f_loss_in * dp_loop_ref_in * (mdot_loop / mdot_loop_ref_in) ** 2
-        p_loop_margin = p_loop_in - dp_loop
-        r_comp = p_loop_in / (p_loop_in - dp_loop)
-        k_isen = (gamma_in - 1.0) / gamma_in
-        T_comp_in = T_in_in / (1.0 + (r_comp ** k_isen - 1.0) / eta_is_in)
-        w_fluid = mdot * cp_in * (T_in_in - T_comp_in) / 1000000.0
-        p_elec = w_fluid / eta_drive_in
-        q_ihx = q_source_in + w_fluid
-        capacity_margin = mdot_loop_ref_in - mdot_loop
-        p_pump_total = loop_live_in * p_elec + p_pump_direct_in
-        q_recovered_total = loop_live_in * w_fluid + eta_p_direct_in * p_pump_direct_in
         
 Documentation:
 Representative helium primary circuit in sized-flow mode (WI-045, goal
@@ -311,6 +315,15 @@ q_recovered_total = 0.0 * w_fluid + eta_p_direct * p_pump_direct, which
 are the old scalars to the bit for finite p_elec and w_fluid; the power
 balance then reproduces the pre-WI-045 accounting exactly. The chain
 always evaluates; only what it hands to the power balance is switched.
+
+INPUT DOMAIN (WI-056): cp_in and dT_blanket_in must each be finite
+and strictly positive. cp is specific heat [J/(kg K)]; dT_blanket
+is the positive coolant heating rise [K]. A negative pair is invalid.
+Native typed manual completion raises ValueError before arithmetic.
+This domain also applies for q_source = 0 and loop_live = 0 because
+the chain always evaluates. Reference values are examples, not bounds.
+The thirteen outputs below require this guarded manual completion;
+the ordered equations above remain the normative valid calculation.
 
 Constant ideal-gas helium properties (cp, gamma) over the reference
 window; the reference's own implied cp is 0.10 % under ideal helium.

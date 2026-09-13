@@ -1,6 +1,6 @@
 {
   "artifact_hashes": {
-    "IMPLEMENTATION_BACKLOG.md": "efa1cf21f47183c4b99037061765bfc0092aae311566d4f9a4e8c2f7c389f70e",
+    "IMPLEMENTATION_BACKLOG.md": "58adb3b08eba10b84996df09d94a5d3c6651cd5a6c8c4f4050c314d3e67762be",
     "__init__.py": "c7bff0206d7c019e2b431dfd8e459060f52d143cc2444998d23c63d16cf22568",
     "contracts/generation_manifest.json": "c06b61ea4a2f3650860f098d517b7f9a3ca246552e7b2f319c8e2e8ed85e506f",
     "contracts/model_contract.json": "d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2",
@@ -89,7 +89,7 @@
     "handwritten/mfe_power_cycle/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
     "handwritten/mfe_power_cycle/power_cycle_efficiency_impl.py": "ed5872f52003434c873cbd60e17b580427c861f97a088e5dd6c14bcebca5db11",
     "handwritten/mfe_primary_loop/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
-    "handwritten/mfe_primary_loop/primary_coolant_loop_impl.py": "b4ccfe9282316ab0f7cfda866d6917f78571c63effae9e30f0675c35ceb30b14",
+    "handwritten/mfe_primary_loop/primary_coolant_loop_impl.py": "34466ce3ada4f6d4816203407e30dcc5871fd03b3fd82d9da9df3a9a927179a3",
     "handwritten/mfe_vacuum/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
     "handwritten/mfe_vacuum/vacuum_gas_load_impl.py": "1956c0a4161c354b9935d053d61c178a719657f8bf3a35a877ba48abc9eff4ad",
     "handwritten/stellarator_09/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
@@ -191,7 +191,7 @@
     "modules/mfe_power_cycle/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
     "modules/mfe_power_cycle/power_cycle_efficiency.py": "455c6ac20c5422067ca3ce34281a60f060081ccf2ed1ae08fa85ac337496e513",
     "modules/mfe_primary_loop/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
-    "modules/mfe_primary_loop/primary_coolant_loop.py": "e3eb6f85397fb5de0143fdafa6e03fcd01669a5485f8e2e21016c9afcc1cf375",
+    "modules/mfe_primary_loop/primary_coolant_loop.py": "470c7aaa53846aa68836512730aea519c19ca829e144b6cb215a428e195de7a5",
     "modules/mfe_vacuum/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
     "modules/mfe_vacuum/vacuum_gas_load.py": "2dd3a4e6ec562fab2d879157edadefd1d163b86b095a366b31192786fdda793e",
     "modules/stellarator_09/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
@@ -241,7 +241,7 @@
     "schemas/plasma_geometry_output.py": "a7de758ac594f042ce0f0de5039ca639ee843143391b3345a054421e60184253",
     "schemas/plasma_sustainment_output.py": "babe507cf0c1bef8a1ca7d770a7ffee8941410311cd1e74497daef6f884d7a8b",
     "schemas/power_cycle_efficiency_output.py": "04961d4afef6a2d81d89fe655c6928a6f44393b3d203b02adf56cc8a2694dd9f",
-    "schemas/primary_coolant_loop_output.py": "7530c30ccf024d7d09599ec5354a24b985f7b03b7416c125a497d764c5ebd9b9",
+    "schemas/primary_coolant_loop_output.py": "ed8b700aec77a100458ad2438b84ea252b63d968cd759d05da26b9d72b60396e",
     "schemas/stellarator_plant_params.py": "81dc4232ff3bb589133c335232b9520cd649d2daa787a8c74cc2ef14049bd857",
     "schemas/vacuum_gas_load_output.py": "dcd18114a6488a8a5aa73ee91ddf3d7c3008d23d27a7122f5752d7bb6ada0b6f",
     "tests/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
@@ -254,7 +254,7 @@
     ],
     "runtime_output_globs": []
   },
-  "executable_fingerprint": "8a3473de8206c5317dcd271cb68cccb02150bada13641a1be0e89eabd03b5b03",
+  "executable_fingerprint": "d365eb8322577c8c9b1224313e27929de89a802aaa628753b304258be0123c8f",
   "generator_version": "0.1.1",
   "package_name": "stellarator_tea",
   "runtime_contract_version": "2.0.0"

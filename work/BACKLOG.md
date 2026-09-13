@@ -279,6 +279,12 @@ standalone:
   priority: P0
   status: backlog
   completed: null
+- id: WI-056
+  name: Primary loop heat capacity domain
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -358,3 +364,4 @@ standalone:
 | WI-053 | Magnet and cryogenic input domains | standard | P1 | backlog |  |
 | WI-054 | Faithful model equations and citations | standard | P1 | backlog |  |
 | WI-055 | Winding pack input domain | standard | P0 | backlog |  |
+| WI-056 | Primary loop heat capacity domain | standard | P1 | backlog |  |
