@@ -1,6 +1,6 @@
 # Integration and merge handback
 
-Native integration ran from `/tmp/fusion-mfe-financial-rate-limits` at audited HEAD `19abc445`. Relative paths in `integration_return.json` resolve from that isolated checkout, as required by the native seam. Command, all ten passing gates and full lineage are recorded there. The evidence directory resides in the main coordination checkout. Local `_work/stellarator-baseline-point-v1.db` is supporting baseline runtime evidence, unpinned; no native digest. It is not a committed study.
+Native integration ran from `/tmp/fusion-mfe-financial-rate-limits` at audited HEAD `19abc445`. Relative paths in `integration_return.json` resolve from that isolated checkout, as required by the native seam. Command, all ten passing gates and full lineage are recorded there. The evidence directory resides in the main coordination checkout. `_work/stellarator-baseline-point-v1.db` is supporting baseline runtime evidence tracked at `7cd97823`. It is not a committed study.
 
 The indicator-input pin remains `609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d`, while the executable fingerprint is now `1a7c216dabff8425c279f6b3c2781629115729173fc0b406600497ac348b4340`. Read the complete native identity tuple; the unchanged indicator digest alone does not identify the repaired executable. The semantic fingerprint remains `15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e`. No earlier Round 7 pin or committed study exists.
 
