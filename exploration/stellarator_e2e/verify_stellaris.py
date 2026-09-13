@@ -517,6 +517,15 @@ def _winding_pack_side(current, density):
     return (current / density) ** 0.5 / 1000.0
 
 
+def _primary_loop_mass_flow(source_heat, cp, temperature_rise):
+    """Return kg/s from source heat MW, specific heat J/kg/K and rise K."""
+    if not math.isfinite(cp) or cp <= 0.0:
+        raise ValueError("oracle Primary Coolant Loop: cp must be finite and positive")
+    if not math.isfinite(temperature_rise) or temperature_rise <= 0.0:
+        raise ValueError("oracle Primary Coolant Loop: dT_blanket must be finite and positive")
+    return source_heat * 1.0e6 / (cp * temperature_rise)
+
+
 def compute():
     if "magnet_R0" in IN:
         raise ValueError("retired oracle input magnet_R0; use plant R")
@@ -638,7 +647,7 @@ def compute():
     # In the dormant mode the two totals are the old held scalars to the bit
     # (0.0*x + held), so the sums below are the pre-WI-045 sums exactly.
     q_source = p["mn"] * p_neutron + p_alpha + operating_heat_coupled
-    loop_mdot = q_source * 1.0e6 / (p["loop_cp"] * p["loop_dT_blanket"])
+    loop_mdot = _primary_loop_mass_flow(q_source, p["loop_cp"], p["loop_dT_blanket"])
     loop_T_out = p["loop_T_in"] + p["loop_dT_blanket"]
     loop_mdot_loop = loop_mdot / p["n_loops"]
     loop_dp_loop = p["f_loss"] * p["dp_loop_ref"] * (loop_mdot_loop / p["mdot_loop_ref"]) ** 2
