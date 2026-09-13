@@ -1876,3 +1876,16 @@ Intended study question: do local and supported public routes deliberately rejec
 Abandon or park the affected approach if admissible evidence contradicts the stated domain, a valid-case change cannot be explained within this boundary, dormant-mode or supported concept meaning must change, a required seam repair exceeds the bound, authority moves unexpectedly, or an owner gate binds. A broader pressure/flow/compressor/efficiency, source-calibration or engineering question remains explicit and unresolved. No accounting, finance, module-scope, source adoption, project requirement or residual decision follows from this strategy.
 
 The original F01–F20 answer contract remains active. Rounds 11–12 are the remaining authorized cycle; there is no automatic Round 13. Retry cap remains two retries, checkpoint cap two revisions. The owner instruction to continue removes routine round-boundary handbacks, while original reserved decisions and the owner-held close rule remain. This strategy opens Round 11 and starts no native task.
+
+### T-045 scope
+
+Objective: Establish and enforce the existing primary-loop heat-capacity and blanket-temperature-rise input domain at component and supported public routes.
+Why now: Fresh Round11 strategy@cea6bc1a identifies unguarded division by cp*dT_blanket despite documented positive operands.
+Scope: One proportional native Standard item for existing admissible source/quantity/dormant-mode investigation, justified two-input guards, necessary native model/family/generated coherence and acceptance. Preserve valid arithmetic and public identities. No whole-loop domain redesign, new empirical limits, source adoption, supported-mode change, current-consumer/seam repair or historical rewrite.
+Inputs: amended goal.md; Round11 strategy@cea6bc1a; WI-055 corrected native@b1d066c1/audit@c08ccf41/integration@43baa981; original F07 assessment; current primary-loop definitions/bindings and existing authority.
+Done when: Native correction and source/domain/valid-control evidence satisfy a fresh independent audit, or a concrete prerequisite/blocker is established.
+Stop when: Domain/source evidence conflicts, dormant meaning or supported scope must change, additional producer/seam repair exceeds the bound, authority moves unexpectedly, or a reserved gate/limit binds.
+
+### T-045 start — 2026-09-13
+
+T-045 begins native modeling under evidence/T-045_primary-domains/author-brief.md. Expected artifacts are one registered Standard item, proportional spec/design/plan, model-owned correction, coherent fresh package and native evidence for independent audit. Author owns native surfaces; coordinator owns separately scoped current consumers, audit dispatch and sequential integration.
