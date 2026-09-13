@@ -2069,3 +2069,26 @@ Stop when: Unexpected authority movement or contradictory evidence invalidates a
 ### T-051 start — 2026-09-13
 
 T-051 enters native analyze-models. Three fresh bounded readers independently own detailed F01–F07, F12–F16 and F17–F20 notes under work/analysis/20260913-171817_remediation-evidence/. Coordinator owns F08–F11 analysis, synthesis work/analysis/20260913-171817_fusion-audit-current-assessment.md, decision packet and goal/discovery writes. These read-only investigations have disjoint output ownership and no production dependencies; shared cross-finding conclusions are reconciled in synthesis before independent review. The enclosing goal/strategy supplies scope alignment; no new owner choice is inferred.
+
+### T-051 return — 2026-09-13
+
+**Outcome: COMPLETE.** The bounded current assessment is work/analysis/20260913-171817_fusion-audit-current-assessment.md@28b64ad9, supported by four detailed notes at80d17202/cb0d26e4/b74700f4/7dc8a961. All twenty findings and distinct subissues receive current credit, residual/use/enforcement effects and concrete evidence or decision homes. Six findings have bounded corrections, nine remain partial and five remain open. The original answer contract remains unmet.
+
+Document verification in evidence/T-051_assessment/verification.md records the exact twenty-row classification, four committed notes, both IFE record joins and twenty-seven appended existing dispositions. Existing MFE join checks pass15 with28 deselected. Initial overbroad selectors/import-path failure are preserved or described with their limited effect; no semantic retry or numerical validation is claimed. Seven IFE and twenty MFE discovery updates retain prior evidence and actual disposition scope. No production, candidate, study, registry or work-item status changed.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Earlier all-finding census predates Rounds7–11 | Credit audited repairs only to demonstrated subissues; retain all outstanding obligations | execution detail | Coordinator [AGENT], aspect readers | current report and four notes |
+| F05 rate singularities corrected but duration domains remain | Keep F05 partial and expose construction-zero meaning for owner ruling | unresolved scope/meaning | Assessment [AGENT]; owner has not selected meaning | current finding and decision packet |
+| Publication repair@d7214856 supersedes old fixture-only status | Update plant-closure#13 for bounded author-verified repair, preserving historical failures and limits | evidence reconciliation | Assessment [AGENT] from separately owned coding record | appended joined disposition |
+| Documentary cautions do not enforce supported use | Distinguish implemented guards, disclosures and proposed restrictions without residual acceptance | answer-contract constraint | Inherited goal; assessment [AGENT] | current report use/enforcement and answer tables |
+
+### Round 12 result — 2026-09-13
+
+Intent met for the bounded current assessment and decision/evidence packet. T-051 is the sole task, with last semantic outcome COMPLETE. The stop reason is the declared assessment limit, coinciding with the final round of the authorized Rounds7–12 cycle. No candidate was promoted and no study committed. The goal remains grounded and unanswered; no Round13, re-grounding, residual acceptance or goal close follows automatically.
+
+Evidence: assessment@28b64ad9; detailed notes@80d17202/cb0d26e4/b74700f4/7dc8a961; document/record verification and twenty-seven joined discovery updates in this result revision. Current production remains the Round11 audited/integrated identity: executable bb60a9973cfaea643839740d0d7c295ef190f9ddbaeab28fe84101be65518be7. Integration@6fed9e6e passes its ten gates; fresh/stock package audit@6a7a2d4e supplies independent coherence. This assessment adds no numerical execution or scientific certification.
+
+Bounded corrections: F01/F02/F03/F04/F06/F19. Partial: F05/F07/F12/F13/F15/F16/F17/F18/F20. Open: F08/F09/F10/F11/F14. The four notes preserve distinct subissues, current native and coding ownership, source limitations and concrete next evidence. Remaining accounting, finance/comparison, reuse/module, domain/calendar, citation/metadata enforcement and physical engineering obligations prevent the original answer contract from being met. Historical studies, exact failures/skips, pending source adoption and earlier process incidents retain their actual provenance. The separately owned publication repair receives its bounded author-evidence credit.
+
+Proposed learning delta [AGENT]: none. The observed distinction between a repaired subissue, a documentary limitation and a fully discharged finding is already required by the goal contract and existing learning rules. Obtain the mandatory fresh final round review. The owner decision packet offers re-grounding, redirection or close without certifying the original question answered; no choice is made on the owner's behalf.
