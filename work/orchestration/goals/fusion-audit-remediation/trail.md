@@ -1629,3 +1629,16 @@ Stop when: Source evidence cannot establish an affected claim, numerical/meaning
 ### T-038 start — 2026-09-13
 
 T-038 enters the native modeling workflow for one new Standard item under evidence/T-038_documentation/author-brief.md. Expected artifacts: registered native item with proportional spec/design/plan, claim-level evidence, committed documentation/coherence changes and preserved execution checks. Continuing author owns native work; coordinator owns goal trail, fresh-auditor dispatch and sequential integration. No study is planned merely to supply a round ending.
+
+### T-039 scope
+
+Objective: Restore the current package-agreement test after documented MFE metadata regeneration without weakening its byte comparison or historical preservation checks.
+Why now: T-038's focused candidate run reports 305 passes and one failure comparing the current package to the historical WI-053 receipt; final regenerated executable ASTs and public contracts are unchanged.
+Scope: The receipt path/comment in tests/models/test_mfe_major_radius.py and proportional coding requirements/verification at .project/active/model-documentation-current-receipt/. Preserve full package inventory comparison, historical WI-051/053 receipts/drivers/results, native production and oracle behavior. No new shared helper or scientific change.
+Inputs: amended goal.md; Round 9 strategy; WI-054 evidence/focused-tests.xml and mfe-candidate-package-hashes.json (currently uncommitted; unpinned, no native digest); exact native commit to be cited before executing the changed check.
+Done when: The previously failing node passes against the committed current native receipt, with the small diff and unchanged historical checks independently inspected during native completion audit.
+Stop when: Package content/meaning differs from the native receipt, the change requires more than this current consumer migration, or an owner gate/declared limit binds.
+
+### T-039 start — 2026-09-13
+
+T-039 begins the current receipt correction in the coding PM. A draft spec was written immediately before this scope/start entry; no test or production code had changed. That preparation-order deviation is retained for fresh round review. Coordinator owns the one current test change and coding evidence; T-038 author retains native model/package/receipt ownership. The test will execute after the native receipt is committed and stable. The native independent auditor will inspect this dependency before declaring coherent completion.
