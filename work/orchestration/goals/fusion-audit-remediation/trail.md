@@ -1889,3 +1889,16 @@ Stop when: Domain/source evidence conflicts, dormant meaning or supported scope 
 ### T-045 start — 2026-09-13
 
 T-045 begins native modeling under evidence/T-045_primary-domains/author-brief.md. Expected artifacts are one registered Standard item, proportional spec/design/plan, model-owned correction, coherent fresh package and native evidence for independent audit. Author owns native surfaces; coordinator owns separately scoped current consumers, audit dispatch and sequential integration.
+
+### T-046 scope
+
+Objective: Preserve independent oracle and current regression coherence for the established primary-loop heat-capacity/temperature-rise domain.
+Why now: T-045's WI-056 source/dormancy investigation establishes finite positive cp and dT at calculation entry, including dormant and zero-source-heat evaluation; current oracle divides unchecked and current helper carries twelve seeds.
+Scope: A proportional coding item for two independent oracle guards, focused current adapter/identity tests, thirteenth-seed current generator/receipt migration and directly affected current model regression expectations. Preserve valid equations, existing public mappings, historical WI-050 through WI-055 drivers/receipts/results, and source checks outside the specifically authorized primary-loop definition. No native production, new channels, whole-loop domain redesign or shared runtime/seam repair.
+Inputs: amended goal.md; Round11 strategy@cea6bc1a; T-045@02203c7b; WI-056 established finite-positive/always-evaluated native contract (source evidence currently unpinned; no native digest until author commit); current oracle/helper/receipt and audited Round10 candidate.
+Done when: Independent oracle deliberately refuses the two-input counterexamples, valid and dormant heat/flow controls remain correct, thirteen-seed current consumers pass against stable native evidence and fresh audit supports coherent completion.
+Stop when: Native/source semantics change, necessary correction exceeds scoped consumers, unexplained authority movement occurs, or a reserved gate/limit binds.
+
+### T-046 start — 2026-09-13
+
+T-046 begins proportional coding work under evidence/T-046_primary-consumers/author-brief.md. Continuing consumer author owns current oracle and affected existing tests/helpers; T-045 owns new native tests/models/package/PM. Independent edits can proceed from the established two-input contract, while native-dependent acceptance waits for a committed stable candidate. Coordinator obtains independent audit and sequential integration.
