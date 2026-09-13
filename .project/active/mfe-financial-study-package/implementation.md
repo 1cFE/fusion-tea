@@ -4,7 +4,7 @@
 
 ## Implementation choices
 
-[AGENT] The independent oracle evaluates retained finance with 80-digit stdlib Decimal arithmetic, converting the actual represented binary64 operands exactly. Power evaluation and cancellation use high precision rather than the production helper's binary64 numerical branches. Exact-zero CRF and IDC and equal-rate annuity use their analytic limits. Eighty digits leave more than fifty guard digits after cancellation at the smallest tested rate, 1e-18. The tests independently evaluate CRF as inverse dated unit payments, integer annuities and construction finance as dated sums, and fractional IDC through a generalized binomial series. Fractional annuity equality is tested against its PV identity. No production financial code is imported by the oracle.
+[AGENT] The independent oracle evaluates retained finance with 80-digit stdlib Decimal arithmetic, converting the actual represented binary64 operands exactly. Power evaluation and cancellation use high precision rather than the production helper's binary64 numerical branches. Exact-zero CRF and IDC and equal-rate annuity use their analytic limits. The worst tested IDC cancellation loses roughly 52 digits at a 1e-18 rate and a binary64 neighbor of one year. Eighty-digit arithmetic leaves over 25 significant digits before conversion back to binary64. The tests independently evaluate CRF as inverse dated unit payments, integer annuities and construction finance as dated sums, and fractional IDC through a generalized binomial series. Fractional annuity equality is tested against its PV identity. No production financial code is imported by the oracle.
 
 [AGENT] Held replacement uses its existing clipped lifetime and ceil-derived event count, followed by high-precision dated sums. Live replacement uses its existing independently derived dates. Live energy retains the same year-bin geometry and computes discount factors at high precision. All physical statements in the oracle remain unchanged.
 
@@ -20,7 +20,7 @@
 
 ## Validation record
 
-Results and exact-node differential will be recorded in `implementation/results.md` after focused validation. Integration acceptance tests run only against disposable fixture copies. Existing historical failure evidence is retained without a broad rerun.
+Final focused results and the exact 22-node passing differential are recorded in `implementation/results.md`. Integration acceptance tests run only against disposable fixture copies. Existing historical failure evidence is retained without a broad rerun.
 
 ## Remaining limits
 

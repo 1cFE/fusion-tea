@@ -18,7 +18,7 @@ The former `p_input`/`p_ecrh` tie was retired by WI-039. Installed powers descen
 
 ## § Baseline pin
 
-The current point, headline and individual verdicts are in `manifest.json` → `baseline`. The WI-051 package has 246 public inputs and 18 assertions with 28 feature-reference operands. At `R = 12.7 m`, `a = 1.3 m` and live-calendar mode (`availability_direct = 0`), the headline is 224.26923288439 $/MWh. Seventeen assertions are satisfied; `divertor_heat_ok` is violated (10.517841546 MW/m² against 10). This baseline is not a feasible plant.
+The current point, headline and individual verdicts are in `manifest.json` → `baseline`. The current WI-052 package has 246 public inputs and 18 assertions with 28 feature-reference operands. At `R = 12.7 m`, `a = 1.3 m` and live-calendar mode (`availability_direct = 0`), the headline is 224.26923288439002 $/MWh. Seventeen assertions are satisfied; `divertor_heat_ok` is violated (10.517841546 MW/m² against 10). This baseline is not a feasible plant.
 
 The installed heating chain remains 100 MW electric → 50 MW delivered → 50 MW coupled at held source/coupling efficiencies 0.50/1.00. Procurement remains $264,145,000. The operating chain publishes signed coupled demand 49.07960078792678 MW, delivered power 49.07960078792678 MW and electric draw 98.15920157585356 MW. Increasing installed reserve to 120 MW raises procurement to $316,974,000 and leaves online flows unchanged. Physical demand changes affect online power while procurement remains fixed.
 
@@ -38,7 +38,7 @@ Point `STOP_PARSER_TEAX_ROOT` at a TEAx runtime supporting evidence schema v3 nu
 
 ## § Oracle
 
-The independent oracle is `exploration/stellarator_e2e/verify_stellaris.py`, a pure Python recompute of the whole plant chain that shares no code with the generated package. It is **not modified** by the study capability — that independence is the entire value of comparing against it.
+The independent oracle is `exploration/stellarator_e2e/verify_stellaris.py`, with retained finance evaluated by `exploration/stellarator_e2e/oracle_finance.py`. It recomputes the plant chain without importing generated implementations. The finance helper uses 80-digit Decimal arithmetic and dated cash flows independently of production numerical branches. Reported closed-form IDC remains distinct from midpoint headline finance.
 
 The study seam is `oracle_entry.py`, beside this file, and it publishes two things and nothing else:
 
@@ -65,7 +65,9 @@ Known verification-coverage delta (Item 4 audit, 2026-08-20): `p_fus` is not com
 
 The adapter supports 99 mapped inputs, preserving the entering map except for the retired magnet radius. The other 147 native inputs remain unsupported oracle overrides and are explicitly refused. Native input support does not imply oracle coverage for arbitrary sweeps.
 
-The independent oracle declares 141 numeric channels. Baseline and ordinary R-only14 controls compare every declared channel, both LCOEs and all eighteen authored verdicts. The native frozen comparator additionally covers all 158 scalars and nineteen responses, including the aggregate. The generic verifier requires the manifest objectives and predicate channels; its `channels_checked` field names the actual comparisons.
+The current finance route has been checked in live and held modes at zero discount, equality with the fixed 0.02 inflation rate, nearby distinct rates and signed rates down to 1e-18. Seven finance-dependent channels are already mapped: reported IDC, replacement PV, replacement annual cost, dated energy ratio, comparison capital charge and both LCOEs. The six omitted finance channels below retain their native independent-test evidence; they are not new adapter coverage. Direct helper tests cover other escalation rates and fractional durations. Construction-duration zero and broader financial-domain questions remain parked. Evidence: [.project/active/mfe-financial-study-package/implementation.md](../../../.project/active/mfe-financial-study-package/implementation.md).
+
+The independent oracle declares 141 numeric channels. Baseline and ordinary R-only14 controls compare every declared channel, both LCOEs and all eighteen authored verdicts. The current radius comparator checks all 158 scalars against frozen native controls: 145 nonfinance channels exactly and thirteen finance channels at 1e-9 relative tolerance. The native evidence retains all nineteen responses, including the aggregate. The generic verifier requires the manifest objectives and predicate channels; its `channels_checked` field names the actual comparisons.
 
 The following seventeen native channels are outside the independent oracle channel map. They remain covered by the complete frozen native comparator and are not independent-oracle claims (prefix `stellarator_09__stellaris__`):
 

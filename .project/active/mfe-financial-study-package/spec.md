@@ -1,6 +1,6 @@
 # Current study consumers for repaired MFE finance
 
-Status: Requirements recorded; implementation follows native documentation correction.
+Status: Implemented; fresh independent audit pending. Evidence: `implementation/results.md`.
 
 ## Problem and authority
 

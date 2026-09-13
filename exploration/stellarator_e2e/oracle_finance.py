@@ -1,8 +1,9 @@
 """Independent high-precision evaluation of the retained financial equations.
 
-Decimal.from_float preserves actual binary64 operands. Eighty digits leave over
-50 guard digits after the smallest tested (1e-18) rate cancellation. Integer
-cash flows are dated sums; fractional horizons retain analytic continuation.
+Decimal conversion preserves actual binary64 operands. Eighty digits cover the
+roughly 52 digits lost by IDC at 1e-18 rates and one-year binary64 neighbors,
+leaving over 25 significant digits before float conversion. Replacement cash
+flows are dated sums; annuities retain their analytic continuation.
 No generated package or production helper is imported.
 """
 from decimal import Decimal, localcontext
