@@ -1961,3 +1961,16 @@ Stop when: Resolution requires shared tooling/seam repair, altered scientific or
 ### T-048 start — 2026-09-13
 
 T-048 re-enters the existing native WI-056 item for this separately scoped integration prerequisite under evidence/T-048_primary-coherence/author-brief.md. Continuing author owns native diagnosis/correction/evidence, coordinator owns current-consumer follow-up and subsequent integration. The completed earlier tasks and their evidence remain historical; no failed gate is waived.
+
+### T-049 scope
+
+Objective: Migrate current primary-loop consumers to the corrected exact-signature seed/helper/receipt required by stock smart regeneration.
+Why now: T-048 diagnosis shows tuple[float,...] return annotation is treated as stale against the generated thirteen-float signature; stock smart generation replaces the guarded handwritten body, creates a backup and changes its contract. The initial integration stops at the non-handwritten contract check before its handwritten-preservation gate.
+Scope: Proportional amendment to the existing primary-loop-current-consumers coding item, exact current helper/seed-receipt/package-receipt path migration and affected focused checks after committed native correction. Preserve original T-046 evidence, old helper/receipts, valid oracle equations/guards, source comparisons and all historical records. No native production, shared tool/seam patch or scientific/interface change.
+Inputs: amended goal.md; T-048@b2e57268 and its independent scratch diagnosis; existing consumer@4356a861 and audit@387c2c95; corrected native exact signature/helper/receipt when committed. Native-dependent acceptance waits for that stable revision.
+Done when: Current callers use the corrected checked seed/helper/receipt, focused native/consumer behavior remains correct and independent coherence addendum verifies combined readiness.
+Stop when: A broader consumer/tooling/meaning change is required, native correction is unstable or outside scope, authority moves unexpectedly, or a reserved gate/limit binds.
+
+### T-049 start — 2026-09-13
+
+T-049 continues the existing coding item under evidence/T-049_primary-coherence-consumers/author-brief.md, preserving its original acceptance. Continuing consumer author owns exact current path migrations and new focused evidence. T-048 owns native signature/helper/receipt correction; independent auditor verifies both corrected generation modes and current consumers before any new integration task.
