@@ -23,8 +23,10 @@ package mfe_plant {
         doc /*
         Confinement-agnostic magnetic-fusion power plant. Composes the WI-009
         power-core subsystems and the shared/BOP costed components, wires the
-        physics -> cost -> LCOE calc pipeline, and asserts the two viability
-        constraints. The MFE analogue of ife_plant's 'IFE Power Plant', one
+        physics -> cost -> LCOE calc pipeline, and asserts power, heating,
+        magnet, primary-loop, cycle-domain and divertor viability constraints.
+        Instance-specific assertions extend these; the generated constraint
+        catalog records the executable set. The MFE analogue of ife_plant's 'IFE Power Plant', one
         level richer (a full physics spine and a bottom-up CAS rollup).
 
         Abstract: WI-011 specializes it with concept-09 (stellarator) values and

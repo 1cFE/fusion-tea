@@ -75,10 +75,14 @@ DERIVED PROFILE DIAGNOSTICS (outputs; nothing downstream reads them):
            -- the ash shape's effective power-law exponent (4.05 at
            point A; 4.7 at 10 keV, 3.5 at 20 keV: it moves with T_i0)
 RADIATION (composed; profile-integrated over the DERIVED n_e(rho)):
-  p_brems = 5.35e-37 * Z_eff * V
-int n_e(rho)^2 * sqrt(T_e(rho)) dV'             [MW]
-    p_line  = f_W * V * int n_e(rho)^2 * L_z_W(T_e(rho)) dV'    [MW]
-              (L_z_W: piecewise coronal cooling-curve fit)
+  dV' = dV/V = 2 rho d rho; integral_0^1 dV' = 1          [1]
+  p_brems = 1e-6 * 5.35e-37 * Z_eff * V
+int_0^1 n_e(rho)^2 * sqrt(T_e(rho)) dV'       [MW]
+p_line  = 1e-6 * f_W * V
+int_0^1 n_e(rho)^2 * L_z_W(T_e(rho)) dV'      [MW]
+              (n_e: m^-3; T_e: keV; V: m^3; Z_eff and f_W: 1;
+              brems coefficient: W m^3 keV^-1/2; L_z_W: W m^3,
+              piecewise coronal cooling-curve fit; 1e-6: MW/W)
     p_sync  = Albajar (2001) formula at kappa_sync, R_w_sync with the
               density-profile parameter alpha_n_e_eff (WI-042 D4) [MW]
     p_rad   = p_brems + p_line + p_sync
@@ -329,10 +333,14 @@ DERIVED PROFILE DIAGNOSTICS (outputs; nothing downstream reads them):
            -- the ash shape's effective power-law exponent (4.05 at
            point A; 4.7 at 10 keV, 3.5 at 20 keV: it moves with T_i0)
 RADIATION (composed; profile-integrated over the DERIVED n_e(rho)):
-  p_brems = 5.35e-37 * Z_eff * V
-int n_e(rho)^2 * sqrt(T_e(rho)) dV'             [MW]
-    p_line  = f_W * V * int n_e(rho)^2 * L_z_W(T_e(rho)) dV'    [MW]
-              (L_z_W: piecewise coronal cooling-curve fit)
+  dV' = dV/V = 2 rho d rho; integral_0^1 dV' = 1          [1]
+  p_brems = 1e-6 * 5.35e-37 * Z_eff * V
+int_0^1 n_e(rho)^2 * sqrt(T_e(rho)) dV'       [MW]
+p_line  = 1e-6 * f_W * V
+int_0^1 n_e(rho)^2 * L_z_W(T_e(rho)) dV'      [MW]
+              (n_e: m^-3; T_e: keV; V: m^3; Z_eff and f_W: 1;
+              brems coefficient: W m^3 keV^-1/2; L_z_W: W m^3,
+              piecewise coronal cooling-curve fit; 1e-6: MW/W)
     p_sync  = Albajar (2001) formula at kappa_sync, R_w_sync with the
               density-profile parameter alpha_n_e_eff (WI-042 D4) [MW]
     p_rad   = p_brems + p_line + p_sync
@@ -528,10 +536,14 @@ DERIVED PROFILE DIAGNOSTICS (outputs; nothing downstream reads them):
            -- the ash shape's effective power-law exponent (4.05 at
            point A; 4.7 at 10 keV, 3.5 at 20 keV: it moves with T_i0)
 RADIATION (composed; profile-integrated over the DERIVED n_e(rho)):
-  p_brems = 5.35e-37 * Z_eff * V
-int n_e(rho)^2 * sqrt(T_e(rho)) dV'             [MW]
-    p_line  = f_W * V * int n_e(rho)^2 * L_z_W(T_e(rho)) dV'    [MW]
-              (L_z_W: piecewise coronal cooling-curve fit)
+  dV' = dV/V = 2 rho d rho; integral_0^1 dV' = 1          [1]
+  p_brems = 1e-6 * 5.35e-37 * Z_eff * V
+int_0^1 n_e(rho)^2 * sqrt(T_e(rho)) dV'       [MW]
+p_line  = 1e-6 * f_W * V
+int_0^1 n_e(rho)^2 * L_z_W(T_e(rho)) dV'      [MW]
+              (n_e: m^-3; T_e: keV; V: m^3; Z_eff and f_W: 1;
+              brems coefficient: W m^3 keV^-1/2; L_z_W: W m^3,
+              piecewise coronal cooling-curve fit; 1e-6: MW/W)
     p_sync  = Albajar (2001) formula at kappa_sync, R_w_sync with the
               density-profile parameter alpha_n_e_eff (WI-042 D4) [MW]
     p_rad   = p_brems + p_line + p_sync

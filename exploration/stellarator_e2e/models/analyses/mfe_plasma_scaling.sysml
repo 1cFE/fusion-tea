@@ -9,10 +9,10 @@ package mfe_plasma_scaling {
           A = R / a                                  (reported, WI-044)
 
         The elongated-torus term (2*pi^2*R*a^2*kappa) is the smooth-torus
-        volume. f_shape is a dimensionless shape/packing factor: 1.0 for a pure
-        torus (tokamak, and the 1costingFE torus geometry), < 1 for a shaped
-        stellarator plasma whose twisted, non-circular cross-section encloses
-        less volume than the torus of the same R, a, kappa. Concept-agnostic:
+        volume. f_shape is the dimensionless ratio of the concept's plasma
+        volume to this reference torus volume. It is 1.0 for the pure torus
+        (including the 1costingFE torus geometry); a shaped plasma may have a
+        ratio above or below 1 for its chosen R, a and kappa. Concept-agnostic:
         R is major radius, a is minor radius, kappa is elongation, and the
         concept sets f_shape (default 1.0 leaves any existing torus consumer
         and the Anchor A handshake unchanged).
@@ -27,7 +27,7 @@ package mfe_plasma_scaling {
         in attribute kappa_in : Real;
 
         // Shape/packing factor. Default 1.0 = pure elongated torus (tokamak;
-        // 1costingFE torus geometry). A shaped stellarator sets f_shape < 1.
+        // 1costingFE torus geometry). Set from the concept/reference volume ratio.
         // Source: concept geometry; WI-020.
         in attribute f_shape_in : Real default 1.0;
 

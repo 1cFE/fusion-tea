@@ -267,6 +267,12 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-054
+  name: Faithful model equations and citations
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -344,3 +350,4 @@ standalone:
 | WI-028 | Handshake account scope CAS22 tail + CAS40/50/60 | standard | P0 | completed | Completed 2026-07-20 |
 | WI-029 | Handshake account scope LCOE construction CAS70/80 + IDC | standard | P0 | completed | Completed 2026-08-02 |
 | WI-053 | Magnet and cryogenic input domains | standard | P1 | backlog |  |
+| WI-054 | Faithful model equations and citations | standard | P1 | backlog |  |

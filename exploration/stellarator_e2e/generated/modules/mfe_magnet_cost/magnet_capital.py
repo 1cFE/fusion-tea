@@ -9,7 +9,7 @@ reference binding (the codegen-proven WI-021 pattern), not an
 arithmetic redefinition expression (dropped by the pinned codegen,
 WI-030).
 
-*Source**: work/active/WI-035_magnet-closure/design.md
+*Source**: work/completed/20260901_WI-035_magnet-closure/design.md
 *Ref**: design D6 (rollup + comparison channel); design Risk 1
 (redefinition envelope)
 *Basis**: sum of winding-pack and magnet-structure sub-accounts
@@ -56,7 +56,7 @@ reference binding (the codegen-proven WI-021 pattern), not an
 arithmetic redefinition expression (dropped by the pinned codegen,
 WI-030).
 
-*Source**: work/active/WI-035_magnet-closure/design.md
+*Source**: work/completed/20260901_WI-035_magnet-closure/design.md
 *Ref**: design D6 (rollup + comparison channel); design Risk 1
 (redefinition envelope)
 *Basis**: sum of winding-pack and magnet-structure sub-accounts
@@ -83,7 +83,7 @@ reference binding (the codegen-proven WI-021 pattern), not an
 arithmetic redefinition expression (dropped by the pinned codegen,
 WI-030).
 
-*Source**: work/active/WI-035_magnet-closure/design.md
+*Source**: work/completed/20260901_WI-035_magnet-closure/design.md
 *Ref**: design D6 (rollup + comparison channel); design Risk 1
 (redefinition envelope)
 *Basis**: sum of winding-pack and magnet-structure sub-accounts

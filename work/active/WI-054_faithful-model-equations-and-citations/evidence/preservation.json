@@ -1,0 +1,85 @@
+{
+  "sysml_tokens_equal": true,
+  "twins_equal": true,
+  "packages": {
+    "mfe": {
+      "ast_differences": [],
+      "contract_equal": true,
+      "changes": {
+        "contracts/package_contract.json": {
+          "before": "bc06b828389080f8c2f6282b1804ddd227e8c215732679704bf126250b716e54",
+          "after": "bfc3071c2f0b4b5c75e136d814794118a3c557f88d68f9f4a0f8f50572f5630c"
+        },
+        "modules/mfe_magnet_cost/magnet_capital.py": {
+          "before": "02eccd1881a36b430ee2d3d41d722ac08e72d7423f55fff4d1e63069dde9a8a3",
+          "after": "869273b37560d9fc2f6344a58e8c0c744b83ccff47624db805ca4c40aa3a1719"
+        },
+        "modules/mfe_plant/mfe_power_plant/bop_capital.py": {
+          "before": "f4e45471a93c8d8de85e12f2083631e887581db5ad03dd867023ecac5cd1c247",
+          "after": "209deffc311488fa618f597e03668276240edf8f561ec64b710a735f882f7ba0"
+        },
+        "modules/mfe_plant/mfe_power_plant/cas20_capital.py": {
+          "before": "a2a11db0786526dcd2221452676418b86a0b160ef10e580e670820cfd0080487",
+          "after": "e7f8748deb420036e012971c5cdf8104422e6480cee1f07d733801ceb5732a1b"
+        },
+        "modules/mfe_plant/mfe_power_plant/cas22_capital.py": {
+          "before": "957cfc80335e40eadef7a285ed91ebf22a3143111d893e3e2e6a1cdc12072eb3",
+          "after": "732a1f15011b5835c39da11db00997add699950219faf39effdd56bdfbfac9de"
+        },
+        "modules/mfe_plant/mfe_power_plant/cas23_to_28_capital.py": {
+          "before": "9a863621a6bddef18b450c2ae1c06a8fb68e3a2c5669c3f2d4b9b44ced640b48",
+          "after": "2db526a3e2b33af9651836556cbe52c92ff24b8a5fcb32a0d9d274ab93b59c53"
+        },
+        "modules/mfe_plant/mfe_power_plant/cas2x_pre_contingency.py": {
+          "before": "082f14e50b48b1bf27feaf09aaf729357743e4776dbe996c2650314db5f12aa2",
+          "after": "de681d753730617edb8900c2216df9646d90c66d76efbdcbe98619ed3b877508"
+        },
+        "modules/mfe_plant/mfe_power_plant/overnight_capital.py": {
+          "before": "66e97aa7e851e6cdffb3da05d8fa446469221af13c089c9974b64faf17625137",
+          "after": "c15b8ee35948b012214a71204ee63aeeccc910034c4d6edaaaa86f86f0aea920"
+        },
+        "modules/mfe_plant/mfe_power_plant/powercore_capital.py": {
+          "before": "d26bc065ff4b549c2d80b7ae6bc4e89e4d53c9a7cef638b7da52c4c663b83757",
+          "after": "b1cf6635b14eab73707b067cbeb70c137c3c8cb61569da5469c99d2b28fc20cc"
+        },
+        "modules/mfe_plant/mfe_power_plant/reactor_equipment_subtotal.py": {
+          "before": "0ea2f355522887ae7d79c8e9dd64ab2f40a2f11ad3a37d5f5326f8a599cf3f9d",
+          "after": "f499b07232e9aa22f43580729567b7a10449499d6ab98b4bb997e438636752f9"
+        },
+        "modules/mfe_plant/mfe_power_plant/replacement_cost_per_event.py": {
+          "before": "25860173ca2d07e6e8dd53b9f9eba5a200894c64c751ba1e16adec96afe36333",
+          "after": "aff22044fa183e023b34481eb0646892d6fe23863fb9d61a80334f761c9fb128"
+        },
+        "modules/mfe_plant/mfe_power_plant/total_capital.py": {
+          "before": "13fb96a6fd737798f93af4f3e94578927603e5596352328afbe31ab0bcc26fef",
+          "after": "d73acd2c2a0fff0df7cae5df4ab30339fba5044cb7aa78d8d9c96bb33ce0c25d"
+        },
+        "modules/mfe_plasma_scaling/plasma_geometry.py": {
+          "before": "90765aa05227e5e490b485a333593e99162b056d86fa1569b1cd5f7ace85f9cd",
+          "after": "b56173fb0fb18422f51cd27d02ac293343f84b0a31139de89c535b78dede9780"
+        },
+        "modules/mfe_plasma_sustainment/plasma_sustainment.py": {
+          "before": "7e61deb356419ca4caf113c62693d643ad226e9755c29c87e6f1428c8352a7f7",
+          "after": "5965fe00917d91afb370845249e21b1e74677e8985696d081de77cc27ff51030"
+        },
+        "modules/stellarator_09/stellaris/special_materials_capital.py": {
+          "before": "1d57bac6dc6ad74ae74c95e2d886ba19b324a57402678d65b5b9c1373c45b9a4",
+          "after": "0b423e4cd43993ecb65d17f106f32d45b2efeef37505e7c7ab93caafe307c2d9"
+        },
+        "schemas/plasma_geometry_output.py": {
+          "before": "75ffdc6aa93b35e4f6c3d5f7e1fc1176cfbe3cb458a23186c7f5339d5e136e6d",
+          "after": "a7de758ac594f042ce0f0de5039ca639ee843143391b3345a054421e60184253"
+        },
+        "schemas/plasma_sustainment_output.py": {
+          "before": "f8fe2ce70b237e81f07502655b6287cb373b85ebd4f4883ad2bb4a1e81e91f25",
+          "after": "0bd8244ae0b17f919e0ba3a1477591c1a7685ff4b8f25b3bacf4337f3ab643f9"
+        }
+      }
+    },
+    "ife": {
+      "ast_differences": [],
+      "contract_equal": true,
+      "changes": {}
+    }
+  }
+}
