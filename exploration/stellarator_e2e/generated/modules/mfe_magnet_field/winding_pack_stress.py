@@ -6,13 +6,17 @@ Mean winding-pack stress scale [Pa] in the J x B x d form (WI-035):
 
   sigma_wp = k_sigma * I_coil * B_peak_in / wp_side
 
+Domain: wp_side != 0. Native typed manual completion raises
+ValueError for a zero denominator before evaluating the stated equation.
+A locally zero-sized pack has no defined stress in this expression.
+
 Force density (current x field) over the load-bearing dimension --
 the standard mean-stress scale for a winding. k_sigma is a held
 coil-set structural concentration fact (float64 anchored at the
 printed worst-coil pair: <650 MPa at I 15.4 MA, B_peak 24.9 T,
 side 0.36 m; the printed "<650" bound is taken AS the value,
 conservative). The operand responds as I * B_peak / side --
-quadratic in coil current once B_peak follows the derived field --
+quadratic at fixed side once B_peak follows the derived field --
 so the paired limit pushes back on both field choice and winding-pack
 sizing (rubric Row 3 P3).
 
@@ -68,13 +72,17 @@ Mean winding-pack stress scale [Pa] in the J x B x d form (WI-035):
 
   sigma_wp = k_sigma * I_coil * B_peak_in / wp_side
 
+Domain: wp_side != 0. Native typed manual completion raises
+ValueError for a zero denominator before evaluating the stated equation.
+A locally zero-sized pack has no defined stress in this expression.
+
 Force density (current x field) over the load-bearing dimension --
 the standard mean-stress scale for a winding. k_sigma is a held
 coil-set structural concentration fact (float64 anchored at the
 printed worst-coil pair: <650 MPa at I 15.4 MA, B_peak 24.9 T,
 side 0.36 m; the printed "<650" bound is taken AS the value,
 conservative). The operand responds as I * B_peak / side --
-quadratic in coil current once B_peak follows the derived field --
+quadratic at fixed side once B_peak follows the derived field --
 so the paired limit pushes back on both field choice and winding-pack
 sizing (rubric Row 3 P3).
 
@@ -99,12 +107,14 @@ SysML Source: root-0/analyses/mfe_magnet_field.sysml:48
     SysML Source: root-0/analyses/mfe_magnet_field.sysml:48
 
     Calculation Specification:
-        sigma_wp = k_sigma * I_coil * B_peak_in / wp_side
-        
-Documentation:
+        See documentation:
 Mean winding-pack stress scale [Pa] in the J x B x d form (WI-035):
 
   sigma_wp = k_sigma * I_coil * B_peak_in / wp_side
+
+Domain: wp_side != 0. Native typed manual completion raises
+ValueError for a zero denominator before evaluating the stated equation.
+A locally zero-sized pack has no defined stress in this expression.
 
 Force density (current x field) over the load-bearing dimension --
 the standard mean-stress scale for a winding. k_sigma is a held
@@ -112,7 +122,7 @@ coil-set structural concentration fact (float64 anchored at the
 printed worst-coil pair: <650 MPa at I 15.4 MA, B_peak 24.9 T,
 side 0.36 m; the printed "<650" bound is taken AS the value,
 conservative). The operand responds as I * B_peak / side --
-quadratic in coil current once B_peak follows the derived field --
+quadratic at fixed side once B_peak follows the derived field --
 so the paired limit pushes back on both field choice and winding-pack
 sizing (rubric Row 3 P3).
 

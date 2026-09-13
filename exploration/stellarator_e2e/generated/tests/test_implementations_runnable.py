@@ -50,7 +50,7 @@ def create_dummy_input(input_class: type[BaseModel]) -> BaseModel:
 class TestWinding_Pack_SizingRunnable:
     """Verify winding_pack_sizing implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_magnet_field.sysml:84
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:91
     """
 
     def test_import_and_run(self):
@@ -90,7 +90,7 @@ class TestWinding_Pack_SizingRunnable:
 class TestCoil_Winding_LengthRunnable:
     """Verify coil_winding_length implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_magnet_field.sysml:124
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:142
     """
 
     def test_import_and_run(self):
@@ -454,7 +454,7 @@ class TestWinding_Pack_StressRunnable:
 class TestConductor_StrainRunnable:
     """Verify conductor_strain implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_magnet_field.sysml:197
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:215
     """
 
     def test_import_and_run(self):
@@ -906,7 +906,7 @@ class TestNeutron_Wall_LoadRunnable:
 class TestCoil_Set_Stored_EnergyRunnable:
     """Verify coil_set_stored_energy implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_magnet_field.sysml:244
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:262
     """
 
     def test_import_and_run(self):
@@ -1066,7 +1066,7 @@ class TestMagnet_CapitalRunnable:
 class TestWinding_Pack_Cold_VolumeRunnable:
     """Verify winding_pack_cold_volume implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_magnet_field.sysml:154
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:172
     """
 
     def test_import_and_run(self):

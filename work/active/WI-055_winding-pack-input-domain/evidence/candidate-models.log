@@ -1,0 +1,24 @@
+.......s.ssssssssssss................................................... [ 11%]
+........................................................................ [ 23%]
+........................................................................ [ 35%]
+........................................................................ [ 47%]
+........................................................................ [ 59%]
+........................................................................ [ 71%]
+........................................................................ [ 83%]
+........................................................................ [ 95%]
+.............................                                            [100%]
+=============================== warnings summary ===============================
+tests/models/test_mfe_financial_calendar.py: 37 warnings
+  tests/models/test_mfe_financial_calendar.py:112: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize('name',CASES)
+
+tests/models/test_mfe_financial_rate_limits.py: 11 warnings
+  tests/models/test_mfe_financial_rate_limits.py:62: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize('duration', DURATIONS)
+
+tests/models/test_mfe_financial_rate_limits.py: 31 warnings
+  tests/models/test_mfe_financial_rate_limits.py:96: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize('n,t', [(n, t) for n in DURATIONS for t in (8., 8.5)]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+592 passed, 13 skipped, 79 warnings in 72.19s (0:01:12)

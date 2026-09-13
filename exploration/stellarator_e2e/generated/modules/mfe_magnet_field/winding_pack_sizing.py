@@ -19,9 +19,18 @@ Unit note: j_wp is in A/mm^2 and I_coil in A, so I_coil/j_wp is an
 area in mm^2; the 1000 divisor converts the side to metres.
 
 Consequence for the paired stress calc: substituting gives
-sigma_wp = k_sigma * B_peak * sqrt(I_coil * j_wp), so winding stress
-grows as the square root of coil current rather than linearly once
-the pack is allowed to size itself.
+sigma_wp = 1000 * k_sigma * B_peak * sqrt(I_coil * j_wp).
+At fixed peak field and density, stress grows as sqrt(I_coil).
+When peak field follows current at fixed geometry, it grows as
+I_coil^(3/2) at fixed density. The factor 1000 follows the side's
+millimetre-to-metre conversion; it is not a calibration coefficient.
+
+Domain: I_coil and j_wp are finite magnitudes, with I_coil >= 0
+and j_wp > 0. Native typed manual completion raises ValueError
+before evaluating the sizing equation for an invalid domain (WI-055).
+I_coil = 0 gives local side = 0, not a de-energized finite coil model.
+The composed stress and plasma equations enforce their own nonzero
+denominators. Source coil values are examples, not universal bounds.
 
 *Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
 *Ref**: images/page_022_table_0.png (Table 8: I total amp-turns
@@ -38,9 +47,9 @@ Inputs:
 Outputs:
     - wp_side: wp_side result
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:84
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:91
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:84
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:91
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_magnet_field/winding_pack_sizing_impl.py
@@ -83,9 +92,18 @@ Unit note: j_wp is in A/mm^2 and I_coil in A, so I_coil/j_wp is an
 area in mm^2; the 1000 divisor converts the side to metres.
 
 Consequence for the paired stress calc: substituting gives
-sigma_wp = k_sigma * B_peak * sqrt(I_coil * j_wp), so winding stress
-grows as the square root of coil current rather than linearly once
-the pack is allowed to size itself.
+sigma_wp = 1000 * k_sigma * B_peak * sqrt(I_coil * j_wp).
+At fixed peak field and density, stress grows as sqrt(I_coil).
+When peak field follows current at fixed geometry, it grows as
+I_coil^(3/2) at fixed density. The factor 1000 follows the side's
+millimetre-to-metre conversion; it is not a calibration coefficient.
+
+Domain: I_coil and j_wp are finite magnitudes, with I_coil >= 0
+and j_wp > 0. Native typed manual completion raises ValueError
+before evaluating the sizing equation for an invalid domain (WI-055).
+I_coil = 0 gives local side = 0, not a de-energized finite coil model.
+The composed stress and plasma equations enforce their own nonzero
+denominators. Source coil values are examples, not universal bounds.
 
 *Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
 *Ref**: images/page_022_table_0.png (Table 8: I total amp-turns
@@ -102,14 +120,12 @@ Inputs:
 Outputs:
     - wp_side: wp_side result
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:84
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:91
 
-    SysML Source: root-0/analyses/mfe_magnet_field.sysml:84
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:91
 
     Calculation Specification:
-        wp_side = (I_coil / j_wp) ** 0.5 / 1000.0
-        
-Documentation:
+        See documentation:
 Winding-pack cross-section side [m] from the current the pack must
 carry (WI-036, D1):
 
@@ -127,9 +143,18 @@ Unit note: j_wp is in A/mm^2 and I_coil in A, so I_coil/j_wp is an
 area in mm^2; the 1000 divisor converts the side to metres.
 
 Consequence for the paired stress calc: substituting gives
-sigma_wp = k_sigma * B_peak * sqrt(I_coil * j_wp), so winding stress
-grows as the square root of coil current rather than linearly once
-the pack is allowed to size itself.
+sigma_wp = 1000 * k_sigma * B_peak * sqrt(I_coil * j_wp).
+At fixed peak field and density, stress grows as sqrt(I_coil).
+When peak field follows current at fixed geometry, it grows as
+I_coil^(3/2) at fixed density. The factor 1000 follows the side's
+millimetre-to-metre conversion; it is not a calibration coefficient.
+
+Domain: I_coil and j_wp are finite magnitudes, with I_coil >= 0
+and j_wp > 0. Native typed manual completion raises ValueError
+before evaluating the sizing equation for an invalid domain (WI-055).
+I_coil = 0 gives local side = 0, not a de-energized finite coil model.
+The composed stress and plasma equations enforce their own nonzero
+denominators. Source coil values are examples, not universal bounds.
 
 *Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
 *Ref**: images/page_022_table_0.png (Table 8: I total amp-turns

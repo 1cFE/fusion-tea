@@ -152,6 +152,11 @@ def run_plasma_sustainment(inputs: Plasma_SustainmentInput) -> tuple[
     caller's unpack order: (n_bar19, n_T0, W_th, p_avg, p_brems, n_He0, n_D0,
     alpha_n_e_eff, p_aux_required, p_rad, p_alpha_heat, tau_E, p_sync, p_line,
     n_e_volav, alpha_He_eff, T_e0)."""
+    # WI-055: the composed synchrotron and confinement equations divide by
+    # field and confinement time; zero field is outside this local domain.
+    if inputs.B_in == 0:
+        raise SustainmentError(
+            "Plasma Sustainment: B_in must be nonzero for synchrotron and confinement equations")
     n_e0 = inputs.n_e0_in
     T_i0 = inputs.T_i0_in
     V = inputs.V

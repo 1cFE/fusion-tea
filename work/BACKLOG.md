@@ -273,6 +273,12 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-055
+  name: Winding pack input domain
+  scale: standard
+  priority: P0
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -351,3 +357,4 @@ standalone:
 | WI-029 | Handshake account scope LCOE construction CAS70/80 + IDC | standard | P0 | completed | Completed 2026-08-02 |
 | WI-053 | Magnet and cryogenic input domains | standard | P1 | backlog |  |
 | WI-054 | Faithful model equations and citations | standard | P1 | backlog |  |
+| WI-055 | Winding pack input domain | standard | P0 | backlog |  |

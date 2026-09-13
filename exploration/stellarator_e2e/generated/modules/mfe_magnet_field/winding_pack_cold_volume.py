@@ -38,9 +38,9 @@ Inputs:
 Outputs:
     - vol_cold_total: vol_cold_total result
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:154
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:172
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:154
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:172
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_magnet_field/winding_pack_cold_volume_impl.py
@@ -108,9 +108,9 @@ Inputs:
 Outputs:
     - vol_cold_total: vol_cold_total result
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:154
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:172
 
-    SysML Source: root-0/analyses/mfe_magnet_field.sysml:154
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:172
 
     Calculation Specification:
         vol_extra = 0.0

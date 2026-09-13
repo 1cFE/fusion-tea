@@ -1,0 +1,48 @@
+.............FF..........F...........................                    [100%]
+=================================== FAILURES ===================================
+_______ test_local_zero_is_retained_and_consumers_own_denominators[0.0] ________
+
+modules = {'coil_set_axis_field': <stellarator_tea.modules.mfe_magnet_field.coil_set_axis_field.Coil_Set_Axis_FieldModule object...ss': <stellarator_tea.modules.mfe_magnet_field.winding_pack_stress.Winding_Pack_StressModule object at 0x769962eda8d0>}
+zero = 0.0
+
+    @pytest.mark.parametrize('zero', [0., -0.])
+    def test_local_zero_is_retained_and_consumers_own_denominators(modules, zero):
+        side = modules['winding_pack_sizing'].run(I_coil=zero, j_wp=119.).data.root
+        assert side == 0.
+>       field = modules['coil_set_axis_field'].run(n_coils=48., I_coil=zero, k_link=.77, R0=12.7).data.root
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Coil_Set_Axis_FieldModule.run() missing 2 required positional arguments: 'two_pi' and 'mu0'
+
+tests/models/test_winding_pack_domains.py:49: TypeError
+_______ test_local_zero_is_retained_and_consumers_own_denominators[-0.0] _______
+
+modules = {'coil_set_axis_field': <stellarator_tea.modules.mfe_magnet_field.coil_set_axis_field.Coil_Set_Axis_FieldModule object...ss': <stellarator_tea.modules.mfe_magnet_field.winding_pack_stress.Winding_Pack_StressModule object at 0x769962eda8d0>}
+zero = -0.0
+
+    @pytest.mark.parametrize('zero', [0., -0.])
+    def test_local_zero_is_retained_and_consumers_own_denominators(modules, zero):
+        side = modules['winding_pack_sizing'].run(I_coil=zero, j_wp=119.).data.root
+        assert side == 0.
+>       field = modules['coil_set_axis_field'].run(n_coils=48., I_coil=zero, k_link=.77, R0=12.7).data.root
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Coil_Set_Axis_FieldModule.run() missing 2 required positional arguments: 'two_pi' and 'mu0'
+
+tests/models/test_winding_pack_domains.py:49: TypeError
+_________________________ test_linked_current_scaling __________________________
+
+modules = {'coil_set_axis_field': <stellarator_tea.modules.mfe_magnet_field.coil_set_axis_field.Coil_Set_Axis_FieldModule object...ss': <stellarator_tea.modules.mfe_magnet_field.winding_pack_stress.Winding_Pack_StressModule object at 0x769962eda8d0>}
+
+    def test_linked_current_scaling(modules):
+        rows=[]
+        for current in (1e6,4e6):
+            side=modules['winding_pack_sizing'].run(I_coil=current,j_wp=100.).data.root
+>           field=modules['coil_set_axis_field'].run(n_coils=48.,I_coil=current,k_link=.77,R0=12.7).data.root
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: Coil_Set_Axis_FieldModule.run() missing 2 required positional arguments: 'two_pi' and 'mu0'
+
+tests/models/test_winding_pack_domains.py:81: TypeError
+=========================== short test summary info ============================
+FAILED tests/models/test_winding_pack_domains.py::test_local_zero_is_retained_and_consumers_own_denominators[0.0]
+FAILED tests/models/test_winding_pack_domains.py::test_local_zero_is_retained_and_consumers_own_denominators[-0.0]
+FAILED tests/models/test_winding_pack_domains.py::test_linked_current_scaling
+3 failed, 50 passed in 0.80s

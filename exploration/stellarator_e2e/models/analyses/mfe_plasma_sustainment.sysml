@@ -94,6 +94,14 @@ package mfe_plasma_sustainment {
                      (n_D0, n_T0, T_i0) -- same algorithm, same contract
             p_aux_required = p_rad + W_th/tau_E - p_alpha_heat            [MW]
 
+        ZERO-FIELD DOMAIN (WI-055): B_in must be nonzero. The composed
+        Albajar relation uses p_a0 = 6.04e3*a*n_e0_20/B; the confinement
+        chain also divides W_th by tau_E, which is zero at B = 0.
+        Native manual completion raises SustainmentError before the chain
+        when B_in = 0. This local mathematical precondition is separate
+        from an engineering field limit and leaves standalone axis-field
+        and winding-sizing zero behavior unchanged.
+
         DORMANT (no-ash) CASE (WI-042 D6): an instance binding tau_ratio = 0
         or f_suppr = 0 converges to n_He0 = 0 at the first iterate; then
         n_e = 2 n_D0 u^alpha_n, every ash-weighted term vanishes, p_avg and
