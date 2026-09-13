@@ -1,0 +1,50 @@
+[
+  {
+    "level": 1,
+    "success": true,
+    "issue_count": 0,
+    "new_issues": [],
+    "removed_issues": [],
+    "same_warning_identities": true
+  },
+  {
+    "level": 2,
+    "success": false,
+    "issue_count": 10,
+    "new_issues": [],
+    "removed_issues": [],
+    "same_warning_identities": true
+  },
+  {
+    "level": 3,
+    "success": true,
+    "issue_count": 0,
+    "new_issues": [],
+    "removed_issues": [],
+    "same_warning_identities": true
+  },
+  {
+    "level": 4,
+    "success": true,
+    "issue_count": 0,
+    "new_issues": [],
+    "removed_issues": [],
+    "same_warning_identities": true
+  },
+  {
+    "level": 5,
+    "success": true,
+    "issue_count": 0,
+    "new_issues": [],
+    "removed_issues": [],
+    "same_warning_identities": true
+  },
+  {
+    "level": 6,
+    "success": false,
+    "issue_count": 279,
+    "new_issues": [],
+    "removed_issues": [],
+    "same_warning_identities": true
+  }
+]
