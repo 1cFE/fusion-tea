@@ -1,0 +1,182 @@
+FFFFFFFFFFF                                                              [100%]
+=================================== FAILURES ===================================
+_ test_invalid_public_oracle_inputs_are_deliberate[overrides0-I_coil must be finite and nonnegative] _
+tests/study/test_winding_consumers.py:35: in test_invalid_public_oracle_inputs_are_deliberate
+    oracle.evaluate({names[name]: value for name, value in overrides.items()})
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:582: in compute
+    sust = _sustainment(p, V, B_axis)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:165: in _sustainment
+    n_D0, n_T0, W_th, tau_E, n_bar19, p_avg = state(n_He0)
+                                              ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:135: in state
+    if n_fuel <= 0.0:
+       ^^^^^^^^^^^^^
+E   TypeError: '<=' not supported between instances of 'complex' and 'float'
+_ test_invalid_public_oracle_inputs_are_deliberate[overrides1-I_coil must be finite and nonnegative] _
+tests/study/test_winding_consumers.py:35: in test_invalid_public_oracle_inputs_are_deliberate
+    oracle.evaluate({names[name]: value for name, value in overrides.items()})
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:582: in compute
+    sust = _sustainment(p, V, B_axis)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:165: in _sustainment
+    n_D0, n_T0, W_th, tau_E, n_bar19, p_avg = state(n_He0)
+                                              ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:135: in state
+    if n_fuel <= 0.0:
+       ^^^^^^^^^^^^^
+E   TypeError: '<=' not supported between instances of 'complex' and 'float'
+_ test_invalid_public_oracle_inputs_are_deliberate[overrides2-I_coil must be finite and nonnegative] _
+tests/study/test_winding_consumers.py:35: in test_invalid_public_oracle_inputs_are_deliberate
+    oracle.evaluate({names[name]: value for name, value in overrides.items()})
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:582: in compute
+    sust = _sustainment(p, V, B_axis)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:164: in _sustainment
+    raise RuntimeError("oracle sustainment: ash fixed point did not converge")
+E   RuntimeError: oracle sustainment: ash fixed point did not converge
+_ test_invalid_public_oracle_inputs_are_deliberate[overrides3-I_coil must be finite and nonnegative] _
+tests/study/test_winding_consumers.py:35: in test_invalid_public_oracle_inputs_are_deliberate
+    oracle.evaluate({names[name]: value for name, value in overrides.items()})
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:582: in compute
+    sust = _sustainment(p, V, B_axis)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:155: in _sustainment
+    n_D0, n_T0, W_th, tau_E, n_bar19, p_avg = state(n_He0)
+                                              ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:136: in state
+    raise RuntimeError("oracle sustainment: non-positive fuel")
+E   RuntimeError: oracle sustainment: non-positive fuel
+_ test_invalid_public_oracle_inputs_are_deliberate[overrides4-I_coil must be finite and nonnegative] _
+tests/study/test_winding_consumers.py:35: in test_invalid_public_oracle_inputs_are_deliberate
+    oracle.evaluate({names[name]: value for name, value in overrides.items()})
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:582: in compute
+    sust = _sustainment(p, V, B_axis)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:155: in _sustainment
+    n_D0, n_T0, W_th, tau_E, n_bar19, p_avg = state(n_He0)
+                                              ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:136: in state
+    raise RuntimeError("oracle sustainment: non-positive fuel")
+E   RuntimeError: oracle sustainment: non-positive fuel
+_ test_invalid_public_oracle_inputs_are_deliberate[overrides5-j_wp must be finite and positive] _
+tests/study/test_winding_consumers.py:35: in test_invalid_public_oracle_inputs_are_deliberate
+    oracle.evaluate({names[name]: value for name, value in overrides.items()})
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:789: in compute
+    cas71_annual = _levelized_annual_cost(annual_om_unlevelized)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:787: in _levelized_annual_cost
+    return finance.annuity(annual_cost, i_rate, g_infl, n_life, t_c)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/oracle_finance.py:26: in annuity
+    a, i, g, n, t = map(_d, (annual, rate, escalation, years, construction))
+    ^^^^^^^^^^^^^
+exploration/stellarator_e2e/oracle_finance.py:13: in _d
+    return Decimal(value)
+           ^^^^^^^^^^^^^^
+E   TypeError: conversion from complex to Decimal is not supported
+_ test_invalid_public_oracle_inputs_are_deliberate[overrides6-j_wp must be finite and positive] _
+tests/study/test_winding_consumers.py:35: in test_invalid_public_oracle_inputs_are_deliberate
+    oracle.evaluate({names[name]: value for name, value in overrides.items()})
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:571: in compute
+    wp_side = (p["magnet_I_coil"] / p["magnet_j_wp"]) ** 0.5 / 1000.0
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ZeroDivisionError: float division by zero
+_ test_invalid_public_oracle_inputs_are_deliberate[overrides7-j_wp must be finite and positive] _
+tests/study/test_winding_consumers.py:34: in test_invalid_public_oracle_inputs_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   Failed: DID NOT RAISE <class 'ValueError'>
+_ test_invalid_public_oracle_inputs_are_deliberate[overrides8-j_wp must be finite and positive] _
+tests/study/test_winding_consumers.py:35: in test_invalid_public_oracle_inputs_are_deliberate
+    oracle.evaluate({names[name]: value for name, value in overrides.items()})
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:573: in compute
+    sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / wp_side
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ZeroDivisionError: float division by zero
+_ test_invalid_public_oracle_inputs_are_deliberate[overrides9-j_wp must be finite and positive] _
+tests/study/test_winding_consumers.py:35: in test_invalid_public_oracle_inputs_are_deliberate
+    oracle.evaluate({names[name]: value for name, value in overrides.items()})
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:573: in compute
+    sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / wp_side
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ZeroDivisionError: float division by zero
+_ test_invalid_public_oracle_inputs_are_deliberate[overrides10-wp_side must be nonzero] _
+tests/study/test_winding_consumers.py:35: in test_invalid_public_oracle_inputs_are_deliberate
+    oracle.evaluate({names[name]: value for name, value in overrides.items()})
+exploration/stellarator_e2e/studies/oracle_entry.py:510: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:497: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:573: in compute
+    sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / wp_side
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ZeroDivisionError: float division by zero
+=========================== short test summary info ============================
+FAILED tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides0-I_coil must be finite and nonnegative]
+FAILED tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides1-I_coil must be finite and nonnegative]
+FAILED tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides2-I_coil must be finite and nonnegative]
+FAILED tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides3-I_coil must be finite and nonnegative]
+FAILED tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides4-I_coil must be finite and nonnegative]
+FAILED tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides5-j_wp must be finite and positive]
+FAILED tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides6-j_wp must be finite and positive]
+FAILED tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides7-j_wp must be finite and positive]
+FAILED tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides8-j_wp must be finite and positive]
+FAILED tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides9-j_wp must be finite and positive]
+FAILED tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides10-wp_side must be nonzero]
+11 failed, 19 deselected in 5.04s

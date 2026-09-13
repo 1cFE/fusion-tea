@@ -107,6 +107,8 @@ def _sustainment(p, V, B_axis):
     and beta. Written from the WI-042 design (work/active/WI-042_sourced-helium-
     ash-profile/design.md, section Research findings and D1-D6).
     """
+    if B_axis == 0.0:
+        raise RuntimeError("oracle sustainment: B_axis must be nonzero for synchrotron and confinement equations")
     n_e0 = p["n_e0"]
     T_i0 = p["T_i0"]
     a = p["a"]
@@ -506,6 +508,15 @@ def _oracle_lifecycle_calendar(cost_per_event, q_n, fluence_limit, interest_rate
                 n_replacements=float(K), physical_life_fpy=L, events=events)
 
 
+def _winding_pack_side(current, density):
+    """Size a square pack in metres from current A and density A/mm²."""
+    if not math.isfinite(current) or current < 0.0:
+        raise ValueError("oracle Winding Pack Sizing: I_coil must be finite and nonnegative")
+    if not math.isfinite(density) or density <= 0.0:
+        raise ValueError("oracle Winding Pack Sizing: j_wp must be finite and positive")
+    return (current / density) ** 0.5 / 1000.0
+
+
 def compute():
     if "magnet_R0" in IN:
         raise ValueError("retired oracle input magnet_R0; use plant R")
@@ -568,8 +579,10 @@ def compute():
     m_casing = p["magnet_m_casing_ref"] * (W_mag / p["magnet_W_mag_ref"]) ** 0.78
     # WI-036: the pack sizes itself from the current, and the winding length from
     # machine scale; both were held inputs before this item.
-    wp_side = (p["magnet_I_coil"] / p["magnet_j_wp"]) ** 0.5 / 1000.0
+    wp_side = _winding_pack_side(p["magnet_I_coil"], p["magnet_j_wp"])
     c_coil = p["magnet_k_coil"] * p["R"]
+    if wp_side == 0.0:
+        raise ValueError("oracle Winding Pack Stress: wp_side must be nonzero")
     sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / wp_side
     # WI-036: the conductor's own operand, checked separately from the structure's.
     eps_cond = p["magnet_f_cond"] * sigma_wp / p["magnet_E_wp"]

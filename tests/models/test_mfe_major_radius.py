@@ -38,6 +38,16 @@ def test_binding_documentation_and_source_preservation(tmp_path):
             # WI-054 changes comments only; every executable token stays frozen.
             source=str(canonical_path(p).relative_to(ROOT))
             assert lexical((models/p).read_text()) == entering[source]['tokens']
+        elif p == 'analyses/mfe_magnet_field.sysml':
+            # WI-055 changes exactly these two definitions. Preserve every byte
+            # of the independent axis, length, volume, strain and energy definitions.
+            def outside_winding_definitions(text):
+                for name in ('Winding Pack Stress', 'Winding Pack Sizing'):
+                    start = text.index("    calc def '" + name + "'")
+                    end = text.index('\n    calc def ', start + 1)
+                    text = text[:start] + text[end:]
+                return text
+            assert outside_winding_definitions((models/p).read_text()) == outside_winding_definitions((H/'entering-models'/p).read_text())
         elif p == 'analyses/mfe_cryo_plant.sysml':
             calculation = 'Cryoplant Electrical Power'
             def outside_calculation(text):
@@ -97,9 +107,9 @@ def test_current_contract_edges_and_fresh_package_agreement():
     expected=json.loads((H/'generated-hashes.json').read_text())
     for path in ('source-attempt-1','snapshot-attempt-1'):
         assert hashes(H/path)==expected
-    # Historical generation receipts stay frozen; current documentation receipt is WI-054.
-    current=ROOT/'work/active/WI-054_faithful-model-equations-and-citations/evidence'
-    assert hashes(ROOT/'exploration/stellarator_e2e/generated')==json.loads((current/'mfe-candidate-package-hashes.json').read_text())
+    # Historical generation receipts stay frozen; current guarded receipt is WI-055.
+    from tests.models.current_mfe_regressions import DOMAIN_EVIDENCE
+    assert hashes(ROOT/'exploration/stellarator_e2e/generated')==json.loads((DOMAIN_EVIDENCE/'candidate-package-hashes.json').read_text())
     assert all(expected[name]==value for name,value in MANUAL.items())
 
 
