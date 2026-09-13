@@ -1393,3 +1393,28 @@ Stop when: A source/domain/finance conflict, scope expansion, shared-seam defect
 ### T-032 start — 2026-09-12
 
 T-032 first invokes a fresh implement-model correction stage for the exact documentation findings in the isolated WI-052 item. The next dependent current-consumer stage will use its returned package identity; no concurrent production writers are dispatched. The coordinator owns this trail; native stages retain their own records and the coding migration will receive written requirements before implementation. Prior failed acceptance evidence remains historical and unchanged.
+
+### T-032 return — 2026-09-12
+
+**Outcome: COMPLETE.** Fresh completion agent `/root/financial_completion_audit` returns positive native and coding assessments at isolated commit `19abc445`: `work/analysis/20260912-wi052-financial-completion-audit.md` and `.project/active/mfe-financial-study-package/audit.md`. Original negative audit remains intact with a dated completion addendum. SV-092 now passes and native completion checkboxes cite the evidence. No unresolved scoped blocker remains.
+
+Native documentation correction `708dddef` preserves executable ASTs/interfaces and the audited ten-case behavior. Current-consumer production `cb11b3bd`, evidence `61403213`, independently computes retained finance and prepares live metadata. All 22 original new failure IDs have passing reruns. The fresh completion audit reruns current numerical/route controls and metadata reproduction, retaining native versus oracle coverage distinctions. The inherited 108 study failures, L2/L6 issues, 17 oracle omissions and broader financial/engineering limitations receive no acceptance or closure credit. Native and coding records provide the full claims and evidence; this return credits only the bounded F05 rate-limit repair and its current consumers.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| T-031 audit F2/F3 documentation defects | Correct direct Source fields and false fuel manual-execution claim; regenerate and prove unchanged executable meaning | execution detail | Fresh repair author [AGENT], independently checked at completion | Native repair 708dddef; repair-1/report.md |
+| T-031 audit F1 deferred current-consumer failures | Implement existing-equation independent oracle, re-declare live metadata, adapt current finance assertions without changing historical controls | execution detail | Coordinator-written inferred coding contract; fresh author and independent auditor [AGENT] | Coding spec dbaea1ad, production cb11b3bd/evidence 61403213, audit 19abc445 |
+| Both completion contracts pass | Accept bounded native/coding result and proceed to separate integration proof | execution detail | Round coordinator [AGENT] on fresh evidence | This return; SV-092 and native completion evidence at 19abc445 |
+
+### T-033 scope
+
+Objective: Establish one native integration candidate for the audited finite-finance model and current consumers.
+Why now: T-032 supplies positive native/coding completion evidence against one corrected package and current manifest.
+Scope: Sequential documented integration proof in the isolated checkout, preserving complete producer output and exact lineage. No model/consumer/seam repair, economic change, historical mutation, committed study, branch merge or close/archive.
+Inputs: amended goal.md; native/coding audits@19abc445; corrected production@708dddef, current consumer@61403213; docs/integration_seam_operator_guide.md and isolated .codex-test/run runtime. Expected semantic 15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e, executable 1a7c216dabff8425c279f6b3c2781629115729173fc0b406600497ac348b4340 and TEAx 8d877460ac4f6f264561d916e40c1708adb13397.
+Done when: Native seam returns one CANDIDATE with expected lineage or a named blocker with producer evidence.
+Stop when: Native refusal/prerequisite, mechanical failure, changed lineage/comparison meaning, reserved gate or declared limit binds.
+
+### T-033 start — 2026-09-12
+
+T-033 invokes scripts/integrate.py using the isolated runtime and audited current package. Expected evidence: evidence/T-033_integration/integration_return.json and native producer records. This is Round 7's first integration attempt; no pin has been promoted and no study committed in this round.
