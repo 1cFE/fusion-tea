@@ -1654,3 +1654,16 @@ Hawker Table 2/3 and target-energy wording rely on existing extracted text and i
 | Existing coefficient/integral dimensions produce watts before conversion | Correct displayed MW equations with explicit conversion and normalized integration measure, preserving executable arithmetic | execution detail | Native author [AGENT] on source/dimensional evidence | WI-054 documentation/evidence@4ca1f299 |
 | Hawker table images unavailable but existing text establishes table roles and target-energy label | Limit correction to supported wording/attribution; retain numerical values and explicit unverified fresh transcription | execution detail | Coordinator [AGENT] with native author evidence | WI-054 source/claim record@4ca1f299; no adoption or residual acceptance |
 | Documentation metadata changes package bytes while executable meaning is preserved | Prepare new native receipt and route the stale current test to T-039; keep historical receipts | execution detail | Coordinator [AGENT] | native receipt@4ca1f299; T-039 coding migration |
+
+### T-040 scope
+
+Objective: Restore the affected current source-preservation test while continuing to reject executable changes outside the authorized documentation correction.
+Why now: The fresh WI-054 auditor independently passes T-039's receipt node but finds a second new failure in test_binding_documentation_and_source_preservation, whose historical raw-text comparisons reject the corrected magnet-cost, plasma-scaling and sustainment comments.
+Scope: Extend the same small coding item's written contract and the current source-preservation test. For the three specifically changed documentation files, compare complete executable tokens with WI-054's frozen entering record; retain canonical/twin equality, original radius-binding checks, and all existing historical comparisons for other files. No source/value/production edit, broad preservation exemption or new shared utility.
+Inputs: amended goal.md; WI-054 implementation/entering record@4ca1f299; current receipt correction@fe48a83a; fresh auditor's retained failed-node evidence under its native audit output (unpinned until audit commit).
+Done when: The formerly failing source-preservation node and relevant current radius suite pass, and fresh audit verifies that token checks preserve the intended executable constraint and all other checks remain.
+Stop when: An executable difference appears, source comparison cannot distinguish the authorized documentation change, a larger consumer/seam repair is needed, or an owner gate/declared limit binds.
+
+### T-040 start — 2026-09-13
+
+T-040 extends .project/active/model-documentation-current-receipt/ before changing the test. Coordinator owns only that coding item and tests/models/test_mfe_major_radius.py. Native source/package/receipt remains fixed at 4ca1f299. Fresh audit continues independent source/dimensional checks and waits for this current-consumer correction before its coherent completion verdict. The failed node is a new dependency, not an inherited failure.
