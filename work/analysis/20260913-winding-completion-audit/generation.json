@@ -1,0 +1,9 @@
+{
+  "fresh": {
+    "byte_differences": 18,
+    "result": "all Python executable ASTs unchanged; twelve seeds exact; contract delta retained for review"
+  },
+  "missing": "Unexpected normative seed inventory",
+  "changed": "Missing, symlink or mismatched seed: handwritten/mfe_magnet_field/winding_pack_sizing_impl.py",
+  "extra": "Unexpected normative seed inventory"
+}
