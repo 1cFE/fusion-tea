@@ -1,0 +1,1 @@
+Independent execution exactly matches entering and candidate: ten cases, 158 outputs each, inputs/responses/constraint reports unchanged.
