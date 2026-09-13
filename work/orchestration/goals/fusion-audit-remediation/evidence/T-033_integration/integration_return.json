@@ -1,0 +1,214 @@
+{
+  "schema_version": "integration-seam-return/v1",
+  "tool": {
+    "path": "scripts/integrate.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "1aa085461236a4c449b73e318b56908400b375d354c3b990705c090e933c1513",
+      "files": [
+        {
+          "path": "scripts/integrate.py",
+          "sha256": "f4d3c9056111aa3844a3cfb8008488f56002d66863e05b4bb407f4bdd79b5f87"
+        },
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/integrate.py",
+    "--audited-work",
+    "work/active/WI-052_mfe-financial-rate-limits@19abc445",
+    "--audited-work",
+    ".project/active/mfe-financial-study-package@19abc445",
+    "--models-root",
+    "exploration/stellarator_e2e/models",
+    "--package",
+    "exploration/stellarator_e2e/generated",
+    "--manifest",
+    "exploration/stellarator_e2e/studies/manifest.json",
+    "--groups",
+    "tests/study/data/axes.known_answers.json",
+    "--census-file",
+    "tests/models/data/mfe_census.json",
+    "--expected-semantic-fingerprint",
+    "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e",
+    "--expected-executable-fingerprint",
+    "1a7c216dabff8425c279f6b3c2781629115729173fc0b406600497ac348b4340",
+    "--expected-teax-revision",
+    "8d877460ac4f6f264561d916e40c1708adb13397",
+    "--route-sys-path",
+    "exploration/stellarator_e2e/studies",
+    "--route-module",
+    "study_route",
+    "--route-callable",
+    "execute_baseline",
+    "--out-dir",
+    "/home/reid/1cfe/fusion-tea-codex-test/work/orchestration/goals/fusion-audit-remediation/evidence/T-033_integration"
+  ],
+  "request": {
+    "audited_work": [
+      {
+        "path": "work/active/WI-052_mfe-financial-rate-limits",
+        "commit": "19abc445"
+      },
+      {
+        "path": ".project/active/mfe-financial-study-package",
+        "commit": "19abc445"
+      }
+    ],
+    "models_root": "exploration/stellarator_e2e/models",
+    "package": [
+      "exploration/stellarator_e2e/generated"
+    ],
+    "manifest": [
+      "exploration/stellarator_e2e/studies/manifest.json"
+    ],
+    "groups": "tests/study/data/axes.known_answers.json",
+    "census": "tests/models/data/mfe_census.json",
+    "expected": {
+      "semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e",
+      "executable_fingerprint": "1a7c216dabff8425c279f6b3c2781629115729173fc0b406600497ac348b4340",
+      "teax_revision": "8d877460ac4f6f264561d916e40c1708adb13397"
+    }
+  },
+  "class": "CANDIDATE",
+  "exit_code": 0,
+  "candidate": {
+    "package": "exploration/stellarator_e2e/generated",
+    "manifest": "exploration/stellarator_e2e/studies/manifest.json",
+    "pin": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+    "semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e",
+    "executable_fingerprint": "1a7c216dabff8425c279f6b3c2781629115729173fc0b406600497ac348b4340",
+    "identity_document": "../../home/reid/1cfe/fusion-tea-codex-test/work/orchestration/goals/fusion-audit-remediation/evidence/T-033_integration/package_identity.json",
+    "baseline_result": "../../home/reid/1cfe/fusion-tea-codex-test/work/orchestration/goals/fusion-audit-remediation/evidence/T-033_integration/baseline_result.json",
+    "verification_summary": "../../home/reid/1cfe/fusion-tea-codex-test/work/orchestration/goals/fusion-audit-remediation/evidence/T-033_integration/verification_summary.json"
+  },
+  "blocker": null,
+  "gates": [
+    {
+      "gate": "pinned-packages",
+      "producer": "tests/test_dependency_provenance.py",
+      "scope": "repo",
+      "status": "pass",
+      "checked": "the pinned package revisions and installed wheel artifacts",
+      "detail": "tests/test_dependency_provenance.py passed",
+      "evidence": [
+        "../../home/reid/1cfe/fusion-tea-codex-test/work/orchestration/goals/fusion-audit-remediation/evidence/T-033_integration/junit/pinned-packages.xml"
+      ]
+    },
+    {
+      "gate": "teax-revision",
+      "producer": "scripts/integrate.py",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the teax checkout's revision against the expected one",
+      "detail": "teax is at 8d877460ac4f6f264561d916e40c1708adb13397, matching the expected 8d877460ac4f6f264561d916e40c1708adb13397",
+      "evidence": []
+    },
+    {
+      "gate": "regeneration",
+      "producer": "sysml-codegen generate",
+      "scope": "request",
+      "status": "pass",
+      "checked": "regeneration in place moves no package byte",
+      "detail": "regeneration through stellarator_tea rewrote no byte outside handwritten/",
+      "evidence": []
+    },
+    {
+      "gate": "handwritten-preservation",
+      "producer": "sysml-codegen generate",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the handwritten implementations survive regeneration byte for byte",
+      "detail": "90 file(s) under handwritten/ are byte-identical",
+      "evidence": []
+    },
+    {
+      "gate": "census-snapshot",
+      "producer": "sysml_codegen.snapshot.capture; the spine census helper",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the recaptured snapshot and the re-derived entry-point census",
+      "detail": "the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound",
+      "evidence": [
+        "../../home/reid/1cfe/fusion-tea-codex-test/work/orchestration/goals/fusion-audit-remediation/evidence/T-033_integration/recaptured.snapshot.json"
+      ]
+    },
+    {
+      "gate": "model-family-spine",
+      "producer": "tests/models/test_model_family_spines.py",
+      "scope": "repo",
+      "status": "pass",
+      "checked": "the canonical tree, the family twins and the tracked census",
+      "detail": "tests/models/test_model_family_spines.py passed",
+      "evidence": [
+        "../../home/reid/1cfe/fusion-tea-codex-test/work/orchestration/goals/fusion-audit-remediation/evidence/T-033_integration/junit/model-family-spine.xml"
+      ]
+    },
+    {
+      "gate": "manifest",
+      "producer": "scripts/study/manifest.py",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the manifest's schema, package identity and recomputed pin",
+      "detail": "the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)",
+      "evidence": [
+        "exploration/stellarator_e2e/studies/manifest.json"
+      ]
+    },
+    {
+      "gate": "preflight",
+      "producer": "scripts/study/preflight.py",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the six mechanical gates a study passes",
+      "detail": "all six preflight gates pass",
+      "evidence": [
+        "../../home/reid/1cfe/fusion-tea-codex-test/work/orchestration/goals/fusion-audit-remediation/evidence/T-033_integration/preflight_results.json"
+      ]
+    },
+    {
+      "gate": "verification",
+      "producer": "scripts/study/verify.py",
+      "scope": "request",
+      "status": "pass",
+      "checked": "oracle parity and re-derived verdicts over an executed store",
+      "detail": "oracle parity holds and every verdict re-derived",
+      "evidence": [
+        "../../home/reid/1cfe/fusion-tea-codex-test/work/orchestration/goals/fusion-audit-remediation/evidence/T-033_integration/verification_summary.json",
+        "../../home/reid/1cfe/fusion-tea-codex-test/work/orchestration/goals/fusion-audit-remediation/evidence/T-033_integration/verify_stderr.txt"
+      ]
+    },
+    {
+      "gate": "lineage",
+      "producer": "scripts/integrate.py",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the live fingerprints against the lineage the request named",
+      "detail": "semantic 15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e and executable 1a7c216dabff8425c279f6b3c2781629115729173fc0b406600497ac348b4340 are the lineage the request named",
+      "evidence": []
+    }
+  ],
+  "toolchain": {
+    "agentic_mbse": "0.1.3",
+    "sysml_codegen": "0.1.1",
+    "costingfe": "0.1.0",
+    "teax_revision": "8d877460ac4f6f264561d916e40c1708adb13397",
+    "teax_module_path": "/home/reid/1cfe/teax/packages/teax-simkit/simkit"
+  }
+}

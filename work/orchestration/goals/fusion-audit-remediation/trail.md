@@ -1418,3 +1418,17 @@ Stop when: Native refusal/prerequisite, mechanical failure, changed lineage/comp
 ### T-033 start — 2026-09-12
 
 T-033 invokes scripts/integrate.py using the isolated runtime and audited current package. Expected evidence: evidence/T-033_integration/integration_return.json and native producer records. This is Round 7's first integration attempt; no pin has been promoted and no study committed in this round.
+
+### T-033 return — 2026-09-12
+
+**Outcome: COMPLETE.** `evidence/T-033_integration/integration_return.json` returns CANDIDATE with all ten native gates passing on the first attempt against audited isolated HEAD `19abc445`. Regeneration, manual preservation and snapshot are fixed points; census, preflight, oracle verification and lineage agree. This is Round 7's sole promoted candidate pin. Its indicator digest is `609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d`, semantic identity `15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e`, executable identity `1a7c216dabff8425c279f6b3c2781629115729173fc0b406600497ac348b4340`. The unchanged indicator digest does not make this the historical executable.
+
+Native evidence and path-resolution notes are in `evidence/T-033_integration/coordination.md`. The baseline retains its divertor violation. The seam's omitted read-set assertion and all audited engineering/domain/coverage/historical-failure limits remain. Native acceptance points and integration baseline execution are not a committed study or a study reading. No retry or changed comparison meaning occurred.
+
+Three existing discovery rows receive bounded arithmetic credit or an explicitly retained disposition: `20260821-power-cycle-ab#1`, `20260904-wall-and-heating#5`, and `20260821-power-cycle-ab#2`. Original sightings and latest plant-closure evidence remain intact. No new ID, whole-sighting closure or owner residual acceptance is introduced.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Positive audited model/consumer package passes all native candidate gates | Promote this exact identity tuple as Round 7's one candidate | execution detail | Round coordinator [AGENT] on native return | T-033 native evidence in this commit |
+| Finance arithmetic intersects existing availability/replacement and free-discount findings | Append bounded arithmetic credit and preserve remaining engineering/coupling gaps | execution detail | Round coordinator [AGENT] on native/audit evidence | Three joined discovery updates in this commit |
+| Concrete isolated candidate is ready and merge remains reserved | Prepare conflict-free merge preview and request owner ruling before shared adoption; no new study is opened while this gate is pending | reserved gate | Owner-held rule, applied by coordinator | coordination.md preview; no branch/index/worktree merge |
