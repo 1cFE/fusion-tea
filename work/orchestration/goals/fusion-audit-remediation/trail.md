@@ -1612,3 +1612,20 @@ Intended model increment: an independently audited bounded correction to the dem
 Intended study question: can a reader follow each corrected quantitative statement to an appropriate existing source or dimensional identity and obtain the same supported calculation meaning as the current native implementation? A bounded source/documentation and native acceptance investigation may answer this without a committed study. Declared round limit: the independently audited bounded documentation increment and any necessary current-consumer/integration acceptance, or an earlier runbook closing trigger. At most one promoted pin and one committed study; neither is presumed necessary. This strategy contains no forward task list and starts no native task.
 
 The original F01–F20 Answered when contract remains intact. Broader F07/F14 domains and engineering coverage, accounting/comparison/reuse obligations, source uncertainties and unaccepted residuals remain unresolved. Rounds 9–12 are the remaining authorized cycle; retry cap is two retries and checkpoint cap two revisions. Owner-held finance/scope/requirement changes, source/research adoption, residual acceptance, merge/push, item archive/close and goal close retain their existing gates.
+
+### Round 9 continuation — 2026-09-13
+
+[OWNER-VERBATIM] "Proceed to Round 9" authorizes executing the fresh strategy at `3da47a85`. The strategy remains agent-originated. Current HEAD and scoped working-tree inspection show no later model/package/native-record change; only the independently owned CURRENT_WORK edit and three setup backups remain. No interrupted invocation exists in Round 9. All original and amended goal gates remain in force.
+
+### T-038 scope
+
+Objective: Correct demonstrated model-resident equation, citation and factual-guidance defects without changing supported execution meaning.
+Why now: Round 9's fresh strategy identifies radiation-unit prose, stale source paths/attributions and outdated geometry/constraint guidance after the audited Round 8 correction.
+Scope: One proportional native Standard item covering evidenced F19 and related F17/nonnumerical F20 corrections, claim-level source/dimensional verification, canonical/family/generated coherence and preserved current native execution. No scientific/financial equation or value change, source adoption, annual-calendar/alpha choice, shared trace-audit implementation, historical evidence rewrite or scope/residual decision.
+Inputs: amended goal.md; Round 9 strategy@3da47a85; evidence/T-028_assessment/f08-f11-f17-f20.md@bfc60b91; current native/coding audits@67631900; documented project/runtime and native workflow contracts. Inspect current source before granting repair credit.
+Done when: Bounded documentation corrections have source/dimensional and execution-preservation evidence ready for fresh independent native audit, or a concrete missing source/numerical/consumer prerequisite or blocker is returned.
+Stop when: Source evidence cannot establish an affected claim, numerical/meaning conflict or unexplained artifact movement appears, a separate consumer/seam repair is needed, or an owner gate/declared limit binds.
+
+### T-038 start — 2026-09-13
+
+T-038 enters the native modeling workflow for one new Standard item under evidence/T-038_documentation/author-brief.md. Expected artifacts: registered native item with proportional spec/design/plan, claim-level evidence, committed documentation/coherence changes and preserved execution checks. Continuing author owns native work; coordinator owns goal trail, fresh-auditor dispatch and sequential integration. No study is planned merely to supply a round ending.
