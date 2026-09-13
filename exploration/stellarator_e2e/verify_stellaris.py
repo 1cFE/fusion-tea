@@ -551,6 +551,10 @@ def compute():
     # that factor. The printed ratio is the anchor at the reference geometry, the factor
     # is applied normalised there (exactly 1.0 at the design point), and the winding-pack
     # term of eq. 39 is not carried (a1(C) unprinted, design D2).
+    if not p["R"] - r_coil_centre > 0.0:
+        raise ValueError("oracle: live magnet clearance R - r_coil_centre must be > 0")
+    if not p["magnet_R_ref"] - p["magnet_a_coil_ref"] > 0.0:
+        raise ValueError("oracle: reference magnet clearance R_ref - a_coil_ref must be > 0")
     bore_factor = p["R"] / (p["R"] - r_coil_centre)
     bore_factor_ref = p["magnet_R_ref"] / (p["magnet_R_ref"] - p["magnet_a_coil_ref"])
     bore_norm = bore_factor / bore_factor_ref
@@ -659,6 +663,8 @@ def compute():
     p_sub = p["f_sub"] * p_et
     # Cryoplant electrical chain (WI-024) — mirrors the generated
     # cryoplant_electrical_power_impl.py statement forms verbatim (bit-exact):
+    if not 0.0 < p["T_cold_cryo"] < p["T_amb_cryo"]:
+        raise ValueError("oracle cryoplant: require 0 < T_cold < T_amb")
     cop_carnot = (p["T_cold_cryo"] / (p["T_amb_cryo"] - p["T_cold_cryo"]))
     cop = (p["f_carnot_cryo"] * cop_carnot)
     p_cold = ((((p["q_nuc_cryo"] * vol_cold_total) * 1e-06) + p["p_fixed_cryo"]) * p["f_uplift_cryo"])
