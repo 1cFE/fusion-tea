@@ -1562,3 +1562,29 @@ Stop when: Native refusal/prerequisite, mechanical failure, changed lineage/comp
 ### T-037 start — 2026-09-13
 
 T-037 invokes scripts/integrate.py against the audited current package. Expected evidence: evidence/T-037_integration/integration_return.json and native producer records. This is Round 8's first integration attempt; no pin is yet promoted and no study committed.
+
+### Amendment — 2026-09-13
+
+The T-036 return's current-helper citation is corrected to `tests/models/current_mfe_regressions.py@e2b68b67`; the earlier `current_domain_support.py` name was a coordinator transcription error. No implementation or result changed.
+
+### T-037 return — 2026-09-13
+
+**Outcome: COMPLETE.** Coordinator execution returns CANDIDATE with all ten native gates passing on the first attempt. `evidence/T-037_integration/integration_return.json` and producer records in this commit retain the evidence. Regeneration, handwritten preservation and snapshot are fixed points; census, manifest, preflight, selected oracle/verdict checks and expected lineage agree. This is Round 8's sole promoted candidate. Indicator pin: `609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d`; semantic: `15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e`; executable: `0d6a7572481fc35c165d650a96a28764d18a2238c4f6d6430985dd5752e5bacf`; TEAx: `8d877460ac4f6f264561d916e40c1708adb13397`. Unchanged indicator/semantic identities alone do not identify the corrected executable.
+
+The native baseline retains its engineering violation; the omitted read-set assertion and bounded independent-oracle coverage remain explicit in `evidence/T-037_integration/coordination.md`. No retry, comparison-meaning change, committed study or study reading occurred. Two existing discovery IDs receive bounded correction or retained coverage dispositions; original sightings remain intact.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Audited domain correction passes all native integration gates | Promote the exact identity tuple as Round 8's one candidate | execution detail | Coordinator [AGENT] on native seam return | T-037 evidence in this commit |
+| F07/engineering and oracle coverage sightings are touched | Append bounded repair and retained coverage dispositions without whole-sighting closure | execution detail | Coordinator [AGENT] on audited evidence | DISCOVERY_LOG updates for 20260911-model-owned-radius#2/#3 |
+| Independently audited bounded increment and necessary consumer/integration acceptance are complete | Close at the strategy's declared limit | execution detail | Coordinator [AGENT] applying Round 8 limit | Round 8 result below |
+
+### Round 8 result — 2026-09-13
+
+The bounded model-increment and acceptance-question intents are met. Task sequence: T-034 PREREQUISITE (native correction with current regression dependencies), T-035 COMPLETE (oracle/domain consumer acceptance), T-036 COMPLETE (current regression migration and fresh native/coding completion), T-037 COMPLETE (native integration). T-034/T-035 were authorized with distinct write ownership and stable-package acceptance coordination. Last semantic outcome: COMPLETE. Stop reason: trigger 5, the strategy's declared limit at the independently audited bounded increment plus necessary current-consumer/integration acceptance. This closes Round 8, not the original twenty-finding goal.
+
+Evidence: native/coding audits@67631900, native production@3d9711e2, oracle@c6c04d32, public-route evidence@1176eabf, current regression migration@e2b68b67, and T-037 complete native producer records in this commit. The full current model suite has 566 passes and thirteen inherited skips; independent review verifies the exact formerly failing identities and adds its own 54 focused/66 regression passes plus component/plant probes. No current full-project or historical publication-suite certificate is claimed. One candidate was promoted and no study committed. Native invocation corrections and candidate test failures retain their evidence; no goal-level mechanical retry occurred.
+
+Finding dispositions: F07 receives independently audited correction only for nonpositive live/reference magnet clearance and invalid cryogenic temperature order. Valid native outputs and evaluated engineering violations remain preserved. Broader efficiency, radii/current-density/thickness, heat-capacity, power-domain and engineering constraints remain unresolved. Two joined discovery rows carry bounded correction or retained coverage. Source evidence, existing L2/L6 issues, missing independent outputs/unsupported overrides, original historical quarantine/provenance limits and owner-held residual/scope decisions remain as stated in the native and prior goal records. The older full F01–F20 assessment is historical; this round does not refresh unrelated findings or erase Round 7's bounded F05/F20 credit.
+
+Proposed learning delta: none. Existing L-005 and L-006 already distinguish oracle coverage from model domains and fixed-point regeneration from correct current execution. Fresh review is requested under evidence/R8_review/reviewer-brief.md in this commit. No next task is authorized by the round author's own completion claim.
