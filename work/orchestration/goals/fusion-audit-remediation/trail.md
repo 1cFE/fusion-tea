@@ -1940,3 +1940,24 @@ Stop when: Unexpected authority/identity, named blocker, seam prerequisite or re
 ### T-047 start — 2026-09-13
 
 T-047 invokes scripts/integrate.py under .codex-test/run against audited WI-056@387c2c95, writing complete evidence to evidence/T-047_integration. Coordinator owns sequential execution; no study starts.
+
+### T-047 return — 2026-09-13
+
+**Outcome: PREREQUISITE.** The first stock integration invocation returns BLOCKER at regeneration: only contracts/package_contract.json changes during in-place generation. The seam restores the package and returns no candidate; the two provenance gates pass and all later gates are not reached. Complete native evidence is evidence/T-047_integration, including integration_return.json and moved_files.txt. This is a discovered package-coherence prerequisite, not a successful candidate or a mechanical retry. The earlier independently passing fresh-generation proof does not establish the separate in-place fixed point. No model/consumer repair is absorbed into the integration task.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Stock in-place generation moves package contract despite fresh equality | Preserve the failed integration, scope diagnosis/native coherence separately, and require independent verification before a new integration task | premise surprise | Coordinator [AGENT] from native seam result | evidence/T-047_integration; T-048 scope |
+
+### T-048 scope
+
+Objective: Determine and resolve the native package-contract mismatch exposed by stock in-place generation, without changing primary-loop meaning.
+Why now: T-047 returns package-not-integrated after one package-contract file moves, while T-045/T-046 fresh-generation and numerical evidence passed.
+Scope: Diagnose exact fresh-versus-stock producer invocation/contract difference using the installed toolchain; if it is native preparation, correct WI-056 package/metadata and preserve original receipts/results in separate corrected evidence. Require both fresh and in-place equality and independent native recheck. No shared tool/runtime/seam patch, source/scientific/interface change, current consumer write, historical overwrite or integration invocation.
+Inputs: amended goal.md; Round11 strategy; failed evidence/T-047_integration; WI-056 production@b413838c/evidence@f0fc8231/report@58e76f30; independent audit@387c2c95 and native audit pointer@cb16ad91; current consumer@4356a861.
+Done when: A bounded native preparation correction with stable fresh/in-place package evidence is independently verified, or a concrete upstream/tooling/meaning blocker is established.
+Stop when: Resolution requires shared tooling/seam repair, altered scientific or supported meaning, additional unscoped surface, owner decision or declared limit.
+
+### T-048 start — 2026-09-13
+
+T-048 re-enters the existing native WI-056 item for this separately scoped integration prerequisite under evidence/T-048_primary-coherence/author-brief.md. Continuing author owns native diagnosis/correction/evidence, coordinator owns current-consumer follow-up and subsequent integration. The completed earlier tasks and their evidence remain historical; no failed gate is waived.
