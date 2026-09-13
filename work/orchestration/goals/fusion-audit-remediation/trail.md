@@ -1830,3 +1830,25 @@ Stop when: A named blocker, unexpected identity/authority change, seam prerequis
 ### T-044 start — 2026-09-13
 
 T-044 invokes scripts/integrate.py under .codex-test/run against audited WI-055@c08ccf41, writing complete evidence to evidence/T-044_integration. Coordinator owns sequential execution and its return; no study is started.
+
+### T-044 return — 2026-09-13
+
+**Outcome: COMPLETE.** The stock seam returns CANDIDATE on its first invocation with all ten declared gates passing. Complete evidence is `evidence/T-044_integration/`, including `integration_return.json`, native baseline store and producer backup. Semantic identity is `15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e`; executable is `8a3473de8206c5317dcd271cb68cccb02150bada13641a1be0e89eabd03b5b03`; indicator digest remains `609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d`; TEAx is `8d877460ac4f6f264561d916e40c1708adb13397`. This is the round's one candidate. No study was committed. The unchanged indicator digest alone does not identify the corrected executable.
+
+The seam verifies its selected channels/verdicts, regeneration, ninety handwritten files, census, manifest/preflight and lineage. It explicitly does not run assert_read_set_covered. Independent full fresh-generation equality and wider bounded domain/source/consumer evidence come from audit@c08ccf41, not from enlarging the seam's declared coverage. Baseline divertor violation remains. No claim of complete engineering feasibility, global oracle coverage or all-finding closure follows.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Audited corrected native/current consumers pass all declared integration gates | Accept one bounded candidate and close on the strategy's declared acceptance limit | execution detail | Coordinator [AGENT] using native producer result | evidence/T-044_integration; Round10 result |
+
+### Round 10 result — 2026-09-13
+
+Intent met for the bounded winding-pack input correction and current-consumer/fresh-package coherence. T-042 establishes model-owned magnitude checks and two existing mathematical zero-domain guards, corrects adjacent unit/scaling prose, and obtains independent completion after R10-A1. T-043 supplies independent oracle and current regression coherence. T-044 proves one native candidate with all ten gates passing. Last semantic outcome is COMPLETE; the stop reason is the strategy's declared limit of audited bounded correction plus current-consumer/integration acceptance. There is no study reading, goal completion or accepted broader residual.
+
+F07 receives only the demonstrated winding magnitude/nonfinite and composed zero-domain correction, in addition to earlier clearance/cryo credit. Broader radius/layer/efficiency/thermal domains and the low-current numerical failure remain open. The local stress substitution receives a bounded documentation correction; broader F17/F20 questions remain open. R10-A1 records that fresh generation was not implied by prior in-place byte stability. Corrected documentation regeneration now matches all 247 package files exactly; original negative audit, initial receipts and earlier acceptance revisions remain preserved. Source/translation/numerical checks remain separate from engineering coverage.
+
+Both materially touched existing discovery IDs have appended dispositions: `20260911-model-owned-radius#2` records bounded model-fix credit with engineering limits open; `#3` retains the open 147-input/seventeen-output coverage seam. No ID was invented. Evidence is native `747a8a35`/`b1d066c1`, coding `483fa60b`/`cca61c08`/`97799efc`, independent FINDINGS `a4b668d5` and PASS addendum `c08ccf41`, and complete T-044 producer output in this result revision. Native validation operations mark only evidence-supported SV-044/SV-095 passing. No goal retry, source adoption, finance/scope choice, merge/push, archive or goal close occurred.
+
+Proposed learning delta [AGENT]: standalone zero-valid calculations and a composed operating chain may have distinct mathematical domains; put guards at the actual singular consumers without inventing a blanket source prohibition. A preserved handwritten directory can include automatic bodies with stale documentation; in-place regeneration stability and exact fresh-generation equality are separate claims and need separate evidence. These are proposed for fresh review, not yet accepted learning.
+
+The owner instruction to continue all remaining authorized rounds remains active. A fresh reviewer must assess this result and, after PASS, select the Round 11 strategy. Rounds11–12 remain within the re-grounded cycle; the original all-twenty answer contract, cap and reserved gates still apply. No routine owner handback is needed.
