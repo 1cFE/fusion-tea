@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:154
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:172
 
 SysML Expressions:
     vol_extra = 0.0
@@ -70,7 +70,7 @@ six unique coils; typical circumference 25 m)
 *Basis**: sum of per-coil winding-pack volumes expressed as a held
 distribution factor on the worst coil; concept-agnostic (MR-3)
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:154
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:172
 
 SysML Expressions:
     vol_extra = 0.0

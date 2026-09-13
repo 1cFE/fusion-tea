@@ -1,0 +1,92 @@
+{
+  "changes": {
+    "contracts/package_contract.json": {
+      "before": "64394e2afd965c7776c81cf6b5ab76b38c9d73e7f19f5762dfeba58909304c1c",
+      "after": "c044ff8cea4cc70002bc69f498d0dcd9729da42b79a2abfa635d0a43d3a784cd"
+    },
+    "handwritten/mfe_magnet_cost/magnet_capital_impl.py": {
+      "before": "920fd09e6c15b128b2229b75561d77235183a67457f7b847bf3040e20837651d",
+      "after": "c41a796d0f15311cff88bcb14c096ee91dc18a3240d85c6290b5903faf8b71df"
+    },
+    "handwritten/mfe_magnet_field/coil_set_stored_energy_impl.py": {
+      "before": "e8c228c130a5b5028982ce3cca5f378adac82313ea329e152ce54ebde859cdd1",
+      "after": "8ba8cf19783eb3be8de5d05ca8d097dbe2dcce20eb8f932f0921283220c0c817"
+    },
+    "handwritten/mfe_magnet_field/coil_winding_length_impl.py": {
+      "before": "b5b94cb90a39203d1f44f01750a771535a02d6b2deaa02d3751255a9f7575a12",
+      "after": "8caeaa62e3c658dc3cbc2167c1ca4ae07e00c8b3b8775cc6dd38faeaf7e91de9"
+    },
+    "handwritten/mfe_magnet_field/conductor_strain_impl.py": {
+      "before": "77a35ffd1d98dd9ef4ed51af72f635fcb39e79ed09ce361407c69cc31e15fd57",
+      "after": "dd5cbd8c54f78b70552f09f046a8458f05d424271d6630a3ca50b843eb1a8b2b"
+    },
+    "handwritten/mfe_magnet_field/winding_pack_cold_volume_impl.py": {
+      "before": "aaa94b1495e81b3f8969f78b885efbc6a0f8ca47495a3c73739e6f527694a258",
+      "after": "99fa624532b31b36199423c138628a73f33aaa7230c0b666638101598d20fcba"
+    },
+    "handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py": {
+      "before": "ef4ba556dd95bf44e86b35e397bcbd9c5a584cba9d45d90877641f20b6577278",
+      "after": "1047153bde52dcc4e91379d248e2ed8301a4f8ddd4c3b4ec9a26bcc643cd3bf1"
+    },
+    "handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py": {
+      "before": "42eab836ce1197c2139073c62ca961183671c0fc2b609ad9cd32c80bcca29599",
+      "after": "bce23478cc47297c262e6aa3e44c16820aff8a22dce67e41058d1ada97c463e0"
+    },
+    "handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py": {
+      "before": "9fbfb1241dbf9855af1ff4cf5d661f205f3f66cd3fee729d33a33bcbb02f9a71",
+      "after": "43c8dee1c1c1df901f07f01ca27766af6c8f13913a512feeb022eb39345b04e1"
+    },
+    "handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py": {
+      "before": "12bfcccfd8948b07c2ff8d61ac54f616fbaa91f8ba41bc1969941a2892968206",
+      "after": "1bbacf4c4db13c41f1c07f9a2b0ab5c3351541bb34dadef28d5601f64edc025f"
+    },
+    "handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py": {
+      "before": "466301bc86b22e90a536823e2a6afcbb21272f3804b5e29d812b5ead35ed8c69",
+      "after": "8035253d45a67e3dca4725659189db9c8bb27f0197b275d76eabe4539cb6b994"
+    },
+    "handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py": {
+      "before": "93bdd1add793a12f764d034e43f6e4f919ebefe26339a388174f77adfb1cb364",
+      "after": "c9c5b81066faa6d35dc0637e989776dcc0054b0919e120e7ba34cd8ba4051bcc"
+    },
+    "handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py": {
+      "before": "3b80c294a533d4fc8a87bf95cb6b745bf091d7306623609800b1c775e2f58e9a",
+      "after": "b43b43213f0f97d5204bca92b6a9fcc9e6ffae556130eeae5c35444a3fbda54a"
+    },
+    "handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py": {
+      "before": "5845c466b4a81dd2fe8668266e17fb93bf8df806e36f3a7f66db3fcc551cf796",
+      "after": "b38260d92703e0712488b354689c447d4700936c07e968a8894c93a767b400fc"
+    },
+    "handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py": {
+      "before": "a5d91c690127252dab9c02cabeef15e4734f727f69464e8ae7f3d610bf934808",
+      "after": "ed8c50db95326255a41e02c5b5f12703d3b7c57a95a3bb12e2e04646cde618c4"
+    },
+    "handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py": {
+      "before": "4072a14d3218320aa65f1cffd8a979de0d261ce0e9ea7ce571226db0b158b2a3",
+      "after": "b7f690d8d66a892bdc525884aab9a68f623a087789141cac3e049d338f1c2719"
+    },
+    "handwritten/mfe_plasma_scaling/plasma_geometry_impl.py": {
+      "before": "fa0615b89f87a73902d80ab84383740e89561f5805427d22a6ae0bbc77708f3f",
+      "after": "a08f38deabb3eca49d615bfe8668747e06fb961686373b265162bb63686341d2"
+    },
+    "handwritten/stellarator_09/stellaris/special_materials_capital_impl.py": {
+      "before": "87b565c9a177e82de04bb4c31ab6e4e9686c700ea93ff04808abc239f0e29532",
+      "after": "eff2519ed64defb01f16b9ce1f4c71c09b0686e6fe925e18e910e5b37915aceb"
+    }
+  },
+  "preserved_seeds": {
+    "handwritten/mfe_plasma_scaling/conductor_peak_field_impl.py": "d910b83372e0e990b0504831c0b8370741b043e1c38b8c012011a3ddd8ea2f26",
+    "handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py": "30aee9ecd9820a24929de992e70a8c47d65bcd07895633930946d11b86527308",
+    "handwritten/mfe_account_costs/levelized_annual_cost_impl.py": "50ca3b893cf8a9e004c8f410893de0aa05b83955cebcac5d621ee49094b48f76",
+    "handwritten/mfe_account_costs/idc_closed_form_cost_impl.py": "05baa9921178f5111155d2424a61fd341c3e30965d9a6c26918cf4835022ba0d",
+    "handwritten/mfe_account_costs/financial_factors.py": "cf99bae01ee130ba5beba273f227c62e743eec5015e1bfad582ba55dee87027a",
+    "handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py": "e81dd70e400f6c82a8ab38feecaf122cc2ce39a1c56f9bb471eda09524cf3783",
+    "handwritten/mfe_cryo_plant/cryoplant_electrical_power_impl.py": "f2f72f4adaac88b5972c55c98d8fef012279301e6d885b13a2b37e8ec22ea953",
+    "handwritten/mfe_lifecycle/lifecycle_calendar_impl.py": "c9158621c67af5e66619393ec19bb938df19ee7dc92ce242e343d33b7c369d63",
+    "handwritten/mfe_power_cycle/power_cycle_efficiency_impl.py": "ed5872f52003434c873cbd60e17b580427c861f97a088e5dd6c14bcebca5db11",
+    "handwritten/mfe_lcoe_dcf/lcoe_dcf_impl.py": "29dcfeb07a9022954d8a593740687e1e6676a52ae7885e528319e685147c927d",
+    "handwritten/mfe_magnet_field/winding_pack_sizing_impl.py": "3637b96536d48d6bd817fe69007ba61e62e742bdd213774856dffbbf4774dc5f",
+    "handwritten/mfe_magnet_field/winding_pack_stress_impl.py": "e9cfc2dca2d399b368795758fa6a3619c16f17f70c7698b36922fbc4611ee3f2"
+  },
+  "fresh_generation_exact": true,
+  "all_changed_body_ASTs_equal": true
+}

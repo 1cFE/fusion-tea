@@ -1,5 +1,7 @@
 # WI-055 implementation evidence
 
+The corrected current receipt is `corrected-package-hashes.json`; see `coherence-repair.md` for the independent audit finding, corrected producer and preserved original candidate evidence.
+
 The native candidate deliberately rejects invalid winding magnitudes and nonfinite sizing inputs. Standalone sizing and axis field retain zero. The composed zero-current plant fails deliberately at an existing mathematical consumer: Plasma Sustainment rejects zero field and Winding Pack Stress rejects zero side independently. The source/unit correction includes the factor 1000 and distinguishes fixed-field square-root stress scaling from the linked plant's current^(3/2) response. Independent completion audit remains required.
 
 ## Authority and meaning
@@ -24,6 +26,6 @@ The first three component-test failures omitted the generated axis wrapper's req
 
 ## Handoff and limits
 
-Current consumers require the twelve-seed helper at `evidence/regenerate.py` and matching receipt `candidate-package-hashes.json`; historical helpers remain unchanged. T-043 owns their migration and final consumer acceptance. SV-095 remains pending fresh independent audit. No integration, pin, study, goal-trail write or item closure was performed. The finite-input contract does not assert that every extreme finite ratio is representable, that all other input domains are guarded, or that a zero-sized pack models a finite de-energized coil. Existing broader engineering and model-validator limitations remain outside this bounded correction.
+Current consumers require the twelve-seed helper at `evidence/regenerate.py` and matching current receipt `corrected-package-hashes.json`; historical helpers remain unchanged. T-043 owns their migration and final consumer acceptance. SV-095 remains pending fresh independent audit. No integration, pin, study, goal-trail write or item closure was performed. The finite-input contract does not assert that every extreme finite ratio is representable, that all other input domains are guarded, or that a zero-sized pack models a finite de-energized coil. Existing broader engineering and model-validator limitations remain outside this bounded correction.
 
 Git whitespace checking treats native PM CSV CRLF as end-of-line and excludes exact original-body copies, whose inherited trailing spaces are preserved as evidence. All remaining owned changes pass whitespace checking.

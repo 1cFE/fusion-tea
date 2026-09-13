@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:996
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:998
 
 SysML Expressions:
 """
@@ -15,7 +15,7 @@ from stellarator_tea.modules.mfe_plant.mfe_power_plant.total_capital import tota
 def run_total_capital(inputs: total_capitalInput) -> float:
     """Execute total_capital calculation.
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:996
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:998
 
 Args:
     inputs: Input parameters validated against total_capitalInput schema

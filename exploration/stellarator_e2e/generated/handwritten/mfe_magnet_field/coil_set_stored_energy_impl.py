@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:244
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:262
 
 SysML Expressions:
     W_mag = W_mag_ref * (I_coil / I_ref) ** 2 * (a_coil / a_coil_ref) ** 2 * (R_ref / R0)
@@ -83,7 +83,7 @@ minor radius)
 shape and the current squared; concept-agnostic (MR-3) -- all
 values bound by instances
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:244
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:262
 
 SysML Expressions:
     W_mag = W_mag_ref * (I_coil / I_ref) ** 2 * (a_coil / a_coil_ref) ** 2 * (R_ref / R0)

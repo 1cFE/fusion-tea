@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:124
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:142
 
 SysML Expressions:
     c_coil = k_coil * R0
@@ -55,7 +55,7 @@ approximately 7 x 5 x 10 m); images/page_002_table_0.png
 *Basis**: coil circumference scales with major radius at a held
 coil-shape factor; concept-agnostic (MR-3)
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:124
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:142
 
 SysML Expressions:
     c_coil = k_coil * R0
