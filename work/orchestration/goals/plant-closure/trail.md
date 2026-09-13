@@ -551,3 +551,9 @@ Evidence: consolidated report and cell records in this commit, structural valida
 Fresh non-author `/root/plant_reading_checkpoint` reviewed the closed round under `evidence/R5_review/reviewer-brief.md@36b6a86b`. Verdict: OWNER_GATE, no material correction required. Review: `evidence/R5_review/review.md`. The reviewer checked scope, identity, complete grading records, load-bearing anchors, proposed comparison wording and unchanged discovery dispositions. Engineering and non-green validation limits remain unmet. Learning delta: none; L-001 remains unchanged.
 
 The consolidated report is ready for the owner to accept, correct or decline its bounded grade, dispositions and proposed demo wording. No further execution strategy is warranted. Packet acceptance, residual acceptance, comparison decisions, source adoption, reveal and goal closure remain reserved under the existing goal. No new round or production work is opened.
+
+### Owner packet acceptance — 2026-09-12
+
+[OWNER-VERBATIM] "ok accepted" responds to the completed packet handback after the Round 5 review. The owner accepts the consolidated grade, its six bounded dispositions and proposed demo wording in `work/analysis/20260912-plant-closure-consolidated-grade.md@36b6a86b`, reviewed at `21b13be5`. These remain agent-authored assessments ratified by the owner; acceptance preserves their recorded evidence and limitations.
+
+The packet/demo acceptance gate is resolved. The retained engineering gaps and non-green validation result remain as stated in the accepted packet. This ruling records packet acceptance; it does not authorize reveal, change the comparison contract or close the goal. No further numerical execution is planned.
