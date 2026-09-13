@@ -1504,3 +1504,28 @@ Stop when: Native interface changes invalidate scope, a shared consumer/seam rep
 ### T-035 start — 2026-09-13
 
 T-035 enters the coding PM under evidence/T-035_domain-consumers/author-brief.md. T-034 and T-035 may execute in parallel: generated/native model surfaces belong exclusively to T-034, current oracle/adapter code and a new focused coding test belong exclusively to T-035. Shared interfaces remain unchanged; if the native mechanism changes that premise, affected work pauses. Coordinator owns goal entries and later sequential integration. Each author obtains stable-package acceptance after native regeneration ends; neither treats a mid-edit package as final evidence.
+
+### T-034 return — 2026-09-13
+
+**Outcome: PREREQUISITE.** Native implementation and evidence are committed at `3d9711e2`; read `work/active/WI-053_magnet-and-cryogenic-input-domains/evidence/report.md`, `regression-attribution.json` and `consumer-handoff.md` at that revision. The bounded guard behavior and valid-value preservation have positive author evidence, but current downstream regression consumers need migration and a fresh independent audit remains outstanding. This is not native completion or F07 closure.
+
+The author reports 27 focused passes, ten valid native cases with exactly preserved 158 outputs and reports, and ten invalid full-plant cases carrying intended local ValueError. Existing L2/L6 issues and thirteen skips remain; no new six-level issue was identified. These are native author executions, not coordinator reruns. Candidate regressions identify 63 new affected nodes and one inherited stale-hash failure. Original candidate failure evidence is preserved. No goal-level mechanical retry occurred; native preparation invocation corrections remain native evidence.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Native metadata must be coherent before independent audit/integration | Author refreshes current snapshot and manifest through existing producers; this prepares metadata without goal-level promotion | execution detail | Coordinator [AGENT] | WI-053 metadata/evidence@3d9711e2; census unchanged |
+| Two new manual calculations invalidate current eight-seed callers and old invalid-field expectations | Route affected current regression consumers to separately scoped T-036; retain failed execution and historical helpers/results | execution detail | Coordinator [AGENT] on author evidence | regression-attribution.json and consumer-handoff.md@3d9711e2 |
+| Author tests are positive for guards but dependencies/audit remain | Withhold completion and finding-resolution credit pending downstream repair and fresh review | execution detail | Coordinator [AGENT] | SV-093 remains pending; no pin or study |
+
+### T-036 scope
+
+Objective: Restore current model regression consumers after the two authorized manual-domain calculations, retaining independent numerical and preservation checks.
+Why now: T-034 returned PREREQUISITE with 63 new nodes tied to current eight-seed generation callers and expectations for the repaired invalid-field behavior.
+Scope: Three named current model test files and narrowly needed current support, under a dated extension of the coding item. Resolve new nodes and the affected inherited stale-hash check using a justified current preservation contract. Preserve historical drivers, receipts, frozen results and original failed evidence; no production/shared-tool repair or weakened physical/financial assertions.
+Inputs: amended goal.md; T-034 return; WI-053 regression-attribution.json, consumer-handoff.md and evidence/regenerate.py@3d9711e2; existing T-035 coding item.
+Done when: Affected nodes and coherent current suite pass with original failures mapped to concrete corrections, followed by fresh independent coding/native acceptance.
+Stop when: Production or shared-seam repair is needed, a meaningful expectation lacks independent basis, a scope/owner gate or declared limit binds.
+
+### T-036 start — 2026-09-13
+
+T-036 resumes the continuing coding author under evidence/T-036_domain-regressions/author-brief.md. Owned current test files are test_mfe_major_radius.py, test_mfe_operating_heating.py and test_model_family_spines.py under tests/models/. Native production remains fixed at 3d9711e2; T-035's distinct remaining public-route acceptance can finish before this migration. Fresh independent audit follows the coherent result; coordinator integrates sequentially afterward.
