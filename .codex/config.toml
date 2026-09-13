@@ -1,0 +1,20 @@
+
+[agents."kerml-expert"]
+description = "KerML language expert. Use for standard library functions (sum, size, collect, reduce, etc.), type system questions, language semantics, expression operators, and KerML specification lookups. Has access to KerML spec with INDEX.md navigation."
+config_file = "agents/kerml-expert.toml"
+
+[agents."python-debugger"]
+description = "Python debugging subagent for running experiments with breakpoints, exception capture, and state inspection. Use when debugging Python code requires multiple iterations, produces large stack traces, or needs isolated experimentation. Returns concise summaries to preserve main agent context. Triggers on: 'debug this script', 'find why this crashes', 'inspect state at line X', 'trace execution', or iterative debugging workflows."
+config_file = "agents/python-debugger.toml"
+
+[agents."syside-expert"]
+description = "SysIDE tooling expert. Use for parser usage, expression evaluation, automator workflows, syside Python API, model loading/querying, and tooling integration questions. Has access to syside documentation."
+config_file = "agents/syside-expert.toml"
+
+[agents."sysml-expert"]
+description = "SysML v2 modeling expert. Use for modeling patterns, part/attribute/port definitions, requirements modeling, constraint patterns, connections, actions, state machines, and SysML specification lookups. Has access to SysML Parts 1-3 specs with INDEX.md navigation."
+config_file = "agents/sysml-expert.toml"
+
+[agents."sysmlv2-validator"]
+description = "SysML v2 model validator and inspector. Use to validate syntax, debug errors, inspect model structure, query element types, evaluate expressions, and analyze type conformance. Can write Python scripts using the syside API for deep model analysis."
+config_file = "agents/sysmlv2-validator.toml"

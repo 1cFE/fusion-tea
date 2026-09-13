@@ -1,3 +1,7 @@
+# Modeling workflow updated — 2026-09-13
+
+[OWNER] Requested installation of the repaired workflow in this worktree. Native instruction update is complete: [installation record](workflow-installation-20260913.md). Codex discovers all 30 repository skills, including 15 updated skills; 38 payload hashes match. Local goal/study bundles, aliases, source records, runtime pins, and permissions are preserved. Runtime provenance tests pass (3). Use a fresh session and the local `.agentic-mbse/patterns/` references; continue to run toolkit commands through `.codex-test/run`.
+
 # Plant-closure validation complete — 2026-09-12
 
 [OWNER-VERBATIM] "yes, proceed" authorized applying the nine prepared Python writer repairs while preserving original code copies and all recorded data. Eight local exporters now validate their full publication map; the plant writer validates all native rows before opening its CSV and explicitly tracks publication status. No compatibility API, sweep, skipped failure or regenerated numerical expectation was added.
