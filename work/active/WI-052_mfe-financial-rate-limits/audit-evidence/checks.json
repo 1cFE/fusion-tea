@@ -1,0 +1,2436 @@
+{
+  "models": {
+    "entering": {
+      "passed": 428,
+      "skipped": 13
+    },
+    "candidate": {
+      "passed": 539,
+      "skipped": 13
+    },
+    "inherited_identical": 13,
+    "new_failures": {},
+    "removed": [
+      "('tests.models.test_lifecycle_calendar', 'test_held_mode_equals_the_retired_chain_by_identity')"
+    ]
+  },
+  "study": {
+    "entering": {
+      "passed": 656,
+      "failure": 108,
+      "skipped": 1
+    },
+    "candidate": {
+      "passed": 634,
+      "failure": 115,
+      "error": 15,
+      "skipped": 1
+    },
+    "inherited_identical": 109,
+    "new_failures": {
+      "('tests.study.test_integrate_lineage', 'test_wrong_expected_fingerprint_refuses_at_gate_9')": [
+        "failure",
+        "AssertionError: assert 'preflight' == 'lineage'\n  \n  - lineage\n  + preflight"
+      ],
+      "('tests.study.test_integrate_lineage', 'test_absent_expected_fingerprints_could_not_run_rather_than_pass')": [
+        "failure",
+        "AssertionError: assert 'preflight' == 'lineage'\n  \n  - lineage\n  + preflight"
+      ],
+      "('tests.study.test_integrate_rerun', 'test_two_runs_return_the_same_identity')": [
+        "failure",
+        "AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_two_runs_return_the_same_0/a/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_two_runs_return_the_sam...d916e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_two_runs_return_the_same_0/a/preflight_results.json\\n\").returncode"
+      ],
+      "('tests.study.test_integrate_rerun', 'test_the_second_run_is_a_candidate_not_a_refusal')": [
+        "failure",
+        "AssertionError: first run: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_second_run_is_a_candi0/first/preflight_results.json\"\n    ]\n  }\nassert 'BLOCKER' == 'CANDIDATE'\n  \n  - CANDIDATE\n  + BLOCKER"
+      ],
+      "('tests.study.test_integrate_stock_route', 'test_the_return_rebuilds_the_stock_commands')": [
+        "failure",
+        "AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_return_rebuilds_the_s0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_the_return_rebuilds_the...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_the_return_rebuilds_the_s0/out/preflight_results.json\\n\").returncode"
+      ],
+      "('tests.study.test_integrate_success', 'test_committed_package_yields_one_candidate')": [
+        "error",
+        "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_committed_package_yields_0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_committed_package_yield...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_committed_package_yields_0/out/preflight_results.json\\n\").returncode\""
+      ],
+      "('tests.study.test_integrate_success', 'test_every_candidate_field_resolves')": [
+        "error",
+        "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_every_candidate_field_res0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_every_candidate_field_r...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_every_candidate_field_res0/out/preflight_results.json\\n\").returncode\""
+      ],
+      "('tests.study.test_integrate_success', 'test_the_candidate_names_the_lineage_the_request_named')": [
+        "error",
+        "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_candidate_names_the_l0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_the_candidate_names_the...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_the_candidate_names_the_l0/out/preflight_results.json\\n\").returncode\""
+      ],
+      "('tests.study.test_integrate_success', 'test_the_pin_is_the_manifests_own_value_not_a_new_number')": [
+        "error",
+        "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_pin_is_the_manifests_0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_the_pin_is_the_manifest...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_the_pin_is_the_manifests_0/out/preflight_results.json\\n\").returncode\""
+      ],
+      "('tests.study.test_integrate_success', 'test_the_package_is_byte_identical_before_and_after')": [
+        "error",
+        "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_package_is_byte_ident0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_the_package_is_byte_ide...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_the_package_is_byte_ident0/out/preflight_results.json\\n\").returncode\""
+      ],
+      "('tests.study.test_integrate_success', 'test_the_verification_summary_the_candidate_cites_reads_pass')": [
+        "error",
+        "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_verification_summary_0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_the_verification_summar...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_the_verification_summary_0/out/preflight_results.json\\n\").returncode\""
+      ],
+      "('tests.study.test_integrate_success', 'test_the_preflight_results_the_run_produced_read_six_of_six')": [
+        "error",
+        "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_preflight_results_the0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_the_preflight_results_t...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_the_preflight_results_the0/out/preflight_results.json\\n\").returncode\""
+      ],
+      "('tests.study.test_integrate_success', 'test_the_toolchain_the_candidate_ran_under_is_recorded')": [
+        "error",
+        "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_toolchain_the_candida0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_the_toolchain_the_candi...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_the_toolchain_the_candida0/out/preflight_results.json\\n\").returncode\""
+      ],
+      "('tests.study.test_major_radius', 'test_current_radius_controls_match_frozen_model_and_independent_oracle')": [
+        "failure",
+        "AssertionError: ('baseline', 'stellarator_09__stellaris__cas71_calc__levelized')"
+      ],
+      "('tests.study.test_preflight_gates', 'test_all_six_checks_pass_on_the_real_package')": [
+        "error",
+        "failed on setup with \"AssertionError: exit 1\n  [preflight] gates: fail\n    pass         declared_keys: 5 declared keys across 5 groups, all package inputs\n    pass         sibling_scan: pass\n    pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\n    fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\n    pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\n    pass         package_clean: package tree is byte-untouched (git clean)\n  [preflight] refusing: manifest_currency\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/study/preflight.py', 'gates', '--package', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/tests/study/data/axes.known_answers.json', '--identity', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/package_identity.json', '--baseline-result', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/baseline_result.json', '--out', '/tmp/pytest-of-reid/pytest-12280/test_all_six_checks_pass_on_th0/preflight_results.json'], returncode=1, stdout='', stderr=\"[preflight] gates: fail\\n  pass         declared_keys: 5 declared keys across 5 groups, all package inputs\\n  pass         sibling_scan: pass\\n  pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\\n  fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\\n  pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\\n  pass         package_clean: package tree is byte-untouched (git clean)\\n[preflight] refusing: manifest_currency\\n\").returncode\""
+      ],
+      "('tests.study.test_preflight_gates', 'test_the_results_document_validates_against_its_schema')": [
+        "error",
+        "failed on setup with \"AssertionError: exit 1\n  [preflight] gates: fail\n    pass         declared_keys: 5 declared keys across 5 groups, all package inputs\n    pass         sibling_scan: pass\n    pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\n    fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\n    pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\n    pass         package_clean: package tree is byte-untouched (git clean)\n  [preflight] refusing: manifest_currency\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/study/preflight.py', 'gates', '--package', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/tests/study/data/axes.known_answers.json', '--identity', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/package_identity.json', '--baseline-result', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/baseline_result.json', '--out', '/tmp/pytest-of-reid/pytest-12280/test_the_results_document_vali0/preflight_results.json'], returncode=1, stdout='', stderr=\"[preflight] gates: fail\\n  pass         declared_keys: 5 declared keys across 5 groups, all package inputs\\n  pass         sibling_scan: pass\\n  pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\\n  fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\\n  pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\\n  pass         package_clean: package tree is byte-untouched (git clean)\\n[preflight] refusing: manifest_currency\\n\").returncode\""
+      ],
+      "('tests.study.test_preflight_gates', 'test_the_document_carries_a_digest_for_every_input_it_read')": [
+        "error",
+        "failed on setup with \"AssertionError: exit 1\n  [preflight] gates: fail\n    pass         declared_keys: 5 declared keys across 5 groups, all package inputs\n    pass         sibling_scan: pass\n    pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\n    fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\n    pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\n    pass         package_clean: package tree is byte-untouched (git clean)\n  [preflight] refusing: manifest_currency\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/study/preflight.py', 'gates', '--package', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/tests/study/data/axes.known_answers.json', '--identity', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/package_identity.json', '--baseline-result', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/baseline_result.json', '--out', '/tmp/pytest-of-reid/pytest-12280/test_the_document_carries_a_di0/preflight_results.json'], returncode=1, stdout='', stderr=\"[preflight] gates: fail\\n  pass         declared_keys: 5 declared keys across 5 groups, all package inputs\\n  pass         sibling_scan: pass\\n  pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\\n  fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\\n  pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\\n  pass         package_clean: package tree is byte-untouched (git clean)\\n[preflight] refusing: manifest_currency\\n\").returncode\""
+      ],
+      "('tests.study.test_preflight_gates', 'test_the_six_results_map_onto_record_section_9s_five_rows')": [
+        "error",
+        "failed on setup with \"AssertionError: exit 1\n  [preflight] gates: fail\n    pass         declared_keys: 5 declared keys across 5 groups, all package inputs\n    pass         sibling_scan: pass\n    pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\n    fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\n    pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\n    pass         package_clean: package tree is byte-untouched (git clean)\n  [preflight] refusing: manifest_currency\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/study/preflight.py', 'gates', '--package', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/tests/study/data/axes.known_answers.json', '--identity', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/package_identity.json', '--baseline-result', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/baseline_result.json', '--out', '/tmp/pytest-of-reid/pytest-12280/test_the_six_results_map_onto_0/preflight_results.json'], returncode=1, stdout='', stderr=\"[preflight] gates: fail\\n  pass         declared_keys: 5 declared keys across 5 groups, all package inputs\\n  pass         sibling_scan: pass\\n  pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\\n  fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\\n  pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\\n  pass         package_clean: package tree is byte-untouched (git clean)\\n[preflight] refusing: manifest_currency\\n\").returncode\""
+      ],
+      "('tests.study.test_preflight_gates', 'test_the_tool_reports_its_own_revision_as_a_named_recipe_over_a_named_file_list')": [
+        "error",
+        "failed on setup with \"AssertionError: exit 1\n  [preflight] gates: fail\n    pass         declared_keys: 5 declared keys across 5 groups, all package inputs\n    pass         sibling_scan: pass\n    pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\n    fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\n    pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\n    pass         package_clean: package tree is byte-untouched (git clean)\n  [preflight] refusing: manifest_currency\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/study/preflight.py', 'gates', '--package', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/tests/study/data/axes.known_answers.json', '--identity', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/package_identity.json', '--baseline-result', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/baseline_result.json', '--out', '/tmp/pytest-of-reid/pytest-12280/test_the_tool_reports_its_own_0/preflight_results.json'], returncode=1, stdout='', stderr=\"[preflight] gates: fail\\n  pass         declared_keys: 5 declared keys across 5 groups, all package inputs\\n  pass         sibling_scan: pass\\n  pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\\n  fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\\n  pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\\n  pass         package_clean: package tree is byte-untouched (git clean)\\n[preflight] refusing: manifest_currency\\n\").returncode\""
+      ],
+      "('tests.study.test_preflight_gates', 'test_the_sibling_scan_is_advisory_and_can_never_fail')": [
+        "error",
+        "failed on setup with \"AssertionError: exit 1\n  [preflight] gates: fail\n    pass         declared_keys: 5 declared keys across 5 groups, all package inputs\n    pass         sibling_scan: pass\n    pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\n    fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\n    pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\n    pass         package_clean: package tree is byte-untouched (git clean)\n  [preflight] refusing: manifest_currency\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/study/preflight.py', 'gates', '--package', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/tests/study/data/axes.known_answers.json', '--identity', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/package_identity.json', '--baseline-result', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/baseline_result.json', '--out', '/tmp/pytest-of-reid/pytest-12280/test_the_sibling_scan_is_advis0/preflight_results.json'], returncode=1, stdout='', stderr=\"[preflight] gates: fail\\n  pass         declared_keys: 5 declared keys across 5 groups, all package inputs\\n  pass         sibling_scan: pass\\n  pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\\n  fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\\n  pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\\n  pass         package_clean: package tree is byte-untouched (git clean)\\n[preflight] refusing: manifest_currency\\n\").returncode\""
+      ],
+      "('tests.study.test_preflight_gates', 'test_the_identity_gate_reports_the_recomputed_digest')": [
+        "error",
+        "failed on setup with \"AssertionError: exit 1\n  [preflight] gates: fail\n    pass         declared_keys: 5 declared keys across 5 groups, all package inputs\n    pass         sibling_scan: pass\n    pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\n    fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\n    pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\n    pass         package_clean: package tree is byte-untouched (git clean)\n  [preflight] refusing: manifest_currency\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/study/preflight.py', 'gates', '--package', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/tests/study/data/axes.known_answers.json', '--identity', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/package_identity.json', '--baseline-result', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/baseline_result.json', '--out', '/tmp/pytest-of-reid/pytest-12280/test_the_identity_gate_reports0/preflight_results.json'], returncode=1, stdout='', stderr=\"[preflight] gates: fail\\n  pass         declared_keys: 5 declared keys across 5 groups, all package inputs\\n  pass         sibling_scan: pass\\n  pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\\n  fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\\n  pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\\n  pass         package_clean: package tree is byte-untouched (git clean)\\n[preflight] refusing: manifest_currency\\n\").returncode\""
+      ],
+      "('tests.study.test_preflight_negatives', 'test_an_unreadable_input_is_did_not_run_with_its_condition')": [
+        "failure",
+        "AssertionError: assert 'fail' == 'pass'\n  \n  - pass\n  + fail"
+      ]
+    },
+    "removed": []
+  },
+  "additional_numerical_checks": [
+    {
+      "quantity": "crf",
+      "duration": 0.3,
+      "rate": 0.0,
+      "actual": 3.3333333333333335,
+      "expected": "3.3333333333333334566914471805729535011263498168725960963343289919538250511358287517739910867867655650528290111",
+      "error": "7.4014868308343752926973252434975408088988223275286881808199268562020733952522277832031249999990924400933287319E-18"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.3,
+      "rate": 0.0,
+      "actual": 0.0,
+      "expected": "0",
+      "error": "0"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.3,
+      "rate": 0.0,
+      "actual": 370370.1,
+      "expected": "370370.09999999998629355291157594365358818322420120239257812500000000000000000000000000000000000000000000000000",
+      "error": "2.5856885523326280654456762360435775855929215791493978904765962198207703940311695236045778279964655788173427578E-17"
+    },
+    {
+      "quantity": "annuity_1e-18",
+      "duration": 0.3,
+      "rate": 0.0,
+      "actual": 370370.0999999999,
+      "expected": "370370.09999999998921947670157594376265935857394909043510679581111730964384497674945609675066544125367023323533",
+      "error": "1.9091768471707169649504483960103390597467488963064892985942271556826997165550990166858398131973161352161314120E-16"
+    },
+    {
+      "quantity": "annuity_-1e-18",
+      "duration": 0.3,
+      "rate": 0.0,
+      "actual": 370370.0999999999,
+      "expected": "370370.09999999998336762912157594356467779562620331645801977294898430104996433258707878608648075989203833364227",
+      "error": "1.7511768471707169826745618831399208873140738562641134255659651213139319111107475001738241380377654358991906194E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 0.3,
+      "rate": -0.02,
+      "actual": 3.2898978648480846,
+      "expected": "3.2898978648480848934333622559001814457832472326633854131943346725431280653816351098442772775390034217112680706",
+      "error": "1.0374094689634325794802080237729745599931960673200880426296689727495279599606764751077626654164273178944875616E-16"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.3,
+      "rate": -0.02,
+      "actual": 0.007080420436575671,
+      "expected": "0.0070804204365756723021912539480547346390589283488533054225063437173529569141029683612038861081937471226856120",
+      "error": "1.7777385627491632639151537947527391932412381884892585114304096847006516512438624381571195696707478446313104863E-16"
+    },
+    {
+      "quantity": "annuity_-0.02",
+      "duration": 0.3,
+      "rate": -0.02,
+      "actual": 319907.9019360075,
+      "expected": "319907.90193600753929709447734846757436641366716094072925606609243356609787651030763192185208411581433352083680",
+      "error": "1.5727176341127290329898274766446343212462902173723992720057653542177936117768786575375275780973520289664545098E-16"
+    },
+    {
+      "quantity": "annuity_-0.019999999999999997",
+      "duration": 0.3,
+      "rate": -0.02,
+      "actual": 319907.90193600755,
+      "expected": "319907.90193600754824427571479161139832436727184318093857176341526056793918431966499360888097112103453086758010",
+      "error": "3.2884470320543782300799865294105275035584661585568038753515282669279646593788204760012457256406357170646003375E-18"
+    },
+    {
+      "quantity": "annuity_-0.020000000000000004",
+      "duration": 0.3,
+      "rate": -0.02,
+      "actual": 319907.90193600755,
+      "expected": "319907.90193600753034991323990532396866380989881681988953345290440793252086729404452180681495700386772695828043",
+      "error": "5.2647534438218178424053946592213456944047135043512358716097605747615595772199068842207128818781235841897430952E-17"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.3,
+      "rate": -0.02,
+      "actual": 375259.97788293276,
+      "expected": "375259.97788293274555205070202078860779645739140315993935746707532175229679912858175522688929680626923352903442",
+      "error": "2.5616244574342558482652801198629132666335349148506039541732078613852684258666296079809066785335915920336261357E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 0.3,
+      "rate": 0.02,
+      "actual": 3.3765665540974203,
+      "expected": "3.3765665540974203249980322392372477119363887197868176130668761376346637941611580201374058910914265021566826068",
+      "error": "6.6187759174777874131094960970386913282118335244630806084831765371449059042733199726229357972375962525579274243E-18"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.3,
+      "rate": 0.02,
+      "actual": -0.006921722060218249,
+      "expected": "-0.00692172206021824987787227380845762638989422911861140775324350543489774311219452734615396363745064501300972250",
+      "error": "1.6520887792446761516992097877245643765547835634200035867156821723095370106720864698554707282758888621822418640E-16"
+    },
+    {
+      "quantity": "annuity_0.02",
+      "duration": 0.3,
+      "rate": 0.02,
+      "actual": 427550.24937584676,
+      "expected": "427550.24937584685379814138422835893293657263876540278990163443936449366871513196618482615149425940648321446048",
+      "error": "2.1748319569539738833784067984214304129025372271008839918709446211096566849240535567712115283128962894007094577E-16"
+    },
+    {
+      "quantity": "annuity_0.020000000000000004",
+      "duration": 0.3,
+      "rate": 0.02,
+      "actual": 427550.24937584676,
+      "expected": "427550.24937584686528693254607337090100632841386742482797603255923510383394599683278167431955602657401605961674",
+      "error": "2.4435440248013615861728383083354461360739439813051468952741390959598418632422455761550161462218102308065358313E-16"
+    },
+    {
+      "quantity": "annuity_0.019999999999999997",
+      "duration": 0.3,
+      "rate": 0.02,
+      "actual": 427550.24937584676,
+      "expected": "427550.24937584684230935022238334723413119453188443475522155218400510573139114873218752809931239124233682008341",
+      "error": "1.9061198891065861724405818774806528407391663172377110292541958847623645712856699555359676274885919078861185041E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.3,
+      "rate": 0.02,
+      "actual": 365627.91824786295,
+      "expected": "365627.91824786297678169184001156077108110518365078935787840777651154796315449859090182270152635330887666211402",
+      "error": "6.8243318157905834493066479073099972629330087703641361354891331310087518679991016987079226111120105585340210493E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 0.3,
+      "rate": 0.08,
+      "actual": 3.505110510828823,
+      "expected": "3.5051105108288229065211989386298040320927023708541120435328956613857220199867943666260085849266998486805902964",
+      "error": "1.7327297516281847913038235534424009818091616673957374321238392355469031210321450908622301590323185898845676304E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.3,
+      "rate": 0.08,
+      "actual": -0.026795391624686818,
+      "expected": "-0.02679539162468682327020560523310001559437066487500808408630532938197366259118098360972866997737357571675539909",
+      "error": "2.0042883280751639623940843914537927371307352335535491212046359672608608133885808541918698442346546835047958635E-16"
+    },
+    {
+      "quantity": "annuity_0.08",
+      "duration": 0.3,
+      "rate": 0.08,
+      "actual": 647080.2521975535,
+      "expected": "647080.25219755360438721965248437509891561536312602342697599529094623381760228437982922417536785559413393985091",
+      "error": "1.3027185013977610767124155876721070181908250246415194903308538748099333137949535872878824772413556725065396375E-16"
+    },
+    {
+      "quantity": "annuity_0.08000000000000002",
+      "duration": 0.3,
+      "rate": 0.08,
+      "actual": 647080.2521975535,
+      "expected": "647080.25219755367007456709094292847578677833788442921757587165513477713854754768614592578198846867591314546388",
+      "error": "2.3178529799323368874773089592515837270327436732446766923571285966978240992193676236666132966098993039081185115E-16"
+    },
+    {
+      "quantity": "annuity_0.07999999999999999",
+      "duration": 0.3,
+      "rate": 0.08,
+      "actual": 647080.2521975534,
+      "expected": "647080.25219755353869987221402582753802170751344787358369585842362921871908396396191031739441898582911581967214",
+      "error": "2.0866703252433917381833061189855484844230159498369441588825388781144588755311963628962944121119690147652806554E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.3,
+      "rate": 0.08,
+      "actual": 352219.1372243133,
+      "expected": "352219.13722431328162413790816069540593389461592045684421005316643049479930270877629778638587452425964303370487",
+      "error": "7.0295632260778690295028068427094173059887422404585835272737015384758960323844222323142762466134075253134757618E-18"
+    },
+    {
+      "quantity": "crf",
+      "duration": 0.3,
+      "rate": -1e-18,
+      "actual": 3.3333333333333335,
+      "expected": "3.3333333333333334545247805139062866175192629971275006726799213508945011730883140742001216113809116784782741820",
+      "error": "8.0514868308343753389580855292516862856141025840497697657478994627755266199518992192418796359895110472013797970E-18"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.3,
+      "rate": -1e-18,
+      "actual": 3.5e-19,
+      "expected": "3.500000000000000307892968755767900435298054267007721205461181795410861503744362138963151690E-19",
+      "error": "4.3940280509700841079812954473149835021765913752922323910437201621981103217870028794037458354139913515693172015E-17"
+    },
+    {
+      "quantity": "annuity_-1e-18",
+      "duration": 0.3,
+      "rate": -1e-18,
+      "actual": 370370.1,
+      "expected": "370370.09999999998360836968657594356924660524609334348127509567324297639076616587387689221357604036121459253697",
+      "error": "1.8606885523326280293330358008542367727368591080632916469533276656830795029796165355579175064386782253861797817E-17"
+    },
+    {
+      "quantity": "annuity_-9.999999999999999e-19",
+      "duration": 0.3,
+      "rate": -1e-18,
+      "actual": 370370.1,
+      "expected": "370370.09999999998360836968657594413275902946169235418895166332031601435009910638515937698065884579640390107661",
+      "error": "1.8606885523326281814815014074458663783879116835799318032778425226661889873945569479848580587832657811481660472E-17"
+    },
+    {
+      "quantity": "annuity_-1.0000000000000003e-18",
+      "duration": 0.3,
+      "rate": -1e-18,
+      "actual": 370370.1,
+      "expected": "370370.09999999998360836968657594300573418103049433277359852802617068623661256062638653914066001241199569864513",
+      "error": "1.8606885523326278771845701942626071670858065325463904150628970344435085961248605301190625095494632212839987092E-17"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.3,
+      "rate": -1e-18,
+      "actual": 370370.0999999999,
+      "expected": "370370.09999999998653429347657594366003075690834122959189474825595752000617436037754123615686601701365760771877",
+      "error": "1.8366768471707169733850922940379485291465625081832579737234778660493440832295900700889138762866798821247560624E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 0.3,
+      "rate": 1e-18,
+      "actual": 3.3333333333333335,
+      "expected": "3.3333333333333334588581138472396203842278810810621358696857838510913329809290004743251076886295519031787869523",
+      "error": "6.7514868308343752474332316244100621355122462657836958665434086195345449301878266044958150526545457953818664759E-18"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.3,
+      "rate": 1e-18,
+      "actual": -3.5e-19,
+      "expected": "-3.5000000000000003039263020891012331122436481303278967799177596834063959445098938926411988531E-19",
+      "error": "4.2806947176367507707153482735849344596727813138237107910688521669726377057965446520048979922190289304172489982E-17"
+    },
+    {
+      "quantity": "annuity_1e-18",
+      "duration": 0.3,
+      "rate": 1e-18,
+      "actual": 370370.1,
+      "expected": "370370.09999999998897873613657594375471215635855906308411423247388291006905379483417783700941879467604971174371",
+      "error": "3.3106885523326280955770666712329176972792328332160398330035461539807330537807559998872703922968760103400103619E-17"
+    },
+    {
+      "quantity": "annuity_1.0000000000000003e-18",
+      "duration": 0.3,
+      "rate": 1e-18,
+      "actual": 370370.1,
+      "expected": "370370.09999999998897873613657594431822458057415808083569610281594412983681224572978966682625999585164679177377",
+      "error": "3.3106885523326282477255322778245447924806028999706326036398492552343565978125701823283557451868121308570503971E-17"
+    },
+    {
+      "quantity": "annuity_9.999999999999999e-19",
+      "duration": 0.3,
+      "rate": 1e-18,
+      "actual": 370370.1,
+      "expected": "370370.09999999998897873613657594319119973214296004533253236213182243810647482379241317789724288424047807565422",
+      "error": "3.3106885523326279434286010646412906020778627664611859868013663178167172095342541004323438473980434749748815974E-17"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.3,
+      "rate": 1e-18,
+      "actual": 370370.0999999999,
+      "expected": "370370.09999999998605281234657594364751474507306117522748412353177694674450750610747723120784681262320000589998",
+      "error": "1.8236768471707169749452929851123113888307016268250072214397899765889524768295930564751843755518058118530406572E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 0.3,
+      "rate": -1e-10,
+      "actual": 3.333333333116667,
+      "expected": "3.3333333331166667900222527220668342234436146572703028144378466891110957021129659492609889887522341389893554707",
+      "error": "2.0241210535769048649433098606852194352052060327201258198455108033566908063425819137440209298624823103692553933E-18"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.3,
+      "rate": -1e-10,
+      "actual": 3.5000000001983335e-11,
+      "expected": "3.50000000019833351637056268772657894778703843325090378861227116492307098997352211591633423233931590E-11",
+      "error": "8.4946840397031683377093673450509416406185342544414910048675298325810809716521230489277394400284782866313778168E-18"
+    },
+    {
+      "quantity": "annuity_-1e-10",
+      "duration": 0.3,
+      "rate": -1e-10,
+      "actual": 370370.0997314817,
+      "expected": "370370.09973148166387746488749697069179783750236532917582084244666158612943492514067675095591095409641956193786",
+      "error": "7.6708692332967041187040850719328377060851340694655883452825972769797836151066492641653969587168459382125687030E-17"
+    },
+    {
+      "quantity": "annuity_-9.999999999999999e-11",
+      "duration": 0.3,
+      "rate": -1e-10,
+      "actual": 370370.0997314817,
+      "expected": "370370.09973148166387746492531364930715735428366804278710782334319507065466084898074188409428944721276925306551",
+      "error": "7.6708692230861934314815978654563638404346361046045222517408968477068928903040481750892979970748337285505599033E-17"
+    },
+    {
+      "quantity": "annuity_-1.0000000000000002e-10",
+      "duration": 0.3,
+      "rate": -1e-10,
+      "actual": 370370.0997314817,
+      "expected": "370370.09973148166387746484968029207643832072106261893234898669054863034985776334137490200185494068007997213551",
+      "error": "7.6708692435072148059265722784093127475154536680093785434094081502255139069831149011037011858924286278062041396E-17"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.3,
+      "rate": -1e-10,
+      "actual": 370370.1000240741,
+      "expected": "370370.10002407404279539858902165093155558402196680720142395649168771810888146310132308920753161986159590230325",
+      "error": "1.0907667230135559993971412207538912836142923822132684046326756775012688153922445939892566738951709479080253149E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 0.3,
+      "rate": 1e-10,
+      "actual": 3.33333333355,
+      "expected": "3.3333333335500001233555860835235172226610429189253342884532452049345139560028696012471051290328938477212415701",
+      "error": "1.2780369274059356252919492680552955428574219470719389124102003517316317140618806499022098310699622754860058550E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.3,
+      "rate": 1e-10,
+      "actual": -3.499999999801667e-11,
+      "expected": "-3.499999999801666849703895983273270197157576575293322392807224310260690664817121272520403444023512016E-11",
+      "error": "3.2952859692584337364490756519338498909360355950583475931865480077190039528052851462619800715072409335827675145E-18"
+    },
+    {
+      "quantity": "annuity_1e-10",
+      "duration": 0.3,
+      "rate": 1e-10,
+      "actual": 370370.1002685183,
+      "expected": "370370.10026851830887746488721741662139930622087736110901407418020112147135544905000788252615377301476077592795",
+      "error": "2.8285210849232838284926805908666843256965192896897918838928404089052312884502998811583829264148800852888162535E-17"
+    },
+    {
+      "quantity": "annuity_1.0000000000000002e-10",
+      "duration": 0.3,
+      "rate": 1e-10,
+      "actual": 370370.1002685183,
+      "expected": "370370.10026851830887746492503409528402967130092375259982762904165316685873481523302346749854951357863132915805",
+      "error": "2.8285210747127731433122960160589728653181228176539613672663035600426715615974000551812316663947069018704904438E-17"
+    },
+    {
+      "quantity": "annuity_9.999999999999999e-11",
+      "duration": 0.3,
+      "rate": 1e-10,
+      "actual": 370370.1002685183,
+      "expected": "370370.10026851830887746484940073795876894114083097298601564799537548808357461731765379833316045255221534958873",
+      "error": "2.8285210951337945136730651656743969618547369250963610103413675892025387131654353373722412834198464891114691641E-17"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.3,
+      "rate": 1e-10,
+      "actual": 370370.0999759259,
+      "expected": "370370.09997592592979539858946023637570382618925705945592601210615163629680820988460651504981976013431122808938",
+      "error": "3.6396108282559695578508845276322236696389796960824607207192589527030872359487217521271557318080215507374215909E-18"
+    },
+    {
+      "quantity": "crf",
+      "duration": 0.75,
+      "rate": 0.0,
+      "actual": 1.3333333333333333,
+      "expected": "1.3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333",
+      "error": "5.5511151231257827021181583404541015624999999999999999999999999999999999999999999999999999999975000000000000001E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.75,
+      "rate": 0.0,
+      "actual": 0.0,
+      "expected": "0",
+      "error": "0"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.75,
+      "rate": 0.0,
+      "actual": 925925.25,
+      "expected": "925925.25000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "error": "0"
+    },
+    {
+      "quantity": "annuity_1e-18",
+      "duration": 0.75,
+      "rate": 0.0,
+      "actual": 925925.2500000001,
+      "expected": "925925.25000000000752314265625000056500817900403978412360349317425795859386741656270934867384748407308614326380",
+      "error": "1.1760363935499632719095614385086273840897468298224153917745375785063883340141561164071259092070441870421963730E-16"
+    },
+    {
+      "quantity": "annuity_-1e-18",
+      "duration": 0.75,
+      "rate": 0.0,
+      "actual": 925925.2500000001,
+      "expected": "925925.24999999999247685734374999948856045473033522354125632812850530145498432775780071550161824243035938291186",
+      "error": "1.3385363935499633039661092425715950038704554281708767520215800652362289618045918604881375003123551754572027038E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 0.75,
+      "rate": -0.02,
+      "actual": 1.3099803586877619,
+      "expected": "1.3099803586877619857699623437207113043140109516895127662831467799936402276849382974464568572047447270023131529",
+      "error": "9.6879134465823249057482393799068146313867658186607759065655529670264915661190569848903079937064571804305874887E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.75,
+      "rate": -0.02,
+      "actual": 0.002521070799030139,
+      "expected": "0.0025210707990301391255434726272466993006906371865216474144745264521126278868435516562844338321228585692947010",
+      "error": "2.3180316058204596891077126894001342395445977616765881183606579736864370295629971687361070016570582070574451854E-17"
+    },
+    {
+      "quantity": "annuity_-0.02",
+      "duration": 0.75,
+      "rate": -0.02,
+      "actual": 799769.7548400188,
+      "expected": "799769.75484001887784016273411135853071717782969977975809197226548589265866716719742332255942791406214407873037",
+      "error": "8.5108413296831904426746621633339436930122524572772548338576483617165114731849294911117059526334062038229800055E-17"
+    },
+    {
+      "quantity": "annuity_-0.019999999999999997",
+      "duration": 0.75,
+      "rate": -0.02,
+      "actual": 799769.7548400189,
+      "expected": "799769.75484001890084517778291691117015944203878087182191286049247095042207529505621868641609234243367427739285",
+      "error": "3.1688084961363038116915047513865535927195315995941117510912852069867892965479956785966234228054911658804867791E-17"
+    },
+    {
+      "quantity": "annuity_-0.020000000000000004",
+      "duration": 0.75,
+      "rate": -0.02,
+      "actual": 799769.7548400189,
+      "expected": "799769.75484001885483514768530580647119475801934859541951832043721266269164584844678494761232733557737207695742",
+      "error": "8.9217179827940827913413376363065134440815228264600985385016811927166071858695647054327720362011794322434350004E-17"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.75,
+      "rate": -0.02,
+      "actual": 942431.6874771273,
+      "expected": "942431.68747712728007803792495438609594899921191560065681538312121471312120358888423010843759816675782858819697",
+      "error": "2.0761202448268486662613834501104152445291027559002113186770718253181920337452757416104347657774175948135730243E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 0.75,
+      "rate": 0.02,
+      "actual": 1.3566474143089573,
+      "expected": "1.3566474143089574425156743252445056129549017196069320528615146895117962504643720081326047151415215784114169655",
+      "error": "1.0496000086709226154046857603304642999153572241003411554253916716861377766056304087846941499897293907816943220E-16"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.75,
+      "rate": 0.02,
+      "actual": -0.0024793980373182243,
+      "expected": "-0.00247939803731822451305875445840352338787498761533633273125709026209340880675282779842022782583211166168171793",
+      "error": "8.1668034169426201255821675214988369766600292374168418107720443681602016350008198068996305148186311214641710141E-17"
+    },
+    {
+      "quantity": "annuity_0.02",
+      "duration": 0.75,
+      "rate": 0.02,
+      "actual": 1068875.6234396172,
+      "expected": "1068875.6234396171740516977140119522413638883695239887226741190755464978969358245720714204819786265544892137759",
+      "error": "4.5022361188490628209945646013174744248830652869018451517187792932627653987471011010844308412750277241838224534E-17"
+    },
+    {
+      "quantity": "annuity_0.020000000000000004",
+      "duration": 0.75,
+      "rate": 0.02,
+      "actual": 1068875.623439617,
+      "expected": "1068875.6234396172035917066348950933164278171871927426626898574951764107383616412377790266485586897771967581135",
+      "error": "2.0044179462268788675892423105595483929441612325709449885017339840284699091019132016007852550919014454937599168E-16"
+    },
+    {
+      "quantity": "annuity_0.019999999999999997",
+      "duration": 0.75,
+      "rate": 0.02,
+      "actual": 1068875.623439617,
+      "expected": "1068875.6234396171445116887931288118817543853726574038552165320672655163379864199137012597954692940971533478456",
+      "error": "1.4516874269205433695218753016766923124687081437699097668583087635117766032376196728340911730039442565580194909E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.75,
+      "rate": 0.02,
+      "actual": 910013.1596306162,
+      "expected": "910013.15963061619895950115468216333365474973327924044019307356925743191961181332678296569250671214468103330579",
+      "error": "3.8017078268545308687444596920678506278386930154705422420859854100799915853502539292875333100412350022039456892E-18"
+    },
+    {
+      "quantity": "crf",
+      "duration": 0.75,
+      "rate": 0.08,
+      "actual": 1.426367419885479,
+      "expected": "1.4263674198854789864936738190028844251505219966557228145905467868191401651771720262121169937809463205365725496",
+      "error": "4.6877112314980713632291539777660950641392031932426064216488581848891779833900641168199154919372203555705037338E-18"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.75,
+      "rate": 0.08,
+      "actual": -0.009680928370395595,
+      "expected": "-0.00968092837039559471796174576534529335224366575277554762109151020432846224866730938570922306405972096869715891",
+      "error": "2.1830161704868100048006927623783024603027758898269643000943888153106301909171971386653609630122275595202896207E-17"
+    },
+    {
+      "quantity": "annuity_0.08",
+      "duration": 0.75,
+      "rate": 0.08,
+      "actual": 1617700.6304938837,
+      "expected": "1617700.6304938840708349986953756949549072627434176390262276739412583828787538404886718454565759916284515242764",
+      "error": "2.0326101034155211431588348701579116092088618642410051153582792620952723593785582730439192635607199057374141041E-16"
+    },
+    {
+      "quantity": "annuity_0.08000000000000002",
+      "duration": 0.75,
+      "rate": 0.08,
+      "actual": 1617700.630493884,
+      "expected": "1617700.6304938842397304727262224566961697341922324380992680312681860248662953505159178435754718067286951762568",
+      "error": "1.6373875979788787352699454021364716047092176713363689715322342083461516696236071402803328327116199440711429660E-16"
+    },
+    {
+      "quantity": "annuity_0.07999999999999999",
+      "duration": 0.75,
+      "rate": 0.08,
+      "actual": 1617700.6304938837,
+      "expected": "1617700.6304938839019395246645289486671061948653807033247420191886190529641284835379355214817533372010835131251",
+      "error": "9.8856356694799850743955630904033353647632480259928218039492464942774628042547310306662960374796989185794286088E-17"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.75,
+      "rate": 0.08,
+      "actual": 865532.2484154339,
+      "expected": "865532.24841543396322873441695239564095675637211843069925422088602612326138732699918545676627006609069808102628",
+      "error": "5.2109909308695641361279939274323235902530268552780186009651343524482022769589204935584706646021048961561504771E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 0.75,
+      "rate": -1e-18,
+      "actual": 1.3333333333333333,
+      "expected": "1.3333333333333333321666666666666665831518941584966436219596710011679680715441994440109917698358923445329946986",
+      "error": "5.4636151231257827006352136350764100394222178158147758333598303524140433875077520741841117145222723545643753921E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.75,
+      "rate": -1e-18,
+      "actual": 1.25e-19,
+      "expected": "1.250000000000000089948863401610739043809730704718567082957054703047234719280877540611268703E-19",
+      "error": "4.1666666666666669653677391164802410949933999109684204740780244163513250275406863056028103485778994952578179113E-19"
+    },
+    {
+      "quantity": "annuity_-1e-18",
+      "duration": 0.75,
+      "rate": -1e-18,
+      "actual": 925925.25,
+      "expected": "925925.24999999999328704193749999954071670157704431444613182312334589600712642961900067522167582273353714282673",
+      "error": "7.2500000000000005485888243960089570581705836077675787780548160204610783996221569278939041975610759886905350730E-18"
+    },
+    {
+      "quantity": "annuity_-9.999999999999999e-19",
+      "duration": 0.75,
+      "rate": -1e-18,
+      "actual": 925925.25,
+      "expected": "925925.24999999999328704193750000098962127333392473680595670753482157889358974220715971603001987032332639234867",
+      "error": "7.2499999999999989837707445813798135404393467868241973381251429652364260142915584662212812758969657572954551120E-18"
+    },
+    {
+      "quantity": "annuity_-1.0000000000000003e-18",
+      "duration": 0.75,
+      "rate": -1e-18,
+      "actual": 925925.25,
+      "expected": "925925.24999999999328704193749999809181212982016389208630693871187220009172049515108149878517594032253853273259",
+      "error": "7.2500000000000021134069042106381005759018204287137115989218210666860389392000887612202732160155619761376051385E-18"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.75,
+      "rate": -1e-18,
+      "actual": 925925.2500000001,
+      "expected": "925925.25000000000081018459375000005870523897952159182474593523831729468454432310399542598239173647996936682171",
+      "error": "1.2485363935499632858404635357059512994065581564479390020669990622615428127934800653636770755622243997224674802E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 0.75,
+      "rate": 1e-18,
+      "actual": 1.3333333333333333,
+      "expected": "1.3333333333333333345000000000000000834175502859478008085737465437666572208200657568916121643953858193728389022",
+      "error": "5.6386151231257827034406863791651264048628349766749669244204212126271468738777854965324185751586688594530516824E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.75,
+      "rate": 1e-18,
+      "actual": -1.25e-19,
+      "expected": "-1.2500000000000000889071967349440722280963472575895523582277036809719593945153655009777785630E-19",
+      "error": "4.1666666666666669641524613387024631433277858893179033046432491815591455943534861789804545881523106159298962323E-19"
+    },
+    {
+      "quantity": "annuity_1e-18",
+      "duration": 0.75,
+      "rate": 1e-18,
+      "actual": 925925.25,
+      "expected": "925925.25000000000671295806250000050123928631358069155713433148000667529986401773681744625934346715848231998466",
+      "error": "7.2500000000000004887763243960089484999081060736195528333833709578986403334384897463951230222687054759995667054E-18"
+    },
+    {
+      "quantity": "annuity_1.0000000000000003e-18",
+      "duration": 0.75,
+      "rate": 1e-18,
+      "actual": 925925.25,
+      "expected": "925925.25000000000671295806250000195014385807046113202826636285248904660662364116827532140799278383650807350516",
+      "error": "7.2500000000000020535944042106380661981410259531804320521107384851594658981588794834226750211715164890576192066E-18"
+    },
+    {
+      "quantity": "annuity_9.999999999999999e-19",
+      "duration": 0.75,
+      "rate": 1e-18,
+      "actual": 925925.25,
+      "expected": "925925.25000000000671295806249999905233471455670025108600230010752629096416140185531659680785299308750087558137",
+      "error": "7.2499999999999989239582445813798308016751861940559222337182712234682513006526166966918128923502614704903540030E-18"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.75,
+      "rate": 1e-18,
+      "actual": 925925.2500000001,
+      "expected": "925925.24999999999918981540624999994278009944235340838778348724649104921775848607976626866815708299084892890558",
+      "error": "1.2660363935499632892927071453742708889596296593470039799176013073675239943464648233379175130244818164110707098E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 0.75,
+      "rate": -1e-10,
+      "actual": 1.3333333332166666,
+      "expected": "1.3333333332166666666661805513051082298231751301479160130541374095148086552278218562800725321672687172779925106",
+      "error": "6.2750569112647740673585761894073913627421524777864258063671106727506326066804449016050954712553995863837878166E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.75,
+      "rate": -1e-10,
+      "actual": 1.2500000000520833e-11,
+      "expected": "1.25000000005208337887650966900072129099566699697528804205266223404367037790121420351867981740238097E-11",
+      "error": "2.8251065877615543439704857280704578417357276495281507287508660762778072328937135717680991334404214274010120199E-17"
+    },
+    {
+      "quantity": "annuity_-1e-10",
+      "duration": 0.75,
+      "rate": -1e-10,
+      "actual": 925925.2493287043,
+      "expected": "925925.24932870419395977991495963225551894995727526726986202851019315458551236190847227813343628422028618777210",
+      "error": "1.3399773776340734791246228934139625478397048056671212458736935621278075654561692479730889582679780796429183223E-16"
+    },
+    {
+      "quantity": "annuity_-9.999999999999999e-11",
+      "duration": 0.75,
+      "rate": -1e-10,
+      "actual": 925925.2493287043,
+      "expected": "925925.24932870419395978001219397204975821749996874352581374282956793857207446891956976253802903310804575256653",
+      "error": "1.3399773765839418419893986736210834020538311136712766670952117987185801111125411019833700778769054671362447446E-16"
+    },
+    {
+      "quantity": "annuity_-1.0000000000000002e-10",
+      "duration": 0.75,
+      "rate": -1e-10,
+      "actual": 925925.2493287043,
+      "expected": "925925.24932870419395977981772529246127968241458179996243242281108230624622223787539824679015782366175524161928",
+      "error": "1.3399773786842051162598471132068418175367601667585338402608802155112196972932132611745719546289538869591667784E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.75,
+      "rate": -1e-10,
+      "actual": 925925.2500810185,
+      "expected": "925925.25008101845938242669506175175107409930899897597350867958098391675451729094186933087932889143096553635104",
+      "error": "9.2179252720432662173855915061470216377389244880309249438695181666420682901483044034662909777703962423035469764E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 0.75,
+      "rate": 1e-10,
+      "actual": 1.3333333334500002,
+      "expected": "1.3333333334499999999995138931393362145504259430696346733251328502309109866004246224491307430108467112820903529",
+      "error": "1.1826244949473359523336151573119345593931746642391558102398299982971795029011364095965050685773126593726023806E-16"
+    },
+    {
+      "quantity": "idc",
+      "duration": 0.75,
+      "rate": 1e-10,
+      "actual": -1.2499999999479167e-11,
+      "expected": "-1.249999999947916712209842994743632657558637362999357242456057359978706642942384369982016038603625933E-11",
+      "error": "2.8246378379969603616762676048288150552090050630771006304934905231937922141508601512025853110135658578086036729E-17"
+    },
+    {
+      "quantity": "annuity_1e-10",
+      "duration": 0.75,
+      "rate": 1e-10,
+      "actual": 925925.2506712959,
+      "expected": "925925.25067129580645977996394661777505982782218082394089637943657384270498158988224074054950366723810254862585",
+      "error": "1.1700641595890401781929937751245728108217059066650455717916202927547768232424384610127363732022115474204283699E-16"
+    },
+    {
+      "quantity": "annuity_1.0000000000000002e-10",
+      "duration": 0.75,
+      "rate": 1e-10,
+      "actual": 925925.2506712959,
+      "expected": "925925.25067129580645978006118095769084202018363771704959713442751982269813421585526136308853831779808919125435",
+      "error": "1.1700641585389085412677959005808604639914113406904096170872844101585418965710911859251925389787087925728546744E-16"
+    },
+    {
+      "quantity": "annuity_9.999999999999999e-11",
+      "duration": 0.75,
+      "rate": 1e-10,
+      "actual": 925925.2506712959,
+      "expected": "925925.25067129580645977986671227785927763546072393978071774246184001734325123576666860293797156990731687851307",
+      "error": "1.1700641606391718151181916496682852815631820921707747789645645116690580938777391532812834169358418686375803327E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 0.75,
+      "rate": 1e-10,
+      "actual": 925925.2499189815,
+      "expected": "925925.24991898154063242668915699825000831582827502282755955744472506884179193771711101998889528149121597909665",
+      "error": "9.2195294403232101715012129690272357935956972273200438239933636611520813870516540278722441774568746638357261204E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 1.01,
+      "rate": 0.0,
+      "actual": 0.9900990099009901,
+      "expected": "0.99009900990099009030312303009386114568766471538642758034860247285889268918954435905392950714995083209471107904",
+      "error": "8.7938457396052081306911936186580362547382701265963333980835159309208393096923828125000000000079406203534091446E-20"
+    },
+    {
+      "quantity": "idc",
+      "duration": 1.01,
+      "rate": 0.0,
+      "actual": 0.0,
+      "expected": "0",
+      "error": "0"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 1.01,
+      "rate": 0.0,
+      "actual": 1246912.67,
+      "expected": "1246912.6700000000109651576707392450771294534206390380859375000000000000000000000000000000000000000000000000000",
+      "error": "6.8546070383563851007714103951860309660936689359288387425846868195235101808312221710421992892309291127814605591E-17"
+    },
+    {
+      "quantity": "annuity_1e-18",
+      "duration": 1.01,
+      "rate": 0.0,
+      "actual": 1246912.67,
+      "expected": "1246912.6700000000212584217615892459469291588890374521918926990883928723117119330077371676003773729835668430123",
+      "error": "7.6801070383563850998690720604945289348153179166787141968918538623701806067865087031130432488765204227693920135E-17"
+    },
+    {
+      "quantity": "annuity_-1e-18",
+      "duration": 1.01,
+      "rate": 0.0,
+      "actual": 1246912.67,
+      "expected": "1246912.6700000000006718935798892442820094675100796354099899696251439846711239515109360159622194643633803702828",
+      "error": "6.0291070383563850940339137298775324202815649988168088859594751918722306547477829957241327422468314264385751226E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 1.01,
+      "rate": -0.02,
+      "actual": 0.9701986898825693,
+      "expected": "0.97019868988256931049755907440416838932025798100723402249809126099435018114713175505725678340595639842018492015",
+      "error": "1.2442293020053903910093593130191302350035840182963700557794042637428418657244095926071273426160838925125501921E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 1.01,
+      "rate": -0.02,
+      "actual": -0.00010066664660103919,
+      "expected": "-0.00010066664660103919592948180723628496612862818445986849171823333716939477002742463547640559960807576630578686",
+      "error": "3.4963331265188370942237771552660303516216712851590991329122151609749819392328326583866862285487256703617357182E-17"
+    },
+    {
+      "quantity": "annuity_-0.02",
+      "duration": 1.01,
+      "rate": -0.02,
+      "actual": 1077023.2698512254,
+      "expected": "1077023.2698512254316292623083068234917021654491042136800817675685296348861440704162666667840458974521066478812",
+      "error": "3.1067552882838202685723750009455463385478884810961375286621305033641716354396127275899825381395308396941583189E-18"
+    },
+    {
+      "quantity": "annuity_-0.019999999999999997",
+      "duration": 1.01,
+      "rate": -0.02,
+      "actual": 1077023.2698512252,
+      "expected": "1077023.2698512254631050306316165649882525456332791354763965102517294086594879212964684381421127004515969601791",
+      "error": "2.4851130630944171849588135320924858438795239809739260514650200704945108560195922923486083351102195411211216615E-16"
+    },
+    {
+      "quantity": "annuity_-0.020000000000000004",
+      "duration": 1.01,
+      "rate": -0.02,
+      "actual": 1077023.2698512252,
+      "expected": "1077023.2698512254001534939849970828036146547954595961685710937723917735925347765598457512081961909071543044472",
+      "error": "1.9006174592499870038182613423733594201363387771314696761208737398120821880862422595968967421538037650186277000E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 1.01,
+      "rate": -0.02,
+      "actual": 1272488.8343741521,
+      "expected": "1272488.8343741520009728254951759184166614367167241905172064989295288013230314998407415602395212803133469814258",
+      "error": "9.6625794468095680152358485852708770221688394811238818995664534605262654903478790620856323256096317346778908337E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 1.01,
+      "rate": 0.02,
+      "actual": 1.0100006568111446,
+      "expected": "1.0100006568111444890659236353218926265105183591930653747929218465751866214087473036363289528593574093258894029",
+      "error": "1.0250401094274608195713388878532248209451480904251210835689142335675901345763502997010495502120803742780850660E-16"
+    },
+    {
+      "quantity": "idc",
+      "duration": 1.01,
+      "rate": 0.02,
+      "actual": 9.934648948860624e-05,
+      "expected": "0.0000993464894886062541332918251568673622844693697449833317889930711338151854360527448173382817656147792566008",
+      "error": "9.9106564935193034984100589927642565498856042142786028990529311816675576903997279655326319657609300951611723878E-17"
+    },
+    {
+      "quantity": "annuity_0.02",
+      "duration": 1.01,
+      "rate": 0.02,
+      "actual": 1439419.1728986844,
+      "expected": "1439419.1728986844737143164159705665892572225048609923058688909077525682265876020471711732154356367322954513915",
+      "error": "5.4353271219690740946854602448029507246773076540709662693321925158218059948023749935836844565162454027295400643E-17"
+    },
+    {
+      "quantity": "annuity_0.020000000000000004",
+      "duration": 1.01,
+      "rate": 0.02,
+      "actual": 1439419.1728986842,
+      "expected": "1439419.1728986845141313504883084923697963694915712042490069109196056290523361095459759186047260131655061711827",
+      "error": "2.4418517208005288353103430330770726579003291363707438468019118096335767429542720222031208582454022473927332976E-16"
+    },
+    {
+      "quantity": "annuity_0.019999999999999997",
+      "duration": 1.01,
+      "rate": 0.02,
+      "actual": 1439419.1728986842,
+      "expected": "1439419.1728986844332972823436326418061289137644552545105976027254497073222932133620132460947466474800439601240",
+      "error": "1.8802775131852919932886246654195918431496667720511997514744750897367556965542904586806778609806785146988110279E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 1.01,
+      "rate": 0.02,
+      "actual": 1222342.7694570757,
+      "expected": "1222342.7694570758762015240730618366568153636991927838326354267683533068982541513202377237018483246182084788091",
+      "error": "1.0744465670811352715482248835465780780619179970804672334065679085056869517794516761722901893754593963039402566E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 1.01,
+      "rate": 0.08,
+      "actual": 1.0697131789340613,
+      "expected": "1.0697131789340612074788796516073374982157266689919746401765095766008719414249729829270081393580723354107584906",
+      "error": "4.8667914915370317985760912611830031985769312104813635397113358198217669896267351561681758720417647105779730419E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 1.01,
+      "rate": 0.08,
+      "actual": 0.0003898411935308685,
+      "expected": "0.0003898411935308685505576654479323872039043761809752745661869883438881352513093245458750107733949963703595400",
+      "error": "1.1491591631432931499739817263701104619057449959413463808545187047067412789722245372569198505899464384563103724E-16"
+    },
+    {
+      "quantity": "annuity_0.08",
+      "duration": 1.01,
+      "rate": 0.08,
+      "actual": 2178503.5157317636,
+      "expected": "2178503.5157317639012152221036386581790462789485285796354653270026736510771745733105896964206657015721120552465",
+      "error": "1.5647912079970935505762677462162569506036142392574396807253632965153768938535489354489002986938446729162142201E-16"
+    },
+    {
+      "quantity": "annuity_0.08000000000000002",
+      "duration": 1.01,
+      "rate": 0.08,
+      "actual": 2178503.5157317636,
+      "expected": "2178503.5157317641323002616122969445733472718481507911657583683688711810091154581500027343310393581990801985106",
+      "error": "2.6255424890480964733686570505620309188285472211508614485664913369636425210208801698470295967983662956452229455E-16"
+    },
+    {
+      "quantity": "annuity_0.07999999999999999",
+      "duration": 1.01,
+      "rate": 0.08,
+      "actual": 2178503.515731763,
+      "expected": "2178503.5157317636701301825949803933283256121604192915550585186867316350070852724561803814483696392064364316304",
+      "error": "2.6415682070017814096703106107776356835368921202455223070156940968646343623978285075065962350795538325005306526E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 1.01,
+      "rate": 0.08,
+      "actual": 1154110.3020065725,
+      "expected": "1154110.3020065723989275997530839563195800394377786317288495981856073753477611040591424344067342771602793956121",
+      "error": "7.4553093296851578585065337114569278595653344729131386572999160170806293619900297084041388712376458800329964238E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 1.01,
+      "rate": -1e-18,
+      "actual": 0.9900990099009902,
+      "expected": "0.99009900990099008930807352514336602934950797767114669583813574866333076193580272556976090353673109366806956547",
+      "error": "1.1304958702974475967751020630554018067938524678400919328130031409244136707629517517448466836916737764846333387E-16"
+    },
+    {
+      "quantity": "idc",
+      "duration": 1.01,
+      "rate": -1e-18,
+      "actual": -5.000000000000005e-21,
+      "expected": "-5.00000000000000480025421877373610363695493826332200302243616857165699480261264052368381235E-21",
+      "error": "3.8345366036231921250825436232172135183034808072832698732820316594455871976175868559730283992683863265270205523E-17"
+    },
+    {
+      "quantity": "annuity_-1e-18",
+      "duration": 1.01,
+      "rate": -1e-18,
+      "actual": 1246912.67,
+      "expected": "1246912.6700000000019250408132392443791305517648658492918662953336487788992644499992329449319322056002568973483",
+      "error": "6.1296070383563850956084289836689310012301528087887849953753763893698044193556292510800970773636561685962389454E-17"
+    },
+    {
+      "quantity": "annuity_-9.999999999999999e-19",
+      "duration": 1.01,
+      "rate": -1e-18,
+      "actual": 1246912.67,
+      "expected": "1246912.6700000000019250408132392463615411055702530867363547738154861869688274087501209249590407442669250848742",
+      "error": "6.1296070383563852545939458928352411703276851697514863851778924346828589280486620442028831005492225732981227483E-17"
+    },
+    {
+      "quantity": "annuity_-1.0000000000000003e-18",
+      "duration": 1.01,
+      "rate": -1e-18,
+      "actual": 1246912.67,
+      "expected": "1246912.6700000000019250408132392423967199979594786118473778168518141408544525516227084950161821325948386122512",
+      "error": "6.1296070383563849366229120745026208321326204478258002283431303463143919517870617354243397332105409705986963428E-17"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 1.01,
+      "rate": -1e-18,
+      "actual": 1246912.67,
+      "expected": "1246912.6700000000122183049040892451845973566654517535652554059277090674369655116814414588690576033446789955030",
+      "error": "6.9551070383563851015164656489774294774163136243295612928417452190992376921202003789225254758678906723463830138E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 1.01,
+      "rate": 1e-18,
+      "actual": 0.9900990099009902,
+      "expected": "0.99009900990099009129817253504435626202913828478487678509676774912908648103549167226803316189619162947033942911",
+      "error": "1.1103958702974475929961852982896187577922311842153825636652256249157969481446954601437035876811716697486620690E-16"
+    },
+    {
+      "quantity": "idc",
+      "duration": 1.01,
+      "rate": 1e-18,
+      "actual": 5.000000000000005e-21,
+      "expected": "5.0000000000000047969542187737361002633921018157411365524018247346259995964657191888328069E-21",
+      "error": "3.9005366036231921317647988227468173030974528663519769054024286279593820178964768475059210167734014471561271165E-17"
+    },
+    {
+      "quantity": "annuity_1e-18",
+      "duration": 1.01,
+      "rate": 1e-18,
+      "actual": 1246912.67,
+      "expected": "1246912.6700000000200052745282392458316290854357872354612658331542381307778636603606868074913707428566307639128",
+      "error": "7.5796070383563850999531418067031304851221207913454323987430516124106287535052450680608478344056621407236212925E-17"
+    },
+    {
+      "quantity": "annuity_1.0000000000000003e-18",
+      "duration": 1.01,
+      "rate": 1e-18,
+      "actual": 1246912.67,
+      "expected": "1246912.6700000000200052745282392478140396392411744976858862342034179346100630893268496834055823553637693926783",
+      "error": "7.5796070383563852589386587158694380309586241510638499658868173082238622615872451717261397357547159404895542872E-17"
+    },
+    {
+      "quantity": "annuity_9.999999999999999e-19",
+      "duration": 1.01,
+      "rate": 1e-18,
+      "actual": 1246912.67,
+      "expected": "1246912.6700000000200052745282392438492185316303999732366454321050610969704153490757698262455730172410933354778",
+      "error": "7.5796070383563849409676248975368229392856174316267314543695605147597888541871579743663770622343403715405375655E-17"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 1.01,
+      "rate": 1e-18,
+      "actual": 1246912.67,
+      "expected": "1246912.6700000000097120104373892449721761989574153230070730139826886690903788228578966499506958472137195408312",
+      "error": "6.7541070383563851000260201413946324544470336890243045427412862923832345344517280989866892488979934695456503530E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 1.01,
+      "rate": -1e-10,
+      "actual": 0.9900990098014851,
+      "expected": "0.99009900980148513980809010611193767468643821513150388073874093048606971531732613041749457588344667770934664467",
+      "error": "9.5135855151641638815471479582082000401858925597675346477330161949043998906837529096527113952578132097113613449E-18"
+    },
+    {
+      "quantity": "idc",
+      "duration": 1.01,
+      "rate": -1e-10,
+      "actual": -5.000000000165005e-13,
+      "expected": "-5.0000000001650046230612939852072892716074227376592724496401512902434002690976344661585383007428415E-13",
+      "error": "4.7813238418388659617228029085622893655782224568176515536489773188658890566196785141622333057808791989126070422E-17"
+    },
+    {
+      "quantity": "annuity_-1e-10",
+      "duration": 1.01,
+      "rate": -1e-10,
+      "actual": 1246912.6690959884,
+      "expected": "1246912.6690959883254976612816018105390933132602331821091133735596593220723059964015790627909983770900079967365",
+      "error": "4.8023935136066753860520234108817926100337416263294071266002087913807302054089827339095817011169624340525013484E-17"
+    },
+    {
+      "quantity": "annuity_-9.999999999999999e-11",
+      "duration": 1.01,
+      "rate": -1e-10,
+      "actual": 1246912.6690959886,
+      "expected": "1246912.6690959883254976614146391307034354035438592474309091234291398794974621346429188731699815649240052752350",
+      "error": "2.3474963717712029718257618752488165541246245369391570755321960590692048038168530172301939832900405734810397919E-16"
+    },
+    {
+      "quantity": "annuity_-1.0000000000000002e-10",
+      "duration": 1.01,
+      "rate": -1e-10,
+      "actual": 1246912.6690959886,
+      "expected": "1246912.6690959883254976611485644903747512229766071292624000542516373646629248499922710701459586274086342995612",
+      "error": "2.3474963739050704584845377060070934120518784066791428616527309163240861452971376508532534282151961830828938066E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 1.01,
+      "rate": -1e-10,
+      "actual": 1246912.6701253147,
+      "expected": "1246912.6701253147343127309208696800813100746822058805703453111982441289339607877740598471411966133627655027580",
+      "error": "1.0419496472825006215901426531033503841848881199372478172446017523490722396503729006878734080605839480718654517E-18"
+    },
+    {
+      "quantity": "crf",
+      "duration": 1.01,
+      "rate": 1e-10,
+      "actual": 0.9900990100004949,
+      "expected": "0.99009901000049504079818912239261629988893920630690321992892172648776753662357755118635099464250815947324149290",
+      "error": "1.0279485037739398473130597043733660069890540735108581192761408140087771116890740001713723553942591571630485211E-16"
+    },
+    {
+      "quantity": "idc",
+      "duration": 1.01,
+      "rate": 1e-10,
+      "actual": 4.999999999835005e-13,
+      "expected": "4.999999999835004623061293671022773508171318447810609001621368451226572294269325327536309855035532E-13",
+      "error": "8.2219456675802065388017755863669224379396698465028201717057069865840368837981907973115037364143202638033459328E-17"
+    },
+    {
+      "quantity": "annuity_1e-10",
+      "duration": 1.01,
+      "rate": 1e-10,
+      "actual": 1246912.6709040117,
+      "expected": "1246912.6709040116969976613634704296613136013935994843476160397167955073312182905637282615615830936516956269674",
+      "error": "1.1565011431552173649281430894016253616739141303715000241321435034416995981945847363370107193616845994536100580E-18"
+    },
+    {
+      "quantity": "annuity_1.0000000000000002e-10",
+      "duration": 1.01,
+      "rate": 1e-10,
+      "actual": 1246912.6709040117,
+      "expected": "1246912.6709040116969976614965077499919523419865885750047497502946403668081825721955081258753203594812533060666",
+      "error": "1.1565010364618430533280513387815913207830226857342779060525948829093041202391550539089332462077886547628372492E-18"
+    },
+    {
+      "quantity": "annuity_9.999999999999999e-11",
+      "duration": 1.01,
+      "rate": 1e-10,
+      "actual": 1246912.6709040117,
+      "expected": "1246912.6709040116969976612304331093306748608006104061655647727992458068364502002975246522087204982439863169588",
+      "error": "1.1565012498485916765282348400216721647406648520795303035867656480697146641292258864030749893900020941262150588E-18"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 1.01,
+      "rate": 1e-10,
+      "actual": 1246912.6698746851,
+      "expected": "1246912.6698746852876427309084247000751878211780865647455865702311706068399536772229289194431119271156417632585",
+      "error": "1.3607035813341555644693014664066606904904859459283945555111778474599885776617654365424359989541291817236532602E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 7.25,
+      "rate": 0.0,
+      "actual": 0.13793103448275862,
+      "expected": "0.13793103448275862068965517241379310344827586206896551724137931034482758620689655172413793103448275862068965517",
+      "error": "1.3877787807814456755295395851135253906249999999999999999999999999999999999999999999999999999982500000000000000E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 7.25,
+      "rate": 0.0,
+      "actual": 0.0,
+      "expected": "0",
+      "error": "0"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 7.25,
+      "rate": 0.0,
+      "actual": 8950610.75,
+      "expected": "8950610.7500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "error": "0"
+    },
+    {
+      "quantity": "annuity_1e-18",
+      "duration": 7.25,
+      "rate": 0.0,
+      "actual": 8950610.75,
+      "expected": "8950610.7500000001018131972812500078313487229317551060409207038501612271459717107285800710086560542670117076459",
+      "error": "1.1375000000000000745560698621324381808404581399315894055037462431519053653929197342793027947613504387402930721E-17"
+    },
+    {
+      "quantity": "annuity_-1e-18",
+      "duration": 7.25,
+      "rate": 0.0,
+      "actual": 8950610.75,
+      "expected": "8950610.7499999998981868027187499932634228544276200506043041569333185402582677241295811008117626366340901710027",
+      "error": "1.1375000000000000882029448621324401335014946807688114998591067958601405158779561245487774807382986498929831288E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 7.25,
+      "rate": -0.02,
+      "actual": 0.12679110867518054,
+      "expected": "0.12679110867518053053518631343287480396092034148970005174749263590298432379275388260998528085509693456002985460",
+      "error": "4.3649102842844667110011898890099141679106452285436014535316394594495725692664267891079669571908108594697646384E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 7.25,
+      "rate": -0.02,
+      "actual": -0.0603583845941752,
+      "expected": "-0.06035838459417517377274337054843671694438327160554804777493505234704075945334457035233332727722861435516555619",
+      "error": "4.8639153162903495439541175520491792551552452580756505785409606121541631991256526559556822683437248766832406850E-16"
+    },
+    {
+      "quantity": "annuity_-0.02",
+      "duration": 7.25,
+      "rate": -0.02,
+      "actual": 7731107.6301201815,
+      "expected": "7731107.6301201824857882397630764657969327190204312043282223985663636290337826162417587847411365026007260943935",
+      "error": "1.3028253092522344004031879523925819910893256566815836402461715648040114010311728080307851407294542838753594362E-16"
+    },
+    {
+      "quantity": "annuity_-0.019999999999999997",
+      "duration": 7.25,
+      "rate": -0.02,
+      "actual": 7731107.630120182,
+      "expected": "7731107.6301201827971227767569116135191140204773434231878725006554201918941612703711143401868623725493535856314",
+      "error": "5.0088583656117127576634664451823642102471748066200499005207663823716281959687052211867724559439085136093654711E-17"
+    },
+    {
+      "quantity": "annuity_-0.020000000000000004",
+      "duration": 7.25,
+      "rate": -0.02,
+      "actual": 7731107.630120182,
+      "expected": "7731107.6301201821744537027692413299264586300810265307083837503253785842311875437384634361888809631228905310497",
+      "error": "3.0452149157091772478797270189218110313343822776353786596406800624373626863040356375700313058368360480782122536E-17"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 7.25,
+      "rate": -0.02,
+      "actual": 9737015.575459413,
+      "expected": "9737015.5754594135886243747477527141640272333220813742997940313196274718121007618936192891174461939117741051375",
+      "error": "3.6787988376541642474027618196424850716263010078947167237643323335280312085327217746544381598235726165158502617E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 7.25,
+      "rate": 0.02,
+      "actual": 0.14954499211449976,
+      "expected": "0.14954499211449974390121410218090422842249287189140166201441664850043962009421954201376775122843412978693396370",
+      "error": "9.7516470601591832287607910033575851631308247938036112688596425228918747202458890051019398908029738338542243908E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 7.25,
+      "rate": 0.02,
+      "actual": 0.06473459322029819,
+      "expected": "0.0647345932202981871074759864678370625949731892456862555245134686365154915392666389228494791060424049695372924",
+      "error": "3.5550160922660686844461188221665744013326793972409854337780520783367031081294186961495007231631415730714777456E-17"
+    },
+    {
+      "quantity": "annuity_0.02",
+      "duration": 7.25,
+      "rate": 0.02,
+      "actual": 10332464.359916298,
+      "expected": "10332464.359916299349166411235448871666517587572065224319183151063616146337046304196690397992460056693395733167",
+      "error": "1.5778267349558754397468465122307093012835258182179233171259901360306198798488057163183598116808532415890247015E-16"
+    },
+    {
+      "quantity": "annuity_0.020000000000000004",
+      "duration": 7.25,
+      "rate": 0.02,
+      "actual": 10332464.359916298,
+      "expected": "10332464.359916299748941198631400716685274805425379445985528683923822462875167261694179339296062032599520393590",
+      "error": "1.9647380984703102863119389487441883928840020229194212112041802991534393324664746773106002878394758431271356062E-16"
+    },
+    {
+      "quantity": "annuity_0.019999999999999997",
+      "duration": 7.25,
+      "rate": 0.02,
+      "actual": 10332464.359916298,
+      "expected": "10332464.359916298949391623839497041269361028202001093173144700323787377940704707017996827095247194878185527464",
+      "error": "1.1909153714414405773927995811661229950737185510625429854953903939948791834363418746246455380173919478329733283E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 7.25,
+      "rate": 0.02,
+      "actual": 8255488.74986565,
+      "expected": "8255488.7498656501473551778439039447500443494581634838644806635564381576250580567656221695057920169769902508829",
+      "error": "6.2986600366590970973996700506290882878661473282669120972576808404175223836447024927540105329026961996482314092E-18"
+    },
+    {
+      "quantity": "crf",
+      "duration": 7.25,
+      "rate": 0.08,
+      "actual": 0.1870781384950644,
+      "expected": "0.18707813849506441781237796415856774174031073085225665500343294073416636028559065052659161756715724212057852548",
+      "error": "3.6082803104557314733972319797754177876461126801616456220358405608871071399111106593630911259332274019588967688E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 7.25,
+      "rate": 0.08,
+      "actual": 0.2881344074646602,
+      "expected": "0.2881344074646601749765712610344282232985905725174140958741815253119700681536185032404425112535264770429644161",
+      "error": "1.9162243519801621162141648572296977514097432050241450599519468728425388998139337850262113899261740376848883950E-17"
+    },
+    {
+      "quantity": "annuity_0.08",
+      "duration": 7.25,
+      "rate": 0.08,
+      "actual": 15637772.761440877,
+      "expected": "15637772.761440879351404987388631717897436873186370510586867514765497701161287124723827839413567919075031401339",
+      "error": "1.5859404007556078451396209397866237953173829314618132025696919365120167378277165091275879585160748477400018597E-16"
+    },
+    {
+      "quantity": "annuity_0.08000000000000002",
+      "duration": 7.25,
+      "rate": 0.08,
+      "actual": 15637772.761440877,
+      "expected": "15637772.761440881637123735939424613470434636252642742315696766229152284518562790335791810793605711596711648687",
+      "error": "3.0476055518101394020323880222300214525029098831634610951816142748191737332750107541267266937829033460917652769E-16"
+    },
+    {
+      "quantity": "annuity_0.07999999999999999",
+      "duration": 7.25,
+      "rate": 0.08,
+      "actual": 15637772.761440873,
+      "expected": "15637772.761440877065686238837839138143774737362574360934323475833125762978630363047822989008317712944312778602",
+      "error": "2.5065136638872806672190943700142324867811737823367547281526275929254697578389626501826068332861400141595556459E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 7.25,
+      "rate": 0.08,
+      "actual": 6599205.069771267,
+      "expected": "6599205.0697712652245298458049656147072749035807304158006856961101067191017683668927304030422921503504490122722",
+      "error": "1.9969757387441655520334122569178274146989218872960245661277458902137001806631923621960216074352328258809980638E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 7.25,
+      "rate": -1e-18,
+      "actual": 0.13793103448275862,
+      "expected": "0.13793103448275862012068965517241375299094838271511200266040171815155714844046459514264519807145771282359325942",
+      "error": "9.7527878078144565047100213330544518437298247220553042703458609645828113659271446477049610219666367546070582247E-18"
+    },
+    {
+      "quantity": "idc",
+      "duration": 7.25,
+      "rate": -1e-18,
+      "actual": -3.1250000000000003e-18,
+      "expected": "-3.12500000000000021810132517069351331246545935545782308477862782125975584580021713654908046220E-18",
+      "error": "3.2564879110195771624652904126253204907897072656432791444031052479370620936009345641685287543503661916378695224E-17"
+    },
+    {
+      "quantity": "annuity_-1e-18",
+      "duration": 7.25,
+      "rate": -1e-18,
+      "actual": 8950610.75,
+      "expected": "8950610.7499999999351080720624999955602614485780950396459409568590103280688888196503398604761996197575257139917",
+      "error": "7.2500000000000005485888243960089570581705836077675787780548160204610783996221569278939041975636828871452950829E-18"
+    },
+    {
+      "quantity": "annuity_-9.999999999999999e-19",
+      "duration": 7.25,
+      "rate": -1e-18,
+      "actual": 8950610.75,
+      "expected": "8950610.7499999999351080720625000151687699863545434222489043925609880949622121337213062202213141812466617585930",
+      "error": "7.2499999999999983578435126555281561333468520584474497491315565152807808639321418156074727710964788154938256340E-18"
+    },
+    {
+      "quantity": "annuity_-1.0000000000000003e-18",
+      "duration": 7.25,
+      "rate": -1e-18,
+      "actual": 8950610.75,
+      "expected": "8950610.7499999999351080720624999759517529108016466570429775211570731685102488204716428031924028598320861188245",
+      "error": "7.2500000000000027393341361364897579829943151570927697142468503405108082959691035972237984607688052231907687547E-18"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 7.25,
+      "rate": -1e-18,
+      "actual": 8950610.75,
+      "expected": "8950610.7500000000369212693437500027552776885020375534339223598854724000035886129260778891861518674736302140402",
+      "error": "4.1250000000000002908156242253154379807120875434012106738066316852158223140049426221642408105402638636024470447E-18"
+    },
+    {
+      "quantity": "crf",
+      "duration": 7.25,
+      "rate": 1e-18,
+      "actual": 0.13793103448275862,
+      "expected": "0.13793103448275862125862068965517245509094816900902609797896565271939064067235294721887468407142950533082508998",
+      "error": "1.8002787807814456980443270369216052682065578860334450238500791126669955524901344000917830141956357461532070437E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 7.25,
+      "rate": 1e-18,
+      "actual": 3.1250000000000003e-18,
+      "expected": "3.1250000000000002290388251706935148774559855503124776979915010530501477617905813218988516485E-18",
+      "error": "2.9064879110195771266402343049391261356793798724445494534755634830560483280949689210618336319403273653267196096E-17"
+    },
+    {
+      "quantity": "annuity_1e-18",
+      "duration": 7.25,
+      "rate": 1e-18,
+      "actual": 8950610.75,
+      "expected": "8950610.7500000000648919279375000048453131010312800183856318709733978612320188381225686471736535158653290931851",
+      "error": "7.2500000000000004887763243960089484999081060736195528333833709578986403334384897463951230222746641010390181565E-18"
+    },
+    {
+      "quantity": "annuity_1.0000000000000003e-18",
+      "duration": 7.25,
+      "rate": 1e-18,
+      "actual": 8950610.75,
+      "expected": "8950610.7500000000648919279375000244538216388077286460949520288809994780800227256060491356678701894885465348370",
+      "error": "7.2500000000000026795216361364897132774341939050041787526238310000929025477239118076373098654706922852929505631E-18"
+    },
+    {
+      "quantity": "annuity_9.999999999999999e-19",
+      "duration": 7.25,
+      "rate": 1e-18,
+      "actual": 8950610.75,
+      "expected": "8950610.7500000000648919279374999852368045632548313906763117130658368517186968842007051076131306018407448385782",
+      "error": "7.2499999999999982980310126555281837223820182422298650068739817727919629875278044347960500358163198811905235293E-18"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 7.25,
+      "rate": 1e-18,
+      "actual": 8950610.75,
+      "expected": "8950610.7499999999630787306562499974724034724510874791438019724287208878450590830313065691483315184030796698314",
+      "error": "4.1250000000000002994093742253154392103475009822155821448745588673368414595108843597733481569316685055156054262E-18"
+    },
+    {
+      "quantity": "crf",
+      "duration": 7.25,
+      "rate": -1e-10,
+      "actual": 0.13793103442586205,
+      "expected": "0.13793103442586206897144396344467131696383906195644919455214398623932953065820040292663187514151212186995431410",
+      "error": "1.5213456820127703791987258614902541981633276334562652852734015331223233465444705985347254598022092027095374011E-16"
+    },
+    {
+      "quantity": "idc",
+      "duration": 7.25,
+      "rate": -1e-10,
+      "actual": -3.124999999453125e-10,
+      "expected": "-3.1249999994531251139087220398289497719488003412747771191528553065576984937729044501394860124043341353E-10",
+      "error": "2.8117386361714163329267753477087814547169595416452387406945858266942208989911404702366498414805431280220666320E-19"
+    },
+    {
+      "quantity": "annuity_-1e-10",
+      "duration": 7.25,
+      "rate": -1e-10,
+      "actual": 8950610.743510807,
+      "expected": "8950610.7435108072082778725112764451366831829203275836086662755985338276599528317818986886232174141294331484636",
+      "error": "3.0750134614305910998344127916232967369347477846746588327829747984088705981878334978666687963433654798360131824E-17"
+    },
+    {
+      "quantity": "annuity_-9.999999999999999e-11",
+      "duration": 7.25,
+      "rate": -1e-10,
+      "actual": 8950610.743510809,
+      "expected": "8950610.7435108072082778738271811770187212703314459931604685007003044565583996768187532906023475541467375507850",
+      "error": "1.7735244087368188158479573884319733797117252745375901566499820570389325816544224056845408150250609289097178344E-16"
+    },
+    {
+      "quantity": "annuity_-1.0000000000000002e-10",
+      "duration": 7.25,
+      "rate": -1e-10,
+      "actual": 8950610.743510809,
+      "expected": "8950610.7435108072082778711953717132546450955092093569360413031167988990818613522300693709471573062686731128540",
+      "error": "1.7735244116771873998265853313308425868479210575102199266543946287633187135660518543875384759086502072636160753E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 7.25,
+      "rate": -1e-10,
+      "actual": 8950610.753692128,
+      "expected": "8950610.7536921269355134059395696385574998587504069993308483691183131366023731853346584001398770944700412254936",
+      "error": "9.2587156672197196309813954423085102161374355134960256537333791098868850399197901416070920674637407713301124143E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 7.25,
+      "rate": 1e-10,
+      "actual": 0.1379310345396552,
+      "expected": "0.13793103453965517241971982965877695976185793124500590171189686007110973988933685903371121522789979824300213320",
+      "error": "1.2429305497162172984539606041081957918587485790785869601397544345677390962393654160789074521772552291620583289E-16"
+    },
+    {
+      "quantity": "idc",
+      "duration": 7.25,
+      "rate": 1e-10,
+      "actual": 3.125000000546875e-10,
+      "expected": "3.125000000546875113908722119531935110537611498540054633973502525623966415124297087499930297424035224E-10",
+      "error": "3.0775286601784925317237791883566814146487990334143211394305257088221335214925598739901591665813421642741018884E-17"
+    },
+    {
+      "quantity": "annuity_1e-10",
+      "duration": 7.25,
+      "rate": 1e-10,
+      "actual": 8950610.756489195,
+      "expected": "8950610.7564891927957778729848173051589116689477479647619983345535471461481553688616604919785354499683246367165",
+      "error": "2.3839958490330421876184608142878258983605397131157926588046349943702300028489199662186359276704083691541563674E-16"
+    },
+    {
+      "quantity": "annuity_1.0000000000000002e-10",
+      "duration": 7.25,
+      "rate": 1e-10,
+      "actual": 8950610.756489193,
+      "expected": "8950610.7564891927957778743007220386858306722394646157210042758428997872413057712285581254574818054079645141751",
+      "error": "3.0297009423028302262238327883985913366923797325151417178126861991498340218721639197214016640234834890570738895E-17"
+    },
+    {
+      "quantity": "annuity_9.999999999999999e-11",
+      "duration": 7.25,
+      "rate": 1e-10,
+      "actual": 8950610.756489193,
+      "expected": "8950610.7564891927957778716689125716319926656560314966821698379073664214385513095720818785386815319028451795760",
+      "error": "3.0297009717065160601293707260463944802959096498036210458090032547446119971237612846814285562669600893863389626E-17"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 7.25,
+      "rate": 1e-10,
+      "actual": 8950610.746307872,
+      "expected": "8950610.7463078730667634056699616116085299132862720367722913815638580432174603237903483658579030843185391350311",
+      "error": "9.2841531748686530301945687805966155785086878450855172409309633331678719918242205609757997122611908353030797122E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 30.5,
+      "rate": 0.0,
+      "actual": 0.03278688524590164,
+      "expected": "0.032786885245901639344262295081967213114754098360655737704918032786885245901639344262295081967213114754098360656",
+      "error": "5.2041704279304212832357734441757202148437499999999999999999999999999999999999999999999999999992000000000000000E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 30.5,
+      "rate": 0.0,
+      "actual": 0.0,
+      "expected": "0",
+      "error": "0"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 30.5,
+      "rate": 0.0,
+      "actual": 37654293.5,
+      "expected": "37654293.500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "error": "0"
+    },
+    {
+      "quantity": "annuity_1e-18",
+      "duration": 30.5,
+      "rate": 0.0,
+      "actual": 37654293.5,
+      "expected": "37654293.500000000866048750500000072943690392199588140986483046171702180915824903896318597649536194247416431826",
+      "error": "2.3000000000000001408194503256304231115543676831716723455269048362639485296817796509406250547430918288535844659E-17"
+    },
+    {
+      "quantity": "annuity_-1e-18",
+      "duration": 30.5,
+      "rate": 0.0,
+      "actual": 37654293.5,
+      "expected": "37654293.499999999133951249499999949025236471706665002434080398941008524367830181521651373433897741101060691117",
+      "error": "2.3000000000000001882757003256304299018246907674753260349246865124695878830317956607424740161241250358432202838E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 30.5,
+      "rate": -0.02,
+      "actual": 0.02347844289043591,
+      "expected": "0.023478442890435911625365375268880476394506233725276900534751755405787896836272971205315635704912776447662451682",
+      "error": "1.9061688469117211761956150013349814836624449283154290510477927490853722578897794403742061017182437902145526658E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 30.5,
+      "rate": -0.02,
+      "actual": -0.24590479634877005,
+      "expected": "-0.24590479634877006598330695012813394291808245465660774602422813848532945428344381879002608723119343408463031109",
+      "error": "6.7270546264379479674037181182807450679030175207222180503747872797682934036608748491133175900486410341275952186E-17"
+    },
+    {
+      "quantity": "annuity_-0.02",
+      "duration": 30.5,
+      "rate": -0.02,
+      "actual": 32523970.030160766,
+      "expected": "32523970.030160767698833284520528580249165231741124376829073538796426301452464799361881784083401838527192535035",
+      "error": "4.9314713536630960907795992273458450504289431901565208040893983261049138344779032865573830513982430289261430357E-17"
+    },
+    {
+      "quantity": "annuity_-0.019999999999999997",
+      "duration": 30.5,
+      "rate": -0.02,
+      "actual": 32523970.030160766,
+      "expected": "32523970.030160770347123427164564797323953229430419504825810564233245952068955710808006658294568474386901542722",
+      "error": "1.3074050934778720532331691508405546402959596911217852684416132249847395244167166847069259168856984496043857114E-16"
+    },
+    {
+      "quantity": "annuity_-0.020000000000000004",
+      "duration": 30.5,
+      "rate": -0.02,
+      "actual": 32523970.030160766,
+      "expected": "32523970.030160765050543141876492601004162322413921438624313509182953960834697049550685326107415248505029851907",
+      "error": "3.2111082274525289455599053514983537901749514321806557710988803956291799885790901200092054039143366699410959229E-17"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 30.5,
+      "rate": -0.02,
+      "actual": 52583001.59687798,
+      "expected": "52583001.596877980109834907216736738860843757085125789463594544864268773108632059221341624851454044034103516247",
+      "error": "5.4348901539783844147776325424481804981060420658926614300982586764178709591213160837464607989595651977136853318E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 30.5,
+      "rate": 0.02,
+      "actual": 0.04411423802784043,
+      "expected": "0.044114238027840427635439804805801975575421463571607586242395521266924693409607026801601719110405992026884973128",
+      "error": "8.5583655096707231245232660792168657754826862812467986364729488452398631529103784305002569851810514184957952825E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 30.5,
+      "rate": 0.02,
+      "actual": 0.35964840390347175,
+      "expected": "0.3596484039034717543972909098079234525772060375822615964016323991996745907419812103013303364949083710962443657",
+      "error": "1.9856176484675857607588038700192903019128946466618152118790970757545769500684297732622775850447401324176549381E-17"
+    },
+    {
+      "quantity": "annuity_0.02",
+      "duration": 30.5,
+      "rate": 0.02,
+      "actual": 43467608.686544426,
+      "expected": "43467608.686544431744769040369819391148798127027308874722080842405557581142056865930904432933797479882561360220",
+      "error": "1.3709582114165607285931252618622255532849418265478795309535300055024118661793760509633489516348721629766210465E-16"
+    },
+    {
+      "quantity": "annuity_0.020000000000000004",
+      "duration": 30.5,
+      "rate": 0.02,
+      "actual": 43467608.686544426,
+      "expected": "43467608.686544435145354272451792577972393593762922036575069276806049638968427917062692806589043900782793822913",
+      "error": "2.1532844848962971263415390158464548329107088344177879412982200771565934714038325568291866926980213955993179619E-16"
+    },
+    {
+      "quantity": "annuity_0.019999999999999997",
+      "duration": 30.5,
+      "rate": 0.02,
+      "actual": 43467608.686544426,
+      "expected": "43467608.686544428344183808287846497738807966210660888117310592320341871027183748320699817464236968301381941478",
+      "error": "5.8863193793682427593949901549120462695299675724736902793820880898989410358536452231073652462445831768546375205E-17"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 30.5,
+      "rate": 0.02,
+      "actual": 27985681.158560794,
+      "expected": "27985681.158560795470990499164344092915287079061756517409877033753141636851089131103473077929312420845353489683",
+      "error": "5.8034852292186031168040314585763621994557088093020683624621905453551160648786100455449045933916115381391029037E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 30.5,
+      "rate": 0.08,
+      "actual": 0.08845896679405486,
+      "expected": "0.088458966794054866120551421836374843366610723304473910963563996497459937965221226285911509809605967441939430786",
+      "error": "2.9467516900345591049384525335419858773902684267846633570813286747029545589096366179177845910758340800828406798E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 30.5,
+      "rate": 0.08,
+      "actual": 2.8759917191003685,
+      "expected": "2.8759917191003676104711632057025392556891264996185569832516798449751741558568482885514457469188415099148291623",
+      "error": "3.2627057802381977388176626671272710650163928411809998576585267902124100647516850467938704015158929098466597995E-16"
+    },
+    {
+      "quantity": "annuity_0.08",
+      "duration": 30.5,
+      "rate": 0.08,
+      "actual": 65786492.30675127,
+      "expected": "65786492.306751285547289946945278261499562018232317320399925406944507570402656179872655048567423659557028653905",
+      "error": "1.8202589332985131818054380835879551075227489289853237141964918450147082114281580901984502824734856824615946492E-16"
+    },
+    {
+      "quantity": "annuity_0.08000000000000002",
+      "duration": 30.5,
+      "rate": 0.08,
+      "actual": 65786492.306751296,
+      "expected": "65786492.306751304990190465121937502694943030913894195845394931839773072542654089033550398391001731480706923277",
+      "error": "1.3780950223498349937955629343286480719735539452234992492355059671440365568591128146798169999594814334694330338E-16"
+    },
+    {
+      "quantity": "annuity_0.07999999999999999",
+      "duration": 30.5,
+      "rate": 0.08,
+      "actual": 65786492.30675125,
+      "expected": "65786492.306751266104389428768625357892797744712348388045022724308482765894070045645487284865141002918623030756",
+      "error": "2.2624228442471925945315309377599674700862715398944344133193779018788556336013800557596886955820321944348626632E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 30.5,
+      "rate": 0.08,
+      "actual": 13956380.508877618,
+      "expected": "13956380.508877620652899194051495380457516925143242765480689957635469250411423459352703964421589379128004086755",
+      "error": "1.7300827425316018240368369166377273831632560088844267184351056870862881856219717334042143234884414048115753575E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 30.5,
+      "rate": -1e-18,
+      "actual": 0.03278688524590164,
+      "expected": "0.032786885245901638827868852459016359037518725891957380640484935968190493603180588691095365526540057318796323652",
+      "error": "6.7791704279304214949432755701093958630078476850860447938337338702755696243031469775825450007782072779255741965E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 30.5,
+      "rate": -1e-18,
+      "actual": -1.4750000000000002e-17,
+      "expected": "-1.475000000000000091512575480567336741438386241982304489904787336505059084150592395924668711647E-17",
+      "error": "1.0090006515736034060266720264720260140100018782034820702362278206951426010403102244679716949399627441434384961E-16"
+    },
+    {
+      "quantity": "annuity_-1e-18",
+      "duration": 30.5,
+      "rate": -1e-18,
+      "actual": 37654293.5,
+      "expected": "37654293.499999999727006372124999981322479197466468787476027473682733104289808137839360792348150124497177141620",
+      "error": "7.2500000000000005485888243960089570581705836077675787780548160204610783996221569278939041975704596020979499097E-18"
+    },
+    {
+      "quantity": "annuity_-9.999999999999999e-19",
+      "duration": 30.5,
+      "rate": -1e-18,
+      "actual": 37654293.5,
+      "expected": "37654293.499999999727006372125000148117401386176477613800894167369211451822432322604965154906367652996207955155",
+      "error": "7.2499999999999961189499523053664584849006209146404521519543475618451793083862951493523845379863921332717796368E-18"
+    },
+    {
+      "quantity": "annuity_-1.0000000000000003e-18",
+      "duration": 30.5,
+      "rate": -1e-18,
+      "actual": 37654293.5,
+      "expected": "37654293.499999999727006372124999814527557008756459961151160779997069629543660857702308484298777333619912750498",
+      "error": "7.2500000000000049782276964866514556314405463009123079055941172946921112501014105437656929567134086796484275283E-18"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 30.5,
+      "rate": -1e-18,
+      "actual": 37654293.5,
+      "expected": "37654293.500000000593055122625000048853364899041056110512352811910348304320095841152364908224141980420847325735",
+      "error": "1.5750000000000001049355678860295299890465209452970189945102992044921591351465298995669477578147335004978732799E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 30.5,
+      "rate": 1e-18,
+      "actual": 0.03278688524590164,
+      "expected": "0.032786885245901639860655737704918072269858323288371214778067553184003174067956315805666791941636903927470375499",
+      "error": "3.6291704279304211056532713182420512253732525741169965597243699462717495957155118757182693369793850139756711017E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 30.5,
+      "rate": 1e-18,
+      "actual": 1.4750000000000002e-17,
+      "expected": "1.47500000000000011953757548056734075139125450354131765493754410941855568563442823505955805193E-17",
+      "error": "8.1900065157360337506759907619539470007372390721753415557877883214821576368508263404447563095046388545324354664E-17"
+    },
+    {
+      "quantity": "annuity_1e-18",
+      "duration": 30.5,
+      "rate": 1e-18,
+      "actual": 37654293.5,
+      "expected": "37654293.500000000272993627875000020383730976752281456656796146853604795527803387963909481213300997778281012709",
+      "error": "7.2500000000000004887763243960089484999081060736195528333833709578986403334384897463951230222552497284719529776E-18"
+    },
+    {
+      "quantity": "annuity_1.0000000000000003e-18",
+      "duration": 30.5,
+      "rate": 1e-18,
+      "actual": 37654293.5,
+      "expected": "37654293.500000000272993627875000187178653165462292367918190199415355664387711624745503849053834100046711324522",
+      "error": "7.2500000000000049184151964866513739841366792711408270179277428458520749710131657710113671835700312702896718792E-18"
+    },
+    {
+      "quantity": "annuity_9.999999999999999e-19",
+      "duration": 30.5,
+      "rate": 1e-18,
+      "actual": 37654293.5,
+      "expected": "37654293.500000000272993627874999853588808788042270545395402094292668799454365917561529438842415951450946012003",
+      "error": "7.2499999999999960591374523053665230156795328760806761474000032385074031931438383334371111870457892306619489364E-18"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 30.5,
+      "rate": 1e-18,
+      "actual": 37654293.5,
+      "expected": "37654293.499999999406944877374999963996162757833945728060360247577107494335629599904233838000965972561501434815",
+      "error": "1.5750000000000001204230678860295322050731060372112096809072667632072837154216216745789406939428950446045539393E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 30.5,
+      "rate": -1e-10,
+      "actual": 0.0327868851942623,
+      "expected": "0.032786885194262295107356555496983869980256210041979811420989683564352422530150712733937740013001453626669800723",
+      "error": "2.2279313018394248080498841687153364435932891892061801245100488850131413141964820450912999133036057342440057150E-16"
+    },
+    {
+      "quantity": "idc",
+      "duration": 30.5,
+      "rate": -1e-10,
+      "actual": -1.47499999859875e-09,
+      "expected": "-1.47499999859875005470085031274735548934565241820216771479967781693348228489067390178016863223989229576E-9",
+      "error": "2.4723380265997450794343060971312504564211708148291552334949047479115153181827557520317079630175130875613257320E-17"
+    },
+    {
+      "quantity": "annuity_-1e-10",
+      "duration": 30.5,
+      "rate": -1e-10,
+      "actual": 37654293.47270064,
+      "expected": "37654293.472700637221031049875025045057770631595860868974389159414521619810836050944539310759742224958304969398",
+      "error": "8.8652982553320609696286925143653612966102983816157051748759766705618238386625563392187056975147719434818025739E-17"
+    },
+    {
+      "quantity": "annuity_-9.999999999999999e-11",
+      "duration": 30.5,
+      "rate": -1e-10,
+      "actual": 37654293.47270064,
+      "expected": "37654293.472700637221031061068442787114606927997827086240120220944928772630777631349587828797566736149800366960",
+      "error": "8.8652982256052577030315774866446326819126688605649340608795164740919265416391660437258555826732680443942637054E-17"
+    },
+    {
+      "quantity": "annuity_-1.0000000000000002e-10",
+      "duration": 30.5,
+      "rate": -1e-10,
+      "actual": 37654293.47270064,
+      "expected": "37654293.472700637221031038681607303000934335193898321569433699022028903652271227538455983973538219351333586907",
+      "error": "8.8652982850588642362258075420860978387698215702070347460489057021025727381903840922951355433167031533144984441E-17"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 30.5,
+      "rate": -1e-10,
+      "actual": 37654293.55930551,
+      "expected": "37654293.559305512326747640498812526425727336952927354987104751418055437673444209956785380463140815021471521772",
+      "error": "2.4213517877800789661606271734187184498188241728434818404740221871269643978265482095133926239054050884724943013E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 30.5,
+      "rate": 1e-10,
+      "actual": 0.03278688529754098,
+      "expected": "0.032786885297540983631946723191540723875924602367995813592130515559273084451237266619664075889254535169583400431",
+      "error": "1.2025847108502778333365855371661440950839542990986824686696037322966124575998301050679760918239208597357010849E-16"
+    },
+    {
+      "quantity": "idc",
+      "duration": 30.5,
+      "rate": 1e-10,
+      "actual": 1.47500000140125e-09,
+      "expected": "1.4750000014012500547008505179709823802104978381617697325521959968402986562283012545631931152646951795E-9",
+      "error": "8.6114200787046159131969038108315762849886577994321209017115223226406276771976899105194603662842274254860733081E-17"
+    },
+    {
+      "quantity": "annuity_1e-10",
+      "duration": 30.5,
+      "rate": 1e-10,
+      "actual": 37654293.52729937,
+      "expected": "37654293.527299362796031051867162456185766331435353506929786097087336270002584655211123449013149134349503644118",
+      "error": "1.0876191502357004632671423837059912193963518542363063082708300671181301201778296468418438976059880630237851144E-16"
+    },
+    {
+      "quantity": "annuity_1.0000000000000002e-10",
+      "duration": 30.5,
+      "rate": 1e-10,
+      "actual": 37654293.52729937,
+      "expected": "37654293.527299362796031063060580212234374814153223219121213236757766486863024949985752018166200846318979415965",
+      "error": "1.0876191472630201372019668864289791411303260089629416380512611835143424774072121396190292432145542928914912871E-16"
+    },
+    {
+      "quantity": "annuity_9.999999999999999e-11",
+      "duration": 30.5,
+      "rate": 1e-10,
+      "actual": 37654293.52729937,
+      "expected": "37654293.527299362796031040673744700137157848717487464599138411908636894009224933102083093361588041806067263977",
+      "error": "1.0876191532083807893323178809830040904085667491652670822056887302911489300117826311172351229683768234348272073E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 30.5,
+      "rate": 1e-10,
+      "actual": 37654293.44069448,
+      "expected": "37654293.440694487801747636069937483011257411118546442220989288354974056783726105606302463414088756223217698407",
+      "error": "1.7706700495441308453292887715637686713990563265672640236378203128589832867976824805607167706663860677223240177E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 199.75,
+      "rate": 0.0,
+      "actual": 0.0050062578222778474,
+      "expected": "0.0050062578222778473091364205256570713391739674593241551939924906132665832290362953692115143929912390488110137672",
+      "error": "2.6671373443143409076583338901400566101074218750000000000000000000000000000000000000000000000001800000000000000E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 199.75,
+      "rate": 0.0,
+      "actual": 0.0,
+      "expected": "0",
+      "error": "0"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 199.75,
+      "rate": 0.0,
+      "actual": 246604758.25,
+      "expected": "246604758.25000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "error": "0"
+    },
+    {
+      "quantity": "annuity_1e-18",
+      "duration": 199.75,
+      "rate": 0.0,
+      "actual": 246604758.25000006,
+      "expected": "246604758.25000002654083710665625372372497888991380273408935355883556166461816948970925297871465131332598739467",
+      "error": "1.3407611395403546605241839757789577191570966469538904104929585975239439476702034143304094162471669967381951063E-16"
+    },
+    {
+      "quantity": "annuity_-1e-18",
+      "duration": 199.75,
+      "rate": 0.0,
+      "actual": 246604758.25,
+      "expected": "246604758.24999997345916289334374992613333279182109450533279368334850990443475799034654377157717683122763380248",
+      "error": "1.0762500000000001188267526387868525675828412161087673854133456937776223802884124875835004245205279385799404107E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 199.75,
+      "rate": -0.02,
+      "actual": 0.00035990203606999833,
+      "expected": "0.00035990203606999828875314616745803314242789727518575596022848237821138858849788455565850119236565732407835999627",
+      "error": "1.1786792512792207143168400143629824572897669443400203618289829132740931418168507813800635216577835600139719736E-16"
+    },
+    {
+      "quantity": "idc",
+      "duration": 199.75,
+      "rate": -0.02,
+      "actual": -0.7541118904497348,
+      "expected": "-0.75411189044973480147094428974460226815400256775031956569889560957527366550333916383176846580540965844163624470",
+      "error": "1.3804317303085967254971412954254741215743697569399143290160731520507287349332884712985362957164091322065638485E-17"
+    },
+    {
+      "quantity": "annuity_-0.02",
+      "duration": 199.75,
+      "rate": -0.02,
+      "actual": 213005344.705725,
+      "expected": "213005344.70572502779809667485165848868100836197670800890516194670774274475835553024707824166096777855103963519",
+      "error": "6.3793466681182831928227586027042348893312279900731931926014113567803435676820470529052643551276790927992800526E-17"
+    },
+    {
+      "quantity": "annuity_-0.019999999999999997",
+      "duration": 199.75,
+      "rate": -0.02,
+      "actual": 213005344.7057251,
+      "expected": "213005344.70572510895731230387856479744766277014426323079950719436759330978086274900733202639286230350760194730",
+      "error": "2.5072600097043287618730681102602071335959351121063668114496899738430001031117454099492043085888096572335244618E-17"
+    },
+    {
+      "quantity": "annuity_-0.020000000000000004",
+      "duration": 199.75,
+      "rate": -0.02,
+      "actual": 213005344.70572492,
+      "expected": "213005344.70572494663888104582479169231399220785905328949739415270430325730037128076228108912807884405960435167",
+      "error": "1.0251433326532259124411328563168162669525957735602080810532590576067164168466377330760437860392792428461002918E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 199.75,
+      "rate": -0.02,
+      "actual": 3430286234.223709,
+      "expected": "3430286234.2237092364514059427243106053775020292513815171865738233891516857873460996262340134331710438450979209",
+      "error": "3.7899488429176328900775797789716654166291275360638061671213750401075611074249080874198802838703334989914809752E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 199.75,
+      "rate": 0.02,
+      "actual": 0.020390428986503548,
+      "expected": "0.020390428986503546449324678239626273461692971148802523421702674936529518270604987176830671872718193573639706726",
+      "error": "5.7702729369386694642718361232610835823078639794659438003777750629132952879500962660581985865946456476998655377E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 199.75,
+      "rate": 0.02,
+      "actual": 11.822454262709764,
+      "expected": "11.822454262709765437189686892752939378040308474455369586556794832154683761930002377486614581024829034341147262",
+      "error": "1.4361729475766737566490544991040398859585583568497402687296957974525205020697185276750367795845438866888027082E-16"
+    },
+    {
+      "quantity": "annuity_0.02",
+      "duration": 199.75,
+      "rate": 0.02,
+      "actual": 284677207.709418,
+      "expected": "284677207.70941804068910215783184994694991560241655566313887371378721727321724127769502165503364087234562726898",
+      "error": "1.4717848867550502516764515855712344388640836040005059141300231783648998056148963920607492027496799379250007359E-16"
+    },
+    {
+      "quantity": "annuity_0.020000000000000004",
+      "duration": 199.75,
+      "rate": 0.02,
+      "actual": 284677207.70941806,
+      "expected": "284677207.70941814490307239897765350987870494274475697649101391346463037609273212653359552846071068634575095176",
+      "error": "3.0387991842709144433201681036360225341625580684962963598720155861059068677450053500977284209758214473789497318E-16"
+    },
+    {
+      "quantity": "annuity_0.019999999999999997",
+      "duration": 199.75,
+      "rate": 0.02,
+      "actual": 284677207.7094179,
+      "expected": "284677207.70941793647513191668609513096687925525101261433741801387528685410189469798152242525296517750001598177",
+      "error": "1.9985330388214379134736614235791721953679400570693562870844072392154549808235012896077820279103712590836051893E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 199.75,
+      "rate": 0.02,
+      "actual": 60546396.58720087,
+      "expected": "60546396.587200869054786603697505044230935121202093628316187078930294217893961285518455911424814799172594277180",
+      "error": "5.8554962456933720523797677225420008527363370039928790199971341177210441481262808954297856572080248011767780868E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 199.75,
+      "rate": 0.08,
+      "actual": 0.08000001685368684,
+      "expected": "0.080000016853686840694430171907192920336212600637356950421190574748278782340504706763493364417667624058565208441",
+      "error": "5.0155612707448890283808543018334849276490550480418515686424725019393739068442983925405223409590160278129711476E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 199.75,
+      "rate": 0.08,
+      "actual": 297041.29526115063,
+      "expected": "297041.29526115052522265582921640957007547769897168036239047229558428913742232206587902997052493641927428109989",
+      "error": "3.6435318395806047576202356232053566463312231414297175572347127507758531315380600869807272939182436746253268435E-16"
+    },
+    {
+      "quantity": "annuity_0.08",
+      "duration": 199.75,
+      "rate": 0.08,
+      "actual": 430847601.254871,
+      "expected": "430847601.25487112419905465253506008965696764399689786065197049302181597337477285014960150660140577037758929894",
+      "error": "2.6324556490401606535150508242109677097164424585740125276513383363766657034637312551242991012491785649751360377E-16"
+    },
+    {
+      "quantity": "annuity_0.08000000000000002",
+      "duration": 199.75,
+      "rate": 0.08,
+      "actual": 430847601.25487167,
+      "expected": "430847601.25487172004409829000576659590201216809367070979832026468019514892627375260367179840265428694603973237",
+      "error": "1.2443534821106637741975315176136229259216361390331593762957337548001008819106730594130095400247454850040668681E-16"
+    },
+    {
+      "quantity": "annuity_0.07999999999999999",
+      "duration": 199.75,
+      "rate": 0.08,
+      "actual": 430847601.2548705,
+      "expected": "430847601.25487052835401101506540649330743688035010688070828855117540487799146181170970912124245033049518112983",
+      "error": "1.2537026866019754135754972177001937432712994722338561393642803114013635815721064388004544807862031155722030651E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 199.75,
+      "rate": 0.08,
+      "actual": 15432084.24890606,
+      "expected": "15432084.248906059621551920526761218985356551187645697923708036534094874635238976516047628925701698011004154077",
+      "error": "2.7923707568959544234021250645523904541898074636658060890663791077325682094066799320448717281044707884140567763E-17"
+    },
+    {
+      "quantity": "crf",
+      "duration": 199.75,
+      "rate": -1e-18,
+      "actual": 0.005006257822277847,
+      "expected": "0.0050062578222778468066332916145181283797299650429276839294055440080474607635507099360257237275516196944446825281",
+      "error": "4.6209133720040200259900476343976203526476684388362814164753001822371413320915631045996935684638698102301446588E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 199.75,
+      "rate": -1e-18,
+      "actual": -9.9375e-17,
+      "expected": "-9.937500000000000055905964042805313296333108590335163844337696930150531614933549680744139143663E-17",
+      "error": "4.8218922969902917825101848475310379507490962332826785034781274051977348865613375649525979424473065413823323838E-18"
+    },
+    {
+      "quantity": "annuity_-1e-18",
+      "duration": 199.75,
+      "rate": -1e-18,
+      "actual": 246604758.25,
+      "expected": "246604758.24999999821211550268749987767754818668613574748644222518445696989800575519384650070632745469872570619",
+      "error": "7.2500000000000005485888243960089570581705836077675787780548160204610783996221569278939041975438689673684583186E-18"
+    },
+    {
+      "quantity": "annuity_-9.999999999999999e-19",
+      "duration": 199.75,
+      "rate": -1e-18,
+      "actual": 246604758.25,
+      "expected": "246604758.24999999821211550268750498925684146800183255669449944138284659433858959953917427231357223952541184281",
+      "error": "7.2499999999999798207677979283829175386845081797160259847059879567787236862570471901836531610512470375023218305E-18"
+    },
+    {
+      "quantity": "annuity_-1.0000000000000003e-18",
+      "duration": 199.75,
+      "rate": -1e-18,
+      "actual": 246604758.25,
+      "expected": "246604758.24999999821211550268749476609825490537043893827838500912144811444570046476812761080068899754256982027",
+      "error": "7.2500000000000212764098508636349965776566590361294379623355287607093522425369801993750643604310067592877529081E-18"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 199.75,
+      "rate": -1e-18,
+      "actual": 246604758.25000006,
+      "expected": "246604758.25000002475295260934375343552229515999834310118554828746493888011714190303616252601097136940523233784",
+      "error": "1.4132611395403546746543404814066189747191969731210904255233538340617575015849111325621698974079159307549663474E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 199.75,
+      "rate": 1e-18,
+      "actual": 0.0050062578222778474,
+      "expected": "0.0050062578222778478116395494367960475894502602386790819874050640247747068703996518861559821938902109904022511489",
+      "error": "7.3703626556856594031407834936794180293586716311630726419048276508825869793607690280563243318153871589656396423E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 199.75,
+      "rate": 1e-18,
+      "actual": 9.937500000000002e-17,
+      "expected": "9.93750000000000136599971404280550075089833621002821534544440263472537538287372553713820574190E-17",
+      "error": "1.1141424142030898389001228871996849058923680348459133562755391552555552426726111382135234933176334939452511704E-16"
+    },
+    {
+      "quantity": "annuity_1e-18",
+      "duration": 199.75,
+      "rate": 1e-18,
+      "actual": 246604758.25,
+      "expected": "246604758.25000000178788449731250013349672992151699085138344361750844452153045005723904652040514341987579122258",
+      "error": "7.2500000000000004887763243960089484999081060736195528333833709578986403334384897463951230222641908293997445249E-18"
+    },
+    {
+      "quantity": "annuity_1.0000000000000003e-18",
+      "duration": 199.75,
+      "rate": 1e-18,
+      "actual": 246604758.25,
+      "expected": "246604758.25000000178788449731250524507602320283275155533266685015801478787131233273014346704518581131545497319",
+      "error": "7.2500000000000212165973508636346460103472447858198069735823788078751141373650992467632154797302441211412131830E-18"
+    },
+    {
+      "quantity": "annuity_9.999999999999999e-19",
+      "duration": 199.75,
+      "rate": 1e-18,
+      "actual": 246604758.25,
+      "expected": "246604758.25000000178788449731249502191743664020123014743422038499425502417782704412594002255496903143413091738",
+      "error": "7.2499999999999797609552979283832509894689673611089923022523191013103908915015223786369588998466377019640808825E-18"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 199.75,
+      "rate": 1e-18,
+      "actual": 246604758.25,
+      "expected": "246604758.24999997524704739065624989374983079673650826721090857125306601930175284752413497571541771936123946071",
+      "error": "1.0037500000000001050599268948267614662698416153894874769736233046425965744322618011745544738396716549786415249E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 199.75,
+      "rate": -1e-10,
+      "actual": 0.005006257772027535,
+      "expected": "0.0050062577720275345844766877896084234536833711095996033872545969840726415208721964068471881970058842869043108368",
+      "error": "5.3262505733518143060201261289026941704747129267560252914660192926737010699384653983009507446696231922861303732E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 199.75,
+      "rate": -1e-10,
+      "actual": -9.937499934495313e-09,
+      "expected": "-9.93749993449531318424613642900681994971598124198937614541799646811573114905171970773169699690361498034E-9",
+      "error": "1.8837476049248282981597023982730205095708627111310810159566458027684694513445520483316602089967840629986470357E-17"
+    },
+    {
+      "quantity": "annuity_-1e-10",
+      "duration": 199.75,
+      "rate": -1e-10,
+      "actual": 246604758.07121158,
+      "expected": "246604758.07121155032462138401758205738654700528764618287325359321477683794145905495645007620519703066955467664",
+      "error": "1.0598810344373947878336727827875604515497939627284894442571143592214640552898657992662890229785733569113052815E-16"
+    },
+    {
+      "quantity": "annuity_-9.999999999999999e-11",
+      "duration": 199.75,
+      "rate": -1e-10,
+      "actual": 246604758.07121158,
+      "expected": "246604758.07121155032462172704986146102330328248284479749163665915273061568326203499396396259916773801206798220",
+      "error": "1.0598810205271895636270877379201137288131382463160292093665507051378289508712541601250693548231174266199441097E-16"
+    },
+    {
+      "quantity": "annuity_-1.0000000000000002e-10",
+      "duration": 199.75,
+      "rate": -1e-10,
+      "actual": 246604758.07121158,
+      "expected": "246604758.07121155032462104098530265374979072809305726903531916070664129930863770587785589235196624859172659612",
+      "error": "1.0598810483476000120402578276550211492439181899819681970655478640155434413620111375080525882469629168647668903E-16"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 199.75,
+      "rate": -1e-10,
+      "actual": 246604760.7252953,
+      "expected": "246604760.72529527758073580434035923445378575050828597301457898948246381806373110548185483436772494297424318683",
+      "error": "1.1220926680242218135997283725634234931093798982540239086623124445051881455116106312547590996343985842940191992E-16"
+    },
+    {
+      "quantity": "crf",
+      "duration": 199.75,
+      "rate": 1e-10,
+      "actual": 0.00500625787252816,
+      "expected": "0.0050062578725281603667044761653352781901898136861355787449001750711959176027646532274051639588654908839041132829",
+      "error": "6.6418195145936293795457903563091693811274988746531470145069227327503217590827261365407896350850741576520460344E-17"
+    },
+    {
+      "quantity": "idc",
+      "duration": 199.75,
+      "rate": 1e-10,
+      "actual": 9.937500065504688e-09,
+      "expected": "9.9375000655046881842461484977608725558841718422569394688560791352058525243377327363314826507021868100E-9",
+      "error": "2.2922422315623480762787295195134623144830527364980234230082952020581312070079752979706470683300106775281234378E-17"
+    },
+    {
+      "quantity": "annuity_1e-10",
+      "duration": 199.75,
+      "rate": 1e-10,
+      "actual": 246604758.42878848,
+      "expected": "246604758.42878844978712139706444920075760080997415944292540238994083344042676343863678389968447670774797878402",
+      "error": "1.3525988548907397472841466054368016408986161929559589099246339462606942421677112923873406151666786110215859748E-16"
+    },
+    {
+      "quantity": "annuity_1.0000000000000002e-10",
+      "duration": 199.75,
+      "rate": 1e-10,
+      "actual": 246604758.42878845,
+      "expected": "246604758.42878844978712174009672903318470660970928742299702379822667079801723184124725432361101062808124772726",
+      "error": "1.4409327208652358566990238177243595319250957754454378370549653366687700156038427306901966176371097885899508454E-17"
+    },
+    {
+      "quantity": "annuity_9.999999999999999e-11",
+      "duration": 199.75,
+      "rate": 1e-10,
+      "actual": 246604758.42878845,
+      "expected": "246604758.42878844978712105403216936833049501023964116363486980090462148462525127144292839759970171782087943453",
+      "error": "1.4409329990693402851898783462201334668171849006168777399463236268027969091970022495049464506107047345734077600E-17"
+    },
+    {
+      "quantity": "annuity_0.0",
+      "duration": 199.75,
+      "rate": 1e-10,
+      "actual": 246604755.77470472,
+      "expected": "246604755.77470475571198545522698762906655405040009925036119912640088871190249310492688691865266852359235828014",
+      "error": "1.2636308722007444873975145766933260628444499209761896847970789740881070523387528556902318011349004311172479874E-16"
+    }
+  ],
+  "native": "Fresh ten-case output exactly equals retained candidate; 158 scalars each, input defaults, physical/report/verdict checks pass",
+  "mirror": "three changed pairs byte equal",
+  "traceability": [
+    {
+      "Element": "'IDC Closed-Form Cost'",
+      "File": "models/library/analyses/mfe_account_costs.sysml",
+      "Type": "calc_def",
+      "Knowledge": "",
+      "Requirement": "",
+      "Source_Type": "codebase",
+      "Source_Document": "1costingFE @ 0254385",
+      "Source_Location": "costs.py:286-297",
+      "Confidence": "",
+      "Assumptions": "",
+      "Last_Verified": "2026-07-20"
+    },
+    {
+      "Element": "'Levelized Annual Cost'",
+      "File": "models/library/analyses/mfe_account_costs.sysml",
+      "Type": "calc_def",
+      "Knowledge": "",
+      "Requirement": "MR-WI029-1",
+      "Source_Type": "codebase",
+      "Source_Document": "1costingFE @ 0254385",
+      "Source_Location": "economics.py:13-50",
+      "Confidence": "",
+      "Assumptions": "",
+      "Last_Verified": "2026-07-25"
+    },
+    {
+      "Element": "Lifecycle Calendar",
+      "File": "models/library/analyses/mfe_lifecycle.sysml",
+      "Type": "calc",
+      "Knowledge": "",
+      "Requirement": "",
+      "Source_Type": "paper",
+      "Source_Document": "Stellaris (Lion et al. 2025, KIT raw.pdf) sec. 2.11 and Table 6; Kovari et al. 2016 PROCESS Part 2 sec. 8 (knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2); 1costingFE economics.py:53-75 / model.py:102-111 (the held chain); research 20260907-163520_lifetime-availability-closure-prework.md Option B",
+      "Source_Location": "Stellaris p. 29 (seven months estimated; five months and 90 pct targets), p. 28 (cooldown/recommissioning inside the estimate), Table 6 p. 21 (coil life ~10 FPY; first wall ~4-6 FPY) -- renders under work/orchestration/goals/plant-closure/evidence/grounding_sources/; Kovari output.md:361-444",
+      "Confidence": "medium",
+      "Assumptions": "WI-046: one bundled in-vessel event; deterministic finite horizon; payment at outage start; restart strictly before the horizon; annual-equivalent LCOE with the dated-energy ratio as a shadow; the held mode retains retired periodic physical timing and clipping; WI-052 uses stable equivalent finance with exact rate limits (selected by availability_direct greater than 0); handwritten stage; the coil life a reported margin, never a fence",
+      "Last_Verified": "2026-09-08"
+    },
+    {
+      "Element": "'LCOE DCF'",
+      "File": "models/library/analyses/mfe_lcoe_dcf.sysml",
+      "Type": "calc_def",
+      "Knowledge": "",
+      "Requirement": "",
+      "Source_Type": "codebase",
+      "Source_Document": "Native MFE DCF equations; inherited 1costingFE economics.py",
+      "Source_Location": "models/library/analyses/mfe_lcoe_dcf.sysml:4; economics.py:6-10 and 88-92 (inherited); WI-052 design Numerical method and justification",
+      "Confidence": "medium",
+      "Assumptions": "Midpoint construction multiplier; annual-equivalent energy; exact zero-interest CRF; stable equivalent positive Real-duration finance. External citation inherited, not reverified.",
+      "Last_Verified": "2026-09-12"
+    }
+  ]
+}
