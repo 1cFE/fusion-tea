@@ -35,3 +35,7 @@ SV-096 was independently reaffirmed as passing through the native PM operation a
 The materially touched existing joined discovery rows are `20260911-model-owned-radius#2` (bounded F07 model-domain credit; engineering limitations remain) and `#3` (current oracle/consumer evidence; 147 unsupported overrides and seventeen independently uncomputed outputs remain). No new discovery ID or study was created by this audit. SV-064's source reconstruction, SV-063's historical dormancy bridge and relevant SV-065 loop identities remain qualified inherited evidence; SV-090–095 remain prior scoped evidence, not re-certified global behavior. SV-096 is the evaluable current criterion.
 
 This review does not integrate or promote a candidate, accept residual findings, choose finance/supported-scope meaning, adopt sources, archive an item, close the goal or certify whole-plant feasibility.
+
+## Subsequent stock-regeneration finding and correction
+
+T-047 exposed an in-place smart-regeneration signature mismatch after this original audit. Its fresh preserve-only equality evidence did not establish stock in-place stability. The independent [coherence addendum](coherence/addendum.md) preserves R11-A2 and the failed integration, then records PASS on native correction `9ee88d5b` and consumer migration `eb4344b6`, including exact fresh and stock in-place checks of all handwritten files. Use that addendum for the corrected current executable identity; the original results above remain at their stated revisions.
