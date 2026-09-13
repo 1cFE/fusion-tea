@@ -80,3 +80,19 @@ def test_adapter_coverage_remains_exact():
     assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[oracle.P + 'magnet__j_wp'] == 'magnet_j_wp'
     with pytest.raises(oracle.OracleSeamError, match='no declared oracle mapping'):
         oracle.evaluate({oracle.P + 'winding_extra_input': 1.})
+
+
+def test_current_native_winding_route_agrees_with_independent_oracle(tmp_path, stock_simkit_path):
+    import study_route as route
+    names = {value: key for key, value in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+    points = [{names[key]: value for key, value in row['overrides'].items()} for row in BEFORE['controls']]
+    cases, _ = route.run_points('winding-consumer-controls', points, tmp_path)
+    assert len(cases) == len(points)
+    for case in cases:
+        assert case.state == 'completed', (dict(case.inputs), case.state)
+        expected = oracle.evaluate(case.inputs)
+        assert len(case.outputs) == 158 and len(expected) == 141
+        for key, value in expected.items():
+            assert case.outputs[key] == pytest.approx(value, rel=1e-9, abs=1e-9), key
+        if not case.inputs:
+            assert {key for key, value in route.short_verdicts(case).items() if value == 'violated'} == {'divertor_heat_ok'}

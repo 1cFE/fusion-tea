@@ -1,6 +1,6 @@
 # Winding-pack current consumers
 
-Status: Implementation in progress. Created: 2026-09-13.
+Status: Implementation and acceptance complete; independent audit pending. Created: 2026-09-13.
 
 [INHERITED] Authority is T-043 author brief at `work/orchestration/goals/fusion-audit-remediation/evidence/T-043_winding-consumers/author-brief.md@18b67dd5` and the T-042 domain amendment at `eb341aee`. The previous domain consumer item remains historical at `.project/active/mfe-domain-study-package/`.
 
