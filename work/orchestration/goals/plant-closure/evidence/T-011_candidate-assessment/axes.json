@@ -1,0 +1,255 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "R",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__R",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "T2_max",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__T2_max",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "T2_min",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__T2_min",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "T_i0",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__T_i0",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "T_offset_fit",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__T_offset_fit",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "a",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__a",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "a_fit",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__a_fit",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "availability_direct",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__availability_direct",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "b_fit",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__b_fit",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "burn_fraction",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__burn_fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "cycle_live",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__cycle_live",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "dT_approach",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__dT_approach",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "delta_eta",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__delta_eta",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "f_loss",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__f_loss",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "f_rad_total",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__f_rad_total",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "loop_T_in",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__loop_T_in",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "loop_dT_blanket",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__loop_dT_blanket",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "loop_live",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__loop_live",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__I_coil",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__I_coil",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "n_e0",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__n_e0",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "n_loops",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__n_loops",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "outage_years",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__outage_years",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "p_wallplug_heat",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__p_wallplug_heat",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "q_target_ref",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__q_target_ref",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "unplanned_fraction",
+      "note": "AGENT proposed sensitivity/control input for plant comparison; not an approved execution ruling. Complete native entry for this plant attribute.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__unplanned_fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

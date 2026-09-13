@@ -1,0 +1,32 @@
+# WI-048 repair attempt 1
+
+[AGENT] Bounded authoring repair authorized by the parent under the owner-approved F01–F03 alignment. Requirements remain in spec.md and the immutable negative audit `work/analysis/20260911-044526_audit_WI-048_ife-operating-point-repair.md@23ec9f13`; production baseline is `243625b476c6761e6c74dbafa7e9413402eafe90`. The previous implementation evidence and completed plan phases describe that earlier revision. Their source-completion claims were premature under A01/A02; this repair supplies the missing correction without rewriting historical evidence.
+
+- [x] A01: label alpha 2000 and O&M 65 as retained prior estimates; explain the erroneous historical thermal basis and cite the prior design. Preserve every executable token.
+- [x] A02: cite Hawker Table 2 for definitions and Table 3 for sampled ranges/correlations. Identify selected target 10, blanket 1.15 and discount 0.08 as inherited scenarios, not published defaults.
+- [x] T01: complete three missing update dates and append the two DI-001-backed qualified rows through native trace-element; preserve existing matrix bytes.
+- [x] Synchronize the five affected canonical/twin pairs; regenerate through supported handwritten preservation if package metadata changes.
+- [x] Verify source facts, numerical identities, live/snapshot generation and regeneration. Compare all 30 baseline numbers and both verdicts exactly with prior execution; record final identities separately.
+
+No monetary, finance, physics, source-registry or historical-evidence change is authorized. Fresh independent re-audit remains required; this record is implementation evidence only.
+
+## Completion evidence — 2026-09-11
+
+A01 now labels alpha and O&M as inherited estimates and cites `work/completed/20260303_WI-008_hif-concept-instantiation/design.md`, DD-WI008-5 and its historical verification case. Alpha explicitly identifies the erroneous 2.054-GWt/held-1-GWe basis. O&M explicitly identifies the old approximate $3.3B/1-GWe calculation and assumed scope reduction. The coefficients remain 2000 and 65 with the same monetary basis.
+
+A02 was checked against `knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md`: Table 1 at line 106 compares technologies; Table 2 at line 155 defines parameters; Table 3 at lines 435–469 supplies sampled ranges and correlations. Target $10, blanket 1.15 and discount 0.08 are now selected inherited scenarios. Generic plant attributes have no literal defaults; their definitions/range references now point to Tables 2/3. Two supporting subsystem citations for driver and target parameter definitions were corrected to Table 2. This adds one synchronized pair to the four initially identified; no subsystem behavior changed.
+
+T01 added Last Updated to the three identified comments and two qualified DI-001-backed trace rows. Native commands were `.codex-test/run agentic-mbse pm trace-element --element 'fusion_cycle::Recirculating Power Fraction' --file models/library/analyses/fusion_cycle.sysml --type calc_def --knowledge DI-001` and the corresponding `fusion_cycle::Viability Threshold` / `constraint_def`, with source-doc/location, confidence and assumptions supplied as retained in the resulting rows. Both succeeded after inspecting `pm trace-element --help`. Existing matrix bytes were asserted unchanged; only the two newly appended CRLF line endings were normalized. No insight, requirement, source registration or historical row changed.
+
+Verification used the retained `.codex-test/run` runtime. Public commands used `.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" STUDY_REQUIRE_TEAX=1 python ...'`.
+
+- `repair-1-verify.py` materializes all eleven IFE files, asserts exact executable-token equality against production commit 243625b4 and byte equality of all family twins, regenerates the shipped package with `GenerationConfig(overwrite=True, preserve_handwritten=True)`, loads its native seal and executes PreparedEvaluator/CandidateBridge. All 30 baseline numeric values and both named responses equal the prior committed execution record exactly: maximum absolute and relative residuals both 0. The independent source oracle also passes. See `repair-1-generation.txt` and `repair-1-identity.json`.
+- `python -m pytest tests/models/test_model_family_spines.py tests/test_codegen_teax_acceptance.py tests/test_occurrence_mutation_teax.py -q`: 45 passed in 22.68 seconds. Includes live/snapshot parity, mutation execution, typed preservation and smart regeneration. See `repair-1-tests.txt`.
+- `python -m pytest tests/models/test_ife_operating_point_repair.py tests/test_dependency_provenance.py -q`: 15 passed. Covers exact Osiris facts, source/cash-flow identities, strict boundaries and sealed dependency provenance. See `repair-1-source-tests.txt`.
+- `.codex-test/run agentic-mbse validate --complete /tmp/wi048-repair1-eg32521g/models`: L1–5 PASS; L6 FAIL with 50 issues, retaining the previously attributed static/EXPOSE limitations. See `repair-1-validation.txt`. The command exits 1 for L6; no residual acceptance is claimed. `git diff --check` passes.
+
+The first evidence-script attempt completed generation and numerical equality, then incorrectly looked for constraint verdicts among PreparedEvaluator numeric outputs. The adapter returns verdicts in responses. That harness assertion failure remains in `repair-1-generation-attempt1.txt`; the corrected script compares both named responses against the prior response record. No model change followed this harness correction.
+
+The semantic fingerprint remains `8b7a76a631e6e55dbd45cf617a68fae87def408e4f8494015e40c0c8aac585dd`. The executable/package fingerprint changes from `930738720555969d2ddb283fb73c8a31173a3851d5c94e3acb9c3cff92e0fefd` to `045417b231573653d754b68c8e26eec26fcec72fdc3814df27e504416639fe63` because generated documentation and source-line metadata changed. The quotient SHA256 remains `67bc0ed6241856920c8380b4ddcc0293d41f6d6fa131abc6c97b6cc74d1d9377`. A second supported regeneration changes zero package bytes. The seven changed package files are enumerated in the identity JSON; no seal was hand-edited.
+
+Original plan completion facts, implementation evidence, negative audit and its pointer remain preserved. Fresh independent re-audit is the parent's next gate. This authoring repair does not certify the item or accept existing Level 6/legacy traceability limitations.

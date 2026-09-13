@@ -1,0 +1,56 @@
+--- run_stellaris.py
++++ run_stellaris.py
+@@ -113,18 +113,19 @@
+         failures.append(label)
+ 
+ 
+-def run_pipeline(tag):
+-    router = create_output_router_with_json_schemas(["RootModel[float]"])
++def run_pipeline(tag, *, pipeline_path=None, output_dir=None):
++    router = create_output_router_with_json_schemas(list(dict.fromkeys(["RootModel[float]"] + [s.__name__ for s in CUSTOM_SCHEMA_TYPES])))
+     router.register_handler(
+         "float",
+         WriteHandler(fn=lambda v, p: Path(p).write_text(json.dumps(v)), extension=".json"),
+     )
+     result = execute_pipeline(
+-        PIPELINE,
+-        output_dir=E2E / "outputs" / tag,
++        pipeline_path or PIPELINE,
++        output_dir=output_dir or E2E / "outputs" / tag,
+         registry=create_stellarator_tea_registry(),
+         output_router=router,
+         custom_schema_types=CUSTOM_SCHEMA_TYPES,
+     )
+     return {c: (float(v.root) if hasattr(v, "root") else float(v))
+-            for c, v in result.outputs.items()}
++            for c, v in result.outputs.items()
++            if hasattr(v, "root") or isinstance(v, (int, float))}
+--- run_stellaris_single.py
++++ run_stellaris_single.py
+@@ -104,7 +104,7 @@
+ EXPECTED_VERDICT_COUNT = 18  # WI-050 adds four scalar efficiency bounds.
+ 
+ 
+-def _execute_package():
++def _execute_package(*, pipeline_path=None, output_dir=None):
+     """Execute the sealed package once and return every output, including verdicts."""
+     schema_names = dict.fromkeys(
+         ["RootModel[float]"] + [schema.__name__ for schema in CUSTOM_SCHEMA_TYPES]
+@@ -118,8 +118,8 @@
+         ),
+     )
+     result = execute_pipeline(
+-        rs.PIPELINE,
+-        output_dir=rs.E2E / "outputs" / "single",
++        pipeline_path or rs.PIPELINE,
++        output_dir=output_dir or rs.E2E / "outputs" / "single",
+         registry=create_stellarator_tea_registry(),
+         output_router=router,
+         custom_schema_types=CUSTOM_SCHEMA_TYPES,
+@@ -585,4 +585,6 @@
+ 
+ 
+ if __name__ == "__main__":
++    if len(sys.argv) != 1:
++        raise SystemExit("Unsupported command-line arguments: " + " ".join(sys.argv[1:]))
+     raise SystemExit(main())

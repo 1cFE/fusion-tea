@@ -1,0 +1,476 @@
+{
+  "native_basis": "3d9711e2",
+  "resolved_new": 63,
+  "resolved_inherited": 1,
+  "counts": {
+    "passed": 566,
+    "failure": 0,
+    "error": 0,
+    "skipped": 13
+  },
+  "dispositions": [
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_binding_documentation_and_source_preservation",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_binding_documentation_and_source_preservation",
+      "status": "passed",
+      "repair": "Preserve all source bytes outside the two authorized calculation definitions; retain family twins."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_complete_native_and_direct_parity[baseline]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_complete_native_and_direct_parity[baseline]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_complete_native_and_direct_parity[R14]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_complete_native_and_direct_parity[R14]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_independent_radius_ratios_and_fixed_anchors",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_independent_radius_ratios_and_fixed_anchors",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_standalone_radius_formals[coil_length]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_standalone_radius_formals[coil_length]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_standalone_radius_formals[field_calc]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_standalone_radius_formals[field_calc]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_standalone_radius_formals[stored_energy]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_standalone_radius_formals[stored_energy]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_standalone_radius_formals[magnet_cost]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_standalone_radius_formals[magnet_cost]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-native]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-native]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-schema]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-schema]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-helper]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-helper]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-single]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-single]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-cli]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-cli]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-native]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-native]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-schema]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-schema]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-helper]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-helper]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-single]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-single]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-cli]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-cli]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-native]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-native]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-schema]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-schema]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-helper]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-helper]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-single]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-single]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-cli]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-cli]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-native]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-native]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-schema]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-schema]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-helper]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-helper]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-single]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-single]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-cli]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-cli]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-native]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-native]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-helper]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-helper]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-single]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-single]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-native]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-native]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-helper]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-helper]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-single]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-single]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-native]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-native]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-helper]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-helper]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-single]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-single]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-native]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-native]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-helper]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-helper]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-single]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-single]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-native]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-native]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-helper]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-helper]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-single]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-single]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[valid]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_peak_component_preserves_valid_and_rejects_invalid_domains[valid]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[original_negative]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_peak_component_preserves_valid_and_rejects_invalid_domains[original_negative]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[equality]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_peak_component_preserves_valid_and_rejects_invalid_domains[equality]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[reference_equal]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_peak_component_preserves_valid_and_rejects_invalid_domains[reference_equal]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[reference_inverted]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_major_radius::test_peak_component_preserves_valid_and_rejects_invalid_domains[reference_inverted]",
+      "status": "passed",
+      "repair": "Adapt temporary radius drivers to deliberate domain errors while retaining frozen valid/finance and independent assertions."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_operating_heating::test_operating_heat_signed_demand_bounds",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_operating_heating::test_operating_heat_signed_demand_bounds",
+      "status": "passed",
+      "repair": "Use WI-053 ten-seed checked generation for current fresh packages."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_operating_heating::test_generic_heating_default_modes",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_operating_heating::test_generic_heating_default_modes",
+      "status": "passed",
+      "repair": "Use WI-053 ten-seed checked generation for current fresh packages."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_operating_heating::test_heating_efficiency_scalar_consumers",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_operating_heating::test_heating_efficiency_scalar_consumers",
+      "status": "passed",
+      "repair": "Use WI-053 ten-seed checked generation for current fresh packages."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_operating_heating::test_stellarator_operating_heat_has_no_public_demand_input",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_operating_heating::test_stellarator_operating_heat_has_no_public_demand_input",
+      "status": "passed",
+      "repair": "Use WI-053 ten-seed checked generation for current fresh packages."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_operating_heating::test_operating_heat_reserve_invariance",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_operating_heating::test_operating_heat_reserve_invariance",
+      "status": "passed",
+      "repair": "Use WI-053 ten-seed checked generation for current fresh packages."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_operating_heating::test_operating_heat_financial_attribution",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_operating_heating::test_operating_heat_financial_attribution",
+      "status": "passed",
+      "repair": "Use WI-053 ten-seed checked generation for current fresh packages."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_operating_heating::test_operating_heat_direct_native_parity",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_operating_heating::test_operating_heat_direct_native_parity",
+      "status": "passed",
+      "repair": "Use WI-053 ten-seed checked generation for current fresh packages."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_operating_heating::test_operating_heat_complete_cost_operand_classification",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_mfe_operating_heating::test_operating_heat_complete_cost_operand_classification",
+      "status": "passed",
+      "repair": "Use WI-053 ten-seed checked generation for current fresh packages."
+    },
+    {
+      "original_identity": "tests.models.test_model_family_spines::test_family_subset_generates_and_live_equals_snapshot[mfe]",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_model_family_spines::test_family_subset_generates_and_live_equals_snapshot[mfe]",
+      "status": "passed",
+      "repair": "Use WI-053 ten-seed checked generation for current fresh packages."
+    },
+    {
+      "original_identity": "tests.models.test_model_family_spines::test_ife_census_is_19_entry_points_18_design_attributes",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_model_family_spines::test_ife_census_is_19_entry_points_18_design_attributes",
+      "status": "passed",
+      "repair": "Use WI-053 ten-seed checked generation for current fresh packages."
+    },
+    {
+      "original_identity": "tests.models.test_model_family_spines::test_mfe_census_matches_current_generated_public_contract",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_model_family_spines::test_mfe_census_matches_current_generated_public_contract",
+      "status": "passed",
+      "repair": "Use WI-053 ten-seed checked generation for current fresh packages."
+    },
+    {
+      "original_identity": "tests.models.test_model_family_spines::test_ife_gain_mutation_reaches_every_and_only_its_three_consumers",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_model_family_spines::test_ife_gain_mutation_reaches_every_and_only_its_three_consumers",
+      "status": "passed",
+      "repair": "Use WI-053 ten-seed checked generation for current fresh packages."
+    },
+    {
+      "original_identity": "tests.models.test_model_family_spines::test_ife_beam_energy_mutation_has_one_direct_consumer",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_model_family_spines::test_ife_beam_energy_mutation_has_one_direct_consumer",
+      "status": "passed",
+      "repair": "Use WI-053 ten-seed checked generation for current fresh packages."
+    },
+    {
+      "original_identity": "tests.models.test_model_family_spines::test_mfe_cas28_capital_mutation_reaches_every_and_only_its_two_rollups",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_model_family_spines::test_mfe_cas28_capital_mutation_reaches_every_and_only_its_two_rollups",
+      "status": "passed",
+      "repair": "Use WI-053 ten-seed checked generation for current fresh packages."
+    },
+    {
+      "original_identity": "tests.models.test_model_family_spines::test_mfe_blanket_thickness_mutation_reaches_the_radial_build_and_nothing_else",
+      "original_grade": "new",
+      "current_identity": "tests.models.test_model_family_spines::test_mfe_blanket_thickness_mutation_reaches_the_radial_build_and_nothing_else",
+      "status": "passed",
+      "repair": "Use WI-053 ten-seed checked generation for current fresh packages."
+    },
+    {
+      "original_identity": "tests.models.test_mfe_major_radius::test_current_contract_edges_and_fresh_package_agreement",
+      "original_grade": "inherited",
+      "current_identity": "tests.models.test_mfe_major_radius::test_current_contract_edges_and_fresh_package_agreement",
+      "status": "passed",
+      "repair": "Check current package against immutable WI-053 candidate receipt; retain original WI-051 receipts."
+    }
+  ],
+  "remaining_inherited_skips": {
+    "tests.models.test_example.TestModelStructure::test_example_definition_exists": "skipped",
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_types_parse_without_errors": "skipped",
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_units_parse_without_errors": "skipped",
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_materials_parse_without_errors": "skipped",
+    "tests.models.test_foundation.TestEnumDefinitions::test_enum_definitions_count": "skipped",
+    "tests.models.test_foundation.TestEnumDefinitions::test_reactor_type_variants": "skipped",
+    "tests.models.test_foundation.TestEnumDefinitions::test_confinement_type_variants_count": "skipped",
+    "tests.models.test_foundation.TestEnumDefinitions::test_all_expected_enums_exist": "skipped",
+    "tests.models.test_foundation.TestCustomUnits::test_custom_units_defined": "skipped",
+    "tests.models.test_foundation.TestCustomUnits::test_custom_units_count": "skipped",
+    "tests.models.test_foundation.TestMaterialDefinitions::test_materials_exist": "skipped",
+    "tests.models.test_foundation.TestMaterialDefinitions::test_material_has_required_attributes": "skipped",
+    "tests.models.test_foundation.TestMaterialDefinitions::test_all_materials_have_required_attributes": "skipped"
+  }
+}

@@ -1,0 +1,12 @@
+prototype baseline {'single': 177, 'helper': 158}
+prototype R14 {'single': 177, 'helper': 158}
+prototype retired_0 {'single': 'ValidationError', 'helper': 'ValidationError'}
+prototype retired_1 {'single': 'ValidationError', 'helper': 'ValidationError'}
+prototype retired_2 {'single': 'ValidationError', 'helper': 'ValidationError'}
+prototype retired_3 {'single': 'ValidationError', 'helper': 'ValidationError'}
+prototype invalid_0 {'single': 'SustainmentError', 'helper': 'SustainmentError'}
+prototype invalid_1 {'single': 'ZeroDivisionError', 'helper': 'ZeroDivisionError'}
+prototype invalid_2 {'single': 'SustainmentError', 'helper': 'SustainmentError'}
+prototype invalid_3 {'single': 'ZeroDivisionError', 'helper': 'ZeroDivisionError'}
+prototype invalid_4 {'single': 'TypeError', 'helper': 'TypeError'}
+PASS both direct callers: full raw/scalar comparisons, retired key refusal, invalid failures

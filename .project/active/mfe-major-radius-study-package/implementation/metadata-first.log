@@ -1,0 +1,116 @@
+I_coil: no_constraint_response=false constraints 13/18 objectives 13/14 modules_fired=84
+R: no_constraint_response=false constraints 13/18 objectives 14/14 modules_fired=87
+a: no_constraint_response=false constraints 13/18 objectives 14/14 modules_fired=82
+availability_direct: no_constraint_response=true constraints 0/18 objectives 4/14 modules_fired=6
+interest_rate: no_constraint_response=true constraints 0/18 objectives 4/14 modules_fired=9
+A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds.
+{
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_fuel_cycle_params.json",
+        "inputs/mfe_magnet_cost_params.json",
+        "inputs/mfe_magnet_field_params.json",
+        "inputs/mfe_plant_params.json",
+        "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_plasma_sustainment_params.json",
+        "inputs/mfe_vacuum_params.json",
+        "inputs/stellarator_plant_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c",
+      "semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e"
+    }
+  },
+  "baseline": {
+    "point": {
+      "stellarator_09__stellaris__R": 12.7,
+      "stellarator_09__stellaris__a": 1.3,
+      "stellarator_09__stellaris__availability_direct": 0.0
+    },
+    "headline": {
+      "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+      "value": 224.26923288439
+    },
+    "verdicts": [
+      {
+        "source_local_identity": "beta_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "burn_hold_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "cond_strain_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "cycle_domain_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "divertor_heat_ok",
+        "expected": "violated"
+      },
+      {
+        "source_local_identity": "heating_couple_positive_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_couple_upper_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_source_positive_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_source_upper_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "loop_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "loop_pressure_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "net_positive",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "peak_field_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "recirc_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "sustainment_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "tbr_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "wall_load_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "wp_stress_ok",
+        "expected": "satisfied"
+      }
+    ]
+  }
+}

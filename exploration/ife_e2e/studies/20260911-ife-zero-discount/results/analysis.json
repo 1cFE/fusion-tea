@@ -1,0 +1,262 @@
+{
+  "zero_outputs": {
+    "hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules": 17857142.857142854,
+    "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions": 0.9845222400000001,
+    "hif_plant_pkg__hif_plant__driver__meier_cost__gamma": 55.13324544000002,
+    "hif_plant_pkg__hif_plant__hawker_price__generating": 1.0,
+    "hif_plant_pkg__hif_plant__hawker_price__price": 211.50466825904763,
+    "hif_plant_pkg__hif_plant__lcoe_calc__annual_driver_replacement_cost": 21437719.738306563,
+    "hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost": 58111257843.81798,
+    "hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy": 274751655.9428571,
+    "hif_plant_pkg__hif_plant__lcoe_calc__driver_capital_cost": 984522240.0000001,
+    "hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power": 82142857.14285712,
+    "hif_plant_pkg__hif_plant__lcoe_calc__driver_lifetime_years": 45.92476494786804,
+    "hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction": 0.07932541665675098,
+    "hif_plant_pkg__hif_plant__lcoe_calc__energy_on_target": 5000000.0,
+    "hif_plant_pkg__hif_plant__lcoe_calc__fusion_energy_per_shot": 435000000.0,
+    "hif_plant_pkg__hif_plant__lcoe_calc__fusion_power": 2000999999.9999998,
+    "hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power": 1035517499.9999998,
+    "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power": 871231785.7142856,
+    "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw": 0.8712317857142856,
+    "hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power": 82142857.14285712,
+    "hif_plant_pkg__hif_plant__lcoe_calc__shots_per_year": 130648464.0,
+    "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power": 2301149999.9999995,
+    "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw": 2.3011499999999994,
+    "hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction": 0.15865083331350197,
+    "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions": 3.397919111176602,
+    "hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost": 0.38396485956295606,
+    "hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator": 0.06868791398571428,
+    "hif_plant_pkg__hif_plant__meier_price__generating": 1.0,
+    "hif_plant_pkg__hif_plant__meier_price__price": 5.589991561584082,
+    "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions": 0.7722641595500556,
+    "hif_plant_pkg__hif_plant__pv_factors__construction_factor": 5.0,
+    "hif_plant_pkg__hif_plant__pv_factors__operation_factor": 40.0,
+    "hif_plant_pkg__hif_plant__recirc_calc__f_recirc": 0.07932541665675098
+  },
+  "ordinary_unchanged_channels": [
+    "hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules",
+    "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions",
+    "hif_plant_pkg__hif_plant__driver__meier_cost__gamma",
+    "hif_plant_pkg__hif_plant__hawker_price__generating",
+    "hif_plant_pkg__hif_plant__lcoe_calc__annual_driver_replacement_cost",
+    "hif_plant_pkg__hif_plant__lcoe_calc__driver_capital_cost",
+    "hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power",
+    "hif_plant_pkg__hif_plant__lcoe_calc__driver_lifetime_years",
+    "hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction",
+    "hif_plant_pkg__hif_plant__lcoe_calc__energy_on_target",
+    "hif_plant_pkg__hif_plant__lcoe_calc__fusion_energy_per_shot",
+    "hif_plant_pkg__hif_plant__lcoe_calc__fusion_power",
+    "hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power",
+    "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power",
+    "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw",
+    "hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power",
+    "hif_plant_pkg__hif_plant__lcoe_calc__shots_per_year",
+    "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power",
+    "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw",
+    "hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction",
+    "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions",
+    "hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost",
+    "hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator",
+    "hif_plant_pkg__hif_plant__meier_price__generating",
+    "hif_plant_pkg__hif_plant__meier_price__price",
+    "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions",
+    "hif_plant_pkg__hif_plant__recirc_calc__f_recirc"
+  ],
+  "continuity": [
+    {
+      "rate": -0.0001,
+      "case_id": "20260911-ife-zero-discount:c0000",
+      "relative_distance_to_executed_zero": {
+        "lcoe_calc__discounted_cost": 0.0024481930384961745,
+        "lcoe_calc__discounted_energy": 0.0025540498675206856,
+        "hawker_price__price": 0.00010558715416743704,
+        "pv_factors__construction_factor": 0.0003000700140026069,
+        "pv_factors__operation_factor": 0.0025540498675207246
+      }
+    },
+    {
+      "rate": -1e-08,
+      "case_id": "20260911-ife-zero-discount:c0001",
+      "relative_distance_to_executed_zero": {
+        "lcoe_calc__discounted_cost": 2.444330467583604e-07,
+        "lcoe_calc__discounted_energy": 2.55000040368577e-07,
+        "hawker_price__price": 1.0566990984777973e-08,
+        "pv_factors__construction_factor": 3.000000070585429e-08,
+        "pv_factors__operation_factor": 2.5500004046108416e-07
+      }
+    },
+    {
+      "rate": -1e-12,
+      "case_id": "20260911-ife-zero-discount:c0002",
+      "relative_distance_to_executed_zero": {
+        "lcoe_calc__discounted_cost": 2.4443336749846365e-11,
+        "lcoe_calc__discounted_energy": 2.5500004145327735e-11,
+        "hawker_price__price": 1.0567536158915774e-12,
+        "pv_factors__construction_factor": 2.999911430379143e-12,
+        "pv_factors__operation_factor": 2.5500135336642414e-11
+      }
+    },
+    {
+      "rate": -1e-14,
+      "case_id": "20260911-ife-zero-discount:c0003",
+      "relative_distance_to_executed_zero": {
+        "lcoe_calc__discounted_cost": 2.4432964884043897e-13,
+        "lcoe_calc__discounted_energy": 2.551215278951322e-13,
+        "hawker_price__price": 1.0884669746594324e-14,
+        "pv_factors__construction_factor": 3.002043058586423e-14,
+        "pv_factors__operation_factor": 2.5508484213787596e-13
+      }
+    },
+    {
+      "rate": -1e-16,
+      "case_id": "20260911-ife-zero-discount:c0004",
+      "relative_distance_to_executed_zero": {
+        "lcoe_calc__discounted_cost": 2.4944993702140463e-15,
+        "lcoe_calc__discounted_energy": 2.603280896889104e-15,
+        "hawker_price__price": 1.343786388468435e-16,
+        "pv_factors__construction_factor": 3.552713678800501e-16,
+        "pv_factors__operation_factor": 2.6645352591003757e-15
+      }
+    },
+    {
+      "rate": -1e-18,
+      "case_id": "20260911-ife-zero-discount:c0005",
+      "relative_distance_to_executed_zero": {
+        "lcoe_calc__discounted_cost": 0.0,
+        "lcoe_calc__discounted_energy": 0.0,
+        "hawker_price__price": 0.0,
+        "pv_factors__construction_factor": 0.0,
+        "pv_factors__operation_factor": 0.0
+      }
+    },
+    {
+      "rate": 0.0,
+      "case_id": "20260911-ife-zero-discount:c0006",
+      "relative_distance_to_executed_zero": {
+        "lcoe_calc__discounted_cost": 0.0,
+        "lcoe_calc__discounted_energy": 0.0,
+        "hawker_price__price": 0.0,
+        "pv_factors__construction_factor": 0.0,
+        "pv_factors__operation_factor": 0.0
+      }
+    },
+    {
+      "rate": 1e-18,
+      "case_id": "20260911-ife-zero-discount:c0007",
+      "relative_distance_to_executed_zero": {
+        "lcoe_calc__discounted_cost": 0.0,
+        "lcoe_calc__discounted_energy": 0.0,
+        "hawker_price__price": 0.0,
+        "pv_factors__construction_factor": 0.0,
+        "pv_factors__operation_factor": 0.0
+      }
+    },
+    {
+      "rate": 1e-16,
+      "case_id": "20260911-ife-zero-discount:c0008",
+      "relative_distance_to_executed_zero": {
+        "lcoe_calc__discounted_cost": 2.363209929676465e-15,
+        "lcoe_calc__discounted_energy": 2.603280896889104e-15,
+        "hawker_price__price": 1.343786388468435e-16,
+        "pv_factors__construction_factor": 1.7763568394002506e-16,
+        "pv_factors__operation_factor": 2.4868995751603505e-15
+      }
+    },
+    {
+      "rate": 1e-14,
+      "case_id": "20260911-ife-zero-discount:c0009",
+      "relative_distance_to_executed_zero": {
+        "lcoe_calc__discounted_cost": 2.444609382809765e-13,
+        "lcoe_calc__discounted_energy": 2.549045878203914e-13,
+        "hawker_price__price": 1.034715519120695e-14,
+        "pv_factors__construction_factor": 3.002043058586423e-14,
+        "pv_factors__operation_factor": 2.5490720645393594e-13
+      }
+    },
+    {
+      "rate": 1e-12,
+      "case_id": "20260911-ife-zero-discount:c0010",
+      "relative_distance_to_executed_zero": {
+        "lcoe_calc__discounted_cost": 2.44434680392869e-11,
+        "lcoe_calc__discounted_energy": 2.5500004145327735e-11,
+        "hawker_price__price": 1.0564848586138836e-12,
+        "pv_factors__construction_factor": 3.000089066063083e-12,
+        "pv_factors__operation_factor": 2.5499957700958477e-11
+      }
+    },
+    {
+      "rate": 1e-08,
+      "case_id": "20260911-ife-zero-discount:c0011",
+      "relative_distance_to_executed_zero": {
+        "lcoe_calc__discounted_cost": 2.444329696914588e-07,
+        "lcoe_calc__discounted_energy": 2.5499995944992914e-07,
+        "hawker_price__price": 1.056699232856436e-08,
+        "pv_factors__construction_factor": 2.999999928476882e-08,
+        "pv_factors__operation_factor": 2.549999594592123e-07
+      }
+    },
+    {
+      "rate": 0.0001,
+      "case_id": "20260911-ife-zero-discount:c0012",
+      "relative_distance_to_executed_zero": {
+        "lcoe_calc__discounted_cost": 0.002440476396452082,
+        "lcoe_calc__discounted_energy": 0.0025459598579870195,
+        "hawker_price__price": 0.00010575270367324595,
+        "pv_factors__construction_factor": 0.0002999300139972405,
+        "pv_factors__operation_factor": 0.002545959857986979
+      }
+    }
+  ],
+  "native_worst": 2.603280896889104e-15,
+  "decimal_max_relative_error": 1.370305843545424e-15,
+  "diagnostic_eligibility": [
+    {
+      "case_id": "20260911-ife-zero-discount:c0014",
+      "role": "counterexample",
+      "price_eligibility": {
+        "hawker_price": false,
+        "meier_price": false
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0015",
+      "role": "counterexample",
+      "price_eligibility": {
+        "hawker_price": false,
+        "meier_price": false
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0016",
+      "role": "counterexample",
+      "price_eligibility": {
+        "hawker_price": false,
+        "meier_price": false
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0017",
+      "role": "zero",
+      "price_eligibility": {
+        "hawker_price": false,
+        "meier_price": false
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0018",
+      "role": "zero",
+      "price_eligibility": {
+        "hawker_price": false,
+        "meier_price": false
+      }
+    },
+    {
+      "case_id": "20260911-ife-zero-discount:c0019",
+      "role": "zero",
+      "price_eligibility": {
+        "hawker_price": false,
+        "meier_price": false
+      }
+    }
+  ]
+}

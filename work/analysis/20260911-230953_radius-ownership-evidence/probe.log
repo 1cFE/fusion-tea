@@ -1,0 +1,11 @@
+baseline native ok oracle ok mismatches 0
+plant_only_R14 native ok oracle ok mismatches 106
+magnet_only_R14 native ok oracle ok mismatches 107
+tied_R14 native ok oracle ok mismatches 0
+tied_R4 native EvaluationFailed oracle RuntimeError mismatches 0
+tied_bore_equal native EvaluationFailed oracle ZeroDivisionError mismatches 0
+tied_bore_below native EvaluationFailed oracle RuntimeError mismatches 0
+plant_zero native EvaluationFailed oracle ZeroDivisionError mismatches 0
+magnet_zero native EvaluationFailed oracle ZeroDivisionError mismatches 0
+tied_negative native EvaluationFailed oracle TypeError mismatches 0
+retained /home/reid/1cfe/fusion-tea-codex-test/work/analysis/20260911-230953_radius-ownership-evidence/results.json

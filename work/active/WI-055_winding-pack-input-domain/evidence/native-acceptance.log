@@ -1,0 +1,3 @@
+{'baseline': 158, 'negative_current': 'EvaluationFailed', 'negative_density': 'EvaluationFailed', 'negative_pair': 'EvaluationFailed', 'zero_current': 'EvaluationFailed', 'negative_zero_current': 'EvaluationFailed', 'zero_density': 'EvaluationFailed', 'negative_zero_density': 'EvaluationFailed', 'zero_pair': 'EvaluationFailed', 'zero_current_negative_density': 'EvaluationFailed', 'nan_current': 'EvaluationFailed', 'inf_current': 'EvaluationFailed', 'negative_inf_current': 'EvaluationFailed', 'nan_density': 'EvaluationFailed', 'inf_density': 'EvaluationFailed', 'negative_inf_density': 'EvaluationFailed'}
+{'baseline': 158}
+PASS fifteen invalid/zero native cases and independently invoked public zero sustainment

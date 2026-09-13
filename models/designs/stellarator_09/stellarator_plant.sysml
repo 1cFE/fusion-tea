@@ -29,6 +29,17 @@ package stellarator_09 {
 
     part stellaris : 'MFE Power Plant' {
         doc /*
+        SOURCE LOCATORS used throughout this definition:
+          stellaris-design-details.md =
+            knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
+          images/ = knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/
+          raw.pdf / raw PDF / iter-02 raw PDF = the registered KIT witness,
+            knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf
+        Bare line references refer to the iter-01 text above; PDF pages and
+        sections refer to the KIT witness. Images/PDF govern quantitative
+        readings where extraction is garbled. Availability of these sources
+        does not establish unrecorded quantitative adoption.
+
         Proxima Fusion "Stellaris" -- concept-09 QI stellarator HTS power plant,
         evaluated at operating point A. The Stellaris design point is 2700 MW
         fusion; the model computes 2748 MW (+1.8%) by integrating the
@@ -134,9 +145,6 @@ package stellarator_09 {
             // cross-check: computed B_axis = 9.0 T minus one ulp
             // (8.999999999999998), low side bound so peak_field_ok cannot
             // flip on rounding (WI-035 design D2).
-            // Major radius [m]. Source: stellaris-design-details.md Table 2 /
-            //   line 251 (R ~= 12.7 m).
-            :>> R0 = 12.7;
             // Coil-bore radius [m] = radial-build vessel_or. Forward-computed
             // (WI-021): the generic plant binds magnet.r_coil = rb.r_coil, so
             // r_coil = 3.00 m falls out of the radial build (was an injected
@@ -264,7 +272,7 @@ package stellarator_09 {
             // 0.267% at the 800 MPa stress fence, binding at 1200 MPa); at a
             // 0.2% choice the conductor would bind first.
             :>> eps_cond_allow = 0.004 {
-                doc /* **Source**: knowledge/sources/electro_mechanical_properties_of_rebco_coated_conductors/ **Ref**: output.md:197 ("Remaining below 0.4% strain, there are no discernible differences in the samples' strain dependencies"; irreversible stress limits 740-840 MPa at 4.2 K/19 T); output.md:173 (irreversible strain at 4.2 K/19 T: Bruker 0.70-0.72%, SuNAM 0.67-0.69%, SuperPower 0.66-0.68%, Fujikura 0.55-0.57%, SuperOx 0.45-0.47%; Fujikura and SuperOx fully de-laminate, "indicating an interfacial weakness") **Basis**: axial irreversible strain limit for commercial REBCO coated conductor, taken at the no-discernible-effect bound; measured at 4.2 K and 77 K, which the source states bracket identically -- the 20 K operating point is bracketed, not measured (the one source measuring through 20 K, Pierro et al. 2019, is paywalled and recorded as a queued research gap) */
+                doc /* **Source**: knowledge/sources/electro_mechanical_properties_of_rebco_coated_conductors/ **Ref**: output.md:197 ("Remaining below 0.4% strain, there are no discernible differences in the samples' strain dependencies"; irreversible stress limits 740-840 MPa at 4.2 K/19 T); output.md:173 (irreversible strain at 4.2 K/19 T: Bruker 0.70-0.72%, SuNAM 0.67-0.69%, SuperPower 0.66-0.68%, Fujikura 0.55-0.57%, SuperOx 0.45-0.47%; Fujikura and SuperOx fully de-laminate, "indicating an interfacial weakness") **Basis**: axial irreversible strain limit for commercial REBCO coated conductor, taken at the no-discernible-effect bound; measured at 4.2 K and 77 K, which the source states bracket identically -- the 20 K operating point is bracketed, not measured (Pierro et al. 2019 is now registered at knowledge/sources/measurements_of_the_strain_dependence_of_critical_current/; its availability does not replace this retained Senatore-based allowable or establish a design allowable at the operating point) */
             }
             // Winding fabrication markup [1] = 3.5 (winding/insulation/cooling/jointing/test)
             // x 1.9 (documented NCSX non-planar production penalty). Content-mapped: no casing,
@@ -711,6 +719,8 @@ package stellarator_09 {
         // entry point; source-output power (the cost driver) and plasma-coupled
         // power (the physics driver, and what sustainment_ok compares against
         // the plasma's requirement) are computed from it.
+        :>> p_operating_coupled_heat = sustain.p_aux_required;
+
         :>> p_wallplug_heat = 100.0 {
             doc /*
             Installed wall-plug electrical power for ECRH [MW].
@@ -1510,7 +1520,7 @@ package stellarator_09 {
         // The chain is live: the direct term is zeroed (WI-041 design D1; the
         // p_cryo = 0.0 and p_coupled_direct_heat = 0.0 precedents).
         :>> wall_peak_calibration_direct = 0.0 {
-            doc /* **Source**: WI-041 design D1 **Ref**: work/active/WI-041_source-anchored-wall-load-fence/design.md (dormancy by an additive direct term) **Basis**: the calibration is anchored, so the dormant direct term is zeroed */
+            doc /* **Source**: WI-041 design D1 **Ref**: work/completed/20260905_WI-041_source-anchored-wall-load-fence/design.md (dormancy by an additive direct term) **Basis**: the calibration is anchored, so the dormant direct term is zeroed */
         }
 
         // first-wall PEAK design limit [MW/m^2] (WI-022; WI-041 confirmed).

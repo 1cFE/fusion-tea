@@ -6,8 +6,13 @@ package ife_cost_parameters {
         doc /*
         The 14 technology-agnostic parameters that characterize IFE LCOE,
         from Hawker's simplified economic model. Each parameter carries
-        a default value, Monte Carlo range (min/max), and Pearson
-        sensitivity coefficient from 10M-sample Monte Carlo analysis.
+        a retained default value, Monte Carlo range (min/max), and Pearson
+        sensitivity coefficient. Hawker Table 2 defines the parameters;
+        Table 3 reports sampled ranges and correlations from the filtered
+        10M-sample experiment; section 3(b) supplies the single-parameter-scan
+        defaults. These correlations describe that experiment, not universal
+        derivatives. Sampling-space and runtime-input mappings are not
+        represented by this metadata bundle.
 
         Sensitivity ranking (by |Pearson r|):
         1. discount_rate (+0.247)
@@ -20,14 +25,14 @@ package ife_cost_parameters {
         "No single parameter is strongly dominant" — Hawker 2020.
 
         **Source**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md
-        **Ref**: Table 1 (parameter definitions), Figure 3 (sensitivity)
+        **Ref**: Table 2 (definitions); Table 3 (sampled ranges and Pearson correlations); section 3(b) (scan defaults)
         **Basis**: Complete parameter set from Hawker 2020 Monte Carlo analysis
         */
 
         attribute availability : 'Economic Parameter' {
             doc /*
             Plant availability factor (fraction of time operating).
-            Source: Hawker 2020 Table 1, parameter mu_a.
+            Source: Hawker 2020 Table 2 (definition), Table 3 (range/correlation), parameter mu_a.
             Units: dimensionless fraction.
             */
             :>> value = 0.70;
@@ -40,7 +45,7 @@ package ife_cost_parameters {
             doc /*
             Blanket energy multiplication factor. Nuclear energy
             multiplier from exothermic lithium reactions.
-            Source: Hawker 2020 Table 1, parameter E_b.
+            Source: Hawker 2020 Table 2 (definition), Table 3 (range/correlation), parameter E_b.
             Units: dimensionless.
             */
             :>> value = 1.2;
@@ -53,7 +58,7 @@ package ife_cost_parameters {
             doc /*
             Discount rate for DCF calculation. Highest sensitivity
             parameter in the model (+0.247).
-            Source: Hawker 2020 Table 1, parameter d.
+            Source: Hawker 2020 Table 2 (definition), Table 3 (range/correlation), parameter d.
             Units: dimensionless fraction.
             */
             :>> value = 0.08;
@@ -68,7 +73,7 @@ package ife_cost_parameters {
             points span 3 orders of magnitude by driver type:
             NIF $9.5/J, DPSSL $700-1000/J, Xcimer $60-120/J,
             pulsed-power $1.7-6/J.
-            Source: Hawker 2020 Table 1, parameter gamma.
+            Source: Hawker 2020 Table 2 (definition), Table 3 (range/correlation), parameter gamma.
             Units: $/J.
             Basis: DI-004 driver cost reference points.
             */
@@ -83,7 +88,7 @@ package ife_cost_parameters {
             Driver wall-plug efficiency (energy to target / energy
             from grid). Varies by driver type: heavy-ion 20-30%,
             pulser ~10%, laser 5-15%.
-            Source: Hawker 2020 Table 1, parameter mu_d.
+            Source: Hawker 2020 Table 2 (definition), Table 3 (range/correlation), parameter mu_d.
             Units: dimensionless fraction.
             */
             :>> value = 0.10;
@@ -94,8 +99,10 @@ package ife_cost_parameters {
 
         attribute driver_energy : 'Economic Parameter' {
             doc /*
-            Driver bank energy (total stored energy per shot).
-            Source: Hawker 2020 Table 1, parameter E_d.
+            Energy incident on the target per shot (Hawker section 2, text after Eq. 2.15).
+            The retained identifier driver_energy follows the source Table 2
+            label; the sampled range is target energy, not stored bank energy.
+            Source: Hawker 2020 Table 2 (definition), Table 3 (range/correlation), parameter E_d.
             Units: J (range expressed as 0.5-50 MJ).
             */
             :>> value = 10.0e6;
@@ -108,7 +115,7 @@ package ife_cost_parameters {
             doc /*
             Driver lifetime in number of shots before replacement.
             Converted to years via shots_per_year = 365.25*24*3600*f*mu_a.
-            Source: Hawker 2020 Table 1, parameter N_d.
+            Source: Hawker 2020 Table 2 (definition), Table 3 (range/correlation), parameter N_d.
             Units: shots.
             */
             :>> value = 5.0e7;
@@ -120,7 +127,7 @@ package ife_cost_parameters {
         attribute frequency : 'Economic Parameter' {
             doc /*
             Target shot repetition rate.
-            Source: Hawker 2020 Table 1, parameter f.
+            Source: Hawker 2020 Table 2 (definition), Table 3 (range/correlation), parameter f.
             Units: Hz.
             */
             :>> value = 0.2;
@@ -135,7 +142,7 @@ package ife_cost_parameters {
             4th highest sensitivity parameter (-0.164).
             Diminishing returns above ~400 per Hawker; HIF gains
             range 68-500 per Bangerter Table 1.
-            Source: Hawker 2020 Table 1, parameter G.
+            Source: Hawker 2020 Table 2 (definition), Table 3 (range/correlation), parameter G.
             Units: dimensionless.
             */
             :>> value = 500.0;
@@ -147,7 +154,7 @@ package ife_cost_parameters {
         attribute om_cost_constant : 'Economic Parameter' {
             doc /*
             Annual operations and maintenance cost per kWe capacity.
-            Source: Hawker 2020 Table 1, parameter epsilon.
+            Source: Hawker 2020 Table 2 (definition), Table 3 (range/correlation), parameter epsilon.
             Units: $/kWe-year.
             */
             :>> value = 30.0;
@@ -161,7 +168,7 @@ package ife_cost_parameters {
             Balance-of-plant capital cost per kWe. Covers BOP, heat
             exchangers, turbines, generator, grid connection, land,
             buildings. 2nd highest sensitivity (+0.210).
-            Source: Hawker 2020 Table 1, parameter alpha.
+            Source: Hawker 2020 Table 2 (definition), Table 3 (range/correlation), parameter alpha.
             Units: $/kWe.
             */
             :>> value = 3000.0;
@@ -176,7 +183,7 @@ package ife_cost_parameters {
             with no MFE parallel. 3rd highest sensitivity (+0.186).
             Threshold effect: below ~$10/target, further reduction
             provides limited LCOE benefit.
-            Source: Hawker 2020 Table 1, parameter delta.
+            Source: Hawker 2020 Table 2 (definition), Table 3 (range/correlation), parameter delta.
             Units: $/target.
             Basis: DI-003 target cost as unique IFE operating cost.
             */
@@ -189,7 +196,7 @@ package ife_cost_parameters {
         attribute thermal_efficiency : 'Economic Parameter' {
             doc /*
             Thermal-to-electric conversion efficiency.
-            Source: Hawker 2020 Table 1, parameter mu_th.
+            Source: Hawker 2020 Table 2 (definition), Table 3 (range/correlation), parameter mu_th.
             Units: dimensionless fraction.
             */
             :>> value = 0.40;
@@ -202,7 +209,7 @@ package ife_cost_parameters {
             doc /*
             Reaction vessel cost per GJ of fusion energy per shot.
             Captures chamber/blanket cost proportional to yield.
-            Source: Hawker 2020 Table 1, parameter beta.
+            Source: Hawker 2020 Table 2 (definition), Table 3 (range/correlation), parameter beta.
             Units: $/GJ.
             */
             :>> value = 5.0e6;

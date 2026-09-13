@@ -1,0 +1,69 @@
+{
+  "guard_checks": [
+    {
+      "case": "reference_before_zero_normalizer",
+      "error": "Conductor Peak Field: reference clearance R_ref_in - a_coil_ref_in must be > 0"
+    },
+    {
+      "case": "both_invalid_live_first",
+      "error": "Conductor Peak Field: live clearance R_in - a_coil_in must be > 0"
+    },
+    {
+      "case": "live_12.7_13.0",
+      "error": "Conductor Peak Field: live clearance R_in - a_coil_in must be > 0"
+    },
+    {
+      "case": "live_12.7_12.7",
+      "error": "Conductor Peak Field: live clearance R_in - a_coil_in must be > 0"
+    },
+    {
+      "case": "live_nan_3.0",
+      "error": "Conductor Peak Field: live clearance R_in - a_coil_in must be > 0"
+    },
+    {
+      "case": "reference_12.7_13.0",
+      "error": "Conductor Peak Field: reference clearance R_ref_in - a_coil_ref_in must be > 0"
+    },
+    {
+      "case": "reference_12.7_12.7",
+      "error": "Conductor Peak Field: reference clearance R_ref_in - a_coil_ref_in must be > 0"
+    },
+    {
+      "case": "reference_nan_3.0",
+      "error": "Conductor Peak Field: reference clearance R_ref_in - a_coil_ref_in must be > 0"
+    },
+    {
+      "case": "temperature_0_300",
+      "error": "Cryoplant Electrical Power: require 0 < T_cold < T_amb"
+    },
+    {
+      "case": "temperature_-1_300",
+      "error": "Cryoplant Electrical Power: require 0 < T_cold < T_amb"
+    },
+    {
+      "case": "temperature_300_300",
+      "error": "Cryoplant Electrical Power: require 0 < T_cold < T_amb"
+    },
+    {
+      "case": "temperature_301_300",
+      "error": "Cryoplant Electrical Power: require 0 < T_cold < T_amb"
+    },
+    {
+      "case": "temperature_20_0",
+      "error": "Cryoplant Electrical Power: require 0 < T_cold < T_amb"
+    },
+    {
+      "case": "temperature_20_-1",
+      "error": "Cryoplant Electrical Power: require 0 < T_cold < T_amb"
+    },
+    {
+      "case": "temperature_nan_300",
+      "error": "Cryoplant Electrical Power: require 0 < T_cold < T_amb"
+    },
+    {
+      "case": "temperature_20_nan",
+      "error": "Cryoplant Electrical Power: require 0 < T_cold < T_amb"
+    }
+  ],
+  "identity_checks": 8
+}

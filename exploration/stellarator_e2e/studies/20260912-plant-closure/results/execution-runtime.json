@@ -1,0 +1,11 @@
+{
+  "started_at_utc": "2026-09-12T22:00:34.688017+00:00",
+  "repo_revision": "4cd5e6081fc7683b32bd936fc40d3e7d858067f7",
+  "study_definition": "study.py",
+  "preparation_digests": {
+    "reduced-proposals.json": "95eed14f26a42b3c4bef8e576e68ad9677f3099a4241955fd514ede147e6d5c7",
+    "reduced-correlation.json": "e5482290d932610befe7d82cb23cac06fdf54ba201d6fd459b23987975afd012",
+    "oracle-scan.json": "602be214ee25bcce5a0da93c3f99ba32132c38da734409656b17fb47dbafd657",
+    "window-edges.json": "40f14012f94b842cca55322f582f1ddd2155708b19138ab1ea527e79b9e87e30"
+  }
+}

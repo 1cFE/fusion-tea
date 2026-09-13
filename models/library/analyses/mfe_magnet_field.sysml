@@ -51,13 +51,17 @@ package mfe_magnet_field {
 
           sigma_wp = k_sigma * I_coil * B_peak_in / wp_side
 
+        Domain: wp_side != 0. Native typed manual completion raises
+        ValueError for a zero denominator before evaluating the stated equation.
+        A locally zero-sized pack has no defined stress in this expression.
+
         Force density (current x field) over the load-bearing dimension --
         the standard mean-stress scale for a winding. k_sigma is a held
         coil-set structural concentration fact (float64 anchored at the
         printed worst-coil pair: <650 MPa at I 15.4 MA, B_peak 24.9 T,
         side 0.36 m; the printed "<650" bound is taken AS the value,
         conservative). The operand responds as I * B_peak / side --
-        quadratic in coil current once B_peak follows the derived field --
+        quadratic at fixed side once B_peak follows the derived field --
         so the paired limit pushes back on both field choice and winding-pack
         sizing (rubric Row 3 P3).
 
@@ -78,7 +82,10 @@ package mfe_magnet_field {
         // stress concentration transfer fact [1] (coil-set structural fact)
         in attribute k_sigma : Real;
 
-        out attribute sigma_wp : Real = k_sigma * I_coil * B_peak_in / wp_side;
+        // Normative domain: wp_side must be nonzero (WI-055).
+        // Native typed manual completion raises ValueError before division.
+        // Valid ordered equation: k_sigma * I_coil * B_peak_in / wp_side.
+        out attribute sigma_wp : Real;
     }
 
     calc def 'Winding Pack Sizing' {
@@ -100,9 +107,18 @@ package mfe_magnet_field {
         area in mm^2; the 1000 divisor converts the side to metres.
 
         Consequence for the paired stress calc: substituting gives
-        sigma_wp = k_sigma * B_peak * sqrt(I_coil * j_wp), so winding stress
-        grows as the square root of coil current rather than linearly once
-        the pack is allowed to size itself.
+        sigma_wp = 1000 * k_sigma * B_peak * sqrt(I_coil * j_wp).
+        At fixed peak field and density, stress grows as sqrt(I_coil).
+        When peak field follows current at fixed geometry, it grows as
+        I_coil^(3/2) at fixed density. The factor 1000 follows the side's
+        millimetre-to-metre conversion; it is not a calibration coefficient.
+
+        Domain: I_coil and j_wp are finite magnitudes, with I_coil >= 0
+        and j_wp > 0. Native typed manual completion raises ValueError
+        before evaluating the sizing equation for an invalid domain (WI-055).
+        I_coil = 0 gives local side = 0, not a de-energized finite coil model.
+        The composed stress and plasma equations enforce their own nonzero
+        denominators. Source coil values are examples, not universal bounds.
 
         **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
         **Ref**: images/page_022_table_0.png (Table 8: I total amp-turns
@@ -118,7 +134,9 @@ package mfe_magnet_field {
         // winding-pack current density [A/mm^2] -- the design lever
         in attribute j_wp : Real;
 
-        out attribute wp_side : Real = (I_coil / j_wp) ** 0.5 / 1000.0;
+        // Native manual completion enforces the documented finite magnitude
+        // domain before unchanged (I_coil / j_wp) ** 0.5 / 1000.0 arithmetic.
+        out attribute wp_side : Real;
     }
 
     calc def 'Coil Winding Length' {

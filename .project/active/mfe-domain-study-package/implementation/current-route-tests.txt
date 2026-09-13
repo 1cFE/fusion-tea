@@ -1,0 +1,24 @@
+..........F............................................................. [ 43%]
+........................................................................ [ 86%]
+.......................                                                  [100%]
+=================================== FAILURES ===================================
+____ test_current_radius_controls_match_frozen_model_and_independent_oracle ____
+tests/study/test_major_radius.py:80: in test_current_radius_controls_match_frozen_model_and_independent_oracle
+    results = controls.check_controls(tmp_path)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/financial_radius_controls.py:71: in check_controls
+    summary = verify.build_summary(
+scripts/study/verify.py:481: in build_summary
+    common.assert_tree_clean(package_root)
+scripts/study/common.py:81: in assert_tree_clean
+    raise ToolError(
+E   scripts.study.common.ToolError: package tree is not git-clean: exploration/stellarator_e2e/generated
+E   M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E    M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E    M exploration/stellarator_e2e/generated/handwritten/mfe_cryo_plant/cryoplant_electrical_power_impl.py
+E    M exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/conductor_peak_field_impl.py
+E    M exploration/stellarator_e2e/generated/modules/mfe_cryo_plant/cryoplant_electrical_power.py
+E    M exploration/stellarator_e2e/generated/modules/mfe_plasma_scaling/conductor_peak_field.py
+=========================== short test summary info ============================
+FAILED tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle
+1 failed, 166 passed in 9.78s

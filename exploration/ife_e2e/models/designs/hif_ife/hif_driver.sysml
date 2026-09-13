@@ -6,7 +6,7 @@ package hif_driver {
     part def 'HIF Driver' :> 'IFE Driver' {
         doc /*
         Heavy Ion Fusion driver: induction linear accelerator.
-        Osiris baseline operating point from EIF-1992.
+        Source-informed operating point with computed bank energy.
 
         Inherits the four generic IFE driver parameters (efficiency,
         cost_per_joule, energy, lifetime_shots) from IFE Driver and
@@ -14,10 +14,13 @@ package hif_driver {
         (beam_energy_mj, num_chambers, pulse_rate_ref) and uses Meier's
         driver cost formula to derive cost_per_joule (gamma).
 
-        **Source**: knowledge/sources/energy_from_inertial_fusion/output.md
+        **Source**: knowledge/sources/energy_from_inertial_fusion/images/page_007_table_0.png
         **Ref**: Power plant operating parameters table — Osiris column
         **Basis**: Osiris HIF plant design (1.0 GWe, liquid-wall chamber,
-            induction linac driver). Year-dollars: mixed (1988$/1992$).
+            induction linac driver). Driver procurement retains Meier 1988 dollars; the historical
+            Osiris COE is separately reported in 1992 cents/kWh.
+        **Reference**: Osiris table image; Meier Eq. 5
+        **Last Updated**: 2026-09-10
         */
 
         // === HIF-specific attributes ===
@@ -28,7 +31,7 @@ package hif_driver {
             to the fusion target, NOT the bank/stored energy. The bank
             energy (IFE Driver's 'energy' attribute) = beam_energy / efficiency.
 
-            **Source**: knowledge/sources/energy_from_inertial_fusion/output.md
+            **Source**: knowledge/sources/energy_from_inertial_fusion/images/page_007_table_0.png
             **Ref**: Osiris operating parameters — Driver energy: 5.0 MJ
             **Basis**: EIF-1992 Osiris design point
             */
@@ -47,7 +50,8 @@ package hif_driver {
 
         attribute pulse_rate_ref : Real {
             doc /*
-            Reference pulse repetition rate for driver cost scaling.
+            Operating pulse repetition rate for driver cost scaling, bound
+            to plant frequency by the HIF instance.
             Meier's formula uses 5 Hz as the baseline; cost increases
             by 4.4% per 5 Hz above that.
 
@@ -78,9 +82,9 @@ package hif_driver {
 
         // === Inherited interface parameters ===
 
-        :>> efficiency = 0.35;
+        :>> efficiency = 0.28;
         :>> cost_per_joule = meier_cost.gamma;
-        :>> energy = 14.286e6;
+        :>> energy = meier_cost.bank_energy_joules;
         :>> lifetime_shots = 6.0e9;
 
         // === Exposed intermediate for Meier COE chain ===

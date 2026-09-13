@@ -1,0 +1,1733 @@
+{
+  "executable_fingerprint": "045417b231573653d754b68c8e26eec26fcec72fdc3814df27e504416639fe63",
+  "seal": {
+    "artifact_hashes": {
+      "IMPLEMENTATION_BACKLOG.md": "52e4820fb6308563d4167b6548c2a460b0fc2f62d9e48760103f7e9d2610392a",
+      "__init__.py": "a590ea9e7883874690c145e9ba9d9e3c83187d0d9dca50d7a664082f07476cbf",
+      "contracts/generation_manifest.json": "16c80224dd4940e562cf48bb1015653c56557b3822d6f8267c16bb01b72a297d",
+      "contracts/model_contract.json": "aaf05bc2d40b7274ca080701116f1d26aabc02db907c685d7fe51af5cbd76dc4",
+      "contracts/verify.py": "ad0a855af17d18af5f3e8c36b1a6c500f492d88ec777b40f307c646306c67284",
+      "handwritten/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+      "handwritten/fusion_cycle/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+      "handwritten/fusion_cycle/recirculating_power_fraction_impl.py": "8f329ec65d8bcf79702f37587799c5a94e58281e50f0ddce10a1dee8f8858760",
+      "handwritten/hif_economics/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+      "handwritten/hif_economics/meier_coe_impl.py": "bb96935bfc9cde58939a837f55a2fc9dfa02c6353cc0b694756c51541e4a53fe",
+      "handwritten/hif_economics/meier_hif_driver_cost_impl.py": "cfdb4dd7a7257c713ab3ed0e94348bf3a0192c1dc1e516489916e8aa7dd8c6af",
+      "handwritten/hif_economics/meier_reactor_cost_impl.py": "8af3eee5fcb41b577e01ea1911358d7e14d77041ced9f4ac866f61efd162cf60",
+      "handwritten/hif_economics/meier_total_capital_cost_impl.py": "fe27a281a389b93301b515a7a9cb9ee1abf49a5689fd37a96373fac0a14a8948",
+      "handwritten/ife_lcoe/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+      "handwritten/ife_lcoe/generating_electricity_price_impl.py": "67bc0ed6241856920c8380b4ddcc0293d41f6d6fa131abc6c97b6cc74d1d9377",
+      "handwritten/ife_lcoe/ife_lcoe_impl.py": "175f954167ab91121724adb50fc6ad74de0239e276f2ce160266eb35820d54ca",
+      "inputs/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+      "inputs/hif_driver_params.json": "b4d483781b037e744e8b9c7e931236b2f3b8638baa8ea57e228bbd6b1966615e",
+      "inputs/hif_plant_params.json": "a3ec7359041c3d29bf13d38aae048c264cc200973eb84fcac221b3a79bd4fde7",
+      "inputs/ife_lcoe_params.json": "6266c1e48e38971157011c5729c0f31751a2b66a06dd4b105107c09ee699270c",
+      "inputs/ife_plant_params.json": "bd2fe10036d6f4d8633d72620c4cc96c9ffead9e3b5115fe3e1e45810e158d63",
+      "modules/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+      "modules/constraints/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+      "modules/constraints/constraintreportaggregatormodule.py": "88b15d6d9e295ff7861303e8559ef0bc7c38fcd33958db72b12f8ad8c9f272c7",
+      "modules/constraints/predicates.py": "b61a92538f7c25cbe53bc14c6de4408495d7de7eacfe082c3ea3d57f72859075",
+      "modules/fusion_cycle/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+      "modules/fusion_cycle/recirculating_power_fraction.py": "00c310683b15db0bbf26db6a47ce99981325ea3acbe6747696695b5d0b1e1fa7",
+      "modules/hif_economics/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+      "modules/hif_economics/meier_coe.py": "ed10327e24218ab211486b8b7adc4d6628c57e6caf3ae5e19247d486ad8a16a9",
+      "modules/hif_economics/meier_hif_driver_cost.py": "35a2199af4162664bad66efbcb9c1a344224922be5627ece5f1d0e242bb01345",
+      "modules/hif_economics/meier_reactor_cost.py": "82ef9577e4a630f64c7caad821a31d8c7e8e018ab16d1fa9ef9a85e701c502b5",
+      "modules/hif_economics/meier_total_capital_cost.py": "ad549ea5440f047e464a22329a0e406124594e1e9161f24d568424f6b6d9e70a",
+      "modules/hif_plant_pkg/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+      "modules/hif_plant_pkg/hifplantnetpositiveconstraintmodule.py": "f34f45999c9494d07cc347f3dd12cbec39fc3cf3e5752a7c6dd0134c42b5d25a",
+      "modules/hif_plant_pkg/hifplantviabilityconstraintmodule.py": "d728d535dbf4b7d0ba10c8252f4da2fa4fbf6b1df8c48c98f6dd946c7daa246a",
+      "modules/ife_lcoe/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+      "modules/ife_lcoe/generating_electricity_price.py": "dc139bc42efac67345212392c38a96cb7247f348ad584016384d1ee522e63540",
+      "modules/ife_lcoe/ife_lcoe.py": "3650a43ba24187ce4e17cc1bfb8df38a66349994fc15b5a7f3d0b22891d083fc",
+      "pipelines/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+      "pipelines/pipeline.yaml": "a1ec5b4a85afe003621985716fa533ae748f6d503e8fdd9b2e4e9f4345497dbe",
+      "primitives.py": "1bc6be58e5290b102d762227c33f138ecc4f9feaa00fa2f4cfd02f87f5f71998",
+      "schemas/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+      "schemas/constraint_types.py": "c7910f974bd106e6d58f61bd0ae5ce28a2f63135bf841327a6b76a7a1d21cc49",
+      "schemas/generating_electricity_price_output.py": "6fd3e80cfc09870d73039b950a16a5c0fa3151bc6d53e0d41bddc70e29fe338e",
+      "schemas/hif_driver_params.py": "b9273b2359d756424a63e0fc710f597a6ff2f0cfa96b92c1f3943b8e9dee15be",
+      "schemas/hif_plant_params.py": "dc9d243ebf385169bb29373da751a173167e91f40dcc52baeb79b9368bb7bd5f",
+      "schemas/ife_lcoe_output.py": "360346528a9343c0a2fa66c3114c99bec778648db79d8b3ac059ab1a850b916c",
+      "schemas/ife_lcoe_params.py": "df4fc5f4ba9944f9fbe105e0eef27345ff1148f905cba644e538504e78ba081c",
+      "schemas/ife_plant_params.py": "eb39f1f8099eefa62b1453f59e1d670f2301ff1f27e73f2adc2a0f397789fa7c",
+      "schemas/meier_coe_output.py": "8e3633096766d0f15753873925076f1fc7754cae3279793ae5a6c2ca2e559633",
+      "schemas/meier_hif_driver_cost_output.py": "3b523e5c8eb6cdc0735ed508af459d65559dcb426501666de845e193697c46de",
+      "tests/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+      "tests/test_implementations_runnable.py": "f48530846f7be9730e3926fd089290f8d03f6e58d29d1ca7eeb3057ba767357d"
+    },
+    "coverage_policy": {
+      "exclude_globs": [
+        "contracts/package_contract.json",
+        "**/__pycache__/**"
+      ],
+      "runtime_output_globs": []
+    },
+    "executable_fingerprint": "045417b231573653d754b68c8e26eec26fcec72fdc3814df27e504416639fe63",
+    "generator_version": "0.1.1",
+    "package_name": "ife_tea",
+    "runtime_contract_version": "2.0.0"
+  },
+  "fractional_duration_probes": [
+    {
+      "rate": 0.08,
+      "accepted": true,
+      "cost": 12972701680.587824,
+      "energy": 53738349.31342377
+    },
+    {
+      "rate": 0.0,
+      "accepted": true,
+      "error": "ZeroDivisionError('float division by zero')"
+    }
+  ],
+  "files": {
+    "models/library/analyses/ife_lcoe.sysml": "c842ae0075c1bb7cf76f84389d43c393371a8d9379421485bab1aead7378c4cd",
+    "/home/reid/1cfe/fusion-tea-codex-test/exploration/ife_e2e/generated/handwritten/ife_lcoe/ife_lcoe_impl.py": "175f954167ab91121724adb50fc6ad74de0239e276f2ce160266eb35820d54ca",
+    "/home/reid/1cfe/fusion-tea-codex-test/exploration/ife_e2e/generated/handwritten/ife_lcoe/generating_electricity_price_impl.py": "67bc0ed6241856920c8380b4ddcc0293d41f6d6fa131abc6c97b6cc74d1d9377",
+    "tests/ife_oracle.py": "0bd016a877a6fb92ea8c5b07add0bf6c9927464acba18602c650930320da333d"
+  },
+  "rows": [
+    {
+      "scenario": "baseline",
+      "rate": 0.08,
+      "inputs": {
+        "thermal_efficiency_in": 0.45,
+        "discount_rate_in": 0.08,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 55.13324544000002,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.28,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.15,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 87.0,
+        "driver_energy": 17857142.857142854,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 13415949859.392105,
+        "discounted_energy": 55744991.73561761,
+        "price": 240.6664606395509
+      },
+      "actual": {
+        "discounted_cost": 13415949859.392101,
+        "discounted_energy": 55744991.73561758,
+        "price": 240.66646063955096
+      },
+      "net_power": 871231785.7142856,
+      "relative_errors": {
+        "discounted_cost": -2.843404533861197e-16,
+        "discounted_energy": -5.34618832289708e-16,
+        "price": 2.3619169330762336e-16
+      },
+      "guard_reached": true,
+      "generating": 1.0
+    },
+    {
+      "scenario": "baseline",
+      "rate": 0.0,
+      "inputs": {
+        "thermal_efficiency_in": 0.45,
+        "discount_rate_in": 0.0,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 55.13324544000002,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.28,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.15,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 87.0,
+        "driver_energy": 17857142.857142854,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58111257843.81798,
+        "discounted_energy": 274751655.94285715,
+        "price": 211.50466825904758
+      },
+      "core_error": "Traceback (most recent call last):\n  File \"/home/reid/1cfe/fusion-tea-codex-test/work/analysis/20260911-141041_ife-zero-discount-assessment/probe.py\", line 61, in <module>\n    out=run_ife_lcoe(p)\n        ^^^^^^^^^^^^^^^\n  File \"/home/reid/1cfe/fusion-tea-codex-test/work/analysis/20260911-141041_ife-zero-discount-assessment/pkg_link/ife_tea/handwritten/ife_lcoe/ife_lcoe_impl.py\", line 171, in run_ife_lcoe\n    pvf_construction = ((1.0 - (1.0 / discount_factor_con)) / inputs.discount_rate_in)\n                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~\nZeroDivisionError: float division by zero\n",
+      "guard_reached": false
+    },
+    {
+      "scenario": "baseline",
+      "rate": 0.0001,
+      "inputs": {
+        "thermal_efficiency_in": 0.45,
+        "discount_rate_in": 0.0001,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 55.13324544000002,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.28,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.15,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 87.0,
+        "driver_energy": 17857142.857142854,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 57969438690.68199,
+        "discounted_energy": 274052149.2559112,
+        "price": 211.5270354495555
+      },
+      "actual": {
+        "discounted_cost": 57969438690.67658,
+        "discounted_energy": 274052149.2558849,
+        "price": 211.52703544955602
+      },
+      "net_power": 871231785.7142856,
+      "relative_errors": {
+        "discounted_cost": -9.331193892560031e-14,
+        "discounted_energy": -9.591476811007093e-14,
+        "price": 2.4185597300127394e-15
+      },
+      "guard_reached": true,
+      "generating": 1.0
+    },
+    {
+      "scenario": "baseline",
+      "rate": -0.0001,
+      "inputs": {
+        "thermal_efficiency_in": 0.45,
+        "discount_rate_in": -0.0001,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 55.13324544000002,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.28,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.15,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 87.0,
+        "driver_energy": 17857142.857142854,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58253525420.72948,
+        "discounted_energy": 275453385.37331915,
+        "price": 211.48233608303298
+      },
+      "actual": {
+        "discounted_cost": 58253525420.72344,
+        "discounted_energy": 275453385.3732884,
+        "price": 211.48233608303468
+      },
+      "net_power": 871231785.7142856,
+      "relative_errors": {
+        "discounted_cost": -1.0359632366681198e-13,
+        "discounted_energy": -1.1165590381987238e-13,
+        "price": 8.06356974019191e-15
+      },
+      "guard_reached": true,
+      "generating": 1.0
+    },
+    {
+      "scenario": "baseline",
+      "rate": 1e-08,
+      "inputs": {
+        "thermal_efficiency_in": 0.45,
+        "discount_rate_in": 1e-08,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 55.13324544000002,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.28,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.15,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 87.0,
+        "driver_energy": 17857142.857142854,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58111243639.51065,
+        "discounted_energy": 274751585.88119596,
+        "price": 211.50467049401584
+      },
+      "actual": {
+        "discounted_cost": 58111243283.13786,
+        "discounted_energy": 274751584.18015265,
+        "price": 211.50467050641183
+      },
+      "net_power": 871231785.7142856,
+      "relative_errors": {
+        "discounted_cost": -6.1325961235027345e-09,
+        "discounted_energy": -6.1912046925063414e-09,
+        "price": 5.860857082054025e-11
+      },
+      "guard_reached": true,
+      "generating": 1.0
+    },
+    {
+      "scenario": "baseline",
+      "rate": -1e-08,
+      "inputs": {
+        "thermal_efficiency_in": 0.45,
+        "discount_rate_in": -1e-08,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 55.13324544000002,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.28,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.15,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 87.0,
+        "driver_energy": 17857142.857142854,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58111272048.12978,
+        "discounted_energy": 274751726.0045405,
+        "price": 211.50466602407965
+      },
+      "actual": {
+        "discounted_cost": 58111272327.953415,
+        "discounted_energy": 274751727.340075,
+        "price": 211.50466601444134
+      },
+      "net_power": 871231785.7142856,
+      "relative_errors": {
+        "discounted_cost": 4.815307279022586e-09,
+        "discounted_energy": 4.860877609098633e-09,
+        "price": -4.557021573000395e-11
+      },
+      "guard_reached": true,
+      "generating": 1.0
+    },
+    {
+      "scenario": "baseline",
+      "rate": 1e-12,
+      "inputs": {
+        "thermal_efficiency_in": 0.45,
+        "discount_rate_in": 1e-12,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 55.13324544000002,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.28,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.15,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 87.0,
+        "driver_energy": 17857142.857142854,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58111257842.397545,
+        "discounted_energy": 274751655.935851,
+        "price": 211.50466825927106
+      },
+      "actual": {
+        "discounted_cost": 58116423968.2039,
+        "discounted_energy": 274776081.5236956,
+        "price": 211.5046682590973
+      },
+      "net_power": 871231785.7142856,
+      "relative_errors": {
+        "discounted_cost": 8.890060202051194e-05,
+        "discounted_energy": 8.890060284227404e-05,
+        "price": -8.215909979087333e-13
+      },
+      "guard_reached": true,
+      "generating": 1.0
+    },
+    {
+      "scenario": "baseline",
+      "rate": -1e-12,
+      "inputs": {
+        "thermal_efficiency_in": 0.45,
+        "discount_rate_in": -1e-12,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 55.13324544000002,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.28,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.15,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 87.0,
+        "driver_energy": 17857142.857142854,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58111257845.23841,
+        "discounted_energy": 274751655.9498633,
+        "price": 211.50466825882407
+      },
+      "actual": {
+        "discounted_cost": 58110032922.656364,
+        "discounted_energy": 274745577.96499515,
+        "price": 211.5048888250353
+      },
+      "net_power": 871231785.7142856,
+      "relative_errors": {
+        "discounted_cost": -2.1078920461655054e-05,
+        "discounted_energy": -2.2121740621202815e-05,
+        "price": 1.0428432291437716e-06
+      },
+      "guard_reached": true,
+      "generating": 1.0
+    },
+    {
+      "scenario": "baseline",
+      "rate": 1e-14,
+      "inputs": {
+        "thermal_efficiency_in": 0.45,
+        "discount_rate_in": 1e-14,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 55.13324544000002,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.28,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.15,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 87.0,
+        "driver_energy": 17857142.857142854,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58111257843.80377,
+        "discounted_energy": 274751655.9427871,
+        "price": 211.50466825904982
+      },
+      "actual": {
+        "discounted_cost": 58064810803.31958,
+        "discounted_energy": 274532053.0334705,
+        "price": 211.5046682590481
+      },
+      "net_power": 871231785.7142856,
+      "relative_errors": {
+        "discounted_cost": -0.0007992778371625698,
+        "discounted_energy": -0.0007992778371546135,
+        "price": -8.197096969657369e-15
+      },
+      "guard_reached": true,
+      "generating": 1.0
+    },
+    {
+      "scenario": "baseline",
+      "rate": -1e-14,
+      "inputs": {
+        "thermal_efficiency_in": 0.45,
+        "discount_rate_in": -1e-14,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 55.13324544000002,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.28,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.15,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 87.0,
+        "driver_energy": 17857142.857142854,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58111257843.832184,
+        "discounted_energy": 274751655.9429272,
+        "price": 211.50466825904533
+      },
+      "actual": {
+        "discounted_cost": 58064810803.32511,
+        "discounted_energy": 274532053.0334979,
+        "price": 211.50466825904712
+      },
+      "net_power": 871231785.7142856,
+      "relative_errors": {
+        "discounted_cost": -0.0007992778375559159,
+        "discounted_energy": -0.0007992778375642227,
+        "price": 8.465854247351233e-15
+      },
+      "guard_reached": true,
+      "generating": 1.0
+    },
+    {
+      "scenario": "baseline",
+      "rate": 1e-16,
+      "inputs": {
+        "thermal_efficiency_in": 0.45,
+        "discount_rate_in": 1e-16,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 55.13324544000002,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.28,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.15,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 87.0,
+        "driver_energy": 17857142.857142854,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58111257843.81783,
+        "discounted_energy": 274751655.94285643,
+        "price": 211.5046682590476
+      },
+      "actual": {
+        "discounted_cost": 0.0,
+        "discounted_energy": 0.0
+      },
+      "net_power": 871231785.7142856,
+      "relative_errors": {
+        "discounted_cost": -1.0,
+        "discounted_energy": -1.0
+      },
+      "guard_reached": true,
+      "price_error": "Traceback (most recent call last):\n  File \"/home/reid/1cfe/fusion-tea-codex-test/work/analysis/20260911-141041_ife-zero-discount-assessment/probe.py\", line 68, in <module>\n    price, generating = run_generating_electricity_price(Generating_Electricity_PriceInput(numerator=out[9],denominator=out[2],net_power=out[8]))\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/reid/1cfe/fusion-tea-codex-test/work/analysis/20260911-141041_ife-zero-discount-assessment/pkg_link/ife_tea/handwritten/ife_lcoe/generating_electricity_price_impl.py\", line 11, in run_generating_electricity_price\n    return inputs.numerator / inputs.denominator, 1.0\n           ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~\nZeroDivisionError: float division by zero\n"
+    },
+    {
+      "scenario": "baseline",
+      "rate": -1e-16,
+      "inputs": {
+        "thermal_efficiency_in": 0.45,
+        "discount_rate_in": -1e-16,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 55.13324544000002,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.28,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.15,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 87.0,
+        "driver_energy": 17857142.857142854,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58111257843.818115,
+        "discounted_energy": 274751655.94285786,
+        "price": 211.50466825904755
+      },
+      "actual": {
+        "discounted_cost": 65122451882.28653,
+        "discounted_energy": 305035614.4816494,
+        "price": 213.49130655759615
+      },
+      "net_power": 871231785.7142856,
+      "relative_errors": {
+        "discounted_cost": 0.12065121800171576,
+        "discounted_energy": 0.11022302462515428,
+        "price": 0.00939288156096581
+      },
+      "guard_reached": true,
+      "generating": 1.0
+    },
+    {
+      "scenario": "baseline",
+      "rate": 1e-18,
+      "inputs": {
+        "thermal_efficiency_in": 0.45,
+        "discount_rate_in": 1e-18,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 55.13324544000002,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.28,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.15,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 87.0,
+        "driver_energy": 17857142.857142854,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58111257843.81798,
+        "discounted_energy": 274751655.94285715,
+        "price": 211.50466825904758
+      },
+      "actual": {
+        "discounted_cost": 0.0,
+        "discounted_energy": 0.0
+      },
+      "net_power": 871231785.7142856,
+      "relative_errors": {
+        "discounted_cost": -1.0,
+        "discounted_energy": -1.0
+      },
+      "guard_reached": true,
+      "price_error": "Traceback (most recent call last):\n  File \"/home/reid/1cfe/fusion-tea-codex-test/work/analysis/20260911-141041_ife-zero-discount-assessment/probe.py\", line 68, in <module>\n    price, generating = run_generating_electricity_price(Generating_Electricity_PriceInput(numerator=out[9],denominator=out[2],net_power=out[8]))\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/reid/1cfe/fusion-tea-codex-test/work/analysis/20260911-141041_ife-zero-discount-assessment/pkg_link/ife_tea/handwritten/ife_lcoe/generating_electricity_price_impl.py\", line 11, in run_generating_electricity_price\n    return inputs.numerator / inputs.denominator, 1.0\n           ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~\nZeroDivisionError: float division by zero\n"
+    },
+    {
+      "scenario": "baseline",
+      "rate": -1e-18,
+      "inputs": {
+        "thermal_efficiency_in": 0.45,
+        "discount_rate_in": -1e-18,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 55.13324544000002,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.28,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.15,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 87.0,
+        "driver_energy": 17857142.857142854,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58111257843.81798,
+        "discounted_energy": 274751655.94285715,
+        "price": 211.50466825904758
+      },
+      "actual": {
+        "discounted_cost": -0.0,
+        "discounted_energy": -0.0
+      },
+      "net_power": 871231785.7142856,
+      "relative_errors": {
+        "discounted_cost": -1.0,
+        "discounted_energy": -1.0
+      },
+      "guard_reached": true,
+      "price_error": "Traceback (most recent call last):\n  File \"/home/reid/1cfe/fusion-tea-codex-test/work/analysis/20260911-141041_ife-zero-discount-assessment/probe.py\", line 68, in <module>\n    price, generating = run_generating_electricity_price(Generating_Electricity_PriceInput(numerator=out[9],denominator=out[2],net_power=out[8]))\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/reid/1cfe/fusion-tea-codex-test/work/analysis/20260911-141041_ife-zero-discount-assessment/pkg_link/ife_tea/handwritten/ife_lcoe/generating_electricity_price_impl.py\", line 11, in run_generating_electricity_price\n    return inputs.numerator / inputs.denominator, 1.0\n           ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~\nZeroDivisionError: float division by zero\n"
+    },
+    {
+      "scenario": "net_zero",
+      "rate": 0.08,
+      "inputs": {
+        "thermal_efficiency_in": 0.2,
+        "discount_rate_in": 0.08,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.76,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.0,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 5.0
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 12505763186.835054,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 12505763186.83505,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "net_power": 0.0,
+      "relative_errors": {
+        "discounted_cost": -3.0503514328823776e-16,
+        "discounted_energy": null,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "net_zero",
+      "rate": 0.0,
+      "inputs": {
+        "thermal_efficiency_in": 0.2,
+        "discount_rate_in": 0.0,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.76,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.0,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 5.0
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58729547264.0,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "core_error": "Traceback (most recent call last):\n  File \"/home/reid/1cfe/fusion-tea-codex-test/work/analysis/20260911-141041_ife-zero-discount-assessment/probe.py\", line 61, in <module>\n    out=run_ife_lcoe(p)\n        ^^^^^^^^^^^^^^^\n  File \"/home/reid/1cfe/fusion-tea-codex-test/work/analysis/20260911-141041_ife-zero-discount-assessment/pkg_link/ife_tea/handwritten/ife_lcoe/ife_lcoe_impl.py\", line 171, in run_ife_lcoe\n    pvf_construction = ((1.0 - (1.0 / discount_factor_con)) / inputs.discount_rate_in)\n                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~\nZeroDivisionError: float division by zero\n",
+      "guard_reached": false
+    },
+    {
+      "scenario": "net_zero",
+      "rate": 0.0001,
+      "inputs": {
+        "thermal_efficiency_in": 0.2,
+        "discount_rate_in": 0.0001,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.76,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.0,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 5.0
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58582248886.74857,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 58582248886.74302,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "net_power": 0.0,
+      "relative_errors": {
+        "discounted_cost": -9.481027656496081e-14,
+        "discounted_energy": null,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "net_zero",
+      "rate": -0.0001,
+      "inputs": {
+        "thermal_efficiency_in": 0.2,
+        "discount_rate_in": -0.0001,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.76,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.0,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 5.0
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58877312889.36427,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 58877312889.35787,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "net_power": 0.0,
+      "relative_errors": {
+        "discounted_cost": -1.0871865065830904e-13,
+        "discounted_energy": null,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "net_zero",
+      "rate": 1e-08,
+      "inputs": {
+        "thermal_efficiency_in": 0.2,
+        "discount_rate_in": 1e-08,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.76,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.0,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 5.0
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58729532510.830284,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 58729532148.45981,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "net_power": 0.0,
+      "relative_errors": {
+        "discounted_cost": -6.1701576749690355e-09,
+        "discounted_energy": null,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "net_zero",
+      "rate": -1e-08,
+      "inputs": {
+        "thermal_efficiency_in": 0.2,
+        "discount_rate_in": -1e-08,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.76,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.0,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 5.0
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58729562017.174385,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 58729562301.690506,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "net_power": 0.0,
+      "relative_errors": {
+        "discounted_cost": 4.844512901823497e-09,
+        "discounted_energy": null,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "net_zero",
+      "rate": 1e-12,
+      "inputs": {
+        "thermal_efficiency_in": 0.2,
+        "discount_rate_in": 1e-12,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.76,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.0,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 5.0
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58729547262.52468,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 58734768354.66365,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "net_power": 0.0,
+      "relative_errors": {
+        "discounted_cost": 8.890060254731438e-05,
+        "discounted_energy": null,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "net_zero",
+      "rate": -1e-12,
+      "inputs": {
+        "thermal_efficiency_in": 0.2,
+        "discount_rate_in": -1e-12,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.76,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.0,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 5.0
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58729547265.47532,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 58728270059.19937,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "net_power": 0.0,
+      "relative_errors": {
+        "discounted_cost": -2.1747252199548077e-05,
+        "discounted_energy": null,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "net_zero",
+      "rate": 1e-14,
+      "inputs": {
+        "thermal_efficiency_in": 0.2,
+        "discount_rate_in": 1e-14,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.76,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.0,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 5.0
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58729547263.985245,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 58682606038.47086,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "net_power": 0.0,
+      "relative_errors": {
+        "discounted_cost": -0.0007992778371572294,
+        "discounted_energy": null,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "net_zero",
+      "rate": -1e-14,
+      "inputs": {
+        "thermal_efficiency_in": 0.2,
+        "discount_rate_in": -1e-14,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.76,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.0,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 5.0
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58729547264.014755,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 58682606038.47662,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "net_power": 0.0,
+      "relative_errors": {
+        "discounted_cost": -0.0007992778375612291,
+        "discounted_energy": null,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "net_zero",
+      "rate": 1e-16,
+      "inputs": {
+        "thermal_efficiency_in": 0.2,
+        "discount_rate_in": 1e-16,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.76,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.0,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 5.0
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58729547263.999855,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 0.0,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "net_power": 0.0,
+      "relative_errors": {
+        "discounted_cost": -1.0,
+        "discounted_energy": null,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "net_zero",
+      "rate": -1e-16,
+      "inputs": {
+        "thermal_efficiency_in": 0.2,
+        "discount_rate_in": -1e-16,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.76,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.0,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 5.0
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58729547264.000145,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 65422830779.48245,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "net_power": 0.0,
+      "relative_errors": {
+        "discounted_cost": 0.11396790588891761,
+        "discounted_energy": null,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "net_zero",
+      "rate": 1e-18,
+      "inputs": {
+        "thermal_efficiency_in": 0.2,
+        "discount_rate_in": 1e-18,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.76,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.0,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 5.0
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58729547264.0,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 0.0,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "net_power": 0.0,
+      "relative_errors": {
+        "discounted_cost": -1.0,
+        "discounted_energy": null,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "net_zero",
+      "rate": -1e-18,
+      "inputs": {
+        "thermal_efficiency_in": 0.2,
+        "discount_rate_in": -1e-18,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.76,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 1.0,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 5.0
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 58729547264.0,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": -0.0,
+        "discounted_energy": -0.0,
+        "price": 0.0
+      },
+      "net_power": 0.0,
+      "relative_errors": {
+        "discounted_cost": -1.0,
+        "discounted_energy": null,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "non_generator",
+      "rate": 0.08,
+      "inputs": {
+        "thermal_efficiency_in": 0.3,
+        "discount_rate_in": 0.08,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.6904448,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 0.6,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 11467455101.262556,
+        "discounted_energy": -2943269.129851679,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 11467455101.262554,
+        "discounted_energy": -2943269.1298516737,
+        "price": 0.0
+      },
+      "net_power": -45999999.99999994,
+      "relative_errors": {
+        "discounted_cost": -1.6632710710177558e-16,
+        "discounted_energy": -1.7403349589859831e-15,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "non_generator",
+      "rate": 0.0,
+      "inputs": {
+        "thermal_efficiency_in": 0.3,
+        "discount_rate_in": 0.0,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.6904448,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 0.6,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 53892316629.532265,
+        "discounted_energy": -14506560.0,
+        "price": 0.0
+      },
+      "core_error": "Traceback (most recent call last):\n  File \"/home/reid/1cfe/fusion-tea-codex-test/work/analysis/20260911-141041_ife-zero-discount-assessment/probe.py\", line 61, in <module>\n    out=run_ife_lcoe(p)\n        ^^^^^^^^^^^^^^^\n  File \"/home/reid/1cfe/fusion-tea-codex-test/work/analysis/20260911-141041_ife-zero-discount-assessment/pkg_link/ife_tea/handwritten/ife_lcoe/ife_lcoe_impl.py\", line 171, in run_ife_lcoe\n    pvf_construction = ((1.0 - (1.0 / discount_factor_con)) / inputs.discount_rate_in)\n                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~\nZeroDivisionError: float division by zero\n",
+      "guard_reached": false
+    },
+    {
+      "scenario": "non_generator",
+      "rate": 0.0001,
+      "inputs": {
+        "thermal_efficiency_in": 0.3,
+        "discount_rate_in": 0.0001,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.6904448,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 0.6,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 53757119201.40162,
+        "discounted_energy": -14469626.88056252,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 53757119201.39652,
+        "discounted_energy": -14469626.880561119,
+        "price": 0.0
+      },
+      "net_power": -45999999.99999994,
+      "relative_errors": {
+        "discounted_cost": -9.480484859653938e-14,
+        "discounted_energy": -9.680340507627698e-14,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "non_generator",
+      "rate": -0.0001,
+      "inputs": {
+        "thermal_efficiency_in": 0.3,
+        "discount_rate_in": -0.0001,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.6904448,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 0.6,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 54027942931.5829,
+        "discounted_energy": -14543610.477646183,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 54027942931.577034,
+        "discounted_energy": -14543610.477644544,
+        "price": 0.0
+      },
+      "net_power": -45999999.99999994,
+      "relative_errors": {
+        "discounted_cost": -1.0859203730856091e-13,
+        "discounted_energy": -1.1270432014406697e-13,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "non_generator",
+      "rate": 1e-08,
+      "inputs": {
+        "thermal_efficiency_in": 0.3,
+        "discount_rate_in": 1e-08,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.6904448,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 0.6,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 53892303088.37367,
+        "discounted_energy": -14506556.300827786,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 53892302755.83232,
+        "discounted_energy": -14506556.21101471,
+        "price": 0.0
+      },
+      "net_power": -45999999.99999994,
+      "relative_errors": {
+        "discounted_cost": -6.170479498214271e-09,
+        "discounted_energy": -6.191205831156321e-09,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "non_generator",
+      "rate": -1e-08,
+      "inputs": {
+        "thermal_efficiency_in": 0.3,
+        "discount_rate_in": -1e-08,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.6904448,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 0.6,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 53892330170.695145,
+        "discounted_energy": -14506563.699173387,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 53892330431.79071,
+        "discounted_energy": -14506563.769688,
+        "price": 0.0
+      },
+      "net_power": -45999999.99999994,
+      "relative_errors": {
+        "discounted_cost": 4.844762974043262e-09,
+        "discounted_energy": 4.86087644357264e-09,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "non_generator",
+      "rate": 1e-12,
+      "inputs": {
+        "thermal_efficiency_in": 0.3,
+        "discount_rate_in": 1e-12,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.6904448,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 0.6,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 53892316628.17815,
+        "discounted_energy": -14506559.999630082,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 53897107687.599304,
+        "discounted_energy": -14507849.641559202,
+        "price": 0.0
+      },
+      "net_power": -45999999.99999994,
+      "relative_errors": {
+        "discounted_cost": 8.89006025518076e-05,
+        "discounted_energy": 8.89006028412464e-05,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "non_generator",
+      "rate": -1e-12,
+      "inputs": {
+        "thermal_efficiency_in": 0.3,
+        "discount_rate_in": -1e-12,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.6904448,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 0.6,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 53892316630.886375,
+        "discounted_energy": -14506560.000369918,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 53891144312.53803,
+        "discounted_energy": -14506239.090012267,
+        "price": 0.0
+      },
+      "net_power": -45999999.99999994,
+      "relative_errors": {
+        "discounted_cost": -2.1752977448941672e-05,
+        "discounted_energy": -2.2121740622324395e-05,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "non_generator",
+      "rate": 1e-14,
+      "inputs": {
+        "thermal_efficiency_in": 0.3,
+        "discount_rate_in": 1e-14,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.6904448,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 0.6,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 53892316629.51872,
+        "discounted_energy": -14506559.9999963,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 53849241695.24369,
+        "discounted_energy": -14494965.228094937,
+        "price": 0.0
+      },
+      "net_power": -45999999.99999994,
+      "relative_errors": {
+        "discounted_cost": -0.0007992778371571874,
+        "discounted_energy": -0.0007992778371554982,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "non_generator",
+      "rate": -1e-14,
+      "inputs": {
+        "thermal_efficiency_in": 0.3,
+        "discount_rate_in": -1e-14,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.6904448,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 0.6,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 53892316629.54581,
+        "discounted_energy": -14506560.0000037,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 53849241695.24898,
+        "discounted_energy": -14494965.228096385,
+        "price": 0.0
+      },
+      "net_power": -45999999.99999994,
+      "relative_errors": {
+        "discounted_cost": -0.0007992778375612437,
+        "discounted_energy": -0.0007992778375653292,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "non_generator",
+      "rate": 1e-16,
+      "inputs": {
+        "thermal_efficiency_in": 0.3,
+        "discount_rate_in": 1e-16,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.6904448,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 0.6,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 53892316629.53213,
+        "discounted_energy": -14506559.999999963,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 0.0,
+        "discounted_energy": -0.0,
+        "price": 0.0
+      },
+      "net_power": -45999999.99999994,
+      "relative_errors": {
+        "discounted_cost": -1.0,
+        "discounted_energy": -1.0,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "non_generator",
+      "rate": -1e-16,
+      "inputs": {
+        "thermal_efficiency_in": 0.3,
+        "discount_rate_in": -1e-16,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.6904448,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 0.6,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 53892316629.532394,
+        "discounted_energy": -14506560.000000037,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 60031225632.17589,
+        "discounted_energy": -16105516.920106303,
+        "price": 0.0
+      },
+      "net_power": -45999999.99999994,
+      "relative_errors": {
+        "discounted_cost": 0.11391065343959327,
+        "discounted_energy": 0.11022302462515314,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "non_generator",
+      "rate": 1e-18,
+      "inputs": {
+        "thermal_efficiency_in": 0.3,
+        "discount_rate_in": 1e-18,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.6904448,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 0.6,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 53892316629.532265,
+        "discounted_energy": -14506560.0,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": 0.0,
+        "discounted_energy": -0.0,
+        "price": 0.0
+      },
+      "net_power": -45999999.99999994,
+      "relative_errors": {
+        "discounted_cost": -1.0,
+        "discounted_energy": -1.0,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    },
+    {
+      "scenario": "non_generator",
+      "rate": -1e-18,
+      "inputs": {
+        "thermal_efficiency_in": 0.3,
+        "discount_rate_in": -1e-18,
+        "driver_lifetime_shots": 6000000000.0,
+        "operational_years": 40.0,
+        "availability_in": 0.9,
+        "driver_cost_constant": 19.6904448,
+        "om_cost_constant_in": 65.0,
+        "driver_efficiency": 0.1,
+        "plant_cost_constant_in": 2000.0,
+        "yield_cost_constant": 5000000.0,
+        "blanket_energy_multiple": 0.6,
+        "target_cost_constant": 10.0,
+        "construction_years": 5.0,
+        "gain_in": 100.0,
+        "driver_energy": 50000000.0,
+        "frequency_in": 4.6
+      },
+      "decimal_dated_sums": {
+        "discounted_cost": 53892316629.532265,
+        "discounted_energy": -14506560.0,
+        "price": 0.0
+      },
+      "actual": {
+        "discounted_cost": -0.0,
+        "discounted_energy": 0.0,
+        "price": 0.0
+      },
+      "net_power": -45999999.99999994,
+      "relative_errors": {
+        "discounted_cost": -1.0,
+        "discounted_energy": -1.0,
+        "price": null
+      },
+      "guard_reached": true,
+      "generating": 0.0
+    }
+  ]
+}

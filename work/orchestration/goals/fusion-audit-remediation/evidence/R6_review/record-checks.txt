@@ -1,0 +1,40 @@
+`20260910-ife-operating-point#1`: existing ID; prior text preserved; disposition unchanged
+`20260910-ife-operating-point#2`: existing ID; prior text preserved; disposition unchanged
+`20260910-ife-operating-point#3`: existing ID; prior text preserved; disposition unchanged
+`20260911-ife-zero-discount#1`: existing ID; prior text preserved; disposition unchanged
+`20260911-ife-zero-discount#2`: existing ID; prior text preserved; disposition unchanged
+`20260911-ife-zero-discount#3`: existing ID; prior text preserved; disposition unchanged
+`20260911-ife-zero-discount#4`: existing ID; prior text preserved; disposition unchanged
+ife: 7 appended updates, no original row changed
+`20260821-power-cycle-ab#1`: existing ID; prior text preserved; disposition changed to bounded live-calendar credit
+`20260821-power-cycle-ab#3`: existing ID; prior text preserved; disposition unchanged
+`20260904-wall-and-heating#2`: existing ID; prior text preserved; disposition unchanged
+`20260904-wall-and-heating#3`: existing ID; prior text preserved; disposition unchanged
+`20260904-wall-and-heating#5`: existing ID; prior text preserved; disposition changed to bounded live-calendar credit
+`20260904-wall-and-heating#8`: existing ID; prior text preserved; disposition unchanged
+`20260905-stored-energy-basis#2`: existing ID; prior text preserved; disposition unchanged
+`20260905-stored-energy-basis#8`: existing ID; prior text preserved; disposition unchanged
+`20260907-burn-control#3`: existing ID; prior text preserved; disposition unchanged
+`20260907-minor-radius#1`: existing ID; prior text preserved; disposition unchanged
+`20260907-minor-radius#2`: existing ID; prior text preserved; disposition unchanged
+`20260907-minor-radius#3`: existing ID; prior text preserved; disposition unchanged
+`20260907-minor-radius#4`: existing ID; prior text preserved; disposition unchanged
+`20260907-minor-radius#6`: existing ID; prior text preserved; disposition unchanged
+`20260911-operating-heating#1`: existing ID; prior text preserved; disposition unchanged
+`20260911-operating-heating#2`: existing ID; prior text preserved; disposition unchanged
+`20260911-operating-heating#3`: existing ID; prior text preserved; disposition unchanged
+`20260911-operating-heating#4`: existing ID; prior text preserved; disposition unchanged
+`20260911-operating-heating#5`: existing ID; prior text preserved; disposition unchanged
+`20260911-operating-heating#6`: existing ID; prior text preserved; disposition unchanged
+`20260911-model-owned-radius#1`: existing ID; prior text preserved; disposition unchanged
+`20260911-model-owned-radius#2`: existing ID; prior text preserved; disposition unchanged
+`20260911-model-owned-radius#3`: existing ID; prior text preserved; disposition unchanged
+`20260911-model-owned-radius#4`: existing ID; prior text preserved; disposition unchanged
+`20260911-model-owned-radius#5`: existing ID; prior text preserved; disposition unchanged
+`20260911-model-owned-radius#6`: existing ID; prior text preserved; disposition unchanged
+stellarator: 26 appended updates, no original row changed
+Summary: exact ordered F01-F20 coverage
+WI-045_primary-loop-and-cycle: last native change 693a4dff; no standalone audit.md
+WI-046_lifecycle-calendar: last native change 1c87c343; no standalone audit.md
+WI-047_fuel-divertor-vacuum-flows: last native change 0b9a2e1c; no standalone audit.md
+Read-only Git/Markdown inspection; no model, study, source hashing, or SQLite execution.

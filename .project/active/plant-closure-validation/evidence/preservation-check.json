@@ -1,0 +1,31 @@
+{
+  "checks": {
+    "exploration/stellarator_e2e/studies/20260912-plant-closure/addendum/20260912-post-record-validation/reading.md": true,
+    "exploration/stellarator_e2e/studies/20260912-plant-closure/addendum/20260912-post-record-validation/test-accounting.json": true,
+    "exploration/stellarator_e2e/studies/20260912-plant-closure/addendum/20260912-post-record-validation/post-record-tests.log": true,
+    "exploration/stellarator_e2e/studies/20260912-plant-closure/addendum/20260912-post-record-validation/focused-post-record-tests.log": true,
+    ".project/active/mfe-major-radius-study-package/audit-evidence/broad.xml": true,
+    "work/analysis/20260912-plant-closure-consolidated-grade.md": true,
+    "original-copy:tests/study/test_study_publication_fail_closed.py": true,
+    "original-copy:tests/orchestration/test_goal_contract.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260903-priced-levers/study.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260904-wall-and-heating/study.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260911-model-owned-radius/study.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260903-wall-and-heating/study.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260901-sustainment-fence/study.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260912-plant-closure/study.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260821-power-cycle-ab/study.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260905-stored-energy-basis/study.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260907-burn-control/study.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260823-magnet-technology-ab/study.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260830-stress-fence/study.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260829-p-pump-fence/study.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260911-operating-heating/study.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260907-minor-radius/study.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260912-plant-closure/execution/execute.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260911-model-owned-radius/execution/execute.py": true,
+    "original-copy:exploration/stellarator_e2e/studies/20260911-operating-heating/execution/run.py": true
+  },
+  "outcome": "pass",
+  "current_head": "bc75b11db0b5850354703982a506f6373c37e1d5"
+}

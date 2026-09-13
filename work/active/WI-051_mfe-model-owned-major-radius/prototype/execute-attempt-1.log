@@ -1,0 +1,16 @@
+baseline executed
+R14 executed
+invalid_0 EvaluationFailed
+invalid_1 EvaluationFailed
+invalid_2 EvaluationFailed
+invalid_3 EvaluationFailed
+invalid_4 EvaluationFailed
+retired_0 EvaluationFailed
+retired_1 EvaluationFailed
+retired_2 EvaluationFailed
+retired_3 EvaluationFailed
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/prototype/execute.py", line 29, in <module>
+    if name=='baseline': assert a['report']==b['report']
+                                ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

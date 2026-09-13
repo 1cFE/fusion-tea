@@ -1,0 +1,41 @@
+
+======================================================================
+SysML Quality Validation
+Models path: /tmp/wi050-audit-current-9g6qhjsq/models
+Mode: Fail-fast
+Running: Level 2 only
+======================================================================
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 23 SysML files
+
+❌ Level 2: Structural Completeness
+   Unused definitions: 0
+   Unbound inputs: 0
+   Undefined bindings: 0
+   Placeholder bindings: 10
+   Self-named bindings: 0
+   Orphaned elements: 0
+
+   Issues found: 10
+   - WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::waste' - consider binding to attribute or calc output at file:///tmp/wi050-audit-current-9g6qhjsq/models/designs/generic_mfe/mfe_plant.sysml:853
+   - WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::waste' - consider binding to attribute or calc output at file:///tmp/wi050-audit-current-9g6qhjsq/models/designs/generic_mfe/mfe_plant.sysml:853
+   - WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::fuel_handling' - consider binding to attribute or calc output at file:///tmp/wi050-audit-current-9g6qhjsq/models/designs/generic_mfe/mfe_plant.sysml:859
+   - WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::fuel_handling' - consider binding to attribute or calc output at file:///tmp/wi050-audit-current-9g6qhjsq/models/designs/generic_mfe/mfe_plant.sysml:859
+   - WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::other_rpe' - consider binding to attribute or calc output at file:///tmp/wi050-audit-current-9g6qhjsq/models/designs/generic_mfe/mfe_plant.sysml:865
+   ... and 5 more
+
+❌ Stopping at first failure (Level 2)
+   Use --complete to run all levels regardless of failures
+
+======================================================================
+Summary
+======================================================================
+Checks run: 1
+✅ Passed: 0
+❌ Failed: 1
+
+❌ Quality checks failed
+   Review issues above and fix before proceeding

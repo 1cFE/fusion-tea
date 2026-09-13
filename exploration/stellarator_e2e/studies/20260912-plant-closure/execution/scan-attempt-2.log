@@ -1,0 +1,354 @@
+Parallel sizing-scouts : 7949 independent oracle evaluations
+sizing-scouts 0 / 7949
+sizing-scouts 100 / 7949
+sizing-scouts 200 / 7949
+sizing-scouts 300 / 7949
+sizing-scouts 400 / 7949
+sizing-scouts 500 / 7949
+sizing-scouts 600 / 7949
+sizing-scouts 700 / 7949
+sizing-scouts 800 / 7949
+sizing-scouts 900 / 7949
+sizing-scouts 1000 / 7949
+sizing-scouts 1100 / 7949
+sizing-scouts 1200 / 7949
+sizing-scouts 1300 / 7949
+sizing-scouts 1400 / 7949
+sizing-scouts 1500 / 7949
+sizing-scouts 1600 / 7949
+sizing-scouts 1700 / 7949
+sizing-scouts 1800 / 7949
+sizing-scouts 1900 / 7949
+sizing-scouts 2000 / 7949
+sizing-scouts 2100 / 7949
+sizing-scouts 2200 / 7949
+sizing-scouts 2300 / 7949
+sizing-scouts 2400 / 7949
+sizing-scouts 2500 / 7949
+sizing-scouts 2600 / 7949
+sizing-scouts 2700 / 7949
+sizing-scouts 2800 / 7949
+sizing-scouts 2900 / 7949
+sizing-scouts 3000 / 7949
+sizing-scouts 3100 / 7949
+sizing-scouts 3200 / 7949
+sizing-scouts 3300 / 7949
+sizing-scouts 3400 / 7949
+sizing-scouts 3500 / 7949
+sizing-scouts 3600 / 7949
+sizing-scouts 3700 / 7949
+sizing-scouts 3800 / 7949
+sizing-scouts 3900 / 7949
+sizing-scouts 4000 / 7949
+sizing-scouts 4100 / 7949
+sizing-scouts 4200 / 7949
+sizing-scouts 4300 / 7949
+sizing-scouts 4400 / 7949
+sizing-scouts 4500 / 7949
+sizing-scouts 4600 / 7949
+sizing-scouts 4700 / 7949
+sizing-scouts 4800 / 7949
+sizing-scouts 4900 / 7949
+sizing-scouts 5000 / 7949
+sizing-scouts 5100 / 7949
+sizing-scouts 5200 / 7949
+sizing-scouts 5300 / 7949
+sizing-scouts 5400 / 7949
+sizing-scouts 5500 / 7949
+sizing-scouts 5600 / 7949
+sizing-scouts 5700 / 7949
+sizing-scouts 5800 / 7949
+sizing-scouts 5900 / 7949
+sizing-scouts 6000 / 7949
+sizing-scouts 6100 / 7949
+sizing-scouts 6200 / 7949
+sizing-scouts 6300 / 7949
+sizing-scouts 6400 / 7949
+sizing-scouts 6500 / 7949
+sizing-scouts 6600 / 7949
+sizing-scouts 6700 / 7949
+sizing-scouts 6800 / 7949
+sizing-scouts 6900 / 7949
+sizing-scouts 7000 / 7949
+sizing-scouts 7100 / 7949
+sizing-scouts 7200 / 7949
+sizing-scouts 7300 / 7949
+sizing-scouts 7400 / 7949
+sizing-scouts 7500 / 7949
+sizing-scouts 7600 / 7949
+sizing-scouts 7700 / 7949
+sizing-scouts 7800 / 7949
+sizing-scouts 7900 / 7949
+Sizing historical tuple 0 / 7949
+Sizing historical tuple 250 / 7949
+Sizing historical tuple 500 / 7949
+Sizing historical tuple 750 / 7949
+Sizing historical tuple 1000 / 7949
+Sizing historical tuple 1250 / 7949
+Sizing historical tuple 1500 / 7949
+Sizing historical tuple 1750 / 7949
+Sizing historical tuple 2000 / 7949
+Sizing historical tuple 2250 / 7949
+Sizing historical tuple 2500 / 7949
+Sizing historical tuple 2750 / 7949
+Sizing historical tuple 3000 / 7949
+Sizing historical tuple 3250 / 7949
+Sizing historical tuple 3500 / 7949
+Sizing historical tuple 3750 / 7949
+Sizing historical tuple 4000 / 7949
+Sizing historical tuple 4250 / 7949
+Sizing historical tuple 4500 / 7949
+Sizing historical tuple 4750 / 7949
+Sizing historical tuple 5000 / 7949
+Sizing historical tuple 5250 / 7949
+Sizing historical tuple 5500 / 7949
+Sizing historical tuple 5750 / 7949
+Sizing historical tuple 6000 / 7949
+Sizing historical tuple 6250 / 7949
+Sizing historical tuple 6500 / 7949
+Sizing historical tuple 6750 / 7949
+Sizing historical tuple 7000 / 7949
+Sizing historical tuple 7250 / 7949
+Sizing historical tuple 7500 / 7949
+Sizing historical tuple 7750 / 7949
+Parallel actual-proposals : 15483 independent oracle evaluations
+actual-proposals 0 / 15483
+actual-proposals 100 / 15483
+actual-proposals 200 / 15483
+actual-proposals 300 / 15483
+actual-proposals 400 / 15483
+actual-proposals 500 / 15483
+actual-proposals 600 / 15483
+actual-proposals 700 / 15483
+actual-proposals 800 / 15483
+actual-proposals 900 / 15483
+actual-proposals 1000 / 15483
+actual-proposals 1100 / 15483
+actual-proposals 1200 / 15483
+actual-proposals 1300 / 15483
+actual-proposals 1400 / 15483
+actual-proposals 1500 / 15483
+actual-proposals 1600 / 15483
+actual-proposals 1700 / 15483
+actual-proposals 1800 / 15483
+actual-proposals 1900 / 15483
+actual-proposals 2000 / 15483
+actual-proposals 2100 / 15483
+actual-proposals 2200 / 15483
+actual-proposals 2300 / 15483
+actual-proposals 2400 / 15483
+actual-proposals 2500 / 15483
+actual-proposals 2600 / 15483
+actual-proposals 2700 / 15483
+actual-proposals 2800 / 15483
+actual-proposals 2900 / 15483
+actual-proposals 3000 / 15483
+actual-proposals 3100 / 15483
+actual-proposals 3200 / 15483
+actual-proposals 3300 / 15483
+actual-proposals 3400 / 15483
+actual-proposals 3500 / 15483
+actual-proposals 3600 / 15483
+actual-proposals 3700 / 15483
+actual-proposals 3800 / 15483
+actual-proposals 3900 / 15483
+actual-proposals 4000 / 15483
+actual-proposals 4100 / 15483
+actual-proposals 4200 / 15483
+actual-proposals 4300 / 15483
+actual-proposals 4400 / 15483
+actual-proposals 4500 / 15483
+actual-proposals 4600 / 15483
+actual-proposals 4700 / 15483
+actual-proposals 4800 / 15483
+actual-proposals 4900 / 15483
+actual-proposals 5000 / 15483
+actual-proposals 5100 / 15483
+actual-proposals 5200 / 15483
+actual-proposals 5300 / 15483
+actual-proposals 5400 / 15483
+actual-proposals 5500 / 15483
+actual-proposals 5600 / 15483
+actual-proposals 5700 / 15483
+actual-proposals 5800 / 15483
+actual-proposals 5900 / 15483
+actual-proposals 6000 / 15483
+actual-proposals 6100 / 15483
+actual-proposals 6200 / 15483
+actual-proposals 6300 / 15483
+actual-proposals 6400 / 15483
+actual-proposals 6500 / 15483
+actual-proposals 6600 / 15483
+actual-proposals 6700 / 15483
+actual-proposals 6800 / 15483
+actual-proposals 6900 / 15483
+actual-proposals 7000 / 15483
+actual-proposals 7100 / 15483
+actual-proposals 7200 / 15483
+actual-proposals 7300 / 15483
+actual-proposals 7400 / 15483
+actual-proposals 7500 / 15483
+actual-proposals 7600 / 15483
+actual-proposals 7700 / 15483
+actual-proposals 7800 / 15483
+actual-proposals 7900 / 15483
+actual-proposals 8000 / 15483
+actual-proposals 8100 / 15483
+actual-proposals 8200 / 15483
+actual-proposals 8300 / 15483
+actual-proposals 8400 / 15483
+actual-proposals 8500 / 15483
+actual-proposals 8600 / 15483
+actual-proposals 8700 / 15483
+actual-proposals 8800 / 15483
+actual-proposals 8900 / 15483
+actual-proposals 9000 / 15483
+actual-proposals 9100 / 15483
+actual-proposals 9200 / 15483
+actual-proposals 9300 / 15483
+actual-proposals 9400 / 15483
+actual-proposals 9500 / 15483
+actual-proposals 9600 / 15483
+actual-proposals 9700 / 15483
+actual-proposals 9800 / 15483
+actual-proposals 9900 / 15483
+actual-proposals 10000 / 15483
+actual-proposals 10100 / 15483
+actual-proposals 10200 / 15483
+actual-proposals 10300 / 15483
+actual-proposals 10400 / 15483
+actual-proposals 10500 / 15483
+actual-proposals 10600 / 15483
+actual-proposals 10700 / 15483
+actual-proposals 10800 / 15483
+actual-proposals 10900 / 15483
+actual-proposals 11000 / 15483
+actual-proposals 11100 / 15483
+actual-proposals 11200 / 15483
+actual-proposals 11300 / 15483
+actual-proposals 11400 / 15483
+actual-proposals 11500 / 15483
+actual-proposals 11600 / 15483
+actual-proposals 11700 / 15483
+actual-proposals 11800 / 15483
+actual-proposals 11900 / 15483
+actual-proposals 12000 / 15483
+actual-proposals 12100 / 15483
+actual-proposals 12200 / 15483
+actual-proposals 12300 / 15483
+actual-proposals 12400 / 15483
+actual-proposals 12500 / 15483
+actual-proposals 12600 / 15483
+actual-proposals 12700 / 15483
+actual-proposals 12800 / 15483
+actual-proposals 12900 / 15483
+actual-proposals 13000 / 15483
+actual-proposals 13100 / 15483
+actual-proposals 13200 / 15483
+actual-proposals 13300 / 15483
+actual-proposals 13400 / 15483
+actual-proposals 13500 / 15483
+actual-proposals 13600 / 15483
+actual-proposals 13700 / 15483
+actual-proposals 13800 / 15483
+actual-proposals 13900 / 15483
+actual-proposals 14000 / 15483
+actual-proposals 14100 / 15483
+actual-proposals 14200 / 15483
+actual-proposals 14300 / 15483
+actual-proposals 14400 / 15483
+actual-proposals 14500 / 15483
+actual-proposals 14600 / 15483
+actual-proposals 14700 / 15483
+actual-proposals 14800 / 15483
+actual-proposals 14900 / 15483
+actual-proposals 15000 / 15483
+actual-proposals 15100 / 15483
+actual-proposals 15200 / 15483
+actual-proposals 15300 / 15483
+actual-proposals 15400 / 15483
+Classifying proposal 0 / 16054
+Classifying proposal 500 / 16054
+Classifying proposal 1000 / 16054
+Classifying proposal 1500 / 16054
+Classifying proposal 2000 / 16054
+Classifying proposal 2500 / 16054
+Classifying proposal 3000 / 16054
+Classifying proposal 3500 / 16054
+Classifying proposal 4000 / 16054
+Classifying proposal 4500 / 16054
+Classifying proposal 5000 / 16054
+Classifying proposal 5500 / 16054
+Classifying proposal 6000 / 16054
+Classifying proposal 6500 / 16054
+Classifying proposal 7000 / 16054
+Classifying proposal 7500 / 16054
+Classifying proposal 8000 / 16054
+Classifying proposal 8500 / 16054
+Classifying proposal 9000 / 16054
+Classifying proposal 9500 / 16054
+Classifying proposal 10000 / 16054
+Classifying proposal 10500 / 16054
+Classifying proposal 11000 / 16054
+Classifying proposal 11500 / 16054
+Classifying proposal 12000 / 16054
+Classifying proposal 12500 / 16054
+Classifying proposal 13000 / 16054
+Classifying proposal 13500 / 16054
+Classifying proposal 14000 / 16054
+Classifying proposal 14500 / 16054
+Classifying proposal 15000 / 16054
+Classifying proposal 15500 / 16054
+Classifying proposal 16000 / 16054
+{
+  "historical_rows": 7781,
+  "historical_exclusions_reconsidered": 168,
+  "correlation_rows": 16054,
+  "unique_eligible_proposals": 15191,
+  "excluded_correlations": 408,
+  "fully_satisfied_correlations": 801,
+  "arms": {
+    "arm-baseline": {
+      "eligible": 1
+    },
+    "arm-calendar": {
+      "eligible": 36,
+      "excluded": 9
+    },
+    "arm-closure-factorial": {
+      "eligible": 36,
+      "excluded": 4
+    },
+    "arm-cycle": {
+      "eligible": 6
+    },
+    "arm-divertor-radiation": {
+      "eligible": 12,
+      "excluded": 3
+    },
+    "arm-divertor-transport": {
+      "eligible": 8,
+      "excluded": 2
+    },
+    "arm-fuel": {
+      "eligible": 12,
+      "excluded": 3
+    },
+    "arm-loop-loss": {
+      "eligible": 9
+    },
+    "arm-reserve": {
+      "eligible": 12,
+      "excluded": 3
+    },
+    "arm-window-fixed": {
+      "eligible": 7691,
+      "excluded": 258
+    },
+    "arm-window-sized": {
+      "eligible": 7823,
+      "excluded": 126
+    }
+  },
+  "status": "scan complete; edge report and freeze still required"
+}

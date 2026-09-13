@@ -1,0 +1,20 @@
+--- entering/handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py
++++ production/handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py
+@@ -2,7 +2,7 @@
+ 
+ AUTO_IMPLEMENTED = True
+ 
+-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:605
++SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:977
+ 
+ SysML Expressions:
+ """
+@@ -15,7 +15,7 @@
+ def run_overnight_capital(inputs: overnight_capitalInput) -> float:
+     """Execute overnight_capital calculation.
+ 
+-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:605
++SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:977
+ 
+ Args:
+     inputs: Input parameters validated against overnight_capitalInput schema

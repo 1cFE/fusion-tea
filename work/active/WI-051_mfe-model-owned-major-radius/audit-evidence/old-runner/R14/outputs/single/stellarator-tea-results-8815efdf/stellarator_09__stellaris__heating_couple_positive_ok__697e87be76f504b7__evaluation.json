@@ -1,0 +1,9 @@
+{
+  "actual_value": true,
+  "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+  "margin": 1.0,
+  "observed": {
+    "efficiency": 1.0
+  },
+  "status": "satisfied"
+}

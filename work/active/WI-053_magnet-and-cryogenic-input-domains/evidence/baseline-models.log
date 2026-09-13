@@ -1,0 +1,51 @@
+.......s.ssssssssssss................................................... [ 13%]
+........................................................................ [ 26%]
+........................................................................ [ 39%]
+........................................................................ [ 52%]
+........................................................................ [ 65%]
+........................................................................ [ 78%]
+.....................F.................................................. [ 91%]
+................................................                         [100%]
+=================================== FAILURES ===================================
+___________ test_current_contract_edges_and_fresh_package_agreement ____________
+
+    def test_current_contract_edges_and_fresh_package_agreement():
+        import runpy
+        runpy.run_path(str(H/'contract_checks.py'))
+        expected=json.loads((H/'generated-hashes.json').read_text())
+        for path in ('source-attempt-1','snapshot-attempt-1'):
+            assert hashes(H/path)==expected
+        # Historical generation receipts stay frozen; current package has WI-052 finance.
+        current=ROOT/'work/active/WI-052_mfe-financial-rate-limits/implementation'
+>       assert hashes(ROOT/'exploration/stellarator_e2e/generated')==json.loads((current/'production-hashes.json').read_text())
+E       AssertionError: assert {'IMPLEMENTAT...0b07bc2', ...} == {'IMPLEMENTAT...0b07bc2', ...}
+E         
+E         Omitting 229 identical items, use -vv to show
+E         Differing items:
+E         {'modules/mfe_account_costs/annual_cost_rollup.py': 'ca20b6247ee7a254e81b5e871e7ed38d047f1c2b9709dd8dc146190a4279d508'} != {'modules/mfe_account_costs/annual_cost_rollup.py': 'b6bea172cf6f95050acc239568a4e7216f797dbec672b1014514b85885b5b70e'}
+E         {'handwritten/mfe_account_costs/dt_fuel_cost_impl.py': '0c8ee9478a09c96c3e44f002814bc56c5d1432831ba4d1522f0b61c957838de6'} != {'handwritten/mfe_account_costs/dt_fuel_cost_impl.py': 'f22adaac66d218af464064a00f129c62f082e0062d91dd06cb50dd59db2166ed'}
+E         {'handwritten/mfe_account...
+E         
+E         ...Full output truncated (17 lines hidden), use '-vv' to show
+
+tests/models/test_mfe_major_radius.py:86: AssertionError
+----------------------------- Captured stdout call -----------------------------
+PASS all 246 surviving parameter records/default values exact; only five binding operands change; fixed anchor edges exact
+PASS exact nine edges, six anchor edges, complete contract census and delta
+=============================== warnings summary ===============================
+tests/models/test_mfe_financial_calendar.py: 37 warnings
+  tests/models/test_mfe_financial_calendar.py:112: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize('name',CASES)
+
+tests/models/test_mfe_financial_rate_limits.py: 11 warnings
+  tests/models/test_mfe_financial_rate_limits.py:62: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize('duration', DURATIONS)
+
+tests/models/test_mfe_financial_rate_limits.py: 31 warnings
+  tests/models/test_mfe_financial_rate_limits.py:96: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+    @pytest.mark.parametrize('n,t', [(n, t) for n in DURATIONS for t in (8., 8.5)]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_mfe_major_radius.py::test_current_contract_edges_and_fresh_package_agreement
+1 failed, 538 passed, 13 skipped, 79 warnings in 80.87s (0:01:20)

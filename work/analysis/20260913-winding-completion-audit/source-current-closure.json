@@ -1,0 +1,50 @@
+[
+  {
+    "coil": 0,
+    "current_A": 15400000.0,
+    "density_A_per_mm2": 119,
+    "side_mm": 360,
+    "reconstructed_current_A": 15422400,
+    "relative_error": 0.001454545454545375
+  },
+  {
+    "coil": 1,
+    "current_A": 14600000.0,
+    "density_A_per_mm2": 112,
+    "side_mm": 360,
+    "reconstructed_current_A": 14515200,
+    "relative_error": 0.0058082191780821635
+  },
+  {
+    "coil": 2,
+    "current_A": 13800000.0,
+    "density_A_per_mm2": 120,
+    "side_mm": 340,
+    "reconstructed_current_A": 13872000,
+    "relative_error": 0.00521739130434784
+  },
+  {
+    "coil": 3,
+    "current_A": 12900000.0,
+    "density_A_per_mm2": 112,
+    "side_mm": 340,
+    "reconstructed_current_A": 12947200,
+    "relative_error": 0.0036589147286820722
+  },
+  {
+    "coil": 4,
+    "current_A": 12500000.0,
+    "density_A_per_mm2": 122,
+    "side_mm": 320,
+    "reconstructed_current_A": 12492800,
+    "relative_error": 0.0005760000000000209
+  },
+  {
+    "coil": 5,
+    "current_A": 11200000.0,
+    "density_A_per_mm2": 124,
+    "side_mm": 300,
+    "reconstructed_current_A": 11160000,
+    "relative_error": 0.0035714285714285587
+  }
+]

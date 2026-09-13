@@ -8,7 +8,7 @@ Tests verify that handwritten implementation functions:
 4. Tolerate NotImplementedError (before agent implements)
 5. Validate return types (after agent implements)
 
-Generated from 6 calculation definitions.
+Generated from 9 calculation definitions.
 """
 
 import importlib
@@ -47,20 +47,20 @@ def create_dummy_input(input_class: type[BaseModel]) -> BaseModel:
 
 # Generated test classes for each module
 
-class TestMeier_Reactor_CostRunnable:
-    """Verify meier_reactor_cost implementation runs without error.
+class TestMeier_HIF_Driver_CostRunnable:
+    """Verify meier_hif_driver_cost implementation runs without error.
 
-    SysML Source: root-0/analyses/hif_economics.sysml:43
+    SysML Source: root-0/analyses/hif_economics.sysml:4
     """
 
     def test_import_and_run(self):
-        """Test that run_meier_reactor_cost can be imported and called."""
+        """Test that run_meier_hif_driver_cost can be imported and called."""
         # Import implementation module (ADR-003: namespaced path)
-        impl = importlib.import_module("ife_tea.handwritten.hif_economics.meier_reactor_cost_impl")
-        func = getattr(impl, "run_meier_reactor_cost")
+        impl = importlib.import_module("ife_tea.handwritten.hif_economics.meier_hif_driver_cost_impl")
+        func = getattr(impl, "run_meier_hif_driver_cost")
 
         # Import module wrapper for Input schema (ADR-003: namespaced path)
-        module = importlib.import_module("ife_tea.modules.hif_economics.meier_reactor_cost")
+        module = importlib.import_module("ife_tea.modules.hif_economics.meier_hif_driver_cost")
 
         # Find Input class
         input_class = None
@@ -81,26 +81,28 @@ class TestMeier_Reactor_CostRunnable:
             result = func(dummy_input)
 
             # If implemented, verify return type
-            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 3, f"Expected 3 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
 
         except NotImplementedError:
             # Expected for stencils - test passes
             pass
 
-class TestMeier_HIF_Driver_CostRunnable:
-    """Verify meier_hif_driver_cost implementation runs without error.
+class TestIFE_Present_Value_FactorsRunnable:
+    """Verify ife_present_value_factors implementation runs without error.
 
-    SysML Source: root-0/analyses/hif_economics.sysml:4
+    SysML Source: root-0/analyses/ife_lcoe.sysml:126
     """
 
     def test_import_and_run(self):
-        """Test that run_meier_hif_driver_cost can be imported and called."""
+        """Test that run_ife_present_value_factors can be imported and called."""
         # Import implementation module (ADR-003: namespaced path)
-        impl = importlib.import_module("ife_tea.handwritten.hif_economics.meier_hif_driver_cost_impl")
-        func = getattr(impl, "run_meier_hif_driver_cost")
+        impl = importlib.import_module("ife_tea.handwritten.ife_lcoe.ife_present_value_factors_impl")
+        func = getattr(impl, "run_ife_present_value_factors")
 
         # Import module wrapper for Input schema (ADR-003: namespaced path)
-        module = importlib.import_module("ife_tea.modules.hif_economics.meier_hif_driver_cost")
+        module = importlib.import_module("ife_tea.modules.ife_lcoe.ife_present_value_factors")
 
         # Find Input class
         input_class = None
@@ -169,10 +171,134 @@ class TestRecirculating_Power_FractionRunnable:
             # Expected for stencils - test passes
             pass
 
+class TestIFE_LCOERunnable:
+    """Verify ife_lcoe implementation runs without error.
+
+    SysML Source: root-0/analyses/ife_lcoe.sysml:4
+    """
+
+    def test_import_and_run(self):
+        """Test that run_ife_lcoe can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("ife_tea.handwritten.ife_lcoe.ife_lcoe_impl")
+        func = getattr(impl, "run_ife_lcoe")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("ife_tea.modules.ife_lcoe.ife_lcoe")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 18, f"Expected 18 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestMeier_Reactor_CostRunnable:
+    """Verify meier_reactor_cost implementation runs without error.
+
+    SysML Source: root-0/analyses/hif_economics.sysml:45
+    """
+
+    def test_import_and_run(self):
+        """Test that run_meier_reactor_cost can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("ife_tea.handwritten.hif_economics.meier_reactor_cost_impl")
+        func = getattr(impl, "run_meier_reactor_cost")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("ife_tea.modules.hif_economics.meier_reactor_cost")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestGenerating_Electricity_PriceRunnable:
+    """Verify generating_electricity_price implementation runs without error.
+
+    SysML Source: root-0/analyses/ife_lcoe.sysml:150
+    """
+
+    def test_import_and_run(self):
+        """Test that run_generating_electricity_price can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("ife_tea.handwritten.ife_lcoe.generating_electricity_price_impl")
+        func = getattr(impl, "run_generating_electricity_price")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("ife_tea.modules.ife_lcoe.generating_electricity_price")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 2, f"Expected 2 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
 class TestMeier_Total_Capital_CostRunnable:
     """Verify meier_total_capital_cost implementation runs without error.
 
-    SysML Source: root-0/analyses/hif_economics.sysml:65
+    SysML Source: root-0/analyses/hif_economics.sysml:68
     """
 
     def test_import_and_run(self):
@@ -209,50 +335,10 @@ class TestMeier_Total_Capital_CostRunnable:
             # Expected for stencils - test passes
             pass
 
-class TestIFE_LCOERunnable:
-    """Verify ife_lcoe implementation runs without error.
-
-    SysML Source: root-0/analyses/ife_lcoe.sysml:4
-    """
-
-    def test_import_and_run(self):
-        """Test that run_ife_lcoe can be imported and called."""
-        # Import implementation module (ADR-003: namespaced path)
-        impl = importlib.import_module("ife_tea.handwritten.ife_lcoe.ife_lcoe_impl")
-        func = getattr(impl, "run_ife_lcoe")
-
-        # Import module wrapper for Input schema (ADR-003: namespaced path)
-        module = importlib.import_module("ife_tea.modules.ife_lcoe.ife_lcoe")
-
-        # Find Input class
-        input_class = None
-        for attr_name in dir(module):
-            if attr_name.endswith("Input") and not attr_name.startswith("_"):
-                candidate = getattr(module, attr_name)
-                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
-                    input_class = candidate
-                    break
-
-        assert input_class is not None, "No Input class found in module"
-
-        # Create dummy input
-        dummy_input = create_dummy_input(input_class)
-
-        # Call function - expect NotImplementedError or valid return
-        try:
-            result = func(dummy_input)
-
-            # If implemented, verify return type
-            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
-
-        except NotImplementedError:
-            # Expected for stencils - test passes
-            pass
-
 class TestMeier_COERunnable:
     """Verify meier_coe implementation runs without error.
 
-    SysML Source: root-0/analyses/hif_economics.sysml:84
+    SysML Source: root-0/analyses/hif_economics.sysml:88
     """
 
     def test_import_and_run(self):
@@ -283,7 +369,51 @@ class TestMeier_COERunnable:
             result = func(dummy_input)
 
             # If implemented, verify return type
-            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 2, f"Expected 2 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestGenerating_Electricity_PriceRunnable:
+    """Verify generating_electricity_price implementation runs without error.
+
+    SysML Source: root-0/analyses/ife_lcoe.sysml:150
+    """
+
+    def test_import_and_run(self):
+        """Test that run_generating_electricity_price can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("ife_tea.handwritten.ife_lcoe.generating_electricity_price_impl")
+        func = getattr(impl, "run_generating_electricity_price")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("ife_tea.modules.ife_lcoe.generating_electricity_price")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 2, f"Expected 2 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
 
         except NotImplementedError:
             # Expected for stencils - test passes

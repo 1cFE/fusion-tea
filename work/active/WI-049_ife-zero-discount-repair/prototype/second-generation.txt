@@ -1,0 +1,8 @@
+SysML parsing failed: Failed to load SysML models: root-0/designs/generic_ife/ife_plant.sysml:147:13: (redefinition-direction-conformance) Redefining feature must have a compatible direction; root-0/designs/generic_ife/ife_plant.sysml:147:38: (feature-value-overriding) Cannot override a binding feature value; root-0/designs/generic_ife/ife_plant.sysml:148:13: (redefinition-direction-conformance) Redefining feature must have a compatible direction; root-0/designs/generic_ife/ife_plant.sysml:148:36: (feature-value-overriding) Cannot override a binding feature value
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+AssertionError
+[ERROR] work/active/WI-049_ife-zero-discount-repair/prototype/models/designs/generic_ife/ife_plant.sysml:147:13: error (redefinition-direction-conformance): Redefining feature must have a compatible direction
+[ERROR] work/active/WI-049_ife-zero-discount-repair/prototype/models/designs/generic_ife/ife_plant.sysml:147:38: error (feature-value-overriding): Cannot override a binding feature value
+[ERROR] work/active/WI-049_ife-zero-discount-repair/prototype/models/designs/generic_ife/ife_plant.sysml:148:13: error (redefinition-direction-conformance): Redefining feature must have a compatible direction
+[ERROR] work/active/WI-049_ife-zero-discount-repair/prototype/models/designs/generic_ife/ife_plant.sysml:148:36: error (feature-value-overriding): Cannot override a binding feature value

@@ -1,0 +1,11 @@
+# Integration and merge handback
+
+Native integration ran from `/tmp/fusion-mfe-financial-rate-limits` at audited HEAD `19abc445`. Relative paths in `integration_return.json` resolve from that isolated checkout, as required by the native seam. Command, all ten passing gates and full lineage are recorded there. The evidence directory resides in the main coordination checkout. `_work/stellarator-baseline-point-v1.db` is supporting baseline runtime evidence tracked at `7cd97823`. It is not a committed study.
+
+The indicator-input pin remains `609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d`, while the executable fingerprint is now `1a7c216dabff8425c279f6b3c2781629115729173fc0b406600497ac348b4340`. Read the complete native identity tuple; the unchanged indicator digest alone does not identify the repaired executable. The semantic fingerprint remains `15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e`. No earlier Round 7 pin or committed study exists.
+
+Read-only merge preview used `git merge-tree --write-tree HEAD work/mfe-financial-rate-limits` against main `bbda4bb2` and branch `19abc445`; it exited zero without conflicts and produced tree `3ee65f052ce06fa793716449fa62675505970a98`. This writes only a preview Git object; no branch, index or working file was merged. Later coordination-only evidence commits do not change production, but the actual merge must recheck the current revisions.
+
+Main checkout retains separately owned plant-validation work in `tests/orchestration/test_goal_contract.py`, `tests/study/test_study_publication_fail_closed.py`, new `tests/study/test_native_publication.py` and `.project/active/plant-closure-validation/`, plus original setup/CURRENT_WORK edits. The financial branch changes none of these existing edited test paths or CURRENT_WORK. No dirty files were stashed, reset or incorporated. The owner-held merge decision remains outstanding; a later merge must preserve the then-current concurrent work.
+
+The integration seam explicitly does not run `assert_read_set_covered`; its existing limitation remains. Numerical verification is separate from engineering feasibility, broad model-validation warnings, 108 historical study failures and the adapter's 17 independently uncomputed output channels. No global-green or broader F05/F16/accounting/engineering closure is claimed.

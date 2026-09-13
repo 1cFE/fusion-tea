@@ -1,0 +1,143 @@
+{
+  "positive": {
+    "outputs_exact_match_author": true,
+    "responses": {
+      "headline": "satisfied",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "satisfied",
+      "boundary_fixture__test__source_positive__c2a414503b5ef5fc": "satisfied",
+      "boundary_fixture__test__couple_upper__cbb6aefa7cc2c29a": "satisfied",
+      "boundary_fixture__test__couple_positive__7ed1404244e88289": "satisfied",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "satisfied",
+      "boundary_fixture__test__source_upper__422e1f3cbaeb00ad": "satisfied"
+    }
+  },
+  "equality": {
+    "outputs_exact_match_author": true,
+    "responses": {
+      "headline": "satisfied",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "satisfied",
+      "boundary_fixture__test__source_positive__c2a414503b5ef5fc": "satisfied",
+      "boundary_fixture__test__couple_upper__cbb6aefa7cc2c29a": "satisfied",
+      "boundary_fixture__test__couple_positive__7ed1404244e88289": "satisfied",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "satisfied",
+      "boundary_fixture__test__source_upper__422e1f3cbaeb00ad": "satisfied"
+    }
+  },
+  "zero": {
+    "outputs_exact_match_author": true,
+    "responses": {
+      "headline": "satisfied",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "satisfied",
+      "boundary_fixture__test__source_positive__c2a414503b5ef5fc": "satisfied",
+      "boundary_fixture__test__couple_upper__cbb6aefa7cc2c29a": "satisfied",
+      "boundary_fixture__test__couple_positive__7ed1404244e88289": "satisfied",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "satisfied",
+      "boundary_fixture__test__source_upper__422e1f3cbaeb00ad": "satisfied"
+    }
+  },
+  "insufficient": {
+    "outputs_exact_match_author": true,
+    "responses": {
+      "headline": "violated",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "satisfied",
+      "boundary_fixture__test__source_positive__c2a414503b5ef5fc": "satisfied",
+      "boundary_fixture__test__couple_upper__cbb6aefa7cc2c29a": "satisfied",
+      "boundary_fixture__test__couple_positive__7ed1404244e88289": "satisfied",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "violated",
+      "boundary_fixture__test__source_upper__422e1f3cbaeb00ad": "satisfied"
+    }
+  },
+  "negative": {
+    "outputs_exact_match_author": true,
+    "responses": {
+      "headline": "violated",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "violated",
+      "boundary_fixture__test__source_positive__c2a414503b5ef5fc": "satisfied",
+      "boundary_fixture__test__couple_upper__cbb6aefa7cc2c29a": "satisfied",
+      "boundary_fixture__test__couple_positive__7ed1404244e88289": "satisfied",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "satisfied",
+      "boundary_fixture__test__source_upper__422e1f3cbaeb00ad": "satisfied"
+    }
+  },
+  "source_valid_one": {
+    "outputs_exact_match_author": true,
+    "responses": {
+      "headline": "satisfied",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "satisfied",
+      "boundary_fixture__test__source_positive__c2a414503b5ef5fc": "satisfied",
+      "boundary_fixture__test__couple_upper__cbb6aefa7cc2c29a": "satisfied",
+      "boundary_fixture__test__couple_positive__7ed1404244e88289": "satisfied",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "satisfied",
+      "boundary_fixture__test__source_upper__422e1f3cbaeb00ad": "satisfied"
+    }
+  },
+  "source_negative": {
+    "outputs_exact_match_author": true,
+    "responses": {
+      "headline": "violated",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "satisfied",
+      "boundary_fixture__test__source_positive__c2a414503b5ef5fc": "violated",
+      "boundary_fixture__test__couple_upper__cbb6aefa7cc2c29a": "satisfied",
+      "boundary_fixture__test__couple_positive__7ed1404244e88289": "satisfied",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "violated",
+      "boundary_fixture__test__source_upper__422e1f3cbaeb00ad": "satisfied"
+    }
+  },
+  "source_zero": {
+    "error": "EvaluationFailed",
+    "cause": "ZeroDivisionError"
+  },
+  "source_over_one": {
+    "outputs_exact_match_author": true,
+    "responses": {
+      "headline": "violated",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "satisfied",
+      "boundary_fixture__test__source_positive__c2a414503b5ef5fc": "satisfied",
+      "boundary_fixture__test__couple_upper__cbb6aefa7cc2c29a": "satisfied",
+      "boundary_fixture__test__couple_positive__7ed1404244e88289": "satisfied",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "satisfied",
+      "boundary_fixture__test__source_upper__422e1f3cbaeb00ad": "violated"
+    }
+  },
+  "couple_valid_one": {
+    "outputs_exact_match_author": true,
+    "responses": {
+      "headline": "satisfied",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "satisfied",
+      "boundary_fixture__test__source_positive__c2a414503b5ef5fc": "satisfied",
+      "boundary_fixture__test__couple_upper__cbb6aefa7cc2c29a": "satisfied",
+      "boundary_fixture__test__couple_positive__7ed1404244e88289": "satisfied",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "satisfied",
+      "boundary_fixture__test__source_upper__422e1f3cbaeb00ad": "satisfied"
+    }
+  },
+  "couple_negative": {
+    "outputs_exact_match_author": true,
+    "responses": {
+      "headline": "violated",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "satisfied",
+      "boundary_fixture__test__source_positive__c2a414503b5ef5fc": "satisfied",
+      "boundary_fixture__test__couple_upper__cbb6aefa7cc2c29a": "satisfied",
+      "boundary_fixture__test__couple_positive__7ed1404244e88289": "violated",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "violated",
+      "boundary_fixture__test__source_upper__422e1f3cbaeb00ad": "satisfied"
+    }
+  },
+  "couple_zero": {
+    "error": "EvaluationFailed",
+    "cause": "ZeroDivisionError"
+  },
+  "couple_over_one": {
+    "outputs_exact_match_author": true,
+    "responses": {
+      "headline": "violated",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "satisfied",
+      "boundary_fixture__test__source_positive__c2a414503b5ef5fc": "satisfied",
+      "boundary_fixture__test__couple_upper__cbb6aefa7cc2c29a": "violated",
+      "boundary_fixture__test__couple_positive__7ed1404244e88289": "satisfied",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "satisfied",
+      "boundary_fixture__test__source_upper__422e1f3cbaeb00ad": "satisfied"
+    }
+  },
+  "zero_outputs_exact": true
+}

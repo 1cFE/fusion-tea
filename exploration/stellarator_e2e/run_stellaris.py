@@ -53,6 +53,9 @@ P = "stellarator_09__stellaris__"
 
 # Channel names (from the emitted pipeline YAML).
 CH = dict(
+    operating_heat_coupled=f"{P}operating_heat__p_coupled",
+    operating_heat_delivered=f"{P}operating_heat__p_delivered",
+    operating_heat_wallplug=f"{P}operating_heat__p_wallplug",
     V=f"{P}geom__V", p_fus=f"{P}fusion__p_fus", wall_load=f"{P}wall_load_calc__wall_load",
     p_th=f"{P}pb__p_th", p_the=f"{P}pb__p_the", p_et=f"{P}pb__p_et",
     p_cryo=f"{P}cryo_elec__p_elec",  # derived cryoplant electrical (WI-024)
@@ -110,18 +113,19 @@ def check(label, actual, expected):
         failures.append(label)
 
 
-def run_pipeline(tag):
-    router = create_output_router_with_json_schemas(["RootModel[float]"])
+def run_pipeline(tag, *, pipeline_path=None, output_dir=None):
+    router = create_output_router_with_json_schemas(list(dict.fromkeys(["RootModel[float]"] + [s.__name__ for s in CUSTOM_SCHEMA_TYPES])))
     router.register_handler(
         "float",
         WriteHandler(fn=lambda v, p: Path(p).write_text(json.dumps(v)), extension=".json"),
     )
     result = execute_pipeline(
-        PIPELINE,
-        output_dir=E2E / "outputs" / tag,
+        pipeline_path or PIPELINE,
+        output_dir=output_dir or E2E / "outputs" / tag,
         registry=create_stellarator_tea_registry(),
         output_router=router,
         custom_schema_types=CUSTOM_SCHEMA_TYPES,
     )
     return {c: (float(v.root) if hasattr(v, "root") else float(v))
-            for c, v in result.outputs.items()}
+            for c, v in result.outputs.items()
+            if hasattr(v, "root") or isinstance(v, (int, float))}

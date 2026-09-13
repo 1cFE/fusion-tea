@@ -1,0 +1,103 @@
+{
+  "MR-051-01": [
+    "tests/models/test_mfe_major_radius.py::test_complete_native_and_direct_parity[R14]",
+    "tests/models/test_mfe_major_radius.py::test_complete_native_and_direct_parity[baseline]",
+    "tests/models/test_mfe_major_radius.py::test_current_contract_edges_and_fresh_package_agreement"
+  ],
+  "MR-051-02": [
+    "tests/models/test_mfe_major_radius.py::test_binding_documentation_and_source_preservation",
+    "tests/models/test_mfe_major_radius.py::test_independent_radius_ratios_and_fixed_anchors",
+    "tests/models/test_mfe_major_radius.py::test_peak_component_preserves_open_f07[equality]",
+    "tests/models/test_mfe_major_radius.py::test_peak_component_preserves_open_f07[original_negative]",
+    "tests/models/test_mfe_major_radius.py::test_peak_component_preserves_open_f07[reference_equal]",
+    "tests/models/test_mfe_major_radius.py::test_peak_component_preserves_open_f07[reference_inverted]",
+    "tests/models/test_mfe_major_radius.py::test_peak_component_preserves_open_f07[valid]",
+    "tests/models/test_mfe_major_radius.py::test_standalone_radius_formals[coil_length]",
+    "tests/models/test_mfe_major_radius.py::test_standalone_radius_formals[field_calc]",
+    "tests/models/test_mfe_major_radius.py::test_standalone_radius_formals[magnet_cost]",
+    "tests/models/test_mfe_major_radius.py::test_standalone_radius_formals[stored_energy]"
+  ],
+  "MR-051-03": [
+    "tests/models/test_mfe_major_radius.py::test_current_contract_edges_and_fresh_package_agreement",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[alone-cli]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[alone-helper]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[alone-native]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[alone-schema]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[alone-single]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[conflicting-cli]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[conflicting-helper]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[conflicting-native]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[conflicting-schema]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[conflicting-single]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[equal-cli]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[equal-helper]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[equal-native]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[equal-schema]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[equal-single]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[zero-cli]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[zero-helper]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[zero-native]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[zero-schema]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[zero-single]"
+  ],
+  "MR-051-04": [
+    "tests/models/test_mfe_major_radius.py::test_complete_native_and_direct_parity[baseline]"
+  ],
+  "MR-051-05": [
+    "tests/models/test_mfe_major_radius.py::test_complete_native_and_direct_parity[R14]",
+    "tests/models/test_mfe_major_radius.py::test_independent_radius_ratios_and_fixed_anchors"
+  ],
+  "MR-051-06": [
+    "tests/models/test_mfe_major_radius.py::test_peak_component_preserves_open_f07[equality]",
+    "tests/models/test_mfe_major_radius.py::test_peak_component_preserves_open_f07[original_negative]",
+    "tests/models/test_mfe_major_radius.py::test_peak_component_preserves_open_f07[reference_equal]",
+    "tests/models/test_mfe_major_radius.py::test_peak_component_preserves_open_f07[reference_inverted]",
+    "tests/models/test_mfe_major_radius.py::test_peak_component_preserves_open_f07[valid]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[zero-cli]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[zero-helper]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[zero-native]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[zero-schema]",
+    "tests/models/test_mfe_major_radius.py::test_retired_radius_refused[zero-single]",
+    "tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[R3-helper]",
+    "tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[R3-native]",
+    "tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[R3-single]",
+    "tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[R4-helper]",
+    "tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[R4-native]",
+    "tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[R4-single]",
+    "tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[coil-centre-helper]",
+    "tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[coil-centre-native]",
+    "tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[coil-centre-single]",
+    "tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[negative-helper]",
+    "tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[negative-native]",
+    "tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[negative-single]",
+    "tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[zero-helper]",
+    "tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[zero-native]",
+    "tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[zero-single]"
+  ],
+  "MR-051-07": [
+    "tests/models/test_mfe_major_radius.py::test_bad_normative_seed_stops_before_generator[mismatch]",
+    "tests/models/test_mfe_major_radius.py::test_bad_normative_seed_stops_before_generator[missing]",
+    "tests/models/test_mfe_major_radius.py::test_binding_documentation_and_source_preservation",
+    "tests/models/test_mfe_major_radius.py::test_current_contract_edges_and_fresh_package_agreement",
+    "tests/models/test_mfe_major_radius.py::test_extra_seed_stops_before_generator",
+    "tests/models/test_mfe_major_radius.py::test_fresh_destination_acceptance[absent]",
+    "tests/models/test_mfe_major_radius.py::test_fresh_destination_acceptance[empty]",
+    "tests/models/test_mfe_major_radius.py::test_nonfresh_destination_refusal_without_mutation[dangling_symlink]",
+    "tests/models/test_mfe_major_radius.py::test_nonfresh_destination_refusal_without_mutation[file]",
+    "tests/models/test_mfe_major_radius.py::test_nonfresh_destination_refusal_without_mutation[hidden]",
+    "tests/models/test_mfe_major_radius.py::test_nonfresh_destination_refusal_without_mutation[reused]",
+    "tests/models/test_mfe_major_radius.py::test_nonfresh_destination_refusal_without_mutation[symlink]",
+    "tests/models/test_mfe_major_radius.py::test_nonfresh_destination_refusal_without_mutation[visible]",
+    "tests/models/test_mfe_major_radius.py::test_seed_inventory_refuses_deviation[extra]",
+    "tests/models/test_mfe_major_radius.py::test_seed_inventory_refuses_deviation[mismatch]",
+    "tests/models/test_mfe_major_radius.py::test_seed_inventory_refuses_deviation[missing]",
+    "tests/models/test_mfe_major_radius.py::test_strict_current_package_load",
+    "tests/models/test_model_family_spines.py::test_family_subset_generates_and_live_equals_snapshot[ife]",
+    "tests/models/test_model_family_spines.py::test_family_subset_generates_and_live_equals_snapshot[mfe]",
+    "tests/models/test_model_family_spines.py::test_mfe_census_matches_current_generated_public_contract"
+  ],
+  "MR-051-08": [
+    "tests/models/test_mfe_major_radius.py::test_binding_documentation_and_source_preservation"
+  ],
+  "MR-051-09": []
+}

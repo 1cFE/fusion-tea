@@ -5,8 +5,8 @@ AUTO_IMPLEMENTED = True
 SysML Source: root-0/analyses/hif_economics.sysml:4
 
 SysML Expressions:
-    cost_billions = (0.32 + 0.088 * beam_energy_mj) * (1.25 + 0.05 * num_chambers) * (1.0 + 0.0088 * (rep_rate - 5.0))
-    bank_energy_joules = beam_energy_mj * 1000000.0 / driver_efficiency
+    cost_billions = (0.32 + 0.088 * beam_energy_mj_in) * (1.25 + 0.05 * num_chambers_in) * (1.0 + 0.0088 * (rep_rate - 5.0))
+    bank_energy_joules = beam_energy_mj_in * 1000000.0 / driver_efficiency
     gamma = cost_billions * 1000000000.0 / bank_energy_joules
     
 Documentation:
@@ -24,7 +24,8 @@ coefficients (fit to induction linac studies). Reference: 5 Hz,
 single chamber.
 
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
-*Ref**: Eq. 5 (lines 173-192)
+*Reference**: images/page_004_eq_0.png, Eq. 5
+*Last Updated**: 2026-09-10
 *Basis**: Meier 1986 parametric driver cost formula for HIF
 induction linacs. Year-dollars: 1988$.
 """
@@ -34,7 +35,7 @@ AUTO_IMPLEMENTED = True
 from ife_tea.modules.hif_economics.meier_hif_driver_cost import Meier_HIF_Driver_CostInput
 
 
-def run_meier_hif_driver_cost(inputs: Meier_HIF_Driver_CostInput) -> tuple[float, float]:
+def run_meier_hif_driver_cost(inputs: Meier_HIF_Driver_CostInput) -> tuple[float, float, float]:
     """Execute Meier_HIF_Driver_Cost calculation.
 
 Heavy-ion induction linac driver capital cost from Meier's
@@ -51,15 +52,16 @@ coefficients (fit to induction linac studies). Reference: 5 Hz,
 single chamber.
 
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
-*Ref**: Eq. 5 (lines 173-192)
+*Reference**: images/page_004_eq_0.png, Eq. 5
+*Last Updated**: 2026-09-10
 *Basis**: Meier 1986 parametric driver cost formula for HIF
 induction linacs. Year-dollars: 1988$.
 
 SysML Source: root-0/analyses/hif_economics.sysml:4
 
 SysML Expressions:
-    cost_billions = (0.32 + 0.088 * beam_energy_mj) * (1.25 + 0.05 * num_chambers) * (1.0 + 0.0088 * (rep_rate - 5.0))
-    bank_energy_joules = beam_energy_mj * 1000000.0 / driver_efficiency
+    cost_billions = (0.32 + 0.088 * beam_energy_mj_in) * (1.25 + 0.05 * num_chambers_in) * (1.0 + 0.0088 * (rep_rate - 5.0))
+    bank_energy_joules = beam_energy_mj_in * 1000000.0 / driver_efficiency
     gamma = cost_billions * 1000000000.0 / bank_energy_joules
     
 Documentation:
@@ -77,7 +79,8 @@ coefficients (fit to induction linac studies). Reference: 5 Hz,
 single chamber.
 
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
-*Ref**: Eq. 5 (lines 173-192)
+*Reference**: images/page_004_eq_0.png, Eq. 5
+*Last Updated**: 2026-09-10
 *Basis**: Meier 1986 parametric driver cost formula for HIF
 induction linacs. Year-dollars: 1988$.
 
@@ -85,16 +88,16 @@ Args:
     inputs: Input parameters validated against Meier_HIF_Driver_CostInput schema
 
 Returns:
-    tuple[float, ...]: (cost_billions, gamma)
+    tuple[float, ...]: (gamma, bank_energy_joules, cost_billions)
 
 Example:
     >>> inputs = Meier_HIF_Driver_CostInput(...)
-    >>> cost_billions, gamma = run_meier_hif_driver_cost(inputs)
+    >>> gamma, bank_energy_joules, cost_billions = run_meier_hif_driver_cost(inputs)
     """
-    bank_energy_joules = ((inputs.beam_energy_mj * 1000000.0) / inputs.driver_efficiency)
-    cost_billions = (((0.32 + (0.088 * inputs.beam_energy_mj)) * (1.25 + (0.05 * inputs.num_chambers))) * (1.0 + (0.0088 * (inputs.rep_rate - 5.0))))
-    gamma = ((cost_billions * 1000000000.0) / bank_energy_joules)
+    bank_energy_joules = ((inputs.beam_energy_mj_in * 1000000.0) / inputs.driver_efficiency)
+    cost_billions = (((0.32 + (0.088 * inputs.beam_energy_mj_in)) * (1.25 + (0.05 * inputs.num_chambers_in))) * (1.0 + (0.0088 * (inputs.rep_rate - 5.0))))
     return (
+        ((cost_billions * 1000000000.0) / bank_energy_joules),  # gamma
+        bank_energy_joules,
         cost_billions,
-        gamma,
     )

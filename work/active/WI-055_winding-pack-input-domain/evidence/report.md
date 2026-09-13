@@ -1,0 +1,31 @@
+# WI-055 implementation evidence
+
+The corrected current receipt is `corrected-package-hashes.json`; see `coherence-repair.md` for the independent audit finding, corrected producer and preserved original candidate evidence.
+
+The native candidate deliberately rejects invalid winding magnitudes and nonfinite sizing inputs. Standalone sizing and axis field retain zero. The composed zero-current plant fails deliberately at an existing mathematical consumer: Plasma Sustainment rejects zero field and Winding Pack Stress rejects zero side independently. The source/unit correction includes the factor 1000 and distinguishes fixed-field square-root stress scaling from the linked plant's current^(3/2) response. Independent completion audit remains required.
+
+## Authority and meaning
+
+T-042 author brief `efe75b52`, Round 10 strategy `ce786a2f`, and narrow consumer amendment `eb341aee` authorize this change. `source-domain.md` records the primary registered Table 8 image inspection, magnitude meaning, zero boundary and corrected early masking inference. No source, calibration range, financial meaning or supported module scope was adopted. Current guards implement the equations' mathematical domains; they do not certify engineering feasibility.
+
+## Evidence
+
+- `entering-local.json` and `entering-native.json`: original negative-pair acceptance, complex arithmetic, zero divisions and accepted NaN density. Runtime-only `sizing-only-native.json`, `sizing-stress-native.json`, `zero-trace-native.json` and `proposed-guards-native.json` retain scheduling observations. The first observed zero division is Albajar's inverse B inside sustainment; the stress branch independently has a zero denominator.
+- `native-acceptance.log`, `candidate-domain-native.json`, `local-sustainment.json`: fifteen original/extended public invalid and signed-zero cases deliberately refused, plus independent public-module sustainment zero checks. Sizing checks run through generated wrappers in the kept tests; public native zero permits either named mathematical consumer refusal.
+- `domain-tests-final.xml`: 53 passes covering winding cases and all existing magnet/cryo component tests. `winding-final.xml`: 28 passes for the final kept winding tests, including two independently invoked sustainment signed-zero cases added after the first focused run.
+- `acceptance-summary.json`: six positive native scenarios match every output, response, report and error exactly. Five execute; half-current retains its original complex-valued output validation failure. The double-current case verifies field and cold-volume ratios of 2 and stress/strain ratios of 2^(3/2). Ten ordinary/zero/equal/tiny signed financial cases retain full results exactly. Positive cases outside printed current-density examples remain accepted; the existing engineering violations remain evaluated.
+- `manual-seeds.json`, `candidate-seeds.json`, `candidate-package-hashes.json`, `package-changes.json`: ten entering seeds become twelve. Nine entering seeds remain byte-identical; existing sustainment gets only its narrow precheck; two new sizing/stress manual bodies preserve valid arithmetic. Two successive generations preserve all seeds and are byte-stable.
+- `metadata.json`, `derived-census.json`: current snapshot/manifest refreshed, exact 246-input census unchanged. Model contract is unchanged; package contract changes artifact hashes and executable identity. All changed generated Python wrappers/schemas/tests retain executable ASTs after docstring removal. No new output is introduced.
+- `candidate-validation.json`, `validation-attribution.json`: all six levels examined; L1/L3/L4/L5 pass. L2's ten and L6's 279 inherited issue identities match audited WI-054 exactly after source line normalization. No new validator issue is waived.
+
+Commands use `.codex-test/run`. The retained scripts name their dependencies and output files: `capture.py`, `implement.py`, `regenerate.py`, `refresh_metadata.py`, `native_acceptance.py`, `positive_native.py`, `verify.py` and `attribute_validation.py`. Model regression evidence is `baseline-models.xml` (566 pass, thirteen skips) and `candidate-models.xml` (592 pass, thirteen identical skips; all existing node outcomes unchanged, 26 added passes). `regression-attribution.json` compares exact node identities. The final two independent sustainment tests were added after suite collection and pass separately in `winding-final.xml`. No full pre-consumer candidate suite was run. Consumer work `483fa60b` migrated current helpers/oracle/receipts while native verification continued; its own original failures remain independently owned.
+
+## Corrections during verification
+
+The first three component-test failures omitted the generated axis wrapper's required mu0/two_pi arguments; the test setup was corrected, with the original failure log retained. No production behavior changed for that fix. The first contract-preservation checker incorrectly required package artifact hashes/executable identity to remain equal; it was corrected to check those expected changes separately from interface semantics. `verification.log` retains the failed checker and `verification-final.log` the corrected passing evidence. The initial inference that entering downstream errors proved a sizing guard would be masked was retracted after a runtime-only guard probe; `source-domain.md` preserves the evidence and final conclusion.
+
+## Handoff and limits
+
+Current consumers require the twelve-seed helper at `evidence/regenerate.py` and matching current receipt `corrected-package-hashes.json`; historical helpers remain unchanged. T-043 owns their migration and final consumer acceptance. SV-095 remains pending fresh independent audit. No integration, pin, study, goal-trail write or item closure was performed. The finite-input contract does not assert that every extreme finite ratio is representable, that all other input domains are guarded, or that a zero-sized pack models a finite de-energized coil. Existing broader engineering and model-validator limitations remain outside this bounded correction.
+
+Git whitespace checking treats native PM CSV CRLF as end-of-line and excludes exact original-body copies, whose inherited trailing spaces are preserved as evidence. All remaining owned changes pass whitespace checking.

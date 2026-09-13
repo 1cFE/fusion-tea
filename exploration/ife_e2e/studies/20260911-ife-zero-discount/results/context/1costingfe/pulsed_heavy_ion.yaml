@@ -1,0 +1,44 @@
+# Default engineering parameters for IFE heavy ion beam fusion
+q_eng: 4.0               # Engineering gain target (P_et / P_recirc)
+
+f_rep: 5.0               # Repetition rate [Hz]
+pulsed_conversion: thermal
+f_rad: 0.10
+eta_pin: 0.25            # Accelerator wall-plug efficiency
+mn: 1.1              # Neutron energy multiplier
+f_sub: 0.03          # Subsystem power fraction
+p_pump: 1.0          # Pumping power [MW]
+p_trit: 10.0         # Tritium processing power [MW]
+p_house: 4.0         # Housekeeping power [MW]
+p_cryo: 0.5          # Cryogenic power [MW]
+p_target: 0.8        # Target factory power [MW]
+target_unit_cost: 0.62   # $/shot — bottom-up materials+opex / yield, incl. lead hohlraum + extra press/assembly step (capital in CAS22.01.08). Dispose default. See CAS80_target_consumables.md
+# Target factory (CAS22.01.08), three-term build-up; design total ~781 M$ at 5 Hz, 3.02 GW_fus. Higher per-Hz than laser: indirect drive adds hohlraum press + assembly + LEH steps. See CAS80_target_consumables.md
+target_factory_capex_fixed: 340.0      # M$ — cleanroom + tritium-confinement shell + lead handling + base line
+target_factory_capex_per_hz: 64.0      # M$/Hz — capsule + hohlraum production lines (more steps/target than direct drive)
+target_factory_capex_per_gwfus: 40.0   # M$/GW_fus — cryo + lead/debris recovery + waste handling
+
+# Radial build geometry [m] (spherical chamber)
+R0: 0.0          # Not used for sphere
+plasma_t: 4.0        # Chamber radius
+blanket_t: 0.80      # Blanket thickness
+ht_shield_t: 0.25    # High-temperature shield
+structure_t: 0.15    # Primary structure
+vessel_t: 0.10       # Vacuum vessel
+
+# Construction
+construction_time_yr: 6.0  # Years (large accelerator complex)
+
+# Fuel burn fraction defaults (physics.py ash_neutron_split)
+burn_fraction: 0.30      # Single-pass burn fraction (heavy-ion indirect-drive uniformity, HIBALL/HIBLIC)
+fuel_recovery: 0.99         # Fraction of unburned fuel recovered and recycled (NOAK)
+dd_f_T: 0.969
+dd_f_He3: 0.689
+dhe3_dd_frac: 0.131
+dhe3_f_T: 0.5
+pb11_f_alpha_n: 0.0
+pb11_f_p_n: 0.0
+
+# Blanket configuration
+blanket_form: liquid_metal
+blanket_fill: pbli

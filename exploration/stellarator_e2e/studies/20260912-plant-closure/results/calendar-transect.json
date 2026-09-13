@@ -1,0 +1,3950 @@
+[
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7712",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.4
+    },
+    "candidate_id": "20260912-plant-closure:c0236",
+    "lcoe": 205.99848970946303,
+    "lcoe_1cfe": 202.10780870222243,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 147984004.41031462,
+    "wall_load_peak": 3.9434086423156858,
+    "calendar_physical_life_fpy": 4.564578929722553
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7712",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.4,
+      "stellarator_09__stellaris__n_loops": 15.0
+    },
+    "candidate_id": "20260912-plant-closure:c0237",
+    "lcoe": 203.04016598997984,
+    "lcoe_1cfe": 199.20556808147649,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 147327751.49736342,
+    "wall_load_peak": 3.9434086423156858,
+    "calendar_physical_life_fpy": 4.564578929722553
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7713",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.5
+    },
+    "candidate_id": "20260912-plant-closure:c0238",
+    "lcoe": 194.46231003429452,
+    "lcoe_1cfe": 190.80282444236624,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777778,
+    "cas72_annual": 156286919.60599235,
+    "wall_load_peak": 3.8752288628238363,
+    "calendar_physical_life_fpy": 4.644886956917326
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7713",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.5,
+      "stellarator_09__stellaris__n_loops": 15.0
+    },
+    "candidate_id": "20260912-plant-closure:c0239",
+    "lcoe": 191.5642732233026,
+    "lcoe_1cfe": 187.95949031572994,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777778,
+    "cas72_annual": 155541039.08337343,
+    "wall_load_peak": 3.8752288628238363,
+    "calendar_physical_life_fpy": 4.644886956917326
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7714",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.6
+    },
+    "candidate_id": "20260912-plant-closure:c0240",
+    "lcoe": 187.1778763530153,
+    "lcoe_1cfe": 183.66441194085726,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777778,
+    "cas72_annual": 163067912.51083595,
+    "wall_load_peak": 3.7820720029086123,
+    "calendar_physical_life_fpy": 4.759295958976205
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7714",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.6,
+      "stellarator_09__stellaris__n_loops": 16.0
+    },
+    "candidate_id": "20260912-plant-closure:c0241",
+    "lcoe": 181.98864203658152,
+    "lcoe_1cfe": 178.5728237586839,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777778,
+    "cas72_annual": 161567738.13683793,
+    "wall_load_peak": 3.7820720029086123,
+    "calendar_physical_life_fpy": 4.759295958976205
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7715",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7
+    },
+    "candidate_id": "20260912-plant-closure:c0242",
+    "lcoe": 182.78583961970875,
+    "lcoe_1cfe": 179.360335303666,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 168354724.14431348,
+    "wall_load_peak": 3.6707345051759472,
+    "calendar_physical_life_fpy": 4.903650747450943
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7715",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__n_loops": 16.0
+    },
+    "candidate_id": "20260912-plant-closure:c0243",
+    "lcoe": 177.55641167538073,
+    "lcoe_1cfe": 174.22912310370046,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 166735211.53713217,
+    "wall_load_peak": 3.6707345051759472,
+    "calendar_physical_life_fpy": 4.903650747450943
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7716",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.8
+    },
+    "candidate_id": "20260912-plant-closure:c0244",
+    "lcoe": 180.48857860134171,
+    "lcoe_1cfe": 177.10885688453595,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 172216930.83434683,
+    "wall_load_peak": 3.546948101576761,
+    "calendar_physical_life_fpy": 5.074785275825794
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7716",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__n_loops": 16.0
+    },
+    "candidate_id": "20260912-plant-closure:c0245",
+    "lcoe": 175.1807022471216,
+    "lcoe_1cfe": 171.9005781466446,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 170503783.14105523,
+    "wall_load_peak": 3.546948101576761,
+    "calendar_physical_life_fpy": 5.074785275825794
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7717",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.9
+    },
+    "candidate_id": "20260912-plant-closure:c0246",
+    "lcoe": 179.79646773752378,
+    "lcoe_1cfe": 176.4300898962931,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 174753300.93627408,
+    "wall_load_peak": 3.415400724464117,
+    "calendar_physical_life_fpy": 5.2702454125128275
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7717",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.9,
+      "stellarator_09__stellaris__n_loops": 16.0
+    },
+    "candidate_id": "20260912-plant-closure:c0247",
+    "lcoe": 174.3814021006961,
+    "lcoe_1cfe": 171.11662621402124,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 172972242.84175843,
+    "wall_load_peak": 3.415400724464117,
+    "calendar_physical_life_fpy": 5.2702454125128275
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7718",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.0
+    },
+    "candidate_id": "20260912-plant-closure:c0174",
+    "lcoe": 176.90758577093533,
+    "lcoe_1cfe": 173.57221552735425,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.2261764446252954,
+    "calendar_availability": 0.9146830074013792,
+    "cas72_annual": 162923618.10193554,
+    "wall_load_peak": 3.2798247870844577,
+    "calendar_physical_life_fpy": 5.488098044408275
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7718",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__n_loops": 16.0
+    },
+    "candidate_id": "20260912-plant-closure:c0248",
+    "lcoe": 171.47738602113196,
+    "lcoe_1cfe": 168.2448043767122,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.2261764446252954,
+    "calendar_availability": 0.9146830074013792,
+    "cas72_annual": 161235380.79205906,
+    "wall_load_peak": 3.2798247870844577,
+    "calendar_physical_life_fpy": 5.488098044408275
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7719",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.1
+    },
+    "candidate_id": "20260912-plant-closure:c0249",
+    "lcoe": 177.18109933260837,
+    "lcoe_1cfe": 173.83828826644606,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 163729292.26139542,
+    "wall_load_peak": 3.1431186690129467,
+    "calendar_physical_life_fpy": 5.726796184139192
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7719",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__n_loops": 17.0
+    },
+    "candidate_id": "20260912-plant-closure:c0250",
+    "lcoe": 169.66262400889067,
+    "lcoe_1cfe": 166.4622429516045,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 161374819.14412802,
+    "wall_load_peak": 3.1431186690129467,
+    "calendar_physical_life_fpy": 5.726796184139192
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7720",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.2
+    },
+    "candidate_id": "20260912-plant-closure:c0251",
+    "lcoe": 179.86717864132657,
+    "lcoe_1cfe": 176.4699289555788,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222224,
+    "cas72_annual": 163673280.721525,
+    "wall_load_peak": 3.007476727838036,
+    "calendar_physical_life_fpy": 5.985083719314275
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7720",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__n_loops": 17.0
+    },
+    "candidate_id": "20260912-plant-closure:c0252",
+    "lcoe": 172.1078001231032,
+    "lcoe_1cfe": 168.85774599981346,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222224,
+    "cas72_annual": 161307640.84321368,
+    "wall_load_peak": 3.007476727838036,
+    "calendar_physical_life_fpy": 5.985083719314275
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7721",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.3
+    },
+    "candidate_id": "20260912-plant-closure:c0253",
+    "lcoe": 183.4589267249213,
+    "lcoe_1cfe": 179.98871968518964,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 162857441.6813136,
+    "wall_load_peak": 2.8745153955118874,
+    "calendar_physical_life_fpy": 6.2619250633008345
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7721",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__n_loops": 17.0
+    },
+    "candidate_id": "20260912-plant-closure:c0254",
+    "lcoe": 175.42042272703446,
+    "lcoe_1cfe": 172.102982069877,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 160501520.36357653,
+    "wall_load_peak": 2.8745153955118874,
+    "calendar_physical_life_fpy": 6.2619250633008345
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7722",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.4
+    },
+    "candidate_id": "20260912-plant-closure:c0255",
+    "lcoe": 187.9357097648684,
+    "lcoe_1cfe": 184.37442411688585,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 161380318.1499706,
+    "wall_load_peak": 2.7453858967841818,
+    "calendar_physical_life_fpy": 6.556455331501618
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7722",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__n_loops": 17.0
+    },
+    "candidate_id": "20260912-plant-closure:c0256",
+    "lcoe": 179.57359132551753,
+    "lcoe_1cfe": 176.17156911664586,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 159051555.81946006,
+    "wall_load_peak": 2.7453858967841818,
+    "calendar_physical_life_fpy": 6.556455331501618
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7763",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0257",
+    "lcoe": 198.11601310682556,
+    "lcoe_1cfe": 194.5054440595365,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 264328912.4963614,
+    "wall_load_peak": 3.602466798122248,
+    "calendar_physical_life_fpy": 4.996576237533218
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7763",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0
+    },
+    "candidate_id": "20260912-plant-closure:c0258",
+    "lcoe": 167.63544231334276,
+    "lcoe_1cfe": 164.58063340289058,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 252623740.0501882,
+    "wall_load_peak": 3.602466798122248,
+    "calendar_physical_life_fpy": 4.996576237533218
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7764",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0259",
+    "lcoe": 198.88327757561356,
+    "lcoe_1cfe": 195.2624046126719,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 276417109.7735278,
+    "wall_load_peak": 3.411396784185417,
+    "calendar_physical_life_fpy": 5.27643107463915
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7764",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0
+    },
+    "candidate_id": "20260912-plant-closure:c0260",
+    "lcoe": 166.43733574240773,
+    "lcoe_1cfe": 163.40744941746058,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 263466461.13510388,
+    "wall_load_peak": 3.411396784185417,
+    "calendar_physical_life_fpy": 5.27643107463915
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7765",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0261",
+    "lcoe": 198.24578247595443,
+    "lcoe_1cfe": 194.6035625638487,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.46559144061652447,
+    "calendar_availability": 0.9067025075350048,
+    "cas72_annual": 259190899.41760203,
+    "wall_load_peak": 3.308692735565397,
+    "calendar_physical_life_fpy": 5.440215045210029
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7765",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0
+    },
+    "candidate_id": "20260912-plant-closure:c0262",
+    "lcoe": 165.10430549156757,
+    "lcoe_1cfe": 162.07227413563297,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.46559144061652447,
+    "calendar_availability": 0.9067025075350048,
+    "cas72_annual": 246807327.75846198,
+    "wall_load_peak": 3.308692735565397,
+    "calendar_physical_life_fpy": 5.440215045210029
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7766",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0263",
+    "lcoe": 197.77996233456452,
+    "lcoe_1cfe": 194.14469274230078,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 262296199.18040144,
+    "wall_load_peak": 3.2036476788957855,
+    "calendar_physical_life_fpy": 5.618595365082135
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7766",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0
+    },
+    "candidate_id": "20260912-plant-closure:c0264",
+    "lcoe": 162.28728475785698,
+    "lcoe_1cfe": 159.3058284993501,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 248835937.7444597,
+    "wall_load_peak": 3.2036476788957855,
+    "calendar_physical_life_fpy": 5.618595365082135
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7767",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0265",
+    "lcoe": 201.49051648868053,
+    "lcoe_1cfe": 197.783967460817,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 264323437.45896044,
+    "wall_load_peak": 3.097685692307179,
+    "calendar_physical_life_fpy": 5.810789662973672
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7767",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0
+    },
+    "candidate_id": "20260912-plant-closure:c0266",
+    "lcoe": 164.50138253371492,
+    "lcoe_1cfe": 161.47690295919566,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 250610770.08498433,
+    "wall_load_peak": 3.097685692307179,
+    "calendar_physical_life_fpy": 5.810789662973672
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7768",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0267",
+    "lcoe": 206.02745655696054,
+    "lcoe_1cfe": 202.23299383677946,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 265354899.21704647,
+    "wall_load_peak": 2.991953643213488,
+    "calendar_physical_life_fpy": 6.016135992223202
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7768",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0
+    },
+    "candidate_id": "20260912-plant-closure:c0268",
+    "lcoe": 167.37147076833432,
+    "lcoe_1cfe": 164.2908139939304,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 251485537.28541222,
+    "wall_load_peak": 2.991953643213488,
+    "calendar_physical_life_fpy": 6.016135992223202
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7769",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0269",
+    "lcoe": 211.40576345952832,
+    "lcoe_1cfe": 207.50645657553238,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 265475731.56156948,
+    "wall_load_peak": 2.887359888817618,
+    "calendar_physical_life_fpy": 6.234068731685211
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7769",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0
+    },
+    "candidate_id": "20260912-plant-closure:c0270",
+    "lcoe": 170.88444567968162,
+    "lcoe_1cfe": 167.73470090363745,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "sustainment_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 251536388.65323848,
+    "wall_load_peak": 2.887359888817618,
+    "calendar_physical_life_fpy": 6.234068731685211
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7770",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0271",
+    "lcoe": 217.66841254368566,
+    "lcoe_1cfe": 213.64648601598907,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 264771524.54287505,
+    "wall_load_peak": 2.7846100384636165,
+    "calendar_physical_life_fpy": 6.464100808144518
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7770",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0
+    },
+    "candidate_id": "20260912-plant-closure:c0272",
+    "lcoe": 175.04648007286258,
+    "lcoe_1cfe": 171.8146009654608,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "sustainment_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 250839311.57350317,
+    "wall_load_peak": 2.7846100384636165,
+    "calendar_physical_life_fpy": 6.464100808144518
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7771",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0273",
+    "lcoe": 224.88614606844385,
+    "lcoe_1cfe": 220.72243315124516,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 263326529.912191,
+    "wall_load_peak": 2.684240139797331,
+    "calendar_physical_life_fpy": 6.705808371287921
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7771",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0
+    },
+    "candidate_id": "20260912-plant-closure:c0274",
+    "lcoe": 179.88146413107947,
+    "lcoe_1cfe": 176.55391992317024,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "sustainment_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 249468820.8344975,
+    "wall_load_peak": 2.684240139797331,
+    "calendar_physical_life_fpy": 6.705808371287921
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7735",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0175",
+    "lcoe": 409.8789412193102,
+    "lcoe_1cfe": 402.2387649883709,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "beta_ok",
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.49529806543072397,
+    "calendar_availability": 0.8862678422634204,
+    "cas72_annual": 228487216.93977487,
+    "wall_load_peak": 4.0619774613575474,
+    "calendar_physical_life_fpy": 4.431339211317102
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7735",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 20.0
+    },
+    "candidate_id": "20260912-plant-closure:c0177",
+    "lcoe": 325.90868400512244,
+    "lcoe_1cfe": 319.8400435231205,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "beta_ok",
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.49529806543072397,
+    "calendar_availability": 0.8862678422634204,
+    "cas72_annual": 220985112.53073114,
+    "wall_load_peak": 4.0619774613575474,
+    "calendar_physical_life_fpy": 4.431339211317102
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7736",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0275",
+    "lcoe": 296.0396445326625,
+    "lcoe_1cfe": 290.65843546418296,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 6.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.8833333333333332,
+    "cas72_annual": 294846567.6464907,
+    "wall_load_peak": 4.183517949325393,
+    "calendar_physical_life_fpy": 4.30259896528054
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7736",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0
+    },
+    "candidate_id": "20260912-plant-closure:c0276",
+    "lcoe": 230.56605852200886,
+    "lcoe_1cfe": 226.3757636962659,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok"
+    ],
+    "calendar_n_replacements": 6.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.8833333333333332,
+    "cas72_annual": 280853575.8674765,
+    "wall_load_peak": 4.183517949325393,
+    "calendar_physical_life_fpy": 4.30259896528054
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7737",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0277",
+    "lcoe": 247.93173115964015,
+    "lcoe_1cfe": 243.50008261499454,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 6.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.8833333333333332,
+    "cas72_annual": 362451853.5650857,
+    "wall_load_peak": 4.15642470036111,
+    "calendar_physical_life_fpy": 4.3306450369319
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7737",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 25.0
+    },
+    "candidate_id": "20260912-plant-closure:c0278",
+    "lcoe": 181.3057902138705,
+    "lcoe_1cfe": 178.06271356854282,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok"
+    ],
+    "calendar_n_replacements": 6.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.8833333333333332,
+    "cas72_annual": 337569338.6149812,
+    "wall_load_peak": 4.15642470036111,
+    "calendar_physical_life_fpy": 4.3306450369319
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7738",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0094",
+    "lcoe": 236.31943842494067,
+    "lcoe_1cfe": 232.08500102457012,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.3481076367223963,
+    "calendar_availability": 0.8911741898870316,
+    "cas72_annual": 373971713.2691224,
+    "wall_load_peak": 4.039614298587742,
+    "calendar_physical_life_fpy": 4.455870949435157
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7738",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 27.0
+    },
+    "candidate_id": "20260912-plant-closure:c0279",
+    "lcoe": 165.20254719913305,
+    "lcoe_1cfe": 162.24039016937837,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "sustainment_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.3481076367223963,
+    "calendar_availability": 0.8911741898870316,
+    "cas72_annual": 343727013.6922239,
+    "wall_load_peak": 4.039614298587742,
+    "calendar_physical_life_fpy": 4.455870949435157
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7739",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0280",
+    "lcoe": 234.23787421753414,
+    "lcoe_1cfe": 230.05449157489812,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.902777777777778,
+    "cas72_annual": 400290011.40431225,
+    "wall_load_peak": 3.8734102918934123,
+    "calendar_physical_life_fpy": 4.647067737097684
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7739",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 28.0
+    },
+    "candidate_id": "20260912-plant-closure:c0281",
+    "lcoe": 157.9471951903463,
+    "lcoe_1cfe": 155.1238136346912,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.902777777777778,
+    "cas72_annual": 364662465.04383266,
+    "wall_load_peak": 3.8734102918934123,
+    "calendar_physical_life_fpy": 4.647067737097684
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7740",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0282",
+    "lcoe": 236.74530443015016,
+    "lcoe_1cfe": 232.5202712380382,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 410517818.8214908,
+    "wall_load_peak": 3.7782787495446013,
+    "calendar_physical_life_fpy": 4.764074117657294
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7740",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 28.0
+    },
+    "candidate_id": "20260912-plant-closure:c0176",
+    "lcoe": 157.5040662785948,
+    "lcoe_1cfe": 154.69062088702148,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 373017773.94533145,
+    "wall_load_peak": 3.7782787495446013,
+    "calendar_physical_life_fpy": 4.764074117657294
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7741",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0283",
+    "lcoe": 240.32841919427858,
+    "lcoe_1cfe": 236.04035737606878,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 418845583.2646585,
+    "wall_load_peak": 3.6779498146419,
+    "calendar_physical_life_fpy": 4.89403088871471
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7741",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 28.0
+    },
+    "candidate_id": "20260912-plant-closure:c0284",
+    "lcoe": 157.83422100524373,
+    "lcoe_1cfe": 155.01552388183933,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 379773959.81784314,
+    "wall_load_peak": 3.6779498146419,
+    "calendar_physical_life_fpy": 4.89403088871471
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7742",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0285",
+    "lcoe": 244.87915289685802,
+    "lcoe_1cfe": 240.5087307071276,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.902777777777778,
+    "cas72_annual": 425349055.7798648,
+    "wall_load_peak": 3.574158946376913,
+    "calendar_physical_life_fpy": 5.036149838340684
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7742",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0
+    },
+    "candidate_id": "20260912-plant-closure:c0286",
+    "lcoe": 157.56908110013802,
+    "lcoe_1cfe": 154.75440683717477,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.902777777777778,
+    "cas72_annual": 384086420.1210204,
+    "wall_load_peak": 3.574158946376913,
+    "calendar_physical_life_fpy": 5.036149838340684
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7743",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0287",
+    "lcoe": 250.34533032886682,
+    "lcoe_1cfe": 245.87420698726078,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777778,
+    "cas72_annual": 430124177.49691176,
+    "wall_load_peak": 3.468364187515374,
+    "calendar_physical_life_fpy": 5.189766422105352
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7743",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0
+    },
+    "candidate_id": "20260912-plant-closure:c0288",
+    "lcoe": 159.1322252364522,
+    "lcoe_1cfe": 156.28788100118294,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777778,
+    "cas72_annual": 387859521.8501703,
+    "wall_load_peak": 3.468364187515374,
+    "calendar_physical_life_fpy": 5.189766422105352
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7744",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0289",
+    "lcoe": 256.71961353424314,
+    "lcoe_1cfe": 252.1295933754979,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.902777777777778,
+    "cas72_annual": 433281244.29501885,
+    "wall_load_peak": 3.361774225529713,
+    "calendar_physical_life_fpy": 5.354315546625903
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7744",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0
+    },
+    "candidate_id": "20260912-plant-closure:c0290",
+    "lcoe": 161.25041574451296,
+    "lcoe_1cfe": 158.36538585859017,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.902777777777778,
+    "cas72_annual": 390297162.76414907,
+    "wall_load_peak": 3.361774225529713,
+    "calendar_physical_life_fpy": 5.354315546625903
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7745",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0291",
+    "lcoe": 255.97761108885197,
+    "lcoe_1cfe": 251.34623039207855,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.020102074200650577,
+    "calendar_availability": 0.9215521530822006,
+    "cas72_annual": 402689736.637921,
+    "wall_load_peak": 3.255377343502779,
+    "calendar_physical_life_fpy": 5.529312918493203
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7745",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0
+    },
+    "candidate_id": "20260912-plant-closure:c0292",
+    "lcoe": 159.0111647752024,
+    "lcoe_1cfe": 156.1347248650322,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.020102074200650577,
+    "calendar_availability": 0.9215521530822006,
+    "cas72_annual": 362469710.1352719,
+    "wall_load_peak": 3.255377343502779,
+    "calendar_physical_life_fpy": 5.529312918493203
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7746",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0293",
+    "lcoe": 263.963514447096,
+    "lcoe_1cfe": 259.18110794407124,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 404057532.2686547,
+    "wall_load_peak": 3.149969926218796,
+    "calendar_physical_life_fpy": 5.714340270418736
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7746",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0
+    },
+    "candidate_id": "20260912-plant-closure:c0294",
+    "lcoe": 162.03148945599443,
+    "lcoe_1cfe": 159.09683795886943,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "sustainment_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 363525083.14433116,
+    "wall_load_peak": 3.149969926218796,
+    "calendar_physical_life_fpy": 5.714340270418736
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7747",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0295",
+    "lcoe": 273.2228206175446,
+    "lcoe_1cfe": 268.26450144388946,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 404289870.05920917,
+    "wall_load_peak": 3.046183641894515,
+    "calendar_physical_life_fpy": 5.909033110297069
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7747",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0
+    },
+    "candidate_id": "20260912-plant-closure:c0296",
+    "lcoe": 165.6816412417272,
+    "lcoe_1cfe": 162.67644986827844,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "sustainment_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 363641078.90843624,
+    "wall_load_peak": 3.046183641894515,
+    "calendar_physical_life_fpy": 5.909033110297069
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7748",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "candidate_id": "20260912-plant-closure:c0297",
+    "lcoe": 283.7072501180765,
+    "lcoe_1cfe": 278.5488663064577,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222224,
+    "cas72_annual": 403486974.77186435,
+    "wall_load_peak": 2.9445096442435275,
+    "calendar_physical_life_fpy": 6.113072183407425
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7748",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0
+    },
+    "candidate_id": "20260912-plant-closure:c0298",
+    "lcoe": 169.86211456283272,
+    "lcoe_1cfe": 166.77582459134902,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "sustainment_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222224,
+    "cas72_annual": 362896704.62205255,
+    "wall_load_peak": 2.9445096442435275,
+    "calendar_physical_life_fpy": 6.113072183407425
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7723",
+    "inputs": {
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0022",
+    "lcoe": 231.13227318177198,
+    "lcoe_1cfe": 226.727323464829,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 138187030.54156843,
+    "wall_load_peak": 3.9788448937763854,
+    "calendar_physical_life_fpy": 4.5239260339489915
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7723",
+    "inputs": {
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0022",
+    "lcoe": 231.13227318177198,
+    "lcoe_1cfe": 226.727323464829,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 138187030.54156843,
+    "wall_load_peak": 3.9788448937763854,
+    "calendar_physical_life_fpy": 4.5239260339489915
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7724",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.4,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0299",
+    "lcoe": 212.1192516878083,
+    "lcoe_1cfe": 208.0963272236734,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 147984004.41031462,
+    "wall_load_peak": 3.9434086423156858,
+    "calendar_physical_life_fpy": 4.564578929722553
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7724",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.4,
+      "stellarator_09__stellaris__n_loops": 15.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0300",
+    "lcoe": 209.07724497351978,
+    "lcoe_1cfe": 205.1122116393044,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 147327751.49736342,
+    "wall_load_peak": 3.9434086423156858,
+    "calendar_physical_life_fpy": 4.564578929722553
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7725",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.5,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0301",
+    "lcoe": 200.09821010897315,
+    "lcoe_1cfe": 196.31695684968201,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777778,
+    "cas72_annual": 156286919.60599235,
+    "wall_load_peak": 3.8752288628238363,
+    "calendar_physical_life_fpy": 4.644886956917326
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7725",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.5,
+      "stellarator_09__stellaris__n_loops": 15.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0302",
+    "lcoe": 197.12062409536097,
+    "lcoe_1cfe": 193.39579223805978,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777778,
+    "cas72_annual": 155541039.08337343,
+    "wall_load_peak": 3.8752288628238363,
+    "calendar_physical_life_fpy": 4.644886956917326
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7726",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.6,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0303",
+    "lcoe": 192.4908088985126,
+    "lcoe_1cfe": 188.86255476433163,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777778,
+    "cas72_annual": 163067912.51083595,
+    "wall_load_peak": 3.7820720029086123,
+    "calendar_physical_life_fpy": 4.759295958976205
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7726",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.6,
+      "stellarator_09__stellaris__n_loops": 16.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0304",
+    "lcoe": 187.16268116350372,
+    "lcoe_1cfe": 183.6350740556089,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777778,
+    "cas72_annual": 161567738.13683793,
+    "wall_load_peak": 3.7820720029086123,
+    "calendar_physical_life_fpy": 4.759295958976205
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7727",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0305",
+    "lcoe": 187.88533473319484,
+    "lcoe_1cfe": 184.3496521640835,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 168354724.14431348,
+    "wall_load_peak": 3.6707345051759472,
+    "calendar_physical_life_fpy": 4.903650747450943
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7727",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__n_loops": 16.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0306",
+    "lcoe": 182.5187911698216,
+    "lcoe_1cfe": 179.0842868264633,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 166735211.53713217,
+    "wall_load_peak": 3.6707345051759472,
+    "calendar_physical_life_fpy": 4.903650747450943
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7728",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0307",
+    "lcoe": 185.45329758428792,
+    "lcoe_1cfe": 181.96630954947528,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 172216930.83434683,
+    "wall_load_peak": 3.546948101576761,
+    "calendar_physical_life_fpy": 5.074785275825794
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7728",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__n_loops": 16.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0308",
+    "lcoe": 180.00855961824007,
+    "lcoe_1cfe": 176.62412619313844,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 170503783.14105523,
+    "wall_load_peak": 3.546948101576761,
+    "calendar_physical_life_fpy": 5.074785275825794
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7729",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.9,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0309",
+    "lcoe": 184.6859316984679,
+    "lcoe_1cfe": 181.2139134780095,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 174753300.93627408,
+    "wall_load_peak": 3.415400724464117,
+    "calendar_physical_life_fpy": 5.2702454125128275
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7729",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.9,
+      "stellarator_09__stellaris__n_loops": 16.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0310",
+    "lcoe": 179.133099279802,
+    "lcoe_1cfe": 175.76565956412952,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 172972242.84175843,
+    "wall_load_peak": 3.415400724464117,
+    "calendar_physical_life_fpy": 5.2702454125128275
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7730",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0178",
+    "lcoe": 181.70578079368565,
+    "lcoe_1cfe": 178.26674210181227,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.2261764446252954,
+    "calendar_availability": 0.9146830074013792,
+    "cas72_annual": 162923618.10193554,
+    "wall_load_peak": 3.2798247870844577,
+    "calendar_physical_life_fpy": 5.488098044408275
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7730",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__n_loops": 16.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0311",
+    "lcoe": 176.1377540015007,
+    "lcoe_1cfe": 172.8044817609911,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.2261764446252954,
+    "calendar_availability": 0.9146830074013792,
+    "cas72_annual": 161235380.79205906,
+    "wall_load_peak": 3.2798247870844577,
+    "calendar_physical_life_fpy": 5.488098044408275
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7731",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0312",
+    "lcoe": 181.9511312298053,
+    "lcoe_1cfe": 178.50526019989775,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 163729292.26139542,
+    "wall_load_peak": 3.1431186690129467,
+    "calendar_physical_life_fpy": 5.726796184139192
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7731",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__n_loops": 17.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0313",
+    "lcoe": 174.24346835873274,
+    "lcoe_1cfe": 170.94411487048768,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 161374819.14412802,
+    "wall_load_peak": 3.1431186690129467,
+    "calendar_physical_life_fpy": 5.726796184139192
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7732",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0314",
+    "lcoe": 184.6817153044684,
+    "lcoe_1cfe": 181.18044409755535,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222224,
+    "cas72_annual": 163673280.721525,
+    "wall_load_peak": 3.007476727838036,
+    "calendar_physical_life_fpy": 5.985083719314275
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7732",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__n_loops": 17.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0315",
+    "lcoe": 176.72831839602154,
+    "lcoe_1cfe": 173.37843465818122,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222224,
+    "cas72_annual": 161307640.84321368,
+    "wall_load_peak": 3.007476727838036,
+    "calendar_physical_life_fpy": 5.985083719314275
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7733",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0316",
+    "lcoe": 188.34832966715206,
+    "lcoe_1cfe": 184.77248356654576,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 162857441.6813136,
+    "wall_load_peak": 2.8745153955118874,
+    "calendar_physical_life_fpy": 6.2619250633008345
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7733",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__n_loops": 17.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0317",
+    "lcoe": 180.10972913181814,
+    "lcoe_1cfe": 176.69097264313524,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 160501520.36357653,
+    "wall_load_peak": 2.8745153955118874,
+    "calendar_physical_life_fpy": 6.2619250633008345
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7734",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0318",
+    "lcoe": 192.92871016264002,
+    "lcoe_1cfe": 189.25954715637886,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 161380318.1499706,
+    "wall_load_peak": 2.7453858967841818,
+    "calendar_physical_life_fpy": 6.556455331501618
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7734",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__n_loops": 17.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0319",
+    "lcoe": 184.3590443612138,
+    "lcoe_1cfe": 180.85362900382808,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "burn_hold_ok",
+      "peak_field_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 159051555.81946006,
+    "wall_load_peak": 2.7453858967841818,
+    "calendar_physical_life_fpy": 6.556455331501618
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7772",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0320",
+    "lcoe": 202.8355392380356,
+    "lcoe_1cfe": 199.12300144033568,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 264328912.4963614,
+    "wall_load_peak": 3.602466798122248,
+    "calendar_physical_life_fpy": 4.996576237533218
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7772",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0321",
+    "lcoe": 171.67478458424605,
+    "lcoe_1cfe": 168.53270278401754,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 252623740.0501882,
+    "wall_load_peak": 3.602466798122248,
+    "calendar_physical_life_fpy": 4.996576237533218
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7773",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0322",
+    "lcoe": 203.47621777944948,
+    "lcoe_1cfe": 199.75611104593926,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 276417109.7735278,
+    "wall_load_peak": 3.411396784185417,
+    "calendar_physical_life_fpy": 5.27643107463915
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7773",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0323",
+    "lcoe": 170.33028776039407,
+    "lcoe_1cfe": 167.21629141218455,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 263466461.13510388,
+    "wall_load_peak": 3.411396784185417,
+    "calendar_physical_life_fpy": 5.27643107463915
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7774",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0324",
+    "lcoe": 202.80813242832232,
+    "lcoe_1cfe": 199.06733966999298,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.46559144061652447,
+    "calendar_availability": 0.9067025075350048,
+    "cas72_annual": 259190899.41760203,
+    "wall_load_peak": 3.308692735565397,
+    "calendar_physical_life_fpy": 5.440215045210029
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7774",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0325",
+    "lcoe": 168.9535582355153,
+    "lcoe_1cfe": 165.8383610105075,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.46559144061652447,
+    "calendar_availability": 0.9067025075350048,
+    "cas72_annual": 246807327.75846198,
+    "wall_load_peak": 3.308692735565397,
+    "calendar_physical_life_fpy": 5.440215045210029
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7775",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0326",
+    "lcoe": 202.28305777537213,
+    "lcoe_1cfe": 198.55049557314834,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 262296199.18040144,
+    "wall_load_peak": 3.2036476788957855,
+    "calendar_physical_life_fpy": 5.618595365082135
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7775",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0327",
+    "lcoe": 166.0352792212401,
+    "lcoe_1cfe": 162.9728448515092,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 248835937.7444597,
+    "wall_load_peak": 3.2036476788957855,
+    "calendar_physical_life_fpy": 5.618595365082135
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7776",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0328",
+    "lcoe": 206.0365495728003,
+    "lcoe_1cfe": 202.23178023636626,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 264323437.45896044,
+    "wall_load_peak": 3.097685692307179,
+    "calendar_physical_life_fpy": 5.810789662973672
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7776",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0329",
+    "lcoe": 168.26768979479957,
+    "lcoe_1cfe": 165.1618364479144,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 250610770.08498433,
+    "wall_load_peak": 3.097685692307179,
+    "calendar_physical_life_fpy": 5.810789662973672
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7777",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0330",
+    "lcoe": 210.64034423555086,
+    "lcoe_1cfe": 206.74621676528798,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 265354899.21704647,
+    "wall_load_peak": 2.991953643213488,
+    "calendar_physical_life_fpy": 6.016135992223202
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7777",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0331",
+    "lcoe": 171.17555722714704,
+    "lcoe_1cfe": 168.012710433687,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 251485537.28541222,
+    "wall_load_peak": 2.991953643213488,
+    "calendar_physical_life_fpy": 6.016135992223202
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7778",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0332",
+    "lcoe": 216.10884444177074,
+    "lcoe_1cfe": 212.10792411661404,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 265475731.56156948,
+    "wall_load_peak": 2.887359888817618,
+    "calendar_physical_life_fpy": 6.234068731685211
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7778",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0333",
+    "lcoe": 174.74469283295815,
+    "lcoe_1cfe": 171.51154464573384,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 251536388.65323848,
+    "wall_load_peak": 2.887359888817618,
+    "calendar_physical_life_fpy": 6.234068731685211
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7779",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0334",
+    "lcoe": 222.48524383427142,
+    "lcoe_1cfe": 218.35924620833617,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 264771524.54287505,
+    "wall_load_peak": 2.7846100384636165,
+    "calendar_physical_life_fpy": 6.464100808144518
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7779",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0335",
+    "lcoe": 178.98078023154602,
+    "lcoe_1cfe": 175.66389774461655,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 250839311.57350317,
+    "wall_load_peak": 2.7846100384636165,
+    "calendar_physical_life_fpy": 6.464100808144518
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7780",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0336",
+    "lcoe": 229.8412495759423,
+    "lcoe_1cfe": 225.57047808998712,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 263326529.912191,
+    "wall_load_peak": 2.684240139797331,
+    "calendar_physical_life_fpy": 6.705808371287921
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7780",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0337",
+    "lcoe": 183.90773988678782,
+    "lcoe_1cfe": 180.49320510054403,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 249468820.8344975,
+    "wall_load_peak": 2.684240139797331,
+    "calendar_physical_life_fpy": 6.705808371287921
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7749",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0179",
+    "lcoe": 420.3956131972158,
+    "lcoe_1cfe": 412.52821671783323,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "beta_ok",
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.49529806543072397,
+    "calendar_availability": 0.8862678422634204,
+    "cas72_annual": 228487216.93977487,
+    "wall_load_peak": 4.0619774613575474,
+    "calendar_physical_life_fpy": 4.431339211317102
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7749",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 20.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0181",
+    "lcoe": 334.32104714068583,
+    "lcoe_1cfe": 328.0706515135511,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "beta_ok",
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.49529806543072397,
+    "calendar_availability": 0.8862678422634204,
+    "cas72_annual": 220985112.53073114,
+    "wall_load_peak": 4.0619774613575474,
+    "calendar_physical_life_fpy": 4.431339211317102
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7750",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0338",
+    "lcoe": 302.906368062223,
+    "lcoe_1cfe": 297.376798501978,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 6.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.8833333333333332,
+    "cas72_annual": 294846567.6464907,
+    "wall_load_peak": 4.183517949325393,
+    "calendar_physical_life_fpy": 4.30259896528054
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7750",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0339",
+    "lcoe": 235.97388611599044,
+    "lcoe_1cfe": 231.6667512925729,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok"
+    ],
+    "calendar_n_replacements": 6.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.8833333333333332,
+    "cas72_annual": 280853575.8674765,
+    "wall_load_peak": 4.183517949325393,
+    "calendar_physical_life_fpy": 4.30259896528054
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7751",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0340",
+    "lcoe": 253.09188276313733,
+    "lcoe_1cfe": 248.54874543840856,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 6.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.8833333333333332,
+    "cas72_annual": 362451853.5650857,
+    "wall_load_peak": 4.15642470036111,
+    "calendar_physical_life_fpy": 4.3306450369319
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7751",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 25.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0341",
+    "lcoe": 185.152228168648,
+    "lcoe_1cfe": 181.82604646978797,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok",
+      "wall_load_ok",
+      "sustainment_ok"
+    ],
+    "calendar_n_replacements": 6.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.8833333333333332,
+    "cas72_annual": 337569338.6149812,
+    "wall_load_peak": 4.15642470036111,
+    "calendar_physical_life_fpy": 4.3306450369319
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7752",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0080",
+    "lcoe": 241.01918284457696,
+    "lcoe_1cfe": 236.68320409187623,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.3481076367223963,
+    "calendar_availability": 0.8911741898870316,
+    "cas72_annual": 373971713.2691224,
+    "wall_load_peak": 4.039614298587742,
+    "calendar_physical_life_fpy": 4.455870949435157
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7752",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 27.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0342",
+    "lcoe": 168.56723847648485,
+    "lcoe_1cfe": 165.53238487602974,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.3481076367223963,
+    "calendar_availability": 0.8911741898870316,
+    "cas72_annual": 343727013.6922239,
+    "wall_load_peak": 4.039614298587742,
+    "calendar_physical_life_fpy": 4.455870949435157
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7753",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0343",
+    "lcoe": 238.70304375671677,
+    "lcoe_1cfe": 234.42318792045398,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.902777777777778,
+    "cas72_annual": 400290011.40431225,
+    "wall_load_peak": 3.8734102918934123,
+    "calendar_physical_life_fpy": 4.647067737097684
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7753",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 28.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0344",
+    "lcoe": 161.04303400277772,
+    "lcoe_1cfe": 158.15276462694732,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.902777777777778,
+    "cas72_annual": 364662465.04383266,
+    "wall_load_peak": 3.8734102918934123,
+    "calendar_physical_life_fpy": 4.647067737097684
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7754",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0345",
+    "lcoe": 241.1803899614773,
+    "lcoe_1cfe": 236.8595335623268,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 410517818.8214908,
+    "wall_load_peak": 3.7782787495446013,
+    "calendar_physical_life_fpy": 4.764074117657294
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7754",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 28.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0346",
+    "lcoe": 160.54226558619965,
+    "lcoe_1cfe": 157.66317771733463,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 373017773.94533145,
+    "wall_load_peak": 3.7782787495446013,
+    "calendar_physical_life_fpy": 4.764074117657294
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7755",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0347",
+    "lcoe": 244.76269522319447,
+    "lcoe_1cfe": 240.37882768782688,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 418845583.2646585,
+    "wall_load_peak": 3.6779498146419,
+    "calendar_physical_life_fpy": 4.89403088871471
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7755",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 28.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0348",
+    "lcoe": 160.8366335226319,
+    "lcoe_1cfe": 157.95306712123121,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777779,
+    "cas72_annual": 379773959.81784314,
+    "wall_load_peak": 3.6779498146419,
+    "calendar_physical_life_fpy": 4.89403088871471
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7756",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0349",
+    "lcoe": 249.33808700287295,
+    "lcoe_1cfe": 244.87132634052602,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.902777777777778,
+    "cas72_annual": 425349055.7798648,
+    "wall_load_peak": 3.574158946376913,
+    "calendar_physical_life_fpy": 5.036149838340684
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7756",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0180",
+    "lcoe": 160.53262822891784,
+    "lcoe_1cfe": 157.65392440258233,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.902777777777778,
+    "cas72_annual": 384086420.1210204,
+    "wall_load_peak": 3.574158946376913,
+    "calendar_physical_life_fpy": 5.036149838340684
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7757",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0350",
+    "lcoe": 254.85203090144213,
+    "lcoe_1cfe": 250.28353705841596,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777778,
+    "cas72_annual": 430124177.49691176,
+    "wall_load_peak": 3.468364187515374,
+    "calendar_physical_life_fpy": 5.189766422105352
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7757",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0351",
+    "lcoe": 162.09407649788125,
+    "lcoe_1cfe": 159.1857393396714,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9027777777777778,
+    "cas72_annual": 387859521.8501703,
+    "wall_load_peak": 3.468364187515374,
+    "calendar_physical_life_fpy": 5.189766422105352
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7758",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0352",
+    "lcoe": 261.29593414261734,
+    "lcoe_1cfe": 256.6070392915953,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.902777777777778,
+    "cas72_annual": 433281244.29501885,
+    "wall_load_peak": 3.361774225529713,
+    "calendar_physical_life_fpy": 5.354315546625903
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7758",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0353",
+    "lcoe": 164.22485932480166,
+    "lcoe_1cfe": 161.27556444984873,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 5.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.902777777777778,
+    "cas72_annual": 390297162.76414907,
+    "wall_load_peak": 3.361774225529713,
+    "calendar_physical_life_fpy": 5.354315546625903
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7759",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0354",
+    "lcoe": 260.54996040556614,
+    "lcoe_1cfe": 255.81979081912345,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.020102074200650577,
+    "calendar_availability": 0.9215521530822006,
+    "cas72_annual": 402689736.637921,
+    "wall_load_peak": 3.255377343502779,
+    "calendar_physical_life_fpy": 5.529312918493203
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7759",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0355",
+    "lcoe": 161.95021583753044,
+    "lcoe_1cfe": 159.01027561909046,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.020102074200650577,
+    "calendar_availability": 0.9215521530822006,
+    "cas72_annual": 362469710.1352719,
+    "wall_load_peak": 3.255377343502779,
+    "calendar_physical_life_fpy": 5.529312918493203
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7760",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0356",
+    "lcoe": 268.64319805505244,
+    "lcoe_1cfe": 263.75968362793634,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 404057532.2686547,
+    "wall_load_peak": 3.149969926218796,
+    "calendar_physical_life_fpy": 5.714340270418736
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7760",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0357",
+    "lcoe": 165.00573714608822,
+    "lcoe_1cfe": 162.0068248922814,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 363525083.14433116,
+    "wall_load_peak": 3.149969926218796,
+    "calendar_physical_life_fpy": 5.714340270418736
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7761",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0358",
+    "lcoe": 278.03576704665596,
+    "lcoe_1cfe": 272.9734607099835,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 404289870.05920917,
+    "wall_load_peak": 3.046183641894515,
+    "calendar_physical_life_fpy": 5.909033110297069
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7761",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0359",
+    "lcoe": 168.70499525770828,
+    "lcoe_1cfe": 165.63448215015137,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222223,
+    "cas72_annual": 363641078.90843624,
+    "wall_load_peak": 3.046183641894515,
+    "calendar_physical_life_fpy": 5.909033110297069
+  },
+  {
+    "arm_id": "arm-window-fixed",
+    "historical_id": "20260907-minor-radius:c7762",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0360",
+    "lcoe": 288.677957504983,
+    "lcoe_1cfe": 283.41217799159045,
+    "satisfied_sets": {
+      "old-ten": false,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "recirc_ok",
+      "divertor_heat_ok",
+      "loop_capacity_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222224,
+    "cas72_annual": 403486974.77186435,
+    "wall_load_peak": 2.9445096442435275,
+    "calendar_physical_life_fpy": 6.113072183407425
+  },
+  {
+    "arm_id": "arm-window-sized",
+    "historical_id": "20260907-minor-radius:c7762",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "candidate_id": "20260912-plant-closure:c0361",
+    "lcoe": 172.94627551988344,
+    "lcoe_1cfe": 169.79335003667398,
+    "satisfied_sets": {
+      "old-ten": true,
+      "round1-fourteen": false,
+      "current-eighteen": false
+    },
+    "violations": [
+      "divertor_heat_ok"
+    ],
+    "calendar_n_replacements": 4.0,
+    "calendar_terminal_downtime_yr": 0.0,
+    "calendar_availability": 0.9222222222222224,
+    "cas72_annual": 362896704.62205255,
+    "wall_load_peak": 2.9445096442435275,
+    "calendar_physical_life_fpy": 6.113072183407425
+  }
+]

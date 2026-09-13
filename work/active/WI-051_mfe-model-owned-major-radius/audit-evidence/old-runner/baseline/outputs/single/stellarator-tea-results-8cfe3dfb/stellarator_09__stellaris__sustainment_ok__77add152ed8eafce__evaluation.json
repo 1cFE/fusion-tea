@@ -1,0 +1,10 @@
+{
+  "actual_value": true,
+  "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+  "margin": 0.920399212073221,
+  "observed": {
+    "p_aux_installed_in": 50.0,
+    "p_aux_required_in": 49.07960078792678
+  },
+  "status": "satisfied"
+}

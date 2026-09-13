@@ -1,0 +1,58 @@
+from pydantic import BaseModel, Field
+
+
+class MfeAccountCostsParams(BaseModel):
+    """Parameters from mfe_account_costs.
+
+    Generated from SysML calculation definitions.
+    """
+    stellarator_09__stellaris__aux_cooling__alpha: float = Field(default=0.7, description="Entry point: alpha")
+    stellarator_09__stellaris__aux_cooling__p_cryo_ref: float = Field(default=30.0, description="Entry point: p_cryo_ref")
+    stellarator_09__stellaris__blanket_cost__alpha: float = Field(default=0.6, description="Entry point: alpha")
+    stellarator_09__stellaris__blanket_cost__p_th_ref: float = Field(default=2500.0, description="Entry point: p_th_ref")
+    stellarator_09__stellaris__buildings_cost__n_mod_in: float = Field(default=1.0, description="Entry point: n_mod_in")
+    stellarator_09__stellaris__buildings_cost__p_et_ref: float = Field(default=1100.0, description="Entry point: p_et_ref")
+    stellarator_09__stellaris__buildings_cost__p_fus_ref: float = Field(default=2300.0, description="Entry point: p_fus_ref")
+    stellarator_09__stellaris__buildings_cost__p_th_ref: float = Field(default=2500.0, description="Entry point: p_th_ref")
+    stellarator_09__stellaris__buildings_cost__p_the_ref: float = Field(default=1100.0, description="Entry point: p_the_ref")
+    stellarator_09__stellaris__coolant__alpha: float = Field(default=0.55, description="Entry point: alpha")
+    stellarator_09__stellaris__coolant__p_th_ref: float = Field(default=3500.0, description="Entry point: p_th_ref")
+    stellarator_09__stellaris__coolant__ref_net_power: float = Field(default=1000.0, description="Entry point: ref_net_power")
+    stellarator_09__stellaris__divertor_cost__alpha: float = Field(default=0.5, description="Entry point: alpha")
+    stellarator_09__stellaris__divertor_cost__p_th_ref: float = Field(default=1000.0, description="Entry point: p_th_ref")
+    stellarator_09__stellaris__fuel_handling__alpha: float = Field(default=0.7, description="Entry point: alpha")
+    stellarator_09__stellaris__fuel_handling__ref_power: float = Field(default=1000.0, description="Entry point: ref_power")
+    stellarator_09__stellaris__inc_cost__alpha: float = Field(default=0.65, description="Entry point: alpha")
+    stellarator_09__stellaris__inc_cost__ref_power: float = Field(default=3500.0, description="Entry point: ref_power")
+    stellarator_09__stellaris__indirect__reference_construction_time: float = Field(default=6.0, description="Entry point: reference_construction_time")
+    stellarator_09__stellaris__om_cost__alpha: float = Field(default=0.5, description="Entry point: alpha")
+    stellarator_09__stellaris__om_cost__n_mod_in: float = Field(default=1.0, description="Entry point: n_mod_in")
+    stellarator_09__stellaris__om_cost__om_direct: float = Field(default=0.0, description="Entry point: om_direct")
+    stellarator_09__stellaris__om_cost__ref_net_power: float = Field(default=1000.0, description="Entry point: ref_net_power")
+    stellarator_09__stellaris__other_rpe__alpha: float = Field(default=0.8, description="Entry point: alpha")
+    stellarator_09__stellaris__other_rpe__ref_power: float = Field(default=1000.0, description="Entry point: ref_power")
+    stellarator_09__stellaris__owner__alpha: float = Field(default=0.5, description="Entry point: alpha")
+    stellarator_09__stellaris__owner__ref_power: float = Field(default=1000.0, description="Entry point: ref_power")
+    stellarator_09__stellaris__power_supplies_cost__alpha: float = Field(default=0.7, description="Entry point: alpha")
+    stellarator_09__stellaris__power_supplies_cost__p_et_ref: float = Field(default=1100.0, description="Entry point: p_et_ref")
+    stellarator_09__stellaris__precon_cost__land_cost: float = Field(default=10000.0, description="Entry point: land_cost")
+    stellarator_09__stellaris__precon_cost__land_intensity: float = Field(default=0.25, description="Entry point: land_intensity")
+    stellarator_09__stellaris__precon_cost__n_mod_in: float = Field(default=1.0, description="Entry point: n_mod_in")
+    stellarator_09__stellaris__precon_cost__ref_net_power: float = Field(default=1000.0, description="Entry point: ref_net_power")
+    stellarator_09__stellaris__remote_handling__alpha: float = Field(default=0.5, description="Entry point: alpha")
+    stellarator_09__stellaris__remote_handling__p_et_ref: float = Field(default=1100.0, description="Entry point: p_et_ref")
+    stellarator_09__stellaris__shield_cost__alpha: float = Field(default=0.6, description="Entry point: alpha")
+    stellarator_09__stellaris__shield_cost__p_th_ref: float = Field(default=2500.0, description="Entry point: p_th_ref")
+    stellarator_09__stellaris__structure_cost__alpha: float = Field(default=0.5, description="Entry point: alpha")
+    stellarator_09__stellaris__structure_cost__p_et_ref: float = Field(default=1100.0, description="Entry point: p_et_ref")
+    stellarator_09__stellaris__supplementary__contingency_rate_in: float = Field(default=0.0, description="Entry point: contingency_rate_in")
+    stellarator_09__stellaris__supplementary__insurance_frac: float = Field(default=0.015, description="Entry point: insurance_frac")
+    stellarator_09__stellaris__supplementary__ref_net_power: float = Field(default=1000.0, description="Entry point: ref_net_power")
+    stellarator_09__stellaris__supplementary__shipping_frac: float = Field(default=0.015, description="Entry point: shipping_frac")
+    stellarator_09__stellaris__supplementary__tax_frac: float = Field(default=0.01, description="Entry point: tax_frac")
+    stellarator_09__stellaris__vessel_cost__alpha: float = Field(default=0.6, description="Entry point: alpha")
+    stellarator_09__stellaris__vessel_cost__p_et_ref: float = Field(default=1100.0, description="Entry point: p_et_ref")
+    stellarator_09__stellaris__waste__alpha: float = Field(default=1.0, description="Entry point: alpha")
+    stellarator_09__stellaris__waste__ref_power: float = Field(default=1000.0, description="Entry point: ref_power")
+
+    model_config = {"frozen": True, "extra": "forbid", "populate_by_name": True}

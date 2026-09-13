@@ -1,0 +1,434 @@
+.............FEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE........... [ 83%]
+..............                                                           [100%]
+==================================== ERRORS ====================================
+______ ERROR at setup of test_complete_native_and_direct_parity[baseline] ______
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+________ ERROR at setup of test_complete_native_and_direct_parity[R14] _________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+______ ERROR at setup of test_independent_radius_ratios_and_fixed_anchors ______
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+________ ERROR at setup of test_standalone_radius_formals[coil_length] _________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_________ ERROR at setup of test_standalone_radius_formals[field_calc] _________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_______ ERROR at setup of test_standalone_radius_formals[stored_energy] ________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+________ ERROR at setup of test_standalone_radius_formals[magnet_cost] _________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_________ ERROR at setup of test_retired_radius_refused[alone-native] __________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_________ ERROR at setup of test_retired_radius_refused[alone-schema] __________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_________ ERROR at setup of test_retired_radius_refused[alone-helper] __________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_________ ERROR at setup of test_retired_radius_refused[alone-single] __________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+___________ ERROR at setup of test_retired_radius_refused[alone-cli] ___________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_________ ERROR at setup of test_retired_radius_refused[equal-native] __________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_________ ERROR at setup of test_retired_radius_refused[equal-schema] __________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_________ ERROR at setup of test_retired_radius_refused[equal-helper] __________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_________ ERROR at setup of test_retired_radius_refused[equal-single] __________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+___________ ERROR at setup of test_retired_radius_refused[equal-cli] ___________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+______ ERROR at setup of test_retired_radius_refused[conflicting-native] _______
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+______ ERROR at setup of test_retired_radius_refused[conflicting-schema] _______
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+______ ERROR at setup of test_retired_radius_refused[conflicting-helper] _______
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+______ ERROR at setup of test_retired_radius_refused[conflicting-single] _______
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+________ ERROR at setup of test_retired_radius_refused[conflicting-cli] ________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+__________ ERROR at setup of test_retired_radius_refused[zero-native] __________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+__________ ERROR at setup of test_retired_radius_refused[zero-schema] __________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+__________ ERROR at setup of test_retired_radius_refused[zero-helper] __________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+__________ ERROR at setup of test_retired_radius_refused[zero-single] __________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+___________ ERROR at setup of test_retired_radius_refused[zero-cli] ____________
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_______ ERROR at setup of test_unified_invalid_radius_failure[R4-native] _______
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_______ ERROR at setup of test_unified_invalid_radius_failure[R4-helper] _______
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_______ ERROR at setup of test_unified_invalid_radius_failure[R4-single] _______
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+__ ERROR at setup of test_unified_invalid_radius_failure[coil-centre-native] ___
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+__ ERROR at setup of test_unified_invalid_radius_failure[coil-centre-helper] ___
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+__ ERROR at setup of test_unified_invalid_radius_failure[coil-centre-single] ___
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_______ ERROR at setup of test_unified_invalid_radius_failure[R3-native] _______
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_______ ERROR at setup of test_unified_invalid_radius_failure[R3-helper] _______
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_______ ERROR at setup of test_unified_invalid_radius_failure[R3-single] _______
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+______ ERROR at setup of test_unified_invalid_radius_failure[zero-native] ______
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+______ ERROR at setup of test_unified_invalid_radius_failure[zero-helper] ______
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+______ ERROR at setup of test_unified_invalid_radius_failure[zero-single] ______
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+____ ERROR at setup of test_unified_invalid_radius_failure[negative-native] ____
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+____ ERROR at setup of test_unified_invalid_radius_failure[negative-helper] ____
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+____ ERROR at setup of test_unified_invalid_radius_failure[negative-single] ____
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_ ERROR at setup of test_peak_component_preserves_valid_and_rejects_invalid_domains[valid] _
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_ ERROR at setup of test_peak_component_preserves_valid_and_rejects_invalid_domains[original_negative] _
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_ ERROR at setup of test_peak_component_preserves_valid_and_rejects_invalid_domains[equality] _
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_ ERROR at setup of test_peak_component_preserves_valid_and_rejects_invalid_domains[reference_equal] _
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+_ ERROR at setup of test_peak_component_preserves_valid_and_rejects_invalid_domains[reference_inverted] _
+tests/models/test_mfe_major_radius.py:108: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:72: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12324/wi0510/acceptance/direct.log
+=================================== FAILURES ===================================
+_______________________ test_strict_current_package_load _______________________
+tests/models/test_mfe_major_radius.py:100: in test_strict_current_package_load
+    from simkit.evaluation.package_load import ProvisionalPackageLoader
+E   ModuleNotFoundError: No module named 'simkit'
+=========================== short test summary info ============================
+FAILED tests/models/test_mfe_major_radius.py::test_strict_current_package_load
+ERROR tests/models/test_mfe_major_radius.py::test_complete_native_and_direct_parity[baseline]
+ERROR tests/models/test_mfe_major_radius.py::test_complete_native_and_direct_parity[R14]
+ERROR tests/models/test_mfe_major_radius.py::test_independent_radius_ratios_and_fixed_anchors
+ERROR tests/models/test_mfe_major_radius.py::test_standalone_radius_formals[coil_length]
+ERROR tests/models/test_mfe_major_radius.py::test_standalone_radius_formals[field_calc]
+ERROR tests/models/test_mfe_major_radius.py::test_standalone_radius_formals[stored_energy]
+ERROR tests/models/test_mfe_major_radius.py::test_standalone_radius_formals[magnet_cost]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[alone-native]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[alone-schema]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[alone-helper]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[alone-single]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[alone-cli]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[equal-native]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[equal-schema]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[equal-helper]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[equal-single]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[equal-cli]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[conflicting-native]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[conflicting-schema]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[conflicting-helper]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[conflicting-single]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[conflicting-cli]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[zero-native]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[zero-schema]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[zero-helper]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[zero-single]
+ERROR tests/models/test_mfe_major_radius.py::test_retired_radius_refused[zero-cli]
+ERROR tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[R4-native]
+ERROR tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[R4-helper]
+ERROR tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[R4-single]
+ERROR tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[coil-centre-native]
+ERROR tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[coil-centre-helper]
+ERROR tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[coil-centre-single]
+ERROR tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[R3-native]
+ERROR tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[R3-helper]
+ERROR tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[R3-single]
+ERROR tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[zero-native]
+ERROR tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[zero-helper]
+ERROR tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[zero-single]
+ERROR tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[negative-native]
+ERROR tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[negative-helper]
+ERROR tests/models/test_mfe_major_radius.py::test_unified_invalid_radius_failure[negative-single]
+ERROR tests/models/test_mfe_major_radius.py::test_peak_component_preserves_valid_and_rejects_invalid_domains[valid]
+ERROR tests/models/test_mfe_major_radius.py::test_peak_component_preserves_valid_and_rejects_invalid_domains[original_negative]
+ERROR tests/models/test_mfe_major_radius.py::test_peak_component_preserves_valid_and_rejects_invalid_domains[equality]
+ERROR tests/models/test_mfe_major_radius.py::test_peak_component_preserves_valid_and_rejects_invalid_domains[reference_equal]
+ERROR tests/models/test_mfe_major_radius.py::test_peak_component_preserves_valid_and_rejects_invalid_domains[reference_inverted]
+1 failed, 38 passed, 47 errors in 62.34s (0:01:02)

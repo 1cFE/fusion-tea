@@ -1,0 +1,41 @@
+........F............................................................... [ 83%]
+..........F...                                                           [100%]
+=================================== FAILURES ===================================
+__________________________ test_exact_input_contract ___________________________
+
+    def test_exact_input_contract():
+        inputs = {}
+        for path in (route.PACKAGE_DIR / "inputs").glob("*.json"):
+            inputs.update(json.loads(path.read_text()))
+        assert len(inputs) == 246
+>       assert set(inputs) == set(oracle.ENTRY_KEY_TO_ORACLE_INPUT)
+E       AssertionError: assert {'stellarator..._T2_max', ...} == {'stellarator..._T2_min', ...}
+E         
+E         Extra items in the left set:
+E         'stellarator_09__stellaris__supplementary__insurance_frac'
+E         'stellarator_09__stellaris__wall_peak_cal__ash_frac_in'
+E         'stellarator_09__stellaris__vacuum_t'
+E         'stellarator_09__stellaris__bldg_th_base'
+E         'stellarator_09__stellaris__divertor_base'...
+E         
+E         ...Full output truncated (143 lines hidden), use '-vv' to show
+
+tests/study/test_major_radius.py:46: AssertionError
+_________________ test_the_annex_has_exactly_the_four_sections _________________
+
+annex = '# Package annex — `stellarator_tea`\n\nPackage fact, not rule. The universal runbook links to a section here at each ...`\n- `replacement_cost_per_event__replacement_cost_per_event`\n- `wp_sizing__wp_side`\n- `wp_volume__vol_cold_total`\n'
+
+    def test_the_annex_has_exactly_the_four_sections(annex):
+        headings = re.findall(r"^## (.+)$", annex, flags=re.MULTILINE)
+>       assert headings == SECTIONS, headings
+E       AssertionError: ['§ Declared ties', '§ Baseline pin', '§ Oracle', '§ Validity masks', 'Current oracle comparison coverage']
+E       assert ['§ Declared ...son coverage'] == ['§ Declared ...lidity masks']
+E         
+E         Left contains one more item: 'Current oracle comparison coverage'
+E         Use -v to get more diff
+
+tests/study/test_annex.py:53: AssertionError
+=========================== short test summary info ============================
+FAILED tests/study/test_major_radius.py::test_exact_input_contract - Assertio...
+FAILED tests/study/test_annex.py::test_the_annex_has_exactly_the_four_sections
+2 failed, 84 passed in 23.07s

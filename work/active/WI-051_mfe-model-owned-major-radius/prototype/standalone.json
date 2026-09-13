@@ -1,0 +1,60 @@
+{
+  "coil_length": {
+    "schema": "Coil_Winding_LengthInput",
+    "inputs": {
+      "k_coil": 1.968503937007874,
+      "R0": 12.7
+    },
+    "baseline": 25.0,
+    "R0_only14": 27.559055118110237,
+    "expected_ratio_at_other_formals_fixed": 1.1023622047244095,
+    "actual_ratio": 1.1023622047244095
+  },
+  "field_calc": {
+    "schema": "Coil_Set_Axis_FieldInput",
+    "inputs": {
+      "n_coils": 48.0,
+      "two_pi": 6.283185307179586,
+      "R0": 12.7,
+      "I_coil": 15400000.0,
+      "k_link": 0.7731331164622419,
+      "mu0": 1.25663706212e-06
+    },
+    "baseline": 8.999999999999998,
+    "R0_only14": 8.164285714285713,
+    "expected_ratio_at_other_formals_fixed": 0.9071428571428571,
+    "actual_ratio": 0.9071428571428571
+  },
+  "stored_energy": {
+    "schema": "Coil_Set_Stored_EnergyInput",
+    "inputs": {
+      "W_mag_ref": 111000000000.0,
+      "R0": 12.7,
+      "I_ref": 15400000.0,
+      "R_ref": 12.7,
+      "I_coil": 15400000.0,
+      "a_coil_ref": 3.1500000000000004,
+      "a_coil": 3.1500000000000004
+    },
+    "baseline": 111000000000.0,
+    "R0_only14": 100692857142.85715,
+    "expected_ratio_at_other_formals_fixed": 0.9071428571428571,
+    "actual_ratio": 0.9071428571428571
+  },
+  "magnet_cost": {
+    "schema": "Magnet_Coil_CostInput",
+    "inputs": {
+      "coil_markup": 5.87,
+      "mu0": 1.25663706212e-06,
+      "cost_per_kAm": 50.0,
+      "G": 78.95683520871486,
+      "r_coil": 3.0000000000000004,
+      "B": 8.999999999999998,
+      "R0": 12.7
+    },
+    "baseline": 6323469946.334224,
+    "R0_only14": 6970754271.549539,
+    "expected_ratio_at_other_formals_fixed": 1.1023622047244095,
+    "actual_ratio": 1.1023622047244095
+  }
+}

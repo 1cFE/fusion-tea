@@ -1,0 +1,4 @@
+Historical Hawker default module scenario: 252.29996307 $/MWh; net 44.0000 MW
+Historical realistic-HIF module scenario: 68.69020165 $/MWh; net 250.0000 MW
+Annual cash-flow oracle; use run_anchors.py to compare generated execution.
+These historical module scenarios do not represent the computed Osiris point.

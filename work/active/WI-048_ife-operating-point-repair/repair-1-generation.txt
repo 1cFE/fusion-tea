@@ -1,0 +1,24 @@
+{
+  "validation_models": "/tmp/wi048-repair1-eg32521g/models",
+  "executable_tokens_unchanged": true,
+  "all_family_twins_identical": true,
+  "numeric_count": 30,
+  "verdict_count": 2,
+  "max_absolute_baseline_residual": 0,
+  "max_relative_baseline_residual": 0,
+  "old_semantic_fingerprint": "8b7a76a631e6e55dbd45cf617a68fae87def408e4f8494015e40c0c8aac585dd",
+  "semantic_fingerprint": "8b7a76a631e6e55dbd45cf617a68fae87def408e4f8494015e40c0c8aac585dd",
+  "old_executable_fingerprint": "930738720555969d2ddb283fb73c8a31173a3851d5c94e3acb9c3cff92e0fefd",
+  "loaded_fingerprint": "045417b231573653d754b68c8e26eec26fcec72fdc3814df27e504416639fe63",
+  "typed_quotient_sha256": "67bc0ed6241856920c8380b4ddcc0293d41f6d6fa131abc6c97b6cc74d1d9377",
+  "regeneration_changed_files": [],
+  "changed_package_files": [
+    "exploration/ife_e2e/generated/contracts/package_contract.json",
+    "exploration/ife_e2e/generated/modules/fusion_cycle/recirculating_power_fraction.py",
+    "exploration/ife_e2e/generated/modules/hif_economics/meier_coe.py",
+    "exploration/ife_e2e/generated/modules/hif_economics/meier_reactor_cost.py",
+    "exploration/ife_e2e/generated/modules/hif_economics/meier_total_capital_cost.py",
+    "exploration/ife_e2e/generated/schemas/meier_coe_output.py",
+    "exploration/ife_e2e/generated/tests/test_implementations_runnable.py"
+  ]
+}

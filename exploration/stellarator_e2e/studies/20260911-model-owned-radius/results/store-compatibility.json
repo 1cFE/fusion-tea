@@ -1,0 +1,10 @@
+{
+  "study_id": "20260911-model-owned-radius",
+  "executable_fingerprint": "cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c",
+  "model_contract_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e",
+  "study_definition_fingerprint": "650d3235d8eca3196cace9a0843b9335ca09e094391182f485b02db3dd13392f",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "fcc4d4b153d0b84bcaaf724ea53805350e861b90d18d4d8c98d08eb9534e5a1d"
+}

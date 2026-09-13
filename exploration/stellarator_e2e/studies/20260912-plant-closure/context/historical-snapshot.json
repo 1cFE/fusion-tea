@@ -1,0 +1,931 @@
+{
+ "snapshot_schema_version": "1",
+ "study_id": "20260907-minor-radius",
+ "package": {
+  "path": "exploration/stellarator_e2e/generated",
+  "package_name": "stellarator_tea",
+  "repo_commit": "afe24102",
+  "repo_commit_note": "the commit the study executed against; the record itself lands in the next commit",
+  "git_clean": true
+ },
+ "fingerprints": {
+  "indicator_inputs": {
+   "recipe": "indicator-input-fingerprint/v1",
+   "digest": "30abb21be6d7ee851e91256a4f38575e2aeab48b45203241168bdd21d9758407",
+   "files": [
+    {
+     "path": "contracts/model_contract.json",
+     "sha256": "3831150e6bacfc90d8e7429c7b5868b79c1921ad715fd18e7f067e407c4b2576"
+    },
+    {
+     "path": "inputs/mfe_account_costs_params.json",
+     "sha256": "5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3"
+    },
+    {
+     "path": "inputs/mfe_magnet_cost_params.json",
+     "sha256": "0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113"
+    },
+    {
+     "path": "inputs/mfe_magnet_field_params.json",
+     "sha256": "e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180"
+    },
+    {
+     "path": "inputs/mfe_plant_params.json",
+     "sha256": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814"
+    },
+    {
+     "path": "inputs/mfe_plasma_scaling_params.json",
+     "sha256": "d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d"
+    },
+    {
+     "path": "inputs/mfe_plasma_sustainment_params.json",
+     "sha256": "d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14"
+    },
+    {
+     "path": "inputs/stellarator_plant_params.json",
+     "sha256": "b23dd4d146cfff27b7e5511e9a2b14cec86806859cc833a25d75a3b81066ad3e"
+    },
+    {
+     "path": "pipelines/pipeline.yaml",
+     "sha256": "46d06c7f8aeed34da50539713fe50a007f68955ae9dffaacb2ef57b30729e571"
+    }
+   ]
+  },
+  "recorded_provenance.executable_fingerprint": "7d295fec2c78ca40220f6dc04c0997913f95e98383c4ec3e819bc4ef641ea968",
+  "recorded_provenance.semantic_fingerprint": "39e931fa87dbacc77e59170183cbd97c2731979c21e9e3181c0e796a487158e1",
+  "sealed_executable_fingerprint": "7d295fec2c78ca40220f6dc04c0997913f95e98383c4ec3e819bc4ef641ea968"
+ },
+ "manifest": {
+  "path": "exploration/stellarator_e2e/studies/manifest.json",
+  "schema_version": "study-package-manifest/v1",
+  "digest": "87baeca47ab03ec9eb011add8c2ff122a0b932aa0280c1d395b4465ba9e2d757",
+  "content_used": {
+   "fingerprint_names": [
+    "indicator_inputs",
+    "recorded_provenance",
+    "recorded_provenance.executable_fingerprint",
+    "recorded_provenance.semantic_fingerprint"
+   ],
+   "ties": [
+    {
+     "key": "stellarator_09__stellaris__magnet__R0",
+     "rides_with": [
+      "stellarator_09__stellaris__R"
+     ],
+     "note": "Magnet coil major radius is the same physical quantity as the plasma major radius. Its suffix is R0, not R, so no suffix scan will ever surface it -- the tie must be declared. Advisory here: a group holding R but not this key earns a tie_candidate warning, never an added key. Since the model migration the plasma major radius is one plant-level entry point (R), not the geom__R / rb__R fan-out."
+    }
+   ],
+   "ties_note": "one declared tie (magnet__R0 rides with R); swept in every arm; unchanged since WI-039; since WI-044 it also carries R into the bore factor and the stored energy",
+   "objective_catalog": [
+    {
+     "name": "lcoe",
+     "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+     "note": "Headline levelized cost of electricity. Exit-point filename is stellaris__lcoe.json; the catalog keys on the channel, never the filename."
+    },
+    {
+     "name": "lcoe_1cfe",
+     "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+     "note": "LCOE variant using the 1costingfe CAS90 rollup."
+    },
+    {
+     "name": "cas72",
+     "channel": "stellarator_09__stellaris__cas72_calc__cost",
+     "note": "Levelized annual replacement cost."
+    },
+    {
+     "name": "fuel",
+     "channel": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+     "note": "Annual fuel cost."
+    },
+    {
+     "name": "total_capital",
+     "channel": "stellarator_09__stellaris__total_capital__total_capital",
+     "note": "Total capital cost including interest during construction."
+    },
+    {
+     "name": "cas27",
+     "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+     "note": "CAS27 special-materials capital, computed in-package from the radial-build blanket volume since the model migration (2026-08-21). Declared as an objective so generic verification compares it against the oracle's own recompute: on the era route this value was glue-fed to both sides and never independently verified."
+    },
+    {
+     "name": "beta",
+     "channel": "stellarator_09__stellaris__beta_calc__beta",
+     "note": "Volume-averaged thermal beta computed by 'Volume-Averaged Beta' from the profile referents and magnet__B (WI-030); replaces the retired bound input beta. Compared against the oracle's closed form so a magnet study verifies the physics lever it moves."
+    },
+    {
+     "name": "magnet_capital",
+     "channel": "stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
+     "note": "CAS22.1.3 magnet capital \u2014 since WI-035 the decomposed rollup (winding pack + casing structure), the channel the plant's magnet.capital_cost reads. The old conductor-proxy lump is the separate magnet_capital_1cfe comparison objective."
+    },
+    {
+     "name": "magnet_capital_1cfe",
+     "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
+     "note": "1cfe-form comparison channel (WI-035 D6): the retained 'Magnet Coil Cost' conductor-proxy lump, now responding to the computed field. Kept as an objective so the decomposed rollup and the calibrated lump stay observable side by side."
+    },
+    {
+     "name": "p_aux_required",
+     "channel": "stellarator_09__stellaris__sustain__p_aux_required",
+     "note": "WI-037 required sustained plasma-coupled heating; the sustainment_ok operand. Responds to field (~B^-2.15 through ISS04), density, temperature, geometry, and heating."
+    },
+    {
+     "name": "tau_E",
+     "channel": "stellarator_09__stellaris__sustain__tau_E",
+     "note": "WI-037 ISS04 energy confinement time (closed form, line-averaged density)."
+    }
+   ],
+   "baseline": {
+    "point": {
+     "stellarator_09__stellaris__R": 12.7,
+     "stellarator_09__stellaris__magnet__R0": 12.7,
+     "stellarator_09__stellaris__a": 1.3,
+     "stellarator_09__stellaris__availability": 0.85
+    },
+    "headline": {
+     "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+     "value": 322.31843948570247
+    },
+    "verdicts": [
+     {
+      "source_local_identity": "beta_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "burn_hold_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "cond_strain_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "net_positive",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "peak_field_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "recirc_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "sustainment_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "tbr_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "wall_load_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "wp_stress_ok",
+      "expected": "satisfied"
+     }
+    ]
+   },
+   "oracle": {
+    "kind": "python_callable",
+    "module": "oracle_entry",
+    "callable": "evaluate",
+    "sys_path": "exploration/stellarator_e2e/studies",
+    "note": "Package-owned oracle seam. evaluate(point) takes a mapping of qualified entry keys to floats and returns a mapping of qualified channel names to floats; it wraps the independent pure-Python oracle verify_stellaris.py, which is imported and never modified. The module also publishes a fixed-name companion, operand_bindings() -> {constraint_id: {source_name: {kind, key}}}, which says which qualified input key or channel each predicate operand means. A generic verifier requires both and fails closed on anything unresolved: on this package one operand of five constraints resolves to nothing by name at all, so a tool that inferred bindings would compare the wrong number and read as a pass.",
+    "source_digest": {
+     "recipe": "tool-source-digest/v1",
+     "digest": "432f2bd6358abff9559ecb27dfcd35ab8dd9797623f773b33a7de81ab22049a5",
+     "files": [
+      {
+       "path": "exploration/stellarator_e2e/studies/oracle_entry.py",
+       "sha256": "17f3743d8cfea26c4157e4c95e8d41f1e1499cebc8400b20f01d9a0af69522dc"
+      },
+      {
+       "path": "exploration/stellarator_e2e/verify_stellaris.py",
+       "sha256": "7e5fbcd6a2aa8d0769cc9782469e812377933490ba1168e8c1a68e8c4c5af930"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "stores": [
+  {
+   "store_id": "20260907-minor-radius",
+   "path": "exploration/stellarator_e2e/studies/_work/20260907-minor-radius/20260907-minor-radius.db",
+   "committed": false,
+   "note": "uncommitted per the study-store convention (**/_work/ is gitignored); results/*.csv carry every value this record cites",
+   "compatibility_tuple": {
+    "digest": "80307bcd77145f30331a4f380fac044c57d3ab3221402245c38d1605369097fa",
+    "evidence_schema_version": "v3",
+    "executable_fingerprint": "7d295fec2c78ca40220f6dc04c0997913f95e98383c4ec3e819bc4ef641ea968",
+    "input_schema_version": "input-v1",
+    "model_contract_fingerprint": "39e931fa87dbacc77e59170183cbd97c2731979c21e9e3181c0e796a487158e1",
+    "strategy_config": "e2c6bed8b26f1559ad72f6c61ab84c59aa0313d4511cf428266f648e4b3c777c",
+    "strategy_identity": "prepared-list/v1",
+    "study_definition_fingerprint": "320cec94a05261c873f84d376b7c869879837066cf3cf418eb1acfd11ca45d92",
+    "study_id": "20260907-minor-radius"
+   },
+   "cases_total": 7781,
+   "cases_completed": 7781
+  }
+ ],
+ "arms": [
+  {
+   "arm_id": "arm-fence-p100",
+   "store_id": "20260907-minor-radius",
+   "effective_executable_fingerprint": {
+    "value": "7d295fec2c78ca40220f6dc04c0997913f95e98383c4ec3e819bc4ef641ea968",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (results/package_identity.json digest)"
+   },
+   "entry_models": "the package's complete entry-model map as PreparedEvaluator.entry_models carried it (study_route.definition); one proposal per point carries every swept key, the R tie and every held key (study.py point())",
+   "strategy": "prepared-list/v1",
+   "evaluated": 3695,
+   "feasible": 271,
+   "ignited": 1819,
+   "committed_feasible_at_joined_points": 306,
+   "points_with_any_flip": 465,
+   "feasible_changed": 35,
+   "not_proposed_by_committed": 0,
+   "feasible_under_wall_shadow_lo": 291,
+   "feasible_under_wall_shadow_hi": 173,
+   "window": {
+    "provenance": "engineered",
+    "fixed_from": "inherited unchanged from the committed 20260907-burn-control record (c2aea51b; itself the 20260905-stored-energy-basis arms, the 20260904-wall-and-heating windows with the 13 keV rows restored; provenance engineered there), as the re-read's object; the edges re-read at the WI-044 pin with the field-side fences moved and every row carrying the magnet channels in results/window_edges.json (edges.py, the same three anchors, the a transect to 2.4) -- record.md section 11; arm-transect-a engineered by this record",
+    "values": {
+     "p_wallplug_heat_MW": 100.0,
+     "R_m": [
+      11.2,
+      12.7,
+      14.2,
+      15.7,
+      17.2
+     ],
+     "a_m": [
+      1.3,
+      1.5,
+      1.7,
+      1.8,
+      2.0,
+      2.2
+     ],
+     "I_coil_MA": [
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      18.0
+     ],
+     "T_i0_keV": [
+      13.0,
+      14.63,
+      16.0,
+      17.0,
+      18.0
+     ],
+     "n_e0_mult": [
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+     ],
+     "validity_mask": "R > a + 2.25 (ANNEX section Validity masks)",
+     "note": "the committed 20260907-burn-control arm-fence-p100 grid (the 20260905 grid: the 20260904 grid plus the pinned baseline, with the T 13 keV row restored), inherited unchanged"
+    }
+   },
+   "verification": {
+    "command": "scripts/study/verify.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260907-minor-radius/results/package_identity.json --store exploration/stellarator_e2e/studies/_work/20260907-minor-radius/20260907-minor-radius.db --out exploration/stellarator_e2e/studies/20260907-minor-radius/results/verification_summary.json",
+    "tool_revision": "1a07147012c9f6f65ff3f546f88f96862bd68979e422e44e5414c02479c7f182",
+    "sampling_scheme": "stratified-by-verdict-combination/v1",
+    "tolerance": "1e-09",
+    "summary_sha256": "1382edb04ba0f593d6d12e666381272647c72259305f045c0f8e8de3f89d910c",
+    "note": "one store, one verification run over all five arms; the sample is stratified over the verdict combinations the whole study produced"
+   },
+   "glue_ledger": [],
+   "glue_ledger_none": true,
+   "artifacts": [
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/points.csv",
+     "sha256": "68ce9e6f489179e17b415f704898c457940a880945503250c7aac09674a8ae6f"
+    },
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/oracle_operands.csv",
+     "sha256": "83ea4cdeccebd7ae1a214f048de276c7f928f7bce4e0399e71d70d86c1be6695"
+    },
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/excluded_points.csv",
+     "sha256": "ec4eee8c7a1ea6f99ead3f2e4c91332d971d5ee54edfed686bb1efb3651f4856"
+    },
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/verification_summary.json",
+     "sha256": "1382edb04ba0f593d6d12e666381272647c72259305f045c0f8e8de3f89d910c"
+    }
+   ]
+  },
+  {
+   "arm_id": "arm-search-p220",
+   "store_id": "20260907-minor-radius",
+   "effective_executable_fingerprint": {
+    "value": "7d295fec2c78ca40220f6dc04c0997913f95e98383c4ec3e819bc4ef641ea968",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (results/package_identity.json digest)"
+   },
+   "entry_models": "the package's complete entry-model map as PreparedEvaluator.entry_models carried it (study_route.definition); one proposal per point carries every swept key, the R tie and every held key (study.py point())",
+   "strategy": "prepared-list/v1",
+   "evaluated": 3642,
+   "feasible": 356,
+   "ignited": 1819,
+   "committed_feasible_at_joined_points": 372,
+   "points_with_any_flip": 452,
+   "feasible_changed": 16,
+   "not_proposed_by_committed": 0,
+   "feasible_under_wall_shadow_lo": 402,
+   "feasible_under_wall_shadow_hi": 177,
+   "window": {
+    "provenance": "engineered",
+    "fixed_from": "inherited unchanged from the committed 20260907-burn-control record (c2aea51b; itself the 20260905-stored-energy-basis arms, the 20260904-wall-and-heating windows with the 13 keV rows restored; provenance engineered there), as the re-read's object; the edges re-read at the WI-044 pin with the field-side fences moved and every row carrying the magnet channels in results/window_edges.json (edges.py, the same three anchors, the a transect to 2.4) -- record.md section 11; arm-transect-a engineered by this record",
+    "values": {
+     "p_wallplug_heat_MW": 220.0,
+     "R_m": [
+      11.2,
+      12.7,
+      14.2,
+      15.7,
+      17.2
+     ],
+     "a_m": [
+      1.3,
+      1.5,
+      1.7,
+      1.8,
+      2.0,
+      2.2
+     ],
+     "I_coil_MA": [
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      18.0
+     ],
+     "T_i0_keV": [
+      13.0,
+      14.63,
+      16.0,
+      17.0,
+      18.0
+     ],
+     "n_e0_mult": [
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+     ],
+     "validity_mask": "R > a + 2.25 (ANNEX section Validity masks)",
+     "note": "the committed 20260907-burn-control arm-search-p220 grid (the T 13 keV row restored), inherited unchanged"
+    }
+   },
+   "verification": {
+    "command": "scripts/study/verify.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260907-minor-radius/results/package_identity.json --store exploration/stellarator_e2e/studies/_work/20260907-minor-radius/20260907-minor-radius.db --out exploration/stellarator_e2e/studies/20260907-minor-radius/results/verification_summary.json",
+    "tool_revision": "1a07147012c9f6f65ff3f546f88f96862bd68979e422e44e5414c02479c7f182",
+    "sampling_scheme": "stratified-by-verdict-combination/v1",
+    "tolerance": "1e-09",
+    "summary_sha256": "1382edb04ba0f593d6d12e666381272647c72259305f045c0f8e8de3f89d910c",
+    "note": "one store, one verification run over all five arms; the sample is stratified over the verdict combinations the whole study produced"
+   },
+   "glue_ledger": [],
+   "glue_ledger_none": true,
+   "artifacts": [
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/points.csv",
+     "sha256": "68ce9e6f489179e17b415f704898c457940a880945503250c7aac09674a8ae6f"
+    },
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/oracle_operands.csv",
+     "sha256": "83ea4cdeccebd7ae1a214f048de276c7f928f7bce4e0399e71d70d86c1be6695"
+    },
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/excluded_points.csv",
+     "sha256": "ec4eee8c7a1ea6f99ead3f2e4c91332d971d5ee54edfed686bb1efb3651f4856"
+    },
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/verification_summary.json",
+     "sha256": "1382edb04ba0f593d6d12e666381272647c72259305f045c0f8e8de3f89d910c"
+    }
+   ]
+  },
+  {
+   "arm_id": "arm-reread-p220",
+   "store_id": "20260907-minor-radius",
+   "effective_executable_fingerprint": {
+    "value": "7d295fec2c78ca40220f6dc04c0997913f95e98383c4ec3e819bc4ef641ea968",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (results/package_identity.json digest)"
+   },
+   "entry_models": "the package's complete entry-model map as PreparedEvaluator.entry_models carried it (study_route.definition); one proposal per point carries every swept key, the R tie and every held key (study.py point())",
+   "strategy": "prepared-list/v1",
+   "evaluated": 360,
+   "feasible": 45,
+   "ignited": 8,
+   "committed_feasible_at_joined_points": 45,
+   "points_with_any_flip": 0,
+   "feasible_changed": 0,
+   "not_proposed_by_committed": 0,
+   "feasible_under_wall_shadow_lo": 97,
+   "feasible_under_wall_shadow_hi": 0,
+   "window": {
+    "provenance": "engineered",
+    "fixed_from": "inherited unchanged from the committed 20260907-burn-control record (c2aea51b; itself the 20260905-stored-energy-basis arms, the 20260904-wall-and-heating windows with the 13 keV rows restored; provenance engineered there), as the re-read's object; the edges re-read at the WI-044 pin with the field-side fences moved and every row carrying the magnet channels in results/window_edges.json (edges.py, the same three anchors, the a transect to 2.4) -- record.md section 11; arm-transect-a engineered by this record",
+    "values": {
+     "p_wallplug_heat_MW": 220.0,
+     "R_m": [
+      12.7
+     ],
+     "a_m": [
+      1.3
+     ],
+     "I_coil_MA": [
+      14.0,
+      14.25,
+      14.5,
+      14.75,
+      15.0,
+      15.25
+     ],
+     "T_i0_keV": [
+      14.63,
+      16.0,
+      17.0,
+      18.0
+     ],
+     "n_e0_mult": [
+      0.8,
+      0.9,
+      1.0,
+      1.1
+     ],
+     "eta_source_heat": [
+      0.45,
+      0.5,
+      0.55,
+      0.6
+     ],
+     "note": "round 1's 220 MW grid as the committed re-read arm carried it, less the 24 points the geometry grid carries; unchanged"
+    }
+   },
+   "verification": {
+    "command": "scripts/study/verify.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260907-minor-radius/results/package_identity.json --store exploration/stellarator_e2e/studies/_work/20260907-minor-radius/20260907-minor-radius.db --out exploration/stellarator_e2e/studies/20260907-minor-radius/results/verification_summary.json",
+    "tool_revision": "1a07147012c9f6f65ff3f546f88f96862bd68979e422e44e5414c02479c7f182",
+    "sampling_scheme": "stratified-by-verdict-combination/v1",
+    "tolerance": "1e-09",
+    "summary_sha256": "1382edb04ba0f593d6d12e666381272647c72259305f045c0f8e8de3f89d910c",
+    "note": "one store, one verification run over all five arms; the sample is stratified over the verdict combinations the whole study produced"
+   },
+   "glue_ledger": [],
+   "glue_ledger_none": true,
+   "artifacts": [
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/points.csv",
+     "sha256": "68ce9e6f489179e17b415f704898c457940a880945503250c7aac09674a8ae6f"
+    },
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/oracle_operands.csv",
+     "sha256": "83ea4cdeccebd7ae1a214f048de276c7f928f7bce4e0399e71d70d86c1be6695"
+    },
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/excluded_points.csv",
+     "sha256": "ec4eee8c7a1ea6f99ead3f2e4c91332d971d5ee54edfed686bb1efb3651f4856"
+    },
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/verification_summary.json",
+     "sha256": "1382edb04ba0f593d6d12e666381272647c72259305f045c0f8e8de3f89d910c"
+    }
+   ]
+  },
+  {
+   "arm_id": "arm-transect-ash",
+   "store_id": "20260907-minor-radius",
+   "effective_executable_fingerprint": {
+    "value": "7d295fec2c78ca40220f6dc04c0997913f95e98383c4ec3e819bc4ef641ea968",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (results/package_identity.json digest)"
+   },
+   "entry_models": "the package's complete entry-model map as PreparedEvaluator.entry_models carried it (study_route.definition); one proposal per point carries every swept key, the R tie and every held key (study.py point())",
+   "strategy": "prepared-list/v1",
+   "evaluated": 15,
+   "feasible": 3,
+   "ignited": 8,
+   "committed_feasible_at_joined_points": 3,
+   "points_with_any_flip": 0,
+   "feasible_changed": 0,
+   "not_proposed_by_committed": 0,
+   "feasible_under_wall_shadow_lo": 4,
+   "feasible_under_wall_shadow_hi": 1,
+   "window": {
+    "provenance": "engineered",
+    "fixed_from": "inherited unchanged from the committed 20260907-burn-control record (c2aea51b; itself the 20260905-stored-energy-basis arms, the 20260904-wall-and-heating windows with the 13 keV rows restored; provenance engineered there), as the re-read's object; the edges re-read at the WI-044 pin with the field-side fences moved and every row carrying the magnet channels in results/window_edges.json (edges.py, the same three anchors, the a transect to 2.4) -- record.md section 11; arm-transect-a engineered by this record",
+    "values": {
+     "tau_ratio_ash": [
+      2.0,
+      4.0,
+      6.0,
+      12.0,
+      16.0
+     ],
+     "anchors": "the committed three (scan best at 100 MW; scan best at 220 MW; the design column); unchanged"
+    }
+   },
+   "verification": {
+    "command": "scripts/study/verify.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260907-minor-radius/results/package_identity.json --store exploration/stellarator_e2e/studies/_work/20260907-minor-radius/20260907-minor-radius.db --out exploration/stellarator_e2e/studies/20260907-minor-radius/results/verification_summary.json",
+    "tool_revision": "1a07147012c9f6f65ff3f546f88f96862bd68979e422e44e5414c02479c7f182",
+    "sampling_scheme": "stratified-by-verdict-combination/v1",
+    "tolerance": "1e-09",
+    "summary_sha256": "1382edb04ba0f593d6d12e666381272647c72259305f045c0f8e8de3f89d910c",
+    "note": "one store, one verification run over all five arms; the sample is stratified over the verdict combinations the whole study produced"
+   },
+   "glue_ledger": [],
+   "glue_ledger_none": true,
+   "artifacts": [
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/points.csv",
+     "sha256": "68ce9e6f489179e17b415f704898c457940a880945503250c7aac09674a8ae6f"
+    },
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/oracle_operands.csv",
+     "sha256": "83ea4cdeccebd7ae1a214f048de276c7f928f7bce4e0399e71d70d86c1be6695"
+    },
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/excluded_points.csv",
+     "sha256": "ec4eee8c7a1ea6f99ead3f2e4c91332d971d5ee54edfed686bb1efb3651f4856"
+    },
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/verification_summary.json",
+     "sha256": "1382edb04ba0f593d6d12e666381272647c72259305f045c0f8e8de3f89d910c"
+    }
+   ]
+  },
+  {
+   "arm_id": "arm-transect-a",
+   "store_id": "20260907-minor-radius",
+   "effective_executable_fingerprint": {
+    "value": "7d295fec2c78ca40220f6dc04c0997913f95e98383c4ec3e819bc4ef641ea968",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (results/package_identity.json digest)"
+   },
+   "entry_models": "the package's complete entry-model map as PreparedEvaluator.entry_models carried it (study_route.definition); one proposal per point carries every swept key, the R tie and every held key (study.py point())",
+   "strategy": "prepared-list/v1",
+   "evaluated": 69,
+   "feasible": 34,
+   "ignited": 20,
+   "committed_feasible_at_joined_points": 0,
+   "points_with_any_flip": 0,
+   "feasible_changed": 0,
+   "not_proposed_by_committed": 69,
+   "feasible_under_wall_shadow_lo": 34,
+   "feasible_under_wall_shadow_hi": 3,
+   "window": {
+    "provenance": "engineered",
+    "fixed_from": "inherited unchanged from the committed 20260907-burn-control record (c2aea51b; itself the 20260905-stored-energy-basis arms, the 20260904-wall-and-heating windows with the 13 keV rows restored; provenance engineered there), as the re-read's object; the edges re-read at the WI-044 pin with the field-side fences moved and every row carrying the magnet channels in results/window_edges.json (edges.py, the same three anchors, the a transect to 2.4) -- record.md section 11; arm-transect-a engineered by this record",
+    "values": {
+     "a_m": [
+      1.3,
+      1.4,
+      1.5,
+      1.6,
+      1.7,
+      1.8,
+      1.9,
+      2.0,
+      2.1,
+      2.2,
+      2.3,
+      2.4
+     ],
+     "p_wallplug_heat_MW": [
+      100.0,
+      220.0
+     ],
+     "anchors": "the design column at the baseline's levers (R 12.7, I 15.4 MA, T 14.63 keV, n 1.0x) and the committed cheapest ten-verdict machine c2823's levers (R 15.7, I 13 MA, T 13 keV, n 1.0x); 13 grid members cited, not duplicated",
+     "note": "WI-044 (goal minor-radius (b)): the minor-radius transects, engineered by this record from the committed edge readings and the WI-044 off-design execution; the validity mask R > a + 2.25 holds on both columns to 2.4"
+    }
+   },
+   "verification": {
+    "command": "scripts/study/verify.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260907-minor-radius/results/package_identity.json --store exploration/stellarator_e2e/studies/_work/20260907-minor-radius/20260907-minor-radius.db --out exploration/stellarator_e2e/studies/20260907-minor-radius/results/verification_summary.json",
+    "tool_revision": "1a07147012c9f6f65ff3f546f88f96862bd68979e422e44e5414c02479c7f182",
+    "sampling_scheme": "stratified-by-verdict-combination/v1",
+    "tolerance": "1e-09",
+    "summary_sha256": "1382edb04ba0f593d6d12e666381272647c72259305f045c0f8e8de3f89d910c",
+    "note": "one store, one verification run over all five arms; the sample is stratified over the verdict combinations the whole study produced"
+   },
+   "glue_ledger": [],
+   "glue_ledger_none": true,
+   "artifacts": [
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/points.csv",
+     "sha256": "68ce9e6f489179e17b415f704898c457940a880945503250c7aac09674a8ae6f"
+    },
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/oracle_operands.csv",
+     "sha256": "83ea4cdeccebd7ae1a214f048de276c7f928f7bce4e0399e71d70d86c1be6695"
+    },
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/excluded_points.csv",
+     "sha256": "ec4eee8c7a1ea6f99ead3f2e4c91332d971d5ee54edfed686bb1efb3651f4856"
+    },
+    {
+     "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/results/verification_summary.json",
+     "sha256": "1382edb04ba0f593d6d12e666381272647c72259305f045c0f8e8de3f89d910c"
+    }
+   ]
+  }
+ ],
+ "glue_ledger": "none -- no adapter on this route (sealed package, stock teax); stated per arm as glue_ledger_none",
+ "results_artifacts": {
+  "results/baseline_result.json": "b9971f94e16f42001d6400596e4c4eef3b0044b159e53bb4a26a6789f64ca820",
+  "results/excluded_points.csv": "ec4eee8c7a1ea6f99ead3f2e4c91332d971d5ee54edfed686bb1efb3651f4856",
+  "results/oracle_operands.csv": "83ea4cdeccebd7ae1a214f048de276c7f928f7bce4e0399e71d70d86c1be6695",
+  "results/package_identity.json": "23051fbd061a6b73ac7b155f29b3414a6f836bc4049824f7eb7e46c3eb6809ef",
+  "results/points.csv": "68ce9e6f489179e17b415f704898c457940a880945503250c7aac09674a8ae6f",
+  "results/preflight_results.json": "38633e4f4d92cc95a93a22d45a1b0001b4ee556ef4f15c0ecfcd79aadc44ec2a",
+  "results/verification_summary.json": "1382edb04ba0f593d6d12e666381272647c72259305f045c0f8e8de3f89d910c",
+  "results/window_edges.json": "f3e6f07251a19372b59b6a7e77f29a0763c842d0f2fb13484cc170571635af71"
+ },
+ "indicators": {
+  "path": "indicators.json",
+  "digest": "1814b135f7f5886718356037c6476362ab77c679339469af7048809bdf75850a",
+  "output_schema_version": "study-indicators/v1",
+  "groups": 14,
+  "subset": false,
+  "axis_declaration": {
+   "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/axes.json",
+   "schema_version": "study-axis-declaration/v1",
+   "digest": "f49d0d7ef62041bdb7e7e5b9bc361a6fc2597de12601b5bf5052c3180edca4f8",
+   "groups_declared": [
+    "B_max",
+    "I_coil",
+    "R+tie",
+    "T_i0",
+    "a",
+    "eta_couple_heat",
+    "eta_source_heat",
+    "f_suppr_ash",
+    "iota_23",
+    "j_wp",
+    "n_e0",
+    "p_wallplug_heat",
+    "tau_ratio_ash",
+    "wall_peak_q_ref"
+   ],
+   "subset": false
+  }
+ },
+ "axes_declaration": {
+  "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/axes.json",
+  "digest": "f49d0d7ef62041bdb7e7e5b9bc361a6fc2597de12601b5bf5052c3180edca4f8"
+ },
+ "study_definition": {
+  "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/study.py",
+  "digest": "19dc3e35f41dd473cc69af9f04e8c4f30ccbe2e4c254fb7ff696aa5c3e1f9fe6"
+ },
+ "scan": {
+  "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/scan.py",
+  "digest": "dfe422bc0995a5f9c7d8eceaa9cc65ba6445dabca841ab81b33ae5afa2efcbc9",
+  "note": "the committed scan's probe library, inherited verbatim; its full scan was not re-run (the window is inherited)"
+ },
+ "edges": {
+  "path": "exploration/stellarator_e2e/studies/20260907-minor-radius/edges.py",
+  "digest": "b27cffa2817ccd04ccd6aa51950a71feb684fe7906ec68648a57cb21cc64b8a9"
+ },
+ "committed_record_joined": {
+  "study_id": "20260907-burn-control",
+  "commit": "c2aea51b",
+  "results_joined": {
+   "points.csv": "636a8a962d49597ba5a6d0dd965c310f894e84fe5ae92a187dd9a8c3d4d252f8",
+   "oracle_operands.csv": "807f0758cc56a281aee0724bbc98a284b4142af7cef4a61fdfa7e7b55eeeb661",
+   "excluded_points.csv": "bb78ba7debf25d8aedaa6bbf6edebf685b4d1c5e36cd23fc60a612b7ba309b21"
+  },
+  "note": "the committed_* columns of results/points.csv (the ten verdicts, the magnet and physics channels, the capital rollups, LCOE, the branch) are read from these files by coordinates, never recomputed (record.md section 12)"
+ },
+ "tools": [
+  {
+   "path": "scripts/study/preflight.py",
+   "source_digest": {
+    "recipe": "tool-source-digest/v1",
+    "digest": "5135bb5b4e79072bba38788326b4acc41b87ae6ad1eac422f4ed52e119df849a",
+    "files": [
+     {
+      "path": "scripts/study/common.py",
+      "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+     },
+     {
+      "path": "scripts/study/identity.py",
+      "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+     },
+     {
+      "path": "scripts/study/manifest.py",
+      "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+     },
+     {
+      "path": "scripts/study/preflight.py",
+      "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+     }
+    ]
+   }
+  },
+  {
+   "path": "scripts/study/verify.py",
+   "source_digest": {
+    "recipe": "tool-source-digest/v1",
+    "digest": "1a07147012c9f6f65ff3f546f88f96862bd68979e422e44e5414c02479c7f182",
+    "files": [
+     {
+      "path": "scripts/study/common.py",
+      "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+     },
+     {
+      "path": "scripts/study/identity.py",
+      "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+     },
+     {
+      "path": "scripts/study/manifest.py",
+      "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+     },
+     {
+      "path": "scripts/study/schemas/package_identity.v1.schema.json",
+      "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+     },
+     {
+      "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+      "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+     },
+     {
+      "path": "scripts/study/verify.py",
+      "sha256": "3ac4cdba4fa4f2e587f08fb22dad034945e9525634ae6a3e3b80edccbb125540"
+     }
+    ]
+   }
+  },
+  {
+   "path": "scripts/study/indicators.py",
+   "source_digest": {
+    "recipe": "tool-source-digest/v1",
+    "digest": "e53d7027da93de75e2b92f6e1006ebf7d040d98c229cb9e16993a1735356334e",
+    "files": [
+     {
+      "path": "scripts/study/indicators.py",
+      "sha256": "5c2c30532e058a76739a4ee95b619f2bc48209683feddec9d6aa76c821bd49df"
+     },
+     {
+      "path": "scripts/study/manifest.py",
+      "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+     },
+     {
+      "path": "scripts/study/schemas/axis_declaration.v1.schema.json",
+      "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+     },
+     {
+      "path": "scripts/study/schemas/indicators.v1.schema.json",
+      "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+     },
+     {
+      "path": "scripts/study/schemas/study_package_manifest.v1.schema.json",
+      "sha256": "5fd44712cd032647df701a24f237f2dda7ccd75c2f101a5c6244c9b6bca47032"
+     }
+    ]
+   }
+  }
+ ],
+ "preflight": {
+  "gates_run": 6,
+  "outcome": "pass",
+  "gates": [
+   {
+    "gate": "declared_keys",
+    "status": "pass"
+   },
+   {
+    "gate": "sibling_scan",
+    "status": "pass"
+   },
+   {
+    "gate": "identity",
+    "status": "pass"
+   },
+   {
+    "gate": "manifest_currency",
+    "status": "pass"
+   },
+   {
+    "gate": "baseline_headline",
+    "status": "pass"
+   },
+   {
+    "gate": "package_clean",
+    "status": "pass"
+   }
+  ]
+ },
+ "counts": {
+  "proposed": 7949,
+  "evaluated": 7781,
+  "excluded": 168,
+  "executed_in_both": 7712,
+  "feasible_total": 709,
+  "ignited_total": 3674,
+  "committed_feasible_at_joined_points_total": 726,
+  "points_with_any_flip_total": 917,
+  "feasible_changed_total": 51,
+  "flips_by_verdict": {
+   "beta_ok": {},
+   "burn_hold_ok": {},
+   "cond_strain_ok": {},
+   "net_positive": {},
+   "peak_field_ok": {
+    "satisfied->violated": 548
+   },
+   "recirc_ok": {},
+   "sustainment_ok": {},
+   "tbr_ok": {},
+   "wall_load_ok": {},
+   "wp_stress_ok": {
+    "satisfied->violated": 369
+   }
+  },
+  "physics_identity_worst_reldev": 0.0,
+  "p_aux_absdev_MW_worst": 0.0,
+  "bore_norm_residual_worst": 1.1102230246251565e-16,
+  "by_arm": {
+   "arm-fence-p100": 3695,
+   "arm-reread-p220": 360,
+   "arm-search-p220": 3642,
+   "arm-transect-a": 69,
+   "arm-transect-ash": 15
+  },
+  "feasible_by_arm": {
+   "arm-fence-p100": 271,
+   "arm-reread-p220": 45,
+   "arm-search-p220": 356,
+   "arm-transect-a": 34,
+   "arm-transect-ash": 3
+  },
+  "ignited_by_arm": {
+   "arm-fence-p100": 1819,
+   "arm-reread-p220": 8,
+   "arm-search-p220": 1819,
+   "arm-transect-a": 20,
+   "arm-transect-ash": 8
+  },
+  "committed_feasible_by_arm": {
+   "arm-fence-p100": 306,
+   "arm-reread-p220": 45,
+   "arm-search-p220": 372,
+   "arm-transect-ash": 3
+  },
+  "points_with_any_flip_by_arm": {
+   "arm-fence-p100": 465,
+   "arm-search-p220": 452
+  },
+  "feasible_changed_by_arm": {
+   "arm-fence-p100": 35,
+   "arm-search-p220": 16
+  },
+  "not_proposed_by_committed_by_arm": {
+   "arm-transect-a": 69
+  },
+  "feasible_under_wall_shadow_lo_by_arm": {
+   "arm-fence-p100": 291,
+   "arm-reread-p220": 97,
+   "arm-search-p220": 402,
+   "arm-transect-a": 34,
+   "arm-transect-ash": 4
+  },
+  "feasible_under_wall_shadow_hi_by_arm": {
+   "arm-fence-p100": 173,
+   "arm-search-p220": 177,
+   "arm-transect-a": 3,
+   "arm-transect-ash": 1
+  },
+  "classes_vs_committed": {
+   "executed_in_both": 7712,
+   "not_proposed_by_committed": 69
+  },
+  "excluded_classes_vs_committed": {
+   "excluded_in_both": 164,
+   "not_proposed_by_committed": 4
+  }
+ },
+ "teax": {
+  "revision": "8d877460ac4f6f264561d916e40c1708adb13397",
+  "era_pin": null,
+  "revision_source": "git -C $STOP_PARSER_TEAX_ROOT rev-parse HEAD at build time; the round's integration return (work/orchestration/goals/minor-radius/evidence/T-002_integration_return.json) names the same revision"
+ }
+}

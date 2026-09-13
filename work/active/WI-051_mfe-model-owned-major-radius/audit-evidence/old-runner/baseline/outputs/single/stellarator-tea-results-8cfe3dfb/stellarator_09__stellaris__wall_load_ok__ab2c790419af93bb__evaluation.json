@@ -1,0 +1,10 @@
+{
+  "actual_value": true,
+  "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+  "margin": 0.07115510622361443,
+  "observed": {
+    "wall_load": 3.9788448937763854,
+    "wall_load_limit_in": 4.05
+  },
+  "status": "satisfied"
+}

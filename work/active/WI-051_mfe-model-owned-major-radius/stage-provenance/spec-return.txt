@@ -1,0 +1,10 @@
+Registered **WI-051** through native PM and wrote the [spec](/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/spec.md).
+
+- Added **SV-083–SV-089**, all pending.
+- Native status reports **active / speccing**.
+- Verified six evidence files against `2f8856b7`; `git diff --check` passes.
+- Commands used `.codex-test/run agentic-mbse pm add-item`, seven `add-validation` calls, `status --json`, and read-only Python checks.
+
+No source, premise or supported-scope blocker found. Native tooling reports inherited validation-type warnings and backlog/spec status overrides. The abbreviated epic-name registration failed without mutation; exact-name registration succeeded.
+
+Stopped before design. No production, study, goal or setup changes; no commits. Current-study compatibility explicitly remains incomplete pending the separate coding migration.

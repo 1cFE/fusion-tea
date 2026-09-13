@@ -1,0 +1,23 @@
+{
+  "outcome": "owner-directed stop; incomplete execution",
+  "states": {
+    "completed": 2525
+  },
+  "lease_released": true,
+  "completed_id_range": [
+    "20260912-plant-closure:c0000",
+    "20260912-plant-closure:c2524"
+  ],
+  "transition_states": {
+    "committed": 2525,
+    "started": 2526
+  },
+  "store_path": "results/store/20260912-plant-closure.db",
+  "sha256": "2c6a7ccdc16eb45b20c16e693b56f2ee0654cd0b07ab354a485ad77a6f3794ff",
+  "native_exit_code": 130,
+  "original_definition": "preparation/proposals.json",
+  "original_runtime": "results/execution-runtime-exhaustive-attempt.json",
+  "log": "execution/native-attempt-1.log",
+  "authority": "preparation/reduction-amendment.md",
+  "publication_meaning": "Supporting stopped execution only; excluded from primary native result counts. First 844 cases checked by preparation/early-native-verification.json."
+}

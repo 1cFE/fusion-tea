@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-050_mfe-coherent-operating-heating/audit-evidence/check.py", line 49, in <module>
+    assert not subprocess.check_output(['git','diff','--name-only','546218a5','b9d096f6','--',*preserved]).strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

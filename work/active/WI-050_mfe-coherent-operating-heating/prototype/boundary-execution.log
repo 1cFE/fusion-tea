@@ -1,0 +1,347 @@
+{
+  "positive": {
+    "outputs": {
+      "boundary_fixture__legacy__heat__p_wallplug_total": 80.0,
+      "boundary_fixture__legacy__heat__p_delivered": 50.0,
+      "boundary_fixture__legacy__heat__p_coupled": 30.0,
+      "boundary_fixture__legacy__heat__eta_pin_eff": 0.375,
+      "boundary_fixture__legacy__operating_heat__p_wallplug": 80.0,
+      "boundary_fixture__legacy__operating_heat__p_coupled": 30.0,
+      "boundary_fixture__legacy__operating_heat__p_delivered": 40.0,
+      "boundary_fixture__test__heat__p_wallplug_total": 100.0,
+      "boundary_fixture__test__heat__p_delivered": 50.0,
+      "boundary_fixture__test__heat__p_coupled": 37.5,
+      "boundary_fixture__test__heat__eta_pin_eff": 0.375,
+      "boundary_fixture__test__operating_heat__p_wallplug": 32.0,
+      "boundary_fixture__test__operating_heat__p_coupled": 12.0,
+      "boundary_fixture__test__operating_heat__p_delivered": 16.0
+    },
+    "responses": {
+      "headline": "satisfied",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "satisfied",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "satisfied",
+      "boundary_fixture__test__efficiency__c0533096817446bc": "satisfied"
+    },
+    "report": {
+      "catalog_fingerprint": "70c3b17e488afa771d12740f2d9e1194404b299c719f03dadd9322856d678608",
+      "assessed_entry_count": 3,
+      "headline": "full_satisfaction",
+      "coverage": {
+        "authored_usage_total": 3,
+        "applicable_gate_total": 3,
+        "assessed_gate_count": 3,
+        "unassessed_gate_count": 0,
+        "inapplicable_gate_count": 0,
+        "unassessed_reasons": {},
+        "coverage_state": "complete"
+      },
+      "results": [
+        {
+          "constraint_id": "boundary_fixture__test__lower__cbf884db55cbf73c",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 12.0,
+          "observed": {
+            "demand": 12.0
+          }
+        },
+        {
+          "constraint_id": "boundary_fixture__test__upper__d0ac1134a7016987",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 25.5,
+          "observed": {
+            "demand": 12.0,
+            "capacity": 37.5
+          }
+        },
+        {
+          "constraint_id": "boundary_fixture__test__efficiency__c0533096817446bc",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "eta_source_in": 0.5,
+            "eta_couple_in": 0.75
+          }
+        }
+      ]
+    }
+  },
+  "equality": {
+    "outputs": {
+      "boundary_fixture__legacy__heat__p_wallplug_total": 80.0,
+      "boundary_fixture__legacy__heat__p_delivered": 50.0,
+      "boundary_fixture__legacy__heat__p_coupled": 30.0,
+      "boundary_fixture__legacy__heat__eta_pin_eff": 0.375,
+      "boundary_fixture__legacy__operating_heat__p_wallplug": 80.0,
+      "boundary_fixture__legacy__operating_heat__p_coupled": 30.0,
+      "boundary_fixture__legacy__operating_heat__p_delivered": 40.0,
+      "boundary_fixture__test__heat__p_wallplug_total": 100.0,
+      "boundary_fixture__test__heat__p_delivered": 50.0,
+      "boundary_fixture__test__heat__p_coupled": 37.5,
+      "boundary_fixture__test__heat__eta_pin_eff": 0.375,
+      "boundary_fixture__test__operating_heat__p_wallplug": 100.0,
+      "boundary_fixture__test__operating_heat__p_coupled": 37.5,
+      "boundary_fixture__test__operating_heat__p_delivered": 50.0
+    },
+    "responses": {
+      "headline": "satisfied",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "satisfied",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "satisfied",
+      "boundary_fixture__test__efficiency__c0533096817446bc": "satisfied"
+    },
+    "report": {
+      "catalog_fingerprint": "70c3b17e488afa771d12740f2d9e1194404b299c719f03dadd9322856d678608",
+      "assessed_entry_count": 3,
+      "headline": "full_satisfaction",
+      "coverage": {
+        "authored_usage_total": 3,
+        "applicable_gate_total": 3,
+        "assessed_gate_count": 3,
+        "unassessed_gate_count": 0,
+        "inapplicable_gate_count": 0,
+        "unassessed_reasons": {},
+        "coverage_state": "complete"
+      },
+      "results": [
+        {
+          "constraint_id": "boundary_fixture__test__lower__cbf884db55cbf73c",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 37.5,
+          "observed": {
+            "demand": 37.5
+          }
+        },
+        {
+          "constraint_id": "boundary_fixture__test__upper__d0ac1134a7016987",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0,
+          "observed": {
+            "demand": 37.5,
+            "capacity": 37.5
+          }
+        },
+        {
+          "constraint_id": "boundary_fixture__test__efficiency__c0533096817446bc",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "eta_source_in": 0.5,
+            "eta_couple_in": 0.75
+          }
+        }
+      ]
+    }
+  },
+  "zero": {
+    "outputs": {
+      "boundary_fixture__legacy__heat__p_wallplug_total": 80.0,
+      "boundary_fixture__legacy__heat__p_delivered": 50.0,
+      "boundary_fixture__legacy__heat__p_coupled": 30.0,
+      "boundary_fixture__legacy__heat__eta_pin_eff": 0.375,
+      "boundary_fixture__legacy__operating_heat__p_wallplug": 80.0,
+      "boundary_fixture__legacy__operating_heat__p_coupled": 30.0,
+      "boundary_fixture__legacy__operating_heat__p_delivered": 40.0,
+      "boundary_fixture__test__heat__p_wallplug_total": 100.0,
+      "boundary_fixture__test__heat__p_delivered": 50.0,
+      "boundary_fixture__test__heat__p_coupled": 37.5,
+      "boundary_fixture__test__heat__eta_pin_eff": 0.375,
+      "boundary_fixture__test__operating_heat__p_wallplug": 0.0,
+      "boundary_fixture__test__operating_heat__p_coupled": 0.0,
+      "boundary_fixture__test__operating_heat__p_delivered": 0.0
+    },
+    "responses": {
+      "headline": "satisfied",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "satisfied",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "satisfied",
+      "boundary_fixture__test__efficiency__c0533096817446bc": "satisfied"
+    },
+    "report": {
+      "catalog_fingerprint": "70c3b17e488afa771d12740f2d9e1194404b299c719f03dadd9322856d678608",
+      "assessed_entry_count": 3,
+      "headline": "full_satisfaction",
+      "coverage": {
+        "authored_usage_total": 3,
+        "applicable_gate_total": 3,
+        "assessed_gate_count": 3,
+        "unassessed_gate_count": 0,
+        "inapplicable_gate_count": 0,
+        "unassessed_reasons": {},
+        "coverage_state": "complete"
+      },
+      "results": [
+        {
+          "constraint_id": "boundary_fixture__test__lower__cbf884db55cbf73c",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 0.0,
+          "observed": {
+            "demand": 0.0
+          }
+        },
+        {
+          "constraint_id": "boundary_fixture__test__upper__d0ac1134a7016987",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 37.5,
+          "observed": {
+            "demand": 0.0,
+            "capacity": 37.5
+          }
+        },
+        {
+          "constraint_id": "boundary_fixture__test__efficiency__c0533096817446bc",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "eta_source_in": 0.5,
+            "eta_couple_in": 0.75
+          }
+        }
+      ]
+    }
+  },
+  "insufficient": {
+    "outputs": {
+      "boundary_fixture__legacy__heat__p_wallplug_total": 80.0,
+      "boundary_fixture__legacy__heat__p_delivered": 50.0,
+      "boundary_fixture__legacy__heat__p_coupled": 30.0,
+      "boundary_fixture__legacy__heat__eta_pin_eff": 0.375,
+      "boundary_fixture__legacy__operating_heat__p_wallplug": 80.0,
+      "boundary_fixture__legacy__operating_heat__p_coupled": 30.0,
+      "boundary_fixture__legacy__operating_heat__p_delivered": 40.0,
+      "boundary_fixture__test__heat__p_wallplug_total": 100.0,
+      "boundary_fixture__test__heat__p_delivered": 50.0,
+      "boundary_fixture__test__heat__p_coupled": 37.5,
+      "boundary_fixture__test__heat__eta_pin_eff": 0.375,
+      "boundary_fixture__test__operating_heat__p_wallplug": 101.33333333333333,
+      "boundary_fixture__test__operating_heat__p_coupled": 38.0,
+      "boundary_fixture__test__operating_heat__p_delivered": 50.666666666666664
+    },
+    "responses": {
+      "headline": "violated",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "satisfied",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "violated",
+      "boundary_fixture__test__efficiency__c0533096817446bc": "satisfied"
+    },
+    "report": {
+      "catalog_fingerprint": "70c3b17e488afa771d12740f2d9e1194404b299c719f03dadd9322856d678608",
+      "assessed_entry_count": 3,
+      "headline": "violation",
+      "coverage": {
+        "authored_usage_total": 3,
+        "applicable_gate_total": 3,
+        "assessed_gate_count": 3,
+        "unassessed_gate_count": 0,
+        "inapplicable_gate_count": 0,
+        "unassessed_reasons": {},
+        "coverage_state": "complete"
+      },
+      "results": [
+        {
+          "constraint_id": "boundary_fixture__test__lower__cbf884db55cbf73c",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 38.0,
+          "observed": {
+            "demand": 38.0
+          }
+        },
+        {
+          "constraint_id": "boundary_fixture__test__upper__d0ac1134a7016987",
+          "actual_value": false,
+          "status": "violated",
+          "margin": -0.5,
+          "observed": {
+            "demand": 38.0,
+            "capacity": 37.5
+          }
+        },
+        {
+          "constraint_id": "boundary_fixture__test__efficiency__c0533096817446bc",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "eta_source_in": 0.5,
+            "eta_couple_in": 0.75
+          }
+        }
+      ]
+    }
+  },
+  "negative": {
+    "outputs": {
+      "boundary_fixture__legacy__heat__p_wallplug_total": 80.0,
+      "boundary_fixture__legacy__heat__p_delivered": 50.0,
+      "boundary_fixture__legacy__heat__p_coupled": 30.0,
+      "boundary_fixture__legacy__heat__eta_pin_eff": 0.375,
+      "boundary_fixture__legacy__operating_heat__p_wallplug": 80.0,
+      "boundary_fixture__legacy__operating_heat__p_coupled": 30.0,
+      "boundary_fixture__legacy__operating_heat__p_delivered": 40.0,
+      "boundary_fixture__test__heat__p_wallplug_total": 100.0,
+      "boundary_fixture__test__heat__p_delivered": 50.0,
+      "boundary_fixture__test__heat__p_coupled": 37.5,
+      "boundary_fixture__test__heat__eta_pin_eff": 0.375,
+      "boundary_fixture__test__operating_heat__p_wallplug": -2.6666666666666665,
+      "boundary_fixture__test__operating_heat__p_coupled": -1.0,
+      "boundary_fixture__test__operating_heat__p_delivered": -1.3333333333333333
+    },
+    "responses": {
+      "headline": "violated",
+      "boundary_fixture__test__lower__cbf884db55cbf73c": "violated",
+      "boundary_fixture__test__upper__d0ac1134a7016987": "satisfied",
+      "boundary_fixture__test__efficiency__c0533096817446bc": "satisfied"
+    },
+    "report": {
+      "catalog_fingerprint": "70c3b17e488afa771d12740f2d9e1194404b299c719f03dadd9322856d678608",
+      "assessed_entry_count": 3,
+      "headline": "violation",
+      "coverage": {
+        "authored_usage_total": 3,
+        "applicable_gate_total": 3,
+        "assessed_gate_count": 3,
+        "unassessed_gate_count": 0,
+        "inapplicable_gate_count": 0,
+        "unassessed_reasons": {},
+        "coverage_state": "complete"
+      },
+      "results": [
+        {
+          "constraint_id": "boundary_fixture__test__lower__cbf884db55cbf73c",
+          "actual_value": false,
+          "status": "violated",
+          "margin": -1.0,
+          "observed": {
+            "demand": -1.0
+          }
+        },
+        {
+          "constraint_id": "boundary_fixture__test__upper__d0ac1134a7016987",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": 38.5,
+          "observed": {
+            "demand": -1.0,
+            "capacity": 37.5
+          }
+        },
+        {
+          "constraint_id": "boundary_fixture__test__efficiency__c0533096817446bc",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "eta_source_in": 0.5,
+            "eta_couple_in": 0.75
+          }
+        }
+      ]
+    }
+  }
+}

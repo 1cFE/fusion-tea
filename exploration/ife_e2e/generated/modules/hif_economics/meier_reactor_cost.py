@@ -12,17 +12,18 @@ b = 0.49 (power scaling exponent).
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Ref**: Eq. 3 (lines 119-137)
 *Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$.
+*Last Updated**: 2026-09-11
 
 Inputs:
-    - thermal_power_gw: thermal_power_gw parameter
+    - thermal_power_gw_in: thermal_power_gw_in parameter
     - num_units: num_units parameter
 
 Outputs:
     - reactor_cost_billions: reactor_cost_billions result
 
-SysML Source: root-0/analyses/hif_economics.sysml:43
+SysML Source: root-0/analyses/hif_economics.sysml:45
 
-SysML Source: root-0/analyses/hif_economics.sysml:43
+SysML Source: root-0/analyses/hif_economics.sysml:45
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/hif_economics/meier_reactor_cost_impl.py
@@ -38,10 +39,10 @@ class Meier_Reactor_CostInput(BaseModel):
     """Input model for Meier_Reactor_CostModule.
 
     Attributes:
-        thermal_power_gw: thermal_power_gw input
+        thermal_power_gw_in: thermal_power_gw_in input
         num_units: num_units input
     """
-    thermal_power_gw: float = Field(..., description="thermal_power_gw input")
+    thermal_power_gw_in: float = Field(..., description="thermal_power_gw_in input")
     num_units: float = Field(..., description="num_units input")
 
 
@@ -58,20 +59,21 @@ b = 0.49 (power scaling exponent).
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Ref**: Eq. 3 (lines 119-137)
 *Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$.
+*Last Updated**: 2026-09-11
 
 Inputs:
-    - thermal_power_gw: thermal_power_gw parameter
+    - thermal_power_gw_in: thermal_power_gw_in parameter
     - num_units: num_units parameter
 
 Outputs:
     - reactor_cost_billions: reactor_cost_billions result
 
-SysML Source: root-0/analyses/hif_economics.sysml:43
+SysML Source: root-0/analyses/hif_economics.sysml:45
 
-    SysML Source: root-0/analyses/hif_economics.sysml:43
+    SysML Source: root-0/analyses/hif_economics.sysml:45
 
     Calculation Specification:
-        reactor_cost_billions = 0.66 * (thermal_power_gw / 1.67) ** 0.49 * (0.72 * num_units + 0.28)
+        reactor_cost_billions = 0.66 * (thermal_power_gw_in / 1.67) ** 0.49 * (0.72 * num_units + 0.28)
         
 Documentation:
 HIF reactor plant direct cost (excluding driver and target factory).
@@ -84,6 +86,7 @@ b = 0.49 (power scaling exponent).
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Ref**: Eq. 3 (lines 119-137)
 *Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$.
+*Last Updated**: 2026-09-11
 
     IMPLEMENTATION: See ife_tea.handwritten.hif_economics.meier_reactor_cost_impl
     for manual implementation.
@@ -95,31 +98,31 @@ b = 0.49 (power scaling exponent).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, thermal_power_gw: float, num_units: float    ) -> Meier_Reactor_CostInput:
+        self, thermal_power_gw_in: float, num_units: float    ) -> Meier_Reactor_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            thermal_power_gw: thermal_power_gw input
+            thermal_power_gw_in: thermal_power_gw_in input
             num_units: num_units input
 
         Returns:
             Validated input model
         """
-        return Meier_Reactor_CostInput(thermal_power_gw=thermal_power_gw, num_units=num_units)
+        return Meier_Reactor_CostInput(thermal_power_gw_in=thermal_power_gw_in, num_units=num_units)
 
     def run(
-        self, thermal_power_gw: float, num_units: float    ) -> ModuleResult[Float]:
+        self, thermal_power_gw_in: float, num_units: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            thermal_power_gw: thermal_power_gw input
+            thermal_power_gw_in: thermal_power_gw_in input
             num_units: num_units input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(thermal_power_gw, num_units)
+        validated_inputs = self.validate_and_fill_default(thermal_power_gw_in, num_units)
 
         # Import handwritten implementation
         from ife_tea.handwritten.hif_economics.meier_reactor_cost_impl import (

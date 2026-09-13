@@ -1,0 +1,34 @@
+F....................................................................... [ 23%]
+........................................................................ [ 47%]
+........................................................................ [ 70%]
+........................................................................ [ 94%]
+..................                                                       [100%]
+=================================== FAILURES ===================================
+___________ test_current_contract_edges_and_fresh_package_agreement ____________
+
+    def test_current_contract_edges_and_fresh_package_agreement():
+        import runpy
+        runpy.run_path(str(H/'contract_checks.py'))
+        expected=json.loads((H/'generated-hashes.json').read_text())
+        for path in ('source-attempt-1','snapshot-attempt-1'):
+            assert hashes(H/path)==expected
+        # Historical generation receipts stay frozen; current receipt is WI-053.
+        from tests.models.current_mfe_regressions import DOMAIN_EVIDENCE
+>       assert hashes(ROOT/'exploration/stellarator_e2e/generated')==json.loads((DOMAIN_EVIDENCE/'candidate-package-hashes.json').read_text())
+E       AssertionError: assert {'IMPLEMENTAT...0b07bc2', ...} == {'IMPLEMENTAT...0b07bc2', ...}
+E         
+E         Omitting 230 identical items, use -vv to show
+E         Differing items:
+E         {'contracts/package_contract.json': 'bfc3071c2f0b4b5c75e136d814794118a3c557f88d68f9f4a0f8f50572f5630c'} != {'contracts/package_contract.json': 'bc06b828389080f8c2f6282b1804ddd227e8c215732679704bf126250b716e54'}
+E         {'modules/mfe_plant/mfe_power_plant/overnight_capital.py': 'c15b8ee35948b012214a71204ee63aeeccc910034c4d6edaaaa86f86f0aea920'} != {'modules/mfe_plant/mfe_power_plant/overnight_capital.py': '66e97aa7e851e6cdffb3da05d8fa446469221af13c089c9974b64faf17625137'}
+E         {'schemas/plasma_geometry_output.py': 'a7de758ac5...
+E         
+E         ...Full output truncated (16 lines hidden), use '-vv' to show
+
+tests/models/test_mfe_major_radius.py:94: AssertionError
+----------------------------- Captured stdout call -----------------------------
+PASS all 246 surviving parameter records/default values exact; only five binding operands change; fixed anchor edges exact
+PASS exact nine edges, six anchor edges, complete contract census and delta
+=========================== short test summary info ============================
+FAILED tests/models/test_mfe_major_radius.py::test_current_contract_edges_and_fresh_package_agreement
+1 failed, 305 passed in 22.58s

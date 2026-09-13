@@ -1,0 +1,323 @@
+[
+  {
+    "path": "context/goal.md",
+    "source_path": "work/orchestration/goals/fusion-audit-remediation/goal.md",
+    "source_commit": "dde473160ea1a51a3f8b2129f815737f1af55fff",
+    "sha256": "d35b93fc60c7d00bdb031b0f4d3bcc1183b5bc2b48302faab0cd4263083070bd",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/learnings.md",
+    "source_path": "work/orchestration/goals/fusion-audit-remediation/learnings.md",
+    "source_commit": "eed3b976f34b1a6b2e8ccd4cc3d2e112b45071c6",
+    "sha256": "b6b92539d6350ab765635118d40bd3db4f20b51fe7d5aff807447bcf7bc2af37",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/goal-trail.md",
+    "source_path": "work/orchestration/goals/fusion-audit-remediation/trail.md",
+    "source_commit": "b065b212d0559aceb0fb739a2d42e09c832ea1aa",
+    "sha256": "8b27a8b78c492413960f66d8c89117c6b5ba8f288a6c733d4f16a8be5ebe8d7c",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/integration_return.json",
+    "source_path": "work/orchestration/goals/fusion-audit-remediation/evidence/T-025_pin/integration_return.json",
+    "source_commit": "b23b2327c8c9f8209775b5484d81d78122d636be",
+    "sha256": "dfc969f2da345fc77bb769615ebaf8e76ddf1e1d6c40bd9e17288f5e543492e1",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/WI-051-audit.md",
+    "source_path": "work/active/WI-051_mfe-model-owned-major-radius/audit.md",
+    "source_commit": "bf3376bea45b0b01e2ab840c6bfcfe154a3becf2",
+    "sha256": "bc627a16ccc3c3561129d83edc436353aa3981018a6a86b33f2b22f8dbba1662",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/WI-051-audit-report.md",
+    "source_path": "work/analysis/20260912-003541_audit_WI-051.md",
+    "source_commit": "bf3376bea45b0b01e2ab840c6bfcfe154a3becf2",
+    "sha256": "c8c50764f1586b1cbeb9fa26f660f957ce7ee2431bded28329d1726dc550d754",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/consumer-audit.md",
+    "source_path": ".project/active/mfe-major-radius-study-package/audit.md",
+    "source_commit": "7fe8d351208986ff62abc43080c51b796645ee11",
+    "sha256": "c08b9245ea45f256f143094c18b482d40fd3f577c72c242d143f1b6e1976f406",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/consumer-handoff.md",
+    "source_path": "work/active/WI-051_mfe-model-owned-major-radius/implementation/consumer-handoff.md",
+    "source_commit": "641c10512076cc21fac78715de2effc2c33b9194",
+    "sha256": "e06744a74ec7b6aece29872c90a6fb9f65df3bff87c92ded6a87e273854701b1",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/ANNEX.md",
+    "source_path": "exploration/stellarator_e2e/studies/ANNEX.md",
+    "source_commit": "f5737119a65ef8dd9306589e499260c127e97bb7",
+    "sha256": "bb56f205558990849aea0f09ca2e4996a929249036e7a765f55cae0e07b68f55",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/STUDY_POLICY.md",
+    "source_path": "modeling_project/STUDY_POLICY.md",
+    "source_commit": "ad2fb4ea1bb5c77ebe5e60e277fb320b481b0872",
+    "sha256": "5f166202b553867af16ff2c349ad5e39988dd73e9a07407ece576314e01ad8ef",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/runbook.md",
+    "source_path": ".claude/skills/run-study/runbook.md",
+    "source_commit": "769c47edeb7ae05bc3a1f51d59231774e1bc5ac8",
+    "sha256": "850ac4e94249f14b73eff220424ad0fcd350bd5e5a7f7bbb1303db0e8b356ae6",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/record-template.md",
+    "source_path": ".claude/skills/run-study/record-template.md",
+    "source_commit": "ad2fb4ea1bb5c77ebe5e60e277fb320b481b0872",
+    "sha256": "fffc66bf3958698a6d6348f646590cdea0ad6512fc1d3d05c7e227912260e9c3",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/manifest.json",
+    "source_path": "exploration/stellarator_e2e/studies/manifest.json",
+    "source_commit": "f5737119a65ef8dd9306589e499260c127e97bb7",
+    "sha256": "0ad528c8a14fed079c895229172db697639bba44e4462122a9561cd33f1c8b72",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/oracle_entry.py",
+    "source_path": "exploration/stellarator_e2e/studies/oracle_entry.py",
+    "source_commit": "f5737119a65ef8dd9306589e499260c127e97bb7",
+    "sha256": "d1e96a65b59728aa5c92827fb2a4ede99a3a33ccf93ba291bf31661928d77df8",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/verify_stellaris.py",
+    "source_path": "exploration/stellarator_e2e/verify_stellaris.py",
+    "source_commit": "f5737119a65ef8dd9306589e499260c127e97bb7",
+    "sha256": "90951874257194cb36ee790faebd2fd27dfcebbe2317c36e1b9869f7ff2aefff",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/study_route.py",
+    "source_path": "exploration/stellarator_e2e/studies/study_route.py",
+    "source_commit": "f5737119a65ef8dd9306589e499260c127e97bb7",
+    "sha256": "3601df5f04cb0561a54864b77d6df88cdba466cc2f47f99c3048dff1b7a46d0e",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/model_contract.json",
+    "source_path": "exploration/stellarator_e2e/generated/contracts/model_contract.json",
+    "source_commit": "641c10512076cc21fac78715de2effc2c33b9194",
+    "sha256": "d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/package_contract.json",
+    "source_path": "exploration/stellarator_e2e/generated/contracts/package_contract.json",
+    "source_commit": "641c10512076cc21fac78715de2effc2c33b9194",
+    "sha256": "7afe83954c8b591c7b30c94b64940f9904d9f25ea9cf4fc6da5bbb87f171c9f7",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/pipeline.yaml",
+    "source_path": "exploration/stellarator_e2e/generated/pipelines/pipeline.yaml",
+    "source_commit": "641c10512076cc21fac78715de2effc2c33b9194",
+    "sha256": "84af29209c51b249b7291c1e01bebe47c7e90d1ebfa442f7073b61724991980f",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/frozen-results.json",
+    "source_path": "work/active/WI-051_mfe-model-owned-major-radius/prototype/frozen-results.json",
+    "source_commit": "66c2b5c09abcaaad99bc9587de7b3d055f454337",
+    "sha256": "65d5e9bb596daca23323c35ffe122e642277767f819a877275e5ff4b8281e589",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/frozen-inventory.json",
+    "source_path": "work/active/WI-051_mfe-model-owned-major-radius/prototype/frozen-inventory.json",
+    "source_commit": "66c2b5c09abcaaad99bc9587de7b3d055f454337",
+    "sha256": "aaf3e6c479f65ee9a27d3ad0ea5b780a2c7086d1174cef54ec7e6b8daeb41dbe",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/frozen-checks.json",
+    "source_path": "work/active/WI-051_mfe-model-owned-major-radius/prototype/frozen-checks.json",
+    "source_commit": "66c2b5c09abcaaad99bc9587de7b3d055f454337",
+    "sha256": "e65359009445997b5a098d1671ef15ab089943a69b25615fc649fb1c51965f4f",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/frozen-source-meaning.md",
+    "source_path": "work/active/WI-051_mfe-model-owned-major-radius/prototype/frozen-source-meaning.md",
+    "source_commit": "66c2b5c09abcaaad99bc9587de7b3d055f454337",
+    "sha256": "92110f6a826da0ed3031db2c361565209271fd43bd20c18798d5bb8a297c1c36",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/expectations.json",
+    "source_path": "work/active/WI-051_mfe-model-owned-major-radius/prototype/expectations.json",
+    "source_commit": "66c2b5c09abcaaad99bc9587de7b3d055f454337",
+    "sha256": "a16c0731e81230060d6c74d0cc93189445ba7f4c06bb002ab2338fe07b25648a",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/WI-051-results.json",
+    "source_path": "work/active/WI-051_mfe-model-owned-major-radius/implementation/acceptance-attempt-2/results.json",
+    "source_commit": "641c10512076cc21fac78715de2effc2c33b9194",
+    "sha256": "968af4db8c7c76291add1e7d2f647c53c101755c2a2a2465bd778cdab7fae60b",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/WI-051-checks.json",
+    "source_path": "work/active/WI-051_mfe-model-owned-major-radius/implementation/acceptance-attempt-2/checks.json",
+    "source_commit": "641c10512076cc21fac78715de2effc2c33b9194",
+    "sha256": "d3595a1a2457602fe154fa38a5c1e7b7864af6126926b575769e4cd3a3aab9f1",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/WI-051-standalone.json",
+    "source_path": "work/active/WI-051_mfe-model-owned-major-radius/implementation/acceptance-attempt-2/standalone.json",
+    "source_commit": "641c10512076cc21fac78715de2effc2c33b9194",
+    "sha256": "7bbdb2d7f33b37d32c914328ec5f462c891cd88d65f92adb324ce2fca1cc7d9b",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/WI-051-schema-refusals.json",
+    "source_path": "work/active/WI-051_mfe-model-owned-major-radius/implementation/acceptance-attempt-2/schema-refusals.json",
+    "source_commit": "641c10512076cc21fac78715de2effc2c33b9194",
+    "sha256": "39f619e27683c92e14850a0e81eaa914a71982261db8bb22cac3a577993b5f26",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/WI-051-numerical-report.md",
+    "source_path": "work/active/WI-051_mfe-model-owned-major-radius/implementation/acceptance-attempt-2/numerical-report.md",
+    "source_commit": "641c10512076cc21fac78715de2effc2c33b9194",
+    "sha256": "22f4bdc773f61d64d9ca0beb7e4e51bb05d8ebafd8c3062170cc94606774b34f",
+    "status": "copied retained evidence, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/T-021-assessment.md",
+    "source_path": "work/analysis/20260911-230953_radius-ownership.md",
+    "source_commit": "2f8856b73954dc596ac49e927510cf7da50919e5",
+    "sha256": "8e0acc80a73bbaefebed508b25fce08815a765a88e2ae01b241eecc4944c0611",
+    "status": "copied retained evidence/source, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/stellaris-table2.png",
+    "source_path": "work/analysis/20260911-230953_radius-ownership-evidence/stellaris-table2.png",
+    "source_commit": "2f8856b73954dc596ac49e927510cf7da50919e5",
+    "sha256": "433306f0a4522a08a1889d8c76a3de64b51b73d148e61c33a0261c89b66eae73",
+    "status": "copied retained evidence/source, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/T-021-probe.py",
+    "source_path": "work/analysis/20260911-230953_radius-ownership-evidence/probe.py",
+    "source_commit": "2f8856b73954dc596ac49e927510cf7da50919e5",
+    "sha256": "6775b0f09a8b15e03088b6d603be3f9805bfbc17e02668e161ed77a5688ece11",
+    "status": "copied retained evidence/source, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/baseline_result.v1.schema.json",
+    "source_path": "scripts/study/schemas/baseline_result.v1.schema.json",
+    "source_commit": "5d7c23a07569bb2b41ec889671f22d6806640a4b",
+    "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b",
+    "status": "copied retained evidence/source, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/preflight.py",
+    "source_path": "scripts/study/preflight.py",
+    "source_commit": "12ac31031e0c4712beb51270d86cef06a3fa3b39",
+    "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472",
+    "status": "copied retained evidence/source, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/verify.py",
+    "source_path": "scripts/study/verify.py",
+    "source_commit": "853469800132b1ae49e19be781fd712a8f3f6b52",
+    "sha256": "4cf1fb8faf9459a0522dea39116a772b4b5067288552ea4fdcf4741908bca77e",
+    "status": "copied retained evidence/source, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/indicators.py",
+    "source_path": "scripts/study/indicators.py",
+    "source_commit": "1bde87717400d0da010c5fc1e46673244ddd8c7b",
+    "sha256": "a1035fa2fdc505d7478039bc05e0e1eb2dab156f08d8ad7cac26d21d4ac4e8a0",
+    "status": "copied retained evidence/source, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/common.py",
+    "source_path": "scripts/study/common.py",
+    "source_commit": "c7b5656ed926d25f691f019031875f53edcbdfbb",
+    "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521",
+    "status": "copied retained evidence/source, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/manifest.py",
+    "source_path": "scripts/study/manifest.py",
+    "source_commit": "620c752d4883ce5e8f8efd57e5d1302144ac432d",
+    "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61",
+    "status": "copied retained evidence/source, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/identity.py",
+    "source_path": "scripts/study/identity.py",
+    "source_commit": "c7b5656ed926d25f691f019031875f53edcbdfbb",
+    "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e",
+    "status": "copied retained evidence/source, not new execution",
+    "source_commit_bytes_match": true
+  },
+  {
+    "path": "context/codex-test-setup.md",
+    "source_path": ".project/codex-test-setup.md",
+    "source_commit": "",
+    "sha256": "c0527b5681a6140f8ba697e3701bf58f8443b2769a4beae81b043ed319b058b8",
+    "status": "copied retained evidence/source, not new execution",
+    "source_commit_bytes_match": null,
+    "provenance_gap": "No repository commit for this installed/untracked path; copied bytes identified by digest."
+  }
+]

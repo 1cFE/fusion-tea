@@ -1,0 +1,2387 @@
+[
+  {},
+  {
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_th_direct": 0.333
+  },
+  {
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_th_direct": 0.333
+  },
+  {
+    "stellarator_09__stellaris__availability_direct": 0.85
+  },
+  {
+    "stellarator_09__stellaris__outage_years": 0.4166666666666667
+  },
+  {
+    "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+    "stellarator_09__stellaris__unplanned_fraction": 0.05
+  },
+  {
+    "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+    "stellarator_09__stellaris__unplanned_fraction": 0.1
+  },
+  {
+    "stellarator_09__stellaris__unplanned_fraction": 0.05
+  },
+  {
+    "stellarator_09__stellaris__unplanned_fraction": 0.1
+  },
+  {
+    "stellarator_09__stellaris__outage_years": 0.8333333333333334
+  },
+  {
+    "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+    "stellarator_09__stellaris__unplanned_fraction": 0.05
+  },
+  {
+    "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+    "stellarator_09__stellaris__unplanned_fraction": 0.1
+  },
+  {
+    "stellarator_09__stellaris__burn_fraction": 0.025
+  },
+  {
+    "stellarator_09__stellaris__burn_fraction": 0.1
+  },
+  {
+    "stellarator_09__stellaris__q_target_ref": 5.0
+  },
+  {
+    "stellarator_09__stellaris__f_rad_total": 0.8
+  },
+  {
+    "stellarator_09__stellaris__f_rad_total": 0.95
+  },
+  {
+    "stellarator_09__stellaris__p_wallplug_heat": 120.0
+  },
+  {
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__outage_years": 0.4166666666666667
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+    "stellarator_09__stellaris__unplanned_fraction": 0.05
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+    "stellarator_09__stellaris__unplanned_fraction": 0.1
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__unplanned_fraction": 0.05
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__unplanned_fraction": 0.1
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__outage_years": 0.8333333333333334
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+    "stellarator_09__stellaris__unplanned_fraction": 0.05
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+    "stellarator_09__stellaris__unplanned_fraction": 0.1
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__burn_fraction": 0.025,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__burn_fraction": 0.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__q_target_ref": 5.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__f_rad_total": 0.8,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__f_rad_total": 0.95,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 120.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__outage_years": 0.4166666666666667
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+    "stellarator_09__stellaris__unplanned_fraction": 0.05
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+    "stellarator_09__stellaris__unplanned_fraction": 0.1
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__unplanned_fraction": 0.05
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__unplanned_fraction": 0.1
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__outage_years": 0.8333333333333334
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+    "stellarator_09__stellaris__unplanned_fraction": 0.05
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+    "stellarator_09__stellaris__unplanned_fraction": 0.1
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__burn_fraction": 0.025,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__burn_fraction": 0.1,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__q_target_ref": 5.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__f_rad_total": 0.8,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__f_rad_total": 0.95,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 120.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__eta_p_direct": 0.5,
+    "stellarator_09__stellaris__loop_live": 0.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_pump_direct": 195.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__cycle_live": 0.0,
+    "stellarator_09__stellaris__eta_th_direct": 0.333,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__availability_direct": 0.85,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+    "stellarator_09__stellaris__unplanned_fraction": 0.05
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+    "stellarator_09__stellaris__unplanned_fraction": 0.1
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+    "stellarator_09__stellaris__unplanned_fraction": 0.05
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+    "stellarator_09__stellaris__unplanned_fraction": 0.1
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+    "stellarator_09__stellaris__unplanned_fraction": 0.05
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+    "stellarator_09__stellaris__unplanned_fraction": 0.1
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__burn_fraction": 0.025,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__burn_fraction": 0.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+    "stellarator_09__stellaris__q_target_ref": 5.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__f_rad_total": 0.8,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__f_rad_total": 0.95,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 120.0
+  },
+  {
+    "stellarator_09__stellaris__f_loss": 0.8,
+    "stellarator_09__stellaris__loop_dT_blanket": 250.0
+  },
+  {
+    "stellarator_09__stellaris__f_loss": 0.8
+  },
+  {
+    "stellarator_09__stellaris__f_loss": 0.8,
+    "stellarator_09__stellaris__loop_dT_blanket": 166.66666666666669
+  },
+  {
+    "stellarator_09__stellaris__loop_dT_blanket": 250.0
+  },
+  {
+    "stellarator_09__stellaris__loop_dT_blanket": 166.66666666666669
+  },
+  {
+    "stellarator_09__stellaris__f_loss": 1.2,
+    "stellarator_09__stellaris__loop_dT_blanket": 250.0
+  },
+  {
+    "stellarator_09__stellaris__f_loss": 1.2
+  },
+  {
+    "stellarator_09__stellaris__f_loss": 1.2,
+    "stellarator_09__stellaris__loop_dT_blanket": 166.66666666666669
+  },
+  {
+    "stellarator_09__stellaris__loop_T_in": 476.15
+  },
+  {
+    "stellarator_09__stellaris__loop_T_in": 477.15
+  },
+  {
+    "stellarator_09__stellaris__loop_T_in": 735.15
+  },
+  {
+    "stellarator_09__stellaris__loop_T_in": 736.15
+  },
+  {
+    "stellarator_09__stellaris__T2_max": 750.0,
+    "stellarator_09__stellaris__T2_min": 135.0,
+    "stellarator_09__stellaris__a_fit": 0.4347,
+    "stellarator_09__stellaris__b_fit": 2.5043
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20
+  },
+  {
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20
+  },
+  {
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 18000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 3.036e+20
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20
+  },
+  {
+    "stellarator_09__stellaris__eta_source_heat": 0.6,
+    "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__eta_source_heat": 0.6,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__eta_source_heat": 0.6,
+    "stellarator_09__stellaris__magnet__I_coil": 15250000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__eta_source_heat": 0.6,
+    "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__eta_source_heat": 0.6,
+    "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+    "stellarator_09__stellaris__n_e0": 5.5660000000000007e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__eta_source_heat": 0.6,
+    "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__eta_source_heat": 0.45,
+    "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 18000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 3.036e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 11.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 25.0
+  },
+  {
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 11.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 15.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 18000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 9.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 3.036e+20,
+    "stellarator_09__stellaris__n_loops": 9.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 19.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 11.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 21.0
+  },
+  {
+    "stellarator_09__stellaris__eta_source_heat": 0.6,
+    "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__n_loops": 12.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__eta_source_heat": 0.6,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__n_loops": 13.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__eta_source_heat": 0.6,
+    "stellarator_09__stellaris__magnet__I_coil": 15250000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__n_loops": 12.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__eta_source_heat": 0.6,
+    "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 10.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__eta_source_heat": 0.6,
+    "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+    "stellarator_09__stellaris__n_e0": 5.5660000000000007e+20,
+    "stellarator_09__stellaris__n_loops": 17.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__eta_source_heat": 0.6,
+    "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__n_loops": 18.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__eta_source_heat": 0.45,
+    "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__n_loops": 12.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 11.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 25.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 11.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 15.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 18000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 9.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 3.036e+20,
+    "stellarator_09__stellaris__n_loops": 9.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 19.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 11.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 21.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 56.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 17.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 41.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 3.036e+20,
+    "stellarator_09__stellaris__n_loops": 12.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 17.0,
+    "stellarator_09__stellaris__eta_source_heat": 0.45,
+    "stellarator_09__stellaris__magnet__I_coil": 15250000.0,
+    "stellarator_09__stellaris__n_e0": 5.5660000000000007e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__eta_source_heat": 0.45,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__eta_source_heat": 0.45,
+    "stellarator_09__stellaris__magnet__I_coil": 15250000.0,
+    "stellarator_09__stellaris__n_e0": 5.5660000000000007e+20,
+    "stellarator_09__stellaris__n_loops": 24.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__eta_source_heat": 0.45,
+    "stellarator_09__stellaris__magnet__I_coil": 14500000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 10.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 17.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 41.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 3.036e+20,
+    "stellarator_09__stellaris__n_loops": 12.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.4,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.4,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 28.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.4,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 20.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.4,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.6,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 29.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.4,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 20.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 16.0,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__tau_ratio_ash": 4.0
+  },
+  {
+    "stellarator_09__stellaris__tau_ratio_ash": 16.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 16.0,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 30.0,
+    "stellarator_09__stellaris__tau_ratio_ash": 2.0
+  },
+  {
+    "stellarator_09__stellaris__n_loops": 10.0,
+    "stellarator_09__stellaris__tau_ratio_ash": 16.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+    "stellarator_09__stellaris__tau_ratio_ash": 4.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+    "stellarator_09__stellaris__tau_ratio_ash": 16.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__n_loops": 31.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+    "stellarator_09__stellaris__tau_ratio_ash": 2.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 3.036e+20,
+    "stellarator_09__stellaris__n_loops": 6.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 17.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 19.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 19.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 17.0,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 17.0,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 2.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 23.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 2.0,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__n_loops": 18.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.0,
+    "stellarator_09__stellaris__magnet__I_coil": 15000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__magnet__I_coil": 16000000.0,
+    "stellarator_09__stellaris__n_loops": 17.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__magnet__I_coil": 16000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 2.0,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 2.0,
+    "stellarator_09__stellaris__magnet__I_coil": 15000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 2.0,
+    "stellarator_09__stellaris__magnet__I_coil": 15000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 2.0,
+    "stellarator_09__stellaris__magnet__I_coil": 15000000.0,
+    "stellarator_09__stellaris__n_loops": 19.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 15000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 17.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__n_loops": 18.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 15000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 15000000.0,
+    "stellarator_09__stellaris__n_loops": 19.0
+  },
+  {
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 3.542e+20
+  },
+  {
+    "stellarator_09__stellaris__a": 1.5,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 29.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 16.0,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 17.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 16.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__n_loops": 22.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_loops": 15.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 17.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__n_loops": 23.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 18000000.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__magnet__I_coil": 14250000.0,
+    "stellarator_09__stellaris__n_e0": 5.5660000000000007e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 17.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 16.0,
+    "stellarator_09__stellaris__a": 2.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 51.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 3.036e+20,
+    "stellarator_09__stellaris__n_loops": 24.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 17.0,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 18.0,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__n_loops": 40.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 30.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 16.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 3.542e+20
+  },
+  {
+    "stellarator_09__stellaris__R": 11.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 3.036e+20,
+    "stellarator_09__stellaris__n_loops": 6.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.5,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 3.036e+20,
+    "stellarator_09__stellaris__n_loops": 6.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__T_i0": 16.0,
+    "stellarator_09__stellaris__a": 2.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 3.542e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 17.2,
+    "stellarator_09__stellaris__a": 2.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 28.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.4
+  },
+  {
+    "stellarator_09__stellaris__a": 1.4,
+    "stellarator_09__stellaris__n_loops": 15.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.5
+  },
+  {
+    "stellarator_09__stellaris__a": 1.5,
+    "stellarator_09__stellaris__n_loops": 15.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.6
+  },
+  {
+    "stellarator_09__stellaris__a": 1.6,
+    "stellarator_09__stellaris__n_loops": 16.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__n_loops": 16.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.8
+  },
+  {
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__n_loops": 16.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.9
+  },
+  {
+    "stellarator_09__stellaris__a": 1.9,
+    "stellarator_09__stellaris__n_loops": 16.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.0,
+    "stellarator_09__stellaris__n_loops": 16.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.1
+  },
+  {
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__n_loops": 17.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.2
+  },
+  {
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__n_loops": 17.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.3
+  },
+  {
+    "stellarator_09__stellaris__a": 2.3,
+    "stellarator_09__stellaris__n_loops": 17.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.4
+  },
+  {
+    "stellarator_09__stellaris__a": 2.4,
+    "stellarator_09__stellaris__n_loops": 17.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 22.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.3,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.3,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 22.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.4,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.4,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 22.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.5,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.5,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 23.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.6,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.6,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 23.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 23.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.8,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.8,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 23.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.9,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.9,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 23.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 23.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.6,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.6,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 22.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.9,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.9,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 25.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 27.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.3,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.3,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 28.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.4,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.5,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.5,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 28.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.6,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.6,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 29.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 29.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.8,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.8,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 29.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.9,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.9,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 29.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 29.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 29.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 29.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.4,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.4,
+    "stellarator_09__stellaris__n_loops": 15.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.5,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.5,
+    "stellarator_09__stellaris__n_loops": 15.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.6,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.6,
+    "stellarator_09__stellaris__n_loops": 16.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.7,
+    "stellarator_09__stellaris__n_loops": 16.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__n_loops": 16.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.9,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 1.9,
+    "stellarator_09__stellaris__n_loops": 16.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.0,
+    "stellarator_09__stellaris__n_loops": 16.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__n_loops": 17.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__n_loops": 17.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.3,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.3,
+    "stellarator_09__stellaris__n_loops": 17.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.4,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__a": 2.4,
+    "stellarator_09__stellaris__n_loops": 17.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 22.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.3,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.3,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 22.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.4,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.4,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 22.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.5,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.5,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 23.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.6,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.6,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 23.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 23.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.8,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.8,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 23.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.9,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.9,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 23.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 23.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.6,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.6,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 22.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.9,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 1.9,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 25.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 27.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.3,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.3,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 28.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.4,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.4,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 28.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.5,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.5,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 28.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.6,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.7,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 29.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.8,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.8,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 29.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.9,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.9,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 29.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 29.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.1,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 29.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 3.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 29.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 27.0
+  },
+  {
+    "stellarator_09__stellaris__eta_source_heat": 0.6,
+    "stellarator_09__stellaris__magnet__I_coil": 15250000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.0,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 15.7,
+    "stellarator_09__stellaris__T_i0": 13.0,
+    "stellarator_09__stellaris__a": 2.2,
+    "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+    "stellarator_09__stellaris__n_loops": 27.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 16.0,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__tau_ratio_ash": 12.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__T_i0": 16.0,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.048e+20,
+    "stellarator_09__stellaris__n_loops": 16.0,
+    "stellarator_09__stellaris__tau_ratio_ash": 12.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+    "stellarator_09__stellaris__tau_ratio_ash": 12.0
+  },
+  {
+    "stellarator_09__stellaris__R": 14.2,
+    "stellarator_09__stellaris__a": 1.8,
+    "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+    "stellarator_09__stellaris__n_e0": 4.554e+20,
+    "stellarator_09__stellaris__n_loops": 16.0,
+    "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+    "stellarator_09__stellaris__tau_ratio_ash": 12.0
+  }
+]

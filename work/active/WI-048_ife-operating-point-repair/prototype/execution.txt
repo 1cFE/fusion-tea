@@ -1,0 +1,8 @@
+baseline {'headline': 'satisfied', 'hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c': 'satisfied', 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': 'satisfied'}
+beam10 {'headline': 'satisfied', 'hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c': 'satisfied', 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': 'satisfied'}
+eff35 {'headline': 'satisfied', 'hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c': 'satisfied', 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': 'satisfied'}
+rate5 {'headline': 'satisfied', 'hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c': 'satisfied', 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': 'satisfied'}
+negative {'headline': 'violated', 'hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c': 'violated', 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': 'satisfied'}
+zero {'headline': 'violated', 'hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c': 'violated', 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': 'satisfied'}
+positive {'headline': 'satisfied', 'hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c': 'satisfied', 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': 'satisfied'}
+PASS: identities, beam mutation, and invalid-price/verdict pairing for seven public executions

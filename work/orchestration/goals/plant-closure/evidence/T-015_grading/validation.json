@@ -1,0 +1,16 @@
+{
+  "outcome": "pass",
+  "records": 26,
+  "scored": 23,
+  "at_or_above_target": 17,
+  "below_target": [
+    "R2c.P",
+    "R10.P",
+    "R7.S",
+    "R9.S",
+    "R10.S",
+    "R12.S"
+  ],
+  "not_applicable": 3,
+  "checks": "Unique cells; complete protocol fields and per-cell versions; every below-target cell has B-2/B-3/B-4 consequences and a responsible next-evidence home. This is structural packet validation, not independent regrading or acceptance."
+}

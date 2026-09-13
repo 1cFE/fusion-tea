@@ -1,0 +1,86 @@
+[
+  [
+    "1",
+    "model",
+    "Computed versus held availability has no modeled reliability resistance.",
+    "Sensitivity-only owner ruling; reliability model remains missing.",
+    "unrouted"
+  ],
+  [
+    "2",
+    "model",
+    "Outage duration has no modeled maintenance-resource or access resistance.",
+    "Retain 5/7/10-month conditional comparison.",
+    "unrouted"
+  ],
+  [
+    "3",
+    "model",
+    "Residual unplanned downtime has no modeled reliability response.",
+    "Retain 0/0.05/0.10 conditional comparison.",
+    "unrouted"
+  ],
+  [
+    "4",
+    "model",
+    "Burn fraction changes fuel flows and costs without a resisting modeled processing limit.",
+    "Retain 0.025/0.05/0.10 sensitivity and fuel-capacity gap.",
+    "unrouted"
+  ],
+  [
+    "5",
+    "model",
+    "The current study has 19 fully satisfied cases among 371 distinct executed cases.",
+    "Sampled model satisfaction only; no buildability or global-optimum certification.",
+    "documented seam: current plant comparison"
+  ],
+  [
+    "6",
+    "model",
+    "Representative loop and cycle fits lack separately sized equipment costs and materials qualification.",
+    "Bounded source/calibration transfer; fresh grader assesses full anchors.",
+    "unrouted"
+  ],
+  [
+    "7",
+    "model",
+    "Fuel throughput and pressure-conditional pumping speed leave inventory, startup and installed vacuum-train evidence missing.",
+    "Retain complete rubric conjuncts and missing source inputs.",
+    "unrouted"
+  ],
+  [
+    "8",
+    "model",
+    "Physical required TBR and its margin are published but the authored TBR predicate still checks the held floor.",
+    "Retain the computed conditional deficit separately from predicate satisfaction; no recovery tuning.",
+    "documented seam: breeding adequacy"
+  ],
+  [
+    "9",
+    "process",
+    "Pre-execution critique found three changing direct-control inputs missing from the declaration.",
+    "Corrected before baseline and scan; original review and objective disposition retained.",
+    "reviews/pre-execution-disposition.md"
+  ],
+  [
+    "10",
+    "process",
+    "The initial serial scan was stopped for performance and replaced by isolated parallel oracle evaluations.",
+    "Original script/log retained; exact control equality passed; proposal and native lifecycle unchanged.",
+    "execution/scan-operational-note.md"
+  ],
+  [
+    "12",
+    "process",
+    "The owner stopped the exhaustive replay after 2525 completed cases and requested risk-focused reduction.",
+    "Use the 371-case primary store for native counts; retain full-window oracle evidence and stopped-store prefix checks separately.",
+    "preparation/reduction-amendment.md"
+  ],
+  [
+    "11",
+    "process",
+    "Inherited certificates retain the historical quarantined-file hashing violation and claim-specific audit limits.",
+    "No historical compliance or independent item-audit claim added; owner acceptance remains separate.",
+    "context/consumer-audit.md"
+  ]
+]

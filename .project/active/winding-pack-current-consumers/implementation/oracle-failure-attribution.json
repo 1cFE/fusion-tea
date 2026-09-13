@@ -1,0 +1,62 @@
+{
+  "entering_basis": "18b67dd5",
+  "implementation": "483fa60b",
+  "after_evidence": "oracle-after-tests.txt (30 passed, all collected tests)",
+  "failures": [
+    {
+      "identity": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides0-I_coil must be finite and nonnegative]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides1-I_coil must be finite and nonnegative]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides2-I_coil must be finite and nonnegative]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides3-I_coil must be finite and nonnegative]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides4-I_coil must be finite and nonnegative]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides5-j_wp must be finite and positive]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides6-j_wp must be finite and positive]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides7-j_wp must be finite and positive]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides8-j_wp must be finite and positive]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides9-j_wp must be finite and positive]",
+      "before": "failed",
+      "after": "passed"
+    },
+    {
+      "identity": "tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides10-wp_side must be nonzero]",
+      "before": "failed",
+      "after": "passed"
+    }
+  ]
+}

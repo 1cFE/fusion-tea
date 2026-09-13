@@ -1,0 +1,46 @@
+{
+  "entry_ife": {
+    "count": 26,
+    "categories": {
+      "ValidationCode.V4_UNSUPPORTED_OPERATOR": 4,
+      "ValidationCode.L6_DESIGN_ATTR_INCOMPLETE": 18,
+      "ValidationCode.L6_DESIGN_ATTR_UNEXTRACTABLE": 4
+    }
+  },
+  "prototype": {
+    "count": 34,
+    "categories": {
+      "ValidationCode.V2_DYNAMIC_EXPRESSION": 2,
+      "ValidationCode.V4_UNSUPPORTED_OPERATOR": 7,
+      "ValidationCode.L6_DESIGN_ATTR_INCOMPLETE": 18,
+      "ValidationCode.L6_DESIGN_ATTR_UNEXTRACTABLE": 7
+    }
+  },
+  "final_ife": {
+    "count": 50,
+    "categories": {
+      "ValidationCode.V2_DYNAMIC_EXPRESSION": 2,
+      "ValidationCode.V4_UNSUPPORTED_OPERATOR": 15,
+      "ValidationCode.L6_DESIGN_ATTR_INCOMPLETE": 18,
+      "ValidationCode.L6_DESIGN_ATTR_UNEXTRACTABLE": 15
+    }
+  },
+  "entry_whole_tree": {
+    "count": 253,
+    "categories": {
+      "ValidationCode.V2_DYNAMIC_EXPRESSION": 7,
+      "ValidationCode.V4_UNSUPPORTED_OPERATOR": 66,
+      "ValidationCode.L6_DESIGN_ATTR_INCOMPLETE": 119,
+      "ValidationCode.L6_DESIGN_ATTR_UNEXTRACTABLE": 61
+    }
+  },
+  "final_whole_tree": {
+    "count": 277,
+    "categories": {
+      "ValidationCode.V2_DYNAMIC_EXPRESSION": 9,
+      "ValidationCode.V4_UNSUPPORTED_OPERATOR": 77,
+      "ValidationCode.L6_DESIGN_ATTR_INCOMPLETE": 119,
+      "ValidationCode.L6_DESIGN_ATTR_UNEXTRACTABLE": 72
+    }
+  }
+}

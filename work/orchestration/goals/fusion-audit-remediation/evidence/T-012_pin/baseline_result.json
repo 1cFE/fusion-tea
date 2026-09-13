@@ -1,0 +1,77 @@
+{
+  "schema_version": "study-baseline-result/v1",
+  "executed_under": {
+    "identity_digest": "2810897c4ef9db8cb646aec5616884de42963c41e3b92ac20c2947450ffcbfd7",
+    "store_id": "work/orchestration/goals/fusion-audit-remediation/evidence/T-012_pin/_work/ife-baseline-point-v1.db",
+    "case_id": "ife-baseline-point-v1:c0000"
+  },
+  "point": {
+    "hif_plant_pkg__hif_plant__availability": 0.9,
+    "hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple": 1.15,
+    "hif_plant_pkg__hif_plant__chamber__yield_cost_constant": 5000000.0,
+    "hif_plant_pkg__hif_plant__construction_duration": 5.0,
+    "hif_plant_pkg__hif_plant__discount_rate": 0.08,
+    "hif_plant_pkg__hif_plant__driver__beam_energy_mj": 5.0,
+    "hif_plant_pkg__hif_plant__driver__efficiency": 0.28,
+    "hif_plant_pkg__hif_plant__driver__lifetime_shots": 6000000000.0,
+    "hif_plant_pkg__hif_plant__driver__num_chambers": 1.0,
+    "hif_plant_pkg__hif_plant__frequency": 4.6,
+    "hif_plant_pkg__hif_plant__gain": 87.0,
+    "hif_plant_pkg__hif_plant__om_cost_constant": 65.0,
+    "hif_plant_pkg__hif_plant__operational_duration": 40.0,
+    "hif_plant_pkg__hif_plant__plant_cost_constant": 2000.0,
+    "hif_plant_pkg__hif_plant__reactor_units": 1.0,
+    "hif_plant_pkg__hif_plant__target_factory__cost_per_target": 10.0,
+    "hif_plant_pkg__hif_plant__target_factory_direct_cost_billions": 0.1,
+    "hif_plant_pkg__hif_plant__thermal_efficiency": 0.45,
+    "hif_plant_pkg__hif_plant__viability__threshold": 10.0
+  },
+  "channels": {
+    "hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules": 17857142.857142854,
+    "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions": 0.9845222400000001,
+    "hif_plant_pkg__hif_plant__driver__meier_cost__gamma": 55.13324544000002,
+    "hif_plant_pkg__hif_plant__hawker_price__generating": 1.0,
+    "hif_plant_pkg__hif_plant__hawker_price__price": 240.66646063955096,
+    "hif_plant_pkg__hif_plant__lcoe_calc__annual_driver_replacement_cost": 21437719.738306563,
+    "hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost": 13415949859.392103,
+    "hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy": 55744991.735617585,
+    "hif_plant_pkg__hif_plant__lcoe_calc__driver_capital_cost": 984522240.0000001,
+    "hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power": 82142857.14285712,
+    "hif_plant_pkg__hif_plant__lcoe_calc__driver_lifetime_years": 45.92476494786804,
+    "hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction": 0.07932541665675098,
+    "hif_plant_pkg__hif_plant__lcoe_calc__energy_on_target": 5000000.0,
+    "hif_plant_pkg__hif_plant__lcoe_calc__fusion_energy_per_shot": 435000000.0,
+    "hif_plant_pkg__hif_plant__lcoe_calc__fusion_power": 2000999999.9999998,
+    "hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power": 1035517499.9999998,
+    "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power": 871231785.7142856,
+    "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw": 0.8712317857142856,
+    "hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power": 82142857.14285712,
+    "hif_plant_pkg__hif_plant__lcoe_calc__shots_per_year": 130648464.0,
+    "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power": 2301149999.9999995,
+    "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw": 2.3011499999999994,
+    "hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction": 0.15865083331350197,
+    "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions": 3.397919111176602,
+    "hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost": 0.38396485956295606,
+    "hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator": 0.06868791398571428,
+    "hif_plant_pkg__hif_plant__meier_price__generating": 1.0,
+    "hif_plant_pkg__hif_plant__meier_price__price": 5.589991561584082,
+    "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions": 0.7722641595500556,
+    "hif_plant_pkg__hif_plant__pv_factors__construction_factor": 3.9927100370780857,
+    "hif_plant_pkg__hif_plant__pv_factors__operation_factor": 8.115691466072393,
+    "hif_plant_pkg__hif_plant__recirc_calc__f_recirc": 0.07932541665675098
+  },
+  "verdicts": [
+    {
+      "constraint_id": "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c",
+      "definition_qualified_name": "fusion_cycle::'Positive Net Generation'",
+      "source_local_identity": "net_positive",
+      "status": "satisfied"
+    },
+    {
+      "constraint_id": "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b",
+      "definition_qualified_name": "fusion_cycle::'Viability Threshold'",
+      "source_local_identity": "viability",
+      "status": "satisfied"
+    }
+  ]
+}

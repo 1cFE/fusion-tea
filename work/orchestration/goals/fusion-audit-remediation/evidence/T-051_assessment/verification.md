@@ -1,0 +1,9 @@
+# T-051 document and record verification
+
+Assessment: work/analysis/20260913-171817_fusion-audit-current-assessment.md@28b64ad9 and its four detailed notes. These checks add document/record evidence only; no model, source-image or numerical execution was performed.
+
+- `.codex-test/run env PYTHONPATH=. python work/orchestration/goals/fusion-audit-remediation/evidence/T-051_assessment/verify.py`: PASS. Exactly twenty ordered findings, six bounded corrections/nine partial/five open; all four note paths and cited commits resolve; both IFE study/log joins agree; twenty-seven appended existing dispositions exist.
+- `.codex-test/run python -m pytest tests/study/test_records.py -k 'findings_join or joined_disposition' -q --junitxml=work/orchestration/goals/fusion-audit-remediation/evidence/T-051_assessment/record-joins.xml`: 15 passed, 28 deselected. Original log and XML retained.
+- The append script validates the twenty-seven selected existing finding joins and preserves the prior log prefix. Seven IFE and twenty MFE rows receive current assessment references. Plant-closure #13 now credits the separately authorized bounded publication repair@d7214856; historical study claims remain historical.
+
+Operational corrections: an initial ad hoc report selector counted five decision-table references as finding rows; the kept checker explicitly scopes the finding table. The initial append preflight rejected an unrelated historical seven-column row before any write; append-dispositions-initial.py preserves it, and the corrected script validates only selected IDs. The kept verifier's first invocation lacked the repository import path (verify-initial.log); the successful invocation supplies PYTHONPATH=.. These were local checking corrections within the same assessment, not new semantic tasks or production changes.

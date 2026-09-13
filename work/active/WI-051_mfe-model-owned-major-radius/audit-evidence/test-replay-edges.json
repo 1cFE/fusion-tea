@@ -1,0 +1,47 @@
+[
+  {
+    "module": "stellarator_09__stellaris__coil_length",
+    "formal": "R0",
+    "binding": "float stellarator_plant_params.stellarator_09__stellaris__R"
+  },
+  {
+    "module": "stellarator_09__stellaris__rb",
+    "formal": "R_in",
+    "binding": "float stellarator_plant_params.stellarator_09__stellaris__R"
+  },
+  {
+    "module": "stellarator_09__stellaris__field_calc",
+    "formal": "R0",
+    "binding": "float stellarator_plant_params.stellarator_09__stellaris__R"
+  },
+  {
+    "module": "stellarator_09__stellaris__peak_field_calc",
+    "formal": "R_in",
+    "binding": "float stellarator_plant_params.stellarator_09__stellaris__R"
+  },
+  {
+    "module": "stellarator_09__stellaris__magnet_cost",
+    "formal": "R0",
+    "binding": "float stellarator_plant_params.stellarator_09__stellaris__R"
+  },
+  {
+    "module": "stellarator_09__stellaris__geom",
+    "formal": "R_in",
+    "binding": "float stellarator_plant_params.stellarator_09__stellaris__R"
+  },
+  {
+    "module": "stellarator_09__stellaris__sustain",
+    "formal": "R_in",
+    "binding": "float stellarator_plant_params.stellarator_09__stellaris__R"
+  },
+  {
+    "module": "stellarator_09__stellaris__divheat",
+    "formal": "R_in",
+    "binding": "float stellarator_plant_params.stellarator_09__stellaris__R"
+  },
+  {
+    "module": "stellarator_09__stellaris__stored_energy",
+    "formal": "R0",
+    "binding": "float stellarator_plant_params.stellarator_09__stellaris__R"
+  }
+]

@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/hif_economics.sysml:65
+SysML Source: root-0/analyses/hif_economics.sysml:68
 
 SysML Expressions:
     total_capital_billions = 1.83 * (reactor_cost + driver_cost + target_factory_cost)
@@ -15,6 +15,7 @@ at 1.53 and nuclear-best at 2.07).
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Ref**: Eq. 2 (lines 102-117)
 *Basis**: Meier 1986 indirect cost multiplier. Year-dollars: 1988$.
+*Last Updated**: 2026-09-11
 """
 
 AUTO_IMPLEMENTED = True
@@ -32,8 +33,9 @@ at 1.53 and nuclear-best at 2.07).
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Ref**: Eq. 2 (lines 102-117)
 *Basis**: Meier 1986 indirect cost multiplier. Year-dollars: 1988$.
+*Last Updated**: 2026-09-11
 
-SysML Source: root-0/analyses/hif_economics.sysml:65
+SysML Source: root-0/analyses/hif_economics.sysml:68
 
 SysML Expressions:
     total_capital_billions = 1.83 * (reactor_cost + driver_cost + target_factory_cost)
@@ -46,6 +48,7 @@ at 1.53 and nuclear-best at 2.07).
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
 *Ref**: Eq. 2 (lines 102-117)
 *Basis**: Meier 1986 indirect cost multiplier. Year-dollars: 1988$.
+*Last Updated**: 2026-09-11
 
 Args:
     inputs: Input parameters validated against Meier_Total_Capital_CostInput schema

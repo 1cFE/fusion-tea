@@ -6,7 +6,7 @@ package economic_parameter {
         A scalar economic parameter with value bounds and sensitivity metadata.
         Used to define cost model inputs with Monte Carlo range information.
 
-        **Source**: work/active/WI-006_ife-cost-structure-library/spec.md
+        **Source**: work/completed/20260302_WI-006_ife-cost-structure-library/spec.md
         **Ref**: MR-WI006-1 (parameter metadata pattern)
         **Basis**: Designed to carry Monte Carlo range data from Hawker 2020;
             bundles value/min/max/sensitivity per DD-2

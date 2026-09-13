@@ -1,0 +1,95 @@
+{
+  "valid_native_cases": 10,
+  "scalars_per_case": {
+    "live_ordinary": 158,
+    "live_zero": 158,
+    "live_equal": 158,
+    "live_tiny_positive": 158,
+    "live_tiny_negative": 158,
+    "held_ordinary": 158,
+    "held_zero": 158,
+    "held_equal": 158,
+    "held_tiny_positive": 158,
+    "held_tiny_negative": 158
+  },
+  "inputs_outputs_responses_reports_exact": true,
+  "domain_case_count": 10,
+  "invalid_cases": {
+    "live_negative": {
+      "overrides": {
+        "stellarator_09__stellaris__coil_t": 20.0
+      },
+      "error": "EvaluationFailed",
+      "message": "module_execution: ValueError: Conductor Peak Field: live clearance R_in - a_coil_in must be > 0"
+    },
+    "live_equal": {
+      "overrides": {
+        "stellarator_09__stellaris__coil_t": 19.4
+      },
+      "error": "EvaluationFailed",
+      "message": "module_execution: ValueError: Conductor Peak Field: live clearance R_in - a_coil_in must be > 0"
+    },
+    "reference_negative": {
+      "overrides": {
+        "stellarator_09__stellaris__magnet__a_coil_ref": 13.0
+      },
+      "error": "EvaluationFailed",
+      "message": "module_execution: ValueError: Conductor Peak Field: reference clearance R_ref_in - a_coil_ref_in must be > 0"
+    },
+    "reference_equal": {
+      "overrides": {
+        "stellarator_09__stellaris__magnet__a_coil_ref": 12.7
+      },
+      "error": "EvaluationFailed",
+      "message": "module_execution: ValueError: Conductor Peak Field: reference clearance R_ref_in - a_coil_ref_in must be > 0"
+    },
+    "cold_zero": {
+      "overrides": {
+        "stellarator_09__stellaris__T_cold_cryo": 0.0,
+        "stellarator_09__stellaris__T_amb_cryo": 300.0
+      },
+      "error": "EvaluationFailed",
+      "message": "module_execution: ValueError: Cryoplant Electrical Power: require 0 < T_cold < T_amb"
+    },
+    "cold_negative": {
+      "overrides": {
+        "stellarator_09__stellaris__T_cold_cryo": -1.0,
+        "stellarator_09__stellaris__T_amb_cryo": 300.0
+      },
+      "error": "EvaluationFailed",
+      "message": "module_execution: ValueError: Cryoplant Electrical Power: require 0 < T_cold < T_amb"
+    },
+    "temperature_equal": {
+      "overrides": {
+        "stellarator_09__stellaris__T_cold_cryo": 300.0,
+        "stellarator_09__stellaris__T_amb_cryo": 300.0
+      },
+      "error": "EvaluationFailed",
+      "message": "module_execution: ValueError: Cryoplant Electrical Power: require 0 < T_cold < T_amb"
+    },
+    "temperature_reversed": {
+      "overrides": {
+        "stellarator_09__stellaris__T_cold_cryo": 301.0,
+        "stellarator_09__stellaris__T_amb_cryo": 300.0
+      },
+      "error": "EvaluationFailed",
+      "message": "module_execution: ValueError: Cryoplant Electrical Power: require 0 < T_cold < T_amb"
+    },
+    "ambient_zero": {
+      "overrides": {
+        "stellarator_09__stellaris__T_cold_cryo": 20.0,
+        "stellarator_09__stellaris__T_amb_cryo": 0.0
+      },
+      "error": "EvaluationFailed",
+      "message": "module_execution: ValueError: Cryoplant Electrical Power: require 0 < T_cold < T_amb"
+    },
+    "ambient_negative": {
+      "overrides": {
+        "stellarator_09__stellaris__T_cold_cryo": 20.0,
+        "stellarator_09__stellaris__T_amb_cryo": -1.0
+      },
+      "error": "EvaluationFailed",
+      "message": "module_execution: ValueError: Cryoplant Electrical Power: require 0 < T_cold < T_amb"
+    }
+  }
+}

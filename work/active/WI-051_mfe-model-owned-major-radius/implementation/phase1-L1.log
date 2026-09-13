@@ -1,0 +1,26 @@
+
+======================================================================
+SysML Quality Validation
+Models path: /home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/models
+Mode: Fail-fast
+Running: Level 1 only
+======================================================================
+
+============================================================
+Level 1: Syntax Validation
+============================================================
+Found 23 SysML files
+
+✅ Level 1: Syntax Validation
+   Files checked: 23
+   Errors: 0
+   Warnings: 0
+
+======================================================================
+Summary
+======================================================================
+Checks run: 1
+✅ Passed: 1
+❌ Failed: 0
+
+✅ All quality checks passed!

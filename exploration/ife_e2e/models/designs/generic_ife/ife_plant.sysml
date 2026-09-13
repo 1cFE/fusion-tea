@@ -14,12 +14,16 @@ package ife_plant {
         The driver is abstract — concrete instantiations (HIF, laser,
         pulser) specialize the driver with specific parameter values.
         All other subsystem and plant-level parameters can be set
-        directly via feature redefinition.
+        directly via feature redefinition. Table 2 defines parameters and
+        Table 3 gives sampled ranges, not default values; concrete designs
+        supply their source-backed inputs or explicitly chosen scenarios.
 
         **Source**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md
         **Ref**: Equations 2.1-2.16 (complete IFE LCOE model)
         **Basis**: Hawker 2020 parametric IFE LCOE model with 14
             technology-agnostic parameters mapped to physical subsystems
+        **Reference**: Hawker Eqs. 2.1-2.16
+        **Last Updated**: 2026-09-10
         */
 
         // === Subsystems ===
@@ -34,7 +38,8 @@ package ife_plant {
             doc /*
             Plant availability factor (fraction of time operating).
             Hawker parameter mu_a. 6th highest sensitivity (-0.127).
-            Source: Hawker 2020 Table 1. Units: dimensionless fraction.
+            Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md,
+            Table 2 (definition); Table 3 (sampled ranges and correlations). Units: dimensionless fraction.
             */
         }
 
@@ -42,7 +47,8 @@ package ife_plant {
             doc /*
             Target shot repetition rate.
             Hawker parameter f. Units: Hz.
-            Source: Hawker 2020 Table 1.
+            Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md,
+            Table 2 (definition); Table 3 (sampled ranges and correlations).
             */
         }
 
@@ -52,7 +58,8 @@ package ife_plant {
             Hawker parameter G. 4th highest sensitivity (-0.164).
             Plant-level because gain depends on the target-driver
             interaction, not on any single subsystem.
-            Source: Hawker 2020 Table 1. Units: dimensionless.
+            Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md,
+            Table 2 (definition); Table 3 (sampled ranges and correlations). Units: dimensionless.
             */
         }
 
@@ -60,7 +67,8 @@ package ife_plant {
             doc /*
             Thermal-to-electric conversion efficiency.
             Hawker parameter mu_th. Units: dimensionless fraction.
-            Source: Hawker 2020 Table 1.
+            Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md,
+            Table 2 (definition); Table 3 (sampled ranges and correlations).
             */
         }
 
@@ -71,7 +79,8 @@ package ife_plant {
             Discount rate for DCF calculation. Highest sensitivity
             parameter in the model (+0.247).
             Hawker parameter d. Units: dimensionless fraction.
-            Source: Hawker 2020 Table 1.
+            Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md,
+            Table 2 (definition); Table 3 (sampled ranges and correlations).
             */
         }
 
@@ -81,7 +90,8 @@ package ife_plant {
             exchangers, turbines, generator, grid connection, land,
             buildings. 2nd highest sensitivity (+0.210).
             Hawker parameter alpha. Units: $/kWe.
-            Source: Hawker 2020 Table 1.
+            Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md,
+            Table 2 (definition); Table 3 (sampled ranges and correlations).
             */
         }
 
@@ -89,11 +99,39 @@ package ife_plant {
             doc /*
             Annual operations and maintenance cost per kWe capacity.
             Hawker parameter epsilon. Units: $/kWe-year.
-            Source: Hawker 2020 Table 1.
+            Source: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md,
+            Table 2 (definition); Table 3 (sampled ranges and correlations).
             */
         }
 
         // === LCOE Calculation ===
+
+        attribute construction_duration : Real = 5.0 {
+            doc /*
+            Construction duration in years, supplied to both factor and cost calculations.
+            **Source**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md
+            **Reference**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md:148
+            **Ref**: Construction and operational durations following Eq. 2.1
+            **Basis**: Existing Hawker default, retained as Real.
+            **Last Updated**: 2026-09-11
+            */
+        }
+        attribute operational_duration : Real = 40.0 {
+            doc /*
+            Operation duration in years, supplied to both factor and cost calculations.
+            **Source**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md
+            **Reference**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md:148
+            **Ref**: Construction and operational durations following Eq. 2.1
+            **Basis**: Existing Hawker default, retained as Real.
+            **Last Updated**: 2026-09-11
+            */
+        }
+
+        calc pv_factors : 'IFE Present Value Factors' {
+            in discount_rate_in = discount_rate;
+            in construction_years_in = construction_duration;
+            in operational_years_in = operational_duration;
+        }
 
         calc lcoe_calc : 'IFE LCOE' {
             doc /*
@@ -125,9 +163,33 @@ package ife_plant {
             in target_cost_constant = target_factory.cost_per_target;
             in thermal_efficiency_in = thermal_efficiency;
             in yield_cost_constant = chamber.yield_cost_constant;
+            in construction_years = construction_duration;
+            in operational_years = operational_duration;
+            in pvf_construction = pv_factors.construction_factor;
+            in pvf_operation = pv_factors.operation_factor;
         }
 
-        attribute lcoe : Real = lcoe_calc.lcoe;
+        calc hawker_price : 'Generating Electricity Price' {
+            in numerator = lcoe_calc.discounted_cost;
+            in denominator = lcoe_calc.discounted_energy;
+            in net_power = lcoe_calc.net_electric_power;
+        }
+        // Dollars/MWh. Zero is invalid unless generating=1 and net_positive is satisfied.
+        attribute lcoe : Real = hawker_price.price;
+        attribute generating : Real = hawker_price.generating;
+        // Hawker Eqs. 2.12-2.16; all powers in W, fractions dimensionless.
+        attribute fusion_power : Real = lcoe_calc.fusion_power;
+        attribute thermal_power : Real = lcoe_calc.thermal_power;
+        attribute gross_electric_power : Real = lcoe_calc.gross_electric_power;
+        attribute driver_electric_power : Real = lcoe_calc.driver_electric_power;
+        attribute other_parasitic_power : Real = lcoe_calc.other_parasitic_power;
+        attribute net_electric_power : Real = lcoe_calc.net_electric_power;
+        attribute driver_recirculating_fraction : Real = lcoe_calc.driver_recirculating_fraction;
+        attribute total_recirculating_fraction : Real = lcoe_calc.total_recirculating_fraction;
+
+        assert constraint net_positive : 'Positive Net Generation' {
+            in net_power = net_electric_power;
+        }
 
         // === Power Balance ===
 
@@ -148,20 +210,20 @@ package ife_plant {
             in thermal_efficiency_in = thermal_efficiency;
         }
 
+        // Compatibility alias: driver-only fraction of gross output, excludes cooling.
         attribute recirculating_fraction : Real = recirc_calc.f_recirc;
 
         // === Viability Constraint ===
 
         assert constraint viability : 'Viability Threshold' {
             doc /*
-            The product of driver efficiency and target gain must
-            exceed ~10 for economically viable IFE. Failing this
-            constraint means the plant recirculates too much power.
+            Retained eta-times-gain economic heuristic. Passing does not imply
+            positive net electricity; net_positive checks the actual priced balance.
 
             **Source**: knowledge/sources/energy_from_inertial_fusion/output.md,
                 knowledge/sources/accelerators_for_inertial_fusion_energy_production/output.md
             **Ref**: EIF-1992 Components section; Accel-2013 Section 3
-            **Basis**: DI-001 — physics-derived viability threshold
+            **Basis**: DI-001 — approximate economic viability heuristic
             */
 
             in eta = driver.efficiency;

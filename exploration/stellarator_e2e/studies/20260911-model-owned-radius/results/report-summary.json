@@ -1,0 +1,143 @@
+{
+  "case_count": 7,
+  "fully_satisfied": 0,
+  "worst_all_channel_relative_deviation": 7.53300808677988e-15,
+  "constraint_counts": {
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": {
+      "satisfied": 7
+    },
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": {
+      "satisfied": 7
+    },
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": {
+      "satisfied": 7
+    },
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": {
+      "satisfied": 7
+    },
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": {
+      "satisfied": 7
+    },
+    "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": {
+      "satisfied": 7
+    },
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": {
+      "satisfied": 2,
+      "violated": 5
+    },
+    "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": {
+      "satisfied": 7
+    },
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": {
+      "satisfied": 7
+    },
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": {
+      "satisfied": 7
+    },
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": {
+      "satisfied": 3,
+      "violated": 4
+    },
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": {
+      "satisfied": 7
+    },
+    "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": {
+      "satisfied": 7
+    },
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": {
+      "violated": 2,
+      "satisfied": 5
+    },
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": {
+      "satisfied": 3,
+      "violated": 4
+    },
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": {
+      "satisfied": 3,
+      "violated": 4
+    },
+    "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": {
+      "satisfied": 7
+    },
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": {
+      "satisfied": 7
+    }
+  },
+  "cases": [
+    {
+      "R": 12.0,
+      "candidate_id": "20260911-model-owned-radius:c0000",
+      "lcoe": 219.8604904631552,
+      "lcoe_1cfe": 215.6682352728755,
+      "violations": [
+        "peak_field_ok"
+      ]
+    },
+    {
+      "R": 12.35,
+      "candidate_id": "20260911-model-owned-radius:c0001",
+      "lcoe": 221.57975682168168,
+      "lcoe_1cfe": 217.36459405520128,
+      "violations": [
+        "peak_field_ok"
+      ]
+    },
+    {
+      "R": 12.7,
+      "candidate_id": "20260911-model-owned-radius:c0002",
+      "lcoe": 224.26923288439,
+      "lcoe_1cfe": 220.0125640803369,
+      "violations": [
+        "divertor_heat_ok"
+      ]
+    },
+    {
+      "R": 13.0,
+      "candidate_id": "20260911-model-owned-radius:c0003",
+      "lcoe": 231.41462669668095,
+      "lcoe_1cfe": 227.0305832790801,
+      "violations": [
+        "divertor_heat_ok",
+        "loop_capacity_ok",
+        "sustainment_ok",
+        "wall_load_ok"
+      ]
+    },
+    {
+      "R": 13.35,
+      "candidate_id": "20260911-model-owned-radius:c0004",
+      "lcoe": 238.44219055440308,
+      "lcoe_1cfe": 233.95910910118482,
+      "violations": [
+        "divertor_heat_ok",
+        "loop_capacity_ok",
+        "sustainment_ok",
+        "wall_load_ok"
+      ]
+    },
+    {
+      "R": 13.7,
+      "candidate_id": "20260911-model-owned-radius:c0005",
+      "lcoe": 244.54898949541942,
+      "lcoe_1cfe": 239.96212059477645,
+      "violations": [
+        "divertor_heat_ok",
+        "loop_capacity_ok",
+        "sustainment_ok",
+        "wall_load_ok"
+      ]
+    },
+    {
+      "R": 14.0,
+      "candidate_id": "20260911-model-owned-radius:c0006",
+      "lcoe": 250.89832244487582,
+      "lcoe_1cfe": 246.2018206142481,
+      "violations": [
+        "divertor_heat_ok",
+        "loop_capacity_ok",
+        "sustainment_ok",
+        "wall_load_ok"
+      ]
+    }
+  ]
+}

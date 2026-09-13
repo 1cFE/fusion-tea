@@ -1,0 +1,208 @@
+{
+  "schema_version": "integration-seam-return/v1",
+  "tool": {
+    "path": "scripts/integrate.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "1aa085461236a4c449b73e318b56908400b375d354c3b990705c090e933c1513",
+      "files": [
+        {
+          "path": "scripts/integrate.py",
+          "sha256": "f4d3c9056111aa3844a3cfb8008488f56002d66863e05b4bb407f4bdd79b5f87"
+        },
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/integrate.py",
+    "--audited-work",
+    "exploration/stellarator_e2e/generated@HEAD",
+    "--models-root",
+    "/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models",
+    "--package",
+    "/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea",
+    "--manifest",
+    "/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json",
+    "--groups",
+    "/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json",
+    "--census-file",
+    "/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json",
+    "--expected-teax-revision",
+    "8d877460ac4f6f264561d916e40c1708adb13397",
+    "--expected-semantic-fingerprint",
+    "05ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e",
+    "--expected-executable-fingerprint",
+    "fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d",
+    "--route-sys-path",
+    "/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies",
+    "--route-module",
+    "study_route",
+    "--route-callable",
+    "execute_baseline",
+    "--out-dir",
+    "/tmp/pytest-of-reid/pytest-12280/test_wrong_expected_fingerprin0/out"
+  ],
+  "request": {
+    "audited_work": [
+      {
+        "path": "exploration/stellarator_e2e/generated",
+        "commit": "HEAD"
+      }
+    ],
+    "models_root": ".integration_workspace/models",
+    "package": [
+      ".integration_workspace/generated"
+    ],
+    "manifest": [
+      ".integration_workspace/studies/manifest.json"
+    ],
+    "groups": ".integration_workspace/studies/axes.json",
+    "census": ".integration_workspace/mfe_census.json",
+    "expected": {
+      "semantic_fingerprint": "05ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e",
+      "executable_fingerprint": "fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d",
+      "teax_revision": "8d877460ac4f6f264561d916e40c1708adb13397"
+    }
+  },
+  "class": "BLOCKER",
+  "exit_code": 1,
+  "candidate": null,
+  "blocker": {
+    "gate": "preflight",
+    "producer": "scripts/study/preflight.py",
+    "scope": "request",
+    "mode": "refused",
+    "condition": "preflight-refused",
+    "detail": "preflight refused: manifest_currency",
+    "expected": null,
+    "actual": null,
+    "evidence": [
+      "../pytest-of-reid/pytest-12280/test_wrong_expected_fingerprin0/out/preflight_results.json"
+    ]
+  },
+  "gates": [
+    {
+      "gate": "pinned-packages",
+      "producer": "tests/test_dependency_provenance.py",
+      "scope": "repo",
+      "status": "pass",
+      "checked": "the pinned package revisions and installed wheel artifacts",
+      "detail": "tests/test_dependency_provenance.py passed",
+      "evidence": [
+        "../pytest-of-reid/pytest-12280/test_wrong_expected_fingerprin0/out/junit/pinned-packages.xml"
+      ]
+    },
+    {
+      "gate": "teax-revision",
+      "producer": "scripts/integrate.py",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the teax checkout's revision against the expected one",
+      "detail": "teax is at 8d877460ac4f6f264561d916e40c1708adb13397, matching the expected 8d877460ac4f6f264561d916e40c1708adb13397",
+      "evidence": []
+    },
+    {
+      "gate": "regeneration",
+      "producer": "sysml-codegen generate",
+      "scope": "request",
+      "status": "pass",
+      "checked": "regeneration in place moves no package byte",
+      "detail": "regeneration through stellarator_tea rewrote no byte outside handwritten/",
+      "evidence": []
+    },
+    {
+      "gate": "handwritten-preservation",
+      "producer": "sysml-codegen generate",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the handwritten implementations survive regeneration byte for byte",
+      "detail": "90 file(s) under handwritten/ are byte-identical",
+      "evidence": []
+    },
+    {
+      "gate": "census-snapshot",
+      "producer": "sysml_codegen.snapshot.capture; the spine census helper",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the recaptured snapshot and the re-derived entry-point census",
+      "detail": "the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound",
+      "evidence": [
+        "../pytest-of-reid/pytest-12280/test_wrong_expected_fingerprin0/out/recaptured.snapshot.json"
+      ]
+    },
+    {
+      "gate": "model-family-spine",
+      "producer": "tests/models/test_model_family_spines.py",
+      "scope": "repo",
+      "status": "pass",
+      "checked": "the canonical tree, the family twins and the tracked census",
+      "detail": "tests/models/test_model_family_spines.py passed",
+      "evidence": [
+        "../pytest-of-reid/pytest-12280/test_wrong_expected_fingerprin0/out/junit/model-family-spine.xml"
+      ]
+    },
+    {
+      "gate": "manifest",
+      "producer": "scripts/study/manifest.py",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the manifest's schema, package identity and recomputed pin",
+      "detail": "the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)",
+      "evidence": [
+        ".integration_workspace/studies/manifest.json"
+      ]
+    },
+    {
+      "gate": "preflight",
+      "producer": "scripts/study/preflight.py",
+      "scope": "request",
+      "status": "fail",
+      "checked": "the six mechanical gates a study passes",
+      "detail": "preflight refused: manifest_currency",
+      "evidence": [
+        "../pytest-of-reid/pytest-12280/test_wrong_expected_fingerprin0/out/preflight_results.json"
+      ]
+    },
+    {
+      "gate": "verification",
+      "producer": "scripts/study/verify.py",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "oracle parity and re-derived verdicts over an executed store",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "lineage",
+      "producer": "scripts/integrate.py",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "the live fingerprints against the lineage the request named",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    }
+  ],
+  "toolchain": {
+    "agentic_mbse": "0.1.3",
+    "sysml_codegen": "0.1.1",
+    "costingfe": "0.1.0",
+    "teax_revision": "8d877460ac4f6f264561d916e40c1708adb13397",
+    "teax_module_path": "/home/reid/1cfe/teax/packages/teax-simkit/simkit"
+  }
+}

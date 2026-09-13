@@ -1,0 +1,52 @@
+{
+  "negative": {
+    "error": "EvaluationFailed",
+    "message": "module_execution: ValueError: LOCAL_WINDING_DOMAIN",
+    "sizing_calls": [
+      [
+        -15400000.0,
+        118.8271604938272
+      ]
+    ],
+    "stress_calls": [],
+    "traceback": []
+  },
+  "zero": {
+    "error": "EvaluationFailed",
+    "message": "module_execution: ZeroDivisionError: float division by zero",
+    "sizing_calls": [
+      [
+        0.0,
+        118.8271604938272
+      ]
+    ],
+    "stress_calls": [],
+    "traceback": [
+      "Traceback (most recent call last):\n  File \"/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-055_winding-pack-input-domain/evidence/zero_trace_probe.py\", line 30, in traced_sustain\n    try:return original_sustain(inputs)\n               ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-055_winding-pack-input-domain/evidence/link/stellarator_tea/handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py\", line 256, in run_plasma_sustainment\n    p_sync = _p_sync_albajar(T_e0, n_e0 / 1e20, B, R, a,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-055_winding-pack-input-domain/evidence/link/stellarator_tea/handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py\", line 129, in _p_sync_albajar\n    p_a0 = 6.04e3 * a * n_e0_20 / B\n           ~~~~~~~~~~~~~~~~~~~~~^~~\nZeroDivisionError: float division by zero\n"
+    ]
+  },
+  "nan": {
+    "error": "EvaluationFailed",
+    "message": "module_execution: ValueError: LOCAL_WINDING_DOMAIN",
+    "sizing_calls": [
+      [
+        NaN,
+        118.8271604938272
+      ]
+    ],
+    "stress_calls": [],
+    "traceback": []
+  },
+  "inf": {
+    "error": "EvaluationFailed",
+    "message": "module_execution: ValueError: LOCAL_WINDING_DOMAIN",
+    "sizing_calls": [
+      [
+        Infinity,
+        118.8271604938272
+      ]
+    ],
+    "stress_calls": [],
+    "traceback": []
+  }
+}

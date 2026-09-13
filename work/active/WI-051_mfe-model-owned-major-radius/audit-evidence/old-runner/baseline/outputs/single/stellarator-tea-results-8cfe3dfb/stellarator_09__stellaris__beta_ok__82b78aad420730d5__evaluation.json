@@ -1,0 +1,10 @@
+{
+  "actual_value": true,
+  "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+  "margin": 0.0246950007910186,
+  "observed": {
+    "beta_in": 0.025304999208981403,
+    "beta_limit_in": 0.05
+  },
+  "status": "satisfied"
+}

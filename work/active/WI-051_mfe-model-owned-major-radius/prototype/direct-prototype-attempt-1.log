@@ -1,0 +1,16 @@
+prototype baseline {'single': 177, 'helper': 'ValueError'}
+prototype R14 {'single': 177, 'helper': 'ValueError'}
+prototype retired_0 {'single': 'ValidationError', 'helper': 'ValueError'}
+prototype retired_1 {'single': 'ValidationError', 'helper': 'ValueError'}
+prototype retired_2 {'single': 'ValidationError', 'helper': 'ValueError'}
+prototype retired_3 {'single': 'ValidationError', 'helper': 'ValueError'}
+prototype invalid_0 {'single': 'SustainmentError', 'helper': 'ValueError'}
+prototype invalid_1 {'single': 'ZeroDivisionError', 'helper': 'ValueError'}
+prototype invalid_2 {'single': 'SustainmentError', 'helper': 'ValueError'}
+prototype invalid_3 {'single': 'ZeroDivisionError', 'helper': 'ValueError'}
+prototype invalid_4 {'single': 'TypeError', 'helper': 'ValueError'}
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/prototype/direct.py", line 48, in <module>
+    scalar=results[name]['helper']['outputs']; expected=frozen['cases'][ref]['native']['outputs']
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'outputs'

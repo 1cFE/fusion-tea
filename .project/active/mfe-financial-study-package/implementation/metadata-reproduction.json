@@ -1,0 +1,218 @@
+{
+  "byte_identical_outputs": [
+    "manifest.json",
+    "a.expected.json",
+    "availability_direct.expected.json",
+    "R.expected.json",
+    "interest_rate.expected.json",
+    "I_coil.expected.json"
+  ],
+  "report_equal_except_destination_path": true,
+  "baseline_preserved": false,
+  "changed_fixtures": [],
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_fuel_cycle_params.json",
+        "inputs/mfe_magnet_cost_params.json",
+        "inputs/mfe_magnet_field_params.json",
+        "inputs/mfe_plant_params.json",
+        "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_plasma_sustainment_params.json",
+        "inputs/mfe_vacuum_params.json",
+        "inputs/stellarator_plant_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "1a7c216dabff8425c279f6b3c2781629115729173fc0b406600497ac348b4340",
+      "semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e"
+    }
+  },
+  "baseline_before": {
+    "point": {
+      "stellarator_09__stellaris__R": 12.7,
+      "stellarator_09__stellaris__a": 1.3,
+      "stellarator_09__stellaris__availability_direct": 0.0
+    },
+    "headline": {
+      "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+      "value": 224.26923288439
+    },
+    "verdicts": [
+      {
+        "source_local_identity": "beta_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "burn_hold_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "cond_strain_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "cycle_domain_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "divertor_heat_ok",
+        "expected": "violated"
+      },
+      {
+        "source_local_identity": "heating_couple_positive_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_couple_upper_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_source_positive_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_source_upper_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "loop_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "loop_pressure_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "net_positive",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "peak_field_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "recirc_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "sustainment_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "tbr_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "wall_load_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "wp_stress_ok",
+        "expected": "satisfied"
+      }
+    ]
+  },
+  "baseline_after": {
+    "point": {
+      "stellarator_09__stellaris__R": 12.7,
+      "stellarator_09__stellaris__a": 1.3,
+      "stellarator_09__stellaris__availability_direct": 0.0
+    },
+    "headline": {
+      "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+      "value": 224.26923288439002
+    },
+    "verdicts": [
+      {
+        "source_local_identity": "beta_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "burn_hold_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "cond_strain_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "cycle_domain_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "divertor_heat_ok",
+        "expected": "violated"
+      },
+      {
+        "source_local_identity": "heating_couple_positive_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_couple_upper_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_source_positive_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_source_upper_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "loop_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "loop_pressure_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "net_positive",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "peak_field_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "recirc_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "sustainment_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "tbr_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "wall_load_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "wp_stress_ok",
+        "expected": "satisfied"
+      }
+    ]
+  },
+  "baseline_physical_point_and_verdicts_preserved": true,
+  "headline_relative_change": 1.2673031010479845e-16,
+  "manifest_sha256": "3245faf0eaa51dbf6618efdb047e481df69b9b3cc0d63d0e27a87f065d85e0cf",
+  "produced_output_hashes": {
+    "a.expected.json": "10689a4ce5c0e29041f11360402c00bf4e7bb619b6188c5603b105c75d017c97",
+    "availability_direct.expected.json": "ed6a17b7d91bba2bc90ca11227d5ad8738356312e4987105080b1e1bb30e78d8",
+    "R.expected.json": "611ce8d54a046d13bee6fdbb286c41e660035b9cb5b7ee83b3d47f65b3dfceb0",
+    "manifest.json": "3245faf0eaa51dbf6618efdb047e481df69b9b3cc0d63d0e27a87f065d85e0cf",
+    "interest_rate.expected.json": "d6206c85d2f8fe1dc3143c10fcffdb0c33c82bc50ea041852e3c645be0f31149",
+    "I_coil.expected.json": "e57e8b27c4b29ea68a7f2cfe54a995004b84cb73e01d9b44b7d88d4a5b7db341",
+    "known-answers.json": "3a7348431b441af8443dc0e9f1e719b81376f2fb1c842aa1e2aaf9d016fb2e05"
+  }
+}

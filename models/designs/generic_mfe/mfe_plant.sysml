@@ -23,8 +23,10 @@ package mfe_plant {
         doc /*
         Confinement-agnostic magnetic-fusion power plant. Composes the WI-009
         power-core subsystems and the shared/BOP costed components, wires the
-        physics -> cost -> LCOE calc pipeline, and asserts the two viability
-        constraints. The MFE analogue of ife_plant's 'IFE Power Plant', one
+        physics -> cost -> LCOE calc pipeline, and asserts power, heating,
+        magnet, primary-loop, cycle-domain and divertor viability constraints.
+        Instance-specific assertions extend these; the generated constraint
+        catalog records the executable set. The MFE analogue of ife_plant's 'IFE Power Plant', one
         level richer (a full physics spine and a bottom-up CAS rollup).
 
         Abstract: WI-011 specializes it with concept-09 (stellarator) values and
@@ -56,6 +58,16 @@ package mfe_plant {
 
         // MFE-divergent power core (WI-009 mfe_power_core).
         part magnet : 'Magnet System' {
+            :>> R0 = R {
+                doc /*
+                Major plasma/axis radius [m], owned by the containing plant.
+
+                Source: work/analysis/20260911-230953_radius-ownership-evidence/source-meaning.md
+                Ref: ## Model and existing source interpretation; ## Assessment; revision 2f8856b7
+                Basis: [INHERITED: T-021@2f8856b7] Existing model-intent interpretation: one shared plasma/axis scale. This does not equate real modular-coil surfaces; coil-bore and coil-centre minor radii remain distinct.
+                Last Updated: 2026-09-11
+                */
+            }
             :>> capital_cost = magnet_capital_rollup.capital_cost;   // WI-035: decomposed rollup
             :>> r_coil = rb.r_coil;   // coil bore = radial-build vessel_or (WI-021)
             // WI-035: the axis field is COMPUTED from the coil-set current
@@ -518,12 +530,33 @@ package mfe_plant {
             in p_coupled_direct = p_coupled_direct_heat;
         }
 
+        // Generic legacy/direct behavior defaults to installed coupled capacity.
+        // A sustained concept overrides this exposed demand with its producer.
+        attribute p_operating_coupled_heat : Real default heat.p_coupled;
+        calc operating_heat : 'Operating Heating Power' {
+            in p_required_in = p_operating_coupled_heat;
+            in eta_source_in = eta_source_heat;
+            in eta_couple_in = eta_couple_heat;
+        }
+        assert constraint heating_source_positive_ok : 'Heating Efficiency Positive' {
+            in efficiency = eta_source_heat;
+        }
+        assert constraint heating_source_upper_ok : 'Heating Efficiency Upper' {
+            in efficiency = eta_source_heat;
+        }
+        assert constraint heating_couple_positive_ok : 'Heating Efficiency Positive' {
+            in efficiency = eta_couple_heat;
+        }
+        assert constraint heating_couple_upper_ok : 'Heating Efficiency Upper' {
+            in efficiency = eta_couple_heat;
+        }
+
         // WI-045: the reactor's source heat (no pump credit), the representative
         // primary loop and the temperature-compatible cycle, upstream of the
         // power balance. Dataflow: fusion, heat -> source_heat -> primary_loop -> cycle -> pb.
         calc source_heat : 'Reactor Source Heat' {
             in p_nrl = fusion.p_fus;
-            in p_input_in = heat.p_coupled;
+            in p_input_in = operating_heat.p_coupled;
             in mn_in = mn;
         }
         calc primary_loop : 'Primary Coolant Loop' {
@@ -558,11 +591,11 @@ package mfe_plant {
 
         calc pb : 'MFE Power Balance Calc' {
             in p_nrl = fusion.p_fus;
-            in p_input_in = heat.p_coupled;
+            in p_input_in = operating_heat.p_coupled;
             in mn_in = mn;
             in eta_th_in = cycle.eta_th;
             in q_recovered_in = primary_loop.q_recovered_total;
-            in p_wallplug_in = heat.p_wallplug_total;
+            in p_wallplug_in = operating_heat.p_wallplug;
             in p_pump_total_in = primary_loop.p_pump_total;
             in f_sub_in = f_sub;
             in p_tf_in = p_tf;
@@ -626,6 +659,11 @@ package mfe_plant {
         }
 
         // Blanket (CAS22.1.1).
+        // WI-050: retained power-scaled equipment costs are design-point sizing
+        // estimates, including blanket/shield/structure/vessel/supplies/divertor,
+        // turbine/electric/rejection/miscellaneous, buildings and CAS22 tail.
+        // Their operating-power operands are retained under the reviewed cost
+        // classification; heating procurement alone follows installed delivery.
         calc blanket_cost : 'Blanket Cost' {
             in unit_cost = blanket.unit_cost;
             in structure_factor = blanket.structure_factor;
@@ -1064,8 +1102,9 @@ package mfe_plant {
         attribute R_ref_divertor : Real default 1.0;
         calc divheat : 'Divertor Heat Ledger' {
             in p_alpha_heat_in = sustain.p_alpha_heat;
-            in p_coupled_in = heat.p_coupled;
+            in p_coupled_in = operating_heat.p_coupled;
             in p_aux_required_in = sustain.p_aux_required;
+            in p_installed_coupled_in = heat.p_coupled;
             in p_rad_core_in = sustain.p_rad;
             in f_rad_total_in = f_rad_total;
             in q_target_ref_in = q_target_ref;

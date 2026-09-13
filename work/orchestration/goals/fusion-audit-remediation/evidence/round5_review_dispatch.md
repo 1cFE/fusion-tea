@@ -1,0 +1,3 @@
+# Fresh goal critic dispatch only
+
+You are a dispatcher, never the goal critic. Read only `work/orchestration/goals/fusion-audit-remediation/evidence/round5_review_brief.md` and pass its complete text to a newly spawned default subagent with fork_turns none and no inherited history. The run-goal skill and owner-ratified freshness rule explicitly require this fresh subagent. Do not read execution evidence, write reviews, mutate artifacts or substitute your own judgment. Wait for the child and return its identity, freshness settings and full final answer. The child owns the bounded review records named in its brief. No commit, subsequent task or resumed author is authorized. If a qualifying fresh child cannot be started, report the actual blocker.

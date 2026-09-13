@@ -1,0 +1,25 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "beam_energy_mj",
+      "note": "One authoritative WI-048 entry point; window belongs to the study.",
+      "keys": [
+        {
+          "key": "hif_plant_pkg__hif_plant__driver__beam_energy_mj",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "frequency",
+      "note": "One authoritative WI-048 entry point; window belongs to the study.",
+      "keys": [
+        {
+          "key": "hif_plant_pkg__hif_plant__frequency",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+[
+  [
+    "1",
+    "model",
+    "Ordinary R-only variation matches the declared independent channels and authored verdicts; baseline/R14 preserve every frozen scalar and response.",
+    "Bounded sampled radius-coherence evidence; parent may assess F06 closure separately.",
+    "documented seam: model-owned radius"
+  ],
+  [
+    "2",
+    "model",
+    "No sampled point satisfies every assertion; fixed-target divertor and other load/capacity/peak-field limits remain active.",
+    "Retain sampled violations and engineering limitations; no feasible-envelope or residual-acceptance claim.",
+    "unrouted"
+  ],
+  [
+    "3",
+    "process",
+    "The inherited oracle interface leaves 147 input overrides unsupported and 17 scalar outputs outside independent channel computation.",
+    "Preserve the named coverage limits; complete baseline/R14 native controls cover omitted outputs without claiming independent computation.",
+    "documented seam: current stellarator oracle"
+  ],
+  [
+    "4",
+    "process",
+    "Pre-execution critique required populated record arguments and truthful preparatory-baseline identity/coverage.",
+    "Resolved before points: explicit nil provenance under native schema, exact 18-response catalog check and populated framing; original conditional review retained.",
+    "reviews/pre-execution-disposition.md"
+  ],
+  [
+    "5",
+    "process",
+    "Initial report-builder invocation omitted the repository import path and failed before report execution.",
+    "Corrected launcher configuration only; original failed log retained, no model rerun or numerical change.",
+    "execution/commands.md"
+  ],
+  [
+    "6",
+    "process",
+    "Final review found the prose counted seven analytic checks instead of six ratios at seven points.",
+    "Corrected wording to six ratios and 42 comparisons; evidence unchanged and objective correction directly checked.",
+    "reviews/final-disposition.md"
+  ]
+]

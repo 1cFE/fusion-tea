@@ -1,0 +1,1082 @@
+[
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-absent]",
+    "root_cause": "G1",
+    "study": "20260830-stress-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-null]",
+    "root_cause": "G1",
+    "study": "20260830-stress-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-nan]",
+    "root_cause": "G1",
+    "study": "20260830-stress-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-positive-inf]",
+    "root_cause": "G1",
+    "study": "20260830-stress-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-negative-inf]",
+    "root_cause": "G1",
+    "study": "20260830-stress-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-absent]",
+    "root_cause": "G1",
+    "study": "20260830-stress-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-null]",
+    "root_cause": "G1",
+    "study": "20260830-stress-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-nan]",
+    "root_cause": "G1",
+    "study": "20260830-stress-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-positive-inf]",
+    "root_cause": "G1",
+    "study": "20260830-stress-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-negative-inf]",
+    "root_cause": "G1",
+    "study": "20260830-stress-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-absent]",
+    "root_cause": "G1",
+    "study": "20260901-sustainment-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-null]",
+    "root_cause": "G1",
+    "study": "20260901-sustainment-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-nan]",
+    "root_cause": "G1",
+    "study": "20260901-sustainment-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-positive-inf]",
+    "root_cause": "G1",
+    "study": "20260901-sustainment-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-negative-inf]",
+    "root_cause": "G1",
+    "study": "20260901-sustainment-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-absent]",
+    "root_cause": "G1",
+    "study": "20260901-sustainment-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-null]",
+    "root_cause": "G1",
+    "study": "20260901-sustainment-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-nan]",
+    "root_cause": "G1",
+    "study": "20260901-sustainment-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-positive-inf]",
+    "root_cause": "G1",
+    "study": "20260901-sustainment-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-negative-inf]",
+    "root_cause": "G1",
+    "study": "20260901-sustainment-fence",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-absent]",
+    "root_cause": "G2",
+    "study": "20260903-priced-levers",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-null]",
+    "root_cause": "G2",
+    "study": "20260903-priced-levers",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-nan]",
+    "root_cause": "G2",
+    "study": "20260903-priced-levers",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-positive-inf]",
+    "root_cause": "G2",
+    "study": "20260903-priced-levers",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-negative-inf]",
+    "root_cause": "G2",
+    "study": "20260903-priced-levers",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-absent]",
+    "root_cause": "G2",
+    "study": "20260903-priced-levers",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-null]",
+    "root_cause": "G2",
+    "study": "20260903-priced-levers",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-nan]",
+    "root_cause": "G2",
+    "study": "20260903-priced-levers",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-positive-inf]",
+    "root_cause": "G2",
+    "study": "20260903-priced-levers",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-negative-inf]",
+    "root_cause": "G2",
+    "study": "20260903-priced-levers",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-absent]",
+    "root_cause": "G2",
+    "study": "20260903-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-null]",
+    "root_cause": "G2",
+    "study": "20260903-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-nan]",
+    "root_cause": "G2",
+    "study": "20260903-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-positive-inf]",
+    "root_cause": "G2",
+    "study": "20260903-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-negative-inf]",
+    "root_cause": "G2",
+    "study": "20260903-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-absent]",
+    "root_cause": "G2",
+    "study": "20260903-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-null]",
+    "root_cause": "G2",
+    "study": "20260903-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-nan]",
+    "root_cause": "G2",
+    "study": "20260903-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-positive-inf]",
+    "root_cause": "G2",
+    "study": "20260903-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-negative-inf]",
+    "root_cause": "G2",
+    "study": "20260903-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-absent]",
+    "root_cause": "G3",
+    "study": "20260904-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-null]",
+    "root_cause": "G3",
+    "study": "20260904-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-nan]",
+    "root_cause": "G3",
+    "study": "20260904-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-positive-inf]",
+    "root_cause": "G3",
+    "study": "20260904-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-negative-inf]",
+    "root_cause": "G3",
+    "study": "20260904-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-absent]",
+    "root_cause": "G3",
+    "study": "20260904-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-null]",
+    "root_cause": "G3",
+    "study": "20260904-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-nan]",
+    "root_cause": "G3",
+    "study": "20260904-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-positive-inf]",
+    "root_cause": "G3",
+    "study": "20260904-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-negative-inf]",
+    "root_cause": "G3",
+    "study": "20260904-wall-and-heating",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-absent]",
+    "root_cause": "G3",
+    "study": "20260905-stored-energy-basis",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-null]",
+    "root_cause": "G3",
+    "study": "20260905-stored-energy-basis",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-nan]",
+    "root_cause": "G3",
+    "study": "20260905-stored-energy-basis",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-positive-inf]",
+    "root_cause": "G3",
+    "study": "20260905-stored-energy-basis",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-negative-inf]",
+    "root_cause": "G3",
+    "study": "20260905-stored-energy-basis",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-absent]",
+    "root_cause": "G3",
+    "study": "20260905-stored-energy-basis",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-null]",
+    "root_cause": "G3",
+    "study": "20260905-stored-energy-basis",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-nan]",
+    "root_cause": "G3",
+    "study": "20260905-stored-energy-basis",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-positive-inf]",
+    "root_cause": "G3",
+    "study": "20260905-stored-energy-basis",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-negative-inf]",
+    "root_cause": "G3",
+    "study": "20260905-stored-energy-basis",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-absent]",
+    "root_cause": "G3",
+    "study": "20260907-burn-control",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-null]",
+    "root_cause": "G3",
+    "study": "20260907-burn-control",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-nan]",
+    "root_cause": "G3",
+    "study": "20260907-burn-control",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-positive-inf]",
+    "root_cause": "G3",
+    "study": "20260907-burn-control",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-negative-inf]",
+    "root_cause": "G3",
+    "study": "20260907-burn-control",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-absent]",
+    "root_cause": "G3",
+    "study": "20260907-burn-control",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-null]",
+    "root_cause": "G3",
+    "study": "20260907-burn-control",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-nan]",
+    "root_cause": "G3",
+    "study": "20260907-burn-control",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-positive-inf]",
+    "root_cause": "G3",
+    "study": "20260907-burn-control",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-negative-inf]",
+    "root_cause": "G3",
+    "study": "20260907-burn-control",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-absent]",
+    "root_cause": "G3",
+    "study": "20260907-minor-radius",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-null]",
+    "root_cause": "G3",
+    "study": "20260907-minor-radius",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-nan]",
+    "root_cause": "G3",
+    "study": "20260907-minor-radius",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-positive-inf]",
+    "root_cause": "G3",
+    "study": "20260907-minor-radius",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-negative-inf]",
+    "root_cause": "G3",
+    "study": "20260907-minor-radius",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-absent]",
+    "root_cause": "G3",
+    "study": "20260907-minor-radius",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-null]",
+    "root_cause": "G3",
+    "study": "20260907-minor-radius",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-nan]",
+    "root_cause": "G3",
+    "study": "20260907-minor-radius",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-positive-inf]",
+    "root_cause": "G3",
+    "study": "20260907-minor-radius",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-negative-inf]",
+    "root_cause": "G3",
+    "study": "20260907-minor-radius",
+    "original_positive_case": false,
+    "disposition": "consolidated; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-{absent,null,nan}]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-absent]",
+    "root_cause": "G4",
+    "study": "20260911-model-owned-radius",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-model-owned-radius]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-null]",
+    "root_cause": "G4",
+    "study": "20260911-model-owned-radius",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-model-owned-radius]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-nan]",
+    "root_cause": "G4",
+    "study": "20260911-model-owned-radius",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-model-owned-radius]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-positive-inf]",
+    "root_cause": "G4",
+    "study": "20260911-model-owned-radius",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-model-owned-radius]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-negative-inf]",
+    "root_cause": "G4",
+    "study": "20260911-model-owned-radius",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-model-owned-radius]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-absent]",
+    "root_cause": "G4",
+    "study": "20260911-model-owned-radius",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-model-owned-radius]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-null]",
+    "root_cause": "G4",
+    "study": "20260911-model-owned-radius",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-model-owned-radius]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-nan]",
+    "root_cause": "G4",
+    "study": "20260911-model-owned-radius",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-model-owned-radius]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-positive-inf]",
+    "root_cause": "G4",
+    "study": "20260911-model-owned-radius",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-model-owned-radius]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-negative-inf]",
+    "root_cause": "G4",
+    "study": "20260911-model-owned-radius",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-model-owned-radius]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-absent]",
+    "root_cause": "G5",
+    "study": "20260911-operating-heating",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-operating-heating]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-null]",
+    "root_cause": "G5",
+    "study": "20260911-operating-heating",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-operating-heating]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-nan]",
+    "root_cause": "G5",
+    "study": "20260911-operating-heating",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-operating-heating]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-positive-inf]",
+    "root_cause": "G5",
+    "study": "20260911-operating-heating",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-operating-heating]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-negative-inf]",
+    "root_cause": "G5",
+    "study": "20260911-operating-heating",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-operating-heating]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-absent]",
+    "root_cause": "G5",
+    "study": "20260911-operating-heating",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-operating-heating]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-null]",
+    "root_cause": "G5",
+    "study": "20260911-operating-heating",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-operating-heating]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-nan]",
+    "root_cause": "G5",
+    "study": "20260911-operating-heating",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-operating-heating]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-positive-inf]",
+    "root_cause": "G5",
+    "study": "20260911-operating-heating",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-operating-heating]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-negative-inf]",
+    "root_cause": "G5",
+    "study": "20260911-operating-heating",
+    "original_positive_case": false,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260911-operating-heating]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-first-case-absent]",
+    "root_cause": "G6",
+    "study": "20260912-plant-closure",
+    "original_positive_case": false,
+    "disposition": "replaced; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260912-plant-closure]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-first-case-null]",
+    "root_cause": "G6",
+    "study": "20260912-plant-closure",
+    "original_positive_case": false,
+    "disposition": "replaced; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260912-plant-closure]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-first-case-nan]",
+    "root_cause": "G6",
+    "study": "20260912-plant-closure",
+    "original_positive_case": false,
+    "disposition": "replaced; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260912-plant-closure]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-first-case-positive-inf]",
+    "root_cause": "G6",
+    "study": "20260912-plant-closure",
+    "original_positive_case": false,
+    "disposition": "replaced; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260912-plant-closure]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-first-case-negative-inf]",
+    "root_cause": "G6",
+    "study": "20260912-plant-closure",
+    "original_positive_case": false,
+    "disposition": "replaced; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260912-plant-closure]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-later-case-absent]",
+    "root_cause": "G6",
+    "study": "20260912-plant-closure",
+    "original_positive_case": false,
+    "disposition": "replaced; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260912-plant-closure]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-later-case-null]",
+    "root_cause": "G6",
+    "study": "20260912-plant-closure",
+    "original_positive_case": false,
+    "disposition": "replaced; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260912-plant-closure]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-later-case-nan]",
+    "root_cause": "G6",
+    "study": "20260912-plant-closure",
+    "original_positive_case": false,
+    "disposition": "replaced; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260912-plant-closure]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-later-case-positive-inf]",
+    "root_cause": "G6",
+    "study": "20260912-plant-closure",
+    "original_positive_case": false,
+    "disposition": "replaced; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260912-plant-closure]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-later-case-negative-inf]",
+    "root_cause": "G6",
+    "study": "20260912-plant-closure",
+    "original_positive_case": false,
+    "disposition": "replaced; production fixed; replacement checks passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[{absent,null,nan}-20260912-plant-closure]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260903-priced-levers]",
+    "root_cause": "G2",
+    "study": "20260903-priced-levers",
+    "original_positive_case": true,
+    "disposition": "repaired; passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260903-priced-levers]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260903-wall-and-heating]",
+    "root_cause": "G2",
+    "study": "20260903-wall-and-heating",
+    "original_positive_case": true,
+    "disposition": "repaired; passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260903-wall-and-heating]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260904-wall-and-heating]",
+    "root_cause": "G3",
+    "study": "20260904-wall-and-heating",
+    "original_positive_case": true,
+    "disposition": "repaired; passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260904-wall-and-heating]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260905-stored-energy-basis]",
+    "root_cause": "G3",
+    "study": "20260905-stored-energy-basis",
+    "original_positive_case": true,
+    "disposition": "repaired; passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260905-stored-energy-basis]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260907-burn-control]",
+    "root_cause": "G3",
+    "study": "20260907-burn-control",
+    "original_positive_case": true,
+    "disposition": "repaired; passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260907-burn-control]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260907-minor-radius]",
+    "root_cause": "G3",
+    "study": "20260907-minor-radius",
+    "original_positive_case": true,
+    "disposition": "repaired; passing",
+    "replacement": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260907-minor-radius]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260911-model-owned-radius]",
+    "root_cause": "G4",
+    "study": "20260911-model-owned-radius",
+    "original_positive_case": true,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_preserves_values_and_case_identity[20260911-model-owned-radius]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260911-operating-heating]",
+    "root_cause": "G5",
+    "study": "20260911-operating-heating",
+    "original_positive_case": true,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_preserves_values_and_case_identity[20260911-operating-heating]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260912-plant-closure]",
+    "root_cause": "G6",
+    "study": "20260912-plant-closure",
+    "original_positive_case": true,
+    "disposition": "replaced; passing",
+    "replacement": "tests/study/test_native_publication.py::test_native_publication_preserves_values_and_case_identity[20260912-plant-closure]",
+    "shared_nonfinite_coverage": "tests/study/test_native_publication.py::test_required_values_refuse_invalid_numbers"
+  },
+  {
+    "original_test_id": "tests/orchestration/test_goal_contract.py::test_narratives_are_separate_from_the_goal_contract",
+    "root_cause": "G7",
+    "study": "",
+    "original_positive_case": false,
+    "disposition": "deleted; historical narrative reference is not an authority violation",
+    "replacement": "none",
+    "shared_nonfinite_coverage": ""
+  }
+]

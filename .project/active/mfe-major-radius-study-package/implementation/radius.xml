@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="10" time="8.028" timestamp="2026-09-11T17:46:32.930699-07:00" hostname="reid-workstation"><testcase classname="tests.study.test_major_radius" name="test_retired_flat_key_rejected_before_conversion[point0]" time="0.030" /><testcase classname="tests.study.test_major_radius" name="test_retired_flat_key_rejected_before_conversion[point1]" time="0.001" /><testcase classname="tests.study.test_major_radius" name="test_retired_flat_key_rejected_before_conversion[point2]" time="0.000" /><testcase classname="tests.study.test_major_radius" name="test_retired_flat_key_rejected_before_conversion[point3]" time="0.000" /><testcase classname="tests.study.test_major_radius" name="test_retired_flat_key_rejected_before_conversion[point4]" time="0.000" /><testcase classname="tests.study.test_major_radius" name="test_retired_local_alias_rejected[14]" time="0.001" /><testcase classname="tests.study.test_major_radius" name="test_retired_local_alias_rejected[12.7]" time="0.000" /><testcase classname="tests.study.test_major_radius" name="test_retired_local_alias_rejected[0]" time="0.000" /><testcase classname="tests.study.test_major_radius" name="test_exact_input_contract_and_fixed_references" time="0.002"><failure message="AssertionError: assert {'stellarator..._T2_max', ...} == {'stellarator..._T2_min', ...}&#10;  &#10;  Extra items in the left set:&#10;  'stellarator_09__stellaris__owner__ref_power'&#10;  'stellarator_09__stellaris__beta_calc__mu0'&#10;  'stellarator_09__stellaris__p_tfcool'&#10;  'stellarator_09__stellaris__buildings_cost__n_mod_in'&#10;  'stellarator_09__stellaris__vessel_t'...&#10;  &#10;  ...Full output truncated (143 lines hidden), use '-vv' to show">def test_exact_input_contract_and_fixed_references():
+        inputs = {}
+        for path in (route.PACKAGE_DIR/'inputs').glob('*.json'):
+            inputs.update(json.loads(path.read_text()))
+        assert len(inputs) == 246
+&gt;       assert set(inputs) == set(oracle.ENTRY_KEY_TO_ORACLE_INPUT)
+E       AssertionError: assert {'stellarator..._T2_max', ...} == {'stellarator..._T2_min', ...}
+E         
+E         Extra items in the left set:
+E         'stellarator_09__stellaris__owner__ref_power'
+E         'stellarator_09__stellaris__beta_calc__mu0'
+E         'stellarator_09__stellaris__p_tfcool'
+E         'stellarator_09__stellaris__buildings_cost__n_mod_in'
+E         'stellarator_09__stellaris__vessel_t'...
+E         
+E         ...Full output truncated (143 lines hidden), use '-vv' to show
+
+tests/study/test_major_radius.py:42: AssertionError</failure></testcase><testcase classname="tests.study.test_major_radius" name="test_current_radius_controls_match_frozen_model_and_independent_oracle" time="7.929" /></testsuite></testsuites>

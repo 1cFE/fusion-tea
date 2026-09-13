@@ -1,0 +1,2 @@
+{'ordinary': 158, 'live_original': 'EvaluationFailed', 'live_equal': 'EvaluationFailed', 'reference_original': 'EvaluationFailed', 'reference_equal': 'EvaluationFailed', 'zero_cold': 'EvaluationFailed', 'equal_temperatures': 'EvaluationFailed', 'reversed_temperatures': 'EvaluationFailed', 'negative_ambient': 'EvaluationFailed'}
+Eight native deliberate refusals; ordinary 158 outputs, response map and engineering report exactly preserved

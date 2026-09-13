@@ -1,0 +1,111 @@
+{
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "0e61f19061132204911763b142f203d5064e13589b7582c3ef0037d101503204",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_fuel_cycle_params.json",
+        "inputs/mfe_magnet_cost_params.json",
+        "inputs/mfe_magnet_field_params.json",
+        "inputs/mfe_plant_params.json",
+        "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_plasma_sustainment_params.json",
+        "inputs/mfe_vacuum_params.json",
+        "inputs/stellarator_plant_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "a9514eb6505dea1589f47cb20bd004e480d61b3be98e7d793bf195b1b2d773b0",
+      "semantic_fingerprint": "8f4912c20870b8e0090f9836292403d9d05b0b0e6d46dabf53713772737666cf"
+    }
+  },
+  "baseline": {
+    "point": {
+      "stellarator_09__stellaris__R": 12.7,
+      "stellarator_09__stellaris__magnet__R0": 12.7,
+      "stellarator_09__stellaris__a": 1.3,
+      "stellarator_09__stellaris__availability_direct": 0.0
+    },
+    "headline": {
+      "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+      "value": 224.26923288439
+    },
+    "verdicts": [
+      {
+        "source_local_identity": "beta_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "burn_hold_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "cond_strain_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "cycle_domain_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "divertor_heat_ok",
+        "expected": "violated"
+      },
+      {
+        "source_local_identity": "heating_couple_positive_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_couple_upper_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_source_positive_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heating_source_upper_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "loop_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "loop_pressure_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "net_positive",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "peak_field_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "recirc_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "sustainment_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "tbr_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "wall_load_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "wp_stress_ok",
+        "expected": "satisfied"
+      }
+    ]
+  }
+}

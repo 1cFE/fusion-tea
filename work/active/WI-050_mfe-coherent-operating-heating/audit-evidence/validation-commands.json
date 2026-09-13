@@ -1,0 +1,45 @@
+[
+  {
+    "command": [
+      "/home/reid/1cfe/fusion-tea-codex-test/.codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-audit-current-9g6qhjsq/models",
+      "--level",
+      "1"
+    ],
+    "returncode": 0
+  },
+  {
+    "command": [
+      "/home/reid/1cfe/fusion-tea-codex-test/.codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-audit-current-9g6qhjsq/models",
+      "--level",
+      "2"
+    ],
+    "returncode": 1
+  },
+  {
+    "command": [
+      "/home/reid/1cfe/fusion-tea-codex-test/.codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-audit-current-9g6qhjsq/models",
+      "--level",
+      "3"
+    ],
+    "returncode": 0
+  },
+  {
+    "command": [
+      "/home/reid/1cfe/fusion-tea-codex-test/.codex-test/run",
+      "agentic-mbse",
+      "validate",
+      "/tmp/wi050-audit-current-9g6qhjsq/models",
+      "--complete"
+    ],
+    "returncode": 1
+  }
+]

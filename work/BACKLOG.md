@@ -21,6 +21,16 @@ epics:
     scale: standard
     status: completed
     completed: '2026-03-03'
+  - id: WI-048
+    name: IFE operating point repair
+    scale: standard
+    status: backlog
+    completed: null
+  - id: WI-049
+    name: IFE zero-discount repair
+    scale: standard
+    status: backlog
+    completed: null
 - name: MFE Cost Modeling — Tokamak & Stellarator
   goal: null
   priority: P0
@@ -180,6 +190,21 @@ epics:
     scale: standard
     status: backlog
     completed: null
+  - id: WI-050
+    name: MFE coherent operating heating
+    scale: standard
+    status: backlog
+    completed: null
+  - id: WI-051
+    name: MFE model-owned major radius
+    scale: standard
+    status: backlog
+    completed: null
+  - id: WI-052
+    name: MFE financial rate limits
+    scale: standard
+    status: backlog
+    completed: null
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -236,6 +261,30 @@ standalone:
   priority: P0
   status: completed
   completed: '2026-08-02'
+- id: WI-053
+  name: Magnet and cryogenic input domains
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
+- id: WI-054
+  name: Faithful model equations and citations
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
+- id: WI-055
+  name: Winding pack input domain
+  scale: standard
+  priority: P0
+  status: backlog
+  completed: null
+- id: WI-056
+  name: Primary loop heat capacity domain
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -249,6 +298,8 @@ standalone:
 | WI-006 | IFE Cost Structure Library | standard | completed | Completed 2026-03-02 |
 | WI-007 | Generic IFE Concept Model | standard | completed | Completed 2026-03-02 |
 | WI-008 | HIF Concept Instantiation | standard | completed | Completed 2026-03-03 |
+| WI-048 | IFE operating point repair | standard | backlog |  |
+| WI-049 | IFE zero-discount repair | standard | backlog |  |
 
 ## Epic: MFE Cost Modeling — Tokamak & Stellarator
 **Priority**: P0 | **Status**: draft
@@ -286,6 +337,9 @@ standalone:
 | WI-045 | Primary Coolant Loop and Temperature-Compatible Power Cycle | standard | backlog |  |
 | WI-046 | Lifecycle Calendar: Component Life into Availability and Dated Replacement | standard | backlog |  |
 | WI-047 | Fuel-Cycle, Divertor-Heat and Vacuum Reduced Flows | standard | backlog |  |
+| WI-050 | MFE coherent operating heating | standard | backlog |  |
+| WI-051 | MFE model-owned major radius | standard | backlog |  |
+| WI-052 | MFE financial rate limits | standard | backlog |  |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active
@@ -307,3 +361,7 @@ standalone:
 | WI-027 | Demo Constraint Execution (STELLARATOR-DEMO Item 2) | standard | P0 | completed | Completed 2026-07-20 |
 | WI-028 | Handshake account scope CAS22 tail + CAS40/50/60 | standard | P0 | completed | Completed 2026-07-20 |
 | WI-029 | Handshake account scope LCOE construction CAS70/80 + IDC | standard | P0 | completed | Completed 2026-08-02 |
+| WI-053 | Magnet and cryogenic input domains | standard | P1 | backlog |  |
+| WI-054 | Faithful model equations and citations | standard | P1 | backlog |  |
+| WI-055 | Winding pack input domain | standard | P0 | backlog |  |
+| WI-056 | Primary loop heat capacity domain | standard | P1 | backlog |  |

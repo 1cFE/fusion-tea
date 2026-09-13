@@ -1,0 +1,14 @@
+{
+  "work/active/WI-050_mfe-coherent-operating-heating/prototype": "unchanged against entering production HEAD",
+  "work/active/WI-050_mfe-coherent-operating-heating/prototype-r1": "unchanged against entering production HEAD",
+  "work/active/WI-050_mfe-coherent-operating-heating/review.md": "unchanged against entering production HEAD",
+  "work/active/WI-050_mfe-coherent-operating-heating/review-r1.md": "unchanged against entering production HEAD",
+  "work/orchestration/goals": "unchanged against entering production HEAD",
+  "work/analysis": "unchanged against entering production HEAD",
+  "exploration/stellarator_e2e/studies": "unchanged against entering production HEAD",
+  "tests/study": "unchanged against entering production HEAD",
+  "models/designs/hif_ife": "unchanged against entering production HEAD",
+  "exploration/hif_ife_e2e/models": "unchanged against entering production HEAD",
+  "family_isolation": "Every canonical and twin file outside the exact five MFE edits equals revision546218a5; no ownership mapping change.",
+  "study_consumer_checks": "Four named current study consumer modules intentionally deferred to separately certified package migration."
+}

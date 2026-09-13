@@ -1,0 +1,7 @@
+# Fresh product-lens provenance
+
+The host rejected fresh product-lens spawns from both auditor and parent with `agent thread limit reached`; no release operation was exposed. Parent delegated to a fresh ephemeral Codex CLI session with the product-lens instructions and separate SOURCES/WORK inputs. `product-lens-invocation.txt` retains the exact command, stdin, initial runtime-initialization failure and successful retry. Session `01a0927f-3a41-7b80-8aa7-a3cc90b24a50` completed with exit 0; `product-lens.jsonl` retains its oracle-first transcript and `product-lens-verdict.txt` its final finding. Success stderr is empty.
+
+Only CLI runtime initialization received approved outer escalation; reviewer tools remained read-only. No history was forked and no model/config override was supplied. The reviewer used the sealed interpreter directly for its retained-evidence arithmetic check. This deviates from the launcher instruction; that result is credited only as a read-only recomputation of recorded evidence, not native runtime verification. The auditor's fresh `.codex-test/run` TEAx tests and stored controls supply the native evidence.
+
+The reviewer found one agent-grade synchronization smell and no owner-grade contradiction. The auditor retained and disposed audit-F1 in the append-only product-lens ledger and leading product judgment. No production change, residual acceptance or new product contract is inferred from that disposition.

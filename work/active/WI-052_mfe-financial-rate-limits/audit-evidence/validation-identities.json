@@ -1,0 +1,98 @@
+{
+  "canonical": [
+    {
+      "level": 1,
+      "matched_issue_count": 0,
+      "success": true
+    },
+    {
+      "level": 2,
+      "matched_issue_count": 10,
+      "success": false
+    },
+    {
+      "level": 3,
+      "matched_issue_count": 0,
+      "success": true
+    },
+    {
+      "level": 4,
+      "matched_issue_count": 0,
+      "success": true
+    },
+    {
+      "level": 5,
+      "matched_issue_count": 0,
+      "success": true
+    },
+    {
+      "level": 6,
+      "matched_issue_count": 279,
+      "success": false
+    }
+  ],
+  "mirror": [
+    {
+      "level": 1,
+      "matched_issue_count": 0,
+      "success": true
+    },
+    {
+      "level": 2,
+      "matched_issue_count": 10,
+      "success": false
+    },
+    {
+      "level": 3,
+      "matched_issue_count": 0,
+      "success": true
+    },
+    {
+      "level": 4,
+      "matched_issue_count": 0,
+      "success": true
+    },
+    {
+      "level": 5,
+      "matched_issue_count": 0,
+      "success": true
+    },
+    {
+      "level": 6,
+      "matched_issue_count": 229,
+      "success": false
+    }
+  ],
+  "family": [
+    {
+      "level": 1,
+      "matched_issue_count": 0,
+      "success": true
+    },
+    {
+      "level": 2,
+      "matched_issue_count": 10,
+      "success": false
+    },
+    {
+      "level": 3,
+      "matched_issue_count": 0,
+      "success": true
+    },
+    {
+      "level": 4,
+      "matched_issue_count": 0,
+      "success": true
+    },
+    {
+      "level": 5,
+      "matched_issue_count": 0,
+      "success": true
+    },
+    {
+      "level": 6,
+      "matched_issue_count": 229,
+      "success": false
+    }
+  ]
+}

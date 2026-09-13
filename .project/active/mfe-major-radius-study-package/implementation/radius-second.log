@@ -1,0 +1,25 @@
+........F..........                                                      [100%]
+=================================== FAILURES ===================================
+________________ test_exact_input_contract_and_fixed_references ________________
+
+    def test_exact_input_contract_and_fixed_references():
+        inputs = {}
+        for path in (route.PACKAGE_DIR/'inputs').glob('*.json'):
+            inputs.update(json.loads(path.read_text()))
+        assert len(inputs) == 246
+>       assert set(inputs) == set(oracle.ENTRY_KEY_TO_ORACLE_INPUT)
+E       AssertionError: assert {'stellarator..._T2_max', ...} == {'stellarator..._T2_min', ...}
+E         
+E         Extra items in the left set:
+E         'stellarator_09__stellaris__bldg_the_base'
+E         'stellarator_09__stellaris__power_supplies_cost__alpha'
+E         'stellarator_09__stellaris__buildings_cost__p_fus_ref'
+E         'stellarator_09__stellaris__p_cryo'
+E         'stellarator_09__stellaris__structure_cost__alpha'...
+E         
+E         ...Full output truncated (143 lines hidden), use '-vv' to show
+
+tests/study/test_major_radius.py:42: AssertionError
+=========================== short test summary info ============================
+FAILED tests/study/test_major_radius.py::test_exact_input_contract_and_fixed_references
+1 failed, 18 passed in 12.08s

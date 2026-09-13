@@ -1,0 +1,1 @@
+PASS native generation; all package bytes including shared helper preserved on normal and smart regeneration

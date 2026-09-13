@@ -1,0 +1,8 @@
+[Complete record](exploration/stellarator_e2e/studies/20260911-model-owned-radius/record.md) is ready for parent freeze, uncommitted, with no synthesis.
+
+- Seven R-only cases propagated coherently; none was fully feasible.
+- All 141 oracle channels and 18 verdicts matched at every case. Baseline/R14 matched all 158 frozen scalar controls.
+- Fresh reviews, three native record checks, six publication tests and artifact-integrity checks passed.
+- Six discovery rows appended; retained diagnostics and coverage/physics limits remain explicit.
+
+No execution gate remains. Parent commit and fresh administrator dispatch are next.

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea-codex-test/.project/active/mfe-major-radius-study-package/audit-evidence/preservation.py", line 25, in <module>
+    audit_start={p:digest(root/p) for p in subprocess.check_output(['git','ls-files','-z']).decode().split('\0') if p and not p.startswith('knowledge/holdout/') and not p.startswith('.project/active/mfe-major-radius-study-package/audit-evidence/')}
+                   ^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea-codex-test/.project/active/mfe-major-radius-study-package/audit-evidence/preservation.py", line 8, in digest
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+                          ^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+IsADirectoryError: [Errno 21] Is a directory: '/home/reid/1cfe/fusion-tea-codex-test/.project/active/mfe-major-radius-study-package/implementation/controls-complete/_work/pkg_link/stellarator_tea'

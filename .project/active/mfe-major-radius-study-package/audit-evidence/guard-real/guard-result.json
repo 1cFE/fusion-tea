@@ -1,0 +1,11 @@
+{
+  "permitted_reads": 14363,
+  "quarantine_attempts": 0,
+  "delta": {
+    ".project/CURRENT_WORK.md": [
+      "a487e39d158aa2e4243073e454cb7fcb006a1a31d6eb99b054aebd385eacefc3",
+      "8ab49b47b8088fe8d03daa348ffd0934293e804cb07b2b73ecd40cbbea3adccf"
+    ]
+  },
+  "delta_disposition": "CURRENT_WORK was already modified at audit entry; preserved, not reset"
+}

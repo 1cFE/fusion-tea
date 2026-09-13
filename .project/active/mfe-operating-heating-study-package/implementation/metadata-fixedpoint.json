@@ -1,0 +1,12 @@
+{
+  "unchanged": true,
+  "sha256": {
+    "exploration/stellarator_e2e/studies/manifest.json": "47ad645b408df22bfddca1b9700c02a70e2761a3642925b4ac7637e88d8204a1",
+    "tests/study/data/I_coil.expected.json": "95bb3a9a21693d9a9a6a62e654430454d7deae206dc78b6bcc9520fa85de9c92",
+    "tests/study/data/R+tie.expected.json": "ad6ad3ddee5ff7dbfc4fc859748a95278e8bff79a563c81337d20ea081b7d565",
+    "tests/study/data/R.expected.json": "6549f751f3be4c9a83c5437b7b05fb86132ecf0593251a74ca29091e8e5a7134",
+    "tests/study/data/a.expected.json": "848c4fa8df2de0ed5c5ffdf491a593812ef2f7e98c2302fa49558d5c35081e90",
+    "tests/study/data/availability_direct.expected.json": "412a3a8252bdf46a71cf73814eff9b154001f08679adc3f05f0766ede49c6920",
+    "tests/study/data/interest_rate.expected.json": "a01b614f8eac80f5c165cfbf0115efb77061661f028c5e24188a039f083e4f8b"
+  }
+}

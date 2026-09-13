@@ -1,0 +1,9 @@
+**Written point:** A non-builder can operate and interpret the repaired plant through documented routes; the independent oracle carries audited held inputs while its contract remains active. Sources: [owner’s words](/home/reid/1cfe/fusion-tea-codex-test/.project/concepts/goal-driven-model-development-harness.md), `[OWNER-VERBATIM]`; [ADR-0010](/home/reid/1cfe/fusion-tea-codex-test/.project/adr/0010-oracle-mirrors-audited-bindings.md), `[OWNER]`. Falsifier: reserve changes silently alter operating demand, or verification compares different plants.
+
+- **audit-F1 — DON’T — `[AGENT]` inference from the owner’s clean-patterns requirement:** Graph expectations remain duplicated between six JSON fixtures and [FIXTURE_CONTRACT](/home/reid/1cfe/fusion-tea-codex-test/tests/study/test_known_answers.py:33). The refresh helper regenerates only the JSON representation; updating the Python table requires another synchronization step. **Falsifier:** refresh after a legitimate graph change, then run the fixture-contract test; it retains obsolete expectations.
+
+**Fired smell:** “Two representations must be manually kept synchronized.” Escalate into the audit judgment and explicitly dispose before passing.
+
+No owner-grade contradiction found. Independent read-only recomputation matched 141 recorded channels across baseline/reserve/demand controls within `2.3e-16`; all 18 binding identities match the emitted contract. This checked retained evidence, not fresh TEAx execution. The disclosed historical-export failures remain outside this bounded certificate.
+
+**Gate recommendation: DISPOSE-and-proceed** on audit-F1; no BLOCK.

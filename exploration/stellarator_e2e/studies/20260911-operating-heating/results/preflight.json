@@ -1,0 +1,93 @@
+{
+  "schema_version": "study-preflight-results/v1",
+  "tool": {
+    "path": "scripts/study/preflight.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "fee08e143c556b0ea0bd7d32035257283220f8f671b3b2f2aa52ecf8a3c92681",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        },
+        {
+          "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+          "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+          "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+        }
+      ]
+    }
+  },
+  "subcommand": "gates",
+  "inputs": {
+    "package": "exploration/stellarator_e2e/generated",
+    "manifest": "exploration/stellarator_e2e/studies/manifest.json",
+    "axis_declaration": "exploration/stellarator_e2e/studies/20260911-operating-heating/axes.json",
+    "identity_document": "exploration/stellarator_e2e/studies/20260911-operating-heating/results/package_identity.json",
+    "baseline_result": "exploration/stellarator_e2e/studies/20260911-operating-heating/results/baseline_result.json"
+  },
+  "input_digests": {
+    "axis_declaration": "883f6024cd919b808d5f209cead19362535250b4ee1252449f38cbd330f9e42a",
+    "baseline_result": "154370910e2f952a55a22f4812de8dca65320b9ee367752dade4f10e44d86380",
+    "identity_document": "9df6e00149aa0dbf05b053853f01478b3274f86b85ff6f1b1c1a6b5baffe574d",
+    "manifest": "47ad645b408df22bfddca1b9700c02a70e2761a3642925b4ac7637e88d8204a1"
+  },
+  "gates": [
+    {
+      "gate": "declared_keys",
+      "status": "pass",
+      "checked": "declared axis keys against the package's inputs",
+      "detail": "4 declared keys across 4 groups, all package inputs"
+    },
+    {
+      "gate": "sibling_scan",
+      "status": "pass",
+      "checked": "undeclared suffix siblings (advisory)",
+      "detail": "pass"
+    },
+    {
+      "gate": "identity",
+      "status": "pass",
+      "checked": "the executable identity, recomputed",
+      "detail": "kind sealed, digest a9514eb6505dea1589f47cb20bd004e480d61b3be98e7d793bf195b1b2d773b0 recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches"
+    },
+    {
+      "gate": "manifest_currency",
+      "status": "pass",
+      "checked": "the manifest's recorded package facts",
+      "detail": "both recorded package fingerprints match the package on disk"
+    },
+    {
+      "gate": "baseline_headline",
+      "status": "pass",
+      "checked": "the pinned headline and verdicts",
+      "detail": "stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 0.000e+00; 18/18 pinned verdicts match"
+    },
+    {
+      "gate": "package_clean",
+      "status": "pass",
+      "checked": "the committed package tree",
+      "detail": "package tree is byte-untouched (git clean)"
+    }
+  ],
+  "outcome": "pass"
+}

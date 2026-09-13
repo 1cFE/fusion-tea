@@ -1,0 +1,20 @@
+{
+  "outcome": "PASS",
+  "cases": 15,
+  "raw_channel_matches": 2115,
+  "violation_counts": {
+    "divertor_heat_ok": 15,
+    "sustainment_ok": 2,
+    "loop_capacity_ok": 6,
+    "wall_load_ok": 6,
+    "burn_hold_ok": 2
+  },
+  "history_after_citation": {
+    "work/active/WI-050_mfe-coherent-operating-heating": "",
+    ".project/active/mfe-operating-heating-study-package": "",
+    "work/orchestration/goals/fusion-audit-remediation/evidence/T-018_integration": "",
+    "exploration/stellarator_e2e/studies/20260911-operating-heating": "a408429a Read operating heating study independently from frozen record",
+    "exploration/stellarator_e2e/studies/20260911-operating-heating/synthesis.md": ""
+  },
+  "scope": "Export arithmetic and native history reading; no model execution or source recertification."
+}

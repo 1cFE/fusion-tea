@@ -1,0 +1,48 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_____ test_zero_efficiency_is_a_recorded_native_execution_failure[source] ______
+
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12222/test_zero_efficiency_is_a_reco0')
+stage = 'source'
+
+    @pytest.mark.parametrize("stage", ["source", "couple"])
+    def test_zero_efficiency_is_a_recorded_native_execution_failure(stock_simkit_path, tmp_path, stage):
+        sys.path.insert(0, str(MANIFEST.parent))
+        import study_route
+    
+        point = {f"{study_route.P}eta_{stage}_heat": 0.0}
+        cases, _ = study_route.run_points(f"zero-{stage}-efficiency", [point], tmp_path)
+        assert len(cases) == 1
+>       assert cases[0].state == "failed"
+E       AssertionError: assert 'execution_failed' == 'failed'
+E         
+E         - failed
+E         + execution_failed
+
+tests/study/test_verify.py:366: AssertionError
+_____ test_zero_efficiency_is_a_recorded_native_execution_failure[couple] ______
+
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12222/test_zero_efficiency_is_a_reco1')
+stage = 'couple'
+
+    @pytest.mark.parametrize("stage", ["source", "couple"])
+    def test_zero_efficiency_is_a_recorded_native_execution_failure(stock_simkit_path, tmp_path, stage):
+        sys.path.insert(0, str(MANIFEST.parent))
+        import study_route
+    
+        point = {f"{study_route.P}eta_{stage}_heat": 0.0}
+        cases, _ = study_route.run_points(f"zero-{stage}-efficiency", [point], tmp_path)
+        assert len(cases) == 1
+>       assert cases[0].state == "failed"
+E       AssertionError: assert 'execution_failed' == 'failed'
+E         
+E         - failed
+E         + execution_failed
+
+tests/study/test_verify.py:366: AssertionError
+=========================== short test summary info ============================
+FAILED tests/study/test_verify.py::test_zero_efficiency_is_a_recorded_native_execution_failure[source]
+FAILED tests/study/test_verify.py::test_zero_efficiency_is_a_recorded_native_execution_failure[couple]
+2 failed in 1.21s

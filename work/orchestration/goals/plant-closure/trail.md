@@ -162,3 +162,398 @@ The round's pin · native target `scripts/integrate.py` with the three audited i
 - **Evidence:** `evidence/T-007_pin/integration_return.json` — **`CANDIDATE`, exit 0, all ten gates passing on the first run**, citing the three audited items at their commit-C shas (`work/active/WI-045_primary-loop-and-cycle@693a4dff`, `WI-046_lifecycle-calendar@1c87c343`, `WI-047_fuel-divertor-vacuum-flows@0b9a2e1c`); beside it the seam's own artifacts, deposited unchanged: `package_identity.json`, `baseline_result.json`, `preflight_results.json`, `verification_summary.json`, `recaptured.snapshot.json`, `clean.json`.
 - **Reading:** the round has its one promoted pin, and it is the package the three items built. **Pin `e2b0fe3979af1c75…`; semantic `42237b2b07673bfd…`; executable `234d0b27d2b5327e…`; teax `8d877460ac4f6f26…`; baseline LCOE 224.60952472804465; fourteen verdicts, `divertor_heat_ok` violated by design.** What the gates establish beyond the items' own records: regeneration through the package rewrote no byte outside `handwritten/` and all 88 handwritten files are byte-identical (so the three restored manual bodies are exactly what was audited); the snapshot recaptures byte-identically and all 247 entry points re-derive to the tracked census; the manifest is this package's and its pin recomputes over it; all six preflight gates pass; oracle parity holds with every verdict re-derived; and the lineage is the one named. The seam's standing disclosure is carried, not resolved here: `assert_read_set_covered` was not run and is covered by nothing else (filed upstream, its own gate says so).
 - **Decision:** trigger — one pin per round with one comparison meaning (`goal.md` § Invariants) · decision — the three items were integrated in one invocation with three `--audited-work` references rather than pinned separately, so the round has exactly one pin and the study reads one package · tier `execution detail` · decided by the round agent · what changed: `evidence/T-007_pin/`.
+
+### Owner ruling — 2026-09-11
+
+[OWNER-VERBATIM] "yes I approve" approves preserving this goal's historical pin/evidence and superseding its unfinished comparison so F04 repair can proceed, in response to that explicit choice in the fusion-audit-remediation conversation. Recommendation [AGENT] (ratified by owner, 2026-09-11); evidence and options: `work/analysis/20260911-190740_mfe-pending-comparison-preservation.md@0dce6053`, current assessment `work/analysis/20260911-190758_mfe-operating-state.md@0dce6053`. The completed work and candidate remain historical evidence. No source, model, package or existing result is altered by this ruling.
+
+### Round 1 result — 2026-09-11
+
+**Intent partly met; study and consolidated re-grade unmet.** This is interruption closure by owner redirection, compiled from the retained task returns without fresh execution or certification. T-001 supplied the basis packet and three specs; T-002 registered the cycle source; T-003 supplied the three designs/plans/prototypes; T-004 implemented WI-045 (`693a4dff`); T-005 implemented WI-046 (`1c87c343`); T-006 implemented WI-047 (`0b9a2e1c`); T-007 returned the one native CANDIDATE (`evidence/T-007_pin/integration_return.json@9dd59883`). Every task has its retained COMPLETE return above. No T-008 started and no study reading exists.
+
+**Last semantic outcome and derived stop:** The owner redirects the unfinished installed-heating comparison to permit correction of its operating basis. That changes the intended comparison meaning, so close on trigger 3. The historical candidate was the last executed native outcome; the new ruling does not invalidate its reported historical checks or promote a replacement. One pin and zero studies were produced. No retry or limit exhaustion is claimed.
+
+**Preserved evidence:** Pin `e2b0fe3979af1c75a92d8b58f310e0f07f6059af3f3236f4a812bf2227baa7d9`, semantic `42237b2b07673bfde916b9749bab93634eafa91f1205abde4b7a70dd1881038f`, executable `234d0b27d2b5327ede2cae1c05a2e1c1ead1d89337fd019782bdda03d841e81d`, and baseline LCOE 224.60952472804465 with the violated divertor fence remain the T-007 producer's historical results. Source basis, native item records, compatibility checks, prior studies and all task evidence remain at their existing revisions. This closure reruns none of them and supplies no engineering or financial validation.
+
+**Finding dispositions proposed [AGENT]:** Retain each completed item's bounded evidence as cited in T-004–T-007. The unexecuted study cannot resolve the goal's intended discovery sightings, inherited-window boundaries, consolidated rubric cells or owner-held demo statement. Those remain unresolved under their existing dispositions. F04 has current assessment evidence in the separate audit-remediation goal, not a repair here. No new discovery IDs or residual acceptances are created.
+
+**Proposed learning delta:** None. This interruption closure introduces an owner redirection, not new execution knowledge. A fresh reviewer must evaluate the round and this result; accepted learnings are unchanged. The goal is not closed as answered.
+
+### Stop — 2026-09-11
+
+Kind: handoff
+
+What is true on disk: Round 1 is closed by approved redirection with one historical candidate and no study. Its unfinished installed-heating comparison is superseded; historical evidence is preserved. No replacement strategy, successful goal close or model mutation is recorded.
+
+What the owner must see: A fresh session must review the retained round and this interruption closure. The operating-heating repair proceeds under the audit-remediation goal's next native strategy; a replacement plant comparison must state its own compatibility and attribution contract.
+
+The material to review: This goal, trail, basis packet and T-001–T-007 native references; the two T-015 assessment reports at `0dce6053`; the owner ruling above. Resume at `work/orchestration/GOAL_RUNBOOK.md` § The fresh review. No study-reading checkpoint applies.
+
+### Round 1 review — 2026-09-11
+
+**Reviewer:** [AGENT] Codex `/root`, a fresh owner-started session that authored none of Round 1 or its interruption result. **Verdict:** FINDINGS. The interruption closure and preservation ruling stand. The findings below concern historical accounting; they do not block the separately authorized F04 repair or certify this goal answered.
+
+**Scope and evidence:** Reviewed the grounded contract, Round 1 strategy and T-001–T-007 scopes/returns, basis packet and amendments, native WI-045/046/047 phase records and deposited compatibility evidence, and T-007's integration return. Native evidence is cited at `work/active/WI-045_primary-loop-and-cycle@693a4dff`, `work/active/WI-046_lifecycle-calendar@1c87c343`, `work/active/WI-047_fuel-divertor-vacuum-flows@0b9a2e1c`, and `work/orchestration/goals/plant-closure/evidence/T-007_pin/@9dd59883`. The owner ruling and interruption result are at `dde473160ea1a51a3f8b2129f815737f1af55fff`. Source registration and the basis packet support the recorded native sequence; this review adds no source-image certification or independent item audit.
+
+**Fidelity and interruption:** The executed sequence pursued the three closures with sequential shared-file ownership and one integration candidate. The packet explicitly chose installed heating for the compatibility bridge. The later owner ruling supersedes that unfinished comparison, rather than changing its historical meaning. Every task has a return; there is no orphan start, T-008 execution, committed study, disposition checkpoint, or consolidated re-grade. Trigger 3 correctly closes the round on changed comparison meaning. One promoted pin and zero studies respect the bound. Native test-launch corrections and codegen fallbacks are recorded inside their task evidence; no changed physical experiment was presented as a goal-level mechanical retry, and no retry cap exhaustion is established.
+
+**Historical verification limits:** The deposited WI-045 compatibility diff reports no moved entering channels. WI-046's compatibility record preserves the earlier values with an explicit retired-CAS72-to-calendar mapping. WI-047's baseline diff reports no moved or removed existing channels and the added violated divertor verdict. T-007 records ten passing gates and the same candidate and fingerprints as the interruption result. Its manifest gate explicitly omits `assert_read_set_covered`; that omission remains. Native battery failures/skips, static validation limitations, calibration and source-transfer limits remain disclosed. These records support preservation of the historical result, not a fresh package execution, complete engineering certification, or the unexecuted final compatibility/window study.
+
+**Finding PC-R1-01 — discovery dispositions did not land:** The interruption result correctly declines study closure credit, but carrying every old disposition unchanged misses work already performed. In `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md@dde47316`, the latest primary-ID rows for `20260821-power-cycle-ab#1` and `20260904-wall-and-heating#5` still route the lifetime/availability coupling as an unminted follow-on. WI-046 now supplies bounded native implementation evidence. The round owes append-only joined updates identifying that evidence and retaining the unmeasured window/attribution consequences. Responsible: the next plant-closure records-continuation task through the goal workflow; concrete inputs are this finding and WI-046's phase/evidence records at `1c87c343`. This review does not invent a study or mark either sighting resolved. No model change is required to correct this routing gap.
+
+**Other touched sightings:** The original pump re-base sighting `20260821-power-cycle-ab#3` retains its historical answered disposition; the new loop is not a new certification of its historical study. The negative-net sightings `20260829-p-pump-fence#1` and `20260823-magnet-technology-ab#1` remain routed to WI-034. The window-limit sighting `20260829-p-pump-fence#2` remains a declared seam owned by the study maintainer, with the native runbook's window re-check as its concrete reference. `20260907-minor-radius#2` retains its bounded historical reading and existing geometry/conductor follow-ons. None receives a new boundary, optimum, or closure claim from this interrupted round. The future records continuation must append the touched open-row dispositions, carrying these existing owners and references, rather than leave the post-execution routing implicit.
+
+### Amendment — 2026-09-11 — amends T-005 return's held-mode reading
+
+**Finding PC-R1-02:** T-005's prose reports held CAS72 as 126,649,655.79. The native WI-046 `plan.md` § Predictions and `evidence/compat_mode/diff_vs_before.json@1c87c343` report 128,437,178.4450173 at WI-045's entering package state, equal to that state's retired CAS72 output. The native value is the evidence for that task. This corrects the trail's number; it changes no native result. The compatibility diff also names the retired channel explicitly, so “every channel” means preserved values with that mapping, not identical channel inventories. The final all-chain window compatibility study remains unexecuted.
+
+**Learning delta:** Accept the proposed empty delta. The interruption itself establishes no new execution knowledge; `learnings.md` remains unchanged.
+
+**External-mutation check:** Read path histories through review base `dde47316`. Since `a9ec0b76`, the relevant native WI-045/046/047 records, MFE models, stellarator package/study artifacts, registered cycle source and preserved integration evidence have no later changes. The only plant-closure changes are the authorized goal/trail additions at `dde47316`. They close the comparison openly after T-007; they do not invalidate a later task, because none started. Historical scratch paths in the integration JSON are producer paths; their retained evidence home is the adjacent committed T-007 directory. No current executability claim follows from their retention.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Owner superseded the unfinished installed-heating comparison | Accept the honest interruption closure; retain the historical candidate and incomplete answer conditions. | reserved gate | Owner at `dde47316`; application checked by fresh reviewer [AGENT] | This review; no new pin or goal close |
+| PC-R1-01: touched finding routes lag native implementation | Record FINDINGS and route append-only disposition completion to a separate plant-closure records continuation; no study or residual closure credit. | execution detail | Fresh reviewer [AGENT] | This review's concrete finding; discovery log unchanged |
+| PC-R1-02: held-mode prose disagrees with native record | Correct the trail by dated amendment, relying on native evidence. | execution detail | Fresh reviewer [AGENT] | Amendment above; native evidence unchanged |
+
+**Recommendation:** Preserve the interruption closure. Complete PC-R1-01 under a separately scoped records continuation before treating this round's disposition accounting as passed. No replacement plant-closure strategy is opened here. F04 repair proceeds under fusion-audit-remediation; any replacement plant comparison needs its own compatibility/attribution contract and review. The absent study, consolidated rubric packet, demo statement, engineering gaps and financial limitations remain unresolved.
+
+## Round 2 — closure-preparation
+
+### Strategy revision — 2026-09-11
+
+**Approach [AGENT]:** Complete the historical accounting and make the replacement comparison reviewable while remediation owns production repairs. This session is fresh to Round 1. It carries forward that round's FINDINGS verdict; it does not reopen or certify it. The owner authorized this preparation in `/tmp/handoff-20260911-170312.md` and the current instruction, “Read /tmp/handoff-20260911-170312.md and proceed with the authorized plant-closure preparation.” The task split is an agent recommendation ratified by the owner, not an owner-originated settled rule.
+
+**Assumptions [AGENT]:** Historical implementation credit can be recorded independently of unmeasured study consequences. A proposed comparison contract and pointer-only rubric packet can be prepared before a final package exists. The goal's 2026-09-11 amendment requires the replacement execution strategy after audited operating-state repair and integration; this preparation round promotes no pin and executes no study. Its proposals remain subject to the later interface handoff and native critique.
+
+**Intended increment and question [AGENT]:** No model increment. Establish which evidence and comparison distinctions a later study needs to answer the existing plant-closure question without attributing the operating-heating or radius corrections to the three closures. Preserve the historical pin and the owner-held acceptance/reveal gates.
+
+**Abandonment and limit [AGENT]:** Stop affected preparation if evidence contradicts its comparison premise. This round ends at a reviewed preparation packet, with zero pins and zero studies; final execution and grading are outside this round's declared bound. The goal's six-round and retry/checkpoint caps remain unchanged. No future task list is prescribed.
+
+### T-008 scope
+
+- **Objective:** Complete PC-R1-01's joined historical discovery dispositions.
+- **Why now:** Round 1 review identifies implementation evidence omitted from current routes; the owner authorized the separate records continuation.
+- **Scope:** Append dispositions under the six touched open primary IDs named in PC-R1-01 and its “Other touched sightings”; preserve the answered pump re-base and PC-R1-02 correction. No model, study, historical sighting edit or finding closure.
+- **Inputs:** `goal.md` including its amendment; Round 1 review at `fa3e7f2d`; WI-046 `plan.md` and evidence at `1c87c343`; current discovery-log row histories.
+- **Done when:** Each touched open ID carries its implementation evidence or continuing owner/reference, with unmeasured consequences explicit, and the native join checks pass.
+- **Stop when:** An ID has no committed sighting, native evidence contradicts the proposed credit, or a reserved decision is needed.
+
+### T-008 start — 2026-09-11
+
+T-008 · goal-owned append-only discovery dispositions · expected artifact: six joined rows in `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` and the native record-check result.
+
+### T-008 return — 2026-09-11
+
+**Outcome: COMPLETE.** Six append-only primary-ID dispositions landed in `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md`. WI-046's `plan.md@1c87c343` Phase 3 and the retained compatibility diff support the implementation credit; the inherited window consequences remain unmeasured. `.codex-test/run python -B -m pytest tests/study/test_records.py -q -p no:cacheprovider` reports 37 passed. No execution, discovery closure or historical rewrite occurred.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| PC-R1-01's two stale lifecycle routes | Credit native implementation while keeping the absent final study and source limits open | execution detail | Round agent [AGENT] | Joined updates for `20260821-power-cycle-ab#1`, `20260904-wall-and-heating#5` |
+| Four other touched open sightings | Preserve their existing owners and concrete references explicitly | execution detail | Round agent [AGENT] | Joined updates for `20260829-p-pump-fence#1/#2`, `20260823-magnet-technology-ab#1`, `20260907-minor-radius#2` |
+| Historical answered pump re-base and corrected held CAS72 number | Preserve the existing records; no repeated correction or new certification | execution detail | Round agent [AGENT] | none |
+
+### T-009 scope
+
+- **Objective:** Prepare a reviewable replacement-study contract that separates plant-closure effects from corrected operating heating and geometry ownership.
+- **Why now:** Historical accounting is explicit; production remediation continues independently, so study meaning and evidence needs can be prepared now.
+- **Scope:** A provisional goal evidence packet using native run-study conventions: compatibility/attribution proposal, scenario matrix, output requirements, validity/acceptance rules and package-handoff criteria. No study record, exact entry-key certification, model/consumer edit, point execution, pin promotion or final comparison ruling.
+- **Inputs:** `goal.md` and its amendment; native run-study runbook, policy and ANNEX; WI-045/046/047 evidence; WI-050 audit and operating-heating study; WI-051 design/plan; original fusion audit and accepted remediation Round 4 review.
+- **Done when:** A future executor can see which comparison is proposed, how every arm is attributed, what must be bound to the final census, and which remaining findings constrain each claim.
+- **Stop when:** Preparation requires a new source value, changed comparison authority or production repair; name the unresolved choice instead of implementing it.
+
+### T-009 start — 2026-09-11
+
+T-009 · preparation using native study-contract conventions · expected artifacts under `evidence/round2_preparation/`, provisional until the certified package handoff and native pre-execution critique.
+
+### T-009 return — 2026-09-11
+
+**Outcome: COMPLETE for preparation.** `evidence/round2_preparation/study-contract.md`, `scenario-matrix.md`, `output-contract.md`, `required-channels.provisional.json` and `audit-impact.md` provide the proposed comparison and candidate acceptance basis. The 141-column provisional map is copied from the operating-heating record; no final key/axis certificate or executed study is claimed.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Heating repair changes historical compatibility meaning | Propose separate historical, corrected-package factorial and cross-revision bridges; park final adoption until replacement strategy | execution detail | Round agent [AGENT] under owner-authorized preparation | `study-contract.md` |
+| Goal's “two cases” radiation wording differs from retained paired transport evidence | Surface the distinction; make the transport cases source-conditioned and radiation fractions explicitly engineered proposals | premise surprise | Round agent [AGENT]; interpretation not finally adopted | `scenario-matrix.md` Premise conflict; dependent radiation claims remain proposed |
+| Radius repair has no final accepted handoff here | Define concrete audit/consumer/integration acceptance evidence without treating all twenty findings as universal blockers | execution detail | Round agent [AGENT] | `audit-impact.md`; no production edits or pin |
+
+### T-010 scope
+
+- **Objective:** Assemble a pointer-only rubric evidence map and proposed dispositions for every historically below-target cell.
+- **Why now:** T-009 identifies the eventual runtime evidence and claim limits, allowing a complete grading handoff without pre-scoring the result.
+- **Scope:** Goal evidence packet covering all 23 scored cells and three not-applicable cells, source/native/runtime pointers, missing evidence, and B-2/B-3/B-4 implications. No new scores, rubric edit, accepted disposition, research approval, demo acceptance or reveal.
+- **Inputs:** `goal.md` Answered when (c)/(d); rubric v1 `dc0f0b6d`; historical grading/re-grades; admissible native model/item/study records; T-009 contract and audit impact assessment; quarantine protocol.
+- **Done when:** All twelve historical gaps have a proposed disposition with evidence and consequences, and every previously at-target cell has a final-pin reconfirmation route.
+- **Stop when:** A grade needs an unpromoted runtime, a source is inadmissible/missing, or an owner-held comparison/reveal ruling would be required; leave that evidence open explicitly.
+
+### T-010 start — 2026-09-11
+
+T-010 · rubric preparation under the existing grading protocol · expected artifacts: pointer-only evidence map and separately labeled proposed dispositions in `evidence/round2_preparation/`; final grading remains a fresh non-author act at the eventual promoted pin.
+
+### T-010 return — 2026-09-11
+
+**Outcome: COMPLETE for preparation.** `evidence/round2_preparation/rubric-evidence-map.md` covers the twenty-three numeric cells and three not-applicable records; `proposed-dispositions.md` covers all twelve historical gaps without scores or accepted residuals. `verification.md` records 37 native record checks passing and the combined 65-pass/one-known-unrelated-failure result. No final grading or source approval occurred.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Historical grades span pins and cannot certify the future package | Supply pointer-only evidence for every cell, with final-pin reconfirmation required | execution detail | Round agent [AGENT] | `rubric-evidence-map.md` |
+| Full fuel/vacuum/structural anchors exceed current evidence | Preserve exact missing conjuncts and B-2/B-3/B-4 consequences rather than pre-score them | execution detail | Round agent [AGENT] | `proposed-dispositions.md` |
+| Final rubric packet/demo acceptance and reveal are owner-held | Prepare evidence slots only; retain every gate | reserved gate | Owner-held; no new ruling | No grade, acceptance or reveal |
+
+### Round 2 result — 2026-09-11
+
+**Intent met within the preparation bound; goal still unanswered.** T-008 completed six joined discovery dispositions, crediting WI-046's bounded implementation and keeping study consequences open. T-009 prepared the replacement compatibility/attribution, scenario, output and audit-impact contract. T-010 assembled the complete pointer-only rubric evidence map and twelve proposed gap dispositions. Evidence is `evidence/round2_preparation/` and the appended discovery rows; the native checks and their limits are in `verification.md`.
+
+**Last semantic outcome and derived stop:** T-010 COMPLETE finishes the authorized preparation packet. Close on trigger 5, the declared preparation limit, with zero promoted pins and zero committed studies. Final execution and final grading require the accepted stable package handoff described in `study-contract.md`; the read-only remediation observation had T-022 still active. No failed mechanical retry, checkpoint submission or owner refusal occurred.
+
+**Comparison and scope:** Historical Round 1 remains closed by redirection. Preparation proposes the corrected-package closure factorial and a separate historical bridge; it does not replace the final execution strategy, assert exact old-headline reproduction at the changed heating basis, or adopt a new radiation/source interpretation. All production model/package/consumer repairs remain with remediation. No merge, push, archive, work-item close or reveal occurred.
+
+**Discovery accounting and proposed dispositions:** The six PC-R1-01 rows now carry native evidence or continuing owners/references; their first sightings are preserved. The answered pump re-base and PC-R1-02 correction were not repeated. No other discovery ID was minted or given new closure credit. `audit-impact.md` references operating-heating findings only through their existing checkpointed routes. Rubric dispositions remain proposals awaiting final-pin grading and owner acceptance.
+
+**Proposed learning delta:** None. This round supplies preparation and historical accounting, not new model execution knowledge. Fresh review must verify the packet and PC-R1-01 accounting before it is treated as reviewed. The goal's study, consolidated final grading, demo statement and owner acceptance remain unmet.
+
+### Round 2 review — 2026-09-11
+
+**Reviewer:** [AGENT] Codex `/root/review_closure_preparation`, a fresh non-author session with only the committed review brief and repository evidence. **Verdict: PASS for preparation**, after the objectively verified citation correction at `cc167984`. The full review is `evidence/round2_preparation/round2-review.md`; the original packet remains at `9d58b5ea`.
+
+**Checks and evidence:** Read the goal/amendment, Round 1 review and PC-R1-02 correction, Round 2 end to end, native WI-045/046/047 evidence, WI-050/model-consumer certificates, remediation Round 4 review, WI-051 plan, rubric/history and all preparation artifacts. Six appended discovery updates preserve the original log bytes and join their native sightings. The 141-channel provisional map exactly matches its inherited source. All twelve proposed dispositions, all 23 numeric evidence rows and the three applicability records retain final-pin grading and owner acceptance. The native study framing, validity and pre-execution gates remain future obligations. No comparison strategy, source interpretation or reveal gate was silently adopted.
+
+**Accounting decision:** PC-R1-01 is satisfied as records accounting only. WI-046's bounded implementation now has an explicit route without claiming the absent window study or accepting the remaining source/cost limitations. Round 1's original FINDINGS history and PC-R1-02 amendment remain intact. The other four open sightings retain their existing owners/references; the historical answered pump-rebase row is unchanged.
+
+**Review observation PC-R2-01:** The original R2c.P evidence-map pointer named the coil-life comment at `stellarator_plant.sysml:1307`. The author corrected it to the achieved-TBR binding at `:1525` in `cc167984`; the reviewer verified the source at the declared base. This minor correction changes no claim or disposition and leaves no open preparation defect.
+
+**Fidelity and limits:** Every task has a return. Zero pins and zero studies respect the declared preparation bound; trigger 5 is supported. No retry or checkpoint cap was consumed. Native histories show no out-of-task production mutation; the moving remediation worktree is a dated observation, not an accepted handoff. T-007 remains historical, STEP remains pending, and the radiation-case interpretation remains proposed. This PASS does not certify engineering, rubric scores, owner acceptance or goal closure.
+
+**Verification:** Fresh native record/goal checks returned 65 passed and the known unrelated narrative-reference failure in the unchanged wall-and-heating trail. Read-only consistency checks confirmed map equality, unique cell counts and unchanged discovery prefix. No model, oracle, integration or study execution occurred in this review.
+
+**Learning decision:** Accept the proposed empty delta. `learnings.md` remains unchanged.
+
+**Recommendation:** Keep Round 2 closed. Obtain the immutable remediation handoff named in `study-contract.md`: independent radius audit, separately certified consumer migration, native integration identities and supported-domain evidence against unresolved findings. After accepting that handoff, write the replacement execution strategy and finalize the native study contract, including the radiation-case interpretation and required owner axis rulings. No execution round is opened here; final grading, the demo statement and owner acceptance remain outstanding.
+
+### Amendment — 2026-09-12: preparation merge authorized and completed
+
+[OWNER-VERBATIM] “yes proceed” approved the explicit request to merge the three preparation commits into `test/codex-native-skills` and continue the plant-study assessment. Merge `2529d904` preserves preparation `8234a8e6` and target `99c3b332`, including all six preparation and 39 target discovery additions. Newer remediation dispositions remain after the earlier preparation rows. Local setup and CURRENT_WORK changes remain uncommitted. Remediation's separate Round 6 is now closed and reviewed OWNER_GATE at its cap; this plant-closure continuation does not reopen it or accept its residuals.
+
+## Round 3 — current-package-plant-comparison
+
+### Strategy revision — 2026-09-12
+
+[AGENT] Pursue the prepared replacement comparison on the existing audited operating-heating/model-owned-radius package, beginning with claim-specific candidate assessment. The reviewed handoff now exists at WI-051 audit `bf3376be`, consumer certificate `7fe8d351`, native candidate `b23b2327`, radius synthesis `2cbd305d`, and current residual assessment `bfc60b91` / fresh review `99c3b332`. Assume the supported native inputs and output evidence can express the required plant comparison without shared model or consumer changes. Abandon that assumption if actual coverage or audit applicability fails; preserve comparison meaning and return a concrete prerequisite or owner gate rather than silently narrowing claims.
+
+Intended model increment: none unless this assessment justifies a separately scoped native prerequisite. Intended study question: the loop/cycle/calendar effects and interactions under corrected operating heating, with bounded engineering sensitivities and historical evidence kept distinct. Adopt the preparation's three bridges as an agent decision under the 2026-09-11 redirection: retained historical compatibility, eight same-package closure combinations, and separately labeled cross-revision differences. This does not amend the external comparison contract or promise old-headline reproduction. The source's two divertor alternatives are transport cases at one radiated fraction; the separate proposed radiation sweep remains engineered. This interpretation follows the preserved source-case evidence and changes no source values or threshold. Pin promotion and execution await this assessment and native pre-execution gates. No final rubric score, residual, demo acceptance or reveal decision is made.
+
+### T-011 scope
+
+Objective: Determine whether the existing candidate supports the replacement plant comparison's actual axis keys, publication channels and claim-specific audit requirements.
+Why now: Reviewed preparation is merged and remediation's audited radius candidate and final evidence assessment are available.
+Scope: Native analyze-models assessment using retained certificates and current package metadata, plus run-study axis/indicator preparation without any numerical points. Write a coverage probe and evidence-linked report. No production edits, source adoption, pin promotion, study execution or residual acceptance.
+Inputs: `goal.md` and amendment; preparation `8234a8e6`; candidate `b23b2327`; consumer audit `7fe8d351`; residual report `bfc60b91` and fresh review `99c3b332`. Narrower constraint: inspect explicit permitted paths only, never quarantine contents or hashes.
+Done when: Every proposed scenario family has an input route or concrete missing key, required numeric outputs have explicit coverage, and relevant residuals have stated consequences for execution and claims.
+Stop when: A mechanical prerequisite, premise conflict, reserved owner decision or declared limit prevents further assessment.
+
+### T-011 start — 2026-09-12
+
+T-011 invokes aspect-focused analyze-models at `work/analysis/20260912-plant-comparison-candidate.md` and native run-study indicator preparation under `evidence/T-011_candidate-assessment/`. One parallel reader owns `audit-applicability.md` there; the parent owns axis/coverage probes, synthesis and the trail. Their read-only scopes are independent and neither alters production or the other's files. Native numerical certificates are retained evidence, not rerun.
+
+### T-011 return — 2026-09-12
+
+**Outcome: COMPLETE for candidate assessment.** Native report `work/analysis/20260912-plant-comparison-candidate.md` and `evidence/T-011_candidate-assessment/` identify supported inputs, expanded publication coverage, remaining independent-check obligations, audit applicability and four required axis rulings. No numerical point, study or plant-closure pin promotion occurred. Artifacts are unpinned until this assessment commit.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Audited radius/consumer/candidate evidence now exists | Credit the bounded handoff and test actual scenario mappings instead of waiting for whole-audit closure | execution detail | Round agent [AGENT] with parallel analysis reader | Native report and coverage probe |
+| Provisional map omits seventeen numeric outputs | Retain all 158 scalar channels for future publication; preserve seventeen independent-oracle omissions as verification obligations | execution detail | Round agent [AGENT] | `required-channels.json`, `coverage.json` |
+| Four axes have no possible path to a constraint | Recommend sensitivity-only use with missing-model findings; await the policy-required owner ruling before points | reserved gate | Owner-held; proposal by round agent [AGENT] | Report axis table and pending owner question; no execution |
+| T-025 historically omitted its read-set check | Run the native full-group indicators, which check the actual parsed read set and current identity | execution detail | Round agent [AGENT] | `indicators.json`; historical integration unchanged |
+| Concurrent remediation re-grounded at f0bbb7e7 and began financial repair | Preserve the separate work; require isolated accepted candidate or explicit later-package assessment before execution | execution detail | Round agent [AGENT] | Report concurrency boundary; no shared production edit |
+
+The two existing lifecycle findings `20260821-power-cycle-ab#1` and `20260904-wall-and-heating#5` retain the newer T-028 dispositions at `bfc60b91`; this assessment adds no implementation or numerical closure credit. Other preparation sightings retain existing owners. Four prospective study-axis findings are recorded in the report for native intake, not minted as a nonexistent study.
+
+### Round 3 result — 2026-09-12
+
+**Assessment intent met; study and grading intent unmet.** T-011 COMPLETE supplies concrete candidate applicability and coverage evidence. Derived stop: trigger 4, unresolved owner ruling on four `no_constraint_response` axes under the existing study policy. Zero promoted pins and zero committed studies. The next execution strategy can preserve the prepared comparison meaning once the owner rules; this is not a strategy blocker or a whole-audit prerequisite.
+
+Evidence: `work/analysis/20260912-plant-comparison-candidate.md`, `evidence/T-011_candidate-assessment/`, merge `2529d904`, task scope `31f6ca8f`. Native checks are 68 passes and the unchanged known narrative-reference failure; the initial wrong test-path command is retained. No task retry, model change, source adoption or residual acceptance occurred. The concurrent financial repair is a newly observed owner-authorized task, not an unexplained production mutation; no affected production change was observed at assessment close.
+
+Finding dispositions: existing discovery rows retain their latest bounded meanings. The report records missing resistance for the four proposed axes and the output-verification limits for the future study; no study ID, numerical result or new historical disposition is fabricated. Proposed learning delta: none. Final grader and owner packet/demo/reveal gates remain untouched.
+
+### Round 3 review — 2026-09-12
+
+**Reviewer:** [AGENT] `/root/fresh_plant_round3_review`, fresh non-author session supplied committed brief `evidence/T-011_candidate-assessment/reviewer-brief.md@662ac8f3` after the written result, without the author's execution conversation. **Verdict: OWNER_GATE.** The bounded assessment is supported; no material correction is required. Four `no_constraint_response` axes remain subject to the unanswered owner ruling required by study policy. Round 3 stays closed on trigger 4, with zero promoted pins and zero committed studies.
+
+**Checks:** Goal/redirection and strategy fidelity, T-011 scope and native artifacts, actual radius/consumer/candidate certificates, evidence grades, current remediation direction, scoped native histories, discovery dispositions and proposed learning delta reviewed. Independent static metadata checks confirm 246 inputs/99 mappings, all 28 family/control keys, exact 158-scalar publication coverage, exact seventeen independent-oracle omissions, and 25 indicator groups with the four stated negatives. Exact merge comparison preserves base, all six preparation additions and all premerge target additions; newer lifecycle dispositions remain last and the current discovery log is unchanged.
+
+**Evidence and limits:** Full review `evidence/T-011_candidate-assessment/round3-review.md` is unpinned; no native digest at authoring. Assessment evidence is at `662ac8f3`; native certificates remain inherited. Read-only metadata/log checks passed. The retained 68-pass/one-known-unrelated-failure battery was not rerun; its initial wrong-path invocation remains disclosed. No numerical point, source/quarantine read/hash, production edit, source adoption or residual acceptance occurred. The seventeen added columns are publication configuration only. Independent numerical checks, event evidence, historical predicate semantics and final grading remain future obligations.
+
+**Authority and dispositions:** No unexplained production mutation was found on the inspected model/package/manifest/adapter/oracle paths. Concurrent financial remediation is separately owner-authorized and requires isolation or reassessment before study execution. Existing lifecycle and other preparation rows retain their latest bounded meanings; four prospective axis findings stay in the assessment until native study intake creates real finding IDs. No new disposition checkpoint was required for this metadata-only round. No retry or checkpoint cap was consumed.
+
+**Learning and recommendation:** Accept the empty learning delta; leave learnings unchanged. Obtain the ruling on `availability_direct`, `outage_years`, `unplanned_fraction` and `burn_fraction`, then finalize the native study/verification contract against an isolated immutable package and obtain fresh pre-execution critique. No new strategy opens while the ruling is pending. Final grading, demo statement, owner acceptance and reveal remain outstanding.
+
+### Owner ruling — 2026-09-12: four sensitivity inputs approved
+
+[OWNER-VERBATIM] “Approve all four as sensitivities” answers the quoted question covering availability control (computed versus held 0.85), outage duration (5/7/10 months), unplanned downtime fraction (0/0.05/0.10), and fuel burn fraction (0.025/0.05/0.10), with no feasibility-boundary claims and retained missing reliability, maintenance and fuel-processing limits. This resolves the Round 3 axis gate. The scenario choices remain agent-originated, ratified by this ruling. [OWNER-VERBATIM] “Please continue using your best judgement along the way; do not stop for every input” directs autonomous routine decisions; the existing final packet/demo/reveal and comparison/source gates retain their scope.
+
+## Round 4 — plant-closure-comparison
+
+### Strategy revision — 2026-09-12
+
+[AGENT] Execute the reviewed corrected-package comparison at the existing accepted T-025 candidate, retaining all eight closure controls, inherited physical input tuples and separately labeled historical observations. Same-package attribution keeps operating heating and model-owned radius active. The four sound-negative axes use the owner's sensitivity ruling; all other framing and sampling decisions follow the native policy. Assume the package can execute the selected, explicitly screened domain and publish the required evidence. If a numerical or evidence defect defeats the comparison, retain it as a native prerequisite rather than changing physics or tuning a feasible answer.
+
+Intended model increment: none. Intended study question: how the loop/cycle/calendar and bounded engineering sensitivities change the design point, sampled satisfaction and costs, and what still prevents buildable-plant claims. At most one pin and one study. T-029 financial production is already isolated in `/tmp/fusion-mfe-financial-rate-limits` by `6b10430e`; use this unchanged checkout's candidate while that boundary holds. Stop affected execution if production changes here. Final result can be an adverse or empty feasible-set reading. A fresh grader follows native study evidence; owner acceptance remains separate.
+
+### T-012 scope
+
+Objective: Finalize and execute one native plant-closure comparison, with complete result evidence and truthful historical/corrected-package attribution.
+Why now: T-011 and fresh Round 3 review establish candidate metadata applicability; the owner approved all four sound-negative sensitivity inputs.
+Scope: Run-study execute at `exploration/stellarator_e2e/studies/20260912-plant-closure/`, native preparation/review/baseline/preflight/window/lifecycle/verification/publication. Accept the existing audited candidate for this round after its native current identity checks; no regeneration or shared production/consumer repair. Preserve source, finance and physical assumptions; no final grade or synthesis authored by the executor.
+Inputs: `goal.md` and amendments; T-011 report/review at `662ac8f3`/`bf0579b6`; T-025 candidate `b23b2327`; preparation `8234a8e6`; owner four-axis ruling above; native historical minor-radius and wall/heating records. Narrower constraint: no quarantine reads/hashes or historical-store mutation.
+Done when: A committed self-contained study records all executed/excluded/failed cases, full outputs/qualified verdicts, verification and findings, or returns a concrete prerequisite with retained evidence.
+Stop when: An unresolved native gate, invalid execution meaning, package mutation, missing required evidence or declared limit binds.
+
+### T-012 start — 2026-09-12
+
+T-012 invokes run-study execute at `exploration/stellarator_e2e/studies/20260912-plant-closure/`. The executor owns that directory and its first-sighting discovery rows; fresh pre-execution/final reviewers and record-only administrator are separate sessions. No point runs before the fresh pre-execution disposition. Existing candidate identity is accepted for this round's study only after the native identity/indicator checks; no second package runs in the comparison.
+
+### T-012 progress — accepted candidate and baseline
+
+[AGENT] The existing candidate is accepted as Round 4’s one execution pin after the full declared-group indicator check, native strict baseline and all six preflight gates passed. Pin `609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d`; semantic `15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e`; executable `cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c`. The preparatory baseline carries explicit non-study provenance and no store. Full evidence is in the study’s `results/`; a normal baseline remains in the eventual native proposal list.
+
+Fresh pre-execution review required declaration of three direct control terms. All three were declared and indicators rechecked before execution, as permitted by its objective correction disposition. Thirty axis groups now cover the comparison; only the four owner-approved groups have no constraint response. The historical scan retains 7,781 evaluated rows and 168 exclusions for reconsideration. The first serial attempt was stopped for performance, with its script/log retained; exact full-result controls passed before eight isolated oracle worker processes began the unchanged proposal set. Native execution remains the stock lifecycle and one store. No production, adapter, source or tolerance change.
+
+### T-013 scope
+
+Objective: Prepare and eventually produce the consolidated fresh non-author rubric reading at Round 4’s accepted pin, after the native study reading and disposition checkpoint supply its numeric evidence.
+Why now: The native computation is long; canonical model and rubric inspection can proceed independently.
+Scope: First phase inventories exact anchors, current canonical bindings, native audit/source evidence and missing final-study facts. No scores, final dispositions or acceptance in this phase. Final grading remains gated on the frozen study, fresh administration and disposition checkpoint. No production or study-author mutation.
+Inputs: Goal and amendment, original rubric/protocol, T-011 applicability evidence, accepted current candidate, prior grading as historical context. Narrower constraint: explicit permitted paths only; no quarantine reads/hashes or barred source access.
+Done when: All 23 scored cells and three applicability records have current evidence and then a final protocol-complete grade/disposition after the remaining native gates, or a concrete prerequisite is returned.
+Stop when: Candidate mutation, missing required evidence, unresolved source/claim conflict or a native/owner-held gate blocks the dependent phase.
+
+### T-013 start — static preparation in parallel with T-012
+
+[AGENT] The fresh non-author grader owns only `evidence/T-013_grading/static-evidence.md` during this phase. T-012 continues to own study execution; parent owns trail and final integration. These reads can proceed in parallel because static canonical evidence neither changes nor assumes the pending numerical result. A later study reading may invalidate a proposed grade, so no grade is assigned now and final grading does not bypass the disposition checkpoint. Deposited brief: `evidence/T-013_grading/static-brief.md`. A timed repeat of the approved unstored baseline matched all retained outputs/responses exactly and took 3.717 seconds to evaluate; this is runtime planning evidence, not another study case.
+
+### Amendment — T-013 completion boundary
+
+[AGENT] This amends T-013’s eventual-grading wording. The native runbook closes Round 4 on a valid study reading. T-013 is therefore bounded to the independent static evidence inventory; protocol-complete grading will need its own scope after the reading, disposition checkpoint and fresh round review permit follow-up. This sequencing correction does not assign a score or change the goal’s final-grading obligation. The earlier brief already prohibited final grading during this phase.
+
+### T-013 return — COMPLETE for static evidence
+
+Fresh non-author `/root/plant_fresh_grader` read committed brief `071a2994` without the executor’s conversation and wrote `evidence/T-013_grading/static-evidence.md`. All 23 scored cells and three applicability records carry exact anchors, current canonical bindings, already available evidence with its scope, integrity limits and required final-study facts. No grades or acceptance were assigned. The reader found no new blocking premise conflict. It directly checked the three relevant source renders and distinguished those new image reads from inherited source claims.
+
+Two presentation traps are retained for the final reader: the generic divertor comment still says installed heating although the actual input is operating heat, and an assessment shorthand mentions inventory more broadly than the canonical fuel model implements. Actual bindings and explicit missing inventory/startup terms govern the final packet. No model/doc repair is folded into this study. Checks: 26 unique rows, referenced model/implementation files exist, whitespace clean. Only the assigned file was written; no numerical point, protected-source access, source adoption, native study mutation or residual acceptance occurred. T-012 continues independently.
+
+### T-012 progress — window frozen
+
+[AGENT] The unchanged oracle screened the full retained history and comparison families. The frozen list contains 15,191 distinct native proposals with 16,139 correlated rows. All 408 excluded correlations remain: 212 negative-net-power fractional-cost arithmetic exclusions and 196 nonpositive-fuel exclusions. The first window-freeze check stopped on the complex-output TypeError. Independent diagnosis confirmed negative net power in all 195 distinct affected proposals; only those exact keys are now classified as arithmetic exclusions. Original failed check and case-level evidence are retained. No tolerance, input range or production code changed.
+
+The edge reread covers 84 samples at six full-current-predicate anchors: 36 caught and 48 uncaught. Eight other arm/power groups have no full-current-predicate feasible anchor. Uncaught edges remain explicit and the sensitivity study makes no enclosed-region or global-optimum claim. `preparation/window-freeze.json` commits the exact correlation, oracle, proposal and edge digests before native execution. The final native run will execute every eligible proposal through one stock lifecycle/store.
+
+### Amendment — owner-directed T-012 execution reduction
+
+[OWNER-VERBATIM] “honestly please reduce the set. stay focused on risk mitigation, not jus tdoing shit for the sake of it”. This supersedes the agent-chosen exhaustive native replay. The four previously approved sensitivity ranges remain unchanged.
+
+[AGENT] Stop the exhaustive native attempt, retaining all 2,525 completed cases and the interrupted attempt. The stock runner released its lease; no failed completed case was reported. Preserve the original store, frozen proposal list, scan, scripts by commit and execution log. It remains an incomplete execution and supplies supporting verification only.
+
+[AGENT] Execute 371 selected cases in one new reduced native store at the same accepted package pin. This small rerun avoids editing the original store's compatibility tuple or importing cases into a different definition. It covers every eligible comparison/closure/edge block, all 73 observed oracle verdict combinations, the complete inherited minor-radius calendar transect, per-group LCOE extrema, and the minimum-LCOE candidate under the old-ten, intermediate-fourteen and current-eighteen views in every historical arm/loop/power group. `preparation/reduced-selection.json` assigns each selected point its reason. No more than 400 cases; a gap above that cap is reported instead of silently expanding.
+
+[AGENT] Full-window counts, case-id flips and candidate minima come from the retained complete oracle scan and are labeled as such. Native verification checks selected minima and constraint patterns, not every point of the historical grid. Native tables count only reduced-store cases. The stopped store's completed prefix is not a representative random sample and is never blended into the reduced-set counts. All 408 arithmetic exclusions and their source identities remain explicit; eligible but unselected rows remain in the original full correlation, not relabeled exclusions.
+
+[AGENT] The unchanged native lifecycle, all 158 scalar requirements, all eighteen qualified predicates, full selected-case independent checks and stratified native verifier remain. The initial 844-case prefix check is retained. No equation, integration resolution, source, threshold, tolerance or package changes. Fresh final review and record-only administration remain after numerical evidence. Exact-native full-window coverage is relinquished under the owner's direction; no global optimum, buildability, final grade or owner acceptance is inferred.
+
+The trigger is observed runtime and the owner’s quoted direction; decision tier is reserved scope ruling by the owner, with the 371-case selection supplied by the agent. This amends T-012’s exhaustive native replay and one-store preparation, preserving the closure question and final grading obligation. It is not a mechanical retry. Selection and coverage evidence are in the study’s `preparation/reduced-*` artifacts.
+
+### T-012 return — COMPLETE
+
+The reduced native study is frozen at `exploration/stellarator_e2e/studies/20260912-plant-closure/@e1ba37f4`, after fresh reduction and final reviews. All 371 primary cases completed; 19 satisfy eighteen predicates. Both independent verification routes pass: all selected cases across 141 oracle channels, eighteen rederived predicates and seventeen added scalar identities; generic 128 samples cover all 73 observed verdict patterns, maximum relative deviation 7.7964e-16. Snapshot checks passed for 3,042 referenced artifacts. All twelve first sightings joined the discovery log. Required post-record study tests follow as round validation.
+
+The full oracle scan remains separate from selected native coverage. The stopped exhaustive store retains 2,525 completed cases, an owner-directed stop and its exact definition; it is not a mechanical retry or part of primary counts. Four fixed-loop c3343 corners are excluded, leaving that factorial unavailable. The design point remains divertor-violating; all nineteen full-predicate passes retain negative physical TBR margin. No buildability, global optimum, source adoption, financial repair, separate WI-045/046/047 item audit, final grade or owner acceptance is credited.
+
+Decision fields: trigger — measured runtime and explicit owner reduction; decision/reason — complete the reviewed risk-selected set and preserve the full oracle and stopped evidence; tier — owner scope ruling plus agent execution selection; authority — quoted amendment and fresh reviews; changed — reduced preparation, primary store and final study at e1ba37f4, no production change. The modeling/scientific gaps remain for fresh disposition and grading.
+
+### T-014 scope
+
+Objective: Obtain a fresh record-only reading of the frozen reduced plant comparison.
+Why now: T-012 returned a committed, independently reviewed study.
+Scope: Run-study administer; write only the study's first synthesis, no new execution, external fact recovery or grading.
+Inputs: The committed record directory at e1ba37f4 and its deposited `reviews/administrator-brief.md`; no outside domain evidence.
+Done when: A cited synthesis recovers the findings and states missing facts and unsupported claims.
+Stop when: The record cannot support a valid reading; preserve any missing fact rather than repair it in the administrator role.
+
+### T-014 start — 2026-09-12
+
+Fresh non-author administration invokes the committed brief at `exploration/stellarator_e2e/studies/20260912-plant-closure/reviews/administrator-brief.md@e1ba37f4`. Administrator owns only `synthesis.md`; parent owns trail/checks. Post-record validation can proceed independently because it does not mutate the frozen record or supply the administrator external facts.
+
+### T-014 return — COMPLETE
+
+Fresh non-author `/root/plant_record_administrator` produced `exploration/stellarator_e2e/studies/20260912-plant-closure/synthesis.md` under the committed record-only brief. It checked native counts, all qualified predicates, complete factorials and oracle group minima from in-record artifacts. It incorporates finding13 and the non-green post-record validation addendum, and retains missing physics/equipment/source facts. No external recovery, model execution, grading or acceptance occurred. The reading is valid bounded evidence; it does not waive the tooling limitation.
+
+### Amendment — post-record validation scope and outcome
+
+[AGENT] Under the owner's risk-focused direction, the unchanged model-tooling suite was stopped after147 passes/one environment-sensitive precondition failure and replaced with focused record, numeric-evidence, publication and goal-contract checks. The focused result is130 passes/120 failures. Ninety-seven failure names match the retained consumer audit; eleven affect the earlier radius record, eleven this plant record and one the known unrelated narrative-reference check. This study's eleven fail in the legacy test fixture before export because it expects a different module API. The original inherited broad green-battery expectation is not met. Do not silently count a scoped battery as full validation. Exact logs and failure accounting are committed in the study's additive validation record at59351f7d; frozen snapshot/results are unchanged. Proposed bounded use goes to the fresh checkpoint before grading.
+
+### Round 4 result — 2026-09-12
+
+Intent met for a reduced, current-pin numerical comparison with explicit evidence limits; final consolidated grading and owner acceptance remain unmet. T-012 executed the study; parallel T-013 completed only the independent static rubric inventory; T-014 returned a valid record-only reading. Last semantic outcome: COMPLETE for T-014. Round closes on trigger1, a valid study reading. One promoted pin609e6cca and one committed study record, with a stopped supporting native attempt and reduced primary store at the same pin. No second package or production change.
+
+Evidence: study freeze e1ba37f4, additive validation59351f7d, synthesis in this commit; prior accepted candidate/static evidence remain in their native homes. The owner changed the native case coverage for runtime/risk reasons; this was a scope amendment, not a mechanical retry. The non-green validation battery and publication API gap remain findings, not erased by numeric agreement. No model/domain/finance/source prerequisite was repaired inside the study.
+
+Proposed finding dispositions and learning delta are in `evidence/C-001_reading/proposed-dispositions.md`. No proposed residual is accepted yet. Fresh checkpoint must assess these before grading; approved joins land before the distinct round review. Final packet/demo wording, unresolved source/claim acceptance and reveal stay owner-held. The next strategy, if permitted by fresh review, is consolidation and grading from existing evidence, with no new sweep or production repair.
+
+### Checkpoint C-001.r1 — 2026-09-12
+
+Reviewer: fresh non-author `/root/plant_reading_checkpoint`, committed brief ca7529d7. Verdict: PASS for the study reading and bounded proposed dispositions. Review `evidence/C-001_reading/checkpoint-review.md` permits existing-evidence grading while retaining non-green validation and untested writer failure paths as unmet requirements. Numerical agreement does not waive them. No correction or extra case was required.
+
+All twenty approved joins now append to the native discovery log: thirteen current study findings and seven touched historical IDs. Original sightings and earlier dispositions remain intact. This checkpoint authorizes no model/source/financial repair, residual acceptance, source adoption or reveal. The distinct closed-round review follows before grading; no semantic follow-up has started. Proposed learning remains unaccepted until that review.
+
+### Round 4 review — 2026-09-12
+
+Fresh non-author `/root/plant_reading_checkpoint` reviewed the closed result and landed joins under `round-review-brief.md@c4dbc5f6`. Verdict: PASS for the bounded result and progression to existing-evidence grading. `evidence/C-001_reading/round4-review.md` independently checks scope, owner-directed coverage reduction, all twenty append-only joins and frozen numerical immutability. Broad validation remains unmet; this is not an engineering certificate or owner acceptance. The proposed learning is accepted as agent interpretation and appended below in its native learning home. The reviewer authored the following next strategy; it is transcribed without changing its meaning.
+
+## Round 5 — consolidated-current-pin-grading
+
+### Strategy revision — 2026-09-12
+
+[AGENT] Consolidate the existing admissible model, audit, static-inventory and frozen-study evidence into a fresh non-author grade and proposed demo packet at unchanged pin `609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d`. Apply the complete anchors to all 23 scored cells and three applicability records, state the highest supported level and why the next level is unsupported, and explain every below-target disposition's consequences under unchanged B-2/B-3/B-4. Retain numerical, source, engineering and validation limits at the affected claims. Packet creation alone does not answer the goal.
+
+The strategy assumes the retained evidence is sufficient to distinguish supported behavior from missing behavior without new execution. If a material identity, source-authority or evidence conflict prevents a defensible grade, stop the dependent conclusion and report that prerequisite; do not repair it through grading. Intended model increment: none. No new study, sweep or pin promotion is intended. The question is what the current evidence earns under the rubric and what remains for owner decision. Production and finance repairs remain outside this strategy. Final packet/demo acceptance, residual acceptance, source adoption, comparison-contract changes and reveal remain reserved.
+
+
+### T-015 scope
+
+Objective: Produce the consolidated fresh rubric grade and proposed demo packet at the unchanged accepted pin.
+Why now: The frozen numerical study, fresh administration, C-001.r1 PASS and closed Round 4 review support bounded existing-evidence grading.
+Scope: Aspect-focused analyze-models grading of all 23 scored cells and three applicability records; every below-target cell and integrity limit receives a consequence, no new source/model/numerical work.
+Inputs: Committed grader brief in `evidence/T-015_grading/`, T-013 static inventory, rubric/protocol, current canonical model and claim-specific audits, study e1ba37f4 with validation addendum59351f7d and synthesis ca7529d7, C-001 and Round 4 review.
+Done when: A fresh non-author report and cell records apply every exact anchor, cite behavior and give why-not-next and B-2/B-3/B-4 consequences; proposed demo wording is marked for owner acceptance.
+Stop when: A material identity, authority or evidence conflict prevents a defensible grade; dependent conclusions stay ungraded and the missing prerequisite is named.
+
+### T-015 start — 2026-09-12
+
+Resume fresh non-author `/root/plant_fresh_grader`, who authored only the earlier static inventory, with the deposited grader brief. It owns `work/analysis/20260912-plant-closure-consolidated-grade.md` and `evidence/T-015_grading/cells.json`. Parent owns trail and packet integration. No score from earlier revisions is inherited, and the non-green validation finding is not waived. No new study or pin is opened in this round.
+
+### T-015 return — COMPLETE
+
+Fresh non-author `/root/plant_fresh_grader` completed `work/analysis/20260912-plant-closure-consolidated-grade.md` and `evidence/T-015_grading/cells.json`, applying the frozen rubric/protocol at the accepted current pin. Seventeen of twenty-three scored cells meet target; six remain below; three applicability records are confirmed and none is ungraded. Six target-reaching changes relative to latest historical grades are R2b.P 2→3, R5.P 1→3, R6.P 1→2, R7.P 1→3, R8.P 1→3 and R11.P 1→3. Every cell has exact anchors, model/runtime/study evidence and why-not-next. Six below-target records carry B-2/B-3/B-4 consequences and responsible missing-evidence homes. Proposed demo wording includes the baseline, ordered attribution, verified candidate minima and load-bearing limitations.
+
+Structural packet checks pass for all twenty-six records and six dispositions; the grader checked references and protocol coverage. No numerical execution, model/source change, re-grade of the rubric itself, source adoption, new remedial finding closure or owner acceptance occurred. Existing study/discovery dispositions remain unchanged: a higher depth grade does not resolve reliability, breeding, equipment, inventory, audit or tooling gaps. The non-green 130/120 validation result and uncertified writer failure paths remain explicit unmet requirements.
+
+Decision fields: trigger — completed reviewed study and C-001/reround review; decision/reason — grade existing evidence under complete anchors without more computation; tier — delegated evidence assessment within the reviewed strategy; authority — fresh grader under T-015 brief and predecessor PASS; changed — consolidated grade, cell records and proposed owner wording only. The six below-target cells are R2c.P, R7.S, R9.S, R10.P, R10.S and R12.S.
+
+### Round 5 result — 2026-09-12
+
+Intent met for existing-evidence consolidation; goal acceptance remains unmet. Task sequence: T-015 COMPLETE. No new pin promotion or study; the grade references Round 4's accepted pin and frozen evidence. The result is a complete proposed packet, not a passed engineering or validation contract. Round closes on trigger4, the unresolved owner-held packet/demo acceptance gate. The owner may accept, correct or decline bounded use; no grade or disposition silently changes B-2/B-3/B-4 or authorizes reveal.
+
+Evidence: consolidated report and cell records in this commit, structural validation in `evidence/T-015_grading/validation.json`, predecessor C-001/round review and native study. Existing discovery dispositions remain unchanged because grading performs no remediation; all integrity findings refer to already retained limits. Proposed learning delta: none beyond accepted L-001. Final fresh round review follows. No further execution strategy or owner-held close is opened here.
+
+### Round 5 review — 2026-09-12
+
+Fresh non-author `/root/plant_reading_checkpoint` reviewed the closed round under `evidence/R5_review/reviewer-brief.md@36b6a86b`. Verdict: OWNER_GATE, no material correction required. Review: `evidence/R5_review/review.md`. The reviewer checked scope, identity, complete grading records, load-bearing anchors, proposed comparison wording and unchanged discovery dispositions. Engineering and non-green validation limits remain unmet. Learning delta: none; L-001 remains unchanged.
+
+The consolidated report is ready for the owner to accept, correct or decline its bounded grade, dispositions and proposed demo wording. No further execution strategy is warranted. Packet acceptance, residual acceptance, comparison decisions, source adoption, reveal and goal closure remain reserved under the existing goal. No new round or production work is opened.
+
+### Owner packet acceptance — 2026-09-12
+
+[OWNER-VERBATIM] "ok accepted" responds to the completed packet handback after the Round 5 review. The owner accepts the consolidated grade, its six bounded dispositions and proposed demo wording in `work/analysis/20260912-plant-closure-consolidated-grade.md@36b6a86b`, reviewed at `21b13be5`. These remain agent-authored assessments ratified by the owner; acceptance preserves their recorded evidence and limitations.
+
+The packet/demo acceptance gate is resolved. The retained engineering gaps and non-green validation result remain as stated in the accepted packet. This ruling records packet acceptance; it does not authorize reveal, change the comparison contract or close the goal. No further numerical execution is planned.

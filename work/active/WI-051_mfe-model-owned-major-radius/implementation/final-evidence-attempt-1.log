@@ -1,0 +1,17 @@
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 23 SysML files
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 23 SysML files
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/final_evidence.py", line 86, in <module>
+    full_differential()
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/implementation/final_evidence.py", line 36, in full_differential
+    mapped=line if side=='before' else maps[relative].get(line)
+                                       ~~~~^^^^^^^^^^
+KeyError: '//designs/generic_mfe/mfe_plant.sysml'

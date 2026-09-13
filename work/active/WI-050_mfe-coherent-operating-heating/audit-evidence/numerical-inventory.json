@@ -1,0 +1,2641 @@
+[
+  {
+    "model": "models/library/analyses/mfe_heating_chain.sysml:54",
+    "statement": "in attribute p_wallplug : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/library/analyses/mfe_heating_chain.sysml:54@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/library/analyses/mfe_heating_chain.sysml:56",
+    "statement": "in attribute eta_source : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/library/analyses/mfe_heating_chain.sysml:56@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/library/analyses/mfe_heating_chain.sysml:58",
+    "statement": "in attribute eta_couple : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/library/analyses/mfe_heating_chain.sysml:58@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/library/analyses/mfe_heating_chain.sysml:60",
+    "statement": "in attribute p_delivered_direct : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/library/analyses/mfe_heating_chain.sysml:60@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/library/analyses/mfe_heating_chain.sysml:62",
+    "statement": "in attribute p_coupled_direct : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/library/analyses/mfe_heating_chain.sysml:62@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/library/analyses/mfe_heating_chain.sysml:98",
+    "statement": "efficiency > 0.0",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "design.md: scalar fraction domain; algebraic definition",
+    "discrepancy_percent": null,
+    "status": "PASS design-specific domain literal"
+  },
+  {
+    "model": "models/library/analyses/mfe_heating_chain.sysml:104",
+    "statement": "efficiency <= 1.0",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "design.md: scalar fraction domain; algebraic definition",
+    "discrepancy_percent": null,
+    "status": "PASS design-specific domain literal"
+  },
+  {
+    "model": "models/library/analyses/mfe_divertor_heat.sysml:82",
+    "statement": "out attribute f_rad_edge_in_range : Real = f_rad_edge * (1.0 - f_rad_edge);",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/library/analyses/mfe_divertor_heat.sysml:80@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/library/analyses/mfe_power_balance.sysml:81",
+    "statement": "in attribute p_wallplug_in : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/library/analyses/mfe_power_balance.sysml:78@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/library/analyses/mfe_power_balance.sysml:118",
+    "statement": "attribute p_alpha : Real = (3.52 / 17.58) * p_nrl;",
+    "values": [
+      "3.52",
+      "17.58"
+    ],
+    "baseline": "models/library/analyses/mfe_power_balance.sysml:185@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/library/analyses/mfe_power_balance.sysml:166",
+    "statement": "out attribute rec_frac : Real = 1.0 / q_eng;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/library/analyses/mfe_power_balance.sysml:163@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/library/analyses/mfe_power_balance.sysml:169",
+    "statement": "out attribute p_net : Real = (1.0 - rec_frac) * p_et;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/library/analyses/mfe_power_balance.sysml:166@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/library/analyses/mfe_power_balance.sysml:188",
+    "statement": "attribute p_alpha : Real = (3.52 / 17.58) * p_nrl;",
+    "values": [
+      "3.52",
+      "17.58"
+    ],
+    "baseline": "models/library/analyses/mfe_power_balance.sysml:185@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:140",
+    "statement": "attribute f_shape : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:140@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:152",
+    "statement": "attribute vacuum_t : Real default 0.10;",
+    "values": [
+      "0.10"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:152@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:153",
+    "statement": "attribute firstwall_t : Real default 0.05;",
+    "values": [
+      "0.05"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:153@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:154",
+    "statement": "attribute blanket_t : Real default 0.70;",
+    "values": [
+      "0.70"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:154@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:155",
+    "statement": "attribute reflector_t : Real default 0.20;",
+    "values": [
+      "0.20"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:155@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:156",
+    "statement": "attribute ht_shield_t : Real default 0.20;",
+    "values": [
+      "0.20"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:156@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:157",
+    "statement": "attribute structure_t : Real default 0.15;",
+    "values": [
+      "0.15"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:157@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:158",
+    "statement": "attribute gap1_t : Real default 0.10;",
+    "values": [
+      "0.10"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:158@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:159",
+    "statement": "attribute vessel_t : Real default 0.10;",
+    "values": [
+      "0.10"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:159@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:160",
+    "statement": "attribute coil_t : Real default 0.30;",
+    "values": [
+      "0.30"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:160@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:161",
+    "statement": "attribute gap2_t : Real default 0.10;",
+    "values": [
+      "0.10"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:161@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:162",
+    "statement": "attribute lt_shield_t : Real default 0.15;",
+    "values": [
+      "0.15"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:162@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:192",
+    "statement": "attribute sigma_v : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:192@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:200",
+    "statement": "attribute T_i0 : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:200@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:202",
+    "statement": "attribute alpha_n : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:202@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:204",
+    "statement": "attribute alpha_T : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:204@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:396",
+    "statement": "attribute wall_peak_q_ref : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:396@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:397",
+    "statement": "attribute wall_peak_p_fus_ref : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:397@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:398",
+    "statement": "attribute wall_peak_R_ref : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:398@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:399",
+    "statement": "attribute wall_peak_a_ref : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:399@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:400",
+    "statement": "attribute wall_peak_kappa_ref : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:400@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:401",
+    "statement": "attribute wall_peak_standoff_ref : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:401@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:402",
+    "statement": "attribute wall_peak_calibration_direct : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:402@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:427",
+    "statement": "attribute loop_live : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:427@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:428",
+    "statement": "attribute cycle_live : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:428@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:429",
+    "statement": "attribute p_pump_direct : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:429@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:430",
+    "statement": "attribute eta_p_direct : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:430@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:431",
+    "statement": "attribute eta_th_direct : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:431@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:441",
+    "statement": "attribute f_loss : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:441@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:443",
+    "statement": "attribute eta_drive : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:443@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:451",
+    "statement": "attribute delta_eta : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:451@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:467",
+    "statement": "attribute p_cryo : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:467@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:473",
+    "statement": "attribute q_nuc_cryo : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:473@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:474",
+    "statement": "attribute vol_cold_cryo : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:474@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:475",
+    "statement": "attribute p_fixed_cryo : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:475@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:476",
+    "statement": "attribute f_uplift_cryo : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:476@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:477",
+    "statement": "attribute T_cold_cryo : Real default 20.0;",
+    "values": [
+      "20.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:477@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:478",
+    "statement": "attribute T_amb_cryo : Real default 300.0;",
+    "values": [
+      "300.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:478@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:479",
+    "statement": "attribute f_carnot_cryo : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:479@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:503",
+    "statement": "attribute p_wallplug_heat : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:503@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:505",
+    "statement": "attribute eta_source_heat : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:505@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:507",
+    "statement": "attribute eta_couple_heat : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:507@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:509",
+    "statement": "attribute p_delivered_direct_heat : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:509@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:511",
+    "statement": "attribute p_coupled_direct_heat : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:511@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:721",
+    "statement": "attribute n_mod : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:695@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:855",
+    "statement": "in ref_power = 1000.0; in alpha = 1.0;",
+    "values": [
+      "1000.0",
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:829@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:861",
+    "statement": "in ref_power = 1000.0; in alpha = 0.7;",
+    "values": [
+      "1000.0",
+      "0.7"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:835@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:867",
+    "statement": "in ref_power = 1000.0; in alpha = 0.8;",
+    "values": [
+      "1000.0",
+      "0.8"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:841@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:873",
+    "statement": "in ref_power = 3500.0; in alpha = 0.65;",
+    "values": [
+      "3500.0",
+      "0.65"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:847@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:940",
+    "statement": "in ref_power = 1000.0; in alpha = 0.5;",
+    "values": [
+      "1000.0",
+      "0.5"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:914@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1052",
+    "statement": "attribute t_recycle : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1026@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1054",
+    "statement": "attribute eta_extract : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1028@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1056",
+    "statement": "attribute lambda_T : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1030@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1058",
+    "statement": "attribute I_total : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1032@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1060",
+    "statement": "attribute G_stock : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1034@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1062",
+    "statement": "attribute m_T_kg : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1036@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1067",
+    "statement": "attribute tbr : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1041@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1086",
+    "statement": "attribute f_rad_total : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1060@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1087",
+    "statement": "attribute q_target_ref : Real default 0.0;",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1061@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1088",
+    "statement": "attribute p_nonrad_ref : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1062@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1089",
+    "statement": "attribute q_target_limit : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1063@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1090",
+    "statement": "attribute R_ref_divertor : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1064@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1107",
+    "statement": "attribute T_gas : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1080@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1108",
+    "statement": "attribute p_exhaust : Real default 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1081@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1205",
+    "statement": "calc cas90_1cfe_calc : '1cfe-Form Capital Charge' {",
+    "values": [
+      "1"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1178@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/generic_mfe/mfe_plant.sysml:1213",
+    "statement": "calc lcoe_1cfe_calc : '1cfe-Form LCOE' {",
+    "values": [
+      "1"
+    ],
+    "baseline": "models/designs/generic_mfe/mfe_plant.sysml:1186@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:128",
+    "statement": ":>> G = 78.95683520871486;",
+    "values": [
+      "78.95683520871486"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:128@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:139",
+    "statement": ":>> R0 = 12.7;",
+    "values": [
+      "12.7"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:139@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:147",
+    "statement": ":>> cost_per_kAm = 50.0;",
+    "values": [
+      "50.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:147@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:150",
+    "statement": ":>> coil_markup = 5.87;",
+    "values": [
+      "5.87"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:150@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:163",
+    "statement": ":>> peak_ratio = 2.7666666666666666 {",
+    "values": [
+      "2.7666666666666666"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:163@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:171",
+    "statement": ":>> B_max = 24.9 {",
+    "values": [
+      "24.9"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:171@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:177",
+    "statement": ":>> n_coils = 48.0 {",
+    "values": [
+      "48.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:177@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:181",
+    "statement": ":>> I_coil = 15400000.0 {",
+    "values": [
+      "15400000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:181@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:189",
+    "statement": ":>> k_link = 0.7731331164622419 {",
+    "values": [
+      "0.7731331164622419"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:189@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:193",
+    "statement": ":>> f_set = 0.8701298701298701 {",
+    "values": [
+      "0.8701298701298701"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:193@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:204",
+    "statement": ":>> k_coil = 1.9685039370078741 {",
+    "values": [
+      "1.9685039370078741"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:204@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:216",
+    "statement": ":>> j_wp = 118.8271604938272 {",
+    "values": [
+      "118.8271604938272"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:216@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:225",
+    "statement": ":>> f_wp_vol = 0.8780864197530865 {",
+    "values": [
+      "0.8780864197530865"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:225@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:231",
+    "statement": ":>> k_sigma = 0.6102331403536223 {",
+    "values": [
+      "0.6102331403536223"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:231@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:235",
+    "statement": ":>> sigma_allow = 800000000.0 {",
+    "values": [
+      "800000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:235@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:241",
+    "statement": ":>> E_wp = 200000000000.0 {",
+    "values": [
+      "200000000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:241@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:254",
+    "statement": ":>> f_cond = 0.6666666666666666 {",
+    "values": [
+      "0.6666666666666666"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:254@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:266",
+    "statement": ":>> eps_cond_allow = 0.004 {",
+    "values": [
+      "0.004"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:266@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:273",
+    "statement": ":>> f_wp_fab = 6.65 {",
+    "values": [
+      "6.65"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:273@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:285",
+    "statement": ":>> m_casing_ref = 63000.0 {",
+    "values": [
+      "63000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:285@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:309",
+    "statement": ":>> W_mag_ref = 111000000000.0 {",
+    "values": [
+      "111000000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:309@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:315",
+    "statement": ":>> I_ref = 15400000.0 {",
+    "values": [
+      "15400000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:315@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:319",
+    "statement": ":>> R_ref = 12.7 {",
+    "values": [
+      "12.7"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:319@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:332",
+    "statement": ":>> a_coil_ref = 3.1500000000000004 {",
+    "values": [
+      "3.1500000000000004"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:332@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:336",
+    "statement": ":>> steel_price = 6.0 {",
+    "values": [
+      "6.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:336@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:340",
+    "statement": ":>> f_steel_fab = 3.0 {",
+    "values": [
+      "3.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:340@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:363",
+    "statement": ":>> unit_cost = 600000.0;",
+    "values": [
+      "600000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:363@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:364",
+    "statement": ":>> structure_factor = 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:364@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:377",
+    "statement": ":>> unit_cost = 740000.0;",
+    "values": [
+      "740000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:377@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:378",
+    "statement": ":>> shield_scale = 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:378@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:390",
+    "statement": ":>> unit_cost = 150000.0;",
+    "values": [
+      "150000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:390@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:402",
+    "statement": ":>> unit_cost = 720000.0;",
+    "values": [
+      "720000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:402@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:411",
+    "statement": ":>> base = 80000000.0;",
+    "values": [
+      "80000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:411@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:429",
+    "statement": ":>> cost_per_mw = 202840.0;",
+    "values": [
+      "202840.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:429@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:438",
+    "statement": ":>> cost_per_mw = 86400.0;",
+    "values": [
+      "86400.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:438@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:447",
+    "statement": ":>> cost_per_mw = 35060.0;",
+    "values": [
+      "35060.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:447@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:456",
+    "statement": ":>> cost_per_mw = 52590.0;",
+    "values": [
+      "52590.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:456@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:469",
+    "statement": ":>> bldg_fixed_base = 168500000.0 {",
+    "values": [
+      "168500000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:469@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:478",
+    "statement": ":>> bldg_fus_base = 288000000.0 {",
+    "values": [
+      "288000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:478@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:486",
+    "statement": ":>> bldg_staff_base = 9000000.0 {",
+    "values": [
+      "9000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:486@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:493",
+    "statement": ":>> bldg_the_base = 58000000.0 {",
+    "values": [
+      "58000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:493@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:501",
+    "statement": ":>> bldg_th_base = 26000000.0 {",
+    "values": [
+      "26000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:501@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:508",
+    "statement": ":>> bldg_et_base = 29000000.0 {",
+    "values": [
+      "29000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:508@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:528",
+    "statement": ":>> R = 12.7 {",
+    "values": [
+      "12.7"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:528@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:531",
+    "statement": ":>> a = 1.3 {",
+    "values": [
+      "1.3"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:531@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:534",
+    "statement": ":>> kappa = 1.0 {",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:534@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:537",
+    "statement": ":>> f_shape = 1.0031567 {",
+    "values": [
+      "1.0031567"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:537@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:548",
+    "statement": ":>> blanket_t = 0.80 {",
+    "values": [
+      "0.80"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:548@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:551",
+    "statement": ":>> ht_shield_t = 0.20 {",
+    "values": [
+      "0.20"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:551@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:554",
+    "statement": ":>> structure_t = 0.15 {",
+    "values": [
+      "0.15"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:554@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:557",
+    "statement": ":>> vessel_t = 0.10 {",
+    "values": [
+      "0.10"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:557@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:560",
+    "statement": ":>> vacuum_t = 0.10 {",
+    "values": [
+      "0.10"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:560@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:563",
+    "statement": ":>> firstwall_t = 0.05 {",
+    "values": [
+      "0.05"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:563@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:566",
+    "statement": ":>> reflector_t = 0.20 {",
+    "values": [
+      "0.20"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:566@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:569",
+    "statement": ":>> gap1_t = 0.10 {",
+    "values": [
+      "0.10"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:569@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:572",
+    "statement": ":>> coil_t = 0.30 {",
+    "values": [
+      "0.30"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:572@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:575",
+    "statement": ":>> gap2_t = 0.10 {",
+    "values": [
+      "0.10"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:575@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:578",
+    "statement": ":>> lt_shield_t = 0.15 {",
+    "values": [
+      "0.15"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:578@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:583",
+    "statement": ":>> n_e = 3.17e20 {",
+    "values": [
+      "3.17e20"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:583@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:586",
+    "statement": ":>> sigma_v = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:586@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:617",
+    "statement": ":>> E_fus = 2.817e-12 {",
+    "values": [
+      "2.817e-12"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:617@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:637",
+    "statement": ":>> T_i0 = 14.63 {",
+    "values": [
+      "14.63"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:637@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:640",
+    "statement": ":>> alpha_n = 0.33 {",
+    "values": [
+      "0.33"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:640@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:643",
+    "statement": ":>> alpha_T = 1.19 {",
+    "values": [
+      "1.19"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:643@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:664",
+    "statement": ":>> n_e0 = 5.06e20 {",
+    "values": [
+      "5.06e20"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:664@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:684",
+    "statement": ":>> iota_23 = 0.92 {",
+    "values": [
+      "0.92"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:684@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:687",
+    "statement": ":>> f_ren = 1.0 {",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:687@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:690",
+    "statement": ":>> f_alpha_fast = 0.95 {",
+    "values": [
+      "0.95"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:690@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:693",
+    "statement": ":>> tau_ratio_ash = 8.0 {",
+    "values": [
+      "8.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:693@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:696",
+    "statement": ":>> f_suppr_ash = 0.5 {",
+    "values": [
+      "0.5"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:696@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:699",
+    "statement": ":>> Z_eff_core = 1.20 {",
+    "values": [
+      "1.20"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:699@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:702",
+    "statement": ":>> f_W_core = 7.76e-6 {",
+    "values": [
+      "7.76e-6"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:702@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:705",
+    "statement": ":>> Ti_over_Te = 0.95 {",
+    "values": [
+      "0.95"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:705@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:716",
+    "statement": ":>> p_wallplug_heat = 100.0 {",
+    "values": [
+      "100.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:714@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:743",
+    "statement": ":>> eta_source_heat = 0.50 {",
+    "values": [
+      "0.50"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:741@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:746",
+    "statement": ":>> eta_couple_heat = 1.00 {",
+    "values": [
+      "1.00"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:744@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:775",
+    "statement": ":>> p_delivered_direct_heat = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:773@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:778",
+    "statement": ":>> p_coupled_direct_heat = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:776@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:781",
+    "statement": ":>> mn = 1.2 {",
+    "values": [
+      "1.2"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:779@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:819",
+    "statement": ":>> loop_live = 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:817@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:820",
+    "statement": ":>> cycle_live = 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:818@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:821",
+    "statement": ":>> p_pump_direct = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:819@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:841",
+    "statement": ":>> eta_p_direct = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:839@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:844",
+    "statement": ":>> eta_th_direct = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:842@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:854",
+    "statement": ":>> loop_T_in = 573.15 {",
+    "values": [
+      "573.15"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:852@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:857",
+    "statement": ":>> loop_dT_blanket = 200.0 {",
+    "values": [
+      "200.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:855@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:860",
+    "statement": ":>> loop_cp = 5193.0 {",
+    "values": [
+      "5193.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:858@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:863",
+    "statement": ":>> loop_gamma = 1.6666666666666667 {",
+    "values": [
+      "1.6666666666666667"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:861@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:866",
+    "statement": ":>> loop_p = 8000000.0 {",
+    "values": [
+      "8000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:864@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:869",
+    "statement": ":>> n_loops = 14.0 {",
+    "values": [
+      "14.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:867@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:883",
+    "statement": ":>> mdot_loop_ref = 225.07777777777778 {",
+    "values": [
+      "225.07777777777778"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:881@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:886",
+    "statement": ":>> dp_loop_ref = 329187.1856931558 {",
+    "values": [
+      "329187.1856931558"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:884@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:900",
+    "statement": ":>> f_loss = 1.0;",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:898@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:901",
+    "statement": ":>> eta_is = 0.772796639536644 {",
+    "values": [
+      "0.772796639536644"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:899@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:918",
+    "statement": ":>> eta_drive = 1.0 {",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:916@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:933",
+    "statement": ":>> dT_approach = 20.0 {",
+    "values": [
+      "20.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:931@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:936",
+    "statement": ":>> a_fit = 0.1802 {",
+    "values": [
+      "0.1802"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:934@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:939",
+    "statement": ":>> b_fit = 0.7823 {",
+    "values": [
+      "0.7823"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:937@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:942",
+    "statement": ":>> T_offset_fit = 273.0 {",
+    "values": [
+      "273.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:940@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:945",
+    "statement": ":>> T2_min = 384.0 {",
+    "values": [
+      "384.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:943@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:948",
+    "statement": ":>> T2_max = 642.0 {",
+    "values": [
+      "642.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:946@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:951",
+    "statement": ":>> delta_eta = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:949@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:954",
+    "statement": ":>> f_sub = 0.03 {",
+    "values": [
+      "0.03"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:952@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:957",
+    "statement": ":>> p_tf = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:955@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:979",
+    "statement": ":>> p_tfcool = 15.0 {",
+    "values": [
+      "15.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:977@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:997",
+    "statement": ":>> p_trit = 10.0 {",
+    "values": [
+      "10.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:995@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1000",
+    "statement": ":>> p_house = 4.0 {",
+    "values": [
+      "4.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:998@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1003",
+    "statement": ":>> p_cryo = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1001@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1016",
+    "statement": ":>> q_nuc_cryo = 35.5 {",
+    "values": [
+      "35.5"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1014@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1019",
+    "statement": ":>> vol_cold_cryo = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1017@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1055",
+    "statement": ":>> p_fixed_cryo = 0.0075 {",
+    "values": [
+      "0.0075"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1053@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1058",
+    "statement": ":>> f_uplift_cryo = 1.0 {",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1056@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1071",
+    "statement": ":>> T_cold_cryo = 20.0 {",
+    "values": [
+      "20.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1069@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1074",
+    "statement": ":>> T_amb_cryo = 300.0 {",
+    "values": [
+      "300.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1072@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1077",
+    "statement": ":>> f_carnot_cryo = 0.20 {",
+    "values": [
+      "0.20"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1075@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1094",
+    "statement": ":>> p_pf = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1092@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1097",
+    "statement": ":>> p_pfcool = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1095@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1101",
+    "statement": ":>> p_nbi = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1099@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1104",
+    "statement": ":>> p_icrf = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1102@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1107",
+    "statement": ":>> p_lhcd = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1105@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1110",
+    "statement": ":>> heating_nbi_per_mw = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1108@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1113",
+    "statement": ":>> heating_icrf_per_mw = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1111@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1116",
+    "statement": ":>> heating_lhcd_per_mw = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1114@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1121",
+    "statement": ":>> heating_ecrh_per_mw = 5282900.0 {",
+    "values": [
+      "5282900.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1119@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1132",
+    "statement": ":>> divertor_base = 60000000.0 {",
+    "values": [
+      "60000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1130@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1138",
+    "statement": ":>> precon_fixed_base = 16000000.0 {",
+    "values": [
+      "16000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1136@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1165",
+    "statement": ":>> special_materials_capital = rb.blanket_vol * 0.50 * 9400.0 * 5.0 {",
+    "values": [
+      "0.50",
+      "9400.0",
+      "5.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1163@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1189",
+    "statement": ":>> remote_handling_base = 150000000.0 {",
+    "values": [
+      "150000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1187@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1192",
+    "statement": ":>> concept_scale = 1.0 {",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1190@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1195",
+    "statement": ":>> installation_frac = 0.14 {",
+    "values": [
+      "0.14"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1193@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1198",
+    "statement": ":>> coolant_primary_base = 166000000.0 {",
+    "values": [
+      "166000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1196@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1201",
+    "statement": ":>> coolant_intermediate_base = 40600000.0 {",
+    "values": [
+      "40600000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1199@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1204",
+    "statement": ":>> aux_per_mw = 1100.0 {",
+    "values": [
+      "1100.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1202@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1207",
+    "statement": ":>> aux_cryo_base = 200000000.0 {",
+    "values": [
+      "200000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1205@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1210",
+    "statement": ":>> waste_base = 1960000.0 {",
+    "values": [
+      "1960000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1208@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1213",
+    "statement": ":>> fuel_handling_base = 120000000.0 {",
+    "values": [
+      "120000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1211@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1216",
+    "statement": ":>> other_rpe_base = 11500000.0 {",
+    "values": [
+      "11500000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1214@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1219",
+    "statement": ":>> inc_base = 85000000.0 {",
+    "values": [
+      "85000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1217@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1222",
+    "statement": ":>> owner_base = 41200000.0 {",
+    "values": [
+      "41200000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1220@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1225",
+    "statement": ":>> supplementary_spares_frac = 0.03 {",
+    "values": [
+      "0.03"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1223@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1228",
+    "statement": ":>> supplementary_startup_base = 40000000.0 {",
+    "values": [
+      "40000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1226@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1231",
+    "statement": ":>> supplementary_decom_base = 272000000.0 {",
+    "values": [
+      "272000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1229@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1234",
+    "statement": ":>> cas28_capital = 5000000.0 {",
+    "values": [
+      "5000000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1232@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1239",
+    "statement": ":>> contingency_rate = 0.10 {",
+    "values": [
+      "0.10"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1237@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1242",
+    "statement": ":>> indirect_fraction = 0.20 {",
+    "values": [
+      "0.20"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1240@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1245",
+    "statement": ":>> construction_years = 8.0 {",
+    "values": [
+      "8.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1243@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1250",
+    "statement": ":>> om_annual_ref = 54900000.0 {",
+    "values": [
+      "54900000.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1248@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1262",
+    "statement": ":>> availability_direct = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1260@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1274",
+    "statement": ":>> outage_years = 0.5833333333333334 {",
+    "values": [
+      "0.5833333333333334"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1272@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1292",
+    "statement": ":>> unplanned_fraction = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1290@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1303",
+    "statement": ":>> coil_life_fpy = 10.0 {",
+    "values": [
+      "10.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1301@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1314",
+    "statement": ":>> discount_rate = 0.07 {",
+    "values": [
+      "0.07"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1312@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1317",
+    "statement": ":>> operational_years = 30.0 {",
+    "values": [
+      "30.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1315@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1328",
+    "statement": ":>> inflation_rate = 0.02 {",
+    "values": [
+      "0.02"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1326@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1333",
+    "statement": ":>> fuel_cost_per_rxn = 1.7260641119988767e-23 {",
+    "values": [
+      "1.7260641119988767e-23"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1331@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1348",
+    "statement": ":>> fuel_q_eff = 17.58 {",
+    "values": [
+      "17.58"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1346@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1351",
+    "statement": ":>> mev_to_joules = 1.6021766339999998e-13 {",
+    "values": [
+      "1.6021766339999998e-13"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1349@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1354",
+    "statement": ":>> burn_fraction = 0.05 {",
+    "values": [
+      "0.05"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1352@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1357",
+    "statement": ":>> fuel_recovery = 0.99 {",
+    "values": [
+      "0.99"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1355@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1362",
+    "statement": ":>> t_recycle = 0.99 {",
+    "values": [
+      "0.99"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1360@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1381",
+    "statement": ":>> eta_extract = 1.0 {",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1379@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1384",
+    "statement": ":>> I_total = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1382@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1387",
+    "statement": ":>> G_stock = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1385@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1390",
+    "statement": ":>> lambda_T = 1.782785958230312e-09 {",
+    "values": [
+      "1.782785958230312e-09"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1388@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1393",
+    "statement": ":>> m_T_kg = 5.008267663228036e-27 {",
+    "values": [
+      "5.008267663228036e-27"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1391@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1398",
+    "statement": ":>> fluence_limit = 18.0 {",
+    "values": [
+      "18.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1396@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1420",
+    "statement": "attribute beta_limit : Real = 0.05 {",
+    "values": [
+      "0.05"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1418@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1470",
+    "statement": ":>> wall_peak_q_ref = 4.05 {",
+    "values": [
+      "4.05"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1468@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1495",
+    "statement": ":>> wall_peak_p_fus_ref = 2700.0 {",
+    "values": [
+      "2700.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1493@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1500",
+    "statement": ":>> wall_peak_R_ref = 12.7 {",
+    "values": [
+      "12.7"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1498@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1503",
+    "statement": ":>> wall_peak_a_ref = 1.3 {",
+    "values": [
+      "1.3"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1501@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1506",
+    "statement": ":>> wall_peak_kappa_ref = 1.0 {",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1504@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1509",
+    "statement": ":>> wall_peak_standoff_ref = 0.10 {",
+    "values": [
+      "0.10"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1507@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1514",
+    "statement": ":>> wall_peak_calibration_direct = 0.0 {",
+    "values": [
+      "0.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1512@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1519",
+    "statement": "attribute wall_load_limit : Real = 4.05 {",
+    "values": [
+      "4.05"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1517@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1525",
+    "statement": ":>> tbr = 1.074 {",
+    "values": [
+      "1.074"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1523@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1529",
+    "statement": "attribute tbr_floor : Real = 1.05 {",
+    "values": [
+      "1.05"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1527@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1534",
+    "statement": ":>> f_rad_total = 0.9 {",
+    "values": [
+      "0.9"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1532@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1537",
+    "statement": ":>> q_target_ref = 9.5 {",
+    "values": [
+      "9.5"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1535@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1540",
+    "statement": ":>> p_nonrad_ref = 50.0 {",
+    "values": [
+      "50.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1538@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1543",
+    "statement": ":>> q_target_limit = 10.0 {",
+    "values": [
+      "10.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1541@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1546",
+    "statement": ":>> R_ref_divertor = 12.7 {",
+    "values": [
+      "12.7"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1544@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1550",
+    "statement": ":>> T_gas = 300.0 {",
+    "values": [
+      "300.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1548@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  },
+  {
+    "model": "models/designs/stellarator_09/stellarator_plant.sysml:1553",
+    "statement": ":>> p_exhaust = 1.0 {",
+    "values": [
+      "1.0"
+    ],
+    "baseline": "models/designs/stellarator_09/stellarator_plant.sysml:1551@546218a5",
+    "discrepancy_percent": 0,
+    "status": "PASS inherited exact"
+  }
+]

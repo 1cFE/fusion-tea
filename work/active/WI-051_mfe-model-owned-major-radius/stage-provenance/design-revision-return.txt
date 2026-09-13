@@ -1,0 +1,8 @@
+Revised [design.md](/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/design.md) for R1/R2.
+
+- Attached structured citation parses correctly across all 23 files.
+- Generation now requires recorded empty-destination and exact four-body seed checks.
+- Corrected freeze chronology; preserved original evidence byte-identically.
+- Recorded exact patches and changed source hash in [revision evidence](/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-051_mfe-model-owned-major-radius/design-revision/README.md).
+
+Fresh generation and re-derived package identities remain mandatory during implementation. No new blockers; original verdict remains `concerns`. Stopped before planning and production changes.

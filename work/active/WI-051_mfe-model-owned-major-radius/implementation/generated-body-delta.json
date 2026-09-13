@@ -1,0 +1,278 @@
+{
+  "handwritten/mfe_account_costs/annual_cost_rollup_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/annual_om_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/aux_cooling_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/blanket_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/buildings_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/contingency_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/coolant_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/divertor_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/dt_fuel_cost_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/heating_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/idc_closed_form_cost_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/indirect_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/installation_labor_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/levelized_annual_cost_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/linear_power_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/n_1cfe_form_capital_charge_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/n_1cfe_form_lcoe_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/plant_power_law_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/power_supplies_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/preconstruction_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/remote_handling_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/shield_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/structure_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/supplementary_cost_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_account_costs/vessel_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_cryo_plant/cryoplant_electrical_power_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_divertor_heat/divertor_heat_ledger_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_fuel_cycle/fuel_cycle_flows_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_heating_chain/heating_power_chain_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_heating_chain/operating_heating_power_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_lcoe_dcf/lcoe_dcf_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_lifecycle/lifecycle_calendar_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_magnet_cost/magnet_capital_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_magnet_cost/magnet_casing_mass_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_magnet_cost/magnet_coil_cost_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_magnet_cost/winding_pack_cost_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_magnet_field/coil_set_axis_field_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_magnet_field/coil_set_stored_energy_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_magnet_field/coil_winding_length_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_magnet_field/conductor_strain_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_magnet_field/winding_pack_cold_volume_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_magnet_field/winding_pack_sizing_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_magnet_field/winding_pack_stress_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plasma_scaling/conductor_peak_field_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plasma_scaling/mfe_radial_build_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plasma_scaling/neutron_wall_load_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plasma_scaling/neutron_wall_load_peak_calibration_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plasma_scaling/neutron_wall_load_peak_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plasma_scaling/plasma_geometry_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plasma_scaling/volume_averaged_beta_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_power_balance/mfe_power_balance_calc_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_power_balance/reactor_source_heat_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_power_cycle/power_cycle_efficiency_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_primary_loop/primary_coolant_loop_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/mfe_vacuum/vacuum_gas_load_impl.py": {
+    "bytes_equal": true,
+    "executable_ast_equal_excluding_only_docstrings": true
+  },
+  "handwritten/stellarator_09/stellaris/special_materials_capital_impl.py": {
+    "bytes_equal": false,
+    "executable_ast_equal_excluding_only_docstrings": true
+  }
+}

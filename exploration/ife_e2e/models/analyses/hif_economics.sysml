@@ -17,7 +17,8 @@ package hif_economics {
         single chamber.
 
         **Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
-        **Ref**: Eq. 5 (lines 173-192)
+        **Reference**: images/page_004_eq_0.png, Eq. 5
+        **Last Updated**: 2026-09-10
         **Basis**: Meier 1986 parametric driver cost formula for HIF
             induction linacs. Year-dollars: 1988$.
         */
@@ -33,8 +34,9 @@ package hif_economics {
             * (1.25 + 0.05 * num_chambers_in)
             * (1.0 + 0.0088 * (rep_rate - 5.0));
 
-        // Bridge to Hawker: gamma = C_dd / E_d_bank
-        attribute bank_energy_joules : Real =
+        // Bank energy [J] = beam energy [MJ] * 1e6 / efficiency.
+        // Authoritative energy shared by power, capital and replacement calculations.
+        out attribute bank_energy_joules : Real =
             beam_energy_mj_in * 1.0e6 / driver_efficiency;
 
         out attribute gamma : Real = cost_billions * 1.0e9 / bank_energy_joules;
@@ -52,6 +54,7 @@ package hif_economics {
         **Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
         **Ref**: Eq. 3 (lines 119-137)
         **Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$.
+        **Last Updated**: 2026-09-11
         */
 
         in attribute thermal_power_gw_in : Real;
@@ -71,6 +74,7 @@ package hif_economics {
         **Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
         **Ref**: Eq. 2 (lines 102-117)
         **Basis**: Meier 1986 indirect cost multiplier. Year-dollars: 1988$.
+        **Last Updated**: 2026-09-11
         */
 
         in attribute reactor_cost : Real;
@@ -85,14 +89,16 @@ package hif_economics {
         doc /*
         Cost of Electricity from Meier's engineering-economic model.
         Combines fixed charge rate (8.3%) and O&M rate (3%) into a
-        single capital charge rate (11.3%), then divides by annual
-        energy production.
+        single capital charge rate (11.3%). Exposes the numerator and
+        energy denominator for Generating Electricity Price.
 
         Constants: 0.113 = R + M (8.3% fixed charge + 3% O&M),
-        0.0876 = GW-to-$/kWh conversion (8760 hr/yr * 1e6 kW/GW / 100 cents/$).
+        0.0876 = 8760 hr/yr * 1e6 kW/GW / (1e9 dollars/billion * 100 cents/dollar),
+        the scaled energy denominator when cost is in billions and price in cents/kWh.
 
         **Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
-        **Ref**: Eq. 1 (lines 76-102)
+        **Reference**: Eq. 1 (lines 76-102)
+        **Last Updated**: 2026-09-10
         **Basis**: Meier 1986 COE formula. Year-dollars: 1988$.
         */
 
@@ -100,8 +106,9 @@ package hif_economics {
         in attribute availability_in : Real;
         in attribute net_electric_power_gw_in : Real;
 
-        out attribute coe_cents_kwh : Real =
-            (0.113 * total_capital_billions)
-            / (0.0876 * availability_in * net_electric_power_gw_in);
+        // Annualized cost [$B/year, 1988$] and scaled energy denominator.
+        // Their guarded ratio is in cents/kWh; conversion retains 8760 hours/year.
+        out attribute annualized_cost : Real = 0.113 * total_capital_billions;
+        out attribute energy_denominator : Real = 0.0876 * availability_in * net_electric_power_gw_in;
     }
 }

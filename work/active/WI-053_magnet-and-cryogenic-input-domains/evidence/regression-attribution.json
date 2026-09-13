@@ -1,0 +1,627 @@
+{
+  "baseline": {
+    "tests.models.test_example.TestModelStructure::test_example_definition_exists": {
+      "kind": "skipped",
+      "message": "Customize this test with your actual definition names"
+    },
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_types_parse_without_errors": {
+      "kind": "skipped",
+      "message": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_units_parse_without_errors": {
+      "kind": "skipped",
+      "message": "units.sysml not found"
+    },
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_materials_parse_without_errors": {
+      "kind": "skipped",
+      "message": "materials.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_enum_definitions_count": {
+      "kind": "skipped",
+      "message": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_reactor_type_variants": {
+      "kind": "skipped",
+      "message": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_confinement_type_variants_count": {
+      "kind": "skipped",
+      "message": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_all_expected_enums_exist": {
+      "kind": "skipped",
+      "message": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestCustomUnits::test_custom_units_defined": {
+      "kind": "skipped",
+      "message": "units.sysml not found"
+    },
+    "tests.models.test_foundation.TestCustomUnits::test_custom_units_count": {
+      "kind": "skipped",
+      "message": "units.sysml not found"
+    },
+    "tests.models.test_foundation.TestMaterialDefinitions::test_materials_exist": {
+      "kind": "skipped",
+      "message": "materials.sysml not found"
+    },
+    "tests.models.test_foundation.TestMaterialDefinitions::test_material_has_required_attributes": {
+      "kind": "skipped",
+      "message": "materials.sysml not found"
+    },
+    "tests.models.test_foundation.TestMaterialDefinitions::test_all_materials_have_required_attributes": {
+      "kind": "skipped",
+      "message": "materials.sysml not found"
+    },
+    "tests.models.test_mfe_major_radius::test_current_contract_edges_and_fresh_package_agreement": {
+      "kind": "failure",
+      "message": "AssertionError: assert {'IMPLEMENTAT...0b07bc2', ...} == {'IMPLEMENTAT...0b07bc2', ...}\n  \n  Omitting 229 identical items, use -vv to show\n  Differing items:\n  {'modules/mfe_account_costs/annual_cost_rollup.py': 'ca20b6247ee7a254e81b5e871e7ed38d047f1c2b9709dd8dc146190a4279d508'} != {'modules/mfe_account_costs/annual_cost_rollup.py': 'b6bea172cf6f95050acc239568a4e7216f797dbec672b1014514b85885b5b70e'}\n  {'handwritten/mfe_account_costs/dt_fuel_cost_impl.py': '0c8ee9478a09c96c3e44f002814bc56c5d1432831ba4d1522f0b61c957838de6'} != {'handwritten/mfe_account_costs/dt_fuel_cost_impl.py': 'f22adaac66d218af464064a00f129c62f082e0062d91dd06cb50dd59db2166ed'}\n  {'handwritten/mfe_account...\n  \n  ...Full output truncated (17 lines hidden), use '-vv' to show"
+    }
+  },
+  "candidate": {
+    "tests.models.test_example.TestModelStructure::test_example_definition_exists": {
+      "kind": "skipped",
+      "message": "Customize this test with your actual definition names"
+    },
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_types_parse_without_errors": {
+      "kind": "skipped",
+      "message": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_units_parse_without_errors": {
+      "kind": "skipped",
+      "message": "units.sysml not found"
+    },
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_materials_parse_without_errors": {
+      "kind": "skipped",
+      "message": "materials.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_enum_definitions_count": {
+      "kind": "skipped",
+      "message": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_reactor_type_variants": {
+      "kind": "skipped",
+      "message": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_confinement_type_variants_count": {
+      "kind": "skipped",
+      "message": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestEnumDefinitions::test_all_expected_enums_exist": {
+      "kind": "skipped",
+      "message": "types.sysml not found"
+    },
+    "tests.models.test_foundation.TestCustomUnits::test_custom_units_defined": {
+      "kind": "skipped",
+      "message": "units.sysml not found"
+    },
+    "tests.models.test_foundation.TestCustomUnits::test_custom_units_count": {
+      "kind": "skipped",
+      "message": "units.sysml not found"
+    },
+    "tests.models.test_foundation.TestMaterialDefinitions::test_materials_exist": {
+      "kind": "skipped",
+      "message": "materials.sysml not found"
+    },
+    "tests.models.test_foundation.TestMaterialDefinitions::test_material_has_required_attributes": {
+      "kind": "skipped",
+      "message": "materials.sysml not found"
+    },
+    "tests.models.test_foundation.TestMaterialDefinitions::test_all_materials_have_required_attributes": {
+      "kind": "skipped",
+      "message": "materials.sysml not found"
+    },
+    "tests.models.test_mfe_major_radius::test_binding_documentation_and_source_preservation": {
+      "kind": "failure",
+      "message": "AssertionError: assert b'package mfe...;\\n    }\\n}\\n' == b'package mfe...;\\n    }\\n}\\n'\n  \n  At index 1497 diff: b'D' != b'*'\n  Use -v to get more diff"
+    },
+    "tests.models.test_mfe_major_radius::test_current_contract_edges_and_fresh_package_agreement": {
+      "kind": "failure",
+      "message": "AssertionError: assert {'IMPLEMENTAT...0b07bc2', ...} == {'IMPLEMENTAT...0b07bc2', ...}\n  \n  Omitting 225 identical items, use -vv to show\n  Differing items:\n  {'modules/mfe_lcoe_dcf/lcoe_dcf.py': '943a8e8e3bd4323d52458682c651552b42bf84e83f285a3f4f88dd5180eabb48'} != {'modules/mfe_lcoe_dcf/lcoe_dcf.py': 'd1ed935cf283357d385cc4a5a33376801368134eef8e54479badea528e3c9606'}\n  {'schemas/annual_cost_rollup_output.py': '77a8eb444f3fde1c88826c709fa3bb6142bf320c64e9e07f42f739402ca0d75a'} != {'schemas/annual_cost_rollup_output.py': '7b52f42709b23fcf453605c35d3387dac679cd85efe72bf19c77f8cdeb29da2b'}\n  {'schemas/lifecycle_calendar_output.py': '2fbfea3b95934018c278f06e2bab9b9cdc11839fc...\n  \n  ...Full output truncated (21 lines hidden), use '-vv' to show"
+    },
+    "tests.models.test_mfe_major_radius::test_complete_native_and_direct_parity[baseline]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_complete_native_and_direct_parity[R14]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_independent_radius_ratios_and_fixed_anchors": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[coil_length]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[field_calc]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[stored_energy]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[magnet_cost]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-schema]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-cli]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-schema]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-cli]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-schema]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-cli]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-schema]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-cli]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[valid]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[original_negative]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[equality]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[reference_equal]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[reference_inverted]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_signed_demand_bounds": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_mfe_operating_heating::test_generic_heating_default_modes": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_mfe_operating_heating::test_heating_efficiency_scalar_consumers": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_mfe_operating_heating::test_stellarator_operating_heat_has_no_public_demand_input": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_reserve_invariance": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_financial_attribution": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_direct_native_parity": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_complete_cost_operand_classification": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_model_family_spines::test_family_subset_generates_and_live_equals_snapshot[mfe]": {
+      "kind": "failure",
+      "message": "ValueError: Missing or extra normative source seed"
+    },
+    "tests.models.test_model_family_spines::test_ife_census_is_19_entry_points_18_design_attributes": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_model_family_spines::test_mfe_census_matches_current_generated_public_contract": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_model_family_spines::test_ife_gain_mutation_reaches_every_and_only_its_three_consumers": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_model_family_spines::test_ife_beam_energy_mutation_has_one_direct_consumer": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_model_family_spines::test_mfe_cas28_capital_mutation_reaches_every_and_only_its_two_rollups": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_model_family_spines::test_mfe_blanket_thickness_mutation_reaches_the_radial_build_and_nothing_else": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    }
+  },
+  "new_failures": {
+    "tests.models.test_mfe_major_radius::test_binding_documentation_and_source_preservation": {
+      "kind": "failure",
+      "message": "AssertionError: assert b'package mfe...;\\n    }\\n}\\n' == b'package mfe...;\\n    }\\n}\\n'\n  \n  At index 1497 diff: b'D' != b'*'\n  Use -v to get more diff"
+    },
+    "tests.models.test_mfe_major_radius::test_complete_native_and_direct_parity[baseline]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_complete_native_and_direct_parity[R14]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_independent_radius_ratios_and_fixed_anchors": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[coil_length]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[field_calc]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[stored_energy]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_standalone_radius_formals[magnet_cost]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-schema]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[alone-cli]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-schema]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[equal-cli]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-schema]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[conflicting-cli]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-schema]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_retired_radius_refused[zero-cli]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R4-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[coil-centre-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[R3-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[zero-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-native]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-helper]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_unified_invalid_radius_failure[negative-single]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[valid]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[original_negative]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[equality]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[reference_equal]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_major_radius::test_peak_component_preserves_open_f07[reference_inverted]": {
+      "kind": "error",
+      "message": "failed on setup with \"AssertionError: native failed: /tmp/pytest-of-reid/pytest-12321/wi0510/acceptance/native.log\""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_signed_demand_bounds": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_mfe_operating_heating::test_generic_heating_default_modes": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_mfe_operating_heating::test_heating_efficiency_scalar_consumers": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_mfe_operating_heating::test_stellarator_operating_heat_has_no_public_demand_input": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_reserve_invariance": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_financial_attribution": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_direct_native_parity": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_mfe_operating_heating::test_operating_heat_complete_cost_operand_classification": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_model_family_spines::test_family_subset_generates_and_live_equals_snapshot[mfe]": {
+      "kind": "failure",
+      "message": "ValueError: Missing or extra normative source seed"
+    },
+    "tests.models.test_model_family_spines::test_ife_census_is_19_entry_points_18_design_attributes": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_model_family_spines::test_mfe_census_matches_current_generated_public_contract": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_model_family_spines::test_ife_gain_mutation_reaches_every_and_only_its_three_consumers": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_model_family_spines::test_ife_beam_energy_mutation_has_one_direct_consumer": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_model_family_spines::test_mfe_cas28_capital_mutation_reaches_every_and_only_its_two_rollups": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    },
+    "tests.models.test_model_family_spines::test_mfe_blanket_thickness_mutation_reaches_the_radial_build_and_nothing_else": {
+      "kind": "error",
+      "message": "failed on setup with \"ValueError: Missing or extra normative source seed\""
+    }
+  },
+  "inherited_failure_ids": [
+    "tests.models.test_mfe_major_radius::test_current_contract_edges_and_fresh_package_agreement"
+  ]
+}

@@ -10,7 +10,10 @@ multiples over rep rate f — shows the feasible region growing with f.
 Run:  uv run python exploration/ife_e2e/plot_sweep.py
 """
 
+import argparse
 from pathlib import Path
+
+from eligibility import price_eligible
 
 import matplotlib
 
@@ -20,9 +23,22 @@ import numpy as np
 import pandas as pd
 
 REPO = Path(__file__).parent.parent.parent
-OUT = REPO / "data/ife_sweep"
+parser = argparse.ArgumentParser()
+parser.add_argument("--input-dir", type=Path, required=True)
+parser.add_argument("--output-dir", type=Path, required=True)
+args = parser.parse_args()
+OUT = args.output_dir
+OUT.mkdir(parents=True, exist_ok=True)
 
-df = pd.read_csv(OUT / "sweep_results.csv")
+df = pd.read_csv(args.input_dir / "sweep_results.csv")
+# Missing evidence fails closed; historical CSVs cannot silently certify generation.
+required = {"generating", "net_positive", "lcoe_per_mwh"}
+if not required <= set(df.columns):
+    raise ValueError("Sweep lacks generation evidence; rerun sweep_ife.py")
+eligible = df.apply(lambda row: price_eligible(
+    row.lcoe_per_mwh, row.generating, row.net_positive), axis=1)
+df.loc[~eligible, "lcoe_per_mwh"] = float("nan")
+df["attractive"] = eligible & df["viable"] & (df["lcoe_per_mwh"] <= 100)
 ETA = np.sort(df["eta"].unique())
 G = np.sort(df["gain"].unique())
 FREQS = np.sort(df["frequency_hz"].unique())
@@ -57,16 +73,16 @@ draw_boundaries(ax)
 
 # hatch the non-viable region (eta*G <= 10)
 EE, GG = np.meshgrid(ETA, G)
-ax.contourf(ETA, G, (EE * GG <= 10).astype(float), levels=[0.5, 1.5],
+ax.contourf(ETA, G, (EE * GG < 10).astype(float), levels=[0.5, 1.5],
             colors="none", hatches=["///"])
 
 # anchor B marker
-ax.plot(0.25, 100, "w*", ms=16, mec="black", label="Anchor B: $68.69/MWh")
+ax.plot(0.25, 100, "w*", ms=16, mec="black", label="Historical anchor B: $68.69/MWh")
 
 ax.set_xlabel(r"Driver efficiency $\eta$")
 ax.set_ylabel("Target gain $G$")
-ax.set_title("IFE viability map at f = 5 Hz (generated pipeline, Hawker LCOE)\n"
-             "hatched: non-viable ($\\eta G \\leq 10$); red: \\$100/MWh overlay")
+ax.set_title("IFE viability map at f = 5 Hz (historical module scenario, Hawker LCOE)\n"
+             "hatched: non-viable ($\\eta G < 10$); red: \\$100/MWh overlay")
 fig.colorbar(cf, ax=ax, label="LCOE [$/MWh]")
 ax.legend(loc="upper right", framealpha=0.9)
 fig.tight_layout()
@@ -81,7 +97,7 @@ for ax, f_hz in zip(axes, FREQS):
     cf = ax.contourf(ETA, G, lcoe, levels=levels, cmap="viridis_r",
                      extend="both")
     ax.contour(ETA, G, lcoe, levels=[100.0], colors="crimson", linewidths=1.5)
-    ax.contourf(ETA, G, (EE * GG <= 10).astype(float), levels=[0.5, 1.5],
+    ax.contourf(ETA, G, (EE * GG < 10).astype(float), levels=[0.5, 1.5],
                 colors="none", hatches=["///"])
     draw_boundaries(ax, label=False)
     sub = df[df["frequency_hz"] == f_hz]
@@ -89,7 +105,7 @@ for ax, f_hz in zip(axes, FREQS):
     ax.set_title(f"f = {f_hz:g} Hz\nattractive: {pct:.0f}%")
     ax.set_xlabel(r"$\eta$")
 axes[0].set_ylabel("Target gain $G$")
-fig2.suptitle("Feasible region vs rep rate (hatched: $\\eta G \\leq 10$; "
+fig2.suptitle("Feasible region vs rep rate (hatched: $\\eta G < 10$; "
               "red: \\$100/MWh)", y=1.02)
 fig2.colorbar(cf, ax=axes, label="LCOE [$/MWh]", fraction=0.02)
 fig2.savefig(OUT / "ife_viability_by_freq.png", dpi=150, bbox_inches="tight")

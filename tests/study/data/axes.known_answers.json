@@ -23,25 +23,11 @@
   },
   {
    "axis": "R",
-   "note": "Plasma major radius, one plant-level entry point since the model migration (was the geom__R / rb__R fan-out).",
+   "note": "Model-owned major radius: plasma, sustainment and live magnet operands share this single entry.",
    "keys": [
     {
      "key": "stellarator_09__stellaris__R",
      "provenance": "fan_out"
-    }
-   ]
-  },
-  {
-   "axis": "R+tie",
-   "note": "R together with its declared physical-identity tie, the magnet coil major radius.",
-   "keys": [
-    {
-     "key": "stellarator_09__stellaris__R",
-     "provenance": "fan_out"
-    },
-    {
-     "key": "stellarator_09__stellaris__magnet__R0",
-     "provenance": "tie"
     }
    ]
   },

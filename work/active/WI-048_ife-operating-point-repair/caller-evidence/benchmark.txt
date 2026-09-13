@@ -1,0 +1,14 @@
+.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" MPLCONFIGDIR=/tmp/wi048-mplconfig python exploration/ife_e2e/study/bench_prepare_once.py --output-dir /tmp/wi048-final-benchmark --limit 2'
+
+{
+  "n": 2,
+  "prepared_total_s": 0.002667190507054329,
+  "prepared_ms_per_case": 1.3335952535271645,
+  "rebuild_total_s": 0.1138363629579544,
+  "rebuild_ms_per_case": 56.9181814789772,
+  "prepare_once_speedup_over_rebuild": 42.68025199432657,
+  "verdict_parity_cases": 2
+}
+wrote /tmp/wi048-final-benchmark/prepare_once_benchmark.json
+
+Exit code: 0

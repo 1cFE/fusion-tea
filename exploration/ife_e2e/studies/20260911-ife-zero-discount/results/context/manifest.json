@@ -1,0 +1,198 @@
+{
+  "schema_version": "study-package-manifest/v1",
+  "package": {
+    "name": "ife_tea",
+    "path": "exploration/ife_e2e/generated"
+  },
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "8e859f0d05c4dcd8dee695779326caad6040172246f0b638a3e851ffa57e47d3",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/hif_driver_params.json",
+        "inputs/hif_plant_params.json",
+        "inputs/ife_plant_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "2810897c4ef9db8cb646aec5616884de42963c41e3b92ac20c2947450ffcbfd7",
+      "semantic_fingerprint": "8596c899df17f763bbce6eb50a18c1b5bca83080c40233e40bc01a7bb1aa1888"
+    }
+  },
+  "objective_catalog": [
+    {
+      "name": "driver__meier_cost__bank_energy_joules",
+      "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules"
+    },
+    {
+      "name": "driver__meier_cost__cost_billions",
+      "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions"
+    },
+    {
+      "name": "driver__meier_cost__gamma",
+      "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__gamma"
+    },
+    {
+      "name": "hawker_price__generating",
+      "channel": "hif_plant_pkg__hif_plant__hawker_price__generating"
+    },
+    {
+      "name": "hawker_price__price",
+      "channel": "hif_plant_pkg__hif_plant__hawker_price__price"
+    },
+    {
+      "name": "lcoe_calc__annual_driver_replacement_cost",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__annual_driver_replacement_cost"
+    },
+    {
+      "name": "lcoe_calc__discounted_cost",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost"
+    },
+    {
+      "name": "lcoe_calc__discounted_energy",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy"
+    },
+    {
+      "name": "lcoe_calc__driver_capital_cost",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_capital_cost"
+    },
+    {
+      "name": "lcoe_calc__driver_electric_power",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power"
+    },
+    {
+      "name": "lcoe_calc__driver_lifetime_years",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_lifetime_years"
+    },
+    {
+      "name": "lcoe_calc__driver_recirculating_fraction",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction"
+    },
+    {
+      "name": "lcoe_calc__energy_on_target",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__energy_on_target"
+    },
+    {
+      "name": "lcoe_calc__fusion_energy_per_shot",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__fusion_energy_per_shot"
+    },
+    {
+      "name": "lcoe_calc__fusion_power",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__fusion_power"
+    },
+    {
+      "name": "lcoe_calc__gross_electric_power",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power"
+    },
+    {
+      "name": "lcoe_calc__net_electric_power",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power"
+    },
+    {
+      "name": "lcoe_calc__net_electric_power_gw",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw"
+    },
+    {
+      "name": "lcoe_calc__other_parasitic_power",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power"
+    },
+    {
+      "name": "lcoe_calc__shots_per_year",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__shots_per_year"
+    },
+    {
+      "name": "lcoe_calc__thermal_power",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power"
+    },
+    {
+      "name": "lcoe_calc__thermal_power_gw",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw"
+    },
+    {
+      "name": "lcoe_calc__total_recirculating_fraction",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction"
+    },
+    {
+      "name": "meier_capital_calc__total_capital_billions",
+      "channel": "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions"
+    },
+    {
+      "name": "meier_coe_calc__annualized_cost",
+      "channel": "hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost"
+    },
+    {
+      "name": "meier_coe_calc__energy_denominator",
+      "channel": "hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator"
+    },
+    {
+      "name": "meier_price__generating",
+      "channel": "hif_plant_pkg__hif_plant__meier_price__generating"
+    },
+    {
+      "name": "meier_price__price",
+      "channel": "hif_plant_pkg__hif_plant__meier_price__price"
+    },
+    {
+      "name": "meier_reactor_cost_calc__reactor_cost_billions",
+      "channel": "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions"
+    },
+    {
+      "name": "pv_factors__construction_factor",
+      "channel": "hif_plant_pkg__hif_plant__pv_factors__construction_factor"
+    },
+    {
+      "name": "pv_factors__operation_factor",
+      "channel": "hif_plant_pkg__hif_plant__pv_factors__operation_factor"
+    },
+    {
+      "name": "recirc_calc__f_recirc",
+      "channel": "hif_plant_pkg__hif_plant__recirc_calc__f_recirc"
+    }
+  ],
+  "ties": [],
+  "baseline": {
+    "point": {
+      "hif_plant_pkg__hif_plant__driver__efficiency": 0.28,
+      "hif_plant_pkg__hif_plant__driver__lifetime_shots": 6000000000.0,
+      "hif_plant_pkg__hif_plant__availability": 0.9,
+      "hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple": 1.15,
+      "hif_plant_pkg__hif_plant__chamber__yield_cost_constant": 5000000.0,
+      "hif_plant_pkg__hif_plant__discount_rate": 0.08,
+      "hif_plant_pkg__hif_plant__driver__beam_energy_mj": 5.0,
+      "hif_plant_pkg__hif_plant__driver__num_chambers": 1.0,
+      "hif_plant_pkg__hif_plant__frequency": 4.6,
+      "hif_plant_pkg__hif_plant__gain": 87.0,
+      "hif_plant_pkg__hif_plant__om_cost_constant": 65.0,
+      "hif_plant_pkg__hif_plant__plant_cost_constant": 2000.0,
+      "hif_plant_pkg__hif_plant__reactor_units": 1.0,
+      "hif_plant_pkg__hif_plant__target_factory__cost_per_target": 10.0,
+      "hif_plant_pkg__hif_plant__target_factory_direct_cost_billions": 0.1,
+      "hif_plant_pkg__hif_plant__thermal_efficiency": 0.45,
+      "hif_plant_pkg__hif_plant__construction_duration": 5.0,
+      "hif_plant_pkg__hif_plant__operational_duration": 40.0,
+      "hif_plant_pkg__hif_plant__viability__threshold": 10.0
+    },
+    "headline": {
+      "channel": "hif_plant_pkg__hif_plant__hawker_price__price",
+      "value": 240.66646063955096
+    },
+    "verdicts": [
+      {
+        "source_local_identity": "net_positive",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "viability",
+        "expected": "satisfied"
+      }
+    ]
+  },
+  "oracle": {
+    "kind": "python_callable",
+    "module": "exploration.ife_e2e.studies.oracle_entry",
+    "callable": "evaluate",
+    "sys_path": "."
+  }
+}

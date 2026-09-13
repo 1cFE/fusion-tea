@@ -1,0 +1,28 @@
+usage: agentic-mbse pm trace-element [-h] --element ELEMENT --file FILE --type
+                                     TYPE [--knowledge KNOWLEDGE]
+                                     [--requirement REQUIREMENT]
+                                     [--source-type SOURCE_TYPE]
+                                     [--source-doc SOURCE_DOC]
+                                     [--source-location SOURCE_LOCATION]
+                                     [--confidence CONFIDENCE]
+                                     [--assumptions ASSUMPTIONS]
+
+options:
+  -h, --help            show this help message and exit
+  --element ELEMENT     Element name
+  --file FILE           Source file path
+  --type TYPE           Element type (part, port, connection, etc.)
+  --knowledge KNOWLEDGE
+                        Knowledge ID (DI-XXX), repeatable
+  --requirement REQUIREMENT
+                        Requirement ID (PR-XXX), repeatable
+  --source-type SOURCE_TYPE
+                        Source type
+  --source-doc SOURCE_DOC
+                        Source document name
+  --source-location SOURCE_LOCATION
+                        Source location
+  --confidence CONFIDENCE
+                        Confidence level
+  --assumptions ASSUMPTIONS
+                        Assumptions

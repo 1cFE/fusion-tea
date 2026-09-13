@@ -1,0 +1,28 @@
+...F.....                                                                [100%]
+=================================== FAILURES ===================================
+__________ test_stellarator_operating_heat_has_no_public_demand_input __________
+
+native = (PosixPath('/tmp/wi050-implementation-38kzysgk'), {'availability': {'outputs': {'stellarator_09__stellaris__aux_coolin...total': 0.0, 'stellarator_09__stellaris__R': 12.7, ...}, PosixPath('/tmp/pytest-of-reid/pytest-12213/wi050-evidence0'))
+
+    def test_stellarator_operating_heat_has_no_public_demand_input(native):
+        scratch,results,_,_=native
+        contract=json.loads((scratch/'generated/contracts/model_contract.json').read_text())
+        assert len(contract['parameters'])==247
+        assert not any('p_operating_coupled_heat' in str(p) for p in contract['parameters'])
+        modules=yaml.safe_load((scratch/'generated/pipelines/pipeline.yaml').read_text())['modules']
+        expected={'operating_heat':{'p_required_in':'sustain.p_aux_required'},'source_heat':{'p_input_in':'operating_heat.p_coupled'},'pb':{'p_input_in':'operating_heat.p_coupled','p_wallplug_in':'operating_heat.p_wallplug'},'divheat':{'p_coupled_in':'operating_heat.p_coupled','p_installed_coupled_in':'heat.p_coupled'},'primary_loop':{'q_source_in':'source_heat.q_source.root'},'heating_cost':{'p_ecrh_in':'heat.p_delivered'}}
+        for module,formals in expected.items():
+            for formal,target in formals.items():
+                actual=modules[P+module]['inputs'][formal]
+                producer,output=target.split('.',1)
+                assert actual.split()[-1]==P+producer+'__'+output,(module,formal,actual)
+>       assert results['baseline']['responses']['headline']=='violation'
+E       AssertionError: assert 'violated' == 'violation'
+E         
+E         - violation
+E         + violated
+
+tests/models/test_mfe_operating_heating.py:97: AssertionError
+=========================== short test summary info ============================
+FAILED tests/models/test_mfe_operating_heating.py::test_stellarator_operating_heat_has_no_public_demand_input
+1 failed, 8 passed in 24.26s

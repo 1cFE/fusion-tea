@@ -1,0 +1,6 @@
+SysML parsing failed: Failed to load SysML models: root-0/designs/generic_ife/ife_plant.sysml:111:50: (reference-error) No Feature named 'construction_years' found.; root-0/designs/generic_ife/ife_plant.sysml:112:49: (reference-error) No Feature named 'operational_years' found.
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+AssertionError
+[ERROR] work/active/WI-049_ife-zero-discount-repair/prototype/models/designs/generic_ife/ife_plant.sysml:111:50: error (reference-error): No Feature named 'construction_years' found.
+[ERROR] work/active/WI-049_ife-zero-discount-repair/prototype/models/designs/generic_ife/ife_plant.sysml:112:49: error (reference-error): No Feature named 'operational_years' found.

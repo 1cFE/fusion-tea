@@ -1,0 +1,10 @@
+{
+  "exact_thirteen_float_annotation": true,
+  "guarded_body_and_arguments_unchanged": true,
+  "twelve_other_seeds_unchanged": true,
+  "fresh_exact_files": 247,
+  "stock_inplace_after_fresh_exact": true,
+  "stock_inplace_after_existing_exact": true,
+  "all_handwritten_and_backup_paths_included": true,
+  "production_unchanged_by_audit": true
+}

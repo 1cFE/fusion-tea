@@ -1,0 +1,107 @@
+[
+  {
+    "copy": "ANNEX.md",
+    "source": "exploration/ife_e2e/studies/ANNEX.md",
+    "sha256": "97b6229c7cf0130b11079e6bdfe9c4e27a35f3bc03e9d6344489abaaa2ee4ec8"
+  },
+  {
+    "copy": "manifest.json",
+    "source": "exploration/ife_e2e/studies/manifest.json",
+    "sha256": "de877abb23922b6ca7614dea3e8dc95bc56f9a00ecb71674a98f8cfe363562d7"
+  },
+  {
+    "copy": "oracle_entry.py",
+    "source": "exploration/ife_e2e/studies/oracle_entry.py",
+    "sha256": "f6e346a83598302af2afc126ccb5ea50aaf3a341a08cd29adfee3fb222d297e0"
+  },
+  {
+    "copy": "ife_oracle.py",
+    "source": "tests/ife_oracle.py",
+    "sha256": "877dc5e22dd1ba0b2b46746a627314fc3772ce9d2c37bd7b6000b738ad90cf0b"
+  },
+  {
+    "copy": "study_route.py",
+    "source": "exploration/ife_e2e/studies/study_route.py",
+    "sha256": "14083884cb4eb0eb4b7f3e1383a9d2cb533dd63f869e2fa03e2e2e92e8b58e19"
+  },
+  {
+    "copy": "eligibility.py",
+    "source": "exploration/ife_e2e/eligibility.py",
+    "sha256": "fc89a5bcb7266c528e6dcaab00412e6bcb688efdb0ec6c70ab35415e5e4ad5ff"
+  },
+  {
+    "copy": "model_contract.json",
+    "source": "exploration/ife_e2e/generated/contracts/model_contract.json",
+    "sha256": "c296c5319b83313465f5e2b677ba1ea6904d6e0bd74a829b72452ef3f9596ead"
+  },
+  {
+    "copy": "pipeline.yaml",
+    "source": "exploration/ife_e2e/generated/pipelines/pipeline.yaml",
+    "sha256": "3843f570ced334ad98d5b40217cb04917a2c019015ed0ea4c89d52905f8d9696"
+  },
+  {
+    "copy": "WI048-audit.md",
+    "source": "work/analysis/20260911-045617_audit_WI-048_ife-operating-point-repair-r1.md",
+    "sha256": "f89cba925dfe7406afd9ea04f53299be61fd57383362b6693965ed81d2ff2b82"
+  },
+  {
+    "copy": "WI049-audit.md",
+    "source": "work/analysis/20260911-144931_audit_WI-049_ife-zero-discount-repair.md",
+    "sha256": "6a9400c0d61a7d5cec5c88a34e3258fc264c08d7786e8c62075355f454284623"
+  },
+  {
+    "copy": "WI049-reaudit.md",
+    "source": "work/analysis/20260911-145626_audit_WI-049_ife-zero-discount-repair-r1.md",
+    "sha256": "4fd1a51f3da2480462845fef0cc76d19f908775b6121ff4900d5cb50a6968115"
+  },
+  {
+    "copy": "package-audit.md",
+    "source": ".project/active/ife-zero-discount-study-package/audit.md",
+    "sha256": "1f4c4fe4ff4232f1467d7b4bc5872a12a5fde3ab74598f30441b2a86dabe8d4c"
+  },
+  {
+    "copy": "integration_return.json",
+    "source": "work/orchestration/goals/fusion-audit-remediation/evidence/T-012_pin/integration_return.json",
+    "sha256": "f5152ef1a0b832adbf384b696fddd2f27f17373370552af6ed141964ec525072"
+  },
+  {
+    "copy": "assessment.md",
+    "source": "work/analysis/20260911-141041_ife-zero-discount-assessment.md",
+    "sha256": "053ecfa89c458842316a1992a9913f09c0dc08cc8168ffce5df50899e0d42f36"
+  },
+  {
+    "copy": "ife_lcoe.sysml",
+    "source": "models/library/analyses/ife_lcoe.sysml",
+    "sha256": "8ff3825be778e5e80a30719db88f19f02542b67b76c984dfec9f97cd181f42a3"
+  },
+  {
+    "copy": "ife_plant.sysml",
+    "source": "models/designs/generic_ife/ife_plant.sysml",
+    "sha256": "be9e8984d9adcbec29f578c8b5082e5bc3b76ea0192c6ad59cd25f12567a9480"
+  },
+  {
+    "copy": "goal.md",
+    "source": "work/orchestration/goals/fusion-audit-remediation/goal.md",
+    "sha256": "90f94e7fd0fb199553e5d3f9d72e022102be1c45416e36bda933c7f4151eccf3"
+  },
+  {
+    "copy": "STUDY_POLICY.md",
+    "source": "modeling_project/STUDY_POLICY.md",
+    "sha256": "5f166202b553867af16ff2c349ad5e39988dd73e9a07407ece576314e01ad8ef"
+  },
+  {
+    "copy": "generating_electricity_price_impl.py",
+    "source": "exploration/ife_e2e/generated/handwritten/ife_lcoe/generating_electricity_price_impl.py",
+    "sha256": "67bc0ed6241856920c8380b4ddcc0293d41f6d6fa131abc6c97b6cc74d1d9377"
+  },
+  {
+    "copy": "ife_lcoe_impl.py",
+    "source": "exploration/ife_e2e/generated/handwritten/ife_lcoe/ife_lcoe_impl.py",
+    "sha256": "4ef9931dfda6fdcdc96cf669df4125283b8645743e03405fca6b6df3c55eb5ca"
+  },
+  {
+    "copy": "ife_present_value_factors_impl.py",
+    "source": "exploration/ife_e2e/generated/handwritten/ife_lcoe/ife_present_value_factors_impl.py",
+    "sha256": "0ac4fa7c3a7fd4723bd68c41b7c405f2fabbc70b85986370c6b33c9b9bdbeabc"
+  }
+]

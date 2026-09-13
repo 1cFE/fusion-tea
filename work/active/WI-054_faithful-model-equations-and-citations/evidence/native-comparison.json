@@ -1,0 +1,8 @@
+{
+  "exact_equal": true,
+  "cases": 10,
+  "scalar_channels_per_case": [
+    158
+  ],
+  "complete_inputs_responses_reports_equal": true
+}

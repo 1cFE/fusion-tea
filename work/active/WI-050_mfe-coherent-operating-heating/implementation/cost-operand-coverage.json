@@ -1,0 +1,985 @@
+{
+  "winding_pack_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "I_coil": "float stellarator_plant_params.stellarator_09__stellaris__magnet__I_coil",
+      "c_coil": "float stellarator_09__stellaris__coil_length__c_coil.root",
+      "cost_per_kAm": "float stellarator_plant_params.stellarator_09__stellaris__magnet__cost_per_kAm",
+      "n_coils": "float stellarator_plant_params.stellarator_09__stellaris__magnet__n_coils",
+      "f_set": "float stellarator_plant_params.stellarator_09__stellaris__magnet__f_set",
+      "f_wp_fab": "float stellarator_plant_params.stellarator_09__stellaris__magnet__f_wp_fab"
+    },
+    "outputs": {
+      "winding_pack_cost__cost": {
+        "baseline": 5346600000.0,
+        "reserve": 5346600000.0,
+        "demand": 5346600000.0
+      }
+    }
+  },
+  "heating_cost": {
+    "classification": "installed procurement",
+    "inputs_unchanged": true,
+    "inputs": {
+      "icrf_per_mw": "float stellarator_plant_params.stellarator_09__stellaris__heating_icrf_per_mw",
+      "p_nbi_in": "float stellarator_plant_params.stellarator_09__stellaris__p_nbi",
+      "ecrh_per_mw": "float stellarator_plant_params.stellarator_09__stellaris__heating_ecrh_per_mw",
+      "p_lhcd_in": "float stellarator_plant_params.stellarator_09__stellaris__p_lhcd",
+      "p_ecrh_in": "float stellarator_09__stellaris__heat__p_delivered",
+      "p_icrf_in": "float stellarator_plant_params.stellarator_09__stellaris__p_icrf",
+      "nbi_per_mw": "float stellarator_plant_params.stellarator_09__stellaris__heating_nbi_per_mw",
+      "lhcd_per_mw": "float stellarator_plant_params.stellarator_09__stellaris__heating_lhcd_per_mw"
+    },
+    "outputs": {
+      "heating_cost__cost": {
+        "baseline": 264145000.0,
+        "reserve": 316974000.0,
+        "demand": 264145000.0
+      }
+    }
+  },
+  "magnet_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "coil_markup": "float stellarator_plant_params.stellarator_09__stellaris__magnet__coil_markup",
+      "mu0": "float mfe_magnet_cost_params.stellarator_09__stellaris__magnet_cost__mu0",
+      "cost_per_kAm": "float stellarator_plant_params.stellarator_09__stellaris__magnet__cost_per_kAm",
+      "G": "float stellarator_plant_params.stellarator_09__stellaris__magnet__G",
+      "r_coil": "float stellarator_09__stellaris__rb__r_coil",
+      "B": "float stellarator_09__stellaris__field_calc__B_axis.root",
+      "R0": "float stellarator_plant_params.stellarator_09__stellaris__magnet__R0"
+    },
+    "outputs": {
+      "magnet_cost__capital_cost": {
+        "baseline": 6323469946.334224,
+        "reserve": 6323469946.334224,
+        "demand": 6323469946.334224
+      }
+    }
+  },
+  "magnet_structure_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "m_casing": "float stellarator_09__stellaris__casing_mass__m_casing.root",
+      "steel_price": "float stellarator_plant_params.stellarator_09__stellaris__magnet__steel_price",
+      "n_coils": "float stellarator_plant_params.stellarator_09__stellaris__magnet__n_coils",
+      "f_steel_fab": "float stellarator_plant_params.stellarator_09__stellaris__magnet__f_steel_fab"
+    },
+    "outputs": {
+      "magnet_structure_cost__cost": {
+        "baseline": 54432000.0,
+        "reserve": 54432000.0,
+        "demand": 54432000.0
+      }
+    }
+  },
+  "magnet_capital_rollup": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "structure_cost_in": "float stellarator_09__stellaris__magnet_structure_cost__cost.root",
+      "winding_cost": "float stellarator_09__stellaris__winding_pack_cost__cost.root"
+    },
+    "outputs": {
+      "magnet_capital_rollup__capital_cost": {
+        "baseline": 5401032000.0,
+        "reserve": 5401032000.0,
+        "demand": 5401032000.0
+      }
+    }
+  },
+  "vessel_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "p_et_in": "float stellarator_09__stellaris__pb__p_et",
+      "alpha": "float mfe_account_costs_params.stellarator_09__stellaris__vessel_cost__alpha",
+      "vessel_vol": "float stellarator_09__stellaris__rb__vessel_vol",
+      "p_et_ref": "float mfe_account_costs_params.stellarator_09__stellaris__vessel_cost__p_et_ref",
+      "unit_cost": "float stellarator_plant_params.stellarator_09__stellaris__vessel__unit_cost"
+    },
+    "outputs": {
+      "vessel_cost__cost": {
+        "baseline": 120841903.15294513,
+        "reserve": 120841903.15294513,
+        "demand": 120705538.78072089
+      }
+    }
+  },
+  "blanket_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "p_th_in": "float stellarator_09__stellaris__pb__p_th",
+      "p_th_ref": "float mfe_account_costs_params.stellarator_09__stellaris__blanket_cost__p_th_ref",
+      "structure_factor": "float stellarator_plant_params.stellarator_09__stellaris__blanket__structure_factor",
+      "alpha": "float mfe_account_costs_params.stellarator_09__stellaris__blanket_cost__alpha",
+      "blanket_vol": "float stellarator_09__stellaris__rb__blanket_vol",
+      "unit_cost": "float stellarator_plant_params.stellarator_09__stellaris__blanket__unit_cost"
+    },
+    "outputs": {
+      "blanket_cost__cost": {
+        "baseline": 718414154.606785,
+        "reserve": 718414154.606785,
+        "demand": 717603458.2122904
+      }
+    }
+  },
+  "fuel_handling": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "ref_power": "float mfe_account_costs_params.stellarator_09__stellaris__fuel_handling__ref_power",
+      "base": "float stellarator_plant_params.stellarator_09__stellaris__fuel_handling_base",
+      "alpha": "float mfe_account_costs_params.stellarator_09__stellaris__fuel_handling__alpha",
+      "power": "float stellarator_09__stellaris__pb__p_net",
+      "n_mod_in": "float mfe_plant_params.stellarator_09__stellaris__n_mod"
+    },
+    "outputs": {
+      "fuel_handling__cost": {
+        "baseline": 121167851.33791968,
+        "reserve": 121167851.33791968,
+        "demand": 121923091.99242328
+      }
+    }
+  },
+  "owner": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "n_mod_in": "float mfe_plant_params.stellarator_09__stellaris__n_mod",
+      "base": "float stellarator_plant_params.stellarator_09__stellaris__owner_base",
+      "alpha": "float mfe_account_costs_params.stellarator_09__stellaris__owner__alpha",
+      "ref_power": "float mfe_account_costs_params.stellarator_09__stellaris__owner__ref_power",
+      "power": "float stellarator_09__stellaris__pb__p_net"
+    },
+    "outputs": {
+      "owner__cost": {
+        "baseline": 41486005.10526891,
+        "reserve": 41486005.10526891,
+        "demand": 41670543.0515777
+      }
+    }
+  },
+  "other_rpe": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "ref_power": "float mfe_account_costs_params.stellarator_09__stellaris__other_rpe__ref_power",
+      "base": "float stellarator_plant_params.stellarator_09__stellaris__other_rpe_base",
+      "alpha": "float mfe_account_costs_params.stellarator_09__stellaris__other_rpe__alpha",
+      "n_mod_in": "float mfe_plant_params.stellarator_09__stellaris__n_mod",
+      "power": "float stellarator_09__stellaris__pb__p_net"
+    },
+    "outputs": {
+      "other_rpe__cost": {
+        "baseline": 11627996.196228182,
+        "reserve": 11627996.196228182,
+        "demand": 11710864.366466265
+      }
+    }
+  },
+  "electric_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "power": "float stellarator_09__stellaris__pb__p_et",
+      "cost_per_mw": "float stellarator_plant_params.stellarator_09__stellaris__electric_plant__cost_per_mw",
+      "n_mod_in": "float mfe_plant_params.stellarator_09__stellaris__n_mod"
+    },
+    "outputs": {
+      "electric_cost__cost": {
+        "baseline": 117329099.6903133,
+        "reserve": 117329099.6903133,
+        "demand": 117108515.47213225
+      }
+    }
+  },
+  "heat_rejection_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "n_mod_in": "float mfe_plant_params.stellarator_09__stellaris__n_mod",
+      "power": "float stellarator_09__stellaris__pb__p_th",
+      "cost_per_mw": "float stellarator_plant_params.stellarator_09__stellaris__heat_rejection__cost_per_mw"
+    },
+    "outputs": {
+      "heat_rejection_cost__cost": {
+        "baseline": 115740535.19473399,
+        "reserve": 115740535.19473399,
+        "demand": 115522937.55241702
+      }
+    }
+  },
+  "remote_handling": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "p_et_in": "float stellarator_09__stellaris__pb__p_et",
+      "alpha": "float mfe_account_costs_params.stellarator_09__stellaris__remote_handling__alpha",
+      "base": "float stellarator_plant_params.stellarator_09__stellaris__remote_handling_base",
+      "p_et_ref": "float mfe_account_costs_params.stellarator_09__stellaris__remote_handling__p_et_ref",
+      "concept_scale_in": "float stellarator_plant_params.stellarator_09__stellaris__concept_scale"
+    },
+    "outputs": {
+      "remote_handling__cost": {
+        "baseline": 166663659.79080695,
+        "reserve": 166663659.79080695,
+        "demand": 166506918.33165383
+      }
+    }
+  },
+  "coolant": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "p_th_ref": "float mfe_account_costs_params.stellarator_09__stellaris__coolant__p_th_ref",
+      "n_mod_in": "float mfe_plant_params.stellarator_09__stellaris__n_mod",
+      "ref_net_power": "float mfe_account_costs_params.stellarator_09__stellaris__coolant__ref_net_power",
+      "intermediate_base": "float stellarator_plant_params.stellarator_09__stellaris__coolant_intermediate_base",
+      "alpha": "float mfe_account_costs_params.stellarator_09__stellaris__coolant__alpha",
+      "p_th_in": "float stellarator_09__stellaris__pb__p_th",
+      "p_net": "float stellarator_09__stellaris__pb__p_net",
+      "primary_base": "float stellarator_plant_params.stellarator_09__stellaris__coolant_primary_base"
+    },
+    "outputs": {
+      "coolant__cost": {
+        "baseline": 207627772.78611118,
+        "reserve": 207627772.78611118,
+        "demand": 209087809.3736544
+      }
+    }
+  },
+  "aux_cooling": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "alpha": "float mfe_account_costs_params.stellarator_09__stellaris__aux_cooling__alpha",
+      "p_th_in": "float stellarator_09__stellaris__pb__p_th",
+      "p_cryo_ref": "float mfe_account_costs_params.stellarator_09__stellaris__aux_cooling__p_cryo_ref",
+      "p_cryo": "float stellarator_09__stellaris__cryo_elec__p_elec.root",
+      "cryo_base": "float stellarator_plant_params.stellarator_09__stellaris__aux_cryo_base",
+      "n_mod_in": "float mfe_plant_params.stellarator_09__stellaris__n_mod",
+      "aux_per_mw_in": "float stellarator_plant_params.stellarator_09__stellaris__aux_per_mw"
+    },
+    "outputs": {
+      "aux_cooling__aux_cost": {
+        "baseline": 3631334.532635693,
+        "reserve": 3631334.532635693,
+        "demand": 3624507.4531562673
+      },
+      "aux_cooling__cryo_cost": {
+        "baseline": 16700459.69057127,
+        "reserve": 16700459.69057127,
+        "demand": 16700459.69057127
+      },
+      "aux_cooling__cost": {
+        "baseline": 20331794.223206963,
+        "reserve": 20331794.223206963,
+        "demand": 20324967.143727537
+      }
+    }
+  },
+  "buildings_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "p_th_ref": "float mfe_account_costs_params.stellarator_09__stellaris__buildings_cost__p_th_ref",
+      "p_th_in": "float stellarator_09__stellaris__pb__p_th",
+      "fus_base": "float stellarator_plant_params.stellarator_09__stellaris__bldg_fus_base",
+      "fixed_base": "float stellarator_plant_params.stellarator_09__stellaris__bldg_fixed_base",
+      "p_et_ref": "float mfe_account_costs_params.stellarator_09__stellaris__buildings_cost__p_et_ref",
+      "p_the_in": "float stellarator_09__stellaris__pb__p_the",
+      "p_et_in": "float stellarator_09__stellaris__pb__p_et",
+      "p_fus": "float stellarator_09__stellaris__fusion__p_fus.root",
+      "et_base": "float stellarator_plant_params.stellarator_09__stellaris__bldg_et_base",
+      "n_mod_in": "float mfe_account_costs_params.stellarator_09__stellaris__buildings_cost__n_mod_in",
+      "p_the_ref": "float mfe_account_costs_params.stellarator_09__stellaris__buildings_cost__p_the_ref",
+      "the_base": "float stellarator_plant_params.stellarator_09__stellaris__bldg_the_base",
+      "staff_base": "float stellarator_plant_params.stellarator_09__stellaris__bldg_staff_base",
+      "p_fus_ref": "float mfe_account_costs_params.stellarator_09__stellaris__buildings_cost__p_fus_ref",
+      "th_base": "float stellarator_plant_params.stellarator_09__stellaris__bldg_th_base"
+    },
+    "outputs": {
+      "buildings_cost__cost": {
+        "baseline": 652383020.902597,
+        "reserve": 652383020.902597,
+        "demand": 652107145.7972155
+      }
+    }
+  },
+  "misc_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "n_mod_in": "float mfe_plant_params.stellarator_09__stellaris__n_mod",
+      "cost_per_mw": "float stellarator_plant_params.stellarator_09__stellaris__misc_plant__cost_per_mw",
+      "power": "float stellarator_09__stellaris__pb__p_et"
+    },
+    "outputs": {
+      "misc_cost__cost": {
+        "baseline": 71415941.58233306,
+        "reserve": 71415941.58233306,
+        "demand": 71281676.25786383
+      }
+    }
+  },
+  "om_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "alpha": "float mfe_account_costs_params.stellarator_09__stellaris__om_cost__alpha",
+      "ref_net_power": "float mfe_account_costs_params.stellarator_09__stellaris__om_cost__ref_net_power",
+      "n_mod_in": "float mfe_account_costs_params.stellarator_09__stellaris__om_cost__n_mod_in",
+      "om_direct": "float mfe_account_costs_params.stellarator_09__stellaris__om_cost__om_direct",
+      "p_net": "float stellarator_09__stellaris__pb__p_net",
+      "om_ref": "float stellarator_plant_params.stellarator_09__stellaris__om_annual_ref"
+    },
+    "outputs": {
+      "om_cost__annual_om": {
+        "baseline": 55281108.74464231,
+        "reserve": 55281108.74464231,
+        "demand": 55527010.037175134
+      }
+    }
+  },
+  "cas71_calc": {
+    "classification": "calendar/annual/financial propagation",
+    "inputs_unchanged": true,
+    "inputs": {
+      "project_time": "float stellarator_plant_params.stellarator_09__stellaris__construction_years",
+      "interest_rate": "float stellarator_plant_params.stellarator_09__stellaris__discount_rate",
+      "operational_years_in": "float stellarator_plant_params.stellarator_09__stellaris__operational_years",
+      "inflation_rate_in": "float stellarator_plant_params.stellarator_09__stellaris__inflation_rate",
+      "annual_cost": "float stellarator_09__stellaris__om_cost__annual_om.root"
+    },
+    "outputs": {
+      "cas71_calc__levelized": {
+        "baseline": 79552063.13280472,
+        "reserve": 79552063.13280472,
+        "demand": 79905926.42520668
+      },
+      "cas71_calc__crf": {
+        "baseline": 0.08058640351111118,
+        "reserve": 0.08058640351111118,
+        "demand": 0.08058640351111118
+      }
+    }
+  },
+  "shield_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "p_th_ref": "float mfe_account_costs_params.stellarator_09__stellaris__shield_cost__p_th_ref",
+      "shield_vol": "float stellarator_09__stellaris__rb__shield_vol",
+      "unit_cost": "float stellarator_plant_params.stellarator_09__stellaris__shield__unit_cost",
+      "alpha": "float mfe_account_costs_params.stellarator_09__stellaris__shield_cost__alpha",
+      "shield_scale": "float stellarator_plant_params.stellarator_09__stellaris__shield__shield_scale",
+      "p_th_in": "float stellarator_09__stellaris__pb__p_th"
+    },
+    "outputs": {
+      "shield_cost__cost": {
+        "baseline": 452063328.57909954,
+        "reserve": 452063328.57909954,
+        "demand": 451553196.49412847
+      }
+    }
+  },
+  "divertor_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "p_th_ref": "float mfe_account_costs_params.stellarator_09__stellaris__divertor_cost__p_th_ref",
+      "alpha": "float mfe_account_costs_params.stellarator_09__stellaris__divertor_cost__alpha",
+      "base": "float stellarator_plant_params.stellarator_09__stellaris__divertor_base",
+      "p_th_in": "float stellarator_09__stellaris__pb__p_th"
+    },
+    "outputs": {
+      "divertor_cost__cost": {
+        "baseline": 109015446.43468271,
+        "reserve": 109015446.43468271,
+        "demand": 108912921.14413139
+      }
+    }
+  },
+  "power_supplies_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "p_et_ref": "float mfe_account_costs_params.stellarator_09__stellaris__power_supplies_cost__p_et_ref",
+      "base": "float stellarator_plant_params.stellarator_09__stellaris__power_supplies__base",
+      "alpha": "float mfe_account_costs_params.stellarator_09__stellaris__power_supplies_cost__alpha",
+      "p_et_in": "float stellarator_09__stellaris__pb__p_et"
+    },
+    "outputs": {
+      "power_supplies_cost__cost": {
+        "baseline": 92712758.81167144,
+        "reserve": 92712758.81167144,
+        "demand": 92590711.3362755
+      }
+    }
+  },
+  "turbine_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "cost_per_mw": "float stellarator_plant_params.stellarator_09__stellaris__turbine__cost_per_mw",
+      "n_mod_in": "float mfe_plant_params.stellarator_09__stellaris__n_mod",
+      "power": "float stellarator_09__stellaris__pb__p_the"
+    },
+    "outputs": {
+      "turbine_cost__cost": {
+        "baseline": 275451789.1340642,
+        "reserve": 275451789.1340642,
+        "demand": 274933926.83295494
+      }
+    }
+  },
+  "structure_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "p_et_in": "float stellarator_09__stellaris__pb__p_et",
+      "structure_vol": "float stellarator_09__stellaris__rb__structure_vol",
+      "alpha": "float mfe_account_costs_params.stellarator_09__stellaris__structure_cost__alpha",
+      "p_et_ref": "float mfe_account_costs_params.stellarator_09__stellaris__structure_cost__p_et_ref",
+      "unit_cost": "float stellarator_plant_params.stellarator_09__stellaris__structure__unit_cost"
+    },
+    "outputs": {
+      "structure_cost__cost": {
+        "baseline": 34155617.209747344,
+        "reserve": 34155617.209747344,
+        "demand": 34123495.022544384
+      }
+    }
+  },
+  "precon_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "land_cost": "float mfe_account_costs_params.stellarator_09__stellaris__precon_cost__land_cost",
+      "n_mod_in": "float mfe_account_costs_params.stellarator_09__stellaris__precon_cost__n_mod_in",
+      "fixed_precon": "float stellarator_plant_params.stellarator_09__stellaris__precon_fixed_base",
+      "ref_net_power": "float mfe_account_costs_params.stellarator_09__stellaris__precon_cost__ref_net_power",
+      "land_intensity": "float mfe_account_costs_params.stellarator_09__stellaris__precon_cost__land_intensity",
+      "p_net": "float stellarator_09__stellaris__pb__p_net"
+    },
+    "outputs": {
+      "precon_cost__cost": {
+        "baseline": 18517354.678717773,
+        "reserve": 18517354.678717773,
+        "demand": 18528552.36963457
+      }
+    }
+  },
+  "waste": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "n_mod_in": "float mfe_plant_params.stellarator_09__stellaris__n_mod",
+      "ref_power": "float mfe_account_costs_params.stellarator_09__stellaris__waste__ref_power",
+      "power": "float stellarator_09__stellaris__pb__p_th",
+      "base": "float stellarator_plant_params.stellarator_09__stellaris__waste_base",
+      "alpha": "float mfe_account_costs_params.stellarator_09__stellaris__waste__alpha"
+    },
+    "outputs": {
+      "waste__cost": {
+        "baseline": 6470377.894514508,
+        "reserve": 6470377.894514508,
+        "demand": 6458213.280169348
+      }
+    }
+  },
+  "inc_cost": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "base": "float stellarator_plant_params.stellarator_09__stellaris__inc_base",
+      "ref_power": "float mfe_account_costs_params.stellarator_09__stellaris__inc_cost__ref_power",
+      "alpha": "float mfe_account_costs_params.stellarator_09__stellaris__inc_cost__alpha",
+      "n_mod_in": "float mfe_plant_params.stellarator_09__stellaris__n_mod",
+      "power": "float stellarator_09__stellaris__pb__p_th"
+    },
+    "outputs": {
+      "inc_cost__cost": {
+        "baseline": 81829994.18345366,
+        "reserve": 81829994.18345366,
+        "demand": 81729962.50405823
+      }
+    }
+  },
+  "powercore_capital": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "magnet_capital_cost": "float stellarator_09__stellaris__magnet_capital_rollup__capital_cost.root",
+      "heating_capital_cost": "float stellarator_09__stellaris__heating_cost__cost.root",
+      "divertor_capital_cost": "float stellarator_09__stellaris__divertor_cost__cost.root",
+      "blanket_capital_cost": "float stellarator_09__stellaris__blanket_cost__cost.root",
+      "shield_capital_cost": "float stellarator_09__stellaris__shield_cost__cost.root",
+      "structure_capital_cost": "float stellarator_09__stellaris__structure_cost__cost.root",
+      "vessel_capital_cost": "float stellarator_09__stellaris__vessel_cost__cost.root",
+      "power_supplies_capital_cost": "float stellarator_09__stellaris__power_supplies_cost__cost.root"
+    },
+    "outputs": {
+      "powercore_capital__powercore_capital": {
+        "baseline": 7192380208.794931,
+        "reserve": 7245209208.794931,
+        "demand": 7190666320.99009
+      }
+    }
+  },
+  "reactor_equipment_subtotal": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "powercore_capital": "float stellarator_09__stellaris__powercore_capital__powercore_capital.root",
+      "remote_handling_capital": "float stellarator_09__stellaris__remote_handling__cost.root"
+    },
+    "outputs": {
+      "reactor_equipment_subtotal__reactor_equipment_subtotal": {
+        "baseline": 7359043868.585738,
+        "reserve": 7411872868.585738,
+        "demand": 7357173239.321744
+      }
+    }
+  },
+  "installation": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "reactor_subtotal": "float stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal.root",
+      "installation_frac_in": "float stellarator_plant_params.stellarator_09__stellaris__installation_frac"
+    },
+    "outputs": {
+      "installation__cost": {
+        "baseline": 1030266141.6020035,
+        "reserve": 1037662201.6020035,
+        "demand": 1030004253.5050442
+      }
+    }
+  },
+  "cas22_capital": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "powercore_capital": "float stellarator_09__stellaris__powercore_capital__powercore_capital.root",
+      "remote_handling_capital": "float stellarator_09__stellaris__remote_handling__cost.root",
+      "installation_capital": "float stellarator_09__stellaris__installation__cost.root",
+      "coolant_capital": "float stellarator_09__stellaris__coolant__cost.root",
+      "aux_cooling_capital": "float stellarator_09__stellaris__aux_cooling__cost",
+      "waste_capital": "float stellarator_09__stellaris__waste__cost.root",
+      "fuel_handling_capital": "float stellarator_09__stellaris__fuel_handling__cost.root",
+      "other_rpe_capital": "float stellarator_09__stellaris__other_rpe__cost.root",
+      "inc_capital": "float stellarator_09__stellaris__inc_cost__cost.root"
+    },
+    "outputs": {
+      "cas22_capital__cas22_capital": {
+        "baseline": 8838365796.809175,
+        "reserve": 8898590856.809175,
+        "demand": 8838412401.48729
+      }
+    }
+  },
+  "bop_capital": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "turbine_capital_cost": "float stellarator_09__stellaris__turbine_cost__cost.root",
+      "electric_plant_capital_cost": "float stellarator_09__stellaris__electric_cost__cost.root",
+      "heat_rejection_capital_cost": "float stellarator_09__stellaris__heat_rejection_cost__cost.root",
+      "misc_plant_capital_cost": "float stellarator_09__stellaris__misc_cost__cost.root"
+    },
+    "outputs": {
+      "bop_capital__bop_capital": {
+        "baseline": 579937365.6014445,
+        "reserve": 579937365.6014445,
+        "demand": 578847056.1153681
+      }
+    }
+  },
+  "replacement_cost_per_event": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "blanket_capital_cost": "float stellarator_09__stellaris__blanket_cost__cost.root",
+      "divertor_capital_cost": "float stellarator_09__stellaris__divertor_cost__cost.root",
+      "n_mod": "float mfe_plant_params.stellarator_09__stellaris__n_mod"
+    },
+    "outputs": {
+      "replacement_cost_per_event__replacement_cost_per_event": {
+        "baseline": 827429601.0414678,
+        "reserve": 827429601.0414678,
+        "demand": 826516379.3564218
+      }
+    }
+  },
+  "calendar": {
+    "classification": "calendar/annual/financial propagation",
+    "inputs_unchanged": true,
+    "inputs": {
+      "interest_rate": "float stellarator_plant_params.stellarator_09__stellaris__discount_rate",
+      "q_n_in": "float stellarator_09__stellaris__wall_peak_calc__wall_load_peak.root",
+      "operational_years_in": "float stellarator_plant_params.stellarator_09__stellaris__operational_years",
+      "outage_years_in": "float stellarator_plant_params.stellarator_09__stellaris__outage_years",
+      "fluence_limit_in": "float stellarator_plant_params.stellarator_09__stellaris__fluence_limit",
+      "unplanned_fraction_in": "float stellarator_plant_params.stellarator_09__stellaris__unplanned_fraction",
+      "cost_per_event": "float stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event.root",
+      "availability_direct_in": "float stellarator_plant_params.stellarator_09__stellaris__availability_direct",
+      "coil_life_fpy_in": "float stellarator_plant_params.stellarator_09__stellaris__coil_life_fpy"
+    },
+    "outputs": {
+      "calendar__availability": {
+        "baseline": 0.9027777777777779,
+        "reserve": 0.9027777777777779,
+        "demand": 0.9027777777777779
+      },
+      "calendar__coil_life_margin_fpy": {
+        "baseline": -17.083333333333336,
+        "reserve": -17.083333333333336,
+        "demand": -17.083333333333336
+      },
+      "calendar__replacement_pv": {
+        "baseline": 1714768553.0167048,
+        "reserve": 1714768553.0167048,
+        "demand": 1712875988.59131
+      },
+      "calendar__planned_downtime_yr": {
+        "baseline": 2.916666666666667,
+        "reserve": 2.916666666666667,
+        "demand": 2.916666666666667
+      },
+      "calendar__terminal_downtime_yr": {
+        "baseline": 0.0,
+        "reserve": 0.0,
+        "demand": 0.0
+      },
+      "calendar__unplanned_downtime_yr": {
+        "baseline": 0.0,
+        "reserve": 0.0,
+        "demand": 0.0
+      },
+      "calendar__productive_fpy": {
+        "baseline": 27.083333333333336,
+        "reserve": 27.083333333333336,
+        "demand": 27.083333333333336
+      },
+      "calendar__dated_energy_ratio": {
+        "baseline": 1.0051616112988944,
+        "reserve": 1.0051616112988944,
+        "demand": 1.0051616112988944
+      },
+      "calendar__cas72_annual": {
+        "baseline": 138187030.54156843,
+        "reserve": 138187030.54156843,
+        "demand": 138034515.58111277
+      },
+      "calendar__n_replacements": {
+        "baseline": 5.0,
+        "reserve": 5.0,
+        "demand": 5.0
+      },
+      "calendar__physical_life_fpy": {
+        "baseline": 4.5239260339489915,
+        "reserve": 4.5239260339489915,
+        "demand": 4.5239260339489915
+      }
+    }
+  },
+  "fuel_calc": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "fuel_recovery_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_recovery",
+      "availability_in": "float stellarator_09__stellaris__calendar__availability",
+      "p_fus": "float stellarator_09__stellaris__fusion__p_fus.root",
+      "mev_to_joules_in": "float stellarator_plant_params.stellarator_09__stellaris__mev_to_joules",
+      "n_mod_in": "float mfe_plant_params.stellarator_09__stellaris__n_mod",
+      "burn_fraction_in": "float stellarator_plant_params.stellarator_09__stellaris__burn_fraction",
+      "cost_per_rxn": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cost_per_rxn",
+      "q_eff": "float stellarator_plant_params.stellarator_09__stellaris__fuel_q_eff"
+    },
+    "outputs": {
+      "fuel_calc__annual_fuel": {
+        "baseline": 550716.1814915092,
+        "reserve": 550716.1814915092,
+        "demand": 550716.1814915092
+      }
+    }
+  },
+  "cas80_calc": {
+    "classification": "calendar/annual/financial propagation",
+    "inputs_unchanged": true,
+    "inputs": {
+      "inflation_rate_in": "float stellarator_plant_params.stellarator_09__stellaris__inflation_rate",
+      "operational_years_in": "float stellarator_plant_params.stellarator_09__stellaris__operational_years",
+      "annual_cost": "float stellarator_09__stellaris__fuel_calc__annual_fuel.root",
+      "interest_rate": "float stellarator_plant_params.stellarator_09__stellaris__discount_rate",
+      "project_time": "float stellarator_plant_params.stellarator_09__stellaris__construction_years"
+    },
+    "outputs": {
+      "cas80_calc__levelized": {
+        "baseline": 792505.9651144511,
+        "reserve": 792505.9651144511,
+        "demand": 792505.9651144511
+      },
+      "cas80_calc__crf": {
+        "baseline": 0.08058640351111118,
+        "reserve": 0.08058640351111118,
+        "demand": 0.08058640351111118
+      }
+    }
+  },
+  "cas70_calc": {
+    "classification": "calendar/annual/financial propagation",
+    "inputs_unchanged": true,
+    "inputs": {
+      "cas71": "float stellarator_09__stellaris__cas71_calc__levelized",
+      "cas72": "float stellarator_09__stellaris__calendar__cas72_annual",
+      "cas80": "float stellarator_09__stellaris__cas80_calc__levelized"
+    },
+    "outputs": {
+      "cas70_calc__cas70": {
+        "baseline": 217739093.67437315,
+        "reserve": 217739093.67437315,
+        "demand": 217940442.00631946
+      },
+      "cas70_calc__annual_total": {
+        "baseline": 218531599.6394876,
+        "reserve": 218531599.6394876,
+        "demand": 218732947.9714339
+      }
+    }
+  },
+  "special_materials_capital": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "blanket_vol": "float stellarator_09__stellaris__rb__blanket_vol"
+    },
+    "outputs": {
+      "special_materials_capital__special_materials_capital": {
+        "baseline": 23815042.059888843,
+        "reserve": 23815042.059888843,
+        "demand": 23815042.059888843
+      }
+    }
+  },
+  "cas23_to_28_capital": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "bop_capital": "float stellarator_09__stellaris__bop_capital__bop_capital.root",
+      "special_materials_capital": "float stellarator_09__stellaris__special_materials_capital__special_materials_capital.root",
+      "cas28_capital": "float stellarator_plant_params.stellarator_09__stellaris__cas28_capital"
+    },
+    "outputs": {
+      "cas23_to_28_capital__cas23_to_28_capital": {
+        "baseline": 608752407.6613333,
+        "reserve": 608752407.6613333,
+        "demand": 607662098.175257
+      }
+    }
+  },
+  "cas2x_pre_contingency": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "capital_cost": "float stellarator_09__stellaris__buildings_cost__cost.root",
+      "cas22_capital": "float stellarator_09__stellaris__cas22_capital__cas22_capital.root",
+      "bop_capital": "float stellarator_09__stellaris__bop_capital__bop_capital.root",
+      "special_materials_capital": "float stellarator_09__stellaris__special_materials_capital__special_materials_capital.root",
+      "cas28_capital": "float stellarator_plant_params.stellarator_09__stellaris__cas28_capital"
+    },
+    "outputs": {
+      "cas2x_pre_contingency__cas2x_pre_contingency": {
+        "baseline": 10099501225.373106,
+        "reserve": 10159726285.373106,
+        "demand": 10098181645.45976
+      }
+    }
+  },
+  "contingency": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "direct_subtotal": "float stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency.root",
+      "contingency_rate_in": "float stellarator_plant_params.stellarator_09__stellaris__contingency_rate"
+    },
+    "outputs": {
+      "contingency__cost": {
+        "baseline": 1009950122.5373106,
+        "reserve": 1015972628.5373106,
+        "demand": 1009818164.5459762
+      }
+    }
+  },
+  "cas20_capital": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "cas2x_pre_contingency": "float stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency.root",
+      "contingency_capital": "float stellarator_09__stellaris__contingency__cost.root"
+    },
+    "outputs": {
+      "cas20_capital__cas20_capital": {
+        "baseline": 11109451347.910416,
+        "reserve": 11175698913.910416,
+        "demand": 11107999810.005737
+      }
+    }
+  },
+  "indirect": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "direct_cost": "float stellarator_09__stellaris__cas20_capital__cas20_capital.root",
+      "indirect_fraction_in": "float stellarator_plant_params.stellarator_09__stellaris__indirect_fraction",
+      "reference_construction_time": "float mfe_account_costs_params.stellarator_09__stellaris__indirect__reference_construction_time",
+      "construction_time": "float stellarator_plant_params.stellarator_09__stellaris__construction_years"
+    },
+    "outputs": {
+      "indirect__cost": {
+        "baseline": 2962520359.4427776,
+        "reserve": 2980186377.042777,
+        "demand": 2962133282.6681967
+      }
+    }
+  },
+  "supplementary": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "spares_frac": "float stellarator_plant_params.stellarator_09__stellaris__supplementary_spares_frac",
+      "cas23_to_28": "float stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital.root",
+      "ref_net_power": "float mfe_account_costs_params.stellarator_09__stellaris__supplementary__ref_net_power",
+      "cas30": "float stellarator_09__stellaris__indirect__cost.root",
+      "shipping_frac": "float mfe_account_costs_params.stellarator_09__stellaris__supplementary__shipping_frac",
+      "p_net": "float stellarator_09__stellaris__pb__p_net",
+      "tax_frac": "float mfe_account_costs_params.stellarator_09__stellaris__supplementary__tax_frac",
+      "decom_base": "float stellarator_plant_params.stellarator_09__stellaris__supplementary_decom_base",
+      "cas20": "float stellarator_09__stellaris__cas20_capital__cas20_capital.root",
+      "n_mod_in": "float mfe_plant_params.stellarator_09__stellaris__n_mod",
+      "insurance_frac": "float mfe_account_costs_params.stellarator_09__stellaris__supplementary__insurance_frac",
+      "startup_fuel_base": "float stellarator_plant_params.stellarator_09__stellaris__supplementary_startup_base",
+      "contingency_rate_in": "float mfe_account_costs_params.stellarator_09__stellaris__supplementary__contingency_rate_in"
+    },
+    "outputs": {
+      "supplementary__cost": {
+        "baseline": 823425194.4947345,
+        "reserve": 826340087.3987346,
+        "demand": 826149222.717861
+      }
+    }
+  },
+  "overnight_capital": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "preconstruction_capital": "float stellarator_09__stellaris__precon_cost__cost.root",
+      "cas20_capital": "float stellarator_09__stellaris__cas20_capital__cas20_capital.root",
+      "cas30_capital": "float stellarator_09__stellaris__indirect__cost.root",
+      "owner_capital": "float stellarator_09__stellaris__owner__cost.root",
+      "supplementary_capital": "float stellarator_09__stellaris__supplementary__cost.root"
+    },
+    "outputs": {
+      "overnight_capital__overnight_capital": {
+        "baseline": 14955400261.631914,
+        "reserve": 15042228738.135916,
+        "demand": 14956481410.813007
+      }
+    }
+  },
+  "idc": {
+    "classification": "calendar/annual/financial propagation",
+    "inputs_unchanged": true,
+    "inputs": {
+      "overnight_cost": "float stellarator_09__stellaris__overnight_capital__overnight_capital.root",
+      "interest_rate": "float stellarator_plant_params.stellarator_09__stellaris__discount_rate",
+      "construction_years_in": "float stellarator_plant_params.stellarator_09__stellaris__construction_years"
+    },
+    "outputs": {
+      "idc__cost": {
+        "baseline": 4224531491.5086827,
+        "reserve": 4249058393.2922425,
+        "demand": 4224836889.4707994
+      }
+    }
+  },
+  "cas90_1cfe_calc": {
+    "classification": "calendar/annual/financial propagation",
+    "inputs_unchanged": true,
+    "inputs": {
+      "crf": "float stellarator_09__stellaris__cas71_calc__crf",
+      "overnight_cost": "float stellarator_09__stellaris__overnight_capital__overnight_capital.root",
+      "idc_cost": "float stellarator_09__stellaris__idc__cost.root"
+    },
+    "outputs": {
+      "cas90_1cfe_calc__cas90": {
+        "baseline": 1545641719.5741622,
+        "reserve": 1554615449.021976,
+        "demand": 1545753456.421732
+      }
+    }
+  },
+  "lcoe_1cfe_calc": {
+    "classification": "calendar/annual/financial propagation",
+    "inputs_unchanged": true,
+    "inputs": {
+      "cas70": "float stellarator_09__stellaris__cas70_calc__cas70",
+      "cas80": "float stellarator_09__stellaris__cas80_calc__levelized",
+      "n_mod_in": "float mfe_plant_params.stellarator_09__stellaris__n_mod",
+      "availability_in": "float stellarator_09__stellaris__calendar__availability",
+      "cas90": "float stellarator_09__stellaris__cas90_1cfe_calc__cas90.root",
+      "net_electric_mw": "float stellarator_09__stellaris__pb__p_net"
+    },
+    "outputs": {
+      "lcoe_1cfe_calc__lcoe": {
+        "baseline": 220.0125640803369,
+        "reserve": 221.13169064441888,
+        "demand": 218.10692840453243
+      }
+    }
+  },
+  "total_capital": {
+    "classification": "reviewed design-point sizing or dependent capital rollup",
+    "inputs_unchanged": true,
+    "inputs": {
+      "preconstruction_capital": "float stellarator_09__stellaris__precon_cost__cost.root",
+      "cas20_capital": "float stellarator_09__stellaris__cas20_capital__cas20_capital.root",
+      "cas30_capital": "float stellarator_09__stellaris__indirect__cost.root",
+      "owner_capital": "float stellarator_09__stellaris__owner__cost.root",
+      "supplementary_capital": "float stellarator_09__stellaris__supplementary__cost.root"
+    },
+    "outputs": {
+      "total_capital__total_capital": {
+        "baseline": 14955400261.631914,
+        "reserve": 15042228738.135916,
+        "demand": 14956481410.813007
+      }
+    }
+  },
+  "lcoe_calc": {
+    "classification": "calendar/annual/financial propagation",
+    "inputs_unchanged": true,
+    "inputs": {
+      "discount_rate_in": "float stellarator_plant_params.stellarator_09__stellaris__discount_rate",
+      "availability_in": "float stellarator_09__stellaris__calendar__availability",
+      "construction_years_in": "float stellarator_plant_params.stellarator_09__stellaris__construction_years",
+      "net_electric_mw": "float stellarator_09__stellaris__pb__p_net",
+      "annual_om_in": "float stellarator_09__stellaris__cas70_calc__annual_total",
+      "operational_years_in": "float stellarator_plant_params.stellarator_09__stellaris__operational_years",
+      "total_capital_in": "float stellarator_09__stellaris__total_capital__total_capital.root"
+    },
+    "outputs": {
+      "lcoe_calc__lcoe": {
+        "baseline": 224.26923288439,
+        "reserve": 225.41307293395366,
+        "demand": 222.32628438579454
+      }
+    }
+  }
+}

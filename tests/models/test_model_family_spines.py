@@ -11,15 +11,15 @@ is the regression spine for both, replacing the migration-era
 * **generation** -- each family's materialized canonical subset generates with zero
   readiness diagnostics (which seals), and the v6 snapshot route reproduces the live
   package byte for byte;
-* **census** -- the entry-point classification is exact: IFE keeps 23 entry points / 18
-  design attributes (the D-5 migration's eleven renamed-supplier identities and seven
-  unrenamed ones merged into one neutral set, design D7); MFE is the census captured from
-  its first clean 2.0.0 package (`data/mfe_census.json`), bound to the semantic
+* **census** -- the entry-point classification is exact: IFE has 19 entry points / 18
+  design attributes after WI-049 shares two Real durations between factors and costs;
+  MFE is the census captured from
+  the current WI-051 native package (`data/mfe_census.json`), bound to the semantic
   fingerprint it was derived against;
 * **mutations** -- an off-default mutation of one authored design attribute reaches
   **every and only** its bound consumers, read off shipped public artifacts
   (`inputs/*.json`, `pipelines/pipeline.yaml`, `contracts/model_contract.json`): two IFE
-  proofs (unchanged) and two MFE proofs (CAS28 capital, a nested radial-build thickness).
+  proofs and two MFE proofs (CAS28 capital, a nested radial-build thickness).
 
 Every test works on copies under pytest temporary directories; tracked models are never
 rewritten. All generating tests need a live SysIDE license and **fail** (never skip)
@@ -50,38 +50,33 @@ REPO = Path(__file__).resolve().parents[2]
 DATA = Path(__file__).resolve().parent / "data"
 
 # ------------------------------------------------------------------ IFE expectations
-#: The IFE design-attribute census: the eleven keys the D-5 migration renamed the
-#: suppliers of and the seven it did not, merged into one neutral set (D7). The
-#: partition was a one-time migration fact; the set is the regression guard.
+#: WI-048 retires independent bank/rate/thermal/net inputs and names two literals.
+#: Historical table facts are reference attributes, not execution entry points.
+# WI-049 shares Real durations between factors and cost calculation.
 IFE_DESIGN_ATTRIBUTES = {
+    "hif_plant_pkg__hif_plant__construction_duration",
+    "hif_plant_pkg__hif_plant__operational_duration",
+    "hif_plant_pkg__hif_plant__reactor_units",
+    "hif_plant_pkg__hif_plant__target_factory_direct_cost_billions",
     "hif_plant_pkg__hif_plant__availability",
     "hif_plant_pkg__hif_plant__discount_rate",
     "hif_plant_pkg__hif_plant__frequency",
     "hif_plant_pkg__hif_plant__gain",
-    "hif_plant_pkg__hif_plant__net_electric_power_gw",
     "hif_plant_pkg__hif_plant__om_cost_constant",
     "hif_plant_pkg__hif_plant__plant_cost_constant",
     "hif_plant_pkg__hif_plant__thermal_efficiency",
-    "hif_plant_pkg__hif_plant__thermal_power_gw",
     "hif_plant_pkg__hif_plant__driver__beam_energy_mj",
     "hif_plant_pkg__hif_plant__driver__num_chambers",
     "hif_plant_pkg__hif_plant__driver__efficiency",
-    "hif_plant_pkg__hif_plant__driver__energy",
     "hif_plant_pkg__hif_plant__driver__lifetime_shots",
-    "hif_plant_pkg__hif_plant__driver__pulse_rate_ref",
     "hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple",
     "hif_plant_pkg__hif_plant__chamber__yield_cost_constant",
     "hif_plant_pkg__hif_plant__target_factory__cost_per_target",
 }
 IFE_LIBRARY_DEFAULTS = {
-    "hif_plant_pkg__hif_plant__lcoe_calc__construction_years",
-    "hif_plant_pkg__hif_plant__lcoe_calc__operational_years",
     "hif_plant_pkg__hif_plant__viability__threshold",
 }
-IFE_USAGE_LITERALS = {
-    "hif_plant_pkg__hif_plant__meier_capital_calc__target_factory_cost",
-    "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__num_units",
-}
+IFE_USAGE_LITERALS: set[str] = set()
 
 #: Mutated sources as complete public identities: ``(input group, key)``. A bare key is
 #: not an identity -- two groups could mint the same key (audit F1).
@@ -123,6 +118,11 @@ def license_must_be_loaded() -> None:
 
 
 def _generate(models: Path, output: Path, package_name: str) -> bool:
+    if package_name == "stellarator_tea":
+        from tests.models.current_mfe_regressions import current_generation
+        seed_and_generate = current_generation().seed_and_generate
+        seed_and_generate(output, models_path=models)
+        return True
     return run_codegen(
         GenerationConfig(
             output_path=output,
@@ -316,28 +316,33 @@ def test_family_subset_generates_and_live_equals_snapshot(family: str, tmp_path:
     snapshot = tmp_path / "instance_graph_snapshot.json"
     capture_instance_graph_snapshot([models], snapshot)
     from_snapshot = tmp_path / "from_snapshot"
-    assert run_codegen(
-        GenerationConfig(
-            output_path=from_snapshot,
-            from_snapshot=snapshot,
-            package_name=spec.package_name,
-            overwrite=True,
+    if family == "mfe":
+        from tests.models.current_mfe_regressions import current_generation
+        seed_and_generate = current_generation().seed_and_generate
+        seed_and_generate(from_snapshot, from_snapshot=snapshot)
+    else:
+        assert run_codegen(
+            GenerationConfig(
+                output_path=from_snapshot,
+                from_snapshot=snapshot,
+                package_name=spec.package_name,
+                overwrite=True,
+            )
         )
-    )
     assert _tree_bytes(live) == _tree_bytes(from_snapshot)
 
 
 # --------------------------------------------------------------------- censuses
 
 
-def test_ife_census_is_23_entry_points_18_design_attributes(baselines) -> None:
+def test_ife_census_is_19_entry_points_18_design_attributes(baselines) -> None:
     output = baselines["ife"]
     by_type = _by_entry_type(output)
-    assert len(_contract(output)["parameters"]) == 23
+    assert len(_contract(output)["parameters"]) == 19
     assert by_type["design_attribute"] == IFE_DESIGN_ATTRIBUTES
     assert len(by_type["design_attribute"]) == 18
     assert by_type["library_default"] == IFE_LIBRARY_DEFAULTS
-    assert by_type["usage_literal"] == IFE_USAGE_LITERALS
+    assert by_type.get("usage_literal", set()) == IFE_USAGE_LITERALS
 
     sources = _entry_sources(output)
     for expected_key in IFE_DESIGN_ATTRIBUTES:
@@ -346,7 +351,7 @@ def test_ife_census_is_23_entry_points_18_design_attributes(baselines) -> None:
         assert isinstance(carriers[0][2], (int, float)), carriers
 
 
-def test_mfe_census_is_the_one_captured_from_the_first_clean_package(baselines) -> None:
+def test_mfe_census_matches_current_generated_public_contract(baselines) -> None:
     """Bound to the semantic fingerprint it was derived against: a regenerated model
     re-derives the fixture from the new package, never patches it to match."""
     output = baselines["mfe"]
@@ -354,7 +359,8 @@ def test_mfe_census_is_the_one_captured_from_the_first_clean_package(baselines) 
     assert _contract(output)["semantic_fingerprint"] == (
         expected["derived_against_semantic_fingerprint"]
     ), "model meaning moved — re-derive tests/models/data/mfe_census.json from the new package"
-    assert len(_contract(output)["parameters"]) == expected["entry_points"]
+    assert len(_contract(output)["parameters"]) == expected["entry_points"] == 246
+    assert not any("p_operating_coupled_heat" in str(p) for p in _contract(output)["parameters"])
     assert {k: sorted(v) for k, v in _by_entry_type(output).items()} == expected["by_entry_type"]
     _entry_sources(output)  # identity uniqueness both ways
 
@@ -365,18 +371,18 @@ def test_mfe_census_is_the_one_captured_from_the_first_clean_package(baselines) 
 def test_ife_gain_mutation_reaches_every_and_only_its_three_consumers(
     baselines, tmp_path: Path
 ) -> None:
-    """The spine. 80.0 → 81.0 at the one authored site: exactly the gain source identity
+    """The spine. 87.0 → 88.0 at the one authored site: exactly the gain source identity
     moves, and its consumers are the two calc modules plus the viability constraint
     module -- asserted structurally down to the constraint's formal."""
     mutated = tmp_path / "package"
     assert _generate(
         _mutated_subset(
             tmp_path, FAMILIES["ife"], "designs/hif_ife/hif_plant.sysml",
-            ":>> gain = 80.0", ":>> gain = 81.0",
+            ":>> gain = 87.0", ":>> gain = 88.0",
         ),
         mutated, FAMILIES["ife"].package_name,
     )
-    _assert_every_and_only(baselines["ife"], mutated, GAIN_SOURCE, 81.0, GAIN_CONSUMERS)
+    _assert_every_and_only(baselines["ife"], mutated, GAIN_SOURCE, 88.0, GAIN_CONSUMERS)
 
     catalog = _contract(mutated)["constraint_catalog"]
     viability = [
@@ -395,9 +401,10 @@ def test_ife_gain_mutation_reaches_every_and_only_its_three_consumers(
     assert gain_refs[0]["target"]["kind"] == "AttributeUsage"
 
 
-def test_ife_beam_energy_mutation_reaches_its_nested_consumer_and_nothing_else(
+def test_ife_beam_energy_mutation_has_one_direct_consumer(
     baselines, tmp_path: Path
 ) -> None:
+    # Direct source binding only; public execution tests cover downstream bank/power/cost reach.
     mutated = tmp_path / "package"
     assert _generate(
         _mutated_subset(

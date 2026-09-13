@@ -1,0 +1,620 @@
+{
+  "focused_command": "python -m pytest tests/study/test_records.py tests/study/test_numeric_evidence.py tests/study/test_study_publication_fail_closed.py tests/orchestration/test_goal_contract.py -q",
+  "focused": {
+    "passed": 130,
+    "failed": 120,
+    "elapsed_seconds": 22.47
+  },
+  "failures": [
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-absent]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-null]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-nan]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-absent]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-null]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-nan]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-absent]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-null]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-nan]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-first-case-absent]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": true
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-first-case-null]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": true
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-first-case-nan]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": true
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-first-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": true
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-first-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": true
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-later-case-absent]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": true
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-later-case-null]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": true
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-later-case-nan]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": true
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-later-case-positive-inf]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": true
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260912-plant-closure-later-case-negative-inf]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": true
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260903-priced-levers]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260903-wall-and-heating]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260904-wall-and-heating]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260905-stored-energy-basis]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260907-burn-control]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260907-minor-radius]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260911-model-owned-radius]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260911-operating-heating]",
+      "matches_retained_consumer_audit_failure": true,
+      "this_study_fixture_api_mismatch": false
+    },
+    {
+      "nodeid": "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260912-plant-closure]",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": true
+    },
+    {
+      "nodeid": "tests/orchestration/test_goal_contract.py::test_narratives_are_separate_from_the_goal_contract",
+      "matches_retained_consumer_audit_failure": false,
+      "this_study_fixture_api_mismatch": false
+    }
+  ],
+  "broad_interrupted": {
+    "passed": 147,
+    "failed": 1,
+    "elapsed_seconds": 128.19,
+    "exit_code": 2,
+    "reason": "Owner risk-focused direction; replaced broad model-tooling replay with record/numeric/publication checks.",
+    "failure": "tests/study/test_integrate_preconditions.py::test_simkit_probe_refuses_without_the_teax_root",
+    "interpretation": "Environment-sensitive probe: injected sealed simkit PYTHONPATH remains importable after TEAx-root removal. Not a study numerical failure."
+  },
+  "basis": "Existing frozen study results unchanged; no green full-suite claim."
+}

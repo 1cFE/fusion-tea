@@ -1,0 +1,38 @@
+[
+  {
+    "level": 1,
+    "success": true,
+    "retained_issues": 0,
+    "new_issues": 0
+  },
+  {
+    "level": 2,
+    "success": false,
+    "retained_issues": 10,
+    "new_issues": 0
+  },
+  {
+    "level": 3,
+    "success": true,
+    "retained_issues": 0,
+    "new_issues": 0
+  },
+  {
+    "level": 4,
+    "success": true,
+    "retained_issues": 0,
+    "new_issues": 0
+  },
+  {
+    "level": 5,
+    "success": true,
+    "retained_issues": 0,
+    "new_issues": 0
+  },
+  {
+    "level": 6,
+    "success": false,
+    "retained_issues": 229,
+    "new_issues": 0
+  }
+]

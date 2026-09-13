@@ -1,0 +1,17 @@
+{
+  "L2": {
+    "before_count": 10,
+    "after_count": 10,
+    "added": [],
+    "removed": []
+  },
+  "L6": {
+    "before_count": 227,
+    "after_count": 229,
+    "added": [
+      "ERROR: Unsupported operator '.' in attribute 'mfe_plant::'MFE Power Plant'::p_operating_coupled_heat'",
+      "ERROR: Design attribute 'mfe_plant::'MFE Power Plant'::p_operating_coupled_heat' has expression but codegen cannot extract a numeric default: Feature reference 'p_coupled' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation."
+    ],
+    "removed": []
+  }
+}

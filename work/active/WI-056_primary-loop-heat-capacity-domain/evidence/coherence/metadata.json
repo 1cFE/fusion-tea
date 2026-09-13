@@ -1,0 +1,49 @@
+{
+  "before": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_fuel_cycle_params.json",
+        "inputs/mfe_magnet_cost_params.json",
+        "inputs/mfe_magnet_field_params.json",
+        "inputs/mfe_plant_params.json",
+        "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_plasma_sustainment_params.json",
+        "inputs/mfe_vacuum_params.json",
+        "inputs/stellarator_plant_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "d365eb8322577c8c9b1224313e27929de89a802aaa628753b304258be0123c8f",
+      "semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e"
+    }
+  },
+  "after": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_fuel_cycle_params.json",
+        "inputs/mfe_magnet_cost_params.json",
+        "inputs/mfe_magnet_field_params.json",
+        "inputs/mfe_plant_params.json",
+        "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_plasma_sustainment_params.json",
+        "inputs/mfe_vacuum_params.json",
+        "inputs/stellarator_plant_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "bb60a9973cfaea643839740d0d7c295ef190f9ddbaeab28fe84101be65518be7",
+      "semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e"
+    }
+  },
+  "census_equal": true
+}

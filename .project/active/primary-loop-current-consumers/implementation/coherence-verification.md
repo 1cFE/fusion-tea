@@ -1,0 +1,16 @@
+# T-049 corrected-coherence consumer verification
+
+Status: Focused current-consumer correction passed; independent coherence addendum pending.
+
+Authority: T-049 brief `fdb3de9c`. Corrected native basis: `9ee88d5b`. The native correction uses the exact thirteen-float return annotation and stock smart regeneration. This coding change alters only the current helper filename/import identity and exact package-receipt path. The helper loads corrected frozen seeds internally. Oracle code, numerical/source/interface assertions, original native helpers/seeds/receipts/results and all prior T-046 verification records remain unchanged.
+
+The stock T-047 integration failure remains evidence of the prior variadic-signature and generation-mode mismatch. Earlier positive checks remain identified with their original revision and do not establish the corrected fixed point. Native fresh/in-place coherence proof belongs to T-048; the independent auditor verifies it separately.
+
+## Focused acceptance
+
+- **62 passed**, no failures/skips: exact current receipt, all 59 existing typed primary-loop domain/control tests, four positive/live/dormant native-oracle controls, and baseline/R=14 numerical/identity checks. Command: `.codex-test/run python -m pytest tests/models/test_mfe_major_radius.py::test_current_contract_edges_and_fresh_package_agreement tests/models/test_primary_loop_domains.py tests/study/test_primary_loop_consumers.py::test_current_native_primary_route_agrees_with_independent_oracle tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle -q --tb=short --basetemp=/tmp/t049-coherence-acceptance --junitxml=.project/active/primary-loop-current-consumers/implementation/coherence-tests.xml`. Raw results are `coherence-tests.txt/xml`.
+- **1 passed**: the existing MFE family live-versus-snapshot test exercises the current loader and corrected checked helper through both fresh-generation paths. Command: `.codex-test/run python -m pytest 'tests/models/test_model_family_spines.py::test_family_subset_generates_and_live_equals_snapshot[mfe]' -q --tb=short --basetemp=/tmp/t049-current-helper --junitxml=.project/active/primary-loop-current-consumers/implementation/coherence-helper.xml`. Raw results are `coherence-helper.txt/xml`.
+
+The corrected executable fingerprint is `bb60a9973cfaea643839740d0d7c295ef190f9ddbaeab28fe84101be65518be7`. `coherence-package-identity.json` and `coherence-verification-summary.json` retain the corrected identity and baseline/R=14 comparisons; maximum relative deviation remains `1.810960392900099e-16`. Their existing engineering violations remain unchanged. The four primary-loop controls compare all 141 independent oracle outputs against the same 158 native output identities.
+
+No broad model-suite rerun or new test was added. Earlier attributed broad results remain at native `f0fc8231` and consumer `4356a861`, with the one source-node correction explicitly joined there. The native correction changes typing/preparation rather than valid arithmetic; the focused typed-domain, positive-output and actual current-helper checks support reuse of those earlier numerical/source/interface results. There is no unresolved consumer dependency. `git diff --check` passes; this report does not certify integration or replace the fresh independent audit.

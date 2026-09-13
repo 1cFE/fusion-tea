@@ -11,6 +11,8 @@ read from stellarator_plant.sysml.
 
 import math
 
+import oracle_finance as finance
+
 # WI-022 discretization contract — EXACT mirror of the handwritten impl
 # (generated/handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py). The
 # runner asserts the generated pipeline against this at rel 1e-9; do not
@@ -105,10 +107,12 @@ def _sustainment(p, V, B_axis):
     and beta. Written from the WI-042 design (work/active/WI-042_sourced-helium-
     ash-profile/design.md, section Research findings and D1-D6).
     """
+    if B_axis == 0.0:
+        raise RuntimeError("oracle sustainment: B_axis must be nonzero for synchrotron and confinement equations")
     n_e0 = p["n_e0"]
     T_i0 = p["T_i0"]
     a = p["a"]
-    R = p["magnet_R0"]
+    R = p["R"]
     B = B_axis
     alpha_n = p["alpha_n"]
     alpha_T = p["alpha_T"]
@@ -281,7 +285,7 @@ IN = dict(
     # magnet (WI-035, inversion): B is COMPUTED from the coil-set current; the
     #   held magnet_B=9.0 is retired. Lever and coil-set facts mirror the
     #   stellarator_plant bindings (Table 2/8 images; design D2/D3/D4/D5).
-    magnet_G=78.95683520871486, magnet_R0=12.7,
+    magnet_G=78.95683520871486,
     magnet_cost_per_kAm=50.0, magnet_coil_markup=5.87,  # 1cfe-form comparison channel
     magnet_n_coils=48.0, magnet_I_coil=15400000.0,
     magnet_k_link=0.7731331164622419, magnet_two_pi=6.283185307179586,
@@ -409,11 +413,10 @@ def _oracle_levelized_replacement_cost(cost_per_event, q_n, fluence_limit,
     fpy_cap = operational_years * availability
     core_lifetime_fpy = min(max(fpy_raw, 0.5), fpy_cap)           # clip
     core_lifetime_cal = core_lifetime_fpy / availability
-    s = (1.0 + interest_rate) ** (-core_lifetime_cal)
     n_rep = max(0.0, float(math.ceil(operational_years / core_lifetime_cal)) - 1.0)
-    pv = cost_per_event * s * (1.0 - s ** n_rep) / (1.0 - s)
-    disc_pow_n = (1.0 + interest_rate) ** operational_years
-    crf = interest_rate * disc_pow_n / (disc_pow_n - 1.0)
+    pv = finance.dated_pv(cost_per_event, interest_rate,
+                          [k * core_lifetime_cal for k in range(1, int(n_rep) + 1)])
+    crf = finance.crf(interest_rate, operational_years)
     return crf * pv
 
 
@@ -442,8 +445,7 @@ def _oracle_lifecycle_calendar(cost_per_event, q_n, fluence_limit, interest_rate
         core_lifetime_fpy = min(max(fluence_limit / max(q_n, 1e-6), 0.5), N * A)
         core_lifetime_cal = core_lifetime_fpy / A
         n_rep = max(0.0, float(math.ceil(N / core_lifetime_cal)) - 1.0)
-        s = (1.0 + i) ** (-core_lifetime_cal)
-        pv = C * s * (1.0 - s ** n_rep) / (1.0 - s)
+        pv = finance.dated_pv(C, i, [k * core_lifetime_cal for k in range(1, int(n_rep) + 1)])
         F = N * A
         return dict(availability=A, coil_life_margin_fpy=coil_life_fpy - F, replacement_pv=pv,
                     planned_downtime_yr=0.0, terminal_downtime_yr=0.0,
@@ -486,8 +488,8 @@ def _oracle_lifecycle_calendar(cost_per_event, q_n, fluence_limit, interest_rate
     F = b * online
     T_p = K * d
     T_u = u * online
-    pv = sum(C / (1.0 + i) ** t_k for t_k in events)
-    crf = (1.0 / N) if i == 0.0 else (i * (1.0 + i) ** N / ((1.0 + i) ** N - 1.0))
+    pv = finance.dated_pv(C, i, events)
+    crf = finance.crf(i, N)
     # the year-binned energy ratio (design D3): year y covers (y-1, y]
     if F == 0.0:
         raise ValueError("oracle calendar: zero productive time -- energy undefined")
@@ -497,7 +499,7 @@ def _oracle_lifecycle_calendar(cost_per_event, q_n, fluence_limit, interest_rate
     for y in range(1, n_years + 1):
         y0, y1 = float(y - 1), min(float(y), N)
         on_y = sum(max(0.0, min(s1, y1) - max(s0, y0)) for s0, s1 in segments)
-        disc = (1.0 + i) ** (-y)
+        disc = finance.growth(i, -y)
         num += b * on_y * disc
         den += E_avg * (y1 - y0) * disc
     return dict(availability=F / N, coil_life_margin_fpy=coil_life_fpy - F, replacement_pv=pv,
@@ -506,7 +508,27 @@ def _oracle_lifecycle_calendar(cost_per_event, q_n, fluence_limit, interest_rate
                 n_replacements=float(K), physical_life_fpy=L, events=events)
 
 
+def _winding_pack_side(current, density):
+    """Size a square pack in metres from current A and density A/mm²."""
+    if not math.isfinite(current) or current < 0.0:
+        raise ValueError("oracle Winding Pack Sizing: I_coil must be finite and nonnegative")
+    if not math.isfinite(density) or density <= 0.0:
+        raise ValueError("oracle Winding Pack Sizing: j_wp must be finite and positive")
+    return (current / density) ** 0.5 / 1000.0
+
+
+def _primary_loop_mass_flow(source_heat, cp, temperature_rise):
+    """Return kg/s from source heat MW, specific heat J/kg/K and rise K."""
+    if not math.isfinite(cp) or cp <= 0.0:
+        raise ValueError("oracle Primary Coolant Loop: cp must be finite and positive")
+    if not math.isfinite(temperature_rise) or temperature_rise <= 0.0:
+        raise ValueError("oracle Primary Coolant Loop: dT_blanket must be finite and positive")
+    return source_heat * 1.0e6 / (cp * temperature_rise)
+
+
 def compute():
+    if "magnet_R0" in IN:
+        raise ValueError("retired oracle input magnet_R0; use plant R")
     p = IN
     # --- Plasma Geometry ---
     V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
@@ -543,27 +565,33 @@ def compute():
     # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
     # of the plasma chain at WI-037 because sustainment reads B_axis) ---
     B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
-              / (p["magnet_two_pi"] * p["magnet_R0"]))
+              / (p["magnet_two_pi"] * p["R"]))
     # WI-044: the peak field sees the coil bore. Lion 2021 eq. 39 has the field on the
     # coil rising as R / (R - a_coil); with B_axis ~ N I / R the peak/axis ratio carries
     # that factor. The printed ratio is the anchor at the reference geometry, the factor
     # is applied normalised there (exactly 1.0 at the design point), and the winding-pack
     # term of eq. 39 is not carried (a1(C) unprinted, design D2).
-    bore_factor = p["magnet_R0"] / (p["magnet_R0"] - r_coil_centre)
+    if not p["R"] - r_coil_centre > 0.0:
+        raise ValueError("oracle: live magnet clearance R - r_coil_centre must be > 0")
+    if not p["magnet_R_ref"] - p["magnet_a_coil_ref"] > 0.0:
+        raise ValueError("oracle: reference magnet clearance R_ref - a_coil_ref must be > 0")
+    bore_factor = p["R"] / (p["R"] - r_coil_centre)
     bore_factor_ref = p["magnet_R_ref"] / (p["magnet_R_ref"] - p["magnet_a_coil_ref"])
     bore_norm = bore_factor / bore_factor_ref
     B_peak = B_axis * p["magnet_peak_ratio"] * bore_norm
     # WI-044: stored magnetic energy from the coil-set inductance shape, thesis eq. 2.82
     # L = L(C) (a_coil/a_ref)^2 (R_ref/R) with W = 1/2 L I^2, anchored at the printed 111 GJ.
     W_mag = (p["magnet_W_mag_ref"] * (p["magnet_I_coil"] / p["magnet_I_ref"]) ** 2
-             * (r_coil_centre / p["magnet_a_coil_ref"]) ** 2 * (p["magnet_R_ref"] / p["magnet_R0"]))
+             * (r_coil_centre / p["magnet_a_coil_ref"]) ** 2 * (p["magnet_R_ref"] / p["R"]))
     # WI-044: casing mass from stored energy, Lion 2021 eq. 56 M = 1.348 W^0.78 with the
     # constant absorbed by the anchor (no units printed); the 63 t floor keeps its seam.
     m_casing = p["magnet_m_casing_ref"] * (W_mag / p["magnet_W_mag_ref"]) ** 0.78
     # WI-036: the pack sizes itself from the current, and the winding length from
     # machine scale; both were held inputs before this item.
-    wp_side = (p["magnet_I_coil"] / p["magnet_j_wp"]) ** 0.5 / 1000.0
-    c_coil = p["magnet_k_coil"] * p["magnet_R0"]
+    wp_side = _winding_pack_side(p["magnet_I_coil"], p["magnet_j_wp"])
+    c_coil = p["magnet_k_coil"] * p["R"]
+    if wp_side == 0.0:
+        raise ValueError("oracle Winding Pack Stress: wp_side must be nonzero")
     sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / wp_side
     # WI-036: the conductor's own operand, checked separately from the structure's.
     eps_cond = p["magnet_f_cond"] * sigma_wp / p["magnet_E_wp"]
@@ -601,6 +629,10 @@ def compute():
                     + p["p_coupled_direct_heat"])
     heat_wallplug_total = (p["p_wallplug_heat"]
                            + p["p_coupled_direct_heat"] / heat_eta_pin_eff)
+    # Signed sustained operation, with installed capacity retained above.
+    operating_heat_coupled = sust["p_aux_required"]
+    operating_heat_delivered = operating_heat_coupled / p["eta_couple_heat"]
+    operating_heat_wallplug = operating_heat_delivered / p["eta_source_heat"]
     # --- WI-045 (goal plant-closure): the reactor source heat, the representative
     # primary loop and the temperature-compatible cycle, written from the WI-045
     # design's stated equations (D1-D5, D9), not from the generated modules.
@@ -614,8 +646,8 @@ def compute():
     #   eta_fit    = a*ln(T2_C + 273) - b - delta_eta;  eta_th = cycle_live*eta_fit + eta_th_direct
     # In the dormant mode the two totals are the old held scalars to the bit
     # (0.0*x + held), so the sums below are the pre-WI-045 sums exactly.
-    q_source = p["mn"] * p_neutron + p_alpha + heat_coupled
-    loop_mdot = q_source * 1.0e6 / (p["loop_cp"] * p["loop_dT_blanket"])
+    q_source = p["mn"] * p_neutron + p_alpha + operating_heat_coupled
+    loop_mdot = _primary_loop_mass_flow(q_source, p["loop_cp"], p["loop_dT_blanket"])
     loop_T_out = p["loop_T_in"] + p["loop_dT_blanket"]
     loop_mdot_loop = loop_mdot / p["n_loops"]
     loop_dp_loop = p["f_loss"] * p["dp_loop_ref"] * (loop_mdot_loop / p["mdot_loop_ref"]) ** 2
@@ -646,25 +678,27 @@ def compute():
     cycle_margin_low = cycle_T2_C - p["T2_min"]
     cycle_margin_high = p["T2_max"] - cycle_T2_C
     cycle_domain_product = cycle_margin_low * cycle_margin_high
-    p_th = (p["mn"] * p_neutron + p_alpha + heat_coupled
+    p_th = (p["mn"] * p_neutron + p_alpha + operating_heat_coupled
             + loop_q_recovered_total)
     p_the = cycle_eta_th * p_th
     p_et = p_the
     p_sub = p["f_sub"] * p_et
     # Cryoplant electrical chain (WI-024) — mirrors the generated
     # cryoplant_electrical_power_impl.py statement forms verbatim (bit-exact):
+    if not 0.0 < p["T_cold_cryo"] < p["T_amb_cryo"]:
+        raise ValueError("oracle cryoplant: require 0 < T_cold < T_amb")
     cop_carnot = (p["T_cold_cryo"] / (p["T_amb_cryo"] - p["T_cold_cryo"]))
     cop = (p["f_carnot_cryo"] * cop_carnot)
     p_cold = ((((p["q_nuc_cryo"] * vol_cold_total) * 1e-06) + p["p_fixed_cryo"]) * p["f_uplift_cryo"])
     p_cryo = ((p_cold / cop) + p["p_cryo_direct"])
     recirculating = (p_coils + loop_p_pump_total + p_sub + p_aux + p_cool + p_cryo
-                     + heat_wallplug_total)
+                     + operating_heat_wallplug)
     q_eng = p_et / recirculating
     rec_frac = 1.0 / q_eng
     p_net = (1.0 - rec_frac) * p_et
 
     # --- Account costs ($) ---
-    total_kAm = (p["magnet_G"] * B_axis * p["magnet_R0"] * r_coil
+    total_kAm = (p["magnet_G"] * B_axis * p["R"] * r_coil
                  / (p["mu0"] * 1000.0))
     magnet = total_kAm * p["magnet_cost_per_kAm"] * p["magnet_coil_markup"]
     # WI-035 decomposed magnet accounts (design D4/D5/D6); `magnet` above stays
@@ -750,8 +784,7 @@ def compute():
     # CAS10 (precon) enters at overnight (no CAS29/CAS30)
     overnight_capital = (precon + cas20_capital + cas30_capital + owner + supplementary)
     # CAS60 IDC reported line (Option C: NOT summed into total_capital)
-    f_idc = ((1.0 + p["discount_rate"]) ** p["construction_years"] - 1.0) \
-        / (p["discount_rate"] * p["construction_years"]) - 1.0
+    f_idc = finance.idc_factor(p["discount_rate"], p["construction_years"])
     idc_capital = f_idc * overnight_capital
     total_capital = overnight_capital  # Option C
     # legacy aliases (retained for downstream comparison rows)
@@ -773,12 +806,7 @@ def compute():
 
     def _levelized_annual_cost(annual_cost):
         """economics.py:13-50 — growing-annuity PV annuitized by CRF."""
-        disc_pow_n_l = (1.0 + i_rate) ** n_life
-        crf_l = i_rate * disc_pow_n_l / (disc_pow_n_l - 1.0)
-        a1 = annual_cost * (1.0 + g_infl) ** t_c
-        pv_l = (a1 * (1.0 - ((1.0 + g_infl) / (1.0 + i_rate)) ** n_life)
-                / (i_rate - g_infl))
-        return crf_l * pv_l
+        return finance.annuity(annual_cost, i_rate, g_infl, n_life, t_c)
 
     cas71_annual = _levelized_annual_cost(annual_om_unlevelized)
 
@@ -826,7 +854,7 @@ def compute():
     #   E_fus_J      = q_eff*mev_to_joules;  burn = p_fus*1e6/E_fus_J;  inject = burn/f_burn
     #   exhaust      = inject - burn;  loss = (1 - t_recycle)*exhaust
     #   tbr_required = (burn + loss + lambda_T*I_total + G_stock)/(eta_extract*burn)
-    #   p_heat_abs   = p_alpha_heat + p_coupled (INSTALLED basis);  p_sep = p_heat_abs - p_rad_core
+    #   p_heat_abs   = p_alpha_heat + p_coupled (sustained operating basis);  p_sep = p_heat_abs - p_rad_core
     #   f_rad_edge   = (f_total*p_heat_abs - p_rad_core)/p_sep;  p_target = p_heat_abs - f_total*p_heat_abs
     #   q_peak       = q_ref*p_target/p_nonrad_ref;  shadow = q_peak*R_ref/R
     #   n_molecules  = (D + T)/2 + He;  Q = n*k_B*T_gas;  S_eff = Q/p_exhaust
@@ -839,7 +867,7 @@ def compute():
                          / (p["eta_extract"] * fuel_burn_rate))
     fuel_tbr_margin = p["tbr"] - fuel_tbr_required
     fuel_burn_kg_per_fpy = fuel_burn_rate * p["m_T_kg"] * p["s_per_fpy"]
-    divheat_p_heat_abs = sust["p_alpha_heat"] + heat_coupled
+    divheat_p_heat_abs = sust["p_alpha_heat"] + operating_heat_coupled
     divheat_p_sep = divheat_p_heat_abs - sust["p_rad"]
     divheat_f_rad_edge = (p["f_rad_total"] * divheat_p_heat_abs - sust["p_rad"]) / divheat_p_sep
     divheat_f_rad_edge_in_range = divheat_f_rad_edge * (1.0 - divheat_f_rad_edge)
@@ -855,9 +883,8 @@ def compute():
     # --- LCOE DCF ($/MWh) ---
     d = p["discount_rate"]
     N = p["operational_years"]
-    discount_pow_n = (1.0 + d) ** N
-    crf = d * discount_pow_n / (discount_pow_n - 1.0)
-    idc_factor = (1.0 + d) ** (p["construction_years"] / 2.0)
+    crf = finance.crf(d, N)
+    idc_factor = finance.growth(d, p["construction_years"] / 2.0)
     annual_capital = total_capital * idc_factor * crf
     annual_energy_mwh = 8760.0 * p_net * availability
     lcoe = (annual_capital + annual_om) / annual_energy_mwh
@@ -865,8 +892,7 @@ def compute():
     # --- WI-029 Option (ii): 1cfe-form comparison channels ------------------
     # crf_71 is the CRF the CAS71 levelization computes; the pipeline reuses
     # that same channel, so the mirror reads it the same way.
-    disc_pow_n_71 = (1.0 + i_rate) ** n_life
-    crf_71 = i_rate * disc_pow_n_71 / (disc_pow_n_71 - 1.0)
+    crf_71 = finance.crf(i_rate, n_life)
     cas90_1cfe = crf_71 * (overnight_capital + idc_capital)
     lcoe_1cfe = ((cas90_1cfe + cas70_annual + cas80_annual)
                  / (8760.0 * p_net * n * availability))
@@ -898,6 +924,9 @@ def compute():
         p_avg=sust["p_avg"], n_e_volav=sust["n_e_volav"],
         alpha_n_e_eff=sust["alpha_n_e_eff"], alpha_He_eff=sust["alpha_He_eff"],
         # WI-039 heating-chain channels
+        operating_heat_coupled=operating_heat_coupled,
+        operating_heat_delivered=operating_heat_delivered,
+        operating_heat_wallplug=operating_heat_wallplug,
         heat_eta_pin_eff=heat_eta_pin_eff, heat_delivered=heat_delivered,
         heat_coupled=heat_coupled, heat_wallplug_total=heat_wallplug_total,
         # WI-045 source-heat, loop and cycle channels

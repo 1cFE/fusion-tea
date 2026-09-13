@@ -1,0 +1,30 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /home/reid/1cfe/fusion-tea/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/reid/1cfe/fusion-tea-codex-test
+configfile: pyproject.toml
+plugins: anyio-4.13.0, Faker-40.18.0
+collecting ... collected 20 items
+
+tests/test_codegen_teax_acceptance.py::test_imports_and_execution_use_only_recorded_real_roots[primary] PASSED [  5%]
+tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[primary] PASSED [ 10%]
+tests/test_codegen_teax_acceptance.py::test_complete_model_tree_and_constraint_verdict_execute[primary] PASSED [ 15%]
+tests/test_codegen_teax_acceptance.py::test_imports_and_execution_use_only_recorded_real_roots[exploration] PASSED [ 20%]
+tests/test_codegen_teax_acceptance.py::test_live_and_snapshot_packages_are_byte_identical[exploration] PASSED [ 25%]
+tests/test_codegen_teax_acceptance.py::test_complete_model_tree_and_constraint_verdict_execute[exploration] PASSED [ 30%]
+tests/test_occurrence_mutation_teax.py::test_gain_has_one_source_and_exact_consumer_ports[primary-live] PASSED [ 35%]
+tests/test_occurrence_mutation_teax.py::test_gain_has_one_source_and_exact_consumer_ports[primary-snapshot] PASSED [ 40%]
+tests/test_occurrence_mutation_teax.py::test_gain_mutates_every_and_only_its_outputs_and_constraint[primary-live] PASSED [ 45%]
+tests/test_occurrence_mutation_teax.py::test_gain_mutates_every_and_only_its_outputs_and_constraint[primary-snapshot] PASSED [ 50%]
+tests/test_occurrence_mutation_teax.py::test_availability_mutates_shots_replacements_and_both_costs[primary-live] PASSED [ 55%]
+tests/test_occurrence_mutation_teax.py::test_availability_mutates_shots_replacements_and_both_costs[primary-snapshot] PASSED [ 60%]
+tests/test_occurrence_mutation_teax.py::test_live_and_snapshot_mutations_are_equal[primary] PASSED [ 65%]
+tests/test_occurrence_mutation_teax.py::test_gain_has_one_source_and_exact_consumer_ports[exploration-live] PASSED [ 70%]
+tests/test_occurrence_mutation_teax.py::test_gain_has_one_source_and_exact_consumer_ports[exploration-snapshot] PASSED [ 75%]
+tests/test_occurrence_mutation_teax.py::test_gain_mutates_every_and_only_its_outputs_and_constraint[exploration-live] PASSED [ 80%]
+tests/test_occurrence_mutation_teax.py::test_gain_mutates_every_and_only_its_outputs_and_constraint[exploration-snapshot] PASSED [ 85%]
+tests/test_occurrence_mutation_teax.py::test_availability_mutates_shots_replacements_and_both_costs[exploration-live] PASSED [ 90%]
+tests/test_occurrence_mutation_teax.py::test_availability_mutates_shots_replacements_and_both_costs[exploration-snapshot] PASSED [ 95%]
+tests/test_occurrence_mutation_teax.py::test_live_and_snapshot_mutations_are_equal[exploration] PASSED [100%]
+
+============================== 20 passed in 6.82s ==============================

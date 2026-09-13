@@ -1,0 +1,33 @@
+{
+  "native_package_basis": "b413838c",
+  "initial_run": "work/active/WI-056_primary-loop-heat-capacity-domain/evidence/models.xml",
+  "initial_counts": {
+    "passed": 652,
+    "failure": 1,
+    "error": 0,
+    "skipped": 13
+  },
+  "resolved_new_failure": {
+    "identity": "tests.models.test_mfe_operating_heating::test_operating_heat_complete_cost_operand_classification",
+    "before": "failure",
+    "after": "passed",
+    "evidence": "heating-interface.xml",
+    "repair": "Preserve source outside the authorized Primary Coolant Loop definition, with frozen primary pipeline input/output identities and all original cost/operand checks retained."
+  },
+  "inherited_skip_ids": [
+    "tests.models.test_example.TestModelStructure::test_example_definition_exists",
+    "tests.models.test_foundation.TestCustomUnits::test_custom_units_count",
+    "tests.models.test_foundation.TestCustomUnits::test_custom_units_defined",
+    "tests.models.test_foundation.TestEnumDefinitions::test_all_expected_enums_exist",
+    "tests.models.test_foundation.TestEnumDefinitions::test_confinement_type_variants_count",
+    "tests.models.test_foundation.TestEnumDefinitions::test_enum_definitions_count",
+    "tests.models.test_foundation.TestEnumDefinitions::test_reactor_type_variants",
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_materials_parse_without_errors",
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_types_parse_without_errors",
+    "tests.models.test_foundation.TestFoundationParsing::test_foundation_units_parse_without_errors",
+    "tests.models.test_foundation.TestMaterialDefinitions::test_all_materials_have_required_attributes",
+    "tests.models.test_foundation.TestMaterialDefinitions::test_material_has_required_attributes",
+    "tests.models.test_foundation.TestMaterialDefinitions::test_materials_exist"
+  ],
+  "remaining_failures": []
+}

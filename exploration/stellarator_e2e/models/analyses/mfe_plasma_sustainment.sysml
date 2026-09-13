@@ -76,10 +76,14 @@ package mfe_plasma_sustainment {
                      -- the ash shape's effective power-law exponent (4.05 at
                      point A; 4.7 at 10 keV, 3.5 at 20 keV: it moves with T_i0)
           RADIATION (composed; profile-integrated over the DERIVED n_e(rho)):
-            p_brems = 5.35e-37 * Z_eff * V
-                      * int n_e(rho)^2 * sqrt(T_e(rho)) dV'             [MW]
-            p_line  = f_W * V * int n_e(rho)^2 * L_z_W(T_e(rho)) dV'    [MW]
-                      (L_z_W: piecewise coronal cooling-curve fit)
+            dV' = dV/V = 2 rho d rho; integral_0^1 dV' = 1          [1]
+            p_brems = 1e-6 * 5.35e-37 * Z_eff * V
+                      * int_0^1 n_e(rho)^2 * sqrt(T_e(rho)) dV'       [MW]
+            p_line  = 1e-6 * f_W * V
+                      * int_0^1 n_e(rho)^2 * L_z_W(T_e(rho)) dV'      [MW]
+                      (n_e: m^-3; T_e: keV; V: m^3; Z_eff and f_W: 1;
+                      brems coefficient: W m^3 keV^-1/2; L_z_W: W m^3,
+                      piecewise coronal cooling-curve fit; 1e-6: MW/W)
             p_sync  = Albajar (2001) formula at kappa_sync, R_w_sync with the
                       density-profile parameter alpha_n_e_eff (WI-042 D4) [MW]
             p_rad   = p_brems + p_line + p_sync
@@ -89,6 +93,14 @@ package mfe_plasma_sustainment {
                      Bosch-Hale evaluation as 'DT Fusion Power' at
                      (n_D0, n_T0, T_i0) -- same algorithm, same contract
             p_aux_required = p_rad + W_th/tau_E - p_alpha_heat            [MW]
+
+        ZERO-FIELD DOMAIN (WI-055): B_in must be nonzero. The composed
+        Albajar relation uses p_a0 = 6.04e3*a*n_e0_20/B; the confinement
+        chain also divides W_th by tau_E, which is zero at B = 0.
+        Native manual completion raises SustainmentError before the chain
+        when B_in = 0. This local mathematical precondition is separate
+        from an engineering field limit and leaves standalone axis-field
+        and winding-sizing zero behavior unchanged.
 
         DORMANT (no-ash) CASE (WI-042 D6): an instance binding tau_ratio = 0
         or f_suppr = 0 converges to n_He0 = 0 at the first iterate; then

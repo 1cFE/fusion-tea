@@ -1,0 +1,1564 @@
+{
+  "models": {
+    "retained": {
+      "tests/models/test_example.py::TestModelStructure::test_example_definition_exists": {
+        "entering": {
+          "status": "skipped",
+          "message": "Customize this test with your actual definition names"
+        },
+        "candidate": {
+          "status": "skipped",
+          "message": "Customize this test with your actual definition names"
+        },
+        "reason_equal": true
+      },
+      "tests/models/test_foundation.py::TestFoundationParsing::test_foundation_types_parse_without_errors": {
+        "entering": {
+          "status": "skipped",
+          "message": "types.sysml not found"
+        },
+        "candidate": {
+          "status": "skipped",
+          "message": "types.sysml not found"
+        },
+        "reason_equal": true
+      },
+      "tests/models/test_foundation.py::TestFoundationParsing::test_foundation_units_parse_without_errors": {
+        "entering": {
+          "status": "skipped",
+          "message": "units.sysml not found"
+        },
+        "candidate": {
+          "status": "skipped",
+          "message": "units.sysml not found"
+        },
+        "reason_equal": true
+      },
+      "tests/models/test_foundation.py::TestFoundationParsing::test_foundation_materials_parse_without_errors": {
+        "entering": {
+          "status": "skipped",
+          "message": "materials.sysml not found"
+        },
+        "candidate": {
+          "status": "skipped",
+          "message": "materials.sysml not found"
+        },
+        "reason_equal": true
+      },
+      "tests/models/test_foundation.py::TestEnumDefinitions::test_enum_definitions_count": {
+        "entering": {
+          "status": "skipped",
+          "message": "types.sysml not found"
+        },
+        "candidate": {
+          "status": "skipped",
+          "message": "types.sysml not found"
+        },
+        "reason_equal": true
+      },
+      "tests/models/test_foundation.py::TestEnumDefinitions::test_reactor_type_variants": {
+        "entering": {
+          "status": "skipped",
+          "message": "types.sysml not found"
+        },
+        "candidate": {
+          "status": "skipped",
+          "message": "types.sysml not found"
+        },
+        "reason_equal": true
+      },
+      "tests/models/test_foundation.py::TestEnumDefinitions::test_confinement_type_variants_count": {
+        "entering": {
+          "status": "skipped",
+          "message": "types.sysml not found"
+        },
+        "candidate": {
+          "status": "skipped",
+          "message": "types.sysml not found"
+        },
+        "reason_equal": true
+      },
+      "tests/models/test_foundation.py::TestEnumDefinitions::test_all_expected_enums_exist": {
+        "entering": {
+          "status": "skipped",
+          "message": "types.sysml not found"
+        },
+        "candidate": {
+          "status": "skipped",
+          "message": "types.sysml not found"
+        },
+        "reason_equal": true
+      },
+      "tests/models/test_foundation.py::TestCustomUnits::test_custom_units_defined": {
+        "entering": {
+          "status": "skipped",
+          "message": "units.sysml not found"
+        },
+        "candidate": {
+          "status": "skipped",
+          "message": "units.sysml not found"
+        },
+        "reason_equal": true
+      },
+      "tests/models/test_foundation.py::TestCustomUnits::test_custom_units_count": {
+        "entering": {
+          "status": "skipped",
+          "message": "units.sysml not found"
+        },
+        "candidate": {
+          "status": "skipped",
+          "message": "units.sysml not found"
+        },
+        "reason_equal": true
+      },
+      "tests/models/test_foundation.py::TestMaterialDefinitions::test_materials_exist": {
+        "entering": {
+          "status": "skipped",
+          "message": "materials.sysml not found"
+        },
+        "candidate": {
+          "status": "skipped",
+          "message": "materials.sysml not found"
+        },
+        "reason_equal": true
+      },
+      "tests/models/test_foundation.py::TestMaterialDefinitions::test_material_has_required_attributes": {
+        "entering": {
+          "status": "skipped",
+          "message": "materials.sysml not found"
+        },
+        "candidate": {
+          "status": "skipped",
+          "message": "materials.sysml not found"
+        },
+        "reason_equal": true
+      },
+      "tests/models/test_foundation.py::TestMaterialDefinitions::test_all_materials_have_required_attributes": {
+        "entering": {
+          "status": "skipped",
+          "message": "materials.sysml not found"
+        },
+        "candidate": {
+          "status": "skipped",
+          "message": "materials.sysml not found"
+        },
+        "reason_equal": true
+      }
+    },
+    "repaired": {},
+    "new_failures": {},
+    "removed_nodes": [
+      "tests/models/test_lifecycle_calendar.py::test_held_mode_equals_the_retired_chain_by_identity"
+    ],
+    "new_nodes": [
+      "tests/models/test_lifecycle_calendar.py::test_held_mode_retains_physical_identity_and_independent_finance",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[energy_ceil_epsilon_0]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[energy_ceil_epsilon_1]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[energy_ceil_epsilon_2]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[energy_segment_year_0]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[energy_segment_year_1]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[energy_segment_year_2]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_cap_0]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_cap_1]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_cap_2]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_cap_below_floor_0]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_cap_below_floor_1]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_cap_below_floor_2]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_count_0]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_count_1]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_count_2]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_fractional]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_life_floor_0]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_life_floor_1]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_life_floor_2]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_subannual_cap]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_wall_floor_0]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_wall_floor_1]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_wall_floor_2]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_zero_cost]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_completion_0]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_completion_1]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_completion_2]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_fractional_unplanned]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_multiple]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_no_events]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_run_end_0]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_run_end_1]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_run_end_2]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_terminal_inside]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_zero_cost]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_zero_damage]",
+      "tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_zero_outage]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[0.25-8.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[0.25-8.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[0.5-8.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[0.5-8.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[0.9999999999999999-8.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[0.9999999999999999-8.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[1.0-8.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[1.0-8.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[1.0000000000000002-8.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[1.0000000000000002-8.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[100.5-8.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[100.5-8.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[200.5-8.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[200.5-8.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[30.0-0.25]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[30.0-0.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[30.0-0.9999999999999999]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[30.0-1.0000000000000002]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[30.0-1.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[30.0-100.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[30.0-200.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[30.0-30.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[30.0-30.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[30.0-8.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[30.0-8.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[30.5-8.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[30.5-8.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[8.0-8.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[8.0-8.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[8.5-8.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_annuity_stream_pv_and_public_charges[8.5-8.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_crf_idc_and_dated_periodic_factors[0.25]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_crf_idc_and_dated_periodic_factors[0.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_crf_idc_and_dated_periodic_factors[0.9999999999999999]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_crf_idc_and_dated_periodic_factors[1.0000000000000002]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_crf_idc_and_dated_periodic_factors[1.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_crf_idc_and_dated_periodic_factors[100.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_crf_idc_and_dated_periodic_factors[200.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_crf_idc_and_dated_periodic_factors[30.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_crf_idc_and_dated_periodic_factors[30.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_crf_idc_and_dated_periodic_factors[8.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_crf_idc_and_dated_periodic_factors[8.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_bad_seed[extra]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_bad_seed[mismatch]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_bad_seed[missing]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_bad_seed[symlink]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[dangling]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[file]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[hidden]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[symlink]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_current_regeneration_refuses_nonfresh_without_mutation[visible]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[0.25-30.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[0.25-30.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[0.5-30.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[0.5-30.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[0.9999999999999999-30.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[0.9999999999999999-30.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[1.0-30.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[1.0-30.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[1.0000000000000002-30.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[1.0000000000000002-30.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[100.5-30.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[100.5-30.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[200.5-30.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[200.5-30.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[30.0-30.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[30.0-30.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[30.5-30.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[30.5-30.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[8.0-30.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[8.0-30.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[8.5-30.0]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_dcf_components_and_public_price[8.5-30.5]",
+      "tests/models/test_mfe_financial_rate_limits.py::test_original_counterexamples_and_zero_cost"
+    ]
+  },
+  "study": {
+    "retained": {
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "Failed: DID NOT RAISE <class 'study_route.RouteError'>"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-absent]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-null]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-nan]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-positive-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-negative-inf]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260903-priced-levers]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260903-wall-and-heating]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 1 required positional argument: 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260904-wall-and-heating]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260905-stored-energy-basis]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260907-burn-control]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260907-minor-radius]": {
+        "entering": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260911-model-owned-radius]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260911-operating-heating]": {
+        "entering": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "candidate": {
+          "status": "failure",
+          "message": "AttributeError: module '20260911-operating-heating' has no attribute 'proposals'"
+        },
+        "reason_equal": true
+      },
+      "tests/study/test_verify.py::test_a_store_bound_to_another_identity_is_refused": {
+        "entering": {
+          "status": "skipped",
+          "message": "proof-of-life store unavailable: /tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/study/_work/availability_sweep.db"
+        },
+        "candidate": {
+          "status": "skipped",
+          "message": "proof-of-life store unavailable: /tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/study/_work/availability_sweep.db"
+        },
+        "reason_equal": true
+      }
+    },
+    "repaired": {},
+    "new_failures": {
+      "tests/study/test_integrate_lineage.py::test_wrong_expected_fingerprint_refuses_at_gate_9": {
+        "status": "failure",
+        "message": "AssertionError: assert 'preflight' == 'lineage'\n  \n  - lineage\n  + preflight"
+      },
+      "tests/study/test_integrate_lineage.py::test_absent_expected_fingerprints_could_not_run_rather_than_pass": {
+        "status": "failure",
+        "message": "AssertionError: assert 'preflight' == 'lineage'\n  \n  - lineage\n  + preflight"
+      },
+      "tests/study/test_integrate_rerun.py::test_two_runs_return_the_same_identity": {
+        "status": "failure",
+        "message": "AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_two_runs_return_the_same_0/a/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_two_runs_return_the_sam...d916e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_two_runs_return_the_same_0/a/preflight_results.json\\n\").returncode"
+      },
+      "tests/study/test_integrate_rerun.py::test_the_second_run_is_a_candidate_not_a_refusal": {
+        "status": "failure",
+        "message": "AssertionError: first run: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_second_run_is_a_candi0/first/preflight_results.json\"\n    ]\n  }\nassert 'BLOCKER' == 'CANDIDATE'\n  \n  - CANDIDATE\n  + BLOCKER"
+      },
+      "tests/study/test_integrate_stock_route.py::test_the_return_rebuilds_the_stock_commands": {
+        "status": "failure",
+        "message": "AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_return_rebuilds_the_s0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_the_return_rebuilds_the...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_the_return_rebuilds_the_s0/out/preflight_results.json\\n\").returncode"
+      },
+      "tests/study/test_integrate_success.py::test_committed_package_yields_one_candidate": {
+        "status": "error",
+        "message": "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_committed_package_yields_0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_committed_package_yield...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_committed_package_yields_0/out/preflight_results.json\\n\").returncode\""
+      },
+      "tests/study/test_integrate_success.py::test_every_candidate_field_resolves": {
+        "status": "error",
+        "message": "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_every_candidate_field_res0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_every_candidate_field_r...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_every_candidate_field_res0/out/preflight_results.json\\n\").returncode\""
+      },
+      "tests/study/test_integrate_success.py::test_the_candidate_names_the_lineage_the_request_named": {
+        "status": "error",
+        "message": "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_candidate_names_the_l0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_the_candidate_names_the...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_the_candidate_names_the_l0/out/preflight_results.json\\n\").returncode\""
+      },
+      "tests/study/test_integrate_success.py::test_the_pin_is_the_manifests_own_value_not_a_new_number": {
+        "status": "error",
+        "message": "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_pin_is_the_manifests_0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_the_pin_is_the_manifest...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_the_pin_is_the_manifests_0/out/preflight_results.json\\n\").returncode\""
+      },
+      "tests/study/test_integrate_success.py::test_the_package_is_byte_identical_before_and_after": {
+        "status": "error",
+        "message": "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_package_is_byte_ident0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_the_package_is_byte_ide...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_the_package_is_byte_ident0/out/preflight_results.json\\n\").returncode\""
+      },
+      "tests/study/test_integrate_success.py::test_the_verification_summary_the_candidate_cites_reads_pass": {
+        "status": "error",
+        "message": "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_verification_summary_0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_the_verification_summar...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_the_verification_summary_0/out/preflight_results.json\\n\").returncode\""
+      },
+      "tests/study/test_integrate_success.py::test_the_preflight_results_the_run_produced_read_six_of_six": {
+        "status": "error",
+        "message": "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_preflight_results_the0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_the_preflight_results_t...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_the_preflight_results_the0/out/preflight_results.json\\n\").returncode\""
+      },
+      "tests/study/test_integrate_success.py::test_the_toolchain_the_candidate_ran_under_is_recorded": {
+        "status": "error",
+        "message": "failed on setup with \"AssertionError: {\n    \"gate\": \"preflight\",\n    \"producer\": \"scripts/study/preflight.py\",\n    \"scope\": \"request\",\n    \"mode\": \"refused\",\n    \"condition\": \"preflight-refused\",\n    \"detail\": \"preflight refused: manifest_currency\",\n    \"expected\": null,\n    \"actual\": null,\n    \"evidence\": [\n      \"../pytest-of-reid/pytest-12280/test_the_toolchain_the_candida0/out/preflight_results.json\"\n    ]\n  }\nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/integrate.py', '--audited-work', 'exploration/stellarator_e2e/generated@HEAD', '--models-root', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/models', '--package', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/studies/axes.json', '--census-file', '/tmp/fusion-mfe-financial-rate-limits/.integration_workspace/mfe_census.json', '--expected-teax-revision', '8d877460ac4f6f264561d916e40c1708adb13397', '--expected-semantic-fingerprint', '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e', '--expected-executable-fingerprint', 'fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d', '--route-sys-path', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies', '--route-module', 'study_route', '--route-callable', 'execute_baseline', '--out-dir', '/tmp/pytest-of-reid/pytest-12280/test_the_toolchain_the_candi...16e40c1708adb13397\\n  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/\\n  pass         request  handwritten-preservation: 90 file(s) under handwritten/ are byte-identical\\n  pass         request  census-snapshot: the snapshot recaptures byte-identically and 246 entry points re-derive to the census as bound\\n  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed\\n  pass         request  manifest: the manifest is stellarator_tea's and its pin 609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d recomputes over the live package; assert_read_set_covered was NOT run \u2014 it is out of reach here and covered by nothing else (filed)\\n  fail         request  preflight: preflight refused: manifest_currency\\n  not reached  request  verification: the sequence stopped before this gate\\n  not reached  request  lineage: the sequence stopped before this gate\\n[integrate] refused at preflight (scripts/study/preflight.py, preflight-refused): preflight refused: manifest_currency\\n             evidence: ../pytest-of-reid/pytest-12280/test_the_toolchain_the_candida0/out/preflight_results.json\\n\").returncode\""
+      },
+      "tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle": {
+        "status": "failure",
+        "message": "AssertionError: ('baseline', 'stellarator_09__stellaris__cas71_calc__levelized')"
+      },
+      "tests/study/test_preflight_gates.py::test_all_six_checks_pass_on_the_real_package": {
+        "status": "error",
+        "message": "failed on setup with \"AssertionError: exit 1\n  [preflight] gates: fail\n    pass         declared_keys: 5 declared keys across 5 groups, all package inputs\n    pass         sibling_scan: pass\n    pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\n    fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\n    pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\n    pass         package_clean: package tree is byte-untouched (git clean)\n  [preflight] refusing: manifest_currency\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/study/preflight.py', 'gates', '--package', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/tests/study/data/axes.known_answers.json', '--identity', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/package_identity.json', '--baseline-result', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/baseline_result.json', '--out', '/tmp/pytest-of-reid/pytest-12280/test_all_six_checks_pass_on_th0/preflight_results.json'], returncode=1, stdout='', stderr=\"[preflight] gates: fail\\n  pass         declared_keys: 5 declared keys across 5 groups, all package inputs\\n  pass         sibling_scan: pass\\n  pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\\n  fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\\n  pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\\n  pass         package_clean: package tree is byte-untouched (git clean)\\n[preflight] refusing: manifest_currency\\n\").returncode\""
+      },
+      "tests/study/test_preflight_gates.py::test_the_results_document_validates_against_its_schema": {
+        "status": "error",
+        "message": "failed on setup with \"AssertionError: exit 1\n  [preflight] gates: fail\n    pass         declared_keys: 5 declared keys across 5 groups, all package inputs\n    pass         sibling_scan: pass\n    pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\n    fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\n    pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\n    pass         package_clean: package tree is byte-untouched (git clean)\n  [preflight] refusing: manifest_currency\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/study/preflight.py', 'gates', '--package', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/tests/study/data/axes.known_answers.json', '--identity', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/package_identity.json', '--baseline-result', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/baseline_result.json', '--out', '/tmp/pytest-of-reid/pytest-12280/test_the_results_document_vali0/preflight_results.json'], returncode=1, stdout='', stderr=\"[preflight] gates: fail\\n  pass         declared_keys: 5 declared keys across 5 groups, all package inputs\\n  pass         sibling_scan: pass\\n  pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\\n  fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\\n  pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\\n  pass         package_clean: package tree is byte-untouched (git clean)\\n[preflight] refusing: manifest_currency\\n\").returncode\""
+      },
+      "tests/study/test_preflight_gates.py::test_the_document_carries_a_digest_for_every_input_it_read": {
+        "status": "error",
+        "message": "failed on setup with \"AssertionError: exit 1\n  [preflight] gates: fail\n    pass         declared_keys: 5 declared keys across 5 groups, all package inputs\n    pass         sibling_scan: pass\n    pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\n    fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\n    pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\n    pass         package_clean: package tree is byte-untouched (git clean)\n  [preflight] refusing: manifest_currency\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/study/preflight.py', 'gates', '--package', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/tests/study/data/axes.known_answers.json', '--identity', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/package_identity.json', '--baseline-result', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/baseline_result.json', '--out', '/tmp/pytest-of-reid/pytest-12280/test_the_document_carries_a_di0/preflight_results.json'], returncode=1, stdout='', stderr=\"[preflight] gates: fail\\n  pass         declared_keys: 5 declared keys across 5 groups, all package inputs\\n  pass         sibling_scan: pass\\n  pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\\n  fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\\n  pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\\n  pass         package_clean: package tree is byte-untouched (git clean)\\n[preflight] refusing: manifest_currency\\n\").returncode\""
+      },
+      "tests/study/test_preflight_gates.py::test_the_six_results_map_onto_record_section_9s_five_rows": {
+        "status": "error",
+        "message": "failed on setup with \"AssertionError: exit 1\n  [preflight] gates: fail\n    pass         declared_keys: 5 declared keys across 5 groups, all package inputs\n    pass         sibling_scan: pass\n    pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\n    fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\n    pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\n    pass         package_clean: package tree is byte-untouched (git clean)\n  [preflight] refusing: manifest_currency\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/study/preflight.py', 'gates', '--package', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/tests/study/data/axes.known_answers.json', '--identity', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/package_identity.json', '--baseline-result', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/baseline_result.json', '--out', '/tmp/pytest-of-reid/pytest-12280/test_the_six_results_map_onto_0/preflight_results.json'], returncode=1, stdout='', stderr=\"[preflight] gates: fail\\n  pass         declared_keys: 5 declared keys across 5 groups, all package inputs\\n  pass         sibling_scan: pass\\n  pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\\n  fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\\n  pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\\n  pass         package_clean: package tree is byte-untouched (git clean)\\n[preflight] refusing: manifest_currency\\n\").returncode\""
+      },
+      "tests/study/test_preflight_gates.py::test_the_tool_reports_its_own_revision_as_a_named_recipe_over_a_named_file_list": {
+        "status": "error",
+        "message": "failed on setup with \"AssertionError: exit 1\n  [preflight] gates: fail\n    pass         declared_keys: 5 declared keys across 5 groups, all package inputs\n    pass         sibling_scan: pass\n    pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\n    fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\n    pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\n    pass         package_clean: package tree is byte-untouched (git clean)\n  [preflight] refusing: manifest_currency\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/study/preflight.py', 'gates', '--package', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/tests/study/data/axes.known_answers.json', '--identity', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/package_identity.json', '--baseline-result', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/baseline_result.json', '--out', '/tmp/pytest-of-reid/pytest-12280/test_the_tool_reports_its_own_0/preflight_results.json'], returncode=1, stdout='', stderr=\"[preflight] gates: fail\\n  pass         declared_keys: 5 declared keys across 5 groups, all package inputs\\n  pass         sibling_scan: pass\\n  pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\\n  fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\\n  pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\\n  pass         package_clean: package tree is byte-untouched (git clean)\\n[preflight] refusing: manifest_currency\\n\").returncode\""
+      },
+      "tests/study/test_preflight_gates.py::test_the_sibling_scan_is_advisory_and_can_never_fail": {
+        "status": "error",
+        "message": "failed on setup with \"AssertionError: exit 1\n  [preflight] gates: fail\n    pass         declared_keys: 5 declared keys across 5 groups, all package inputs\n    pass         sibling_scan: pass\n    pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\n    fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\n    pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\n    pass         package_clean: package tree is byte-untouched (git clean)\n  [preflight] refusing: manifest_currency\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/study/preflight.py', 'gates', '--package', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/tests/study/data/axes.known_answers.json', '--identity', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/package_identity.json', '--baseline-result', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/baseline_result.json', '--out', '/tmp/pytest-of-reid/pytest-12280/test_the_sibling_scan_is_advis0/preflight_results.json'], returncode=1, stdout='', stderr=\"[preflight] gates: fail\\n  pass         declared_keys: 5 declared keys across 5 groups, all package inputs\\n  pass         sibling_scan: pass\\n  pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\\n  fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\\n  pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\\n  pass         package_clean: package tree is byte-untouched (git clean)\\n[preflight] refusing: manifest_currency\\n\").returncode\""
+      },
+      "tests/study/test_preflight_gates.py::test_the_identity_gate_reports_the_recomputed_digest": {
+        "status": "error",
+        "message": "failed on setup with \"AssertionError: exit 1\n  [preflight] gates: fail\n    pass         declared_keys: 5 declared keys across 5 groups, all package inputs\n    pass         sibling_scan: pass\n    pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\n    fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\n    pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\n    pass         package_clean: package tree is byte-untouched (git clean)\n  [preflight] refusing: manifest_currency\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/tmp/fusion-mfe-financial-rate-limits/scripts/study/preflight.py', 'gates', '--package', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/studies/manifest.json', '--groups', '/tmp/fusion-mfe-financial-rate-limits/tests/study/data/axes.known_answers.json', '--identity', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/package_identity.json', '--baseline-result', '/tmp/pytest-of-reid/pytest-12280/stock_route_run0/baseline_result.json', '--out', '/tmp/pytest-of-reid/pytest-12280/test_the_identity_gate_reports0/preflight_results.json'], returncode=1, stdout='', stderr=\"[preflight] gates: fail\\n  pass         declared_keys: 5 declared keys across 5 groups, all package inputs\\n  pass         sibling_scan: pass\\n  pass         identity: kind sealed, digest fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches\\n  fail         manifest_currency: the manifest's baseline, ties, oracle, and objective catalog were pinned against a different package generation and must be re-declared before this study can run \u2014 executable_fingerprint: manifest pins cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c, contracts/package_contract.json carries fa52a2996d8c1b7c969f0628e812063e0f95d5a5f88b4032df95d857c112e64d\\n  pass         baseline_headline: stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 1.267e-16; 18/18 pinned verdicts match\\n  pass         package_clean: package tree is byte-untouched (git clean)\\n[preflight] refusing: manifest_currency\\n\").returncode\""
+      },
+      "tests/study/test_preflight_negatives.py::test_an_unreadable_input_is_did_not_run_with_its_condition": {
+        "status": "failure",
+        "message": "AssertionError: assert 'fail' == 'pass'\n  \n  - pass\n  + fail"
+      }
+    },
+    "removed_nodes": [],
+    "new_nodes": []
+  }
+}

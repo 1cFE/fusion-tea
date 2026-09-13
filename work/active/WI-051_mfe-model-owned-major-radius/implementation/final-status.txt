@@ -1,0 +1,66 @@
+ M .gitignore
+ M .project/CURRENT_WORK.md
+ M data/traceability_matrix.csv
+ M exploration/stellarator_e2e/generated/contracts/model_contract.json
+ M exploration/stellarator_e2e/generated/contracts/package_contract.json
+ M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/annual_cost_rollup_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/dt_fuel_cost_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/idc_closed_form_cost_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/levelized_annual_cost_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/n_1cfe_form_capital_charge_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/n_1cfe_form_lcoe_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/supplementary_cost_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_heating_chain/heating_power_chain_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_coil_cost_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/neutron_wall_load_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/neutron_wall_load_peak_calibration_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/neutron_wall_load_peak_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/volume_averaged_beta_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_power_balance/mfe_power_balance_calc_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/mfe_power_balance/reactor_source_heat_impl.py
+ M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+ M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+ M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/bop_capital.py
+ M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas20_capital.py
+ M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas22_capital.py
+ M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas23_to_28_capital.py
+ M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas2x_pre_contingency.py
+ M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/overnight_capital.py
+ M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/powercore_capital.py
+ M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/reactor_equipment_subtotal.py
+ M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/replacement_cost_per_event.py
+ M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/total_capital.py
+ M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+ M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+ M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+ M exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml
+ M exploration/stellarator_e2e/models/designs/stellarator_09/stellarator_plant.sysml
+ M exploration/stellarator_e2e/run_stellaris.py
+ M exploration/stellarator_e2e/run_stellaris_single.py
+ M exploration/stellarator_e2e/stellarator.snapshot.json
+ M modeling_project/VALIDATION_MATRIX.md
+ M models/designs/generic_mfe/mfe_plant.sysml
+ M models/designs/stellarator_09/stellarator_plant.sysml
+ M tests/models/data/mfe_census.json
+ M tests/models/test_mfe_operating_heating.py
+ M tests/models/test_model_family_spines.py
+ M work/active/WI-051_mfe-model-owned-major-radius/plan.md
+?? .agentic-mbse/
+?? .agents/
+?? .codex/
+?? .project/codex-test-setup.md
+?? AGENTS.md
+?? tests/models/test_mfe_major_radius.py
+?? work/active/WI-051_mfe-model-owned-major-radius/implementation/

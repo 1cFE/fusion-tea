@@ -1,0 +1,6 @@
+.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" MPLCONFIGDIR=/tmp/wi048-mplconfig python exploration/ife_e2e/plot_sweep.py --input-dir /tmp/wi048-final-sweep --output-dir /tmp/wi048-final-plots'
+
+wrote /tmp/wi048-final-plots/ife_viability_eta_gain.png
+wrote /tmp/wi048-final-plots/ife_viability_by_freq.png
+
+Exit code: 0

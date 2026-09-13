@@ -1,0 +1,35 @@
+{
+  "preserved_sha256": {
+    "work/active/WI-050_mfe-coherent-operating-heating/review.md": "d7aecb8817d7e0213a0bc8665b3b0761ea298dd7d4effa5408c2e21247fbeaf3",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/boundaries.py": "7feb404f86fcce80e8f5eb33fa23dfc857b8c0a4ad0ff1a962090805b0667733",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/boundary-execution.log": "2a1dbeaeb12e9b243b4b46f5c78a88db9f8bee22554b901b88dbd65f6276551f",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/boundary-results.json": "2a1dbeaeb12e9b243b4b46f5c78a88db9f8bee22554b901b88dbd65f6276551f",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/boundary_fixture.sysml": "c00c864a1ee42953184cf9b4d747ceb9b603ede058c8d1777012a1e9ef47cdf7",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/check_results.py": "79a9a91357eea1f129c32b84ff242f358b9d8dae27b2c35267c9234f523ec71c",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/checks.json": "144a86f9a2c620564c52f24f4d917f00a78690bd6dc03d63b6c1ff747685a25b",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/checks.log": "e04423a8f954e8a0d75837a2ca6a82cf1e44f4e0dc6b4afad863d958a3feb60b",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/execution.log": "b5d4d6dc030503c52614a92ccef15ce17d71cbaa7e18f88dbbf3631786317bb4",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/operating.sysml": "a7dfa472ef15d7293627b1d3a4073836dba4c96ab32abd558fdc8378591f4727",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/probe.py": "e3938db3da5e18de2fac51fcc66ea6565fab9dc5ff9b223204ba48706b79805b",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/proposed.patch": "15aaf88fb7310b9164328f28635f0a19e1f0b12c82a4e465f6d743b1300304a8",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/results.json": "3d83a97bb2fccd54e578559f2408b20b45b0aa8536954a9fa7dea1db6da12bc8",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/scratch.txt": "47caed1d42d8b960c29e8846442708f9a2e843790a3d3ea0131d76eefe1a3fe0",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/validation-diff.json": "89e5afacd33d032ebc0734d6d7fa5d9846e0d79b55f409a3daab0a5a7f952f41",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/validation-diff.log": "61a44f4813aba04dd949322f30c872ee6f35736dfa87b4249d6d985967ad112c",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/validation-entering.log": "ffaaa69d47aa3972c23a1ad7b2acdfad9dd94999e66e97b5615f0d11fbc9da68",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/validation.log": "a32d115a848927cbb93526fc08dbed24ae7fd13ea3fcb08a1f0e41a9fa6c3a7e",
+    "work/active/WI-050_mfe-coherent-operating-heating/prototype/validation_diff.py": "ef9b94e2bf13d8b40afbf465558dab913943500c62ea431a34fddcb51b8a1176"
+  },
+  "exact_unchanged_scalar_outputs": {
+    "baseline": 158,
+    "reserve": 158,
+    "demand": 158,
+    "efficiency": 158,
+    "availability": 158,
+    "negative_efficiency": 158,
+    "overunit_efficiency": 158
+  },
+  "revised_verdict_count": 18,
+  "baseline_violation": "divertor_heat_ok retained",
+  "quality_differential": "identical to original: L2 10 unchanged; L6 227 to 229 with same two introduced findings"
+}

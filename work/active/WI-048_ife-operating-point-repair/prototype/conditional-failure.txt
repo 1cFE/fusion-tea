@@ -1,0 +1,7 @@
+Model failed exact-route validation: SI_EVIDENCE_INCOMPLETE: if net_electric_power_gw_in > 0.0? (0.113 * total_capital_billions)
+            / (0.0876 * availability_in * net_electric_power_gw_in) else 0.0: reference='if net_electric_power_gw_in > 0.0? (0.113 * total_capital_billions)\n            / (0.0876 * availability_in * net_electric_power_gw_in) else 0.0': inspect_reference_uses: resolved reference has no exact target [root-0/analyses/hif_economics.sysml:104]
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-048_ife-operating-point-repair/prototype/execute.py", line 8, in <module>
+    assert run_codegen(GenerationConfig(models_path=root/'models',output_path=package,package_name='wi048_probe',overwrite=True))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -3,8 +3,7 @@
 The handwritten impl walks intervals; the oracle derives the closed form
 t_k = k*L/b + (k-1)*d (design D1). They are checked against each other on the
 lifetime research's synthetic cases (spec MR-WI046-12; the research's lines 100-110)
-and against the research's stated values. The held mode is checked against the
-retired chain's oracle mirror by ``==`` (spec MR-WI046-5).
+and against the research's stated values. The held physical mode is retained; WI-052 checks its finance independently.
 """
 
 import math
@@ -115,7 +114,7 @@ def test_long_horizon_approaches_the_steady_cycle_limit():
     assert abs(r["availability"] - L / (L + d)) < 1e-3
 
 
-def test_held_mode_equals_the_retired_chain_by_identity():
+def test_held_mode_retains_physical_identity_and_independent_finance():
     for q_n, fluence, years in ((4.5, 18.0, 30.0), (100.0 * 0.7997724687144482 / 660.0791423448563, 500.0, 30.0),
                                  (50.0 * 0.7997724687144482 / 660.0791423448563, 18.0, 5.0)):
         held = lifecycle_calendar_held(cost_per_event=671_160_000.0, q_n=q_n, fluence_limit=fluence,
@@ -124,7 +123,12 @@ def test_held_mode_equals_the_retired_chain_by_identity():
         mirror = _oracle_levelized_replacement_cost(cost_per_event=671_160_000.0, q_n=q_n,
                                                     fluence_limit=fluence, availability=0.9,
                                                     interest_rate=0.07, operational_years=years)
-        assert held["cas72_annual"] == mirror
+        # The historical mirror is not the expected value for stable rate-limit finance.
+        from tests.models.test_mfe_financial_rate_limits import reference, assert_finance
+        with __import__('decimal').localcontext() as context:
+            context.prec=100
+            expected=reference.dated_pv(671_160_000.0,.07,held['events'])*reference.crf(.07,years)
+            assert_finance(held['cas72_annual'],expected,'held annualization',(q_n,fluence,years))
         assert held["availability"] == 0.9 and held["dated_energy_ratio"] == 1.0
 
 

@@ -1,0 +1,148 @@
+...............FFFFFFFFFFFFFFFFFFFFFFFF..................F..F..F.......  [100%]
+=================================== FAILURES ===================================
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-absent] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-null] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-nan] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-absent] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-null] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-nan] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-absent] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-null] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-nan] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-absent] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-null] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-nan] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-absent] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-null] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-nan] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-absent] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-null] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-nan] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-absent] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-null] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-nan] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-absent] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-null] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-nan] _
+tests/study/test_study_publication_fail_closed.py:182: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_native_publication_refuses_before_replacing_evidence[absent-20260912-plant-closure] _
+tests/study/test_native_publication.py:81: in test_native_publication_refuses_before_replacing_evidence
+    assert (tmp_path / name).read_bytes() == previous
+E   AssertionError: assert b'candidate_i...e,satisfied\n' == b'previous evidence\n'
+E     
+E     At index 0 diff: b'c' != b'p'
+E     Use -v to get more diff
+_ test_native_publication_refuses_before_replacing_evidence[null-20260912-plant-closure] _
+tests/study/test_native_publication.py:81: in test_native_publication_refuses_before_replacing_evidence
+    assert (tmp_path / name).read_bytes() == previous
+E   AssertionError: assert b'candidate_i...e,satisfied\n' == b'previous evidence\n'
+E     
+E     At index 0 diff: b'c' != b'p'
+E     Use -v to get more diff
+_ test_native_publication_refuses_before_replacing_evidence[nan-20260912-plant-closure] _
+tests/study/test_native_publication.py:81: in test_native_publication_refuses_before_replacing_evidence
+    assert (tmp_path / name).read_bytes() == previous
+E   AssertionError: assert b'candidate_i...e,satisfied\n' == b'previous evidence\n'
+E     
+E     At index 0 diff: b'c' != b'p'
+E     Use -v to get more diff
+=========================== short test summary info ============================
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-nan]
+FAILED tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[absent-20260912-plant-closure]
+FAILED tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[null-20260912-plant-closure]
+FAILED tests/study/test_native_publication.py::test_native_publication_refuses_before_replacing_evidence[nan-20260912-plant-closure]
+27 failed, 44 passed in 3.79s

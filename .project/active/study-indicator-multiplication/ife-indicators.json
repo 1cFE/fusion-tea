@@ -1,0 +1,576 @@
+{
+  "schema_version": "study-indicators/v1",
+  "tool": {
+    "path": "scripts/study/indicators.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "55509c0ee55e03411acb8d0007554396ace3cfe9e66b27f94c121023c9aa25b9",
+      "files": [
+        {
+          "path": "scripts/study/indicators.py",
+          "sha256": "a1035fa2fdc505d7478039bc05e0e1eb2dab156f08d8ad7cac26d21d4ac4e8a0"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+        },
+        {
+          "path": "scripts/study/schemas/axis_declaration.v1.schema.json",
+          "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+        },
+        {
+          "path": "scripts/study/schemas/indicators.v1.schema.json",
+          "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+        },
+        {
+          "path": "scripts/study/schemas/study_package_manifest.v1.schema.json",
+          "sha256": "5fd44712cd032647df701a24f237f2dda7ccd75c2f101a5c6244c9b6bca47032"
+        }
+      ]
+    }
+  },
+  "package": {
+    "path": "exploration/ife_e2e/generated",
+    "package_name": "ife_tea",
+    "semantic_fingerprint": "8b7a76a631e6e55dbd45cf617a68fae87def408e4f8494015e40c0c8aac585dd",
+    "recorded_executable_fingerprint": "045417b231573653d754b68c8e26eec26fcec72fdc3814df27e504416639fe63",
+    "indicator_input_fingerprint": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "0539f0d5cbf2443512ea71ac93c19a2b80341bbf618337405993e4cab447daa1",
+      "files": [
+        {
+          "path": "contracts/model_contract.json",
+          "sha256": "aaf05bc2d40b7274ca080701116f1d26aabc02db907c685d7fe51af5cbd76dc4"
+        },
+        {
+          "path": "inputs/hif_driver_params.json",
+          "sha256": "b4d483781b037e744e8b9c7e931236b2f3b8638baa8ea57e228bbd6b1966615e"
+        },
+        {
+          "path": "inputs/hif_plant_params.json",
+          "sha256": "a3ec7359041c3d29bf13d38aae048c264cc200973eb84fcac221b3a79bd4fde7"
+        },
+        {
+          "path": "inputs/ife_lcoe_params.json",
+          "sha256": "6266c1e48e38971157011c5729c0f31751a2b66a06dd4b105107c09ee699270c"
+        },
+        {
+          "path": "inputs/ife_plant_params.json",
+          "sha256": "bd2fe10036d6f4d8633d72620c4cc96c9ffead9e3b5115fe3e1e45810e158d63"
+        },
+        {
+          "path": "pipelines/pipeline.yaml",
+          "sha256": "a1ec5b4a85afe003621985716fa533ae748f6d503e8fdd9b2e4e9f4345497dbe"
+        }
+      ]
+    }
+  },
+  "manifest": {
+    "path": "exploration/ife_e2e/studies/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "843c21a9ef59520612b83c8cd1f91ae12a73efbbc7d216cd82da6d07e4175b10"
+  },
+  "axis_declaration": {
+    "path": "exploration/ife_e2e/studies/axes.json",
+    "schema_version": "study-axis-declaration/v1",
+    "digest": "6f38ef26a45dc1a7b74bccea0ecab37ba30f6bd64e49f21039e2e64dae3accf4",
+    "groups_declared": [
+      "beam_energy_mj",
+      "frequency"
+    ],
+    "subset": false
+  },
+  "objective_catalog": [
+    {
+      "name": "driver__meier_cost__bank_energy_joules",
+      "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules"
+    },
+    {
+      "name": "driver__meier_cost__cost_billions",
+      "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions"
+    },
+    {
+      "name": "driver__meier_cost__gamma",
+      "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__gamma"
+    },
+    {
+      "name": "hawker_price__generating",
+      "channel": "hif_plant_pkg__hif_plant__hawker_price__generating"
+    },
+    {
+      "name": "hawker_price__price",
+      "channel": "hif_plant_pkg__hif_plant__hawker_price__price"
+    },
+    {
+      "name": "lcoe_calc__annual_driver_replacement_cost",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__annual_driver_replacement_cost"
+    },
+    {
+      "name": "lcoe_calc__discounted_cost",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost"
+    },
+    {
+      "name": "lcoe_calc__discounted_energy",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy"
+    },
+    {
+      "name": "lcoe_calc__driver_capital_cost",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_capital_cost"
+    },
+    {
+      "name": "lcoe_calc__driver_electric_power",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power"
+    },
+    {
+      "name": "lcoe_calc__driver_lifetime_years",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_lifetime_years"
+    },
+    {
+      "name": "lcoe_calc__driver_recirculating_fraction",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction"
+    },
+    {
+      "name": "lcoe_calc__energy_on_target",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__energy_on_target"
+    },
+    {
+      "name": "lcoe_calc__fusion_energy_per_shot",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__fusion_energy_per_shot"
+    },
+    {
+      "name": "lcoe_calc__fusion_power",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__fusion_power"
+    },
+    {
+      "name": "lcoe_calc__gross_electric_power",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power"
+    },
+    {
+      "name": "lcoe_calc__net_electric_power",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power"
+    },
+    {
+      "name": "lcoe_calc__net_electric_power_gw",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw"
+    },
+    {
+      "name": "lcoe_calc__other_parasitic_power",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power"
+    },
+    {
+      "name": "lcoe_calc__shots_per_year",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__shots_per_year"
+    },
+    {
+      "name": "lcoe_calc__thermal_power",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power"
+    },
+    {
+      "name": "lcoe_calc__thermal_power_gw",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw"
+    },
+    {
+      "name": "lcoe_calc__total_recirculating_fraction",
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction"
+    },
+    {
+      "name": "meier_capital_calc__total_capital_billions",
+      "channel": "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions"
+    },
+    {
+      "name": "meier_coe_calc__annualized_cost",
+      "channel": "hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost"
+    },
+    {
+      "name": "meier_coe_calc__energy_denominator",
+      "channel": "hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator"
+    },
+    {
+      "name": "meier_price__generating",
+      "channel": "hif_plant_pkg__hif_plant__meier_price__generating"
+    },
+    {
+      "name": "meier_price__price",
+      "channel": "hif_plant_pkg__hif_plant__meier_price__price"
+    },
+    {
+      "name": "meier_reactor_cost_calc__reactor_cost_billions",
+      "channel": "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions"
+    },
+    {
+      "name": "recirc_calc__f_recirc",
+      "channel": "hif_plant_pkg__hif_plant__recirc_calc__f_recirc"
+    }
+  ],
+  "not_derivable": {
+    "statements": [
+      "monotonicity or sign of any response",
+      "same-quantity identity across differing key names",
+      "intra-module operand dependency (the trace is module-level)"
+    ],
+    "positive_reading": "A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds."
+  },
+  "warnings": [],
+  "groups": [
+    {
+      "axis": "beam_energy_mj",
+      "declared_keys": [
+        {
+          "key": "hif_plant_pkg__hif_plant__driver__beam_energy_mj",
+          "provenance": "fan_out",
+          "entry_type": "design_attribute"
+        }
+      ],
+      "group_valid": true,
+      "no_constraint_response": false,
+      "constraints_reachable": [
+        {
+          "constraint_id": "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c",
+          "definition_qualified_name": "fusion_cycle::'Positive Net Generation'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_power",
+              "class": "computed",
+              "ref": "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        }
+      ],
+      "constraints_unreachable": [
+        {
+          "constraint_id": "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b",
+          "definition_qualified_name": "fusion_cycle::'Viability Threshold'",
+          "source_local_identity": "viability",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "eta",
+              "class": "bound",
+              "ref": "hif_plant_pkg__hif_plant__driver__efficiency",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "gain_in",
+              "class": "bound",
+              "ref": "hif_plant_pkg__hif_plant__gain",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "hif_plant_pkg__hif_plant__viability__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        }
+      ],
+      "bounds": [
+        {
+          "constraint_id": "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c",
+          "definition_qualified_name": "fusion_cycle::'Positive Net Generation'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_power",
+              "class": "computed",
+              "ref": "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b",
+          "definition_qualified_name": "fusion_cycle::'Viability Threshold'",
+          "source_local_identity": "viability",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "eta",
+              "class": "bound",
+              "ref": "hif_plant_pkg__hif_plant__driver__efficiency",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "gain_in",
+              "class": "bound",
+              "ref": "hif_plant_pkg__hif_plant__gain",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "hif_plant_pkg__hif_plant__viability__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        }
+      ],
+      "objectives_reachable": [
+        "driver__meier_cost__bank_energy_joules",
+        "driver__meier_cost__cost_billions",
+        "driver__meier_cost__gamma",
+        "hawker_price__generating",
+        "hawker_price__price",
+        "lcoe_calc__annual_driver_replacement_cost",
+        "lcoe_calc__discounted_cost",
+        "lcoe_calc__discounted_energy",
+        "lcoe_calc__driver_capital_cost",
+        "lcoe_calc__driver_electric_power",
+        "lcoe_calc__driver_lifetime_years",
+        "lcoe_calc__driver_recirculating_fraction",
+        "lcoe_calc__energy_on_target",
+        "lcoe_calc__fusion_energy_per_shot",
+        "lcoe_calc__fusion_power",
+        "lcoe_calc__gross_electric_power",
+        "lcoe_calc__net_electric_power",
+        "lcoe_calc__net_electric_power_gw",
+        "lcoe_calc__other_parasitic_power",
+        "lcoe_calc__shots_per_year",
+        "lcoe_calc__thermal_power",
+        "lcoe_calc__thermal_power_gw",
+        "lcoe_calc__total_recirculating_fraction",
+        "meier_capital_calc__total_capital_billions",
+        "meier_coe_calc__annualized_cost",
+        "meier_coe_calc__energy_denominator",
+        "meier_price__generating",
+        "meier_price__price",
+        "meier_reactor_cost_calc__reactor_cost_billions"
+      ],
+      "objectives_unreachable": [
+        "recirc_calc__f_recirc"
+      ],
+      "sibling_candidates": [],
+      "trace_size": {
+        "modules_fired": 9,
+        "channels_tainted": 31
+      },
+      "warnings": [],
+      "not_derivable": {
+        "statements": [
+          "monotonicity or sign of any response",
+          "same-quantity identity across differing key names",
+          "intra-module operand dependency (the trace is module-level)"
+        ],
+        "positive_reading": "A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds."
+      }
+    },
+    {
+      "axis": "frequency",
+      "declared_keys": [
+        {
+          "key": "hif_plant_pkg__hif_plant__frequency",
+          "provenance": "fan_out",
+          "entry_type": "design_attribute"
+        }
+      ],
+      "group_valid": true,
+      "no_constraint_response": false,
+      "constraints_reachable": [
+        {
+          "constraint_id": "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c",
+          "definition_qualified_name": "fusion_cycle::'Positive Net Generation'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_power",
+              "class": "computed",
+              "ref": "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        }
+      ],
+      "constraints_unreachable": [
+        {
+          "constraint_id": "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b",
+          "definition_qualified_name": "fusion_cycle::'Viability Threshold'",
+          "source_local_identity": "viability",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "eta",
+              "class": "bound",
+              "ref": "hif_plant_pkg__hif_plant__driver__efficiency",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "gain_in",
+              "class": "bound",
+              "ref": "hif_plant_pkg__hif_plant__gain",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "hif_plant_pkg__hif_plant__viability__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        }
+      ],
+      "bounds": [
+        {
+          "constraint_id": "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c",
+          "definition_qualified_name": "fusion_cycle::'Positive Net Generation'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_power",
+              "class": "computed",
+              "ref": "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b",
+          "definition_qualified_name": "fusion_cycle::'Viability Threshold'",
+          "source_local_identity": "viability",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "eta",
+              "class": "bound",
+              "ref": "hif_plant_pkg__hif_plant__driver__efficiency",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "gain_in",
+              "class": "bound",
+              "ref": "hif_plant_pkg__hif_plant__gain",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "hif_plant_pkg__hif_plant__viability__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        }
+      ],
+      "objectives_reachable": [
+        "driver__meier_cost__bank_energy_joules",
+        "driver__meier_cost__cost_billions",
+        "driver__meier_cost__gamma",
+        "hawker_price__generating",
+        "hawker_price__price",
+        "lcoe_calc__annual_driver_replacement_cost",
+        "lcoe_calc__discounted_cost",
+        "lcoe_calc__discounted_energy",
+        "lcoe_calc__driver_capital_cost",
+        "lcoe_calc__driver_electric_power",
+        "lcoe_calc__driver_lifetime_years",
+        "lcoe_calc__driver_recirculating_fraction",
+        "lcoe_calc__energy_on_target",
+        "lcoe_calc__fusion_energy_per_shot",
+        "lcoe_calc__fusion_power",
+        "lcoe_calc__gross_electric_power",
+        "lcoe_calc__net_electric_power",
+        "lcoe_calc__net_electric_power_gw",
+        "lcoe_calc__other_parasitic_power",
+        "lcoe_calc__shots_per_year",
+        "lcoe_calc__thermal_power",
+        "lcoe_calc__thermal_power_gw",
+        "lcoe_calc__total_recirculating_fraction",
+        "meier_capital_calc__total_capital_billions",
+        "meier_coe_calc__annualized_cost",
+        "meier_coe_calc__energy_denominator",
+        "meier_price__generating",
+        "meier_price__price",
+        "meier_reactor_cost_calc__reactor_cost_billions"
+      ],
+      "objectives_unreachable": [
+        "recirc_calc__f_recirc"
+      ],
+      "sibling_candidates": [],
+      "trace_size": {
+        "modules_fired": 9,
+        "channels_tainted": 31
+      },
+      "warnings": [],
+      "not_derivable": {
+        "statements": [
+          "monotonicity or sign of any response",
+          "same-quantity identity across differing key names",
+          "intra-module operand dependency (the trace is module-level)"
+        ],
+        "positive_reading": "A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds."
+      }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+Independent baseline/mutations and nine public executions passed.
+Old prices: 270.1211779380445 4.735403549076959
+New prices: 240.66646063955096 5.589991561584082
+Maximum relative oracle residual: 9.642452298033805e-16

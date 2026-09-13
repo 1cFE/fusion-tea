@@ -1,0 +1,5 @@
+eta,gain,eta_g,net_positive,generating,price_eligible,hawker_price,old_viable,new_verdict,new_viable,at_boundary,match
+0.02,10.0,0.2,violated,0.0,False,,False,violated,False,False,True
+0.02,15.0,0.3,violated,0.0,False,,False,violated,False,False,True
+0.03,10.0,0.3,violated,0.0,False,,False,violated,False,False,True
+0.03,15.0,0.44999999999999996,violated,0.0,False,,False,violated,False,False,True

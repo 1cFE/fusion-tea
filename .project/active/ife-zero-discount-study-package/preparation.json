@@ -1,0 +1,51 @@
+{
+  "metadata_fixed_point": true,
+  "files": {
+    "/home/reid/1cfe/fusion-tea-codex-test/exploration/ife_e2e/studies/manifest.json": "de877abb23922b6ca7614dea3e8dc95bc56f9a00ecb71674a98f8cfe363562d7",
+    "/home/reid/1cfe/fusion-tea-codex-test/exploration/ife_e2e/studies/axes.json": "1700702ed73aeb1edab942bce831441f5ff3837c0b57980dc634a575a68be50b",
+    "/home/reid/1cfe/fusion-tea-codex-test/exploration/ife_e2e/studies/census.json": "424b6d82999e5aa8471e473d262331f15da857a0d5729018b4e05d67afe48f3e",
+    "/home/reid/1cfe/fusion-tea-codex-test/exploration/ife_e2e/ife.snapshot.json": "96088cf670d5dbeb02734cf024f2e45261b7a9ce4ae5db124bfe93a187411497"
+  },
+  "provenance": {
+    "executable_fingerprint": "2810897c4ef9db8cb646aec5616884de42963c41e3b92ac20c2947450ffcbfd7",
+    "semantic_fingerprint": "8596c899df17f763bbce6eb50a18c1b5bca83080c40233e40bc01a7bb1aa1888"
+  },
+  "baseline": {
+    "point": {
+      "hif_plant_pkg__hif_plant__driver__efficiency": 0.28,
+      "hif_plant_pkg__hif_plant__driver__lifetime_shots": 6000000000.0,
+      "hif_plant_pkg__hif_plant__availability": 0.9,
+      "hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple": 1.15,
+      "hif_plant_pkg__hif_plant__chamber__yield_cost_constant": 5000000.0,
+      "hif_plant_pkg__hif_plant__discount_rate": 0.08,
+      "hif_plant_pkg__hif_plant__driver__beam_energy_mj": 5.0,
+      "hif_plant_pkg__hif_plant__driver__num_chambers": 1.0,
+      "hif_plant_pkg__hif_plant__frequency": 4.6,
+      "hif_plant_pkg__hif_plant__gain": 87.0,
+      "hif_plant_pkg__hif_plant__om_cost_constant": 65.0,
+      "hif_plant_pkg__hif_plant__plant_cost_constant": 2000.0,
+      "hif_plant_pkg__hif_plant__reactor_units": 1.0,
+      "hif_plant_pkg__hif_plant__target_factory__cost_per_target": 10.0,
+      "hif_plant_pkg__hif_plant__target_factory_direct_cost_billions": 0.1,
+      "hif_plant_pkg__hif_plant__thermal_efficiency": 0.45,
+      "hif_plant_pkg__hif_plant__construction_duration": 5.0,
+      "hif_plant_pkg__hif_plant__operational_duration": 40.0,
+      "hif_plant_pkg__hif_plant__viability__threshold": 10.0
+    },
+    "headline": {
+      "channel": "hif_plant_pkg__hif_plant__hawker_price__price",
+      "value": 240.66646063955096
+    },
+    "verdicts": [
+      {
+        "source_local_identity": "net_positive",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "viability",
+        "expected": "satisfied"
+      }
+    ]
+  },
+  "channel_count": 32
+}

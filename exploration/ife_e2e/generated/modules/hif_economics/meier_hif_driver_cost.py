@@ -16,19 +16,21 @@ coefficients (fit to induction linac studies). Reference: 5 Hz,
 single chamber.
 
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
-*Ref**: Eq. 5 (lines 173-192)
+*Reference**: images/page_004_eq_0.png, Eq. 5
+*Last Updated**: 2026-09-10
 *Basis**: Meier 1986 parametric driver cost formula for HIF
 induction linacs. Year-dollars: 1988$.
 
 Inputs:
-    - beam_energy_mj: beam_energy_mj parameter
-    - driver_efficiency: driver_efficiency parameter
-    - num_chambers: num_chambers parameter
+    - beam_energy_mj_in: beam_energy_mj_in parameter
+    - num_chambers_in: num_chambers_in parameter
     - rep_rate: rep_rate parameter
+    - driver_efficiency: driver_efficiency parameter
 
 Outputs:
-    - cost_billions: cost_billions result
     - gamma: gamma result
+    - bank_energy_joules: bank_energy_joules result
+    - cost_billions: cost_billions result
 
 SysML Source: root-0/analyses/hif_economics.sysml:4
 
@@ -49,15 +51,15 @@ class Meier_HIF_Driver_CostInput(BaseModel):
     """Input model for Meier_HIF_Driver_CostModule.
 
     Attributes:
-        beam_energy_mj: beam_energy_mj input
-        driver_efficiency: driver_efficiency input
-        num_chambers: num_chambers input
+        beam_energy_mj_in: beam_energy_mj_in input
+        num_chambers_in: num_chambers_in input
         rep_rate: rep_rate input
+        driver_efficiency: driver_efficiency input
     """
-    beam_energy_mj: float = Field(..., description="beam_energy_mj input")
-    driver_efficiency: float = Field(..., description="driver_efficiency input")
-    num_chambers: float = Field(..., description="num_chambers input")
+    beam_energy_mj_in: float = Field(..., description="beam_energy_mj_in input")
+    num_chambers_in: float = Field(..., description="num_chambers_in input")
     rep_rate: float = Field(..., description="rep_rate input")
+    driver_efficiency: float = Field(..., description="driver_efficiency input")
 
 
 class Meier_HIF_Driver_CostModule(ModuleBase[Meier_HIF_Driver_CostInput, Meier_HIF_Driver_CostOutput]):
@@ -77,27 +79,29 @@ coefficients (fit to induction linac studies). Reference: 5 Hz,
 single chamber.
 
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
-*Ref**: Eq. 5 (lines 173-192)
+*Reference**: images/page_004_eq_0.png, Eq. 5
+*Last Updated**: 2026-09-10
 *Basis**: Meier 1986 parametric driver cost formula for HIF
 induction linacs. Year-dollars: 1988$.
 
 Inputs:
-    - beam_energy_mj: beam_energy_mj parameter
-    - driver_efficiency: driver_efficiency parameter
-    - num_chambers: num_chambers parameter
+    - beam_energy_mj_in: beam_energy_mj_in parameter
+    - num_chambers_in: num_chambers_in parameter
     - rep_rate: rep_rate parameter
+    - driver_efficiency: driver_efficiency parameter
 
 Outputs:
-    - cost_billions: cost_billions result
     - gamma: gamma result
+    - bank_energy_joules: bank_energy_joules result
+    - cost_billions: cost_billions result
 
 SysML Source: root-0/analyses/hif_economics.sysml:4
 
     SysML Source: root-0/analyses/hif_economics.sysml:4
 
     Calculation Specification:
-        cost_billions = (0.32 + 0.088 * beam_energy_mj) * (1.25 + 0.05 * num_chambers) * (1.0 + 0.0088 * (rep_rate - 5.0))
-        bank_energy_joules = beam_energy_mj * 1000000.0 / driver_efficiency
+        cost_billions = (0.32 + 0.088 * beam_energy_mj_in) * (1.25 + 0.05 * num_chambers_in) * (1.0 + 0.0088 * (rep_rate - 5.0))
+        bank_energy_joules = beam_energy_mj_in * 1000000.0 / driver_efficiency
         gamma = cost_billions * 1000000000.0 / bank_energy_joules
         
 Documentation:
@@ -115,7 +119,8 @@ coefficients (fit to induction linac studies). Reference: 5 Hz,
 single chamber.
 
 *Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md
-*Ref**: Eq. 5 (lines 173-192)
+*Reference**: images/page_004_eq_0.png, Eq. 5
+*Last Updated**: 2026-09-10
 *Basis**: Meier 1986 parametric driver cost formula for HIF
 induction linacs. Year-dollars: 1988$.
 
@@ -123,42 +128,42 @@ induction linacs. Year-dollars: 1988$.
     for manual implementation.
 
     NOTE: Uses MultiOutput pattern for type-safe multi-output support.
-    TEAx automatically extracts cost_billions, gamma fields to separate channels.
+    TEAx automatically extracts gamma, bank_energy_joules, cost_billions fields to separate channels.
     """
 
     name: str = "Meier_HIF_Driver_CostModule"
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, beam_energy_mj: float, driver_efficiency: float, num_chambers: float, rep_rate: float    ) -> Meier_HIF_Driver_CostInput:
+        self, beam_energy_mj_in: float, num_chambers_in: float, rep_rate: float, driver_efficiency: float    ) -> Meier_HIF_Driver_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            beam_energy_mj: beam_energy_mj input
-            driver_efficiency: driver_efficiency input
-            num_chambers: num_chambers input
+            beam_energy_mj_in: beam_energy_mj_in input
+            num_chambers_in: num_chambers_in input
             rep_rate: rep_rate input
+            driver_efficiency: driver_efficiency input
 
         Returns:
             Validated input model
         """
-        return Meier_HIF_Driver_CostInput(beam_energy_mj=beam_energy_mj, driver_efficiency=driver_efficiency, num_chambers=num_chambers, rep_rate=rep_rate)
+        return Meier_HIF_Driver_CostInput(beam_energy_mj_in=beam_energy_mj_in, num_chambers_in=num_chambers_in, rep_rate=rep_rate, driver_efficiency=driver_efficiency)
 
     def run(
-        self, beam_energy_mj: float, driver_efficiency: float, num_chambers: float, rep_rate: float    ) -> ModuleResult[Meier_HIF_Driver_CostOutput]:
+        self, beam_energy_mj_in: float, num_chambers_in: float, rep_rate: float, driver_efficiency: float    ) -> ModuleResult[Meier_HIF_Driver_CostOutput]:
         """Execute calculation.
 
         Args:
-            beam_energy_mj: beam_energy_mj input
-            driver_efficiency: driver_efficiency input
-            num_chambers: num_chambers input
+            beam_energy_mj_in: beam_energy_mj_in input
+            num_chambers_in: num_chambers_in input
             rep_rate: rep_rate input
+            driver_efficiency: driver_efficiency input
 
         Returns:
-            Module result with Meier_HIF_Driver_CostOutput (cost_billions, gamma)
+            Module result with Meier_HIF_Driver_CostOutput (gamma, bank_energy_joules, cost_billions)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(beam_energy_mj, driver_efficiency, num_chambers, rep_rate)
+        validated_inputs = self.validate_and_fill_default(beam_energy_mj_in, num_chambers_in, rep_rate, driver_efficiency)
 
         # Import handwritten implementation
         from ife_tea.handwritten.hif_economics.meier_hif_driver_cost_impl import (
@@ -166,14 +171,15 @@ induction linacs. Year-dollars: 1988$.
         )
 
         # Execute implementation - returns tuple of values
-        cost_billions, gamma = run_meier_hif_driver_cost(validated_inputs)
+        gamma, bank_energy_joules, cost_billions = run_meier_hif_driver_cost(validated_inputs)
 
 
         # Return MultiOutput container (TEAx auto-extracts to channels)
         # MultiOutput fields use plain float (not RootModel[float])
         return ModuleResult(
             data=Meier_HIF_Driver_CostOutput(
-                cost_billions=cost_billions,
                 gamma=gamma,
+                bank_energy_joules=bank_energy_joules,
+                cost_billions=cost_billions,
             )
         )

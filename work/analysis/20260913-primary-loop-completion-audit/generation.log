@@ -1,0 +1,18 @@
+{
+  "ordered_valid_body_equal": true,
+  "output_tuple_count": 13,
+  "prior_seeds_preserved": 12,
+  "seeds": 13,
+  "exact_fresh_receipt_files": 247,
+  "production_unchanged_by_audit": true,
+  "source_twins_equal": true,
+  "checked_historical_paths": [
+    "work/active/WI-050_mfe-coherent-operating-heating",
+    "work/active/WI-051_mfe-model-owned-major-radius",
+    "work/active/WI-052_mfe-financial-rate-limits",
+    "work/active/WI-053_magnet-and-cryogenic-input-domains",
+    "work/active/WI-054_faithful-model-equations-and-citations",
+    "work/active/WI-055_winding-pack-input-domain"
+  ],
+  "historical_diff": []
+}

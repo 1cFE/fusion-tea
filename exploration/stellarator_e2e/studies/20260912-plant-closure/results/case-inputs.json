@@ -1,0 +1,3871 @@
+[
+  {
+    "candidate_id": "20260912-plant-closure:c0000",
+    "inputs": {},
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0001",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0002",
+    "inputs": {
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0003",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0004",
+    "inputs": {
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0005",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_th_direct": 0.333
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0006",
+    "inputs": {
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_th_direct": 0.333
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0007",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0008",
+    "inputs": {
+      "stellarator_09__stellaris__outage_years": 0.4166666666666667
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0009",
+    "inputs": {
+      "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+      "stellarator_09__stellaris__unplanned_fraction": 0.05
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0010",
+    "inputs": {
+      "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+      "stellarator_09__stellaris__unplanned_fraction": 0.1
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0011",
+    "inputs": {
+      "stellarator_09__stellaris__unplanned_fraction": 0.05
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0012",
+    "inputs": {
+      "stellarator_09__stellaris__unplanned_fraction": 0.1
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0013",
+    "inputs": {
+      "stellarator_09__stellaris__outage_years": 0.8333333333333334
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0014",
+    "inputs": {
+      "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+      "stellarator_09__stellaris__unplanned_fraction": 0.05
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0015",
+    "inputs": {
+      "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+      "stellarator_09__stellaris__unplanned_fraction": 0.1
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0016",
+    "inputs": {
+      "stellarator_09__stellaris__burn_fraction": 0.025
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0017",
+    "inputs": {
+      "stellarator_09__stellaris__burn_fraction": 0.1
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0018",
+    "inputs": {
+      "stellarator_09__stellaris__q_target_ref": 5.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0019",
+    "inputs": {
+      "stellarator_09__stellaris__f_rad_total": 0.8
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0020",
+    "inputs": {
+      "stellarator_09__stellaris__f_rad_total": 0.95
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0021",
+    "inputs": {
+      "stellarator_09__stellaris__p_wallplug_heat": 120.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0022",
+    "inputs": {
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0023",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0024",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0025",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0026",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0027",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0028",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0029",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0030",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0031",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__outage_years": 0.4166666666666667
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0032",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+      "stellarator_09__stellaris__unplanned_fraction": 0.05
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0033",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+      "stellarator_09__stellaris__unplanned_fraction": 0.1
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0034",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.05
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0035",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.1
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0036",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__outage_years": 0.8333333333333334
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0037",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+      "stellarator_09__stellaris__unplanned_fraction": 0.05
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0038",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+      "stellarator_09__stellaris__unplanned_fraction": 0.1
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0039",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__burn_fraction": 0.025,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0040",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__burn_fraction": 0.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0041",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__q_target_ref": 5.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0042",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__f_rad_total": 0.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0043",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__f_rad_total": 0.95,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0044",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 120.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0045",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0046",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0047",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0048",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0049",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0050",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0051",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0052",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0053",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0054",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__outage_years": 0.4166666666666667
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0055",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+      "stellarator_09__stellaris__unplanned_fraction": 0.05
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0056",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+      "stellarator_09__stellaris__unplanned_fraction": 0.1
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0057",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.05
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0058",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.1
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0059",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__outage_years": 0.8333333333333334
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0060",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+      "stellarator_09__stellaris__unplanned_fraction": 0.05
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0061",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+      "stellarator_09__stellaris__unplanned_fraction": 0.1
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0062",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__burn_fraction": 0.025,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0063",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__burn_fraction": 0.1,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0064",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__q_target_ref": 5.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0065",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__f_rad_total": 0.8,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0066",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__f_rad_total": 0.95,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0067",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 120.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0068",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0069",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0070",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0071",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0072",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0073",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0074",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0075",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0076",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__eta_p_direct": 0.5,
+      "stellarator_09__stellaris__loop_live": 0.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_pump_direct": 195.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0077",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0078",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__cycle_live": 0.0,
+      "stellarator_09__stellaris__eta_th_direct": 0.333,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0079",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0080",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0081",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0082",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.05
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0083",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__outage_years": 0.4166666666666667,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.1
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0084",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.05
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0085",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.1
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0086",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0087",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.05
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0088",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__outage_years": 0.8333333333333334,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__unplanned_fraction": 0.1
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0089",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__burn_fraction": 0.025,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0090",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__burn_fraction": 0.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0091",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__q_target_ref": 5.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0092",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__f_rad_total": 0.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0093",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__f_rad_total": 0.95,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0094",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0095",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 120.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0096",
+    "inputs": {
+      "stellarator_09__stellaris__f_loss": 0.8,
+      "stellarator_09__stellaris__loop_dT_blanket": 250.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0097",
+    "inputs": {
+      "stellarator_09__stellaris__f_loss": 0.8
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0098",
+    "inputs": {
+      "stellarator_09__stellaris__f_loss": 0.8,
+      "stellarator_09__stellaris__loop_dT_blanket": 166.66666666666669
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0099",
+    "inputs": {
+      "stellarator_09__stellaris__loop_dT_blanket": 250.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0100",
+    "inputs": {
+      "stellarator_09__stellaris__loop_dT_blanket": 166.66666666666669
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0101",
+    "inputs": {
+      "stellarator_09__stellaris__f_loss": 1.2,
+      "stellarator_09__stellaris__loop_dT_blanket": 250.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0102",
+    "inputs": {
+      "stellarator_09__stellaris__f_loss": 1.2
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0103",
+    "inputs": {
+      "stellarator_09__stellaris__f_loss": 1.2,
+      "stellarator_09__stellaris__loop_dT_blanket": 166.66666666666669
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0104",
+    "inputs": {
+      "stellarator_09__stellaris__loop_T_in": 476.15
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0105",
+    "inputs": {
+      "stellarator_09__stellaris__loop_T_in": 477.15
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0106",
+    "inputs": {
+      "stellarator_09__stellaris__loop_T_in": 735.15
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0107",
+    "inputs": {
+      "stellarator_09__stellaris__loop_T_in": 736.15
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0108",
+    "inputs": {
+      "stellarator_09__stellaris__T2_max": 750.0,
+      "stellarator_09__stellaris__T2_min": 135.0,
+      "stellarator_09__stellaris__a_fit": 0.4347,
+      "stellarator_09__stellaris__b_fit": 2.5043
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0109",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0110",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0111",
+    "inputs": {
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0112",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0113",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0114",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 18000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0115",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 3.036e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0116",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0117",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0118",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0119",
+    "inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0120",
+    "inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0121",
+    "inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 15250000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0122",
+    "inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0123",
+    "inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 5.5660000000000007e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0124",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0125",
+    "inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.45,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0126",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0127",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0128",
+    "inputs": {
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0129",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0130",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0131",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 18000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0132",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 3.036e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0133",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0134",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0135",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0136",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 11.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0137",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 25.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0138",
+    "inputs": {
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 11.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0139",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 15.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0140",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 18000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 9.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0141",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 3.036e+20,
+      "stellarator_09__stellaris__n_loops": 9.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0142",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 19.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0143",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 11.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0144",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 21.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0145",
+    "inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 12.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0146",
+    "inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 13.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0147",
+    "inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 15250000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 12.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0148",
+    "inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 10.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0149",
+    "inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 5.5660000000000007e+20,
+      "stellarator_09__stellaris__n_loops": 17.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0150",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 18.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0151",
+    "inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.45,
+      "stellarator_09__stellaris__magnet__I_coil": 14750000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 12.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0152",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 11.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0153",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 25.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0154",
+    "inputs": {
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 11.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0155",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 15.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0156",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 18000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 9.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0157",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 3.036e+20,
+      "stellarator_09__stellaris__n_loops": 9.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0158",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 19.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0159",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 11.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0160",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 21.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0161",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 56.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0162",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0163",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 17.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0164",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 41.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0165",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 3.036e+20,
+      "stellarator_09__stellaris__n_loops": 12.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0166",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 17.0,
+      "stellarator_09__stellaris__eta_source_heat": 0.45,
+      "stellarator_09__stellaris__magnet__I_coil": 15250000.0,
+      "stellarator_09__stellaris__n_e0": 5.5660000000000007e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0167",
+    "inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.45,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0168",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__eta_source_heat": 0.45,
+      "stellarator_09__stellaris__magnet__I_coil": 15250000.0,
+      "stellarator_09__stellaris__n_e0": 5.5660000000000007e+20,
+      "stellarator_09__stellaris__n_loops": 24.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0169",
+    "inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.45,
+      "stellarator_09__stellaris__magnet__I_coil": 14500000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 10.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0170",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0171",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 17.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0172",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 41.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0173",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 3.036e+20,
+      "stellarator_09__stellaris__n_loops": 12.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0174",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0175",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0176",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 28.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0177",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 20.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0178",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0179",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0180",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0181",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 20.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0182",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 16.0,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__tau_ratio_ash": 4.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0183",
+    "inputs": {
+      "stellarator_09__stellaris__tau_ratio_ash": 16.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0184",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 16.0,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 30.0,
+      "stellarator_09__stellaris__tau_ratio_ash": 2.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0185",
+    "inputs": {
+      "stellarator_09__stellaris__n_loops": 10.0,
+      "stellarator_09__stellaris__tau_ratio_ash": 16.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0186",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__tau_ratio_ash": 4.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0187",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__tau_ratio_ash": 16.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0188",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 31.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__tau_ratio_ash": 2.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0189",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 3.036e+20,
+      "stellarator_09__stellaris__n_loops": 6.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0190",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 17.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0191",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 19.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0192",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0193",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0194",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 19.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0195",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 17.0,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0196",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 17.0,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0197",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0198",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 18.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0199",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__magnet__I_coil": 15000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0200",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 16000000.0,
+      "stellarator_09__stellaris__n_loops": 17.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0201",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 16000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0202",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0203",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0204",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__magnet__I_coil": 15000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0205",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__magnet__I_coil": 15000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0206",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__magnet__I_coil": 15000000.0,
+      "stellarator_09__stellaris__n_loops": 19.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0207",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 15000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0208",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 17.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 18.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0209",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 15000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0210",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 15000000.0,
+      "stellarator_09__stellaris__n_loops": 19.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0211",
+    "inputs": {
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 3.542e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0212",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0213",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 29.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0214",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 16.0,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0215",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0216",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 17.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0217",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 16.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 22.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0218",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0219",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_loops": 15.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0220",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 17.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 23.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0221",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 18000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0222",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__magnet__I_coil": 14250000.0,
+      "stellarator_09__stellaris__n_e0": 5.5660000000000007e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0223",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 17.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0224",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 16.0,
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0225",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 51.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0226",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 3.036e+20,
+      "stellarator_09__stellaris__n_loops": 24.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0227",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 17.0,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0228",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 18.0,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 40.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0229",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0230",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 30.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0231",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 16.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 3.542e+20
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0232",
+    "inputs": {
+      "stellarator_09__stellaris__R": 11.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 3.036e+20,
+      "stellarator_09__stellaris__n_loops": 6.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0233",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 3.036e+20,
+      "stellarator_09__stellaris__n_loops": 6.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0234",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__T_i0": 16.0,
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 3.542e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0235",
+    "inputs": {
+      "stellarator_09__stellaris__R": 17.2,
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 28.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0236",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.4
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0237",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.4,
+      "stellarator_09__stellaris__n_loops": 15.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0238",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.5
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0239",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.5,
+      "stellarator_09__stellaris__n_loops": 15.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0240",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.6
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0241",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.6,
+      "stellarator_09__stellaris__n_loops": 16.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0242",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0243",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__n_loops": 16.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0244",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.8
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0245",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__n_loops": 16.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0246",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.9
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0247",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.9,
+      "stellarator_09__stellaris__n_loops": 16.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0248",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__n_loops": 16.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0249",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.1
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0250",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__n_loops": 17.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0251",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.2
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0252",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__n_loops": 17.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0253",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.3
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0254",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__n_loops": 17.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0255",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.4
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0256",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__n_loops": 17.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0257",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0258",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0259",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0260",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0261",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0262",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0263",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0264",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0265",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0266",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0267",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0268",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0269",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0270",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0271",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0272",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0273",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0274",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0275",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0276",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0277",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0278",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 25.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0279",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 27.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0280",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0281",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 28.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0282",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0283",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0284",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 28.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0285",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0286",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0287",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0288",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0289",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0290",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0291",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0292",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0293",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0294",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0295",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0296",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0297",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0298",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0299",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.4,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0300",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.4,
+      "stellarator_09__stellaris__n_loops": 15.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0301",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.5,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0302",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.5,
+      "stellarator_09__stellaris__n_loops": 15.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0303",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.6,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0304",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.6,
+      "stellarator_09__stellaris__n_loops": 16.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0305",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0306",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.7,
+      "stellarator_09__stellaris__n_loops": 16.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0307",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0308",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__n_loops": 16.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0309",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.9,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0310",
+    "inputs": {
+      "stellarator_09__stellaris__a": 1.9,
+      "stellarator_09__stellaris__n_loops": 16.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0311",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__n_loops": 16.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0312",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0313",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__n_loops": 17.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0314",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0315",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__n_loops": 17.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0316",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0317",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__n_loops": 17.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0318",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0319",
+    "inputs": {
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__n_loops": 17.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0320",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0321",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0322",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0323",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0324",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0325",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0326",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0327",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0328",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0329",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0330",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0331",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0332",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0333",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0334",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0335",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0336",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0337",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 23.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0338",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0339",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 22.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0340",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0341",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 1.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 25.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0342",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 27.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0343",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0344",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.3,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 28.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0345",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0346",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.4,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 28.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0347",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0348",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.5,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 28.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0349",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.6,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0350",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0351",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.7,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0352",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0353",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.8,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0354",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0355",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.9,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0356",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0357",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0358",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0359",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.1,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0360",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0361",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 3.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 29.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0362",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0363",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 27.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0364",
+    "inputs": {
+      "stellarator_09__stellaris__eta_source_heat": 0.6,
+      "stellarator_09__stellaris__magnet__I_coil": 15250000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0365",
+    "inputs": {
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0366",
+    "inputs": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__T_i0": 13.0,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_loops": 27.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0367",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 16.0,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__tau_ratio_ash": 12.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0368",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__T_i0": 16.0,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.048e+20,
+      "stellarator_09__stellaris__n_loops": 16.0,
+      "stellarator_09__stellaris__tau_ratio_ash": 12.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0369",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__tau_ratio_ash": 12.0
+    },
+    "state": "completed"
+  },
+  {
+    "candidate_id": "20260912-plant-closure:c0370",
+    "inputs": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__a": 1.8,
+      "stellarator_09__stellaris__magnet__I_coil": 14000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__n_loops": 16.0,
+      "stellarator_09__stellaris__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__tau_ratio_ash": 12.0
+    },
+    "state": "completed"
+  }
+]

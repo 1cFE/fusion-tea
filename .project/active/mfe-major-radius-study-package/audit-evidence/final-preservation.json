@@ -1,0 +1,16 @@
+{
+  "tracked_file_delta": {
+    ".project/active/mfe-major-radius-study-package/plan.md": [
+      "4910d8243ca3d24df08c4f65425cc03dffe1226bed2af520fe2e154da9b552d5",
+      "b9d971af0d663e1406090519eec2bd1f6cb7a8e714a61348c19e522c97c50701"
+    ],
+    ".project/active/mfe-major-radius-study-package/spec.md": [
+      "3fca181e5ff5c1247f94533359f8aab5c236853f43548afda3390004abd587b0",
+      "2d9400afdc20c6468d1c9edbd7d1e6caa0f62a656f66c48ed87ca62242ca9422"
+    ]
+  },
+  "only_verified_item_checkboxes_changed": true,
+  "package_files_exact": 246,
+  "CURRENT_WORK_unchanged_since_audit_entry": true,
+  "head": "f5737119a65ef8dd9306589e499260c127e97bb7"
+}

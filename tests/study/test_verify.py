@@ -109,6 +109,8 @@ def test_every_catalog_constraint_is_rederived_with_its_operand_count(summary):
         # WI-047 (goal plant-closure, 2026-09-08): the divertor target peak (computed) against
         # the adopted threshold -- violated at the baseline by design
         "divertor_heat_ok",
+        "heating_source_positive_ok", "heating_source_upper_ok",
+        "heating_couple_positive_ok", "heating_couple_upper_ok",
     }
     assert rederived["net_positive"] == 1  # the other operand is the literal 0.0
     assert rederived["burn_hold_ok"] == 1  # likewise: one computed operand against the literal 0.0
@@ -288,3 +290,90 @@ def test_the_stores_are_never_written(promoted_run, tmp_path):
     before = hashlib.sha256(promoted_run["store"].read_bytes()).hexdigest()
     run_verify(promoted_run, tmp_path / "summary.json", expect=0)
     assert hashlib.sha256(promoted_run["store"].read_bytes()).hexdigest() == before
+
+
+@pytest.fixture(scope="module")
+def operating_controls(tmp_path_factory, stock_simkit_session_path):
+    """Stored native baseline, installed reserve and physical demand controls."""
+    sys.path.insert(0, str(MANIFEST.parent))
+    import study_route
+
+    out = tmp_path_factory.mktemp("operating-controls")
+    baseline = json.loads(MANIFEST.read_text())["baseline"]["point"]
+    P = study_route.P
+    proposals = [baseline, {**baseline, f"{P}p_wallplug_heat": 120.0},
+                 {**baseline, f"{P}f_alpha_fast": 0.96}]
+    cases, db = study_route.run_points("operating-controls", proposals, out / "_work")
+    assert len(cases) == 3 and all(case.state == "completed" for case in cases)
+    ident = study_route.write_identity_document(study_route.PACKAGE_DIR, out / "identity.json")
+    summary = verify.build_summary(PACKAGE, MANIFEST, ident, [db], 3, None, [])
+    assert summary["worst_channel_rel_dev"] < 1e-9
+    assert len(summary["constraints_rederived"]) == 18
+    return cases, summary
+
+
+def test_stored_operating_controls_preserve_procurement_and_signed_capacity(operating_controls):
+    import study_route
+
+    cases, summary = operating_controls
+    P = study_route.P
+    baseline = next(
+        c for c in cases
+        if f"{P}p_wallplug_heat" not in c.inputs and f"{P}f_alpha_fast" not in c.inputs
+    )
+    reserve = next(c for c in cases if c.inputs.get(f"{P}p_wallplug_heat") == 120)
+    demand = next(c for c in cases if c.inputs.get(f"{P}f_alpha_fast") == .96)
+    for name in ("coupled", "delivered", "wallplug"):
+        channel = study_route.CHANNELS[f"operating_heat_{name}"]
+        assert baseline.outputs[channel] == reserve.outputs[channel]
+        assert demand.outputs[channel] != baseline.outputs[channel]
+        assert channel in {row["channel"] for row in summary["channels_checked"]}
+    assert baseline.outputs[f"{P}heating_cost__cost"] == 264145000
+    assert reserve.outputs[f"{P}heating_cost__cost"] == 316974000
+    assert demand.outputs[f"{P}heating_cost__cost"] == 264145000
+    assert baseline.outputs[f"{P}divheat__p_heat_operating_minus_installed"] == pytest.approx(
+        -.920399212073221
+    )
+    assert reserve.outputs[f"{P}divheat__p_heat_operating_minus_installed"] == pytest.approx(
+        -10.920399212073221
+    )
+    verdicts = study_route.short_verdicts(baseline)
+    assert len(verdicts) == 18
+    assert {name for name, status in verdicts.items() if status != "satisfied"} == {
+        "divertor_heat_ok"
+    }
+    rows = study_route.csv_rows(cases, [])
+    assert len(rows) == 3
+    assert all(all(name in row for name in study_route.CHANNELS) for row in rows)
+
+
+@pytest.mark.parametrize("channel", ["p_coupled", "p_delivered", "p_wallplug"])
+def test_operating_channel_deviation_is_refused(promoted_run, monkeypatch, channel):
+    import oracle_entry
+
+    name = f"stellarator_09__stellaris__operating_heat__{channel}"
+    evaluate = oracle_entry.evaluate
+
+    def skewed(point):
+        values = evaluate(point)
+        values[name] += 1
+        return values
+
+    monkeypatch.setattr(oracle_entry, "evaluate", skewed)
+    with pytest.raises(verify.VerifyError, match="relative deviation"):
+        verify.build_summary(
+            PACKAGE, MANIFEST, promoted_run["identity"], [promoted_run["store"]], 12, None, []
+        )
+
+
+@pytest.mark.parametrize("stage", ["source", "couple"])
+def test_zero_efficiency_is_a_recorded_native_execution_failure(stock_simkit_path, tmp_path, stage):
+    sys.path.insert(0, str(MANIFEST.parent))
+    import study_route
+
+    point = {f"{study_route.P}eta_{stage}_heat": 0.0}
+    cases, _ = study_route.run_points(f"zero-{stage}-efficiency", [point], tmp_path)
+    assert len(cases) == 1
+    assert cases[0].state == "execution_failed"
+    with pytest.raises(study_route.RouteError):
+        study_route.csv_rows(cases, [])

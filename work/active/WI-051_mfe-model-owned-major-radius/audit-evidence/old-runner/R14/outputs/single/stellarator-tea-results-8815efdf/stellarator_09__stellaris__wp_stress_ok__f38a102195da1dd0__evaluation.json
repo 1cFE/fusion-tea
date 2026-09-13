@@ -1,0 +1,10 @@
+{
+  "actual_value": true,
+  "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+  "margin": 227880184.33179736,
+  "observed": {
+    "sigma_allow_in": 800000000.0,
+    "sigma_in": 572119815.6682026
+  },
+  "status": "satisfied"
+}

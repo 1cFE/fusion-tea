@@ -1,0 +1,11 @@
+{
+  "outcome": "pass",
+  "controls": [
+    {},
+    {
+      "stellarator_09__stellaris__R": 14.0
+    }
+  ],
+  "comparison": "complete outputs/verdicts equal between serial and isolated-process oracle",
+  "processes": 8
+}

@@ -1,0 +1,856 @@
+FFFFFFFFFFFFF.                                                           [100%]
+=================================== FAILURES ===================================
+_______ test_actual_ife_product_below_at_and_above_threshold[99.0-False] _______
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+gain = 99.0, expected = False
+
+    @pytest.mark.parametrize("gain,expected", [(99.0, False), (100.0, True), (101.0, True)])
+    def test_actual_ife_product_below_at_and_above_threshold(viability, gain, expected):
+        entry, bindings, inputs = viability
+        point = {P + "driver__efficiency": 0.1, P + "gain": gain}
+>       assert derive_verdict(entry["constraint_id"], entry, bindings, point, inputs, {}) == (expected, 3)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify_operands.py:32:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+constraint_id = 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b'
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+bindings = {'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': {'eta': {'key': 'hif_plant_pkg__hif_plant__driver__efficienc...ant__gain', 'kind': 'input'}, 'threshold': {'key': 'hif_plant_pkg__hif_plant__viability__threshold', 'kind': 'input'}}}
+case_inputs = {'hif_plant_pkg__hif_plant__driver__efficiency': 0.1, 'hif_plant_pkg__hif_plant__gain': 99.0}
+package_inputs = {'hif_plant_pkg__hif_plant__availability': 0.9, 'hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple': 1.15, 'hif_plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...}
+channels = {}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            if operand["kind"] == "literal":
+                values.append(float(operand["literal"]["value"]))
+            elif operand["kind"] == "feature_ref":
+                values.append(resolve_operand(
+                    constraint_id, operand, bindings, case_inputs, package_inputs, channels
+                ))
+                resolved += 1
+            else:
+>               raise VerifyError(
+                    f"{constraint_id}: operand kind {operand['kind']!r} cannot be re-derived"
+                )
+E               scripts.study.verify.VerifyError: hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived
+
+scripts/study/verify.py:198: VerifyError
+_______ test_actual_ife_product_below_at_and_above_threshold[100.0-True] _______
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+gain = 100.0, expected = True
+
+    @pytest.mark.parametrize("gain,expected", [(99.0, False), (100.0, True), (101.0, True)])
+    def test_actual_ife_product_below_at_and_above_threshold(viability, gain, expected):
+        entry, bindings, inputs = viability
+        point = {P + "driver__efficiency": 0.1, P + "gain": gain}
+>       assert derive_verdict(entry["constraint_id"], entry, bindings, point, inputs, {}) == (expected, 3)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify_operands.py:32:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+constraint_id = 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b'
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+bindings = {'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': {'eta': {'key': 'hif_plant_pkg__hif_plant__driver__efficienc...ant__gain', 'kind': 'input'}, 'threshold': {'key': 'hif_plant_pkg__hif_plant__viability__threshold', 'kind': 'input'}}}
+case_inputs = {'hif_plant_pkg__hif_plant__driver__efficiency': 0.1, 'hif_plant_pkg__hif_plant__gain': 100.0}
+package_inputs = {'hif_plant_pkg__hif_plant__availability': 0.9, 'hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple': 1.15, 'hif_plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...}
+channels = {}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            if operand["kind"] == "literal":
+                values.append(float(operand["literal"]["value"]))
+            elif operand["kind"] == "feature_ref":
+                values.append(resolve_operand(
+                    constraint_id, operand, bindings, case_inputs, package_inputs, channels
+                ))
+                resolved += 1
+            else:
+>               raise VerifyError(
+                    f"{constraint_id}: operand kind {operand['kind']!r} cannot be re-derived"
+                )
+E               scripts.study.verify.VerifyError: hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived
+
+scripts/study/verify.py:198: VerifyError
+_______ test_actual_ife_product_below_at_and_above_threshold[101.0-True] _______
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+gain = 101.0, expected = True
+
+    @pytest.mark.parametrize("gain,expected", [(99.0, False), (100.0, True), (101.0, True)])
+    def test_actual_ife_product_below_at_and_above_threshold(viability, gain, expected):
+        entry, bindings, inputs = viability
+        point = {P + "driver__efficiency": 0.1, P + "gain": gain}
+>       assert derive_verdict(entry["constraint_id"], entry, bindings, point, inputs, {}) == (expected, 3)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify_operands.py:32:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+constraint_id = 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b'
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+bindings = {'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': {'eta': {'key': 'hif_plant_pkg__hif_plant__driver__efficienc...ant__gain', 'kind': 'input'}, 'threshold': {'key': 'hif_plant_pkg__hif_plant__viability__threshold', 'kind': 'input'}}}
+case_inputs = {'hif_plant_pkg__hif_plant__driver__efficiency': 0.1, 'hif_plant_pkg__hif_plant__gain': 101.0}
+package_inputs = {'hif_plant_pkg__hif_plant__availability': 0.9, 'hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple': 1.15, 'hif_plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...}
+channels = {}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            if operand["kind"] == "literal":
+                values.append(float(operand["literal"]["value"]))
+            elif operand["kind"] == "feature_ref":
+                values.append(resolve_operand(
+                    constraint_id, operand, bindings, case_inputs, package_inputs, channels
+                ))
+                resolved += 1
+            else:
+>               raise VerifyError(
+                    f"{constraint_id}: operand kind {operand['kind']!r} cannot be re-derived"
+                )
+E               scripts.study.verify.VerifyError: hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived
+
+scripts/study/verify.py:198: VerifyError
+_ test_nested_multiplication_counts_feature_occurrences_and_preserves_negation _
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+
+    def test_nested_multiplication_counts_feature_occurrences_and_preserves_negation(viability):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        product = ir["operands"][0]
+        eta_again = copy.deepcopy(product["operands"][0])
+        ir["operands"][0] = {"kind": "operator", "operator": "*", "operands": [product, eta_again]}
+        entry["predicate_ir"] = json.dumps(ir)
+        entry["is_negated"] = True
+        point = {P + "driver__efficiency": 0.1, P + "gain": 100.0}
+        # (0.1 * 100) * 0.1 < 10, then negated. eta occurs twice.
+>       assert derive_verdict(entry["constraint_id"], entry, bindings, point, inputs, {}) == (True, 4)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify_operands.py:45:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+constraint_id = 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b'
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+bindings = {'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': {'eta': {'key': 'hif_plant_pkg__hif_plant__driver__efficienc...ant__gain', 'kind': 'input'}, 'threshold': {'key': 'hif_plant_pkg__hif_plant__viability__threshold', 'kind': 'input'}}}
+case_inputs = {'hif_plant_pkg__hif_plant__driver__efficiency': 0.1, 'hif_plant_pkg__hif_plant__gain': 100.0}
+package_inputs = {'hif_plant_pkg__hif_plant__availability': 0.9, 'hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple': 1.15, 'hif_plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...}
+channels = {}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            if operand["kind"] == "literal":
+                values.append(float(operand["literal"]["value"]))
+            elif operand["kind"] == "feature_ref":
+                values.append(resolve_operand(
+                    constraint_id, operand, bindings, case_inputs, package_inputs, channels
+                ))
+                resolved += 1
+            else:
+>               raise VerifyError(
+                    f"{constraint_id}: operand kind {operand['kind']!r} cannot be re-derived"
+                )
+E               scripts.study.verify.VerifyError: hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived
+
+scripts/study/verify.py:198: VerifyError
+______ test_multiplication_accepts_literal_operands_without_counting_them ______
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+
+    def test_multiplication_accepts_literal_operands_without_counting_them(viability):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        ir["operands"][0]["operands"][0] = {"kind": "literal", "literal": {"value": 0.1}}
+        entry["predicate_ir"] = json.dumps(ir)
+>       assert derive_verdict(entry["constraint_id"], entry, bindings, {P + "gain": 100.0}, inputs, {}) == (True, 2)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify_operands.py:53:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+constraint_id = 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b'
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+bindings = {'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': {'eta': {'key': 'hif_plant_pkg__hif_plant__driver__efficienc...ant__gain', 'kind': 'input'}, 'threshold': {'key': 'hif_plant_pkg__hif_plant__viability__threshold', 'kind': 'input'}}}
+case_inputs = {'hif_plant_pkg__hif_plant__gain': 100.0}
+package_inputs = {'hif_plant_pkg__hif_plant__availability': 0.9, 'hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple': 1.15, 'hif_plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...}
+channels = {}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            if operand["kind"] == "literal":
+                values.append(float(operand["literal"]["value"]))
+            elif operand["kind"] == "feature_ref":
+                values.append(resolve_operand(
+                    constraint_id, operand, bindings, case_inputs, package_inputs, channels
+                ))
+                resolved += 1
+            else:
+>               raise VerifyError(
+                    f"{constraint_id}: operand kind {operand['kind']!r} cannot be re-derived"
+                )
+E               scripts.study.verify.VerifyError: hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived
+
+scripts/study/verify.py:198: VerifyError
+_____________ test_unsupported_arithmetic_is_named_and_refused[+] ______________
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+operator = '+'
+
+    @pytest.mark.parametrize("operator", ["+", "/", "**", "unknown"])
+    def test_unsupported_arithmetic_is_named_and_refused(viability, operator):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        ir["operands"][0]["operator"] = operator
+        entry["predicate_ir"] = json.dumps(ir)
+        with pytest.raises(VerifyError, match="unsupported arithmetic operator") as error:
+>           derive_verdict(entry["constraint_id"], entry, bindings, {}, inputs, {})
+
+tests/study/test_verify_operands.py:63:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+constraint_id = 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b'
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+bindings = {'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': {'eta': {'key': 'hif_plant_pkg__hif_plant__driver__efficienc...ant__gain', 'kind': 'input'}, 'threshold': {'key': 'hif_plant_pkg__hif_plant__viability__threshold', 'kind': 'input'}}}
+case_inputs = {}
+package_inputs = {'hif_plant_pkg__hif_plant__availability': 0.9, 'hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple': 1.15, 'hif_plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...}
+channels = {}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            if operand["kind"] == "literal":
+                values.append(float(operand["literal"]["value"]))
+            elif operand["kind"] == "feature_ref":
+                values.append(resolve_operand(
+                    constraint_id, operand, bindings, case_inputs, package_inputs, channels
+                ))
+                resolved += 1
+            else:
+>               raise VerifyError(
+                    f"{constraint_id}: operand kind {operand['kind']!r} cannot be re-derived"
+                )
+E               scripts.study.verify.VerifyError: hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived
+
+scripts/study/verify.py:198: VerifyError
+
+During handling of the above exception, another exception occurred:
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+operator = '+'
+
+    @pytest.mark.parametrize("operator", ["+", "/", "**", "unknown"])
+    def test_unsupported_arithmetic_is_named_and_refused(viability, operator):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        ir["operands"][0]["operator"] = operator
+        entry["predicate_ir"] = json.dumps(ir)
+>       with pytest.raises(VerifyError, match="unsupported arithmetic operator") as error:
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'unsupported arithmetic operator'
+E         Actual message: "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived"
+
+tests/study/test_verify_operands.py:62: AssertionError
+_____________ test_unsupported_arithmetic_is_named_and_refused[/] ______________
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+operator = '/'
+
+    @pytest.mark.parametrize("operator", ["+", "/", "**", "unknown"])
+    def test_unsupported_arithmetic_is_named_and_refused(viability, operator):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        ir["operands"][0]["operator"] = operator
+        entry["predicate_ir"] = json.dumps(ir)
+        with pytest.raises(VerifyError, match="unsupported arithmetic operator") as error:
+>           derive_verdict(entry["constraint_id"], entry, bindings, {}, inputs, {})
+
+tests/study/test_verify_operands.py:63:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+constraint_id = 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b'
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+bindings = {'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': {'eta': {'key': 'hif_plant_pkg__hif_plant__driver__efficienc...ant__gain', 'kind': 'input'}, 'threshold': {'key': 'hif_plant_pkg__hif_plant__viability__threshold', 'kind': 'input'}}}
+case_inputs = {}
+package_inputs = {'hif_plant_pkg__hif_plant__availability': 0.9, 'hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple': 1.15, 'hif_plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...}
+channels = {}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            if operand["kind"] == "literal":
+                values.append(float(operand["literal"]["value"]))
+            elif operand["kind"] == "feature_ref":
+                values.append(resolve_operand(
+                    constraint_id, operand, bindings, case_inputs, package_inputs, channels
+                ))
+                resolved += 1
+            else:
+>               raise VerifyError(
+                    f"{constraint_id}: operand kind {operand['kind']!r} cannot be re-derived"
+                )
+E               scripts.study.verify.VerifyError: hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived
+
+scripts/study/verify.py:198: VerifyError
+
+During handling of the above exception, another exception occurred:
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+operator = '/'
+
+    @pytest.mark.parametrize("operator", ["+", "/", "**", "unknown"])
+    def test_unsupported_arithmetic_is_named_and_refused(viability, operator):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        ir["operands"][0]["operator"] = operator
+        entry["predicate_ir"] = json.dumps(ir)
+>       with pytest.raises(VerifyError, match="unsupported arithmetic operator") as error:
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'unsupported arithmetic operator'
+E         Actual message: "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived"
+
+tests/study/test_verify_operands.py:62: AssertionError
+_____________ test_unsupported_arithmetic_is_named_and_refused[**] _____________
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+operator = '**'
+
+    @pytest.mark.parametrize("operator", ["+", "/", "**", "unknown"])
+    def test_unsupported_arithmetic_is_named_and_refused(viability, operator):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        ir["operands"][0]["operator"] = operator
+        entry["predicate_ir"] = json.dumps(ir)
+        with pytest.raises(VerifyError, match="unsupported arithmetic operator") as error:
+>           derive_verdict(entry["constraint_id"], entry, bindings, {}, inputs, {})
+
+tests/study/test_verify_operands.py:63:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+constraint_id = 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b'
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+bindings = {'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': {'eta': {'key': 'hif_plant_pkg__hif_plant__driver__efficienc...ant__gain', 'kind': 'input'}, 'threshold': {'key': 'hif_plant_pkg__hif_plant__viability__threshold', 'kind': 'input'}}}
+case_inputs = {}
+package_inputs = {'hif_plant_pkg__hif_plant__availability': 0.9, 'hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple': 1.15, 'hif_plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...}
+channels = {}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            if operand["kind"] == "literal":
+                values.append(float(operand["literal"]["value"]))
+            elif operand["kind"] == "feature_ref":
+                values.append(resolve_operand(
+                    constraint_id, operand, bindings, case_inputs, package_inputs, channels
+                ))
+                resolved += 1
+            else:
+>               raise VerifyError(
+                    f"{constraint_id}: operand kind {operand['kind']!r} cannot be re-derived"
+                )
+E               scripts.study.verify.VerifyError: hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived
+
+scripts/study/verify.py:198: VerifyError
+
+During handling of the above exception, another exception occurred:
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+operator = '**'
+
+    @pytest.mark.parametrize("operator", ["+", "/", "**", "unknown"])
+    def test_unsupported_arithmetic_is_named_and_refused(viability, operator):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        ir["operands"][0]["operator"] = operator
+        entry["predicate_ir"] = json.dumps(ir)
+>       with pytest.raises(VerifyError, match="unsupported arithmetic operator") as error:
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'unsupported arithmetic operator'
+E         Actual message: "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived"
+
+tests/study/test_verify_operands.py:62: AssertionError
+__________ test_unsupported_arithmetic_is_named_and_refused[unknown] ___________
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+operator = 'unknown'
+
+    @pytest.mark.parametrize("operator", ["+", "/", "**", "unknown"])
+    def test_unsupported_arithmetic_is_named_and_refused(viability, operator):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        ir["operands"][0]["operator"] = operator
+        entry["predicate_ir"] = json.dumps(ir)
+        with pytest.raises(VerifyError, match="unsupported arithmetic operator") as error:
+>           derive_verdict(entry["constraint_id"], entry, bindings, {}, inputs, {})
+
+tests/study/test_verify_operands.py:63:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+constraint_id = 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b'
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+bindings = {'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': {'eta': {'key': 'hif_plant_pkg__hif_plant__driver__efficienc...ant__gain', 'kind': 'input'}, 'threshold': {'key': 'hif_plant_pkg__hif_plant__viability__threshold', 'kind': 'input'}}}
+case_inputs = {}
+package_inputs = {'hif_plant_pkg__hif_plant__availability': 0.9, 'hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple': 1.15, 'hif_plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...}
+channels = {}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            if operand["kind"] == "literal":
+                values.append(float(operand["literal"]["value"]))
+            elif operand["kind"] == "feature_ref":
+                values.append(resolve_operand(
+                    constraint_id, operand, bindings, case_inputs, package_inputs, channels
+                ))
+                resolved += 1
+            else:
+>               raise VerifyError(
+                    f"{constraint_id}: operand kind {operand['kind']!r} cannot be re-derived"
+                )
+E               scripts.study.verify.VerifyError: hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived
+
+scripts/study/verify.py:198: VerifyError
+
+During handling of the above exception, another exception occurred:
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+operator = 'unknown'
+
+    @pytest.mark.parametrize("operator", ["+", "/", "**", "unknown"])
+    def test_unsupported_arithmetic_is_named_and_refused(viability, operator):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        ir["operands"][0]["operator"] = operator
+        entry["predicate_ir"] = json.dumps(ir)
+>       with pytest.raises(VerifyError, match="unsupported arithmetic operator") as error:
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'unsupported arithmetic operator'
+E         Actual message: "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived"
+
+tests/study/test_verify_operands.py:62: AssertionError
+___________________ test_multiplication_arity_is_checked[0] ____________________
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+arity = 0
+
+    @pytest.mark.parametrize("arity", [0, 1, 3])
+    def test_multiplication_arity_is_checked(viability, arity):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        product = ir["operands"][0]
+        product["operands"] = [product["operands"][0]] * arity
+        entry["predicate_ir"] = json.dumps(ir)
+        with pytest.raises(VerifyError, match="two multiplication operands"):
+>           derive_verdict(entry["constraint_id"], entry, bindings, {}, inputs, {})
+
+tests/study/test_verify_operands.py:76:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+constraint_id = 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b'
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+bindings = {'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': {'eta': {'key': 'hif_plant_pkg__hif_plant__driver__efficienc...ant__gain', 'kind': 'input'}, 'threshold': {'key': 'hif_plant_pkg__hif_plant__viability__threshold', 'kind': 'input'}}}
+case_inputs = {}
+package_inputs = {'hif_plant_pkg__hif_plant__availability': 0.9, 'hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple': 1.15, 'hif_plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...}
+channels = {}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            if operand["kind"] == "literal":
+                values.append(float(operand["literal"]["value"]))
+            elif operand["kind"] == "feature_ref":
+                values.append(resolve_operand(
+                    constraint_id, operand, bindings, case_inputs, package_inputs, channels
+                ))
+                resolved += 1
+            else:
+>               raise VerifyError(
+                    f"{constraint_id}: operand kind {operand['kind']!r} cannot be re-derived"
+                )
+E               scripts.study.verify.VerifyError: hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived
+
+scripts/study/verify.py:198: VerifyError
+
+During handling of the above exception, another exception occurred:
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+arity = 0
+
+    @pytest.mark.parametrize("arity", [0, 1, 3])
+    def test_multiplication_arity_is_checked(viability, arity):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        product = ir["operands"][0]
+        product["operands"] = [product["operands"][0]] * arity
+        entry["predicate_ir"] = json.dumps(ir)
+>       with pytest.raises(VerifyError, match="two multiplication operands"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'two multiplication operands'
+E         Actual message: "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived"
+
+tests/study/test_verify_operands.py:75: AssertionError
+___________________ test_multiplication_arity_is_checked[1] ____________________
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+arity = 1
+
+    @pytest.mark.parametrize("arity", [0, 1, 3])
+    def test_multiplication_arity_is_checked(viability, arity):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        product = ir["operands"][0]
+        product["operands"] = [product["operands"][0]] * arity
+        entry["predicate_ir"] = json.dumps(ir)
+        with pytest.raises(VerifyError, match="two multiplication operands"):
+>           derive_verdict(entry["constraint_id"], entry, bindings, {}, inputs, {})
+
+tests/study/test_verify_operands.py:76:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+constraint_id = 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b'
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+bindings = {'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': {'eta': {'key': 'hif_plant_pkg__hif_plant__driver__efficienc...ant__gain', 'kind': 'input'}, 'threshold': {'key': 'hif_plant_pkg__hif_plant__viability__threshold', 'kind': 'input'}}}
+case_inputs = {}
+package_inputs = {'hif_plant_pkg__hif_plant__availability': 0.9, 'hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple': 1.15, 'hif_plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...}
+channels = {}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            if operand["kind"] == "literal":
+                values.append(float(operand["literal"]["value"]))
+            elif operand["kind"] == "feature_ref":
+                values.append(resolve_operand(
+                    constraint_id, operand, bindings, case_inputs, package_inputs, channels
+                ))
+                resolved += 1
+            else:
+>               raise VerifyError(
+                    f"{constraint_id}: operand kind {operand['kind']!r} cannot be re-derived"
+                )
+E               scripts.study.verify.VerifyError: hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived
+
+scripts/study/verify.py:198: VerifyError
+
+During handling of the above exception, another exception occurred:
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+arity = 1
+
+    @pytest.mark.parametrize("arity", [0, 1, 3])
+    def test_multiplication_arity_is_checked(viability, arity):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        product = ir["operands"][0]
+        product["operands"] = [product["operands"][0]] * arity
+        entry["predicate_ir"] = json.dumps(ir)
+>       with pytest.raises(VerifyError, match="two multiplication operands"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'two multiplication operands'
+E         Actual message: "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived"
+
+tests/study/test_verify_operands.py:75: AssertionError
+___________________ test_multiplication_arity_is_checked[3] ____________________
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+arity = 3
+
+    @pytest.mark.parametrize("arity", [0, 1, 3])
+    def test_multiplication_arity_is_checked(viability, arity):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        product = ir["operands"][0]
+        product["operands"] = [product["operands"][0]] * arity
+        entry["predicate_ir"] = json.dumps(ir)
+        with pytest.raises(VerifyError, match="two multiplication operands"):
+>           derive_verdict(entry["constraint_id"], entry, bindings, {}, inputs, {})
+
+tests/study/test_verify_operands.py:76:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+constraint_id = 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b'
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+bindings = {'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': {'eta': {'key': 'hif_plant_pkg__hif_plant__driver__efficienc...ant__gain', 'kind': 'input'}, 'threshold': {'key': 'hif_plant_pkg__hif_plant__viability__threshold', 'kind': 'input'}}}
+case_inputs = {}
+package_inputs = {'hif_plant_pkg__hif_plant__availability': 0.9, 'hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple': 1.15, 'hif_plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...}
+channels = {}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            if operand["kind"] == "literal":
+                values.append(float(operand["literal"]["value"]))
+            elif operand["kind"] == "feature_ref":
+                values.append(resolve_operand(
+                    constraint_id, operand, bindings, case_inputs, package_inputs, channels
+                ))
+                resolved += 1
+            else:
+>               raise VerifyError(
+                    f"{constraint_id}: operand kind {operand['kind']!r} cannot be re-derived"
+                )
+E               scripts.study.verify.VerifyError: hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived
+
+scripts/study/verify.py:198: VerifyError
+
+During handling of the above exception, another exception occurred:
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+arity = 3
+
+    @pytest.mark.parametrize("arity", [0, 1, 3])
+    def test_multiplication_arity_is_checked(viability, arity):
+        entry, bindings, inputs = viability
+        ir = json.loads(entry["predicate_ir"])
+        product = ir["operands"][0]
+        product["operands"] = [product["operands"][0]] * arity
+        entry["predicate_ir"] = json.dumps(ir)
+>       with pytest.raises(VerifyError, match="two multiplication operands"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'two multiplication operands'
+E         Actual message: "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived"
+
+tests/study/test_verify_operands.py:75: AssertionError
+__________________ test_nested_missing_binding_is_not_guessed __________________
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+
+    def test_nested_missing_binding_is_not_guessed(viability):
+        entry, bindings, inputs = viability
+        del bindings[entry["constraint_id"]]["eta"]
+        with pytest.raises(VerifyError, match="eta.*no published binding"):
+>           derive_verdict(entry["constraint_id"], entry, bindings, {}, inputs, {})
+
+tests/study/test_verify_operands.py:83:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+constraint_id = 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b'
+entry = {'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5-...'Viability Threshold'", 'evaluation_channel': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation', ...}
+bindings = {'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b': {'gain_in': {'key': 'hif_plant_pkg__hif_plant__gain', 'kind': 'input'}, 'threshold': {'key': 'hif_plant_pkg__hif_plant__viability__threshold', 'kind': 'input'}}}
+case_inputs = {}
+package_inputs = {'hif_plant_pkg__hif_plant__availability': 0.9, 'hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple': 1.15, 'hif_plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...}
+channels = {}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            if operand["kind"] == "literal":
+                values.append(float(operand["literal"]["value"]))
+            elif operand["kind"] == "feature_ref":
+                values.append(resolve_operand(
+                    constraint_id, operand, bindings, case_inputs, package_inputs, channels
+                ))
+                resolved += 1
+            else:
+>               raise VerifyError(
+                    f"{constraint_id}: operand kind {operand['kind']!r} cannot be re-derived"
+                )
+E               scripts.study.verify.VerifyError: hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived
+
+scripts/study/verify.py:198: VerifyError
+
+During handling of the above exception, another exception occurred:
+
+viability = ({'constraint_id': 'hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b', 'declaration_id': 'e506fc09-07aa-58ae-8db5..._plant_pkg__hif_plant__chamber__yield_cost_constant': 5000000.0, 'hif_plant_pkg__hif_plant__discount_rate': 0.08, ...})
+
+    def test_nested_missing_binding_is_not_guessed(viability):
+        entry, bindings, inputs = viability
+        del bindings[entry["constraint_id"]]["eta"]
+>       with pytest.raises(VerifyError, match="eta.*no published binding"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'eta.*no published binding'
+E         Actual message: "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b: operand kind 'operator' cannot be re-derived"
+
+tests/study/test_verify_operands.py:82: AssertionError
+=========================== short test summary info ============================
+FAILED tests/study/test_verify_operands.py::test_actual_ife_product_below_at_and_above_threshold[99.0-False]
+FAILED tests/study/test_verify_operands.py::test_actual_ife_product_below_at_and_above_threshold[100.0-True]
+FAILED tests/study/test_verify_operands.py::test_actual_ife_product_below_at_and_above_threshold[101.0-True]
+FAILED tests/study/test_verify_operands.py::test_nested_multiplication_counts_feature_occurrences_and_preserves_negation
+FAILED tests/study/test_verify_operands.py::test_multiplication_accepts_literal_operands_without_counting_them
+FAILED tests/study/test_verify_operands.py::test_unsupported_arithmetic_is_named_and_refused[+]
+FAILED tests/study/test_verify_operands.py::test_unsupported_arithmetic_is_named_and_refused[/]
+FAILED tests/study/test_verify_operands.py::test_unsupported_arithmetic_is_named_and_refused[**]
+FAILED tests/study/test_verify_operands.py::test_unsupported_arithmetic_is_named_and_refused[unknown]
+FAILED tests/study/test_verify_operands.py::test_multiplication_arity_is_checked[0]
+FAILED tests/study/test_verify_operands.py::test_multiplication_arity_is_checked[1]
+FAILED tests/study/test_verify_operands.py::test_multiplication_arity_is_checked[3]
+FAILED tests/study/test_verify_operands.py::test_nested_missing_binding_is_not_guessed
+13 failed, 1 passed in 0.27s
