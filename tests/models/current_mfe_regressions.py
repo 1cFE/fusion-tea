@@ -11,7 +11,7 @@ FINANCE_EVIDENCE = ROOT / 'work/active/WI-052_mfe-financial-rate-limits/implemen
 
 
 def current_generation():
-    spec = importlib.util.spec_from_file_location('wi056_current_generation', DOMAIN_EVIDENCE / 'regenerate.py')
+    spec = importlib.util.spec_from_file_location('wi056_corrected_generation', DOMAIN_EVIDENCE / 'regenerate_corrected.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module

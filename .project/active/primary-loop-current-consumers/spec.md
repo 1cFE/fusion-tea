@@ -11,3 +11,11 @@ Status: Implementation and consumer acceptance complete; independent audit pendi
 - [INFERRED] Capture prechange full oracle positive controls, retain actual failed counterexample identities and verify missing independent current-route evidence after native metadata is committed. Reuse sufficient native coherent-suite evidence without a redundant broad run.
 
 Native models/generated files/new native tests/PM belong to `/root/r11_primary_author`. Current oracle, directly affected current test/helper/receipt surfaces and this coding item belong to T-046. Independent audit belongs to the coordinator. No shared runtime/seam, native, goal or historical writes are included.
+
+## T-049 amendment — 2026-09-13
+
+Status: Corrected-coherence consumer migration and focused verification complete; independent addendum pending. T-046's earlier implementation/acceptance remains historical by revision.
+
+- [INHERITED] T-049 brief at `work/orchestration/goals/fusion-audit-remediation/evidence/T-049_primary-coherence-consumers/author-brief.md@fdb3de9c` scopes current helper/seed/receipt path migration after T-047 integration found stock smart regeneration replacing the primary-loop variadic-return body.
+- [INHERITED] Use the native author's corrected exact-thirteen-float signature, smart-mode fresh helper and new immutable corrected seeds/receipt after committed metadata. Preserve all old native helpers/seeds/receipts/results and oracle equations/guards.
+- [INHERITED] Verify corrected current receipt, guarded native route/control and baseline identity. Retain earlier numerical/source/interface checks and reuse unchanged broad evidence. No new test or broader tool/model correction is included.
