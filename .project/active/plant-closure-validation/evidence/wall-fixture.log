@@ -1,0 +1,19 @@
+FFF.                                                                     [100%]
+=================================== FAILURES ===================================
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-absent] _
+tests/study/test_study_publication_fail_closed.py:181: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-null] _
+tests/study/test_study_publication_fail_closed.py:181: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-nan] _
+tests/study/test_study_publication_fail_closed.py:181: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+=========================== short test summary info ============================
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-nan]
+3 failed, 1 passed, 48 deselected in 0.58s

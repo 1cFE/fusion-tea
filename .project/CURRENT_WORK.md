@@ -1,3 +1,9 @@
+# Plant-closure validation complete — 2026-09-12
+
+[OWNER-VERBATIM] "yes, proceed" authorized applying the nine prepared Python writer repairs while preserving original code copies and all recorded data. Eight local exporters now validate their full publication map; the plant writer validates all native rows before opening its CSV and explicitly tracks publication status. No compatibility API, sweep, skipped failure or regenerated numerical expectation was added.
+
+[AGENT] All 120 original failures have final dispositions in `.project/active/plant-closure-validation/failure-mapping.csv`; diagnosis, pruning tradeoffs and exact commands are in `report.md`. Final retained suite: **130 passed, zero failed/skipped** (previously 250 tests). Original code copies and failure evidence match retained hashes. One intermediate resume check correctly refused a package fingerprint change during the concurrent financial merge `bc75b11d`; both seal identities match that merge's parent/result. The numeric module and entire retained suite passed afterward. This work did not modify financial code, runtime, models, generated packages or frozen numerical evidence. Scientific grade limits and multi-file interruption behavior remain outside this bounded repair.
+
 # Current Work
 
 **Updated 2026-09-08 (goal `plant-closure` GROUNDED on the owner's instruction; round 1 `three-closures-one-pin` OPEN with T-001..T-007 all `COMPLETE`: the three model items landed and ONE PIN PROMOTED — `CANDIDATE` on all ten gates, first run. Next: the round's one study, then the disposition checkpoint, the re-grade and the round result. Commits local on `feat/demo-maturation`, not pushed. This block is a working-tree pointer only, never committed.)**

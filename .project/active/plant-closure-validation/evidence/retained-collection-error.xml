@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="1" time="0.198" timestamp="2026-09-12T18:52:26.850190-07:00" hostname="reid-workstation"><testcase classname="" name="tests.orchestration.test_goal_contract" time="0.000"><error message="collection failure">tests/orchestration/test_goal_contract.py:33: in &lt;module&gt;
+    def _local_link_targets(path: Path, text: str):
+                                  ^^^^
+E   NameError: name 'Path' is not defined</error></testcase></testsuite></testsuites>

@@ -1,0 +1,11 @@
+
+==================================== ERRORS ====================================
+__________ ERROR collecting tests/orchestration/test_goal_contract.py __________
+tests/orchestration/test_goal_contract.py:33: in <module>
+    def _local_link_targets(path: Path, text: str):
+                                  ^^^^
+E   NameError: name 'Path' is not defined
+=========================== short test summary info ============================
+ERROR tests/orchestration/test_goal_contract.py - NameError: name 'Path' is n...
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.20s

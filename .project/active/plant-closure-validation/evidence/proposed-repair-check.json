@@ -1,0 +1,192 @@
+[
+  {
+    "writer": "20260903-priced-levers",
+    "case": "complete",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260903-priced-levers",
+    "case": "absent",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260903-priced-levers",
+    "case": "None",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260903-priced-levers",
+    "case": "nan",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260904-wall-and-heating",
+    "case": "complete",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260904-wall-and-heating",
+    "case": "absent",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260904-wall-and-heating",
+    "case": "None",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260904-wall-and-heating",
+    "case": "nan",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260903-wall-and-heating",
+    "case": "complete",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260903-wall-and-heating",
+    "case": "absent",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260903-wall-and-heating",
+    "case": "None",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260903-wall-and-heating",
+    "case": "nan",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260901-sustainment-fence",
+    "case": "complete",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260901-sustainment-fence",
+    "case": "absent",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260901-sustainment-fence",
+    "case": "None",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260901-sustainment-fence",
+    "case": "nan",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260905-stored-energy-basis",
+    "case": "complete",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260905-stored-energy-basis",
+    "case": "absent",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260905-stored-energy-basis",
+    "case": "None",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260905-stored-energy-basis",
+    "case": "nan",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260907-burn-control",
+    "case": "complete",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260907-burn-control",
+    "case": "absent",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260907-burn-control",
+    "case": "None",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260907-burn-control",
+    "case": "nan",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260830-stress-fence",
+    "case": "complete",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260830-stress-fence",
+    "case": "absent",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260830-stress-fence",
+    "case": "None",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260830-stress-fence",
+    "case": "nan",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260907-minor-radius",
+    "case": "complete",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260907-minor-radius",
+    "case": "absent",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260907-minor-radius",
+    "case": "None",
+    "outcome": "pass"
+  },
+  {
+    "writer": "20260907-minor-radius",
+    "case": "nan",
+    "outcome": "pass"
+  },
+  {
+    "writer": "plant-closure",
+    "case": "complete",
+    "outcome": "pass"
+  },
+  {
+    "writer": "plant-closure",
+    "case": "absent",
+    "outcome": "pass"
+  },
+  {
+    "writer": "plant-closure",
+    "case": "None",
+    "outcome": "pass"
+  },
+  {
+    "writer": "plant-closure",
+    "case": "nan",
+    "outcome": "pass"
+  },
+  {
+    "writer": "plant-closure",
+    "case": "inf",
+    "outcome": "pass"
+  },
+  {
+    "writer": "plant-closure",
+    "case": "-inf",
+    "outcome": "pass"
+  }
+]
