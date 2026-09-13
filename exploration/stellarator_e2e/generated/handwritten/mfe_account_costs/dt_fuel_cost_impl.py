@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:732
+SysML Source: root-0/analyses/mfe_account_costs.sysml:735
 
 SysML Expressions:
     n_mod_in = 1.0
@@ -33,7 +33,7 @@ structurally zero (IFE-only) and is likewise not carried.
 All fuel constants are inputs, never library defaults (MR-3) -- a
 concept binds its own fuel chemistry and unit prices.
 
-Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+Output-only Real declarations select typed native manual completion.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
 *Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py
@@ -72,7 +72,7 @@ structurally zero (IFE-only) and is likewise not carried.
 All fuel constants are inputs, never library defaults (MR-3) -- a
 concept binds its own fuel chemistry and unit prices.
 
-Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+Output-only Real declarations select typed native manual completion.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
 *Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py
@@ -80,7 +80,7 @@ Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
 physics.py:31 (Q_DT = 17.58 MeV)
 *Basis**: Reaction-rate-priced annual fuel with burn-up recovery correction
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:732
+SysML Source: root-0/analyses/mfe_account_costs.sysml:735
 
 SysML Expressions:
     n_mod_in = 1.0
@@ -111,7 +111,7 @@ structurally zero (IFE-only) and is likewise not carried.
 All fuel constants are inputs, never library defaults (MR-3) -- a
 concept binds its own fuel chemistry and unit prices.
 
-Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+Output-only Real declarations select typed native manual completion.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
 *Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py

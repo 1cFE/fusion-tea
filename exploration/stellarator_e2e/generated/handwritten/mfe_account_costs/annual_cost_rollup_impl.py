@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:806
+SysML Source: root-0/analyses/mfe_account_costs.sysml:809
 
 SysML Expressions:
     cas70 = cas71 + cas72
@@ -38,7 +38,7 @@ economics, it makes the two sums producer channels the DCF core and the
 economics.py:88-92 (compute_lcoe)
 *Basis**: 1costingFE CAS70 composition and LCOE annual-cost numerator
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:806
+SysML Source: root-0/analyses/mfe_account_costs.sysml:809
 
 SysML Expressions:
     cas70 = cas71 + cas72

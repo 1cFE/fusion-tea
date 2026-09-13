@@ -31,7 +31,7 @@ def test_binding_documentation_and_source_preservation(tmp_path):
     assert ':>> R0 = 12.7;' not in (models/'designs/stellarator_09/stellarator_plant.sysml').read_text()
     for p in MFE.owned:
         assert canonical_path(p).read_bytes()==(MFE.twin/p).read_bytes()
-        if p not in ('designs/generic_mfe/mfe_plant.sysml','designs/stellarator_09/stellarator_plant.sysml'):
+        if p not in ('designs/generic_mfe/mfe_plant.sysml','designs/stellarator_09/stellarator_plant.sysml','analyses/mfe_account_costs.sysml','analyses/mfe_lcoe_dcf.sysml','analyses/mfe_lifecycle.sysml'):
             assert (models/p).read_bytes()==(H/'entering-models'/p).read_bytes()
 
 
@@ -81,8 +81,9 @@ def test_current_contract_edges_and_fresh_package_agreement():
     expected=json.loads((H/'generated-hashes.json').read_text())
     for path in ('source-attempt-1','snapshot-attempt-1'):
         assert hashes(H/path)==expected
-    assert hashes(ROOT/'exploration/stellarator_e2e/generated')==expected
-    assert (ROOT/'exploration/stellarator_e2e/stellarator.snapshot.json').read_bytes()==(H/'instance_graph_snapshot.json').read_bytes()
+    # Historical generation receipts stay frozen; current package has WI-052 finance.
+    current=ROOT/'work/active/WI-052_mfe-financial-rate-limits/implementation'
+    assert hashes(ROOT/'exploration/stellarator_e2e/generated')==json.loads((current/'production-hashes.json').read_text())
     assert all(expected[name]==value for name,value in MANUAL.items())
 
 
@@ -94,8 +95,10 @@ def test_strict_current_package_load(tmp_path):
 
 @pytest.fixture(scope='module')
 def acceptance(tmp_path_factory):
-    from run_acceptance import run_acceptance
-    return run_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance')
+    current=ROOT/'work/active/WI-052_mfe-financial-rate-limits/implementation'
+    spec=importlib.util.spec_from_file_location('wi052_current_regressions',current/'current_regressions.py')
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    return module.radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
 
 
 def read_result(acceptance,name):

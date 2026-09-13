@@ -24,7 +24,7 @@ structurally zero (IFE-only) and is likewise not carried.
 All fuel constants are inputs, never library defaults (MR-3) -- a
 concept binds its own fuel chemistry and unit prices.
 
-Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+Output-only Real declarations select typed native manual completion.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
 *Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py
@@ -45,9 +45,9 @@ Inputs:
 Outputs:
     - annual_fuel: annual_fuel result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:732
+SysML Source: root-0/analyses/mfe_account_costs.sysml:735
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:732
+SysML Source: root-0/analyses/mfe_account_costs.sysml:735
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/dt_fuel_cost_impl.py
@@ -107,7 +107,7 @@ structurally zero (IFE-only) and is likewise not carried.
 All fuel constants are inputs, never library defaults (MR-3) -- a
 concept binds its own fuel chemistry and unit prices.
 
-Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+Output-only Real declarations select typed native manual completion.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
 *Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py
@@ -128,9 +128,9 @@ Inputs:
 Outputs:
     - annual_fuel: annual_fuel result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:732
+SysML Source: root-0/analyses/mfe_account_costs.sysml:735
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:732
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:735
 
     Calculation Specification:
         n_mod_in = 1.0
@@ -161,7 +161,7 @@ structurally zero (IFE-only) and is likewise not carried.
 All fuel constants are inputs, never library defaults (MR-3) -- a
 concept binds its own fuel chemistry and unit prices.
 
-Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+Output-only Real declarations select typed native manual completion.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
 *Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py

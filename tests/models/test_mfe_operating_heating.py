@@ -22,7 +22,10 @@ def load(name):
 def native(tmp_path_factory):
     destination=tmp_path_factory.mktemp('wi050-evidence')
     harness=load('run_acceptance')
-    scratch,results,inputs=harness.run(destination)
+    import sys
+    sys.path.insert(0,str(ROOT/'work/active/WI-052_mfe-financial-rate-limits/implementation'))
+    from current_regressions import operating_acceptance
+    scratch,results,inputs=operating_acceptance(destination,harness)
     return scratch,results,inputs,destination
 
 @pytest.fixture(scope='module')
@@ -193,6 +196,7 @@ def test_operating_heat_complete_cost_operand_classification(native,monkeypatch)
     for channel in mapping:
         module=P+channel.rsplit('__',1)[0]
         assert current[module]['inputs']==old[module]['inputs'],module
-    for name in ['mfe_account_costs.sysml','mfe_lcoe_dcf.sysml','mfe_lifecycle.sysml','mfe_primary_loop.sysml']:
+    # WI-052 owns the three finance definitions; WI-050's unrelated loop stays frozen.
+    for name in ['mfe_primary_loop.sysml']:
         path='models/library/analyses/'+name
         assert (ROOT/path).read_bytes()==subprocess.check_output(['git','show','546218a5:'+path],cwd=ROOT)

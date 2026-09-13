@@ -8,14 +8,23 @@ CAS60 interest-during-construction line (closed form, uniform spend):
           / (interest_rate * construction_years) - 1
   cost  = f_idc * overnight_cost
 
-Variable real exponent construction_years -- the idc_factor precedent
-(mfe_lcoe_dcf.sysml:47) proves the codegen envelope handles it. WI-028
+Real construction_years retains its existing analytic extension. WI-028
 Option C (owner-ruled): this line is A-2-checked and reported but
 EXCLUDED from total_capital; the DCF idc_factor is untouched.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
 *Ref**: costs.py:286-297 (cas60_idc)
 *Basis**: Uniform-spend closed-form interest during construction
+Native manual completion evaluates the retained equation above for Real T.
+The zero-interest factor is exactly zero. Near zero, a generalized-binomial
+series avoids cancellation; outside its documented switch, factoring T-1
+retains the one-year zero. Reported IDC remains excluded from headline
+total capital and is distinct from the headline midpoint multiplier.
+
+*Source**: native equation retained above; preceding external citations are inherited and not reverified in WI-052
+*Ref**: work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification; native financial_factors.py
+*Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
+*Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
 Inputs:
     - overnight_cost: overnight_cost parameter
@@ -61,14 +70,23 @@ CAS60 interest-during-construction line (closed form, uniform spend):
           / (interest_rate * construction_years) - 1
   cost  = f_idc * overnight_cost
 
-Variable real exponent construction_years -- the idc_factor precedent
-(mfe_lcoe_dcf.sysml:47) proves the codegen envelope handles it. WI-028
+Real construction_years retains its existing analytic extension. WI-028
 Option C (owner-ruled): this line is A-2-checked and reported but
 EXCLUDED from total_capital; the DCF idc_factor is untouched.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
 *Ref**: costs.py:286-297 (cas60_idc)
 *Basis**: Uniform-spend closed-form interest during construction
+Native manual completion evaluates the retained equation above for Real T.
+The zero-interest factor is exactly zero. Near zero, a generalized-binomial
+series avoids cancellation; outside its documented switch, factoring T-1
+retains the one-year zero. Reported IDC remains excluded from headline
+total capital and is distinct from the headline midpoint multiplier.
+
+*Source**: native equation retained above; preceding external citations are inherited and not reverified in WI-052
+*Ref**: work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification; native financial_factors.py
+*Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
+*Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
 Inputs:
     - overnight_cost: overnight_cost parameter
@@ -83,24 +101,30 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:645
     SysML Source: root-0/analyses/mfe_account_costs.sysml:645
 
     Calculation Specification:
-        f_idc = ((1.0 + interest_rate) ** construction_years_in - 1.0) / (interest_rate * construction_years_in) - 1.0
-        cost = f_idc * overnight_cost
-        
-Documentation:
+        See documentation:
 CAS60 interest-during-construction line (closed form, uniform spend):
 
   f_idc = ((1 + interest_rate) ** construction_years - 1)
           / (interest_rate * construction_years) - 1
   cost  = f_idc * overnight_cost
 
-Variable real exponent construction_years -- the idc_factor precedent
-(mfe_lcoe_dcf.sysml:47) proves the codegen envelope handles it. WI-028
+Real construction_years retains its existing analytic extension. WI-028
 Option C (owner-ruled): this line is A-2-checked and reported but
 EXCLUDED from total_capital; the DCF idc_factor is untouched.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
 *Ref**: costs.py:286-297 (cas60_idc)
 *Basis**: Uniform-spend closed-form interest during construction
+Native manual completion evaluates the retained equation above for Real T.
+The zero-interest factor is exactly zero. Near zero, a generalized-binomial
+series avoids cancellation; outside its documented switch, factoring T-1
+retains the one-year zero. Reported IDC remains excluded from headline
+total capital and is distinct from the headline midpoint multiplier.
+
+*Source**: native equation retained above; preceding external citations are inherited and not reverified in WI-052
+*Ref**: work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification; native financial_factors.py
+*Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
+*Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
     IMPLEMENTATION: See stellarator_tea.handwritten.mfe_account_costs.idc_closed_form_cost_impl
     for manual implementation.

@@ -650,22 +650,29 @@ package mfe_account_costs {
                   / (interest_rate * construction_years) - 1
           cost  = f_idc * overnight_cost
 
-        Variable real exponent construction_years -- the idc_factor precedent
-        (mfe_lcoe_dcf.sysml:47) proves the codegen envelope handles it. WI-028
+        Real construction_years retains its existing analytic extension. WI-028
         Option C (owner-ruled): this line is A-2-checked and reported but
         EXCLUDED from total_capital; the DCF idc_factor is untouched.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
         **Ref**: costs.py:286-297 (cas60_idc)
         **Basis**: Uniform-spend closed-form interest during construction
+        Native manual completion evaluates the retained equation above for Real T.
+        The zero-interest factor is exactly zero. Near zero, a generalized-binomial
+        series avoids cancellation; outside its documented switch, factoring T-1
+        retains the one-year zero. Reported IDC remains excluded from headline
+        total capital and is distinct from the headline midpoint multiplier.
+
+        **Source**: native equation retained above; preceding external citations are inherited and not reverified in WI-052
+        **Ref**: work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification; native financial_factors.py
+        **Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
+        **Last Updated**: 2026-09-12 (native equation and numerical method verification)
         */
         in attribute interest_rate : Real;
         in attribute construction_years_in : Real;
         in attribute overnight_cost : Real;
-        attribute f_idc : Real =
-            ((1.0 + interest_rate) ** construction_years_in - 1.0)
-            / (interest_rate * construction_years_in) - 1.0;
-        out attribute cost : Real = f_idc * overnight_cost;
+        out attribute cost : Real;
+
     }
 
     // ---- CAS71 / CAS80 shared levelization wrapper (WI-029) ----
@@ -690,12 +697,22 @@ package mfe_account_costs {
         annual_cost = the unlevelized annual O&M -> CAS71, and with
         annual_cost = the raw annual DT fuel cost -> CAS80.
 
-        Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+        Output-only Real declarations select typed native manual completion.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)
         **Ref**: economics.py:13-50 (levelized_annual_cost); economics.py:6-10 (CRF);
             costs.py:41-44 (_total_project_time, NOAK omits licensing_time)
         **Basis**: Growing-annuity present value annuitized by the capital recovery factor
+        Native manual completion evaluates the retained CRF*PV expression above
+        for Real N and T. A1 is construction-escalated annual_cost; its first
+        operating payment is discounted at year one. CRF(0,N)=1/N and
+        PV(i,i,N)=A1*N/(1+i). log1p/expm1 retain nearby represented rate differences.
+        Public outputs remain levelized and crf in the emitted wrapper order.
+
+        **Source**: native equation retained above; preceding external citations are inherited and not reverified in WI-052
+        **Ref**: work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification; native financial_factors.py
+        **Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
+        **Last Updated**: 2026-09-12 (native equation and numerical method verification)
         */
 
         // raw annual stream [$/yr]
@@ -709,23 +726,9 @@ package mfe_account_costs {
         // Tc (NOAK: construction_time)
         in attribute project_time : Real;
 
-        // CRF(i,n). Source: economics.py:6-10. Exposed as an OUT so the plant's
-        // 1cfe-form CAS90 comparison channel (WI-029 Option ii) REUSES this one
-        // capital-recovery factor instead of restating CRF a second time; the
-        // DCF core computes the identical CRF from the same discount_rate /
-        // operational_years and is left untouched (mfe_lcoe_dcf.sysml:42-43).
-        attribute disc_pow_n : Real = (1.0 + interest_rate) ** operational_years_in;
-        out attribute crf : Real = interest_rate * disc_pow_n / (disc_pow_n - 1.0);
+        out attribute crf : Real;
+        out attribute levelized : Real;
 
-        // A1 = escalated first-operating-year cost. Source: economics.py:40.
-        attribute a1 : Real = annual_cost * (1.0 + inflation_rate_in) ** project_time;
-
-        // Growing-annuity present value. Source: economics.py:44-46.
-        attribute pv : Real =
-            a1 * (1.0 - ((1.0 + inflation_rate_in) / (1.0 + interest_rate)) ** operational_years_in)
-            / (interest_rate - inflation_rate_in);
-
-        out attribute levelized : Real = crf * pv;
     }
 
     // ---- CAS80 raw annual DT fuel cost (WI-029) ----
@@ -753,7 +756,7 @@ package mfe_account_costs {
         All fuel constants are inputs, never library defaults (MR-3) -- a
         concept binds its own fuel chemistry and unit prices.
 
-        Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+        Output-only Real declarations select typed native manual completion.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
         **Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py
