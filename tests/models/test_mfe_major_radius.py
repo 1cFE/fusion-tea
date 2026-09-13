@@ -1,5 +1,4 @@
 """WI-051 production binding, fresh generation and full native acceptance."""
-import importlib.util
 import json
 import shutil
 import sys
@@ -31,7 +30,16 @@ def test_binding_documentation_and_source_preservation(tmp_path):
     assert ':>> R0 = 12.7;' not in (models/'designs/stellarator_09/stellarator_plant.sysml').read_text()
     for p in MFE.owned:
         assert canonical_path(p).read_bytes()==(MFE.twin/p).read_bytes()
-        if p not in ('designs/generic_mfe/mfe_plant.sysml','designs/stellarator_09/stellarator_plant.sysml','analyses/mfe_account_costs.sysml','analyses/mfe_lcoe_dcf.sysml','analyses/mfe_lifecycle.sysml'):
+        if p in ('analyses/mfe_plasma_scaling.sysml', 'analyses/mfe_cryo_plant.sysml'):
+            calculation = 'Conductor Peak Field' if 'scaling' in p else 'Cryoplant Electrical Power'
+            def outside_calculation(text):
+                start = text.index("    calc def '" + calculation + "'")
+                end = text.find('\n    calc def ', start + 1)
+                if end == -1:
+                    end = text.rindex('\n}')
+                return text[:start], text[end:]
+            assert outside_calculation((models/p).read_text()) == outside_calculation((H/'entering-models'/p).read_text())
+        elif p not in ('designs/generic_mfe/mfe_plant.sysml','designs/stellarator_09/stellarator_plant.sysml','analyses/mfe_account_costs.sysml','analyses/mfe_lcoe_dcf.sysml','analyses/mfe_lifecycle.sysml'):
             assert (models/p).read_bytes()==(H/'entering-models'/p).read_bytes()
 
 
@@ -81,9 +89,9 @@ def test_current_contract_edges_and_fresh_package_agreement():
     expected=json.loads((H/'generated-hashes.json').read_text())
     for path in ('source-attempt-1','snapshot-attempt-1'):
         assert hashes(H/path)==expected
-    # Historical generation receipts stay frozen; current package has WI-052 finance.
-    current=ROOT/'work/active/WI-052_mfe-financial-rate-limits/implementation'
-    assert hashes(ROOT/'exploration/stellarator_e2e/generated')==json.loads((current/'production-hashes.json').read_text())
+    # Historical generation receipts stay frozen; current receipt is WI-053.
+    from tests.models.current_mfe_regressions import DOMAIN_EVIDENCE
+    assert hashes(ROOT/'exploration/stellarator_e2e/generated')==json.loads((DOMAIN_EVIDENCE/'candidate-package-hashes.json').read_text())
     assert all(expected[name]==value for name,value in MANUAL.items())
 
 
@@ -95,10 +103,8 @@ def test_strict_current_package_load(tmp_path):
 
 @pytest.fixture(scope='module')
 def acceptance(tmp_path_factory):
-    current=ROOT/'work/active/WI-052_mfe-financial-rate-limits/implementation'
-    spec=importlib.util.spec_from_file_location('wi052_current_regressions',current/'current_regressions.py')
-    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
-    return module.radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+    from tests.models.current_mfe_regressions import radius_acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
 
 
 def read_result(acceptance,name):
@@ -158,7 +164,7 @@ def test_retired_radius_refused(acceptance,path,case):
 
 
 @pytest.mark.parametrize('path',['native','helper','single'])
-@pytest.mark.parametrize('case,kind',[(0,'SustainmentError'),(1,'ZeroDivisionError'),(2,'SustainmentError'),(3,'ZeroDivisionError'),(4,'TypeError')],ids=['R4','coil-centre','R3','zero','negative'])
+@pytest.mark.parametrize('case,kind',[(0,'SustainmentError'),(1,'ValueError'),(2,'ValueError'),(3,'ZeroDivisionError'),(4,'ValueError')],ids=['R4','coil-centre','R3','zero','negative'])
 def test_unified_invalid_radius_failure(acceptance,path,case,kind):
     if path=='native':
         row=read_result(acceptance,'results.json')[f'invalid_{case}']
@@ -166,18 +172,20 @@ def test_unified_invalid_radius_failure(acceptance,path,case,kind):
     else:
         row=read_result(acceptance,'direct-production.json')['results'][f'invalid_{case}'][path]
         assert row['error']==kind
+    if case in (1, 2, 4):
+        assert 'Conductor Peak Field: live clearance' in row['message']
 
 
 @pytest.mark.parametrize('case',['valid','original_negative','equality','reference_equal','reference_inverted'])
-def test_peak_component_preserves_open_f07(acceptance,case):
+def test_peak_component_preserves_valid_and_rejects_invalid_domains(acceptance,case):
     row=read_result(acceptance,'checks.json')['component'][case]
     frozen=json.loads((H.parent/'prototype/expectations.json').read_text())['component_cases'][case]
-    if 'B_peak' in frozen:
-        assert row['B_peak']==frozen['B_peak']
-        if case in ('original_negative','reference_inverted'):
-            assert row['B_peak']<0
-            assert (row['B_peak']<=24.9)==frozen['upper_bound_24_9_satisfied']
-    else: assert row['error']==frozen['error']=='ZeroDivisionError'
+    if case == 'valid':
+        assert row['B_peak'] == frozen['B_peak']
+    else:
+        assert row['error'] == 'ValueError'
+        domain = 'reference' if case.startswith('reference') else 'live'
+        assert domain + ' clearance' in row['message']
 
 
 @pytest.mark.parametrize('kind',['missing','mismatch'])

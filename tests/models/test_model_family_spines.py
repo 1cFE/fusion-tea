@@ -119,7 +119,7 @@ def license_must_be_loaded() -> None:
 
 def _generate(models: Path, output: Path, package_name: str) -> bool:
     if package_name == "stellarator_tea":
-        from tests.models.test_mfe_financial_rate_limits import current_generation
+        from tests.models.current_mfe_regressions import current_generation
         seed_and_generate = current_generation().seed_and_generate
         seed_and_generate(output, models_path=models)
         return True
@@ -317,7 +317,7 @@ def test_family_subset_generates_and_live_equals_snapshot(family: str, tmp_path:
     capture_instance_graph_snapshot([models], snapshot)
     from_snapshot = tmp_path / "from_snapshot"
     if family == "mfe":
-        from tests.models.test_mfe_financial_rate_limits import current_generation
+        from tests.models.current_mfe_regressions import current_generation
         seed_and_generate = current_generation().seed_and_generate
         seed_and_generate(from_snapshot, from_snapshot=snapshot)
     else:

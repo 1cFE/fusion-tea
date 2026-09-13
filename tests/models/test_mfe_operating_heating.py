@@ -22,9 +22,7 @@ def load(name):
 def native(tmp_path_factory):
     destination=tmp_path_factory.mktemp('wi050-evidence')
     harness=load('run_acceptance')
-    import sys
-    sys.path.insert(0,str(ROOT/'work/active/WI-052_mfe-financial-rate-limits/implementation'))
-    from current_regressions import operating_acceptance
+    from tests.models.current_mfe_regressions import operating_acceptance
     scratch,results,inputs=operating_acceptance(destination,harness)
     return scratch,results,inputs,destination
 
