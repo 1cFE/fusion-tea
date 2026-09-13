@@ -1902,3 +1902,41 @@ Stop when: Native/source semantics change, necessary correction exceeds scoped c
 ### T-046 start — 2026-09-13
 
 T-046 begins proportional coding work under evidence/T-046_primary-consumers/author-brief.md. Continuing consumer author owns current oracle and affected existing tests/helpers; T-045 owns new native tests/models/package/PM. Independent edits can proceed from the established two-input contract, while native-dependent acceptance waits for a committed stable candidate. Coordinator obtains independent audit and sequential integration.
+
+### T-045 return — 2026-09-13
+
+**Outcome: COMPLETE.** WI-056 production `b413838c`, native evidence `f0fc8231`, report correction `58e76f30` and independent PASS `b3ee09ff` (final audit tip `387c2c95`) establish finite-positive cp and blanket temperature rise at the existing primary-loop entry. Source inspection confirms the representative helium heat-removal meaning; 200K is an anchor, not a universal range. Dormant mode still evaluates the whole chain, and zero source heat with valid operands remains defined. Thirteen outputs and the original ordered body are preserved; the new thirteenth normative seed leaves twelve entering seeds unchanged. Exact fresh generation matches all 247 files.
+
+Read `work/analysis/20260913-primary-loop-completion-audit/report.md@387c2c95`. Independent evidence includes 112 focused passes, two final consumer checks, twenty-one public invalid refusals and two successful native controls. Native evidence adds 59 component tests, 44 local invalid refusals, five exact successful control maps and the unchanged half-current complex-output failure. Source/flow/heat/work identities are checked independently of translation parity. The full changed-model run records 652 passes, thirteen inherited skips and one newly stale current source assertion, corrected under T-046 and verified by its exact node. Canonical L2 ten/L6 279 identities remain unchanged; the smaller package-only validator scope is separately recorded, not repair credit. Baseline divertor violation and broader thermal/engineering domains remain open.
+
+Initial capture serialization and generated-body extraction failures are retained native attempts. The latter selected documentation rather than executable code and caused SyntaxError; the corrected body compiles and passes tests. Exact fresh equality alone did not prove syntax or correctness. `identity-lineage.json@f0fc8231` distinguishes entering executable 8a3473de8206c5317dcd271cb68cccb02150bada13641a1be0e89eabd03b5b03, failed intermediate d7f5f417d272aaaed3421c775e2416a45c3ef3a233ad623b0f141446f15ce2ae and corrected d365eb8322577c8c9b1224313e27929de89a802aaa628753b304258be0123c8f. The intermediate is not mislabeled the round's entering package. Minor R11-A1 report wording overstated an insight link; `58e76f30` corrects it to the actual direct-source citation, without changing production or inventing a traceability edge. SV-096 is independently reaffirmed passing through native operation.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Existing positive heat-removal operands are unchecked in live and dormant execution | Enforce finite-positive operands at the existing always-evaluating loop entry, preserving zero source heat and ordered valid arithmetic | execution detail | Native author/coordinator [AGENT], independently audited | WI-056@b413838c; audit@387c2c95 |
+| Different validator scopes and an intermediate failed fingerprint could misstate current evidence | Compare exact canonical issue identities and record all three lineage stages explicitly | execution detail | Native author [AGENT], independently verified | evidence@f0fc8231 |
+| Audit identifies unsupported DI-008 edge claim | Correct the report to the actual direct-source row; no new edge is adopted | execution detail | Native author [AGENT] on fresh audit finding | report@58e76f30; audit@387c2c95 |
+
+### T-046 return — 2026-09-13
+
+**Outcome: COMPLETE.** Oracle correction `24b4c600`, current-consumer migration/acceptance `4356a861` and independent audit `387c2c95` satisfy the bounded current-consumer contract. `.project/active/primary-loop-current-consumers/implementation/verification.md@4356a861` retains twenty-two actual original failures and 52 passing oracle checks. Four live/dormant output maps and independent heat/flow/scaling controls remain correct. Sixty-one focused current checks pass; the sole new full-model failure is explicitly joined to its targeted correction/pass. No corrected full-suite run is invented.
+
+Current callers use WI-056's checked thirteen-seed generator and immutable exact receipt. Source comparisons exempt only the authorized Primary Coolant Loop definition, retain frozen input/output identities and existing cost/operand checks, and preserve other sources and all historical drivers/receipts/results. Existing 99-input/141-output independent oracle coverage remains unchanged; 147 unsupported inputs and seventeen output omissions remain open. No native production or scientific expectation is altered by the consumer migration.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Two native denominator checks and a thirteenth seed require current consumer coherence | Add independent oracle refusals and migrate checked generator/receipt with focused valid/invalid acceptance | execution detail | Coding author [AGENT], independently audited | implementation@24b4c600; acceptance@4356a861 |
+| One current historical source freeze rejects the authorized primary-loop definition rewrite | Narrow only that comparison and retain numerical/cost/interface assertions, then rerun the exact failed node | execution detail | Coding author/coordinator [AGENT] within T-046 | source migration/evidence@4356a861; audit@387c2c95 |
+
+### T-047 scope
+
+Objective: Prove one native integration candidate for the independently audited primary-loop denominator correction and current consumers.
+Why now: T-045/T-046 complete with bounded independent PASS@387c2c95.
+Scope: One stock integration invocation against WI-056, current MFE package/manifest/census and audited lineage, preserving complete native producer evidence. No model/consumer/seam repair, study, duplicate promotion or broader engineering certification.
+Inputs: amended goal.md; production@b413838c/evidence@f0fc8231/report@58e76f30; consumer@4356a861; audit@387c2c95; semantic15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e, executabled365eb8322577c8c9b1224313e27929de89a802aaa628753b304258be0123c8f, TEAx8d877460ac4f6f264561d916e40c1708adb13397.
+Done when: Native seam returns CANDIDATE with all declared gates passing and exact audited lineage, or a named blocker.
+Stop when: Unexpected authority/identity, named blocker, seam prerequisite or reserved gate/limit binds.
+
+### T-047 start — 2026-09-13
+
+T-047 invokes scripts/integrate.py under .codex-test/run against audited WI-056@387c2c95, writing complete evidence to evidence/T-047_integration. Coordinator owns sequential execution; no study starts.
