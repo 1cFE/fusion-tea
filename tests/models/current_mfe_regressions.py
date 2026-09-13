@@ -6,12 +6,12 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-DOMAIN_EVIDENCE = ROOT / 'work/active/WI-055_winding-pack-input-domain/evidence'
+DOMAIN_EVIDENCE = ROOT / 'work/active/WI-056_primary-loop-heat-capacity-domain/evidence'
 FINANCE_EVIDENCE = ROOT / 'work/active/WI-052_mfe-financial-rate-limits/implementation'
 
 
 def current_generation():
-    spec = importlib.util.spec_from_file_location('wi055_current_generation', DOMAIN_EVIDENCE / 'regenerate.py')
+    spec = importlib.util.spec_from_file_location('wi056_current_generation', DOMAIN_EVIDENCE / 'regenerate.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
@@ -19,7 +19,7 @@ def current_generation():
 
 def operating_acceptance(destination, historical):
     # Keep all historical scenario execution and assertions. Replace its generator
-    # dependency with the native current twelve-seed completion function.
+    # dependency with the native current thirteen-seed completion function.
     spec = importlib.util.spec_from_file_location('wi052_operating_scenarios', FINANCE_EVIDENCE / 'current_regressions.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

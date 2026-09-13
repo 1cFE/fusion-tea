@@ -1,6 +1,6 @@
 # Primary-loop current consumers
 
-Status: Implementation in progress. Created: 2026-09-13.
+Status: Implementation and consumer acceptance complete; independent audit pending. Created: 2026-09-13.
 
 [INHERITED] T-046 author brief at `work/orchestration/goals/fusion-audit-remediation/evidence/T-046_primary-consumers/author-brief.md@9a28d087` establishes the scoped consumer contract under the Round 11 strategy. Previous coding items and their evidence remain historical.
 

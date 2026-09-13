@@ -194,7 +194,14 @@ def test_operating_heat_complete_cost_operand_classification(native,monkeypatch)
     for channel in mapping:
         module=P+channel.rsplit('__',1)[0]
         assert current[module]['inputs']==old[module]['inputs'],module
-    # WI-052 owns the three finance definitions; WI-050's unrelated loop stays frozen.
-    for name in ['mfe_primary_loop.sysml']:
-        path='models/library/analyses/'+name
-        assert (ROOT/path).read_bytes()==subprocess.check_output(['git','show','546218a5:'+path],cwd=ROOT)
+    assert current[P+'primary_loop']['inputs'] == old[P+'primary_loop']['inputs']
+    assert current[P+'primary_loop']['outputs'] == old[P+'primary_loop']['outputs']
+    # WI-056 owns only the Primary Coolant Loop definition. Preserve the source
+    # outside that exact boundary, alongside the independent cost/operand checks.
+    path='models/library/analyses/mfe_primary_loop.sysml'
+    def outside_primary_definition(text):
+        start = text.index("    calc def 'Primary Coolant Loop'")
+        end = text.rindex('\n}')
+        return text[:start], text[end:]
+    previous = subprocess.check_output(['git','show','546218a5:'+path],cwd=ROOT).decode()
+    assert outside_primary_definition((ROOT/path).read_text()) == outside_primary_definition(previous)
