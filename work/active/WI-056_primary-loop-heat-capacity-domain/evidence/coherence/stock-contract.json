@@ -6,6 +6,7 @@
     "contracts/model_contract.json": "d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2",
     "contracts/verify.py": "ad0a855af17d18af5f3e8c36b1a6c500f492d88ec777b40f307c646306c67284",
     "handwritten/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "handwritten/backup/primary_coolant_loop_impl_20260913_095724.py": "34466ce3ada4f6d4816203407e30dcc5871fd03b3fd82d9da9df3a9a927179a3",
     "handwritten/mfe_account_costs/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
     "handwritten/mfe_account_costs/annual_cost_rollup_impl.py": "a3748d44d540f898b1eee4dcf900eda9fbd66615c40626d0422c34d5d307f919",
     "handwritten/mfe_account_costs/annual_om_cost_impl.py": "b788c3c009bccc2bf014a7e1358374d935874ab8fcd52fe45845a216ae7aa46c",
@@ -89,7 +90,7 @@
     "handwritten/mfe_power_cycle/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
     "handwritten/mfe_power_cycle/power_cycle_efficiency_impl.py": "ed5872f52003434c873cbd60e17b580427c861f97a088e5dd6c14bcebca5db11",
     "handwritten/mfe_primary_loop/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
-    "handwritten/mfe_primary_loop/primary_coolant_loop_impl.py": "2433fa6272e125bf426e389cfd772aa4dce5a88bc8be98bff4379e2edb6a45e7",
+    "handwritten/mfe_primary_loop/primary_coolant_loop_impl.py": "28e6c794030804e9670785cfbd0b8398aa53ace0ae17467a46a17948ff6da1bd",
     "handwritten/mfe_vacuum/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
     "handwritten/mfe_vacuum/vacuum_gas_load_impl.py": "1956c0a4161c354b9935d053d61c178a719657f8bf3a35a877ba48abc9eff4ad",
     "handwritten/stellarator_09/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
@@ -254,7 +255,7 @@
     ],
     "runtime_output_globs": []
   },
-  "executable_fingerprint": "bb60a9973cfaea643839740d0d7c295ef190f9ddbaeab28fe84101be65518be7",
+  "executable_fingerprint": "db12e5c379e3b0f07f0b89b07d8139a0a7fead27547f7771f3f66cc3164d52c7",
   "generator_version": "0.1.1",
   "package_name": "stellarator_tea",
   "runtime_contract_version": "2.0.0"

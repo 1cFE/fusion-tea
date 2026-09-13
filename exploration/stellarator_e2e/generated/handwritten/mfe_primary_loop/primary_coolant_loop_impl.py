@@ -9,7 +9,7 @@ from stellarator_tea.modules.mfe_primary_loop.primary_coolant_loop import Primar
 AUTO_IMPLEMENTED = False
 
 
-def run_primary_coolant_loop(inputs: Primary_Coolant_LoopInput) -> tuple[float, ...]:
+def run_primary_coolant_loop(inputs: Primary_Coolant_LoopInput) -> tuple[float, float, float, float, float, float, float, float, float, float, float, float, float]:
     """Evaluate the always-active chain after checking its two heating operands."""
     if not math.isfinite(inputs.cp_in) or inputs.cp_in <= 0:
         raise ValueError("Primary Coolant Loop: cp_in must be finite and positive")

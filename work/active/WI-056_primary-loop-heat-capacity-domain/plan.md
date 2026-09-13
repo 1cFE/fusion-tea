@@ -24,3 +24,15 @@ Native result remains pending fresh independent audit, separately owned consumer
 Implementation note: initial body extraction matched the generated documentation's k_isen line and yielded invalid Python. The first native/component checks caught SyntaxError. Original failure logs and initial seed/package receipts remain retained. The repair selects the executable occurrence and compile-checks it; corrected component tests pass 59/59 and public acceptance passes. Reproducible fresh bytes do not themselves establish syntactic or numerical correctness. The earlier local capture also needed complex-value JSON serialization; its original failed log remains.
 
 Final native validation is in `evidence/report.md`: 59 focused passes; exact native controls and 65 deliberate local/public invalid refusals; independent published identities; exact fresh package equality. The full suite retains 652 passes, thirteen exact inherited skips and one current-test source-freeze failure routed to T-046. All-level canonical diagnostic identities match entering evidence exactly. Final native artifacts are ready for independent audit; consumer correction evidence joins the retained full-run failure separately.
+
+## T-048 native preparation follow-up
+
+[INHERITED] T-048 brief `b2e57268` scopes the stock regeneration prerequisite from T-047. Original scientific/domain contract remains unchanged.
+
+- [x] Reproduce stock smart regeneration on a disposable copy and inspect every moved file, including handwritten bodies and backups. Establish cause before expanding native preparation.
+- [x] Restore the exact thirteen-float return annotation expected by the stock signature detector. Prove runtime statements and guards unchanged.
+- [x] Add `evidence/regenerate_corrected.py` using smart regeneration and separate corrected seed/package receipts. Preserve the original helper, receipts, failed integration and initial audit.
+- [x] Verify corrected empty-destination fresh generation twice and stock in-place generation once with all 247 package bytes and thirteen seeds preserved. Refresh manifest identity and run all 59 focused component checks.
+- [ ] Join fresh independent correction audit and separately owned T-049 current-helper/receipt migration before coordinator integration.
+
+Correction evidence and consumer prerequisites are in `evidence/coherence/report.md`. No shared tool/runtime/seam, SysML, public interface or runtime statement changed.

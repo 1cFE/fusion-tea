@@ -1,0 +1,7 @@
+{
+  "path": "handwritten/mfe_primary_loop/primary_coolant_loop_impl.py",
+  "before": "34466ce3ada4f6d4816203407e30dcc5871fd03b3fd82d9da9df3a9a927179a3",
+  "after": "2433fa6272e125bf426e389cfd772aa4dce5a88bc8be98bff4379e2edb6a45e7",
+  "only_return_annotation_changed": true,
+  "return_arity": 13
+}
