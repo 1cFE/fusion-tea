@@ -1348,3 +1348,22 @@ Verification: a read-only `.codex-test/run python` check resolved all 24 local M
 | Active plant-closure execution and static grading read model/package sources | Complete the independent README correction; retain model-resident documentation and financial production hold | reserved gate | Owner production hold, applied by round agent | T-030 scope/return; no model/package change |
 
 Round 7 remains open. The authorized README correction is complete; financial implementation and model-resident documentation remain held pending plant-closure. No new pin, study, finding disposition in a study log, or accepted learning is introduced by this task.
+
+### Owner timing release — 2026-09-12
+
+[OWNER-VERBATIM: /tmp/handoff-20260912-181924.md, unpinned; no native digest] "the plant closure is complete. please write a $my-handoff for the next agent to continue the remediation goal" satisfies the recorded financial production scheduling condition. The current owner request "please proceed with $run-goal" resumes that continuation. Plant packet acceptance is independently recorded in its trail at 26e5c629. Release the timing hold for isolated WI-052 implementation; all separate reserved gates remain in force.
+
+Resume inspection found no unfinished task invocation in Round 7. T-029 and T-030 both returned. Isolated native preparation remains at abe5f459 with implementation unchecked and no production edits; spec/design/review/plan history agrees with the cited preparation. The main checkout's scoped production difference since 050054bd is the authorized T-030 README correction. The assessment remains at bfc60b91. These completed task outcomes and subsequent plant acceptance do not invalidate the newly scoped continuation.
+
+### T-031 scope
+
+Objective: Complete the prepared WI-052 MFE financial rate-limit implementation and obtain its fresh independent native audit.
+Why now: The owner released the plant-closure timing hold; T-029 preparation supplies the reviewed design and existing implementation plan.
+Scope: Execute the existing native plan in /tmp/fusion-mfe-financial-rate-limits with baseline review, canonical/mirror/generated changes, direct-call tests and consumer handoff. Exclude branch merge, current study-oracle/adapter migration, integration promotion, study execution, source adoption, economic reinterpretation and close/archive.
+Inputs: amended goal.md; isolated work/active/WI-052_mfe-financial-rate-limits/spec.md@050054bd, design.md@239ca68e, review.md@1131d6bc and plan.md@abe5f459; immutable work/orchestration/mfe-financial-rate-limits.md; timing release above. Preserve the narrower T-029 financial scope and Real-duration/live-held semantics.
+Done when: The existing plan's implementation evidence and consumer handoff are complete and a fresh non-author native audit is positive, or a bounded blocker is evidenced.
+Stop when: Native prerequisite failure, source/domain/timing conflict, unexplained major baseline deviation, reserved gate or declared repair/retry limit binds.
+
+### T-031 start — 2026-09-12
+
+T-031 resumes WI-052 through a fresh implement-model stage in its isolated checkout, followed by a separate fresh audit-models stage. The round coordinator owns this trail and sequential downstream routing; the native stage owns only its scoped implementation surfaces. Dispatch brief: evidence/T-031_implementation/implement-brief.md in this commit.
