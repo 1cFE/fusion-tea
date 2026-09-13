@@ -1974,3 +1974,35 @@ Stop when: A broader consumer/tooling/meaning change is required, native correct
 ### T-049 start — 2026-09-13
 
 T-049 continues the existing coding item under evidence/T-049_primary-coherence-consumers/author-brief.md, preserving its original acceptance. Continuing consumer author owns exact current path migrations and new focused evidence. T-048 owns native signature/helper/receipt correction; independent auditor verifies both corrected generation modes and current consumers before any new integration task.
+
+### T-048 return — 2026-09-13
+
+**Outcome: COMPLETE.** Native correction `9ee88d5b` and independent coherence addendum `6a7a2d4e` resolve the package prerequisite. The installed stock signature detector compares return annotations textually: the variadic tuple[float,...] did not match thirteen explicit float types. Smart generation therefore replaced the guarded primary body and added a timestamped backup. T-047's earlier contract check exposed only the non-handwritten contract difference; the subsequent handwritten gate was not reached. Independent scratch evidence preserves all three changes and the original failed behavior.
+
+The correction restores only the exact expected return annotation and aligns a new checked helper with stock smart mode. Guarded runtime body and arguments are unchanged; twelve other seeds remain byte-identical. Original helper/seed/package receipts stay frozen, with separate corrected paths. `work/analysis/20260913-primary-loop-completion-audit/coherence/addendum.md@6a7a2d4e` verifies all 247 fresh files, stock in-place generation after fresh preparation and after copying the existing package, zero changes across all paths including handwritten bodies/backups, and 77 preserved/zero regenerated implementations. Fifty-nine independent component tests pass. No shared tool/seam patch or scientific/public-interface change was needed. Corrected executable is bb60a9973cfaea643839740d0d7c295ef190f9ddbaeab28fe84101be65518be7. The original audit's successful checks remain qualified; they did not establish stock in-place preservation.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Variadic annotation fails stock exact-signature matching and triggers body replacement | Restore generated thirteen-float signature and use stock smart mode in a new checked helper, preserving runtime body and original records | execution detail | Native author/coordinator [AGENT], independently verified | correction@9ee88d5b; addendum@6a7a2d4e |
+| Fresh generation and stock in-place behavior differ | Require independent equality through both documented producer modes, including handwritten paths, before integration | premise surprise | Coordinator [AGENT] from T-047, independent audit | original and corrected coherence evidence@6a7a2d4e |
+
+### T-049 return — 2026-09-13
+
+**Outcome: COMPLETE.** Consumer migration `eb4344b6` changes only current helper/import identity and corrected receipt references, preserving original T-046 evidence and oracle behavior. `.project/active/primary-loop-current-consumers/implementation/coherence-verification.md@eb4344b6` records 62 focused checks and one existing current-loader live/snapshot check, all passing against native `9ee88d5b`. Independent addendum `6a7a2d4e` reruns two current receipt/native-oracle checks. No broad suite is repeated or relabeled; no unresolved current-consumer prerequisite remains.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Corrected exact-signature seed and smart-mode helper require new immutable receipts | Migrate current references only and retain prior acceptance by revision | execution detail | Coding author [AGENT], independently checked | consumer@eb4344b6; addendum@6a7a2d4e |
+
+### T-050 scope
+
+Objective: Prove the round's one native integration candidate after verified exact-signature and current-consumer correction.
+Why now: T-048/T-049 complete with independent fresh and stock in-place coherence PASS@6a7a2d4e; T-047 produced no candidate.
+Scope: A new stock integration task against the corrected audited native/current-consumer identity, preserving complete evidence. No further production or seam repair, study or duplicate candidate.
+Inputs: amended goal.md; native@9ee88d5b; consumer@eb4344b6; audit@6a7a2d4e; semantic 15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e, executable bb60a9973cfaea643839740d0d7c295ef190f9ddbaeab28fe84101be65518be7, TEAx 8d877460ac4f6f264561d916e40c1708adb13397.
+Done when: Stock integration returns CANDIDATE with all declared gates passing and exact corrected lineage, or a named blocker.
+Stop when: Unexpected authority/identity, named blocker, further prerequisite or reserved gate/limit binds.
+
+### T-050 start — 2026-09-13
+
+T-050 invokes scripts/integrate.py under .codex-test/run against WI-056@6a7a2d4e, writing evidence/T-050_integration. This is a new task with corrected native inputs after T-047's prerequisite, not a mechanical retry or replacement of failed evidence. Coordinator owns sequential execution; no study starts.
