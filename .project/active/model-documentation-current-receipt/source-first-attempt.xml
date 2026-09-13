@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.407" timestamp="2026-09-13T08:47:22.134135-07:00" hostname="reid-workstation"><testcase classname="tests.models.test_mfe_major_radius" name="test_binding_documentation_and_source_preservation" time="0.354"><failure message="assert b&quot;package eco...;\n    }\n}\n&quot; == b&quot;package eco...;\n    }\n}\n&quot;&#10;  &#10;  At index 305 diff: b'c' != b'a'&#10;  Use -v to get more diff">tests/models/test_mfe_major_radius.py:51: in test_binding_documentation_and_source_preservation
+    assert (models/p).read_bytes()==(H/'entering-models'/p).read_bytes()
+E   assert b"package eco...;\n    }\n}\n" == b"package eco...;\n    }\n}\n"
+E     
+E     At index 305 diff: b'c' != b'a'
+E     Use -v to get more diff</failure></testcase></testsuite></testsuites>

@@ -1667,3 +1667,7 @@ Stop when: An executable difference appears, source comparison cannot distinguis
 ### T-040 start — 2026-09-13
 
 T-040 extends .project/active/model-documentation-current-receipt/ before changing the test. Coordinator owns only that coding item and tests/models/test_mfe_major_radius.py. Native source/package/receipt remains fixed at 4ca1f299. Fresh audit continues independent source/dimensional checks and waits for this current-consumer correction before its coherent completion verdict. The failed node is a new dependency, not an inherited failure.
+
+### Amendment — 2026-09-13
+
+T-040's first repaired-source run exposes the same raw-comment mismatch in a fourth file, `foundation/economic_parameter.sysml`, whose archived citation is part of WI-054's seven-file correction. Extend only the named token-comparison set to this file; all other T-040 bounds remain. This is an execution-detail decision by the coordinator [AGENT] from the retained new failure in .project/active/model-documentation-current-receipt/source-first-attempt.xml. The first full radius run retains 63 other passes and the one still-failing source node; no failure is relabeled inherited.

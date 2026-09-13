@@ -1,5 +1,6 @@
 """WI-051 production binding, fresh generation and full native acceptance."""
 import json
+import runpy
 import shutil
 import sys
 from pathlib import Path
@@ -28,10 +29,17 @@ def test_binding_documentation_and_source_preservation(tmp_path):
     assert all(x in doc for x in ('Source: work/analysis/20260911-230953_radius-ownership-evidence/source-meaning.md','Ref:','Basis:','Last Updated:','## Assessment'))
     assert ':>> R0 = R {' in (models/'designs/generic_mfe/mfe_plant.sysml').read_text()
     assert ':>> R0 = 12.7;' not in (models/'designs/stellarator_09/stellarator_plant.sysml').read_text()
+    documentation=ROOT/'work/active/WI-054_faithful-model-equations-and-citations/evidence'
+    lexical=runpy.run_path(str(documentation/'preservation.py'))['lexical']
+    entering=json.loads((documentation/'entering.json').read_text())['models']
     for p in MFE.owned:
         assert canonical_path(p).read_bytes()==(MFE.twin/p).read_bytes()
-        if p in ('analyses/mfe_plasma_scaling.sysml', 'analyses/mfe_cryo_plant.sysml'):
-            calculation = 'Conductor Peak Field' if 'scaling' in p else 'Cryoplant Electrical Power'
+        if p in ('analyses/mfe_plasma_scaling.sysml', 'analyses/mfe_plasma_sustainment.sysml', 'analyses/mfe_magnet_cost.sysml', 'foundation/economic_parameter.sysml'):
+            # WI-054 changes comments only; every executable token stays frozen.
+            source=str(canonical_path(p).relative_to(ROOT))
+            assert lexical((models/p).read_text()) == entering[source]['tokens']
+        elif p == 'analyses/mfe_cryo_plant.sysml':
+            calculation = 'Cryoplant Electrical Power'
             def outside_calculation(text):
                 start = text.index("    calc def '" + calculation + "'")
                 end = text.find('\n    calc def ', start + 1)

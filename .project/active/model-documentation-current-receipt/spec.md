@@ -16,3 +16,7 @@ Acceptance: the exact previously failing node passes against the committed WI-05
 [INFERRED] For only those three files, compare all executable SysML tokens with WI-054's frozen entering record at `4ca1f299`, using its existing comment/string-aware lexer. Retain exact canonical/twin byte equality, original radius binding/documentation checks, and unchanged historical comparisons for every other file. This broadens current test maintenance only; no production or numerical expectation changes.
 
 Acceptance adds the formerly failing source-preservation node and the whole relevant current radius module, followed by fresh independent inspection and rerun. Any executable token difference must still fail, including within the magnet-field calculation. Keep the auditor's first failing execution as evidence.
+
+### T-040 correction — fourth affected source
+
+The first rerun revealed the same archived-citation byte mismatch in `foundation/economic_parameter.sysml`, also explicitly changed by WI-054. Add that fourth file to the exact entering-token comparison set. Preserve all other boundaries and the failed attempt. The 63 other radius checks already pass; rerun the affected node after this correction.
