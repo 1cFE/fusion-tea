@@ -75,7 +75,8 @@ def run():
             financial=key in FINANCE
             if not financial:assert value==baseline['outputs'][key],(name,key,value,baseline['outputs'][key])
             if before is not None and financial:check(value,D(before))
-            coverage='independent factor/charge' if key in refs else 'independent calendar reference (SV-091)' if key.startswith(P+'calendar__') and financial else 'exact entering physical/other'
+            propagated=key.startswith(tuple(P+m+'__' for m in ('cas70_calc','cas90_1cfe_calc','lcoe_1cfe_calc')))
+            coverage='downstream arithmetic reconstructed from native operands; upstream finance independently checked' if propagated else 'independent factor/PV/charge at native physical operands' if key in refs else 'exact entering physical/other'
             rows.append({'name':key,'entering':before,'candidate':value,'delta':None if before is None else value-before,'relative_delta':None if before in (None,0) else abs((value-before)/before),'producer':producers.get(key),'consumers':consumers[key],'classification':'changed finance' if financial and before!=value else 'unchanged physical/other','coverage':coverage,'entering_error':same.get('error')})
         ledger[name]=rows
     (HERE/'scalar-ledger.json').write_text(json.dumps(ledger,indent=2)+'\n')

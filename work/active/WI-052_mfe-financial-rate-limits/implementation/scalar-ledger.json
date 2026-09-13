@@ -1883,7 +1883,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -1900,7 +1900,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -2224,7 +2224,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -2284,7 +2284,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -2301,7 +2301,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -2363,7 +2363,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -2375,7 +2375,7 @@
       "producer": "stellarator_09__stellaris__cas80_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -2392,7 +2392,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": null
     },
     {
@@ -2409,7 +2409,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": null
     },
     {
@@ -2598,7 +2598,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -2615,7 +2615,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": null
     },
     {
@@ -2627,7 +2627,7 @@
       "producer": "stellarator_09__stellaris__lcoe_1cfe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": null
     },
     {
@@ -2656,7 +2656,7 @@
       "producer": "stellarator_09__stellaris__lcoe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     }
   ],
@@ -4544,7 +4544,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -4561,7 +4561,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -4885,7 +4885,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -4945,7 +4945,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -4962,7 +4962,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -5024,7 +5024,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -5036,7 +5036,7 @@
       "producer": "stellarator_09__stellaris__cas80_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -5053,7 +5053,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -5070,7 +5070,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -5259,7 +5259,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -5276,7 +5276,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -5288,7 +5288,7 @@
       "producer": "stellarator_09__stellaris__lcoe_1cfe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -5317,7 +5317,7 @@
       "producer": "stellarator_09__stellaris__lcoe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     }
   ],
@@ -7205,7 +7205,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -7222,7 +7222,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -7546,7 +7546,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -7606,7 +7606,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -7623,7 +7623,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -7685,7 +7685,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -7697,7 +7697,7 @@
       "producer": "stellarator_09__stellaris__cas80_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -7714,7 +7714,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -7731,7 +7731,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -7920,7 +7920,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -7937,7 +7937,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -7949,7 +7949,7 @@
       "producer": "stellarator_09__stellaris__lcoe_1cfe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -7978,7 +7978,7 @@
       "producer": "stellarator_09__stellaris__lcoe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     }
   ],
@@ -9866,7 +9866,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -9883,7 +9883,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -10207,7 +10207,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -10267,7 +10267,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -10284,7 +10284,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -10346,7 +10346,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -10358,7 +10358,7 @@
       "producer": "stellarator_09__stellaris__cas80_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -10375,7 +10375,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -10392,7 +10392,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -10581,7 +10581,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -10598,7 +10598,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -10610,7 +10610,7 @@
       "producer": "stellarator_09__stellaris__lcoe_1cfe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -10639,7 +10639,7 @@
       "producer": "stellarator_09__stellaris__lcoe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     }
   ],
@@ -12527,7 +12527,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -12544,7 +12544,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -12868,7 +12868,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -12928,7 +12928,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -12945,7 +12945,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -13007,7 +13007,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -13019,7 +13019,7 @@
       "producer": "stellarator_09__stellaris__cas80_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -13036,7 +13036,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -13053,7 +13053,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -13242,7 +13242,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -13259,7 +13259,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -13271,7 +13271,7 @@
       "producer": "stellarator_09__stellaris__lcoe_1cfe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -13300,7 +13300,7 @@
       "producer": "stellarator_09__stellaris__lcoe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     }
   ],
@@ -15188,7 +15188,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -15205,7 +15205,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -15529,7 +15529,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -15589,7 +15589,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "unchanged physical/other",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -15606,7 +15606,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -15668,7 +15668,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -15680,7 +15680,7 @@
       "producer": "stellarator_09__stellaris__cas80_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -15697,7 +15697,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": null
     },
     {
@@ -15714,7 +15714,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": null
     },
     {
@@ -15903,7 +15903,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     },
     {
@@ -15920,7 +15920,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": null
     },
     {
@@ -15932,7 +15932,7 @@
       "producer": "stellarator_09__stellaris__lcoe_1cfe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": null
     },
     {
@@ -15961,7 +15961,7 @@
       "producer": "stellarator_09__stellaris__lcoe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": null
     }
   ],
@@ -17849,7 +17849,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -17866,7 +17866,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -18190,7 +18190,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -18250,7 +18250,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -18267,7 +18267,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -18329,7 +18329,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -18341,7 +18341,7 @@
       "producer": "stellarator_09__stellaris__cas80_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -18358,7 +18358,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -18375,7 +18375,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -18564,7 +18564,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -18581,7 +18581,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -18593,7 +18593,7 @@
       "producer": "stellarator_09__stellaris__lcoe_1cfe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -18622,7 +18622,7 @@
       "producer": "stellarator_09__stellaris__lcoe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     }
   ],
@@ -20510,7 +20510,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -20527,7 +20527,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -20851,7 +20851,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -20911,7 +20911,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -20928,7 +20928,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -20990,7 +20990,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -21002,7 +21002,7 @@
       "producer": "stellarator_09__stellaris__cas80_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -21019,7 +21019,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -21036,7 +21036,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -21225,7 +21225,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -21242,7 +21242,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -21254,7 +21254,7 @@
       "producer": "stellarator_09__stellaris__lcoe_1cfe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -21283,7 +21283,7 @@
       "producer": "stellarator_09__stellaris__lcoe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     }
   ],
@@ -23171,7 +23171,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -23188,7 +23188,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -23512,7 +23512,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -23572,7 +23572,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -23589,7 +23589,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -23651,7 +23651,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -23663,7 +23663,7 @@
       "producer": "stellarator_09__stellaris__cas80_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -23680,7 +23680,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -23697,7 +23697,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -23886,7 +23886,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -23903,7 +23903,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -23915,7 +23915,7 @@
       "producer": "stellarator_09__stellaris__lcoe_1cfe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -23944,7 +23944,7 @@
       "producer": "stellarator_09__stellaris__lcoe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     }
   ],
@@ -25832,7 +25832,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -25849,7 +25849,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -26173,7 +26173,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -26233,7 +26233,7 @@
       "producer": "stellarator_09__stellaris__calendar",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -26250,7 +26250,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -26312,7 +26312,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -26324,7 +26324,7 @@
       "producer": "stellarator_09__stellaris__cas80_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -26341,7 +26341,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -26358,7 +26358,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -26547,7 +26547,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -26564,7 +26564,7 @@
         }
       ],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -26576,7 +26576,7 @@
       "producer": "stellarator_09__stellaris__lcoe_1cfe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "downstream arithmetic reconstructed from native operands; upstream finance independently checked",
       "entering_error": "EvaluationFailed"
     },
     {
@@ -26605,7 +26605,7 @@
       "producer": "stellarator_09__stellaris__lcoe_calc",
       "consumers": [],
       "classification": "changed finance",
-      "coverage": "independent factor/charge",
+      "coverage": "independent factor/PV/charge at native physical operands",
       "entering_error": "EvaluationFailed"
     }
   ]

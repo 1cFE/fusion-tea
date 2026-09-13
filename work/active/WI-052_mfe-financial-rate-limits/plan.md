@@ -1,5 +1,5 @@
 ---
-Status: draft
+Status: active
 Created: 2026-09-12
 Updated: 2026-09-12
 Related Artifacts:
@@ -153,21 +153,22 @@ Use the spec's relative error ≤1e-9 for every nonzero independent expectation,
 
 **Files:** NEW `I/implementation/validation-differential.json`, `I/implementation/regression-differential.json`, `I/implementation/validation-report.md`, `I/consumer-handoff.md`; REFINE `modeling_project/VALIDATION_MATRIX.md` through native PM; NEW `I/audit.md` and audit evidence owned exclusively by the fresh auditor.
 
-- [ ] Run `.codex-test/run agentic-mbse validate --complete exploration/stellarator_e2e/models`, the fresh materialized canonical MFE family and `.codex-test/run agentic-mbse validate --complete models`. Match each L1–L6 issue to the entering record by identity; classify retained, repaired and new issues. No count-only L6 acceptance.
-- [ ] Run `.codex-test/run python -m pytest tests/models/ -v` and `.codex-test/run python -m pytest tests/study/ -v` after the same side-effect inspection as Phase 1. Match failing/skipped node IDs and reasons individually. New failures require fixes or explicit unresolved blockers; a downstream unstable-oracle mismatch is reported as current, never mislabeled inherited.
-- [ ] Review all four changed definitions' citations and dates, helper/body method documentation, canonical/mirror equality, complete traceability rows and unchanged binding architecture. Verify no new design-layer calc or cycle.
+- [x] Run `.codex-test/run agentic-mbse validate --complete exploration/stellarator_e2e/models`, the fresh materialized canonical MFE family and `.codex-test/run agentic-mbse validate --complete models`. Match each L1–L6 issue to the entering record by identity; classify retained, repaired and new issues. No count-only L6 acceptance.
+- [x] Run `.codex-test/run python -m pytest tests/models/ -v` and `.codex-test/run python -m pytest tests/study/ -v` after the same side-effect inspection as Phase 1. Match failing/skipped node IDs and reasons individually. New failures require fixes or explicit unresolved blockers; a downstream unstable-oracle mismatch is reported as current, never mislabeled inherited.
+- [x] Review all four changed definitions' citations and dates, helper/body method documentation, canonical/mirror equality, complete traceability rows and unchanged binding architecture. Verify no new design-layer calc or cycle.
 - [ ] Write validation-report.md with commands, exits, six-level issue details, regression identity differences, residual limitations and links to numerical/native evidence. Complete SV-090, SV-091 and SV-092 evidence; update each passing status through `.codex-test/run agentic-mbse pm update-validation SV-090 --status passing` and corresponding SV-091/SV-092 commands only when that entry is actually proven. Unrelated invalid-Type warnings remain individually recorded.
-- [ ] Write consumer-handoff.md from the actual pipeline and exhaustive scalar ledger. Include the producer edges in design § Bindings and consumer handoff, exact emitted names, changed finance channels, unchanged physical channels, factor/PV independence versus propagated evidence, and the separately pending current oracle/adapter and integration promotion tasks.
-- [ ] Verify MR-WI052-1: all exact identities and both original counterexamples pass with distinct finance conventions preserved.
-- [ ] Verify MR-WI052-2: each nonzero factor, PV, charge and price meets ≤1e-9 relative error; true zeros meet stated absolute tolerance.
-- [ ] Verify MR-WI052-3: Real/fractional duration cases and numerical switch boundaries pass with documented method/window justification.
-- [ ] Verify MR-WI052-4: live/held zero and nearby rates, zero events, all boundary classes and eleven outputs preserve physical/calendar semantics.
-- [ ] Verify MR-WI052-5: unchanged operating inputs, exact physical/verdict comparison, retained account/currency/timing meaning and every financial delta attributed.
+- [x] Write consumer-handoff.md from the actual pipeline and exhaustive scalar ledger. Include the producer edges in design § Bindings and consumer handoff, exact emitted names, changed finance channels, unchanged physical channels, factor/PV independence versus propagated evidence, and the separately pending current oracle/adapter and integration promotion tasks.
+- [x] Verify MR-WI052-1: all exact identities and both original counterexamples pass with distinct finance conventions preserved.
+- [x] Verify MR-WI052-2: each nonzero factor, PV, charge and price meets ≤1e-9 relative error; true zeros meet stated absolute tolerance.
+- [x] Verify MR-WI052-3: Real/fractional duration cases and numerical switch boundaries pass with documented method/window justification.
+- [x] Verify MR-WI052-4: live/held zero and nearby rates, zero events, all boundary classes and eleven outputs preserve physical/calendar semantics.
+- [x] Verify MR-WI052-5: unchanged operating inputs, exact physical/verdict comparison, retained account/currency/timing meaning and every financial delta attributed.
 - [ ] Verify MR-WI052-6: canonical/mirror/native/direct routes, preserved signatures/order, repeated generation, no new scoped structural/dependency issues and individual inherited-failure matching.
-- [ ] Verify MR-WI052-7: resolvable citations, complete scalar/producer handoff and clearly identified independent coverage.
+- [x] Verify MR-WI052-7: resolvable citations, complete scalar/producer handoff and clearly identified independent coverage.
 - [ ] Request a fresh non-author audit-models stage through the parent with spec, design, review, this checked plan and all implementation evidence. Record actual dispatch/session receipts. The implementing author does not write or predeclare the audit verdict.
 
 **Final gate:** All scoped numerical/native acceptance checks pass; every remaining six-level/regression issue is individually explained without falsely claiming a clean full suite. Any unresolved new failure prevents repair certification. Positive fresh independent audit is the completion boundary; source adoption, residual acceptance, study execution, integration promotion and close/archive remain outside this item.
+
 
 ## Feasibility concerns and coordination
 
@@ -182,3 +183,7 @@ The main risks are stale preserved autogenerated bodies, historical four-body he
 [AGENT, parent-routed] The installed trace-element operation is add-only. The native implement-model skill §3 separately directs traceability updates. The parent authorized the minimal Calendar Assumptions cell correction and native creation of the missing LCOE row. IDC and annual-cost rows retain their existing identifiers, dates and inherited equation citations. No PM operation or tool was modified.
 
 [AGENT] Current WI-050/051 callers now use current completion/finance tolerances while historical drivers, four-seed refusal fixtures and hash receipts remain unchanged. `test_model_family_spines.py` also required caller adaptation because it imported the historical four-seed generator. This is the same current-package completion obligation, not a historical fixture rewrite.
+
+[AGENT, parent-routed] The final gate is unmet. The repaired executable invalidates the current study manifest generation pin, producing new `manifest_currency` failures in previously passing downstream tests. The parent directed an implementation-ready but uncertified handoff, exact failure collection and fresh audit judgment before a separately scoped consumer/manifest prerequisite. SV-090/091 pass; SV-092 remains pending. No new failure is reclassified as inherited.
+
+[AGENT] Final study suite completed: 115 failed / 634 passed / one skipped / 15 setup errors in 743.25 seconds. The 108 inherited failures and inherited skip match exact node IDs and reasons. The 22 new nodes comprise 21 stale-manifest-generation consequences and one current-consumer exact frozen-finance assertion at a verified relative delta of 1.873e-16. Both prerequisite classes remain unresolved here. `implementation/new-downstream-failures.json` is the complete list. The final gate and SV-092 remain pending.

@@ -1,0 +1,12 @@
+[
+  {
+    "file": "modeling_project/VALIDATION_MATRIX.md",
+    "location": "row 33",
+    "message": "Invalid Type 'rel dev', expected one of: reasonableness, baseline, physical, relationship, rollup"
+  },
+  {
+    "file": "modeling_project/VALIDATION_MATRIX.md",
+    "location": "row 34",
+    "message": "Invalid Type 'rel dev\\', expected one of: reasonableness, baseline, physical, relationship, rollup"
+  }
+]

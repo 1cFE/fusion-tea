@@ -9,12 +9,13 @@ HERE=Path(__file__).resolve().parent
 def identity(value):
     # Locations remain in raw records. Identity is diagnostic + logical file;
     # documentation edits can shift lines without changing an issue.
+    value=re.sub(r'file:\S*?(?:final-models|models)/(?:library/)?', 'file:MODEL/',value)
     value=re.sub(r'(?:file:)?(?:/tmp/fusion-mfe-financial-rate-limits/)?(?:exploration/stellarator_e2e/models/|models/|work/active/WI-052_mfe-financial-rate-limits/implementation/(?:entering/)?models/)', 'MODEL/',value)
     return re.sub(r'(:\d+)(?::\d+)?(?=\s|$)', '',value)
 
 def validation():
     result={}
-    for name in ('canonical','mirror'):
+    for name in ('canonical','mirror','family'):
         old=json.loads((HERE/f'entering/issues-{name}.json').read_text());new=json.loads((HERE/f'issues-{name}.json').read_text())
         rows=[]
         for a,b in zip(old,new):
@@ -28,7 +29,9 @@ def validation():
 def tests(path):
     rows={}
     for case in ET.parse(path).getroot().iter('testcase'):
-        node=case.attrib.get('classname','').replace('.','/')+'::'+case.attrib['name']
+        parts=case.attrib['classname'].split('.')
+        index=next(i for i,p in enumerate(parts) if p.startswith('test_'))
+        node='/'.join(parts[:index+1])+'.py::'+'::'.join(parts[index+1:]+[case.attrib['name']])
         status=next((x for x in ('failure','error','skipped') if case.find(x) is not None),'passed')
         rows[node]={'status':status,'message':case.find(status).attrib.get('message','') if status!='passed' else ''}
     return rows
@@ -37,7 +40,7 @@ def regression():
     result={}
     for name in ('models','study'):
         old=tests(HERE/f'entering/pytest-{name}.xml');new=tests(HERE/f'pytest-{name}.xml')
-        retained={k:{'entering':v,'candidate':new[k]} for k,v in old.items() if v['status']!='passed' and k in new and new[k]['status']==v['status']}
+        retained={k:{'entering':v,'candidate':new[k],'reason_equal':v['message']==new[k]['message']} for k,v in old.items() if v['status']!='passed' and k in new and new[k]['status']==v['status']}
         repaired={k:v for k,v in old.items() if v['status']!='passed' and k in new and new[k]['status']=='passed'}
         fresh={k:v for k,v in new.items() if v['status'] in ('failure','error') and (k not in old or old[k]['status'] not in ('failure','error'))}
         result[name]={'retained':retained,'repaired':repaired,'new_failures':fresh,'removed_nodes':sorted(set(old)-set(new)),'new_nodes':sorted(set(new)-set(old))}

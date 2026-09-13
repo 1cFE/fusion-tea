@@ -74,10 +74,11 @@ def independent_schedule(x):
     """Closed-form event index construction; no production helper or oracle."""
     N=x['operational_years_in'];A=x['availability_direct_in']
     if A:
-        life=min(max(x['fluence_limit_in']/max(x['q_n_in'],1e-6),.5),N*A)
+        raw=x['fluence_limit_in']/max(x['q_n_in'],1e-6)
+        life=min(max(raw,.5),N*A)
         interval=life/A
         count=max(0,math.ceil(N/interval)-1)
-        return [k*interval for k in range(1,count+1)],[],{'life':life,'interval':interval,'count':count,'floor':life==.5,'cap':life==N*A}
+        return [k*interval for k in range(1,count+1)],[],{'life':life,'interval':interval,'count':count,'wall_load_floor_selected':x['q_n_in']<1e-6,'raw_life':raw,'floor_applied':raw<.5,'cap_applied':max(raw,.5)>N*A,'represented_N_over_interval':N/interval}
     b=1-x['unplanned_fraction_in'];d=x['outage_years_in']
     life=math.inf if x['q_n_in']==0 else x['fluence_limit_in']/x['q_n_in']
     run=life/b
@@ -97,12 +98,15 @@ def energy_reference(segments,b,N,i,F):
     with localcontext() as ctx:
         ctx.prec=100
         numerator=denominator=D(0)
+        # Reconstruct the average independently from the online intervals.
+        productive=D(b)*sum((D(end)-D(start) for start,end in segments),D(0))
+        close(F,productive)
         for year in range(1,math.ceil(N-1e-12)+1):
             lo,hi=D(year-1),min(D(year),D(N))
             online=sum((max(D(0),min(D(end),hi)-max(D(start),lo)) for start,end in segments),D(0))
             weight=(1+D(i))**(-year)
             numerator+=D(b)*online*weight
-            denominator+=(D(F)/D(N))*(hi-lo)*weight
+            denominator+=(productive/D(N))*(hi-lo)*weight
         return numerator,denominator,numerator/denominator
 
 @pytest.mark.parametrize('name',CASES)
@@ -111,7 +115,7 @@ def test_all_public_fields_at_represented_boundaries(name,entering,record_proper
     original=entering.lifecycle_calendar(Lifecycle_CalendarInput(**x))
     dates,segments,branch=independent_schedule(x)
     assert original['events']==dates,(name,original['events'],dates)
-    record_property('represented_boundary',json.dumps({'name':name,'inputs':x,'branch':branch,'events':dates}))
+    record_property('represented_boundary',json.dumps({'name':name,'inputs':x,'branch':branch,'events':dates,'segments':segments,'energy_bins':math.ceil(x['operational_years_in']-1e-12)}))
     for rate in RATES:
         inputs=Lifecycle_CalendarInput(**dict(x,interest_rate=rate))
         actual=current.lifecycle_calendar(inputs)
