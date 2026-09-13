@@ -22,10 +22,10 @@ coil_life_margin = coil_life - F. dated_energy_ratio: calendar-year bins from
 commissioning (design D3). Invalid or non-finite inputs RAISE; no floors.
 
 HELD (0 < availability_direct_in <= 1): the retired 'Levelized Replacement
-Cost' chain VERBATIM -- levelized_replacement_cost_impl.py:70-101 at the WI-044
+Cost' physical chain -- levelized_replacement_cost_impl.py:70-101 at the WI-044
 pin (WI-029 MF-1 carried 1cfe's three guards verbatim: the inner max(q_n,1e-6),
 the clip floor 0.5 / cap N*A in jnp order, the outer max(0, ...); the float
-n_rep so s**n_rep takes 1cfe's pow path; WI-041 made the wall load the PEAK
+n_rep preserves the existing count; WI-041 made the wall load the PEAK
 handed in). availability = A_direct; F = N*A; T_p = 0; T_u = N - N*A
 (undifferentiated held downtime, design D2); T_term = 0; physical_life = the
 clipped value; coil margin on N*A; dated_energy_ratio = 1.0.
@@ -37,9 +37,15 @@ Ref:    economics.py:53-75 (levelized_replacement_cost); model.py:102-111
         work/orchestration/goals/plant-closure/evidence/grounding_sources/);
         research 20260907-163520_lifetime-availability-closure-prework.md Option B
 Basis:  one clock for damage, dated replacement, availability and CAS72
+WI-052 Source: models/library/analyses/mfe_lifecycle.sysml, Lifecycle Calendar.
+Ref: work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification.
+Basis: stable CRF and held PV; log1p dated weights with unchanged physical walk
+and yearly-bin accumulation. External citations above remain inherited.
+Last Updated: 2026-09-12 (native equation and numerical method verification).
 """
 
 import math
+from stellarator_tea.handwritten.mfe_account_costs.financial_factors import crf as stable_crf, periodic_pv
 
 from stellarator_tea.modules.mfe_lifecycle.lifecycle_calendar import (
     Lifecycle_CalendarInput,
@@ -50,10 +56,7 @@ _EPS = 1e-12
 
 
 def _crf(i: float, N: float) -> float:
-    if i == 0.0:
-        return 1.0 / N
-    p = (1.0 + i) ** N
-    return i * p / (p - 1.0)
+    return stable_crf(i, N)
 
 
 def _clip(value: float, lo: float, hi: float) -> float:
@@ -63,15 +66,13 @@ def _clip(value: float, lo: float, hi: float) -> float:
 
 def lifecycle_calendar_held(cost_per_event, q_n, fluence_limit, availability,
                             interest_rate, operational_years, coil_life_fpy):
-    """The retired periodic chain, verbatim (the held mode)."""
+    """Retained periodic timing and clipping; stable equivalent financial factors."""
     core_lifetime_fpy = _clip(fluence_limit / max(q_n, 1e-6), 0.5,
                               operational_years * availability)
     core_lifetime_cal = core_lifetime_fpy / availability
-    s = (1.0 + interest_rate) ** (-core_lifetime_cal)
     n_rep = max(0.0, float(math.ceil(operational_years / core_lifetime_cal)) - 1.0)
-    pv = cost_per_event * s * (1.0 - s ** n_rep) / (1.0 - s)
-    disc_pow_n = (1.0 + interest_rate) ** operational_years
-    crf = interest_rate * disc_pow_n / (disc_pow_n - 1.0)
+    pv = periodic_pv(cost_per_event, interest_rate, core_lifetime_cal, n_rep)
+    crf = stable_crf(interest_rate, operational_years)
     cost = crf * pv
     F = operational_years * availability
     return dict(
@@ -126,7 +127,7 @@ def lifecycle_calendar_live(cost_per_event, q_n, fluence_limit, interest_rate,
         else:
             T_term = N - t
             t = N
-    pv = sum(C / (1.0 + i) ** t_k for t_k in events)
+    pv = math.fsum(C * math.exp(-t_k * math.log1p(i)) for t_k in events)
     A = F / N
     return dict(
         physical_life_fpy=L, n_replacements=float(len(events)), productive_fpy=F,
@@ -149,7 +150,7 @@ def _dated_energy_ratio(segments, b, N, i, F):
     for y in range(1, n_years + 1):
         y0, y1 = float(y - 1), min(float(y), N)
         online = sum(max(0.0, min(s1, y1) - max(s0, y0)) for s0, s1 in segments)
-        disc = (1.0 + i) ** (-y)
+        disc = math.exp(-y * math.log1p(i))
         num += b * online * disc
         den += E_avg * (y1 - y0) * disc
     return num / den

@@ -1,0 +1,27 @@
+{
+  "native_equal_to_audit": true,
+  "native_cases": 10,
+  "scalars_per_case": 158,
+  "input_defaults_equal": true,
+  "responses_and_reports_equal": true,
+  "generation_manifest_equal": true,
+  "supplemental_sources": [
+    {
+      "definition": "IDC Closed-Form Cost",
+      "source": "models/library/analyses/mfe_account_costs.sysml"
+    },
+    {
+      "definition": "Levelized Annual Cost",
+      "source": "models/library/analyses/mfe_account_costs.sysml"
+    },
+    {
+      "definition": "LCOE DCF",
+      "source": "models/library/analyses/mfe_lcoe_dcf.sysml"
+    },
+    {
+      "definition": "Lifecycle Calendar",
+      "source": "models/library/analyses/mfe_lifecycle.sysml"
+    }
+  ],
+  "fuel_documentation_matches_generated_arithmetic": true
+}

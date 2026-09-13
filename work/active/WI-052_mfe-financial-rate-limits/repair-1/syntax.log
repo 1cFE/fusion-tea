@@ -1,0 +1,26 @@
+
+======================================================================
+SysML Quality Validation
+Models path: exploration/stellarator_e2e/models
+Mode: Fail-fast
+Running: Level 1 only
+======================================================================
+
+============================================================
+Level 1: Syntax Validation
+============================================================
+Found 23 SysML files
+
+✅ Level 1: Syntax Validation
+   Files checked: 23
+   Errors: 0
+   Warnings: 0
+
+======================================================================
+Summary
+======================================================================
+Checks run: 1
+✅ Passed: 1
+❌ Failed: 0
+
+✅ All quality checks passed!

@@ -21,12 +21,23 @@ Used TWICE by the plant (MR-3, one def two usages): with
 annual_cost = the unlevelized annual O&M -> CAS71, and with
 annual_cost = the raw annual DT fuel cost -> CAS80.
 
-Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+Output-only Real declarations select typed native manual completion.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)
 *Ref**: economics.py:13-50 (levelized_annual_cost); economics.py:6-10 (CRF);
 costs.py:41-44 (_total_project_time, NOAK omits licensing_time)
 *Basis**: Growing-annuity present value annuitized by the capital recovery factor
+Native manual completion evaluates the retained CRF*PV expression above
+for Real N and T. A1 is construction-escalated annual_cost; its first
+operating payment is discounted at year one. CRF(0,N)=1/N and
+PV(i,i,N)=A1*N/(1+i). log1p/expm1 retain nearby represented rate differences.
+Public outputs remain levelized and crf in the emitted wrapper order.
+
+*Source**: models/library/analyses/mfe_account_costs.sysml
+*Ref**: Levelized Annual Cost, CRF, construction-escalated A1, growing-annuity PV and levelized equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
+*Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
+*Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
 Inputs:
     - inflation_rate_in: inflation_rate_in parameter
@@ -39,9 +50,9 @@ Outputs:
     - levelized: levelized result
     - crf: crf result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:672
+SysML Source: root-0/analyses/mfe_account_costs.sysml:680
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:672
+SysML Source: root-0/analyses/mfe_account_costs.sysml:680
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/levelized_annual_cost_impl.py
@@ -93,12 +104,23 @@ Used TWICE by the plant (MR-3, one def two usages): with
 annual_cost = the unlevelized annual O&M -> CAS71, and with
 annual_cost = the raw annual DT fuel cost -> CAS80.
 
-Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+Output-only Real declarations select typed native manual completion.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)
 *Ref**: economics.py:13-50 (levelized_annual_cost); economics.py:6-10 (CRF);
 costs.py:41-44 (_total_project_time, NOAK omits licensing_time)
 *Basis**: Growing-annuity present value annuitized by the capital recovery factor
+Native manual completion evaluates the retained CRF*PV expression above
+for Real N and T. A1 is construction-escalated annual_cost; its first
+operating payment is discounted at year one. CRF(0,N)=1/N and
+PV(i,i,N)=A1*N/(1+i). log1p/expm1 retain nearby represented rate differences.
+Public outputs remain levelized and crf in the emitted wrapper order.
+
+*Source**: models/library/analyses/mfe_account_costs.sysml
+*Ref**: Levelized Annual Cost, CRF, construction-escalated A1, growing-annuity PV and levelized equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
+*Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
+*Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
 Inputs:
     - inflation_rate_in: inflation_rate_in parameter
@@ -111,18 +133,12 @@ Outputs:
     - levelized: levelized result
     - crf: crf result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:672
+SysML Source: root-0/analyses/mfe_account_costs.sysml:680
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:672
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:680
 
     Calculation Specification:
-        disc_pow_n = (1.0 + interest_rate) ** operational_years_in
-        crf = interest_rate * disc_pow_n / (disc_pow_n - 1.0)
-        a1 = annual_cost * (1.0 + inflation_rate_in) ** project_time
-        pv = a1 * (1.0 - ((1.0 + inflation_rate_in) / (1.0 + interest_rate)) ** operational_years_in) / (interest_rate - inflation_rate_in)
-        levelized = crf * pv
-        
-Documentation:
+        See documentation:
 Levelized (growing-annuity) annual cost -- the shared CAS71/CAS80
 wrapper:
 
@@ -142,12 +158,23 @@ Used TWICE by the plant (MR-3, one def two usages): with
 annual_cost = the unlevelized annual O&M -> CAS71, and with
 annual_cost = the raw annual DT fuel cost -> CAS80.
 
-Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
+Output-only Real declarations select typed native manual completion.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)
 *Ref**: economics.py:13-50 (levelized_annual_cost); economics.py:6-10 (CRF);
 costs.py:41-44 (_total_project_time, NOAK omits licensing_time)
 *Basis**: Growing-annuity present value annuitized by the capital recovery factor
+Native manual completion evaluates the retained CRF*PV expression above
+for Real N and T. A1 is construction-escalated annual_cost; its first
+operating payment is discounted at year one. CRF(0,N)=1/N and
+PV(i,i,N)=A1*N/(1+i). log1p/expm1 retain nearby represented rate differences.
+Public outputs remain levelized and crf in the emitted wrapper order.
+
+*Source**: models/library/analyses/mfe_account_costs.sysml
+*Ref**: Levelized Annual Cost, CRF, construction-escalated A1, growing-annuity PV and levelized equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
+*Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
+*Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
     IMPLEMENTATION: See stellarator_tea.handwritten.mfe_account_costs.levelized_annual_cost_impl
     for manual implementation.

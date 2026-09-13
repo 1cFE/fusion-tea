@@ -9,7 +9,7 @@ Complete all stages in order for a production-ready system.
 
 **Objective**: Implement each calculation definition in its handwritten file.
 
-**Total**: 4 functions to implement
+**Total**: 8 functions to implement
 
 **Instructions for each function**:
 1. Open the SysML source file at the line number shown below
@@ -29,7 +29,11 @@ Complete all stages in order for a production-ready system.
 | [ ] | Plasma_Sustainment | `run_plasma_sustainment` | `root-0/analyses/mfe_plasma_sustainment.sysml:4` | High |
 | [ ] | DT_Fusion_Power | `run_dt_fusion_power` | `root-0/analyses/mfe_plasma_scaling.sysml:147` | High |
 | [ ] | Power_Cycle_Efficiency | `run_power_cycle_efficiency` | `root-0/analyses/mfe_power_cycle.sysml:4` | High |
+| [ ] | Levelized_Annual_Cost | `run_levelized_annual_cost` | `root-0/analyses/mfe_account_costs.sysml:680` | High |
 | [ ] | Lifecycle_Calendar | `run_lifecycle_calendar` | `root-0/analyses/mfe_lifecycle.sysml:4` | High |
+| [ ] | Levelized_Annual_Cost | `run_levelized_annual_cost` | `root-0/analyses/mfe_account_costs.sysml:680` | High |
+| [ ] | IDC_Closed_Form_Cost | `run_idc_closed_form_cost` | `root-0/analyses/mfe_account_costs.sysml:645` | High |
+| [ ] | LCOE_DCF | `run_lcoe_dcf` | `root-0/analyses/mfe_lcoe_dcf.sysml:4` | High |
 
 **11 computed attribute module(s) auto-implemented** (not included in manual count above).
 
@@ -56,7 +60,7 @@ pytest tests/test_implementations_runnable.py -v
 All tests should pass (or pytest.skip for NotImplementedError stubs)
 
 **Test Coverage**:
-- 4 implementation functions
+- 8 implementation functions
 - Each function tested for: imports, signature, return type
 - Tests tolerate NotImplementedError (pass before implementation)
 - Tests verify return types (pass after implementation)
@@ -91,7 +95,7 @@ All tests should pass (or pytest.skip for NotImplementedError stubs)
 ## Completion Criteria
 
 The implementation is complete when:
-- Stage 1: All 4 functions implemented
+- Stage 1: All 8 functions implemented
 - Stage 2: All validations pass
 - Stage 3: Integration tests pass
 

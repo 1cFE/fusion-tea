@@ -1,84 +1,16 @@
-"""Auto-generated implementation for IDC_Closed_Form_Cost.
+"""Typed completion of the native IDC_Closed_Form_Cost equations.
 
-AUTO_IMPLEMENTED = True
-
-SysML Source: root-0/analyses/mfe_account_costs.sysml:645
-
-SysML Expressions:
-    f_idc = ((1.0 + interest_rate) ** construction_years_in - 1.0) / (interest_rate * construction_years_in) - 1.0
-    cost = f_idc * overnight_cost
-    
-Documentation:
-CAS60 interest-during-construction line (closed form, uniform spend):
-
-  f_idc = ((1 + interest_rate) ** construction_years - 1)
-          / (interest_rate * construction_years) - 1
-  cost  = f_idc * overnight_cost
-
-Variable real exponent construction_years -- the idc_factor precedent
-(mfe_lcoe_dcf.sysml:47) proves the codegen envelope handles it. WI-028
-Option C (owner-ruled): this line is A-2-checked and reported but
-EXCLUDED from total_capital; the DCF idc_factor is untouched.
-
-*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
-*Ref**: costs.py:286-297 (cas60_idc)
-*Basis**: Uniform-spend closed-form interest during construction
+Source: models/library/analyses/mfe_account_costs.sysml, 'IDC Closed-Form Cost'.
+Ref: work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification.
+Basis: stable factors with unchanged cash-flow timing and currency; annual cost
+returns (levelized, crf), the emitted public wrapper order.
+Last Updated: 2026-09-12 (native equations and wrapper verified).
 """
-
-AUTO_IMPLEMENTED = True
-
+import math
 from stellarator_tea.modules.mfe_account_costs.idc_closed_form_cost import IDC_Closed_Form_CostInput
+from stellarator_tea.handwritten.mfe_account_costs.financial_factors import crf, annuity_pv, idc
 
+AUTO_IMPLEMENTED = False
 
 def run_idc_closed_form_cost(inputs: IDC_Closed_Form_CostInput) -> float:
-    """Execute IDC_Closed_Form_Cost calculation.
-
-CAS60 interest-during-construction line (closed form, uniform spend):
-
-  f_idc = ((1 + interest_rate) ** construction_years - 1)
-          / (interest_rate * construction_years) - 1
-  cost  = f_idc * overnight_cost
-
-Variable real exponent construction_years -- the idc_factor precedent
-(mfe_lcoe_dcf.sysml:47) proves the codegen envelope handles it. WI-028
-Option C (owner-ruled): this line is A-2-checked and reported but
-EXCLUDED from total_capital; the DCF idc_factor is untouched.
-
-*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
-*Ref**: costs.py:286-297 (cas60_idc)
-*Basis**: Uniform-spend closed-form interest during construction
-
-SysML Source: root-0/analyses/mfe_account_costs.sysml:645
-
-SysML Expressions:
-    f_idc = ((1.0 + interest_rate) ** construction_years_in - 1.0) / (interest_rate * construction_years_in) - 1.0
-    cost = f_idc * overnight_cost
-    
-Documentation:
-CAS60 interest-during-construction line (closed form, uniform spend):
-
-  f_idc = ((1 + interest_rate) ** construction_years - 1)
-          / (interest_rate * construction_years) - 1
-  cost  = f_idc * overnight_cost
-
-Variable real exponent construction_years -- the idc_factor precedent
-(mfe_lcoe_dcf.sysml:47) proves the codegen envelope handles it. WI-028
-Option C (owner-ruled): this line is A-2-checked and reported but
-EXCLUDED from total_capital; the DCF idc_factor is untouched.
-
-*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
-*Ref**: costs.py:286-297 (cas60_idc)
-*Basis**: Uniform-spend closed-form interest during construction
-
-Args:
-    inputs: Input parameters validated against IDC_Closed_Form_CostInput schema
-
-Returns:
-    float: cost
-
-Example:
-    >>> inputs = IDC_Closed_Form_CostInput(...)
-    >>> result = run_idc_closed_form_cost(inputs)
-    """
-    f_idc = (((((1.0 + inputs.interest_rate) ** inputs.construction_years_in) - 1.0) / (inputs.interest_rate * inputs.construction_years_in)) - 1.0)
-    return (f_idc * inputs.overnight_cost)
+    return idc(inputs.interest_rate, inputs.construction_years_in) * inputs.overnight_cost

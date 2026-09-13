@@ -1,0 +1,1413 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /home/reid/1cfe/fusion-tea/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /tmp/fusion-mfe-financial-rate-limits
+configfile: pyproject.toml
+plugins: anyio-4.13.0, Faker-40.18.0
+collecting ... collected 765 items
+
+tests/study/test_annex.py::test_every_linked_section_exists_verbatim[\xa7 Declared ties] PASSED [  0%]
+tests/study/test_annex.py::test_every_linked_section_exists_verbatim[\xa7 Baseline pin] PASSED [  0%]
+tests/study/test_annex.py::test_every_linked_section_exists_verbatim[\xa7 Oracle] PASSED [  0%]
+tests/study/test_annex.py::test_every_linked_section_exists_verbatim[\xa7 Validity masks] PASSED [  0%]
+tests/study/test_annex.py::test_the_runbook_links_no_section_the_annex_lacks PASSED [  0%]
+tests/study/test_annex.py::test_the_annex_has_exactly_the_four_sections PASSED [  0%]
+tests/study/test_annex.py::test_the_optional_sections_are_absent_and_the_annex_says_why PASSED [  0%]
+tests/study/test_annex.py::test_the_radial_build_mask_is_stated_as_a_derived_bound_not_a_design_screen PASSED [  1%]
+tests/study/test_annex.py::test_the_oracle_section_publishes_two_surfaces_and_compares_cas27 PASSED [  1%]
+tests/study/test_committed_store.py::test_the_store_speaks_the_generic_vocabulary PASSED [  1%]
+tests/study/test_common.py::test_the_git_clean_gate_passes_on_the_committed_package PASSED [  1%]
+tests/study/test_common.py::test_the_git_clean_gate_names_the_offending_file PASSED [  1%]
+tests/study/test_common.py::test_the_git_clean_gate_refuses_a_path_git_cannot_see PASSED [  1%]
+tests/study/test_common.py::test_an_atomic_write_leaves_no_temporary_behind PASSED [  1%]
+tests/study/test_common.py::test_a_failed_write_leaves_nothing PASSED    [  1%]
+tests/study/test_common.py::test_the_tool_source_digest_carries_its_file_list PASSED [  2%]
+tests/study/test_common.py::test_the_tool_source_digest_shape_matches_item_3s PASSED [  2%]
+tests/study/test_common.py::test_a_missing_tool_source_file_fails_naming_it PASSED [  2%]
+tests/study/test_common.py::test_read_json_names_the_file_and_what_it_wanted PASSED [  2%]
+tests/study/test_common.py::test_relative_deviation_does_not_divide_by_zero PASSED [  2%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/common.py-stellarator_tea] PASSED [  2%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/common.py-stellarator_09__stellaris__] PASSED [  2%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/common.py-era_adapter] PASSED [  3%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/identity.py-stellarator_tea] PASSED [  3%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/identity.py-stellarator_09__stellaris__] PASSED [  3%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/identity.py-era_adapter] PASSED [  3%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/indicators.py-stellarator_tea] PASSED [  3%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/indicators.py-stellarator_09__stellaris__] PASSED [  3%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/indicators.py-era_adapter] PASSED [  3%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/manifest.py-stellarator_tea] PASSED [  3%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/manifest.py-stellarator_09__stellaris__] PASSED [  4%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/manifest.py-era_adapter] PASSED [  4%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/preflight.py-stellarator_tea] PASSED [  4%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/preflight.py-stellarator_09__stellaris__] PASSED [  4%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/preflight.py-era_adapter] PASSED [  4%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/verify.py-stellarator_tea] PASSED [  4%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/verify.py-stellarator_09__stellaris__] PASSED [  4%]
+tests/study/test_generic.py::test_tool_modules_are_generic[scripts/study/verify.py-era_adapter] PASSED [  4%]
+tests/study/test_generic.py::test_tool_modules_name_no_pipeline_or_objective_channel[scripts/study/common.py] PASSED [  5%]
+tests/study/test_generic.py::test_tool_modules_name_no_pipeline_or_objective_channel[scripts/study/identity.py] PASSED [  5%]
+tests/study/test_generic.py::test_tool_modules_name_no_pipeline_or_objective_channel[scripts/study/indicators.py] PASSED [  5%]
+tests/study/test_generic.py::test_tool_modules_name_no_pipeline_or_objective_channel[scripts/study/manifest.py] PASSED [  5%]
+tests/study/test_generic.py::test_tool_modules_name_no_pipeline_or_objective_channel[scripts/study/preflight.py] PASSED [  5%]
+tests/study/test_generic.py::test_tool_modules_name_no_pipeline_or_objective_channel[scripts/study/verify.py] PASSED [  5%]
+tests/study/test_generic.py::test_tool_modules_import_no_package_code[scripts/study/common.py] PASSED [  5%]
+tests/study/test_generic.py::test_tool_modules_import_no_package_code[scripts/study/identity.py] PASSED [  6%]
+tests/study/test_generic.py::test_tool_modules_import_no_package_code[scripts/study/indicators.py] PASSED [  6%]
+tests/study/test_generic.py::test_tool_modules_import_no_package_code[scripts/study/manifest.py] PASSED [  6%]
+tests/study/test_generic.py::test_tool_modules_import_no_package_code[scripts/study/preflight.py] PASSED [  6%]
+tests/study/test_generic.py::test_tool_modules_import_no_package_code[scripts/study/verify.py] PASSED [  6%]
+tests/study/test_generic.py::test_the_manifest_holds_no_executable_content[import ] PASSED [  6%]
+tests/study/test_generic.py::test_the_manifest_holds_no_executable_content[lambda] PASSED [  6%]
+tests/study/test_generic.py::test_the_manifest_holds_no_executable_content[eval(] PASSED [  6%]
+tests/study/test_generic.py::test_the_manifest_holds_no_executable_content[exec(] PASSED [  7%]
+tests/study/test_generic.py::test_the_manifest_holds_no_executable_content[$ref] PASSED [  7%]
+tests/study/test_generic.py::test_the_manifest_holds_no_executable_content[!!] PASSED [  7%]
+tests/study/test_generic.py::test_the_tool_modules_exist_and_no_init PASSED [  7%]
+tests/study/test_generic.py::test_the_schema_files_are_the_committed_contract PASSED [  7%]
+tests/study/test_generic.py::test_the_committed_package_is_untouched PASSED [  7%]
+tests/study/test_generic.py::test_the_tool_resolves_its_own_repo_root PASSED [  7%]
+tests/study/test_identity.py::test_the_recipe_canonical_text_is_exactly_this PASSED [  7%]
+tests/study/test_identity.py::test_the_digest_is_sha256_of_that_text PASSED [  8%]
+tests/study/test_identity.py::test_the_canonical_text_sorts_by_path_not_by_argument_order PASSED [  8%]
+tests/study/test_identity.py::test_adapter_source_digest_is_over_the_sorted_adapter_lines_alone PASSED [  8%]
+tests/study/test_identity.py::test_touching_any_of_the_three_inputs_changes_the_digest PASSED [  8%]
+tests/study/test_identity.py::test_the_sealed_kind_reduces_to_the_sealed_fingerprint PASSED [  8%]
+tests/study/test_identity.py::test_an_effective_identity_that_bypasses_nothing_is_refused PASSED [  8%]
+tests/study/test_identity.py::test_the_documents_validate_against_the_committed_schema PASSED [  8%]
+tests/study/test_identity.py::test_the_document_is_deterministic_across_working_directories PASSED [  9%]
+tests/study/test_identity.py::test_the_gate_passes_on_the_real_package PASSED [  9%]
+tests/study/test_identity.py::test_a_recompute_mismatch_fails_naming_both_values PASSED [  9%]
+tests/study/test_identity.py::test_a_missing_declared_file_fails_naming_it PASSED [  9%]
+tests/study/test_identity.py::test_the_gate_recomputes_and_does_not_trust PASSED [  9%]
+tests/study/test_identity.py::test_a_sealed_artifact_outside_the_allowed_set_fails_naming_the_file PASSED [  9%]
+tests/study/test_identity.py::test_an_allowed_modified_file_that_is_not_a_sealed_artifact_is_refused PASSED [  9%]
+tests/study/test_identity.py::test_load_refuses_a_wrong_schema_version PASSED [  9%]
+tests/study/test_identity.py::test_load_refuses_a_malformed_document[<lambda>-digest] PASSED [ 10%]
+tests/study/test_identity.py::test_load_refuses_a_malformed_document[<lambda>-kind] PASSED [ 10%]
+tests/study/test_identity.py::test_load_refuses_a_malformed_document[<lambda>-recipe] PASSED [ 10%]
+tests/study/test_identity.py::test_load_refuses_a_malformed_document[<lambda>-allowed_modified_files] PASSED [ 10%]
+tests/study/test_identity.py::test_load_refuses_a_malformed_document[<lambda>-glue_ledger] PASSED [ 10%]
+tests/study/test_identity.py::test_a_written_document_round_trips_and_its_digest_is_stable PASSED [ 10%]
+tests/study/test_ife_native_route.py::test_stored_outputs_and_eligibility PASSED [ 10%]
+tests/study/test_ife_native_route.py::test_generic_verifier_compares_all_channels_and_predicates PASSED [ 10%]
+tests/study/test_ife_native_route.py::test_incompatible_store_is_preserved PASSED [ 11%]
+tests/study/test_ife_native_route.py::test_missing_numeric_or_verdict_evidence_is_refused[hawker_price__price] PASSED [ 11%]
+tests/study/test_ife_native_route.py::test_missing_numeric_or_verdict_evidence_is_refused[pv_factors__construction_factor] PASSED [ 11%]
+tests/study/test_ife_native_route.py::test_missing_numeric_or_verdict_evidence_is_refused[pv_factors__operation_factor] PASSED [ 11%]
+tests/study/test_ife_native_route.py::test_invalid_proposals_are_refused[point0] PASSED [ 11%]
+tests/study/test_ife_native_route.py::test_invalid_proposals_are_refused[point1] PASSED [ 11%]
+tests/study/test_ife_native_route.py::test_invalid_proposals_are_refused[point2] PASSED [ 11%]
+tests/study/test_ife_native_route.py::test_oracle_does_not_truncate_years[construction_duration-0] PASSED [ 12%]
+tests/study/test_ife_native_route.py::test_oracle_does_not_truncate_years[construction_duration--1] PASSED [ 12%]
+tests/study/test_ife_native_route.py::test_oracle_does_not_truncate_years[construction_duration-1.5] PASSED [ 12%]
+tests/study/test_ife_native_route.py::test_oracle_does_not_truncate_years[operational_duration-0] PASSED [ 12%]
+tests/study/test_ife_native_route.py::test_oracle_does_not_truncate_years[operational_duration--1] PASSED [ 12%]
+tests/study/test_ife_native_route.py::test_oracle_does_not_truncate_years[operational_duration-1.5] PASSED [ 12%]
+tests/study/test_ife_native_route.py::test_retired_duration_keys_are_refused[construction_years] PASSED [ 12%]
+tests/study/test_ife_native_route.py::test_retired_duration_keys_are_refused[operational_years] PASSED [ 12%]
+tests/study/test_ife_native_route.py::test_metadata_and_full_input_mapping PASSED [ 13%]
+tests/study/test_ife_native_route.py::test_baseline_documents_use_the_stored_identity PASSED [ 13%]
+tests/study/test_ife_native_route.py::test_contradictory_recorded_verdict_is_refused PASSED [ 13%]
+tests/study/test_ife_native_route.py::test_eligibility_uses_catalog_names_when_emitted_ids_change PASSED [ 13%]
+tests/study/test_indicator_operands.py::test_actual_multiplication_leaves_remain_ordered PASSED [ 13%]
+tests/study/test_indicator_operands.py::test_nested_products_preserve_literals_and_repeated_features PASSED [ 13%]
+tests/study/test_indicator_operands.py::test_other_nested_operators_are_refused[+] PASSED [ 13%]
+tests/study/test_indicator_operands.py::test_other_nested_operators_are_refused[/] PASSED [ 13%]
+tests/study/test_indicator_operands.py::test_other_nested_operators_are_refused[**] PASSED [ 14%]
+tests/study/test_indicator_operands.py::test_malformed_product_arity_is_refused[0] PASSED [ 14%]
+tests/study/test_indicator_operands.py::test_malformed_product_arity_is_refused[1] PASSED [ 14%]
+tests/study/test_indicator_operands.py::test_malformed_product_arity_is_refused[3] PASSED [ 14%]
+tests/study/test_indicator_operands.py::test_unknown_nested_kind_is_refused PASSED [ 14%]
+tests/study/test_indicator_operands.py::test_actual_ife_report_preserves_schema_and_conservative_classification PASSED [ 14%]
+tests/study/test_integrate_guide_contract.py::test_guide_enumerates_every_condition_slug PASSED [ 14%]
+tests/study/test_integrate_guide_contract.py::test_guide_lists_every_environment_variable_the_seam_requires PASSED [ 15%]
+tests/study/test_integrate_guide_contract.py::test_guide_states_every_exit_code PASSED [ 15%]
+tests/study/test_integrate_guide_contract.py::test_guide_names_every_flag_the_seam_accepts PASSED [ 15%]
+tests/study/test_integrate_guide_contract.py::test_guide_names_every_gate_and_its_scope PASSED [ 15%]
+tests/study/test_integrate_guide_contract.py::test_guide_states_the_repo_scoped_gates_and_the_census_scope PASSED [ 15%]
+tests/study/test_integrate_guide_contract.py::test_guide_states_the_prove_do_not_perform_boundary PASSED [ 15%]
+tests/study/test_integrate_guide_contract.py::test_guide_records_the_sealed_wheel_home PASSED [ 15%]
+tests/study/test_integrate_guide_contract.py::test_guide_states_what_the_seam_does_not_check PASSED [ 15%]
+tests/study/test_integrate_guide_contract.py::test_the_decision_of_record_is_filed_and_indexed PASSED [ 16%]
+tests/study/test_integrate_internal_error.py::test_a_seam_internal_error_exits_two_and_names_where_it_died PASSED [ 16%]
+tests/study/test_integrate_internal_error.py::test_the_traceback_is_deposited_and_cited_by_path PASSED [ 16%]
+tests/study/test_integrate_internal_error.py::test_the_gates_that_passed_before_the_crash_survive_in_the_return PASSED [ 16%]
+tests/study/test_integrate_lineage.py::test_wrong_expected_fingerprint_refuses_at_gate_9 PASSED [ 16%]
+tests/study/test_integrate_lineage.py::test_absent_expected_fingerprints_could_not_run_rather_than_pass PASSED [ 16%]
+tests/study/test_integrate_preconditions.py::test_each_env_var_unset_refuses_at_gate_zero[SYSIDE_LICENSE_KEY] PASSED [ 16%]
+tests/study/test_integrate_preconditions.py::test_each_env_var_unset_refuses_at_gate_zero[STOP_PARSER_WHEEL_TARGET] PASSED [ 16%]
+tests/study/test_integrate_preconditions.py::test_each_env_var_unset_refuses_at_gate_zero[STOP_PARSER_AGENTIC_WHEEL] PASSED [ 17%]
+tests/study/test_integrate_preconditions.py::test_each_env_var_unset_refuses_at_gate_zero[STOP_PARSER_CODEGEN_WHEEL] PASSED [ 17%]
+tests/study/test_integrate_preconditions.py::test_each_env_var_unset_refuses_at_gate_zero[STOP_PARSER_COSTINGFE_WHEEL] PASSED [ 17%]
+tests/study/test_integrate_preconditions.py::test_each_env_var_unset_refuses_at_gate_zero[STOP_PARSER_TEAX_ROOT] PASSED [ 17%]
+tests/study/test_integrate_preconditions.py::test_missing_required_input_is_a_blocker_not_a_usage_error PASSED [ 17%]
+tests/study/test_integrate_preconditions.py::test_out_dir_inside_package_root_is_input_invalid PASSED [ 17%]
+tests/study/test_integrate_preconditions.py::test_two_packages_are_ambiguous_lineage_not_a_last_one_wins PASSED [ 17%]
+tests/study/test_integrate_preconditions.py::test_audited_work_must_carry_its_commit PASSED [ 18%]
+tests/study/test_integrate_preconditions.py::test_the_return_document_is_complete_on_every_exit_path PASSED [ 18%]
+tests/study/test_integrate_preconditions.py::test_the_condition_slug_set_is_closed PASSED [ 18%]
+tests/study/test_integrate_preconditions.py::test_simkit_probe_agrees_with_the_verify_subprocess PASSED [ 18%]
+tests/study/test_integrate_preconditions.py::test_simkit_probe_refuses_without_the_teax_root PASSED [ 18%]
+tests/study/test_integrate_refusals.py::test_wrong_expected_teax_revision_refuses_gate_1b PASSED [ 18%]
+tests/study/test_integrate_refusals.py::test_absent_expected_teax_revision_could_not_run_rather_than_pass PASSED [ 18%]
+tests/study/test_integrate_refusals.py::test_doctored_wheel_hash_refuses_gate_1a PASSED [ 18%]
+tests/study/test_integrate_refusals.py::test_a_refusing_run_exits_one_and_leaves_the_repo_clean PASSED [ 19%]
+tests/study/test_integrate_refusals.py::test_edited_package_byte_refuses_gate_2_and_the_tree_is_restored PASSED [ 19%]
+tests/study/test_integrate_refusals.py::test_doctored_census_refuses_gate_4 PASSED [ 19%]
+tests/study/test_integrate_refusals.py::test_absent_census_file_could_not_run_rather_than_pass PASSED [ 19%]
+tests/study/test_integrate_refusals.py::test_two_snapshots_beside_the_models_root_are_input_invalid PASSED [ 19%]
+tests/study/test_integrate_refusals.py::test_doctored_pin_refuses_gate_6 PASSED [ 19%]
+tests/study/test_integrate_refusals.py::test_drifted_recorded_provenance_refuses_gate_7 PASSED [ 19%]
+tests/study/test_integrate_refusals.py::test_the_baseline_store_resolves_from_the_baseline_result PASSED [ 20%]
+tests/study/test_integrate_refusals.py::test_a_store_that_resolves_to_nothing_raises_rather_than_being_guessed PASSED [ 20%]
+tests/study/test_integrate_rerun.py::test_two_runs_return_the_same_identity PASSED [ 20%]
+tests/study/test_integrate_rerun.py::test_the_second_run_is_a_candidate_not_a_refusal PASSED [ 20%]
+tests/study/test_integrate_restore.py::test_the_package_root_resolves_through_its_symlink_before_digesting PASSED [ 20%]
+tests/study/test_integrate_restore.py::test_digest_catches_movement_where_git_reports_clean PASSED [ 20%]
+tests/study/test_integrate_restore.py::test_restore_covers_changed_added_and_removed PASSED [ 20%]
+tests/study/test_integrate_restore.py::test_restore_touches_nothing_outside_what_moved PASSED [ 20%]
+tests/study/test_integrate_restore.py::test_a_no_op_run_moves_nothing PASSED [ 21%]
+tests/study/test_integrate_restore.py::test_moved_paths_are_cited_repo_relative PASSED [ 21%]
+tests/study/test_integrate_restore.py::test_no_mtime_is_read_anywhere_in_the_seam PASSED [ 21%]
+tests/study/test_integrate_stock_route.py::test_the_return_rebuilds_the_stock_commands PASSED [ 21%]
+tests/study/test_integrate_stock_route.py::test_this_module_imports_no_seam_code PASSED [ 21%]
+tests/study/test_integrate_success.py::test_committed_package_yields_one_candidate PASSED [ 21%]
+tests/study/test_integrate_success.py::test_every_candidate_field_resolves PASSED [ 21%]
+tests/study/test_integrate_success.py::test_the_candidate_names_the_lineage_the_request_named PASSED [ 21%]
+tests/study/test_integrate_success.py::test_the_pin_is_the_manifests_own_value_not_a_new_number PASSED [ 22%]
+tests/study/test_integrate_success.py::test_the_package_is_byte_identical_before_and_after PASSED [ 22%]
+tests/study/test_integrate_success.py::test_the_verification_summary_the_candidate_cites_reads_pass PASSED [ 22%]
+tests/study/test_integrate_success.py::test_the_preflight_results_the_run_produced_read_six_of_six PASSED [ 22%]
+tests/study/test_integrate_success.py::test_the_toolchain_the_candidate_ran_under_is_recorded PASSED [ 22%]
+tests/study/test_integration_workspace.py::test_every_materialized_file_matches_the_tracked_digest PASSED [ 22%]
+tests/study/test_integration_workspace.py::test_only_the_manifests_own_package_path_differs_from_the_tracked_bytes PASSED [ 22%]
+tests/study/test_integration_workspace.py::test_the_workspace_holds_every_input_one_request_names PASSED [ 23%]
+tests/study/test_integration_workspace.py::test_repo_is_clean_over_the_source_paths PASSED [ 23%]
+tests/study/test_integration_workspace.py::test_the_package_root_is_a_symlink_as_it_is_in_the_tracked_tree PASSED [ 23%]
+tests/study/test_integration_workspace.py::test_manifest_package_path_is_repo_relative_and_points_at_the_workspace PASSED [ 23%]
+tests/study/test_integration_workspace.py::test_the_snapshot_sits_beside_the_models_root_as_it_does_in_the_tracked_tree PASSED [ 23%]
+tests/study/test_integration_workspace.py::test_workspace_is_gitignored PASSED [ 23%]
+tests/study/test_integration_workspace.py::test_the_repo_stays_clean_while_a_workspace_exists PASSED [ 23%]
+tests/study/test_integration_workspace.py::test_the_workspace_is_removed_after_the_fixture PASSED [ 23%]
+tests/study/test_known_answers.py::test_fixture_binding PASSED           [ 24%]
+tests/study/test_known_answers.py::test_expectation_files_record_their_fingerprint[availability_direct] PASSED [ 24%]
+tests/study/test_known_answers.py::test_expectation_files_record_their_fingerprint[interest_rate] PASSED [ 24%]
+tests/study/test_known_answers.py::test_expectation_files_record_their_fingerprint[R] PASSED [ 24%]
+tests/study/test_known_answers.py::test_expectation_files_record_their_fingerprint[a] PASSED [ 24%]
+tests/study/test_known_answers.py::test_expectation_files_record_their_fingerprint[I_coil] PASSED [ 24%]
+tests/study/test_known_answers.py::test_known_answer[availability_direct] PASSED [ 24%]
+tests/study/test_known_answers.py::test_known_answer[interest_rate] PASSED [ 24%]
+tests/study/test_known_answers.py::test_known_answer[R] PASSED           [ 25%]
+tests/study/test_known_answers.py::test_known_answer[a] PASSED           [ 25%]
+tests/study/test_known_answers.py::test_known_answer[I_coil] PASSED      [ 25%]
+tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[availability_direct] PASSED [ 25%]
+tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[interest_rate] PASSED [ 25%]
+tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[R] PASSED [ 25%]
+tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[a] PASSED [ 25%]
+tests/study/test_known_answers.py::test_matches_the_item_1_fixture_contract[I_coil] PASSED [ 26%]
+tests/study/test_known_answers.py::test_availability_direct_reaches_no_constraint PASSED [ 26%]
+tests/study/test_known_answers.py::test_I_coil_reaches_the_field_constraints_through_calcs PASSED [ 26%]
+tests/study/test_known_answers.py::test_r_reaches_net_positive_through_a_computed_operand PASSED [ 26%]
+tests/study/test_known_answers.py::test_model_owned_radius_reaches_magnet_and_plasma PASSED [ 26%]
+tests/study/test_known_answers.py::test_every_constraint_carries_all_three_identities PASSED [ 26%]
+tests/study/test_known_answers.py::test_current_heating_reachability PASSED [ 26%]
+tests/study/test_major_radius.py::test_retired_flat_key_rejected_before_conversion[point0] PASSED [ 26%]
+tests/study/test_major_radius.py::test_retired_flat_key_rejected_before_conversion[point1] PASSED [ 27%]
+tests/study/test_major_radius.py::test_retired_flat_key_rejected_before_conversion[point2] PASSED [ 27%]
+tests/study/test_major_radius.py::test_retired_flat_key_rejected_before_conversion[point3] PASSED [ 27%]
+tests/study/test_major_radius.py::test_retired_flat_key_rejected_before_conversion[point4] PASSED [ 27%]
+tests/study/test_major_radius.py::test_retired_local_alias_rejected[14] PASSED [ 27%]
+tests/study/test_major_radius.py::test_retired_local_alias_rejected[12.7] PASSED [ 27%]
+tests/study/test_major_radius.py::test_retired_local_alias_rejected[0] PASSED [ 27%]
+tests/study/test_major_radius.py::test_exact_input_contract PASSED       [ 27%]
+tests/study/test_major_radius.py::test_fixed_references_and_model_owned_proposal PASSED [ 28%]
+tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle PASSED [ 28%]
+tests/study/test_major_radius.py::test_current_execution_refuses_retired_radius[point0] PASSED [ 28%]
+tests/study/test_major_radius.py::test_current_execution_refuses_retired_radius[point1] PASSED [ 28%]
+tests/study/test_major_radius.py::test_current_execution_refuses_retired_radius[point2] PASSED [ 28%]
+tests/study/test_major_radius.py::test_current_execution_refuses_retired_radius[point3] PASSED [ 28%]
+tests/study/test_major_radius.py::test_current_invalid_radius_is_retained_as_execution_failure[4.0] PASSED [ 28%]
+tests/study/test_major_radius.py::test_current_invalid_radius_is_retained_as_execution_failure[3.0] PASSED [ 29%]
+tests/study/test_major_radius.py::test_current_invalid_radius_is_retained_as_execution_failure[3.1500000000000004] PASSED [ 29%]
+tests/study/test_major_radius.py::test_current_invalid_radius_is_retained_as_execution_failure[0.0] PASSED [ 29%]
+tests/study/test_major_radius.py::test_current_invalid_radius_is_retained_as_execution_failure[-1.0] PASSED [ 29%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__E_fus] PASSED [ 29%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__T_amb_cryo] PASSED [ 29%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__alpha_T] PASSED [ 29%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__alpha_n] PASSED [ 29%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__aux_cooling__alpha] PASSED [ 30%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__aux_cooling__p_cryo_ref] PASSED [ 30%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__aux_cryo_base] PASSED [ 30%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__aux_per_mw] PASSED [ 30%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__beta_calc__mu0] PASSED [ 30%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__beta_limit] PASSED [ 30%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__structure_factor] PASSED [ 30%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__unit_cost] PASSED [ 30%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket_cost__alpha] PASSED [ 31%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket_cost__p_th_ref] PASSED [ 31%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket_t] PASSED [ 31%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__bldg_et_base] PASSED [ 31%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__bldg_fixed_base] PASSED [ 31%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__bldg_fus_base] PASSED [ 31%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__bldg_staff_base] PASSED [ 31%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__bldg_th_base] PASSED [ 32%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__bldg_the_base] PASSED [ 32%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__buildings_cost__n_mod_in] PASSED [ 32%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__buildings_cost__p_et_ref] PASSED [ 32%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__buildings_cost__p_fus_ref] PASSED [ 32%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__buildings_cost__p_th_ref] PASSED [ 32%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__buildings_cost__p_the_ref] PASSED [ 32%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__cas28_capital] PASSED [ 32%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__coil_t] PASSED [ 33%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__concept_scale] PASSED [ 33%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__construction_years] PASSED [ 33%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__contingency_rate] PASSED [ 33%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__coolant__alpha] PASSED [ 33%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__coolant__p_th_ref] PASSED [ 33%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__coolant__ref_net_power] PASSED [ 33%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__coolant_intermediate_base] PASSED [ 33%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__coolant_primary_base] PASSED [ 34%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__divertor_base] PASSED [ 34%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__divertor_cost__alpha] PASSED [ 34%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__divertor_cost__p_th_ref] PASSED [ 34%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__electric_plant__cost_per_mw] PASSED [ 34%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__f_carnot_cryo] PASSED [ 34%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__f_shape] PASSED [ 34%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__f_sub] PASSED [ 35%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__f_uplift_cryo] PASSED [ 35%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__field_calc__mu0] PASSED [ 35%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__field_calc__two_pi] PASSED [ 35%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__firstwall_t] PASSED [ 35%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__fluence_limit] PASSED [ 35%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__fuel_cost_per_rxn] PASSED [ 35%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__fuel_handling__alpha] PASSED [ 35%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__fuel_handling__ref_power] PASSED [ 36%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__fuel_handling_base] PASSED [ 36%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__fuel_q_eff] PASSED [ 36%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__fuel_recovery] PASSED [ 36%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__gap1_t] PASSED [ 36%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__gap2_t] PASSED [ 36%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__geom__pi] PASSED [ 36%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__heating_ecrh_per_mw] PASSED [ 36%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__heating_icrf_per_mw] PASSED [ 37%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__heating_lhcd_per_mw] PASSED [ 37%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__heating_nbi_per_mw] PASSED [ 37%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__ht_shield_t] PASSED [ 37%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__inc_base] PASSED [ 37%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__inc_cost__alpha] PASSED [ 37%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__inc_cost__ref_power] PASSED [ 37%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__indirect__reference_construction_time] PASSED [ 38%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__indirect_fraction] PASSED [ 38%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__inflation_rate] PASSED [ 38%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__installation_frac] PASSED [ 38%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__kappa] PASSED [ 38%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__lt_shield_t] PASSED [ 38%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__magnet__G] PASSED [ 38%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__magnet__coil_markup] PASSED [ 38%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__magnet_cost__mu0] PASSED [ 39%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__mev_to_joules] PASSED [ 39%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__misc_plant__cost_per_mw] PASSED [ 39%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__mn] PASSED [ 39%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__n_e] PASSED [ 39%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__n_mod] PASSED [ 39%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__om_annual_ref] PASSED [ 39%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__om_cost__alpha] PASSED [ 40%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__om_cost__n_mod_in] PASSED [ 40%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__om_cost__om_direct] PASSED [ 40%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__om_cost__ref_net_power] PASSED [ 40%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__operational_years] PASSED [ 40%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__other_rpe__alpha] PASSED [ 40%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__other_rpe__ref_power] PASSED [ 40%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__other_rpe_base] PASSED [ 40%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__owner__alpha] PASSED [ 41%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__owner__ref_power] PASSED [ 41%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__owner_base] PASSED [ 41%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__p_cryo] PASSED [ 41%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__p_fixed_cryo] PASSED [ 41%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__p_house] PASSED [ 41%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__p_icrf] PASSED [ 41%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__p_lhcd] PASSED [ 41%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__p_nbi] PASSED [ 42%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__p_pf] PASSED [ 42%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__p_pfcool] PASSED [ 42%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__p_tf] PASSED [ 42%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__p_tfcool] PASSED [ 42%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__p_trit] PASSED [ 42%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__power_supplies__base] PASSED [ 42%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__power_supplies_cost__alpha] PASSED [ 43%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__power_supplies_cost__p_et_ref] PASSED [ 43%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__precon_cost__land_cost] PASSED [ 43%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__precon_cost__land_intensity] PASSED [ 43%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__precon_cost__n_mod_in] PASSED [ 43%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__precon_cost__ref_net_power] PASSED [ 43%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__precon_fixed_base] PASSED [ 43%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__q_nuc_cryo] PASSED [ 43%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__rb__pi] PASSED [ 44%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__recirc_ok__threshold] PASSED [ 44%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__reflector_t] PASSED [ 44%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__remote_handling__alpha] PASSED [ 44%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__remote_handling__p_et_ref] PASSED [ 44%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__remote_handling_base] PASSED [ 44%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__shield__shield_scale] PASSED [ 44%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__shield__unit_cost] PASSED [ 44%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__shield_cost__alpha] PASSED [ 45%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__shield_cost__p_th_ref] PASSED [ 45%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__sigma_v] PASSED [ 45%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__structure__unit_cost] PASSED [ 45%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__structure_cost__alpha] PASSED [ 45%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__structure_cost__p_et_ref] PASSED [ 45%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__structure_t] PASSED [ 45%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__supplementary__contingency_rate_in] PASSED [ 46%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__supplementary__insurance_frac] PASSED [ 46%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__supplementary__ref_net_power] PASSED [ 46%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__supplementary__shipping_frac] PASSED [ 46%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__supplementary__tax_frac] PASSED [ 46%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__supplementary_decom_base] PASSED [ 46%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__supplementary_spares_frac] PASSED [ 46%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__supplementary_startup_base] PASSED [ 46%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__tbr_floor] PASSED [ 47%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vacuum_t] PASSED [ 47%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel__unit_cost] PASSED [ 47%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel_cost__alpha] PASSED [ 47%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel_cost__p_et_ref] PASSED [ 47%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel_t] PASSED [ 47%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__wall_load_calc__ash_frac_in] PASSED [ 47%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__wall_load_limit] PASSED [ 47%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__wall_peak_cal__ash_frac_in] PASSED [ 48%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__wall_peak_cal__pi] PASSED [ 48%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__waste__alpha] PASSED [ 48%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__waste__ref_power] PASSED [ 48%]
+tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__waste_base] PASSED [ 48%]
+tests/study/test_mechanical_failures.py::test_fails_closed[missing_declared_key] PASSED [ 48%]
+tests/study/test_mechanical_failures.py::test_fails_closed[key_names_produced_channel] PASSED [ 48%]
+tests/study/test_mechanical_failures.py::test_fails_closed[unclassifiable_key] PASSED [ 49%]
+tests/study/test_mechanical_failures.py::test_fails_closed[fingerprint_mismatch] PASSED [ 49%]
+tests/study/test_mechanical_failures.py::test_fails_closed[unparseable_reference] PASSED [ 49%]
+tests/study/test_mechanical_failures.py::test_fails_closed[corrupt_pipeline_line] PASSED [ 49%]
+tests/study/test_mechanical_failures.py::test_fails_closed[ghost_objective_channel] PASSED [ 49%]
+tests/study/test_mechanical_failures.py::test_fails_closed[wrong_manifest_for_package] PASSED [ 49%]
+tests/study/test_mechanical_failures.py::test_fails_closed[malformed_manifest_baseline] PASSED [ 49%]
+tests/study/test_mechanical_failures.py::test_the_absent_key_and_the_computed_quantity_say_different_things PASSED [ 49%]
+tests/study/test_mechanical_failures.py::test_the_computed_quantity_message_names_the_producing_module PASSED [ 50%]
+tests/study/test_mechanical_failures.py::test_the_corrupt_line_carries_file_line_and_key_path PASSED [ 50%]
+tests/study/test_mechanical_failures.py::test_the_fingerprint_mismatch_names_the_live_digests PASSED [ 50%]
+tests/study/test_mechanical_failures.py::test_the_ghost_objective_names_the_channel PASSED [ 50%]
+tests/study/test_mechanical_failures.py::test_a_nonstandard_node_tag_inside_modules_is_a_failure PASSED [ 50%]
+tests/study/test_mechanical_failures.py::test_an_unknown_key_inside_a_module_is_a_failure PASSED [ 50%]
+tests/study/test_mechanical_failures.py::test_a_duplicate_axis_in_the_declaration_is_a_failure PASSED [ 50%]
+tests/study/test_mechanical_failures.py::test_an_unknown_provenance_is_a_failure PASSED [ 50%]
+tests/study/test_mechanical_failures.py::test_an_unknown_group_named_by_the_group_flag_is_a_failure PASSED [ 51%]
+tests/study/test_multipipeline.py::test_graph_is_package_scoped_across_files PASSED [ 51%]
+tests/study/test_multipipeline.py::test_the_cross_file_reach_discriminates PASSED [ 51%]
+tests/study/test_multipipeline.py::test_a_literal_operand_comes_from_predicate_ir PASSED [ 51%]
+tests/study/test_multipipeline.py::test_mechanical_failure[_duplicate_channel_across_files-produced by more than one module-True] PASSED [ 51%]
+tests/study/test_multipipeline.py::test_mechanical_failure[_second_entrypoint_in_one_file-expected exactly one EntryPoint-True] PASSED [ 51%]
+tests/study/test_multipipeline.py::test_mechanical_failure[_stray_yml_file-'*.yaml' glob would miss-False] PASSED [ 51%]
+tests/study/test_multipipeline.py::test_a_duplicate_channel_names_both_producing_modules PASSED [ 52%]
+tests/study/test_multipipeline.py::test_a_module_declared_in_two_files_is_a_failure PASSED [ 52%]
+tests/study/test_multipipeline.py::test_the_assert_before_mutating_rule_fires PASSED [ 52%]
+tests/study/test_multipipeline.py::test_the_synthetic_manifest_pin_is_live PASSED [ 52%]
+tests/study/test_no_retired_identifiers.py::test_retired_identifiers_survive_only_in_historical_records_and_guards PASSED [ 52%]
+tests/study/test_no_retired_identifiers.py::test_the_era_files_are_gone PASSED [ 52%]
+tests/study/test_numeric_evidence.py::test_verification_refuses_partial_numeric_coverage[objective-absent-store] PASSED [ 52%]
+tests/study/test_numeric_evidence.py::test_verification_refuses_partial_numeric_coverage[objective-absent-oracle] PASSED [ 52%]
+tests/study/test_numeric_evidence.py::test_verification_refuses_partial_numeric_coverage[objective-null-store] PASSED [ 53%]
+tests/study/test_numeric_evidence.py::test_verification_refuses_partial_numeric_coverage[objective-null-oracle] PASSED [ 53%]
+tests/study/test_numeric_evidence.py::test_verification_refuses_partial_numeric_coverage[operand-absent-store] PASSED [ 53%]
+tests/study/test_numeric_evidence.py::test_verification_refuses_partial_numeric_coverage[operand-absent-oracle] PASSED [ 53%]
+tests/study/test_numeric_evidence.py::test_verification_refuses_partial_numeric_coverage[operand-null-store] PASSED [ 53%]
+tests/study/test_numeric_evidence.py::test_verification_refuses_partial_numeric_coverage[operand-null-oracle] PASSED [ 53%]
+tests/study/test_numeric_evidence.py::test_missing_publication_refuses_before_bulk_run_or_evidence_commit PASSED [ 53%]
+tests/study/test_numeric_evidence.py::test_real_multi_output_values_survive_reopened_store_and_export PASSED [ 53%]
+tests/study/test_numeric_evidence.py::test_adding_persisted_column_reuses_store_without_evaluation PASSED [ 54%]
+tests/study/test_numeric_evidence.py::test_resume_refuses_a_required_column_absent_from_persisted_evidence[complete] PASSED [ 54%]
+tests/study/test_numeric_evidence.py::test_resume_refuses_a_required_column_absent_from_persisted_evidence[partial] PASSED [ 54%]
+tests/study/test_numeric_evidence.py::test_execution_failures_remain_recorded_cases[first-fails] PASSED [ 54%]
+tests/study/test_numeric_evidence.py::test_execution_failures_remain_recorded_cases[all-fail] PASSED [ 54%]
+tests/study/test_numeric_evidence.py::test_nonfinite_declared_value_is_persisted_and_refused_only_at_export PASSED [ 54%]
+tests/study/test_operand_bindings.py::test_every_constraint_operand_resolves PASSED [ 54%]
+tests/study/test_operand_bindings.py::test_the_operand_that_resolves_to_nothing_by_name_is_bound_explicitly PASSED [ 55%]
+tests/study/test_operand_bindings.py::test_the_bindings_are_a_copy_a_caller_cannot_corrupt PASSED [ 55%]
+tests/study/test_operand_bindings.py::test_the_shim_reproduces_the_pinned_headline PASSED [ 55%]
+tests/study/test_operand_bindings.py::test_an_undeclared_entry_key_fails_closed_naming_the_key PASSED [ 55%]
+tests/study/test_operand_bindings.py::test_keys_that_disagree_about_one_oracle_input_fail_closed PASSED [ 55%]
+tests/study/test_operand_bindings.py::test_an_unmapped_oracle_output_fails_closed_naming_the_channel PASSED [ 55%]
+tests/study/test_operand_bindings.py::test_scalar_efficiency_domains_use_current_input_bindings[-0.5-source] PASSED [ 55%]
+tests/study/test_operand_bindings.py::test_scalar_efficiency_domains_use_current_input_bindings[-0.5-couple] PASSED [ 55%]
+tests/study/test_operand_bindings.py::test_scalar_efficiency_domains_use_current_input_bindings[0.0-source] PASSED [ 56%]
+tests/study/test_operand_bindings.py::test_scalar_efficiency_domains_use_current_input_bindings[0.0-couple] PASSED [ 56%]
+tests/study/test_operand_bindings.py::test_scalar_efficiency_domains_use_current_input_bindings[1.0-source] PASSED [ 56%]
+tests/study/test_operand_bindings.py::test_scalar_efficiency_domains_use_current_input_bindings[1.0-couple] PASSED [ 56%]
+tests/study/test_operand_bindings.py::test_scalar_efficiency_domains_use_current_input_bindings[1.01-source] PASSED [ 56%]
+tests/study/test_operand_bindings.py::test_scalar_efficiency_domains_use_current_input_bindings[1.01-couple] PASSED [ 56%]
+tests/study/test_operand_bindings.py::test_zero_efficiency_fails_in_the_independent_oracle[source] PASSED [ 56%]
+tests/study/test_operand_bindings.py::test_zero_efficiency_fails_in_the_independent_oracle[couple] PASSED [ 56%]
+tests/study/test_output_contract.py::test_fingerprint_recipe_is_stable_and_path_sorted PASSED [ 57%]
+tests/study/test_output_contract.py::test_fingerprint_read_set_is_the_three_legs PASSED [ 57%]
+tests/study/test_output_contract.py::test_fingerprint_is_independent_of_working_directory PASSED [ 57%]
+tests/study/test_output_contract.py::test_manifest_validator_raises_on_unknown_key PASSED [ 57%]
+tests/study/test_output_contract.py::test_minimal_manifest_validates PASSED [ 57%]
+tests/study/test_output_contract.py::test_manifest_validator_locates_a_missing_required_key[path0-manifest.package.name] PASSED [ 57%]
+tests/study/test_output_contract.py::test_manifest_validator_locates_a_missing_required_key[path1-indicator_inputs.digest] PASSED [ 57%]
+tests/study/test_output_contract.py::test_manifest_validator_locates_a_missing_required_key[path2-baseline.headline.value] PASSED [ 58%]
+tests/study/test_output_contract.py::test_manifest_validator_locates_a_missing_required_key[path3-manifest.oracle.callable] PASSED [ 58%]
+tests/study/test_output_contract.py::test_manifest_validator_rejects_a_malformed_baseline PASSED [ 58%]
+tests/study/test_output_contract.py::test_manifest_validator_rejects_duplicate_objective_names PASSED [ 58%]
+tests/study/test_output_contract.py::test_manifest_validator_rejects_an_unknown_oracle_kind PASSED [ 58%]
+tests/study/test_output_contract.py::test_real_manifest_validates PASSED [ 58%]
+tests/study/test_output_contract.py::test_real_manifest_pin_matches_live_package PASSED [ 58%]
+tests/study/test_output_contract.py::test_real_manifest_names_the_live_package PASSED [ 58%]
+tests/study/test_output_contract.py::test_real_manifest_holds_no_per_study_choices PASSED [ 59%]
+tests/study/test_output_contract.py::test_manifest_load_reports_the_digest_of_its_own_bytes PASSED [ 59%]
+tests/study/test_output_contract.py::test_tool_source_digest_recomputes PASSED [ 59%]
+tests/study/test_output_contract.py::test_schema_files_carry_the_two_load_bearing_descriptions PASSED [ 59%]
+tests/study/test_output_contract.py::test_schemas_are_closed[indicators.v1] PASSED [ 59%]
+tests/study/test_output_contract.py::test_schemas_are_closed[study_package_manifest.v1] PASSED [ 59%]
+tests/study/test_output_contract.py::test_schemas_are_closed[axis_declaration.v1] PASSED [ 59%]
+tests/study/test_output_contract.py::test_byte_determinism_across_working_directories PASSED [ 60%]
+tests/study/test_output_contract.py::test_two_runs_from_the_same_directory_are_byte_identical PASSED [ 60%]
+tests/study/test_output_contract.py::test_the_real_output_validates_against_its_schema PASSED [ 60%]
+tests/study/test_output_contract.py::test_the_axis_declaration_validates_against_its_schema PASSED [ 60%]
+tests/study/test_output_contract.py::test_not_derivable_is_byte_equal PASSED [ 60%]
+tests/study/test_output_contract.py::test_constraint_completeness PASSED [ 60%]
+tests/study/test_output_contract.py::test_bounds_is_authoritative_and_axis_varying PASSED [ 60%]
+tests/study/test_output_contract.py::test_lists_are_sorted_by_a_stated_key PASSED [ 60%]
+tests/study/test_output_contract.py::test_the_report_carries_its_tool_source_digest PASSED [ 61%]
+tests/study/test_output_contract.py::test_the_report_carries_the_three_package_fingerprints PASSED [ 61%]
+tests/study/test_output_contract.py::test_the_report_carries_no_timestamp PASSED [ 61%]
+tests/study/test_policy_path.py::test_live_surface_cites_the_ratified_policy[.claude/skills/run-study/SKILL.md] PASSED [ 61%]
+tests/study/test_policy_path.py::test_live_surface_cites_the_ratified_policy[.claude/skills/run-study/runbook.md] PASSED [ 61%]
+tests/study/test_policy_path.py::test_live_surface_cites_the_ratified_policy[exploration/stellarator_e2e/study/run_design_search.py] PASSED [ 61%]
+tests/study/test_policy_path.py::test_draft_path_is_gone PASSED          [ 61%]
+tests/study/test_policy_path.py::test_policy_is_ratified_not_draft PASSED [ 61%]
+tests/study/test_policy_path.py::test_policy_carries_the_axis_forces_section PASSED [ 62%]
+tests/study/test_policy_path.py::test_h1_is_scoped_to_search_framed_studies PASSED [ 62%]
+tests/study/test_policy_path.py::test_policy_records_the_verification_dispositions PASSED [ 62%]
+tests/study/test_preflight_gates.py::test_all_six_checks_pass_on_the_real_package PASSED [ 62%]
+tests/study/test_preflight_gates.py::test_the_results_document_validates_against_its_schema PASSED [ 62%]
+tests/study/test_preflight_gates.py::test_the_document_carries_a_digest_for_every_input_it_read PASSED [ 62%]
+tests/study/test_preflight_gates.py::test_the_six_results_map_onto_record_section_9s_five_rows PASSED [ 62%]
+tests/study/test_preflight_gates.py::test_the_tool_reports_its_own_revision_as_a_named_recipe_over_a_named_file_list PASSED [ 63%]
+tests/study/test_preflight_gates.py::test_the_sibling_scan_is_advisory_and_can_never_fail PASSED [ 63%]
+tests/study/test_preflight_gates.py::test_the_identity_gate_reports_the_recomputed_digest PASSED [ 63%]
+tests/study/test_preflight_gates.py::test_the_clean_subcommand_gates_the_package_alone PASSED [ 63%]
+tests/study/test_preflight_gates.py::test_preflight_imports_no_teax_and_no_adapter PASSED [ 63%]
+tests/study/test_preflight_negatives.py::test_each_negative_fails_closed_and_still_writes_a_complete_document[missing_declared_key] PASSED [ 63%]
+tests/study/test_preflight_negatives.py::test_each_negative_fails_closed_and_still_writes_a_complete_document[key_names_a_channel] PASSED [ 63%]
+tests/study/test_preflight_negatives.py::test_each_negative_fails_closed_and_still_writes_a_complete_document[wrong_fingerprint] PASSED [ 63%]
+tests/study/test_preflight_negatives.py::test_each_negative_fails_closed_and_still_writes_a_complete_document[stale_manifest] PASSED [ 64%]
+tests/study/test_preflight_negatives.py::test_the_wrong_fingerprint_message_names_both_values PASSED [ 64%]
+tests/study/test_preflight_negatives.py::test_an_unreadable_input_is_did_not_run_with_its_condition PASSED [ 64%]
+tests/study/test_preflight_negatives.py::test_a_baseline_executed_under_another_identity_is_refused PASSED [ 64%]
+tests/study/test_preflight_negatives.py::test_a_wrong_headline_is_refused_naming_the_channel PASSED [ 64%]
+tests/study/test_preflight_negatives.py::test_a_differing_baseline_verdict_is_refused_naming_the_constraint PASSED [ 64%]
+tests/study/test_preflight_negatives.py::test_a_dirty_tree_is_refused_naming_the_file PASSED [ 64%]
+tests/study/test_provenance.py::test_every_declared_key_carries_its_provenance PASSED [ 64%]
+tests/study/test_provenance.py::test_provenance_round_trips_from_the_declaration PASSED [ 65%]
+tests/study/test_provenance.py::test_the_tie_key_is_marked_and_the_others_are_not PASSED [ 65%]
+tests/study/test_provenance.py::test_a_tie_key_traces_identically_to_a_fan_out_key PASSED [ 65%]
+tests/study/test_provenance.py::test_entry_type_is_reported_per_declared_key PASSED [ 65%]
+tests/study/test_read_set_coverage.py::test_a_ref_outside_the_pinned_file_list_fails PASSED [ 65%]
+tests/study/test_read_set_coverage.py::test_a_ref_outside_the_package_root_fails PASSED [ 65%]
+tests/study/test_read_set_coverage.py::test_the_coverage_check_runs_before_the_inputs_are_opened PASSED [ 65%]
+tests/study/test_read_set_coverage.py::test_the_pinned_file_list_covers_exactly_what_the_reader_opens PASSED [ 66%]
+tests/study/test_read_set_coverage.py::test_pipelines_init_py_does_not_fail_the_glob_gate PASSED [ 66%]
+tests/study/test_read_set_coverage.py::test_a_renamed_inputs_file_is_followed_not_guessed PASSED [ 66%]
+tests/study/test_record_template.py::test_template_shows_the_emitted_digest_shape_in_both_places PASSED [ 66%]
+tests/study/test_record_template.py::test_emitted_schema_requires_files PASSED [ 66%]
+tests/study/test_records.py::test_record_is_closed[20260821-power-cycle-ab] PASSED [ 66%]
+tests/study/test_records.py::test_record_is_closed[20260823-magnet-technology-ab] PASSED [ 66%]
+tests/study/test_records.py::test_record_is_closed[20260829-p-pump-fence] PASSED [ 66%]
+tests/study/test_records.py::test_record_is_closed[20260830-stress-fence] PASSED [ 67%]
+tests/study/test_records.py::test_record_is_closed[20260901-sustainment-fence] PASSED [ 67%]
+tests/study/test_records.py::test_record_is_closed[20260903-priced-levers] PASSED [ 67%]
+tests/study/test_records.py::test_record_is_closed[20260903-wall-and-heating] PASSED [ 67%]
+tests/study/test_records.py::test_record_is_closed[20260904-wall-and-heating] PASSED [ 67%]
+tests/study/test_records.py::test_record_is_closed[20260905-stored-energy-basis] PASSED [ 67%]
+tests/study/test_records.py::test_record_is_closed[20260907-burn-control] PASSED [ 67%]
+tests/study/test_records.py::test_record_is_closed[20260907-minor-radius] PASSED [ 67%]
+tests/study/test_records.py::test_record_is_closed[20260911-model-owned-radius] PASSED [ 68%]
+tests/study/test_records.py::test_record_is_closed[20260911-operating-heating] PASSED [ 68%]
+tests/study/test_records.py::test_arms_share_one_store_when_fingerprints_agree[20260821-power-cycle-ab] PASSED [ 68%]
+tests/study/test_records.py::test_arms_share_one_store_when_fingerprints_agree[20260823-magnet-technology-ab] PASSED [ 68%]
+tests/study/test_records.py::test_arms_share_one_store_when_fingerprints_agree[20260829-p-pump-fence] PASSED [ 68%]
+tests/study/test_records.py::test_arms_share_one_store_when_fingerprints_agree[20260830-stress-fence] PASSED [ 68%]
+tests/study/test_records.py::test_arms_share_one_store_when_fingerprints_agree[20260901-sustainment-fence] PASSED [ 68%]
+tests/study/test_records.py::test_arms_share_one_store_when_fingerprints_agree[20260903-priced-levers] PASSED [ 69%]
+tests/study/test_records.py::test_arms_share_one_store_when_fingerprints_agree[20260903-wall-and-heating] PASSED [ 69%]
+tests/study/test_records.py::test_arms_share_one_store_when_fingerprints_agree[20260904-wall-and-heating] PASSED [ 69%]
+tests/study/test_records.py::test_arms_share_one_store_when_fingerprints_agree[20260905-stored-energy-basis] PASSED [ 69%]
+tests/study/test_records.py::test_arms_share_one_store_when_fingerprints_agree[20260907-burn-control] PASSED [ 69%]
+tests/study/test_records.py::test_arms_share_one_store_when_fingerprints_agree[20260907-minor-radius] PASSED [ 69%]
+tests/study/test_records.py::test_arms_share_one_store_when_fingerprints_agree[20260911-model-owned-radius] PASSED [ 69%]
+tests/study/test_records.py::test_arms_share_one_store_when_fingerprints_agree[20260911-operating-heating] PASSED [ 69%]
+tests/study/test_records.py::test_findings_join_the_discovery_log[20260821-power-cycle-ab] PASSED [ 70%]
+tests/study/test_records.py::test_findings_join_the_discovery_log[20260823-magnet-technology-ab] PASSED [ 70%]
+tests/study/test_records.py::test_findings_join_the_discovery_log[20260829-p-pump-fence] PASSED [ 70%]
+tests/study/test_records.py::test_findings_join_the_discovery_log[20260830-stress-fence] PASSED [ 70%]
+tests/study/test_records.py::test_findings_join_the_discovery_log[20260901-sustainment-fence] PASSED [ 70%]
+tests/study/test_records.py::test_findings_join_the_discovery_log[20260903-priced-levers] PASSED [ 70%]
+tests/study/test_records.py::test_findings_join_the_discovery_log[20260903-wall-and-heating] PASSED [ 70%]
+tests/study/test_records.py::test_findings_join_the_discovery_log[20260904-wall-and-heating] PASSED [ 70%]
+tests/study/test_records.py::test_findings_join_the_discovery_log[20260905-stored-energy-basis] PASSED [ 71%]
+tests/study/test_records.py::test_findings_join_the_discovery_log[20260907-burn-control] PASSED [ 71%]
+tests/study/test_records.py::test_findings_join_the_discovery_log[20260907-minor-radius] PASSED [ 71%]
+tests/study/test_records.py::test_findings_join_the_discovery_log[20260911-model-owned-radius] PASSED [ 71%]
+tests/study/test_records.py::test_findings_join_the_discovery_log[20260911-operating-heating] PASSED [ 71%]
+tests/study/test_records.py::test_a_joined_disposition_row_is_legal PASSED [ 71%]
+tests/study/test_single_point_gate.py::test_command_status_covers_each_accumulated_gate_family[green] PASSED [ 71%]
+tests/study/test_single_point_gate.py::test_command_status_covers_each_accumulated_gate_family[anchor-failure] PASSED [ 72%]
+tests/study/test_single_point_gate.py::test_command_status_covers_each_accumulated_gate_family[oracle-failure] PASSED [ 72%]
+tests/study/test_single_point_gate.py::test_command_status_covers_each_accumulated_gate_family[identity-failure] PASSED [ 72%]
+tests/study/test_single_point_gate.py::test_command_status_covers_each_accumulated_gate_family[guard-failure] PASSED [ 72%]
+tests/study/test_single_point_gate.py::test_green_single_point_command_exits_zero PASSED [ 72%]
+tests/study/test_stock_route.py::test_stock_strict_loader_accepts_the_sealed_package PASSED [ 72%]
+tests/study/test_stock_route.py::test_the_package_link_resolves_inside_this_worktree PASSED [ 72%]
+tests/study/test_stock_route.py::test_sealed_identity_is_the_executable_fingerprint PASSED [ 72%]
+tests/study/test_stock_route.py::test_formerly_injected_values_come_from_model_source PASSED [ 73%]
+tests/study/test_study_publication_fail_closed.py::test_export_resolves_an_opaque_constraint_id_through_the_catalog PASSED [ 73%]
+tests/study/test_study_publication_fail_closed.py::test_export_refuses_incomplete_or_unknown_case_data_without_replacing_csv[missing-result] PASSED [ 73%]
+tests/study/test_study_publication_fail_closed.py::test_export_refuses_incomplete_or_unknown_case_data_without_replacing_csv[null-result] PASSED [ 73%]
+tests/study/test_study_publication_fail_closed.py::test_export_refuses_incomplete_or_unknown_case_data_without_replacing_csv[no-checks] PASSED [ 73%]
+tests/study/test_study_publication_fail_closed.py::test_export_refuses_incomplete_or_unknown_case_data_without_replacing_csv[missing-check] PASSED [ 73%]
+tests/study/test_study_publication_fail_closed.py::test_export_refuses_incomplete_or_unknown_case_data_without_replacing_csv[unexpected-check] PASSED [ 73%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260821-power-cycle-ab-first-case-absent] PASSED [ 73%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260821-power-cycle-ab-first-case-null] PASSED [ 74%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260821-power-cycle-ab-first-case-nan] PASSED [ 74%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260821-power-cycle-ab-first-case-positive-inf] PASSED [ 74%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260821-power-cycle-ab-first-case-negative-inf] PASSED [ 74%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260821-power-cycle-ab-later-case-absent] PASSED [ 74%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260821-power-cycle-ab-later-case-null] PASSED [ 74%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260821-power-cycle-ab-later-case-nan] PASSED [ 74%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260821-power-cycle-ab-later-case-positive-inf] PASSED [ 75%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260821-power-cycle-ab-later-case-negative-inf] PASSED [ 75%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260823-magnet-technology-ab-first-case-absent] PASSED [ 75%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260823-magnet-technology-ab-first-case-null] PASSED [ 75%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260823-magnet-technology-ab-first-case-nan] PASSED [ 75%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260823-magnet-technology-ab-first-case-positive-inf] PASSED [ 75%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260823-magnet-technology-ab-first-case-negative-inf] PASSED [ 75%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260823-magnet-technology-ab-later-case-absent] PASSED [ 75%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260823-magnet-technology-ab-later-case-null] PASSED [ 76%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260823-magnet-technology-ab-later-case-nan] PASSED [ 76%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260823-magnet-technology-ab-later-case-positive-inf] PASSED [ 76%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260823-magnet-technology-ab-later-case-negative-inf] PASSED [ 76%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260829-p-pump-fence-first-case-absent] PASSED [ 76%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260829-p-pump-fence-first-case-null] PASSED [ 76%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260829-p-pump-fence-first-case-nan] PASSED [ 76%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260829-p-pump-fence-first-case-positive-inf] PASSED [ 76%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260829-p-pump-fence-first-case-negative-inf] PASSED [ 77%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260829-p-pump-fence-later-case-absent] PASSED [ 77%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260829-p-pump-fence-later-case-null] PASSED [ 77%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260829-p-pump-fence-later-case-nan] PASSED [ 77%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260829-p-pump-fence-later-case-positive-inf] PASSED [ 77%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260829-p-pump-fence-later-case-negative-inf] PASSED [ 77%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-absent] FAILED [ 77%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-null] FAILED [ 78%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-nan] FAILED [ 78%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-positive-inf] FAILED [ 78%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-negative-inf] FAILED [ 78%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-absent] FAILED [ 78%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-null] FAILED [ 78%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-nan] FAILED [ 78%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-positive-inf] FAILED [ 78%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-negative-inf] FAILED [ 79%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-absent] FAILED [ 79%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-null] FAILED [ 79%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-nan] FAILED [ 79%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-positive-inf] FAILED [ 79%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-negative-inf] FAILED [ 79%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-absent] FAILED [ 79%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-null] FAILED [ 80%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-nan] FAILED [ 80%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-positive-inf] FAILED [ 80%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-negative-inf] FAILED [ 80%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-absent] FAILED [ 80%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-null] FAILED [ 80%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-nan] FAILED [ 80%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-positive-inf] FAILED [ 80%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-negative-inf] FAILED [ 81%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-absent] FAILED [ 81%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-null] FAILED [ 81%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-nan] FAILED [ 81%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-positive-inf] FAILED [ 81%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-negative-inf] FAILED [ 81%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-absent] FAILED [ 81%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-null] FAILED [ 81%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-nan] FAILED [ 82%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-positive-inf] FAILED [ 82%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-negative-inf] FAILED [ 82%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-absent] FAILED [ 82%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-null] FAILED [ 82%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-nan] FAILED [ 82%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-positive-inf] FAILED [ 82%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-negative-inf] FAILED [ 83%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-absent] FAILED [ 83%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-null] FAILED [ 83%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-nan] FAILED [ 83%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-positive-inf] FAILED [ 83%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-negative-inf] FAILED [ 83%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-absent] FAILED [ 83%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-null] FAILED [ 83%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-nan] FAILED [ 84%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-positive-inf] FAILED [ 84%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-negative-inf] FAILED [ 84%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-absent] FAILED [ 84%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-null] FAILED [ 84%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-nan] FAILED [ 84%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-positive-inf] FAILED [ 84%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-negative-inf] FAILED [ 84%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-absent] FAILED [ 85%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-null] FAILED [ 85%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-nan] FAILED [ 85%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-positive-inf] FAILED [ 85%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-negative-inf] FAILED [ 85%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-absent] FAILED [ 85%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-null] FAILED [ 85%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-nan] FAILED [ 86%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-positive-inf] FAILED [ 86%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-negative-inf] FAILED [ 86%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-absent] FAILED [ 86%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-null] FAILED [ 86%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-nan] FAILED [ 86%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-positive-inf] FAILED [ 86%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-negative-inf] FAILED [ 86%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-absent] FAILED [ 87%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-null] FAILED [ 87%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-nan] FAILED [ 87%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-positive-inf] FAILED [ 87%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-negative-inf] FAILED [ 87%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-absent] FAILED [ 87%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-null] FAILED [ 87%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-nan] FAILED [ 87%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-positive-inf] FAILED [ 88%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-negative-inf] FAILED [ 88%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-absent] FAILED [ 88%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-null] FAILED [ 88%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-nan] FAILED [ 88%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-positive-inf] FAILED [ 88%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-negative-inf] FAILED [ 88%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-absent] FAILED [ 89%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-null] FAILED [ 89%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-nan] FAILED [ 89%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-positive-inf] FAILED [ 89%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-negative-inf] FAILED [ 89%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-absent] FAILED [ 89%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-null] FAILED [ 89%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-nan] FAILED [ 89%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-positive-inf] FAILED [ 90%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-negative-inf] FAILED [ 90%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-absent] FAILED [ 90%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-null] FAILED [ 90%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-nan] FAILED [ 90%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-positive-inf] FAILED [ 90%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-negative-inf] FAILED [ 90%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260821-power-cycle-ab] PASSED [ 90%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260823-magnet-technology-ab] PASSED [ 91%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260829-p-pump-fence] PASSED [ 91%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260830-stress-fence] PASSED [ 91%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260901-sustainment-fence] PASSED [ 91%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260903-priced-levers] FAILED [ 91%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260903-wall-and-heating] FAILED [ 91%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260904-wall-and-heating] FAILED [ 91%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260905-stored-energy-basis] FAILED [ 92%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260907-burn-control] FAILED [ 92%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260907-minor-radius] FAILED [ 92%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260911-model-owned-radius] FAILED [ 92%]
+tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260911-operating-heating] FAILED [ 92%]
+tests/study/test_study_publication_fail_closed.py::test_run_command_refuses_one_failed_case_before_publishing PASSED [ 92%]
+tests/study/test_study_publication_fail_closed.py::test_export_command_refuses_one_failed_case_before_publishing PASSED [ 92%]
+tests/study/test_subset_flag.py::test_a_full_run_covers_the_whole_declaration PASSED [ 92%]
+tests/study/test_subset_flag.py::test_a_group_run_is_visibly_narrower PASSED [ 93%]
+tests/study/test_subset_flag.py::test_several_groups_can_be_selected PASSED [ 93%]
+tests/study/test_subset_flag.py::test_a_subset_group_is_byte_identical_to_its_full_run_counterpart PASSED [ 93%]
+tests/study/test_subset_flag.py::test_the_axis_declaration_digest_matches_the_file_bytes PASSED [ 93%]
+tests/study/test_valid_empty.py::test_a_group_with_no_constraint_reach_exits_zero PASSED [ 93%]
+tests/study/test_valid_empty.py::test_the_empty_result_still_carries_the_whole_catalog PASSED [ 93%]
+tests/study/test_valid_empty.py::test_no_constraint_response_is_emitted_even_when_false PASSED [ 93%]
+tests/study/test_valid_empty.py::test_the_document_goes_to_stdout_and_the_summary_to_stderr PASSED [ 93%]
+tests/study/test_verify.py::test_the_summary_validates_against_its_schema PASSED [ 94%]
+tests/study/test_verify.py::test_the_summary_is_a_superset_of_the_committed_field_set PASSED [ 94%]
+tests/study/test_verify.py::test_parity_holds_at_the_committed_order_of_magnitude PASSED [ 94%]
+tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count PASSED [ 94%]
+tests/study/test_verify.py::test_stratification_covers_every_observed_verdict_combination PASSED [ 94%]
+tests/study/test_verify.py::test_stratification_is_a_floor_not_a_cap PASSED [ 94%]
+tests/study/test_verify.py::test_the_derived_seed_reproduces_from_the_recorded_fields PASSED [ 94%]
+tests/study/test_verify.py::test_an_explicit_seed_is_recorded_as_explicit PASSED [ 95%]
+tests/study/test_verify.py::test_cas27_is_compared_and_nothing_is_undisclosed PASSED [ 95%]
+tests/study/test_verify.py::test_the_command_carries_no_absolute_paths PASSED [ 95%]
+tests/study/test_verify.py::test_the_operand_bindings_digest_is_the_documented_canonicalization PASSED [ 95%]
+tests/study/test_verify.py::test_a_planted_channel_deviation_fails_naming_case_and_channel PASSED [ 95%]
+tests/study/test_verify.py::test_a_planted_verdict_mismatch_fails_naming_the_constraint PASSED [ 95%]
+tests/study/test_verify.py::test_a_missing_operand_bindings_attribute_fails_closed PASSED [ 95%]
+tests/study/test_verify.py::test_an_unresolvable_binding_fails_naming_the_constraint_and_operand PASSED [ 95%]
+tests/study/test_verify.py::test_a_store_bound_to_another_identity_is_refused SKIPPED [ 96%]
+tests/study/test_verify.py::test_an_empty_result_is_a_broken_input_not_a_clean_pass PASSED [ 96%]
+tests/study/test_verify.py::test_the_stores_are_never_written PASSED     [ 96%]
+tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity PASSED [ 96%]
+tests/study/test_verify.py::test_operating_channel_deviation_is_refused[p_coupled] PASSED [ 96%]
+tests/study/test_verify.py::test_operating_channel_deviation_is_refused[p_delivered] PASSED [ 96%]
+tests/study/test_verify.py::test_operating_channel_deviation_is_refused[p_wallplug] PASSED [ 96%]
+tests/study/test_verify.py::test_zero_efficiency_is_a_recorded_native_execution_failure[source] PASSED [ 96%]
+tests/study/test_verify.py::test_zero_efficiency_is_a_recorded_native_execution_failure[couple] PASSED [ 97%]
+tests/study/test_verify_operands.py::test_actual_ife_product_below_at_and_above_threshold[99.0-False] PASSED [ 97%]
+tests/study/test_verify_operands.py::test_actual_ife_product_below_at_and_above_threshold[100.0-True] PASSED [ 97%]
+tests/study/test_verify_operands.py::test_actual_ife_product_below_at_and_above_threshold[101.0-True] PASSED [ 97%]
+tests/study/test_verify_operands.py::test_nested_multiplication_counts_feature_occurrences_and_preserves_negation PASSED [ 97%]
+tests/study/test_verify_operands.py::test_multiplication_accepts_literal_operands_without_counting_them PASSED [ 97%]
+tests/study/test_verify_operands.py::test_unsupported_arithmetic_is_named_and_refused[+] PASSED [ 97%]
+tests/study/test_verify_operands.py::test_unsupported_arithmetic_is_named_and_refused[/] PASSED [ 98%]
+tests/study/test_verify_operands.py::test_unsupported_arithmetic_is_named_and_refused[**] PASSED [ 98%]
+tests/study/test_verify_operands.py::test_unsupported_arithmetic_is_named_and_refused[unknown] PASSED [ 98%]
+tests/study/test_verify_operands.py::test_multiplication_arity_is_checked[0] PASSED [ 98%]
+tests/study/test_verify_operands.py::test_multiplication_arity_is_checked[1] PASSED [ 98%]
+tests/study/test_verify_operands.py::test_multiplication_arity_is_checked[3] PASSED [ 98%]
+tests/study/test_verify_operands.py::test_nested_missing_binding_is_not_guessed PASSED [ 98%]
+tests/study/test_verify_operands.py::test_unsupported_operand_kind_is_refused PASSED [ 98%]
+tests/study/test_warnings.py::test_advisory_never_changes_the_trace PASSED [ 99%]
+tests/study/test_warnings.py::test_the_tie_candidate_names_the_key_and_says_it_was_not_added PASSED [ 99%]
+tests/study/test_warnings.py::test_a_declared_tie_earns_no_candidate_warning PASSED [ 99%]
+tests/study/test_warnings.py::test_suffix_siblings_land_in_their_own_named_field PASSED [ 99%]
+tests/study/test_warnings.py::test_suffix_siblings_never_join_the_traced_set PASSED [ 99%]
+tests/study/test_warnings.py::test_the_declared_tie_is_not_a_suffix_sibling PASSED [ 99%]
+tests/study/test_warnings.py::test_a_key_in_two_groups_earns_a_document_warning PASSED [ 99%]
+tests/study/test_warnings.py::test_provenance_drift_warns_on_both_recorded_fingerprints PASSED [100%]
+
+=================================== FAILURES ===================================
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-absent] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-null] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-nan] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-absent] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-null] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-nan] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-absent] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-null] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-nan] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-absent] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-null] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-nan] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:146: in test_local_export_refuses_incomplete_results_before_publishing
+    with pytest.raises(local_study.route.RouteError, match=channel):
+E   Failed: DID NOT RAISE <class 'study_route.RouteError'>
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-absent] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-null] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-nan] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-absent] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-null] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-nan] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-absent] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-null] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-nan] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-absent] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-null] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-nan] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-absent] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-null] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-nan] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-absent] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-null] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-nan] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-absent] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-null] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-nan] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-absent] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-null] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-nan] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-absent] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-null] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-nan] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-absent] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-null] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-nan] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-absent] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-null] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-nan] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-absent] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-null] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-nan] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:147: in test_local_export_refuses_incomplete_results_before_publishing
+    local_study.export(cases, output)
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-absent] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:123: in _local_case
+    channel: float(index) for index, channel in enumerate(study.CHANNELS.values())
+                                                          ^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-null] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:123: in _local_case
+    channel: float(index) for index, channel in enumerate(study.CHANNELS.values())
+                                                          ^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-nan] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:123: in _local_case
+    channel: float(index) for index, channel in enumerate(study.CHANNELS.values())
+                                                          ^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:123: in _local_case
+    channel: float(index) for index, channel in enumerate(study.CHANNELS.values())
+                                                          ^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:123: in _local_case
+    channel: float(index) for index, channel in enumerate(study.CHANNELS.values())
+                                                          ^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-absent] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:123: in _local_case
+    channel: float(index) for index, channel in enumerate(study.CHANNELS.values())
+                                                          ^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-null] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:123: in _local_case
+    channel: float(index) for index, channel in enumerate(study.CHANNELS.values())
+                                                          ^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-nan] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:123: in _local_case
+    channel: float(index) for index, channel in enumerate(study.CHANNELS.values())
+                                                          ^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:123: in _local_case
+    channel: float(index) for index, channel in enumerate(study.CHANNELS.values())
+                                                          ^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:123: in _local_case
+    channel: float(index) for index, channel in enumerate(study.CHANNELS.values())
+                                                          ^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-absent] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:117: in _local_case
+    proposal = study.proposals()[0]
+               ^^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-operating-heating' has no attribute 'proposals'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-null] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:117: in _local_case
+    proposal = study.proposals()[0]
+               ^^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-operating-heating' has no attribute 'proposals'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-nan] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:117: in _local_case
+    proposal = study.proposals()[0]
+               ^^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-operating-heating' has no attribute 'proposals'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:117: in _local_case
+    proposal = study.proposals()[0]
+               ^^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-operating-heating' has no attribute 'proposals'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:117: in _local_case
+    proposal = study.proposals()[0]
+               ^^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-operating-heating' has no attribute 'proposals'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-absent] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:117: in _local_case
+    proposal = study.proposals()[0]
+               ^^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-operating-heating' has no attribute 'proposals'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-null] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:117: in _local_case
+    proposal = study.proposals()[0]
+               ^^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-operating-heating' has no attribute 'proposals'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-nan] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:117: in _local_case
+    proposal = study.proposals()[0]
+               ^^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-operating-heating' has no attribute 'proposals'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-positive-inf] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:117: in _local_case
+    proposal = study.proposals()[0]
+               ^^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-operating-heating' has no attribute 'proposals'
+_ test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-negative-inf] _
+tests/study/test_study_publication_fail_closed.py:136: in test_local_export_refuses_incomplete_results_before_publishing
+    cases = [_local_case(local_study), _local_case(local_study)]
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:117: in _local_case
+    proposal = study.proposals()[0]
+               ^^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-operating-heating' has no attribute 'proposals'
+_ test_local_export_preserves_all_complete_values_including_zero[20260903-priced-levers] _
+tests/study/test_study_publication_fail_closed.py:154: in test_local_export_preserves_all_complete_values_including_zero
+    output = local_study.export([case], tmp_path / "points.csv")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_preserves_all_complete_values_including_zero[20260903-wall-and-heating] _
+tests/study/test_study_publication_fail_closed.py:154: in test_local_export_preserves_all_complete_values_including_zero
+    output = local_study.export([case], tmp_path / "points.csv")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: export() missing 1 required positional argument: 'path'
+_ test_local_export_preserves_all_complete_values_including_zero[20260904-wall-and-heating] _
+tests/study/test_study_publication_fail_closed.py:154: in test_local_export_preserves_all_complete_values_including_zero
+    output = local_study.export([case], tmp_path / "points.csv")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_preserves_all_complete_values_including_zero[20260905-stored-energy-basis] _
+tests/study/test_study_publication_fail_closed.py:154: in test_local_export_preserves_all_complete_values_including_zero
+    output = local_study.export([case], tmp_path / "points.csv")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_preserves_all_complete_values_including_zero[20260907-burn-control] _
+tests/study/test_study_publication_fail_closed.py:154: in test_local_export_preserves_all_complete_values_including_zero
+    output = local_study.export([case], tmp_path / "points.csv")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_preserves_all_complete_values_including_zero[20260907-minor-radius] _
+tests/study/test_study_publication_fail_closed.py:154: in test_local_export_preserves_all_complete_values_including_zero
+    output = local_study.export([case], tmp_path / "points.csv")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: export() missing 2 required positional arguments: 'oracle' and 'path'
+_ test_local_export_preserves_all_complete_values_including_zero[20260911-model-owned-radius] _
+tests/study/test_study_publication_fail_closed.py:153: in test_local_export_preserves_all_complete_values_including_zero
+    case = _local_case(local_study)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:123: in _local_case
+    channel: float(index) for index, channel in enumerate(study.CHANNELS.values())
+                                                          ^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-model-owned-radius' has no attribute 'CHANNELS'
+_ test_local_export_preserves_all_complete_values_including_zero[20260911-operating-heating] _
+tests/study/test_study_publication_fail_closed.py:153: in test_local_export_preserves_all_complete_values_including_zero
+    case = _local_case(local_study)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/test_study_publication_fail_closed.py:117: in _local_case
+    proposal = study.proposals()[0]
+               ^^^^^^^^^^^^^^^
+E   AttributeError: module '20260911-operating-heating' has no attribute 'proposals'
+- generated xml file: /tmp/fusion-mfe-financial-rate-limits/work/active/WI-052_mfe-financial-rate-limits/implementation/entering/pytest-study.xml -
+=========================== short test summary info ============================
+SKIPPED [1] tests/study/test_verify.py:263: proof-of-life store unavailable: /tmp/fusion-mfe-financial-rate-limits/exploration/stellarator_e2e/study/_work/availability_sweep.db
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260830-stress-fence-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260901-sustainment-fence-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-priced-levers-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260903-wall-and-heating-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260904-wall-and-heating-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260905-stored-energy-basis-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-burn-control-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260907-minor-radius-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-model-owned-radius-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-first-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-absent]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-null]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-nan]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-positive-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_refuses_incomplete_results_before_publishing[20260911-operating-heating-later-case-negative-inf]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260903-priced-levers]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260903-wall-and-heating]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260904-wall-and-heating]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260905-stored-energy-basis]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260907-burn-control]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260907-minor-radius]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260911-model-owned-radius]
+FAILED tests/study/test_study_publication_fail_closed.py::test_local_export_preserves_all_complete_values_including_zero[20260911-operating-heating]
+============ 108 failed, 656 passed, 1 skipped in 829.56s (0:13:49) ============

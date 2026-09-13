@@ -1,0 +1,27 @@
+{
+  "before": [
+    "WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::waste' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:863",
+    "WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::waste' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:863",
+    "WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::fuel_handling' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:869",
+    "WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::fuel_handling' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:869",
+    "WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::other_rpe' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:875",
+    "WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::other_rpe' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:875",
+    "WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::inc_cost' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:881",
+    "WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::inc_cost' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:881",
+    "WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::owner' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:948",
+    "WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::owner' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:948"
+  ],
+  "after": [
+    "WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::waste' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:863",
+    "WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::waste' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:863",
+    "WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::fuel_handling' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:869",
+    "WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::fuel_handling' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:869",
+    "WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::other_rpe' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:875",
+    "WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::other_rpe' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:875",
+    "WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::inc_cost' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:881",
+    "WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::inc_cost' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:881",
+    "WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::owner' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:948",
+    "WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::owner' - consider binding to attribute or calc output at file://MODEL/designs/generic_mfe/mfe_plant.sysml:948"
+  ],
+  "new": []
+}

@@ -22,6 +22,17 @@ adjustment. CRF and the annual-energy denominator follow 1costingFE.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py
 *Ref**: economics.py:6-10 (compute_crf), economics.py:88-92 (compute_lcoe)
 *Basis**: Standard DCF LCOE; annuitized capital + O&M over energy sold
+Native manual completion evaluates the complete price equation above,
+including 8760 hours/year and the existing annual-energy denominator.
+CRF(0,N)=1/N; otherwise i/-expm1(-N*log1p(i)). The distinct midpoint
+construction multiplier is exp((T/2)*log1p(i)), equal to one at zero
+interest. Real construction and operating durations retain their meanings.
+
+*Source**: models/library/analyses/mfe_lcoe_dcf.sysml
+*Ref**: LCOE DCF, CRF, midpoint IDC multiplier, annual capital, annual energy and LCOE equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
+*Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
+*Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
 Inputs:
     - discount_rate_in: discount_rate_in parameter
@@ -93,6 +104,17 @@ adjustment. CRF and the annual-energy denominator follow 1costingFE.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py
 *Ref**: economics.py:6-10 (compute_crf), economics.py:88-92 (compute_lcoe)
 *Basis**: Standard DCF LCOE; annuitized capital + O&M over energy sold
+Native manual completion evaluates the complete price equation above,
+including 8760 hours/year and the existing annual-energy denominator.
+CRF(0,N)=1/N; otherwise i/-expm1(-N*log1p(i)). The distinct midpoint
+construction multiplier is exp((T/2)*log1p(i)), equal to one at zero
+interest. Real construction and operating durations retain their meanings.
+
+*Source**: models/library/analyses/mfe_lcoe_dcf.sysml
+*Ref**: LCOE DCF, CRF, midpoint IDC multiplier, annual capital, annual energy and LCOE equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
+*Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
+*Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
 Inputs:
     - discount_rate_in: discount_rate_in parameter
@@ -111,14 +133,7 @@ SysML Source: root-0/analyses/mfe_lcoe_dcf.sysml:4
     SysML Source: root-0/analyses/mfe_lcoe_dcf.sysml:4
 
     Calculation Specification:
-        discount_pow_n = (1.0 + discount_rate_in) ** operational_years_in
-        crf = discount_rate_in * discount_pow_n / (discount_pow_n - 1.0)
-        idc_factor = (1.0 + discount_rate_in) ** (construction_years_in / 2.0)
-        annual_capital = total_capital_in * idc_factor * crf
-        annual_energy_mwh = 8760.0 * net_electric_mw * availability_in
-        lcoe = (annual_capital + annual_om_in) / annual_energy_mwh
-        
-Documentation:
+        See documentation:
 Generic discounted-cash-flow LCOE core [$/MWh]. Concept-agnostic: it
 takes an already-rolled-up total capital and annual O&M plus the plant
 performance and financing terms, and returns levelized cost of
@@ -139,6 +154,17 @@ adjustment. CRF and the annual-energy denominator follow 1costingFE.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py
 *Ref**: economics.py:6-10 (compute_crf), economics.py:88-92 (compute_lcoe)
 *Basis**: Standard DCF LCOE; annuitized capital + O&M over energy sold
+Native manual completion evaluates the complete price equation above,
+including 8760 hours/year and the existing annual-energy denominator.
+CRF(0,N)=1/N; otherwise i/-expm1(-N*log1p(i)). The distinct midpoint
+construction multiplier is exp((T/2)*log1p(i)), equal to one at zero
+interest. Real construction and operating durations retain their meanings.
+
+*Source**: models/library/analyses/mfe_lcoe_dcf.sysml
+*Ref**: LCOE DCF, CRF, midpoint IDC multiplier, annual capital, annual energy and LCOE equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
+*Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
+*Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
     IMPLEMENTATION: See stellarator_tea.handwritten.mfe_lcoe_dcf.lcoe_dcf_impl
     for manual implementation.

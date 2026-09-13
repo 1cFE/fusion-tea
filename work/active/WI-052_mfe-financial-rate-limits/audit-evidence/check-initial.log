@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/tmp/fusion-mfe-financial-rate-limits/work/active/WI-052_mfe-financial-rate-limits/audit-evidence/check.py", line 35, in <module>
+    error=abs(D(actual)-expected)/(abs(expected) if expected else D(1));assert error<=D('1e-9'),(name,n,rate,error)
+                                                                               ^^^^^^^^^^^^^^^^
+AssertionError: ('annuity_5e-324', 0.75, 0.0, Decimal('1234567'))

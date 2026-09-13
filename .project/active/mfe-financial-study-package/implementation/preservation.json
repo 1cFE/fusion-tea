@@ -1,0 +1,22 @@
+{
+  "starting_production_revision": "708dddefdbeb5f990d9ef824ce06258fa6b46345",
+  "protected_git_paths": [
+    "models",
+    "exploration/stellarator_e2e/generated",
+    "exploration/stellarator_e2e/models",
+    "exploration/stellarator_e2e/stellarator.snapshot.json",
+    "tests/models",
+    "work/active/WI-052_mfe-financial-rate-limits",
+    "work/active/WI-051_mfe-model-owned-major-radius",
+    ".project/active/mfe-major-radius-study-package",
+    "scripts",
+    "exploration/stellarator_e2e/studies/oracle_entry.py",
+    "exploration/stellarator_e2e/studies/study_route.py"
+  ],
+  "changed_protected_paths": [],
+  "checks": "Tracked bytes compared with git diff; no repository preservation walker. Setup .gitignore change predates this task.",
+  "current_contracts": {
+    "exploration/stellarator_e2e/generated/contracts/package_contract.json": "4f5a1a78d9a4a8df1f7179c4a53e4c9aa7d929880707ebf09c1f782276c3f18f",
+    "exploration/stellarator_e2e/stellarator.snapshot.json": "ae99f68a2a9dbcfe863ecfaee25ce853c39584937a3e4a9cb687d857b066a3d5"
+  }
+}

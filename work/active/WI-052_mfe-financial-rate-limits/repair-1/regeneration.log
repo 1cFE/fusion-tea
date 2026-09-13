@@ -1,0 +1,29 @@
+PASS {
+  "entering_commit": "59b1ff97",
+  "scratch": "/tmp/wi052-doc-repair-9n0r5wsq",
+  "canonical_twin_equal": true,
+  "non_doc_sysml_equal": true,
+  "source_snapshot_package_equal": true,
+  "all_python_executable_asts_equal": true,
+  "eight_manual_seed_bytes_equal": true,
+  "changed_package_files": [
+    "IMPLEMENTATION_BACKLOG.md",
+    "contracts/package_contract.json",
+    "handwritten/mfe_account_costs/annual_cost_rollup_impl.py",
+    "handwritten/mfe_account_costs/dt_fuel_cost_impl.py",
+    "handwritten/mfe_account_costs/n_1cfe_form_capital_charge_impl.py",
+    "handwritten/mfe_account_costs/n_1cfe_form_lcoe_impl.py",
+    "modules/mfe_account_costs/annual_cost_rollup.py",
+    "modules/mfe_account_costs/dt_fuel_cost.py",
+    "modules/mfe_account_costs/idc_closed_form_cost.py",
+    "modules/mfe_account_costs/levelized_annual_cost.py",
+    "modules/mfe_account_costs/n_1cfe_form_capital_charge.py",
+    "modules/mfe_account_costs/n_1cfe_form_lcoe.py",
+    "modules/mfe_lcoe_dcf/lcoe_dcf.py",
+    "modules/mfe_lifecycle/lifecycle_calendar.py",
+    "schemas/annual_cost_rollup_output.py",
+    "schemas/levelized_annual_cost_output.py",
+    "schemas/lifecycle_calendar_output.py",
+    "tests/test_implementations_runnable.py"
+  ]
+}

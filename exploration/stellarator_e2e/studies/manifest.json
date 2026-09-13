@@ -23,7 +23,7 @@
    ]
   },
   "recorded_provenance": {
-   "executable_fingerprint": "cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c",
+   "executable_fingerprint": "1a7c216dabff8425c279f6b3c2781629115729173fc0b406600497ac348b4340",
    "semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e"
   }
  },
@@ -108,7 +108,7 @@
   },
   "headline": {
    "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
-   "value": 224.26923288439
+   "value": 224.26923288439002
   },
   "verdicts": [
    {

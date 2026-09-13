@@ -1,0 +1,200 @@
+[
+  {
+    "node_id": "tests/study/test_integrate_lineage.py::test_wrong_expected_fingerprint_refuses_at_gate_9",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "failure",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_integrate_lineage.py::test_absent_expected_fingerprints_could_not_run_rather_than_pass",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "failure",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_integrate_rerun.py::test_two_runs_return_the_same_identity",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "failure",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_integrate_rerun.py::test_the_second_run_is_a_candidate_not_a_refusal",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "failure",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_integrate_stock_route.py::test_the_return_rebuilds_the_stock_commands",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "failure",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_integrate_success.py::test_committed_package_yields_one_candidate",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "error",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_integrate_success.py::test_every_candidate_field_resolves",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "error",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_integrate_success.py::test_the_candidate_names_the_lineage_the_request_named",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "error",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_integrate_success.py::test_the_pin_is_the_manifests_own_value_not_a_new_number",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "error",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_integrate_success.py::test_the_package_is_byte_identical_before_and_after",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "error",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_integrate_success.py::test_the_verification_summary_the_candidate_cites_reads_pass",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "error",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_integrate_success.py::test_the_preflight_results_the_run_produced_read_six_of_six",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "error",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_integrate_success.py::test_the_toolchain_the_candidate_ran_under_is_recorded",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "error",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle",
+    "status": "passed",
+    "cause": "current consumer requires exact frozen pre-repair finance",
+    "evidence": ".project/active/mfe-major-radius-study-package/implementation/check_controls.py:33; scalar-ledger.json live_ordinary CAS71 levelized delta",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "failure",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_preflight_gates.py::test_all_six_checks_pass_on_the_real_package",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "error",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_preflight_gates.py::test_the_results_document_validates_against_its_schema",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "error",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_preflight_gates.py::test_the_document_carries_a_digest_for_every_input_it_read",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "error",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_preflight_gates.py::test_the_six_results_map_onto_record_section_9s_five_rows",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "error",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_preflight_gates.py::test_the_tool_reports_its_own_revision_as_a_named_recipe_over_a_named_file_list",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "error",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_preflight_gates.py::test_the_sibling_scan_is_advisory_and_can_never_fail",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "error",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_preflight_gates.py::test_the_identity_gate_reports_the_recomputed_digest",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "error",
+    "current_evidence": "affected-nodes.xml"
+  },
+  {
+    "node_id": "tests/study/test_preflight_negatives.py::test_an_unreadable_input_is_did_not_run_with_its_condition",
+    "status": "passed",
+    "cause": "current manifest pins earlier executable generation",
+    "evidence": "pytest-study.xml; downstream-manifest preflight receipts; tests/study/test_preflight_negatives.py:150 for independent freshness assertion",
+    "disposition": "resolved by current consumer/oracle and live manifest migration",
+    "prior_status": "failure",
+    "current_evidence": "affected-nodes.xml"
+  }
+]

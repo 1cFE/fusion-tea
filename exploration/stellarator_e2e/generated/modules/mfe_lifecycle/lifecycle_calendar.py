@@ -7,7 +7,7 @@ blanket + divertor, bundled): physical life -> a dated replacement
 calendar over the plant horizon -> productive full-power years,
 downtimes, availability, the replacement present value and CAS72.
 Replaces 'Levelized Replacement Cost' (WI-029 / WI-041), whose periodic
-chain is carried verbatim as this calc's HELD MODE (WI-046; goal
+physical timing is carried as this calc's HELD MODE (WI-046; goal
 plant-closure round 1; basis packet sections 2, 3, 8).
 
 LIVE MODE (availability_direct_in = 0), the deterministic finite-horizon
@@ -35,7 +35,7 @@ calendar (research Option B):
                        would divide by this ratio -- the annual-equivalent
                        convention stays the headline (WI-029 Option ii).
 
-HELD MODE (availability_direct_in > 0), the retired chain VERBATIM
+HELD MODE (availability_direct_in > 0), the retired physical chain
 (levelized_replacement_cost_impl.py:70-101 at the WI-044 pin, the 1cfe
 guards carried as WI-029 MF-1 carried them; economics.py:53-75,
 model.py:102-111 at pin 0254385):
@@ -49,8 +49,8 @@ model.py:102-111 at pin 0254385):
   availability      = A;  F = N*A;  T_unplanned = N - N*A (undifferentiated)
 
 The held mode is the compatibility bridge: with availability_direct at a
-concept's former constant every consumer reads what it read before, to
-the bit (goal plant-closure, Invariants). It is not a calendar and its
+concept's former constant its physical outputs remain bit-identical. Finance
+uses stable equivalent rate-limit expressions (WI-052). It is not a calendar and its
 guards are not material evidence (the 0.5 FPY floor is a gradient guard,
 the N*A cap a horizon cap); the live mode has neither and fails loudly
 on an invalid input.
@@ -69,8 +69,9 @@ energy is removed from the denominator.
 EXECUTABLE SEMANTIC: the walk and ceil are outside the codegen envelope
 (+ - * / ** only), so this calc routes to the handwritten stage
 (manual_required); the generated handwritten impl is normative and is
-guarded by the oracle's independent closed-form derivation
-(verify_stellaris.py) at rel 1e-9 on every output.
+checked by independent dated-flow and yearly-energy references in
+tests/models/test_mfe_financial_calendar.py. The legacy study oracle
+retains its separately scoped finance migration.
 
 Concept-agnostic: every quantity is an input (MR-3). Event dates are a
 diagnostic artifact of the impl, not outputs.
@@ -78,6 +79,11 @@ diagnostic artifact of the impl, not outputs.
 *Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf (Stellaris, sec. 2.11, pp. 28-29; Table 6, p. 21 -- read as the renders under work/orchestration/goals/plant-closure/evidence/grounding_sources/); knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2/output.md (Kovari et al. 2016, sec. 8); /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)
 *Ref**: Stellaris p. 29 (seven months estimated; five months and 90 % targets; four years between major maintenance); p. 28 (cooldown and recommissioning ~30 days each, inside the estimate); Table 6 (first-wall structure lifetime ~4-6 FPY; coil lifetime ~10 FPY); Kovari 2016 sec. 8 eq. 54 (planned / unplanned overlap), eqs. 55-59 (blanket / divertor lifetimes and outages -- the precedent for distinct lives, not adopted); economics.py:53-75, model.py:102-111 (the held chain); knowledge/research/pending/20260907-163520_lifetime-availability-closure-prework.md sec. Option B
 *Basis**: deterministic finite-horizon replacement calendar on the peak wall load; annual-equivalent economics with the exact-dated shadow
+*Source**: models/library/analyses/mfe_lifecycle.sysml
+*Ref**: Lifecycle Calendar, LIVE MODE and HELD MODE replacement PV, annualization and dated-energy equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
+*Basis**: stable CRF, held periodic PV and dated log1p discount weights; event walk, clipping, count and yearly-bin accumulation retained
+*Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
 Inputs:
     - interest_rate: interest_rate parameter
@@ -151,7 +157,7 @@ blanket + divertor, bundled): physical life -> a dated replacement
 calendar over the plant horizon -> productive full-power years,
 downtimes, availability, the replacement present value and CAS72.
 Replaces 'Levelized Replacement Cost' (WI-029 / WI-041), whose periodic
-chain is carried verbatim as this calc's HELD MODE (WI-046; goal
+physical timing is carried as this calc's HELD MODE (WI-046; goal
 plant-closure round 1; basis packet sections 2, 3, 8).
 
 LIVE MODE (availability_direct_in = 0), the deterministic finite-horizon
@@ -179,7 +185,7 @@ calendar (research Option B):
                        would divide by this ratio -- the annual-equivalent
                        convention stays the headline (WI-029 Option ii).
 
-HELD MODE (availability_direct_in > 0), the retired chain VERBATIM
+HELD MODE (availability_direct_in > 0), the retired physical chain
 (levelized_replacement_cost_impl.py:70-101 at the WI-044 pin, the 1cfe
 guards carried as WI-029 MF-1 carried them; economics.py:53-75,
 model.py:102-111 at pin 0254385):
@@ -193,8 +199,8 @@ model.py:102-111 at pin 0254385):
   availability      = A;  F = N*A;  T_unplanned = N - N*A (undifferentiated)
 
 The held mode is the compatibility bridge: with availability_direct at a
-concept's former constant every consumer reads what it read before, to
-the bit (goal plant-closure, Invariants). It is not a calendar and its
+concept's former constant its physical outputs remain bit-identical. Finance
+uses stable equivalent rate-limit expressions (WI-052). It is not a calendar and its
 guards are not material evidence (the 0.5 FPY floor is a gradient guard,
 the N*A cap a horizon cap); the live mode has neither and fails loudly
 on an invalid input.
@@ -213,8 +219,9 @@ energy is removed from the denominator.
 EXECUTABLE SEMANTIC: the walk and ceil are outside the codegen envelope
 (+ - * / ** only), so this calc routes to the handwritten stage
 (manual_required); the generated handwritten impl is normative and is
-guarded by the oracle's independent closed-form derivation
-(verify_stellaris.py) at rel 1e-9 on every output.
+checked by independent dated-flow and yearly-energy references in
+tests/models/test_mfe_financial_calendar.py. The legacy study oracle
+retains its separately scoped finance migration.
 
 Concept-agnostic: every quantity is an input (MR-3). Event dates are a
 diagnostic artifact of the impl, not outputs.
@@ -222,6 +229,11 @@ diagnostic artifact of the impl, not outputs.
 *Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf (Stellaris, sec. 2.11, pp. 28-29; Table 6, p. 21 -- read as the renders under work/orchestration/goals/plant-closure/evidence/grounding_sources/); knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2/output.md (Kovari et al. 2016, sec. 8); /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)
 *Ref**: Stellaris p. 29 (seven months estimated; five months and 90 % targets; four years between major maintenance); p. 28 (cooldown and recommissioning ~30 days each, inside the estimate); Table 6 (first-wall structure lifetime ~4-6 FPY; coil lifetime ~10 FPY); Kovari 2016 sec. 8 eq. 54 (planned / unplanned overlap), eqs. 55-59 (blanket / divertor lifetimes and outages -- the precedent for distinct lives, not adopted); economics.py:53-75, model.py:102-111 (the held chain); knowledge/research/pending/20260907-163520_lifetime-availability-closure-prework.md sec. Option B
 *Basis**: deterministic finite-horizon replacement calendar on the peak wall load; annual-equivalent economics with the exact-dated shadow
+*Source**: models/library/analyses/mfe_lifecycle.sysml
+*Ref**: Lifecycle Calendar, LIVE MODE and HELD MODE replacement PV, annualization and dated-energy equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
+*Basis**: stable CRF, held periodic PV and dated log1p discount weights; event walk, clipping, count and yearly-bin accumulation retained
+*Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
 Inputs:
     - interest_rate: interest_rate parameter
@@ -258,7 +270,7 @@ blanket + divertor, bundled): physical life -> a dated replacement
 calendar over the plant horizon -> productive full-power years,
 downtimes, availability, the replacement present value and CAS72.
 Replaces 'Levelized Replacement Cost' (WI-029 / WI-041), whose periodic
-chain is carried verbatim as this calc's HELD MODE (WI-046; goal
+physical timing is carried as this calc's HELD MODE (WI-046; goal
 plant-closure round 1; basis packet sections 2, 3, 8).
 
 LIVE MODE (availability_direct_in = 0), the deterministic finite-horizon
@@ -286,7 +298,7 @@ calendar (research Option B):
                        would divide by this ratio -- the annual-equivalent
                        convention stays the headline (WI-029 Option ii).
 
-HELD MODE (availability_direct_in > 0), the retired chain VERBATIM
+HELD MODE (availability_direct_in > 0), the retired physical chain
 (levelized_replacement_cost_impl.py:70-101 at the WI-044 pin, the 1cfe
 guards carried as WI-029 MF-1 carried them; economics.py:53-75,
 model.py:102-111 at pin 0254385):
@@ -300,8 +312,8 @@ model.py:102-111 at pin 0254385):
   availability      = A;  F = N*A;  T_unplanned = N - N*A (undifferentiated)
 
 The held mode is the compatibility bridge: with availability_direct at a
-concept's former constant every consumer reads what it read before, to
-the bit (goal plant-closure, Invariants). It is not a calendar and its
+concept's former constant its physical outputs remain bit-identical. Finance
+uses stable equivalent rate-limit expressions (WI-052). It is not a calendar and its
 guards are not material evidence (the 0.5 FPY floor is a gradient guard,
 the N*A cap a horizon cap); the live mode has neither and fails loudly
 on an invalid input.
@@ -320,8 +332,9 @@ energy is removed from the denominator.
 EXECUTABLE SEMANTIC: the walk and ceil are outside the codegen envelope
 (+ - * / ** only), so this calc routes to the handwritten stage
 (manual_required); the generated handwritten impl is normative and is
-guarded by the oracle's independent closed-form derivation
-(verify_stellaris.py) at rel 1e-9 on every output.
+checked by independent dated-flow and yearly-energy references in
+tests/models/test_mfe_financial_calendar.py. The legacy study oracle
+retains its separately scoped finance migration.
 
 Concept-agnostic: every quantity is an input (MR-3). Event dates are a
 diagnostic artifact of the impl, not outputs.
@@ -329,6 +342,11 @@ diagnostic artifact of the impl, not outputs.
 *Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf (Stellaris, sec. 2.11, pp. 28-29; Table 6, p. 21 -- read as the renders under work/orchestration/goals/plant-closure/evidence/grounding_sources/); knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2/output.md (Kovari et al. 2016, sec. 8); /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)
 *Ref**: Stellaris p. 29 (seven months estimated; five months and 90 % targets; four years between major maintenance); p. 28 (cooldown and recommissioning ~30 days each, inside the estimate); Table 6 (first-wall structure lifetime ~4-6 FPY; coil lifetime ~10 FPY); Kovari 2016 sec. 8 eq. 54 (planned / unplanned overlap), eqs. 55-59 (blanket / divertor lifetimes and outages -- the precedent for distinct lives, not adopted); economics.py:53-75, model.py:102-111 (the held chain); knowledge/research/pending/20260907-163520_lifetime-availability-closure-prework.md sec. Option B
 *Basis**: deterministic finite-horizon replacement calendar on the peak wall load; annual-equivalent economics with the exact-dated shadow
+*Source**: models/library/analyses/mfe_lifecycle.sysml
+*Ref**: Lifecycle Calendar, LIVE MODE and HELD MODE replacement PV, annualization and dated-energy equations; work/active/WI-052_mfe-financial-rate-limits/design.md, Numerical method and justification
+Preceding external citations are inherited and not reverified in WI-052.
+*Basis**: stable CRF, held periodic PV and dated log1p discount weights; event walk, clipping, count and yearly-bin accumulation retained
+*Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
     IMPLEMENTATION: See stellarator_tea.handwritten.mfe_lifecycle.lifecycle_calendar_impl
     for manual implementation.

@@ -1,0 +1,9 @@
+PASS every validation issue matched by diagnostic and logical location
+Traceback (most recent call last):
+  File "/tmp/fusion-mfe-financial-rate-limits/work/active/WI-052_mfe-financial-rate-limits/implementation/differentials.py", line 52, in <module>
+    if (HERE/'pytest-study.xml').exists():regression()
+                                          ^^^^^^^^^^^^
+  File "/tmp/fusion-mfe-financial-rate-limits/work/active/WI-052_mfe-financial-rate-limits/implementation/differentials.py", line 48, in regression
+    assert not any(x['new_failures'] for x in result.values()),'New regression failures'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: New regression failures

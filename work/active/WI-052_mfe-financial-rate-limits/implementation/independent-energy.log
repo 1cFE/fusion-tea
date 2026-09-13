@@ -1,0 +1,48 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /home/reid/1cfe/fusion-tea/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /tmp/fusion-mfe-financial-rate-limits
+configfile: pyproject.toml
+plugins: anyio-4.13.0, Faker-40.18.0
+collecting ... collected 37 items
+
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_multiple] PASSED [  2%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_zero_damage] PASSED [  5%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_zero_cost] PASSED [  8%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_no_events] PASSED [ 10%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_zero_outage] PASSED [ 13%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_fractional_unplanned] PASSED [ 16%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_terminal_inside] PASSED [ 18%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_run_end_0] PASSED [ 21%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_run_end_1] PASSED [ 24%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_run_end_2] PASSED [ 27%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_completion_0] PASSED [ 29%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_completion_1] PASSED [ 32%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[live_completion_2] PASSED [ 35%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[energy_ceil_epsilon_0] PASSED [ 37%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[energy_ceil_epsilon_1] PASSED [ 40%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[energy_ceil_epsilon_2] PASSED [ 43%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[energy_segment_year_0] PASSED [ 45%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[energy_segment_year_1] PASSED [ 48%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[energy_segment_year_2] PASSED [ 51%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_wall_floor_0] PASSED [ 54%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_wall_floor_1] PASSED [ 56%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_wall_floor_2] PASSED [ 59%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_life_floor_0] PASSED [ 62%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_life_floor_1] PASSED [ 64%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_life_floor_2] PASSED [ 67%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_cap_0] PASSED [ 70%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_cap_1] PASSED [ 72%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_cap_2] PASSED [ 75%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_count_0] PASSED [ 78%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_count_1] PASSED [ 81%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_count_2] PASSED [ 83%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_cap_below_floor_0] PASSED [ 86%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_cap_below_floor_1] PASSED [ 89%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_cap_below_floor_2] PASSED [ 91%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_subannual_cap] PASSED [ 94%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_fractional] PASSED [ 97%]
+tests/models/test_mfe_financial_calendar.py::test_all_public_fields_at_represented_boundaries[held_zero_cost] PASSED [100%]
+
+- generated xml file: /tmp/fusion-mfe-financial-rate-limits/work/active/WI-052_mfe-financial-rate-limits/implementation/independent-energy.xml -
+============================== 37 passed in 0.71s ==============================
