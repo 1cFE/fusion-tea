@@ -109,7 +109,7 @@ def test_current_contract_edges_and_fresh_package_agreement():
         assert hashes(H/path)==expected
     # Historical generation receipts stay frozen; current guarded receipt is WI-055.
     from tests.models.current_mfe_regressions import DOMAIN_EVIDENCE
-    assert hashes(ROOT/'exploration/stellarator_e2e/generated')==json.loads((DOMAIN_EVIDENCE/'candidate-package-hashes.json').read_text())
+    assert hashes(ROOT/'exploration/stellarator_e2e/generated')==json.loads((DOMAIN_EVIDENCE/'corrected-package-hashes.json').read_text())
     assert all(expected[name]==value for name,value in MANUAL.items())
 
 
