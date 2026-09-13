@@ -75,12 +75,8 @@ def test_fixed_references_and_model_owned_proposal():
 def test_current_radius_controls_match_frozen_model_and_independent_oracle(
     tmp_path, stock_simkit_path
 ):
-    import importlib.util
+    from tests.study import financial_radius_controls as controls
 
-    path = ROOT / ".project/active/mfe-major-radius-study-package/implementation/check_controls.py"
-    spec = importlib.util.spec_from_file_location("radius_controls", path)
-    controls = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(controls)
     results = controls.check_controls(tmp_path)
     assert results["baseline"]["verdicts"]["divertor_heat_ok"] == "violated"
     assert {k for k, v in results["R14"]["verdicts"].items() if v == "violated"} == {

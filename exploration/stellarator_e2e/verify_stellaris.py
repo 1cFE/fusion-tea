@@ -11,6 +11,8 @@ read from stellarator_plant.sysml.
 
 import math
 
+import oracle_finance as finance
+
 # WI-022 discretization contract — EXACT mirror of the handwritten impl
 # (generated/handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py). The
 # runner asserts the generated pipeline against this at rel 1e-9; do not
@@ -409,11 +411,10 @@ def _oracle_levelized_replacement_cost(cost_per_event, q_n, fluence_limit,
     fpy_cap = operational_years * availability
     core_lifetime_fpy = min(max(fpy_raw, 0.5), fpy_cap)           # clip
     core_lifetime_cal = core_lifetime_fpy / availability
-    s = (1.0 + interest_rate) ** (-core_lifetime_cal)
     n_rep = max(0.0, float(math.ceil(operational_years / core_lifetime_cal)) - 1.0)
-    pv = cost_per_event * s * (1.0 - s ** n_rep) / (1.0 - s)
-    disc_pow_n = (1.0 + interest_rate) ** operational_years
-    crf = interest_rate * disc_pow_n / (disc_pow_n - 1.0)
+    pv = finance.dated_pv(cost_per_event, interest_rate,
+                          [k * core_lifetime_cal for k in range(1, int(n_rep) + 1)])
+    crf = finance.crf(interest_rate, operational_years)
     return crf * pv
 
 
@@ -442,8 +443,7 @@ def _oracle_lifecycle_calendar(cost_per_event, q_n, fluence_limit, interest_rate
         core_lifetime_fpy = min(max(fluence_limit / max(q_n, 1e-6), 0.5), N * A)
         core_lifetime_cal = core_lifetime_fpy / A
         n_rep = max(0.0, float(math.ceil(N / core_lifetime_cal)) - 1.0)
-        s = (1.0 + i) ** (-core_lifetime_cal)
-        pv = C * s * (1.0 - s ** n_rep) / (1.0 - s)
+        pv = finance.dated_pv(C, i, [k * core_lifetime_cal for k in range(1, int(n_rep) + 1)])
         F = N * A
         return dict(availability=A, coil_life_margin_fpy=coil_life_fpy - F, replacement_pv=pv,
                     planned_downtime_yr=0.0, terminal_downtime_yr=0.0,
@@ -486,8 +486,8 @@ def _oracle_lifecycle_calendar(cost_per_event, q_n, fluence_limit, interest_rate
     F = b * online
     T_p = K * d
     T_u = u * online
-    pv = sum(C / (1.0 + i) ** t_k for t_k in events)
-    crf = (1.0 / N) if i == 0.0 else (i * (1.0 + i) ** N / ((1.0 + i) ** N - 1.0))
+    pv = finance.dated_pv(C, i, events)
+    crf = finance.crf(i, N)
     # the year-binned energy ratio (design D3): year y covers (y-1, y]
     if F == 0.0:
         raise ValueError("oracle calendar: zero productive time -- energy undefined")
@@ -497,7 +497,7 @@ def _oracle_lifecycle_calendar(cost_per_event, q_n, fluence_limit, interest_rate
     for y in range(1, n_years + 1):
         y0, y1 = float(y - 1), min(float(y), N)
         on_y = sum(max(0.0, min(s1, y1) - max(s0, y0)) for s0, s1 in segments)
-        disc = (1.0 + i) ** (-y)
+        disc = finance.growth(i, -y)
         num += b * on_y * disc
         den += E_avg * (y1 - y0) * disc
     return dict(availability=F / N, coil_life_margin_fpy=coil_life_fpy - F, replacement_pv=pv,
@@ -756,8 +756,7 @@ def compute():
     # CAS10 (precon) enters at overnight (no CAS29/CAS30)
     overnight_capital = (precon + cas20_capital + cas30_capital + owner + supplementary)
     # CAS60 IDC reported line (Option C: NOT summed into total_capital)
-    f_idc = ((1.0 + p["discount_rate"]) ** p["construction_years"] - 1.0) \
-        / (p["discount_rate"] * p["construction_years"]) - 1.0
+    f_idc = finance.idc_factor(p["discount_rate"], p["construction_years"])
     idc_capital = f_idc * overnight_capital
     total_capital = overnight_capital  # Option C
     # legacy aliases (retained for downstream comparison rows)
@@ -779,12 +778,7 @@ def compute():
 
     def _levelized_annual_cost(annual_cost):
         """economics.py:13-50 — growing-annuity PV annuitized by CRF."""
-        disc_pow_n_l = (1.0 + i_rate) ** n_life
-        crf_l = i_rate * disc_pow_n_l / (disc_pow_n_l - 1.0)
-        a1 = annual_cost * (1.0 + g_infl) ** t_c
-        pv_l = (a1 * (1.0 - ((1.0 + g_infl) / (1.0 + i_rate)) ** n_life)
-                / (i_rate - g_infl))
-        return crf_l * pv_l
+        return finance.annuity(annual_cost, i_rate, g_infl, n_life, t_c)
 
     cas71_annual = _levelized_annual_cost(annual_om_unlevelized)
 
@@ -861,9 +855,8 @@ def compute():
     # --- LCOE DCF ($/MWh) ---
     d = p["discount_rate"]
     N = p["operational_years"]
-    discount_pow_n = (1.0 + d) ** N
-    crf = d * discount_pow_n / (discount_pow_n - 1.0)
-    idc_factor = (1.0 + d) ** (p["construction_years"] / 2.0)
+    crf = finance.crf(d, N)
+    idc_factor = finance.growth(d, p["construction_years"] / 2.0)
     annual_capital = total_capital * idc_factor * crf
     annual_energy_mwh = 8760.0 * p_net * availability
     lcoe = (annual_capital + annual_om) / annual_energy_mwh
@@ -871,8 +864,7 @@ def compute():
     # --- WI-029 Option (ii): 1cfe-form comparison channels ------------------
     # crf_71 is the CRF the CAS71 levelization computes; the pipeline reuses
     # that same channel, so the mirror reads it the same way.
-    disc_pow_n_71 = (1.0 + i_rate) ** n_life
-    crf_71 = i_rate * disc_pow_n_71 / (disc_pow_n_71 - 1.0)
+    crf_71 = finance.crf(i_rate, n_life)
     cas90_1cfe = crf_71 * (overnight_capital + idc_capital)
     lcoe_1cfe = ((cas90_1cfe + cas70_annual + cas80_annual)
                  / (8760.0 * p_net * n * availability))
