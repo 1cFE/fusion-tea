@@ -1478,3 +1478,16 @@ Abandon or park the affected approach if enforcing these domains requires a new 
 Intended model increment: one independently audited bounded correction to the two named domain families, covering live/reference negative and equality counterexamples, cryogenic invalid order and zero cold temperature, plus valid reference/baseline and dormant/direct-power controls. Necessary generated/consumer follow-through must retain native ownership and current evidence; concurrently owned publication-writer/test work supplies no automatic validation credit.
 
 Intended study question: do the supported native component and plant routes deliberately reject the named invalid inputs while retaining the existing equations and valid diagnostic behavior? A bounded native acceptance investigation may answer this without a committed study. Declared round limit: finish at the independently audited bounded increment and its necessary current-consumer/integration acceptance, or an earlier runbook closing trigger. At most one promoted pin and one committed study remain permitted; neither is presumed present. This strategy creates no future task list. The renewed Rounds 7–12 bound, retry/checkpoint caps and all original owner-held gates remain in force.
+
+### T-034 scope
+
+Objective: Correct effective invalid-input handling for live/reference magnet clearance and cryogenic temperature order through one audited native model item.
+Why now: Round 8's fresh strategy identifies retained negative/equality failures in these two existing equations after the adopted financial correction.
+Scope: Native registration, proportional spec/design/plan, model-owned correction, generated executable coherence and meaningful component/full-plant acceptance. Preserve valid equations, baseline and diagnostic behavior, financial meaning and historical evidence. No unrelated domain expansion, consumer/seam repair, study, source adoption, merge/push/archive or residual acceptance.
+Inputs: amended goal.md; Round 8 strategy and evidence/R8_strategy/strategy-review.md; T-028 F07 detail; current adopted WI-052/model package; current native modeling process and runtime. Narrower constraints: only the two named domain families; preserve separately owned publication-writer/test/setup edits.
+Done when: Fresh independent audit supports effective pre-arithmetic rejection and valid-case preservation on the supported native routes, or a concrete prerequisite/blocker identifies the unresolved native boundary.
+Stop when: New source/scope/meaning decision, unexpected valid-baseline change, unexplained native movement, separately owned consumer/seam prerequisite, reserved gate or declared limit binds.
+
+### T-034 start — 2026-09-13
+
+T-034 enters the native modeling workflow for a new Standard item, with continuing author dispatched under evidence/T-034_domains/author-brief.md. Expected result: registered item with spec/design/plan, committed implementation and acceptance evidence, followed by a fresh independent audit. The coordinator owns the goal trail and later sequential integration; native stages remain in their own records.
