@@ -1671,3 +1671,35 @@ T-040 extends .project/active/model-documentation-current-receipt/ before changi
 ### Amendment — 2026-09-13
 
 T-040's first repaired-source run exposes the same raw-comment mismatch in a fourth file, `foundation/economic_parameter.sysml`, whose archived citation is part of WI-054's seven-file correction. Extend only the named token-comparison set to this file; all other T-040 bounds remain. This is an execution-detail decision by the coordinator [AGENT] from the retained new failure in .project/active/model-documentation-current-receipt/source-first-attempt.xml. The first full radius run retains 63 other passes and the one still-failing source node; no failure is relabeled inherited.
+
+### T-039 return — 2026-09-13
+
+**Outcome: COMPLETE.** The current receipt correction at `fe48a83a` passes coordinator execution and independent rerun. `.project/active/model-documentation-current-receipt/verification.md` and `work/analysis/20260913-154724_audit_WI-054_faithful-model-equations-and-citations.md@d966f13a` establish the limited dependency result. The full inventory comparison and historical receipts/checks remain; the expected record is WI-054's committed entering-to-prepared evidence, not a self-generated expectation from current code. T-040 separately addresses the additional source-preservation failure found by audit. The pre-scope draft timing remains recorded for round review.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Current package metadata no longer matches the earlier round's frozen receipt | Point the current check at the audited documentation candidate receipt while preserving all historical evidence | execution detail | Coordinator [AGENT], independently verified | current test@fe48a83a; audit@d966f13a |
+
+### T-040 return — 2026-09-13
+
+**Outcome: COMPLETE.** Current source-preservation correction/evidence `ac599cc5` and independent audit `d966f13a` resolve the second new current-consumer failure. Exactly four documentation-changed files use complete executable-token equality with WI-054's frozen entering record; original radius binding, canonical/twin equality and the other historical comparisons remain. The first full current-radius invocation retained 63 passes and one source failure; the amended fourth-file check then passed. Independent audit reruns both repaired nodes and probes the comparison's sensitivity to executable changes. No numerical expectation or historical driver/receipt was altered.
+
+The independent native audit supports coherent WI-054 completion, including T-039/T-040 dependencies; SV-094 passes. It verifies dimensions, source distinctions, complete executable/public-contract preservation and ten native cases. Existing L2/L6 issue identities remain. It corrects the author report's 247-input prose to the actual 246 inputs and 247 package files. The original author report remains evidence with this explicit correction. Hawker unchanged ranges receive no fresh table-image transcription credit; broader F17/F18/F20, alpha/calendar and engineering questions remain unresolved.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Historical raw source checks reject authorized comment changes in four files | Retain full executable-token equality for those files and all other preservation checks | execution detail | Coordinator [AGENT], independently verified | test/spec/evidence@ac599cc5; audit@d966f13a |
+| Current dependencies and independent native evidence now satisfy the bounded contract | Accept native documentation completion and invoke integration | execution detail | Coordinator [AGENT] on fresh audit | WI-054 audit/SV-094@d966f13a |
+
+### T-041 scope
+
+Objective: Prove one verified current MFE candidate after independently audited model-documentation correction.
+Why now: WI-054 and both current-test dependencies pass independent audit at d966f13a; prepared metadata is coherent and IFE package bytes are unchanged.
+Scope: Sequential documented native integration and complete producer evidence. No model/consumer/seam repair, scientific/financial change, source adoption, committed study, merge/push or archive/close.
+Inputs: amended goal.md; WI-054 audit@d966f13a, native production@4ca1f299 and current tests@ac599cc5; documented integration seam and .codex-test/run. Expected semantic 15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e; executable 3ab3ef8d253cc630db655e34b25a6c30694d493b429aa2859e32e8af931ba56b; TEAx 8d877460ac4f6f264561d916e40c1708adb13397.
+Done when: Native seam returns CANDIDATE with expected lineage or a named blocker with producer evidence.
+Stop when: Native refusal/prerequisite, mechanical failure, changed lineage/comparison meaning, owner gate or declared limit binds.
+
+### T-041 start — 2026-09-13
+
+T-041 invokes scripts/integrate.py against the audited current MFE package. Expected evidence: evidence/T-041_integration/integration_return.json and native producer records. This is Round 9's first integration attempt; no pin is yet promoted and no study committed. IFE retains its entering package identity and receives no separate promotion.
