@@ -446,8 +446,8 @@ package mfe_plasma_scaling {
         different configuration C.
 
         Kept as a calc, not an inline plant expression, so the product is a
-        module-graph edge the study tooling can trace; the factors are
-        intermediate attributes so the executed arithmetic is exactly
+        module-graph edge the study tooling can trace; the manual completion evaluates factors in the documented order
+        so the executed arithmetic is exactly
         (B_axis * peak_ratio) * bore_norm, and bore_norm evaluates to exactly
         1.0 at the reference geometry (the two factors are the same
         expression on the same floats).
@@ -461,6 +461,11 @@ package mfe_plasma_scaling {
             radius", N the number of coils, A_wp the winding-pack area);
             defaults.py:597-603 (MagnetProperties.b_max, "peak field ceiling
             at the conductor" -- the bounded quantity)
+        Domain: R_in - a_coil_in > 0 and R_ref_in - a_coil_ref_in > 0.
+        Native manual completion enforces both before any bore arithmetic.
+        An invalid domain raises ValueError; a valid computed field remains a
+        signed diagnostic evaluated separately by the conductor-field limit.
+
         **Basis**: peak-on-winding = axis field x printed coil-set ratio x the
             eq.-39 bore factor normalised at the reference geometry; the
             configuration coefficients absorbed by the anchor; MFE-generic
@@ -479,13 +484,11 @@ package mfe_plasma_scaling {
         // reference coil-centre minor radius at which peak_ratio was read [m]
         in attribute a_coil_ref_in : Real;
 
-        // eq.-39 bore factor at the operating geometry and at the reference
-        attribute bore_factor : Real = R_in / (R_in - a_coil_in);
-        attribute bore_factor_ref : Real = R_ref_in / (R_ref_in - a_coil_ref_in);
-        // normalised bore factor [1]: exactly 1.0 at the reference geometry
-        attribute bore_norm : Real = bore_factor / bore_factor_ref;
-
-        // peak field on the conductor [T]
-        out attribute B_peak : Real = B_axis_in * peak_ratio_in * bore_norm;
+        // Normative domain: both clearances must be strictly positive.
+        // Native typed manual completion rejects invalid input with ValueError
+        // before evaluating either bore factor. This is an input precondition,
+        // separate from the downstream evaluated conductor-field limit.
+        // Valid equations and operation order are documented above (WI-053).
+        out attribute B_peak : Real;
     }
 }

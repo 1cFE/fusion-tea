@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-053_magnet-and-cryogenic-input-domains/evidence/native_probe.py", line 27, in <module>
+    if __name__=='__main__':run(Path(sys.argv[1]).resolve(),Path(sys.argv[2]).resolve())
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-053_magnet-and-cryogenic-input-domains/evidence/native_probe.py", line 15, in run
+    ev=PreparedEvaluator(ProvisionalPackageLoader(package,'stellarator_tea',destination.parent/'link',strict=True),package/'pipelines/pipeline.yaml',expects_constraint_report=True)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/evaluation/evaluator.py", line 134, in __init__
+    self.package, self.fingerprint = loader.load()
+                                     ^^^^^^^^^^^^^
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/evaluation/package_load.py", line 120, in load
+    module = self._load_module()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/evaluation/package_load.py", line 160, in _load_module
+    link.symlink_to(self.package_dir, target_is_directory=True)
+  File "/usr/lib/python3.12/pathlib.py", line 1388, in symlink_to
+    os.symlink(target, self, target_is_directory)
+FileExistsError: [Errno 17] File exists: '/home/reid/1cfe/fusion-tea-codex-test/exploration/stellarator_e2e/generated' -> '/home/reid/1cfe/fusion-tea-codex-test/work/active/WI-053_magnet-and-cryogenic-input-domains/evidence/link/stellarator_tea'

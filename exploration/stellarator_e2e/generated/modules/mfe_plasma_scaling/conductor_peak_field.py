@@ -30,8 +30,8 @@ prediction, not a printed fact; a changed coil count or shape is a
 different configuration C.
 
 Kept as a calc, not an inline plant expression, so the product is a
-module-graph edge the study tooling can trace; the factors are
-intermediate attributes so the executed arithmetic is exactly
+module-graph edge the study tooling can trace; the manual completion evaluates factors in the documented order
+so the executed arithmetic is exactly
 (B_axis * peak_ratio) * bore_norm, and bore_norm evaluates to exactly
 1.0 at the reference geometry (the two factors are the same
 expression on the same floats).
@@ -40,11 +40,16 @@ expression on the same floats).
 knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/;
 /home/reid/1cfe/1costingfe/src/costingfe/defaults.py (pin 0254385)
 *Ref**: images/page_002_table_0.png (Table 2: axis av. 9.0 T, peak
-conductor 24.9 T); images/lion_2021_nf_stellarator_process.pdf-0009-19.png
-(eq. 39) with output.md L455 (a_coil "the average minor coil
-radius", N the number of coils, A_wp the winding-pack area);
-defaults.py:597-603 (MagnetProperties.b_max, "peak field ceiling
-at the conductor" -- the bounded quantity)
+    conductor 24.9 T); images/lion_2021_nf_stellarator_process.pdf-0009-19.png
+    (eq. 39) with output.md L455 (a_coil "the average minor coil
+    radius", N the number of coils, A_wp the winding-pack area);
+    defaults.py:597-603 (MagnetProperties.b_max, "peak field ceiling
+    at the conductor" -- the bounded quantity)
+Domain: R_in - a_coil_in > 0 and R_ref_in - a_coil_ref_in > 0.
+Native manual completion enforces both before any bore arithmetic.
+An invalid domain raises ValueError; a valid computed field remains a
+signed diagnostic evaluated separately by the conductor-field limit.
+
 *Basis**: peak-on-winding = axis field x printed coil-set ratio x the
 eq.-39 bore factor normalised at the reference geometry; the
 configuration coefficients absorbed by the anchor; MFE-generic
@@ -124,8 +129,8 @@ prediction, not a printed fact; a changed coil count or shape is a
 different configuration C.
 
 Kept as a calc, not an inline plant expression, so the product is a
-module-graph edge the study tooling can trace; the factors are
-intermediate attributes so the executed arithmetic is exactly
+module-graph edge the study tooling can trace; the manual completion evaluates factors in the documented order
+so the executed arithmetic is exactly
 (B_axis * peak_ratio) * bore_norm, and bore_norm evaluates to exactly
 1.0 at the reference geometry (the two factors are the same
 expression on the same floats).
@@ -134,11 +139,16 @@ expression on the same floats).
 knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/;
 /home/reid/1cfe/1costingfe/src/costingfe/defaults.py (pin 0254385)
 *Ref**: images/page_002_table_0.png (Table 2: axis av. 9.0 T, peak
-conductor 24.9 T); images/lion_2021_nf_stellarator_process.pdf-0009-19.png
-(eq. 39) with output.md L455 (a_coil "the average minor coil
-radius", N the number of coils, A_wp the winding-pack area);
-defaults.py:597-603 (MagnetProperties.b_max, "peak field ceiling
-at the conductor" -- the bounded quantity)
+    conductor 24.9 T); images/lion_2021_nf_stellarator_process.pdf-0009-19.png
+    (eq. 39) with output.md L455 (a_coil "the average minor coil
+    radius", N the number of coils, A_wp the winding-pack area);
+    defaults.py:597-603 (MagnetProperties.b_max, "peak field ceiling
+    at the conductor" -- the bounded quantity)
+Domain: R_in - a_coil_in > 0 and R_ref_in - a_coil_ref_in > 0.
+Native manual completion enforces both before any bore arithmetic.
+An invalid domain raises ValueError; a valid computed field remains a
+signed diagnostic evaluated separately by the conductor-field limit.
+
 *Basis**: peak-on-winding = axis field x printed coil-set ratio x the
 eq.-39 bore factor normalised at the reference geometry; the
 configuration coefficients absorbed by the anchor; MFE-generic
@@ -159,12 +169,7 @@ SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:419
     SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:419
 
     Calculation Specification:
-        bore_factor = R_in / (R_in - a_coil_in)
-        bore_factor_ref = R_ref_in / (R_ref_in - a_coil_ref_in)
-        bore_norm = bore_factor / bore_factor_ref
-        B_peak = B_axis_in * peak_ratio_in * bore_norm
-        
-Documentation:
+        See documentation:
 Peak magnetic field on the winding pack [T] from the axis-averaged field,
 the coil set's peak/axis ratio at its reference geometry, and the coil
 bore (WI-030; geometry-aware since WI-044):
@@ -193,8 +198,8 @@ prediction, not a printed fact; a changed coil count or shape is a
 different configuration C.
 
 Kept as a calc, not an inline plant expression, so the product is a
-module-graph edge the study tooling can trace; the factors are
-intermediate attributes so the executed arithmetic is exactly
+module-graph edge the study tooling can trace; the manual completion evaluates factors in the documented order
+so the executed arithmetic is exactly
 (B_axis * peak_ratio) * bore_norm, and bore_norm evaluates to exactly
 1.0 at the reference geometry (the two factors are the same
 expression on the same floats).
@@ -203,11 +208,16 @@ expression on the same floats).
 knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/;
 /home/reid/1cfe/1costingfe/src/costingfe/defaults.py (pin 0254385)
 *Ref**: images/page_002_table_0.png (Table 2: axis av. 9.0 T, peak
-conductor 24.9 T); images/lion_2021_nf_stellarator_process.pdf-0009-19.png
-(eq. 39) with output.md L455 (a_coil "the average minor coil
-radius", N the number of coils, A_wp the winding-pack area);
-defaults.py:597-603 (MagnetProperties.b_max, "peak field ceiling
-at the conductor" -- the bounded quantity)
+    conductor 24.9 T); images/lion_2021_nf_stellarator_process.pdf-0009-19.png
+    (eq. 39) with output.md L455 (a_coil "the average minor coil
+    radius", N the number of coils, A_wp the winding-pack area);
+    defaults.py:597-603 (MagnetProperties.b_max, "peak field ceiling
+    at the conductor" -- the bounded quantity)
+Domain: R_in - a_coil_in > 0 and R_ref_in - a_coil_ref_in > 0.
+Native manual completion enforces both before any bore arithmetic.
+An invalid domain raises ValueError; a valid computed field remains a
+signed diagnostic evaluated separately by the conductor-field limit.
+
 *Basis**: peak-on-winding = axis field x printed coil-set ratio x the
 eq.-39 bore factor normalised at the reference geometry; the
 configuration coefficients absorbed by the anchor; MFE-generic

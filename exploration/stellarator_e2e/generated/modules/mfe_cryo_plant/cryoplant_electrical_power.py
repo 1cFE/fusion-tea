@@ -19,9 +19,13 @@ power"), which 1costingFE's own defaults document as the cryoplant
 wall-plug electrical.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py
 *Ref**: physics.py:321-323 (p_cryo in the recirculating sum);
-steady_state_dipole.yaml:52-53 (slot semantics: "Cryogenic
-wall-plug power" = heat load x plant efficiency -- semantics
-witness only, value inadmissible)
+    steady_state_dipole.yaml:52-53 (slot semantics: "Cryogenic
+    wall-plug power" = heat load x plant efficiency -- semantics
+    witness only, value inadmissible)
+Domain: 0 < T_cold < T_amb. Native typed manual completion raises
+ValueError before any COP arithmetic when the temperature ordering
+fails. Valid default temperatures retain dormant/direct-power behavior.
+
 *Basis**: reversed-Carnot reference cycle x fraction-of-Carnot;
 concept-agnostic (MR-3) -- all values bound by instances
 
@@ -95,9 +99,13 @@ power"), which 1costingFE's own defaults document as the cryoplant
 wall-plug electrical.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py
 *Ref**: physics.py:321-323 (p_cryo in the recirculating sum);
-steady_state_dipole.yaml:52-53 (slot semantics: "Cryogenic
-wall-plug power" = heat load x plant efficiency -- semantics
-witness only, value inadmissible)
+    steady_state_dipole.yaml:52-53 (slot semantics: "Cryogenic
+    wall-plug power" = heat load x plant efficiency -- semantics
+    witness only, value inadmissible)
+Domain: 0 < T_cold < T_amb. Native typed manual completion raises
+ValueError before any COP arithmetic when the temperature ordering
+fails. Valid default temperatures retain dormant/direct-power behavior.
+
 *Basis**: reversed-Carnot reference cycle x fraction-of-Carnot;
 concept-agnostic (MR-3) -- all values bound by instances
 
@@ -127,10 +135,6 @@ SysML Source: root-0/analyses/mfe_cryo_plant.sysml:4
         T_amb = 300.0
         f_carnot = 1.0
         p_direct = 0.0
-        p_cold = (q_nuc * vol_cold * 1e-06 + p_fixed) * f_uplift
-        cop_carnot = T_cold / (T_amb - T_cold)
-        cop = f_carnot * cop_carnot
-        p_elec = p_cold / cop + p_direct
         
 Documentation:
 Cryoplant wall-plug electrical power [MW] from the cold-mass heat
@@ -150,9 +154,13 @@ power"), which 1costingFE's own defaults document as the cryoplant
 wall-plug electrical.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py
 *Ref**: physics.py:321-323 (p_cryo in the recirculating sum);
-steady_state_dipole.yaml:52-53 (slot semantics: "Cryogenic
-wall-plug power" = heat load x plant efficiency -- semantics
-witness only, value inadmissible)
+    steady_state_dipole.yaml:52-53 (slot semantics: "Cryogenic
+    wall-plug power" = heat load x plant efficiency -- semantics
+    witness only, value inadmissible)
+Domain: 0 < T_cold < T_amb. Native typed manual completion raises
+ValueError before any COP arithmetic when the temperature ordering
+fails. Valid default temperatures retain dormant/direct-power behavior.
+
 *Basis**: reversed-Carnot reference cycle x fraction-of-Carnot;
 concept-agnostic (MR-3) -- all values bound by instances
 

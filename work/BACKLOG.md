@@ -261,6 +261,12 @@ standalone:
   priority: P0
   status: completed
   completed: '2026-08-02'
+- id: WI-053
+  name: Magnet and cryogenic input domains
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -337,3 +343,4 @@ standalone:
 | WI-027 | Demo Constraint Execution (STELLARATOR-DEMO Item 2) | standard | P0 | completed | Completed 2026-07-20 |
 | WI-028 | Handshake account scope CAS22 tail + CAS40/50/60 | standard | P0 | completed | Completed 2026-07-20 |
 | WI-029 | Handshake account scope LCOE construction CAS70/80 + IDC | standard | P0 | completed | Completed 2026-08-02 |
+| WI-053 | Magnet and cryogenic input domains | standard | P1 | backlog |  |

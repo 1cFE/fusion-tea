@@ -1,6 +1,6 @@
 {
   "artifact_hashes": {
-    "IMPLEMENTATION_BACKLOG.md": "bacf06646482cd47ee71ee0b0264aff66650b13c59a5320a4cc7feb0f4c099ee",
+    "IMPLEMENTATION_BACKLOG.md": "1c7f68db2645fe38ba13ed7180dc3f1d65394aa1e60c24249bbac27cdbe96411",
     "__init__.py": "c7bff0206d7c019e2b431dfd8e459060f52d143cc2444998d23c63d16cf22568",
     "contracts/generation_manifest.json": "c06b61ea4a2f3650860f098d517b7f9a3ca246552e7b2f319c8e2e8ed85e506f",
     "contracts/model_contract.json": "d2ee3c18e6d087149f55699dd7cdce59f074abcbd861b7824b9310e770b07bc2",
@@ -34,7 +34,7 @@
     "handwritten/mfe_account_costs/supplementary_cost_impl.py": "6d5c9afc3ce3227545623721e391e4f24da0993154df0ffa32e8e5cc83eaa890",
     "handwritten/mfe_account_costs/vessel_cost_impl.py": "8eb9238bb642bf91c1c7c27817ba7ec2895b6cc6ef6fcf71ab4dad7674acdee4",
     "handwritten/mfe_cryo_plant/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
-    "handwritten/mfe_cryo_plant/cryoplant_electrical_power_impl.py": "caecdfe5d8006c19cf3fdcb159e67d5a081cfc1fcabcca07782160c2227eb5fc",
+    "handwritten/mfe_cryo_plant/cryoplant_electrical_power_impl.py": "f2f72f4adaac88b5972c55c98d8fef012279301e6d885b13a2b37e8ec22ea953",
     "handwritten/mfe_divertor_heat/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
     "handwritten/mfe_divertor_heat/divertor_heat_ledger_impl.py": "94f6a98fab2adebabe509ec6523d5e09ec68cb7e9e5be8bb911808c91b705f8f",
     "handwritten/mfe_fuel_cycle/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
@@ -73,7 +73,7 @@
     "handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py": "a5d91c690127252dab9c02cabeef15e4734f727f69464e8ae7f3d610bf934808",
     "handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py": "4072a14d3218320aa65f1cffd8a979de0d261ce0e9ea7ce571226db0b158b2a3",
     "handwritten/mfe_plasma_scaling/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
-    "handwritten/mfe_plasma_scaling/conductor_peak_field_impl.py": "def322d2656d8a071c3e98d88458521c2ed436a4348eceedca139f79d7f3f22f",
+    "handwritten/mfe_plasma_scaling/conductor_peak_field_impl.py": "d910b83372e0e990b0504831c0b8370741b043e1c38b8c012011a3ddd8ea2f26",
     "handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py": "30aee9ecd9820a24929de992e70a8c47d65bcd07895633930946d11b86527308",
     "handwritten/mfe_plasma_scaling/mfe_radial_build_impl.py": "d259c3129bb12d69cffd00c6791ebc4255fe2547aa072cde6f9bac344fb055e7",
     "handwritten/mfe_plasma_scaling/neutron_wall_load_impl.py": "6cd951d2f08b08be03644a69fa161ee826abb6997ddc7e04baea733fe1549fdb",
@@ -136,7 +136,7 @@
     "modules/mfe_account_costs/supplementary_cost.py": "5dd0af238730376f396fdfac93af04b1bc3171f925d54894af6d02421e37d1b2",
     "modules/mfe_account_costs/vessel_cost.py": "ba6487ff87a482ece9d19333455c0d53c1d14ca8d1daf67130eab9ff2aaab1ad",
     "modules/mfe_cryo_plant/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
-    "modules/mfe_cryo_plant/cryoplant_electrical_power.py": "2948927ce56d87fa908b0986624d162d2bb4328179c85e568a4f7cca5b8bea79",
+    "modules/mfe_cryo_plant/cryoplant_electrical_power.py": "aa6b04851892ab2f17cd3d3ab11fe0fc8c97da0f5338a5716bfb2e3ba7343e61",
     "modules/mfe_divertor_heat/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
     "modules/mfe_divertor_heat/divertor_heat_ledger.py": "da833757671d9127a0794e05c8a7417642a13e20c2b8ea385d1a2b4662ee324c",
     "modules/mfe_fuel_cycle/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
@@ -175,7 +175,7 @@
     "modules/mfe_plant/mfe_power_plant/replacement_cost_per_event.py": "25860173ca2d07e6e8dd53b9f9eba5a200894c64c751ba1e16adec96afe36333",
     "modules/mfe_plant/mfe_power_plant/total_capital.py": "13fb96a6fd737798f93af4f3e94578927603e5596352328afbe31ab0bcc26fef",
     "modules/mfe_plasma_scaling/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
-    "modules/mfe_plasma_scaling/conductor_peak_field.py": "ccebcd148ebaffd4cee2a570d09a55e441909890758e3dc6983e5deea7d46215",
+    "modules/mfe_plasma_scaling/conductor_peak_field.py": "ff56ffb94f0b2dbd3ed888b2cb57dadb2b22e863b48145bc2ee0658e0fe569da",
     "modules/mfe_plasma_scaling/dt_fusion_power.py": "a3a706667323ae915de103c4d60b6ff3e841307edb2cb6adf563e7c100073b2a",
     "modules/mfe_plasma_scaling/mfe_radial_build.py": "64d40b9017d19789c030dcd3057e25479b6d5a2095f1f6f41fcdbfad98c5b346",
     "modules/mfe_plasma_scaling/neutron_wall_load.py": "f0b269dbbe7f0645b3ac1c075e4a48d7c1b191f3e5c0d0f575e76206d4849bc2",
@@ -254,7 +254,7 @@
     ],
     "runtime_output_globs": []
   },
-  "executable_fingerprint": "1a7c216dabff8425c279f6b3c2781629115729173fc0b406600497ac348b4340",
+  "executable_fingerprint": "0d6a7572481fc35c165d650a96a28764d18a2238c4f6d6430985dd5752e5bacf",
   "generator_version": "0.1.1",
   "package_name": "stellarator_tea",
   "runtime_contract_version": "2.0.0"
