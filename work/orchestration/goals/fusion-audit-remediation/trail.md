@@ -1792,3 +1792,41 @@ Stop when: Native semantics depart from the established contract, a broader prod
 ### T-043 start — 2026-09-13
 
 T-043 begins coding PM authoring under evidence/T-043_winding-consumers/author-brief.md. The continuing consumer author owns the coding item, current oracle and affected current tests/helpers. T-042 owns all model/package/native PM writes; independent edits may proceed because valid equations and domain decisions are now fixed, while native-dependent tests wait for stable regeneration. Coordinator owns sequential integration and fresh audits.
+
+### T-042 return — 2026-09-13
+
+**Outcome: COMPLETE.** Native WI-055 production `747a8a35`, coherence correction `b1d066c1` and independent completion audit `c08ccf41` satisfy the bounded domain contract. Read `work/analysis/20260913-winding-completion-audit/report.md@c08ccf41`. Standalone sizing accepts finite nonnegative current and finite positive density, including zero current; existing stress and sustainment consumers deliberately reject their own zero denominators. Axis-field zero is unchanged. The factor1000 and fixed-field versus linked-field stress scaling are documented correctly. Six source-image examples satisfy the independent area/current identity within 0.580822 percent, below SV-044's one-percent tolerance; SV-044 and SV-095 now pass through native operations.
+
+The native suite records 592 passes and thirteen exact inherited skips, with two later-added sustainment checks passing separately. Independent audit records 123 focused passes, fourteen native public invalid/zero refusals and source/unit/scale checks. Six positive scenarios preserve their full behavior, including the original half-current complex-output failure; ten financial cases remain identical. Current public interfaces stay at 246 inputs/158 scalar outputs. Existing L2 ten/L6 279 issue identities, baseline divertor violation, broader input/engineering limits and finite-overflow limits remain explicit.
+
+The original independent FINDINGS at `a4b668d5` is retained: in-place generation preserved stale docstrings in seventeen automatic bodies, causing eighteen current-versus-fresh package differences. Some stale prose/locations were inherited and four new line shifts came from this round. Correction `b1d066c1` uses fresh twelve-seed generation and records a separate corrected receipt, preserving original candidate receipts/results. Independent audit verifies full 247-file fresh equality, unchanged twelve normative seeds, executable ASTs/public contracts, current manifest/census and focused corrected-revision checks. Initial in-place byte stability did not establish fresh-generation equality. These are native implementation/audit attempts, not goal mechanical retries. No integration or candidate promotion has occurred yet.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Magnitude and equation evidence allows zero sizing but composed consumers divide by zero | Preserve standalone zero; enforce narrow nonzero domains at stress and sustainment | execution detail | Coordinator [AGENT] at eb341aee, independently checked | WI-055@747a8a35; audit@c08ccf41 |
+| Fresh audit disproves full package coherence despite in-place stability | Regenerate automatic bodies from twelve normative seeds, retain original failed audit and receipts, verify a fresh fixed point | premise surprise | Coordinator/native author [AGENT], independent verification | FINDINGS@a4b668d5; correction@b1d066c1; PASS addendum@c08ccf41 |
+| Independently checked Table8 examples satisfy previously pending sizing validation | Mark only SV-044 and bounded WI-055 SV-095 passing | execution detail | Independent native auditor [AGENT] through native operations | VALIDATION_MATRIX and audit@c08ccf41 |
+
+### T-043 return — 2026-09-13
+
+**Outcome: COMPLETE.** Current-consumer implementation `483fa60b`, initial acceptance `cca61c08`, corrected receipt/acceptance `97799efc` and independent combined audit `c08ccf41` establish coherent oracle/regression consumers. `.project/active/winding-pack-current-consumers/implementation/verification.md@97799efc` retains eleven actual original oracle failures and thirty focused passing checks; current route/radius/domain evidence adds 195 passes. After the metadata correction, three focused checks pass against `b1d066c1`: exact receipt, three-point native/oracle comparison and baseline/R14 identity/numerical preservation. Earlier broad evidence remains tied to its original revision, not relabeled a fresh corrected-revision run.
+
+Current generation uses twelve seeds and the corrected immutable receipt. Historical drivers/receipts/results remain unchanged. Source checks exclude only the two authorized winding definitions while preserving surrounding bytes; sustainment retains executable-token equality. The independent oracle keeps its equations and existing 99 supported mappings/141 computed channels. The 147 unsupported inputs and seventeen output omissions remain an open declared seam, with no new coverage claim or accepted residual.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| New model-owned winding/zero domains require current oracle and twelve-seed callers | Add independent matching refusals and migrate bounded current consumers, preserving historical evidence and valid equations | execution detail | Coding author [AGENT] under T-043, independently audited | implementation@483fa60b; acceptance@cca61c08 |
+| Native coherence correction changes package bytes after initial acceptance | Migrate exact current receipt and add corrected-revision focused evidence rather than overwrite old results | execution detail | Coding author [AGENT], independently checked | consumer@97799efc; audit@c08ccf41 |
+
+### T-044 scope
+
+Objective: Prove one native integration candidate for the audited winding-domain and coherent current-consumer increment.
+Why now: T-042/T-043 complete with independent PASS@c08ccf41 after preserved R10-A1 correction.
+Scope: Invoke the stock integration seam once against audited WI-055 and the corrected current MFE package/manifest/census; preserve the complete producer evidence. No seam repair, further model/consumer change, study, duplicate promotion or broad engineering certification.
+Inputs: amended goal.md; native correction@b1d066c1; current consumer@97799efc; audit@c08ccf41; corrected semantic 15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e, executable 8a3473de8206c5317dcd271cb68cccb02150bada13641a1be0e89eabd03b5b03, TEAx 8d877460ac4f6f264561d916e40c1708adb13397.
+Done when: Native seam returns CANDIDATE with all declared gates passing and the exact audited identity, or a named bounded blocker.
+Stop when: A named blocker, unexpected identity/authority change, seam prerequisite or reserved gate/limit binds.
+
+### T-044 start — 2026-09-13
+
+T-044 invokes scripts/integrate.py under .codex-test/run against audited WI-055@c08ccf41, writing complete evidence to evidence/T-044_integration. Coordinator owns sequential execution and its return; no study is started.
