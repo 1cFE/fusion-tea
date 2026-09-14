@@ -1,0 +1,1178 @@
+................................................s.ssssssssssss.......... [  7%]
+........................................................................ [ 15%]
+........................................................................ [ 23%]
+........................................................................ [ 31%]
+........................................................................ [ 39%]
+........................................................................ [ 47%]
+........................................................................ [ 55%]
+.....F...............................................................EEE [ 63%]
+EEEE.E........F......................................................... [ 71%]
+........................................................................ [ 79%]
+........................................................................ [ 87%]
+........................................................................ [ 95%]
+......................................                                   [100%]
+==================================== ERRORS ====================================
+__________ ERROR at setup of test_operating_heat_signed_demand_bounds __________
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+>           self._graph = self._executor.build_graph(spec)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:110: in build_graph
+    return self._validator.validate(spec)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:73: in validate
+    self._validate_inputs(module, descriptor, channel_types)  # NEW: pass channel_types
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.core.pipeline_validator.PipelineValidator object at 0x7a8a437e2570>
+module = PipelineModuleSpec(key='stellarator_09__stellaris__magnet__coil_length', module_type='mfe_magnet_field.Coil_Winding_Le...th__c_coil', field_path=None, source=<ChannelSource.MODULE: 'module'>, artifact_path=None, destination_filename=None)})
+descriptor = ModuleDescriptor(module_type='mfe_magnet_field.Coil_Winding_LengthModule', factory=<function create_registry.<locals>....<class 'float'>}, optional_inputs={}, outputs={'root': <class 'pydantic.root_model.RootModel[float]'>}, version='v0.1')
+channel_types = {'constraint_report': <class 'stellarator_tea.schemas.constraint_types.ConstraintReport'>, 'mfe_account_costs_params':...eParams'>, 'mfe_magnet_cost_params': <class 'stellarator_tea.schemas.mfe_magnet_cost_params.MfeMagnetCostParams'>, ...}
+
+    def _validate_inputs(
+        self,
+        module: PipelineModuleSpec,
+        descriptor: ModuleDescriptor,
+        channel_types: Dict[str, type],  # NEW parameter
+    ) -> None:
+        """Validate module inputs against descriptor metadata."""
+        expected_inputs = set(descriptor.required_inputs) | set(descriptor.optional_inputs)
+        actual_inputs = set(module.inputs.keys())
+        missing_required = set(descriptor.required_inputs) - actual_inputs
+        if missing_required:
+>           raise PipelineValidationError(
+                "Missing required input bindings",
+                module=module.key,
+                details={"missing": sorted(missing_required)},
+            )
+E           simkit.core.pipeline_validator.PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:404: PipelineValidationError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7a8a911451c0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12623'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def native(tmp_path_factory):
+        destination=tmp_path_factory.mktemp('wi050-evidence')
+        harness=load('run_acceptance')
+        from tests.models.current_mfe_regressions import operating_acceptance
+>       scratch,results,inputs=operating_acceptance(destination,harness)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_operating_heating.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/current_mfe_regressions.py:161: in operating_acceptance
+    scratch, rows, inputs = module.operating_acceptance(destination, historical)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-052_mfe-financial-rate-limits/implementation/current_regressions.py:21: in operating_acceptance
+    ev,bridge=historical.evaluator(package,'stellarator_tea',scratch/'link')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-050_mfe-coherent-operating-heating/implementation/run_acceptance.py:39: in evaluator
+    ev = PreparedEvaluator(ProvisionalPackageLoader(package,name,link,strict=True),package/'pipelines/pipeline.yaml',expects_constraint_report=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+            self._graph = self._executor.build_graph(spec)
+        except Exception as error:
+>           raise EvaluationFailed(
+                EvaluationFailure(
+                    phase=EvaluationPhase.PREPARATION,
+                    cause=f"{type(error).__name__}: {error}",
+                )
+            ) from error
+E           simkit.evaluation.failure.EvaluationFailed: preparation: PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:155: EvaluationFailed
+_____________ ERROR at setup of test_generic_heating_default_modes _____________
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+>           self._graph = self._executor.build_graph(spec)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:110: in build_graph
+    return self._validator.validate(spec)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:73: in validate
+    self._validate_inputs(module, descriptor, channel_types)  # NEW: pass channel_types
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.core.pipeline_validator.PipelineValidator object at 0x7a8a437e2570>
+module = PipelineModuleSpec(key='stellarator_09__stellaris__magnet__coil_length', module_type='mfe_magnet_field.Coil_Winding_Le...th__c_coil', field_path=None, source=<ChannelSource.MODULE: 'module'>, artifact_path=None, destination_filename=None)})
+descriptor = ModuleDescriptor(module_type='mfe_magnet_field.Coil_Winding_LengthModule', factory=<function create_registry.<locals>....<class 'float'>}, optional_inputs={}, outputs={'root': <class 'pydantic.root_model.RootModel[float]'>}, version='v0.1')
+channel_types = {'constraint_report': <class 'stellarator_tea.schemas.constraint_types.ConstraintReport'>, 'mfe_account_costs_params':...eParams'>, 'mfe_magnet_cost_params': <class 'stellarator_tea.schemas.mfe_magnet_cost_params.MfeMagnetCostParams'>, ...}
+
+    def _validate_inputs(
+        self,
+        module: PipelineModuleSpec,
+        descriptor: ModuleDescriptor,
+        channel_types: Dict[str, type],  # NEW parameter
+    ) -> None:
+        """Validate module inputs against descriptor metadata."""
+        expected_inputs = set(descriptor.required_inputs) | set(descriptor.optional_inputs)
+        actual_inputs = set(module.inputs.keys())
+        missing_required = set(descriptor.required_inputs) - actual_inputs
+        if missing_required:
+>           raise PipelineValidationError(
+                "Missing required input bindings",
+                module=module.key,
+                details={"missing": sorted(missing_required)},
+            )
+E           simkit.core.pipeline_validator.PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:404: PipelineValidationError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7a8a911451c0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12623'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def native(tmp_path_factory):
+        destination=tmp_path_factory.mktemp('wi050-evidence')
+        harness=load('run_acceptance')
+        from tests.models.current_mfe_regressions import operating_acceptance
+>       scratch,results,inputs=operating_acceptance(destination,harness)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_operating_heating.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/current_mfe_regressions.py:161: in operating_acceptance
+    scratch, rows, inputs = module.operating_acceptance(destination, historical)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-052_mfe-financial-rate-limits/implementation/current_regressions.py:21: in operating_acceptance
+    ev,bridge=historical.evaluator(package,'stellarator_tea',scratch/'link')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-050_mfe-coherent-operating-heating/implementation/run_acceptance.py:39: in evaluator
+    ev = PreparedEvaluator(ProvisionalPackageLoader(package,name,link,strict=True),package/'pipelines/pipeline.yaml',expects_constraint_report=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+            self._graph = self._executor.build_graph(spec)
+        except Exception as error:
+>           raise EvaluationFailed(
+                EvaluationFailure(
+                    phase=EvaluationPhase.PREPARATION,
+                    cause=f"{type(error).__name__}: {error}",
+                )
+            ) from error
+E           simkit.evaluation.failure.EvaluationFailed: preparation: PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:155: EvaluationFailed
+__________ ERROR at setup of test_heating_efficiency_scalar_consumers __________
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+>           self._graph = self._executor.build_graph(spec)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:110: in build_graph
+    return self._validator.validate(spec)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:73: in validate
+    self._validate_inputs(module, descriptor, channel_types)  # NEW: pass channel_types
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.core.pipeline_validator.PipelineValidator object at 0x7a8a437e2570>
+module = PipelineModuleSpec(key='stellarator_09__stellaris__magnet__coil_length', module_type='mfe_magnet_field.Coil_Winding_Le...th__c_coil', field_path=None, source=<ChannelSource.MODULE: 'module'>, artifact_path=None, destination_filename=None)})
+descriptor = ModuleDescriptor(module_type='mfe_magnet_field.Coil_Winding_LengthModule', factory=<function create_registry.<locals>....<class 'float'>}, optional_inputs={}, outputs={'root': <class 'pydantic.root_model.RootModel[float]'>}, version='v0.1')
+channel_types = {'constraint_report': <class 'stellarator_tea.schemas.constraint_types.ConstraintReport'>, 'mfe_account_costs_params':...eParams'>, 'mfe_magnet_cost_params': <class 'stellarator_tea.schemas.mfe_magnet_cost_params.MfeMagnetCostParams'>, ...}
+
+    def _validate_inputs(
+        self,
+        module: PipelineModuleSpec,
+        descriptor: ModuleDescriptor,
+        channel_types: Dict[str, type],  # NEW parameter
+    ) -> None:
+        """Validate module inputs against descriptor metadata."""
+        expected_inputs = set(descriptor.required_inputs) | set(descriptor.optional_inputs)
+        actual_inputs = set(module.inputs.keys())
+        missing_required = set(descriptor.required_inputs) - actual_inputs
+        if missing_required:
+>           raise PipelineValidationError(
+                "Missing required input bindings",
+                module=module.key,
+                details={"missing": sorted(missing_required)},
+            )
+E           simkit.core.pipeline_validator.PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:404: PipelineValidationError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7a8a911451c0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12623'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def native(tmp_path_factory):
+        destination=tmp_path_factory.mktemp('wi050-evidence')
+        harness=load('run_acceptance')
+        from tests.models.current_mfe_regressions import operating_acceptance
+>       scratch,results,inputs=operating_acceptance(destination,harness)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_operating_heating.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/current_mfe_regressions.py:161: in operating_acceptance
+    scratch, rows, inputs = module.operating_acceptance(destination, historical)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-052_mfe-financial-rate-limits/implementation/current_regressions.py:21: in operating_acceptance
+    ev,bridge=historical.evaluator(package,'stellarator_tea',scratch/'link')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-050_mfe-coherent-operating-heating/implementation/run_acceptance.py:39: in evaluator
+    ev = PreparedEvaluator(ProvisionalPackageLoader(package,name,link,strict=True),package/'pipelines/pipeline.yaml',expects_constraint_report=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+            self._graph = self._executor.build_graph(spec)
+        except Exception as error:
+>           raise EvaluationFailed(
+                EvaluationFailure(
+                    phase=EvaluationPhase.PREPARATION,
+                    cause=f"{type(error).__name__}: {error}",
+                )
+            ) from error
+E           simkit.evaluation.failure.EvaluationFailed: preparation: PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:155: EvaluationFailed
+_ ERROR at setup of test_stellarator_operating_heat_has_no_public_demand_input _
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+>           self._graph = self._executor.build_graph(spec)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:110: in build_graph
+    return self._validator.validate(spec)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:73: in validate
+    self._validate_inputs(module, descriptor, channel_types)  # NEW: pass channel_types
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.core.pipeline_validator.PipelineValidator object at 0x7a8a437e2570>
+module = PipelineModuleSpec(key='stellarator_09__stellaris__magnet__coil_length', module_type='mfe_magnet_field.Coil_Winding_Le...th__c_coil', field_path=None, source=<ChannelSource.MODULE: 'module'>, artifact_path=None, destination_filename=None)})
+descriptor = ModuleDescriptor(module_type='mfe_magnet_field.Coil_Winding_LengthModule', factory=<function create_registry.<locals>....<class 'float'>}, optional_inputs={}, outputs={'root': <class 'pydantic.root_model.RootModel[float]'>}, version='v0.1')
+channel_types = {'constraint_report': <class 'stellarator_tea.schemas.constraint_types.ConstraintReport'>, 'mfe_account_costs_params':...eParams'>, 'mfe_magnet_cost_params': <class 'stellarator_tea.schemas.mfe_magnet_cost_params.MfeMagnetCostParams'>, ...}
+
+    def _validate_inputs(
+        self,
+        module: PipelineModuleSpec,
+        descriptor: ModuleDescriptor,
+        channel_types: Dict[str, type],  # NEW parameter
+    ) -> None:
+        """Validate module inputs against descriptor metadata."""
+        expected_inputs = set(descriptor.required_inputs) | set(descriptor.optional_inputs)
+        actual_inputs = set(module.inputs.keys())
+        missing_required = set(descriptor.required_inputs) - actual_inputs
+        if missing_required:
+>           raise PipelineValidationError(
+                "Missing required input bindings",
+                module=module.key,
+                details={"missing": sorted(missing_required)},
+            )
+E           simkit.core.pipeline_validator.PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:404: PipelineValidationError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7a8a911451c0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12623'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def native(tmp_path_factory):
+        destination=tmp_path_factory.mktemp('wi050-evidence')
+        harness=load('run_acceptance')
+        from tests.models.current_mfe_regressions import operating_acceptance
+>       scratch,results,inputs=operating_acceptance(destination,harness)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_operating_heating.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/current_mfe_regressions.py:161: in operating_acceptance
+    scratch, rows, inputs = module.operating_acceptance(destination, historical)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-052_mfe-financial-rate-limits/implementation/current_regressions.py:21: in operating_acceptance
+    ev,bridge=historical.evaluator(package,'stellarator_tea',scratch/'link')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-050_mfe-coherent-operating-heating/implementation/run_acceptance.py:39: in evaluator
+    ev = PreparedEvaluator(ProvisionalPackageLoader(package,name,link,strict=True),package/'pipelines/pipeline.yaml',expects_constraint_report=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+            self._graph = self._executor.build_graph(spec)
+        except Exception as error:
+>           raise EvaluationFailed(
+                EvaluationFailure(
+                    phase=EvaluationPhase.PREPARATION,
+                    cause=f"{type(error).__name__}: {error}",
+                )
+            ) from error
+E           simkit.evaluation.failure.EvaluationFailed: preparation: PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:155: EvaluationFailed
+___________ ERROR at setup of test_operating_heat_reserve_invariance ___________
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+>           self._graph = self._executor.build_graph(spec)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:110: in build_graph
+    return self._validator.validate(spec)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:73: in validate
+    self._validate_inputs(module, descriptor, channel_types)  # NEW: pass channel_types
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.core.pipeline_validator.PipelineValidator object at 0x7a8a437e2570>
+module = PipelineModuleSpec(key='stellarator_09__stellaris__magnet__coil_length', module_type='mfe_magnet_field.Coil_Winding_Le...th__c_coil', field_path=None, source=<ChannelSource.MODULE: 'module'>, artifact_path=None, destination_filename=None)})
+descriptor = ModuleDescriptor(module_type='mfe_magnet_field.Coil_Winding_LengthModule', factory=<function create_registry.<locals>....<class 'float'>}, optional_inputs={}, outputs={'root': <class 'pydantic.root_model.RootModel[float]'>}, version='v0.1')
+channel_types = {'constraint_report': <class 'stellarator_tea.schemas.constraint_types.ConstraintReport'>, 'mfe_account_costs_params':...eParams'>, 'mfe_magnet_cost_params': <class 'stellarator_tea.schemas.mfe_magnet_cost_params.MfeMagnetCostParams'>, ...}
+
+    def _validate_inputs(
+        self,
+        module: PipelineModuleSpec,
+        descriptor: ModuleDescriptor,
+        channel_types: Dict[str, type],  # NEW parameter
+    ) -> None:
+        """Validate module inputs against descriptor metadata."""
+        expected_inputs = set(descriptor.required_inputs) | set(descriptor.optional_inputs)
+        actual_inputs = set(module.inputs.keys())
+        missing_required = set(descriptor.required_inputs) - actual_inputs
+        if missing_required:
+>           raise PipelineValidationError(
+                "Missing required input bindings",
+                module=module.key,
+                details={"missing": sorted(missing_required)},
+            )
+E           simkit.core.pipeline_validator.PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:404: PipelineValidationError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7a8a911451c0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12623'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def native(tmp_path_factory):
+        destination=tmp_path_factory.mktemp('wi050-evidence')
+        harness=load('run_acceptance')
+        from tests.models.current_mfe_regressions import operating_acceptance
+>       scratch,results,inputs=operating_acceptance(destination,harness)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_operating_heating.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/current_mfe_regressions.py:161: in operating_acceptance
+    scratch, rows, inputs = module.operating_acceptance(destination, historical)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-052_mfe-financial-rate-limits/implementation/current_regressions.py:21: in operating_acceptance
+    ev,bridge=historical.evaluator(package,'stellarator_tea',scratch/'link')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-050_mfe-coherent-operating-heating/implementation/run_acceptance.py:39: in evaluator
+    ev = PreparedEvaluator(ProvisionalPackageLoader(package,name,link,strict=True),package/'pipelines/pipeline.yaml',expects_constraint_report=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+            self._graph = self._executor.build_graph(spec)
+        except Exception as error:
+>           raise EvaluationFailed(
+                EvaluationFailure(
+                    phase=EvaluationPhase.PREPARATION,
+                    cause=f"{type(error).__name__}: {error}",
+                )
+            ) from error
+E           simkit.evaluation.failure.EvaluationFailed: preparation: PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:155: EvaluationFailed
+_________ ERROR at setup of test_operating_heat_financial_attribution __________
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+>           self._graph = self._executor.build_graph(spec)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:110: in build_graph
+    return self._validator.validate(spec)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:73: in validate
+    self._validate_inputs(module, descriptor, channel_types)  # NEW: pass channel_types
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.core.pipeline_validator.PipelineValidator object at 0x7a8a437e2570>
+module = PipelineModuleSpec(key='stellarator_09__stellaris__magnet__coil_length', module_type='mfe_magnet_field.Coil_Winding_Le...th__c_coil', field_path=None, source=<ChannelSource.MODULE: 'module'>, artifact_path=None, destination_filename=None)})
+descriptor = ModuleDescriptor(module_type='mfe_magnet_field.Coil_Winding_LengthModule', factory=<function create_registry.<locals>....<class 'float'>}, optional_inputs={}, outputs={'root': <class 'pydantic.root_model.RootModel[float]'>}, version='v0.1')
+channel_types = {'constraint_report': <class 'stellarator_tea.schemas.constraint_types.ConstraintReport'>, 'mfe_account_costs_params':...eParams'>, 'mfe_magnet_cost_params': <class 'stellarator_tea.schemas.mfe_magnet_cost_params.MfeMagnetCostParams'>, ...}
+
+    def _validate_inputs(
+        self,
+        module: PipelineModuleSpec,
+        descriptor: ModuleDescriptor,
+        channel_types: Dict[str, type],  # NEW parameter
+    ) -> None:
+        """Validate module inputs against descriptor metadata."""
+        expected_inputs = set(descriptor.required_inputs) | set(descriptor.optional_inputs)
+        actual_inputs = set(module.inputs.keys())
+        missing_required = set(descriptor.required_inputs) - actual_inputs
+        if missing_required:
+>           raise PipelineValidationError(
+                "Missing required input bindings",
+                module=module.key,
+                details={"missing": sorted(missing_required)},
+            )
+E           simkit.core.pipeline_validator.PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:404: PipelineValidationError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7a8a911451c0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12623'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def native(tmp_path_factory):
+        destination=tmp_path_factory.mktemp('wi050-evidence')
+        harness=load('run_acceptance')
+        from tests.models.current_mfe_regressions import operating_acceptance
+>       scratch,results,inputs=operating_acceptance(destination,harness)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_operating_heating.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/current_mfe_regressions.py:161: in operating_acceptance
+    scratch, rows, inputs = module.operating_acceptance(destination, historical)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-052_mfe-financial-rate-limits/implementation/current_regressions.py:21: in operating_acceptance
+    ev,bridge=historical.evaluator(package,'stellarator_tea',scratch/'link')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-050_mfe-coherent-operating-heating/implementation/run_acceptance.py:39: in evaluator
+    ev = PreparedEvaluator(ProvisionalPackageLoader(package,name,link,strict=True),package/'pipelines/pipeline.yaml',expects_constraint_report=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+            self._graph = self._executor.build_graph(spec)
+        except Exception as error:
+>           raise EvaluationFailed(
+                EvaluationFailure(
+                    phase=EvaluationPhase.PREPARATION,
+                    cause=f"{type(error).__name__}: {error}",
+                )
+            ) from error
+E           simkit.evaluation.failure.EvaluationFailed: preparation: PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:155: EvaluationFailed
+__________ ERROR at setup of test_operating_heat_direct_native_parity __________
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+>           self._graph = self._executor.build_graph(spec)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:110: in build_graph
+    return self._validator.validate(spec)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:73: in validate
+    self._validate_inputs(module, descriptor, channel_types)  # NEW: pass channel_types
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.core.pipeline_validator.PipelineValidator object at 0x7a8a437e2570>
+module = PipelineModuleSpec(key='stellarator_09__stellaris__magnet__coil_length', module_type='mfe_magnet_field.Coil_Winding_Le...th__c_coil', field_path=None, source=<ChannelSource.MODULE: 'module'>, artifact_path=None, destination_filename=None)})
+descriptor = ModuleDescriptor(module_type='mfe_magnet_field.Coil_Winding_LengthModule', factory=<function create_registry.<locals>....<class 'float'>}, optional_inputs={}, outputs={'root': <class 'pydantic.root_model.RootModel[float]'>}, version='v0.1')
+channel_types = {'constraint_report': <class 'stellarator_tea.schemas.constraint_types.ConstraintReport'>, 'mfe_account_costs_params':...eParams'>, 'mfe_magnet_cost_params': <class 'stellarator_tea.schemas.mfe_magnet_cost_params.MfeMagnetCostParams'>, ...}
+
+    def _validate_inputs(
+        self,
+        module: PipelineModuleSpec,
+        descriptor: ModuleDescriptor,
+        channel_types: Dict[str, type],  # NEW parameter
+    ) -> None:
+        """Validate module inputs against descriptor metadata."""
+        expected_inputs = set(descriptor.required_inputs) | set(descriptor.optional_inputs)
+        actual_inputs = set(module.inputs.keys())
+        missing_required = set(descriptor.required_inputs) - actual_inputs
+        if missing_required:
+>           raise PipelineValidationError(
+                "Missing required input bindings",
+                module=module.key,
+                details={"missing": sorted(missing_required)},
+            )
+E           simkit.core.pipeline_validator.PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:404: PipelineValidationError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7a8a911451c0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12623'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def native(tmp_path_factory):
+        destination=tmp_path_factory.mktemp('wi050-evidence')
+        harness=load('run_acceptance')
+        from tests.models.current_mfe_regressions import operating_acceptance
+>       scratch,results,inputs=operating_acceptance(destination,harness)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_operating_heating.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/current_mfe_regressions.py:161: in operating_acceptance
+    scratch, rows, inputs = module.operating_acceptance(destination, historical)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-052_mfe-financial-rate-limits/implementation/current_regressions.py:21: in operating_acceptance
+    ev,bridge=historical.evaluator(package,'stellarator_tea',scratch/'link')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-050_mfe-coherent-operating-heating/implementation/run_acceptance.py:39: in evaluator
+    ev = PreparedEvaluator(ProvisionalPackageLoader(package,name,link,strict=True),package/'pipelines/pipeline.yaml',expects_constraint_report=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+            self._graph = self._executor.build_graph(spec)
+        except Exception as error:
+>           raise EvaluationFailed(
+                EvaluationFailure(
+                    phase=EvaluationPhase.PREPARATION,
+                    cause=f"{type(error).__name__}: {error}",
+                )
+            ) from error
+E           simkit.evaluation.failure.EvaluationFailed: preparation: PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:155: EvaluationFailed
+__ ERROR at setup of test_operating_heat_complete_cost_operand_classification __
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+>           self._graph = self._executor.build_graph(spec)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:110: in build_graph
+    return self._validator.validate(spec)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:73: in validate
+    self._validate_inputs(module, descriptor, channel_types)  # NEW: pass channel_types
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.core.pipeline_validator.PipelineValidator object at 0x7a8a437e2570>
+module = PipelineModuleSpec(key='stellarator_09__stellaris__magnet__coil_length', module_type='mfe_magnet_field.Coil_Winding_Le...th__c_coil', field_path=None, source=<ChannelSource.MODULE: 'module'>, artifact_path=None, destination_filename=None)})
+descriptor = ModuleDescriptor(module_type='mfe_magnet_field.Coil_Winding_LengthModule', factory=<function create_registry.<locals>....<class 'float'>}, optional_inputs={}, outputs={'root': <class 'pydantic.root_model.RootModel[float]'>}, version='v0.1')
+channel_types = {'constraint_report': <class 'stellarator_tea.schemas.constraint_types.ConstraintReport'>, 'mfe_account_costs_params':...eParams'>, 'mfe_magnet_cost_params': <class 'stellarator_tea.schemas.mfe_magnet_cost_params.MfeMagnetCostParams'>, ...}
+
+    def _validate_inputs(
+        self,
+        module: PipelineModuleSpec,
+        descriptor: ModuleDescriptor,
+        channel_types: Dict[str, type],  # NEW parameter
+    ) -> None:
+        """Validate module inputs against descriptor metadata."""
+        expected_inputs = set(descriptor.required_inputs) | set(descriptor.optional_inputs)
+        actual_inputs = set(module.inputs.keys())
+        missing_required = set(descriptor.required_inputs) - actual_inputs
+        if missing_required:
+>           raise PipelineValidationError(
+                "Missing required input bindings",
+                module=module.key,
+                details={"missing": sorted(missing_required)},
+            )
+E           simkit.core.pipeline_validator.PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/core/pipeline_validator.py:404: PipelineValidationError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7a8a911451c0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-12623'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope='module')
+    def native(tmp_path_factory):
+        destination=tmp_path_factory.mktemp('wi050-evidence')
+        harness=load('run_acceptance')
+        from tests.models.current_mfe_regressions import operating_acceptance
+>       scratch,results,inputs=operating_acceptance(destination,harness)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_mfe_operating_heating.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/models/current_mfe_regressions.py:161: in operating_acceptance
+    scratch, rows, inputs = module.operating_acceptance(destination, historical)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-052_mfe-financial-rate-limits/implementation/current_regressions.py:21: in operating_acceptance
+    ev,bridge=historical.evaluator(package,'stellarator_tea',scratch/'link')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+work/active/WI-050_mfe-coherent-operating-heating/implementation/run_acceptance.py:39: in evaluator
+    ev = PreparedEvaluator(ProvisionalPackageLoader(package,name,link,strict=True),package/'pipelines/pipeline.yaml',expects_constraint_report=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <simkit.evaluation.evaluator.PreparedEvaluator object at 0x7a8a4389dd90>
+loader = ProvisionalPackageLoader(package_dir=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated'), package_name='stellarator_tea', link_root=PosixPath('/tmp/wi052-operating-regression-rp3bv21z/link'), strict=True)
+spec_path = PosixPath('/tmp/wi052-operating-regression-rp3bv21z/generated/pipelines/pipeline.yaml')
+
+    def __init__(
+        self,
+        loader: PackageLoader,
+        spec_path: Path,
+        *,
+        expects_constraint_report: bool,
+    ) -> None:
+        self.package, self.fingerprint = loader.load()
+        custom_types = list(self.package.CUSTOM_SCHEMA_TYPES)
+        schema_types = _build_schema_type_registry(custom_types)
+        entry_loaders = _build_entry_loaders(custom_types)
+        registry_factory = getattr(self.package, f"create_{self.package.__name__}_registry")
+        self._registry = registry_factory()
+        spec = entry_point_validate(spec_path)
+        self._expects_report = expects_constraint_report
+    
+        router = create_output_router_with_json_schemas(
+            [t.__name__ for t in custom_types], include_builtins=True, in_memory=True
+        )
+        self._executor = _MappingExecutor(
+            self._registry,
+            output_router=router,
+            schema_type_registry=dict(schema_types),
+            entry_loaders=dict(entry_loaders),
+        )
+        try:
+            self._graph = self._executor.build_graph(spec)
+        except Exception as error:
+>           raise EvaluationFailed(
+                EvaluationFailure(
+                    phase=EvaluationPhase.PREPARATION,
+                    cause=f"{type(error).__name__}: {error}",
+                )
+            ) from error
+E           simkit.evaluation.failure.EvaluationFailed: preparation: PipelineValidationError: Missing required input bindings
+
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:155: EvaluationFailed
+=================================== FAILURES ===================================
+______________ test_binding_documentation_and_source_preservation ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12623/test_binding_documentation_and0')
+
+    def test_binding_documentation_and_source_preservation(tmp_path):
+        from agentic_mbse.sysml.syside_adapter import get_syside
+        models=materialize_canonical_subset(MFE,tmp_path/'models')
+        syside=get_syside()
+        model,diagnostics=syside.try_load_model([str(p) for p in sorted(models.rglob('*.sysml'))])
+        for category in ('parser','sema'):
+            assert not [d for d in getattr(diagnostics,category) if d.severity==syside.DiagnosticSeverity.Error]
+        attached=[(e,d.body) for e in model.elements(syside.ReferenceUsage) for d in e.documentation if '[INHERITED: T-021@2f8856b7]' in d.body]
+        assert len(attached)==1
+        element,doc=attached[0]
+        assert element.name=='R0' and str(element.qualified_name)=="mfe_plant::'MFE Power Plant'::magnet::coil::R0"  # WI-057 (2026-09-13): R0 is the modular coil's; the T-021 binding sits on the nested coil part
+        assert all(x in doc for x in ('Source: work/analysis/20260911-230953_radius-ownership-evidence/source-meaning.md','Ref:','Basis:','Last Updated:','## Assessment'))
+        assert ':>> R0 = plasma.R {' in (models/'designs/generic_mfe/mfe_plant.sysml').read_text()  # WI-057: R lives on the plasma part
+        assert ':>> R0 = 12.7;' not in (models/'designs/stellarator_09/stellarator_plant.sysml').read_text()
+        documentation=ROOT/'work/active/WI-054_faithful-model-equations-and-citations/evidence'
+        lexical=runpy.run_path(str(documentation/'preservation.py'))['lexical']
+        entering=json.loads((documentation/'entering.json').read_text())['models']
+        current_hashes=json.loads((DOMAIN_EVIDENCE/'model-hashes.json').read_text())
+        for p in MFE.owned:
+            assert canonical_path(p).read_bytes()==(MFE.twin/p).read_bytes()
+            if p in ('analyses/mfe_plasma_scaling.sysml', 'analyses/mfe_plasma_sustainment.sysml', 'analyses/mfe_magnet_cost.sysml', 'foundation/economic_parameter.sysml'):
+                # WI-054 changes comments only; every executable token stays frozen.
+                source=str(canonical_path(p).relative_to(ROOT))
+                assert lexical((models/p).read_text()) == entering[source]['tokens']
+            elif p in current_hashes:
+                # WI-040/038: preserve the six prior source guards and add conductor
+                # capability. Other unchanged sources keep their historical guards.
+                assert set(current_hashes) == {
+                    'analyses/mfe_magnet_field.sysml', 'analyses/mfe_winding_pack_cost.sysml', 'analyses/mfe_conductor_grade.sysml',
+                    'cost_structure/mfe_power_core.sysml', 'structure/mfe_magnet_parts.sysml',
+                    'designs/generic_mfe/mfe_plant.sysml', 'designs/stellarator_09/stellarator_plant.sysml'}
+>               assert hashlib.sha256((models/p).read_bytes()).hexdigest()==current_hashes[p],p
+E               AssertionError: analyses/mfe_magnet_field.sysml
+E               assert '23f92166e5a3...3ef236031f447' == 'b6770081062e...cfbf18aab9abf'
+E                 
+E                 - b6770081062e17698994b9552a714498fc05520d58126876194cfbf18aab9abf
+E                 + 23f92166e5a3ad04d23bebae7bab210be7d3d07ed449a99f8743ef236031f447
+
+tests/models/test_mfe_major_radius.py:58: AssertionError
+__________ test_mfe_census_matches_current_generated_public_contract ___________
+
+baselines = {'ife': PosixPath('/tmp/pytest-of-reid/pytest-12623/baseline-ife0/package'), 'mfe': PosixPath('/tmp/pytest-of-reid/pytest-12623/baseline-mfe0/package')}
+
+    def test_mfe_census_matches_current_generated_public_contract(baselines) -> None:
+        """Bound to the semantic fingerprint it was derived against: a regenerated model
+        re-derives the fixture from the new package, never patches it to match."""
+        output = baselines["mfe"]
+        expected = json.loads((DATA / "mfe_census.json").read_text())
+>       assert _contract(output)["semantic_fingerprint"] == (
+            expected["derived_against_semantic_fingerprint"]
+        ), "model meaning moved — re-derive tests/models/data/mfe_census.json from the new package"
+E       AssertionError: model meaning moved — re-derive tests/models/data/mfe_census.json from the new package
+E       assert '8eb332b9c73e...bf3672269959d' == '2c2788662c14...8d7ebd6f1c08e'
+E         
+E         - 2c2788662c148ccae3f61d1f58e510cedcfcddb6b0b489878ec8d7ebd6f1c08e
+E         + 8eb332b9c73e1b80a5d7629e4de3532c739c280bbc889f45cb7bf3672269959d
+
+tests/models/test_model_family_spines.py:359: AssertionError
+=========================== short test summary info ============================
+FAILED tests/models/test_mfe_major_radius.py::test_binding_documentation_and_source_preservation
+FAILED tests/models/test_model_family_spines.py::test_mfe_census_matches_current_generated_public_contract
+ERROR tests/models/test_mfe_operating_heating.py::test_operating_heat_signed_demand_bounds
+ERROR tests/models/test_mfe_operating_heating.py::test_generic_heating_default_modes
+ERROR tests/models/test_mfe_operating_heating.py::test_heating_efficiency_scalar_consumers
+ERROR tests/models/test_mfe_operating_heating.py::test_stellarator_operating_heat_has_no_public_demand_input
+ERROR tests/models/test_mfe_operating_heating.py::test_operating_heat_reserve_invariance
+ERROR tests/models/test_mfe_operating_heating.py::test_operating_heat_financial_attribution
+ERROR tests/models/test_mfe_operating_heating.py::test_operating_heat_direct_native_parity
+ERROR tests/models/test_mfe_operating_heating.py::test_operating_heat_complete_cost_operand_classification
+2 failed, 879 passed, 13 skipped, 8 errors in 95.96s (0:01:35)
+EXIT=1

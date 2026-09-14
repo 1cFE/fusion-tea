@@ -5,7 +5,7 @@ package mfe_magnet_parts {
         doc /*
         One of the modular non-planar HTS coils (50 in the source, 6 unique shapes, 5-fold
         symmetry): the coil-set current and its distribution facts, the coil geometry facts
-        (major radius, geometry factor, winding circumference and shape factor, the radial
+        (major radius, geometry factor, winding circumference and its printed reference at the reference bore, the radial
         thickness of the coil in the build), the conductor cost rate and manufacturing markup,
         the peak-to-axis field ratio and the WI-044 reference anchors, and the coil dose life.
         WI-057: regrouped from 'Magnet System' without change of meaning.
@@ -25,10 +25,11 @@ package mfe_magnet_parts {
         attribute f_set : Real;
         attribute R0 : Real;
         attribute G : Real;
-        // typical winding circumference [m]
+        // typical winding circumference [m] (computed from the coil bore, WI-058)
         attribute c_coil : Real;
-        // coil-shape factor [1] = typical circumference / major radius (WI-036)
-        attribute k_coil : Real;
+        // printed typical winding circumference [m] at the reference bore a_coil_ref
+        // (WI-058; replaces the WI-036 shape factor k_coil over the major radius)
+        attribute c_coil_ref : Real;
         // Reference tape procurement rate [dollars/(kA m)] at B_grade_ref.
         // Existing ungraded comparison accounts continue to consume this rate.
         attribute cost_per_kAm : Real;

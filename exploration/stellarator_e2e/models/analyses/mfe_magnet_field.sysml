@@ -141,32 +141,65 @@ package mfe_magnet_field {
 
     calc def 'Coil Winding Length' {
         doc /*
-        Typical coil winding circumference [m] from machine scale (WI-036, D3):
+        Typical coil winding circumference [m] from the coil bore (WI-058):
 
-          c_coil = k_coil * R0
+          c_coil = c_coil_ref * (a_coil / a_coil_ref)
 
-        Winding length is the sole length term in the magnet conductor cost,
-        and was previously a held printed constant that did not respond to
-        machine size. Per-coil circumferences are unprinted, so what the
-        source supports is a held *shape* factor with the *scale* responding
-        -- the trade the WI-036 mint record predicted ("one held constant
-        traded for a smaller one"). k_coil is the residual held quantity and
-        is named rather than buried.
+        The coil's size is stated on its bore: Stellaris prints the coils as
+        "approximate size of 7 x 5 x 10 m, with a typical circumference of
+        25 m", around a coil-centre minor radius of 3.15 m in this radial
+        build. A coil of fixed shape scaled to its bore has a circumference
+        proportional to the bore radius, so the length is the printed
+        circumference at the reference bore times the bore ratio -- exactly
+        1.0 at the design point (the same float over itself), so the anchor
+        reproduces to the double and only the bore dependence responds away
+        from it. a_coil is the coil-centre minor radius ('MFE Radial Build'
+        r_coil_centre, WI-044 D1), the same bore the peak field, the stored
+        energy and the casing mass read.
 
-        **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
-        **Ref**: raw.pdf sec. 2.9 ("typical circumference of 25 m"; coils
-            approximately 7 x 5 x 10 m); images/page_002_table_0.png
-            (Table 2: major radius 12.7 m)
-        **Basis**: coil circumference scales with major radius at a held
-            coil-shape factor; concept-agnostic (MR-3)
+        The major radius does NOT enter (WI-058 D3). PROCESS-stellarator
+        (Lion 2021 sec. 2) holds "the coil number and the coil shapes" fixed
+        and scales "only the overall size of the coils" with the machine,
+        varying the plasma minor radius "at constant coil radius"; this
+        radial build instead moves the coil bore with the plasma (a plus a
+        fixed layer stack), so here the coil's size IS its bore. The two
+        readings coincide under uniform scaling (R and a together at fixed
+        aspect ratio) and differ exactly when the aspect ratio changes. What
+        grows with R at fixed bore is the toroidal coil-coil spacing, which
+        PROCESS checks as a clearance (d_min(C) scaling with R, sec. 3.10),
+        not a length; this model carries no such check -- disclosed, not
+        modelled. Supersedes WI-036 D3 (c_coil = k_coil * R0), whose R-form
+        was the uniform-scaling special case of this one.
+
+        The residual held quantity is the printed 25 m itself (c_coil_ref),
+        "typical but approximate" -- the weak link WI-036 carried. The
+        implied shape factor c_coil_ref / (2 pi a_coil_ref) = 1.2631... is
+        the coil's departure from a circle at its centre radius (a 7 x 5 m
+        face against a 6.3 m circle) and is disclosed here, not bound.
+        Per-coil circumferences are unprinted; one typical value carries
+        the set.
+
+        **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md;
+            knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/output.md
+        **Ref**: stellaris-design-details.md L1862 / raw.pdf sec. 2.9
+            ("approximate size of 7 x 5 x 10 m, with a typical
+            circumference of 25 m"); Lion 2021 output.md L118-120 (the
+            scaling prescription: coil shapes fixed, overall coil size
+            scaled, a at constant coil radius), L621 (sec. 3.10, the
+            coil-coil clearance d_min(C) scaling with R); WI-044 design D1
+            (the coil-centre bore)
+        **Basis**: fixed-shape coil scaled to its bore, anchored at the
+            printed circumference; concept-agnostic (MR-3)
         */
 
-        // major radius [m]
-        in attribute R0 : Real;
-        // coil-shape factor [1] = typical circumference / major radius
-        in attribute k_coil : Real;
+        // coil-centre minor radius [m] ('MFE Radial Build' r_coil_centre)
+        in attribute a_coil : Real;
+        // printed typical winding circumference [m] at the reference bore
+        in attribute c_coil_ref : Real;
+        // reference coil-centre minor radius [m] (the WI-044 anchor)
+        in attribute a_coil_ref : Real;
 
-        out attribute c_coil : Real = k_coil * R0;
+        out attribute c_coil : Real = c_coil_ref * (a_coil / a_coil_ref);
     }
 
     calc def 'Winding Pack Cold Volume' {

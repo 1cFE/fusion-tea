@@ -102,8 +102,9 @@ package mfe_plant {
             :>> r_coil = rb.r_coil;   // coil bore = radial-build vessel_or (WI-021)
             // WI-036: the winding-pack side and the winding length are now
             // COMPUTED too -- the pack is sized by the current it carries and
-            // the length follows machine scale. j_wp and k_coil are the
-            // settable levers that replaced them.
+            // the length follows the coil bore (WI-058; WI-036 had it follow
+            // the major radius). j_wp and c_coil_ref are the settable levers
+            // that replaced them.
             // WI-044: the casing mass is COMPUTED from the coil set's stored
             // energy (which sees the coil bore); m_casing_ref is the settable
             // anchor that replaced the held mass.

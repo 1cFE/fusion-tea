@@ -192,11 +192,14 @@ package mfe_power_core {
             in I_coil = coil.I_coil;
             in j_wp = winding_pack.j_wp_effective;
         }
-        // WI-036: winding length responds to machine scale through a held
-        // coil-shape factor, instead of resting on a printed constant.
+        // WI-058: the winding length follows the coil bore the radial build
+        // sets (the coil-centre radius WI-044 introduced), anchored at the
+        // printed circumference; the major radius no longer enters (WI-036's
+        // k_coil * R0 was the uniform-scaling special case of this form).
         calc coil_length : 'Coil Winding Length' {
-            in R0 = coil.R0;
-            in k_coil = coil.k_coil;
+            in a_coil = r_coil_centre;
+            in c_coil_ref = coil.c_coil_ref;
+            in a_coil_ref = coil.a_coil_ref;
         }
         // WI-036: a wider winding pack now costs cold mass -- this feeds the
         // WI-024 cryoplant chain, which already reaches cryoplant capital.

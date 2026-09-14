@@ -180,16 +180,22 @@ package stellarator_09 {
                 :>> turn_current = 50000.0 {
                     doc /* Effective composite-conductor operating current [A]. **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf **Reference**: Stellaris design details;  knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf, p. 22 (maximum turn current 50 kA). **Basis**: [AGENT] adopt the maximum as a common effective current, giving the shortest conductor length at fixed ampere-metres; sensitivity 25-50 kA. **Last Updated**: 2026-09-13 */
                 }
-                // Coil-shape factor [1] = typical circumference / major radius
-                // = 25.0 / 12.7 as its IEEE-754 double, so c_coil reproduces the
-                // printed 25 m exactly at R0 = 12.7 m. WI-036 D3: winding length
-                // now responds to machine scale; the SHAPE stays held because
-                // per-coil circumferences are unprinted. This is the residual held
-                // quantity the WI-036 mint record predicted -- "one held constant
-                // traded for a smaller one" -- and it is named here, not buried.
-                // c_coil itself is computed (mfe_plant.sysml, coil_length calc).
-                :>> k_coil = 1.9685039370078741 {
-                    doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf sec. 2.9 ("typical circumference of 25 m"; coils approximately 7 x 5 x 10 m); images/page_002_table_0.png (Table 2: major radius 12.7 m) **Basis**: coil circumference over major radius at the printed pair (25.0 / 12.7); the printed circumference is "typical but approximate", the same weak link the pre-WI-036 held value carried */
+                // Printed typical winding circumference [m] at the reference bore.
+                // WI-058: c_coil = c_coil_ref * (r_coil_centre / a_coil_ref), so the
+                // winding length follows the coil bore the radial build sets and
+                // reproduces the printed 25 m exactly at the design point (the ratio
+                // is the same float over itself). This replaces WI-036 D3's held
+                // shape factor over the major radius (k_coil = 25.0 / 12.7): the held
+                // quantity is now the printed circumference itself, "typical but
+                // approximate", the same weak link. The implied shape factor
+                // c_coil_ref / (2 pi a_coil_ref) = 1.2631344689832962 -- the coil's
+                // departure from a circle at its 3.15 m centre radius (a 7 x 5 m coil
+                // face against a 6.3 m circle) -- is disclosed, not bound. The paper's
+                // own coil-centre distance (about 2.80 m from the LCFS, WI-044) differs
+                // from this build's 3.15 m; the ratio absorbs the offset, as WI-044's
+                // anchors do. c_coil itself is computed (mfe_power_core, coil_length).
+                :>> c_coil_ref = 25.0 {
+                    doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf sec. 2.9 / stellaris-design-details.md L1862 ("The coils have an approximate size of 7 x 5 x 10 m, with a typical circumference of 25 m"); the reference bore is a_coil_ref (WI-044: the radial build's coil-centre radius at the printed a 1.3, images/page_002_table_0.png Table 2) **Basis**: printed typical circumference at the reference bore -- the anchor of the WI-058 bore form; "typical but approximate", the WI-036 weak link carried */
                 }
                 // Number of toroidal field coils [1].
                 :>> n_coils = 48.0 {
@@ -460,6 +466,10 @@ package stellarator_09 {
                 // point-A facts carried unchanged to every other geometry -- no admissible
                 // source gives their aspect-ratio dependence; (iii) the wall-peak calibration
                 // (WI-041) is anchored at this geometry and carried constant across a sweep.
+                // (iv) WI-058: the winding length follows the coil bore at fixed coil
+                // shape (c_coil_ref times the bore ratio); the toroidal coil-coil
+                // clearance that grows with R at fixed bore (PROCESS sec. 3.10) is not
+                // checked here, and per-coil circumferences are unprinted.
                 // Reference coil-set stored magnetic energy [J]: Table 2's 111 GJ at the
                 // printed peak coil current 15.4 MA. Table 8 sums the per-coil energies to
                 // 110.58 GJ; the 0.4 % gap to the rounded headline is disclosed, not
