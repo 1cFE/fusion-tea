@@ -230,7 +230,8 @@ modules:
       f_wp_vol: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__f_wp_vol
       wp_side: float stellarator_09__stellaris__magnet__wp_sizing__wp_side.root
     outputs:
-      root: RootModel[float] stellarator_09__stellaris__magnet__wp_volume__vol_cold_total
+      vol_winding_pack: float stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack
+      vol_cold_total: float stellarator_09__stellaris__magnet__wp_volume__vol_cold_total
 
   # mfe_cryo_plant.Cryoplant_Electrical_PowerModule
   stellarator_09__stellaris__cryoplant__cryo_elec:
@@ -242,10 +243,62 @@ modules:
       p_direct: float stellarator_plant_params.stellarator_09__stellaris__cryoplant__p_cryo
       f_carnot: float stellarator_plant_params.stellarator_09__stellaris__cryoplant__f_carnot_cryo
       p_fixed: float stellarator_plant_params.stellarator_09__stellaris__cryoplant__p_fixed_cryo
-      vol_cold: float stellarator_09__stellaris__magnet__wp_volume__vol_cold_total.root
+      vol_cold: float stellarator_09__stellaris__magnet__wp_volume__vol_cold_total
       f_uplift: float stellarator_plant_params.stellarator_09__stellaris__cryoplant__f_uplift_cryo
     outputs:
       root: RootModel[float] stellarator_09__stellaris__cryoplant__cryo_elec__p_elec
+
+  # mfe_winding_pack_cost.Winding_Pack_Material_InventoryModule
+  stellarator_09__stellaris__magnet__material_inventory:
+    module_type: mfe_winding_pack_cost.Winding_Pack_Material_InventoryModule
+    inputs:
+      price_steel: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__price_steel
+      f_steel: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__f_steel
+      price_solder: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__price_solder
+      f_copper: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__f_copper
+      f_solder: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__f_solder
+      rho_solder: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__rho_solder
+      f_helium: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__f_helium
+      rho_steel: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__rho_steel
+      volume_in: float stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack
+      rho_copper: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__rho_copper
+      temperature: float stellarator_plant_params.stellarator_09__stellaris__cryoplant__T_cold_cryo
+      price_helium: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__price_helium
+      price_copper: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__price_copper
+      helium_pressure: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__helium_pressure
+      helium_gas_constant: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__helium_gas_constant
+    outputs:
+      tape_volume: float stellarator_09__stellaris__magnet__material_inventory__tape_volume
+      mass_steel: float stellarator_09__stellaris__magnet__material_inventory__mass_steel
+      mass_helium: float stellarator_09__stellaris__magnet__material_inventory__mass_helium
+      cost_copper: float stellarator_09__stellaris__magnet__material_inventory__cost_copper
+      mass_copper: float stellarator_09__stellaris__magnet__material_inventory__mass_copper
+      cost_helium: float stellarator_09__stellaris__magnet__material_inventory__cost_helium
+      mass_solder: float stellarator_09__stellaris__magnet__material_inventory__mass_solder
+      cost_steel: float stellarator_09__stellaris__magnet__material_inventory__cost_steel
+      material_cost: float stellarator_09__stellaris__magnet__material_inventory__material_cost
+      helium_density: float stellarator_09__stellaris__magnet__material_inventory__helium_density
+      cost_solder: float stellarator_09__stellaris__magnet__material_inventory__cost_solder
+
+  # mfe_winding_pack_cost.Winding_Pack_Procurement_CostModule
+  stellarator_09__stellaris__magnet__winding_procurement:
+    module_type: mfe_winding_pack_cost.Winding_Pack_Procurement_CostModule
+    inputs:
+      f_set: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__f_set
+      winding_rate_1990: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__winding_rate_1990
+      material_cost_in: float stellarator_09__stellaris__magnet__material_inventory__material_cost
+      n_coils: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__n_coils
+      c_coil: float stellarator_09__stellaris__magnet__coil_length__c_coil.root
+      turn_current: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__turn_current
+      cost_per_kAm: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__cost_per_kAm
+      I_coil: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__I_coil
+      nonplanar_factor: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__nonplanar_factor
+      cost_escalation: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__cost_escalation
+    outputs:
+      winding_fabrication_cost: float stellarator_09__stellaris__magnet__winding_procurement__winding_fabrication_cost
+      cost: float stellarator_09__stellaris__magnet__winding_procurement__cost
+      tape_cost: float stellarator_09__stellaris__magnet__winding_procurement__tape_cost
+      conductor_length: float stellarator_09__stellaris__magnet__winding_procurement__conductor_length
 
   # mfe_vacuum.Vacuum_Gas_LoadModule
   stellarator_09__stellaris__vacuum_pumping__vacuum:
@@ -680,7 +733,7 @@ modules:
   stellarator_09__stellaris__magnet__magnet_capital_rollup:
     module_type: mfe_magnet_cost.Magnet_CapitalModule
     inputs:
-      winding_cost: float stellarator_09__stellaris__magnet__winding_pack_cost__cost.root
+      winding_cost: float stellarator_09__stellaris__magnet__winding_procurement__cost
       structure_cost_in: float stellarator_09__stellaris__magnet__magnet_structure_cost__cost.root
     outputs:
       root: RootModel[float] stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost
@@ -1313,10 +1366,26 @@ modules:
       stellarator_09__stellaris__fuel_cycle__fuel__tbr_required: float stellarator_09__stellaris__fuel_cycle__fuel__tbr_required.json
       stellarator_09__stellaris__fuel_cycle__fuel__loss_rate: float stellarator_09__stellaris__fuel_cycle__fuel__loss_rate.json
       stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate: float stellaris__fuel_cycle__exhaust_rate.json
-      stellarator_09__stellaris__magnet__winding_pack_cost__cost: RootModel[float] stellaris__magnet__winding_cost.json
+      stellarator_09__stellaris__magnet__winding_pack_cost__cost: RootModel[float] stellaris__magnet__winding_cost_legacy.json
       stellarator_09__stellaris__magnet__wp_sizing__wp_side: RootModel[float] stellaris__magnet__winding_pack__wp_side.json
-      stellarator_09__stellaris__magnet__wp_volume__vol_cold_total: RootModel[float] stellaris__cryoplant__vol_cold_total.json
+      stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack: float stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack.json
+      stellarator_09__stellaris__magnet__wp_volume__vol_cold_total: float stellaris__cryoplant__vol_cold_total.json
       stellarator_09__stellaris__cryoplant__cryo_elec__p_elec: RootModel[float] stellaris__cryoplant__p_elec.json
+      stellarator_09__stellaris__magnet__material_inventory__tape_volume: float stellarator_09__stellaris__magnet__material_inventory__tape_volume.json
+      stellarator_09__stellaris__magnet__material_inventory__mass_steel: float stellarator_09__stellaris__magnet__material_inventory__mass_steel.json
+      stellarator_09__stellaris__magnet__material_inventory__mass_helium: float stellarator_09__stellaris__magnet__material_inventory__mass_helium.json
+      stellarator_09__stellaris__magnet__material_inventory__cost_copper: float stellarator_09__stellaris__magnet__material_inventory__cost_copper.json
+      stellarator_09__stellaris__magnet__material_inventory__mass_copper: float stellarator_09__stellaris__magnet__material_inventory__mass_copper.json
+      stellarator_09__stellaris__magnet__material_inventory__cost_helium: float stellarator_09__stellaris__magnet__material_inventory__cost_helium.json
+      stellarator_09__stellaris__magnet__material_inventory__mass_solder: float stellarator_09__stellaris__magnet__material_inventory__mass_solder.json
+      stellarator_09__stellaris__magnet__material_inventory__cost_steel: float stellarator_09__stellaris__magnet__material_inventory__cost_steel.json
+      stellarator_09__stellaris__magnet__material_inventory__material_cost: float stellaris__magnet__winding_material_cost.json
+      stellarator_09__stellaris__magnet__material_inventory__helium_density: float stellarator_09__stellaris__magnet__material_inventory__helium_density.json
+      stellarator_09__stellaris__magnet__material_inventory__cost_solder: float stellarator_09__stellaris__magnet__material_inventory__cost_solder.json
+      stellarator_09__stellaris__magnet__winding_procurement__winding_fabrication_cost: float stellaris__magnet__winding_fabrication_cost.json
+      stellarator_09__stellaris__magnet__winding_procurement__cost: float stellaris__magnet__winding_cost.json
+      stellarator_09__stellaris__magnet__winding_procurement__tape_cost: float stellaris__magnet__tape_procurement_cost.json
+      stellarator_09__stellaris__magnet__winding_procurement__conductor_length: float stellarator_09__stellaris__magnet__winding_procurement__conductor_length.json
       stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required: float stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required.json
       stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total: float stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total.json
       stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules: float stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules.json

@@ -1,5 +1,5 @@
 {
- "derived_against_semantic_fingerprint": "1459254b59bb72695954f5657744f6f90245f2f4a0606f46bc80b46f13b98b0e",
+ "derived_against_semantic_fingerprint": "1f6c7ed4be7787d18db8ff1096a76ef45ca29de07362f6a887dd816efb69d5c9",
  "group": {
   "axis": "R",
   "declared_keys": [
@@ -944,8 +944,8 @@
   "objectives_unreachable": [],
   "sibling_candidates": [],
   "trace_size": {
-   "modules_fired": 87,
-   "channels_tainted": 165
+   "modules_fired": 89,
+   "channels_tainted": 181
   },
   "warnings": [],
   "not_derivable": {

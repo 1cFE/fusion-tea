@@ -210,6 +210,8 @@ package mfe_magnet_field {
         in attribute vol_extra : Real default 0.0;
 
         out attribute vol_cold_total : Real = f_wp_vol * n_coils * wp_side * wp_side * c_coil + vol_extra;
+        // WI-040: geometric pack alone, excluding other cryogenic equipment.
+        out attribute vol_winding_pack : Real = f_wp_vol * n_coils * wp_side * wp_side * c_coil;
     }
 
     calc def 'Conductor Strain' {

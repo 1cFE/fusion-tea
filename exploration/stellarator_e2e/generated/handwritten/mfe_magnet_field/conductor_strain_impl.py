@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:215
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:217
 
 SysML Expressions:
     eps_cond = f_cond * sigma_wp / E_wp
@@ -85,7 +85,7 @@ strain, there are no discernible differences")
 *Basis**: pack-average strain scaled by a sourced load-sharing
 factor; concept-agnostic (MR-3)
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:215
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:217
 
 SysML Expressions:
     eps_cond = f_cond * sigma_wp / E_wp

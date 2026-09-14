@@ -30,6 +30,8 @@ package mfe_magnet_parts {
         // coil-shape factor [1] = typical circumference / major radius (WI-036)
         attribute k_coil : Real;
         attribute cost_per_kAm : Real;
+        // Effective operating current per composite-conductor turn [A].
+        attribute turn_current : Real;
         attribute coil_markup : Real;
         // peak-on-winding / axis-averaged field ratio at the reference geometry
         // [1] (coil-set geometry fact, WI-030; the eq.-39 bore factor normalised
@@ -49,16 +51,37 @@ package mfe_magnet_parts {
 
     part def 'Winding Pack' {
         doc /*
-        The coil's winding pack: REBCO tape stacks in a copper jacket (15 % conductor, 10 % Cu,
-        45 % insulation, 26 % steel, 4 % helium in the source's composition), sized by the
+        The coil's winding pack: REBCO tape stacks in a copper jacket (9 % tape, 35 % Cu,
+        12 % solder, 36 % steel, 8 % helium by volume in the Table 7 image), sized by the
         current it carries (WI-036). Owns the current density, the pack-volume distribution
         and fabrication factors, the conductor's modulus, load share and strain limit, the
         conductor field ceiling, the peak-stress transfer fact and the mean nuclear heating the
         cryoplant removes. WI-057: regrouped from 'Magnet System' without change of meaning.
         **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/output.md
-        **Ref**: sec. 2.10 (winding pack composition; Table 8 image page_022_table_0.png)
+        **Reference**: sec. 2.10; images/page_021_table_0.png (Table 7 composition); images/page_022_table_0.png (Table 8 sizing). The text extraction of Table 7 is incorrect. Inter-pancake insulation has no quantified fraction here.
         **Basis**: the winding pack as the owner of the conductor and pack facts
+        **Last Updated**: 2026-09-13
         */
+        // WI-040 non-tape volume fractions [1]; residual volume is composite tape.
+        attribute f_copper : Real;
+        attribute f_solder : Real;
+        attribute f_steel : Real;
+        attribute f_helium : Real;
+        // Material densities [kg/m^3]; helium is calculated from its state.
+        attribute rho_copper : Real;
+        attribute rho_solder : Real;
+        attribute rho_steel : Real;
+        // Procurement prices [dollars/kg]; explicit year/proxy basis in the instance.
+        attribute price_copper : Real;
+        attribute price_solder : Real;
+        attribute price_steel : Real;
+        attribute price_helium : Real;
+        attribute helium_pressure : Real; // Pa
+        attribute T_inventory : Real; // K, bound to cryoplant temperature
+        attribute helium_gas_constant : Real; // J/(kg K)
+        attribute winding_rate_1990 : Real; // dollars1990/m of composite conductor
+        attribute cost_escalation : Real; // dimensionless year conversion
+        attribute nonplanar_factor : Real; // dimensionless transfer assumption
         // winding-pack current density [A/mm^2] -- the WI-036 sizing lever
         attribute j_wp : Real;
         // winding-pack cross-section side, worst coil [m]

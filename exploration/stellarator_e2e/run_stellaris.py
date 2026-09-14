@@ -82,7 +82,10 @@ CH = dict(
     beta=f"{P}plasma__beta_calc__beta", B_peak=f"{P}magnet__peak_field_calc__B_peak",
     # WI-035 field, stress, and decomposed magnet accounts
     B_axis=f"{P}magnet__field_calc__B_axis", sigma_wp=f"{P}magnet__wp_stress__sigma_wp",
-    winding_pack=f"{P}magnet__winding_pack_cost__cost",
+    # WI-040: additive tape/material procurement plus winding operations is selected;
+    # the old unsplit multiplier remains a separate comparison channel.
+    winding_pack=f"{P}magnet__winding_procurement__cost",
+    winding_pack_legacy=f"{P}magnet__winding_pack_cost__cost",
     magnet_structure=f"{P}magnet__magnet_structure_cost__cost",
     magnet_capital_rollup=f"{P}magnet__magnet_capital_rollup__capital_cost",
     cas90_1cfe=f"{P}cas90_1cfe_calc__cas90", lcoe_1cfe=f"{P}lcoe_1cfe_calc__lcoe",

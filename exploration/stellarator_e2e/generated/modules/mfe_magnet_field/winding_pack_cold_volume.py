@@ -36,6 +36,7 @@ Inputs:
     - wp_side: wp_side parameter
 
 Outputs:
+    - vol_winding_pack: vol_winding_pack result
     - vol_cold_total: vol_cold_total result
 
 SysML Source: root-0/analyses/mfe_magnet_field.sysml:172
@@ -50,6 +51,7 @@ from pydantic import BaseModel, Field, RootModel
 from simkit.core.base import ModuleBase, ModuleResult
 
 from stellarator_tea.primitives import Float
+from stellarator_tea.schemas.winding_pack_cold_volume_output import Winding_Pack_Cold_VolumeOutput
 
 
 class Winding_Pack_Cold_VolumeInput(BaseModel):
@@ -69,7 +71,7 @@ class Winding_Pack_Cold_VolumeInput(BaseModel):
     wp_side: float = Field(..., description="wp_side input")
 
 
-class Winding_Pack_Cold_VolumeModule(ModuleBase[Winding_Pack_Cold_VolumeInput, Float]):
+class Winding_Pack_Cold_VolumeModule(ModuleBase[Winding_Pack_Cold_VolumeInput, Winding_Pack_Cold_VolumeOutput]):
     """TEAx module for Winding_Pack_Cold_Volume calculation.
 
 Total winding-pack cold volume [m^3] across the coil set
@@ -106,6 +108,7 @@ Inputs:
     - wp_side: wp_side parameter
 
 Outputs:
+    - vol_winding_pack: vol_winding_pack result
     - vol_cold_total: vol_cold_total result
 
 SysML Source: root-0/analyses/mfe_magnet_field.sysml:172
@@ -115,6 +118,7 @@ SysML Source: root-0/analyses/mfe_magnet_field.sysml:172
     Calculation Specification:
         vol_extra = 0.0
         vol_cold_total = f_wp_vol * n_coils * wp_side * wp_side * c_coil + vol_extra
+        vol_winding_pack = f_wp_vol * n_coils * wp_side * wp_side * c_coil
         
 Documentation:
 Total winding-pack cold volume [m^3] across the coil set
@@ -146,7 +150,8 @@ distribution factor on the worst coil; concept-agnostic (MR-3)
     IMPLEMENTATION: See stellarator_tea.handwritten.mfe_magnet_field.winding_pack_cold_volume_impl
     for manual implementation.
 
-    NOTE: Single-output module - returns Float directly (no MultiOutput needed).
+    NOTE: Uses MultiOutput pattern for type-safe multi-output support.
+    TEAx automatically extracts vol_winding_pack, vol_cold_total fields to separate channels.
     """
 
     name: str = "Winding_Pack_Cold_VolumeModule"
@@ -169,7 +174,7 @@ distribution factor on the worst coil; concept-agnostic (MR-3)
         return Winding_Pack_Cold_VolumeInput(vol_extra=vol_extra, n_coils=n_coils, c_coil=c_coil, f_wp_vol=f_wp_vol, wp_side=wp_side)
 
     def run(
-        self, vol_extra: float, n_coils: float, c_coil: float, f_wp_vol: float, wp_side: float    ) -> ModuleResult[Float]:
+        self, vol_extra: float, n_coils: float, c_coil: float, f_wp_vol: float, wp_side: float    ) -> ModuleResult[Winding_Pack_Cold_VolumeOutput]:
         """Execute calculation.
 
         Args:
@@ -180,7 +185,7 @@ distribution factor on the worst coil; concept-agnostic (MR-3)
             wp_side: wp_side input
 
         Returns:
-            Module result with Float (single-output mode)
+            Module result with Winding_Pack_Cold_VolumeOutput (vol_winding_pack, vol_cold_total)
         """
         # Validate inputs
         validated_inputs = self.validate_and_fill_default(vol_extra, n_coils, c_coil, f_wp_vol, wp_side)
@@ -190,9 +195,15 @@ distribution factor on the worst coil; concept-agnostic (MR-3)
             run_winding_pack_cold_volume,
         )
 
-        # Execute implementation - returns single value
-        vol_cold_total = run_winding_pack_cold_volume(validated_inputs)
+        # Execute implementation - returns tuple of values
+        vol_winding_pack, vol_cold_total = run_winding_pack_cold_volume(validated_inputs)
 
-        # Single output - return Float directly (RootModel[float])
-        # TEAx assigns entire return value to the one channel declared in YAML
-        return ModuleResult(data=Float(vol_cold_total))
+
+        # Return MultiOutput container (TEAx auto-extracts to channels)
+        # MultiOutput fields use plain float (not RootModel[float])
+        return ModuleResult(
+            data=Winding_Pack_Cold_VolumeOutput(
+                vol_winding_pack=vol_winding_pack,
+                vol_cold_total=vol_cold_total,
+            )
+        )

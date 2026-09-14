@@ -198,16 +198,21 @@ def _anchor_gate(values: dict[str, float]) -> bool:
     #   reproduces WI-045's baseline bit-for-bit (evidence/compat_mode/).
     # WI-050 anchors follow independent conservation and explicit finance checks
     # in work/active/WI-050_mfe-coherent-operating-heating/implementation/.
+    # WI-040 (2026-09-13): independent additive accounting changes four economic
+    # anchors only. Pack = $804m tape + $15.954709m materials + $750.415092m winding
+    # operations, using the declared estimated-2026 price basis. This is a scoped
+    # estimate, not a recovered split of the legacy 6.65 multiplier. Basis and
+    # native reconciliation: work/active/WI-040_winding-pack-mass-cost/.
     anchors = [
-        ("total capital $", total, 14955400261.631914),
-        ("LCOE $/MWh", values[CH["lcoe"]], 224.26923288439),
+        ("total capital $", total, 8748878936.137337),
+        ("LCOE $/MWh", values[CH["lcoe"]], 142.50725862880654),
         ("p_net MW", values[CH["p_net"]], 1013.9319325539626),
         ("q_eng", values[CH["q_eng"]], 3.9471016638869605),
         ("rec_frac", values[CH["rec_frac"]], 0.25335045437244624),
-        ("magnet %", magnet / total * 100, 36.114259100482585),
+        ("magnet %", magnet / total * 100, 18.571542855890343),
         ("CAS70 $/yr", values[CH["cas70"]], 217739093.67437315),
         ("CAS80 $/yr", values[CH["cas80"]], 792_505.965114),
-        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 220.0125640803369),
+        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 140.01711597890122),
     ]
 
     print("\n=== NINE ANCHORS (single-pass, graph rollup, no bridge) ===")

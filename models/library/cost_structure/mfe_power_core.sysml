@@ -4,6 +4,7 @@ package mfe_power_core {
     private import mfe_plasma_scaling::*;
     private import mfe_magnet_field::*;
     private import mfe_magnet_cost::*;
+    private import mfe_winding_pack_cost::*;
     private import mfe_heating_chain::*;
     private import mfe_divertor_heat::*;
     private import mfe_account_costs::*;
@@ -121,7 +122,11 @@ package mfe_power_core {
         attribute sigma_wp : Real = wp_stress.sigma_wp;
         attribute vol_cold_total : Real = wp_volume.vol_cold_total;
         // SWAP SEAM: declared `default` so a variant definition may point it at its own calc (design D5, D9)
-        attribute winding_cost : Real default winding_pack_cost.cost;
+        attribute winding_cost : Real default winding_procurement.cost;
+        attribute winding_cost_legacy : Real = winding_pack_cost.cost;
+        attribute winding_material_cost : Real = material_inventory.material_cost;
+        attribute winding_fabrication_cost : Real = winding_procurement.winding_fabrication_cost;
+        attribute tape_procurement_cost : Real = winding_procurement.tape_cost;
         // SWAP SEAM: declared `default` so a variant definition may point it at its own calc (design D5, D9)
         attribute structure_cost : Real default magnet_structure_cost.cost;
         :>> capital_cost = magnet_capital_rollup.capital_cost;
@@ -220,7 +225,37 @@ package mfe_power_core {
             in cost_per_kAm = coil.cost_per_kAm;
             in coil_markup = coil.coil_markup;
         }
-        // Winding-pack account (real winding length, WI-035 D4).
+        // WI-040 explicit non-tape procurement: only geometric winding-pack volume.
+        calc material_inventory : 'Winding Pack Material Inventory' {
+            in volume_in = wp_volume.vol_winding_pack;
+            in f_copper = winding_pack.f_copper;
+            in f_solder = winding_pack.f_solder;
+            in f_steel = winding_pack.f_steel;
+            in f_helium = winding_pack.f_helium;
+            in rho_copper = winding_pack.rho_copper;
+            in rho_solder = winding_pack.rho_solder;
+            in rho_steel = winding_pack.rho_steel;
+            in price_copper = winding_pack.price_copper;
+            in price_solder = winding_pack.price_solder;
+            in price_steel = winding_pack.price_steel;
+            in price_helium = winding_pack.price_helium;
+            in helium_pressure = winding_pack.helium_pressure;
+            in temperature = winding_pack.T_inventory;
+            in helium_gas_constant = winding_pack.helium_gas_constant;
+        }
+        calc winding_procurement : 'Winding Pack Procurement Cost' {
+            in n_coils = coil.n_coils;
+            in I_coil = coil.I_coil;
+            in f_set = coil.f_set;
+            in c_coil = coil.c_coil;
+            in cost_per_kAm = coil.cost_per_kAm;
+            in turn_current = coil.turn_current;
+            in winding_rate_1990 = winding_pack.winding_rate_1990;
+            in cost_escalation = winding_pack.cost_escalation;
+            in nonplanar_factor = winding_pack.nonplanar_factor;
+            in material_cost_in = material_inventory.material_cost;
+        }
+        // Legacy unsplit winding-pack account retained for comparison (WI-035 D4).
         calc winding_pack_cost : 'Winding Pack Cost' {
             in n_coils = coil.n_coils;
             in I_coil = coil.I_coil;

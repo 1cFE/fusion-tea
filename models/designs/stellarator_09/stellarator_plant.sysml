@@ -177,6 +177,9 @@ package stellarator_09 {
                 */
             }
             part :>> coil {
+                :>> turn_current = 50000.0 {
+                    doc /* Effective composite-conductor operating current [A]. **Source**: Stellaris design details **Reference**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf, p. 22 (maximum turn current 50 kA). **Basis**: [AGENT] adopt the maximum as a common effective current, giving the shortest conductor length at fixed ampere-metres; sensitivity 25-50 kA. **Last Updated**: 2026-09-13 */
+                }
                 // Coil-shape factor [1] = typical circumference / major radius
                 // = 25.0 / 12.7 as its IEEE-754 double, so c_coil reproduces the
                 // printed 25 m exactly at R0 = 12.7 m. WI-036 D3: winding length
@@ -285,6 +288,58 @@ package stellarator_09 {
             }
             }
             part :>> winding_pack {
+                doc /* WI-040 procurement parameter basis. **Source**: Stellaris Table 7; registered supplier, USGS, NIST and PROCESS captures. **Reference**: individual attributes below. **Basis**: [AGENT] fixed composition outside the source point; nominal solid densities neglect cryogenic contraction. Solder alloy and procurement form are proxies. No quantified inter-pancake insulation, unresolved fixed cable charge, delivery or production learning is included. Estimates do not establish complete manufactured-magnet cost or normalize the whole plant's price year. **Last Updated**: 2026-09-13 */
+                :>> f_copper = 0.35 {
+                    doc /* Volume fraction [1]. **Source**: Stellaris Table 7 **Reference**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_021_table_0.png (copper jacket 35%). **Last Updated**: 2026-09-13 */
+                }
+                :>> f_solder = 0.12 {
+                    doc /* Volume fraction [1]. **Source**: Stellaris Table 7 **Reference**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_021_table_0.png (solder 12%). **Last Updated**: 2026-09-13 */
+                }
+                :>> f_steel = 0.36 {
+                    doc /* Volume fraction [1]. **Source**: Stellaris Table 7 **Reference**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_021_table_0.png (steel 36%). **Last Updated**: 2026-09-13 */
+                }
+                :>> f_helium = 0.08 {
+                    doc /* Volume fraction [1]. **Source**: Stellaris Table 7 **Reference**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_021_table_0.png (helium 8%; residual tape 9%). **Last Updated**: 2026-09-13 */
+                }
+                :>> rho_copper = 8940.0 {
+                    doc /* Density [kg/m^3]. **Source**: Reliable Source Metals material densities **Reference**: knowledge/sources/reliable_source_metals_material_densities/raw.pdf, p. 1 (C101/C110 .323 lb/in^3). **Basis**: [AGENT] rounded conversion; copper grade and cold-density correction unspecified. **Last Updated**: 2026-09-13 */
+                }
+                :>> rho_solder = 8390.0 {
+                    doc /* Density [kg/m^3]. **Source**: Indium Corporation bar-solder alloy properties **Reference**: knowledge/sources/indium_corporation_bar_solder_alloy_properties/raw.html:995 (Sn63Pb37 specific gravity 8.39). **Basis**: [AGENT] Sn63Pb37 proxy; Stellaris does not identify the solder alloy. **Last Updated**: 2026-09-13 */
+                }
+                :>> rho_steel = 8000.0 {
+                    doc /* Density [kg/m^3]. **Source**: Reliable Source Metals material densities **Reference**: knowledge/sources/reliable_source_metals_material_densities/raw.pdf, p. 1 (SS316 .289 lb/in^3). **Basis**: rounded conversion; nominal rather than cryogenic density. **Last Updated**: 2026-09-13 */
+                }
+                :>> price_copper = 11.0 {
+                    doc /* Procurement price [dollars/kg]. **Source**: inherited 1costingFE costing constants, pin 0254385 **Reference**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml:49 (coil_cu_price_per_kg). **Basis**: [AGENT] inherited 2026-era stock-price assumption, not a new qualified quote. **Last Updated**: 2026-09-13 */
+                }
+                // Float64 of 29.23 / 0.45359237; literal retains a public price input.
+                :>> price_solder = 64.44111923663972 {
+                    doc /* Procurement price [2026 dollars/kg]. **Source**: RotoMetals AIM Sn63Pb37 bar quote **Reference**: knowledge/sources/rotometals_aim_sn63pb37_one_pound_solder_bar_price/raw.html, SKU 63Sn37PbBar1#Barextruded (29.23 USD per pound, captured 2026-09-14 UTC). **Basis**: retail proxy, no bulk discount, freight or tax. **Last Updated**: 2026-09-13 */
+                }
+                :>> price_steel = 6.0 {
+                    doc /* Procurement price [dollars/kg]. **Source**: inherited 1costingFE costing constants, pin 0254385 **Reference**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml:52 (coil_steel_price_per_kg). **Basis**: [AGENT] inherited 2026-era stock-price assumption; upstream fabricated-steel wording does not independently separate stock and winding operations. **Last Updated**: 2026-09-13 */
+                }
+                // Float64 of (14 * 2077.2644 * 288.15 / 101325) * (334.4 / 313.7).
+                :>> price_helium = 88.16040477645615 {
+                    doc /* Procurement price [estimated2026 dollars/kg]. **Source**: USGS MCS 2025 helium and Minneapolis Fed CPI **Reference**: knowledge/sources/usgs_mineral_commodity_summaries_2025_helium/raw.pdf, printed pp. 88-89 (2024 Grade-A base 14 USD/standard m^3, 101.325 kPa and 15 C); knowledge/sources/federal_reserve_bank_of_minneapolis_annual_consumer_price/output.md (2024 313.7, estimated2026 334.4). **Basis**: convert standard gas volume to mass, then apply general CPI; surcharges, transport and refrigeration omitted. **Last Updated**: 2026-09-13 */
+                }
+                :>> helium_pressure = 1500000.0 {
+                    doc /* Pressure [Pa]. **Source**: Stellaris design details **Reference**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf, p. 22 (20 K and 15-20 bar). **Basis**: [AGENT] lower operating endpoint. **Last Updated**: 2026-09-13 */
+                }
+                :>> helium_gas_constant = 2077.2644 {
+                    doc /* Specific ideal-gas constant [J/(kg K)]. **Source**: NIST helium fluid properties **Reference**: knowledge/sources/nist_helium_isotherm_20_k_15_to_20_bar/output.md; knowledge/sources/nist_helium_isobar_20_bar_10_to_50_k/output.md. **Basis**: [AGENT] ideal helium approximation checked within 1.5% at 20 K, 15/20 bar; sampled 15-50 K at 20 bar within 5%, not a continuous bound. **Last Updated**: 2026-09-13 */
+                }
+                :>> winding_rate_1990 = 480.0 {
+                    doc /* Winding operations [dollars1990/m of composite conductor]. **Source**: UKAEA PROCESS **Reference**: knowledge/sources/ukaea_process_cost_variable_definitions_and_historical/output.md:2724-2731 (ucwindtf). **Basis**: [AGENT] REBCO transfer estimate, not all manufacturing or labor only. **Last Updated**: 2026-09-13 */
+                }
+                // Float64 of 334.4 / 130.7; literal retains a public escalation input.
+                :>> cost_escalation = 2.558530986993114 {
+                    doc /* Purchasing-power ratio [1]. **Source**: Minneapolis Fed annual CPI table **Reference**: knowledge/sources/federal_reserve_bank_of_minneapolis_annual_consumer_price/output.md:556-560 (1990 130.7), :808-815 (estimated2026 334.4). **Basis**: general CPI proxy, 2026 explicitly estimated; completed2025 alternative 321.9/130.7. **Last Updated**: 2026-09-13 */
+                }
+                :>> nonplanar_factor = 1.9 {
+                    doc /* Winding-operation multiplier [1]. **Source**: inherited 1costingFE costing constants, pin 0254385 **Reference**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml:60-72 (NCSX overrun factor). **Basis**: [AGENT] transfer assumption, not a qualified universal nonplanar penalty. **Last Updated**: 2026-09-13 */
+                }
                 // Conductor strain limit [1]. 0.4% -- the strain below which the
                 // registered measurements report no discernible effect on any of
                 // five commercial tapes. SETTABLE and deliberately so: the band

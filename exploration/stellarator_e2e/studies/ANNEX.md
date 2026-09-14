@@ -8,7 +8,7 @@ Four sections, named exactly as the runbook links them. The two the runbook trea
 
 ## § Declared ties
 
-The current model owns one operational major radius, `stellarator_09__stellaris__R`, across plasma geometry, sustainment and live magnet operands (WI-051). The 246 public inputs contain no independent magnet radius. Current proposals require no tie or injection. The retired flat key `stellarator_09__stellaris__magnet__R0` and local oracle alias `magnet_R0` are rejected explicitly, including equal and zero submissions.
+The current model owns one operational major radius, `stellarator_09__stellaris__plasma__R`, across plasma geometry, sustainment and live magnet operands (WI-051, structurally renamed by WI-057). The 263 public inputs contain no independent magnet radius. Current proposals require no tie or injection. The retired flat key `stellarator_09__stellaris__magnet__R0` and local oracle alias `magnet_R0` are rejected explicitly, including equal and zero submissions.
 
 Fixed magnet, wall and divertor reference radii remain fixed anchors. The divertor constraint retains its fixed target area; the radius-scaled alternative is a reported shadow. Native invalid geometry retains its execution failures, while the study validity mask remains a separate screen. Negative peak-component behavior remains unresolved. Engineering scaling, installed-capacity costing and financial assumptions retain their audited limits.
 
@@ -18,7 +18,9 @@ The former `p_input`/`p_ecrh` tie was retired by WI-039. Installed powers descen
 
 ## § Baseline pin
 
-The current point, headline and individual verdicts are in `manifest.json` → `baseline`. The current WI-052 package has 246 public inputs and 18 assertions with 28 feature-reference operands. At `R = 12.7 m`, `a = 1.3 m` and live-calendar mode (`availability_direct = 0`), the headline is 224.26923288439002 $/MWh. Seventeen assertions are satisfied; `divertor_heat_ok` is violated (10.517841546 MW/m² against 10). This baseline is not a feasible plant.
+The current point, headline and individual verdicts are in `manifest.json` → `baseline`. The WI-040 package has 263 public inputs, 174 numeric outputs and 18 assertions with 28 feature-reference operands. At `R = 12.7 m`, `a = 1.3 m` and live-calendar mode (`availability_direct = 0`), the headline is 142.50725862880648 $/MWh and total capital is $8,748,878,936.14. Seventeen assertions are satisfied; `divertor_heat_ok` is violated (10.517841546 MW/m² against 10). This baseline is not a feasible plant. The historical WI-052/WI-057 baseline was 224.26923288439002 $/MWh; its study records remain attached to that cost basis.
+
+WI-040 replaces the selected winding account with $804m tape procurement, $15.954709m non-tape material procurement and $750.415092m winding operations. Its $1.570369801bn pack account plus the separately priced casing gives $1.624801801bn magnet capital. The old $5.3466bn unsplit pack estimate remains the `magnet__winding_pack_cost__cost` comparison channel. The selected account is `magnet__winding_procurement__cost`. Copper, solder, steel and helium follow geometric pack volume; extra cold-equipment volume is excluded. The pack estimate uses declared estimated-2026 prices and PROCESS winding operations transferred from 1990 dollars. It omits unquantified insulation and unresolved fixed cabling and is not a complete factory quote. The inherited plant accounts are not all normalized to that year. Source choices, applicability and uncertainty are documented in [WI-040 design](../../../work/active/WI-040_winding-pack-mass-cost/design.md).
 
 The installed heating chain remains 100 MW electric → 50 MW delivered → 50 MW coupled at held source/coupling efficiencies 0.50/1.00. Procurement remains $264,145,000. The operating chain publishes signed coupled demand 49.07960078792678 MW, delivered power 49.07960078792678 MW and electric draw 98.15920157585356 MW. Increasing installed reserve to 120 MW raises procurement to $316,974,000 and leaves online flows unchanged. Physical demand changes affect online power while procurement remains fixed.
 
@@ -63,13 +65,13 @@ Known verification-coverage delta (Item 4 audit, 2026-08-20): `p_fus` is not com
 
 ### Current oracle comparison coverage
 
-The adapter supports 99 mapped inputs, preserving the entering map except for the retired magnet radius. The other 147 native inputs remain unsupported oracle overrides and are explicitly refused. Native input support does not imply oracle coverage for arbitrary sweeps.
+The adapter supports 116 mapped inputs, including all seventeen WI-040 material and winding-operation inputs. The other 147 native inputs remain unsupported oracle overrides and are explicitly refused. Native input support does not imply oracle coverage for arbitrary sweeps. The historical pre-WI-040 map contained 99 supported inputs.
 
 The current finance route has been checked in live and held modes at zero discount, equality with the fixed 0.02 inflation rate, nearby distinct rates and signed rates down to 1e-18. Seven finance-dependent channels are already mapped: reported IDC, replacement PV, replacement annual cost, dated energy ratio, comparison capital charge and both LCOEs. The six omitted finance channels below retain their native independent-test evidence; they are not new adapter coverage. Direct helper tests cover other escalation rates and fractional durations. Construction-duration zero and broader financial-domain questions remain parked. Evidence: [.project/active/mfe-financial-study-package/implementation.md](../../../.project/active/mfe-financial-study-package/implementation.md).
 
-The independent oracle declares 141 numeric channels. Baseline and ordinary R-only14 controls compare every declared channel, both LCOEs and all eighteen authored verdicts. The current radius comparator checks all 158 scalars against frozen native controls: 145 nonfinance channels exactly and thirteen finance channels at 1e-9 relative tolerance. The native evidence retains all nineteen responses, including the aggregate. The generic verifier requires the manifest objectives and predicate channels; its `channels_checked` field names the actual comparisons.
+The independent oracle declares 158 numeric channels. WI-040 adds sixteen outputs and closes the existing reactor-equipment-subtotal coverage gap; the historical map declared 141. Baseline and ordinary R-only14 controls compare every declared channel, both LCOEs and all eighteen authored verdicts. The current radius comparator checks all 174 scalars: unchanged physical and legacy-cost expectations remain frozen, while sixteen existing economic descendants and sixteen new outputs are compared with independent oracle expectations at 1e-9 relative tolerance. The inherited finance roundoff tolerance remains; frozen study files are not edited. The native evidence retains all nineteen responses, including the aggregate. The generic verifier requires the manifest objectives and predicate channels; its `channels_checked` field names the actual comparisons.
 
-The following seventeen native channels are outside the independent oracle channel map. They remain covered by the complete frozen native comparator and are not independent-oracle claims (prefix `stellarator_09__stellaris__`):
+The following sixteen native numeric channels are outside the independent oracle channel map. They remain covered by the complete frozen native comparator and are not independent-oracle claims (prefix `stellarator_09__stellaris__`):
 
 - `cas70_calc__annual_total`
 - `cas70_calc__cas70`
@@ -77,17 +79,16 @@ The following seventeen native channels are outside the independent oracle chann
 - `cas71_calc__levelized`
 - `cas80_calc__crf`
 - `cas80_calc__levelized`
-- `coil_length__c_coil`
+- `magnet__coil_length__c_coil`
 - `rb__blanket_vol`
 - `rb__r_coil`
 - `rb__shield_vol`
 - `rb__structure_vol`
 - `rb__vessel_vol`
 - `rb__wall_area`
-- `reactor_equipment_subtotal__reactor_equipment_subtotal`
 - `replacement_cost_per_event__replacement_cost_per_event`
-- `wp_sizing__wp_side`
-- `wp_volume__vol_cold_total`
+- `magnet__wp_sizing__wp_side`
+- `magnet__wp_volume__vol_cold_total`
 
 
 ## § Validity masks

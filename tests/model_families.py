@@ -62,6 +62,7 @@ MFE = Family(
         "analyses/mfe_heating_chain.sysml",
         "analyses/mfe_lcoe_dcf.sysml",
         "analyses/mfe_magnet_cost.sysml",
+        "analyses/mfe_winding_pack_cost.sysml",  # WI-040 explicit inventory and procurement
         "analyses/mfe_magnet_field.sysml",
         "analyses/mfe_plasma_scaling.sysml",
         "analyses/mfe_plasma_sustainment.sysml",

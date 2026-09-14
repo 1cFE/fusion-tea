@@ -1,0 +1,8 @@
+{
+  "analyses/mfe_winding_pack_cost.sysml": "844b324bd40c5fffce94ca59160d4cbc5d9dd47cae6dbab989d53e5b02cfaa73",
+  "analyses/mfe_magnet_field.sysml": "b6770081062e17698994b9552a714498fc05520d58126876194cfbf18aab9abf",
+  "cost_structure/mfe_power_core.sysml": "6c92e883a415ba730287df9dff0eaede419dfadc5c1bafcc2a92012c994850f1",
+  "structure/mfe_magnet_parts.sysml": "b2fa2a45ef13796affcda006e83a61c476b366983a2ac813ac0ac1b37e9f533b",
+  "designs/generic_mfe/mfe_plant.sysml": "d62bffafcfc7aaaec20699c31cff8be609dba29614dd82a82c86843bae6bfb06",
+  "designs/stellarator_09/stellarator_plant.sysml": "db093847b4cfa6a27defd16695d0b0f7924e972c09ff58b5242dac7eff48938e"
+}

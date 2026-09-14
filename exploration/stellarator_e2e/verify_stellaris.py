@@ -301,6 +301,17 @@ IN = dict(
     magnet_E_wp=200000000000.0, magnet_f_cond=0.6666666666666666,
     magnet_eps_cond_allow=0.004,
     magnet_sigma_allow=800000000.0, magnet_f_wp_fab=6.65,
+    # WI-040 design.md: Table 7 image composition; sourced densities and explicit
+    # procurement proxies. Winding operations are PROCESS 1990 $/m escalated to
+    # estimated 2026 purchasing power, not a complete factory quotation.
+    magnet_f_copper=0.35, magnet_f_solder=0.12, magnet_f_steel=0.36, magnet_f_helium=0.08,
+    magnet_rho_copper=8940.0, magnet_rho_solder=8390.0, magnet_rho_steel=8000.0,
+    magnet_price_copper=11.0, magnet_price_solder=29.23 / 0.45359237,
+    magnet_price_steel=6.0,
+    magnet_price_helium=(14.0 * 2077.2644 * 288.15 / 101325.0) * (334.4 / 313.7),
+    magnet_helium_pressure=1.5e6, magnet_helium_gas_constant=2077.2644,
+    magnet_turn_current=50000.0, magnet_winding_rate_1990=480.0,
+    magnet_cost_escalation=334.4 / 130.7, magnet_nonplanar_factor=1.9,
     magnet_steel_price=6.0, magnet_f_steel_fab=3.0,
     # WI-044 coil-bore anchors (the reference point at which the printed magnet facts
     # were read; every sourced shape is normalised to exactly 1.0 there). The held
@@ -526,6 +537,62 @@ def _primary_loop_mass_flow(source_heat, cp, temperature_rise):
     return source_heat * 1.0e6 / (cp * temperature_rise)
 
 
+def _winding_material_inventory(p, volume):
+    """Independent WI-040 mass procurement, excluding tape and extra cold volume."""
+    facts = {name.removeprefix("magnet_"): value for name, value in p.items()
+             if name.startswith("magnet_") and name.removeprefix("magnet_") in {
+                 "f_copper", "f_solder", "f_steel", "f_helium", "rho_copper",
+                 "rho_solder", "rho_steel", "price_copper", "price_solder",
+                 "price_steel", "price_helium", "helium_pressure", "helium_gas_constant"}}
+    facts.update(volume_in=volume, temperature=p["T_cold_cryo"])
+    for name, value in facts.items():
+        positive = name.startswith("rho_") or name in {
+            "helium_pressure", "helium_gas_constant", "temperature"}
+        if not math.isfinite(value) or (value <= 0.0 if positive else value < 0.0):
+            raise ValueError(f"oracle Winding Pack Material Inventory: invalid {name}")
+        if name.startswith("f_") and value >= 1.0:
+            raise ValueError(f"oracle Winding Pack Material Inventory: invalid {name}")
+    fraction = sum(facts["f_" + material] for material in ("copper", "solder", "steel", "helium"))
+    if fraction >= 1.0:
+        raise ValueError("oracle Winding Pack Material Inventory: fraction sum must be less than one")
+    helium_density = facts["helium_pressure"] / (facts["helium_gas_constant"] * facts["temperature"])
+    result = {"helium_density": helium_density, "tape_volume": volume * (1.0 - fraction)}
+    for material in ("copper", "solder", "steel", "helium"):
+        density = helium_density if material == "helium" else facts["rho_" + material]
+        mass = volume * facts["f_" + material] * density
+        result["mass_" + material] = mass
+        result["cost_" + material] = mass * facts["price_" + material]
+    result["material_cost"] = sum(result["cost_" + material] for material in ("copper", "solder", "steel", "helium"))
+    for name, value in result.items():
+        if not math.isfinite(value):
+            raise ValueError(f"oracle Winding Pack Material Inventory: non-finite {name}")
+    return result
+
+
+def _winding_procurement(p, circumference, material_cost):
+    """Independent ampere-metre tape purchase plus conductor-metre operations."""
+    names = ("n_coils", "I_coil", "f_set", "cost_per_kAm", "turn_current",
+             "winding_rate_1990", "cost_escalation", "nonplanar_factor")
+    facts = {name: p["magnet_" + name] for name in names}
+    facts.update(c_coil=circumference, material_cost_in=material_cost)
+    nonnegative = {"I_coil", "cost_per_kAm", "winding_rate_1990", "material_cost_in"}
+    for name, value in facts.items():
+        if not math.isfinite(value) or (value < 0.0 if name in nonnegative else value <= 0.0):
+            raise ValueError(f"oracle Winding Pack Procurement Cost: invalid {name}")
+    if facts["f_set"] > 1.0:
+        raise ValueError("oracle Winding Pack Procurement Cost: invalid f_set")
+    kam = facts["n_coils"] * facts["I_coil"] * facts["f_set"] * circumference / 1000.0
+    tape_cost = kam * facts["cost_per_kAm"]
+    length = kam * 1000.0 / facts["turn_current"]
+    fabrication = length * facts["winding_rate_1990"] * facts["cost_escalation"] * facts["nonplanar_factor"]
+    result = dict(tape_cost=tape_cost, conductor_length=length,
+                  winding_fabrication_cost=fabrication, cost=tape_cost + material_cost + fabrication)
+    for name, value in result.items():
+        if not math.isfinite(value):
+            raise ValueError(f"oracle Winding Pack Procurement Cost: non-finite {name}")
+    return result
+
+
 def compute():
     if "magnet_R0" in IN:
         raise ValueError("retired oracle input magnet_R0; use plant R")
@@ -598,6 +665,9 @@ def compute():
     # WI-036: a wider pack now costs cold mass, which reaches the cryoplant.
     vol_cold_total = (p["magnet_f_wp_vol"] * p["magnet_n_coils"] * wp_side * wp_side
                       * c_coil + p["vol_cold_cryo"])
+    vol_winding_pack = p["magnet_f_wp_vol"] * p["magnet_n_coils"] * wp_side * wp_side * c_coil
+    inventory = _winding_material_inventory(p, vol_winding_pack)
+    procurement = _winding_procurement(p, c_coil, inventory["material_cost"])
 
     # --- Plasma Sustainment (WI-037): computed ash, quasi-neutral fuel,
     # ISS04 tau_E, composed radiation, required sustained heating ---
@@ -704,7 +774,8 @@ def compute():
     # WI-035 decomposed magnet accounts (design D4/D5/D6); `magnet` above stays
     # the 1cfe-form comparison channel, the rollup enters the powercore sum.
     kAm_wind = p["magnet_n_coils"] * p["magnet_I_coil"] * p["magnet_f_set"] * c_coil / 1000.0
-    winding_pack = kAm_wind * p["magnet_cost_per_kAm"] * p["magnet_f_wp_fab"]
+    winding_pack_legacy = kAm_wind * p["magnet_cost_per_kAm"] * p["magnet_f_wp_fab"]
+    winding_pack = procurement["cost"]
     magnet_structure = p["magnet_n_coils"] * m_casing * p["magnet_steel_price"] * p["magnet_f_steel_fab"]  # WI-044: computed mass
     magnet_capital_rollup = winding_pack + magnet_structure
     blanket = (p["blanket_unit_cost"] * p["blanket_structure_factor"] * blanket_vol
@@ -941,6 +1012,11 @@ def compute():
         cycle_margin_low=cycle_margin_low, cycle_margin_high=cycle_margin_high,
         cycle_domain_product=cycle_domain_product,
         winding_pack=winding_pack, magnet_structure=magnet_structure,
+        winding_pack_legacy=winding_pack_legacy, vol_winding_pack=vol_winding_pack,
+        **{"winding_" + name: value for name, value in inventory.items()},
+        tape_procurement_cost=procurement["tape_cost"],
+        conductor_length=procurement["conductor_length"],
+        winding_fabrication_cost=procurement["winding_fabrication_cost"],
         magnet_capital_rollup=magnet_capital_rollup,
         aux_cost=aux_cost, cryo_cost=cryo_cost,  # WI-035 aux split
         magnet=magnet, heating=heating, divertor=divertor, blanket=blanket,
@@ -956,6 +1032,7 @@ def compute():
         coolant=coolant, aux_cooling=aux_cooling, waste=waste,
         fuel_handling=fuel_handling, other_rpe=other_rpe, inc=inc,
         owner=owner, supplementary=supplementary, idc_capital=idc_capital,
+        reactor_equipment_subtotal=reactor_equipment_subtotal,
         cas22_capital=cas22_capital, cas28_capital=cas28_capital,
         # WI-028 rebuilt rollup aggregates ($)
         cas2x_pre_contingency=cas2x_pre_contingency, cas20_capital=cas20_capital,

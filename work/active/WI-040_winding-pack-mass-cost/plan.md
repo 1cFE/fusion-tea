@@ -8,8 +8,8 @@ Related Artifacts: spec.md, design.md, basis.md
 # WI-040 implementation plan
 
 - [x] Verify corrected source composition, research parameter/accounting basis, and retain entering baseline and regression evidence (659 passed/13 inherited skips; `baseline-before.json`, `evidence/baseline-model-tests.xml`).
-- [ ] Implement the two normative calculation contracts and typed completions, canonical physical bindings and initial parameter values; expose geometric winding volume and legacy comparison. Read design before edits; verify source locators.
-- [ ] Synchronize family twins, generate coherently with all normative seeds, update current oracle and public mappings, recapture snapshot/census/manifest and refresh derived indicator fixtures. Preserve historical studies and evidence.
+- [x] Implement the two normative calculation contracts and typed completions, canonical physical bindings and initial parameter values; expose geometric winding volume and legacy comparison. Source locators verified; corrected generated tuple ordering and exposed literal price/escalation inputs. All 137 new component/public tests pass.
+- [x] Synchronize family twins, generate coherently with all normative seeds, update current oracle and public mappings, recapture snapshot/census/manifest and refresh derived indicator fixtures. Exact fresh equality with 13 preserved and two new seeds; 263 inputs, 174 outputs. Historical artifacts preserved through a current boundary adapter; final metadata recapture follows the source-citation correction.
 - [ ] Verify local domain/identity tests and public perturbations, reconcile baseline and off-reference changes, run affected model/study regressions and all applicable validation levels. Record inherited diagnostics by identity.
 - [ ] Obtain positive independent native audit and address its findings; leave item close/archive owner-held. Integrate through a separately scoped goal task.
 

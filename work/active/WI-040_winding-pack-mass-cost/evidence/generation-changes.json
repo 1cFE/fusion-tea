@@ -1,0 +1,22 @@
+{
+  "contracts/package_contract.json": {
+    "before": "c36d86fb1b5c51092bc947b7ced7b1f5ee17b6bedbcaec8b22da150a7d389019",
+    "after": "f716d9ff49851a5b7bc93c49d58e502a764fe488cd6fefe089eef7fe78db2570"
+  },
+  "modules/mfe_winding_pack_cost/winding_pack_material_inventory.py": {
+    "before": "ab89480b1a7bd348674f37062812eece0fdd457c7abab119fe16961efd1de54f",
+    "after": "bb63c25af9cd7c04d350b66aafb4084a5160729c4caa435d62bdfbb4e620d2af"
+  },
+  "modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py": {
+    "before": "517ea7b59c858f4dbc13204554e07120379628513571f5dd7f100999e623b1ad",
+    "after": "f78227c770c197d6e0f6e989b41f73331c2a8b5af4575fe740085cd78bea3b87"
+  },
+  "schemas/winding_pack_material_inventory_output.py": {
+    "before": "5341e47607f6650a3273783099bfbcc8dd8037547efced2e75f43d6311707fe9",
+    "after": "1bc84d0d5c0e0e5883cc4c4479aa2ad0437ac9ceec4998df9cbfded0c62c9f2f"
+  },
+  "schemas/winding_pack_procurement_cost_output.py": {
+    "before": "639b461041310cdcc43c1dfce05e363436204138e2396838aa98d1cf2fc8b3f7",
+    "after": "7aba0e61e5946f2d13906ef8251f1aca587fc8128c8611e9f36d6ce72df4fa7b"
+  }
+}

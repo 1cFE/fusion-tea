@@ -23,6 +23,8 @@ Expose geometric winding volume separately from total cryogenic cold volume in '
 
 [AGENT] Add `mfe_winding_pack_cost.sysml` in the analysis library with two typed manual calculations. Their doc comments carry the normative equations and domains; manual completion is needed to refuse invalid scalar inputs deliberately. All ordinary values and both canonical/exploration trees remain source-owned; generated code implements this contract.
 
+[AGENT] Generated wrapper output order is not SysML declaration order. The lists below specify named outputs in source declaration order, not the positional runtime ABI. Each typed completion returns its named result dictionary in its generated Output schema's `model_fields` order, which matches the wrapper's tuple unpacking. Public wrapper tests verify the named quantities. Derived price and escalation constants are authored as float64 literals with the derivation retained in comments, because static arithmetic expressions generate calculation outputs rather than public input parameters on this route.
+
 `'Winding Pack Material Inventory'` inputs: `volume_in`, `f_copper`, `f_solder`, `f_steel`, `f_helium`, `rho_copper`, `rho_solder`, `rho_steel`, `price_copper`, `price_solder`, `price_steel`, `price_helium`, `helium_pressure`, `temperature`, `helium_gas_constant`. Outputs in this order: `mass_copper`, `mass_solder`, `mass_steel`, `mass_helium`, `cost_copper`, `cost_solder`, `cost_steel`, `cost_helium`, `material_cost`, `helium_density`, `tape_volume`.
 
 ```text

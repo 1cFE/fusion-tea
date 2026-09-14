@@ -6,8 +6,56 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-DOMAIN_EVIDENCE = ROOT / 'work/active/WI-056_primary-loop-heat-capacity-domain/evidence'
+DOMAIN_EVIDENCE = ROOT / 'work/active/WI-040_winding-pack-mass-cost/evidence'
 STRUCTURE_EVIDENCE = ROOT / 'work/active/WI-057_stellaris-structural-decomposition/evidence/merge_onto_demo_maturation'
+P = 'stellarator_09__stellaris__'
+# WI-040 (2026-09-13): explicit ABI additions, not whatever regeneration happens to emit.
+WI040_PARAMETERS = {P + 'magnet__coil__turn_current'} | {
+    P + 'magnet__winding_pack__' + name for name in (
+        'f_copper', 'f_solder', 'f_steel', 'f_helium', 'rho_copper', 'rho_solder',
+        'rho_steel', 'price_copper', 'price_solder', 'price_steel', 'price_helium',
+        'helium_pressure', 'helium_gas_constant', 'winding_rate_1990',
+        'cost_escalation', 'nonplanar_factor')}
+WI040_CHANNELS = {P + 'magnet__wp_volume__vol_winding_pack'} | {
+    P + 'magnet__material_inventory__' + name for name in (
+        'mass_copper', 'mass_solder', 'mass_steel', 'mass_helium', 'cost_copper',
+        'cost_solder', 'cost_steel', 'cost_helium', 'material_cost', 'helium_density', 'tape_volume')
+} | {P + 'magnet__winding_procurement__' + name for name in (
+    'tape_cost', 'conductor_length', 'winding_fabrication_cost', 'cost')}
+WI040_CHANGED_ECONOMICS = (
+    'magnet_capital_rollup', 'powercore_capital', 'reactor_equipment_subtotal', 'installation', 'supplementary',
+    'idc_capital', 'cas22_capital', 'cas2x_pre_contingency', 'cas20_capital',
+    'overnight_capital', 'contingency_capital', 'indirect_capital',
+    'total_capital', 'lcoe', 'cas90_1cfe', 'lcoe_1cfe')
+
+
+def restate_wi040_radius_costs(translated):
+    """Replace only the declared cost descendants in temporary expectations with oracle values.
+
+    Frozen physical scalars and all structured outputs retain their original values. The old
+    winding_pack_cost channel is now the legacy comparison and therefore also remains frozen.
+    """
+    import sys
+    sys.path.insert(0, str(ROOT / 'exploration/stellarator_e2e/studies'))
+    import oracle_entry
+    changed = {oracle_entry.ORACLE_OUTPUT_TO_CHANNEL[name] for name in WI040_CHANGED_ECONOMICS}
+    oracle = {name: oracle_entry.evaluate(change) for name, change in (
+        ('baseline', {}), ('R14', {P + 'plasma__R': 14.0}))}
+    assert changed.isdisjoint(WI040_CHANNELS)
+    for name in oracle:
+        assert changed | WI040_CHANNELS <= oracle[name].keys()
+    frozen = json.loads((translated / 'frozen-results.json').read_text())
+    direct = json.loads((translated / 'direct-entering.json').read_text())
+    for name, ref in (('baseline', 'baseline'), ('R14', 'tied_R14')):
+        replacement = {k: oracle[name][k] for k in changed | WI040_CHANNELS}
+        frozen['cases'][ref]['native']['outputs'].update(replacement)
+        direct['results'][name]['single']['outputs'].update(replacement)
+    (translated / 'frozen-results.json').write_text(json.dumps(frozen, indent=2) + '\n')
+    (translated / 'direct-entering.json').write_text(json.dumps(direct, indent=2) + '\n')
+    expected = json.loads((translated / 'expectations.json').read_text())
+    expected['channels'] = sorted(set(expected['channels']) | WI040_CHANNELS)
+    (translated / 'expectations.json').write_text(json.dumps(expected, indent=2) + '\n')
+    return changed | WI040_CHANNELS
 
 
 def structure_ledger():
@@ -83,7 +131,7 @@ FINANCE_EVIDENCE = ROOT / 'work/active/WI-052_mfe-financial-rate-limits/implemen
 
 
 def current_generation():
-    spec = importlib.util.spec_from_file_location('wi056_corrected_generation', DOMAIN_EVIDENCE / 'regenerate_corrected.py')
+    spec = importlib.util.spec_from_file_location('wi040_current_generation', DOMAIN_EVIDENCE / 'regenerate.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
@@ -91,7 +139,7 @@ def current_generation():
 
 def operating_acceptance(destination, historical):
     # Keep all historical scenario execution and assertions. Replace its generator
-    # dependency with the native current thirteen-seed completion function.
+    # dependency with the native current fifteen-seed completion function (WI-040).
     spec = importlib.util.spec_from_file_location('wi052_operating_scenarios', FINANCE_EVIDENCE / 'current_regressions.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -130,6 +178,9 @@ def radius_acceptance(destination, historical):
     # WI-057 (2026-09-13): the drivers read the frozen evidence and the package under the new names.
     forward, _ = structure_ledger()
     translated, modules = translate_frozen_radius_evidence(Path(historical), destination, forward)
+    # Current economic expectations are independently recomputed; baseline arithmetic may
+    # differ by roundoff. This is a bounded tolerance, never omission of these comparisons.
+    finance |= restate_wi040_radius_costs(translated)
     for name in ('native', 'direct', 'standalone', 'cli_checks'):
         text = (historical / (name + '.py')).read_text()
         if "Path(__file__).resolve().parent.parent/'prototype'" in text:
@@ -139,6 +190,8 @@ def radius_acceptance(destination, historical):
             text = text.replace("P+'R'", "P+'plasma__R'")
         if name == 'native':
             text = replace_once(text, "'entering-package/contracts/model_contract.json'", repr(str(translated / 'entering-package/contracts/model_contract.json')))
+            text = replace_once(text, "delta['added']==[]",
+                                f"{{x[1] for x in delta['added']}}=={WI040_PARAMETERS!r}")
         if name == 'standalone':
             for suffix in ('coil_length', 'field_calc', 'stored_energy', 'magnet_cost'):
                 text = replace_once(text, f"('{suffix}',", f"('{modules[suffix]}',")

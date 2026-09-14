@@ -96,6 +96,9 @@ package mfe_plant {
             :>> exhaust_rate = fuel_cycle.exhaust_rate;
         }
         part magnet : 'Magnet System' {
+            part :>> winding_pack {
+                :>> T_inventory = cryoplant.T_cold_cryo;
+            }
             :>> r_coil = rb.r_coil;   // coil bore = radial-build vessel_or (WI-021)
             // WI-036: the winding-pack side and the winding length are now
             // COMPUTED too -- the pack is sized by the current it carries and

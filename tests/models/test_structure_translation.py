@@ -13,6 +13,8 @@ import pytest
 from tests.models.current_mfe_regressions import (
     ROOT, STRUCTURE_EVIDENCE, alias_both_spellings, structure_ledger, structure_modules,
     translate_frozen_radius_evidence, translate_names,
+    WI040_PARAMETERS, WI040_CHANNELS,
+    restate_wi040_radius_costs,
 )
 
 P = 'stellarator_09__stellaris__'
@@ -29,7 +31,12 @@ def test_ledger_is_a_verified_bijection_onto_the_live_package():
     assert set(params) == {x['qualified_name'] for x in ENTERING['parameters']}
     assert set(outputs) == {x['channel_name'] for x in ENTERING['outputs']}
     assert len(set(params.values())) == len(params) and len(set(outputs.values())) == len(outputs)
-    assert set(params.values()) == LIVE_PARAMS and set(outputs.values()) == LIVE_CHANNELS
+    # WI-040 (2026-09-13): the historical bijection is preserved; only this explicit
+    # material-account ABI is added by the current model.
+    assert set(params.values()) | WI040_PARAMETERS == LIVE_PARAMS
+    assert set(outputs.values()) | WI040_CHANNELS == LIVE_CHANNELS
+    assert not set(params.values()) & WI040_PARAMETERS
+    assert not set(outputs.values()) & WI040_CHANNELS
     assert not (set(params) & set(outputs)) and not (set(params.values()) & set(outputs.values()))
     forward, backward = structure_ledger()
     assert all(backward[new] == old for old, new in forward.items() if old != new)
@@ -97,3 +104,25 @@ def test_translation_refuses_a_name_the_live_package_cannot_honour(tmp_path):
     bad = dict(forward); bad[P + 'magnet__R_ref'] = P + 'magnet__coil__R_ref_not_here'   # an anchor the frozen evidence names
     with pytest.raises(KeyError, match='does not carry'):
         translate_frozen_radius_evidence(HISTORICAL, tmp_path, bad)
+
+
+def test_wi040_restatement_changes_only_declared_cost_descendants(tmp_path):
+    forward, _ = structure_ledger()
+    out, _ = translate_frozen_radius_evidence(HISTORICAL, tmp_path, forward)
+    path = out / 'frozen-results.json'
+    doc = json.loads(path.read_text())
+    # A planted physical defect must survive the current economic restatement.
+    doc['cases']['baseline']['native']['outputs'][P + 'plasma__fusion__p_fus'] = -1.0
+    path.write_text(json.dumps(doc))
+    changed = restate_wi040_radius_costs(out)
+    revised = json.loads(path.read_text())
+    for case in ('baseline', 'tied_R14'):
+        before = doc['cases'][case]['native']
+        after = revised['cases'][case]['native']
+        assert {k: v for k, v in after.items() if k != 'outputs'} == {k: v for k, v in before.items() if k != 'outputs'}
+        assert set(after['outputs']) - set(before['outputs']) == WI040_CHANNELS
+        for key, value in before['outputs'].items():
+            if key not in changed:
+                assert after['outputs'][key] == value
+    assert revised['cases']['baseline']['native']['outputs'][P + 'plasma__fusion__p_fus'] == -1.0
+    assert P + 'magnet__winding_pack_cost__cost' not in changed

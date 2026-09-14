@@ -7,6 +7,7 @@ SysML Source: root-0/analyses/mfe_magnet_field.sysml:172
 SysML Expressions:
     vol_extra = 0.0
     vol_cold_total = f_wp_vol * n_coils * wp_side * wp_side * c_coil + vol_extra
+    vol_winding_pack = f_wp_vol * n_coils * wp_side * wp_side * c_coil
     
 Documentation:
 Total winding-pack cold volume [m^3] across the coil set
@@ -41,7 +42,7 @@ AUTO_IMPLEMENTED = True
 from stellarator_tea.modules.mfe_magnet_field.winding_pack_cold_volume import Winding_Pack_Cold_VolumeInput
 
 
-def run_winding_pack_cold_volume(inputs: Winding_Pack_Cold_VolumeInput) -> float:
+def run_winding_pack_cold_volume(inputs: Winding_Pack_Cold_VolumeInput) -> tuple[float, float]:
     """Execute Winding_Pack_Cold_Volume calculation.
 
 Total winding-pack cold volume [m^3] across the coil set
@@ -75,6 +76,7 @@ SysML Source: root-0/analyses/mfe_magnet_field.sysml:172
 SysML Expressions:
     vol_extra = 0.0
     vol_cold_total = f_wp_vol * n_coils * wp_side * wp_side * c_coil + vol_extra
+    vol_winding_pack = f_wp_vol * n_coils * wp_side * wp_side * c_coil
     
 Documentation:
 Total winding-pack cold volume [m^3] across the coil set
@@ -107,10 +109,13 @@ Args:
     inputs: Input parameters validated against Winding_Pack_Cold_VolumeInput schema
 
 Returns:
-    float: vol_cold_total
+    tuple[float, ...]: (vol_winding_pack, vol_cold_total)
 
 Example:
     >>> inputs = Winding_Pack_Cold_VolumeInput(...)
-    >>> result = run_winding_pack_cold_volume(inputs)
+    >>> vol_winding_pack, vol_cold_total = run_winding_pack_cold_volume(inputs)
     """
-    return (((((inputs.f_wp_vol * inputs.n_coils) * inputs.wp_side) * inputs.wp_side) * inputs.c_coil) + inputs.vol_extra)
+    return (
+        ((((inputs.f_wp_vol * inputs.n_coils) * inputs.wp_side) * inputs.wp_side) * inputs.c_coil),  # vol_winding_pack
+        (((((inputs.f_wp_vol * inputs.n_coils) * inputs.wp_side) * inputs.wp_side) * inputs.c_coil) + inputs.vol_extra),  # vol_cold_total
+    )

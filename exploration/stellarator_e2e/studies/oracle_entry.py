@@ -74,6 +74,14 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}magnet__winding_pack__k_sigma": "magnet_k_sigma",
     f"{P}magnet__casing__sigma_allow": "magnet_sigma_allow",
     f"{P}magnet__winding_pack__f_wp_fab": "magnet_f_wp_fab",
+    # WI-040 explicit material procurement and winding-operation facts.
+    f"{P}magnet__coil__turn_current": "magnet_turn_current",
+    **{f"{P}magnet__winding_pack__{name}": "magnet_" + name for name in (
+        "f_copper", "f_solder", "f_steel", "f_helium", "rho_copper", "rho_solder",
+        "rho_steel", "price_copper", "price_solder", "price_steel", "price_helium",
+        "helium_pressure", "helium_gas_constant", "winding_rate_1990",
+        "cost_escalation", "nonplanar_factor",
+    )},
     # WI-044: magnet__m_casing retired (the casing mass is computed from the stored
     # energy); the five coil-bore anchors are the entry keys that replaced it.
     f"{P}magnet__casing__m_casing_ref": "magnet_m_casing_ref",
@@ -213,7 +221,17 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "m_casing": f"{P}magnet__casing_mass__m_casing",  # computed casing mass (eq. 56 shape, anchored)
     "r_coil_centre": f"{P}rb__r_coil_centre",  # the coil bore the shapes take
     "A": f"{P}plasma__geom__A",  # reported aspect ratio
-    "winding_pack": f"{P}magnet__winding_pack_cost__cost",  # WI-035 sub-account
+    "winding_pack_legacy": f"{P}magnet__winding_pack_cost__cost",  # retained WI-035 comparison
+    "winding_pack": f"{P}magnet__winding_procurement__cost",  # WI-040 selected account
+    "vol_winding_pack": f"{P}magnet__wp_volume__vol_winding_pack",
+    **{"winding_" + name: f"{P}magnet__material_inventory__{name}" for name in (
+        "mass_copper", "mass_solder", "mass_steel", "mass_helium", "cost_copper",
+        "cost_solder", "cost_steel", "cost_helium", "material_cost", "helium_density",
+        "tape_volume",
+    )},
+    "tape_procurement_cost": f"{P}magnet__winding_procurement__tape_cost",
+    "conductor_length": f"{P}magnet__winding_procurement__conductor_length",
+    "winding_fabrication_cost": f"{P}magnet__winding_procurement__winding_fabrication_cost",
     "magnet_structure": f"{P}magnet__magnet_structure_cost__cost",  # WI-035 sub-account
     "magnet_capital_rollup": f"{P}magnet__magnet_capital_rollup__capital_cost",  # WI-035 rollup
     "aux_cost": f"{P}cryoplant__aux_cooling__aux_cost",  # WI-035 aux split
@@ -249,6 +267,7 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "owner": f"{P}owner__cost",
     "supplementary": f"{P}supplementary__cost",
     "idc_capital": f"{P}idc__cost",
+    "reactor_equipment_subtotal": f"{P}reactor_equipment_subtotal__reactor_equipment_subtotal",
     "cas22_capital": f"{P}cas22_capital__cas22_capital",
     "cas2x_pre_contingency": f"{P}cas2x_pre_contingency__cas2x_pre_contingency",
     "cas20_capital": f"{P}cas20_capital__cas20_capital",
