@@ -1,0 +1,4 @@
+_pkg_link/
+__pycache__/
+*.sqlite-shm
+*.sqlite-wal

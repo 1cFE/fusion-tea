@@ -1,0 +1,26 @@
+{
+  "fixed": {
+    "stellarator_09__stellaris__availability_direct": 0.0,
+    "stellarator_09__stellaris__plasma__R": 12.7,
+    "stellarator_09__stellaris__plasma__a": 1.3
+  },
+  "grid": [],
+  "package": {
+    "dir": "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated",
+    "name": "stellarator_tea",
+    "spec": "pipelines/pipeline.yaml"
+  },
+  "policy": {
+    "name": "objective/v1",
+    "objectives": [
+      {
+        "output": "stellarator_09__stellaris__lcoe_calc__lcoe",
+        "role": "minimize"
+      }
+    ],
+    "partial_coverage": "keep-for-boundary",
+    "response_roles": {}
+  },
+  "retention": "keep",
+  "study_id": "20260913-magnet-design-transfer-baseline"
+}
