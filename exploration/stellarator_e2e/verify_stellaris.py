@@ -666,6 +666,10 @@ def compute():
     vol_cold_total = (p["magnet_f_wp_vol"] * p["magnet_n_coils"] * wp_side * wp_side
                       * c_coil + p["vol_cold_cryo"])
     vol_winding_pack = p["magnet_f_wp_vol"] * p["magnet_n_coils"] * wp_side * wp_side * c_coil
+    # WI-040 shares this state with inventory. Preserve the pre-existing public
+    # cryoplant diagnostic before invoking the new inventory consumer.
+    if not 0.0 < p["T_cold_cryo"] < p["T_amb_cryo"]:
+        raise ValueError("oracle cryoplant: require 0 < T_cold < T_amb")
     inventory = _winding_material_inventory(p, vol_winding_pack)
     procurement = _winding_procurement(p, c_coil, inventory["material_cost"])
 
@@ -755,8 +759,6 @@ def compute():
     p_sub = p["f_sub"] * p_et
     # Cryoplant electrical chain (WI-024) — mirrors the generated
     # cryoplant_electrical_power_impl.py statement forms verbatim (bit-exact):
-    if not 0.0 < p["T_cold_cryo"] < p["T_amb_cryo"]:
-        raise ValueError("oracle cryoplant: require 0 < T_cold < T_amb")
     cop_carnot = (p["T_cold_cryo"] / (p["T_amb_cryo"] - p["T_cold_cryo"]))
     cop = (p["f_carnot_cryo"] * cop_carnot)
     p_cold = ((((p["q_nuc_cryo"] * vol_cold_total) * 1e-06) + p["p_fixed_cryo"]) * p["f_uplift_cryo"])

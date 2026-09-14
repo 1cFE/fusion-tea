@@ -17,12 +17,12 @@ Related Artifacts: spec.md, design.md, basis.md
 
 | Outcome | Check and expected observation | Basis | Evidence |
 |---|---|---|---|
-| MR-WI040-1/3 | Image/vendor/NIST/code values; independently calculated masses and prices with declared rounding | research reports and design parameter table | sources complete; executable checks pending |
-| MR-WI040-2/4 | Additive procurement/fabrication identities; volume and individual-price perturbations; tape price leaves fabrication unchanged | PROCESS additive form and mass identity | pending |
-| MR-WI040-5 | Extra cold volume changes cryo output without changing pack material inventory | physical component boundary | pending |
-| MR-WI040-6 | Existing physics/verdicts equal at unchanged inputs; cost changes follow the new account through downstream totals | entering baseline and dependency graph | pending |
-| MR-WI040-7/9 | Exact family twins, named ownership, generated-interface coherence and current oracle parity | AD-008 and native integration contract | pending |
-| MR-WI040-8 | Invalid fractions, density, price, state and winding inputs refuse deliberately; finite valid extremes retain identities | design domains | pending |
+| MR-WI040-1/3 | Image/vendor/NIST/code values; independently calculated masses and prices with declared rounding | research reports and design parameter table | 137 kept component/public tests pass; audit checking original sources |
+| MR-WI040-2/4 | Additive procurement/fabrication identities; volume and individual-price perturbations; tape price leaves fabrication unchanged | PROCESS additive form and mass identity | test_winding_pack_cost.py public perturbations pass |
+| MR-WI040-5 | Extra cold volume changes cryo output without changing pack material inventory | physical component boundary | test_winding_pack_cost.py extra-volume test passes |
+| MR-WI040-6 | Existing physics/verdicts equal at unchanged inputs; cost changes follow the new account through downstream totals | entering baseline and dependency graph | baseline-reconciliation.json: 142 exact unchanged, 16 explained economic changes, 18 unchanged verdicts; R14 native/direct checks pass |
+| MR-WI040-7/9 | Exact family twins, named ownership, generated-interface coherence and current oracle parity | AD-008 and native integration contract | exact fresh generation; 158 baseline oracle comparisons; model suite 809/13; independent audit and final consumer checks in progress |
+| MR-WI040-8 | Invalid fractions, density, price, state and winding inputs refuse deliberately; finite valid extremes retain identities | design domains | kept component/public domain tests pass |
 
 ## Ownership
 

@@ -45,13 +45,13 @@ Updated: 2026-09-13
 
 [INFERRED] Preserve WI-057's existing physical decomposition. The work concerns pack quantities and accounting, not coil configuration, pack/casing fit, a new critical-current surface, or reactor optimization. WI-038 remains subsequent work. A conductor-volume model must not be inferred from ampere-metres without its own basis.
 
-## Unresolved questions
+## Research decisions
 
-1. Accounting scope: establish a defensible procurement/fabrication treatment through REQ-040-02. A new explicitly scoped estimate may replace the unsplit multiplier without claiming to have recovered its unknown decomposition.
-2. Parameter basis: verify densities and unit prices for the selected materials through REQ-040-01, including helium state and solder composition. Choose and label approximations where evidence supports an engineering estimate rather than exact procurement.
+1. [INFERRED] REQ-040-02 supports the additive procurement and length-based winding estimate selected in design.md. This replaces the unsplit multiplier without claiming to recover its unknown decomposition.
+2. [INFERRED] REQ-040-01 supplies material densities, price references and helium state checks. The chosen solder proxy, price-year escalation and transfer limits are documented in design.md and the two research reports.
 
 ## Success and stage state
 
-Specification started; the material correction is adopted and research is resolving accounting and parameter basis. Design, implementation and independent audit have not started. The existing WI-040 registration is reused; no duplicate item is minted. This spec establishes native active-stage state while the registry retains its existing row until a supported PM operation changes it.
+Implementation and current consumer adaptations are committed at 173ac157. The full model battery passes 809 tests with 13 inherited skips. Independent audit is in progress; its source-comment finding is being corrected and remaining study-consumer regressions are being checked. See plan.md and evidence/ for current completion evidence. The existing WI-040 registration is reused; no duplicate item is minted.
 
 Completion requires the requirements above to be evidenced and a positive independent audit. Closing or archiving is owner-held.

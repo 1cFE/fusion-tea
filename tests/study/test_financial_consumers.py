@@ -94,8 +94,8 @@ def test_current_rate_route_and_coverage(tmp_path, stock_simkit_path):
     inputs = {}
     for path in (route.PACKAGE_DIR/'inputs').glob('*.json'):
         inputs.update(json.loads(path.read_text()))
-    assert len(inputs) == 246
-    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 99
+    assert len(inputs) == 263  # WI-040 adds 17 explicitly mapped procurement inputs.
+    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 116
     assert len(set(inputs)-oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys()) == 147
     controls = {}
     rows = []
@@ -105,7 +105,7 @@ def test_current_rate_route_and_coverage(tmp_path, stock_simkit_path):
             controls[case.inputs[route.P+'availability_direct']] = case
     for case in cases:
         control = controls[case.inputs[route.P+'availability_direct']]
-        assert len(case.outputs) == 158
+        assert len(case.outputs) == 174  # WI-040 adds 16 inventory/procurement outputs.
         assert case.verdicts == control.verdicts
         assert len(case.verdicts) == 18
         for channel in case.outputs.keys() - FINANCIAL_CHANNELS:
@@ -116,7 +116,7 @@ def test_current_rate_route_and_coverage(tmp_path, stock_simkit_path):
             relative(case.outputs[channel], expected[channel])
         rows.append({'inputs': dict(case.inputs), 'finance': {
             channel: {'native': case.outputs[channel], 'oracle': expected[channel]}
-            for channel in sorted(covered_finance)}, 'physical_exact': 145,
+            for channel in sorted(covered_finance)}, 'nonfinancial_exact': 161,
             'verdicts': route.short_verdicts(case)})
     evidence = {'native_inputs': sorted(inputs), 'mapping': oracle.ENTRY_KEY_TO_ORACLE_INPUT,
                 'unmapped': sorted(set(inputs)-oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys()),
