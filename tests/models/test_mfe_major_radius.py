@@ -18,7 +18,7 @@ import hashlib
 WI057_MODEL_HASHES=json.loads((ROOT/'work/active/WI-057_stellaris-structural-decomposition/evidence/merge_onto_demo_maturation/model-hashes.json').read_text())
 WI057_STRUCTURE=tuple(WI057_MODEL_HASHES)
 from tests.models.current_mfe_regressions import structure_ledger, structure_modules
-from tests.models.current_mfe_regressions import DOMAIN_EVIDENCE, WI040_CHANNELS
+from tests.models.current_mfe_regressions import DOMAIN_EVIDENCE, WI040_CHANNELS, WI038_CHANNELS
 RENAMED=structure_ledger()[0]
 MODULES=structure_modules(RENAMED)
 def new(key): return RENAMED.get(key,key)  # an entry point or channel under its WI-057 name
@@ -49,10 +49,10 @@ def test_binding_documentation_and_source_preservation(tmp_path):
             source=str(canonical_path(p).relative_to(ROOT))
             assert lexical((models/p).read_text()) == entering[source]['tokens']
         elif p in current_hashes:
-            # WI-040 (2026-09-13): only the six explicitly changed source twins use
-            # the audited additive-account receipt. Unchanged sources keep old guards.
+            # WI-040/038: preserve the six prior source guards and add conductor
+            # capability. Other unchanged sources keep their historical guards.
             assert set(current_hashes) == {
-                'analyses/mfe_magnet_field.sysml', 'analyses/mfe_winding_pack_cost.sysml',
+                'analyses/mfe_magnet_field.sysml', 'analyses/mfe_winding_pack_cost.sysml', 'analyses/mfe_conductor_grade.sysml',
                 'cost_structure/mfe_power_core.sysml', 'structure/mfe_magnet_parts.sysml',
                 'designs/generic_mfe/mfe_plant.sysml', 'designs/stellarator_09/stellarator_plant.sysml'}
             assert hashlib.sha256((models/p).read_bytes()).hexdigest()==current_hashes[p],p
@@ -146,9 +146,9 @@ def read_result(acceptance,name):
 def test_complete_native_and_direct_parity(acceptance,case):
     native=read_result(acceptance,'results.json')[case]
     direct=read_result(acceptance,'direct-production.json')['results'][case]
-    assert len(native['outputs'])==158 + len(WI040_CHANNELS) and len(native['responses'])==19
-    assert len(direct['single']['outputs'])==177 + len(WI040_CHANNELS)
-    assert len(direct['helper']['outputs'])==158 + len(WI040_CHANNELS)
+    assert len(native['outputs'])==158 + len(WI040_CHANNELS | WI038_CHANNELS) and len(native['responses'])==19
+    assert len(direct['single']['outputs'])==177 + len(WI040_CHANNELS | WI038_CHANNELS)
+    assert len(direct['helper']['outputs'])==158 + len(WI040_CHANNELS | WI038_CHANNELS)
     # Full exact baseline and tolerant R14 scalar comparisons, plus exact serialized
     # structured outputs, are performed in the shared executing acceptance path.
     assert read_result(acceptance,'checks.json')[case]['responses_exact']

@@ -29,6 +29,8 @@ package mfe_magnet_parts {
         attribute c_coil : Real;
         // coil-shape factor [1] = typical circumference / major radius (WI-036)
         attribute k_coil : Real;
+        // Reference tape procurement rate [dollars/(kA m)] at B_grade_ref.
+        // Existing ungraded comparison accounts continue to consume this rate.
         attribute cost_per_kAm : Real;
         // Effective operating current per composite-conductor turn [A].
         attribute turn_current : Real;
@@ -82,8 +84,15 @@ package mfe_magnet_parts {
         attribute winding_rate_1990 : Real; // dollars1990/m of composite conductor
         attribute cost_escalation : Real; // dimensionless year conversion
         attribute nonplanar_factor : Real; // dimensionless transfer assumption
-        // winding-pack current density [A/mm^2] -- the WI-036 sizing lever
+        // Reference winding-pack current density [A/mm^2] at B_grade_ref.
+        // Hold fixed in the supported priced-transfer study; other values are calibration.
         attribute j_wp : Real;
+        attribute B_grade_ref : Real; // reference purchased envelope [T]
+        attribute field_exponent : Real; // positive relative field exponent [1]
+        // Derived capability quantities, bound by the magnet-owned analysis.
+        attribute conductor_quantity_factor : Real;
+        attribute j_wp_effective : Real;
+        attribute cost_per_kAm_effective : Real;
         // winding-pack cross-section side, worst coil [m]
         attribute wp_side : Real;
         // winding-pack set-distribution factor [1] (WI-036 cold volume)
@@ -98,7 +107,8 @@ package mfe_magnet_parts {
         attribute f_wp_fab : Real;
         // stress concentration transfer fact [1] (coil-set structural fact)
         attribute k_sigma : Real;
-        // conductor peak-field ceiling [T] (conductor technology fact, WI-030)
+        // Purchased conductor field envelope [T]; checked against actual peak field.
+        // WI-038 prices a relative quantity consequence, not a certified critical field.
         attribute B_max : Real;
         // Cryoplant heat-load chain (WI-024). Dormant by default: a concept that
         // knows its cryo electrical directly binds p_cryo (the direct term) and

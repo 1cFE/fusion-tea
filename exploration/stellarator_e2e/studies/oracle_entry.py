@@ -92,6 +92,8 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}magnet__casing__steel_price": "magnet_steel_price",
     f"{P}magnet__casing__f_steel_fab": "magnet_f_steel_fab",
     f"{P}magnet__winding_pack__B_max": "magnet_B_max",
+    f"{P}magnet__winding_pack__B_grade_ref": "magnet_B_grade_ref",
+    f"{P}magnet__winding_pack__field_exponent": "magnet_field_exponent",
     f"{P}magnet__coil__peak_ratio": "magnet_peak_ratio",
     f"{P}plasma__n_e0": "n_e0",
     # WI-042: alpha_n_e retired as an entry key -- the electron profile is derived
@@ -224,6 +226,8 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "winding_pack_legacy": f"{P}magnet__winding_pack_cost__cost",  # retained WI-035 comparison
     "winding_pack": f"{P}magnet__winding_procurement__cost",  # WI-040 selected account
     "vol_winding_pack": f"{P}magnet__wp_volume__vol_winding_pack",
+    **{'conductor_' + name: f'{P}magnet__conductor_grade__{name}' for name in (
+        'quantity_factor', 'j_wp_effective', 'cost_per_kAm_effective')},
     **{"winding_" + name: f"{P}magnet__material_inventory__{name}" for name in (
         "mass_copper", "mass_solder", "mass_steel", "mass_helium", "cost_copper",
         "cost_solder", "cost_steel", "cost_helium", "material_cost", "helium_density",

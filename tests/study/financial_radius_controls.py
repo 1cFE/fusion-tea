@@ -14,7 +14,7 @@ import oracle_entry as oracle  # noqa: E402 — runtime import path established 
 import study_route as route  # noqa: E402 — runtime import path established above
 
 from tests.study.financial_channels import FINANCIAL_CHANNELS
-from tests.models.current_mfe_regressions import WI040_CHANNELS, WI040_CHANGED_ECONOMICS
+from tests.models.current_mfe_regressions import WI040_CHANNELS, WI040_CHANGED_ECONOMICS, WI038_CHANNELS
 
 from scripts.study import common, verify  # noqa: E402 — runtime import path established above
 
@@ -41,7 +41,12 @@ def check_controls(out):
         # accounting descendants and new inventory channels use current expectations.
         for key in changed_costs | WI040_CHANNELS:
             expected_outputs[key] = channels[key]
-        assert set(case.outputs) == set(expected_outputs) == {renamed(c) for c in expectations["channels"]} | WI040_CHANNELS
+        # Both controls retain the reference envelope: these three additions are
+        # known exactly without replacing any frozen physical value.
+        expected_outputs.update({route.P + 'magnet__conductor_grade__' + k: v for k, v in {
+            'quantity_factor': 1.0, 'j_wp_effective': 118.8271604938272,
+            'cost_per_kAm_effective': 50.0}.items()})
+        assert set(case.outputs) == set(expected_outputs) == {renamed(c) for c in expectations["channels"]} | WI040_CHANNELS | WI038_CHANNELS
         for key, value in expected_outputs.items():
             assert (
                 math.isclose(case.outputs[key], value, rel_tol=1e-9, abs_tol=0.0)

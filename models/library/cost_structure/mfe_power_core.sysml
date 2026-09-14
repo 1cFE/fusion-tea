@@ -5,6 +5,7 @@ package mfe_power_core {
     private import mfe_magnet_field::*;
     private import mfe_magnet_cost::*;
     private import mfe_winding_pack_cost::*;
+    private import mfe_conductor_grade::*;
     private import mfe_heating_chain::*;
     private import mfe_divertor_heat::*;
     private import mfe_account_costs::*;
@@ -109,6 +110,9 @@ package mfe_power_core {
         }
         part winding_pack : 'Winding Pack' {
             :>> wp_side = wp_sizing.wp_side;
+            :>> conductor_quantity_factor = conductor_grade.quantity_factor;
+            :>> j_wp_effective = conductor_grade.j_wp_effective;
+            :>> cost_per_kAm_effective = conductor_grade.cost_per_kAm_effective;
         }
         part casing : 'Coil Casing' {
             :>> m_casing = casing_mass.m_casing;
@@ -173,12 +177,20 @@ package mfe_power_core {
             in W_mag_ref = casing.W_mag_ref;
             in m_casing_ref = casing.m_casing_ref;
         }
+        // WI-038: installed envelope changes quantity; demand remains B_peak.
+        calc conductor_grade : 'Conductor Field Capability' {
+            in B_design = winding_pack.B_max;
+            in B_reference = winding_pack.B_grade_ref;
+            in field_exponent = winding_pack.field_exponent;
+            in j_reference = winding_pack.j_wp;
+            in price_reference = coil.cost_per_kAm;
+        }
         // WI-036: the winding pack is sized by the current it carries, so
         // wp_side stops being an entry point and becomes a consequence of
         // coil current and the chosen winding-pack current density.
         calc wp_sizing : 'Winding Pack Sizing' {
             in I_coil = coil.I_coil;
-            in j_wp = winding_pack.j_wp;
+            in j_wp = winding_pack.j_wp_effective;
         }
         // WI-036: winding length responds to machine scale through a held
         // coil-shape factor, instead of resting on a printed constant.
@@ -248,7 +260,7 @@ package mfe_power_core {
             in I_coil = coil.I_coil;
             in f_set = coil.f_set;
             in c_coil = coil.c_coil;
-            in cost_per_kAm = coil.cost_per_kAm;
+            in cost_per_kAm = winding_pack.cost_per_kAm_effective;
             in turn_current = coil.turn_current;
             in winding_rate_1990 = winding_pack.winding_rate_1990;
             in cost_escalation = winding_pack.cost_escalation;

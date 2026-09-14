@@ -96,7 +96,7 @@ def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
     inputs = package_inputs(real_package_path)
 
     assert set(bindings) == {entry["constraint_id"] for entry in entries}
-    assert len(inputs) == 263  # WI-040 adds seventeen procurement inputs.
+    assert len(inputs) == 265  # WI-040 adds seventeen inputs; WI-038 adds two references.
     resolved = 0
     for entry in entries:
         cid = entry["constraint_id"]

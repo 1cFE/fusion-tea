@@ -26,6 +26,12 @@ def wi040_expected(row):
     p = oracle.vs.IN | row['overrides']
     old = row['outputs']
     expected = dict(old)
+    # WI-038 entering controls are at q=1. Preserve old outputs and add the exact
+    # effective reference values; off-reference grade claims have separate tests.
+    assert p['magnet_B_max'] == p['magnet_B_grade_ref']
+    expected.update(conductor_quantity_factor=1.0,
+                    conductor_j_wp_effective=p['magnet_j_wp'],
+                    conductor_cost_per_kAm_effective=p['magnet_cost_per_kAm'])
     volume = p['magnet_f_wp_vol'] * p['magnet_n_coils'] * p['magnet_I_coil'] / p['magnet_j_wp'] / 1e6 * p['magnet_k_coil'] * p['R']
     rho = p['magnet_helium_pressure'] / p['magnet_helium_gas_constant'] / p['T_cold_cryo']
     materials = ('copper', 'solder', 'steel', 'helium')
@@ -132,18 +138,18 @@ def test_valid_outputs_exactly_preserved_and_physical_identities(row):
 
 
 def test_adapter_contract_and_ambient_limit_preserved():
-    from tests.models.current_mfe_regressions import WI040_PARAMETERS, WI040_CHANNELS
+    from tests.models.current_mfe_regressions import WI040_PARAMETERS, WI040_CHANNELS, WI038_PARAMETERS, WI038_CHANNELS
     old_inputs = renamed_keys(BEFORE['input_mapping'])
-    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS} == old_inputs
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS
+    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS} == old_inputs
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS
     old_outputs = renamed_values(BEFORE['output_mapping'])
     # The old selected winding alias now denotes the additive account; preserve its
     # previous channel under the explicit legacy name, and add the subtotal coverage.
     old_outputs['winding_pack_legacy'] = old_outputs.pop('winding_pack')
-    extras = WI040_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
+    extras = WI040_CHANNELS | WI038_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
     assert {k: v for k, v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v not in extras} == old_outputs
     assert set(oracle.ORACLE_OUTPUT_TO_CHANNEL.values()) - set(old_outputs.values()) == extras
-    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 116
+    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 118
     for suffix in ("cryoplant__T_amb_cryo", "unknown_domain_input"):  # WI-057 (2026-09-13): the key carries its part's path
         with pytest.raises(oracle.OracleSeamError, match="no declared oracle mapping"):
             oracle.evaluate({oracle.P + suffix: 300.0})

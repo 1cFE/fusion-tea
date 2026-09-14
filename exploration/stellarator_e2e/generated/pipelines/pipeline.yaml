@@ -211,11 +211,25 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__magnet__winding_pack_cost__cost
 
+  # mfe_conductor_grade.Conductor_Field_CapabilityModule
+  stellarator_09__stellaris__magnet__conductor_grade:
+    module_type: mfe_conductor_grade.Conductor_Field_CapabilityModule
+    inputs:
+      B_reference: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__B_grade_ref
+      price_reference: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__cost_per_kAm
+      field_exponent: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__field_exponent
+      j_reference: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__j_wp
+      B_design: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__B_max
+    outputs:
+      quantity_factor: float stellarator_09__stellaris__magnet__conductor_grade__quantity_factor
+      j_wp_effective: float stellarator_09__stellaris__magnet__conductor_grade__j_wp_effective
+      cost_per_kAm_effective: float stellarator_09__stellaris__magnet__conductor_grade__cost_per_kAm_effective
+
   # mfe_magnet_field.Winding_Pack_SizingModule
   stellarator_09__stellaris__magnet__wp_sizing:
     module_type: mfe_magnet_field.Winding_Pack_SizingModule
     inputs:
-      j_wp: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__j_wp
+      j_wp: float stellarator_09__stellaris__magnet__conductor_grade__j_wp_effective
       I_coil: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__I_coil
     outputs:
       root: RootModel[float] stellarator_09__stellaris__magnet__wp_sizing__wp_side
@@ -290,7 +304,7 @@ modules:
       n_coils: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__n_coils
       c_coil: float stellarator_09__stellaris__magnet__coil_length__c_coil.root
       turn_current: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__turn_current
-      cost_per_kAm: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__cost_per_kAm
+      cost_per_kAm: float stellarator_09__stellaris__magnet__conductor_grade__cost_per_kAm_effective
       I_coil: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__I_coil
       nonplanar_factor: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__nonplanar_factor
       cost_escalation: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__cost_escalation
@@ -1367,6 +1381,9 @@ modules:
       stellarator_09__stellaris__fuel_cycle__fuel__loss_rate: float stellarator_09__stellaris__fuel_cycle__fuel__loss_rate.json
       stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate: float stellaris__fuel_cycle__exhaust_rate.json
       stellarator_09__stellaris__magnet__winding_pack_cost__cost: RootModel[float] stellaris__magnet__winding_cost_legacy.json
+      stellarator_09__stellaris__magnet__conductor_grade__quantity_factor: float stellaris__magnet__winding_pack__conductor_quantity_factor.json
+      stellarator_09__stellaris__magnet__conductor_grade__j_wp_effective: float stellaris__magnet__winding_pack__j_wp_effective.json
+      stellarator_09__stellaris__magnet__conductor_grade__cost_per_kAm_effective: float stellaris__magnet__winding_pack__cost_per_kAm_effective.json
       stellarator_09__stellaris__magnet__wp_sizing__wp_side: RootModel[float] stellaris__magnet__winding_pack__wp_side.json
       stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack: float stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack.json
       stellarator_09__stellaris__magnet__wp_volume__vol_cold_total: float stellaris__cryoplant__vol_cold_total.json

@@ -13,7 +13,7 @@ import pytest
 from tests.models.current_mfe_regressions import (
     ROOT, STRUCTURE_EVIDENCE, alias_both_spellings, structure_ledger, structure_modules,
     translate_frozen_radius_evidence, translate_names,
-    WI040_PARAMETERS, WI040_CHANNELS,
+    WI040_PARAMETERS, WI040_CHANNELS, WI038_PARAMETERS, WI038_CHANNELS,
     restate_wi040_radius_costs,
 )
 
@@ -33,10 +33,10 @@ def test_ledger_is_a_verified_bijection_onto_the_live_package():
     assert len(set(params.values())) == len(params) and len(set(outputs.values())) == len(outputs)
     # WI-040 (2026-09-13): the historical bijection is preserved; only this explicit
     # material-account ABI is added by the current model.
-    assert set(params.values()) | WI040_PARAMETERS == LIVE_PARAMS
-    assert set(outputs.values()) | WI040_CHANNELS == LIVE_CHANNELS
-    assert not set(params.values()) & WI040_PARAMETERS
-    assert not set(outputs.values()) & WI040_CHANNELS
+    assert set(params.values()) | WI040_PARAMETERS | WI038_PARAMETERS == LIVE_PARAMS
+    assert set(outputs.values()) | WI040_CHANNELS | WI038_CHANNELS == LIVE_CHANNELS
+    assert not set(params.values()) & (WI040_PARAMETERS | WI038_PARAMETERS)
+    assert not set(outputs.values()) & (WI040_CHANNELS | WI038_CHANNELS)
     assert not (set(params) & set(outputs)) and not (set(params.values()) & set(outputs.values()))
     forward, backward = structure_ledger()
     assert all(backward[new] == old for old, new in forward.items() if old != new)
@@ -120,7 +120,7 @@ def test_wi040_restatement_changes_only_declared_cost_descendants(tmp_path):
         before = doc['cases'][case]['native']
         after = revised['cases'][case]['native']
         assert {k: v for k, v in after.items() if k != 'outputs'} == {k: v for k, v in before.items() if k != 'outputs'}
-        assert set(after['outputs']) - set(before['outputs']) == WI040_CHANNELS
+        assert set(after['outputs']) - set(before['outputs']) == WI040_CHANNELS | WI038_CHANNELS
         for key, value in before['outputs'].items():
             if key not in changed:
                 assert after['outputs'][key] == value

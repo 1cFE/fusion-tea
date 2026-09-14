@@ -295,6 +295,9 @@ IN = dict(
     # the oracle mirrors the model's chain independently. j_wp and k_coil are the
     # float64s of the printed pairs (15.4 MA / 360 mm; 25 m / 12.7 m).
     magnet_j_wp=118.8271604938272, magnet_k_coil=1.9685039370078741,
+    # WI-038: conditional 20 K relative REBCO field law. Reference density is
+    # held fixed in the priced-transfer claim; 20–30 T is an extrapolative study window.
+    magnet_B_grade_ref=24.9, magnet_field_exponent=0.6,
     magnet_f_wp_vol=0.8780864197530865,
     # WI-036 conductor check: pack modulus, tape load-sharing (from the source's own
     # 600 MPa / <0.2% pair), and the axial irreversible-strain limit.
@@ -519,13 +522,41 @@ def _oracle_lifecycle_calendar(cost_per_event, q_n, fluence_limit, interest_rate
                 n_replacements=float(K), physical_life_fpy=L, events=events)
 
 
-def _winding_pack_side(current, density):
-    """Size a square pack in metres from current A and density A/mm²."""
+def _validate_winding_pack_magnitudes(current, density):
     if not math.isfinite(current) or current < 0.0:
         raise ValueError("oracle Winding Pack Sizing: I_coil must be finite and nonnegative")
     if not math.isfinite(density) or density <= 0.0:
         raise ValueError("oracle Winding Pack Sizing: j_wp must be finite and positive")
+
+
+def _winding_pack_side(current, density):
+    """Size a square pack in metres from current A and density A/mm²."""
+    _validate_winding_pack_magnitudes(current, density)
     return (current / density) ** 0.5 / 1000.0
+
+
+def _conductor_field_capability(B_design, B_reference, field_exponent, j_reference, price_reference):
+    """WI-038 independent relative quantity, reference density and tape-price relation."""
+    facts = dict(B_design=B_design, B_reference=B_reference, field_exponent=field_exponent,
+                 j_reference=j_reference, price_reference=price_reference)
+    for name, value in facts.items():
+        if not math.isfinite(value) or (value < 0 if name == 'price_reference' else value <= 0):
+            raise ValueError(f'oracle Conductor Field Capability: invalid {name}')
+    ratio = B_design / B_reference
+    if not math.isfinite(ratio) or ratio <= 0:
+        raise ValueError('oracle Conductor Field Capability: invalid field_ratio')
+    try:
+        quantity = ratio ** field_exponent
+    except OverflowError as exc:
+        raise ValueError('oracle Conductor Field Capability: invalid quantity_factor') from exc
+    if not math.isfinite(quantity) or quantity <= 0:
+        raise ValueError('oracle Conductor Field Capability: invalid quantity_factor')
+    result = dict(quantity_factor=quantity, j_wp_effective=j_reference / quantity,
+                  cost_per_kAm_effective=price_reference * quantity)
+    for name, value in result.items():
+        if not math.isfinite(value) or (value < 0 if name == 'cost_per_kAm_effective' else value <= 0):
+            raise ValueError(f'oracle Conductor Field Capability: invalid {name}')
+    return result
 
 
 def _primary_loop_mass_flow(source_heat, cp, temperature_rise):
@@ -655,7 +686,12 @@ def compute():
     m_casing = p["magnet_m_casing_ref"] * (W_mag / p["magnet_W_mag_ref"]) ** 0.78
     # WI-036: the pack sizes itself from the current, and the winding length from
     # machine scale; both were held inputs before this item.
-    wp_side = _winding_pack_side(p["magnet_I_coil"], p["magnet_j_wp"])
+    # Preserve existing public current/density diagnostic precedence. The reference
+    # density is still independently admissible arithmetically, outside the priced claim.
+    _validate_winding_pack_magnitudes(p["magnet_I_coil"], p["magnet_j_wp"])
+    grade = _conductor_field_capability(p['magnet_B_max'], p['magnet_B_grade_ref'],
+                                       p['magnet_field_exponent'], p['magnet_j_wp'], p['magnet_cost_per_kAm'])
+    wp_side = _winding_pack_side(p["magnet_I_coil"], grade['j_wp_effective'])
     c_coil = p["magnet_k_coil"] * p["R"]
     if wp_side == 0.0:
         raise ValueError("oracle Winding Pack Stress: wp_side must be nonzero")
@@ -671,7 +707,8 @@ def compute():
     if not 0.0 < p["T_cold_cryo"] < p["T_amb_cryo"]:
         raise ValueError("oracle cryoplant: require 0 < T_cold < T_amb")
     inventory = _winding_material_inventory(p, vol_winding_pack)
-    procurement = _winding_procurement(p, c_coil, inventory["material_cost"])
+    procurement = _winding_procurement(p | {'magnet_cost_per_kAm': grade['cost_per_kAm_effective']},
+                                       c_coil, inventory["material_cost"])
 
     # --- Plasma Sustainment (WI-037): computed ash, quasi-neutral fuel,
     # ISS04 tau_E, composed radiation, required sustained heating ---
@@ -1015,6 +1052,7 @@ def compute():
         cycle_domain_product=cycle_domain_product,
         winding_pack=winding_pack, magnet_structure=magnet_structure,
         winding_pack_legacy=winding_pack_legacy, vol_winding_pack=vol_winding_pack,
+        **{'conductor_' + name: value for name, value in grade.items()},
         **{"winding_" + name: value for name, value in inventory.items()},
         tape_procurement_cost=procurement["tape_cost"],
         conductor_length=procurement["conductor_length"],

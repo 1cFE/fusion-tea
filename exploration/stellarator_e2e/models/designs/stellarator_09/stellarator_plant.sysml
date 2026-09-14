@@ -271,7 +271,9 @@ package stellarator_09 {
                 // REBCO HTS conductor [$/kA-m]. Source: costing_constants.yaml:57
                 //   (conductor_cost_rebco = 50.0). NOT x1e6 -- already $/kA-m; the
                 //   magnet formula omits the /1e6 M$ conversion and yields $.
-                :>> cost_per_kAm = 50.0;
+                :>> cost_per_kAm = 50.0 {
+                    doc /* Reference tape procurement [dollars/(kA m)]. **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Reference**: line 57, conductor_cost_rebco = 50.0 (pin 0254385). **Basis**: [AGENT] WI-038 economically normalizes this inherited rate to the 24.9 T reference envelope; no vendor quote establishes that field/temperature rating. The relative multiplier prices tape quantity, not a manufacturer premium. Both legacy comparison accounts retain this ungraded rate. **Last Updated**: 2026-09-13 */
+                }
             :>> coil_t = 0.30 {
                 doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py **Ref**: geometry.py:37 (RadialBuild.coil_t = 0.30 default) **Basis**: radial-build coil-pack default */
             }
@@ -288,6 +290,12 @@ package stellarator_09 {
             }
             }
             part :>> winding_pack {
+                :>> B_grade_ref = 24.9 {
+                    doc /* Reference purchased field envelope [T]. **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_002_table_0.png **Reference**: Table 2, peak conductor magnetic field strength 24.9 T. **Basis**: [AGENT] normalize WI-038 to the inherited design envelope. This exceeds the inspected Molodyk 20 K measurements through 20 T; equality at the anchor does not qualify the conductor. Hold this economic reference fixed in priced transfer. **Last Updated**: 2026-09-13 */
+                }
+                :>> field_exponent = 0.6 {
+                    doc /* Relative field exponent [1]. **Source**: knowledge/sources/development_and_large_volume_production_of_extremely_high/raw.pdf **Reference**: Molodyk et al. (2021), printed p. 5: approximate critical-current field exponent 0.6 at 20 K. **Basis**: [AGENT] inverse relative-current-density law for tape quantity at fixed operating fraction, tape family and angular assumption. The paragraph reports no fit interval. The 20-30 T window is an extrapolative sensitivity choice, not source-validated capability. Keep temperature at 20 K for this interpretation; exponent changes are explicit scenarios. **Last Updated**: 2026-09-13 */
+                }
                 doc /* WI-040 procurement parameter basis. **Source**: Stellaris Table 7; registered supplier, USGS, NIST and PROCESS captures. **Reference**: individual attributes below. **Basis**: [AGENT] fixed composition outside the source point; nominal solid densities neglect cryogenic contraction. Solder alloy and procurement form are proxies. No quantified inter-pancake insulation, unresolved fixed cable charge, delivery or production learning is included. Estimates do not establish complete manufactured-magnet cost or normalize the whole plant's price year. **Last Updated**: 2026-09-13 */
                 :>> f_copper = 0.35 {
                     doc /* Volume fraction [1]. **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_021_table_0.png **Reference**: Stellaris Table 7;  knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_021_table_0.png (copper jacket 35%). **Last Updated**: 2026-09-13 */
@@ -358,7 +366,7 @@ package stellarator_09 {
                 // exceeds by 1.9 T; the disagreement is disclosed, the design value
                 // is bound (WI-030).
                 :>> B_max = 24.9 {
-                    doc /* **Source**: stellaris-design-details.md; /home/reid/1cfe/1costingfe/src/costingfe/defaults.py (pin 0254385) **Ref**: Table 2 image (images/page_002_table_0.png: peak conductor magnetic field strength 24.9 T); defaults.py:605-612 (MAGNET_TABLE rebco_hts b_max = 23.0, not bound -- owner ruling 2026-08-21) **Basis**: Stellaris REBCO design peak field; the HTS arm's ceiling for the Item 6 A/B */
+                    doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_002_table_0.png; /home/reid/1cfe/1costingfe/src/costingfe/defaults.py (pin 0254385) **Ref**: Table 2, peak conductor magnetic field strength 24.9 T; defaults.py:605-612 (MAGNET_TABLE rebco_hts b_max = 23.0, not bound -- owner ruling 2026-08-21). **Basis**: Stellaris design envelope retained. WI-038 adds an agent-derived relative quantity cost for the selected envelope; the existing actual-peak-field verdict does not become a certified critical-field or absolute operating-margin test. **Last Updated**: 2026-09-13 */
                 }
                 // Winding fabrication markup [1] = 3.5 (winding/insulation/cooling/jointing/test)
                 // x 1.9 (documented NCSX non-planar production penalty). Content-mapped: no casing,
@@ -367,17 +375,16 @@ package stellarator_09 {
                 :>> f_wp_fab = 6.65 {
                     doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:50 (coil_cu_fab_markup 3.5, content list); :60-72 (stellarator 5.87 = 3.09 x 1.9 NCSX overrun; winding path handled separately) **Basis**: content-mapped fabrication build-up on the conductor base (WI-035 D4) */
                 }
-                // Winding-pack current density [A/mm^2], worst coil (coil 0).
+                // Reference winding-pack current density [A/mm^2], worst coil (coil 0).
                 // Bound as the float64 of the printed pair (15.4 MA, 360 mm) so
                 // that wp_side reproduces 0.360000 m exactly; the printed j_WP is
                 // 119 A/mm^2 (Table 8), and the design range across the six unique
-                // coils is 112-124. WI-036 D1: this is the sizing LEVER that
-                // replaced the held wp_side -- the pack is now sized by the current
-                // it carries, so stress grows as sqrt(I_coil * j_wp) rather than
-                // linearly in current, and a wider pack costs cold mass through
-                // the cryo chain. wp_side itself is computed (mfe_plant.sysml).
+                // coils is 112-124. WI-038 holds this reference fixed for priced
+                // transfer; live sizing reads j_wp_effective after envelope grading.
+                // Independent reference-density changes remain calibration/arithmetic,
+                // not priced same-technology transfer without a new inventory/price basis.
                 :>> j_wp = 118.8271604938272 {
-                    doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png, image-verified -- the markdown extraction of this table is garbled: j_WP 119/112/120/112/122/124 A/mm^2; I total amp-turns 15.4/14.6/13.8/12.9/12.5/11.2 MA; cross-section side 360/360/340/340/320/300 mm, coil 0 the highest-force coil at 174 MN/m) **Basis**: Stellaris worst-coil winding-pack current density; the relation I = j_wp * side^2 closes across all six unique coils to better than 1% (-0.58% .. +0.52%) */
+                    doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_022_table_0.png **Ref**: Table 8, image-verified: j_WP 119/112/120/112/122/124 A/mm^2; total amp-turns 15.4/14.6/13.8/12.9/12.5/11.2 MA; cross-section sides 360/360/340/340/320/300 mm. **Basis**: calibrated worst-coil reference density from 15.4 MA and 0.36 m, held at 118.8271604938272 A/mm^2 throughout WI-038 priced transfer together with composition and coil-set shape/distribution factors. Independent changes require a separately justified reference price/inventory basis. **Last Updated**: 2026-09-13 */
                 }
                 // Winding-pack set-distribution factor [1] = printed total winding-pack
                 // volume over the worst-coil-uniform reference = 136.56 / (48 * 0.36^2 * 25)

@@ -6,7 +6,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-DOMAIN_EVIDENCE = ROOT / 'work/active/WI-040_winding-pack-mass-cost/evidence'
+DOMAIN_EVIDENCE = ROOT / 'work/active/WI-038_conductor-grade-lever/evidence'
 STRUCTURE_EVIDENCE = ROOT / 'work/active/WI-057_stellaris-structural-decomposition/evidence/merge_onto_demo_maturation'
 P = 'stellarator_09__stellaris__'
 # WI-040 (2026-09-13): explicit ABI additions, not whatever regeneration happens to emit.
@@ -27,6 +27,9 @@ WI040_CHANGED_ECONOMICS = (
     'idc_capital', 'cas22_capital', 'cas2x_pre_contingency', 'cas20_capital',
     'overnight_capital', 'contingency_capital', 'indirect_capital',
     'total_capital', 'lcoe', 'cas90_1cfe', 'lcoe_1cfe')
+WI038_PARAMETERS = {P + 'magnet__winding_pack__' + name for name in ('B_grade_ref', 'field_exponent')}
+WI038_CHANNELS = {P + 'magnet__conductor_grade__' + name for name in (
+    'quantity_factor', 'j_wp_effective', 'cost_per_kAm_effective')}
 
 
 def restate_wi040_radius_costs(translated):
@@ -48,12 +51,17 @@ def restate_wi040_radius_costs(translated):
     direct = json.loads((translated / 'direct-entering.json').read_text())
     for name, ref in (('baseline', 'baseline'), ('R14', 'tied_R14')):
         replacement = {k: oracle[name][k] for k in changed | WI040_CHANNELS}
+        # WI-038 q=1 controls: exact independently stated additions, no changes to
+        # existing physical expectations or their comparison tolerance.
+        replacement.update({P + 'magnet__conductor_grade__quantity_factor': 1.0,
+                            P + 'magnet__conductor_grade__j_wp_effective': 118.8271604938272,
+                            P + 'magnet__conductor_grade__cost_per_kAm_effective': 50.0})
         frozen['cases'][ref]['native']['outputs'].update(replacement)
         direct['results'][name]['single']['outputs'].update(replacement)
     (translated / 'frozen-results.json').write_text(json.dumps(frozen, indent=2) + '\n')
     (translated / 'direct-entering.json').write_text(json.dumps(direct, indent=2) + '\n')
     expected = json.loads((translated / 'expectations.json').read_text())
-    expected['channels'] = sorted(set(expected['channels']) | WI040_CHANNELS)
+    expected['channels'] = sorted(set(expected['channels']) | WI040_CHANNELS | WI038_CHANNELS)
     (translated / 'expectations.json').write_text(json.dumps(expected, indent=2) + '\n')
     return changed | WI040_CHANNELS
 
@@ -131,7 +139,7 @@ FINANCE_EVIDENCE = ROOT / 'work/active/WI-052_mfe-financial-rate-limits/implemen
 
 
 def current_generation():
-    spec = importlib.util.spec_from_file_location('wi040_current_generation', DOMAIN_EVIDENCE / 'regenerate.py')
+    spec = importlib.util.spec_from_file_location('wi038_current_generation', DOMAIN_EVIDENCE / 'regenerate.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
@@ -139,7 +147,7 @@ def current_generation():
 
 def operating_acceptance(destination, historical):
     # Keep all historical scenario execution and assertions. Replace its generator
-    # dependency with the native current fifteen-seed completion function (WI-040).
+    # dependency with the native current sixteen-seed completion function (WI-038).
     spec = importlib.util.spec_from_file_location('wi052_operating_scenarios', FINANCE_EVIDENCE / 'current_regressions.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -191,7 +199,7 @@ def radius_acceptance(destination, historical):
         if name == 'native':
             text = replace_once(text, "'entering-package/contracts/model_contract.json'", repr(str(translated / 'entering-package/contracts/model_contract.json')))
             text = replace_once(text, "delta['added']==[]",
-                                f"{{x[1] for x in delta['added']}}=={WI040_PARAMETERS!r}")
+                                f"{{x[1] for x in delta['added']}}=={WI040_PARAMETERS | WI038_PARAMETERS!r}")
         if name == 'standalone':
             for suffix in ('coil_length', 'field_calc', 'stored_energy', 'magnet_cost'):
                 text = replace_once(text, f"('{suffix}',", f"('{modules[suffix]}',")

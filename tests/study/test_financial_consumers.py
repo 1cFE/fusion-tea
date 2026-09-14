@@ -94,8 +94,8 @@ def test_current_rate_route_and_coverage(tmp_path, stock_simkit_path):
     inputs = {}
     for path in (route.PACKAGE_DIR/'inputs').glob('*.json'):
         inputs.update(json.loads(path.read_text()))
-    assert len(inputs) == 263  # WI-040 adds 17 explicitly mapped procurement inputs.
-    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 116
+    assert len(inputs) == 265  # WI-038 adds two explicitly mapped grade inputs.
+    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 118
     assert len(set(inputs)-oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys()) == 147
     controls = {}
     rows = []
@@ -105,7 +105,7 @@ def test_current_rate_route_and_coverage(tmp_path, stock_simkit_path):
             controls[case.inputs[route.P+'availability_direct']] = case
     for case in cases:
         control = controls[case.inputs[route.P+'availability_direct']]
-        assert len(case.outputs) == 174  # WI-040 adds 16 inventory/procurement outputs.
+        assert len(case.outputs) == 177  # WI-038 adds three grade outputs.
         assert case.verdicts == control.verdicts
         assert len(case.verdicts) == 18
         for channel in case.outputs.keys() - FINANCIAL_CHANNELS:
