@@ -64,3 +64,6 @@
 
 None.
 
+### Amendment 2026-09-13 — autonomous technical judgment
+
+[OWNER-VERBATIM] “you need to make your best judgements. if you don't have good data, run research. get to a place where you can make the judgement. you are supposed to run autonomously”, followed by “ok! go!!”. This amends Reserved gates and the interpretation of Limits: source corrections, material selection consistent with the physical system, accounting assumptions supported by research, and ordinary technical scope refinement are delegated to the round agent. Research resolves uncertain premises; those uncertainties do not by themselves require owner approval. The agent proceeds through WI-040 then WI-038 and required reviews toward the goal's answer. The question, answer standard, source quarantine and external-action gates remain unchanged.

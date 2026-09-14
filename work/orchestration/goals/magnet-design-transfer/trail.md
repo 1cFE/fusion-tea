@@ -56,3 +56,7 @@ WI-040 · `work/active/WI-040_winding-pack-mass-cost/` · native specification t
 ### Review correction applied — 2026-09-13
 
 The coordinator changed the native spec's backlog-list provenance to `[INHERITED: work/backlog/epic-mfe-cost-modeling.md]` as requested. No requirement, material choice or numerical behavior changed. The pending owner gate stands. Discovery-log joins passed 14 tests; `git diff --check` passes.
+
+### Owner direction — 2026-09-13
+
+[OWNER-VERBATIM] “you need to make your best judgements. if you don't have good data, run research. get to a place where you can make the judgement. you are supposed to run autonomously”, followed by “ok! go!!”. The owner releases the Round 1 technical-decision gate by delegating the judgment, not by choosing material fractions or an accounting formula. The agent will use the verified source composition and research the procurement/fabrication basis. Goal amendment records the delegation; a fresh reviewer supplies the next strategy. Round 1 stays closed.
