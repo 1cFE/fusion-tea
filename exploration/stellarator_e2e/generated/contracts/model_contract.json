@@ -731,22 +731,482 @@
   "evaluation_semantics": "kleene-three-valued",
   "outputs": [
     {
-      "channel_name": "stellarator_09__stellaris__wp_sizing__wp_side",
+      "channel_name": "stellarator_09__stellaris__blanket__first_wall__wall_peak_cal__calibration",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__coil_length__c_coil",
+      "channel_name": "stellarator_09__stellaris__plasma__geom__A",
+      "field_name": "A",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__geom__V",
+      "field_name": "V",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heating__heat__p_wallplug_total",
+      "field_name": "p_wallplug_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heating__heat__p_delivered",
+      "field_name": "p_delivered",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heating__heat__p_coupled",
+      "field_name": "p_coupled",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heating__heat__eta_pin_eff",
+      "field_name": "eta_pin_eff",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heating__heating_cost__cost",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__winding_pack_cost__cost",
+      "channel_name": "stellarator_09__stellaris__magnet__coil_length__c_coil",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__wall_peak_cal__calibration",
+      "channel_name": "stellarator_09__stellaris__magnet__field_calc__B_axis",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__n_bar19",
+      "field_name": "n_bar19",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__n_T0",
+      "field_name": "n_T0",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__W_th",
+      "field_name": "W_th",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__p_avg",
+      "field_name": "p_avg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__p_brems",
+      "field_name": "p_brems",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__n_He0",
+      "field_name": "n_He0",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__n_D0",
+      "field_name": "n_D0",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__alpha_n_e_eff",
+      "field_name": "alpha_n_e_eff",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__p_aux_required",
+      "field_name": "p_aux_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__p_rad",
+      "field_name": "p_rad",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__p_alpha_heat",
+      "field_name": "p_alpha_heat",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__tau_E",
+      "field_name": "tau_E",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__p_sync",
+      "field_name": "p_sync",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__p_line",
+      "field_name": "p_line",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__n_e_volav",
+      "field_name": "n_e_volav",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__alpha_He_eff",
+      "field_name": "alpha_He_eff",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__sustain__T_e0",
+      "field_name": "T_e0",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__beta_calc__beta",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__plasma__fusion__p_fus",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__burn_kg_per_fpy",
+      "field_name": "burn_kg_per_fpy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__inject_rate",
+      "field_name": "inject_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__burn_rate",
+      "field_name": "burn_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin",
+      "field_name": "tbr_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__tbr_required",
+      "field_name": "tbr_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__loss_rate",
+      "field_name": "loss_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate",
+      "field_name": "exhaust_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__winding_pack_cost__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_sizing__wp_side",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_volume__vol_cold_total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cryoplant__cryo_elec__p_elec",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required",
+      "field_name": "S_eff_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total",
+      "field_name": "Q_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules",
+      "field_name": "n_molecules",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__operating_heat__p_wallplug",
+      "field_name": "p_wallplug",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__operating_heat__p_coupled",
+      "field_name": "p_coupled",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__operating_heat__p_delivered",
+      "field_name": "p_delivered",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__blanket__source_heat__q_source",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__q_target_peak_area_scaled",
+      "field_name": "q_target_peak_area_scaled",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__p_heat_abs",
+      "field_name": "p_heat_abs",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__f_rad_edge_in_range",
+      "field_name": "f_rad_edge_in_range",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__q_target_margin",
+      "field_name": "q_target_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__p_target_nonrad",
+      "field_name": "p_target_nonrad",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__f_rad_edge",
+      "field_name": "f_rad_edge",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__p_heat_operating_minus_installed",
+      "field_name": "p_heat_operating_minus_installed",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__p_sep",
+      "field_name": "p_sep",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__q_target_peak",
+      "field_name": "q_target_peak",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__primary_loop__p_loop_margin",
+      "field_name": "p_loop_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__primary_loop__q_recovered_total",
+      "field_name": "q_recovered_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__primary_loop__p_elec",
+      "field_name": "p_elec",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__primary_loop__p_pump_total",
+      "field_name": "p_pump_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__primary_loop__T_out",
+      "field_name": "T_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__primary_loop__T_comp_in",
+      "field_name": "T_comp_in",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__primary_loop__dp_loop",
+      "field_name": "dp_loop",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__primary_loop__mdot_loop",
+      "field_name": "mdot_loop",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__primary_loop__w_fluid",
+      "field_name": "w_fluid",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__primary_loop__capacity_margin",
+      "field_name": "capacity_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__primary_loop__q_ihx",
+      "field_name": "q_ihx",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__primary_loop__mdot",
+      "field_name": "mdot",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__primary_loop__r_comp",
+      "field_name": "r_comp",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__cycle__margin_low",
+      "field_name": "margin_low",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__cycle__T2_C",
+      "field_name": "T2_C",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__cycle__margin_high",
+      "field_name": "margin_high",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__cycle__eta_th",
+      "field_name": "eta_th",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__cycle__eta_fit",
+      "field_name": "eta_fit",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__cycle__domain_product",
+      "field_name": "domain_product",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__pb__p_the",
+      "field_name": "p_the",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__pb__p_et",
+      "field_name": "p_et",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__pb__q_eng",
+      "field_name": "q_eng",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__pb__p_th",
+      "field_name": "p_th",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__pb__p_net",
+      "field_name": "p_net",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__pb__rec_frac",
+      "field_name": "rec_frac",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__turbine_cost__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divertor__divertor_cost__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cryoplant__aux_cooling__aux_cost",
+      "field_name": "aux_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cryoplant__aux_cooling__cryo_cost",
+      "field_name": "cryo_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cryoplant__aux_cooling__cost",
+      "field_name": "cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_rejection__heat_rejection_cost__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel_handling__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__coolant__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__electric_plant__electric_cost__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__power_supplies__power_supplies_cost__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__misc_plant__misc_cost__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__buildings_cost__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__owner__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__other_rpe__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__remote_handling__cost",
       "field_name": "root",
       "python_type": "float"
     },
@@ -786,502 +1246,72 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__heat__p_wallplug_total",
-      "field_name": "p_wallplug_total",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__heat__p_delivered",
-      "field_name": "p_delivered",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__heat__p_coupled",
-      "field_name": "p_coupled",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__heat__eta_pin_eff",
-      "field_name": "eta_pin_eff",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__heating_cost__cost",
+      "channel_name": "stellarator_09__stellaris__blanket__first_wall__wall_load_calc__wall_load",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__field_calc__B_axis",
+      "channel_name": "stellarator_09__stellaris__blanket__first_wall__wall_peak_calc__wall_load_peak",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__peak_field_calc__B_peak",
+      "channel_name": "stellarator_09__stellaris__blanket__blanket_cost__cost",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__wp_stress__sigma_wp",
+      "channel_name": "stellarator_09__stellaris__vessel__vessel_cost__cost",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__cond_strain__eps_cond",
+      "channel_name": "stellarator_09__stellaris__shield__shield_cost__cost",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__magnet_cost__capital_cost",
+      "channel_name": "stellarator_09__stellaris__magnet__stored_energy__W_mag",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__geom__A",
-      "field_name": "A",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__geom__V",
-      "field_name": "V",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__n_bar19",
-      "field_name": "n_bar19",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__n_T0",
-      "field_name": "n_T0",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__W_th",
-      "field_name": "W_th",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__p_avg",
-      "field_name": "p_avg",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__p_brems",
-      "field_name": "p_brems",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__n_He0",
-      "field_name": "n_He0",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__n_D0",
-      "field_name": "n_D0",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__alpha_n_e_eff",
-      "field_name": "alpha_n_e_eff",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__p_aux_required",
-      "field_name": "p_aux_required",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__p_rad",
-      "field_name": "p_rad",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__p_alpha_heat",
-      "field_name": "p_alpha_heat",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__tau_E",
-      "field_name": "tau_E",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__p_sync",
-      "field_name": "p_sync",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__p_line",
-      "field_name": "p_line",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__n_e_volav",
-      "field_name": "n_e_volav",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__alpha_He_eff",
-      "field_name": "alpha_He_eff",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__sustain__T_e0",
-      "field_name": "T_e0",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__fusion__p_fus",
+      "channel_name": "stellarator_09__stellaris__magnet__casing_mass__m_casing",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__fuel__burn_kg_per_fpy",
-      "field_name": "burn_kg_per_fpy",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__fuel__inject_rate",
-      "field_name": "inject_rate",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__fuel__burn_rate",
-      "field_name": "burn_rate",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__fuel__tbr_margin",
-      "field_name": "tbr_margin",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__fuel__tbr_required",
-      "field_name": "tbr_required",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__fuel__loss_rate",
-      "field_name": "loss_rate",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__fuel__exhaust_rate",
-      "field_name": "exhaust_rate",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__operating_heat__p_wallplug",
-      "field_name": "p_wallplug",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__operating_heat__p_coupled",
-      "field_name": "p_coupled",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__operating_heat__p_delivered",
-      "field_name": "p_delivered",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__vacuum__S_eff_required",
-      "field_name": "S_eff_required",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__vacuum__Q_total",
-      "field_name": "Q_total",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__vacuum__n_molecules",
-      "field_name": "n_molecules",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__beta_calc__beta",
+      "channel_name": "stellarator_09__stellaris__magnet__magnet_structure_cost__cost",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__divheat__q_target_peak_area_scaled",
-      "field_name": "q_target_peak_area_scaled",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__divheat__p_heat_abs",
-      "field_name": "p_heat_abs",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__divheat__f_rad_edge_in_range",
-      "field_name": "f_rad_edge_in_range",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__divheat__q_target_margin",
-      "field_name": "q_target_margin",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__divheat__p_target_nonrad",
-      "field_name": "p_target_nonrad",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__divheat__f_rad_edge",
-      "field_name": "f_rad_edge",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__divheat__p_heat_operating_minus_installed",
-      "field_name": "p_heat_operating_minus_installed",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__divheat__p_sep",
-      "field_name": "p_sep",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__divheat__q_target_peak",
-      "field_name": "q_target_peak",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__wall_load_calc__wall_load",
+      "channel_name": "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__stored_energy__W_mag",
+      "channel_name": "stellarator_09__stellaris__magnet__peak_field_calc__B_peak",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__casing_mass__m_casing",
+      "channel_name": "stellarator_09__stellaris__magnet__magnet_cost__capital_cost",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__magnet_structure_cost__cost",
+      "channel_name": "stellarator_09__stellaris__magnet__wp_stress__sigma_wp",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
+      "channel_name": "stellarator_09__stellaris__magnet__cond_strain__eps_cond",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__wp_volume__vol_cold_total",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__cryo_elec__p_elec",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__source_heat__q_source",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__primary_loop__p_loop_margin",
-      "field_name": "p_loop_margin",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__primary_loop__q_recovered_total",
-      "field_name": "q_recovered_total",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__primary_loop__p_elec",
-      "field_name": "p_elec",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__primary_loop__p_pump_total",
-      "field_name": "p_pump_total",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__primary_loop__T_out",
-      "field_name": "T_out",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__primary_loop__T_comp_in",
-      "field_name": "T_comp_in",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__primary_loop__dp_loop",
-      "field_name": "dp_loop",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__primary_loop__mdot_loop",
-      "field_name": "mdot_loop",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__primary_loop__w_fluid",
-      "field_name": "w_fluid",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__primary_loop__capacity_margin",
-      "field_name": "capacity_margin",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__primary_loop__q_ihx",
-      "field_name": "q_ihx",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__primary_loop__mdot",
-      "field_name": "mdot",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__primary_loop__r_comp",
-      "field_name": "r_comp",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__cycle__margin_low",
-      "field_name": "margin_low",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__cycle__T2_C",
-      "field_name": "T2_C",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__cycle__margin_high",
-      "field_name": "margin_high",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__cycle__eta_th",
-      "field_name": "eta_th",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__cycle__eta_fit",
-      "field_name": "eta_fit",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__cycle__domain_product",
-      "field_name": "domain_product",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__pb__p_the",
-      "field_name": "p_the",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__pb__p_et",
-      "field_name": "p_et",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__pb__q_eng",
-      "field_name": "q_eng",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__pb__p_th",
-      "field_name": "p_th",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__pb__p_net",
-      "field_name": "p_net",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__pb__rec_frac",
-      "field_name": "rec_frac",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__vessel_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__blanket_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__fuel_handling__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__owner__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__other_rpe__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__electric_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__heat_rejection_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__remote_handling__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__coolant__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__aux_cooling__aux_cost",
-      "field_name": "aux_cost",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__aux_cooling__cryo_cost",
-      "field_name": "cryo_cost",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__aux_cooling__cost",
-      "field_name": "cost",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__buildings_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__misc_cost__cost",
+      "channel_name": "stellarator_09__stellaris__structure__structure_cost__cost",
       "field_name": "root",
       "python_type": "float"
     },
@@ -1301,31 +1331,6 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__shield_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__divertor_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__power_supplies_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__turbine_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__structure_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
       "channel_name": "stellarator_09__stellaris__precon_cost__cost",
       "field_name": "root",
       "python_type": "float"
@@ -1337,11 +1342,6 @@
     },
     {
       "channel_name": "stellarator_09__stellaris__inc_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
       "field_name": "root",
       "python_type": "float"
     },
@@ -1431,7 +1431,7 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel",
       "field_name": "root",
       "python_type": "float"
     },
@@ -1618,116 +1618,116 @@
   ],
   "parameters": [
     {
-      "default_value": 0.7,
-      "entry_type": "library_default",
-      "param_group": "mfe_account_costs_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__aux_cooling__alpha"
-    },
-    {
-      "default_value": 30.0,
-      "entry_type": "library_default",
-      "param_group": "mfe_account_costs_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__aux_cooling__p_cryo_ref"
-    },
-    {
       "default_value": 0.6,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__blanket_cost__alpha"
+      "qualified_name": "stellarator_09__stellaris__blanket__blanket_cost__alpha"
     },
     {
       "default_value": 2500.0,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__blanket_cost__p_th_ref"
+      "qualified_name": "stellarator_09__stellaris__blanket__blanket_cost__p_th_ref"
     },
     {
       "default_value": 1.0,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__buildings_cost__n_mod_in"
+      "qualified_name": "stellarator_09__stellaris__buildings__buildings_cost__n_mod_in"
     },
     {
       "default_value": 1100.0,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__buildings_cost__p_et_ref"
+      "qualified_name": "stellarator_09__stellaris__buildings__buildings_cost__p_et_ref"
     },
     {
       "default_value": 2300.0,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__buildings_cost__p_fus_ref"
+      "qualified_name": "stellarator_09__stellaris__buildings__buildings_cost__p_fus_ref"
     },
     {
       "default_value": 2500.0,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__buildings_cost__p_th_ref"
+      "qualified_name": "stellarator_09__stellaris__buildings__buildings_cost__p_th_ref"
     },
     {
       "default_value": 1100.0,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__buildings_cost__p_the_ref"
+      "qualified_name": "stellarator_09__stellaris__buildings__buildings_cost__p_the_ref"
     },
     {
-      "default_value": 0.55,
+      "default_value": 0.7,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__coolant__alpha"
+      "qualified_name": "stellarator_09__stellaris__cryoplant__aux_cooling__alpha"
     },
     {
-      "default_value": 3500.0,
+      "default_value": 30.0,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__coolant__p_th_ref"
-    },
-    {
-      "default_value": 1000.0,
-      "entry_type": "library_default",
-      "param_group": "mfe_account_costs_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__coolant__ref_net_power"
+      "qualified_name": "stellarator_09__stellaris__cryoplant__aux_cooling__p_cryo_ref"
     },
     {
       "default_value": 0.5,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__divertor_cost__alpha"
+      "qualified_name": "stellarator_09__stellaris__divertor__divertor_cost__alpha"
     },
     {
       "default_value": 1000.0,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__divertor_cost__p_th_ref"
+      "qualified_name": "stellarator_09__stellaris__divertor__divertor_cost__p_th_ref"
     },
     {
       "default_value": 0.7,
       "entry_type": "usage_literal",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__fuel_handling__alpha"
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__fuel_handling__alpha"
     },
     {
       "default_value": 1000.0,
       "entry_type": "usage_literal",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__fuel_handling__ref_power"
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__fuel_handling__ref_power"
+    },
+    {
+      "default_value": 0.55,
+      "entry_type": "library_default",
+      "param_group": "mfe_account_costs_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__coolant__alpha"
+    },
+    {
+      "default_value": 3500.0,
+      "entry_type": "library_default",
+      "param_group": "mfe_account_costs_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__coolant__p_th_ref"
+    },
+    {
+      "default_value": 1000.0,
+      "entry_type": "library_default",
+      "param_group": "mfe_account_costs_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__coolant__ref_net_power"
     },
     {
       "default_value": 0.65,
@@ -1811,14 +1811,14 @@
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__power_supplies_cost__alpha"
+      "qualified_name": "stellarator_09__stellaris__power_supplies__power_supplies_cost__alpha"
     },
     {
       "default_value": 1100.0,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__power_supplies_cost__p_et_ref"
+      "qualified_name": "stellarator_09__stellaris__power_supplies__power_supplies_cost__p_et_ref"
     },
     {
       "default_value": 10000.0,
@@ -1867,28 +1867,28 @@
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__shield_cost__alpha"
+      "qualified_name": "stellarator_09__stellaris__shield__shield_cost__alpha"
     },
     {
       "default_value": 2500.0,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__shield_cost__p_th_ref"
+      "qualified_name": "stellarator_09__stellaris__shield__shield_cost__p_th_ref"
     },
     {
       "default_value": 0.5,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__structure_cost__alpha"
+      "qualified_name": "stellarator_09__stellaris__structure__structure_cost__alpha"
     },
     {
       "default_value": 1100.0,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__structure_cost__p_et_ref"
+      "qualified_name": "stellarator_09__stellaris__structure__structure_cost__p_et_ref"
     },
     {
       "default_value": 0.0,
@@ -1930,14 +1930,14 @@
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__vessel_cost__alpha"
+      "qualified_name": "stellarator_09__stellaris__vessel__vessel_cost__alpha"
     },
     {
       "default_value": 1100.0,
       "entry_type": "library_default",
       "param_group": "mfe_account_costs_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__vessel_cost__p_et_ref"
+      "qualified_name": "stellarator_09__stellaris__vessel__vessel_cost__p_et_ref"
     },
     {
       "default_value": 1.0,
@@ -1958,28 +1958,28 @@
       "entry_type": "library_default",
       "param_group": "mfe_fuel_cycle_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__fuel__s_per_fpy_in"
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__fuel__s_per_fpy_in"
     },
     {
       "default_value": 1.25663706212e-06,
       "entry_type": "library_default",
       "param_group": "mfe_magnet_cost_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet_cost__mu0"
+      "qualified_name": "stellarator_09__stellaris__magnet__magnet_cost__mu0"
     },
     {
       "default_value": 1.25663706212e-06,
       "entry_type": "library_default",
       "param_group": "mfe_magnet_field_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__field_calc__mu0"
+      "qualified_name": "stellarator_09__stellaris__magnet__field_calc__mu0"
     },
     {
       "default_value": 6.283185307179586,
       "entry_type": "library_default",
       "param_group": "mfe_magnet_field_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__field_calc__two_pi"
+      "qualified_name": "stellarator_09__stellaris__magnet__field_calc__two_pi"
     },
     {
       "default_value": 1.0,
@@ -1996,18 +1996,39 @@
       "qualified_name": "stellarator_09__stellaris__recirc_ok__threshold"
     },
     {
-      "default_value": 1.25663706212e-06,
+      "default_value": 0.2002,
       "entry_type": "library_default",
       "param_group": "mfe_plasma_scaling_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__beta_calc__mu0"
+      "qualified_name": "stellarator_09__stellaris__blanket__first_wall__wall_load_calc__ash_frac_in"
+    },
+    {
+      "default_value": 0.2002,
+      "entry_type": "library_default",
+      "param_group": "mfe_plasma_scaling_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__blanket__first_wall__wall_peak_cal__ash_frac_in"
     },
     {
       "default_value": 3.14159265358979,
       "entry_type": "library_default",
       "param_group": "mfe_plasma_scaling_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__geom__pi"
+      "qualified_name": "stellarator_09__stellaris__blanket__first_wall__wall_peak_cal__pi"
+    },
+    {
+      "default_value": 1.25663706212e-06,
+      "entry_type": "library_default",
+      "param_group": "mfe_plasma_scaling_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__beta_calc__mu0"
+    },
+    {
+      "default_value": 3.14159265358979,
+      "entry_type": "library_default",
+      "param_group": "mfe_plasma_scaling_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__geom__pi"
     },
     {
       "default_value": 3.14159265358979,
@@ -2017,186 +2038,32 @@
       "qualified_name": "stellarator_09__stellaris__rb__pi"
     },
     {
-      "default_value": 0.2002,
-      "entry_type": "library_default",
-      "param_group": "mfe_plasma_scaling_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__wall_load_calc__ash_frac_in"
-    },
-    {
-      "default_value": 0.2002,
-      "entry_type": "library_default",
-      "param_group": "mfe_plasma_scaling_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__wall_peak_cal__ash_frac_in"
-    },
-    {
-      "default_value": 3.14159265358979,
-      "entry_type": "library_default",
-      "param_group": "mfe_plasma_scaling_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__wall_peak_cal__pi"
-    },
-    {
       "default_value": 0.6,
       "entry_type": "library_default",
       "param_group": "mfe_plasma_sustainment_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__sustain__R_w_sync_in"
+      "qualified_name": "stellarator_09__stellaris__plasma__sustain__R_w_sync_in"
     },
     {
       "default_value": 0.2002,
       "entry_type": "library_default",
       "param_group": "mfe_plasma_sustainment_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__sustain__ash_frac_in"
+      "qualified_name": "stellarator_09__stellaris__plasma__sustain__ash_frac_in"
     },
     {
       "default_value": 1.0,
       "entry_type": "library_default",
       "param_group": "mfe_plasma_sustainment_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__sustain__kappa_sync_in"
+      "qualified_name": "stellarator_09__stellaris__plasma__sustain__kappa_sync_in"
     },
     {
       "default_value": 1.380649e-23,
       "entry_type": "library_default",
       "param_group": "mfe_vacuum_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__vacuum__k_B_in"
-    },
-    {
-      "default_value": 2.817e-12,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__E_fus"
-    },
-    {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__G_stock"
-    },
-    {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__I_total"
-    },
-    {
-      "default_value": 12.7,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__R"
-    },
-    {
-      "default_value": 12.7,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__R_ref_divertor"
-    },
-    {
-      "default_value": 642.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__T2_max"
-    },
-    {
-      "default_value": 384.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__T2_min"
-    },
-    {
-      "default_value": 300.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__T_amb_cryo"
-    },
-    {
-      "default_value": 20.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__T_cold_cryo"
-    },
-    {
-      "default_value": 300.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__T_gas"
-    },
-    {
-      "default_value": 14.63,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__T_i0"
-    },
-    {
-      "default_value": 273.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__T_offset_fit"
-    },
-    {
-      "default_value": 0.95,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__Ti_over_Te"
-    },
-    {
-      "default_value": 1.2,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__Z_eff_core"
-    },
-    {
-      "default_value": 1.3,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__a"
-    },
-    {
-      "default_value": 0.1802,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__a_fit"
-    },
-    {
-      "default_value": 1.19,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__alpha_T"
-    },
-    {
-      "default_value": 0.33,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__alpha_n"
-    },
-    {
-      "default_value": 200000000.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__aux_cryo_base"
+      "qualified_name": "stellarator_09__stellaris__vacuum_pumping__vacuum__k_B_in"
     },
     {
       "default_value": 1100.0,
@@ -2213,18 +2080,102 @@
       "qualified_name": "stellarator_09__stellaris__availability_direct"
     },
     {
-      "default_value": 0.7823,
+      "default_value": 0.05,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__b_fit"
+      "qualified_name": "stellarator_09__stellaris__beta_limit"
+    },
+    {
+      "default_value": 0.8,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__blanket__blanket_t"
     },
     {
       "default_value": 0.05,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__beta_limit"
+      "qualified_name": "stellarator_09__stellaris__blanket__first_wall__firstwall_t"
+    },
+    {
+      "default_value": 18.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__blanket__first_wall__fluence_limit"
+    },
+    {
+      "default_value": 0.1,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__blanket__first_wall__vacuum_t"
+    },
+    {
+      "default_value": 12.7,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__blanket__first_wall__wall_peak_R_ref"
+    },
+    {
+      "default_value": 1.3,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__blanket__first_wall__wall_peak_a_ref"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__blanket__first_wall__wall_peak_calibration_direct"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__blanket__first_wall__wall_peak_kappa_ref"
+    },
+    {
+      "default_value": 2700.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__blanket__first_wall__wall_peak_p_fus_ref"
+    },
+    {
+      "default_value": 4.05,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__blanket__first_wall__wall_peak_q_ref"
+    },
+    {
+      "default_value": 0.1,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__blanket__first_wall__wall_peak_standoff_ref"
+    },
+    {
+      "default_value": 1.2,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__blanket__mn"
+    },
+    {
+      "default_value": 0.2,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__blanket__reflector_t"
     },
     {
       "default_value": 1.0,
@@ -2234,6 +2185,13 @@
       "qualified_name": "stellarator_09__stellaris__blanket__structure_factor"
     },
     {
+      "default_value": 1.074,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__blanket__tbr"
+    },
+    {
       "default_value": 600000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -2241,60 +2199,46 @@
       "qualified_name": "stellarator_09__stellaris__blanket__unit_cost"
     },
     {
-      "default_value": 0.8,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__blanket_t"
-    },
-    {
       "default_value": 29000000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__bldg_et_base"
+      "qualified_name": "stellarator_09__stellaris__buildings__bldg_et_base"
     },
     {
       "default_value": 168500000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__bldg_fixed_base"
+      "qualified_name": "stellarator_09__stellaris__buildings__bldg_fixed_base"
     },
     {
       "default_value": 288000000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__bldg_fus_base"
+      "qualified_name": "stellarator_09__stellaris__buildings__bldg_fus_base"
     },
     {
       "default_value": 9000000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__bldg_staff_base"
+      "qualified_name": "stellarator_09__stellaris__buildings__bldg_staff_base"
     },
     {
       "default_value": 26000000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__bldg_th_base"
+      "qualified_name": "stellarator_09__stellaris__buildings__bldg_th_base"
     },
     {
       "default_value": 58000000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__bldg_the_base"
-    },
-    {
-      "default_value": 0.05,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__burn_fraction"
+      "qualified_name": "stellarator_09__stellaris__buildings__bldg_the_base"
     },
     {
       "default_value": 5000000.0,
@@ -2302,20 +2246,6 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__cas28_capital"
-    },
-    {
-      "default_value": 10.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__coil_life_fpy"
-    },
-    {
-      "default_value": 0.3,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__coil_t"
     },
     {
       "default_value": 1.0,
@@ -2339,39 +2269,67 @@
       "qualified_name": "stellarator_09__stellaris__contingency_rate"
     },
     {
-      "default_value": 40600000.0,
+      "default_value": 300.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__coolant_intermediate_base"
-    },
-    {
-      "default_value": 166000000.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__coolant_primary_base"
-    },
-    {
-      "default_value": 1.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__cycle_live"
+      "qualified_name": "stellarator_09__stellaris__cryoplant__T_amb_cryo"
     },
     {
       "default_value": 20.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__dT_approach"
+      "qualified_name": "stellarator_09__stellaris__cryoplant__T_cold_cryo"
+    },
+    {
+      "default_value": 200000000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cryoplant__aux_cryo_base"
+    },
+    {
+      "default_value": 0.2,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cryoplant__f_carnot_cryo"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cryoplant__f_uplift_cryo"
     },
     {
       "default_value": 0.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__delta_eta"
+      "qualified_name": "stellarator_09__stellaris__cryoplant__p_cryo"
+    },
+    {
+      "default_value": 0.0075,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cryoplant__p_fixed_cryo"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cryoplant__p_pfcool"
+    },
+    {
+      "default_value": 15.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cryoplant__p_tfcool"
     },
     {
       "default_value": 0.07,
@@ -2381,18 +2339,46 @@
       "qualified_name": "stellarator_09__stellaris__discount_rate"
     },
     {
+      "default_value": 12.7,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__divertor__R_ref_divertor"
+    },
+    {
       "default_value": 60000000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__divertor_base"
+      "qualified_name": "stellarator_09__stellaris__divertor__divertor_base"
     },
     {
-      "default_value": 329187.1856931558,
+      "default_value": 0.9,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__dp_loop_ref"
+      "qualified_name": "stellarator_09__stellaris__divertor__f_rad_total"
+    },
+    {
+      "default_value": 50.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__divertor__p_nonrad_ref"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__divertor__q_target_limit"
+    },
+    {
+      "default_value": 9.5,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__divertor__q_target_ref"
     },
     {
       "default_value": 86400.0,
@@ -2402,104 +2388,6 @@
       "qualified_name": "stellarator_09__stellaris__electric_plant__cost_per_mw"
     },
     {
-      "default_value": 1.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__eta_couple_heat"
-    },
-    {
-      "default_value": 1.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__eta_drive"
-    },
-    {
-      "default_value": 1.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__eta_extract"
-    },
-    {
-      "default_value": 0.772796639536644,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__eta_is"
-    },
-    {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__eta_p_direct"
-    },
-    {
-      "default_value": 0.5,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__eta_source_heat"
-    },
-    {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__eta_th_direct"
-    },
-    {
-      "default_value": 7.76e-06,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__f_W_core"
-    },
-    {
-      "default_value": 0.95,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__f_alpha_fast"
-    },
-    {
-      "default_value": 0.2,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__f_carnot_cryo"
-    },
-    {
-      "default_value": 1.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__f_loss"
-    },
-    {
-      "default_value": 0.9,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__f_rad_total"
-    },
-    {
-      "default_value": 1.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__f_ren"
-    },
-    {
-      "default_value": 1.0031567,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__f_shape"
-    },
-    {
       "default_value": 0.03,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -2507,74 +2395,95 @@
       "qualified_name": "stellarator_09__stellaris__f_sub"
     },
     {
-      "default_value": 0.5,
+      "default_value": 0.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__f_suppr_ash"
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__G_stock"
     },
     {
-      "default_value": 1.0,
+      "default_value": 0.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__f_uplift_cryo"
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__I_total"
     },
     {
       "default_value": 0.05,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__firstwall_t"
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__burn_fraction"
     },
     {
-      "default_value": 18.0,
+      "default_value": 1.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__fluence_limit"
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__eta_extract"
     },
     {
       "default_value": 1.7260641119988767e-23,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__fuel_cost_per_rxn"
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__fuel_cost_per_rxn"
     },
     {
       "default_value": 120000000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__fuel_handling_base"
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__fuel_handling_base"
     },
     {
       "default_value": 17.58,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__fuel_q_eff"
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__fuel_q_eff"
     },
     {
       "default_value": 0.99,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__fuel_recovery"
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__fuel_recovery"
     },
     {
-      "default_value": 0.1,
+      "default_value": 1.782785958230312e-09,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__gap1_t"
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__lambda_T"
     },
     {
-      "default_value": 0.1,
+      "default_value": 5.008267663228036e-27,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__gap2_t"
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__m_T_kg"
+    },
+    {
+      "default_value": 1.6021766339999998e-13,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__mev_to_joules"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__p_trit"
+    },
+    {
+      "default_value": 0.99,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__t_recycle"
     },
     {
       "default_value": 35060.0,
@@ -2584,39 +2493,200 @@
       "qualified_name": "stellarator_09__stellaris__heat_rejection__cost_per_mw"
     },
     {
+      "default_value": 40600000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__coolant_intermediate_base"
+    },
+    {
+      "default_value": 166000000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__coolant_primary_base"
+    },
+    {
+      "default_value": 329187.1856931558,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__dp_loop_ref"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__eta_drive"
+    },
+    {
+      "default_value": 0.772796639536644,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__eta_is"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__eta_p_direct"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__f_loss"
+    },
+    {
+      "default_value": 573.15,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__loop_T_in"
+    },
+    {
+      "default_value": 5193.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__loop_cp"
+    },
+    {
+      "default_value": 200.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__loop_dT_blanket"
+    },
+    {
+      "default_value": 1.6666666666666667,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__loop_gamma"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__loop_live"
+    },
+    {
+      "default_value": 8000000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__loop_p"
+    },
+    {
+      "default_value": 225.07777777777778,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__mdot_loop_ref"
+    },
+    {
+      "default_value": 14.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__n_loops"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__p_pump_direct"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heating__eta_couple_heat"
+    },
+    {
+      "default_value": 0.5,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heating__eta_source_heat"
+    },
+    {
       "default_value": 5282900.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__heating_ecrh_per_mw"
+      "qualified_name": "stellarator_09__stellaris__heating__heating_ecrh_per_mw"
     },
     {
       "default_value": 0.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__heating_icrf_per_mw"
+      "qualified_name": "stellarator_09__stellaris__heating__heating_icrf_per_mw"
     },
     {
       "default_value": 0.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__heating_lhcd_per_mw"
+      "qualified_name": "stellarator_09__stellaris__heating__heating_lhcd_per_mw"
     },
     {
       "default_value": 0.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__heating_nbi_per_mw"
+      "qualified_name": "stellarator_09__stellaris__heating__heating_nbi_per_mw"
     },
     {
-      "default_value": 0.2,
+      "default_value": 0.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__ht_shield_t"
+      "qualified_name": "stellarator_09__stellaris__heating__p_coupled_direct_heat"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heating__p_delivered_direct_heat"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heating__p_icrf"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heating__p_lhcd"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heating__p_nbi"
+    },
+    {
+      "default_value": 100.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heating__p_wallplug_heat"
     },
     {
       "default_value": 85000000.0,
@@ -2647,270 +2717,214 @@
       "qualified_name": "stellarator_09__stellaris__installation_frac"
     },
     {
-      "default_value": 0.92,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__iota_23"
-    },
-    {
-      "default_value": 1.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__kappa"
-    },
-    {
-      "default_value": 1.782785958230312e-09,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__lambda_T"
-    },
-    {
-      "default_value": 573.15,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__loop_T_in"
-    },
-    {
-      "default_value": 5193.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__loop_cp"
-    },
-    {
-      "default_value": 200.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__loop_dT_blanket"
-    },
-    {
-      "default_value": 1.6666666666666667,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__loop_gamma"
-    },
-    {
-      "default_value": 1.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__loop_live"
-    },
-    {
-      "default_value": 8000000.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__loop_p"
-    },
-    {
-      "default_value": 0.15,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__lt_shield_t"
-    },
-    {
-      "default_value": 5.008267663228036e-27,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__m_T_kg"
-    },
-    {
-      "default_value": 24.9,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__B_max"
-    },
-    {
-      "default_value": 200000000000.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__E_wp"
-    },
-    {
-      "default_value": 78.95683520871486,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__G"
-    },
-    {
-      "default_value": 15400000.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__I_coil"
-    },
-    {
-      "default_value": 15400000.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__I_ref"
-    },
-    {
-      "default_value": 12.7,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__R_ref"
-    },
-    {
       "default_value": 111000000000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__W_mag_ref"
-    },
-    {
-      "default_value": 3.1500000000000004,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__a_coil_ref"
-    },
-    {
-      "default_value": 5.87,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__coil_markup"
-    },
-    {
-      "default_value": 50.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__cost_per_kAm"
-    },
-    {
-      "default_value": 0.004,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__eps_cond_allow"
-    },
-    {
-      "default_value": 0.6666666666666666,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__f_cond"
-    },
-    {
-      "default_value": 0.8701298701298701,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__f_set"
+      "qualified_name": "stellarator_09__stellaris__magnet__casing__W_mag_ref"
     },
     {
       "default_value": 3.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__f_steel_fab"
-    },
-    {
-      "default_value": 6.65,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__f_wp_fab"
-    },
-    {
-      "default_value": 0.8780864197530865,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__f_wp_vol"
-    },
-    {
-      "default_value": 118.8271604938272,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__j_wp"
-    },
-    {
-      "default_value": 1.968503937007874,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__k_coil"
-    },
-    {
-      "default_value": 0.7731331164622419,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__k_link"
-    },
-    {
-      "default_value": 0.6102331403536223,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__k_sigma"
+      "qualified_name": "stellarator_09__stellaris__magnet__casing__f_steel_fab"
     },
     {
       "default_value": 63000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__m_casing_ref"
-    },
-    {
-      "default_value": 48.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__n_coils"
-    },
-    {
-      "default_value": 2.7666666666666666,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__peak_ratio"
+      "qualified_name": "stellarator_09__stellaris__magnet__casing__m_casing_ref"
     },
     {
       "default_value": 800000000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__sigma_allow"
+      "qualified_name": "stellarator_09__stellaris__magnet__casing__sigma_allow"
     },
     {
       "default_value": 6.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__steel_price"
+      "qualified_name": "stellarator_09__stellaris__magnet__casing__steel_price"
     },
     {
-      "default_value": 225.07777777777778,
+      "default_value": 78.95683520871486,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__mdot_loop_ref"
+      "qualified_name": "stellarator_09__stellaris__magnet__coil__G"
     },
     {
-      "default_value": 1.6021766339999998e-13,
+      "default_value": 15400000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__mev_to_joules"
+      "qualified_name": "stellarator_09__stellaris__magnet__coil__I_coil"
+    },
+    {
+      "default_value": 15400000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__coil__I_ref"
+    },
+    {
+      "default_value": 12.7,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__coil__R_ref"
+    },
+    {
+      "default_value": 3.1500000000000004,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__coil__a_coil_ref"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__coil__coil_life_fpy"
+    },
+    {
+      "default_value": 5.87,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__coil__coil_markup"
+    },
+    {
+      "default_value": 0.3,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__coil__coil_t"
+    },
+    {
+      "default_value": 50.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__coil__cost_per_kAm"
+    },
+    {
+      "default_value": 0.8701298701298701,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__coil__f_set"
+    },
+    {
+      "default_value": 1.968503937007874,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__coil__k_coil"
+    },
+    {
+      "default_value": 0.7731331164622419,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__coil__k_link"
+    },
+    {
+      "default_value": 48.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__coil__n_coils"
+    },
+    {
+      "default_value": 2.7666666666666666,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__coil__peak_ratio"
+    },
+    {
+      "default_value": 0.1,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__gap2_t"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__vol_cold_cryo"
+    },
+    {
+      "default_value": 24.9,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__B_max"
+    },
+    {
+      "default_value": 200000000000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__E_wp"
+    },
+    {
+      "default_value": 0.004,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow"
+    },
+    {
+      "default_value": 0.6666666666666666,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__f_cond"
+    },
+    {
+      "default_value": 6.65,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__f_wp_fab"
+    },
+    {
+      "default_value": 0.8780864197530865,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__f_wp_vol"
+    },
+    {
+      "default_value": 118.8271604938272,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__j_wp"
+    },
+    {
+      "default_value": 0.6102331403536223,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__k_sigma"
+    },
+    {
+      "default_value": 35.5,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__q_nuc_cryo"
     },
     {
       "default_value": 52590.0,
@@ -2918,34 +2932,6 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__misc_plant__cost_per_mw"
-    },
-    {
-      "default_value": 1.2,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__mn"
-    },
-    {
-      "default_value": 3.17e+20,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__n_e"
-    },
-    {
-      "default_value": 5.06e+20,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__n_e0"
-    },
-    {
-      "default_value": 14.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__n_loops"
     },
     {
       "default_value": 54900000.0,
@@ -2983,41 +2969,6 @@
       "qualified_name": "stellarator_09__stellaris__owner_base"
     },
     {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_coupled_direct_heat"
-    },
-    {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_cryo"
-    },
-    {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_delivered_direct_heat"
-    },
-    {
-      "default_value": 1.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_exhaust"
-    },
-    {
-      "default_value": 0.0075,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_fixed_cryo"
-    },
-    {
       "default_value": 4.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -3025,81 +2976,137 @@
       "qualified_name": "stellarator_09__stellaris__p_house"
     },
     {
-      "default_value": 0.0,
+      "default_value": 2.817e-12,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_icrf"
+      "qualified_name": "stellarator_09__stellaris__plasma__E_fus"
+    },
+    {
+      "default_value": 12.7,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__R"
+    },
+    {
+      "default_value": 14.63,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__T_i0"
+    },
+    {
+      "default_value": 0.95,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__Ti_over_Te"
+    },
+    {
+      "default_value": 1.2,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__Z_eff_core"
+    },
+    {
+      "default_value": 1.3,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__a"
+    },
+    {
+      "default_value": 1.19,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__alpha_T"
+    },
+    {
+      "default_value": 0.33,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__alpha_n"
+    },
+    {
+      "default_value": 7.76e-06,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__f_W_core"
+    },
+    {
+      "default_value": 0.95,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__f_alpha_fast"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__f_ren"
+    },
+    {
+      "default_value": 1.0031567,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__f_shape"
+    },
+    {
+      "default_value": 0.5,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__f_suppr_ash"
+    },
+    {
+      "default_value": 0.92,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__iota_23"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__kappa"
+    },
+    {
+      "default_value": 3.17e+20,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__n_e"
+    },
+    {
+      "default_value": 5.06e+20,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__plasma__n_e0"
     },
     {
       "default_value": 0.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_lhcd"
+      "qualified_name": "stellarator_09__stellaris__plasma__sigma_v"
     },
     {
-      "default_value": 0.0,
+      "default_value": 8.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_nbi"
-    },
-    {
-      "default_value": 50.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_nonrad_ref"
-    },
-    {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_pf"
-    },
-    {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_pfcool"
-    },
-    {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_pump_direct"
-    },
-    {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_tf"
-    },
-    {
-      "default_value": 15.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_tfcool"
-    },
-    {
-      "default_value": 10.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_trit"
-    },
-    {
-      "default_value": 100.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_wallplug_heat"
+      "qualified_name": "stellarator_09__stellaris__plasma__tau_ratio_ash"
     },
     {
       "default_value": 80000000.0,
@@ -3109,6 +3116,20 @@
       "qualified_name": "stellarator_09__stellaris__power_supplies__base"
     },
     {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__power_supplies__p_pf"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__power_supplies__p_tf"
+    },
+    {
       "default_value": 16000000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -3116,39 +3137,25 @@
       "qualified_name": "stellarator_09__stellaris__precon_fixed_base"
     },
     {
-      "default_value": 35.5,
+      "default_value": 150000000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__q_nuc_cryo"
-    },
-    {
-      "default_value": 10.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__q_target_limit"
-    },
-    {
-      "default_value": 9.5,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__q_target_ref"
+      "qualified_name": "stellarator_09__stellaris__remote_handling_base"
     },
     {
       "default_value": 0.2,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__reflector_t"
+      "qualified_name": "stellarator_09__stellaris__shield__ht_shield_t"
     },
     {
-      "default_value": 150000000.0,
+      "default_value": 0.15,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__remote_handling_base"
+      "qualified_name": "stellarator_09__stellaris__shield__lt_shield_t"
     },
     {
       "default_value": 1.0,
@@ -3165,11 +3172,11 @@
       "qualified_name": "stellarator_09__stellaris__shield__unit_cost"
     },
     {
-      "default_value": 0.0,
+      "default_value": 0.15,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__sigma_v"
+      "qualified_name": "stellarator_09__stellaris__structure__structure_t"
     },
     {
       "default_value": 150000.0,
@@ -3177,13 +3184,6 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__structure__unit_cost"
-    },
-    {
-      "default_value": 0.15,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__structure_t"
     },
     {
       "default_value": 272000000.0,
@@ -3207,32 +3207,46 @@
       "qualified_name": "stellarator_09__stellaris__supplementary_startup_base"
     },
     {
-      "default_value": 0.99,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__t_recycle"
-    },
-    {
-      "default_value": 8.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__tau_ratio_ash"
-    },
-    {
-      "default_value": 1.074,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__tbr"
-    },
-    {
       "default_value": 1.05,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__tbr_floor"
+    },
+    {
+      "default_value": 642.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__T2_max"
+    },
+    {
+      "default_value": 384.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__T2_min"
+    },
+    {
+      "default_value": 273.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__T_offset_fit"
+    },
+    {
+      "default_value": 0.1802,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__a_fit"
+    },
+    {
+      "default_value": 0.7823,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__b_fit"
     },
     {
       "default_value": 202840.0,
@@ -3242,6 +3256,34 @@
       "qualified_name": "stellarator_09__stellaris__turbine__cost_per_mw"
     },
     {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__cycle_live"
+    },
+    {
+      "default_value": 20.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__dT_approach"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__delta_eta"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__eta_th_direct"
+    },
+    {
       "default_value": 0.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -3249,11 +3291,25 @@
       "qualified_name": "stellarator_09__stellaris__unplanned_fraction"
     },
     {
+      "default_value": 300.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__vacuum_pumping__T_gas"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__vacuum_pumping__p_exhaust"
+    },
+    {
       "default_value": 0.1,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__vacuum_t"
+      "qualified_name": "stellarator_09__stellaris__vessel__gap1_t"
     },
     {
       "default_value": 720000.0,
@@ -3267,14 +3323,7 @@
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__vessel_t"
-    },
-    {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__vol_cold_cryo"
+      "qualified_name": "stellarator_09__stellaris__vessel__vessel_t"
     },
     {
       "default_value": 4.05,
@@ -3284,55 +3333,6 @@
       "qualified_name": "stellarator_09__stellaris__wall_load_limit"
     },
     {
-      "default_value": 12.7,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__wall_peak_R_ref"
-    },
-    {
-      "default_value": 1.3,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__wall_peak_a_ref"
-    },
-    {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__wall_peak_calibration_direct"
-    },
-    {
-      "default_value": 1.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__wall_peak_kappa_ref"
-    },
-    {
-      "default_value": 2700.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__wall_peak_p_fus_ref"
-    },
-    {
-      "default_value": 4.05,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__wall_peak_q_ref"
-    },
-    {
-      "default_value": 0.1,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__wall_peak_standoff_ref"
-    },
-    {
       "default_value": 1960000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -3340,5 +3340,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e"
+  "semantic_fingerprint": "1459254b59bb72695954f5657744f6f90245f2f4a0606f46bc80b46f13b98b0e"
 }

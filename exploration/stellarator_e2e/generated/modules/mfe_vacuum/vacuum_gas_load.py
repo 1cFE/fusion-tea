@@ -32,11 +32,11 @@ scope separation)
 *Basis**: Gas conservation at the exhaust boundary; ideal-gas throughput
 
 Inputs:
-    - exhaust_rate_D_in: exhaust_rate_D_in parameter
-    - exhaust_rate_T_in: exhaust_rate_T_in parameter
-    - p_exhaust_in: p_exhaust_in parameter
     - T_gas_in: T_gas_in parameter
+    - p_exhaust_in: p_exhaust_in parameter
     - helium_rate_in: helium_rate_in parameter
+    - exhaust_rate_T_in: exhaust_rate_T_in parameter
+    - exhaust_rate_D_in: exhaust_rate_D_in parameter
     - k_B_in: k_B_in parameter
 
 Outputs:
@@ -63,18 +63,18 @@ class Vacuum_Gas_LoadInput(BaseModel):
     """Input model for Vacuum_Gas_LoadModule.
 
     Attributes:
-        exhaust_rate_D_in: exhaust_rate_D_in input
-        exhaust_rate_T_in: exhaust_rate_T_in input
-        p_exhaust_in: p_exhaust_in input
         T_gas_in: T_gas_in input
+        p_exhaust_in: p_exhaust_in input
         helium_rate_in: helium_rate_in input
+        exhaust_rate_T_in: exhaust_rate_T_in input
+        exhaust_rate_D_in: exhaust_rate_D_in input
         k_B_in: k_B_in input
     """
-    exhaust_rate_D_in: float = Field(..., description="exhaust_rate_D_in input")
-    exhaust_rate_T_in: float = Field(..., description="exhaust_rate_T_in input")
-    p_exhaust_in: float = Field(..., description="p_exhaust_in input")
     T_gas_in: float = Field(..., description="T_gas_in input")
+    p_exhaust_in: float = Field(..., description="p_exhaust_in input")
     helium_rate_in: float = Field(..., description="helium_rate_in input")
+    exhaust_rate_T_in: float = Field(..., description="exhaust_rate_T_in input")
+    exhaust_rate_D_in: float = Field(..., description="exhaust_rate_D_in input")
     k_B_in: float = Field(..., description="k_B_in input")
 
 
@@ -111,11 +111,11 @@ scope separation)
 *Basis**: Gas conservation at the exhaust boundary; ideal-gas throughput
 
 Inputs:
-    - exhaust_rate_D_in: exhaust_rate_D_in parameter
-    - exhaust_rate_T_in: exhaust_rate_T_in parameter
-    - p_exhaust_in: p_exhaust_in parameter
     - T_gas_in: T_gas_in parameter
+    - p_exhaust_in: p_exhaust_in parameter
     - helium_rate_in: helium_rate_in parameter
+    - exhaust_rate_T_in: exhaust_rate_T_in parameter
+    - exhaust_rate_D_in: exhaust_rate_D_in parameter
     - k_B_in: k_B_in parameter
 
 Outputs:
@@ -174,39 +174,39 @@ scope separation)
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, exhaust_rate_D_in: float, exhaust_rate_T_in: float, p_exhaust_in: float, T_gas_in: float, helium_rate_in: float, k_B_in: float    ) -> Vacuum_Gas_LoadInput:
+        self, T_gas_in: float, p_exhaust_in: float, helium_rate_in: float, exhaust_rate_T_in: float, exhaust_rate_D_in: float, k_B_in: float    ) -> Vacuum_Gas_LoadInput:
         """Validate inputs and fill defaults.
 
         Args:
-            exhaust_rate_D_in: exhaust_rate_D_in input
-            exhaust_rate_T_in: exhaust_rate_T_in input
-            p_exhaust_in: p_exhaust_in input
             T_gas_in: T_gas_in input
+            p_exhaust_in: p_exhaust_in input
             helium_rate_in: helium_rate_in input
+            exhaust_rate_T_in: exhaust_rate_T_in input
+            exhaust_rate_D_in: exhaust_rate_D_in input
             k_B_in: k_B_in input
 
         Returns:
             Validated input model
         """
-        return Vacuum_Gas_LoadInput(exhaust_rate_D_in=exhaust_rate_D_in, exhaust_rate_T_in=exhaust_rate_T_in, p_exhaust_in=p_exhaust_in, T_gas_in=T_gas_in, helium_rate_in=helium_rate_in, k_B_in=k_B_in)
+        return Vacuum_Gas_LoadInput(T_gas_in=T_gas_in, p_exhaust_in=p_exhaust_in, helium_rate_in=helium_rate_in, exhaust_rate_T_in=exhaust_rate_T_in, exhaust_rate_D_in=exhaust_rate_D_in, k_B_in=k_B_in)
 
     def run(
-        self, exhaust_rate_D_in: float, exhaust_rate_T_in: float, p_exhaust_in: float, T_gas_in: float, helium_rate_in: float, k_B_in: float    ) -> ModuleResult[Vacuum_Gas_LoadOutput]:
+        self, T_gas_in: float, p_exhaust_in: float, helium_rate_in: float, exhaust_rate_T_in: float, exhaust_rate_D_in: float, k_B_in: float    ) -> ModuleResult[Vacuum_Gas_LoadOutput]:
         """Execute calculation.
 
         Args:
-            exhaust_rate_D_in: exhaust_rate_D_in input
-            exhaust_rate_T_in: exhaust_rate_T_in input
-            p_exhaust_in: p_exhaust_in input
             T_gas_in: T_gas_in input
+            p_exhaust_in: p_exhaust_in input
             helium_rate_in: helium_rate_in input
+            exhaust_rate_T_in: exhaust_rate_T_in input
+            exhaust_rate_D_in: exhaust_rate_D_in input
             k_B_in: k_B_in input
 
         Returns:
             Module result with Vacuum_Gas_LoadOutput (S_eff_required, Q_total, n_molecules)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(exhaust_rate_D_in, exhaust_rate_T_in, p_exhaust_in, T_gas_in, helium_rate_in, k_B_in)
+        validated_inputs = self.validate_and_fill_default(T_gas_in, p_exhaust_in, helium_rate_in, exhaust_rate_T_in, exhaust_rate_D_in, k_B_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_vacuum.vacuum_gas_load_impl import (

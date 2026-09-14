@@ -36,13 +36,13 @@ shape and the current squared; concept-agnostic (MR-3) -- all
 values bound by instances
 
 Inputs:
-    - W_mag_ref: W_mag_ref parameter
     - R0: R0 parameter
-    - I_ref: I_ref parameter
-    - R_ref: R_ref parameter
     - I_coil: I_coil parameter
-    - a_coil_ref: a_coil_ref parameter
+    - R_ref: R_ref parameter
+    - W_mag_ref: W_mag_ref parameter
     - a_coil: a_coil parameter
+    - I_ref: I_ref parameter
+    - a_coil_ref: a_coil_ref parameter
 
 Outputs:
     - W_mag: W_mag result
@@ -65,21 +65,21 @@ class Coil_Set_Stored_EnergyInput(BaseModel):
     """Input model for Coil_Set_Stored_EnergyModule.
 
     Attributes:
-        W_mag_ref: W_mag_ref input
         R0: R0 input
-        I_ref: I_ref input
-        R_ref: R_ref input
         I_coil: I_coil input
-        a_coil_ref: a_coil_ref input
+        R_ref: R_ref input
+        W_mag_ref: W_mag_ref input
         a_coil: a_coil input
+        I_ref: I_ref input
+        a_coil_ref: a_coil_ref input
     """
-    W_mag_ref: float = Field(..., description="W_mag_ref input")
     R0: float = Field(..., description="R0 input")
-    I_ref: float = Field(..., description="I_ref input")
-    R_ref: float = Field(..., description="R_ref input")
     I_coil: float = Field(..., description="I_coil input")
-    a_coil_ref: float = Field(..., description="a_coil_ref input")
+    R_ref: float = Field(..., description="R_ref input")
+    W_mag_ref: float = Field(..., description="W_mag_ref input")
     a_coil: float = Field(..., description="a_coil input")
+    I_ref: float = Field(..., description="I_ref input")
+    a_coil_ref: float = Field(..., description="a_coil_ref input")
 
 
 class Coil_Set_Stored_EnergyModule(ModuleBase[Coil_Set_Stored_EnergyInput, Float]):
@@ -119,13 +119,13 @@ shape and the current squared; concept-agnostic (MR-3) -- all
 values bound by instances
 
 Inputs:
-    - W_mag_ref: W_mag_ref parameter
     - R0: R0 parameter
-    - I_ref: I_ref parameter
-    - R_ref: R_ref parameter
     - I_coil: I_coil parameter
-    - a_coil_ref: a_coil_ref parameter
+    - R_ref: R_ref parameter
+    - W_mag_ref: W_mag_ref parameter
     - a_coil: a_coil parameter
+    - I_ref: I_ref parameter
+    - a_coil_ref: a_coil_ref parameter
 
 Outputs:
     - W_mag: W_mag result
@@ -181,41 +181,41 @@ values bound by instances
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, W_mag_ref: float, R0: float, I_ref: float, R_ref: float, I_coil: float, a_coil_ref: float, a_coil: float    ) -> Coil_Set_Stored_EnergyInput:
+        self, R0: float, I_coil: float, R_ref: float, W_mag_ref: float, a_coil: float, I_ref: float, a_coil_ref: float    ) -> Coil_Set_Stored_EnergyInput:
         """Validate inputs and fill defaults.
 
         Args:
-            W_mag_ref: W_mag_ref input
             R0: R0 input
-            I_ref: I_ref input
-            R_ref: R_ref input
             I_coil: I_coil input
-            a_coil_ref: a_coil_ref input
+            R_ref: R_ref input
+            W_mag_ref: W_mag_ref input
             a_coil: a_coil input
+            I_ref: I_ref input
+            a_coil_ref: a_coil_ref input
 
         Returns:
             Validated input model
         """
-        return Coil_Set_Stored_EnergyInput(W_mag_ref=W_mag_ref, R0=R0, I_ref=I_ref, R_ref=R_ref, I_coil=I_coil, a_coil_ref=a_coil_ref, a_coil=a_coil)
+        return Coil_Set_Stored_EnergyInput(R0=R0, I_coil=I_coil, R_ref=R_ref, W_mag_ref=W_mag_ref, a_coil=a_coil, I_ref=I_ref, a_coil_ref=a_coil_ref)
 
     def run(
-        self, W_mag_ref: float, R0: float, I_ref: float, R_ref: float, I_coil: float, a_coil_ref: float, a_coil: float    ) -> ModuleResult[Float]:
+        self, R0: float, I_coil: float, R_ref: float, W_mag_ref: float, a_coil: float, I_ref: float, a_coil_ref: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            W_mag_ref: W_mag_ref input
             R0: R0 input
-            I_ref: I_ref input
-            R_ref: R_ref input
             I_coil: I_coil input
-            a_coil_ref: a_coil_ref input
+            R_ref: R_ref input
+            W_mag_ref: W_mag_ref input
             a_coil: a_coil input
+            I_ref: I_ref input
+            a_coil_ref: a_coil_ref input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(W_mag_ref, R0, I_ref, R_ref, I_coil, a_coil_ref, a_coil)
+        validated_inputs = self.validate_and_fill_default(R0, I_coil, R_ref, W_mag_ref, a_coil, I_ref, a_coil_ref)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_magnet_field.coil_set_stored_energy_impl import (

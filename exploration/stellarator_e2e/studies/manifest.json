@@ -7,7 +7,7 @@
  "fingerprints": {
   "indicator_inputs": {
    "recipe": "indicator-input-fingerprint/v1",
-   "digest": "609e6cca0a4f329e834b52369a425541ca167bfdfe8608879d900a27ccedf06d",
+   "digest": "63318138fcc70bcfc4ecea6ebd0b36878b9a3eaa6c2d603f4948f2a0eb5e3a95",
    "files": [
     "contracts/model_contract.json",
     "inputs/mfe_account_costs_params.json",
@@ -23,8 +23,8 @@
    ]
   },
   "recorded_provenance": {
-   "executable_fingerprint": "bb60a9973cfaea643839740d0d7c295ef190f9ddbaeab28fe84101be65518be7",
-   "semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e"
+   "executable_fingerprint": "cf6f6bb80202669a95184b4a2e02c2254160534a374fca1be1116750e1cd0b30",
+   "semantic_fingerprint": "1459254b59bb72695954f5657744f6f90245f2f4a0606f46bc80b46f13b98b0e"
   }
  },
  "objective_catalog": [
@@ -45,7 +45,7 @@
   },
   {
    "name": "fuel",
-   "channel": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+   "channel": "stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel",
    "note": "Annual fuel cost."
   },
   {
@@ -60,27 +60,27 @@
   },
   {
    "name": "beta",
-   "channel": "stellarator_09__stellaris__beta_calc__beta",
+   "channel": "stellarator_09__stellaris__plasma__beta_calc__beta",
    "note": "Volume-averaged thermal beta computed by 'Volume-Averaged Beta' from the profile referents and magnet__B (WI-030); replaces the retired bound input beta. Compared against the oracle's closed form so a magnet study verifies the physics lever it moves."
   },
   {
    "name": "magnet_capital",
-   "channel": "stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
+   "channel": "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost",
    "note": "CAS22.1.3 magnet capital \u2014 since WI-035 the decomposed rollup (winding pack + casing structure), the channel the plant's magnet.capital_cost reads. The old conductor-proxy lump is the separate magnet_capital_1cfe comparison objective."
   },
   {
    "name": "magnet_capital_1cfe",
-   "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
+   "channel": "stellarator_09__stellaris__magnet__magnet_cost__capital_cost",
    "note": "1cfe-form comparison channel (WI-035 D6): the retained 'Magnet Coil Cost' conductor-proxy lump, now responding to the computed field. Kept as an objective so the decomposed rollup and the calibrated lump stay observable side by side."
   },
   {
    "name": "p_aux_required",
-   "channel": "stellarator_09__stellaris__sustain__p_aux_required",
+   "channel": "stellarator_09__stellaris__plasma__sustain__p_aux_required",
    "note": "WI-037 required sustained plasma-coupled heating; the sustainment_ok operand. Responds to field (~B^-2.15 through ISS04), density, temperature, geometry, and heating."
   },
   {
    "name": "tau_E",
-   "channel": "stellarator_09__stellaris__sustain__tau_E",
+   "channel": "stellarator_09__stellaris__plasma__sustain__tau_E",
    "note": "WI-037 ISS04 energy confinement time (closed form, line-averaged density)."
   },
   {
@@ -102,8 +102,8 @@
  "ties": [],
  "baseline": {
   "point": {
-   "stellarator_09__stellaris__R": 12.7,
-   "stellarator_09__stellaris__a": 1.3,
+   "stellarator_09__stellaris__plasma__R": 12.7,
+   "stellarator_09__stellaris__plasma__a": 1.3,
    "stellarator_09__stellaris__availability_direct": 0.0
   },
   "headline": {

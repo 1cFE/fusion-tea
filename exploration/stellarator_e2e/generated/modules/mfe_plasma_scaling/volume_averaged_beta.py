@@ -43,8 +43,8 @@ pressure of all species over the source's profile rules; MFE-generic
 
 Inputs:
     - mu0: mu0 parameter
-    - B_in: B_in parameter
     - p_avg_in: p_avg_in parameter
+    - B_in: B_in parameter
 
 Outputs:
     - beta: beta result
@@ -68,12 +68,12 @@ class Volume_Averaged_BetaInput(BaseModel):
 
     Attributes:
         mu0: mu0 input
-        B_in: B_in input
         p_avg_in: p_avg_in input
+        B_in: B_in input
     """
     mu0: float = Field(..., description="mu0 input")
-    B_in: float = Field(..., description="B_in input")
     p_avg_in: float = Field(..., description="p_avg_in input")
+    B_in: float = Field(..., description="B_in input")
 
 
 class Volume_Averaged_BetaModule(ModuleBase[Volume_Averaged_BetaInput, Float]):
@@ -120,8 +120,8 @@ pressure of all species over the source's profile rules; MFE-generic
 
 Inputs:
     - mu0: mu0 parameter
-    - B_in: B_in parameter
     - p_avg_in: p_avg_in parameter
+    - B_in: B_in parameter
 
 Outputs:
     - beta: beta result
@@ -184,33 +184,33 @@ pressure of all species over the source's profile rules; MFE-generic
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, mu0: float, B_in: float, p_avg_in: float    ) -> Volume_Averaged_BetaInput:
+        self, mu0: float, p_avg_in: float, B_in: float    ) -> Volume_Averaged_BetaInput:
         """Validate inputs and fill defaults.
 
         Args:
             mu0: mu0 input
-            B_in: B_in input
             p_avg_in: p_avg_in input
+            B_in: B_in input
 
         Returns:
             Validated input model
         """
-        return Volume_Averaged_BetaInput(mu0=mu0, B_in=B_in, p_avg_in=p_avg_in)
+        return Volume_Averaged_BetaInput(mu0=mu0, p_avg_in=p_avg_in, B_in=B_in)
 
     def run(
-        self, mu0: float, B_in: float, p_avg_in: float    ) -> ModuleResult[Float]:
+        self, mu0: float, p_avg_in: float, B_in: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
             mu0: mu0 input
-            B_in: B_in input
             p_avg_in: p_avg_in input
+            B_in: B_in input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(mu0, B_in, p_avg_in)
+        validated_inputs = self.validate_and_fill_default(mu0, p_avg_in, B_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_plasma_scaling.volume_averaged_beta_impl import (

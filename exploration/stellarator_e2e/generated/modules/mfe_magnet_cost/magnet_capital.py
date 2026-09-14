@@ -15,8 +15,8 @@ WI-030).
 *Basis**: sum of winding-pack and magnet-structure sub-accounts
 
 Inputs:
-    - structure_cost_in: structure_cost_in parameter
     - winding_cost: winding_cost parameter
+    - structure_cost_in: structure_cost_in parameter
 
 Outputs:
     - capital_cost: capital_cost result
@@ -39,11 +39,11 @@ class Magnet_CapitalInput(BaseModel):
     """Input model for Magnet_CapitalModule.
 
     Attributes:
-        structure_cost_in: structure_cost_in input
         winding_cost: winding_cost input
+        structure_cost_in: structure_cost_in input
     """
-    structure_cost_in: float = Field(..., description="structure_cost_in input")
     winding_cost: float = Field(..., description="winding_cost input")
+    structure_cost_in: float = Field(..., description="structure_cost_in input")
 
 
 class Magnet_CapitalModule(ModuleBase[Magnet_CapitalInput, Float]):
@@ -62,8 +62,8 @@ WI-030).
 *Basis**: sum of winding-pack and magnet-structure sub-accounts
 
 Inputs:
-    - structure_cost_in: structure_cost_in parameter
     - winding_cost: winding_cost parameter
+    - structure_cost_in: structure_cost_in parameter
 
 Outputs:
     - capital_cost: capital_cost result
@@ -98,31 +98,31 @@ WI-030).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, structure_cost_in: float, winding_cost: float    ) -> Magnet_CapitalInput:
+        self, winding_cost: float, structure_cost_in: float    ) -> Magnet_CapitalInput:
         """Validate inputs and fill defaults.
 
         Args:
-            structure_cost_in: structure_cost_in input
             winding_cost: winding_cost input
+            structure_cost_in: structure_cost_in input
 
         Returns:
             Validated input model
         """
-        return Magnet_CapitalInput(structure_cost_in=structure_cost_in, winding_cost=winding_cost)
+        return Magnet_CapitalInput(winding_cost=winding_cost, structure_cost_in=structure_cost_in)
 
     def run(
-        self, structure_cost_in: float, winding_cost: float    ) -> ModuleResult[Float]:
+        self, winding_cost: float, structure_cost_in: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            structure_cost_in: structure_cost_in input
             winding_cost: winding_cost input
+            structure_cost_in: structure_cost_in input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(structure_cost_in, winding_cost)
+        validated_inputs = self.validate_and_fill_default(winding_cost, structure_cost_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_magnet_cost.magnet_capital_impl import (

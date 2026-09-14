@@ -28,12 +28,12 @@ protection)
 content-mapped fabrication markup; concept-agnostic (MR-3)
 
 Inputs:
+    - f_wp_fab: f_wp_fab parameter
+    - f_set: f_set parameter
     - I_coil: I_coil parameter
     - c_coil: c_coil parameter
-    - cost_per_kAm: cost_per_kAm parameter
     - n_coils: n_coils parameter
-    - f_set: f_set parameter
-    - f_wp_fab: f_wp_fab parameter
+    - cost_per_kAm: cost_per_kAm parameter
 
 Outputs:
     - cost: cost result
@@ -56,19 +56,19 @@ class Winding_Pack_CostInput(BaseModel):
     """Input model for Winding_Pack_CostModule.
 
     Attributes:
+        f_wp_fab: f_wp_fab input
+        f_set: f_set input
         I_coil: I_coil input
         c_coil: c_coil input
-        cost_per_kAm: cost_per_kAm input
         n_coils: n_coils input
-        f_set: f_set input
-        f_wp_fab: f_wp_fab input
+        cost_per_kAm: cost_per_kAm input
     """
+    f_wp_fab: float = Field(..., description="f_wp_fab input")
+    f_set: float = Field(..., description="f_set input")
     I_coil: float = Field(..., description="I_coil input")
     c_coil: float = Field(..., description="c_coil input")
-    cost_per_kAm: float = Field(..., description="cost_per_kAm input")
     n_coils: float = Field(..., description="n_coils input")
-    f_set: float = Field(..., description="f_set input")
-    f_wp_fab: float = Field(..., description="f_wp_fab input")
+    cost_per_kAm: float = Field(..., description="cost_per_kAm input")
 
 
 class Winding_Pack_CostModule(ModuleBase[Winding_Pack_CostInput, Float]):
@@ -100,12 +100,12 @@ protection)
 content-mapped fabrication markup; concept-agnostic (MR-3)
 
 Inputs:
+    - f_wp_fab: f_wp_fab parameter
+    - f_set: f_set parameter
     - I_coil: I_coil parameter
     - c_coil: c_coil parameter
-    - cost_per_kAm: cost_per_kAm parameter
     - n_coils: n_coils parameter
-    - f_set: f_set parameter
-    - f_wp_fab: f_wp_fab parameter
+    - cost_per_kAm: cost_per_kAm parameter
 
 Outputs:
     - cost: cost result
@@ -154,39 +154,39 @@ content-mapped fabrication markup; concept-agnostic (MR-3)
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, I_coil: float, c_coil: float, cost_per_kAm: float, n_coils: float, f_set: float, f_wp_fab: float    ) -> Winding_Pack_CostInput:
+        self, f_wp_fab: float, f_set: float, I_coil: float, c_coil: float, n_coils: float, cost_per_kAm: float    ) -> Winding_Pack_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
+            f_wp_fab: f_wp_fab input
+            f_set: f_set input
             I_coil: I_coil input
             c_coil: c_coil input
-            cost_per_kAm: cost_per_kAm input
             n_coils: n_coils input
-            f_set: f_set input
-            f_wp_fab: f_wp_fab input
+            cost_per_kAm: cost_per_kAm input
 
         Returns:
             Validated input model
         """
-        return Winding_Pack_CostInput(I_coil=I_coil, c_coil=c_coil, cost_per_kAm=cost_per_kAm, n_coils=n_coils, f_set=f_set, f_wp_fab=f_wp_fab)
+        return Winding_Pack_CostInput(f_wp_fab=f_wp_fab, f_set=f_set, I_coil=I_coil, c_coil=c_coil, n_coils=n_coils, cost_per_kAm=cost_per_kAm)
 
     def run(
-        self, I_coil: float, c_coil: float, cost_per_kAm: float, n_coils: float, f_set: float, f_wp_fab: float    ) -> ModuleResult[Float]:
+        self, f_wp_fab: float, f_set: float, I_coil: float, c_coil: float, n_coils: float, cost_per_kAm: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
+            f_wp_fab: f_wp_fab input
+            f_set: f_set input
             I_coil: I_coil input
             c_coil: c_coil input
-            cost_per_kAm: cost_per_kAm input
             n_coils: n_coils input
-            f_set: f_set input
-            f_wp_fab: f_wp_fab input
+            cost_per_kAm: cost_per_kAm input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(I_coil, c_coil, cost_per_kAm, n_coils, f_set, f_wp_fab)
+        validated_inputs = self.validate_and_fill_default(f_wp_fab, f_set, I_coil, c_coil, n_coils, cost_per_kAm)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_magnet_cost.winding_pack_cost_impl import (

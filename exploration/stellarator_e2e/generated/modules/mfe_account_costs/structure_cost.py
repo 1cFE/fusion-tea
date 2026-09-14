@@ -13,11 +13,11 @@ scaling:
 *Basis**: Volume-based structure cost with gross-electric power law
 
 Inputs:
-    - p_et_in: p_et_in parameter
-    - structure_vol: structure_vol parameter
-    - alpha: alpha parameter
-    - p_et_ref: p_et_ref parameter
     - unit_cost: unit_cost parameter
+    - p_et_in: p_et_in parameter
+    - alpha: alpha parameter
+    - structure_vol: structure_vol parameter
+    - p_et_ref: p_et_ref parameter
 
 Outputs:
     - cost: cost result
@@ -40,17 +40,17 @@ class Structure_CostInput(BaseModel):
     """Input model for Structure_CostModule.
 
     Attributes:
-        p_et_in: p_et_in input
-        structure_vol: structure_vol input
-        alpha: alpha input
-        p_et_ref: p_et_ref input
         unit_cost: unit_cost input
+        p_et_in: p_et_in input
+        alpha: alpha input
+        structure_vol: structure_vol input
+        p_et_ref: p_et_ref input
     """
-    p_et_in: float = Field(..., description="p_et_in input")
-    structure_vol: float = Field(..., description="structure_vol input")
-    alpha: float = Field(..., description="alpha input")
-    p_et_ref: float = Field(..., description="p_et_ref input")
     unit_cost: float = Field(..., description="unit_cost input")
+    p_et_in: float = Field(..., description="p_et_in input")
+    alpha: float = Field(..., description="alpha input")
+    structure_vol: float = Field(..., description="structure_vol input")
+    p_et_ref: float = Field(..., description="p_et_ref input")
 
 
 class Structure_CostModule(ModuleBase[Structure_CostInput, Float]):
@@ -67,11 +67,11 @@ scaling:
 *Basis**: Volume-based structure cost with gross-electric power law
 
 Inputs:
-    - p_et_in: p_et_in parameter
-    - structure_vol: structure_vol parameter
-    - alpha: alpha parameter
-    - p_et_ref: p_et_ref parameter
     - unit_cost: unit_cost parameter
+    - p_et_in: p_et_in parameter
+    - alpha: alpha parameter
+    - structure_vol: structure_vol parameter
+    - p_et_ref: p_et_ref parameter
 
 Outputs:
     - cost: cost result
@@ -106,37 +106,37 @@ scaling:
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, p_et_in: float, structure_vol: float, alpha: float, p_et_ref: float, unit_cost: float    ) -> Structure_CostInput:
+        self, unit_cost: float, p_et_in: float, alpha: float, structure_vol: float, p_et_ref: float    ) -> Structure_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            p_et_in: p_et_in input
-            structure_vol: structure_vol input
-            alpha: alpha input
-            p_et_ref: p_et_ref input
             unit_cost: unit_cost input
+            p_et_in: p_et_in input
+            alpha: alpha input
+            structure_vol: structure_vol input
+            p_et_ref: p_et_ref input
 
         Returns:
             Validated input model
         """
-        return Structure_CostInput(p_et_in=p_et_in, structure_vol=structure_vol, alpha=alpha, p_et_ref=p_et_ref, unit_cost=unit_cost)
+        return Structure_CostInput(unit_cost=unit_cost, p_et_in=p_et_in, alpha=alpha, structure_vol=structure_vol, p_et_ref=p_et_ref)
 
     def run(
-        self, p_et_in: float, structure_vol: float, alpha: float, p_et_ref: float, unit_cost: float    ) -> ModuleResult[Float]:
+        self, unit_cost: float, p_et_in: float, alpha: float, structure_vol: float, p_et_ref: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            p_et_in: p_et_in input
-            structure_vol: structure_vol input
-            alpha: alpha input
-            p_et_ref: p_et_ref input
             unit_cost: unit_cost input
+            p_et_in: p_et_in input
+            alpha: alpha input
+            structure_vol: structure_vol input
+            p_et_ref: p_et_ref input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(p_et_in, structure_vol, alpha, p_et_ref, unit_cost)
+        validated_inputs = self.validate_and_fill_default(unit_cost, p_et_in, alpha, structure_vol, p_et_ref)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.structure_cost_impl import (

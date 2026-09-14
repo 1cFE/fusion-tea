@@ -49,7 +49,7 @@ def publication(study_id, cases, directory):
 def cases():
     verdicts = {key: "satisfied" for key in route._catalog_by_constraint_id(route.PACKAGE_DIR)}
     return [SimpleNamespace(candidate_id=f"case-{i}", state="completed",
-                            inputs={route.P + "R": 12.7 + i},
+                            inputs={route.P + "plasma__R": 12.7 + i},
                             outputs={"zero": 0., "required": 2. + i},
                             verdicts=dict(verdicts), headline="satisfied") for i in range(2)]
 

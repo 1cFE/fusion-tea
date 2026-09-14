@@ -28,10 +28,10 @@ WI-032 spec sec. "What G is" (the linkage decomposition)
 linkage fact; concept-agnostic (MR-3) -- all values bound by instances
 
 Inputs:
-    - n_coils: n_coils parameter
     - two_pi: two_pi parameter
-    - R0: R0 parameter
     - I_coil: I_coil parameter
+    - R0: R0 parameter
+    - n_coils: n_coils parameter
     - k_link: k_link parameter
     - mu0: mu0 parameter
 
@@ -56,17 +56,17 @@ class Coil_Set_Axis_FieldInput(BaseModel):
     """Input model for Coil_Set_Axis_FieldModule.
 
     Attributes:
-        n_coils: n_coils input
         two_pi: two_pi input
-        R0: R0 input
         I_coil: I_coil input
+        R0: R0 input
+        n_coils: n_coils input
         k_link: k_link input
         mu0: mu0 input
     """
-    n_coils: float = Field(..., description="n_coils input")
     two_pi: float = Field(..., description="two_pi input")
-    R0: float = Field(..., description="R0 input")
     I_coil: float = Field(..., description="I_coil input")
+    R0: float = Field(..., description="R0 input")
+    n_coils: float = Field(..., description="n_coils input")
     k_link: float = Field(..., description="k_link input")
     mu0: float = Field(..., description="mu0 input")
 
@@ -100,10 +100,10 @@ WI-032 spec sec. "What G is" (the linkage decomposition)
 linkage fact; concept-agnostic (MR-3) -- all values bound by instances
 
 Inputs:
-    - n_coils: n_coils parameter
     - two_pi: two_pi parameter
-    - R0: R0 parameter
     - I_coil: I_coil parameter
+    - R0: R0 parameter
+    - n_coils: n_coils parameter
     - k_link: k_link parameter
     - mu0: mu0 parameter
 
@@ -155,31 +155,31 @@ linkage fact; concept-agnostic (MR-3) -- all values bound by instances
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, n_coils: float, two_pi: float, R0: float, I_coil: float, k_link: float, mu0: float    ) -> Coil_Set_Axis_FieldInput:
+        self, two_pi: float, I_coil: float, R0: float, n_coils: float, k_link: float, mu0: float    ) -> Coil_Set_Axis_FieldInput:
         """Validate inputs and fill defaults.
 
         Args:
-            n_coils: n_coils input
             two_pi: two_pi input
-            R0: R0 input
             I_coil: I_coil input
+            R0: R0 input
+            n_coils: n_coils input
             k_link: k_link input
             mu0: mu0 input
 
         Returns:
             Validated input model
         """
-        return Coil_Set_Axis_FieldInput(n_coils=n_coils, two_pi=two_pi, R0=R0, I_coil=I_coil, k_link=k_link, mu0=mu0)
+        return Coil_Set_Axis_FieldInput(two_pi=two_pi, I_coil=I_coil, R0=R0, n_coils=n_coils, k_link=k_link, mu0=mu0)
 
     def run(
-        self, n_coils: float, two_pi: float, R0: float, I_coil: float, k_link: float, mu0: float    ) -> ModuleResult[Float]:
+        self, two_pi: float, I_coil: float, R0: float, n_coils: float, k_link: float, mu0: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            n_coils: n_coils input
             two_pi: two_pi input
-            R0: R0 input
             I_coil: I_coil input
+            R0: R0 input
+            n_coils: n_coils input
             k_link: k_link input
             mu0: mu0 input
 
@@ -187,7 +187,7 @@ linkage fact; concept-agnostic (MR-3) -- all values bound by instances
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(n_coils, two_pi, R0, I_coil, k_link, mu0)
+        validated_inputs = self.validate_and_fill_default(two_pi, I_coil, R0, n_coils, k_link, mu0)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_magnet_field.coil_set_axis_field_impl import (

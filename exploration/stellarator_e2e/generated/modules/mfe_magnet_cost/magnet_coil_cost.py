@@ -35,13 +35,13 @@ magnet_capital_1cfe); the CAS22.1.3 rollup is now 'Magnet Capital'
 to the coil-current lever too.
 
 Inputs:
-    - coil_markup: coil_markup parameter
     - mu0: mu0 parameter
-    - cost_per_kAm: cost_per_kAm parameter
-    - G: G parameter
     - r_coil: r_coil parameter
-    - B: B parameter
+    - G: G parameter
+    - coil_markup: coil_markup parameter
+    - cost_per_kAm: cost_per_kAm parameter
     - R0: R0 parameter
+    - B: B parameter
 
 Outputs:
     - capital_cost: capital_cost result
@@ -64,21 +64,21 @@ class Magnet_Coil_CostInput(BaseModel):
     """Input model for Magnet_Coil_CostModule.
 
     Attributes:
-        coil_markup: coil_markup input
         mu0: mu0 input
-        cost_per_kAm: cost_per_kAm input
-        G: G input
         r_coil: r_coil input
-        B: B input
+        G: G input
+        coil_markup: coil_markup input
+        cost_per_kAm: cost_per_kAm input
         R0: R0 input
+        B: B input
     """
-    coil_markup: float = Field(..., description="coil_markup input")
     mu0: float = Field(..., description="mu0 input")
-    cost_per_kAm: float = Field(..., description="cost_per_kAm input")
-    G: float = Field(..., description="G input")
     r_coil: float = Field(..., description="r_coil input")
-    B: float = Field(..., description="B input")
+    G: float = Field(..., description="G input")
+    coil_markup: float = Field(..., description="coil_markup input")
+    cost_per_kAm: float = Field(..., description="cost_per_kAm input")
     R0: float = Field(..., description="R0 input")
+    B: float = Field(..., description="B input")
 
 
 class Magnet_Coil_CostModule(ModuleBase[Magnet_Coil_CostInput, Float]):
@@ -117,13 +117,13 @@ magnet_capital_1cfe); the CAS22.1.3 rollup is now 'Magnet Capital'
 to the coil-current lever too.
 
 Inputs:
-    - coil_markup: coil_markup parameter
     - mu0: mu0 parameter
-    - cost_per_kAm: cost_per_kAm parameter
-    - G: G parameter
     - r_coil: r_coil parameter
-    - B: B parameter
+    - G: G parameter
+    - coil_markup: coil_markup parameter
+    - cost_per_kAm: cost_per_kAm parameter
     - R0: R0 parameter
+    - B: B parameter
 
 Outputs:
     - capital_cost: capital_cost result
@@ -180,41 +180,41 @@ to the coil-current lever too.
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, coil_markup: float, mu0: float, cost_per_kAm: float, G: float, r_coil: float, B: float, R0: float    ) -> Magnet_Coil_CostInput:
+        self, mu0: float, r_coil: float, G: float, coil_markup: float, cost_per_kAm: float, R0: float, B: float    ) -> Magnet_Coil_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            coil_markup: coil_markup input
             mu0: mu0 input
-            cost_per_kAm: cost_per_kAm input
-            G: G input
             r_coil: r_coil input
-            B: B input
+            G: G input
+            coil_markup: coil_markup input
+            cost_per_kAm: cost_per_kAm input
             R0: R0 input
+            B: B input
 
         Returns:
             Validated input model
         """
-        return Magnet_Coil_CostInput(coil_markup=coil_markup, mu0=mu0, cost_per_kAm=cost_per_kAm, G=G, r_coil=r_coil, B=B, R0=R0)
+        return Magnet_Coil_CostInput(mu0=mu0, r_coil=r_coil, G=G, coil_markup=coil_markup, cost_per_kAm=cost_per_kAm, R0=R0, B=B)
 
     def run(
-        self, coil_markup: float, mu0: float, cost_per_kAm: float, G: float, r_coil: float, B: float, R0: float    ) -> ModuleResult[Float]:
+        self, mu0: float, r_coil: float, G: float, coil_markup: float, cost_per_kAm: float, R0: float, B: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            coil_markup: coil_markup input
             mu0: mu0 input
-            cost_per_kAm: cost_per_kAm input
-            G: G input
             r_coil: r_coil input
-            B: B input
+            G: G input
+            coil_markup: coil_markup input
+            cost_per_kAm: cost_per_kAm input
             R0: R0 input
+            B: B input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(coil_markup, mu0, cost_per_kAm, G, r_coil, B, R0)
+        validated_inputs = self.validate_and_fill_default(mu0, r_coil, G, coil_markup, cost_per_kAm, R0, B)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_magnet_cost.magnet_coil_cost_impl import (

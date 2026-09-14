@@ -163,26 +163,26 @@ printed ash chain, and composed radiation; concept-agnostic (MR-3)
 -- machine values, levers, and quality facts bound by instances
 
 Inputs:
-    - iota_23_in: iota_23_in parameter
-    - Z_eff_in: Z_eff_in parameter
     - ash_frac_in: ash_frac_in parameter
-    - alpha_T_in: alpha_T_in parameter
-    - kappa_sync_in: kappa_sync_in parameter
-    - V: V parameter
-    - n_e0_in: n_e0_in parameter
-    - T_i0_in: T_i0_in parameter
-    - f_suppr_in: f_suppr_in parameter
-    - R_in: R_in parameter
-    - tau_ratio_in: tau_ratio_in parameter
-    - f_ren_in: f_ren_in parameter
-    - f_W_in: f_W_in parameter
-    - E_fus_in: E_fus_in parameter
     - alpha_n_in: alpha_n_in parameter
-    - B_in: B_in parameter
+    - T_i0_in: T_i0_in parameter
+    - kappa_sync_in: kappa_sync_in parameter
+    - f_suppr_in: f_suppr_in parameter
+    - f_W_in: f_W_in parameter
     - f_alpha_in: f_alpha_in parameter
+    - alpha_T_in: alpha_T_in parameter
+    - iota_23_in: iota_23_in parameter
+    - B_in: B_in parameter
     - r_TiTe_in: r_TiTe_in parameter
+    - tau_ratio_in: tau_ratio_in parameter
+    - n_e0_in: n_e0_in parameter
     - R_w_sync_in: R_w_sync_in parameter
+    - E_fus_in: E_fus_in parameter
+    - Z_eff_in: Z_eff_in parameter
+    - f_ren_in: f_ren_in parameter
+    - R_in: R_in parameter
     - a_in: a_in parameter
+    - V: V parameter
 
 Outputs:
     - n_bar19: n_bar19 result
@@ -222,47 +222,47 @@ class Plasma_SustainmentInput(BaseModel):
     """Input model for Plasma_SustainmentModule.
 
     Attributes:
-        iota_23_in: iota_23_in input
-        Z_eff_in: Z_eff_in input
         ash_frac_in: ash_frac_in input
-        alpha_T_in: alpha_T_in input
-        kappa_sync_in: kappa_sync_in input
-        V: V input
-        n_e0_in: n_e0_in input
-        T_i0_in: T_i0_in input
-        f_suppr_in: f_suppr_in input
-        R_in: R_in input
-        tau_ratio_in: tau_ratio_in input
-        f_ren_in: f_ren_in input
-        f_W_in: f_W_in input
-        E_fus_in: E_fus_in input
         alpha_n_in: alpha_n_in input
-        B_in: B_in input
+        T_i0_in: T_i0_in input
+        kappa_sync_in: kappa_sync_in input
+        f_suppr_in: f_suppr_in input
+        f_W_in: f_W_in input
         f_alpha_in: f_alpha_in input
+        alpha_T_in: alpha_T_in input
+        iota_23_in: iota_23_in input
+        B_in: B_in input
         r_TiTe_in: r_TiTe_in input
+        tau_ratio_in: tau_ratio_in input
+        n_e0_in: n_e0_in input
         R_w_sync_in: R_w_sync_in input
+        E_fus_in: E_fus_in input
+        Z_eff_in: Z_eff_in input
+        f_ren_in: f_ren_in input
+        R_in: R_in input
         a_in: a_in input
+        V: V input
     """
-    iota_23_in: float = Field(..., description="iota_23_in input")
-    Z_eff_in: float = Field(..., description="Z_eff_in input")
     ash_frac_in: float = Field(..., description="ash_frac_in input")
-    alpha_T_in: float = Field(..., description="alpha_T_in input")
-    kappa_sync_in: float = Field(..., description="kappa_sync_in input")
-    V: float = Field(..., description="V input")
-    n_e0_in: float = Field(..., description="n_e0_in input")
-    T_i0_in: float = Field(..., description="T_i0_in input")
-    f_suppr_in: float = Field(..., description="f_suppr_in input")
-    R_in: float = Field(..., description="R_in input")
-    tau_ratio_in: float = Field(..., description="tau_ratio_in input")
-    f_ren_in: float = Field(..., description="f_ren_in input")
-    f_W_in: float = Field(..., description="f_W_in input")
-    E_fus_in: float = Field(..., description="E_fus_in input")
     alpha_n_in: float = Field(..., description="alpha_n_in input")
-    B_in: float = Field(..., description="B_in input")
+    T_i0_in: float = Field(..., description="T_i0_in input")
+    kappa_sync_in: float = Field(..., description="kappa_sync_in input")
+    f_suppr_in: float = Field(..., description="f_suppr_in input")
+    f_W_in: float = Field(..., description="f_W_in input")
     f_alpha_in: float = Field(..., description="f_alpha_in input")
+    alpha_T_in: float = Field(..., description="alpha_T_in input")
+    iota_23_in: float = Field(..., description="iota_23_in input")
+    B_in: float = Field(..., description="B_in input")
     r_TiTe_in: float = Field(..., description="r_TiTe_in input")
+    tau_ratio_in: float = Field(..., description="tau_ratio_in input")
+    n_e0_in: float = Field(..., description="n_e0_in input")
     R_w_sync_in: float = Field(..., description="R_w_sync_in input")
+    E_fus_in: float = Field(..., description="E_fus_in input")
+    Z_eff_in: float = Field(..., description="Z_eff_in input")
+    f_ren_in: float = Field(..., description="f_ren_in input")
+    R_in: float = Field(..., description="R_in input")
     a_in: float = Field(..., description="a_in input")
+    V: float = Field(..., description="V input")
 
 
 class Plasma_SustainmentModule(ModuleBase[Plasma_SustainmentInput, Plasma_SustainmentOutput]):
@@ -429,26 +429,26 @@ printed ash chain, and composed radiation; concept-agnostic (MR-3)
 -- machine values, levers, and quality facts bound by instances
 
 Inputs:
-    - iota_23_in: iota_23_in parameter
-    - Z_eff_in: Z_eff_in parameter
     - ash_frac_in: ash_frac_in parameter
-    - alpha_T_in: alpha_T_in parameter
-    - kappa_sync_in: kappa_sync_in parameter
-    - V: V parameter
-    - n_e0_in: n_e0_in parameter
-    - T_i0_in: T_i0_in parameter
-    - f_suppr_in: f_suppr_in parameter
-    - R_in: R_in parameter
-    - tau_ratio_in: tau_ratio_in parameter
-    - f_ren_in: f_ren_in parameter
-    - f_W_in: f_W_in parameter
-    - E_fus_in: E_fus_in parameter
     - alpha_n_in: alpha_n_in parameter
-    - B_in: B_in parameter
+    - T_i0_in: T_i0_in parameter
+    - kappa_sync_in: kappa_sync_in parameter
+    - f_suppr_in: f_suppr_in parameter
+    - f_W_in: f_W_in parameter
     - f_alpha_in: f_alpha_in parameter
+    - alpha_T_in: alpha_T_in parameter
+    - iota_23_in: iota_23_in parameter
+    - B_in: B_in parameter
     - r_TiTe_in: r_TiTe_in parameter
+    - tau_ratio_in: tau_ratio_in parameter
+    - n_e0_in: n_e0_in parameter
     - R_w_sync_in: R_w_sync_in parameter
+    - E_fus_in: E_fus_in parameter
+    - Z_eff_in: Z_eff_in parameter
+    - f_ren_in: f_ren_in parameter
+    - R_in: R_in parameter
     - a_in: a_in parameter
+    - V: V parameter
 
 Outputs:
     - n_bar19: n_bar19 result
@@ -650,67 +650,67 @@ printed ash chain, and composed radiation; concept-agnostic (MR-3)
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, iota_23_in: float, Z_eff_in: float, ash_frac_in: float, alpha_T_in: float, kappa_sync_in: float, V: float, n_e0_in: float, T_i0_in: float, f_suppr_in: float, R_in: float, tau_ratio_in: float, f_ren_in: float, f_W_in: float, E_fus_in: float, alpha_n_in: float, B_in: float, f_alpha_in: float, r_TiTe_in: float, R_w_sync_in: float, a_in: float    ) -> Plasma_SustainmentInput:
+        self, ash_frac_in: float, alpha_n_in: float, T_i0_in: float, kappa_sync_in: float, f_suppr_in: float, f_W_in: float, f_alpha_in: float, alpha_T_in: float, iota_23_in: float, B_in: float, r_TiTe_in: float, tau_ratio_in: float, n_e0_in: float, R_w_sync_in: float, E_fus_in: float, Z_eff_in: float, f_ren_in: float, R_in: float, a_in: float, V: float    ) -> Plasma_SustainmentInput:
         """Validate inputs and fill defaults.
 
         Args:
-            iota_23_in: iota_23_in input
-            Z_eff_in: Z_eff_in input
             ash_frac_in: ash_frac_in input
-            alpha_T_in: alpha_T_in input
-            kappa_sync_in: kappa_sync_in input
-            V: V input
-            n_e0_in: n_e0_in input
-            T_i0_in: T_i0_in input
-            f_suppr_in: f_suppr_in input
-            R_in: R_in input
-            tau_ratio_in: tau_ratio_in input
-            f_ren_in: f_ren_in input
-            f_W_in: f_W_in input
-            E_fus_in: E_fus_in input
             alpha_n_in: alpha_n_in input
-            B_in: B_in input
+            T_i0_in: T_i0_in input
+            kappa_sync_in: kappa_sync_in input
+            f_suppr_in: f_suppr_in input
+            f_W_in: f_W_in input
             f_alpha_in: f_alpha_in input
+            alpha_T_in: alpha_T_in input
+            iota_23_in: iota_23_in input
+            B_in: B_in input
             r_TiTe_in: r_TiTe_in input
+            tau_ratio_in: tau_ratio_in input
+            n_e0_in: n_e0_in input
             R_w_sync_in: R_w_sync_in input
+            E_fus_in: E_fus_in input
+            Z_eff_in: Z_eff_in input
+            f_ren_in: f_ren_in input
+            R_in: R_in input
             a_in: a_in input
+            V: V input
 
         Returns:
             Validated input model
         """
-        return Plasma_SustainmentInput(iota_23_in=iota_23_in, Z_eff_in=Z_eff_in, ash_frac_in=ash_frac_in, alpha_T_in=alpha_T_in, kappa_sync_in=kappa_sync_in, V=V, n_e0_in=n_e0_in, T_i0_in=T_i0_in, f_suppr_in=f_suppr_in, R_in=R_in, tau_ratio_in=tau_ratio_in, f_ren_in=f_ren_in, f_W_in=f_W_in, E_fus_in=E_fus_in, alpha_n_in=alpha_n_in, B_in=B_in, f_alpha_in=f_alpha_in, r_TiTe_in=r_TiTe_in, R_w_sync_in=R_w_sync_in, a_in=a_in)
+        return Plasma_SustainmentInput(ash_frac_in=ash_frac_in, alpha_n_in=alpha_n_in, T_i0_in=T_i0_in, kappa_sync_in=kappa_sync_in, f_suppr_in=f_suppr_in, f_W_in=f_W_in, f_alpha_in=f_alpha_in, alpha_T_in=alpha_T_in, iota_23_in=iota_23_in, B_in=B_in, r_TiTe_in=r_TiTe_in, tau_ratio_in=tau_ratio_in, n_e0_in=n_e0_in, R_w_sync_in=R_w_sync_in, E_fus_in=E_fus_in, Z_eff_in=Z_eff_in, f_ren_in=f_ren_in, R_in=R_in, a_in=a_in, V=V)
 
     def run(
-        self, iota_23_in: float, Z_eff_in: float, ash_frac_in: float, alpha_T_in: float, kappa_sync_in: float, V: float, n_e0_in: float, T_i0_in: float, f_suppr_in: float, R_in: float, tau_ratio_in: float, f_ren_in: float, f_W_in: float, E_fus_in: float, alpha_n_in: float, B_in: float, f_alpha_in: float, r_TiTe_in: float, R_w_sync_in: float, a_in: float    ) -> ModuleResult[Plasma_SustainmentOutput]:
+        self, ash_frac_in: float, alpha_n_in: float, T_i0_in: float, kappa_sync_in: float, f_suppr_in: float, f_W_in: float, f_alpha_in: float, alpha_T_in: float, iota_23_in: float, B_in: float, r_TiTe_in: float, tau_ratio_in: float, n_e0_in: float, R_w_sync_in: float, E_fus_in: float, Z_eff_in: float, f_ren_in: float, R_in: float, a_in: float, V: float    ) -> ModuleResult[Plasma_SustainmentOutput]:
         """Execute calculation.
 
         Args:
-            iota_23_in: iota_23_in input
-            Z_eff_in: Z_eff_in input
             ash_frac_in: ash_frac_in input
-            alpha_T_in: alpha_T_in input
-            kappa_sync_in: kappa_sync_in input
-            V: V input
-            n_e0_in: n_e0_in input
-            T_i0_in: T_i0_in input
-            f_suppr_in: f_suppr_in input
-            R_in: R_in input
-            tau_ratio_in: tau_ratio_in input
-            f_ren_in: f_ren_in input
-            f_W_in: f_W_in input
-            E_fus_in: E_fus_in input
             alpha_n_in: alpha_n_in input
-            B_in: B_in input
+            T_i0_in: T_i0_in input
+            kappa_sync_in: kappa_sync_in input
+            f_suppr_in: f_suppr_in input
+            f_W_in: f_W_in input
             f_alpha_in: f_alpha_in input
+            alpha_T_in: alpha_T_in input
+            iota_23_in: iota_23_in input
+            B_in: B_in input
             r_TiTe_in: r_TiTe_in input
+            tau_ratio_in: tau_ratio_in input
+            n_e0_in: n_e0_in input
             R_w_sync_in: R_w_sync_in input
+            E_fus_in: E_fus_in input
+            Z_eff_in: Z_eff_in input
+            f_ren_in: f_ren_in input
+            R_in: R_in input
             a_in: a_in input
+            V: V input
 
         Returns:
             Module result with Plasma_SustainmentOutput (n_bar19, n_T0, W_th, p_avg, p_brems, n_He0, n_D0, alpha_n_e_eff, p_aux_required, p_rad, p_alpha_heat, tau_E, p_sync, p_line, n_e_volav, alpha_He_eff, T_e0)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(iota_23_in, Z_eff_in, ash_frac_in, alpha_T_in, kappa_sync_in, V, n_e0_in, T_i0_in, f_suppr_in, R_in, tau_ratio_in, f_ren_in, f_W_in, E_fus_in, alpha_n_in, B_in, f_alpha_in, r_TiTe_in, R_w_sync_in, a_in)
+        validated_inputs = self.validate_and_fill_default(ash_frac_in, alpha_n_in, T_i0_in, kappa_sync_in, f_suppr_in, f_W_in, f_alpha_in, alpha_T_in, iota_23_in, B_in, r_TiTe_in, tau_ratio_in, n_e0_in, R_w_sync_in, E_fus_in, Z_eff_in, f_ren_in, R_in, a_in, V)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_plasma_sustainment.plasma_sustainment_impl import (

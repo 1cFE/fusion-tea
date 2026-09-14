@@ -1,5 +1,5 @@
 {
- "derived_against_semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e",
+ "derived_against_semantic_fingerprint": "1459254b59bb72695954f5657744f6f90245f2f4a0606f46bc80b46f13b98b0e",
  "group": {
   "axis": "availability_direct",
   "declared_keys": [
@@ -27,7 +27,7 @@
      {
       "operand": "beta_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__beta_calc__beta",
+      "ref": "stellarator_09__stellaris__plasma__beta_calc__beta",
       "reached": false
      },
      {
@@ -52,7 +52,7 @@
      {
       "operand": "p_aux_required_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+      "ref": "stellarator_09__stellaris__plasma__sustain__p_aux_required",
       "reached": false
      },
      {
@@ -77,13 +77,13 @@
      {
       "operand": "eps_cond",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+      "ref": "stellarator_09__stellaris__magnet__cond_strain__eps_cond",
       "reached": false
      },
      {
       "operand": "eps_cond_allow_in",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__magnet__eps_cond_allow",
+      "ref": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
       "reached": false,
       "entry_type": "design_attribute"
      }
@@ -102,7 +102,7 @@
      {
       "operand": "domain_product_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__cycle__domain_product",
+      "ref": "stellarator_09__stellaris__turbine__cycle__domain_product",
       "reached": false
      },
      {
@@ -127,13 +127,13 @@
      {
       "operand": "q_target_peak_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+      "ref": "stellarator_09__stellaris__divertor__divheat__q_target_peak",
       "reached": false
      },
      {
       "operand": "q_target_limit_in",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__q_target_limit",
+      "ref": "stellarator_09__stellaris__divertor__q_target_limit",
       "reached": false,
       "entry_type": "design_attribute"
      }
@@ -152,7 +152,7 @@
      {
       "operand": "efficiency",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__eta_couple_heat",
+      "ref": "stellarator_09__stellaris__heating__eta_couple_heat",
       "reached": false,
       "entry_type": "design_attribute"
      },
@@ -177,7 +177,7 @@
      {
       "operand": "efficiency",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__eta_couple_heat",
+      "ref": "stellarator_09__stellaris__heating__eta_couple_heat",
       "reached": false,
       "entry_type": "design_attribute"
      },
@@ -202,7 +202,7 @@
      {
       "operand": "efficiency",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__eta_source_heat",
+      "ref": "stellarator_09__stellaris__heating__eta_source_heat",
       "reached": false,
       "entry_type": "design_attribute"
      },
@@ -227,7 +227,7 @@
      {
       "operand": "efficiency",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__eta_source_heat",
+      "ref": "stellarator_09__stellaris__heating__eta_source_heat",
       "reached": false,
       "entry_type": "design_attribute"
      },
@@ -253,13 +253,13 @@
      {
       "operand": "mdot_loop_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+      "ref": "stellarator_09__stellaris__heat_transport__primary_loop__mdot_loop",
       "reached": false
      },
      {
       "operand": "mdot_loop_rated_in",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__mdot_loop_ref",
+      "ref": "stellarator_09__stellaris__heat_transport__mdot_loop_ref",
       "reached": false,
       "entry_type": "design_attribute"
      }
@@ -278,7 +278,7 @@
      {
       "operand": "p_loop_margin_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+      "ref": "stellarator_09__stellaris__heat_transport__primary_loop__p_loop_margin",
       "reached": false
      },
      {
@@ -327,13 +327,13 @@
      {
       "operand": "B_peak",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+      "ref": "stellarator_09__stellaris__magnet__peak_field_calc__B_peak",
       "reached": false
      },
      {
       "operand": "B_max_in",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__magnet__B_max",
+      "ref": "stellarator_09__stellaris__magnet__winding_pack__B_max",
       "reached": false,
       "entry_type": "design_attribute"
      }
@@ -378,13 +378,13 @@
      {
       "operand": "p_aux_required_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+      "ref": "stellarator_09__stellaris__plasma__sustain__p_aux_required",
       "reached": false
      },
      {
       "operand": "p_aux_installed_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__heat__p_coupled",
+      "ref": "stellarator_09__stellaris__heating__heat__p_coupled",
       "reached": false
      }
     ]
@@ -402,7 +402,7 @@
      {
       "operand": "tbr_in",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__tbr",
+      "ref": "stellarator_09__stellaris__blanket__tbr",
       "reached": false,
       "entry_type": "design_attribute"
      },
@@ -429,7 +429,7 @@
      {
       "operand": "wall_load",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+      "ref": "stellarator_09__stellaris__blanket__first_wall__wall_peak_calc__wall_load_peak",
       "reached": false
      },
      {
@@ -455,13 +455,13 @@
      {
       "operand": "sigma_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
+      "ref": "stellarator_09__stellaris__magnet__wp_stress__sigma_wp",
       "reached": false
      },
      {
       "operand": "sigma_allow_in",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__magnet__sigma_allow",
+      "ref": "stellarator_09__stellaris__magnet__casing__sigma_allow",
       "reached": false,
       "entry_type": "design_attribute"
      }
@@ -483,7 +483,7 @@
      {
       "operand": "beta_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__beta_calc__beta",
+      "ref": "stellarator_09__stellaris__plasma__beta_calc__beta",
       "reached": false
      },
      {
@@ -508,7 +508,7 @@
      {
       "operand": "p_aux_required_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+      "ref": "stellarator_09__stellaris__plasma__sustain__p_aux_required",
       "reached": false
      },
      {
@@ -533,13 +533,13 @@
      {
       "operand": "eps_cond",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+      "ref": "stellarator_09__stellaris__magnet__cond_strain__eps_cond",
       "reached": false
      },
      {
       "operand": "eps_cond_allow_in",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__magnet__eps_cond_allow",
+      "ref": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
       "reached": false,
       "entry_type": "design_attribute"
      }
@@ -558,7 +558,7 @@
      {
       "operand": "domain_product_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__cycle__domain_product",
+      "ref": "stellarator_09__stellaris__turbine__cycle__domain_product",
       "reached": false
      },
      {
@@ -583,13 +583,13 @@
      {
       "operand": "q_target_peak_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+      "ref": "stellarator_09__stellaris__divertor__divheat__q_target_peak",
       "reached": false
      },
      {
       "operand": "q_target_limit_in",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__q_target_limit",
+      "ref": "stellarator_09__stellaris__divertor__q_target_limit",
       "reached": false,
       "entry_type": "design_attribute"
      }
@@ -608,7 +608,7 @@
      {
       "operand": "efficiency",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__eta_couple_heat",
+      "ref": "stellarator_09__stellaris__heating__eta_couple_heat",
       "reached": false,
       "entry_type": "design_attribute"
      },
@@ -633,7 +633,7 @@
      {
       "operand": "efficiency",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__eta_couple_heat",
+      "ref": "stellarator_09__stellaris__heating__eta_couple_heat",
       "reached": false,
       "entry_type": "design_attribute"
      },
@@ -658,7 +658,7 @@
      {
       "operand": "efficiency",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__eta_source_heat",
+      "ref": "stellarator_09__stellaris__heating__eta_source_heat",
       "reached": false,
       "entry_type": "design_attribute"
      },
@@ -683,7 +683,7 @@
      {
       "operand": "efficiency",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__eta_source_heat",
+      "ref": "stellarator_09__stellaris__heating__eta_source_heat",
       "reached": false,
       "entry_type": "design_attribute"
      },
@@ -709,13 +709,13 @@
      {
       "operand": "mdot_loop_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+      "ref": "stellarator_09__stellaris__heat_transport__primary_loop__mdot_loop",
       "reached": false
      },
      {
       "operand": "mdot_loop_rated_in",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__mdot_loop_ref",
+      "ref": "stellarator_09__stellaris__heat_transport__mdot_loop_ref",
       "reached": false,
       "entry_type": "design_attribute"
      }
@@ -734,7 +734,7 @@
      {
       "operand": "p_loop_margin_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+      "ref": "stellarator_09__stellaris__heat_transport__primary_loop__p_loop_margin",
       "reached": false
      },
      {
@@ -783,13 +783,13 @@
      {
       "operand": "B_peak",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+      "ref": "stellarator_09__stellaris__magnet__peak_field_calc__B_peak",
       "reached": false
      },
      {
       "operand": "B_max_in",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__magnet__B_max",
+      "ref": "stellarator_09__stellaris__magnet__winding_pack__B_max",
       "reached": false,
       "entry_type": "design_attribute"
      }
@@ -834,13 +834,13 @@
      {
       "operand": "p_aux_required_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+      "ref": "stellarator_09__stellaris__plasma__sustain__p_aux_required",
       "reached": false
      },
      {
       "operand": "p_aux_installed_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__heat__p_coupled",
+      "ref": "stellarator_09__stellaris__heating__heat__p_coupled",
       "reached": false
      }
     ]
@@ -858,7 +858,7 @@
      {
       "operand": "tbr_in",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__tbr",
+      "ref": "stellarator_09__stellaris__blanket__tbr",
       "reached": false,
       "entry_type": "design_attribute"
      },
@@ -885,7 +885,7 @@
      {
       "operand": "wall_load",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+      "ref": "stellarator_09__stellaris__blanket__first_wall__wall_peak_calc__wall_load_peak",
       "reached": false
      },
      {
@@ -911,13 +911,13 @@
      {
       "operand": "sigma_in",
       "class": "computed",
-      "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
+      "ref": "stellarator_09__stellaris__magnet__wp_stress__sigma_wp",
       "reached": false
      },
      {
       "operand": "sigma_allow_in",
       "class": "bound",
-      "ref": "stellarator_09__stellaris__magnet__sigma_allow",
+      "ref": "stellarator_09__stellaris__magnet__casing__sigma_allow",
       "reached": false,
       "entry_type": "design_attribute"
      }

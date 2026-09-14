@@ -18,7 +18,7 @@ Teax is imported from ``STOP_PARSER_TEAX_ROOT`` by the caller (the sealed-runner
 contract); this module only imports ``simkit`` lazily, inside the functions that need it.
 
 Entry-key shape (after the stellarator model migration, 2026-08-21): the swept axes
-are plant-level design attributes, one key each — ``stellarator_09__stellaris__R``,
+are plant-level design attributes, one key each — ``stellarator_09__stellaris__plasma__R``,
 ``__a``, ``__availability_direct`` — because the library formals are now bound by the
 ``_in`` convention and codegen projects one entry point per authored attribute. The
 model binds all live magnet radius operands to plant R (WI-051).
@@ -49,8 +49,8 @@ EXPECTED_CONSTRAINT_COUNT = 18  # WI-050: four scalar efficiency bounds.
 
 # --- Axis declarations: SysML attribute -> complete entry-key expansion ------
 AXES: dict[str, list[str]] = {
-    "R": [f"{P}R"],
-    "a": [f"{P}a"],
+    "R": [f"{P}plasma__R"],
+    "a": [f"{P}plasma__a"],
     # WI-046 (goal plant-closure round 1, 2026-09-08): the `availability` axis is renamed
     # `availability_direct` -- the lifecycle calendar produces availability; this lever is
     # its held-mode switch (0 = live; (0, 1] = the retired periodic chain at that value).
@@ -72,11 +72,11 @@ CHANNELS = {
     "operating_heat_delivered": f"{P}operating_heat__p_delivered",
     "operating_heat_wallplug": f"{P}operating_heat__p_wallplug",
     "lcoe": f"{P}lcoe_calc__lcoe",
-    "wall_load": f"{P}wall_load_calc__wall_load",
-    "p_fus": f"{P}fusion__p_fus",
-    "plasma_volume": f"{P}geom__V",
+    "wall_load": f"{P}blanket__first_wall__wall_load_calc__wall_load",
+    "p_fus": f"{P}plasma__fusion__p_fus",
+    "plasma_volume": f"{P}plasma__geom__V",
     "total_capital": f"{P}total_capital__total_capital",
-    "magnet_capital": f"{P}magnet_cost__capital_cost",
+    "magnet_capital": f"{P}magnet__magnet_cost__capital_cost",
     "overnight_capital": f"{P}overnight_capital__overnight_capital",
     "lcoe_1cfe": f"{P}lcoe_1cfe_calc__lcoe",
 }

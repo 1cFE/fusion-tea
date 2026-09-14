@@ -20,7 +20,7 @@ from tests.study.conftest import DATA_DIR, run_tool
 # held-mode switch (design D5). The known answer is re-derived, its no-response claim kept.
 CASES = ["availability_direct", "interest_rate", "R", "a", "I_coil"]
 
-EXPECTED_SEMANTIC_FINGERPRINT = '15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e'
+EXPECTED_SEMANTIC_FINGERPRINT = '1459254b59bb72695954f5657744f6f90245f2f4a0606f46bc80b46f13b98b0e'
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
 #:          modules fired, channels tainted). Read straight off the Item 1 fixture
@@ -30,6 +30,8 @@ EXPECTED_SEMANTIC_FINGERPRINT = '15ed665c374729a984f29fa753f444677805939ffb19593
 #: more channel because CAS27 is now computed in-package and declared as the
 #: `cas27` objective, and each swept attribute is one plant-level entry point.
 # WI-051: re-derived by the radius item metadata caller from the native graph.
+# WI-057 (2026-09-13, the structural decomposition re-applied onto feat/demo-maturation): re-derived on the
+# restructured package -- every count identical; only the entry-point names carry their part's path.
 FIXTURE_CONTRACT = {'I_coil': (False,
             ['beta_ok',
              'burn_hold_ok',

@@ -16,11 +16,11 @@ is the blanket-form multiplier. Both are concept inputs (WI-011).
 *Basis**: Volume-based blanket cost with thermal-intensity power law
 
 Inputs:
+    - blanket_vol: blanket_vol parameter
     - p_th_in: p_th_in parameter
     - p_th_ref: p_th_ref parameter
     - structure_factor: structure_factor parameter
     - alpha: alpha parameter
-    - blanket_vol: blanket_vol parameter
     - unit_cost: unit_cost parameter
 
 Outputs:
@@ -44,18 +44,18 @@ class Blanket_CostInput(BaseModel):
     """Input model for Blanket_CostModule.
 
     Attributes:
+        blanket_vol: blanket_vol input
         p_th_in: p_th_in input
         p_th_ref: p_th_ref input
         structure_factor: structure_factor input
         alpha: alpha input
-        blanket_vol: blanket_vol input
         unit_cost: unit_cost input
     """
+    blanket_vol: float = Field(..., description="blanket_vol input")
     p_th_in: float = Field(..., description="p_th_in input")
     p_th_ref: float = Field(..., description="p_th_ref input")
     structure_factor: float = Field(..., description="structure_factor input")
     alpha: float = Field(..., description="alpha input")
-    blanket_vol: float = Field(..., description="blanket_vol input")
     unit_cost: float = Field(..., description="unit_cost input")
 
 
@@ -76,11 +76,11 @@ is the blanket-form multiplier. Both are concept inputs (WI-011).
 *Basis**: Volume-based blanket cost with thermal-intensity power law
 
 Inputs:
+    - blanket_vol: blanket_vol parameter
     - p_th_in: p_th_in parameter
     - p_th_ref: p_th_ref parameter
     - structure_factor: structure_factor parameter
     - alpha: alpha parameter
-    - blanket_vol: blanket_vol parameter
     - unit_cost: unit_cost parameter
 
 Outputs:
@@ -119,39 +119,39 @@ is the blanket-form multiplier. Both are concept inputs (WI-011).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, p_th_in: float, p_th_ref: float, structure_factor: float, alpha: float, blanket_vol: float, unit_cost: float    ) -> Blanket_CostInput:
+        self, blanket_vol: float, p_th_in: float, p_th_ref: float, structure_factor: float, alpha: float, unit_cost: float    ) -> Blanket_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
+            blanket_vol: blanket_vol input
             p_th_in: p_th_in input
             p_th_ref: p_th_ref input
             structure_factor: structure_factor input
             alpha: alpha input
-            blanket_vol: blanket_vol input
             unit_cost: unit_cost input
 
         Returns:
             Validated input model
         """
-        return Blanket_CostInput(p_th_in=p_th_in, p_th_ref=p_th_ref, structure_factor=structure_factor, alpha=alpha, blanket_vol=blanket_vol, unit_cost=unit_cost)
+        return Blanket_CostInput(blanket_vol=blanket_vol, p_th_in=p_th_in, p_th_ref=p_th_ref, structure_factor=structure_factor, alpha=alpha, unit_cost=unit_cost)
 
     def run(
-        self, p_th_in: float, p_th_ref: float, structure_factor: float, alpha: float, blanket_vol: float, unit_cost: float    ) -> ModuleResult[Float]:
+        self, blanket_vol: float, p_th_in: float, p_th_ref: float, structure_factor: float, alpha: float, unit_cost: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
+            blanket_vol: blanket_vol input
             p_th_in: p_th_in input
             p_th_ref: p_th_ref input
             structure_factor: structure_factor input
             alpha: alpha input
-            blanket_vol: blanket_vol input
             unit_cost: unit_cost input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(p_th_in, p_th_ref, structure_factor, alpha, blanket_vol, unit_cost)
+        validated_inputs = self.validate_and_fill_default(blanket_vol, p_th_in, p_th_ref, structure_factor, alpha, unit_cost)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.blanket_cost_impl import (

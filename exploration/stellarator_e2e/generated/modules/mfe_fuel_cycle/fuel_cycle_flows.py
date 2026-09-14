@@ -48,17 +48,17 @@ conditional 1.19 finding)
 *Basis**: Tritium conservation on the burned, circulating and bred streams
 
 Inputs:
-    - p_fus_in: p_fus_in parameter
-    - lambda_T_in: lambda_T_in parameter
-    - t_recycle_in: t_recycle_in parameter
-    - s_per_fpy_in: s_per_fpy_in parameter
-    - G_stock_in: G_stock_in parameter
-    - tbr_available_in: tbr_available_in parameter
-    - mev_to_joules_in: mev_to_joules_in parameter
-    - m_T_kg_in: m_T_kg_in parameter
     - eta_extract_in: eta_extract_in parameter
-    - burn_fraction_in: burn_fraction_in parameter
+    - s_per_fpy_in: s_per_fpy_in parameter
+    - tbr_available_in: tbr_available_in parameter
+    - lambda_T_in: lambda_T_in parameter
+    - p_fus_in: p_fus_in parameter
     - q_eff_in: q_eff_in parameter
+    - burn_fraction_in: burn_fraction_in parameter
+    - G_stock_in: G_stock_in parameter
+    - t_recycle_in: t_recycle_in parameter
+    - m_T_kg_in: m_T_kg_in parameter
+    - mev_to_joules_in: mev_to_joules_in parameter
     - I_total_in: I_total_in parameter
 
 Outputs:
@@ -89,30 +89,30 @@ class Fuel_Cycle_FlowsInput(BaseModel):
     """Input model for Fuel_Cycle_FlowsModule.
 
     Attributes:
-        p_fus_in: p_fus_in input
-        lambda_T_in: lambda_T_in input
-        t_recycle_in: t_recycle_in input
-        s_per_fpy_in: s_per_fpy_in input
-        G_stock_in: G_stock_in input
-        tbr_available_in: tbr_available_in input
-        mev_to_joules_in: mev_to_joules_in input
-        m_T_kg_in: m_T_kg_in input
         eta_extract_in: eta_extract_in input
-        burn_fraction_in: burn_fraction_in input
+        s_per_fpy_in: s_per_fpy_in input
+        tbr_available_in: tbr_available_in input
+        lambda_T_in: lambda_T_in input
+        p_fus_in: p_fus_in input
         q_eff_in: q_eff_in input
+        burn_fraction_in: burn_fraction_in input
+        G_stock_in: G_stock_in input
+        t_recycle_in: t_recycle_in input
+        m_T_kg_in: m_T_kg_in input
+        mev_to_joules_in: mev_to_joules_in input
         I_total_in: I_total_in input
     """
-    p_fus_in: float = Field(..., description="p_fus_in input")
-    lambda_T_in: float = Field(..., description="lambda_T_in input")
-    t_recycle_in: float = Field(..., description="t_recycle_in input")
-    s_per_fpy_in: float = Field(..., description="s_per_fpy_in input")
-    G_stock_in: float = Field(..., description="G_stock_in input")
-    tbr_available_in: float = Field(..., description="tbr_available_in input")
-    mev_to_joules_in: float = Field(..., description="mev_to_joules_in input")
-    m_T_kg_in: float = Field(..., description="m_T_kg_in input")
     eta_extract_in: float = Field(..., description="eta_extract_in input")
-    burn_fraction_in: float = Field(..., description="burn_fraction_in input")
+    s_per_fpy_in: float = Field(..., description="s_per_fpy_in input")
+    tbr_available_in: float = Field(..., description="tbr_available_in input")
+    lambda_T_in: float = Field(..., description="lambda_T_in input")
+    p_fus_in: float = Field(..., description="p_fus_in input")
     q_eff_in: float = Field(..., description="q_eff_in input")
+    burn_fraction_in: float = Field(..., description="burn_fraction_in input")
+    G_stock_in: float = Field(..., description="G_stock_in input")
+    t_recycle_in: float = Field(..., description="t_recycle_in input")
+    m_T_kg_in: float = Field(..., description="m_T_kg_in input")
+    mev_to_joules_in: float = Field(..., description="mev_to_joules_in input")
     I_total_in: float = Field(..., description="I_total_in input")
 
 
@@ -165,17 +165,17 @@ conditional 1.19 finding)
 *Basis**: Tritium conservation on the burned, circulating and bred streams
 
 Inputs:
-    - p_fus_in: p_fus_in parameter
-    - lambda_T_in: lambda_T_in parameter
-    - t_recycle_in: t_recycle_in parameter
-    - s_per_fpy_in: s_per_fpy_in parameter
-    - G_stock_in: G_stock_in parameter
-    - tbr_available_in: tbr_available_in parameter
-    - mev_to_joules_in: mev_to_joules_in parameter
-    - m_T_kg_in: m_T_kg_in parameter
     - eta_extract_in: eta_extract_in parameter
-    - burn_fraction_in: burn_fraction_in parameter
+    - s_per_fpy_in: s_per_fpy_in parameter
+    - tbr_available_in: tbr_available_in parameter
+    - lambda_T_in: lambda_T_in parameter
+    - p_fus_in: p_fus_in parameter
     - q_eff_in: q_eff_in parameter
+    - burn_fraction_in: burn_fraction_in parameter
+    - G_stock_in: G_stock_in parameter
+    - t_recycle_in: t_recycle_in parameter
+    - m_T_kg_in: m_T_kg_in parameter
+    - mev_to_joules_in: mev_to_joules_in parameter
     - I_total_in: I_total_in parameter
 
 Outputs:
@@ -259,51 +259,51 @@ conditional 1.19 finding)
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, p_fus_in: float, lambda_T_in: float, t_recycle_in: float, s_per_fpy_in: float, G_stock_in: float, tbr_available_in: float, mev_to_joules_in: float, m_T_kg_in: float, eta_extract_in: float, burn_fraction_in: float, q_eff_in: float, I_total_in: float    ) -> Fuel_Cycle_FlowsInput:
+        self, eta_extract_in: float, s_per_fpy_in: float, tbr_available_in: float, lambda_T_in: float, p_fus_in: float, q_eff_in: float, burn_fraction_in: float, G_stock_in: float, t_recycle_in: float, m_T_kg_in: float, mev_to_joules_in: float, I_total_in: float    ) -> Fuel_Cycle_FlowsInput:
         """Validate inputs and fill defaults.
 
         Args:
-            p_fus_in: p_fus_in input
-            lambda_T_in: lambda_T_in input
-            t_recycle_in: t_recycle_in input
-            s_per_fpy_in: s_per_fpy_in input
-            G_stock_in: G_stock_in input
-            tbr_available_in: tbr_available_in input
-            mev_to_joules_in: mev_to_joules_in input
-            m_T_kg_in: m_T_kg_in input
             eta_extract_in: eta_extract_in input
-            burn_fraction_in: burn_fraction_in input
+            s_per_fpy_in: s_per_fpy_in input
+            tbr_available_in: tbr_available_in input
+            lambda_T_in: lambda_T_in input
+            p_fus_in: p_fus_in input
             q_eff_in: q_eff_in input
+            burn_fraction_in: burn_fraction_in input
+            G_stock_in: G_stock_in input
+            t_recycle_in: t_recycle_in input
+            m_T_kg_in: m_T_kg_in input
+            mev_to_joules_in: mev_to_joules_in input
             I_total_in: I_total_in input
 
         Returns:
             Validated input model
         """
-        return Fuel_Cycle_FlowsInput(p_fus_in=p_fus_in, lambda_T_in=lambda_T_in, t_recycle_in=t_recycle_in, s_per_fpy_in=s_per_fpy_in, G_stock_in=G_stock_in, tbr_available_in=tbr_available_in, mev_to_joules_in=mev_to_joules_in, m_T_kg_in=m_T_kg_in, eta_extract_in=eta_extract_in, burn_fraction_in=burn_fraction_in, q_eff_in=q_eff_in, I_total_in=I_total_in)
+        return Fuel_Cycle_FlowsInput(eta_extract_in=eta_extract_in, s_per_fpy_in=s_per_fpy_in, tbr_available_in=tbr_available_in, lambda_T_in=lambda_T_in, p_fus_in=p_fus_in, q_eff_in=q_eff_in, burn_fraction_in=burn_fraction_in, G_stock_in=G_stock_in, t_recycle_in=t_recycle_in, m_T_kg_in=m_T_kg_in, mev_to_joules_in=mev_to_joules_in, I_total_in=I_total_in)
 
     def run(
-        self, p_fus_in: float, lambda_T_in: float, t_recycle_in: float, s_per_fpy_in: float, G_stock_in: float, tbr_available_in: float, mev_to_joules_in: float, m_T_kg_in: float, eta_extract_in: float, burn_fraction_in: float, q_eff_in: float, I_total_in: float    ) -> ModuleResult[Fuel_Cycle_FlowsOutput]:
+        self, eta_extract_in: float, s_per_fpy_in: float, tbr_available_in: float, lambda_T_in: float, p_fus_in: float, q_eff_in: float, burn_fraction_in: float, G_stock_in: float, t_recycle_in: float, m_T_kg_in: float, mev_to_joules_in: float, I_total_in: float    ) -> ModuleResult[Fuel_Cycle_FlowsOutput]:
         """Execute calculation.
 
         Args:
-            p_fus_in: p_fus_in input
-            lambda_T_in: lambda_T_in input
-            t_recycle_in: t_recycle_in input
-            s_per_fpy_in: s_per_fpy_in input
-            G_stock_in: G_stock_in input
-            tbr_available_in: tbr_available_in input
-            mev_to_joules_in: mev_to_joules_in input
-            m_T_kg_in: m_T_kg_in input
             eta_extract_in: eta_extract_in input
-            burn_fraction_in: burn_fraction_in input
+            s_per_fpy_in: s_per_fpy_in input
+            tbr_available_in: tbr_available_in input
+            lambda_T_in: lambda_T_in input
+            p_fus_in: p_fus_in input
             q_eff_in: q_eff_in input
+            burn_fraction_in: burn_fraction_in input
+            G_stock_in: G_stock_in input
+            t_recycle_in: t_recycle_in input
+            m_T_kg_in: m_T_kg_in input
+            mev_to_joules_in: mev_to_joules_in input
             I_total_in: I_total_in input
 
         Returns:
             Module result with Fuel_Cycle_FlowsOutput (burn_kg_per_fpy, inject_rate, burn_rate, tbr_margin, tbr_required, loss_rate, exhaust_rate)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(p_fus_in, lambda_T_in, t_recycle_in, s_per_fpy_in, G_stock_in, tbr_available_in, mev_to_joules_in, m_T_kg_in, eta_extract_in, burn_fraction_in, q_eff_in, I_total_in)
+        validated_inputs = self.validate_and_fill_default(eta_extract_in, s_per_fpy_in, tbr_available_in, lambda_T_in, p_fus_in, q_eff_in, burn_fraction_in, G_stock_in, t_recycle_in, m_T_kg_in, mev_to_joules_in, I_total_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_fuel_cycle.fuel_cycle_flows_impl import (

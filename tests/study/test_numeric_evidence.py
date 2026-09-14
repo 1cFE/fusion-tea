@@ -84,7 +84,7 @@ def test_real_multi_output_values_survive_reopened_store_and_export(
         "p_et": f"{route.P}pb__p_et",
         # WI-045 (goal plant-closure, 2026-09-08): the thermal efficiency is the
         # cycle calc's channel now, not the held 0.333; the identity below reads it.
-        "eta_th": f"{route.P}cycle__eta_th",
+        "eta_th": f"{route.P}turbine__cycle__eta_th",
         "lcoe": route.CHANNELS["lcoe"],
     }
     cases, db = route.run_points(

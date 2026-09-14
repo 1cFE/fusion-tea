@@ -25,9 +25,9 @@ AISI 316LN)
 markup; concept-agnostic (MR-3)
 
 Inputs:
+    - n_coils: n_coils parameter
     - m_casing: m_casing parameter
     - steel_price: steel_price parameter
-    - n_coils: n_coils parameter
     - f_steel_fab: f_steel_fab parameter
 
 Outputs:
@@ -51,14 +51,14 @@ class Magnet_Structure_CostInput(BaseModel):
     """Input model for Magnet_Structure_CostModule.
 
     Attributes:
+        n_coils: n_coils input
         m_casing: m_casing input
         steel_price: steel_price input
-        n_coils: n_coils input
         f_steel_fab: f_steel_fab input
     """
+    n_coils: float = Field(..., description="n_coils input")
     m_casing: float = Field(..., description="m_casing input")
     steel_price: float = Field(..., description="steel_price input")
-    n_coils: float = Field(..., description="n_coils input")
     f_steel_fab: float = Field(..., description="f_steel_fab input")
 
 
@@ -88,9 +88,9 @@ AISI 316LN)
 markup; concept-agnostic (MR-3)
 
 Inputs:
+    - n_coils: n_coils parameter
     - m_casing: m_casing parameter
     - steel_price: steel_price parameter
-    - n_coils: n_coils parameter
     - f_steel_fab: f_steel_fab parameter
 
 Outputs:
@@ -136,35 +136,35 @@ markup; concept-agnostic (MR-3)
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, m_casing: float, steel_price: float, n_coils: float, f_steel_fab: float    ) -> Magnet_Structure_CostInput:
+        self, n_coils: float, m_casing: float, steel_price: float, f_steel_fab: float    ) -> Magnet_Structure_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
+            n_coils: n_coils input
             m_casing: m_casing input
             steel_price: steel_price input
-            n_coils: n_coils input
             f_steel_fab: f_steel_fab input
 
         Returns:
             Validated input model
         """
-        return Magnet_Structure_CostInput(m_casing=m_casing, steel_price=steel_price, n_coils=n_coils, f_steel_fab=f_steel_fab)
+        return Magnet_Structure_CostInput(n_coils=n_coils, m_casing=m_casing, steel_price=steel_price, f_steel_fab=f_steel_fab)
 
     def run(
-        self, m_casing: float, steel_price: float, n_coils: float, f_steel_fab: float    ) -> ModuleResult[Float]:
+        self, n_coils: float, m_casing: float, steel_price: float, f_steel_fab: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
+            n_coils: n_coils input
             m_casing: m_casing input
             steel_price: steel_price input
-            n_coils: n_coils input
             f_steel_fab: f_steel_fab input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(m_casing, steel_price, n_coils, f_steel_fab)
+        validated_inputs = self.validate_and_fill_default(n_coils, m_casing, steel_price, f_steel_fab)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_magnet_cost.magnet_structure_cost_impl import (

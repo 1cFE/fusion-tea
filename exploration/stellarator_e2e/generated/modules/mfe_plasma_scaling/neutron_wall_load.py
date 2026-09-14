@@ -23,8 +23,8 @@ This makes neutron wall load forward-computable from the power balance
 
 Inputs:
     - ash_frac_in: ash_frac_in parameter
-    - wall_area: wall_area parameter
     - p_fus: p_fus parameter
+    - wall_area: wall_area parameter
 
 Outputs:
     - wall_load: wall_load result
@@ -48,12 +48,12 @@ class Neutron_Wall_LoadInput(BaseModel):
 
     Attributes:
         ash_frac_in: ash_frac_in input
-        wall_area: wall_area input
         p_fus: p_fus input
+        wall_area: wall_area input
     """
     ash_frac_in: float = Field(..., description="ash_frac_in input")
-    wall_area: float = Field(..., description="wall_area input")
     p_fus: float = Field(..., description="p_fus input")
+    wall_area: float = Field(..., description="wall_area input")
 
 
 class Neutron_Wall_LoadModule(ModuleBase[Neutron_Wall_LoadInput, Float]):
@@ -80,8 +80,8 @@ This makes neutron wall load forward-computable from the power balance
 
 Inputs:
     - ash_frac_in: ash_frac_in parameter
-    - wall_area: wall_area parameter
     - p_fus: p_fus parameter
+    - wall_area: wall_area parameter
 
 Outputs:
     - wall_load: wall_load result
@@ -124,33 +124,33 @@ This makes neutron wall load forward-computable from the power balance
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, ash_frac_in: float, wall_area: float, p_fus: float    ) -> Neutron_Wall_LoadInput:
+        self, ash_frac_in: float, p_fus: float, wall_area: float    ) -> Neutron_Wall_LoadInput:
         """Validate inputs and fill defaults.
 
         Args:
             ash_frac_in: ash_frac_in input
-            wall_area: wall_area input
             p_fus: p_fus input
+            wall_area: wall_area input
 
         Returns:
             Validated input model
         """
-        return Neutron_Wall_LoadInput(ash_frac_in=ash_frac_in, wall_area=wall_area, p_fus=p_fus)
+        return Neutron_Wall_LoadInput(ash_frac_in=ash_frac_in, p_fus=p_fus, wall_area=wall_area)
 
     def run(
-        self, ash_frac_in: float, wall_area: float, p_fus: float    ) -> ModuleResult[Float]:
+        self, ash_frac_in: float, p_fus: float, wall_area: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
             ash_frac_in: ash_frac_in input
-            wall_area: wall_area input
             p_fus: p_fus input
+            wall_area: wall_area input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(ash_frac_in, wall_area, p_fus)
+        validated_inputs = self.validate_and_fill_default(ash_frac_in, p_fus, wall_area)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_plasma_scaling.neutron_wall_load_impl import (

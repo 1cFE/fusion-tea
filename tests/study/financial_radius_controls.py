@@ -22,7 +22,7 @@ def check_controls(out):
     frozen_dir = ROOT / "work/active/WI-051_mfe-model-owned-major-radius/prototype"
     frozen = json.loads((frozen_dir / "frozen-results.json").read_text())
     expectations = json.loads((frozen_dir / "expectations.json").read_text())
-    proposals = [{}, {route.P + "R": 14.0}]
+    proposals = [{}, {route.P + "plasma__R": 14.0}]
     cases, db = route.run_points("radius-controls", proposals, out / "_work")
     assert len(cases) == 2 and all(c.state == "completed" for c in cases)
     comparisons = {}

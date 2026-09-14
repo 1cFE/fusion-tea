@@ -136,7 +136,7 @@ def _local_case(study):
     if "W_mag" in study.CHANNELS:
         centre = 3.15
         case.outputs[study.CHANNELS["r_coil_centre"]] = centre
-        energy = 111e9 * (inputs[study.P + "magnet__I_coil"] / 15400000)**2 * (centre / 3.1500000000000004)**2 * (12.7 / inputs[study.P + "magnet__R0"])
+        energy = 111e9 * (inputs[study.P + "magnet__coil__I_coil"] / 15400000)**2 * (centre / 3.1500000000000004)**2 * (12.7 / inputs[study.P + "magnet__R0"])
         case.outputs[study.CHANNELS["W_mag"]] = energy
         case.outputs[study.CHANNELS["m_casing"]] = 63000 * (energy / 111e9)**0.78
     return case

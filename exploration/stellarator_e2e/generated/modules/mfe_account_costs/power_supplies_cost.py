@@ -16,9 +16,9 @@ M$ at 1 GWe in the source) -- a concept input (WI-011).
 
 Inputs:
     - p_et_ref: p_et_ref parameter
-    - base: base parameter
     - alpha: alpha parameter
     - p_et_in: p_et_in parameter
+    - base: base parameter
 
 Outputs:
     - cost: cost result
@@ -42,14 +42,14 @@ class Power_Supplies_CostInput(BaseModel):
 
     Attributes:
         p_et_ref: p_et_ref input
-        base: base input
         alpha: alpha input
         p_et_in: p_et_in input
+        base: base input
     """
     p_et_ref: float = Field(..., description="p_et_ref input")
-    base: float = Field(..., description="base input")
     alpha: float = Field(..., description="alpha input")
     p_et_in: float = Field(..., description="p_et_in input")
+    base: float = Field(..., description="base input")
 
 
 class Power_Supplies_CostModule(ModuleBase[Power_Supplies_CostInput, Float]):
@@ -69,9 +69,9 @@ M$ at 1 GWe in the source) -- a concept input (WI-011).
 
 Inputs:
     - p_et_ref: p_et_ref parameter
-    - base: base parameter
     - alpha: alpha parameter
     - p_et_in: p_et_in parameter
+    - base: base parameter
 
 Outputs:
     - cost: cost result
@@ -108,35 +108,35 @@ M$ at 1 GWe in the source) -- a concept input (WI-011).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, p_et_ref: float, base: float, alpha: float, p_et_in: float    ) -> Power_Supplies_CostInput:
+        self, p_et_ref: float, alpha: float, p_et_in: float, base: float    ) -> Power_Supplies_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
             p_et_ref: p_et_ref input
-            base: base input
             alpha: alpha input
             p_et_in: p_et_in input
+            base: base input
 
         Returns:
             Validated input model
         """
-        return Power_Supplies_CostInput(p_et_ref=p_et_ref, base=base, alpha=alpha, p_et_in=p_et_in)
+        return Power_Supplies_CostInput(p_et_ref=p_et_ref, alpha=alpha, p_et_in=p_et_in, base=base)
 
     def run(
-        self, p_et_ref: float, base: float, alpha: float, p_et_in: float    ) -> ModuleResult[Float]:
+        self, p_et_ref: float, alpha: float, p_et_in: float, base: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
             p_et_ref: p_et_ref input
-            base: base input
             alpha: alpha input
             p_et_in: p_et_in input
+            base: base input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(p_et_ref, base, alpha, p_et_in)
+        validated_inputs = self.validate_and_fill_default(p_et_ref, alpha, p_et_in, base)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.power_supplies_cost_impl import (

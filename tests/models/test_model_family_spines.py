@@ -101,7 +101,7 @@ CAS28_CONSUMERS = {
     (f"{P}cas23_to_28_capital", "cas28_capital"),
     (f"{P}cas2x_pre_contingency", "cas28_capital"),
 }
-BLANKET_T_SOURCE = ("stellarator_plant_params", f"{P}blanket_t")
+BLANKET_T_SOURCE = ("stellarator_plant_params", f"{P}blanket__blanket_t")
 BLANKET_T_CONSUMERS = {(f"{P}rb", "blanket_t_in")}
 
 

@@ -28,9 +28,9 @@ output.md L607 (the empirical law and its role), L609 (its limit)
 concept-agnostic (MR-3) -- all values bound by instances
 
 Inputs:
-    - W_mag: W_mag parameter
     - W_mag_ref: W_mag_ref parameter
     - m_casing_ref: m_casing_ref parameter
+    - W_mag: W_mag parameter
 
 Outputs:
     - m_casing: m_casing result
@@ -53,13 +53,13 @@ class Magnet_Casing_MassInput(BaseModel):
     """Input model for Magnet_Casing_MassModule.
 
     Attributes:
-        W_mag: W_mag input
         W_mag_ref: W_mag_ref input
         m_casing_ref: m_casing_ref input
+        W_mag: W_mag input
     """
-    W_mag: float = Field(..., description="W_mag input")
     W_mag_ref: float = Field(..., description="W_mag_ref input")
     m_casing_ref: float = Field(..., description="m_casing_ref input")
+    W_mag: float = Field(..., description="W_mag input")
 
 
 class Magnet_Casing_MassModule(ModuleBase[Magnet_Casing_MassInput, Float]):
@@ -91,9 +91,9 @@ output.md L607 (the empirical law and its role), L609 (its limit)
 concept-agnostic (MR-3) -- all values bound by instances
 
 Inputs:
-    - W_mag: W_mag parameter
     - W_mag_ref: W_mag_ref parameter
     - m_casing_ref: m_casing_ref parameter
+    - W_mag: W_mag parameter
 
 Outputs:
     - m_casing: m_casing result
@@ -141,33 +141,33 @@ concept-agnostic (MR-3) -- all values bound by instances
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, W_mag: float, W_mag_ref: float, m_casing_ref: float    ) -> Magnet_Casing_MassInput:
+        self, W_mag_ref: float, m_casing_ref: float, W_mag: float    ) -> Magnet_Casing_MassInput:
         """Validate inputs and fill defaults.
 
         Args:
-            W_mag: W_mag input
             W_mag_ref: W_mag_ref input
             m_casing_ref: m_casing_ref input
+            W_mag: W_mag input
 
         Returns:
             Validated input model
         """
-        return Magnet_Casing_MassInput(W_mag=W_mag, W_mag_ref=W_mag_ref, m_casing_ref=m_casing_ref)
+        return Magnet_Casing_MassInput(W_mag_ref=W_mag_ref, m_casing_ref=m_casing_ref, W_mag=W_mag)
 
     def run(
-        self, W_mag: float, W_mag_ref: float, m_casing_ref: float    ) -> ModuleResult[Float]:
+        self, W_mag_ref: float, m_casing_ref: float, W_mag: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            W_mag: W_mag input
             W_mag_ref: W_mag_ref input
             m_casing_ref: m_casing_ref input
+            W_mag: W_mag input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(W_mag, W_mag_ref, m_casing_ref)
+        validated_inputs = self.validate_and_fill_default(W_mag_ref, m_casing_ref, W_mag)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_magnet_cost.magnet_casing_mass_impl import (

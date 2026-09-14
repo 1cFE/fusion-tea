@@ -30,14 +30,14 @@ fails. Valid default temperatures retain dormant/direct-power behavior.
 concept-agnostic (MR-3) -- all values bound by instances
 
 Inputs:
-    - p_direct: p_direct parameter
-    - vol_cold: vol_cold parameter
     - T_amb: T_amb parameter
-    - f_uplift: f_uplift parameter
-    - T_cold: T_cold parameter
     - q_nuc: q_nuc parameter
-    - p_fixed: p_fixed parameter
+    - T_cold: T_cold parameter
+    - p_direct: p_direct parameter
     - f_carnot: f_carnot parameter
+    - p_fixed: p_fixed parameter
+    - vol_cold: vol_cold parameter
+    - f_uplift: f_uplift parameter
 
 Outputs:
     - p_elec: p_elec result
@@ -60,23 +60,23 @@ class Cryoplant_Electrical_PowerInput(BaseModel):
     """Input model for Cryoplant_Electrical_PowerModule.
 
     Attributes:
-        p_direct: p_direct input
-        vol_cold: vol_cold input
         T_amb: T_amb input
-        f_uplift: f_uplift input
-        T_cold: T_cold input
         q_nuc: q_nuc input
-        p_fixed: p_fixed input
+        T_cold: T_cold input
+        p_direct: p_direct input
         f_carnot: f_carnot input
+        p_fixed: p_fixed input
+        vol_cold: vol_cold input
+        f_uplift: f_uplift input
     """
-    p_direct: float = Field(..., description="p_direct input")
-    vol_cold: float = Field(..., description="vol_cold input")
     T_amb: float = Field(..., description="T_amb input")
-    f_uplift: float = Field(..., description="f_uplift input")
-    T_cold: float = Field(..., description="T_cold input")
     q_nuc: float = Field(..., description="q_nuc input")
-    p_fixed: float = Field(..., description="p_fixed input")
+    T_cold: float = Field(..., description="T_cold input")
+    p_direct: float = Field(..., description="p_direct input")
     f_carnot: float = Field(..., description="f_carnot input")
+    p_fixed: float = Field(..., description="p_fixed input")
+    vol_cold: float = Field(..., description="vol_cold input")
+    f_uplift: float = Field(..., description="f_uplift input")
 
 
 class Cryoplant_Electrical_PowerModule(ModuleBase[Cryoplant_Electrical_PowerInput, Float]):
@@ -110,14 +110,14 @@ fails. Valid default temperatures retain dormant/direct-power behavior.
 concept-agnostic (MR-3) -- all values bound by instances
 
 Inputs:
-    - p_direct: p_direct parameter
-    - vol_cold: vol_cold parameter
     - T_amb: T_amb parameter
-    - f_uplift: f_uplift parameter
-    - T_cold: T_cold parameter
     - q_nuc: q_nuc parameter
-    - p_fixed: p_fixed parameter
+    - T_cold: T_cold parameter
+    - p_direct: p_direct parameter
     - f_carnot: f_carnot parameter
+    - p_fixed: p_fixed parameter
+    - vol_cold: vol_cold parameter
+    - f_uplift: f_uplift parameter
 
 Outputs:
     - p_elec: p_elec result
@@ -174,43 +174,43 @@ concept-agnostic (MR-3) -- all values bound by instances
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, p_direct: float, vol_cold: float, T_amb: float, f_uplift: float, T_cold: float, q_nuc: float, p_fixed: float, f_carnot: float    ) -> Cryoplant_Electrical_PowerInput:
+        self, T_amb: float, q_nuc: float, T_cold: float, p_direct: float, f_carnot: float, p_fixed: float, vol_cold: float, f_uplift: float    ) -> Cryoplant_Electrical_PowerInput:
         """Validate inputs and fill defaults.
 
         Args:
-            p_direct: p_direct input
-            vol_cold: vol_cold input
             T_amb: T_amb input
-            f_uplift: f_uplift input
-            T_cold: T_cold input
             q_nuc: q_nuc input
-            p_fixed: p_fixed input
+            T_cold: T_cold input
+            p_direct: p_direct input
             f_carnot: f_carnot input
+            p_fixed: p_fixed input
+            vol_cold: vol_cold input
+            f_uplift: f_uplift input
 
         Returns:
             Validated input model
         """
-        return Cryoplant_Electrical_PowerInput(p_direct=p_direct, vol_cold=vol_cold, T_amb=T_amb, f_uplift=f_uplift, T_cold=T_cold, q_nuc=q_nuc, p_fixed=p_fixed, f_carnot=f_carnot)
+        return Cryoplant_Electrical_PowerInput(T_amb=T_amb, q_nuc=q_nuc, T_cold=T_cold, p_direct=p_direct, f_carnot=f_carnot, p_fixed=p_fixed, vol_cold=vol_cold, f_uplift=f_uplift)
 
     def run(
-        self, p_direct: float, vol_cold: float, T_amb: float, f_uplift: float, T_cold: float, q_nuc: float, p_fixed: float, f_carnot: float    ) -> ModuleResult[Float]:
+        self, T_amb: float, q_nuc: float, T_cold: float, p_direct: float, f_carnot: float, p_fixed: float, vol_cold: float, f_uplift: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            p_direct: p_direct input
-            vol_cold: vol_cold input
             T_amb: T_amb input
-            f_uplift: f_uplift input
-            T_cold: T_cold input
             q_nuc: q_nuc input
-            p_fixed: p_fixed input
+            T_cold: T_cold input
+            p_direct: p_direct input
             f_carnot: f_carnot input
+            p_fixed: p_fixed input
+            vol_cold: vol_cold input
+            f_uplift: f_uplift input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(p_direct, vol_cold, T_amb, f_uplift, T_cold, q_nuc, p_fixed, f_carnot)
+        validated_inputs = self.validate_and_fill_default(T_amb, q_nuc, T_cold, p_direct, f_carnot, p_fixed, vol_cold, f_uplift)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_cryo_plant.cryoplant_electrical_power_impl import (

@@ -76,10 +76,12 @@ def test_conductor_peak_field_limit_compares_two_plain_formals(library_model):
 
 
 def test_magnet_system_carries_the_two_conductor_facts(library_model):
-    magnet = _definition(library_model, syside.PartDefinition, "Magnet System")
-    names = _member_names(magnet)
-    for attribute in ("B", "peak_ratio", "B_max"):
-        assert attribute in names
+    # WI-057 (2026-09-13): the magnet is decomposed into the physical parts its calcs price.
+    # The axis field stays on 'Magnet System'; the peak/axis ratio is a coil-set geometry fact
+    # on 'Modular Coil'; the conductor ceiling is a conductor fact on 'Winding Pack'.
+    assert "B" in _member_names(_definition(library_model, syside.PartDefinition, "Magnet System"))
+    assert "peak_ratio" in _member_names(_definition(library_model, syside.PartDefinition, "Modular Coil"))
+    assert "B_max" in _member_names(_definition(library_model, syside.PartDefinition, "Winding Pack"))
 
 
 def test_new_library_definitions_carry_no_concept_value():

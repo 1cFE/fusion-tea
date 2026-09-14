@@ -75,6 +75,11 @@ MFE = Family(
         "analyses/mfe_viability.sysml",
         "cost_structure/cas_hierarchy.sysml",
         "cost_structure/mfe_power_core.sysml",
+        "structure/mfe_interfaces.sysml",  # WI-057 commit C: item and port definitions
+        "structure/mfe_plasma.sysml",  # WI-057 (2026-09-13): the plasma as a part
+        "structure/mfe_magnet_parts.sysml",  # WI-057: coil, winding pack, casing
+        "structure/mfe_radial_build_parts.sysml",  # WI-057: the first wall
+        "structure/mfe_plant_systems.sysml",  # WI-057: heat transport, cryoplant, fuel cycle, vacuum pumping
         "designs/generic_mfe/mfe_plant.sysml",
         "designs/generic_mfe/mfe_subsystems.sysml",
         "designs/stellarator_09/stellarator_plant.sysml",

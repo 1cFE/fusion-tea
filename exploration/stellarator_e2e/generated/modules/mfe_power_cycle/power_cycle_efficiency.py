@@ -47,16 +47,16 @@ journal p. 17 render work/orchestration/goals/plant-closure/evidence/grounding_s
 concept-agnostic (MR-3) -- coefficients, domain and approach bound by instances
 
 Inputs:
-    - delta_eta_in: delta_eta_in parameter
-    - T_hot_in: T_hot_in parameter
     - eta_th_direct_in: eta_th_direct_in parameter
+    - delta_eta_in: delta_eta_in parameter
+    - b_fit_in: b_fit_in parameter
+    - cycle_live_in: cycle_live_in parameter
+    - T_hot_in: T_hot_in parameter
+    - T2_min_in: T2_min_in parameter
+    - dT_approach_in: dT_approach_in parameter
     - T2_max_in: T2_max_in parameter
     - a_fit_in: a_fit_in parameter
-    - cycle_live_in: cycle_live_in parameter
-    - T2_min_in: T2_min_in parameter
-    - b_fit_in: b_fit_in parameter
     - T_offset_fit_in: T_offset_fit_in parameter
-    - dT_approach_in: dT_approach_in parameter
 
 Outputs:
     - margin_low: margin_low result
@@ -85,27 +85,27 @@ class Power_Cycle_EfficiencyInput(BaseModel):
     """Input model for Power_Cycle_EfficiencyModule.
 
     Attributes:
-        delta_eta_in: delta_eta_in input
-        T_hot_in: T_hot_in input
         eta_th_direct_in: eta_th_direct_in input
+        delta_eta_in: delta_eta_in input
+        b_fit_in: b_fit_in input
+        cycle_live_in: cycle_live_in input
+        T_hot_in: T_hot_in input
+        T2_min_in: T2_min_in input
+        dT_approach_in: dT_approach_in input
         T2_max_in: T2_max_in input
         a_fit_in: a_fit_in input
-        cycle_live_in: cycle_live_in input
-        T2_min_in: T2_min_in input
-        b_fit_in: b_fit_in input
         T_offset_fit_in: T_offset_fit_in input
-        dT_approach_in: dT_approach_in input
     """
-    delta_eta_in: float = Field(..., description="delta_eta_in input")
-    T_hot_in: float = Field(..., description="T_hot_in input")
     eta_th_direct_in: float = Field(..., description="eta_th_direct_in input")
+    delta_eta_in: float = Field(..., description="delta_eta_in input")
+    b_fit_in: float = Field(..., description="b_fit_in input")
+    cycle_live_in: float = Field(..., description="cycle_live_in input")
+    T_hot_in: float = Field(..., description="T_hot_in input")
+    T2_min_in: float = Field(..., description="T2_min_in input")
+    dT_approach_in: float = Field(..., description="dT_approach_in input")
     T2_max_in: float = Field(..., description="T2_max_in input")
     a_fit_in: float = Field(..., description="a_fit_in input")
-    cycle_live_in: float = Field(..., description="cycle_live_in input")
-    T2_min_in: float = Field(..., description="T2_min_in input")
-    b_fit_in: float = Field(..., description="b_fit_in input")
     T_offset_fit_in: float = Field(..., description="T_offset_fit_in input")
-    dT_approach_in: float = Field(..., description="dT_approach_in input")
 
 
 class Power_Cycle_EfficiencyModule(ModuleBase[Power_Cycle_EfficiencyInput, Power_Cycle_EfficiencyOutput]):
@@ -156,16 +156,16 @@ journal p. 17 render work/orchestration/goals/plant-closure/evidence/grounding_s
 concept-agnostic (MR-3) -- coefficients, domain and approach bound by instances
 
 Inputs:
-    - delta_eta_in: delta_eta_in parameter
-    - T_hot_in: T_hot_in parameter
     - eta_th_direct_in: eta_th_direct_in parameter
+    - delta_eta_in: delta_eta_in parameter
+    - b_fit_in: b_fit_in parameter
+    - cycle_live_in: cycle_live_in parameter
+    - T_hot_in: T_hot_in parameter
+    - T2_min_in: T2_min_in parameter
+    - dT_approach_in: dT_approach_in parameter
     - T2_max_in: T2_max_in parameter
     - a_fit_in: a_fit_in parameter
-    - cycle_live_in: cycle_live_in parameter
-    - T2_min_in: T2_min_in parameter
-    - b_fit_in: b_fit_in parameter
     - T_offset_fit_in: T_offset_fit_in parameter
-    - dT_approach_in: dT_approach_in parameter
 
 Outputs:
     - margin_low: margin_low result
@@ -240,47 +240,47 @@ concept-agnostic (MR-3) -- coefficients, domain and approach bound by instances
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, delta_eta_in: float, T_hot_in: float, eta_th_direct_in: float, T2_max_in: float, a_fit_in: float, cycle_live_in: float, T2_min_in: float, b_fit_in: float, T_offset_fit_in: float, dT_approach_in: float    ) -> Power_Cycle_EfficiencyInput:
+        self, eta_th_direct_in: float, delta_eta_in: float, b_fit_in: float, cycle_live_in: float, T_hot_in: float, T2_min_in: float, dT_approach_in: float, T2_max_in: float, a_fit_in: float, T_offset_fit_in: float    ) -> Power_Cycle_EfficiencyInput:
         """Validate inputs and fill defaults.
 
         Args:
-            delta_eta_in: delta_eta_in input
-            T_hot_in: T_hot_in input
             eta_th_direct_in: eta_th_direct_in input
+            delta_eta_in: delta_eta_in input
+            b_fit_in: b_fit_in input
+            cycle_live_in: cycle_live_in input
+            T_hot_in: T_hot_in input
+            T2_min_in: T2_min_in input
+            dT_approach_in: dT_approach_in input
             T2_max_in: T2_max_in input
             a_fit_in: a_fit_in input
-            cycle_live_in: cycle_live_in input
-            T2_min_in: T2_min_in input
-            b_fit_in: b_fit_in input
             T_offset_fit_in: T_offset_fit_in input
-            dT_approach_in: dT_approach_in input
 
         Returns:
             Validated input model
         """
-        return Power_Cycle_EfficiencyInput(delta_eta_in=delta_eta_in, T_hot_in=T_hot_in, eta_th_direct_in=eta_th_direct_in, T2_max_in=T2_max_in, a_fit_in=a_fit_in, cycle_live_in=cycle_live_in, T2_min_in=T2_min_in, b_fit_in=b_fit_in, T_offset_fit_in=T_offset_fit_in, dT_approach_in=dT_approach_in)
+        return Power_Cycle_EfficiencyInput(eta_th_direct_in=eta_th_direct_in, delta_eta_in=delta_eta_in, b_fit_in=b_fit_in, cycle_live_in=cycle_live_in, T_hot_in=T_hot_in, T2_min_in=T2_min_in, dT_approach_in=dT_approach_in, T2_max_in=T2_max_in, a_fit_in=a_fit_in, T_offset_fit_in=T_offset_fit_in)
 
     def run(
-        self, delta_eta_in: float, T_hot_in: float, eta_th_direct_in: float, T2_max_in: float, a_fit_in: float, cycle_live_in: float, T2_min_in: float, b_fit_in: float, T_offset_fit_in: float, dT_approach_in: float    ) -> ModuleResult[Power_Cycle_EfficiencyOutput]:
+        self, eta_th_direct_in: float, delta_eta_in: float, b_fit_in: float, cycle_live_in: float, T_hot_in: float, T2_min_in: float, dT_approach_in: float, T2_max_in: float, a_fit_in: float, T_offset_fit_in: float    ) -> ModuleResult[Power_Cycle_EfficiencyOutput]:
         """Execute calculation.
 
         Args:
-            delta_eta_in: delta_eta_in input
-            T_hot_in: T_hot_in input
             eta_th_direct_in: eta_th_direct_in input
+            delta_eta_in: delta_eta_in input
+            b_fit_in: b_fit_in input
+            cycle_live_in: cycle_live_in input
+            T_hot_in: T_hot_in input
+            T2_min_in: T2_min_in input
+            dT_approach_in: dT_approach_in input
             T2_max_in: T2_max_in input
             a_fit_in: a_fit_in input
-            cycle_live_in: cycle_live_in input
-            T2_min_in: T2_min_in input
-            b_fit_in: b_fit_in input
             T_offset_fit_in: T_offset_fit_in input
-            dT_approach_in: dT_approach_in input
 
         Returns:
             Module result with Power_Cycle_EfficiencyOutput (margin_low, T2_C, margin_high, eta_th, eta_fit, domain_product)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(delta_eta_in, T_hot_in, eta_th_direct_in, T2_max_in, a_fit_in, cycle_live_in, T2_min_in, b_fit_in, T_offset_fit_in, dT_approach_in)
+        validated_inputs = self.validate_and_fill_default(eta_th_direct_in, delta_eta_in, b_fit_in, cycle_live_in, T_hot_in, T2_min_in, dT_approach_in, T2_max_in, a_fit_in, T_offset_fit_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_power_cycle.power_cycle_efficiency_impl import (

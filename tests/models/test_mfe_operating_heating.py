@@ -12,6 +12,24 @@ import yaml
 ROOT=Path(__file__).resolve().parents[2]
 SUPPORT=ROOT/'work/active/WI-050_mfe-coherent-operating-heating/implementation'
 P='stellarator_09__stellaris__'
+# WI-057 (2026-09-13): the calcs live on the parts that own them; entry points and channels carry the
+# part's path. Keys handed to the package or the verifier use the new names; the frozen drivers'
+# results are aliased under both spellings by tests.models.current_mfe_regressions.
+LEDGER=json.loads((ROOT/'work/active/WI-057_stellaris-structural-decomposition/evidence/merge_onto_demo_maturation/ledger.json').read_text())
+RENAMED={**LEDGER['parameters'],**LEDGER['outputs']}
+def renamed(key): return RENAMED.get(key,key)
+def renamed_module(module):
+    channel=next(k for k in LEDGER['outputs'] if k.startswith(P+module+'__'))
+    return renamed(channel).rsplit('__',1)[0]
+def renamed_qualified(name):
+    """'<group>_params.<key>', '<channel>', or '<channel>.<accessor>' under the new names."""
+    head,_,rest=name.partition('.')
+    if head.endswith('_params'): return head+'.'+renamed(rest)
+    return renamed(head)+('.'+rest if rest else '')
+def renamed_ref(ref):
+    """A pipeline input reference ('float <name>') under the new names."""
+    kind,name=ref.rsplit(' ',1)
+    return kind+' '+renamed_qualified(name)
 
 def load(name):
     spec=importlib.util.spec_from_file_location('wi050_'+name,SUPPORT/(name+'.py'))
@@ -61,10 +79,10 @@ def test_heating_efficiency_scalar_consumers(native,boundaries):
     for entry in entries: indicators.predicate_operands(entry)
     new={e['source_local_identity']:e for e in entries if e['source_local_identity'].startswith('heating_')}
     assert set(new)=={'heating_source_positive_ok','heating_source_upper_ok','heating_couple_positive_ok','heating_couple_upper_ok'}
-    bindings={e['constraint_id']:{'efficiency':{'kind':'input','key':P+('eta_source_heat' if 'source' in name else 'eta_couple_heat')}} for name,e in new.items()}
+    bindings={e['constraint_id']:{'efficiency':{'kind':'input','key':P+('heating__eta_source_heat' if 'source' in name else 'heating__eta_couple_heat')}} for name,e in new.items()}
     for stage in ['source','couple']:
         for label,value in [('valid_one',1),('negative',-.5),('zero',0),('over_one',1.01)]:
-            i={P+'eta_source_heat':.5,P+'eta_couple_heat':.75,P+'eta_'+stage+'_heat':value}
+            i={P+'heating__eta_source_heat':.5,P+'heating__eta_couple_heat':.75,P+'heating__eta_'+stage+'_heat':value}
             for name,entry in new.items():
                 actual,count=verify.derive_verdict(entry['constraint_id'],entry,bindings,{},i,{})
                 expected=(value>0 if 'positive' in name else value<=1) if stage in name else True
@@ -106,9 +124,9 @@ def test_stellarator_operating_heat_has_no_public_demand_input(native):
     expected={'operating_heat':{'p_required_in':'sustain.p_aux_required'},'source_heat':{'p_input_in':'operating_heat.p_coupled'},'pb':{'p_input_in':'operating_heat.p_coupled','p_wallplug_in':'operating_heat.p_wallplug'},'divheat':{'p_coupled_in':'operating_heat.p_coupled','p_installed_coupled_in':'heat.p_coupled'},'primary_loop':{'q_source_in':'source_heat.q_source.root'},'heating_cost':{'p_ecrh_in':'heat.p_delivered'}}
     for module,formals in expected.items():
         for formal,target in formals.items():
-            actual=modules[P+module]['inputs'][formal]
+            actual=modules[renamed_module(module)]['inputs'][formal]  # WI-057: the module carries its part's path
             producer,output=target.split('.',1)
-            assert actual.split()[-1]==P+producer+'__'+output,(module,formal,actual)
+            assert actual.split()[-1]==renamed_qualified(P+producer+'__'+output),(module,formal,actual)
     assert results['baseline']['responses']['headline']=='violated'
 
 def test_operating_heat_reserve_invariance(native):
@@ -191,11 +209,12 @@ def test_operating_heat_complete_cost_operand_classification(native,monkeypatch)
             assert results[case]['outputs'][P+channel]==pytest.approx(direct[key],rel=1e-9,abs=1e-9),(case,channel)
     old=yaml.safe_load(subprocess.check_output(['git','show','546218a5:exploration/stellarator_e2e/generated/pipelines/pipeline.yaml'],cwd=ROOT))['modules']
     current=yaml.safe_load((scratch/'generated/pipelines/pipeline.yaml').read_text())['modules']
+    # WI-057: compare the historical (flat-named) module inputs through the rename ledger.
     for channel in mapping:
         module=P+channel.rsplit('__',1)[0]
-        assert current[module]['inputs']==old[module]['inputs'],module
-    assert current[P+'primary_loop']['inputs'] == old[P+'primary_loop']['inputs']
-    assert current[P+'primary_loop']['outputs'] == old[P+'primary_loop']['outputs']
+        assert current[renamed_module(channel.rsplit('__',1)[0])]['inputs']=={k:renamed_ref(v) for k,v in old[module]['inputs'].items()},module
+    assert current[renamed_module('primary_loop')]['inputs'] == {k:renamed_ref(v) for k,v in old[P+'primary_loop']['inputs'].items()}
+    assert current[renamed_module('primary_loop')]['outputs'] == {k:renamed_ref(v) for k,v in old[P+'primary_loop']['outputs'].items()}
     # WI-056 owns only the Primary Coolant Loop definition. Preserve the source
     # outside that exact boundary, alongside the independent cost/operand checks.
     path='models/library/analyses/mfe_primary_loop.sysml'

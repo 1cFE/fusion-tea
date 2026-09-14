@@ -21,11 +21,11 @@ and the Anchor A handshake unchanged).
 *Basis**: elongated-torus volume with a concept shape factor; MFE-generic
 
 Inputs:
-    - f_shape_in: f_shape_in parameter
     - pi: pi parameter
     - R_in: R_in parameter
     - a_in: a_in parameter
     - kappa_in: kappa_in parameter
+    - f_shape_in: f_shape_in parameter
 
 Outputs:
     - A: A result
@@ -50,17 +50,17 @@ class Plasma_GeometryInput(BaseModel):
     """Input model for Plasma_GeometryModule.
 
     Attributes:
-        f_shape_in: f_shape_in input
         pi: pi input
         R_in: R_in input
         a_in: a_in input
         kappa_in: kappa_in input
+        f_shape_in: f_shape_in input
     """
-    f_shape_in: float = Field(..., description="f_shape_in input")
     pi: float = Field(..., description="pi input")
     R_in: float = Field(..., description="R_in input")
     a_in: float = Field(..., description="a_in input")
     kappa_in: float = Field(..., description="kappa_in input")
+    f_shape_in: float = Field(..., description="f_shape_in input")
 
 
 class Plasma_GeometryModule(ModuleBase[Plasma_GeometryInput, Plasma_GeometryOutput]):
@@ -85,11 +85,11 @@ and the Anchor A handshake unchanged).
 *Basis**: elongated-torus volume with a concept shape factor; MFE-generic
 
 Inputs:
-    - f_shape_in: f_shape_in parameter
     - pi: pi parameter
     - R_in: R_in parameter
     - a_in: a_in parameter
     - kappa_in: kappa_in parameter
+    - f_shape_in: f_shape_in parameter
 
 Outputs:
     - A: A result
@@ -135,37 +135,37 @@ and the Anchor A handshake unchanged).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, f_shape_in: float, pi: float, R_in: float, a_in: float, kappa_in: float    ) -> Plasma_GeometryInput:
+        self, pi: float, R_in: float, a_in: float, kappa_in: float, f_shape_in: float    ) -> Plasma_GeometryInput:
         """Validate inputs and fill defaults.
 
         Args:
-            f_shape_in: f_shape_in input
             pi: pi input
             R_in: R_in input
             a_in: a_in input
             kappa_in: kappa_in input
+            f_shape_in: f_shape_in input
 
         Returns:
             Validated input model
         """
-        return Plasma_GeometryInput(f_shape_in=f_shape_in, pi=pi, R_in=R_in, a_in=a_in, kappa_in=kappa_in)
+        return Plasma_GeometryInput(pi=pi, R_in=R_in, a_in=a_in, kappa_in=kappa_in, f_shape_in=f_shape_in)
 
     def run(
-        self, f_shape_in: float, pi: float, R_in: float, a_in: float, kappa_in: float    ) -> ModuleResult[Plasma_GeometryOutput]:
+        self, pi: float, R_in: float, a_in: float, kappa_in: float, f_shape_in: float    ) -> ModuleResult[Plasma_GeometryOutput]:
         """Execute calculation.
 
         Args:
-            f_shape_in: f_shape_in input
             pi: pi input
             R_in: R_in input
             a_in: a_in input
             kappa_in: kappa_in input
+            f_shape_in: f_shape_in input
 
         Returns:
             Module result with Plasma_GeometryOutput (A, V)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(f_shape_in, pi, R_in, a_in, kappa_in)
+        validated_inputs = self.validate_and_fill_default(pi, R_in, a_in, kappa_in, f_shape_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_plasma_scaling.plasma_geometry_impl import (

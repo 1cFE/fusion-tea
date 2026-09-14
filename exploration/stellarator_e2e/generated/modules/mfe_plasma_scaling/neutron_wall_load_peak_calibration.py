@@ -38,15 +38,15 @@ calibration_direct. p_fus_ref must never be 0 (a dormant concept binds
 *Basis**: a source's printed 3D peak per unit of the model's own circular-torus average at the source's design point; MFE-generic
 
 Inputs:
-    - calibration_direct: calibration_direct parameter
     - R_ref: R_ref parameter
     - pi: pi parameter
-    - a_ref: a_ref parameter
-    - kappa_ref: kappa_ref parameter
-    - p_fus_ref: p_fus_ref parameter
     - standoff_ref: standoff_ref parameter
+    - a_ref: a_ref parameter
+    - calibration_direct: calibration_direct parameter
     - q_peak_ref: q_peak_ref parameter
+    - p_fus_ref: p_fus_ref parameter
     - ash_frac_in: ash_frac_in parameter
+    - kappa_ref: kappa_ref parameter
 
 Outputs:
     - calibration: calibration result
@@ -69,25 +69,25 @@ class Neutron_Wall_Load_Peak_CalibrationInput(BaseModel):
     """Input model for Neutron_Wall_Load_Peak_CalibrationModule.
 
     Attributes:
-        calibration_direct: calibration_direct input
         R_ref: R_ref input
         pi: pi input
-        a_ref: a_ref input
-        kappa_ref: kappa_ref input
-        p_fus_ref: p_fus_ref input
         standoff_ref: standoff_ref input
+        a_ref: a_ref input
+        calibration_direct: calibration_direct input
         q_peak_ref: q_peak_ref input
+        p_fus_ref: p_fus_ref input
         ash_frac_in: ash_frac_in input
+        kappa_ref: kappa_ref input
     """
-    calibration_direct: float = Field(..., description="calibration_direct input")
     R_ref: float = Field(..., description="R_ref input")
     pi: float = Field(..., description="pi input")
-    a_ref: float = Field(..., description="a_ref input")
-    kappa_ref: float = Field(..., description="kappa_ref input")
-    p_fus_ref: float = Field(..., description="p_fus_ref input")
     standoff_ref: float = Field(..., description="standoff_ref input")
+    a_ref: float = Field(..., description="a_ref input")
+    calibration_direct: float = Field(..., description="calibration_direct input")
     q_peak_ref: float = Field(..., description="q_peak_ref input")
+    p_fus_ref: float = Field(..., description="p_fus_ref input")
     ash_frac_in: float = Field(..., description="ash_frac_in input")
+    kappa_ref: float = Field(..., description="kappa_ref input")
 
 
 class Neutron_Wall_Load_Peak_CalibrationModule(ModuleBase[Neutron_Wall_Load_Peak_CalibrationInput, Float]):
@@ -129,15 +129,15 @@ calibration_direct. p_fus_ref must never be 0 (a dormant concept binds
 *Basis**: a source's printed 3D peak per unit of the model's own circular-torus average at the source's design point; MFE-generic
 
 Inputs:
-    - calibration_direct: calibration_direct parameter
     - R_ref: R_ref parameter
     - pi: pi parameter
-    - a_ref: a_ref parameter
-    - kappa_ref: kappa_ref parameter
-    - p_fus_ref: p_fus_ref parameter
     - standoff_ref: standoff_ref parameter
+    - a_ref: a_ref parameter
+    - calibration_direct: calibration_direct parameter
     - q_peak_ref: q_peak_ref parameter
+    - p_fus_ref: p_fus_ref parameter
     - ash_frac_in: ash_frac_in parameter
+    - kappa_ref: kappa_ref parameter
 
 Outputs:
     - calibration: calibration result
@@ -199,45 +199,45 @@ calibration_direct. p_fus_ref must never be 0 (a dormant concept binds
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, calibration_direct: float, R_ref: float, pi: float, a_ref: float, kappa_ref: float, p_fus_ref: float, standoff_ref: float, q_peak_ref: float, ash_frac_in: float    ) -> Neutron_Wall_Load_Peak_CalibrationInput:
+        self, R_ref: float, pi: float, standoff_ref: float, a_ref: float, calibration_direct: float, q_peak_ref: float, p_fus_ref: float, ash_frac_in: float, kappa_ref: float    ) -> Neutron_Wall_Load_Peak_CalibrationInput:
         """Validate inputs and fill defaults.
 
         Args:
-            calibration_direct: calibration_direct input
             R_ref: R_ref input
             pi: pi input
-            a_ref: a_ref input
-            kappa_ref: kappa_ref input
-            p_fus_ref: p_fus_ref input
             standoff_ref: standoff_ref input
+            a_ref: a_ref input
+            calibration_direct: calibration_direct input
             q_peak_ref: q_peak_ref input
+            p_fus_ref: p_fus_ref input
             ash_frac_in: ash_frac_in input
+            kappa_ref: kappa_ref input
 
         Returns:
             Validated input model
         """
-        return Neutron_Wall_Load_Peak_CalibrationInput(calibration_direct=calibration_direct, R_ref=R_ref, pi=pi, a_ref=a_ref, kappa_ref=kappa_ref, p_fus_ref=p_fus_ref, standoff_ref=standoff_ref, q_peak_ref=q_peak_ref, ash_frac_in=ash_frac_in)
+        return Neutron_Wall_Load_Peak_CalibrationInput(R_ref=R_ref, pi=pi, standoff_ref=standoff_ref, a_ref=a_ref, calibration_direct=calibration_direct, q_peak_ref=q_peak_ref, p_fus_ref=p_fus_ref, ash_frac_in=ash_frac_in, kappa_ref=kappa_ref)
 
     def run(
-        self, calibration_direct: float, R_ref: float, pi: float, a_ref: float, kappa_ref: float, p_fus_ref: float, standoff_ref: float, q_peak_ref: float, ash_frac_in: float    ) -> ModuleResult[Float]:
+        self, R_ref: float, pi: float, standoff_ref: float, a_ref: float, calibration_direct: float, q_peak_ref: float, p_fus_ref: float, ash_frac_in: float, kappa_ref: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            calibration_direct: calibration_direct input
             R_ref: R_ref input
             pi: pi input
-            a_ref: a_ref input
-            kappa_ref: kappa_ref input
-            p_fus_ref: p_fus_ref input
             standoff_ref: standoff_ref input
+            a_ref: a_ref input
+            calibration_direct: calibration_direct input
             q_peak_ref: q_peak_ref input
+            p_fus_ref: p_fus_ref input
             ash_frac_in: ash_frac_in input
+            kappa_ref: kappa_ref input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(calibration_direct, R_ref, pi, a_ref, kappa_ref, p_fus_ref, standoff_ref, q_peak_ref, ash_frac_in)
+        validated_inputs = self.validate_and_fill_default(R_ref, pi, standoff_ref, a_ref, calibration_direct, q_peak_ref, p_fus_ref, ash_frac_in, kappa_ref)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_plasma_scaling.neutron_wall_load_peak_calibration_impl import (

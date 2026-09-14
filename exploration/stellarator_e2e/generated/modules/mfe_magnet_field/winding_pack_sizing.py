@@ -41,8 +41,8 @@ image-verified; the markdown extraction of this table is garbled)
 density; concept-agnostic (MR-3) -- all values bound by instances
 
 Inputs:
-    - I_coil: I_coil parameter
     - j_wp: j_wp parameter
+    - I_coil: I_coil parameter
 
 Outputs:
     - wp_side: wp_side result
@@ -65,11 +65,11 @@ class Winding_Pack_SizingInput(BaseModel):
     """Input model for Winding_Pack_SizingModule.
 
     Attributes:
-        I_coil: I_coil input
         j_wp: j_wp input
+        I_coil: I_coil input
     """
-    I_coil: float = Field(..., description="I_coil input")
     j_wp: float = Field(..., description="j_wp input")
+    I_coil: float = Field(..., description="I_coil input")
 
 
 class Winding_Pack_SizingModule(ModuleBase[Winding_Pack_SizingInput, Float]):
@@ -114,8 +114,8 @@ image-verified; the markdown extraction of this table is garbled)
 density; concept-agnostic (MR-3) -- all values bound by instances
 
 Inputs:
-    - I_coil: I_coil parameter
     - j_wp: j_wp parameter
+    - I_coil: I_coil parameter
 
 Outputs:
     - wp_side: wp_side result
@@ -174,31 +174,31 @@ density; concept-agnostic (MR-3) -- all values bound by instances
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, I_coil: float, j_wp: float    ) -> Winding_Pack_SizingInput:
+        self, j_wp: float, I_coil: float    ) -> Winding_Pack_SizingInput:
         """Validate inputs and fill defaults.
 
         Args:
-            I_coil: I_coil input
             j_wp: j_wp input
+            I_coil: I_coil input
 
         Returns:
             Validated input model
         """
-        return Winding_Pack_SizingInput(I_coil=I_coil, j_wp=j_wp)
+        return Winding_Pack_SizingInput(j_wp=j_wp, I_coil=I_coil)
 
     def run(
-        self, I_coil: float, j_wp: float    ) -> ModuleResult[Float]:
+        self, j_wp: float, I_coil: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            I_coil: I_coil input
             j_wp: j_wp input
+            I_coil: I_coil input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(I_coil, j_wp)
+        validated_inputs = self.validate_and_fill_default(j_wp, I_coil)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_magnet_field.winding_pack_sizing_impl import (

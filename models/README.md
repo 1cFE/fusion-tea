@@ -4,7 +4,7 @@ This directory contains SysML v2 textual models for fusion power plant techno-ec
 
 ## Structure
 
-- `library/` — Reusable definitions (part defs, calc defs, materials)
+- `library/` — Reusable definitions: `foundation/` base types, `cost_structure/` the CAS accounts and costed components, `analyses/` calc defs, `structure/` physical parts and interfaces (AD-008)
 - `designs/` — Specific fusion concept instances
 
 ## Library Catalog
@@ -22,7 +22,7 @@ This directory contains SysML v2 textual models for fusion power plant techno-ec
 |------|---------|-------------|---------|
 | `cas_hierarchy.sysml` | `cas_hierarchy` | `part def 'CAS Account'`, 9 level 2 specializations (CAS20-27, CAS90) | CAS cost account hierarchy with shared/divergent classification |
 | `ife_cost_parameters.sysml` | `ife_cost_parameters` | `part def 'IFE Cost Parameters'` (14 attributes) | Hawker's 14 IFE cost model parameters with Monte Carlo ranges and sensitivity rankings |
-| [mfe_power_core.sysml](library/cost_structure/mfe_power_core.sysml) | `mfe_power_core` | `part def 'Magnet System'`, `'Heating and CD'`, `'Divertor'` | MFE power-core component types and their CAS specializations |
+| [mfe_power_core.sysml](library/cost_structure/mfe_power_core.sysml) | `mfe_power_core` | `part def 'Magnet System'` (owns `coil`, `winding_pack`, `casing`; 13 template calcs; the `winding_cost` / `structure_cost` swap seams), `'Heating and CD'`, `'Divertor'` | The MFE-divergent CAS22 costed components, each owning its facts and its calcs since WI-057 (AD-008) |
 
 ### `library/analyses/`
 
@@ -52,6 +52,18 @@ The MFE analysis files below each declare a package with the same name as the fi
 | [mfe_divertor_heat.sysml](library/analyses/mfe_divertor_heat.sysml) | Divertor heat ledger |
 | [mfe_vacuum.sysml](library/analyses/mfe_vacuum.sysml) | Vacuum gas load |
 | [mfe_viability.sysml](library/analyses/mfe_viability.sysml) | Power, plasma, magnet, sustainment, loop and cycle constraint definitions |
+
+### `library/structure/`
+
+Physical, non-costed part definitions and interface definitions (AD-008, WI-057). Definitions that own template calcs import the analysis packages they need; the concept design binds values and wires inputs.
+
+| File | Package | Key Elements | Purpose |
+|------|---------|-------------|---------|
+| [mfe_interfaces.sysml](library/structure/mfe_interfaces.sysml) | `mfe_interfaces` | `item def 'Coolant Stream'`, `'Electric Power'`, `'Neutron Power'`, `'Material Stream'`, `'Cryogenic Heat Load'`; `port def 'Thermal Port'`, `'Electric Port'`, `'Neutron Port'`, `'Material Port'`, `'Cryogenic Load Port'` | The exchanges the MFE plant's parts take part in; declarative for codegen |
+| [mfe_plasma.sysml](library/structure/mfe_plasma.sysml) | `mfe_plasma` | `part def 'Plasma'` (geometry, operating point, profiles, sustainment facts; template calcs `geom`, `sustain`, `beta_calc`, `fusion`) | The plasma as the owner of the quantities the geometry, sustainment, beta and fusion calcs read |
+| [mfe_magnet_parts.sysml](library/structure/mfe_magnet_parts.sysml) | `mfe_magnet_parts` | `part def 'Modular Coil'`, `'Winding Pack'`, `'Coil Casing'` | The physical parts the magnet system's calcs price |
+| [mfe_radial_build_parts.sysml](library/structure/mfe_radial_build_parts.sysml) | `mfe_radial_build_parts` | `part def 'First Wall'` (wall-load calcs, calibration facts, fluence limit) | The plasma-facing layer inside the blanket module |
+| [mfe_plant_systems.sysml](library/structure/mfe_plant_systems.sysml) | `mfe_plant_systems` | `part def 'Primary Heat Transport'`, `'Cryoplant'`, `'Fuel Cycle'`, `'Vacuum Pumping'` | The plant systems the calcs already modelled, as parts owning their facts and calcs |
 
 ## Design Catalog
 

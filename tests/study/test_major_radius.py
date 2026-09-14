@@ -12,7 +12,7 @@ import oracle_entry as oracle  # noqa: E402 — runtime import path established 
 import study_route as route  # noqa: E402 — runtime import path established above
 
 OLD = route.P + "magnet__R0"
-R = route.P + "R"
+R = route.P + "plasma__R"
 RETIRED = [{OLD: 14}, {R: 14, OLD: 14}, {R: 14, OLD: 12.7}, {OLD: 0}, {OLD: object()}]
 
 
@@ -66,7 +66,7 @@ def test_fixed_references_and_model_owned_proposal():
     assert oracle.vs.IN["R_ref_divertor"] == 12.7
     assert route.proposal_for(14, 1.3, 0) == {
         R: 14,
-        route.P + "a": 1.3,
+        route.P + "plasma__a": 1.3,
         route.P + "availability_direct": 0,
     }
     assert json.loads(route.MANIFEST_PATH.read_text())["ties"] == []

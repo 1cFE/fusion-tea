@@ -15,7 +15,7 @@ import json
 import pytest
 
 PIPELINE = "pipelines/pipeline.yaml"
-ABSENT_KEY = "stellarator_09__stellaris__geom__NOPE"
+ABSENT_KEY = "stellarator_09__stellaris__plasma__geom__NOPE"
 COMPUTED_QUANTITY = "stellarator_09__stellaris__pb__p_net"
 UNCLASSIFIED_KEY = "stellarator_09__stellaris__not_in_the_contract"
 
@@ -55,15 +55,15 @@ def fingerprint_mismatch(copy):
 def unparseable_reference(copy):
     copy.edit(
         PIPELINE,
-        "wall_load: float stellarator_09__stellaris__wall_load_calc__wall_load.root",
-        "wall_load: float stellarator_09__stellaris__wall_load_calc__wall_load.value.deep",
+        "wall_load: float stellarator_09__stellaris__blanket__first_wall__wall_load_calc__wall_load.root",
+        "wall_load: float stellarator_09__stellaris__blanket__first_wall__wall_load_calc__wall_load.value.deep",
     )
 
 
 def corrupt_pipeline_line(copy):
     copy.edit(
         PIPELINE,
-        "R_in: float stellarator_plant_params.stellarator_09__stellaris__R",
+        "R_in: float stellarator_plant_params.stellarator_09__stellaris__plasma__R",
         "R_in: floatonly_one_token",
     )
 
@@ -128,8 +128,8 @@ def test_the_computed_quantity_message_names_the_producing_module(real_copy, tmp
 def test_the_corrupt_line_carries_file_line_and_key_path(real_copy, tmp_path):
     corrupt_pipeline_line(real_copy)
     _, _, err = real_copy.run(out=tmp_path / "c.json")
-    assert "pipeline.yaml:85" in err  # the rb R_in line; :84 -> :87 when WI-036 added the winding-pack sizing modules; :87 -> :103 when WI-041 added the wall-load average, peak-calibration and peak modules above it; :103 -> :83 when WI-044 (2026-09-07) made the peak field read the radial build, so the regenerated pipeline orders rb earlier; :83 -> :85 when WI-047 (2026-09-08) added the fuel-cycle, divertor-heat and vacuum modules, shifting rb's inputs two lines down
-    assert "key path modules.stellarator_09__stellaris__rb.inputs.R_in" in err
+    assert "pipeline.yaml:47" in err  # WI-057 (2026-09-13): the first R_in line in the file is now the plasma's geom (the calcs live on their parts; rb's R_in sits lower); was :85 -- the rb R_in line; :84 -> :87 when WI-036 added the winding-pack sizing modules; :87 -> :103 when WI-041 added the wall-load average, peak-calibration and peak modules above it; :103 -> :83 when WI-044 (2026-09-07) made the peak field read the radial build, so the regenerated pipeline orders rb earlier; :83 -> :85 when WI-047 (2026-09-08) added the fuel-cycle, divertor-heat and vacuum modules, shifting rb's inputs two lines down
+    assert "key path modules.stellarator_09__stellaris__plasma__geom.inputs.R_in" in err  # WI-057: the mutated line is geom's (the plasma's template calc)
     assert "floatonly_one_token" in err
 
 
@@ -153,7 +153,7 @@ def test_a_nonstandard_node_tag_inside_modules_is_a_failure(real_copy, tmp_path)
     than read. Nothing executes either way — compose does not construct."""
     real_copy.edit(
         PIPELINE,
-        "R_in: float stellarator_plant_params.stellarator_09__stellaris__R",
+        "R_in: float stellarator_plant_params.stellarator_09__stellaris__plasma__R",
         "R_in: !!python/object/apply:os.system ['echo pwned']",
     )
     rc, out, err = real_copy.run(out=tmp_path / "f.json")
@@ -165,8 +165,8 @@ def test_a_nonstandard_node_tag_inside_modules_is_a_failure(real_copy, tmp_path)
 def test_an_unknown_key_inside_a_module_is_a_failure(real_copy, tmp_path):
     real_copy.edit(
         PIPELINE,
-        "  stellarator_09__stellaris__geom:\n    module_type:",
-        "  stellarator_09__stellaris__geom:\n    surprise: true\n    module_type:",
+        "  stellarator_09__stellaris__plasma__geom:\n    module_type:",
+        "  stellarator_09__stellaris__plasma__geom:\n    surprise: true\n    module_type:",
     )
     rc, _, err = real_copy.run(out=tmp_path / "g.json")
     assert rc != 0

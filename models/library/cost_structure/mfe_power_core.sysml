@@ -1,7 +1,15 @@
 package mfe_power_core {
     private import ScalarValues::*;
+    private import mfe_interfaces::*;
+    private import mfe_plasma_scaling::*;
+    private import mfe_magnet_field::*;
+    private import mfe_magnet_cost::*;
+    private import mfe_heating_chain::*;
+    private import mfe_divertor_heat::*;
+    private import mfe_account_costs::*;
     private import cas_hierarchy::'CAS22 Power Core';
     private import economic_parameter::'CAS Scope';
+    private import mfe_magnet_parts::*;
 
     // =========================================================================
     // MFE-divergent CAS22 sub-account TYPES
@@ -64,7 +72,9 @@ package mfe_power_core {
 
     part def 'Magnet System' :> 'CAS22.1.3 Magnet System' {
         doc /*
-        Concept-agnostic magnet/coil system carrying the coil-cost parameters
+        Concept-agnostic magnet/coil system, decomposed since WI-057 into the physical parts
+        its calcs price -- 'Modular Coil', 'Winding Pack', 'Coil Casing' (mfe_magnet_parts) -- and
+        carrying the coil-cost parameters
         for the bilinear toroidal conductor model. All parameters are inputs --
         WI-011 binds tokamak/stellarator values. `capital_cost` is populated by
         the 'Magnet Coil Cost' calc (mfe_magnet_cost.sysml).
@@ -84,78 +94,187 @@ package mfe_power_core {
         **Ref**: cas22.py:427 (total_kAm), cas22.py:440-444 (SC coil cost)
         **Basis**: MFE coil conductor-quantity model; parameterized for any MFE concept
         */
-
-        attribute B : Real;
-        attribute R0 : Real;
+        // ---- ports (WI-057): the exchanges this part takes part in; declarative, see mfe_interfaces ----
+        port cold_mass : 'Cryogenic Load Port';   // -> cryoplant.heat_load_in (winding_pack.q_nuc_cryo, vol_cold_total)
+        // WI-035: the axis field is COMPUTED from the coil-set current
+        // (reference redefinition, WI-021 pattern); B is no longer settable.
+        attribute B : Real = field_calc.B_axis;
         attribute r_coil : Real;
-        attribute G : Real;
-        attribute coil_markup : Real;
-        attribute cost_per_kAm : Real;
-        // peak-on-winding / axis-averaged field ratio at the reference geometry
-        // [1] (coil-set geometry fact, WI-030; the eq.-39 bore factor normalised
-        // at (R_ref, a_coil_ref) multiplies it since WI-044)
-        attribute peak_ratio : Real;
-        // conductor peak-field ceiling [T] (conductor technology fact, WI-030)
-        attribute B_max : Real;
-
-        // ------- WI-035 coil-set current, limit, and cost-decomposition -------
-        // parameters (all concept-set; see mfe_magnet_field / mfe_magnet_cost)
-        // number of field coils [1]
-        attribute n_coils : Real;
-        // peak single-coil current [A]
-        attribute I_coil : Real;
-        // coil-set transfer fact [1] (set distribution x axis linkage, WI-035)
-        attribute k_link : Real;
-        // set-mean over peak coil current ratio [1]
-        attribute f_set : Real;
-        // typical winding circumference [m]
-        attribute c_coil : Real;
-        // winding-pack cross-section side, worst coil [m]
-        attribute wp_side : Real;
-        // winding-pack current density [A/mm^2] -- the WI-036 sizing lever
-        attribute j_wp : Real;
-        // winding-pack set-distribution factor [1] (WI-036 cold volume)
-        attribute f_wp_vol : Real;
-        // coil-shape factor [1] = typical circumference / major radius (WI-036)
-        attribute k_coil : Real;
-        // winding-pack effective elastic modulus [Pa] (WI-036 conductor strain)
-        attribute E_wp : Real;
-        // conductor load-sharing factor [1] (WI-036 conductor strain)
-        attribute f_cond : Real;
-        // conductor strain limit [1] (WI-036)
-        attribute eps_cond_allow : Real;
-        // stress concentration transfer fact [1] (coil-set structural fact)
-        attribute k_sigma : Real;
-        // structural allowable stress [Pa]
-        attribute sigma_allow : Real;
-        // winding fabrication markup [1]
-        attribute f_wp_fab : Real;
-        // casing steel mass per coil [kg] -- COMPUTED since WI-044 by
-        // 'Magnet Casing Mass' from the stored energy (the generic plant binds
-        // it by reference, the WI-036 wp_side pattern); m_casing_ref below is
-        // the settable anchor
-        attribute m_casing : Real;
-        // ------- WI-044 coil-bore anchors: the reference point at which the
-        // peak/axis ratio, the stored energy and the casing mass were read;
-        // every sourced shape is normalised to exactly 1.0 there -------
-        // reference casing steel mass per coil [kg] at W_mag_ref
-        attribute m_casing_ref : Real;
-        // reference coil-set stored magnetic energy [J] at (I_ref, a_coil_ref, R_ref)
-        attribute W_mag_ref : Real;
-        // reference peak single-coil current [A]
-        attribute I_ref : Real;
-        // reference major radius [m]
-        attribute R_ref : Real;
-        // reference coil-centre minor radius [m] (the radial build's
-        // r_coil_centre at the reference minor radius)
-        attribute a_coil_ref : Real;
-        // fabricated structural steel price [$/kg]
-        attribute steel_price : Real;
-        // casing fabrication markup [1]
-        attribute f_steel_fab : Real;
+        attribute gap2_t : Real default 0.10;
+        attribute vol_cold_cryo : Real default 0.0;
+        // the physical parts the magnet calcs price (WI-057)
+        part coil : 'Modular Coil' {
+            :>> c_coil = coil_length.c_coil;
+        }
+        part winding_pack : 'Winding Pack' {
+            :>> wp_side = wp_sizing.wp_side;
+        }
+        part casing : 'Coil Casing' {
+            :>> m_casing = casing_mass.m_casing;
+        }
+        // ---- inputs the plant wires (WI-057): values produced elsewhere, read here by name ----
+        attribute r_coil_centre : Real;   // <- rb.r_coil_centre
+        // ---- EXPOSEs (WI-057): this part's calc outputs, readable outside as <part>.<name> ----
+        attribute B_peak : Real = peak_field_calc.B_peak;
+        attribute capital_cost_1cfe : Real = magnet_cost.capital_cost;
+        attribute eps_cond : Real = cond_strain.eps_cond;
+        attribute sigma_wp : Real = wp_stress.sigma_wp;
+        attribute vol_cold_total : Real = wp_volume.vol_cold_total;
+        // SWAP SEAM: declared `default` so a variant definition may point it at its own calc (design D5, D9)
+        attribute winding_cost : Real default winding_pack_cost.cost;
+        // SWAP SEAM: declared `default` so a variant definition may point it at its own calc (design D5, D9)
+        attribute structure_cost : Real default magnet_structure_cost.cost;
+        :>> capital_cost = magnet_capital_rollup.capital_cost;
+        // ---- template calcs (WI-057): the analyses this part owns ----
+        // Peak field on the winding (WI-030), compared against the conductor
+        // ceiling by peak_field_ok below.
+        // WI-035: axis field derived from the coil-set current (inversion
+        // ruling 2026-08-30); EXPOSEd into magnet.B above, so beta_calc,
+        // peak_field_calc, and magnet_cost read the computed field unchanged.
+        calc field_calc : 'Coil Set Axis Field' {
+            in n_coils = coil.n_coils;
+            in I_coil = coil.I_coil;
+            in k_link = coil.k_link;
+            in R0 = coil.R0;
+        }
+        // WI-044: the peak field sees the coil bore -- the eq.-39 factor
+        // R / (R - a_coil), normalised at the reference geometry so the
+        // printed ratio is reproduced exactly there. a_coil is the radial
+        // build's coil-centre radius (design D1).
+        calc peak_field_calc : 'Conductor Peak Field' {
+            in B_axis_in = B;
+            in peak_ratio_in = coil.peak_ratio;
+            in R_in = coil.R0;
+            in a_coil_in = r_coil_centre;
+            in R_ref_in = coil.R_ref;
+            in a_coil_ref_in = coil.a_coil_ref;
+        }
+        // WI-044: stored magnetic energy from the coil-set inductance shape
+        // (thesis eq. 2.82, W = 1/2 L I^2), anchored at the printed reference.
+        calc stored_energy : 'Coil Set Stored Energy' {
+            in I_coil = coil.I_coil;
+            in a_coil = r_coil_centre;
+            in R0 = coil.R0;
+            in W_mag_ref = casing.W_mag_ref;
+            in I_ref = coil.I_ref;
+            in a_coil_ref = coil.a_coil_ref;
+            in R_ref = coil.R_ref;
+        }
+        // WI-044: casing mass from stored energy (Lion 2021 eq. 56), anchored
+        // at the instance's reference mass; feeds 'Magnet Structure Cost'
+        // through magnet.casing.m_casing.
+        calc casing_mass : 'Magnet Casing Mass' {
+            in W_mag = stored_energy.W_mag;
+            in W_mag_ref = casing.W_mag_ref;
+            in m_casing_ref = casing.m_casing_ref;
+        }
+        // WI-036: the winding pack is sized by the current it carries, so
+        // wp_side stops being an entry point and becomes a consequence of
+        // coil current and the chosen winding-pack current density.
+        calc wp_sizing : 'Winding Pack Sizing' {
+            in I_coil = coil.I_coil;
+            in j_wp = winding_pack.j_wp;
+        }
+        // WI-036: winding length responds to machine scale through a held
+        // coil-shape factor, instead of resting on a printed constant.
+        calc coil_length : 'Coil Winding Length' {
+            in R0 = coil.R0;
+            in k_coil = coil.k_coil;
+        }
+        // WI-036: a wider winding pack now costs cold mass -- this feeds the
+        // WI-024 cryoplant chain, which already reaches cryoplant capital.
+        calc wp_volume : 'Winding Pack Cold Volume' {
+            in n_coils = coil.n_coils;
+            in wp_side = wp_sizing.wp_side;
+            in c_coil = coil_length.c_coil;
+            in f_wp_vol = winding_pack.f_wp_vol;
+            // WI-036: vol_cold_cryo stays a live settable slot and enters here
+            // as an ADDITIVE term, so modelling the winding-pack chain does not
+            // retire it (the standing [OWNER 2026-08-27] WI-032 ruling bars
+            // retiring the input, not modelling the chain behind it).
+            in vol_extra = vol_cold_cryo;
+        }
+        // WI-035 stress operand, now consuming the WI-036 computed wp_side.
+        calc wp_stress : 'Winding Pack Stress' {
+            in I_coil = coil.I_coil;
+            in B_peak_in = peak_field_calc.B_peak;
+            in wp_side = wp_sizing.wp_side;
+            in k_sigma = winding_pack.k_sigma;
+        }
+        // WI-036: the conductor's own operand, checked separately from the
+        // structure's -- the second of the two checks every surveyed HTS
+        // fusion design performs.
+        calc cond_strain : 'Conductor Strain' {
+            in sigma_wp = wp_stress.sigma_wp;
+            in E_wp = winding_pack.E_wp;
+            in f_cond = winding_pack.f_cond;
+        }
+        // Magnet (CAS22.1.3). WI-035: 'Magnet Coil Cost' is retained as the
+        // 1cfe-form COMPARISON channel (magnet_capital_1cfe); the rollup reads
+        // the decomposed sub-accounts below.
+        calc magnet_cost : 'Magnet Coil Cost' {
+            in G = coil.G;
+            in B = 'Magnet System'::B;
+            in R0 = coil.R0;
+            in r_coil = 'Magnet System'::r_coil;
+            in cost_per_kAm = coil.cost_per_kAm;
+            in coil_markup = coil.coil_markup;
+        }
+        // Winding-pack account (real winding length, WI-035 D4).
+        calc winding_pack_cost : 'Winding Pack Cost' {
+            in n_coils = coil.n_coils;
+            in I_coil = coil.I_coil;
+            in f_set = coil.f_set;
+            in c_coil = coil.c_coil;
+            in cost_per_kAm = coil.cost_per_kAm;
+            in f_wp_fab = winding_pack.f_wp_fab;
+        }
+        // Magnet casing-structure account (WI-035 D5; casings only --
+        // inter-coil plates/rings/legs stay CAS22.1.5).
+        calc magnet_structure_cost : 'Magnet Structure Cost' {
+            in n_coils = coil.n_coils;
+            in m_casing = casing.m_casing;   // WI-044: computed (casing_mass)
+            in steel_price = casing.steel_price;
+            in f_steel_fab = casing.f_steel_fab;
+        }
+        // CAS22.1.3 rollup (WI-035 D6): reference-binding envelope.
+        calc magnet_capital_rollup : 'Magnet Capital' {
+            in winding_cost = 'Magnet System'::winding_cost;
+            in structure_cost_in = structure_cost;
+        }
     }
 
     part def 'Heating and CD' :> 'CAS22.1.4 Heating and Current Drive' {
+        // ---- ports (WI-057): the exchanges this part takes part in; declarative, see mfe_interfaces ----
+        port electric_in : ~'Electric Port';   // <- electric_plant.recirculating (pb.p_wallplug_in)
+        port power_to_plasma : 'Thermal Port';   // -> plasma.heat_in (heat.p_coupled)
+        // WI-057: the heating's own facts, moved from the plant (formerly plant-level inputs)
+        // Heating power chain (WI-039). Dormant by default, on the WI-024
+        // cryoplant pattern: a concept that knows its heating powers outright
+        // binds the direct terms and leaves the chain unbound; a concept
+        // deriving them binds the chain and zeroes the direct terms. The
+        // efficiencies default to 1.0 (not 0) so a dormant chain's effective
+        // efficiency stays defined -- the mode is selected by the powers,
+        // never by an efficiency.
+        // installed wall-plug electrical power for heating [MW]
+        attribute p_wallplug_heat : Real default 0.0;
+        // wall-plug -> source output conversion efficiency [1]
+        attribute eta_source_heat : Real default 1.0;
+        // source output -> plasma-coupled fraction [1] (deposition assumption)
+        attribute eta_couple_heat : Real default 1.0;
+        // directly-specified source-output heating power [MW] (dormant path)
+        attribute p_delivered_direct_heat : Real default 0.0;
+        // directly-specified plasma-coupled heating power [MW] (dormant path)
+        attribute p_coupled_direct_heat : Real default 0.0;
+        // Heating & CD (CAS22.1.4) -- WI-009 carrier has no drivers; the heating
+        // mix (per-MW rates + delivered powers) is supplied here (WI-011).
+        attribute heating_nbi_per_mw : Real;
+        attribute p_nbi : Real;
+        attribute heating_icrf_per_mw : Real;
+        attribute p_icrf : Real;
+        attribute heating_ecrh_per_mw : Real;
+        attribute heating_lhcd_per_mw : Real;
+        attribute p_lhcd : Real;
         doc /*
         Concept-agnostic supplementary heating / current-drive costed component.
         Carries `capital_cost` (inherited from 'Costed Component'); the per-MW
@@ -165,9 +284,46 @@ package mfe_power_core {
         **Ref**: cas22.py:453-459 (C220104 per-MW heating costs)
         **Basis**: MFE heating/current-drive account; concept-agnostic carrier
         */
+        // ---- EXPOSEs (WI-057): this part's calc outputs, readable outside as <part>.<name> ----
+        attribute p_coupled : Real = heat.p_coupled;
+        attribute p_wallplug_total : Real = heat.p_wallplug_total;
+        :>> capital_cost = heating_cost.cost;
+        // ---- template calcs (WI-057): the analyses this part owns ----
+        calc heat : 'Heating Power Chain' {
+            in p_wallplug = p_wallplug_heat;
+            in eta_source = eta_source_heat;
+            in eta_couple = eta_couple_heat;
+            in p_delivered_direct = p_delivered_direct_heat;
+            in p_coupled_direct = p_coupled_direct_heat;
+        }
+        calc heating_cost : 'Heating Cost' {
+            in nbi_per_mw = heating_nbi_per_mw;
+            in p_nbi_in = p_nbi;
+            in icrf_per_mw = heating_icrf_per_mw;
+            in p_icrf_in = p_icrf;
+            in ecrh_per_mw = heating_ecrh_per_mw;
+            in p_ecrh_in = heat.p_delivered;
+            in lhcd_per_mw = heating_lhcd_per_mw;
+            in p_lhcd_in = p_lhcd;
+        }
     }
 
     part def 'Divertor' :> 'CAS22.1.8 Divertor' {
+        // ---- ports (WI-057): the exchanges this part takes part in; declarative, see mfe_interfaces ----
+        port heat_in : ~'Thermal Port';   // <- plasma.alpha_out (divheat)
+        // WI-057: the divertor's own facts, moved from the plant (formerly plant-level inputs)
+        // Divertor (CAS22.1.8) -- WI-009 carrier has no drivers; supplied here.
+        // divertor cost at 1 GWth [$] (WI-011)
+        attribute divertor_base : Real;
+        // ---- Divertor surface-heat ledger (WI-047) on the INSTALLED heating
+        // basis (the thermal sum's own operand) -- round 1 of goal plant-closure.
+        // Dormant-safe: q_target_ref 0 and p_nonrad_ref 1 give a zero peak and a
+        // satisfied fence for a concept binding nothing.
+        attribute f_rad_total : Real default 0.0;
+        attribute q_target_ref : Real default 0.0;
+        attribute p_nonrad_ref : Real default 1.0;
+        attribute q_target_limit : Real default 1.0;
+        attribute R_ref_divertor : Real default 1.0;
         doc /*
         Concept-agnostic divertor costed component. Carries `capital_cost`
         (inherited from 'Costed Component'); the power-scaled divertor cost is
@@ -177,5 +333,34 @@ package mfe_power_core {
         **Ref**: cas22.py:570 (C220108 divertor, power-scaled)
         **Basis**: MFE divertor account; concept-agnostic carrier
         */
+        // ---- inputs the plant wires (WI-057): values produced elsewhere, read here by name ----
+        attribute R : Real;   // <- plasma.R
+        attribute p_alpha_heat : Real;   // <- plasma.p_alpha_heat
+        attribute p_aux_required : Real;   // <- plasma.p_aux_required
+        attribute p_coupled : Real;   // <- operating_heat.p_coupled (WI-050: the operating demand)
+        attribute p_installed_coupled : Real;   // <- heating.p_coupled (WI-050: the installed delivery)
+        attribute p_rad : Real;   // <- plasma.p_rad
+        attribute p_th : Real;   // <- pb.p_th
+        // ---- EXPOSEs (WI-057): this part's calc outputs, readable outside as <part>.<name> ----
+        attribute q_target_peak : Real = divheat.q_target_peak;
+        :>> capital_cost = divertor_cost.cost;
+        // ---- template calcs (WI-057): the analyses this part owns ----
+        calc divertor_cost : 'Divertor Cost' {
+            in base = divertor_base;
+            in p_th_in = p_th;
+        }
+        calc divheat : 'Divertor Heat Ledger' {
+            in p_alpha_heat_in = p_alpha_heat;
+            in p_coupled_in = p_coupled;
+            in p_aux_required_in = p_aux_required;
+            in p_installed_coupled_in = p_installed_coupled;
+            in p_rad_core_in = p_rad;
+            in f_rad_total_in = f_rad_total;
+            in q_target_ref_in = q_target_ref;
+            in p_nonrad_ref_in = p_nonrad_ref;
+            in q_target_limit_in = q_target_limit;
+            in R_in = R;
+            in R_ref_in = R_ref_divertor;
+        }
     }
 }

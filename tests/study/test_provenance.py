@@ -48,8 +48,8 @@ def provenance_copy(package_copy):
             {
                 "axis": "test_tie",
                 "keys": [
-                    {"key": "stellarator_09__stellaris__R", "provenance": "fan_out"},
-                    {"key": "stellarator_09__stellaris__magnet__I_coil", "provenance": "tie"},
+                    {"key": "stellarator_09__stellaris__plasma__R", "provenance": "fan_out"},
+                    {"key": "stellarator_09__stellaris__magnet__coil__I_coil", "provenance": "tie"},
                 ],
             }
         )
@@ -64,8 +64,8 @@ def test_the_tie_key_is_marked_and_the_others_are_not(provenance_copy):
         e["key"]: e["provenance"]
         for e in group_by_axis(json.loads(out), "test_tie")["declared_keys"]
     }
-    assert tied["stellarator_09__stellaris__magnet__I_coil"] == "tie"
-    assert tied["stellarator_09__stellaris__R"] == "fan_out"
+    assert tied["stellarator_09__stellaris__magnet__coil__I_coil"] == "tie"
+    assert tied["stellarator_09__stellaris__plasma__R"] == "fan_out"
 
 
 def test_a_tie_key_traces_identically_to_a_fan_out_key(provenance_copy):
@@ -98,9 +98,9 @@ def test_entry_type_is_reported_per_declared_key():
     }
     # WI-030: the bound beta retired. WI-035: the bound field retired in turn —
     # the coil-set current lever and its facts are the design attributes now.
-    assert types["stellarator_09__stellaris__magnet__I_coil"] == "design_attribute"
+    assert types["stellarator_09__stellaris__magnet__coil__I_coil"] == "design_attribute"
     assert "stellarator_09__stellaris__magnet__R0" not in types
     # Since the model migration the swept plant attributes are design attributes too
     # (one entry point per authored attribute); the usage-literal class is exercised
     # by the known-answers test on the recirc threshold.
-    assert types["stellarator_09__stellaris__R"] == "design_attribute"
+    assert types["stellarator_09__stellaris__plasma__R"] == "design_attribute"

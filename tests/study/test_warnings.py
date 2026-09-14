@@ -46,8 +46,8 @@ def advisory_copy(package_copy):
         lambda d: d.update(
             ties=[
                 {
-                    "key": "stellarator_09__stellaris__magnet__I_coil",
-                    "rides_with": ["stellarator_09__stellaris__R"],
+                    "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+                    "rides_with": ["stellarator_09__stellaris__plasma__R"],
                 }
             ]
         )
@@ -80,7 +80,7 @@ def test_the_tie_candidate_names_the_key_and_says_it_was_not_added(advisory_copy
 def test_a_declared_tie_earns_no_candidate_warning(advisory_copy):
     advisory_copy.edit_axes(
         lambda d: next(g for g in d["groups"] if g["axis"] == "R_partial")["keys"].append(
-            {"key": "stellarator_09__stellaris__magnet__I_coil", "provenance": "tie"}
+            {"key": "stellarator_09__stellaris__magnet__coil__I_coil", "provenance": "tie"}
         )
     )
     rc, out, err = advisory_copy.run()
@@ -113,14 +113,14 @@ def test_the_declared_tie_is_not_a_suffix_sibling(advisory_copy):
     rc, out, err = advisory_copy.run()
     assert rc == 0, err
     siblings = group_by_axis(json.loads(out), "R_partial")["sibling_candidates"]
-    assert "stellarator_09__stellaris__magnet__I_coil" not in siblings
+    assert "stellarator_09__stellaris__magnet__coil__I_coil" not in siblings
 
 
 def test_a_key_in_two_groups_earns_a_document_warning():
     doc = run_tool(REAL_PACKAGE, REAL_MANIFEST, EXTRAS)
     duplicates = [w for w in doc["warnings"] if w["kind"] == "duplicate_key_across_groups"]
     assert len(duplicates) == 1
-    assert "stellarator_09__stellaris__R" in duplicates[0]["detail"]
+    assert "stellarator_09__stellaris__plasma__R" in duplicates[0]["detail"]
     assert "R_partial" in duplicates[0]["detail"] and "R_shared" in duplicates[0]["detail"]
 
 

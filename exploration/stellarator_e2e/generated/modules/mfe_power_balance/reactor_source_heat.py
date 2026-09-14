@@ -15,9 +15,9 @@ equals the power balance's own partial sum to the bit.
 *Basis**: reactor source heat before the loop's own recovered work; the heat ledger's one source (packet § 5)
 
 Inputs:
+    - mn_in: mn_in parameter
     - p_input_in: p_input_in parameter
     - p_nrl: p_nrl parameter
-    - mn_in: mn_in parameter
 
 Outputs:
     - q_source: q_source result
@@ -40,13 +40,13 @@ class Reactor_Source_HeatInput(BaseModel):
     """Input model for Reactor_Source_HeatModule.
 
     Attributes:
+        mn_in: mn_in input
         p_input_in: p_input_in input
         p_nrl: p_nrl input
-        mn_in: mn_in input
     """
+    mn_in: float = Field(..., description="mn_in input")
     p_input_in: float = Field(..., description="p_input_in input")
     p_nrl: float = Field(..., description="p_nrl input")
-    mn_in: float = Field(..., description="mn_in input")
 
 
 class Reactor_Source_HeatModule(ModuleBase[Reactor_Source_HeatInput, Float]):
@@ -65,9 +65,9 @@ equals the power balance's own partial sum to the bit.
 *Basis**: reactor source heat before the loop's own recovered work; the heat ledger's one source (packet § 5)
 
 Inputs:
+    - mn_in: mn_in parameter
     - p_input_in: p_input_in parameter
     - p_nrl: p_nrl parameter
-    - mn_in: mn_in parameter
 
 Outputs:
     - q_source: q_source result
@@ -104,33 +104,33 @@ equals the power balance's own partial sum to the bit.
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, p_input_in: float, p_nrl: float, mn_in: float    ) -> Reactor_Source_HeatInput:
+        self, mn_in: float, p_input_in: float, p_nrl: float    ) -> Reactor_Source_HeatInput:
         """Validate inputs and fill defaults.
 
         Args:
+            mn_in: mn_in input
             p_input_in: p_input_in input
             p_nrl: p_nrl input
-            mn_in: mn_in input
 
         Returns:
             Validated input model
         """
-        return Reactor_Source_HeatInput(p_input_in=p_input_in, p_nrl=p_nrl, mn_in=mn_in)
+        return Reactor_Source_HeatInput(mn_in=mn_in, p_input_in=p_input_in, p_nrl=p_nrl)
 
     def run(
-        self, p_input_in: float, p_nrl: float, mn_in: float    ) -> ModuleResult[Float]:
+        self, mn_in: float, p_input_in: float, p_nrl: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
+            mn_in: mn_in input
             p_input_in: p_input_in input
             p_nrl: p_nrl input
-            mn_in: mn_in input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(p_input_in, p_nrl, mn_in)
+        validated_inputs = self.validate_and_fill_default(mn_in, p_input_in, p_nrl)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_power_balance.reactor_source_heat_impl import (

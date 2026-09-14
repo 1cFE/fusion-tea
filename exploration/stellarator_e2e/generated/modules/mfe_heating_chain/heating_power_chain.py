@@ -50,10 +50,10 @@ physics.py:321-323 (wall-plug heating in the recirculating sum)
 
 Inputs:
     - p_coupled_direct: p_coupled_direct parameter
-    - eta_couple: eta_couple parameter
-    - p_delivered_direct: p_delivered_direct parameter
     - eta_source: eta_source parameter
+    - p_delivered_direct: p_delivered_direct parameter
     - p_wallplug: p_wallplug parameter
+    - eta_couple: eta_couple parameter
 
 Outputs:
     - p_wallplug_total: p_wallplug_total result
@@ -81,16 +81,16 @@ class Heating_Power_ChainInput(BaseModel):
 
     Attributes:
         p_coupled_direct: p_coupled_direct input
-        eta_couple: eta_couple input
-        p_delivered_direct: p_delivered_direct input
         eta_source: eta_source input
+        p_delivered_direct: p_delivered_direct input
         p_wallplug: p_wallplug input
+        eta_couple: eta_couple input
     """
     p_coupled_direct: float = Field(..., description="p_coupled_direct input")
-    eta_couple: float = Field(..., description="eta_couple input")
-    p_delivered_direct: float = Field(..., description="p_delivered_direct input")
     eta_source: float = Field(..., description="eta_source input")
+    p_delivered_direct: float = Field(..., description="p_delivered_direct input")
     p_wallplug: float = Field(..., description="p_wallplug input")
+    eta_couple: float = Field(..., description="eta_couple input")
 
 
 class Heating_Power_ChainModule(ModuleBase[Heating_Power_ChainInput, Heating_Power_ChainOutput]):
@@ -144,10 +144,10 @@ physics.py:321-323 (wall-plug heating in the recirculating sum)
 
 Inputs:
     - p_coupled_direct: p_coupled_direct parameter
-    - eta_couple: eta_couple parameter
-    - p_delivered_direct: p_delivered_direct parameter
     - eta_source: eta_source parameter
+    - p_delivered_direct: p_delivered_direct parameter
     - p_wallplug: p_wallplug parameter
+    - eta_couple: eta_couple parameter
 
 Outputs:
     - p_wallplug_total: p_wallplug_total result
@@ -228,37 +228,37 @@ physics.py:321-323 (wall-plug heating in the recirculating sum)
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, p_coupled_direct: float, eta_couple: float, p_delivered_direct: float, eta_source: float, p_wallplug: float    ) -> Heating_Power_ChainInput:
+        self, p_coupled_direct: float, eta_source: float, p_delivered_direct: float, p_wallplug: float, eta_couple: float    ) -> Heating_Power_ChainInput:
         """Validate inputs and fill defaults.
 
         Args:
             p_coupled_direct: p_coupled_direct input
-            eta_couple: eta_couple input
-            p_delivered_direct: p_delivered_direct input
             eta_source: eta_source input
+            p_delivered_direct: p_delivered_direct input
             p_wallplug: p_wallplug input
+            eta_couple: eta_couple input
 
         Returns:
             Validated input model
         """
-        return Heating_Power_ChainInput(p_coupled_direct=p_coupled_direct, eta_couple=eta_couple, p_delivered_direct=p_delivered_direct, eta_source=eta_source, p_wallplug=p_wallplug)
+        return Heating_Power_ChainInput(p_coupled_direct=p_coupled_direct, eta_source=eta_source, p_delivered_direct=p_delivered_direct, p_wallplug=p_wallplug, eta_couple=eta_couple)
 
     def run(
-        self, p_coupled_direct: float, eta_couple: float, p_delivered_direct: float, eta_source: float, p_wallplug: float    ) -> ModuleResult[Heating_Power_ChainOutput]:
+        self, p_coupled_direct: float, eta_source: float, p_delivered_direct: float, p_wallplug: float, eta_couple: float    ) -> ModuleResult[Heating_Power_ChainOutput]:
         """Execute calculation.
 
         Args:
             p_coupled_direct: p_coupled_direct input
-            eta_couple: eta_couple input
-            p_delivered_direct: p_delivered_direct input
             eta_source: eta_source input
+            p_delivered_direct: p_delivered_direct input
             p_wallplug: p_wallplug input
+            eta_couple: eta_couple input
 
         Returns:
             Module result with Heating_Power_ChainOutput (p_wallplug_total, p_delivered, p_coupled, eta_pin_eff)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(p_coupled_direct, eta_couple, p_delivered_direct, eta_source, p_wallplug)
+        validated_inputs = self.validate_and_fill_default(p_coupled_direct, eta_source, p_delivered_direct, p_wallplug, eta_couple)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_heating_chain.heating_power_chain_impl import (

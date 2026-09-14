@@ -28,8 +28,8 @@ analysis (peak stresses ~600 MPa, axisymmetric I x B model)
 concentration fact; concept-agnostic (MR-3)
 
 Inputs:
-    - k_sigma: k_sigma parameter
     - B_peak_in: B_peak_in parameter
+    - k_sigma: k_sigma parameter
     - wp_side: wp_side parameter
     - I_coil: I_coil parameter
 
@@ -54,13 +54,13 @@ class Winding_Pack_StressInput(BaseModel):
     """Input model for Winding_Pack_StressModule.
 
     Attributes:
-        k_sigma: k_sigma input
         B_peak_in: B_peak_in input
+        k_sigma: k_sigma input
         wp_side: wp_side input
         I_coil: I_coil input
     """
-    k_sigma: float = Field(..., description="k_sigma input")
     B_peak_in: float = Field(..., description="B_peak_in input")
+    k_sigma: float = Field(..., description="k_sigma input")
     wp_side: float = Field(..., description="wp_side input")
     I_coil: float = Field(..., description="I_coil input")
 
@@ -94,8 +94,8 @@ analysis (peak stresses ~600 MPa, axisymmetric I x B model)
 concentration fact; concept-agnostic (MR-3)
 
 Inputs:
-    - k_sigma: k_sigma parameter
     - B_peak_in: B_peak_in parameter
+    - k_sigma: k_sigma parameter
     - wp_side: wp_side parameter
     - I_coil: I_coil parameter
 
@@ -143,27 +143,27 @@ concentration fact; concept-agnostic (MR-3)
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, k_sigma: float, B_peak_in: float, wp_side: float, I_coil: float    ) -> Winding_Pack_StressInput:
+        self, B_peak_in: float, k_sigma: float, wp_side: float, I_coil: float    ) -> Winding_Pack_StressInput:
         """Validate inputs and fill defaults.
 
         Args:
-            k_sigma: k_sigma input
             B_peak_in: B_peak_in input
+            k_sigma: k_sigma input
             wp_side: wp_side input
             I_coil: I_coil input
 
         Returns:
             Validated input model
         """
-        return Winding_Pack_StressInput(k_sigma=k_sigma, B_peak_in=B_peak_in, wp_side=wp_side, I_coil=I_coil)
+        return Winding_Pack_StressInput(B_peak_in=B_peak_in, k_sigma=k_sigma, wp_side=wp_side, I_coil=I_coil)
 
     def run(
-        self, k_sigma: float, B_peak_in: float, wp_side: float, I_coil: float    ) -> ModuleResult[Float]:
+        self, B_peak_in: float, k_sigma: float, wp_side: float, I_coil: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            k_sigma: k_sigma input
             B_peak_in: B_peak_in input
+            k_sigma: k_sigma input
             wp_side: wp_side input
             I_coil: I_coil input
 
@@ -171,7 +171,7 @@ concentration fact; concept-agnostic (MR-3)
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(k_sigma, B_peak_in, wp_side, I_coil)
+        validated_inputs = self.validate_and_fill_default(B_peak_in, k_sigma, wp_side, I_coil)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_magnet_field.winding_pack_stress_impl import (

@@ -15,10 +15,10 @@ steady-state MFE. Power-law in thermal power:
 *Basis**: Power-scaled divertor cost; MFE analogue of IFE target factory
 
 Inputs:
+    - p_th_in: p_th_in parameter
+    - base: base parameter
     - p_th_ref: p_th_ref parameter
     - alpha: alpha parameter
-    - base: base parameter
-    - p_th_in: p_th_in parameter
 
 Outputs:
     - cost: cost result
@@ -41,15 +41,15 @@ class Divertor_CostInput(BaseModel):
     """Input model for Divertor_CostModule.
 
     Attributes:
+        p_th_in: p_th_in input
+        base: base input
         p_th_ref: p_th_ref input
         alpha: alpha input
-        base: base input
-        p_th_in: p_th_in input
     """
+    p_th_in: float = Field(..., description="p_th_in input")
+    base: float = Field(..., description="base input")
     p_th_ref: float = Field(..., description="p_th_ref input")
     alpha: float = Field(..., description="alpha input")
-    base: float = Field(..., description="base input")
-    p_th_in: float = Field(..., description="p_th_in input")
 
 
 class Divertor_CostModule(ModuleBase[Divertor_CostInput, Float]):
@@ -68,10 +68,10 @@ steady-state MFE. Power-law in thermal power:
 *Basis**: Power-scaled divertor cost; MFE analogue of IFE target factory
 
 Inputs:
+    - p_th_in: p_th_in parameter
+    - base: base parameter
     - p_th_ref: p_th_ref parameter
     - alpha: alpha parameter
-    - base: base parameter
-    - p_th_in: p_th_in parameter
 
 Outputs:
     - cost: cost result
@@ -108,35 +108,35 @@ steady-state MFE. Power-law in thermal power:
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, p_th_ref: float, alpha: float, base: float, p_th_in: float    ) -> Divertor_CostInput:
+        self, p_th_in: float, base: float, p_th_ref: float, alpha: float    ) -> Divertor_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
+            p_th_in: p_th_in input
+            base: base input
             p_th_ref: p_th_ref input
             alpha: alpha input
-            base: base input
-            p_th_in: p_th_in input
 
         Returns:
             Validated input model
         """
-        return Divertor_CostInput(p_th_ref=p_th_ref, alpha=alpha, base=base, p_th_in=p_th_in)
+        return Divertor_CostInput(p_th_in=p_th_in, base=base, p_th_ref=p_th_ref, alpha=alpha)
 
     def run(
-        self, p_th_ref: float, alpha: float, base: float, p_th_in: float    ) -> ModuleResult[Float]:
+        self, p_th_in: float, base: float, p_th_ref: float, alpha: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
+            p_th_in: p_th_in input
+            base: base input
             p_th_ref: p_th_ref input
             alpha: alpha input
-            base: base input
-            p_th_in: p_th_in input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(p_th_ref, alpha, base, p_th_in)
+        validated_inputs = self.validate_and_fill_default(p_th_in, base, p_th_ref, alpha)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.divertor_cost_impl import (

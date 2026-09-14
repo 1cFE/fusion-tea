@@ -71,21 +71,21 @@ Table 1 :105-113 (two compressors per loop), Table 2 :128 (IHX duties), Table 3 
 isentropic compressor; concept-agnostic (MR-3) -- every fact bound by instances
 
 Inputs:
-    - eta_p_direct_in: eta_p_direct_in parameter
-    - mdot_loop_ref_in: mdot_loop_ref_in parameter
-    - n_loops_in: n_loops_in parameter
-    - p_pump_direct_in: p_pump_direct_in parameter
-    - cp_in: cp_in parameter
-    - eta_drive_in: eta_drive_in parameter
-    - p_loop_in: p_loop_in parameter
-    - f_loss_in: f_loss_in parameter
-    - eta_is_in: eta_is_in parameter
-    - T_in_in: T_in_in parameter
-    - loop_live_in: loop_live_in parameter
     - q_source_in: q_source_in parameter
-    - dT_blanket_in: dT_blanket_in parameter
-    - dp_loop_ref_in: dp_loop_ref_in parameter
+    - cp_in: cp_in parameter
+    - mdot_loop_ref_in: mdot_loop_ref_in parameter
+    - T_in_in: T_in_in parameter
+    - p_pump_direct_in: p_pump_direct_in parameter
     - gamma_in: gamma_in parameter
+    - f_loss_in: f_loss_in parameter
+    - n_loops_in: n_loops_in parameter
+    - dp_loop_ref_in: dp_loop_ref_in parameter
+    - loop_live_in: loop_live_in parameter
+    - eta_p_direct_in: eta_p_direct_in parameter
+    - dT_blanket_in: dT_blanket_in parameter
+    - p_loop_in: p_loop_in parameter
+    - eta_is_in: eta_is_in parameter
+    - eta_drive_in: eta_drive_in parameter
 
 Outputs:
     - p_loop_margin: p_loop_margin result
@@ -121,37 +121,37 @@ class Primary_Coolant_LoopInput(BaseModel):
     """Input model for Primary_Coolant_LoopModule.
 
     Attributes:
-        eta_p_direct_in: eta_p_direct_in input
-        mdot_loop_ref_in: mdot_loop_ref_in input
-        n_loops_in: n_loops_in input
-        p_pump_direct_in: p_pump_direct_in input
-        cp_in: cp_in input
-        eta_drive_in: eta_drive_in input
-        p_loop_in: p_loop_in input
-        f_loss_in: f_loss_in input
-        eta_is_in: eta_is_in input
-        T_in_in: T_in_in input
-        loop_live_in: loop_live_in input
         q_source_in: q_source_in input
-        dT_blanket_in: dT_blanket_in input
-        dp_loop_ref_in: dp_loop_ref_in input
+        cp_in: cp_in input
+        mdot_loop_ref_in: mdot_loop_ref_in input
+        T_in_in: T_in_in input
+        p_pump_direct_in: p_pump_direct_in input
         gamma_in: gamma_in input
+        f_loss_in: f_loss_in input
+        n_loops_in: n_loops_in input
+        dp_loop_ref_in: dp_loop_ref_in input
+        loop_live_in: loop_live_in input
+        eta_p_direct_in: eta_p_direct_in input
+        dT_blanket_in: dT_blanket_in input
+        p_loop_in: p_loop_in input
+        eta_is_in: eta_is_in input
+        eta_drive_in: eta_drive_in input
     """
-    eta_p_direct_in: float = Field(..., description="eta_p_direct_in input")
-    mdot_loop_ref_in: float = Field(..., description="mdot_loop_ref_in input")
-    n_loops_in: float = Field(..., description="n_loops_in input")
-    p_pump_direct_in: float = Field(..., description="p_pump_direct_in input")
-    cp_in: float = Field(..., description="cp_in input")
-    eta_drive_in: float = Field(..., description="eta_drive_in input")
-    p_loop_in: float = Field(..., description="p_loop_in input")
-    f_loss_in: float = Field(..., description="f_loss_in input")
-    eta_is_in: float = Field(..., description="eta_is_in input")
-    T_in_in: float = Field(..., description="T_in_in input")
-    loop_live_in: float = Field(..., description="loop_live_in input")
     q_source_in: float = Field(..., description="q_source_in input")
-    dT_blanket_in: float = Field(..., description="dT_blanket_in input")
-    dp_loop_ref_in: float = Field(..., description="dp_loop_ref_in input")
+    cp_in: float = Field(..., description="cp_in input")
+    mdot_loop_ref_in: float = Field(..., description="mdot_loop_ref_in input")
+    T_in_in: float = Field(..., description="T_in_in input")
+    p_pump_direct_in: float = Field(..., description="p_pump_direct_in input")
     gamma_in: float = Field(..., description="gamma_in input")
+    f_loss_in: float = Field(..., description="f_loss_in input")
+    n_loops_in: float = Field(..., description="n_loops_in input")
+    dp_loop_ref_in: float = Field(..., description="dp_loop_ref_in input")
+    loop_live_in: float = Field(..., description="loop_live_in input")
+    eta_p_direct_in: float = Field(..., description="eta_p_direct_in input")
+    dT_blanket_in: float = Field(..., description="dT_blanket_in input")
+    p_loop_in: float = Field(..., description="p_loop_in input")
+    eta_is_in: float = Field(..., description="eta_is_in input")
+    eta_drive_in: float = Field(..., description="eta_drive_in input")
 
 
 class Primary_Coolant_LoopModule(ModuleBase[Primary_Coolant_LoopInput, Primary_Coolant_LoopOutput]):
@@ -226,21 +226,21 @@ Table 1 :105-113 (two compressors per loop), Table 2 :128 (IHX duties), Table 3 
 isentropic compressor; concept-agnostic (MR-3) -- every fact bound by instances
 
 Inputs:
-    - eta_p_direct_in: eta_p_direct_in parameter
-    - mdot_loop_ref_in: mdot_loop_ref_in parameter
-    - n_loops_in: n_loops_in parameter
-    - p_pump_direct_in: p_pump_direct_in parameter
-    - cp_in: cp_in parameter
-    - eta_drive_in: eta_drive_in parameter
-    - p_loop_in: p_loop_in parameter
-    - f_loss_in: f_loss_in parameter
-    - eta_is_in: eta_is_in parameter
-    - T_in_in: T_in_in parameter
-    - loop_live_in: loop_live_in parameter
     - q_source_in: q_source_in parameter
-    - dT_blanket_in: dT_blanket_in parameter
-    - dp_loop_ref_in: dp_loop_ref_in parameter
+    - cp_in: cp_in parameter
+    - mdot_loop_ref_in: mdot_loop_ref_in parameter
+    - T_in_in: T_in_in parameter
+    - p_pump_direct_in: p_pump_direct_in parameter
     - gamma_in: gamma_in parameter
+    - f_loss_in: f_loss_in parameter
+    - n_loops_in: n_loops_in parameter
+    - dp_loop_ref_in: dp_loop_ref_in parameter
+    - loop_live_in: loop_live_in parameter
+    - eta_p_direct_in: eta_p_direct_in parameter
+    - dT_blanket_in: dT_blanket_in parameter
+    - p_loop_in: p_loop_in parameter
+    - eta_is_in: eta_is_in parameter
+    - eta_drive_in: eta_drive_in parameter
 
 Outputs:
     - p_loop_margin: p_loop_margin result
@@ -348,57 +348,57 @@ isentropic compressor; concept-agnostic (MR-3) -- every fact bound by instances
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, eta_p_direct_in: float, mdot_loop_ref_in: float, n_loops_in: float, p_pump_direct_in: float, cp_in: float, eta_drive_in: float, p_loop_in: float, f_loss_in: float, eta_is_in: float, T_in_in: float, loop_live_in: float, q_source_in: float, dT_blanket_in: float, dp_loop_ref_in: float, gamma_in: float    ) -> Primary_Coolant_LoopInput:
+        self, q_source_in: float, cp_in: float, mdot_loop_ref_in: float, T_in_in: float, p_pump_direct_in: float, gamma_in: float, f_loss_in: float, n_loops_in: float, dp_loop_ref_in: float, loop_live_in: float, eta_p_direct_in: float, dT_blanket_in: float, p_loop_in: float, eta_is_in: float, eta_drive_in: float    ) -> Primary_Coolant_LoopInput:
         """Validate inputs and fill defaults.
 
         Args:
-            eta_p_direct_in: eta_p_direct_in input
-            mdot_loop_ref_in: mdot_loop_ref_in input
-            n_loops_in: n_loops_in input
-            p_pump_direct_in: p_pump_direct_in input
-            cp_in: cp_in input
-            eta_drive_in: eta_drive_in input
-            p_loop_in: p_loop_in input
-            f_loss_in: f_loss_in input
-            eta_is_in: eta_is_in input
-            T_in_in: T_in_in input
-            loop_live_in: loop_live_in input
             q_source_in: q_source_in input
-            dT_blanket_in: dT_blanket_in input
-            dp_loop_ref_in: dp_loop_ref_in input
+            cp_in: cp_in input
+            mdot_loop_ref_in: mdot_loop_ref_in input
+            T_in_in: T_in_in input
+            p_pump_direct_in: p_pump_direct_in input
             gamma_in: gamma_in input
+            f_loss_in: f_loss_in input
+            n_loops_in: n_loops_in input
+            dp_loop_ref_in: dp_loop_ref_in input
+            loop_live_in: loop_live_in input
+            eta_p_direct_in: eta_p_direct_in input
+            dT_blanket_in: dT_blanket_in input
+            p_loop_in: p_loop_in input
+            eta_is_in: eta_is_in input
+            eta_drive_in: eta_drive_in input
 
         Returns:
             Validated input model
         """
-        return Primary_Coolant_LoopInput(eta_p_direct_in=eta_p_direct_in, mdot_loop_ref_in=mdot_loop_ref_in, n_loops_in=n_loops_in, p_pump_direct_in=p_pump_direct_in, cp_in=cp_in, eta_drive_in=eta_drive_in, p_loop_in=p_loop_in, f_loss_in=f_loss_in, eta_is_in=eta_is_in, T_in_in=T_in_in, loop_live_in=loop_live_in, q_source_in=q_source_in, dT_blanket_in=dT_blanket_in, dp_loop_ref_in=dp_loop_ref_in, gamma_in=gamma_in)
+        return Primary_Coolant_LoopInput(q_source_in=q_source_in, cp_in=cp_in, mdot_loop_ref_in=mdot_loop_ref_in, T_in_in=T_in_in, p_pump_direct_in=p_pump_direct_in, gamma_in=gamma_in, f_loss_in=f_loss_in, n_loops_in=n_loops_in, dp_loop_ref_in=dp_loop_ref_in, loop_live_in=loop_live_in, eta_p_direct_in=eta_p_direct_in, dT_blanket_in=dT_blanket_in, p_loop_in=p_loop_in, eta_is_in=eta_is_in, eta_drive_in=eta_drive_in)
 
     def run(
-        self, eta_p_direct_in: float, mdot_loop_ref_in: float, n_loops_in: float, p_pump_direct_in: float, cp_in: float, eta_drive_in: float, p_loop_in: float, f_loss_in: float, eta_is_in: float, T_in_in: float, loop_live_in: float, q_source_in: float, dT_blanket_in: float, dp_loop_ref_in: float, gamma_in: float    ) -> ModuleResult[Primary_Coolant_LoopOutput]:
+        self, q_source_in: float, cp_in: float, mdot_loop_ref_in: float, T_in_in: float, p_pump_direct_in: float, gamma_in: float, f_loss_in: float, n_loops_in: float, dp_loop_ref_in: float, loop_live_in: float, eta_p_direct_in: float, dT_blanket_in: float, p_loop_in: float, eta_is_in: float, eta_drive_in: float    ) -> ModuleResult[Primary_Coolant_LoopOutput]:
         """Execute calculation.
 
         Args:
-            eta_p_direct_in: eta_p_direct_in input
-            mdot_loop_ref_in: mdot_loop_ref_in input
-            n_loops_in: n_loops_in input
-            p_pump_direct_in: p_pump_direct_in input
-            cp_in: cp_in input
-            eta_drive_in: eta_drive_in input
-            p_loop_in: p_loop_in input
-            f_loss_in: f_loss_in input
-            eta_is_in: eta_is_in input
-            T_in_in: T_in_in input
-            loop_live_in: loop_live_in input
             q_source_in: q_source_in input
-            dT_blanket_in: dT_blanket_in input
-            dp_loop_ref_in: dp_loop_ref_in input
+            cp_in: cp_in input
+            mdot_loop_ref_in: mdot_loop_ref_in input
+            T_in_in: T_in_in input
+            p_pump_direct_in: p_pump_direct_in input
             gamma_in: gamma_in input
+            f_loss_in: f_loss_in input
+            n_loops_in: n_loops_in input
+            dp_loop_ref_in: dp_loop_ref_in input
+            loop_live_in: loop_live_in input
+            eta_p_direct_in: eta_p_direct_in input
+            dT_blanket_in: dT_blanket_in input
+            p_loop_in: p_loop_in input
+            eta_is_in: eta_is_in input
+            eta_drive_in: eta_drive_in input
 
         Returns:
             Module result with Primary_Coolant_LoopOutput (p_loop_margin, q_recovered_total, p_elec, p_pump_total, T_out, T_comp_in, dp_loop, mdot_loop, w_fluid, capacity_margin, q_ihx, mdot, r_comp)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(eta_p_direct_in, mdot_loop_ref_in, n_loops_in, p_pump_direct_in, cp_in, eta_drive_in, p_loop_in, f_loss_in, eta_is_in, T_in_in, loop_live_in, q_source_in, dT_blanket_in, dp_loop_ref_in, gamma_in)
+        validated_inputs = self.validate_and_fill_default(q_source_in, cp_in, mdot_loop_ref_in, T_in_in, p_pump_direct_in, gamma_in, f_loss_in, n_loops_in, dp_loop_ref_in, loop_live_in, eta_p_direct_in, dT_blanket_in, p_loop_in, eta_is_in, eta_drive_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_primary_loop.primary_coolant_loop_impl import (

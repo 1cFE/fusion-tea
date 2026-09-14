@@ -23,8 +23,8 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 STUDIES = REPO_ROOT / "exploration" / "stellarator_e2e" / "studies"
 
 BASELINE_POINT = {
-    "stellarator_09__stellaris__R": 12.7,
-    "stellarator_09__stellaris__a": 1.3,
+    "stellarator_09__stellaris__plasma__R": 12.7,
+    "stellarator_09__stellaris__plasma__a": 1.3,
     # WI-046: availability retired as an entry key; availability_direct 0.0 = the live calendar
     "stellarator_09__stellaris__availability_direct": 0.0,
 }

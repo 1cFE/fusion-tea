@@ -1,6 +1,11 @@
 package mfe_plant {
     private import ScalarValues::*;
     private import mfe_power_core::*;
+    private import mfe_plasma::*;
+    private import mfe_magnet_parts::*;
+    private import mfe_radial_build_parts::*;
+    private import mfe_plant_systems::*;
+    private import mfe_interfaces::*;
     private import mfe_subsystems::*;
     private import mfe_plasma_scaling::*;
     private import mfe_plasma_sustainment::*;
@@ -57,81 +62,167 @@ package mfe_plant {
         // =====================================================================
 
         // MFE-divergent power core (WI-009 mfe_power_core).
+        // WI-057: the plasma and the plant systems the calcs already model, as parts.
+        part plasma : 'Plasma' {
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> B = magnet.B;
+        }
+        part heat_transport : 'Primary Heat Transport' {
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> n_mod = 'MFE Power Plant'::n_mod;
+            :>> p_net = pb.p_net;
+            :>> p_th = pb.p_th;
+            :>> q_source = blanket.q_source;
+        }
+        part cryoplant : 'Cryoplant' {
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> aux_per_mw = 'MFE Power Plant'::aux_per_mw;
+            :>> n_mod = 'MFE Power Plant'::n_mod;
+            :>> p_th = pb.p_th;
+            :>> q_nuc_cryo = magnet.winding_pack.q_nuc_cryo;
+            :>> vol_cold_total = magnet.vol_cold_total;
+        }
+        part fuel_cycle : 'Fuel Cycle' {
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> availability = calendar.availability;
+            :>> n_mod = 'MFE Power Plant'::n_mod;
+            :>> p_fus = plasma.p_fus;
+            :>> p_net = pb.p_net;
+            :>> tbr = blanket.tbr;
+        }
+        part vacuum_pumping : 'Vacuum Pumping' {
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> burn_rate = fuel_cycle.burn_rate;
+            :>> exhaust_rate = fuel_cycle.exhaust_rate;
+        }
         part magnet : 'Magnet System' {
-            :>> R0 = R {
-                doc /*
-                Major plasma/axis radius [m], owned by the containing plant.
-
-                Source: work/analysis/20260911-230953_radius-ownership-evidence/source-meaning.md
-                Ref: ## Model and existing source interpretation; ## Assessment; revision 2f8856b7
-                Basis: [INHERITED: T-021@2f8856b7] Existing model-intent interpretation: one shared plasma/axis scale. This does not equate real modular-coil surfaces; coil-bore and coil-centre minor radii remain distinct.
-                Last Updated: 2026-09-11
-                */
-            }
-            :>> capital_cost = magnet_capital_rollup.capital_cost;   // WI-035: decomposed rollup
             :>> r_coil = rb.r_coil;   // coil bore = radial-build vessel_or (WI-021)
-            // WI-035: the axis field is COMPUTED from the coil-set current
-            // (reference redefinition, WI-021 pattern); B is no longer settable.
-            :>> B = field_calc.B_axis;
             // WI-036: the winding-pack side and the winding length are now
             // COMPUTED too -- the pack is sized by the current it carries and
             // the length follows machine scale. j_wp and k_coil are the
             // settable levers that replaced them.
-            :>> wp_side = wp_sizing.wp_side;
             // WI-044: the casing mass is COMPUTED from the coil set's stored
             // energy (which sees the coil bore); m_casing_ref is the settable
             // anchor that replaced the held mass.
-            :>> m_casing = casing_mass.m_casing;
-            :>> c_coil = coil_length.c_coil;
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> r_coil_centre = rb.r_coil_centre;
+            // T-021 (2026-09-11): the coil's major radius rides with the plasma's. WI-057 owns R0 on
+            // 'Modular Coil' and R on 'Plasma', so the binding sits on the nested coil part.
+            part :>> coil {
+                :>> R0 = plasma.R {
+                    doc /*
+                    Major plasma/axis radius [m], owned by the plant's plasma part (WI-057; was the containing plant).
+
+                    Source: work/analysis/20260911-230953_radius-ownership-evidence/source-meaning.md
+                    Ref: ## Model and existing source interpretation; ## Assessment; revision 2f8856b7
+                    Basis: [INHERITED: T-021@2f8856b7] Existing model-intent interpretation: one shared plasma/axis scale. This does not equate real modular-coil surfaces; coil-bore and coil-centre minor radii remain distinct.
+                    Last Updated: 2026-09-11
+                    */
+                }
+            }
         }
         part heating : 'Heating and CD' {
-            :>> capital_cost = heating_cost.cost;
         }
         part divertor : 'Divertor' {
-            :>> capital_cost = divertor_cost.cost;
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> R = plasma.R;
+            :>> p_alpha_heat = plasma.p_alpha_heat;
+            :>> p_aux_required = plasma.p_aux_required;
+            :>> p_coupled = operating_heat.p_coupled;   // WI-050: the operating demand
+            :>> p_installed_coupled = heating.p_coupled;   // WI-050: the installed delivery
+            :>> p_rad = plasma.p_rad;
+            :>> p_th = pb.p_th;
         }
 
         // Shared power core (mfe_subsystems). Material volumes forward-computed
         // from the radial build (WI-021), replacing the injected constants.
         part blanket : 'Blanket' {
-            :>> capital_cost = blanket_cost.cost;
             :>> blanket_vol = rb.blanket_vol;
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> p_coupled = operating_heat.p_coupled;   // WI-050: the operating demand
+            :>> p_fus = plasma.p_fus;
+            :>> p_th = pb.p_th;
+            part :>> first_wall {
+                :>> p_fus = plasma.p_fus;
+                :>> wall_area = rb.wall_area;
+            }
         }
         part shield : 'Shield' {
-            :>> capital_cost = shield_cost.cost;
             :>> shield_vol = rb.shield_vol;
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> p_th = pb.p_th;
         }
         part structure : 'Primary Structure' {
-            :>> capital_cost = structure_cost.cost;
             :>> structure_vol = rb.structure_vol;
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> p_et = pb.p_et;
         }
         part vessel : 'Vacuum Vessel' {
-            :>> capital_cost = vessel_cost.cost;
             :>> vessel_vol = rb.vessel_vol;
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> p_et = pb.p_et;
         }
         part power_supplies : 'Power Supplies' {
-            :>> capital_cost = power_supplies_cost.cost;
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> p_et = pb.p_et;
         }
 
         // Balance of plant (mfe_subsystems).
         part turbine : 'Turbine Plant' {
-            :>> capital_cost = turbine_cost.cost;
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> T_out = heat_transport.T_out;
+            :>> n_mod = 'MFE Power Plant'::n_mod;
+            :>> p_the = pb.p_the;
         }
         part electric_plant : 'Electric Plant' {
-            :>> capital_cost = electric_cost.cost;
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> n_mod = 'MFE Power Plant'::n_mod;
+            :>> p_et = pb.p_et;
         }
         part heat_rejection : 'Heat Rejection' {
-            :>> capital_cost = heat_rejection_cost.cost;
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> n_mod = 'MFE Power Plant'::n_mod;
+            :>> p_th = pb.p_th;
         }
         part misc_plant : 'Miscellaneous Plant' {
-            :>> capital_cost = misc_cost.cost;
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> n_mod = 'MFE Power Plant'::n_mod;
+            :>> p_et = pb.p_et;
         }
 
         // Forward-computed direct accounts (WI-025): CAS21 via buildings_cost,
         // CAS10 via precon_cost; CAS27 remains a pass-through (WI-011, in $).
         part buildings : 'Buildings' {
-            :>> capital_cost = buildings_cost.cost;
+            // WI-057: inputs the plant wires from the parts and calcs that produce them
+            :>> p_et = pb.p_et;
+            :>> p_fus = plasma.p_fus;
+            :>> p_th = pb.p_th;
+            :>> p_the = pb.p_the;
         }
+        // =====================================================================
+        // ENERGY AND MATERIAL TOPOLOGY (WI-057, design D7 / § 3). Each connection declares an
+        // exchange the calcs already compute; the chain is named beside it. Declarative in this
+        // pipeline (codegen reads no connection). No flow declarations: the port item types say
+        // what moves and no consumer reads an item-level endpoint here (design D7).
+        // =====================================================================
+        connect plasma.neutron_out to blanket.neutron_in;               // blanket.p_fus <- plasma.p_fus; source_heat, x mn
+        connect heating.power_to_plasma to plasma.heat_in;              // operating_heat.p_coupled (WI-050): accounted at the blanket (source_heat.p_input_in), the divertor (divheat) and the balance (pb)
+        connect plasma.alpha_out to divertor.heat_in;                   // divertor.p_alpha_heat, p_rad_core, p_aux_required <- plasma
+        connect blanket.coolant to heat_transport.hot_in {
+            doc /* heat_transport.q_source <- blanket.q_source (primary_loop.q_source_in). the connection where the coolant premise lives structurally: the model's loop is WI-045's representative helium circuit (Moscato 2017, EU DEMO HCLL balance of plant); the Stellaris source cools the breeding zone with water at PWR conditions and the first wall with helium at 8 MPa (stellaris-design-details output.md lines 1490-1491, 1534-1536) -- goal structural-decomposition fact 6, surfaced and carried as a follow-on, not changed by WI-057. */
+        }
+        connect heat_transport.hot_out to turbine.coolant;              // turbine.T_out <- heat_transport.T_out (cycle); pb.q_recovered_in
+        connect turbine.gross_electric to electric_plant.gross_in;      // pb.eta_th_in = turbine.eta_th -> p_et; electric_plant.p_et
+        connect electric_plant.recirculating to heating.electric_in;    // pb.p_wallplug_in = operating_heat.p_wallplug (WI-050)
+        connect electric_plant.recirculating to heat_transport.electric_in;   // pb.p_pump_total_in = heat_transport.p_pump_total
+        connect electric_plant.recirculating to cryoplant.electric_in;  // pb.p_cryo = cryoplant.p_elec; p_tfcool_in, p_pfcool_in
+        connect electric_plant.recirculating to power_supplies.electric_in;   // pb.p_tf_in, p_pf_in
+        connect electric_plant.recirculating to fuel_cycle.electric_in; // pb.p_trit_in
+        connect magnet.cold_mass to cryoplant.heat_load_in;             // cryoplant.q_nuc_cryo <- magnet.winding_pack.q_nuc_cryo; vol_cold_total <- magnet.vol_cold_total
+        connect blanket.tritium_out to fuel_cycle.tritium_in;           // fuel_cycle.tbr <- blanket.tbr (fuel.tbr_available_in)
+        connect fuel_cycle.fuel_out to plasma.fuel_in;                  // fuel_cycle.p_fus <- plasma.p_fus (the burn the fuelling sustains)
+        connect fuel_cycle.exhaust_out to vacuum_pumping.exhaust_in;    // vacuum_pumping.exhaust_rate, burn_rate <- fuel_cycle
+
         attribute preconstruction_capital : Real = precon_cost.cost;
         // CAS27 pass-through
         attribute special_materials_capital : Real;
@@ -140,471 +231,93 @@ package mfe_plant {
         // PHYSICS SPINE  (Plasma Geometry -> DT Fusion Power -> Power Balance)
         // =====================================================================
 
-        // Plasma geometry inputs (WI-011).
-        // major radius [m]
-        attribute R : Real;
-        // minor radius [m]
-        attribute a : Real;
-        // elongation
-        attribute kappa : Real;
-        // Shape/packing factor (WI-020). Default 1.0 = pure elongated torus
-        // (tokamak); a shaped stellarator instance overrides it.
-        attribute f_shape : Real default 1.0;
 
-        calc geom : 'Plasma Geometry' {
-            in R_in = R;
-            in a_in = a;
-            in kappa_in = kappa;
-            in f_shape_in = f_shape;
-        }
 
-        // Radial-build layer thicknesses [m] (WI-021). Generic-plant machinery:
-        // the radial-build pattern is shared; concept instances override values.
-        // Defaults are the 1costingFE RadialBuild defaults (geometry.py:19-40).
-        attribute vacuum_t : Real default 0.10;
-        attribute firstwall_t : Real default 0.05;
-        attribute blanket_t : Real default 0.70;
-        attribute reflector_t : Real default 0.20;
-        attribute ht_shield_t : Real default 0.20;
-        attribute structure_t : Real default 0.15;
-        attribute gap1_t : Real default 0.10;
-        attribute vessel_t : Real default 0.10;
-        attribute coil_t : Real default 0.30;
-        attribute gap2_t : Real default 0.10;
-        attribute lt_shield_t : Real default 0.15;
 
         // Forward radial build (WI-021): cumulative radii -> torus-shell volumes,
         // first-wall area, coil-bore radius. Replaces the injected material-volume
         // constants; shares the plant's R/a/kappa with geom.
         calc rb : 'MFE Radial Build' {
-            in R_in = R;
-            in a_in = a;
-            in kappa_in = kappa;
-            in vacuum_t_in = vacuum_t;
-            in firstwall_t_in = firstwall_t;
-            in blanket_t_in = blanket_t;
-            in reflector_t_in = reflector_t;
-            in ht_shield_t_in = ht_shield_t;
-            in structure_t_in = structure_t;
-            in gap1_t_in = gap1_t;
-            in vessel_t_in = vessel_t;
-            in coil_t_in = coil_t;
-            in gap2_t_in = gap2_t;
-            in lt_shield_t_in = lt_shield_t;
+            in R_in = plasma.R;
+            in a_in = plasma.a;
+            in kappa_in = plasma.kappa;
+            in vacuum_t_in = blanket.first_wall.vacuum_t;
+            in firstwall_t_in = blanket.first_wall.firstwall_t;
+            in blanket_t_in = blanket.blanket_t;
+            in reflector_t_in = blanket.reflector_t;
+            in ht_shield_t_in = shield.ht_shield_t;
+            in structure_t_in = structure.structure_t;
+            in gap1_t_in = vessel.gap1_t;
+            in vessel_t_in = vessel.vessel_t;
+            in coil_t_in = magnet.coil.coil_t;
+            in gap2_t_in = magnet.gap2_t;
+            in lt_shield_t_in = shield.lt_shield_t;
         }
 
-        // Fusion-power inputs (WI-011 sets density directly for the stellarator;
-        // no density closure here). WI-022: sigma_v > 0 selects the exact 0D
-        // bypass; sigma_v = 0 (default) computes the profile integral from the
-        // five profile inputs below (defaults mirror the calc def -- a 0D/flat
-        // concept binds sigma_v only and leaves the profile inputs dormant).
-        // electron density [m^-3]
-        attribute n_e : Real;
-        // 0D-effective reactivity [m^3/s]; > 0 = bypass
-        attribute sigma_v : Real default 0.0;
-        // per-event D-T fusion energy [J]
-        attribute E_fus : Real;
-        // WI-037: n_D0 and n_T0 retired as plant attributes -- the fuel peaks
-        // are computed by the sustainment chain (quasi-neutrality with the
-        // converged ash), wired below. The operating-point levers are n_e0
-        // and T_i0.
-        // peak ion temperature [keV]
-        attribute T_i0 : Real default 1.0;
-        // density profile exponent
-        attribute alpha_n : Real default 0.0;
-        // temperature profile exponent
-        attribute alpha_T : Real default 0.0;
 
-        // Operating-point lever (WI-030/WI-037). No default: a plasma without
-        // its peak density is not a plasma. WI-037: T_e0 and n_He0 retired as
-        // plant attributes -- both are computed by the sustainment chain below
-        // (T_e0 from the held ratio, n_He0 from the converged A.5/A.6 ash
-        // balance). WI-042: the electron density profile exponent retired too
-        // -- the electron profile is derived inside the chain by
-        // quasi-neutrality from the fuel profile and the ash on the
-        // fusion-rate profile (Eq. A.5 pointwise), never bound at a point.
-        // peak electron density [m^-3] (operating-point lever)
-        attribute n_e0 : Real;
 
-        // Sustainment held facts (WI-037). No defaults for the physics facts:
-        // a sustainment without its machine and quality facts is not a
-        // sustainment (the WI-030 no-defaults precedent) -- every MFE concept
-        // binds them from source.
-        // rotational transform at s = 2/3 [1]
-        attribute iota_23 : Real;
-        // ISS04 renormalization multiplier [1]
-        attribute f_ren : Real;
-        // fast-particle (alpha) confinement fraction [1]
-        attribute f_alpha_fast : Real;
-        // particle-to-energy confinement time ratio tau_star/tau_E [1]
-        attribute tau_ratio_ash : Real;
-        // helium suppression factor [1]
-        attribute f_suppr_ash : Real;
-        // core effective charge [1]
-        attribute Z_eff_core : Real;
-        // core tungsten fraction n_W/n_e [1]
-        attribute f_W_core : Real;
-        // ion-to-electron temperature ratio T_i0/T_e0 [1]
-        attribute Ti_over_Te : Real;
 
-        // Operating-point sustainment chain (WI-037): line-averaged density,
-        // ISS04 tau_E (closed form), converged ash + quasi-neutral fuel,
-        // composed radiation, and the required sustained coupled heating.
-        // Reads the derived field (WI-035) through magnet.B; its computed
-        // fuel/ash/T_e0 feed fusion below, and its one volume-averaged
-        // pressure feeds beta (WI-042: the electron profile and the ash
-        // profile are derived inside from the fuel and temperature profiles).
-        calc sustain : 'Plasma Sustainment' {
-            in n_e0_in = n_e0;
-            in T_i0_in = T_i0;
-            in V = geom.V;
-            in a_in = a;
-            in R_in = R;
-            in B_in = magnet.B;
-            in alpha_n_in = alpha_n;
-            in alpha_T_in = alpha_T;
-            in E_fus_in = E_fus;
-            in iota_23_in = iota_23;
-            in f_ren_in = f_ren;
-            in f_alpha_in = f_alpha_fast;
-            in tau_ratio_in = tau_ratio_ash;
-            in f_suppr_in = f_suppr_ash;
-            in Z_eff_in = Z_eff_core;
-            in f_W_in = f_W_core;
-            in r_TiTe_in = Ti_over_Te;
-        }
 
-        // Volume-averaged beta (WI-030): B enters the physics here, read from
-        // the magnet part the way magnet_cost reads it. WI-042: reads the
-        // sustainment chain's one volume-averaged pressure -- W and beta can
-        // never disagree about the plasma's pressure.
-        calc beta_calc : 'Volume-Averaged Beta' {
-            in p_avg_in = sustain.p_avg;
-            in B_in = magnet.B;
-        }
 
-        // Peak field on the winding (WI-030), compared against the conductor
-        // ceiling by peak_field_ok below.
-        // WI-035: axis field derived from the coil-set current (inversion
-        // ruling 2026-08-30); EXPOSEd into magnet.B above, so beta_calc,
-        // peak_field_calc, and magnet_cost read the computed field unchanged.
-        calc field_calc : 'Coil Set Axis Field' {
-            in n_coils = magnet.n_coils;
-            in I_coil = magnet.I_coil;
-            in k_link = magnet.k_link;
-            in R0 = magnet.R0;
-        }
 
-        // WI-044: the peak field sees the coil bore -- the eq.-39 factor
-        // R / (R - a_coil), normalised at the reference geometry so the
-        // printed ratio is reproduced exactly there. a_coil is the radial
-        // build's coil-centre radius (design D1).
-        calc peak_field_calc : 'Conductor Peak Field' {
-            in B_axis_in = magnet.B;
-            in peak_ratio_in = magnet.peak_ratio;
-            in R_in = magnet.R0;
-            in a_coil_in = rb.r_coil_centre;
-            in R_ref_in = magnet.R_ref;
-            in a_coil_ref_in = magnet.a_coil_ref;
-        }
 
-        // WI-044: stored magnetic energy from the coil-set inductance shape
-        // (thesis eq. 2.82, W = 1/2 L I^2), anchored at the printed reference.
-        calc stored_energy : 'Coil Set Stored Energy' {
-            in I_coil = magnet.I_coil;
-            in a_coil = rb.r_coil_centre;
-            in R0 = magnet.R0;
-            in W_mag_ref = magnet.W_mag_ref;
-            in I_ref = magnet.I_ref;
-            in a_coil_ref = magnet.a_coil_ref;
-            in R_ref = magnet.R_ref;
-        }
 
-        // WI-044: casing mass from stored energy (Lion 2021 eq. 56), anchored
-        // at the instance's reference mass; feeds 'Magnet Structure Cost'
-        // through magnet.m_casing.
-        calc casing_mass : 'Magnet Casing Mass' {
-            in W_mag = stored_energy.W_mag;
-            in W_mag_ref = magnet.W_mag_ref;
-            in m_casing_ref = magnet.m_casing_ref;
-        }
 
-        // WI-036: the winding pack is sized by the current it carries, so
-        // wp_side stops being an entry point and becomes a consequence of
-        // coil current and the chosen winding-pack current density.
-        calc wp_sizing : 'Winding Pack Sizing' {
-            in I_coil = magnet.I_coil;
-            in j_wp = magnet.j_wp;
-        }
 
-        // WI-036: winding length responds to machine scale through a held
-        // coil-shape factor, instead of resting on a printed constant.
-        calc coil_length : 'Coil Winding Length' {
-            in R0 = magnet.R0;
-            in k_coil = magnet.k_coil;
-        }
 
-        // WI-036: a wider winding pack now costs cold mass -- this feeds the
-        // WI-024 cryoplant chain, which already reaches cryoplant capital.
-        calc wp_volume : 'Winding Pack Cold Volume' {
-            in n_coils = magnet.n_coils;
-            in wp_side = wp_sizing.wp_side;
-            in c_coil = coil_length.c_coil;
-            in f_wp_vol = magnet.f_wp_vol;
-            // WI-036: vol_cold_cryo stays a live settable slot and enters here
-            // as an ADDITIVE term, so modelling the winding-pack chain does not
-            // retire it (the standing [OWNER 2026-08-27] WI-032 ruling bars
-            // retiring the input, not modelling the chain behind it).
-            in vol_extra = vol_cold_cryo;
-        }
 
-        // WI-035 stress operand, now consuming the WI-036 computed wp_side.
-        calc wp_stress : 'Winding Pack Stress' {
-            in I_coil = magnet.I_coil;
-            in B_peak_in = peak_field_calc.B_peak;
-            in wp_side = wp_sizing.wp_side;
-            in k_sigma = magnet.k_sigma;
-        }
 
-        // WI-036: the conductor's own operand, checked separately from the
-        // structure's -- the second of the two checks every surveyed HTS
-        // fusion design performs.
-        calc cond_strain : 'Conductor Strain' {
-            in sigma_wp = wp_stress.sigma_wp;
-            in E_wp = magnet.E_wp;
-            in f_cond = magnet.f_cond;
-        }
 
-        calc fusion : 'DT Fusion Power' {
-            in n_e_in = n_e;
-            in sigma_v_in = sigma_v;
-            in E_fus_in = E_fus;
-            in V = geom.V;
-            in n_D0_in = sustain.n_D0;
-            in n_T0_in = sustain.n_T0;
-            in T_i0_in = T_i0;
-            in alpha_n_in = alpha_n;
-            in alpha_T_in = alpha_T;
-        }
 
-        // ---- Neutron wall load: average, source-anchored calibration, peak (WI-041) ----
-        // The circular-torus AVERAGE over the model's own first-wall area, and the
-        // PEAK that a peak design limit and the fluence-limited lifetime both read.
-        // The peak is the average times a calibration computed from a source's
-        // own printed peak at its own design point ('Neutron Wall Load Peak
-        // Calibration'). Declared in the generic plant so one peak reaches both
-        // the concept's fence and the CAS72 lifetime chain below.
-        calc wall_load_calc : 'Neutron Wall Load' {
-            in p_fus = fusion.p_fus;
-            in wall_area = rb.wall_area;
-        }
-        // Reference facts for the peak calibration. Dormant by default (the
-        // WI-024 / WI-039 additive-direct-term pattern): a concept with no source
-        // peak leaves q_ref at 0 and the direct term at 1.0, so the calibration is
-        // 0 x A_ref / p_n_ref + 1.0 = 1.0 and the peak equals the average -- the
-        // pre-WI-041 fence semantics exactly. A concept anchoring to a source
-        // binds its six printed facts and zeroes the direct term. p_fus_ref
-        // defaults to 1.0, never 0, so the dormant division stays defined.
-        attribute wall_peak_q_ref : Real default 0.0;
-        attribute wall_peak_p_fus_ref : Real default 1.0;
-        attribute wall_peak_R_ref : Real default 1.0;
-        attribute wall_peak_a_ref : Real default 1.0;
-        attribute wall_peak_kappa_ref : Real default 1.0;
-        attribute wall_peak_standoff_ref : Real default 0.0;
-        attribute wall_peak_calibration_direct : Real default 1.0;
-        calc wall_peak_cal : 'Neutron Wall Load Peak Calibration' {
-            in q_peak_ref = wall_peak_q_ref;
-            in p_fus_ref = wall_peak_p_fus_ref;
-            in R_ref = wall_peak_R_ref;
-            in a_ref = wall_peak_a_ref;
-            in kappa_ref = wall_peak_kappa_ref;
-            in standoff_ref = wall_peak_standoff_ref;
-            in calibration_direct = wall_peak_calibration_direct;
-        }
-        calc wall_peak_calc : 'Neutron Wall Load Peak' {
-            in wall_load = wall_load_calc.wall_load;
-            in calibration_in = wall_peak_cal.calibration;
-        }
 
-        // Power-balance inputs (WI-011).
-        // neutron energy multiplier
-        attribute mn : Real;
-        // ---- Primary loop and cycle (WI-045, goal plant-closure) ----
-        // The loop and the cycle are computed producers; the five attributes
-        // below select the mode. Dormant defaults: a concept that binds no
-        // circuit reads no loop and zero efficiency and MUST bind its own direct
-        // terms (the WI-039 EI-5 lesson) -- the mode is selected by the flags,
-        // never by a fact. Every circuit and fit fact is unbound here (the
-        // WI-044 D6 convention) and bound by the concrete instance.
-        attribute loop_live : Real default 0.0;
-        attribute cycle_live : Real default 0.0;
-        attribute p_pump_direct : Real default 0.0;
-        attribute eta_p_direct : Real default 0.0;
-        attribute eta_th_direct : Real default 0.0;
-        // circuit facts (instance-bound)
-        attribute loop_T_in : Real;
-        attribute loop_dT_blanket : Real;
-        attribute loop_cp : Real;
-        attribute loop_gamma : Real;
-        attribute loop_p : Real;
-        attribute n_loops : Real;
-        attribute mdot_loop_ref : Real;
-        attribute dp_loop_ref : Real;
-        attribute f_loss : Real default 1.0;
-        attribute eta_is : Real;
-        attribute eta_drive : Real default 1.0;
-        // fit facts (instance-bound)
-        attribute dT_approach : Real;
-        attribute a_fit : Real;
-        attribute b_fit : Real;
-        attribute T_offset_fit : Real;
-        attribute T2_min : Real;
-        attribute T2_max : Real;
-        attribute delta_eta : Real default 0.0;
         // subsystem/control fraction
         attribute f_sub : Real;
-        // TF coil power [MW]
-        attribute p_tf : Real;
-        // PF coil power [MW]
-        attribute p_pf : Real;
-        // TF coil cooling [MW]
-        attribute p_tfcool : Real;
-        // PF coil cooling [MW]
-        attribute p_pfcool : Real;
-        // tritium systems [MW]
-        attribute p_trit : Real;
         // housekeeping [MW]
         attribute p_house : Real;
-        // directly-specified cryoplant electrical [MW] (additive direct term, WI-024)
-        attribute p_cryo : Real default 0.0;
 
-        // Cryoplant heat-load chain (WI-024). Dormant by default: a concept that
-        // knows its cryo electrical directly binds p_cryo (the direct term) and
-        // leaves these unbound; a concept deriving it binds the chain and zeroes
-        // p_cryo.
-        attribute q_nuc_cryo : Real default 0.0;
-        attribute vol_cold_cryo : Real default 0.0;
-        attribute p_fixed_cryo : Real default 0.0;
-        attribute f_uplift_cryo : Real default 1.0;
-        attribute T_cold_cryo : Real default 20.0;
-        attribute T_amb_cryo : Real default 300.0;
-        attribute f_carnot_cryo : Real default 1.0;
 
-        calc cryo_elec : 'Cryoplant Electrical Power' {
-            in q_nuc = q_nuc_cryo;
-            // WI-036: the cold volume is now computed from the sized winding
-            // pack, with vol_cold_cryo carried into that calc as an additive
-            // settable term (see the wp_volume usage above).
-            in vol_cold = wp_volume.vol_cold_total;
-            in p_fixed = p_fixed_cryo;
-            in f_uplift = f_uplift_cryo;
-            in T_cold = T_cold_cryo;
-            in T_amb = T_amb_cryo;
-            in f_carnot = f_carnot_cryo;
-            in p_direct = p_cryo;
-        }
 
-        // Heating power chain (WI-039). Dormant by default, on the WI-024
-        // cryoplant pattern: a concept that knows its heating powers outright
-        // binds the direct terms and leaves the chain unbound; a concept
-        // deriving them binds the chain and zeroes the direct terms. The
-        // efficiencies default to 1.0 (not 0) so a dormant chain's effective
-        // efficiency stays defined -- the mode is selected by the powers,
-        // never by an efficiency.
-        // installed wall-plug electrical power for heating [MW]
-        attribute p_wallplug_heat : Real default 0.0;
-        // wall-plug -> source output conversion efficiency [1]
-        attribute eta_source_heat : Real default 1.0;
-        // source output -> plasma-coupled fraction [1] (deposition assumption)
-        attribute eta_couple_heat : Real default 1.0;
-        // directly-specified source-output heating power [MW] (dormant path)
-        attribute p_delivered_direct_heat : Real default 0.0;
-        // directly-specified plasma-coupled heating power [MW] (dormant path)
-        attribute p_coupled_direct_heat : Real default 0.0;
 
-        calc heat : 'Heating Power Chain' {
-            in p_wallplug = p_wallplug_heat;
-            in eta_source = eta_source_heat;
-            in eta_couple = eta_couple_heat;
-            in p_delivered_direct = p_delivered_direct_heat;
-            in p_coupled_direct = p_coupled_direct_heat;
-        }
+
 
         // Generic legacy/direct behavior defaults to installed coupled capacity.
         // A sustained concept overrides this exposed demand with its producer.
-        attribute p_operating_coupled_heat : Real default heat.p_coupled;
+        // (WI-050; the heating facts live on the heating part since WI-057.)
+        attribute p_operating_coupled_heat : Real default heating.p_coupled;
         calc operating_heat : 'Operating Heating Power' {
             in p_required_in = p_operating_coupled_heat;
-            in eta_source_in = eta_source_heat;
-            in eta_couple_in = eta_couple_heat;
+            in eta_source_in = heating.eta_source_heat;
+            in eta_couple_in = heating.eta_couple_heat;
         }
         assert constraint heating_source_positive_ok : 'Heating Efficiency Positive' {
-            in efficiency = eta_source_heat;
+            in efficiency = heating.eta_source_heat;
         }
         assert constraint heating_source_upper_ok : 'Heating Efficiency Upper' {
-            in efficiency = eta_source_heat;
+            in efficiency = heating.eta_source_heat;
         }
         assert constraint heating_couple_positive_ok : 'Heating Efficiency Positive' {
-            in efficiency = eta_couple_heat;
+            in efficiency = heating.eta_couple_heat;
         }
         assert constraint heating_couple_upper_ok : 'Heating Efficiency Upper' {
-            in efficiency = eta_couple_heat;
-        }
-
-        // WI-045: the reactor's source heat (no pump credit), the representative
-        // primary loop and the temperature-compatible cycle, upstream of the
-        // power balance. Dataflow: fusion, heat -> source_heat -> primary_loop -> cycle -> pb.
-        calc source_heat : 'Reactor Source Heat' {
-            in p_nrl = fusion.p_fus;
-            in p_input_in = operating_heat.p_coupled;
-            in mn_in = mn;
-        }
-        calc primary_loop : 'Primary Coolant Loop' {
-            in q_source_in = source_heat.q_source;
-            in T_in_in = loop_T_in;
-            in dT_blanket_in = loop_dT_blanket;
-            in cp_in = loop_cp;
-            in gamma_in = loop_gamma;
-            in p_loop_in = loop_p;
-            in n_loops_in = n_loops;
-            in mdot_loop_ref_in = mdot_loop_ref;
-            in dp_loop_ref_in = dp_loop_ref;
-            in f_loss_in = f_loss;
-            in eta_is_in = eta_is;
-            in eta_drive_in = eta_drive;
-            in loop_live_in = loop_live;
-            in p_pump_direct_in = p_pump_direct;
-            in eta_p_direct_in = eta_p_direct;
-        }
-        calc cycle : 'Power Cycle Efficiency' {
-            in T_hot_in = primary_loop.T_out;
-            in dT_approach_in = dT_approach;
-            in a_fit_in = a_fit;
-            in b_fit_in = b_fit;
-            in T_offset_fit_in = T_offset_fit;
-            in T2_min_in = T2_min;
-            in T2_max_in = T2_max;
-            in delta_eta_in = delta_eta;
-            in cycle_live_in = cycle_live;
-            in eta_th_direct_in = eta_th_direct;
+            in efficiency = heating.eta_couple_heat;
         }
 
         calc pb : 'MFE Power Balance Calc' {
-            in p_nrl = fusion.p_fus;
+            in p_nrl = plasma.p_fus;
             in p_input_in = operating_heat.p_coupled;
-            in mn_in = mn;
-            in eta_th_in = cycle.eta_th;
-            in q_recovered_in = primary_loop.q_recovered_total;
+            in mn_in = blanket.mn;
+            in eta_th_in = turbine.eta_th;
+            in q_recovered_in = heat_transport.q_recovered_total;
             in p_wallplug_in = operating_heat.p_wallplug;
-            in p_pump_total_in = primary_loop.p_pump_total;
+            in p_pump_total_in = heat_transport.p_pump_total;
             in f_sub_in = f_sub;
-            in p_tf_in = p_tf;
-            in p_pf_in = p_pf;
-            in p_tfcool_in = p_tfcool;
-            in p_pfcool_in = p_pfcool;
-            in p_trit_in = p_trit;
+            in p_tf_in = power_supplies.p_tf;
+            in p_pf_in = power_supplies.p_pf;
+            in p_tfcool_in = cryoplant.p_tfcool;
+            in p_pfcool_in = cryoplant.p_pfcool;
+            in p_trit_in = fuel_cycle.p_trit;
             in p_house_in = p_house;
-            in p_cryo = cryo_elec.p_elec;
+            in p_cryo = cryoplant.p_elec;
         }
 
         // Cost-spine power aliases: read directly from the power balance so the
@@ -621,156 +334,22 @@ package mfe_plant {
         // ACCOUNT COST CALCS  (bind subsystem drivers + spine powers -> cost)
         // =====================================================================
 
-        // Magnet (CAS22.1.3). WI-035: 'Magnet Coil Cost' is retained as the
-        // 1cfe-form COMPARISON channel (magnet_capital_1cfe); the rollup reads
-        // the decomposed sub-accounts below.
-        calc magnet_cost : 'Magnet Coil Cost' {
-            in G = magnet.G;
-            in B = magnet.B;
-            in R0 = magnet.R0;
-            in r_coil = rb.r_coil;
-            in cost_per_kAm = magnet.cost_per_kAm;
-            in coil_markup = magnet.coil_markup;
-        }
 
-        // Winding-pack account (real winding length, WI-035 D4).
-        calc winding_pack_cost : 'Winding Pack Cost' {
-            in n_coils = magnet.n_coils;
-            in I_coil = magnet.I_coil;
-            in f_set = magnet.f_set;
-            in c_coil = magnet.c_coil;
-            in cost_per_kAm = magnet.cost_per_kAm;
-            in f_wp_fab = magnet.f_wp_fab;
-        }
 
-        // Magnet casing-structure account (WI-035 D5; casings only --
-        // inter-coil plates/rings/legs stay CAS22.1.5).
-        calc magnet_structure_cost : 'Magnet Structure Cost' {
-            in n_coils = magnet.n_coils;
-            in m_casing = magnet.m_casing;   // WI-044: computed (casing_mass)
-            in steel_price = magnet.steel_price;
-            in f_steel_fab = magnet.f_steel_fab;
-        }
 
-        // CAS22.1.3 rollup (WI-035 D6): reference-binding envelope.
-        calc magnet_capital_rollup : 'Magnet Capital' {
-            in winding_cost = winding_pack_cost.cost;
-            in structure_cost_in = magnet_structure_cost.cost;
-        }
 
-        // Blanket (CAS22.1.1).
-        // WI-050: retained power-scaled equipment costs are design-point sizing
-        // estimates, including blanket/shield/structure/vessel/supplies/divertor,
-        // turbine/electric/rejection/miscellaneous, buildings and CAS22 tail.
-        // Their operating-power operands are retained under the reviewed cost
-        // classification; heating procurement alone follows installed delivery.
-        calc blanket_cost : 'Blanket Cost' {
-            in unit_cost = blanket.unit_cost;
-            in structure_factor = blanket.structure_factor;
-            in blanket_vol = rb.blanket_vol;
-            in p_th_in = p_th;
-        }
 
-        // Shield (CAS22.1.2).
-        calc shield_cost : 'Shield Cost' {
-            in unit_cost = shield.unit_cost;
-            in shield_vol = rb.shield_vol;
-            in shield_scale = shield.shield_scale;
-            in p_th_in = p_th;
-        }
 
-        // Primary structure (CAS22.1.5).
-        calc structure_cost : 'Structure Cost' {
-            in unit_cost = structure.unit_cost;
-            in structure_vol = rb.structure_vol;
-            in p_et_in = p_et;
-        }
 
-        // Vacuum vessel (CAS22.1.6, shell term).
-        calc vessel_cost : 'Vessel Cost' {
-            in unit_cost = vessel.unit_cost;
-            in vessel_vol = rb.vessel_vol;
-            in p_et_in = p_et;
-        }
 
-        // Power supplies (CAS22.1.7).
-        calc power_supplies_cost : 'Power Supplies Cost' {
-            in base = power_supplies.base;
-            in p_et_in = p_et;
-        }
 
-        // Divertor (CAS22.1.8) -- WI-009 carrier has no drivers; supplied here.
-        // divertor cost at 1 GWth [$] (WI-011)
-        attribute divertor_base : Real;
-        calc divertor_cost : 'Divertor Cost' {
-            in base = divertor_base;
-            in p_th_in = p_th;
-        }
 
-        // Heating & CD (CAS22.1.4) -- WI-009 carrier has no drivers; the heating
-        // mix (per-MW rates + delivered powers) is supplied here (WI-011).
-        attribute heating_nbi_per_mw : Real;
-        attribute p_nbi : Real;
-        attribute heating_icrf_per_mw : Real;
-        attribute p_icrf : Real;
-        attribute heating_ecrh_per_mw : Real;
-        attribute heating_lhcd_per_mw : Real;
-        attribute p_lhcd : Real;
-        calc heating_cost : 'Heating Cost' {
-            in nbi_per_mw = heating_nbi_per_mw;
-            in p_nbi_in = p_nbi;
-            in icrf_per_mw = heating_icrf_per_mw;
-            in p_icrf_in = p_icrf;
-            in ecrh_per_mw = heating_ecrh_per_mw;
-            in p_ecrh_in = heat.p_delivered;
-            in lhcd_per_mw = heating_lhcd_per_mw;
-            in p_lhcd_in = p_lhcd;
-        }
 
         // Balance-of-plant (CAS23 turbine, CAS24 electric, CAS25 heat rej,
         // CAS26 misc) -- one 'Linear Power Cost' calc each.
         // module count; single-module demo
         attribute n_mod : Real default 1.0;
-        calc turbine_cost : 'Linear Power Cost' {
-            in power = p_the;
-            in cost_per_mw = turbine.cost_per_mw;
-            in n_mod_in = n_mod;
-        }
-        calc electric_cost : 'Linear Power Cost' {
-            in power = p_et;
-            in cost_per_mw = electric_plant.cost_per_mw;
-            in n_mod_in = n_mod;
-        }
-        calc heat_rejection_cost : 'Linear Power Cost' {
-            in power = p_th;
-            in cost_per_mw = heat_rejection.cost_per_mw;
-            in n_mod_in = n_mod;
-        }
-        calc misc_cost : 'Linear Power Cost' {
-            in power = p_et;
-            in cost_per_mw = misc_plant.cost_per_mw;
-            in n_mod_in = n_mod;
-        }
 
-        // CAS21 grouped base-cost sums [$] (WI-025 D1; instance binds -- fuel-keyed).
-        attribute bldg_fixed_base : Real;
-        attribute bldg_fus_base : Real;
-        attribute bldg_staff_base : Real;
-        attribute bldg_the_base : Real;
-        attribute bldg_th_base : Real;
-        attribute bldg_et_base : Real;
-        calc buildings_cost : 'Buildings Cost' {
-            in fixed_base = bldg_fixed_base;
-            in fus_base = bldg_fus_base;
-            in staff_base = bldg_staff_base;
-            in the_base = bldg_the_base;
-            in th_base = bldg_th_base;
-            in et_base = bldg_et_base;
-            in p_fus = fusion.p_fus;
-            in p_the_in = p_the;
-            in p_th_in = p_th;
-            in p_et_in = p_et;
-        }
 
         // CAS10 fixed preconstruction adders [$] (WI-025; instance binds -- fuel/FOAK-keyed).
         attribute precon_fixed_base : Real;
@@ -833,30 +412,9 @@ package mfe_plant {
             in installation_frac_in = installation_frac;
             in reactor_subtotal = reactor_equipment_subtotal;
         }
-        // C220200 coolant (two-term, plant-total).
-        // 166.0 M$ -> $
-        attribute coolant_primary_base : Real;
-        // 40.6 M$ -> $
-        attribute coolant_intermediate_base : Real;
-        calc coolant : 'Coolant Cost' {
-            in primary_base = coolant_primary_base;
-            in p_net = pb.p_net;
-            in intermediate_base = coolant_intermediate_base;
-            in p_th_in = p_th;
-            in n_mod_in = n_mod;
-        }
         // C220300 aux cooling (plant-total p_th) + cryoplant (per-module p_cryo).
         // 1.10e-3 M$/MW -> $/MW
         attribute aux_per_mw : Real;
-        // 200.0 M$ -> $
-        attribute aux_cryo_base : Real;
-        calc aux_cooling : 'Aux Cooling Cost' {
-            in aux_per_mw_in = aux_per_mw;
-            in p_th_in = p_th;
-            in cryo_base = aux_cryo_base;
-            in p_cryo = cryo_elec.p_elec;
-            in n_mod_in = n_mod;
-        }
         // C220400 waste (a=1.0), C220500 fuel, C220600 other, C220700 I&C:
         // shared 'Plant Power-Law Cost'. Account-structural ref/alpha literal;
         // base bound at instance.
@@ -865,12 +423,6 @@ package mfe_plant {
         calc waste : 'Plant Power-Law Cost' {
             in base = waste_base; in power = p_th; in n_mod_in = n_mod;
             in ref_power = 1000.0; in alpha = 1.0;
-        }
-        // fh_base[fuel] [$]
-        attribute fuel_handling_base : Real;
-        calc fuel_handling : 'Plant Power-Law Cost' {
-            in base = fuel_handling_base; in power = pb.p_net; in n_mod_in = n_mod;
-            in ref_power = 1000.0; in alpha = 0.7;
         }
         // 11.5 M$ -> $
         attribute other_rpe_base : Real;
@@ -889,10 +441,10 @@ package mfe_plant {
         // is a sum-of-siblings aggregation producer (not expose_computed).
         // remote_handling_capital is exposed above (installation subtotal).
         attribute installation_capital : Real = installation.cost;
-        attribute coolant_capital : Real = coolant.cost;
-        attribute aux_cooling_capital : Real = aux_cooling.cost;
+        attribute coolant_capital : Real = heat_transport.coolant_cost;
+        attribute aux_cooling_capital : Real = cryoplant.aux_cooling_cost;
         attribute waste_capital : Real = waste.cost;
-        attribute fuel_handling_capital : Real = fuel_handling.cost;
+        attribute fuel_handling_capital : Real = fuel_cycle.fuel_handling_cost;
         attribute other_rpe_capital : Real = other_rpe.cost;
         attribute inc_capital : Real = inc_cost.cost;
         // CAS22 tail folded directly into cas22_capital: powercore_capital
@@ -1021,33 +573,13 @@ package mfe_plant {
         // expose for producer aggregation
         attribute cas71_annual : Real = cas71_calc.levelized;
 
-        // ---- CAS80 DT fuel: raw annual, then the same levelization wrapper ----
-        // Fuel chemistry constants are instance inputs (MR-3) -- no library defaults.
-        // M_D*u_D + M_Li6*u_Li6 [$/rxn]
-        attribute fuel_cost_per_rxn : Real;
-        // per-reaction energy [MeV]
-        attribute fuel_q_eff : Real;
-        // MeV -> J
-        attribute mev_to_joules : Real;
-        attribute burn_fraction : Real;
-        attribute fuel_recovery : Real;
 
-        calc fuel_calc : 'DT Fuel Cost' {
-            in p_fus = fusion.p_fus;
-            in n_mod_in = n_mod;
-            in availability_in = availability;
-            in cost_per_rxn = fuel_cost_per_rxn;
-            in q_eff = fuel_q_eff;
-            in mev_to_joules_in = mev_to_joules;
-            in burn_fraction_in = burn_fraction;
-            in fuel_recovery_in = fuel_recovery;
-        }
         calc cas80_calc : 'Levelized Annual Cost' {
             // Read the fuel producer directly. A bare `annual_fuel = fuel_calc.annual_fuel`
             // alias resolves at part-def scope and mints no instance params key
             // (the WI-028 bare-alias class); fuel_calc__annual_fuel is already a
             // channel, so the A-2 row reads it without the alias.
-            in annual_cost = fuel_calc.annual_fuel;
+            in annual_cost = fuel_cycle.annual_fuel;
             in interest_rate = discount_rate;
             in inflation_rate_in = inflation_rate;
             in operational_years_in = operational_years;
@@ -1056,75 +588,8 @@ package mfe_plant {
         // expose for producer aggregation
         attribute cas80_annual : Real = cas80_calc.levelized;
 
-        // ---- Fuel-cycle flows (WI-047): conservation on the same reactions the
-        // cost prices; the margin is reported, never asserted (the recovery
-        // semantics are an owner decision -- see the instance). Dormant-safe by
-        // the WI-024 pattern: a concept binding nothing gets a lossless loop.
-        // recovery fraction of the unburned tritium stream [1]
-        attribute t_recycle : Real default 1.0;
-        // breeder-to-supply extraction efficiency [1]
-        attribute eta_extract : Real default 1.0;
-        // tritium decay constant [1/s]
-        attribute lambda_T : Real default 0.0;
-        // held tritium inventory [atoms]
-        attribute I_total : Real default 0.0;
-        // required stock growth [atoms/s]
-        attribute G_stock : Real default 0.0;
-        // tritium atomic mass [kg]
-        attribute m_T_kg : Real default 0.0;
-        // achieved tritium breeding ratio [1] -- a concept's source-conditioned value;
-        // dormant 1.0 (no breeding claim). Declared here so the fuel flows can read
-        // it on the generic plant; an instance redefines it (WI-047; before, the
-        // Stellaris instance declared it alone for its own tbr_ok fence).
-        attribute tbr : Real default 1.0;
-        calc fuel : 'Fuel Cycle Flows' {
-            in p_fus_in = fusion.p_fus;
-            in q_eff_in = fuel_q_eff;
-            in mev_to_joules_in = mev_to_joules;
-            in burn_fraction_in = burn_fraction;
-            in t_recycle_in = t_recycle;
-            in tbr_available_in = tbr;
-            in eta_extract_in = eta_extract;
-            in lambda_T_in = lambda_T;
-            in I_total_in = I_total;
-            in G_stock_in = G_stock;
-            in m_T_kg_in = m_T_kg;
-        }
 
-        // ---- Divertor surface-heat ledger (WI-047) on the INSTALLED heating
-        // basis (the thermal sum's own operand) -- round 1 of goal plant-closure.
-        // Dormant-safe: q_target_ref 0 and p_nonrad_ref 1 give a zero peak and a
-        // satisfied fence for a concept binding nothing.
-        attribute f_rad_total : Real default 0.0;
-        attribute q_target_ref : Real default 0.0;
-        attribute p_nonrad_ref : Real default 1.0;
-        attribute q_target_limit : Real default 1.0;
-        attribute R_ref_divertor : Real default 1.0;
-        calc divheat : 'Divertor Heat Ledger' {
-            in p_alpha_heat_in = sustain.p_alpha_heat;
-            in p_coupled_in = operating_heat.p_coupled;
-            in p_aux_required_in = sustain.p_aux_required;
-            in p_installed_coupled_in = heat.p_coupled;
-            in p_rad_core_in = sustain.p_rad;
-            in f_rad_total_in = f_rad_total;
-            in q_target_ref_in = q_target_ref;
-            in p_nonrad_ref_in = p_nonrad_ref;
-            in q_target_limit_in = q_target_limit;
-            in R_in = R;
-            in R_ref_in = R_ref_divertor;
-        }
 
-        // ---- Torus exhaust gas load (WI-047): a 50/50 D-T fuel exhausts equal
-        // deuterium and tritium streams; the helium ash is one atom per reaction.
-        attribute T_gas : Real default 1.0;
-        attribute p_exhaust : Real default 1.0;
-        calc vacuum : 'Vacuum Gas Load' {
-            in exhaust_rate_D_in = fuel.exhaust_rate;
-            in exhaust_rate_T_in = fuel.exhaust_rate;
-            in helium_rate_in = fuel.burn_rate;
-            in T_gas_in = T_gas;
-            in p_exhaust_in = p_exhaust;
-        }
 
         // ---- CAS72 and availability from one lifecycle calendar (WI-046) -----
         // Replaceable set = the fluence-limited in-vessel accounts C220101
@@ -1133,14 +598,10 @@ package mfe_plant {
         attribute replacement_cost_per_event : Real =
             (blanket.capital_cost + divertor.capital_cost) * n_mod;
 
-        // Core fluence limit [MW-yr/m^2] (instance binds; DT 18.0, defaults.py:291).
-        attribute fluence_limit : Real;
         // scheduled outage per bundled replacement [yr] (instance binds)
         attribute outage_years : Real;
         // residual unplanned fraction of scheduled-online time [1] (instance binds)
         attribute unplanned_fraction : Real;
-        // coil dose life [FPY] (instance binds) -- a reported margin's reference
-        attribute coil_life_fpy : Real;
         // held-mode switch: 0 = the live calendar; (0, 1] = the retired periodic
         // chain at that availability (the compatibility bridge; instance binds)
         attribute availability_direct : Real;
@@ -1148,14 +609,14 @@ package mfe_plant {
         // The lifetime operand is the PEAK wall load (WI-041); the calendar is
         // the one producer of availability and CAS72 (WI-046).
         calc calendar : 'Lifecycle Calendar' {
-            in q_n_in = wall_peak_calc.wall_load_peak;
-            in fluence_limit_in = fluence_limit;
+            in q_n_in = blanket.wall_load_peak;
+            in fluence_limit_in = blanket.first_wall.fluence_limit;
             in operational_years_in = operational_years;
             in outage_years_in = outage_years;
             in unplanned_fraction_in = unplanned_fraction;
             in cost_per_event = replacement_cost_per_event;
             in interest_rate = discount_rate;
-            in coil_life_fpy_in = coil_life_fpy;
+            in coil_life_fpy_in = magnet.coil.coil_life_fpy;
             in availability_direct_in = availability_direct;
         }
         // expose_pure channel for A-2
@@ -1248,14 +709,14 @@ package mfe_plant {
         // Conductor peak-field limit (WI-030): every MFE instance states its
         // coil set's peak/axis ratio and its conductor ceiling on the magnet.
         assert constraint peak_field_ok : 'Conductor Peak Field Limit' {
-            in B_peak = peak_field_calc.B_peak;
-            in B_max_in = magnet.B_max;
+            in B_peak = magnet.B_peak;
+            in B_max_in = magnet.winding_pack.B_max;
         }
 
         // WI-035: computed stress operand vs held sourced allowable (800 MPa).
         assert constraint wp_stress_ok : 'Winding Pack Stress Limit' {
-            in sigma_in = wp_stress.sigma_wp;
-            in sigma_allow_in = magnet.sigma_allow;
+            in sigma_in = magnet.sigma_wp;
+            in sigma_allow_in = magnet.casing.sigma_allow;
         }
 
         // WI-036: the conductor's own check, distinct from the structure's.
@@ -1265,20 +726,20 @@ package mfe_plant {
         // GPa peak; sigma_allow stays at the source's own 800 MPa design limit
         // and is not re-categorised to open feasibility (WI-036 MR-6).
         assert constraint cond_strain_ok : 'Conductor Strain Limit' {
-            in eps_cond = cond_strain.eps_cond;
-            in eps_cond_allow_in = magnet.eps_cond_allow;
+            in eps_cond = magnet.eps_cond;
+            in eps_cond_allow_in = magnet.winding_pack.eps_cond_allow;
         }
 
         // WI-045: the loop's two domain/capacity fences and the cycle's domain fence.
         assert constraint loop_pressure_ok : 'Loop Pressure Margin' {
-            in p_loop_margin_in = primary_loop.p_loop_margin;
+            in p_loop_margin_in = heat_transport.p_loop_margin;
         }
         assert constraint loop_capacity_ok : 'Loop Capacity' {
-            in mdot_loop_in = primary_loop.mdot_loop;
-            in mdot_loop_rated_in = mdot_loop_ref;
+            in mdot_loop_in = heat_transport.mdot_loop;
+            in mdot_loop_rated_in = heat_transport.mdot_loop_ref;
         }
         assert constraint cycle_domain_ok : 'Cycle Fit Domain' {
-            in domain_product_in = cycle.domain_product;
+            in domain_product_in = turbine.domain_product;
         }
 
         // WI-047: the divertor target peak (fixed-geometry source case, scaled in
@@ -1287,8 +748,8 @@ package mfe_plant {
         // heating 554.49 MW is 10.9 % above the source's 500) -- the disclosed,
         // explained verdict change of WI-047, never tuned (the WI-041 precedent).
         assert constraint divertor_heat_ok : 'Divertor Target Heat Limit' {
-            in q_target_peak_in = divheat.q_target_peak;
-            in q_target_limit_in = q_target_limit;
+            in q_target_peak_in = divertor.q_target_peak;
+            in q_target_limit_in = divertor.q_target_limit;
         }
 
         // =====================================================================
@@ -1304,8 +765,8 @@ package mfe_plant {
         // Per-account CAS breakdown (reads each subsystem's capital_cost, $).
         attribute magnet_capital : Real = magnet.capital_cost;
         // WI-035: 1cfe-form comparison channel + the cryoplant sub-account.
-        attribute magnet_capital_1cfe : Real = magnet_cost.capital_cost;
-        attribute cryoplant_capital : Real = aux_cooling.cryo_cost;
+        attribute magnet_capital_1cfe : Real = magnet.capital_cost_1cfe;
+        attribute cryoplant_capital : Real = cryoplant.cryo_cost;
         attribute heating_capital : Real = heating.capital_cost;
         attribute divertor_capital : Real = divertor.capital_cost;
         attribute blanket_capital : Real = blanket.capital_cost;

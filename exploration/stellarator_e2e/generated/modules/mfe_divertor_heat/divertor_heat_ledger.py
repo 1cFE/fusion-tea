@@ -53,17 +53,17 @@ work/orchestration/goals/plant-closure/evidence/grounding_sources/stellaris_p15_
 source's fixed-geometry case, scaled in load only
 
 Inputs:
+    - p_nonrad_ref_in: p_nonrad_ref_in parameter
+    - p_alpha_heat_in: p_alpha_heat_in parameter
+    - R_ref_in: R_ref_in parameter
     - p_aux_required_in: p_aux_required_in parameter
-    - q_target_limit_in: q_target_limit_in parameter
-    - f_rad_total_in: f_rad_total_in parameter
     - R_in: R_in parameter
+    - q_target_limit_in: q_target_limit_in parameter
+    - p_installed_coupled_in: p_installed_coupled_in parameter
     - q_target_ref_in: q_target_ref_in parameter
     - p_coupled_in: p_coupled_in parameter
-    - R_ref_in: R_ref_in parameter
-    - p_alpha_heat_in: p_alpha_heat_in parameter
-    - p_nonrad_ref_in: p_nonrad_ref_in parameter
-    - p_installed_coupled_in: p_installed_coupled_in parameter
     - p_rad_core_in: p_rad_core_in parameter
+    - f_rad_total_in: f_rad_total_in parameter
 
 Outputs:
     - q_target_peak_area_scaled: q_target_peak_area_scaled result
@@ -95,29 +95,29 @@ class Divertor_Heat_LedgerInput(BaseModel):
     """Input model for Divertor_Heat_LedgerModule.
 
     Attributes:
+        p_nonrad_ref_in: p_nonrad_ref_in input
+        p_alpha_heat_in: p_alpha_heat_in input
+        R_ref_in: R_ref_in input
         p_aux_required_in: p_aux_required_in input
-        q_target_limit_in: q_target_limit_in input
-        f_rad_total_in: f_rad_total_in input
         R_in: R_in input
+        q_target_limit_in: q_target_limit_in input
+        p_installed_coupled_in: p_installed_coupled_in input
         q_target_ref_in: q_target_ref_in input
         p_coupled_in: p_coupled_in input
-        R_ref_in: R_ref_in input
-        p_alpha_heat_in: p_alpha_heat_in input
-        p_nonrad_ref_in: p_nonrad_ref_in input
-        p_installed_coupled_in: p_installed_coupled_in input
         p_rad_core_in: p_rad_core_in input
+        f_rad_total_in: f_rad_total_in input
     """
+    p_nonrad_ref_in: float = Field(..., description="p_nonrad_ref_in input")
+    p_alpha_heat_in: float = Field(..., description="p_alpha_heat_in input")
+    R_ref_in: float = Field(..., description="R_ref_in input")
     p_aux_required_in: float = Field(..., description="p_aux_required_in input")
-    q_target_limit_in: float = Field(..., description="q_target_limit_in input")
-    f_rad_total_in: float = Field(..., description="f_rad_total_in input")
     R_in: float = Field(..., description="R_in input")
+    q_target_limit_in: float = Field(..., description="q_target_limit_in input")
+    p_installed_coupled_in: float = Field(..., description="p_installed_coupled_in input")
     q_target_ref_in: float = Field(..., description="q_target_ref_in input")
     p_coupled_in: float = Field(..., description="p_coupled_in input")
-    R_ref_in: float = Field(..., description="R_ref_in input")
-    p_alpha_heat_in: float = Field(..., description="p_alpha_heat_in input")
-    p_nonrad_ref_in: float = Field(..., description="p_nonrad_ref_in input")
-    p_installed_coupled_in: float = Field(..., description="p_installed_coupled_in input")
     p_rad_core_in: float = Field(..., description="p_rad_core_in input")
+    f_rad_total_in: float = Field(..., description="f_rad_total_in input")
 
 
 class Divertor_Heat_LedgerModule(ModuleBase[Divertor_Heat_LedgerInput, Divertor_Heat_LedgerOutput]):
@@ -174,17 +174,17 @@ work/orchestration/goals/plant-closure/evidence/grounding_sources/stellaris_p15_
 source's fixed-geometry case, scaled in load only
 
 Inputs:
+    - p_nonrad_ref_in: p_nonrad_ref_in parameter
+    - p_alpha_heat_in: p_alpha_heat_in parameter
+    - R_ref_in: R_ref_in parameter
     - p_aux_required_in: p_aux_required_in parameter
-    - q_target_limit_in: q_target_limit_in parameter
-    - f_rad_total_in: f_rad_total_in parameter
     - R_in: R_in parameter
+    - q_target_limit_in: q_target_limit_in parameter
+    - p_installed_coupled_in: p_installed_coupled_in parameter
     - q_target_ref_in: q_target_ref_in parameter
     - p_coupled_in: p_coupled_in parameter
-    - R_ref_in: R_ref_in parameter
-    - p_alpha_heat_in: p_alpha_heat_in parameter
-    - p_nonrad_ref_in: p_nonrad_ref_in parameter
-    - p_installed_coupled_in: p_installed_coupled_in parameter
     - p_rad_core_in: p_rad_core_in parameter
+    - f_rad_total_in: f_rad_total_in parameter
 
 Outputs:
     - q_target_peak_area_scaled: q_target_peak_area_scaled result
@@ -274,49 +274,49 @@ source's fixed-geometry case, scaled in load only
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, p_aux_required_in: float, q_target_limit_in: float, f_rad_total_in: float, R_in: float, q_target_ref_in: float, p_coupled_in: float, R_ref_in: float, p_alpha_heat_in: float, p_nonrad_ref_in: float, p_installed_coupled_in: float, p_rad_core_in: float    ) -> Divertor_Heat_LedgerInput:
+        self, p_nonrad_ref_in: float, p_alpha_heat_in: float, R_ref_in: float, p_aux_required_in: float, R_in: float, q_target_limit_in: float, p_installed_coupled_in: float, q_target_ref_in: float, p_coupled_in: float, p_rad_core_in: float, f_rad_total_in: float    ) -> Divertor_Heat_LedgerInput:
         """Validate inputs and fill defaults.
 
         Args:
+            p_nonrad_ref_in: p_nonrad_ref_in input
+            p_alpha_heat_in: p_alpha_heat_in input
+            R_ref_in: R_ref_in input
             p_aux_required_in: p_aux_required_in input
-            q_target_limit_in: q_target_limit_in input
-            f_rad_total_in: f_rad_total_in input
             R_in: R_in input
+            q_target_limit_in: q_target_limit_in input
+            p_installed_coupled_in: p_installed_coupled_in input
             q_target_ref_in: q_target_ref_in input
             p_coupled_in: p_coupled_in input
-            R_ref_in: R_ref_in input
-            p_alpha_heat_in: p_alpha_heat_in input
-            p_nonrad_ref_in: p_nonrad_ref_in input
-            p_installed_coupled_in: p_installed_coupled_in input
             p_rad_core_in: p_rad_core_in input
+            f_rad_total_in: f_rad_total_in input
 
         Returns:
             Validated input model
         """
-        return Divertor_Heat_LedgerInput(p_aux_required_in=p_aux_required_in, q_target_limit_in=q_target_limit_in, f_rad_total_in=f_rad_total_in, R_in=R_in, q_target_ref_in=q_target_ref_in, p_coupled_in=p_coupled_in, R_ref_in=R_ref_in, p_alpha_heat_in=p_alpha_heat_in, p_nonrad_ref_in=p_nonrad_ref_in, p_installed_coupled_in=p_installed_coupled_in, p_rad_core_in=p_rad_core_in)
+        return Divertor_Heat_LedgerInput(p_nonrad_ref_in=p_nonrad_ref_in, p_alpha_heat_in=p_alpha_heat_in, R_ref_in=R_ref_in, p_aux_required_in=p_aux_required_in, R_in=R_in, q_target_limit_in=q_target_limit_in, p_installed_coupled_in=p_installed_coupled_in, q_target_ref_in=q_target_ref_in, p_coupled_in=p_coupled_in, p_rad_core_in=p_rad_core_in, f_rad_total_in=f_rad_total_in)
 
     def run(
-        self, p_aux_required_in: float, q_target_limit_in: float, f_rad_total_in: float, R_in: float, q_target_ref_in: float, p_coupled_in: float, R_ref_in: float, p_alpha_heat_in: float, p_nonrad_ref_in: float, p_installed_coupled_in: float, p_rad_core_in: float    ) -> ModuleResult[Divertor_Heat_LedgerOutput]:
+        self, p_nonrad_ref_in: float, p_alpha_heat_in: float, R_ref_in: float, p_aux_required_in: float, R_in: float, q_target_limit_in: float, p_installed_coupled_in: float, q_target_ref_in: float, p_coupled_in: float, p_rad_core_in: float, f_rad_total_in: float    ) -> ModuleResult[Divertor_Heat_LedgerOutput]:
         """Execute calculation.
 
         Args:
+            p_nonrad_ref_in: p_nonrad_ref_in input
+            p_alpha_heat_in: p_alpha_heat_in input
+            R_ref_in: R_ref_in input
             p_aux_required_in: p_aux_required_in input
-            q_target_limit_in: q_target_limit_in input
-            f_rad_total_in: f_rad_total_in input
             R_in: R_in input
+            q_target_limit_in: q_target_limit_in input
+            p_installed_coupled_in: p_installed_coupled_in input
             q_target_ref_in: q_target_ref_in input
             p_coupled_in: p_coupled_in input
-            R_ref_in: R_ref_in input
-            p_alpha_heat_in: p_alpha_heat_in input
-            p_nonrad_ref_in: p_nonrad_ref_in input
-            p_installed_coupled_in: p_installed_coupled_in input
             p_rad_core_in: p_rad_core_in input
+            f_rad_total_in: f_rad_total_in input
 
         Returns:
             Module result with Divertor_Heat_LedgerOutput (q_target_peak_area_scaled, p_heat_abs, f_rad_edge_in_range, q_target_margin, p_target_nonrad, f_rad_edge, p_heat_operating_minus_installed, p_sep, q_target_peak)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(p_aux_required_in, q_target_limit_in, f_rad_total_in, R_in, q_target_ref_in, p_coupled_in, R_ref_in, p_alpha_heat_in, p_nonrad_ref_in, p_installed_coupled_in, p_rad_core_in)
+        validated_inputs = self.validate_and_fill_default(p_nonrad_ref_in, p_alpha_heat_in, R_ref_in, p_aux_required_in, R_in, q_target_limit_in, p_installed_coupled_in, q_target_ref_in, p_coupled_in, p_rad_core_in, f_rad_total_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_divertor_heat.divertor_heat_ledger_impl import (

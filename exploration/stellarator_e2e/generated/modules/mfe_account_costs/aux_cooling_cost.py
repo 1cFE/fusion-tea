@@ -15,13 +15,13 @@ its own cryoplant).
 *Basis**: Plant-total aux + per-module cryoplant power law
 
 Inputs:
-    - alpha: alpha parameter
-    - p_th_in: p_th_in parameter
-    - p_cryo_ref: p_cryo_ref parameter
-    - p_cryo: p_cryo parameter
-    - cryo_base: cryo_base parameter
     - n_mod_in: n_mod_in parameter
+    - alpha: alpha parameter
     - aux_per_mw_in: aux_per_mw_in parameter
+    - p_cryo: p_cryo parameter
+    - p_cryo_ref: p_cryo_ref parameter
+    - cryo_base: cryo_base parameter
+    - p_th_in: p_th_in parameter
 
 Outputs:
     - aux_cost: aux_cost result
@@ -47,21 +47,21 @@ class Aux_Cooling_CostInput(BaseModel):
     """Input model for Aux_Cooling_CostModule.
 
     Attributes:
-        alpha: alpha input
-        p_th_in: p_th_in input
-        p_cryo_ref: p_cryo_ref input
-        p_cryo: p_cryo input
-        cryo_base: cryo_base input
         n_mod_in: n_mod_in input
+        alpha: alpha input
         aux_per_mw_in: aux_per_mw_in input
+        p_cryo: p_cryo input
+        p_cryo_ref: p_cryo_ref input
+        cryo_base: cryo_base input
+        p_th_in: p_th_in input
     """
-    alpha: float = Field(..., description="alpha input")
-    p_th_in: float = Field(..., description="p_th_in input")
-    p_cryo_ref: float = Field(..., description="p_cryo_ref input")
-    p_cryo: float = Field(..., description="p_cryo input")
-    cryo_base: float = Field(..., description="cryo_base input")
     n_mod_in: float = Field(..., description="n_mod_in input")
+    alpha: float = Field(..., description="alpha input")
     aux_per_mw_in: float = Field(..., description="aux_per_mw_in input")
+    p_cryo: float = Field(..., description="p_cryo input")
+    p_cryo_ref: float = Field(..., description="p_cryo_ref input")
+    cryo_base: float = Field(..., description="cryo_base input")
+    p_th_in: float = Field(..., description="p_th_in input")
 
 
 class Aux_Cooling_CostModule(ModuleBase[Aux_Cooling_CostInput, Aux_Cooling_CostOutput]):
@@ -80,13 +80,13 @@ its own cryoplant).
 *Basis**: Plant-total aux + per-module cryoplant power law
 
 Inputs:
-    - alpha: alpha parameter
-    - p_th_in: p_th_in parameter
-    - p_cryo_ref: p_cryo_ref parameter
-    - p_cryo: p_cryo parameter
-    - cryo_base: cryo_base parameter
     - n_mod_in: n_mod_in parameter
+    - alpha: alpha parameter
     - aux_per_mw_in: aux_per_mw_in parameter
+    - p_cryo: p_cryo parameter
+    - p_cryo_ref: p_cryo_ref parameter
+    - cryo_base: cryo_base parameter
+    - p_th_in: p_th_in parameter
 
 Outputs:
     - aux_cost: aux_cost result
@@ -129,41 +129,41 @@ its own cryoplant).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, alpha: float, p_th_in: float, p_cryo_ref: float, p_cryo: float, cryo_base: float, n_mod_in: float, aux_per_mw_in: float    ) -> Aux_Cooling_CostInput:
+        self, n_mod_in: float, alpha: float, aux_per_mw_in: float, p_cryo: float, p_cryo_ref: float, cryo_base: float, p_th_in: float    ) -> Aux_Cooling_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            alpha: alpha input
-            p_th_in: p_th_in input
-            p_cryo_ref: p_cryo_ref input
-            p_cryo: p_cryo input
-            cryo_base: cryo_base input
             n_mod_in: n_mod_in input
+            alpha: alpha input
             aux_per_mw_in: aux_per_mw_in input
+            p_cryo: p_cryo input
+            p_cryo_ref: p_cryo_ref input
+            cryo_base: cryo_base input
+            p_th_in: p_th_in input
 
         Returns:
             Validated input model
         """
-        return Aux_Cooling_CostInput(alpha=alpha, p_th_in=p_th_in, p_cryo_ref=p_cryo_ref, p_cryo=p_cryo, cryo_base=cryo_base, n_mod_in=n_mod_in, aux_per_mw_in=aux_per_mw_in)
+        return Aux_Cooling_CostInput(n_mod_in=n_mod_in, alpha=alpha, aux_per_mw_in=aux_per_mw_in, p_cryo=p_cryo, p_cryo_ref=p_cryo_ref, cryo_base=cryo_base, p_th_in=p_th_in)
 
     def run(
-        self, alpha: float, p_th_in: float, p_cryo_ref: float, p_cryo: float, cryo_base: float, n_mod_in: float, aux_per_mw_in: float    ) -> ModuleResult[Aux_Cooling_CostOutput]:
+        self, n_mod_in: float, alpha: float, aux_per_mw_in: float, p_cryo: float, p_cryo_ref: float, cryo_base: float, p_th_in: float    ) -> ModuleResult[Aux_Cooling_CostOutput]:
         """Execute calculation.
 
         Args:
-            alpha: alpha input
-            p_th_in: p_th_in input
-            p_cryo_ref: p_cryo_ref input
-            p_cryo: p_cryo input
-            cryo_base: cryo_base input
             n_mod_in: n_mod_in input
+            alpha: alpha input
             aux_per_mw_in: aux_per_mw_in input
+            p_cryo: p_cryo input
+            p_cryo_ref: p_cryo_ref input
+            cryo_base: cryo_base input
+            p_th_in: p_th_in input
 
         Returns:
             Module result with Aux_Cooling_CostOutput (aux_cost, cryo_cost, cost)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(alpha, p_th_in, p_cryo_ref, p_cryo, cryo_base, n_mod_in, aux_per_mw_in)
+        validated_inputs = self.validate_and_fill_default(n_mod_in, alpha, aux_per_mw_in, p_cryo, p_cryo_ref, cryo_base, p_th_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.aux_cooling_cost_impl import (

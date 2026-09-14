@@ -301,8 +301,8 @@ def operating_controls(tmp_path_factory, stock_simkit_session_path):
     out = tmp_path_factory.mktemp("operating-controls")
     baseline = json.loads(MANIFEST.read_text())["baseline"]["point"]
     P = study_route.P
-    proposals = [baseline, {**baseline, f"{P}p_wallplug_heat": 120.0},
-                 {**baseline, f"{P}f_alpha_fast": 0.96}]
+    proposals = [baseline, {**baseline, f"{P}heating__p_wallplug_heat": 120.0},
+                 {**baseline, f"{P}plasma__f_alpha_fast": 0.96}]
     cases, db = study_route.run_points("operating-controls", proposals, out / "_work")
     assert len(cases) == 3 and all(case.state == "completed" for case in cases)
     ident = study_route.write_identity_document(study_route.PACKAGE_DIR, out / "identity.json")
@@ -319,22 +319,22 @@ def test_stored_operating_controls_preserve_procurement_and_signed_capacity(oper
     P = study_route.P
     baseline = next(
         c for c in cases
-        if f"{P}p_wallplug_heat" not in c.inputs and f"{P}f_alpha_fast" not in c.inputs
+        if f"{P}heating__p_wallplug_heat" not in c.inputs and f"{P}plasma__f_alpha_fast" not in c.inputs
     )
-    reserve = next(c for c in cases if c.inputs.get(f"{P}p_wallplug_heat") == 120)
-    demand = next(c for c in cases if c.inputs.get(f"{P}f_alpha_fast") == .96)
+    reserve = next(c for c in cases if c.inputs.get(f"{P}heating__p_wallplug_heat") == 120)
+    demand = next(c for c in cases if c.inputs.get(f"{P}plasma__f_alpha_fast") == .96)
     for name in ("coupled", "delivered", "wallplug"):
         channel = study_route.CHANNELS[f"operating_heat_{name}"]
         assert baseline.outputs[channel] == reserve.outputs[channel]
         assert demand.outputs[channel] != baseline.outputs[channel]
         assert channel in {row["channel"] for row in summary["channels_checked"]}
-    assert baseline.outputs[f"{P}heating_cost__cost"] == 264145000
-    assert reserve.outputs[f"{P}heating_cost__cost"] == 316974000
-    assert demand.outputs[f"{P}heating_cost__cost"] == 264145000
-    assert baseline.outputs[f"{P}divheat__p_heat_operating_minus_installed"] == pytest.approx(
+    assert baseline.outputs[f"{P}heating__heating_cost__cost"] == 264145000
+    assert reserve.outputs[f"{P}heating__heating_cost__cost"] == 316974000
+    assert demand.outputs[f"{P}heating__heating_cost__cost"] == 264145000
+    assert baseline.outputs[f"{P}divertor__divheat__p_heat_operating_minus_installed"] == pytest.approx(
         -.920399212073221
     )
-    assert reserve.outputs[f"{P}divheat__p_heat_operating_minus_installed"] == pytest.approx(
+    assert reserve.outputs[f"{P}divertor__divheat__p_heat_operating_minus_installed"] == pytest.approx(
         -10.920399212073221
     )
     verdicts = study_route.short_verdicts(baseline)
@@ -371,7 +371,7 @@ def test_zero_efficiency_is_a_recorded_native_execution_failure(stock_simkit_pat
     sys.path.insert(0, str(MANIFEST.parent))
     import study_route
 
-    point = {f"{study_route.P}eta_{stage}_heat": 0.0}
+    point = {f"{study_route.P}heating__eta_{stage}_heat"  # WI-057 (2026-09-13): the heating efficiencies live on the heating part: 0.0}
     cases, _ = study_route.run_points(f"zero-{stage}-efficiency", [point], tmp_path)
     assert len(cases) == 1
     assert cases[0].state == "execution_failed"

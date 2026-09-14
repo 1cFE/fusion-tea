@@ -55,10 +55,10 @@ eq.-39 bore factor normalised at the reference geometry; the
 configuration coefficients absorbed by the anchor; MFE-generic
 
 Inputs:
-    - peak_ratio_in: peak_ratio_in parameter
-    - R_ref_in: R_ref_in parameter
-    - a_coil_ref_in: a_coil_ref_in parameter
     - B_axis_in: B_axis_in parameter
+    - peak_ratio_in: peak_ratio_in parameter
+    - a_coil_ref_in: a_coil_ref_in parameter
+    - R_ref_in: R_ref_in parameter
     - R_in: R_in parameter
     - a_coil_in: a_coil_in parameter
 
@@ -83,17 +83,17 @@ class Conductor_Peak_FieldInput(BaseModel):
     """Input model for Conductor_Peak_FieldModule.
 
     Attributes:
-        peak_ratio_in: peak_ratio_in input
-        R_ref_in: R_ref_in input
-        a_coil_ref_in: a_coil_ref_in input
         B_axis_in: B_axis_in input
+        peak_ratio_in: peak_ratio_in input
+        a_coil_ref_in: a_coil_ref_in input
+        R_ref_in: R_ref_in input
         R_in: R_in input
         a_coil_in: a_coil_in input
     """
-    peak_ratio_in: float = Field(..., description="peak_ratio_in input")
-    R_ref_in: float = Field(..., description="R_ref_in input")
-    a_coil_ref_in: float = Field(..., description="a_coil_ref_in input")
     B_axis_in: float = Field(..., description="B_axis_in input")
+    peak_ratio_in: float = Field(..., description="peak_ratio_in input")
+    a_coil_ref_in: float = Field(..., description="a_coil_ref_in input")
+    R_ref_in: float = Field(..., description="R_ref_in input")
     R_in: float = Field(..., description="R_in input")
     a_coil_in: float = Field(..., description="a_coil_in input")
 
@@ -154,10 +154,10 @@ eq.-39 bore factor normalised at the reference geometry; the
 configuration coefficients absorbed by the anchor; MFE-generic
 
 Inputs:
-    - peak_ratio_in: peak_ratio_in parameter
-    - R_ref_in: R_ref_in parameter
-    - a_coil_ref_in: a_coil_ref_in parameter
     - B_axis_in: B_axis_in parameter
+    - peak_ratio_in: peak_ratio_in parameter
+    - a_coil_ref_in: a_coil_ref_in parameter
+    - R_ref_in: R_ref_in parameter
     - R_in: R_in parameter
     - a_coil_in: a_coil_in parameter
 
@@ -232,31 +232,31 @@ configuration coefficients absorbed by the anchor; MFE-generic
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, peak_ratio_in: float, R_ref_in: float, a_coil_ref_in: float, B_axis_in: float, R_in: float, a_coil_in: float    ) -> Conductor_Peak_FieldInput:
+        self, B_axis_in: float, peak_ratio_in: float, a_coil_ref_in: float, R_ref_in: float, R_in: float, a_coil_in: float    ) -> Conductor_Peak_FieldInput:
         """Validate inputs and fill defaults.
 
         Args:
-            peak_ratio_in: peak_ratio_in input
-            R_ref_in: R_ref_in input
-            a_coil_ref_in: a_coil_ref_in input
             B_axis_in: B_axis_in input
+            peak_ratio_in: peak_ratio_in input
+            a_coil_ref_in: a_coil_ref_in input
+            R_ref_in: R_ref_in input
             R_in: R_in input
             a_coil_in: a_coil_in input
 
         Returns:
             Validated input model
         """
-        return Conductor_Peak_FieldInput(peak_ratio_in=peak_ratio_in, R_ref_in=R_ref_in, a_coil_ref_in=a_coil_ref_in, B_axis_in=B_axis_in, R_in=R_in, a_coil_in=a_coil_in)
+        return Conductor_Peak_FieldInput(B_axis_in=B_axis_in, peak_ratio_in=peak_ratio_in, a_coil_ref_in=a_coil_ref_in, R_ref_in=R_ref_in, R_in=R_in, a_coil_in=a_coil_in)
 
     def run(
-        self, peak_ratio_in: float, R_ref_in: float, a_coil_ref_in: float, B_axis_in: float, R_in: float, a_coil_in: float    ) -> ModuleResult[Float]:
+        self, B_axis_in: float, peak_ratio_in: float, a_coil_ref_in: float, R_ref_in: float, R_in: float, a_coil_in: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            peak_ratio_in: peak_ratio_in input
-            R_ref_in: R_ref_in input
-            a_coil_ref_in: a_coil_ref_in input
             B_axis_in: B_axis_in input
+            peak_ratio_in: peak_ratio_in input
+            a_coil_ref_in: a_coil_ref_in input
+            R_ref_in: R_ref_in input
             R_in: R_in input
             a_coil_in: a_coil_in input
 
@@ -264,7 +264,7 @@ configuration coefficients absorbed by the anchor; MFE-generic
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(peak_ratio_in, R_ref_in, a_coil_ref_in, B_axis_in, R_in, a_coil_in)
+        validated_inputs = self.validate_and_fill_default(B_axis_in, peak_ratio_in, a_coil_ref_in, R_ref_in, R_in, a_coil_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_plasma_scaling.conductor_peak_field_impl import (

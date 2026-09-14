@@ -21,21 +21,21 @@ reference powers are 1cfe calibration constants.
 *Basis**: exact linear grouping of the per-building loop (WI-025 D1)
 
 Inputs:
-    - p_th_ref: p_th_ref parameter
-    - p_th_in: p_th_in parameter
-    - fus_base: fus_base parameter
-    - fixed_base: fixed_base parameter
-    - p_et_ref: p_et_ref parameter
-    - p_the_in: p_the_in parameter
-    - p_et_in: p_et_in parameter
     - p_fus: p_fus parameter
-    - et_base: et_base parameter
+    - p_th_ref: p_th_ref parameter
+    - p_et_ref: p_et_ref parameter
     - n_mod_in: n_mod_in parameter
+    - fus_base: fus_base parameter
     - p_the_ref: p_the_ref parameter
     - the_base: the_base parameter
+    - p_th_in: p_th_in parameter
+    - fixed_base: fixed_base parameter
     - staff_base: staff_base parameter
-    - p_fus_ref: p_fus_ref parameter
+    - et_base: et_base parameter
     - th_base: th_base parameter
+    - p_et_in: p_et_in parameter
+    - p_fus_ref: p_fus_ref parameter
+    - p_the_in: p_the_in parameter
 
 Outputs:
     - cost: cost result
@@ -58,37 +58,37 @@ class Buildings_CostInput(BaseModel):
     """Input model for Buildings_CostModule.
 
     Attributes:
-        p_th_ref: p_th_ref input
-        p_th_in: p_th_in input
-        fus_base: fus_base input
-        fixed_base: fixed_base input
-        p_et_ref: p_et_ref input
-        p_the_in: p_the_in input
-        p_et_in: p_et_in input
         p_fus: p_fus input
-        et_base: et_base input
+        p_th_ref: p_th_ref input
+        p_et_ref: p_et_ref input
         n_mod_in: n_mod_in input
+        fus_base: fus_base input
         p_the_ref: p_the_ref input
         the_base: the_base input
+        p_th_in: p_th_in input
+        fixed_base: fixed_base input
         staff_base: staff_base input
-        p_fus_ref: p_fus_ref input
+        et_base: et_base input
         th_base: th_base input
+        p_et_in: p_et_in input
+        p_fus_ref: p_fus_ref input
+        p_the_in: p_the_in input
     """
-    p_th_ref: float = Field(..., description="p_th_ref input")
-    p_th_in: float = Field(..., description="p_th_in input")
-    fus_base: float = Field(..., description="fus_base input")
-    fixed_base: float = Field(..., description="fixed_base input")
-    p_et_ref: float = Field(..., description="p_et_ref input")
-    p_the_in: float = Field(..., description="p_the_in input")
-    p_et_in: float = Field(..., description="p_et_in input")
     p_fus: float = Field(..., description="p_fus input")
-    et_base: float = Field(..., description="et_base input")
+    p_th_ref: float = Field(..., description="p_th_ref input")
+    p_et_ref: float = Field(..., description="p_et_ref input")
     n_mod_in: float = Field(..., description="n_mod_in input")
+    fus_base: float = Field(..., description="fus_base input")
     p_the_ref: float = Field(..., description="p_the_ref input")
     the_base: float = Field(..., description="the_base input")
+    p_th_in: float = Field(..., description="p_th_in input")
+    fixed_base: float = Field(..., description="fixed_base input")
     staff_base: float = Field(..., description="staff_base input")
-    p_fus_ref: float = Field(..., description="p_fus_ref input")
+    et_base: float = Field(..., description="et_base input")
     th_base: float = Field(..., description="th_base input")
+    p_et_in: float = Field(..., description="p_et_in input")
+    p_fus_ref: float = Field(..., description="p_fus_ref input")
+    p_the_in: float = Field(..., description="p_the_in input")
 
 
 class Buildings_CostModule(ModuleBase[Buildings_CostInput, Float]):
@@ -113,21 +113,21 @@ reference powers are 1cfe calibration constants.
 *Basis**: exact linear grouping of the per-building loop (WI-025 D1)
 
 Inputs:
-    - p_th_ref: p_th_ref parameter
-    - p_th_in: p_th_in parameter
-    - fus_base: fus_base parameter
-    - fixed_base: fixed_base parameter
-    - p_et_ref: p_et_ref parameter
-    - p_the_in: p_the_in parameter
-    - p_et_in: p_et_in parameter
     - p_fus: p_fus parameter
-    - et_base: et_base parameter
+    - p_th_ref: p_th_ref parameter
+    - p_et_ref: p_et_ref parameter
     - n_mod_in: n_mod_in parameter
+    - fus_base: fus_base parameter
     - p_the_ref: p_the_ref parameter
     - the_base: the_base parameter
+    - p_th_in: p_th_in parameter
+    - fixed_base: fixed_base parameter
     - staff_base: staff_base parameter
-    - p_fus_ref: p_fus_ref parameter
+    - et_base: et_base parameter
     - th_base: th_base parameter
+    - p_et_in: p_et_in parameter
+    - p_fus_ref: p_fus_ref parameter
+    - p_the_in: p_the_in parameter
 
 Outputs:
     - cost: cost result
@@ -173,57 +173,57 @@ reference powers are 1cfe calibration constants.
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, p_th_ref: float, p_th_in: float, fus_base: float, fixed_base: float, p_et_ref: float, p_the_in: float, p_et_in: float, p_fus: float, et_base: float, n_mod_in: float, p_the_ref: float, the_base: float, staff_base: float, p_fus_ref: float, th_base: float    ) -> Buildings_CostInput:
+        self, p_fus: float, p_th_ref: float, p_et_ref: float, n_mod_in: float, fus_base: float, p_the_ref: float, the_base: float, p_th_in: float, fixed_base: float, staff_base: float, et_base: float, th_base: float, p_et_in: float, p_fus_ref: float, p_the_in: float    ) -> Buildings_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            p_th_ref: p_th_ref input
-            p_th_in: p_th_in input
-            fus_base: fus_base input
-            fixed_base: fixed_base input
-            p_et_ref: p_et_ref input
-            p_the_in: p_the_in input
-            p_et_in: p_et_in input
             p_fus: p_fus input
-            et_base: et_base input
+            p_th_ref: p_th_ref input
+            p_et_ref: p_et_ref input
             n_mod_in: n_mod_in input
+            fus_base: fus_base input
             p_the_ref: p_the_ref input
             the_base: the_base input
+            p_th_in: p_th_in input
+            fixed_base: fixed_base input
             staff_base: staff_base input
-            p_fus_ref: p_fus_ref input
+            et_base: et_base input
             th_base: th_base input
+            p_et_in: p_et_in input
+            p_fus_ref: p_fus_ref input
+            p_the_in: p_the_in input
 
         Returns:
             Validated input model
         """
-        return Buildings_CostInput(p_th_ref=p_th_ref, p_th_in=p_th_in, fus_base=fus_base, fixed_base=fixed_base, p_et_ref=p_et_ref, p_the_in=p_the_in, p_et_in=p_et_in, p_fus=p_fus, et_base=et_base, n_mod_in=n_mod_in, p_the_ref=p_the_ref, the_base=the_base, staff_base=staff_base, p_fus_ref=p_fus_ref, th_base=th_base)
+        return Buildings_CostInput(p_fus=p_fus, p_th_ref=p_th_ref, p_et_ref=p_et_ref, n_mod_in=n_mod_in, fus_base=fus_base, p_the_ref=p_the_ref, the_base=the_base, p_th_in=p_th_in, fixed_base=fixed_base, staff_base=staff_base, et_base=et_base, th_base=th_base, p_et_in=p_et_in, p_fus_ref=p_fus_ref, p_the_in=p_the_in)
 
     def run(
-        self, p_th_ref: float, p_th_in: float, fus_base: float, fixed_base: float, p_et_ref: float, p_the_in: float, p_et_in: float, p_fus: float, et_base: float, n_mod_in: float, p_the_ref: float, the_base: float, staff_base: float, p_fus_ref: float, th_base: float    ) -> ModuleResult[Float]:
+        self, p_fus: float, p_th_ref: float, p_et_ref: float, n_mod_in: float, fus_base: float, p_the_ref: float, the_base: float, p_th_in: float, fixed_base: float, staff_base: float, et_base: float, th_base: float, p_et_in: float, p_fus_ref: float, p_the_in: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            p_th_ref: p_th_ref input
-            p_th_in: p_th_in input
-            fus_base: fus_base input
-            fixed_base: fixed_base input
-            p_et_ref: p_et_ref input
-            p_the_in: p_the_in input
-            p_et_in: p_et_in input
             p_fus: p_fus input
-            et_base: et_base input
+            p_th_ref: p_th_ref input
+            p_et_ref: p_et_ref input
             n_mod_in: n_mod_in input
+            fus_base: fus_base input
             p_the_ref: p_the_ref input
             the_base: the_base input
+            p_th_in: p_th_in input
+            fixed_base: fixed_base input
             staff_base: staff_base input
-            p_fus_ref: p_fus_ref input
+            et_base: et_base input
             th_base: th_base input
+            p_et_in: p_et_in input
+            p_fus_ref: p_fus_ref input
+            p_the_in: p_the_in input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(p_th_ref, p_th_in, fus_base, fixed_base, p_et_ref, p_the_in, p_et_in, p_fus, et_base, n_mod_in, p_the_ref, the_base, staff_base, p_fus_ref, th_base)
+        validated_inputs = self.validate_and_fill_default(p_fus, p_th_ref, p_et_ref, n_mod_in, fus_base, p_the_ref, the_base, p_th_in, fixed_base, staff_base, et_base, th_base, p_et_in, p_fus_ref, p_the_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.buildings_cost_impl import (

@@ -29,11 +29,11 @@ six unique coils; typical circumference 25 m)
 distribution factor on the worst coil; concept-agnostic (MR-3)
 
 Inputs:
-    - c_coil: c_coil parameter
     - vol_extra: vol_extra parameter
+    - n_coils: n_coils parameter
+    - c_coil: c_coil parameter
     - f_wp_vol: f_wp_vol parameter
     - wp_side: wp_side parameter
-    - n_coils: n_coils parameter
 
 Outputs:
     - vol_cold_total: vol_cold_total result
@@ -56,17 +56,17 @@ class Winding_Pack_Cold_VolumeInput(BaseModel):
     """Input model for Winding_Pack_Cold_VolumeModule.
 
     Attributes:
-        c_coil: c_coil input
         vol_extra: vol_extra input
+        n_coils: n_coils input
+        c_coil: c_coil input
         f_wp_vol: f_wp_vol input
         wp_side: wp_side input
-        n_coils: n_coils input
     """
-    c_coil: float = Field(..., description="c_coil input")
     vol_extra: float = Field(..., description="vol_extra input")
+    n_coils: float = Field(..., description="n_coils input")
+    c_coil: float = Field(..., description="c_coil input")
     f_wp_vol: float = Field(..., description="f_wp_vol input")
     wp_side: float = Field(..., description="wp_side input")
-    n_coils: float = Field(..., description="n_coils input")
 
 
 class Winding_Pack_Cold_VolumeModule(ModuleBase[Winding_Pack_Cold_VolumeInput, Float]):
@@ -99,11 +99,11 @@ six unique coils; typical circumference 25 m)
 distribution factor on the worst coil; concept-agnostic (MR-3)
 
 Inputs:
-    - c_coil: c_coil parameter
     - vol_extra: vol_extra parameter
+    - n_coils: n_coils parameter
+    - c_coil: c_coil parameter
     - f_wp_vol: f_wp_vol parameter
     - wp_side: wp_side parameter
-    - n_coils: n_coils parameter
 
 Outputs:
     - vol_cold_total: vol_cold_total result
@@ -153,37 +153,37 @@ distribution factor on the worst coil; concept-agnostic (MR-3)
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, c_coil: float, vol_extra: float, f_wp_vol: float, wp_side: float, n_coils: float    ) -> Winding_Pack_Cold_VolumeInput:
+        self, vol_extra: float, n_coils: float, c_coil: float, f_wp_vol: float, wp_side: float    ) -> Winding_Pack_Cold_VolumeInput:
         """Validate inputs and fill defaults.
 
         Args:
-            c_coil: c_coil input
             vol_extra: vol_extra input
+            n_coils: n_coils input
+            c_coil: c_coil input
             f_wp_vol: f_wp_vol input
             wp_side: wp_side input
-            n_coils: n_coils input
 
         Returns:
             Validated input model
         """
-        return Winding_Pack_Cold_VolumeInput(c_coil=c_coil, vol_extra=vol_extra, f_wp_vol=f_wp_vol, wp_side=wp_side, n_coils=n_coils)
+        return Winding_Pack_Cold_VolumeInput(vol_extra=vol_extra, n_coils=n_coils, c_coil=c_coil, f_wp_vol=f_wp_vol, wp_side=wp_side)
 
     def run(
-        self, c_coil: float, vol_extra: float, f_wp_vol: float, wp_side: float, n_coils: float    ) -> ModuleResult[Float]:
+        self, vol_extra: float, n_coils: float, c_coil: float, f_wp_vol: float, wp_side: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            c_coil: c_coil input
             vol_extra: vol_extra input
+            n_coils: n_coils input
+            c_coil: c_coil input
             f_wp_vol: f_wp_vol input
             wp_side: wp_side input
-            n_coils: n_coils input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(c_coil, vol_extra, f_wp_vol, wp_side, n_coils)
+        validated_inputs = self.validate_and_fill_default(vol_extra, n_coils, c_coil, f_wp_vol, wp_side)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_magnet_field.winding_pack_cold_volume_impl import (

@@ -60,15 +60,15 @@ is the executable meaning either way):
   p_fus     = n_D0 * n_T0 * sigv_peak * E_fus * V * 1e-6     (peak-form statement)
 
 Inputs:
+    - sigma_v_in: sigma_v_in parameter
+    - alpha_n_in: alpha_n_in parameter
     - n_T0_in: n_T0_in parameter
-    - n_e_in: n_e_in parameter
-    - T_i0_in: T_i0_in parameter
     - V: V parameter
     - E_fus_in: E_fus_in parameter
-    - sigma_v_in: sigma_v_in parameter
-    - n_D0_in: n_D0_in parameter
     - alpha_T_in: alpha_T_in parameter
-    - alpha_n_in: alpha_n_in parameter
+    - n_e_in: n_e_in parameter
+    - T_i0_in: T_i0_in parameter
+    - n_D0_in: n_D0_in parameter
 
 Outputs:
     - p_fus: p_fus result
@@ -91,25 +91,25 @@ class DT_Fusion_PowerInput(BaseModel):
     """Input model for DT_Fusion_PowerModule.
 
     Attributes:
+        sigma_v_in: sigma_v_in input
+        alpha_n_in: alpha_n_in input
         n_T0_in: n_T0_in input
-        n_e_in: n_e_in input
-        T_i0_in: T_i0_in input
         V: V input
         E_fus_in: E_fus_in input
-        sigma_v_in: sigma_v_in input
-        n_D0_in: n_D0_in input
         alpha_T_in: alpha_T_in input
-        alpha_n_in: alpha_n_in input
+        n_e_in: n_e_in input
+        T_i0_in: T_i0_in input
+        n_D0_in: n_D0_in input
     """
+    sigma_v_in: float = Field(..., description="sigma_v_in input")
+    alpha_n_in: float = Field(..., description="alpha_n_in input")
     n_T0_in: float = Field(..., description="n_T0_in input")
-    n_e_in: float = Field(..., description="n_e_in input")
-    T_i0_in: float = Field(..., description="T_i0_in input")
     V: float = Field(..., description="V input")
     E_fus_in: float = Field(..., description="E_fus_in input")
-    sigma_v_in: float = Field(..., description="sigma_v_in input")
-    n_D0_in: float = Field(..., description="n_D0_in input")
     alpha_T_in: float = Field(..., description="alpha_T_in input")
-    alpha_n_in: float = Field(..., description="alpha_n_in input")
+    n_e_in: float = Field(..., description="n_e_in input")
+    T_i0_in: float = Field(..., description="T_i0_in input")
+    n_D0_in: float = Field(..., description="n_D0_in input")
 
 
 class DT_Fusion_PowerModule(ModuleBase[DT_Fusion_PowerInput, Float]):
@@ -173,15 +173,15 @@ is the executable meaning either way):
   p_fus     = n_D0 * n_T0 * sigv_peak * E_fus * V * 1e-6     (peak-form statement)
 
 Inputs:
+    - sigma_v_in: sigma_v_in parameter
+    - alpha_n_in: alpha_n_in parameter
     - n_T0_in: n_T0_in parameter
-    - n_e_in: n_e_in parameter
-    - T_i0_in: T_i0_in parameter
     - V: V parameter
     - E_fus_in: E_fus_in parameter
-    - sigma_v_in: sigma_v_in parameter
-    - n_D0_in: n_D0_in parameter
     - alpha_T_in: alpha_T_in parameter
-    - alpha_n_in: alpha_n_in parameter
+    - n_e_in: n_e_in parameter
+    - T_i0_in: T_i0_in parameter
+    - n_D0_in: n_D0_in parameter
 
 Outputs:
     - p_fus: p_fus result
@@ -266,45 +266,45 @@ is the executable meaning either way):
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, n_T0_in: float, n_e_in: float, T_i0_in: float, V: float, E_fus_in: float, sigma_v_in: float, n_D0_in: float, alpha_T_in: float, alpha_n_in: float    ) -> DT_Fusion_PowerInput:
+        self, sigma_v_in: float, alpha_n_in: float, n_T0_in: float, V: float, E_fus_in: float, alpha_T_in: float, n_e_in: float, T_i0_in: float, n_D0_in: float    ) -> DT_Fusion_PowerInput:
         """Validate inputs and fill defaults.
 
         Args:
+            sigma_v_in: sigma_v_in input
+            alpha_n_in: alpha_n_in input
             n_T0_in: n_T0_in input
-            n_e_in: n_e_in input
-            T_i0_in: T_i0_in input
             V: V input
             E_fus_in: E_fus_in input
-            sigma_v_in: sigma_v_in input
-            n_D0_in: n_D0_in input
             alpha_T_in: alpha_T_in input
-            alpha_n_in: alpha_n_in input
+            n_e_in: n_e_in input
+            T_i0_in: T_i0_in input
+            n_D0_in: n_D0_in input
 
         Returns:
             Validated input model
         """
-        return DT_Fusion_PowerInput(n_T0_in=n_T0_in, n_e_in=n_e_in, T_i0_in=T_i0_in, V=V, E_fus_in=E_fus_in, sigma_v_in=sigma_v_in, n_D0_in=n_D0_in, alpha_T_in=alpha_T_in, alpha_n_in=alpha_n_in)
+        return DT_Fusion_PowerInput(sigma_v_in=sigma_v_in, alpha_n_in=alpha_n_in, n_T0_in=n_T0_in, V=V, E_fus_in=E_fus_in, alpha_T_in=alpha_T_in, n_e_in=n_e_in, T_i0_in=T_i0_in, n_D0_in=n_D0_in)
 
     def run(
-        self, n_T0_in: float, n_e_in: float, T_i0_in: float, V: float, E_fus_in: float, sigma_v_in: float, n_D0_in: float, alpha_T_in: float, alpha_n_in: float    ) -> ModuleResult[Float]:
+        self, sigma_v_in: float, alpha_n_in: float, n_T0_in: float, V: float, E_fus_in: float, alpha_T_in: float, n_e_in: float, T_i0_in: float, n_D0_in: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
+            sigma_v_in: sigma_v_in input
+            alpha_n_in: alpha_n_in input
             n_T0_in: n_T0_in input
-            n_e_in: n_e_in input
-            T_i0_in: T_i0_in input
             V: V input
             E_fus_in: E_fus_in input
-            sigma_v_in: sigma_v_in input
-            n_D0_in: n_D0_in input
             alpha_T_in: alpha_T_in input
-            alpha_n_in: alpha_n_in input
+            n_e_in: n_e_in input
+            T_i0_in: T_i0_in input
+            n_D0_in: n_D0_in input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(n_T0_in, n_e_in, T_i0_in, V, E_fus_in, sigma_v_in, n_D0_in, alpha_T_in, alpha_n_in)
+        validated_inputs = self.validate_and_fill_default(sigma_v_in, alpha_n_in, n_T0_in, V, E_fus_in, alpha_T_in, n_e_in, T_i0_in, n_D0_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_plasma_scaling.dt_fusion_power_impl import (
