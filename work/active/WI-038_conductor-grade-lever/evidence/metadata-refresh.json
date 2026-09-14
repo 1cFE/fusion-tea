@@ -2,7 +2,7 @@
   "before": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "347cc98d033668274b99c1ce632ed62aaf0670a8e3f76e0f059d362c62cf64a2",
+      "digest": "c95eefd7f7117e586d38c8d2ce1f55dbb226c822c2319ac99d9dff90fad3b180",
       "files": [
         "contracts/model_contract.json",
         "inputs/mfe_account_costs_params.json",
@@ -18,8 +18,8 @@
       ]
     },
     "recorded_provenance": {
-      "executable_fingerprint": "706c7b4b97e4b243b224e34f89c4936610d2683c4179e9a73a1e96173c89ffe1",
-      "semantic_fingerprint": "1f6c7ed4be7787d18db8ff1096a76ef45ca29de07362f6a887dd816efb69d5c9"
+      "executable_fingerprint": "7dd85d5876699362cf16a21287181ef7968625f79b37b65c61225304b9b736f2",
+      "semantic_fingerprint": "2c2788662c148ccae3f61d1f58e510cedcfcddb6b0b489878ec8d7ebd6f1c08e"
     }
   },
   "after": {
@@ -41,10 +41,10 @@
       ]
     },
     "recorded_provenance": {
-      "executable_fingerprint": "7dd85d5876699362cf16a21287181ef7968625f79b37b65c61225304b9b736f2",
+      "executable_fingerprint": "8ff5bb7c3d71f235be697e254766d3e0f552f3b94b46831da62a08a9755122a5",
       "semantic_fingerprint": "2c2788662c148ccae3f61d1f58e510cedcfcddb6b0b489878ec8d7ebd6f1c08e"
     }
   },
-  "census_before": 263,
+  "census_before": 265,
   "census_after": 265
 }

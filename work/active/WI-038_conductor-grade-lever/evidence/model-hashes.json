@@ -1,9 +1,9 @@
 {
-  "analyses/mfe_conductor_grade.sysml": "7ad9ec8b05dedbc2c7a3c8fbb2770fa43d64d0c408d654fa20c8de590288c2c5",
+  "analyses/mfe_conductor_grade.sysml": "d424658a9ebbed6fc635e180c621ec0ece22b4f22262ea2d2276b35707aa9dd4",
   "analyses/mfe_magnet_field.sysml": "b6770081062e17698994b9552a714498fc05520d58126876194cfbf18aab9abf",
   "analyses/mfe_winding_pack_cost.sysml": "844b324bd40c5fffce94ca59160d4cbc5d9dd47cae6dbab989d53e5b02cfaa73",
   "cost_structure/mfe_power_core.sysml": "33264125585551a74f38308557b511b5a3146e0b4118526e1d51f5360e298b4d",
   "designs/generic_mfe/mfe_plant.sysml": "d62bffafcfc7aaaec20699c31cff8be609dba29614dd82a82c86843bae6bfb06",
-  "designs/stellarator_09/stellarator_plant.sysml": "21e7d7ef92cdf27135bf7d891d38f141d4f2e965cdd783c88e43571bb05a36a7",
+  "designs/stellarator_09/stellarator_plant.sysml": "720147a3cc9102ec70abe112060650d9e1719178f86a837f4bfde8c6ca035bbc",
   "structure/mfe_magnet_parts.sysml": "f8d46444d9a872f30df9ebf78da4af8ad13ea8680a502cc110232804fded171c"
 }

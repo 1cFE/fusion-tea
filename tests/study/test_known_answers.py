@@ -20,7 +20,7 @@ from tests.study.conftest import DATA_DIR, run_tool
 # held-mode switch (design D5). The known answer is re-derived, its no-response claim kept.
 CASES = ["availability_direct", "interest_rate", "R", "a", "I_coil"]
 
-EXPECTED_SEMANTIC_FINGERPRINT = '1f6c7ed4be7787d18db8ff1096a76ef45ca29de07362f6a887dd816efb69d5c9'
+EXPECTED_SEMANTIC_FINGERPRINT = '2c2788662c148ccae3f61d1f58e510cedcfcddb6b0b489878ec8d7ebd6f1c08e'
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
 #:          modules fired, channels tainted). Read straight off the Item 1 fixture

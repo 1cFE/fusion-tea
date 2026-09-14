@@ -268,11 +268,11 @@ package stellarator_09 {
                 // (WI-021): the generic plant binds magnet.r_coil = rb.r_coil, so
                 // r_coil = 3.00 m falls out of the radial build (was an injected
                 // constant here).
-                // REBCO HTS conductor [$/kA-m]. Source: costing_constants.yaml:57
+                // REBCO HTS conductor [$/kA-m]. Source: costing_constants.yaml:56
                 //   (conductor_cost_rebco = 50.0). NOT x1e6 -- already $/kA-m; the
                 //   magnet formula omits the /1e6 M$ conversion and yields $.
                 :>> cost_per_kAm = 50.0 {
-                    doc /* Reference tape procurement [dollars/(kA m)]. **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Reference**: line 57, conductor_cost_rebco = 50.0 (pin 0254385). **Basis**: [AGENT] WI-038 economically normalizes this inherited rate to the 24.9 T reference envelope; no vendor quote establishes that field/temperature rating. The relative multiplier prices tape quantity, not a manufacturer premium. Both legacy comparison accounts retain this ungraded rate. **Last Updated**: 2026-09-13 */
+                    doc /* Reference tape procurement [dollars/(kA m)]. **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Reference**: line 56, conductor_cost_rebco = 50.0 (pin 0254385). **Basis**: [AGENT] WI-038 economically normalizes this inherited rate to the 24.9 T reference envelope; no vendor quote establishes that field/temperature rating. The relative multiplier prices tape quantity, not a manufacturer premium. Both legacy comparison accounts retain this ungraded rate. **Last Updated**: 2026-09-13 */
                 }
             :>> coil_t = 0.30 {
                 doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py **Ref**: geometry.py:37 (RadialBuild.coil_t = 0.30 default) **Basis**: radial-build coil-pack default */
@@ -291,7 +291,7 @@ package stellarator_09 {
             }
             part :>> winding_pack {
                 :>> B_grade_ref = 24.9 {
-                    doc /* Reference purchased field envelope [T]. **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_002_table_0.png **Reference**: Table 2, peak conductor magnetic field strength 24.9 T. **Basis**: [AGENT] normalize WI-038 to the inherited design envelope. This exceeds the inspected Molodyk 20 K measurements through 20 T; equality at the anchor does not qualify the conductor. Hold this economic reference fixed in priced transfer. **Last Updated**: 2026-09-13 */
+                    doc /* Reference purchased field envelope [T]. **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_002_table_0.png **Reference**: Table 2, peak conductor magnetic field strength 24.9 T. **Basis**: [AGENT] normalize WI-038 to the inherited design envelope. This exceeds the approximately 24 T endpoint visible for Molodyk's 20 K measurements in Fig. 1a; equality at the anchor does not qualify the conductor. Hold this economic reference fixed in priced transfer. **Last Updated**: 2026-09-13 */
                 }
                 :>> field_exponent = 0.6 {
                     doc /* Relative field exponent [1]. **Source**: knowledge/sources/development_and_large_volume_production_of_extremely_high/raw.pdf **Reference**: Molodyk et al. (2021), printed p. 5: approximate critical-current field exponent 0.6 at 20 K. **Basis**: [AGENT] inverse relative-current-density law for tape quantity at fixed operating fraction, tape family and angular assumption. The paragraph reports no fit interval. The 20-30 T window is an extrapolative sensitivity choice, not source-validated capability. Keep temperature at 20 K for this interpretation; exponent changes are explicit scenarios. **Last Updated**: 2026-09-13 */
