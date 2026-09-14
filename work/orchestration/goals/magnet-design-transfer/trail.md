@@ -43,3 +43,16 @@ WI-040 · `work/active/WI-040_winding-pack-mass-cost/` · native specification t
 - **Evidence refs:** T-001 return and its native references; quarantine incident in protocol §6. Native PM status reads the item as active; `git diff --check` passes. No numerical validation is claimed.
 - **Learning delta:** Proposed: the image-supported material table differs from the inherited backlog/pack documentation, so a material-cost implementation cannot safely use that inherited mixture. Proposed: explicit absence of a mass input does not establish that a lump fabrication multiplier excludes material procurement. Both claims require fresh review before acceptance.
 - **Finding dispositions:** `20260903-priced-levers#2` and `20260903-wall-and-heating#7` remain model-fix work at WI-040, now with native spec/basis and an owner-gated material correction. `20260901-sustainment-fence#1` remains WI-038 after WI-040; historical candidate values are not revalidated. `20260907-minor-radius#2` retains its historical bounded reading and existing geometry research/price follow-ons; this round supplies no transfer result. Corresponding rows are appended to the discovery log.
+
+### Round 1 review — 2026-09-13
+
+- **Reviewer:** `/root/round1_review`, fresh session from the committed `evidence/R1-review-prompt.md@817f21ff`, with no inherited author context.
+- **Verdict:** OWNER_GATE. Direct image inspection confirms the material conflict; the pending owner ruling remains necessary. No implementation, integration, study or audit completion is credited.
+- **Checks:** Native spec/basis, clean WI-035 evidence, current magnet cost/material code, all four touched discovery dispositions, cited-path histories, task scope, quarantine handling and proposed learnings checked. No external cited-ref mutation or retry found. Full evidence: `evidence/R1-review.md`.
+- **Correction:** In the native spec's Scope and supported use, the backlog material-list sentence needs `[INHERITED: work/backlog/epic-mfe-cost-modeling.md]` instead of `[NEED]`. Reviewer ownership excludes editing the spec; this correction does not answer the owner gate.
+- **Learning delta:** Both proposed claims accepted with their evidence limits as L-001 and L-002 in `learnings.md`.
+- **Recommendation:** Wait for the owner's material-scope ruling before any next strategy. Keep the procurement/fabrication split unresolved and the excluded source out of subsequent model-facing context. Round 1 remains closed; no Round 2 or goal close is authorized by this review.
+
+### Review correction applied — 2026-09-13
+
+The coordinator changed the native spec's backlog-list provenance to `[INHERITED: work/backlog/epic-mfe-cost-modeling.md]` as requested. No requirement, material choice or numerical behavior changed. The pending owner gate stands. Discovery-log joins passed 14 tests; `git diff --check` passes.

@@ -41,7 +41,7 @@ Updated: 2026-09-13
 
 ## Scope and supported use
 
-[NEED] The backlog names steel, insulation, copper and helium. [INFERRED, pending owner ruling] Correct the material list to Table 7's copper, solder, steel and helium; treat unquantified inter-pancake insulation as a disclosed limitation. The question was surfaced to the owner before dependent design or implementation. Neither list is silently substituted for the other.
+[INHERITED: work/backlog/epic-mfe-cost-modeling.md] The backlog names steel, insulation, copper and helium. [INFERRED, pending owner ruling] Correct the material list to Table 7's copper, solder, steel and helium; treat unquantified inter-pancake insulation as a disclosed limitation. The question was surfaced to the owner before dependent design or implementation. Neither list is silently substituted for the other.
 
 [INFERRED] Preserve WI-057's existing physical decomposition. The work concerns pack quantities and accounting, not coil configuration, pack/casing fit, a new critical-current surface, or reactor optimization. WI-038 remains subsequent work. A conductor-volume model must not be inferred from ampere-metres without its own basis.
 
