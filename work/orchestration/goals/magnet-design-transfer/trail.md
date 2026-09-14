@@ -220,3 +220,15 @@ Closed WI-040 first, then WI-038 with `.codex-test/run agentic-mbse pm close-ite
 Updated live test/helper, validation-source and study-annex paths for the archive move. The focused model/oracle, study-record and goal-contract suite passed all 204 tests. Archive verification found 74 byte-identical files, six completion-frontmatter-only updates and two exact helper-path relocations. All sixteen current normative seed bodies remain unchanged. No production model, generated package or frozen study record changed.
 
 This is owner-authorized archival bookkeeping after the reviewed round, not a resumed task or a new round. Goal close, merge and push remain unperformed. Item completion does not close the outstanding engineering findings or expand the conditional transfer claim.
+
+## Goal close — 2026-09-14
+
+[OWNER-VERBATIM] "ok please close out your goal"
+
+The owner closes this goal after the Round 2 result at `6389be5b` and fresh PASS review at `6e59e596`. The answer condition is met on its explicit inconclusive engineering branch: the 108-case study supports consistent magnet sizing, operating-limit and component-cost responses under the declared assumptions, but does not establish an engineering-qualified geometry/conductor transfer range. The final answer is `transfer-claim.md@1792edf6`; the study is frozen at `fa195fa4`.
+
+WI-040 and WI-038 are completed and archived at `3dda522e`. Configuration-specific geometry, absolute conductor margin, pack/casing fit and complete manufacturing costs remain unresolved as recorded in `evidence/finding-dispositions.md@1792edf6`. Closing the investigation does not certify a buildable design or close those findings.
+
+[AGENT] Recommended follow-up is quantity-linked tape pricing, then a bounded absolute conductor-margin calculation; pack/casing fit and manufacturing-account improvements are additional tractable candidates. These recommendations were discussed with the owner but are not approved work items or a new goal. General geometry qualification requires a larger configuration-modeling effort.
+
+No Round 3 is opened. No model or frozen study evidence changes at closure. Merge and push remain unperformed.
