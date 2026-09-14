@@ -1,0 +1,10 @@
+{
+ "source": "work/orchestration/goals/magnet-coil-realism/evidence/grounding_probe/transects.csv",
+ "source_sha256": "e620352516ee806aa64e8a06aca870bf5d72867778ff24b05dafd010402424e6",
+ "source_pin": {
+  "executable": "8ff5bb7c3d71f235be697e254766d3e0f552f3b94b46831da62a08a9755122a5",
+  "semantic": "2c2788662c148ccae3f61d1f58e510cedcfcddb6b0b489878ec8d7ebd6f1c08e",
+  "commit": "01771279"
+ },
+ "note": "Oracle-side diagnostic at the entering pin (goal grounding probe), design column only: a 1.3-2.2 at R 12.7 and R 11.43-15.7 at a 1.3 and 2.2. Its c_coil and vol_cold columns are EMPTY (None): neither is an oracle-published channel; the entering-pin c_coil is k_coil x R = 1.9685039370078741 x R by construction."
+}

@@ -21,5 +21,6 @@
  "stellarator_09__stellaris__rb__r_coil_centre": "required",
  "stellarator_09__stellaris__magnet__wp_stress__sigma_wp": "required",
  "stellarator_09__stellaris__magnet__cond_strain__eps_cond": "required",
- "stellarator_09__stellaris__pb__p_th": "required"
+ "stellarator_09__stellaris__pb__p_th": "required",
+ "stellarator_09__stellaris__magnet__wp_volume__vol_cold_total": "required"
 }
