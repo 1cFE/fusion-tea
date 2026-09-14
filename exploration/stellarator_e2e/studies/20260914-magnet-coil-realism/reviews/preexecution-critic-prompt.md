@@ -1,0 +1,17 @@
+# Fresh pre-execution study critique — 20260914-magnet-coil-realism
+
+You are a fresh non-author reviewer in `/home/reid/1cfe/fusion-tea` (branch `feat/integrated`). Inherit no conversation. Do not run any study point; do not change the study definition or anything under `models/`, the package or the oracle. You own only `exploration/stellarator_e2e/studies/20260914-magnet-coil-realism/reviews/preexecution-review.md`; write your verdict there. Never read anything under `knowledge/holdout/`. Do not commit.
+
+Review the proposed study: `exploration/stellarator_e2e/studies/20260914-magnet-coil-realism/protocol.md`, `axes.json`, `indicators.json`, `preparation/proposals.json`, `preparation/required-channels.json`, `preparation/matched-window-cases.json`. Obligations: `.claude/skills/run-study/SKILL.md`, `runbook.md` (steps 1–15), `record-template.md`, `modeling_project/STUDY_POLICY.md` (§§ 2, 3, 9, 10), `exploration/stellarator_e2e/studies/ANNEX.md`. Context: the goal contract `work/orchestration/goals/magnet-coil-realism/goal.md` (§ Answered when (b), § Invariants), `trail.md` (§ Round 1 strategy revision, § T-003 scope), the audited model increment `work/active/WI-058_coil-winding-length-from-bore/{spec,design,audit}.md`, the pin `work/orchestration/goals/magnet-coil-realism/evidence/T-002_integration/integration_return.json` (commit `1d08fb85`), and the committed records being re-read: `exploration/stellarator_e2e/studies/20260912-plant-closure/record.md` (cases `c0113`, `c0130`) and `20260913-magnet-design-transfer/record.md` with its `results/cases.json`.
+
+Judge, as named lenses, each PASS or REVISE with specific findings and required corrections:
+1. Causal axes and complete fan-out (policy § 2): every swept or coordinate key is a design lever the model owns; the declared groups are complete against the generated `pipelines/pipeline.yaml`; no computed quantity is swept.
+2. Indicators and rulings (policy § 9): all six groups traced with `subset=false`; whether any owner ruling is required; whether the declined axes are handled honestly.
+3. Sensitivity framing against a known baseline violation (`divertor_heat_ok`) and against the goal's "no boundary claim" invariant; whether the "did the cheapest machine move" question is honestly bounded to the transect through the committed machine.
+4. The matched-window disclosure: the committed cases carry the retired key `magnet__coil__k_coil`; the protocol submits axis coordinates only and states that every other committed fixed input equals the current default. Is that a faithful re-read by case id, and is the disclosure sufficient?
+5. The predeclared expected responses and flip channels: are they derivable from the WI-058 design and the entering-pin probe, and is anything predicted that the run should be left to decide?
+6. Route, verification and coverage: the direct-API prepared-list route for transects and matched points; the stratified oracle sample; the 16 native channels outside the oracle map, `c_coil` among them, and the substitute identity check; the required-channel list against the question.
+7. Record sufficiency for a fresh administrator who reads only the record directory.
+8. Premise conflicts: anything in the protocol that would work against the goal's recorded question or invariants (`GOAL_RUNBOOK.md`, capture-fidelity law 4).
+
+Return the verdict (PASS or REVISE) and the lens table in `reviews/preexecution-review.md`, with the sha256 of each reviewed artifact, and a one-paragraph summary at the top.
