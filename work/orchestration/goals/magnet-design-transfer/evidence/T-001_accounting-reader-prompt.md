@@ -1,0 +1,7 @@
+# WI-040 accounting basis reader
+
+Read `.agentic-mbse/codex.md`, `CLAUDE.md`, `.project/codex-test-setup.md`, and `knowledge/holdout/aries-cs/PROTOCOL.md` before source work. This is a model-facing clean-room session: never read sealed PDFs, ARIES-CS-informed artifacts, Helios, Waganer or Araiinejad barred sources. No external fetching in this task.
+
+Bounded question: Does the existing WI-035 conductor-price times fabrication markup already price winding-pack non-tape materials, and what admissible local evidence can distinguish material procurement from fabrication? Read current `models/library/analyses/mfe_magnet_cost.sysml`, WI-035 design, registered source index, and the admitted 1costingFE source (including its git pin 0254385 and specific accounting docs after checking admissibility). Inspect PyFECONS only if useful and registered. Do not use barred source content cited by admitted code as new evidence.
+
+Return exact path/line evidence, whether an additive material account would duplicate anything, and the smallest defensible accounting options. Distinguish evidence from agent assumptions. Do not invent a deduction from a lump markup. No model edits, no PM mutation, no commits. You are not alone in the worktree; preserve all others' changes. Output your findings to the coordinator as a message; coordinator owns the durable basis record. The main agent is independently preparing the native spec and has verified Table 7's material fractions by image; do not duplicate that investigation.
