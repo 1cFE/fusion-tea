@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-helium.pdf",
+  "slug": "usgs_mineral_commodity_summaries_2025_helium",
+  "path": "knowledge/sources/usgs_mineral_commodity_summaries_2025_helium/",
+  "source_id": "211bf4707cb97d0bfc8c6c8d5d19f55e7145534503a90d6d12b87c7786d67492",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-14T04:28:03.473280+00:00"
+}

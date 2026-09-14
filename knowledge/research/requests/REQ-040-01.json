@@ -5,5 +5,5 @@
   "gap_type": "unsourced_value",
   "priority": "P1",
   "where_to_look": ["USGS mineral commodity summaries copper tin helium", "NIST helium thermophysical properties", "solder manufacturer SnPb or indium alloy density datasheets", "registered Stellaris unit-cell composition"],
-  "limits": {"max_searches": 10, "max_captures": 5}
+  "limits": {"max_searches": 10, "max_captures": 8}
 }

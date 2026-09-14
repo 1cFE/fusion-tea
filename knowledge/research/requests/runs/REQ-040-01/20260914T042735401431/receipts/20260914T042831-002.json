@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "https://irp-cdn.multiscreensite.com/46cb8fc8/files/uploaded/rs-metals-densities.pdf",
+  "slug": "reliable_source_metals_material_densities",
+  "path": "knowledge/sources/reliable_source_metals_material_densities/",
+  "source_id": "dfa8b625f7e1c6758814c31bc47925ded70d40d1485c2ccaca637c536774e81d",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-14T04:28:31.465163+00:00"
+}

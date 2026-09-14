@@ -489,6 +489,150 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: c842218c4258b3d495dc89ecd19b9393c99d0b42aa6d865943491ecca3649a81
 - **Date Added**: 2026-09-08
 
+### UKAEA PROCESS original cost model superconducting TF coil accounting implementation
+- **Type**: url
+- **Location**: knowledge/sources/ukaea_process_original_cost_model_superconducting_tf_coil/
+- **Use for**: REQ-040-02 accounting form: superconducting material and copper cost separately from cable and sheath additions, winding cost proportional to conductor length, and case and intercoil structure costs.
+- **Validation**: Inspect acc2221 source, separately assigned conductor and winding terms, and total assembly; compare output.md code against captured raw.html.
+- **Caveat**: Original PROCESS tokamak cost algorithm; supports additive accounting form, not a validated manufacturing rate or coverage for REBCO nonplanar stellarator coils. Historical rates must not be transplanted without currency and scope treatment.
+
+#### Extended Metadata
+- **Source URL**: https://ukaea.github.io/PROCESS/source/reference/process/models/costs/costs/
+- **Source ID**: 9f6fd08bdd66259fdfa9aeb7109a79f2db1f04f3725063291ef22748710502c8
+- **Raw SHA256**: 9f6fd08bdd66259fdfa9aeb7109a79f2db1f04f3725063291ef22748710502c8
+- **Raw Artifact SHA256**: 9f6fd08bdd66259fdfa9aeb7109a79f2db1f04f3725063291ef22748710502c8
+- **Extracted Path**: knowledge/sources/ukaea_process_original_cost_model_superconducting_tf_coil/
+- **Extract SHA256**: cdc26500011a07c25e92433a007a8e4110074bd4aaf413f35857eac9d0e602a8
+- **Date Added**: 2026-09-13
+
+### Indium Corporation Bar Solder Alloy Properties
+- **Type**: url
+- **Location**: knowledge/sources/indium_corporation_bar_solder_alloy_properties/
+- **Use for**: WI-040 solder alloy alternatives and ambient density: Sn63Pb37 versus lead-free alloys.
+- **Validation**: Read captured raw HTML product table and compare alloy and specific gravity columns with output.md.
+- **Caveat**: Vendor material properties; no proof Stellaris uses this alloy and no cryogenic density correction.
+
+#### Extended Metadata
+- **Source URL**: https://www.indium.com/products/bar-solder/
+- **Source ID**: cdd7a972a10ca0fabeff8925043b9fa2074c8d5d6c36837ab3e625d89cc5fb08
+- **Raw SHA256**: cdd7a972a10ca0fabeff8925043b9fa2074c8d5d6c36837ab3e625d89cc5fb08
+- **Raw Artifact SHA256**: cdd7a972a10ca0fabeff8925043b9fa2074c8d5d6c36837ab3e625d89cc5fb08
+- **Extracted Path**: knowledge/sources/indium_corporation_bar_solder_alloy_properties/
+- **Extract SHA256**: 8a7dfc324173a5d2e6c70f5fdc0878d05ac795312bb948e16732a32b495bdca0
+- **Date Added**: 2026-09-13
+
+### UKAEA PROCESS cost variable definitions and historical costing basis
+- **Type**: url
+- **Location**: knowledge/sources/ukaea_process_cost_variable_definitions_and_historical/
+- **Use for**: REQ-040-02: winding cost coefficient units and fixed conductor/sheath terms; cost model year distinguishes historical rates from current procurement prices.
+- **Validation**: Read ucwindtf, cconfix, cconshtf, and cost model switch definitions in captured output.md and compare raw.html.
+- **Caveat**: Code defaults for historical PROCESS costing; units and accounting scope are evidence, while transfer of numerical rates to current REBCO stellarator manufacture remains unsupported.
+
+#### Extended Metadata
+- **Source URL**: https://ukaea.github.io/PROCESS/source/reference/process/data_structure/cost_variables/
+- **Source ID**: 268c4874b958d5b0b8fdd3cde0d2b6f4bd8c29bb49ca2c807ebf3b2c0d5c3aed
+- **Raw SHA256**: 268c4874b958d5b0b8fdd3cde0d2b6f4bd8c29bb49ca2c807ebf3b2c0d5c3aed
+- **Raw Artifact SHA256**: 268c4874b958d5b0b8fdd3cde0d2b6f4bd8c29bb49ca2c807ebf3b2c0d5c3aed
+- **Extracted Path**: knowledge/sources/ukaea_process_cost_variable_definitions_and_historical/
+- **Extract SHA256**: a85df57813d015985699c5b887bbc65cb0f04f7c65dc60150ba6ab336156b1dc
+- **Date Added**: 2026-09-13
+
+### RotoMetals AIM Sn63Pb37 One Pound Solder Bar Price
+- **Type**: url
+- **Location**: knowledge/sources/rotometals_aim_sn63pb37_one_pound_solder_bar_price/
+- **Use for**: WI-040 dated retail solder procurement price reference for Sn63Pb37 alloy.
+- **Validation**: Check captured raw HTML price and one-pound product mass against extracted output.
+- **Caveat**: Retail list price at capture date, not bulk magnet procurement quote; freight tax and fabrication excluded.
+
+#### Extended Metadata
+- **Source URL**: https://www.rotometals.com/aim-sn63pb37-solder-bar-1/
+- **Source ID**: cd065c84c86784d2b0d280697659a9c0f1267f8de01f0c2b62d261277cea465b
+- **Raw SHA256**: cd065c84c86784d2b0d280697659a9c0f1267f8de01f0c2b62d261277cea465b
+- **Raw Artifact SHA256**: cd065c84c86784d2b0d280697659a9c0f1267f8de01f0c2b62d261277cea465b
+- **Extracted Path**: knowledge/sources/rotometals_aim_sn63pb37_one_pound_solder_bar_price/
+- **Extract SHA256**: f441c1f3c292110cae70d6df061f217687a954a345a81b1c3c1dac91dbb8fbff
+- **Date Added**: 2026-09-13
+
+### NIST Helium Isotherm 20 K 15 to 20 Bar
+- **Type**: url
+- **Location**: knowledge/sources/nist_helium_isotherm_20_k_15_to_20_bar/
+- **Use for**: WI-040 helium inventory density at the published winding-pack temperature and pressure.
+- **Validation**: Check captured raw HTML isotherm header, pressure units, density units and 15/20 bar rows.
+- **Caveat**: Pure-fluid equation-of-state data; uniform operating-state approximation, excluding external plant inventory.
+
+#### Extended Metadata
+- **Source URL**: https://webbook.nist.gov/cgi/fluid.cgi?Action=Load&ID=C7440597&Type=IsoTherm&Digits=5&PLow=15&PHigh=20&PInc=5&T=20&RefState=DEF&TUnit=K&PUnit=bar&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm
+- **Source ID**: bd2b04fea1a753b99fd8fad8bbe5ea805cb5b62a13c6eac1d3c4915ab3a446b1
+- **Raw SHA256**: bd2b04fea1a753b99fd8fad8bbe5ea805cb5b62a13c6eac1d3c4915ab3a446b1
+- **Raw Artifact SHA256**: bd2b04fea1a753b99fd8fad8bbe5ea805cb5b62a13c6eac1d3c4915ab3a446b1
+- **Extracted Path**: knowledge/sources/nist_helium_isotherm_20_k_15_to_20_bar/
+- **Extract SHA256**: 2d250786ad71e20657b90ca1bcb8d767ca9933806e408231cdbf552e25098aff
+- **Date Added**: 2026-09-13
+
+### Federal Reserve Bank of Minneapolis annual Consumer Price Index 1913 onward
+- **Type**: url
+- **Location**: knowledge/sources/federal_reserve_bank_of_minneapolis_annual_consumer_price/
+- **Use for**: REQ-040-02: BLS annual CPI-U values reproduced by a Federal Reserve Bank support explicit dollar-year conversion of PROCESS historical 1990 winding-cost rate.
+- **Validation**: Check annual-average rows for 1990 and target year in captured output.md against raw.html; compute target CPI divided by 1990 CPI.
+- **Caveat**: Official Federal Reserve republication of BLS CPI, rounded to one decimal; general consumer purchasing-power conversion is an agent-selected proxy, not evidence for superconducting magnet manufacturing escalation.
+
+#### Extended Metadata
+- **Source URL**: https://www.minneapolisfed.org/about-us/monetary-policy/inflation-calculator/consumer-price-index-1913-
+- **Source ID**: f0753dc135b542d83a7c58b36d3bbc621d9540962ce9af7edfeab9692404541c
+- **Raw SHA256**: f0753dc135b542d83a7c58b36d3bbc621d9540962ce9af7edfeab9692404541c
+- **Raw Artifact SHA256**: f0753dc135b542d83a7c58b36d3bbc621d9540962ce9af7edfeab9692404541c
+- **Extracted Path**: knowledge/sources/federal_reserve_bank_of_minneapolis_annual_consumer_price/
+- **Extract SHA256**: a7042e6ea0d9b84a224bc04e22e591870712def2f74c22cf0e5d8843625b4cde
+- **Date Added**: 2026-09-13
+
+### USGS Mineral Commodity Summaries 2025 Helium
+- **Type**: url
+- **Location**: knowledge/sources/usgs_mineral_commodity_summaries_2025_helium/
+- **Use for**: WI-040 2024 Grade-A helium base commodity price and standard-volume condition for conversion to USD per kg.
+- **Validation**: Compare extracted price paragraph and volume footnote against the captured two-page PDF image.
+- **Caveat**: 2024 annual commodity base price in 2025 report; surcharges and processing transport refrigeration storage excluded.
+
+#### Extended Metadata
+- **Source URL**: https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-helium.pdf
+- **Source ID**: 211bf4707cb97d0bfc8c6c8d5d19f55e7145534503a90d6d12b87c7786d67492
+- **Raw SHA256**: 211bf4707cb97d0bfc8c6c8d5d19f55e7145534503a90d6d12b87c7786d67492
+- **Raw Artifact SHA256**: 211bf4707cb97d0bfc8c6c8d5d19f55e7145534503a90d6d12b87c7786d67492
+- **Extracted Path**: knowledge/sources/usgs_mineral_commodity_summaries_2025_helium/
+- **Extract SHA256**: 7e32984805149528081d0c5b926a833726b034c6ce985b8937499cb9be1dd5bb
+- **Date Added**: 2026-09-13
+
+### Reliable Source Metals Material Densities
+- **Type**: url
+- **Location**: knowledge/sources/reliable_source_metals_material_densities/
+- **Use for**: WI-040 copper C101/C110 and stainless 316 mass density.
+- **Validation**: Inspect one-page PDF image: Copper and Brass C101/C110 rows and Stainless316 row; footnote units lb per cubic inch.
+- **Caveat**: Supplier reference sheet, undated; nominal standard-condition values without cryogenic contraction correction.
+
+#### Extended Metadata
+- **Source URL**: https://irp-cdn.multiscreensite.com/46cb8fc8/files/uploaded/rs-metals-densities.pdf
+- **Source ID**: dfa8b625f7e1c6758814c31bc47925ded70d40d1485c2ccaca637c536774e81d
+- **Raw SHA256**: dfa8b625f7e1c6758814c31bc47925ded70d40d1485c2ccaca637c536774e81d
+- **Raw Artifact SHA256**: dfa8b625f7e1c6758814c31bc47925ded70d40d1485c2ccaca637c536774e81d
+- **Extracted Path**: knowledge/sources/reliable_source_metals_material_densities/
+- **Extract SHA256**: 29f1924f24c85828531100e9c8924d5f79960a1ce7203ba5fb6164f0ba503e36
+- **Date Added**: 2026-09-13
+
+### NIST Helium Isobar 20 Bar 10 to 50 K
+- **Type**: url
+- **Location**: knowledge/sources/nist_helium_isobar_20_bar_10_to_50_k/
+- **Use for**: WI-040 temperature dependence of helium density and ideal-gas approximation error across cryogenic operating temperatures.
+- **Validation**: Compare captured temperature pressure and density table with raw HTML; calculate ideal density P M over R T independently.
+- **Caveat**: Pure-fluid property reference at20bar only; not coolant hydraulics or total refrigeration system inventory.
+
+#### Extended Metadata
+- **Source URL**: https://webbook.nist.gov/cgi/fluid.cgi?Action=Load&ID=C7440597&Type=IsoBar&Digits=5&TLow=10&THigh=50&TInc=5&P=20&RefState=DEF&TUnit=K&PUnit=bar&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm
+- **Source ID**: 0baec1632f913735d06d2e91c7b3fdc7b8afd3c911bce88a8c7c010e50354590
+- **Raw SHA256**: 0baec1632f913735d06d2e91c7b3fdc7b8afd3c911bce88a8c7c010e50354590
+- **Raw Artifact SHA256**: 0baec1632f913735d06d2e91c7b3fdc7b8afd3c911bce88a8c7c010e50354590
+- **Extracted Path**: knowledge/sources/nist_helium_isobar_20_bar_10_to_50_k/
+- **Extract SHA256**: 5a87087724f818deb8ed4eeb0f3edd471c0761782cf76c6c489e19e072766604
+- **Date Added**: 2026-09-13
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

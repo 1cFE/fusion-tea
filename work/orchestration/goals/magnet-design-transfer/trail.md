@@ -83,3 +83,25 @@ The coordinator changed the native spec's backlog-list provenance to `[INHERITED
 ### T-002 start — 2026-09-13
 
 Research seam · `knowledge/research/requests/REQ-040-01.json` and `REQ-040-02.json` · native research returns and material/accounting basis reports.
+
+### T-002 return — 2026-09-13
+
+- **Outcome:** COMPLETE.
+- **Evidence:** WI-040 `evidence/material-research.md` and `evidence/accounting-research.md`; native returns under REQ-040-01 runs `20260914T042412372000`, `20260914T042735401431` and REQ-040-02 run `20260914T042427532598`. Sources and report artifacts committed with the task return; UTC run stamps are September14, local goal date September13.
+- **Reading:** Registered primary/accounting/vendor evidence supports explicit procurement and length-based winding operations with stated transfer assumptions. Precision gaps can be represented honestly in a bounded estimate; they do not prevent implementation.
+- **Decision:** Trigger: source list conflicts with inherited prose. Decision/reason: adopt image-supported composition, keeping insulation unquantified; source image has stronger authority. Tier: execution detail under delegated judgment. Decided by: coordinator. Changed: native spec/design.
+- **Decision:** Trigger: historical multiplier has no identifiable procurement split. Decision/reason: replace the live total with separately sourced material procurement and PROCESS's length-based winding term; preserve legacy comparison instead of fitting its unknown contents. Tier: execution detail. Decided by: coordinator. Changed: WI-040 design and plan; source reports retained with their assumptions.
+- **Decision:** Trigger: network sandbox failures consumed two material captures. Decision/reason: increase request capture budget5→8 and open a second native invocation after closing the first; preserve all failures and successful retries. Tier: execution detail. Decided by: coordinator. Changed: REQ-040-01 and its two native returns. No goal-task mechanical retry.
+
+### T-003 scope
+
+- **Objective:** Implement and independently audit WI-040's explicit material-procurement and winding-operation estimate.
+- **Why now:** T-002 supplies the missing evidence and the owner delegates the needed technical judgments.
+- **Scope:** Native design/plan implementation, canonical models/twins, typed completions, current oracle and consumer coherence, verification and independent audit. Preserve historical studies. No WI-038 implementation or separate coil-configuration capability.
+- **Inputs:** `goal.md` as amended; WI-040 spec/design/plan and both research reports. The design fixes parameter names, calculation ABI and accounting boundaries before workers run.
+- **Done when:** Independent audit accepts the scoped cost-response behavior and affected consumers, or a native blocker is established.
+- **Stop when:** Prerequisite, strategy blocker, remaining reserved gate or declared limit.
+
+### T-003 start — 2026-09-13
+
+WI-040 · `work/active/WI-040_winding-pack-mass-cost/plan.md` · implemented model, current executable and independent audit.

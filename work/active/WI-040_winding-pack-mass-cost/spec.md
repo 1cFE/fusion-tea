@@ -41,18 +41,17 @@ Updated: 2026-09-13
 
 ## Scope and supported use
 
-[INHERITED: work/backlog/epic-mfe-cost-modeling.md] The backlog names steel, insulation, copper and helium. [INFERRED, pending owner ruling] Correct the material list to Table 7's copper, solder, steel and helium; treat unquantified inter-pancake insulation as a disclosed limitation. The question was surfaced to the owner before dependent design or implementation. Neither list is silently substituted for the other.
+[INFERRED, adopted under owner delegation 2026-09-13] Price Table 7's copper, solder, steel and helium; treat unquantified inter-pancake insulation as a disclosed limitation. Source-image verification corrects the inherited backlog list. The owner delegates this technical judgment in the goal's 2026-09-13 amendment.
 
 [INFERRED] Preserve WI-057's existing physical decomposition. The work concerns pack quantities and accounting, not coil configuration, pack/casing fit, a new critical-current surface, or reactor optimization. WI-038 remains subsequent work. A conductor-volume model must not be inferred from ampere-metres without its own basis.
 
 ## Unresolved questions
 
-1. Material scope: owner ruling on the source-table correction is pending.
-2. Accounting scope: determine whether material procurement is already represented inside the existing fabrication multiplier, and establish a defensible treatment before adding material costs.
-3. Parameter basis: verify densities and unit prices for the selected materials, including the helium state and solder composition. No numerical default is approved by this spec alone.
+1. Accounting scope: establish a defensible procurement/fabrication treatment through REQ-040-02. A new explicitly scoped estimate may replace the unsplit multiplier without claiming to have recovered its unknown decomposition.
+2. Parameter basis: verify densities and unit prices for the selected materials through REQ-040-01, including helium state and solder composition. Choose and label approximations where evidence supports an engineering estimate rather than exact procurement.
 
 ## Success and stage state
 
-Specification started; source and accounting questions are being resolved. Design, implementation and independent audit have not started. The existing WI-040 registration is reused; no duplicate item is minted. This spec establishes native active-stage state while the registry retains its existing row until a supported PM operation changes it.
+Specification started; the material correction is adopted and research is resolving accounting and parameter basis. Design, implementation and independent audit have not started. The existing WI-040 registration is reused; no duplicate item is minted. This spec establishes native active-stage state while the registry retains its existing row until a supported PM operation changes it.
 
 Completion requires the requirements above to be evidenced and a positive independent audit. Closing or archiving is owner-held.

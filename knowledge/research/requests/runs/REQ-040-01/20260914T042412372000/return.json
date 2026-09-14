@@ -1,0 +1,38 @@
+{
+  "request_id": "REQ-040-01",
+  "run": "knowledge/research/requests/runs/REQ-040-01/20260914T042412372000",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "indium_corporation_bar_solder_alloy_properties",
+      "path": "knowledge/sources/indium_corporation_bar_solder_alloy_properties/",
+      "source_id": "cdd7a972a10ca0fabeff8925043b9fa2074c8d5d6c36837ab3e625d89cc5fb08",
+      "pre_existing": false
+    },
+    {
+      "slug": "rotometals_aim_sn63pb37_one_pound_solder_bar_price",
+      "path": "knowledge/sources/rotometals_aim_sn63pb37_one_pound_solder_bar_price/",
+      "source_id": "cd065c84c86784d2b0d280697659a9c0f1267f8de01f0c2b62d261277cea465b",
+      "pre_existing": false
+    },
+    {
+      "slug": "nist_helium_isotherm_20_k_15_to_20_bar",
+      "path": "knowledge/sources/nist_helium_isotherm_20_k_15_to_20_bar/",
+      "source_id": "bd2b04fea1a753b99fd8fad8bbe5ea805cb5b62a13c6eac1d3c4915ab3a446b1",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://www.indium.com/products/bar-solder/",
+      "reason": "extract exited 1"
+    },
+    {
+      "candidate": "https://www.rotometals.com/aim-sn63pb37-solder-bar-1/",
+      "reason": "extract exited 1"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

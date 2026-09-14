@@ -6,7 +6,7 @@
 
 The adjacent text table in `knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md:1874` instead reports conductor 15%, copper 10%, insulation 45%, steel 26%, helium 4%. WI-036 design D8's 85% non-conductor claim and the current `models/library/structure/mfe_magnet_parts.sysml` winding-pack documentation repeat that incorrect basis. The source prose describes a non-insulated winding with insulation between pancakes; that does not establish a 45% insulation volume.
 
-[AGENT] Proposed correction: price the four non-tape materials in the source image and disclose the absence of a quantified insulation inventory. Owner ruling pending. The proposal does not claim tape procurement has zero mass; its existing cost basis is ampere-metres and remains separately accounted.
+[AGENT, adopted 2026-09-13 under the owner's autonomous-judgment delegation] Price the four non-tape materials in the source image and disclose the absence of a quantified insulation inventory. This does not claim tape procurement has zero mass; its existing cost basis is ampere-metres and remains separately accounted.
 
 ## Existing accounting
 
