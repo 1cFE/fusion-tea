@@ -87,3 +87,15 @@ Structural decisions about how the domain is decomposed into model packages. The
 **Alternative rejected**: Placing the magnet system in the design layer (IFE precedent) — would duplicate the definition per concept and understate its concept-agnostic nature.
 
 **Origin**: WI-009 (registered 2026-07-13)
+
+---
+
+## AD-008: Physical Structure in `library/structure/`; Definitions Own Their Template Calcs
+
+**Decision**: Physical, non-costed part definitions (the plasma, the first wall, the modular coil, the winding pack, the coil casing, the primary heat transport, the cryoplant, the fuel cycle, the vacuum pumping) and the interface definitions (item and port defs) live in `models/library/structure/`, a fourth library folder beside `foundation/`, `cost_structure/` and `analyses/` (AD-004). A part definition owns the template calcs whose subject it computes and imports the analysis packages it needs. Every calc output read across a part boundary is an EXPOSE attribute on the definition (`attribute B_peak : Real = peak_field_calc.B_peak;`); a value from another part enters through an input attribute the plant binds in the usage (`part magnet : 'Magnet System' { :>> r_coil_centre = rb.r_coil_centre; }`). An EXPOSE a trade study may replace is declared `default` — a swap seam — so a variant definition specializing the base can rebind it to its own calc; the instance swaps by retyping the part. Ports and `connect` statements declare the energy and material topology and are declarative for codegen. The CAS account hierarchy stays the cost view (AD-005): costed components keep their types and `capital_cost`; sub-parts are plain definitions.
+
+**Rationale**: AD-004's folders separate base types, cost structure and calculations; physical structure is a fourth concern. Definition-owned calcs are the only placement under which a variant definition can replace a formula: a value bound with `=` on a definition is final under syside, a redefining calc usage matches parameters positionally and cannot re-bind them, and only a `default` seam is rebindable (`work/active/WI-057_stellaris-structural-decomposition/prototype/redefinition_probe/`). The arrangement is number-neutral by construction and by diff: every channel, verdict and the LCOE identical to the entering pin through a contract-derived rename ledger across three commits, and a variant's formula moves the priced LCOE only when its own facts do (`prototype/swap/results/`).
+
+**Alternative rejected**: calcs on the plant's part usages (the pre-WI-057 form, and the prototype's Stage B) — number-neutral too, but a variant can then only relabel, never re-price; keeping physical definitions in `cost_structure/` — a category mismatch that would grow with every part.
+
+**Origin**: WI-057 (goal `structural-decomposition` round 1, registered 2026-09-13)

@@ -1,0 +1,11 @@
+{
+ "channels_before": 158,
+ "channels_after": 158,
+ "missing_after": [],
+ "new_after": [],
+ "differing": [],
+ "verdicts_equal": true,
+ "verdict_count": 18,
+ "lcoe_before": 224.26923288439002,
+ "lcoe_after": 224.26923288439002
+}

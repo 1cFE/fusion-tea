@@ -1,0 +1,109 @@
+{
+  "_note": "WI-057 design D4 / \u00a7 1: the definition that hosts each calc usage after commit B. 'plant' = stays on 'MFE Power Plant'. 2026-09-13 re-application onto feat/demo-maturation: 'operating_heat' (the remediation's WI-050 calc) stays on the plant.",
+  "plasma": [
+    "geom",
+    "sustain",
+    "beta_calc",
+    "fusion"
+  ],
+  "blanket": [
+    "blanket_cost",
+    "source_heat"
+  ],
+  "blanket.first_wall": [
+    "wall_load_calc",
+    "wall_peak_cal",
+    "wall_peak_calc"
+  ],
+  "shield": [
+    "shield_cost"
+  ],
+  "structure": [
+    "structure_cost"
+  ],
+  "vessel": [
+    "vessel_cost"
+  ],
+  "magnet": [
+    "field_calc",
+    "peak_field_calc",
+    "stored_energy",
+    "casing_mass",
+    "wp_sizing",
+    "coil_length",
+    "wp_volume",
+    "wp_stress",
+    "cond_strain",
+    "magnet_cost",
+    "winding_pack_cost",
+    "magnet_structure_cost",
+    "magnet_capital_rollup"
+  ],
+  "heat_transport": [
+    "primary_loop",
+    "coolant"
+  ],
+  "turbine": [
+    "cycle",
+    "turbine_cost"
+  ],
+  "electric_plant": [
+    "electric_cost"
+  ],
+  "power_supplies": [
+    "power_supplies_cost"
+  ],
+  "cryoplant": [
+    "cryo_elec",
+    "aux_cooling"
+  ],
+  "heating": [
+    "heat",
+    "heating_cost"
+  ],
+  "divertor": [
+    "divertor_cost",
+    "divheat"
+  ],
+  "fuel_cycle": [
+    "fuel",
+    "fuel_calc",
+    "fuel_handling"
+  ],
+  "vacuum_pumping": [
+    "vacuum"
+  ],
+  "buildings": [
+    "buildings_cost"
+  ],
+  "heat_rejection": [
+    "heat_rejection_cost"
+  ],
+  "misc_plant": [
+    "misc_cost"
+  ],
+  "plant": [
+    "rb",
+    "pb",
+    "remote_handling",
+    "installation",
+    "waste",
+    "other_rpe",
+    "inc_cost",
+    "contingency",
+    "indirect",
+    "owner",
+    "supplementary",
+    "idc",
+    "precon_cost",
+    "om_cost",
+    "cas71_calc",
+    "cas80_calc",
+    "cas70_calc",
+    "calendar",
+    "lcoe_calc",
+    "cas90_1cfe_calc",
+    "lcoe_1cfe_calc",
+    "operating_heat"
+  ]
+}

@@ -1,0 +1,115 @@
+
+======================================================================
+SysML Quality Validation
+Models path: exploration/stellarator_e2e/models
+Mode: Complete
+======================================================================
+
+============================================================
+Level 1: Syntax Validation
+============================================================
+Found 27 SysML files
+
+✅ Level 1: Syntax Validation
+   Files checked: 27
+   Errors: 0
+   Warnings: 0
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 27 SysML files
+
+❌ Level 2: Structural Completeness
+   Unused definitions: 0
+   Unbound inputs: 0
+   Undefined bindings: 0
+   Placeholder bindings: 10
+   Self-named bindings: 0
+   Orphaned elements: 0
+
+   Issues found: 10
+   - WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::waste' - consider binding to attribute or calc output at file:exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml:359
+   - WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::waste' - consider binding to attribute or calc output at file:exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml:359
+   - WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::other_rpe' - consider binding to attribute or calc output at file:exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml:365
+   - WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::other_rpe' - consider binding to attribute or calc output at file:exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml:365
+   - WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::inc_cost' - consider binding to attribute or calc output at file:exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml:371
+   ... and 5 more
+
+============================================================
+Level 3: Dataflow Integrity
+============================================================
+Found 27 SysML files
+
+✅ Level 3: Dataflow Integrity
+   Documents analyzed: 8
+   Circular dependencies: 0
+
+============================================================
+Level 4: Constraint Coverage
+============================================================
+Found 27 SysML files
+
+✅ Level 4: Constraint Coverage
+   Total constraints: 14
+   ConstraintUsage: 14
+   ConstraintDefinition: 14
+   Constraint usages assessed (incl. satisfy): 14
+   Admitted numerical: 14
+   Malformed numerical: 0
+   Non-numerical: 0
+   Unassessed (satisfy/require/plain): 0
+   Executable share: 100.0%
+
+============================================================
+Level 5: Traceability & Documentation
+============================================================
+
+✅ Level 5: Traceability & Documentation
+   Total elements: 94
+   Documented: 94
+   Missing docs: 0
+   Coverage: 100.0%
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+
+❌ Level 6: Architecture & Pipeline Readiness
+   Calc defs checked: 57
+   Calc usages checked: 65
+   Bindings validated: 347
+   Design attrs checked: 154
+   Manifests checked: 0
+   L6_MISSING_QUALIFIED_NAME: 0
+   L6_INVALID_QUALIFIED_NAME: 0
+   L6_CALC_DEF_NO_OUTPUT: 0
+   L6_CALC_DEF_NO_DIRECTION: 0
+   L6_INVALID_BINDING_FORMAT: 0
+   L6_DESIGN_ATTR_INCOMPLETE: 76
+   L6_DESIGN_ATTR_UNEXTRACTABLE: 63
+   L6_ANONYMOUS_RETURN: 0
+   L6_BODY_ASSIGNMENT_IMPL_LOSS: 0
+   V4_STATIC_FUNCTION_INVOCATION: 0
+   L6_CONSTRAINT_MALFORMED_NUMERICAL: 0
+   L6_CONSTRAINT_NON_NUMERICAL: 0
+   L6_CALC_DEF_NO_INSTANTIATION: 0
+   L6_ATTR_REDEF_EXPR_DROPPED: 0
+
+   Issues found: 243
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost'] at file:exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml:312
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'capital_cost', 'capital_cost', 'capital_cost'] at file:exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml:318
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'cas22_capital', 'bop_capital', 'special_materials_capital', 'cas28_capital'] at file:exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml:402
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'capital_cost', 'n_mod'] at file:exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml:534
+   - ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::B' at file:exploration/stellarator_e2e/models/cost_structure/mfe_power_core.sysml:98
+   ... and 238 more
+
+======================================================================
+Summary
+======================================================================
+Checks run: 6
+✅ Passed: 4
+❌ Failed: 2
+
+❌ Quality checks failed
+   Review issues above and fix before proceeding

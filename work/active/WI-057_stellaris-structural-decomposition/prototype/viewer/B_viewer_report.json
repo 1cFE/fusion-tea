@@ -1,0 +1,134 @@
+{
+ "load_state": "ready",
+ "shots": {
+  "source": {
+   "png": "B_source_expanded.png",
+   "containers": [
+    {
+     "id": "g0",
+     "label": "mfe_magnet_field",
+     "parent": null,
+     "members": 7
+    },
+    {
+     "id": "g1",
+     "label": "mfe_magnet_cost",
+     "parent": null,
+     "members": 5
+    },
+    {
+     "id": "g2",
+     "label": "mfe_plasma_scaling",
+     "parent": null,
+     "members": 8
+    },
+    {
+     "id": "g3",
+     "label": "mfe_account_costs",
+     "parent": null,
+     "members": 33
+    },
+    {
+     "id": "g4",
+     "label": "mfe_lcoe_dcf",
+     "parent": null,
+     "members": 1
+    },
+    {
+     "id": "g5",
+     "label": "mfe_fuel_cycle",
+     "parent": null,
+     "members": 1
+    },
+    {
+     "id": "g6",
+     "label": "mfe_power_cycle",
+     "parent": null,
+     "members": 1
+    },
+    {
+     "id": "g7",
+     "label": "mfe_primary_loop",
+     "parent": null,
+     "members": 1
+    },
+    {
+     "id": "g8",
+     "label": "mfe_plasma_sustainment",
+     "parent": null,
+     "members": 1
+    },
+    {
+     "id": "g9",
+     "label": "mfe_power_balance",
+     "parent": null,
+     "members": 2
+    },
+    {
+     "id": "g10",
+     "label": "mfe_vacuum",
+     "parent": null,
+     "members": 1
+    },
+    {
+     "id": "g11",
+     "label": "mfe_cryo_plant",
+     "parent": null,
+     "members": 1
+    },
+    {
+     "id": "g12",
+     "label": "mfe_lifecycle",
+     "parent": null,
+     "members": 1
+    },
+    {
+     "id": "g13",
+     "label": "mfe_divertor_heat",
+     "parent": null,
+     "members": 1
+    },
+    {
+     "id": "g14",
+     "label": "mfe_heating_chain",
+     "parent": null,
+     "members": 1
+    },
+    {
+     "id": "g15",
+     "label": "mfe_plant",
+     "parent": null,
+     "members": 10
+    },
+    {
+     "id": "g16",
+     "label": "stellarator_plant",
+     "parent": null,
+     "members": 1
+    }
+   ],
+   "calc_nodes": 76,
+   "collapsed_png": "B_source_collapsed.png"
+  },
+  "occurrence": {
+   "png": "B_occurrence_expanded.png",
+   "containers": [
+    {
+     "id": "o1",
+     "label": "stellaris",
+     "parent": null,
+     "members": 76
+    },
+    {
+     "id": "o0",
+     "label": "magnet",
+     "parent": "o1",
+     "members": 13
+    }
+   ],
+   "calc_nodes": 76,
+   "collapsed_png": "B_occurrence_collapsed.png"
+  }
+ },
+ "problems": []
+}

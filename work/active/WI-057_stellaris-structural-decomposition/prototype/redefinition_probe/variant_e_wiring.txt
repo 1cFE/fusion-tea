@@ -1,0 +1,4 @@
+  redefprobe__probe__total_calc:
+    module_type: redefprobe.TotalModule
+    inputs:
+      c: float RedefProbe__probe__magnet__structure_cost_ni__cost.root

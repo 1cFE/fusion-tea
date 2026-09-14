@@ -1,0 +1,13 @@
+{
+ "operating_heat_coupled": "stellarator_09__stellaris__operating_heat__p_coupled",
+ "operating_heat_delivered": "stellarator_09__stellaris__operating_heat__p_delivered",
+ "operating_heat_wallplug": "stellarator_09__stellaris__operating_heat__p_wallplug",
+ "lcoe": "stellarator_09__stellaris__lcoe_calc__lcoe",
+ "wall_load": "stellarator_09__stellaris__blanket__first_wall__wall_load_calc__wall_load",
+ "p_fus": "stellarator_09__stellaris__plasma__fusion__p_fus",
+ "plasma_volume": "stellarator_09__stellaris__plasma__geom__V",
+ "total_capital": "stellarator_09__stellaris__total_capital__total_capital",
+ "magnet_capital": "stellarator_09__stellaris__magnet__magnet_cost__capital_cost",
+ "overnight_capital": "stellarator_09__stellaris__overnight_capital__overnight_capital",
+ "lcoe_1cfe": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe"
+}

@@ -1,0 +1,60 @@
+{
+ "before": {
+  "occurrences": 14,
+  "depth": 2,
+  "attrs": 292,
+  "attrs_at_root": 194,
+  "calcs": 76,
+  "calcs_at_root": 76,
+  "calcs_by_occurrence": {
+   "stellaris": 76
+  }
+ },
+ "stage_A": {
+  "occurrences": 18,
+  "depth": 3,
+  "attrs": 292,
+  "attrs_at_root": 175,
+  "calcs": 76,
+  "calcs_at_root": 76,
+  "calcs_by_occurrence": {
+   "stellaris": 76
+  }
+ },
+ "stage_B": {
+  "occurrences": 18,
+  "depth": 3,
+  "attrs": 297,
+  "attrs_at_root": 175,
+  "calcs": 76,
+  "calcs_at_root": 63,
+  "calcs_by_occurrence": {
+   "stellaris.magnet": 13,
+   "stellaris": 63
+  }
+ },
+ "stage_D": {
+  "occurrences": 18,
+  "depth": 3,
+  "attrs": 299,
+  "attrs_at_root": 175,
+  "calcs": 76,
+  "calcs_at_root": 63,
+  "calcs_by_occurrence": {
+   "stellaris.magnet": 13,
+   "stellaris": 63
+  }
+ },
+ "stage_E": {
+  "occurrences": 18,
+  "depth": 3,
+  "attrs": 301,
+  "attrs_at_root": 174,
+  "calcs": 77,
+  "calcs_at_root": 63,
+  "calcs_by_occurrence": {
+   "stellaris.magnet": 14,
+   "stellaris": 63
+  }
+ }
+}

@@ -1,0 +1,10 @@
+semantic_fingerprint 1dfacc7c0f41997c20c3d6c90104dc52ff0a13d4a6f2479246c4edd929147d74
+PARAM StructuralProbe__probe__magnet__casing__m_casing_ref 120.0 design_attribute
+PARAM StructuralProbe__probe__magnet__n_coils 40.0 design_attribute
+OUTPUT StructuralProbe__probe__casing_total__m_total float
+OCCURRENCE blanket parent= probe
+OCCURRENCE casing parent= magnet
+OCCURRENCE coil parent= magnet
+OCCURRENCE magnet parent= probe
+OCCURRENCE primary_loop parent= probe
+OCCURRENCE probe parent= None

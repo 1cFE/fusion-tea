@@ -64,3 +64,11 @@ A monkeypatched projection showed why: the unbound defaulted formal `k_B_in`, de
 - **Harness handling (WI-047 phase 1, deviation 4)**: `k_B_in` moved to the last formal position; generation then succeeds (91 module wrappers, 76 stencils). The convention "defaulted formals last" is now load-bearing and is stated in the calc's model text.
 - **Upstream fix candidate**: match formals to bound arguments by **name**, never by declaration slot; and if a slot match is kept as a fallback, refuse when a slot match and a name match disagree rather than preferring the slot.
 - **Evidence**: `work/active/WI-047_fuel-divertor-vacuum-flows/plan.md` § Phase 1 record, deviation 4; the scratch generation probe recorded there.
+
+## Finding 12 (2026-09-13, model-viz) — `calc_expressions` is documented as preserved as-is but carries the doc comment appended as its last entry
+
+The snapshot's `calc_expressions` list is documented as the calc's expression lines "preserved as-is" (`sysml-codegen/src/sysml_codegen/extraction/data_models.py:80`), but the extractor appends the doc comment to the list (`extraction/extractor.py:175-180`): as `"\nDocumentation:\n" + doc_comment` when formula lines exist (64 of 65 non-empty lists on the stellarator snapshot) and as `"See documentation:\n" + doc_comment` when none do (1, `calendar`). The same text is also serialized in `doc_comment`. A consumer that renders both fields shows the documentation twice, and a consumer that counts formula lines over-counts by one.
+
+- **Impact**: display only; no generated number is affected. The model-viz viewer (`.project/active/model-viz/design.md` D7) compensates by recognising a last entry that ends with the doc comment and labelling it as a repeat, rather than dropping it. That compensation is a workaround for this defect, not a contract the viewer should rely on.
+- **Upstream fix candidate**: stop appending the doc comment to `calc_expressions`; keep it only in `doc_comment`. If a rendered "Documentation:" block is wanted for some consumer, put it in a separate field. After the fix, the viewer's repeat note simply never fires.
+- **Evidence**: `.project/active/model-viz/design-review.md` DR-M3 and the fixture probe in `design.md` Appendix A (SHA-256 `c9f6e2a5…ce393`).

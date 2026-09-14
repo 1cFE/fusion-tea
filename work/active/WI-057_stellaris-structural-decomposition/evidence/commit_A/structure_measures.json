@@ -1,0 +1,33 @@
+{
+ "occurrences": 23,
+ "depth": 3,
+ "attrs": 292,
+ "attrs_at_root": 76,
+ "calcs": 76,
+ "calcs_at_root": 76,
+ "attrs_by_occurrence": {
+  "stellaris": 76,
+  "stellaris.blanket": 11,
+  "stellaris.blanket.first_wall": 10,
+  "stellaris.buildings": 10,
+  "stellaris.cryoplant": 9,
+  "stellaris.divertor": 10,
+  "stellaris.electric_plant": 5,
+  "stellaris.fuel_cycle": 13,
+  "stellaris.heat_rejection": 5,
+  "stellaris.heat_transport": 16,
+  "stellaris.heating": 16,
+  "stellaris.magnet": 8,
+  "stellaris.magnet.casing": 6,
+  "stellaris.magnet.coil": 16,
+  "stellaris.magnet.winding_pack": 10,
+  "stellaris.misc_plant": 5,
+  "stellaris.plasma": 19,
+  "stellaris.power_supplies": 7,
+  "stellaris.shield": 9,
+  "stellaris.structure": 7,
+  "stellaris.turbine": 14,
+  "stellaris.vacuum_pumping": 2,
+  "stellaris.vessel": 8
+ }
+}

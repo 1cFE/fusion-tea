@@ -1,0 +1,4704 @@
+{
+  "schema_version": "study-indicators/v1",
+  "tool": {
+    "path": "scripts/study/indicators.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "e53d7027da93de75e2b92f6e1006ebf7d040d98c229cb9e16993a1735356334e",
+      "files": [
+        {
+          "path": "scripts/study/indicators.py",
+          "sha256": "5c2c30532e058a76739a4ee95b619f2bc48209683feddec9d6aa76c821bd49df"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+        },
+        {
+          "path": "scripts/study/schemas/axis_declaration.v1.schema.json",
+          "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+        },
+        {
+          "path": "scripts/study/schemas/indicators.v1.schema.json",
+          "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+        },
+        {
+          "path": "scripts/study/schemas/study_package_manifest.v1.schema.json",
+          "sha256": "5fd44712cd032647df701a24f237f2dda7ccd75c2f101a5c6244c9b6bca47032"
+        }
+      ]
+    }
+  },
+  "package": {
+    "path": "exploration/stellarator_e2e/pkg/stellarator_tea",
+    "package_name": "stellarator_tea",
+    "semantic_fingerprint": "7b246b4215ab41a9a053dfd5632a4dbbe3b485edfe8899d6f9f46a37fccf1152",
+    "recorded_executable_fingerprint": "ff1806233fc9e3014cc38e9cf6d97fb8767bad77178b7da892fb9ed663b0296c",
+    "indicator_input_fingerprint": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "9de3074dd5c712c551e6b8386a5ef0a3292d1022756b07598c1ceae9ca64016c",
+      "files": [
+        {
+          "path": "contracts/model_contract.json",
+          "sha256": "0464d5fd5bec7a2c8932319ee41c963b5d009992d6b6077444385450e0e634d1"
+        },
+        {
+          "path": "inputs/mfe_account_costs_params.json",
+          "sha256": "5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3"
+        },
+        {
+          "path": "inputs/mfe_fuel_cycle_params.json",
+          "sha256": "7c91948cb65554dad5d7dd4b50372116b903727e33bc11652940e11920a53d2b"
+        },
+        {
+          "path": "inputs/mfe_magnet_cost_params.json",
+          "sha256": "0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113"
+        },
+        {
+          "path": "inputs/mfe_magnet_field_params.json",
+          "sha256": "e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180"
+        },
+        {
+          "path": "inputs/mfe_plant_params.json",
+          "sha256": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814"
+        },
+        {
+          "path": "inputs/mfe_plasma_scaling_params.json",
+          "sha256": "d6324b43a9b6da6db2a9a26596378190b06b680bac856fdfab6e30d224f77b6d"
+        },
+        {
+          "path": "inputs/mfe_plasma_sustainment_params.json",
+          "sha256": "d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14"
+        },
+        {
+          "path": "inputs/mfe_vacuum_params.json",
+          "sha256": "4d239714198183bb1414461a30ddfc078fb19f057849cfd8049738b945b7f902"
+        },
+        {
+          "path": "inputs/stellarator_plant_params.json",
+          "sha256": "5772bc7a12d31e47755bc9cc8d40847d286b23b6a4a05e1fc6aec0cd50effab7"
+        },
+        {
+          "path": "pipelines/pipeline.yaml",
+          "sha256": "8f6d8f8235596fe8f323e63b56aecfd2dea3d36dd029d38be3244d3cc6bf9712"
+        }
+      ]
+    }
+  },
+  "manifest": {
+    "path": "exploration/stellarator_e2e/studies/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "c0ef60a92964a18c42ad8fa6c4e54c1b768d257c5adc089827e37c0938544d26"
+  },
+  "axis_declaration": {
+    "path": "tests/study/data/axes.known_answers.json",
+    "schema_version": "study-axis-declaration/v1",
+    "digest": "7b4c8379b83a0eea5fd5ea53c6bc5fe995070993b9bc50bb394ed5ae24aa1c98",
+    "groups_declared": [
+      "I_coil",
+      "R",
+      "R+tie",
+      "a",
+      "availability_direct",
+      "interest_rate"
+    ],
+    "subset": false
+  },
+  "objective_catalog": [
+    {
+      "name": "beta",
+      "channel": "stellarator_09__stellaris__beta_calc__beta"
+    },
+    {
+      "name": "cas27",
+      "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital"
+    },
+    {
+      "name": "cas72",
+      "channel": "stellarator_09__stellaris__calendar__cas72_annual"
+    },
+    {
+      "name": "fuel",
+      "channel": "stellarator_09__stellaris__fuel_calc__annual_fuel"
+    },
+    {
+      "name": "lcoe",
+      "channel": "stellarator_09__stellaris__lcoe_calc__lcoe"
+    },
+    {
+      "name": "lcoe_1cfe",
+      "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe"
+    },
+    {
+      "name": "magnet_capital",
+      "channel": "stellarator_09__stellaris__magnet_capital_rollup__capital_cost"
+    },
+    {
+      "name": "magnet_capital_1cfe",
+      "channel": "stellarator_09__stellaris__magnet_cost__capital_cost"
+    },
+    {
+      "name": "p_aux_required",
+      "channel": "stellarator_09__stellaris__sustain__p_aux_required"
+    },
+    {
+      "name": "tau_E",
+      "channel": "stellarator_09__stellaris__sustain__tau_E"
+    },
+    {
+      "name": "total_capital",
+      "channel": "stellarator_09__stellaris__total_capital__total_capital"
+    }
+  ],
+  "not_derivable": {
+    "statements": [
+      "monotonicity or sign of any response",
+      "same-quantity identity across differing key names",
+      "intra-module operand dependency (the trace is module-level)"
+    ],
+    "positive_reading": "A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds."
+  },
+  "warnings": [
+    {
+      "kind": "duplicate_key_across_groups",
+      "detail": "key 'stellarator_09__stellaris__plasma__R' is declared in more than one group: R, R+tie"
+    }
+  ],
+  "groups": [
+    {
+      "axis": "I_coil",
+      "declared_keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+          "provenance": "fan_out",
+          "entry_type": "design_attribute"
+        }
+      ],
+      "group_valid": true,
+      "no_constraint_response": false,
+      "constraints_reachable": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "definition_qualified_name": "mfe_viability::'Beta Limit'",
+          "source_local_identity": "beta_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "beta_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__beta_calc__beta",
+              "reached": true
+            },
+            {
+              "operand": "beta_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__beta_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "definition_qualified_name": "mfe_viability::'Burn Hold'",
+          "source_local_identity": "burn_hold_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+          "source_local_identity": "cond_strain_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "eps_cond",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+              "reached": true
+            },
+            {
+              "operand": "eps_cond_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+          "source_local_identity": "cycle_domain_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "domain_product_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cycle__domain_product",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+          "source_local_identity": "divertor_heat_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "q_target_peak_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+              "reached": true
+            },
+            {
+              "operand": "q_target_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__divertor__q_target_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+          "source_local_identity": "loop_capacity_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "mdot_loop_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+              "reached": true
+            },
+            {
+              "operand": "mdot_loop_rated_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__heat_transport__mdot_loop_ref",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+          "source_local_identity": "loop_pressure_ok",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_loop_margin_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_electric",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__p_net",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+          "source_local_identity": "peak_field_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "B_peak",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+              "reached": true
+            },
+            {
+              "operand": "B_max_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+          "source_local_identity": "recirc_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "rec_frac",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__rec_frac",
+              "reached": true
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__recirc_ok__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
+          "source_local_identity": "sustainment_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "p_aux_installed_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__heat__p_coupled",
+              "reached": false
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+          "source_local_identity": "wall_load_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "wall_load",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+              "reached": true
+            },
+            {
+              "operand": "wall_load_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__wall_load_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+          "source_local_identity": "wp_stress_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "sigma_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
+              "reached": true
+            },
+            {
+              "operand": "sigma_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__casing__sigma_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "constraints_unreachable": [
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "definition_qualified_name": "mfe_viability::'TBR Floor'",
+          "source_local_identity": "tbr_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "tbr_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__blanket__tbr",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "tbr_floor_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__tbr_floor",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "bounds": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "definition_qualified_name": "mfe_viability::'Beta Limit'",
+          "source_local_identity": "beta_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "beta_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__beta_calc__beta",
+              "reached": true
+            },
+            {
+              "operand": "beta_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__beta_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "definition_qualified_name": "mfe_viability::'Burn Hold'",
+          "source_local_identity": "burn_hold_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+          "source_local_identity": "cond_strain_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "eps_cond",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+              "reached": true
+            },
+            {
+              "operand": "eps_cond_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+          "source_local_identity": "cycle_domain_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "domain_product_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cycle__domain_product",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+          "source_local_identity": "divertor_heat_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "q_target_peak_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+              "reached": true
+            },
+            {
+              "operand": "q_target_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__divertor__q_target_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+          "source_local_identity": "loop_capacity_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "mdot_loop_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+              "reached": true
+            },
+            {
+              "operand": "mdot_loop_rated_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__heat_transport__mdot_loop_ref",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+          "source_local_identity": "loop_pressure_ok",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_loop_margin_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_electric",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__p_net",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+          "source_local_identity": "peak_field_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "B_peak",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+              "reached": true
+            },
+            {
+              "operand": "B_max_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+          "source_local_identity": "recirc_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "rec_frac",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__rec_frac",
+              "reached": true
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__recirc_ok__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
+          "source_local_identity": "sustainment_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "p_aux_installed_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__heat__p_coupled",
+              "reached": false
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "definition_qualified_name": "mfe_viability::'TBR Floor'",
+          "source_local_identity": "tbr_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "tbr_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__blanket__tbr",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "tbr_floor_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__tbr_floor",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+          "source_local_identity": "wall_load_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "wall_load",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+              "reached": true
+            },
+            {
+              "operand": "wall_load_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__wall_load_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+          "source_local_identity": "wp_stress_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "sigma_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
+              "reached": true
+            },
+            {
+              "operand": "sigma_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__casing__sigma_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "objectives_reachable": [
+        "beta",
+        "cas72",
+        "fuel",
+        "lcoe",
+        "lcoe_1cfe",
+        "magnet_capital",
+        "magnet_capital_1cfe",
+        "p_aux_required",
+        "tau_E",
+        "total_capital"
+      ],
+      "objectives_unreachable": [
+        "cas27"
+      ],
+      "sibling_candidates": [],
+      "trace_size": {
+        "modules_fired": 83,
+        "channels_tainted": 152
+      },
+      "warnings": [],
+      "not_derivable": {
+        "statements": [
+          "monotonicity or sign of any response",
+          "same-quantity identity across differing key names",
+          "intra-module operand dependency (the trace is module-level)"
+        ],
+        "positive_reading": "A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds."
+      }
+    },
+    {
+      "axis": "R",
+      "declared_keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__R",
+          "provenance": "fan_out",
+          "entry_type": "design_attribute"
+        }
+      ],
+      "group_valid": true,
+      "no_constraint_response": false,
+      "constraints_reachable": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "definition_qualified_name": "mfe_viability::'Beta Limit'",
+          "source_local_identity": "beta_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "beta_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__beta_calc__beta",
+              "reached": true
+            },
+            {
+              "operand": "beta_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__beta_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "definition_qualified_name": "mfe_viability::'Burn Hold'",
+          "source_local_identity": "burn_hold_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+          "source_local_identity": "cond_strain_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "eps_cond",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+              "reached": true
+            },
+            {
+              "operand": "eps_cond_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+          "source_local_identity": "cycle_domain_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "domain_product_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cycle__domain_product",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+          "source_local_identity": "divertor_heat_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "q_target_peak_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+              "reached": true
+            },
+            {
+              "operand": "q_target_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__divertor__q_target_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+          "source_local_identity": "loop_capacity_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "mdot_loop_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+              "reached": true
+            },
+            {
+              "operand": "mdot_loop_rated_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__heat_transport__mdot_loop_ref",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+          "source_local_identity": "loop_pressure_ok",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_loop_margin_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_electric",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__p_net",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+          "source_local_identity": "peak_field_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "B_peak",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+              "reached": true
+            },
+            {
+              "operand": "B_max_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+          "source_local_identity": "recirc_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "rec_frac",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__rec_frac",
+              "reached": true
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__recirc_ok__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
+          "source_local_identity": "sustainment_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "p_aux_installed_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__heat__p_coupled",
+              "reached": false
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+          "source_local_identity": "wall_load_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "wall_load",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+              "reached": true
+            },
+            {
+              "operand": "wall_load_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__wall_load_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+          "source_local_identity": "wp_stress_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "sigma_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
+              "reached": true
+            },
+            {
+              "operand": "sigma_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__casing__sigma_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "constraints_unreachable": [
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "definition_qualified_name": "mfe_viability::'TBR Floor'",
+          "source_local_identity": "tbr_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "tbr_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__blanket__tbr",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "tbr_floor_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__tbr_floor",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "bounds": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "definition_qualified_name": "mfe_viability::'Beta Limit'",
+          "source_local_identity": "beta_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "beta_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__beta_calc__beta",
+              "reached": true
+            },
+            {
+              "operand": "beta_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__beta_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "definition_qualified_name": "mfe_viability::'Burn Hold'",
+          "source_local_identity": "burn_hold_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+          "source_local_identity": "cond_strain_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "eps_cond",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+              "reached": true
+            },
+            {
+              "operand": "eps_cond_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+          "source_local_identity": "cycle_domain_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "domain_product_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cycle__domain_product",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+          "source_local_identity": "divertor_heat_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "q_target_peak_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+              "reached": true
+            },
+            {
+              "operand": "q_target_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__divertor__q_target_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+          "source_local_identity": "loop_capacity_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "mdot_loop_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+              "reached": true
+            },
+            {
+              "operand": "mdot_loop_rated_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__heat_transport__mdot_loop_ref",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+          "source_local_identity": "loop_pressure_ok",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_loop_margin_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_electric",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__p_net",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+          "source_local_identity": "peak_field_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "B_peak",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+              "reached": true
+            },
+            {
+              "operand": "B_max_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+          "source_local_identity": "recirc_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "rec_frac",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__rec_frac",
+              "reached": true
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__recirc_ok__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
+          "source_local_identity": "sustainment_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "p_aux_installed_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__heat__p_coupled",
+              "reached": false
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "definition_qualified_name": "mfe_viability::'TBR Floor'",
+          "source_local_identity": "tbr_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "tbr_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__blanket__tbr",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "tbr_floor_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__tbr_floor",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+          "source_local_identity": "wall_load_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "wall_load",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+              "reached": true
+            },
+            {
+              "operand": "wall_load_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__wall_load_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+          "source_local_identity": "wp_stress_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "sigma_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
+              "reached": true
+            },
+            {
+              "operand": "sigma_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__casing__sigma_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "objectives_reachable": [
+        "beta",
+        "cas27",
+        "cas72",
+        "fuel",
+        "lcoe",
+        "lcoe_1cfe",
+        "magnet_capital",
+        "magnet_capital_1cfe",
+        "p_aux_required",
+        "tau_E",
+        "total_capital"
+      ],
+      "objectives_unreachable": [],
+      "sibling_candidates": [],
+      "trace_size": {
+        "modules_fired": 81,
+        "channels_tainted": 157
+      },
+      "warnings": [
+        {
+          "kind": "tie_candidate",
+          "detail": "the manifest declares 'stellarator_09__stellaris__magnet__coil__R0' as riding with stellarator_09__stellaris__plasma__R, all of which are in this group. Membership is declared-only, so the key was not added \u2014 declare it if it belongs."
+        }
+      ],
+      "not_derivable": {
+        "statements": [
+          "monotonicity or sign of any response",
+          "same-quantity identity across differing key names",
+          "intra-module operand dependency (the trace is module-level)"
+        ],
+        "positive_reading": "A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds."
+      }
+    },
+    {
+      "axis": "R+tie",
+      "declared_keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__R0",
+          "provenance": "tie",
+          "entry_type": "design_attribute"
+        },
+        {
+          "key": "stellarator_09__stellaris__plasma__R",
+          "provenance": "fan_out",
+          "entry_type": "design_attribute"
+        }
+      ],
+      "group_valid": true,
+      "no_constraint_response": false,
+      "constraints_reachable": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "definition_qualified_name": "mfe_viability::'Beta Limit'",
+          "source_local_identity": "beta_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "beta_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__beta_calc__beta",
+              "reached": true
+            },
+            {
+              "operand": "beta_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__beta_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "definition_qualified_name": "mfe_viability::'Burn Hold'",
+          "source_local_identity": "burn_hold_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+          "source_local_identity": "cond_strain_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "eps_cond",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+              "reached": true
+            },
+            {
+              "operand": "eps_cond_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+          "source_local_identity": "cycle_domain_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "domain_product_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cycle__domain_product",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+          "source_local_identity": "divertor_heat_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "q_target_peak_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+              "reached": true
+            },
+            {
+              "operand": "q_target_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__divertor__q_target_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+          "source_local_identity": "loop_capacity_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "mdot_loop_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+              "reached": true
+            },
+            {
+              "operand": "mdot_loop_rated_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__heat_transport__mdot_loop_ref",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+          "source_local_identity": "loop_pressure_ok",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_loop_margin_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_electric",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__p_net",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+          "source_local_identity": "peak_field_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "B_peak",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+              "reached": true
+            },
+            {
+              "operand": "B_max_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+          "source_local_identity": "recirc_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "rec_frac",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__rec_frac",
+              "reached": true
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__recirc_ok__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
+          "source_local_identity": "sustainment_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "p_aux_installed_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__heat__p_coupled",
+              "reached": false
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+          "source_local_identity": "wall_load_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "wall_load",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+              "reached": true
+            },
+            {
+              "operand": "wall_load_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__wall_load_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+          "source_local_identity": "wp_stress_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "sigma_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
+              "reached": true
+            },
+            {
+              "operand": "sigma_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__casing__sigma_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "constraints_unreachable": [
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "definition_qualified_name": "mfe_viability::'TBR Floor'",
+          "source_local_identity": "tbr_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "tbr_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__blanket__tbr",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "tbr_floor_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__tbr_floor",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "bounds": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "definition_qualified_name": "mfe_viability::'Beta Limit'",
+          "source_local_identity": "beta_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "beta_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__beta_calc__beta",
+              "reached": true
+            },
+            {
+              "operand": "beta_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__beta_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "definition_qualified_name": "mfe_viability::'Burn Hold'",
+          "source_local_identity": "burn_hold_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+          "source_local_identity": "cond_strain_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "eps_cond",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+              "reached": true
+            },
+            {
+              "operand": "eps_cond_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+          "source_local_identity": "cycle_domain_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "domain_product_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cycle__domain_product",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+          "source_local_identity": "divertor_heat_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "q_target_peak_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+              "reached": true
+            },
+            {
+              "operand": "q_target_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__divertor__q_target_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+          "source_local_identity": "loop_capacity_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "mdot_loop_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+              "reached": true
+            },
+            {
+              "operand": "mdot_loop_rated_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__heat_transport__mdot_loop_ref",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+          "source_local_identity": "loop_pressure_ok",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_loop_margin_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_electric",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__p_net",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+          "source_local_identity": "peak_field_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "B_peak",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+              "reached": true
+            },
+            {
+              "operand": "B_max_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+          "source_local_identity": "recirc_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "rec_frac",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__rec_frac",
+              "reached": true
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__recirc_ok__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
+          "source_local_identity": "sustainment_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "p_aux_installed_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__heat__p_coupled",
+              "reached": false
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "definition_qualified_name": "mfe_viability::'TBR Floor'",
+          "source_local_identity": "tbr_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "tbr_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__blanket__tbr",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "tbr_floor_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__tbr_floor",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+          "source_local_identity": "wall_load_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "wall_load",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+              "reached": true
+            },
+            {
+              "operand": "wall_load_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__wall_load_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+          "source_local_identity": "wp_stress_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "sigma_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
+              "reached": true
+            },
+            {
+              "operand": "sigma_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__casing__sigma_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "objectives_reachable": [
+        "beta",
+        "cas27",
+        "cas72",
+        "fuel",
+        "lcoe",
+        "lcoe_1cfe",
+        "magnet_capital",
+        "magnet_capital_1cfe",
+        "p_aux_required",
+        "tau_E",
+        "total_capital"
+      ],
+      "objectives_unreachable": [],
+      "sibling_candidates": [],
+      "trace_size": {
+        "modules_fired": 86,
+        "channels_tainted": 162
+      },
+      "warnings": [],
+      "not_derivable": {
+        "statements": [
+          "monotonicity or sign of any response",
+          "same-quantity identity across differing key names",
+          "intra-module operand dependency (the trace is module-level)"
+        ],
+        "positive_reading": "A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds."
+      }
+    },
+    {
+      "axis": "a",
+      "declared_keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__a",
+          "provenance": "fan_out",
+          "entry_type": "design_attribute"
+        }
+      ],
+      "group_valid": true,
+      "no_constraint_response": false,
+      "constraints_reachable": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "definition_qualified_name": "mfe_viability::'Beta Limit'",
+          "source_local_identity": "beta_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "beta_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__beta_calc__beta",
+              "reached": true
+            },
+            {
+              "operand": "beta_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__beta_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "definition_qualified_name": "mfe_viability::'Burn Hold'",
+          "source_local_identity": "burn_hold_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+          "source_local_identity": "cond_strain_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "eps_cond",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+              "reached": true
+            },
+            {
+              "operand": "eps_cond_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+          "source_local_identity": "cycle_domain_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "domain_product_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cycle__domain_product",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+          "source_local_identity": "divertor_heat_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "q_target_peak_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+              "reached": true
+            },
+            {
+              "operand": "q_target_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__divertor__q_target_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+          "source_local_identity": "loop_capacity_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "mdot_loop_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+              "reached": true
+            },
+            {
+              "operand": "mdot_loop_rated_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__heat_transport__mdot_loop_ref",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+          "source_local_identity": "loop_pressure_ok",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_loop_margin_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_electric",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__p_net",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+          "source_local_identity": "peak_field_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "B_peak",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+              "reached": true
+            },
+            {
+              "operand": "B_max_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+          "source_local_identity": "recirc_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "rec_frac",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__rec_frac",
+              "reached": true
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__recirc_ok__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
+          "source_local_identity": "sustainment_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "p_aux_installed_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__heat__p_coupled",
+              "reached": false
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+          "source_local_identity": "wall_load_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "wall_load",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+              "reached": true
+            },
+            {
+              "operand": "wall_load_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__wall_load_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+          "source_local_identity": "wp_stress_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "sigma_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
+              "reached": true
+            },
+            {
+              "operand": "sigma_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__casing__sigma_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "constraints_unreachable": [
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "definition_qualified_name": "mfe_viability::'TBR Floor'",
+          "source_local_identity": "tbr_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "tbr_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__blanket__tbr",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "tbr_floor_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__tbr_floor",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "bounds": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "definition_qualified_name": "mfe_viability::'Beta Limit'",
+          "source_local_identity": "beta_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "beta_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__beta_calc__beta",
+              "reached": true
+            },
+            {
+              "operand": "beta_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__beta_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "definition_qualified_name": "mfe_viability::'Burn Hold'",
+          "source_local_identity": "burn_hold_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+          "source_local_identity": "cond_strain_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "eps_cond",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+              "reached": true
+            },
+            {
+              "operand": "eps_cond_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+          "source_local_identity": "cycle_domain_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "domain_product_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cycle__domain_product",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+          "source_local_identity": "divertor_heat_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "q_target_peak_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+              "reached": true
+            },
+            {
+              "operand": "q_target_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__divertor__q_target_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+          "source_local_identity": "loop_capacity_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "mdot_loop_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+              "reached": true
+            },
+            {
+              "operand": "mdot_loop_rated_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__heat_transport__mdot_loop_ref",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+          "source_local_identity": "loop_pressure_ok",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_loop_margin_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_electric",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__p_net",
+              "reached": true
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+          "source_local_identity": "peak_field_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "B_peak",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+              "reached": true
+            },
+            {
+              "operand": "B_max_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+          "source_local_identity": "recirc_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "rec_frac",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__rec_frac",
+              "reached": true
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__recirc_ok__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
+          "source_local_identity": "sustainment_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": true
+            },
+            {
+              "operand": "p_aux_installed_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__heat__p_coupled",
+              "reached": false
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "definition_qualified_name": "mfe_viability::'TBR Floor'",
+          "source_local_identity": "tbr_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "tbr_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__blanket__tbr",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "tbr_floor_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__tbr_floor",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+          "source_local_identity": "wall_load_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "wall_load",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+              "reached": true
+            },
+            {
+              "operand": "wall_load_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__wall_load_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+          "source_local_identity": "wp_stress_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "sigma_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
+              "reached": true
+            },
+            {
+              "operand": "sigma_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__casing__sigma_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "objectives_reachable": [
+        "beta",
+        "cas27",
+        "cas72",
+        "fuel",
+        "lcoe",
+        "lcoe_1cfe",
+        "magnet_capital",
+        "magnet_capital_1cfe",
+        "p_aux_required",
+        "tau_E",
+        "total_capital"
+      ],
+      "objectives_unreachable": [],
+      "sibling_candidates": [],
+      "trace_size": {
+        "modules_fired": 81,
+        "channels_tainted": 157
+      },
+      "warnings": [],
+      "not_derivable": {
+        "statements": [
+          "monotonicity or sign of any response",
+          "same-quantity identity across differing key names",
+          "intra-module operand dependency (the trace is module-level)"
+        ],
+        "positive_reading": "A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds."
+      }
+    },
+    {
+      "axis": "availability_direct",
+      "declared_keys": [
+        {
+          "key": "stellarator_09__stellaris__availability_direct",
+          "provenance": "fan_out",
+          "entry_type": "design_attribute"
+        }
+      ],
+      "group_valid": true,
+      "no_constraint_response": true,
+      "constraints_reachable": [],
+      "constraints_unreachable": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "definition_qualified_name": "mfe_viability::'Beta Limit'",
+          "source_local_identity": "beta_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "beta_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__beta_calc__beta",
+              "reached": false
+            },
+            {
+              "operand": "beta_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__beta_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "definition_qualified_name": "mfe_viability::'Burn Hold'",
+          "source_local_identity": "burn_hold_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+          "source_local_identity": "cond_strain_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "eps_cond",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+              "reached": false
+            },
+            {
+              "operand": "eps_cond_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+          "source_local_identity": "cycle_domain_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "domain_product_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cycle__domain_product",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+          "source_local_identity": "divertor_heat_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "q_target_peak_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+              "reached": false
+            },
+            {
+              "operand": "q_target_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__divertor__q_target_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+          "source_local_identity": "loop_capacity_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "mdot_loop_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+              "reached": false
+            },
+            {
+              "operand": "mdot_loop_rated_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__heat_transport__mdot_loop_ref",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+          "source_local_identity": "loop_pressure_ok",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_loop_margin_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_electric",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__p_net",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+          "source_local_identity": "peak_field_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "B_peak",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+              "reached": false
+            },
+            {
+              "operand": "B_max_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+          "source_local_identity": "recirc_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "rec_frac",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__rec_frac",
+              "reached": false
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__recirc_ok__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
+          "source_local_identity": "sustainment_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": false
+            },
+            {
+              "operand": "p_aux_installed_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__heat__p_coupled",
+              "reached": false
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "definition_qualified_name": "mfe_viability::'TBR Floor'",
+          "source_local_identity": "tbr_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "tbr_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__blanket__tbr",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "tbr_floor_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__tbr_floor",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+          "source_local_identity": "wall_load_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "wall_load",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+              "reached": false
+            },
+            {
+              "operand": "wall_load_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__wall_load_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+          "source_local_identity": "wp_stress_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "sigma_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
+              "reached": false
+            },
+            {
+              "operand": "sigma_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__casing__sigma_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "bounds": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "definition_qualified_name": "mfe_viability::'Beta Limit'",
+          "source_local_identity": "beta_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "beta_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__beta_calc__beta",
+              "reached": false
+            },
+            {
+              "operand": "beta_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__beta_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "definition_qualified_name": "mfe_viability::'Burn Hold'",
+          "source_local_identity": "burn_hold_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+          "source_local_identity": "cond_strain_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "eps_cond",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+              "reached": false
+            },
+            {
+              "operand": "eps_cond_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+          "source_local_identity": "cycle_domain_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "domain_product_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cycle__domain_product",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+          "source_local_identity": "divertor_heat_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "q_target_peak_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+              "reached": false
+            },
+            {
+              "operand": "q_target_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__divertor__q_target_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+          "source_local_identity": "loop_capacity_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "mdot_loop_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+              "reached": false
+            },
+            {
+              "operand": "mdot_loop_rated_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__heat_transport__mdot_loop_ref",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+          "source_local_identity": "loop_pressure_ok",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_loop_margin_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_electric",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__p_net",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+          "source_local_identity": "peak_field_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "B_peak",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+              "reached": false
+            },
+            {
+              "operand": "B_max_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+          "source_local_identity": "recirc_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "rec_frac",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__rec_frac",
+              "reached": false
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__recirc_ok__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
+          "source_local_identity": "sustainment_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": false
+            },
+            {
+              "operand": "p_aux_installed_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__heat__p_coupled",
+              "reached": false
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "definition_qualified_name": "mfe_viability::'TBR Floor'",
+          "source_local_identity": "tbr_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "tbr_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__blanket__tbr",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "tbr_floor_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__tbr_floor",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+          "source_local_identity": "wall_load_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "wall_load",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+              "reached": false
+            },
+            {
+              "operand": "wall_load_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__wall_load_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+          "source_local_identity": "wp_stress_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "sigma_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
+              "reached": false
+            },
+            {
+              "operand": "sigma_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__casing__sigma_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "objectives_reachable": [
+        "cas72",
+        "fuel",
+        "lcoe",
+        "lcoe_1cfe"
+      ],
+      "objectives_unreachable": [
+        "beta",
+        "cas27",
+        "magnet_capital",
+        "magnet_capital_1cfe",
+        "p_aux_required",
+        "tau_E",
+        "total_capital"
+      ],
+      "sibling_candidates": [],
+      "trace_size": {
+        "modules_fired": 6,
+        "channels_tainted": 18
+      },
+      "warnings": [],
+      "not_derivable": {
+        "statements": [
+          "monotonicity or sign of any response",
+          "same-quantity identity across differing key names",
+          "intra-module operand dependency (the trace is module-level)"
+        ],
+        "positive_reading": "A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds."
+      }
+    },
+    {
+      "axis": "interest_rate",
+      "declared_keys": [
+        {
+          "key": "stellarator_09__stellaris__discount_rate",
+          "provenance": "fan_out",
+          "entry_type": "design_attribute"
+        }
+      ],
+      "group_valid": true,
+      "no_constraint_response": true,
+      "constraints_reachable": [],
+      "constraints_unreachable": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "definition_qualified_name": "mfe_viability::'Beta Limit'",
+          "source_local_identity": "beta_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "beta_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__beta_calc__beta",
+              "reached": false
+            },
+            {
+              "operand": "beta_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__beta_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "definition_qualified_name": "mfe_viability::'Burn Hold'",
+          "source_local_identity": "burn_hold_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+          "source_local_identity": "cond_strain_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "eps_cond",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+              "reached": false
+            },
+            {
+              "operand": "eps_cond_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+          "source_local_identity": "cycle_domain_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "domain_product_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cycle__domain_product",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+          "source_local_identity": "divertor_heat_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "q_target_peak_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+              "reached": false
+            },
+            {
+              "operand": "q_target_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__divertor__q_target_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+          "source_local_identity": "loop_capacity_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "mdot_loop_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+              "reached": false
+            },
+            {
+              "operand": "mdot_loop_rated_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__heat_transport__mdot_loop_ref",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+          "source_local_identity": "loop_pressure_ok",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_loop_margin_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_electric",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__p_net",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+          "source_local_identity": "peak_field_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "B_peak",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+              "reached": false
+            },
+            {
+              "operand": "B_max_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+          "source_local_identity": "recirc_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "rec_frac",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__rec_frac",
+              "reached": false
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__recirc_ok__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
+          "source_local_identity": "sustainment_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": false
+            },
+            {
+              "operand": "p_aux_installed_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__heat__p_coupled",
+              "reached": false
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "definition_qualified_name": "mfe_viability::'TBR Floor'",
+          "source_local_identity": "tbr_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "tbr_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__blanket__tbr",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "tbr_floor_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__tbr_floor",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+          "source_local_identity": "wall_load_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "wall_load",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+              "reached": false
+            },
+            {
+              "operand": "wall_load_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__wall_load_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+          "source_local_identity": "wp_stress_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "sigma_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
+              "reached": false
+            },
+            {
+              "operand": "sigma_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__casing__sigma_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "bounds": [
+        {
+          "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+          "definition_qualified_name": "mfe_viability::'Beta Limit'",
+          "source_local_identity": "beta_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "beta_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__beta_calc__beta",
+              "reached": false
+            },
+            {
+              "operand": "beta_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__beta_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+          "definition_qualified_name": "mfe_viability::'Burn Hold'",
+          "source_local_identity": "burn_hold_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+          "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+          "source_local_identity": "cond_strain_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "eps_cond",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+              "reached": false
+            },
+            {
+              "operand": "eps_cond_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__eps_cond_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+          "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+          "source_local_identity": "cycle_domain_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "domain_product_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__cycle__domain_product",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+          "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+          "source_local_identity": "divertor_heat_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "q_target_peak_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+              "reached": false
+            },
+            {
+              "operand": "q_target_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__divertor__q_target_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+          "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+          "source_local_identity": "loop_capacity_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "mdot_loop_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+              "reached": false
+            },
+            {
+              "operand": "mdot_loop_rated_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__heat_transport__mdot_loop_ref",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+          "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+          "source_local_identity": "loop_pressure_ok",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_loop_margin_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+          "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+          "source_local_identity": "net_positive",
+          "operator": ">",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "net_electric",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__p_net",
+              "reached": false
+            },
+            {
+              "operand": "<literal>",
+              "class": "literal",
+              "reached": false,
+              "value": 0.0
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+          "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+          "source_local_identity": "peak_field_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "B_peak",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+              "reached": false
+            },
+            {
+              "operand": "B_max_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+          "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+          "source_local_identity": "recirc_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "rec_frac",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__pb__rec_frac",
+              "reached": false
+            },
+            {
+              "operand": "threshold",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__recirc_ok__threshold",
+              "reached": false,
+              "entry_type": "library_default"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+          "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
+          "source_local_identity": "sustainment_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "p_aux_required_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__sustain__p_aux_required",
+              "reached": false
+            },
+            {
+              "operand": "p_aux_installed_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__heat__p_coupled",
+              "reached": false
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+          "definition_qualified_name": "mfe_viability::'TBR Floor'",
+          "source_local_identity": "tbr_ok",
+          "operator": ">=",
+          "operand_classes": [
+            "bound"
+          ],
+          "bound_vs_bound": true,
+          "operands": [
+            {
+              "operand": "tbr_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__blanket__tbr",
+              "reached": false,
+              "entry_type": "design_attribute"
+            },
+            {
+              "operand": "tbr_floor_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__tbr_floor",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+          "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+          "source_local_identity": "wall_load_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "wall_load",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+              "reached": false
+            },
+            {
+              "operand": "wall_load_limit_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__wall_load_limit",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        },
+        {
+          "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+          "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+          "source_local_identity": "wp_stress_ok",
+          "operator": "<=",
+          "operand_classes": [
+            "bound",
+            "computed"
+          ],
+          "bound_vs_bound": false,
+          "operands": [
+            {
+              "operand": "sigma_in",
+              "class": "computed",
+              "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
+              "reached": false
+            },
+            {
+              "operand": "sigma_allow_in",
+              "class": "bound",
+              "ref": "stellarator_09__stellaris__magnet__casing__sigma_allow",
+              "reached": false,
+              "entry_type": "design_attribute"
+            }
+          ]
+        }
+      ],
+      "objectives_reachable": [
+        "cas72",
+        "fuel",
+        "lcoe",
+        "lcoe_1cfe"
+      ],
+      "objectives_unreachable": [
+        "beta",
+        "cas27",
+        "magnet_capital",
+        "magnet_capital_1cfe",
+        "p_aux_required",
+        "tau_E",
+        "total_capital"
+      ],
+      "sibling_candidates": [],
+      "trace_size": {
+        "modules_fired": 9,
+        "channels_tainted": 22
+      },
+      "warnings": [],
+      "not_derivable": {
+        "statements": [
+          "monotonicity or sign of any response",
+          "same-quantity identity across differing key names",
+          "intra-module operand dependency (the trace is module-level)"
+        ],
+        "positive_reading": "A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds."
+      }
+    }
+  ]
+}
