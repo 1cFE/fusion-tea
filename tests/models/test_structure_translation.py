@@ -1,0 +1,99 @@
+"""WI-057 (2026-09-13): the boundary translation the frozen WI-050/WI-051 regression drivers run through.
+
+The drivers and their evidence keep the pre-decomposition key dialect; `current_mfe_regressions` translates at
+the package boundary. These tests pin what that translation may and may not do: the ledger is a verified
+bijection onto the live package, translation changes identifiers only, and a planted defect survives it
+(so a mapping mistake cannot be concealed by translating both sides through one ledger).
+"""
+import json
+from pathlib import Path
+
+import pytest
+
+from tests.models.current_mfe_regressions import (
+    ROOT, STRUCTURE_EVIDENCE, alias_both_spellings, structure_ledger, structure_modules,
+    translate_frozen_radius_evidence, translate_names,
+)
+
+P = 'stellarator_09__stellaris__'
+HISTORICAL = ROOT / 'work/active/WI-051_mfe-model-owned-major-radius/implementation'
+LIVE = json.loads((ROOT / 'exploration/stellarator_e2e/generated/contracts/model_contract.json').read_text())
+LIVE_PARAMS = {x['qualified_name'] for x in LIVE['parameters']}
+LIVE_CHANNELS = {x['channel_name'] for x in LIVE['outputs']}
+ENTERING = json.loads((STRUCTURE_EVIDENCE / 'contract_before.json').read_text())
+
+
+def test_ledger_is_a_verified_bijection_onto_the_live_package():
+    ledger = json.loads((STRUCTURE_EVIDENCE / 'ledger.json').read_text())
+    params, outputs = ledger['parameters'], ledger['outputs']
+    assert set(params) == {x['qualified_name'] for x in ENTERING['parameters']}
+    assert set(outputs) == {x['channel_name'] for x in ENTERING['outputs']}
+    assert len(set(params.values())) == len(params) and len(set(outputs.values())) == len(outputs)
+    assert set(params.values()) == LIVE_PARAMS and set(outputs.values()) == LIVE_CHANNELS
+    assert not (set(params) & set(outputs)) and not (set(params.values()) & set(outputs.values()))
+    forward, backward = structure_ledger()
+    assert all(backward[new] == old for old, new in forward.items() if old != new)
+    assert ledger['verification'] == {'predicted_parameters_missing': [], 'parameters_unpredicted': [],
+                                      'predicted_outputs_missing': [], 'outputs_unpredicted': []}
+
+
+def test_alias_keeps_values_and_adds_only_old_names():
+    forward, backward = structure_ledger()
+    live = {P + 'plasma__R': 12.7, P + 'lcoe_calc__lcoe': 224.0, 'unrelated': 1.0}
+    aliased = alias_both_spellings(live, backward)
+    assert {k: aliased[k] for k in live} == live
+    assert set(aliased) - set(live) == {P + 'R'} and aliased[P + 'R'] == 12.7
+
+
+def _leaf_values(obj):
+    if isinstance(obj, dict):
+        return sorted((v for x in obj.values() for v in _leaf_values(x)), key=repr)
+    if isinstance(obj, list):
+        return sorted((v for x in obj for v in _leaf_values(x)), key=repr)
+    return [obj]
+
+
+def test_translation_changes_identifiers_only():
+    forward, _ = structure_ledger()
+    text = (HISTORICAL.parent / 'prototype/frozen-results.json').read_text()
+    before, after = json.loads(text), json.loads(translate_names(text, forward))
+    numbers = lambda doc: [v for v in _leaf_values(doc) if isinstance(v, (int, float)) and not isinstance(v, bool)]
+    assert numbers(before) == numbers(after)
+    old_outputs = before['cases']['baseline']['native']['outputs']; new_outputs = after['cases']['baseline']['native']['outputs']
+    assert {forward.get(k, k): v for k, v in old_outputs.items()} == new_outputs
+    assert set(new_outputs) <= LIVE_CHANNELS
+
+
+def test_translation_preserves_a_planted_defect(tmp_path):
+    forward, _ = structure_ledger()
+    doc = json.loads((HISTORICAL.parent / 'prototype/frozen-results.json').read_text())
+    doc['cases']['baseline']['native']['outputs'][P + 'lcoe_calc__lcoe'] = 999.0
+    doc['cases']['baseline']['native']['outputs'][P + 'fusion__p_fus'] = -1.0
+    translated = json.loads(translate_names(json.dumps(doc), forward))
+    assert translated['cases']['baseline']['native']['outputs'][P + 'lcoe_calc__lcoe'] == 999.0
+    assert translated['cases']['baseline']['native']['outputs'][P + 'plasma__fusion__p_fus'] == -1.0
+    # a wrong binding stays wrong: the driver compares it against the live pipeline, which does not carry it
+    edges = {'geom': 'R_in'}
+    modules = structure_modules(forward)
+    assert {modules.get(k, k): v for k, v in edges.items()} == {'plasma__geom': 'R_in'}
+    assert 'float stellarator_plant_params.' + forward[P + 'R'] != 'float stellarator_plant_params.' + P + 'a'
+
+
+def test_frozen_radius_evidence_translates_onto_the_live_package(tmp_path):
+    forward, _ = structure_ledger()
+    out, modules = translate_frozen_radius_evidence(HISTORICAL, tmp_path, forward)
+    expectations = json.loads((out / 'expectations.json').read_text())
+    assert {P + k for k in expectations['anchors']} <= LIVE_PARAMS
+    assert {P + k for k in expectations['ratios']} <= LIVE_CHANNELS
+    assert set(expectations['channels']) <= LIVE_CHANNELS
+    assert modules['geom'] == 'plasma__geom' and modules['coil_length'] == 'magnet__coil_length'
+    prior = json.loads((out / 'entering-package/contracts/model_contract.json').read_text())
+    retired = {P + 'magnet__R0'}
+    assert {x['qualified_name'] for x in prior['parameters']} - retired <= LIVE_PARAMS
+
+
+def test_translation_refuses_a_name_the_live_package_cannot_honour(tmp_path):
+    forward, _ = structure_ledger()
+    bad = dict(forward); bad[P + 'magnet__R_ref'] = P + 'magnet__coil__R_ref_not_here'   # an anchor the frozen evidence names
+    with pytest.raises(KeyError, match='does not carry'):
+        translate_frozen_radius_evidence(HISTORICAL, tmp_path, bad)

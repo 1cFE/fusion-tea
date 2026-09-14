@@ -48,8 +48,11 @@ def publication(study_id, cases, directory):
 
 def cases():
     verdicts = {key: "satisfied" for key in route._catalog_by_constraint_id(route.PACKAGE_DIR)}
+    # The synthetic case speaks the frozen scripts' own interface: their publication sections read the
+    # entering lineage's `R` key (`c.inputs[route.P+'R']`), not the WI-057 name `plasma__R`. A re-key of
+    # this fixture on 2026-09-13 broke that and was reverted; the frozen scripts are not edited.
     return [SimpleNamespace(candidate_id=f"case-{i}", state="completed",
-                            inputs={route.P + "plasma__R": 12.7 + i},
+                            inputs={route.P + "R": 12.7 + i},
                             outputs={"zero": 0., "required": 2. + i},
                             verdicts=dict(verdicts), headline="satisfied") for i in range(2)]
 

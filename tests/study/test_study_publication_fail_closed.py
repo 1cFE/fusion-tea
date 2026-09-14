@@ -113,8 +113,24 @@ LOCAL_STUDIES = [Path(study_route.HERE) / name / "study.py" for name in (
 )]
 
 
+@pytest.fixture(scope="module")
+def historical_package(tmp_path_factory):
+    # WI-057 (2026-09-13): the frozen records read the package's input files under the pre-decomposition
+    # key names at import and export time. They are not edited; they read a translated view of the live
+    # package instead (values, groups and constraint ids identical).
+    from tests.study.structure_ledger import historical_package_view
+    return historical_package_view(study_route.PACKAGE_DIR, tmp_path_factory.mktemp("historical-package") / "generated")
+
+
 @pytest.fixture(params=LOCAL_STUDIES, ids=lambda path: path.parent.name)
-def local_study(request):
+def local_study(request, historical_package, monkeypatch):
+    # The records import the flat `study_route` module from the studies directory, a distinct module object
+    # from the package-qualified one this file imports; both read the historical view for the test's duration.
+    import sys
+    sys.path.insert(0, str(study_route.HERE))
+    flat_route = importlib.import_module("study_route")
+    for module in {study_route, flat_route}:
+        monkeypatch.setattr(module, "PACKAGE_DIR", historical_package)
     spec = importlib.util.spec_from_file_location(request.param.parent.name, request.param)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -136,7 +152,8 @@ def _local_case(study):
     if "W_mag" in study.CHANNELS:
         centre = 3.15
         case.outputs[study.CHANNELS["r_coil_centre"]] = centre
-        energy = 111e9 * (inputs[study.P + "magnet__coil__I_coil"] / 15400000)**2 * (centre / 3.1500000000000004)**2 * (12.7 / inputs[study.P + "magnet__R0"])
+        # the record's own key names (WI-057: the records keep the pre-decomposition dialect)
+        energy = 111e9 * (inputs[study.P + "magnet__I_coil"] / 15400000)**2 * (centre / 3.1500000000000004)**2 * (12.7 / inputs[study.P + "magnet__R0"])
         case.outputs[study.CHANNELS["W_mag"]] = energy
         case.outputs[study.CHANNELS["m_casing"]] = 63000 * (energy / 111e9)**0.78
     return case

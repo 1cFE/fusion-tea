@@ -199,8 +199,10 @@ def test_retired_radius_refused(acceptance,path,case):
 # WI-057 (2026-09-13): WI-053 read the magnet's clearance refusal (ValueError, 'Conductor Peak Field: live
 # clearance') first at the coil-centre, R3 and negative radii. With the calcs on their parts the regenerated
 # pipeline executes the plasma's sustainment module before the magnet's peak-field module, so the first
-# refusal at those radii is now the sustainment error (non-positive fuel density) or the complex-number type
-# error; the clearance check itself is unchanged and still refuses when reached (the component test below).
+# refusal at the coil-centre and R3 radii is now the plasma's deliberate sustainment error (accepted); at the
+# negative radius it is an incidental TypeError inside plasma__sustain -- an unresolved regression of the
+# diagnostic that this expectation documents and does not repair (goal trail, Amendment 2026-09-13). The
+# clearance check itself is unchanged and still refuses when reached (the component test below).
 @pytest.mark.parametrize('case,kind',[(0,'SustainmentError'),(1,'SustainmentError'),(2,'SustainmentError'),(3,'ZeroDivisionError'),(4,'TypeError')],ids=['R4','coil-centre','R3','zero','negative'])
 def test_unified_invalid_radius_failure(acceptance,path,case,kind):
     if path=='native':

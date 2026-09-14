@@ -63,6 +63,16 @@ def translate_frozen_radius_evidence(historical, destination, forward):
     expectations['edges'] = {modules.get(k, k): v for k, v in expectations['edges'].items()}
     expectations['ratios'] = {stem(k): v for k, v in expectations['ratios'].items()}
     expectations['anchors'] = [stem(k) for k in expectations['anchors']]
+    # Refuse a translation the live package cannot honour: every translated name must resolve.
+    live = json.loads((ROOT / 'exploration/stellarator_e2e/generated/contracts/model_contract.json').read_text())
+    live_params = {x['qualified_name'] for x in live['parameters']}; live_channels = {x['channel_name'] for x in live['outputs']}
+    live_modules = {c[len(P):].rsplit('__', 1)[0] for c in live_channels if c.startswith(P)}
+    missing = ([P + k for k in expectations['anchors'] if P + k not in live_params]
+               + [P + k for k in expectations['ratios'] if P + k not in live_channels]
+               + [k for k in expectations['edges'] if k not in live_modules]
+               + [k for k in expectations['channels'] if k not in live_channels])
+    if missing:
+        raise KeyError(f'frozen radius evidence names the live package does not carry after translation: {sorted(missing)[:8]}')
     (out / 'expectations.json').write_text(json.dumps(expectations, indent=2) + '\n')
     contract = out / 'entering-package/contracts'
     contract.mkdir(parents=True)
@@ -148,9 +158,13 @@ def radius_acceptance(destination, historical):
             text = replace_once(text, "scalar[k]==v if name=='baseline'", f"scalar[k]==v if name=='baseline' and k not in {finance!r}")
             # WI-053 read the magnet clearance refusal (ValueError) first at three invalid radii. WI-057
             # (2026-09-13): the calcs live on their parts and the regenerated pipeline executes the plasma's
-            # sustainment module before the magnet's peak-field module, so the first refusal at those radii is
-            # the sustainment error or the type error; the clearance check itself is unchanged and still
-            # refuses when reached (test_peak_component_preserves_valid_and_rejects_invalid_domains).
+            # sustainment module before the magnet's peak-field module. At the coil-centre and R3 radii the first
+            # refusal is the plasma's deliberate SustainmentError (accepted: a different deliberate rejection).
+            # At the negative radius it is an incidental TypeError inside plasma__sustain -- an UNRESOLVED
+            # regression of the diagnostic, documented here, not repaired (goal structural-decomposition
+            # trail, Amendment 2026-09-13; a deliberate non-positive-radius refusal is a model item). The
+            # clearance check itself is unchanged and still refuses when reached
+            # (test_peak_component_preserves_valid_and_rejects_invalid_domains).
             text = replace_once(text,
                 "classes=['SustainmentError','ZeroDivisionError','SustainmentError','ZeroDivisionError','TypeError']",
                 "classes=['SustainmentError','SustainmentError','SustainmentError','ZeroDivisionError','TypeError']")
