@@ -1,0 +1,9 @@
+# Fresh WI-038 design critique
+
+You are a fresh non-author reviewer. Use `.agents/skills/review-model/SKILL.md` and its required instructions. Read `.agentic-mbse/codex.md`, `.project/codex-test-setup.md`, CLAUDE.md and `knowledge/holdout/aries-cs/PROTOCOL.md` before any source work. Do not read quarantined material, the barred external accounting justification, or sealed comparison studies. Use `.codex-test/run` for Python/model commands. You are not alone in the worktree; preserve all other edits.
+
+Own only `work/active/WI-038_conductor-grade-lever/review.md`. Read that item's spec.md, design.md, plan.md and basis.md, goal.md and T-004 scope under `work/orchestration/goals/magnet-design-transfer/`, project requirements/architecture and relevant current models. Independently inspect the admitted conductor and Stellaris source evidence. The owner delegates ordinary engineering judgment and asks autonomous execution, but that does not authorize invented qualification or a change to the answer standard.
+
+Challenge whether the relative field-envelope design prices conductor quantity and associated pack enlargement consistently, preserves the entering baseline, and explains supported use honestly. Check physical ownership, source extrapolation, inherited reference-price meaning, fixed-composition assumptions, stress/strain/cryo consequences and the proposed verification. Distinguish conditional engineering estimates from absolute conductor qualification. Existing source-image composition is WI-040's 35% copper,12% solder,36% steel,8% helium and9% residual tape; historical research's conflicting transcription is rejected.
+
+Write pass/concerns/fail with specific material findings and suggested corrections. Do not implement fixes or broaden into a coil-configuration model. A fresh design critique is readiness evidence, not the later independent implementation audit. Send the verdict and required corrections to the coordinator.
