@@ -137,3 +137,43 @@ Trigger: newly inspected current consumers retain pre-WI-040 expectations. Decis
 ### Amendment — 2026-09-13 — late consumer verification resolved
 
 The repaired additional batch passes all 295 tests at `0a85b006`. The same independent WI-040 auditor verified the five repair files, all 256 unchanged package hashes, twelve additional independently run checks and the complete XML. Dated addenda in the native audit and full report retain the original coverage gap and return PASS. WI-038 production now proceeds after its separately accepted design critique. The priced-transfer scope holds reference density fixed and labels 20–30 T as an engineered sensitivity window, not a qualified field range; the design review records those judgments.
+
+### T-004 return — 2026-09-13
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `work/active/WI-038_conductor-grade-lever/audit.md@aa3e1f3d` and its full independent report; native implementation and repair evidence at `48417c9e`.
+- **Reading:** The conditional conductor-envelope consequence chain is independently accepted with fixed reference density and explicit source limits. It is ready for integration, not yet evidence of a qualified design transfer.
+- **Decision:** Trigger: independent source inspection distinguishes a textual benchmark from the plotted measurement endpoint. Decision/reason: correct endpoint and price locators and regenerate documentation; retain the conditional interpretation because the reference remains beyond the observed extent. Tier: execution detail. Decided by: coordinator and independent auditor. Changed: native source/basis/comments and package identity at `48417c9e`; arithmetic is unchanged by the repairs.
+
+### T-005 scope
+
+- **Objective:** Prove one study-ready integrated candidate containing both independently audited work items.
+- **Why now:** T-003 and T-004 have positive independent audits in the owner's requested order.
+- **Scope:** Invoke the native integration seam against the committed current package and expected lineage. No model or seam repair, study execution or second promoted pin.
+- **Inputs:** `goal.md`; WI-040 audit at `0d077258`; WI-038 audit at `aa3e1f3d`; current package, manifest, census and known-answer axes.
+- **Done when:** Native integration returns one verified candidate or a named blocker.
+- **Stop when:** Prerequisite, strategy blocker, reserved gate or declared limit.
+
+### T-005 start — 2026-09-13
+
+Native integration · `scripts/integrate.py` · return and supporting evidence under `evidence/T005-integration/`.
+
+### T-005 return — 2026-09-13
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `evidence/T005-integration/integration_return.json` and its named gate evidence, committed with this return.
+- **Reading:** All ten integration gates pass. This is Round 2's sole promoted candidate. Its verification supports executable coherence, not physical qualification; the native return explicitly retains the unexecuted assert-read-set coverage limitation.
+- **Decision:** Trigger: both audited items share the current executable lineage. Decision/reason: promote the native candidate for the bounded transfer study because regeneration, preservation, baseline, oracle and lineage checks pass. Tier: execution detail. Decided by: coordinator. Changed: integration evidence and goal pin selection; no production file changed.
+
+### T-006 scope
+
+- **Objective:** Measure and independently read the integrated magnet transfer responses, then state the supported claim and missing engineering evidence.
+- **Why now:** T-005 supplies the round's verified candidate, after the two owner-ordered audits.
+- **Scope:** One native sensitivity study over causal major radius, minor radius, coil current and conductor field-envelope axes. Follow every executing verdict and magnet sizing, field, mechanical, material and cost response; retain reference density, composition and economic assumptions. Source-supported facts and engineered exploration windows remain distinct. No new configuration capability or production changes.
+- **Inputs:** `goal.md`, T-005 candidate, audited WI-040 and WI-038 basis/evidence, package ANNEX and study policy/runbook. Executor owns the study directory and first-sighting discovery rows; coordinator owns goal trail and transfer claim. Independent critics own only their review outputs. These writes do not conflict and the claim assessment cannot change the frozen execution contract silently.
+- **Done when:** One committed, verified study and fresh administrator synthesis support an explicit bounded transfer judgment, including a negative or inconclusive judgment.
+- **Stop when:** Native prerequisite, strategy blocker, unresolved reserved gate or declared limit. Before grid execution obtain the native framing critique; before any semantic follow-up obtain the goal disposition checkpoint.
+
+### T-006 start — 2026-09-13
+
+Native study execute/read · `exploration/stellarator_e2e/studies/20260913-magnet-design-transfer/` · committed study record, fresh synthesis and goal transfer claim.
