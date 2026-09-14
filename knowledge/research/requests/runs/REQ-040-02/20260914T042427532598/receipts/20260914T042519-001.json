@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://ukaea.github.io/PROCESS/source/reference/process/models/costs/costs/",
+  "slug": "ukaea_process_original_cost_model_superconducting_tf_coil",
+  "path": "knowledge/sources/ukaea_process_original_cost_model_superconducting_tf_coil/",
+  "source_id": "9f6fd08bdd66259fdfa9aeb7109a79f2db1f04f3725063291ef22748710502c8",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-14T04:25:19.719218+00:00"
+}

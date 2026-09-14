@@ -1,0 +1,34 @@
+{
+  "request_id": "REQ-040-02",
+  "run": "knowledge/research/requests/runs/REQ-040-02/20260914T042427532598",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "ukaea_process_original_cost_model_superconducting_tf_coil",
+      "path": "knowledge/sources/ukaea_process_original_cost_model_superconducting_tf_coil/",
+      "source_id": "9f6fd08bdd66259fdfa9aeb7109a79f2db1f04f3725063291ef22748710502c8",
+      "pre_existing": false
+    },
+    {
+      "slug": "ukaea_process_cost_variable_definitions_and_historical",
+      "path": "knowledge/sources/ukaea_process_cost_variable_definitions_and_historical/",
+      "source_id": "268c4874b958d5b0b8fdd3cde0d2b6f4bd8c29bb49ca2c807ebf3b2c0d5c3aed",
+      "pre_existing": false
+    },
+    {
+      "slug": "federal_reserve_bank_of_minneapolis_annual_consumer_price",
+      "path": "knowledge/sources/federal_reserve_bank_of_minneapolis_annual_consumer_price/",
+      "source_id": "f0753dc135b542d83a7c58b36d3bbc621d9540962ce9af7edfeab9692404541c",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://www.bls.gov/regions/mid-atlantic/data/consumerpriceindexhistorical_us_table.htm",
+      "reason": "HTTP 403 on direct fetch; pursuing official Federal Reserve republication of BLS annual CPI as alternative."
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

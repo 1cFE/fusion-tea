@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "https://www.minneapolisfed.org/about-us/monetary-policy/inflation-calculator/consumer-price-index-1913-",
+  "slug": "federal_reserve_bank_of_minneapolis_annual_consumer_price",
+  "path": "knowledge/sources/federal_reserve_bank_of_minneapolis_annual_consumer_price/",
+  "source_id": "f0753dc135b542d83a7c58b36d3bbc621d9540962ce9af7edfeab9692404541c",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-14T04:27:20.176831+00:00"
+}
