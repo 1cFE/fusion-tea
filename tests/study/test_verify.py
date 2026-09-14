@@ -371,7 +371,7 @@ def test_zero_efficiency_is_a_recorded_native_execution_failure(stock_simkit_pat
     sys.path.insert(0, str(MANIFEST.parent))
     import study_route
 
-    point = {f"{study_route.P}heating__eta_{stage}_heat"  # WI-057 (2026-09-13): the heating efficiencies live on the heating part: 0.0}
+    point = {f"{study_route.P}heating__eta_{stage}_heat": 0.0}  # WI-057 (2026-09-13): the heating efficiencies live on the heating part
     cases, _ = study_route.run_points(f"zero-{stage}-efficiency", [point], tmp_path)
     assert len(cases) == 1
     assert cases[0].state == "execution_failed"
