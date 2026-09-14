@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Model viz: calc graph</title>
+<link rel="stylesheet" href="viewer.css">
+</head>
+<body data-load-state="empty" data-load-seq="0">
+<header class="toolbar">
+  <label class="file-pick">Snapshot
+    <input type="file" data-role="snapshot-input" accept=".json,application/json">
+  </label>
+  <label>Group by
+    <select data-role="mode-select">
+      <option value="source">Source file</option>
+      <option value="occurrence">Occurrence</option>
+    </select>
+  </label>
+  <button type="button" data-action="expand-all">Expand all</button>
+  <button type="button" data-action="collapse-all">Collapse all</button>
+  <button type="button" data-action="fit">Fit</button>
+  <label>Find calc
+    <input type="search" data-role="search-input" list="calc-names" autocomplete="off">
+  </label>
+  <datalist id="calc-names" data-role="calc-names"></datalist>
+  <span class="search-status" data-role="search-status"></span>
+</header>
+<div class="banner" data-role="error-banner" hidden></div>
+<main class="workspace">
+  <div class="graph-pane" data-role="graph-pane"></div>
+  <aside class="panel" data-role="panel"></aside>
+</main>
+<script src="vendor/cytoscape-3.28.1.min.js"></script>
+<script src="vendor/dagre-0.8.5.min.js"></script>
+<script src="vendor/cytoscape-dagre-2.5.0.js"></script>
+<script src="js/model.js"></script>
+<script src="js/formula.js"></script>
+<script src="js/view.js"></script>
+<script src="js/graph.js"></script>
+<script src="js/panel.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

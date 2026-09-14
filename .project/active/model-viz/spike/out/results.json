@@ -1,0 +1,498 @@
+{
+  "console": [],
+  "pageerrors": [],
+  "LR": {
+    "projection": {
+      "nodes": 93,
+      "edges": 150,
+      "unresolved": 0,
+      "cytoscape": "3.28.1",
+      "groupCount": 17
+    },
+    "ids": {
+      "account_costs": "g0",
+      "mfe_plant": "g15"
+    },
+    "expanded_all_initial_layout_ms": [
+      299.1000003814697,
+      244.60000038146973,
+      221.20000076293945
+    ],
+    "expanded_all_shot": ".project/active/model-viz/spike/out/LR_3_all_expanded.png",
+    "expanded_all_edge_audit": {
+      "visibleEdges": 150,
+      "mutated": 0,
+      "withOriginalEnds": 0
+    },
+    "collapseAll_ms": 16.80000114440918,
+    "collapsed_layout_ms": 62.10000038146973,
+    "collapsed_shot": ".project/active/model-viz/spike/out/LR_1_all_collapsed.png",
+    "collapsed_intergroup": {
+      "crossing": 119,
+      "pairs": {
+        "g9->g0": 26,
+        "g15->g0": 7,
+        "g4->g0": 6,
+        "g4->g2": 1,
+        "g3->g2": 3,
+        "g12->g0": 3,
+        "g8->g13": 3,
+        "g0->g15": 32,
+        "g14->g9": 3,
+        "g14->g13": 1,
+        "g4->g3": 2,
+        "g16->g15": 2,
+        "g15->g12": 1,
+        "g14->g0": 1,
+        "g2->g15": 1,
+        "g4->g12": 1,
+        "g11->g0": 1,
+        "g8->g4": 3,
+        "g5->g10": 3,
+        "g3->g4": 2,
+        "g3->g11": 1,
+        "g12->g1": 1,
+        "g9->g1": 1,
+        "g0->g1": 1,
+        "g15->g1": 1,
+        "g4->g5": 1,
+        "g7->g6": 1,
+        "g9->g7": 1,
+        "g4->g8": 1,
+        "g3->g8": 1,
+        "g4->g9": 2,
+        "g4->g16": 1,
+        "g11->g9": 1,
+        "g7->g9": 2,
+        "g6->g9": 1
+      }
+    },
+    "collapsed_visible": {
+      "nodes": 17,
+      "edges": 119
+    },
+    "collapsed_edge_audit": {
+      "visibleEdges": 119,
+      "mutated": 119,
+      "withOriginalEnds": 119
+    },
+    "collapsed_original_intergroup": {
+      "g9->g0": 26,
+      "g15->g0": 7,
+      "g4->g0": 6,
+      "g4->g2": 1,
+      "g3->g2": 3,
+      "g12->g0": 3,
+      "g8->g13": 3,
+      "g0->g15": 32,
+      "g14->g9": 3,
+      "g14->g13": 1,
+      "g4->g3": 2,
+      "g16->g15": 2,
+      "g15->g12": 1,
+      "g14->g0": 1,
+      "g2->g15": 1,
+      "g4->g12": 1,
+      "g11->g0": 1,
+      "g8->g4": 3,
+      "g5->g10": 3,
+      "g3->g4": 2,
+      "g3->g11": 1,
+      "g12->g1": 1,
+      "g9->g1": 1,
+      "g0->g1": 1,
+      "g15->g1": 1,
+      "g4->g5": 1,
+      "g7->g6": 1,
+      "g9->g7": 1,
+      "g4->g8": 1,
+      "g3->g8": 1,
+      "g4->g9": 2,
+      "g4->g16": 1,
+      "g11->g9": 1,
+      "g7->g9": 2,
+      "g6->g9": 1
+    },
+    "bidir_acc_plant": {
+      "fwd": 32,
+      "back": 7,
+      "fwdVisible": 32,
+      "backVisible": 7
+    },
+    "bidir_zoom_shot": ".project/active/model-viz/spike/out/LR_1b_bidir_acc_plant_zoom.png",
+    "one_expanded_layout_ms": 86,
+    "one_expanded_shot": ".project/active/model-viz/spike/out/LR_2_account_costs_expanded.png",
+    "one_expanded_zoom_shot": ".project/active/model-viz/spike/out/LR_2b_account_costs_zoom.png",
+    "roundtrip_account_costs": {
+      "identical_pairs_and_counts": true,
+      "crossing_before": 119,
+      "crossing_after": 119,
+      "distinct_pairs_before": 35,
+      "distinct_pairs_after": 35,
+      "while_expanded_crossing": 119,
+      "while_expanded_audit": {
+        "visibleEdges": 129,
+        "mutated": 119,
+        "withOriginalEnds": 119
+      },
+      "after_audit": {
+        "visibleEdges": 119,
+        "mutated": 119,
+        "withOriginalEnds": 119
+      },
+      "original_set_identical": true
+    },
+    "roundtrip_mfe_plant": {
+      "identical_pairs_and_counts": true,
+      "crossing_before": 119,
+      "crossing_after": 119,
+      "distinct_pairs_before": 35,
+      "distinct_pairs_after": 35,
+      "while_expanded_crossing": 119,
+      "while_expanded_audit": {
+        "visibleEdges": 127,
+        "mutated": 119,
+        "withOriginalEnds": 119
+      },
+      "after_audit": {
+        "visibleEdges": 119,
+        "mutated": 119,
+        "withOriginalEnds": 119
+      },
+      "original_set_identical": true
+    },
+    "nav": {
+      "target": "c65",
+      "target_in_cy_while_collapsed": 0,
+      "in_collapsedChildren": 1,
+      "same_tick": {
+        "afterExpandFiredSynchronously": true,
+        "present": 1,
+        "inside": true,
+        "visible": true,
+        "renderedPos": {
+          "x": 800,
+          "y": 490.25
+        },
+        "viewport": [
+          1600,
+          1000
+        ]
+      },
+      "center_shot": ".project/active/model-viz/spike/out/LR_5_nav_center.png",
+      "animate": {
+        "immediateRp": {
+          "x": 1014.0183486238532,
+          "y": 538.4587155963303
+        },
+        "completeRp": {
+          "x": 800,
+          "y": 490.25
+        }
+      },
+      "expand_with_layoutBy": {
+        "present": 1,
+        "renderedPos": {
+          "x": 800,
+          "y": 492.6098049744731
+        }
+      },
+      "collapseAllEdges": {
+        "before": 119,
+        "after": 31,
+        "directed_pairs_still_distinct": {
+          "crossing": 31,
+          "pairs": {
+            "g3->g8": 1,
+            "g9->g1": 1,
+            "g15->g12": 1,
+            "g4->g2": 1,
+            "g12->g0": 1,
+            "g12->g1": 1,
+            "g3->g2": 1,
+            "g15->g0": 1,
+            "g11->g0": 1,
+            "g7->g6": 1,
+            "g0->g1": 1,
+            "g2->g15": 1,
+            "g8->g4": 1,
+            "g4->g0": 1,
+            "g15->g1": 1,
+            "g4->g12": 1,
+            "g14->g0": 1,
+            "g4->g9": 1,
+            "g4->g16": 1,
+            "g11->g9": 1,
+            "g4->g5": 1,
+            "g9->g0": 1,
+            "g14->g9": 1,
+            "g14->g13": 1,
+            "g16->g15": 1,
+            "g7->g9": 1,
+            "g3->g11": 1,
+            "g8->g13": 1,
+            "g3->g4": 1,
+            "g6->g9": 1,
+            "g5->g10": 1
+          }
+        }
+      },
+      "collapseAllEdges_shot": ".project/active/model-viz/spike/out/LR_1c_collapsed_edges_bundled.png"
+    },
+    "expandAll_then_layout_ms": 408.20000076293945,
+    "expandAll_audit": {
+      "visibleEdges": 150,
+      "mutated": 0,
+      "withOriginalEnds": 0
+    },
+    "expandAll_crossing": 119,
+    "expandAll_shot": ".project/active/model-viz/spike/out/LR_3b_expandAll_from_collapsed.png"
+  },
+  "TB": {
+    "projection": {
+      "nodes": 93,
+      "edges": 150,
+      "unresolved": 0,
+      "cytoscape": "3.28.1",
+      "groupCount": 17
+    },
+    "ids": {
+      "account_costs": "g0",
+      "mfe_plant": "g15"
+    },
+    "expanded_all_initial_layout_ms": [
+      288.29999923706055,
+      254.4000015258789,
+      248.69999885559082
+    ],
+    "expanded_all_shot": ".project/active/model-viz/spike/out/TB_3_all_expanded.png",
+    "expanded_all_edge_audit": {
+      "visibleEdges": 150,
+      "mutated": 0,
+      "withOriginalEnds": 0
+    },
+    "collapseAll_ms": 17.900001525878906,
+    "collapsed_layout_ms": 75.30000114440918,
+    "collapsed_shot": ".project/active/model-viz/spike/out/TB_1_all_collapsed.png",
+    "collapsed_intergroup": {
+      "crossing": 119,
+      "pairs": {
+        "g9->g0": 26,
+        "g15->g0": 7,
+        "g4->g0": 6,
+        "g4->g2": 1,
+        "g3->g2": 3,
+        "g12->g0": 3,
+        "g8->g13": 3,
+        "g0->g15": 32,
+        "g14->g9": 3,
+        "g14->g13": 1,
+        "g4->g3": 2,
+        "g16->g15": 2,
+        "g15->g12": 1,
+        "g14->g0": 1,
+        "g2->g15": 1,
+        "g4->g12": 1,
+        "g11->g0": 1,
+        "g8->g4": 3,
+        "g5->g10": 3,
+        "g3->g4": 2,
+        "g3->g11": 1,
+        "g12->g1": 1,
+        "g9->g1": 1,
+        "g0->g1": 1,
+        "g15->g1": 1,
+        "g4->g5": 1,
+        "g7->g6": 1,
+        "g9->g7": 1,
+        "g4->g8": 1,
+        "g3->g8": 1,
+        "g4->g9": 2,
+        "g4->g16": 1,
+        "g11->g9": 1,
+        "g7->g9": 2,
+        "g6->g9": 1
+      }
+    },
+    "collapsed_visible": {
+      "nodes": 17,
+      "edges": 119
+    },
+    "collapsed_edge_audit": {
+      "visibleEdges": 119,
+      "mutated": 119,
+      "withOriginalEnds": 119
+    },
+    "collapsed_original_intergroup": {
+      "g9->g0": 26,
+      "g15->g0": 7,
+      "g4->g0": 6,
+      "g4->g2": 1,
+      "g3->g2": 3,
+      "g12->g0": 3,
+      "g8->g13": 3,
+      "g0->g15": 32,
+      "g14->g9": 3,
+      "g14->g13": 1,
+      "g4->g3": 2,
+      "g16->g15": 2,
+      "g15->g12": 1,
+      "g14->g0": 1,
+      "g2->g15": 1,
+      "g4->g12": 1,
+      "g11->g0": 1,
+      "g8->g4": 3,
+      "g5->g10": 3,
+      "g3->g4": 2,
+      "g3->g11": 1,
+      "g12->g1": 1,
+      "g9->g1": 1,
+      "g0->g1": 1,
+      "g15->g1": 1,
+      "g4->g5": 1,
+      "g7->g6": 1,
+      "g9->g7": 1,
+      "g4->g8": 1,
+      "g3->g8": 1,
+      "g4->g9": 2,
+      "g4->g16": 1,
+      "g11->g9": 1,
+      "g7->g9": 2,
+      "g6->g9": 1
+    },
+    "bidir_acc_plant": {
+      "fwd": 32,
+      "back": 7,
+      "fwdVisible": 32,
+      "backVisible": 7
+    },
+    "bidir_zoom_shot": ".project/active/model-viz/spike/out/TB_1b_bidir_acc_plant_zoom.png",
+    "one_expanded_layout_ms": 88.5999984741211,
+    "one_expanded_shot": ".project/active/model-viz/spike/out/TB_2_account_costs_expanded.png",
+    "one_expanded_zoom_shot": ".project/active/model-viz/spike/out/TB_2b_account_costs_zoom.png",
+    "roundtrip_account_costs": {
+      "identical_pairs_and_counts": true,
+      "crossing_before": 119,
+      "crossing_after": 119,
+      "distinct_pairs_before": 35,
+      "distinct_pairs_after": 35,
+      "while_expanded_crossing": 119,
+      "while_expanded_audit": {
+        "visibleEdges": 129,
+        "mutated": 119,
+        "withOriginalEnds": 119
+      },
+      "after_audit": {
+        "visibleEdges": 119,
+        "mutated": 119,
+        "withOriginalEnds": 119
+      },
+      "original_set_identical": true
+    },
+    "roundtrip_mfe_plant": {
+      "identical_pairs_and_counts": true,
+      "crossing_before": 119,
+      "crossing_after": 119,
+      "distinct_pairs_before": 35,
+      "distinct_pairs_after": 35,
+      "while_expanded_crossing": 119,
+      "while_expanded_audit": {
+        "visibleEdges": 127,
+        "mutated": 119,
+        "withOriginalEnds": 119
+      },
+      "after_audit": {
+        "visibleEdges": 119,
+        "mutated": 119,
+        "withOriginalEnds": 119
+      },
+      "original_set_identical": true
+    },
+    "nav": {
+      "target": "c65",
+      "target_in_cy_while_collapsed": 0,
+      "in_collapsedChildren": 1,
+      "same_tick": {
+        "afterExpandFiredSynchronously": true,
+        "present": 1,
+        "inside": true,
+        "visible": true,
+        "renderedPos": {
+          "x": 800,
+          "y": 490.25
+        },
+        "viewport": [
+          1600,
+          1000
+        ]
+      },
+      "center_shot": ".project/active/model-viz/spike/out/TB_5_nav_center.png",
+      "animate": {
+        "immediateRp": {
+          "x": 893.9941690962099,
+          "y": 611.0204081632653
+        },
+        "completeRp": {
+          "x": 800,
+          "y": 490.25
+        }
+      },
+      "expand_with_layoutBy": {
+        "present": 1,
+        "renderedPos": {
+          "x": 800,
+          "y": 491.6465863453816
+        }
+      },
+      "collapseAllEdges": {
+        "before": 119,
+        "after": 31,
+        "directed_pairs_still_distinct": {
+          "crossing": 31,
+          "pairs": {
+            "g3->g8": 1,
+            "g9->g1": 1,
+            "g15->g12": 1,
+            "g4->g2": 1,
+            "g12->g0": 1,
+            "g12->g1": 1,
+            "g3->g2": 1,
+            "g15->g0": 1,
+            "g11->g0": 1,
+            "g7->g6": 1,
+            "g0->g1": 1,
+            "g2->g15": 1,
+            "g8->g4": 1,
+            "g4->g0": 1,
+            "g15->g1": 1,
+            "g4->g12": 1,
+            "g14->g0": 1,
+            "g4->g9": 1,
+            "g4->g16": 1,
+            "g11->g9": 1,
+            "g4->g5": 1,
+            "g9->g0": 1,
+            "g14->g9": 1,
+            "g14->g13": 1,
+            "g16->g15": 1,
+            "g7->g9": 1,
+            "g3->g11": 1,
+            "g8->g13": 1,
+            "g3->g4": 1,
+            "g6->g9": 1,
+            "g5->g10": 1
+          }
+        }
+      },
+      "collapseAllEdges_shot": ".project/active/model-viz/spike/out/TB_1c_collapsed_edges_bundled.png"
+    },
+    "expandAll_then_layout_ms": 396.1000003814697,
+    "expandAll_audit": {
+      "visibleEdges": 150,
+      "mutated": 0,
+      "withOriginalEnds": 0
+    },
+    "expandAll_crossing": 119,
+    "expandAll_shot": ".project/active/model-viz/spike/out/TB_3b_expandAll_from_collapsed.png"
+  }
+}

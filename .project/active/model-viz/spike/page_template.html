@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>calc DAG spike</title>
+<script src="https://unpkg.com/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
+<script src="https://unpkg.com/dagre@0.8.5/dist/dagre.min.js"></script>
+<script src="https://unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre.js"></script>
+<script src="https://unpkg.com/cytoscape-expand-collapse@4.1.0/cytoscape-expand-collapse.js"></script>
+<style>
+  html, body { margin: 0; height: 100%; font-family: sans-serif; }
+  #cy { position: absolute; inset: 0; background: #fafafa; }
+</style>
+</head>
+<body>
+<div id="cy"></div>
+<script>
+const SNAP = /*__SNAPSHOT__*/null;
+
+// ---- projection (mirrors the design's projection function, minimal) ----
+function project(snap) {
+  const calcs = snap.calcs;
+  const idx = new Map(); // node_id string -> "cN"
+  calcs.forEach((c, i) => idx.set(c.node_id, "c" + i));
+  const files = [...new Set(calcs.map(c => c.source_file))];
+  const gid = new Map(files.map((f, i) => [f, "g" + i]));
+  const els = [];
+  files.forEach(f => els.push({ group: "nodes", data: { id: gid.get(f), label: f.split("/").pop().replace(/\.sysml$/, ""), kind: "group" } }));
+  calcs.forEach((c, i) => els.push({ group: "nodes", data: { id: "c" + i, label: c.display_name, parent: gid.get(c.source_file), kind: "calc", group: gid.get(c.source_file) } }));
+  let e = 0, unresolved = 0;
+  calcs.forEach((c, i) => c.inputs.forEach(inp => {
+    const edge = inp.edge;
+    if (!edge || edge.kind !== "producer") return;
+    const src = idx.get(edge.target.calculation);
+    if (!src) { unresolved++; return; }
+    const tgt = "c" + i;
+    els.push({ group: "edges", data: { id: "e" + (e++), source: src, target: tgt, origSource: src, origTarget: tgt } });
+  }));
+  return { els, unresolved, nEdges: e, groupOf: Object.fromEntries(calcs.map((c, i) => ["c" + i, gid.get(c.source_file)])) };
+}
+
+const P = project(SNAP);
+const params = new URLSearchParams(location.search);
+let RANKDIR = params.get("rankDir") || "LR";
+const dagreOpts = () => ({ name: "dagre", rankDir: RANKDIR, nodeSep: 20, rankSep: 60, edgeSep: 5, animate: false, fit: true, padding: 20 });
+
+const cy = cytoscape({
+  container: document.getElementById("cy"),
+  elements: P.els,
+  style: [
+    { selector: "node[kind='calc']", style: { label: "data(label)", "font-size": 9, width: 14, height: 14, "background-color": "#4a7bd0", "text-valign": "bottom", "text-margin-y": 2 } },
+    { selector: "node[kind='group']", style: { label: "data(label)", "font-size": 12, "font-weight": "bold", "text-valign": "top", "background-color": "#e8eef8", "border-color": "#7a95c4", "border-width": 1, shape: "round-rectangle", padding: 12 } },
+    { selector: "node.cy-expand-collapse-collapsed-node", style: { "background-color": "#c9d7ef", width: 60, height: 30, "text-valign": "center", "font-size": 11 } },
+    { selector: "edge", style: { width: 1, "line-color": "#999", "target-arrow-color": "#999", "target-arrow-shape": "triangle", "arrow-scale": 0.7, "curve-style": "bezier" } },
+    { selector: "edge.cy-expand-collapse-meta-edge", style: { "line-color": "#d08a4a", "target-arrow-color": "#d08a4a" } },
+  ],
+  layout: { name: "preset" },
+});
+
+const api = cy.expandCollapse({ layoutBy: null, fisheye: false, animate: false, undoable: false, cueEnabled: false });
+
+function layout() {
+  const t0 = performance.now();
+  cy.layout(dagreOpts()).run();
+  return performance.now() - t0;
+}
+
+// Map a visible edge endpoint to its group id (a collapsed group node is its own group).
+const endGroup = n => (n.data("kind") === "group" ? n.id() : n.data("group"));
+
+function interGroupEdges() {
+  const pairs = {};
+  let crossing = 0;
+  cy.edges().forEach(ed => {
+    const s = endGroup(ed.source()), t = endGroup(ed.target());
+    if (s === t) return;
+    crossing++;
+    const k = s + "->" + t;
+    pairs[k] = (pairs[k] || 0) + 1;
+  });
+  return { crossing, pairs };
+}
+
+// Inter-group set computed from each edge's *original* endpoints, wherever the edge currently hangs.
+function originalInterGroupEdges() {
+  const pairs = {};
+  const all = cy.edges().union(cy.nodes().map(n => n.data("collapsedChildren") || cy.collection()).reduce((a, b) => a.union(b), cy.collection()).edges());
+  all.forEach(ed => {
+    const s = P.groupOf[ed.data("origSource")], t = P.groupOf[ed.data("origTarget")];
+    if (s === t) return;
+    const k = s + "->" + t;
+    pairs[k] = (pairs[k] || 0) + 1;
+  });
+  return pairs;
+}
+
+function edgeDataAudit() {
+  let mutated = 0, withOriginalEnds = 0, total = 0;
+  cy.edges().forEach(ed => {
+    total++;
+    if (ed.data("source") !== ed.data("origSource") || ed.data("target") !== ed.data("origTarget")) mutated++;
+    if (ed.data("originalEnds")) withOriginalEnds++;
+  });
+  return { visibleEdges: total, mutated, withOriginalEnds };
+}
+
+window.spike = { cy, api, P, layout, interGroupEdges, originalInterGroupEdges, edgeDataAudit, setRankDir: d => (RANKDIR = d), versions: { cytoscape: cytoscape.version } };
+document.title = "ready";
+</script>
+</body>
+</html>
