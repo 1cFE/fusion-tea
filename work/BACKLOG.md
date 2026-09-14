@@ -205,6 +205,11 @@ epics:
     scale: standard
     status: backlog
     completed: null
+  - id: WI-058
+    name: Coil winding length from the coil bore
+    scale: standard
+    status: backlog
+    completed: null
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -346,6 +351,7 @@ standalone:
 | WI-050 | MFE coherent operating heating | standard | backlog |  |
 | WI-051 | MFE model-owned major radius | standard | backlog |  |
 | WI-052 | MFE financial rate limits | standard | backlog |  |
+| WI-058 | Coil winding length from the coil bore | standard | backlog |  |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active
