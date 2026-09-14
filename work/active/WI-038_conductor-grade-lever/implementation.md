@@ -12,7 +12,7 @@ Priced transfer holds reference density at 118.8271604938272 A/mm², reference f
 - Fresh stock generation is byte-identical across 261 files using fifteen preserved and one new normative body. The public contract has 265 inputs and 177 outputs. Receipts, hashes and reproduction scripts are in evidence/.
 - All six validation levels assessed: L1/L3/L4/L5 pass; L2 retains exactly ten diagnostic identities and L6 retains 249 occurrences/238 distinct identities. No diagnostic is added or removed (`evidence/validation-delta.json`). Failed inherited levels remain failed, not certified.
 
-The first full model battery passed 886 tests with thirteen inherited skips and three failures. Two failures were old input counts; one was an incomplete cumulative source-hash receipt that omitted WI-040's unchanged predecessor files. Those guards and counts were corrected without changing model arithmetic. The failed XML is retained as `evidence/model-tests-before-consumer-fixes.xml`; final model tests pass as reported above. Independent audit remains pending.
+The first full model battery passed 886 tests with thirteen inherited skips and three failures. Two failures were old input counts; one was an incomplete cumulative source-hash receipt that omitted WI-040's unchanged predecessor files. Those guards and counts were corrected without changing model arithmetic. The failed XML is retained as `evidence/model-tests-before-consumer-fixes.xml`; final model tests pass as reported above. Independent audit passes at `48417c9e`; see `audit.md`.
 
 ## Independent audit repairs
 

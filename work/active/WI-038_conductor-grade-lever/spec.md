@@ -35,6 +35,6 @@ Updated: 2026-09-13
 
 ## State and references
 
-Design review passes after the fixed-density scope and exponent-interval corrections. Implementation and generated package are committed at `0e3bf944`. Component/public checks pass 41, final model tests pass 889 with thirteen inherited skips, and baseline reconciliation preserves every entering channel/verdict exactly. Broader study-consumer verification and independent implementation audit are in progress; see `implementation.md` and `plan.md`. Existing WI-038 registration is reused. Positive independent native audit is required before completion; close/archive remains owner-held.
+Design review passes after the fixed-density scope and exponent-interval corrections. Implementation and generated package are committed at `0e3bf944`, with audited repairs at `48417c9e`. Independent implementation audit passes; see `audit.md` for the test evidence, inherited diagnostics and claim limits. Existing WI-038 registration is reused and SV-101 passes. Integration and the transfer study are separate; close/archive remains owner-held.
 
 Read `basis.md`, `design.md`, `plan.md`, audited WI-040 and project MR-1–4/AD-007–008. Global verification registration and goal state remain coordinator-owned.
