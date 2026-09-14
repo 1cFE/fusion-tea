@@ -17,6 +17,8 @@ Coordinator assessment under T-006, 2026-09-13. This separates source support fr
 
 [AGENT] A field-envelope-only increase is expected to increase tape and external-material procurement while leaving composite-conductor length and the length-based winding-operation charge unchanged. That is coherent with the chosen estimating equation. It leaves the additional effort of winding a larger cross-section unpriced. The final claim must disclose that omission rather than call the unchanged fabrication charge a validated manufacturing response.
 
+[AGENT] The tape account buys composite tape, while the four inventory accounts buy the external jacket, solder, steel and coolant fractions. That explicit boundary prevents deliberately re-pricing the tape's own substrate/stabilizer as external material. It does not establish that every inherited unit price is a pure raw-material quote: the steel price's upstream fabricated-steel wording remains ambiguous. The audited estimate discloses that uncertainty rather than certifying zero manufacturing overlap. See WI-040 `evidence/accounting-research.md` and `evidence/material-research.md`.
+
 ## Evidence still needed for an engineering-qualified transfer
 
 | Missing evidence | Why the current study cannot supply it | Evidence that would resolve it |
