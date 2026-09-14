@@ -52,6 +52,6 @@ Updated: 2026-09-13
 
 ## Success and stage state
 
-Implementation and current consumer adaptations are committed at 173ac157. The full model battery passes 809 tests with 13 inherited skips. Independent audit is in progress; its source-comment finding is being corrected and remaining study-consumer regressions are being checked. See plan.md and evidence/ for current completion evidence. The existing WI-040 registration is reused; no duplicate item is minted.
+Implementation and current consumer adaptations are committed at 173ac157 with audit repairs at 9e942fac. The full model battery passes 809 tests with 13 inherited skips; stable consumer and integration batches pass 219 and 25 tests. Independent audit returns PASS and SV-100 is passing. See audit.md, plan.md and evidence/ for completion evidence. The existing WI-040 registration is reused; no duplicate item is minted.
 
 Completion requires the requirements above to be evidenced and a positive independent audit. Closing or archiving is owner-held.

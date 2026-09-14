@@ -105,3 +105,25 @@ Research seam · `knowledge/research/requests/REQ-040-01.json` and `REQ-040-02.j
 ### T-003 start — 2026-09-13
 
 WI-040 · `work/active/WI-040_winding-pack-mass-cost/plan.md` · implemented model, current executable and independent audit.
+
+### T-003 return — 2026-09-13
+
+- **Outcome:** COMPLETE.
+- **Evidence:** WI-040 implementation at `173ac157`, repairs at `9e942fac`, native `audit.md` and `work/analysis/20260914-045431_audit_WI-040.md`; SV-100 passing. Full models 809 passed/13 inherited skips, stable consumers 219 passed, stable integration checks 25 passed. Reviewer independently reproduced source checks, 149 focused tests, 197 consumer tests, five public points and exact fresh generation.
+- **Reading:** Material quantities now follow winding geometry and selected costs have an explicit additive boundary. The reference economic change is a replacement estimate, not demonstrated savings. Existing physical channels and eighteen verdicts are preserved; the reference divertor violation remains. WI-040 is audited, but no goal pin or study has been promoted.
+- **Decision:** Trigger: generated tuple ordering and public parameter lowering differed from the author assumption. Decision/reason: follow generated schema names and retain documented derived literals; actual wrappers and fresh generation verify the correction. Tier: execution detail. Decided by: coordinator and native authors. Changed: WI-040 retained seeds, source literals and tests; rejected candidate retained in evidence.
+- **Decision:** Trigger: current consumers contained old economic expectations and a broad suite started before metadata stabilized. Decision/reason: preserve historical records, adapt only named current economic descendants, and rerun affected consumers/integration checks on stable inputs. Tier: execution detail. Decided by: coordinator. Changed: current adapters and test expectations; interrupted-run log retained without a full-suite pass claim.
+- **Decision:** Trigger: native checker cannot evaluate four pure EXPOSE attributes. Decision/reason: accept the scoped expressions on documented architecture, exact generation and public execution evidence; retain all failed-level diagnostics. Tier: execution detail. Decided by: coordinator, independently checked by auditor. Changed: validation evidence and audit, not inherited validator status.
+
+### T-004 scope
+
+- **Objective:** Implement and independently audit WI-038's priced conductor field-capability consequence chain.
+- **Why now:** WI-040 is independently accepted, satisfying the owner's order and ensuring increased pack volume has material-cost consequences. Existing admitted conductor research supplies a relative field/current-density relation; its engineering composition and extrapolation need explicit treatment.
+- **Scope:** Native spec/design/plan, necessary source checks, canonical models/twins and typed completions, current oracle/consumer coherence, tests and independent audit. No new coil-configuration solver, vendor qualification or temperature-dependent critical-current surface. Integration and the goal study remain separately scoped.
+- **Inputs:** Amended `goal.md`; WI-038 backlog annotation; audited WI-040; registered Molodyk conductor paper and image-verified Stellaris tables. Historical research's incorrect Table 7 transcription is superseded by WI-040's verified source basis.
+- **Done when:** The chosen conductor field envelope has defensible, explicit sizing/cost consequences and passes independent scoped audit, or native evidence establishes a bounded negative.
+- **Stop when:** Prerequisite, strategy blocker, remaining reserved gate or declared limit.
+
+### T-004 start — 2026-09-13
+
+WI-038 · `work/active/WI-038_conductor-grade-lever/` · source-bounded design, implemented consequence chain and independent audit.
