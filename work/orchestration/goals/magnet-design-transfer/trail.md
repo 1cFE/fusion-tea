@@ -24,3 +24,22 @@ Append-only judgment record. Procedure: `work/orchestration/GOAL_RUNBOOK.md`.
 ### T-001 start — 2026-09-13
 
 WI-040 · `work/active/WI-040_winding-pack-mass-cost/` · native specification through independent audit, or a named blocker.
+
+### T-001 return — 2026-09-13
+
+- **Outcome:** OWNER_GATE.
+- **Evidence:** `work/active/WI-040_winding-pack-mass-cost/spec.md` and `basis.md` (committed with this return); source image cited in the basis; `work/completed/20260901_WI-035_magnet-closure/design.md@384e380e70b80951f1155352c608dce08da6cd16`; `models/library/analyses/mfe_magnet_cost.sysml@4ca1f29928469781ce6be5f731d14be37d8bbe15`; `models/library/structure/mfe_magnet_parts.sysml@82ae3958a2cda05785bd1a18cbd070413d38145e`.
+- **Reading:** Native specification has begun, but the named material list conflicts with the source image. The existing fabrication multiplier also lacks a documented procurement split. There is no implementation, new package, study or audit credit.
+- **Decision:** Trigger: Table 7 contradicts WI-040's inherited material description. Decision and reason: propose the image-supported material list and park dependent design until the owner rules, preserving the explicit material scope. Tier: premise surprise. Decided by: agent surfaced; owner ruling pending. What changed: native spec/basis and the pending owner question; production unchanged.
+- **Decision:** Trigger: delegated accounting reader reported a quarantined datum during an upstream-document screen. Decision and reason: record the exposure, retire that reader, and retain only the coordinator's independently inspected clean evidence as the basis for decisions. Tier: execution detail under the existing protocol. Decided by: coordinator. What changed: `knowledge/holdout/aries-cs/PROTOCOL.md` §6; no datum copied and no model change.
+- **Decision:** Trigger: installed PM has no activate-existing operation; add-item would mint a duplicate. Decision and reason: reuse WI-040 with native spec frontmatter; `agentic-mbse status --json` recognizes active status and reports its override of the backlog row. Tier: execution detail. Decided by: coordinator. What changed: native spec only; registry unchanged.
+
+### Round 1 result — 2026-09-13
+
+- **Intent:** Unmet. WI-040 specification and basis are written; material-scope ruling is needed before design proceeds.
+- **Task sequence:** T-001 → OWNER_GATE.
+- **Last semantic outcome:** OWNER_GATE.
+- **Stop reason:** Unresolved owner ruling on the corrected material scope → close trigger 4, an unresolved owner gate. No pin or study was promoted.
+- **Evidence refs:** T-001 return and its native references; quarantine incident in protocol §6. Native PM status reads the item as active; `git diff --check` passes. No numerical validation is claimed.
+- **Learning delta:** Proposed: the image-supported material table differs from the inherited backlog/pack documentation, so a material-cost implementation cannot safely use that inherited mixture. Proposed: explicit absence of a mass input does not establish that a lump fabrication multiplier excludes material procurement. Both claims require fresh review before acceptance.
+- **Finding dispositions:** `20260903-priced-levers#2` and `20260903-wall-and-heating#7` remain model-fix work at WI-040, now with native spec/basis and an owner-gated material correction. `20260901-sustainment-fence#1` remains WI-038 after WI-040; historical candidate values are not revalidated. `20260907-minor-radius#2` retains its historical bounded reading and existing geometry research/price follow-ons; this round supplies no transfer result. Corresponding rows are appended to the discovery log.
