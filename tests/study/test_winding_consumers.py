@@ -4,6 +4,8 @@ import json
 import math
 import sys
 from pathlib import Path
+from tests.study.structure_ledger import renamed_keys, renamed_values
+
 
 import pytest
 
@@ -58,7 +60,7 @@ def test_zero_field_is_rejected_by_sustainment_consumer():
         oracle.vs._sustainment(oracle.vs.IN, 1000., 0.)
     # A zero axis-field producer from a mapped linkage input reaches that guard too.
     with pytest.raises(RuntimeError, match='B_axis must be nonzero'):
-        oracle.evaluate({oracle.P + 'magnet__k_link': 0.})
+        oracle.evaluate({oracle.P + 'magnet__coil__k_link': 0.})  # WI-057 (2026-09-13): the key carries its part's path
 
 
 @pytest.mark.parametrize('row', BEFORE['controls'])
@@ -74,10 +76,10 @@ def test_valid_full_oracle_outputs_and_stress_units_preserved(row):
 
 
 def test_adapter_coverage_remains_exact():
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT == BEFORE['input_mapping']
-    assert oracle.ORACLE_OUTPUT_TO_CHANNEL == BEFORE['output_mapping']
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[oracle.P + 'magnet__I_coil'] == 'magnet_I_coil'
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[oracle.P + 'magnet__j_wp'] == 'magnet_j_wp'
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT == renamed_keys(BEFORE['input_mapping'])  # WI-057: the frozen mapping under the new names
+    assert oracle.ORACLE_OUTPUT_TO_CHANNEL == renamed_values(BEFORE['output_mapping'])
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[oracle.P + 'magnet__coil__I_coil'] == 'magnet_I_coil'
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[oracle.P + 'magnet__winding_pack__j_wp'] == 'magnet_j_wp'
     with pytest.raises(oracle.OracleSeamError, match='no declared oracle mapping'):
         oracle.evaluate({oracle.P + 'winding_extra_input': 1.})
 

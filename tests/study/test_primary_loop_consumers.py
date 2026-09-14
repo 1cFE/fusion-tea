@@ -4,6 +4,8 @@ import json
 import math
 import sys
 from pathlib import Path
+from tests.study.structure_ledger import renamed_keys, renamed_values
+
 
 import pytest
 
@@ -65,10 +67,10 @@ def test_valid_full_oracle_outputs_and_heat_accounting(row):
 
 
 def test_adapter_coverage_remains_exact():
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT == BEFORE['input_mapping']
-    assert oracle.ORACLE_OUTPUT_TO_CHANNEL == BEFORE['output_mapping']
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[oracle.P + 'loop_cp'] == 'loop_cp'
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[oracle.P + 'loop_dT_blanket'] == 'loop_dT_blanket'
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT == renamed_keys(BEFORE['input_mapping'])  # WI-057: the frozen mapping under the new names
+    assert oracle.ORACLE_OUTPUT_TO_CHANNEL == renamed_values(BEFORE['output_mapping'])
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[oracle.P + 'heat_transport__loop_cp'] == 'loop_cp'
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[oracle.P + 'heat_transport__loop_dT_blanket'] == 'loop_dT_blanket'
     with pytest.raises(oracle.OracleSeamError, match='no declared oracle mapping'):
         oracle.evaluate({oracle.P + 'primary_loop_extra_input': 1.})
 

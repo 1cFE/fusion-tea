@@ -3,6 +3,8 @@
 import json
 import sys
 from pathlib import Path
+from tests.study.structure_ledger import renamed, renamed_keys
+
 
 import pytest
 
@@ -49,12 +51,12 @@ def test_exact_input_contract():
             / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
         ).read_text()
     )
-    assert set(inputs) == set(coverage["native_inputs"])
-    entering = coverage["entering_mapping"]
+    assert set(inputs) == {renamed(k) for k in coverage["native_inputs"]}  # WI-057: the frozen coverage under the new names
+    entering = renamed_keys(coverage["entering_mapping"])
     current = oracle.ENTRY_KEY_TO_ORACLE_INPUT
     assert len(entering) == 100 and len(current) == 99
     assert current == {key: value for key, value in entering.items() if key != OLD}
-    assert set(inputs) - set(current) == set(coverage["unmapped_native_inputs"])
+    assert set(inputs) - set(current) == {renamed(k) for k in coverage["unmapped_native_inputs"]}
     assert len(coverage["unmapped_native_inputs"]) == 147
 
 
@@ -112,7 +114,9 @@ def test_current_invalid_radius_is_retained_as_execution_failure(
             / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
         ).read_text()
     )["unmapped_native_inputs"],
+    ids=lambda k: renamed(k),
 )
 def test_unmapped_native_inputs_remain_explicitly_refused(key):
+    key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
     with pytest.raises(oracle.OracleSeamError, match=key):
         oracle.evaluate({key: 1.0})

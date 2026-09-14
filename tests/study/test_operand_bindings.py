@@ -181,7 +181,7 @@ def test_scalar_efficiency_domains_use_current_input_bindings(
     from scripts.study.verify import derive_verdict
 
     entries = catalog_entries(real_package_path)
-    point = {f"stellarator_09__stellaris__eta_{stage}_heat": value}
+    point = {f"stellarator_09__stellaris__heating__eta_{stage}_heat": value}  # WI-057 (2026-09-13): the key carries its part's path
     for entry in entries:
         name = entry["source_local_identity"]
         if name.startswith(f"heating_{stage}_"):
@@ -193,4 +193,4 @@ def test_scalar_efficiency_domains_use_current_input_bindings(
 @pytest.mark.parametrize("stage", ["source", "couple"])
 def test_zero_efficiency_fails_in_the_independent_oracle(oracle_entry, stage):
     with pytest.raises(ZeroDivisionError):
-        oracle_entry.evaluate({f"stellarator_09__stellaris__eta_{stage}_heat": 0})
+        oracle_entry.evaluate({f"stellarator_09__stellaris__heating__eta_{stage}_heat": 0})  # WI-057 (2026-09-13): the key carries its part's path

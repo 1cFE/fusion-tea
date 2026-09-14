@@ -73,7 +73,7 @@ def test_the_tie_candidate_names_the_key_and_says_it_was_not_added(advisory_copy
     assert rc == 0, err
     (warning,) = group_by_axis(json.loads(out), "R_partial")["warnings"]
     assert warning["kind"] == "tie_candidate"
-    assert "magnet__I_coil" in warning["detail"]
+    assert "magnet__coil__I_coil" in warning["detail"]  # WI-057 (2026-09-13): the key carries its part's path
     assert "not added" in warning["detail"]
 
 

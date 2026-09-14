@@ -5,6 +5,8 @@ import math
 import sys
 from collections.abc import Mapping
 from pathlib import Path
+from tests.study.structure_ledger import renamed, renamed_keys
+
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT), str(ROOT / "exploration/stellarator_e2e/studies")]
@@ -29,8 +31,10 @@ def check_controls(out):
     for proposal, name, old_name in zip(proposals, ["baseline", "R14"], ["baseline", "tied_R14"]):
         case = next(c for c in cases if dict(c.inputs) == proposal)
         expected = frozen["cases"][old_name]["native"]
-        assert set(case.outputs) == set(expected["outputs"]) == set(expectations["channels"])
-        for key, value in expected["outputs"].items():
+        # WI-057 (2026-09-13): the frozen WI-051 expectations under the new channel names.
+        expected_outputs = renamed_keys(expected["outputs"])
+        assert set(case.outputs) == set(expected_outputs) == {renamed(c) for c in expectations["channels"]}
+        for key, value in expected_outputs.items():
             assert (
                 math.isclose(case.outputs[key], value, rel_tol=1e-9, abs_tol=0.0)
                 if key in FINANCIAL_CHANNELS
@@ -52,7 +56,7 @@ def check_controls(out):
                 "relative_deviation": deviation,
                 "oracle": value,
                 "native": case.outputs[key],
-                "frozen": expected["outputs"][key],
+                "frozen": expected_outputs[key],
             }
         comparisons[name] = {
             "inputs": dict(case.inputs),
@@ -63,7 +67,7 @@ def check_controls(out):
         assert len(case.verdicts) == 18
     ratios = {}
     for suffix, expected in expectations["ratios"].items():
-        key = route.P + suffix
+        key = renamed(route.P + suffix)  # WI-057
         actual = comparisons["R14"]["outputs"][key] / comparisons["baseline"]["outputs"][key]
         assert math.isclose(actual, expected, rel_tol=1e-9, abs_tol=1e-9), key
         ratios[key] = {"expected": expected, "actual": actual}

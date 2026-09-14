@@ -291,7 +291,7 @@ def test_current_heating_reachability(real_package_path, real_manifest_path, tmp
     names = ["p_wallplug_heat", "eta_source_heat", "eta_couple_heat"]
     axes.write_text(json.dumps({"schema_version": "study-axis-declaration/v1", "groups": [
         {"axis": name, "keys": [
-            {"key": f"stellarator_09__stellaris__{name}", "provenance": "fan_out"}
+            {"key": f"stellarator_09__stellaris__heating__{name}", "provenance": "fan_out"}  # WI-057 (2026-09-13): the key carries its part's path
         ]}
         for name in names
     ]}))

@@ -3,6 +3,8 @@
 import json
 import sys
 from pathlib import Path
+from tests.study.structure_ledger import renamed_keys, renamed_values
+
 
 import pytest
 
@@ -41,13 +43,14 @@ def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, messa
 
 
 @pytest.mark.parametrize("suffix,value,message", [
-    ("R", 3.0, "live magnet clearance"),
-    ("R", COIL_RADIUS, "live magnet clearance"),
-    ("magnet__R_ref", COIL_RADIUS, "reference magnet clearance"),
-    ("magnet__a_coil_ref", 13.0, "reference magnet clearance"),
-    ("T_cold_cryo", 0.0, "0 < T_cold < T_amb"),
-    ("T_cold_cryo", 300.0, "0 < T_cold < T_amb"),
-    ("T_cold_cryo", 301.0, "0 < T_cold < T_amb"),
+    # WI-057 (2026-09-13): the entry keys carry their part's path (plasma, coil, cryoplant).
+    ("plasma__R", 3.0, "live magnet clearance"),
+    ("plasma__R", COIL_RADIUS, "live magnet clearance"),
+    ("magnet__coil__R_ref", COIL_RADIUS, "reference magnet clearance"),
+    ("magnet__coil__a_coil_ref", 13.0, "reference magnet clearance"),
+    ("cryoplant__T_cold_cryo", 0.0, "0 < T_cold < T_amb"),
+    ("cryoplant__T_cold_cryo", 300.0, "0 < T_cold < T_amb"),
+    ("cryoplant__T_cold_cryo", 301.0, "0 < T_cold < T_amb"),
 ])
 def test_supported_adapter_inputs_propagate_deliberate_domain_error(suffix, value, message):
     with pytest.raises(ValueError, match=message):
@@ -75,9 +78,9 @@ def test_valid_outputs_exactly_preserved_and_physical_identities(row):
 
 
 def test_adapter_contract_and_ambient_limit_preserved():
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT == BEFORE["input_mapping"]
-    assert oracle.ORACLE_OUTPUT_TO_CHANNEL == BEFORE["output_mapping"]
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT == renamed_keys(BEFORE["input_mapping"])  # WI-057: the frozen mapping under the new names
+    assert oracle.ORACLE_OUTPUT_TO_CHANNEL == renamed_values(BEFORE["output_mapping"])
     assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 99
-    for suffix in ("T_amb_cryo", "unknown_domain_input"):
+    for suffix in ("cryoplant__T_amb_cryo", "unknown_domain_input"):  # WI-057 (2026-09-13): the key carries its part's path
         with pytest.raises(oracle.OracleSeamError, match="no declared oracle mapping"):
             oracle.evaluate({oracle.P + suffix: 300.0})
