@@ -5,6 +5,8 @@ import math
 import sys
 from pathlib import Path
 from tests.study.structure_ledger import renamed_keys, renamed_values
+from tests.study.test_domain_consumers import wi040_expected
+from tests.models.current_mfe_regressions import WI040_PARAMETERS, WI040_CHANNELS
 
 
 import pytest
@@ -66,7 +68,15 @@ def test_zero_field_is_rejected_by_sustainment_consumer():
 @pytest.mark.parametrize('row', BEFORE['controls'])
 def test_valid_full_oracle_outputs_and_stress_units_preserved(row):
     actual = oracle._compute(row['overrides'])
-    assert actual == row['outputs']
+    # WI-040: independently derive only the additive-account cost increments;
+    # all frozen physics and unrelated output values retain exact comparison.
+    expected, changed = wi040_expected(row)
+    assert actual.keys() == expected.keys()
+    for name, value in expected.items():
+        if name in changed:
+            assert actual[name] == pytest.approx(value, rel=1e-12, abs=1e-9), name
+        else:
+            assert actual[name] == value, name
     p = {**oracle.vs.IN, **row['overrides']}
     side = oracle.vs._winding_pack_side(p['magnet_I_coil'], p['magnet_j_wp'])
     assert side**2 * 1e6 * p['magnet_j_wp'] == pytest.approx(p['magnet_I_coil'], rel=1e-12)
@@ -76,8 +86,14 @@ def test_valid_full_oracle_outputs_and_stress_units_preserved(row):
 
 
 def test_adapter_coverage_remains_exact():
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT == renamed_keys(BEFORE['input_mapping'])  # WI-057: the frozen mapping under the new names
-    assert oracle.ORACLE_OUTPUT_TO_CHANNEL == renamed_values(BEFORE['output_mapping'])
+    old_inputs = renamed_keys(BEFORE['input_mapping'])
+    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS} == old_inputs
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS
+    old_outputs = renamed_values(BEFORE['output_mapping'])
+    old_outputs['winding_pack_legacy'] = old_outputs.pop('winding_pack')
+    extras = WI040_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
+    assert {k: v for k, v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v not in extras} == old_outputs
+    assert set(oracle.ORACLE_OUTPUT_TO_CHANNEL.values()) - set(old_outputs.values()) == extras
     assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[oracle.P + 'magnet__coil__I_coil'] == 'magnet_I_coil'
     assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[oracle.P + 'magnet__winding_pack__j_wp'] == 'magnet_j_wp'
     with pytest.raises(oracle.OracleSeamError, match='no declared oracle mapping'):
@@ -93,7 +109,7 @@ def test_current_native_winding_route_agrees_with_independent_oracle(tmp_path, s
     for case in cases:
         assert case.state == 'completed', (dict(case.inputs), case.state)
         expected = oracle.evaluate(case.inputs)
-        assert len(case.outputs) == 158 and len(expected) == 141
+        assert len(case.outputs) == 174 and len(expected) == 158  # WI-040 explicit ABI and subtotal coverage
         for key, value in expected.items():
             assert case.outputs[key] == pytest.approx(value, rel=1e-9, abs=1e-9), key
         if not case.inputs:

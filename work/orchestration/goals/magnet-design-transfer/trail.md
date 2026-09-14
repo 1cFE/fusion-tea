@@ -127,3 +127,9 @@ WI-040 · `work/active/WI-040_winding-pack-mass-cost/plan.md` · implemented mod
 ### T-004 start — 2026-09-13
 
 WI-038 · `work/active/WI-038_conductor-grade-lever/` · source-bounded design, implemented consequence chain and independent audit.
+
+### Amendment — 2026-09-13 — T-003 consumer coverage
+
+T-004 preparation found fifteen stale current-consumer assertions outside T-003's recorded test batches. The entering additional batch passed 280 and failed 15 (`work/active/WI-038_conductor-grade-lever/evidence/entering-additional-consumers.xml`). The failures concern old economic expectations, contract sizes and a headline anchor in winding, primary-loop, radius and operand-binding tests. The recorded 809/219/25 results remain true, but did not cover these consumers. Before any WI-038 production change, the coordinator is repairing those current tests and requesting a targeted addendum from the same independent WI-040 auditor. Historical evidence and the audited model/package remain unchanged. This corrects T-003's coverage interpretation; it does not claim a full historical study-suite pass.
+
+Trigger: newly inspected current consumers retain pre-WI-040 expectations. Decision/reason: repair and independently recheck them before conductor implementation so the owner-ordered prerequisite remains coherent. Tier: execution detail. Decided by: coordinator. Changed: the five current consumer files named in the audit addendum and their retained test evidence; no model change.

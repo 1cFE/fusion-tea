@@ -41,21 +41,23 @@ def test_retired_local_alias_rejected(value):
 
 
 def test_exact_input_contract():
+    from tests.models.current_mfe_regressions import WI040_PARAMETERS
     inputs = {}
     for path in (route.PACKAGE_DIR / "inputs").glob("*.json"):
         inputs.update(json.loads(path.read_text()))
-    assert len(inputs) == 246
+    assert len(inputs) == 263
     coverage = json.loads(
         (
             ROOT
             / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
         ).read_text()
     )
-    assert set(inputs) == {renamed(k) for k in coverage["native_inputs"]}  # WI-057: the frozen coverage under the new names
+    assert set(inputs) == {renamed(k) for k in coverage["native_inputs"]} | WI040_PARAMETERS
     entering = renamed_keys(coverage["entering_mapping"])
     current = oracle.ENTRY_KEY_TO_ORACLE_INPUT
-    assert len(entering) == 100 and len(current) == 99
-    assert current == {key: value for key, value in entering.items() if key != OLD}
+    assert len(entering) == 100 and len(current) == 116
+    assert {k: v for k, v in current.items() if k not in WI040_PARAMETERS} == {key: value for key, value in entering.items() if key != OLD}
+    assert set(current) - set(entering) == WI040_PARAMETERS
     assert set(inputs) - set(current) == {renamed(k) for k in coverage["unmapped_native_inputs"]}
     assert len(coverage["unmapped_native_inputs"]) == 147
 

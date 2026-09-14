@@ -52,7 +52,7 @@ BASELINE_POINT = {
 # Predictions) and re-pinned from the executed baseline after the oracle read bit-exact
 # on every channel, the eleven calendar channels included. The held mode
 # (availability_direct 0.85) reproduces WI-045's 237.2528002420958 bit-for-bit.
-PINNED_LCOE = 224.26923288439  # WI-050 audited operating demand.
+PINNED_LCOE = 142.50725862880648  # WI-040 audited additive pack account; baseline-after.json.
 
 
 @pytest.fixture
@@ -96,7 +96,7 @@ def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
     inputs = package_inputs(real_package_path)
 
     assert set(bindings) == {entry["constraint_id"] for entry in entries}
-    assert len(inputs) == 246
+    assert len(inputs) == 263  # WI-040 adds seventeen procurement inputs.
     resolved = 0
     for entry in entries:
         cid = entry["constraint_id"]

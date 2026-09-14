@@ -14,6 +14,7 @@ import oracle_entry as oracle  # noqa: E402 — runtime import path established 
 import study_route as route  # noqa: E402 — runtime import path established above
 
 from tests.study.financial_channels import FINANCIAL_CHANNELS
+from tests.models.current_mfe_regressions import WI040_CHANNELS, WI040_CHANGED_ECONOMICS
 
 from scripts.study import common, verify  # noqa: E402 — runtime import path established above
 
@@ -32,15 +33,21 @@ def check_controls(out):
         case = next(c for c in cases if dict(c.inputs) == proposal)
         expected = frozen["cases"][old_name]["native"]
         # WI-057 (2026-09-13): the frozen WI-051 expectations under the new channel names.
-        expected_outputs = renamed_keys(expected["outputs"])
-        assert set(case.outputs) == set(expected_outputs) == {renamed(c) for c in expectations["channels"]}
+        frozen_outputs = renamed_keys(expected["outputs"])
+        expected_outputs = dict(frozen_outputs)
+        channels = oracle.evaluate(proposal)
+        changed_costs = {oracle.ORACLE_OUTPUT_TO_CHANNEL[name] for name in WI040_CHANGED_ECONOMICS}
+        # Preserve every frozen physical/structured value. Only the named WI-040
+        # accounting descendants and new inventory channels use current expectations.
+        for key in changed_costs | WI040_CHANNELS:
+            expected_outputs[key] = channels[key]
+        assert set(case.outputs) == set(expected_outputs) == {renamed(c) for c in expectations["channels"]} | WI040_CHANNELS
         for key, value in expected_outputs.items():
             assert (
                 math.isclose(case.outputs[key], value, rel_tol=1e-9, abs_tol=0.0)
-                if key in FINANCIAL_CHANNELS
+                if key in FINANCIAL_CHANNELS | changed_costs | WI040_CHANNELS
                 else case.outputs[key] == value
             ), (name, key, case.outputs[key], value)
-        channels = oracle.evaluate(proposal)
         assert set(channels) == set(oracle.ORACLE_OUTPUT_TO_CHANNEL.values())
         rows = {}
         for key, value in channels.items():
@@ -56,7 +63,8 @@ def check_controls(out):
                 "relative_deviation": deviation,
                 "oracle": value,
                 "native": case.outputs[key],
-                "frozen": expected_outputs[key],
+                "frozen": frozen_outputs.get(key),
+                "expected_current": expected_outputs[key],
             }
         comparisons[name] = {
             "inputs": dict(case.inputs),
