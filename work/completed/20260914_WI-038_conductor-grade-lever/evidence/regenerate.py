@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[4]
 HERE = Path(__file__).resolve().parent
 PACKAGE = ROOT / 'exploration/stellarator_e2e/generated'
-PRIOR = ROOT / 'work/active/WI-040_winding-pack-mass-cost/evidence'
+PRIOR = ROOT / 'work/completed/20260914_WI-040_winding-pack-mass-cost/evidence'
 SEEDS = HERE / 'candidate-seeds.json'
 NEW_SEED = 'handwritten/mfe_conductor_grade/conductor_field_capability_impl.py'
 

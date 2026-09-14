@@ -6,7 +6,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-DOMAIN_EVIDENCE = ROOT / 'work/active/WI-038_conductor-grade-lever/evidence'
+DOMAIN_EVIDENCE = ROOT / 'work/completed/20260914_WI-038_conductor-grade-lever/evidence'
 STRUCTURE_EVIDENCE = ROOT / 'work/active/WI-057_stellaris-structural-decomposition/evidence/merge_onto_demo_maturation'
 P = 'stellarator_09__stellaris__'
 # WI-040 (2026-09-13): explicit ABI additions, not whatever regeneration happens to emit.

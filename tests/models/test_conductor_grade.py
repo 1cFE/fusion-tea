@@ -130,7 +130,7 @@ def verdicts(row):
 
 @pytest.mark.codegen_available
 def test_reference_preserves_every_audited_wi040_channel_and_verdict(evaluate):
-    baseline = json.loads((ROOT / "work/active/WI-038_conductor-grade-lever/baseline-before.json").read_text())
+    baseline = json.loads((ROOT / "work/completed/20260914_WI-038_conductor-grade-lever/baseline-before.json").read_text())
     assert len(baseline["channels"]) == 174
     assert len(baseline["verdicts"]) == 18
     row = evaluate()

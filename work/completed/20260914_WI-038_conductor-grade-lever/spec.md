@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-09-13
-Updated: 2026-09-13
+Updated: '2026-09-14'
 ---
 
 # WI-038 — Priced conductor field envelope

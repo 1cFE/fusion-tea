@@ -1,7 +1,7 @@
 ---
-Status: active
+Status: complete
 Created: 2026-09-13
-Updated: 2026-09-13
+Updated: '2026-09-14'
 Related Artifacts: spec.md, basis.md, evidence/accounting-research.md, evidence/material-research.md
 ---
 

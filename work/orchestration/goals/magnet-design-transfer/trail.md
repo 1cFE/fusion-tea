@@ -210,3 +210,13 @@ Fresh reviewer dispatch: committed brief `evidence/R2-review-prompt.md@d5d21165`
 - **Checks:** Native research returns and clean-source audits, owner order, scoped corrections, single integration pin/study, retries, fresh review roles, full qualified outcomes, reference accounting, density/price applicability, source sufficiency and all eight current/historical joined dispositions checked. No unaccounted native mutation found. Independent frozen-record calculations and 48 passing record/goal tests are documented in `evidence/R2-review.md`.
 - **Learning delta:** L-003 and L-005 accepted; L-004 accepted with the fixed-density necessity explicitly limited to this implemented pricing/inventory model. Appended to `learnings.md`; earlier entries remain historical.
 - **Recommendation:** Owner-held goal close on the bounded answer. Configuration, absolute conductor margin, pack/casing fit and complete manufacturing evidence remain missing; numerical agreement does not accept those premises. Round 2 remains closed, no next strategy is opened, and item close/archive, merge and push remain unperformed.
+
+### Owner-authorized work-item closure — 2026-09-14
+
+[OWNER-VERBATIM] "great, please close the work items"
+
+Closed WI-040 first, then WI-038 with `.codex-test/run agentic-mbse pm close-item`. Their native records now live at `work/completed/20260914_WI-040_winding-pack-mass-cost/` and `work/completed/20260914_WI-038_conductor-grade-lever/`. Closure relies on the independent WI-040 audit and late-consumer acceptance at `0d077258` and WI-038 audit at `aa3e1f3d`. Historical citations above remain pinned to their original commits.
+
+Updated live test/helper, validation-source and study-annex paths for the archive move. The focused model/oracle, study-record and goal-contract suite passed all 204 tests. Archive verification found 74 byte-identical files, six completion-frontmatter-only updates and two exact helper-path relocations. All sixteen current normative seed bodies remain unchanged. No production model, generated package or frozen study record changed.
+
+This is owner-authorized archival bookkeeping after the reviewed round, not a resumed task or a new round. Goal close, merge and push remain unperformed. Item completion does not close the outstanding engineering findings or expand the conditional transfer claim.

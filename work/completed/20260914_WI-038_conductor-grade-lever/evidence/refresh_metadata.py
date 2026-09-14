@@ -4,7 +4,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
-PRIOR = ROOT / 'work/active/WI-040_winding-pack-mass-cost/evidence/refresh_metadata.py'
+PRIOR = ROOT / 'work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/refresh_metadata.py'
 
 if __name__ == '__main__':
     spec = importlib.util.spec_from_file_location('wi038_metadata_producers', PRIOR)

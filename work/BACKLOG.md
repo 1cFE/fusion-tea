@@ -142,8 +142,8 @@ epics:
   - id: WI-038
     name: 'Conductor-Grade Lever: B_max Consequence Chain (Cost, Stress)'
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-09-14'
   - id: WI-039
     name: 'Heating System Structure: Sources, Transmission, Launchers'
     scale: standard
@@ -153,8 +153,8 @@ epics:
     name: 'Winding-pack mass cost account: steel, insulation, copper and helium priced
       by mass (sequenced before WI-038)'
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-09-14'
   - id: WI-041
     name: Source-Anchored Wall-Load Fence
     scale: standard
@@ -333,9 +333,9 @@ standalone:
 | WI-035 | Magnet closure: derived field, structural limit, decomposed cost accounts | standard | completed | Completed 2026-09-01 |
 | WI-036 | Winding-pack sizing chain: winding length from coil geometry, wp_side into the sizing and cost chain | standard | completed | Completed 2026-09-03 |
 | WI-037 | Operating-Point Closure: ISS04 Confinement Solve, Machine-Responsive Temperature | standard | completed | Completed 2026-09-02 |
-| WI-038 | Conductor-Grade Lever: B_max Consequence Chain (Cost, Stress) | standard | backlog |  |
+| WI-038 | Conductor-Grade Lever: B_max Consequence Chain (Cost, Stress) | standard | completed | Completed 2026-09-14 |
 | WI-039 | Heating System Structure: Sources, Transmission, Launchers | standard | completed | Completed 2026-09-04 |
-| WI-040 | Winding-pack mass cost account: steel, insulation, copper and helium priced by mass (sequenced before WI-038) | standard | backlog |  |
+| WI-040 | Winding-pack mass cost account: steel, insulation, copper and helium priced by mass (sequenced before WI-038) | standard | completed | Completed 2026-09-14 |
 | WI-041 | Source-Anchored Wall-Load Fence | standard | completed | Completed 2026-09-05 |
 | WI-042 | Sourced Helium-Ash Profile | standard | completed | Completed 2026-09-06 |
 | WI-043 | Burn-Control Lever or Second Sustainment Inequality | standard | completed | Completed 2026-09-07 |
