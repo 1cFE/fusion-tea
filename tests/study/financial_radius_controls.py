@@ -25,7 +25,13 @@ def check_controls(out):
     frozen_dir = ROOT / "work/active/WI-051_mfe-model-owned-major-radius/prototype"
     frozen = json.loads((frozen_dir / "frozen-results.json").read_text())
     expectations = json.loads((frozen_dir / "expectations.json").read_text())
-    proposals = [{}, {route.P + "plasma__R": 14.0}]
+    # WI-058 (2026-09-14): the winding length follows the coil bore; the frozen R14 row was produced with
+    # the R-form (c_coil = k_coil * R). At a = 1.3 the bore ratio is 1.0, so binding the reference
+    # circumference to k_coil * R reproduces the R-form length exactly and the frozen row stays the exact
+    # expectation (tests.models.current_mfe_regressions.K_COIL_RETIRED; the bore response is tested in
+    # tests/models/test_winding_length_bore.py).
+    from tests.models.current_mfe_regressions import K_COIL_RETIRED
+    proposals = [{}, {route.P + "plasma__R": 14.0, route.P + "magnet__coil__c_coil_ref": K_COIL_RETIRED * 14.0}]
     cases, db = route.run_points("radius-controls", proposals, out / "_work")
     assert len(cases) == 2 and all(c.state == "completed" for c in cases)
     comparisons = {}

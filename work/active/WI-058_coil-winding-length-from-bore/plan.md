@@ -88,8 +88,9 @@ Levels 1–3 after the model edits (done, phase 1); the baseline diff before any
 
 ## Phase 5 — The `tests/study` run of record; commit C
 
-- [ ] After commit B, `rm -rf .integration_workspace`; `tests/study` on the clean tree under `systemd-run --user`; record the count and the failing set; confirm the failing set equals the branch's pre-existing fail-closed set or explain every difference
-- [ ] **Commit C**: any test-file restatement the run forced, and this plan's phase-5 record
+- [x] After commit B, `rm -rf .integration_workspace`; `tests/study` on the clean tree under `systemd-run --user` (`evidence/tests_study_first_run.txt`, 17 min): **4 failed, 965 passed, 1 skipped**. The four are this item's own drift in tests that compare the live contract or the seam to frozen JSON mappings carrying `k_coil` (the phase-4 grep missed them because the retired key sits in the evidence files, not the test text): `test_major_radius.py::test_exact_input_contract` (the entering mapping), `::test_current_radius_controls_match_frozen_model_and_independent_oracle` (the frozen R14 row expects the R-form length 27.559 m; the route point now binds `c_coil_ref = k_coil × 14` as the harness does), `test_primary_loop_consumers.py` and `test_winding_consumers.py::test_adapter_coverage_remains_exact` (the seam map). Each restated with a dated WI-058 comment, none patched to a value; focused re-run 4 passed. No pre-existing fail-closed case appeared in this run (the WI-057 landing's 20 red cases were resolved by the magnet-design-transfer closure before this item)
+- [x] **Commit C**: the four restated study tests, the audit brief, the first run's log, this record
+- [ ] The confirming full `tests/study` run of record on the committed tree; expected **0 failed, 969 passed, 1 skipped**; recorded here with commit D
 
 ---
 

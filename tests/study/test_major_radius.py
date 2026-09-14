@@ -41,8 +41,10 @@ def test_retired_local_alias_rejected(value):
 
 
 def test_exact_input_contract():
-    from tests.models.current_mfe_regressions import WI040_PARAMETERS, WI038_PARAMETERS
-    added = WI040_PARAMETERS | WI038_PARAMETERS
+    from tests.models.current_mfe_regressions import WI040_PARAMETERS, WI038_PARAMETERS, WI058_PARAMETERS, WI058_RETIRED
+    # WI-058 (2026-09-14): k_coil retired from the contract and the seam, c_coil_ref added (the winding
+    # length follows the coil bore); the counts (265 inputs, 118 mapped, 147 unmapped) do not move.
+    added = WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS
     inputs = {}
     for path in (route.PACKAGE_DIR / "inputs").glob("*.json"):
         inputs.update(json.loads(path.read_text()))
@@ -53,12 +55,13 @@ def test_exact_input_contract():
             / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
         ).read_text()
     )
-    assert set(inputs) == {renamed(k) for k in coverage["native_inputs"]} | added
+    assert set(inputs) == ({renamed(k) for k in coverage["native_inputs"]} - WI058_RETIRED) | added
     entering = renamed_keys(coverage["entering_mapping"])
     current = oracle.ENTRY_KEY_TO_ORACLE_INPUT
     assert len(entering) == 100 and len(current) == 118
-    assert {k: v for k, v in current.items() if k not in added} == {key: value for key, value in entering.items() if key != OLD}
+    assert {k: v for k, v in current.items() if k not in added} == {key: value for key, value in entering.items() if key != OLD and key not in WI058_RETIRED}
     assert set(current) - set(entering) == added
+    assert WI058_RETIRED <= set(entering) and not WI058_RETIRED & set(current)
     assert set(inputs) - set(current) == {renamed(k) for k in coverage["unmapped_native_inputs"]}
     assert len(coverage["unmapped_native_inputs"]) == 147
 

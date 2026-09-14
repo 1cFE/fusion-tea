@@ -1,0 +1,132 @@
+........................................................................ [  7%]
+........................................................................ [ 14%]
+........................................................................ [ 22%]
+........................................................................ [ 29%]
+........................................................................ [ 37%]
+..................................................F.F................... [ 44%]
+........................................................................ [ 51%]
+........................................................................ [ 59%]
+........................................................................ [ 66%]
+........................................................................ [ 74%]
+.........................................F.............................. [ 81%]
+........................................................................ [ 89%]
+............................................s........................... [ 96%]
+................................F.                                       [100%]
+=================================== FAILURES ===================================
+__________________________ test_exact_input_contract ___________________________
+
+    def test_exact_input_contract():
+        from tests.models.current_mfe_regressions import WI040_PARAMETERS, WI038_PARAMETERS
+        added = WI040_PARAMETERS | WI038_PARAMETERS
+        inputs = {}
+        for path in (route.PACKAGE_DIR / "inputs").glob("*.json"):
+            inputs.update(json.loads(path.read_text()))
+        assert len(inputs) == 265
+        coverage = json.loads(
+            (
+                ROOT
+                / ".project/active/mfe-major-radius-study-package/implementation/contract-coverage.json"
+            ).read_text()
+        )
+>       assert set(inputs) == {renamed(k) for k in coverage["native_inputs"]} | added
+E       AssertionError: assert {'stellarator...anket_t', ...} == {'stellarator...anket_t', ...}
+E         
+E         Extra items in the left set:
+E         'stellarator_09__stellaris__magnet__coil__c_coil_ref'
+E         Extra items in the right set:
+E         'stellarator_09__stellaris__magnet__coil__k_coil'
+E         Use -v to get more diff
+
+tests/study/test_major_radius.py:56: AssertionError
+____ test_current_radius_controls_match_frozen_model_and_independent_oracle ____
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12629/test_current_radius_controls_m0')
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    def test_current_radius_controls_match_frozen_model_and_independent_oracle(
+        tmp_path, stock_simkit_path
+    ):
+        from tests.study import financial_radius_controls as controls
+    
+>       results = controls.check_controls(tmp_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_major_radius.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+out = PosixPath('/tmp/pytest-of-reid/pytest-12629/test_current_radius_controls_m0')
+
+    def check_controls(out):
+        out = Path(out)
+        out.mkdir(parents=True, exist_ok=True)
+        frozen_dir = ROOT / "work/active/WI-051_mfe-model-owned-major-radius/prototype"
+        frozen = json.loads((frozen_dir / "frozen-results.json").read_text())
+        expectations = json.loads((frozen_dir / "expectations.json").read_text())
+        proposals = [{}, {route.P + "plasma__R": 14.0}]
+        cases, db = route.run_points("radius-controls", proposals, out / "_work")
+        assert len(cases) == 2 and all(c.state == "completed" for c in cases)
+        comparisons = {}
+        for proposal, name, old_name in zip(proposals, ["baseline", "R14"], ["baseline", "tied_R14"]):
+            case = next(c for c in cases if dict(c.inputs) == proposal)
+            expected = frozen["cases"][old_name]["native"]
+            # WI-057 (2026-09-13): the frozen WI-051 expectations under the new channel names.
+            frozen_outputs = renamed_keys(expected["outputs"])
+            expected_outputs = dict(frozen_outputs)
+            channels = oracle.evaluate(proposal)
+            changed_costs = {oracle.ORACLE_OUTPUT_TO_CHANNEL[name] for name in WI040_CHANGED_ECONOMICS}
+            # Preserve every frozen physical/structured value. Only the named WI-040
+            # accounting descendants and new inventory channels use current expectations.
+            for key in changed_costs | WI040_CHANNELS:
+                expected_outputs[key] = channels[key]
+            # Both controls retain the reference envelope: these three additions are
+            # known exactly without replacing any frozen physical value.
+            expected_outputs.update({route.P + 'magnet__conductor_grade__' + k: v for k, v in {
+                'quantity_factor': 1.0, 'j_wp_effective': 118.8271604938272,
+                'cost_per_kAm_effective': 50.0}.items()})
+            assert set(case.outputs) == set(expected_outputs) == {renamed(c) for c in expectations["channels"]} | WI040_CHANNELS | WI038_CHANNELS
+            for key, value in expected_outputs.items():
+                assert (
+>                   math.isclose(case.outputs[key], value, rel_tol=1e-9, abs_tol=0.0)
+                    if key in FINANCIAL_CHANNELS | changed_costs | WI040_CHANNELS
+                    else case.outputs[key] == value
+                ), (name, key, case.outputs[key], value)
+E               AssertionError: ('R14', 'stellarator_09__stellaris__magnet__coil_length__c_coil', 25.0, 27.559055118110237)
+
+tests/study/financial_radius_controls.py:52: AssertionError
+_____________________ test_adapter_coverage_remains_exact ______________________
+
+    def test_adapter_coverage_remains_exact():
+        old_inputs = renamed_keys(BEFORE['input_mapping'])
+>       assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS} == old_inputs
+E       AssertionError: assert {'stellarator..._direct', ...} == {'stellarator..._direct', ...}
+E         
+E         Omitting 98 identical items, use -vv to show
+E         Left contains 1 more item:
+E         {'stellarator_09__stellaris__magnet__coil__c_coil_ref': 'magnet_c_coil_ref'}
+E         Right contains 1 more item:
+E         {'stellarator_09__stellaris__magnet__coil__k_coil': 'magnet_k_coil'}
+E         Use -v to get more diff
+
+tests/study/test_primary_loop_consumers.py:81: AssertionError
+_____________________ test_adapter_coverage_remains_exact ______________________
+
+    def test_adapter_coverage_remains_exact():
+        old_inputs = renamed_keys(BEFORE['input_mapping'])
+>       assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS} == old_inputs
+E       AssertionError: assert {'stellarator..._direct', ...} == {'stellarator..._direct', ...}
+E         
+E         Omitting 98 identical items, use -vv to show
+E         Left contains 1 more item:
+E         {'stellarator_09__stellaris__magnet__coil__c_coil_ref': 'magnet_c_coil_ref'}
+E         Right contains 1 more item:
+E         {'stellarator_09__stellaris__magnet__coil__k_coil': 'magnet_k_coil'}
+E         Use -v to get more diff
+
+tests/study/test_winding_consumers.py:90: AssertionError
+=========================== short test summary info ============================
+FAILED tests/study/test_major_radius.py::test_exact_input_contract - Assertio...
+FAILED tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle
+FAILED tests/study/test_primary_loop_consumers.py::test_adapter_coverage_remains_exact
+FAILED tests/study/test_winding_consumers.py::test_adapter_coverage_remains_exact
+4 failed, 965 passed, 1 skipped in 1033.31s (0:17:13)
+EXIT=1

@@ -6,7 +6,8 @@ import sys
 from pathlib import Path
 from tests.study.structure_ledger import renamed_keys, renamed_values
 from tests.study.test_domain_consumers import wi040_expected
-from tests.models.current_mfe_regressions import WI040_PARAMETERS, WI040_CHANNELS, WI038_PARAMETERS, WI038_CHANNELS
+from tests.models.current_mfe_regressions import (WI040_PARAMETERS, WI040_CHANNELS, WI038_PARAMETERS, WI038_CHANNELS,
+                                                  WI058_PARAMETERS, WI058_RETIRED)
 
 
 import pytest
@@ -78,8 +79,11 @@ def test_valid_full_oracle_outputs_and_heat_accounting(row):
 
 def test_adapter_coverage_remains_exact():
     old_inputs = renamed_keys(BEFORE['input_mapping'])
-    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS} == old_inputs
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS
+    # WI-058 (2026-09-14): the seam maps c_coil_ref in place of the retired k_coil.
+    assert WI058_RETIRED <= old_inputs.keys()
+    old_inputs = {k: v for k, v in old_inputs.items() if k not in WI058_RETIRED}
+    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS} == old_inputs
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS
     old_outputs = renamed_values(BEFORE['output_mapping'])
     old_outputs['winding_pack_legacy'] = old_outputs.pop('winding_pack')
     extras = WI040_CHANNELS | WI038_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
