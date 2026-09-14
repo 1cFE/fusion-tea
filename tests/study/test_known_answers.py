@@ -20,7 +20,7 @@ from tests.study.conftest import DATA_DIR, run_tool
 # held-mode switch (design D5). The known answer is re-derived, its no-response claim kept.
 CASES = ["availability_direct", "interest_rate", "R", "a", "I_coil"]
 
-EXPECTED_SEMANTIC_FINGERPRINT = '2c2788662c148ccae3f61d1f58e510cedcfcddb6b0b489878ec8d7ebd6f1c08e'
+EXPECTED_SEMANTIC_FINGERPRINT = '8eb332b9c73e1b80a5d7629e4de3532c739c280bbc889f45cb7bf3672269959d'  # WI-058 (2026-09-14); was 2c2788662c14…
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
 #:          modules fired, channels tainted). Read straight off the Item 1 fixture
@@ -32,6 +32,8 @@ EXPECTED_SEMANTIC_FINGERPRINT = '2c2788662c148ccae3f61d1f58e510cedcfcddb6b0b4898
 # WI-051: re-derived by the radius item metadata caller from the native graph.
 # WI-057 (2026-09-13, the structural decomposition re-applied onto feat/demo-maturation): re-derived on the
 # restructured package -- every count identical; only the entry-point names carry their part's path.
+# WI-058 (2026-09-14): the winding length follows the coil bore (k_coil retired, c_coil_ref bound), re-derived
+# from the indicator report at semantic 8eb332b9…; what moved per axis: I_coil: fired 86->86, tainted 171->171, constraints +[] -[], objectives +[] -[]; R: fired 89->89, tainted 181->181, constraints +[] -[], objectives +[] -[]; a: fired 82->88, tainted 160->180, constraints +[] -[], objectives +[] -[]; availability_direct: fired 6->6, tainted 18->18, constraints +[] -[], objectives +[] -[]; interest_rate: fired 9->9, tainted 22->22, constraints +[] -[], objectives +[] -[]
 FIXTURE_CONTRACT = {'I_coil': (False,
             ['beta_ok',
              'burn_hold_ok',
@@ -119,8 +121,8 @@ FIXTURE_CONTRACT = {'I_coil': (False,
         'p_aux_required',
         'tau_E',
         'total_capital'],
-       82,
-       160),
+       88,
+       180),
  'availability_direct': (True,
                          [],
                          ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'],

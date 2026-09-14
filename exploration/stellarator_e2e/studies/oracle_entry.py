@@ -66,7 +66,9 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}magnet__coil__k_link": "magnet_k_link",
     f"{P}magnet__coil__f_set": "magnet_f_set",
     f"{P}magnet__winding_pack__j_wp": "magnet_j_wp",
-    f"{P}magnet__coil__k_coil": "magnet_k_coil",
+    # WI-058 (2026-09-14): the winding length follows the coil bore; the printed circumference
+    # at the reference bore replaces the WI-036 shape factor over the major radius.
+    f"{P}magnet__coil__c_coil_ref": "magnet_c_coil_ref",
     f"{P}magnet__winding_pack__f_wp_vol": "magnet_f_wp_vol",
     f"{P}magnet__winding_pack__E_wp": "magnet_E_wp",
     f"{P}magnet__winding_pack__f_cond": "magnet_f_cond",

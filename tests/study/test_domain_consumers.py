@@ -15,6 +15,23 @@ import oracle_entry as oracle
 EVIDENCE = ROOT / ".project/active/mfe-domain-study-package/implementation/oracle-before.json"
 BEFORE = json.loads(EVIDENCE.read_text())
 COIL_RADIUS = BEFORE["controls"][0]["outputs"]["r_coil_centre"]
+# WI-058 (2026-09-14): the winding length follows the coil bore, c_coil = c_coil_ref * (r_coil_centre /
+# a_coil_ref); the frozen control rows were produced with the R-form c_coil = k_coil * R. At the rows' a = 1.3
+# the bore ratio is exactly 1.0, so binding c_coil_ref = k_coil * R reproduces the R-form's length to the
+# double (uniform-scaling equivalence) and every frozen output stays the exact expectation. The bore form's
+# own response is tested in tests/models/test_winding_length_bore.py, not here.
+K_COIL_RETIRED = 1.968503937007874
+
+
+def wi058_overrides(row):
+    overrides = dict(row["overrides"])
+    if "R" in overrides:
+        overrides["magnet_c_coil_ref"] = K_COIL_RETIRED * overrides["R"]
+    return overrides
+
+
+def wi058_length(p, r_coil_centre):
+    return p["magnet_c_coil_ref"] * (r_coil_centre / p["magnet_a_coil_ref"])
 
 
 def wi040_expected(row):
@@ -23,8 +40,9 @@ def wi040_expected(row):
     Frozen controls remain unchanged. Derive downstream increments from their
     existing capital charge rates, independently of the live oracle cost branches.
     """
-    p = oracle.vs.IN | row['overrides']
+    p = oracle.vs.IN | wi058_overrides(row)
     old = row['outputs']
+    c_coil = wi058_length(p, old['r_coil_centre'])  # WI-058: the bore form
     expected = dict(old)
     # WI-038 entering controls are at q=1. Preserve old outputs and add the exact
     # effective reference values; off-reference grade claims have separate tests.
@@ -32,7 +50,7 @@ def wi040_expected(row):
     expected.update(conductor_quantity_factor=1.0,
                     conductor_j_wp_effective=p['magnet_j_wp'],
                     conductor_cost_per_kAm_effective=p['magnet_cost_per_kAm'])
-    volume = p['magnet_f_wp_vol'] * p['magnet_n_coils'] * p['magnet_I_coil'] / p['magnet_j_wp'] / 1e6 * p['magnet_k_coil'] * p['R']
+    volume = p['magnet_f_wp_vol'] * p['magnet_n_coils'] * p['magnet_I_coil'] / p['magnet_j_wp'] / 1e6 * c_coil
     rho = p['magnet_helium_pressure'] / p['magnet_helium_gas_constant'] / p['T_cold_cryo']
     materials = ('copper', 'solder', 'steel', 'helium')
     for m in materials:
@@ -40,7 +58,7 @@ def wi040_expected(row):
         expected['winding_mass_' + m] = mass
         expected['winding_cost_' + m] = mass * p['magnet_price_' + m]
     material_cost = sum(expected['winding_cost_' + m] for m in materials)
-    kam = p['magnet_n_coils'] * p['magnet_I_coil'] * p['magnet_f_set'] * p['magnet_k_coil'] * p['R'] / 1000
+    kam = p['magnet_n_coils'] * p['magnet_I_coil'] * p['magnet_f_set'] * c_coil / 1000
     tape = kam * p['magnet_cost_per_kAm']
     length = 1000 * kam / p['magnet_turn_current']
     fabrication = length * p['magnet_winding_rate_1990'] * p['magnet_cost_escalation'] * p['magnet_nonplanar_factor']
@@ -113,7 +131,7 @@ def test_supported_adapter_inputs_propagate_deliberate_domain_error(suffix, valu
 
 @pytest.mark.parametrize("row", BEFORE["controls"])
 def test_valid_outputs_exactly_preserved_and_physical_identities(row):
-    result = oracle._compute(row["overrides"])
+    result = oracle._compute(wi058_overrides(row))
     expected, changed = wi040_expected(row)
     assert result.keys() == expected.keys()
     for name, value in expected.items():
@@ -121,7 +139,7 @@ def test_valid_outputs_exactly_preserved_and_physical_identities(row):
             assert result[name] == pytest.approx(value, rel=1e-12, abs=1e-9), name
         else:
             assert result[name] == value, name
-    p = {**oracle.vs.IN, **row["overrides"]}
+    p = {**oracle.vs.IN, **wi058_overrides(row)}
     # Multiply the field relation through by clearance; no division near its pole.
     lhs = result["B_peak"] * (p["R"] - result["r_coil_centre"]) * p["magnet_R_ref"]
     rhs = (result["B_axis"] * p["magnet_peak_ratio"] * p["R"]
@@ -130,7 +148,7 @@ def test_valid_outputs_exactly_preserved_and_physical_identities(row):
     # Refrigerator electrical work times cold temperature equals heat times lift.
     cold_volume = (p["magnet_f_wp_vol"] * p["magnet_n_coils"]
                    * p["magnet_I_coil"] / p["magnet_j_wp"] / 1e6
-                   * p["magnet_k_coil"] * p["R"] + p["vol_cold_cryo"])
+                   * wi058_length(p, result["r_coil_centre"]) + p["vol_cold_cryo"])  # WI-058: the bore form
     heat = (p["q_nuc_cryo"] * cold_volume * 1e-6 + p["p_fixed_cryo"]) * p["f_uplift_cryo"]
     lhs = (result["p_cryo"] - p["p_cryo_direct"]) * p["f_carnot_cryo"] * p["T_cold_cryo"]
     rhs = heat * (p["T_amb_cryo"] - p["T_cold_cryo"])
@@ -138,10 +156,14 @@ def test_valid_outputs_exactly_preserved_and_physical_identities(row):
 
 
 def test_adapter_contract_and_ambient_limit_preserved():
-    from tests.models.current_mfe_regressions import WI040_PARAMETERS, WI040_CHANNELS, WI038_PARAMETERS, WI038_CHANNELS
+    from tests.models.current_mfe_regressions import (WI040_PARAMETERS, WI040_CHANNELS, WI038_PARAMETERS, WI038_CHANNELS,
+                                                      WI058_PARAMETERS, WI058_RETIRED)
     old_inputs = renamed_keys(BEFORE['input_mapping'])
-    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS} == old_inputs
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS
+    # WI-058 (2026-09-14): the seam maps c_coil_ref in place of the retired k_coil; the count stays 118.
+    assert WI058_RETIRED <= old_inputs.keys()
+    old_inputs = {k: v for k, v in old_inputs.items() if k not in WI058_RETIRED}
+    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS} == old_inputs
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS
     old_outputs = renamed_values(BEFORE['output_mapping'])
     # The old selected winding alias now denotes the additive account; preserve its
     # previous channel under the explicit legacy name, and add the subtotal coverage.

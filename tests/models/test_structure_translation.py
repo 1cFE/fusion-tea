@@ -15,6 +15,7 @@ from tests.models.current_mfe_regressions import (
     translate_frozen_radius_evidence, translate_names,
     WI040_PARAMETERS, WI040_CHANNELS, WI038_PARAMETERS, WI038_CHANNELS,
     restate_wi040_radius_costs,
+    WI058_PARAMETERS, WI058_RETIRED,
 )
 
 P = 'stellarator_09__stellaris__'
@@ -33,9 +34,12 @@ def test_ledger_is_a_verified_bijection_onto_the_live_package():
     assert len(set(params.values())) == len(params) and len(set(outputs.values())) == len(outputs)
     # WI-040 (2026-09-13): the historical bijection is preserved; only this explicit
     # material-account ABI is added by the current model.
-    assert set(params.values()) | WI040_PARAMETERS | WI038_PARAMETERS == LIVE_PARAMS
+    # WI-058 (2026-09-14): k_coil retired from the live contract, c_coil_ref added (the winding length
+    # follows the coil bore); the historical bijection is otherwise preserved.
+    assert (set(params.values()) - WI058_RETIRED) | WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS == LIVE_PARAMS
     assert set(outputs.values()) | WI040_CHANNELS | WI038_CHANNELS == LIVE_CHANNELS
-    assert not set(params.values()) & (WI040_PARAMETERS | WI038_PARAMETERS)
+    assert not set(params.values()) & (WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS)
+    assert WI058_RETIRED <= set(params.values())
     assert not set(outputs.values()) & (WI040_CHANNELS | WI038_CHANNELS)
     assert not (set(params) & set(outputs)) and not (set(params.values()) & set(outputs.values()))
     forward, backward = structure_ledger()
@@ -95,7 +99,7 @@ def test_frozen_radius_evidence_translates_onto_the_live_package(tmp_path):
     assert set(expectations['channels']) <= LIVE_CHANNELS
     assert modules['geom'] == 'plasma__geom' and modules['coil_length'] == 'magnet__coil_length'
     prior = json.loads((out / 'entering-package/contracts/model_contract.json').read_text())
-    retired = {P + 'magnet__R0'}
+    retired = {P + 'magnet__R0'} | WI058_RETIRED  # WI-058 (2026-09-14): k_coil left the live contract
     assert {x['qualified_name'] for x in prior['parameters']} - retired <= LIVE_PARAMS
 
 

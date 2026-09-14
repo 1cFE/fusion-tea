@@ -18,7 +18,7 @@ import hashlib
 WI057_MODEL_HASHES=json.loads((ROOT/'work/active/WI-057_stellaris-structural-decomposition/evidence/merge_onto_demo_maturation/model-hashes.json').read_text())
 WI057_STRUCTURE=tuple(WI057_MODEL_HASHES)
 from tests.models.current_mfe_regressions import structure_ledger, structure_modules
-from tests.models.current_mfe_regressions import DOMAIN_EVIDENCE, WI040_CHANNELS, WI038_CHANNELS
+from tests.models.current_mfe_regressions import DOMAIN_EVIDENCE, WI040_CHANNELS, WI038_CHANNELS, RECEIPT_EVIDENCE
 RENAMED=structure_ledger()[0]
 MODULES=structure_modules(RENAMED)
 def new(key): return RENAMED.get(key,key)  # an entry point or channel under its WI-057 name
@@ -41,7 +41,7 @@ def test_binding_documentation_and_source_preservation(tmp_path):
     documentation=ROOT/'work/active/WI-054_faithful-model-equations-and-citations/evidence'
     lexical=runpy.run_path(str(documentation/'preservation.py'))['lexical']
     entering=json.loads((documentation/'entering.json').read_text())['models']
-    current_hashes=json.loads((DOMAIN_EVIDENCE/'model-hashes.json').read_text())
+    current_hashes=json.loads((RECEIPT_EVIDENCE/'model-hashes.json').read_text())  # WI-058 (2026-09-14): the current receipt, same seven files
     for p in MFE.owned:
         assert canonical_path(p).read_bytes()==(MFE.twin/p).read_bytes()
         if p in ('analyses/mfe_plasma_scaling.sysml', 'analyses/mfe_plasma_sustainment.sysml', 'analyses/mfe_magnet_cost.sysml', 'foundation/economic_parameter.sysml'):
@@ -122,7 +122,7 @@ def test_current_contract_edges_and_fresh_package_agreement():
         assert hashes(H/path)==expected
     # Historical generation receipts stay frozen; WI-040's additive-account package
     # has its own current receipt (2026-09-13).
-    assert hashes(ROOT/'exploration/stellarator_e2e/generated')==json.loads((DOMAIN_EVIDENCE/'package-hashes.json').read_text())
+    assert hashes(ROOT/'exploration/stellarator_e2e/generated')==json.loads((RECEIPT_EVIDENCE/'package-hashes.json').read_text())  # WI-058 (2026-09-14): the current package receipt
     assert all(expected[name]==value for name,value in MANUAL.items())
 
 
@@ -172,7 +172,9 @@ def test_independent_radius_ratios_and_fixed_anchors(acceptance):
         assert outer==3.5500000000000003
 
 
-@pytest.mark.parametrize('component',['coil_length','field_calc','stored_energy','magnet_cost'])
+# WI-058 (2026-09-14): 'coil_length' left this list -- the winding length now takes the coil-centre bore, not
+# R0 (tests/models/test_winding_length_bore.py covers its response and its R-invariance at fixed bore).
+@pytest.mark.parametrize('component',['field_calc','stored_energy','magnet_cost'])
 def test_standalone_radius_formals(acceptance,component):
     result=read_result(acceptance,'standalone.json')[MODULES.get(component,component)]  # WI-057: the magnet's calcs are magnet__<calc>
     assert 'R0' in result['inputs']

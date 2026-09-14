@@ -292,9 +292,12 @@ IN = dict(
     magnet_f_set=0.8701298701298701, magnet_k_sigma=0.6102331403536223,
     # WI-036: the winding pack is SIZED by the current it carries and the winding
     # length follows machine scale, so wp_side and c_coil are computed here too --
-    # the oracle mirrors the model's chain independently. j_wp and k_coil are the
+    # the oracle mirrors the model's chain independently. j_wp and c_coil_ref are the
     # float64s of the printed pairs (15.4 MA / 360 mm; 25 m / 12.7 m).
-    magnet_j_wp=118.8271604938272, magnet_k_coil=1.9685039370078741,
+    # WI-058: the winding length follows the coil bore -- c_coil = c_coil_ref * (r_coil_centre /
+    # a_coil_ref), anchored at the printed 25 m at the reference bore; k_coil (25.0 / 12.7 over R,
+    # WI-036 D3) retires.
+    magnet_j_wp=118.8271604938272, magnet_c_coil_ref=25.0,
     # WI-038: conditional 20 K relative REBCO field law. Reference density is
     # held fixed in the priced-transfer claim; 20–30 T is an extrapolative study window.
     magnet_B_grade_ref=24.9, magnet_field_exponent=0.6,
@@ -684,15 +687,17 @@ def compute():
     # WI-044: casing mass from stored energy, Lion 2021 eq. 56 M = 1.348 W^0.78 with the
     # constant absorbed by the anchor (no units printed); the 63 t floor keeps its seam.
     m_casing = p["magnet_m_casing_ref"] * (W_mag / p["magnet_W_mag_ref"]) ** 0.78
-    # WI-036: the pack sizes itself from the current, and the winding length from
-    # machine scale; both were held inputs before this item.
+    # WI-036: the pack sizes itself from the current; WI-058: the winding length follows
+    # the coil bore (WI-036 had it follow the major radius); both were held inputs before.
     # Preserve existing public current/density diagnostic precedence. The reference
     # density is still independently admissible arithmetically, outside the priced claim.
     _validate_winding_pack_magnitudes(p["magnet_I_coil"], p["magnet_j_wp"])
     grade = _conductor_field_capability(p['magnet_B_max'], p['magnet_B_grade_ref'],
                                        p['magnet_field_exponent'], p['magnet_j_wp'], p['magnet_cost_per_kAm'])
     wp_side = _winding_pack_side(p["magnet_I_coil"], grade['j_wp_effective'])
-    c_coil = p["magnet_k_coil"] * p["R"]
+    # WI-058 (design D2/D3): the printed circumference at the reference bore times the bore ratio;
+    # exactly 25.0 at the design point (the same float over itself); R does not enter.
+    c_coil = p["magnet_c_coil_ref"] * (r_coil_centre / p["magnet_a_coil_ref"])
     if wp_side == 0.0:
         raise ValueError("oracle Winding Pack Stress: wp_side must be nonzero")
     sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / wp_side

@@ -10,7 +10,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 VIEWER_HTML = REPO / "src/model_viz/viewer/index.html"
 FIXTURE = REPO / "exploration/stellarator_e2e/stellarator.snapshot.json"
-FIXTURE_SHA256 = "8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae"  # WI-057 (2026-09-13): the nested snapshot, re-applied onto feat/demo-maturation
+FIXTURE_SHA256 = "a5c17bb49184bf16f4c357ab8b9f0ddaba6140e355c2709b8de8533d413e3ae5"  # WI-058 (2026-09-14): the winding length follows the coil bore (k_coil retired, c_coil_ref bound); recaptured from the twin tree. Was 8e79aa4e489e… —  # WI-057 (2026-09-13): the nested snapshot, re-applied onto feat/demo-maturation
 INSTALL_HELP = (
     "The model_viz tests need Playwright and Chromium. Install them with:\n"
     "  uv sync --extra e2e\n"

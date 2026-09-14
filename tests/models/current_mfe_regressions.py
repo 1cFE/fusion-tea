@@ -30,6 +30,17 @@ WI040_CHANGED_ECONOMICS = (
 WI038_PARAMETERS = {P + 'magnet__winding_pack__' + name for name in ('B_grade_ref', 'field_exponent')}
 WI038_CHANNELS = {P + 'magnet__conductor_grade__' + name for name in (
     'quantity_factor', 'j_wp_effective', 'cost_per_kAm_effective')}
+# WI-058 (2026-09-14): the winding length follows the coil bore -- c_coil = c_coil_ref * (r_coil_centre /
+# a_coil_ref) -- and the WI-036 shape factor over the major radius retires. The frozen WI-051 R14 evidence
+# was produced with the R-form (c_coil = k_coil * R). Under the bore form at a = 1.3 the bore ratio is
+# exactly 1.0, so binding c_coil_ref = k_coil * R reproduces the R-form's length to the double (the two
+# forms coincide under uniform scaling). The replays therefore evaluate R14 with that reference, which keeps
+# every frozen R14 value the exact expectation for the rest of the plant; the bore form's own response is
+# proven by tests/models/test_winding_length_bore.py and the WI-058 item evidence, never by these replays.
+K_COIL_RETIRED = 1.968503937007874  # the retired WI-036 k_coil (25.0 / 12.7), the float the old oracle carried
+WI058_PARAMETERS = {P + 'magnet__coil__c_coil_ref'}
+WI058_RETIRED = {P + 'magnet__coil__k_coil'}
+RECEIPT_EVIDENCE = ROOT / 'work/active/WI-058_coil-winding-length-from-bore/evidence'  # the current model/package hash receipts
 
 
 def restate_wi040_radius_costs(translated):
@@ -43,7 +54,7 @@ def restate_wi040_radius_costs(translated):
     import oracle_entry
     changed = {oracle_entry.ORACLE_OUTPUT_TO_CHANNEL[name] for name in WI040_CHANGED_ECONOMICS}
     oracle = {name: oracle_entry.evaluate(change) for name, change in (
-        ('baseline', {}), ('R14', {P + 'plasma__R': 14.0}))}
+        ('baseline', {}), ('R14', {P + 'plasma__R': 14.0, P + 'magnet__coil__c_coil_ref': K_COIL_RETIRED * 14.0}))}  # WI-058: the R-form's length at R14
     assert changed.isdisjoint(WI040_CHANNELS)
     for name in oracle:
         assert changed | WI040_CHANNELS <= oracle[name].keys()
@@ -119,6 +130,13 @@ def translate_frozen_radius_evidence(historical, destination, forward):
     expectations['edges'] = {modules.get(k, k): v for k, v in expectations['edges'].items()}
     expectations['ratios'] = {stem(k): v for k, v in expectations['ratios'].items()}
     expectations['anchors'] = [stem(k) for k in expectations['anchors']]
+    # WI-058 (2026-09-14): 'Coil Winding Length' no longer takes R0 (it takes the coil-centre bore), so the
+    # frozen R0 edge for coil_length is retired from the replay; k_coil leaves the contract and c_coil_ref
+    # enters it (the added set is restated below). The coil_length__c_coil ratio expectation (14/12.7) still
+    # holds under the scaled reference the replays bind at R14.
+    expectations['edges'].pop(modules.get('coil_length', 'coil_length'))
+    expectations['contract_delta']['remove'] = sorted(
+        expectations['contract_delta']['remove'] + [['stellarator_plant_params', P + 'magnet__coil__k_coil']])
     # Refuse a translation the live package cannot honour: every translated name must resolve.
     live = json.loads((ROOT / 'exploration/stellarator_e2e/generated/contracts/model_contract.json').read_text())
     live_params = {x['qualified_name'] for x in live['parameters']}; live_channels = {x['channel_name'] for x in live['outputs']}
@@ -199,9 +217,15 @@ def radius_acceptance(destination, historical):
         if name == 'native':
             text = replace_once(text, "'entering-package/contracts/model_contract.json'", repr(str(translated / 'entering-package/contracts/model_contract.json')))
             text = replace_once(text, "delta['added']==[]",
-                                f"{{x[1] for x in delta['added']}}=={WI040_PARAMETERS | WI038_PARAMETERS!r}")
+                                f"{{x[1] for x in delta['added']}}=={WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS!r}")
+            # WI-058: evaluate R14 at the R-form's length (see K_COIL_RETIRED) so the frozen row stays exact.
+            text = replace_once(text, "('R14',{P+'plasma__R':14.0})",
+                                f"('R14',{{P+'plasma__R':14.0,P+'magnet__coil__c_coil_ref':{K_COIL_RETIRED * 14.0!r}}})")
         if name == 'standalone':
-            for suffix in ('coil_length', 'field_calc', 'stored_energy', 'magnet_cost'):
+            # WI-058: the winding length no longer takes R0 -- its R0-only check leaves the replay (its bore
+            # response is tested in test_winding_length_bore.py); the other three magnet calcs keep theirs.
+            text = replace_once(text, "('coil_length','mfe_magnet_field','coil_winding_length','Coil_Winding_Length',14/12.7),", '')
+            for suffix in ('field_calc', 'stored_energy', 'magnet_cost'):
                 text = replace_once(text, f"('{suffix}',", f"('{modules[suffix]}',")
         if name == 'native':
             text = replace_once(text, "a['outputs'][k]==v if name=='baseline'", f"a['outputs'][k]==v if name=='baseline' and k not in {finance!r}")
@@ -214,6 +238,9 @@ def radius_acceptance(destination, historical):
                 "        domain = 'reference' if name.startswith('reference') else 'live'\n"
                 "        assert domain + ' clearance' in component[name]['message']")
         if name == 'direct':
+            # WI-058: evaluate R14 at the R-form's length (see K_COIL_RETIRED) so the frozen row stays exact.
+            text = replace_once(text, "'R14':{P+'plasma__R':14.0,",
+                                f"'R14':{{P+'plasma__R':14.0,P+'magnet__coil__c_coil_ref':{K_COIL_RETIRED * 14.0!r},")
             text = replace_once(text, "if name=='baseline' or not isinstance(v,(int,float)):",
                                 f"if (name=='baseline' and k not in {finance!r}) or not isinstance(v,(int,float)):")
             text = replace_once(text, "scalar[k]==v if name=='baseline'", f"scalar[k]==v if name=='baseline' and k not in {finance!r}")

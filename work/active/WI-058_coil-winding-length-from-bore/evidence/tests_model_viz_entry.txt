@@ -1,0 +1,446 @@
+EEEEEEEEF.F.E......EEEEEEEEEEEEEEEEE............................         [100%]
+==================================== ERRORS ====================================
+______________________ ERROR at setup of test_calc_nodes _______________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+_____________________ ERROR at setup of test_source_groups _____________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+__________________ ERROR at setup of test_all_expanded_edges ___________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+____________ ERROR at setup of test_only_producer_inputs_make_edges ____________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+__________________ ERROR at setup of test_all_collapsed_edges __________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+________________ ERROR at setup of test_round_trip_every_group _________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+________________ ERROR at setup of test_round_trip_interleaved _________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+__ ERROR at setup of test_no_calc_output_reaches_a_calc_through_an_attribute ___
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+_______________ ERROR at setup of test_fixture_loads_via_picker ________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+______________ ERROR at setup of test_second_load_replaces_first _______________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+______________ ERROR at setup of test_bad_load_after_good_clears _______________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+_______________ ERROR at setup of test_same_file_repick_reloads ________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+_________________ ERROR at setup of test_panel_link_navigation _________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+________________ ERROR at setup of test_hidden_target_upstream _________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+_______________ ERROR at setup of test_hidden_target_downstream ________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+____________________ ERROR at setup of test_canvas_gestures ____________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+______________________ ERROR at setup of test_search_box _______________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+_________________ ERROR at setup of test_navigate_unknown_key __________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+____________________ ERROR at setup of test_panel_sections _____________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+_______________ ERROR at setup of test_formula_entries_verbatim ________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+_____________________ ERROR at setup of test_calendar_note _____________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+___________________ ERROR at setup of test_derived_formulas ____________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+________________ ERROR at setup of test_input_kinds_and_totals _________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+_______________ ERROR at setup of test_bindings_both_directions ________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+___________________ ERROR at setup of test_output_consumers ____________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+___________________ ERROR at setup of test_location_and_hash ___________________
+
+    @pytest.fixture(scope="session")
+    def fixture_path():
+        digest = fixture_digest()
+        if digest != FIXTURE_SHA256:
+>           pytest.fail(
+                f"{FIXTURE} changed: SHA-256 {digest}; the spec's counts are for {FIXTURE_SHA256}. "
+                "Re-probe the fixture facts; do not edit the expected counts to pass."
+            )
+E           Failed: /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/stellarator.snapshot.json changed: SHA-256 c723b8cb143ec53e7ba1e4de43e2fc2d532a117bc09253425bc8b300c3539303; the spec's counts are for 8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae. Re-probe the fixture facts; do not edit the expected counts to pass.
+
+tests/model_viz/conftest.py:45: Failed
+=================================== FAILURES ===================================
+__________________________ test_unresolvable_producer __________________________
+
+viewer_page = <Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12627/test_unresolvable_producer0')
+
+    def test_unresolvable_producer(viewer_page, tmp_path):
+        fixture = load_fixture()
+        snap, removed = vs.remove_most_consumed_calc(fixture)
+        consumers = vs.consumers_of(fixture, removed)
+        assert len({c for c, _ in consumers}) > 1
+        path = vs.write(snap, tmp_path / "removed.json")
+        assert load_snapshot(viewer_page, path) == "ready"
+        viewer_page.click("[data-action=expand-all]")
+>       assert calc_node_count(viewer_page) == 76  # WI-057 (2026-09-13): feat/demo-maturation's WI-050 operating_heat (+1 calc, +3 outputs, +2 bound attributes)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 79 == 76
+E        +  where 79 = calc_node_count(<Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>)
+
+tests/model_viz/test_guards.py:24: AssertionError
+_______________________ test_overlay_occurrence_grouping _______________________
+
+viewer_page = <Page url='file:///home/reid/1cfe/fusion-tea/src/model_viz/viewer/index.html'>
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12627/test_overlay_occurrence_groupi0')
+
+    def test_overlay_occurrence_grouping(viewer_page, tmp_path):
+        snap, expected, (twin_a, twin_b) = vs.overlay(load_fixture())
+        path = vs.write(snap, tmp_path / "overlay.json")
+        assert load_snapshot(viewer_page, path) == "ready"
+        viewer_page.select_option("[data-role=mode-select]", label="Occurrence")
+        collapsed = viewer_page.evaluate(
+            "() => window.modelVizApp.cy.nodes('[kind=\"container\"]').map(n => n.data('collapsed'))"
+        )
+        assert collapsed == [True], "switching mode collapses everything; only the root is visible"
+        viewer_page.click("[data-action=expand-all]")
+    
+        chains = viewer_page.evaluate(_PARENT_CHAINS_JS)
+        assert set(chains) == {c["node_id"] for c in calcs(snap)}
+        containers_by_occurrence: dict[str, set[str]] = {}
+        for node_id, info in chains.items():
+            assert info["hasBothFields"], node_id
+            assert info["occurrence"] == expected[node_id]
+            assert all(link["mode"] == "occurrence" for link in info["chain"])
+            assert [link["occurrence"] for link in info["chain"]] == vs.occurrence_chain(
+                snap, expected[node_id]
+            ), node_id
+            for link in info["chain"]:
+                containers_by_occurrence.setdefault(link["occurrence"], set()).add(link["id"])
+    
+        # One container per occurrence id; the two same-segment siblings stay separate.
+        assert all(len(ids) == 1 for ids in containers_by_occurrence.values())
+        assert containers_by_occurrence[twin_a] != containers_by_occurrence[twin_b]
+        labels = viewer_page.evaluate(
+            """([a, b]) => window.modelVizApp.cy.nodes('[kind="container"]')
+                 .filter(n => n.data('occurrence_id') === a || n.data('occurrence_id') === b)
+                 .map(n => n.data('label'))""",
+            [twin_a, twin_b],
+        )
+        assert labels == ["twin", "twin"]
+    
+        split = [n for n, c in chains.items() if c["occurrence"] in (twin_a, twin_b)]
+        split_files = {next(c["source_file"] for c in calcs(snap) if c["node_id"] == n) for n in split}
+        assert split_files == {vs.OVERLAY_SPLIT_FILE}
+        assert {chains[n]["occurrence"] for n in split} == {twin_a, twin_b}
+        assert len({chains[n]["sourceGroup"] for n in split}) == 1
+    
+        viewer_page.select_option("[data-role=mode-select]", label="Source file")
+        groups = viewer_page.evaluate(
+            """() => window.modelVizApp.cy.nodes('[kind="container"]').map(n =>
+                 [n.data('mode'), n.data('group_path'), n.data('collapsed')])"""
+        )
+>       assert len(groups) == 17
+E       AssertionError: assert 19 == 17
+E        +  where 19 = len([['source', 'root-0/analyses/mfe_plasma_scaling.sysml', True], ['source', 'root-0/analyses/mfe_power_balance.sysml', T...root-0/analyses/mfe_plasma_sustainment.sysml', True], ['source', 'root-0/analyses/mfe_heating_chain.sysml', True], ...])
+
+tests/model_viz/test_guards.py:138: AssertionError
+=========================== short test summary info ============================
+FAILED tests/model_viz/test_guards.py::test_unresolvable_producer - Assertion...
+FAILED tests/model_viz/test_guards.py::test_overlay_occurrence_grouping - Ass...
+ERROR tests/model_viz/test_graph_edges.py::test_calc_nodes - Failed: /home/re...
+ERROR tests/model_viz/test_graph_edges.py::test_source_groups - Failed: /home...
+ERROR tests/model_viz/test_graph_edges.py::test_all_expanded_edges - Failed: ...
+ERROR tests/model_viz/test_graph_edges.py::test_only_producer_inputs_make_edges
+ERROR tests/model_viz/test_graph_edges.py::test_all_collapsed_edges - Failed:...
+ERROR tests/model_viz/test_graph_edges.py::test_round_trip_every_group - Fail...
+ERROR tests/model_viz/test_graph_edges.py::test_round_trip_interleaved - Fail...
+ERROR tests/model_viz/test_graph_edges.py::test_no_calc_output_reaches_a_calc_through_an_attribute
+ERROR tests/model_viz/test_loading.py::test_fixture_loads_via_picker - Failed...
+ERROR tests/model_viz/test_loading.py::test_second_load_replaces_first - Fail...
+ERROR tests/model_viz/test_loading.py::test_bad_load_after_good_clears - Fail...
+ERROR tests/model_viz/test_loading.py::test_same_file_repick_reloads - Failed...
+ERROR tests/model_viz/test_navigation.py::test_panel_link_navigation - Failed...
+ERROR tests/model_viz/test_navigation.py::test_hidden_target_upstream - Faile...
+ERROR tests/model_viz/test_navigation.py::test_hidden_target_downstream - Fai...
+ERROR tests/model_viz/test_navigation.py::test_canvas_gestures - Failed: /hom...
+ERROR tests/model_viz/test_navigation.py::test_search_box - Failed: /home/rei...
+ERROR tests/model_viz/test_navigation.py::test_navigate_unknown_key - Failed:...
+ERROR tests/model_viz/test_panel.py::test_panel_sections - Failed: /home/reid...
+ERROR tests/model_viz/test_panel.py::test_formula_entries_verbatim - Failed: ...
+ERROR tests/model_viz/test_panel.py::test_calendar_note - Failed: /home/reid/...
+ERROR tests/model_viz/test_panel.py::test_derived_formulas - Failed: /home/re...
+ERROR tests/model_viz/test_panel.py::test_input_kinds_and_totals - Failed: /h...
+ERROR tests/model_viz/test_panel.py::test_bindings_both_directions - Failed: ...
+ERROR tests/model_viz/test_panel.py::test_output_consumers - Failed: /home/re...
+ERROR tests/model_viz/test_panel.py::test_location_and_hash - Failed: /home/r...
+2 failed, 36 passed, 26 errors in 11.42s
