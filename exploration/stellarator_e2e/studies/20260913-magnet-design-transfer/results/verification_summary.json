@@ -1,0 +1,420 @@
+{
+  "schema_version": "study-verification-summary/v1",
+  "tool": {
+    "path": "scripts/study/verify.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "a7e8ee5802b778bc11507571a03856203af9d90a64a9da5fa1db1646cf1fff2d",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+          "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+        },
+        {
+          "path": "scripts/study/verify.py",
+          "sha256": "4cf1fb8faf9459a0522dea39116a772b4b5067288552ea4fdcf4741908bca77e"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/study/verify.py",
+    "--package",
+    "exploration/stellarator_e2e/generated",
+    "--manifest",
+    "exploration/stellarator_e2e/studies/manifest.json",
+    "--identity",
+    "exploration/stellarator_e2e/studies/20260913-magnet-design-transfer/results/package_identity.json",
+    "--store",
+    "exploration/stellarator_e2e/studies/20260913-magnet-design-transfer/results/grid/store.sqlite",
+    "--sample-size",
+    "108",
+    "--out",
+    "exploration/stellarator_e2e/studies/20260913-magnet-design-transfer/results/verification_summary.json"
+  ],
+  "teax": {
+    "module_path": "../teax/packages/teax-simkit/simkit",
+    "revision": "unrecorded"
+  },
+  "package": {
+    "path": "exploration/stellarator_e2e/generated",
+    "package_name": "stellarator_tea",
+    "git_clean": true
+  },
+  "identity": {
+    "kind": "sealed",
+    "digest": "8ff5bb7c3d71f235be697e254766d3e0f552f3b94b46831da62a08a9755122a5",
+    "matches_preflight": true
+  },
+  "manifest": {
+    "path": "exploration/stellarator_e2e/studies/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "5acecc77dc4ac2996f936cbe8d8c3c091a1d3a4f8f45b0e93bd1aa9f3430224d"
+  },
+  "oracle": {
+    "kind": "python_callable",
+    "sys_path": "exploration/stellarator_e2e/studies",
+    "module": "oracle_entry",
+    "callable": "evaluate",
+    "operand_bindings_digest": "08ad98e521eadfff0a6a1e9eadffc7df74bcbf32501d14e89ffc1c61082ec6fd"
+  },
+  "stores": [
+    {
+      "path": "exploration/stellarator_e2e/studies/20260913-magnet-design-transfer/results/grid/store.sqlite",
+      "study_id": "20260913-magnet-design-transfer",
+      "compatibility": {
+        "digest": "047b5891a2b07908197e14717d11e736a15d708aa0adb667f56da5c8a4a72d06",
+        "evidence_schema_version": "v3",
+        "executable_fingerprint": "8ff5bb7c3d71f235be697e254766d3e0f552f3b94b46831da62a08a9755122a5",
+        "input_schema_version": "input-v1",
+        "model_contract_fingerprint": "2c2788662c148ccae3f61d1f58e510cedcfcddb6b0b489878ec8d7ebd6f1c08e",
+        "strategy_config": "3738b3e0b43801a29d81e808062bbb9435782dd24b9575c2225c68e7605adbda",
+        "strategy_identity": "prepared-grid/v1",
+        "study_definition_fingerprint": "bf366f0e384629348a06385db7e972e10be3945b1a24e87594182af1dd2aa97a",
+        "study_id": "20260913-magnet-design-transfer"
+      },
+      "cases_total": 108,
+      "cases_completed": 108,
+      "sampling": {
+        "scheme": "stratified-by-verdict-combination/v1",
+        "seed": "8cd2ad1b41f565a4",
+        "seed_source": "derived",
+        "sample_size_requested": 108,
+        "strata_observed": 23,
+        "sampled_rows": 108,
+        "sampled_case_ids": [
+          "20260913-magnet-design-transfer:c0044",
+          "20260913-magnet-design-transfer:c0046",
+          "20260913-magnet-design-transfer:c0009",
+          "20260913-magnet-design-transfer:c0057",
+          "20260913-magnet-design-transfer:c0015",
+          "20260913-magnet-design-transfer:c0020",
+          "20260913-magnet-design-transfer:c0030",
+          "20260913-magnet-design-transfer:c0026",
+          "20260913-magnet-design-transfer:c0036",
+          "20260913-magnet-design-transfer:c0038",
+          "20260913-magnet-design-transfer:c0040",
+          "20260913-magnet-design-transfer:c0041",
+          "20260913-magnet-design-transfer:c0076",
+          "20260913-magnet-design-transfer:c0049",
+          "20260913-magnet-design-transfer:c0052",
+          "20260913-magnet-design-transfer:c0053",
+          "20260913-magnet-design-transfer:c0060",
+          "20260913-magnet-design-transfer:c0063",
+          "20260913-magnet-design-transfer:c0064",
+          "20260913-magnet-design-transfer:c0107",
+          "20260913-magnet-design-transfer:c0073",
+          "20260913-magnet-design-transfer:c0092",
+          "20260913-magnet-design-transfer:c0094",
+          "20260913-magnet-design-transfer:c0087",
+          "20260913-magnet-design-transfer:c0037",
+          "20260913-magnet-design-transfer:c0074",
+          "20260913-magnet-design-transfer:c0047",
+          "20260913-magnet-design-transfer:c0080",
+          "20260913-magnet-design-transfer:c0099",
+          "20260913-magnet-design-transfer:c0065",
+          "20260913-magnet-design-transfer:c0104",
+          "20260913-magnet-design-transfer:c0069",
+          "20260913-magnet-design-transfer:c0033",
+          "20260913-magnet-design-transfer:c0054",
+          "20260913-magnet-design-transfer:c0106",
+          "20260913-magnet-design-transfer:c0093",
+          "20260913-magnet-design-transfer:c0062",
+          "20260913-magnet-design-transfer:c0023",
+          "20260913-magnet-design-transfer:c0071",
+          "20260913-magnet-design-transfer:c0096",
+          "20260913-magnet-design-transfer:c0000",
+          "20260913-magnet-design-transfer:c0055",
+          "20260913-magnet-design-transfer:c0028",
+          "20260913-magnet-design-transfer:c0089",
+          "20260913-magnet-design-transfer:c0059",
+          "20260913-magnet-design-transfer:c0025",
+          "20260913-magnet-design-transfer:c0095",
+          "20260913-magnet-design-transfer:c0002",
+          "20260913-magnet-design-transfer:c0045",
+          "20260913-magnet-design-transfer:c0085",
+          "20260913-magnet-design-transfer:c0010",
+          "20260913-magnet-design-transfer:c0035",
+          "20260913-magnet-design-transfer:c0083",
+          "20260913-magnet-design-transfer:c0082",
+          "20260913-magnet-design-transfer:c0004",
+          "20260913-magnet-design-transfer:c0013",
+          "20260913-magnet-design-transfer:c0027",
+          "20260913-magnet-design-transfer:c0061",
+          "20260913-magnet-design-transfer:c0098",
+          "20260913-magnet-design-transfer:c0067",
+          "20260913-magnet-design-transfer:c0101",
+          "20260913-magnet-design-transfer:c0068",
+          "20260913-magnet-design-transfer:c0018",
+          "20260913-magnet-design-transfer:c0034",
+          "20260913-magnet-design-transfer:c0016",
+          "20260913-magnet-design-transfer:c0001",
+          "20260913-magnet-design-transfer:c0056",
+          "20260913-magnet-design-transfer:c0100",
+          "20260913-magnet-design-transfer:c0005",
+          "20260913-magnet-design-transfer:c0029",
+          "20260913-magnet-design-transfer:c0103",
+          "20260913-magnet-design-transfer:c0050",
+          "20260913-magnet-design-transfer:c0012",
+          "20260913-magnet-design-transfer:c0058",
+          "20260913-magnet-design-transfer:c0042",
+          "20260913-magnet-design-transfer:c0006",
+          "20260913-magnet-design-transfer:c0022",
+          "20260913-magnet-design-transfer:c0066",
+          "20260913-magnet-design-transfer:c0039",
+          "20260913-magnet-design-transfer:c0078",
+          "20260913-magnet-design-transfer:c0051",
+          "20260913-magnet-design-transfer:c0008",
+          "20260913-magnet-design-transfer:c0075",
+          "20260913-magnet-design-transfer:c0072",
+          "20260913-magnet-design-transfer:c0019",
+          "20260913-magnet-design-transfer:c0088",
+          "20260913-magnet-design-transfer:c0043",
+          "20260913-magnet-design-transfer:c0097",
+          "20260913-magnet-design-transfer:c0011",
+          "20260913-magnet-design-transfer:c0024",
+          "20260913-magnet-design-transfer:c0048",
+          "20260913-magnet-design-transfer:c0017",
+          "20260913-magnet-design-transfer:c0090",
+          "20260913-magnet-design-transfer:c0032",
+          "20260913-magnet-design-transfer:c0077",
+          "20260913-magnet-design-transfer:c0091",
+          "20260913-magnet-design-transfer:c0079",
+          "20260913-magnet-design-transfer:c0102",
+          "20260913-magnet-design-transfer:c0007",
+          "20260913-magnet-design-transfer:c0031",
+          "20260913-magnet-design-transfer:c0086",
+          "20260913-magnet-design-transfer:c0105",
+          "20260913-magnet-design-transfer:c0081",
+          "20260913-magnet-design-transfer:c0014",
+          "20260913-magnet-design-transfer:c0003",
+          "20260913-magnet-design-transfer:c0021",
+          "20260913-magnet-design-transfer:c0084",
+          "20260913-magnet-design-transfer:c0070"
+        ]
+      },
+      "worst_channel_rel_dev": 7.888316406352865e-16,
+      "worst_at": {
+        "case_id": "20260913-magnet-design-transfer:c0102",
+        "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+        "value": 144.12053455418967
+      }
+    }
+  ],
+  "tolerance": 1e-09,
+  "channels_checked": [
+    {
+      "channel": "stellarator_09__stellaris__blanket__first_wall__wall_peak_calc__wall_load_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__calendar__cas72_annual",
+      "objective": "cas72"
+    },
+    {
+      "channel": "stellarator_09__stellaris__divertor__divheat__q_target_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel",
+      "objective": "fuel"
+    },
+    {
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__mdot_loop",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__p_loop_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__heating__heat__p_coupled",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+      "objective": "lcoe_1cfe"
+    },
+    {
+      "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+      "objective": "lcoe"
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__cond_strain__eps_cond",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost",
+      "objective": "magnet_capital"
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__magnet_cost__capital_cost",
+      "objective": "magnet_capital_1cfe"
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__peak_field_calc__B_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__wp_stress__sigma_wp",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__operating_heat__p_coupled",
+      "objective": "operating_heat_coupled"
+    },
+    {
+      "channel": "stellarator_09__stellaris__operating_heat__p_delivered",
+      "objective": "operating_heat_delivered"
+    },
+    {
+      "channel": "stellarator_09__stellaris__operating_heat__p_wallplug",
+      "objective": "operating_heat_wallplug"
+    },
+    {
+      "channel": "stellarator_09__stellaris__pb__p_net",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__pb__rec_frac",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__plasma__beta_calc__beta",
+      "objective": "beta"
+    },
+    {
+      "channel": "stellarator_09__stellaris__plasma__sustain__p_aux_required",
+      "objective": "p_aux_required"
+    },
+    {
+      "channel": "stellarator_09__stellaris__plasma__sustain__tau_E",
+      "objective": "tau_E"
+    },
+    {
+      "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+      "objective": "cas27"
+    },
+    {
+      "channel": "stellarator_09__stellaris__total_capital__total_capital",
+      "objective": "total_capital"
+    },
+    {
+      "channel": "stellarator_09__stellaris__turbine__cycle__domain_product",
+      "objective": null
+    }
+  ],
+  "verdicts_rederived": true,
+  "constraints_rederived": [
+    {
+      "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+      "source_local_identity": "beta_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+      "source_local_identity": "burn_hold_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+      "source_local_identity": "cond_strain_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+      "source_local_identity": "cycle_domain_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+      "source_local_identity": "divertor_heat_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+      "source_local_identity": "heating_couple_positive_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+      "source_local_identity": "heating_couple_upper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+      "source_local_identity": "heating_source_positive_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+      "source_local_identity": "heating_source_upper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+      "source_local_identity": "loop_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+      "source_local_identity": "loop_pressure_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+      "source_local_identity": "net_positive",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+      "source_local_identity": "peak_field_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+      "source_local_identity": "recirc_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+      "source_local_identity": "sustainment_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+      "source_local_identity": "tbr_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+      "source_local_identity": "wall_load_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+      "source_local_identity": "wp_stress_ok",
+      "operands_resolved": 2
+    }
+  ],
+  "verdict_mismatches": [],
+  "not_independently_verified": [],
+  "worst_channel_rel_dev": 7.888316406352865e-16,
+  "outcome": "pass"
+}

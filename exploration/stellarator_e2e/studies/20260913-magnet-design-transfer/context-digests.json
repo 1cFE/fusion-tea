@@ -1,0 +1,214 @@
+[
+  {
+    "path": "context/ANNEX.md",
+    "sha256": "71fed26e5fbe0164efc11d6daedb74fdd24db9c6aa664816332c3b448d3bd9cc"
+  },
+  {
+    "path": "context/STUDY_POLICY.md",
+    "sha256": "5f166202b553867af16ff2c349ad5e39988dd73e9a07407ece576314e01ad8ef"
+  },
+  {
+    "path": "context/WI038-audit.md",
+    "sha256": "e0112a7f51da8bfb703c26bc6f976ebdc0c6e834f03c5375a3698b4badd439b4"
+  },
+  {
+    "path": "context/WI038-basis.md",
+    "sha256": "f249269e03c50545de2833d1655b672e84e6e1e9186898c42d419285e447ebbf"
+  },
+  {
+    "path": "context/WI038-design.md",
+    "sha256": "e314aeaecdc027e1baa1961123fe2c4d36bf2f0a03d6ad592cf45cad95417cbf"
+  },
+  {
+    "path": "context/WI040-accounting-research.md",
+    "sha256": "150bd1776f2387a1e0d356dbc79effd34435a4869bf955ae6aa7055c7984b8a7"
+  },
+  {
+    "path": "context/WI040-design.md",
+    "sha256": "6ece34bcc7318ab133913199081f4fd8919fe55163407fcfb7915e87bcc9ef9b"
+  },
+  {
+    "path": "context/WI040-material-research.md",
+    "sha256": "7fdaced31a53398bac3f18dca6a6bd37599e8b638234fdae4bd57c56e3d52a0a"
+  },
+  {
+    "path": "context/constraint_catalog.json",
+    "sha256": "25c6294118c18dbeebf7cfd1053fb816f4ddf29e818d911803fd4deb93e571db"
+  },
+  {
+    "path": "context/inputs/mfe_account_costs_params.json",
+    "sha256": "8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21"
+  },
+  {
+    "path": "context/inputs/mfe_fuel_cycle_params.json",
+    "sha256": "d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009"
+  },
+  {
+    "path": "context/inputs/mfe_magnet_cost_params.json",
+    "sha256": "6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee"
+  },
+  {
+    "path": "context/inputs/mfe_magnet_field_params.json",
+    "sha256": "3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6"
+  },
+  {
+    "path": "context/inputs/mfe_plant_params.json",
+    "sha256": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814"
+  },
+  {
+    "path": "context/inputs/mfe_plasma_scaling_params.json",
+    "sha256": "7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86"
+  },
+  {
+    "path": "context/inputs/mfe_plasma_sustainment_params.json",
+    "sha256": "da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc"
+  },
+  {
+    "path": "context/inputs/mfe_vacuum_params.json",
+    "sha256": "07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240"
+  },
+  {
+    "path": "context/inputs/stellarator_plant_params.json",
+    "sha256": "8cbbc5f15639288984d506ab717cd093d696a8f8cb25c3e871174ba49db50e61"
+  },
+  {
+    "path": "context/integration_return.json",
+    "sha256": "349f0517e18e96b23971e02019e293b66b5858d48f35e072cdc263b6ad4211f4"
+  },
+  {
+    "path": "context/manifest.json",
+    "sha256": "5acecc77dc4ac2996f936cbe8d8c3c091a1d3a4f8f45b0e93bd1aa9f3430224d"
+  },
+  {
+    "path": "context/model_contract.json",
+    "sha256": "90ef5b3e4dfef3d976b4664ab34c53edca0c08ec8c7749acca9e4da94ba84ccd"
+  },
+  {
+    "path": "context/oracle/oracle_entry.py",
+    "sha256": "9c4c70a7ae66d2f8c8a3b7539bab1979b95ec4b68976119d2baccf387a9eb1e2"
+  },
+  {
+    "path": "context/oracle/oracle_finance.py",
+    "sha256": "8cd2d9803c74bace69a4fe2f13bdc700686e9db69c650a0688c3c40204943873"
+  },
+  {
+    "path": "context/oracle/verify_stellaris.py",
+    "sha256": "0d0dc192d40147156ee078e16a1b7a579892abf45dc390a35df7cf07ebd1dca0"
+  },
+  {
+    "path": "context/oracle_input_mapping.json",
+    "sha256": "fee3e0e357bd4db516752bb6bd48afb47a36a5b13ff7f67e319e6c705274b390"
+  },
+  {
+    "path": "context/oracle_operand_bindings.json",
+    "sha256": "89bb98149476127f84b3170b8aec5657f11abba5e72865ba280ec4249a7733b4"
+  },
+  {
+    "path": "context/oracle_output_mapping.json",
+    "sha256": "c0c4966bb1b74e44bbf231d9440244dec67cec2f088b3be4136556924dea07f4"
+  },
+  {
+    "path": "context/package_contract.json",
+    "sha256": "ad7f4ef50c7b4ec186f22d19aefdf085a6eef374f31cb7f8181da663cb252b77"
+  },
+  {
+    "path": "context/pipeline.yaml",
+    "sha256": "fcd55b5b1b0b662273a71d4749e88b064048f50c3ed376a1f0f14becdc261af0"
+  },
+  {
+    "path": "context/source-copy-index.json",
+    "sha256": "2a3963e7f19976279c4c6f405ffddc439020281dcfaebd5b4bc6d8cc0ff1e1d1"
+  },
+  {
+    "path": "context/teax/cli.py",
+    "sha256": "b9e739c05b186fc45de9b97a41a1a63fcf1e76d9ec56718bcc7f57c9843e5b06"
+  },
+  {
+    "path": "context/teax/config.py",
+    "sha256": "2db4535c171b2d694dd734afae9e1bf82b3abb40f4a75a3dea8fe86f54b69ac0"
+  },
+  {
+    "path": "context/teax/definition.py",
+    "sha256": "bb4231cb872d66f61427483ef85a7283f15a8d4e513126c32df73fb27a53e6fb"
+  },
+  {
+    "path": "context/teax/model_contract.py",
+    "sha256": "7c35822c86044b7a1030dd165d4d8db4fdf708fdb7e2a033a93c893618bbb62b"
+  },
+  {
+    "path": "context/teax/policy.py",
+    "sha256": "48ff285374fd0dd52f21647a15c906132ca9c2147cf2227e53a47175582ffb67"
+  },
+  {
+    "path": "context/teax/query.py",
+    "sha256": "b2316205c49d5956dddcff5481a178672742b957042ef0741d868629c67539c2"
+  },
+  {
+    "path": "context/teax/runner.py",
+    "sha256": "6bb02c4005d8879438bd7c13ed19549a53c7e9e1f1831ef71fcc2d9550217415"
+  },
+  {
+    "path": "context/teax/store.py",
+    "sha256": "a4241a8bb6315a6af651b1578502d6343ca21367e3b843db80955d075077b6db"
+  },
+  {
+    "path": "context/teax/strategy.py",
+    "sha256": "8269032e6121346faf539251621b410d9005958c10f09c5dc4186fb487b99a5a"
+  },
+  {
+    "path": "context/tools/scripts/study/common.py",
+    "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+  },
+  {
+    "path": "context/tools/scripts/study/identity.py",
+    "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+  },
+  {
+    "path": "context/tools/scripts/study/indicators.py",
+    "sha256": "a1035fa2fdc505d7478039bc05e0e1eb2dab156f08d8ad7cac26d21d4ac4e8a0"
+  },
+  {
+    "path": "context/tools/scripts/study/manifest.py",
+    "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+  },
+  {
+    "path": "context/tools/scripts/study/preflight.py",
+    "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+  },
+  {
+    "path": "context/tools/scripts/study/schemas/axis_declaration.v1.schema.json",
+    "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+  },
+  {
+    "path": "context/tools/scripts/study/schemas/baseline_result.v1.schema.json",
+    "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+  },
+  {
+    "path": "context/tools/scripts/study/schemas/indicators.v1.schema.json",
+    "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+  },
+  {
+    "path": "context/tools/scripts/study/schemas/package_identity.v1.schema.json",
+    "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+  },
+  {
+    "path": "context/tools/scripts/study/schemas/preflight_results.v1.schema.json",
+    "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+  },
+  {
+    "path": "context/tools/scripts/study/schemas/study_package_manifest.v1.schema.json",
+    "sha256": "5fd44712cd032647df701a24f237f2dda7ccd75c2f101a5c6244c9b6bca47032"
+  },
+  {
+    "path": "context/tools/scripts/study/schemas/verification_summary.v1.schema.json",
+    "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+  },
+  {
+    "path": "context/tools/scripts/study/verify.py",
+    "sha256": "4cf1fb8faf9459a0522dea39116a772b4b5067288552ea4fdcf4741908bca77e"
+  },
+  {
+    "path": "context/transfer-evidence-assessment.md",
+    "sha256": "34c93c05320c1b91eee31e50a387ce7247b9be97c38ca74d3dc902a9c85ae6a6"
+  }
+]

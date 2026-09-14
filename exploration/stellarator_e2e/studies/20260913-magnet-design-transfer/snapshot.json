@@ -1,0 +1,1142 @@
+{
+  "arms": [
+    {
+      "arm_id": "arm-transfer",
+      "artifacts": [
+        {
+          "path": "results/baseline/artifacts/89c156f43f7b871fca0330992072beed337ad536e30e2e057b621148041a5b43.json",
+          "sha256": "89c156f43f7b871fca0330992072beed337ad536e30e2e057b621148041a5b43"
+        },
+        {
+          "path": "results/baseline/store.sqlite",
+          "sha256": "10cccb857c9f05dbd7242c01df9b654d3392b7fac62cfaf7d157f027715f2e39"
+        },
+        {
+          "path": "results/baseline/study_config.yaml",
+          "sha256": "ea1429bbae29189b8ff6cf864aaf66a5a184101f455c8fe9eba89825d6888537"
+        },
+        {
+          "path": "results/baseline-compatibility.json",
+          "sha256": "07839b700c2c1284a5cfa21eadacf7cacdea31aa6ab2c1731bf38147a3bc6648"
+        },
+        {
+          "path": "results/baseline-query.json",
+          "sha256": "0d1624070849fc6b15c3cfebe17be8f56b8d90efe6e0de7e62c48c7a572e98cb"
+        },
+        {
+          "path": "results/baseline_result.json",
+          "sha256": "a27ed0a0cbe60752ddd6016f01db8db9078705e6be9c2eb19ff3bc33d33c6836"
+        },
+        {
+          "path": "results/cases.json",
+          "sha256": "7eff15cc98eba645c0b5d74c35cdd8911385f1bc1b11e44e56b685ccd26a6c5a"
+        },
+        {
+          "path": "results/exhaustive-oracle.json",
+          "sha256": "d756fc925b8e95cb700e8d1a983a0748203b60a55f7aa8dc91fb5988c1cf9342"
+        },
+        {
+          "path": "results/grid/artifacts/004e51e4f9d632c8d65d1214c29bcb9f859deeddd0eba1e9e83c02eaa4c705e9.json",
+          "sha256": "004e51e4f9d632c8d65d1214c29bcb9f859deeddd0eba1e9e83c02eaa4c705e9"
+        },
+        {
+          "path": "results/grid/artifacts/02932e8122a3c3620f48ccdac9907baf65f09d5dd71f02c4d3617a34c603efe6.json",
+          "sha256": "02932e8122a3c3620f48ccdac9907baf65f09d5dd71f02c4d3617a34c603efe6"
+        },
+        {
+          "path": "results/grid/artifacts/03b17381c40954deeafc2846cb6744a7c26c564754a61316ff5525c3dab0194f.json",
+          "sha256": "03b17381c40954deeafc2846cb6744a7c26c564754a61316ff5525c3dab0194f"
+        },
+        {
+          "path": "results/grid/artifacts/080caf3ea7b3e89f30d4686d8f5181bc25e18a31f5bbbccd4859b26648e95f89.json",
+          "sha256": "080caf3ea7b3e89f30d4686d8f5181bc25e18a31f5bbbccd4859b26648e95f89"
+        },
+        {
+          "path": "results/grid/artifacts/1165ec9292bcc2f16f2d0fb9e1da6007d5beeb6bed2807d150c30a37ee56f203.json",
+          "sha256": "1165ec9292bcc2f16f2d0fb9e1da6007d5beeb6bed2807d150c30a37ee56f203"
+        },
+        {
+          "path": "results/grid/artifacts/14e50aa0ef29262507baa7e5707672de3d88d77db4ce4b6ca9b6986dbe261b58.json",
+          "sha256": "14e50aa0ef29262507baa7e5707672de3d88d77db4ce4b6ca9b6986dbe261b58"
+        },
+        {
+          "path": "results/grid/artifacts/18831ebd010cd4818b5bbc2ba05aea50b36e81cea1efcd929de2df0cb9f3f112.json",
+          "sha256": "18831ebd010cd4818b5bbc2ba05aea50b36e81cea1efcd929de2df0cb9f3f112"
+        },
+        {
+          "path": "results/grid/artifacts/1903c01f47aec5d8064986b65092e509df1060cbf384ddf72c1e6d978f59f1c0.json",
+          "sha256": "1903c01f47aec5d8064986b65092e509df1060cbf384ddf72c1e6d978f59f1c0"
+        },
+        {
+          "path": "results/grid/artifacts/1ec9493f50bc4ac54a68871e74fec279b859378f6aaf547cefdecfcb51454576.json",
+          "sha256": "1ec9493f50bc4ac54a68871e74fec279b859378f6aaf547cefdecfcb51454576"
+        },
+        {
+          "path": "results/grid/artifacts/1fcb8dd2c512e54788241bebe682eceae9e59738fa9e452a25a0e6ed7f5e12bd.json",
+          "sha256": "1fcb8dd2c512e54788241bebe682eceae9e59738fa9e452a25a0e6ed7f5e12bd"
+        },
+        {
+          "path": "results/grid/artifacts/225d511e9197920fe64aa4dab5bdb85444becf17504b1e0a58652e547238cb94.json",
+          "sha256": "225d511e9197920fe64aa4dab5bdb85444becf17504b1e0a58652e547238cb94"
+        },
+        {
+          "path": "results/grid/artifacts/232203c24305f9a7566c75252ad1aaae57ad834d172efbf773795411afd60e7a.json",
+          "sha256": "232203c24305f9a7566c75252ad1aaae57ad834d172efbf773795411afd60e7a"
+        },
+        {
+          "path": "results/grid/artifacts/29ebb387b527ff05f7a34dbb0b80a79358ed5e908fc3a09743d7870ab3e4b2c3.json",
+          "sha256": "29ebb387b527ff05f7a34dbb0b80a79358ed5e908fc3a09743d7870ab3e4b2c3"
+        },
+        {
+          "path": "results/grid/artifacts/354247c7263a6ee435ba3fcd264be3351032c29bc85dd6d47a875c5800f46369.json",
+          "sha256": "354247c7263a6ee435ba3fcd264be3351032c29bc85dd6d47a875c5800f46369"
+        },
+        {
+          "path": "results/grid/artifacts/3a8db5611cf34772ac442d1e531472e5ef74a2f0f569f8fb25432f6ce4867dd4.json",
+          "sha256": "3a8db5611cf34772ac442d1e531472e5ef74a2f0f569f8fb25432f6ce4867dd4"
+        },
+        {
+          "path": "results/grid/artifacts/3dae5d64b6b763ca771ecd61b70dfd838e53501649ccd88a639dee583d0901a3.json",
+          "sha256": "3dae5d64b6b763ca771ecd61b70dfd838e53501649ccd88a639dee583d0901a3"
+        },
+        {
+          "path": "results/grid/artifacts/3e0461384e8b0fffd8bb46368fe66424e6194d17f7cc3f5ad94f0384593fd3d3.json",
+          "sha256": "3e0461384e8b0fffd8bb46368fe66424e6194d17f7cc3f5ad94f0384593fd3d3"
+        },
+        {
+          "path": "results/grid/artifacts/40283ac565890a04f2e104f12cb2c8663d6f7d0f503aae206c0c68568cd9dca7.json",
+          "sha256": "40283ac565890a04f2e104f12cb2c8663d6f7d0f503aae206c0c68568cd9dca7"
+        },
+        {
+          "path": "results/grid/artifacts/409bf5c8d098089c8c8cefbc7bd2ece005bafaae36ffdd1c92e1b8144f9f98be.json",
+          "sha256": "409bf5c8d098089c8c8cefbc7bd2ece005bafaae36ffdd1c92e1b8144f9f98be"
+        },
+        {
+          "path": "results/grid/artifacts/40a18f3c861ae6a25c751139441e537566737e62199672af4b44d6936c8931db.json",
+          "sha256": "40a18f3c861ae6a25c751139441e537566737e62199672af4b44d6936c8931db"
+        },
+        {
+          "path": "results/grid/artifacts/41bc3a9ec21cda3392ea14b8b183f537fef7660899c0e0dd95cee16ba3b98d83.json",
+          "sha256": "41bc3a9ec21cda3392ea14b8b183f537fef7660899c0e0dd95cee16ba3b98d83"
+        },
+        {
+          "path": "results/grid/artifacts/42cc5121f95444e832c197e3a9b7e2b6d46547ce141ad9f4cdf73d3909682590.json",
+          "sha256": "42cc5121f95444e832c197e3a9b7e2b6d46547ce141ad9f4cdf73d3909682590"
+        },
+        {
+          "path": "results/grid/artifacts/4480f6469d3cfd9a93b7cd1aa6ccaf14e2c1d482b210f2be5f54918cab23aed6.json",
+          "sha256": "4480f6469d3cfd9a93b7cd1aa6ccaf14e2c1d482b210f2be5f54918cab23aed6"
+        },
+        {
+          "path": "results/grid/artifacts/44b72f536129140cb697ffbb7ca184173ecf313298feedcfb8baeca586528160.json",
+          "sha256": "44b72f536129140cb697ffbb7ca184173ecf313298feedcfb8baeca586528160"
+        },
+        {
+          "path": "results/grid/artifacts/457ee484a813cee74e0074c2200d1251da3d4124a1dadbdebb4f95a1cba76b23.json",
+          "sha256": "457ee484a813cee74e0074c2200d1251da3d4124a1dadbdebb4f95a1cba76b23"
+        },
+        {
+          "path": "results/grid/artifacts/4655f347a223cb52be943b13e8420d688c2b421332d43faf33c48e29fe715711.json",
+          "sha256": "4655f347a223cb52be943b13e8420d688c2b421332d43faf33c48e29fe715711"
+        },
+        {
+          "path": "results/grid/artifacts/46cb7275e9ed6ae1437f714ccd94751e6d40f5e5a4d75eb9710422b6996a5e1a.json",
+          "sha256": "46cb7275e9ed6ae1437f714ccd94751e6d40f5e5a4d75eb9710422b6996a5e1a"
+        },
+        {
+          "path": "results/grid/artifacts/50202de8dc8a13aec1a638cbca8b01f0d92ca665f845d45d678a1ee606a10008.json",
+          "sha256": "50202de8dc8a13aec1a638cbca8b01f0d92ca665f845d45d678a1ee606a10008"
+        },
+        {
+          "path": "results/grid/artifacts/50de55bf76bed08ae93d96b35aeb593e99927097adc437acc4ca0f8dd8a20531.json",
+          "sha256": "50de55bf76bed08ae93d96b35aeb593e99927097adc437acc4ca0f8dd8a20531"
+        },
+        {
+          "path": "results/grid/artifacts/53bd713c793b6a3d30eae4a9d4818304440b7cf8717d39f702624a636742d841.json",
+          "sha256": "53bd713c793b6a3d30eae4a9d4818304440b7cf8717d39f702624a636742d841"
+        },
+        {
+          "path": "results/grid/artifacts/544d8273ba0a36a055787a1afb977e453c84800cb41c6048f0d54d894e3152ee.json",
+          "sha256": "544d8273ba0a36a055787a1afb977e453c84800cb41c6048f0d54d894e3152ee"
+        },
+        {
+          "path": "results/grid/artifacts/54992e011e5b7dcb4a828ed6ae52e9a75f253fbd4604e311df2d31856dfee203.json",
+          "sha256": "54992e011e5b7dcb4a828ed6ae52e9a75f253fbd4604e311df2d31856dfee203"
+        },
+        {
+          "path": "results/grid/artifacts/567ec8986514ab4f25724d5407ac4a55a00f9ea84d8c88b697bdf5359b545e04.json",
+          "sha256": "567ec8986514ab4f25724d5407ac4a55a00f9ea84d8c88b697bdf5359b545e04"
+        },
+        {
+          "path": "results/grid/artifacts/56f2cb03ee26dd1366b0325d43785a37881a1f348fbc2ba9bf1c7262cafb1473.json",
+          "sha256": "56f2cb03ee26dd1366b0325d43785a37881a1f348fbc2ba9bf1c7262cafb1473"
+        },
+        {
+          "path": "results/grid/artifacts/5a86d90f7e33192dc79f0c9eefefd96a78dc72078997423ac44f0db98d198627.json",
+          "sha256": "5a86d90f7e33192dc79f0c9eefefd96a78dc72078997423ac44f0db98d198627"
+        },
+        {
+          "path": "results/grid/artifacts/5e5da99b332b34927bbfcb3eca96615ddb351ac444787f76fc261506fd5c8209.json",
+          "sha256": "5e5da99b332b34927bbfcb3eca96615ddb351ac444787f76fc261506fd5c8209"
+        },
+        {
+          "path": "results/grid/artifacts/63ff1433a19f913498fb1ad372271c769c4ddf261e35fe244be5a9f5b90effae.json",
+          "sha256": "63ff1433a19f913498fb1ad372271c769c4ddf261e35fe244be5a9f5b90effae"
+        },
+        {
+          "path": "results/grid/artifacts/6400447a6b672acc259d775d2910350ad8749b21ce39425e5a9c234b1c2b43fd.json",
+          "sha256": "6400447a6b672acc259d775d2910350ad8749b21ce39425e5a9c234b1c2b43fd"
+        },
+        {
+          "path": "results/grid/artifacts/67fd9f76a3fd5b1911ff9ebf776de917a287f671164cf154ce9f538b848f8bd5.json",
+          "sha256": "67fd9f76a3fd5b1911ff9ebf776de917a287f671164cf154ce9f538b848f8bd5"
+        },
+        {
+          "path": "results/grid/artifacts/68ec64a5e218abfdc5fc520d695136552a8b1adba038d89b5e3324e7f7990ba7.json",
+          "sha256": "68ec64a5e218abfdc5fc520d695136552a8b1adba038d89b5e3324e7f7990ba7"
+        },
+        {
+          "path": "results/grid/artifacts/691fd6e82803ef181c109f6beedfe3d96a33074375f5a1067f471ecc1b9e90b6.json",
+          "sha256": "691fd6e82803ef181c109f6beedfe3d96a33074375f5a1067f471ecc1b9e90b6"
+        },
+        {
+          "path": "results/grid/artifacts/75549b4276a151badb604f1bcf24b2b34dd09c7c6c277cec8732b2101eb49440.json",
+          "sha256": "75549b4276a151badb604f1bcf24b2b34dd09c7c6c277cec8732b2101eb49440"
+        },
+        {
+          "path": "results/grid/artifacts/78062d23990ba121acd0a6fd74776cc489a0a029f2446f85ee8e42ea7c4c6627.json",
+          "sha256": "78062d23990ba121acd0a6fd74776cc489a0a029f2446f85ee8e42ea7c4c6627"
+        },
+        {
+          "path": "results/grid/artifacts/784612034a428c7478fde2e515d49fdb705f44b1c4cf568759a38fbb562dab5b.json",
+          "sha256": "784612034a428c7478fde2e515d49fdb705f44b1c4cf568759a38fbb562dab5b"
+        },
+        {
+          "path": "results/grid/artifacts/78dfe13c5f4e902c04f14aa18ba8152867611805909be8eeb1929d21caf89b6f.json",
+          "sha256": "78dfe13c5f4e902c04f14aa18ba8152867611805909be8eeb1929d21caf89b6f"
+        },
+        {
+          "path": "results/grid/artifacts/7bde5a0d96e1e79a0accea6ec5d317a3ce9040f36e853ad86185acbc0f5a93ba.json",
+          "sha256": "7bde5a0d96e1e79a0accea6ec5d317a3ce9040f36e853ad86185acbc0f5a93ba"
+        },
+        {
+          "path": "results/grid/artifacts/7f30a75bf420f512b08006b60bdbf67e7971ac38680c0648d7e554689ffa7a6f.json",
+          "sha256": "7f30a75bf420f512b08006b60bdbf67e7971ac38680c0648d7e554689ffa7a6f"
+        },
+        {
+          "path": "results/grid/artifacts/804a18da3a5e5119f3ca0d87ccf586dfa462cc835e8f903f9c746f367ab2fc11.json",
+          "sha256": "804a18da3a5e5119f3ca0d87ccf586dfa462cc835e8f903f9c746f367ab2fc11"
+        },
+        {
+          "path": "results/grid/artifacts/81672900f3938c6fb8e742a14f1607ae506d4884783f49304cc0af01c8707f90.json",
+          "sha256": "81672900f3938c6fb8e742a14f1607ae506d4884783f49304cc0af01c8707f90"
+        },
+        {
+          "path": "results/grid/artifacts/848f6e0dd380cf4266ecdb351fcc282d8157ca8614b2956eac874cf0a3be4bf8.json",
+          "sha256": "848f6e0dd380cf4266ecdb351fcc282d8157ca8614b2956eac874cf0a3be4bf8"
+        },
+        {
+          "path": "results/grid/artifacts/8581c46b9eaaceadd2c23af5b76a33dde0da7c37cf5560953a042a17994f981a.json",
+          "sha256": "8581c46b9eaaceadd2c23af5b76a33dde0da7c37cf5560953a042a17994f981a"
+        },
+        {
+          "path": "results/grid/artifacts/89c156f43f7b871fca0330992072beed337ad536e30e2e057b621148041a5b43.json",
+          "sha256": "89c156f43f7b871fca0330992072beed337ad536e30e2e057b621148041a5b43"
+        },
+        {
+          "path": "results/grid/artifacts/8a2533062a2395f2ca9b86e35976e2e8adae8bbed77abb224bdad7992a4601ae.json",
+          "sha256": "8a2533062a2395f2ca9b86e35976e2e8adae8bbed77abb224bdad7992a4601ae"
+        },
+        {
+          "path": "results/grid/artifacts/8b557f434bc86a124f4cf356be05e5d6c3de005ccea0d8408788f2a68e6a95a8.json",
+          "sha256": "8b557f434bc86a124f4cf356be05e5d6c3de005ccea0d8408788f2a68e6a95a8"
+        },
+        {
+          "path": "results/grid/artifacts/8cd7edd260913269c17e69d1699799f728f2bc909c29688c79f49e7ba7b242a6.json",
+          "sha256": "8cd7edd260913269c17e69d1699799f728f2bc909c29688c79f49e7ba7b242a6"
+        },
+        {
+          "path": "results/grid/artifacts/8e0e0ead4067d3e98b5ec77353e041e8ac4b3498f1ef9e3525d038e7caae4cda.json",
+          "sha256": "8e0e0ead4067d3e98b5ec77353e041e8ac4b3498f1ef9e3525d038e7caae4cda"
+        },
+        {
+          "path": "results/grid/artifacts/8f8f0da8abc712346a2e90c6654264b121dcf0b99199054d77ffdfc9833ad8fa.json",
+          "sha256": "8f8f0da8abc712346a2e90c6654264b121dcf0b99199054d77ffdfc9833ad8fa"
+        },
+        {
+          "path": "results/grid/artifacts/92f717c0c52bbbe12e7eaeea3c9d41d9db425ac4c4fde3acabd90a50a33d739c.json",
+          "sha256": "92f717c0c52bbbe12e7eaeea3c9d41d9db425ac4c4fde3acabd90a50a33d739c"
+        },
+        {
+          "path": "results/grid/artifacts/949d0a4f6232c8d99dee46cc22099bb52fee578ef4137e65bae531357dc82218.json",
+          "sha256": "949d0a4f6232c8d99dee46cc22099bb52fee578ef4137e65bae531357dc82218"
+        },
+        {
+          "path": "results/grid/artifacts/96f2524d419a34050bfce96deea5fa6fa00af9c311fe2e3e58cc73347912f2a7.json",
+          "sha256": "96f2524d419a34050bfce96deea5fa6fa00af9c311fe2e3e58cc73347912f2a7"
+        },
+        {
+          "path": "results/grid/artifacts/9b063790ab2600d35f6a7347a7ff56b6c22c5804aa792e65f5ed70542d2a0099.json",
+          "sha256": "9b063790ab2600d35f6a7347a7ff56b6c22c5804aa792e65f5ed70542d2a0099"
+        },
+        {
+          "path": "results/grid/artifacts/9e05f892cc7977968857c7679dd983dbb7b95a7e205b5ed6e5dbdf58c247b49e.json",
+          "sha256": "9e05f892cc7977968857c7679dd983dbb7b95a7e205b5ed6e5dbdf58c247b49e"
+        },
+        {
+          "path": "results/grid/artifacts/a12411ff48d8190aa0d82a23d71b53eccbfe45ec75ee8064abd2b44f2249e03d.json",
+          "sha256": "a12411ff48d8190aa0d82a23d71b53eccbfe45ec75ee8064abd2b44f2249e03d"
+        },
+        {
+          "path": "results/grid/artifacts/a1a2cd3766424a1e5e8b3e8822916e11d57dccdbee342736617d63dbebabcfa4.json",
+          "sha256": "a1a2cd3766424a1e5e8b3e8822916e11d57dccdbee342736617d63dbebabcfa4"
+        },
+        {
+          "path": "results/grid/artifacts/a5566a522eca28e1fe15fd8b00e5254226c93743f701266fea150cb6df76fa77.json",
+          "sha256": "a5566a522eca28e1fe15fd8b00e5254226c93743f701266fea150cb6df76fa77"
+        },
+        {
+          "path": "results/grid/artifacts/a685be959b96c4564d2f9460d3c391255c8805385c093f280de0e049968c68a0.json",
+          "sha256": "a685be959b96c4564d2f9460d3c391255c8805385c093f280de0e049968c68a0"
+        },
+        {
+          "path": "results/grid/artifacts/b1b5e27839f3fca3cba67d7c09b254e18b6845a4018208eb7ee7bbe70c02996f.json",
+          "sha256": "b1b5e27839f3fca3cba67d7c09b254e18b6845a4018208eb7ee7bbe70c02996f"
+        },
+        {
+          "path": "results/grid/artifacts/b3ec35a50c4fa1e960911b44b6c53c477b70bd4cef3967293f36399f9f384a64.json",
+          "sha256": "b3ec35a50c4fa1e960911b44b6c53c477b70bd4cef3967293f36399f9f384a64"
+        },
+        {
+          "path": "results/grid/artifacts/b3ff05f2f3795d19ec2f7496439d99cc04c666a6b31f2decc92695efa79548c7.json",
+          "sha256": "b3ff05f2f3795d19ec2f7496439d99cc04c666a6b31f2decc92695efa79548c7"
+        },
+        {
+          "path": "results/grid/artifacts/b5470e38ad055af7b931f18e5420fa1309f0f8ea1ef23ba1f5a0d8bda54bb4ff.json",
+          "sha256": "b5470e38ad055af7b931f18e5420fa1309f0f8ea1ef23ba1f5a0d8bda54bb4ff"
+        },
+        {
+          "path": "results/grid/artifacts/b7a903bc11f56362906cbf889507bdc9f0077cc6c1f07f62771ecc5ea6cf9405.json",
+          "sha256": "b7a903bc11f56362906cbf889507bdc9f0077cc6c1f07f62771ecc5ea6cf9405"
+        },
+        {
+          "path": "results/grid/artifacts/b8d8c0680c0b2180bb7660d93030a9855db100478b7f34482656116296f7800d.json",
+          "sha256": "b8d8c0680c0b2180bb7660d93030a9855db100478b7f34482656116296f7800d"
+        },
+        {
+          "path": "results/grid/artifacts/b9e289ae5b4430a2857bf35514e794eb48c8c0c33a54874a61257c81cf7d1648.json",
+          "sha256": "b9e289ae5b4430a2857bf35514e794eb48c8c0c33a54874a61257c81cf7d1648"
+        },
+        {
+          "path": "results/grid/artifacts/babb3b13959d3ea31959654675bc2f620c416e213b8bfc7daa41795d361a4be5.json",
+          "sha256": "babb3b13959d3ea31959654675bc2f620c416e213b8bfc7daa41795d361a4be5"
+        },
+        {
+          "path": "results/grid/artifacts/bae2fefb034150de4409cf958d26c261aca1167e43bb0b0d020a4467207fa88e.json",
+          "sha256": "bae2fefb034150de4409cf958d26c261aca1167e43bb0b0d020a4467207fa88e"
+        },
+        {
+          "path": "results/grid/artifacts/bef090cc6f25767b75e2ffb20a0dda58e4f8a6d2e12d228dfba01449360297a8.json",
+          "sha256": "bef090cc6f25767b75e2ffb20a0dda58e4f8a6d2e12d228dfba01449360297a8"
+        },
+        {
+          "path": "results/grid/artifacts/c010df0bf10c5864aac5d8499679215cf4d2c45975704a652d19ea547ec8ea67.json",
+          "sha256": "c010df0bf10c5864aac5d8499679215cf4d2c45975704a652d19ea547ec8ea67"
+        },
+        {
+          "path": "results/grid/artifacts/c03d8fd98eb533f05bb460bb80920073a22b1249c1afd439037f04131f7a5d00.json",
+          "sha256": "c03d8fd98eb533f05bb460bb80920073a22b1249c1afd439037f04131f7a5d00"
+        },
+        {
+          "path": "results/grid/artifacts/c14d8224bb21ff9da79963423ebd0545de8780b4427a4dcbc87d35ff2715051a.json",
+          "sha256": "c14d8224bb21ff9da79963423ebd0545de8780b4427a4dcbc87d35ff2715051a"
+        },
+        {
+          "path": "results/grid/artifacts/c1572923772147e55eb16baf207a89975dab084400c0d74147916cbd1c417ebd.json",
+          "sha256": "c1572923772147e55eb16baf207a89975dab084400c0d74147916cbd1c417ebd"
+        },
+        {
+          "path": "results/grid/artifacts/c3fb29ea3f05af4d81e8ae0b8d98931d688983f42be01d1c73459d8c15c54669.json",
+          "sha256": "c3fb29ea3f05af4d81e8ae0b8d98931d688983f42be01d1c73459d8c15c54669"
+        },
+        {
+          "path": "results/grid/artifacts/c4bc9a7fad0c2f33fedf01c7cdafa61eb1eadae0a9b94f8d3923eab2740ccc9c.json",
+          "sha256": "c4bc9a7fad0c2f33fedf01c7cdafa61eb1eadae0a9b94f8d3923eab2740ccc9c"
+        },
+        {
+          "path": "results/grid/artifacts/ca808be4db11d06e07b8b361ba996fb262baf3ea2204a66e55dbf9171cacd521.json",
+          "sha256": "ca808be4db11d06e07b8b361ba996fb262baf3ea2204a66e55dbf9171cacd521"
+        },
+        {
+          "path": "results/grid/artifacts/cf435eebd42989c6d2edc8e88374ebeae96a7943558f21a9bcd97a12b1b1358a.json",
+          "sha256": "cf435eebd42989c6d2edc8e88374ebeae96a7943558f21a9bcd97a12b1b1358a"
+        },
+        {
+          "path": "results/grid/artifacts/d10f545a64c14cab6188bbf13a2c428d9e549fb37188df2c68bb7b9fd6543805.json",
+          "sha256": "d10f545a64c14cab6188bbf13a2c428d9e549fb37188df2c68bb7b9fd6543805"
+        },
+        {
+          "path": "results/grid/artifacts/d6c491659af0518ea2d4f7e2d4dbe7de7226cbd9956c1e77903aeaa07f0fc408.json",
+          "sha256": "d6c491659af0518ea2d4f7e2d4dbe7de7226cbd9956c1e77903aeaa07f0fc408"
+        },
+        {
+          "path": "results/grid/artifacts/d7fca1d479fbd63eff34d7a96d30fbb699db39830cf6361d71ef07203a80ab59.json",
+          "sha256": "d7fca1d479fbd63eff34d7a96d30fbb699db39830cf6361d71ef07203a80ab59"
+        },
+        {
+          "path": "results/grid/artifacts/db0ca0e123b5caabde602c50cbff2c4509c2dde069903706416c414d897317d6.json",
+          "sha256": "db0ca0e123b5caabde602c50cbff2c4509c2dde069903706416c414d897317d6"
+        },
+        {
+          "path": "results/grid/artifacts/df33fa25ee7ddbfbcf28ef967b1b06600bebb7bc46daa975e1b1ac9920781bbb.json",
+          "sha256": "df33fa25ee7ddbfbcf28ef967b1b06600bebb7bc46daa975e1b1ac9920781bbb"
+        },
+        {
+          "path": "results/grid/artifacts/e0f7c0819c5d95fd36149833f87e70e830ec3bf8cd2c18a1cb66b87d53642100.json",
+          "sha256": "e0f7c0819c5d95fd36149833f87e70e830ec3bf8cd2c18a1cb66b87d53642100"
+        },
+        {
+          "path": "results/grid/artifacts/e20b27771df1a19d390132448c1196c0d4b585cb0063adfcccc08f1977c896b0.json",
+          "sha256": "e20b27771df1a19d390132448c1196c0d4b585cb0063adfcccc08f1977c896b0"
+        },
+        {
+          "path": "results/grid/artifacts/e3d512137518b994bb188f055a428cc1ca21579912d83f5f8e1632359d68bf70.json",
+          "sha256": "e3d512137518b994bb188f055a428cc1ca21579912d83f5f8e1632359d68bf70"
+        },
+        {
+          "path": "results/grid/artifacts/e65b1df77b939fb78bbab607276e79d5ffcdb306d05122495980f7833f7b39f6.json",
+          "sha256": "e65b1df77b939fb78bbab607276e79d5ffcdb306d05122495980f7833f7b39f6"
+        },
+        {
+          "path": "results/grid/artifacts/e6fc8f928ec0e034e40b0258b9b069a535331d8a23f47c036cc7fbd3d87fd98b.json",
+          "sha256": "e6fc8f928ec0e034e40b0258b9b069a535331d8a23f47c036cc7fbd3d87fd98b"
+        },
+        {
+          "path": "results/grid/artifacts/e914167f1f339bfdd331d2f9dbbda4fdf192a9c3c992a764f06811a2faea6bb0.json",
+          "sha256": "e914167f1f339bfdd331d2f9dbbda4fdf192a9c3c992a764f06811a2faea6bb0"
+        },
+        {
+          "path": "results/grid/artifacts/e946f7037ae5ede3bdf73a646ac23a55eab24b24073a266bcd8c94b69f88e53e.json",
+          "sha256": "e946f7037ae5ede3bdf73a646ac23a55eab24b24073a266bcd8c94b69f88e53e"
+        },
+        {
+          "path": "results/grid/artifacts/ea3e1ec9b71dde744122650385c66490cefd6a9f67702b09cc7f6708e4a37979.json",
+          "sha256": "ea3e1ec9b71dde744122650385c66490cefd6a9f67702b09cc7f6708e4a37979"
+        },
+        {
+          "path": "results/grid/artifacts/eaba6ae0178cec9ff496098a5326ea40a69d15b16e48bb58002d0b90a925f76e.json",
+          "sha256": "eaba6ae0178cec9ff496098a5326ea40a69d15b16e48bb58002d0b90a925f76e"
+        },
+        {
+          "path": "results/grid/artifacts/edef2ac4662548ff885c237c9e639d7c3c114da83334df648226cc75f23f04fb.json",
+          "sha256": "edef2ac4662548ff885c237c9e639d7c3c114da83334df648226cc75f23f04fb"
+        },
+        {
+          "path": "results/grid/artifacts/f19af1e6949176e1fc88839ffccb71de437331c413adea5514e88ded6ce9f637.json",
+          "sha256": "f19af1e6949176e1fc88839ffccb71de437331c413adea5514e88ded6ce9f637"
+        },
+        {
+          "path": "results/grid/artifacts/f320e991474b4bb16f232f6dcbf87aeaf2774dedd307da176b06f857c89c63b3.json",
+          "sha256": "f320e991474b4bb16f232f6dcbf87aeaf2774dedd307da176b06f857c89c63b3"
+        },
+        {
+          "path": "results/grid/artifacts/f5b4398d52937c58db5df8978ac074d1ba0d579bd93096ef0811e36a76dd09c7.json",
+          "sha256": "f5b4398d52937c58db5df8978ac074d1ba0d579bd93096ef0811e36a76dd09c7"
+        },
+        {
+          "path": "results/grid/artifacts/f6b455b25f9137e55e0f0fe4823d8978d98cc27d5d1e781f4cf1a269c2f7f2d9.json",
+          "sha256": "f6b455b25f9137e55e0f0fe4823d8978d98cc27d5d1e781f4cf1a269c2f7f2d9"
+        },
+        {
+          "path": "results/grid/artifacts/f894b8617ccb4ff3d8fd56a2c839e82a3b5525649acdd126e974a67be4f152ab.json",
+          "sha256": "f894b8617ccb4ff3d8fd56a2c839e82a3b5525649acdd126e974a67be4f152ab"
+        },
+        {
+          "path": "results/grid/artifacts/f9f9027b46fcdc4fd237aa8f977953b385583b6f57ffaf1d6d41c18f1da71046.json",
+          "sha256": "f9f9027b46fcdc4fd237aa8f977953b385583b6f57ffaf1d6d41c18f1da71046"
+        },
+        {
+          "path": "results/grid/artifacts/fab363b83a447b1a4c29ebd0311553b78145cb0a3b0ef70ece35778b7570bc58.json",
+          "sha256": "fab363b83a447b1a4c29ebd0311553b78145cb0a3b0ef70ece35778b7570bc58"
+        },
+        {
+          "path": "results/grid/artifacts/faf8e5dd601d3f7e9dcdae8394ffcfd0a62d6da3165a18a3da2053a57d13d508.json",
+          "sha256": "faf8e5dd601d3f7e9dcdae8394ffcfd0a62d6da3165a18a3da2053a57d13d508"
+        },
+        {
+          "path": "results/grid/artifacts/fed0f599fa673164e80705fbd195ae8af88a2b3bb391920c9f3a79018e1867e1.json",
+          "sha256": "fed0f599fa673164e80705fbd195ae8af88a2b3bb391920c9f3a79018e1867e1"
+        },
+        {
+          "path": "results/grid/store.sqlite",
+          "sha256": "6dfdfcdf023537e26fcb384264df807bb6691693ca2f141cf2e6e336787e7365"
+        },
+        {
+          "path": "results/grid/study_config.yaml",
+          "sha256": "cecb94d76a192260f7de476182d541e8288fa3ed42c2de4c96b631c532c7b4bc"
+        },
+        {
+          "path": "results/identity-checks.json",
+          "sha256": "a67ddb6541fcdc4c2121a0ba7f12abd2de118d20605533c49787e86c369ccf82"
+        },
+        {
+          "path": "results/oracle-scan.json",
+          "sha256": "bcba3a00c95d00bf9e7c384a48f8729da491eaf7abebafcdbaf5c8e192463977"
+        },
+        {
+          "path": "results/package_identity.json",
+          "sha256": "0bb4f1a68a05cb85983d957667d59bebb2ed9a1e0078010af835f3ab51599b35"
+        },
+        {
+          "path": "results/points.csv",
+          "sha256": "fb8c91635f592c0a4186bba0c51e4a5e848ee7608428eca10636a6ca29108398"
+        },
+        {
+          "path": "results/postrun-clean.json",
+          "sha256": "6de0a2fadb7632c1d73eaf1121722a103d818245a92b2216094242c243fc83a6"
+        },
+        {
+          "path": "results/preflight.json",
+          "sha256": "ba6fdac4a181d9a889b313bb127e4b3e92edeab03d8309ada1657b1d4023907c"
+        },
+        {
+          "path": "results/store-compatibility.json",
+          "sha256": "777ff2ed32e2a18fa05b76182e3c1c7612b5512b61cb0cc70c76c6d7d452302b"
+        },
+        {
+          "path": "results/summary.json",
+          "sha256": "2e574bbfd0954238d8dc6cdf6ac6e60a8d44505ec1c88047a6b22338cf64e980"
+        },
+        {
+          "path": "results/verification_summary.json",
+          "sha256": "4a9d04d986185031b14b185e60ccb88c03778cdefc0973d846bcc3dca50dd2f5"
+        },
+        {
+          "path": "results/window-decision.json",
+          "sha256": "4a8d1ac343dc9844aa64a0c2f7a867d89854db79944d07e663c771de901781de"
+        }
+      ],
+      "effective_executable_fingerprint": {
+        "inputs": null,
+        "no_adapter": true,
+        "note": "No adapter exists; the sealed fingerprint is the identity.",
+        "value": "8ff5bb7c3d71f235be697e254766d3e0f552f3b94b46831da62a08a9755122a5"
+      },
+      "entry_models": {
+        "mfe_account_costs_params": "MfeAccountCostsParams",
+        "mfe_fuel_cycle_params": "MfeFuelCycleParams",
+        "mfe_magnet_cost_params": "MfeMagnetCostParams",
+        "mfe_magnet_field_params": "MfeMagnetFieldParams",
+        "mfe_plant_params": "MfePlantParams",
+        "mfe_plasma_scaling_params": "MfePlasmaScalingParams",
+        "mfe_plasma_sustainment_params": "MfePlasmaSustainmentParams",
+        "mfe_vacuum_params": "MfeVacuumParams",
+        "stellarator_plant_params": "StellaratorPlantParams"
+      },
+      "glue_ledger": [],
+      "glue_ledger_none": true,
+      "store_id": "grid",
+      "strategy": {
+        "definition_fingerprint": "bf366f0e384629348a06385db7e972e10be3945b1a24e87594182af1dd2aa97a",
+        "kind": "GridStrategy",
+        "ordered_grid": [
+          [
+            "stellarator_09__stellaris__plasma__R",
+            [
+              11.43,
+              12.7,
+              13.97
+            ]
+          ],
+          [
+            "stellarator_09__stellaris__plasma__a",
+            [
+              1.17,
+              1.3,
+              1.43
+            ]
+          ],
+          [
+            "stellarator_09__stellaris__magnet__coil__I_coil",
+            [
+              14000000.0,
+              15400000.0,
+              17000000.0
+            ]
+          ],
+          [
+            "stellarator_09__stellaris__magnet__winding_pack__B_max",
+            [
+              20.0,
+              24.9,
+              27.5,
+              30.0
+            ]
+          ]
+        ]
+      },
+      "verification": {
+        "command": [
+          "scripts/study/verify.py",
+          "--package",
+          "exploration/stellarator_e2e/generated",
+          "--manifest",
+          "exploration/stellarator_e2e/studies/manifest.json",
+          "--identity",
+          "exploration/stellarator_e2e/studies/20260913-magnet-design-transfer/results/package_identity.json",
+          "--store",
+          "exploration/stellarator_e2e/studies/20260913-magnet-design-transfer/results/grid/store.sqlite",
+          "--sample-size",
+          "108",
+          "--out",
+          "exploration/stellarator_e2e/studies/20260913-magnet-design-transfer/results/verification_summary.json"
+        ],
+        "sampling_scheme": "exhaustive 108 grid cases; generic predicate verification plus all-161-output comparison to the pre-run oracle scan",
+        "summary_sha256": "4a9d04d986185031b14b185e60ccb88c03778cdefc0973d846bcc3dca50dd2f5",
+        "tolerance": {
+          "identity_absolute": 1e-09,
+          "identity_relative": 1e-09,
+          "oracle_relative": 1e-09,
+          "predicates": "authored exact operators"
+        },
+        "tool_revision": {
+          "digest": "a7e8ee5802b778bc11507571a03856203af9d90a64a9da5fa1db1646cf1fff2d",
+          "files": [
+            {
+              "path": "scripts/study/common.py",
+              "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+            },
+            {
+              "path": "scripts/study/identity.py",
+              "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+            },
+            {
+              "path": "scripts/study/manifest.py",
+              "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+            },
+            {
+              "path": "scripts/study/schemas/package_identity.v1.schema.json",
+              "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+            },
+            {
+              "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+              "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+            },
+            {
+              "path": "scripts/study/verify.py",
+              "sha256": "4cf1fb8faf9459a0522dea39116a772b4b5067288552ea4fdcf4741908bca77e"
+            }
+          ],
+          "recipe": "tool-source-digest/v1"
+        }
+      },
+      "window": {
+        "bounds": {
+          "stellarator_09__stellaris__magnet__coil__I_coil": [
+            14000000.0,
+            15400000.0,
+            17000000.0
+          ],
+          "stellarator_09__stellaris__magnet__winding_pack__B_max": [
+            20.0,
+            24.9,
+            27.5,
+            30.0
+          ],
+          "stellarator_09__stellaris__plasma__R": [
+            11.43,
+            12.7,
+            13.97
+          ],
+          "stellarator_09__stellaris__plasma__a": [
+            1.17,
+            1.3,
+            1.43
+          ]
+        },
+        "provenance": "engineered"
+      }
+    }
+  ],
+  "context_digest_index": {
+    "path": "context-digests.json",
+    "sha256": "ae17693842c6b333286fac0b3f428cdc1f5131331b9114b9bca342a1cc58e271"
+  },
+  "fingerprints": {
+    "indicator_inputs": {
+      "digest": "c95eefd7f7117e586d38c8d2ce1f55dbb226c822c2319ac99d9dff90fad3b180",
+      "files": [
+        {
+          "path": "contracts/model_contract.json",
+          "sha256": "90ef5b3e4dfef3d976b4664ab34c53edca0c08ec8c7749acca9e4da94ba84ccd"
+        },
+        {
+          "path": "inputs/mfe_account_costs_params.json",
+          "sha256": "8aa39916a559e9321d93790a0969b6ed1e23bfce28ce08c4e2935f0e63738f21"
+        },
+        {
+          "path": "inputs/mfe_fuel_cycle_params.json",
+          "sha256": "d4cb30bd5e71239fd0bbf7fb0de26244ca8340548065b5a7efcaf37e574a7009"
+        },
+        {
+          "path": "inputs/mfe_magnet_cost_params.json",
+          "sha256": "6f1d9f7be63cad7b70fa2ce49ad6deb969e1c0eb09d867e2c7eaf1037ce33cee"
+        },
+        {
+          "path": "inputs/mfe_magnet_field_params.json",
+          "sha256": "3ddee962745fd715c173906c9fc82345507b23fe5c2341e10e132ed48fea3bb6"
+        },
+        {
+          "path": "inputs/mfe_plant_params.json",
+          "sha256": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814"
+        },
+        {
+          "path": "inputs/mfe_plasma_scaling_params.json",
+          "sha256": "7651898e02c098f30ab10b4a19b1b471d627f9b674c06651607bca5a36576e86"
+        },
+        {
+          "path": "inputs/mfe_plasma_sustainment_params.json",
+          "sha256": "da8b1efe9eb1b21f71e42e95eb4fef19ca3d8503d2ac2ebd0dce74df6e0676dc"
+        },
+        {
+          "path": "inputs/mfe_vacuum_params.json",
+          "sha256": "07e515e8cae3939c558172fb9579ecaf4e6397b499ecbaf14de76ade79db3240"
+        },
+        {
+          "path": "inputs/stellarator_plant_params.json",
+          "sha256": "8cbbc5f15639288984d506ab717cd093d696a8f8cb25c3e871174ba49db50e61"
+        },
+        {
+          "path": "pipelines/pipeline.yaml",
+          "sha256": "fcd55b5b1b0b662273a71d4749e88b064048f50c3ed376a1f0f14becdc261af0"
+        }
+      ],
+      "recipe": "indicator-input-fingerprint/v1"
+    },
+    "recorded_provenance.executable_fingerprint": "8ff5bb7c3d71f235be697e254766d3e0f552f3b94b46831da62a08a9755122a5",
+    "recorded_provenance.semantic_fingerprint": "2c2788662c148ccae3f61d1f58e510cedcfcddb6b0b489878ec8d7ebd6f1c08e"
+  },
+  "indicators": {
+    "axis_declaration": {
+      "digest": "10b128a8d4e44c38b5ea1ba4a8a9aa38c92668a7a9c982e9b5a1bb487c566e36",
+      "groups_declared": [
+        "R",
+        "a",
+        "I_coil",
+        "B_max"
+      ],
+      "path": "axes.json",
+      "schema_version": "study-axis-declaration/v1",
+      "subset": false
+    },
+    "output_schema_version": "study-indicators/v1",
+    "path": "indicators.json",
+    "sha256": "f7f0284118ebd47fc740cafbf5b27091051cb2b8161b6d77432f8320687d5c0f"
+  },
+  "manifest": {
+    "content_used": {
+      "baseline": {
+        "headline": {
+          "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+          "value": 142.50725862880648
+        },
+        "point": {
+          "stellarator_09__stellaris__availability_direct": 0.0,
+          "stellarator_09__stellaris__plasma__R": 12.7,
+          "stellarator_09__stellaris__plasma__a": 1.3
+        },
+        "verdicts": [
+          {
+            "expected": "satisfied",
+            "source_local_identity": "beta_ok"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "burn_hold_ok"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "cond_strain_ok"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "cycle_domain_ok"
+          },
+          {
+            "expected": "violated",
+            "source_local_identity": "divertor_heat_ok"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "heating_couple_positive_ok"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "heating_couple_upper_ok"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "heating_source_positive_ok"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "heating_source_upper_ok"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "loop_capacity_ok"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "loop_pressure_ok"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "net_positive"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "peak_field_ok"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "recirc_ok"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "sustainment_ok"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "tbr_ok"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "wall_load_ok"
+          },
+          {
+            "expected": "satisfied",
+            "source_local_identity": "wp_stress_ok"
+          }
+        ]
+      },
+      "fingerprint_names": [
+        "indicator_inputs",
+        "recorded_provenance.executable_fingerprint",
+        "recorded_provenance.semantic_fingerprint"
+      ],
+      "objective_catalog": [
+        {
+          "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+          "name": "lcoe",
+          "note": "Headline levelized cost of electricity. Exit-point filename is stellaris__lcoe.json; the catalog keys on the channel, never the filename."
+        },
+        {
+          "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+          "name": "lcoe_1cfe",
+          "note": "LCOE variant using the 1costingfe CAS90 rollup."
+        },
+        {
+          "channel": "stellarator_09__stellaris__calendar__cas72_annual",
+          "name": "cas72",
+          "note": "Levelized annual replacement cost -- the lifecycle calendar's output since WI-046 (2026-09-08; the retired cas72_calc__cost channel is gone)."
+        },
+        {
+          "channel": "stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel",
+          "name": "fuel",
+          "note": "Annual fuel cost."
+        },
+        {
+          "channel": "stellarator_09__stellaris__total_capital__total_capital",
+          "name": "total_capital",
+          "note": "Total capital cost including interest during construction."
+        },
+        {
+          "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+          "name": "cas27",
+          "note": "CAS27 special-materials capital, computed in-package from the radial-build blanket volume since the model migration (2026-08-21). Declared as an objective so generic verification compares it against the oracle's own recompute: on the era route this value was glue-fed to both sides and never independently verified."
+        },
+        {
+          "channel": "stellarator_09__stellaris__plasma__beta_calc__beta",
+          "name": "beta",
+          "note": "Volume-averaged thermal beta computed by 'Volume-Averaged Beta' from the profile referents and magnet__B (WI-030); replaces the retired bound input beta. Compared against the oracle's closed form so a magnet study verifies the physics lever it moves."
+        },
+        {
+          "channel": "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost",
+          "name": "magnet_capital",
+          "note": "CAS22.1.3 magnet capital \u2014 since WI-035 the decomposed rollup (winding pack + casing structure), the channel the plant's magnet.capital_cost reads. The old conductor-proxy lump is the separate magnet_capital_1cfe comparison objective."
+        },
+        {
+          "channel": "stellarator_09__stellaris__magnet__magnet_cost__capital_cost",
+          "name": "magnet_capital_1cfe",
+          "note": "1cfe-form comparison channel (WI-035 D6): the retained 'Magnet Coil Cost' conductor-proxy lump, now responding to the computed field. Kept as an objective so the decomposed rollup and the calibrated lump stay observable side by side."
+        },
+        {
+          "channel": "stellarator_09__stellaris__plasma__sustain__p_aux_required",
+          "name": "p_aux_required",
+          "note": "WI-037 required sustained plasma-coupled heating; the sustainment_ok operand. Responds to field (~B^-2.15 through ISS04), density, temperature, geometry, and heating."
+        },
+        {
+          "channel": "stellarator_09__stellaris__plasma__sustain__tau_E",
+          "name": "tau_E",
+          "note": "WI-037 ISS04 energy confinement time (closed form, line-averaged density)."
+        },
+        {
+          "channel": "stellarator_09__stellaris__operating_heat__p_coupled",
+          "name": "operating_heat_coupled",
+          "note": "WI-050 signed operating demand at held source/coupling efficiencies."
+        },
+        {
+          "channel": "stellarator_09__stellaris__operating_heat__p_delivered",
+          "name": "operating_heat_delivered",
+          "note": "WI-050 signed operating demand at held source/coupling efficiencies."
+        },
+        {
+          "channel": "stellarator_09__stellaris__operating_heat__p_wallplug",
+          "name": "operating_heat_wallplug",
+          "note": "WI-050 signed operating demand at held source/coupling efficiencies."
+        }
+      ],
+      "oracle": {
+        "callable": "evaluate",
+        "kind": "python_callable",
+        "module": "oracle_entry",
+        "note": "Package-owned oracle seam. evaluate(point) takes a mapping of qualified entry keys to floats and returns a mapping of qualified channel names to floats; it wraps the independent pure-Python oracle verify_stellaris.py, whose current live radius operands follow model-owned plant R. ANNEX.md section Current oracle comparison coverage lists the seventeen native channels outside its 141-channel map. The module also publishes a fixed-name companion, operand_bindings() -> {constraint_id: {source_name: {kind, key}}}, which says which qualified input key or channel each predicate operand means. A generic verifier requires both and fails closed on anything unresolved: on this package one operand of five constraints resolves to nothing by name at all, so a tool that inferred bindings would compare the wrong number and read as a pass.",
+        "source_digest": {
+          "digest": "1c4a89c8791d09f1ee7466e33f57af09ff82c39c7e0d42edfff3387746adb064",
+          "files": [
+            {
+              "path": "exploration/stellarator_e2e/verify_stellaris.py",
+              "sha256": "0d0dc192d40147156ee078e16a1b7a579892abf45dc390a35df7cf07ebd1dca0"
+            },
+            {
+              "path": "exploration/stellarator_e2e/oracle_finance.py",
+              "sha256": "8cd2d9803c74bace69a4fe2f13bdc700686e9db69c650a0688c3c40204943873"
+            },
+            {
+              "path": "exploration/stellarator_e2e/studies/oracle_entry.py",
+              "sha256": "9c4c70a7ae66d2f8c8a3b7539bab1979b95ec4b68976119d2baccf387a9eb1e2"
+            }
+          ],
+          "recipe": "tool-source-digest/v1"
+        },
+        "sys_path": "exploration/stellarator_e2e/studies"
+      },
+      "ties": []
+    },
+    "digest": "5acecc77dc4ac2996f936cbe8d8c3c091a1d3a4f8f45b0e93bd1aa9f3430224d",
+    "path": "context/manifest.json",
+    "schema_version": "study-package-manifest/v1"
+  },
+  "package": {
+    "git_clean": true,
+    "package_name": "stellarator_tea",
+    "path": "exploration/stellarator_e2e/pkg/stellarator_tea",
+    "repo_commit": "266110f9"
+  },
+  "preflight_baseline_store": {
+    "compatibility_tuple": {
+      "evidence_schema_version": "v3",
+      "executable_fingerprint": "8ff5bb7c3d71f235be697e254766d3e0f552f3b94b46831da62a08a9755122a5",
+      "input_schema_version": "input-v1",
+      "model_contract_fingerprint": "2c2788662c148ccae3f61d1f58e510cedcfcddb6b0b489878ec8d7ebd6f1c08e",
+      "singleton": 1,
+      "strategy_config": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "strategy_identity": "prepared-grid/v1",
+      "study_definition_fingerprint": "591642b0a3fd93e5b1ced08a0ecd15d5e1669cb02394b4212fd011bbc6a41399",
+      "study_id": "20260913-magnet-design-transfer-baseline"
+    },
+    "note": "Separate one-point preflight execution, not a study arm or cross-fingerprint comparison.",
+    "path": "results/baseline/store.sqlite"
+  },
+  "snapshot_schema_version": "1",
+  "stores": [
+    {
+      "compatibility_tuple": {
+        "evidence_schema_version": "v3",
+        "executable_fingerprint": "8ff5bb7c3d71f235be697e254766d3e0f552f3b94b46831da62a08a9755122a5",
+        "input_schema_version": "input-v1",
+        "model_contract_fingerprint": "2c2788662c148ccae3f61d1f58e510cedcfcddb6b0b489878ec8d7ebd6f1c08e",
+        "singleton": 1,
+        "strategy_config": "3738b3e0b43801a29d81e808062bbb9435782dd24b9575c2225c68e7605adbda",
+        "strategy_identity": "prepared-grid/v1",
+        "study_definition_fingerprint": "bf366f0e384629348a06385db7e972e10be3945b1a24e87594182af1dd2aa97a",
+        "study_id": "20260913-magnet-design-transfer"
+      },
+      "path": "results/grid/store.sqlite",
+      "store_id": "grid"
+    }
+  ],
+  "study_id": "20260913-magnet-design-transfer",
+  "teax": {
+    "era_pin": null,
+    "revision": "8d877460ac4f6f264561d916e40c1708adb13397"
+  },
+  "tools": [
+    {
+      "path": "scripts/study/indicators.py",
+      "source_digest": {
+        "digest": "55509c0ee55e03411acb8d0007554396ace3cfe9e66b27f94c121023c9aa25b9",
+        "files": [
+          {
+            "path": "scripts/study/indicators.py",
+            "sha256": "a1035fa2fdc505d7478039bc05e0e1eb2dab156f08d8ad7cac26d21d4ac4e8a0"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/schemas/axis_declaration.v1.schema.json",
+            "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+          },
+          {
+            "path": "scripts/study/schemas/indicators.v1.schema.json",
+            "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+          },
+          {
+            "path": "scripts/study/schemas/study_package_manifest.v1.schema.json",
+            "sha256": "5fd44712cd032647df701a24f237f2dda7ccd75c2f101a5c6244c9b6bca47032"
+          }
+        ],
+        "recipe": "tool-source-digest/v1"
+      }
+    },
+    {
+      "path": "scripts/study/preflight.py",
+      "source_digest": {
+        "digest": "fee08e143c556b0ea0bd7d32035257283220f8f671b3b2f2aa52ecf8a3c92681",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/preflight.py",
+            "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+          },
+          {
+            "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+            "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+            "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+          }
+        ],
+        "recipe": "tool-source-digest/v1"
+      }
+    },
+    {
+      "path": "scripts/study/verify.py",
+      "source_digest": {
+        "digest": "a7e8ee5802b778bc11507571a03856203af9d90a64a9da5fa1db1646cf1fff2d",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+            "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+          },
+          {
+            "path": "scripts/study/verify.py",
+            "sha256": "4cf1fb8faf9459a0522dea39116a772b4b5067288552ea4fdcf4741908bca77e"
+          }
+        ],
+        "recipe": "tool-source-digest/v1"
+      }
+    },
+    {
+      "path": "exploration/stellarator_e2e/studies/20260913-magnet-design-transfer/analyze_results.py",
+      "source_digest": {
+        "digest": "237c18bcc4f461dd98c3eec732b119e437b751101e07909d373fd31684150ab5",
+        "files": [
+          {
+            "path": "exploration/stellarator_e2e/studies/20260913-magnet-design-transfer/study_tools.py",
+            "sha256": "4bb81c5d0b009ee584fc1a1fe17dd233cc747020fbcdb19e17f08dfedaa94224"
+          },
+          {
+            "path": "exploration/stellarator_e2e/studies/20260913-magnet-design-transfer/analyze_results.py",
+            "sha256": "23510f1cabe4c6cdc4b547abea4154cdad65c7d5c9eea363fb0c7623f778bf4d"
+          },
+          {
+            "path": "exploration/stellarator_e2e/studies/20260913-magnet-design-transfer/freeze_snapshot.py",
+            "sha256": "af1982dd89a22993c6df1e785197331dc8011ab84ff681d2d9a9e1ea57533b50"
+          }
+        ],
+        "recipe": "tool-source-digest/v1"
+      }
+    },
+    {
+      "path": "context/teax/cli.py",
+      "source_digest": {
+        "digest": "72eeb8c628c8eb4156c9a514b4947c6c8f18eba6e0799134346a285e5be37481",
+        "files": [
+          {
+            "path": "context/teax/cli.py",
+            "sha256": "b9e739c05b186fc45de9b97a41a1a63fcf1e76d9ec56718bcc7f57c9843e5b06"
+          },
+          {
+            "path": "context/teax/config.py",
+            "sha256": "2db4535c171b2d694dd734afae9e1bf82b3abb40f4a75a3dea8fe86f54b69ac0"
+          },
+          {
+            "path": "context/teax/definition.py",
+            "sha256": "bb4231cb872d66f61427483ef85a7283f15a8d4e513126c32df73fb27a53e6fb"
+          },
+          {
+            "path": "context/teax/model_contract.py",
+            "sha256": "7c35822c86044b7a1030dd165d4d8db4fdf708fdb7e2a033a93c893618bbb62b"
+          },
+          {
+            "path": "context/teax/policy.py",
+            "sha256": "48ff285374fd0dd52f21647a15c906132ca9c2147cf2227e53a47175582ffb67"
+          },
+          {
+            "path": "context/teax/query.py",
+            "sha256": "b2316205c49d5956dddcff5481a178672742b957042ef0741d868629c67539c2"
+          },
+          {
+            "path": "context/teax/runner.py",
+            "sha256": "6bb02c4005d8879438bd7c13ed19549a53c7e9e1f1831ef71fcc2d9550217415"
+          },
+          {
+            "path": "context/teax/store.py",
+            "sha256": "a4241a8bb6315a6af651b1578502d6343ca21367e3b843db80955d075077b6db"
+          },
+          {
+            "path": "context/teax/strategy.py",
+            "sha256": "8269032e6121346faf539251621b410d9005958c10f09c5dc4186fb487b99a5a"
+          }
+        ],
+        "recipe": "tool-source-digest/v1"
+      }
+    }
+  ]
+}

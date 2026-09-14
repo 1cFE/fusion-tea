@@ -1,0 +1,953 @@
+{
+  "axes": {
+    "stellarator_09__stellaris__magnet__coil__I_coil": {
+      "endpoint_percent_changes": {
+        "stellarator_09__stellaris__lcoe_calc__lcoe": {
+          "max": 5.715461338533068,
+          "min": -28.98434059862669
+        },
+        "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost": {
+          "max": 22.030732938705366,
+          "min": 21.76153910572034
+        },
+        "stellarator_09__stellaris__magnet__peak_field_calc__B_peak": {
+          "max": 21.428571428571487,
+          "min": 21.42857142857144
+        },
+        "stellarator_09__stellaris__magnet__winding_procurement__cost": {
+          "max": 21.42857142857144,
+          "min": 21.428571428571395
+        },
+        "stellarator_09__stellaris__magnet__winding_procurement__winding_fabrication_cost": {
+          "max": 21.42857142857144,
+          "min": 21.428571428571395
+        },
+        "stellarator_09__stellaris__magnet__wp_sizing__wp_side": {
+          "max": 10.19463300386796,
+          "min": 10.194633003867937
+        },
+        "stellarator_09__stellaris__magnet__wp_stress__sigma_wp": {
+          "max": 33.80776864755401,
+          "min": 33.80776864755395
+        },
+        "stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack": {
+          "max": 21.428571428571487,
+          "min": 21.428571428571395
+        }
+      },
+      "invariants_checked": [],
+      "matched_groups": 36,
+      "violation_counts_by_value": {
+        "14000000.0": {
+          "stellarator_09__stellaris__beta_ok__82b78aad420730d5": 0,
+          "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": 4,
+          "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": 0,
+          "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": 0,
+          "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": 24,
+          "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": 0,
+          "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": 0,
+          "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": 0,
+          "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": 0,
+          "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": 20,
+          "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": 0,
+          "stellarator_09__stellaris__net_positive__484521d56c02667a": 0,
+          "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": 10,
+          "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": 4,
+          "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": 24,
+          "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": 0,
+          "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": 24,
+          "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": 0
+        },
+        "15400000.0": {
+          "stellarator_09__stellaris__beta_ok__82b78aad420730d5": 0,
+          "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": 8,
+          "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": 0,
+          "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": 0,
+          "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": 24,
+          "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": 0,
+          "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": 0,
+          "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": 0,
+          "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": 0,
+          "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": 16,
+          "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": 0,
+          "stellarator_09__stellaris__net_positive__484521d56c02667a": 0,
+          "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": 16,
+          "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": 0,
+          "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": 16,
+          "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": 0,
+          "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": 12,
+          "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": 2
+        },
+        "17000000.0": {
+          "stellarator_09__stellaris__beta_ok__82b78aad420730d5": 0,
+          "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": 16,
+          "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": 0,
+          "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": 0,
+          "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": 12,
+          "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": 0,
+          "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": 0,
+          "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": 0,
+          "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": 0,
+          "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": 8,
+          "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": 0,
+          "stellarator_09__stellaris__net_positive__484521d56c02667a": 0,
+          "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": 22,
+          "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": 0,
+          "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": 12,
+          "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": 0,
+          "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": 0,
+          "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": 14
+        }
+      }
+    },
+    "stellarator_09__stellaris__magnet__winding_pack__B_max": {
+      "endpoint_percent_changes": {
+        "stellarator_09__stellaris__lcoe_calc__lcoe": {
+          "max": 3.881624933083949,
+          "min": 2.370975422636179
+        },
+        "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost": {
+          "max": 13.112251286425902,
+          "min": 12.830705034251032
+        },
+        "stellarator_09__stellaris__magnet__peak_field_calc__B_peak": {
+          "max": 0.0,
+          "min": 0.0
+        },
+        "stellarator_09__stellaris__magnet__winding_procurement__cost": {
+          "max": 13.476161652581187,
+          "min": 13.476161652581165
+        },
+        "stellarator_09__stellaris__magnet__winding_procurement__winding_fabrication_cost": {
+          "max": 0.0,
+          "min": 0.0
+        },
+        "stellarator_09__stellaris__magnet__wp_sizing__wp_side": {
+          "max": 12.934693545685573,
+          "min": 12.93469354568555
+        },
+        "stellarator_09__stellaris__magnet__wp_stress__sigma_wp": {
+          "max": -11.453250670444381,
+          "min": -11.453250670444415
+        },
+        "stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack": {
+          "max": 27.54245006257916,
+          "min": 27.542450062579093
+        }
+      },
+      "invariants_checked": [
+        "stellarator_09__stellaris__magnet__field_calc__B_axis",
+        "stellarator_09__stellaris__magnet__peak_field_calc__B_peak",
+        "stellarator_09__stellaris__magnet__stored_energy__W_mag",
+        "stellarator_09__stellaris__magnet__casing_mass__m_casing",
+        "stellarator_09__stellaris__magnet__winding_procurement__conductor_length",
+        "stellarator_09__stellaris__magnet__winding_procurement__winding_fabrication_cost",
+        "stellarator_09__stellaris__magnet__winding_pack_cost__cost",
+        "stellarator_09__stellaris__magnet__magnet_cost__capital_cost"
+      ],
+      "matched_groups": 27,
+      "violation_counts_by_value": {
+        "20.0": {
+          "stellarator_09__stellaris__beta_ok__82b78aad420730d5": 0,
+          "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": 7,
+          "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": 0,
+          "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": 0,
+          "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": 15,
+          "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": 0,
+          "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": 0,
+          "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": 0,
+          "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": 0,
+          "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": 11,
+          "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": 0,
+          "stellarator_09__stellaris__net_positive__484521d56c02667a": 0,
+          "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": 25,
+          "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": 1,
+          "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": 13,
+          "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": 0,
+          "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": 9,
+          "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": 7
+        },
+        "24.9": {
+          "stellarator_09__stellaris__beta_ok__82b78aad420730d5": 0,
+          "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": 7,
+          "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": 0,
+          "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": 0,
+          "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": 15,
+          "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": 0,
+          "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": 0,
+          "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": 0,
+          "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": 0,
+          "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": 11,
+          "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": 0,
+          "stellarator_09__stellaris__net_positive__484521d56c02667a": 0,
+          "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": 13,
+          "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": 1,
+          "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": 13,
+          "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": 0,
+          "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": 9,
+          "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": 3
+        },
+        "27.5": {
+          "stellarator_09__stellaris__beta_ok__82b78aad420730d5": 0,
+          "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": 7,
+          "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": 0,
+          "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": 0,
+          "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": 15,
+          "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": 0,
+          "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": 0,
+          "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": 0,
+          "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": 0,
+          "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": 11,
+          "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": 0,
+          "stellarator_09__stellaris__net_positive__484521d56c02667a": 0,
+          "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": 7,
+          "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": 1,
+          "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": 13,
+          "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": 0,
+          "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": 9,
+          "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": 3
+        },
+        "30.0": {
+          "stellarator_09__stellaris__beta_ok__82b78aad420730d5": 0,
+          "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": 7,
+          "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": 0,
+          "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": 0,
+          "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": 15,
+          "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": 0,
+          "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": 0,
+          "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": 0,
+          "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": 0,
+          "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": 11,
+          "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": 0,
+          "stellarator_09__stellaris__net_positive__484521d56c02667a": 0,
+          "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": 3,
+          "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": 1,
+          "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": 13,
+          "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": 0,
+          "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": 9,
+          "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": 3
+        }
+      }
+    },
+    "stellarator_09__stellaris__plasma__R": {
+      "endpoint_percent_changes": {
+        "stellarator_09__stellaris__lcoe_calc__lcoe": {
+          "max": 53.54838488661817,
+          "min": 4.048289945333994
+        },
+        "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost": {
+          "max": 20.982243765538545,
+          "min": 20.463903316525368
+        },
+        "stellarator_09__stellaris__magnet__peak_field_calc__B_peak": {
+          "max": -23.196347031963448,
+          "min": -23.76052385406925
+        },
+        "stellarator_09__stellaris__magnet__winding_procurement__cost": {
+          "max": 22.222222222222253,
+          "min": 22.222222222222232
+        },
+        "stellarator_09__stellaris__magnet__winding_procurement__winding_fabrication_cost": {
+          "max": 22.222222222222253,
+          "min": 22.222222222222232
+        },
+        "stellarator_09__stellaris__magnet__wp_sizing__wp_side": {
+          "max": 0.0,
+          "min": 0.0
+        },
+        "stellarator_09__stellaris__magnet__wp_stress__sigma_wp": {
+          "max": -23.196347031963438,
+          "min": -23.76052385406925
+        },
+        "stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack": {
+          "max": 22.222222222222253,
+          "min": 22.22222222222221
+        }
+      },
+      "invariants_checked": [],
+      "matched_groups": 36,
+      "violation_counts_by_value": {
+        "11.43": {
+          "stellarator_09__stellaris__beta_ok__82b78aad420730d5": 0,
+          "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": 16,
+          "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": 0,
+          "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": 0,
+          "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": 0,
+          "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": 0,
+          "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": 0,
+          "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": 0,
+          "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": 0,
+          "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": 0,
+          "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": 0,
+          "stellarator_09__stellaris__net_positive__484521d56c02667a": 0,
+          "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": 27,
+          "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": 0,
+          "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": 8,
+          "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": 0,
+          "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": 0,
+          "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": 14
+        },
+        "12.7": {
+          "stellarator_09__stellaris__beta_ok__82b78aad420730d5": 0,
+          "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": 8,
+          "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": 0,
+          "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": 0,
+          "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": 24,
+          "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": 0,
+          "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": 0,
+          "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": 0,
+          "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": 0,
+          "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": 12,
+          "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": 0,
+          "stellarator_09__stellaris__net_positive__484521d56c02667a": 0,
+          "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": 14,
+          "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": 0,
+          "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": 16,
+          "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": 0,
+          "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": 12,
+          "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": 2
+        },
+        "13.97": {
+          "stellarator_09__stellaris__beta_ok__82b78aad420730d5": 0,
+          "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": 4,
+          "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": 0,
+          "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": 0,
+          "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": 36,
+          "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": 0,
+          "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": 0,
+          "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": 0,
+          "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": 0,
+          "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": 32,
+          "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": 0,
+          "stellarator_09__stellaris__net_positive__484521d56c02667a": 0,
+          "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": 7,
+          "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": 4,
+          "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": 28,
+          "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": 0,
+          "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": 24,
+          "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": 0
+        }
+      }
+    },
+    "stellarator_09__stellaris__plasma__a": {
+      "endpoint_percent_changes": {
+        "stellarator_09__stellaris__lcoe_calc__lcoe": {
+          "max": -14.134683800741444,
+          "min": -35.217289860227055
+        },
+        "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost": {
+          "max": 0.5823457088085737,
+          "min": 0.3282684974581729
+        },
+        "stellarator_09__stellaris__magnet__peak_field_calc__B_peak": {
+          "max": 3.1901840490797806,
+          "min": 2.4321796071094415
+        },
+        "stellarator_09__stellaris__magnet__winding_procurement__cost": {
+          "max": 0.0,
+          "min": 0.0
+        },
+        "stellarator_09__stellaris__magnet__winding_procurement__winding_fabrication_cost": {
+          "max": 0.0,
+          "min": 0.0
+        },
+        "stellarator_09__stellaris__magnet__wp_sizing__wp_side": {
+          "max": 0.0,
+          "min": 0.0
+        },
+        "stellarator_09__stellaris__magnet__wp_stress__sigma_wp": {
+          "max": 3.190184049079803,
+          "min": 2.4321796071094193
+        },
+        "stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack": {
+          "max": 0.0,
+          "min": 0.0
+        }
+      },
+      "invariants_checked": [
+        "stellarator_09__stellaris__magnet__conductor_grade__quantity_factor",
+        "stellarator_09__stellaris__magnet__wp_sizing__wp_side",
+        "stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack",
+        "stellarator_09__stellaris__magnet__winding_procurement__tape_cost"
+      ],
+      "matched_groups": 36,
+      "violation_counts_by_value": {
+        "1.17": {
+          "stellarator_09__stellaris__beta_ok__82b78aad420730d5": 0,
+          "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": 0,
+          "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": 0,
+          "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": 0,
+          "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": 20,
+          "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": 0,
+          "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": 0,
+          "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": 0,
+          "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": 0,
+          "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": 8,
+          "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": 0,
+          "stellarator_09__stellaris__net_positive__484521d56c02667a": 0,
+          "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": 15,
+          "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": 4,
+          "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": 32,
+          "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": 0,
+          "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": 12,
+          "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": 4
+        },
+        "1.3": {
+          "stellarator_09__stellaris__beta_ok__82b78aad420730d5": 0,
+          "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": 4,
+          "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": 0,
+          "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": 0,
+          "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": 20,
+          "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": 0,
+          "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": 0,
+          "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": 0,
+          "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": 0,
+          "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": 16,
+          "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": 0,
+          "stellarator_09__stellaris__net_positive__484521d56c02667a": 0,
+          "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": 15,
+          "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": 0,
+          "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": 16,
+          "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": 0,
+          "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": 12,
+          "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": 6
+        },
+        "1.43": {
+          "stellarator_09__stellaris__beta_ok__82b78aad420730d5": 0,
+          "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": 24,
+          "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": 0,
+          "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": 0,
+          "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": 20,
+          "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": 0,
+          "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": 0,
+          "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": 0,
+          "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": 0,
+          "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": 20,
+          "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": 0,
+          "stellarator_09__stellaris__net_positive__484521d56c02667a": 0,
+          "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": 18,
+          "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": 0,
+          "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": 4,
+          "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": 0,
+          "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": 12,
+          "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": 6
+        }
+      }
+    }
+  },
+  "cases": 108,
+  "constraints": {
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": {
+      "counts": {
+        "satisfied": 108
+      },
+      "definition_qualified_name": "mfe_viability::'Beta Limit'",
+      "source_local_identity": "beta_ok",
+      "violated_cases": []
+    },
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": {
+      "counts": {
+        "satisfied": 80,
+        "violated": 28
+      },
+      "definition_qualified_name": "mfe_viability::'Burn Hold'",
+      "source_local_identity": "burn_hold_ok",
+      "violated_cases": [
+        "20260913-magnet-design-transfer:c0020",
+        "20260913-magnet-design-transfer:c0021",
+        "20260913-magnet-design-transfer:c0022",
+        "20260913-magnet-design-transfer:c0023",
+        "20260913-magnet-design-transfer:c0024",
+        "20260913-magnet-design-transfer:c0025",
+        "20260913-magnet-design-transfer:c0026",
+        "20260913-magnet-design-transfer:c0027",
+        "20260913-magnet-design-transfer:c0028",
+        "20260913-magnet-design-transfer:c0029",
+        "20260913-magnet-design-transfer:c0030",
+        "20260913-magnet-design-transfer:c0031",
+        "20260913-magnet-design-transfer:c0032",
+        "20260913-magnet-design-transfer:c0033",
+        "20260913-magnet-design-transfer:c0034",
+        "20260913-magnet-design-transfer:c0035",
+        "20260913-magnet-design-transfer:c0064",
+        "20260913-magnet-design-transfer:c0065",
+        "20260913-magnet-design-transfer:c0066",
+        "20260913-magnet-design-transfer:c0067",
+        "20260913-magnet-design-transfer:c0068",
+        "20260913-magnet-design-transfer:c0069",
+        "20260913-magnet-design-transfer:c0070",
+        "20260913-magnet-design-transfer:c0071",
+        "20260913-magnet-design-transfer:c0104",
+        "20260913-magnet-design-transfer:c0105",
+        "20260913-magnet-design-transfer:c0106",
+        "20260913-magnet-design-transfer:c0107"
+      ]
+    },
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": {
+      "counts": {
+        "satisfied": 108
+      },
+      "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+      "source_local_identity": "cond_strain_ok",
+      "violated_cases": []
+    },
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": {
+      "counts": {
+        "satisfied": 108
+      },
+      "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+      "source_local_identity": "cycle_domain_ok",
+      "violated_cases": []
+    },
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": {
+      "counts": {
+        "satisfied": 48,
+        "violated": 60
+      },
+      "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+      "source_local_identity": "divertor_heat_ok",
+      "violated_cases": [
+        "20260913-magnet-design-transfer:c0036",
+        "20260913-magnet-design-transfer:c0037",
+        "20260913-magnet-design-transfer:c0038",
+        "20260913-magnet-design-transfer:c0039",
+        "20260913-magnet-design-transfer:c0040",
+        "20260913-magnet-design-transfer:c0041",
+        "20260913-magnet-design-transfer:c0042",
+        "20260913-magnet-design-transfer:c0043",
+        "20260913-magnet-design-transfer:c0048",
+        "20260913-magnet-design-transfer:c0049",
+        "20260913-magnet-design-transfer:c0050",
+        "20260913-magnet-design-transfer:c0051",
+        "20260913-magnet-design-transfer:c0052",
+        "20260913-magnet-design-transfer:c0053",
+        "20260913-magnet-design-transfer:c0054",
+        "20260913-magnet-design-transfer:c0055",
+        "20260913-magnet-design-transfer:c0060",
+        "20260913-magnet-design-transfer:c0061",
+        "20260913-magnet-design-transfer:c0062",
+        "20260913-magnet-design-transfer:c0063",
+        "20260913-magnet-design-transfer:c0064",
+        "20260913-magnet-design-transfer:c0065",
+        "20260913-magnet-design-transfer:c0066",
+        "20260913-magnet-design-transfer:c0067",
+        "20260913-magnet-design-transfer:c0072",
+        "20260913-magnet-design-transfer:c0073",
+        "20260913-magnet-design-transfer:c0074",
+        "20260913-magnet-design-transfer:c0075",
+        "20260913-magnet-design-transfer:c0076",
+        "20260913-magnet-design-transfer:c0077",
+        "20260913-magnet-design-transfer:c0078",
+        "20260913-magnet-design-transfer:c0079",
+        "20260913-magnet-design-transfer:c0080",
+        "20260913-magnet-design-transfer:c0081",
+        "20260913-magnet-design-transfer:c0082",
+        "20260913-magnet-design-transfer:c0083",
+        "20260913-magnet-design-transfer:c0084",
+        "20260913-magnet-design-transfer:c0085",
+        "20260913-magnet-design-transfer:c0086",
+        "20260913-magnet-design-transfer:c0087",
+        "20260913-magnet-design-transfer:c0088",
+        "20260913-magnet-design-transfer:c0089",
+        "20260913-magnet-design-transfer:c0090",
+        "20260913-magnet-design-transfer:c0091",
+        "20260913-magnet-design-transfer:c0092",
+        "20260913-magnet-design-transfer:c0093",
+        "20260913-magnet-design-transfer:c0094",
+        "20260913-magnet-design-transfer:c0095",
+        "20260913-magnet-design-transfer:c0096",
+        "20260913-magnet-design-transfer:c0097",
+        "20260913-magnet-design-transfer:c0098",
+        "20260913-magnet-design-transfer:c0099",
+        "20260913-magnet-design-transfer:c0100",
+        "20260913-magnet-design-transfer:c0101",
+        "20260913-magnet-design-transfer:c0102",
+        "20260913-magnet-design-transfer:c0103",
+        "20260913-magnet-design-transfer:c0104",
+        "20260913-magnet-design-transfer:c0105",
+        "20260913-magnet-design-transfer:c0106",
+        "20260913-magnet-design-transfer:c0107"
+      ]
+    },
+    "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": {
+      "counts": {
+        "satisfied": 108
+      },
+      "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Positive'",
+      "source_local_identity": "heating_couple_positive_ok",
+      "violated_cases": []
+    },
+    "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": {
+      "counts": {
+        "satisfied": 108
+      },
+      "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
+      "source_local_identity": "heating_couple_upper_ok",
+      "violated_cases": []
+    },
+    "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": {
+      "counts": {
+        "satisfied": 108
+      },
+      "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Positive'",
+      "source_local_identity": "heating_source_positive_ok",
+      "violated_cases": []
+    },
+    "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": {
+      "counts": {
+        "satisfied": 108
+      },
+      "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
+      "source_local_identity": "heating_source_upper_ok",
+      "violated_cases": []
+    },
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": {
+      "counts": {
+        "satisfied": 64,
+        "violated": 44
+      },
+      "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+      "source_local_identity": "loop_capacity_ok",
+      "violated_cases": [
+        "20260913-magnet-design-transfer:c0048",
+        "20260913-magnet-design-transfer:c0049",
+        "20260913-magnet-design-transfer:c0050",
+        "20260913-magnet-design-transfer:c0051",
+        "20260913-magnet-design-transfer:c0060",
+        "20260913-magnet-design-transfer:c0061",
+        "20260913-magnet-design-transfer:c0062",
+        "20260913-magnet-design-transfer:c0063",
+        "20260913-magnet-design-transfer:c0064",
+        "20260913-magnet-design-transfer:c0065",
+        "20260913-magnet-design-transfer:c0066",
+        "20260913-magnet-design-transfer:c0067",
+        "20260913-magnet-design-transfer:c0072",
+        "20260913-magnet-design-transfer:c0073",
+        "20260913-magnet-design-transfer:c0074",
+        "20260913-magnet-design-transfer:c0075",
+        "20260913-magnet-design-transfer:c0076",
+        "20260913-magnet-design-transfer:c0077",
+        "20260913-magnet-design-transfer:c0078",
+        "20260913-magnet-design-transfer:c0079",
+        "20260913-magnet-design-transfer:c0084",
+        "20260913-magnet-design-transfer:c0085",
+        "20260913-magnet-design-transfer:c0086",
+        "20260913-magnet-design-transfer:c0087",
+        "20260913-magnet-design-transfer:c0088",
+        "20260913-magnet-design-transfer:c0089",
+        "20260913-magnet-design-transfer:c0090",
+        "20260913-magnet-design-transfer:c0091",
+        "20260913-magnet-design-transfer:c0092",
+        "20260913-magnet-design-transfer:c0093",
+        "20260913-magnet-design-transfer:c0094",
+        "20260913-magnet-design-transfer:c0095",
+        "20260913-magnet-design-transfer:c0096",
+        "20260913-magnet-design-transfer:c0097",
+        "20260913-magnet-design-transfer:c0098",
+        "20260913-magnet-design-transfer:c0099",
+        "20260913-magnet-design-transfer:c0100",
+        "20260913-magnet-design-transfer:c0101",
+        "20260913-magnet-design-transfer:c0102",
+        "20260913-magnet-design-transfer:c0103",
+        "20260913-magnet-design-transfer:c0104",
+        "20260913-magnet-design-transfer:c0105",
+        "20260913-magnet-design-transfer:c0106",
+        "20260913-magnet-design-transfer:c0107"
+      ]
+    },
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": {
+      "counts": {
+        "satisfied": 108
+      },
+      "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+      "source_local_identity": "loop_pressure_ok",
+      "violated_cases": []
+    },
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": {
+      "counts": {
+        "satisfied": 108
+      },
+      "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+      "source_local_identity": "net_positive",
+      "violated_cases": []
+    },
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": {
+      "counts": {
+        "satisfied": 60,
+        "violated": 48
+      },
+      "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+      "source_local_identity": "peak_field_ok",
+      "violated_cases": [
+        "20260913-magnet-design-transfer:c0000",
+        "20260913-magnet-design-transfer:c0001",
+        "20260913-magnet-design-transfer:c0004",
+        "20260913-magnet-design-transfer:c0005",
+        "20260913-magnet-design-transfer:c0006",
+        "20260913-magnet-design-transfer:c0008",
+        "20260913-magnet-design-transfer:c0009",
+        "20260913-magnet-design-transfer:c0010",
+        "20260913-magnet-design-transfer:c0011",
+        "20260913-magnet-design-transfer:c0012",
+        "20260913-magnet-design-transfer:c0013",
+        "20260913-magnet-design-transfer:c0016",
+        "20260913-magnet-design-transfer:c0017",
+        "20260913-magnet-design-transfer:c0018",
+        "20260913-magnet-design-transfer:c0020",
+        "20260913-magnet-design-transfer:c0021",
+        "20260913-magnet-design-transfer:c0022",
+        "20260913-magnet-design-transfer:c0023",
+        "20260913-magnet-design-transfer:c0024",
+        "20260913-magnet-design-transfer:c0025",
+        "20260913-magnet-design-transfer:c0028",
+        "20260913-magnet-design-transfer:c0029",
+        "20260913-magnet-design-transfer:c0030",
+        "20260913-magnet-design-transfer:c0032",
+        "20260913-magnet-design-transfer:c0033",
+        "20260913-magnet-design-transfer:c0034",
+        "20260913-magnet-design-transfer:c0035",
+        "20260913-magnet-design-transfer:c0036",
+        "20260913-magnet-design-transfer:c0040",
+        "20260913-magnet-design-transfer:c0044",
+        "20260913-magnet-design-transfer:c0045",
+        "20260913-magnet-design-transfer:c0048",
+        "20260913-magnet-design-transfer:c0052",
+        "20260913-magnet-design-transfer:c0056",
+        "20260913-magnet-design-transfer:c0057",
+        "20260913-magnet-design-transfer:c0060",
+        "20260913-magnet-design-transfer:c0064",
+        "20260913-magnet-design-transfer:c0065",
+        "20260913-magnet-design-transfer:c0068",
+        "20260913-magnet-design-transfer:c0069",
+        "20260913-magnet-design-transfer:c0070",
+        "20260913-magnet-design-transfer:c0076",
+        "20260913-magnet-design-transfer:c0080",
+        "20260913-magnet-design-transfer:c0088",
+        "20260913-magnet-design-transfer:c0092",
+        "20260913-magnet-design-transfer:c0096",
+        "20260913-magnet-design-transfer:c0100",
+        "20260913-magnet-design-transfer:c0104"
+      ]
+    },
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": {
+      "counts": {
+        "satisfied": 104,
+        "violated": 4
+      },
+      "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+      "source_local_identity": "recirc_ok",
+      "violated_cases": [
+        "20260913-magnet-design-transfer:c0072",
+        "20260913-magnet-design-transfer:c0073",
+        "20260913-magnet-design-transfer:c0074",
+        "20260913-magnet-design-transfer:c0075"
+      ]
+    },
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": {
+      "counts": {
+        "satisfied": 56,
+        "violated": 52
+      },
+      "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
+      "source_local_identity": "sustainment_ok",
+      "violated_cases": [
+        "20260913-magnet-design-transfer:c0000",
+        "20260913-magnet-design-transfer:c0001",
+        "20260913-magnet-design-transfer:c0002",
+        "20260913-magnet-design-transfer:c0003",
+        "20260913-magnet-design-transfer:c0004",
+        "20260913-magnet-design-transfer:c0005",
+        "20260913-magnet-design-transfer:c0006",
+        "20260913-magnet-design-transfer:c0007",
+        "20260913-magnet-design-transfer:c0036",
+        "20260913-magnet-design-transfer:c0037",
+        "20260913-magnet-design-transfer:c0038",
+        "20260913-magnet-design-transfer:c0039",
+        "20260913-magnet-design-transfer:c0040",
+        "20260913-magnet-design-transfer:c0041",
+        "20260913-magnet-design-transfer:c0042",
+        "20260913-magnet-design-transfer:c0043",
+        "20260913-magnet-design-transfer:c0044",
+        "20260913-magnet-design-transfer:c0045",
+        "20260913-magnet-design-transfer:c0046",
+        "20260913-magnet-design-transfer:c0047",
+        "20260913-magnet-design-transfer:c0048",
+        "20260913-magnet-design-transfer:c0049",
+        "20260913-magnet-design-transfer:c0050",
+        "20260913-magnet-design-transfer:c0051",
+        "20260913-magnet-design-transfer:c0072",
+        "20260913-magnet-design-transfer:c0073",
+        "20260913-magnet-design-transfer:c0074",
+        "20260913-magnet-design-transfer:c0075",
+        "20260913-magnet-design-transfer:c0076",
+        "20260913-magnet-design-transfer:c0077",
+        "20260913-magnet-design-transfer:c0078",
+        "20260913-magnet-design-transfer:c0079",
+        "20260913-magnet-design-transfer:c0080",
+        "20260913-magnet-design-transfer:c0081",
+        "20260913-magnet-design-transfer:c0082",
+        "20260913-magnet-design-transfer:c0083",
+        "20260913-magnet-design-transfer:c0084",
+        "20260913-magnet-design-transfer:c0085",
+        "20260913-magnet-design-transfer:c0086",
+        "20260913-magnet-design-transfer:c0087",
+        "20260913-magnet-design-transfer:c0088",
+        "20260913-magnet-design-transfer:c0089",
+        "20260913-magnet-design-transfer:c0090",
+        "20260913-magnet-design-transfer:c0091",
+        "20260913-magnet-design-transfer:c0092",
+        "20260913-magnet-design-transfer:c0093",
+        "20260913-magnet-design-transfer:c0094",
+        "20260913-magnet-design-transfer:c0095",
+        "20260913-magnet-design-transfer:c0096",
+        "20260913-magnet-design-transfer:c0097",
+        "20260913-magnet-design-transfer:c0098",
+        "20260913-magnet-design-transfer:c0099"
+      ]
+    },
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": {
+      "counts": {
+        "satisfied": 108
+      },
+      "definition_qualified_name": "mfe_viability::'TBR Floor'",
+      "source_local_identity": "tbr_ok",
+      "violated_cases": []
+    },
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": {
+      "counts": {
+        "satisfied": 72,
+        "violated": 36
+      },
+      "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+      "source_local_identity": "wall_load_ok",
+      "violated_cases": [
+        "20260913-magnet-design-transfer:c0036",
+        "20260913-magnet-design-transfer:c0037",
+        "20260913-magnet-design-transfer:c0038",
+        "20260913-magnet-design-transfer:c0039",
+        "20260913-magnet-design-transfer:c0048",
+        "20260913-magnet-design-transfer:c0049",
+        "20260913-magnet-design-transfer:c0050",
+        "20260913-magnet-design-transfer:c0051",
+        "20260913-magnet-design-transfer:c0060",
+        "20260913-magnet-design-transfer:c0061",
+        "20260913-magnet-design-transfer:c0062",
+        "20260913-magnet-design-transfer:c0063",
+        "20260913-magnet-design-transfer:c0072",
+        "20260913-magnet-design-transfer:c0073",
+        "20260913-magnet-design-transfer:c0074",
+        "20260913-magnet-design-transfer:c0075",
+        "20260913-magnet-design-transfer:c0076",
+        "20260913-magnet-design-transfer:c0077",
+        "20260913-magnet-design-transfer:c0078",
+        "20260913-magnet-design-transfer:c0079",
+        "20260913-magnet-design-transfer:c0084",
+        "20260913-magnet-design-transfer:c0085",
+        "20260913-magnet-design-transfer:c0086",
+        "20260913-magnet-design-transfer:c0087",
+        "20260913-magnet-design-transfer:c0088",
+        "20260913-magnet-design-transfer:c0089",
+        "20260913-magnet-design-transfer:c0090",
+        "20260913-magnet-design-transfer:c0091",
+        "20260913-magnet-design-transfer:c0096",
+        "20260913-magnet-design-transfer:c0097",
+        "20260913-magnet-design-transfer:c0098",
+        "20260913-magnet-design-transfer:c0099",
+        "20260913-magnet-design-transfer:c0100",
+        "20260913-magnet-design-transfer:c0101",
+        "20260913-magnet-design-transfer:c0102",
+        "20260913-magnet-design-transfer:c0103"
+      ]
+    },
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": {
+      "counts": {
+        "satisfied": 92,
+        "violated": 16
+      },
+      "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+      "source_local_identity": "wp_stress_ok",
+      "violated_cases": [
+        "20260913-magnet-design-transfer:c0008",
+        "20260913-magnet-design-transfer:c0009",
+        "20260913-magnet-design-transfer:c0010",
+        "20260913-magnet-design-transfer:c0011",
+        "20260913-magnet-design-transfer:c0016",
+        "20260913-magnet-design-transfer:c0020",
+        "20260913-magnet-design-transfer:c0021",
+        "20260913-magnet-design-transfer:c0022",
+        "20260913-magnet-design-transfer:c0023",
+        "20260913-magnet-design-transfer:c0028",
+        "20260913-magnet-design-transfer:c0032",
+        "20260913-magnet-design-transfer:c0033",
+        "20260913-magnet-design-transfer:c0034",
+        "20260913-magnet-design-transfer:c0035",
+        "20260913-magnet-design-transfer:c0056",
+        "20260913-magnet-design-transfer:c0068"
+      ]
+    }
+  },
+  "extremes": {
+    "stellarator_09__stellaris__lcoe_calc__lcoe": {
+      "max": 244.9761615585503,
+      "max_case": "20260913-magnet-design-transfer:c0075",
+      "min": 123.634303490505,
+      "min_case": "20260913-magnet-design-transfer:c0024"
+    },
+    "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost": {
+      "max": 2087447224.7422917,
+      "max_case": "20260913-magnet-design-transfer:c0107",
+      "min": 1249882746.1498766,
+      "min_case": "20260913-magnet-design-transfer:c0000"
+    },
+    "stellarator_09__stellaris__magnet__peak_field_calc__B_peak": {
+      "max": 32.20870846944466,
+      "max_case": "20260913-magnet-design-transfer:c0032",
+      "min": 19.742216687422157,
+      "min_case": "20260913-magnet-design-transfer:c0072"
+    },
+    "stellarator_09__stellaris__magnet__winding_procurement__cost": {
+      "max": 2024650828.289017,
+      "max_case": "20260913-magnet-design-transfer:c0083",
+      "min": 1202193669.6025376,
+      "min_case": "20260913-magnet-design-transfer:c0000"
+    },
+    "stellarator_09__stellaris__magnet__winding_procurement__winding_fabrication_cost": {
+      "max": 911218325.587496,
+      "max_case": "20260913-magnet-design-transfer:c0080",
+      "min": 613975984.0856924,
+      "min_case": "20260913-magnet-design-transfer:c0000"
+    },
+    "stellarator_09__stellaris__magnet__wp_sizing__wp_side": {
+      "max": 0.3999845103470946,
+      "max_case": "20260913-magnet-design-transfer:c0011",
+      "min": 0.3214070160038197,
+      "min_case": "20260913-magnet-design-transfer:c0000"
+    },
+    "stellarator_09__stellaris__magnet__wp_stress__sigma_wp": {
+      "max": 943413802.2404554,
+      "max_case": "20260913-magnet-design-transfer:c0032",
+      "min": 464661841.26942265,
+      "min_case": "20260913-magnet-design-transfer:c0075"
+    },
+    "stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack": {
+      "max": 185.43748920586853,
+      "max_case": "20260913-magnet-design-transfer:c0083",
+      "min": 97.96517565642819,
+      "min_case": "20260913-magnet-design-transfer:c0000"
+    }
+  },
+  "fully_satisfied_cases": [
+    "20260913-magnet-design-transfer:c0014",
+    "20260913-magnet-design-transfer:c0015",
+    "20260913-magnet-design-transfer:c0019",
+    "20260913-magnet-design-transfer:c0058",
+    "20260913-magnet-design-transfer:c0059"
+  ],
+  "headlines": {
+    "satisfied": 5,
+    "violated": 103
+  },
+  "states": {
+    "completed": 108
+  }
+}

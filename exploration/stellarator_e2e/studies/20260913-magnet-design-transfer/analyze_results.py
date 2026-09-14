@@ -1,5 +1,6 @@
 """Read completed CLI evidence; check predeclared identities and export recoverable facts."""
 import collections
+import csv
 import itertools
 import json
 import math
@@ -112,6 +113,15 @@ def main():
     extremes={channel:dict(min=min(r['outputs'][channel] for r in rows),max=max(r['outputs'][channel] for r in rows),
         min_case=min(rows,key=lambda r:r['outputs'][channel])['candidate_id'],max_case=max(rows,key=lambda r:r['outputs'][channel])['candidate_id']) for channel in observed}
     dump('results/cases.json',rows)
+    # Public table retains every native scalar and every qualified verdict. The
+    # catalog alongside it supplies each constraint's source-local identity.
+    fields=['arm_id','candidate_id','state','headline']+[k for k,_ in GRID]+sorted(all_channels)+sorted(cats)
+    with (HERE/'results/points.csv').open('w',newline='') as stream:
+        writer=csv.DictWriter(stream,fieldnames=fields,lineterminator='\n')
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(dict(arm_id='arm-transfer',candidate_id=row['candidate_id'],state=row['state'],headline=row['headline'])
+                            | {k:row['inputs'][k] for k,_ in GRID} | row['outputs'] | row['verdicts'])
     dump('results/store-compatibility.json',compatibility)
     dump('results/identity-checks.json',dict(outcome='PASS',checks=checks,matched_axis_checks=axes))
     dump('results/exhaustive-oracle.json',dict(outcome='PASS',cases=108,channels_per_case=161,numeric_comparisons=108*161,
