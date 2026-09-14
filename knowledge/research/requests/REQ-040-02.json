@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-040-02",
+  "question": "What clean primary evidence supports separating non-tape material procurement from fabrication in superconducting winding-pack cost, and what defensible bounded accounting model can replace an unsplit conductor-cost multiplier when no procurement split is published?",
+  "consumer": "WI-040",
+  "gap_type": "model_form",
+  "priority": "P1",
+  "where_to_look": ["PROCESS superconducting TF coil material manufacturing cost documentation", "UKAEA PROCESS superconducting coil costing implementation", "ITER superconducting magnet conductor procurement manufacturing cost", "NCSX modular coil manufacturing cost"],
+  "limits": {"max_searches": 8, "max_captures": 3}
+}

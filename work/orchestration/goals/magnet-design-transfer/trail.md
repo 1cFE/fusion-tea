@@ -60,3 +60,26 @@ The coordinator changed the native spec's backlog-list provenance to `[INHERITED
 ### Owner direction — 2026-09-13
 
 [OWNER-VERBATIM] “you need to make your best judgements. if you don't have good data, run research. get to a place where you can make the judgement. you are supposed to run autonomously”, followed by “ok! go!!”. The owner releases the Round 1 technical-decision gate by delegating the judgment, not by choosing material fractions or an accounting formula. The agent will use the verified source composition and research the procurement/fabrication basis. Goal amendment records the delegation; a fresh reviewer supplies the next strategy. Round 1 stays closed.
+
+## Round 2 — reconcile-winding-pack-material-accounting
+
+### Strategy revision — 2026-09-13
+
+- **Approach:** [AGENT] Establish a defensible procurement/fabrication boundary and material parameter basis through admissible research, then implement and independently audit WI-040 against that basis. Use Table 7's verified composition, with unquantified insulation disclosed, under the owner's delegated technical judgment (`goal.md` amendment at `e7b78097`). [OWNER] WI-040 precedes WI-038.
+- **Assumptions:** The existing pack geometry can support material quantities, and research can support a cost treatment that identifies overlap and omissions in the inherited multiplier. These remain testable premises; material fractions alone establish neither inventory conditions nor prices.
+- **Abandonment conditions:** Evidence defeats a defensible mass-accounting treatment within the goal's scope, the comparison meaning changes, a remaining reserved gate binds, or a declared limit is reached. Ordinary source and technical uncertainty calls for research and documented judgment under the owner's delegation.
+- **Intended model increment:** Audited copper, solder, steel and helium quantities and costs tied to computed winding-pack volume, with conductor procurement, fabrication, casing and primary structure reconciled explicitly. Preserve the existing physical decomposition and operating-limit meanings.
+- **Intended study question:** At the reference point and over a declared geometry/current-density range, do pack volume, material quantities and magnet cost respond coherently, with accounting changes distinguished from inherited engineering limits?
+
+### T-002 scope
+
+- **Objective:** Establish a citable material parameter and procurement/fabrication basis sufficient to design WI-040.
+- **Why now:** Round 1 identified source and accounting uncertainty; the owner delegates technical judgment and directs research to resolve it.
+- **Scope:** REQ-040-01 material properties/prices and REQ-040-02 accounting forms; independent research may run in parallel because parameters and form can inform one another without shared model writes. Native source registry owns shared ingestion atomically; each worker owns its request/run and named report. Coordinator owns goal records and synthesis. No production implementation in this task.
+- **Inputs:** `goal.md` as amended; WI-040 spec/basis; two request files and deposited research prompts.
+- **Done when:** Registered evidence or bounded negatives support an explicit engineering accounting judgment with uncertainty, or establish a genuine strategy blocker.
+- **Stop when:** Native seam prerequisite, strategy blocker, remaining reserved gate or declared request limit. Missing precision alone is not a gate.
+
+### T-002 start — 2026-09-13
+
+Research seam · `knowledge/research/requests/REQ-040-01.json` and `REQ-040-02.json` · native research returns and material/accounting basis reports.
