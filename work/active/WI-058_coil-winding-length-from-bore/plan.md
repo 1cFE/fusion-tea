@@ -1,5 +1,5 @@
 ---
-Status: active
+Status: implemented — pending fresh audit
 Created: 2026-09-14
 Updated: 2026-09-14
 Related Artifacts:
@@ -90,7 +90,7 @@ Levels 1–3 after the model edits (done, phase 1); the baseline diff before any
 
 - [x] After commit B, `rm -rf .integration_workspace`; `tests/study` on the clean tree under `systemd-run --user` (`evidence/tests_study_first_run.txt`, 17 min): **4 failed, 965 passed, 1 skipped**. The four are this item's own drift in tests that compare the live contract or the seam to frozen JSON mappings carrying `k_coil` (the phase-4 grep missed them because the retired key sits in the evidence files, not the test text): `test_major_radius.py::test_exact_input_contract` (the entering mapping), `::test_current_radius_controls_match_frozen_model_and_independent_oracle` (the frozen R14 row expects the R-form length 27.559 m; the route point now binds `c_coil_ref = k_coil × 14` as the harness does), `test_primary_loop_consumers.py` and `test_winding_consumers.py::test_adapter_coverage_remains_exact` (the seam map). Each restated with a dated WI-058 comment, none patched to a value; focused re-run 4 passed. No pre-existing fail-closed case appeared in this run (the WI-057 landing's 20 red cases were resolved by the magnet-design-transfer closure before this item)
 - [x] **Commit C**: the four restated study tests, the audit brief, the first run's log, this record
-- [ ] The confirming full `tests/study` run of record on the committed tree; expected **0 failed, 969 passed, 1 skipped**; recorded here with commit D
+- [x] The confirming full `tests/study` run of record on the committed tree (`evidence/tests_study_run_of_record.txt`, 17 min): **969 passed, 1 skipped, 0 failed, 0 errors**. Commit D carries this record
 
 ---
 
@@ -148,6 +148,6 @@ The exact floats of record are in `prototype/proto_results.json` (the table roun
 | 2 | Twins identical; regeneration clean | phase 1 `cmp`/`diff -rq`; `evidence/regen_output_2.txt` `Preserved: 80, Regenerated: 0`, no backup, seal clean |
 | 3 | Baseline diff bit-identical, 18 verdicts, anchors green | `evidence/baseline_after/diff_vs_before.json` (0 of 177 differing; 0 verdict diffs); `run_stellaris_single_output.txt` ANCHORS GREEN |
 | 4 | Off-design at the predictions; oracle parity; R-invariance | `evidence/offdesign_points/results.json` (≤ 5.5e-16 relative on 19 predicted and 21 oracle channels per point; P3, P5 equal P0 exactly on the winding chain) |
-| 5 | Re-pinned by producers; batteries | snapshot, manifest, census (265), five fixtures + contract; `tests/models` 893 / 13; `tests/study` — phase 5 |
+| 5 | Re-pinned by producers; batteries | snapshot, manifest, census (265), five fixtures + contract; `tests/models` 893 / 13 / 0; `tests/study` 969 / 1 / 0 (`evidence/tests_study_run_of_record.txt`); `tests/model_viz` 14 inherited failures, identical at entry (surfaced) |
 | 6 | SV rows passing; trace rows | SV-102..104 `passing` (`modeling_project/VALIDATION_MATRIX.md`); `data/traceability_matrix.csv` two rows |
 | 7 | Fresh independent audit | `evidence/audit-prompt.md` deposited for the round agent's fresh session — pending |
