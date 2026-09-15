@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-TAPE-001",
+  "request_key": "4bdd8d61014aec3a89c84e6722bf1227e4677ffbbbdb7108794e6d1b3424b516",
+  "request_path": "knowledge/research/requests/REQ-TAPE-001.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-15T16:04:22.939725+00:00",
+  "override_reason": null
+}
