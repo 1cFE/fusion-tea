@@ -2,6 +2,8 @@
 
 from tests.models.current_mfe_regressions import WI060_PARAMETERS, WI059_PARAMETERS, WI059_EXISTING_MAPPED_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES
 
+from tests.models.current_mfe_regressions import WI061_PARAMETERS, WI061_MAPPED_PARAMETERS, WI061_CHANNELS
+
 import json
 import sys
 from pathlib import Path
@@ -46,11 +48,11 @@ def test_exact_input_contract():
     from tests.models.current_mfe_regressions import WI040_PARAMETERS, WI038_PARAMETERS, WI058_PARAMETERS, WI058_RETIRED
     # WI-058 (2026-09-14): k_coil retired from the contract and the seam, c_coil_ref added (the winding
     # length follows the coil bore); the counts (265 inputs, 118 mapped, 147 unmapped) do not move.
-    added = WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI060_PARAMETERS
+    added = WI061_PARAMETERS | WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI060_PARAMETERS
     inputs = {}
     for path in (route.PACKAGE_DIR / "inputs").glob("*.json"):
         inputs.update(json.loads(path.read_text()))
-    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS)
+    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS)
     coverage = json.loads(
         (
             ROOT
@@ -60,12 +62,12 @@ def test_exact_input_contract():
     assert set(inputs) == ({renamed(k) for k in coverage["native_inputs"]} - WI058_RETIRED) | added | WI059_NATIVE_ONLY_PARAMETERS
     entering = renamed_keys(coverage["entering_mapping"])
     current = oracle.ENTRY_KEY_TO_ORACLE_INPUT
-    mapped_added = added | WI059_EXISTING_MAPPED_PARAMETERS
-    assert len(entering) == 100 and len(current) == 118 + len(WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS)
+    mapped_added = added | WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS
+    assert len(entering) == 100 and len(current) == 118 + len(WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS)
     assert {k: v for k, v in current.items() if k not in mapped_added} == {key: value for key, value in entering.items() if key != OLD and key not in WI058_RETIRED}
     assert set(current) - set(entering) == mapped_added
     assert WI058_RETIRED <= set(entering) and not WI058_RETIRED & set(current)
-    assert set(inputs) - set(current) == ({renamed(k) for k in coverage["unmapped_native_inputs"]} - WI059_EXISTING_MAPPED_PARAMETERS) | WI059_NATIVE_ONLY_PARAMETERS
+    assert set(inputs) - set(current) == ({renamed(k) for k in coverage["unmapped_native_inputs"]} - WI059_EXISTING_MAPPED_PARAMETERS - WI061_MAPPED_PARAMETERS) | WI059_NATIVE_ONLY_PARAMETERS
     assert len(coverage["unmapped_native_inputs"]) == 147
     assert {key: inputs[key] for key in WI059_NATIVE_ONLY_VALUES} == WI059_NATIVE_ONLY_VALUES
     for key in WI059_NATIVE_ONLY_PARAMETERS:
@@ -131,7 +133,7 @@ def test_current_invalid_radius_is_retained_as_execution_failure(
 )
 def test_unmapped_native_inputs_remain_explicitly_refused(key):
     key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
-    if key in WI059_EXISTING_MAPPED_PARAMETERS:
+    if key in WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS:
         assert key in oracle.ENTRY_KEY_TO_ORACLE_INPUT
         assert route.validate_proposal({key: 1.0}) is not None
         return

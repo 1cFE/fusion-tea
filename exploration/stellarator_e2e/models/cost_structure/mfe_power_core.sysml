@@ -6,6 +6,7 @@ package mfe_power_core {
     private import mfe_magnet_cost::*;
     private import mfe_winding_pack_cost::*;
     private import mfe_conductor_grade::*;
+    private import mfe_winding_pack_fit::*;
     private import mfe_heating_chain::*;
     private import mfe_divertor_heat::*;
     private import mfe_account_costs::*;
@@ -200,6 +201,34 @@ package mfe_power_core {
             in I_coil = coil.I_coil;
             in j_wp = winding_pack.j_wp_effective;
         }
+        calc wp_fit : 'Winding Pack Casing Fit' {
+            in wp_side = winding_pack.wp_side;
+            in aspect_ratio = winding_pack.fit_aspect_ratio;
+            in internal_fraction_x = winding_pack.internal_build_x;
+            in internal_fraction_y = winding_pack.internal_build_y;
+            in ground_insulation = winding_pack.ground_insulation;
+            in radial_allocation = coil.coil_t;
+            in interior_y = casing.interior_y;
+            in wall_thickness = casing.wall_thickness;
+            in assembly_clearance = casing.assembly_clearance;
+        }
+        attribute fit_nominal_x : Real = wp_fit.nominal_x;
+        attribute fit_nominal_y : Real = wp_fit.nominal_y;
+        attribute fit_internal_x : Real = wp_fit.internal_x;
+        attribute fit_internal_y : Real = wp_fit.internal_y;
+        attribute fit_pack_x : Real = wp_fit.pack_x;
+        attribute fit_pack_y : Real = wp_fit.pack_y;
+        attribute fit_insulated_x : Real = wp_fit.insulated_x;
+        attribute fit_insulated_y : Real = wp_fit.insulated_y;
+        attribute fit_required_x : Real = wp_fit.required_x;
+        attribute fit_required_y : Real = wp_fit.required_y;
+        attribute fit_cavity_x : Real = wp_fit.cavity_x;
+        attribute fit_cavity_y : Real = wp_fit.cavity_y;
+        attribute fit_exterior_x : Real = wp_fit.exterior_x;
+        attribute fit_exterior_y : Real = wp_fit.exterior_y;
+        attribute fit_margin_x : Real = wp_fit.margin_x;
+        attribute fit_margin_y : Real = wp_fit.margin_y;
+        attribute fit_minimum_margin : Real = wp_fit.minimum_margin;
         // WI-058: the winding length follows the coil bore the radial build
         // sets (the coil-centre radius WI-044 introduced), anchored at the
         // printed circumference; the major radius no longer enters. WI-036's

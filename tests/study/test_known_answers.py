@@ -21,7 +21,7 @@ from tests.study.conftest import DATA_DIR, run_tool
 CASES = ["availability_direct", "interest_rate", "R", "a", "I_coil"]
 
 # WI-059 (2026-09-15): re-derived from the completed package indicator report.
-EXPECTED_SEMANTIC_FINGERPRINT = 'bf7b8afe4fc92c7ce3e713f799a4dcaead0f71c0bc851c93aae640514ab104ea'
+EXPECTED_SEMANTIC_FINGERPRINT = 'd61aff71c088a81d1c12da1817511b7aede938df05a34d5a6bd278c56ec55386'
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
 #:          modules fired, channels tainted). Read straight off the Item 1 fixture
@@ -49,6 +49,7 @@ FIXTURE_CONTRACT = {'I_coil': (False,
              'recirc_ok',
              'sustainment_ok',
              'wall_load_ok',
+             'wp_fit_ok',
              'wp_stress_ok'],
             ['beta',
              'cas72',
@@ -63,8 +64,8 @@ FIXTURE_CONTRACT = {'I_coil': (False,
              'p_aux_required',
              'tau_E',
              'total_capital'],
-            92,
-            189),
+            94,
+            208),
  'R': (False,
        ['beta_ok',
         'burn_hold_ok',
@@ -94,7 +95,7 @@ FIXTURE_CONTRACT = {'I_coil': (False,
         'tau_E',
         'total_capital'],
        95,
-       199),
+       200),
  'a': (False,
        ['beta_ok',
         'burn_hold_ok',
@@ -124,7 +125,7 @@ FIXTURE_CONTRACT = {'I_coil': (False,
         'tau_E',
         'total_capital'],
        94,
-       198),
+       199),
  'availability_direct': (True,
                          [],
                          ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'],
@@ -192,7 +193,7 @@ def test_availability_direct_reaches_no_constraint(report):
     group = group_by_axis(report, "availability_direct")
     assert group["no_constraint_response"] is True
     assert group["constraints_reachable"] == []
-    assert len(group["constraints_unreachable"]) == 18
+    assert len(group["constraints_unreachable"]) == 19
 
 
 def test_I_coil_reaches_the_field_constraints_through_calcs(report):
@@ -225,7 +226,7 @@ def test_I_coil_reaches_the_field_constraints_through_calcs(report):
         "beta_ok", "peak_field_ok", "wp_stress_ok", "cond_strain_ok",
         "sustainment_ok", "net_positive", "recirc_ok", "wall_load_ok",
         "burn_hold_ok", "loop_pressure_ok", "loop_capacity_ok", "cycle_domain_ok",
-        "divertor_heat_ok",
+        "divertor_heat_ok", "wp_fit_ok",
     }
     # The limit side of each field constraint is a bound design value; sustainment_ok
     # is the one whose limit side is itself computed (WI-039 heating chain), so it

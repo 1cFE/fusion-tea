@@ -2,7 +2,7 @@
 
 The cross-part capital rollup is compiled by codegen and computed in one teax-simkit
 pass. The package is strict-loaded with no harness glue. This demo/regression command
-checks recorded anchors, all 18 generated verdicts, numerical agreement with the
+checks recorded anchors, all 19 generated verdicts, numerical agreement with the
 independent demo oracle, and three synthetic CAS72 guard cases. Any failed gate family
 produces a nonzero process exit after the diagnostic output is printed.
 
@@ -31,6 +31,7 @@ create_stellarator_tea_registry = rs.create_stellarator_tea_registry
 P, CH = rs.P, rs.CH
 
 EXPECTED_VERDICTS = {
+    "wp_fit_ok": "violated",  # WI-061 .36 m pack exceeds independent .30 m exterior allocation.
     "heating_source_positive_ok": "satisfied",
     "heating_source_upper_ok": "satisfied",
     "heating_couple_positive_ok": "satisfied",
@@ -101,7 +102,7 @@ EXPECTED_VERDICTS = {
     "divertor_heat_ok": "violated",
 }
 EXPECTED_HEADLINE = "violation"  # WI-047: one verdict violated by design (WI-041 pinned 'violation' once before)
-EXPECTED_VERDICT_COUNT = 18  # WI-050 adds four scalar efficiency bounds.
+EXPECTED_VERDICT_COUNT = 19  # WI-050 adds four scalar efficiency bounds.
 
 
 def _execute_package(*, pipeline_path=None, output_dir=None):
@@ -237,7 +238,7 @@ def _anchor_gate(values: dict[str, float]) -> bool:
 
 
 def _assert_generated_verdicts(outputs) -> None:
-    """Check the exact 18 design-point verdicts and the separate aggregate."""
+    """Check the exact 19 design-point verdicts and the separate aggregate."""
     report = outputs["constraint_report"]
     print("=== EIGHTEEN VERDICTS (generated ConstraintReport) ===")
     verdicts = {}
@@ -263,7 +264,7 @@ def _assert_generated_verdicts(outputs) -> None:
     print(
         "VERDICT PARITY: PASS -- "
         f"headline={report.headline}, assessed_entry_count={report.assessed_entry_count}, "
-        "seventeen satisfied and divertor_heat_ok VIOLATED. WI-050 coherent "
+        "seventeen satisfied; divertor_heat_ok and wp_fit_ok VIOLATED. WI-050 coherent "
         "operating heat gives 10.517842 MW/m^2 against 10; the installed "
         "capacity ceiling and signed burn-hold demand remain explicit."
     )

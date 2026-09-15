@@ -3,6 +3,7 @@ package stellarator_09 {
     private import mfe_plant::*;
     private import mfe_plasma_scaling::*;
     private import mfe_viability::*;
+    private import mfe_winding_pack_fit::*;
 
     // =========================================================================
     // CONCRETE INSTANCE -- concept-09 Proxima "Stellaris" QI stellarator
@@ -306,6 +307,19 @@ package stellarator_09 {
             }
             }
             part :>> winding_pack {
+                :>> fit_aspect_ratio = 1.0 {
+                    doc /* **Source**: work/active/WI-061_winding-pack-casing-fit/design.md **Reference**: Scenario selected for independent review. **Basis**: [AGENT] conditional centered aligned local envelope assumption; no manufactured-fit qualification. Internal build fractions are excluded-sheet pitch, ground/wall/clearance are m per face, interior_y is full m. **Last Updated**: 2026-09-15 */
+                }
+                :>> internal_build_x = 0.0 {
+                    doc /* **Source**: work/active/WI-061_winding-pack-casing-fit/design.md **Reference**: Scenario selected for independent review. **Basis**: [AGENT] conditional centered aligned local envelope assumption; no manufactured-fit qualification. Internal build fractions are excluded-sheet pitch, ground/wall/clearance are m per face, interior_y is full m. **Last Updated**: 2026-09-15 */
+                }
+                :>> internal_build_y = 0.025 {
+                    doc /* **Source**: work/active/WI-061_winding-pack-casing-fit/design.md **Reference**: Scenario selected for independent review. **Basis**: [AGENT] conditional centered aligned local envelope assumption; no manufactured-fit qualification. Internal build fractions are excluded-sheet pitch, ground/wall/clearance are m per face, interior_y is full m. **Last Updated**: 2026-09-15 */
+                }
+                :>> ground_insulation = 0.003 {
+                    doc /* **Source**: work/active/WI-061_winding-pack-casing-fit/design.md **Reference**: Scenario selected for independent review. **Basis**: [AGENT] conditional centered aligned local envelope assumption; no manufactured-fit qualification. Internal build fractions are excluded-sheet pitch, ground/wall/clearance are m per face, interior_y is full m. **Last Updated**: 2026-09-15 */
+                }
+
                 :>> tape_width = 0.006 {
                     doc /* Purchased tape width [m]. **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf **Reference**: Stellaris printed p. 24, 6 mm tape width; Fig. 40 shows 6 x 6 mm stack. **Basis**: [AGENT] fixed-width construction selection; full thickness is a separate cross-source transfer assumption. **Last Updated**: 2026-09-15 */
                 }
@@ -448,6 +462,16 @@ package stellarator_09 {
             }
             }
             part :>> casing {
+                :>> interior_y = 0.4 {
+                    doc /* **Source**: work/active/WI-061_winding-pack-casing-fit/design.md **Reference**: Scenario selected for independent review. **Basis**: [AGENT] conditional centered aligned local envelope assumption; no manufactured-fit qualification. Internal build fractions are excluded-sheet pitch, ground/wall/clearance are m per face, interior_y is full m. **Last Updated**: 2026-09-15 */
+                }
+                :>> wall_thickness = 0.025 {
+                    doc /* **Source**: work/active/WI-061_winding-pack-casing-fit/design.md **Reference**: Scenario selected for independent review. **Basis**: [AGENT] conditional centered aligned local envelope assumption; no manufactured-fit qualification. Internal build fractions are excluded-sheet pitch, ground/wall/clearance are m per face, interior_y is full m. **Last Updated**: 2026-09-15 */
+                }
+                :>> assembly_clearance = 0.002 {
+                    doc /* **Source**: work/active/WI-061_winding-pack-casing-fit/design.md **Reference**: Scenario selected for independent review. **Basis**: [AGENT] conditional centered aligned local envelope assumption; no manufactured-fit qualification. Internal build fractions are excluded-sheet pitch, ground/wall/clearance are m per face, interior_y is full m. **Last Updated**: 2026-09-15 */
+                }
+
                 // Inherited steel rate component [$/kg]; together with factor3 =18$/kg all-in scenario.
                 :>> steel_price = 6.0 {
                     doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:52 (coil_steel_price_per_kg = 6.0) **Basis**: inherited6$/kg component; combined18$/kg is an assumption, not a qualified316LN quote */
@@ -1691,6 +1715,10 @@ package stellarator_09 {
         // ---- WI-047 divertor surface heat: the source's fixed-geometry case ----
         // ---- WI-047 exhaust gas load: the boundary pressure DECLARED, not sourced ----
 
+        // WI-061 additive local geometric screen; old eighteen predicates retained.
+        assert constraint wp_fit_ok : 'Winding Pack Fits Casing' {
+            in minimum_margin_in = magnet.fit_minimum_margin;
+        }
         // Asserted viability constraints.
         assert constraint beta_ok : 'Beta Limit' {
             in beta_in = plasma.beta;

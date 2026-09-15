@@ -1,0 +1,35 @@
+{
+  "existing18_predicate_expressions_unchanged": true,
+  "added_predicates": [
+    "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+  ],
+  "added_inputs": [
+    "stellarator_09__stellaris__magnet__casing__assembly_clearance",
+    "stellarator_09__stellaris__magnet__casing__interior_y",
+    "stellarator_09__stellaris__magnet__casing__wall_thickness",
+    "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio",
+    "stellarator_09__stellaris__magnet__winding_pack__ground_insulation",
+    "stellarator_09__stellaris__magnet__winding_pack__internal_build_x",
+    "stellarator_09__stellaris__magnet__winding_pack__internal_build_y"
+  ],
+  "added_outputs": [
+    "stellarator_09__stellaris__magnet__wp_fit__cavity_x",
+    "stellarator_09__stellaris__magnet__wp_fit__cavity_y",
+    "stellarator_09__stellaris__magnet__wp_fit__exterior_x",
+    "stellarator_09__stellaris__magnet__wp_fit__exterior_y",
+    "stellarator_09__stellaris__magnet__wp_fit__insulated_x",
+    "stellarator_09__stellaris__magnet__wp_fit__insulated_y",
+    "stellarator_09__stellaris__magnet__wp_fit__internal_x",
+    "stellarator_09__stellaris__magnet__wp_fit__internal_y",
+    "stellarator_09__stellaris__magnet__wp_fit__margin_x",
+    "stellarator_09__stellaris__magnet__wp_fit__margin_y",
+    "stellarator_09__stellaris__magnet__wp_fit__minimum_margin",
+    "stellarator_09__stellaris__magnet__wp_fit__nominal_x",
+    "stellarator_09__stellaris__magnet__wp_fit__nominal_y",
+    "stellarator_09__stellaris__magnet__wp_fit__pack_x",
+    "stellarator_09__stellaris__magnet__wp_fit__pack_y",
+    "stellarator_09__stellaris__magnet__wp_fit__required_x",
+    "stellarator_09__stellaris__magnet__wp_fit__required_y",
+    "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339__evaluation"
+  ]
+}

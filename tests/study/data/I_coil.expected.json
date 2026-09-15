@@ -1,5 +1,5 @@
 {
-  "derived_against_semantic_fingerprint": "bf7b8afe4fc92c7ce3e713f799a4dcaead0f71c0bc851c93aae640514ab104ea",
+  "derived_against_semantic_fingerprint": "d61aff71c088a81d1c12da1817511b7aede938df05a34d5a6bd278c56ec55386",
   "group": {
     "axis": "I_coil",
     "declared_keys": [
@@ -311,6 +311,30 @@
             "ref": "stellarator_09__stellaris__wall_load_limit",
             "reached": false,
             "entry_type": "design_attribute"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+        "definition_qualified_name": "mfe_winding_pack_fit::'Winding Pack Fits Casing'",
+        "source_local_identity": "wp_fit_ok",
+        "operator": ">=",
+        "operand_classes": [
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "minimum_margin_in",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__magnet__wp_fit__minimum_margin",
+            "reached": true
+          },
+          {
+            "operand": "<literal>",
+            "class": "literal",
+            "reached": false,
+            "value": 0.0
           }
         ]
       },
@@ -899,6 +923,30 @@
         ]
       },
       {
+        "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+        "definition_qualified_name": "mfe_winding_pack_fit::'Winding Pack Fits Casing'",
+        "source_local_identity": "wp_fit_ok",
+        "operator": ">=",
+        "operand_classes": [
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "minimum_margin_in",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__magnet__wp_fit__minimum_margin",
+            "reached": true
+          },
+          {
+            "operand": "<literal>",
+            "class": "literal",
+            "reached": false,
+            "value": 0.0
+          }
+        ]
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
         "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
         "source_local_identity": "wp_stress_ok",
@@ -945,8 +993,8 @@
     ],
     "sibling_candidates": [],
     "trace_size": {
-      "modules_fired": 92,
-      "channels_tainted": 189
+      "modules_fired": 94,
+      "channels_tainted": 208
     },
     "warnings": [],
     "not_derivable": {

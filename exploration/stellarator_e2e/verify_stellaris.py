@@ -211,6 +211,8 @@ def _sustainment(p, V, B_axis):
 
 # --- Stellaris design-point inputs (from stellarator_plant.sysml bindings) ---
 IN = dict(
+    fit_aspect_ratio=1., fit_internal_x=0., fit_internal_y=.025,
+    fit_ground=.003, fit_wall=.025, fit_clearance=.002, fit_interior_y=.4,
     # geometry (WI-022 errata rebind: a = 1.3 per the Table 2 image; f_shape
     # targets the printed V = 425, Table 5 image)
     R=12.7, a=1.3, kappa=1.0, pi=3.14159265358979,
@@ -697,6 +699,40 @@ def _coil_thermal_inventory(p, circumference, pack_side):
                 p_drive=(lead_cold+lead_shield)*1e-6+p['cryo_joint_drive_fraction']*p['p_fixed_cryo'])
 
 
+def _winding_fit(p):
+    """Independent area-demand construction and conditional available-space screen."""
+    pos = ('fit_aspect_ratio', 'fit_wall', 'fit_interior_y', 'coil_t')
+    nonneg = ('fit_internal_x', 'fit_internal_y', 'fit_ground', 'fit_clearance')
+    for key in pos + nonneg:
+        if not math.isfinite(p[key]) or (p[key] <= 0 if key in pos else p[key] < 0):
+            raise ValueError('oracle winding fit: invalid ' + key)
+    # Reconstruct the demand directly rather than reading native sizing/fit intermediates.
+    factor = (p['magnet_B_max'] / p['magnet_B_grade_ref']) ** p['magnet_field_exponent']
+    area = p['magnet_I_coil'] / (p['magnet_j_wp'] / factor) / 1e6
+    if not math.isfinite(area) or area <= 0:
+        raise ValueError('oracle winding fit: invalid nominal area')
+    side = math.sqrt(area)
+    orientation = math.sqrt(p['fit_aspect_ratio'])
+    result = {'nominal_x': side * orientation, 'nominal_y': side / orientation,
+              'cavity_x': p['coil_t'] - 2*p['fit_wall'], 'cavity_y': p['fit_interior_y'],
+              'exterior_x': p['coil_t'], 'exterior_y': p['fit_interior_y'] + 2*p['fit_wall']}
+    for axis in ('x', 'y'):
+        nominal = result['nominal_' + axis]
+        added = nominal * p['fit_internal_' + axis]
+        if p['fit_internal_' + axis] > 0 and added == 0:
+            raise ValueError('oracle winding fit: internal_' + axis + ' underflow')
+        result['internal_' + axis] = added
+        result['pack_' + axis] = nominal + added
+        result['insulated_' + axis] = nominal + added + 2*p['fit_ground']
+        result['required_' + axis] = nominal + added + 2*p['fit_ground'] + 2*p['fit_clearance']
+        result['margin_' + axis] = result['cavity_' + axis] - result['required_' + axis]
+    for key, value in result.items():
+        if not math.isfinite(value) or (value <= 0 and not key.startswith(('margin_', 'internal_'))):
+            raise ValueError('oracle winding fit: invalid ' + key)
+    result["minimum_margin"] = min(result["margin_x"], result["margin_y"])
+    return result
+
+
 def compute():
     if "magnet_R0" in IN:
         raise ValueError("retired oracle input magnet_R0; use plant R")
@@ -1114,6 +1150,7 @@ def compute():
     beta = 2.0 * p["beta_mu0"] * sust["p_avg"] / (B_axis ** 2)
 
     return dict(
+        **{"fit_" + key: value for key, value in _winding_fit(p).items()},
         V=V, p_fus=p_fus, p_th=p_th, p_the=p_the, p_et=p_et,
         p_cryo=p_cryo, p_cryo_cold=p_cryo_cold, p_cryo_shield=p_cryo_shield,
         support_mass=support_mass, p_tf_total=p_tf_total, p_cold=p_cold,

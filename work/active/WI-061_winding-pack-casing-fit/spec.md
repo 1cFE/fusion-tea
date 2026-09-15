@@ -16,7 +16,7 @@ Updated: 2026-09-15
 
 | ID | Requirement and authority | Acceptance evidence |
 |---|---|---|
-| R1 | [NEED] Distinguish bare pack, insulated pack, casing interior and exterior; define local axes, orientation, units and provenance. Available space must be independent of calculated pack demand. | Reviewed geometry basis, model ownership and dimension identities. |
+| R1 | [NEED] Distinguish nominal pack envelope, insulated pack, casing interior and exterior; define local axes, orientation, units and provenance. Available space must be independent of calculated pack demand. | Reviewed geometry basis, model ownership and dimension identities. |
 | R2 | [NEED] Count insulation and assembly clearance exactly once; expose interpretable margins and a native fit predicate responsive to reference current density, current and purchased field envelope. | Positive, exact-boundary and oversized native cases; independent dimensional reconstruction. |
 | R3 | [NEED] Preserve the eighteen existing predicates and report their feasibility separately from feasibility including fit. Attribute effects against the immediate entering package. | Expression-level catalog comparison and matched native outputs/verdicts. |
 | R4 | [NEED] Reject invalid geometry deliberately and establish native/generated/oracle agreement. | Nonfinite, invalid sign, arithmetic overflow/underflow and native-route checks. |

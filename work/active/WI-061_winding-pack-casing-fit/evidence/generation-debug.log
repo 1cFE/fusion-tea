@@ -1,0 +1,103 @@
+handwritten/mfe_winding_pack_fit/winding_pack_casing_fit_impl.py
+--- 
++++ 
+@@ -1,48 +1,54 @@
+-"""WI-061 conditional aligned local rectangular fit, with deliberate domains."""
+-import math
+ from stellarator_tea.modules.mfe_winding_pack_fit.winding_pack_casing_fit import Winding_Pack_Casing_FitInput
+-from stellarator_tea.schemas.winding_pack_casing_fit_output import Winding_Pack_Casing_FitOutput
+-
+-AUTO_IMPLEMENTED = False
+ 
+ 
+-def run_winding_pack_casing_fit(inputs: Winding_Pack_Casing_FitInput) -> tuple[float, ...]:
+-    name = 'Winding Pack Casing Fit'
++def run_winding_pack_casing_fit(inputs: Winding_Pack_Casing_FitInput) -> tuple[float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float]:
++    """Execute Winding_Pack_Casing_Fit calculation.
+ 
+-    def checked(key, value, positive=False):
+-        if not math.isfinite(value) or (value <= 0 if positive else value < 0):
+-            raise ValueError(f'{name}: {key} must be finite and {"positive" if positive else "nonnegative"}')
+-        return value
++Conditional local centered and aligned rectangular envelope fit. x is the plasma-face normal approximated as radial; y is transverse/Phi, both normal to conductor centreline. Nominal area wp_side^2 retains the published homogenized envelope; internal sheet inclusion is unresolved. This does not establish bare conductor geometry or global nonplanar alignment.
++Normative equations: nominal_x=wp_side*sqrt(aspect_ratio), nominal_y=wp_side/sqrt(aspect_ratio); internal_x=nominal_x*internal_fraction_x and analogously y; pack=nominal+internal; insulated=pack+2*ground_insulation; required=insulated+2*assembly_clearance. cavity_x=radial_allocation-2*wall_thickness; cavity_y=interior_y; exterior_x=radial_allocation; exterior_y=interior_y+2*wall_thickness; margin=cavity-required. All lengths m; aspect ratio and internal fractions dimensionless.
++All inputs/outputs finite; wp_side, aspect_ratio, radial_allocation, interior_y, wall_thickness and cavity_x positive; fractions and other allowances nonnegative. Refuse arithmetic overflow or underflow of positive multiplicative terms deliberately with quantity-named ValueError. Negative finite margins are valid failure results; zero margin passes.
++Internal fractions represent excluded-sheet continuous pitch; external ground insulation and assembly allowances are separate, counted per opposing face exactly once. Casing geometry does not reprice wall mass or insulation, resize total supports, or replace inherited thermal-area/stress proxies. Independent coil radial allocation is not resized to fit demand. Common nominal undeformed state only; no contraction, offsets, fillets, route, stress or manufacturing qualification.
++*Source**: work/orchestration/goals/winding-pack-casing-fit/evidence/geometry-research.md
++*Reference**: Stellaris original PDF pp.22-23 Fig.40/Table8; WI-061 design.md reviewed equations and conditional scenario.
++*Last Updated**: 2026-09-15
+ 
+-    positive = ('wp_side', 'aspect_ratio', 'radial_allocation', 'interior_y', 'wall_thickness')
+-    for key in positive:
+-        checked(key, getattr(inputs, key), True)
+-    for key in ('internal_fraction_x', 'internal_fraction_y', 'ground_insulation', 'assembly_clearance'):
+-        checked(key, getattr(inputs, key))
+-    root = math.sqrt(inputs.aspect_ratio)
+-    out = {}
+-    wall = checked('two_walls', 2.0 * inputs.wall_thickness, True)
+-    ground = checked('two_ground_faces', 2.0 * inputs.ground_insulation, inputs.ground_insulation > 0)
+-    clearance = checked('two_clearance_faces', 2.0 * inputs.assembly_clearance, inputs.assembly_clearance > 0)
+-    out['cavity_x'] = checked('cavity_x', inputs.radial_allocation - wall, True)
+-    out['cavity_y'] = inputs.interior_y
+-    out['exterior_x'] = inputs.radial_allocation
+-    out['exterior_y'] = checked('exterior_y', inputs.interior_y + wall, True)
+-    for axis, nominal, fraction in (
+-        ('x', inputs.wp_side * root, inputs.internal_fraction_x),
+-        ('y', inputs.wp_side / root, inputs.internal_fraction_y),
+-    ):
+-        out['nominal_' + axis] = checked('nominal_' + axis, nominal, True)
+-        internal = checked('internal_' + axis, nominal * fraction, fraction > 0)
+-        out['internal_' + axis] = internal
+-        pack = checked('pack_' + axis, nominal + internal, True)
+-        out['pack_' + axis] = pack
+-        insulated = checked('insulated_' + axis, pack + ground, True)
+-        out['insulated_' + axis] = insulated
+-        required = checked('required_' + axis, insulated + clearance, True)
+-        out['required_' + axis] = required
+-        margin = out['cavity_' + axis] - required
+-        if not math.isfinite(margin):
+-            raise ValueError(f'{name}: margin_{axis} must be finite')
+-        out['margin_' + axis] = margin
+-    return tuple(out[key] for key in Winding_Pack_Casing_FitOutput.model_fields)
++SysML Source: root-0/analyses/mfe_winding_pack_fit.sysml:3
++
++SysML Expressions:
++    See documentation:
++Conditional local centered and aligned rectangular envelope fit. x is the plasma-face normal approximated as radial; y is transverse/Phi, both normal to conductor centreline. Nominal area wp_side^2 retains the published homogenized envelope; internal sheet inclusion is unresolved. This does not establish bare conductor geometry or global nonplanar alignment.
++Normative equations: nominal_x=wp_side*sqrt(aspect_ratio), nominal_y=wp_side/sqrt(aspect_ratio); internal_x=nominal_x*internal_fraction_x and analogously y; pack=nominal+internal; insulated=pack+2*ground_insulation; required=insulated+2*assembly_clearance. cavity_x=radial_allocation-2*wall_thickness; cavity_y=interior_y; exterior_x=radial_allocation; exterior_y=interior_y+2*wall_thickness; margin=cavity-required. All lengths m; aspect ratio and internal fractions dimensionless.
++All inputs/outputs finite; wp_side, aspect_ratio, radial_allocation, interior_y, wall_thickness and cavity_x positive; fractions and other allowances nonnegative. Refuse arithmetic overflow or underflow of positive multiplicative terms deliberately with quantity-named ValueError. Negative finite margins are valid failure results; zero margin passes.
++Internal fractions represent excluded-sheet continuous pitch; external ground insulation and assembly allowances are separate, counted per opposing face exactly once. Casing geometry does not reprice wall mass or insulation, resize total supports, or replace inherited thermal-area/stress proxies. Independent coil radial allocation is not resized to fit demand. Common nominal undeformed state only; no contraction, offsets, fillets, route, stress or manufacturing qualification.
++*Source**: work/orchestration/goals/winding-pack-casing-fit/evidence/geometry-research.md
++*Reference**: Stellaris original PDF pp.22-23 Fig.40/Table8; WI-061 design.md reviewed equations and conditional scenario.
++*Last Updated**: 2026-09-15
++
++Args:
++    inputs: Input parameters validated against Winding_Pack_Casing_FitInput schema
++
++Returns:
++    tuple[float, ...]: (required_y, nominal_y, margin_x, internal_y, pack_x, exterior_x, cavity_x, nominal_x, cavity_y, exterior_y, insulated_y, margin_y, internal_x, pack_y, required_x, insulated_x)
++
++Example:
++    >>> inputs = Winding_Pack_Casing_FitInput(...)
++    >>> required_y, nominal_y, margin_x, internal_y, pack_x, exterior_x, cavity_x, nominal_x, cavity_y, exterior_y, insulated_y, margin_y, internal_x, pack_y, required_x, insulated_x = run_winding_pack_casing_fit(inputs)
++
++    Implementation Pattern:
++        # Extract input fields from the validated Input model:
++        internal_fraction_x = inputs.internal_fraction_x
++        wall_thickness = inputs.wall_thickness
++        assembly_clearance = inputs.assembly_clearance
++        radial_allocation = inputs.radial_allocation
++        internal_fraction_y = inputs.internal_fraction_y
++        wp_side = inputs.wp_side
++        ground_insulation = inputs.ground_insulation
++        aspect_ratio = inputs.aspect_ratio
++        interior_y = inputs.interior_y
++        # Perform calculation using extracted values
++        # Return result(s)
++    """
++    raise NotImplementedError(
++        "Manual implementation required for Winding_Pack_Casing_Fit. "
++        "See SysML source: root-0/analyses/mfe_winding_pack_fit.sysml:3"
++    )
+
+/tmp/wi061-debug-f3f15r8t/fresh

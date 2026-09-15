@@ -1,5 +1,7 @@
 """Current radius controls: exact frozen physics, independently checked finance roundoff."""
 
+from tests.models.current_mfe_regressions import WI061_PARAMETERS, WI061_MAPPED_PARAMETERS, WI061_CHANNELS
+
 import json
 import math
 import sys
@@ -45,18 +47,18 @@ def check_controls(out):
         changed_costs = {oracle.ORACLE_OUTPUT_TO_CHANNEL[name] for name in WI040_CHANGED_ECONOMICS}
         # Preserve every frozen physical/structured value. Only the named WI-040
         # accounting descendants and new inventory channels use current expectations.
-        for key in changed_costs | WI040_CHANNELS | WI060_CHANNELS:
+        for key in changed_costs | WI040_CHANNELS | WI060_CHANNELS | WI061_CHANNELS:
             expected_outputs[key] = channels[key]
         # Both controls retain the reference envelope: the two retained grade outputs are
         # known exactly without replacing any frozen physical value.
         expected_outputs.update({route.P + 'magnet__conductor_grade__' + k: v for k, v in {
             'quantity_factor': 1.0, 'j_wp_effective': 118.8271604938272}.items()})
         expected_outputs.update(wi059_native_additions(frozen_outputs, oracle.vs.IN))
-        assert set(case.outputs) == set(expected_outputs) == {renamed(c) for c in expectations["channels"]} | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS
+        assert set(case.outputs) == set(expected_outputs) == {renamed(c) for c in expectations["channels"]} | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS
         for key, value in expected_outputs.items():
             assert (
                 math.isclose(case.outputs[key], value, rel_tol=1e-9, abs_tol=0.0)
-                if key in FINANCIAL_CHANNELS | changed_costs | WI040_CHANNELS | WI059_CHANNELS | WI060_CHANNELS
+                if key in WI061_CHANNELS | FINANCIAL_CHANNELS | changed_costs | WI040_CHANNELS | WI059_CHANNELS | WI060_CHANNELS
                 else case.outputs[key] == value
             ), (name, key, case.outputs[key], value)
         assert set(channels) == set(oracle.ORACLE_OUTPUT_TO_CHANNEL.values())
@@ -83,7 +85,7 @@ def check_controls(out):
             "verdicts": route.short_verdicts(case),
             "oracle_channels": rows,
         }
-        assert len(case.verdicts) == 18
+        assert len(case.verdicts) == 19
     ratios = {}
     for suffix, expected in expectations["ratios"].items():
         key = renamed(route.P + suffix)  # WI-057
@@ -94,7 +96,7 @@ def check_controls(out):
     summary = verify.build_summary(
         route.PACKAGE_DIR, route.MANIFEST_PATH, identity, [db], 2, None, []
     )
-    assert len(summary["constraints_rederived"]) == 18
+    assert len(summary["constraints_rederived"]) == 19
     assert summary["worst_channel_rel_dev"] < 1e-9
     for filename, data in [
         ("controls.json", comparisons),

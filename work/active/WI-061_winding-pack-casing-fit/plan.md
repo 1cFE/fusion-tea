@@ -8,11 +8,11 @@ Related Artifacts: spec.md; design.md; evidence/consumers.md
 
 - [x] Register native item and inspect prior pack, support, thermal and procurement contracts.
 - [x] Draft requirements, geometry/interface proposal and consumer inventory without production edits.
-- [ ] Incorporate geometry research and settle draft open decisions; independent review and coordinator release.
-- [ ] Add native calculation, physical ownership, bindings, dimension/margin EXPOSE and one native fit predicate; mirror changed models.
-- [ ] Add one reviewed manual seed while preserving all twenty-two existing bodies; regenerate twice with WI-060/WI-040 recipe lineage and prove exact package equality.
-- [ ] Add independent oracle calculation and complete input/output/operand maps; test component domains, each axis, equality, enlarged packs and parameter causality.
-- [ ] Refresh producer-derived census, manifest fingerprints/headline and structural snapshot; update current consumer expectations and explicit ABI additions without modifying historical records.
+- [x] Incorporate geometry research and settle draft open decisions; independent review and coordinator release.
+- [x] Add native calculation, physical ownership, bindings, dimension/margin EXPOSE and one native fit predicate; mirror changed models.
+- [x] Add one reviewed manual seed while preserving all twenty-two existing bodies; regenerate twice with WI-060/WI-040 recipe lineage and prove exact package equality.
+- [x] Add independent oracle calculation and complete input/output/operand maps; test component domains, each axis, equality, enlarged packs and parameter causality.
+- [x] Refresh producer-derived census, manifest fingerprints/headline and structural snapshot; update current consumer expectations and explicit ABI additions without modifying historical records.
 - [ ] Compare all old scalar channels and eighteen predicates against coordinator entering data at matched old inputs; explain any deviation before proceeding.
 - [ ] Run native complete validation and appropriate model/study consumer checks; distinguish inherited diagnostics from new failures by identity.
 - [ ] Register traceability and system verification through native PM; record evidence and hand off candidate for independent review, integration and bounded study.

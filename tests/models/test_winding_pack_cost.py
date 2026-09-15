@@ -222,7 +222,7 @@ def test_accounting_levers_preserve_physics_and_operating_verdicts(evaluate, key
         unchanged += ['winding_procurement__tape_cost', 'material_inventory__material_cost']
     for suffix in unchanged:
         assert output(after, 'magnet__' + suffix) == output(before, 'magnet__' + suffix)
-    assert len([k for k in before.responses if k != 'headline']) == 18
+    assert len([k for k in before.responses if k != 'headline']) == 19
     assert before.responses == after.responses
     # Explicit physical owners/calculations, not all channels with an economic name filtered out.
     physical = ('plasma__', 'magnet__field_calc__', 'magnet__peak_field_calc__',

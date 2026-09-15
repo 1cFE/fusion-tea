@@ -211,6 +211,38 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__magnet__wp_sizing__wp_side
 
+  # mfe_winding_pack_fit.Winding_Pack_Casing_FitModule
+  stellarator_09__stellaris__magnet__wp_fit:
+    module_type: mfe_winding_pack_fit.Winding_Pack_Casing_FitModule
+    inputs:
+      internal_fraction_x: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__internal_build_x
+      wall_thickness: float stellarator_plant_params.stellarator_09__stellaris__magnet__casing__wall_thickness
+      assembly_clearance: float stellarator_plant_params.stellarator_09__stellaris__magnet__casing__assembly_clearance
+      radial_allocation: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__coil_t
+      internal_fraction_y: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__internal_build_y
+      wp_side: float stellarator_09__stellaris__magnet__wp_sizing__wp_side.root
+      ground_insulation: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__ground_insulation
+      aspect_ratio: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio
+      interior_y: float stellarator_plant_params.stellarator_09__stellaris__magnet__casing__interior_y
+    outputs:
+      required_y: float stellarator_09__stellaris__magnet__wp_fit__required_y
+      nominal_y: float stellarator_09__stellaris__magnet__wp_fit__nominal_y
+      minimum_margin: float stellarator_09__stellaris__magnet__wp_fit__minimum_margin
+      margin_x: float stellarator_09__stellaris__magnet__wp_fit__margin_x
+      internal_y: float stellarator_09__stellaris__magnet__wp_fit__internal_y
+      pack_x: float stellarator_09__stellaris__magnet__wp_fit__pack_x
+      exterior_x: float stellarator_09__stellaris__magnet__wp_fit__exterior_x
+      cavity_x: float stellarator_09__stellaris__magnet__wp_fit__cavity_x
+      nominal_x: float stellarator_09__stellaris__magnet__wp_fit__nominal_x
+      cavity_y: float stellarator_09__stellaris__magnet__wp_fit__cavity_y
+      exterior_y: float stellarator_09__stellaris__magnet__wp_fit__exterior_y
+      insulated_y: float stellarator_09__stellaris__magnet__wp_fit__insulated_y
+      margin_y: float stellarator_09__stellaris__magnet__wp_fit__margin_y
+      internal_x: float stellarator_09__stellaris__magnet__wp_fit__internal_x
+      pack_y: float stellarator_09__stellaris__magnet__wp_fit__pack_y
+      required_x: float stellarator_09__stellaris__magnet__wp_fit__required_x
+      insulated_x: float stellarator_09__stellaris__magnet__wp_fit__insulated_x
+
   # mfe_vacuum.Vacuum_Gas_LoadModule
   stellarator_09__stellaris__vacuum_pumping__vacuum:
     module_type: mfe_vacuum.Vacuum_Gas_LoadModule
@@ -1402,6 +1434,14 @@ modules:
     outputs:
       evaluation: ConstraintEvaluation stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852__evaluation
 
+  # stellarator_09.StellarisWpFitOkConstraintModule
+  stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339:
+    module_type: stellarator_09.StellarisWpFitOkConstraintModule
+    inputs:
+      minimum_margin_in: float stellarator_09__stellaris__magnet__wp_fit__minimum_margin
+    outputs:
+      evaluation: ConstraintEvaluation stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339__evaluation
+
   # stellarator_09.StellarisHeatingSourcePositiveOkConstraintModule
   stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5:
     module_type: stellarator_09.StellarisHeatingSourcePositiveOkConstraintModule
@@ -1438,6 +1478,7 @@ modules:
       stellarator_09_stellaris_peak_field_ok_49c6b8228a73cac5: ConstraintEvaluation stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation
       stellarator_09_stellaris_sustainment_ok_77add152ed8eafce: ConstraintEvaluation stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation
       stellarator_09_stellaris_loop_capacity_ok_d77f6027ceb27852: ConstraintEvaluation stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852__evaluation
+      stellarator_09_stellaris_wp_fit_ok_a25ca6a0161f6339: ConstraintEvaluation stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339__evaluation
       stellarator_09_stellaris_heating_source_positive_ok_1e184791591370e5: ConstraintEvaluation stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5__evaluation
       stellarator_09_stellaris_loop_pressure_ok_5905ab54f5e8a945: ConstraintEvaluation stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945__evaluation
     outputs:
@@ -1486,6 +1527,23 @@ modules:
       stellarator_09__stellaris__magnet__conductor_grade__quantity_factor: float stellaris__magnet__winding_pack__conductor_quantity_factor.json
       stellarator_09__stellaris__magnet__conductor_grade__j_wp_effective: float stellaris__magnet__winding_pack__j_wp_effective.json
       stellarator_09__stellaris__magnet__wp_sizing__wp_side: RootModel[float] stellaris__cryoplant__wp_side.json
+      stellarator_09__stellaris__magnet__wp_fit__required_y: float stellaris__magnet__fit_required_y.json
+      stellarator_09__stellaris__magnet__wp_fit__nominal_y: float stellaris__magnet__fit_nominal_y.json
+      stellarator_09__stellaris__magnet__wp_fit__minimum_margin: float stellaris__magnet__fit_minimum_margin.json
+      stellarator_09__stellaris__magnet__wp_fit__margin_x: float stellaris__magnet__fit_margin_x.json
+      stellarator_09__stellaris__magnet__wp_fit__internal_y: float stellaris__magnet__fit_internal_y.json
+      stellarator_09__stellaris__magnet__wp_fit__pack_x: float stellaris__magnet__fit_pack_x.json
+      stellarator_09__stellaris__magnet__wp_fit__exterior_x: float stellaris__magnet__fit_exterior_x.json
+      stellarator_09__stellaris__magnet__wp_fit__cavity_x: float stellaris__magnet__fit_cavity_x.json
+      stellarator_09__stellaris__magnet__wp_fit__nominal_x: float stellaris__magnet__fit_nominal_x.json
+      stellarator_09__stellaris__magnet__wp_fit__cavity_y: float stellaris__magnet__fit_cavity_y.json
+      stellarator_09__stellaris__magnet__wp_fit__exterior_y: float stellaris__magnet__fit_exterior_y.json
+      stellarator_09__stellaris__magnet__wp_fit__insulated_y: float stellaris__magnet__fit_insulated_y.json
+      stellarator_09__stellaris__magnet__wp_fit__margin_y: float stellaris__magnet__fit_margin_y.json
+      stellarator_09__stellaris__magnet__wp_fit__internal_x: float stellaris__magnet__fit_internal_x.json
+      stellarator_09__stellaris__magnet__wp_fit__pack_y: float stellaris__magnet__fit_pack_y.json
+      stellarator_09__stellaris__magnet__wp_fit__required_x: float stellaris__magnet__fit_required_x.json
+      stellarator_09__stellaris__magnet__wp_fit__insulated_x: float stellaris__magnet__fit_insulated_x.json
       stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required: float stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required.json
       stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total: float stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total.json
       stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules: float stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules.json
@@ -1659,6 +1717,7 @@ modules:
       stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation: ConstraintEvaluation stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation.json
       stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation: ConstraintEvaluation stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation.json
       stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852__evaluation: ConstraintEvaluation stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852__evaluation.json
+      stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339__evaluation: ConstraintEvaluation stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339__evaluation.json
       stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5__evaluation: ConstraintEvaluation stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5__evaluation.json
       stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945__evaluation: ConstraintEvaluation stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945__evaluation.json
       constraint_report: ConstraintReport constraint_report.json

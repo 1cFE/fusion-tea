@@ -49,6 +49,15 @@ P = "stellarator_09__stellaris__"
 #: are bound by the `_in` convention, so codegen projects one entry point per
 #: authored attribute). Plant R also owns the live magnet radius.
 ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
+    f"{P}magnet__winding_pack__fit_aspect_ratio": "fit_aspect_ratio",
+    f"{P}magnet__winding_pack__internal_build_x": "fit_internal_x",
+    f"{P}magnet__winding_pack__internal_build_y": "fit_internal_y",
+    f"{P}magnet__winding_pack__ground_insulation": "fit_ground",
+    f"{P}magnet__casing__interior_y": "fit_interior_y",
+    f"{P}magnet__casing__wall_thickness": "fit_wall",
+    f"{P}magnet__casing__assembly_clearance": "fit_clearance",
+    f"{P}magnet__coil__coil_t": "coil_t",
+
     # WI-059 reviewed explicit coil inventory and total-support accounting controls.
     **{f"{P}cryoplant__{leaf}": key for leaf, key in {
         'inventory_enabled': 'cryo_inventory_enabled', 'n_leads': 'cryo_n_leads',
@@ -219,6 +228,24 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
 #: Oracle output name -> qualified channel name. Only channels the package records
 #: as single-field floats appear; the oracle returns more than the package does.
 ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
+    "fit_minimum_margin": f"{P}magnet__wp_fit__minimum_margin",
+    "fit_nominal_x": f"{P}magnet__wp_fit__nominal_x",
+    "fit_nominal_y": f"{P}magnet__wp_fit__nominal_y",
+    "fit_internal_x": f"{P}magnet__wp_fit__internal_x",
+    "fit_internal_y": f"{P}magnet__wp_fit__internal_y",
+    "fit_pack_x": f"{P}magnet__wp_fit__pack_x",
+    "fit_pack_y": f"{P}magnet__wp_fit__pack_y",
+    "fit_insulated_x": f"{P}magnet__wp_fit__insulated_x",
+    "fit_insulated_y": f"{P}magnet__wp_fit__insulated_y",
+    "fit_required_x": f"{P}magnet__wp_fit__required_x",
+    "fit_required_y": f"{P}magnet__wp_fit__required_y",
+    "fit_cavity_x": f"{P}magnet__wp_fit__cavity_x",
+    "fit_cavity_y": f"{P}magnet__wp_fit__cavity_y",
+    "fit_exterior_x": f"{P}magnet__wp_fit__exterior_x",
+    "fit_exterior_y": f"{P}magnet__wp_fit__exterior_y",
+    "fit_margin_x": f"{P}magnet__wp_fit__margin_x",
+    "fit_margin_y": f"{P}magnet__wp_fit__margin_y",
+
     "operating_heat_coupled": f"{P}operating_heat__p_coupled",
     "operating_heat_delivered": f"{P}operating_heat__p_delivered",
     "operating_heat_wallplug": f"{P}operating_heat__p_wallplug",
@@ -426,6 +453,9 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
     },
     "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": {
         "efficiency": {"kind": "input", "key": f"{P}heating__eta_source_heat"},
+    },
+    f"{P}wp_fit_ok__a25ca6a0161f6339": {
+        "minimum_margin_in": {"kind": "channel", "key": f"{P}magnet__wp_fit__minimum_margin"},
     },
     # Operand names are the constraint definitions' formal names as the catalog's
     # predicate IR spells them: `_in`-suffixed where the D-5 rename touched the formal

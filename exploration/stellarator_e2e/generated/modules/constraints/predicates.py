@@ -145,6 +145,11 @@ def constraint_pred_definition_mfe_viability__loop_capacity(mdot_loop_in, mdot_l
     value = _cmp('<=', mdot_loop_in, mdot_loop_rated_in)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((mdot_loop_rated_in - mdot_loop_in)) if (_fin(mdot_loop_in) and _fin(mdot_loop_rated_in)) else None))
 
+# definition:mfe_winding_pack_fit::'Winding Pack Fits Casing'
+def constraint_pred_definition_mfe_winding_pack_fit__winding_pack_fits_casing(minimum_margin_in):
+    value = _cmp('>=', minimum_margin_in, 0.0)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((minimum_margin_in - 0.0)) if (_fin(minimum_margin_in) and _fin(0.0)) else None))
+
 # definition:mfe_viability::'Loop Pressure Margin'
 def constraint_pred_definition_mfe_viability__loop_pressure_margin(p_loop_margin_in):
     value = _cmp('>', p_loop_margin_in, 0.0)

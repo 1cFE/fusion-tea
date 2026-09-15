@@ -40,7 +40,17 @@ WI038_CHANNELS = {P + 'magnet__conductor_grade__' + name for name in (
 K_COIL_RETIRED = 1.968503937007874  # the retired WI-036 k_coil (25.0 / 12.7), the float the old oracle carried
 WI058_PARAMETERS = {P + 'magnet__coil__c_coil_ref'}
 WI058_RETIRED = {P + 'magnet__coil__k_coil'}
-RECEIPT_EVIDENCE = ROOT / 'work/active/WI-060_tape-procurement-quantity-basis/evidence'
+RECEIPT_EVIDENCE = ROOT / 'work/active/WI-061_winding-pack-casing-fit/evidence'
+WI061_PARAMETERS = {P + 'magnet__winding_pack__' + n for n in (
+    'fit_aspect_ratio', 'internal_build_x', 'internal_build_y', 'ground_insulation')} | {
+    P + 'magnet__casing__' + n for n in ('interior_y', 'wall_thickness', 'assembly_clearance')}
+WI061_MAPPED_PARAMETERS = WI061_PARAMETERS | {P + 'magnet__coil__coil_t'}
+WI061_CHANNELS = {P + 'magnet__wp_fit__' + n for n in (
+    'nominal_x','nominal_y','internal_x','internal_y','pack_x','pack_y',
+    'insulated_x','insulated_y','required_x','required_y','cavity_x','cavity_y',
+    'exterior_x','exterior_y','margin_x','margin_y','minimum_margin')}
+WI061_PREDICATE = P + 'wp_fit_ok__a25ca6a0161f6339'
+
 WI060_PARAMETERS = {P + 'magnet__winding_pack__' + name for name in (
     'tape_width', 'tape_thickness', 'tape_price_per_m')}
 WI060_RETIRED_CHANNELS = {P + 'magnet__conductor_grade__cost_per_kAm_effective'}
@@ -124,7 +134,7 @@ def restate_wi040_radius_costs(translated):
     frozen = json.loads((translated / 'frozen-results.json').read_text())
     direct = json.loads((translated / 'direct-entering.json').read_text())
     for name, ref in (('baseline', 'baseline'), ('R14', 'tied_R14')):
-        replacement = {k: oracle[name][k] for k in changed | WI040_CHANNELS | WI060_CHANNELS}
+        replacement = {k: oracle[name][k] for k in changed | WI040_CHANNELS | WI060_CHANNELS | WI061_CHANNELS}
         # WI-038 q=1 controls: exact independently stated additions, no changes to
         # existing physical expectations or their comparison tolerance.
         replacement.update({P + 'magnet__conductor_grade__quantity_factor': 1.0,
@@ -135,9 +145,9 @@ def restate_wi040_radius_costs(translated):
     (translated / 'frozen-results.json').write_text(json.dumps(frozen, indent=2) + '\n')
     (translated / 'direct-entering.json').write_text(json.dumps(direct, indent=2) + '\n')
     expected = json.loads((translated / 'expectations.json').read_text())
-    expected['channels'] = sorted(set(expected['channels']) | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS)
+    expected['channels'] = sorted(set(expected['channels']) | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS)
     (translated / 'expectations.json').write_text(json.dumps(expected, indent=2) + '\n')
-    return changed | WI040_CHANNELS | WI059_CHANNELS | WI060_CHANNELS
+    return changed | WI040_CHANNELS | WI059_CHANNELS | WI060_CHANNELS | WI061_CHANNELS
 
 
 def structure_ledger():
@@ -266,6 +276,22 @@ def replace_once(text, old, new):
     return text.replace(old, new)
 
 
+def pre_fit_report(report, reference):
+    """Project only the newly added check out of a historical eighteen-check comparison."""
+    import copy
+    result = copy.deepcopy(report)
+    added = [r for r in result['results'] if r['constraint_id'] == WI061_PREDICATE]
+    assert len(added) == 1 and result['assessed_entry_count'] == reference['assessed_entry_count'] + 1
+    result['results'] = [r for r in result['results'] if r['constraint_id'] != WI061_PREDICATE]
+    result['assessed_entry_count'] -= 1
+    for key in ('authored_usage_total', 'applicable_gate_total', 'assessed_gate_count'):
+        assert result['coverage'][key] == reference['coverage'][key] + 1
+        result['coverage'][key] -= 1
+    # Catalog identity necessarily differs when its sole new entry is projected out.
+    result['catalog_fingerprint'] = reference['catalog_fingerprint']
+    return result
+
+
 def radius_acceptance(destination, historical):
     destination = Path(destination)
     destination.mkdir()
@@ -292,10 +318,17 @@ def radius_acceptance(destination, historical):
             text = replace_once(text, 'bridge.build(change)', f'bridge.build({WI059_REPLAY!r} | change)')
             text = replace_once(text, "'entering-package/contracts/model_contract.json'", repr(str(translated / 'entering-package/contracts/model_contract.json')))
             text = replace_once(text, "delta['added']==[]",
-                                f"{{x[1] for x in delta['added']}}=={WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS!r}")
+                                f"{{x[1] for x in delta['added']}}=={WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS!r}")
             # WI-058: evaluate R14 at the R-form's length (see K_COIL_RETIRED) so the frozen row stays exact.
             text = replace_once(text, "('R14',{P+'plasma__R':14.0})",
                                 f"('R14',{{P+'plasma__R':14.0,P+'magnet__coil__c_coil_ref':{K_COIL_RETIRED * 14.0!r}}})")
+        if name in ('native', 'direct'):
+            text = 'from tests.models.current_mfe_regressions import pre_fit_report\n' + text
+        if name == 'native':
+            text = replace_once(text, "assert a['responses']==b['responses']", "assert {k:v for k,v in a['responses'].items() if 'wp_fit_ok' not in k}==b['responses']")
+            text = text.replace("a['report']==b['report']", "pre_fit_report(a['report'], b['report'])==b['report']")
+        if name == 'direct':
+            text = replace_once(text, "assert set(raw)==set(expected)", "assert set(raw)-{k for k in raw if 'wp_fit_ok' in k}==set(expected)\n        raw['constraint_report'] = pre_fit_report(raw['constraint_report'], expected['constraint_report'])")
         if name == 'standalone':
             # WI-058: the winding length no longer takes R0 -- its R0-only check leaves the replay (its bore
             # response is tested in test_winding_length_bore.py); the other three magnet calcs keep theirs.

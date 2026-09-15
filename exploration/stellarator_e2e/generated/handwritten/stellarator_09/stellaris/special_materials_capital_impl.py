@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1463
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1487
 
 SysML Expressions:
 """
@@ -15,7 +15,7 @@ from stellarator_tea.modules.stellarator_09.stellaris.special_materials_capital 
 def run_special_materials_capital(inputs: special_materials_capitalInput) -> float:
     """Execute special_materials_capital calculation.
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1463
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1487
 
 Args:
     inputs: Input parameters validated against special_materials_capitalInput schema

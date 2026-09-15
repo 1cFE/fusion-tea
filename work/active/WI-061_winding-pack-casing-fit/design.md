@@ -8,9 +8,9 @@ Related Artifacts: spec.md; plan.md; evidence/consumers.md
 
 ## Proposed model
 
-[AGENT] Retain `wp_side` as the existing square-equivalent area measure. Define local x across the pack in the selected radial direction and y transverse to x, both normal to the local conductor centreline. A fixed orientation and rectangular envelope are scenario assumptions. One worst-coil pack represents the set; no claim of a constant real nonplanar cross-section or three-dimensional route clearance follows.
+[AGENT] Retain `wp_side` as the existing square-equivalent area measure. Define local x across the pack in the selected radial direction and y transverse to x, both normal to the local conductor centreline. A fixed orientation and centered, aligned rectangular pack and cavity at one representative local station are scenario assumptions. One worst-coil pack represents the set; no claim of a constant real nonplanar cross-section or three-dimensional route clearance follows.
 
-[AGENT] The winding pack owns aspect ratio r=x/y, additional internal insulation build fractions fx and fy along the axes, and external ground-insulation thickness t per face. The coil retains its independent radial layer allocation T=coil_t. The casing owns transverse interior width Cy, per-face assembly clearance c and wall thickness w. Available radial interior Cx=T−2w uses the independently held total coil layer as an exterior allocation under explicit local radial alignment. Exterior dimensions are T and Cy+2w. Nominal cavity wall, transverse interior, external insulation and clearance remain pending research; the internal-build scenario proposal appears below.
+[AGENT] The winding pack owns aspect ratio r=x/y, additional internal insulation build fractions fx and fy along the axes, and external ground-insulation thickness t per face. The coil retains its independent radial layer allocation T=coil_t. The casing owns transverse interior width Cy, per-face assembly clearance c and wall thickness w. Available radial interior Cx=T−2w uses the independently held total coil layer as an exterior allocation under explicit local radial alignment. Exterior dimensions are T and Cy+2w. The reviewed numerical inputs appear in Scenario selected for independent review.
 
 ## Equations and units
 
@@ -25,7 +25,7 @@ All lengths below are metres, area is m² and r is dimensionless. Current sizing
 | Cavity x, y | Cx=T−2w, Cy | Independent radial allocation and transverse interior |
 | Exterior x, y | T, Cy+2w | Cavity and wall geometry, separate from thermal proxy |
 | Margins | mx=Cx−xr, my=Cy−yr | Full-width excess, not per-face gap |
-| Native fit | mx≥0 and my≥0 | Equality passes; no acceptance tolerance hidden in predicate |
+| Native fit | minimum_margin=min(mx,my)≥0 | Equality passes; no acceptance tolerance hidden in predicate |
 
 [AGENT] Source inspection reports 20 mm cells and 0.5 mm pancake insulation but does not reconcile the sheet thickness with the published square side or pack current density. Consequently this draft does not call s an already insulated envelope. Explicit fx and fy represent proportional additional internal build under an excluded-sheet interpretation. The source figure places sheets along the tangent/Phi direction, so select fx=0 and fy=0.025 (0.5 mm sheet per nominal 20 mm cell), with fy=0 as the inclusive-sheet alternative. This continuous pitch allowance grows with enlarged pack extent and gives 9 mm at the reference 360 mm height. It conservatively includes one sheet per cell rather than resolving the end-sheet count. These are scenario assumptions, not a demonstrated correction to the published envelope or a discrete winding layout. External ground insulation t is a separate per-face allowance. Assembly clearance c is a required free gap beyond that ground insulation. These geometry additions do not claim a newly priced insulation material inventory.
 
@@ -39,9 +39,9 @@ Add reusable `Winding Pack Casing Fit` in `models/library/analyses/mfe_winding_p
 
 ## Domains and execution
 
-All scalar inputs and outputs must be finite. Require s>0, r>0, T>0, Cy>0 and w>0; fx≥0, fy≥0, t≥0 and c≥0. Require computed Cx=T−2w>0. Check every computed bare/insulated/required/exterior dimension is finite and positive, every positive term that must survive multiplication/division has not underflowed, and margins are finite. Negative finite margins are valid geometric failure, not runtime errors. Invalid inputs raise quantity-named ValueError before arithmetic. Use one new typed manual completion, preserving all twenty-two existing seed bodies. Return results in generated output-schema field order, as established by WI-060.
+All scalar inputs and outputs must be finite. Require s>0, r>0, T>0, Cy>0 and w>0; fx≥0, fy≥0, t≥0 and c≥0. Require computed Cx=T−2w>0. Check every computed nominal/insulated/required/exterior dimension is finite and positive, every positive term that must survive multiplication/division has not underflowed, and margins are finite. Negative finite margins are valid geometric failure, not runtime errors. Invalid inputs raise quantity-named ValueError before arithmetic. Use one new typed manual completion, preserving all twenty-two existing seed bodies. Return results in generated output-schema field order, as established by WI-060.
 
-The oracle derives bare area directly from I, reference density and the selected-envelope factor, then calculates its oriented extents independently. Map every new scenario input and canonical output and both constraint operands in `studies/oracle_entry.py`. Dimensional test examples must be independent of the chosen nominal cavity. Use binary-exact synthetic dimensions for the equality case and perturb each axis independently to expose swapped axes or one-sided clearance counting.
+The oracle derives nominal area directly from I, reference density and the selected-envelope factor, then calculates its oriented extents independently. Map every new scenario input and canonical output and the minimum-margin constraint operand in `studies/oracle_entry.py`. Dimensional test examples must be independent of the chosen nominal cavity. Use binary-exact synthetic dimensions for the equality case and perturb each axis independently to expose swapped axes or one-sided clearance counting.
 
 ## Scenario selected for independent review
 
@@ -68,3 +68,7 @@ Nominal reference prediction using s=0.36 m: interior radial width 0.25 m; requi
 4. Independent reviewer acceptance of holding the old thermal and stress approximations for this additive screen.
 
 The numerical scenario is ready for independent source/math/interface review. Coordinator production release remains required by the preparation brief.
+
+## Execution-route adjustment
+
+The native indicator producer rejects a conjunction of two comparisons as an unsupported nested operator. The fit calculation therefore exposes minimum_margin=min(mx,my), and the sole native predicate checks minimum_margin≥0. This is mathematically equivalent to both margins being nonnegative. Both per-axis margins remain public. Native execution accepted the original conjunction; this adjustment preserves the supported study/indicator route without changing tool authority.

@@ -8,7 +8,7 @@ Tests verify that handwritten implementation functions:
 4. Tolerate NotImplementedError (before agent implements)
 5. Validate return types (after agent implements)
 
-Generated from 75 calculation definitions.
+Generated from 76 calculation definitions.
 """
 
 import importlib
@@ -492,6 +492,48 @@ class TestWinding_Pack_SizingRunnable:
 
             # If implemented, verify return type
             assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestWinding_Pack_Casing_FitRunnable:
+    """Verify winding_pack_casing_fit implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_winding_pack_fit.sysml:3
+    """
+
+    def test_import_and_run(self):
+        """Test that run_winding_pack_casing_fit can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_winding_pack_fit.winding_pack_casing_fit_impl")
+        func = getattr(impl, "run_winding_pack_casing_fit")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_winding_pack_fit.winding_pack_casing_fit")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 17, f"Expected 17 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
 
         except NotImplementedError:
             # Expected for stencils - test passes

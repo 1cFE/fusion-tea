@@ -2,6 +2,8 @@
 from __future__ import annotations
 from tests.models.current_mfe_regressions import WI060_PARAMETERS, WI059_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES, WI059_REPLAY_LOCAL
 
+from tests.models.current_mfe_regressions import WI061_PARAMETERS, WI061_MAPPED_PARAMETERS, WI061_CHANNELS
+
 import importlib.util
 import json
 import math
@@ -76,8 +78,8 @@ def test_heating_efficiency_scalar_consumers(native,boundaries):
     from scripts.study import indicators,verify
     scratch,_,_,_=native
     entries=json.loads((scratch/'generated/contracts/model_contract.json').read_text())['constraint_catalog']['concrete_entries']
-    assert len(entries)==18
-    assert sum(len(verify.feature_refs(json.loads(e['predicate_ir']))) for e in entries)==28
+    assert len(entries)==19
+    assert sum(len(verify.feature_refs(json.loads(e['predicate_ir']))) for e in entries)==29
     for entry in entries: indicators.predicate_operands(entry)
     new={e['source_local_identity']:e for e in entries if e['source_local_identity'].startswith('heating_')}
     assert set(new)=={'heating_source_positive_ok','heating_source_upper_ok','heating_couple_positive_ok','heating_couple_upper_ok'}
@@ -120,7 +122,7 @@ def test_heating_efficiency_scalar_consumers(native,boundaries):
 def test_stellarator_operating_heat_has_no_public_demand_input(native):
     scratch,results,_,_=native
     contract=json.loads((scratch/'generated/contracts/model_contract.json').read_text())
-    assert len(contract['parameters'])==265 + len(WI059_PARAMETERS | WI060_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS)  # WI-059 adds21public inputs and3native-only literals.
+    assert len(contract['parameters'])==265 + len(WI059_PARAMETERS | WI060_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI061_PARAMETERS)  # WI-059 adds21public inputs and3native-only literals.
     assert not any('p_operating_coupled_heat' in str(p) for p in contract['parameters'])
     modules=yaml.safe_load((scratch/'generated/pipelines/pipeline.yaml').read_text())['modules']
     expected={'operating_heat':{'p_required_in':'sustain.p_aux_required'},'source_heat':{'p_input_in':'operating_heat.p_coupled'},'pb':{'p_input_in':'operating_heat.p_coupled','p_wallplug_in':'operating_heat.p_wallplug'},'divheat':{'p_coupled_in':'operating_heat.p_coupled','p_installed_coupled_in':'heat.p_coupled'},'primary_loop':{'q_source_in':'source_heat.q_source.root'},'heating_cost':{'p_ecrh_in':'heat.p_delivered'}}
@@ -133,7 +135,9 @@ def test_stellarator_operating_heat_has_no_public_demand_input(native):
 
 def test_operating_heat_reserve_invariance(native):
     _,results,inputs,_=native
-    load('check_results').check(results,inputs)
+    # Frozen WI-050 checker retains its original eighteen-predicate scope.
+    historical = {name: (dict(row, responses={k: v for k, v in row['responses'].items() if 'wp_fit_ok' not in k}) if 'responses' in row else row) for name, row in results.items()}
+    load('check_results').check(historical,inputs)
     for case,expected in [('baseline',-.920399212073221),('reserve',-10.920399212073221)]:
         assert results[case]['outputs'][P+'divheat__p_heat_operating_minus_installed']==pytest.approx(expected,rel=1e-9,abs=1e-9)
 
@@ -161,7 +165,7 @@ def test_operating_heat_direct_native_parity(native,monkeypatch):
         runner=ast.parse((ROOT/'exploration/stellarator_e2e/run_stellaris_single.py').read_text())
         verdict_assignment=next(n for n in runner.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='EXPECTED_VERDICTS' for t in n.targets))
         expected_verdicts=ast.literal_eval(verdict_assignment.value)
-        assert len(expected_verdicts)==18
+        assert len(expected_verdicts)==19
         if case in ['baseline','reserve','demand','availability']:
             actual={key.split('__')[2]:value for key,value in results[case]['responses'].items() if key!='headline'}
             assert actual==expected_verdicts

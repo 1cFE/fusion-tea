@@ -98,6 +98,11 @@ package mfe_magnet_parts {
         attribute tape_price_per_m : Real; // dollars per metre of this width/construction
         // winding-pack cross-section side, worst coil [m]
         attribute wp_side : Real;
+        // WI-061 conditional local fit inputs; fractions dimensionless, ground m per face.
+        attribute fit_aspect_ratio : Real default 1.0;
+        attribute internal_build_x : Real default 0.0;
+        attribute internal_build_y : Real default 0.0;
+        attribute ground_insulation : Real default 0.0;
         // winding-pack set-distribution factor [1] (WI-036 cold volume)
         attribute f_wp_vol : Real;
         // winding-pack effective elastic modulus [Pa] (WI-036 conductor strain)
@@ -121,10 +126,14 @@ package mfe_magnet_parts {
     }
 
     part def 'Coil Casing' {
+        // Independent local cavity/allowances [m]; not derived from mass or thermal surface.
+        attribute interior_y : Real default 0.40;
+        attribute wall_thickness : Real default 0.025;
+        attribute assembly_clearance : Real default 0.0;
         doc /*
         The cast steel casing around each winding pack (AISI 316LN, 63-200 t each in the
-        source), the part the structure-cost account prices (WI-035 D5: casings only; the
-        inter-coil plates and support rings are the plant's 'Primary Structure', CAS22.1.5).
+        source). WI-059 nominal pricing uses total electromagnetic supports exclusively;
+        this casing mass is a reference-floor diagnostic, not an additional charge.
         Owns the casing mass (computed since WI-044), its reference anchors, the steel price,
         the fabrication markup and the structural allowable stress. WI-057: regrouped from
         'Magnet System' without change of meaning.

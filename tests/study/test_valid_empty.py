@@ -40,8 +40,8 @@ def test_the_empty_result_still_carries_the_whole_catalog(tmp_path):
     rc, out, err = run_tool_raw(REAL_PACKAGE, REAL_MANIFEST, EXTRAS)
     assert rc == 0, err
     group = group_by_axis(json.loads(out), "land_cost")
-    assert len(group["bounds"]) == 18
-    assert len(group["constraints_unreachable"]) == 18
+    assert len(group["bounds"]) == 19
+    assert len(group["constraints_unreachable"]) == 19
     assert all(not any(o["reached"] for o in c["operands"]) for c in group["bounds"])
 
 

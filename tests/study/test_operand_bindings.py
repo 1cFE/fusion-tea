@@ -15,6 +15,8 @@ before anything consumes it. It resolves all eight constraints — no sampling.
 
 from tests.models.current_mfe_regressions import WI060_PARAMETERS, WI059_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES
 
+from tests.models.current_mfe_regressions import WI061_PARAMETERS, WI061_MAPPED_PARAMETERS, WI061_CHANNELS
+
 import json
 import sys
 from pathlib import Path
@@ -92,13 +94,13 @@ def package_inputs(package_path):
 
 def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
     entries = catalog_entries(real_package_path)
-    assert len(entries) == 18
+    assert len(entries) == 19
     bindings = oracle_entry.operand_bindings()
     channels = oracle_entry.evaluate(BASELINE_POINT)
     inputs = package_inputs(real_package_path)
 
     assert set(bindings) == {entry["constraint_id"] for entry in entries}
-    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS)  # WI-040 adds seventeen inputs; WI-038 adds two references.
+    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS)  # WI-040 adds seventeen inputs; WI-038 adds two references.
     resolved = 0
     for entry in entries:
         cid = entry["constraint_id"]
@@ -115,7 +117,7 @@ def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
                 f"a package {binding['kind']}"
             )
             resolved += 1
-    assert resolved == 28
+    assert resolved == 29
 
 
 def test_the_operand_that_resolves_to_nothing_by_name_is_bound_explicitly(

@@ -64,7 +64,7 @@ def test_tape_price_preserves_quantity_and_all_predicates(evaluate, price):
     for suffix in ('tape_length', 'conductor_length', 'winding_fabrication_cost'):
         assert output(changed, 'magnet__winding_procurement__' + suffix) == output(baseline, 'magnet__winding_procurement__' + suffix)
     assert output(changed, 'magnet__winding_procurement__tape_cost') == pytest.approx(output(baseline, 'magnet__winding_procurement__tape_cost') * price / 20)
-    assert len([k for k in baseline.responses if k != 'headline']) == 18
+    assert len([k for k in baseline.responses if k != 'headline']) == 19
     assert baseline.responses == changed.responses
 
 
