@@ -1,0 +1,34 @@
+{
+  "stellaris-original.pdf": {
+    "source_path": "knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf",
+    "sha256": "7fd72c1242ce3a17a9c4b9a4597fcb9ff5296b942b2d8343a0b463539d8d3865"
+  },
+  "w7x-original.pdf": {
+    "source_path": "/tmp/fit-w7x.pdf",
+    "sha256": "a92c209b6949d9c4b4ce5e9797e07f71fa92309949f7156c74a5565d7f9522c4"
+  },
+  "fit-cell.png": {
+    "source_path": "/tmp/fit-cell.png",
+    "sha256": "d61f23d34878d8a6204beeb5c4fe3c64829919e3eb24aee27d7188af75adfd01"
+  },
+  "fit-stellaris-21.png": {
+    "source_path": "/tmp/fit-stellaris-21.png",
+    "sha256": "b61174fa579858cba294ed6bb709619fafe01084fb72a7662de03044590058e2"
+  },
+  "fit-stellaris-22.png": {
+    "source_path": "/tmp/fit-stellaris-22.png",
+    "sha256": "69a05ff382f097ec12dbf27a7592eb684510b677b96b54810ab50da84a11e5af"
+  },
+  "fit-stellaris-23.png": {
+    "source_path": "/tmp/fit-stellaris-23.png",
+    "sha256": "22a81902997e6eb3d3998bf203a7720e9e73a6fef54187d03be2118674b84380"
+  },
+  "fit-w7x-5.png": {
+    "source_path": "/tmp/fit-w7x-5.png",
+    "sha256": "427d9988e442e6b6851c9e42df93194a4a3d555901e4f5f778c255a735f77155"
+  },
+  "fit-w7x-6.png": {
+    "source_path": "/tmp/fit-w7x-6.png",
+    "sha256": "b150628948815e2d9433127f315b183a24f71787fe1f26d46fa2070a66a74727"
+  }
+}

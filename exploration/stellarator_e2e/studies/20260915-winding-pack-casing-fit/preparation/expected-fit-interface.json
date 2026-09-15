@@ -1,0 +1,39 @@
+{
+  "status": "Author-supplied interface; validate against released native generation",
+  "inputs": {
+    "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+    "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+    "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+    "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+    "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+    "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+    "stellarator_09__stellaris__magnet__winding_pack__internal_build_x": 0.0,
+    "stellarator_09__stellaris__magnet__coil__coil_t": 0.3
+  },
+  "outputs": [
+    "stellarator_09__stellaris__magnet__wp_fit__nominal_x",
+    "stellarator_09__stellaris__magnet__wp_fit__nominal_y",
+    "stellarator_09__stellaris__magnet__wp_fit__internal_x",
+    "stellarator_09__stellaris__magnet__wp_fit__internal_y",
+    "stellarator_09__stellaris__magnet__wp_fit__pack_x",
+    "stellarator_09__stellaris__magnet__wp_fit__pack_y",
+    "stellarator_09__stellaris__magnet__wp_fit__insulated_x",
+    "stellarator_09__stellaris__magnet__wp_fit__insulated_y",
+    "stellarator_09__stellaris__magnet__wp_fit__required_x",
+    "stellarator_09__stellaris__magnet__wp_fit__required_y",
+    "stellarator_09__stellaris__magnet__wp_fit__cavity_x",
+    "stellarator_09__stellaris__magnet__wp_fit__cavity_y",
+    "stellarator_09__stellaris__magnet__wp_fit__exterior_x",
+    "stellarator_09__stellaris__magnet__wp_fit__exterior_y",
+    "stellarator_09__stellaris__magnet__wp_fit__margin_x",
+    "stellarator_09__stellaris__magnet__wp_fit__margin_y",
+    "stellarator_09__stellaris__magnet__wp_fit__minimum_margin"
+  ],
+  "predicate_source_local_identity": "wp_fit_ok",
+  "predicate_constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+  "predicate_operand": "minimum_margin_in",
+  "expected_public_inputs": 299,
+  "expected_native_numeric_outputs": 212,
+  "expected_oracle_mapped_outputs": 196,
+  "expected_total_predicates": 19
+}

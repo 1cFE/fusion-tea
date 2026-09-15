@@ -1,0 +1,4 @@
+PASS 22736 mapped scalar and 2204 predicate comparisons; 12888 entering scalars and 1296 entering old verdicts
+allocation-nominal-geometry 12 cases; old/new passes 9 2
+geometry-at-allocation-0.5 44 cases; old/new passes 33 10
+original-nominal 60 cases; old/new passes 3 0

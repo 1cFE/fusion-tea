@@ -1,0 +1,125 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "j_wp",
+      "note": "[AGENT] Proposed sensitivity. Same-tape operating current sensitivity; increases consume unknown absolute margin.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__j_wp",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "B_max",
+      "note": "[AGENT] Proposed sensitivity. Selected envelope changes effective inventory exactly once; conditional extrapolation.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__B_max",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "a",
+      "note": "[AGENT] Proposed sensitivity. Minor radius changes bore-based coil length.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__a",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "R",
+      "note": "[AGENT] Proposed sensitivity. Major radius changes plant physics; coil length must retain its bore-based response.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__R",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "I_coil",
+      "note": "[AGENT] Proposed sensitivity. Coil current changes inventory and composite-conductor winding operations.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "coil_t",
+      "note": "[AGENT] Existing radial-layer allocation; complete candidate fan-out to be verified after release. Existing physical and economic consequences remain active.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__coil_t",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fit_aspect_ratio",
+      "note": "[AGENT] Engineered local fit sensitivity at 0.50 m radial allocation; candidate fan-out to be checked after release.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "interior_y",
+      "note": "[AGENT] Engineered local fit sensitivity at 0.50 m radial allocation; candidate fan-out to be checked after release.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__casing__interior_y",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "wall_thickness",
+      "note": "[AGENT] Engineered local fit sensitivity at 0.50 m radial allocation; candidate fan-out to be checked after release.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__casing__wall_thickness",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "ground_insulation",
+      "note": "[AGENT] Engineered local fit sensitivity at 0.50 m radial allocation; candidate fan-out to be checked after release.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__ground_insulation",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "assembly_clearance",
+      "note": "[AGENT] Engineered local fit sensitivity at 0.50 m radial allocation; candidate fan-out to be checked after release.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__casing__assembly_clearance",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "internal_build_y",
+      "note": "[AGENT] Engineered local fit sensitivity at 0.50 m radial allocation; candidate fan-out to be checked after release.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__internal_build_y",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

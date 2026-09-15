@@ -1,0 +1,2087 @@
+{
+  "scope": "Matched entering independent-oracle captures, not native execution of the old package",
+  "entering_revision": "55f7f82d35da3ec374a1cdc815c0c0aef3a1d3aa",
+  "matched_cases": 72,
+  "original_nominal_cases": 60,
+  "allocation_cases": 12,
+  "unchanged_scalar_comparisons": 12888,
+  "old_predicate_comparisons": 1296,
+  "old_predicate_catalog_exact_equal": true,
+  "new_predicate": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+  "cases": [
+    {
+      "proposal_id": "m000",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0000",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m001",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0001",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m002",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0002",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m003",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0003",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m004",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0004",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m005",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0005",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m006",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0006",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m007",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0007",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m008",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0008",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m009",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0009",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m010",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0010",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m011",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0011",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m012",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0012",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m013",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0013",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m014",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0014",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m015",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0015",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m016",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0016",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m017",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0017",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m018",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0018",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m019",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0019",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m020",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0020",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m021",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0021",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m022",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0022",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m023",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0023",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m024",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0024",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m025",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0025",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m026",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0026",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m027",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0027",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m028",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0028",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m029",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0029",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m030",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0030",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m031",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0031",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m032",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0032",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m033",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0033",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m034",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0034",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m035",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0035",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m036",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0036",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m037",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0037",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m038",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0038",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m039",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0039",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m040",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0040",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m041",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0041",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m042",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0042",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m043",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0043",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m044",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0044",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m045",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0045",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m046",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0046",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m047",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0047",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m048",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0048",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m049",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0049",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m050",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0050",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m051",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0051",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m052",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0052",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m053",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0053",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__plasma__a": 2.1,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 2.1
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m054",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0054",
+      "entering_point": {
+        "stellarator_09__stellaris__plasma__R": 11.43,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 11.43,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m055",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0055",
+      "entering_point": {
+        "stellarator_09__stellaris__plasma__R": 11.43,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 11.43,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m056",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0056",
+      "entering_point": {
+        "stellarator_09__stellaris__plasma__R": 11.43,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 11.43,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m057",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0057",
+      "entering_point": {
+        "stellarator_09__stellaris__plasma__R": 13.97,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 13.97,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m058",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0058",
+      "entering_point": {
+        "stellarator_09__stellaris__plasma__R": 13.97,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 13.97,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "m059",
+      "source_file": "comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0059",
+      "entering_point": {
+        "stellarator_09__stellaris__plasma__R": 13.97,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 13.97,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "alloc-reference-0.4",
+      "source_file": "allocation-comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0060",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.4
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.4,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "alloc-reference-0.5",
+      "source_file": "allocation-comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0061",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.5
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "satisfied"
+    },
+    {
+      "proposal_id": "alloc-reference-0.6",
+      "source_file": "allocation-comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0062",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.6
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.6,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "satisfied"
+    },
+    {
+      "proposal_id": "alloc-oldpass0.8-0.4",
+      "source_file": "allocation-comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0063",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.4
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.4,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "alloc-oldpass0.8-0.5",
+      "source_file": "allocation-comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0064",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.5
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "alloc-oldpass0.8-0.6",
+      "source_file": "allocation-comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0065",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.6
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.6,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "alloc-oldpass1.0-0.4",
+      "source_file": "allocation-comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0066",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.4
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.4,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "alloc-oldpass1.0-0.5",
+      "source_file": "allocation-comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0067",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.5
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "alloc-oldpass1.0-0.6",
+      "source_file": "allocation-comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0068",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.6
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.6,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.4",
+      "source_file": "allocation-comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0069",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.4
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.4,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "violated"
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.5",
+      "source_file": "allocation-comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0070",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.5
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.5,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "satisfied"
+    },
+    {
+      "proposal_id": "alloc-oldpass1.2-0.6",
+      "source_file": "allocation-comparison.json",
+      "candidate_id": "20260915-winding-pack-casing-fit:c0071",
+      "entering_point": {
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.6
+      },
+      "resolved_candidate_point": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.6,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "scalar_comparisons": 179,
+      "changed_channels": {},
+      "old_verdict_flips": {},
+      "fit_verdict": "satisfied"
+    }
+  ],
+  "outcome": "pass"
+}

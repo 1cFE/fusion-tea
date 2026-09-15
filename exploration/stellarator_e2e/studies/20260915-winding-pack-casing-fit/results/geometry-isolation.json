@@ -1,0 +1,360 @@
+{
+  "outcome": "pass",
+  "scope": "New geometry controls compared with native allocation anchor; numerical isolation, not independent validation of unchanged old quantities",
+  "cases": [
+    {
+      "proposal_id": "geometry-alloc-reference-0.5-fit_aspect_ratio-0.8",
+      "anchor_id": "alloc-reference-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-reference-0.5-fit_aspect_ratio-1.25",
+      "anchor_id": "alloc-reference-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-reference-0.5-interior_y-0.35",
+      "anchor_id": "alloc-reference-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-reference-0.5-interior_y-0.45",
+      "anchor_id": "alloc-reference-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-reference-0.5-wall_thickness-0.015",
+      "anchor_id": "alloc-reference-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-reference-0.5-wall_thickness-0.035",
+      "anchor_id": "alloc-reference-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-reference-0.5-ground_insulation-0.0",
+      "anchor_id": "alloc-reference-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-reference-0.5-ground_insulation-0.005",
+      "anchor_id": "alloc-reference-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-reference-0.5-assembly_clearance-0.0",
+      "anchor_id": "alloc-reference-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-reference-0.5-assembly_clearance-0.004",
+      "anchor_id": "alloc-reference-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-reference-0.5-internal_build_y-0.0",
+      "anchor_id": "alloc-reference-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass0.8-0.5-fit_aspect_ratio-0.8",
+      "anchor_id": "alloc-oldpass0.8-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass0.8-0.5-fit_aspect_ratio-1.25",
+      "anchor_id": "alloc-oldpass0.8-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass0.8-0.5-interior_y-0.35",
+      "anchor_id": "alloc-oldpass0.8-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass0.8-0.5-interior_y-0.45",
+      "anchor_id": "alloc-oldpass0.8-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass0.8-0.5-wall_thickness-0.015",
+      "anchor_id": "alloc-oldpass0.8-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass0.8-0.5-wall_thickness-0.035",
+      "anchor_id": "alloc-oldpass0.8-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass0.8-0.5-ground_insulation-0.0",
+      "anchor_id": "alloc-oldpass0.8-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass0.8-0.5-ground_insulation-0.005",
+      "anchor_id": "alloc-oldpass0.8-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass0.8-0.5-assembly_clearance-0.0",
+      "anchor_id": "alloc-oldpass0.8-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass0.8-0.5-assembly_clearance-0.004",
+      "anchor_id": "alloc-oldpass0.8-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass0.8-0.5-internal_build_y-0.0",
+      "anchor_id": "alloc-oldpass0.8-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-fit_aspect_ratio-0.8",
+      "anchor_id": "alloc-oldpass1.0-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-fit_aspect_ratio-1.25",
+      "anchor_id": "alloc-oldpass1.0-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.35",
+      "anchor_id": "alloc-oldpass1.0-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-interior_y-0.45",
+      "anchor_id": "alloc-oldpass1.0-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-wall_thickness-0.015",
+      "anchor_id": "alloc-oldpass1.0-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-wall_thickness-0.035",
+      "anchor_id": "alloc-oldpass1.0-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-ground_insulation-0.0",
+      "anchor_id": "alloc-oldpass1.0-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-ground_insulation-0.005",
+      "anchor_id": "alloc-oldpass1.0-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-assembly_clearance-0.0",
+      "anchor_id": "alloc-oldpass1.0-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-assembly_clearance-0.004",
+      "anchor_id": "alloc-oldpass1.0-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.0-0.5-internal_build_y-0.0",
+      "anchor_id": "alloc-oldpass1.0-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-0.8",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-fit_aspect_ratio-1.25",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.35",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-interior_y-0.45",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.015",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-wall_thickness-0.035",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.0",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-ground_insulation-0.005",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.0",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-assembly_clearance-0.004",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    },
+    {
+      "proposal_id": "geometry-alloc-oldpass1.2-0.5-internal_build_y-0.0",
+      "anchor_id": "alloc-oldpass1.2-0.5",
+      "old_scalar_comparisons": 195,
+      "old_predicate_comparisons": 18,
+      "changed_old_channels": [],
+      "old_verdict_flips": []
+    }
+  ],
+  "scalar_comparisons": 8580,
+  "predicate_comparisons": 792
+}
