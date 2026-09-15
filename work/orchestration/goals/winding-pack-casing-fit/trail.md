@@ -47,3 +47,23 @@ Native model design · new standard work item · spec/design and consumer invent
 ### Amendment 2026-09-15 — entering evidence extension
 
 The entering comparison at `d64aea81` is preserved. Additional radial-allocation oracle comparisons are captured before production edits in `evidence/entering/allocation-comparison.json`; the capture-only mapping exposes the already public coil thickness input to an already existing oracle equation. These are oracle comparisons, not native old-package reruns. They permit causal accounting comparisons in allocation sensitivities as well as the original matched sample.
+
+### T-002 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `work/active/WI-061_winding-pack-casing-fit/design.md@677d6d31`; `evidence/design-review.md` (unpinned; no native digest until review checkpoint).
+- **Reading:** Independent source/math/interface review accepts the conditional local-envelope design and expected reference failure. It does not qualify a real cavity, insulation inclusion, wall strength or unchanged thermal/stress proxy accuracy.
+- **Decision:** New geometry/interface risk · independent reviewer checks original figures and arithmetic before production · execution detail · reviewer fit_reviewer, released by coordinator · design-review.md. Author will resolve editorial terminology before implementation; no new semantic choice is required.
+
+### T-003 scope
+
+- **Objective:** Implement and validate the reviewed fit screen through native WI-061.
+- **Why now:** T-001 evidence and T-002 independent review support a bounded conditional screen.
+- **Scope:** Reviewed canonical/twin model, generated package, native predicate, oracle and affected consumers; preserve old accounting and predicates.
+- **Inputs:** `goal.md`; WI-061 at `677d6d31`; `evidence/design-review.md`; entering evidence at `d64aea81` and `1b521a71`.
+- **Done when:** Native implementation and affected tests pass with declared residue and independent integrated coverage.
+- **Stop when:** Prerequisite, strategy blocker, reserved gate or declared limit.
+
+### T-003 start — 2026-09-15
+
+Native implementation · WI-061 and its package consumers · reviewed implementation report and executable evidence. Author owns production/package/oracle/current tests; coordinator owns trail and integration; study preparation remains held.
