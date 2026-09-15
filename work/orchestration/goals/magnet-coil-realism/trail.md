@@ -260,3 +260,25 @@ Source and parameter basis is reviewed in evidence/T-005_cryo_basis.md and T-005
 ### T-006 start — 2026-09-15
 
 Native model work · work/active/WI-059_coil-thermal-and-total-support-inventory/ · model worker owns explicitly assigned model/generated paths; coordinator owns independent oracle, publication consumers and integration registries. Shared writes serialize at handoff.
+
+### T-006 integration substage — 2026-09-15
+
+Implementation committed295751fa; acceptance and explicit historical replay repairs committed1a157075. Source/math and coupled integration reviews PASS. Full model run924passes/13skips found two stale historical-invariance consumers, repaired and verified by four focused checks; new coil tests34pass. All179mapped baseline outputs agree with195native scalars; five off-design/dormant/residual witnesses agree on all179mapped outputs each. Static validation's four added scanner diagnostics are identified in T-006_validation_residue.md; generated bindings are verified, and Level6failure remains disclosed.
+
+The integration substage writes evidence/T-007_integration (artifact label only, still within T-006scope). Attempt1 passed through native verification but did not run lineage because the coordinator omitted the expected fingerprint flags. This is a request-input omission, not a changed package or numerical refusal. Retry1 supplies the committed manifest's exact expected fingerprints and writes evidence/T-007_integration-r2. No semantic repair or study execution occurred between attempts.
+
+### T-006 return — COMPLETE — 2026-09-15
+
+WI-059 implementation and native acceptance are complete. The integration retry returns CANDIDATE with all ten gates PASS in evidence/T-007_integration-r2/integration_return.json. It proves no-op regeneration, unchanged handwritten files, canonical-family spine,289entry census and identical snapshot, manifest pin, native baseline, independent oracle/eighteen predicates and the requested lineage. Round3has one promoted pin: d3d7b9e72e7796561a312b67df01d5f6cebf542b6ec57ac283dc879f941505df; semantic bf7b8afe4fc92c7ce3e713f799a4dcaead0f71c0bc851c93aae640514ab104ea; executable59478649fdead4c3808f4065f110c8deade1ffe37b938bdf027101e84050a29a. Code/acceptance commits295751fa and1a157075. The item's checked plan and SV-105/SV-106 carry acceptance. Static scanner residue and engineering scenario limits remain disclosed, not unresolved implementation work.
+
+### T-007 scope
+
+- **Objective:** answer the goal's final comparison at the sole Round3pin and prepare the demo restatement.
+- **Scope:** required minor/major-radius transects and108historical matched coordinates, plus24declared equipment/accounting sensitivities; native lifecycle, all18predicates, independent verification, record/snapshot and reviewed findings/dispositions.
+- **Inputs:** integrated WI-059package; reviewed protocol at exploration/stellarator_e2e/studies/20260915-coil-inventory/; committed Round1as entering comparison and older records as references.
+- **Done when:** committed reproducible final study and evidence-linked answer satisfy goal(b)/(c), independently reviewed, with all required study checks complete.
+- **Stop when:** numerical or mechanical seam refusal; repair within scope without bypassing native checks. Engineering assumptions and sensitivity framing are selected under owner delegation.
+
+### T-007 start — 2026-09-15
+
+Native study · exploration/stellarator_e2e/studies/20260915-coil-inventory/ · framing review PASS, source/math reused;18group indicators and183row oracle scan prepared. Execute180unique native proposals after baseline/preflight at the integrated pin.

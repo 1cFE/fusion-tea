@@ -1,0 +1,14 @@
+[
+  {
+    "path": "exploration/stellarator_e2e/studies/20260914-magnet-coil-realism/preparation/before-matched-window.json",
+    "sha256": "998b6b109f486654c2d4912755453770a2c58511d36bac69c9808d3f93f85a97"
+  },
+  {
+    "path": "exploration/stellarator_e2e/studies/20260914-magnet-coil-realism/preparation/before-plant-closure-anchors.json",
+    "sha256": "481ef377ee528a7ee2e91de000b1be5aa23aed52f86ca0f382f71ef1ac212a13"
+  },
+  {
+    "path": "exploration/stellarator_e2e/studies/20260914-magnet-coil-realism/results/points.csv",
+    "sha256": "efff6fb6a3df833c86a64eecda2c25e8aa83f86736205dbcd8593e23fc88757e"
+  }
+]
