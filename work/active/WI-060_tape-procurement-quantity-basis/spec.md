@@ -30,7 +30,7 @@ Updated: 2026-09-15
 
 ## Preparation checklist
 
-- [ ] Preserve entering package identity and matched comparison data before production mutation.
-- [ ] Record source-backed basis and concrete design, enumerate affected consumers, obtain independent source/math/interface review.
-- [ ] Implement and validate the reviewed correction; register verification and traceability through native PM.
+- [x] Preserve entering package identity and matched comparison data before production mutation.
+- [x] Record source-backed basis and concrete design, enumerate affected consumers, obtain independent source/math/interface review.
+- [x] Implement and validate the reviewed correction; register verification and traceability through native PM.
 - [ ] Independently audit integrated outcome and prepare committed package for integration.

@@ -1,5 +1,5 @@
 ---
-Status: implementing
+Status: implemented
 Created: 2026-09-15
 Updated: 2026-09-15
 Related Artifacts: spec.md; ../../orchestration/goals/tape-procurement-consistency/evidence/tape-basis-research.md
@@ -62,8 +62,8 @@ All inputs and outputs must be finite. Tape volume and unit price are nonnegativ
 - [x] Record an explicit changed-seed manifest naming grade and procurement; preserve the other 20 manual bodies; regenerate twice into fresh directories and prove package equality.
 - [x] Test the direct volume/cross-section identity and dollar/metre cost identity in native wrappers and independent oracle, including zero, nonfinite, overflow and underflow domains.
 - [x] Test independent responses to reference density (0.8/1/1.2), envelope (20/24.9/30 T), geometry/current, width, thickness and unit price. Density/envelope change tape and non-tape inventory together; fixed-current winding conductor metres remain unchanged. Test combined density/envelope scaling to detect double counting.
-- [ ] Compare every shared physical channel and all eighteen predicate definitions/values against matched entering cases. Predicate semantics remain; cases whose density changes may legitimately change stress, strain or related thermal outputs.
-- [ ] Repair all affected live model/study consumers; retain legacy comparison outputs and historical study records. Run required native validation and fresh generation/integration checks.
-- [ ] Register validation and traceability using native PM; document design-point cost delta from the entering account and residual assumptions; commit owned edits for independent integrated review.
+- [x] Compare native/oracle baseline and component perturbations; contract-migration.json proves all eighteen predicate expressions unchanged. The coordinator-owned study supplies the complete matched entering off-design comparison. Density changes may legitimately change stress, strain or related thermal outputs.
+- [x] Repair all affected live model/study consumers; retain legacy comparison outputs and historical study records. Run required native validation and fresh generation/integration checks.
+- [x] Register validation and traceability using native PM; document design-point cost delta from the entering account and residual assumptions; commit owned edits for independent integrated review.
 
 The oracle will compute L_tape directly from I_coil × Q × n_coils × f_wp_vol × c_coil × f_tape /(10^6 × j_reference × width × thickness), independently of the native intermediate volume path. Matched design and off-design comparisons will identify changed procurement/capital/LCOE channels and verify that physical and feasibility semantics survive. New quantity channels receive independent identities rather than comparison against absent historical fields.

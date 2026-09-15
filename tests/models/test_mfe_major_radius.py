@@ -123,7 +123,9 @@ def test_current_contract_edges_and_fresh_package_agreement():
     assert all(expected[name]==value for name,value in MANUAL.items())
 
 
-def test_strict_current_package_load(tmp_path):
+def test_strict_current_package_load(tmp_path, monkeypatch):
+    import os
+    monkeypatch.syspath_prepend(str(Path(os.environ['STOP_PARSER_TEAX_ROOT']) / 'packages/teax-simkit'))
     from simkit.evaluation.package_load import ProvisionalPackageLoader
     package,fingerprint=ProvisionalPackageLoader(ROOT/'exploration/stellarator_e2e/generated','stellarator_tea',tmp_path/'link',strict=True).load()
     assert fingerprint and package.CUSTOM_SCHEMA_TYPES

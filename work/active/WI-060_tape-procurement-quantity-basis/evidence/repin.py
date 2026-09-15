@@ -16,9 +16,12 @@ from simkit.study.bridge import CandidateBridge
 import study_route
 import oracle_entry
 pkg=ROOT/'exploration/stellarator_e2e/generated'
-evaluator=study_route.prepare(pkg,HERE/'native-baseline')
+import tempfile
+scratch=tempfile.TemporaryDirectory(prefix='wi060-baseline-')
+evaluator=study_route.prepare(pkg,Path(scratch.name))
 row=evaluator.evaluate(CandidateBridge(evaluator.entry_models).build({}))
 assert row.outputs
+scratch.cleanup()
 expected=oracle_entry.evaluate({})
 import math
 for key,value in expected.items():

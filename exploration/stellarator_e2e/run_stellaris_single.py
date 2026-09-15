@@ -204,17 +204,18 @@ def _anchor_gate(values: dict[str, float]) -> bool:
     # estimate, not a recovered split of the legacy 6.65 multiplier. Basis and
     # native reconciliation: work/active/WI-040_winding-pack-mass-cost/.
     # WI-059: re-derived after native/oracle agreement (evidence/native-single-final.log).
-    # Total supports and explicit two-stage refrigeration/direct drive move these computed anchors.
+    # WI-060 tape-volume procurement changes the four economic anchors only;
+    # independently predicted tape delta -$72.428571m (WI-060 evidence/baseline.json).
     anchors = [
-        ("total capital $", total, 9023426699.474607),
-        ("LCOE $/MWh", values[CH["lcoe"]], 146.30855606334038),
+        ("total capital $", total, 8904384837.760319),
+        ("LCOE $/MWh", values[CH["lcoe"]], 144.73830113443233),
         ("p_net MW", values[CH["p_net"]], 1012.6082547175133),
         ("q_eng", values[CH["q_eng"]], 3.9319737437533955),
         ("rec_frac", values[CH["rec_frac"]], 0.25432519776833934),
-        ("magnet %", magnet / total * 100, 19.720342847409306),
+        ("magnet %", magnet / total * 100, 19.170578781069967),
         ("CAS70 $/yr", values[CH["cas70"]], 217687149.51060474),
         ("CAS80 $/yr", values[CH["cas80"]], 792_505.965114),
-        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 143.73691322290384),
+        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 142.2005847790868),
     ]
 
     print("\n=== NINE ANCHORS (single-pass, graph rollup, no bridge) ===")

@@ -53,7 +53,7 @@ def test_disabled_inventory_does_not_evaluate_new_domain(oracle):
     assert set(oracle._coil_thermal_inventory(p, 25, .5).values()) == {0.0}
 
 
-def test_legacy_replay_preserves_every_entering_oracle_output(oracle):
+def test_legacy_replay_preserves_entering_physics_and_non_tape_accounts(oracle):
     entering = json.loads((EVIDENCE/'entering_oracle.json').read_text())
     saved = oracle.IN.copy()
     try:
@@ -63,8 +63,13 @@ def test_legacy_replay_preserves_every_entering_oracle_output(oracle):
         actual = oracle.compute()
     finally:
         oracle.IN.clear(); oracle.IN.update(saved)
+    # WI-060 changes the selected tape account and its declared capital descendants.
+    from tests.models.current_mfe_regressions import WI040_CHANGED_ECONOMICS
+    changed = set(WI040_CHANGED_ECONOMICS) | {'winding_pack', 'tape_procurement_cost',
+        'conductor_cost_per_kAm_effective', 'cas30_capital'}
     for key, value in entering['outputs'].items():
-        assert actual[key] == pytest.approx(value, rel=1e-12, abs=1e-12), key
+        if key not in changed:
+            assert actual[key] == pytest.approx(value, rel=1e-12, abs=1e-12), key
 
 
 @pytest.fixture(scope='module')
