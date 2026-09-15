@@ -103,3 +103,23 @@ Native integration · evidence/T-004_integration/ · expected ten-gate CANDIDATE
 ### T-005 start — 2026-09-15
 
 Native model completion repair · WI-060 · current native snapshot and corrected preparation recipe, with unchanged reviewed package identity.
+
+### T-005 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** WI-060 snapshot-repair.json and implementation.md@cf3002f6; implementation-review.md focused addendum (pinned with this return).
+- **Reading:** Native capture now exactly matches the refused integration's recapture; the preparation recipe includes that native operation. Authority and309checked model/package files are unchanged. Same-reviewer focused PASS covers the correction.
+- **Decision:** Trigger: reviewed provenance repair. Decision: rerun integration with current audited item revision; scientific comparison unchanged. Tier: execution detail. Decided by: coordinator. Changed: tracked snapshot, preparation recipe and native evidence only.
+
+### T-006 scope
+
+- **Objective:** Prove one study-ready candidate after native snapshot completion.
+- **Why now:** T-005 resolves T-004's named producer prerequisite.
+- **Scope:** Native integration invocation only; no model, seam or runtime mutation.
+- **Inputs:** goal.md; audited WI-060@cf3002f6; focused review addendum; same expected executable, semantic and sealed runtime identities as T-004.
+- **Done when:** One CANDIDATE or named BLOCKER native return is retained.
+- **Stop when:** Prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-006 start — 2026-09-15
+
+Native integration · evidence/T-006_integration/ · expected candidate from the snapshot-complete reviewed package.

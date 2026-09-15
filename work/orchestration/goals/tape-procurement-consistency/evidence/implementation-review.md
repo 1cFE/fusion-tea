@@ -31,3 +31,11 @@ Evidence paths and receipts are collected in [implementation.md](../../../../act
 Native validation still reports four passing and two failing levels. Independently compared its log with WI-059: the only difference is 471→473 validated bindings. No new static diagnostic appeared. This is accepted inherited residue, not an all-level validator pass.
 
 Construction transfer, constant composition, continuous tape inventory, assumed pricing, unknown current margin and absent pack-fit qualification remain disclosed. No blocking implementation finding remains.
+
+## Snapshot repair addendum — cf3002f6
+
+**PASS for the focused repair.** The first integration attempt stopped at `census-snapshot`: the tracked structural snapshot had not been refreshed after the interface change. This was a preparation omission missed by the initial implementation review. Later integration gates were not reached.
+
+Reviewed `cf3002f6`, its snapshot-repair receipts and the preparation recipe. The recipe now invokes the native snapshot producer on the same exploration model root used by integration. Independently verified that the committed snapshot is byte-identical to the T-004 integration recapture, with SHA256 `e11bcb6a0629257d321e30cfd2abb039206c886470c0384b2c00e11d1d305769`, and that its authority metadata is unchanged. The recorded 435→438 attribute change reflects three tape inputs, the tape-length alias and removal of the effective-price attribute.
+
+Independently confirmed no canonical model, twin or generated-package change since `9e22a0a6`. The executable identity therefore remains `02463b0d430bc205ee01809086441bc8d736b52c798c28f41689b308cbb226d0`. The snapshot drift is repaired; rerun native integration to assess the previously unreached gates. No source/math re-review or broad test rerun was needed.
