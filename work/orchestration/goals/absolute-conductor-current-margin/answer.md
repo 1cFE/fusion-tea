@@ -4,7 +4,7 @@
 
 The implemented estimate rejects the reference conductor under the selected default performance assumptions. At 20 K and an actual peak field of 24.9 T, estimated reference-conductor critical current is **29.65 kA** against **50.00 kA** operating current. Operating current is **1.687 times critical current**, above the selected allowable fraction of **0.80**. The allowable-current margin is **−26.28 kA**. This is a conditional engineering estimate with explicit construction transfer and field extrapolation; it does not qualify a manufactured cable.
 
-WI-062 implements the native calculation, generated package, independent oracle and twentieth feasibility predicate. The native 295-case study is frozen at `e1f5516b`; all-point oracle comparison is complete. Source/design and implementation reviews passed; final frozen-study and goal review is pending. Formal goal closure and item archival remain owner-held. No merge or push.
+WI-062 implements the native calculation, generated package, independent oracle and twentieth feasibility predicate. The native 295-case study is frozen at `e1f5516b`; all-point oracle comparison is complete. Source/design, implementation and final frozen-study/goal reviews all passed. The technical objective is complete. [Final independent review](evidence/final-review.md). Formal goal closure and item archival remain owner-held. No merge or push.
 
 ## Reference result and feasibility
 
@@ -125,6 +125,8 @@ The entering package is `a45925ec066c2403c72c2702e323a965e2666a3c`. Current-pack
 - All ten native integration gates pass at promoted pin `855a3a3b88c277e169aa3265db273c3d24686a6d762d7bd8437c0fd987c6160f`. The reviewed semantic and executable fingerprints are recorded in the [integration return](evidence/T-004_integration/integration_return.json).
 
 Validation scope is explicit. Native L1/L3/L4/L5 pass; L2/L6 are non-green. Ten inherited literal-bound placeholder warnings remain. Twelve new pure-EXPOSE unsupported-dot scanner diagnostics raise the raw L6 count from 273 to 285, without new unbound model inputs. The integration manifest gate omits `assert_read_set_covered`; no other check is claimed to replace it. Final affected verifier tests report 23 passes and one unavailable historical-store skip. This is not a claim of a clean global suite or full native-validator success. [Implementation report](../../../active/WI-062_absolute-conductor-current-margin/implementation.md), [integration evidence](evidence/T-004_integration/integration_return.json).
+
+Independent final assurance verified all 445 snapshot artifact hashes and 453 retained committed files, all native case/export joins, all reported oracle and preservation comparisons, and all eleven current equations at every case. Five fresh oracle replays and the unsupported endpoint also agree. All 61 study-record checks pass after the twenty-four joined dispositions. [Final review](evidence/final-review.md).
 
 ## What is established and what remains
 

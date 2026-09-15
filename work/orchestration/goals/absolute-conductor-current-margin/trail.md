@@ -122,3 +122,18 @@ The initial execution invocation lacked the documented simkit import path and st
 ### Final review request — 2026-09-15
 
 Reuse the fresh non-author reviewer's unchanged source/design and implementation coverage. Under `evidence/final-review-brief.md`, check the frozen native study, artifact publication, oracle agreement, answer, twenty-four joined dispositions and proposed learning delta. Formal goal close and native item archive remain owner-held; no merge or push.
+
+### Round 1 review — 2026-09-15
+
+- **Reviewer:** Original fresh non-author `/root/current_reviewer`; report `evidence/final-review.md`. It authored neither model implementation, study nor answer.
+- **Verdict:** PASS. Technical answer complete; recommend owner-held formal goal closure and native item archival. No further technical task or round is needed.
+- **Checks:** Independently verified 445 snapshot hashes, 453 frozen committed files, 295 native database/artifact/export joins and 296 report aliases. Reconstructed all eleven current equations at every case, all 61,065 scalar and 5,900 predicate oracle comparisons, all entering and performance-isolation comparisons, five fresh oracle points, the refused endpoint and both current repartitions. All 289 current package contract artifact hashes match. Twenty-four dispositions are joined and source/quarantine/package continuity is preserved.
+- **Reused evidence:** Original-source/design and implementation reviews remain valid at unchanged fingerprints. Native integration and study verification retain their stated coverage. No broad suite rerun or independent qualification of old physics is claimed.
+- **Corrections:** Two answer-only precision corrections name distinct current/volume distribution factors and show the executable fraction predicate. The public-interface link now points to WI-062's evidence directory, and the entering predicate set is enumerated. These changes are committed at `fccc80da`; no source, executable or frozen study change followed the freeze.
+- **Learnings:** L-001, L-002 and L-003 accepted at their explicitly conditional scope and appended to `learnings.md`.
+- **Remaining uncertainty:** Exact product/lot and criterion, local angle/temperature, cable degradation/sharing and weakest-location qualification remain open. Native L2/L6 residue, sixteen unmapped older outputs, historical-store skip and omitted integration read-set coverage remain explicit.
+- **Next:** Deliver the answer and preserve administrative boundaries. No merge or push.
+
+### Delivery checkpoint — 2026-09-15
+
+The answer and CURRENT_WORK reflect the issued independent PASS. All 61 study-record checks pass after the twenty-four joined dispositions; all local answer links resolve. This completion bookkeeping changes no model, generated package, frozen artifact, numerical result or engineering assumption. Formal goal closure and WI-062 archive remain owner-held under the goal's close rule.
