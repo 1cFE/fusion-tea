@@ -1,6 +1,8 @@
-# Tape procurement consistency — active — 2026-09-15
+# Tape procurement consistency — technical answer complete — 2026-09-15
 
-[OWNER] Ground and autonomously pursue conductor procurement consistency through research, implementation, bounded native study, independent review and answer; no merge or push. [AGENT] Goal: work/orchestration/goals/tape-procurement-consistency/goal.md. WI-060 preparation is active; production changes await source/math/interface review. Entering revision ccb6d843 and 60 matched oracle points plus baseline are retained in goal evidence/entering/. Resume from the goal trail and native WI-060 checklist; preserve earlier completed goal evidence.
+[OWNER] Ground and autonomously pursue conductor procurement consistency through research, implementation, native study, independent review and answer; no merge or push. [AGENT] WI-060 now prices physical composite-tape metres, with selected-envelope scaling applied once and separate non-tape/winding accounts. Native integration passes all ten gates. The frozen study at f7015074 completes 64 cases; all 11,456 mapped scalar and 1,152 predicate comparisons pass. Independent final PASS at 1c75bdde also verifies all 210 retained artifacts and native-store joins. Reference tape cost is $731.57 million and LCOE $144.74/MWh under the explicit $20/tape-metre construction scenario. Construction transfer, price, current margin, field extrapolation, fit and manufacturing remain conditional.
+
+[Answer](../work/orchestration/goals/tape-procurement-consistency/answer.md), [final review](../work/orchestration/goals/tape-procurement-consistency/evidence/final-review.md), [trail](../work/orchestration/goals/tape-procurement-consistency/trail.md). L-001/L-002 accepted; all eight finding dispositions recorded. No further technical work remains. Administrative goal closure is recommended under its recorded close rule; native WI-060 archive remains separate. Earlier validation residue and native PM status limitations remain in the implementation record.
 
 # Magnet coil realism — completed — 2026-09-15
 

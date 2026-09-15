@@ -1,6 +1,6 @@
 # Tape procurement consistency
 
-Technical result. Implementation, integration and native study execution are complete; final study assurance is pending.
+Complete. Procurement now follows physical tape inventory consistently. Implementation, native integration and the bounded study received [independent final PASS](evidence/final-review.md).
 
 ## What changed
 
@@ -62,6 +62,7 @@ The 60 matched comparisons use the immediately entering package's preserved inde
 
 ## Evidence and limits
 
+- [Independent final study and goal review](evidence/final-review.md), frozen study at `f7015074`, reviewed goal reading at `4559b918`, and final assurance at `1c75bdde`.
 - [Source research](evidence/tape-basis-research.md) and [independent source/interface review](evidence/design-review.md).
 - [WI-060 implementation](../../../active/WI-060_tape-procurement-quantity-basis/implementation.md), [independent implementation review](evidence/implementation-review.md) and [native integration candidate](evidence/T-006_integration/integration_return.json).
 - [Entering-package comparison](evidence/entering/comparison.json) and [preimplementation quantity/price prediction](evidence/preimplementation-prediction.json).
