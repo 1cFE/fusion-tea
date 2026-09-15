@@ -1,0 +1,197 @@
+{
+  "baseline": {
+    "proposal_id": "m024",
+    "candidate_id": "20260915-tape-procurement-consistency:c0024",
+    "inputs": {
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m": 20.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "lcoe": 144.73830113443233,
+    "tape_length_m": 36578571.42857144,
+    "tape_cost": 731571428.5714288,
+    "procurement_cost": 1497941229.6061373,
+    "feasible_18": false,
+    "violated": [
+      "divertor_heat_ok"
+    ],
+    "entering_lcoe": 146.30855606334038,
+    "entering_tape_cost": 804000000.0,
+    "lcoe_delta": -1.5702549289080423,
+    "tape_cost_delta": -72428571.42857122
+  },
+  "unique_cases": 64,
+  "report_rows": 65,
+  "feasible_18": 3,
+  "feasible_cases": [
+    {
+      "proposal_id": "m013",
+      "candidate_id": "20260915-tape-procurement-consistency:c0013",
+      "inputs": {
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 95.06172839506176,
+        "stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m": 20.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "lcoe": 151.9222010481324,
+      "tape_length_m": 56444040.95146161,
+      "tape_cost": 1128880819.0292323,
+      "procurement_cost": 1981880673.2490234,
+      "feasible_18": true,
+      "violated": []
+    },
+    {
+      "proposal_id": "m031",
+      "candidate_id": "20260915-tape-procurement-consistency:c0031",
+      "inputs": {
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m": 20.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "lcoe": 146.78025680318518,
+      "tape_length_m": 45155232.7611693,
+      "tape_cost": 903104655.223386,
+      "procurement_cost": 1751180597.7969456,
+      "feasible_18": true,
+      "violated": []
+    },
+    {
+      "proposal_id": "m049",
+      "candidate_id": "20260915-tape-procurement-consistency:c0049",
+      "inputs": {
+        "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 142.59259259259264,
+        "stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m": 20.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "lcoe": 143.35262661023043,
+      "tape_length_m": 37629360.63430774,
+      "tape_cost": 752587212.6861548,
+      "procurement_cost": 1597380547.4955597,
+      "feasible_18": true,
+      "violated": []
+    }
+  ],
+  "price_cases": [
+    {
+      "proposal_id": "price-a1.3-10",
+      "candidate_id": "20260915-tape-procurement-consistency:c0060",
+      "inputs": {
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m": 10.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "lcoe": 136.80804917098274,
+      "tape_length_m": 36578571.42857144,
+      "tape_cost": 365785714.2857144,
+      "procurement_cost": 1132155515.3204231,
+      "feasible_18": false,
+      "violated": [
+        "divertor_heat_ok"
+      ]
+    },
+    {
+      "proposal_id": "price-a1.3-40",
+      "candidate_id": "20260915-tape-procurement-consistency:c0061",
+      "inputs": {
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m": 40.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "lcoe": 160.59880506133157,
+      "tape_length_m": 36578571.42857144,
+      "tape_cost": 1463142857.1428576,
+      "procurement_cost": 2229512658.1775665,
+      "feasible_18": false,
+      "violated": [
+        "divertor_heat_ok"
+      ]
+    },
+    {
+      "proposal_id": "price-a1.7-10",
+      "candidate_id": "20260915-tape-procurement-consistency:c0062",
+      "inputs": {
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m": 10.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "lcoe": 120.61841516400257,
+      "tape_length_m": 41223469.38775511,
+      "tape_cost": 412234693.8775511,
+      "procurement_cost": 1275921295.0436513,
+      "feasible_18": false,
+      "violated": [
+        "burn_hold_ok",
+        "divertor_heat_ok",
+        "loop_capacity_ok",
+        "peak_field_ok"
+      ]
+    },
+    {
+      "proposal_id": "price-a1.7-40",
+      "candidate_id": "20260915-tape-procurement-consistency:c0063",
+      "inputs": {
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m": 40.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7
+      },
+      "lcoe": 140.53464055919983,
+      "tape_length_m": 41223469.38775511,
+      "tape_cost": 1648938775.5102043,
+      "procurement_cost": 2512625376.676305,
+      "feasible_18": false,
+      "violated": [
+        "burn_hold_ok",
+        "divertor_heat_ok",
+        "loop_capacity_ok",
+        "peak_field_ok"
+      ]
+    }
+  ],
+  "violation_counts": {
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": 14,
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": 0,
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": 0,
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": 0,
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": 0,
+    "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": 0,
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": 34,
+    "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": 0,
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": 0,
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": 44,
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": 3,
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": 0,
+    "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": 0,
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": 41,
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": 0,
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": 23,
+    "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": 0,
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": 0
+  },
+  "all_case_lcoe_range": [
+    120.61841516400257,
+    160.59880506133157
+  ]
+}

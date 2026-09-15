@@ -1,0 +1,11 @@
+{
+  "scope": "Admissible original evidence copied for cold-record source review; independent visual review is retained in reviews/design-review.md",
+  "files": {
+    "stellaris-original.pdf": "knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf",
+    "molodyk-original.pdf": "knowledge/sources/development_and_large_volume_production_of_extremely_high/raw.pdf",
+    "page_021_table_0.png": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_021_table_0.png",
+    "page_022_table_0.png": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_022_table_0.png",
+    "stellaris-high-field-quasi-isodynamic-stellarator.pdf-21-1.png": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/stellaris-high-field-quasi-isodynamic-stellarator.pdf-21-1.png",
+    "stellaris-high-field-quasi-isodynamic-stellarator.pdf-21-2.png": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/stellaris-high-field-quasi-isodynamic-stellarator.pdf-21-2.png"
+  }
+}

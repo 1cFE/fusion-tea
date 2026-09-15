@@ -1,0 +1,493 @@
+{
+  "outcome": "pass",
+  "combined_identity_checks": 576,
+  "rows": [
+    {
+      "proposal_id": "m000",
+      "inventory_ratio_to_baseline": 1.0959945691563233,
+      "winding_operations_ratio_to_baseline": 1.0,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m001",
+      "inventory_ratio_to_baseline": 1.2098641347829544,
+      "winding_operations_ratio_to_baseline": 1.103896103896104,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m002",
+      "inventory_ratio_to_baseline": 1.2351684826999834,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m003",
+      "inventory_ratio_to_baseline": 1.363497675707774,
+      "winding_operations_ratio_to_baseline": 1.2440733869305298,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m004",
+      "inventory_ratio_to_baseline": 1.3743423962436434,
+      "winding_operations_ratio_to_baseline": 1.253968253968254,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m005",
+      "inventory_ratio_to_baseline": 1.5171312166325936,
+      "winding_operations_ratio_to_baseline": 1.3842506699649557,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m006",
+      "inventory_ratio_to_baseline": 1.2499999999999998,
+      "winding_operations_ratio_to_baseline": 1.0,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m007",
+      "inventory_ratio_to_baseline": 1.3798701298701297,
+      "winding_operations_ratio_to_baseline": 1.103896103896104,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m008",
+      "inventory_ratio_to_baseline": 1.4087301587301584,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m009",
+      "inventory_ratio_to_baseline": 1.555091733663162,
+      "winding_operations_ratio_to_baseline": 1.2440733869305298,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m010",
+      "inventory_ratio_to_baseline": 1.5674603174603172,
+      "winding_operations_ratio_to_baseline": 1.253968253968254,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m011",
+      "inventory_ratio_to_baseline": 1.7303133374561943,
+      "winding_operations_ratio_to_baseline": 1.3842506699649557,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m012",
+      "inventory_ratio_to_baseline": 1.3978583260547826,
+      "winding_operations_ratio_to_baseline": 1.0,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m013",
+      "inventory_ratio_to_baseline": 1.543090359930604,
+      "winding_operations_ratio_to_baseline": 1.103896103896104,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m014",
+      "inventory_ratio_to_baseline": 1.5753641452363423,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m015",
+      "inventory_ratio_to_baseline": 1.739038342144014,
+      "winding_operations_ratio_to_baseline": 1.2440733869305298,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m016",
+      "inventory_ratio_to_baseline": 1.752869964417902,
+      "winding_operations_ratio_to_baseline": 1.253968253968254,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m017",
+      "inventory_ratio_to_baseline": 1.9349863243574241,
+      "winding_operations_ratio_to_baseline": 1.3842506699649557,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m018",
+      "inventory_ratio_to_baseline": 0.8767956553250589,
+      "winding_operations_ratio_to_baseline": 1.0,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m019",
+      "inventory_ratio_to_baseline": 0.9678913078263637,
+      "winding_operations_ratio_to_baseline": 1.103896103896104,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m020",
+      "inventory_ratio_to_baseline": 0.988134786159987,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m021",
+      "inventory_ratio_to_baseline": 1.0907981405662195,
+      "winding_operations_ratio_to_baseline": 1.2440733869305298,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m022",
+      "inventory_ratio_to_baseline": 1.099473916994915,
+      "winding_operations_ratio_to_baseline": 1.253968253968254,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m023",
+      "inventory_ratio_to_baseline": 1.2137049733060752,
+      "winding_operations_ratio_to_baseline": 1.3842506699649557,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m024",
+      "inventory_ratio_to_baseline": 1.0,
+      "winding_operations_ratio_to_baseline": 1.0,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m025",
+      "inventory_ratio_to_baseline": 1.103896103896104,
+      "winding_operations_ratio_to_baseline": 1.103896103896104,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m026",
+      "inventory_ratio_to_baseline": 1.126984126984127,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m027",
+      "inventory_ratio_to_baseline": 1.2440733869305298,
+      "winding_operations_ratio_to_baseline": 1.2440733869305298,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m028",
+      "inventory_ratio_to_baseline": 1.253968253968254,
+      "winding_operations_ratio_to_baseline": 1.253968253968254,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m029",
+      "inventory_ratio_to_baseline": 1.3842506699649557,
+      "winding_operations_ratio_to_baseline": 1.3842506699649557,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m030",
+      "inventory_ratio_to_baseline": 1.1182866608438262,
+      "winding_operations_ratio_to_baseline": 1.0,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m031",
+      "inventory_ratio_to_baseline": 1.2344722879444836,
+      "winding_operations_ratio_to_baseline": 1.103896103896104,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m032",
+      "inventory_ratio_to_baseline": 1.260291316189074,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m033",
+      "inventory_ratio_to_baseline": 1.3912306737152116,
+      "winding_operations_ratio_to_baseline": 1.2440733869305298,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m034",
+      "inventory_ratio_to_baseline": 1.4022959715343217,
+      "winding_operations_ratio_to_baseline": 1.253968253968254,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m035",
+      "inventory_ratio_to_baseline": 1.5479890594859398,
+      "winding_operations_ratio_to_baseline": 1.3842506699649557,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m036",
+      "inventory_ratio_to_baseline": 0.7306630461042156,
+      "winding_operations_ratio_to_baseline": 1.0,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m037",
+      "inventory_ratio_to_baseline": 0.8065760898553029,
+      "winding_operations_ratio_to_baseline": 1.103896103896104,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m038",
+      "inventory_ratio_to_baseline": 0.8234456551333224,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m039",
+      "inventory_ratio_to_baseline": 0.9089984504718494,
+      "winding_operations_ratio_to_baseline": 1.2440733869305298,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m040",
+      "inventory_ratio_to_baseline": 0.9162282641624291,
+      "winding_operations_ratio_to_baseline": 1.253968253968254,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m041",
+      "inventory_ratio_to_baseline": 1.0114208110883958,
+      "winding_operations_ratio_to_baseline": 1.3842506699649557,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m042",
+      "inventory_ratio_to_baseline": 0.8333333333333333,
+      "winding_operations_ratio_to_baseline": 1.0,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m043",
+      "inventory_ratio_to_baseline": 0.9199134199134199,
+      "winding_operations_ratio_to_baseline": 1.103896103896104,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m044",
+      "inventory_ratio_to_baseline": 0.9391534391534391,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m045",
+      "inventory_ratio_to_baseline": 1.0367278224421081,
+      "winding_operations_ratio_to_baseline": 1.2440733869305298,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m046",
+      "inventory_ratio_to_baseline": 1.0449735449735449,
+      "winding_operations_ratio_to_baseline": 1.253968253968254,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m047",
+      "inventory_ratio_to_baseline": 1.1535422249707963,
+      "winding_operations_ratio_to_baseline": 1.3842506699649557,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m048",
+      "inventory_ratio_to_baseline": 0.9319055507031885,
+      "winding_operations_ratio_to_baseline": 1.0,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m049",
+      "inventory_ratio_to_baseline": 1.028726906620403,
+      "winding_operations_ratio_to_baseline": 1.103896103896104,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "m050",
+      "inventory_ratio_to_baseline": 1.0502427634908948,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m051",
+      "inventory_ratio_to_baseline": 1.1593588947626763,
+      "winding_operations_ratio_to_baseline": 1.2440733869305298,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m052",
+      "inventory_ratio_to_baseline": 1.1685799762786013,
+      "winding_operations_ratio_to_baseline": 1.253968253968254,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m053",
+      "inventory_ratio_to_baseline": 1.2899908829049498,
+      "winding_operations_ratio_to_baseline": 1.3842506699649557,
+      "circumference_ratio_to_baseline": 1.253968253968254
+    },
+    {
+      "proposal_id": "m054",
+      "inventory_ratio_to_baseline": 1.4087301587301584,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m055",
+      "inventory_ratio_to_baseline": 1.126984126984127,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m056",
+      "inventory_ratio_to_baseline": 0.9391534391534391,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m057",
+      "inventory_ratio_to_baseline": 1.4087301587301584,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m058",
+      "inventory_ratio_to_baseline": 1.126984126984127,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "m059",
+      "inventory_ratio_to_baseline": 0.9391534391534391,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "price-a1.3-10",
+      "inventory_ratio_to_baseline": 1.0,
+      "winding_operations_ratio_to_baseline": 1.0,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "price-a1.3-40",
+      "inventory_ratio_to_baseline": 1.0,
+      "winding_operations_ratio_to_baseline": 1.0,
+      "circumference_ratio_to_baseline": 1.0
+    },
+    {
+      "proposal_id": "price-a1.7-10",
+      "inventory_ratio_to_baseline": 1.126984126984127,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    },
+    {
+      "proposal_id": "price-a1.7-40",
+      "inventory_ratio_to_baseline": 1.126984126984127,
+      "winding_operations_ratio_to_baseline": 1.126984126984127,
+      "circumference_ratio_to_baseline": 1.126984126984127
+    }
+  ],
+  "price_checks": [
+    {
+      "price_proposal_id": "price-a1.3-10",
+      "nominal_proposal_id": "m024",
+      "changed_economic_channels": [
+        "stellarator_09__stellaris__cas20_capital__cas20_capital",
+        "stellarator_09__stellaris__cas22_capital__cas22_capital",
+        "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency",
+        "stellarator_09__stellaris__cas90_1cfe_calc__cas90",
+        "stellarator_09__stellaris__contingency__cost",
+        "stellarator_09__stellaris__idc__cost",
+        "stellarator_09__stellaris__indirect__cost",
+        "stellarator_09__stellaris__installation__cost",
+        "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+        "stellarator_09__stellaris__lcoe_calc__lcoe",
+        "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost",
+        "stellarator_09__stellaris__magnet__winding_procurement__cost",
+        "stellarator_09__stellaris__magnet__winding_procurement__tape_cost",
+        "stellarator_09__stellaris__overnight_capital__overnight_capital",
+        "stellarator_09__stellaris__powercore_capital__powercore_capital",
+        "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal",
+        "stellarator_09__stellaris__supplementary__cost",
+        "stellarator_09__stellaris__total_capital__total_capital"
+      ],
+      "verdicts_unchanged": true
+    },
+    {
+      "price_proposal_id": "price-a1.3-40",
+      "nominal_proposal_id": "m024",
+      "changed_economic_channels": [
+        "stellarator_09__stellaris__cas20_capital__cas20_capital",
+        "stellarator_09__stellaris__cas22_capital__cas22_capital",
+        "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency",
+        "stellarator_09__stellaris__cas90_1cfe_calc__cas90",
+        "stellarator_09__stellaris__contingency__cost",
+        "stellarator_09__stellaris__idc__cost",
+        "stellarator_09__stellaris__indirect__cost",
+        "stellarator_09__stellaris__installation__cost",
+        "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+        "stellarator_09__stellaris__lcoe_calc__lcoe",
+        "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost",
+        "stellarator_09__stellaris__magnet__winding_procurement__cost",
+        "stellarator_09__stellaris__magnet__winding_procurement__tape_cost",
+        "stellarator_09__stellaris__overnight_capital__overnight_capital",
+        "stellarator_09__stellaris__powercore_capital__powercore_capital",
+        "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal",
+        "stellarator_09__stellaris__supplementary__cost",
+        "stellarator_09__stellaris__total_capital__total_capital"
+      ],
+      "verdicts_unchanged": true
+    },
+    {
+      "price_proposal_id": "price-a1.7-10",
+      "nominal_proposal_id": "m026",
+      "changed_economic_channels": [
+        "stellarator_09__stellaris__cas20_capital__cas20_capital",
+        "stellarator_09__stellaris__cas22_capital__cas22_capital",
+        "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency",
+        "stellarator_09__stellaris__cas90_1cfe_calc__cas90",
+        "stellarator_09__stellaris__contingency__cost",
+        "stellarator_09__stellaris__idc__cost",
+        "stellarator_09__stellaris__indirect__cost",
+        "stellarator_09__stellaris__installation__cost",
+        "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+        "stellarator_09__stellaris__lcoe_calc__lcoe",
+        "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost",
+        "stellarator_09__stellaris__magnet__winding_procurement__cost",
+        "stellarator_09__stellaris__magnet__winding_procurement__tape_cost",
+        "stellarator_09__stellaris__overnight_capital__overnight_capital",
+        "stellarator_09__stellaris__powercore_capital__powercore_capital",
+        "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal",
+        "stellarator_09__stellaris__supplementary__cost",
+        "stellarator_09__stellaris__total_capital__total_capital"
+      ],
+      "verdicts_unchanged": true
+    },
+    {
+      "price_proposal_id": "price-a1.7-40",
+      "nominal_proposal_id": "m026",
+      "changed_economic_channels": [
+        "stellarator_09__stellaris__cas20_capital__cas20_capital",
+        "stellarator_09__stellaris__cas22_capital__cas22_capital",
+        "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency",
+        "stellarator_09__stellaris__cas90_1cfe_calc__cas90",
+        "stellarator_09__stellaris__contingency__cost",
+        "stellarator_09__stellaris__idc__cost",
+        "stellarator_09__stellaris__indirect__cost",
+        "stellarator_09__stellaris__installation__cost",
+        "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+        "stellarator_09__stellaris__lcoe_calc__lcoe",
+        "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost",
+        "stellarator_09__stellaris__magnet__winding_procurement__cost",
+        "stellarator_09__stellaris__magnet__winding_procurement__tape_cost",
+        "stellarator_09__stellaris__overnight_capital__overnight_capital",
+        "stellarator_09__stellaris__powercore_capital__powercore_capital",
+        "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal",
+        "stellarator_09__stellaris__supplementary__cost",
+        "stellarator_09__stellaris__total_capital__total_capital"
+      ],
+      "verdicts_unchanged": true
+    }
+  ],
+  "qualification": "Identities are arithmetic checks against the native baseline and retained factors, supplementing the independent oracle rather than replacing it."
+}

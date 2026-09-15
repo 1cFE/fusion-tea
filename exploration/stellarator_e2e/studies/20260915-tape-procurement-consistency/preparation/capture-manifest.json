@@ -1,0 +1,57 @@
+{
+  "authority": "Copies of coordinator entering evidence and preparation documents; no candidate state inferred.",
+  "artifacts": [
+    {
+      "path": "preparation/design-preparation.md",
+      "sha256": "9691f5fbbf386d231e950aa180d97ddfe0bc4d3e97492a42f9b8c5deb08ed69e"
+    },
+    {
+      "path": "preparation/entering/comparison.json",
+      "sha256": "06bddb5807f033536d506b270b686f787867226edeaf29cb85e178cc3cf8c3d8"
+    },
+    {
+      "path": "preparation/entering/generated/contracts/model_contract.json",
+      "sha256": "17a81a074cd425f07bf548ba87daae3091746c832befb992db2f45fc28521c1e"
+    },
+    {
+      "path": "preparation/entering/generated/contracts/package_contract.json",
+      "sha256": "17517e3922c024e43ee85a117b4d4b9fe65af2f6ddb5108992e37b32c0dc0596"
+    },
+    {
+      "path": "preparation/entering/generated/inputs/stellarator_plant_params.json",
+      "sha256": "5104ced0f1a980bc30322ef9be6b1ddda2ea1836d64d929be16ad4655eb7711c"
+    },
+    {
+      "path": "preparation/entering/oracle_finance.py",
+      "sha256": "8cd2d9803c74bace69a4fe2f13bdc700686e9db69c650a0688c3c40204943873"
+    },
+    {
+      "path": "preparation/entering/package-identity.json",
+      "sha256": "631e84f21eb7e1306154cc10140894383b78942502ae1a803f730480fde35758"
+    },
+    {
+      "path": "preparation/entering/studies/manifest.json",
+      "sha256": "8c8985cb5a641a56b72c7f2c9e6e2183e848d83c79f29d633eb15ed32ce091a1"
+    },
+    {
+      "path": "preparation/entering/studies/oracle_entry.py",
+      "sha256": "21aa93f4fdacbd518541491d5390314f2e04fcfe0ef3fca2a5a7b172c9fb74cb"
+    },
+    {
+      "path": "preparation/entering/verify_stellaris.py",
+      "sha256": "34052bb044acde0d138e634b5f6d64235bf84969cfa40c09bd0003341b44c185"
+    },
+    {
+      "path": "preparation/goal.md",
+      "sha256": "5085841fe449e718567dd1ca06eac1ec4fd21de9cb8e6704d3e26e2bb5cf04ab"
+    },
+    {
+      "path": "preparation/proposals-draft.json",
+      "sha256": "13b723184e7ab782c8b2cb7eca27240068b1b84d7474896ff69ef980d9a21368"
+    },
+    {
+      "path": "preparation/study-brief.md",
+      "sha256": "e3fae6ae8306d715cdcc1c1a3ba0eb3f14dd69449377d9f844f471e1c10d4c68"
+    }
+  ]
+}
