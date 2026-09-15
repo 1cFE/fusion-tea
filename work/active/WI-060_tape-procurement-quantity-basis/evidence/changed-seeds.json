@@ -1,0 +1,10 @@
+{
+  "handwritten/mfe_conductor_grade/conductor_field_capability_impl.py": {
+    "before": "47ce8e53c285ca0c1e50595d324f3e2ad54cdc44a65e21e8ad6d43c164c86515",
+    "after": "45168c1d3b1ec7963ebea5aebd2b44f152b5a54d00b65e326568debaac1094b5"
+  },
+  "handwritten/mfe_winding_pack_cost/winding_pack_procurement_cost_impl.py": {
+    "before": "31f84bf84288e95b0de013aa2a1aafa8478a37e421b090305f732fb666d58a1d",
+    "after": "5467ce10fc9a5ecbb229114a442e1c7f55fd50d61f6d58ea12ddbe4baded1fe1"
+  }
+}

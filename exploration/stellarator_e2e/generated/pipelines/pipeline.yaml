@@ -195,14 +195,12 @@ modules:
     module_type: mfe_conductor_grade.Conductor_Field_CapabilityModule
     inputs:
       B_reference: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__B_grade_ref
-      price_reference: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__cost_per_kAm
       field_exponent: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__field_exponent
       j_reference: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__j_wp
       B_design: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__B_max
     outputs:
       quantity_factor: float stellarator_09__stellaris__magnet__conductor_grade__quantity_factor
       j_wp_effective: float stellarator_09__stellaris__magnet__conductor_grade__j_wp_effective
-      cost_per_kAm_effective: float stellarator_09__stellaris__magnet__conductor_grade__cost_per_kAm_effective
 
   # mfe_magnet_field.Winding_Pack_SizingModule
   stellarator_09__stellaris__magnet__wp_sizing:
@@ -493,15 +491,19 @@ modules:
       f_set: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__f_set
       winding_rate_1990: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__winding_rate_1990
       material_cost_in: float stellarator_09__stellaris__magnet__material_inventory__material_cost
+      tape_thickness: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__tape_thickness
       n_coils: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__n_coils
+      tape_width: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__tape_width
+      tape_volume_in: float stellarator_09__stellaris__magnet__material_inventory__tape_volume
+      tape_price_per_m: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m
       c_coil: float stellarator_09__stellaris__magnet__coil_length__c_coil.root
       turn_current: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__turn_current
-      cost_per_kAm: float stellarator_09__stellaris__magnet__conductor_grade__cost_per_kAm_effective
       I_coil: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__I_coil
       nonplanar_factor: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__nonplanar_factor
       cost_escalation: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__cost_escalation
     outputs:
       winding_fabrication_cost: float stellarator_09__stellaris__magnet__winding_procurement__winding_fabrication_cost
+      tape_length: float stellarator_09__stellaris__magnet__winding_procurement__tape_length
       cost: float stellarator_09__stellaris__magnet__winding_procurement__cost
       tape_cost: float stellarator_09__stellaris__magnet__winding_procurement__tape_cost
       conductor_length: float stellarator_09__stellaris__magnet__winding_procurement__conductor_length
@@ -1483,7 +1485,6 @@ modules:
       stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate: float stellaris__fuel_cycle__exhaust_rate.json
       stellarator_09__stellaris__magnet__conductor_grade__quantity_factor: float stellaris__magnet__winding_pack__conductor_quantity_factor.json
       stellarator_09__stellaris__magnet__conductor_grade__j_wp_effective: float stellaris__magnet__winding_pack__j_wp_effective.json
-      stellarator_09__stellaris__magnet__conductor_grade__cost_per_kAm_effective: float stellaris__magnet__winding_pack__cost_per_kAm_effective.json
       stellarator_09__stellaris__magnet__wp_sizing__wp_side: RootModel[float] stellaris__cryoplant__wp_side.json
       stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required: float stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required.json
       stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total: float stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total.json
@@ -1556,6 +1557,7 @@ modules:
       stellarator_09__stellaris__magnet__material_inventory__helium_density: float stellarator_09__stellaris__magnet__material_inventory__helium_density.json
       stellarator_09__stellaris__magnet__material_inventory__cost_solder: float stellarator_09__stellaris__magnet__material_inventory__cost_solder.json
       stellarator_09__stellaris__magnet__winding_procurement__winding_fabrication_cost: float stellaris__magnet__winding_fabrication_cost.json
+      stellarator_09__stellaris__magnet__winding_procurement__tape_length: float stellaris__magnet__tape_length.json
       stellarator_09__stellaris__magnet__winding_procurement__cost: float stellaris__magnet__winding_cost.json
       stellarator_09__stellaris__magnet__winding_procurement__tape_cost: float stellaris__magnet__tape_procurement_cost.json
       stellarator_09__stellaris__magnet__winding_procurement__conductor_length: float stellarator_09__stellaris__magnet__winding_procurement__conductor_length.json

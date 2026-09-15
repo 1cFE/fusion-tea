@@ -1,6 +1,6 @@
 {
-  "derived_against_semantic_fingerprint": "bf7b8afe4fc92c7ce3e713f799a4dcaead0f71c0bc851c93aae640514ab104ea",
-  "entry_points": 289,
+  "derived_against_semantic_fingerprint": "ef1f4c896cd50cdfcf28872693a042a07254a2f4be5b2a3a35a61b70f4ee3040",
+  "entry_points": 292,
   "by_entry_type": {
     "library_default": [
       "stellarator_09__stellaris__blanket__blanket_cost__alpha",
@@ -234,6 +234,9 @@
       "stellarator_09__stellaris__magnet__winding_pack__rho_copper",
       "stellarator_09__stellaris__magnet__winding_pack__rho_solder",
       "stellarator_09__stellaris__magnet__winding_pack__rho_steel",
+      "stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m",
+      "stellarator_09__stellaris__magnet__winding_pack__tape_thickness",
+      "stellarator_09__stellaris__magnet__winding_pack__tape_width",
       "stellarator_09__stellaris__magnet__winding_pack__winding_rate_1990",
       "stellarator_09__stellaris__misc_plant__cost_per_mw",
       "stellarator_09__stellaris__n_mod",

@@ -916,11 +916,6 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__magnet__conductor_grade__cost_per_kAm_effective",
-      "field_name": "cost_per_kAm_effective",
-      "python_type": "float"
-    },
-    {
       "channel_name": "stellarator_09__stellaris__magnet__wp_sizing__wp_side",
       "field_name": "root",
       "python_type": "float"
@@ -1278,6 +1273,11 @@
     {
       "channel_name": "stellarator_09__stellaris__magnet__winding_procurement__winding_fabrication_cost",
       "field_name": "winding_fabrication_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__winding_procurement__tape_length",
+      "field_name": "tape_length",
       "python_type": "float"
     },
     {
@@ -3399,6 +3399,27 @@
       "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__rho_steel"
     },
     {
+      "default_value": 20.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m"
+    },
+    {
+      "default_value": 5.6e-05,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__tape_thickness"
+    },
+    {
+      "default_value": 0.006,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__tape_width"
+    },
+    {
       "default_value": 480.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -3826,5 +3847,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "bf7b8afe4fc92c7ce3e713f799a4dcaead0f71c0bc851c93aae640514ab104ea"
+  "semantic_fingerprint": "ef1f4c896cd50cdfcf28872693a042a07254a2f4be5b2a3a35a61b70f4ee3040"
 }

@@ -8,6 +8,8 @@ from tests.study.structure_ledger import renamed_keys, renamed_values
 
 from tests.models.current_mfe_regressions import (WI059_PARAMETERS, WI059_EXISTING_MAPPED_PARAMETERS, WI059_CHANNELS, WI059_ORACLE_ADDED_CHANNELS, WI059_REPLAY, wi059_replay, wi059_dormant_outputs)
 
+from tests.models.current_mfe_regressions import WI060_PARAMETERS, LIVE_CONDUCTOR_CHANNELS
+
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -37,7 +39,7 @@ def wi058_length(p, r_coil_centre):
 
 
 def wi040_expected(row):
-    """Restate only WI-040 accounting using mass identities and linear cost increments.
+    """Restate WI-040 accounts with WI-060 physical-tape pricing using mass identities and linear cost increments.
 
     Frozen controls remain unchanged. Derive downstream increments from their
     existing capital charge rates, independently of the live oracle cost branches.
@@ -50,8 +52,7 @@ def wi040_expected(row):
     # effective reference values; off-reference grade claims have separate tests.
     assert p['magnet_B_max'] == p['magnet_B_grade_ref']
     expected.update(conductor_quantity_factor=1.0,
-                    conductor_j_wp_effective=p['magnet_j_wp'],
-                    conductor_cost_per_kAm_effective=p['magnet_cost_per_kAm'])
+                    conductor_j_wp_effective=p['magnet_j_wp'])
     volume = p['magnet_f_wp_vol'] * p['magnet_n_coils'] * p['magnet_I_coil'] / p['magnet_j_wp'] / 1e6 * c_coil
     rho = p['magnet_helium_pressure'] / p['magnet_helium_gas_constant'] / p['T_cold_cryo']
     materials = ('copper', 'solder', 'steel', 'helium')
@@ -61,12 +62,14 @@ def wi040_expected(row):
         expected['winding_cost_' + m] = mass * p['magnet_price_' + m]
     material_cost = sum(expected['winding_cost_' + m] for m in materials)
     kam = p['magnet_n_coils'] * p['magnet_I_coil'] * p['magnet_f_set'] * c_coil / 1000
-    tape = kam * p['magnet_cost_per_kAm']
+    tape_volume = volume * (1 - sum(p['magnet_f_' + m] for m in materials))
+    tape_length = tape_volume / (p['magnet_tape_width'] * p['magnet_tape_thickness'])
+    tape = tape_length * p['magnet_tape_price_per_m']
     length = 1000 * kam / p['magnet_turn_current']
     fabrication = length * p['magnet_winding_rate_1990'] * p['magnet_cost_escalation'] * p['magnet_nonplanar_factor']
     expected.update(vol_winding_pack=volume, winding_helium_density=rho,
                     winding_tape_volume=volume * (1 - sum(p['magnet_f_' + m] for m in materials)),
-                    winding_material_cost=material_cost, tape_procurement_cost=tape,
+                    winding_material_cost=material_cost, tape_procurement_cost=tape, tape_length=tape_length,
                     conductor_length=length, winding_fabrication_cost=fabrication,
                     winding_pack_legacy=old['winding_pack'])
     delta = tape + material_cost + fabrication - old['winding_pack']
@@ -159,23 +162,23 @@ def test_valid_outputs_exactly_preserved_and_physical_identities(row):
 
 
 def test_adapter_contract_and_ambient_limit_preserved():
-    from tests.models.current_mfe_regressions import (WI040_PARAMETERS, WI040_CHANNELS, WI038_PARAMETERS, WI038_CHANNELS,
+    from tests.models.current_mfe_regressions import (WI040_PARAMETERS, WI040_CHANNELS, WI038_PARAMETERS,
                                                       WI058_PARAMETERS, WI058_RETIRED)
     old_inputs = renamed_keys(BEFORE['input_mapping'])
     # WI-058 (2026-09-14): the seam maps c_coil_ref in place of the retired k_coil; the count stays 118.
     assert WI058_RETIRED <= old_inputs.keys()
     old_inputs = {k: v for k, v in old_inputs.items() if k not in WI058_RETIRED}
-    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS} == old_inputs
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS
+    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS} == old_inputs
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS
     old_outputs = renamed_values(BEFORE['output_mapping'])
     # The old selected winding alias now denotes the additive account; preserve its
     # previous channel under the explicit legacy name, and add the subtotal coverage.
     old_outputs['winding_pack_legacy'] = old_outputs.pop('winding_pack')
     old_outputs['p_cryo'] = oracle.P + 'cryoplant__refrigeration_sum__total'
-    extras = WI040_CHANNELS | WI038_CHANNELS | WI059_ORACLE_ADDED_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
+    extras = WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_ORACLE_ADDED_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
     assert {k: v for k, v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v not in extras} == old_outputs
     assert set(oracle.ORACLE_OUTPUT_TO_CHANNEL.values()) - set(old_outputs.values()) == extras
-    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 118 + len(WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS)
+    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 118 + len(WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS)
     for suffix in ("cryoplant__T_amb_cryo", "unknown_domain_input"):  # WI-057 (2026-09-13): the key carries its part's path
         with pytest.raises(oracle.OracleSeamError, match="no declared oracle mapping"):
             oracle.evaluate({oracle.P + suffix: 300.0})

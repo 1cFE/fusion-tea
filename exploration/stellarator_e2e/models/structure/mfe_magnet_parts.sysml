@@ -30,7 +30,7 @@ package mfe_magnet_parts {
         // printed typical winding circumference [m] at the reference bore a_coil_ref
         // (WI-058; replaces the WI-036 shape factor k_coil over the major radius)
         attribute c_coil_ref : Real;
-        // Reference tape procurement rate [dollars/(kA m)] at B_grade_ref.
+        // Legacy comparison-only conductor rate [dollars/(kA m)].
         // Existing ungraded comparison accounts continue to consume this rate.
         attribute cost_per_kAm : Real;
         // Effective operating current per composite-conductor turn [A].
@@ -86,14 +86,16 @@ package mfe_magnet_parts {
         attribute cost_escalation : Real; // dimensionless year conversion
         attribute nonplanar_factor : Real; // dimensionless transfer assumption
         // Reference winding-pack current density [A/mm^2] at B_grade_ref.
-        // Hold fixed in the supported priced-transfer study; other values are calibration.
+        // Fixed-construction changes alter operating current per tape; absolute margin remains unknown.
         attribute j_wp : Real;
         attribute B_grade_ref : Real; // reference purchased envelope [T]
         attribute field_exponent : Real; // positive relative field exponent [1]
         // Derived capability quantities, bound by the magnet-owned analysis.
         attribute conductor_quantity_factor : Real;
         attribute j_wp_effective : Real;
-        attribute cost_per_kAm_effective : Real;
+        attribute tape_width : Real; // full purchased tape width [m]
+        attribute tape_thickness : Real; // full composite thickness, including stabilizer [m]
+        attribute tape_price_per_m : Real; // dollars per metre of this width/construction
         // winding-pack cross-section side, worst coil [m]
         attribute wp_side : Real;
         // winding-pack set-distribution factor [1] (WI-036 cold volume)

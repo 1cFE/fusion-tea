@@ -65,7 +65,7 @@ def test_design_point_identity(oracle):
     assert ch[f"{P}rb__r_coil_centre"] == A_COIL_REF
     assert ch[f"{P}magnet__winding_procurement__conductor_length"] == 321600.0  # 48 coils x 25 m x 268 turns
     assert ch[f"{P}magnet__wp_volume__vol_winding_pack"] == pytest.approx(136.56, rel=1e-13)
-    assert ch[f"{P}magnet__winding_procurement__cost"] == 1570369801.0347085
+    assert ch[f"{P}magnet__winding_procurement__cost"] == pytest.approx(1570369801.0347085 - 72428571.42857143)
 
 
 def test_the_winding_chain_follows_the_bore_at_fixed_major_radius(oracle):

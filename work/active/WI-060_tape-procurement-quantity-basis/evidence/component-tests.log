@@ -1,0 +1,63 @@
+........................................................................ [ 30%]
+........................................................................ [ 60%]
+......F...............................F................................. [ 91%]
+.....................                                                    [100%]
+=================================== FAILURES ===================================
+________ test_public_pack_volume_scales_materials_without_rebuying_tape ________
+
+evaluate = <function evaluate.<locals>.run at 0x752219b585e0>
+
+    @pytest.mark.codegen_available
+    def test_public_pack_volume_scales_materials_without_rebuying_tape(evaluate):
+        before = evaluate()
+        after = evaluate({'magnet__winding_pack__f_wp_vol': 2 * .8780864197530865})
+        assert output(after, 'magnet__wp_volume__vol_winding_pack') == pytest.approx(2 * output(before, 'magnet__wp_volume__vol_winding_pack'))
+        for suffix in INVENTORY_OUTPUTS:
+            factor = 1 if suffix == 'helium_density' else 2
+            assert output(after, 'magnet__material_inventory__' + suffix) == pytest.approx(factor * output(before, 'magnet__material_inventory__' + suffix))
+        for suffix in ('tape_cost', 'conductor_length', 'winding_fabrication_cost'):
+>           assert output(after, 'magnet__winding_procurement__' + suffix) == output(before, 'magnet__winding_procurement__' + suffix)
+E           AssertionError: assert 1463142857.1428576 == 731571428.5714288
+E            +  where 1463142857.1428576 = output(ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...tus': 'satisfied', 'margin': 7699680.103536234, 'observed': mappingproxy({'p_loop_margin_in': 7699680.103536234})}))})), ('magnet__winding_procurement__' + 'tape_cost'))
+E            +  and   731571428.5714288 = output(ModelEvidence(responses=mappingproxy({'headline': 'violated', 'stellarator_09__stellaris__wp_stress_ok__f38a102195da1d...tus': 'satisfied', 'margin': 7699680.103536234, 'observed': mappingproxy({'p_loop_margin_in': 7699680.103536234})}))})), ('magnet__winding_procurement__' + 'tape_cost'))
+
+tests/models/test_winding_pack_cost.py:246: AssertionError
+_______ test_reference_preserves_every_audited_wi040_channel_and_verdict _______
+
+evaluate = <function evaluate.<locals>.run at 0x752219b540e0>
+
+    @pytest.mark.codegen_available
+    def test_reference_preserves_every_audited_wi040_channel_and_verdict(evaluate):
+        from tests.models.current_mfe_regressions import WI059_REPLAY
+        baseline = json.loads((ROOT / "work/completed/20260914_WI-038_conductor-grade-lever/baseline-before.json").read_text())
+        assert len(baseline["channels"]) == 174
+        assert len(baseline["verdicts"]) == 18
+        row = evaluate({key.removeprefix(P): value for key, value in WI059_REPLAY.items()})
+>       assert {key: row.outputs[key] for key in baseline["channels"]} == baseline["channels"]
+E       AssertionError: assert {'stellarator...37763854, ...} == {'stellarator...37763854, ...}
+E         
+E         Omitting 156 identical items, use -vv to show
+E         Differing items:
+E         {'stellarator_09__stellaris__total_capital__total_capital': 8629837074.42305} != {'stellarator_09__stellaris__total_capital__total_capital': 8748878936.137335}
+E         {'stellarator_09__stellaris__supplementary__cost': 611071598.1794827} != {'stellarator_09__stellaris__supplementary__cost': 615067917.0366256}
+E         {'stellarator_09__stellaris__overnight_capital__overnight_capital': 8629837074.42305} != {'stellarator_09__stellaris__overnight_capital__overnight_capital': 8748878936.137335}
+E         {'stellarator_09__stellaris__powercore_...
+E         
+E         ...Full output truncated (16 lines hidden), use '-vv' to show
+
+tests/models/test_conductor_grade.py:127: AssertionError
+=============================== warnings summary ===============================
+tests/models/test_winding_pack_cost.py::test_extra_cold_volume_does_not_purchase_winding_material
+tests/models/test_winding_pack_cost.py::test_public_pack_volume_scales_materials_without_rebuying_tape
+tests/models/test_conductor_grade.py::test_purchased_envelope_prices_each_volume_once_and_keeps_demand_separate[27.5]
+tests/models/test_conductor_grade.py::test_purchased_envelope_prices_each_volume_once_and_keeps_demand_separate[30.0]
+tests/models/test_conductor_grade.py::test_crossed_operating_current_and_envelope_verdicts
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_winding_pack_cost.py::test_public_pack_volume_scales_materials_without_rebuying_tape
+FAILED tests/models/test_conductor_grade.py::test_reference_preserves_every_audited_wi040_channel_and_verdict
+2 failed, 235 passed, 5 warnings in 36.22s

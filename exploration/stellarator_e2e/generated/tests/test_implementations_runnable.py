@@ -450,7 +450,7 @@ class TestConductor_Field_CapabilityRunnable:
 
             # If implemented, verify return type
             assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
-            assert len(result) == 3, f"Expected 3 outputs"
+            assert len(result) == 2, f"Expected 2 outputs"
             assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
 
         except NotImplementedError:
@@ -1110,7 +1110,7 @@ class TestWinding_Pack_Procurement_CostRunnable:
 
             # If implemented, verify return type
             assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
-            assert len(result) == 4, f"Expected 4 outputs"
+            assert len(result) == 5, f"Expected 5 outputs"
             assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
 
         except NotImplementedError:

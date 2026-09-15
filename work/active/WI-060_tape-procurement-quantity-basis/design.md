@@ -1,5 +1,5 @@
 ---
-Status: review
+Status: implementing
 Created: 2026-09-15
 Updated: 2026-09-15
 Related Artifacts: spec.md; ../../orchestration/goals/tape-procurement-consistency/evidence/tape-basis-research.md
@@ -19,6 +19,8 @@ Let Q = (B_design/B_reference)^field_exponent, j_eff = j_reference/Q, A_pack = I
 Procurement receives V_tape = V_pack f_tape from material inventory and computes A_tape = tape_width × tape_thickness, L_tape = V_tape/A_tape and C_tape = L_tape × tape_price_per_m. Width and full composite thickness are metres, tape length is metres and price is dollars per tape-metre. Q has no pricing input or output. This applies its quantity effect exactly once through V_pack.
 
 Winding work retains L_conductor = n_coils × I_coil × f_set × c_coil / turn_current and C_winding = L_conductor × winding_rate_1990 × cost_escalation × nonplanar_factor. Total procurement is C_tape + material_cost_in + C_winding. L_conductor measures composite conductor wound into coils, while L_tape sums individual tapes inside it. Tape substrate/stabilizer are included in purchased tape; external copper jacket, solder, steel and helium retain their existing separate accounts.
+
+The reference-coil tape loading is j_eff × A_tape/f_tape with consistent area units. Set-effective loading also includes f_set/f_wp_vol, because summed coil currents and summed pack cross-sections use different held factors. The reference ratio is 1.00914409. Separate factor perturbations check this distinction.
 
 ## Parameters and provenance
 
@@ -55,11 +57,11 @@ All inputs and outputs must be finite. Tape volume and unit price are nonnegativ
 ## Validation and implementation checklist
 
 - [x] Coordinator preserves entering package identity and matched data before mutation: goal evidence/entering/comparison.json and package identity.
-- [ ] Finalize source citations and construction/price basis; independent source/math/interface review passes.
-- [ ] Update canonical definitions, bindings and instance values; synchronize twins; parse and inspect generated input/output ownership.
-- [ ] Record an explicit changed-seed manifest naming grade and procurement; preserve the other 20 manual bodies; regenerate twice into fresh directories and prove package equality.
-- [ ] Test the direct volume/cross-section identity and dollar/metre cost identity in native wrappers and independent oracle, including zero, nonfinite, overflow and underflow domains.
-- [ ] Test independent responses to reference density (0.8/1/1.2), envelope (20/24.9/30 T), geometry/current, width, thickness and unit price. Density/envelope change tape and non-tape inventory together; fixed-current winding conductor metres remain unchanged. Test combined density/envelope scaling to detect double counting.
+- [x] Finalize source citations and construction/price basis; independent source/math/interface review passes: goal evidence/design-review.md.
+- [x] Update canonical definitions, bindings and instance values; synchronize twins; parse and inspect generated input/output ownership.
+- [x] Record an explicit changed-seed manifest naming grade and procurement; preserve the other 20 manual bodies; regenerate twice into fresh directories and prove package equality.
+- [x] Test the direct volume/cross-section identity and dollar/metre cost identity in native wrappers and independent oracle, including zero, nonfinite, overflow and underflow domains.
+- [x] Test independent responses to reference density (0.8/1/1.2), envelope (20/24.9/30 T), geometry/current, width, thickness and unit price. Density/envelope change tape and non-tape inventory together; fixed-current winding conductor metres remain unchanged. Test combined density/envelope scaling to detect double counting.
 - [ ] Compare every shared physical channel and all eighteen predicate definitions/values against matched entering cases. Predicate semantics remain; cases whose density changes may legitimately change stress, strain or related thermal outputs.
 - [ ] Repair all affected live model/study consumers; retain legacy comparison outputs and historical study records. Run required native validation and fresh generation/integration checks.
 - [ ] Register validation and traceability using native PM; document design-point cost delta from the entering account and residual assumptions; commit owned edits for independent integrated review.

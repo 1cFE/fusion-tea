@@ -8,7 +8,7 @@ Units: volume and tape_volume m^3; densities kg/m^3; masses kg; pressure Pa; tem
 Domain: every input and output finite; volume_in >= 0; each fraction >= 0 and < 1, with sum < 1; densities, pressure, temperature and gas constant > 0; prices >= 0. The typed manual completion raises ValueError naming the calculation and offending quantity before arithmetic, and refuses non-finite results. Arithmetic validity does not qualify an arbitrary temperature or composition.
 *Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_021_table_0.png; knowledge/sources/nist_helium_isotherm_20_k_15_to_20_bar/output.md; knowledge/sources/nist_helium_isobar_20_bar_10_to_50_k/output.md.
 *Reference**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_021_table_0.png; knowledge/sources/nist_helium_isotherm_20_k_15_to_20_bar/output.md (20 K, 15/20 bar); knowledge/sources/nist_helium_isobar_20_bar_10_to_50_k/output.md.
-*Last Updated**: 2026-09-13
+*Last Updated**: 2026-09-15
 
 Inputs:
     - price_steel: price_steel parameter
@@ -101,7 +101,7 @@ Units: volume and tape_volume m^3; densities kg/m^3; masses kg; pressure Pa; tem
 Domain: every input and output finite; volume_in >= 0; each fraction >= 0 and < 1, with sum < 1; densities, pressure, temperature and gas constant > 0; prices >= 0. The typed manual completion raises ValueError naming the calculation and offending quantity before arithmetic, and refuses non-finite results. Arithmetic validity does not qualify an arbitrary temperature or composition.
 *Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_021_table_0.png; knowledge/sources/nist_helium_isotherm_20_k_15_to_20_bar/output.md; knowledge/sources/nist_helium_isobar_20_bar_10_to_50_k/output.md.
 *Reference**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_021_table_0.png; knowledge/sources/nist_helium_isotherm_20_k_15_to_20_bar/output.md (20 K, 15/20 bar); knowledge/sources/nist_helium_isobar_20_bar_10_to_50_k/output.md.
-*Last Updated**: 2026-09-13
+*Last Updated**: 2026-09-15
 
 Inputs:
     - price_steel: price_steel parameter
@@ -145,7 +145,7 @@ Units: volume and tape_volume m^3; densities kg/m^3; masses kg; pressure Pa; tem
 Domain: every input and output finite; volume_in >= 0; each fraction >= 0 and < 1, with sum < 1; densities, pressure, temperature and gas constant > 0; prices >= 0. The typed manual completion raises ValueError naming the calculation and offending quantity before arithmetic, and refuses non-finite results. Arithmetic validity does not qualify an arbitrary temperature or composition.
 *Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_021_table_0.png; knowledge/sources/nist_helium_isotherm_20_k_15_to_20_bar/output.md; knowledge/sources/nist_helium_isobar_20_bar_10_to_50_k/output.md.
 *Reference**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_021_table_0.png; knowledge/sources/nist_helium_isotherm_20_k_15_to_20_bar/output.md (20 K, 15/20 bar); knowledge/sources/nist_helium_isobar_20_bar_10_to_50_k/output.md.
-*Last Updated**: 2026-09-13
+*Last Updated**: 2026-09-15
 
     IMPLEMENTATION: See stellarator_tea.handwritten.mfe_winding_pack_cost.winding_pack_material_inventory_impl
     for manual implementation.

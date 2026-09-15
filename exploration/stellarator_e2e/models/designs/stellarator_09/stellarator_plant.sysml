@@ -288,7 +288,7 @@ package stellarator_09 {
                 //   (conductor_cost_rebco = 50.0). NOT x1e6 -- already $/kA-m; the
                 //   magnet formula omits the /1e6 M$ conversion and yields $.
                 :>> cost_per_kAm = 50.0 {
-                    doc /* Reference tape procurement [dollars/(kA m)]. **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Reference**: line 56, conductor_cost_rebco = 50.0 (pin 0254385). **Basis**: [AGENT] WI-038 economically normalizes this inherited rate to the 24.9 T reference envelope; no vendor quote establishes that field/temperature rating. The relative multiplier prices tape quantity, not a manufacturer premium. Both legacy comparison accounts retain this ungraded rate. **Last Updated**: 2026-09-13 */
+                    doc /* Legacy comparison-only conductor rate [dollars/(kA m)]. **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Reference**: line 56, conductor_cost_rebco = 50.0 (pin 0254385). **Basis**: inherited ampere-metre comparison rate with unspecified rating; retained for both legacy comparison accounts. Selected procurement uses separately declared dollars per tape-metre. **Last Updated**: 2026-09-15 */
                 }
             :>> coil_t = 0.30 {
                 doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py **Ref**: geometry.py:37 (RadialBuild.coil_t = 0.30 default) **Basis**: radial-build coil-pack default */
@@ -306,8 +306,17 @@ package stellarator_09 {
             }
             }
             part :>> winding_pack {
+                :>> tape_width = 0.006 {
+                    doc /* Purchased tape width [m]. **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf **Reference**: Stellaris printed p. 24, 6 mm tape width; Fig. 40 shows 6 x 6 mm stack. **Basis**: [AGENT] fixed-width construction selection; full thickness is a separate cross-source transfer assumption. **Last Updated**: 2026-09-15 */
+                }
+                :>> tape_thickness = 0.000056 {
+                    doc /* Full composite tape thickness [m], including substrate, buffers, REBCO, silver and copper. **Source**: knowledge/sources/development_and_large_volume_production_of_extremely_high/raw.pdf **Reference**: Molodyk printed p. 4 Fig. 4 caption, 56 micrometre total thickness with 40 micrometre substrate and 5 micrometre copper per side; p. 7 Fig. 6 composite layers. **Basis**: [AGENT] transfer the measured 4 mm product construction to 6 mm width; not a confirmed Stellaris bill of materials. **Last Updated**: 2026-09-15 */
+                }
+                :>> tape_price_per_m = 20.0 {
+                    doc /* Assumed dollars per metre of the selected 6 mm x 56 micrometre complete tape. **Source**: work/active/WI-060_tape-procurement-quantity-basis/design.md **Reference**: Parameters and provenance; goal evidence/tape-basis-research.md. **Basis**: [AGENT] independent illustrative engineering price, not a supplier quote or a fit to entering costs; 10/20/40 dollars/m sensitivity. No critical-current rating conversion or whole-plant price-year normalization is claimed. **Last Updated**: 2026-09-15 */
+                }
                 :>> B_grade_ref = 24.9 {
-                    doc /* Reference purchased field envelope [T]. **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_002_table_0.png **Reference**: Table 2, peak conductor magnetic field strength 24.9 T. **Basis**: [AGENT] normalize WI-038 to the inherited design envelope. This exceeds the approximately 24 T endpoint visible for Molodyk's 20 K measurements in Fig. 1a; equality at the anchor does not qualify the conductor. Hold this economic reference fixed in priced transfer. **Last Updated**: 2026-09-13 */
+                    doc /* Reference purchased field envelope [T]. **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_002_table_0.png **Reference**: Table 2, peak conductor magnetic field strength 24.9 T. **Basis**: [AGENT] normalize WI-038 to the inherited design envelope. This exceeds the approximately 24 T endpoint visible for Molodyk's 20 K measurements in Fig. 1a; equality at the anchor does not qualify the conductor. Hold this field reference fixed for the relative quantity interpretation. **Last Updated**: 2026-09-13 */
                 }
                 :>> field_exponent = 0.6 {
                     doc /* Relative field exponent [1]. **Source**: knowledge/sources/development_and_large_volume_production_of_extremely_high/raw.pdf **Reference**: Molodyk et al. (2021), printed p. 5: approximate critical-current field exponent 0.6 at 20 K. **Basis**: [AGENT] inverse relative-current-density law for tape quantity at fixed operating fraction, tape family and angular assumption. The paragraph reports no fit interval. The 20-30 T window is an extrapolative sensitivity choice, not source-validated capability. Keep temperature at 20 K for this interpretation; exponent changes are explicit scenarios. **Last Updated**: 2026-09-13 */
@@ -395,12 +404,11 @@ package stellarator_09 {
                 // Bound as the float64 of the printed pair (15.4 MA, 360 mm) so
                 // that wp_side reproduces 0.360000 m exactly; the printed j_WP is
                 // 119 A/mm^2 (Table 8), and the design range across the six unique
-                // coils is 112-124. WI-038 holds this reference fixed for priced
-                // transfer; live sizing reads j_wp_effective after envelope grading.
-                // Independent reference-density changes remain calibration/arithmetic,
-                // not priced same-technology transfer without a new inventory/price basis.
+                // coils is 112-124. WI-060 holds tape construction and material fractions
+                // fixed: lower density buys more tape at lower operating current per tape.
+                // Higher density consumes unknown current margin; no manufacturing claim.
                 :>> j_wp = 118.8271604938272 {
-                    doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_022_table_0.png **Ref**: Table 8, image-verified: j_WP 119/112/120/112/122/124 A/mm^2; total amp-turns 15.4/14.6/13.8/12.9/12.5/11.2 MA; cross-section sides 360/360/340/340/320/300 mm. **Basis**: calibrated worst-coil reference density from 15.4 MA and 0.36 m, held at 118.8271604938272 A/mm^2 throughout WI-038 priced transfer together with composition and coil-set shape/distribution factors. Independent changes require a separately justified reference price/inventory basis. **Last Updated**: 2026-09-13 */
+                    doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_022_table_0.png **Ref**: Table 8, image-verified: j_WP 119/112/120/112/122/124 A/mm^2; total amp-turns 15.4/14.6/13.8/12.9/12.5/11.2 MA; cross-section sides 360/360/340/340/320/300 mm. **Basis**: calibrated worst-coil reference density from 15.4 MA and 0.36 m, 118.8271604938272 A/mm^2. WI-060 fixed-construction density changes vary physical tape inventory and operating current per tape; set-effective loading includes f_set/f_wp_vol. Absolute current margin remains unqualified. **Last Updated**: 2026-09-13 */
                 }
                 // Winding-pack set-distribution factor [1] = printed total winding-pack
                 // volume over the worst-coil-uniform reference = 136.56 / (48 * 0.36^2 * 25)

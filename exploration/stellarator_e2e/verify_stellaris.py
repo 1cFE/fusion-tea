@@ -286,6 +286,7 @@ IN = dict(
     #   held magnet_B=9.0 is retired. Lever and coil-set facts mirror the
     #   stellarator_plant bindings (Table 2/8 images; design D2/D3/D4/D5).
     magnet_G=78.95683520871486,
+    magnet_tape_width=0.006, magnet_tape_thickness=0.000056, magnet_tape_price_per_m=20.0,
     magnet_cost_per_kAm=50.0, magnet_coil_markup=5.87,  # 1cfe-form comparison channel
     magnet_n_coils=48.0, magnet_I_coil=15400000.0,
     magnet_k_link=0.7731331164622419, magnet_two_pi=6.283185307179586,
@@ -546,12 +547,12 @@ def _winding_pack_side(current, density):
     return (current / density) ** 0.5 / 1000.0
 
 
-def _conductor_field_capability(B_design, B_reference, field_exponent, j_reference, price_reference):
-    """WI-038 independent relative quantity, reference density and tape-price relation."""
+def _conductor_field_capability(B_design, B_reference, field_exponent, j_reference):
+    """Relative envelope quantity and density; no economic multiplier."""
     facts = dict(B_design=B_design, B_reference=B_reference, field_exponent=field_exponent,
-                 j_reference=j_reference, price_reference=price_reference)
+                 j_reference=j_reference)
     for name, value in facts.items():
-        if not math.isfinite(value) or (value < 0 if name == 'price_reference' else value <= 0):
+        if not math.isfinite(value) or value <= 0:
             raise ValueError(f'oracle Conductor Field Capability: invalid {name}')
     ratio = B_design / B_reference
     if not math.isfinite(ratio) or ratio <= 0:
@@ -562,10 +563,9 @@ def _conductor_field_capability(B_design, B_reference, field_exponent, j_referen
         raise ValueError('oracle Conductor Field Capability: invalid quantity_factor') from exc
     if not math.isfinite(quantity) or quantity <= 0:
         raise ValueError('oracle Conductor Field Capability: invalid quantity_factor')
-    result = dict(quantity_factor=quantity, j_wp_effective=j_reference / quantity,
-                  cost_per_kAm_effective=price_reference * quantity)
+    result = dict(quantity_factor=quantity, j_wp_effective=j_reference / quantity)
     for name, value in result.items():
-        if not math.isfinite(value) or (value < 0 if name == 'cost_per_kAm_effective' else value <= 0):
+        if not math.isfinite(value) or value <= 0:
             raise ValueError(f'oracle Conductor Field Capability: invalid {name}')
     return result
 
@@ -611,23 +611,31 @@ def _winding_material_inventory(p, volume):
     return result
 
 
-def _winding_procurement(p, circumference, material_cost):
-    """Independent ampere-metre tape purchase plus conductor-metre operations."""
-    names = ("n_coils", "I_coil", "f_set", "cost_per_kAm", "turn_current",
+def _winding_procurement(p, circumference, material_cost, tape_volume):
+    """Direct volume/area purchase with independently expanded volume supplied by compute."""
+    names = ("n_coils", "I_coil", "f_set", "tape_width", "tape_thickness", "tape_price_per_m", "turn_current",
              "winding_rate_1990", "cost_escalation", "nonplanar_factor")
     facts = {name: p["magnet_" + name] for name in names}
-    facts.update(c_coil=circumference, material_cost_in=material_cost)
-    nonnegative = {"I_coil", "cost_per_kAm", "winding_rate_1990", "material_cost_in"}
+    facts.update(c_coil=circumference, material_cost_in=material_cost, tape_volume_in=tape_volume)
+    nonnegative = {"I_coil", "tape_volume_in", "tape_price_per_m", "winding_rate_1990", "material_cost_in"}
     for name, value in facts.items():
         if not math.isfinite(value) or (value < 0.0 if name in nonnegative else value <= 0.0):
             raise ValueError(f"oracle Winding Pack Procurement Cost: invalid {name}")
     if facts["f_set"] > 1.0:
         raise ValueError("oracle Winding Pack Procurement Cost: invalid f_set")
     kam = facts["n_coils"] * facts["I_coil"] * facts["f_set"] * circumference / 1000.0
-    tape_cost = kam * facts["cost_per_kAm"]
+    area = facts['tape_width'] * facts['tape_thickness']
+    if not math.isfinite(area) or area <= 0:
+        raise ValueError('oracle Winding Pack Procurement Cost: invalid tape_area')
+    tape_length = tape_volume / area
+    if not math.isfinite(tape_length) or (tape_volume > 0 and tape_length <= 0):
+        raise ValueError('oracle Winding Pack Procurement Cost: invalid tape_length')
+    tape_cost = tape_length * facts['tape_price_per_m']
+    if not math.isfinite(tape_cost) or (tape_length > 0 and facts['tape_price_per_m'] > 0 and tape_cost <= 0):
+        raise ValueError('oracle Winding Pack Procurement Cost: invalid tape_cost')
     length = kam * 1000.0 / facts["turn_current"]
     fabrication = length * facts["winding_rate_1990"] * facts["cost_escalation"] * facts["nonplanar_factor"]
-    result = dict(tape_cost=tape_cost, conductor_length=length,
+    result = dict(tape_length=tape_length, tape_cost=tape_cost, conductor_length=length,
                   winding_fabrication_cost=fabrication, cost=tape_cost + material_cost + fabrication)
     for name, value in result.items():
         if not math.isfinite(value):
@@ -765,10 +773,10 @@ def compute():
     # WI-036: the pack sizes itself from the current; WI-058: the winding length follows
     # the coil bore (WI-036 had it follow the major radius); both were held inputs before.
     # Preserve existing public current/density diagnostic precedence. The reference
-    # density is still independently admissible arithmetically, outside the priced claim.
+    # density changes inventory conditionally; no absolute current margin is established.
     _validate_winding_pack_magnitudes(p["magnet_I_coil"], p["magnet_j_wp"])
     grade = _conductor_field_capability(p['magnet_B_max'], p['magnet_B_grade_ref'],
-                                       p['magnet_field_exponent'], p['magnet_j_wp'], p['magnet_cost_per_kAm'])
+                                       p['magnet_field_exponent'], p['magnet_j_wp'])
     wp_side = _winding_pack_side(p["magnet_I_coil"], grade['j_wp_effective'])
     # WI-058 (design D2/D3): the printed circumference at the reference bore times the bore ratio;
     # exactly 25.0 at the design point (the same float over itself); R does not enter.
@@ -787,8 +795,12 @@ def compute():
     if not 0.0 < p["T_cold_cryo"] < p["T_amb_cryo"]:
         raise ValueError("oracle cryoplant: require 0 < T_cold < T_amb")
     inventory = _winding_material_inventory(p, vol_winding_pack)
-    procurement = _winding_procurement(p | {'magnet_cost_per_kAm': grade['cost_per_kAm_effective']},
-                                       c_coil, inventory["material_cost"])
+    # Independent expanded quantity path, avoiding the native square-root/volume chain.
+    tape_volume_direct = (p['magnet_I_coil'] * grade['quantity_factor']
+        * p['magnet_n_coils'] * p['magnet_f_wp_vol'] * c_coil
+        * (1 - sum(p['magnet_f_' + m] for m in ('copper', 'solder', 'steel', 'helium')))
+        / (1e6 * p['magnet_j_wp']))
+    procurement = _winding_procurement(p, c_coil, inventory['material_cost'], tape_volume_direct)
 
     # --- Plasma Sustainment (WI-037): computed ash, quasi-neutral fuel,
     # ISS04 tau_E, composed radiation, required sustained heating ---
@@ -1145,6 +1157,7 @@ def compute():
         winding_pack_legacy=winding_pack_legacy, vol_winding_pack=vol_winding_pack,
         **{'conductor_' + name: value for name, value in grade.items()},
         **{"winding_" + name: value for name, value in inventory.items()},
+        tape_length=procurement["tape_length"],
         tape_procurement_cost=procurement["tape_cost"],
         conductor_length=procurement["conductor_length"],
         winding_fabrication_cost=procurement["winding_fabrication_cost"],

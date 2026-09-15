@@ -16,7 +16,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[2]
 P = "stellarator_09__stellaris__"
 REFERENCE = dict(B_design=24.9, B_reference=24.9, field_exponent=.6,
-                 j_reference=118.8271604938272, price_reference=50.)
+                 j_reference=118.8271604938272)
 
 
 @pytest.fixture(scope="module")
@@ -39,7 +39,7 @@ def calculation(runtime_paths):
     assert Path(module.__file__).resolve().is_relative_to(ROOT / "exploration/stellarator_e2e/generated")
     assert impl.AUTO_IMPLEMENTED is False
     fields = tuple(module.Conductor_Field_CapabilityOutput.model_fields)
-    assert set(fields) == {"quantity_factor", "j_wp_effective", "cost_per_kAm_effective"}
+    assert set(fields) == {"quantity_factor", "j_wp_effective"}
     wrapper = module.Conductor_Field_CapabilityModule()
 
     def run(values):
@@ -58,9 +58,8 @@ def test_named_wrapper_outputs_and_quantity_identities(calculation, field, expon
     q = math.exp(exponent * math.log(field / 24.9))
     assert row["quantity_factor"] == pytest.approx(q, rel=1e-14)
     assert row["j_wp_effective"] * q == pytest.approx(REFERENCE["j_reference"], rel=1e-14)
-    assert row["cost_per_kAm_effective"] / q == pytest.approx(50., rel=1e-14)
     if field == 24.9:
-        assert row == dict(quantity_factor=1., j_wp_effective=REFERENCE["j_reference"], cost_per_kAm_effective=50.)
+        assert row == dict(quantity_factor=1., j_wp_effective=REFERENCE["j_reference"])
 
 
 @pytest.mark.parametrize("key", list(REFERENCE))
@@ -72,7 +71,6 @@ def test_all_nonfinite_inputs_have_named_errors(calculation, key, value):
 
 @pytest.mark.parametrize("key,value", [
     *[(key, value) for key in REFERENCE if key != "price_reference" for value in (0., -1.)],
-    ("price_reference", -1.),
 ])
 def test_nonphysical_inputs_have_named_errors(calculation, key, value):
     with pytest.raises(ValueError, match="Conductor Field Capability:.*" + key):
@@ -86,19 +84,10 @@ def test_nonphysical_inputs_have_named_errors(calculation, key, value):
     dict(B_design=2.49, field_exponent=1e308),  # quantity underflow
     dict(B_design=249., field_exponent=308., j_reference=1e-308),  # density underflow
     dict(B_design=2.49, field_exponent=308., j_reference=1e308),  # density overflow
-    dict(B_design=249., field_exponent=2., price_reference=1e308),
 ])
 def test_finite_extremes_fail_deliberately(calculation, overrides):
     with pytest.raises(ValueError, match="Conductor Field Capability:"):
         calculation(REFERENCE | overrides)
-
-
-def test_free_reference_price_is_allowed_without_changing_quantity(calculation):
-    free = calculation(REFERENCE | dict(B_design=30., price_reference=0.))
-    priced = calculation(REFERENCE | dict(B_design=30.))
-    assert free["cost_per_kAm_effective"] == 0.
-    assert free["quantity_factor"] == priced["quantity_factor"]
-    assert free["j_wp_effective"] == priced["j_wp_effective"]
 
 
 @pytest.fixture(scope="module")
@@ -129,13 +118,20 @@ def verdicts(row):
 
 
 @pytest.mark.codegen_available
-def test_reference_preserves_every_audited_wi040_channel_and_verdict(evaluate):
+def test_reference_preserves_audited_wi040_physics_and_verdicts(evaluate):
     from tests.models.current_mfe_regressions import WI059_REPLAY
     baseline = json.loads((ROOT / "work/completed/20260914_WI-038_conductor-grade-lever/baseline-before.json").read_text())
     assert len(baseline["channels"]) == 174
     assert len(baseline["verdicts"]) == 18
     row = evaluate({key.removeprefix(P): value for key, value in WI059_REPLAY.items()})
-    assert {key: row.outputs[key] for key in baseline["channels"]} == baseline["channels"]
+    # WI-060 intentionally changes tape procurement and its declared cost descendants.
+    import oracle_entry
+    from tests.models.current_mfe_regressions import WI040_CHANGED_ECONOMICS
+    changed = {oracle_entry.ORACLE_OUTPUT_TO_CHANNEL[key] for key in WI040_CHANGED_ECONOMICS}
+    changed |= {P + 'magnet__winding_procurement__' + suffix for suffix in ('cost', 'tape_cost')}
+    retained = {key: value for key, value in baseline['channels'].items() if key not in changed}
+    assert len(retained) > 150
+    assert {key: row.outputs[key] for key in retained} == retained
     assert verdicts(row) == baseline["verdicts"]
     assert output(row, "magnet__conductor_grade__quantity_factor") == 1.
 

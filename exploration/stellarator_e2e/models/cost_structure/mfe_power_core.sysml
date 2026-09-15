@@ -121,7 +121,6 @@ package mfe_power_core {
             :>> wp_side = wp_sizing.wp_side;
             :>> conductor_quantity_factor = conductor_grade.quantity_factor;
             :>> j_wp_effective = conductor_grade.j_wp_effective;
-            :>> cost_per_kAm_effective = conductor_grade.cost_per_kAm_effective;
         }
         part casing : 'Coil Casing' {
             :>> m_casing = casing_mass.m_casing;
@@ -140,6 +139,7 @@ package mfe_power_core {
         attribute winding_material_cost : Real = material_inventory.material_cost;
         attribute winding_fabrication_cost : Real = winding_procurement.winding_fabrication_cost;
         attribute tape_procurement_cost : Real = winding_procurement.tape_cost;
+        attribute tape_length : Real = winding_procurement.tape_length;
         // SWAP SEAM: declared `default` so a variant definition may point it at its own calc (design D5, D9)
         attribute structure_cost : Real default magnet_structure_cost.cost;
         :>> capital_cost = magnet_capital_rollup.capital_cost;
@@ -192,7 +192,6 @@ package mfe_power_core {
             in B_reference = winding_pack.B_grade_ref;
             in field_exponent = winding_pack.field_exponent;
             in j_reference = winding_pack.j_wp;
-            in price_reference = coil.cost_per_kAm;
         }
         // WI-036: the winding pack is sized by the current it carries, so
         // wp_side stops being an entry point and becomes a consequence of
@@ -274,7 +273,10 @@ package mfe_power_core {
             in I_coil = coil.I_coil;
             in f_set = coil.f_set;
             in c_coil = coil.c_coil;
-            in cost_per_kAm = winding_pack.cost_per_kAm_effective;
+            in tape_volume_in = material_inventory.tape_volume;
+            in tape_width = winding_pack.tape_width;
+            in tape_thickness = winding_pack.tape_thickness;
+            in tape_price_per_m = winding_pack.tape_price_per_m;
             in turn_current = coil.turn_current;
             in winding_rate_1990 = winding_pack.winding_rate_1990;
             in cost_escalation = winding_pack.cost_escalation;

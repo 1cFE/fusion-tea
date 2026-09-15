@@ -15,13 +15,13 @@ INVENTORY = dict(volume_in=40., f_copper=.35, f_solder=.12, f_steel=.36,
                  price_helium=88.1604045, helium_pressure=1.5e6,
                  temperature=20., helium_gas_constant=2077.2644)
 PROCUREMENT = dict(n_coils=48., I_coil=15.4e6, f_set=.5, c_coil=43.5,
-                   cost_per_kAm=15., turn_current=50000., winding_rate_1990=480.,
+                   tape_volume_in=3.6, tape_width=.006, tape_thickness=.000056, tape_price_per_m=20., turn_current=50000., winding_rate_1990=480.,
                    cost_escalation=334.4/130.7, nonplanar_factor=1.9,
                    material_cost_in=2e6)
 INVENTORY_OUTPUTS = ('mass_copper', 'mass_solder', 'mass_steel', 'mass_helium',
                      'cost_copper', 'cost_solder', 'cost_steel', 'cost_helium',
                      'material_cost', 'helium_density', 'tape_volume')
-PROCUREMENT_OUTPUTS = ('tape_cost', 'conductor_length', 'winding_fabrication_cost', 'cost')
+PROCUREMENT_OUTPUTS = ('tape_length', 'tape_cost', 'conductor_length', 'winding_fabrication_cost', 'cost')
 
 
 @pytest.fixture(scope='module')
@@ -133,9 +133,10 @@ def test_tape_length_and_fabrication_are_separate(calculations):
     before = calculations[1](PROCUREMENT)
     # Recover ampere-metres independently from metres times current per turn.
     assert before['conductor_length'] * 50000 == pytest.approx(48 * 15.4e6 * .5 * 43.5)
-    assert before['tape_cost'] / 15 * 1000 == pytest.approx(before['conductor_length'] * 50000)
+    assert before['tape_length'] * .006 * .000056 == pytest.approx(3.6)
+    assert before['tape_cost'] / 20 == before['tape_length']
     assert before['cost'] == before['tape_cost'] + 2e6 + before['winding_fabrication_cost']
-    expensive = calculations[1](PROCUREMENT | {'cost_per_kAm': 30.})
+    expensive = calculations[1](PROCUREMENT | {'tape_price_per_m': 40.})
     assert expensive['tape_cost'] == 2 * before['tape_cost']
     assert expensive['winding_fabrication_cost'] == before['winding_fabrication_cost']
     lower_current = calculations[1](PROCUREMENT | {'turn_current': 25000.})
@@ -152,8 +153,8 @@ def test_procurement_refuses_every_nonfinite_input(calculations, key, value):
 
 
 @pytest.mark.parametrize('key,value', [
-    *[(k, v) for k in ('n_coils', 'c_coil', 'turn_current', 'cost_escalation', 'nonplanar_factor') for v in (0., -1.)],
-    *[(k, -1.) for k in ('I_coil', 'cost_per_kAm', 'winding_rate_1990', 'material_cost_in')],
+    *[(k, v) for k in ('n_coils', 'c_coil', 'turn_current', 'tape_width', 'tape_thickness', 'cost_escalation', 'nonplanar_factor') for v in (0., -1.)],
+    *[(k, -1.) for k in ('I_coil', 'tape_volume_in', 'tape_price_per_m', 'winding_rate_1990', 'material_cost_in')],
     ('f_set', 0.), ('f_set', -1.), ('f_set', 1.01),
 ])
 def test_procurement_refuses_nonphysical_inputs(calculations, key, value):
@@ -164,7 +165,7 @@ def test_procurement_refuses_nonphysical_inputs(calculations, key, value):
 def test_zero_magnitudes_and_zero_prices_are_allowed_locally(calculations):
     row = calculations[0](INVENTORY | {k: 0. for k in INVENTORY if k.startswith('price_')})
     assert row['material_cost'] == 0.
-    row = calculations[1](PROCUREMENT | {'I_coil': 0., 'material_cost_in': 0.})
+    row = calculations[1](PROCUREMENT | {'I_coil': 0., 'tape_volume_in': 0., 'material_cost_in': 0.})
     assert set(row.values()) == {0.}
     assert calculations[1](PROCUREMENT | {'f_set': 1.})['cost'] > 0.
 
@@ -201,7 +202,7 @@ def test_extra_cold_volume_does_not_purchase_winding_material(evaluate):
 @pytest.mark.codegen_available
 @pytest.mark.parametrize('key,value,component,factor', [
     ('magnet__winding_pack__price_copper', 22., 'material_inventory__cost_copper', 2.),
-    ('magnet__coil__cost_per_kAm', 100., 'winding_procurement__tape_cost', 2.),
+    ('magnet__winding_pack__tape_price_per_m', 40., 'winding_procurement__tape_cost', 2.),
     ('magnet__coil__turn_current', 25000., 'winding_procurement__winding_fabrication_cost', 2.),
 ])
 def test_accounting_levers_preserve_physics_and_operating_verdicts(evaluate, key, value, component, factor):
@@ -215,7 +216,7 @@ def test_accounting_levers_preserve_physics_and_operating_verdicts(evaluate, key
     if key.endswith('price_copper'):
         unchanged += ['winding_procurement__' + suffix for suffix in ('tape_cost', 'conductor_length', 'winding_fabrication_cost')]
         unchanged += ['material_inventory__cost_' + material for material in ('solder', 'steel', 'helium')]
-    elif key.endswith('cost_per_kAm'):
+    elif key.endswith('tape_price_per_m'):
         unchanged += ['winding_procurement__conductor_length', 'winding_procurement__winding_fabrication_cost', 'material_inventory__material_cost']
     else:
         unchanged += ['winding_procurement__tape_cost', 'material_inventory__material_cost']
@@ -234,12 +235,13 @@ def test_accounting_levers_preserve_physics_and_operating_verdicts(evaluate, key
 
 
 @pytest.mark.codegen_available
-def test_public_pack_volume_scales_materials_without_rebuying_tape(evaluate):
+def test_public_pack_volume_scales_all_materials_including_tape(evaluate):
     before = evaluate()
     after = evaluate({'magnet__winding_pack__f_wp_vol': 2 * .8780864197530865})
     assert output(after, 'magnet__wp_volume__vol_winding_pack') == pytest.approx(2 * output(before, 'magnet__wp_volume__vol_winding_pack'))
     for suffix in INVENTORY_OUTPUTS:
         factor = 1 if suffix == 'helium_density' else 2
         assert output(after, 'magnet__material_inventory__' + suffix) == pytest.approx(factor * output(before, 'magnet__material_inventory__' + suffix))
-    for suffix in ('tape_cost', 'conductor_length', 'winding_fabrication_cost'):
+    assert output(after, 'magnet__winding_procurement__tape_cost') == pytest.approx(2 * output(before, 'magnet__winding_procurement__tape_cost'))
+    for suffix in ('conductor_length', 'winding_fabrication_cost'):
         assert output(after, 'magnet__winding_procurement__' + suffix) == output(before, 'magnet__winding_procurement__' + suffix)

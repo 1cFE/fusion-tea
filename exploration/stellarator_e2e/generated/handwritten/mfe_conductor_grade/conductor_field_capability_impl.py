@@ -14,16 +14,13 @@ AUTO_IMPLEMENTED = False
 
 def run_conductor_field_capability(
     inputs: Conductor_Field_CapabilityInput,
-) -> tuple[float, float, float]:
+) -> tuple[float, float]:
     """Apply a conditional field law without claiming qualified absolute capability."""
     name = "Conductor Field Capability"
     for key in ("B_design", "B_reference", "field_exponent", "j_reference"):
         value = getattr(inputs, key)
         if not math.isfinite(value) or value <= 0:
             raise ValueError(f"{name}: {key} must be finite and positive")
-    if not math.isfinite(inputs.price_reference) or inputs.price_reference < 0:
-        raise ValueError(f"{name}: price_reference must be finite and nonnegative")
-
     field_ratio = inputs.B_design / inputs.B_reference
     if not math.isfinite(field_ratio) or field_ratio <= 0:
         raise ValueError(f"{name}: field_ratio must be finite and positive")
@@ -36,13 +33,9 @@ def run_conductor_field_capability(
     j_wp_effective = inputs.j_reference / quantity_factor
     if not math.isfinite(j_wp_effective) or j_wp_effective <= 0:
         raise ValueError(f"{name}: j_wp_effective must be finite and positive")
-    cost_per_kAm_effective = inputs.price_reference * quantity_factor
-    if not math.isfinite(cost_per_kAm_effective) or cost_per_kAm_effective < 0:
-        raise ValueError(f"{name}: cost_per_kAm_effective must be finite and nonnegative")
     by_name = {
         "quantity_factor": quantity_factor,
         "j_wp_effective": j_wp_effective,
-        "cost_per_kAm_effective": cost_per_kAm_effective,
     }
     # Generated wrapper/schema order is not SysML declaration order.
     return tuple(by_name[key] for key in Conductor_Field_CapabilityOutput.model_fields)

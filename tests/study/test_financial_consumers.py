@@ -1,5 +1,5 @@
 """Independent finance arithmetic and the unchanged current study interface."""
-from tests.models.current_mfe_regressions import WI059_PARAMETERS, WI059_EXISTING_MAPPED_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES
+from tests.models.current_mfe_regressions import WI060_PARAMETERS, WI059_PARAMETERS, WI059_EXISTING_MAPPED_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES
 
 import json
 import math
@@ -96,8 +96,8 @@ def test_current_rate_route_and_coverage(tmp_path, stock_simkit_path):
     inputs = {}
     for path in (route.PACKAGE_DIR/'inputs').glob('*.json'):
         inputs.update(json.loads(path.read_text()))
-    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS)  # WI-038 adds two explicitly mapped grade inputs.
-    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 118 + len(WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS)
+    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS)  # WI-038 adds two explicitly mapped grade inputs.
+    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 118 + len(WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS)
     assert len(set(inputs)-oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys()) == 147 + len(WI059_NATIVE_ONLY_PARAMETERS) - len(WI059_EXISTING_MAPPED_PARAMETERS)
     controls = {}
     rows = []
