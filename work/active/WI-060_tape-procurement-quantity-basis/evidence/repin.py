@@ -39,3 +39,9 @@ p.write_text(json.dumps(d,indent=2)+'\n');m.load(p)
 census={'derived_against_semantic_fingerprint':semantic}|rederived_census(pkg)
 (ROOT/'tests/models/data/mfe_census.json').write_text(json.dumps(census,indent=2)+'\n')
 print(json.dumps(d['fingerprints'],indent=2));print('native entries',census['entry_points'],'headline',headline)
+
+# The tracked instance graph is a producer prerequisite checked byte-for-byte by integration.
+from sysml_codegen.snapshot.capture import capture_instance_graph_snapshot
+snapshot=ROOT/'exploration/stellarator_e2e/stellarator.snapshot.json'
+capture_instance_graph_snapshot([ROOT/'exploration/stellarator_e2e/models'],snapshot)
+print('captured tracked structural snapshot',snapshot.relative_to(ROOT))

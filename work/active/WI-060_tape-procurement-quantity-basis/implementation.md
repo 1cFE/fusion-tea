@@ -31,3 +31,8 @@ The public migration receipt (evidence/contract-migration.json) proves exact equ
 
 Implementation checkpoint: 9e22a0a6. The follow-up commit includes the final live-consumer repairs and evidence. The package remains unchanged from that checkpoint. Independent integrated review and the coordinator-owned integration/study remain the next steps. This report supplies implementation evidence and does not self-certify independent review.
 
+## Integration prerequisite correction
+
+T-004 integration refused the stale tracked instance-graph snapshot: the preparation recipe refreshed the census and manifest but omitted snapshot capture. T-005 adds the native `capture_instance_graph_snapshot` producer call to evidence/repin.py and refreshes exploration/stellarator_e2e/stellarator.snapshot.json. The resulting snapshot exactly matches T-004's independent recapture. Tool authority is unchanged. Attribute count changes 435→438: three tape inputs and the tape-length EXPOSE enter; the effective-price attribute leaves.
+
+Evidence/snapshot-repair.json records both snapshot hashes, exact recapture equality and unchanged hashes for all 309 watched model/package files. Evidence/snapshot-repair.log records the executed native producer. No model, generated package or runtime changed. The integration seam still owns its rerun and acceptance.
