@@ -65,3 +65,24 @@ Fresh reviewer `/root/current_reviewer` returns PASS for the conditional design 
 ### T-003 start — 2026-09-15
 
 T-003 · run-study · expected `exploration/stellarator_e2e/studies/20260915-absolute-conductor-current-margin/`. Preparation runs alongside implementation with disjoint write ownership and no native candidate execution until release. New interface names are integrated from WI-062 evidence, never guessed.
+
+### T-002 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `work/active/WI-062_absolute-conductor-current-margin/implementation.md@2f4c2efc`; source/package checkpoint `09178a90`; `evidence/implementation-review.md` (fresh reviewer, current worktree, pending commit).
+- **Reading:** Independent source and implementation coverage release the conditional reference-conductor estimate through its generated route. The adverse reference prediction is reproduced; entering geometry, costs, nineteen predicates and physical inventory are preserved within tested scope. Native validator limitations are explicitly identified.
+- **Decision:** Verified equations, preserved inputs/outputs and completed affected checks → release native integration; execution detail; fresh reviewer `/root/current_reviewer`, accepted by coordinator [AGENT]; changed WI-062 audit/plan and integration task scope.
+- **Decision:** L2/L6 remain non-green → retain generated-route evidence and explicit diagnostic limits, not an all-validator pass; execution detail; coordinator [AGENT] with independent review; changed implementation/audit reports. No general scanner repair.
+
+### T-004 scope
+
+- **Objective:** Prove one study-ready integrated candidate from independently audited WI-062.
+- **Why now:** T-002 is complete and fresh review releases integration at2f4c2efc.
+- **Scope:** Native fixed-point integration gates only; no model or seam repair. At most one promoted pin this round.
+- **Inputs:** `goal.md`; WI-062 audit/report and reviewed semantic/executable identities in `evidence/interface.json`.
+- **Done when:** Native CANDIDATE with all ten gates or a named blocker.
+- **Stop when:** Native refusal, changed identity, quarantine or mechanical cap.
+
+### T-004 start — 2026-09-15
+
+T-004 · native integration seam · expected `evidence/T-004_integration/integration_return.json` at the reviewed WI-062 identities.
