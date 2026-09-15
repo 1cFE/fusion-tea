@@ -1,0 +1,22 @@
+{
+  "request_id": "REQ-FIT-01",
+  "run": "knowledge/research/requests/runs/REQ-FIT-01/20260915T194514322676",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "the_design_of_the_superconducting_coil_system_for",
+      "path": "knowledge/sources/the_design_of_the_superconducting_coil_system_for/",
+      "source_id": "a92c209b6949d9c4b4ce5e9797e07f71fa92309949f7156c74a5565d7f9522c4",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://pure.mpg.de/rest/items/item_2141097/component/file_2141096/content",
+      "reason": "extract exited 1"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

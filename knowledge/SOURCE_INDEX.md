@@ -713,6 +713,22 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 0181e841ed518975fd989523b1aa5e9d0d89fc4fdf0d338db89e9c669c01e86e
 - **Date Added**: 2026-09-15
 
+### The design of the superconducting coil system for Wendelstein 7-X
+- **Type**: local_pdf
+- **Location**: knowledge/sources/the_design_of_the_superconducting_coil_system_for/
+- **Use for**: REQ-FIT-01 distinguishes ground insulation and winding-pack embedding inside a coil case.
+- **Validation**: Read original PDF figures and insulation and embedding paragraphs before using any thickness.
+- **Caveat**: W7-X NbTi manufacturing evidence establishes layer distinctions; dimensions do not qualify a Stellaris HTS casing. Retrieved from https://pure.mpg.de/rest/items/item_2141097/component/file_2141096/content.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/fit-w7x.pdf
+- **Source ID**: a92c209b6949d9c4b4ce5e9797e07f71fa92309949f7156c74a5565d7f9522c4
+- **Raw SHA256**: a92c209b6949d9c4b4ce5e9797e07f71fa92309949f7156c74a5565d7f9522c4
+- **Raw Artifact SHA256**: a92c209b6949d9c4b4ce5e9797e07f71fa92309949f7156c74a5565d7f9522c4
+- **Extracted Path**: knowledge/sources/the_design_of_the_superconducting_coil_system_for/
+- **Extract SHA256**: feae78b8e79ce6cd3ae0266e564b5a803f9e45cde8f53b76d435a04465ca7ca5
+- **Date Added**: 2026-09-15
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

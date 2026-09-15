@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-FIT-01",
+  "request_key": "02cb67c4882f4790bc6f8208174d5e387a7f1fce8b439d0de511a3705676bbf2",
+  "request_path": "knowledge/research/requests/REQ-FIT-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-15T19:45:14.322855+00:00",
+  "override_reason": null
+}
