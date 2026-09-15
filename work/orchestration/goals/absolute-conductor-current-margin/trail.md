@@ -86,3 +86,15 @@ T-003 · run-study · expected `exploration/stellarator_e2e/studies/20260915-abs
 ### T-004 start — 2026-09-15
 
 T-004 · native integration seam · expected `evidence/T-004_integration/integration_return.json` at the reviewed WI-062 identities.
+
+### T-004 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `evidence/T-004_integration/integration_return.json`, all ten native gates PASS; audited WI-062 `f380b225`; `evidence/execution-release.json` (current worktree, pending commit).
+- **Reading:** One CANDIDATE pin855a3a3b88c277e169aa3265db273c3d24686a6d762d7bd8437c0fd987c6160f is promoted for this round's sole study. Expected semantic/executable lineage matches the independently reviewed package. The integration manifest gate explicitly does not run assert_read_set_covered; retain that inherited seam limit rather than claim coverage.
+- **Decision:** Audited candidate passes fixed-point integration → release T-003 native baseline, preflight and295case study at its fixed sample; execution detail; coordinator [AGENT]; changed `evidence/execution-release.json` and study preparation copies.
+- **Decision:** One combined endpoint exceeds source-model domain while every proposed point is supported → retain unsupported diagnostic without predicate or physical-boundary claim; execution detail; coordinator [AGENT]; accepted `evidence/preexecution-check.md` and study `reviews/window-selection.md`. No sample/domain change.
+
+### T-003 native execution release — 2026-09-15
+
+Proceed from the completed final oracle scan under `evidence/execution-release.json`. Reuse independent source/interface and implementation coverage; coordinator framing/sample check is `evidence/preexecution-check.md`. Final independent review will inspect frozen study outcomes and answer. No separate preexecution critic is required because no source equation, interface or scientific assumption changed beyond the explicitly reviewed scenario interpretation.
