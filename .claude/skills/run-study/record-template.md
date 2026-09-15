@@ -196,8 +196,7 @@ both sides is not independently verified, and saying so here is part of the outc
 
 ## 14. Review outcomes
 
-Each named lens, its verdict, and its disposition. The pre-execution framing critique
-is one of them.
+Each applicable lens, its verdict, and its disposition. Preserve this section when no additional review is needed: record the coordinator check, the reason, and any reused evidence with its revision/scope/environment validity. Label independent review honestly; a separate pre-execution critique is needed only when triggered.
 
 | Lens | Verdict | Disposition |
 |---|---|---|

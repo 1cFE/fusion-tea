@@ -14,7 +14,7 @@ promoted_to: null
 
 ## Decision
 
-The first build is three prose files per goal — `goal.md`, `trail.md`, `learnings.md` — plus the fresh-round discipline and the joined discovery-log dispositions of ADR-004. `trail.md` is append-oriented; corrections are dated amendments; git supplies history and there is no first-build sealing scheme.
+The first build is three prose files per goal — `goal.md`, `trail.md`, `learnings.md` — plus the review coverage of ADR-002/ADR-005 and the joined discovery-log dispositions of ADR-004. `trail.md` is append-oriented; corrections are dated amendments; git supplies history and there is no first-build sealing scheme. The 2026-09-14 amendments to ADR-002/ADR-005 replace unconditional fresh-round review with risk-based coverage; the historical proof records below remain unchanged.
 
 Accepted cross-round meaning goes in a separate `learnings.md` rather than staying inline in the trail. That separation is the design's mechanism, not the owner's ruling.
 

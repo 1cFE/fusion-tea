@@ -15,7 +15,7 @@ user-invocable: true
 
 # Run Goal
 
-A goal is a grounded question pursued in rounds. A round is one agent's bounded attempt at one strategy, running bounded tasks through the *native* workflows, ending in a mandatory written result and a review by a fresh agent who did not do the work.
+A goal is a grounded question pursued in rounds. A round is one agent's bounded attempt at one strategy, running bounded tasks through the native workflows and ending in a written result. Review depth follows the concrete risk triggers in `GOAL_RUNBOOK.md` § Review scope and evidence reuse.
 
 This file names the roles, picks the mode, and gives dispatch guidance. The procedure lives in `work/orchestration/GOAL_RUNBOOK.md`; the decisions behind it live in `.project/adr/`. A human operator and an agent follow the same runbook.
 
@@ -23,7 +23,7 @@ This file names the roles, picks the mode, and gives dispatch guidance. The proc
 
 - **Operator** — sets the question and holds the gates. Grounds the goal, rules on reserved gates, and closes.
 - **Round agent** — pursues one strategy, scopes and coordinates bounded tasks, writes the result.
-- **Fresh reviewer** — a session that did not do the work. Reads a study's proposed dispositions before follow-up executes, or reviews the closed round and writes the next strategy.
+- **Fresh reviewer** — a session that did not do the work. Checks the named uncertainty when independent review is required. A review can cover study dispositions and round assurance without separate sessions.
 
 Which role you are in decides which section you read. `GOAL_RUNBOOK.md` § What "fresh" means defines the boundary, says who obtains the reviewer on each path, and gives the agent its move when it cannot start a session — read it before either review mode.
 
@@ -50,19 +50,19 @@ Follow the runbook’s task parallelism and freshness rules. In Codex, read `.ag
 
 ### Model changes
 
-For a single work item, follow `modeling_project/MODELING_PROCESS.md` and the native modeling stages. In Claude Code, read `.claude/commands/spec-model.md`, `design-model.md`, `plan-model.md`, and `implement-model.md`; in Codex, read the corresponding `.agents/skills/<name>/SKILL.md` files. Follow their review and audit requirements. Register items with `agentic-mbse pm add-item`, validate with `syside check`, and prove integration with `python scripts/integrate.py`, using the project’s prescribed launcher (`.codex-test/run` in this test worktree; otherwise `uv run`).
+For a single work item, follow `modeling_project/MODELING_PROCESS.md`. Read only the stage instructions needed for the current task: `.claude/commands/<stage>.md` in Claude Code or `.agents/skills/<stage>/SKILL.md` in Codex. Any stage can be brief or skipped when its responsibility is already satisfied or does not apply; cite that evidence or reason in the native record. Keep native PM metadata and applicable executable validation, using the project’s prescribed launcher (`.codex-test/run` in this test worktree; otherwise `uv run`). Review triggers are in the runbook.
 
-For work items eligible for parallel execution under the runbook, fork each as a parallel worker: Claude Code `Agent` with `subagent_type: "fork"`; Codex `spawn_agent` with `fork_turns: "all"`, omitting role and model overrides. Each fork inherits the goal context and drives its own item through the modeling PM stages. The round agent owns the goal trail; workers must preserve each other’s edits. Designs and prototypes may run in parallel; integration is always sequential and runs in the main session after all forks return. Write a basis packet (`evidence/`) before forking to fix the shared interface — channel names, file ownership, integration order — so the forks don't collide.
+The main agent may execute directly or delegate bounded work. For eligible parallel tasks, use fresh workers with self-contained briefs: Claude Code `Agent` with `subagent_type: "general-purpose"`; Codex `spawn_agent` with `fork_turns: "none"`. Supply the exact task, entry files/sections, original evidence, shared interfaces, file ownership, and expected return. Workers preserve each other’s edits. The round agent owns the trail and integrates sequentially after workers return. Deposit briefs under `evidence/`; do not load the whole goal or all stages into each worker.
 
 ### Research
 
 Start with internal sources: `knowledge/SOURCE_INDEX.md` (registered sources), `knowledge/KNOWLEDGE.md` (domain insights), and `knowledge/research/` (prior research). Use `docs/research_seam_operator_guide.md` for the full protocol.
 
-When external sources are needed, form request files (`knowledge/research/requests/REQ-*.json`) and dispatch independent requests to parallel fresh agents carrying `.claude/commands/research-acquire.md`: Claude Code `Agent` with `subagent_type: "general-purpose"`; Codex `spawn_agent` with `fork_turns: "none"`. Each subagent runs the search-triage-register cycle independently: `scripts/research_seam.py` for run bookkeeping, `scripts/source_registry.py register` for ingestion. Deposit the spawn prompt at `evidence/` before spawning. Every search subagent must carry the clean-room screen (`knowledge/holdout/aries-cs/PROTOCOL.md`) in its instructions before any fetch.
+When external sources are needed, form request files (`knowledge/research/requests/REQ-*.json`) and execute directly or delegate independent requests to fresh agents carrying `.claude/commands/research-acquire.md`: Claude Code `Agent` with `subagent_type: "general-purpose"`; Codex `spawn_agent` with `fork_turns: "none"`. Use `scripts/research_seam.py` for run bookkeeping and `scripts/source_registry.py register` for ingestion. A delegated brief names the exact question, entry sources, original evidence, and return budget; deposit it at `evidence/`. Every researcher applies the clean-room screen (`knowledge/holdout/aries-cs/PROTOCOL.md`) before any fetch. The main agent remains free to use research skills itself.
 
 ### Fresh critics
 
-When the runbook requires a fresh non-author session (disposition checkpoint, round review, study administrator), spawn a fresh agent (Claude Code `Agent`, `subagent_type: "general-purpose"`; Codex `spawn_agent`, `fork_turns: "none"`) with a deposited prompt — commit the prompt to `evidence/` before spawning. The session must inherit no execution context. If a fresh session cannot be obtained, write the handoff stop per `GOAL_RUNBOOK.md` § What "fresh" means and halt.
+When a risk trigger or reserved gate requires independent review, spawn a fresh agent (Claude Code `Agent`, `subagent_type: "general-purpose"`; Codex `spawn_agent`, `fork_turns: "none"`) using the bounded brief contract in `GOAL_RUNBOOK.md` § Review scope and evidence reuse. Deposit the prompt under `evidence/` before dispatch; a separate commit is unnecessary. Reuse valid review evidence and the same reviewer for changed lines. If a required fresh review cannot be obtained, park its dependent work using § What "fresh" means. A study administrator is optional unless the owner requests a cold-record reading.
 
 ## Then go here
 

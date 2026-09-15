@@ -14,11 +14,11 @@ promoted_to: null
 
 ## Decision
 
-The fresh `RoundReview` is the standing independent critic of the goal layer. It checks native evidence by citation, goal and strategy fidelity, every recorded task scope, retry classification, touched-finding dispositions, the learning delta, and the constraints carried forward. Native technical reviews stay native and the round review consumes their evidence rather than repeating it.
+As amended for the owner's 2026-09-14 process-simplification request, review coverage follows `work/orchestration/GOAL_RUNBOOK.md` § Review scope and evidence reuse. Independent reviews are required for concrete source/math, design, and integration risks; routine work may close with a reasoned coordinator check. Coverage includes native evidence, goal and strategy fidelity, task scope, retries, touched-finding dispositions, learnings, and carry-forward. Native, study, checkpoint, and round reviews reuse valid evidence rather than checking the same claim in separate sessions. [AGENT] This risk-based topology implements the owner's request; the historical title and rationale below describe the earlier mechanism.
 
-One further check sits before the round review, and it is the owner's placement, not this record's inference — `[OWNER 2026-08-25]`, from `.project/backlog/epic_goal_strategy_task_harness.md` § Product-Lens and `.project/concepts/goal-driven-model-development-harness.md` § Owner's Words ("critic placement"): **a lightweight fresh non-author checkpoint reads a study reading and its proposed dispositions before any semantic follow-up task executes**, and the author revises through it until it passes or a declared cap is hit. Hitting the cap writes a recorded stop the owner can see; it does not silently permit execution. Routine native stages get no separate goal critics.
+Review of uncovered triggered risks in a study reading and proposed dispositions occurs before dependent semantic follow-up executes. This preserves the pre-execution placement from `[OWNER 2026-08-25]` (`.project/backlog/epic_goal_strategy_task_harness.md` § Product-Lens), while the 2026-09-14 request removes unconditional additional sessions. A required independent reviewer must be a fresh non-author. Reuse that reviewer for corrective diffs. The declared cap still stops unresolved dependent work; it never permits execution. Owner-reserved scientific decisions remain owner-held.
 
-The two checks are distinct. The checkpoint runs *before* follow-up execution over *the reading and its proposed dispositions*. The round review runs *after the round closes* over *the whole round*.
+The two responsibilities have different timing: reasoning before dependent execution and remaining result coverage after closure. They need separate sessions only when the risks or evidence demand them.
 
 ## Why
 
@@ -34,7 +34,7 @@ Owner criterion 5 also asks that, after dispositions execute, something checks e
 
 - `work/orchestration/GOAL_RUNBOOK.md` § The pre-execution disposition checkpoint, § The fresh review, and the table that puts the two side by side.
 - `work/orchestration/goal-templates/trail.md` — the checkpoint entry and round review headings.
-- Native review stages, which are unchanged and are cited rather than repeated.
+- Native review coverage, cited rather than repeated; stages may be brief or skipped when their responsibilities are satisfied or inapplicable.
 
 Task scope and retry classification remain *recorded* checks — written at the time, audited at round end, not gated in the moment. The checkpoint's cap and the retry cap are declared limits carried in each goal's own `Limits` section.
 
@@ -42,4 +42,4 @@ Task scope and retry classification remain *recorded* checks — written at the 
 
 - **Per-stage fresh critics** — nine reviews a round, duplicating native technical review, unaffordable under lean-first.
 - **A third critic for the post-execution disposition audit** — the round review already walks the touched rows; a separate critic would read the same evidence twice.
-- **No pre-execution checkpoint** — leaves the one failure the round review cannot catch in time.
+- **Deferring required pre-execution coverage until closure** — allows an unchecked scientific interpretation to compound through follow-up work.

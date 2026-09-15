@@ -1,10 +1,6 @@
 # Runbook
 
-The obligations a study owes, in order, and what each one deposits in the record. Every
-step states an obligation; none states a decision. Which axis to sweep, which framing is
-right, which route fits, and what a result means are the study's to argue and the
-record's to carry — this file only says that they must be argued and where the argument
-lands.
+This runbook names study obligations and their record deposits. Stages may be brief, combined, or skipped when their responsibility is already satisfied or does not apply; record the reason or valid evidence in the existing record section. This does not waive executable gates, required record fields, original source checks, owner-reserved scientific decisions, or immutable results/runtime contracts. Reuse prior verification only after confirming its revision, scope, and environment remain valid. Changed inputs invalidate affected evidence.
 
 **The rulebook** is `modeling_project/STUDY_POLICY.md`. This
 runbook does not restate it. Where a step must satisfy a rule, the step names the rule
@@ -76,15 +72,10 @@ directory. The not-derivable disclosure is written out whether or not it bites.
 
 ### 4. Argue the framing, and obtain the user's ruling before any point runs
 
-State each axis's framing as `search | sensitivity` and why. For every axis the
-indicators report as `no_constraint_response`, the user rules on it before execution,
-and the record carries a **model-development finding** alongside the ruling — what
-should push back on this axis and is not modeled. The ruling does not discharge the
-finding. Then submit the framing and the plan to a critique before any point runs, and
-record that critique's verdict as a named review outcome.
+State each axis's framing as `search | sensitivity` and why. For every axis reported `no_constraint_response`, the user rules before execution and the record carries a model-development finding alongside the ruling: what should push back on this axis and is not modeled. The ruling does not discharge the finding. Assess the review triggers in `work/orchestration/GOAL_RUNBOOK.md` § Review scope and evidence reuse. Obtain focused independent review before dependent execution when triggered; otherwise record the coordinator check or valid reused coverage. New or reinterpreted source/math needs an independent check against original evidence. Owner-reserved framing decisions stay with the owner.
 
 **Calls:** none
-**Deposits:** record.md § 5 Framing (as proposed) + § 8 Indicators and rulings (rulings and findings) + § 14 Review outcomes (the pre-execution critique verdict)
+**Deposits:** record.md § 5 Framing (as proposed) + § 8 Indicators and rulings (rulings and findings) + § 14 Review outcomes (review verdict, reused coverage, or reason an independent critique was unnecessary)
 **Fails closed when:** an axis reported `no_constraint_response` reaches execution with no user ruling recorded
 **Annex:** none
 
@@ -196,11 +187,7 @@ boundary claim is made.
 
 ### 12. Record the review outcomes
 
-Each review is a named lens with a verdict and a disposition, never a pass count. One
-pass may cover several lenses; several passes may cover one. Correctness, honesty, and
-readability are the lenses a study normally owes, and the pre-execution framing critique
-from step 4 is already one of them. A finding with no disposition is not a recorded
-outcome.
+Record applicable correctness, claim limits, and readability checks with their outcomes and finding dispositions. Distinguish coordinator checks from independent verdicts. One review may cover several questions, including goal dispositions; cite valid coverage rather than repeating it at administration, checkpoint, and round closure. For a scoped independent check, provide the exact question, entry files/sections, original evidence, and a default six-tool-call/300-word return budget. A reviewer stops with named missing evidence instead of recursively loading context. The coordinator broadens scope for concrete uncertainty; coupled architecture, multiple model families, or failed coverage require substantive independent integration review. The same reviewer rechecks corrective diffs.
 
 **Calls:** none
 **Deposits:** record.md § 14 Review outcomes
@@ -256,15 +243,12 @@ immutable: corrections are addenda, and `snapshot.json`, `indicators.json`, and
 
 ## Administer
 
-The administrator reads the record directory and nothing else — not the package, not
-the manifest, not the discovery log, not this repository's work items. What the record
-does not carry, the administrator reports as missing rather than recovering from
-elsewhere.
+Synthesis is optional unless requested or needed to answer the task. The executor may synthesize directly, labeled as an executor reading. A separate administrator is used for a requested cold-record reading or uncovered independent review need, with a fresh self-contained brief and no inherited conversation. For either reading, evidence comes only from the committed record directory. Missing facts are reported as missing, never recovered from the live package, manifest, discovery log, or work items. An independent source/math review may separately inspect original evidence under its own brief; it does not repair missing historical facts in the record.
 
 1. **Read the record directory only.** `record.md`, `snapshot.json`, `indicators.json`,
    and `results/`. The administrator is not given `<pkg>` and does not resolve paths
    outside the directory.
-2. **Recover the fresh-administrator facts.** The framing per axis, the LCOE result,
+2. **Recover the recorded facts.** The framing per axis, the LCOE result,
    every named constraint outcome, and every finding — each traced to a committed
    artifact in the directory. Keep recorded facts, missing facts, and the
    administrator's interpretations distinct. The administrator may state an
