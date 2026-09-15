@@ -1,0 +1,29 @@
+{
+  "request_id": "REQ-MCR-LEADS-02",
+  "run": "knowledge/research/requests/runs/REQ-MCR-LEADS-02/20260915T135952089105",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "current_leads_links_and_buses_ballarino",
+      "path": "knowledge/sources/current_leads_links_and_buses_ballarino/",
+      "source_id": "f9898abb8682c2a1d43ac74ace26311de0a6877a1d2595f8d6117cedf9f30233",
+      "pre_existing": false
+    },
+    {
+      "slug": "current_leads_and_superconducting_links_ballarino_cern",
+      "path": "knowledge/sources/current_leads_and_superconducting_links_ballarino_cern/",
+      "source_id": "c073a1a526ddc24c50311b890c3439d9540fa9e29fb392aaec5aded92094e858",
+      "pre_existing": false
+    },
+    {
+      "slug": "nist_316_stainless_cryogenic_material_properties",
+      "path": "knowledge/sources/nist_316_stainless_cryogenic_material_properties/",
+      "source_id": "d803b3f2e1de6d23a85b47e6fb864a5b5da1258fd9ce0c9704e2398c7847b4a0",
+      "pre_existing": false
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

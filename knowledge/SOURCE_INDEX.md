@@ -665,6 +665,54 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 23a983fa52a02754c99c9634e6214faff45261d14c9f690e40f974b07244927d
 - **Date Added**: 2026-09-15
 
+### Current Leads Links and Buses Ballarino
+- **Type**: local_pdf
+- **Location**: knowledge/sources/current_leads_links_and_buses_ballarino/
+- **Use for**: Wiedemann-Franz law, Lorenz number, optimized conduction-cooled current-lead basis and intermediate heat sinks; RQ-2. Retrieved https://arxiv.org/pdf/1501.07166 on 2026-09-15.
+- **Validation**: Check original pp1-4. Eq5/6 print inconsistent per-current normalization; use independently dimensionally derived heat balance and cross-check author lecture.
+- **Caveat**: CERN author educational paper, not a qualified 50 kA Stellaris lead design. Ideal optimized steady nominal-current operation, not fixed hardware off-design current response.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/T005-ballarino.pdf
+- **Source ID**: f9898abb8682c2a1d43ac74ace26311de0a6877a1d2595f8d6117cedf9f30233
+- **Raw SHA256**: f9898abb8682c2a1d43ac74ace26311de0a6877a1d2595f8d6117cedf9f30233
+- **Raw Artifact SHA256**: f9898abb8682c2a1d43ac74ace26311de0a6877a1d2595f8d6117cedf9f30233
+- **Extracted Path**: knowledge/sources/current_leads_links_and_buses_ballarino/
+- **Extract SHA256**: 5c16b4d52d90f9691e6bc08d56290cb7e5b3ef233a67cb1b21c0f954edc7f29c
+- **Date Added**: 2026-09-15
+
+### Current Leads and Superconducting Links Ballarino CERN Lecture
+- **Type**: local_pdf
+- **Location**: knowledge/sources/current_leads_and_superconducting_links_ballarino_cern/
+- **Use for**: Original slide14 conduction-cooled lead optimum and heat balance; primary cross-check resolving author-paper Eq5/6 normalization typo. Retrieved https://indico.cern.ch/event/1540071/contributions/6481104/attachments/3080783/5453119/Ballarino.pdf on 2026-09-15; RQ-2.
+- **Validation**: Inspect original slide14 Qc,min=I sqrt(L0(Th²-Tc²)) and 47W/kA example; retain image.
+- **Caveat**: Educational ideal steady-state lead optimization at design current; not manufactured high-current qualification or an HTS-lead coefficient.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/T005-ballarino-slides.pdf
+- **Source ID**: c073a1a526ddc24c50311b890c3439d9540fa9e29fb392aaec5aded92094e858
+- **Raw SHA256**: c073a1a526ddc24c50311b890c3439d9540fa9e29fb392aaec5aded92094e858
+- **Raw Artifact SHA256**: c073a1a526ddc24c50311b890c3439d9540fa9e29fb392aaec5aded92094e858
+- **Extracted Path**: knowledge/sources/current_leads_and_superconducting_links_ballarino_cern/
+- **Extract SHA256**: d1485c7e27283243f429423bda14bee03664913f18791140cbfe9cd1ede4f482
+- **Date Added**: 2026-09-15
+
+### NIST 316 Stainless Cryogenic Material Properties
+- **Type**: url
+- **Location**: knowledge/sources/nist_316_stainless_cryogenic_material_properties/
+- **Use for**: Temperature-dependent steel thermal conductivity for explicit cryogenic support-conduction scenario; RQ-2.
+- **Validation**: Verify captured original conductivity polynomial coefficients and temperature range in rendered table before integration.
+- **Caveat**: Evaluated 316 material data; 316LN substitution and support geometry are engineering scenario assumptions, not device-specific source facts.
+
+#### Extended Metadata
+- **Source URL**: https://trc.nist.gov/cryogenics/materials/316Stainless/316Stainless_rev.htm
+- **Source ID**: d803b3f2e1de6d23a85b47e6fb864a5b5da1258fd9ce0c9704e2398c7847b4a0
+- **Raw SHA256**: d803b3f2e1de6d23a85b47e6fb864a5b5da1258fd9ce0c9704e2398c7847b4a0
+- **Raw Artifact SHA256**: d803b3f2e1de6d23a85b47e6fb864a5b5da1258fd9ce0c9704e2398c7847b4a0
+- **Extracted Path**: knowledge/sources/nist_316_stainless_cryogenic_material_properties/
+- **Extract SHA256**: 0181e841ed518975fd989523b1aa5e9d0d89fc4fdf0d338db89e9c669c01e86e
+- **Date Added**: 2026-09-15
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

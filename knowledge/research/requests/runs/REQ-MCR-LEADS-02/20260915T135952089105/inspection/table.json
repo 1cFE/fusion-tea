@@ -1,0 +1,74 @@
+{
+  "name": "table",
+  "url": "file:///home/reid/1cfe/fusion-tea/knowledge/sources/nist_316_stainless_cryogenic_material_properties/raw.html",
+  "title": "cryogenic material properties 316 Stainless",
+  "viewport": {
+    "width": 1600,
+    "height": 1100
+  },
+  "full_page": true,
+  "ms": 3169,
+  "console": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FILE_NOT_FOUND",
+      "ms": 429
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FILE_NOT_FOUND",
+      "ms": 429
+    },
+    {
+      "type": "error",
+      "text": "Access to XMLHttpRequest at 'file:///cryogenics/navMenu.html' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+      "ms": 945
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "ms": 946
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FILE_NOT_FOUND",
+      "ms": 947
+    },
+    {
+      "type": "error",
+      "text": "Access to XMLHttpRequest at 'file:///cdn-cgi/rum?' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: chrome, chrome-untrusted, data, http, https.",
+      "ms": 1430
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "ms": 1431
+    },
+    {
+      "type": "error",
+      "text": "Access to XMLHttpRequest at 'https://pages.nist.gov/nist-header-footer/boilerplate-footer.html?_=1789480964618' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+      "ms": 1467
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "ms": 1468
+    },
+    {
+      "type": "error",
+      "text": "Access to XMLHttpRequest at 'https://pages.nist.gov/nist-header-footer/boilerplate-header.html?_=1789480964618' from origin 'null' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+      "ms": 1569
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "ms": 1570
+    }
+  ],
+  "page_errors": [
+    {
+      "message": "openPlotWindow is not defined",
+      "ms": 941
+    }
+  ]
+}

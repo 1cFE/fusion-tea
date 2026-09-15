@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "https://trc.nist.gov/cryogenics/materials/316Stainless/316Stainless_rev.htm",
+  "slug": "nist_316_stainless_cryogenic_material_properties",
+  "path": "knowledge/sources/nist_316_stainless_cryogenic_material_properties/",
+  "source_id": "d803b3f2e1de6d23a85b47e6fb864a5b5da1258fd9ce0c9704e2398c7847b4a0",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-15T14:02:10.684477+00:00"
+}

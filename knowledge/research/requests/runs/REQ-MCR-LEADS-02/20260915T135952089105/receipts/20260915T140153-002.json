@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "/tmp/T005-ballarino-slides.pdf",
+  "slug": "current_leads_and_superconducting_links_ballarino_cern",
+  "path": "knowledge/sources/current_leads_and_superconducting_links_ballarino_cern/",
+  "source_id": "c073a1a526ddc24c50311b890c3439d9540fa9e29fb392aaec5aded92094e858",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-15T14:01:53.508021+00:00"
+}
