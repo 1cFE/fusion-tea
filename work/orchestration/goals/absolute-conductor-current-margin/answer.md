@@ -28,6 +28,18 @@ WI-062 implements the native calculation, generated package, independent oracle 
 | New reference-conductor current predicate | Fail |
 | Combined twenty-predicate feasibility | Fail: the same two failures plus current margin |
 
+The entering predicate set is the following nineteen requirements, all retained. Their exact expressions and public keys are in the [frozen predicate catalog](../../../../exploration/stellarator_e2e/studies/20260915-absolute-conductor-current-margin/results/predicate-catalog.json).
+
+```text
+beta_ok, burn_hold_ok, cond_strain_ok
+cycle_domain_ok, divertor_heat_ok, heating_couple_positive_ok
+heating_couple_upper_ok, heating_source_positive_ok, heating_source_upper_ok
+loop_capacity_ok, loop_pressure_ok, net_positive
+peak_field_ok, recirc_ok, sustainment_ok
+tbr_ok, wall_load_ok, wp_fit_ok
+wp_stress_ok
+```
+
 Nominal radial allocation stays 0.30 m. The conditional local fit screen still has **−120 mm radial margin** and **+21 mm transverse margin**. Reference physical tape length remains 36.579 million metres, tape procurement remains $731.57 million, and LCOE remains $144.74/MWh. No geometry, pricing or existing predicate was changed to recover a pass. Numerical digits support reproducibility; they are not measurement precision. [Native results](../../../../exploration/stellarator_e2e/studies/20260915-absolute-conductor-current-margin/results/analysis.json), [reference preservation](../../../../exploration/stellarator_e2e/studies/20260915-absolute-conductor-current-margin/results/native-reference-attribution.json).
 
 ## Evidence and applicability
@@ -51,11 +63,11 @@ Unsupported inputs are explicitly refused: temperature other than 20 K, width ou
 
 ## Tape inventory and current accounting
 
-The inventory mapping uses physical tape length and physical conductor length from the same procurement model. Their ratio gives effective parallel tapes in a set-average conductor. The existing set/reference winding-fill ratio converts that value to the reference conductor. Tape counts are homogenized effective counts, not a manufacturing bill of integer tape stacks.
+The inventory mapping uses physical tape length and physical conductor length from the same procurement model. Their ratio gives effective parallel tapes in a set-average conductor. The existing coil-current distribution factor (`f_set`) and winding-pack-volume distribution factor (`f_wp_vol`) convert that value to the reference conductor. Tape counts are homogenized effective counts, not a manufacturing bill of integer tape stacks.
 
 ```text
 N_set = physical tape length / physical conductor length
-N_reference = N_set × set winding-fill fraction / reference winding-fill fraction
+N_reference = N_set × f_set / f_wp_vol
 Ic_tape = I_reference_tape × (tape width / 4 mm)
           × (actual peak field / 20 T)^−0.6 × material factor × orientation factor
 Ic_reference = N_reference × Ic_tape × cabling retention
@@ -63,12 +75,12 @@ Ic_reference = N_reference × Ic_tape × cabling retention
 operating fraction = turn current / Ic_reference
 fraction margin = allowable fraction − operating fraction
 current margin = allowable fraction × Ic_reference − turn current
-reference_conductor_current_ok = current margin >= 0
+reference_conductor_current_ok = fraction margin >= 0
 ```
 
 Series length cancels in the tape/conductor-length ratio. Coil ampere-turns are never compared directly with tape critical current. A fixed ampere-turn inventory repartitioned into 40, 50 or 60 kA turns changes parallel tape count and conductor critical current proportionally, leaving the operating fraction unchanged at 1.68653. Total physical tape and procurement stay fixed in those cases. This is a consistency property of repartitioning series turns; it does not mean current or tape inventory cannot affect the margin. Actual field, inventory density and performance changes are independently exercised. [Interface derivation](evidence/interface-assessment.md), [native study analysis](../../../../exploration/stellarator_e2e/studies/20260915-absolute-conductor-current-margin/results/analysis.json).
 
-The predicate is explicitly **reference-conductor scope**. A set-average capacity is exposed as a diagnostic. Neither is a weakest-tape, worst-coil or complete graded-cable qualification. [Native calculation](../../../../models/library/analyses/mfe_conductor_current.sysml), [public interface](evidence/interface.json).
+The predicate is explicitly **reference-conductor scope**. A set-average capacity is exposed as a diagnostic. Neither is a weakest-tape, worst-coil or complete graded-cable qualification. [Native calculation](../../../../models/library/analyses/mfe_conductor_current.sysml), [public interface](../../../active/WI-062_absolute-conductor-current-margin/evidence/interface.json).
 
 ## Existing sizing law and selected-field predicate
 
