@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-MCR-CRYO-01",
+  "request_key": "796ec772c46cf7f6bbe6fe15c6464e91cc1d53b594184e6723a7fb77bb60b265",
+  "request_path": "knowledge/research/requests/REQ-MCR-CRYO-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-15T13:37:59.625133+00:00",
+  "override_reason": null
+}

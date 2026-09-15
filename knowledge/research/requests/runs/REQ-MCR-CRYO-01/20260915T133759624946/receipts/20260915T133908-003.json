@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "capture_failed",
+  "candidate": "https://ntrs.nasa.gov/api/citations/20150018118/downloads/20150018118.pdf?attachment=true",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "extract exited 1",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-15T13:39:08.046936+00:00"
+}

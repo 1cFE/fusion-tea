@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-MCR-CRYO-01",
+  "question": "Which admissible primary sources anchor current-lead, thermal-radiation and support-conduction heat loads for a 20 K HTS coil set, and which Stellaris-specific inputs remain missing?",
+  "consumer": "20260914-magnet-coil-realism#3",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": ["CERN current-lead cryogenics", "NASA multilayer insulation", "NIST cryogenic material properties", "ITER and KIT device cryogenics", "Admitted Stellaris section 2.9"],
+  "limits": {"max_searches": 6, "max_captures": 3}
+}

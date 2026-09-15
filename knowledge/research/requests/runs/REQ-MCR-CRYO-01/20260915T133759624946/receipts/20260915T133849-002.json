@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "capture_failed",
+  "candidate": "https://trc.nist.gov/cryogenics/materials/G-10%20CR%20Fiberglass%20Epoxy/G10CRFiberglassEpoxy_rev.htm",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "extract exited 1",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-15T13:38:49.910510+00:00"
+}
