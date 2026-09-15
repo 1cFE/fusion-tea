@@ -203,3 +203,17 @@ The required post-record run completed: `.codex-test/run python -m pytest tests/
 The Round 2 source registry check `.codex-test/run python scripts/source_registry.py verify` reports zero faults and three exact legacy entries (COST_MODELING.md, the historical EU DEMO conductor source and ITER cryoplant source). The reviewed #3 disposition is appended with no repair credit. No model/study execution or next round is authorized by these validation results.
 
 Final checks after the disposition append: `.codex-test/run python -m pytest tests/study/test_records.py tests/orchestration/test_goal_contract.py -q -p no:cacheprovider` returned 51 passed; evidence/round2_record_checks.log. `git diff --check` passes. The source acquisition commits are d31e1b89 and 3e486f29; the review, render and validation evidence is committed with this trail entry, so its containing commit supplies their tracked citation identity.
+
+### Owner ruling — 2026-09-15 — comparison amendment approved
+
+[OWNER-VERBATIM] "Approve the comparison amendment" answers the pending proposal: use older-package results as references and attribute an increment only against its entering package. The agent-originated amendment is ratified, retaining its provenance, in goal.md § Amendment 2026-09-15 — comparison attribution invariant approved.
+
+- **Trigger:** Round 1 finding 20260914-magnet-coil-realism#1, the cross-package attribution premise conflict.
+- **Decision and reason:** adopt the proposed attribution rule, route (i); the owner approved it. The additional control run is unnecessary for resolving this finding.
+- **Tier:** reserved gate.
+- **Decided by:** owner, 2026-09-15.
+- **Changed:** dated goal amendment and appended discovery disposition closing #1; current-work pointer updated. The frozen study and both closed rounds remain unchanged. The separate Round 2 cryogenic-input gate remains unresolved.
+
+This lands the already reviewed proposal from C-001.r2 and the Round 1 review, with no new scientific interpretation or execution; further independent review is unnecessary for recording the owner's ruling.
+
+Validation after landing the ruling: `.codex-test/run python -m pytest tests/study/test_records.py tests/orchestration/test_goal_contract.py -q -p no:cacheprovider` — 51 passed; `git diff --check` — passed.

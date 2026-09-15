@@ -124,3 +124,9 @@ None.
 ### Amendment 2026-09-15 — lead-count premise remains unselected
 
 [AGENT] The 96-lead estimate in § What the model does today, item 2, assumed independently connected coils. Stellaris printed p.25/Fig.46 instead describes six series groups of eight coils. Twelve warm-to-cold leads would require the additional assumption of one terminal pair per group; the paper does not specify a complete terminal design. T-004's original-page evidence and options are in evidence/T-004_cooling_slot.md. The lead count and thermal design remain unselected under the existing missing-input invariant.
+
+### Amendment 2026-09-15 — comparison attribution invariant approved
+
+[OWNER-VERBATIM] "Approve the comparison amendment" in response to the proposal to use older-package results as references and attribute an increment only against its entering package.
+
+[AGENT] (ratified by owner, 2026-09-15) Amends § Invariants: flips by case id against a committed record attribute an increment only where that record's pin is the increment's entering pin. Against a record at another package, the comparison is a reference rather than an attribution. This adopts route (i) proposed at Round 1 close and resolves finding 20260914-magnet-coil-realism#1 without an additional control run.
