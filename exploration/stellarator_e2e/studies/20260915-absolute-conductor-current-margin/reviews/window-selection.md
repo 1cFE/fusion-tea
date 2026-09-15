@@ -1,0 +1,9 @@
+# Fixed sensitivity sample after the final oracle scan
+
+Executor decision, 2026-09-15. The final released oracle evaluated all 295 unique candidate points (296 report rows). Preserve this complete sample. There are 13 all-twenty-predicate passes, all conditional on orientation factor 3; one also includes 0.9 retention for each of three mechanisms. No default entering control passes the new current predicate. These are scan predictions, not native results.
+
+The current all-twenty-predicate feasible diagnostic anchor is `alloc-oldpass1.2-0.5--orientation-3`. Both endpoints of all eighteen declared input groups were checked from that anchor. Thirty-five endpoint evaluations completed. The major-radius low endpoint R=11.43 m, combined with this anchor's other inputs, gives actual peak field 32.09058362175721 T and is explicitly unsupported by the 20–32 T model domain. It carries no predicate verdict and is not described as a caught physical boundary. Its exact inputs, error and field value are retained in `results/edge-scan.json`. None of the 295 proposed native points is unsupported.
+
+Bounds are engineered sensitivity choices, with source evidence informing material factors only. The sample contains coordinated entering controls; independently mixing their extrema does not inherit their field-domain validity. Keep the nominal geometry, all previously selected controls, all scenario factors and all physical-coordinate aliases. No domain widening, tuning or boundary search is introduced.
+
+Every declared axis reports constraints_reachable. The coordinator's delegated engineering authority permits this sensitivity framing; no no_constraint_response axis requires a separate missing-resistance ruling. The broader manufacturing extrema remain declined values on the traced material axis. See preparation/selection.json and indicators.json.

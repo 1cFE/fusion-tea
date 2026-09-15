@@ -1,0 +1,22 @@
+{
+  "outcome": "pass",
+  "stores": [
+    {
+      "path": "results/_work/stellarator-baseline-point-v1.db",
+      "sha256": "25d8608a1c36e232ab431e23739afabfcb315a1fc808f869a7dec5264bb0070c",
+      "cases": 1,
+      "export_joins": 0,
+      "content_addressed_evidence_checked": 1
+    },
+    {
+      "path": "results/study/_work/20260915-absolute-conductor-current-margin.db",
+      "sha256": "930d96feb5cb848971e2f761d0d09740b49db88eb863d7f07170d4d7f155e23e",
+      "cases": 295,
+      "export_joins": 295,
+      "content_addressed_evidence_checked": 295
+    }
+  ],
+  "snapshot_artifacts_checked": 445,
+  "snapshot_sha256": "7980b775611fd1b7855a8b69c8f6dfede2c2ec996aa2f3aef7aae2efa0bf75f4",
+  "required_retained_files": 453
+}

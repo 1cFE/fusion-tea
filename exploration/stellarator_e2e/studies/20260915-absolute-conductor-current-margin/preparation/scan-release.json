@@ -1,0 +1,6 @@
+{
+  "authorized_by": "coordinator",
+  "scope": "Oracle scan only; native baseline/preflight/execution not released",
+  "executable_fingerprint": "c0a7ef4a259082952bece2bf40b5a7cfaa570c317ae8f1dd4026fc33bdae46be",
+  "semantic_fingerprint": "f1340dda1471f65942e804579adc14b21344f9e1e4f26f04e8567214483c2ed8"
+}

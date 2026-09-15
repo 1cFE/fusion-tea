@@ -1,0 +1,63 @@
+{
+  "calc": "stellarator_09::stellaris::magnet::conductor_current",
+  "inputs": {
+    "stellarator_09__stellaris__magnet__winding_pack__reference_tape_current": 200.0,
+    "stellarator_09__stellaris__magnet__winding_pack__material_factor": 1.0,
+    "stellarator_09__stellaris__magnet__winding_pack__orientation_factor": 1.0,
+    "stellarator_09__stellaris__magnet__winding_pack__cabling_factor": 1.0,
+    "stellarator_09__stellaris__magnet__winding_pack__degradation_factor": 1.0,
+    "stellarator_09__stellaris__magnet__winding_pack__sharing_factor": 1.0,
+    "stellarator_09__stellaris__magnet__winding_pack__allowable_fraction": 0.8,
+    "stellarator_09__stellaris__magnet__winding_pack__allow_field_extrapolation": 1.0
+  },
+  "outputs": [
+    "stellarator_09__stellaris__magnet__conductor_current__parallel_tapes_set",
+    "stellarator_09__stellaris__magnet__conductor_current__parallel_tapes_reference",
+    "stellarator_09__stellaris__magnet__conductor_current__tape_critical_current",
+    "stellarator_09__stellaris__magnet__conductor_current__critical_current_reference",
+    "stellarator_09__stellaris__magnet__conductor_current__critical_current_set",
+    "stellarator_09__stellaris__magnet__conductor_current__operating_fraction_reference",
+    "stellarator_09__stellaris__magnet__conductor_current__operating_fraction_set",
+    "stellarator_09__stellaris__magnet__conductor_current__allowable_current",
+    "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+    "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+    "stellarator_09__stellaris__magnet__conductor_current__field_extrapolated"
+  ],
+  "predicate": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+  "scope": "reference-conductor conditional estimate; set effective diagnostic",
+  "calculation_inputs": [
+    "B_peak",
+    "temperature",
+    "tape_width",
+    "tape_thickness",
+    "tape_length",
+    "conductor_length",
+    "f_set",
+    "f_wp_vol",
+    "turn_current",
+    "reference_tape_current",
+    "material_factor",
+    "orientation_factor",
+    "cabling_factor",
+    "degradation_factor",
+    "sharing_factor",
+    "allowable_fraction",
+    "allow_field_extrapolation"
+  ],
+  "calculation_outputs": [
+    "parallel_tapes_set",
+    "parallel_tapes_reference",
+    "tape_critical_current",
+    "critical_current_reference",
+    "critical_current_set",
+    "operating_fraction_reference",
+    "operating_fraction_set",
+    "allowable_current",
+    "margin_fraction",
+    "margin_current",
+    "field_extrapolated"
+  ],
+  "predicate_operand": "margin_fraction_in",
+  "semantic_fingerprint": "f1340dda1471f65942e804579adc14b21344f9e1e4f26f04e8567214483c2ed8",
+  "executable_fingerprint": "c0a7ef4a259082952bece2bf40b5a7cfaa570c317ae8f1dd4026fc33bdae46be"
+}
