@@ -33,4 +33,4 @@ Updated: 2026-09-15
 - [x] Preserve entering package identity and matched comparison data before production mutation.
 - [x] Record source-backed basis and concrete design, enumerate affected consumers, obtain independent source/math/interface review.
 - [x] Implement and validate the reviewed correction; register verification and traceability through native PM.
-- [ ] Independently audit integrated outcome and prepare committed package for integration. Independent implementation PASS is recorded; T-004 integration exposed the missing snapshot refresh, now tracked in goal T-005.
+- [x] Independently audit integrated outcome and prepare committed package for integration. Independent PASS and snapshot-correction recheck are in audit.md; native T-006 integration passes all ten gates.

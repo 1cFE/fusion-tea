@@ -123,3 +123,10 @@ Native model completion repair · WI-060 · current native snapshot and correcte
 ### T-006 start — 2026-09-15
 
 Native integration · evidence/T-006_integration/ · expected candidate from the snapshot-complete reviewed package.
+
+### T-006 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** evidence/T-006_integration/integration_return.json and native gate artifacts (pinned with this return).
+- **Reading:** All ten gates pass; one study-ready CANDIDATE is established. The manifest read-set assertion remains explicitly unexecuted by the existing seam; no new coverage is claimed for it. Package generation, manual bodies, snapshot, census, lineage and baseline oracle/verdict checks pass.
+- **Decision:** Trigger: native CANDIDATE. Decision: promote the round's sole candidate pin b028a7d198da6184e7e28d98bbb22f20485094a60c652d27be963e9babeedbe1 and release T-003 candidate-specific preparation, scan and study execution. Tier: execution detail. Decided by: coordinator. Changed: T-003 release; source/price/density assumptions and comparison contract unchanged.
