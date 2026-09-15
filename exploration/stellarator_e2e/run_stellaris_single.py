@@ -2,7 +2,7 @@
 
 The cross-part capital rollup is compiled by codegen and computed in one teax-simkit
 pass. The package is strict-loaded with no harness glue. This demo/regression command
-checks recorded anchors, all 19 generated verdicts, numerical agreement with the
+checks recorded anchors, all 20 generated verdicts, numerical agreement with the
 independent demo oracle, and three synthetic CAS72 guard cases. Any failed gate family
 produces a nonzero process exit after the diagnostic output is printed.
 
@@ -103,7 +103,7 @@ EXPECTED_VERDICTS = {
     "divertor_heat_ok": "violated",
 }
 EXPECTED_HEADLINE = "violation"  # WI-047: one verdict violated by design (WI-041 pinned 'violation' once before)
-EXPECTED_VERDICT_COUNT = 19  # WI-050 adds four scalar efficiency bounds.
+EXPECTED_VERDICT_COUNT = 20  # WI-062 adds reference-conductor margin.
 
 
 def _execute_package(*, pipeline_path=None, output_dir=None):
@@ -239,9 +239,9 @@ def _anchor_gate(values: dict[str, float]) -> bool:
 
 
 def _assert_generated_verdicts(outputs) -> None:
-    """Check the exact 19 design-point verdicts and the separate aggregate."""
+    """Check the exact 20 design-point verdicts and the separate aggregate."""
     report = outputs["constraint_report"]
-    print("=== NINETEEN VERDICTS (generated ConstraintReport) ===")
+    print("=== TWENTY VERDICTS (generated ConstraintReport) ===")
     verdicts = {}
     for channel, value in outputs.items():
         if channel.endswith("__evaluation") and hasattr(value, "status"):

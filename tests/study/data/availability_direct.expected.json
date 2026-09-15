@@ -1,5 +1,5 @@
 {
-  "derived_against_semantic_fingerprint": "d61aff71c088a81d1c12da1817511b7aede938df05a34d5a6bd278c56ec55386",
+  "derived_against_semantic_fingerprint": "f1340dda1471f65942e804579adc14b21344f9e1e4f26f04e8567214483c2ed8",
   "group": {
     "axis": "availability_direct",
     "declared_keys": [
@@ -362,6 +362,30 @@
             "ref": "stellarator_09__stellaris__recirc_ok__threshold",
             "reached": false,
             "entry_type": "library_default"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "definition_qualified_name": "mfe_conductor_current::'Reference Conductor Current Margin'",
+        "source_local_identity": "reference_conductor_current_ok",
+        "operator": ">=",
+        "operand_classes": [
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "margin_fraction_in",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+            "reached": false
+          },
+          {
+            "operand": "<literal>",
+            "class": "literal",
+            "reached": false,
+            "value": 0.0
           }
         ]
       },
@@ -842,6 +866,30 @@
             "ref": "stellarator_09__stellaris__recirc_ok__threshold",
             "reached": false,
             "entry_type": "library_default"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "definition_qualified_name": "mfe_conductor_current::'Reference Conductor Current Margin'",
+        "source_local_identity": "reference_conductor_current_ok",
+        "operator": ">=",
+        "operand_classes": [
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "margin_fraction_in",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+            "reached": false
+          },
+          {
+            "operand": "<literal>",
+            "class": "literal",
+            "reached": false,
+            "value": 0.0
           }
         ]
       },

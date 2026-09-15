@@ -1,0 +1,42 @@
+...F
+=================================== FAILURES ===================================
+______ test_every_catalog_constraint_is_rederived_with_its_operand_count _______
+
+summary = {'channels_checked': [{'channel': 'stellarator_09__stellaris__blanket__first_wall__wall_peak_calc__wall_load_peak', 'o... 'c0a7ef4a259082952bece2bf40b5a7cfaa570c317ae8f1dd4026fc33bdae46be', 'kind': 'sealed', 'matches_preflight': True}, ...}
+
+    def test_every_catalog_constraint_is_rederived_with_its_operand_count(summary):
+        rederived = {c["source_local_identity"]: c["operands_resolved"]
+                     for c in summary["constraints_rederived"]}
+>       assert set(rederived) == {
+            "beta_ok", "net_positive", "peak_field_ok", "recirc_ok", "tbr_ok", "wall_load_ok",
+            "wp_stress_ok", "wp_fit_ok", "reference_conductor_current_ok",  # additive magnet screens
+            "sustainment_ok",  # WI-037
+            "cond_strain_ok",  # WI-036: the conductor's own check, separate from the structure's
+            "burn_hold_ok",  # WI-043: the lower half of the sustainment condition, p_aux_required >= 0
+            # WI-045 (goal plant-closure, 2026-09-08): the loop's pressure-domain and capacity
+            # fences and the cycle's fit-domain fence, all on computed operands
+            "loop_pressure_ok", "loop_capacity_ok", "cycle_domain_ok",
+            # WI-047 (goal plant-closure, 2026-09-08): the divertor target peak (computed) against
+            # the adopted threshold -- violated at the baseline by design
+            "divertor_heat_ok",
+            "heating_source_positive_ok", "heating_source_upper_ok",
+            "heating_couple_positive_ok", "heating_couple_upper_ok",
+        }
+E       AssertionError: assert {'beta_ok', '...tive_ok', ...} == {'beta_ok', '...tive_ok', ...}
+E         
+E         Extra items in the left set:
+E         'reference_conductor_current_ok'
+E         Use -v to get more diff
+
+tests/study/test_verify.py:100: AssertionError
+=============================== warnings summary ===============================
+tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 3 passed, 1 warning in 85.38s (0:01:25)

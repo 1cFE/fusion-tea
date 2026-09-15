@@ -1,5 +1,5 @@
 {
-  "derived_against_semantic_fingerprint": "d61aff71c088a81d1c12da1817511b7aede938df05a34d5a6bd278c56ec55386",
+  "derived_against_semantic_fingerprint": "f1340dda1471f65942e804579adc14b21344f9e1e4f26f04e8567214483c2ed8",
   "group": {
     "axis": "a",
     "declared_keys": [
@@ -261,6 +261,30 @@
             "ref": "stellarator_09__stellaris__recirc_ok__threshold",
             "reached": false,
             "entry_type": "library_default"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "definition_qualified_name": "mfe_conductor_current::'Reference Conductor Current Margin'",
+        "source_local_identity": "reference_conductor_current_ok",
+        "operator": ">=",
+        "operand_classes": [
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "margin_fraction_in",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+            "reached": true
+          },
+          {
+            "operand": "<literal>",
+            "class": "literal",
+            "reached": false,
+            "value": 0.0
           }
         ]
       },
@@ -847,6 +871,30 @@
         ]
       },
       {
+        "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "definition_qualified_name": "mfe_conductor_current::'Reference Conductor Current Margin'",
+        "source_local_identity": "reference_conductor_current_ok",
+        "operator": ">=",
+        "operand_classes": [
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "margin_fraction_in",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+            "reached": true
+          },
+          {
+            "operand": "<literal>",
+            "class": "literal",
+            "reached": false,
+            "value": 0.0
+          }
+        ]
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
         "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
         "source_local_identity": "sustainment_ok",
@@ -992,8 +1040,8 @@
     "objectives_unreachable": [],
     "sibling_candidates": [],
     "trace_size": {
-      "modules_fired": 94,
-      "channels_tainted": 199
+      "modules_fired": 96,
+      "channels_tainted": 211
     },
     "warnings": [],
     "not_derivable": {

@@ -99,7 +99,7 @@ def test_every_catalog_constraint_is_rederived_with_its_operand_count(summary):
                  for c in summary["constraints_rederived"]}
     assert set(rederived) == {
         "beta_ok", "net_positive", "peak_field_ok", "recirc_ok", "tbr_ok", "wall_load_ok",
-        "wp_stress_ok", "wp_fit_ok",  # WI-035/WI-061
+        "wp_stress_ok", "wp_fit_ok", "reference_conductor_current_ok",  # additive magnet screens
         "sustainment_ok",  # WI-037
         "cond_strain_ok",  # WI-036: the conductor's own check, separate from the structure's
         "burn_hold_ok",  # WI-043: the lower half of the sustainment condition, p_aux_required >= 0
