@@ -48,3 +48,20 @@ T-002 · native modeling PM · expected registered work item and source-reviewed
 - **Decision:** Reference/set distribution mismatch → expose both estimates and label native predicate as reference-conductor scope; execution detail; coordinator [AGENT]; proposed interface assessment and WI-062 design, subject to review.
 
 The entering capture's first launch lacked the documented simkit import path; the corrected launch used STOP_PARSER_TEAX_ROOT and completed. This was an operational command correction inside T-001, not a failed semantic research return. Native reference capture retains the inherited bool-serialization warning.
+
+### Scientific/interface release — 2026-09-15
+
+Fresh reviewer `/root/current_reviewer` returns PASS for the conditional design in `evidence/source-design-review.md`. WI-062 design incorporates the explicit20–32T domain, opt-in extrapolation above24T, construction/temperature and allowable-fraction guards, and reference-only predicate scope. Implementation is released under these conditions. Coordinator decision: execution detail, [AGENT], supported by original-source review; no owner-reserved rule changes.
+
+### T-003 scope
+
+- **Objective:** Evaluate the implemented current-margin estimate at entering reference/prior-pass coordinates and explicit material/orientation/retention sensitivities through the native study workflow.
+- **Why now:** Source/interface meaning is independently released; the entering comparison set is captured.
+- **Scope:** Prepare bounded study record/scripts while WI-062 implements. No candidate execution before audited integration CANDIDATE and coordinator release. Study owns its record, execution results and first-sighting findings; coordinator owns joined goal dispositions. At most one committed study in this round.
+- **Inputs:** `goal.md`, source/interface review and WI-062 design, captured entering117 controls; final WI-062 interface and integration pin when available.
+- **Done when:** Frozen native record supports all-point oracle agreement, entering attribution and explicit current/old/combined feasibility, or a named prerequisite blocks it.
+- **Stop when:** Candidate or preflight refuses, uncovered scientific interpretation, quarantine gate or declared limit.
+
+### T-003 start — 2026-09-15
+
+T-003 · run-study · expected `exploration/stellarator_e2e/studies/20260915-absolute-conductor-current-margin/`. Preparation runs alongside implementation with disjoint write ownership and no native candidate execution until release. New interface names are integrated from WI-062 evidence, never guessed.
