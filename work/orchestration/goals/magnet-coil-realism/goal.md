@@ -116,3 +116,11 @@ The owner closes — on the § Answered when condition, or by redirect at any ro
 ## Amendments
 
 None.
+
+### Amendment 2026-09-15 — factual correction to winding-length grounding
+
+[AGENT] The historical statement in § What the model does today, item 1, that the major-radius and bore forms agree under uniform scaling is conditional: their normalized bore and major-radius ratios must agree. Holding plasma aspect ratio fixed does not ensure this in the present radial build because its layer stack remains 1.85 m thick. WI-058 audit@a6286a55 established the counterexample; Round 1 review accepted the correction in L-002. This corrects the grounding premise without changing the chosen bore form, printed anchors, comparison invariant or reserved gates. The separate comparison amendment proposed at Round 1 close remains unruled.
+
+### Amendment 2026-09-15 — lead-count premise remains unselected
+
+[AGENT] The 96-lead estimate in § What the model does today, item 2, assumed independently connected coils. Stellaris printed p.25/Fig.46 instead describes six series groups of eight coils. Twelve warm-to-cold leads would require the additional assumption of one terminal pair per group; the paper does not specify a complete terminal design. T-004's original-page evidence and options are in evidence/T-004_cooling_slot.md. The lead count and thermal design remain unselected under the existing missing-input invariant.

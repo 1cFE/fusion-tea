@@ -120,3 +120,86 @@ Landed after the pass: ten joined disposition rows appended to `exploration/stel
 - **Owner-held, carried out of this round:** (1) finding `#1`'s ruling — route (i), the proposed amendment text: "### Amendment 2026-09-14 — amends § Invariants: flips by case id against a committed record attribute an increment only where that record's pin is the increment's entering pin; against a record at another package the comparison is a reference, never an attribution. `[AGENT] — proposed at the round-1 close on finding 20260914-magnet-coil-realism#1; owner rules.`" — or route (ii); (2) whether to re-run the committed plant-closure window at this pin (about 100 min per arm); (3) the missing close row under `20260903-priced-levers#2` at the magnet-design-transfer close (`3dda522e`) — that goal's, not this one's; (4) the `tests/model_viz` inherited failures surfaced at T-001 (a consumer item to mint or route); (5) the calc-doc and test-comment "uniform scaling" wording corrections carried to the round-2 regeneration (WI-058 design § Audit repairs); (6) the (c) restatement's acceptance at this boundary; (7) the round-2 strategy — the cryo inventory — is the round agent's recommendation, opened only after the fresh review.
 
 Fresh reviewer dispatch: brief to be deposited at `evidence/round1_review_prompt.md`; the reviewer must read this closed result and the native evidence without the author's conversation.
+
+### Round 1 review — 2026-09-15
+
+Fresh non-author reviewer `/root/round1_review`, dispatched under `evidence/round1_review_resume_prompt.md`, returns `FINDINGS` in `evidence/round1_review.md` (unpinned; no native digest). Valid WI-058 audit and C-001.r2 coverage reused after native-path history inspection; no external mutation voids a task. Remaining defects are the price-minimum wording, the first execution's fate, and proposed learning scope. L-001–L-003 accepted with the review's corrected wording and appended to learnings.md. The post-record study battery runs under the sealed launcher; closure validation remains pending. The reviewer permits independent cryogenic source research; comparison attribution and final answer remain owner-held where their premises need a ruling.
+
+### Amendment 2026-09-15 — amends T-003 return and Round 1 result
+
+[AGENT] F1: the unrestricted price minima on the two cheap-machine transects move from a = 2.2 m to 2.1 m; the design-column minimum remains at 2.0 m. Those price minima violate predicates. Each cheap transect's sole point satisfying all eighteen predicates remains at a = 1.7 m. The Round 1 Intent sentence saying the interior minima do not move is incorrect. Evidence: results/a-minima.json@8ad7e913 and the passed r2 reading.
+
+[AGENT] F2: the first execution completed successfully at 20:57:43. The second launch was refused at 20:57:24 while the first still held the lease; the executor had mistakenly inferred it died. The completed first run was superseded by the shared-store run to meet the record contract. The trail's turn-boundary-kill explanation is incorrect. Evidence: execution/execute-attempt-1.log and execution/attempt-2-lease-refused.log@8ad7e913; record.md §10/Addendum@e44d5e5f. The dropped commit and overwritten defective export remain executor-reported history, not independently recoverable evidence. These operational corrections kept the scientific question, proposals and pin, so zero goal-level retries remains the reviewed classification.
+
+## Round 2 — cryogenic-load-inventory
+
+### Strategy revision — 2026-09-15
+
+- **Approach:** establish admissible source bases for the omitted cryogenic heat loads and the separate cooling-power slot, then pursue the inventory through native modelling only where values and boundaries are justified. Research is independent of Round 1's unresolved comparison amendment and pending post-record battery; model and study execution remain parked pending applicable review and validation.
+- **Assumptions:** the existing Carnot chain can consume a load inventory, but heat removed at different temperatures may require separate refrigeration terms. Coil count alone may not determine lead count. The held 15 MW cooling term has an undocumented composition despite its existing non-cryogenic interpretation.
+- **Abandonment conditions:** an admissible source contradicts the intended form; required geometry, circuit topology or coefficients remain unavailable after bounded research and require an owner ruling; a native seam needs repair. Missing inputs will be surfaced with options.
+- **Intended model increment:** goal.md Answered when (a)2, with source-backed leads, shield and support loads; explicit temperature and power-account boundaries; a justified residual instead of an unexplained uplift. Carry the reviewed WI-058 comment corrections when regeneration is warranted. No values or implementation chosen by this strategy.
+- **Intended study question:** at the resulting single pin, how much do the inventory and cooling-account resolution change cryogenic wall power, recirculation, magnet-associated costs and the sampled feasible machine? Final cross-package attribution awaits the owner ruling; no study protocol or point set is chosen here.
+
+### T-004 scope
+
+- **Objective:** determine which admissible evidence can anchor the missing cryogenic loads and clarify the held cooling slot, with concrete options for every missing device input.
+- **Why now:** Round 1 finding #3 routes the cryo inventory here; the source bases must precede model design.
+- **Scope:** bounded native source acquisition (six searches, three captures), assessment of registered sources and original pages, and read-only examination of the cooling-slot source code. Worker owns REQ-MCR-CRYO-01 and its native records plus evidence/T-004_source_assessment.md; coordinator owns evidence/T-004_cooling_slot.md and goal trail. Independent source acquisition and cooling-slot inspection have disjoint writes and neither changes the other's research question. Excluded: model/generated/study changes, insight promotion, default selection, comparison rulings and seam repairs.
+- **Inputs:** goal.md Answered when (a)2 and invariants; passed Round 1 dispositions; evidence/T-004_research_brief.md; registered ITER material and admitted Stellaris source; the current cryoplant model and source-default references.
+- **Done when:** the native research return and source assessment identify usable coefficients with transfer limits, or a bounded negative/queue; the cooling slot has a traceable interpretation and options for unresolved composition.
+- **Stop when:** a seam prerequisite, source quarantine issue, or missing scientific input requiring owner choice; declared acquisition limits.
+
+### T-004 start — 2026-09-15
+
+Research seam · REQ-MCR-CRYO-01 via .codex-test/run and scripts/research_seam.py / source_registry.py; bounded fresh worker under evidence/T-004_research_brief.md, alongside coordinator's read-only cooling-slot assessment · expected native return and two evidence assessments.
+
+### T-004 return — 2026-09-15
+
+- **Outcome:** `MECHANICAL_FAILURE` for this acquisition attempt: native return is `OPERATOR_QUEUE`, but the common capture failure is diagnosed as sandbox DNS restriction, not evidence that the sources are unavailable.
+- **Evidence:** REQ-MCR-CRYO-01 run `20260915T133759624946/return.json`, its three capture receipts, and evidence/T-004_source_assessment.md@d31e1b89. No source or coefficient was admitted; existing-source and cooling-slot assessments identify missing device inputs.
+- **Reading:** the registered corpus still does not supply the complete inventory. The queue preserves three named candidates; it is not a bounded negative. The research limit was spent on mechanically failed captures.
+- **Decision:** trigger: demonstrated DNS failure and successful authorized-network header request; decision: retry the same request and candidates with network access enabled, preserving the initial run and all inputs/scope/meaning; tier: execution detail; decided by: coordinator; changed: native retry run only. No capture limit is increased and no seam code is repaired.
+
+### T-004 start — 2026-09-15
+
+Mechanical retry 1 of 2 · same REQ-MCR-CRYO-01, source candidates, task scope and scientific question; network-enabled native invocation replaces the sandbox-blocked invocation. Preserve original assessment and append a dated retry addendum. Three captures maximum in this invocation; validate that each response is the intended source before registration. Existing procedure permits downloading PDFs to temporary files and native local-PDF registration. Source acquisition and the coordinator's tests retain separate ownership.
+
+### Premise surprise — 2026-09-15 — lead topology
+
+[AGENT] T-004's original-page check contradicts the grounding's unsupported inference of 96 current leads from 48 coils. Stellaris printed p.25/Fig.46 describes six series groups, eight coils per group. Evidence: T-004_cooling_slot.md § Original-page check and T-004_stellaris_p25.png. One terminal pair per group would give twelve warm-to-cold leads, but that is a terminal-design assumption rather than a printed count. Dependent lead-load calculations are parked; the source assessment will surface topology options before any coefficient is bound. No owner ruling or numerical model change is implied.
+
+### T-004 return — 2026-09-15 — retry 1
+
+- **Outcome:** `OWNER_GATE`. Source acquisition returned `REGISTERED`, but the complete inventory needs device-specific inputs or explicit engineering assumptions not established by the acquired evidence.
+- **Evidence:** native retry `knowledge/research/requests/runs/REQ-MCR-CRYO-01/20260915T134156635935/return.json` and source assessment addendum@3e486f29; registered NIST conductivity and NASA insulation sources at that commit; coordinator's T-004_cooling_slot.md and rendered Stellaris pp.25/27 (unpinned; no native digest until committed).
+- **Reading:** material properties and a warm-boundary insulation benchmark are available; neither provides a complete coil heat-load coefficient. The CERN lead paper remains queued behind access restrictions. The lead terminal arrangement, cold-facing insulation, warm-to-cold support paths and temperature-stage efficiencies require named design assumptions or further device evidence. Stellaris explicitly does not model the cryogenic legs. The existing 15 MW cooling allowance has no source equipment breakdown. No model, package, point, coefficient or efficiency was changed.
+- **Decision:** trigger: these missing physical inputs and the unsupported grounding lead count; decision: surface the source assessment's options and park numerical implementation, recommending device-specific evidence before authorizing an engineering scenario; tier: reserved gate; decided by: nobody yet, owner ruling required; changed: research evidence only. The original DNS-limited run, the retry's corrected premature keeper note and nonexistent-file intake refusal are preserved. Four searches across both attempts; no goal retry cap exceeded.
+
+### Round 2 result — 2026-09-15
+
+- **Intent:** unmet for the model increment; source research completed and narrowed the missing inputs. A property curve or insulation benchmark cannot select the reactor's circuit, insulation or support design.
+- **Task sequence:** T-004 mechanical acquisition failure@d31e1b89 → retry 1 registered sources@3e486f29 → owner gate on missing device inputs. The native REGISTERED result includes the unresolved CERN queue; it does not establish source adequacy for the complete inventory.
+- **Last semantic outcome:** OWNER_GATE.
+- **Stop reason:** unresolved owner gate (trigger 4). No pin or study was promoted in this round; no scientific result about changed recirculation or optimum is claimed.
+- **Evidence refs:** T-004 source assessment and native runs at d31e1b89/3e486f29; T-004_cooling_slot.md and Stellaris pp.25/27 page renders; the original admitted Stellaris source; existing goal.md (a)2 and missing-input invariant.
+- **Learning delta:** none proposed. Source findings and their transfer limits remain in the acquisition assessment; the unselected topology/material/insulation options are not accepted model knowledge.
+- **Finding dispositions:** the only study finding touched by this round is 20260914-magnet-coil-realism#3. Its proposed joined update retains `model fix`, owner-gated after research, points to T-004 and the missing-input options, and says no model fix landed. It will be appended after focused source/round review. Finding #1's comparison ruling and all other standing dispositions remain unchanged.
+- **Owner options:** obtain device terminal/thermal-support/insulation evidence before implementation (recommended), or authorize a separately identified engineering scenario whose missing inputs must first be made concrete in native design. The detailed choices are in T-004_source_assessment.md § Concrete choices still needed and T-004_cooling_slot.md § Options. The grounding's 96-lead inference is unsupported; twelve is conditional on a terminal pair per series group. No scientific assumptions are selected by continuation alone.
+- **Constraints carried forward:** keep all goal invariants and reserved gates; separate temperature-stage refrigeration; retain current production and baseline; preserve source-access failures and the existing 15 MW assumption's uncertainty. The owner-held comparison amendment remains pending. Round 1's post-record validation is still running and will be recorded separately.
+
+### Round 2 review — 2026-09-15
+
+Fresh non-author reviewer `/root/round1_review`, under evidence/round2_review_prompt.md, returns `OWNER_GATE` in evidence/round2_review.md (unpinned; no native digest until committed). Original Stellaris, NASA and NIST images support the parked missing-input conclusion and the offered options; no complete 20 K inventory is established. The reviewer permits the proposed #3 disposition update, with class retained and no repair credit. One diagnostic-wording correction is applied below. No learning delta is appended. No next round or numerical task is opened; owner-held design inputs and the comparison ruling remain unresolved.
+
+### Amendment 2026-09-15 — amends T-004 first return diagnostic
+
+[AGENT] The first attempt was environment-limited acquisition: DNS failure was observed, but individual extraction causes were incompletely retained. The claim that DNS was diagnosed as the common cause of all three captures was too strong. This correction preserves the native receipts, retry classification and missing-input gate. Evidence: T-004_source_assessment.md § Native evidence and diagnosis@d31e1b89 and the Round 2 focused review.
+
+### Round 1 validation completion and closure assurance — 2026-09-15
+
+The required post-record run completed: `.codex-test/run python -m pytest tests/study tests/orchestration/test_goal_contract.py -q -p no:cacheprovider` returned 974 passed, one skipped, zero failures in 1034.93 seconds; evidence/round1_resume_tests.log. This is the combined count, not a fresh model-battery count. The unchanged-revision WI-058 model audit remains the basis for its 893 passes/thirteen skips; no redundant model battery was run. The fresh review's corrective-diff recheck passes in evidence/round1_review.md. Review corrections, accepted learnings and outstanding post-record validation are now complete; the comparison amendment and demo statement remain owner-held. Round 1 remains closed.
+
+The Round 2 source registry check `.codex-test/run python scripts/source_registry.py verify` reports zero faults and three exact legacy entries (COST_MODELING.md, the historical EU DEMO conductor source and ITER cryoplant source). The reviewed #3 disposition is appended with no repair credit. No model/study execution or next round is authorized by these validation results.
+
+Final checks after the disposition append: `.codex-test/run python -m pytest tests/study/test_records.py tests/orchestration/test_goal_contract.py -q -p no:cacheprovider` returned 51 passed; evidence/round2_record_checks.log. `git diff --check` passes. The source acquisition commits are d31e1b89 and 3e486f29; the review, render and validation evidence is committed with this trail entry, so its containing commit supplies their tracked citation identity.
