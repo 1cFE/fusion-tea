@@ -2,12 +2,14 @@
  "source": [
   "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv",
   "exploration/stellarator_e2e/studies/20260912-plant-closure/results/case-inputs.json",
-  "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json"
+  "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json",
+  "exploration/stellarator_e2e/studies/20260912-plant-closure/results/historical-window-summary.json"
  ],
  "source_sha256": {
   "exploration/stellarator_e2e/studies/20260912-plant-closure/results/native-points.csv": "1b10cd5562addda326eb68fe448a72f44754dbd79cd2ceb67089ac2abad4a9f5",
   "exploration/stellarator_e2e/studies/20260912-plant-closure/results/case-inputs.json": "1e700de685c7507bb37dd03aa7bba08fc8e96988de9090a1ff38289f895f7cd5",
-  "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json": "3b111f92e18185d960d114276e5ce7938e590fa635ac86b161834e279f5a8e80"
+  "exploration/stellarator_e2e/studies/20260912-plant-closure/results/package_identity.json": "3b111f92e18185d960d114276e5ce7938e590fa635ac86b161834e279f5a8e80",
+  "exploration/stellarator_e2e/studies/20260912-plant-closure/results/historical-window-summary.json": "42483fa74ac39343b57c6949ae51543278c6d4a3f5e54b8d88922b4d2edbc3f3"
  },
  "source_pin": {
   "kind": "sealed",
@@ -206,6 +208,16 @@
     "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied",
     "full_satisfied": "True",
     "headline": "satisfied"
+   },
+   "committed_from_historical_window_summary": {
+    "lcoe": 191.7581690876428,
+    "lcoe_1cfe": 188.12676969778198,
+    "historical_feasible": true,
+    "satisfied_sets": {
+     "old-ten": true,
+     "round1-fourteen": true,
+     "current-eighteen": true
+    }
    }
   },
   "20260912-plant-closure:c0130": {
@@ -395,7 +407,23 @@
     "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied",
     "full_satisfied": "True",
     "headline": "satisfied"
+   },
+   "committed_from_historical_window_summary": {
+    "lcoe": 198.00258969214127,
+    "lcoe_1cfe": 194.23627511198842,
+    "historical_feasible": true,
+    "satisfied_sets": {
+     "old-ten": true,
+     "round1-fourteen": true,
+     "current-eighteen": true
+    }
    }
   }
+ },
+ "source_pin_extra": {
+  "model_contract_semantic_fingerprint": "15ed665c374729a984f29fa753f444677805939ffb195933419b3489debbd47e",
+  "executable_fingerprint": "cbdb2a365f39c7863a038a48ba10356a783d3af3ab61b020c8bbba50cfcab37c",
+  "repo_commit": "4cd5e6081fc7683b32bd936fc40d3e7d858067f7",
+  "from": "20260912-plant-closure/snapshot.json"
  }
 }

@@ -1,0 +1,20 @@
+{
+  "started_at_utc": "2026-09-15T04:06:57.312455+00:00",
+  "finished_at_utc": "2026-09-15T04:10:08.700458+00:00",
+  "elapsed_seconds": 191.3880157470703,
+  "repo_revision": "344075ca06cf383bfddf1b75923ec3c19350bb64",
+  "arms": {
+    "study": {
+      "cases": 156,
+      "unique_proposals": 156,
+      "states": {
+        "completed": 156
+      },
+      "elapsed_seconds": 191.36205554008484,
+      "failures": [],
+      "store": "results/study/_work/20260914-magnet-coil-realism.db"
+    }
+  },
+  "rows_exported": 159,
+  "publication": "complete"
+}

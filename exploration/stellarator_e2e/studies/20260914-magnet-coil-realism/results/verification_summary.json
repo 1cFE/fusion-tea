@@ -1,0 +1,342 @@
+{
+  "schema_version": "study-verification-summary/v1",
+  "tool": {
+    "path": "scripts/study/verify.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "a7e8ee5802b778bc11507571a03856203af9d90a64a9da5fa1db1646cf1fff2d",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+          "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+        },
+        {
+          "path": "scripts/study/verify.py",
+          "sha256": "4cf1fb8faf9459a0522dea39116a772b4b5067288552ea4fdcf4741908bca77e"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/study/verify.py",
+    "--package",
+    "exploration/stellarator_e2e/pkg/stellarator_tea",
+    "--manifest",
+    "exploration/stellarator_e2e/studies/manifest.json",
+    "--identity",
+    "exploration/stellarator_e2e/studies/20260914-magnet-coil-realism/results/package_identity.json",
+    "--store",
+    "exploration/stellarator_e2e/studies/20260914-magnet-coil-realism/results/study/_work/20260914-magnet-coil-realism.db",
+    "--sample-size",
+    "30",
+    "--out",
+    "exploration/stellarator_e2e/studies/20260914-magnet-coil-realism/results/verification_summary.json"
+  ],
+  "teax": {
+    "module_path": "../teax/packages/teax-simkit/simkit",
+    "revision": "unrecorded"
+  },
+  "package": {
+    "path": "exploration/stellarator_e2e/generated",
+    "package_name": "stellarator_tea",
+    "git_clean": true
+  },
+  "identity": {
+    "kind": "sealed",
+    "digest": "e11e4c17b11681ac98b754e1ecbd60452fc11c758ef2d9ce72cfc57d4e740cad",
+    "matches_preflight": true
+  },
+  "manifest": {
+    "path": "exploration/stellarator_e2e/studies/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "416fa3193f5e960ad6bb8f108662c0dbecf873b35e30d92ac33f76d5c0b507bb"
+  },
+  "oracle": {
+    "kind": "python_callable",
+    "sys_path": "exploration/stellarator_e2e/studies",
+    "module": "oracle_entry",
+    "callable": "evaluate",
+    "operand_bindings_digest": "08ad98e521eadfff0a6a1e9eadffc7df74bcbf32501d14e89ffc1c61082ec6fd"
+  },
+  "stores": [
+    {
+      "path": "exploration/stellarator_e2e/studies/20260914-magnet-coil-realism/results/study/_work/20260914-magnet-coil-realism.db",
+      "study_id": "20260914-magnet-coil-realism",
+      "compatibility": {
+        "digest": "2e15c12ad3abfce7d185ea9b83bd3832d6bd2a4ab4ed12d7f0695b3282572f4c",
+        "evidence_schema_version": "v3",
+        "executable_fingerprint": "e11e4c17b11681ac98b754e1ecbd60452fc11c758ef2d9ce72cfc57d4e740cad",
+        "input_schema_version": "input-v1",
+        "model_contract_fingerprint": "8eb332b9c73e1b80a5d7629e4de3532c739c280bbc889f45cb7bf3672269959d",
+        "strategy_config": "d860322263994afd7c2d2fce2b5af00e835e4f54900f2d2b9014da3a5e5c8f06",
+        "strategy_identity": "prepared-list/v1",
+        "study_definition_fingerprint": "b55f7a6ca5b7ca7306990ec09ccb0536b97ef21645251d97d9c8fe9f2eaec6b9",
+        "study_id": "20260914-magnet-coil-realism"
+      },
+      "cases_total": 156,
+      "cases_completed": 156,
+      "sampling": {
+        "scheme": "stratified-by-verdict-combination/v1",
+        "seed": "64934530bcb8ecec",
+        "seed_source": "derived",
+        "sample_size_requested": 30,
+        "strata_observed": 26,
+        "sampled_rows": 30,
+        "sampled_case_ids": [
+          "20260914-magnet-coil-realism:c0000",
+          "20260914-magnet-coil-realism:c0002",
+          "20260914-magnet-coil-realism:c0003",
+          "20260914-magnet-coil-realism:c0027",
+          "20260914-magnet-coil-realism:c0013",
+          "20260914-magnet-coil-realism:c0033",
+          "20260914-magnet-coil-realism:c0025",
+          "20260914-magnet-coil-realism:c0060",
+          "20260914-magnet-coil-realism:c0118",
+          "20260914-magnet-coil-realism:c0139",
+          "20260914-magnet-coil-realism:c0045",
+          "20260914-magnet-coil-realism:c0041",
+          "20260914-magnet-coil-realism:c0120",
+          "20260914-magnet-coil-realism:c0048",
+          "20260914-magnet-coil-realism:c0095",
+          "20260914-magnet-coil-realism:c0104",
+          "20260914-magnet-coil-realism:c0116",
+          "20260914-magnet-coil-realism:c0084",
+          "20260914-magnet-coil-realism:c0086",
+          "20260914-magnet-coil-realism:c0128",
+          "20260914-magnet-coil-realism:c0136",
+          "20260914-magnet-coil-realism:c0100",
+          "20260914-magnet-coil-realism:c0108",
+          "20260914-magnet-coil-realism:c0151",
+          "20260914-magnet-coil-realism:c0155",
+          "20260914-magnet-coil-realism:c0140",
+          "20260914-magnet-coil-realism:c0087",
+          "20260914-magnet-coil-realism:c0154",
+          "20260914-magnet-coil-realism:c0081",
+          "20260914-magnet-coil-realism:c0064"
+        ]
+      },
+      "worst_channel_rel_dev": 9.215391661618737e-16,
+      "worst_at": {
+        "case_id": "20260914-magnet-coil-realism:c0136",
+        "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+        "value": 154.20782140371634
+      }
+    }
+  ],
+  "tolerance": 1e-09,
+  "channels_checked": [
+    {
+      "channel": "stellarator_09__stellaris__blanket__first_wall__wall_peak_calc__wall_load_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__calendar__cas72_annual",
+      "objective": "cas72"
+    },
+    {
+      "channel": "stellarator_09__stellaris__divertor__divheat__q_target_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel",
+      "objective": "fuel"
+    },
+    {
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__mdot_loop",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__p_loop_margin",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__heating__heat__p_coupled",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+      "objective": "lcoe_1cfe"
+    },
+    {
+      "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+      "objective": "lcoe"
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__cond_strain__eps_cond",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost",
+      "objective": "magnet_capital"
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__magnet_cost__capital_cost",
+      "objective": "magnet_capital_1cfe"
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__peak_field_calc__B_peak",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet__wp_stress__sigma_wp",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__operating_heat__p_coupled",
+      "objective": "operating_heat_coupled"
+    },
+    {
+      "channel": "stellarator_09__stellaris__operating_heat__p_delivered",
+      "objective": "operating_heat_delivered"
+    },
+    {
+      "channel": "stellarator_09__stellaris__operating_heat__p_wallplug",
+      "objective": "operating_heat_wallplug"
+    },
+    {
+      "channel": "stellarator_09__stellaris__pb__p_net",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__pb__rec_frac",
+      "objective": null
+    },
+    {
+      "channel": "stellarator_09__stellaris__plasma__beta_calc__beta",
+      "objective": "beta"
+    },
+    {
+      "channel": "stellarator_09__stellaris__plasma__sustain__p_aux_required",
+      "objective": "p_aux_required"
+    },
+    {
+      "channel": "stellarator_09__stellaris__plasma__sustain__tau_E",
+      "objective": "tau_E"
+    },
+    {
+      "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+      "objective": "cas27"
+    },
+    {
+      "channel": "stellarator_09__stellaris__total_capital__total_capital",
+      "objective": "total_capital"
+    },
+    {
+      "channel": "stellarator_09__stellaris__turbine__cycle__domain_product",
+      "objective": null
+    }
+  ],
+  "verdicts_rederived": true,
+  "constraints_rederived": [
+    {
+      "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+      "source_local_identity": "beta_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+      "source_local_identity": "burn_hold_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+      "source_local_identity": "cond_strain_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+      "source_local_identity": "cycle_domain_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+      "source_local_identity": "divertor_heat_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+      "source_local_identity": "heating_couple_positive_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+      "source_local_identity": "heating_couple_upper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+      "source_local_identity": "heating_source_positive_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+      "source_local_identity": "heating_source_upper_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+      "source_local_identity": "loop_capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+      "source_local_identity": "loop_pressure_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+      "source_local_identity": "net_positive",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+      "source_local_identity": "peak_field_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+      "source_local_identity": "recirc_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+      "source_local_identity": "sustainment_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+      "source_local_identity": "tbr_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+      "source_local_identity": "wall_load_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+      "source_local_identity": "wp_stress_ok",
+      "operands_resolved": 2
+    }
+  ],
+  "verdict_mismatches": [],
+  "not_independently_verified": [],
+  "worst_channel_rel_dev": 9.215391661618737e-16,
+  "outcome": "pass"
+}

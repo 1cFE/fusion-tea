@@ -1,0 +1,33 @@
+{
+  "tolerance_relative": 1e-09,
+  "identity_tolerance_relative": 1e-12,
+  "points": 159,
+  "channels_compared": 22,
+  "max_reldev": 9.215391661618737e-16,
+  "worst": {
+    "candidate_id": "20260914-magnet-coil-realism:c0136",
+    "channel": "lcoe_1cfe_calc__lcoe",
+    "package": 154.20782140371634,
+    "oracle": 154.20782140371648
+  },
+  "failures": [],
+  "identity_failures": [],
+  "channels_unpublished_by_oracle": [
+    "plasma__R",
+    "plasma__a",
+    "magnet__coil__I_coil",
+    "magnet__winding_pack__B_max",
+    "plasma__n_e0",
+    "heating__p_wallplug_heat",
+    "availability_direct",
+    "magnet__coil_length__c_coil",
+    "magnet__wp_volume__vol_cold_total"
+  ],
+  "outcome": "pass",
+  "package_inputs_used": {
+    "c_coil_ref": 25.0,
+    "a_coil_ref": 3.1500000000000004,
+    "vol_cold_cryo": 0.0,
+    "recirc_ok__threshold": 0.5
+  }
+}

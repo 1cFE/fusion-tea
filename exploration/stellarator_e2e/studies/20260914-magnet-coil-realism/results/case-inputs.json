@@ -1,0 +1,2211 @@
+[
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0000",
+    "column": "design",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0001",
+    "column": "cheap-100",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0002",
+    "column": "cheap-220",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0003",
+    "column": "design",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.4
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0004",
+    "column": "cheap-100",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.4,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0005",
+    "column": "cheap-220",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.4,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0006",
+    "column": "design",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.5
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0007",
+    "column": "cheap-100",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.5,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0008",
+    "column": "cheap-220",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.5,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0009",
+    "column": "design",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.6
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0010",
+    "column": "cheap-100",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.6,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0011",
+    "column": "cheap-220",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.6,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0012",
+    "column": "design",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.7
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0013",
+    "column": "cheap-100",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0014",
+    "column": "cheap-220",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0015",
+    "column": "design",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.8
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0016",
+    "column": "cheap-100",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.8,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0017",
+    "column": "cheap-220",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.8,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0018",
+    "column": "design",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.9
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0019",
+    "column": "cheap-100",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.9,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0020",
+    "column": "cheap-220",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.9,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0021",
+    "column": "design",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 2.0
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0022",
+    "column": "cheap-100",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 2.0,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0023",
+    "column": "cheap-220",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 2.0,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0024",
+    "column": "design",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 2.1
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0025",
+    "column": "cheap-100",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0026",
+    "column": "cheap-220",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 2.1,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0027",
+    "column": "design",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 2.2
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0028",
+    "column": "cheap-100",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 2.2,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-a-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0029",
+    "column": "cheap-220",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 2.2,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0030",
+    "column": "design-a1.3",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0031",
+    "column": "cheap-100-a1.7",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0032",
+    "column": "design-a1.3",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.0,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0033",
+    "column": "cheap-100-a1.7",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0000",
+    "column": "design-a1.3",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0013",
+    "column": "cheap-100-a1.7",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0034",
+    "column": "design-a1.3",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 13.5,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0035",
+    "column": "cheap-100-a1.7",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 13.5,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0036",
+    "column": "design-a1.3",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 14.2,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0037",
+    "column": "cheap-100-a1.7",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 14.2,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0038",
+    "column": "design-a1.3",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 15.0,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0039",
+    "column": "cheap-100-a1.7",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 15.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0040",
+    "column": "design-a1.3",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 15.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0041",
+    "column": "cheap-100-a1.7",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 15.7,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0042",
+    "column": "cheap-220-a1.7",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0043",
+    "column": "cheap-220-a1.7",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0014",
+    "column": "cheap-220-a1.7",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0044",
+    "column": "cheap-220-a1.7",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 13.5,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0045",
+    "column": "cheap-220-a1.7",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 14.2,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0046",
+    "column": "cheap-220-a1.7",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 15.0,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-R-transect",
+    "candidate_id": "20260914-magnet-coil-realism:c0047",
+    "column": "cheap-220-a1.7",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__R": 15.7,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0048",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0000",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0049",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0001",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0050",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0002",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0051",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0003",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0052",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0004",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0053",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0005",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0054",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0006",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0055",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0007",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0056",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0008",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0057",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0009",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0058",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0010",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0059",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0011",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0060",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0012",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0061",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0013",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0062",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0014",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0063",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0015",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0064",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0016",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0065",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0017",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0066",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0018",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0067",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0019",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0068",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0020",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0069",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0021",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0070",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0022",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0071",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0023",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0072",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0024",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0073",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0025",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0074",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0026",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0075",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0027",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0076",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0028",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0077",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0029",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0078",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0030",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0079",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0031",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0080",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0032",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0081",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0033",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0082",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0034",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0083",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0035",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 11.43,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0084",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0036",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0085",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0037",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0086",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0038",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0087",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0039",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0088",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0040",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0089",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0041",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0090",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0042",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0091",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0043",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0092",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0044",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0093",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0045",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0094",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0046",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0095",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0047",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0096",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0048",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0097",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0049",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0098",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0050",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0099",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0051",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0100",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0052",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0101",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0053",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0102",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0054",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0103",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0055",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0104",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0056",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0105",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0057",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0106",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0058",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0107",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0059",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0108",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0060",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0109",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0061",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0110",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0062",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0111",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0063",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0112",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0064",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0113",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0065",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0114",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0066",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0115",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0067",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0116",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0068",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0117",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0069",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0118",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0070",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0119",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0071",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0120",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0072",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0121",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0073",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0122",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0074",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0123",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0075",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0124",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0076",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0125",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0077",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0126",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0078",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0127",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0079",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0128",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0080",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0129",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0081",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0130",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0082",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0131",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0083",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.17
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0132",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0084",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0133",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0085",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0134",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0086",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0135",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0087",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0136",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0088",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0137",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0089",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0138",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0090",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0139",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0091",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0140",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0092",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0141",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0093",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0142",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0094",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0143",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0095",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0144",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0096",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0145",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0097",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0146",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0098",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0147",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0099",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 14000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0148",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0100",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0149",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0101",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0150",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0102",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0151",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0103",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0152",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0104",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 20.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0153",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0105",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0154",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0106",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 27.5,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  },
+  {
+    "arm_id": "arm-matched-window",
+    "candidate_id": "20260914-magnet-coil-realism:c0155",
+    "column": "matched",
+    "source_case": "20260913-magnet-design-transfer:c0107",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 17000000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__B_max": 30.0,
+      "stellarator_09__stellaris__plasma__R": 13.97,
+      "stellarator_09__stellaris__plasma__a": 1.43
+    },
+    "state": "completed"
+  }
+]

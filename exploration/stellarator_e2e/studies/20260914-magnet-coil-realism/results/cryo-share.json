@@ -1,0 +1,15 @@
+{
+  "design_point": {
+    "p_cryo_MW": 0.8643515999999999,
+    "p_gross_MW": 1357.9756908601075,
+    "p_recirc_MW": 344.04375830614487,
+    "cryo_share_of_recirc": 0.002512330420570696
+  },
+  "c0113_coordinates": {
+    "p_cryo_MW": 0.8478422251082249,
+    "p_gross_MW": 1356.1706525626653,
+    "p_recirc_MW": 265.3232628521975,
+    "cryo_share_of_recirc": 0.0031955065530025867
+  },
+  "derivation": "p_gross = p_net / (1 - rec_frac); p_recirc = p_gross * rec_frac; share = p_cryo / p_recirc, from the published pb__ channels"
+}

@@ -61,3 +61,25 @@ The study is well aimed: the axes are real design levers with complete fan-out, 
 - The changes above are protocol, preparation and verification-plan text plus, if taken, one extra prepared-list arm and one extra axis group. No model, package, oracle or manifest change is needed, and none is licensed by this review.
 - If the control arm is added, `axes.json` gains a `c_coil_ref` group and `indicators.json` is regenerated over all seven groups with `subset=false` before any point runs; the recorded digests in this file then no longer match those two artifacts and the revision must say so.
 - Re-review is not required for the text corrections; it is required if the arm set changes, because the framing, the flip-channel claim and the record's comparisons change with it.
+
+## r2 — 2026-09-14
+
+Re-check of the r2 revision at `344075ca` (record directory only; `axes.json` and `indicators.json` unchanged, digests `2296f358…` and `6fac0d9a…` as in r1). Same critic, same reading rules; no point run, no oracle evaluation made, nothing written but this section. On-disk digests equal the nine the r2 addendum lists.
+
+### Verdict: PASS
+
+Every r1 REVISE lens is satisfied, and lens 5 holds. Checked, not taken on trust:
+
+- **Lens 3 — PASS.** The design column is stated as not 18-feasible anywhere, with the two verdicts that make it so, and its `a`-minimum as a price reading with the verdict set; `c0113` / `c0130` feasibility at the current pin is stated as a run result with the labelled fallback. `arm-R-transect` is 21 points: the seven 220 MW rows carry R {11.43 … 15.7}, `a` 1.7, 13 MA, 4.048e20, `p_wallplug_heat` 220. Coordinates are unique within each arm; the validity mask holds at every point.
+- **Lens 4 — PASS.** Three pins named once and kept apart; the magnet-design-transfer pin equality (`8ff5bb7c…` = entering pin) stated; the plant-closure anchors restated as the goal's by-case-id reference at a different package with no WI-058 attribution and the key dialect named. `before-plant-closure-anchors.json` carries the executable `cbdb2a36…`, the three source digests (match my r1 values), the committed inputs in the old dialect and the full 179-column native rows (LCOE 191.7581690876428 / 198.00258969214127).
+- **Lens 5 — PASS.** The conductor-ceiling / stress / strain expectation is narrowed for round 1 in one line, citing WI-058 D3.
+- **Lens 6 — PASS.** Record-local all-point comparison over every required channel the oracle map publishes, at 1e-9, over 159 points; `c_coil` by `c_coil_ref × rb__r_coil_centre / a_coil_ref` from the published channel and the package values at 1e-12; `vol_cold_total` added (24 channels) and checked by identity; the join rule stated (bare point dicts, exact coordinate match within arm, labels exported). The control arm is declined with a reasoned reading of policy § 2.1–2.3 and the decision recorded for the checkpoint; in its place the oracle-side entering-pin before covers all 51 transect points (0 errors, every proposal row matched by coordinate), produced from the archived oracle at `01771279` with the three source sha256s and the pin in its `.meta.json`, and labelled oracle-side at every use. That is the floor my r1 lens 6(e) set, met.
+- **Lens 7 — PASS.** `before-matched-window.json`: 108 cases, 2,592 committed channel values equal `results/cases.json` byte for byte, every one of the 24 required channels and both operands (`pb__rec_frac`, `pb__p_net`) present, `committed_c_coil_by_old_form` = `1.968503937007874 × R` at every case, fingerprints `8ff5bb7c…` throughout, source sha256 `7eff15cc…` recorded. The probe copy is byte-identical to its source (`e6203525…`) and its meta names the empty `c_coil` / `vol_cold` columns.
+- **Lens 8 — PASS.** The collision between the by-case-id invariant and the goal's question is surfaced in its own section, reserved as `20260914-magnet-coil-realism#1` (process) with the home named, and explicitly not resolved.
+
+### Carried into the record, not blocking
+
+- The protocol says the plant-closure model contract `15ed665c…` and repo `4cd5e608` are in `before-plant-closure-anchors.json`; that file carries only the executable identity document. The two values are in the protocol text and in the plant-closure `snapshot.json` / `store-compatibility.json`; either add them to the anchors file or correct the pointer when the record is written.
+- `recirc_threshold` is an empty column in `before-entering-pin-oracle-transects.csv` (it is the package input `recirc_ok__threshold`, not an oracle output). When a `recirc_ok` flip is explained, read the threshold from the package defaults and say so.
+
+No re-review is owed before execution. The post-execution lenses and the disposition checkpoint on finding #1 stand as the protocol names them.
