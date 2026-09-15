@@ -6,6 +6,8 @@ from pathlib import Path
 from tests.study.structure_ledger import renamed_keys, renamed_values
 
 
+from tests.models.current_mfe_regressions import (WI059_PARAMETERS, WI059_EXISTING_MAPPED_PARAMETERS, WI059_CHANNELS, WI059_ORACLE_ADDED_CHANNELS, WI059_REPLAY, wi059_replay, wi059_dormant_outputs)
+
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -24,7 +26,7 @@ K_COIL_RETIRED = 1.968503937007874
 
 
 def wi058_overrides(row):
-    overrides = dict(row["overrides"])
+    overrides = wi059_replay(row["overrides"])
     if "R" in overrides:
         overrides["magnet_c_coil_ref"] = K_COIL_RETIRED * overrides["R"]
     return overrides
@@ -86,6 +88,7 @@ def wi040_expected(row):
     increments['lcoe_1cfe'] = increments['cas90_1cfe'] / (energy * p['n_mod'])
     expected.update({name: old[name] + increment for name, increment in increments.items()})
     expected['reactor_equipment_subtotal'] = expected['powercore_capital'] + old['remote_handling']
+    expected.update(wi059_dormant_outputs(expected, p))
     return expected, set(increments) | (expected.keys() - old.keys())
 
 
@@ -110,7 +113,7 @@ def wi040_expected(row):
 def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
     saved = dict(oracle.vs.IN)
     with pytest.raises(ValueError, match=message):
-        oracle._compute(overrides)
+        oracle._compute(wi059_replay(overrides))
     assert oracle.vs.IN == saved
 
 
@@ -126,7 +129,7 @@ def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, messa
 ])
 def test_supported_adapter_inputs_propagate_deliberate_domain_error(suffix, value, message):
     with pytest.raises(ValueError, match=message):
-        oracle.evaluate({oracle.P + suffix: value})
+        oracle.evaluate(WI059_REPLAY | {oracle.P + suffix: value})
 
 
 @pytest.mark.parametrize("row", BEFORE["controls"])
@@ -162,16 +165,17 @@ def test_adapter_contract_and_ambient_limit_preserved():
     # WI-058 (2026-09-14): the seam maps c_coil_ref in place of the retired k_coil; the count stays 118.
     assert WI058_RETIRED <= old_inputs.keys()
     old_inputs = {k: v for k, v in old_inputs.items() if k not in WI058_RETIRED}
-    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS} == old_inputs
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS
+    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS} == old_inputs
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS
     old_outputs = renamed_values(BEFORE['output_mapping'])
     # The old selected winding alias now denotes the additive account; preserve its
     # previous channel under the explicit legacy name, and add the subtotal coverage.
     old_outputs['winding_pack_legacy'] = old_outputs.pop('winding_pack')
-    extras = WI040_CHANNELS | WI038_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
+    old_outputs['p_cryo'] = oracle.P + 'cryoplant__refrigeration_sum__total'
+    extras = WI040_CHANNELS | WI038_CHANNELS | WI059_ORACLE_ADDED_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
     assert {k: v for k, v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v not in extras} == old_outputs
     assert set(oracle.ORACLE_OUTPUT_TO_CHANNEL.values()) - set(old_outputs.values()) == extras
-    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 118
+    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 118 + len(WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS)
     for suffix in ("cryoplant__T_amb_cryo", "unknown_domain_input"):  # WI-057 (2026-09-13): the key carries its part's path
         with pytest.raises(oracle.OracleSeamError, match="no declared oracle mapping"):
             oracle.evaluate({oracle.P + suffix: 300.0})

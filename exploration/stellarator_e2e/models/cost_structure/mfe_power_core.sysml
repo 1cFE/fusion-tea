@@ -104,6 +104,15 @@ package mfe_power_core {
         attribute r_coil : Real;
         attribute gap2_t : Real default 0.10;
         attribute vol_cold_cryo : Real default 0.0;
+        attribute c_support : Real default 0.0;
+        attribute e_support : Real default 0.78;
+        attribute legacy_casing_fraction : Real default 1.0;
+        attribute m_support : Real = support_mass.m_support;
+        calc support_mass : 'Magnet Support Mass' {
+            in W_mag = stored_energy.W_mag;
+            in c_support = 'Magnet System'::c_support;
+            in e_support = 'Magnet System'::e_support;
+        }
         // the physical parts the magnet calcs price (WI-057)
         part coil : 'Modular Coil' {
             :>> c_coil = coil_length.c_coil;
@@ -194,8 +203,10 @@ package mfe_power_core {
         }
         // WI-058: the winding length follows the coil bore the radial build
         // sets (the coil-centre radius WI-044 introduced), anchored at the
-        // printed circumference; the major radius no longer enters (WI-036's
-        // k_coil * R0 was the uniform-scaling special case of this form).
+        // printed circumference; the major radius no longer enters. WI-036's
+        // k_coil*R0 agrees only when normalized bore and major-radius ratios
+        // agree; fixed plasma aspect ratio alone is insufficient with the
+        // held1.85m non-plasma radial stack.
         calc coil_length : 'Coil Winding Length' {
             in a_coil = r_coil_centre;
             in c_coil_ref = coil.c_coil_ref;
@@ -279,9 +290,12 @@ package mfe_power_core {
             in cost_per_kAm = coil.cost_per_kAm;
             in f_wp_fab = winding_pack.f_wp_fab;
         }
-        // Magnet casing-structure account (WI-035 D5; casings only --
-        // inter-coil plates/rings/legs stay CAS22.1.5).
+        // WI-059 electromagnetic support account: total supports or legacy
+        // casing basis, selected by the explicit coefficient and fraction.
+        // Total-support mode allocates a separate nonmagnet residual CAS22.1.5.
         calc magnet_structure_cost : 'Magnet Structure Cost' {
+            in m_support = 'Magnet System'::m_support;
+            in legacy_casing_fraction = 'Magnet System'::legacy_casing_fraction;
             in n_coils = coil.n_coils;
             in m_casing = casing.m_casing;   // WI-044: computed (casing_mass)
             in steel_price = casing.steel_price;

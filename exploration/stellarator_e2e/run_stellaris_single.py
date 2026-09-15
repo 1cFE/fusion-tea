@@ -203,16 +203,18 @@ def _anchor_gate(values: dict[str, float]) -> bool:
     # operations, using the declared estimated-2026 price basis. This is a scoped
     # estimate, not a recovered split of the legacy 6.65 multiplier. Basis and
     # native reconciliation: work/active/WI-040_winding-pack-mass-cost/.
+    # WI-059: re-derived after native/oracle agreement (evidence/native-single-final.log).
+    # Total supports and explicit two-stage refrigeration/direct drive move these computed anchors.
     anchors = [
-        ("total capital $", total, 8748878936.137337),
-        ("LCOE $/MWh", values[CH["lcoe"]], 142.50725862880654),
-        ("p_net MW", values[CH["p_net"]], 1013.9319325539626),
-        ("q_eng", values[CH["q_eng"]], 3.9471016638869605),
-        ("rec_frac", values[CH["rec_frac"]], 0.25335045437244624),
-        ("magnet %", magnet / total * 100, 18.571542855890343),
-        ("CAS70 $/yr", values[CH["cas70"]], 217739093.67437315),
+        ("total capital $", total, 9023426699.474607),
+        ("LCOE $/MWh", values[CH["lcoe"]], 146.30855606334038),
+        ("p_net MW", values[CH["p_net"]], 1012.6082547175133),
+        ("q_eng", values[CH["q_eng"]], 3.9319737437533955),
+        ("rec_frac", values[CH["rec_frac"]], 0.25432519776833934),
+        ("magnet %", magnet / total * 100, 19.720342847409306),
+        ("CAS70 $/yr", values[CH["cas70"]], 217687149.51060474),
         ("CAS80 $/yr", values[CH["cas80"]], 792_505.965114),
-        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 140.01711597890122),
+        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 143.73691322290384),
     ]
 
     print("\n=== NINE ANCHORS (single-pass, graph rollup, no bridge) ===")

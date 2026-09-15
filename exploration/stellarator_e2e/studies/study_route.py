@@ -103,9 +103,14 @@ def validate_proposal(raw):
         raise RouteError(f"retired entry key {P}magnet__R0; use plant R")
     out = {}
     for key, value in raw.items():
-        if not isinstance(value, (int, float)) or isinstance(value, bool):
+        # WI-059 adds one authored Boolean entry. Preserve its type; Boolean
+        # proposals for numeric plant quantities retain their existing refusal.
+        if key == f"{P}cryoplant__inventory_enabled" and isinstance(value, bool):
+            out[key] = value
+        elif not isinstance(value, (int, float)) or isinstance(value, bool):
             return None
-        out[key] = float(value)
+        else:
+            out[key] = float(value)
     return out
 
 

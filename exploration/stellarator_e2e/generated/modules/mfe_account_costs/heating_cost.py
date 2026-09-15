@@ -28,9 +28,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:196
+SysML Source: root-0/analyses/mfe_account_costs.sysml:202
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:196
+SysML Source: root-0/analyses/mfe_account_costs.sysml:202
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/heating_cost_impl.py
@@ -94,9 +94,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:196
+SysML Source: root-0/analyses/mfe_account_costs.sysml:202
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:196
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:202
 
     Calculation Specification:
         cost = nbi_per_mw * p_nbi_in + icrf_per_mw * p_icrf_in + ecrh_per_mw * p_ecrh_in + lhcd_per_mw * p_lhcd_in

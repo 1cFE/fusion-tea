@@ -1,4 +1,6 @@
 """Independent finance arithmetic and the unchanged current study interface."""
+from tests.models.current_mfe_regressions import WI059_PARAMETERS, WI059_EXISTING_MAPPED_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES
+
 import json
 import math
 import sys
@@ -94,9 +96,9 @@ def test_current_rate_route_and_coverage(tmp_path, stock_simkit_path):
     inputs = {}
     for path in (route.PACKAGE_DIR/'inputs').glob('*.json'):
         inputs.update(json.loads(path.read_text()))
-    assert len(inputs) == 265  # WI-038 adds two explicitly mapped grade inputs.
-    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 118
-    assert len(set(inputs)-oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys()) == 147
+    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS)  # WI-038 adds two explicitly mapped grade inputs.
+    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 118 + len(WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS)
+    assert len(set(inputs)-oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys()) == 147 + len(WI059_NATIVE_ONLY_PARAMETERS) - len(WI059_EXISTING_MAPPED_PARAMETERS)
     controls = {}
     rows = []
     for case in cases:
@@ -105,7 +107,7 @@ def test_current_rate_route_and_coverage(tmp_path, stock_simkit_path):
             controls[case.inputs[route.P+'availability_direct']] = case
     for case in cases:
         control = controls[case.inputs[route.P+'availability_direct']]
-        assert len(case.outputs) == 177  # WI-038 adds three grade outputs.
+        assert len(case.outputs) == 177 + len(WI059_CHANNELS)  # WI-038 adds three grade outputs.
         assert case.verdicts == control.verdicts
         assert len(case.verdicts) == 18
         for channel in case.outputs.keys() - FINANCIAL_CHANNELS:
@@ -116,7 +118,7 @@ def test_current_rate_route_and_coverage(tmp_path, stock_simkit_path):
             relative(case.outputs[channel], expected[channel])
         rows.append({'inputs': dict(case.inputs), 'finance': {
             channel: {'native': case.outputs[channel], 'oracle': expected[channel]}
-            for channel in sorted(covered_finance)}, 'nonfinancial_exact': 161,
+            for channel in sorted(covered_finance)}, 'nonfinancial_exact': len(case.outputs.keys() - FINANCIAL_CHANNELS),
             'verdicts': route.short_verdicts(case)})
     evidence = {'native_inputs': sorted(inputs), 'mapping': oracle.ENTRY_KEY_TO_ORACLE_INPUT,
                 'unmapped': sorted(set(inputs)-oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys()),

@@ -81,6 +81,11 @@ package mfe_plant {
             :>> p_th = pb.p_th;
             :>> q_nuc_cryo = magnet.winding_pack.q_nuc_cryo;
             :>> vol_cold_total = magnet.vol_cold_total;
+            :>> n_coils = magnet.coil.n_coils;
+            :>> c_coil = magnet.coil.c_coil;
+            :>> wp_side = magnet.winding_pack.wp_side;
+            :>> I_turn = magnet.coil.turn_current;
+            :>> m_support = magnet.m_support;
         }
         part fuel_cycle : 'Fuel Cycle' {
             // WI-057: inputs the plant wires from the parts and calcs that produce them
@@ -167,6 +172,7 @@ package mfe_plant {
             :>> p_et = pb.p_et;
         }
         part power_supplies : 'Power Supplies' {
+            :>> p_tf_extra = cryoplant.p_drive;
             // WI-057: inputs the plant wires from the parts and calcs that produce them
             :>> p_et = pb.p_et;
         }
@@ -315,7 +321,7 @@ package mfe_plant {
             in p_wallplug_in = operating_heat.p_wallplug;
             in p_pump_total_in = heat_transport.p_pump_total;
             in f_sub_in = f_sub;
-            in p_tf_in = power_supplies.p_tf;
+            in p_tf_in = power_supplies.p_tf_total;
             in p_pf_in = power_supplies.p_pf;
             in p_tfcool_in = cryoplant.p_tfcool;
             in p_pfcool_in = cryoplant.p_pfcool;

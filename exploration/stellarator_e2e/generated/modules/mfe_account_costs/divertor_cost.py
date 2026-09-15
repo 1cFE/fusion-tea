@@ -23,9 +23,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:168
+SysML Source: root-0/analyses/mfe_account_costs.sysml:174
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:168
+SysML Source: root-0/analyses/mfe_account_costs.sysml:174
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/divertor_cost_impl.py
@@ -76,9 +76,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:168
+SysML Source: root-0/analyses/mfe_account_costs.sysml:174
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:168
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:174
 
     Calculation Specification:
         p_th_ref = 1000.0

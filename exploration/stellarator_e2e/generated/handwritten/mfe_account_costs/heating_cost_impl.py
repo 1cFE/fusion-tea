@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:196
+SysML Source: root-0/analyses/mfe_account_costs.sysml:202
 
 SysML Expressions:
     cost = nbi_per_mw * p_nbi_in + icrf_per_mw * p_icrf_in + ecrh_per_mw * p_ecrh_in + lhcd_per_mw * p_lhcd_in
@@ -43,7 +43,7 @@ All per-MW rates and delivered powers are the concept heating mix
 *Ref**: cas22.py:454-459 (c220104 steady-state)
 *Basis**: Linear per-method heating capital; MFE analogue of IFE ignition
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:196
+SysML Source: root-0/analyses/mfe_account_costs.sysml:202
 
 SysML Expressions:
     cost = nbi_per_mw * p_nbi_in + icrf_per_mw * p_icrf_in + ecrh_per_mw * p_ecrh_in + lhcd_per_mw * p_lhcd_in

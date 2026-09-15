@@ -1,0 +1,148 @@
+
+=== NINE ANCHORS (single-pass, graph rollup, no bridge) ===
+  total capital $  exec=   9023426699.474606  expect=8748878936.137337   *** DEVIATION
+  LCOE $/MWh       exec=          146.308556  expect=142.50725862880654  *** DEVIATION
+  p_net MW         exec=         1012.608255  expect=1013.9319325539626  *** DEVIATION
+  q_eng            exec=            3.931974  expect=3.9471016638869605  *** DEVIATION
+  rec_frac         exec=            0.254325  expect=0.25335045437244624  *** DEVIATION
+  magnet %         exec=           19.720343  expect=18.571542855890343  *** DEVIATION
+  CAS70 $/yr       exec=    217687149.510605  expect=217739093.67437315  *** DEVIATION
+  CAS80 $/yr       exec=       792505.965114  expect=792505.965114       OK
+  lcoe_1cfe $/MWh (comparison) exec=          143.736913  expect=140.01711597890122  *** DEVIATION
+  magnet capital $ = 1,779,450,681.72
+=== EIGHTEEN VERDICTS (generated ConstraintReport) ===
+  wp_stress_ok   satisfied
+  cond_strain_ok satisfied
+  recirc_ok      satisfied
+  cycle_domain_ok satisfied
+  beta_ok        satisfied
+  heating_couple_positive_ok satisfied
+  divertor_heat_ok violated
+  heating_source_upper_ok satisfied
+  net_positive   satisfied
+  burn_hold_ok   satisfied
+  wall_load_ok   satisfied
+  tbr_ok         satisfied
+  heating_couple_upper_ok satisfied
+  peak_field_ok  satisfied
+  sustainment_ok satisfied
+  loop_capacity_ok satisfied
+  heating_source_positive_ok satisfied
+  loop_pressure_ok satisfied
+VERDICT PARITY: PASS -- headline=violation, assessed_entry_count=18, seventeen satisfied and divertor_heat_ok VIOLATED. WI-050 coherent operating heat gives 10.517842 MW/m^2 against 10; the installed capacity ceiling and signed burn-hold demand remain explicit.
+ANCHORS *** STOP -- DEVIATION ***
+
+=== BIT-EXACT vs ORACLE (rel<1e-9) ===
+  operating_heat_coupled exec=        49.079600788 oracle=        49.079600788 reldev=0.00e+00 OK
+  operating_heat_delivered exec=        49.079600788 oracle=        49.079600788 reldev=0.00e+00 OK
+  operating_heat_wallplug exec=        98.159201576 oracle=        98.159201576 reldev=0.00e+00 OK
+  total_capital    exec=9023426699.474605560 oracle=9023426699.474607468 reldev=2.11e-16 OK
+  lcoe             exec=       146.308556063 oracle=       146.308556063 reldev=0.00e+00 OK
+  p_net            exec=      1012.608254718 oracle=      1012.608254718 reldev=0.00e+00 OK
+  q_eng            exec=         3.931973744 oracle=         3.931973744 reldev=0.00e+00 OK
+  rec_frac         exec=         0.254325198 oracle=         0.254325198 reldev=0.00e+00 OK
+  cas20_capital    exec=6583867541.459043503 oracle=6583867541.459045410 reldev=2.90e-16 OK
+  overnight_capital exec=9023426699.474605560 oracle=9023426699.474607468 reldev=2.11e-16 OK
+  cas71_annual     exec=  79500118.969036207 oracle=  79500118.969036192 reldev=1.87e-16 OK
+  cas72_annual     exec= 138187030.541568547 oracle= 138187030.541568547 reldev=0.00e+00 OK
+  calendar_availability exec=         0.902777778 oracle=         0.902777778 reldev=1.23e-16 OK
+  calendar_coil_life_margin_fpy exec=       -17.083333333 oracle=       -17.083333333 reldev=2.08e-16 OK
+  calendar_replacement_pv exec=1714768553.016705990 oracle=1714768553.016705990 reldev=0.00e+00 OK
+  calendar_planned_downtime_yr exec=         2.916666667 oracle=         2.916666667 reldev=0.00e+00 OK
+  calendar_terminal_downtime_yr exec=         0.000000000 oracle=         0.000000000 reldev=0.00e+00 OK
+  calendar_unplanned_downtime_yr exec=         0.000000000 oracle=         0.000000000 reldev=0.00e+00 OK
+  calendar_productive_fpy exec=        27.083333333 oracle=        27.083333333 reldev=1.31e-16 OK
+  calendar_dated_energy_ratio exec=         1.005161611 oracle=         1.005161611 reldev=4.42e-16 OK
+  calendar_cas72_annual exec= 138187030.541568547 oracle= 138187030.541568547 reldev=0.00e+00 OK
+  calendar_n_replacements exec=         5.000000000 oracle=         5.000000000 reldev=0.00e+00 OK
+  calendar_physical_life_fpy exec=         4.523926034 oracle=         4.523926034 reldev=0.00e+00 OK
+  fuel_burn_rate   exec=941751858565687803904.000000000 oracle=941751858565687803904.000000000 reldev=0.00e+00 OK
+  fuel_inject_rate exec=18835037171313755029504.000000000 oracle=18835037171313755029504.000000000 reldev=0.00e+00 OK
+  fuel_exhaust_rate exec=17893285312748066963456.000000000 oracle=17893285312748066963456.000000000 reldev=0.00e+00 OK
+  fuel_loss_rate   exec=178932853127480836096.000000000 oracle=178932853127480836096.000000000 reldev=0.00e+00 OK
+  fuel_tbr_required exec=         1.190000000 oracle=         1.190000000 reldev=0.00e+00 OK
+  fuel_tbr_margin  exec=        -0.116000000 oracle=        -0.116000000 reldev=0.00e+00 OK
+  fuel_burn_kg_per_fpy exec=       148.740975105 oracle=       148.740975105 reldev=0.00e+00 OK
+  divheat_p_heat_abs exec=       553.570607686 oracle=       553.570607686 reldev=0.00e+00 OK
+  divheat_p_sep    exec=       333.848962462 oracle=       333.848962462 reldev=0.00e+00 OK
+  divheat_f_rad_edge exec=         0.834185314 oracle=         0.834185314 reldev=0.00e+00 OK
+  divheat_f_rad_edge_in_range exec=         0.138320176 oracle=         0.138320176 reldev=0.00e+00 OK
+  divheat_p_target_nonrad exec=        55.357060769 oracle=        55.357060769 reldev=0.00e+00 OK
+  divheat_q_target_peak exec=        10.517841546 oracle=        10.517841546 reldev=0.00e+00 OK
+  divheat_q_target_peak_area_scaled exec=        10.517841546 oracle=        10.517841546 reldev=0.00e+00 OK
+  divheat_q_target_margin exec=        -0.517841546 oracle=        -0.517841546 reldev=0.00e+00 OK
+  divheat_p_heat_operating_minus_installed exec=        -0.920399212 oracle=        -0.920399212 reldev=0.00e+00 OK
+  vacuum_n_molecules exec=18835037171313755029504.000000000 oracle=18835037171313755029504.000000000 reldev=0.00e+00 OK
+  vacuum_Q_total   exec=        78.013725707 oracle=        78.013725707 reldev=0.00e+00 OK
+  vacuum_S_eff_required exec=        78.013725707 oracle=        78.013725707 reldev=0.00e+00 OK
+  cas70_annual     exec= 217687149.510604739 oracle= 217687149.510604739 reldev=0.00e+00 OK
+  cas80_annual     exec=    792505.965114451 oracle=    792505.965114451 reldev=0.00e+00 OK
+  annual_fuel      exec=    550716.181491509 oracle=    550716.181491509 reldev=0.00e+00 OK
+  cas90_1cfe       exec= 932571814.611229062 oracle= 932571814.611229300 reldev=2.56e-16 OK
+  lcoe_1cfe        exec=       143.736913223 oracle=       143.736913223 reldev=3.95e-16 OK
+  beta             exec=         0.025304999 oracle=         0.025304999 reldev=0.00e+00 OK
+  B_peak           exec=        24.900000000 oracle=        24.900000000 reldev=0.00e+00 OK
+  n_bar19          exec=        37.776614511 oracle=        37.776614511 reldev=0.00e+00 OK
+  n_He0            exec=60435561326503559168.000000000 oracle=60435561326503559168.000000000 reldev=0.00e+00 OK
+  n_D0             exec=192564438673496440832.000000000 oracle=192564438673496440832.000000000 reldev=0.00e+00 OK
+  tau_E            exec=         1.557333622 oracle=         1.557333622 reldev=0.00e+00 OK
+  W_th             exec=       519.914213988 oracle=       519.914213988 reldev=0.00e+00 OK
+  p_brems          exec=        91.447233579 oracle=        91.447233579 reldev=0.00e+00 OK
+  p_line           exec=       114.011833218 oracle=       114.011833218 reldev=0.00e+00 OK
+  p_sync           exec=        14.262578427 oracle=        14.262578427 reldev=0.00e+00 OK
+  p_rad            exec=       219.721645224 oracle=       219.721645224 reldev=0.00e+00 OK
+  p_aux_required   exec=        49.079600788 oracle=        49.079600788 reldev=0.00e+00 OK
+  p_avg            exec=    815551.680637826 oracle=    815551.680637826 reldev=0.00e+00 OK
+  n_e_volav        exec=317173922797849608192.000000000 oracle=317173922797849608192.000000000 reldev=0.00e+00 OK
+  alpha_n_e_eff    exec=         0.595339224 oracle=         0.595339224 reldev=0.00e+00 OK
+  alpha_He_eff     exec=         4.051846994 oracle=         4.051846994 reldev=0.00e+00 OK
+  q_source         exec=      3125.932277083 oracle=      3125.932277083 reldev=0.00e+00 OK
+  loop_mdot        exec=      3009.755706800 oracle=      3009.755706800 reldev=0.00e+00 OK
+  loop_mdot_loop   exec=       214.982550486 oracle=       214.982550486 reldev=0.00e+00 OK
+  loop_dp_loop     exec=    300319.896463766 oracle=    300319.896463766 reldev=0.00e+00 OK
+  loop_r_comp      exec=         1.039004204 oracle=         1.039004204 reldev=0.00e+00 OK
+  loop_T_comp_in   exec=       561.935365845 oracle=       561.935365845 reldev=0.00e+00 OK
+  loop_w_fluid     exec=       175.280934404 oracle=       175.280934404 reldev=0.00e+00 OK
+  loop_p_elec      exec=       175.280934404 oracle=       175.280934404 reldev=0.00e+00 OK
+  loop_q_ihx       exec=      3301.213211487 oracle=      3301.213211487 reldev=0.00e+00 OK
+  loop_capacity_margin exec=        10.095227292 oracle=        10.095227292 reldev=0.00e+00 OK
+  loop_p_pump_total exec=       175.280934404 oracle=       175.280934404 reldev=0.00e+00 OK
+  loop_q_recovered_total exec=       175.280934404 oracle=       175.280934404 reldev=0.00e+00 OK
+  cycle_T2_C       exec=       480.000000000 oracle=       480.000000000 reldev=0.00e+00 OK
+  cycle_eta_fit    exec=         0.411356554 oracle=         0.411356554 reldev=0.00e+00 OK
+  cycle_eta_th     exec=         0.411356554 oracle=         0.411356554 reldev=0.00e+00 OK
+  cycle_domain_product exec=     15552.000000000 oracle=     15552.000000000 reldev=0.00e+00 OK
+  p_th             exec=      3301.213211487 oracle=      3301.213211487 reldev=0.00e+00 OK
+BIT-EXACT vs oracle: PASS
+
+=== W-BETA IDENTITY (one pressure integral, WI-042; rel<1e-12) ===
+  W from beta = 519.914213988 MJ  W_th = 519.914213988 MJ  reldev=0.00e+00 OK
+
+=== WI-029 CAS72 GUARD-LIVE SPOT-CHECK, WI-046 HELD MODE (impl vs oracle mirror, rel<1e-9) ===
+  clip CAP binds (low wall loading, high fluence limit)
+    expect: core_lifetime_fpy == operational_years * availability
+    impl=0.000000  mirror=0.000000  reldev=0.00e+00 OK
+  clip FLOOR binds (extreme wall loading) -> n_rep = 53, cost nonzero
+    expect: core_lifetime_fpy == 0.5 (floor), n_rep = 53
+    impl=1,219,445,700.972804  mirror=1,219,445,700.972804  reldev=1.96e-16 OK
+  outer max binds (replacement interval >= plant life -> n_rep = 0)
+    expect: n_rep == 0 (cost == 0)
+    impl=0.000000  mirror=0.000000  reldev=0.00e+00 OK
+    [guard live] raw FPY 4126.668 > cap 27.000 -> clip BINDS
+    [guard live] raw FPY 0.07428 < floor 0.500 -> clip FLOOR BINDS, cost nonzero
+    [guard live] n_rep floored to 0 -> cost exactly 0.0 -> outer max BINDS
+
+=== WI-046 LIVE CALENDAR BOUNDARY CASES (walk vs closed form, rel<1e-9) ===
+  L 4, d 7/12, N 10 -> two events at 4 and 8.5833, A 53/60: n=2 A=0.883333 events=[4.0, 8.5833] worst reldev=1.34e-16 time balance=0.00e+00 OK
+  N 8.7 -> one event, terminal 0.1167 yr: n=1 A=0.919540 events=[4.0] worst reldev=1.52e-14 time balance=1.78e-15 OK
+  N 9+2/12 -> restart exactly at retirement is not strictly before: one event: n=1 A=0.872727 events=[4.0] worst reldev=3.05e-15 time balance=1.78e-15 OK
+  N 9+2/12+1e-6 -> two events: n=2 A=0.872727 events=[4.0, 8.5833] worst reldev=2.22e-16 time balance=0.00e+00 OK
+  q_n 0 -> infinite life, no event, A = 1 - u = 1: n=0 A=1.000000 events=[] worst reldev=0.00e+00 time balance=0.00e+00 OK
+  d 0, u 0 -> A 1.0 with events still charged: n=2 A=1.000000 events=[4.0, 8.0] worst reldev=0.00e+00 time balance=0.00e+00 OK
+  i 0 -> ratio 1.0, CAS72 = PV / N: n=2 A=0.883333 events=[4.0, 8.5833] worst reldev=4.44e-16 time balance=0.00e+00 OK
+  u 0.05: n=2 A=0.839167 events=[4.2105, 9.0044] worst reldev=1.10e-15 time balance=1.78e-15 OK
+  u 0.10: n=1 A=0.800000 events=[4.4444] worst reldev=3.37e-15 time balance=1.78e-15 OK
+  productive_fpy non-increasing in u: {0.0: 8.833333333333334, 0.05: 8.391666666666666, 0.1: 8.0} OK
+  baseline event dates, live (7 months, u 0): [4.5239, 9.6312, 14.7384, 19.8457, 24.953]
+  baseline event dates, held (0.85, periodic): [5.3223, 10.6445, 15.9668, 21.2891, 26.6113]
+GUARD-LIVE SPOT-CHECK: PASS

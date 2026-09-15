@@ -49,6 +49,21 @@ P = "stellarator_09__stellaris__"
 #: are bound by the `_in` convention, so codegen projects one entry point per
 #: authored attribute). Plant R also owns the live magnet radius.
 ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
+    # WI-059 reviewed explicit coil inventory and total-support accounting controls.
+    **{f"{P}cryoplant__{leaf}": key for leaf, key in {
+        'inventory_enabled': 'cryo_inventory_enabled', 'n_leads': 'cryo_n_leads',
+        'L0': 'cryo_L0', 'f_lead': 'cryo_f_lead', 'T_shield': 'T_shield_cryo',
+        'f_carnot_shield': 'f_carnot_shield', 't_case': 'cryo_t_case',
+        'shield_area_ratio': 'cryo_shield_area_ratio', 'eps_eff': 'cryo_emittance',
+        'sigma_SB': 'cryo_sigma_SB', 'q_MLI': 'cryo_q_mli', 'g_per_coil': 'cryo_g_per_coil',
+        'k_c': 'cryo_k_cold', 'k_s': 'cryo_k_shield',
+        'q_nuc_structure': 'cryo_q_nuc_structure', 'rho_structure': 'cryo_rho_structure',
+        'joint_drive_fraction': 'cryo_joint_drive_fraction',
+    }.items()},
+    f"{P}magnet__c_support": "magnet_support_coefficient",
+    f"{P}magnet__e_support": "magnet_support_exponent",
+    f"{P}magnet__legacy_casing_fraction": "magnet_legacy_casing_fraction",
+    f"{P}structure__residual_fraction": "structure_residual_fraction",
     f"{P}plasma__R": "R",
     f"{P}plasma__a": "a",
     # WI-046 (goal plant-closure round 1, 2026-09-08): availability retired as an entry
@@ -171,6 +186,9 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     # defines the arms. Oracle input names per `verify_stellaris.IN`.
     f"{P}magnet__coil__cost_per_kAm": "magnet_cost_per_kAm",
     f"{P}cryoplant__T_cold_cryo": "T_cold_cryo",
+    # WI-059: publish existing equipment/allowance levers used by the reviewed sensitivities.
+    f"{P}cryoplant__f_carnot_cryo": "f_carnot_cryo",
+    f"{P}cryoplant__p_tfcool": "p_tfcool",
     f"{P}magnet__vol_cold_cryo": "vol_cold_cryo",
     # WI-047 (goal plant-closure, 2026-09-08): the fuel-cycle, divertor-heat and
     # vacuum facts (design D11). Levers for the round's study: t_recycle (the
@@ -208,7 +226,21 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "p_th": f"{P}pb__p_th",
     "p_the": f"{P}pb__p_the",
     "p_et": f"{P}pb__p_et",
-    "p_cryo": f"{P}cryoplant__cryo_elec__p_elec",
+    "p_cryo": f"{P}cryoplant__refrigeration_sum__total",
+    "p_cryo_cold": f"{P}cryoplant__cryo_elec__p_elec",
+    "p_cryo_shield": f"{P}cryoplant__shield_elec__p_elec",
+    "p_tf_total": f"{P}power_supplies__tf_power__total",
+    "p_cold": f"{P}cryoplant__cold_load__p_cold",
+    "support_mass": f"{P}magnet__support_mass__m_support",
+    "structure_nuclear": f"{P}cryoplant__cold_load__q_structure_nuclear",
+    "structure_legacy_cost": f"{P}structure__structure_cost__legacy_cost",
+    **{f'thermal_{name}': f'{P}cryoplant__inventory__{channel}' for name, channel in {
+        'area_cold': 'area_cold', 'area_shield': 'area_shield',
+        'q_lead_cold': 'q_lead_cold', 'q_lead_shield': 'q_lead_shield',
+        'q_radiation_cold': 'q_rad_cold', 'q_radiation_shield': 'q_rad_shield',
+        'q_support_cold': 'q_support_cold', 'q_support_shield': 'q_support_shield',
+        'q_cold': 'q_inventory_cold', 'q_shield': 'q_inventory_shield', 'p_drive': 'p_drive',
+    }.items()},
     "q_eng": f"{P}pb__q_eng",
     "rec_frac": f"{P}pb__rec_frac",
     "p_net": f"{P}pb__p_net",

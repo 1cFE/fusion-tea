@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:458
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:465
 
 SysML Expressions:
 """
@@ -15,7 +15,7 @@ from stellarator_tea.modules.mfe_plant.mfe_power_plant.cas22_capital import cas2
 def run_cas22_capital(inputs: cas22_capitalInput) -> float:
     """Execute cas22_capital calculation.
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:458
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:465
 
 Args:
     inputs: Input parameters validated against cas22_capitalInput schema

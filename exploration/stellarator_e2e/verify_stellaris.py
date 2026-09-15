@@ -319,6 +319,14 @@ IN = dict(
     magnet_turn_current=50000.0, magnet_winding_rate_1990=480.0,
     magnet_cost_escalation=334.4 / 130.7, magnet_nonplanar_factor=1.9,
     magnet_steel_price=6.0, magnet_f_steel_fab=3.0,
+    # WI-059: total-support fit (MJ/tonne convention inferred from later thesis).
+    magnet_support_coefficient=1.348, magnet_support_exponent=0.78,
+    magnet_legacy_casing_fraction=0.0, structure_residual_fraction=1.0,
+    cryo_inventory_enabled=True, T_shield_cryo=77.0, f_carnot_shield=0.20,
+    cryo_n_leads=12.0, cryo_L0=2.45e-8, cryo_sigma_SB=5.670374419e-8, cryo_f_lead=1.25, cryo_t_case=0.10,
+    cryo_shield_area_ratio=1.2, cryo_emittance=0.05, cryo_q_mli=1.0,
+    cryo_g_per_coil=0.04, cryo_k_cold=5.39362701769, cryo_k_shield=12.12875814211,
+    cryo_joint_drive_fraction=1.0, cryo_q_nuc_structure=0.0, cryo_rho_structure=8000.0,
     # WI-044 coil-bore anchors (the reference point at which the printed magnet facts
     # were read; every sourced shape is normalised to exactly 1.0 there). The held
     # magnet_m_casing is retired: the casing mass is computed from the stored energy.
@@ -627,6 +635,60 @@ def _winding_procurement(p, circumference, material_cost):
     return result
 
 
+def _coil_thermal_inventory(p, circumference, pack_side):
+    """WI-059 independent heat balances; reviewed source forms and scenario inputs.
+
+    Warm refrigeration removes incoming heat minus heat passed to the cold stage.
+    Direct Joule electricity is separate from the work needed to refrigerate it.
+    Disabled inventory exits before the fixed-endpoint approximation is evaluated.
+    """
+    names = ('area_cold', 'area_shield', 'q_lead_cold', 'q_lead_shield',
+             'q_radiation_cold', 'q_radiation_shield', 'q_support_cold',
+             'q_support_shield', 'q_cold', 'q_shield', 'p_drive')
+    if not p['cryo_inventory_enabled']:
+        return dict.fromkeys(names, 0.0)
+    tc, ts, ta = p['T_cold_cryo'], p['T_shield_cryo'], p['T_amb_cryo']
+    if not (10 <= tc <= 30 and ts == 77 and ta == 300):
+        raise ValueError('oracle coil inventory: require 10 <= T_cold <= 30, T_shield = 77, T_amb = 300 K')
+    if not all(0 < p[k] <= 1 for k in ('f_carnot_cryo', 'f_carnot_shield')):
+        raise ValueError('oracle coil inventory: require 0 < Carnot fractions <= 1')
+    if any(not math.isfinite(p[k]) or p[k] <= 0 for k in ('cryo_L0', 'cryo_sigma_SB')):
+        raise ValueError('oracle coil inventory: positive finite physical constants required')
+    if not math.isfinite(p['magnet_turn_current']):
+        raise ValueError('oracle coil inventory: finite turn current required')
+    if any(not math.isfinite(x) or x < 0 for x in (circumference, pack_side)):
+        raise ValueError('oracle coil inventory: nonnegative finite surface geometry required')
+    nonnegative = ('magnet_n_coils', 'cryo_n_leads', 'cryo_f_lead', 'cryo_t_case',
+                   'cryo_shield_area_ratio', 'cryo_emittance', 'cryo_q_mli',
+                   'cryo_g_per_coil', 'cryo_k_cold', 'cryo_k_shield',
+                   'cryo_joint_drive_fraction', 'p_fixed_cryo')
+    if any(not math.isfinite(p[k]) or p[k] < 0 for k in nonnegative):
+        raise ValueError('oracle coil inventory: nonnegative finite scenario inputs required')
+    if not 0 <= p['cryo_emittance'] <= 1:
+        raise ValueError('oracle coil inventory: require 0 <= emittance <= 1')
+    area = p['magnet_n_coils'] * circumference * 4 * (pack_side + 2*p['cryo_t_case'])
+    shield_area = p['cryo_shield_area_ratio'] * area
+    lead_factor = p['cryo_f_lead'] * p['cryo_n_leads'] * abs(p['magnet_turn_current'])
+    lead_cold = lead_factor * math.sqrt(p['cryo_L0']*(ts*ts-tc*tc))
+    lead_shield = lead_factor * math.sqrt(p['cryo_L0']*(ta*ta-ts*ts))
+    radiation_cold = area*p['cryo_emittance']*p['cryo_sigma_SB']*(ts**4-tc**4)
+    radiation_shield = shield_area*p['cryo_q_mli']-radiation_cold
+    bridge = p['magnet_n_coils']*p['cryo_g_per_coil']
+    support_cold = bridge*p['cryo_k_cold']*(ts-tc)
+    support_shield = bridge*p['cryo_k_shield']*(ta-ts)-support_cold
+    warm = lead_shield+radiation_shield+support_shield
+    if not all(math.isfinite(x) for x in (area, shield_area, lead_cold, lead_shield, radiation_cold, radiation_shield, support_cold, support_shield, warm)):
+        raise ValueError('oracle coil inventory: nonfinite derived heat or area')
+    if warm < 0:
+        raise ValueError('oracle coil inventory: negative warm net heat')
+    return dict(area_cold=area, area_shield=shield_area,
+                q_lead_cold=lead_cold, q_lead_shield=lead_shield,
+                q_radiation_cold=radiation_cold, q_radiation_shield=radiation_shield,
+                q_support_cold=support_cold, q_support_shield=support_shield,
+                q_cold=lead_cold+radiation_cold+support_cold, q_shield=warm,
+                p_drive=(lead_cold+lead_shield)*1e-6+p['cryo_joint_drive_fraction']*p['p_fixed_cryo'])
+
+
 def compute():
     if "magnet_R0" in IN:
         raise ValueError("retired oracle input magnet_R0; use plant R")
@@ -687,6 +749,19 @@ def compute():
     # WI-044: casing mass from stored energy, Lion 2021 eq. 56 M = 1.348 W^0.78 with the
     # constant absorbed by the anchor (no units printed); the 63 t floor keeps its seam.
     m_casing = p["magnet_m_casing_ref"] * (W_mag / p["magnet_W_mag_ref"]) ** 0.78
+    for key in ('magnet_support_coefficient', 'cryo_q_nuc_structure'):
+        if not math.isfinite(p[key]) or p[key] < 0:
+            raise ValueError('oracle coil support: nonnegative finite coefficient/heating required')
+    if not math.isfinite(p['cryo_rho_structure']) or p['cryo_rho_structure'] <= 0:
+        raise ValueError('oracle coil support: positive finite structure density required')
+    if p['magnet_support_coefficient'] > 0 and (not math.isfinite(p['magnet_support_exponent']) or p['magnet_support_exponent'] <= 0):
+        raise ValueError('oracle coil support: positive finite active exponent required')
+    for key in ('magnet_legacy_casing_fraction', 'structure_residual_fraction', 'cryo_joint_drive_fraction'):
+        if not math.isfinite(p[key]) or not 0 <= p[key] <= 1:
+            raise ValueError('oracle coil support: accounting fractions must lie in [0,1]')
+    support_mass = (1000*p["magnet_support_coefficient"]*(W_mag/1e6)**p["magnet_support_exponent"]) if p["magnet_support_coefficient"] else 0.0
+    if not math.isfinite(support_mass) or support_mass < 0:
+        raise ValueError('oracle coil support: nonnegative finite support mass required')
     # WI-036: the pack sizes itself from the current; WI-058: the winding length follows
     # the coil bore (WI-036 had it follow the major radius); both were held inputs before.
     # Preserve existing public current/density diagnostic precedence. The reference
@@ -731,7 +806,9 @@ def compute():
     p_neutron = p_fus - p_alpha
     p_cool = p["p_tfcool"] + p["p_pfcool"]
     p_aux = p["p_trit"] + p["p_house"]
-    p_coils = p["p_tf"] + p["p_pf"]
+    thermal = _coil_thermal_inventory(p, c_coil, wp_side)
+    p_tf_total = p["p_tf"] + thermal['p_drive']
+    p_coils = p_tf_total + p["p_pf"]
     # Heating power chain (WI-039), written from the WI-039 design's stated
     # equations rather than from the generated module:
     #   p_delivered      = p_wallplug * eta_source + p_delivered_direct
@@ -803,8 +880,13 @@ def compute():
     # cryoplant_electrical_power_impl.py statement forms verbatim (bit-exact):
     cop_carnot = (p["T_cold_cryo"] / (p["T_amb_cryo"] - p["T_cold_cryo"]))
     cop = (p["f_carnot_cryo"] * cop_carnot)
-    p_cold = ((((p["q_nuc_cryo"] * vol_cold_total) * 1e-06) + p["p_fixed_cryo"]) * p["f_uplift_cryo"])
-    p_cryo = ((p_cold / cop) + p["p_cryo_direct"])
+    structure_nuclear = p['cryo_q_nuc_structure']*support_mass/p['cryo_rho_structure']*1e-6
+    p_cold = ((p["q_nuc_cryo"]*vol_cold_total*1e-6+p["p_fixed_cryo"]+structure_nuclear)
+              *p["f_uplift_cryo"]+thermal['q_cold']*1e-6)
+    p_cryo_cold = p_cold/cop+p["p_cryo_direct"]
+    p_cryo_shield = (thermal['q_shield']*1e-6*(p['T_amb_cryo']-p['T_shield_cryo'])
+                     /(p['f_carnot_shield']*p['T_shield_cryo'])) if p['cryo_inventory_enabled'] else 0.0
+    p_cryo = p_cryo_cold+p_cryo_shield
     recirculating = (p_coils + loop_p_pump_total + p_sub + p_aux + p_cool + p_cryo
                      + operating_heat_wallplug)
     q_eng = p_et / recirculating
@@ -820,14 +902,15 @@ def compute():
     kAm_wind = p["magnet_n_coils"] * p["magnet_I_coil"] * p["magnet_f_set"] * c_coil / 1000.0
     winding_pack_legacy = kAm_wind * p["magnet_cost_per_kAm"] * p["magnet_f_wp_fab"]
     winding_pack = procurement["cost"]
-    magnet_structure = p["magnet_n_coils"] * m_casing * p["magnet_steel_price"] * p["magnet_f_steel_fab"]  # WI-044: computed mass
+    magnet_structure = (p["magnet_legacy_casing_fraction"]*p["magnet_n_coils"]*m_casing+support_mass)*p["magnet_steel_price"]*p["magnet_f_steel_fab"]
     magnet_capital_rollup = winding_pack + magnet_structure
     blanket = (p["blanket_unit_cost"] * p["blanket_structure_factor"] * blanket_vol
                * (p_th / p["p_th_ref"]) ** p["alpha_06"])
     shield = (p["shield_unit_cost"] * shield_vol * p["shield_scale"]
               * (p_th / p["p_th_ref"]) ** p["alpha_06"])
-    structure = (p["structure_unit_cost"] * structure_vol
+    structure_legacy_cost = (p["structure_unit_cost"] * structure_vol
                  * (p_et / p["p_et_ref"]) ** p["alpha_05"])
+    structure = p["structure_residual_fraction"] * structure_legacy_cost
     vessel = (p["vessel_unit_cost"] * vessel_vol
               * (p_et / p["p_et_ref"]) ** p["alpha_06"])
     power_supplies = p["power_supplies_base"] * (p_et / p["p_et_ref"]) ** p["alpha_07"]
@@ -1020,7 +1103,10 @@ def compute():
 
     return dict(
         V=V, p_fus=p_fus, p_th=p_th, p_the=p_the, p_et=p_et,
-        p_cryo=p_cryo,  # derived cryoplant electrical (WI-024 chain output)
+        p_cryo=p_cryo, p_cryo_cold=p_cryo_cold, p_cryo_shield=p_cryo_shield,
+        support_mass=support_mass, p_tf_total=p_tf_total, p_cold=p_cold,
+        structure_nuclear=structure_nuclear*1e6, structure_legacy_cost=structure_legacy_cost,
+        **{'thermal_'+name: value for name, value in thermal.items()},
         q_eng=q_eng, rec_frac=rec_frac, p_net=p_net, wall_load=wall_load,
         wall_peak_calibration=wall_peak_calibration, wall_load_peak=wall_load_peak,  # WI-041
         beta=beta, B_peak=B_peak,  # WI-030 physics channels

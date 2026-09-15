@@ -99,6 +99,16 @@ package stellarator_09 {
         // MAGNET SUBSYSTEM (CAS22.1.3)
         // ---------------------------------------------------------------------
         part :>> magnet {
+            :>> c_support = 1.348 {
+                doc /* **Source**: knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/ Eq56; Lion2023 MJ/tonne convention inferred **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> e_support = 0.78 {
+                doc /* **Source**: knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/ Eq56; Lion2023 MJ/tonne convention inferred **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> legacy_casing_fraction = 0.0 {
+                doc /* **Source**: knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/ Eq56; Lion2023 MJ/tonne convention inferred **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+
             doc /*
             Stellaris HTS modular-coil system.
 
@@ -430,23 +440,17 @@ package stellarator_09 {
             }
             }
             part :>> casing {
-                // Fabricated structural steel price [$/kg].
+                // Inherited steel rate component [$/kg]; together with factor3 =18$/kg all-in scenario.
                 :>> steel_price = 6.0 {
-                    doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:52 (coil_steel_price_per_kg = 6.0) **Basis**: fabricated structural steel rate at the pin */
+                    doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:52 (coil_steel_price_per_kg = 6.0) **Basis**: inherited6$/kg component; combined18$/kg is an assumption, not a qualified316LN quote */
                 }
                 // Casing fabrication markup [1].
                 :>> f_steel_fab = 3.0 {
                     doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:53 (coil_steel_fab_markup = 3.0, "coil-case / inter-coil support fabrication") **Basis**: coil-case fabrication build-up at the pin */
                 }
-                // Reference casing steel mass per coil [kg]: the PRINTED FLOOR of the sec. 2.10
-                // cast-part range (63-200 t) -- a KNOWING LOWER BOUND (f_uplift_cryo pattern): no
-                // total is printed, so the lightest cast part per casing bounds from below; band
-                // [$54.4M, $172.8M] disclosed in WI-035 design D5. The parameter names the seam.
-                // WI-044: the held m_casing is retired; the per-coil mass is COMPUTED by
-                // 'Magnet Casing Mass' as m_casing_ref * (W_mag / W_mag_ref)^0.78 (Lion 2021
-                // eq. 56), so it equals this floor at the design point and scales with the
-                // coil bore through the stored energy. The seam is unchanged: the anchor is
-                // still a lower bound, and everything scaled from it inherits that.
+                // Inherited63t per-coil casing-floor diagnostic, not a measured
+                // casing/intercoil split. Total support mass is priced exclusively
+                // when legacy_casing_fraction=0; this diagnostic adds no cost.
                 :>> m_casing_ref = 63000.0 {
                     doc /* **Source**: stellaris-design-details.md; WI-035 design ruling D5 (2026-08-30); knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/ **Ref**: raw.pdf sec. 2.10 ("cast with parts weighing between 63 tons and 200 tons"); images/lion_2021_nf_stellarator_process.pdf-0012-18.png (eq. 56, the shape the reference is scaled by) **Basis**: explicit lower-bound assumption parameter -- printed floor, seam named; the WI-044 anchor of the casing-mass shape */
                 }
@@ -606,6 +610,10 @@ package stellarator_09 {
             }
         }
         part :>> structure {
+            :>> residual_fraction = 1.0 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_structure_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+
             doc /*
             unit_cost: costing_constants.yaml:46 (structure_unit_cost = 0.15 M$/m^3) x 1e6.
             structure_vol = 219.979 m^3. Forward-computed (WI-021): generic plant
@@ -646,30 +654,9 @@ package stellarator_09 {
             **Basis**: power-scaled power-supply cost
             */
             :>> base = 80000000.0;
-            :>> p_tf = 0.0 {      // coil electrical drive power [MW] -- modeled zero for the SC coil set (WI-024).
-                doc /*
-                Coil electrical drive power: modeled 0.0. The Stellaris coil set is
-                superconducting and operates steady-state DC -- no resistive drive
-                power; 1costingFE's own superconductor model agrees
-                (recirc_power_factor = 0.0 for every SC conductor grade,
-                defaults.py:611-614; the resistive recirc model is copper-only). The
-                one printed steady-state electrical dissipation -- ~7.5 kW
-                resistive-joint losses, "negligible" (sec. 2.9) -- is counted as heat
-                at 20 K inside the WI-024 cryoplant chain (p_fixed_cryo below), not
-                as coil electrical. Current-lead and power-supply standing losses
-                are unprinted in any admissible source and are part of the chain's
-                documented lower bound (f_uplift_cryo). (History: the pre-WI-023
-                111.0 mapped a phantom "conduction power to coils" text row -- the
-                paper prints 111 only as stored magnetic energy [GJ]; WI-023 zeroed
-                it as a deferral stopgap; WI-024 rescopes the zero from stopgap to
-                modeled value.)
-                **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf
-                **Ref**: sec. 2.9 (10 W per joint -> ~7.5 kW coil-set steady-state, "negligible"); /home/reid/1cfe/1costingfe/src/costingfe/defaults.py:611-614 (recirc_power_factor = 0.0 for superconductors)
-                **Basis**: modeled zero for a superconducting coil set -- coil-adjacent parasitic load carried by the derived p_cryo (WI-024 design D1/D2, 2026-07-18)
-                */
+            :>> p_tf = 0.0 {
+                doc /* **Source**: WI-059 D3: direct legacy allowance zero; computed lead/joint power enters separately through p_tf_extra and p_tf_total **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
             }
-            // Stellarator family choices (inline; see the instance doc).
-            // No separate PF coil set (3D modular coils only).
             :>> p_pf = 0.0 {
                 doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md **Ref**: line 249 (modular coils, minimized plasma current) **Basis**: stellarator has no separate poloidal-field coil set */
             }
@@ -1155,6 +1142,58 @@ package stellarator_09 {
             }
         }
         part :>> cryoplant {
+            :>> inventory_enabled = true {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> n_leads = 12.0 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> L0 = 2.45e-8 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> f_lead = 1.25 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> T_shield = 77.0 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> f_carnot_shield = 0.20 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> t_case = 0.10 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> shield_area_ratio = 1.2 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> eps_eff = 0.05 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> sigma_SB = 5.670374419e-8 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> q_MLI = 1.0 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> g_per_coil = 0.04 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> k_c = 5.39362701769 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> k_s = 12.12875814211 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> q_nuc_structure = 0.0 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> rho_structure = 8000.0 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+            :>> joint_drive_fraction = 1.0 {
+                doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            }
+
             :>> p_cryo = 0.0 {    // direct cryo-electrical term [MW] -- zeroed; chain derives the slot (WI-024).
                 doc /*
                 The 1costingFE generic default 0.8 MW (steady_state_stellarator.yaml:24)
@@ -1162,7 +1201,7 @@ package stellarator_09 {
                 (cryoplant wall-plug electrical -- 1cfe's own dipole defaults document
                 the p_cryo slot as "Cryogenic wall-plug power"), so coexisting would
                 double-count. The power-balance p_cryo slot now receives
-                cryo_elec.p_elec, derived from the winding-pack heat load below.
+                cryoplant.p_elec, the sum of cold and intercept refrigeration.
                 **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_dipole.yaml
                 **Ref**: steady_state_dipole.yaml:52-53 (slot semantics witness); steady_state_stellarator.yaml:24 (the retired generic default)
                 **Basis**: double-counting resolution, WI-024 design D2 (2026-07-18)
@@ -1171,18 +1210,8 @@ package stellarator_09 {
             :>> p_fixed_cryo = 0.0075 {  // resistive-joint losses [MW] at 20 K.
                 doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf **Ref**: sec. 2.9 (10 W per joint -> ~7.5 kW steady-state for the entire coil set, "negligible ... within the cooling capacity of existing cryocooler designs") **Basis**: printed coil-set joint dissipation, counted as heat at 20 K */
             }
-            :>> f_uplift_cryo = 1.0 {   // unprinted-loads multiplier -- explicit lower bound (WI-024 D6).
-                doc /*
-                Bound 1.0 = printed loads only, a KNOWING LOWER BOUND: the paper defers
-                casing, coil-case, and 20 K support-structure nuclear heating ("will be
-                examined in future studies", sec. 2.9 raw.pdf), and current-lead /
-                radiation loads are unprinted. No admissible uplift value exists; the
-                parameter names the seam so the owner can raise it. Cited to the design
-                ruling, not a source.
-                **Source**: WI-024 design ruling (D6, 2026-07-18; sanctioned by spec Checkpoint Ruling 2)
-                **Ref**: raw.pdf sec. 2.9 (the future-studies deferral)
-                **Basis**: explicit assumption parameter -- exclude-with-documented-bound
-                */
+            :>> f_uplift_cryo = 1.0 {
+                doc /* **Source**: Stellaris sec2.9 deferred structure nuclear/distribution heating; neutral uplift applies only to old nuclear/fixed and explicit structure nuclear terms **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
             }
             :>> T_cold_cryo = 20.0 {    // coil operating temperature [K].
                 doc /* **Source**: raw.pdf **Ref**: sec. 2.9 ("cooled to 20 K using supercritical helium at 15-20 bar"; Top set to 20 K); sec. 2.8; corroborated by 1costingFE defaults.py:611 (rebco_hts cryo_temp_k = 20.0) **Basis**: Stellaris HTS coil operating temperature */
@@ -1204,23 +1233,15 @@ package stellarator_09 {
                 **Basis**: explicit assumption parameter -- fraction of Carnot, general practice band
                 */
             }
-            :>> p_tfcool = 15.0 { // coil cooling power [MW].
-                doc /*
-                1costingFE stellarator cooling power, kept at the source default.
-                Post-WI-024 coverage (MR-WI024-3): read as the non-cryogenic
-                cooling-system electrical (component / room-temperature cooling
-                loops), disjoint from the 20 K cryoplant wall-plug now derived into
-                p_cryo -- 1costingFE's own stellarator defaults carry p_cool = 15.0
-                and p_cryo = 0.8 side by side (steady_state_stellarator.yaml:20,24),
-                so in the source's intent they are distinct loads. The slot's
-                upstream composition is undocumented; any cryo-compressor share it
-                contains would overlap the derived p_cryo -- a conservative-direction
-                residual (recirc overstated, LCOE up), documented here rather than
-                silently resolved.
-                **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml
-                **Ref**: steady_state_stellarator.yaml:20 (p_cool = 15.0); :24 (p_cryo = 0.8 carried side by side -- disjoint in the source's intent)
-                **Basis**: 1costingFE stellarator cooling power; disjoint read vs the WI-024 derived cryoplant electrical (design D2, 2026-07-18)
-                */
+            :>> p_tfcool = 15.0 {
+                doc /* [AGENT] provisional noncryogenic component-cooling allowance,
+                sensitivity0..15 MW. Source defaults separately list cooling15MW
+                and cryoplant0.8MW but do not establish an equipment split.
+                The explicit two-stage refrigerator is additional; disjointness of
+                this allowance is a scenario assumption, not a sourced finding.
+                **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-004_cooling_slot.md
+                **Reference**: WI-059 design D5. **Basis**: retained uncertain allowance.
+                **Last Updated**: 2026-09-15 */
             }
             :>> p_pfcool = 0.0 {
                 doc /* **Source**: stellaris-design-details.md **Ref**: line 249 (modular coils only) **Basis**: no PF coil set to cool */

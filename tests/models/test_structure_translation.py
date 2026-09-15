@@ -10,7 +10,7 @@ from pathlib import Path
 
 import pytest
 
-from tests.models.current_mfe_regressions import (
+from tests.models.current_mfe_regressions import (WI059_CHANNELS, WI059_PARAMETERS, WI059_NATIVE_ONLY_PARAMETERS,
     ROOT, STRUCTURE_EVIDENCE, alias_both_spellings, structure_ledger, structure_modules,
     translate_frozen_radius_evidence, translate_names,
     WI040_PARAMETERS, WI040_CHANNELS, WI038_PARAMETERS, WI038_CHANNELS,
@@ -36,8 +36,8 @@ def test_ledger_is_a_verified_bijection_onto_the_live_package():
     # material-account ABI is added by the current model.
     # WI-058 (2026-09-14): k_coil retired from the live contract, c_coil_ref added (the winding length
     # follows the coil bore); the historical bijection is otherwise preserved.
-    assert (set(params.values()) - WI058_RETIRED) | WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS == LIVE_PARAMS
-    assert set(outputs.values()) | WI040_CHANNELS | WI038_CHANNELS == LIVE_CHANNELS
+    assert (set(params.values()) - WI058_RETIRED) | WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS == LIVE_PARAMS
+    assert set(outputs.values()) | WI040_CHANNELS | WI038_CHANNELS | WI059_CHANNELS == LIVE_CHANNELS
     assert not set(params.values()) & (WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS)
     assert WI058_RETIRED <= set(params.values())
     assert not set(outputs.values()) & (WI040_CHANNELS | WI038_CHANNELS)
@@ -124,7 +124,7 @@ def test_wi040_restatement_changes_only_declared_cost_descendants(tmp_path):
         before = doc['cases'][case]['native']
         after = revised['cases'][case]['native']
         assert {k: v for k, v in after.items() if k != 'outputs'} == {k: v for k, v in before.items() if k != 'outputs'}
-        assert set(after['outputs']) - set(before['outputs']) == WI040_CHANNELS | WI038_CHANNELS
+        assert set(after['outputs']) - set(before['outputs']) == WI040_CHANNELS | WI038_CHANNELS | WI059_CHANNELS
         for key, value in before['outputs'].items():
             if key not in changed:
                 assert after['outputs'][key] == value

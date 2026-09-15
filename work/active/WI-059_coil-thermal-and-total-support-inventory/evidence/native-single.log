@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/run_stellaris_single.py", line 595, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/run_stellaris_single.py", line 588, in main
+    anchors_ok, oracle_ok, identity_ok, guards_ok = _run_gate_families()
+                                                    ^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/run_stellaris_single.py", line 576, in _run_gate_families
+    outputs = _execute_package()
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/run_stellaris_single.py", line 120, in _execute_package
+    result = execute_pipeline(
+             ^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline.py", line 193, in execute_pipeline
+    run_result = executor.run(
+                 ^^^^^^^^^^^^^
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline_executor.py", line 147, in run
+    self._execute_module(module_key, module_spec, context)
+  File "/home/reid/1cfe/teax/packages/teax-simkit/simkit/core/pipeline_executor.py", line 213, in _execute_module
+    result = module.run(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/stellarator_tea_link_zibih467/stellarator_tea/modules/mfe_cryo_inventory/coil_thermal_inventory.py", line 336, in run
+    q_rad_cold, q_rad_shield, q_lead_shield, q_support_cold, q_inventory_shield, q_lead_cold, area_shield, q_support_shield, q_inventory_cold, area_cold, p_drive = run_coil_thermal_inventory(validated_inputs)
+                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/stellarator_tea_link_zibih467/stellarator_tea/handwritten/mfe_cryo_inventory/coil_thermal_inventory_impl.py", line 117, in run_coil_thermal_inventory
+    raise NotImplementedError(
+NotImplementedError: Manual implementation required for Coil_Thermal_Inventory. See SysML source: root-0/analyses/mfe_cryo_inventory.sysml:3

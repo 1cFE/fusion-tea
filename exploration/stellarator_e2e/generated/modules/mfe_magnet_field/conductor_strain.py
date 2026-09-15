@@ -44,9 +44,9 @@ Inputs:
 Outputs:
     - eps_cond: eps_cond result
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:250
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:251
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:250
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:251
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_magnet_field/conductor_strain_impl.py
@@ -116,9 +116,9 @@ Inputs:
 Outputs:
     - eps_cond: eps_cond result
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:250
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:251
 
-    SysML Source: root-0/analyses/mfe_magnet_field.sysml:250
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:251
 
     Calculation Specification:
         eps_cond = f_cond * sigma_wp / E_wp

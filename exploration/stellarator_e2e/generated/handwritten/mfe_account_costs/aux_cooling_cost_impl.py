@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:559
+SysML Source: root-0/analyses/mfe_account_costs.sysml:565
 
 SysML Expressions:
     n_mod_in = 1.0
@@ -46,7 +46,7 @@ its own cryoplant).
 *Ref**: cas22.py:693-695 (c220300); p_cryo_ref 30 (:694), alpha 0.7 (:694)
 *Basis**: Plant-total aux + per-module cryoplant power law
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:559
+SysML Source: root-0/analyses/mfe_account_costs.sysml:565
 
 SysML Expressions:
     n_mod_in = 1.0

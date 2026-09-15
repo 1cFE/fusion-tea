@@ -1,5 +1,6 @@
 package mfe_plant_systems {
     private import ScalarValues::*;
+    private import mfe_cryo_inventory::*;
     private import mfe_interfaces::*;
     private import mfe_vacuum::*;
     private import mfe_primary_loop::*;
@@ -104,6 +105,28 @@ package mfe_plant_systems {
         port heat_load_in : ~'Cryogenic Load Port';   // <- magnet.cold_mass (cryo_elec.q_nuc, vol_cold)
         port electric_in : ~'Electric Port';   // <- electric_plant.recirculating (pb.p_cryo, p_tfcool_in, p_pfcool_in)
         // directly-specified cryoplant electrical [MW] (additive direct term, WI-024)
+        attribute inventory_enabled : Boolean default false;
+        attribute n_coils : Real default 0.0;
+        attribute c_coil : Real default 0.0;
+        attribute wp_side : Real default 0.0;
+        attribute I_turn : Real default 0.0;
+        attribute n_leads : Real default 0.0;
+        attribute L0 : Real default 0.0;
+        attribute f_lead : Real default 1.0;
+        attribute T_shield : Real default 77.0;
+        attribute f_carnot_shield : Real default 1.0;
+        attribute t_case : Real default 0.0;
+        attribute shield_area_ratio : Real default 1.0;
+        attribute eps_eff : Real default 0.0;
+        attribute sigma_SB : Real default 0.0;
+        attribute q_MLI : Real default 0.0;
+        attribute g_per_coil : Real default 0.0;
+        attribute k_c : Real default 0.0;
+        attribute k_s : Real default 0.0;
+        attribute joint_drive_fraction : Real default 0.0;
+        attribute m_support : Real default 0.0;
+        attribute q_nuc_structure : Real default 0.0;
+        attribute rho_structure : Real default 1.0;
         attribute p_cryo : Real default 0.0;
         attribute p_fixed_cryo : Real default 0.0;
         attribute f_uplift_cryo : Real default 1.0;
@@ -125,16 +148,61 @@ package mfe_plant_systems {
         // ---- EXPOSEs (WI-057): this part's calc outputs, readable outside as <part>.<name> ----
         attribute aux_cooling_cost : Real = aux_cooling.cost;
         attribute cryo_cost : Real = aux_cooling.cryo_cost;
-        attribute p_elec : Real = cryo_elec.p_elec;
-        // ---- template calcs (WI-057): the analyses this part owns ----
-        calc cryo_elec : 'Cryoplant Electrical Power' {
+        attribute p_elec : Real = refrigeration_sum.total;
+        attribute p_drive : Real = inventory.p_drive;
+        calc inventory : 'Coil Thermal Inventory' {
+            in inventory_enabled = 'Cryoplant'::inventory_enabled;
+            in n_coils = 'Cryoplant'::n_coils;
+            in c_coil = 'Cryoplant'::c_coil;
+            in wp_side = 'Cryoplant'::wp_side;
+            in I_turn = 'Cryoplant'::I_turn;
+            in n_leads = 'Cryoplant'::n_leads;
+            in L0 = 'Cryoplant'::L0;
+            in f_lead = 'Cryoplant'::f_lead;
+            in T_cold = T_cold_cryo;
+            in T_shield = 'Cryoplant'::T_shield;
+            in T_amb = T_amb_cryo;
+            in f_carnot_cold = f_carnot_cryo;
+            in f_carnot_shield = 'Cryoplant'::f_carnot_shield;
+            in t_case = 'Cryoplant'::t_case;
+            in shield_area_ratio = 'Cryoplant'::shield_area_ratio;
+            in eps_eff = 'Cryoplant'::eps_eff;
+            in sigma_SB = 'Cryoplant'::sigma_SB;
+            in q_MLI = 'Cryoplant'::q_MLI;
+            in g_per_coil = 'Cryoplant'::g_per_coil;
+            in k_c = 'Cryoplant'::k_c;
+            in k_s = 'Cryoplant'::k_s;
+            in p_joint = p_fixed_cryo;
+            in joint_drive_fraction = 'Cryoplant'::joint_drive_fraction;
+        }
+        calc cold_load : 'Cold Load Sum' {
             in q_nuc = q_nuc_cryo;
-            // WI-036: the cold volume is now computed from the sized winding
-            // pack, with vol_cold_cryo carried into that calc as an additive
-            // settable term (see the wp_volume usage above).
             in vol_cold = vol_cold_total;
             in p_fixed = p_fixed_cryo;
             in f_uplift = f_uplift_cryo;
+            in q_nuc_structure = 'Cryoplant'::q_nuc_structure;
+            in m_support = 'Cryoplant'::m_support;
+            in rho_structure = 'Cryoplant'::rho_structure;
+            in q_inventory_cold = inventory.q_inventory_cold;
+        }
+        calc shield_elec : 'Intercept Electrical Power' {
+            in inventory_enabled = 'Cryoplant'::inventory_enabled;
+            in q_shield = inventory.q_inventory_shield;
+            in T_shield = 'Cryoplant'::T_shield;
+            in T_amb = T_amb_cryo;
+            in f_carnot = f_carnot_shield;
+        }
+        calc refrigeration_sum : 'Electrical Power Sum' {
+            in p_a = cryo_elec.p_elec;
+            in p_b = shield_elec.p_elec;
+        }
+
+        // ---- template calcs (WI-057): the analyses this part owns ----
+        calc cryo_elec : 'Cryoplant Electrical Power' {
+            in q_nuc = 0.0;
+            in vol_cold = 0.0;
+            in p_fixed = cold_load.p_cold;
+            in f_uplift = 1.0;
             in T_cold = T_cold_cryo;
             in T_amb = T_amb_cryo;
             in f_carnot = f_carnot_cryo;
@@ -144,7 +212,7 @@ package mfe_plant_systems {
             in aux_per_mw_in = aux_per_mw;
             in p_th_in = p_th;
             in cryo_base = aux_cryo_base;
-            in p_cryo = cryo_elec.p_elec;
+            in p_cryo = refrigeration_sum.total;
             in n_mod_in = n_mod;
         }
     }

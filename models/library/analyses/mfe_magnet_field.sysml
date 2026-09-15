@@ -163,13 +163,14 @@ package mfe_magnet_field {
         varying the plasma minor radius "at constant coil radius"; this
         radial build instead moves the coil bore with the plasma (a plus a
         fixed layer stack), so here the coil's size IS its bore. The two
-        readings coincide under uniform scaling (R and a together at fixed
-        aspect ratio) and differ exactly when the aspect ratio changes. What
+        readings coincide only when the normalized coil-bore and major-radius
+        ratios agree. Fixed plasma aspect ratio alone does not ensure that
+        equality with the held1.85m non-plasma radial stack. What
         grows with R at fixed bore is the toroidal coil-coil spacing, which
         PROCESS checks as a clearance (d_min(C) scaling with R, sec. 3.10),
         not a length; this model carries no such check -- disclosed, not
         modelled. Supersedes WI-036 D3 (c_coil = k_coil * R0), whose R-form
-        was the uniform-scaling special case of this one.
+        agrees with this form under that normalized-ratio equality.
 
         The residual held quantity is the printed 25 m itself (c_coil_ref),
         "typical but approximate" -- the weak link WI-036 carried. The

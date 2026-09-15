@@ -14,7 +14,7 @@ import oracle_entry as oracle  # noqa: E402 — runtime import path established 
 import study_route as route  # noqa: E402 — runtime import path established above
 
 from tests.study.financial_channels import FINANCIAL_CHANNELS
-from tests.models.current_mfe_regressions import WI040_CHANNELS, WI040_CHANGED_ECONOMICS, WI038_CHANNELS
+from tests.models.current_mfe_regressions import (WI040_CHANNELS, WI040_CHANGED_ECONOMICS, WI038_CHANNELS, WI059_CHANNELS, WI059_REPLAY, wi059_native_additions)
 
 from scripts.study import common, verify  # noqa: E402 — runtime import path established above
 
@@ -31,7 +31,7 @@ def check_controls(out):
     # expectation (tests.models.current_mfe_regressions.K_COIL_RETIRED; the bore response is tested in
     # tests/models/test_winding_length_bore.py).
     from tests.models.current_mfe_regressions import K_COIL_RETIRED
-    proposals = [{}, {route.P + "plasma__R": 14.0, route.P + "magnet__coil__c_coil_ref": K_COIL_RETIRED * 14.0}]
+    proposals = [WI059_REPLAY, WI059_REPLAY | {route.P + "plasma__R": 14.0, route.P + "magnet__coil__c_coil_ref": K_COIL_RETIRED * 14.0}]
     cases, db = route.run_points("radius-controls", proposals, out / "_work")
     assert len(cases) == 2 and all(c.state == "completed" for c in cases)
     comparisons = {}
@@ -52,11 +52,12 @@ def check_controls(out):
         expected_outputs.update({route.P + 'magnet__conductor_grade__' + k: v for k, v in {
             'quantity_factor': 1.0, 'j_wp_effective': 118.8271604938272,
             'cost_per_kAm_effective': 50.0}.items()})
-        assert set(case.outputs) == set(expected_outputs) == {renamed(c) for c in expectations["channels"]} | WI040_CHANNELS | WI038_CHANNELS
+        expected_outputs.update(wi059_native_additions(frozen_outputs, oracle.vs.IN))
+        assert set(case.outputs) == set(expected_outputs) == {renamed(c) for c in expectations["channels"]} | WI040_CHANNELS | WI038_CHANNELS | WI059_CHANNELS
         for key, value in expected_outputs.items():
             assert (
                 math.isclose(case.outputs[key], value, rel_tol=1e-9, abs_tol=0.0)
-                if key in FINANCIAL_CHANNELS | changed_costs | WI040_CHANNELS
+                if key in FINANCIAL_CHANNELS | changed_costs | WI040_CHANNELS | WI059_CHANNELS
                 else case.outputs[key] == value
             ), (name, key, case.outputs[key], value)
         assert set(channels) == set(oracle.ORACLE_OUTPUT_TO_CHANNEL.values())

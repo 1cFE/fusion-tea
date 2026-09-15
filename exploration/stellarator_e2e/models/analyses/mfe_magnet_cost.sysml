@@ -138,31 +138,33 @@ package mfe_magnet_cost {
         out attribute m_casing : Real = m_casing_ref * (W_mag / W_mag_ref) ** 0.78;
     }
 
-    calc def 'Magnet Structure Cost' {
-        doc /*
-        Magnet casing-structure capital [$] on a steel-mass basis (WI-035 D5):
+    calc def 'Magnet Support Mass' {
+        doc /* Total electromagnetic coil-support mass [kg], not a casing split.
+        **Source**: knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/;
+        knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/
+        **Reference**: Lion2021 Eq56; Lion2023 Eq2.89 and following MJ/tonne text.
+        **Basis**: [AGENT] adopts later source unit convention for earlier fit;
+        later fit has different coefficient/exponent. No local stress qualification.
+        Native domain: finite c_support>=0; zero coefficient returns dormant0;
+        otherwise finite W_mag>=0, e_support>0 and finite output.
+        **Last Updated**: 2026-09-15 */
+        in attribute W_mag : Real;
+        in attribute c_support : Real default 0.0;
+        in attribute e_support : Real default 0.78;
+        out attribute m_support : Real = 1000.0*c_support*(W_mag/1e6)**e_support;
+    }
 
-          cost = n_coils * m_casing * steel_price * f_steel_fab
-
-        Covers the COIL CASINGS only; inter-coil plates, support rings, and
-        legs remain CAS22.1.5 primary structure ('Structure Cost') -- the
-        boundary that prevents double counting. m_casing is COMPUTED by
-        'Magnet Casing Mass' (WI-044) from the coil set's stored energy,
-        anchored at the instance's reference mass; for Stellaris the reference
-        is the printed cast-part floor, a knowing lower bound with the seam
-        named in the binding doc, so the scale responds to the coil bore and
-        the seam stays.
-
-        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385);
-            knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
-        **Ref**: costing_constants.yaml:52-53 (coil_steel_price_per_kg 6.0,
-            coil_steel_fab_markup 3.0 "coil-case / inter-coil support
-            fabrication"); raw.pdf sec. 2.10 (casing cast parts 63-200 t;
-            AISI 316LN)
-        **Basis**: casing steel mass x fabricated-steel rate x fabrication
-            markup; concept-agnostic (MR-3)
-        */
-
+    calc def 'Magnet Structure Cost'  {
+        doc /* Electromagnetic support cost, exclusive total or legacy casing basis.
+        cost=(legacy_casing_fraction*n_coils*m_casing+m_support)*steel_price*f_steel_fab.
+        The casing output remains an inherited floor diagnostic in total-support mode.
+        Native domain: legacy_casing_fraction in [0,1], finite m_support>=0.
+        **Source**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md
+        **Reference**: D1-D2; T-005_structure_basis.md.
+        **Basis**: inherited fabricated-steel scenario; no sourced casing/intercoil split.
+        **Last Updated**: 2026-09-15 */
+        in attribute m_support : Real default 0.0;
+        in attribute legacy_casing_fraction : Real default 1.0;
         // number of field coils [1]
         in attribute n_coils : Real;
         // casing steel mass per coil [kg] (computed, 'Magnet Casing Mass')
@@ -172,7 +174,7 @@ package mfe_magnet_cost {
         // casing fabrication markup [1]
         in attribute f_steel_fab : Real;
 
-        out attribute cost : Real = n_coils * m_casing * steel_price * f_steel_fab;
+        out attribute cost : Real = (legacy_casing_fraction * n_coils * m_casing + m_support) * steel_price * f_steel_fab;
     }
 
     calc def 'Magnet Capital' {

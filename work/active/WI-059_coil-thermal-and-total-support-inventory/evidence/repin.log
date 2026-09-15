@@ -1,0 +1,25 @@
+{
+  "indicator_inputs": {
+    "recipe": "indicator-input-fingerprint/v1",
+    "digest": "d3d7b9e72e7796561a312b67df01d5f6cebf542b6ec57ac283dc879f941505df",
+    "files": [
+      "contracts/model_contract.json",
+      "inputs/mfe_account_costs_params.json",
+      "inputs/mfe_cryo_plant_params.json",
+      "inputs/mfe_fuel_cycle_params.json",
+      "inputs/mfe_magnet_cost_params.json",
+      "inputs/mfe_magnet_field_params.json",
+      "inputs/mfe_plant_params.json",
+      "inputs/mfe_plasma_scaling_params.json",
+      "inputs/mfe_plasma_sustainment_params.json",
+      "inputs/mfe_vacuum_params.json",
+      "inputs/stellarator_plant_params.json",
+      "pipelines/pipeline.yaml"
+    ]
+  },
+  "recorded_provenance": {
+    "semantic_fingerprint": "bf7b8afe4fc92c7ce3e713f799a4dcaead0f71c0bc851c93aae640514ab104ea",
+    "executable_fingerprint": "59478649fdead4c3808f4065f110c8deade1ffe37b938bdf027101e84050a29a"
+  }
+}
+native entries 289

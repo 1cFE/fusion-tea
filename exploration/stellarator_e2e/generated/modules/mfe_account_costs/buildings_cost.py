@@ -40,9 +40,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:304
+SysML Source: root-0/analyses/mfe_account_costs.sysml:310
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:304
+SysML Source: root-0/analyses/mfe_account_costs.sysml:310
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/buildings_cost_impl.py
@@ -132,9 +132,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:304
+SysML Source: root-0/analyses/mfe_account_costs.sysml:310
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:304
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:310
 
     Calculation Specification:
         n_mod_in = 1.0

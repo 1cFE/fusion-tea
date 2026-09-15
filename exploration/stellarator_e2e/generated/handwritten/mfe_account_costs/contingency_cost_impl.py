@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:255
+SysML Source: root-0/analyses/mfe_account_costs.sysml:261
 
 SysML Expressions:
     cost = contingency_rate_in * direct_subtotal
@@ -39,7 +39,7 @@ source) -- a concept/maturity input (WI-011).
 *Ref**: costs.py:220 (cas29_contingency)
 *Basis**: Fractional contingency on the direct-cost subtotal
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:255
+SysML Source: root-0/analyses/mfe_account_costs.sysml:261
 
 SysML Expressions:
     cost = contingency_rate_in * direct_subtotal

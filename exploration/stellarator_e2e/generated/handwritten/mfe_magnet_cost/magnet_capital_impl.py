@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_magnet_cost.sysml:178
+SysML Source: root-0/analyses/mfe_magnet_cost.sysml:180
 
 SysML Expressions:
     capital_cost = winding_cost + structure_cost_in
@@ -41,7 +41,7 @@ WI-030).
 (redefinition envelope)
 *Basis**: sum of winding-pack and magnet-structure sub-accounts
 
-SysML Source: root-0/analyses/mfe_magnet_cost.sysml:178
+SysML Source: root-0/analyses/mfe_magnet_cost.sysml:180
 
 SysML Expressions:
     capital_cost = winding_cost + structure_cost_in

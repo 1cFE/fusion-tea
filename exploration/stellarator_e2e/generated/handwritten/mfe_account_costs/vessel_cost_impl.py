@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:108
+SysML Source: root-0/analyses/mfe_account_costs.sysml:114
 
 SysML Expressions:
     p_et_ref = 1100.0
@@ -49,7 +49,7 @@ deepening. See the plant doc's initial-model-limitations note.
 *Ref**: cas22.py:515 (c220106_vessel), cas22.py:224 (P_ET_REF)
 *Basis**: Volume-based vessel-shell cost with gross-electric power law
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:108
+SysML Source: root-0/analyses/mfe_account_costs.sysml:114
 
 SysML Expressions:
     p_et_ref = 1100.0

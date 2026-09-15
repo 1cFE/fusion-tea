@@ -30,7 +30,7 @@ six unique coils; typical circumference 25 m)
 *Basis**: sum of per-coil winding-pack volumes expressed as a held
 distribution factor on the worst coil; concept-agnostic (MR-3)
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:205
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:206
     """
     vol_winding_pack: float = Field(description="vol_winding_pack output")
     vol_cold_total: float = Field(description="vol_cold_total output")

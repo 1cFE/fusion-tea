@@ -81,7 +81,11 @@ package mfe_account_costs {
     calc def 'Structure Cost' {
         doc /*
         CAS22.1.5 Primary structure (gravity supports, thermal shields,
-        inter-coil structure, machine base) cost. Volume x gross-electric
+        inter-coil structure, machine base) legacy proxy. WI-059 total-support mode
+        reallocates residual_fraction of this proxy to an explicitly assumed
+        nonmagnet allowance, with no sourced allocation; legacy_cost is exposed.
+        Native completion requires residual_fraction in [0,1].
+        Volume x gross-electric
         scaling:
 
           cost = unit_cost * structure_vol * (p_et/p_et_ref)^alpha
@@ -91,6 +95,7 @@ package mfe_account_costs {
         **Basis**: Volume-based structure cost with gross-electric power law
         */
 
+        in attribute residual_fraction : Real default 1.0;
         in attribute unit_cost : Real;
         in attribute structure_vol : Real;
         in attribute p_et_in : Real;
@@ -101,8 +106,9 @@ package mfe_account_costs {
         // Exponent. Source: cas22.py:501 (** 0.5).
         in attribute alpha : Real default 0.5;
 
-        out attribute cost : Real =
+        out attribute legacy_cost : Real =
             unit_cost * structure_vol * (p_et_in / p_et_ref) ** alpha;
+        out attribute cost : Real = residual_fraction * legacy_cost;
     }
 
     calc def 'Vessel Cost' {

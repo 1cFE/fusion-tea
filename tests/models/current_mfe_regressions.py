@@ -40,7 +40,65 @@ WI038_CHANNELS = {P + 'magnet__conductor_grade__' + name for name in (
 K_COIL_RETIRED = 1.968503937007874  # the retired WI-036 k_coil (25.0 / 12.7), the float the old oracle carried
 WI058_PARAMETERS = {P + 'magnet__coil__c_coil_ref'}
 WI058_RETIRED = {P + 'magnet__coil__k_coil'}
-RECEIPT_EVIDENCE = ROOT / 'work/active/WI-058_coil-winding-length-from-bore/evidence'  # the current model/package hash receipts
+RECEIPT_EVIDENCE = ROOT / 'work/active/WI-059_coil-thermal-and-total-support-inventory/evidence'
+WI059_PARAMETERS = {P + 'cryoplant__' + name for name in (
+    'inventory_enabled', 'n_leads', 'L0', 'f_lead', 'T_shield', 'f_carnot_shield',
+    't_case', 'shield_area_ratio', 'eps_eff', 'sigma_SB', 'q_MLI', 'g_per_coil',
+    'k_c', 'k_s', 'q_nuc_structure', 'rho_structure', 'joint_drive_fraction')
+} | {P + 'magnet__' + name for name in ('c_support', 'e_support', 'legacy_casing_fraction')} | {P + 'structure__residual_fraction'}
+WI059_EXISTING_MAPPED_PARAMETERS = {P + 'cryoplant__f_carnot_cryo', P + 'cryoplant__p_tfcool'}
+WI059_NATIVE_ONLY_VALUES = {P + 'cryoplant__cryo_elec__q_nuc': 0.0,
+    P + 'cryoplant__cryo_elec__vol_cold': 0.0, P + 'cryoplant__cryo_elec__f_uplift': 1.0}
+WI059_NATIVE_ONLY_PARAMETERS = set(WI059_NATIVE_ONLY_VALUES)
+WI059_THERMAL_CHANNELS = {P + 'cryoplant__inventory__' + name for name in (
+    'area_cold', 'area_shield', 'q_lead_cold', 'q_lead_shield', 'q_rad_cold',
+    'q_rad_shield', 'q_support_cold', 'q_support_shield', 'q_inventory_cold',
+    'q_inventory_shield', 'p_drive')}
+WI059_CHANNELS = WI059_THERMAL_CHANNELS | {
+    P + 'cryoplant__refrigeration_sum__total', P + 'cryoplant__shield_elec__p_elec',
+    P + 'power_supplies__tf_power__total', P + 'cryoplant__cold_load__p_cold',
+    P + 'magnet__support_mass__m_support', P + 'cryoplant__cold_load__q_structure_nuclear',
+    P + 'structure__structure_cost__legacy_cost'}
+WI059_ORACLE_ADDED_CHANNELS = (WI059_CHANNELS - {P + 'cryoplant__refrigeration_sum__total'}) | {P + 'cryoplant__cryo_elec__p_elec'}
+WI059_REPLAY = {
+    P + 'cryoplant__inventory_enabled': False, P + 'magnet__c_support': 0.0,
+    P + 'magnet__legacy_casing_fraction': 1.0, P + 'structure__residual_fraction': 1.0,
+    P + 'cryoplant__joint_drive_fraction': 0.0, P + 'cryoplant__q_nuc_structure': 0.0}
+WI059_REPLAY_LOCAL = dict(cryo_inventory_enabled=False, magnet_support_coefficient=0.0,
+    magnet_legacy_casing_fraction=1.0, structure_residual_fraction=1.0,
+    cryo_joint_drive_fraction=0.0, cryo_q_nuc_structure=0.0)
+
+
+def wi059_replay(overrides):
+    return WI059_REPLAY_LOCAL | dict(overrides)
+
+
+def wi059_dormant_outputs(expected, parameters):
+    """Independent identities for additions in the historical disabled scenario."""
+    extra = dict(p_cryo_cold=expected['p_cryo'], p_cryo_shield=0.,
+                 p_tf_total=parameters['p_tf'], support_mass=0., structure_nuclear=0.,
+                 structure_legacy_cost=expected['structure'])
+    extra['p_cold'] = ((expected['p_cryo'] - parameters['p_cryo_direct'])
+        * parameters['f_carnot_cryo'] * parameters['T_cold_cryo']
+        / (parameters['T_amb_cryo'] - parameters['T_cold_cryo']))
+    extra.update({'thermal_' + name: 0. for name in (
+        'area_cold', 'area_shield', 'q_lead_cold', 'q_lead_shield',
+        'q_radiation_cold', 'q_radiation_shield', 'q_support_cold', 'q_support_shield',
+        'q_cold', 'q_shield', 'p_drive')})
+    return extra
+
+
+def wi059_native_additions(outputs, parameters):
+    """New native channels preserve cold-stage heat/work and zero disabled additions."""
+    extra = dict.fromkeys(WI059_CHANNELS, 0.)
+    old_cryo = outputs[P + 'cryoplant__cryo_elec__p_elec']
+    extra[P + 'cryoplant__refrigeration_sum__total'] = old_cryo
+    extra[P + 'power_supplies__tf_power__total'] = parameters['p_tf']
+    extra[P + 'structure__structure_cost__legacy_cost'] = outputs[P + 'structure__structure_cost__cost']
+    extra[P + 'cryoplant__cold_load__p_cold'] = wi059_dormant_outputs(
+        {'p_cryo': old_cryo, 'structure': outputs[P + 'structure__structure_cost__cost']}, parameters)['p_cold']
+    return extra
+
 
 
 def restate_wi040_radius_costs(translated):
@@ -53,7 +111,7 @@ def restate_wi040_radius_costs(translated):
     sys.path.insert(0, str(ROOT / 'exploration/stellarator_e2e/studies'))
     import oracle_entry
     changed = {oracle_entry.ORACLE_OUTPUT_TO_CHANNEL[name] for name in WI040_CHANGED_ECONOMICS}
-    oracle = {name: oracle_entry.evaluate(change) for name, change in (
+    oracle = {name: oracle_entry.evaluate(WI059_REPLAY | change) for name, change in (
         ('baseline', {}), ('R14', {P + 'plasma__R': 14.0, P + 'magnet__coil__c_coil_ref': K_COIL_RETIRED * 14.0}))}  # WI-058: the R-form's length at R14
     assert changed.isdisjoint(WI040_CHANNELS)
     for name in oracle:
@@ -67,14 +125,15 @@ def restate_wi040_radius_costs(translated):
         replacement.update({P + 'magnet__conductor_grade__quantity_factor': 1.0,
                             P + 'magnet__conductor_grade__j_wp_effective': 118.8271604938272,
                             P + 'magnet__conductor_grade__cost_per_kAm_effective': 50.0})
+        replacement.update(wi059_native_additions(frozen['cases'][ref]['native']['outputs'], oracle_entry.vs.IN))
         frozen['cases'][ref]['native']['outputs'].update(replacement)
         direct['results'][name]['single']['outputs'].update(replacement)
     (translated / 'frozen-results.json').write_text(json.dumps(frozen, indent=2) + '\n')
     (translated / 'direct-entering.json').write_text(json.dumps(direct, indent=2) + '\n')
     expected = json.loads((translated / 'expectations.json').read_text())
-    expected['channels'] = sorted(set(expected['channels']) | WI040_CHANNELS | WI038_CHANNELS)
+    expected['channels'] = sorted(set(expected['channels']) | WI040_CHANNELS | WI038_CHANNELS | WI059_CHANNELS)
     (translated / 'expectations.json').write_text(json.dumps(expected, indent=2) + '\n')
-    return changed | WI040_CHANNELS
+    return changed | WI040_CHANNELS | WI059_CHANNELS
 
 
 def structure_ledger():
@@ -157,7 +216,7 @@ FINANCE_EVIDENCE = ROOT / 'work/active/WI-052_mfe-financial-rate-limits/implemen
 
 
 def current_generation():
-    spec = importlib.util.spec_from_file_location('wi038_current_generation', DOMAIN_EVIDENCE / 'regenerate.py')
+    spec = importlib.util.spec_from_file_location('wi038_current_generation', RECEIPT_EVIDENCE / 'regenerate.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
@@ -165,7 +224,7 @@ def current_generation():
 
 def operating_acceptance(destination, historical):
     # Keep all historical scenario execution and assertions. Replace its generator
-    # dependency with the native current sixteen-seed completion function (WI-038).
+    # dependency with the current reviewed WI-059 completion inventory.
     spec = importlib.util.spec_from_file_location('wi052_operating_scenarios', FINANCE_EVIDENCE / 'current_regressions.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -175,9 +234,20 @@ def operating_acceptance(destination, historical):
     forward, backward = structure_ledger()
     execute = historical.execute
     historical.execute = lambda ev, bridge, changes: alias_results(
-        execute(ev, bridge, {forward.get(k, k): v for k, v in changes.items()}), backward)
-    scratch, rows, inputs = module.operating_acceptance(destination, historical)
-    return scratch, rows, alias_both_spellings(inputs, backward)
+        execute(ev, bridge, WI059_REPLAY | {forward.get(k, k): v for k, v in changes.items()}), backward)
+    import sys
+    previous_path = list(sys.path)
+    previous_modules = {name: value for name, value in sys.modules.items()
+                        if name == 'stellarator_tea' or name.startswith('stellarator_tea.')}
+    try:
+        scratch, rows, inputs = module.operating_acceptance(destination, historical)
+    finally:
+        sys.path[:] = previous_path
+        for name in list(sys.modules):
+            if name == 'stellarator_tea' or name.startswith('stellarator_tea.'):
+                del sys.modules[name]
+        sys.modules.update(previous_modules)
+    return scratch, rows, alias_both_spellings(inputs | WI059_REPLAY, backward)
 
 
 def alias_results(row, backward):
@@ -215,9 +285,10 @@ def radius_acceptance(destination, historical):
         if name in ('native', 'direct'):
             text = text.replace("P+'R'", "P+'plasma__R'")
         if name == 'native':
+            text = replace_once(text, 'bridge.build(change)', f'bridge.build({WI059_REPLAY!r} | change)')
             text = replace_once(text, "'entering-package/contracts/model_contract.json'", repr(str(translated / 'entering-package/contracts/model_contract.json')))
             text = replace_once(text, "delta['added']==[]",
-                                f"{{x[1] for x in delta['added']}}=={WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS!r}")
+                                f"{{x[1] for x in delta['added']}}=={WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS!r}")
             # WI-058: evaluate R14 at the R-form's length (see K_COIL_RETIRED) so the frozen row stays exact.
             text = replace_once(text, "('R14',{P+'plasma__R':14.0})",
                                 f"('R14',{{P+'plasma__R':14.0,P+'magnet__coil__c_coil_ref':{K_COIL_RETIRED * 14.0!r}}})")
@@ -238,6 +309,7 @@ def radius_acceptance(destination, historical):
                 "        domain = 'reference' if name.startswith('reference') else 'live'\n"
                 "        assert domain + ' clearance' in component[name]['message']")
         if name == 'direct':
+            text = replace_once(text, 'values.update(change)', f'values.update({WI059_REPLAY!r} | change)')
             # WI-058: evaluate R14 at the R-form's length (see K_COIL_RETIRED) so the frozen row stays exact.
             text = replace_once(text, "'R14':{P+'plasma__R':14.0,",
                                 f"'R14':{{P+'plasma__R':14.0,P+'magnet__coil__c_coil_ref':{K_COIL_RETIRED * 14.0!r},")

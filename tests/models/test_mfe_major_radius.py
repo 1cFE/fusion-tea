@@ -18,7 +18,7 @@ import hashlib
 WI057_MODEL_HASHES=json.loads((ROOT/'work/active/WI-057_stellaris-structural-decomposition/evidence/merge_onto_demo_maturation/model-hashes.json').read_text())
 WI057_STRUCTURE=tuple(WI057_MODEL_HASHES)
 from tests.models.current_mfe_regressions import structure_ledger, structure_modules
-from tests.models.current_mfe_regressions import DOMAIN_EVIDENCE, WI040_CHANNELS, WI038_CHANNELS, RECEIPT_EVIDENCE
+from tests.models.current_mfe_regressions import DOMAIN_EVIDENCE, WI040_CHANNELS, WI038_CHANNELS, WI059_CHANNELS, RECEIPT_EVIDENCE
 RENAMED=structure_ledger()[0]
 MODULES=structure_modules(RENAMED)
 def new(key): return RENAMED.get(key,key)  # an entry point or channel under its WI-057 name
@@ -41,20 +41,17 @@ def test_binding_documentation_and_source_preservation(tmp_path):
     documentation=ROOT/'work/active/WI-054_faithful-model-equations-and-citations/evidence'
     lexical=runpy.run_path(str(documentation/'preservation.py'))['lexical']
     entering=json.loads((documentation/'entering.json').read_text())['models']
-    current_hashes=json.loads((RECEIPT_EVIDENCE/'model-hashes.json').read_text())  # WI-058 (2026-09-14): the current receipt, same seven files
+    current_hashes=json.loads((RECEIPT_EVIDENCE/'model-hashes.json').read_text())  # WI-059: complete current canonical-source receipt
     for p in MFE.owned:
         assert canonical_path(p).read_bytes()==(MFE.twin/p).read_bytes()
-        if p in ('analyses/mfe_plasma_scaling.sysml', 'analyses/mfe_plasma_sustainment.sysml', 'analyses/mfe_magnet_cost.sysml', 'foundation/economic_parameter.sysml'):
+        if p in ('analyses/mfe_plasma_scaling.sysml', 'analyses/mfe_plasma_sustainment.sysml', 'foundation/economic_parameter.sysml'):
             # WI-054 changes comments only; every executable token stays frozen.
             source=str(canonical_path(p).relative_to(ROOT))
             assert lexical((models/p).read_text()) == entering[source]['tokens']
         elif p in current_hashes:
             # WI-040/038: preserve the six prior source guards and add conductor
             # capability. Other unchanged sources keep their historical guards.
-            assert set(current_hashes) == {
-                'analyses/mfe_magnet_field.sysml', 'analyses/mfe_winding_pack_cost.sysml', 'analyses/mfe_conductor_grade.sysml',
-                'cost_structure/mfe_power_core.sysml', 'structure/mfe_magnet_parts.sysml',
-                'designs/generic_mfe/mfe_plant.sysml', 'designs/stellarator_09/stellarator_plant.sysml'}
+            assert set(current_hashes) == set(MFE.owned)
             assert hashlib.sha256((models/p).read_bytes()).hexdigest()==current_hashes[p],p
         elif p in ('analyses/mfe_cryo_plant.sysml', 'analyses/mfe_primary_loop.sysml'):
             calculation = ('Primary Coolant Loop' if 'primary_loop' in p
@@ -122,7 +119,7 @@ def test_current_contract_edges_and_fresh_package_agreement():
         assert hashes(H/path)==expected
     # Historical generation receipts stay frozen; WI-040's additive-account package
     # has its own current receipt (2026-09-13).
-    assert hashes(ROOT/'exploration/stellarator_e2e/generated')==json.loads((RECEIPT_EVIDENCE/'package-hashes.json').read_text())  # WI-058 (2026-09-14): the current package receipt
+    assert hashes(ROOT/'exploration/stellarator_e2e/generated')==json.loads((RECEIPT_EVIDENCE/'package-hashes.json').read_text())  # WI-059: current package receipt
     assert all(expected[name]==value for name,value in MANUAL.items())
 
 
@@ -146,9 +143,9 @@ def read_result(acceptance,name):
 def test_complete_native_and_direct_parity(acceptance,case):
     native=read_result(acceptance,'results.json')[case]
     direct=read_result(acceptance,'direct-production.json')['results'][case]
-    assert len(native['outputs'])==158 + len(WI040_CHANNELS | WI038_CHANNELS) and len(native['responses'])==19
-    assert len(direct['single']['outputs'])==177 + len(WI040_CHANNELS | WI038_CHANNELS)
-    assert len(direct['helper']['outputs'])==158 + len(WI040_CHANNELS | WI038_CHANNELS)
+    assert len(native['outputs'])==158 + len(WI040_CHANNELS | WI038_CHANNELS | WI059_CHANNELS) and len(native['responses'])==19
+    assert len(direct['single']['outputs'])==177 + len(WI040_CHANNELS | WI038_CHANNELS | WI059_CHANNELS)
+    assert len(direct['helper']['outputs'])==158 + len(WI040_CHANNELS | WI038_CHANNELS | WI059_CHANNELS)
     # Full exact baseline and tolerant R14 scalar comparisons, plus exact serialized
     # structured outputs, are performed in the shared executing acceptance path.
     assert read_result(acceptance,'checks.json')[case]['responses_exact']

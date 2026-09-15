@@ -47,9 +47,9 @@ Inputs:
 Outputs:
     - W_mag: W_mag result
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:297
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:298
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:297
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:298
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_magnet_field/coil_set_stored_energy_impl.py
@@ -130,9 +130,9 @@ Inputs:
 Outputs:
     - W_mag: W_mag result
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:297
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:298
 
-    SysML Source: root-0/analyses/mfe_magnet_field.sysml:297
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:298
 
     Calculation Specification:
         W_mag = W_mag_ref * (I_coil / I_ref) ** 2 * (a_coil / a_coil_ref) ** 2 * (R_ref / R0)

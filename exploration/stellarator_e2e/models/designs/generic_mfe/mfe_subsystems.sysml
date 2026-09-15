@@ -4,6 +4,7 @@ package mfe_subsystems {
     private import mfe_power_cycle::*;
     private import mfe_power_balance::*;
     private import mfe_account_costs::*;
+    private import mfe_cryo_inventory::*;
     private import cas_hierarchy::*;
     private import economic_parameter::'CAS Scope';
     private import mfe_radial_build_parts::*;
@@ -128,9 +129,13 @@ package mfe_subsystems {
     part def 'Primary Structure' :> 'CAS22 Power Core' {
         // WI-057: the structure's own facts, moved from the plant (formerly plant-level inputs)
         attribute structure_t : Real default 0.15;
+        attribute residual_fraction : Real default 1.0;
+        attribute legacy_cost : Real = structure_cost.legacy_cost;
         doc /*
         CAS22.1.5 Primary structure and support (gravity supports, thermal
-        shields, inter-coil structure, machine base). Cost drivers feed
+        shields, inter-coil structure, machine base) in legacy mode. WI-059
+        total-support instances explicitly reallocate a residual_fraction budget
+        to nonmagnet infrastructure; this is not a measured split. Cost drivers feed
         'Structure Cost'.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
@@ -147,6 +152,7 @@ package mfe_subsystems {
         // ---- template calcs (WI-057): the analyses this part owns ----
         // Primary structure (CAS22.1.5).
         calc structure_cost : 'Structure Cost' {
+            in residual_fraction = 'Primary Structure'::residual_fraction;
             in unit_cost = 'Primary Structure'::unit_cost;
             in structure_vol = 'Primary Structure'::structure_vol;
             in p_et_in = p_et;
@@ -188,6 +194,12 @@ package mfe_subsystems {
         // WI-057: the power_supplies's own facts, moved from the plant (formerly plant-level inputs)
         // TF coil power [MW]
         attribute p_tf : Real;
+        attribute p_tf_extra : Real default 0.0;
+        attribute p_tf_total : Real = tf_power.total;
+        calc tf_power : 'Electrical Power Sum' {
+            in p_a = p_tf;
+            in p_b = p_tf_extra;
+        }
         // PF coil power [MW]
         attribute p_pf : Real;
         doc /*

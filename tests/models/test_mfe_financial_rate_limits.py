@@ -1,6 +1,7 @@
 """SV-090: independent factors and actual generated public finance routes."""
 import importlib
 import importlib.util
+import json
 import math
 import os
 from decimal import Decimal, localcontext
@@ -166,10 +167,8 @@ def test_original_counterexamples_and_zero_cost(production):
 
 def current_generation():
     """Load today's completion helper without shadowing historical regenerate imports."""
-    path=REFERENCE.parent/'regenerate.py'
-    spec=importlib.util.spec_from_file_location('wi052_regeneration',path)
-    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
-    return module
+    from tests.models.current_mfe_regressions import current_generation as current
+    return current()
 
 
 @pytest.mark.parametrize('kind',['visible','hidden','file','symlink','dangling'])
@@ -192,13 +191,13 @@ def test_current_regeneration_refuses_nonfresh_without_mutation(tmp_path,kind):
 def test_current_regeneration_refuses_bad_seed(tmp_path,kind):
     import shutil
     module=current_generation();source=tmp_path/'source'
-    for name in module.NAMES:
+    for name in json.loads(module.SEEDS.read_text()):
         p=source/name;p.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(module.PRODUCTION/name,p)
-    target=source/sorted(module.NAMES)[0]
+    target=source/sorted(json.loads(module.SEEDS.read_text()))[0]
     if kind=='missing':target.unlink()
     elif kind=='mismatch':target.write_text('changed')
     elif kind=='extra':(source/'handwritten/extra.py').write_text('AUTO_IMPLEMENTED = False\n')
     else:
-        target.unlink();target.symlink_to(module.PRODUCTION/sorted(module.NAMES)[0])
+        target.unlink();target.symlink_to(module.PRODUCTION/sorted(json.loads(module.SEEDS.read_text()))[0])
     with pytest.raises(ValueError):module.seed_and_generate(tmp_path/'destination',source,generator=lambda _:pytest.fail('generator called'))
-    assert not list((tmp_path/'destination').iterdir())
+    assert not (tmp_path/'destination').exists() or not list((tmp_path/'destination').iterdir())

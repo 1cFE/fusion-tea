@@ -1,5 +1,7 @@
 """WI-050 native operating-state, independent conservation and consumer regressions."""
 from __future__ import annotations
+from tests.models.current_mfe_regressions import WI059_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES, WI059_REPLAY_LOCAL
+
 import importlib.util
 import json
 import math
@@ -118,7 +120,7 @@ def test_heating_efficiency_scalar_consumers(native,boundaries):
 def test_stellarator_operating_heat_has_no_public_demand_input(native):
     scratch,results,_,_=native
     contract=json.loads((scratch/'generated/contracts/model_contract.json').read_text())
-    assert len(contract['parameters'])==265  # WI-040 adds 17 inputs and WI-038 adds 2 references; no operating-demand input.
+    assert len(contract['parameters'])==265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS)  # WI-059 adds21public inputs and3native-only literals.
     assert not any('p_operating_coupled_heat' in str(p) for p in contract['parameters'])
     modules=yaml.safe_load((scratch/'generated/pipelines/pipeline.yaml').read_text())['modules']
     expected={'operating_heat':{'p_required_in':'sustain.p_aux_required'},'source_heat':{'p_input_in':'operating_heat.p_coupled'},'pb':{'p_input_in':'operating_heat.p_coupled','p_wallplug_in':'operating_heat.p_wallplug'},'divheat':{'p_coupled_in':'operating_heat.p_coupled','p_installed_coupled_in':'heat.p_coupled'},'primary_loop':{'q_source_in':'source_heat.q_source.root'},'heating_cost':{'p_ecrh_in':'heat.p_delivered'}}
@@ -154,7 +156,7 @@ def test_operating_heat_direct_native_parity(native,monkeypatch):
     channels=eval(compile(ast.Expression(assignment.value),'<channel-map>','eval'),{'P':P})
     for case in ['baseline','reserve','demand','efficiency','availability']:
         with monkeypatch.context() as context:
-            context.setattr(verify_stellaris,'IN',dict(verify_stellaris.IN,**load('run_acceptance').CASES[case]))
+            context.setattr(verify_stellaris,'IN',verify_stellaris.IN | WI059_REPLAY_LOCAL | load('run_acceptance').CASES[case])
             expected=verify_stellaris.compute()
         runner=ast.parse((ROOT/'exploration/stellarator_e2e/run_stellaris_single.py').read_text())
         verdict_assignment=next(n for n in runner.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='EXPECTED_VERDICTS' for t in n.targets))
@@ -203,7 +205,7 @@ def test_operating_heat_complete_cost_operand_classification(native,monkeypatch)
         'total_capital__total_capital':'total_capital','idc__cost':'idc_capital'}
     for case in ['baseline','reserve','demand','availability']:
         with monkeypatch.context() as context:
-            context.setattr(verify_stellaris,'IN',dict(verify_stellaris.IN,**load('run_acceptance').CASES[case]))
+            context.setattr(verify_stellaris,'IN',verify_stellaris.IN | WI059_REPLAY_LOCAL | load('run_acceptance').CASES[case])
             direct=verify_stellaris.compute()
         for channel,key in mapping.items():
             assert results[case]['outputs'][P+channel]==pytest.approx(direct[key],rel=1e-9,abs=1e-9),(case,channel)
@@ -212,7 +214,14 @@ def test_operating_heat_complete_cost_operand_classification(native,monkeypatch)
     # WI-057: compare the historical (flat-named) module inputs through the rename ledger.
     for channel in mapping:
         module=P+channel.rsplit('__',1)[0]
-        assert current[renamed_module(channel.rsplit('__',1)[0])]['inputs']=={k:renamed_ref(v) for k,v in old[module]['inputs'].items()},module
+        expected_inputs={k:renamed_ref(v) for k,v in old[module]['inputs'].items()}
+        if channel == 'structure_cost__cost':
+            expected_inputs['residual_fraction']='float stellarator_plant_params.'+P+'structure__residual_fraction'
+        elif channel == 'aux_cooling__cost':
+            expected_inputs['p_cryo']='float '+P+'cryoplant__refrigeration_sum__total.root'
+        elif channel == 'powercore_capital__powercore_capital':
+            expected_inputs['structure_capital_cost']='float '+P+'structure__structure_cost__cost'
+        assert current[renamed_module(channel.rsplit('__',1)[0])]['inputs']==expected_inputs,module
     assert current[renamed_module('primary_loop')]['inputs'] == {k:renamed_ref(v) for k,v in old[P+'primary_loop']['inputs'].items()}
     assert current[renamed_module('primary_loop')]['outputs'] == {k:renamed_ref(v) for k,v in old[P+'primary_loop']['outputs'].items()}
     # WI-056 owns only the Primary Coolant Loop definition. Preserve the source

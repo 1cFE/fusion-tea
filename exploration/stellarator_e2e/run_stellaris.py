@@ -58,7 +58,7 @@ CH = dict(
     operating_heat_wallplug=f"{P}operating_heat__p_wallplug",
     V=f"{P}plasma__geom__V", p_fus=f"{P}plasma__fusion__p_fus", wall_load=f"{P}blanket__first_wall__wall_load_calc__wall_load",
     p_th=f"{P}pb__p_th", p_the=f"{P}pb__p_the", p_et=f"{P}pb__p_et",
-    p_cryo=f"{P}cryoplant__cryo_elec__p_elec",  # derived cryoplant electrical (WI-024)
+    p_cryo=f"{P}cryoplant__refrigeration_sum__total",  # WI-059 cold + intercept refrigeration
     q_eng=f"{P}pb__q_eng", rec_frac=f"{P}pb__rec_frac", p_net=f"{P}pb__p_net",
     magnet=f"{P}magnet__magnet_cost__capital_cost", heating=f"{P}heating__heating_cost__cost",
     divertor=f"{P}divertor__divertor_cost__cost", blanket=f"{P}blanket__blanket_cost__cost",

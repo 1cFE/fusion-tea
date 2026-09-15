@@ -10,6 +10,8 @@ from tests.models.current_mfe_regressions import (WI040_PARAMETERS, WI040_CHANNE
                                                   WI058_PARAMETERS, WI058_RETIRED)
 
 
+from tests.models.current_mfe_regressions import WI059_PARAMETERS, WI059_EXISTING_MAPPED_PARAMETERS, WI059_CHANNELS, WI059_ORACLE_ADDED_CHANNELS, WI059_REPLAY, wi059_replay
+
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -54,7 +56,7 @@ def test_local_heat_units_and_inverse_scaling(source_heat, cp, rise, expected):
 
 @pytest.mark.parametrize('row', BEFORE['controls'])
 def test_valid_full_oracle_outputs_and_heat_accounting(row):
-    actual = oracle._compute(row['overrides'])
+    actual = oracle._compute(wi059_replay(row['overrides']))
     # WI-040: independently derive only the additive-account cost increments;
     # all frozen physics and unrelated output values retain exact comparison.
     expected, changed = wi040_expected(row)
@@ -82,11 +84,12 @@ def test_adapter_coverage_remains_exact():
     # WI-058 (2026-09-14): the seam maps c_coil_ref in place of the retired k_coil.
     assert WI058_RETIRED <= old_inputs.keys()
     old_inputs = {k: v for k, v in old_inputs.items() if k not in WI058_RETIRED}
-    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS} == old_inputs
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS
+    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS} == old_inputs
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS
     old_outputs = renamed_values(BEFORE['output_mapping'])
     old_outputs['winding_pack_legacy'] = old_outputs.pop('winding_pack')
-    extras = WI040_CHANNELS | WI038_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
+    old_outputs['p_cryo'] = oracle.P + 'cryoplant__refrigeration_sum__total'
+    extras = WI040_CHANNELS | WI038_CHANNELS | WI059_ORACLE_ADDED_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
     assert {k: v for k, v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v not in extras} == old_outputs
     assert set(oracle.ORACLE_OUTPUT_TO_CHANNEL.values()) - set(old_outputs.values()) == extras
     assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[oracle.P + 'heat_transport__loop_cp'] == 'loop_cp'
@@ -98,14 +101,14 @@ def test_adapter_coverage_remains_exact():
 def test_current_native_primary_route_agrees_with_independent_oracle(tmp_path, stock_simkit_path):
     import study_route as route
     names = {value: key for key, value in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items()}
-    points = [{names[key]: value for key, value in row['overrides'].items()} for row in BEFORE['controls']]
+    points = [WI059_REPLAY | {names[key]: value for key, value in row['overrides'].items()} for row in BEFORE['controls']]
     cases, _ = route.run_points('primary-loop-consumer-controls', points, tmp_path)
     assert len(cases) == len(points)
     for case in cases:
         assert case.state == 'completed', (dict(case.inputs), case.state)
         expected = oracle.evaluate(case.inputs)
-        assert len(case.outputs) == 177 and len(expected) == 161  # WI-038 adds three grade outputs
+        assert len(case.outputs) == 177 + len(WI059_CHANNELS) and len(expected) == 161 + len(WI059_CHANNELS)  # WI-038 adds three grade outputs
         for key, value in expected.items():
             assert case.outputs[key] == pytest.approx(value, rel=1e-9, abs=1e-9), key
-        if not case.inputs:
+        if dict(case.inputs) == WI059_REPLAY:
             assert {key for key, value in route.short_verdicts(case).items() if value == 'violated'} == {'divertor_heat_ok'}

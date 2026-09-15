@@ -20,7 +20,8 @@ from tests.study.conftest import DATA_DIR, run_tool
 # held-mode switch (design D5). The known answer is re-derived, its no-response claim kept.
 CASES = ["availability_direct", "interest_rate", "R", "a", "I_coil"]
 
-EXPECTED_SEMANTIC_FINGERPRINT = '8eb332b9c73e1b80a5d7629e4de3532c739c280bbc889f45cb7bf3672269959d'  # WI-058 (2026-09-14); was 2c2788662c14…
+# WI-059 (2026-09-15): re-derived from the completed package indicator report.
+EXPECTED_SEMANTIC_FINGERPRINT = 'bf7b8afe4fc92c7ce3e713f799a4dcaead0f71c0bc851c93aae640514ab104ea'
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
 #:          modules fired, channels tainted). Read straight off the Item 1 fixture
@@ -34,6 +35,7 @@ EXPECTED_SEMANTIC_FINGERPRINT = '8eb332b9c73e1b80a5d7629e4de3532c739c280bbc889f4
 # restructured package -- every count identical; only the entry-point names carry their part's path.
 # WI-058 (2026-09-14): the winding length follows the coil bore (k_coil retired, c_coil_ref bound), re-derived
 # from the indicator report at semantic 8eb332b9…; what moved per axis: I_coil: fired 86->86, tainted 171->171, constraints +[] -[], objectives +[] -[]; R: fired 89->89, tainted 181->181, constraints +[] -[], objectives +[] -[]; a: fired 82->88, tainted 160->180, constraints +[] -[], objectives +[] -[]; availability_direct: fired 6->6, tainted 18->18, constraints +[] -[], objectives +[] -[]; interest_rate: fired 9->9, tainted 22->22, constraints +[] -[], objectives +[] -[]
+# WI-059 (2026-09-15): re-derived from the completed package indicator report.
 FIXTURE_CONTRACT = {'I_coil': (False,
             ['beta_ok',
              'burn_hold_ok',
@@ -61,8 +63,8 @@ FIXTURE_CONTRACT = {'I_coil': (False,
              'p_aux_required',
              'tau_E',
              'total_capital'],
-            86,
-            171),
+            92,
+            189),
  'R': (False,
        ['beta_ok',
         'burn_hold_ok',
@@ -91,8 +93,8 @@ FIXTURE_CONTRACT = {'I_coil': (False,
         'p_aux_required',
         'tau_E',
         'total_capital'],
-       89,
-       181),
+       95,
+       199),
  'a': (False,
        ['beta_ok',
         'burn_hold_ok',
@@ -121,8 +123,8 @@ FIXTURE_CONTRACT = {'I_coil': (False,
         'p_aux_required',
         'tau_E',
         'total_capital'],
-       88,
-       180),
+       94,
+       198),
  'availability_direct': (True,
                          [],
                          ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'],
@@ -311,7 +313,8 @@ def test_current_heating_reachability(real_package_path, real_manifest_path, tmp
             "net_positive", "recirc_ok", "sustainment_ok",
             f"heating_{stage}_positive_ok", f"heating_{stage}_upper_ok",
         }
-        assert group["trace_size"] == {"modules_fired": 62, "channels_tainted": 112}
+        # WI-059: unchanged reached modules; Structure Cost adds its legacy_cost diagnostic.
+        assert group["trace_size"] == {"modules_fired": 62, "channels_tainted": 113}
         assert {
             "operating_heat_coupled", "operating_heat_delivered", "operating_heat_wallplug"
         } <= set(
