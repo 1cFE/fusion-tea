@@ -1,0 +1,9 @@
+{
+  "support_mass_kg": 11615604.482575215,
+  "support_cost_usd": 209080880.68635386,
+  "reference_casing_cost_usd": 54432000,
+  "illustrative_surface_m2": 3360,
+  "illustrative_added_wall_MW": 1.33155643,
+  "added_joint_drive_MW": 0.0075,
+  "source": "T-005 independent reviewer; illustrative wp_side .5m, not actual baseline"
+}

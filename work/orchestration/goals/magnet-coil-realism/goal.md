@@ -130,3 +130,9 @@ None.
 [OWNER-VERBATIM] "Approve the comparison amendment" in response to the proposal to use older-package results as references and attribute an increment only against its entering package.
 
 [AGENT] (ratified by owner, 2026-09-15) Amends § Invariants: flips by case id against a committed record attribute an increment only where that record's pin is the increment's entering pin. Against a record at another package, the comparison is a reference rather than an attribution. This adopts route (i) proposed at Round 1 close and resolves finding 20260914-magnet-coil-realism#1 without an additional control run.
+
+### Amendment 2026-09-15 — delegated completion and technical judgment
+
+[OWNER-VERBATIM] "the whole point of this is for  you to continue until it finishes. do research if you need data on a decision, otherwise, use your best judgement".
+
+[OWNER] Continue the remaining goal work through completion; research missing evidence and use technical judgment for decisions. [AGENT] This releases the Round 2 technical-input gate: choose and document explicit engineering assumptions where the device source does not specify a design, retaining their provenance and transfer limits. Missing inputs are researched and surfaced in the design rather than silently defaulted. Carry necessary native work, validation, studies and the final goal assessment through without routine decision handbacks. Source quarantine, untuned comparisons and independent review of new assumptions remain applicable; merge and push are outside this instruction.

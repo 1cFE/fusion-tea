@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-MCR-STRUCTURE-01",
+  "request_key": "be0d1ba92fa0c9a66be0bb10802c2d9c7e904f3dd5547e6136212996a2e3119b",
+  "request_path": "knowledge/research/requests/REQ-MCR-STRUCTURE-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 4,
+    "max_captures": 2
+  },
+  "opened_at": "2026-09-15T14:00:55.884683+00:00",
+  "override_reason": null
+}

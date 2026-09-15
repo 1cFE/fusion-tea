@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-MCR-STRUCTURE-01",
+  "question": "Confirm units for Lion 2021 equation 56 total magnet support mass coefficient 1.348 and exponent0.78, and independently sourced fabricated cryogenic316LN support steel cost per kg.",
+  "consumer": "magnet-coil-realism/T-005",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": [
+    "UKAEA PROCESS official stellarator documentation",
+    "ITER official magnet structure procurement"
+  ],
+  "limits": {
+    "max_searches": 4,
+    "max_captures": 2
+  }
+}

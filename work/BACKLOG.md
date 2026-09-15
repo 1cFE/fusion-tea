@@ -296,6 +296,12 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-059
+  name: Coil thermal and total-support inventory
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -378,3 +384,4 @@ standalone:
 | WI-055 | Winding pack input domain | standard | P0 | backlog |  |
 | WI-056 | Primary loop heat capacity domain | standard | P1 | backlog |  |
 | WI-057 | Stellaris structural decomposition — nested parts, ports, and connections | standard | P1 | backlog |  |
+| WI-059 | Coil thermal and total-support inventory | standard | P1 | backlog |  |

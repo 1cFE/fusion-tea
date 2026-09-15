@@ -217,3 +217,46 @@ Final checks after the disposition append: `.codex-test/run python -m pytest tes
 This lands the already reviewed proposal from C-001.r2 and the Round 1 review, with no new scientific interpretation or execution; further independent review is unnecessary for recording the owner's ruling.
 
 Validation after landing the ruling: `.codex-test/run python -m pytest tests/study/test_records.py tests/orchestration/test_goal_contract.py -q -p no:cacheprovider` — 51 passed; `git diff --check` — passed.
+
+### Owner delegation — 2026-09-15 — continue to completion
+
+[OWNER-VERBATIM] "the whole point of this is for  you to continue until it finishes. do research if you need data on a decision, otherwise, use your best judgement". The dated goal amendment records this authority. The Round 2 technical-input gate is released: the coordinator will research, choose documented engineering assumptions with independent review, and carry the remaining work through implementation and final assessment. The completed rounds remain closed.
+
+## Round 3 — complete-coil-inventory
+
+### Strategy revision — 2026-09-15
+
+- **Approach:** complete the remaining cryogenic and structural chains as a coherent, explicitly parameterized engineering model, using source-backed physical forms and clearly identified device assumptions. Produce one integrated pin and the last-pin study answering the remaining goal question.
+- **Assumptions:** conventional lead heat conduction, radiative heat exchange and support conduction can be represented by sourced physical equations; missing detailed designs can be bounded through declared input choices and sensitivities under the owner's delegation. The structure's source shape must use a total-structure anchor or coefficient, with account boundaries preventing overlap.
+- **Abandonment conditions:** independent source/math review finds the physical form unsupported; the source prohibits the proposed applicability; a native seam cannot carry the needed model. Resolve technical alternatives autonomously with research and recorded judgment before dependent execution.
+- **Intended model increment:** the cryogenic load inventory and its temperature-stage refrigeration, the 15 MW cooling-slot interpretation, and total magnet structure mass/cost with the casing floor disclosed. Carry the reviewed WI-058 comment repairs during regeneration. Two native items may implement the two cohesive outcomes; shared model wiring, package generation and registries remain coordinator-owned until explicitly delegated.
+- **Intended study question:** at one final pin, how the corrected winding, cold loads and total structure change magnet-associated costs, cryoplant share and the sampled eighteen-predicate feasible machine across the required transects and matched historical cases. Use the approved comparison attribution invariant and report the engineering assumptions at claim sites.
+
+### T-005 scope
+
+- **Objective:** select defensible equations and explicit input bases for the remaining cryogenic and total-structure models under delegated technical judgment.
+- **Why now:** Round 2 identified missing inputs; the owner has delegated their resolution, and implementation needs a reviewable physical basis.
+- **Scope:** bounded source acquisition for lead heat and total-structure coefficient/cost basis, internal original-source inspection, conditional engineering scenarios and focused independent review. Research workers have disjoint request/evidence paths; source registry writes/commits must be serialized. Coordinator owns design decisions and trail. No production model or generated changes before source/design review.
+- **Inputs:** goal.md as amended; T-004 source/cooling assessments; admitted Stellaris and Lion/PROCESS sources; current model and completed WI-058/035/044 records.
+- **Done when:** a reviewed physical/parameter basis supports native implementation with provenance, account boundaries and sensitivity inputs, or a specific unsupported claim is replaced by a defensible scoped claim.
+- **Stop when:** concrete external/tooling impossibility; otherwise resolve technical choices through the owner's delegation and within native workflow limits.
+
+### T-005 start — 2026-09-15
+
+Research and design-basis preparation · native research requests plus evidence/T-005_* · expected reviewed cryogenic and total-structure basis before production changes.
+
+### T-005 return — COMPLETE — 2026-09-15
+
+Source and parameter basis is reviewed in evidence/T-005_cryo_basis.md and T-005_structure_basis.md. Three primary cryogenic sources registered at4102e19b; the structure-price request returned a bounded negative, so the inherited rate remains an explicit sensitivity assumption. Independent source/math/interface review and corrective recheck PASS in evidence/T-005_design_review.md. WI-059 spec/design/plan capture the approved equations, scenario limitations, power-account ownership and executable domain. Two repaired omissions specify zero legacy nuclear bindings after assembly and the active-temperature guard with dormant preservation. No owner gate remains. Entering oracle and independent component witnesses are recorded before production mutation in WI-059 evidence.
+
+### T-006 scope
+
+- **Objective:** implement and validate WI-059's reviewed coil thermal and total-support inventory, producing one integration candidate.
+- **Scope:** shared library models, canonical/twin wiring, generated package, independent oracle/publication, affected consumers, native validation and independent coupled integration assessment.
+- **Inputs:** WI-059 spec/design/plan; reviewed T-005 basis; entering pin2a89b16387270ac29ee9bd406987c8561c46353a7865f9054cb741998dd912e1.
+- **Done when:** native model acceptance and integration prove a coherent package with all eighteen predicates preserved and all new thermal/mass/cost channels verified.
+- **Stop when:** unresolved physical contradiction or native seam impossibility; ordinary implementation choices remain delegated to the coordinator.
+
+### T-006 start — 2026-09-15
+
+Native model work · work/active/WI-059_coil-thermal-and-total-support-inventory/ · model worker owns explicitly assigned model/generated paths; coordinator owns independent oracle, publication consumers and integration registries. Shared writes serialize at handoff.
