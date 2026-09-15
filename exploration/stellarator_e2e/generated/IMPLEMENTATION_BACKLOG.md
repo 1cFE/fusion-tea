@@ -9,7 +9,7 @@ Complete all stages in order for a production-ready system.
 
 **Objective**: Implement each calculation definition in its handwritten file.
 
-**Total**: 19 functions to implement
+**Total**: 20 functions to implement
 
 **Instructions for each function**:
 1. Open the SysML source file at the line number shown below
@@ -39,6 +39,7 @@ Complete all stages in order for a production-ready system.
 | [ ] | Winding_Pack_Procurement_Cost | `run_winding_pack_procurement_cost` | `root-0/analyses/mfe_winding_pack_cost.sysml:42` | High |
 | [ ] | Cryoplant_Electrical_Power | `run_cryoplant_electrical_power` | `root-0/analyses/mfe_cryo_plant.sysml:4` | High |
 | [ ] | Conductor_Peak_Field | `run_conductor_peak_field` | `root-0/analyses/mfe_plasma_scaling.sysml:419` | High |
+| [ ] | REBCO_Conductor_Current | `run_rebco_conductor_current` | `root-0/analyses/mfe_conductor_current.sysml:3` | High |
 | [ ] | Winding_Pack_Stress | `run_winding_pack_stress` | `root-0/analyses/mfe_magnet_field.sysml:48` | High |
 | [ ] | Levelized_Annual_Cost | `run_levelized_annual_cost` | `root-0/analyses/mfe_account_costs.sysml:686` | High |
 | [ ] | Lifecycle_Calendar | `run_lifecycle_calendar` | `root-0/analyses/mfe_lifecycle.sysml:4` | High |
@@ -71,7 +72,7 @@ pytest tests/test_implementations_runnable.py -v
 All tests should pass (or pytest.skip for NotImplementedError stubs)
 
 **Test Coverage**:
-- 19 implementation functions
+- 20 implementation functions
 - Each function tested for: imports, signature, return type
 - Tests tolerate NotImplementedError (pass before implementation)
 - Tests verify return types (pass after implementation)
@@ -106,7 +107,7 @@ All tests should pass (or pytest.skip for NotImplementedError stubs)
 ## Completion Criteria
 
 The implementation is complete when:
-- Stage 1: All 19 functions implemented
+- Stage 1: All 20 functions implemented
 - Stage 2: All validations pass
 - Stage 3: Integration tests pass
 

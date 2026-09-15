@@ -31,6 +31,7 @@ create_stellarator_tea_registry = rs.create_stellarator_tea_registry
 P, CH = rs.P, rs.CH
 
 EXPECTED_VERDICTS = {
+    "reference_conductor_current_ok": "violated",  # WI-062 conditional perpendicular-field estimate.
     "wp_fit_ok": "violated",  # WI-061 .36 m pack exceeds independent .30 m exterior allocation.
     "heating_source_positive_ok": "satisfied",
     "heating_source_upper_ok": "satisfied",
@@ -264,7 +265,7 @@ def _assert_generated_verdicts(outputs) -> None:
     print(
         "VERDICT PARITY: PASS -- "
         f"headline={report.headline}, assessed_entry_count={report.assessed_entry_count}, "
-        "seventeen satisfied; divertor_heat_ok and wp_fit_ok VIOLATED. WI-050 coherent "
+        "seventeen satisfied; divertor_heat_ok, wp_fit_ok and reference_conductor_current_ok VIOLATED. WI-050 coherent "
         "operating heat gives 10.517842 MW/m^2 against 10; the installed "
         "capacity ceiling and signed burn-hold demand remain explicit."
     )

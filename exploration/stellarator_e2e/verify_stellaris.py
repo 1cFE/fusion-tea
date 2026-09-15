@@ -287,6 +287,12 @@ IN = dict(
     # magnet (WI-035, inversion): B is COMPUTED from the coil-set current; the
     #   held magnet_B=9.0 is retired. Lever and coil-set facts mirror the
     #   stellarator_plant bindings (Table 2/8 images; design D2/D3/D4/D5).
+    # WI-062: conditional 20 K perpendicular-field 4 mm / 20 T statistical reference.
+    # Source and construction limits: work/active/WI-062_absolute-conductor-current-margin/design.md.
+    magnet_reference_tape_current=200.0, magnet_material_factor=1.0,
+    magnet_orientation_factor=1.0, magnet_cabling_factor=1.0,
+    magnet_degradation_factor=1.0, magnet_sharing_factor=1.0,
+    magnet_allowable_fraction=0.8, magnet_allow_field_extrapolation=1.0,
     magnet_G=78.95683520871486,
     magnet_tape_width=0.006, magnet_tape_thickness=0.000056, magnet_tape_price_per_m=20.0,
     magnet_cost_per_kAm=50.0, magnet_coil_markup=5.87,  # 1cfe-form comparison channel
@@ -733,6 +739,65 @@ def _winding_fit(p):
     return result
 
 
+def _conductor_current(p, field, tape_length, conductor_length):
+    """Independent absolute-current estimate; continuous inventory counts, amperes.
+
+    The material reference is fixed at 4 mm, 20 K, 20 T and 56 micrometres.
+    The field exponent is source-derived independently of the sizing envelope.
+    """
+    facts = {key: p['magnet_' + key] for key in (
+        'reference_tape_current', 'material_factor', 'orientation_factor',
+        'cabling_factor', 'degradation_factor', 'sharing_factor',
+        'allowable_fraction', 'allow_field_extrapolation', 'tape_width',
+        'tape_thickness', 'f_set', 'f_wp_vol', 'turn_current')}
+    facts.update(field=field, temperature=p['T_cold_cryo'],
+                 tape_length=tape_length, conductor_length=conductor_length)
+    for key, value in facts.items():
+        if not math.isfinite(value) or (value <= 0 and key != 'allow_field_extrapolation'):
+            raise ValueError('oracle conductor current: invalid ' + key)
+    if facts['temperature'] != 20 or facts['tape_thickness'] != 0.000056:
+        raise ValueError('oracle conductor current: unsupported temperature/construction')
+    if not 0.004 <= facts['tape_width'] <= 0.006:
+        raise ValueError('oracle conductor current: unsupported width')
+    if facts['allow_field_extrapolation'] not in (0, 1):
+        raise ValueError('oracle conductor current: invalid extrapolation switch')
+    if not 20 <= field <= 32 or (field > 24 and facts['allow_field_extrapolation'] != 1):
+        raise ValueError('oracle conductor current: unsupported field')
+    for key in ('cabling_factor', 'degradation_factor', 'sharing_factor', 'allowable_fraction'):
+        if facts[key] > 1:
+            raise ValueError('oracle conductor current: invalid ' + key)
+
+    def positive(value):
+        if not math.isfinite(value) or value <= 0:
+            raise ValueError('oracle conductor current: arithmetic overflow/underflow')
+        return value
+
+    # Validate each multiplication to prevent compensating extreme factors hiding underflow.
+    tape_current = positive(facts['reference_tape_current'] * (facts['tape_width'] / 0.004))
+    for factor in ((field / 20) ** -0.6, facts['material_factor'], facts['orientation_factor']):
+        tape_current = positive(tape_current * factor)
+    n_set = positive(tape_length / conductor_length)
+    n_ref = positive(positive(n_set * facts['f_set']) / facts['f_wp_vol'])
+    critical = {}
+    for label, count in (('reference', n_ref), ('set', n_set)):
+        capacity = positive(count * tape_current)
+        for key in ('cabling_factor', 'degradation_factor', 'sharing_factor'):
+            capacity = positive(capacity * facts[key])
+        critical[label] = capacity
+    fraction_ref = positive(facts['turn_current'] / critical['reference'])
+    fraction_set = positive(facts['turn_current'] / critical['set'])
+    allowed = positive(facts['allowable_fraction'] * critical['reference'])
+    result = dict(parallel_tapes_set=n_set, parallel_tapes_reference=n_ref,
+                  tape_critical_current=tape_current,
+                  critical_current_reference=critical['reference'], critical_current_set=critical['set'],
+                  operating_fraction_reference=fraction_ref, operating_fraction_set=fraction_set,
+                  allowable_current=allowed, margin_fraction=facts['allowable_fraction'] - fraction_ref,
+                  margin_current=allowed - facts['turn_current'], field_extrapolated=float(field > 24))
+    if not all(math.isfinite(value) for value in result.values()):
+        raise ValueError('oracle conductor current: nonfinite output')
+    return result
+
+
 def compute():
     if "magnet_R0" in IN:
         raise ValueError("retired oracle input magnet_R0; use plant R")
@@ -837,6 +902,8 @@ def compute():
         * (1 - sum(p['magnet_f_' + m] for m in ('copper', 'solder', 'steel', 'helium')))
         / (1e6 * p['magnet_j_wp']))
     procurement = _winding_procurement(p, c_coil, inventory['material_cost'], tape_volume_direct)
+
+    conductor = _conductor_current(p, B_peak, procurement['tape_length'], procurement['conductor_length'])
 
     # --- Plasma Sustainment (WI-037): computed ash, quasi-neutral fuel,
     # ISS04 tau_E, composed radiation, required sustained heating ---
@@ -1150,6 +1217,7 @@ def compute():
     beta = 2.0 * p["beta_mu0"] * sust["p_avg"] / (B_axis ** 2)
 
     return dict(
+        **{"conductor_" + key: value for key, value in conductor.items()},
         **{"fit_" + key: value for key, value in _winding_fit(p).items()},
         V=V, p_fus=p_fus, p_th=p_th, p_the=p_the, p_et=p_et,
         p_cryo=p_cryo, p_cryo_cold=p_cryo_cold, p_cryo_shield=p_cryo_shield,

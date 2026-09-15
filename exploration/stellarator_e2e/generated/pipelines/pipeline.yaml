@@ -662,6 +662,40 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__magnet__peak_field_calc__B_peak
 
+  # mfe_conductor_current.REBCO_Conductor_CurrentModule
+  stellarator_09__stellaris__magnet__conductor_current:
+    module_type: mfe_conductor_current.REBCO_Conductor_CurrentModule
+    inputs:
+      degradation_factor: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__degradation_factor
+      conductor_length: float stellarator_09__stellaris__magnet__winding_procurement__conductor_length
+      tape_length: float stellarator_09__stellaris__magnet__winding_procurement__tape_length
+      reference_tape_current: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__reference_tape_current
+      tape_width: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__tape_width
+      allow_field_extrapolation: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__allow_field_extrapolation
+      orientation_factor: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__orientation_factor
+      allowable_fraction: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__allowable_fraction
+      turn_current: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__turn_current
+      material_factor: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__material_factor
+      sharing_factor: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__sharing_factor
+      f_set: float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__f_set
+      temperature: float stellarator_plant_params.stellarator_09__stellaris__cryoplant__T_cold_cryo
+      tape_thickness: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__tape_thickness
+      B_peak: float stellarator_09__stellaris__magnet__peak_field_calc__B_peak.root
+      cabling_factor: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__cabling_factor
+      f_wp_vol: float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__f_wp_vol
+    outputs:
+      critical_current_reference: float stellarator_09__stellaris__magnet__conductor_current__critical_current_reference
+      critical_current_set: float stellarator_09__stellaris__magnet__conductor_current__critical_current_set
+      parallel_tapes_reference: float stellarator_09__stellaris__magnet__conductor_current__parallel_tapes_reference
+      operating_fraction_set: float stellarator_09__stellaris__magnet__conductor_current__operating_fraction_set
+      parallel_tapes_set: float stellarator_09__stellaris__magnet__conductor_current__parallel_tapes_set
+      field_extrapolated: float stellarator_09__stellaris__magnet__conductor_current__field_extrapolated
+      margin_fraction: float stellarator_09__stellaris__magnet__conductor_current__margin_fraction
+      tape_critical_current: float stellarator_09__stellaris__magnet__conductor_current__tape_critical_current
+      allowable_current: float stellarator_09__stellaris__magnet__conductor_current__allowable_current
+      margin_current: float stellarator_09__stellaris__magnet__conductor_current__margin_current
+      operating_fraction_reference: float stellarator_09__stellaris__magnet__conductor_current__operating_fraction_reference
+
   # mfe_magnet_cost.Magnet_Coil_CostModule
   stellarator_09__stellaris__magnet__magnet_cost:
     module_type: mfe_magnet_cost.Magnet_Coil_CostModule
@@ -1416,6 +1450,14 @@ modules:
     outputs:
       evaluation: ConstraintEvaluation stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation
 
+  # stellarator_09.StellarisReferenceConductorCurrentOkConstraintModule
+  stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0:
+    module_type: stellarator_09.StellarisReferenceConductorCurrentOkConstraintModule
+    inputs:
+      margin_fraction_in: float stellarator_09__stellaris__magnet__conductor_current__margin_fraction
+    outputs:
+      evaluation: ConstraintEvaluation stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0__evaluation
+
   # stellarator_09.StellarisSustainmentOkConstraintModule
   stellarator_09__stellaris__sustainment_ok__77add152ed8eafce:
     module_type: stellarator_09.StellarisSustainmentOkConstraintModule
@@ -1476,6 +1518,7 @@ modules:
       stellarator_09_stellaris_tbr_ok_2cd198f674d413e4: ConstraintEvaluation stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation
       stellarator_09_stellaris_heating_couple_upper_ok_6cc9307cc149d650: ConstraintEvaluation stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650__evaluation
       stellarator_09_stellaris_peak_field_ok_49c6b8228a73cac5: ConstraintEvaluation stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation
+      stellarator_09_stellaris_reference_conductor_current_ok_3cf239a7cdc0f2f0: ConstraintEvaluation stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0__evaluation
       stellarator_09_stellaris_sustainment_ok_77add152ed8eafce: ConstraintEvaluation stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation
       stellarator_09_stellaris_loop_capacity_ok_d77f6027ceb27852: ConstraintEvaluation stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852__evaluation
       stellarator_09_stellaris_wp_fit_ok_a25ca6a0161f6339: ConstraintEvaluation stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339__evaluation
@@ -1618,7 +1661,7 @@ modules:
       stellarator_09__stellaris__magnet__winding_procurement__tape_length: float stellaris__magnet__tape_length.json
       stellarator_09__stellaris__magnet__winding_procurement__cost: float stellaris__magnet__winding_cost.json
       stellarator_09__stellaris__magnet__winding_procurement__tape_cost: float stellaris__magnet__tape_procurement_cost.json
-      stellarator_09__stellaris__magnet__winding_procurement__conductor_length: float stellarator_09__stellaris__magnet__winding_procurement__conductor_length.json
+      stellarator_09__stellaris__magnet__winding_procurement__conductor_length: float stellaris__magnet__conductor_length.json
       stellarator_09__stellaris__magnet__winding_pack_cost__cost: RootModel[float] stellaris__magnet__winding_cost_legacy.json
       stellarator_09__stellaris__magnet__stored_energy__W_mag: RootModel[float] stellarator_09__stellaris__magnet__stored_energy__W_mag.json
       stellarator_09__stellaris__magnet__casing_mass__m_casing: RootModel[float] stellaris__magnet__casing__m_casing.json
@@ -1630,6 +1673,17 @@ modules:
       stellarator_09__stellaris__magnet__magnet_structure_cost__cost: RootModel[float] stellaris__magnet__structure_cost.json
       stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost: RootModel[float] stellaris__magnet_capital.json
       stellarator_09__stellaris__magnet__peak_field_calc__B_peak: RootModel[float] stellaris__magnet__B_peak.json
+      stellarator_09__stellaris__magnet__conductor_current__critical_current_reference: float stellaris__magnet__conductor_critical_current_reference.json
+      stellarator_09__stellaris__magnet__conductor_current__critical_current_set: float stellaris__magnet__conductor_critical_current_set.json
+      stellarator_09__stellaris__magnet__conductor_current__parallel_tapes_reference: float stellaris__magnet__conductor_parallel_tapes_reference.json
+      stellarator_09__stellaris__magnet__conductor_current__operating_fraction_set: float stellaris__magnet__conductor_operating_fraction_set.json
+      stellarator_09__stellaris__magnet__conductor_current__parallel_tapes_set: float stellaris__magnet__conductor_parallel_tapes_set.json
+      stellarator_09__stellaris__magnet__conductor_current__field_extrapolated: float stellaris__magnet__conductor_field_extrapolated.json
+      stellarator_09__stellaris__magnet__conductor_current__margin_fraction: float stellaris__magnet__conductor_margin_fraction.json
+      stellarator_09__stellaris__magnet__conductor_current__tape_critical_current: float stellaris__magnet__conductor_tape_critical_current.json
+      stellarator_09__stellaris__magnet__conductor_current__allowable_current: float stellaris__magnet__conductor_allowable_current.json
+      stellarator_09__stellaris__magnet__conductor_current__margin_current: float stellaris__magnet__conductor_margin_current.json
+      stellarator_09__stellaris__magnet__conductor_current__operating_fraction_reference: float stellaris__magnet__conductor_operating_fraction_reference.json
       stellarator_09__stellaris__magnet__magnet_cost__capital_cost: RootModel[float] stellaris__magnet_capital_1cfe.json
       stellarator_09__stellaris__magnet__wp_stress__sigma_wp: RootModel[float] stellaris__magnet__sigma_wp.json
       stellarator_09__stellaris__magnet__cond_strain__eps_cond: RootModel[float] stellaris__magnet__eps_cond.json
@@ -1715,6 +1769,7 @@ modules:
       stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation: ConstraintEvaluation stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation.json
       stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650__evaluation: ConstraintEvaluation stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650__evaluation.json
       stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation: ConstraintEvaluation stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation.json
+      stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0__evaluation: ConstraintEvaluation stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0__evaluation.json
       stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation: ConstraintEvaluation stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation.json
       stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852__evaluation: ConstraintEvaluation stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852__evaluation.json
       stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339__evaluation: ConstraintEvaluation stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339__evaluation.json

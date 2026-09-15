@@ -49,6 +49,10 @@ P = "stellarator_09__stellaris__"
 #: are bound by the `_in` convention, so codegen projects one entry point per
 #: authored attribute). Plant R also owns the live magnet radius.
 ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
+    **{f"{P}magnet__winding_pack__{name}": "magnet_" + name for name in (
+        "reference_tape_current", "material_factor", "orientation_factor", "cabling_factor",
+        "degradation_factor", "sharing_factor", "allowable_fraction", "allow_field_extrapolation",
+    )},
     f"{P}magnet__winding_pack__fit_aspect_ratio": "fit_aspect_ratio",
     f"{P}magnet__winding_pack__internal_build_x": "fit_internal_x",
     f"{P}magnet__winding_pack__internal_build_y": "fit_internal_y",
@@ -228,6 +232,11 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
 #: Oracle output name -> qualified channel name. Only channels the package records
 #: as single-field floats appear; the oracle returns more than the package does.
 ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
+    **{"conductor_" + name: f"{P}magnet__conductor_current__{name}" for name in (
+        "parallel_tapes_set", "parallel_tapes_reference", "tape_critical_current",
+        "critical_current_reference", "critical_current_set", "operating_fraction_reference",
+        "operating_fraction_set", "allowable_current", "margin_fraction", "margin_current", "field_extrapolated",
+    )},
     "fit_minimum_margin": f"{P}magnet__wp_fit__minimum_margin",
     "fit_nominal_x": f"{P}magnet__wp_fit__nominal_x",
     "fit_nominal_y": f"{P}magnet__wp_fit__nominal_y",
@@ -453,6 +462,9 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
     },
     "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": {
         "efficiency": {"kind": "input", "key": f"{P}heating__eta_source_heat"},
+    },
+    f"{P}reference_conductor_current_ok__3cf239a7cdc0f2f0": {
+        "margin_fraction_in": {"kind": "channel", "key": f"{P}magnet__conductor_current__margin_fraction"},
     },
     f"{P}wp_fit_ok__a25ca6a0161f6339": {
         "minimum_margin_in": {"kind": "channel", "key": f"{P}magnet__wp_fit__minimum_margin"},

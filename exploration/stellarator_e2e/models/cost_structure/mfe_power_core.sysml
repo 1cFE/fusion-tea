@@ -7,6 +7,7 @@ package mfe_power_core {
     private import mfe_winding_pack_cost::*;
     private import mfe_conductor_grade::*;
     private import mfe_winding_pack_fit::*;
+    private import mfe_conductor_current::*;
     private import mfe_heating_chain::*;
     private import mfe_divertor_heat::*;
     private import mfe_account_costs::*;
@@ -141,6 +142,19 @@ package mfe_power_core {
         attribute winding_fabrication_cost : Real = winding_procurement.winding_fabrication_cost;
         attribute tape_procurement_cost : Real = winding_procurement.tape_cost;
         attribute tape_length : Real = winding_procurement.tape_length;
+        attribute conductor_length : Real = winding_procurement.conductor_length;
+        attribute conductor_parallel_tapes_set : Real = conductor_current.parallel_tapes_set;
+        attribute conductor_parallel_tapes_reference : Real = conductor_current.parallel_tapes_reference;
+        attribute conductor_tape_critical_current : Real = conductor_current.tape_critical_current;
+        attribute conductor_critical_current_reference : Real = conductor_current.critical_current_reference;
+        attribute conductor_critical_current_set : Real = conductor_current.critical_current_set;
+        attribute conductor_operating_fraction_reference : Real = conductor_current.operating_fraction_reference;
+        attribute conductor_operating_fraction_set : Real = conductor_current.operating_fraction_set;
+        attribute conductor_allowable_current : Real = conductor_current.allowable_current;
+        attribute conductor_margin_fraction : Real = conductor_current.margin_fraction;
+        attribute conductor_margin_current : Real = conductor_current.margin_current;
+        attribute conductor_field_extrapolated : Real = conductor_current.field_extrapolated;
+
         // SWAP SEAM: declared `default` so a variant definition may point it at its own calc (design D5, D9)
         attribute structure_cost : Real default magnet_structure_cost.cost;
         :>> capital_cost = magnet_capital_rollup.capital_cost;
@@ -200,6 +214,25 @@ package mfe_power_core {
         calc wp_sizing : 'Winding Pack Sizing' {
             in I_coil = coil.I_coil;
             in j_wp = winding_pack.j_wp_effective;
+        }
+        calc conductor_current : 'REBCO Conductor Current' {
+            in B_peak = 'Magnet System'::B_peak;
+            in temperature = winding_pack.T_inventory;
+            in tape_width = winding_pack.tape_width;
+            in tape_thickness = winding_pack.tape_thickness;
+            in tape_length = 'Magnet System'::tape_length;
+            in conductor_length = 'Magnet System'::conductor_length;
+            in f_set = coil.f_set;
+            in f_wp_vol = winding_pack.f_wp_vol;
+            in turn_current = coil.turn_current;
+            in reference_tape_current = winding_pack.reference_tape_current;
+            in material_factor = winding_pack.material_factor;
+            in orientation_factor = winding_pack.orientation_factor;
+            in cabling_factor = winding_pack.cabling_factor;
+            in degradation_factor = winding_pack.degradation_factor;
+            in sharing_factor = winding_pack.sharing_factor;
+            in allowable_fraction = winding_pack.allowable_fraction;
+            in allow_field_extrapolation = winding_pack.allow_field_extrapolation;
         }
         calc wp_fit : 'Winding Pack Casing Fit' {
             in wp_side = winding_pack.wp_side;

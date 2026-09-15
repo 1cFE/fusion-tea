@@ -85,7 +85,7 @@ def check_controls(out):
             "verdicts": route.short_verdicts(case),
             "oracle_channels": rows,
         }
-        assert len(case.verdicts) == 19
+        assert len(case.verdicts) == 20
     ratios = {}
     for suffix, expected in expectations["ratios"].items():
         key = renamed(route.P + suffix)  # WI-057
@@ -96,7 +96,7 @@ def check_controls(out):
     summary = verify.build_summary(
         route.PACKAGE_DIR, route.MANIFEST_PATH, identity, [db], 2, None, []
     )
-    assert len(summary["constraints_rederived"]) == 19
+    assert len(summary["constraints_rederived"]) == 20
     assert summary["worst_channel_rel_dev"] < 1e-9
     for filename, data in [
         ("controls.json", comparisons),

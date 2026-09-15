@@ -135,6 +135,11 @@ def constraint_pred_definition_mfe_viability__conductor_peak_field_limit(B_peak,
     value = _cmp('<=', B_peak, B_max_in)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((B_max_in - B_peak)) if (_fin(B_peak) and _fin(B_max_in)) else None))
 
+# definition:mfe_conductor_current::'Reference Conductor Current Margin'
+def constraint_pred_definition_mfe_conductor_current__reference_conductor_current_margin(margin_fraction_in):
+    value = _cmp('>=', margin_fraction_in, 0.0)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((margin_fraction_in - 0.0)) if (_fin(margin_fraction_in) and _fin(0.0)) else None))
+
 # definition:mfe_viability::'Sustainment Limit'
 def constraint_pred_definition_mfe_viability__sustainment_limit(p_aux_required_in, p_aux_installed_in):
     value = _cmp('<=', p_aux_required_in, p_aux_installed_in)

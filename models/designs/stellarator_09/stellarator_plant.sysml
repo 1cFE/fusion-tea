@@ -4,6 +4,7 @@ package stellarator_09 {
     private import mfe_plasma_scaling::*;
     private import mfe_viability::*;
     private import mfe_winding_pack_fit::*;
+    private import mfe_conductor_current::*;
 
     // =========================================================================
     // CONCRETE INSTANCE -- concept-09 Proxima "Stellaris" QI stellarator
@@ -307,6 +308,30 @@ package stellarator_09 {
             }
             }
             part :>> winding_pack {
+                :>> reference_tape_current = 200.0 {
+                    doc /* **Source**: work/orchestration/goals/absolute-conductor-current-margin/evidence/performance-research.md **Reference**: WI-062 reviewed design. **Basis**: [AGENT] rounded lot-average lift inference A/4mm at20T; 56um construction transfer. **Last Updated**: 2026-09-15 */
+                }
+                :>> material_factor = 1.0 {
+                    doc /* **Source**: work/orchestration/goals/absolute-conductor-current-margin/evidence/performance-research.md **Reference**: WI-062 reviewed design. **Basis**: [AGENT] conditional engineering scenario; not a qualified cable rating. **Last Updated**: 2026-09-15 */
+                }
+                :>> orientation_factor = 1.0 {
+                    doc /* **Source**: work/orchestration/goals/absolute-conductor-current-margin/evidence/performance-research.md **Reference**: WI-062 reviewed design. **Basis**: [AGENT] conditional engineering scenario; not a qualified cable rating. **Last Updated**: 2026-09-15 */
+                }
+                :>> cabling_factor = 1.0 {
+                    doc /* **Source**: work/orchestration/goals/absolute-conductor-current-margin/evidence/performance-research.md **Reference**: WI-062 reviewed design. **Basis**: [AGENT] conditional engineering scenario; not a qualified cable rating. **Last Updated**: 2026-09-15 */
+                }
+                :>> degradation_factor = 1.0 {
+                    doc /* **Source**: work/orchestration/goals/absolute-conductor-current-margin/evidence/performance-research.md **Reference**: WI-062 reviewed design. **Basis**: [AGENT] conditional engineering scenario; not a qualified cable rating. **Last Updated**: 2026-09-15 */
+                }
+                :>> sharing_factor = 1.0 {
+                    doc /* **Source**: work/orchestration/goals/absolute-conductor-current-margin/evidence/performance-research.md **Reference**: WI-062 reviewed design. **Basis**: [AGENT] conditional engineering scenario; not a qualified cable rating. **Last Updated**: 2026-09-15 */
+                }
+                :>> allowable_fraction = 0.8 {
+                    doc /* **Source**: work/orchestration/goals/absolute-conductor-current-margin/evidence/performance-research.md **Reference**: WI-062 reviewed design. **Basis**: [AGENT] conditional engineering scenario; not a qualified cable rating. **Last Updated**: 2026-09-15 */
+                }
+                :>> allow_field_extrapolation = 1.0 {
+                    doc /* **Source**: work/orchestration/goals/absolute-conductor-current-margin/evidence/performance-research.md **Reference**: WI-062 reviewed design. **Basis**: [AGENT] conditional engineering scenario; not a qualified cable rating. **Last Updated**: 2026-09-15 */
+                }
                 :>> fit_aspect_ratio = 1.0 {
                     doc /* **Source**: work/active/WI-061_winding-pack-casing-fit/design.md **Reference**: Scenario selected for independent review. **Basis**: [AGENT] conditional centered aligned local envelope assumption; no manufactured-fit qualification. Internal build fractions are excluded-sheet pitch, ground/wall/clearance are m per face, interior_y is full m. **Last Updated**: 2026-09-15 */
                 }
@@ -1716,6 +1741,9 @@ package stellarator_09 {
         // ---- WI-047 exhaust gas load: the boundary pressure DECLARED, not sourced ----
 
         // WI-061 additive local geometric screen; old eighteen predicates retained.
+        assert constraint reference_conductor_current_ok : 'Reference Conductor Current Margin' {
+            in margin_fraction_in = magnet.conductor_margin_fraction;
+        }
         assert constraint wp_fit_ok : 'Winding Pack Fits Casing' {
             in minimum_margin_in = magnet.fit_minimum_margin;
         }

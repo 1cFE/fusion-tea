@@ -65,6 +65,7 @@ MFE = Family(
         "analyses/mfe_magnet_cost.sysml",
         "analyses/mfe_winding_pack_cost.sysml",  # WI-040 explicit inventory and procurement
         "analyses/mfe_winding_pack_fit.sysml",
+        "analyses/mfe_conductor_current.sysml",
         "analyses/mfe_conductor_grade.sysml",  # WI-038 relative field-envelope quantity
         "analyses/mfe_magnet_field.sysml",
         "analyses/mfe_plasma_scaling.sysml",

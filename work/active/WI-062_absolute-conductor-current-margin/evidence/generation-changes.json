@@ -1,0 +1,74 @@
+{
+  "IMPLEMENTATION_BACKLOG.md": {
+    "before": "d93911359f1d2514e7ecac25d07cb77329471d93786974701f64d0a8ec837304",
+    "after": "0ad19fae2bb3a17daa2c8e0a9310b057aaab62b4024cc5e7f1d11047ad9db5dc"
+  },
+  "__init__.py": {
+    "before": "de82957484f1a40325dee829f5c4b06bdd30f18e3b442435f2f3d25a02aea4db",
+    "after": "51196789a141e0710b26d499784aeb9bfb38e716dc7fd7edeb98fc046734c158"
+  },
+  "contracts/generation_manifest.json": {
+    "before": "918eba842277b9f176a21221af34c34c26ebc4302c7bcf622a9732f0113fb8da",
+    "after": "38e9ab112927b96380bd4cb09adfdfc159be16c2795a3d21ebc58cefcac6f00e"
+  },
+  "contracts/model_contract.json": {
+    "before": "2869e0ab44373e1273bbc7592c560ead5f7350d59166f6535c28f5440c3a8fe5",
+    "after": "a05aed6642d96f59fe2736fd63a387b87e8da7b2046174f6134400692517f897"
+  },
+  "contracts/package_contract.json": {
+    "before": "448a23b6ec6aebc61c0b80a3de6ce127cc7fdd277e42a6cad1bee3c5938b7fea",
+    "after": "bb2a9fabe9a7685419d56f70e9233d18924316f54a2a49231372e29670af522e"
+  },
+  "handwritten/mfe_conductor_current/__init__.py": {
+    "before": null,
+    "after": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8"
+  },
+  "handwritten/stellarator_09/stellaris/special_materials_capital_impl.py": {
+    "before": "e104a8ef6b9a93995650f3c6a9c54ca2d94cf7f34e36cc85c31b6db606446c81",
+    "after": "6ba74a897438e95709f9684332fabac4ad1024967c1ea277967b9bfb7e5fe780"
+  },
+  "inputs/stellarator_plant_params.json": {
+    "before": "bd6ea5d042e2c910c4de5fc84754a69da37bbb88f2e8d3a029944b9f49e30ab7",
+    "after": "4aaea806b6a3f141fc5ae08a86576f4f7afd928a089c4d8826892f65b4b5d224"
+  },
+  "modules/constraints/constraintreportaggregatormodule.py": {
+    "before": "b3fb4f0fc8b5ed7e86dd2ef0b4acca2300d7003b7a079dadd84e5544e8da9808",
+    "after": "52605002ef556262b66eda7bb0cf51b7c7cef683fc1785b527c887c79b8a22fa"
+  },
+  "modules/constraints/predicates.py": {
+    "before": "82b42a1f82409a78105a7666a0782f87e5515e7fb62377f2688fc8776ecf6109",
+    "after": "edd712ed172aeedec63ec7e736dd7bdace134760f1aa8c6d2f2b6dbba53dc19a"
+  },
+  "modules/mfe_conductor_current/__init__.py": {
+    "before": null,
+    "after": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1"
+  },
+  "modules/mfe_conductor_current/rebco_conductor_current.py": {
+    "before": null,
+    "after": "e269e7cc93e538e89e91abdebd58ca7b95affd6d78d0bea2b47532aa132c1ab9"
+  },
+  "modules/stellarator_09/stellaris/special_materials_capital.py": {
+    "before": "a7dbd2b8b0ee519e6ac12649cccb960c87ccd638ac8680520a6680616d0c5d3f",
+    "after": "1d86bc8b8beae9ec984b0eab76176568381b2b7d51336fcb019d85272f803ffb"
+  },
+  "modules/stellarator_09/stellarisreferenceconductorcurrentokconstraintmodule.py": {
+    "before": null,
+    "after": "86678de84a6c960b3c60e8c6aa99efead85633f6d7fbd1336373dfe6c4fb656a"
+  },
+  "pipelines/pipeline.yaml": {
+    "before": "8c87edf0d2206e87a09f54777e5a2a778c9a35f2351f0ae4933942aee49bb79c",
+    "after": "e0b39943eef5972a6da61ec9e3d4a303df2fedc44d1d7d5e56fe19f635e48a58"
+  },
+  "schemas/rebco_conductor_current_output.py": {
+    "before": null,
+    "after": "21331dc7c8b0cf11f6c858a5e76020d06e29b3b2e5e69a6c08b73b0946ab91d4"
+  },
+  "schemas/stellarator_plant_params.py": {
+    "before": "16d20d172691d53c14319d45ec7393fdc7fa235420cf0ab1a2988da15b8cf388",
+    "after": "0a96cef41a628389e88dce05a53f13c1bcb2a25027798ba00a36e8a3ff7e27a2"
+  },
+  "tests/test_implementations_runnable.py": {
+    "before": "eee1affde5a98fdad6a27638c9386966a5e78180b73a982d65b6a572fa88e082",
+    "after": "0eff466516b6876638d6e760a0342039d90571bdb79bab87c65f4d26aedbc6b6"
+  }
+}

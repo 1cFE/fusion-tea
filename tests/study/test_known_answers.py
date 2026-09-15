@@ -193,7 +193,7 @@ def test_availability_direct_reaches_no_constraint(report):
     group = group_by_axis(report, "availability_direct")
     assert group["no_constraint_response"] is True
     assert group["constraints_reachable"] == []
-    assert len(group["constraints_unreachable"]) == 19
+    assert len(group["constraints_unreachable"]) == 20
 
 
 def test_I_coil_reaches_the_field_constraints_through_calcs(report):

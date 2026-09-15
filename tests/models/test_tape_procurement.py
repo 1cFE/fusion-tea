@@ -34,8 +34,6 @@ def test_explicit_zero_volume_or_price_is_valid(calculations, key):
     ({'magnet__winding_pack__j_wp': 118.8271604938272 * 1.2}, 1/1.2, 1.),
     ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8,
       'magnet__winding_pack__B_max': 30.}, (30/24.9)**.6/.8, 1.),
-    ({'magnet__winding_pack__tape_width': .012}, .5, 1.),
-    ({'magnet__winding_pack__tape_thickness': .000112}, .5, 1.),
     ({'magnet__coil__f_set': .8701298701298701 * .8}, 1., .8),
     ({'magnet__winding_pack__f_wp_vol': .8780864197530865 * .8}, .8, 1.),
     ({'magnet__coil__n_coils': 48. * 1.1}, 1.1, 1.1),
@@ -64,7 +62,7 @@ def test_tape_price_preserves_quantity_and_all_predicates(evaluate, price):
     for suffix in ('tape_length', 'conductor_length', 'winding_fabrication_cost'):
         assert output(changed, 'magnet__winding_procurement__' + suffix) == output(baseline, 'magnet__winding_procurement__' + suffix)
     assert output(changed, 'magnet__winding_procurement__tape_cost') == pytest.approx(output(baseline, 'magnet__winding_procurement__tape_cost') * price / 20)
-    assert len([k for k in baseline.responses if k != 'headline']) == 19
+    assert len([k for k in baseline.responses if k != 'headline']) == 20
     assert baseline.responses == changed.responses
 
 
@@ -76,3 +74,21 @@ def test_legacy_rate_changes_only_legacy_accounts(evaluate):
         assert output(changed, 'magnet__' + suffix) == output(baseline, 'magnet__' + suffix)
     for suffix in ('winding_pack_cost__cost', 'magnet_cost__capital_cost'):
         assert output(changed, 'magnet__' + suffix) == 2 * output(baseline, 'magnet__' + suffix)
+
+
+@pytest.mark.parametrize('key,value', [('tape_width', .012), ('tape_thickness', .000112)])
+def test_procurement_construction_scaling_at_component_boundary(calculations, key, value):
+    # The generic procurement law still scales with area; WI-062's public REBCO
+    # analysis deliberately refuses these unsupported material constructions.
+    baseline = calculations[1](PROCUREMENT)
+    changed = calculations[1](PROCUREMENT | {key: value})
+    assert changed['tape_length'] == pytest.approx(.5 * baseline['tape_length'])
+    assert changed['conductor_length'] == baseline['conductor_length']
+    assert changed['tape_cost'] == pytest.approx(.5 * baseline['tape_cost'])
+
+
+@pytest.mark.codegen_available
+@pytest.mark.parametrize('key,value', [('tape_width', .012), ('tape_thickness', .000112)])
+def test_public_current_analysis_refuses_unsupported_construction(evaluate, key, value):
+    with pytest.raises(Exception, match=key):
+        evaluate({'magnet__winding_pack__' + key: value})

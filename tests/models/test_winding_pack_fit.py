@@ -68,7 +68,7 @@ def test_public_native_oracle_and_existing_predicates(evaluate,changes):
     expected=oracle_entry.evaluate({P+k:v for k,v in changes.items()})
     for key,value in expected.items():
         assert row.outputs[key]==pytest.approx(value,rel=1e-10,abs=1e-9),key
-    assert len([k for k in row.responses if k!='headline'])==19
+    assert len([k for k in row.responses if k!='headline'])==20
     assert row.outputs[P+'magnet__wp_fit__cavity_x']==pytest.approx(changes.get('magnet__coil__coil_t',.3)-2*changes.get('magnet__casing__wall_thickness',.025))
     if not changes:
         assert output(row,'magnet__wp_fit__margin_x')==pytest.approx(-.120)
@@ -105,7 +105,7 @@ def test_entering_baseline_scalars_preserved(evaluate):
     for key,value in previous['outputs'].items():
         if isinstance(value,(int,float)):
             assert row.outputs[key] == value,key
-    assert {k: v for k, v in row.responses.items() if 'wp_fit_ok' not in k} == previous['responses']
+    assert {k: v for k, v in row.responses.items() if 'wp_fit_ok' not in k and 'reference_conductor_current_ok' not in k} == previous['responses']
     for key,value in entering.items():
         assert row.outputs[key]==pytest.approx(value,rel=1e-10,abs=1e-9),key
 

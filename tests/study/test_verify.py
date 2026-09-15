@@ -309,7 +309,7 @@ def operating_controls(tmp_path_factory, stock_simkit_session_path):
     ident = study_route.write_identity_document(study_route.PACKAGE_DIR, out / "identity.json")
     summary = verify.build_summary(PACKAGE, MANIFEST, ident, [db], 3, None, [])
     assert summary["worst_channel_rel_dev"] < 1e-9
-    assert len(summary["constraints_rederived"]) == 19
+    assert len(summary["constraints_rederived"]) == 20
     return cases, summary
 
 
@@ -339,9 +339,9 @@ def test_stored_operating_controls_preserve_procurement_and_signed_capacity(oper
         -10.920399212073221
     )
     verdicts = study_route.short_verdicts(baseline)
-    assert len(verdicts) == 19
+    assert len(verdicts) == 20
     assert {name for name, status in verdicts.items() if status != "satisfied"} == {
-        "divertor_heat_ok", "wp_fit_ok"
+        "divertor_heat_ok", "wp_fit_ok", "reference_conductor_current_ok"
     }
     rows = study_route.csv_rows(cases, [])
     assert len(rows) == 3

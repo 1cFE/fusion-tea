@@ -95,6 +95,14 @@ package mfe_magnet_parts {
         attribute j_wp_effective : Real;
         attribute tape_width : Real; // full purchased tape width [m]
         attribute tape_thickness : Real; // full composite thickness, including stabilizer [m]
+        attribute reference_tape_current : Real default 200.0; // WI-062 conditional performance scenario
+        attribute material_factor : Real default 1.0; // WI-062 conditional performance scenario
+        attribute orientation_factor : Real default 1.0; // WI-062 conditional performance scenario
+        attribute cabling_factor : Real default 1.0; // WI-062 conditional performance scenario
+        attribute degradation_factor : Real default 1.0; // WI-062 conditional performance scenario
+        attribute sharing_factor : Real default 1.0; // WI-062 conditional performance scenario
+        attribute allowable_fraction : Real default 0.8; // WI-062 conditional performance scenario
+        attribute allow_field_extrapolation : Real default 1.0; // WI-062 conditional performance scenario
         attribute tape_price_per_m : Real; // dollars per metre of this width/construction
         // winding-pack cross-section side, worst coil [m]
         attribute wp_side : Real;
