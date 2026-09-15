@@ -1,0 +1,488 @@
+{
+  "scope": "60 matched oracle cases, not native study execution",
+  "unchanged_scalar_comparisons": 9600,
+  "unchanged_predicate_comparisons": 1080,
+  "mismatches": 0,
+  "rows": [
+    {
+      "id": "m000",
+      "tape_length": 40089915.63321098,
+      "tape_cost_before": 704943706.8813473,
+      "tape_cost_after": 801798312.6642196,
+      "lcoe_before": 144.2053616835484,
+      "lcoe_after": 146.30524561749425
+    },
+    {
+      "id": "m001",
+      "tape_length": 44255101.67302512,
+      "tape_cost_before": 778184611.4923964,
+      "tape_cost_after": 885102033.4605024,
+      "lcoe_before": 144.00434073087362,
+      "lcoe_after": 146.37028231104082
+    },
+    {
+      "id": "m002",
+      "tape_length": 45180698.57076158,
+      "tape_cost_before": 794460368.0726296,
+      "tape_cost_after": 903613971.4152315,
+      "lcoe_before": 126.81050004488661,
+      "lcoe_after": 128.56838997201217
+    },
+    {
+      "id": "m003",
+      "tape_length": 49874797.123567976,
+      "tape_cost_before": 877001705.0152404,
+      "tape_cost_after": 997495942.4713595,
+      "lcoe_before": 130.12166758482198,
+      "lcoe_after": 132.22839015456165
+    },
+    {
+      "id": "m004",
+      "tape_length": 50271481.50831217,
+      "tape_cost_before": 883977029.2639118,
+      "tape_cost_after": 1005429630.1662434,
+      "lcoe_before": 128.1608779942749,
+      "lcoe_after": 129.99045768513787
+    },
+    {
+      "id": "m005",
+      "tape_length": 55494492.57411085,
+      "tape_cost_before": 975818798.5380844,
+      "tape_cost_after": 1109889851.482217,
+      "lcoe_before": 141.09137658092277,
+      "lcoe_after": 143.45577363606705
+    },
+    {
+      "id": "m006",
+      "tape_length": 45723214.28571431,
+      "tape_cost_before": 804000000.0,
+      "tape_cost_after": 914464285.7142863,
+      "lcoe_before": 146.42413703592618,
+      "lcoe_after": 148.81921979272195
+    },
+    {
+      "id": "m007",
+      "tape_length": 50473678.10760672,
+      "tape_cost_before": 887532467.5324675,
+      "tape_cost_after": 1009473562.1521343,
+      "lcoe_before": 146.5041182195513,
+      "lcoe_after": 149.2026788346229
+    },
+    {
+      "id": "m008",
+      "tape_length": 51529336.734693915,
+      "tape_cost_before": 906095238.0952381,
+      "tape_cost_after": 1030586734.6938783,
+      "lcoe_before": 128.66707900028584,
+      "lcoe_after": 130.67207293681284
+    },
+    {
+      "id": "m009",
+      "tape_length": 56883034.057778984,
+      "tape_cost_before": 1000235003.0921459,
+      "tape_cost_after": 1137660681.1555796,
+      "lcoe_before": 132.34689254037508,
+      "lcoe_after": 134.74977821910295
+    },
+    {
+      "id": "m010",
+      "tape_length": 57335459.183673516,
+      "tape_cost_before": 1008190476.1904763,
+      "tape_cost_after": 1146709183.6734703,
+      "lcoe_before": 130.0933066205991,
+      "lcoe_after": 132.18007365100559
+    },
+    {
+      "id": "m011",
+      "tape_length": 63292390.00795127,
+      "tape_cost_before": 1112937538.6518245,
+      "tape_cost_after": 1265847800.1590254,
+      "lcoe_before": 143.58937292862004,
+      "lcoe_after": 146.28617532066946
+    },
+    {
+      "id": "m012",
+      "tape_length": 51131660.62661819,
+      "tape_cost_before": 899102475.3184363,
+      "tape_cost_after": 1022633212.5323639,
+      "lcoe_before": 148.55445128041305,
+      "lcoe_after": 151.23297983915282
+    },
+    {
+      "id": "m013",
+      "tape_length": 56444040.95146164,
+      "tape_cost_before": 992515719.5073646,
+      "tape_cost_after": 1128880819.029233,
+      "lcoe_before": 148.90426007841216,
+      "lcoe_after": 151.9222010481324
+    },
+    {
+      "id": "m014",
+      "tape_length": 57624569.91253795,
+      "tape_cost_before": 1013274218.2160155,
+      "tape_cost_after": 1152491398.250759,
+      "lcoe_before": 130.44960342405363,
+      "lcoe_after": 132.69185912919397
+    },
+    {
+      "id": "m015",
+      "tape_length": 63611538.215139315,
+      "tape_cost_before": 1118549461.66703,
+      "tape_cost_after": 1272230764.3027864,
+      "lcoe_before": 134.4833968910068,
+      "lcoe_after": 137.17065495356724
+    },
+    {
+      "id": "m016",
+      "tape_length": 64117479.19845773,
+      "tape_cost_before": 1127445961.1135948,
+      "tape_cost_after": 1282349583.9691546,
+      "lcoe_before": 131.94866007781658,
+      "lcoe_after": 134.28237195794443
+    },
+    {
+      "id": "m017",
+      "tape_length": 70779035.47881697,
+      "tape_cost_before": 1244583203.8266954,
+      "tape_cost_after": 1415580709.5763395,
+      "lcoe_before": 145.9877964955921,
+      "lcoe_after": 149.00377483748247
+    },
+    {
+      "id": "m018",
+      "tape_length": 32071932.506568786,
+      "tape_cost_before": 704943706.8813473,
+      "tape_cost_after": 641438650.1313757,
+      "lcoe_before": 144.10400103255003,
+      "lcoe_after": 142.7272685979146
+    },
+    {
+      "id": "m019",
+      "tape_length": 35404081.3384201,
+      "tape_cost_before": 778184611.4923964,
+      "tape_cost_after": 708081626.768402,
+      "lcoe_before": 143.89032761162565,
+      "lcoe_after": 142.33917655665482
+    },
+    {
+      "id": "m020",
+      "tape_length": 36144558.85660926,
+      "tape_cost_before": 794460368.0726296,
+      "tape_cost_after": 722891177.1321852,
+      "lcoe_before": 126.72681192402918,
+      "lcoe_after": 125.5742840654396
+    },
+    {
+      "id": "m021",
+      "tape_length": 39899837.69885438,
+      "tape_cost_before": 877001705.0152404,
+      "tape_cost_after": 797996753.9770876,
+      "lcoe_before": 130.02107193123032,
+      "lcoe_after": 128.6398583053419
+    },
+    {
+      "id": "m022",
+      "tape_length": 40217185.206649736,
+      "tape_cost_before": 883977029.2639118,
+      "tape_cost_after": 804343704.1329947,
+      "lcoe_before": 128.07358130134625,
+      "lcoe_after": 126.87405631721548
+    },
+    {
+      "id": "m023",
+      "tape_length": 44395594.05928869,
+      "tape_cost_before": 975818798.5380844,
+      "tape_cost_after": 887911881.1857737,
+      "lcoe_before": 140.97762645707553,
+      "lcoe_after": 139.42749084608016
+    },
+    {
+      "id": "m024",
+      "tape_length": 36578571.42857145,
+      "tape_cost_before": 804000000.0,
+      "tape_cost_after": 731571428.571429,
+      "lcoe_before": 146.30855606334038,
+      "lcoe_after": 144.73830113443242
+    },
+    {
+      "id": "m025",
+      "tape_length": 40378942.48608537,
+      "tape_cost_before": 887532467.5324675,
+      "tape_cost_after": 807578849.7217073,
+      "lcoe_before": 146.37408558965933,
+      "lcoe_after": 144.604885048413
+    },
+    {
+      "id": "m026",
+      "tape_length": 41223469.38775513,
+      "tape_cost_before": 906095238.0952381,
+      "tape_cost_after": 824469387.7551026,
+      "lcoe_before": 128.57168228627913,
+      "lcoe_after": 127.25715696240164
+    },
+    {
+      "id": "m027",
+      "tape_length": 45506427.2462232,
+      "tape_cost_before": 1000235003.0921459,
+      "tape_cost_after": 910128544.924464,
+      "lcoe_before": 132.23219125519853,
+      "lcoe_after": 130.65682370842492
+    },
+    {
+      "id": "m028",
+      "tape_length": 45868367.34693881,
+      "tape_cost_before": 1008190476.1904763,
+      "tape_cost_after": 917367346.9387763,
+      "lcoe_before": 129.99379689017533,
+      "lcoe_after": 128.62566543201223
+    },
+    {
+      "id": "m029",
+      "tape_length": 50633912.006361015,
+      "tape_cost_before": 1112937538.6518245,
+      "tape_cost_after": 1012678240.1272203,
+      "lcoe_before": 143.45965936974358,
+      "lcoe_after": 141.69161520132198
+    },
+    {
+      "id": "m030",
+      "tape_length": 40905328.50129455,
+      "tape_cost_before": 899102475.3184363,
+      "tape_cost_after": 818106570.0258911,
+      "lcoe_before": 148.42520078378448,
+      "lcoe_after": 146.6691320877489
+    },
+    {
+      "id": "m031",
+      "tape_length": 45155232.76116932,
+      "tape_cost_before": 992515719.5073646,
+      "tape_cost_after": 903104655.2233864,
+      "lcoe_before": 148.75882330185104,
+      "lcoe_after": 146.78025680318518
+    },
+    {
+      "id": "m032",
+      "tape_length": 46099655.93003037,
+      "tape_cost_before": 1013274218.2160155,
+      "tape_cost_after": 921993118.6006074,
+      "lcoe_before": 130.34295882021638,
+      "lcoe_after": 128.87289113783672
+    },
+    {
+      "id": "m033",
+      "tape_length": 50889230.57211145,
+      "tape_cost_before": 1118549461.66703,
+      "tape_cost_after": 1017784611.442229,
+      "lcoe_before": 134.3551378134033,
+      "lcoe_after": 132.593349866069
+    },
+    {
+      "id": "m034",
+      "tape_length": 51293983.35876618,
+      "tape_cost_before": 1127445961.1135948,
+      "tape_cost_after": 1025879667.1753237,
+      "lcoe_before": 131.8374171809342,
+      "lcoe_after": 130.30739698096045
+    },
+    {
+      "id": "m035",
+      "tape_length": 56623228.383053586,
+      "tape_cost_before": 1244583203.8266954,
+      "tape_cost_after": 1132464567.6610718,
+      "lcoe_before": 145.84273514198085,
+      "lcoe_after": 143.8654599179119
+    },
+    {
+      "id": "m036",
+      "tape_length": 26726610.422140658,
+      "tape_cost_before": 704943706.8813473,
+      "tape_cost_after": 534532208.44281316,
+      "lcoe_before": 144.0362369996208,
+      "lcoe_after": 140.3420618702647
+    },
+    {
+      "id": "m037",
+      "tape_length": 29503401.115350083,
+      "tape_cost_before": 778184611.4923964,
+      "tape_cost_after": 590068022.3070016,
+      "lcoe_before": 143.81410335416732,
+      "lcoe_after": 139.65193891672365
+    },
+    {
+      "id": "m038",
+      "tape_length": 30120465.71384105,
+      "tape_cost_before": 794460368.0726296,
+      "tape_cost_after": 602409314.276821,
+      "lcoe_before": 126.67085608979596,
+      "lcoe_after": 123.57826103922915
+    },
+    {
+      "id": "m039",
+      "tape_length": 33249864.749045324,
+      "tape_cost_before": 877001705.0152404,
+      "tape_cost_after": 664997294.9809065,
+      "lcoe_before": 129.95380896672776,
+      "lcoe_after": 126.24761371514867
+    },
+    {
+      "id": "m040",
+      "tape_length": 33514321.00554145,
+      "tape_cost_before": 883977029.2639118,
+      "tape_cost_after": 670286420.110829,
+      "lcoe_before": 128.01520503984892,
+      "lcoe_after": 124.79651078791403
+    },
+    {
+      "id": "m041",
+      "tape_length": 36996328.38274057,
+      "tape_cost_before": 975818798.5380844,
+      "tape_cost_after": 739926567.6548114,
+      "lcoe_before": 140.9015572111929,
+      "lcoe_after": 136.74212257471248
+    },
+    {
+      "id": "m042",
+      "tape_length": 30482142.857142877,
+      "tape_cost_before": 804000000.0,
+      "tape_cost_after": 609642857.1428576,
+      "lcoe_before": 146.23128226701675,
+      "lcoe_after": 142.01785969168998
+    },
+    {
+      "id": "m043",
+      "tape_length": 33649118.738404475,
+      "tape_cost_before": 887532467.5324675,
+      "tape_cost_after": 672982374.7680895,
+      "lcoe_before": 146.2871472548323,
+      "lcoe_after": 141.53993406012958
+    },
+    {
+      "id": "m044",
+      "tape_length": 34352891.15646261,
+      "tape_cost_before": 906095238.0952381,
+      "tape_cost_after": 687057823.1292522,
+      "lcoe_before": 128.50789437309257,
+      "lcoe_after": 124.98063009156166
+    },
+    {
+      "id": "m045",
+      "tape_length": 37922022.705185995,
+      "tape_cost_before": 1000235003.0921459,
+      "tape_cost_after": 758440454.10372,
+      "lcoe_before": 132.15549190498527,
+      "lcoe_after": 127.92835629752237
+    },
+    {
+      "id": "m046",
+      "tape_length": 38223639.45578235,
+      "tape_cost_before": 1008190476.1904763,
+      "tape_cost_after": 764472789.115647,
+      "lcoe_before": 129.9272496533207,
+      "lcoe_after": 126.25615560181882
+    },
+    {
+      "id": "m047",
+      "tape_length": 42194926.671967514,
+      "tape_cost_before": 1112937538.6518245,
+      "tape_cost_after": 843898533.4393502,
+      "lcoe_before": 143.3729092371501,
+      "lcoe_after": 138.62880547547843
+    },
+    {
+      "id": "m048",
+      "tape_length": 34087773.7510788,
+      "tape_cost_before": 899102475.3184363,
+      "tape_cost_after": 681755475.0215759,
+      "lcoe_before": 148.33878434426083,
+      "lcoe_after": 143.6268047779907
+    },
+    {
+      "id": "m049",
+      "tape_length": 37629360.63430777,
+      "tape_cost_before": 992515719.5073646,
+      "tape_cost_after": 752587212.6861554,
+      "lcoe_before": 148.66158105276983,
+      "lcoe_after": 143.35262661023046
+    },
+    {
+      "id": "m050",
+      "tape_length": 38416379.94169197,
+      "tape_cost_before": 1013274218.2160155,
+      "tape_cost_after": 768327598.8338394,
+      "lcoe_before": 130.2716458704982,
+      "lcoe_after": 126.3270374277945
+    },
+    {
+      "id": "m051",
+      "tape_length": 42407692.14342621,
+      "tape_cost_before": 1118549461.66703,
+      "tape_cost_after": 848153842.8685242,
+      "lcoe_before": 134.26936723959165,
+      "lcoe_after": 129.54204838972032
+    },
+    {
+      "id": "m052",
+      "tape_length": 42744986.13230516,
+      "tape_cost_before": 1127445961.1135948,
+      "tape_cost_after": 854899722.6461031,
+      "lcoe_before": 131.76301883904355,
+      "lcoe_after": 127.6575551397544
+    },
+    {
+      "id": "m053",
+      "tape_length": 47186023.652544655,
+      "tape_cost_before": 1244583203.8266954,
+      "tape_cost_after": 943720473.0508931,
+      "lcoe_before": 145.74571459495974,
+      "lcoe_after": 140.44023316271904
+    },
+    {
+      "id": "m054",
+      "tape_length": 51529336.734693915,
+      "tape_cost_before": 906095238.0952381,
+      "tape_cost_after": 1030586734.6938783,
+      "lcoe_before": 130.52957119085787,
+      "lcoe_after": 132.9243515603345
+    },
+    {
+      "id": "m055",
+      "tape_length": 41223469.38775513,
+      "tape_cost_before": 906095238.0952381,
+      "tape_cost_after": 824469387.7551026,
+      "lcoe_before": 130.41526785806184,
+      "lcoe_after": 128.84521415034527
+    },
+    {
+      "id": "m056",
+      "tape_length": 34352891.15646261,
+      "tape_cost_before": 906095238.0952381,
+      "tape_cost_after": 687057823.1292522,
+      "lcoe_before": 130.33883933543305,
+      "lcoe_after": 126.12596203540367
+    },
+    {
+      "id": "m057",
+      "tape_length": 51529336.734693915,
+      "tape_cost_before": 906095238.0952381,
+      "tape_cost_after": 1030586734.6938783,
+      "lcoe_before": 135.67668231236183,
+      "lcoe_after": 137.4782838948357
+    },
+    {
+      "id": "m058",
+      "tape_length": 41223469.38775513,
+      "tape_cost_before": 906095238.0952381,
+      "tape_cost_after": 824469387.7551026,
+      "lcoe_before": 135.59066761856016,
+      "lcoe_after": 134.40948096797086
+    },
+    {
+      "id": "m059",
+      "tape_length": 34352891.15646261,
+      "tape_cost_before": 906095238.0952381,
+      "tape_cost_after": 687057823.1292522,
+      "lcoe_before": 135.533151736138,
+      "lcoe_after": 132.3636559721151
+    }
+  ]
+}

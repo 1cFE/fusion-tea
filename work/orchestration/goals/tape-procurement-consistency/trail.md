@@ -63,3 +63,23 @@ Native study preparation · 20260915-tape-procurement-consistency · intake and 
 ### T-002 source/interface gate — 2026-09-15
 
 Independent reviewer /root/reviewer returns PASS in evidence/design-review.md (current working artifact; pin on next commit). Original construction images and PDF captions support the conversion. Set-average conductor loading is distinct from reference-coil loading because f_set and f_wp_vol have different source meanings. The coordinator accepts fixed-factor transfer as an explicit approximation and asks implementation to test separate factor perturbations. Production implementation is released against WI-060 design and this qualification. Price and density mechanism choices remain agent-originated assumptions; no claim of qualified current margin is made.
+
+### T-002 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** WI-060 implementation.md@8fa7665c; independent evidence/implementation-review.md (pinned with this return); package implemented at9e22a0a6 and unchanged by final consumer repairs.
+- **Reading:** The physical inventory now determines purchased tape metres and selected procurement cost. Independent review supports the source, equations, interfaces, coherent generated/oracle behavior and repaired affected consumers. Existing static-validator residue and unqualified current-margin/fit assumptions remain explicit.
+- **Decision:** Trigger: completed reviewed implementation and resolved observed regressions. Decision: invoke native integration to prove one candidate before study execution. Tier: execution detail. Decided by: coordinator under owner authorization. Changed: WI-060 and current executable/consumer records; exact paths and tests in the native report.
+
+### T-004 scope
+
+- **Objective:** Prove one study-ready integration candidate for the reviewed WI-060 package.
+- **Why now:** T-002 returns independently reviewed coherent implementation.
+- **Scope:** Invoke native scripts/integrate.py with audited WI-060, declared package identity and sealed runtime; no seam repair or new model work.
+- **Inputs:** goal.md; WI-060@8fa7665c; implementation-review.md; expected executable02463b0d430bc205ee01809086441bc8d736b52c798c28f41689b308cbb226d0 and semantic ef1f4c896cd50cdfcf28872693a042a07254a2f4be5b2a3a35a61b70f4ee3040; sealed teax8d877460ac4f6f264561d916e40c1708adb13397.
+- **Done when:** One native CANDIDATE or named BLOCKER return is retained.
+- **Stop when:** Prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-004 start — 2026-09-15
+
+Native integration · evidence/T-004_integration/ · expected ten-gate CANDIDATE return or named blocker.
