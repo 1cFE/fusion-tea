@@ -1,3 +1,7 @@
+# Tape procurement consistency — active — 2026-09-15
+
+[OWNER] Ground and autonomously pursue conductor procurement consistency through research, implementation, bounded native study, independent review and answer; no merge or push. [AGENT] Goal: work/orchestration/goals/tape-procurement-consistency/goal.md. WI-060 preparation is active; production changes await source/math/interface review. Entering revision ccb6d843 and 60 matched oracle points plus baseline are retained in goal evidence/entering/. Resume from the goal trail and native WI-060 checklist; preserve earlier completed goal evidence.
+
 # Magnet coil realism — completed — 2026-09-15
 
 [OWNER] Delegated continued work through completion using research and engineering judgment; comparison amendment approved. [AGENT] Goal answered and completed with independent final PASS. WI-058/WI-059 implement bore-based winding procurement, explicit two-stage coil thermal inventory and total-support pricing. Final study: 180 native cases, 7,320 scalar and 3,294 predicate comparisons, zero mismatches; all 233 snapshot artifacts committed and hash-verified. Design LCOE $146.31/MWh and refrigeration 2.138 MW. Cheapest nominal sampled eighteen-predicate feasible geometry remains R = 12.7 m, a = 1.7 m at $135.51/MWh with 100 MW installed heating, under the held physics and engineering assumptions in the answer.

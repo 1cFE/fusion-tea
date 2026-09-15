@@ -302,6 +302,12 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-060
+  name: Tape procurement quantity basis
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -385,3 +391,4 @@ standalone:
 | WI-056 | Primary loop heat capacity domain | standard | P1 | backlog |  |
 | WI-057 | Stellaris structural decomposition — nested parts, ports, and connections | standard | P1 | backlog |  |
 | WI-059 | Coil thermal and total-support inventory | standard | P1 | backlog |  |
+| WI-060 | Tape procurement quantity basis | standard | P1 | backlog |  |
