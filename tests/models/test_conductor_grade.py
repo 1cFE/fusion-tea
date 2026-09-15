@@ -130,10 +130,11 @@ def verdicts(row):
 
 @pytest.mark.codegen_available
 def test_reference_preserves_every_audited_wi040_channel_and_verdict(evaluate):
+    from tests.models.current_mfe_regressions import WI059_REPLAY
     baseline = json.loads((ROOT / "work/completed/20260914_WI-038_conductor-grade-lever/baseline-before.json").read_text())
     assert len(baseline["channels"]) == 174
     assert len(baseline["verdicts"]) == 18
-    row = evaluate()
+    row = evaluate({key.removeprefix(P): value for key, value in WI059_REPLAY.items()})
     assert {key: row.outputs[key] for key in baseline["channels"]} == baseline["channels"]
     assert verdicts(row) == baseline["verdicts"]
     assert output(row, "magnet__conductor_grade__quantity_factor") == 1.

@@ -141,3 +141,14 @@ def test_study_route_preserves_the_authored_boolean_control():
     assert route.validate_proposal({key:False}) == {key:False}
     assert route.validate_proposal({key:False})[key] is False
     assert route.validate_proposal({route.P+'plasma__R':False}) is None
+
+
+def test_turn_current_changes_lead_heat_but_not_geometry_heat(native_inventory, oracle):
+    cls,run=native_inventory
+    base=run(cls(**native_parameters(oracle)))
+    half=run(cls(**(native_parameters(oracle)|{'I_turn':25000})))
+    # Wrapper tuple positions: cold lead5, shield lead2; radiation0/1, supports3/7.
+    assert half[5] == pytest.approx(base[5]/2)
+    assert half[2] == pytest.approx(base[2]/2)
+    assert [half[i] for i in (0,1,3,7)] == [base[i] for i in (0,1,3,7)]
+    assert half[10]-.0075 == pytest.approx((base[10]-.0075)/2)

@@ -205,7 +205,11 @@ def test_extra_cold_volume_does_not_purchase_winding_material(evaluate):
     ('magnet__coil__turn_current', 25000., 'winding_procurement__winding_fabrication_cost', 2.),
 ])
 def test_accounting_levers_preserve_physics_and_operating_verdicts(evaluate, key, value, component, factor):
-    before, after = evaluate(), evaluate({key: value})
+    from tests.models.current_mfe_regressions import WI059_REPLAY
+    # Historical accounting isolation: with inventory enabled, turn current also
+    # drives lead heat and direct electrical power (tested by the inventory suite).
+    replay = {name.removeprefix(P): setting for name, setting in WI059_REPLAY.items()}
+    before, after = evaluate(replay), evaluate(replay | {key: value})
     assert output(after, 'magnet__' + component) == pytest.approx(factor * output(before, 'magnet__' + component))
     unchanged = ['material_inventory__mass_' + material for material in ('copper', 'solder', 'steel', 'helium')]
     if key.endswith('price_copper'):
