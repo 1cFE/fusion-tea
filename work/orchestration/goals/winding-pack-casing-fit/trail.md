@@ -117,3 +117,25 @@ Native integration · reviewed WI-061 at `3ec343aa` · `evidence/T-004_integrati
 ### T-005 start — 2026-09-15
 
 Native study · `exploration/stellarator_e2e/studies/20260915-winding-pack-casing-fit/` · bounded scan, native execution, verification, frozen record and reading. The author owns study files/first sightings only; candidate and oracle remain fixed. Source/design and implementation review coverage is reused for unchanged equations and assumptions. Engineered sensitivities use the owner's delegated judgment, not a device-specific optimization claim.
+
+### T-005 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `exploration/stellarator_e2e/studies/20260915-winding-pack-casing-fit/record.md@62e47730` and its executor `synthesis.md`; `evidence/publication-check.json` (goal checkpoint pending).
+- **Reading:** The screen removes nominal sampled passes and changes the cheapest retained choice only among explicit alternative-allocation scenarios. Matched entering evidence isolates screen addition from genuine geometry-dependent price changes. Device-specific fit remains conditional.
+- **Decision:** Native study and mapped oracle agree · report separate eighteen/nineteen feasibility and unchanged entering accounting · execution detail · coordinator · answer.md and finding-dispositions.md.
+- **Decision:** Source cavity and insulation inclusion remain unqualified · retain conditional claim and qualifying-measurement list, with no semantic follow-up · execution detail under owner delegation · coordinator · answer.md limits and joined discovery dispositions.
+
+### Round 1 result — 2026-09-15
+
+- **Intent:** Met for the expressly permitted conditional geometric screen; final independent study assurance remains the closure coverage gate.
+- **Task sequence:** T-001 research COMPLETE; T-002 reviewed native design COMPLETE; T-003 native implementation and bounded independent code review COMPLETE; T-004 integration COMPLETE; T-005 frozen native study and reading COMPLETE.
+- **Last semantic outcome:** COMPLETE from a valid committed study reading.
+- **Stop reason:** Valid study reading plus no cap or unresolved owner gate → round closes under the runbook's study-reading trigger. No new model work is proposed.
+- **Evidence refs:** Native design/review 06a19a3b; implementation ece3a7ed/b69616b3; independent audit 3ec343aa; integration ac1d675a; frozen study 62e47730. Cited native artifacts retain their reviewed source/package meaning; later study copies and receipts add evidence without altering them. WI-061 plan bookkeeping now links the completed downstream evidence.
+- **Learning delta:** Propose L-001: the independently held radial allocation exposes the nominal-pack conflict and rejects all three original sampled passes; source-backed device qualification is still missing. Propose L-002: preserving the old eighteen predicates while adding fit separates an admissibility change from changed equations/pricing; the sampled cheapest remaining alternative costs more because its independent allocation is larger, not because the screen added a cost charge.
+- **Finding dispositions:** All four new study findings and five inherited touched identifiers are routed in evidence/finding-dispositions.md and appended under their existing discovery-log identifiers. No unrouted finding or semantic follow-up remains. Open engineering seams remain open.
+
+### Closure coverage request — 2026-09-15
+
+Source/math/design review and implementation review are reused only within their recorded scope and unchanged candidate. Final independent assurance must check the frozen native study, publication integrity, answer, dispositions and proposed learning delta before acceptance. Formal goal close and native item archive remain owner-held; no merge or push.
