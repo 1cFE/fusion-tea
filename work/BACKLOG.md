@@ -314,6 +314,12 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-062
+  name: Absolute conductor current margin
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -399,3 +405,4 @@ standalone:
 | WI-059 | Coil thermal and total-support inventory | standard | P1 | backlog |  |
 | WI-060 | Tape procurement quantity basis | standard | P1 | backlog |  |
 | WI-061 | Winding pack casing fit | standard | P1 | backlog |  |
+| WI-062 | Absolute conductor current margin | standard | P1 | backlog |  |

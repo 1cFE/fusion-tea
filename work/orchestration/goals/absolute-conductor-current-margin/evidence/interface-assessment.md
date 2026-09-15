@@ -1,0 +1,23 @@
+# Entering current/inventory interface assessment
+
+## Existing ownership and equations
+
+[INHERITED: entering a45925ec] `models/library/cost_structure/mfe_power_core.sysml` owns the coil, winding pack, procurement and actual peak-field calculations. `mfe_magnet_parts.sysml` owns the coil ampere-turn requirement `I_coil`, conductor turn current `turn_current`, current distribution `f_set`, volume distribution `f_wp_vol`, tape construction and reference pack density. Procurement returns both individual tape metres and composite-conductor metres. `mfe_conductor_grade.sysml` scales pack density with selected envelope: q=(B_max/B_grade_ref)^0.6 and j_effective=j_reference/q. It does not consume absolute measured tape current or an allowable operating fraction.
+
+[AGENT DERIVATION] Let A_t=w*t be full composite tape area. Total tape length L_t=V_pack*f_t/A_t and composite-conductor length L_c=n_coils*I_coil*f_set*c_coil/I_turn. Then N_set=L_t/L_c is the continuously averaged number of parallel tapes per conductor segment. A series turn increases length; it never multiplies N_set. Set-effective capacity is N_set*Ic_tape*assembly_factors. The total magnet does not have a meaningful single parallel critical current equal to all its series tape lengths added together.
+
+[AGENT DERIVATION] The reference-coil pack convention separately implies N_ref=N_set*f_set/f_wp_vol=I_turn*f_t/(j_effective*A_t), after coherent metre/mm² conversion. These differ because f_set and f_wp_vol describe different distributions. At the entering point N_ref is approximately112.70 while N_set is approximately113.73. The reference-coil convention is not automatically the most highly loaded physical coil; published Table8 has other current densities above its119A/mm². Neither aggregate factor resolves local grading or field-angle mapping.
+
+## Proposed bounded interpretation for independent review
+
+[AGENT] Expose both N_set and N_ref, their resulting assembly critical currents and operating fractions. Use the reference-coil current fraction for the named reference-conductor margin predicate and label its scope. The reference inventory is reconstructed from the same physical procurement inventory, not from an independently chosen tape count. Use actual modeled B_peak, with uniform application to all tapes in that conductor and the selected angle scenario. This is a representative conservative field application, not an assertion that it bounds every coil's loading. Shared current and volume distribution factors remain explicitly visible assumptions.
+
+[AGENT] I_turn is the current compared against estimated assembly critical current. Varying I_coil changes field and number of turns/inventory through inherited sizing; at fixed density it need not change tapes per turn. Varying I_turn at fixed ampere-turn demand changes number of turns and inferred tapes per conductor proportionally, so the operating fraction stays invariant under that repartition. That cancellation is physical inventory bookkeeping, not an independently imposed pass. The absolute normalization, orientation and degradation are independent of sizing density and selected envelope.
+
+[AGENT] Keep the selected-envelope predicate as an independent declared design-demand constraint. It expresses B_peak<=the chosen sizing envelope, while current margin uses actual field, physical tape and independent absolute evidence. Neither implies the other when material performance, operating allowance and loading density are independent. Demonstrate both counterexamples in tests/study. The selected envelope remains an assumed sizing envelope, not measured critical field or supplier qualification.
+
+[AGENT] The measured performance basis and exact implementation domain remain pending research and independent review. No source conclusion is authorized by this provisional mapping note. Source differences versus the published original ungraded/graded current fractions must be explained before implementation; avoid adjusting normalization to reproduce those published passes.
+
+## Impact and preservation
+
+[AGENT] Production impact is the MFE family only: reusable analysis, magnet ownership/bindings, stellarator parameters and native predicate; canonical/twin files and generated package; oracle mapping/verification, census/manifest and affected consumers. Generic MFE inherits the shared magnet definitions. IFE shares foundation files only and requires no changes. Preserve all old scalar calculations and all nineteen entering predicate expressions, including nominal fit geometry. A new performance output can reject a previous pass without changing procurement cost or fit.

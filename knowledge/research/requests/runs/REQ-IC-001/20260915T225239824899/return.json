@@ -1,0 +1,17 @@
+{
+  "request_id": "REQ-IC-001",
+  "run": "knowledge/research/requests/runs/REQ-IC-001/20260915T225239824899",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": null,
+      "path": null,
+      "source_id": "2925a09fba687fbcf37d86bada14da7a0925e63a207b932650311de475f97f9b",
+      "pre_existing": true
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}
