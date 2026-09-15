@@ -282,3 +282,9 @@ WI-059 implementation and native acceptance are complete. The integration retry 
 ### T-007 start — 2026-09-15
 
 Native study · exploration/stellarator_e2e/studies/20260915-coil-inventory/ · framing review PASS, source/math reused;18group indicators and183row oracle scan prepared. Execute180unique native proposals after baseline/preflight at the integrated pin.
+
+### Checkpoint C-002.r1 — 2026-09-15
+
+Independent non-author /root/round1_review accepts the final study interpretation, all six proposed dispositions and proposed L-004/L-005 in evidence/T-007_postexecution_review.md. The reading is frozen at 77bcc96e; the six discovery updates landed in that commit after review. The reviewer directly checked all 159 immediate-entering comparison rows and all 108 older matched references. The attribution amendment is honored. No new numerical follow-up is required.
+
+Final mechanical review identified missing claim-site physics context in the answer and 181 snapshot-named artifacts hidden by runtime ignore rules. The answer now carries the held transport, wall calibration and stored-energy/coupling basis; c2774de7 adds the exact 181 artifacts without changing their frozen hashes. Final record/goal checks passed 54; the full study regression remains running. These are presentation and preservation repairs, with no model, pin, case or numerical interpretation change.
