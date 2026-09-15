@@ -35,3 +35,23 @@ Each entry is one claim.
 - **Implication:** assess the exported coordinate/value association separately when trusting a derived report. This accepted learning does not edit the runbook or create a universal publication requirement.
 - **Supersedes:** none; corrects proposed L-003 before acceptance.
 - **Accepted-by:** this fresh Round 1 review, 2026-09-15.
+
+### L-004 — Explicit thermal inventory remains small in the nominal plant budget — 2026-09-15
+
+[AGENT] Explicit current-lead, radiation and support heat raises nominal refrigeration from 0.864 MW to 2.138 MW. It remains below 1% of recirculating demand at the design and sampled cheap anchors under the declared nominal scenario.
+
+- **Evidence:** final study anchor and nuclear-proxy rows, stage accounting and verification at 77bcc96e; independent interpretation review in evidence/T-007_postexecution_review.md.
+- **Scope:** nominal declared thermal geometry, refrigeration efficiency and zero structure nuclear deposition; the proxy sensitivity is not an upper bound.
+- **Implication:** refrigeration is small in these nominal plant budgets. This does not bound actual structure deposition or unqualified hardware heat loads.
+- **Supersedes:** none.
+- **Accepted-by:** independent reviewer /root/round1_review, evidence/final-mechanical-review.md final Round 3 assurance, 2026-09-15.
+
+### L-005 — Total-support pricing raises cost without changing the sampled nominal geometry — 2026-09-15
+
+[AGENT] The Eq. 56 total-support scenario raises baseline support cost from $54.4M to $209.1M at the inherited $18/kg rate. The implemented inventory/structure increment raises the cheap-point price while leaving the sampled nominal geometry unchanged.
+
+- **Evidence:** final study entering comparison and support costs at 77bcc96e; independently checked nominal feasible minima and six dispositions in evidence/T-007_postexecution_review.md.
+- **Scope:** zero predicate flips across the 159 immediate-entering comparison rows, with the held physics in answer.md. Assumption rows have no corresponding before rows. Older-package results remain references.
+- **Implication:** this sampled window supports a cost increment without a changed nominal feasible choice. It does not establish invariance under other inputs or qualified geometry outside the window.
+- **Supersedes:** none.
+- **Accepted-by:** independent reviewer /root/round1_review, evidence/final-mechanical-review.md final Round 3 assurance, 2026-09-15.

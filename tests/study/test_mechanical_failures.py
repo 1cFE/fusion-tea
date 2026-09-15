@@ -128,7 +128,11 @@ def test_the_computed_quantity_message_names_the_producing_module(real_copy, tmp
 def test_the_corrupt_line_carries_file_line_and_key_path(real_copy, tmp_path):
     corrupt_pipeline_line(real_copy)
     _, _, err = real_copy.run(out=tmp_path / "c.json")
-    assert "pipeline.yaml:47" in err  # WI-057 (2026-09-13): the first R_in line in the file is now the plasma's geom (the calcs live on their parts; rb's R_in sits lower); was :85 -- the rb R_in line; :84 -> :87 when WI-036 added the winding-pack sizing modules; :87 -> :103 when WI-041 added the wall-load average, peak-calibration and peak modules above it; :103 -> :83 when WI-044 (2026-09-07) made the peak field read the radial build, so the regenerated pipeline orders rb earlier; :83 -> :85 when WI-047 (2026-09-08) added the fuel-cycle, divertor-heat and vacuum modules, shifting rb's inputs two lines down
+    fault_line = next(
+        i for i, line in enumerate((real_copy.path / PIPELINE).read_text().splitlines(), 1)
+        if "R_in: floatonly_one_token" in line
+    )
+    assert f"pipeline.yaml:{fault_line}" in err
     assert "key path modules.stellarator_09__stellaris__plasma__geom.inputs.R_in" in err  # WI-057: the mutated line is geom's (the plasma's template calc)
     assert "floatonly_one_token" in err
 

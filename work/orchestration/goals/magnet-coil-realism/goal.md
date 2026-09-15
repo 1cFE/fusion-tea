@@ -136,3 +136,7 @@ None.
 [OWNER-VERBATIM] "the whole point of this is for  you to continue until it finishes. do research if you need data on a decision, otherwise, use your best judgement".
 
 [OWNER] Continue the remaining goal work through completion; research missing evidence and use technical judgment for decisions. [AGENT] This releases the Round 2 technical-input gate: choose and document explicit engineering assumptions where the device source does not specify a design, retaining their provenance and transfer limits. Missing inputs are researched and surfaced in the design rather than silently defaulted. Carry necessary native work, validation, studies and the final goal assessment through without routine decision handbacks. Source quarantine, untuned comparisons and independent review of new assumptions remain applicable; merge and push are outside this instruction.
+
+### Amendment 2026-09-15 — answered and completed
+
+[AGENT] Completed under the owner's delegated-completion instruction above. Round 3 satisfies the three Answered when deliverables, with independent final PASS in evidence/final-mechanical-review.md. The completed answer and demo restatement are in answer.md; the final study is frozen at 77bcc96e, with all snapshot artifacts preserved at c2774de7. The trail records native validation, full regression results and successful repairs, accepted learnings and final dispositions. Engineering assumptions and qualification limits remain explicit in the answer. No further technical round or routine approval handback is required to finish this goal.

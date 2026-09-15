@@ -283,3 +283,11 @@ snapshot.json carries resolved values and digests, separate from these arguments
 ## 17. What this record does not contain
 
 No detailed manufactured 50 kA lead, complete cryostat/support path design, validated nonmagnet budget or vendor 316LN fabrication quotation is supplied. Nominal structure nuclear heating is zero; the named proxy sensitivity exposes its consequence. The mass fit unit transfer is inferred from the different 2023 fit. The 15 MW cooling allowance has no equipment decomposition. Per-coil geometry, local stress/fit, absolute conductor margin and cross-section-dependent winding effort retain the magnet-design-transfer limits. The unchanged engineering predicates cannot certify these missing qualifications.
+
+## Addendum — final preservation and validation — 2026-09-15
+
+The record and snapshot were frozen at 77bcc96e. Commit c2774de7 preserves all 181 runtime artifacts named by the snapshot that the first commit omitted under ignore rules. Their bytes and snapshot hashes are unchanged. Independent final assurance checked all 233 named artifact hashes against committed bytes; see work/orchestration/goals/magnet-coil-realism/evidence/final-mechanical-review.md.
+
+The geometry comparisons in §§ 3 and 6 hold ash-confinement ratio 8, ash suppression 0.5, heating-source efficiency 0.5 and plasma coupling 1.0. Sustainment uses the WI-042 ash/profile family and geometry-scaled thermal stored energy. Wall peaking retains the 4.05 MW/m² calibration at 2700 MW fusion power, R = 12.7 m, a = 1.3 m, elongation 1 and 0.1 m standoff. Exact inputs are retained in preparation/package-inputs/stellarator_plant_params.json; stored-energy-basis/learnings.md L-004–L-006 supplies the basis and coupling limitations. These conditions qualify the reported sampled geometry; no continuous or engineering-qualified optimum is established.
+
+Final record/goal checks passed 54. Full study/goal regression returned 975 passed, one skipped, two failed and nine warnings. Both failures were stale generated line/input-group expectations; the repaired complete test files passed all 52 checks. Evidence is retained in the goal's evidence/round3-final-tests.log and round3-consumer-recheck.log. No clean full-suite rerun is claimed. These checks and preservation repairs change no study case, pin, snapshot, numerical result or disposition.

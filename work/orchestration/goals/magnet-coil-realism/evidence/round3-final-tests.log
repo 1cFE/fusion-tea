@@ -1,0 +1,61 @@
+........................................................................ [  7%]
+........................................................................ [ 14%]
+........................................................................ [ 22%]
+........................................................................ [ 29%]
+........................................................................ [ 36%]
+........................................................................ [ 44%]
+........................................................................ [ 51%]
+........................................................................ [ 58%]
+....F................................................................... [ 66%]
+...F.................................................................... [ 73%]
+........................................................................ [ 80%]
+........................................................................ [ 88%]
+..................................................s..................... [ 95%]
+..........................................                               [100%]
+=================================== FAILURES ===================================
+_____________ test_the_corrupt_line_carries_file_line_and_key_path _____________
+
+real_copy = PackageCopy(path=PosixPath('/tmp/pytest-of-reid/pytest-12770/test_the_corrupt_line_carries_0/copy0/pkg'), manifest=Pos...y0/manifest.json'), axes=PosixPath('/tmp/pytest-of-reid/pytest-12770/test_the_corrupt_line_carries_0/copy0/axes.json'))
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12770/test_the_corrupt_line_carries_0')
+
+    def test_the_corrupt_line_carries_file_line_and_key_path(real_copy, tmp_path):
+        corrupt_pipeline_line(real_copy)
+        _, _, err = real_copy.run(out=tmp_path / "c.json")
+>       assert "pipeline.yaml:47" in err  # WI-057 (2026-09-13): the first R_in line in the file is now the plasma's geom (the calcs live on their parts; rb's R_in sits lower); was :85 -- the rb R_in line; :84 -> :87 when WI-036 added the winding-pack sizing modules; :87 -> :103 when WI-041 added the wall-load average, peak-calibration and peak modules above it; :103 -> :83 when WI-044 (2026-09-07) made the peak field read the radial build, so the regenerated pipeline orders rb earlier; :83 -> :85 when WI-047 (2026-09-08) added the fuel-cycle, divertor-heat and vacuum modules, shifting rb's inputs two lines down
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert 'pipeline.yaml:47' in "../../../../tmp/pytest-of-reid/pytest-12770/test_the_corrupt_line_carries_0/copy0/pkg/pipelines/pipeline.yaml:48 (key path modules.stellarator_09__stellaris__plasma__geom.inputs.R_in): cannot split type/ref in 'floatonly_one_token'\n"
+
+tests/study/test_mechanical_failures.py:131: AssertionError
+_________________ test_fingerprint_read_set_is_the_three_legs __________________
+
+real_package_path = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+
+    def test_fingerprint_read_set_is_the_three_legs(real_package_path):
+        files = [f["path"] for f in manifest.indicator_input_fingerprint(real_package_path)["files"]]
+        assert "pipelines/pipeline.yaml" in files
+        assert "contracts/model_contract.json" in files
+>       assert sum(1 for p in files if p.startswith("inputs/")) == 9  # one per generated input group (WI-047 (2026-09-08): +mfe_fuel_cycle, +mfe_vacuum -- the two calc-formal library defaults s_per_fpy and k_B; WI-037: +mfe_plasma_sustainment)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert 10 == 9
+E        +  where 10 = sum(<generator object test_fingerprint_read_set_is_the_three_legs.<locals>.<genexpr> at 0x7c34217f3c60>)
+
+tests/study/test_output_contract.py:36: AssertionError
+=============================== warnings summary ===============================
+tests/study/test_committed_store.py::test_the_store_speaks_the_generic_vocabulary
+tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage
+tests/study/test_numeric_evidence.py::test_real_multi_output_values_survive_reopened_store_and_export
+tests/study/test_numeric_evidence.py::test_adding_persisted_column_reuses_store_without_evaluation
+tests/study/test_numeric_evidence.py::test_resume_refuses_a_required_column_absent_from_persisted_evidence[complete]
+tests/study/test_numeric_evidence.py::test_resume_refuses_a_required_column_absent_from_persisted_evidence[partial]
+tests/study/test_numeric_evidence.py::test_execution_failures_remain_recorded_cases[first-fails]
+tests/study/test_numeric_evidence.py::test_nonfinite_declared_value_is_persisted_and_refused_only_at_export
+tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/study/test_mechanical_failures.py::test_the_corrupt_line_carries_file_line_and_key_path
+FAILED tests/study/test_output_contract.py::test_fingerprint_read_set_is_the_three_legs
+2 failed, 975 passed, 1 skipped, 9 warnings in 1061.20s (0:17:41)
