@@ -1,6 +1,6 @@
 # Winding-pack/casing fit
 
-The conditional local fit screen is implemented and has passed native integration. The 116-case study reduces the sampled passes from **45 under the original eighteen predicates to twelve including fit**. All three passes in the original nominal-geometry sample are rejected. The study is frozen at `62e47730`; final independent study assurance is pending.
+The conditional local fit screen is implemented, studied and independently reviewed. The 116-case study reduces the sampled passes from **45 under the original eighteen predicates to twelve including fit**. All three passes in the original nominal-geometry sample are rejected. The study is frozen at `62e47730` and received [independent final PASS](evidence/final-review.md), including a fresh oracle replay and complete retained-artifact/native-store checks.
 
 ## What geometry is checked
 
@@ -55,7 +55,7 @@ Within the original nominal-geometry sample, the $143.35/MWh cheapest old-predic
 
 Across the full sensitivity sample, the cheapest remaining all-nineteen pass is `alloc-oldpass1.2-0.5`: **$145.02/MWh**, an increase of **$1.67/MWh** over the same sample's cheapest old-predicate pass. It retains R = 12.7 m, a = 1.3 m, 17 MA, density ratio 1.2 and selected envelope 30 T, with the radial allocation explicitly enlarged to 0.50 m. Its margins are +74.87 mm radial and +15.74 mm transverse.
 
-This is a change in which sampled case is admissible. Adding the fit calculation does not itself add cost. Enlarging the radial allocation changes the existing coil-centre, field, winding-length and downstream cost calculations; matched entering-package comparisons preserve those consequences. A larger cavity is not treated as a free device redesign. Nevertheless, wall strength, actual casing fabrication and added insulation procurement remain outside this cost model's qualification. The retained cheapest case also uses the higher-density loading assumption and extrapolated 30 T envelope, with absolute conductor-current margin still unknown. It is a conditional model pass, not a qualified magnet or optimum. [Study results and minima](../../../../exploration/stellarator_e2e/studies/20260915-winding-pack-casing-fit/results/analysis.json).
+This is a change in which sampled case is admissible. Adding the fit calculation does not itself add cost. Enlarging the radial allocation changes the existing coil-centre, field, winding-length and downstream cost calculations; matched entering-package comparisons preserve those consequences. The reported cost increase includes those existing dependencies. Wall strength, actual casing fabrication and added insulation procurement remain outside this cost model's qualification. The retained cheapest case also uses the higher-density loading assumption and extrapolated 30 T envelope, with absolute conductor-current margin still unknown. It is a conditional model pass, not a qualified magnet or optimum. [Study results and minima](../../../../exploration/stellarator_e2e/studies/20260915-winding-pack-casing-fit/results/analysis.json).
 
 ## Agreement and preservation
 

@@ -139,3 +139,19 @@ Native study · `exploration/stellarator_e2e/studies/20260915-winding-pack-casin
 ### Closure coverage request — 2026-09-15
 
 Source/math/design review and implementation review are reused only within their recorded scope and unchanged candidate. Final independent assurance must check the frozen native study, publication integrity, answer, dispositions and proposed learning delta before acceptance. Formal goal close and native item archive remain owner-held; no merge or push.
+
+### Final review dispatch — 2026-09-15
+
+After the execution agents finished, the collaboration tool allowed restoring the original fit_reviewer session. That session authored neither source research, implementation nor study and now reviews the closed round's study/answer/dispositions at `25afd786` under evidence/final-review-brief.md. Earlier implementation-review authorship limits remain correctly recorded; the final reviewer has independent source/design context and can assess remaining coverage across the complete result.
+
+### Round 1 review — 2026-09-15
+
+- **Reviewer:** Original fresh non-author fit_reviewer; final report evidence/final-review.md. It authored neither research, implementation nor study.
+- **Verdict:** PASS. Reused source/design and bounded implementation coverage remains valid at the unchanged package; final study/answer/closure coverage is independently checked.
+- **Checks:** All 288 snapshot artifact hashes match disk and frozen Git blobs; all 116 native store/input/output/verdict joins, separate baseline and 117 CSV joins checked. Independent reconstruction of every fit margin agrees. Fresh frozen-oracle replay passes all 22,736 scalar and 2,204 verdict checks. All 72 entering comparisons, 44 geometry-isolation comparisons, nine joined dispositions, nominal failures and sampled minima support the answer. L-001/L-002 accepted and appended to learnings.md. No semantic retries, unreviewed changed premise or external native mutation remains. The post-study plan edit records completion evidence without changing source or executable authority.
+- **Limits:** Conditional local geometry, unresolved manufactured insulation/cavity dimensions, proxy thermal/stress behavior, omitted insulation/wall procurement qualification and absolute current margin remain explicit. Full-suite and suppressed-validator-diagnostic limits are preserved.
+- **Next:** Technical answer complete. Recommend owner-held formal goal close and native item archive. No further round or technical task is needed; no merge or push.
+
+### Delivery checkpoint — 2026-09-15
+
+The final verdict is reflected in answer.md and CURRENT_WORK.md. All 58 study-record checks pass after the nine joined dispositions. The final answer update reports the already-issued verdict; no model, package, frozen study, numerical conclusion or engineering assumption changed after review.
