@@ -83,3 +83,23 @@ Independent reviewer /root/reviewer returns PASS in evidence/design-review.md (c
 ### T-004 start — 2026-09-15
 
 Native integration · evidence/T-004_integration/ · expected ten-gate CANDIDATE return or named blocker.
+
+### T-004 return — 2026-09-15
+
+- **Outcome:** PREREQUISITE.
+- **Evidence:** evidence/T-004_integration/integration_return.json and recaptured.snapshot.json (pin with next evidence commit).
+- **Reading:** Runtime pin, regeneration and handwritten preservation pass; census-snapshot refuses because the tracked native snapshot was not refreshed. The recapture has438attributes versus435in the old tracked snapshot; authority fields are unchanged. Later integration gates did not run. No candidate is promoted.
+- **Decision:** Trigger: snapshot-drift refusal. Decision: route missing native snapshot refresh and reproducible preparation recipe correction to WI-060. Tier: execution detail. Decided by: coordinator. Changed: bounded T-005; no seam implementation repair.
+
+### T-005 scope
+
+- **Objective:** Complete WI-060's native snapshot preparation and show its correspondence to the already reviewed unchanged model/package.
+- **Why now:** T-004 refused stale native snapshot provenance.
+- **Scope:** Native snapshot capture, producer preparation recipe and related item evidence only; production equations, price basis and runtime unchanged. Same reviewer checks the corrective diff.
+- **Inputs:** goal.md; WI-060@8fa7665c; T-004recapture and refusal.
+- **Done when:** Committed current snapshot and reproducible preparation recipe pass focused review, ready for a new integration invocation.
+- **Stop when:** Prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-005 start — 2026-09-15
+
+Native model completion repair · WI-060 · current native snapshot and corrected preparation recipe, with unchanged reviewed package identity.
