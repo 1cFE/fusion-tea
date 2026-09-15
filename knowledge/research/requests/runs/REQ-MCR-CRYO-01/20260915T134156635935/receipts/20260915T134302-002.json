@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "/tmp/T004-nasa-insulation.pdf",
+  "slug": "layered_thermal_insulation_systems_for_cryogenic",
+  "path": "knowledge/sources/layered_thermal_insulation_systems_for_cryogenic/",
+  "source_id": "8773476b3ddab256f03703af1bf8f2384d7628a72c5fb1d35fa850a0c88d7841",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-15T13:43:02.976615+00:00"
+}

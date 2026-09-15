@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://trc.nist.gov/cryogenics/materials/G-10%20CR%20Fiberglass%20Epoxy/G10CRFiberglassEpoxy_rev.htm",
+  "slug": "nist_g10_cr_fiberglass_epoxy_cryogenic_material_properties",
+  "path": "knowledge/sources/nist_g10_cr_fiberglass_epoxy_cryogenic_material_properties/",
+  "source_id": "6992fc4a372745b3b6a852c4df75eb3f98065db9babb29599a9a2520ee113665",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-15T13:42:31.291702+00:00"
+}

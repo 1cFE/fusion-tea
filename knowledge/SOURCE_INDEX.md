@@ -633,6 +633,38 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 5a87087724f818deb8ed4eeb0f3edd471c0761782cf76c6c489e19e072766604
 - **Date Added**: 2026-09-13
 
+### NIST G10 CR Fiberglass Epoxy Cryogenic Material Properties
+- **Type**: url
+- **Location**: knowledge/sources/nist_g10_cr_fiberglass_epoxy_cryogenic_material_properties/
+- **Use for**: Temperature-dependent anisotropic thermal conductivity for a conditional support-conduction calculation; RQ-2.
+- **Validation**: Compare conductivity polynomial and validity ranges with the captured original rendered table before implementation.
+- **Caveat**: NIST evaluated material data; does not specify Stellaris support material, cross section, length, orientation or thermal intercepts.
+
+#### Extended Metadata
+- **Source URL**: https://trc.nist.gov/cryogenics/materials/G-10%20CR%20Fiberglass%20Epoxy/G10CRFiberglassEpoxy_rev.htm
+- **Source ID**: 6992fc4a372745b3b6a852c4df75eb3f98065db9babb29599a9a2520ee113665
+- **Raw SHA256**: 6992fc4a372745b3b6a852c4df75eb3f98065db9babb29599a9a2520ee113665
+- **Raw Artifact SHA256**: 6992fc4a372745b3b6a852c4df75eb3f98065db9babb29599a9a2520ee113665
+- **Extracted Path**: knowledge/sources/nist_g10_cr_fiberglass_epoxy_cryogenic_material_properties/
+- **Extract SHA256**: beb31731fcc0ce9bc8aae6c54f12ab671d8a73285bbd42c149316d1f44ba352d
+- **Date Added**: 2026-09-15
+
+### Layered Thermal Insulation Systems for Cryogenic Applications
+- **Type**: local_pdf
+- **Location**: knowledge/sources/layered_thermal_insulation_systems_for_cryogenic/
+- **Use for**: MLI thermal-performance dependence on vacuum and layer arrangement; RQ-2. Original PDF retrieved from https://ntrs.nasa.gov/api/citations/20150018118/downloads/20150018118.pdf?attachment=true on 2026-09-15.
+- **Validation**: Check presentation slide 20 and surrounding test-condition figures against original page images before selecting any coefficient.
+- **Caveat**: NASA design presentation with condition-specific insulation performance; not a Stellaris shield geometry or qualified 20 K heat-flux anchor.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/T004-nasa-insulation.pdf
+- **Source ID**: 8773476b3ddab256f03703af1bf8f2384d7628a72c5fb1d35fa850a0c88d7841
+- **Raw SHA256**: 8773476b3ddab256f03703af1bf8f2384d7628a72c5fb1d35fa850a0c88d7841
+- **Raw Artifact SHA256**: 8773476b3ddab256f03703af1bf8f2384d7628a72c5fb1d35fa850a0c88d7841
+- **Extracted Path**: knowledge/sources/layered_thermal_insulation_systems_for_cryogenic/
+- **Extract SHA256**: 23a983fa52a02754c99c9634e6214faff45261d14c9f690e40f974b07244927d
+- **Date Added**: 2026-09-15
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

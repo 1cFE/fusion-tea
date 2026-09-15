@@ -28,3 +28,29 @@ The current instance binds only winding nuclear heat and resistive joints in its
 - **Wall power:** use each temperature stage's refrigeration duty and justified plant efficiency; include warmer intercept refrigeration in total wall power. A single 20 K conversion cannot silently absorb that duty. Additional nuclear heating of coil cases and cooled supports is also explicitly deferred in Stellaris §2.9 (`output.md:2182–2185`); the existing winding-only volume does not establish it.
 
 **Recommended next action [AGENT]:** retry the same bounded request through authorized network access before deciding source adequacy. Then verify captured original pages and put the remaining device choices to the coordinator. The cryogenic chain is not yet implementable from justified inputs. Cooling-slot disposition remains in coordinator-owned `T-004_cooling_slot.md`.
+
+## Retry 1 addendum — 2026-09-15
+
+**[AGENT] Native result: `REGISTERED`.** Authorized elevated network operations retrieved two admissible sources. Return: `knowledge/research/requests/runs/REQ-MCR-CRYO-01/20260915T134156635935/return.json`. The original failed run remains intact. Retry used one further search (four across both attempts), two successful captures, and a precondition refusal that spent no capture. The known CERN paper remains queued after its CDS endpoint returned an Anubis HTML challenge and the departmental mirror failed DNS even with elevation. The short CERN URL redirected to that same unresolved mirror.
+
+A premature keeper note incorrectly said the mirror PDF bytes were verified. A following native log entry corrects that statement: curl had failed and no file existed. The resulting `/tmp/T004-cern-leads.pdf` precondition receipt is an agent execution error, not an additional source for the owner to retrieve. All CERN queue entries refer to the same paper. No capture was made from challenge HTML or web search output.
+
+### Registered evidence and original-content inspection
+
+| Source | What it now establishes | Model transfer limit |
+|---|---|---|
+| `knowledge/sources/nist_g10_cr_fiberglass_epoxy_cryogenic_material_properties/` | Captured NIST table gives separate normal/warp conductivity polynomials. Original rendered table verifies equation domains of 10–300 K and 12–300 K respectively, with 5% fit error relative to data. | Usable material-property function only after support material and orientation are chosen. No support heat-load coefficient, dimensions or intercept layout follows from this source. |
+| `knowledge/sources/layered_thermal_insulation_systems_for_cryogenic/` | Original NASA slide 20 gives a high-vacuum MLI design benchmark below 1 W/m², with effective conductivity below 0.1 mW/(m·K) at 300 K / 77 K, and typical layer density about 2/mm. | A design presentation benchmark, not a device qualification or a 77 K / 20 K flux. Do not apply it directly to the 20 K load or interpret its inequality as a selected nominal value. |
+
+The NASA PDF's printed title is *Layered Thermal Insulation Systems for Industrial and Commercial Applications*, James E. Fesmire, NASA Kennedy Space Center, webinar August 26, 2015. The registration uses a descriptive cryogenic-applications title; the source identity is SHA256 `8773476b3ddab256f03703af1bf8f2384d7628a72c5fb1d35fa850a0c88d7841`. Its original download URL is preserved in registry metadata. NIST raw identity is `6992fc4a372745b3b6a852c4df75eb3f98065db9babb29599a9a2520ee113665`.
+
+Original-content checks are retained under the retry run's `inspection/`: NASA slide 20 rendered from the downloaded PDF and NIST's registered raw HTML rendered with browser-inspect. The NIST sidecar reports missing plot/navigation assets and file-origin CORS errors; the complete static conductivity table and polynomial rendered legibly. No plot was used. No current-lead coefficient has original-page verification.
+
+### Concrete choices still needed
+
+1. **Terminals:** coordinator verified Stellaris original p25 (`evidence/T-004_stellaris_p25.png`), confirming six series groups of eight coils. Choose either twelve leads as an explicit two-terminal-per-group engineering assumption, or wait for a terminal drawing. Twelve is conditional; 96 is unsupported. Either route still needs a qualified lead thermal design at the selected coil current and temperature stages.
+2. **Radiation:** choose device shield/cryostat geometry and insulation specification, or authorize a separately labelled parameter scenario with cold-facing area, emissivity or matched MLI performance, shield temperature, vacuum and seams. NASA's benchmark can check a selected warm shield design; it cannot fill the cold-stage coefficient.
+3. **Supports:** choose a real support layout and material, or authorize an explicit engineering scenario specifying count, area/length, orientation and intercepts. If G10 is selected, the registered conductivity curve can support each segment's heat integration. It does not establish that G10 is mechanically suitable for this reactor.
+4. **Refrigeration:** choose qualified stage efficiencies or explicitly retained efficiency assumptions for both the 20 K and warmer stages. Report the sum of their wall-power demands; keep unresolved case/support nuclear heat and the existing uplift disposition visible.
+
+**Recommendation [AGENT]:** obtain the CERN paper through an accessible primary-author copy or operator retrieval, and seek device terminal/support/shield inputs before selecting numerical additions. The two registrations improve the evidence base but do not make a complete cryogenic inventory implementable. If the owner wants progress using engineering scenarios, the four choices above define what must be authorized; no scenario values were selected here. Cooling-slot choices remain coordinator-owned.
