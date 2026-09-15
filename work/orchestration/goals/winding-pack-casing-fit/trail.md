@@ -67,3 +67,29 @@ The entering comparison at `d64aea81` is preserved. Additional radial-allocation
 ### T-003 start — 2026-09-15
 
 Native implementation · WI-061 and its package consumers · reviewed implementation report and executable evidence. Author owns production/package/oracle/current tests; coordinator owns trail and integration; study preparation remains held.
+
+### Amendment 2026-09-15 — T-003 review coverage and predicate representation
+
+The indicator producer rejects nested comparisons in the original conjunction. WI-061 uses the mathematically equivalent finite minimum-margin predicate, retaining both axis margins; this is a supported native representation, not a seam repair or changed feasible set. The initial failure and generated-code preservation proof remain in native evidence.
+
+The tool refused resuming fit_reviewer and spawning a replacement with `agent thread limit reached`. Implementation-only review is assigned to geometry_research, a session that authored the research report but no native/generated/oracle/test implementation. It must not certify its own research or source recommendations. Original source/math/design coverage remains fit_reviewer's separate PASS at `06a19a3b`; implementation/code/preservation coverage is independently checked against fit_model's work. This split and its authorship boundaries must appear in the review. Coordinator owns any closure coverage outside those independent scopes.
+
+### T-003 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `work/active/WI-061_winding-pack-casing-fit/implementation.md@b69616b3`; production `ece3a7ed`; `evidence/implementation-review.md` (review receipt checkpoint pending).
+- **Reading:** Native fit and preserved reference behavior are established; independent code checks cover geometry, domains, native/oracle agreement and old interfaces. L2/L6 validator residue remains limited to the documented counts/printed-evidence comparison; no full-suite rerun or hardware qualification is claimed.
+- **Decision:** Observed consumer failures · repair current adapters and explicit expected added-predicate sets, preserving historical evidence · execution detail · native author, independently reviewed · WI-061 final receipts and current tests at b69616b3.
+
+### T-004 scope
+
+- **Objective:** Obtain one verified native integration candidate for the reviewed fit package.
+- **Why now:** WI-061 implementation and independent code review are complete.
+- **Scope:** Fixed-point integration with expected semantic/executable/toolchain identities; no package mutation or seam repair.
+- **Inputs:** `goal.md`; WI-061 at b69616b3 and its independent audit checkpoint; expected semantic d61aff71c088a81d1c12da1817511b7aede938df05a34d5a6bd278c56ec55386 and executable c9c9f4c962e8b3d7c06652a22541411ec643d2f44385dee0ed5b145027b820f6.
+- **Done when:** Native CANDIDATE or a named blocker.
+- **Stop when:** Native blocker, reserved gate or declared limit.
+
+### Amendment 2026-09-15 — T-003 review receipt timing
+
+The T-003 return above records the completed native work and independent checks; the review file still awaited the author's final receipt checkpoint when that entry was drafted. T-004 execution remains held until the reviewer records its final verdict against b69616b3 and that audit is committed.
