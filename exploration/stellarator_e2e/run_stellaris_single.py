@@ -240,7 +240,7 @@ def _anchor_gate(values: dict[str, float]) -> bool:
 def _assert_generated_verdicts(outputs) -> None:
     """Check the exact 19 design-point verdicts and the separate aggregate."""
     report = outputs["constraint_report"]
-    print("=== EIGHTEEN VERDICTS (generated ConstraintReport) ===")
+    print("=== NINETEEN VERDICTS (generated ConstraintReport) ===")
     verdicts = {}
     for channel, value in outputs.items():
         if channel.endswith("__evaluation") and hasattr(value, "status"):

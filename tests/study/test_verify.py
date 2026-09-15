@@ -99,7 +99,7 @@ def test_every_catalog_constraint_is_rederived_with_its_operand_count(summary):
                  for c in summary["constraints_rederived"]}
     assert set(rederived) == {
         "beta_ok", "net_positive", "peak_field_ok", "recirc_ok", "tbr_ok", "wall_load_ok",
-        "wp_stress_ok",  # WI-035
+        "wp_stress_ok", "wp_fit_ok",  # WI-035/WI-061
         "sustainment_ok",  # WI-037
         "cond_strain_ok",  # WI-036: the conductor's own check, separate from the structure's
         "burn_hold_ok",  # WI-043: the lower half of the sustainment condition, p_aux_required >= 0
@@ -112,6 +112,7 @@ def test_every_catalog_constraint_is_rederived_with_its_operand_count(summary):
         "heating_source_positive_ok", "heating_source_upper_ok",
         "heating_couple_positive_ok", "heating_couple_upper_ok",
     }
+    assert rederived["wp_fit_ok"] == 1
     assert rederived["net_positive"] == 1  # the other operand is the literal 0.0
     assert rederived["burn_hold_ok"] == 1  # likewise: one computed operand against the literal 0.0
     assert all(count >= 1 for count in rederived.values())

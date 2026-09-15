@@ -101,6 +101,7 @@ def test_current_radius_controls_match_frozen_model_and_independent_oracle(
         "wall_load_ok",
         "sustainment_ok",
         "loop_capacity_ok",
+        "wp_fit_ok",  # R14 retains the .30m allocation, so the .36m nominal pack fails.
     }
 
 

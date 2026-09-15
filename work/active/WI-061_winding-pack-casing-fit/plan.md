@@ -1,5 +1,5 @@
 ---
-Status: preparation
+Status: implemented
 Created: 2026-09-15
 Updated: 2026-09-15
 Related Artifacts: spec.md; design.md; evidence/consumers.md
@@ -13,9 +13,9 @@ Related Artifacts: spec.md; design.md; evidence/consumers.md
 - [x] Add one reviewed manual seed while preserving all twenty-two existing bodies; regenerate twice with WI-060/WI-040 recipe lineage and prove exact package equality.
 - [x] Add independent oracle calculation and complete input/output/operand maps; test component domains, each axis, equality, enlarged packs and parameter causality.
 - [x] Refresh producer-derived census, manifest fingerprints/headline and structural snapshot; update current consumer expectations and explicit ABI additions without modifying historical records.
-- [ ] Compare all old scalar channels and eighteen predicates against coordinator entering data at matched old inputs; explain any deviation before proceeding.
-- [ ] Run native complete validation and appropriate model/study consumer checks; distinguish inherited diagnostics from new failures by identity.
-- [ ] Register traceability and system verification through native PM; record evidence and hand off candidate for independent review, integration and bounded study.
+- [x] Compare all old scalar channels and eighteen predicates against coordinator entering data at matched old inputs; explain any deviation before proceeding.
+- [x] Run native complete validation and appropriate model/study consumer checks; distinguish inherited diagnostics from new failures by identity.
+- [x] Register traceability and system verification through native PM; record evidence and hand off candidate for independent review, integration and bounded study.
 
 ## Evidence obligations
 
@@ -28,4 +28,8 @@ Related Artifacts: spec.md; design.md; evidence/consumers.md
 | R5 | Aspect/cavity perturbations leave tape/material quantities, old thermal outputs and support pricing unchanged | Bounded screen and explicitly held approximations | Pending |
 | R6 | One candidate, immediate-entering comparison and separate eighteen/nineteen feasibility | Coordinator-owned native integration/study | Pending |
 
-Use `.codex-test/run` for Python/toolkit commands. Focused tests belong in `tests/models/test_winding_pack_fit.py`; exact downstream consumer paths are listed in evidence/consumers.md. No implementation checkbox is complete at preparation handoff.
+Use `.codex-test/run` for Python/toolkit commands. Focused tests belong in `tests/models/test_winding_pack_fit.py`; exact downstream consumer paths are listed in evidence/consumers.md. Implementation evidence and remaining downstream ownership are recorded below.
+
+## Completion evidence scope
+
+The baseline preservation test compares all 195 previous native numeric outputs and eighteen prior responses exactly against WI-060 evidence/baseline.json. The coordinator owns off-design preservation across 179 shared oracle-mapped channels and eighteen old predicates. The new fit tests pass 92 cases. The complete model suite reported 968 passes, thirteen inherited skips, four stale expectations and 46 shared radius-fixture errors; the complete affected-file rerun then passed 205 with one final ledger expectation repaired and its whole file passing seven checks. No full-suite rerun is claimed. The L2 warnings and printed L6 summary/first-five diagnostics match WI-060; the retained complete log does not expose every L6 diagnostic identity. The clean-package-dependent rerun passed 210 checks with one skip and two stale expectation failures. Both corrected tests pass with fresh native fixtures in final-corrected-consumers.log; the remaining 48 operand/domain/empty-result checks pass. Final evidence and downstream review/integration/study ownership are recorded in implementation.md.

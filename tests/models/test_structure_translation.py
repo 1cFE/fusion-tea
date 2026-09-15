@@ -5,7 +5,7 @@ the package boundary. These tests pin what that translation may and may not do: 
 bijection onto the live package, translation changes identifiers only, and a planted defect survives it
 (so a mapping mistake cannot be concealed by translating both sides through one ledger).
 """
-from tests.models.current_mfe_regressions import WI061_PARAMETERS, WI061_CHANNELS
+from tests.models.current_mfe_regressions import WI061_PARAMETERS, WI061_CHANNELS, WI061_PREDICATE
 
 import json
 from pathlib import Path
@@ -39,7 +39,7 @@ def test_ledger_is_a_verified_bijection_onto_the_live_package():
     # WI-058 (2026-09-14): k_coil retired from the live contract, c_coil_ref added (the winding length
     # follows the coil bore); the historical bijection is otherwise preserved.
     assert (set(params.values()) - WI058_RETIRED) | WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS == LIVE_PARAMS
-    assert set(outputs.values()) | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS == LIVE_CHANNELS
+    assert set(outputs.values()) | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | {WI061_PREDICATE + "__evaluation"} == LIVE_CHANNELS
     assert not set(params.values()) & (WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS)
     assert WI058_RETIRED <= set(params.values())
     assert not set(outputs.values()) & (WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS)

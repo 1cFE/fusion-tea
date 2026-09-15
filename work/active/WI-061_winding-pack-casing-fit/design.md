@@ -1,5 +1,5 @@
 ---
-Status: draft
+Status: implemented
 Created: 2026-09-15
 Updated: 2026-09-15
 Related Artifacts: spec.md; plan.md; evidence/consumers.md
@@ -60,14 +60,9 @@ The oracle derives nominal area directly from I, reference density and the selec
 
 Nominal reference prediction using s=0.36 m: interior radial width 0.25 m; required radial width 0.370 m; required transverse width 0.379 m; margins −0.120 m and +0.021 m. Fit fails. These predictions expose the inherited allocation conflict rather than establish a manufactured cavity. Included-sheet fy=0 changes only the transverse margin to +0.030 m and cannot resolve the radial failure.
 
-## Open decisions before release
+## Review release
 
-1. Independent reviewer acceptance of the proposed conditional dimensions and excluded-sheet nominal scenario.
-2. Independent reviewer acceptance of the local orientation, inherited nominal-envelope meaning and separate insulation allowances.
-3. Review the use of coil_t as an exterior allocation and its local radial alignment; preserve the expected reference failure rather than tuning the allocation.
-4. Independent reviewer acceptance of holding the old thermal and stress approximations for this additive screen.
-
-The numerical scenario is ready for independent source/math/interface review. Coordinator production release remains required by the preparation brief.
+The independent source/math/interface review in ../../orchestration/goals/winding-pack-casing-fit/evidence/design-review.md accepts the conditional dimensions, excluded-sheet scenario, local orientation and independent coil-layer allocation. It also accepts the explicitly held thermal/stress approximations. The coordinator released production after that review; its editorial corrections are applied.
 
 ## Execution-route adjustment
 
