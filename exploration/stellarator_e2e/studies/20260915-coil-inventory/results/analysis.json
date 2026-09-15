@@ -1,0 +1,962 @@
+{
+  "design": {
+    "candidate_id": "20260915-coil-inventory:c0000",
+    "arm": "arm-a-transect",
+    "column": "design",
+    "source_case": "",
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    },
+    "lcoe": 146.30855606334038,
+    "feasible_18": false,
+    "violated": [
+      "divertor_heat_ok"
+    ],
+    "cryo_MW": 2.137762109226717,
+    "cryo_share": 0.006189819553063146,
+    "magnet_capital": 1779450681.7210624,
+    "support_cost": 209080880.68635386,
+    "support_mass": 11615604.482575215
+  },
+  "columns": [
+    {
+      "arm": "arm-a-transect",
+      "column": "cheap-100",
+      "rows": 10,
+      "feasible_18_rows": 1,
+      "unrestricted_price_minimum": {
+        "candidate_id": "20260915-coil-inventory:c0025",
+        "arm": "arm-a-transect",
+        "column": "cheap-100",
+        "source_case": "",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.0,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+          "stellarator_09__stellaris__plasma__R": 12.7,
+          "stellarator_09__stellaris__plasma__a": 2.1,
+          "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+        },
+        "lcoe": 126.62391359970515,
+        "feasible_18": false,
+        "violated": [
+          "burn_hold_ok",
+          "loop_capacity_ok"
+        ],
+        "cryo_MW": 2.1692244517566976,
+        "cryo_share": 0.011841391508926402,
+        "magnet_capital": 1890793065.2047744,
+        "support_cost": 228486545.24739867,
+        "support_mass": 12693696.958188815
+      },
+      "sampled_feasible_minimum": {
+        "candidate_id": "20260915-coil-inventory:c0013",
+        "arm": "arm-a-transect",
+        "column": "cheap-100",
+        "source_case": "",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.0,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+          "stellarator_09__stellaris__plasma__R": 12.7,
+          "stellarator_09__stellaris__plasma__a": 1.7,
+          "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+        },
+        "lcoe": 135.51216290303634,
+        "feasible_18": true,
+        "violated": [],
+        "cryo_MW": 2.1254443689464835,
+        "cryo_share": 0.007970880717543065,
+        "magnet_capital": 1687402377.6972747,
+        "support_cost": 193430695.20393717,
+        "support_mass": 10746149.733552067
+      }
+    },
+    {
+      "arm": "arm-a-transect",
+      "column": "cheap-220",
+      "rows": 10,
+      "feasible_18_rows": 1,
+      "unrestricted_price_minimum": {
+        "candidate_id": "20260915-coil-inventory:c0026",
+        "arm": "arm-a-transect",
+        "column": "cheap-220",
+        "source_case": "",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.0,
+          "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+          "stellarator_09__stellaris__plasma__R": 12.7,
+          "stellarator_09__stellaris__plasma__a": 2.1,
+          "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+        },
+        "lcoe": 131.7437656493786,
+        "feasible_18": false,
+        "violated": [
+          "burn_hold_ok",
+          "loop_capacity_ok"
+        ],
+        "cryo_MW": 2.1692244517566976,
+        "cryo_share": 0.011841391508926402,
+        "magnet_capital": 1890793065.2047744,
+        "support_cost": 228486545.24739867,
+        "support_mass": 12693696.958188815
+      },
+      "sampled_feasible_minimum": {
+        "candidate_id": "20260915-coil-inventory:c0014",
+        "arm": "arm-a-transect",
+        "column": "cheap-220",
+        "source_case": "",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.0,
+          "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+          "stellarator_09__stellaris__plasma__R": 12.7,
+          "stellarator_09__stellaris__plasma__a": 1.7,
+          "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+        },
+        "lcoe": 141.7644024828237,
+        "feasible_18": true,
+        "violated": [],
+        "cryo_MW": 2.1254443689464835,
+        "cryo_share": 0.007970880717543065,
+        "magnet_capital": 1687402377.6972747,
+        "support_cost": 193430695.20393717,
+        "support_mass": 10746149.733552067
+      }
+    },
+    {
+      "arm": "arm-a-transect",
+      "column": "design",
+      "rows": 10,
+      "feasible_18_rows": 0,
+      "unrestricted_price_minimum": {
+        "candidate_id": "20260915-coil-inventory:c0021",
+        "arm": "arm-a-transect",
+        "column": "design",
+        "source_case": "",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.0,
+          "stellarator_09__stellaris__plasma__R": 12.7,
+          "stellarator_09__stellaris__plasma__a": 2.0
+        },
+        "lcoe": 128.55112533200514,
+        "feasible_18": false,
+        "violated": [
+          "divertor_heat_ok",
+          "burn_hold_ok",
+          "peak_field_ok",
+          "loop_capacity_ok"
+        ],
+        "cryo_MW": 2.2268434370535806,
+        "cryo_share": 0.00984370367248813,
+        "magnet_capital": 2205276708.2076044,
+        "support_cost": 285935840.27629375,
+        "support_mass": 15885324.4597941
+      },
+      "sampled_feasible_minimum": null
+    },
+    {
+      "arm": "arm-R-transect",
+      "column": "cheap-100-a1.7",
+      "rows": 7,
+      "feasible_18_rows": 1,
+      "unrestricted_price_minimum": {
+        "candidate_id": "20260915-coil-inventory:c0033",
+        "arm": "arm-R-transect",
+        "column": "cheap-100-a1.7",
+        "source_case": "",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.0,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+          "stellarator_09__stellaris__plasma__R": 12.0,
+          "stellarator_09__stellaris__plasma__a": 1.7,
+          "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+        },
+        "lcoe": 134.97334015091386,
+        "feasible_18": false,
+        "violated": [
+          "burn_hold_ok"
+        ],
+        "cryo_MW": 2.1254443689464835,
+        "cryo_share": 0.01202493297212627,
+        "magnet_capital": 1696148298.500494,
+        "support_cost": 202176616.00715637,
+        "support_mass": 11232034.2226198
+      },
+      "sampled_feasible_minimum": {
+        "candidate_id": "20260915-coil-inventory:c0013",
+        "arm": "arm-R-transect",
+        "column": "cheap-100-a1.7",
+        "source_case": "",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.0,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+          "stellarator_09__stellaris__plasma__R": 12.7,
+          "stellarator_09__stellaris__plasma__a": 1.7,
+          "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+        },
+        "lcoe": 135.51216290303634,
+        "feasible_18": true,
+        "violated": [],
+        "cryo_MW": 2.1254443689464835,
+        "cryo_share": 0.007970880717543065,
+        "magnet_capital": 1687402377.6972747,
+        "support_cost": 193430695.20393717,
+        "support_mass": 10746149.733552067
+      }
+    },
+    {
+      "arm": "arm-R-transect",
+      "column": "cheap-220-a1.7",
+      "rows": 7,
+      "feasible_18_rows": 1,
+      "unrestricted_price_minimum": {
+        "candidate_id": "20260915-coil-inventory:c0043",
+        "arm": "arm-R-transect",
+        "column": "cheap-220-a1.7",
+        "source_case": "",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.0,
+          "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+          "stellarator_09__stellaris__plasma__R": 12.0,
+          "stellarator_09__stellaris__plasma__a": 1.7,
+          "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+        },
+        "lcoe": 141.6822432242943,
+        "feasible_18": false,
+        "violated": [
+          "burn_hold_ok"
+        ],
+        "cryo_MW": 2.1254443689464835,
+        "cryo_share": 0.01202493297212627,
+        "magnet_capital": 1696148298.500494,
+        "support_cost": 202176616.00715637,
+        "support_mass": 11232034.2226198
+      },
+      "sampled_feasible_minimum": {
+        "candidate_id": "20260915-coil-inventory:c0014",
+        "arm": "arm-R-transect",
+        "column": "cheap-220-a1.7",
+        "source_case": "",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.0,
+          "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+          "stellarator_09__stellaris__plasma__R": 12.7,
+          "stellarator_09__stellaris__plasma__a": 1.7,
+          "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+        },
+        "lcoe": 141.7644024828237,
+        "feasible_18": true,
+        "violated": [],
+        "cryo_MW": 2.1254443689464835,
+        "cryo_share": 0.007970880717543065,
+        "magnet_capital": 1687402377.6972747,
+        "support_cost": 193430695.20393717,
+        "support_mass": 10746149.733552067
+      }
+    },
+    {
+      "arm": "arm-R-transect",
+      "column": "design-a1.3",
+      "rows": 7,
+      "feasible_18_rows": 0,
+      "unrestricted_price_minimum": {
+        "candidate_id": "20260915-coil-inventory:c0032",
+        "arm": "arm-R-transect",
+        "column": "design-a1.3",
+        "source_case": "",
+        "inputs": {
+          "stellarator_09__stellaris__availability_direct": 0.0,
+          "stellarator_09__stellaris__plasma__R": 12.0,
+          "stellarator_09__stellaris__plasma__a": 1.3
+        },
+        "lcoe": 144.37805288569234,
+        "feasible_18": false,
+        "violated": [
+          "peak_field_ok"
+        ],
+        "cryo_MW": 2.137762109226717,
+        "cryo_share": 0.008896939108914351,
+        "magnet_capital": 1788904221.7707543,
+        "support_cost": 218534420.73604578,
+        "support_mass": 12140801.152002543
+      },
+      "sampled_feasible_minimum": null
+    }
+  ],
+  "counts": {
+    "arm-a-transect": {
+      "rows": 30,
+      "feasible_18_rows": 2,
+      "violations_by_predicate": {
+        "wp_stress_ok": 0,
+        "cond_strain_ok": 0,
+        "recirc_ok": 0,
+        "cycle_domain_ok": 0,
+        "beta_ok": 0,
+        "heating_couple_positive_ok": 0,
+        "divertor_heat_ok": 18,
+        "heating_source_upper_ok": 0,
+        "net_positive": 0,
+        "burn_hold_ok": 18,
+        "wall_load_ok": 0,
+        "tbr_ok": 0,
+        "heating_couple_upper_ok": 0,
+        "peak_field_ok": 9,
+        "sustainment_ok": 5,
+        "loop_capacity_ok": 17,
+        "heating_source_positive_ok": 0,
+        "loop_pressure_ok": 0
+      }
+    },
+    "arm-R-transect": {
+      "rows": 21,
+      "feasible_18_rows": 2,
+      "violations_by_predicate": {
+        "wp_stress_ok": 0,
+        "cond_strain_ok": 0,
+        "recirc_ok": 1,
+        "cycle_domain_ok": 0,
+        "beta_ok": 0,
+        "heating_couple_positive_ok": 0,
+        "divertor_heat_ok": 13,
+        "heating_source_upper_ok": 0,
+        "net_positive": 0,
+        "burn_hold_ok": 4,
+        "wall_load_ok": 4,
+        "tbr_ok": 0,
+        "heating_couple_upper_ok": 0,
+        "peak_field_ok": 4,
+        "sustainment_ok": 9,
+        "loop_capacity_ok": 12,
+        "heating_source_positive_ok": 0,
+        "loop_pressure_ok": 0
+      }
+    },
+    "arm-matched-window": {
+      "rows": 108,
+      "feasible_18_rows": 5,
+      "violations_by_predicate": {
+        "wp_stress_ok": 16,
+        "cond_strain_ok": 0,
+        "recirc_ok": 4,
+        "cycle_domain_ok": 0,
+        "beta_ok": 0,
+        "heating_couple_positive_ok": 0,
+        "divertor_heat_ok": 60,
+        "heating_source_upper_ok": 0,
+        "net_positive": 0,
+        "burn_hold_ok": 28,
+        "wall_load_ok": 36,
+        "tbr_ok": 0,
+        "heating_couple_upper_ok": 0,
+        "peak_field_ok": 48,
+        "sustainment_ok": 52,
+        "loop_capacity_ok": 44,
+        "heating_source_positive_ok": 0,
+        "loop_pressure_ok": 0
+      }
+    },
+    "arm-assumptions": {
+      "rows": 24,
+      "feasible_18_rows": 16,
+      "violations_by_predicate": {
+        "wp_stress_ok": 0,
+        "cond_strain_ok": 0,
+        "recirc_ok": 0,
+        "cycle_domain_ok": 0,
+        "beta_ok": 0,
+        "heating_couple_positive_ok": 0,
+        "divertor_heat_ok": 8,
+        "heating_source_upper_ok": 0,
+        "net_positive": 0,
+        "burn_hold_ok": 0,
+        "wall_load_ok": 0,
+        "tbr_ok": 0,
+        "heating_couple_upper_ok": 0,
+        "peak_field_ok": 0,
+        "sustainment_ok": 0,
+        "loop_capacity_ok": 0,
+        "heating_source_positive_ok": 0,
+        "loop_pressure_ok": 0
+      }
+    }
+  },
+  "assumptions": [
+    {
+      "candidate_id": "20260915-coil-inventory:c0156",
+      "arm": "arm-assumptions",
+      "column": "design/equipment-low",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__cryoplant__eps_eff": 0.02,
+        "stellarator_09__stellaris__cryoplant__f_carnot_cryo": 0.3,
+        "stellarator_09__stellaris__cryoplant__f_carnot_shield": 0.3,
+        "stellarator_09__stellaris__cryoplant__f_lead": 1.0,
+        "stellarator_09__stellaris__cryoplant__g_per_coil": 0.01,
+        "stellarator_09__stellaris__cryoplant__q_MLI": 0.5,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "lcoe": 145.9874509567901,
+      "feasible_18": false,
+      "violated": [
+        "divertor_heat_ok"
+      ],
+      "cryo_MW": 1.2025077267567292,
+      "cryo_share": 0.0034913624617179165,
+      "magnet_capital": 1779450681.7210624,
+      "support_cost": 209080880.68635386,
+      "support_mass": 11615604.482575215
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0157",
+      "arm": "arm-assumptions",
+      "column": "design/equipment-high",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__cryoplant__eps_eff": 0.1,
+        "stellarator_09__stellaris__cryoplant__f_carnot_cryo": 0.15,
+        "stellarator_09__stellaris__cryoplant__f_carnot_shield": 0.15,
+        "stellarator_09__stellaris__cryoplant__f_lead": 1.5,
+        "stellarator_09__stellaris__cryoplant__g_per_coil": 0.16,
+        "stellarator_09__stellaris__cryoplant__q_MLI": 2.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "lcoe": 146.7818547052756,
+      "feasible_18": false,
+      "violated": [
+        "divertor_heat_ok"
+      ],
+      "cryo_MW": 3.6586289722356278,
+      "cryo_share": 0.01054673429288046,
+      "magnet_capital": 1779450681.7210624,
+      "support_cost": 209080880.68635386,
+      "support_mass": 11615604.482575215
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0158",
+      "arm": "arm-assumptions",
+      "column": "design/steel-low",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__magnet__casing__steel_price": 3.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "lcoe": 144.0421142644575,
+      "feasible_18": false,
+      "violated": [
+        "divertor_heat_ok"
+      ],
+      "cryo_MW": 2.137762109226717,
+      "cryo_share": 0.006189819553063146,
+      "magnet_capital": 1674910241.3778853,
+      "support_cost": 104540440.34317693,
+      "support_mass": 11615604.482575215
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0159",
+      "arm": "arm-assumptions",
+      "column": "design/steel-high",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__magnet__casing__steel_price": 12.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "lcoe": 150.84143966110605,
+      "feasible_18": false,
+      "violated": [
+        "divertor_heat_ok"
+      ],
+      "cryo_MW": 2.137762109226717,
+      "cryo_share": 0.006189819553063146,
+      "magnet_capital": 1988531562.4074163,
+      "support_cost": 418161761.3727077,
+      "support_mass": 11615604.482575215
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0160",
+      "arm": "arm-assumptions",
+      "column": "design/nonmagnet-residual-zero",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__structure__residual_fraction": 0.0
+      },
+      "lcoe": 145.5680606315563,
+      "feasible_18": false,
+      "violated": [
+        "divertor_heat_ok"
+      ],
+      "cryo_MW": 2.137762109226717,
+      "cryo_share": 0.006189819553063146,
+      "magnet_capital": 1779450681.7210624,
+      "support_cost": 209080880.68635386,
+      "support_mass": 11615604.482575215
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0161",
+      "arm": "arm-assumptions",
+      "column": "design/cooling-residual-zero",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__cryoplant__p_tfcool": 0.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "lcoe": 144.38283950283588,
+      "feasible_18": false,
+      "violated": [
+        "divertor_heat_ok"
+      ],
+      "cryo_MW": 2.137762109226717,
+      "cryo_share": 0.006470862062518805,
+      "magnet_capital": 1779450681.7210624,
+      "support_cost": 209080880.68635386,
+      "support_mass": 11615604.482575215
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0162",
+      "arm": "arm-assumptions",
+      "column": "design/structure-nuclear-proxy",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__cryoplant__q_nuc_structure": 35.5,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "lcoe": 147.37974395106883,
+      "feasible_18": false,
+      "violated": [
+        "divertor_heat_ok"
+      ],
+      "cryo_MW": 5.745859251626643,
+      "cryo_share": 0.016464934368147336,
+      "magnet_capital": 1779450681.7210624,
+      "support_cost": 209080880.68635386,
+      "support_mass": 11615604.482575215
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0163",
+      "arm": "arm-assumptions",
+      "column": "design/thesis-mass-fit",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__magnet__c_support": 1.37,
+        "stellarator_09__stellaris__magnet__e_support": 0.76,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "lcoe": 145.42740349760422,
+      "feasible_18": false,
+      "violated": [
+        "divertor_heat_ok"
+      ],
+      "cryo_MW": 2.137762109226717,
+      "cryo_share": 0.006189819553063146,
+      "magnet_capital": 1738807203.79148,
+      "support_cost": 168437402.75677145,
+      "support_mass": 9357633.486487301
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0164",
+      "arm": "arm-assumptions",
+      "column": "cheap-100/equipment-low",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__cryoplant__eps_eff": 0.02,
+        "stellarator_09__stellaris__cryoplant__f_carnot_cryo": 0.3,
+        "stellarator_09__stellaris__cryoplant__f_carnot_shield": 0.3,
+        "stellarator_09__stellaris__cryoplant__f_lead": 1.0,
+        "stellarator_09__stellaris__cryoplant__g_per_coil": 0.01,
+        "stellarator_09__stellaris__cryoplant__q_MLI": 0.5,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+      },
+      "lcoe": 135.22692033299995,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 1.1928314288673452,
+      "cryo_share": 0.004489223521396455,
+      "magnet_capital": 1687402377.6972747,
+      "support_cost": 193430695.20393717,
+      "support_mass": 10746149.733552067
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0165",
+      "arm": "arm-assumptions",
+      "column": "cheap-100/equipment-high",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__cryoplant__eps_eff": 0.1,
+        "stellarator_09__stellaris__cryoplant__f_carnot_cryo": 0.15,
+        "stellarator_09__stellaris__cryoplant__f_carnot_shield": 0.15,
+        "stellarator_09__stellaris__cryoplant__f_lead": 1.5,
+        "stellarator_09__stellaris__cryoplant__g_per_coil": 0.16,
+        "stellarator_09__stellaris__cryoplant__q_MLI": 2.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+      },
+      "lcoe": 135.9329217300239,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 3.6477941646773715,
+      "cryo_share": 0.01360193331640557,
+      "magnet_capital": 1687402377.6972747,
+      "support_cost": 193430695.20393717,
+      "support_mass": 10746149.733552067
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0166",
+      "arm": "arm-assumptions",
+      "column": "cheap-100/steel-low",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__magnet__casing__steel_price": 3.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+      },
+      "lcoe": 133.60447481426593,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 2.1254443689464835,
+      "cryo_share": 0.007970880717543065,
+      "magnet_capital": 1590687030.0953062,
+      "support_cost": 96715347.60196859,
+      "support_mass": 10746149.733552067
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0167",
+      "arm": "arm-assumptions",
+      "column": "cheap-100/steel-high",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__magnet__casing__steel_price": 12.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+      },
+      "lcoe": 139.32753908057722,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 2.1254443689464835,
+      "cryo_share": 0.007970880717543065,
+      "magnet_capital": 1880833072.901212,
+      "support_cost": 386861390.40787435,
+      "support_mass": 10746149.733552067
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0168",
+      "arm": "arm-assumptions",
+      "column": "cheap-100/nonmagnet-residual-zero",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20,
+        "stellarator_09__stellaris__structure__residual_fraction": 0.0
+      },
+      "lcoe": 134.74007135749008,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 2.1254443689464835,
+      "cryo_share": 0.007970880717543065,
+      "magnet_capital": 1687402377.6972747,
+      "support_cost": 193430695.20393717,
+      "support_mass": 10746149.733552067
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0169",
+      "arm": "arm-assumptions",
+      "column": "cheap-100/cooling-residual-zero",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__cryoplant__p_tfcool": 0.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+      },
+      "lcoe": 133.860064168943,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 2.1254443689464835,
+      "cryo_share": 0.008445995650105979,
+      "magnet_capital": 1687402377.6972747,
+      "support_cost": 193430695.20393717,
+      "support_mass": 10746149.733552067
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0170",
+      "arm": "arm-assumptions",
+      "column": "cheap-100/structure-nuclear-proxy",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__cryoplant__q_nuc_structure": 35.5,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+      },
+      "lcoe": 136.39550624943237,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 5.463467129931094,
+      "cryo_share": 0.020235876245571296,
+      "magnet_capital": 1687402377.6972747,
+      "support_cost": 193430695.20393717,
+      "support_mass": 10746149.733552067
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0171",
+      "arm": "arm-assumptions",
+      "column": "cheap-100/thesis-mass-fit",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__magnet__c_support": 1.37,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__magnet__e_support": 0.76,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+      },
+      "lcoe": 134.77662535480513,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 2.1254443689464835,
+      "cryo_share": 0.007970880717543065,
+      "magnet_capital": 1650112335.3312118,
+      "support_cost": 156140652.83787423,
+      "support_mass": 8674480.713215236
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0172",
+      "arm": "arm-assumptions",
+      "column": "cheap-220/equipment-low",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__cryoplant__eps_eff": 0.02,
+        "stellarator_09__stellaris__cryoplant__f_carnot_cryo": 0.3,
+        "stellarator_09__stellaris__cryoplant__f_carnot_shield": 0.3,
+        "stellarator_09__stellaris__cryoplant__f_lead": 1.0,
+        "stellarator_09__stellaris__cryoplant__g_per_coil": 0.01,
+        "stellarator_09__stellaris__cryoplant__q_MLI": 0.5,
+        "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+      },
+      "lcoe": 141.47376366336368,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 1.1928314288673452,
+      "cryo_share": 0.004489223521396455,
+      "magnet_capital": 1687402377.6972747,
+      "support_cost": 193430695.20393717,
+      "support_mass": 10746149.733552067
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0173",
+      "arm": "arm-assumptions",
+      "column": "cheap-220/equipment-high",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__cryoplant__eps_eff": 0.1,
+        "stellarator_09__stellaris__cryoplant__f_carnot_cryo": 0.15,
+        "stellarator_09__stellaris__cryoplant__f_carnot_shield": 0.15,
+        "stellarator_09__stellaris__cryoplant__f_lead": 1.5,
+        "stellarator_09__stellaris__cryoplant__g_per_coil": 0.16,
+        "stellarator_09__stellaris__cryoplant__q_MLI": 2.0,
+        "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+      },
+      "lcoe": 142.1939588043925,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 3.6477941646773715,
+      "cryo_share": 0.01360193331640557,
+      "magnet_capital": 1687402377.6972747,
+      "support_cost": 193430695.20393717,
+      "support_mass": 10746149.733552067
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0174",
+      "arm": "arm-assumptions",
+      "column": "cheap-220/steel-low",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+        "stellarator_09__stellaris__magnet__casing__steel_price": 3.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+      },
+      "lcoe": 139.85671439405326,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 2.1254443689464835,
+      "cryo_share": 0.007970880717543065,
+      "magnet_capital": 1590687030.0953062,
+      "support_cost": 96715347.60196859,
+      "support_mass": 10746149.733552067
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0175",
+      "arm": "arm-assumptions",
+      "column": "cheap-220/steel-high",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+        "stellarator_09__stellaris__magnet__casing__steel_price": 12.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+      },
+      "lcoe": 145.57977866036452,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 2.1254443689464835,
+      "cryo_share": 0.007970880717543065,
+      "magnet_capital": 1880833072.901212,
+      "support_cost": 386861390.40787435,
+      "support_mass": 10746149.733552067
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0176",
+      "arm": "arm-assumptions",
+      "column": "cheap-220/nonmagnet-residual-zero",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20,
+        "stellarator_09__stellaris__structure__residual_fraction": 0.0
+      },
+      "lcoe": 140.9923109372774,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 2.1254443689464835,
+      "cryo_share": 0.007970880717543065,
+      "magnet_capital": 1687402377.6972747,
+      "support_cost": 193430695.20393717,
+      "support_mass": 10746149.733552067
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0177",
+      "arm": "arm-assumptions",
+      "column": "cheap-220/cooling-residual-zero",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__cryoplant__p_tfcool": 0.0,
+        "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+      },
+      "lcoe": 140.0273947978442,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 2.1254443689464835,
+      "cryo_share": 0.008445995650105979,
+      "magnet_capital": 1687402377.6972747,
+      "support_cost": 193430695.20393717,
+      "support_mass": 10746149.733552067
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0178",
+      "arm": "arm-assumptions",
+      "column": "cheap-220/structure-nuclear-proxy",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__cryoplant__q_nuc_structure": 35.5,
+        "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+      },
+      "lcoe": 142.6669600379619,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 5.463467129931094,
+      "cryo_share": 0.020235876245571296,
+      "magnet_capital": 1687402377.6972747,
+      "support_cost": 193430695.20393717,
+      "support_mass": 10746149.733552067
+    },
+    {
+      "candidate_id": "20260915-coil-inventory:c0179",
+      "arm": "arm-assumptions",
+      "column": "cheap-220/thesis-mass-fit",
+      "source_case": "",
+      "inputs": {
+        "stellarator_09__stellaris__availability_direct": 0.0,
+        "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+        "stellarator_09__stellaris__magnet__c_support": 1.37,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+        "stellarator_09__stellaris__magnet__e_support": 0.76,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.7,
+        "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+      },
+      "lcoe": 141.02886493459246,
+      "feasible_18": true,
+      "violated": [],
+      "cryo_MW": 2.1254443689464835,
+      "cryo_share": 0.007970880717543065,
+      "magnet_capital": 1650112335.3312118,
+      "support_cost": 156140652.83787423,
+      "support_mass": 8674480.713215236
+    }
+  ],
+  "attributed_verdict_flips": 0,
+  "historical_matched_verdict_flips": 0,
+  "note": "Nominal geometric minima exclude assumption-altered cases. Every feasible count requires all18predicates."
+}

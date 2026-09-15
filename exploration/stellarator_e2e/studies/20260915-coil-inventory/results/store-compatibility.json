@@ -1,0 +1,12 @@
+{
+  "study": {
+    "study_id": "20260915-coil-inventory",
+    "executable_fingerprint": "59478649fdead4c3808f4065f110c8deade1ffe37b938bdf027101e84050a29a",
+    "model_contract_fingerprint": "bf7b8afe4fc92c7ce3e713f799a4dcaead0f71c0bc851c93aae640514ab104ea",
+    "study_definition_fingerprint": "bd32a4f9fab0ac4fc4ce2394e6727be2767e9dc4b7eb1dec6e6e23df802535da",
+    "input_schema_version": "input-v1",
+    "evidence_schema_version": "v3",
+    "strategy_identity": "prepared-list/v1",
+    "strategy_config": "0913bdcf0e3fc6d5eaf497db23aecc2f23f16b40f2017dd25f9b5b510df18da9"
+  }
+}

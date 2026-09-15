@@ -62,7 +62,7 @@ oldpc=read(H/'preparation/before-plant-closure-anchors.json');anchors=[]
 for source,b in oldpc['cases'].items():
     col='cheap-100' if source.endswith('c0113') else 'cheap-220'
     r=next(r for r in nom if r['arm_id']=='arm-a-transect' and r['column']==col and float(r['plasma__a'])==1.7)
-    br=b['row'];anchors.append({'source_case':source,'current':values(r),'historical_lcoe':float(br.get('lcoe',br.get(L))),'verdict_flips':{v:[br[v],r[v]] for v in verdicts if br[v]!=r[v]}})
+    br=dict(b['row']); br.update({v['source_local_identity']:br[v['constraint_id']] for v in read(R/'baseline_result.json')['verdicts']});anchors.append({'source_case':source,'current':values(r),'historical_lcoe':float(br.get('lcoe',br.get(L))),'verdict_flips':{v:[br[v],r[v]] for v in verdicts if br[v]!=r[v]}})
 write('comparison-plant-closure.json',{'basis':'Historical reference only; multiple model increments separate packages','source_pin':oldpc['source_pin_extra'],'cases':anchors})
 columns=[]
 for arm in ('arm-a-transect','arm-R-transect'):

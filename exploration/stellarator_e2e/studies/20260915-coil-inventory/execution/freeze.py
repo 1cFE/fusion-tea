@@ -39,12 +39,12 @@ def main():
         bounds = {g['axis']: sorted({p.get(g['keys'][0]['key'], 'default') for p in pts}, key=lambda v: (isinstance(v, str), v)) for g in axes}
         arms.append({'arm_id': arm, 'store_id': 'study',
             'effective_executable_fingerprint': {'value': EXE, 'inputs': None, 'no_adapter': True, 'note': 'No adapter exists; the sealed fingerprint is the identity.'},
-            'entry_models': {'note': 'stock strict loader; one entry model per authored plant attribute (study_route.prepare)'},
+            'entry_models': {'note': 'stock strict loader; ten generated input groups, with all input files retained in preparation/package-inputs'},
             'strategy': {'kind': 'PreparedListStrategy', 'proposals_in_arm': len(pts), 'definition_fingerprint': compat['study']['study_definition_fingerprint']},
             'window': {'bounds': bounds, 'points': len(pts), 'provenance': 'engineered'},
             'verification': {'command': ver['command'], 'tool_revision': ver['tool']['source_digest'], 'sampling_scheme': 'generic verify.py stratified sample by verdict combination over the shared store, plus the record-local all-point comparison of every oracle-published required channel at every point of every arm (results/oracle-all-points.json) and the c_coil / vol_cold_total identities', 'tolerance': {'oracle_relative': 1e-9, 'identity_relative': 1e-12, 'predicates': 'authored exact operators'}, 'summary_sha256': sha(R / 'verification_summary.json'), 'all_points_sha256': sha(R / 'oracle-all-points.json'), 'all_points_outcome': allpts['outcome']},
             'glue_ledger': [], 'glue_ledger_none': True, 'artifacts': artifacts(R)})
-    local = [str((H / n).relative_to(ROOT)) for n in ('study.py', 'execution/execute.py', 'execution/analyze.py', 'execution/scan.py', 'execution/freeze.py')]
+    local = [str((H / n).relative_to(ROOT)) for n in ('study.py', 'execution/execute.py', 'execution/analyze.py', 'execution/scan.py', 'execution/freeze.py', 'execution/write_record.py')]
     tools.append({'path': str((H / 'execution/execute.py').relative_to(ROOT)), 'source_digest': common.tool_source_digest(tuple(local))})
     seen = set(); tools = [t for t in tools if not (t['path'] in seen or seen.add(t['path']))]
     teax_rev = subprocess.check_output(['git', '-C', str(Path(inspect.getfile(importlib.import_module('simkit.study.store'))).parents[4]), 'rev-parse', 'HEAD'], text=True).strip()

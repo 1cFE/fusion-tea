@@ -1,0 +1,20 @@
+{
+  "started_at_utc": "2026-09-15T14:48:23.819668+00:00",
+  "finished_at_utc": "2026-09-15T14:52:02.755016+00:00",
+  "elapsed_seconds": 218.93536734580994,
+  "repo_revision": "b8cd9ab9e6714081d16763ccbee009725f961423",
+  "arms": {
+    "study": {
+      "cases": 180,
+      "unique_proposals": 180,
+      "states": {
+        "completed": 180
+      },
+      "elapsed_seconds": 218.90291810035706,
+      "failures": [],
+      "store": "results/study/_work/20260915-coil-inventory.db"
+    }
+  },
+  "rows_exported": 183,
+  "publication": "complete"
+}

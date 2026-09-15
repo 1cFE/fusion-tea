@@ -1,0 +1,4 @@
+arm-a-transect 30 oracle18-feasible 2
+arm-R-transect 21 oracle18-feasible 2
+arm-matched-window 108 oracle18-feasible 5
+arm-assumptions 24 oracle18-feasible 16

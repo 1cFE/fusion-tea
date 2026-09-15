@@ -1,0 +1,16 @@
+{
+  "outcome": "pass",
+  "rows": 183,
+  "scalar_comparisons": 7320,
+  "predicate_comparisons": 3294,
+  "max_relative_deviation": 6.190851730676946e-16,
+  "failures": [],
+  "identity_checks": [
+    "bore circumference",
+    "cold volume"
+  ],
+  "unmapped_required_channels": [
+    "stellarator_09__stellaris__magnet__coil_length__c_coil",
+    "stellarator_09__stellaris__magnet__wp_volume__vol_cold_total"
+  ]
+}

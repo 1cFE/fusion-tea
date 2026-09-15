@@ -1,0 +1,165 @@
+[
+  {
+    "arm": "arm-a-transect",
+    "column": "cheap-100",
+    "feasible_anchor": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "edges": [
+      {
+        "coordinate": 1.3,
+        "caught_by": [
+          "divertor_heat_ok",
+          "sustainment_ok"
+        ]
+      },
+      {
+        "coordinate": 2.2,
+        "caught_by": [
+          "burn_hold_ok",
+          "loop_capacity_ok"
+        ]
+      }
+    ],
+    "interpretation": "engineered sensitivity window; no boundary claim"
+  },
+  {
+    "arm": "arm-a-transect",
+    "column": "cheap-220",
+    "feasible_anchor": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "edges": [
+      {
+        "coordinate": 1.3,
+        "caught_by": [
+          "divertor_heat_ok",
+          "sustainment_ok"
+        ]
+      },
+      {
+        "coordinate": 2.2,
+        "caught_by": [
+          "burn_hold_ok",
+          "loop_capacity_ok"
+        ]
+      }
+    ],
+    "interpretation": "engineered sensitivity window; no boundary claim"
+  },
+  {
+    "arm": "arm-a-transect",
+    "column": "design",
+    "feasible_anchor": null,
+    "edges": [
+      {
+        "coordinate": 1.3,
+        "caught_by": [
+          "divertor_heat_ok"
+        ]
+      },
+      {
+        "coordinate": 2.2,
+        "caught_by": [
+          "divertor_heat_ok",
+          "burn_hold_ok",
+          "peak_field_ok",
+          "loop_capacity_ok"
+        ]
+      }
+    ],
+    "interpretation": "engineered sensitivity window; no boundary claim"
+  },
+  {
+    "arm": "arm-R-transect",
+    "column": "cheap-100-a1.7",
+    "feasible_anchor": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "edges": [
+      {
+        "coordinate": 11.43,
+        "caught_by": [
+          "burn_hold_ok",
+          "peak_field_ok"
+        ]
+      },
+      {
+        "coordinate": 15.7,
+        "caught_by": [
+          "divertor_heat_ok",
+          "sustainment_ok",
+          "loop_capacity_ok"
+        ]
+      }
+    ],
+    "interpretation": "engineered sensitivity window; no boundary claim"
+  },
+  {
+    "arm": "arm-R-transect",
+    "column": "cheap-220-a1.7",
+    "feasible_anchor": {
+      "stellarator_09__stellaris__availability_direct": 0.0,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.7,
+      "stellarator_09__stellaris__heating__p_wallplug_heat": 220.0,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 13000000.0,
+      "stellarator_09__stellaris__plasma__n_e0": 4.048e+20
+    },
+    "edges": [
+      {
+        "coordinate": 11.43,
+        "caught_by": [
+          "burn_hold_ok",
+          "peak_field_ok"
+        ]
+      },
+      {
+        "coordinate": 15.7,
+        "caught_by": [
+          "divertor_heat_ok",
+          "sustainment_ok",
+          "loop_capacity_ok"
+        ]
+      }
+    ],
+    "interpretation": "engineered sensitivity window; no boundary claim"
+  },
+  {
+    "arm": "arm-R-transect",
+    "column": "design-a1.3",
+    "feasible_anchor": null,
+    "edges": [
+      {
+        "coordinate": 11.43,
+        "caught_by": [
+          "peak_field_ok"
+        ]
+      },
+      {
+        "coordinate": 15.7,
+        "caught_by": [
+          "recirc_ok",
+          "divertor_heat_ok",
+          "wall_load_ok",
+          "sustainment_ok",
+          "loop_capacity_ok"
+        ]
+      }
+    ],
+    "interpretation": "engineered sensitivity window; no boundary claim"
+  }
+]

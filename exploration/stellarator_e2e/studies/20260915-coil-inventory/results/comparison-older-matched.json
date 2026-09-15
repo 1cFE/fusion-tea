@@ -1,0 +1,766 @@
+{
+  "basis": "Historical reference only; multiple model increments separate packages",
+  "source_pin": {
+    "executable": "8ff5bb7c3d71f235be697e254766d3e0f552f3b94b46831da62a08a9755122a5",
+    "semantic": "2c2788662c148ccae3f61d1f58e510cedcfcddb6b0b489878ec8d7ebd6f1c08e",
+    "record_commit": "fa195fa4"
+  },
+  "cases": [
+    {
+      "source_case": "20260913-magnet-design-transfer:c0000",
+      "current_case": "20260915-coil-inventory:c0048",
+      "lcoe_before": 155.10806071361716,
+      "lcoe_after": 162.06361682203058,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0001",
+      "current_case": "20260915-coil-inventory:c0049",
+      "lcoe_before": 157.56110686899436,
+      "lcoe_after": 164.67953636540295,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0002",
+      "current_case": "20260915-coil-inventory:c0050",
+      "lcoe_before": 158.78367477618642,
+      "lcoe_after": 165.98330662033072,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0003",
+      "current_case": "20260915-coil-inventory:c0051",
+      "lcoe_before": 159.9163046842151,
+      "lcoe_after": 167.19118245097033,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0004",
+      "current_case": "20260915-coil-inventory:c0052",
+      "lcoe_before": 149.81160190255588,
+      "lcoe_after": 157.4725448507744,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0005",
+      "current_case": "20260915-coil-inventory:c0053",
+      "lcoe_before": 152.45555031223662,
+      "lcoe_after": 160.2920128263728,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0006",
+      "current_case": "20260915-coil-inventory:c0054",
+      "lcoe_before": 153.77326523063655,
+      "lcoe_after": 161.69723942914885,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0007",
+      "current_case": "20260915-coil-inventory:c0055",
+      "lcoe_before": 154.9940450226061,
+      "lcoe_after": 162.99911407235288,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0008",
+      "current_case": "20260915-coil-inventory:c0056",
+      "lcoe_before": 150.93556975392536,
+      "lcoe_after": 159.8243153936222,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0009",
+      "current_case": "20260915-coil-inventory:c0057",
+      "lcoe_before": 153.92454025167353,
+      "lcoe_after": 163.01199513653347,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0010",
+      "current_case": "20260915-coil-inventory:c0058",
+      "lcoe_before": 155.41422087265332,
+      "lcoe_after": 164.60075507861222,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0011",
+      "current_case": "20260915-coil-inventory:c0059",
+      "lcoe_before": 156.79432246238605,
+      "lcoe_after": 166.07267401047594,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0012",
+      "current_case": "20260915-coil-inventory:c0060",
+      "lcoe_before": 134.295363332298,
+      "lcoe_after": 141.38697782186142,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0013",
+      "current_case": "20260915-coil-inventory:c0061",
+      "lcoe_before": 136.26682064908087,
+      "lcoe_after": 143.57903038740787,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0014",
+      "current_case": "20260915-coil-inventory:c0062",
+      "lcoe_before": 137.24935736588782,
+      "lcoe_after": 144.6715328462783,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0015",
+      "current_case": "20260915-coil-inventory:c0063",
+      "lcoe_before": 138.15960606490987,
+      "lcoe_after": 145.68367212347363,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0016",
+      "current_case": "20260915-coil-inventory:c0064",
+      "lcoe_before": 134.22073230550558,
+      "lcoe_after": 142.39223160063574,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0017",
+      "current_case": "20260915-coil-inventory:c0065",
+      "lcoe_before": 136.44734440355487,
+      "lcoe_after": 144.86818585937627,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0018",
+      "current_case": "20260915-coil-inventory:c0066",
+      "lcoe_before": 137.55705049679997,
+      "lcoe_after": 146.102192447196,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0019",
+      "current_case": "20260915-coil-inventory:c0067",
+      "lcoe_before": 138.58511552154644,
+      "lcoe_after": 147.24543267044012,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0020",
+      "current_case": "20260915-coil-inventory:c0068",
+      "lcoe_before": 135.18715444835325,
+      "lcoe_after": 144.82117419825354,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0021",
+      "current_case": "20260915-coil-inventory:c0069",
+      "lcoe_before": 137.75250700708233,
+      "lcoe_after": 147.67425463117218,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0022",
+      "current_case": "20260915-coil-inventory:c0070",
+      "lcoe_before": 139.0310463670934,
+      "lcoe_after": 149.09623658775539,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0023",
+      "current_case": "20260915-coil-inventory:c0071",
+      "lcoe_before": 140.21553012314908,
+      "lcoe_after": 150.4136358933664,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0024",
+      "current_case": "20260915-coil-inventory:c0072",
+      "lcoe_before": 123.634303490505,
+      "lcoe_after": 131.1126568511112,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0025",
+      "current_case": "20260915-coil-inventory:c0073",
+      "lcoe_before": 125.34623334078537,
+      "lcoe_after": 133.09432119328207,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0026",
+      "current_case": "20260915-coil-inventory:c0074",
+      "lcoe_before": 126.19942031013618,
+      "lcoe_after": 134.0819615873514,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0027",
+      "current_case": "20260915-coil-inventory:c0075",
+      "lcoe_before": 126.9898322042369,
+      "lcoe_after": 134.99694865813993,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0028",
+      "current_case": "20260915-coil-inventory:c0076",
+      "lcoe_before": 126.23384387973363,
+      "lcoe_after": 135.12181884192384,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0029",
+      "current_case": "20260915-coil-inventory:c0077",
+      "lcoe_before": 128.23123880840143,
+      "lcoe_after": 137.4342233955393,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0030",
+      "current_case": "20260915-coil-inventory:c0078",
+      "lcoe_before": 129.22670051404847,
+      "lcoe_after": 138.5867116022052,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0031",
+      "current_case": "20260915-coil-inventory:c0079",
+      "lcoe_before": 130.14892231183563,
+      "lcoe_after": 139.6544260152652,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0032",
+      "current_case": "20260915-coil-inventory:c0080",
+      "lcoe_before": 129.60130422636047,
+      "lcoe_after": 140.37319495186722,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0033",
+      "current_case": "20260915-coil-inventory:c0081",
+      "lcoe_before": 131.97188392618617,
+      "lcoe_after": 143.11820570921597,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0034",
+      "current_case": "20260915-coil-inventory:c0082",
+      "lcoe_before": 133.15334439555832,
+      "lcoe_after": 144.4863205717222,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0035",
+      "current_case": "20260915-coil-inventory:c0083",
+      "lcoe_before": 134.24788696773808,
+      "lcoe_after": 145.7538116422973,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0036",
+      "current_case": "20260915-coil-inventory:c0084",
+      "lcoe_before": 184.8883252693738,
+      "lcoe_after": 187.68253554604377,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0037",
+      "current_case": "20260915-coil-inventory:c0085",
+      "lcoe_before": 187.6797194041888,
+      "lcoe_after": 190.36149407443475,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0038",
+      "current_case": "20260915-coil-inventory:c0086",
+      "lcoe_before": 189.0709226669323,
+      "lcoe_after": 191.69668147682302,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0039",
+      "current_case": "20260915-coil-inventory:c0087",
+      "lcoe_before": 190.35978658118242,
+      "lcoe_after": 192.93366295506536,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0040",
+      "current_case": "20260915-coil-inventory:c0088",
+      "lcoe_before": 162.339952799322,
+      "lcoe_after": 165.20219741340324,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0041",
+      "current_case": "20260915-coil-inventory:c0089",
+      "lcoe_before": 165.0883116316636,
+      "lcoe_after": 167.83945236040393,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0042",
+      "current_case": "20260915-coil-inventory:c0090",
+      "lcoe_before": 166.45806370734203,
+      "lcoe_after": 169.1538560874167,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0043",
+      "current_case": "20260915-coil-inventory:c0091",
+      "lcoe_before": 167.7270529260252,
+      "lcoe_after": 170.37158322093515,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0044",
+      "current_case": "20260915-coil-inventory:c0092",
+      "lcoe_before": 155.63629437017505,
+      "lcoe_after": 158.8740087396922,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0045",
+      "current_case": "20260915-coil-inventory:c0093",
+      "lcoe_before": 158.5840629555718,
+      "lcoe_after": 161.70253854421327,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0046",
+      "current_case": "20260915-coil-inventory:c0094",
+      "lcoe_before": 160.05320306466135,
+      "lcoe_after": 163.1122809207718,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0047",
+      "current_case": "20260915-coil-inventory:c0095",
+      "lcoe_before": 161.4142718630266,
+      "lcoe_after": 164.41833879734753,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0048",
+      "current_case": "20260915-coil-inventory:c0096",
+      "lcoe_before": 151.93027370669455,
+      "lcoe_after": 155.43786036896051,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0049",
+      "current_case": "20260915-coil-inventory:c0097",
+      "lcoe_before": 154.02860010072465,
+      "lcoe_after": 157.5374049424581,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0050",
+      "current_case": "20260915-coil-inventory:c0098",
+      "lcoe_before": 155.07436538115905,
+      "lcoe_after": 158.58379719833067,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0051",
+      "current_case": "20260915-coil-inventory:c0099",
+      "lcoe_before": 156.04319054289135,
+      "lcoe_after": 159.55321521463134,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0052",
+      "current_case": "20260915-coil-inventory:c0100",
+      "lcoe_before": 140.30394531830808,
+      "lcoe_after": 144.10400103254997,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0053",
+      "current_case": "20260915-coil-inventory:c0101",
+      "lcoe_before": 142.50725862880648,
+      "lcoe_after": 146.30855606334038,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0054",
+      "current_case": "20260915-coil-inventory:c0102",
+      "lcoe_before": 143.60534918641727,
+      "lcoe_after": 147.40728929464174,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0055",
+      "current_case": "20260915-coil-inventory:c0103",
+      "lcoe_before": 144.6226511239258,
+      "lcoe_after": 148.42520078378442,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0056",
+      "current_case": "20260915-coil-inventory:c0104",
+      "lcoe_before": 139.44389740384148,
+      "lcoe_after": 143.89032761162562,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0057",
+      "current_case": "20260915-coil-inventory:c0105",
+      "lcoe_before": 141.9261077997524,
+      "lcoe_after": 146.3740855896593,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0058",
+      "current_case": "20260915-coil-inventory:c0106",
+      "lcoe_before": 143.16320194874706,
+      "lcoe_after": 147.61198085049512,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0059",
+      "current_case": "20260915-coil-inventory:c0107",
+      "lcoe_before": 144.3092847210595,
+      "lcoe_after": 148.75882330185098,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0060",
+      "current_case": "20260915-coil-inventory:c0108",
+      "lcoe_before": 136.0607283275773,
+      "lcoe_after": 140.18003043613317,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0061",
+      "current_case": "20260915-coil-inventory:c0109",
+      "lcoe_before": 137.8101555914728,
+      "lcoe_after": 142.00230658851206,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0062",
+      "current_case": "20260915-coil-inventory:c0110",
+      "lcoe_before": 138.68202794984708,
+      "lcoe_after": 142.9105039205405,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0063",
+      "current_case": "20260915-coil-inventory:c0111",
+      "lcoe_before": 139.4897490644958,
+      "lcoe_after": 143.75188861722518,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0064",
+      "current_case": "20260915-coil-inventory:c0112",
+      "lcoe_before": 129.13346720621374,
+      "lcoe_after": 133.75104117625037,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0065",
+      "current_case": "20260915-coil-inventory:c0113",
+      "lcoe_before": 131.04449868587383,
+      "lcoe_after": 135.74173612927905,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0066",
+      "current_case": "20260915-coil-inventory:c0114",
+      "lcoe_before": 131.99691358481815,
+      "lcoe_after": 136.7338768246985,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0067",
+      "current_case": "20260915-coil-inventory:c0115",
+      "lcoe_before": 132.8792528663747,
+      "lcoe_after": 137.65303285757037,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0068",
+      "current_case": "20260915-coil-inventory:c0116",
+      "lcoe_before": 131.20901547672034,
+      "lcoe_after": 136.7553921806631,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0069",
+      "current_case": "20260915-coil-inventory:c0117",
+      "lcoe_before": 133.4358844696388,
+      "lcoe_after": 139.07533794016783,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0070",
+      "current_case": "20260915-coil-inventory:c0118",
+      "lcoe_before": 134.5457125818463,
+      "lcoe_after": 140.23158395683936,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0071",
+      "current_case": "20260915-coil-inventory:c0119",
+      "lcoe_before": 135.57388739397965,
+      "lcoe_after": 141.30277934872743,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0072",
+      "current_case": "20260915-coil-inventory:c0120",
+      "lcoe_before": 238.1659220547143,
+      "lcoe_after": 236.54317716608423,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0073",
+      "current_case": "20260915-coil-inventory:c0121",
+      "lcoe_before": 241.6402891918724,
+      "lcoe_after": 239.57510619128504,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0074",
+      "current_case": "20260915-coil-inventory:c0122",
+      "lcoe_before": 243.37190740211364,
+      "lcoe_after": 241.08622489801775,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0075",
+      "current_case": "20260915-coil-inventory:c0123",
+      "lcoe_before": 244.9761615585503,
+      "lcoe_after": 242.48620463329243,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0076",
+      "current_case": "20260915-coil-inventory:c0124",
+      "lcoe_before": 194.2707420611349,
+      "lcoe_after": 192.85543672886152,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0077",
+      "current_case": "20260915-coil-inventory:c0125",
+      "lcoe_before": 197.41200827189584,
+      "lcoe_after": 195.5956494935515,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0078",
+      "current_case": "20260915-coil-inventory:c0126",
+      "lcoe_before": 198.9775914134128,
+      "lcoe_after": 196.96136732049501,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0079",
+      "current_case": "20260915-coil-inventory:c0127",
+      "lcoe_before": 200.4280121426338,
+      "lcoe_after": 198.22663447485974,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0080",
+      "current_case": "20260915-coil-inventory:c0128",
+      "lcoe_before": 169.13510001651613,
+      "lcoe_after": 167.86680655600617,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0081",
+      "current_case": "20260915-coil-inventory:c0129",
+      "lcoe_before": 172.21191170219726,
+      "lcoe_after": 170.55038741141888,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0082",
+      "current_case": "20260915-coil-inventory:c0130",
+      "lcoe_before": 173.74536743678502,
+      "lcoe_after": 171.8878807170242,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0083",
+      "current_case": "20260915-coil-inventory:c0131",
+      "lcoe_before": 175.1660220071069,
+      "lcoe_after": 173.12699961461124,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0084",
+      "current_case": "20260915-coil-inventory:c0132",
+      "lcoe_before": 179.74965243522618,
+      "lcoe_after": 180.03924972207957,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0085",
+      "current_case": "20260915-coil-inventory:c0133",
+      "lcoe_before": 182.11480335290202,
+      "lcoe_after": 182.19068227223835,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0086",
+      "current_case": "20260915-coil-inventory:c0134",
+      "lcoe_before": 183.29355443404972,
+      "lcoe_after": 183.2629351828065,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0087",
+      "current_case": "20260915-coil-inventory:c0135",
+      "lcoe_before": 184.38558471610438,
+      "lcoe_after": 184.2563117136334,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0088",
+      "current_case": "20260915-coil-inventory:c0136",
+      "lcoe_before": 159.9947923411948,
+      "lcoe_after": 160.3697574394414,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0089",
+      "current_case": "20260915-coil-inventory:c0137",
+      "lcoe_before": 162.36277363635153,
+      "lcoe_after": 162.52349768534182,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0090",
+      "current_case": "20260915-coil-inventory:c0138",
+      "lcoe_before": 163.54293245717298,
+      "lcoe_after": 163.59690139181282,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0091",
+      "current_case": "20260915-coil-inventory:c0139",
+      "lcoe_before": 164.63626536766927,
+      "lcoe_after": 164.59134435285668,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0092",
+      "current_case": "20260915-coil-inventory:c0140",
+      "lcoe_before": 146.7235438352884,
+      "lcoe_after": 147.2395360662845,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0093",
+      "current_case": "20260915-coil-inventory:c0141",
+      "lcoe_before": 149.20223776034717,
+      "lcoe_after": 149.4939152595501,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0094",
+      "current_case": "20260915-coil-inventory:c0142",
+      "lcoe_before": 150.437576187258,
+      "lcoe_after": 150.61748119778665,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0095",
+      "current_case": "20260915-coil-inventory:c0143",
+      "lcoe_before": 151.58203069911798,
+      "lcoe_after": 151.6583991429579,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0096",
+      "current_case": "20260915-coil-inventory:c0144",
+      "lcoe_before": 155.02655513324865,
+      "lcoe_after": 156.3998636335096,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0097",
+      "current_case": "20260915-coil-inventory:c0145",
+      "lcoe_before": 156.90180291949585,
+      "lcoe_after": 158.17556330933368,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0098",
+      "current_case": "20260915-coil-inventory:c0146",
+      "lcoe_before": 157.8363820385272,
+      "lcoe_after": 159.06054559123902,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0099",
+      "current_case": "20260915-coil-inventory:c0147",
+      "lcoe_before": 158.7021966540175,
+      "lcoe_after": 159.880421961962,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0100",
+      "current_case": "20260915-coil-inventory:c0148",
+      "lcoe_before": 143.65596272125254,
+      "lcoe_after": 145.19638636953636,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0101",
+      "current_case": "20260915-coil-inventory:c0149",
+      "lcoe_before": 145.6357266946934,
+      "lcoe_after": 147.07098932712935,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0102",
+      "current_case": "20260915-coil-inventory:c0150",
+      "lcoe_before": 146.6223945536309,
+      "lcoe_after": 148.0052662775863,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0103",
+      "current_case": "20260915-coil-inventory:c0151",
+      "lcoe_before": 147.53646566143843,
+      "lcoe_after": 148.8708123965212,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0104",
+      "current_case": "20260915-coil-inventory:c0152",
+      "lcoe_before": 135.45276544892772,
+      "lcoe_after": 137.2561319790275,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0105",
+      "current_case": "20260915-coil-inventory:c0153",
+      "lcoe_before": 137.6107627742886,
+      "lcoe_after": 139.29956451814644,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0106",
+      "current_case": "20260915-coil-inventory:c0154",
+      "lcoe_before": 138.68626185952164,
+      "lcoe_after": 140.31798974735668,
+      "verdict_flips": {}
+    },
+    {
+      "source_case": "20260913-magnet-design-transfer:c0107",
+      "current_case": "20260915-coil-inventory:c0155",
+      "lcoe_before": 139.68263067767637,
+      "lcoe_after": 141.2614971536605,
+      "verdict_flips": {}
+    }
+  ]
+}
