@@ -93,3 +93,27 @@ The tool refused resuming fit_reviewer and spawning a replacement with `agent th
 ### Amendment 2026-09-15 — T-003 review receipt timing
 
 The T-003 return above records the completed native work and independent checks; the review file still awaited the author's final receipt checkpoint when that entry was drafted. T-004 execution remains held until the reviewer records its final verdict against b69616b3 and that audit is committed.
+
+### T-004 start — 2026-09-15
+
+Native integration · reviewed WI-061 at `3ec343aa` · `evidence/T-004_integration/integration_return.json`. Independent bounded implementation PASS is now committed; expected package remains ece3a7ed's identity.
+
+### T-004 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `evidence/T-004_integration/integration_return.json` (checkpoint pending).
+- **Reading:** All ten native gates pass. One CANDIDATE is promoted: indicator pin d3fa4470683c23eb013efbddefaf2ee49ffd7a607e464bb151be9afbd3bd6735, semantic d61aff71c088a81d1c12da1817511b7aede938df05a34d5a6bd278c56ec55386, executable c9c9f4c962e8b3d7c06652a22541411ec643d2f44385dee0ed5b145027b820f6.
+- **Decision:** Reviewed package passes native fixed-point proof · release study at this sole candidate · execution detail · coordinator · new study record 20260915-winding-pack-casing-fit. Integration's disclosed read-set coverage limit remains unchanged.
+
+### T-005 scope
+
+- **Objective:** Measure old-predicate and fit-inclusive feasibility and sampled cheapest choices for reference/enlarged packs and declared geometry sensitivities.
+- **Why now:** The reviewed candidate passed all ten integration gates.
+- **Scope:** One bounded native study, at most150unique cases, complete mapped oracle/verdict verification and entering comparisons; no model or package changes.
+- **Inputs:** `goal.md`; T-004 CANDIDATE; entering comparisons at d64aea81/1b521a71; reviewed WI-061 assumptions and evidence/study-brief.md.
+- **Done when:** Committed native study and executor reading expose geometric failures, costs, qualification limits and findings.
+- **Stop when:** Prerequisite, strategy blocker, reserved gate or declared limit.
+
+### T-005 start — 2026-09-15
+
+Native study · `exploration/stellarator_e2e/studies/20260915-winding-pack-casing-fit/` · bounded scan, native execution, verification, frozen record and reading. The author owns study files/first sightings only; candidate and oracle remain fixed. Source/design and implementation review coverage is reused for unchanged equations and assumptions. Engineered sensitivities use the owner's delegated judgment, not a device-specific optimization claim.
