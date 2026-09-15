@@ -98,3 +98,27 @@ T-004 · native integration seam · expected `evidence/T-004_integration/integra
 ### T-003 native execution release — 2026-09-15
 
 Proceed from the completed final oracle scan under `evidence/execution-release.json`. Reuse independent source/interface and implementation coverage; coordinator framing/sample check is `evidence/preexecution-check.md`. Final independent review will inspect frozen study outcomes and answer. No separate preexecution critic is required because no source equation, interface or scientific assumption changed beyond the explicitly reviewed scenario interpretation.
+
+### T-003 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** Frozen native study `exploration/stellarator_e2e/studies/20260915-absolute-conductor-current-margin/record.md@e1f5516b`; snapshot SHA256 `7980b775611fd1b7855a8b69c8f6dfede2c2ec996aa2f3aef7aae2efa0bf75f4`; 445 hashed artifacts and 453 required retained files.
+- **Reading:** All 295 unique native cases completed. All-point oracle verification passes 61,065 mapped scalar and 5,900 predicate comparisons. All twelve entering nineteen-predicate passes fail the new current predicate under default assumptions. Thirteen conditional combined passes require orientation factor 3. Nominal fit failure and old equations remain unchanged.
+- **Decision:** Completed native execution and joined verification → freeze one study and answer the bounded question; execution detail; coordinator [AGENT]; changed answer and twenty-four joined finding dispositions. No new model, candidate or study is proposed.
+- **Decision:** Native export joins represented the same numeric input as integer 2 versus float 2.0 → normalize numeric comparison in export only; mechanical execution detail inside T-003; study executor [AGENT]; no case rerun, input change, predicate change or semantic retry.
+
+The initial execution invocation lacked the documented simkit import path and stopped before evaluation. The corrected invocation completed the fixed sample. This operational command correction did not change scope, sample, assumptions or package identity.
+
+### Round 1 result — 2026-09-15
+
+- **Intent:** Met for an explicit conditional absolute-current estimate; final independent frozen-study/answer assurance remains pending.
+- **Task sequence:** T-001 research COMPLETE; T-002 native implementation and independent source/implementation review COMPLETE; T-004 native integration COMPLETE; T-003 frozen native study and reading COMPLETE.
+- **Last semantic outcome:** COMPLETE from a valid committed study reading.
+- **Stop reason:** Valid study reading plus no cap or unresolved owner gate closes this round under the runbook's study-reading trigger. No further technical model or study work is proposed.
+- **Evidence refs:** Model/package `09178a90`; author verification `2f4c2efc`; accepted independent audit `f380b225`; integration and execution release `b6004314`; frozen study `e1f5516b`. The answer and disposition table are current working artifacts submitted for final review. One promoted pin and one frozen study were used; cited source and executable authority did not change after audit.
+- **Proposed learning delta:** L-001: Absolute source-derived normalization exposes a default reference-current failure that the selected field ceiling cannot detect; retain both predicates and distinguish reference-conductor capacity from set-average or worst-coil qualification. L-002: An explicit orientation scenario can restore sampled current passes, but retention and construction uncertainties prevent qualification or a supplier cost/performance claim. L-003: Physical tape/conductor length provides parallel capacity while series turns cancel; fixed-ampere-turn repartition preserves operating fraction and tape procurement, and the single operating allowance does not require resizing inventory.
+- **Finding dispositions:** All fifteen incoming and nine new study findings are routed in `evidence/finding-dispositions.md` and appended under their existing identifiers in `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md`. No finding is silently closed as qualified, and no semantic follow-up is released.
+
+### Final review request — 2026-09-15
+
+Reuse the fresh non-author reviewer's unchanged source/design and implementation coverage. Under `evidence/final-review-brief.md`, check the frozen native study, artifact publication, oracle agreement, answer, twenty-four joined dispositions and proposed learning delta. Formal goal close and native item archive remain owner-held; no merge or push.
