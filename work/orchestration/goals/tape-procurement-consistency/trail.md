@@ -39,3 +39,27 @@ Native model · WI-060 · source-reviewed design, implemented correction and coh
 ### Amendment — 2026-09-15 — T-002 recording order
 
 [AGENT] The coordinator registered WI-060 and wrote its owner-derived spec before appending T-002 scope/start. That preparation-only bookkeeping preceded its trail scope; no production mutation occurred. This entry records the ordering defect rather than implying the scope was written first. The delegated author remains blocked on source/interface review before production changes.
+
+### T-001 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** evidence/tape-basis-research.md and native REQ-TAPE-001 records at e4760057.
+- **Reading:** Existing original sources support full composite-tape inventory conversion; a chosen width/thickness combination and absolute price remain explicit assumptions. Source grading replaces tape with stabilizer and cannot be imported into the fixed-fraction model as a free quantity discount.
+- **Decision:** Trigger: alternative density mechanisms and price conventions. Decision: choose same-tape operating loading with unknown absolute current margin and direct $20/tape-metre scenario, rather than the researcher's fixed-margin technology and $30 illustrative recommendations; the simpler assumptions answer the physical inventory correction without assigning an unmodeled performance improvement. Tier: execution detail under the owner's delegated engineering judgment. Decided by: coordinator. Changed: WI-060 design; review pending.
+
+### T-003 scope
+
+- **Objective:** Prepare and execute a bounded native sensitivity study of the repaired tape quantity/cost response, then synthesize it.
+- **Why now:** The entering comparison is preserved and candidate study coordinates can be prepared independently of production implementation.
+- **Scope:** Preparation only until T-002 audited package and native integration candidate are accepted. Study author owns exploration/stellarator_e2e/studies/20260915-tape-procurement-consistency/ and its discovery rows; no production/model/oracle mutation. Candidate-specific scan, indicators and execution wait for package release. Model work cannot invalidate preparation's owner intake or native study scaffolding; dependent numerical work is held.
+- **Inputs:** goal.md; evidence/entering/comparison.json@af777f44; candidate-proposals.json@af777f44; reviewed WI-060 design and integration when available.
+- **Done when:** Committed native record verifies matched density/envelope/geometry/current response plus unit-price sensitivities, preserves all eighteen verdicts and supports a bounded reading with complete provenance.
+- **Stop when:** Prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-003 start — 2026-09-15
+
+Native study preparation · 20260915-tape-procurement-consistency · intake and execution scaffolding now; candidate-specific work held for integration.
+
+### T-002 source/interface gate — 2026-09-15
+
+Independent reviewer /root/reviewer returns PASS in evidence/design-review.md (current working artifact; pin on next commit). Original construction images and PDF captions support the conversion. Set-average conductor loading is distinct from reference-coil loading because f_set and f_wp_vol have different source meanings. The coordinator accepts fixed-factor transfer as an explicit approximation and asks implementation to test separate factor perturbations. Production implementation is released against WI-060 design and this qualification. Price and density mechanism choices remain agent-originated assumptions; no claim of qualified current margin is made.
