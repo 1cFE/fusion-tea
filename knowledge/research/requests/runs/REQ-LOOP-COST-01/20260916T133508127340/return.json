@@ -1,0 +1,19 @@
+{
+  "request_id": "REQ-LOOP-COST-01",
+  "run": "knowledge/research/requests/runs/REQ-LOOP-COST-01/20260916T133508127340",
+  "class": "OPERATOR_QUEUE",
+  "registered": [],
+  "queued": [
+    {
+      "candidate": "https://publikationen.bibliothek.kit.edu/1000144540/148603793",
+      "reason": "extract exited 1"
+    },
+    {
+      "candidate": "https://iris.unipa.it/retrieve/handle/10447/552684/1336354/1-s2.0-S0920379622000965-main.pdf",
+      "reason": "extract exited 1"
+    }
+  ],
+  "negative": null,
+  "limit_reached": "max_searches",
+  "reason": "a named candidate is blocked on something a human must resolve"
+}

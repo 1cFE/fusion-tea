@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-LOOP-COST-01-CONT",
+  "request_key": "1221d2c6d0f1ccf1a8fb2d010280648bf0bd70333dcb5b88804399cb12186966",
+  "request_path": "knowledge/research/requests/REQ-LOOP-COST-01-CONT.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 4,
+    "max_captures": 1
+  },
+  "opened_at": "2026-09-16T13:39:19.462394+00:00",
+  "override_reason": null
+}

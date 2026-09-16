@@ -777,6 +777,22 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 402242eaad6cbbcf225a8c70e486a7d0057dad8c1125b284b8323ba8b084c902
 - **Date Added**: 2026-09-15
 
+### Maturation of critical technologies for the DEMO balance of plant systems
+- **Type**: local_pdf
+- **Location**: knowledge/sources/maturation_of_critical_technologies_for_the_demo_balance_of/
+- **Use for**: EU DEMO HCPB cost-boundary evidence: section 5.4 reports preliminary supplier offers and excluded large piping. No installed unit price is supplied.
+- **Validation**: Check PDF page 13 section 5.4 and page 16 reference 37 for original cost assessment BOP-3.1-T012-D001, EFDA_D_2NSZ4M.
+- **Caveat**: 2022 conceptual engineering paper; currency and price year absent from discussed HCPB cost evidence. Internal original cost report remains unavailable; no installed per-loop pricing authority.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/loop-cost-barucca-2022.pdf
+- **Source ID**: 42023699f91f610f33f5d2a7c4110285fd645fa6a7bcb60f0201edaab6647cd2
+- **Raw SHA256**: 42023699f91f610f33f5d2a7c4110285fd645fa6a7bcb60f0201edaab6647cd2
+- **Raw Artifact SHA256**: 42023699f91f610f33f5d2a7c4110285fd645fa6a7bcb60f0201edaab6647cd2
+- **Extracted Path**: knowledge/sources/maturation_of_critical_technologies_for_the_demo_balance_of/
+- **Extract SHA256**: 3089427a440e73694ff640feae62e03487b4b370a7fcb30f6a2073b48a10802b
+- **Date Added**: 2026-09-16
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

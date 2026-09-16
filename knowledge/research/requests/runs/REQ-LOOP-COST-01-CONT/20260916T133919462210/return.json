@@ -1,0 +1,17 @@
+{
+  "request_id": "REQ-LOOP-COST-01-CONT",
+  "run": "knowledge/research/requests/runs/REQ-LOOP-COST-01-CONT/20260916T133919462210",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "maturation_of_critical_technologies_for_the_demo_balance_of",
+      "path": "knowledge/sources/maturation_of_critical_technologies_for_the_demo_balance_of/",
+      "source_id": "42023699f91f610f33f5d2a7c4110285fd645fa6a7bcb60f0201edaab6647cd2",
+      "pre_existing": false
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}
