@@ -1,0 +1,41 @@
+{
+  "outcome": "pass",
+  "exact_equality": true,
+  "cases": [
+    {
+      "family": "reference",
+      "scalar_comparisons": 242,
+      "predicate_comparisons": 20,
+      "changed_outputs": {},
+      "changed_predicates": {}
+    },
+    {
+      "family": "r-12.7-1.35-1.62e+07",
+      "scalar_comparisons": 242,
+      "predicate_comparisons": 20,
+      "changed_outputs": {},
+      "changed_predicates": {}
+    },
+    {
+      "family": "r-13.1-1.45-1.54e+07",
+      "scalar_comparisons": 242,
+      "predicate_comparisons": 20,
+      "changed_outputs": {},
+      "changed_predicates": {}
+    },
+    {
+      "family": "current-sized-reference",
+      "scalar_comparisons": 242,
+      "predicate_comparisons": 20,
+      "changed_outputs": {},
+      "changed_predicates": {}
+    },
+    {
+      "family": "allocated-current-sized-reference",
+      "scalar_comparisons": 242,
+      "predicate_comparisons": 20,
+      "changed_outputs": {},
+      "changed_predicates": {}
+    }
+  ]
+}

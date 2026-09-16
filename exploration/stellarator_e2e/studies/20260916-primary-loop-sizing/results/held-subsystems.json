@@ -1,0 +1,217 @@
+{
+  "outcome": "pass",
+  "exact_equality": true,
+  "scope": "All native magnet outputs, divertor heat-account outputs, all six named magnet/divertor predicates; inherited divertor cost is allowed to change with thermal power and is reported separately.",
+  "cases": [
+    {
+      "proposal_id": "reference--loops-15",
+      "output_comparisons": 89,
+      "predicate_ids": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "changed_outputs": [],
+      "changed_predicates": []
+    },
+    {
+      "proposal_id": "reference--loops-16",
+      "output_comparisons": 89,
+      "predicate_ids": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "changed_outputs": [],
+      "changed_predicates": []
+    },
+    {
+      "proposal_id": "reference--loops-18",
+      "output_comparisons": 89,
+      "predicate_ids": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "changed_outputs": [],
+      "changed_predicates": []
+    },
+    {
+      "proposal_id": "r-12.7-1.35-1.62e+07--loops-15",
+      "output_comparisons": 89,
+      "predicate_ids": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "changed_outputs": [],
+      "changed_predicates": []
+    },
+    {
+      "proposal_id": "r-12.7-1.35-1.62e+07--loops-16",
+      "output_comparisons": 89,
+      "predicate_ids": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "changed_outputs": [],
+      "changed_predicates": []
+    },
+    {
+      "proposal_id": "r-12.7-1.35-1.62e+07--loops-18",
+      "output_comparisons": 89,
+      "predicate_ids": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "changed_outputs": [],
+      "changed_predicates": []
+    },
+    {
+      "proposal_id": "r-13.1-1.45-1.54e+07--loops-15",
+      "output_comparisons": 89,
+      "predicate_ids": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "changed_outputs": [],
+      "changed_predicates": []
+    },
+    {
+      "proposal_id": "r-13.1-1.45-1.54e+07--loops-16",
+      "output_comparisons": 89,
+      "predicate_ids": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "changed_outputs": [],
+      "changed_predicates": []
+    },
+    {
+      "proposal_id": "r-13.1-1.45-1.54e+07--loops-18",
+      "output_comparisons": 89,
+      "predicate_ids": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "changed_outputs": [],
+      "changed_predicates": []
+    },
+    {
+      "proposal_id": "current-sized-reference--loops-15",
+      "output_comparisons": 89,
+      "predicate_ids": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "changed_outputs": [],
+      "changed_predicates": []
+    },
+    {
+      "proposal_id": "current-sized-reference--loops-16",
+      "output_comparisons": 89,
+      "predicate_ids": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "changed_outputs": [],
+      "changed_predicates": []
+    },
+    {
+      "proposal_id": "current-sized-reference--loops-18",
+      "output_comparisons": 89,
+      "predicate_ids": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "changed_outputs": [],
+      "changed_predicates": []
+    },
+    {
+      "proposal_id": "allocated-current-sized-reference--loops-15",
+      "output_comparisons": 89,
+      "predicate_ids": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "changed_outputs": [],
+      "changed_predicates": []
+    },
+    {
+      "proposal_id": "allocated-current-sized-reference--loops-16",
+      "output_comparisons": 89,
+      "predicate_ids": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "changed_outputs": [],
+      "changed_predicates": []
+    },
+    {
+      "proposal_id": "allocated-current-sized-reference--loops-18",
+      "output_comparisons": 89,
+      "predicate_ids": [
+        "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "changed_outputs": [],
+      "changed_predicates": []
+    }
+  ]
+}

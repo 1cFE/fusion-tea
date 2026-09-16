@@ -1,0 +1,85 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "heat_transport__n_loops",
+      "note": "Complete public attribute; loop count is the intervention, other changing attributes are inherited five-family context. Fixed controls retained in proposals, never varied independently.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__n_loops",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__casing__interior_y",
+      "note": "Complete public attribute; loop count is the intervention, other changing attributes are inherited five-family context. Fixed controls retained in proposals, never varied independently.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__casing__interior_y",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__coil__I_coil",
+      "note": "Complete public attribute; loop count is the intervention, other changing attributes are inherited five-family context. Fixed controls retained in proposals, never varied independently.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__coil__coil_t",
+      "note": "Complete public attribute; loop count is the intervention, other changing attributes are inherited five-family context. Fixed controls retained in proposals, never varied independently.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__coil_t",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__inventory_multiplier",
+      "note": "Complete public attribute; loop count is the intervention, other changing attributes are inherited five-family context. Fixed controls retained in proposals, never varied independently.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__sizing_mode",
+      "note": "Complete public attribute; loop count is the intervention, other changing attributes are inherited five-family context. Fixed controls retained in proposals, never varied independently.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__sizing_mode",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__R",
+      "note": "Complete public attribute; loop count is the intervention, other changing attributes are inherited five-family context. Fixed controls retained in proposals, never varied independently.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__R",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__a",
+      "note": "Complete public attribute; loop count is the intervention, other changing attributes are inherited five-family context. Fixed controls retained in proposals, never varied independently.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__a",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

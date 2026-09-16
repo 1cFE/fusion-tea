@@ -1,0 +1,11 @@
+{
+  "started_at_utc": "2026-09-16T13:45:41.831957+00:00",
+  "finished_at_utc": "2026-09-16T13:46:06.710996+00:00",
+  "elapsed_seconds": 24.879040295258164,
+  "cases": 20,
+  "states": {
+    "completed": 20
+  },
+  "store": "results/study/_work/20260916-primary-loop-sizing.db",
+  "repo_revision": "df41ea97d6628584ee270284ef0dfcffbb65eb8b"
+}

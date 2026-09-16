@@ -1,0 +1,3 @@
+# Original-page evidence
+
+These are retained page renders used by the source investigation and independent reviews. `moscato-p6.png` is page 6 of the admitted original `knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/raw.pdf`. `barucca2022-p13.png` and `barucca2022-p16.png` are pages 13 and 16 of the registered original, `knowledge/raw/loop-cost-barucca-2022.pdf`, SHA256 `42023699f91f610f33f5d2a7c4110285fd645fa6a7bcb60f0201edaab6647cd2`. Its institutional retrieval URL and extraction are cited in ../cost-research.md. The full original is locally retained and gitignored; these page renders preserve the exact evidence examined by the reviews.
