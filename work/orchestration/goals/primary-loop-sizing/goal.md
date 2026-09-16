@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — 2026-09-16. [OWNER] Confirmed the proposed `primary-loop-sizing` slug and draft grounding contract in the initiating conversation.
+`closed` — 2026-09-16. [OWNER-VERBATIM] “close it”. Closed on the independently reviewed quantified capacity requirement and explicit qualification/pricing gaps. See `trail.md`, Goal close.
 
 ## Question
 
@@ -60,4 +60,6 @@ The following tracked paths are cited at `b9ddffb77527b982d438d41685c296e69a4a34
 
 ## Amendments
 
-None.
+### Amendment 2026-09-16 — amends Status
+
+[OWNER-VERBATIM] “close it”. The owner authorizes formal closure after the independent final PASS recorded in `evidence/final-review.md@305cb0da`. The accepted answer uses the goal's quantified-requirement/evidence-gap branch. Installed pricing and hardware qualification remain unresolved; the answer contract and comparison invariants are unchanged.

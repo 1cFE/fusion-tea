@@ -101,3 +101,10 @@ Coordinator inspected `exploration/stellarator_e2e/studies/20260916-primary-loop
 - **Checks:** Source/math and cost coverage reused; all 168 snapshot artifact hashes and all 174 retained files checked against frozen study `75772eba`; baseline/twenty-case native stores joined; five entering controls exactly preserved; fresh 4520 scalar and 400 predicate comparisons; all twenty hydraulic/equipment/annual-cost accounts independently recomputed. No model/package mutation from entering revision; unchanged twenty constraints and source/qualification caveats retained. Sixteen numeric outputs outside oracle mapping and the integration read-set omission remain disclosed.
 - **Learning delta:** L-001–L-003 accepted and appended to learnings.md. Four new and fourteen prior finding dispositions accepted; eighteen joined updates appended without editing first sightings. Study record receives only an addendum and retained review, with immutable results/snapshot untouched.
 - **Next:** Technical work is complete under the accepted evidence-gap outcome. Recommend owner-held formal closure. Any later hardware qualification or installed pricing needs the missing evidence named in answer.md; no further round is needed to report this result.
+
+## Goal close — 2026-09-16
+
+- **Authority:** [OWNER-VERBATIM] “close it”. The owner authorizes formal goal closure after confirmation that independent review passed and that technical work was complete through the accepted evidence-gap outcome.
+- **Decision:** Close `primary-loop-sizing` on the reviewed answer at `305cb0da`, with source checkpoint `df41ea97` and frozen native study `75772eba`. Independent final PASS is `evidence/final-review.md@305cb0da`.
+- **Outcome:** The required representative-loop accommodation and its hydraulic/equipment consequences are quantified. Installed price and engineering qualification remain the explicit gaps recorded in `answer.md`; a loop-screen pass does not establish combined feasibility.
+- **Recorded changes:** Goal status and project context updated. This is administrative closure; no new round, study, model change or native item archival is required.

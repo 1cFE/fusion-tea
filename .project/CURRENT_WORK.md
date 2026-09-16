@@ -1,8 +1,8 @@
-# Primary-loop sizing — quantified requirement; installed price unresolved — 2026-09-16
+# Primary-loop sizing — closed — 2026-09-16
 
 [OWNER] Confirmed goal and scope for explicit cooling accommodation with retained coolant/divertor/magnet constraints and an accepted evidence-gap outcome. [AGENT] Independent final PASS accepts the technical answer: the informative case needs sixteen representative loops under the existing flow screen, with conditional additional equipment and required exchanger duty quantified. Actual installed price and hardware qualification remain unestablished. The reference needs fourteen loops. The frozen twenty-case study has eighteen loop passes and zero combined passes; 4520 mapped scalar and 400 predicate comparisons pass. No model/package equation or allowance was changed.
 
-[Answer](../work/orchestration/goals/primary-loop-sizing/answer.md), [independent review](../work/orchestration/goals/primary-loop-sizing/evidence/final-review.md), [native study](../exploration/stellarator_e2e/studies/20260916-primary-loop-sizing/record.md), [trail](../work/orchestration/goals/primary-loop-sizing/trail.md). Source checkpoint `df41ea97`; frozen study `75772eba`. Technical work is complete through the quantified-requirement/evidence-gap branch; formal goal closure remains owner-held. No new modeling work item or archive action was needed.
+[Answer](../work/orchestration/goals/primary-loop-sizing/answer.md), [independent review](../work/orchestration/goals/primary-loop-sizing/evidence/final-review.md), [native study](../exploration/stellarator_e2e/studies/20260916-primary-loop-sizing/record.md), [trail](../work/orchestration/goals/primary-loop-sizing/trail.md). Source checkpoint `df41ea97`; frozen study `75772eba`; reviewed answer `305cb0da`. [OWNER-VERBATIM] “close it”. Goal formally closed on the quantified-requirement/evidence-gap outcome. Installed price and hardware qualification remain unresolved. No modeling work item required archival.
 
 # Divertor peak heat load — technical answer complete — 2026-09-15
 
