@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "https://arxiv.org/html/2602.24049v2",
+  "slug": "stellarator_island_divertor_shape_optimization_for_reduced",
+  "path": "knowledge/sources/stellarator_island_divertor_shape_optimization_for_reduced/",
+  "source_id": "d790b9caba27cba49f917754522da88b4d202a2bdeb560de5bd1a62224fccfcf",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-16T05:37:11.219411+00:00"
+}

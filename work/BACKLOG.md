@@ -332,6 +332,12 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-065
+  name: Divertor deposited-power and peak-area account
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -420,3 +426,4 @@ standalone:
 | WI-062 | Absolute conductor current margin | standard | P1 | backlog |  |
 | WI-063 | Magnet manufacturing account completeness | standard | P1 | backlog |  |
 | WI-064 | Current-driven magnet inventory sizing | standard | P1 | backlog |  |
+| WI-065 | Divertor deposited-power and peak-area account | standard | P1 | backlog |  |

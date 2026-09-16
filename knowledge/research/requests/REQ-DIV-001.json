@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-DIV-001",
+  "question": "What admissible evidence supports transferring the Stellaris divertor peak target heat flux with machine size, wetted area, power sharing and spatial concentration beyond fixed-geometry load normalization?",
+  "consumer": "divertor-peak-heat-load",
+  "gap_type": "geometry_transfer_law",
+  "priority": "P1",
+  "where_to_look": ["Registered Stellaris section 2.6 and references 215, 217, 228", "W7-X island divertor primary research"],
+  "limits": {"max_searches": 6, "max_captures": 2}
+}

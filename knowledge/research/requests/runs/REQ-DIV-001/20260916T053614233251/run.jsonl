@@ -1,0 +1,4 @@
+{"kind": "search", "query": "Davies Feng semi automated algorithm designing stellarator divertor limiter plates HSX ad8017", "at": "2026-09-16T05:36:25.582418+00:00"}
+{"kind": "search", "query": "Stellarator island divertor shape optimization reduced peak heat fluxes 2602.24049", "at": "2026-09-16T05:36:37.756462+00:00"}
+{"kind": "candidate", "ref": "https://arxiv.org/html/2602.24049v2", "triage": "keeper", "note": "Primary island-divertor optimization preprint; inspect full registered text for heat-width scaling validity and wall-sharing limits.", "at": "2026-09-16T05:36:49.406074+00:00"}
+{"kind": "candidate", "ref": "https://pure.mpg.de/view/item_3617482_1", "triage": "rejected", "note": "Triage fetch returned 403; not pursued because the two-capture budget was allocated to the directly relevant island-divertor geometry paper. Stellaris already records this HSX design method; no content relied on.", "at": "2026-09-16T05:37:13.646402+00:00"}

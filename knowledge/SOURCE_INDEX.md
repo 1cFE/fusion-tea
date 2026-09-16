@@ -761,6 +761,22 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 03ef68f7c650151bad383f04c94f99d2d2dc8860ee3d6247852d72461ee26042
 - **Date Added**: 2026-09-15
 
+### Stellarator island divertor shape optimization for reduced peak heat fluxes
+- **Type**: url
+- **Location**: knowledge/sources/stellarator_island_divertor_shape_optimization_for_reduced/
+- **Use for**: Island divertor geometry and heat-width response to cross-field transport; serves REQ-DIV-001 geometry-transfer question.
+- **Validation**: Check equations and heat-width comparison against the captured full text; distinguish prescribed equilibrium and simulated transport from reactor validation.
+- **Caveat**: ArXiv v2 preprint using field-line diffusion; does not itself qualify Stellaris target engineering or a universal machine-size scaling.
+
+#### Extended Metadata
+- **Source URL**: https://arxiv.org/html/2602.24049v2
+- **Source ID**: d790b9caba27cba49f917754522da88b4d202a2bdeb560de5bd1a62224fccfcf
+- **Raw SHA256**: d790b9caba27cba49f917754522da88b4d202a2bdeb560de5bd1a62224fccfcf
+- **Raw Artifact SHA256**: d790b9caba27cba49f917754522da88b4d202a2bdeb560de5bd1a62224fccfcf
+- **Extracted Path**: knowledge/sources/stellarator_island_divertor_shape_optimization_for_reduced/
+- **Extract SHA256**: 402242eaad6cbbcf225a8c70e486a7d0057dad8c1125b284b8323ba8b084c902
+- **Date Added**: 2026-09-15
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

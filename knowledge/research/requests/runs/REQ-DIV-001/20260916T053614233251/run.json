@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-DIV-001",
+  "request_key": "b4cd88239596f7b4e4da88aff88c582699076ec4e3d40d4af38462478d5a1fff",
+  "request_path": "knowledge/research/requests/REQ-DIV-001.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 2
+  },
+  "opened_at": "2026-09-16T05:36:14.233427+00:00",
+  "override_reason": null
+}
