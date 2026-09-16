@@ -42,3 +42,61 @@ T-001 · existing model/evidence assessment · evidence/coupled-requirements.md.
 ### T-002 start — 2026-09-15
 
 T-002 · WI-064 · reviewed specification, implementation and independent audit; focused source/design reviewer dispatched before implementation.
+
+### T-002 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** work/active/WI-064_current-driven-magnet-inventory-sizing/audit.md@a8589d6b; evidence/implementation-review.md@a8589d6b.
+- **Reading:** Optional native sizing closes current-driven inventory and preserves the entering mode. Fresh independent coupled review PASS; static L2/L6 limitations remain explicit.
+- **Decision:** Reviewed calculation and consumer evidence · proceed to native integration · execution detail · coordinator · audited WI-064 at a8589d6b. No acceptance change.
+
+### T-003 scope
+
+- **Objective:** Obtain one reproducible study-ready candidate for reviewed WI-064.
+- **Why now:** Implementation and independent audit are complete.
+- **Scope:** Native integration seam, exact expected lineage and all ten gates; no semantic model changes.
+- **Inputs:** goal.md; WI-064@a8589d6b; current manifest and sealed runtime.
+- **Done when:** Native CANDIDATE or named blocker.
+- **Stop when:** Prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-003 start — 2026-09-15
+
+T-003 · scripts/integrate.py · evidence/T-003_integration/integration_return.json.
+
+### T-003 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** evidence/T-003_integration/integration_return.json (pending local evidence commit); audited implementation a8589d6b.
+- **Reading:** All ten native gates pass. Candidate pin0a1c038663c848e11cff933215a8d15eb96b6650319003b9cf092ecbbc40e52c, executable8e4aa8eaebf2667a74565e6e66fc9ce5947c6d27ccfc210f8452e82d87fba45f. Inherited assert_read_set_covered omission remains disclosed, with no claimed substitute.
+- **Decision:** CANDIDATE · promote this sole Round1 pin and release bounded study preparation/scan · execution detail · coordinator · study20260915-joint-magnet-sizing.
+
+### T-004 scope
+
+- **Objective:** Establish bounded default-performance joint sizing/fit/plant feasibility and separated scenario/cost consequences.
+- **Why now:** Reviewed native inventory sizing and integrated package are available.
+- **Scope:** Native run-study on one pin; reference/prior controls, bounded geometry scan, fixed prepared-list native cases, small performance/construction sensitivities and independent verification. No acceptance relaxation.
+- **Inputs:** goal.md; T-003 candidate; exploration/stellarator_e2e/studies/20260915-joint-magnet-sizing/protocol.md; current existing source reviews.
+- **Done when:** Frozen native study record with all predicates, retained refusals, sizing residuals, entering attribution and qualified synthesis.
+- **Stop when:** Prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-004 start — 2026-09-15
+
+T-004 · native run-study · exploration/stellarator_e2e/studies/20260915-joint-magnet-sizing/.
+
+### T-004 return — 2026-09-15
+
+- **Outcome:** BOUNDED_NEGATIVE.
+- **Evidence:** `exploration/stellarator_e2e/studies/20260915-joint-magnet-sizing/record.md`, `report.md`, `synthesis.md`; snapshot SHA256 `330e0ac2411ce50ff59bd109bcce8c18a5c3d97141cb013a7b870c1689990154`; native implementation `a8589d6b`. The frozen evidence commit is joined below before fresh review.
+- **Reading:** All 347 native cases completed; 75,646 scalar and 6,940 predicate comparisons agree. Of 324 default current-sized cases, 324 pass current, 154 pass fit and none passes the other eighteen predicates or all twenty. Sixteen performance scenarios and two shape diagnostics also have no combined pass. The one historical 30 T/orientation-3 control pass is outside main-limit acceptance. No default or enhanced cheapest feasible choice exists in this sample.
+- **Decision:** Bounded negative technical answer meets the owner's successful adverse-result contract · commission final frozen-evidence/disposition/round assurance · execution detail · coordinator · answer.md and evidence/final-review-brief.md. Required space is not available-space evidence; current closure is conditional consistency. Wider search remains possible, not required to force a pass.
+
+### Round 1 result — 2026-09-15
+
+- **Intent:** Met within the bounded investigation. One native current-derived inventory now drives capacity, pack and procurement; independent allocation and existing consequences are evaluated coherently. No sampled default joint-feasible region was found.
+- **Task sequence:** T-001 coupled map/source-design review → T-002 WI-064 implementation and independent coupled audit → T-003 ten-gate integration candidate → T-004 fixed native cohort, frozen evidence and executor reading.
+- **Last semantic outcome and stop reason:** BOUNDED_NEGATIVE. Stop this strategy because the scoped stages and answer contract are complete; the owner explicitly accepts a supported adverse result. No retry limit or owner gate was used to truncate the scientific work.
+- **Evidence:** answer.md; the T-004 native record/report/synthesis and snapshot above; WI-064 audit; evidence/source-design-review.md, implementation-review.md and window-review.md; evidence/finding-dispositions.md. One promoted pin and one frozen study only.
+- **Proposed learning delta:** L-001 allocation-first acyclic sizing and reevaluation of allocation; L-002 exact-current closure and physical reserve; L-003 finite no-pass reading separated from qualification. Exact proposed statements are in evidence/finding-dispositions.md. None is accepted before fresh review.
+- **Finding dispositions:** Thirty-one prior IDs plus seven new sightings have explicit proposed model-extension or declared-seam dispositions. Executor first sightings are appended; reviewed joined updates remain pending. No prior adverse finding is overwritten.
+- **Retries and boundedness:** Routine harness/path/receipt repairs retained the same task meaning. The exact multiplier-one sign difference is retained as a diagnostic outside the predeclared 1.01-reserve cohort, not silently corrected. The justified oracle refinement and sensitivity selection occurred before the one fixed native execution; 347 unique cases remain below the 400 cap.
+- **Remaining uncertainty:** Construction and local-angle performance, >24 T extrapolation, physical accommodation, missing field/shape/casing physics, detailed qualification and factory/price completeness. No global infeasibility or optimum. Final fresh review checks scientific meaning, artifacts, every touched disposition and proposed learnings; formal goal closure/archive remain owner-held.

@@ -1,0 +1,22 @@
+{
+  "unique_native_cases": 347,
+  "report_rows": 351,
+  "initial_rows": 264,
+  "refinement_rows": 60,
+  "extra_rows": 28,
+  "all_scan_rows": 352,
+  "unsupported": [],
+  "separate_exact_boundary": [
+    "reference-exact"
+  ],
+  "default_initial_passes": 0,
+  "default_refinement_passes": 0,
+  "scenario_anchor_ids": [
+    "reference-sized",
+    "reference-accommodated",
+    "r-12.7-1.35-1.62e+07",
+    "r-13.1-1.45-1.54e+07"
+  ],
+  "best_scan_anchor": "r-12.7-1.35-1.62e+07",
+  "field_passing_anchor": "r-13.1-1.45-1.54e+07"
+}

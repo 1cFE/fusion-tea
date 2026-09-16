@@ -1,0 +1,3 @@
+states Counter({'evaluated': 264}) passes 1
+default passes []
+violations Counter({'loop_capacity_ok': 200, 'divertor_heat_ok': 192, 'burn_hold_ok': 184, 'wp_fit_ok': 164, 'peak_field_ok': 129, 'wall_load_ok': 64, 'sustainment_ok': 40})

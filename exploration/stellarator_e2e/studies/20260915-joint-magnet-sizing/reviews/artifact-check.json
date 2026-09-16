@@ -1,0 +1,22 @@
+{
+  "outcome": "pass",
+  "stores": [
+    {
+      "path": "results/_work/stellarator-baseline-point-v1.db",
+      "sha256": "d728981cc86e07e029edd69477f172cb9c595e064ec5de23e977e55d60a714a3",
+      "cases": 1,
+      "export_joins": 0,
+      "content_addressed_evidence_checked": 1
+    },
+    {
+      "path": "results/study/_work/20260915-joint-magnet-sizing.db",
+      "sha256": "4d0f59fc1ff52e89e3ef269b192cbca5d22b4017c2f6c9cfc7dbcc23f46bccab",
+      "cases": 347,
+      "export_joins": 347,
+      "content_addressed_evidence_checked": 347
+    }
+  ],
+  "snapshot_artifacts_checked": 511,
+  "snapshot_sha256": "330e0ac2411ce50ff59bd109bcce8c18a5c3d97141cb013a7b870c1689990154",
+  "required_retained_files": 518
+}

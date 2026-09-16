@@ -1,0 +1,37 @@
+[
+  {
+    "id": "20260915-joint-magnet-sizing#1",
+    "title": "Current-driven inventory",
+    "finding": "Native minimum current sizing consistently drives pack, procurement and capacity; exact current closure is conditional consistency."
+  },
+  {
+    "id": "20260915-joint-magnet-sizing#2",
+    "title": "Default joint feasibility",
+    "finding": "No sampled default-performance case satisfies all20 predicates; there is no cheapest default feasible choice."
+  },
+  {
+    "id": "20260915-joint-magnet-sizing#3",
+    "title": "Accommodation and missing physics",
+    "finding": "Required cavity is compared with declared space; casing strength/thermal geometry, pack self-field and full3D interference remain unqualified."
+  },
+  {
+    "id": "20260915-joint-magnet-sizing#4",
+    "title": "Performance and construction",
+    "finding": "Material/orientation/retention scenarios and required gain thresholds are conditional; no exact construction or local angle qualification."
+  },
+  {
+    "id": "20260915-joint-magnet-sizing#5",
+    "title": "Cost completeness",
+    "finding": "Priced quantities respond to inventory/geometry, but manufacturing remainder, supplier premiums and mixed-year price bases remain unresolved."
+  },
+  {
+    "id": "20260915-joint-magnet-sizing#6",
+    "title": "Numerical boundary and refusals",
+    "finding": "Exact multiplier1 native/oracle current signs differ at roundoff; diagnostic retained separately. Unsupported-field proposals carry no physical feasibility verdict."
+  },
+  {
+    "id": "20260915-joint-magnet-sizing#7",
+    "title": "Finite search limits",
+    "finding": "Finite engineered sample and caught/uncaught endpoints establish no global infeasibility or optimum; H1 assessed on the default cohort in report.md."
+  }
+]

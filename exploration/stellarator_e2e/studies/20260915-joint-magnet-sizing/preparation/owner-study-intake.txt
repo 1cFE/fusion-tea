@@ -1,0 +1,21 @@
+Ground and pursue a new goal: establish joint magnet sizing and feasibility using consistent conductor inventory, current capacity, pack fit, geometry and cost.
+
+The question
+Can a magnet carry the required current at the selected operating margin, fit inside an explicitly allocated casing, and satisfy the existing plant constraints under one consistent set of construction and performance assumptions?
+
+Desired outcome
+Determine the conductor inventory and geometric accommodation required by the current-capacity requirement, propagate their consequences through the existing model, and establish whether a bounded feasible region exists. A well-supported finding that no feasible design exists within the investigated assumptions is a successful answer.
+
+Study scope
+Use a bounded, staged investigation:
+1. Reproduce the entering reference and relevant prior cases.
+2. Solve or bracket the tape/pack requirements at selected operating points.
+3. Explore the resulting geometry and plant-feasibility tradeoffs over justified bounds.
+4. Evaluate a small number of clearly separated performance/construction sensitivities.
+
+Choose bounds from evidence, existing model applicability or explicit engineering assumptions. Explain why a broader search would or would not change the conclusion. Do not claim global infeasibility or a global optimum from a finite sample.
+
+Scope limits
+Do not relax allowable operating fraction, field limits, fit clearances or other acceptance criteria to create a pass. Do not tune material normalization or orientation gains to recover the reference design.
+
+Keep detailed structural certification, full 3D coil interference, quench protection, complete field-angle mapping and new factory-cost models outside this goal unless a narrowly scoped dependency is essential. Surface a missing physical dependency that invalidates a proposed comparison rather than silently treating it as free.

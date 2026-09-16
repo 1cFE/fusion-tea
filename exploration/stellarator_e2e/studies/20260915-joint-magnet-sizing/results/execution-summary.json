@@ -1,0 +1,11 @@
+{
+  "started_at_utc": "2026-09-16T04:33:33.437692+00:00",
+  "finished_at_utc": "2026-09-16T04:40:52.684118+00:00",
+  "elapsed_seconds": 439.24643805250525,
+  "cases": 347,
+  "states": {
+    "completed": 347
+  },
+  "store": "results/study/_work/20260915-joint-magnet-sizing.db",
+  "repo_revision": "a8589d6b5aebbb42c525f7bab9a036a474fc8e6b"
+}
