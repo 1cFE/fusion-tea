@@ -1,0 +1,3 @@
+# Runtime command
+
+All Python stages run with `PYTHONPATH=.:/home/reid/1cfe/teax/packages/teax-simkit STUDY_REQUIRE_TEAX=1 .codex-test/run python ...` from the repository root, following the integration operator guide. The initial direct script preparation attempt lacked the repository import root; the first baseline attempt lacked the TEAx import path. Both failed on import before model evaluation and were corrected in command environment only. The successful baseline emitted the inherited inventory_enabled float-to-bool Pydantic serialization warning and completed all six preflight gates. No package, runtime or seam was changed.

@@ -1,0 +1,22 @@
+{
+  "outcome": "pass",
+  "stores": [
+    {
+      "path": "results/_work/stellarator-baseline-point-v1.db",
+      "sha256": "4111bc59bb5bf4daddfc970fd608efbc94a9d57b3ac5283e1af15a0c26f64e98",
+      "cases": 1,
+      "export_joins": 0,
+      "content_addressed_evidence_checked": 1
+    },
+    {
+      "path": "results/study/_work/20260915-divertor-heat-account.db",
+      "sha256": "714019fd67e4a47f32e02a65faa1f10af1ede703aca041a246726fe08c49349a",
+      "cases": 27,
+      "export_joins": 27,
+      "content_addressed_evidence_checked": 27
+    }
+  ],
+  "snapshot_artifacts_checked": 184,
+  "snapshot_sha256": "92d2a24565645de602384a530ee6c32776e66b4787af8245b81d3d099df3fbbd",
+  "required_retained_files": 190
+}

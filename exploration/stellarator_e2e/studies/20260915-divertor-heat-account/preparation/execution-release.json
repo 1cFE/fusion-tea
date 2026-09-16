@@ -1,0 +1,8 @@
+{
+  "authorized_by": "coordinator",
+  "candidate_pin": "6e427038e8515501e9c42c39823f85e3b0bcbd9f54f830b2779a792851f02551",
+  "scope": "Baseline/preflight and 27-point oracle scan; if all evaluable without unanticipated issue, adopt diagnostic sample after scan and execute native27. Preserve negative-burn control. No physical-area or acceptance changes.",
+  "integration_commit": "686bc67b",
+  "implementation_commit": "48b65159",
+  "post_scan_release": "Coordinator released both retained invalid-account samples, excluded from physical heat-load gain interpretation; proceed native27 unchanged."
+}

@@ -113,3 +113,7 @@ T-004 · native run-study workflow · expected `exploration/stellarator_e2e/stud
 ### T-004 scan interpretation release — 2026-09-15
 
 [AGENT COORDINATOR] All27 oracle points evaluate and no point passes all predicates. The R12.9 perturbation of the named field/current/fit-passing rejection also has negative required heating, beyond the dedicated negative-burn control. Retain both failed operating cases with `power_account_valid=0`; exclude them from physical heat-load gain interpretations. This is the reviewed signed-demand domain operating as designed, not evidence for a new divertor law. Release the unchanged27-point native sample with this explicit interpretation recorded. No model, window or acceptance change is needed.
+
+### T-004 record formatting correction — 2026-09-15
+
+[AGENT COORDINATOR] Freeze checks passed70 record/template/goal assertions and failed one finding-join check because the new record's five ID cells lacked the backticks expected by the existing record parser. The executor corrects those ID-cell delimiters before freezing and reruns the focused join check. This is mechanical formatting: findings, native results, package, sample and interpretations remain unchanged. Original first-sighting discovery rows remain untouched.

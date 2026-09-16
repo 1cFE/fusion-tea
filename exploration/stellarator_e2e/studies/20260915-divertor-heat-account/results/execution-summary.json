@@ -1,0 +1,11 @@
+{
+  "started_at_utc": "2026-09-16T06:10:19.304273+00:00",
+  "finished_at_utc": "2026-09-16T06:10:52.107230+00:00",
+  "elapsed_seconds": 32.802956910803914,
+  "cases": 27,
+  "states": {
+    "completed": 27
+  },
+  "store": "results/study/_work/20260915-divertor-heat-account.db",
+  "repo_revision": "e0a327dacf1723fbb94e3d9ce7b94c7b19677327"
+}
