@@ -1,8 +1,8 @@
-# Proposed finding dispositions
+# Accepted finding dispositions
 
-[AGENT] Pending final independent study/round review. The coordinator inspected the latest joined rows for40 prior findings in `prior-findings-map.json` at implementation checkpoint48b65159. Original sightings and previous corrections remain untouched. The seven direct joint-sizing findings and the inherited source/current/fit/cost findings are retained; only the divertor account explanation is extended here. New study sightings will be joined after the frozen study exists.
+[AGENT] Accepted by the final independent study/round review on 2026-09-15. The coordinator inspected the latest joined rows for40 prior findings in `prior-findings-map.json` at implementation checkpoint48b65159. Original sightings and previous corrections remain untouched. The seven direct joint-sizing findings and the inherited source/current/fit/cost findings are retained; only the divertor account explanation is extended here. All 40 prior IDs and five frozen new sightings have accepted joined updates in the discovery log; original sightings are unchanged.
 
-| Existing ID | Proposed disposition and evidence |
+| Existing ID | Accepted disposition and evidence |
 |---|---|
 | `20260901-sustainment-fence#1` | declared seam — retain the latest accepted joint-sizing disposition and its completed repair/qualification limits, as cited in `prior-findings-map.json` and the prior goal’s `finding-dispositions.md`. This divertor increment changes no magnet, fit, current, procurement, manufacturing or historical feasibility claim. |
 | `20260903-priced-levers#2` | model fix — retain the latest accepted joint-sizing disposition and its completed repair/qualification limits, as cited in `prior-findings-map.json` and the prior goal’s `finding-dispositions.md`. This divertor increment changes no magnet, fit, current, procurement, manufacturing or historical feasibility claim. |
@@ -49,7 +49,7 @@
 
 [AGENT] Each retained row preserves the entering status, responsible party and next references verbatim through its keyed `latest_entering_row` in `prior-findings-map.json`. A completed model fix remains completed; its residual qualification limits remain open. WI-065 supplies only the explicitly named additional divertor-account clarification. No retained disposition authorizes new work.
 
-## New study findings — proposed
+## New study findings — accepted
 
 | Existing first-sighting ID | Disposition, status and responsibility | Evidence and next reference |
 |---|---|---|
@@ -59,7 +59,7 @@
 | `20260915-divertor-heat-account#4` | model fix — bounded signed-demand preservation and account-valid flag complete in WI-065; invalid operating points remain failed diagnostics. Responsible: WI-065 implementer and independent reviewer for completed scope. | WI-065 audit, entering negative-native replay and both retained study cases; no physical heat-load gain claimed. |
 | `20260915-divertor-heat-account#5` | declared seam — unchanged entering results and bounded negative conclusion preserved; global feasibility remains unestablished. Responsible: goal coordinator for completed analysis; future plant-design owner for any new physical option. | Frozen study comparison-entering/all-point evidence and joint study `02af7123`; no follow-up execution is authorized by this disposition. |
 
-## Proposed learning delta
+## Accepted learning delta
 
 - [AGENT] L-001 — Both existing divertor flux quantities are peaks. The source identifies deposited power divided by global peak, A_eq = A_wet/k_peak, but not physical wetted area, per-target sharing or independent concentration. The R_ref/R shadow requires an unsupported footprint-length transfer assumption and cannot replace the acceptance peak.
 - [AGENT] L-002 — Core radiation, edge radiation, target deposition and uncaptured non-radiated power partition absorbed plasma heating. Greater total radiation can lower the non-radiated target screen without lowering total plant heat or primary-loop demand. A valid account and supported source pair are necessary; neither establishes total target surface heat or cooling qualification.

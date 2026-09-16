@@ -1,0 +1,9 @@
+{
+  "outcome": "pass",
+  "accepted_existing_ids": 45,
+  "exactly_one_joined_update_per_id": true,
+  "original_log_prefix_preserved": true,
+  "local_links_checked": 21,
+  "reviewed_model_unchanged": true,
+  "frozen_native_evidence_unchanged": true
+}
