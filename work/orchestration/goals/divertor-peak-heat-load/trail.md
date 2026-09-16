@@ -105,3 +105,11 @@ T-004 · native run-study workflow · expected `exploration/stellarator_e2e/stud
 ### T-004 delegation — 2026-09-15
 
 [AGENT] Continuing research author `/root/divertor_research` receives the self-contained study brief and owns only the new study directory plus its first-sighting discovery rows. It is an executor, not an independent administrator. Coordinator owns existing-finding dispositions and goal answer; the fixed reviewed interface and disjoint write ownership permit this parallel work. Protocol/window release precedes native case execution; final review follows the frozen record.
+
+### T-004 protocol release — 2026-09-15
+
+[AGENT COORDINATOR] Reviewed native protocol and21 complete declared groups: all have conservative constraint paths, no no-constraint-response group; held acceptance limits are excluded. Source profile is a paired tie, radiation and radius remain conditional sensitivities, and unsupported physical-area/peaking inputs are declined. Original source/math/interface and corrected implementation reviews at48b65159 cover the unchanged relations; a duplicate preexecution independent review adds no coverage. Release baseline, all preflight gates and bounded27-point oracle scan. If all27 evaluate without an unanticipated issue, the executor may adopt that diagnostic window from the scan and proceed natively; any premise surprise parks affected work. The known negative-burn account-invalid control must remain. Native integration evidence is committed at686bc67b. No altered acceptance limit or new physical-area law is authorized.
+
+### T-004 scan interpretation release — 2026-09-15
+
+[AGENT COORDINATOR] All27 oracle points evaluate and no point passes all predicates. The R12.9 perturbation of the named field/current/fit-passing rejection also has negative required heating, beyond the dedicated negative-burn control. Retain both failed operating cases with `power_account_valid=0`; exclude them from physical heat-load gain interpretations. This is the reviewed signed-demand domain operating as designed, not evidence for a new divertor law. Release the unchanged27-point native sample with this explicit interpretation recorded. No model, window or acceptance change is needed.
