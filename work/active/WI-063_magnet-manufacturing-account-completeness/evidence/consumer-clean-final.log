@@ -1,0 +1,48 @@
+...............s..................F..................................... [ 37%]
+........................................................................ [ 75%]
+...............................................                          [100%]
+=================================== FAILURES ===================================
+____ test_current_radius_controls_match_frozen_model_and_independent_oracle ____
+
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12846/test_current_radius_controls_m0')
+stock_simkit_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    def test_current_radius_controls_match_frozen_model_and_independent_oracle(
+        tmp_path, stock_simkit_path
+    ):
+        from tests.study import financial_radius_controls as controls
+    
+        results = controls.check_controls(tmp_path)
+        assert results["baseline"]["verdicts"]["divertor_heat_ok"] == "violated"
+>       assert {k for k, v in results["R14"]["verdicts"].items() if v == "violated"} == {
+            "divertor_heat_ok",
+            "wall_load_ok",
+            "sustainment_ok",
+            "loop_capacity_ok",
+            "wp_fit_ok",  # R14 retains the .30m allocation, so the .36m nominal pack fails.
+        }
+E       AssertionError: assert {'divertor_he..., 'wp_fit_ok'} == {'divertor_he..., 'wp_fit_ok'}
+E         
+E         Extra items in the left set:
+E         'reference_conductor_current_ok'
+E         Use -v to get more diff
+
+tests/study/test_major_radius.py:100: AssertionError
+----------------------------- Captured stdout call -----------------------------
+{
+  "native_channels": 228,
+  "oracle_channels": 212,
+  "authored_verdicts": 20,
+  "worst_rel_dev": 1.7479207264331552e-15
+}
+=============================== warnings summary ===============================
+tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle
+1 failed, 189 passed, 1 skipped, 2 warnings in 185.77s (0:03:05)

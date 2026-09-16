@@ -57,7 +57,7 @@ BASELINE_POINT = {
 # Predictions) and re-pinned from the executed baseline after the oracle read bit-exact
 # on every channel, the eleven calendar channels included. The held mode
 # (availability_direct 0.85) reproduces WI-045's 237.2528002420958 bit-for-bit.
-PINNED_LCOE = 144.74743129583516  # WI-060 native/oracle agreement, evidence/repin.log.
+PINNED_LCOE = 144.74743129583516  # WI-063 native/oracle agreement, item evidence/repin.log.
 
 
 @pytest.fixture

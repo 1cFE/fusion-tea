@@ -36,13 +36,15 @@ Updated: 2026-09-15
 
 ## Acceptance evidence
 
-- [ ] Account map and source/rate decisions resolve every touched term to quantified, assumed or unresolved status.
-- [ ] Independent source/math/interface review releases the chosen implementation.
-- [ ] Production model, generated package and independent account identities agree at reference and off-reference points.
-- [ ] Quantity/rate separability, no duplicate tape constituents, no purchased clearance and unchanged unrelated physical predicates are tested.
-- [ ] Subtotals reconcile; year and manufacturing-coverage limitations survive into the final answer.
-- [ ] Applicable native validation and affected consumers checked; independent integrated coverage recorded.
+- [x] Account map and source/rate decisions resolve every touched term to quantified, assumed or unresolved status.
+- [x] Independent source/math/interface review releases the chosen implementation.
+- [x] Production model, generated package and independent account identities agree at reference and off-reference points.
+- [x] Quantity/rate separability, no duplicate tape constituents, no purchased clearance and unchanged unrelated physical predicates are tested.
+- [x] Subtotals reconcile; year and manufacturing-coverage limitations survive into the final answer.
+- [x] Applicable native validation and affected consumers checked; independent integrated coverage recorded.
 
 ## Preparation notes
 
 2026-09-15 [AGENT]: Native PM registered WI-063. As in prior items, the active spec carries the implementation stage while native PM has no separate activation operation. Research is in flight; source-dependent design and implementation are pending. No model edits authorized by a fabricated evidence assumption.
+
+2026-09-15 [AGENT]: Acceptance evidence is complete for the conditional component account. See audit.md and the independent integrated assessment; unsupported manufacturing and common-year price limits remain explicit. Native status remains active until owner-held closure.

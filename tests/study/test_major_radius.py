@@ -103,6 +103,7 @@ def test_current_radius_controls_match_frozen_model_and_independent_oracle(
         "sustainment_ok",
         "loop_capacity_ok",
         "wp_fit_ok",  # R14 retains the .30m allocation, so the .36m nominal pack fails.
+        "reference_conductor_current_ok",  # WI-062 conditional reference current remains insufficient.
     }
 
 
