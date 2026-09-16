@@ -21,7 +21,7 @@ from tests.study.conftest import DATA_DIR, run_tool
 CASES = ["availability_direct", "interest_rate", "R", "a", "I_coil"]
 
 # WI-059 (2026-09-15): re-derived from the completed package indicator report.
-EXPECTED_SEMANTIC_FINGERPRINT = 'f1340dda1471f65942e804579adc14b21344f9e1e4f26f04e8567214483c2ed8'
+EXPECTED_SEMANTIC_FINGERPRINT = '17da5a058e674547143f7df8ddb3a71909e4b9f06f465fcdff051b0fb20ac209'
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
 #:          modules fired, channels tainted). Read straight off the Item 1 fixture
@@ -65,8 +65,8 @@ FIXTURE_CONTRACT = {'I_coil': (False,
              'p_aux_required',
              'tau_E',
              'total_capital'],
-            96,
-            220),
+            97,
+            225),
  'R': (False,
        ['beta_ok',
         'burn_hold_ok',
@@ -96,8 +96,8 @@ FIXTURE_CONTRACT = {'I_coil': (False,
         'p_aux_required',
         'tau_E',
         'total_capital'],
-       97,
-       212),
+       98,
+       217),
  'a': (False,
        ['beta_ok',
         'burn_hold_ok',
@@ -127,8 +127,8 @@ FIXTURE_CONTRACT = {'I_coil': (False,
         'p_aux_required',
         'tau_E',
         'total_capital'],
-       96,
-       211),
+       97,
+       216),
  'availability_direct': (True,
                          [],
                          ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'],

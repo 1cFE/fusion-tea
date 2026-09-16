@@ -1,0 +1,1 @@
+Traced element 'Winding Pack Insulation Inventory' in models/library/analyses/mfe_winding_pack_cost.sysml

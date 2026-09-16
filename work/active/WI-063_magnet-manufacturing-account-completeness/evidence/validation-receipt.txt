@@ -1,0 +1,1 @@
+Added verification SV-110: WI-063 conditional insulation inventory, price separation and magnet account reconciliation

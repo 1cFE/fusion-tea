@@ -57,7 +57,7 @@ def test_legacy_replay_preserves_entering_physics_and_non_tape_accounts(oracle):
     entering = json.loads((EVIDENCE/'entering_oracle.json').read_text())
     saved = oracle.IN.copy()
     try:
-        oracle.IN.update(cryo_inventory_enabled=False, magnet_support_coefficient=0,
+        oracle.IN.update(magnet_insulation_sheet_price=0., cryo_inventory_enabled=False, magnet_support_coefficient=0,
                          magnet_legacy_casing_fraction=1, cryo_joint_drive_fraction=0,
                          cryo_q_nuc_structure=0, structure_residual_fraction=1)
         actual = oracle.compute()

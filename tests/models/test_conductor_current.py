@@ -82,7 +82,7 @@ def test_series_turn_repartition(evaluate):
 @pytest.mark.codegen_available
 def test_prior_native_reference_preserved(evaluate):
     old=json.loads(Path('work/orchestration/goals/absolute-conductor-current-margin/evidence/entering/native-reference.json').read_text())
-    row=evaluate()
+    row=evaluate({'magnet__winding_pack__insulation_sheet_price':0.})
     for key,value in old['outputs'].items():
         if isinstance(value,(float,int)):assert row.outputs[key]==value,key
     for key,value in old['responses'].items():assert row.responses[key]==value,key

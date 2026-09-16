@@ -1,4 +1,5 @@
 """Current radius ownership: reject retired inputs and preserve native numerics."""
+from tests.models.current_mfe_regressions import WI062_PARAMETERS, WI063_PARAMETERS
 
 from tests.models.current_mfe_regressions import WI060_PARAMETERS, WI059_PARAMETERS, WI059_EXISTING_MAPPED_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES
 
@@ -48,11 +49,11 @@ def test_exact_input_contract():
     from tests.models.current_mfe_regressions import WI040_PARAMETERS, WI038_PARAMETERS, WI058_PARAMETERS, WI058_RETIRED
     # WI-058 (2026-09-14): k_coil retired from the contract and the seam, c_coil_ref added (the winding
     # length follows the coil bore); the counts (265 inputs, 118 mapped, 147 unmapped) do not move.
-    added = WI061_PARAMETERS | WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI060_PARAMETERS
+    added = WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI060_PARAMETERS
     inputs = {}
     for path in (route.PACKAGE_DIR / "inputs").glob("*.json"):
         inputs.update(json.loads(path.read_text()))
-    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS)
+    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS)
     coverage = json.loads(
         (
             ROOT
@@ -63,7 +64,7 @@ def test_exact_input_contract():
     entering = renamed_keys(coverage["entering_mapping"])
     current = oracle.ENTRY_KEY_TO_ORACLE_INPUT
     mapped_added = added | WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS
-    assert len(entering) == 100 and len(current) == 118 + len(WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS)
+    assert len(entering) == 100 and len(current) == 118 + len(WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS)
     assert {k: v for k, v in current.items() if k not in mapped_added} == {key: value for key, value in entering.items() if key != OLD and key not in WI058_RETIRED}
     assert set(current) - set(entering) == mapped_added
     assert WI058_RETIRED <= set(entering) and not WI058_RETIRED & set(current)

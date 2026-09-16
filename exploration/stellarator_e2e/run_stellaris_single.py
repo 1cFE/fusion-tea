@@ -209,15 +209,16 @@ def _anchor_gate(values: dict[str, float]) -> bool:
     # WI-060 tape-volume procurement changes the four economic anchors only;
     # independently predicted tape delta -$72.428571m (WI-060 evidence/baseline.json).
     anchors = [
-        ("total capital $", total, 8904384837.760319),
-        ("LCOE $/MWh", values[CH["lcoe"]], 144.73830113443233),
+        # WI-063: independently reconciled conditional sheet-stock increment.
+        ("total capital $", total, 8905077000.154549),
+        ("LCOE $/MWh", values[CH["lcoe"]], 144.74743129583516),
         ("p_net MW", values[CH["p_net"]], 1012.6082547175133),
         ("q_eng", values[CH["q_eng"]], 3.9319737437533955),
         ("rec_frac", values[CH["rec_frac"]], 0.25432519776833934),
         ("magnet %", magnet / total * 100, 19.170578781069967),
         ("CAS70 $/yr", values[CH["cas70"]], 217687149.51060474),
         ("CAS80 $/yr", values[CH["cas80"]], 792_505.965114),
-        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 142.2005847790868),
+        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 142.2095176767976),
     ]
 
     print("\n=== NINE ANCHORS (single-pass, graph rollup, no bridge) ===")

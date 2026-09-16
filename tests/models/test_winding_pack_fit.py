@@ -78,7 +78,8 @@ def test_public_native_oracle_and_existing_predicates(evaluate,changes):
 def test_local_geometry_has_no_existing_physical_cost_effect(evaluate):
     before=evaluate(); after=evaluate({'magnet__winding_pack__fit_aspect_ratio':1.25,'magnet__casing__interior_y':.5})
     for key,value in before.outputs.items():
-        if '__wp_fit__' not in key and 'wp_fit_ok' not in key and key!='constraint_report':
+        # Aspect ratio changes only the unpriced ground envelope; stock volume is area-based.
+        if key != P+'magnet__insulation_inventory__ground_volume' and '__wp_fit__' not in key and 'wp_fit_ok' not in key and key!='constraint_report':
             assert after.outputs[key]==value,key
     for key,value in before.responses.items():
         if 'wp_fit_ok' not in key:
@@ -99,7 +100,7 @@ def test_entering_baseline_scalars_preserved(evaluate):
     import json
     from pathlib import Path
     entering=json.loads(Path('work/orchestration/goals/winding-pack-casing-fit/evidence/entering/comparison.json').read_text())['baseline']
-    row=evaluate()
+    row=evaluate({'magnet__winding_pack__insulation_sheet_price':0.})
     assert len(entering)==179
     previous=json.loads(Path('work/active/WI-060_tape-procurement-quantity-basis/evidence/baseline.json').read_text())
     for key,value in previous['outputs'].items():
@@ -121,3 +122,11 @@ def test_independent_oracle_geometry_domains(runtime_paths,key,bad):
 def test_zero_cavity_is_native_refusal(evaluate):
     with pytest.raises(Exception,match='cavity_x'):
         evaluate({'magnet__casing__wall_thickness':.15})
+
+
+@pytest.mark.codegen_available
+def test_clearance_and_cavity_do_not_purchase_insulation(evaluate):
+    before=evaluate(); after=evaluate({'magnet__casing__assembly_clearance':.004,'magnet__casing__interior_y':.5})
+    for key,value in before.outputs.items():
+        if '__wp_fit__' not in key and 'wp_fit_ok' not in key and key!='constraint_report':
+            assert after.outputs[key]==value,key

@@ -113,6 +113,11 @@ package mfe_magnet_parts {
         attribute ground_insulation : Real default 0.0;
         // winding-pack set-distribution factor [1] (WI-036 cold volume)
         attribute f_wp_vol : Real;
+        // WI-063 mean side/reference side; separate from the area distribution factor.
+        attribute f_wp_perimeter : Real default 1.0;
+        attribute insulation_sheet_thickness : Real default 0.0005; // m; quantity assumption
+        attribute insulation_sheet_price : Real default 0.0; // dollars/m^2; disabled incremental scenario
+
         // winding-pack effective elastic modulus [Pa] (WI-036 conductor strain)
         attribute E_wp : Real;
         // conductor load-sharing factor [1] (WI-036 conductor strain)
@@ -161,9 +166,9 @@ package mfe_magnet_parts {
         attribute m_casing_ref : Real;
         // reference coil-set stored magnetic energy [J] at (I_ref, a_coil_ref, R_ref)
         attribute W_mag_ref : Real;
-        // fabricated structural steel price [$/kg]
+        // Historical all-in rate component [$/kg]; unknown price year/qualification.
         attribute steel_price : Real;
-        // casing fabrication markup [1]
+        // Historical rate-composition factor [1]; no measured fabrication split.
         attribute f_steel_fab : Real;
         // structural allowable stress [Pa]
         attribute sigma_allow : Real;

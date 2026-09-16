@@ -2,10 +2,11 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_magnet_cost.sysml:180
+SysML Source: root-0/analyses/mfe_magnet_cost.sysml:181
 
 SysML Expressions:
-    capital_cost = winding_cost + structure_cost_in
+    insulation_stock_cost = 0.0
+    capital_cost = winding_cost + structure_cost_in + insulation_stock_cost
     
 Documentation:
 CAS22.1.3 magnet account rollup (WI-035 D6): the decomposed magnet
@@ -18,7 +19,7 @@ WI-030).
 *Source**: work/completed/20260901_WI-035_magnet-closure/design.md
 *Ref**: design D6 (rollup + comparison channel); design Risk 1
 (redefinition envelope)
-*Basis**: sum of winding-pack and magnet-structure sub-accounts
+*Basis**: sum of winding-pack, all-in magnet structure and conditional additional sheet-stock sub-accounts; sheet inclusion in winding remains uncertain (WI-063 design).
 """
 
 AUTO_IMPLEMENTED = True
@@ -39,12 +40,13 @@ WI-030).
 *Source**: work/completed/20260901_WI-035_magnet-closure/design.md
 *Ref**: design D6 (rollup + comparison channel); design Risk 1
 (redefinition envelope)
-*Basis**: sum of winding-pack and magnet-structure sub-accounts
+*Basis**: sum of winding-pack, all-in magnet structure and conditional additional sheet-stock sub-accounts; sheet inclusion in winding remains uncertain (WI-063 design).
 
-SysML Source: root-0/analyses/mfe_magnet_cost.sysml:180
+SysML Source: root-0/analyses/mfe_magnet_cost.sysml:181
 
 SysML Expressions:
-    capital_cost = winding_cost + structure_cost_in
+    insulation_stock_cost = 0.0
+    capital_cost = winding_cost + structure_cost_in + insulation_stock_cost
     
 Documentation:
 CAS22.1.3 magnet account rollup (WI-035 D6): the decomposed magnet
@@ -57,7 +59,7 @@ WI-030).
 *Source**: work/completed/20260901_WI-035_magnet-closure/design.md
 *Ref**: design D6 (rollup + comparison channel); design Risk 1
 (redefinition envelope)
-*Basis**: sum of winding-pack and magnet-structure sub-accounts
+*Basis**: sum of winding-pack, all-in magnet structure and conditional additional sheet-stock sub-accounts; sheet inclusion in winding remains uncertain (WI-063 design).
 
 Args:
     inputs: Input parameters validated against Magnet_CapitalInput schema
@@ -69,4 +71,4 @@ Example:
     >>> inputs = Magnet_CapitalInput(...)
     >>> result = run_magnet_capital(inputs)
     """
-    return (inputs.winding_cost + inputs.structure_cost_in)
+    return ((inputs.winding_cost + inputs.structure_cost_in) + inputs.insulation_stock_cost)

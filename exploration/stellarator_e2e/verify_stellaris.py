@@ -328,6 +328,10 @@ IN = dict(
     magnet_turn_current=50000.0, magnet_winding_rate_1990=480.0,
     magnet_cost_escalation=334.4 / 130.7, magnet_nonplanar_factor=1.9,
     magnet_steel_price=6.0, magnet_f_steel_fab=3.0,
+    # WI-063: conditional sheet stock, independent of ground/process unknowns.
+    magnet_f_wp_perimeter=0.9351851851851851,
+    magnet_insulation_sheet_thickness=0.0005,
+    magnet_insulation_sheet_price=61.67720668774671,
     # WI-059: total-support fit (MJ/tonne convention inferred from later thesis).
     magnet_support_coefficient=1.348, magnet_support_exponent=0.78,
     magnet_legacy_casing_fraction=0.0, structure_residual_fraction=1.0,
@@ -651,6 +655,49 @@ def _winding_procurement(p, circumference, material_cost, tape_volume):
     return result
 
 
+def _insulation_inventory(p, circumference, pack_side, volume):
+    """Independent area/perimeter integration for the declared extra-layer scenario.
+
+    Ground is geometry only. Sheet stock includes laminate resin, not installation.
+    The effective side distribution is held as physical design inputs change.
+    """
+    positive = {'circumference': circumference, 'pack_side': pack_side,
+        'n_coils': p['magnet_n_coils'], 'aspect_ratio': p['fit_aspect_ratio'],
+        'perimeter_factor': p['magnet_f_wp_perimeter'],
+        'sheet_thickness': p['magnet_insulation_sheet_thickness']}
+    nonnegative = {'volume': volume, 'fx': p['fit_internal_x'],
+        'fy': p['fit_internal_y'], 'ground': p['fit_ground'],
+        'sheet_price': p['magnet_insulation_sheet_price']}
+    for name, value in positive.items():
+        if not math.isfinite(value) or value <= 0:
+            raise ValueError('oracle insulation: invalid ' + name)
+    for name, value in nonnegative.items():
+        if not math.isfinite(value) or value < 0:
+            raise ValueError('oracle insulation: invalid ' + name)
+    if p['magnet_f_wp_perimeter'] > 1:
+        raise ValueError('oracle insulation: perimeter_factor exceeds reference maximum')
+    def checked(name, value, must_positive=False):
+        if not math.isfinite(value) or value < 0 or (must_positive and value == 0):
+            raise ValueError('oracle insulation: invalid ' + name)
+        return value
+    fx, fy = p['fit_internal_x'], p['fit_internal_y']
+    # Integrate strips and their corner once; do not subtract near-equal envelopes.
+    increment = checked('sheet_fraction', math.fsum([fx, fy, fx*fy]), fx > 0 or fy > 0)
+    sheet = checked('internal_volume', volume*increment, volume > 0 and increment > 0)
+    root = math.sqrt(p['fit_aspect_ratio'])
+    x = checked('mean_x', pack_side*root*p['magnet_f_wp_perimeter'], True)
+    y = checked('mean_y', pack_side/root*p['magnet_f_wp_perimeter'], True)
+    path = checked('coil_path', p['magnet_n_coils']*circumference, True)
+    t = p['fit_ground']
+    side_shell = checked('ground_sides', 2*t*(x*(1+fx)+y*(1+fy)), t > 0)
+    corners = checked('ground_corners', 4*t*t, t > 0)
+    ground = checked('ground_volume', path*math.fsum([side_shell,corners]), t > 0)
+    area = checked('sheet_area', sheet/p['magnet_insulation_sheet_thickness'], sheet > 0)
+    cost = checked('stock_cost', area*p['magnet_insulation_sheet_price'],
+                   area > 0 and p['magnet_insulation_sheet_price'] > 0)
+    return dict(internal_volume=sheet, ground_volume=ground, sheet_area=area, stock_cost=cost)
+
+
 def _coil_thermal_inventory(p, circumference, pack_side):
     """WI-059 independent heat balances; reviewed source forms and scenario inputs.
 
@@ -903,6 +950,7 @@ def compute():
         / (1e6 * p['magnet_j_wp']))
     procurement = _winding_procurement(p, c_coil, inventory['material_cost'], tape_volume_direct)
 
+    insulation = _insulation_inventory(p, c_coil, wp_side, vol_winding_pack)
     conductor = _conductor_current(p, B_peak, procurement['tape_length'], procurement['conductor_length'])
 
     # --- Plasma Sustainment (WI-037): computed ash, quasi-neutral fuel,
@@ -1018,7 +1066,13 @@ def compute():
     winding_pack_legacy = kAm_wind * p["magnet_cost_per_kAm"] * p["magnet_f_wp_fab"]
     winding_pack = procurement["cost"]
     magnet_structure = (p["magnet_legacy_casing_fraction"]*p["magnet_n_coils"]*m_casing+support_mass)*p["magnet_steel_price"]*p["magnet_f_steel_fab"]
-    magnet_capital_rollup = winding_pack + magnet_structure
+    support_effective_all_in_rate = p["magnet_steel_price"] * p["magnet_f_steel_fab"]
+    for name in ("magnet_steel_price", "magnet_f_steel_fab"):
+        if not math.isfinite(p[name]) or p[name] < 0:
+            raise ValueError("oracle support rate: invalid " + name)
+    if not math.isfinite(support_effective_all_in_rate):
+        raise ValueError("oracle support rate: nonfinite product")
+    magnet_capital_rollup = winding_pack + magnet_structure + insulation["stock_cost"]
     blanket = (p["blanket_unit_cost"] * p["blanket_structure_factor"] * blanket_vol
                * (p_th / p["p_th_ref"]) ** p["alpha_06"])
     shield = (p["shield_unit_cost"] * shield_vol * p["shield_scale"]
@@ -1259,6 +1313,8 @@ def compute():
         cycle_margin_low=cycle_margin_low, cycle_margin_high=cycle_margin_high,
         cycle_domain_product=cycle_domain_product,
         winding_pack=winding_pack, magnet_structure=magnet_structure,
+        support_effective_all_in_rate=support_effective_all_in_rate,
+        **{"insulation_" + name: value for name, value in insulation.items()},
         winding_pack_legacy=winding_pack_legacy, vol_winding_pack=vol_winding_pack,
         **{'conductor_' + name: value for name, value in grade.items()},
         **{"winding_" + name: value for name, value in inventory.items()},

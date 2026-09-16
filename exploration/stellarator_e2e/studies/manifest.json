@@ -7,7 +7,7 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "855a3a3b88c277e169aa3265db273c3d24686a6d762d7bd8437c0fd987c6160f",
+      "digest": "66b7d987429cb04fbb563d58adead992a74415b5b6275cc0e806d72373f33bb9",
       "files": [
         "contracts/model_contract.json",
         "inputs/mfe_account_costs_params.json",
@@ -24,8 +24,8 @@
       ]
     },
     "recorded_provenance": {
-      "semantic_fingerprint": "f1340dda1471f65942e804579adc14b21344f9e1e4f26f04e8567214483c2ed8",
-      "executable_fingerprint": "c0a7ef4a259082952bece2bf40b5a7cfaa570c317ae8f1dd4026fc33bdae46be"
+      "semantic_fingerprint": "17da5a058e674547143f7df8ddb3a71909e4b9f06f465fcdff051b0fb20ac209",
+      "executable_fingerprint": "5255709837fce2293db36f8c4b795e7726b8808efcd3cb6903f6e600919dae70"
     }
   },
   "objective_catalog": [
@@ -109,7 +109,7 @@
     },
     "headline": {
       "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
-      "value": 144.73830113443233
+      "value": 144.74743129583516
     },
     "verdicts": [
       {

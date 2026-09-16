@@ -1,0 +1,46 @@
+{
+  "scope": "conditional priced subset, not complete manufacturing or reconciled common-year total",
+  "units": "USD; per-account price-year limitations in account-ledger.md",
+  "priced_material_stock": {
+    "complete_tape": 731571428.5714288,
+    "external_materials": {
+      "copper": 4700258.639999999,
+      "solder": 8859919.781807616,
+      "steel": 2359756.7999999993,
+      "helium": 34774.15261034517
+    },
+    "conditional_internal_sheet": 421131.9672639345,
+    "subtotal": 747947269.9131106
+  },
+  "winding_operations": 750415091.6602907,
+  "all_in_electromagnetic_supports": 209080880.68635386,
+  "effective_support_rate_usd_kg": 18.0,
+  "magnet_priced_subtotal": 1707443242.2597551,
+  "nonmagnet_allowance": 34155617.209747344,
+  "magnet_plus_nonmagnet_allowance": 1741598859.4695024,
+  "insulation": {
+    "internal_sheet_m3": 3.4139999999999997,
+    "internal_sheet_m2": 6827.999999999999,
+    "ground_envelope_m3": 4.951799999999999,
+    "ground_material_cost": null,
+    "ground_installation_cost": null
+  },
+  "unresolved_costs": {
+    "fixed_cable_manufacture": null,
+    "incremental_joints_testing_assembly": null,
+    "incremental_winding_effort": null,
+    "waste_yield_rework": null,
+    "free_resin_impregnation": null
+  },
+  "assumed_boundary": "Internal sheet purchase is assumed additional to historical winding; zero-increment cost-only alternative keeps geometry unchanged.",
+  "zero_increment_alternative_magnet": 1707022110.2924912,
+  "added_sheet_charge": 421131.967263937,
+  "lcoe": 144.74743129583516,
+  "fit_minimum_margin_m": -0.11999999999999994,
+  "current_margin_A": -26282.59618805313,
+  "checks": {
+    "material_winding_allin_sum": true,
+    "added_charge_equals_sheet": true,
+    "adverse_reference_physics_retained": true
+  }
+}

@@ -12,6 +12,7 @@ them as data and fails closed on anything unresolved.
 This test proves the publication is possible and correct against the real contract,
 before anything consumes it. It resolves all eight constraints — no sampling.
 """
+from tests.models.current_mfe_regressions import WI062_PARAMETERS, WI063_PARAMETERS
 
 from tests.models.current_mfe_regressions import WI060_PARAMETERS, WI059_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES
 
@@ -56,7 +57,7 @@ BASELINE_POINT = {
 # Predictions) and re-pinned from the executed baseline after the oracle read bit-exact
 # on every channel, the eleven calendar channels included. The held mode
 # (availability_direct 0.85) reproduces WI-045's 237.2528002420958 bit-for-bit.
-PINNED_LCOE = 144.73830113443233  # WI-060 native/oracle agreement, evidence/repin.log.
+PINNED_LCOE = 144.74743129583516  # WI-060 native/oracle agreement, evidence/repin.log.
 
 
 @pytest.fixture
@@ -100,7 +101,7 @@ def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
     inputs = package_inputs(real_package_path)
 
     assert set(bindings) == {entry["constraint_id"] for entry in entries}
-    assert len(inputs) == 273 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS)  # WI-040 adds seventeen inputs; WI-038 adds two references.
+    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS)  # WI-040 adds seventeen inputs; WI-038 adds two references.
     resolved = 0
     for entry in entries:
         cid = entry["constraint_id"]

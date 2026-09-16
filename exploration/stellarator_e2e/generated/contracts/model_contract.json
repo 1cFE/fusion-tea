@@ -1502,12 +1502,12 @@
     },
     {
       "channel_name": "stellarator_09__stellaris__magnet__magnet_structure_cost__cost",
-      "field_name": "root",
+      "field_name": "cost",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost",
-      "field_name": "root",
+      "channel_name": "stellarator_09__stellaris__magnet__magnet_structure_cost__effective_all_in_rate",
+      "field_name": "effective_all_in_rate",
       "python_type": "float"
     },
     {
@@ -1568,6 +1568,31 @@
     {
       "channel_name": "stellarator_09__stellaris__magnet__conductor_current__operating_fraction_reference",
       "field_name": "operating_fraction_reference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__insulation_inventory__ground_volume",
+      "field_name": "ground_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__insulation_inventory__stock_cost",
+      "field_name": "stock_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__insulation_inventory__internal_volume",
+      "field_name": "internal_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__insulation_inventory__sheet_area",
+      "field_name": "sheet_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost",
+      "field_name": "root",
       "python_type": "float"
     },
     {
@@ -3573,6 +3598,13 @@
       "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__f_wp_fab"
     },
     {
+      "default_value": 0.9351851851851851,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__f_wp_perimeter"
+    },
+    {
       "default_value": 0.8780864197530865,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -3613,6 +3645,20 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__helium_pressure"
+    },
+    {
+      "default_value": 61.67720668774671,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price"
+    },
+    {
+      "default_value": 0.0005,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness"
     },
     {
       "default_value": 0.0,
@@ -4182,5 +4228,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "f1340dda1471f65942e804579adc14b21344f9e1e4f26f04e8567214483c2ed8"
+  "semantic_fingerprint": "17da5a058e674547143f7df8ddb3a71909e4b9f06f465fcdff051b0fb20ac209"
 }

@@ -1,5 +1,5 @@
 {
-  "derived_against_semantic_fingerprint": "f1340dda1471f65942e804579adc14b21344f9e1e4f26f04e8567214483c2ed8",
+  "derived_against_semantic_fingerprint": "17da5a058e674547143f7df8ddb3a71909e4b9f06f465fcdff051b0fb20ac209",
   "group": {
     "axis": "I_coil",
     "declared_keys": [
@@ -1041,8 +1041,8 @@
     ],
     "sibling_candidates": [],
     "trace_size": {
-      "modules_fired": 96,
-      "channels_tainted": 220
+      "modules_fired": 97,
+      "channels_tainted": 225
     },
     "warnings": [],
     "not_derivable": {

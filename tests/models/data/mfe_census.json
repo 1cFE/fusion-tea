@@ -1,6 +1,6 @@
 {
-  "derived_against_semantic_fingerprint": "f1340dda1471f65942e804579adc14b21344f9e1e4f26f04e8567214483c2ed8",
-  "entry_points": 307,
+  "derived_against_semantic_fingerprint": "17da5a058e674547143f7df8ddb3a71909e4b9f06f465fcdff051b0fb20ac209",
+  "entry_points": 310,
   "by_entry_type": {
     "library_default": [
       "stellarator_09__stellaris__blanket__blanket_cost__alpha",
@@ -226,12 +226,15 @@
       "stellarator_09__stellaris__magnet__winding_pack__f_solder",
       "stellarator_09__stellaris__magnet__winding_pack__f_steel",
       "stellarator_09__stellaris__magnet__winding_pack__f_wp_fab",
+      "stellarator_09__stellaris__magnet__winding_pack__f_wp_perimeter",
       "stellarator_09__stellaris__magnet__winding_pack__f_wp_vol",
       "stellarator_09__stellaris__magnet__winding_pack__field_exponent",
       "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio",
       "stellarator_09__stellaris__magnet__winding_pack__ground_insulation",
       "stellarator_09__stellaris__magnet__winding_pack__helium_gas_constant",
       "stellarator_09__stellaris__magnet__winding_pack__helium_pressure",
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price",
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness",
       "stellarator_09__stellaris__magnet__winding_pack__internal_build_x",
       "stellarator_09__stellaris__magnet__winding_pack__internal_build_y",
       "stellarator_09__stellaris__magnet__winding_pack__j_wp",

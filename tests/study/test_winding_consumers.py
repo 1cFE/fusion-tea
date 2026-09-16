@@ -1,4 +1,5 @@
 """Independent winding-pack magnitudes, units and current adapter boundary."""
+from tests.models.current_mfe_regressions import WI063_PARAMETERS, WI063_CHANNELS
 
 from tests.models.current_mfe_regressions import WI061_MAPPED_PARAMETERS, WI061_CHANNELS
 from tests.models.current_mfe_regressions import WI062_PARAMETERS, WI062_CHANNELS
@@ -79,7 +80,7 @@ def test_valid_full_oracle_outputs_and_stress_units_preserved(row):
     # WI-040: independently derive only the additive-account cost increments;
     # all frozen physics and unrelated output values retain exact comparison.
     expected, changed = wi040_expected(row)
-    added = {k for k,v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v in WI062_CHANNELS}
+    added = {k for k,v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v in WI062_CHANNELS | WI063_CHANNELS}
     assert actual.keys() == expected.keys() | added
     for name, value in expected.items():
         if name in changed:
@@ -99,12 +100,12 @@ def test_adapter_coverage_remains_exact():
     # WI-058 (2026-09-14): the seam maps c_coil_ref in place of the retired k_coil.
     assert WI058_RETIRED <= old_inputs.keys()
     old_inputs = {k: v for k, v in old_inputs.items() if k not in WI058_RETIRED}
-    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS} == old_inputs
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS
+    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS} == old_inputs
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS
     old_outputs = renamed_values(BEFORE['output_mapping'])
     old_outputs['winding_pack_legacy'] = old_outputs.pop('winding_pack')
     old_outputs['p_cryo'] = oracle.P + 'cryoplant__refrigeration_sum__total'
-    extras = WI062_CHANNELS | WI061_CHANNELS | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_ORACLE_ADDED_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
+    extras = WI062_CHANNELS | WI063_CHANNELS | WI061_CHANNELS | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_ORACLE_ADDED_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
     assert {k: v for k, v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v not in extras} == old_outputs
     assert set(oracle.ORACLE_OUTPUT_TO_CHANNEL.values()) - set(old_outputs.values()) == extras
     assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[oracle.P + 'magnet__coil__I_coil'] == 'magnet_I_coil'
@@ -122,7 +123,7 @@ def test_current_native_winding_route_agrees_with_independent_oracle(tmp_path, s
     for case in cases:
         assert case.state == 'completed', (dict(case.inputs), case.state)
         expected = oracle.evaluate(case.inputs)
-        assert len(case.outputs) == 177 + len(WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS) and len(expected) == 161 + len(WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS)  # WI-038 adds three grade outputs
+        assert len(case.outputs) == 177 + len(WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS) and len(expected) == 161 + len(WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS)  # WI-038 adds three grade outputs
         for key, value in expected.items():
             assert case.outputs[key] == pytest.approx(value, rel=1e-9, abs=1e-9), key
         if dict(case.inputs) == WI059_REPLAY:

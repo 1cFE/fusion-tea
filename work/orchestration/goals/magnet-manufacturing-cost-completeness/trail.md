@@ -72,3 +72,14 @@ T-003 · native modeling PM · registered item with spec, design decisions and v
 - **Decision:** Source lacks insulation identity and detailed winding-rate coverage · propose conditional separately purchased sheet stock, show zero-increment alternative and disclose uncertain overlap; no claim of demonstrated missing charge · execution detail · coordinator pending independent source/interface review · WI-063/design.md.
 - **Decision:** No calibrated effort response found · retain length-based winding and explicit transfer sensitivity; keep unsupported processes visible · execution detail · coordinator pending review · WI-063/design.md.
 - **Decision:** Cryogenic supplier encoding failure · retain native operator queue; no adopted datum and no need to repair the research seam for this conditional scenario · execution detail · coordinator · native research return.
+
+### T-003 source/interface release — 2026-09-15
+
+- **Reviewer:** fresh non-author /root/manufacturing_reviewer; evidence/source-design-review.md, PASS with explicit source/construction limits.
+- **Decision:** Reviewer confirms conditional sheet-stock scenario and advises simpler ABI · retain legacy support rate-composition inputs, expose effective all-in rate, and preserve multiplication order; avoid historical input retirement · execution detail · coordinator · WI-063/design.md and implementation-brief.md.
+- **Decision:** Zero-increment overlap control · set sheet price0 at held geometry, independently of included-sheet geometry alternative · execution detail · coordinator following review · native verification scope.
+- **Decision:** Accounting objective needs no design-space search · verify native reference/off-reference identities and conditional ledger without a new parameter study; no sampled economic-landscape claims · execution detail · coordinator, independently accepted for this scope · WI-063/design.md. A future study with unresisted price axes would require its own owner framing ruling.
+
+### T-003 execution ownership — 2026-09-15
+
+[AGENT] After source/interface release, independent files can proceed in parallel. Native worker owns canonical/twin models, generated code, the new direct module tests and generation receipts. Coordinator owns independent oracle/mappings and new oracle tests, metadata repin and final integration. Continuing account worker owns affected existing consumer tests and the native fixture-producer wrapper. Their fixed ABI is in evidence/implementation-brief.md; producer/consumer integration runs sequentially after native generation. No historical study evidence is modified.

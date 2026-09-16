@@ -112,6 +112,7 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
         "helium_pressure", "helium_gas_constant", "winding_rate_1990",
         "tape_width", "tape_thickness", "tape_price_per_m",
         "cost_escalation", "nonplanar_factor",
+        "f_wp_perimeter", "insulation_sheet_thickness", "insulation_sheet_price",
     )},
     # WI-044: magnet__m_casing retired (the casing mass is computed from the stored
     # energy); the five coil-bore anchors are the entry keys that replaced it.
@@ -308,6 +309,9 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "tape_procurement_cost": f"{P}magnet__winding_procurement__tape_cost",
     "conductor_length": f"{P}magnet__winding_procurement__conductor_length",
     "winding_fabrication_cost": f"{P}magnet__winding_procurement__winding_fabrication_cost",
+    **{"insulation_" + name: f"{P}magnet__insulation_inventory__{name}" for name in (
+        "internal_volume", "ground_volume", "sheet_area", "stock_cost")},
+    "support_effective_all_in_rate": f"{P}magnet__magnet_structure_cost__effective_all_in_rate",
     "magnet_structure": f"{P}magnet__magnet_structure_cost__cost",  # WI-035 sub-account
     "magnet_capital_rollup": f"{P}magnet__magnet_capital_rollup__capital_cost",  # WI-035 rollup
     "aux_cost": f"{P}cryoplant__aux_cooling__aux_cost",  # WI-035 aux split

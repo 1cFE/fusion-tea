@@ -313,6 +313,23 @@ package mfe_power_core {
             in coil_markup = coil.coil_markup;
         }
         // WI-040 explicit non-tape procurement: only geometric winding-pack volume.
+        calc insulation_inventory : 'Winding Pack Insulation Inventory' {
+            in volume_in = wp_volume.vol_winding_pack;
+            in wp_side = wp_sizing.wp_side;
+            in aspect_ratio = winding_pack.fit_aspect_ratio;
+            in internal_fraction_x = winding_pack.internal_build_x;
+            in internal_fraction_y = winding_pack.internal_build_y;
+            in ground_thickness = winding_pack.ground_insulation;
+            in n_coils = coil.n_coils;
+            in c_coil = coil_length.c_coil;
+            in f_perimeter = winding_pack.f_wp_perimeter;
+            in sheet_thickness = winding_pack.insulation_sheet_thickness;
+            in sheet_price = winding_pack.insulation_sheet_price;
+        }
+        attribute insulation_internal_volume : Real = insulation_inventory.internal_volume;
+        attribute insulation_ground_volume : Real = insulation_inventory.ground_volume;
+        attribute insulation_sheet_area : Real = insulation_inventory.sheet_area;
+        attribute insulation_stock_cost : Real = insulation_inventory.stock_cost;
         calc material_inventory : 'Winding Pack Material Inventory' {
             in volume_in = wp_volume.vol_winding_pack;
             in f_copper = winding_pack.f_copper;
@@ -365,10 +382,12 @@ package mfe_power_core {
             in steel_price = casing.steel_price;
             in f_steel_fab = casing.f_steel_fab;
         }
+        attribute structure_effective_all_in_rate : Real = magnet_structure_cost.effective_all_in_rate;
         // CAS22.1.3 rollup (WI-035 D6): reference-binding envelope.
         calc magnet_capital_rollup : 'Magnet Capital' {
             in winding_cost = 'Magnet System'::winding_cost;
             in structure_cost_in = structure_cost;
+            in insulation_stock_cost = insulation_inventory.stock_cost;
         }
     }
 

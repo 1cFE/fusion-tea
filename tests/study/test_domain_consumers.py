@@ -1,4 +1,5 @@
 """Current independent oracle domain rejection and unchanged valid arithmetic."""
+from tests.models.current_mfe_regressions import WI063_PARAMETERS, WI063_CHANNELS
 
 from tests.models.current_mfe_regressions import WI062_PARAMETERS, WI062_CHANNELS
 
@@ -150,7 +151,7 @@ def test_valid_outputs_exactly_preserved_and_physical_identities(row):
         return
     result = oracle._compute(overrides)
     expected, changed = wi040_expected(row)
-    added = {k for k,v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v in WI062_CHANNELS}
+    added = {k for k,v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v in WI062_CHANNELS | WI063_CHANNELS}
     assert result.keys() == expected.keys() | added
     for name, value in expected.items():
         if name in changed:
@@ -180,17 +181,17 @@ def test_adapter_contract_and_ambient_limit_preserved():
     # WI-058 (2026-09-14): the seam maps c_coil_ref in place of the retired k_coil; the count stays 118.
     assert WI058_RETIRED <= old_inputs.keys()
     old_inputs = {k: v for k, v in old_inputs.items() if k not in WI058_RETIRED}
-    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS} == old_inputs
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS
+    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS} == old_inputs
+    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS
     old_outputs = renamed_values(BEFORE['output_mapping'])
     # The old selected winding alias now denotes the additive account; preserve its
     # previous channel under the explicit legacy name, and add the subtotal coverage.
     old_outputs['winding_pack_legacy'] = old_outputs.pop('winding_pack')
     old_outputs['p_cryo'] = oracle.P + 'cryoplant__refrigeration_sum__total'
-    extras = WI062_CHANNELS | WI061_CHANNELS | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_ORACLE_ADDED_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
+    extras = WI062_CHANNELS | WI063_CHANNELS | WI061_CHANNELS | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_ORACLE_ADDED_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
     assert {k: v for k, v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v not in extras} == old_outputs
     assert set(oracle.ORACLE_OUTPUT_TO_CHANNEL.values()) - set(old_outputs.values()) == extras
-    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 118 + len(WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS)
+    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 118 + len(WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS)
     for suffix in ("cryoplant__T_amb_cryo", "unknown_domain_input"):  # WI-057 (2026-09-13): the key carries its part's path
         with pytest.raises(oracle.OracleSeamError, match="no declared oracle mapping"):
             oracle.evaluate({oracle.P + suffix: 300.0})

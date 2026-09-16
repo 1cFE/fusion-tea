@@ -158,10 +158,10 @@ package mfe_magnet_cost {
         doc /* Electromagnetic support cost, exclusive total or legacy casing basis.
         cost=(legacy_casing_fraction*n_coils*m_casing+m_support)*steel_price*f_steel_fab.
         The casing output remains an inherited floor diagnostic in total-support mode.
-        Native domain: legacy_casing_fraction in [0,1], finite m_support>=0.
+        Native domain: every input finite and nonnegative; legacy_casing_fraction in [0,1]; finite nonnegative outputs with no positive product underflow. Historical multiplication order is preserved. effective_all_in_rate=steel_price*f_steel_fab exposes one assumed all-in rate; the factors do not establish measured material/fabrication subtotals.
         **Source**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md
         **Reference**: D1-D2; T-005_structure_basis.md.
-        **Basis**: inherited fabricated-steel scenario; no sourced casing/intercoil split.
+        **Basis**: inherited 6 dollars/kg times 3 = 18 dollars/kg all-in assumption; unknown price year and manufacturing qualification, no demonstrated duplicate removed or sourced casing/intercoil split.
         **Last Updated**: 2026-09-15 */
         in attribute m_support : Real default 0.0;
         in attribute legacy_casing_fraction : Real default 1.0;
@@ -169,11 +169,12 @@ package mfe_magnet_cost {
         in attribute n_coils : Real;
         // casing steel mass per coil [kg] (computed, 'Magnet Casing Mass')
         in attribute m_casing : Real;
-        // fabricated structural steel price [$/kg]
+        // Historical all-in rate component [$/kg]; no measured stock/fabrication split.
         in attribute steel_price : Real;
-        // casing fabrication markup [1]
+        // Historical rate-composition factor [1], not an additional measured fabrication charge.
         in attribute f_steel_fab : Real;
 
+        out attribute effective_all_in_rate : Real = steel_price * f_steel_fab;
         out attribute cost : Real = (legacy_casing_fraction * n_coils * m_casing + m_support) * steel_price * f_steel_fab;
     }
 
@@ -189,7 +190,7 @@ package mfe_magnet_cost {
         **Source**: work/completed/20260901_WI-035_magnet-closure/design.md
         **Ref**: design D6 (rollup + comparison channel); design Risk 1
             (redefinition envelope)
-        **Basis**: sum of winding-pack and magnet-structure sub-accounts
+        **Basis**: sum of winding-pack, all-in magnet structure and conditional additional sheet-stock sub-accounts; sheet inclusion in winding remains uncertain (WI-063 design).
         */
 
         // winding-pack account [$]
@@ -197,6 +198,8 @@ package mfe_magnet_cost {
         // magnet structure (casing) account [$]
         in attribute structure_cost_in : Real;
 
-        out attribute capital_cost : Real = winding_cost + structure_cost_in;
+        // Conditional incremental sheet stock; zero disables this charge, not manufacturing.
+        in attribute insulation_stock_cost : Real default 0.0;
+        out attribute capital_cost : Real = winding_cost + structure_cost_in + insulation_stock_cost;
     }
 }

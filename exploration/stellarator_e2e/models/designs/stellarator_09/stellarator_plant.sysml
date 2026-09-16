@@ -455,6 +455,15 @@ package stellarator_09 {
                 // the machine has six unique cross-sections; this is the same shape as the
                 // f_set coil-current distribution fact, and it moves the six-cross-section
                 // arithmetic out of a doc comment and into model content.
+                :>> f_wp_perimeter = 0.9351851851851851 {
+                    doc /* **Source**: Stellaris Table 8, six sides .36/.36/.34/.34/.32/.30 m, eight occurrences each. **Reference**: work/active/WI-063_magnet-manufacturing-account-completeness/design.md; source-design-review.md in goal evidence. **Basis**: sum(sides)/(6*.36); frozen relative section distribution with current wp_side, equal path and common aspect assumptions. **Last Updated**: 2026-09-15 */
+                }
+                :>> insulation_sheet_thickness = 0.0005 {
+                    doc /* **Source**: Stellaris Figure 40 and Table 7. **Reference**: work/orchestration/goals/magnet-manufacturing-cost-completeness/evidence/manufacturing-research.md. **Basis**: assumed installed solid-sheet thickness m; catalog proxy is .508 mm (1.6 percent thicker), not a qualified matching SKU. **Last Updated**: 2026-09-15 */
+                }
+                :>> insulation_sheet_price = 61.67720668774671 {
+                    doc /* **Source**: K-Mac KS-6383 .020x12x12 inch G10/FR4 sheet, 5.73 dollars observed 2026-09-16 UTC. **Reference**: work/orchestration/goals/magnet-manufacturing-cost-completeness/evidence/manufacturing-research.md. **Basis**: 5.73/(12*.0254)^2 dollars/m^2; ordinary catalog laminate stock proxy, unqualified for cryogenic installation or bulk procurement. Nominal 2026 scenario, quotation/publication year unknown. Additive scenario assumes winding excludes purchased sheets; set price zero for cost-only uncertain-boundary alternative. Ground remains unpriced. **Last Updated**: 2026-09-15 */
+                }
                 :>> f_wp_vol = 0.8780864197530865 {
                     doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png: cross-section side lengths 360/360/340/340/320/300 mm, image-verified); raw.pdf sec. 2.9 (48 coils = 4 periods x 12, so 8 occurrences of each of six unique coils; typical circumference 25 m) **Basis**: sum over the six unique coils of side^2 x 8 x 25 m = 136.56 m^3, expressed as a distribution factor on the worst coil */
                 }
@@ -501,7 +510,7 @@ package stellarator_09 {
                 :>> steel_price = 6.0 {
                     doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:52 (coil_steel_price_per_kg = 6.0) **Basis**: inherited6$/kg component; combined18$/kg is an assumption, not a qualified316LN quote */
                 }
-                // Casing fabrication markup [1].
+                // Historical rate composition [1]; combined rate is all-in, with no measured split.
                 :>> f_steel_fab = 3.0 {
                     doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:53 (coil_steel_fab_markup = 3.0, "coil-case / inter-coil support fabrication") **Basis**: coil-case fabrication build-up at the pin */
                 }
