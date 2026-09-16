@@ -67,3 +67,37 @@ T-003 · native run-study workflow · expected study record, snapshot, result st
 ### T-003 execution release — 2026-09-16
 
 Coordinator inspected `exploration/stellarator_e2e/studies/20260916-primary-loop-sizing/protocol.md`: eight complete groups all report constraints_reachable; no unresisted-axis ruling is needed. Source/math recheck PASS releases unchanged-equation count comparisons, and cost-review PASS releases only the optional annual break-even burden calculation under the existing generation convention. Execute baseline/preflight, scan integer counts 12–18 and select the engineered native window before running the twenty proposed cases. No new source equation, equipment price or acceptance threshold enters the package.
+
+### T-003 interpretation clarification — 2026-09-16
+
+- **Trigger:** Native verification found that the inherited divertor capital correlation changes as loop pumping work changes plant thermal power, although divertor heat quantities and verdicts remain fixed.
+- **Decision and reason:** Preserve and report that indirect cost response under the already scoped shared power/accounting consequences. Narrow the preservation statement to magnet outputs, divertor heat-account outputs and their predicates. No target redesign or realized equipment saving is inferred.
+- **Tier:** execution detail; this is the existing thermal-power dependency, not changed comparison meaning.
+- **Decided by:** coordinator, after study executor surfaced the observation.
+- **What changed:** T-003 report/preservation checks clarify their claim; no model or input changes.
+
+### T-003 return — 2026-09-16
+
+- **Outcome:** COMPLETE.
+- **Evidence:** Native study `exploration/stellarator_e2e/studies/20260916-primary-loop-sizing/record.md@75772eba`, immutable snapshot/results at the same commit; executor `synthesis.md` (unpinned; no native digest until closure checkpoint); `evidence/commit-custody.json`.
+- **Reading:** The frozen diagnostic quantifies the adopted capacity crossing and required equipment/duties while preserving separate failures. Full scalar/predicate comparison, native-store joins and artifact custody pass. Existing economic responses do not include a defensible installation price; source-backed qualification and cost gaps remain the result's boundary.
+- **Decision:** Valid study reading obtained · close this round under the runbook and submit remaining integrated answer/dispositions for independent review · execution detail · coordinator · Round 1 result below.
+
+### Round 1 result — 2026-09-16
+
+- **Intent:** Met under the owner's accepted quantified-requirement/evidence-gap branch. Explicit native loop-count configurations were evaluated; physical routing/area and installed-price laws remain unsupported. No new model implementation was justified by the evidence.
+- **Task sequence:** T-001 research/source review COMPLETE; T-002 independent package integration COMPLETE (ran alongside T-001); T-003 native study and executor reading COMPLETE. One verified pin and one committed study. The bounded research continuation used the documented local-PDF path after identifying DNS failure; no seam repair or scientific retry occurred.
+- **Last semantic outcome:** COMPLETE, valid native study reading with conditional capacity requirement and named evidence gaps.
+- **Stop reason:** Valid study reading plus no reached limit closes Round 1. Technical answer is ready for final assurance; formal goal close remains owner-held.
+- **Evidence refs:** Source/integration checkpoint `df41ea97`; study `75772eba`; `answer.md`, executor synthesis, `evidence/finding-dispositions.md`, `prior-findings-map.json`, `commit-custody.json` and coordinator checks (new files unpinned; no native digest until closure checkpoint).
+- **Learning delta:** Proposed L-001: sixteen average modules solve the informative reference-flow screen while the divertor still fails. Proposed L-002: current power-scaled coolant costs cannot price added loop equipment; annual break-even burden is a separate conditional diagnostic. Proposed L-003: nominal heterogeneous source circuits support a reduced count comparison, not a qualified geometry/area transfer or installed exchanger/compressor capacity.
+- **Finding dispositions:** Four new study findings and fourteen earlier findings touched by the source/comparison evidence are mapped in `evidence/finding-dispositions.md`. Proposed routes retain all physical/cost residual gaps; append joined updates after final review. No new semantic follow-up executes from these dispositions.
+- **Cited-ref liveness:** Model, package and prior native study evidence have not changed from the entering revision. Research registration and this goal's new artifacts are scoped work; pre-existing unrelated untracked user files remain untouched.
+
+### Round 1 review — 2026-09-16
+
+- **Reviewer:** Fresh independent source/math reviewer, continued for integrated assurance; `evidence/final-review.md`.
+- **Verdict:** PASS for the owner's quantified-requirement/evidence-gap branch. This is not a priced or engineering-qualified installation.
+- **Checks:** Source/math and cost coverage reused; all 168 snapshot artifact hashes and all 174 retained files checked against frozen study `75772eba`; baseline/twenty-case native stores joined; five entering controls exactly preserved; fresh 4520 scalar and 400 predicate comparisons; all twenty hydraulic/equipment/annual-cost accounts independently recomputed. No model/package mutation from entering revision; unchanged twenty constraints and source/qualification caveats retained. Sixteen numeric outputs outside oracle mapping and the integration read-set omission remain disclosed.
+- **Learning delta:** L-001–L-003 accepted and appended to learnings.md. Four new and fourteen prior finding dispositions accepted; eighteen joined updates appended without editing first sightings. Study record receives only an addendum and retained review, with immutable results/snapshot untouched.
+- **Next:** Technical work is complete under the accepted evidence-gap outcome. Recommend owner-held formal closure. Any later hardware qualification or installed pricing needs the missing evidence named in answer.md; no further round is needed to report this result.

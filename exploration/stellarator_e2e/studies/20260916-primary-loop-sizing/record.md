@@ -225,3 +225,7 @@ First-sighting rows join the discovery log using these exact IDs. Parent owns la
 ## 17. What this record does not contain
 
 No installed hardware quote or qualified circulator/IHX/large-pipe selection; no heterogeneous IB/OB circuit design; no spatial routing or channel/area enlargement model; no validated off-design transfer or drive-loss model; no global optimum or combined feasible plant. The nominal source IHX average is a comparison, not installed capacity. Source pressure-table inconsistency and calibration remain disclosed in preparation/source-review.md. Final independent review and executor synthesis follow parent commit/review; they are not self-certified here.
+
+## Addendum 2026-09-16 — independent final assurance
+
+Independent final review PASS is retained in reviews/final-goal-review.md. It checks frozen study revision 75772eba, all artifact/native-store joins, fresh all-point scalar/predicate agreement and the scoped capacity/cost interpretation. It accepts the quantified requirement and explicit evidence gaps; it does not establish an installed price or qualified cooling design. The original snapshot, indicators and results remain unchanged. Executor synthesis is available in synthesis.md. Goal-level joined dispositions are accepted and recorded in the discovery log; formal goal closure remains owner-held.
