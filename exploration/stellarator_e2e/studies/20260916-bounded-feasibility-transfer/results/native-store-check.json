@@ -1,0 +1,20 @@
+{
+  "outcome": "pass",
+  "stores": [
+    {
+      "path": "results/_work/stellarator-baseline-point-v1.db",
+      "sha256": "5511a253357fb5e892f5edb83820f2c52d064bb393eb1f982e2cc15c840fa02e",
+      "cases": 1,
+      "export_joins": 0,
+      "content_addressed_evidence_checked": 1
+    },
+    {
+      "path": "results/study/_work/20260916-bounded-feasibility-transfer.db",
+      "sha256": "d95230316aae30932ac1b94c6acfa0b675a874421a87cbd2b8030f62eeaf9ff6",
+      "cases": 71,
+      "export_joins": 71,
+      "content_addressed_evidence_checked": 71
+    }
+  ],
+  "snapshot_artifacts_checked": 0
+}

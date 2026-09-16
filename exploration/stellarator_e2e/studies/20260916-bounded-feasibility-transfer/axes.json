@@ -1,0 +1,85 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "plasma__R",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__R",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Complete public attribute; sizing mode/reserve vary only in legacy controls. Main search fixed current sizing/reserve."
+    },
+    {
+      "axis": "plasma__a",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__a",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Complete public attribute; sizing mode/reserve vary only in legacy controls. Main search fixed current sizing/reserve."
+    },
+    {
+      "axis": "magnet__coil__I_coil",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Complete public attribute; sizing mode/reserve vary only in legacy controls. Main search fixed current sizing/reserve."
+    },
+    {
+      "axis": "magnet__coil__coil_t",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__coil_t",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Complete public attribute; sizing mode/reserve vary only in legacy controls. Main search fixed current sizing/reserve."
+    },
+    {
+      "axis": "magnet__casing__interior_y",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__casing__interior_y",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Complete public attribute; sizing mode/reserve vary only in legacy controls. Main search fixed current sizing/reserve."
+    },
+    {
+      "axis": "heat_transport__n_loops",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__n_loops",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Complete public attribute; sizing mode/reserve vary only in legacy controls. Main search fixed current sizing/reserve."
+    },
+    {
+      "axis": "magnet__winding_pack__sizing_mode",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__sizing_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Complete public attribute; sizing mode/reserve vary only in legacy controls. Main search fixed current sizing/reserve."
+    },
+    {
+      "axis": "magnet__winding_pack__inventory_multiplier",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Complete public attribute; sizing mode/reserve vary only in legacy controls. Main search fixed current sizing/reserve."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+# Readiness for the blind fixed-point comparison
+
+[AGENT] The current model can support conditional forward comparisons of represented quantities. The remaining preparation is a frozen comparison manifest, explicit accounting and applicability decisions, and checked reporting. Full engineering qualification is not a prerequisite for every conditional prediction. An unsupported essential comparison axis cannot be counted as a pass.
+
+[AGENT, coordinator progress report 2026-09-16] The bounded search has completed 201 oracle calls at 200 unique points with zero combined passes. Native evaluation of 71 cases plus the baseline is running, and smaller/reference/larger numerical checks are being added. These are provisional execution counts, not a verified final result. Final numerical evidence, custody and independent review remain pending. A sampled absence of feasible points does not prevent reporting constraint-violating predictions or establish global infeasibility.
+
+## Work still necessary
+
+| Deliverable | Completion condition |
+|---|---|
+| Current evidence receipt | Finish the declared native/oracle and smaller/reference/larger checks; retain all predicates, validity flags, refusals, source extrapolation and independent-coverage omissions. Record the actual executable/input identity. Reuse these cases rather than adding another broad sweep. |
+| Quantity-level comparison manifest | Bind actual package channels to units, physical/account scope, independent input versus prediction, held assumptions and intended reference extraction fields. Include all three formal axes. Reference values remain blank until reveal; supplied quantities receive no independent prediction credit. |
+| Accounting and normalization bridge | Reconcile disjoint component leaves and aggregates, procurement/winding/support scope, C220107 treatment and aggregate effect, overnight versus financed capital, annual and replacement expenses, module basis and distinct LCOE conventions. Preserve raw/published results separately from normalized values. Record currency/year and real/nominal/escalation conventions; unresolved bases and unpriced factory/cooling scope remain explicit. |
+| Reporting rehearsal | Use synthetic fixtures for exact band endpoints, just-outside ratios, missing or invalid denominators, unit/basis conversions, scope mismatch and C220107. Complete the ratified AACE provenance cross-check if no existing receipt satisfies B-7. This work needs no new physics sweep. |
+| Applicability, input selection and freeze | Declare how reference inputs will be selected and how incompatible technology/configuration or missing reference scope will be handled. Record residual dispositions, then freeze model/package, manifest, input rules and acceptance bands before owner-triggered reveal. Post-reveal corrections or conditioned diagnostics remain separate from the frozen blind result. |
+
+[INHERITED: acceptance specification B-2–B-8] Structural correspondence, derived model/reference ratios [1/3, 3] and component-cost ratios [0.5, 2] remain the formal criteria. C220107 stays excluded or footnoted; optimized sizing remains separate. The ratio endpoints govern rather than the specification's inexact log10 shorthand. LCOE is a supporting diagnostic with no added pass band. A missing essential mapping requires disposition; it is not a successful comparison. See `.project/completed/20260821_demo-anchor-acceptance-spec/spec.md@a3ea15e88ee6c48de44d5880751636e7c9615776`.
+
+## Coolant premise remains open
+
+[INHERITED: `20260913-structural-decomposition#11`] The recorded clean-source reading identifies a water-cooled breeding zone at PWR conditions. The model documentation instead describes helium-cooled lithium-lead using a first-wall precedent, while the executable loop is the existing WI-045 helium model. This premise conflict was retained by the primary-loop goal under the owner's instruction to keep current coolant technology. Evidence: [prior finding record](../primary-loop-sizing/evidence/prior-findings-map.json), [preserved disposition](../primary-loop-sizing/evidence/finding-dispositions.md), and [structural goal](../structural-decomposition/goal.md), fact 6/reserved gate 6.
+
+[AGENT] The present loop-count and power results therefore remain conditional helium-scenario predictions. Passing a reference-flow screen, adding loops or preserving native arithmetic does not establish a source-faithful blanket coolant substitution. Before asserting coolant/blanket structural correspondence or comparing their power and cost quantities as equivalent, the comparison manifest needs an explicit applicability disposition for this conflict. This assessment does not resolve the premise, authorize a coolant change or require a new coolant-design project. If meaningful correspondence cannot be established, the affected axis remains unresolved and visible.
+
+## Engineering work that is not automatically required before reveal
+
+[AGENT] Exact-product and local-angle conductor qualification, detailed coil equilibrium/accommodation, target transport and radiation deposition, installed cooling equipment design, geometry-dependent breeding/shielding, coil replacement and whole-plant reliability remain open. They limit physical claims. They become comparison blockers only where the selected reference quantity lacks a meaningful counterpart, missing scope prevents a formal axis from being evaluated, or a partial price would otherwise be presented as complete.
+
+[AGENT] Additional loop assemblies remain unpriced; the existing power-scaled coolant account is not their installed price. Manufacturing subtotals remain mixed-basis with an unpriced remainder. Neither a conditional LCOE reduction nor a future predicate pass establishes economic optimality. Preserve these limitations through normalization rather than replacing them with invented prices.
+
+[AGENT] This readiness assessment uses the [transfer contract](transfer-contract.md) and [inventory](evidence/transfer-inventory.md), with the coolant premise made explicit above. It requests no reveal and changes no acceptance meaning. The quarantine remains sealed under `knowledge/holdout/aries-cs/PROTOCOL.md`; owner-held reveal and unresolved scientific-premise decisions remain separate from routine preparation.

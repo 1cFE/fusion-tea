@@ -1,0 +1,10 @@
+{
+  "study_id": "20260916-bounded-feasibility-transfer",
+  "executable_fingerprint": "f52729e684f513d1b210c75f523340085786440fa2828490309b96493755fd14",
+  "model_contract_fingerprint": "8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0",
+  "study_definition_fingerprint": "f7efd19dddee2d2406b6bc6012487791c66c4ae28df69015e041b940c5d38cfb",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "a22a9c4fbc6cef177a734a2ae77cfda42b3f0b04dc6871492354b31976784c92"
+}
