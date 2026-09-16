@@ -52,3 +52,32 @@ T-002 · native modeling PM · expected bounded standard work item, implementati
 ### T-002 implementation release — 2026-09-15
 
 [AGENT] WI-065 spec combines requirements, reviewed design and checklist. Fresh reviewer `/root/divertor_review` releases original source/account and bounded interface/domain design in `evidence/source-review.md`. Implementation owns native/twin/generated ledger and component tests; coordinator owns independent oracle, coupled verification and package metadata. The shared interface is fixed by WI-065's8 named added outputs and source-capture input. This disjoint execution may proceed in parallel; integration and independent audit remain sequential.
+
+### T-002 premise correction — 2026-09-15
+
+[AGENT] Broader consumer checks found the proposed nonnegative operating-heating guard suppressed two existing signed negative-demand burn-control failures. That contradicts the owner's preservation requirement. The coordinator surfaced it before accepting the implementation; fresh reviewer `/root/divertor_review` requested revision. WI-065 spec and the current boundary contract are amended: permit finite signed operating demand for diagnostics, require nonnegative total absorbed heating and core<=absorbed, and set account-valid0 for negative operating demand. Existing burn-hold and all other predicates remain unchanged. This is a semantic contract correction, not a mechanical retry. The failed consumer log is retained; dependent study work remains parked until corrected coverage passes.
+
+### T-002 verification correction — 2026-09-15
+
+[AGENT] Current consumer evidence preserves the initial guard failure, then129passing checks and two errors in new test references. Direct replay of the entering generated package confirms both signed-demand cases retain every native output and response, including the inherited exact-current-boundary sign. The corrected focused tests pass2/2; no production change followed the129passing checks. Oracle/native boundary disagreement is retained rather than hidden with a tolerance. Source/account checkpoint is `25f9ce82`; final implementation evidence is held in WI-065. The source registration retains exact whitespace and its resolved historical DNS-failure receipt.
+
+### T-002 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `work/active/WI-065_divertor-deposited-power-and-peak-area-account/audit.md` and linked executable evidence; `evidence/implementation-review.md` final independent PASS (unpinned; no native digest until the implementation checkpoint).
+- **Reading:** The clarified account and source-derived equivalent area are executable without changing entering peak normalization or existing constraints. Signed invalid-burn cases remain evaluable and marked account-invalid. Physical area/peaking and radiation deposition remain conditional gaps.
+- **Decision:** Passing native/generated/oracle and affected-consumer evidence, with independent release · take the reviewed package through the native integration seam · execution detail · coordinator · T-003.
+- **Decision:** Inherited static diagnostic residue and exact-current-boundary oracle/native sign difference · disclose and retain them, backed by exact entering/native preservation instead of relaxing a threshold · execution detail · coordinator and fresh reviewer · WI-065 audit and acceptance evidence.
+
+### T-003 scope
+
+- **Objective:** Prove the audited WI-065 package is one reproducible study-ready native candidate.
+- **Why now:** T-002 independently released implementation and derived package metadata.
+- **Scope:** Native integration seam only; no model or acceptance changes.
+- **Inputs:** `goal.md`; WI-065 audit and implementation checkpoint; current generated package, manifest, census and native study route.
+- **Done when:** Ten native gates return one CANDIDATE with pinned identity, or a named blocker.
+- **Stop when:** Prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-003 start — 2026-09-15
+
+T-003 · scripts/integrate.py · expected `evidence/T-003_integration/integration_return.json`.

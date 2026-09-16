@@ -40,7 +40,20 @@ and its first-wall cooling case (100 % radiated) are two load cases and are
 never summed. Written p_heat_abs - f * p_heat_abs so the source's own numbers
 reproduce to the double (500 - 450 = 50).
 
-Flat-Real (+ - * /) -- no manual stage.
+WI-065 normative typed manual completion extends the above equations:
+  p_rad_total = f_rad_total * p_heat_abs [MW]
+  p_rad_edge = p_rad_total - p_rad_core [MW]
+  p_target_deposited = target_capture_fraction * p_target_nonrad [MW]
+  p_nonrad_uncaptured = p_target_nonrad - p_target_deposited [MW]
+  peak_equivalent_area = target_capture_fraction * p_nonrad_ref / q_target_ref [m^2] when q_target_ref > 0, otherwise carrier 0
+  peak_equivalent_area_defined = 1 iff q_target_ref > 0, otherwise 0
+  f_rad_edge_defined = 1 iff p_sep > 0, otherwise 0 with f_rad_edge carrier 0
+  power_account_valid = 1 iff p_rad_edge >= 0 and p_coupled >= 0, otherwise 0
+Conservation: p_heat_abs = p_rad_core + p_rad_edge + p_target_deposited + p_nonrad_uncaptured. The existing p_target_nonrad denotes incoming non-radiated transport before target capture, not target deposition.
+Every input/intermediate/output must be finite. Alpha, core and installed powers, reference peak and limit are nonnegative; p_coupled and p_aux_required are signed. Require p_heat_abs >= 0. Negative operating auxiliary demand is the existing burn-hold diagnostic, not physical negative heating; report it with account-valid 0. Fractions lie in [0,1]; p_nonrad_ref, R and R_ref are positive; p_rad_core <= p_heat_abs. Active q_target_ref requires positive capture and finite positive equivalent area. Refuse underflow losing expected positive power, area or peak. Negative edge radiation is reported unchanged with account-valid 0. Signed margins remain valid failure diagnostics.
+Capture is paired reference-profile metadata: 0.99 with 9.5 MW/m^2 or 0.97 with 5 MW/m^2, each at 50 MW. Changing capture alone changes deposited power and equivalent area together, never multiplies the sourced peak again. The peak-equivalent area is A_wet/k_peak, not separately measured wetted area or peaking factor. For target groups j, deposited share D_j=s_j*D, q_avg,j=D_j/A_wet,j, q_peak,j=k_j*q_avg,j, and the reported global peak is max_j(q_peak,j), with sum(s_j)=1. No independent s_j, A_wet,j or k_j is established, so these are not executable geometry levers. D/peak_equivalent_area reconstructs the peak only for an active source pair.
+The source is a resonant island divertor. The R-scaled shadow is conditional on footprint length proportional to R with held width, sharing and profile. Neither output is an average. A physical interpretation requires area-defined 1, account-valid 1 and a supported paired profile. Dormant q_target_ref=0 has no physical zero-area interpretation. The 10 MW/m^2 predicate is a necessary non-radiated transport screen; omitted radiation surface deposition prevents total target-load qualification.
+Retained alpha in this ledger differs from the plant's total alpha boundary, including the inherited alpha-fraction rounding difference. Destinations do not add plant generation. No divertor coolant loop or area-based cost is implied; the inherited power-scaled cost is unchanged.
 
 *Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
 *Ref**: lines 1219-1246 (90 % of the net core heating radiated; 500 MW ->
@@ -56,12 +69,20 @@ source's fixed-geometry case, scaled in load only
 
 SysML Source: root-0/analyses/mfe_divertor_heat.sysml:4
     """
+    peak_equivalent_area: float = Field(description="peak_equivalent_area output")
     q_target_peak_area_scaled: float = Field(description="q_target_peak_area_scaled output")
+    f_rad_edge_defined: float = Field(description="f_rad_edge_defined output")
+    peak_equivalent_area_defined: float = Field(description="peak_equivalent_area_defined output")
     p_heat_abs: float = Field(description="p_heat_abs output")
     f_rad_edge_in_range: float = Field(description="f_rad_edge_in_range output")
     q_target_margin: float = Field(description="q_target_margin output")
+    p_rad_total: float = Field(description="p_rad_total output")
     p_target_nonrad: float = Field(description="p_target_nonrad output")
+    p_nonrad_uncaptured: float = Field(description="p_nonrad_uncaptured output")
     f_rad_edge: float = Field(description="f_rad_edge output")
+    p_target_deposited: float = Field(description="p_target_deposited output")
+    p_rad_edge: float = Field(description="p_rad_edge output")
     p_heat_operating_minus_installed: float = Field(description="p_heat_operating_minus_installed output")
+    power_account_valid: float = Field(description="power_account_valid output")
     p_sep: float = Field(description="p_sep output")
     q_target_peak: float = Field(description="q_target_peak output")

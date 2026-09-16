@@ -20,6 +20,64 @@ import oracle_finance as finance
 N_INTERVALS = 200_000
 
 
+def divertor_account(*, alpha, auxiliary, core_radiation, radiation_fraction,
+                     capture_fraction, reference_peak, reference_power, limit,
+                     radius, reference_radius, auxiliary_required, installed):
+    """Independent WI-065 account; source profile implies area, not a new area lever.
+
+    Source: goal divertor-peak-heat-load/evidence/entering-account.md and its
+    original Stellaris p15 witness. This oracle uses aggregate conservation and
+    the existing load normalization, without importing generated code.
+    """
+    quantities = locals().copy()
+    if any(not math.isfinite(v) for v in quantities.values()):
+        raise ValueError('divertor oracle: nonfinite input')
+    nonnegative = (alpha, core_radiation, reference_peak, limit, installed)
+    if min(nonnegative) < 0 or min(reference_power, radius, reference_radius) <= 0:
+        raise ValueError('divertor oracle: invalid power or normalization')
+    if not (0 <= radiation_fraction <= 1 and 0 <= capture_fraction <= 1):
+        raise ValueError('divertor oracle: invalid fraction')
+    if reference_peak > 0 and capture_fraction == 0:
+        raise ValueError('divertor oracle: positive peak with zero capture')
+    absorbed = alpha + auxiliary
+    if absorbed < 0:
+        raise ValueError('divertor oracle: negative absorbed heating')
+    if core_radiation > absorbed:
+        raise ValueError('divertor oracle: core radiation exceeds absorbed heating')
+    separatrix = absorbed - core_radiation
+    radiated = radiation_fraction * absorbed
+    edge = radiated - core_radiation
+    nonradiated = absorbed - radiated
+    deposited = capture_fraction * nonradiated
+    missed = nonradiated - deposited
+    edge_fraction = edge / separatrix if separatrix > 0 else 0.0
+    peak = reference_peak * nonradiated / reference_power
+    area = capture_fraction * reference_power / reference_peak if reference_peak > 0 else 0.0
+    result = dict(p_heat_abs=absorbed, p_sep=separatrix,
+                  f_rad_edge=edge_fraction, f_rad_edge_in_range=edge_fraction*(1-edge_fraction),
+                  p_target_nonrad=nonradiated, q_target_peak=peak,
+                  q_target_peak_area_scaled=peak*reference_radius/radius,
+                  q_target_margin=limit-peak,
+                  p_heat_operating_minus_installed=auxiliary_required-installed,
+                  p_rad_total=radiated, p_rad_edge=edge, p_target_deposited=deposited,
+                  p_nonrad_uncaptured=missed, peak_equivalent_area=area,
+                  peak_equivalent_area_defined=float(reference_peak > 0),
+                  f_rad_edge_defined=float(separatrix > 0),
+                  power_account_valid=float(edge >= 0 and auxiliary >= 0))
+    if any(not math.isfinite(v) for v in result.values()):
+        raise ValueError('divertor oracle: nonfinite arithmetic')
+    positive_expected = ((reference_peak > 0, area),
+                         (radiation_fraction > 0 and absorbed > 0, radiated),
+                         (radiation_fraction < 1 and absorbed > 0, nonradiated),
+                         (capture_fraction > 0 and nonradiated > 0, deposited),
+                         (capture_fraction < 1 and nonradiated > 0, missed),
+                         (reference_peak > 0 and nonradiated > 0, peak),
+                         (peak > 0, result['q_target_peak_area_scaled']))
+    if any(expected and value <= 0 for expected, value in positive_expected):
+        raise ValueError('divertor oracle: positive quantity underflow')
+    return result
+
+
 def _sigv_dt(T_keV):
     """Bosch-Hale D-T reactivity <sigma*v> [m^3/s] (reactivity.py:54-70)."""
     T = max(T_keV, 1e-6)
@@ -423,6 +481,7 @@ IN = dict(
     t_recycle=0.99, eta_extract=1.0, lambda_T=1.782785958230312e-09, I_total=0.0,
     G_stock=0.0, m_T_kg=5.008267663228036e-27,
     f_rad_total=0.9, q_target_ref=9.5, p_nonrad_ref=50.0, q_target_limit=10.0,
+    target_capture_fraction=0.99,  # paired with the high source profile; WI-065
     R_ref_divertor=12.7, T_gas=300.0, p_exhaust=1.0,
     # library defaults the two calcs carry (entry points of the LIBRARY_DEFAULT kind)
     s_per_fpy=31536000.0, k_B=1.380649e-23,
@@ -1280,15 +1339,13 @@ def compute():
                          / (p["eta_extract"] * fuel_burn_rate))
     fuel_tbr_margin = p["tbr"] - fuel_tbr_required
     fuel_burn_kg_per_fpy = fuel_burn_rate * p["m_T_kg"] * p["s_per_fpy"]
-    divheat_p_heat_abs = sust["p_alpha_heat"] + operating_heat_coupled
-    divheat_p_sep = divheat_p_heat_abs - sust["p_rad"]
-    divheat_f_rad_edge = (p["f_rad_total"] * divheat_p_heat_abs - sust["p_rad"]) / divheat_p_sep
-    divheat_f_rad_edge_in_range = divheat_f_rad_edge * (1.0 - divheat_f_rad_edge)
-    divheat_p_target_nonrad = divheat_p_heat_abs - p["f_rad_total"] * divheat_p_heat_abs
-    divheat_q_target_peak = p["q_target_ref"] * divheat_p_target_nonrad / p["p_nonrad_ref"]
-    divheat_q_target_peak_area_scaled = divheat_q_target_peak * p["R_ref_divertor"] / p["R"]
-    divheat_q_target_margin = p["q_target_limit"] - divheat_q_target_peak
-    divheat_p_heat_operating_minus_installed = sust["p_aux_required"] - heat_coupled
+    divheat = divertor_account(
+        alpha=sust["p_alpha_heat"], auxiliary=operating_heat_coupled,
+        core_radiation=sust["p_rad"], radiation_fraction=p["f_rad_total"],
+        capture_fraction=p["target_capture_fraction"], reference_peak=p["q_target_ref"],
+        reference_power=p["p_nonrad_ref"], limit=p["q_target_limit"],
+        radius=p["R"], reference_radius=p["R_ref_divertor"],
+        auxiliary_required=sust["p_aux_required"], installed=heat_coupled)
     vacuum_n_molecules = (fuel_exhaust_rate + fuel_exhaust_rate) / 2.0 + fuel_burn_rate
     vacuum_Q_total = vacuum_n_molecules * p["k_B"] * p["T_gas"]
     vacuum_S_eff_required = vacuum_Q_total / p["p_exhaust"]
@@ -1414,14 +1471,7 @@ def compute():
         fuel_exhaust_rate=fuel_exhaust_rate, fuel_loss_rate=fuel_loss_rate,
         fuel_tbr_required=fuel_tbr_required, fuel_tbr_margin=fuel_tbr_margin,
         fuel_burn_kg_per_fpy=fuel_burn_kg_per_fpy,
-        divheat_p_heat_abs=divheat_p_heat_abs, divheat_p_sep=divheat_p_sep,
-        divheat_f_rad_edge=divheat_f_rad_edge,
-        divheat_f_rad_edge_in_range=divheat_f_rad_edge_in_range,
-        divheat_p_target_nonrad=divheat_p_target_nonrad,
-        divheat_q_target_peak=divheat_q_target_peak,
-        divheat_q_target_peak_area_scaled=divheat_q_target_peak_area_scaled,
-        divheat_q_target_margin=divheat_q_target_margin,
-        divheat_p_heat_operating_minus_installed=divheat_p_heat_operating_minus_installed,
+        **{"divheat_" + name: value for name, value in divheat.items()},
         vacuum_n_molecules=vacuum_n_molecules, vacuum_Q_total=vacuum_Q_total,
         vacuum_S_eff_required=vacuum_S_eff_required,
     )

@@ -221,6 +221,7 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}fuel_cycle__I_total": "I_total",
     f"{P}fuel_cycle__G_stock": "G_stock",
     f"{P}fuel_cycle__m_T_kg": "m_T_kg",
+    f"{P}divertor__target_capture_fraction": "target_capture_fraction",
     f"{P}divertor__f_rad_total": "f_rad_total",
     f"{P}divertor__q_target_ref": "q_target_ref",
     f"{P}divertor__p_nonrad_ref": "p_nonrad_ref",
@@ -435,6 +436,10 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "fuel_tbr_required": f"{P}fuel_cycle__fuel__tbr_required",
     "fuel_tbr_margin": f"{P}fuel_cycle__fuel__tbr_margin",
     "fuel_burn_kg_per_fpy": f"{P}fuel_cycle__fuel__burn_kg_per_fpy",
+    **{"divheat_" + name: f"{P}divertor__divheat__{name}" for name in (
+        "p_rad_total", "p_rad_edge", "p_target_deposited", "p_nonrad_uncaptured",
+        "peak_equivalent_area", "peak_equivalent_area_defined", "f_rad_edge_defined",
+        "power_account_valid")},
     "divheat_p_heat_abs": f"{P}divertor__divheat__p_heat_abs",
     "divheat_p_sep": f"{P}divertor__divheat__p_sep",
     "divheat_f_rad_edge": f"{P}divertor__divheat__f_rad_edge",

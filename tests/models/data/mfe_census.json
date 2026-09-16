@@ -1,6 +1,6 @@
 {
-  "derived_against_semantic_fingerprint": "14b6f7b06600fca1db624967110cd56c0f9aea975600e4a193d716b49e9aa1ed",
-  "entry_points": 312,
+  "derived_against_semantic_fingerprint": "8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0",
+  "entry_points": 313,
   "by_entry_type": {
     "library_default": [
       "stellarator_09__stellaris__blanket__blanket_cost__alpha",
@@ -135,6 +135,7 @@
       "stellarator_09__stellaris__divertor__p_nonrad_ref",
       "stellarator_09__stellaris__divertor__q_target_limit",
       "stellarator_09__stellaris__divertor__q_target_ref",
+      "stellarator_09__stellaris__divertor__target_capture_fraction",
       "stellarator_09__stellaris__electric_plant__cost_per_mw",
       "stellarator_09__stellaris__f_sub",
       "stellarator_09__stellaris__fuel_cycle__G_stock",

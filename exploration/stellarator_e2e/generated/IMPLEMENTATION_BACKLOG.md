@@ -9,7 +9,7 @@ Complete all stages in order for a production-ready system.
 
 **Objective**: Implement each calculation definition in its handwritten file.
 
-**Total**: 22 functions to implement
+**Total**: 23 functions to implement
 
 **Instructions for each function**:
 1. Open the SysML source file at the line number shown below
@@ -29,6 +29,7 @@ Complete all stages in order for a production-ready system.
 | [ ] | Plasma_Sustainment | `run_plasma_sustainment` | `root-0/analyses/mfe_plasma_sustainment.sysml:4` | High |
 | [ ] | DT_Fusion_Power | `run_dt_fusion_power` | `root-0/analyses/mfe_plasma_scaling.sysml:147` | High |
 | [ ] | Conductor_Field_Capability | `run_conductor_field_capability` | `root-0/analyses/mfe_conductor_grade.sysml:4` | High |
+| [ ] | Divertor_Heat_Ledger | `run_divertor_heat_ledger` | `root-0/analyses/mfe_divertor_heat.sysml:4` | High |
 | [ ] | Primary_Coolant_Loop | `run_primary_coolant_loop` | `root-0/analyses/mfe_primary_loop.sysml:4` | High |
 | [ ] | Power_Cycle_Efficiency | `run_power_cycle_efficiency` | `root-0/analyses/mfe_power_cycle.sysml:4` | High |
 | [ ] | Conductor_Peak_Field | `run_conductor_peak_field` | `root-0/analyses/mfe_plasma_scaling.sysml:419` | High |
@@ -74,7 +75,7 @@ pytest tests/test_implementations_runnable.py -v
 All tests should pass (or pytest.skip for NotImplementedError stubs)
 
 **Test Coverage**:
-- 22 implementation functions
+- 23 implementation functions
 - Each function tested for: imports, signature, return type
 - Tests tolerate NotImplementedError (pass before implementation)
 - Tests verify return types (pass after implementation)
@@ -109,7 +110,7 @@ All tests should pass (or pytest.skip for NotImplementedError stubs)
 ## Completion Criteria
 
 The implementation is complete when:
-- Stage 1: All 22 functions implemented
+- Stage 1: All 23 functions implemented
 - Stage 2: All validations pass
 - Stage 3: Integration tests pass
 

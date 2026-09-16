@@ -21,7 +21,7 @@ from tests.study.conftest import DATA_DIR, run_tool
 CASES = ["availability_direct", "interest_rate", "R", "a", "I_coil"]
 
 # WI-059 (2026-09-15): re-derived from the completed package indicator report.
-EXPECTED_SEMANTIC_FINGERPRINT = '14b6f7b06600fca1db624967110cd56c0f9aea975600e4a193d716b49e9aa1ed'
+EXPECTED_SEMANTIC_FINGERPRINT = '8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0'
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
 #:          modules fired, channels tainted). Read straight off the Item 1 fixture
@@ -66,7 +66,7 @@ FIXTURE_CONTRACT = {'I_coil': (False,
              'tau_E',
              'total_capital'],
             98,
-            231),
+            239),
  'R': (False,
        ['beta_ok',
         'burn_hold_ok',
@@ -98,7 +98,7 @@ FIXTURE_CONTRACT = {'I_coil': (False,
         'tau_E',
         'total_capital'],
        102,
-       242),
+       250),
  'a': (False,
        ['beta_ok',
         'burn_hold_ok',
@@ -130,7 +130,7 @@ FIXTURE_CONTRACT = {'I_coil': (False,
         'tau_E',
         'total_capital'],
        101,
-       241),
+       249),
  'availability_direct': (True,
                          [],
                          ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'],
@@ -310,7 +310,7 @@ def test_current_heating_reachability(real_package_path, real_manifest_path, tmp
     assert {c["source_local_identity"] for c in reserve["constraints_reachable"]} == {
         "sustainment_ok", "divertor_heat_ok"
     }
-    assert reserve["trace_size"] == {"modules_fired": 21, "channels_tainted": 32}
+    assert reserve["trace_size"] == {"modules_fired": 21, "channels_tainted": 40}
     assert reserve["objectives_reachable"] == ["lcoe", "lcoe_1cfe", "total_capital"]
     for stage in ("source", "couple"):
         group = group_by_axis(doc, f"eta_{stage}_heat")
@@ -319,8 +319,8 @@ def test_current_heating_reachability(real_package_path, real_manifest_path, tmp
             "net_positive", "recirc_ok", "sustainment_ok",
             f"heating_{stage}_positive_ok", f"heating_{stage}_upper_ok",
         }
-        # WI-059: unchanged reached modules; Structure Cost adds its legacy_cost diagnostic.
-        assert group["trace_size"] == {"modules_fired": 62, "channels_tainted": 113}
+        # WI-065: unchanged modules; the shared ledger adds eight conservatively tainted diagnostics.
+        assert group["trace_size"] == {"modules_fired": 62, "channels_tainted": 121}
         assert {
             "operating_heat_coupled", "operating_heat_delivered", "operating_heat_wallplug"
         } <= set(

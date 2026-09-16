@@ -492,10 +492,11 @@ package mfe_power_core {
         // Divertor (CAS22.1.8) -- WI-009 carrier has no drivers; supplied here.
         // divertor cost at 1 GWth [$] (WI-011)
         attribute divertor_base : Real;
-        // ---- Divertor surface-heat ledger (WI-047) on the INSTALLED heating
-        // basis (the thermal sum's own operand) -- round 1 of goal plant-closure.
+        // ---- Divertor surface-heat ledger on sustained operating absorbed heating.
         // Dormant-safe: q_target_ref 0 and p_nonrad_ref 1 give a zero peak and a
         // satisfied fence for a concept binding nothing.
+        // Capture paired with the reference peak; source metadata, not a mitigation lever.
+        attribute target_capture_fraction : Real default 1.0;
         attribute f_rad_total : Real default 0.0;
         attribute q_target_ref : Real default 0.0;
         attribute p_nonrad_ref : Real default 1.0;
@@ -520,6 +521,14 @@ package mfe_power_core {
         attribute p_th : Real;   // <- pb.p_th
         // ---- EXPOSEs (WI-057): this part's calc outputs, readable outside as <part>.<name> ----
         attribute q_target_peak : Real = divheat.q_target_peak;
+        attribute p_rad_total : Real = divheat.p_rad_total;
+        attribute p_rad_edge : Real = divheat.p_rad_edge;
+        attribute p_target_deposited : Real = divheat.p_target_deposited;
+        attribute p_nonrad_uncaptured : Real = divheat.p_nonrad_uncaptured;
+        attribute peak_equivalent_area : Real = divheat.peak_equivalent_area;
+        attribute peak_equivalent_area_defined : Real = divheat.peak_equivalent_area_defined;
+        attribute f_rad_edge_defined : Real = divheat.f_rad_edge_defined;
+        attribute power_account_valid : Real = divheat.power_account_valid;
         :>> capital_cost = divertor_cost.cost;
         // ---- template calcs (WI-057): the analyses this part owns ----
         calc divertor_cost : 'Divertor Cost' {
@@ -527,6 +536,7 @@ package mfe_power_core {
             in p_th_in = p_th;
         }
         calc divheat : 'Divertor Heat Ledger' {
+            in target_capture_fraction_in = target_capture_fraction;
             in p_alpha_heat_in = p_alpha_heat;
             in p_coupled_in = p_coupled;
             in p_aux_required_in = p_aux_required;

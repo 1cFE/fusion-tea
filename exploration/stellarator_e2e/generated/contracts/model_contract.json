@@ -1031,8 +1031,23 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__peak_equivalent_area",
+      "field_name": "peak_equivalent_area",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__divertor__divheat__q_target_peak_area_scaled",
       "field_name": "q_target_peak_area_scaled",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__f_rad_edge_defined",
+      "field_name": "f_rad_edge_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__peak_equivalent_area_defined",
+      "field_name": "peak_equivalent_area_defined",
       "python_type": "float"
     },
     {
@@ -1051,8 +1066,18 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__p_rad_total",
+      "field_name": "p_rad_total",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__divertor__divheat__p_target_nonrad",
       "field_name": "p_target_nonrad",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__p_nonrad_uncaptured",
+      "field_name": "p_nonrad_uncaptured",
       "python_type": "float"
     },
     {
@@ -1061,8 +1086,23 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__p_target_deposited",
+      "field_name": "p_target_deposited",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__p_rad_edge",
+      "field_name": "p_rad_edge",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__divertor__divheat__p_heat_operating_minus_installed",
       "field_name": "p_heat_operating_minus_installed",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divertor__divheat__power_account_valid",
+      "field_name": "power_account_valid",
       "python_type": "float"
     },
     {
@@ -2991,6 +3031,13 @@
       "qualified_name": "stellarator_09__stellaris__divertor__q_target_ref"
     },
     {
+      "default_value": 0.99,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__divertor__target_capture_fraction"
+    },
+    {
       "default_value": 86400.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -4272,5 +4319,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "14b6f7b06600fca1db624967110cd56c0f9aea975600e4a193d716b49e9aa1ed"
+  "semantic_fingerprint": "8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0"
 }

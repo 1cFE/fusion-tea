@@ -616,7 +616,7 @@ class TestDivertor_Heat_LedgerRunnable:
 
             # If implemented, verify return type
             assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
-            assert len(result) == 9, f"Expected 9 outputs"
+            assert len(result) == 17, f"Expected 17 outputs"
             assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
 
         except NotImplementedError:

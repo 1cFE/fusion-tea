@@ -68,6 +68,7 @@ class StellaratorPlantParams(BaseModel):
     stellarator_09__stellaris__divertor__p_nonrad_ref: float = Field(default=50.0, description="Entry point: p_nonrad_ref")
     stellarator_09__stellaris__divertor__q_target_limit: float = Field(default=10.0, description="Entry point: q_target_limit")
     stellarator_09__stellaris__divertor__q_target_ref: float = Field(default=9.5, description="Entry point: q_target_ref")
+    stellarator_09__stellaris__divertor__target_capture_fraction: float = Field(default=0.99, description="Entry point: target_capture_fraction")
     stellarator_09__stellaris__electric_plant__cost_per_mw: float = Field(default=86400.0, description="Entry point: cost_per_mw")
     stellarator_09__stellaris__f_sub: float = Field(default=0.03, description="Entry point: f_sub")
     stellarator_09__stellaris__fuel_cycle__G_stock: float = Field(default=0.0, description="Entry point: G_stock")

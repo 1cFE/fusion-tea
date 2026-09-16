@@ -1038,6 +1038,12 @@ package stellarator_09 {
             }
         }
         part :>> divertor {
+            :>> target_capture_fraction = 0.99 {
+                doc /* Reference-profile capture paired with q_target_ref 9.5 MW/m^2 at p_nonrad_ref 50 MW; not an independent mitigation lever.
+                **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
+                **Ref**: section 2.6, page 15; 200 eV and 1 m^2/s transport case.
+                **Basis**: simulated aggregate target capture for the selected source profile. */
+            }
             // Divertor (CAS22.1.8) driver.
             :>> divertor_base = 60000000.0 {  // divertor cost at 1 GWth [$].
                 doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:97 (divertor_base = 60.0 M$) x 1e6 **Basis**: power-scaled divertor cost */

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/work/active/WI-065_divertor-deposited-power-and-peak-area-account/evidence/regenerate.py", line 91, in <module>
+    generate()
+  File "/home/reid/1cfe/fusion-tea/work/active/WI-065_divertor-deposited-power-and-peak-area-account/evidence/regenerate.py", line 71, in generate
+    fresh = seed_and_generate(Path(tmp) / 'fresh', models_path=ROOT / 'exploration/stellarator_e2e/models')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/work/active/WI-065_divertor-deposited-power-and-peak-area-account/evidence/regenerate.py", line 32, in seed_and_generate
+    return recipe().seed_and_generate(path, source, generator=generator, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py", line 43, in seed_and_generate
+    assert all(actual[name] == digest for name, digest in expected.items())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

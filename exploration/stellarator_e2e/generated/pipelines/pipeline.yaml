@@ -248,6 +248,7 @@ modules:
       R_ref_in: float stellarator_plant_params.stellarator_09__stellaris__divertor__R_ref_divertor
       p_aux_required_in: float stellarator_09__stellaris__plasma__sustain__p_aux_required
       R_in: float stellarator_plant_params.stellarator_09__stellaris__plasma__R
+      target_capture_fraction_in: float stellarator_plant_params.stellarator_09__stellaris__divertor__target_capture_fraction
       q_target_limit_in: float stellarator_plant_params.stellarator_09__stellaris__divertor__q_target_limit
       p_installed_coupled_in: float stellarator_09__stellaris__heating__heat__p_coupled
       q_target_ref_in: float stellarator_plant_params.stellarator_09__stellaris__divertor__q_target_ref
@@ -255,13 +256,21 @@ modules:
       p_rad_core_in: float stellarator_09__stellaris__plasma__sustain__p_rad
       f_rad_total_in: float stellarator_plant_params.stellarator_09__stellaris__divertor__f_rad_total
     outputs:
+      peak_equivalent_area: float stellarator_09__stellaris__divertor__divheat__peak_equivalent_area
       q_target_peak_area_scaled: float stellarator_09__stellaris__divertor__divheat__q_target_peak_area_scaled
+      f_rad_edge_defined: float stellarator_09__stellaris__divertor__divheat__f_rad_edge_defined
+      peak_equivalent_area_defined: float stellarator_09__stellaris__divertor__divheat__peak_equivalent_area_defined
       p_heat_abs: float stellarator_09__stellaris__divertor__divheat__p_heat_abs
       f_rad_edge_in_range: float stellarator_09__stellaris__divertor__divheat__f_rad_edge_in_range
       q_target_margin: float stellarator_09__stellaris__divertor__divheat__q_target_margin
+      p_rad_total: float stellarator_09__stellaris__divertor__divheat__p_rad_total
       p_target_nonrad: float stellarator_09__stellaris__divertor__divheat__p_target_nonrad
+      p_nonrad_uncaptured: float stellarator_09__stellaris__divertor__divheat__p_nonrad_uncaptured
       f_rad_edge: float stellarator_09__stellaris__divertor__divheat__f_rad_edge
+      p_target_deposited: float stellarator_09__stellaris__divertor__divheat__p_target_deposited
+      p_rad_edge: float stellarator_09__stellaris__divertor__divheat__p_rad_edge
       p_heat_operating_minus_installed: float stellarator_09__stellaris__divertor__divheat__p_heat_operating_minus_installed
+      power_account_valid: float stellarator_09__stellaris__divertor__divheat__power_account_valid
       p_sep: float stellarator_09__stellaris__divertor__divheat__p_sep
       q_target_peak: float stellarator_09__stellaris__divertor__divheat__q_target_peak
 
@@ -1632,13 +1641,21 @@ modules:
       stellarator_09__stellaris__operating_heat__p_coupled: float stellaris__blanket__p_coupled.json
       stellarator_09__stellaris__operating_heat__p_delivered: float stellarator_09__stellaris__operating_heat__p_delivered.json
       stellarator_09__stellaris__blanket__source_heat__q_source: RootModel[float] stellaris__blanket__q_source.json
+      stellarator_09__stellaris__divertor__divheat__peak_equivalent_area: float stellaris__divertor__peak_equivalent_area.json
       stellarator_09__stellaris__divertor__divheat__q_target_peak_area_scaled: float stellarator_09__stellaris__divertor__divheat__q_target_peak_area_scaled.json
+      stellarator_09__stellaris__divertor__divheat__f_rad_edge_defined: float stellaris__divertor__f_rad_edge_defined.json
+      stellarator_09__stellaris__divertor__divheat__peak_equivalent_area_defined: float stellaris__divertor__peak_equivalent_area_defined.json
       stellarator_09__stellaris__divertor__divheat__p_heat_abs: float stellarator_09__stellaris__divertor__divheat__p_heat_abs.json
       stellarator_09__stellaris__divertor__divheat__f_rad_edge_in_range: float stellarator_09__stellaris__divertor__divheat__f_rad_edge_in_range.json
       stellarator_09__stellaris__divertor__divheat__q_target_margin: float stellarator_09__stellaris__divertor__divheat__q_target_margin.json
+      stellarator_09__stellaris__divertor__divheat__p_rad_total: float stellaris__divertor__p_rad_total.json
       stellarator_09__stellaris__divertor__divheat__p_target_nonrad: float stellarator_09__stellaris__divertor__divheat__p_target_nonrad.json
+      stellarator_09__stellaris__divertor__divheat__p_nonrad_uncaptured: float stellaris__divertor__p_nonrad_uncaptured.json
       stellarator_09__stellaris__divertor__divheat__f_rad_edge: float stellarator_09__stellaris__divertor__divheat__f_rad_edge.json
+      stellarator_09__stellaris__divertor__divheat__p_target_deposited: float stellaris__divertor__p_target_deposited.json
+      stellarator_09__stellaris__divertor__divheat__p_rad_edge: float stellaris__divertor__p_rad_edge.json
       stellarator_09__stellaris__divertor__divheat__p_heat_operating_minus_installed: float stellarator_09__stellaris__divertor__divheat__p_heat_operating_minus_installed.json
+      stellarator_09__stellaris__divertor__divheat__power_account_valid: float stellaris__divertor__power_account_valid.json
       stellarator_09__stellaris__divertor__divheat__p_sep: float stellarator_09__stellaris__divertor__divheat__p_sep.json
       stellarator_09__stellaris__divertor__divheat__q_target_peak: float stellaris__divertor__q_target_peak.json
       stellarator_09__stellaris__heat_transport__primary_loop__p_loop_margin: float stellaris__heat_transport__p_loop_margin.json
