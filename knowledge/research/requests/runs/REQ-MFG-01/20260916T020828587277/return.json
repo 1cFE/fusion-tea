@@ -1,0 +1,28 @@
+{
+  "request_id": "REQ-MFG-01",
+  "run": "knowledge/research/requests/runs/REQ-MFG-01/20260916T020828587277",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "iter_a_to_z_on_assembling_its_largest_components",
+      "path": "knowledge/sources/iter_a_to_z_on_assembling_its_largest_components/",
+      "source_id": "76129c14fb55fc6a43bd5ad10877090ac667bbc22f4ee97331d8ef7b741b04d7",
+      "pre_existing": false
+    },
+    {
+      "slug": "k_mac_g10_fr4_glass_reinforced_sheet_catalog",
+      "path": "knowledge/sources/k_mac_g10_fr4_glass_reinforced_sheet_catalog/",
+      "source_id": "841e819e0533a748fcafcacbda029206987671c44443886a7cbd872d597a1b18",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://www.cryogenicg10.com/sheets.htm",
+      "reason": "UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa9 in position 6015: invalid start byte"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

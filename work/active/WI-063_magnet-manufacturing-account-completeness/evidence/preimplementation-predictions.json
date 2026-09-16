@@ -1,0 +1,12 @@
+{
+  "basis": "independent six-section sum; inherited equal circumference and added-sheet construction scenario",
+  "internal_sheet_volume_m3": 3.414,
+  "sheet_area_m2": 6828.0,
+  "sheet_stock_rate_usd_m2": 61.677206687746725,
+  "sheet_stock_cost_usd": 421131.96726393467,
+  "ground_layer_envelope_m3": 4.951799999999992,
+  "ground_cost": null,
+  "fixed_cable_manufacturing_cost": null,
+  "extra_winding_effort": null,
+  "interpretation": "null means unresolved, never zero. Added stock cost assumes no inclusion in historical winding rate, not demonstrated by source."
+}

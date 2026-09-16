@@ -729,6 +729,38 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: feae78b8e79ce6cd3ae0266e564b5a803f9e45cde8f53b76d435a04465ca7ca5
 - **Date Added**: 2026-09-15
 
+### ITER A to Z on Assembling Its Largest Components
+- **Type**: url
+- **Location**: knowledge/sources/iter_a_to_z_on_assembling_its_largest_components/
+- **Use for**: REQ-MFG-01 primary coil production sequence and synchronization of winding, insulation wrapping and tension control; evidence of construction-specific effort drivers.
+- **Validation**: Compare captured raw HTML with extraction for two-in-hand winding, synchronized wrapping, stacked pancakes and impregnation sequence.
+- **Caveat**: ITER organization 2012 production description for NbTi poloidal field coils; no labor-hour or cost relation transferable to NI REBCO nonplanar plates.
+
+#### Extended Metadata
+- **Source URL**: https://www.iter.org/node/20687/z-assembling-iters-largest-components
+- **Source ID**: 76129c14fb55fc6a43bd5ad10877090ac667bbc22f4ee97331d8ef7b741b04d7
+- **Raw SHA256**: 76129c14fb55fc6a43bd5ad10877090ac667bbc22f4ee97331d8ef7b741b04d7
+- **Raw Artifact SHA256**: 76129c14fb55fc6a43bd5ad10877090ac667bbc22f4ee97331d8ef7b741b04d7
+- **Extracted Path**: knowledge/sources/iter_a_to_z_on_assembling_its_largest_components/
+- **Extract SHA256**: 38ccf56355fe6823a95caa65bdc2edfa79c96573ab4a77700ca89aaa09340797
+- **Date Added**: 2026-09-15
+
+### K-Mac G10 FR4 Glass Reinforced Sheet Catalog
+- **Type**: url
+- **Location**: knowledge/sources/k_mac_g10_fr4_glass_reinforced_sheet_catalog/
+- **Use for**: REQ-MFG-01 ordinary G10 FR4 electrical insulation sheet catalog price scenario using thickness-specific unit areas.
+- **Validation**: Check raw HTML catalog rows for 0.020 by 12 by 12 inch KS-6383 at 5.73 USD and 0.125 inch sheet rows; captured price date only.
+- **Caveat**: Ordinary G10 FR4 catalog, not cryogenic-grade magnet qualification, bulk purchase quote or manufacturing cost; capture September 2026 does not establish price publication year.
+
+#### Extended Metadata
+- **Source URL**: https://kmac-distribution.com/plastics/g10-fr4-sheets.htm
+- **Source ID**: 841e819e0533a748fcafcacbda029206987671c44443886a7cbd872d597a1b18
+- **Raw SHA256**: 841e819e0533a748fcafcacbda029206987671c44443886a7cbd872d597a1b18
+- **Raw Artifact SHA256**: 841e819e0533a748fcafcacbda029206987671c44443886a7cbd872d597a1b18
+- **Extracted Path**: knowledge/sources/k_mac_g10_fr4_glass_reinforced_sheet_catalog/
+- **Extract SHA256**: 03ef68f7c650151bad383f04c94f99d2d2dc8860ee3d6247852d72461ee26042
+- **Date Added**: 2026-09-15
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

@@ -1,6 +1,6 @@
 # WI-063 candidate account design
 
-[AGENT] Draft for independent source/math/interface review. Research T-002 is still in flight; dependent implementation is not released.
+[AGENT] Candidate for independent source/math/interface review, informed by completed T-002 manufacturing-research.md. Dependent implementation is not released.
 
 ## Account decisions
 
@@ -17,15 +17,17 @@ Let s be reference wp_side, r the fit aspect ratio, N the coil count, c the curr
 - Internal sheet volume Vs = V*(fx+fy+fx*fy), m³. Stable expanded product avoids subtracting nearly equal areas.
 - Integrated pack perimeter P = 2*N*c*s*fP*(sqrt(r)*(1+fx)+(1+fy)/sqrt(r)), m².
 - Ground layer envelope Vg = 2*t*N*c*s*fP*(sqrt(r)*(1+fx)+(1+fy)/sqrt(r)) + 4*t²*N*c, m³. This equals the sum of rectangular shell areas times each coil path, including corner volume exactly once.
-- Internal stock cost Cs = Vs*price_sheet_per_m3. Rate normalization and choice remain pending the final research report and review.
+- Internal sheet area As = Vs/t_sheet; stock cost Cs = As*price_sheet_per_m2. t_sheet=.0005m; price_sheet_per_m2=5.73/(12*.0254)^2=61.67720668774671USD/m². Thickness is a quantity assumption; unit price is independently settable.
 
 Check the P/Vg notation carefully: P is perimeter integrated over coil path; therefore Vg=t*P+4*t²*N*c. No ends are counted for the closed-coil envelope. No substitution of worst-coil side for every coil, no winding-conductor length substituted for coil-envelope length, and no clearance volume included. V uses geometric pack volume only, not extra cold equipment.
 
-Candidate source for a sensitivity rate is ordinary G10/FR4 .020x12x12-inch catalog sheet at5.73USD. Conversion is5.73/(.020*12*12*.0254³) USD/m³. Captured2026-09, publication year unresolved. Catalog stock is not cryogenic-qualified nor a bulk magnet quote; transfer to the .5mm pancake sheet is a conditional cost scenario. Ground wrapping and impregnation must not be priced as this sheet by default. Research/review must decide whether the stock rate can enter the explicit selected scenario or should stay sensitivity-only.
+[AGENT] Select ordinary G10/FR4 .020x12x12-inch catalog sheet at5.73USD as an explicit unqualified stock-cost proxy, using its area price for the .5mm layer. The catalog product is .508mm: the1.6% thickness difference is disclosed, and actual installation of that SKU would require changing pitch/thickness and checking fit together. Captured2026-09-16UTC, used as nominal2026 purchasing scenario; publication/quotation year unresolved. Catalog stock is neither cryogenic-qualified nor a bulk magnet quote. Ground wrapping and impregnation remain unpriced. The laminate already includes cured resin.
+
+[AGENT] The selected additive stock scenario assumes the historical winding term excludes this separately purchased inter-pancake laminate. Its source does not establish that boundary in detail. Report this as an uncertain boundary and show the zero-increment alternative; never call the added amount a demonstrated missing charge or verified correction. Unsupported manufacturing remains an explicit remainder, not a hidden zero-cost statement.
 
 ## Planned ownership and public behavior
 
-A reusable calculation in `mfe_winding_pack_cost.sysml` consumes existing physical geometry and explicit fP/rate inputs. The winding pack owns fP and sheet price. Magnet assembly binds existing fit controls and physical volume, exposing internal-sheet volume, ground-layer envelope volume and sheet-stock cost. Insulation material cost enters a clearly named additive procurement path only if released as the selected scenario. Existing material/tape/winding components remain separately observable; no legacy comparison term is added to live capital.
+A reusable calculation in `mfe_winding_pack_cost.sysml` consumes existing physical geometry and explicit fP/rate inputs. The winding pack owns fP and sheet price. Magnet assembly binds existing fit controls and physical volume, exposing internal-sheet volume, ground-layer envelope volume and sheet-stock cost. Add a dedicated insulation_stock_cost input to Magnet Capital and bind it from the new stock-cost output. Generic defaults use zero added internal build and a zero stock rate as an explicitly disabled incremental scenario; Stellaris binds the selected nonzero rate/build. Existing winding_cost remains tape+external materials+winding, so its old identity is preserved; total magnet capital adds sheet stock once. Existing material/tape/winding components remain separately observable; no legacy comparison term is added to live capital.
 
 Replace support cost's two ambiguous rate inputs with one all-in rate owned by the casing/support account. Enumerate shared consumers before editing; generic behavior retains the same effective rate. Expose support total as an all-in subtotal, never claim a measured material/fabrication split.
 

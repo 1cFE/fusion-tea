@@ -63,3 +63,12 @@ T-002 · research seam REQ-MFG-01 · evidence/manufacturing-research.md and nati
 ### T-003 start — 2026-09-15
 
 T-003 · native modeling PM · registered item with spec, design decisions and validation evidence. Coordinator owns model/package integration. Preparation can overlap T-002; no research-dependent equations or rates will be implemented before review release.
+
+### T-002 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** evidence/manufacturing-research.md; knowledge/research/requests/runs/REQ-MFG-01/20260916T020828587277/return.json; new source captures pending artifact commit.
+- **Reading:** A catalog sheet-stock scenario is defensible with explicit material/grade/year limits. Neither ground processing nor fixed cable/winding section dependence has a transferable rate. Ordinary material stock is not a qualified installed-magnet quote.
+- **Decision:** Source lacks insulation identity and detailed winding-rate coverage · propose conditional separately purchased sheet stock, show zero-increment alternative and disclose uncertain overlap; no claim of demonstrated missing charge · execution detail · coordinator pending independent source/interface review · WI-063/design.md.
+- **Decision:** No calibrated effort response found · retain length-based winding and explicit transfer sensitivity; keep unsupported processes visible · execution detail · coordinator pending review · WI-063/design.md.
+- **Decision:** Cryogenic supplier encoding failure · retain native operator queue; no adopted datum and no need to repair the research seam for this conditional scenario · execution detail · coordinator · native research return.

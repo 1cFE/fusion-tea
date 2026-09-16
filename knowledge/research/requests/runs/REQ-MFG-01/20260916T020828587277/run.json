@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-MFG-01",
+  "request_key": "b8d4fbc093ffc763de74968f7d032d96d34e4fb2bbd4188c412830d92fd95044",
+  "request_path": "knowledge/research/requests/REQ-MFG-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 10,
+    "max_captures": 5
+  },
+  "opened_at": "2026-09-16T02:08:28.587444+00:00",
+  "override_reason": null
+}
