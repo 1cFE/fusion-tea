@@ -111,3 +111,7 @@ Prior source/math coverage is reused as named in protocol.md. Current preexecuti
 ## 17. What this record does not contain
 
 No validated off-design confinement or material-performance transfer; no installed price for added cooling equipment or complete cavity-accommodation cost; no qualified IHX/circulator/pipe design; no global optimum, entire continuous feasible region or empirical accuracy claim. Divertor profile, transport/calibration anchors, technology performance and acceptance limits remain held. The blind holdout stays sealed. A failed authored predicate remains a prediction to compare, not permission to tune the target.
+
+## Post-freeze coverage correction — 2026-09-16
+
+[AGENT] Independent review found nine oracle-only first-refinement points below the declared current minimum. The unchanged raw scan contains 201 calls/200 unique points, but only 191 unique planned/control coordinates (185 evaluated, six refused); nine evaluated diagnostics are outside protocol. All 71 native cases and their verification remain unchanged. [Coverage erratum](coverage-erratum.md) and [exact classification](coverage-erratum.json) supersede the bound-compliance statements in §11 and the frozen window/refinement prose. No bound was retroactively expanded.

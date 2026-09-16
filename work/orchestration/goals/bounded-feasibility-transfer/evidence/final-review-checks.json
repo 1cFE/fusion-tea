@@ -1,0 +1,156 @@
+{
+  "custody": {
+    "snapshot_sha256": "2c24771b978a9ead8b756c33b168d77339de132822e848e80c2b14f85d538a36",
+    "artifact_hashes": 228,
+    "committed_required_files": 234
+  },
+  "stores": [
+    {
+      "path": "exploration/stellarator_e2e/studies/20260916-bounded-feasibility-transfer/results/_work/stellarator-baseline-point-v1.db",
+      "cases": 1,
+      "joins": 0
+    },
+    {
+      "path": "exploration/stellarator_e2e/studies/20260916-bounded-feasibility-transfer/results/study/_work/20260916-bounded-feasibility-transfer.db",
+      "cases": 71,
+      "joins": 71
+    }
+  ],
+  "replay": {
+    "scalar_comparisons": 16046,
+    "oracle_predicates": 1420,
+    "native_operand_predicates": 1420,
+    "status": "All fresh checks completed before later discovery-log path error; metadata reconstructed without repeated evaluation."
+  },
+  "scan": {
+    "calls": 201,
+    "unique": 200,
+    "unique_outcomes": {
+      "evaluated": 194,
+      "refused": 6
+    },
+    "stages": {
+      "initial": 70,
+      "refine1": 54,
+      "refine2": 48,
+      "final": 29
+    },
+    "all_replayed": true
+  },
+  "failures": {
+    "divertor_heat_ok": 57,
+    "reference_conductor_current_ok": 1,
+    "wp_fit_ok": 5,
+    "peak_field_ok": 56,
+    "wall_load_ok": 35,
+    "sustainment_ok": 9,
+    "loop_capacity_ok": 5,
+    "recirc_ok": 1,
+    "burn_hold_ok": 10
+  },
+  "invalid_accounts": 10,
+  "headroom": [
+    {
+      "base_id": "reference-loops-14",
+      "case_id": "control-allocated-current-sized-reference",
+      "annualized_break_even_headroom_dollars": 34691049.434939526
+    },
+    {
+      "base_id": "reference-loops-14",
+      "case_id": "reference-loops-18",
+      "annualized_break_even_headroom_dollars": 58426711.11546661
+    },
+    {
+      "base_id": "near-loops-12",
+      "case_id": "near-loops-14",
+      "annualized_break_even_headroom_dollars": 56590539.0035354
+    },
+    {
+      "base_id": "near-loops-12",
+      "case_id": "near-loops-15",
+      "annualized_break_even_headroom_dollars": 76733060.49758479
+    },
+    {
+      "base_id": "near-loops-12",
+      "case_id": "lhs-03-i-0.02-a+0.00",
+      "annualized_break_even_headroom_dollars": 93196643.77462742
+    },
+    {
+      "base_id": "near-loops-12",
+      "case_id": "near-loops-18",
+      "annualized_break_even_headroom_dollars": 118238574.39402528
+    }
+  ],
+  "transfer_anchor_verdicts": {
+    "transfer-smaller": [
+      "divertor_heat_ok",
+      "peak_field_ok",
+      "sustainment_ok"
+    ],
+    "control-allocated-current-sized-reference": [
+      "divertor_heat_ok",
+      "peak_field_ok"
+    ],
+    "transfer-larger": [
+      "divertor_heat_ok",
+      "peak_field_ok"
+    ]
+  },
+  "transfer_contrasts": {
+    "anchors": 3,
+    "one_input_contrasts": 6,
+    "transverse_contrasts": 3,
+    "loop_contrasts": 4
+  },
+  "prior_dispositions": 42,
+  "new_dispositions": 5,
+  "model_package_oracle_diff": "empty",
+  "outcome": "FINDINGS",
+  "additional_checks": {
+    "all_native_coupled_identities": 354,
+    "matched_transverse_and_loop_checks": "pass",
+    "fixed_main_assumptions": "pass",
+    "prior_dispositions": 42,
+    "new_dispositions": 5,
+    "actual_noncontrol_scan_ranges": {
+      "plasma__R": [
+        10.5234375,
+        13.5
+      ],
+      "plasma__a": [
+        1.103515625,
+        1.55
+      ],
+      "magnet__coil__I_coil": [
+        11372531.25,
+        16200000.0
+      ],
+      "magnet__coil__coil_t": [
+        0.58,
+        0.65
+      ],
+      "magnet__casing__interior_y": [
+        0.55,
+        0.7
+      ],
+      "heat_transport__n_loops": [
+        12,
+        18
+      ]
+    }
+  },
+  "protocol_deviation": {
+    "cases": [
+      "lhs-22-i-0.06-a-0.03",
+      "lhs-22-i-0.06-a+0.00",
+      "lhs-22-i-0.06-a+0.03",
+      "lhs-22-i-0.04-a-0.03",
+      "lhs-22-i-0.04-a+0.00",
+      "lhs-22-i-0.04-a+0.03",
+      "lhs-22-i-0.02-a-0.03",
+      "lhs-22-i-0.02-a+0.00",
+      "lhs-22-i-0.02-a+0.03"
+    ],
+    "scope": "nine oracle-only cases below declared lower bound; no native exception"
+  }
+}

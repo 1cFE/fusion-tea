@@ -62,3 +62,5 @@
 [AGENT] Three matched transverse-cavity changes affect only fit outputs in the current package; no total-cost change follows. Four matched loop changes preserve every native magnet and divertor heat-account output while changing pump work and downstream net power. This demonstrates both represented dependencies and missing accommodation pricing. The inherited coolant/source premise conflict is carried in [readiness.md](readiness.md), not resolved by these numerical checks.
 
 [AGENT] Required TBR is 1.190 versus held achieved 1.074 at all three anchors, even though the authored floor predicate passes. Held source anchors and adequacy diagnostics must survive the comparison manifest; neither a predicate pass nor constant availability establishes neutronics or reliability transfer.
+
+[AGENT] A post-freeze [coverage correction](../../../../exploration/stellarator_e2e/studies/20260916-bounded-feasibility-transfer/coverage-erratum.md) excludes nine below-bound oracle-only diagnostics from declared search coverage. The three native transfer anchors and all isolated/native accommodation checks are unaffected.
