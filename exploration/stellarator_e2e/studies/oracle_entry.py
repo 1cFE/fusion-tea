@@ -49,6 +49,8 @@ P = "stellarator_09__stellaris__"
 #: are bound by the `_in` convention, so codegen projects one entry point per
 #: authored attribute). Plant R also owns the live magnet radius.
 ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
+    f"{P}magnet__winding_pack__sizing_mode": "magnet_sizing_mode",
+    f"{P}magnet__winding_pack__inventory_multiplier": "magnet_inventory_multiplier",
     **{f"{P}magnet__winding_pack__{name}": "magnet_" + name for name in (
         "reference_tape_current", "material_factor", "orientation_factor", "cabling_factor",
         "degradation_factor", "sharing_factor", "allowable_fraction", "allow_field_extrapolation",
@@ -233,6 +235,9 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
 #: Oracle output name -> qualified channel name. Only channels the package records
 #: as single-field floats appear; the oracle returns more than the package does.
 ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
+    **{"sizing_" + name: f"{P}magnet__current_sizing__{name}" for name in (
+        "required_tapes", "required_conductor_area", "required_pack_area",
+        "required_effective_density", "selected_effective_density", "tape_available_current")},
     **{"conductor_" + name: f"{P}magnet__conductor_current__{name}" for name in (
         "parallel_tapes_set", "parallel_tapes_reference", "tape_critical_current",
         "critical_current_reference", "critical_current_set", "operating_fraction_reference",

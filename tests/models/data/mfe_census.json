@@ -1,6 +1,6 @@
 {
-  "derived_against_semantic_fingerprint": "17da5a058e674547143f7df8ddb3a71909e4b9f06f465fcdff051b0fb20ac209",
-  "entry_points": 310,
+  "derived_against_semantic_fingerprint": "14b6f7b06600fca1db624967110cd56c0f9aea975600e4a193d716b49e9aa1ed",
+  "entry_points": 312,
   "by_entry_type": {
     "library_default": [
       "stellarator_09__stellaris__blanket__blanket_cost__alpha",
@@ -237,6 +237,7 @@
       "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness",
       "stellarator_09__stellaris__magnet__winding_pack__internal_build_x",
       "stellarator_09__stellaris__magnet__winding_pack__internal_build_y",
+      "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier",
       "stellarator_09__stellaris__magnet__winding_pack__j_wp",
       "stellarator_09__stellaris__magnet__winding_pack__k_sigma",
       "stellarator_09__stellaris__magnet__winding_pack__material_factor",
@@ -252,6 +253,7 @@
       "stellarator_09__stellaris__magnet__winding_pack__rho_solder",
       "stellarator_09__stellaris__magnet__winding_pack__rho_steel",
       "stellarator_09__stellaris__magnet__winding_pack__sharing_factor",
+      "stellarator_09__stellaris__magnet__winding_pack__sizing_mode",
       "stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m",
       "stellarator_09__stellaris__magnet__winding_pack__tape_thickness",
       "stellarator_09__stellaris__magnet__winding_pack__tape_width",

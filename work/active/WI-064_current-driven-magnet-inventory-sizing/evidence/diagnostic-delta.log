@@ -1,0 +1,19 @@
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+{
+  "entering_evidence": "work/active/WI-063_magnet-manufacturing-account-completeness/evidence/L6-candidate.json",
+  "entering_count": 290,
+  "candidate_count": 296,
+  "added": [
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::required_tapes'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::required_conductor_area'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::required_pack_area'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::required_effective_density'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::selected_effective_density'",
+    "ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::tape_available_current'"
+  ],
+  "removed": [],
+  "normalization": "diagnostic identity excludes source line suffix; entering source is the entering WI063 production model before this item"
+}

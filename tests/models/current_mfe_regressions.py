@@ -40,7 +40,12 @@ WI038_CHANNELS = {P + 'magnet__conductor_grade__' + name for name in (
 K_COIL_RETIRED = 1.968503937007874  # the retired WI-036 k_coil (25.0 / 12.7), the float the old oracle carried
 WI058_PARAMETERS = {P + 'magnet__coil__c_coil_ref'}
 WI058_RETIRED = {P + 'magnet__coil__k_coil'}
-RECEIPT_EVIDENCE = ROOT / 'work/active/WI-063_magnet-manufacturing-account-completeness/evidence'
+RECEIPT_EVIDENCE = ROOT / 'work/active/WI-064_current-driven-magnet-inventory-sizing/evidence'
+WI064_PARAMETERS = {P + 'magnet__winding_pack__' + name for name in (
+    'sizing_mode', 'inventory_multiplier')}
+WI064_CHANNELS = {P + 'magnet__current_sizing__' + name for name in (
+    'required_tapes', 'required_conductor_area', 'required_pack_area',
+    'required_effective_density', 'selected_effective_density', 'tape_available_current')}
 WI063_PARAMETERS = {P + 'magnet__winding_pack__' + name for name in (
     'f_wp_perimeter', 'insulation_sheet_thickness', 'insulation_sheet_price')}
 WI063_CHANNELS = {P + 'magnet__insulation_inventory__' + name for name in (
@@ -150,7 +155,7 @@ def restate_wi040_radius_costs(translated):
     frozen = json.loads((translated / 'frozen-results.json').read_text())
     direct = json.loads((translated / 'direct-entering.json').read_text())
     for name, ref in (('baseline', 'baseline'), ('R14', 'tied_R14')):
-        replacement = {k: oracle[name][k] for k in changed | WI040_CHANNELS | WI060_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS}
+        replacement = {k: oracle[name][k] for k in changed | WI040_CHANNELS | WI060_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS}
         # WI-038 q=1 controls: exact independently stated additions, no changes to
         # existing physical expectations or their comparison tolerance.
         replacement.update({P + 'magnet__conductor_grade__quantity_factor': 1.0,
@@ -161,9 +166,9 @@ def restate_wi040_radius_costs(translated):
     (translated / 'frozen-results.json').write_text(json.dumps(frozen, indent=2) + '\n')
     (translated / 'direct-entering.json').write_text(json.dumps(direct, indent=2) + '\n')
     expected = json.loads((translated / 'expectations.json').read_text())
-    expected['channels'] = sorted(set(expected['channels']) | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS)
+    expected['channels'] = sorted(set(expected['channels']) | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS)
     (translated / 'expectations.json').write_text(json.dumps(expected, indent=2) + '\n')
-    return changed | WI040_CHANNELS | WI059_CHANNELS | WI060_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS
+    return changed | WI040_CHANNELS | WI059_CHANNELS | WI060_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS
 
 
 def structure_ledger():
@@ -254,7 +259,7 @@ def current_generation():
 
 def operating_acceptance(destination, historical):
     # Keep all historical scenario execution and assertions. Replace its generator
-    # dependency with the current reviewed WI-063 completion inventory.
+    # dependency with the current reviewed WI-064 completion inventory.
     spec = importlib.util.spec_from_file_location('wi052_operating_scenarios', FINANCE_EVIDENCE / 'current_regressions.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -334,7 +339,7 @@ def radius_acceptance(destination, historical):
             text = replace_once(text, 'bridge.build(change)', f'bridge.build({WI059_REPLAY!r} | change)')
             text = replace_once(text, "'entering-package/contracts/model_contract.json'", repr(str(translated / 'entering-package/contracts/model_contract.json')))
             text = replace_once(text, "delta['added']==[]",
-                                f"{{x[1] for x in delta['added']}}=={WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS!r}")
+                                f"{{x[1] for x in delta['added']}}=={WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI064_PARAMETERS!r}")
             # WI-058: evaluate R14 at the R-form's length (see K_COIL_RETIRED) so the frozen row stays exact.
             text = replace_once(text, "('R14',{P+'plasma__R':14.0})",
                                 f"('R14',{{P+'plasma__R':14.0,P+'magnet__coil__c_coil_ref':{K_COIL_RETIRED * 14.0!r}}})")

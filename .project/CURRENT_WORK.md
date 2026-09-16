@@ -1,3 +1,7 @@
+# Joint magnet sizing and feasibility — active — 2026-09-15
+
+[OWNER] Autonomously ground and pursue consistent current/inventory/geometry/cost feasibility; retain limits/quarantine, no merge or push. [AGENT] Grounded `work/orchestration/goals/joint-magnet-sizing-feasibility/goal.md`; Round1 maps allocation-first geometry and prepares WI-064 optional native current-driven inventory sizing. Existing reference and prior adverse findings remain controls. Fresh source/interface review pending before implementation.
+
 # Magnet manufacturing account — technical answer complete — 2026-09-15
 
 [OWNER] Improve magnet manufacturing-cost completeness with traceable quantities, account boundaries and explicit unknowns. [AGENT] WI-063 adds conditional inter-pancake sheet stock ($421,132 at reference), an unpriced ground envelope and an explicit effective all-in support rate. Priced magnet subtotal is $1.70744 billion; manufacturing remainder and mixed price years remain unresolved. No demonstrated duplicate was removed or unsupported winding multiplier invented. Existing adverse fit/current predicates are preserved. Fresh source/design and integrated reviews PASS within these limits; all affected consumer checks have final passing coverage. Static L2/L6 limitations and historical-store skip remain disclosed.

@@ -307,6 +307,7 @@ IN = dict(
     # a_coil_ref), anchored at the printed 25 m at the reference bore; k_coil (25.0 / 12.7 over R,
     # WI-036 D3) retires.
     magnet_j_wp=118.8271604938272, magnet_c_coil_ref=25.0,
+    magnet_sizing_mode=0.0, magnet_inventory_multiplier=1.0,
     # WI-038: conditional 20 K relative REBCO field law. Reference density is
     # held fixed in the priced-transfer claim; 20–30 T is an extrapolative study window.
     magnet_B_grade_ref=24.9, magnet_field_exponent=0.6,
@@ -752,7 +753,45 @@ def _coil_thermal_inventory(p, circumference, pack_side):
                 p_drive=(lead_cold+lead_shield)*1e-6+p['cryo_joint_drive_fraction']*p['p_fixed_cryo'])
 
 
-def _winding_fit(p):
+def _current_driven_sizing(p, field, legacy_density):
+    """WI-064 independent inversion: tape capacity per composite area sets density.
+
+    Required quantities are minimum continuous reference-conductor inventory;
+    extra inventory is a physical multiplier, never an acceptance relaxation.
+    """
+    mode = p['magnet_sizing_mode']
+    multiplier = p['magnet_inventory_multiplier']
+    if mode not in (0, 1) or not math.isfinite(multiplier) or multiplier < 1:
+        raise ValueError('oracle current sizing: invalid mode or inventory multiplier')
+    fractions = [p['magnet_f_' + k] for k in ('copper', 'solder', 'steel', 'helium')]
+    if any(not math.isfinite(v) or v < 0 for v in fractions) or sum(fractions) >= 1:
+        raise ValueError('oracle current sizing: invalid composition')
+    for value in (legacy_density, p['magnet_I_coil'], p['magnet_turn_current']):
+        if not math.isfinite(value) or value <= 0:
+            raise ValueError('oracle current sizing: invalid loading')
+    # The independently implemented existing performance/domain calculation supplies
+    # single-tape current only; no generated sizing or final inventory is consumed.
+    capacity = _conductor_current(p, field, 1.0, 1.0)['tape_critical_current']
+    capacity *= p['magnet_cabling_factor'] * p['magnet_degradation_factor'] * p['magnet_sharing_factor']
+    tape_area = p['magnet_tape_width'] * p['magnet_tape_thickness']
+    usable_density = capacity * p['magnet_allowable_fraction'] * (1-sum(fractions)) / tape_area
+    try:
+        density = usable_density / 1e6
+        pack_area = p['magnet_I_coil'] / usable_density
+        conductor_area = p['magnet_turn_current'] / usable_density
+        required_tapes = p['magnet_turn_current'] / (p['magnet_allowable_fraction'] * capacity)
+        selected = legacy_density if mode == 0 else density / multiplier
+    except (ZeroDivisionError, OverflowError) as exc:
+        raise ValueError('oracle current sizing: invalid arithmetic') from exc
+    out = dict(required_tapes=required_tapes, required_conductor_area=conductor_area,
+               required_pack_area=pack_area, required_effective_density=density,
+               selected_effective_density=selected, tape_available_current=capacity)
+    if any(not math.isfinite(v) or v <= 0 for v in out.values()):
+        raise ValueError('oracle current sizing: nonpositive/nonfinite output')
+    return out
+
+
+def _winding_fit(p, selected_area=None):
     """Independent area-demand construction and conditional available-space screen."""
     pos = ('fit_aspect_ratio', 'fit_wall', 'fit_interior_y', 'coil_t')
     nonneg = ('fit_internal_x', 'fit_internal_y', 'fit_ground', 'fit_clearance')
@@ -761,7 +800,8 @@ def _winding_fit(p):
             raise ValueError('oracle winding fit: invalid ' + key)
     # Reconstruct the demand directly rather than reading native sizing/fit intermediates.
     factor = (p['magnet_B_max'] / p['magnet_B_grade_ref']) ** p['magnet_field_exponent']
-    area = p['magnet_I_coil'] / (p['magnet_j_wp'] / factor) / 1e6
+    area = (p['magnet_I_coil'] / (p['magnet_j_wp'] / factor) / 1e6
+            if selected_area is None else selected_area)
     if not math.isfinite(area) or area <= 0:
         raise ValueError('oracle winding fit: invalid nominal area')
     side = math.sqrt(area)
@@ -925,7 +965,9 @@ def compute():
     _validate_winding_pack_magnitudes(p["magnet_I_coil"], p["magnet_j_wp"])
     grade = _conductor_field_capability(p['magnet_B_max'], p['magnet_B_grade_ref'],
                                        p['magnet_field_exponent'], p['magnet_j_wp'])
-    wp_side = _winding_pack_side(p["magnet_I_coil"], grade['j_wp_effective'])
+    current_sizing = _current_driven_sizing(p, B_peak, grade['j_wp_effective'])
+    effective_density = current_sizing['selected_effective_density']
+    wp_side = _winding_pack_side(p["magnet_I_coil"], effective_density)
     # WI-058 (design D2/D3): the printed circumference at the reference bore times the bore ratio;
     # exactly 25.0 at the design point (the same float over itself); R does not enter.
     c_coil = p["magnet_c_coil_ref"] * (r_coil_centre / p["magnet_a_coil_ref"])
@@ -948,6 +990,10 @@ def compute():
         * p['magnet_n_coils'] * p['magnet_f_wp_vol'] * c_coil
         * (1 - sum(p['magnet_f_' + m] for m in ('copper', 'solder', 'steel', 'helium')))
         / (1e6 * p['magnet_j_wp']))
+    if p['magnet_sizing_mode'] == 1:
+        tape_volume_direct = (current_sizing['required_pack_area'] * p['magnet_inventory_multiplier']
+            * p['magnet_n_coils'] * p['magnet_f_wp_vol'] * c_coil
+            * (1 - sum(p['magnet_f_' + m] for m in ('copper', 'solder', 'steel', 'helium'))))
     procurement = _winding_procurement(p, c_coil, inventory['material_cost'], tape_volume_direct)
 
     insulation = _insulation_inventory(p, c_coil, wp_side, vol_winding_pack)
@@ -1272,7 +1318,8 @@ def compute():
 
     return dict(
         **{"conductor_" + key: value for key, value in conductor.items()},
-        **{"fit_" + key: value for key, value in _winding_fit(p).items()},
+        **{"fit_" + key: value for key, value in _winding_fit(p, None if p["magnet_sizing_mode"] == 0 else current_sizing["required_pack_area"] * p["magnet_inventory_multiplier"]).items()},
+        **{"sizing_" + key: value for key, value in current_sizing.items()},
         V=V, p_fus=p_fus, p_th=p_th, p_the=p_the, p_et=p_et,
         p_cryo=p_cryo, p_cryo_cold=p_cryo_cold, p_cryo_shield=p_cryo_shield,
         support_mass=support_mass, p_tf_total=p_tf_total, p_cold=p_cold,

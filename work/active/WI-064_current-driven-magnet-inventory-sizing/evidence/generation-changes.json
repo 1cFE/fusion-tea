@@ -1,0 +1,14 @@
+{
+  "contracts/package_contract.json": {
+    "before": "994ce92235822e6f0a260a3f790ddbffcfaf103c69e2793fd95dbd90f6521094",
+    "after": "b8f5dc06bffd0ced00def8be499ccb70b1ff579f6b6bf224b6c5147000c73cad"
+  },
+  "modules/mfe_conductor_current/current_driven_pack_sizing.py": {
+    "before": "703847efe146bd839890ea30af7609fc5ea9ecb190d21231aff9fb6cb93e4daa",
+    "after": "2f50d074c60c4bfd4895e80203e85bc6d8a5aff6b5bdc97f718b7e9a6e4edda0"
+  },
+  "schemas/current_driven_pack_sizing_output.py": {
+    "before": "87906d2b26e1d0b7196eebb8a702849dc89d41c57edf606ec04799c42b0164e2",
+    "after": "53cfd654ea6e6880e492d8567c20f96a5299995f3e44e4db16545c131b68d9a3"
+  }
+}

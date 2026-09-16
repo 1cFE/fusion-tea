@@ -122,7 +122,7 @@ package mfe_power_core {
         part winding_pack : 'Winding Pack' {
             :>> wp_side = wp_sizing.wp_side;
             :>> conductor_quantity_factor = conductor_grade.quantity_factor;
-            :>> j_wp_effective = conductor_grade.j_wp_effective;
+            :>> j_wp_effective = current_sizing.selected_effective_density;
         }
         part casing : 'Coil Casing' {
             :>> m_casing = casing_mass.m_casing;
@@ -131,6 +131,13 @@ package mfe_power_core {
         attribute r_coil_centre : Real;   // <- rb.r_coil_centre
         // ---- EXPOSEs (WI-057): this part's calc outputs, readable outside as <part>.<name> ----
         attribute B_peak : Real = peak_field_calc.B_peak;
+        attribute required_tapes : Real = current_sizing.required_tapes;
+        attribute required_conductor_area : Real = current_sizing.required_conductor_area;
+        attribute required_pack_area : Real = current_sizing.required_pack_area;
+        attribute required_effective_density : Real = current_sizing.required_effective_density;
+        attribute selected_effective_density : Real = current_sizing.selected_effective_density;
+        attribute tape_available_current : Real = current_sizing.tape_available_current;
+
         attribute capital_cost_1cfe : Real = magnet_cost.capital_cost;
         attribute eps_cond : Real = cond_strain.eps_cond;
         attribute sigma_wp : Real = wp_stress.sigma_wp;
@@ -211,6 +218,29 @@ package mfe_power_core {
         // WI-036: the winding pack is sized by the current it carries, so
         // wp_side stops being an entry point and becomes a consequence of
         // coil current and the chosen winding-pack current density.
+        calc current_sizing : 'Current Driven Pack Sizing' {
+            in sizing_mode = winding_pack.sizing_mode;
+            in inventory_multiplier = winding_pack.inventory_multiplier;
+            in legacy_effective_density = conductor_grade.j_wp_effective;
+            in I_coil = coil.I_coil;
+            in turn_current = coil.turn_current;
+            in f_copper = winding_pack.f_copper;
+            in f_solder = winding_pack.f_solder;
+            in f_steel = winding_pack.f_steel;
+            in f_helium = winding_pack.f_helium;
+            in tape_width = winding_pack.tape_width;
+            in tape_thickness = winding_pack.tape_thickness;
+            in B_peak = 'Magnet System'::B_peak;
+            in temperature = winding_pack.T_inventory;
+            in reference_tape_current = winding_pack.reference_tape_current;
+            in material_factor = winding_pack.material_factor;
+            in orientation_factor = winding_pack.orientation_factor;
+            in cabling_factor = winding_pack.cabling_factor;
+            in degradation_factor = winding_pack.degradation_factor;
+            in sharing_factor = winding_pack.sharing_factor;
+            in allowable_fraction = winding_pack.allowable_fraction;
+            in allow_field_extrapolation = winding_pack.allow_field_extrapolation;
+        }
         calc wp_sizing : 'Winding Pack Sizing' {
             in I_coil = coil.I_coil;
             in j_wp = winding_pack.j_wp_effective;

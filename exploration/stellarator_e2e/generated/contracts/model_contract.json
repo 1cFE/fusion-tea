@@ -996,96 +996,6 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_sizing__wp_side",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__required_y",
-      "field_name": "required_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__nominal_y",
-      "field_name": "nominal_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__minimum_margin",
-      "field_name": "minimum_margin",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__margin_x",
-      "field_name": "margin_x",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__internal_y",
-      "field_name": "internal_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__pack_x",
-      "field_name": "pack_x",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__exterior_x",
-      "field_name": "exterior_x",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__cavity_x",
-      "field_name": "cavity_x",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__nominal_x",
-      "field_name": "nominal_x",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__cavity_y",
-      "field_name": "cavity_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__exterior_y",
-      "field_name": "exterior_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__insulated_y",
-      "field_name": "insulated_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__margin_y",
-      "field_name": "margin_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__internal_x",
-      "field_name": "internal_x",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__pack_y",
-      "field_name": "pack_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__required_x",
-      "field_name": "required_x",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__insulated_x",
-      "field_name": "insulated_x",
-      "python_type": "float"
-    },
-    {
       "channel_name": "stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required",
       "field_name": "S_eff_required",
       "python_type": "float"
@@ -1311,6 +1221,76 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__magnet__winding_pack_cost__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__stored_energy__W_mag",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__casing_mass__m_casing",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__support_mass__m_support",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__magnet_structure_cost__cost",
+      "field_name": "cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__magnet_structure_cost__effective_all_in_rate",
+      "field_name": "effective_all_in_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__peak_field_calc__B_peak",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__current_sizing__required_tapes",
+      "field_name": "required_tapes",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__current_sizing__required_conductor_area",
+      "field_name": "required_conductor_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__current_sizing__required_pack_area",
+      "field_name": "required_pack_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__current_sizing__required_effective_density",
+      "field_name": "required_effective_density",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__current_sizing__selected_effective_density",
+      "field_name": "selected_effective_density",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__current_sizing__tape_available_current",
+      "field_name": "tape_available_current",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_sizing__wp_side",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__cryoplant__inventory__q_rad_cold",
       "field_name": "q_rad_cold",
       "python_type": "float"
@@ -1371,6 +1351,91 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__required_y",
+      "field_name": "required_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__nominal_y",
+      "field_name": "nominal_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__minimum_margin",
+      "field_name": "minimum_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__margin_x",
+      "field_name": "margin_x",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__internal_y",
+      "field_name": "internal_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__pack_x",
+      "field_name": "pack_x",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__exterior_x",
+      "field_name": "exterior_x",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__cavity_x",
+      "field_name": "cavity_x",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__nominal_x",
+      "field_name": "nominal_x",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__cavity_y",
+      "field_name": "cavity_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__exterior_y",
+      "field_name": "exterior_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__insulated_y",
+      "field_name": "insulated_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__margin_y",
+      "field_name": "margin_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__internal_x",
+      "field_name": "internal_x",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__pack_y",
+      "field_name": "pack_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__required_x",
+      "field_name": "required_x",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__insulated_x",
+      "field_name": "insulated_x",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack",
       "field_name": "vol_winding_pack",
       "python_type": "float"
@@ -1378,6 +1443,26 @@
     {
       "channel_name": "stellarator_09__stellaris__magnet__wp_volume__vol_cold_total",
       "field_name": "vol_cold_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cryoplant__cold_load__q_structure_nuclear",
+      "field_name": "q_structure_nuclear",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cryoplant__cold_load__p_cold",
+      "field_name": "p_cold",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cryoplant__cryo_elec__p_elec",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cryoplant__refrigeration_sum__total",
+      "field_name": "root",
       "python_type": "float"
     },
     {
@@ -1458,61 +1543,6 @@
     {
       "channel_name": "stellarator_09__stellaris__magnet__winding_procurement__conductor_length",
       "field_name": "conductor_length",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__winding_pack_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__stored_energy__W_mag",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__casing_mass__m_casing",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__support_mass__m_support",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__cryoplant__cold_load__q_structure_nuclear",
-      "field_name": "q_structure_nuclear",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__cryoplant__cold_load__p_cold",
-      "field_name": "p_cold",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__cryoplant__cryo_elec__p_elec",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__cryoplant__refrigeration_sum__total",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__magnet_structure_cost__cost",
-      "field_name": "cost",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__magnet_structure_cost__effective_all_in_rate",
-      "field_name": "effective_all_in_rate",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__peak_field_calc__B_peak",
-      "field_name": "root",
       "python_type": "float"
     },
     {
@@ -3675,6 +3705,13 @@
       "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__internal_build_y"
     },
     {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier"
+    },
+    {
       "default_value": 118.8271604938272,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -3778,6 +3815,13 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__sharing_factor"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__sizing_mode"
     },
     {
       "default_value": 20.0,
@@ -4228,5 +4272,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "17da5a058e674547143f7df8ddb3a71909e4b9f06f465fcdff051b0fb20ac209"
+  "semantic_fingerprint": "14b6f7b06600fca1db624967110cd56c0f9aea975600e4a193d716b49e9aa1ed"
 }

@@ -1,0 +1,71 @@
+
+======================================================================
+SysML Quality Validation
+Models path: models/designs/stellarator_09/stellarator_plant.sysml
+Mode: Fail-fast
+======================================================================
+
+============================================================
+Level 1: Syntax Validation
+============================================================
+Found 0 SysML files
+
+✅ Level 1: Syntax Validation
+
+   Warnings: 1
+   ⚠️  No SysML files found
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+
+✅ Level 2: Structural Completeness
+
+   Warnings: 1
+   ⚠️  No SysML files found
+
+============================================================
+Level 3: Dataflow Integrity
+============================================================
+
+✅ Level 3: Dataflow Integrity
+
+   Warnings: 1
+   ⚠️  No SysML files found
+
+============================================================
+Level 4: Constraint Coverage
+============================================================
+
+✅ Level 4: Constraint Coverage
+
+   Warnings: 1
+   ⚠️  No SysML files found
+
+============================================================
+Level 5: Traceability & Documentation
+============================================================
+
+✅ Level 5: Traceability & Documentation
+
+   Warnings: 1
+   ⚠️  No SysML files found
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+
+✅ Level 6: Architecture & Pipeline Readiness
+   Files checked: 0
+
+   Warnings: 1
+   ⚠️  No SysML files found
+
+======================================================================
+Summary
+======================================================================
+Checks run: 6
+✅ Passed: 6
+❌ Failed: 0
+
+✅ All quality checks passed!

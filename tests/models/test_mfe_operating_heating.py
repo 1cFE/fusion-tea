@@ -1,6 +1,6 @@
 """WI-050 native operating-state, independent conservation and consumer regressions."""
 from __future__ import annotations
-from tests.models.current_mfe_regressions import WI063_PARAMETERS, WI063_CHANNELS
+from tests.models.current_mfe_regressions import WI063_PARAMETERS, WI063_CHANNELS, WI064_PARAMETERS, WI064_CHANNELS
 from tests.models.current_mfe_regressions import WI060_PARAMETERS, WI059_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES, WI059_REPLAY_LOCAL
 
 from tests.models.current_mfe_regressions import WI061_PARAMETERS, WI061_MAPPED_PARAMETERS, WI061_CHANNELS, WI062_PARAMETERS
@@ -123,7 +123,7 @@ def test_heating_efficiency_scalar_consumers(native,boundaries):
 def test_stellarator_operating_heat_has_no_public_demand_input(native):
     scratch,results,_,_=native
     contract=json.loads((scratch/'generated/contracts/model_contract.json').read_text())
-    assert len(contract['parameters'])==265 + len(WI059_PARAMETERS | WI060_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS)  # WI-059 adds21public inputs and3native-only literals.
+    assert len(contract['parameters'])==265 + len(WI059_PARAMETERS | WI060_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI064_PARAMETERS)  # WI-059 adds21public inputs and3native-only literals.
     assert not any('p_operating_coupled_heat' in str(p) for p in contract['parameters'])
     modules=yaml.safe_load((scratch/'generated/pipelines/pipeline.yaml').read_text())['modules']
     expected={'operating_heat':{'p_required_in':'sustain.p_aux_required'},'source_heat':{'p_input_in':'operating_heat.p_coupled'},'pb':{'p_input_in':'operating_heat.p_coupled','p_wallplug_in':'operating_heat.p_wallplug'},'divheat':{'p_coupled_in':'operating_heat.p_coupled','p_installed_coupled_in':'heat.p_coupled'},'primary_loop':{'q_source_in':'source_heat.q_source.root'},'heating_cost':{'p_ecrh_in':'heat.p_delivered'}}

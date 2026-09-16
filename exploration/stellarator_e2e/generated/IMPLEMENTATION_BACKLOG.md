@@ -9,7 +9,7 @@ Complete all stages in order for a production-ready system.
 
 **Objective**: Implement each calculation definition in its handwritten file.
 
-**Total**: 21 functions to implement
+**Total**: 22 functions to implement
 
 **Instructions for each function**:
 1. Open the SysML source file at the line number shown below
@@ -29,16 +29,17 @@ Complete all stages in order for a production-ready system.
 | [ ] | Plasma_Sustainment | `run_plasma_sustainment` | `root-0/analyses/mfe_plasma_sustainment.sysml:4` | High |
 | [ ] | DT_Fusion_Power | `run_dt_fusion_power` | `root-0/analyses/mfe_plasma_scaling.sysml:147` | High |
 | [ ] | Conductor_Field_Capability | `run_conductor_field_capability` | `root-0/analyses/mfe_conductor_grade.sysml:4` | High |
-| [ ] | Winding_Pack_Sizing | `run_winding_pack_sizing` | `root-0/analyses/mfe_magnet_field.sysml:91` | High |
-| [ ] | Winding_Pack_Casing_Fit | `run_winding_pack_casing_fit` | `root-0/analyses/mfe_winding_pack_fit.sysml:3` | High |
 | [ ] | Primary_Coolant_Loop | `run_primary_coolant_loop` | `root-0/analyses/mfe_primary_loop.sysml:4` | High |
 | [ ] | Power_Cycle_Efficiency | `run_power_cycle_efficiency` | `root-0/analyses/mfe_power_cycle.sysml:4` | High |
+| [ ] | Conductor_Peak_Field | `run_conductor_peak_field` | `root-0/analyses/mfe_plasma_scaling.sysml:419` | High |
+| [ ] | Current_Driven_Pack_Sizing | `run_current_driven_pack_sizing` | `root-0/analyses/mfe_conductor_current.sysml:39` | High |
+| [ ] | Winding_Pack_Sizing | `run_winding_pack_sizing` | `root-0/analyses/mfe_magnet_field.sysml:91` | High |
 | [ ] | Coil_Thermal_Inventory | `run_coil_thermal_inventory` | `root-0/analyses/mfe_cryo_inventory.sysml:3` | High |
 | [ ] | Intercept_Electrical_Power | `run_intercept_electrical_power` | `root-0/analyses/mfe_cryo_inventory.sysml:89` | High |
+| [ ] | Winding_Pack_Casing_Fit | `run_winding_pack_casing_fit` | `root-0/analyses/mfe_winding_pack_fit.sysml:3` | High |
+| [ ] | Cryoplant_Electrical_Power | `run_cryoplant_electrical_power` | `root-0/analyses/mfe_cryo_plant.sysml:4` | High |
 | [ ] | Winding_Pack_Material_Inventory | `run_winding_pack_material_inventory` | `root-0/analyses/mfe_winding_pack_cost.sysml:4` | High |
 | [ ] | Winding_Pack_Procurement_Cost | `run_winding_pack_procurement_cost` | `root-0/analyses/mfe_winding_pack_cost.sysml:42` | High |
-| [ ] | Cryoplant_Electrical_Power | `run_cryoplant_electrical_power` | `root-0/analyses/mfe_cryo_plant.sysml:4` | High |
-| [ ] | Conductor_Peak_Field | `run_conductor_peak_field` | `root-0/analyses/mfe_plasma_scaling.sysml:419` | High |
 | [ ] | REBCO_Conductor_Current | `run_rebco_conductor_current` | `root-0/analyses/mfe_conductor_current.sysml:3` | High |
 | [ ] | Winding_Pack_Insulation_Inventory | `run_winding_pack_insulation_inventory` | `root-0/analyses/mfe_winding_pack_cost.sysml:71` | High |
 | [ ] | Winding_Pack_Stress | `run_winding_pack_stress` | `root-0/analyses/mfe_magnet_field.sysml:48` | High |
@@ -73,7 +74,7 @@ pytest tests/test_implementations_runnable.py -v
 All tests should pass (or pytest.skip for NotImplementedError stubs)
 
 **Test Coverage**:
-- 21 implementation functions
+- 22 implementation functions
 - Each function tested for: imports, signature, return type
 - Tests tolerate NotImplementedError (pass before implementation)
 - Tests verify return types (pass after implementation)
@@ -108,7 +109,7 @@ All tests should pass (or pytest.skip for NotImplementedError stubs)
 ## Completion Criteria
 
 The implementation is complete when:
-- Stage 1: All 21 functions implemented
+- Stage 1: All 22 functions implemented
 - Stage 2: All validations pass
 - Stage 3: Integration tests pass
 

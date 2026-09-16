@@ -12,7 +12,7 @@ them as data and fails closed on anything unresolved.
 This test proves the publication is possible and correct against the real contract,
 before anything consumes it. It resolves all eight constraints — no sampling.
 """
-from tests.models.current_mfe_regressions import WI062_PARAMETERS, WI063_PARAMETERS
+from tests.models.current_mfe_regressions import WI062_PARAMETERS, WI063_PARAMETERS, WI064_PARAMETERS
 
 from tests.models.current_mfe_regressions import WI060_PARAMETERS, WI059_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES
 
@@ -101,7 +101,7 @@ def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
     inputs = package_inputs(real_package_path)
 
     assert set(bindings) == {entry["constraint_id"] for entry in entries}
-    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS)  # WI-040 adds seventeen inputs; WI-038 adds two references.
+    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI064_PARAMETERS)  # WI-040 adds seventeen inputs; WI-038 adds two references.
     resolved = 0
     for entry in entries:
         cid = entry["constraint_id"]

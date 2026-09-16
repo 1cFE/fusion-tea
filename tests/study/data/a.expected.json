@@ -1,5 +1,5 @@
 {
-  "derived_against_semantic_fingerprint": "17da5a058e674547143f7df8ddb3a71909e4b9f06f465fcdff051b0fb20ac209",
+  "derived_against_semantic_fingerprint": "14b6f7b06600fca1db624967110cd56c0f9aea975600e4a193d716b49e9aa1ed",
   "group": {
     "axis": "a",
     "declared_keys": [
@@ -339,6 +339,30 @@
         ]
       },
       {
+        "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+        "definition_qualified_name": "mfe_winding_pack_fit::'Winding Pack Fits Casing'",
+        "source_local_identity": "wp_fit_ok",
+        "operator": ">=",
+        "operand_classes": [
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "minimum_margin_in",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__magnet__wp_fit__minimum_margin",
+            "reached": true
+          },
+          {
+            "operand": "<literal>",
+            "class": "literal",
+            "reached": false,
+            "value": 0.0
+          }
+        ]
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
         "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
         "source_local_identity": "wp_stress_ok",
@@ -489,30 +513,6 @@
             "ref": "stellarator_09__stellaris__tbr_floor",
             "reached": false,
             "entry_type": "design_attribute"
-          }
-        ]
-      },
-      {
-        "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
-        "definition_qualified_name": "mfe_winding_pack_fit::'Winding Pack Fits Casing'",
-        "source_local_identity": "wp_fit_ok",
-        "operator": ">=",
-        "operand_classes": [
-          "computed"
-        ],
-        "bound_vs_bound": false,
-        "operands": [
-          {
-            "operand": "minimum_margin_in",
-            "class": "computed",
-            "ref": "stellarator_09__stellaris__magnet__wp_fit__minimum_margin",
-            "reached": false
-          },
-          {
-            "operand": "<literal>",
-            "class": "literal",
-            "reached": false,
-            "value": 0.0
           }
         ]
       }
@@ -984,7 +984,7 @@
             "operand": "minimum_margin_in",
             "class": "computed",
             "ref": "stellarator_09__stellaris__magnet__wp_fit__minimum_margin",
-            "reached": false
+            "reached": true
           },
           {
             "operand": "<literal>",
@@ -1040,8 +1040,8 @@
     "objectives_unreachable": [],
     "sibling_candidates": [],
     "trace_size": {
-      "modules_fired": 97,
-      "channels_tainted": 216
+      "modules_fired": 101,
+      "channels_tainted": 241
     },
     "warnings": [],
     "not_derivable": {

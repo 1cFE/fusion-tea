@@ -92,7 +92,9 @@ package mfe_magnet_parts {
         attribute field_exponent : Real; // positive relative field exponent [1]
         // Derived capability quantities, bound by the magnet-owned analysis.
         attribute conductor_quantity_factor : Real;
-        attribute j_wp_effective : Real;
+        attribute j_wp_effective : Real; // selected physical sizing density [A/mm^2]
+        attribute sizing_mode : Real default 0.0; // WI-064: legacy0, current-driven1
+        attribute inventory_multiplier : Real default 1.0; // WI-064 additional physical inventory >=1
         attribute tape_width : Real; // full purchased tape width [m]
         attribute tape_thickness : Real; // full composite thickness, including stabilizer [m]
         attribute reference_tape_current : Real default 200.0; // WI-062 conditional performance scenario

@@ -308,6 +308,8 @@ package stellarator_09 {
             }
             }
             part :>> winding_pack {
+                :>> sizing_mode = 0.0; // WI-064 entering legacy scenario
+                :>> inventory_multiplier = 1.0; // WI-064 no additional inventory
                 :>> reference_tape_current = 200.0 {
                     doc /* **Source**: work/orchestration/goals/absolute-conductor-current-margin/evidence/performance-research.md **Reference**: WI-062 reviewed design. **Basis**: [AGENT] rounded lot-average lift inference A/4mm at20T; 56um construction transfer. **Last Updated**: 2026-09-15 */
                 }
