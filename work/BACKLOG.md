@@ -320,6 +320,12 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-063
+  name: Magnet manufacturing account completeness
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -406,3 +412,4 @@ standalone:
 | WI-060 | Tape procurement quantity basis | standard | P1 | backlog |  |
 | WI-061 | Winding pack casing fit | standard | P1 | backlog |  |
 | WI-062 | Absolute conductor current margin | standard | P1 | backlog |  |
+| WI-063 | Magnet manufacturing account completeness | standard | P1 | backlog |  |
