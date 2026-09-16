@@ -81,3 +81,27 @@ T-002 · native modeling PM · expected bounded standard work item, implementati
 ### T-003 start — 2026-09-15
 
 T-003 · scripts/integrate.py · expected `evidence/T-003_integration/integration_return.json`.
+
+### T-003 return — 2026-09-15
+
+- **Outcome:** COMPLETE.
+- **Evidence:** WI-065 implementation checkpoint `48b65159`; `evidence/T-003_integration/integration_return.json` and native producer outputs (unpinned; no native digest until study preparation checkpoint).
+- **Reading:** All10 native gates return CANDIDATE pin `6e427038e8515501e9c42c39823f85e3b0bcbd9f54f830b2779a792851f02551`. The package is reproducible and baseline/oracle/predicates agree. The native return explicitly says its read-set coverage check was not run; this inherited seam limitation is not promoted to covered evidence.
+- **Decision:** Native candidate released · promote this one pin for a diagnostic study that separates source-profile assumptions from machine geometry · execution detail · coordinator · T-004.
+
+### T-004 scope
+
+- **Objective:** Revisit matched reference and named rejection cases with the clarified account and quantify conditional heat-load requirements separately from physical geometry responses.
+- **Why now:** T-003 supplies a verified candidate; source and implementation reviews establish permitted interpretations and limitations.
+- **Scope:** One native prepared-list diagnostic study, max40 unique points; proposed27, all20 predicates and unchanged limits; no physical-area knob, model change, loop resizing or forced feasible search.
+- **Inputs:** `goal.md`; CANDIDATE pin above; `evidence/study-brief.md`; matched entering controls at `25f9ce82`/`48b65159`, independent source and implementation reviews.
+- **Done when:** A frozen native study with all-point/stratified checks, entering attribution, explicit conditional consequences and recoverable findings supports an executor reading.
+- **Stop when:** Prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-004 start — 2026-09-15
+
+T-004 · native run-study workflow · expected `exploration/stellarator_e2e/studies/20260915-divertor-heat-account/record.md` and frozen artifacts.
+
+### T-004 delegation — 2026-09-15
+
+[AGENT] Continuing research author `/root/divertor_research` receives the self-contained study brief and owns only the new study directory plus its first-sighting discovery rows. It is an executor, not an independent administrator. Coordinator owns existing-finding dispositions and goal answer; the fixed reviewed interface and disjoint write ownership permit this parallel work. Protocol/window release precedes native case execution; final review follows the frozen record.
