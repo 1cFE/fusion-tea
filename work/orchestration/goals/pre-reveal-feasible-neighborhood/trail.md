@@ -53,3 +53,33 @@ MECHANICAL_FAILURE before any model evaluation: repository import succeeded, but
 ### T-002 start — 2026-09-17
 
 Mechanical retry2 of2: identical baseline/inputs using documented repository and sealed TEAx import paths. Any further mechanical failure ends this task past cap.
+
+### T-002 return — 2026-09-17
+
+COMPLETE. Native study and its snapshot are committed at1394d43d1cfd362dfa608225455c823bf977e632; executor synthesis reads that immutable record. Evidence: `exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/record.md@1394d43d1cfd362dfa608225455c823bf977e632`, report.md, snapshot.json and results/ under that same revision; result assurance in evidence/independent-review.md. No physical equation, model default, comparison rule or archive byte changed.
+
+Finding: a valid sampled neighborhood survives generated execution and independent checks. Decision: answer the bounded question positively while preserving narrow margins and engineering/breeding/cost limits. Reason: two-sided individual, integer and combined tests distinguish a neighborhood from an isolated boundary point. Tier: execution detail. Decider: coordinator; independently checked by /root/reviewer. Changed: native study, answer.md and dispositions.md only.
+
+Finding: the unmodified generic strict verifier refuses the known near-zero r2 current margin and emits no official summary. Decision: preserve its original log/refusal and use the separately labeled all-point comparison with explicit exceptions, as declared before execution. Reason: the owner required this discrepancy to survive; no raw failure or tolerance changed. Tier: execution detail within adopted boundary scope. Decider: coordinator, independently accepted by /root/reviewer. Changed: native generic-verification-refusal.json and local verification_summary.json; tool/model none.
+
+Finding: native record checks initially rejected discovery-row formatting because its parser requires spaces after table pipes. Decision: format only this study's new uncommitted rows; reason: preserve the exact finding joins. Tier: execution detail. Decider: coordinator. Changed: DISCOVERY_LOG.md formatting only; all three targeted record checks then pass. No model call was repeated.
+
+### Checkpoint C-001.r1 — 2026-09-17
+
+Reviewer: /root/reviewer, same fresh non-author from the bounded briefs. Reading: native report/record plus goal answer. Dispositions: dispositions.md, five current and nine inherited finding IDs. Verdict: PASS for scientific conclusions and declared-seam routing, with remaining committed-artifact/trail checks deferred to final round review. Revision: first submission; no corrective scientific revision. Reused coverage: all-point store/numeric/predicate/plot/control checks and eight fresh oracle comparisons in evidence/reviewer-checks.json. No semantic follow-up execution is authorized or needed.
+
+### Round 1 result — 2026-09-17
+
+Intent: met, subject to final publication/trail assurance. Task sequence: T-001 COMPLETE; T-002 two pre-evaluation MECHANICAL_FAILURE returns followed by successful final permitted attempt and COMPLETE. Last semantic outcome: COMPLETE with a valid native study reading. Stop reason: valid study reading plus supported answer → round closes; the goal remains formally grounded and owner-held. No second round is needed.
+
+Evidence refs: `exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/record.md@1394d43d1cfd362dfa608225455c823bf977e632` and snapshot/report/results at that revision; executor synthesis.md is a new reading of that committed record, unpinned until final publication. Scientific review coverage: evidence/independent-review.md and reviewer-checks.json; final assurance checks only the remaining publication/trail/disposition work.
+
+Proposed learning delta: L-001, current exact-profile geometry/operating choices admit a conditional sampled neighborhood; L-002, simultaneous field and heating/divertor limits explain its narrow local band; L-003, preserving exact current-boundary signs and achieved-breeding/cost gaps is essential to interpreting a model-screen pass. No physical qualification, global optimum or comparison repair is proposed.
+
+Finding dispositions: dispositions.md routes all five current and nine inherited IDs through appended DISCOVERY_LOG.md rows. Earlier negative coverage and source-conditioning meanings survive. Missing engineering remains a declared seam owned by a future owner decision, not an unassigned executable task. Formal closure, reveal and replacement freeze remain reserved.
+
+### Round 1 review — 2026-09-17
+
+Reviewer: /root/reviewer, continuing fresh non-author; final verdict PASS in evidence/independent-review.md. Reused scientific evidence: prior source/axis review, all native/store/numerical/plot/control checks and eight fresh oracle comparisons. Final coverage verifies508 snapshot hashes and514 retained files against1394d43d1cfd362dfa608225455c823bf977e632, source/runtime continuity, budget/retry accounting, task fidelity, all fourteen finding joins, executor reading and the three learning claims. No new oracle/native calls or semantic changes occurred.
+
+Learning delta: accept L-001–L-003 into learnings.md. Remaining uncertainty is the reported model/source/engineering/economic scope, not unfinished execution under this campaign. No further round or model change is proposed. Recommendation: owner may formally close this answered goal and separately decide reveal; r2 remains unchanged and ARIES sealed. No merge or push.
