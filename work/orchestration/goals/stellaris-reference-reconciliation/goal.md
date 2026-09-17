@@ -2,6 +2,8 @@
 
 ## Status
 
+Closed by owner on 2026-09-17; see the closure amendment below.
+
 Grounded 2026-09-16. [OWNER] The initiating request supplies the question, evidence, acceptance and autonomous execution authority. The owner additionally authorized choosing the goal name without a pause.
 
 ## Question
@@ -60,3 +62,7 @@ Tracked evidence below is cited at entering commit `c1b853ad80d3aefa2fc98ce45288
 [INHERITED: GOAL_RUNBOOK.md] Owner closes after the reviewed technical answer meets the contract or explicitly accepts a narrower result. Autonomous pursuit continues without routine handbacks.
 
 ## Amendments
+
+### Amendment 2026-09-17 — amends Status and Close rule
+
+[OWNER-VERBATIM] "ok please close the goal". The owner closes the goal on the independently reviewed conditional-reconstruction and explained-unresolved-deviations outcome recorded in `answer.md` and `evidence/final-review.md` at `22e56339`. This closes the goal without changing its scientific conclusions, unresolved limitations or historical comparison freeze. No holdout reveal, merge or push is authorized.

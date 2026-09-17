@@ -1,5 +1,7 @@
 # Stellaris reference reconciliation — technical answer
 
+[OWNER] Goal closed on 2026-09-17 following independent PASS, on the conditional-reconstruction and explained-unresolved-deviations outcome. See the closure entry in [trail.md](trail.md).
+
 [AGENT] The current reference does **not** reproduce one coherent published Stellaris plant. It combines published anchors with generic geometry, a perpendicular-field conductor reconstruction, forward plasma/divertor calculations and an alternative helium-primary cooling system. The reconciliation corrects source attribution and implements explicit reconstruction scenarios. It explains the remaining failures; it does not establish published-reference feasibility.
 
 ## What changed
@@ -43,4 +45,4 @@ Final independent assurance is recorded in [final-review.md](evidence/final-revi
 
 The existing archive is unchanged: SHA256 `fdf6e14572f10c9254df1e297394f9eccb0060e3947283ea0f8cf569fc63f533`. No reveal, merge or push occurred. A replacement freeze must explicitly choose its plasma profile/geometry and current-sizing mode, preserve the exact boundary diagnostic, include the repaired oracle map and applicability report, and rerun its input/accounting/execution checks. It cannot inherit a claim of published-reference feasibility from this work.
 
-A source-faithful plant qualification requires dimensioned local pack/casing/manufacturing data, exact conductor construction and local field-angle capacity, supported divertor geometry/transport transfer, and separate water-blanket/helium-first-wall thermal and hydraulic circuits. Those capabilities are essential for that stronger claim; explained unresolved deviations satisfy this goal's permitted outcome. Formal goal close remains owner-held.
+A source-faithful plant qualification requires dimensioned local pack/casing/manufacturing data, exact conductor construction and local field-angle capacity, supported divertor geometry/transport transfer, and separate water-blanket/helium-first-wall thermal and hydraulic circuits. Those capabilities are essential for that stronger claim; explained unresolved deviations satisfy this goal's permitted outcome.

@@ -176,3 +176,7 @@ The final reviewer narrows proposed learning L-002: exact source profiles reduce
 **Learning delta:** Accept L-001 and L-003; accept only the narrowed L-002 from the final amendment. Appended to `learnings.md` in those forms. **Remaining uncertainty:** Source-qualified local geometry/conductor/divertor/coolant and costs remain unresolved; sixteen native scalars unmapped, historical current-boundary discrepancy, eight reproduced inherited consumer failures, static L2/L6 residue, native read-set omission and conductor acquisition queue are disclosed. These limit claims, not completion of this permitted outcome.
 
 **Recommendation:** Technical answer complete; no further scientific task or round is needed within this contract. Owner-held formal goal close and any new comparison freeze remain separate. No reveal, merge or push occurred. Scope correction and prerequisite repair are fully recorded; no limit was exceeded and no required review was replaced by self-certification.
+
+### Owner closure — 2026-09-17
+
+[OWNER-VERBATIM] "ok please close the goal". **Decision:** Close the goal on the reviewed conditional-reconstruction and explained-unresolved-deviations outcome. **Trigger/evidence:** Completed technical answer and final independent PASS at `22e56339`. **Tier:** reserved gate. **Who:** owner. **Changed:** `goal.md` closure amendment, `answer.md` closure status and the current-work pointer. Scientific results, limitations and the historical comparison freeze remain unchanged. No new round, reveal, merge or push is authorized by this closure.
