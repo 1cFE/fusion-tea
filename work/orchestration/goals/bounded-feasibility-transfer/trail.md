@@ -132,3 +132,10 @@ T-003 · frozen study reading and goal interpretation · native coverage erratum
 - **Learning delta:** L-001–L-003 accepted with corrected finite-sample scope; appended to learnings.md below this assurance boundary.
 - **Finding dispositions:** Corrected current #1, remaining #2–#5 and 42 prior dispositions accepted. Coordinator publishes joined preservation/correction rows without scientific follow-up. No prior first sighting is edited.
 - **Next:** Technical objective answered. Owner-held formal goal close recommended on the bounded-negative/conditional-transfer outcome; reveal remains separate. No further technical correction required.
+
+## Goal close — 2026-09-16
+
+- **Authority:** [OWNER-VERBATIM] “ok please close the goal”.
+- **Decision:** Close `bounded-feasibility-transfer` on the reviewed answer and corrected coverage at `53338f04`, retaining the frozen numerical study at `a16e7256` and independent Round 2 PASS at `53338f04`.
+- **Outcome:** Bounded negative feasibility result, conditional design-point transfer contract and remaining pre-reveal preparation accepted as the completed goal outcome. No global infeasibility or technology qualification is inferred; the nine-point protocol correction remains explicit.
+- **Recorded changes:** Goal status, answer closure note and project context updated. Administrative closure requires no new round, study or model change. ARIES remains sealed.

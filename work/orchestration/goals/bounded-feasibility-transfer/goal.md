@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — 2026-09-16. [OWNER] Requested grounding and pursuit, supplied evidence and answer contract, and delegated slug choice. [AGENT] Slug: `bounded-feasibility-transfer`.
+`closed` — 2026-09-16. [OWNER] Authorized closure after the independent Round 2 PASS; see the dated amendment below. [AGENT] Slug: `bounded-feasibility-transfer`.
 
 ## Question
 
@@ -58,3 +58,7 @@ Tracked paths below are cited at `a3ea15e88ee6c48de44d5880751636e7c9615776` (ent
 [INHERITED: runbook] Owner closes after reviewing the bounded result, transfer contract and readiness assessment with required independent coverage. An evidence-supported negative result is acceptable.
 
 ## Amendments
+
+### Amendment 2026-09-16 — amends Status
+
+[OWNER-VERBATIM] “ok please close the goal”. The owner authorizes formal closure on the bounded-negative/conditional-transfer outcome in `answer.md@53338f04`, with independent acceptance in `evidence/round2-review.md@53338f04`. The corrected search scope, remaining comparison preparation and engineering limitations remain as recorded. ARIES reveal remains separate.
