@@ -1,6 +1,6 @@
 # Learnings: Pre-reveal feasible neighborhood
 
-No accepted learning yet; append after independent round review.
+L-001–L-003 were accepted by the independent Round 1 review; the owner formally closed the goal on 2026-09-17. See [trail.md](trail.md).
 
 ## L-001 — The current exact-profile model admits a conditional sampled neighborhood
 

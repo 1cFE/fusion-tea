@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — 2026-09-17. Owner confirmed this slug and authorized grounding/execution in the initiating request. Detailed campaign choices retain agent provenance, adopted for this run.
+`closed` — 2026-09-17, by owner authorization recorded in the amendment below. Detailed campaign choices retain agent provenance, adopted for this run.
 
 ## Question
 
@@ -67,4 +67,6 @@
 
 ## Amendments
 
-None.
+### Amendment 2026-09-17 — owner closure
+
+[OWNER-VERBATIM] “ok please close the goal”. [OWNER] Goal formally closed on the independently reviewed sampled-neighborhood answer. Evidence: study `1394d43d1cfd362dfa608225455c823bf977e632`, reviewed answer and dispositions `c2bd8be4`, and final Round 1 assurance in `evidence/independent-review.md`. The bounded answer and its engineering, breeding and cost limitations remain unchanged. Reveal and replacement of the comparison freeze remain separate owner decisions.
