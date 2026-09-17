@@ -1,0 +1,138 @@
+In the model, we prescribe the following main plasma
+parameters (for a deﬁnition of the different quantities, see
+[6]:
+•
+normalized pressure bN, related to ideal MHD stability,
+•
+safety factor q95, related to the plasma current
+•
+normalized conﬁnement time H = sE/sE,ITER98p, assum-
+ing that conﬁnement scales similar to the ITER H-mode
+scaling
+•
+normalized density fGW = n/nGW.
+Together with the machine geometry parameters, major
+radius R,1 aspect ratio A and toroidal magnetic ﬁeld B,
+these allow the calculation of fusion power Pfus, radiation
+losses Prad and auxiliary power needed to sustain the power
+balance or current drive power PCD needed to drive the
+difference between total current and bootstrap current, i.e.
+for fully non-inductive operation.
+The formula for the fusion power used previously
+assumed a quadratic dependence on bN, i.e. a scaling with
+n2T2. It is well known that the T2 dependence of the
+reactivity RDT is only valid in the temperature range around
+10–20 keV. Since FPP designs often exceed this tempera-
+ture, we use the ﬁt formula derived for RDT in [7], divided
+by T2, so that the equation for the fusion power becomes
+Pfus ¼ c1 1  2fHe  ZXefXe
+ð
+Þ2b2
+N
+RDT
+T2
+B4R3
+q2
+95A4
+ MW; keV; 1020m3; T; m
+
+
+ð1Þ
+The function RDT/T2, normalized to its maximum value,
+is shown in Fig. 1. Chosing T = 1.3 Tave, where Tave is the
+volume averaged temperature derived via
+Tave ¼
+1
+c3c5
+2
+2  fHe  ZXe  1
+ð
+ÞfXe
+bN
+B2
+Aq95ne
+;
+ð2Þ
+we can reproduce well the fusion power for the three
+machines studied in [6], i.e. the model is suited well for the
+kinetic proﬁle shapes used in [6]. On the other hand, we
+benchmarked the model to ARC [5] and found that we had
+to increase the coefﬁcient c1 by a factor of 1.3, which could
+be explained by the relatively broad temperature proﬁles
+used in [5] as compared to the cases in Table 1 as well as
+the different shape of the poloidal cross section.
+In Eqs. (1) and (2), we have accounted for the dilution
+due to Helium ash and the Xenon seed impurities which are
+assumed to be injected to increase the radiation from inside
+the separatrix (no other impurities are considered in this
+work). Both densities are normalized to the electron den-
+sity, i.e. fHe = nHe/ne and fXe = nXe/ne. The quantity ZXe is
+the average charge state of Xenon in the core plasma (He is
+fully ionized under these conditions). We note that we do
+not correct the heating power for the radiation losses,
+motivated by the ﬁnding that for stiff temperature proﬁles,
+conﬁnement is hardly affected by radiation losses as long
+as Prad(r) does not overlap with Pfus(r) [8], which is the
+case for Xenon for typical proﬁles in reactor grade devices
+that tend to be peaked off-axis [8].
+The radiation model used in [6] was very simplistic,
+assuming a direct scaling of the radiated power with Zeff. In
+the new version, we explicitly separate the Bremsstrahlung
+PBr ¼ 5:35  103GZeff n2
+e
+ﬃﬃﬃﬃﬃﬃﬃﬃ
+Tave
+p
+V
+ð3Þ
+where G is the Gaunt factor (set to 1.1 in this work), V is
+the plasma volume and the average charge is calculated as
+Zeff ¼ 1 þ 2fHe þ Z2
+Xe  ZXe
+
+
+fXe:
+ð4Þ
+As mentioned above, Xe is used as seed impurity used
+for controlling the core radiation and assumed to dominate
+the impurity radiation so that no other impurity is consid-
+ered. The line radiation due to Xe is inferred using the
+radiative potential LZ(T):
+Pline ¼ fXen2
+eLXe T
+ð ÞV:
+ð5Þ
+For the cases treated in [6], which employed Xe as seed
+impurity, it was found that the main radiation comes from
+the zone where 10 keV \ T \ 15 keV, for which we can
+use LXe = 370 MW m3 and ZXe = 50. Finally, the syn-
+chrotron radiation is evaluated as
+Psyn ¼ 1:32  107 BTave
+ð
+Þ2:5
+ﬃﬃﬃﬃﬃﬃﬃ
+Ane
+R
+r
+1 þ
+18
+A
+ﬃﬃﬃﬃﬃﬃﬃﬃ
+Tave
+p
+
+
+V
+ð6Þ
+according to [9], using a wall reﬂectivity of 0.8. The total
+radiation Ptot is calculated by summing up the three con-
+tributions (3), (5) and (6). We determine fXe by the criterion
+that the power across the separatrix exceeds the L–H
+threshold power by a factor fLH
+Fig. 1 The function RDT/T2 used to correct the reactivity from the
+simple T2 scaling
+1 Plasma shape is assumed to be that of ITER so that the volume can
+be calculated as V = VITER (R/6.2 m)3/(A/3.1)2.
+4
+Journal of Fusion Energy (2019) 38:3–10
+123

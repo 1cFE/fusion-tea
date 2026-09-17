@@ -1,0 +1,98 @@
+J. Lion et al.
+Fig. 26. Visualization of the chosen first wall geometry, which leaves sufficient space
+for the divertor target plates crossing the magnetic islands, shown here in different
+colors for qualitative distinction. The chosen first wall geometry is the same across all
+analyses in this paper.
+magnetic islands that are used for the island divertor solution, and is
+shaped to maximize the breeder volume outside of it (see Fig. 26 for a
+visualization of the geometry).
+While multiple first wall concepts for stellarators are currently being
+explored, we select a straightforward approach for this analysis: a solid
+EUROFER97 wall with a 2 mm-thick tungsten armor serving as the
+plasma-facing surface. This choice is justified by the low loss of fast
+particles, as demonstrated in Fig. 6, which permits the use of a solid
+wall rather than more complex designs—such as those requiring liquid
+walls to handle highly localized heat loads due to significant losses of
+fusion-born 𝛼particles.
+The first wall in this design incorporates several rectangular cooling
+channels running in the toroidal direction, utilizing pressurized helium
+gas as the primary coolant. We simulate helium at 8 MPa with an inlet
+temperature of 350 ◦C; the helium’s outlet temperature is computed
+dynamically and is below 370 ◦C. Here inlet temperature refers to the
+temperature at the front of the first wall; similarly, the outlet temperature
+is the temperature of the helium after flowing along the plasma-facing
+side. Our study does not take into account the other two sides of
+the first wall module. The conceptual dimensions of this first wall
+design are illustrated in Fig. 27. Although an interlayer between the
+EUROFER97 and tungsten layers will be included in the actual design,
+it is omitted from our model due to its negligible impact on the overall
+temperature distribution.
+It is important to note that the feasibility of this manufacturing
+process will be the focus of subsequent studies. However, we empha-
+size that the helium-cooled lithium lead (HCLL) blanket design serves
+as a precedent, indicating the potential practicality of our proposed
+approach.
+In estimating the first wall temperature, we begin by calculating the
+heat loads consistent with the design point outlined in Section 2.3 and
+100% radiation of the heating power. The radiation source is divided
+into two parts: core radiation and edge radiation.
+First, core radiation is computed using the ‘0.5D-profiles’ introduced
+in Section 2.3, considering contributions from Bremsstrahlung, tung-
+sten impurity radiation, and synchrotron radiation. For edge radiation,
+we model a Gaussian profile centered around 𝜌= 1 (discarding any
+emission at 𝜌 > 1) to represent line radiation from partially ionized
+impurities, such as Argon or Krypton [239]. These impurities would
+need to be injected into the plasma to enable significant radiation of the
+core heating power, facilitating a radiating edge and achieving divertor
+detachment. Fig. 28 illustrates the combined emission region in one
+cross section of the plasma from both core and edge as assumed and
+calculated for the first wall power estimates.
+Fig. 27. Cross section at constant toroidal angle through the first wall design as used
+for the FEM analysis in this section. Actual dimensions are 𝐻= 12 mm, 𝑊= 12 mm,
+𝑤= 5 mm, 𝐿= 27 mm, 𝑑= 3 mm, ℎ= 5 mm. Channel cross sections are square in our
+study for ease of modeling, but would be rounded in the actual wall. The wall section
+in our model is a single strip wrapping around the poloidal direction, mainly due to
+the fact that we have not fixed a tile design yet. This is not fully realistic, but it allows
+us to perform a reliable analysis. The sector is defined by the toroidal angle and the
+channels follow the parametrization of the surface, meaning they are not all the same
+length, but they are all around one meter long.
+Fig. 28. Cross section through the plasma illustrating emission from both the plasma
+core (green color legend) and edge (red color legend).
+The first wall is also subjected to a volumetric heat load due to
+neutrons produced by fusion reactions in the plasma. We include this
+aspect in our model and simulations by incorporating the power density
+data presented in the later Section 2.8, visually represented in Fig. 37.
+We determine the peak temperatures in the first wall using a two-
+step process. First, to calculate the heat load on the first wall, we follow
+the method suggested in [240], where the first wall power density, 𝑝𝑊,
+is obtained by integrating over a source volume 𝑉:
+𝑝𝑊= ∫𝑉
+𝜙𝑠
+4𝜋‖⃗𝑟𝑊−⃗𝑟𝑆‖2
+(
+⃗𝑛⋅
+⃗𝑟𝑊−⃗𝑟𝑆
+‖⃗𝑟𝑊−⃗𝑟𝑆‖
+)
+𝑑 𝑉 .
+(7)
+Here, 𝜙𝑠is the local emission; ⃗𝑟𝑆is the position vector of the source;
+⃗𝑟𝑊is the position vector to the wall; and ⃗𝑛is the normal vector of the
+wall.
+To implement this method, a regularization is necessary. We choose
+to set the heat flux from a volume element on a surface area to zero
+if the distance exceeds a characteristic length for the machine; in this
+case, 8 m, since for the chosen configuration, this is a clear upper bound
+on the distance between two points that have a direct line of sight to
+each other. When computing the integral in Eq. (7) numerically, we set
+the integrand to zero for contributions that satisfy
+(
+⃗𝑛⋅
+⃗𝑟𝑊−⃗𝑟𝑆
+‖⃗𝑟𝑊−⃗𝑟𝑆‖
+)
+< 0.
+We verified a posteriori that this algorithm works effectively, as the
+total emitted power from the LCFS and the total absorbed power by
+Fusion Engineering and Design xxx (xxxx) xxx 
+16 

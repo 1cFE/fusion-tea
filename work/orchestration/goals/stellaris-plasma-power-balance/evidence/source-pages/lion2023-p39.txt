@@ -1,0 +1,55 @@
+2.2. Plasma Physics Systems Code Models
+The surface area of a flux surface can be calculated by
+̂𝑆(ℭ) = ∫|∇𝑠|√𝑔𝑑𝑢𝑑𝑣,
+= ∫
+2𝜋
+0
+∫
+2𝜋
+0
+[𝑅2(𝜕𝑢𝑧)2 + 𝑅2(𝜕𝑢𝑅)2
++ (𝜕𝑣𝑅𝜕𝑧𝑢−𝜕𝑣𝑧𝜕𝑢𝑅)2 ]
+1
+2 𝑑𝑢𝑑𝑣.
+(2.4)
+√𝑔is the Jacobian determinant and |.| is the Euclidean norm. The values
+̂𝑉(ℭ) and
+̂𝑆(ℭ) are calculated in the pre-processing step for a reference point in major radius
+̂𝑅and minor radius
+̂𝑎. Again, hatted values here refer to the values at the reference
+design point. Within Process, the plasma volume and surface area is then simply
+obtained by the following scaling equations,
+𝑉=
+̂𝑉(ℭ)𝑅
+̂𝑅
+𝑎2
+̂𝑎2 , 𝑆=
+̂𝑆(ℭ)𝑅
+̂𝑅
+𝑎
+̂𝑎.
+(2.5)
+2.2.2. 0D-Transport
+The temperature and density profile shapes for the electrons are input parameters in
+Process and, for stellarators, are specified using the parametric form
+𝑇𝑒(𝜌) = 𝑇0(1 −𝜌2)𝛼𝑇,
+(2.6)
+𝑛𝑒(𝜌) = 𝑛0(1 −𝜌2)𝛼𝑛.
+(2.7)
+Process implements the ion profiles as (user defined) multiples of the electron
+profiles.
+It should be noted that the imposed profile shapes are not per se consistent with
+the implied heating schemes or transport properties. However, in practice, the profile
+shapes can be determined by transport simulations independent of the systems code.
+Results from such simulations can then be used as input for Process, e.g. in profile
+shapes or heating source.
+The 0D-transport model in Process imposes a power balance as an equality
+constraint,
+𝑝Loss
+!= 𝑝heat.
+(2.8)
+The left hand side represents the volume averaged loss power density from confinement
+loss 𝑝conf
+Loss, from bremsstrahlung 𝑝Br, line radiation 𝑝Line and synchrotron radiation
+𝑝Sync. The right hand side includes heating from fusion alphas 𝑝𝛼, a term of charged
+31

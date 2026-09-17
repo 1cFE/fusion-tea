@@ -1,0 +1,123 @@
+Nucl. Fusion 61 (2021) 126021
+J. Lion et al
+Figure 2. The workflow of the pre-calculation step: a configuration
+C (coil filaments and flux surfaces) is assumed as input from
+stellarator optimization. A set of Process relevant parameters ai is
+calculated based on a reference point C, which Process uses to
+calculate and optimize an iteration vector x for a reactor
+design point, according to an objective function f and according to
+the applied constraints. The found design point can be used again as
+feedback for stellarator optimization.
+detailed calculations. An example here would be the compu-
+tation of the maximal coil force density f max(C) as effective
+parameter from 3D calculations for a reference coil set. In this
+example the scaling of f max within the systems code then is
+a linear scaling law in Bmax and the current density j, both
+parameters that the systems code optimizes for.
+We implement the systems code models in a way that
+they reflect extrapolations of the reference point C in the
+following macroscopic design parameters: the major over-
+all size of the machine (coil and plasma size), the minor
+plasma radius a at constant coil radius, and the total magnetic
+field strength on axis Bt. For the plasma design, the imple-
+mented scaling parameters are the plasma density, tempera-
+ture, and the ISS04 ‘renormalization’ factor (a measure for the
+configuration-dependent quality of energy confinement [21]).
+The stellarator-Process version is capable of optimizing for
+devices by scaling these parameters as a part of the optimiza-
+tion vector now. In addition to the above listed set of iteration
+parameters, Process also optimizes in the engineering param-
+eter design space, with the ‘usual’ parameters such as winding
+pack size, coil quench times, critical current density safety
+margins in the superconductor,copper fractions in the winding
+pack, net electricity output, etc, also see [8, 9].
+Note that by this prescription the coil number and the coil
+shapes are considered fixed by stellarator-Process and only the
+overall size of the coils is scaled. A broader device scan in
+different stellarator configurations or different coil-sets can be
+done by sampling different configurations C using stellarator
+optimization codes.
+3. Models
+Below, we introduce the newly developed stellarator-specific
+systems code models that aim to describe a general class of
+stellarators with a modular coil set, irrespective of their shape.
+The stellarator modifications to Process are comprehensive in
+the sense that they allow an equivalent modeling stellarators
+compared to the tokamak treatment [8, 9].
+For each model we describe both the external procedure
+of calculating the effective parameters as well as the systems
+code internal scaling equations. The effective parameters that
+are calculated in the external step are distinguished into two
+categories. The first type are configuration-specific quantities,
+that are used directly in follow up calculations and these are
+denoted by ai(C). The second type of parameters are those that
+are calculated as a reference point for the scaling equations and
+these are denoted as hatted values, ˆai(C), where C represents
+the configuration stemming from stellarator optimisation (3D
+MHD equilibrium and associated coil filaments).
+3.1. Plasma volume and surface
+The plasma volume V and the plasma surface area S are basic
+properties in Process. For example, subsequent calculations of
+the fusion power, fuelling rates, or material loads depend on
+the plasma volume. Similarly, the surface area is an important
+quantity to approximate the first wall area and to scale the heat
+flux densities.
+The spatial location of stellarator-symmetric flux surfaces
+can be parameterized by a set of Fourier coefficients Rc
+m,n and
+Zs
+m,n, where m and n are the poloidal and toroidal mode num-
+bers respectively. The cylindrical coordinates for each flux
+surface can be obtained by
+R(s, u, v) =
+mmax
+
+m=0
+nmax
+
+n=−nmax
+Rc
+m,n(s) cos(mu −Nfnv),
+(1)
+Z(s, u, v) =
+mmax
+
+m=0
+nmax
+
+n=−nmax
+Zs
+m,n(s) sin(mu −Nfnv).
+(2)
+Here, u describes a poloidal coordinate, v
+the polar
+toroidal coordinate, and s is a flux surface coordinate [22].
+Equations (1) and (2) hold for stellarator symmetric config-
+urations with a field period symmetry of Nf.
+The volume enclosed by the last closed flux surface can be
+calculated for a reference size (ˆR, ˆa) according to
+ˆV(C) =
+ √gds du dv
+= 1
+3
+ 2π
+0
+ 2π
+0
+R (z∂uR −R∂uz) du dv.
+(3)
+The surface area of a flux surface can be calculated by
+ˆS(C) =
+
+|∇s|√gdu dv
+=
+ 2π
+0
+ 2π
+0
+
+R2(∂uz)2 + R2(∂uR)2
++ (∂vR∂zu −∂vz∂uR)2 1
+2 du dv.
+(4)
+3

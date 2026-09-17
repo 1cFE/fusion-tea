@@ -1,0 +1,56 @@
+Appendix A. 0D-Power Balance
+with parameters 𝑎= 5.355 ⋅10−3, 𝑏= 2.4 ⋅10−2, and 𝑐= 14. Here the non-relativistic
+expression for the bremsstrahlungs losses is taken, e.g. from [296]. Now, 𝑇≡𝑇[keV],
+𝑛≡𝑛[1020m−3], ⟨𝜎𝑣⟩≡⟨𝜎𝑣⟩[1020m3/s]. To resolve the helium fraction 𝑓He, one
+introduces the alpha particle balance equation,
+1
+4𝑛2𝑓2
+𝑖⟨𝜎𝑣⟩𝑇= 𝑛He
+𝜏⋆𝛼
+= 𝑛𝑓He
+𝜌𝜏𝐸
+,
+(A.5)
+⇒𝑛𝜏𝐸=
+4𝑓He
+𝜌(1 −𝑍𝑓𝑧−2𝑓He)2⟨𝜎𝑣⟩𝑇
+,
+(A.6)
+where we have used 𝑓𝑖= 1 −𝑍𝑓𝑧−2𝑓He and 𝜌≡
+𝜏⋆𝛼
+𝜏𝐸. Solving this for 𝑓𝐻𝑒gives:
+𝑓𝐻𝑒= 1 + 𝑓𝛼𝑛⟨𝜎𝑣⟩𝑇(1 −𝑍𝑓𝑍)𝜌𝜏𝐸± √1 −2𝑓𝛼𝑛⟨𝜎𝑣⟩𝑇(𝑍𝑓𝑍−1)𝜌𝜏𝐸
+2𝑓𝛼𝑛⟨𝜎𝑣⟩𝑇𝜌𝜏𝐸
+,
+(A.7)
+where only the + root is of physical relevance. This expression can be substituted
+into the energy balance equation Equation A.4.
+To extrapolate to a reactor, one can use the ISS04 inter-machine scaling, which
+reads [95]
+𝜏𝐸= 0.134 𝑓ren𝑎2.28𝐵0.84𝜄0.41
+2/3 𝑛0.54
+19 𝑅0.64𝑃−0.61.
+(A.8)
+Rewriting 𝑃in terms of 𝑇, 𝑃= 𝑊/𝜏𝐸, where 𝑊is the plasma energy, one arrives at
+𝜏𝐸= 0.152 𝑎2.78𝐵2.15𝑓2.56
+ren 𝜄1.05𝑅0.113𝑛−0.18𝑇−1.56,
+(A.9)
+which is a useful expression for 0D exploratory studies.
+This expression can be used in Equation A.4, together with Equation A.7. Of this,
+then algebraically lengthy expression, lines of constant fusion gain 𝑄, constant heat
+flux densities or other quantities can be extracted and plotted. This was shown in
+particular in Figure 4.8.
+For this plot, in addition the ‘Sudo Radiation Collapse Zone’ was extracted. The
+maximum density achievable in a stellarator is set by the power balance, which can
+be understood on the basis of transport modelling (including radiation effects). Such
+a limit was expressed in terms of engineering (machine) parameters for W7-AS as
+𝑛𝑒,𝑝𝑟𝑒𝑑= 1.462 𝑝[MW/m3]0.48 𝐵[T]0.54,
+(A.10)
+where 𝑝is the volume-averaged loss power density. The so-called ‘Sudo’ limit of
+stellarators takes a similar form,
+𝑛𝑆𝑢𝑑𝑜= 0.25 (𝑃[MW]
+𝑅[m] )
+0.5
+𝐵0.5 𝑎−1,
+(A.11)
+144

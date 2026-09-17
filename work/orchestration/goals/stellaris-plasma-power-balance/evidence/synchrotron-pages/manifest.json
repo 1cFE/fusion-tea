@@ -1,0 +1,31 @@
+{
+  "source_url": "https://d-nb.info/1178904288/34",
+  "source_sha256": "a598bc99d8324346e99dcde2085f5e7a9c2dbb82f4a2458ab1dc8a85e7d5b9bc",
+  "report_sha256": "3f8d72a0e720a227cec73ee8a63f4b840f29e5c08fd21328d4c0ccc9f488834e",
+  "witnesses": [
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/synchrotron-pages/zohm-p1.png",
+      "sha256": "480a87f6e9fbc9cf847aeda0d06111f09ed988d20a3b5158f0e9e5da5ab3a70c"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/synchrotron-pages/zohm-p1.txt",
+      "sha256": "eb4f76bf8ca5f5c0f867bb7be5cd3942f6a00b03f702a57098b521e4fdaf6eb4"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/synchrotron-pages/zohm-p2.png",
+      "sha256": "40ee822921f1b314832784c779c62238d7bae36957800ff09a779e3a8307e92d"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/synchrotron-pages/zohm-p2.txt",
+      "sha256": "de7755c48642fe196f36d7d21db45d5347da4bfe195798a8cd3149fe939a7d19"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/synchrotron-pages/zohm-p3.png",
+      "sha256": "030ac5d66d3c37704bd0cbb2924c59be6fd2d8a1189c68359e6a1bec9aab8e8c"
+    },
+    {
+      "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/synchrotron-pages/zohm-p3.txt",
+      "sha256": "406534e5587afccf4cbcf4c9a2817004d880c2dd8259b54a33669f012d21f29c"
+    }
+  ]
+}

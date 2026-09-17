@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-STELLARIS-PLASMA-SYNC-01",
+  "request_key": "d3317acb6698b37ccc1b162a04b3246bbda4f83bdad8f2b750b964808ed84532",
+  "request_path": "knowledge/research/requests/REQ-STELLARIS-PLASMA-SYNC-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 2,
+    "max_captures": 2
+  },
+  "opened_at": "2026-09-17T14:21:47.781024+00:00",
+  "override_reason": null
+}

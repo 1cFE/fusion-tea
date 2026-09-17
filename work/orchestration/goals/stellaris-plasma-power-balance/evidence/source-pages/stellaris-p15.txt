@@ -1,0 +1,117 @@
+J. Lion et al.
+its ability to simulate bidirectional heat transport, allowing heat to
+travel both forward and backward along the magnetic field line at
+any point. In contrast, DFLT lacks this capability, which can result
+in underestimations of heat loads in magnetically shaded regions, as
+demonstrated in [228].
+Compared to higher fidelity models, such as the EMC3-EIRENE
+code [229], EMC3-Lite does not solve the Braginskii-like fluid equa-
+tions for the edge plasma or include a kinetic neutral model. EMC3-
+EIRENE has shown both qualitative and quantitative agreement with
+experimental data from W7-X [230,231]. Although currently not ideal
+for automated PFC design due to its computational cost and complexity,
+and therefore not utilized in this study, EMC3-EIRENE would be
+highly suitable for high fidelity modeling of devices like Stellaris, and
+can be harnessed to better characterize detachment under reactor con-
+ditions, further advancing the divertor concept. Despite its simplified
+approach, the EMC3-Lite model is expected to sufficiently cover the
+physics relevant to the distribution of non-radiated heat exhaust over
+the target plates [217,228]
+An important factor in calculating the heat loads on divertor plates
+is understanding the extent of edge radiation and the degree of de-
+tachment within the scrape-off layer (SOL). In this analysis, we assume
+that the reactor operates under conditions of strong edge radiation and
+nearly complete detachment, ensuring most of the heat flux is radiated
+away in the last layers of the confined plasma and within the SOL itself.
+Achieving stable detachment is critical, as it protects the divertor
+target plates from excessive heat loads. To facilitate this, an active con-
+trol system, likely involving a noble gas puff system, will be required.
+Stable detachment and control mechanisms in island divertors have
+already been demonstrated in the W7-X stellarator [42,232], as well as
+radiative edge cooling techniques [233,234]. Both of these mechanisms
+are expected to undergo further scientific investigation in W7-X.
+For this analysis, we assume that 90% of the net heating power in
+the plasma core is radiated before reaching the divertor region. This
+means that, for a total of 500 MW of heating power, the divertor must
+be capable of handling 50 MW. To accurately estimate the heat loads
+on divertor plates, two additional hyperparameters are critical: (1) the
+ratio of parallel to perpendicular transport, which depends on temper-
+ature and density, and (2) the perpendicular diffusion coefficient 𝜒⟂,
+representing turbulent cross-field transport. There remains considerable
+uncertainty in estimating appropriate values of these parameters. For
+the purpose of analyzing peak heat loads, we consider a lower bound of
+𝑇LCFS = 100 eV with 𝜒⟂= 3 m2 s−1 and an upper bound of 𝑇LCFS = 200 eV
+with 𝜒⟂= 1 m2 s−1, where temperature values at the Last Closed Flux
+Surface (LCFS) are taken as proxies to estimate the ratio of parallel to
+perpendicular transport. Obtaining more accurate estimates for these
+quantities should be a focus of future studies. The density was set to
+𝑛LCFS = 1019 m−3. Under these assumptions, our simulations indicate
+that the divertor plates in Fig. 23 capture 97% of the non-radiated
+heat for the lower parallel/perpendicular transport parameters (𝑇LCFS =
+100 eV and 𝜒⟂= 3 m2 s−1) and 99% for the higher transport parameters
+(𝑇LCFS = 200 eV and 𝜒⟂= 1 m2 s−1). The corresponding peak heat
+loads are simulated at 5 MW m−2 and 9.5 MW m−2, respectively. In the
+scenario with higher perpendicular transport, the divertor wetted area
+is broader, and therefore heat loads on the targets are lower, but more
+of the heat is also reaching the first wall. The simulated heat fluxes for
+the main target elements under the most pessimistic assumptions are
+illustrated in Fig. 25. These values remain below 10 MW m−2, which is
+a commonly applied threshold for steady-state heat fluxes in divertor
+designs [235]. This strike-line width is simulated to about 200 mm.
+It is crucial to emphasize that the obtained values strongly hinge
+on the assumed radiated power fraction, underscoring the importance
+of robust detachment control in the divertor region, and potentially
+additional edge radiation control using deliberate impurity seeding.
+Complexity of the design and simulations increases when considering
+transient heat flux limits. Such situations could arise during the start-up
+phase of Stellaris, before full detachment is achieved, or in operational
+Fig. 25. Simulated heat load patterns on the proposed divertor targets in the 45◦plane,
+using the code EMC3-Lite, for 𝑇LCFS = 200 eV and 𝜒⟂= 1 m2 s−1. The width of the
+strike line is approximately 200 mm.
+scenarios where detachment control is momentarily lost due to a failure
+mode. For instance, it has been reported that in W7-X the divertor
+plates experience significant heat loads during the initial seconds of a
+discharge, before detachment is established and the heat loads on the
+target plates effectively drop to zero [236]. As with the incorporation of
+additional functional requirements into the divertor design, evaluating
+transient heat loads is beyond the scope of this study and should be
+addressed in the future.
+In conclusion, this analysis serves as an initial step toward the
+development of a reactor-relevant island divertor concept for Stellaris.
+While this study primarily focused on the thermal management aspect
+of the divertor, the optimization of PFC arrangements to fulfill all
+exhaust requirements is an ongoing effort within the fusion community.
+We note that it is crucial to transfer the insights and lessons learned
+from the W7-X divertor to a new, fully integrated, reactor-relevant
+divertor design. Such a dedicated effort will be instrumental in bridging
+the gap between experimental findings and power plant applications.
+2.7. First wall
+In the previous section, we considered the importance of strong edge
+radiation to distribute a significant portion of the heat load across the
+first wall before charged particle heat fluxes reach the target divertor
+plates. The adopted operational scenario anticipates that approximately
+90% of the heat flux is radiated in the outer layers of the plasma and
+the SOL. In this section, we examine wall cooling capabilities. We adopt
+a more conservative approach, assuming that 100% of the heating
+power is radiated through core and edge radiation. This assumption
+is specifically geared toward estimating the maximum heat load on
+the first wall, which is critical for understanding peak temperature
+conditions.
+Our focus here is on a three-dimensional Finite Element thermal
+analysis. We do not delve into the subject of erosion by neutral parti-
+cles, which tends to be less significant in stellarators than in tokamaks,
+provided that the SOL thickness is adequately large [237]. In the
+Stellaris design, we ensure that the first wall is positioned at a mini-
+mum distance of 100 mm from the plasma. This spacing is expected to
+mitigate erosion rates, allowing us to limit the present investigation to
+thermal effects.
+For broader context, the most comprehensive overview of the first
+wall challenges in DEMO can be found in [238], though a comparable
+in-depth study for stellarators is yet to be published. This gap in the
+literature underscores the need for dedicated research into the unique
+first wall challenges posed by stellarator designs like Stellaris. In order
+to estimate the peak temperatures, we employ the same first wall geom-
+etry used in other sections of this paper, i.e., for divertor (Section 2.6)
+and neutronics (Section 2.8) simulations. The wall encloses the edge
+Fusion Engineering and Design xxx (xxxx) xxx 
+15 

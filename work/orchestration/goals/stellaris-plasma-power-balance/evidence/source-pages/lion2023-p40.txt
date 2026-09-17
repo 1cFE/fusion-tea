@@ -1,0 +1,59 @@
+Chapter 2. Stellarator Systems Code Models
+non-alpha particle heating 𝑝¬𝛼(e.g. in D-D fusion) and a term for auxiliary heating
+𝑝𝑎𝑢𝑥. Writing these expressions explicitly, Equation A.3 becomes
+𝑝conf
+Loss + 𝑝Br + 𝑝Line + 𝑝Sync
+!= 𝑓𝛼𝑝𝛼+ 𝑓¬𝛼𝑝¬𝛼+ 𝑝aux.
+(2.9)
+Here, 𝑓𝛼is the fraction of the alpha particle energy that is deposited in the plasma,
+which is an input parameter in Process and depends on the configuration. This
+factor will be discussed in more detail in subsection 2.2.4 and in section 3.1. Similarly
+𝑓¬𝛼accounts for the particle confinement fraction of non-alpha particles. Process’
+model for radiation losses (𝑝Br, 𝑝line, 𝑝Sync) is described in [135, 136]. For 𝑝conf
+Loss, Pro-
+cess uses the effective energy confinement time 𝜏𝐸to determine the effective power
+transfer
+𝑝conf
+Loss ≃𝑝scaling
+Loss
+≡𝑤
+𝜏𝐸
+,
+(2.10)
+where 𝑤is the volume averaged total plasma energy density which is obtained from
+the imposed profiles for particle species averaged density 𝑛and temperature 𝑇,
+𝑤= 3
+2 ∫
+1
+0
+𝑑𝜌√𝑔𝑛(𝜌)𝑇(𝜌).
+(2.11)
+In stellarators, 𝜌is usually chosen as the effective radius, which fulfils
+√𝑔∼𝜌.
+(2.12)
+The energy confinement time 𝜏𝐸is obtained via empirical scaling laws. The used
+scaling law for stellarators in Process is the so-called intermachine ISS04 scaling [95],
+𝜏ISS04
+𝐸
+= 0.134 𝑓ren𝑎2.28𝑅0.64
+0
+𝑛0.52
+𝑒
+𝐵0.84
+𝑡
+𝜄0.41
+2/3 𝑃−0.61,
+(2.13)
+where 𝑎is the minor radius, 𝑅0 is the major radius, 𝑛is the line averaged electron
+density, 𝐵𝑡the toroidal magnetic field, 𝜄2/3 ≡𝜄2/3(ℭ) is the rotational transform (at
+𝑠= 2/3), 𝑃is the combined effective plasma heating, and 𝑓ren is a proportionality
+factor that measures the magnetic configuration dependent deviation from the ISS04
+scaling law. In principle, 𝑓ren is determined by ℭdirectly, although a reliable a priori
+method of calculating this factor is not available up to date. Instead, Process can
+iterate 𝑓ren within user set boundaries and return a needed configuration factor for
+the optimised power plant design point. If sufficient data and sufficiently different
+configurations with data were available, it would seem possible to try to resolve a
+proportionality factor by finding a set of effective parameters that uniquely determine
+𝑓ren in such scaling laws, but the preconditions (sufficient available configurations)
+are not yet given for such an analysis.
+32

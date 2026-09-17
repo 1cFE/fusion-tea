@@ -1,0 +1,155 @@
+Prad fXe
+ð
+Þ !
+¼ Prad;required ¼ Pfus
+5 þ PCD  fLHPLH;
+ð7Þ
+assuming that PCD [ PAUX, i.e. always sufﬁcient to guar-
+antee burn. We note that by applying this procedure, the
+impurity seeding directly feeds back into PCD via the
+(5 ? Zeff) dependence of
+PCD ¼ c8c3c5c3
+7
+p2
+B
+q2
+95
+f 2
+GW
+bNA 5 þ Zeff
+
+
+1  C9
+ﬃﬃﬃ
+A
+p
+q95
+c4
+c3
+bN
+
+
+ð8Þ
+which means fXe has to be determined iteratively. As out-
+lined in [6], Eq. (8) assumes a generic RF current drive
+efﬁciency of the form PCD* n R/T and should hence be a
+good approximation for ECCD, but less well suited for
+NBCD.
+Exploration of High Field Solutions
+In this section, we apply the model described in the pre-
+vious section to study the possible parameter space of
+future reactor-grade tokamaks allowing high toroidal ﬁeld
+and neglecting, for the moment, the present technological
+limitations to the increase of the ﬁeld. The study will
+analyse different routes from present day experiments to
+reactor grade plasmas, namely the ITER Q = 10 scenario at
+low
+q95
+[10],
+a
+‘hybrid’-type
+steady
+state
+scenario
+demonstrated on ASDEX Upgrade [11] and DIII-D [12] at
+intermediate q95 as well as a lower q95 version proposed for
+the ‘stepladder’ in [6] and a high q95 variant demonstrated
+on DIII-D and EAST [13] for use on CFETR [14]. In
+choosing these cases, the study is limited to conventional
+aspect ratio of A = 3.1 (the ITER value is used through-
+out). A study of compact solutions at low aspect ratio is
+subject to further work.
+Table 1 shows the parameters q95, H, bN and fGW for
+these 4 cases, noting that fHe = 0.05, fLH = 1.1 and A = 3.1
+are kept constant in the study. The values for ITER Q = 10,
+AUG Hybrid and Stepladder have been taken directly from
+refs [6, 10, 11], respectively. For the DIII-D/EAST sce-
+nario, we took the values for the discharge discussed in
+[13], and chose q95 such that the value of the plasma
+current is matched. Due to the slightly differing aspect ratio
+and shape, this leads to a lower value than quoted in [13].
+For these cases, we will discuss the following parame-
+ters in the R–B plane:
+•
+Fusion power Pfus: even though high ﬁeld may allow
+smaller unit sizes, we still anticipate that an FPP will
+generate several GW of fusion power in order to arrive
+at reasonable recirculating power fraction due to the
+relatively large auxiliary power needed for a tokamak.
+Hence, we explore Pfus up to 3.5 GW, aiming at around
+1 GW of electrical power at conventional efﬁciency.
+•
+Power ampliﬁcation w.r.t. power balance, QPB = Pfus/
+PAUX: this shows how close the plasma is to ignition,
+and how effective it can be in generating electrical
+power. Assuming that PAUX is the dominant electrical
+power needed to sustain the plant, the recirculating
+power is
+frec ¼ Pel;AUX
+Pel;tot
+¼
+1
+1:18QPBgAUXgTD
+ð9Þ
+where we have accounted for the thermal power gen-
+erated in the blanket by nuclear reactions by the factor
+1.18 and introduced the efﬁciencies gAUX (wall plug
+efﬁciency of the auxiliary heating system) and gTD
+(thermodynamic efﬁciency to generate electricity from
+heat). For example, for gAUX = 0.4 and gTD = 0.35, we
+obtain frec = 6/QPB and a reasonable value of frec
+\ 10% will require QPB [ 60. We note here that in our
+approach, for an ignited plasma, there is no attempt to
+fulﬁll exactly the power balance, i.e. these cases would
+strictly not be stationary, but for the scoping studies
+shown here this is not considered to be too important.
+•
+Power ampliﬁcation w.r.t. current drive power QCD =
+Pfus/PCD: while QPB is calculated from the power
+balance, the requirement of steady state will often lead
+to values of PCD [see Eq. (8)] that exceed PAUX and in
+this case QCD will determine the recirculating power
+fraction, calculated by using QCD and gCD in Eq. (9),
+where gCD is the wall plug efﬁciency of the CD system
+(the current drive efﬁciency in the plasma is already
+taken into account by calculating PCD according to (8)).
+Hence, we also map out this quantity in the R–B space,
+noting that for a pulsed tokamak FPP, this constraint
+will not exist. In principle, PCD and PAUX should have
+the same value for a stationary solution, but usually,
+PCD [ PAUX is found. In these cases, the fusion
+performance might be higher than estimated by our
+model, since there is excess heating, but as for the
+ignited cases discussed above, this is not considered to
+be too important for the scoping studies shown here.
+•
+Contribution of synchrotron radiation: a particularity of
+high ﬁeld tokamaks is the possibility of synchrotron
+Table 1 Input parameters used in the study of the 4 plasma scenarios
+ITER Q = 10
+AUG hybrid
+Stepladder
+DIII-D/EAST
+q95
+3.1
+5.4
+4.5
+6.5
+H
+1.0
+1.1
+1.2
+1.5
+bN
+1.8
+2.8
+3.5
+3.0
+fGW
+0.85
+0.7
+1.2
+1.0
+Journal of Fusion Energy (2019) 38:3–10
+5
+123

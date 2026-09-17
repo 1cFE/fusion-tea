@@ -1,0 +1,155 @@
+J. Lion et al.
+Guiraud: Software. F. Hernández: Writing – review & editing, Super-
+vision. S. Henneberg: Supervision, Methodology. R. Herrero: Writing
+– original draft, Visualization, Software, Methodology. C. Hintze:
+Methodology. H. Höchter: Software. J. Jelonnek: Writing – review
+& editing, Investigation. F. Jenko: Writing – review & editing, Su-
+pervision. R. Jorge: Supervision, Methodology. M. Kaiser: Software.
+M. Kubie: Writing – review & editing, Supervision, Software, Method-
+ology, Conceptualization. E. Lascas Neto: Software, Methodology.
+H. Laqua: Writing – review & editing, Supervision. M. Leoni: Writ-
+ing – original draft, Software, Methodology. J.F. Lobsien: Software,
+Methodology. V. Maurin: Writing – original draft, Software, Method-
+ology. A. Merlo: Writing – original draft, Visualization, Software,
+Methodology, Investigation. D. Middleton-Gear: Writing – original
+draft, Visualization, Methodology, Investigation. M. Pascu: Software.
+G.G. Plunk: Writing – review & editing, Supervision, Methodology. N.
+Riva: Writing – original draft, Visualization, Software, Methodology,
+Investigation. M. Savtchouk: Software. F. Sciortino: Writing – review
+& editing, Methodology. J. Schilling: Writing – review & editing,
+Visualization, Methodology. J. Shimwell: Writing – review & editing,
+Validation, Investigation. A. Di Siena: Supervision, Methodology. R.
+Slade: Writing – review & editing, Methodology, Conceptualization. T.
+Stange: Writing – review & editing, Methodology. T.N. Todd: Writing –
+review & editing, Supervision, Conceptualization. L. Wegener: Writing
+– review & editing, Conceptualization. F. Wilms: Software, Methodol-
+ogy. P. Xanthopoulos: Supervision, Investigation. M. Zheng: Software,
+Investigation.
+Declaration of competing interest
+The authors declare the following financial interests/personal rela-
+tionships which may be considered as potential competing interests:
+Eduardo Lascas Neto reports financial support was provided by Proxima
+Fusion GmbH. All Proxima Fusion Co-Authors reports a relationship
+with Proxima Fusion GmbH that includes: employment and equity or
+stocks. Martin Kubie, Wei Guo has patent #US63/665,597 pending to
+Proxima Fusion GmbH. Victor Maurin, Jean-Claude Angles has patent
+#EP24197718 pending to Proxima Fusion GmbH. Tom Todd, Martin
+Kubie, David Middleton-Gear, Wei Guo has patent #US63/688,883
+pending to Proxima Fusion GmbH. Jorrit Lion, Rodrigo Herrero has
+patent #EP24197765 pending to Proxima Fusion GmbH. If there are
+other authors, they declare that they have no known competing fi-
+nancial interests or personal relationships that could have appeared to
+influence the work reported in this paper.
+Acknowledgments
+The authors would like to thank Alan Rochford, Fabrice Moncade,
+Bernhard Auchmann, Chuanren Wu, Felix Schauer, and Nikola Jaksic
+for their contributions and advice along the way.
+We are grateful to Felix Warmer, Cesar Luongo, Craig Beidler, Per
+Helander, Hartmut Zohm, and Christian Bachmann, for feedback on the
+draft and their key role in driving the field forward over many years.
+We are also thankful to Yasuhiro Suzuki for access and support with
+the HINT-3D code.
+We thank all open source developers whose software have en-
+abled this work, particularly the following developer communities:
+simsopt, OpenMC, Gmsh, FEniCS-X, Open-CASCADE.
+The work presented here was independently funded by Proxima
+Fusion. Some optimizations and simulations were performed at the Max
+Planck Computing and Data Facility (Germany). Part of the work was
+funded by the European Union (EU) via the Euratom Research and
+Training Programme (Grant Agreement No. 101052200—EUROfusion).
+A. Goodman is supported by a grant from the Simons Foundation,
+United States (Grant No. 560651).
+Appendix A. Confinement time scaling
+For the physics design point exploration performed in Section 2.3,
+we restrict ourselves to a simple ‘0.5D’ power balance, where the
+power balance is enforced only globally, after integration of both sides
+of the power balance equation. We introduce the terminology 𝑝≡
+⟨𝑝⟩𝑉≡∫𝑉𝑝𝑑 𝑉, where 𝑉is the plasma volume. Then, the integrated
+steady-state power balance can be written as
+𝑝loss
+!= 𝑝heat,
+(A.1)
+⇒𝑝rad + 𝑝conf = 𝑓𝛼𝑝𝛼+ 𝑝aux.
+(A.2)
+In these equations, 𝑝loss is the (volume averaged) loss power density,
+𝑝heat the heating power density, 𝑝rad the loss power density by radia-
+tion, 𝑝conf the loss power density due to finite confinement, 𝑝aux is the
+auxiliary power density and 𝑝𝛼is the heating power density by fusion
+alpha particles. 𝑓𝛼is the fraction of the total alpha power absorbed in
+the plasma. When writing the volume averaged confinement loss power
+density 𝑝conf in terms of the plasma energy density 𝑤and the energy
+confinement time 𝜏𝐸, we arrive at
+𝑝rad + 𝑤
+𝜏𝐸
+= 𝑓𝛼𝐸𝛼𝑛𝐷𝑛𝑇⟨𝜎 𝑣⟩𝑇+ 𝑝aux.
+(A.3)
+Here, 𝑝aux is the auxiliary heating power density. 𝐸𝛼is the energy
+carried by fast fusion alpha particles (3.5 MeV), 𝑛𝐷and 𝑛𝑇are densities
+of deuterium and tritium in the plasma respectively. ⟨𝜎 𝑣⟩𝑇is the
+Maxwellian averaged fusion reactivity.
+The radiation term 𝑝rad we split in line and continuum radiation,
+where we use a priori assumed impurity fractions and calculate the
+cooling factors using the ‘Aurora’ code [138], relying on the Atomic
+Data and Analysis Structure (ADAS) database [139]. For synchrotron
+radiation, we take the model suggested in Ref. [140],
+𝑝sy nc
+[W∕m−3] = 1.32 ⋅10−7 (𝐵 𝑇𝑒
+)2.5
+√𝑛𝑒
+𝑎
+(
+1.0 + 18.0 𝑎
+𝑅
+√
+𝑇𝑒
+)
+.
+(A.4)
+Here 𝑎, 𝑅are given in m, 𝑇𝑒in k eV, 𝐵in T and 𝑛𝑒in 1020 m−3.
+To resolve the helium fraction 𝑓He, one introduces the alpha particle
+balance equation,
+𝑛He
+𝜏⋆
+𝛼
+= 𝑛𝐷𝑛𝑇⟨𝜎 𝑣⟩𝑇,
+(A.5)
+and then usually 𝜏⋆
+𝛼
+is assumed to be proportional to the energy
+confinement time: 𝜏⋆
+𝛼= 𝜌⋆𝜏𝐸, where we use 𝜌⋆∼ 8, where 𝜌⋆shall
+not be confused with the normalized minor plasma radius. Determining
+reasonable values for 𝜌⋆, and validity of that model in general, is a
+subject of active research [161,347]. In this article we introduce a new
+heuristic value 𝑓suppr which is used to suppress the resulting helium
+density by a constant factor,
+𝑛′
+He = 𝑓suppr𝑛He.
+(A.6)
+This assumption is informed by two considerations: first, by suppression
+of helium ash due to a positive ambipolar radial electric field, and
+second, by the effect that fast particles do not slow down directly in
+the core, but are radially displaced due to their finite drift orbit. This
+effect was quantified in [110] by employing Monte-Carlo slowing down
+simulations in various stellarators. We capture it here heuristically by
+choosing a value of 𝑓suppr = 1
+2.
+To extrapolate to a reactor, one can use the ISS04 inter-machine
+scaling, which reads [141]
+𝜏𝐸= 0.134 𝑓ren𝑎2.28𝐵0.84𝜄0.41
+2∕3 𝑛0.54
+19 𝑅0.64𝑃−0.61.
+(A.7)
+where 𝑓ren is a multiplier for the ISS04 scaling and the other variables
+have their usual meanings. Rewriting the heating power 𝑃in terms of
+temperature 𝑇, 𝑃= 𝑊∕𝜏𝐸, where 𝑊is the stored plasma energy, one
+arrives at
+𝜏𝐸= 0.152 𝑓2.56
+ren 𝑎2.72𝐵2.15𝜄1.05
+2∕3 𝑛−0.18
+19
+𝑅0.08𝑇−1.56
+keV ,
+(A.8)
+Fusion Engineering and Design xxx (xxxx) xxx 
+32 

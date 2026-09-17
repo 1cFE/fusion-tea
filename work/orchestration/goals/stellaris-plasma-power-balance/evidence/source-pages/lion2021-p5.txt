@@ -1,0 +1,148 @@
+Nucl. Fusion 61 (2021) 126021
+J. Lion et al
+√g is the Jacobian determinant and |.| is the Euclidean norm.
+The values ˆV(C) and ˆS(C) are calculated in the pre-processing
+step for a reference point in major radius ˆR and minor radius
+ˆa. Within Process, the plasma volume and surface area is then
+simply obtained by the following scaling equations,
+V = ˆV(C)R
+ˆR
+a2
+ˆa2 ,
+S = ˆS(C)R
+ˆR
+a
+ˆa.
+(5)
+3.2. 0D-transport
+The 0D-transport model in Process imposes a power balance
+as an equality constraint,
+PLoss
+!= Pheat .
+(6)
+The left-hand side includes contributions from confinement
+loss Pconf
+Loss, from bremsstrahlung Pbr, line radiation Pline and
+synchrotron radiation Psync. The right-hand side includes heat-
+ing from fusion alphas Pα, a term of charged non-alpha parti-
+cle heating P¬α (e.g. in D–D fusion) and a term for auxiliary
+heating Paux. Writing these expressions explicitly, equation (6)
+becomes
+Pconf
+Loss + Pbr + Pline + Psync
+!= f αPα + f ¬αP¬α + Paux.
+(7)
+Here, f α is the fraction of the alpha particle energy that is
+deposited in the plasma, which is an input parameter in Pro-
+cess and depends on the configuration. Similarly f ¬α accounts
+for the particle confinement fraction of non-alpha particles.
+PROCESS’ model for radiation losses (Pbr, Pline, Psync) is
+described in [23, 24]. For Pconf
+Loss, Process uses the effective
+energy confinement time τ E to determine the effective power
+transfer
+Pconf
+Loss ≃Pscaling
+Loss
+≡W
+τE
+,
+(8)
+where W is the total plasma energy. The energy confinement
+time τ E is obtained via empirical scaling laws. The used scal-
+ing law for stellarators in Process is the so-called ISS04 scaling
+[21],
+τ ISS04
+E
+= 0.134 f rena2.28R0.64
+0
+n0.52
+e
+B0.84
+t
+ι0.41
+2/3 P−0.61,
+(9)
+where a is the minor radius, R0 is the major radius, n is the
+line averaged electron density, Bt the toroidal magnetic field,
+ι2/3 ≡ι2/3(C) is the rotational transform (at s = 2/3), P is the
+combined effective plasma heating, and f ren is a proportion-
+ality factor that measures the magnetic configuration depen-
+dent deviation from the ISS04 scaling law. In principle, f ren is
+determined by C directly, although a reliable a priori method
+of calculating this factor is not available up to date. Instead,
+Process can iterate f ren within user set boundaries and return
+a needed configuration factor for the optimized power plant
+design point.
+The stored energy W in equation (8) is obtained from the
+imposed profiles for particle species averaged density n and
+temperature T:
+W = V 3
+2
+ 1
+0
+dρ
+
+g(ρ)n(ρ)T(ρ)
+(10)
+In stellarators, ρ is usually chosen as the effective radius,
+which fulfills
+
+g(ρ) ∼ρ.
+(11)
+The temperature and density profile shapes for the electrons
+are input parameters in Process and can be specified using the
+parametric form
+Te(ρ) = T0(1 −ρ2)αT
+(12)
+ne(ρ) = n0(1 −ρ2)αn.
+(13)
+Process implements the ion profiles as (user defined) mul-
+tiples of the electron profiles. These profiles are taken to com-
+pute the radiation terms in the left-hand side of equation (7),
+see [23].
+It should be noted that the imposed profile shapes are not
+per se consistent with the implied heating schemes or trans-
+port properties. However, in practice, the profile shapes can be
+determined by transport simulations independent of the sys-
+tems code. Results from such simulations can then be used as
+input for Process, e.g. in profile shapes or heating source.
+Equation (7) serves as equality constraint in Process.
+3.3. 0.5D neoclassical transport model for stellarators
+As Process lets the user choose T0, n0, αn and αT in
+equation (13) freely, we introduce a ‘sanity check’ of the
+confinement time here against a neoclassical model.
+The energy balance equation in steady state is
+−∇· q = p.
+(14)
+Here, q is the flux surface averaged energy flux and p stands
+for the flux surface energy density sources and sinks. If one
+assumes constant energy flux on a flux surface, integrating
+equation (14) over a volume up to a radius ρx yields
+q(r = ρx) = Pheat(ρx) −Prad(ρx)
+S(ρx)
+,
+(15)
+where S(ρx) is the surface area at a radius ρx. Prad is the radi-
+ation power and Pheat is the heating power as specified in
+equation (7), both integrated values in the of S(ρx) enclosed
+volume. In Process, we choose ρx = ρcore, where ρcore is an
+input parameter in Process, which determines the radius of a
+binary ‘core’ treatment [8]. ρcore is usually chosen in the order
+of ∼0.6 (ρ = 1 matches with the last closed flux surface).
+The new model in Process now calculates a maximal
+allowable qmax with the calculated heating and radiation power
+as
+qmax =
+
+⟨pheat⟩V −⟨prad⟩V
+ V(ρcore)
+S(ρcore) .
+(16)
+Here, ⟨pα,rad⟩V denotes the power density averaged over
+V(ρcore).
+The volume over surface ratio at ρcore can be obtained
+approximately by scaling of equation (5).
+Equation (16) can be compared against heat fluxes qneo
+from neoclassical theory, e.g. [25, 26]. In Process we compare
+4

@@ -793,6 +793,22 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 3089427a440e73694ff640feae62e03487b4b370a7fcb30f6a2073b48a10802b
 - **Date Added**: 2026-09-16
 
+### On the Use of High Magnetic Field in Reactor Grade Tokamaks (Zohm 2019)
+- **Type**: local_pdf
+- **Location**: knowledge/sources/on_the_use_of_high_magnetic_field_in_reactor_grade_tokamaks/
+- **Use for**: Original Stellaris ref140 synchrotron coefficient and units: Eq6 uses MW, density in 1e20 m^-3, volume-average temperature and wall reflectivity0.8. Serves plasma-power-balance T-005.
+- **Validation**: Inspect original PDF page2 (journal page4), Eq1 unit convention and Eq6 with following sentence. Divide by plasma volume and substitute A=R/a before comparing Stellaris A.4.
+- **Caveat**: Original journal PDF downloaded from German National Library https://d-nb.info/1178904288/34; DOI10.1007/s10894-018-0177-y. Tokamak 0D correlation with ITER-shaped volume and A3.1 study domain; applying it locally to stellarator profiles is not independently validated. No further citation hops inspected.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/zohm-2019-original.pdf
+- **Source ID**: a598bc99d8324346e99dcde2085f5e7a9c2dbb82f4a2458ab1dc8a85e7d5b9bc
+- **Raw SHA256**: a598bc99d8324346e99dcde2085f5e7a9c2dbb82f4a2458ab1dc8a85e7d5b9bc
+- **Raw Artifact SHA256**: a598bc99d8324346e99dcde2085f5e7a9c2dbb82f4a2458ab1dc8a85e7d5b9bc
+- **Extracted Path**: knowledge/sources/on_the_use_of_high_magnetic_field_in_reactor_grade_tokamaks/
+- **Extract SHA256**: e3b8d6ebff0bf8fddc1f5fb322e340a6bd00a74c0936f3b8f36949f05ec7374a
+- **Date Added**: 2026-09-17
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md
