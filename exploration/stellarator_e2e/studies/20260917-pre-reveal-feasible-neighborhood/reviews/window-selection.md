@@ -1,0 +1,3 @@
+# Window selection
+
+[AGENT] Initial screening found five valid all-screen oracle points; original prepared bounds remain unchanged. Refinement declares a fixed local R/current map and two-sided individual/combined neighbors around the retained engineering-margin anchor. Every evaluated map and neighbor coordinate is selected for native execution; domain refusals stay separate. Exact r2 controls, all five initial passes and six informative near misses are included. No native result is claimed yet. Selection and full override keys are retained in preparation/refinement-selection.json and unique-proposals.json.

@@ -1,0 +1,12 @@
+{
+  "screening_calls": 837,
+  "unique_screening_coordinates": 835,
+  "screening_evaluated_calls": 716,
+  "screening_refused_calls": 121,
+  "native_candidate_calls_planned": 334,
+  "native_unique_including_baseline_planned": 335,
+  "retained_plot_refusals": 0,
+  "generated_calls_already_completed": 1,
+  "mechanical_launch_failures_before_evaluation": 2,
+  "verification_oracle_calls": "recorded separately after generic verification"
+}

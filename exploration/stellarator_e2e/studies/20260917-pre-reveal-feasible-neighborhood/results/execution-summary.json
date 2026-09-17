@@ -1,0 +1,11 @@
+{
+  "started_at_utc": "2026-09-17T17:11:21.527752+00:00",
+  "finished_at_utc": "2026-09-17T17:18:06.662425+00:00",
+  "elapsed_seconds": 405.1346744801849,
+  "cases": 334,
+  "states": {
+    "completed": 334
+  },
+  "store": "results/study/_work/20260917-pre-reveal-feasible-neighborhood.db",
+  "repo_revision": "d53d6ec5748442833ff44bc179bb988bce726486"
+}

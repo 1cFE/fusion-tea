@@ -1,0 +1,269 @@
+{
+  "screening_calls": 837,
+  "unique_screening_coordinates": 835,
+  "screening_evaluated_calls": 716,
+  "screening_refused_calls": 121,
+  "native_calls": 335,
+  "native_unique_coordinates": 335,
+  "native_selected_cases": 334,
+  "native_baseline_cases": 1,
+  "generic_verification_oracle_calls": 1,
+  "generic_verification_unique_coordinates": 1,
+  "all_point_comparison_new_oracle_calls": 0,
+  "all_point_comparison_note": "Reuses independent retained screening outputs at the identical coordinates;226 mapped scalars and20 verdicts per native case.",
+  "reviewer_verification": "Recorded in goal evidence/reviewer-checks.json; all requested coordinates already screened, no generated executions permitted.",
+  "mechanical_launch_failures_before_evaluation": 2,
+  "mechanical_retries_used": 2,
+  "caps": {
+    "screening_unique": 3000,
+    "native_unique": 600,
+    "rounds": 2
+  },
+  "reviewer_receipt": {
+    "outcome": "PASS",
+    "checks": {
+      "scalar_comparisons": 75484,
+      "predicate_comparisons": 6680,
+      "native_operand_checks": 6680,
+      "store_joins": 334
+    },
+    "native_cases": 334,
+    "native_combined_passes": 103,
+    "map_counts": {
+      "fail": 210,
+      "invalid-account": 2,
+      "pass": 44
+    },
+    "raw_boundary_exceptions": [
+      [
+        "r2-forward",
+        "reference_conductor_current_ok"
+      ],
+      [
+        "r2-table5",
+        "reference_conductor_current_ok"
+      ],
+      [
+        "anchor-inventory1",
+        "reference_conductor_current_ok"
+      ]
+    ],
+    "strict_relative_differences": [
+      [
+        "r2-forward",
+        "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+        -3.3306690738754696e-16,
+        0.0
+      ],
+      [
+        "r2-forward",
+        "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+        -2.1827872842550278e-11,
+        0.0
+      ],
+      [
+        "r2-table5",
+        "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+        -5.551115123125783e-16,
+        0.0
+      ],
+      [
+        "r2-table5",
+        "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+        -3.637978807091713e-11,
+        0.0
+      ],
+      [
+        "anchor-inventory1",
+        "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+        -3.3306690738754696e-16,
+        0.0
+      ],
+      [
+        "anchor-inventory1",
+        "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+        -2.1827872842550278e-11,
+        0.0
+      ]
+    ],
+    "bounds_control_exemptions": [
+      "r2-forward",
+      "r2-table5",
+      "r2-forward-reserve",
+      "reference-accommodated"
+    ],
+    "fresh_oracle_checks": [
+      {
+        "proposal_id": "r2-forward",
+        "point": {
+          "stellarator_09__stellaris__plasma__R": 12.7,
+          "stellarator_09__stellaris__plasma__a": 1.3,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+          "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+          "stellarator_09__stellaris__plasma__T_i0": 14.63,
+          "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+          "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+          "stellarator_09__stellaris__heat_transport__n_loops": 14.0,
+          "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.0,
+          "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+          "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+          "stellarator_09__stellaris__plasma__alpha_T": 1.2
+        },
+        "purpose": "verification-only; already screened coordinate",
+        "oracle_calls": 1
+      },
+      {
+        "proposal_id": "r2-table5",
+        "point": {
+          "stellarator_09__stellaris__plasma__R": 12.74,
+          "stellarator_09__stellaris__plasma__a": 1.3,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 15448503.937007876,
+          "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+          "stellarator_09__stellaris__plasma__T_i0": 14.63,
+          "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+          "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+          "stellarator_09__stellaris__heat_transport__n_loops": 14.0,
+          "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.0,
+          "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+          "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+          "stellarator_09__stellaris__plasma__alpha_T": 1.2,
+          "stellarator_09__stellaris__plasma__f_shape": 1.0000070376114356
+        },
+        "purpose": "verification-only; already screened coordinate",
+        "oracle_calls": 1
+      },
+      {
+        "proposal_id": "lhs-0224",
+        "point": {
+          "stellarator_09__stellaris__plasma__R": 11.251748216682868,
+          "stellarator_09__stellaris__plasma__a": 1.4908855301929713,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 12217184.408047015,
+          "stellarator_09__stellaris__plasma__n_e0": 4.8924678194274265e+20,
+          "stellarator_09__stellaris__plasma__T_i0": 14.035595515748351,
+          "stellarator_09__stellaris__magnet__coil__coil_t": 0.65,
+          "stellarator_09__stellaris__magnet__casing__interior_y": 0.65,
+          "stellarator_09__stellaris__heat_transport__n_loops": 18.0,
+          "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01,
+          "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+          "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+          "stellarator_09__stellaris__plasma__alpha_T": 1.2
+        },
+        "purpose": "verification-only; already screened coordinate",
+        "oracle_calls": 1
+      },
+      {
+        "proposal_id": "neighbor-plasma__R--0.01",
+        "point": {
+          "stellarator_09__stellaris__plasma__R": 11.139230734516039,
+          "stellarator_09__stellaris__plasma__a": 1.4908855301929713,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 12217184.408047015,
+          "stellarator_09__stellaris__plasma__n_e0": 4.8924678194274265e+20,
+          "stellarator_09__stellaris__plasma__T_i0": 14.035595515748351,
+          "stellarator_09__stellaris__magnet__coil__coil_t": 0.65,
+          "stellarator_09__stellaris__magnet__casing__interior_y": 0.65,
+          "stellarator_09__stellaris__heat_transport__n_loops": 18.0,
+          "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01,
+          "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+          "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+          "stellarator_09__stellaris__plasma__alpha_T": 1.2
+        },
+        "purpose": "verification-only; already screened coordinate",
+        "oracle_calls": 1
+      },
+      {
+        "proposal_id": "neighbor-plasma__a-+0.01",
+        "point": {
+          "stellarator_09__stellaris__plasma__R": 11.251748216682868,
+          "stellarator_09__stellaris__plasma__a": 1.505794385494901,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 12217184.408047015,
+          "stellarator_09__stellaris__plasma__n_e0": 4.8924678194274265e+20,
+          "stellarator_09__stellaris__plasma__T_i0": 14.035595515748351,
+          "stellarator_09__stellaris__magnet__coil__coil_t": 0.65,
+          "stellarator_09__stellaris__magnet__casing__interior_y": 0.65,
+          "stellarator_09__stellaris__heat_transport__n_loops": 18.0,
+          "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01,
+          "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+          "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+          "stellarator_09__stellaris__plasma__alpha_T": 1.2
+        },
+        "purpose": "verification-only; already screened coordinate",
+        "oracle_calls": 1
+      },
+      {
+        "proposal_id": "combined-00",
+        "point": {
+          "stellarator_09__stellaris__plasma__R": 11.308006957766281,
+          "stellarator_09__stellaris__plasma__a": 1.4834311025420064,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 12156098.48600678,
+          "stellarator_09__stellaris__plasma__n_e0": 4.8680054803302895e+20,
+          "stellarator_09__stellaris__plasma__T_i0": 14.105773493327092,
+          "stellarator_09__stellaris__magnet__coil__coil_t": 0.65325,
+          "stellarator_09__stellaris__magnet__casing__interior_y": 0.64675,
+          "stellarator_09__stellaris__heat_transport__n_loops": 19.0,
+          "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01,
+          "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+          "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+          "stellarator_09__stellaris__plasma__alpha_T": 1.2
+        },
+        "purpose": "verification-only; already screened coordinate",
+        "oracle_calls": 1
+      },
+      {
+        "proposal_id": "map-136",
+        "point": {
+          "stellarator_09__stellaris__plasma__R": 11.32594403700875,
+          "stellarator_09__stellaris__plasma__a": 1.4908855301929713,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 12597279.580345389,
+          "stellarator_09__stellaris__plasma__n_e0": 4.8924678194274265e+20,
+          "stellarator_09__stellaris__plasma__T_i0": 14.035595515748351,
+          "stellarator_09__stellaris__magnet__coil__coil_t": 0.65,
+          "stellarator_09__stellaris__magnet__casing__interior_y": 0.65,
+          "stellarator_09__stellaris__heat_transport__n_loops": 18.0,
+          "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01,
+          "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+          "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+          "stellarator_09__stellaris__plasma__alpha_T": 1.2
+        },
+        "purpose": "verification-only; already screened coordinate",
+        "oracle_calls": 1
+      },
+      {
+        "proposal_id": "map-083",
+        "point": {
+          "stellarator_09__stellaris__plasma__R": 11.089960026434822,
+          "stellarator_09__stellaris__plasma__a": 1.4908855301929713,
+          "stellarator_09__stellaris__magnet__coil__I_coil": 12217184.408047015,
+          "stellarator_09__stellaris__plasma__n_e0": 4.8924678194274265e+20,
+          "stellarator_09__stellaris__plasma__T_i0": 14.035595515748351,
+          "stellarator_09__stellaris__magnet__coil__coil_t": 0.65,
+          "stellarator_09__stellaris__magnet__casing__interior_y": 0.65,
+          "stellarator_09__stellaris__heat_transport__n_loops": 18.0,
+          "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01,
+          "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+          "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+          "stellarator_09__stellaris__plasma__alpha_T": 1.2
+        },
+        "purpose": "verification-only; already screened coordinate",
+        "oracle_calls": 1
+      }
+    ],
+    "fresh_oracle_calls": 8,
+    "new_screening_coordinates": 0,
+    "native_evaluations": 0,
+    "archive_sha256": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21",
+    "png_visually_inspected": true,
+    "generic_verifier": "Original log is a first-case strict-relative refusal, not a pass. Local full comparison retains all raw signs.",
+    "additional_checks": [
+      "835 unique screened coordinates / 837 calls / 121 refusals",
+      "334 unique candidate proposals",
+      "43/45 neighbors and exact margin minima",
+      "single-variable matched interventions; two-peak contrast explicit",
+      "14-loop anchor passes",
+      "entire comparison package unchanged against 9c8874c97fd75039b9fe516fe06a0427ac559120"
+    ]
+  },
+  "reviewer_verification_oracle_calls": 8,
+  "total_oracle_calls": 846,
+  "total_oracle_unique_coordinates": 835,
+  "reviewer_native_calls": 0
+}

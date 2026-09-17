@@ -1,0 +1,498 @@
+{
+  "anchor": {
+    "proposal_id": "lhs-0224",
+    "family": "initial-search",
+    "candidate_id": "20260917-pre-reveal-feasible-neighborhood:c0005",
+    "quantities": {
+      "peak_density_m3": 4.8924678194274265e+20,
+      "peak_ion_temperature_keV": 14.035595515748351,
+      "inventory_multiplier": 1.01,
+      "R_m": 11.251748216682868,
+      "a_m": 1.4908855301929713,
+      "current_MAturn": 12.217184408047014,
+      "radial_exterior_m": 0.65,
+      "transverse_cavity_m": 0.65,
+      "loops": 18,
+      "power_account_valid": true,
+      "auxiliary_required_MW": 37.1053288547555,
+      "divertor_peak_MW_m2": 9.708331210374608,
+      "flow_total_kg_s": 2818.3502577156387,
+      "flow_per_loop_kg_s": 156.57501431753548,
+      "minimum_representative_integer_count": 13,
+      "pump_electric_MW": 86.7763651361572,
+      "IHX_total_MW": 3013.914942799619,
+      "IHX_per_loop_MW": 167.43971904442327,
+      "conditional_circulators": 36,
+      "conditional_IHXs": 18,
+      "net_electric_MW": 1010.1122869821386,
+      "availability": 0.9027777777777779,
+      "LCOE_dollars_MWh": 150.42954219913497,
+      "CAS22_dollars": 5116643726.983053,
+      "total_capital_dollars": 9465696345.046
+    },
+    "signed_margins": {
+      "wp_stress_ok": 408989909.4331566,
+      "cond_strain_ok": 0.0026966330314438557,
+      "recirc_ok": 0.31474225545938184,
+      "cycle_domain_ok": 15552.0,
+      "beta_ok": 0.02143837513093688,
+      "heating_couple_positive_ok": 1.0,
+      "divertor_heat_ok": 0.2916687896253922,
+      "heating_source_upper_ok": 0.5,
+      "net_positive": 1010.1122869821386,
+      "burn_hold_ok": 37.1053288547555,
+      "wall_load_ok": 0.337846159486892,
+      "tbr_ok": 0.02400000000000002,
+      "heating_couple_upper_ok": 0.0,
+      "peak_field_ok": 0.5137863280199504,
+      "reference_conductor_current_ok": 0.007920792079207595,
+      "sustainment_ok": 12.894671145244502,
+      "loop_capacity_ok": 68.5027634602423,
+      "wp_fit_ok": 0.12503171796433726,
+      "heating_source_positive_ok": 0.5,
+      "loop_pressure_ok": 7840697.495422499
+    },
+    "all20_satisfied": true,
+    "verdicts": {
+      "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+      "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+      "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+      "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+      "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": "satisfied",
+      "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": "satisfied",
+      "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": "satisfied",
+      "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": "satisfied",
+      "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": "satisfied",
+      "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "satisfied",
+      "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied",
+      "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+      "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+      "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "satisfied",
+      "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0": "satisfied",
+      "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+      "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+      "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+      "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339": "satisfied",
+      "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied"
+    },
+    "violated": []
+  },
+  "families": {
+    "accommodation-contrast": {
+      "reported_points": 8,
+      "passes": 8,
+      "failed_ids": []
+    },
+    "anchor": {
+      "reported_points": 1,
+      "passes": 1,
+      "failed_ids": []
+    },
+    "axis-neighbor": {
+      "reported_points": 27,
+      "passes": 25,
+      "failed_ids": [
+        "neighbor-plasma__R--0.02",
+        "neighbor-plasma__R-+0.02"
+      ]
+    },
+    "combined-neighbor": {
+      "reported_points": 16,
+      "passes": 16,
+      "failed_ids": []
+    },
+    "control": {
+      "reported_points": 4,
+      "passes": 0,
+      "failed_ids": [
+        "r2-forward",
+        "r2-table5",
+        "r2-forward-reserve",
+        "reference-accommodated"
+      ]
+    },
+    "initial-search": {
+      "reported_points": 11,
+      "passes": 5,
+      "failed_ids": [
+        "lhs-0259",
+        "lhs-0094",
+        "lhs-0106",
+        "lhs-0180",
+        "lhs-0057",
+        "lhs-0387"
+      ]
+    },
+    "integer-neighbor": {
+      "reported_points": 2,
+      "passes": 2,
+      "failed_ids": []
+    },
+    "inventory-contrast": {
+      "reported_points": 1,
+      "passes": 0,
+      "failed_ids": [
+        "anchor-inventory1"
+      ]
+    },
+    "loop-contrast": {
+      "reported_points": 4,
+      "passes": 4,
+      "failed_ids": []
+    },
+    "map": {
+      "reported_points": 256,
+      "passes": 44,
+      "failed_ids": [
+        "map-000",
+        "map-001",
+        "map-002",
+        "map-003",
+        "map-004",
+        "map-005",
+        "map-006",
+        "map-007",
+        "map-008",
+        "map-009",
+        "map-010",
+        "map-011",
+        "map-012",
+        "map-013",
+        "map-014",
+        "map-015",
+        "map-016",
+        "map-017",
+        "map-018",
+        "map-019",
+        "map-020",
+        "map-021",
+        "map-022",
+        "map-023",
+        "map-024",
+        "map-025",
+        "map-026",
+        "map-027",
+        "map-028",
+        "map-029",
+        "map-030",
+        "map-031",
+        "map-032",
+        "map-033",
+        "map-034",
+        "map-035",
+        "map-036",
+        "map-037",
+        "map-038",
+        "map-039",
+        "map-040",
+        "map-041",
+        "map-042",
+        "map-043",
+        "map-044",
+        "map-045",
+        "map-046",
+        "map-047",
+        "map-048",
+        "map-049",
+        "map-050",
+        "map-051",
+        "map-052",
+        "map-053",
+        "map-054",
+        "map-055",
+        "map-056",
+        "map-057",
+        "map-058",
+        "map-059",
+        "map-060",
+        "map-061",
+        "map-062",
+        "map-063",
+        "map-065",
+        "map-066",
+        "map-067",
+        "map-068",
+        "map-069",
+        "map-070",
+        "map-071",
+        "map-072",
+        "map-073",
+        "map-074",
+        "map-075",
+        "map-076",
+        "map-077",
+        "map-078",
+        "map-079",
+        "map-083",
+        "map-084",
+        "map-085",
+        "map-086",
+        "map-087",
+        "map-088",
+        "map-089",
+        "map-090",
+        "map-091",
+        "map-092",
+        "map-093",
+        "map-094",
+        "map-095",
+        "map-102",
+        "map-103",
+        "map-104",
+        "map-105",
+        "map-106",
+        "map-107",
+        "map-108",
+        "map-109",
+        "map-110",
+        "map-111",
+        "map-119",
+        "map-120",
+        "map-121",
+        "map-122",
+        "map-123",
+        "map-124",
+        "map-125",
+        "map-126",
+        "map-127",
+        "map-128",
+        "map-129",
+        "map-136",
+        "map-137",
+        "map-138",
+        "map-139",
+        "map-140",
+        "map-141",
+        "map-142",
+        "map-143",
+        "map-144",
+        "map-145",
+        "map-146",
+        "map-147",
+        "map-148",
+        "map-155",
+        "map-156",
+        "map-157",
+        "map-158",
+        "map-159",
+        "map-160",
+        "map-161",
+        "map-162",
+        "map-163",
+        "map-164",
+        "map-165",
+        "map-166",
+        "map-167",
+        "map-173",
+        "map-174",
+        "map-175",
+        "map-176",
+        "map-177",
+        "map-178",
+        "map-179",
+        "map-180",
+        "map-181",
+        "map-182",
+        "map-183",
+        "map-184",
+        "map-185",
+        "map-191",
+        "map-192",
+        "map-193",
+        "map-194",
+        "map-195",
+        "map-196",
+        "map-197",
+        "map-198",
+        "map-199",
+        "map-200",
+        "map-201",
+        "map-202",
+        "map-203",
+        "map-208",
+        "map-209",
+        "map-210",
+        "map-211",
+        "map-212",
+        "map-213",
+        "map-214",
+        "map-215",
+        "map-216",
+        "map-217",
+        "map-218",
+        "map-219",
+        "map-220",
+        "map-221",
+        "map-222",
+        "map-224",
+        "map-225",
+        "map-226",
+        "map-227",
+        "map-228",
+        "map-229",
+        "map-230",
+        "map-231",
+        "map-232",
+        "map-233",
+        "map-234",
+        "map-235",
+        "map-236",
+        "map-237",
+        "map-238",
+        "map-239",
+        "map-240",
+        "map-241",
+        "map-242",
+        "map-243",
+        "map-244",
+        "map-245",
+        "map-246",
+        "map-247",
+        "map-248",
+        "map-249",
+        "map-250",
+        "map-251",
+        "map-252",
+        "map-253",
+        "map-254",
+        "map-255"
+      ]
+    },
+    "matched-contrast": {
+      "reported_points": 6,
+      "passes": 0,
+      "failed_ids": [
+        "restore-plasma__R",
+        "restore-plasma__a",
+        "restore-magnet__coil__I_coil",
+        "restore-plasma__n_e0",
+        "restore-plasma__T_i0",
+        "restore-both-peaks"
+      ]
+    }
+  },
+  "axis_two_sided": {
+    "plasma__R": {
+      "passing_below": [
+        "neighbor-plasma__R--0.01"
+      ],
+      "passing_above": [
+        "neighbor-plasma__R-+0.01"
+      ],
+      "failures": [
+        {
+          "id": "neighbor-plasma__R--0.02",
+          "violated": [
+            "peak_field_ok"
+          ]
+        },
+        {
+          "id": "neighbor-plasma__R-+0.02",
+          "violated": [
+            "divertor_heat_ok"
+          ]
+        }
+      ]
+    },
+    "plasma__a": {
+      "passing_below": [
+        "neighbor-plasma__a--0.02",
+        "neighbor-plasma__a--0.01"
+      ],
+      "passing_above": [
+        "neighbor-plasma__a-+0.01",
+        "neighbor-plasma__a-+0.02"
+      ],
+      "failures": []
+    },
+    "magnet__coil__I_coil": {
+      "passing_below": [
+        "neighbor-magnet__coil__I_coil--0.01"
+      ],
+      "passing_above": [
+        "neighbor-magnet__coil__I_coil-+0.01",
+        "neighbor-magnet__coil__I_coil-+0.02"
+      ],
+      "failures": []
+    },
+    "plasma__n_e0": {
+      "passing_below": [
+        "neighbor-plasma__n_e0--0.02",
+        "neighbor-plasma__n_e0--0.01"
+      ],
+      "passing_above": [
+        "neighbor-plasma__n_e0-+0.01",
+        "neighbor-plasma__n_e0-+0.02"
+      ],
+      "failures": []
+    },
+    "plasma__T_i0": {
+      "passing_below": [
+        "neighbor-plasma__T_i0--0.02",
+        "neighbor-plasma__T_i0--0.01"
+      ],
+      "passing_above": [
+        "neighbor-plasma__T_i0-+0.01",
+        "neighbor-plasma__T_i0-+0.02"
+      ],
+      "failures": []
+    },
+    "magnet__coil__coil_t": {
+      "passing_below": [
+        "neighbor-magnet__coil__coil_t--0.02",
+        "neighbor-magnet__coil__coil_t--0.01"
+      ],
+      "passing_above": [
+        "neighbor-magnet__coil__coil_t-+0.01",
+        "neighbor-magnet__coil__coil_t-+0.02"
+      ],
+      "failures": []
+    },
+    "magnet__casing__interior_y": {
+      "passing_below": [
+        "neighbor-magnet__casing__interior_y--0.02",
+        "neighbor-magnet__casing__interior_y--0.01"
+      ],
+      "passing_above": [
+        "neighbor-magnet__casing__interior_y-+0.01",
+        "neighbor-magnet__casing__interior_y-+0.02"
+      ],
+      "failures": []
+    },
+    "heat_transport__n_loops": {
+      "passing_below": [
+        "neighbor-loops--1"
+      ],
+      "passing_above": [
+        "neighbor-loops-+1"
+      ],
+      "failures": []
+    }
+  },
+  "sampled_neighborhood_demonstrated": true,
+  "minimum_margins_in_passing_tested_neighbors": {
+    "wp_stress_ok": 399586997.982865,
+    "cond_strain_ok": 0.002665289993276217,
+    "recirc_ok": 0.29973267798832803,
+    "cycle_domain_ok": 15552.0,
+    "beta_ok": 0.02071935794220225,
+    "heating_couple_positive_ok": 1.0,
+    "divertor_heat_ok": 0.03153340153251705,
+    "heating_source_upper_ok": 0.5,
+    "net_positive": 954.088657741502,
+    "burn_hold_ok": 28.140226247573878,
+    "wall_load_ok": 0.1741640655702934,
+    "tbr_ok": 0.02400000000000002,
+    "heating_couple_upper_ok": 0.0,
+    "peak_field_ok": 0.02606205458035049,
+    "reference_conductor_current_ok": 0.00792079207920704,
+    "sustainment_ok": 3.3584504008449017,
+    "loop_capacity_ok": 58.34276271545431,
+    "wp_fit_ok": 0.11214885981533312,
+    "heating_source_positive_ok": 0.5,
+    "loop_pressure_ok": 7819352.768618063
+  },
+  "neighbor_passes": 43,
+  "neighbors_tested": 45,
+  "not_a_certified_box": true
+}

@@ -1,0 +1,17 @@
+{
+  "outcome": "pass",
+  "controls": [
+    {
+      "proposal_id": "r2-forward",
+      "native_outputs": 242,
+      "predicates": 20,
+      "exact_equal": true
+    },
+    {
+      "proposal_id": "r2-table5",
+      "native_outputs": 242,
+      "predicates": 20,
+      "exact_equal": true
+    }
+  ]
+}
