@@ -1,0 +1,24 @@
+[
+  {
+    "case": "selected-mode",
+    "checkpoint": [
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "sha256": "b28cb0f6c583906f22f4f4251726b1c1d3eaaf64a702f4ee291d1dfc9e9aeb5b"
+  },
+  {
+    "case": "table5-conditioned",
+    "checkpoint": [
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "sha256": "e9087944b10bff0a62f55a8bc8def8ddc3ac92c0d6a25250dec8b3261b11dace"
+  }
+]

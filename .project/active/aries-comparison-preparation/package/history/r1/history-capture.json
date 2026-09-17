@@ -1,0 +1,93 @@
+{
+  "scope": "Pre-r2 live package files and selected-mode store; original archive separately unchanged.",
+  "files": [
+    {
+      "path": "export_model_values.py",
+      "sha256": "44074c201962eb2909d4ff04589f9ecce84bf68e6ac949eed2430d5269d8b79b"
+    },
+    {
+      "path": "selected-mode-check.json",
+      "sha256": "fb38b31847412fa3c2e07f8c2bf6dbb8419434a0356d378abed010b816f46aa8"
+    },
+    {
+      "path": "input-applicability.md",
+      "sha256": "50b616c06d8a15929473e28aa5ea702605a064d622cff2a62be84db3994bb5c5"
+    },
+    {
+      "path": "lineage-check.json",
+      "sha256": "dc77d9dd11f27c23908b043a0f6940a75c3470cae18e49170421773d10a6309d"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "416b30963490677e6c8cdacad89bd8f22e68a8b168134102d1e7efe71ca16d47"
+    },
+    {
+      "path": "synthetic-input.json",
+      "sha256": "89bada832dd5961abd1e377108d1338e2927b9f397ec52d85ced97d83649e8da"
+    },
+    {
+      "path": "reconciliation.json",
+      "sha256": "6bda4b7daa785becac6ed8a6c083adca056e2611622ffb4167a40d50296f7488"
+    },
+    {
+      "path": "execute_frozen.py",
+      "sha256": "487508be0c3d33afb44e217310427467cd732a1851059da05782723beca88c55"
+    },
+    {
+      "path": "selected-mode-values.json",
+      "sha256": "11d5f050b1ef5b87d21ddb72417be42f982c9fac5d3803056ef2e5552f7de34a"
+    },
+    {
+      "path": "input-rules.json",
+      "sha256": "6f4390e1f80d00d5126f136ec1cb014af199d1f04b395a9c70ccffa4e1954f19"
+    },
+    {
+      "path": "freeze-procedure.md",
+      "sha256": "6e6776a10c5ee4a69bc259020ee414f6c7f757c59490221e548e66d66af9c7fb"
+    },
+    {
+      "path": "synthetic-report.json",
+      "sha256": "4f84e3569458e5b8fcdf823aa3e68fcb7dfa5daf4caaa5e964714f7908b5a7a5"
+    },
+    {
+      "path": "check_accounting.py",
+      "sha256": "0f96f4a22069f988e782c8f1b6d61ff8b01b63d7b2aa09e0691ebf69912cdb07"
+    },
+    {
+      "path": "reporting.md",
+      "sha256": "e2ec91be2c495c6115b641d7f9ae7c5c8e750d83b77a200c95a648a3e3446f78"
+    },
+    {
+      "path": "check_selected_mode.py",
+      "sha256": "dde495b94153d351cb59f1f0805337aaffbe8972d246e42dd3e38721477e02e2"
+    },
+    {
+      "path": "accounting-normalization.md",
+      "sha256": "81de09212f86be2041b9b59b842424266cdb80c54bf2530ec7bc80816e9f26de"
+    },
+    {
+      "path": "selected-mode-request.json",
+      "sha256": "16e8ec0eaabbd1f025fdb64a4a2fd031f1e8622a8397a82f3c482be0cbfb7634"
+    },
+    {
+      "path": "provenance-check.md",
+      "sha256": "18eef983cb23761602a2465fe922fdafecbe44483ec7ffdf632b12d1fd5a946d"
+    },
+    {
+      "path": "readiness.md",
+      "sha256": "0fcf2b7b2193acac0e536ff424813cee929b50859cfa58cf262e6dfe91cee462"
+    },
+    {
+      "path": "build_freeze.py",
+      "sha256": "a9c1f7b5a40be6ce8a8db28e30d0a89ef7454003a6c99d3c4d5392b39e184c2a"
+    },
+    {
+      "path": "evidence-reuse.md",
+      "sha256": "423d7877765974a68f94fc527547a5be6c343323d2de9985f2a438a829e6bace"
+    },
+    {
+      "path": "check_lineage.py",
+      "sha256": "720d9f23f496420a81ff8a9524a13899237017e6158a0221a5cb1b3fc83fe206"
+    }
+  ]
+}

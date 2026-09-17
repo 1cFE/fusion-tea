@@ -1,0 +1,17 @@
+{
+  "archive": "comparison-freeze.tar.gz",
+  "archive_bytes": 4228194,
+  "archive_sha256": "fdf6e14572f10c9254df1e297394f9eccb0060e3947283ea0f8cf569fc63f533",
+  "entering_revision": "c1b853ad80d3aefa2fc98ce45288582b3482eddb",
+  "excluded": [
+    "credentials/environment files",
+    "holdout contents except protocol",
+    "runtime caches/import links",
+    "freeze output directory",
+    "unrelated untracked owner files"
+  ],
+  "file_count": 785,
+  "index_sha256": "4b966d582715a75a4b58d13db8fbe2877bee4e24b12b2595d209ce4c9c9e14d4",
+  "runtime": "Pinned licensed runtime is external; see freeze-procedure.md. No credentials are bundled.",
+  "schema_version": 1
+}

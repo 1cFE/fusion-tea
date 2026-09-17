@@ -1,0 +1,11 @@
+# Independent grounding evidence review
+
+The owner authorized grounding and pursuit of a blind ARIES comparison-readiness goal, with the holdout sealed. Directory-name confirmation is pending, so this is only grounding evidence review, not an implementation task or goal-round review. Read `/tmp/aries-comparison-grounding.md` for the proposed goal contract. You own only `/tmp/aries-coolant-grounding-review.md`; other agents share the workspace, so preserve their files and do not edit the repository.
+
+Read `knowledge/holdout/aries-cs/PROTOCOL.md` first. Within `knowledge/holdout/`, read only that protocol. Do not read any barred content, seek ARIES-specific values elsewhere, or search entire source trees. No external research or model execution is needed.
+
+Question: does existing admissible evidence establish a documentation/source-attribution error, an intentionally conditional helium scenario, or both? Which precise comparison quantities are affected, and what pre-reveal owner decision is necessary without starting a new coolant design?
+
+Entry evidence: `work/orchestration/goals/bounded-feasibility-transfer/readiness.md` coolant section; `work/orchestration/goals/structural-decomposition/goal.md` fact 6 and reserved gate 6; `knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/output.md` lines 1334–1350, 1485–1497, 1526–1540; `models/designs/stellarator_09/stellarator_plant.sysml` blanket lines 560–600, cycle lines 735–777, loop disclosure lines 1060–1215; `work/active/WI-045_primary-loop-and-cycle/spec.md` MR-WI045-14 and `design.md` D4/disclosures. Use narrowly targeted followups in these admissible files if needed. Verify actual current producer bindings for the affected heat/power and cost quantities in `models/designs/generic_mfe/mfe_plant.sysml` and generated contracts as needed.
+
+Return a concise evidence-linked review (roughly 700 words maximum): checked evidence; distinction between the two issues; affected quantities; what can be compared conditionally; options, recommendation and consequences for the owner. Do not decide the scientific premise, claim readiness, modify models, or propose a broad improvement program. Report any evidence gap rather than guessing. Budget: up to 10 tool calls, no further agents.

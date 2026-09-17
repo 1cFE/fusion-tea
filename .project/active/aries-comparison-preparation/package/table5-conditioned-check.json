@@ -1,0 +1,2025 @@
+{
+  "all_constraints_satisfied": false,
+  "known_limitation": "Current-sized inventory_multiplier=1 sits at the authored current boundary. Retain native/oracle sign differences; do not add reserve or alter verdicts.",
+  "native_evaluations": 1,
+  "numeric_checked": 226,
+  "numeric_checks": [
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__blanket__blanket_cost__cost",
+      "native": 711153556.5568441,
+      "oracle": 711153556.5568441,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__blanket__first_wall__wall_load_calc__wall_load",
+      "native": 2.957097585392007,
+      "oracle": 2.957097585392007,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__blanket__first_wall__wall_peak_cal__calibration",
+      "native": 1.3164408570995383,
+      "oracle": 1.3164408570995383,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__blanket__first_wall__wall_peak_calc__wall_load_peak",
+      "native": 3.8928440798404287,
+      "oracle": 3.8928440798404287,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__blanket__source_heat__q_source",
+      "native": 3063.83320798278,
+      "oracle": 3063.83320798278,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__bop_capital__bop_capital",
+      "native": 567221158.8394376,
+      "oracle": 567221158.8394376,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__buildings__buildings_cost__cost",
+      "native": 643009274.3035132,
+      "oracle": 643009274.3035132,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "channel": "stellarator_09__stellaris__calendar__availability",
+      "native": 0.9027777777777779,
+      "oracle": 0.9027777777777778,
+      "pass": true,
+      "relative_deviation": 1.2297855042001735e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__calendar__cas72_annual",
+      "native": 134629806.99228135,
+      "oracle": 134629806.99228135,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": -3.552713678800501e-15,
+      "channel": "stellarator_09__stellaris__calendar__coil_life_margin_fpy",
+      "native": -17.083333333333336,
+      "oracle": -17.083333333333332,
+      "pass": true,
+      "relative_deviation": 2.0796372753954153e-16
+    },
+    {
+      "absolute_difference": -2.220446049250313e-16,
+      "channel": "stellarator_09__stellaris__calendar__dated_energy_ratio",
+      "native": 1.0070444046326676,
+      "oracle": 1.0070444046326679,
+      "pass": true,
+      "relative_deviation": 2.2049137446528474e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__calendar__n_replacements",
+      "native": 5.0,
+      "oracle": 5.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__calendar__physical_life_fpy",
+      "native": 4.623868727035642,
+      "oracle": 4.623868727035642,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__calendar__planned_downtime_yr",
+      "native": 2.916666666666667,
+      "oracle": 2.916666666666667,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 3.552713678800501e-15,
+      "channel": "stellarator_09__stellaris__calendar__productive_fpy",
+      "native": 27.083333333333336,
+      "oracle": 27.083333333333332,
+      "pass": true,
+      "relative_deviation": 1.311771204480185e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__calendar__replacement_pv",
+      "native": 1670626819.4946644,
+      "oracle": 1670626819.4946644,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__calendar__terminal_downtime_yr",
+      "native": 0.0,
+      "oracle": 0.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__calendar__unplanned_downtime_yr",
+      "native": 0.0,
+      "oracle": 0.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": -9.5367431640625e-07,
+      "channel": "stellarator_09__stellaris__cas20_capital__cas20_capital",
+      "native": 7494818638.278153,
+      "oracle": 7494818638.278154,
+      "pass": true,
+      "relative_deviation": 1.2724448214604768e-16
+    },
+    {
+      "absolute_difference": -9.5367431640625e-07,
+      "channel": "stellarator_09__stellaris__cas22_capital__cas22_capital",
+      "native": 5574351006.134448,
+      "oracle": 5574351006.134449,
+      "pass": true,
+      "relative_deviation": 1.7108257362278633e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital",
+      "native": 596111208.9058143,
+      "oracle": 596111208.9058143,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": -9.5367431640625e-07,
+      "channel": "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency",
+      "native": 6813471489.343776,
+      "oracle": 6813471489.343777,
+      "pass": true,
+      "relative_deviation": 1.3996893036065244e-16
+    },
+    {
+      "absolute_difference": -1.1920928955078125e-07,
+      "channel": "stellarator_09__stellaris__cas90_1cfe_calc__cas90",
+      "native": 1055622815.4021517,
+      "oracle": 1055622815.4021518,
+      "pass": true,
+      "relative_deviation": 1.1292792066583657e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__contingency__cost",
+      "native": 681347148.9343777,
+      "oracle": 681347148.9343777,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__aux_cooling__aux_cost",
+      "native": 3551710.7603493156,
+      "oracle": 3551710.7603493156,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__aux_cooling__cost",
+      "native": 39005125.299577065,
+      "oracle": 39005125.299577065,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__aux_cooling__cryo_cost",
+      "native": 35453414.53922775,
+      "oracle": 35453414.53922775,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__cold_load__p_cold",
+      "native": 0.02740973196690074,
+      "oracle": 0.02740973196690074,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__cold_load__q_structure_nuclear",
+      "native": 0.0,
+      "oracle": 0.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__cryo_elec__p_elec",
+      "native": 1.9186812376830518,
+      "oracle": 1.9186812376830518,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__inventory__area_cold",
+      "native": 3472.1360816420597,
+      "oracle": 3472.1360816420597,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__inventory__area_shield",
+      "native": 4166.5632979704715,
+      "oracle": 4166.5632979704715,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__inventory__p_drive",
+      "native": 0.050267327222555655,
+      "oracle": 0.050267327222555655,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__inventory__q_inventory_cold",
+      "native": 9663.817938283071,
+      "oracle": 9663.817938283071,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__inventory__q_inventory_shield",
+      "native": 42463.121668368876,
+      "oracle": 42463.121668368876,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__inventory__q_lead_cold",
+      "native": 8729.062449656321,
+      "oracle": 8729.062449656321,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__inventory__q_lead_shield",
+      "native": 34038.26477289934,
+      "oracle": 34038.26477289934,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__inventory__q_rad_cold",
+      "native": 344.47694781075546,
+      "oracle": 344.47694781075546,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__inventory__q_rad_shield",
+      "native": 3822.086350159716,
+      "oracle": 3822.086350159716,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__inventory__q_support_cold",
+      "native": 590.2785408159937,
+      "oracle": 590.2785408159937,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__inventory__q_support_shield",
+      "native": 4602.770545309823,
+      "oracle": 4602.770545309823,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__refrigeration_sum__total",
+      "native": 2.5335692982055362,
+      "oracle": 2.5335692982055362,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__cryoplant__shield_elec__p_elec",
+      "native": 0.6148880605224843,
+      "oracle": 0.6148880605224843,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divertor_cost__cost",
+      "native": 107813638.6095661,
+      "oracle": 107813638.6095661,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__f_rad_edge",
+      "native": 0.8342177064860344,
+      "oracle": 0.8342177064860344,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__f_rad_edge_defined",
+      "native": 1.0,
+      "oracle": 1.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__f_rad_edge_in_range",
+      "native": 0.13829852467121492,
+      "oracle": 0.13829852467121492,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__p_heat_abs",
+      "native": 539.1450884959415,
+      "oracle": 539.1450884959415,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__p_heat_operating_minus_installed",
+      "native": -5.996192241139909,
+      "oracle": -5.996192241139909,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__p_nonrad_uncaptured",
+      "native": 0.5391450884959426,
+      "oracle": 0.5391450884959426,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__p_rad_edge",
+      "native": 271.29820058280563,
+      "oracle": 271.29820058280563,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__p_rad_total",
+      "native": 485.2305796463474,
+      "oracle": 485.2305796463474,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__p_sep",
+      "native": 325.2127094323997,
+      "oracle": 325.2127094323997,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__p_target_deposited",
+      "native": 53.3753637610982,
+      "oracle": 53.3753637610982,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__p_target_nonrad",
+      "native": 53.91450884959414,
+      "oracle": 53.91450884959414,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__peak_equivalent_area",
+      "native": 5.2105263157894735,
+      "oracle": 5.2105263157894735,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__peak_equivalent_area_defined",
+      "native": 1.0,
+      "oracle": 1.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__power_account_valid",
+      "native": 1.0,
+      "oracle": 1.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__q_target_margin",
+      "native": -0.2437566814228873,
+      "oracle": -0.2437566814228873,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__q_target_peak",
+      "native": 10.243756681422887,
+      "oracle": 10.243756681422887,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__divertor__divheat__q_target_peak_area_scaled",
+      "native": 10.21159418006834,
+      "oracle": 10.21159418006834,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__electric_plant__electric_cost__cost",
+      "native": 114756440.67684408,
+      "oracle": 114756440.67684408,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel__burn_kg_per_fpy",
+      "native": 145.98436028492472,
+      "oracle": 145.98436028492472,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel__burn_rate",
+      "native": 9.242983819547374e+20,
+      "oracle": 9.242983819547374e+20,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate",
+      "native": 1.7561669257140009e+22,
+      "oracle": 1.7561669257140009e+22,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel__inject_rate",
+      "native": 1.8485967639094747e+22,
+      "oracle": 1.8485967639094747e+22,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel__loss_rate",
+      "native": 1.7561669257140024e+20,
+      "oracle": 1.7561669257140024e+20,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin",
+      "native": -0.1160000000000001,
+      "oracle": -0.1160000000000001,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel__tbr_required",
+      "native": 1.1900000000000002,
+      "oracle": 1.1900000000000002,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 2.3283064365386963e-10,
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel",
+      "native": 540509.764689133,
+      "oracle": 540509.7646891328,
+      "pass": true,
+      "relative_deviation": 4.307612162895506e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel_handling__cost",
+      "native": 120316278.89488593,
+      "oracle": 120316278.89488593,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heat_rejection__heat_rejection_cost__cost",
+      "native": 113202708.41622455,
+      "oracle": 113202708.41622455,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heat_transport__coolant__cost",
+      "native": 205463956.98291135,
+      "oracle": 205463956.98291135,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__T_comp_in",
+      "native": 562.3795210103963,
+      "oracle": 562.3795210103963,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__T_out",
+      "native": 773.15,
+      "oracle": 773.15,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__capacity_margin",
+      "native": 14.366022393965778,
+      "oracle": 14.366022393965778,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__dp_loop",
+      "native": 288506.24209077266,
+      "oracle": 288506.24209077266,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__mdot",
+      "native": 2949.964575373368,
+      "oracle": 2949.964575373368,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__mdot_loop",
+      "native": 210.711755383812,
+      "oracle": 210.711755383812,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__p_elec",
+      "native": 164.9947559711432,
+      "oracle": 164.9947559711432,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__p_loop_margin",
+      "native": 7711493.757909227,
+      "oracle": 7711493.757909227,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__p_pump_total",
+      "native": 164.9947559711432,
+      "oracle": 164.9947559711432,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__q_ihx",
+      "native": 3228.8279639539232,
+      "oracle": 3228.8279639539232,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__q_recovered_total",
+      "native": 164.9947559711432,
+      "oracle": 164.9947559711432,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__r_comp",
+      "native": 1.0374124976493522,
+      "oracle": 1.0374124976493522,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__w_fluid",
+      "native": 164.9947559711432,
+      "oracle": 164.9947559711432,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heating__heat__eta_pin_eff",
+      "native": 0.5,
+      "oracle": 0.5,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heating__heat__p_coupled",
+      "native": 50.0,
+      "oracle": 50.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heating__heat__p_delivered",
+      "native": 50.0,
+      "oracle": 50.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heating__heat__p_wallplug_total",
+      "native": 100.0,
+      "oracle": 100.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__heating__heating_cost__cost",
+      "native": 264145000.0,
+      "oracle": 264145000.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": -4.76837158203125e-07,
+      "channel": "stellarator_09__stellaris__idc__cost",
+      "native": 2885217039.8519416,
+      "oracle": 2885217039.851942,
+      "pass": true,
+      "relative_deviation": 1.6526907737505751e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__inc_cost__cost",
+      "native": 80659195.44280742,
+      "oracle": 80659195.44280742,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": -2.384185791015625e-07,
+      "channel": "stellarator_09__stellaris__indirect__cost",
+      "native": 1998618303.540841,
+      "oracle": 1998618303.5408413,
+      "pass": true,
+      "relative_deviation": 1.1929170201191968e-16
+    },
+    {
+      "absolute_difference": -1.1920928955078125e-07,
+      "channel": "stellarator_09__stellaris__installation__cost",
+      "native": 627671984.2251403,
+      "oracle": 627671984.2251405,
+      "pass": true,
+      "relative_deviation": 1.899229096515194e-16
+    },
+    {
+      "absolute_difference": -2.842170943040401e-14,
+      "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+      "native": 160.01038794644066,
+      "oracle": 160.0103879464407,
+      "pass": true,
+      "relative_deviation": 1.776241517514315e-16
+    },
+    {
+      "absolute_difference": -2.842170943040401e-14,
+      "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+      "native": 162.94699293866321,
+      "oracle": 162.94699293866324,
+      "pass": true,
+      "relative_deviation": 1.7442303731927443e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__casing_mass__m_casing",
+      "native": 63154.71810042903,
+      "oracle": 63154.71810042903,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__cond_strain__eps_cond",
+      "native": 0.001493512484413845,
+      "oracle": 0.001493512484413845,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": -3.637978807091713e-11,
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__allowable_current",
+      "native": 49999.99999999996,
+      "oracle": 50000.0,
+      "pass": true,
+      "relative_deviation": 7.275957614183426e-16
+    },
+    {
+      "absolute_difference": -4.3655745685100555e-11,
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__critical_current_reference",
+      "native": 62499.99999999995,
+      "oracle": 62499.99999999999,
+      "pass": true,
+      "relative_deviation": 6.98491930961609e-16
+    },
+    {
+      "absolute_difference": -3.637978807091713e-11,
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__critical_current_set",
+      "native": 63071.50589644367,
+      "oracle": 63071.505896443705,
+      "pass": true,
+      "relative_deviation": 5.768022747173444e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__field_extrapolated",
+      "native": 1.0,
+      "oracle": 1.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": -3.637978807091713e-11,
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+      "native": -3.637978807091713e-11,
+      "oracle": 0.0,
+      "pass": false,
+      "relative_deviation": 3.637978807091713e+19
+    },
+    {
+      "absolute_difference": -5.551115123125783e-16,
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+      "native": -5.551115123125783e-16,
+      "oracle": 0.0,
+      "pass": false,
+      "relative_deviation": 555111512312578.25
+    },
+    {
+      "absolute_difference": 5.551115123125783e-16,
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__operating_fraction_reference",
+      "native": 0.8000000000000006,
+      "oracle": 0.8,
+      "pass": true,
+      "relative_deviation": 6.938893903907228e-16
+    },
+    {
+      "absolute_difference": 5.551115123125783e-16,
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__operating_fraction_set",
+      "native": 0.7927510099742091,
+      "oracle": 0.7927510099742086,
+      "pass": true,
+      "relative_deviation": 7.002343804401313e-16
+    },
+    {
+      "absolute_difference": -1.4210854715202004e-13,
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__parallel_tapes_reference",
+      "native": 237.4601054671001,
+      "oracle": 237.46010546710025,
+      "pass": true,
+      "relative_deviation": 5.984523036932154e-16
+    },
+    {
+      "absolute_difference": -1.4210854715202004e-13,
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__parallel_tapes_set",
+      "native": 239.63146307421363,
+      "oracle": 239.63146307421377,
+      "pass": true,
+      "relative_deviation": 5.930295852177352e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__tape_critical_current",
+      "native": 263.2021066320097,
+      "oracle": 263.2021066320097,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__conductor_grade__j_wp_effective",
+      "native": 118.8271604938272,
+      "oracle": 118.8271604938272,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__conductor_grade__quantity_factor",
+      "native": 1.0,
+      "oracle": 1.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 1.0842021724855044e-19,
+      "channel": "stellarator_09__stellaris__magnet__current_sizing__required_conductor_area",
+      "native": 0.0008865177270771736,
+      "oracle": 0.0008865177270771735,
+      "pass": true,
+      "relative_deviation": 1.2229898391993713e-16
+    },
+    {
+      "absolute_difference": -7.105427357601002e-15,
+      "channel": "stellarator_09__stellaris__magnet__current_sizing__required_effective_density",
+      "native": 56.400451421144986,
+      "oracle": 56.40045142114499,
+      "pass": true,
+      "relative_deviation": 1.2598174621944814e-16
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "channel": "stellarator_09__stellaris__magnet__current_sizing__required_pack_area",
+      "native": 0.2739074519395798,
+      "oracle": 0.27390745193957977,
+      "pass": true,
+      "relative_deviation": 2.0266389555368075e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__current_sizing__required_tapes",
+      "native": 237.46010546710028,
+      "oracle": 237.46010546710028,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": -7.105427357601002e-15,
+      "channel": "stellarator_09__stellaris__magnet__current_sizing__selected_effective_density",
+      "native": 56.400451421144986,
+      "oracle": 56.40045142114499,
+      "pass": true,
+      "relative_deviation": 1.2598174621944814e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__current_sizing__tape_available_current",
+      "native": 263.2021066320097,
+      "oracle": 263.2021066320097,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__field_calc__B_axis",
+      "native": 9.0,
+      "oracle": 9.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__insulation_inventory__ground_volume",
+      "native": 7.179236556914473,
+      "oracle": 7.179236556914473,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__insulation_inventory__internal_volume",
+      "native": 7.215432414519487,
+      "oracle": 7.215432414519487,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__insulation_inventory__sheet_area",
+      "native": 14430.864829038974,
+      "oracle": 14430.864829038974,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__insulation_inventory__stock_cost",
+      "native": 890055.4327435713,
+      "oracle": 890055.4327435713,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": -9.5367431640625e-07,
+      "channel": "stellarator_09__stellaris__magnet__magnet_capital_rollup__capital_cost",
+      "native": 2543147112.3143926,
+      "oracle": 2543147112.3143935,
+      "pass": true,
+      "relative_deviation": 3.7499769942068264e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__magnet_cost__capital_cost",
+      "native": 6343386387.110083,
+      "oracle": 6343386387.110083,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__magnet_structure_cost__cost",
+      "native": 209594350.47517645,
+      "oracle": 209594350.47517645,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__magnet_structure_cost__effective_all_in_rate",
+      "native": 18.0,
+      "oracle": 18.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__material_inventory__cost_copper",
+      "native": 9933918.731013846,
+      "oracle": 9933918.731013846,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__material_inventory__cost_helium",
+      "native": 73494.5951763714,
+      "oracle": 73494.5951763714,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__material_inventory__cost_solder",
+      "native": 18725293.609753102,
+      "oracle": 18725293.609753102,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__material_inventory__cost_steel",
+      "native": 4987306.884915869,
+      "oracle": 4987306.884915869,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__material_inventory__helium_density",
+      "native": 36.10517755948641,
+      "oracle": 36.10517755948641,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__material_inventory__mass_copper",
+      "native": 903083.5210012587,
+      "oracle": 903083.5210012587,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__material_inventory__mass_helium",
+      "native": 833.6462991830392,
+      "oracle": 833.6462991830392,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__material_inventory__mass_solder",
+      "native": 290579.8941975287,
+      "oracle": 290579.8941975287,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__material_inventory__mass_steel",
+      "native": 831217.8141526448,
+      "oracle": 831217.8141526448,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__material_inventory__material_cost",
+      "native": 33720013.82085919,
+      "oracle": 33720013.82085919,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": -1.4210854715202004e-14,
+      "channel": "stellarator_09__stellaris__magnet__material_inventory__tape_volume",
+      "native": 25.97555669227016,
+      "oracle": 25.975556692270175,
+      "pass": true,
+      "relative_deviation": 5.470856653259285e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__peak_field_calc__B_peak",
+      "native": 24.874239898844756,
+      "oracle": 24.874239898844756,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__stored_energy__W_mag",
+      "native": 111349606299.21262,
+      "oracle": 111349606299.21262,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__support_mass__m_support",
+      "native": 11644130.581954248,
+      "oracle": 11644130.581954248,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__winding_pack_cost__cost",
+      "native": 5363439685.0393715,
+      "oracle": 5363439685.0393715,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__winding_procurement__conductor_length",
+      "native": 322612.91338582686,
+      "oracle": 322612.91338582686,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": -9.5367431640625e-07,
+      "channel": "stellarator_09__stellaris__magnet__winding_procurement__cost",
+      "native": 2332662706.4064727,
+      "oracle": 2332662706.4064736,
+      "pass": true,
+      "relative_deviation": 4.088350680906669e-16
+    },
+    {
+      "absolute_difference": -9.5367431640625e-07,
+      "channel": "stellarator_09__stellaris__magnet__winding_procurement__tape_cost",
+      "native": 1546164088.825605,
+      "oracle": 1546164088.8256059,
+      "pass": true,
+      "relative_deviation": 6.168001981798818e-16
+    },
+    {
+      "absolute_difference": -4.470348358154297e-08,
+      "channel": "stellarator_09__stellaris__magnet__winding_procurement__tape_length",
+      "native": 77308204.44128025,
+      "oracle": 77308204.44128029,
+      "pass": true,
+      "relative_deviation": 5.782501857936392e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__winding_procurement__winding_fabrication_cost",
+      "native": 752778603.7600085,
+      "oracle": 752778603.7600085,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__cavity_x",
+      "native": 0.25,
+      "oracle": 0.25,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__cavity_y",
+      "native": 0.4,
+      "oracle": 0.4,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__exterior_x",
+      "native": 0.3,
+      "oracle": 0.3,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__exterior_y",
+      "native": 0.45,
+      "oracle": 0.45,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__insulated_x",
+      "native": 0.529361683675429,
+      "oracle": 0.529361683675429,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__insulated_y",
+      "native": 0.5424457257673148,
+      "oracle": 0.5424457257673148,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__internal_x",
+      "native": 0.0,
+      "oracle": 0.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__internal_y",
+      "native": 0.013084042091885725,
+      "oracle": 0.013084042091885725,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__margin_x",
+      "native": -0.283361683675429,
+      "oracle": -0.283361683675429,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__margin_y",
+      "native": -0.14644572576731474,
+      "oracle": -0.14644572576731474,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__minimum_margin",
+      "native": -0.283361683675429,
+      "oracle": -0.283361683675429,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__nominal_x",
+      "native": 0.523361683675429,
+      "oracle": 0.523361683675429,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__nominal_y",
+      "native": 0.523361683675429,
+      "oracle": 0.523361683675429,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__pack_x",
+      "native": 0.523361683675429,
+      "oracle": 0.523361683675429,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__pack_y",
+      "native": 0.5364457257673148,
+      "oracle": 0.5364457257673148,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__required_x",
+      "native": 0.533361683675429,
+      "oracle": 0.533361683675429,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__required_y",
+      "native": 0.5464457257673148,
+      "oracle": 0.5464457257673148,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_stress__sigma_wp",
+      "native": 448053745.32415354,
+      "oracle": 448053745.32415354,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__magnet__wp_volume__vol_winding_pack",
+      "native": 288.61729658077945,
+      "oracle": 288.61729658077945,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__misc_plant__misc_cost__cost",
+      "native": 69850014.06475961,
+      "oracle": 69850014.06475961,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__om_cost__annual_om",
+      "native": 55003316.55282833,
+      "oracle": 55003316.55282833,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__operating_heat__p_coupled",
+      "native": 44.00380775886009,
+      "oracle": 44.00380775886009,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__operating_heat__p_delivered",
+      "native": 44.00380775886009,
+      "oracle": 44.00380775886009,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__operating_heat__p_wallplug",
+      "native": 88.00761551772018,
+      "oracle": 88.00761551772018,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__other_rpe__cost",
+      "native": 11534646.58591766,
+      "oracle": 11534646.58591766,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": -1.9073486328125e-06,
+      "channel": "stellarator_09__stellaris__overnight_capital__overnight_capital",
+      "native": 10214049950.721762,
+      "oracle": 10214049950.721764,
+      "pass": true,
+      "relative_deviation": 1.8673774281647403e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__owner__cost",
+      "native": 41277534.46223182,
+      "oracle": 41277534.46223182,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__pb__p_et",
+      "native": 1328.1995448708806,
+      "oracle": 1328.1995448708806,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__pb__p_net",
+      "native": 1003.7673504104625,
+      "oracle": 1003.7673504104625,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__pb__p_th",
+      "native": 3228.8279639539232,
+      "oracle": 3228.8279639539232,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__pb__p_the",
+      "native": 1328.1995448708806,
+      "oracle": 1328.1995448708806,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__pb__q_eng",
+      "native": 4.093920293822524,
+      "oracle": 4.093920293822524,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__pb__rec_frac",
+      "native": 0.24426464811953935,
+      "oracle": 0.24426464811953935,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__beta_calc__beta",
+      "native": 0.024968509691944217,
+      "oracle": 0.024968509691944217,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__fusion__p_fus",
+      "native": 2603.4033373840975,
+      "oracle": 2603.4033373840975,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__geom__A",
+      "native": 9.8,
+      "oracle": 9.8,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__geom__V",
+      "native": 424.99999999999915,
+      "oracle": 424.99999999999915,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__T_e0",
+      "native": 15.400000000000002,
+      "oracle": 15.400000000000002,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__W_th",
+      "native": 513.000713604071,
+      "oracle": 513.000713604071,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__alpha_He_eff",
+      "native": 4.12934311803451,
+      "oracle": 4.12934311803451,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__alpha_n_e_eff",
+      "native": 0.6217151244488179,
+      "oracle": 0.6217151244488179,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__n_D0",
+      "native": 1.920874169510505e+20,
+      "oracle": 1.920874169510505e+20,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__n_He0",
+      "native": 6.091258304894951e+19,
+      "oracle": 6.091258304894951e+19,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__n_T0",
+      "native": 1.920874169510505e+20,
+      "oracle": 1.920874169510505e+20,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__n_bar19",
+      "native": 37.41613961070496,
+      "oracle": 37.41613961070496,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__n_e_volav",
+      "native": 3.1201534250473076e+20,
+      "oracle": 3.1201534250473076e+20,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__p_alpha_heat",
+      "native": 495.14128073708144,
+      "oracle": 495.14128073708144,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__p_aux_required",
+      "native": 44.00380775886009,
+      "oracle": 44.00380775886009,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__p_avg",
+      "native": 804707.0017318779,
+      "oracle": 804707.0017318779,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__p_brems",
+      "native": 89.52693501408399,
+      "oracle": 89.52693501408399,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__p_line",
+      "native": 110.2178557948679,
+      "oracle": 110.2178557948679,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__p_rad",
+      "native": 213.9323790635418,
+      "oracle": 213.9323790635418,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__p_sync",
+      "native": 14.187588254589881,
+      "oracle": 14.187588254589881,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__plasma__sustain__tau_E",
+      "native": 1.577431320256276,
+      "oracle": 1.577431320256276,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__power_supplies__power_supplies_cost__cost",
+      "native": 91285003.45661613,
+      "oracle": 91285003.45661613,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__power_supplies__tf_power__total",
+      "native": 0.050267327222555655,
+      "oracle": 0.050267327222555655,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": -9.5367431640625e-07,
+      "channel": "stellarator_09__stellaris__powercore_capital__powercore_capital",
+      "native": 4318544989.22464,
+      "oracle": 4318544989.224641,
+      "pass": true,
+      "relative_deviation": 2.208323217161793e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__precon_cost__cost",
+      "native": 18504704.761057757,
+      "oracle": 18504704.761057757,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__rb__r_coil_centre",
+      "native": 3.1500000000000004,
+      "oracle": 3.1500000000000004,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": -9.5367431640625e-07,
+      "channel": "stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal",
+      "native": 4483371315.893859,
+      "oracle": 4483371315.89386,
+      "pass": true,
+      "relative_deviation": 2.1271365880970172e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__remote_handling__cost",
+      "native": 164826326.66921875,
+      "oracle": 164826326.66921875,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__shield__shield_cost__cost",
+      "native": 447494584.9082183,
+      "oracle": 447494584.9082183,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+      "native": 23890050.066376682,
+      "oracle": 23890050.066376682,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__structure__structure_cost__cost",
+      "native": 33885469.73559552,
+      "oracle": 33885469.73559552,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__structure__structure_cost__legacy_cost",
+      "native": 33885469.73559552,
+      "oracle": 33885469.73559552,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": -1.1920928955078125e-07,
+      "channel": "stellarator_09__stellaris__supplementary__cost",
+      "native": 660830769.6794775,
+      "oracle": 660830769.6794776,
+      "pass": true,
+      "relative_deviation": 1.803930673636781e-16
+    },
+    {
+      "absolute_difference": -1.9073486328125e-06,
+      "channel": "stellarator_09__stellaris__total_capital__total_capital",
+      "native": 10214049950.721762,
+      "oracle": 10214049950.721764,
+      "pass": true,
+      "relative_deviation": 1.8673774281647403e-16
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__turbine__cycle__T2_C",
+      "native": 480.0,
+      "oracle": 480.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__turbine__cycle__domain_product",
+      "native": 15552.0,
+      "oracle": 15552.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__turbine__cycle__eta_fit",
+      "native": 0.41135655404954075,
+      "oracle": 0.41135655404954075,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__turbine__cycle__eta_th",
+      "native": 0.41135655404954075,
+      "oracle": 0.41135655404954075,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__turbine__cycle__margin_high",
+      "native": 162.0,
+      "oracle": 162.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__turbine__cycle__margin_low",
+      "native": 96.0,
+      "oracle": 96.0,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__turbine__turbine_cost__cost",
+      "native": 269411995.6816094,
+      "oracle": 269411995.6816094,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total",
+      "native": 76.56789820484558,
+      "oracle": 76.56789820484558,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required",
+      "native": 76.56789820484558,
+      "oracle": 76.56789820484558,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules",
+      "native": 1.8485967639094747e+22,
+      "oracle": 1.8485967639094747e+22,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__vessel__vessel_cost__cost",
+      "native": 119620623.64340699,
+      "oracle": 119620623.64340699,
+      "pass": true,
+      "relative_deviation": 0.0
+    },
+    {
+      "absolute_difference": 0.0,
+      "channel": "stellarator_09__stellaris__waste__cost",
+      "native": 6328502.80934969,
+      "oracle": 6328502.80934969,
+      "pass": true,
+      "relative_deviation": 0.0
+    }
+  ],
+  "numeric_passed": 224,
+  "oracle_evaluations": 1,
+  "predicate_checks": [
+    {
+      "id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+      "name": "wp_stress_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+      "name": "cond_strain_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+      "name": "recirc_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+      "name": "cycle_domain_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+      "name": "beta_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+      "name": "heating_couple_positive_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+      "name": "divertor_heat_ok",
+      "native": "violated",
+      "native_operand_reconstruction": "violated",
+      "native_operands_agree": true,
+      "oracle": "violated",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+      "name": "heating_source_upper_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+      "name": "net_positive",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+      "name": "burn_hold_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+      "name": "wall_load_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+      "name": "tbr_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+      "name": "heating_couple_upper_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+      "name": "peak_field_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "name": "reference_conductor_current_ok",
+      "native": "violated",
+      "native_operand_reconstruction": "violated",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": false
+    },
+    {
+      "id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+      "name": "sustainment_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+      "name": "loop_capacity_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+      "name": "wp_fit_ok",
+      "native": "violated",
+      "native_operand_reconstruction": "violated",
+      "native_operands_agree": true,
+      "oracle": "violated",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+      "name": "heating_source_positive_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    },
+    {
+      "id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+      "name": "loop_pressure_ok",
+      "native": "satisfied",
+      "native_operand_reconstruction": "satisfied",
+      "native_operands_agree": true,
+      "oracle": "satisfied",
+      "oracle_agrees": true
+    }
+  ],
+  "predicate_native_operands_agreed": 20,
+  "predicate_oracle_agreed": 19,
+  "ratio_bands_used_for_arithmetic": false,
+  "reference_values": null,
+  "relative_tolerance": 1e-09,
+  "run_kind": "conditioned",
+  "source_native_result": ".project/active/aries-comparison-preparation/package/table5-conditioned/native-result.json",
+  "unmapped_outputs": [
+    "stellarator_09__stellaris__cas70_calc__annual_total",
+    "stellarator_09__stellaris__cas70_calc__cas70",
+    "stellarator_09__stellaris__cas71_calc__crf",
+    "stellarator_09__stellaris__cas71_calc__levelized",
+    "stellarator_09__stellaris__cas80_calc__crf",
+    "stellarator_09__stellaris__cas80_calc__levelized",
+    "stellarator_09__stellaris__magnet__coil_length__c_coil",
+    "stellarator_09__stellaris__magnet__wp_sizing__wp_side",
+    "stellarator_09__stellaris__magnet__wp_volume__vol_cold_total",
+    "stellarator_09__stellaris__rb__blanket_vol",
+    "stellarator_09__stellaris__rb__r_coil",
+    "stellarator_09__stellaris__rb__shield_vol",
+    "stellarator_09__stellaris__rb__structure_vol",
+    "stellarator_09__stellaris__rb__vessel_vol",
+    "stellarator_09__stellaris__rb__wall_area",
+    "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event"
+  ]
+}
