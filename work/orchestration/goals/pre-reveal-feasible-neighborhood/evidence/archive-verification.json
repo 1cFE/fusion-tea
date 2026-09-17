@@ -1,0 +1,7 @@
+{
+  "command": ".codex-test/run python .project/active/aries-comparison-preparation/package/build_freeze.py --verify .project/active/aries-comparison-preparation/package/freeze/r2/comparison-freeze.tar.gz",
+  "outcome": "pass",
+  "verified_files": 1498,
+  "sha256": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21",
+  "bytes": 27470925
+}
