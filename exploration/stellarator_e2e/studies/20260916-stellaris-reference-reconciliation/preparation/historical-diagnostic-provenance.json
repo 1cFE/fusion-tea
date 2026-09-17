@@ -1,0 +1,9 @@
+{
+  "source": ".project/active/aries-comparison-preparation/package/selected-mode-check.json",
+  "sha256": "fb38b31847412fa3c2e07f8c2bf6dbb8419434a0356d378abed010b816f46aa8",
+  "reuse_scope": "Exact selected-inventory multiplier1 historical diagnostic; no ninth native case; unchanged executable and equations, reviewed reuse.",
+  "strict_relative_scalar_matches": 224,
+  "scalar_checks": 226,
+  "predicate_oracle_matches": 19,
+  "predicate_checks": 20
+}

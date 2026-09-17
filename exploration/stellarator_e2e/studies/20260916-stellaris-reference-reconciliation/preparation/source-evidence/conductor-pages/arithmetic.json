@@ -1,0 +1,98 @@
+{
+  "reference_density_A_mm2": 118.82716049382717,
+  "entering_turns": 308.0,
+  "reference_tapes": 112.70871985157697,
+  "source_cell_tapes_at_assumed_56um": 107.14285714285714,
+  "source_turn_current_from_rounded_amp_turns_A": 47530.864197530864,
+  "load_per_tape_A": 443.6213991769548,
+  "set_tape_length_m": 36578571.42857143,
+  "set_conductor_length_m": 321600.0,
+  "source_ungraded_length_m": 34360000,
+  "source_graded_length_m": 6856000,
+  "source_total_turns": 13656,
+  "set_tapes": 113.73933901918979,
+  "field_attribution": [
+    {
+      "B_T": 24.9,
+      "Ic_tape_A": 263.0386965975177,
+      "Ic_cable_A": 29646.754764933576,
+      "operating_fraction": 1.686525233417467,
+      "allowable_margin_A": -26282.59618805314
+    },
+    {
+      "B_T": 24.7,
+      "Ic_tape_A": 264.31455566556343,
+      "Ic_cable_A": 29790.555207204037,
+      "operating_fraction": 1.6783842950301529,
+      "allowable_margin_A": -26167.55583423677
+    },
+    {
+      "B_T": 24.6,
+      "Ic_tape_A": 264.95870218371357,
+      "Ic_cable_A": 29863.15613666159,
+      "operating_fraction": 1.6743039406547306,
+      "allowable_margin_A": -26109.47509067073
+    },
+    {
+      "B_T": 24.59,
+      "Ic_tape_A": 265.02334728078256,
+      "Ic_cable_A": 29870.442202796916,
+      "operating_fraction": 1.6738955406330829,
+      "allowable_margin_A": -26103.646237762467
+    }
+  ],
+  "rounded_source_cell_scalar_fraction": 1.6767392918411375,
+  "source_minimum_local_Ic_from_rounded_turn_current_A": 78677.68595041323,
+  "source_minimum_local_Je_from_printed_stack_J_A_mm2": 2186.7768595041325,
+  "unresolved_ratio_not_an_orientation_factor": 2.7876450139131688,
+  "dataset_sheet_names": [
+    "0T",
+    "0.01T",
+    "0.015T",
+    "0.02T",
+    "0.03T",
+    "0.05T",
+    "0.07T",
+    "0.1T",
+    "0.15T",
+    "0.2T",
+    "0.3T",
+    "0.5T",
+    "0.7T",
+    "1T",
+    "1.5T",
+    "2T",
+    "3T",
+    "5T",
+    "7T",
+    "8T"
+  ],
+  "dataset_angular_examples": {
+    "5T": {
+      "minimum": {
+        "Ic_per_cm_A": 1317.58,
+        "Hall_angle_deg": 160.65,
+        "set_angle_deg": 160
+      },
+      "maximum": {
+        "Ic_per_cm_A": 5126.47,
+        "Hall_angle_deg": 86.97,
+        "set_angle_deg": 88
+      },
+      "ratio": 3.8908225686485833
+    },
+    "8T": {
+      "minimum": {
+        "Ic_per_cm_A": 985.71,
+        "Hall_angle_deg": 24.91,
+        "set_angle_deg": 25
+      },
+      "maximum": {
+        "Ic_per_cm_A": 4865.33,
+        "Hall_angle_deg": 86.56,
+        "set_angle_deg": 88
+      },
+      "ratio": 4.935863489261547
+    }
+  }
+}

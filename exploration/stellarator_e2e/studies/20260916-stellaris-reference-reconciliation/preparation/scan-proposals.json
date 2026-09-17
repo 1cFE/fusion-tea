@@ -1,0 +1,138 @@
+[
+  {
+    "id": "legacy-control",
+    "proposal_id": "legacy-control",
+    "canonical_proposal_id": "legacy-control",
+    "family": "legacy-control",
+    "arm": "arm-native",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__plasma__f_shape": 1.0031567,
+      "stellarator_09__stellaris__plasma__alpha_n": 0.33,
+      "stellarator_09__stellaris__plasma__alpha_T": 1.19,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 0.0,
+      "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.0
+    }
+  },
+  {
+    "id": "selected-reserve-control",
+    "proposal_id": "selected-reserve-control",
+    "canonical_proposal_id": "selected-reserve-control",
+    "family": "selected-reserve-control",
+    "arm": "arm-native",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__plasma__f_shape": 1.0031567,
+      "stellarator_09__stellaris__plasma__alpha_n": 0.33,
+      "stellarator_09__stellaris__plasma__alpha_T": 1.19,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+      "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01
+    }
+  },
+  {
+    "id": "exact-profiles-legacy",
+    "proposal_id": "exact-profiles-legacy",
+    "canonical_proposal_id": "exact-profiles-legacy",
+    "family": "exact-profiles-legacy",
+    "arm": "arm-native",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__plasma__f_shape": 1.0031567,
+      "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+      "stellarator_09__stellaris__plasma__alpha_T": 1.2,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 0.0,
+      "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.0
+    }
+  },
+  {
+    "id": "exact-profiles-selected-reserve",
+    "proposal_id": "exact-profiles-selected-reserve",
+    "canonical_proposal_id": "exact-profiles-selected-reserve",
+    "family": "exact-profiles-selected-reserve",
+    "arm": "arm-native",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__plasma__f_shape": 1.0031567,
+      "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+      "stellarator_09__stellaris__plasma__alpha_T": 1.2,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+      "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01
+    }
+  },
+  {
+    "id": "table5-conditioned-legacy",
+    "proposal_id": "table5-conditioned-legacy",
+    "canonical_proposal_id": "table5-conditioned-legacy",
+    "family": "table5-conditioned-legacy",
+    "arm": "arm-native",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 12.74,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__plasma__f_shape": 1.0000070376114356,
+      "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+      "stellarator_09__stellaris__plasma__alpha_T": 1.2,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15448503.937007874,
+      "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 0.0,
+      "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.0
+    }
+  },
+  {
+    "id": "table5-conditioned-selected-reserve",
+    "proposal_id": "table5-conditioned-selected-reserve",
+    "canonical_proposal_id": "table5-conditioned-selected-reserve",
+    "family": "table5-conditioned-selected-reserve",
+    "arm": "arm-native",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 12.74,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__plasma__f_shape": 1.0000070376114356,
+      "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+      "stellarator_09__stellaris__plasma__alpha_T": 1.2,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15448503.937007874,
+      "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+      "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01
+    }
+  },
+  {
+    "id": "offref-R-plus2pct",
+    "proposal_id": "offref-R-plus2pct",
+    "canonical_proposal_id": "offref-R-plus2pct",
+    "family": "offref-R-plus2pct",
+    "arm": "arm-native",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 12.953999999999999,
+      "stellarator_09__stellaris__plasma__a": 1.3,
+      "stellarator_09__stellaris__plasma__f_shape": 1.0031567,
+      "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+      "stellarator_09__stellaris__plasma__alpha_T": 1.2,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 0.0,
+      "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.0
+    }
+  },
+  {
+    "id": "offref-a-plus2pct",
+    "proposal_id": "offref-a-plus2pct",
+    "canonical_proposal_id": "offref-a-plus2pct",
+    "family": "offref-a-plus2pct",
+    "arm": "arm-native",
+    "point": {
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.326,
+      "stellarator_09__stellaris__plasma__f_shape": 1.0031567,
+      "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+      "stellarator_09__stellaris__plasma__alpha_T": 1.2,
+      "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+      "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 0.0,
+      "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.0
+    }
+  }
+]
