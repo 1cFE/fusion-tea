@@ -1,6 +1,6 @@
 # Stellaris plasma power balance — technical answer
 
-[AGENT] **Published Point-A ignition is not reproduced. The discrepancy is partly attributed, but the source does not provide enough compatible energy/radiation detail to close it independently.** No physical coefficient, equation, default or predicate was changed to force ignition. [Final independent assurance](evidence/final-review.md) passes the quantified-unresolved outcome, attribution and freeze recommendation. Technical work is complete; formal goal closure remains owner-held.
+[AGENT] **Published Point-A ignition is not reproduced. The discrepancy is partly attributed, but the source does not provide enough compatible energy/radiation detail to close it independently.** No physical coefficient, equation, default or predicate was changed to force ignition. [Final independent assurance](evidence/final-review.md) passes the quantified-unresolved outcome, attribution and freeze recommendation. Technical work is complete. [OWNER] Goal closed on 2026-09-17; the owner also authorized the replacement freeze. Its execution record is `.project/active/aries-comparison-preparation/replacement-r2/`.
 
 ## What is established
 
@@ -37,4 +37,4 @@ Five fresh oracle controls agree with retained native results in **1,130 mapped 
 
 Use exact published profile exponents **0.35/1.2** with the live forward plasma closure. Retain the current approximate geometry/current prediction chain for the primary forward run, and keep exact Table 5 volume/field geometry as a separately supplied control. Preserve the previously selected current-sizing mode **1** and reserve **1.0**, including its boundary discrepancy. No choice is based on gaining a pass. The primary exact-profile control requires **45.1725 MW**; the **44.0038 MW** result belongs to Table 5 conditioning.
 
-[freeze-recommendation.md](freeze-recommendation.md) identifies the exact input/mapping, applicability, accounting, test and archive updates required. The existing archive remains unchanged at SHA256 `fdf6e14572f10c9254df1e297394f9eccb0060e3947283ea0f8cf569fc63f533`. A replacement freeze needs owner approval and its own verification. No reveal, merge or push occurred; formal goal closure remains owner-held.
+[freeze-recommendation.md](freeze-recommendation.md) identifies the exact input/mapping, applicability, accounting, test and archive updates required. The existing archive remains unchanged at SHA256 `fdf6e14572f10c9254df1e297394f9eccb0060e3947283ea0f8cf569fc63f533`. The owner approved replacement-freeze execution on 2026-09-17; its own verification is required before completion. No reveal, merge or push occurred.

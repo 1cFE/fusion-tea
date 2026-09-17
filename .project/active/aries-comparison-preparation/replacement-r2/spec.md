@@ -1,0 +1,13 @@
+# Replacement pre-reveal freeze r2
+
+Status: complete; independent PASS and approved r2 published. Date:2026-09-17. Owning coding item: aries-comparison-preparation. This supplements its existing spec/plan; no new scientific goal or reopened round.
+
+[OWNER-VERBATIM] “thanks, please close the goal” followed by “with replacement-freeze”. [OWNER] Execute the reviewed recommendation in work/orchestration/goals/stellaris-plasma-power-balance/freeze-recommendation.md, including ordinary implementation choices and independent verification. No reveal, merge or push.
+
+[NEED] Formally close the plasma-balance goal. Preserve r1 archive hash fdf6e14572f10c9254df1e297394f9eccb0060e3947283ea0f8cf569fc63f533 and historical records. Produce r2 with exact profiles0.35/1.2, retained forward geometry/current chain, selected sizing1/reserve1, live loop/cycle/calendar and existing predicates/limitations. Execute fresh selected forward and separately supplied Table5 control. Include current mappings/tests and source/diagnostic evidence. Refresh package rules, mapping/applicability/accounting/provenance/reporting. Build two byte-identical archives and independently test an extracted archive. No source-conditioned quantity earns independent prediction credit.
+
+[INFERRED] Preserve changed r1 live records in package/history/r1 before replacement, while retaining its frozen archive. Keep seven permitted independent inputs; profile exponents remain declared held forward overrides for this freeze, rather than introduce optional independent-profile policy. Add exactly one Table5 geometry/field conditioned seam. Missing/source-condition classifications and all20 raw predicates remain visible. Do not add a reserve to alter boundary signs.
+
+Design: reuse existing package scripts and reporter/exporter. Modify only the explicit rules/receipts, grouped conditioning support where needed and deterministic freeze evidence inclusion. No physical model change. Native stores are fresh paths after archiving historical ones. Producer/root paths remain stable to avoid introducing a new packaging layout. Existing contracts plus the reviewed recommendation supply design rationale; no separate speculative design document needed.
+
+Checks: source/quarantine before work; no interrupted active task; exact r1 hash; bounded new native cases with oracle/raw boundary accounting; comparison/report/export, mapping, dependency/read-set and accounting checks; complete current-byte archive index; duplicate archive build; fresh independent extraction/tests/custody. Gate failures are preserved and repaired within authorized scope, never converted into passes.

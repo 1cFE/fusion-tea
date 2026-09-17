@@ -153,8 +153,8 @@
     },
     {
       "path": "work/orchestration/goals/stellaris-plasma-power-balance/answer.md",
-      "sha256": "9f80ed137d22920246a656c458fe27d0b2bd5b781b8128e333f25f9c08a890e5",
-      "bytes": 6075
+      "sha256": "46eb8f8c4505301e6c88e93b55d43154c99d2c0cfd88753e1acdfc035123a05a",
+      "bytes": 6215
     },
     {
       "path": "work/orchestration/goals/stellaris-plasma-power-balance/evidence/diagnostic-plan.md",
@@ -448,13 +448,13 @@
     },
     {
       "path": "work/orchestration/goals/stellaris-plasma-power-balance/freeze-recommendation.md",
-      "sha256": "ccc96bdee889ad0e233c0286c9b5ab4f158c60ce4d41aa456e90c0c8fb9a0e44",
-      "bytes": 5434
+      "sha256": "17ddd60bd0496869a4c3fe5ce74051396cc72521233e2c7d444b2efdf36ece22",
+      "bytes": 5543
     },
     {
       "path": "work/orchestration/goals/stellaris-plasma-power-balance/goal.md",
-      "sha256": "e254154b475398cdef6a8d117b5cb86ee818281adad87ae1fcc9b745e4c86fc3",
-      "bytes": 4633
+      "sha256": "36c5d9b5233d72968fdfa52a26a97308e22f360938102bb00987ae98e9890e62",
+      "bytes": 5108
     },
     {
       "path": "work/orchestration/goals/stellaris-plasma-power-balance/owner-request.md",
@@ -467,5 +467,5 @@
       "bytes": 7799
     }
   ],
-  "post_review_note": "Mechanical completion-status/link edits only after independent PASS; append-only round/learning records excluded from this index and cite reviewed claims."
+  "post_review_note": "Scientific evidence independently reviewed at fe104e8d; subsequent owner closure/approval and status links change no scientific result. This refreshed custody captures current administrative state for approved r2."
 }

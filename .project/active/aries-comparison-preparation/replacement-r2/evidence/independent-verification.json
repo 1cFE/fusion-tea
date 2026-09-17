@@ -1,0 +1,50 @@
+{
+  "selected-mode": {
+    "outputs": 242,
+    "predicates": 20,
+    "classifications": {
+      "structural_evidence_required": 3,
+      "mapped": 166,
+      "not_produced": 5
+    },
+    "scalar_misses": [
+      "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+      "stellarator_09__stellaris__magnet__conductor_current__margin_fraction"
+    ],
+    "predicate_misses": [
+      "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0"
+    ]
+  },
+  "table5-conditioned": {
+    "outputs": 242,
+    "predicates": 20,
+    "classifications": {
+      "structural_evidence_required": 3,
+      "mapped": 166,
+      "not_produced": 5
+    },
+    "scalar_misses": [
+      "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+      "stellarator_09__stellaris__magnet__conductor_current__margin_fraction"
+    ],
+    "predicate_misses": [
+      "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0"
+    ]
+  },
+  "tests_passed": 97,
+  "index_files": 1498,
+  "accounting_equations": 1022,
+  "accounting_cases": 73,
+  "passthrough_aliases": 219,
+  "indicator_read_paths": 12,
+  "tamper_detected": true,
+  "rebuild_sha256": "b5c8ba5107a5b5a1ab72b57a9fcd68abcb5c9c61105d5d256c81e7ca176ddbb5",
+  "final_archive_sha256": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21",
+  "final_archive_bytes": 27470925,
+  "final_changed_files": [
+    ".project/active/aries-comparison-preparation/package/freeze-procedure.md",
+    "COMPARISON-SHA256SUMS"
+  ],
+  "final_extracted_rebuild_matches": true,
+  "final_every_index_byte_verified": true
+}

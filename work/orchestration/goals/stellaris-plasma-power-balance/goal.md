@@ -54,3 +54,7 @@ Owner-held. The coordinator recommends closure only after a reviewed answer sati
 ### Amendment 2026-09-17 — technical completion under Status
 
 [AGENT] Technical execution is complete on the quantified-unresolved outcome, with independent PASS in evidence/final-review.md and the final answer in answer.md. The goal remains formally open until the owner closes it under the Close rule. No replacement freeze or reveal is authorized by completion.
+
+### Amendment 2026-09-17 — owner closure and replacement authorization
+
+[OWNER-VERBATIM] “thanks, please close the goal” followed by “with replacement-freeze”. [OWNER] Goal closed on the independently reviewed quantified-unresolved outcome. The approved replacement freeze is executed in the owning coding item `.project/active/aries-comparison-preparation/replacement-r2/`; the closed scientific round is not reopened. Reveal, merge and push remain unauthorized.

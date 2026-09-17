@@ -1,6 +1,6 @@
 # Recommendation for a replacement pre-reveal freeze
 
-[AGENT] Recommendation only; the owner holds replacement-freeze approval. The existing archive is unchanged and does not represent these new diagnostic records. No holdout information informed this choice.
+[AGENT] Recommendation ratified by the owner on 2026-09-17 through “with replacement-freeze”; execution belongs to `.project/active/aries-comparison-preparation/replacement-r2/`. The existing archive is unchanged and does not represent these new diagnostic records. No holdout information informed this choice.
 
 ## Primary forward convention
 

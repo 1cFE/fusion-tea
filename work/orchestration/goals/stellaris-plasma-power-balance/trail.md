@@ -209,3 +209,7 @@ Integrated final synthesis and assurance · final-review-brief.md · evidence/fi
 - **Verdict:** PASS within the stated evidence-gap outcome. The final reviewer explicitly permits mechanical completion-status/link and round/learning entries after its PASS; scientific changes require recheck.
 - **Checks:** Source fidelity, accounting boundaries, all scoped tasks, absence of tuned changes, native evidence reuse, numerical controls, radiation quadrature, artifact custody, downstream limits and freeze distinction covered by final-review.md. No retries were used. The only review correction narrows a boundary statement and leaves numbers unchanged. Learning delta repeats independently reviewed claims and is accepted on that coverage.
 - **Next:** Technical completion and owner closure recommended. Formal native goal closure, replacement-freeze approval, merge/push and reveal remain separate owner-held actions.
+
+## Goal close — 2026-09-17
+
+[OWNER-VERBATIM] “thanks, please close the goal” followed by “with replacement-freeze”. [OWNER] Formally closed on the final independent PASS and quantified-unresolved answer. Replacement execution is authorized under `.project/active/aries-comparison-preparation/replacement-r2/spec.md` and plan.md. The scientific round remains closed; the historical archive and holdout seal are preserved.
