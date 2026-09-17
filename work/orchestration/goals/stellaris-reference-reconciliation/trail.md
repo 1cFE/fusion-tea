@@ -146,3 +146,33 @@ The prior exact-control amendment's new ninth evaluation is replaced by reviewed
 ### T-007 start — 2026-09-16
 
 The continuing native study worker refreshes oracle/source receipts, integration and baseline before executing. T-005's initial refused scan remains evidence; this is a new task after a prerequisite repair, not a mechanical retry with unchanged inputs.
+
+### T-007 return — 2026-09-16
+
+**Outcome:** COMPLETE. Study committed at `a17f51f0`; native `record.md`, `report.md`, `snapshot.json` and retained results document eight completed cases. Refreshed T-007 integration passes ten gates; all1,808 scalar/160 predicate comparisons pass. The historical exact selected diagnostic remains separate, with its recorded discrepancy. **Decision:** Accept conditional numerical reconstruction and explained unresolved deviations, not published-reference feasibility. **Reason:** No new case passes all20 raw predicates; source geometry/current/coolant applicability cannot be supplied by code agreement. **Tier:** execution detail. **Who:** clean coordinator [AGENT]. **Changed:** new native study, four finding rows, source applicability and source-conditioned accounting records. No physical equation/default/limit changed.
+
+### Round 1 result — 2026-09-16
+
+**Intent:** Met for the owner's permitted conditional-reconstruction/explained-deviation outcome. Source attribution corrected; explicit source-profile/plasma-conditioning scenarios and two off-reference cases executed; all reference failures classified and retained. The stronger integrated published-reference feasibility claim remains unestablished.
+
+**Task sequence:** T-001 original geometry/conductor research and T-002 clean power/coolant research; precautionary clean coordinator handoff; T-003 independent source review; T-004 quick-model attribution correction; T-005 native study preparation returned mapping prerequisite; T-006 bounded coding repair; T-007 refreshed integration and committed study. No mechanical retry with changed meaning was claimed. Historical exact selected-mode diagnostic reuse replaced an unnecessary ninth fresh evaluation; eight strict study cases retain the normal verifier gate.
+
+**Last semantic outcome / stop reason:** T-007 COMPLETE yields a valid native study reading, which closes the round. Goal-level answer is `answer.md`; all native findings are routed below. Final independent integration/answer assurance remains the uncovered closure obligation.
+
+**Evidence:** Source/comment review and mapping/control review under `evidence/`; correction `5dd9cbd0`; mapping prerequisite `d86e5b57`; committed study `exploration/stellarator_e2e/studies/20260916-stellaris-reference-reconciliation/@a17f51f0`; `reconciliation.md`; `evidence/freeze-unchanged.json`. Static L2/L6, sixteen unmapped scalars, integration read-set omission, historical boundary discrepancy and eight reproduced inherited consumer failures remain explicit.
+
+**Finding dispositions:** New-study#1 source-exact/conditioned response is a declared seam implemented by named cases and report; #2 local fit/current qualification is a declared seam with specific missing evidence in reconciliation.md; #3 coolant/neutronics/cost transfer is a declared seam recorded in corrected source attribution and applicability; #4 numeric agreement scope is a declared seam in verification/report. All four are implemented reporting/meaning dispositions; no engineering gap is marked solved. The original conductor-data acquisition has a native queued receipt; no unregistered material law was installed.
+
+**Proposed learning delta:** L-001: A generic radial layer cannot establish a published local cavity; retain raw geometry failure separately from source applicability. L-002: Exact source profile inputs reduce, but do not close, forward plasma/divertor discrepancies in this model. L-003: A source-coherent comparison must separate water-blanket/helium-first-wall topology, local conductor assumptions and paired divertor load cases from explicit alternatives. These are proposed pending independent review.
+
+### Amendment — 2026-09-16
+
+The final reviewer narrows proposed learning L-002: exact source profiles reduce computed operating auxiliary demand and divertor peak in these matched cases, but do not generally improve agreement with published plasma outputs. The fusion-power and confinement-time residuals worsen. This replaces the round result's broader “reduce forward plasma/divertor discrepancies” wording; no implementation or result changes follow.
+
+### Round 1 review — 2026-09-16
+
+**Reviewer:** fresh non-author `/root/clean_coordinator/source_reviewer`. **Verdict:** PASS for technical completion on conditional reconstruction with explained unresolved deviations; see `evidence/final-review.md`. Original source/math, model-comment and mapping coverage was reused. Final review independently verified all179 indexed artifacts against hashes and committed bytes, read-only baseline/eight-case stores and compatibility/evidence joins, all1,808 mapped scalars at relative1e-9/absolute0, all160 exact predicates, all applicability joins and scenario identities, source-conditioned accounting, answer and four joined dispositions. The historical archive hash is unchanged.
+
+**Learning delta:** Accept L-001 and L-003; accept only the narrowed L-002 from the final amendment. Appended to `learnings.md` in those forms. **Remaining uncertainty:** Source-qualified local geometry/conductor/divertor/coolant and costs remain unresolved; sixteen native scalars unmapped, historical current-boundary discrepancy, eight reproduced inherited consumer failures, static L2/L6 residue, native read-set omission and conductor acquisition queue are disclosed. These limit claims, not completion of this permitted outcome.
+
+**Recommendation:** Technical answer complete; no further scientific task or round is needed within this contract. Owner-held formal goal close and any new comparison freeze remain separate. No reveal, merge or push occurred. Scope correction and prerequisite repair are fully recorded; no limit was exceeded and no required review was replaced by self-certification.

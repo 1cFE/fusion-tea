@@ -1,0 +1,9 @@
+{
+  "archive": ".project/active/aries-comparison-preparation/package/freeze/r1/comparison-freeze.tar.gz",
+  "sha256": "fdf6e14572f10c9254df1e297394f9eccb0060e3947283ea0f8cf569fc63f533",
+  "bytes": 4228194,
+  "matches_entering_identity": true,
+  "entering_revision": "c1b853ad80d3aefa2fc98ce45288582b3482eddb",
+  "file_count_from_unchanged_record": 785,
+  "method": "content-free SHA256 and size comparison against entering freeze record; no archive contents read"
+}
