@@ -1,0 +1,98 @@
+J. Lion et al.
+Fig. 48. Schema of the support structure set-up used for the analysis. The exact set-up
+of the stress simulation with boundary conditions and connection is described in the
+text. (a) Internal view; (b) external view.
+for which we define a 3D model consisting of the coil winding packs
+and a design of the coil support structure—which consists of casings,
+inter-coil supports, and the central support ring. Fig. 48 schematically
+shows the different components in one module. For the simulation,
+we ‘smear out’ the internal structure of the winding pack as one
+homogeneous and isotropic material. We take an effective average of
+the winding pack material, obtaining an averaged Young’s modulus of
+about 170 GPa and a Poisson’s ratio of 0.3 for the winding pack. For this
+high-level calculation, we simply consider the support structure and the
+casings with the winding pack that carries the loads to be fully bonded.
+We then proceed to calculate static electromagnetic loads, using a
+fixed discretization of 300 points for each coil. This point load is then
+converted to a volumetric load, mapped to the section of the winding
+pack (WP), and interpolated with the adjacent points within Ansys.
+Resulting net forces for each coil range from 100 MN to 350 MN per
+coil. We model only one full stellarator module (one field period), and
+periodic boundary conditions are applied to ensure the displacement
+field is continuous at the interfaces. Support legs are constrained in the
+𝑍and toroidal 𝜑directions at their root to simulate the behavior of
+cryogenic legs, which are not modeled here but which would result in
+similar behavior [330].
+The support structure design includes three key features:
+• thick steel casings around the winding pack;
+• welded or bolted plates between the coils to stabilize lateral loads,
+similar to the concept suggested in [59];
+• inner support rings that carry a major fraction of the net centering
+force.
+Depending on the local force field, support plates are not needed
+everywhere. This creates natural openings that can be used as ports for
+internal components, such as the first wall and blanket inlet/outlet. The
+open port area is mostly located on the outboard side of the machine,
+in the low-field region, and amounts to roughly 200 m2 per module.
+We design a specific opening for the ports for ECRH injection from the
+inboard side, which is included in the stress calculations.
+The coil casings could be cast with parts weighing between 63
+tons and 200 tons—which is challenging, but comparable to existing
+parts in heavy machinery [331]. The plates between the coils have
+thicknesses between 0.7 m and 1 m and could be forged, with the
+heaviest plate in this design weighing 58 tons. The inner rings, about
+0.7 m thick and weighing about 200 tons each, can also be forged. The
+reinforcement gussets would be designed to be welded as the coils are
+successively installed. The weights of these parts are compatible with
+industry standards.
+A linear structural simulation is carried out using the volumetric
+loads and boundary conditions in Ansys. Second-order tetrahedrons
+are used for meshing, with a maximum mesh size of 0.15 m. Results
+displaying peak stresses are shown in Fig. 49. Following the ASME
+Boiler and Pressure Vessel Code Section VIII Division 2 [332], Eu-
+rocode 3 [333], and Eurocode 8 [334], the stress state needs to be
+decomposed between membrane and membrane plus bending stresses
+Fig. 49. Von Mises stress in the support structure under full load. Forces are calculated
+according to an axis-averaged magnetic field strength of 9 T. The majority of the support
+structure stays below the design limit of 800 MPa for cryogenic AISI 316LN steel. (a)
+Internal view; (b) external view.
+Fig. 50. Displacement analysis of the coils under full load. The peak displacements
+occur in the outboard region at the toroidal location where the magnetic field is highest
+in the QI stellarator. (a) Internal view; (b) external view.
+then respectively compared to 2/3 of the yield stress, and the yield
+stress as upper limits. We study the stress state of our design in
+multiple regions; the membrane stress in the high stress regions is lower
+than 660 MPa. To simplify the assessment and the readability of the
+stress of this high-level concept, we propose considering von Mises
+stresses as a proxy for membrane plus bending stresses. The simulation
+results indicate that those are below 800 MPa throughout most of the
+structure, demonstrating its ability to withstand the electro-mechanical
+loads. In the coil casings, the stress is below 700 MPa, providing a
+margin for manufacturing defects inherent to steel casting. It is worth
+reiterating that in comparison to tokamaks, QI stellarators are not
+subject to disruptions and fatigue from cyclic loadings. Therefore, our
+main design focus is the static electromagnetic loads.
+Fig. 50 reports on simulated displacements of coils under full load.
+A peak displacement of 15 mm is simulated here in the outboard side
+of the high-field region. To quantify the effect of this displacement, we
+repeat the most sensitive calculation: the calculation of the location of
+the islands. We find distortions of the island locations to a comparable
+degree as those caused by finite 𝛽effects as shown in Fig. 13, which
+ultimately need to be controlled with an array of correction coils.
+Finally, detailed tolerances, assembly, and manufacturing of the
+support structure would need to be considered in further analyses.
+2.11. Remote maintenance
+Throughout the lifetime of a fusion reactor, several scheduled main-
+tenance periods must be planned to replace deteriorating components.
+Routine maintenance intervals are based on the anticipated lifespan
+of critical parts. Key components expected to require multiple re-
+placements during the stellarator’s operational life include first wall
+tiles, blanket modules, and divertor plates. Minor maintenance tasks
+should be manageable without significant machine disassembly, but
+unplanned interventions must also be considered. These could include
+replacing damaged diagnostics, repairing minor leaks, and addressing
+the failure of major components. In this section, we outline strate-
+gies for managing both major unplanned interventions and scheduled
+remote maintenance periods.
+Fusion Engineering and Design xxx (xxxx) xxx 
+27 

@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "capture_failed",
+  "candidate": "https://figshare.com/articles/dataset/Critical_current_characterisation_of_SuperOx_YBCO_2G_HTS_superconducting_wire/13708690/1",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "extract exited 1",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-17T04:56:25.455853+00:00"
+}

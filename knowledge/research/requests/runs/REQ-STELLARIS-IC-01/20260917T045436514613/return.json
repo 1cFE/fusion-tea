@@ -1,0 +1,19 @@
+{
+  "request_id": "REQ-STELLARIS-IC-01",
+  "run": "knowledge/research/requests/runs/REQ-STELLARIS-IC-01/20260917T045436514613",
+  "class": "OPERATOR_QUEUE",
+  "registered": [],
+  "queued": [
+    {
+      "candidate": "https://ndownloader.figshare.com/files/26344210",
+      "reason": "extract exited 1"
+    },
+    {
+      "candidate": "https://figshare.com/articles/dataset/Critical_current_characterisation_of_SuperOx_YBCO_2G_HTS_superconducting_wire/13708690/1",
+      "reason": "extract exited 1"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "a named candidate is blocked on something a human must resolve"
+}

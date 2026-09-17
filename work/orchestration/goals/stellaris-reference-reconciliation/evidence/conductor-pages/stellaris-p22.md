@@ -1,0 +1,46 @@
+_Fusion Engineering and Design xxx (xxxx) xxx_ 
+
+_J. Lion et al._ 
+
+as CORC, VIPER, CroCo, and BRAST [83,85,281,285–287]. Additionally, HTS ‘stack in groove’ approaches – as applied in the Toroidal Field Model Coil (TFMC) built in collaboration between MIT’s Plasma Science and Fusion Center (PSFC) and Commonwealth Fusion System (CFS) for the SPARC project – have shown promising characteristics [288,289]. 
+
+For the superconducting magnets in this study, we propose a NonInsulated (NI) concept. The NI method in the present work ensures that there is electric insulation between pancakes (azimuthally insulated) and only steel (electrical contact) between radial turns. More specifically, referring to Fig. 40, electric insulation between pancakes implies that current can only move in the _𝛷_ -coordinate direction (azimuthal) through the joints/connections at the first and last turns of each pancake (the yellow sheet represents the electric insulation). On the other hand, radial electric contact means that current can leak in the _𝑟_ -coordinate direction (radially outward), particularly during transients. The terminology of such a concept is coherent with the current literature (e.g. TFMC and FSU/NHMFL [282,289]). 
+
+Unlike low-temperature-superconducting (LTS) magnets, HTS magnets are fundamentally unlikely to quench unless they have a serious defect in them. Nevertheless, demonstration of quench management is necessary for risk mitigation purposes. NI coils offer a self-protecting mechanism without complex external systems, allowing current to bypass local hotspots and enhance thermal stability. They are passively protected by natural current redistribution. However, large stored magnetic energy and highly non-uniform critical current distributions (especially with low critical current regions) can still cause damage [288, 289]. To mitigate quench damage, it is crucial to ensure that the ratio of operational current density to critical current density, _𝑗_ op∕ _𝑗_ crit, varies only very weakly along a turn, and does not exceed a critical limit, which we take here to be 80%. 
+
+For the conductor design discussed here, we consider a fully presoldered, field-aligned Stack Tape Cable (STC), enveloped in a copper jacket that constrains the tape stack in the chosen orientation, similar to the CroCo concept [286]. We exploit the anisotropic properties of ReBCO tapes and align the ‘ab plane’ (flat face) of the ReBCO tapes/stacks with the magnetic field orientation, generalizing and extending to the whole winding pack an approach proposed for the helical (heliotron) reactor with the STARS conductor [290,291]. Field alignment improves performance, but adds design complexity requiring precise calibration and advanced manufacturing techniques. Additionally, we utilize grading techniques (i.e., intentionally reducing the number of tapes where the magnetic field is lower [292]) to achieve an almost constant _𝑗_ op∕ _𝑗_ crit ratio along the turns. 
+
+The conductor is wound in non-planar stacked ‘radial’ plates made of stainless steel 316 (SS316), similar to concepts in previous designs [293,294]. Fig. 40 shows a cross section of the winding pack for a 256-turn coil (coil 4) and the geometric and material details of the single unit cell. For each coil, we select a square winding pack with a variable number of turns, ranging from 225 to 324 turns per coil. 
+
+We note that the winding pack orientation is fully decoupled from the HTS tape stack orientation. The winding pack orientation is chosen so that a flat face is tangential to the plasma at each point, allowing for a vacuum vessel surface that is as flat as possible and maximizing available space for the radial build while minimizing peak fields within the winding pack. Conversely, the orientation of the HTS tape stack is chosen to align with the magnetic field orientation at each point along the cable for each turn inside a winding pack. 
+
+Each turn is sized at 20 mm × 20 mm, with a 6 mm × 6 mm soldered tape stack embedded in a 15 mm diameter round copper former. 
+
+With these dimensions, the current per turn is constrained to a maximum value of 50 kA, allowing for the use of ‘off-the-shelf’ current leads to realize the connection between the superconductor in the coils at cryogenic temperatures to the bus bars, which are connected to the coil power supplies, at room temperature. The coils are cooled to 20 K using supercritical helium channels at 15–20 bar. This approach entails using the casing as the pressure vessel itself, eliminating the 
+
+**==> picture [70 x 113] intentionally omitted <==**
+
+**==> picture [78 x 117] intentionally omitted <==**
+
+**==> picture [68 x 83] intentionally omitted <==**
+
+**Fig. 40.** A perpendicular cross section through the winding pack of the coil. The casing is not shown here, and the stacks are not aligned with the field for the sake of clarity. Note that _𝛷_ represents the toroidal coordinate, _𝛩_ the poloidal coordinate and _𝑟_ the radial coordinate. 
+
+**Table 7** 
+
+Material fractions in a winding pack of one of the Stellaris coils. 
+
+|Material|Fraction [%]|
+|---|---|
+|Tape stack|9|
+|Copper jacket|35|
+|Solder|12|
+|Steel|36|
+|Helium (cooling)|8|
+
+need for leak-tight pressure seals between the plates/turns. However, issues such as uncontrolled helium flow distribution could arise; the cooling concept is still under exploration. Alternative designs include closed channels with welded lids or soldered-in copper/steel pipes. In this paper, the operating temperature (Top) is set to 20 K to provide a consistent basis for analysis, but it may be desirable to lower the operating temperature to around 10–15 K to provide more margin. In the chosen unit cell configuration, the current density per turn is about 112 A∕mm[2] , and the current density per copper fraction is approximately 355 A∕mm[2] , aligning the winding pack design with similar proposed designs [288,289]. The resulting material fractions of each winding pack are summarized in Table 7. We summarize major coil features in Table 8. Note that we report the specs for only six coils due to symmetry (i.e., 48 coils divided into four periods, with each period containing 12 coils: six independent and six mirrored), simplifying the representation. 
+
+In the following paragraphs, we discuss a high-level concept of a magnet system for the first version of the coils for the Stellaris class of stellarators, focusing on how the above challenges are addressed. Our focus here is on the _feasibility_ of the concept, as opposed to a full engineering analysis. Some important design aspects, such as screening currents and field quality, are not covered in this short analysis. Instead, to validate the proposed design, we discuss the maximum field on the conductor and the operational critical current margin, the windinginduced curvature and torsion, the structural integrity of the winding pack, the contact resistance between turns, and peak temperatures and currents during a quench event. 
+
+_Peak fields and critical current density._ The peak magnetic field in stellarator coils can vary significantly from one coil to the next, especially in QI stellarators with a large magnetic mirror ratio. The peak field is also heavily dependent on the size of the winding pack, and is a decisive parameter for force and critical current density calculations. Here, we compute the peak fields using a 3D magneto-static model carried out by means of finite element analysis with the commercial software COMSOL MultiPhysics[®] [295]. For this calculation, we assume that the current density distribution is uniform across the winding pack crosssection. Fig. 41 shows the peak fields for each independent coil. At the chosen 9 T axis-averaged magnetic field strength, the peak field inside 
+

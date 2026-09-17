@@ -1,0 +1,107 @@
+J. Lion et al.
+Fig. 14. Radial electric field profiles, 𝐸𝑟, evaluated with the NTSS code for two
+operational scenarios as a function of the normalized minor plasma radius 𝜌. The ‘Ion-
+root’ label refers to an 𝐸𝑟profile obtained from the 0-D design point labeled as ‘A‘ in
+Section 2.3 (red dot in Fig. 15). This regime exhibits a purely negative electric field.
+‘Electron-root’ refers to a profile obtained by operating at higher temperature and lower
+density, namely at 𝑇𝑒,0 = 19.8 k eV and 𝑛𝑖,0 = 1.7 ⋅1020 m−3, which allows for a positive
+radial electric field. All profiles use a fixed ratio between electron and ion temperatures
+of 𝑇𝑖∕𝑇𝑒= 0.95.
+Fig. 15. POPCON plot illustrating the operational space of Stellaris. The 𝑦-axis
+represents the on-axis ion (fuel) density 𝑛𝑖,0 = 𝑛𝐷 ,0 + 𝑛𝑇 ,0 in units of 1020 m−3, and the
+𝑥-axis denotes the peak electron temperature 𝑇𝑒,0 in keV. The color gradient indicates
+the auxiliary power required, in MW, as shown by the color bar on the right. Contour
+lines depict various operational constraints and performance metrics including fusion
+power (𝑃fus), wall power load (𝑝wall), volume averaged plasma beta (𝛽) and fusion
+gain (𝑄). The red circles marks specific operating points of interest at constant fusion
+power, labeled by ‘A’ and ‘B’. The red dashed line shows a possible path to reach the
+design point from start-up with minimized auxiliary power. The dark gray line indicates
+the Sudo density limit [131]. The light gray line indicates above which temperature
+an ‘electron root’ appears in the center of the plasma at 𝑇𝑖∕𝑇𝑒= 0.95. White regions
+correspond to areas where the auxiliary power is beyond the color bar limits and would
+be either inaccessible (high 𝑇, low 𝑛or high 𝑛low 𝑇) or the plasma would ignite (high
+𝑇, high 𝑛).
+where 𝑇𝑒,0 and 𝑛𝑖,0 are varied to match the integrated power balance,
+and 𝛼𝑇= 1.2 (a peaked profile shape) and 𝛼𝑛= 0.35 (a flat profile shape)
+are fixed for this study, informed by density profiles observed in W7-X,
+e.g. [135]. These profiles are in line with the assumptions of previous
+stellarator reactor studies [12,136].
+Appendix A describes the model fidelity used in this section. In sum-
+mary, we use the fusion cross-section model from Bosch and Hale [137]
+Table 4
+Assumed parameters for the 0D studies in this sec-
+tion. 𝑓ren refers to the proportionality factor of the
+ISS04 energy confinement time scaling, 𝑓𝛼measures
+how much of the alpha particle energy re-heats the
+plasma, 𝜏⋆∕𝜏𝑖is the ratio between particle and energy
+confinement time (for all species), 𝑓suppr is a heuristic
+factor used to model the suppression of helium ash,
+and 𝑛𝑊∕𝑛𝑒is the ratio between core tungsten density
+and central fuel density.
+Variable
+Assumption
+𝑓ren
+1.0
+𝑓𝛼
+0.95
+𝜏⋆∕𝜏𝐸
+8.0
+𝑓suppr
+0.5
+𝑛𝑊∕𝑛𝑖
+10−5
+for the fusion reaction rates. For line and continuum radiation, we
+use a priori assumed impurity fractions and calculate the cooling
+factors using the Aurora code [138], relying on the Atomic Data and
+Analysis Structure (ADAS) database [139]. Synchrotron radiation is
+modeled using the model described in [140]. We apply the ISS04
+energy confinement time scaling law from [141], with a modification to
+replace the heating power by the ratio of plasma energy divided by the
+energy confinement time. Then, an averaged global energy confinement
+time is assumed: 𝜏𝐸= 𝜏ISS04
+𝐸
+(𝑇 , 𝐵 , 𝑎, 𝐴, 𝜄2∕3
+). Helium ash profiles are
+obtained using a fixed ratio of particle-to-energy confinement time.
+Fast particle pressures are modeled using the model of [142]. For the
+purpose of this analysis, we take a conservative value of the fast particle
+confinement of 95% and a fixed ion-to-electron temperature ratio of
+0.95. An important assumption is a helium suppression factor 𝑓suppr,
+heuristically reducing the amplitude of the resulting helium ash profile
+in the analysis. This factor accounts for the distinction between alpha
+particle birth location and thermalization location [110]. Assumed
+parameters are summarized in Table 4.
+Fig. 15 shows a scan of the peak electron temperature 𝑇𝑒,0 and
+the peak ion density 𝑛𝑖,0, along with the required auxiliary power to
+support the operation point and relevant operational constraints, in a
+power-output-contour (POPCON) plot. Two chosen operation points are
+indicated with two red circles (labeled ‘A’ and ‘B’). The red dashed line
+indicates a path to reach the operation point ‘A’ with minimal auxiliary
+heating power. According to the employed model, about 50 MW of
+auxiliary heating power would need to be installed to reach the desired
+operation point.
+Table 5 summarizes machine and plasma parameters for both op-
+eration points. It is worth highlighting that the ratio of the volume-
+averaged electron density over the Sudo limit density [131], ⟨𝑛𝑒⟩𝑉∕𝑛Sudo
+at the chosen operation point ‘B’ is slightly greater than one. However,
+as suggested by recent research [143], the Sudo limit strongly depends
+on the impurity fraction in the edge, and higher fidelity models should
+be employed to calculate the density limit more accurately. Ultimately,
+although only the two operation points with the highest fusion power
+are shown here, the performance of the plasma equilibrium is suffi-
+ciently resilient at lower 𝛽values, indicating that all other operation
+points with 𝑃aux < 50 MW are likely feasible (e.g. an operation point
+with lower fusion power and lower fusion gain could be chosen, too,
+which would result in higher component lifetimes and easier burn-
+control). However, to keep the same output power of the machine,
+scaling should be done along lines of constant fusion power (dashed
+black lines in Fig. 15).
+Profiles at the operation point ‘A’ are shown in Fig. 16. The profiles
+have a constant ratio between the minor plasma radius and the profile
+gradients when 𝑇𝑒,0 and 𝑛𝑖,0 are scaled (e.g. at 𝜌= 0.6 we find ratios of
+𝑎∕𝐿𝑇= 2.25 and 𝑎∕𝐿𝑛= 0.66).
+An important aspect to discuss is the control scheme required to
+support the suggested operation points. Compared to tokamaks, stel-
+larators usually require very limited effort on control systems. In the
+Fusion Engineering and Design xxx (xxxx) xxx 
+9 

@@ -293,7 +293,7 @@ package stellarator_09 {
                     doc /* Legacy comparison-only conductor rate [dollars/(kA m)]. **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Reference**: line 56, conductor_cost_rebco = 50.0 (pin 0254385). **Basis**: inherited ampere-metre comparison rate with unspecified rating; retained for both legacy comparison accounts. Selected procurement uses separately declared dollars per tape-metre. **Last Updated**: 2026-09-15 */
                 }
             :>> coil_t = 0.30 {
-                doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py **Ref**: geometry.py:37 (RadialBuild.coil_t = 0.30 default) **Basis**: radial-build coil-pack default */
+                doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py **Ref**: geometry.py:37 (RadialBuild.coil_t = 0.30 default) **Basis**: generic full radial coil layer; its use as local casing exterior in the fit screen is a scenario assumption, not a published minimum cavity */
             }
             :>> coil_life_fpy = 10.0 {  // coil lifetime (99th quantile) [FPY], Table 6.
                 doc /*
@@ -563,7 +563,7 @@ package stellarator_09 {
         // ---------------------------------------------------------------------
         part :>> blanket {
             doc /*
-            HCLL (helium-cooled lithium-lead / PbLi) breeding blanket.
+            PbLi blanket cost account in the retained helium-primary alternative.
             unit_cost: costing_constants.yaml:37 (blanket_unit_cost_dt = 0.60 M$/m^3) x 1e6.
             structure_factor: types.py:153 (LIQUID_METAL = 1.0).
             blanket_vol = firstwall_vol + blanket_vol + reflector_vol = 1118.695 m^3.
@@ -572,7 +572,7 @@ package stellarator_09 {
               value falls out of the layer thicknesses (was an injected constant).
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
             **Ref**: costing_constants.yaml:37; types.py:152-157; geometry.py:157-160; model.py:1205
-            **Basis**: volume-based blanket cost; Stellaris HCLL PbLi (details.md line 1342)
+            **Basis**: generic volume-based blanket cost. Source Stellaris uses water-cooled PbLi and a separate helium-cooled first wall (KIT raw.pdf pp.17-18); this helium-primary scenario does not reproduce those circuits.
             */
             :>> unit_cost = 600000.0;
             :>> structure_factor = 1.0;
@@ -584,18 +584,18 @@ package stellarator_09 {
             // and every thickness names its source. rb forward-computes the four CAS22
             // volumes, the first-wall area, and the coil bore from these.
             :>> blanket_t = 0.80 {
-                doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:39 (blanket_t = 0.80) **Basis**: Stellaris breeding-blanket thickness */
+                doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:39 (blanket_t = 0.80) **Basis**: inherited external-library radial-build scenario; not the source Fig.34 average blanket thickness */
             }
             :>> reflector_t = 0.20 {
                 doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py **Ref**: geometry.py:32 (RadialBuild.reflector_t = 0.20 default) **Basis**: radial-build reflector default */
             }
             :>> mn = 1.2 {        // blanket neutron energy multiplier.
-                doc /* **Source**: stellaris-design-details.md **Ref**: line 1664/1831 (power multiplication 1.20, HCLL blanket) **Basis**: Stellaris HCLL blanket energy multiplication */
+                doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf **Ref**: section 2.8, water/PbLi neutronics **Basis**: held source neutron multiplication transferred conditionally to this helium/generic-build scenario; no validated coolant/geometry equivalence */
             }
             // TBR.
             // achieved tritium breeding ratio.
             :>> tbr = 1.074 {
-                doc /* **Source**: stellaris-design-details.md **Ref**: line 1659 (final TBR = 1.074) **Basis**: Stellaris 3D-neutronics TBR. WI-047: also read by 'Fuel Cycle Flows' as the achieved ratio the required ratio is compared with; the margin is reported, this fence is unchanged. */
+                doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf **Ref**: section 2.8 (TBR = 1.074), source water/PbLi blanket **Basis**: held source 3D-neutronics result transferred conditionally to this helium/generic-build scenario. Fuel Cycle Flows reports its margin; a raw pass does not establish breeding in the altered blanket. */
             }
             part :>> first_wall {
                 :>> firstwall_t = 0.05 {
@@ -870,10 +870,10 @@ package stellarator_09 {
             // prototype/digitize_fig16.py: alpha_T = 1.19 all species rms 0.02;
             // alpha_n(fuel) = 0.33 rms 0.006), corroborated by the a/L_T ~= 2.25
             // gradient quote (line 714) and the rho = 0.8 GENE/TANGO boundary values
-            // (line 762). The extracted Fig.-16 caption "alpha_n = 1.2, alpha_T =
-            // 3.0" is an extraction artifact refuted by the figure it captions
-            // (spec errata). The fuel term is n_D*n_T with the diluted peak fuel
-            // densities -- quasineutrality closes at the peak: 2x1.96 (fuel) +
+            // (line 762). Original KIT raw.pdf p.9 and Fig.16 p.10 state exact
+            // alpha_n = 0.35 and alpha_T = 1.2. The named reconstruction study uses
+            // those values; historical digitized defaults remain. The fuel term uses
+            // n_D*n_T -- quasineutrality closes at the peak: 2x1.96 (fuel) +
             // 2x0.56 (He ash) ~= 5.06 = printed peak n_e.
             // WI-037 retirement note: the held fuel peaks n_D0 = n_T0 = 1.96e20
             // (Table 5 image, Point A) retire as entry points -- the sustainment
@@ -1129,7 +1129,7 @@ package stellarator_09 {
             // inlet and under 370 C outlet on one plasma-facing first-wall segment
             // (raw PDF p. 16 sec. 2.7, Fig. 27) -- and its conclusion lists pumping
             // estimates as future work (p. 31). HCPB's PHTS is representative of
-            // HCLL (Cismondi output.md:172), Stellaris' blanket class.
+            // HCLL (Cismondi output.md:172), not the source Stellaris water/PbLi blanket.
             :>> loop_T_in = 573.15 {  // 300 C blanket inlet [K].
                 doc /* **Source**: knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/output.md **Ref**: output.md:79 (helium at 8 MPa and 300 C ... outlet manifold at 500 C; the 300-500 C EUROFER window) **Basis**: the reference circuit's blanket inlet */
             }

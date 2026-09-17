@@ -1,0 +1,24 @@
+{
+  "source_pdf": "knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf",
+  "source_sha256": "7fd72c1242ce3a17a9c4b9a4597fcb9ff5296b942b2d8343a0b463539d8d3865",
+  "files": {
+    "figure-34.png": "fa1faac7e2db3370dc6aed0bbd4f153f1ed7676dcff3168d8a58cb8b9d604001",
+    "figure-40.png": "cd4c954e4e6267aa7493065ba20ea4a32d1854edaa5bc131abe0a9a17df7aa25",
+    "page-04.png": "14f5dcd8e573037ec8d076e3396bbeed0d698133d85cd77a739ccc60f9dd0a8d",
+    "page-04.txt": "719fd4279e34cec0b3ed9a8f878d45dbb43c67bbcf980335de14484793b29692",
+    "page-06.png": "15675ef961b9ece14a1ae2884a0a4645dcef4a941b561ba01a112f42f356535a",
+    "page-06.txt": "72a685aadc9dc0ffca3cb3373a78c662c3a6edf0f28bbe74b5503ae7bc7a2df2",
+    "page-18.png": "d2e9ef8d7e7d0d69454dfbe10943cebca3372da31ff78f3c375d92fae79966e1",
+    "page-18.txt": "21894f850ba4363764e4ca817a13454932dc667f117ebb0af966b341af81d452",
+    "page-21.png": "b61174fa579858cba294ed6bb709619fafe01084fb72a7662de03044590058e2",
+    "page-21.txt": "c7e0274643d36f53b0a8bea831dc11ed95bc79a4f9be6cd853c2871c4c57986c",
+    "page-22.png": "69a05ff382f097ec12dbf27a7592eb684510b677b96b54810ab50da84a11e5af",
+    "page-22.txt": "4c0a57559c5089ef7a413ac8744c4242b15213480d8aa6edcdcbc9943c557c5f",
+    "page-23.png": "22a81902997e6eb3d3998bf203a7720e9e73a6fef54187d03be2118674b84380",
+    "page-23.txt": "35a5928d4b541ed02bdf89b7523bfe8bd4dbfd562659f52b01fe4e393c8a0a13",
+    "page-24.png": "8dfc4c786c823cfd33fe2fe5509d882218e75fbd6f8941b3c484f464e18a41ca",
+    "page-24.txt": "fa5646f4a3c477f9ca058c4763fce98083cf64a316dfb4765af643054653bcb8",
+    "page-27.png": "9b75d68de4b4848d147a486d093a953a36753db3c0df5e05588ee04daa598071",
+    "page-27.txt": "e7acdf722beab84e91a55867b78670d897bcd726089b877355b561d1f5fbf43f"
+  }
+}

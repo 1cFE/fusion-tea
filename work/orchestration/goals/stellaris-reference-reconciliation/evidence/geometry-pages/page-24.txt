@@ -1,0 +1,122 @@
+J. Lion et al.
+Fig. 44. (a): Analogously to the right plot in Fig. 42, curvature distribution for coil 4.
+The upper limit is obtained by measurement in CroCo [286] cable stack as described
+in the text. (b): Torsion distribution for coil 0.
+involve locally replacing the superconducting tape with copper tape (or
+other stabilizers compliant with the tape structure) wherever needed.
+Using this technique would also reduce the amount of HTS tape re-
+quired: coil 0, without grading, would require 807 km of 6 mm tape,
+but with perfect grading (assuming 𝑗op∕𝑗crit = 80% everywhere), this
+requirement decreases to 167 km.
+It must be reiterated that locally aligning and grading the tapes
+introduces engineering complexity to the design and manufacturing
+process. Alignment requires precise calibration due to the narrow 𝑗crit
+peak around the ReBCO ̂𝑐-axis, which restricts flexibility for adjust-
+ments and necessitates advanced manufacturing tools and techniques
+for tracking tape alignment. In our quench simulations, we proceed
+with the assumption of a constant 𝑗op∕𝑗crit throughout the turns, as
+achieved through tape grading.
+Winding-induced strain. HTS stacks degrade under strain, induced by
+bending and twisting them into the required form for fusion mag-
+nets. Stellarator non-planar magnets are particularly complex. Previous
+studies have examined bending strain and field alignment optimiza-
+tion [299,300]. While a full strain analysis is beyond the scope of
+this paper, especially considering the strong anisotropy of the HTS
+tape stack as a composite material, we can draw conclusions about
+the feasibility of this concept by analyzing the curvature and torsion
+profiles of each turn across the winding packs. In the context of this
+analysis, we refer to curvature as the total curvature, equal to the
+square sum of the geodesic and normal curvatures.
+The left plot of Fig. 44 illustrates the curvature profile for coil 4,
+which experiences the largest curvature values across the coil set. Turn-
+to-turn variation is significant, especially in high-curvature regions. To
+extract a curvature limit, we compare this distribution to the values
+obtained in [301] for a CroCo [286] cable with a maximum size of
+3 × 3 mm. That study shows that the bending radius achieving critical
+current degradation is lower than 5%, meaning 𝐼𝑐∕𝐼0
+𝑐> 95%, where
+𝐼0
+𝑐is the critical current of the unbent cable, with ranges between 206
+and 250 mm for the cable under consideration. The minimum bending
+radius depends only mildly on the bending angle, indicating no signif-
+icant difference between applying hard-way or easy-way bending for
+this type of cable. However, the minimum bending radius exhibits some
+statistical variation across the samples collected in the aforementioned
+study. We therefore consider a reference value of 232 mm, which is
+the average value obtained for the measurements in easy-way bending
+only, the ones showing the largest degradation. We scale this value to
+a 6 × 6 mm cable, obtaining 464 mm as the minimum bending radius,
+which implies a curvature limit of 𝜅limit = 2.16 m−1. All turns are safely
+below this limit, allowing us to conclude that degradation induced by
+bending is not a limiting factor for the present concept.
+The right plot of Fig. 44 shows an analogous distribution for the
+torsion of coil 0, which experiences the highest torsion values. A typical
+turn experiences torsion below 1 rad/m. However, some turns present
+a spike in the torsion profile up to about 5 rad/m, corresponding to
+a twist pitch of about 1.25 m. Investigation of these cases showed
+that these turns experience a highly twisting magnetic field, where the
+magnitude of the field component orthogonal to the current direction
+drops to almost zero, fluctuating significantly. A study of the impact
+of torsion on HTS tapes demonstrates no degradation for twist pitches
+larger than 200 mm [302], suggesting that our concept is safely above
+the degradation limit.
+It is important to emphasize that critical current degradation is not
+the only problem that appears when applying large torsion. Another
+key issue is delamination, wherein the different tapes in the stack
+may naturally follow slightly different orientations. While a complete
+analysis of delamination is beyond the scope of this paper, we assume
+in our concept that the copper jacket surrounding the HTS tape stack is
+strong enough to hold the cable in place, inducing the necessary torsion
+and curvature to achieve the required orientation of the tape stacks.
+Structural analysis. We now evaluate the effect of the high magnetic
+field inside the coil in terms of the material stress and strain concen-
+trations for the magnet design. An axisymmetric model was employed
+to approximate the magnetic field 𝐁and the resulting 𝐈 × 𝐁loads.
+This approach simplifies the analysis while capturing the maximum
+field magnitude (∼25 T) and the corresponding peak loads, which are
+critical for understanding the structural forces in the system. The model
+effectively treats the coil as a planar coil in a linear arrangement to
+approximate the field within the winding pack, with the external field
+represented as a linear stack of circular coils. It is acknowledged that
+the axisymmetric assumption does not account for directional varia-
+tions in 𝐁that occur in the true 3D geometry, which could influence
+the detailed load distribution. However, for the purposes of this study,
+the axisymmetric model provides a reasonable first approximation.
+Future work will include a more detailed 3D analysis to address these
+directional effects. For consistency with the inter-coil support structure
+model (introduced in the next section) and the magnetic field peak and
+distribution, we locate the center of the winding pack at a radius of
+2.5 m. The out-of-plane (hoop) stress is then evaluated by integrating
+over the full revolution of the coil. Appropriate continuity boundary
+conditions are applied to the surfaces of the ‘air’ domain proximal to
+the outer pancakes. In the simulation, the plates and casing are modeled
+as independent bodies in contact with each other, with no friction or
+clamping, to capture the most conservative stress state.
+The wall thicknesses of the casings are consistent with the intercoil
+support structure (introduced in the next section). In this section, we
+show only local effects within the winding pack.
+Fig. 45 illustrates the resulting von Mises stress plot within the
+winding pack as obtained with the model described above. The peak
+stress is located at the center of the winding pack, toward which the
+local forces are oriented. For the present design, the peak stresses
+are in the range of 600 MPa, well below the imposed stress limit of
+800 MPa (see Section 2.10). The peak strain on the HTS stack due to
+the deformation of the winding pack is below 0.2%, which is within
+acceptable limits [303,304], even when adding strain from bending.
+Charging time and steady state losses. Charging times are crucial, as
+they significantly impact the duration of remote maintenance periods.
+Additionally, electrical losses in steady-state are important to esti-
+mate parasitic electrical inefficiencies in the reactor’s power balance.
+To obtain the value of the contact resistance (𝑅c), we used a two-
+dimensional electrostatic model to calculate the current path between
+adjacent cables. This model assumes no insulation between turns in one
+pancake, but complete insulation between pancakes. Other insulation
+approaches, such as partial or metal insulation [305–307], are not
+considered for the time being. From the present design, we obtain
+an overall contact resistivity ranging from a maximum of 11.2 μΩ for
+coil 0 to a minimum of 8.85 μΩ for coil 5. The different resistance
+values are due to the varying number of turns per coil. Resistive joints
+with resistance in the order of 4 nΩ have been demonstrated in the
+literature [288,308,309], and this value is assumed here. Inductance
+Fusion Engineering and Design xxx (xxxx) xxx 
+24 
