@@ -136,7 +136,8 @@ def test_current_invalid_radius_is_retained_as_execution_failure(
 )
 def test_unmapped_native_inputs_remain_explicitly_refused(key):
     key = renamed(key)  # WI-057 (2026-09-13): the key carries its part's path
-    if key in WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS:
+    reconstruction_inputs = {oracle.P + 'plasma__' + name for name in ('alpha_n', 'alpha_T', 'f_shape')}
+    if key in WI059_EXISTING_MAPPED_PARAMETERS | WI061_MAPPED_PARAMETERS | reconstruction_inputs:
         assert key in oracle.ENTRY_KEY_TO_ORACLE_INPUT
         assert route.validate_proposal({key: 1.0}) is not None
         return

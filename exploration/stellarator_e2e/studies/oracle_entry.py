@@ -35,9 +35,9 @@ if str(E2E) not in sys.path:
 
 import verify_stellaris as vs  # noqa: E402  (the independent oracle)
 
-# The profile integral depends only on (alpha_n, alpha_T, T_i0), none of which any
-# study sweeps, so memoizing it is exact rather than an approximation. Applied once
-# at import (`run_design_search.py:79`).
+# All profile-integral inputs (alpha_n, alpha_T, T_i0) are cache keys, so
+# memoization remains exact when the source-reconstruction study varies them.
+# Applied once at import (`run_design_search.py:79`).
 if not hasattr(vs._profile_integral, "cache_info"):
     vs._profile_integral = functools.lru_cache(maxsize=None)(vs._profile_integral)
 
@@ -81,6 +81,9 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}structure__residual_fraction": "structure_residual_fraction",
     f"{P}plasma__R": "R",
     f"{P}plasma__a": "a",
+    f"{P}plasma__alpha_n": "alpha_n",
+    f"{P}plasma__alpha_T": "alpha_T",
+    f"{P}plasma__f_shape": "f_shape",
     # WI-046 (goal plant-closure round 1, 2026-09-08): availability retired as an entry
     # key -- the lifecycle calendar produces it. The four calendar levers replace it;
     # availability_direct > 0 selects the held mode (the compatibility bridge).
