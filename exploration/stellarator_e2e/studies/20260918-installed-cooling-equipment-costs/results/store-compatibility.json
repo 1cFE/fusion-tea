@@ -1,0 +1,10 @@
+{
+  "study_id": "20260918-installed-cooling-equipment-costs",
+  "executable_fingerprint": "02f2b0a94cda3f0dc763bedf120e2d192086cae374a9abd932909ae710870e92",
+  "model_contract_fingerprint": "7ecd02d1084a78c43bafff9c43f1e90f864f9c59406963f3c38554bb59b09d64",
+  "study_definition_fingerprint": "bfe1989b5eef559cb55b8dccc70f84e1498254cd0a537cbca09e957181664080",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "6139e58c5b32373cf666994757ae35ad41a67014655c5f02a0dccf9bb2af28da"
+}

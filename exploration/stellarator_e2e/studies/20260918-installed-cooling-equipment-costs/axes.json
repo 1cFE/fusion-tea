@@ -1,0 +1,265 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "heat_transport__equipment_accessory_mass",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__equipment_accessory_mass",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__equipment_bundle_life",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__equipment_bundle_life",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__equipment_cost_mode",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__equipment_cost_mode",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__equipment_enabled",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__equipment_enabled",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__equipment_inventory_reserve",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__equipment_inventory_reserve",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__equipment_layout_multiplier",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__equipment_layout_multiplier",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__equipment_machine_life",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__equipment_machine_life",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__equipment_makeup_fraction",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__equipment_makeup_fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__equipment_removal_multiplier",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__equipment_removal_multiplier",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__equipment_saltprice_source_choice",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__equipment_saltprice_source_choice",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__equipment_shell_wall",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__equipment_shell_wall",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__equipment_tube_wall",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__equipment_tube_wall",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__n_loops",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__n_loops",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_transport__secondary_energy_mode",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__secondary_energy_mode",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__casing__interior_y",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__casing__interior_y",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__coil__I_coil",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__coil__coil_t",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__coil_t",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__inventory_multiplier",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__sizing_mode",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__sizing_mode",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__R",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__R",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__T_i0",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__T_i0",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__a",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__a",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__alpha_T",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__alpha_T",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__alpha_n",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__alpha_n",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__f_shape",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__f_shape",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__n_e0",
+      "note": "Sensitivity only. One authored entry with native model fan-out; retained-context entries are preserved as explicit case inputs. No physical tie across differently named entries is asserted.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__n_e0",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}
