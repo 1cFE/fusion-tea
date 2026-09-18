@@ -1,0 +1,55 @@
+...............s..F
+=================================== FAILURES ===================================
+___ test_stored_operating_controls_preserve_procurement_and_signed_capacity ____
+
+operating_controls = ([CaseView(candidate_id='operating-controls:c0000', state='completed', inputs={'stellarator_09__stellaris__availabilit...'5cbec23bcb96913ccacfb3ea30e8a94bdabf37a03899c9c88997e9cf4f064e41', 'kind': 'sealed', 'matches_preflight': True}, ...})
+
+    def test_stored_operating_controls_preserve_procurement_and_signed_capacity(operating_controls):
+        import study_route
+    
+        cases, summary = operating_controls
+        P = study_route.P
+        baseline = next(
+            c for c in cases
+            if f"{P}heating__p_wallplug_heat" not in c.inputs and f"{P}plasma__f_alpha_fast" not in c.inputs
+        )
+        reserve = next(c for c in cases if c.inputs.get(f"{P}heating__p_wallplug_heat") == 120)
+        demand = next(c for c in cases if c.inputs.get(f"{P}plasma__f_alpha_fast") == .96)
+        for name in ("coupled", "delivered", "wallplug"):
+            channel = study_route.CHANNELS[f"operating_heat_{name}"]
+            assert baseline.outputs[channel] == reserve.outputs[channel]
+            assert demand.outputs[channel] != baseline.outputs[channel]
+            assert channel in {row["channel"] for row in summary["channels_checked"]}
+        assert baseline.outputs[f"{P}heating__heating_cost__cost"] == 264145000
+        assert reserve.outputs[f"{P}heating__heating_cost__cost"] == 316974000
+        assert demand.outputs[f"{P}heating__heating_cost__cost"] == 264145000
+        assert baseline.outputs[f"{P}divertor__divheat__p_heat_operating_minus_installed"] == pytest.approx(
+            -.920399212073221
+        )
+        assert reserve.outputs[f"{P}divertor__divheat__p_heat_operating_minus_installed"] == pytest.approx(
+            -10.920399212073221
+        )
+        verdicts = study_route.short_verdicts(baseline)
+        assert len(verdicts) == 20
+>       assert {name for name, status in verdicts.items() if status != "satisfied"} == {
+            "divertor_heat_ok", "wp_fit_ok", "reference_conductor_current_ok"
+        }
+E       AssertionError: assert {'divertor_he..., 'wp_fit_ok'} == {'divertor_he..., 'wp_fit_ok'}
+E         
+E         Extra items in the left set:
+E         'tbr_ok'
+E         Use -v to get more diff
+
+tests/study/test_verify.py:343: AssertionError
+=============================== warnings summary ===============================
+tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 17 passed, 1 skipped, 2 warnings in 174.10s (0:02:54)

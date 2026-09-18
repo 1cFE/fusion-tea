@@ -341,8 +341,8 @@ def test_stored_operating_controls_preserve_procurement_and_signed_capacity(oper
     verdicts = study_route.short_verdicts(baseline)
     assert len(verdicts) == 20
     assert {name for name, status in verdicts.items() if status != "satisfied"} == {
-        "divertor_heat_ok", "wp_fit_ok", "reference_conductor_current_ok"
-    }
+        "divertor_heat_ok", "wp_fit_ok", "reference_conductor_current_ok", "tbr_ok"
+    }  # WI-066: the baseline now fails calculated breeding adequacy.
     rows = study_route.csv_rows(cases, [])
     assert len(rows) == 3
     assert all(all(name in row for name in study_route.CHANNELS) for row in rows)

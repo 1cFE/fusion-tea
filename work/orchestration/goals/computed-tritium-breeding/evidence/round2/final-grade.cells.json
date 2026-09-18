@@ -1,0 +1,49 @@
+{
+  "cells": [
+    {
+      "cell_id": "R2c.P",
+      "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+      "model_version": "d2e292379c3ac82b68d40f237f46358d5db9249e",
+      "score": 3,
+      "p2_satisfied": true,
+      "p3_satisfied": true,
+      "anchor_satisfied": "2c: computed TBR vs floor pushes back on blanket/build choices",
+      "model_evidence": [
+        "models/library/analyses/mfe_tritium_breeding.sysml:4",
+        "models/library/analyses/mfe_tritium_breeding.sysml:30",
+        "models/library/analyses/mfe_tritium_breeding.sysml:63",
+        "models/designs/generic_mfe/mfe_subsystems.sysml:99",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1786",
+        "models/designs/stellarator_09/stellarator_plant.sysml:1806",
+        "exploration/stellarator_e2e/generated/handwritten/mfe_tritium_breeding/blanket_tritium_breeding_impl.py"
+      ],
+      "runtime_evidence": [
+        "work/orchestration/goals/computed-tritium-breeding/evidence/round2/integration/integration_return.json",
+        "exploration/stellarator_e2e/studies/20260918-computed-tritium-breeding/results/oracle-all-points.json",
+        "exploration/stellarator_e2e/studies/20260918-computed-tritium-breeding/results/verification_summary.json"
+      ],
+      "study_evidence": [
+        "exploration/stellarator_e2e/studies/20260918-computed-tritium-breeding/record.md",
+        "exploration/stellarator_e2e/studies/20260918-computed-tritium-breeding/results/points.csv"
+      ],
+      "study_commit": "5347d5a3d8a78b28e49fe29afefe412426dce7bd",
+      "snapshot_sha256": "4ed3597f081ada28a208b11dd9f6276fde0e065631fb92e2f06d89ecbe7b9b02",
+      "package_identity": {
+        "semantic_fingerprint": "5f1fccf18967f8489cc48147b5277acb64212d2a1411d156e6693a168e099fbf",
+        "executable_fingerprint": "5cbec23bcb96913ccacfb3ea30e8a94bdabf37a03899c9c88997e9cf4f064e41",
+        "indicator_pin": "0d64837f4fdb8e2165b35e61b8805086c72d97ff84ea62fbab5e8a8bdbb42811"
+      },
+      "why_not_next": "No justified physical uncertainty model or coupled neutronics/damage design closure across the build is established.",
+      "limitations": [
+        "Fixed conceptual toroidal material/source/opening scenario; actual stellarator bias unresolved.",
+        "Numerical lower estimate is not a physical confidence bound.",
+        "Conditional recovery/extraction/inventory assumptions; no established physical self-sufficiency.",
+        "Full-shell cost proxy and held neutron-energy multiplier retained.",
+        "Sixteen native scalars lack independent oracle coverage; static Levels 2/6 remain failed with explicit dispositions.",
+        "No whole-plant feasible sampled design; no formal goal closure."
+      ],
+      "grader": "/root/method_review (continuing independent non-author)",
+      "review": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/final-review-and-grade.md"
+    }
+  ]
+}

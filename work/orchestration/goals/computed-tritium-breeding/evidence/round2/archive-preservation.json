@@ -1,0 +1,11 @@
+{
+  "path": ".project/active/aries-comparison-preparation/package/freeze/r2/comparison-freeze.tar.gz",
+  "sha256": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21",
+  "bytes": 27470925,
+  "changed_prior_study_paths": [
+    "exploration/stellarator_e2e/studies/ANNEX.md",
+    "exploration/stellarator_e2e/studies/manifest.json",
+    "exploration/stellarator_e2e/studies/oracle_entry.py"
+  ],
+  "status": "PASS: archive hash unchanged and no historical record changed"
+}

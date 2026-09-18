@@ -43,16 +43,16 @@ Updated: 2026-09-18
 - [x] Freeze concrete implementation design, table/domain and withheld validation; obtain changed-method review if warranted.
 - [x] Implement SysML and executable calculation, requirement and applicability behavior; verify independent software oracle and dependency effects.
 - [x] Run targeted validation; regenerate, recapture and repin. Independent audit covers implementation and explicitly disposes static-tool diagnostics; clean-package verifier/native integration remain next.
-- [ ] Pass native integration and execute a focused native study preserving inadequate and unsupported cases.
-- [ ] Obtain fresh unchanged-rubric P grade, evidence review and engineer-readable goal answer. Leave formal closure to owner.
+- [x] Pass native integration and execute a focused native study preserving inadequate and unsupported cases.
+- [x] Obtain fresh unchanged-rubric P grade, evidence review and engineer-readable goal answer. Leave formal closure to owner.
 
 ## Acceptance evidence
 
-Physical response release accepted by the independent table-release-review.md under the goal Round2 evidence. Five nodes and six withheld checks pass the frozen criteria; approximate integral benchmark consistency remains limited. Final generated-package, study and P2/P3 evidence is still pending.
+Physical response release accepted by the independent table-release-review.md under the goal Round2 evidence. Five nodes and six withheld checks pass the frozen criteria; approximate integral benchmark consistency remains limited. Native integration CANDIDATE passes all ten gates at audited commit d2e29237. Study5347d5a3 preserves13cases and passes3,185scalar/260predicate comparisons. Final independent review awards R2c.P3 against the unchanged rubric; physical qualification and formal goal closure remain distinct.
 
 ## Native verification registry
 
-SV-113 tracks physical/response evidence; SV-114 tracks conditional adequacy. Both remain pending until integrated evidence is accepted. Native registration reported two inherited malformed Type cells in the validation matrix; this work does not repair unrelated entries.
+SV-113 tracks physical/response evidence; SV-114 tracks conditional adequacy. Both now pass with physical release,117focused software tests, independent audit and integrated study evidence. Native registration reported two inherited malformed Type cells in the validation matrix; this work does not repair unrelated entries.
 
 ## Expected interface change before regeneration
 

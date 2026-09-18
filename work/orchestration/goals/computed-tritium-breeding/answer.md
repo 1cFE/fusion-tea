@@ -1,70 +1,55 @@
-# Computed breeding: a usable research model, an unresolved plant model
+# Computed tritium breeding
 
-## Result
+The model now calculates tritium production from a supported blanket configuration and makes inadequate breeding fail a design constraint. The current 0.80 m blanket fails the declared numerical adequacy screen. Increasing thickness improves breeding but raises cost and, in the studied cases, violates the peak magnetic-field limit. No case in this study is a feasible whole plant.
 
-[AGENT] **The breeding gap is not closed.** Research recovered and executed a published model that calculates tritium breeding from helium-cooled lead-lithium blanket choices. Its validated configuration does not cover the retained stellarator. No model equation, generated plant package, physical limit, frozen r2 result or historical study was changed. Formal goal closure remains the owner's decision.
+**The fresh independent grade is R2c.P3**, against the unchanged rubric. P2 is met because TBR is computed from blanket configuration and verified; P3 is met because computed adequacy changes the accepted blanket/build choices. This meets the modeling target, not physical plant qualification. Formal goal closure remains the owner's decision.
 
-Tritium breeding ratio (TBR) is the number of tritium atoms produced in the blanket per tritium atom consumed by fusion. A value above one is necessary, but losses, extraction and stock requirements can demand more than one.
+## What is calculated
 
-## What is now calculated?
+The tritium breeding ratio (TBR) counts tritium atoms produced in the blanket per fusion neutron. In deuterium–tritium fusion, one tritium atom is burned and one neutron is emitted per reaction, so this is also production per tritium atom burned.
 
-A **research executable**, recovered from Martínez Arroyo's published HCLL surrogate, calculates TBR from 26 inputs. HCLL means helium-cooled lithium-lead. Its inputs include lithium-6 enrichment, material fractions, first-wall thickness, separate inboard/outboard breeding layers, surrounding layers and tokamak geometry. Its underlying physics comes from neutron-transport calculations; it is not a geometry multiplier applied to a single published TBR.
+An isolated OpenMC neutron-transport calculation follows neutrons through the retained conceptual helium-cooled lead–lithium blanket and surrounding radial layers. It uses explicit isotope inventories and evaluated nuclear data. Five direct transport calculations supply a narrow, independently checked interpolation in breeder thickness. The generated plant executable evaluates that interpolation; the previous manually assigned TBR 1.074 input has been removed.
 
-The retained stellarator still takes achieved TBR as the supplied value 1.074. The research executable has not been connected to it because doing so would exceed the source's domain. [Source assessment](evidence/hcll-surrogate-assessment.md), [executable](evidence/hcll_surrogate_probe.py), [retained results](evidence/hcll-surrogate-probe-results.txt).
+Supported breeder thickness is 0.60–1.00 m at fixed major radius 12.7 m, minor radius 1.3 m, circular cross section, other radial layers, 70% lithium-6 enrichment and a declared material/source/opening scenario. The breeder contains 80% lead–lithium, 10% steel and10% helium by volume. One 10.8-degree missing-breeder window is represented explicitly. These are documented conceptual assumptions, not actual stellarator port geometry. Thickness changes also propagate through the existing volume, coil-bore, magnetic-field and cost calculations. Other geometry changes make breeding explicitly undefined; the model does not extrapolate or silently retain a pass.
 
-## Which choices affect the research calculation?
+The executable also calculates gross production, extracted supply, breeder-extraction loss, exhaust-recycle loss, radioactive decay, stock growth and net fuel balance separately. At the current baseline, mean gross production is 1.1283×10²¹ atoms/s against burn 9.4175×10²⁰ atoms/s and assumed recycle loss 1.7893×10²⁰ atoms/s. Unity extraction and zero inventory/stock growth leave no extraction, decay or growth demand in that particular scenario.
 
-All rows below retain the thesis reference configuration except the named change. They are **not stellarator predictions**.
+## Which requirement applies
 
-| Source-domain case | Calculated TBR |
-|---|---:|
-| Published reference inputs | 1.135285 |
-| Lithium-6 fraction 0.70 | 1.082858 |
-| Lithium-6 fraction 0.80 | 1.111386 |
-| Inboard breeder 35 cm | 1.105302 |
-| Inboard breeder 55 cm | 1.158301 |
-| Inboard breeder 80 cm | Rejected: outside domain |
+The existing 1.05 floor is retained as a design policy. The fuel balance requires 1.190 under the existing 5% burn fraction, 99% exhaust recovery, 100% breeder extraction and zero inventory/growth assumptions. Burning only 5% means much more tritium circulates than burns; losing 1% of that exhaust adds 19% to the replacement requirement. The original cost-derived 99% factor is not validated isotope-recovery evidence.
 
-The published final module prints 1.13509 at its reference, a difference of 0.000195 from the recovered example. The appendix example and selected final network may differ; that explanation remains unproven. No coefficient was adjusted to remove the discrepancy.
+The constraint uses the stricter requirement: `max(1.05, calculated fuel requirement)`. It checks a numerical lower estimate, `mean TBR − 2 Monte Carlo standard errors − 0.01 interpolation allowance`, and requires valid applicability. This numerical screen is not a physical confidence bound. Even the 0.60 m case exceeds the old 1.05 floor but falls well short of the fuel requirement. The baseline mean exceeds 1.190, but its lower estimate does not. The model therefore does not claim established self-sufficiency.
 
-## How was it checked?
+## Actual study results
 
-- **Software:** The researcher recovered all 253 weights and normalization arrays. A fresh reviewer checked them against the original PDF and compiled the original C++ function. Python and C++ agree within 2.3e-16 over five cases. This verifies transcription and evaluation.
-- **Physical basis:** The thesis separately compares its reduced two-dimensional geometry with three-dimensional neutron transport over ten DEMO cases, reporting TBR deviations from −1.29% to +1.42%. Those cases support that specific reduction; they do not bound transfer to a stellarator. The network's own interpolation errors are another uncertainty.
-- **Applicability:** The source's first-wall domain is approximately 2–4 cm and inboard breeder domain 30–60 cm. The current model uses 5 cm and 80 cm. Its geometry and material definitions also differ. Input clipping or unrestricted extrapolation would conceal this gap.
+| Breeder thickness | Mean TBR | Numerical lower estimate | Breeding screen | Blanket cost | Electricity cost |
+|---:|---:|---:|---|---:|---:|
+| 0.60 m | 1.09145 | 1.07820 | Fail | $551.36M | $134.13/MWh |
+| 0.80 m | 1.19807 | 1.18615 | Fail | $718.41M | $144.75/MWh |
+| 0.825 m | 1.20630 | 1.19458 | Pass | $740.30M | $146.12/MWh |
+| 0.90 m | 1.23096 | 1.21730 | Pass | $807.27M | $150.29/MWh |
+| 1.00 m | 1.25245 | 1.23915 | Pass | $899.68M | $156.00/MWh |
 
-The example-network error statistics and final-module discrepancy remain unresolved. Applying the source's published correction produces a diagnostic value, not a validated uncertainty bound for this example or the stellarator. [Independent method and probe review](evidence/method-review.md).
+The study retains ten supported cases and three deliberately unsupported cases. The 0.825–1.00 m samples pass breeding but fail the peak-field limit. Every case also retains divertor, winding-pack-fit and conductor-current failures. This is a sensitivity study, not a claim of an optimum or a precise feasibility boundary. The 0.55 m, 1.05 m and altered-major-radius cases fail breeding applicability; their zero numerical carriers are not interpreted as physical zero production.
 
-## Does the model meet P3?
+Costs retain the existing blanket-account volume convention, which includes first-wall/reflector regions and differs from the actual neutron-transport breeder inventory. The neutron-energy multiplier remains held at 1.2; no new heat-production or plant-efficiency prediction is inferred from the tritium tally. These limitations are disclosed rather than repaired beyond this goal's scope.
 
-**No.** The plant still assumes achieved breeding. P2 requires TBR calculated from its blanket configuration; P3 additionally requires that result, compared with a justified floor, to constrain blanket/build choices. A working research surrogate for a different assembly satisfies neither condition for the current plant. The rubric remains unchanged at `dc0f0b6dc6512b29e1307da647f3a508a1f5356d`.
+## How it was checked
 
-## What does it predict about breeding adequacy?
+**Physical evidence:** approximate independent reconstructions of published lithium and lead/lithium sphere experiments give 0.69786 versus measured 0.685±0.03836, and 0.50413 versus 0.530±0.03180. Missing exact casing/penetrations limit that comparison. One adverse density sensitivity fails the declared diagnostic and remains in the record; no correction factor was fitted. Geometry, source sampling, isotope inventories, tally normalization/covariance and neutron balance have separate checks. All six withheld thickness calculations pass the predeclared interpolation test; the worst conservative discrepancy is 0.00932 against the 0.01 allowance.
 
-The current model does not yet predict achieved breeding for its actual blanket. Its two existing comparisons disagree under a particular recovery interpretation:
+**Software evidence:** independent interpolation and fuel-conservation implementations agree with the generated executable. The focused study passes 3,185 scalar comparisons and 260 independently derived constraint comparisons across all 13 cases. Generic study verification also passes. Native integration passes all ten gates. Static model validation remains failed at Levels 2/6; the independent audit maps all 32 new diagnostics to actual generated bindings and explicitly records the tool limitations.
 
-| Existing calculation | Result |
-|---|---:|
-| Supplied production | 1.074 |
-| Existing fixed floor | 1.05 |
-| Margin against that floor | +0.024 |
-| Required production with 5% burn and 99% exhaust recovery | 1.190 |
-| Margin against that conditional requirement | −0.116 |
+## What remains uncertain
 
-At 5% burn, twenty atoms must be injected for each one burned; nineteen leave unburned. Losing 1% of those nineteen consumes another 0.19 atoms per atom burned. This calculation assumes complete extraction from the breeder and no inventory decay or stock growth. Those terms have separate meanings and must not disappear into an unexplained margin.
+Material fractions, neutron-source shape, actual three-dimensional stellarator geometry, ports and omitted outer-component details can change physical breeding adequacy. At baseline thickness, declared material sensitivities span approximately 1.069–1.254 TBR. A peaked-source pilot also changes the result. Those variations are separate scenarios, not a justified probability distribution or plant uncertainty band. Better Monte Carlo precision alone will not resolve them.
 
-The 99% value originated in a costing assumption, not established physical tritium-recovery evidence. Therefore the negative margin is a **conditional deficit**, not proof that the real blanket is inadequate. Passing the old floor is likewise not proof of fuel self-sufficiency. [Balance diagnostic](evidence/threshold-check.json), [current implementation trace](evidence/current-trace.md).
+A defensible next physical step is to replace the declared material/port/source assumptions with an engineering inventory and representative shaped geometry, then repeat transport and independent benchmark/data-library checks. Physical exhaust recovery and breeder extraction also need evidence before treating the conditional fuel requirement as demonstrated operating performance. Full fuel inventory and processing costs remain outside this goal.
 
-## What remains and what comes next?
+## Evidence and identity
 
-[AGENT] I recommend retaining the current helium/PbLi target and developing evidence for that actual build. Before integration, specify the breeder, coolant and structural fractions; enrichment; temperatures/densities; layer materials; and geometry/port treatment. Then reproduce independent benchmark cases, extend or replace the reduced model over the actual domain, and quantify transfer uncertainty. Source results used for fitting must not also count as independent validation.
-
-A separately identified HCLL redesign is an alternative, but it changes build choices and still requires stellarator-transfer evidence. Reverting to the source Stellaris water/PbLi design is another material change with cooling consequences. The owner has been asked which physical target should govern the next round. The present source-backed research does not establish that any of these paths is impossible.
-
-After that scientific boundary is resolved, the remaining deliverables are a native model work item, generated executable and verified integration pin, a focused plant study preserving failures and coupled plant quantities, and a fresh grade demonstrating both P2 and P3. None is claimed complete here. No reveal, replacement, merge or push occurred.
-
-[Native research report](../../../../knowledge/research/pending/20260918-130310_computed-tritium-breeding-methods.md), [goal](goal.md), [trail](trail.md).
-
-## Independent assessment
-
-The fresh reviewer assigns **R2c.P1**, with P2 and P3 both unmet, against the unchanged rubric. The research round passes review as an accurately bounded result; that verdict does not certify breeding adequacy or goal completion. [Grade and round review](evidence/round1-review-and-grade.md).
+- [Independent final review and grade](evidence/round2/final-review-and-grade.md), with [machine-readable R2c.P assessment](evidence/round2/final-grade.cells.json).
+- [Native study and complete results](../../../../exploration/stellarator_e2e/studies/20260918-computed-tritium-breeding/record.md).
+- [Transport calculations and withheld checks](evidence/round2/transport/table-report.md), [independent physical release](evidence/round2/table-release-review.md), and [implementation audit](../../../active/WI-066_computed-tritium-breeding/audit.md).
+- Audited model commit `d2e29237`; immutable study commit `5347d5a3`; [native integration receipt](evidence/round2/integration/integration_return.json). The package is separately identified from the published r2 comparison.
+- [Goal trail](trail.md) records research, rejected surrogate transfer, decisions and native execution. [Archive preservation](evidence/round2/archive-preservation.json) confirms unchanged r2 bytes and historical study records. ARIES remains sealed; no reveal, frozen-comparison replacement, merge or push occurred.
