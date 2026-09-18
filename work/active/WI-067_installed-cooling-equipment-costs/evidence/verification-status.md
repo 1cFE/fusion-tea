@@ -23,3 +23,7 @@ Level6 changes336→341 diagnostics. `static-delta.json` retains six added ident
 ## Integration coverage correction
 
 Native integration attempt1 found the independent map lacked the original calendar replacement output beside the new cooling-inclusive total. Mapping the already independently computed calendar value expands coverage from358 to359 outputs without changing model equations. The final study must use359. The failed attempt remains retained. A full staged whitespace check reports whitespace in captured source extractions, raw test logs and native-generated files; these bytes are preserved for source custody and generator reproducibility. An unstaged clean diff check did not establish a whitespace-clean staged change.
+
+## Retained exact-boundary verification
+
+The focused study exposed an inherited conductor-current oracle discrepancy at zero. An independently reviewed oracle-only operation-order correction preserves all native negative margins and failed predicates. The expanded tape-volume formula remains a separate agreement check; no model/input/limit changed. The targeted equipment, conductor-current oracle, current-driven sizing and manufacturing-oracle batch passes258 tests with5 serializer warnings. Evidence: `oracle-boundary-regressions.log`, `oracle-boundary-correction.md`, and goal `implementation-review.md` addendum. This later batch does not erase the six separately documented stale consumer failures or establish a full-suite pass.

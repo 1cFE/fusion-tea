@@ -141,6 +141,25 @@ def test_retained_primary_controls_reach_full_current_native_comparison(runtime,
         assert case.outputs[oracle_entry.ORACLE_OUTPUT_TO_CHANNEL[name]] == pytest.approx(historical['outputs'][name], rel=1e-12, abs=1e-10)
 
 
+@pytest.mark.parametrize('proposal_id', ['r2-forward', 'r2-table5'])
+def test_retained_zero_current_boundary_preserves_exact_predicate(runtime, tmp_path, proposal_id):
+    import oracle_entry
+    import study_route
+    records = json.loads((ROOT/'work/orchestration/goals/installed-cooling-equipment-costs/evidence/starting-cases.json').read_text())['cases']
+    point = next(row['inputs'] for row in records if row['proposal_id'] == proposal_id)
+    cases, _ = study_route.run_points('cooling-retained-current-boundary', [point], tmp_path)
+    case = cases[0]
+    assert case.state == 'completed'
+    expected = oracle_entry.evaluate(case.inputs)
+    for name in ('margin_fraction', 'margin_current'):
+        channel = P + 'magnet__conductor_current__' + name
+        assert case.outputs[channel] < 0.0
+        assert expected[channel] == case.outputs[channel]
+    # No tolerance or zero snapping may turn this retained failing predicate into a pass.
+    channel = P + 'magnet__conductor_current__margin_fraction'
+    assert (expected[channel] >= 0.0) == (case.outputs[channel] >= 0.0)
+
+
 @pytest.mark.parametrize('enabled,cost,energy,valid', [
     (False,0.,0.,True),(True,0.,0.,True),(True,1.,0.,True),(True,1.,1.,True),
     (False,1.,0.,False),(False,0.,1.,False),(True,.5,0.,False),

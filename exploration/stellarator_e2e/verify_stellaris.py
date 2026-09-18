@@ -672,7 +672,10 @@ def _winding_material_inventory(p, volume):
     if fraction >= 1.0:
         raise ValueError("oracle Winding Pack Material Inventory: fraction sum must be less than one")
     helium_density = facts["helium_pressure"] / (facts["helium_gas_constant"] * facts["temperature"])
-    result = {"helium_density": helium_density, "tape_volume": volume * (1.0 - fraction)}
+    # Keep the authored subtraction sequence: its last bit matters at a zero
+    # current-margin predicate. The summed fraction above still checks the domain.
+    result = {"helium_density": helium_density, "tape_volume": volume * (
+        1.0 - facts["f_copper"] - facts["f_solder"] - facts["f_steel"] - facts["f_helium"])}
     for material in ("copper", "solder", "steel", "helium"):
         density = helium_density if material == "helium" else facts["rho_" + material]
         mass = volume * facts["f_" + material] * density
@@ -686,7 +689,7 @@ def _winding_material_inventory(p, volume):
 
 
 def _winding_procurement(p, circumference, material_cost, tape_volume):
-    """Direct volume/area purchase with independently expanded volume supplied by compute."""
+    """Direct volume/area purchase from independently computed material inventory."""
     names = ("n_coils", "I_coil", "f_set", "tape_width", "tape_thickness", "tape_price_per_m", "turn_current",
              "winding_rate_1990", "cost_escalation", "nonplanar_factor")
     facts = {name: p["magnet_" + name] for name in names}
@@ -833,14 +836,16 @@ def _current_driven_sizing(p, field, legacy_density):
     # The independently implemented existing performance/domain calculation supplies
     # single-tape current only; no generated sizing or final inventory is consumed.
     capacity = _conductor_current(p, field, 1.0, 1.0)['tape_critical_current']
-    capacity *= p['magnet_cabling_factor'] * p['magnet_degradation_factor'] * p['magnet_sharing_factor']
+    for factor in ('cabling_factor', 'degradation_factor', 'sharing_factor'):
+        capacity *= p['magnet_' + factor]
     tape_area = p['magnet_tape_width'] * p['magnet_tape_thickness']
-    usable_density = capacity * p['magnet_allowable_fraction'] * (1-sum(fractions)) / tape_area
     try:
-        density = usable_density / 1e6
-        pack_area = p['magnet_I_coil'] / usable_density
-        conductor_area = p['magnet_turn_current'] / usable_density
+        # Preserve the authored continuous-inventory operation sequence rather
+        # than algebraically cancelling it at an exact acceptance boundary.
         required_tapes = p['magnet_turn_current'] / (p['magnet_allowable_fraction'] * capacity)
+        conductor_area = required_tapes * tape_area / (1-sum(fractions))
+        pack_area = (p['magnet_I_coil'] / p['magnet_turn_current']) * conductor_area
+        density = p['magnet_I_coil'] / (pack_area * 1e6)
         selected = legacy_density if mode == 0 else density / multiplier
     except (ZeroDivisionError, OverflowError) as exc:
         raise ValueError('oracle current sizing: invalid arithmetic') from exc
@@ -1084,7 +1089,11 @@ def compute():
         tape_volume_direct = (current_sizing['required_pack_area'] * p['magnet_inventory_multiplier']
             * p['magnet_n_coils'] * p['magnet_f_wp_vol'] * c_coil
             * (1 - sum(p['magnet_f_' + m] for m in ('copper', 'solder', 'steel', 'helium'))))
-    procurement = _winding_procurement(p, c_coil, inventory['material_cost'], tape_volume_direct)
+    # Retain the independently expanded quantity as a cross-check. Exact
+    # predicates use the authored sqrt/volume sequence, never a snapped margin.
+    if not math.isclose(tape_volume_direct, inventory['tape_volume'], rel_tol=1e-12):
+        raise ValueError('oracle expanded tape volume disagrees with inventory')
+    procurement = _winding_procurement(p, c_coil, inventory['material_cost'], inventory['tape_volume'])
 
     insulation = _insulation_inventory(p, c_coil, wp_side, vol_winding_pack)
     conductor = _conductor_current(p, B_peak, procurement['tape_length'], procurement['conductor_length'])
