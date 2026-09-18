@@ -1,0 +1,156 @@
+{
+  "scope": "Independent installed binding, custody and bounded native checks; working tree unpinned",
+  "L6_new_diagnostics": [
+    {
+      "attribute": "breeding_R",
+      "diagnostics": 1,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "breeding_a",
+      "diagnostics": 1,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "breeding_kappa",
+      "diagnostics": 1,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "breeding_ht_shield_t",
+      "diagnostics": 1,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "breeding_structure_t",
+      "diagnostics": 1,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "breeding_gap1_t",
+      "diagnostics": 1,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "breeding_vessel_t",
+      "diagnostics": 1,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "tbr_li6",
+      "diagnostics": 2,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "tbr_li7",
+      "diagnostics": 2,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "tbr_std_error",
+      "diagnostics": 2,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "interpolation_allowance",
+      "diagnostics": 2,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "tbr_lower",
+      "diagnostics": 2,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "breeding_defined",
+      "diagnostics": 2,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "breeding_requirement",
+      "diagnostics": 2,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "breeding_design_margin",
+      "diagnostics": 2,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "breeding_fuel_margin",
+      "diagnostics": 2,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "breeding_numerical_margin",
+      "diagnostics": 2,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "breeding_adequacy_defined",
+      "diagnostics": 2,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "loss_rate",
+      "diagnostics": 1,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "tbr_required",
+      "diagnostics": 1,
+      "installed_binding_or_channel_verified": true
+    },
+    {
+      "attribute": "tbr_margin",
+      "diagnostics": 1,
+      "installed_binding_or_channel_verified": true
+    }
+  ],
+  "manual_seed_hashes_verified": 29,
+  "canonical_twins_identical": true,
+  "native_cases": [
+    {
+      "case": "thin",
+      "oracle_values_checked": 245,
+      "outputs": {
+        "blanket__breeding__tbr_mean": 1.1540222888276843,
+        "blanket__breeding__defined_flag": 1.0,
+        "breeding_adequacy__defined_flag": 1.0,
+        "breeding_adequacy__numerical_margin": -0.049101854105326526,
+        "rb__blanket_vol": 893.0758282435721,
+        "rb__r_coil": 2.900000000000001,
+        "blanket__blanket_cost__cost": 633110804.1525475
+      },
+      "tbr_verdict": "violated"
+    },
+    {
+      "case": "thick",
+      "oracle_values_checked": 245,
+      "outputs": {
+        "blanket__breeding__tbr_mean": 1.2309590288834722,
+        "blanket__breeding__defined_flag": 1.0,
+        "breeding_adequacy__defined_flag": 1.0,
+        "breeding_adequacy__numerical_margin": 0.027297649678844627,
+        "rb__blanket_vol": 1138.7500209954876,
+        "rb__r_coil": 3.1000000000000005,
+        "blanket__blanket_cost__cost": 807271811.3299496
+      },
+      "tbr_verdict": "satisfied"
+    },
+    {
+      "case": "unsupported",
+      "oracle_values_checked": 245,
+      "outputs": {
+        "blanket__breeding__tbr_mean": 0.0,
+        "blanket__breeding__defined_flag": 0.0,
+        "breeding_adequacy__defined_flag": 0.0,
+        "breeding_adequacy__numerical_margin": 0.0,
+        "rb__blanket_vol": 1014.2040026174811,
+        "rb__r_coil": 3.0000000000000004,
+        "blanket__blanket_cost__cost": 719730181.756608
+      },
+      "tbr_verdict": "violated"
+    }
+  ]
+}

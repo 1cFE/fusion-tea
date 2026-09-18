@@ -5,6 +5,7 @@ the package boundary. These tests pin what that translation may and may not do: 
 bijection onto the live package, translation changes identifiers only, and a planted defect survives it
 (so a mapping mistake cannot be concealed by translating both sides through one ledger).
 """
+from tests.models.current_mfe_regressions import WI065_PARAMETERS, WI065_CHANNELS, WI066_RETIRED, WI066_CHANNELS
 from tests.models.current_mfe_regressions import WI063_PARAMETERS, WI063_CHANNELS, WI064_PARAMETERS, WI064_CHANNELS
 from tests.models.current_mfe_regressions import WI061_PARAMETERS, WI061_CHANNELS, WI061_PREDICATE, WI062_PARAMETERS, WI062_CHANNELS, WI062_PREDICATE
 
@@ -39,8 +40,8 @@ def test_ledger_is_a_verified_bijection_onto_the_live_package():
     # material-account ABI is added by the current model.
     # WI-058 (2026-09-14): k_coil retired from the live contract, c_coil_ref added (the winding length
     # follows the coil bore); the historical bijection is otherwise preserved.
-    assert (set(params.values()) - WI058_RETIRED) | WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI064_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS == LIVE_PARAMS
-    assert set(outputs.values()) | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS | {WI061_PREDICATE + "__evaluation", WI062_PREDICATE + "__evaluation"} == LIVE_CHANNELS
+    assert (set(params.values()) - WI058_RETIRED - WI066_RETIRED) | WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI064_PARAMETERS | WI065_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS == LIVE_PARAMS
+    assert set(outputs.values()) | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS | WI065_CHANNELS | WI066_CHANNELS | {WI061_PREDICATE + "__evaluation", WI062_PREDICATE + "__evaluation"} == LIVE_CHANNELS
     assert not set(params.values()) & (WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS)
     assert WI058_RETIRED <= set(params.values())
     assert not set(outputs.values()) & (WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS)
@@ -102,7 +103,7 @@ def test_frozen_radius_evidence_translates_onto_the_live_package(tmp_path):
     assert set(expectations['channels']) <= LIVE_CHANNELS
     assert modules['geom'] == 'plasma__geom' and modules['coil_length'] == 'magnet__coil_length'
     prior = json.loads((out / 'entering-package/contracts/model_contract.json').read_text())
-    retired = {P + 'magnet__R0'} | WI058_RETIRED  # WI-058 (2026-09-14): k_coil left the live contract
+    retired = {P + 'magnet__R0'} | WI058_RETIRED | WI066_RETIRED  # WI-058 (2026-09-14): k_coil left the live contract
     assert {x['qualified_name'] for x in prior['parameters']} - retired <= LIVE_PARAMS
 
 
@@ -127,9 +128,32 @@ def test_wi040_restatement_changes_only_declared_cost_descendants(tmp_path):
         before = doc['cases'][case]['native']
         after = revised['cases'][case]['native']
         assert {k: v for k, v in after.items() if k != 'outputs'} == {k: v for k, v in before.items() if k != 'outputs'}
-        assert set(after['outputs']) - set(before['outputs']) == WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS
+        assert set(after['outputs']) - set(before['outputs']) == WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS | WI065_CHANNELS
         for key, value in before['outputs'].items():
             if key not in changed:
                 assert after['outputs'][key] == value
     assert revised['cases']['baseline']['native']['outputs'][P + 'plasma__fusion__p_fus'] == -1.0
     assert P + 'magnet__winding_pack_cost__cost' not in changed
+
+
+def test_breeding_restatement_preserves_unrelated_defects_and_checks_unsupported_radius(tmp_path):
+    from tests.models.current_mfe_regressions import restate_wi066_breeding, WI066_CHANGED, WI066_PREDICATE
+    forward, _ = structure_ledger()
+    out, _ = translate_frozen_radius_evidence(HISTORICAL, tmp_path, forward)
+    path = out / 'frozen-results.json'
+    before = json.loads(path.read_text())
+    before['cases']['baseline']['native']['outputs'][P + 'plasma__fusion__p_fus'] = -1.0
+    path.write_text(json.dumps(before))
+    changed = restate_wi066_breeding(out)
+    after = json.loads(path.read_text())
+    assert changed == WI066_CHANNELS | WI066_CHANGED and len(WI066_CHANNELS) == 19
+    for case in ('baseline', 'tied_R14'):
+        old, new = before['cases'][case]['native'], after['cases'][case]['native']
+        assert {k: v for k, v in new['outputs'].items() if k not in changed} == {k: v for k, v in old['outputs'].items() if k not in changed}
+        assert {k: v for k, v in new['responses'].items() if k != WI066_PREDICATE} == {k: v for k, v in old['responses'].items() if k != WI066_PREDICATE}
+        assert [r for r in new['report']['results'] if r['constraint_id'] != WI066_PREDICATE] == [r for r in old['report']['results'] if r['constraint_id'] != WI066_PREDICATE]
+        assert new['responses'][WI066_PREDICATE] == 'violated'
+    assert after['cases']['baseline']['native']['outputs'][P + 'plasma__fusion__p_fus'] == -1.0
+    unsupported = after['cases']['tied_R14']['native']['outputs']
+    assert unsupported[P + 'blanket__breeding__defined_flag'] == 0.0
+    assert unsupported[P + 'blanket__breeding__tbr_mean'] == 0.0

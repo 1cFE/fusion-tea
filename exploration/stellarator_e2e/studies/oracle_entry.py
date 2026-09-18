@@ -214,9 +214,19 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     # vacuum facts (design D11). Levers for the round's study: t_recycle (the
     # recovery semantics), burn_fraction,
     # f_rad_total, q_target_ref / p_nonrad_ref (the low case 5.0 at 50), p_exhaust,
-    # T_gas, R_ref_divertor; the achieved tbr becomes a key too (the adequacy arm).
+    # T_gas, R_ref_divertor; WI-066 retires the held achieved-TBR input.
     # The two library defaults are LIBRARY_DEFAULT entry points of the package.
-    f"{P}blanket__tbr": "tbr",
+    f"{P}tbr_floor": "tbr_floor",
+    # WI-066: all response applicability coordinates must reach the independent oracle.
+    f"{P}plasma__kappa": "kappa",
+    f"{P}blanket__blanket_t": "blanket_t",
+    f"{P}blanket__reflector_t": "reflector_t",
+    f"{P}blanket__first_wall__vacuum_t": "vacuum_t",
+    f"{P}blanket__first_wall__firstwall_t": "firstwall_t",
+    f"{P}shield__ht_shield_t": "ht_shield_t",
+    f"{P}structure__structure_t": "structure_t",
+    f"{P}vessel__gap1_t": "gap1_t",
+    f"{P}vessel__vessel_t": "vessel_t",
     f"{P}fuel_cycle__burn_fraction": "burn_fraction",
     f"{P}fuel_cycle__t_recycle": "t_recycle",
     f"{P}fuel_cycle__eta_extract": "eta_extract",
@@ -239,6 +249,13 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
 #: Oracle output name -> qualified channel name. Only channels the package records
 #: as single-field floats appear; the oracle returns more than the package does.
 ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
+    **{'breeding_' + name: f'{P}blanket__breeding__{name}' for name in (
+        'tbr_li6', 'tbr_li7', 'tbr_mean', 'tbr_std_error', 'interpolation_allowance',
+        'tbr_lower', 'defined_flag')},
+    **{'breeding_adequacy_' + name: f'{P}breeding_adequacy__{name}' for name in (
+        'required_tbr', 'design_margin', 'fuel_margin', 'numerical_margin', 'production_rate',
+        'extracted_supply_rate', 'extraction_loss_rate', 'recycle_loss_rate', 'decay_rate',
+        'stock_growth_rate', 'balance_rate', 'defined_flag')},
     **{"sizing_" + name: f"{P}magnet__current_sizing__{name}" for name in (
         "required_tapes", "required_conductor_area", "required_pack_area",
         "required_effective_density", "selected_effective_density", "tape_available_current")},
@@ -515,8 +532,8 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
         "threshold": {"kind": "input", "key": f"{P}recirc_ok__threshold"},
     },
     f"{P}tbr_ok__2cd198f674d413e4": {
-        "tbr_in": {"kind": "input", "key": f"{P}blanket__tbr"},
-        "tbr_floor_in": {"kind": "input", "key": f"{P}tbr_floor"},
+        "defined_in": {"kind": "channel", "key": f"{P}breeding_adequacy__defined_flag"},
+        "numerical_margin_in": {"kind": "channel", "key": f"{P}breeding_adequacy__numerical_margin"},
     },
     f"{P}wall_load_ok__ab2c790419af93bb": {
         # WI-041: the fence's operand is the source-anchored PEAK, not the

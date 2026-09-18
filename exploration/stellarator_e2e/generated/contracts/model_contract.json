@@ -181,15 +181,15 @@
       {
         "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
         "declaration_id": "8550bf5c-38d1-5ba6-be23-31d6c2d656e2",
-        "definition_qualified_name": "mfe_viability::'TBR Floor'",
+        "definition_qualified_name": "mfe_tritium_breeding::'Computed TBR Adequacy'",
         "evaluation_channel": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation",
         "expected_value": true,
         "is_negated": false,
         "membership_kind": null,
         "owner_instance_path": "stellarator_09__stellaris",
         "owner_qualified_name": "stellarator_09::stellaris",
-        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"tbr_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"tbr_in\",\"qualified_name\":\"mfe_viability::'TBR Floor'::tbr_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"tbr_floor_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"tbr_floor_in\",\"qualified_name\":\"mfe_viability::'TBR Floor'::tbr_floor_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}",
-        "predicate_source_key": "definition:mfe_viability::'TBR Floor'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_tritium_breeding::'Computed TBR Adequacy'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"numerical_margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"numerical_margin_in\",\"qualified_name\":\"mfe_tritium_breeding::'Computed TBR Adequacy'::numerical_margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_tritium_breeding::'Computed TBR Adequacy'",
         "source_form": "definition_typed",
         "source_local_identity": "tbr_ok",
         "usage_qualified_name": "stellarator_09::stellaris::tbr_ok"
@@ -324,7 +324,7 @@
       }
     ],
     "excluded_records": [],
-    "fingerprint": "9843568db39e620375bb531a0295a6085b66f80517f625ba9dd6226c5538c999",
+    "fingerprint": "edc93be6efe2fa9615b9a7e125e416d115e30eab7f18773a06d0ac8ee91c8b3e",
     "source_records": [
       {
         "definition_qualified_name": "mfe_conductor_current::'Reference Conductor Current Margin'",
@@ -342,6 +342,13 @@
         "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
         "formal_names": [
           "efficiency"
+        ]
+      },
+      {
+        "definition_qualified_name": "mfe_tritium_breeding::'Computed TBR Adequacy'",
+        "formal_names": [
+          "defined_in",
+          "numerical_margin_in"
         ]
       },
       {
@@ -422,13 +429,6 @@
         "formal_names": [
           "p_aux_installed_in",
           "p_aux_required_in"
-        ]
-      },
-      {
-        "definition_qualified_name": "mfe_viability::'TBR Floor'",
-        "formal_names": [
-          "tbr_floor_in",
-          "tbr_in"
         ]
       },
       {
@@ -646,7 +646,7 @@
       },
       {
         "declaration_id": "8550bf5c-38d1-5ba6-be23-31d6c2d656e2",
-        "definition_qualified_name": "mfe_viability::'TBR Floor'",
+        "definition_qualified_name": "mfe_tritium_breeding::'Computed TBR Adequacy'",
         "disposition_detail": "stellarator_09::stellaris::tbr_ok profile eligibility admit",
         "disposition_kind": "eligible",
         "disposition_reason": "admitted",
@@ -813,6 +813,41 @@
     {
       "channel_name": "stellarator_09__stellaris__blanket__first_wall__wall_peak_cal__calibration",
       "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__blanket__breeding__interpolation_allowance",
+      "field_name": "interpolation_allowance",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__blanket__breeding__tbr_lower",
+      "field_name": "tbr_lower",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__blanket__breeding__defined_flag",
+      "field_name": "defined_flag",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__blanket__breeding__tbr_li6",
+      "field_name": "tbr_li6",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__blanket__breeding__tbr_std_error",
+      "field_name": "tbr_std_error",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__blanket__breeding__tbr_li7",
+      "field_name": "tbr_li7",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__blanket__breeding__tbr_mean",
+      "field_name": "tbr_mean",
       "python_type": "float"
     },
     {
@@ -1208,6 +1243,66 @@
     {
       "channel_name": "stellarator_09__stellaris__turbine__cycle__domain_product",
       "field_name": "domain_product",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__design_margin",
+      "field_name": "design_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__decay_rate",
+      "field_name": "decay_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__fuel_margin",
+      "field_name": "fuel_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__extracted_supply_rate",
+      "field_name": "extracted_supply_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__recycle_loss_rate",
+      "field_name": "recycle_loss_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__defined_flag",
+      "field_name": "defined_flag",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__required_tbr",
+      "field_name": "required_tbr",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__balance_rate",
+      "field_name": "balance_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__extraction_loss_rate",
+      "field_name": "extraction_loss_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__stock_growth_rate",
+      "field_name": "stock_growth_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__numerical_margin",
+      "field_name": "numerical_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__production_rate",
+      "field_name": "production_rate",
       "python_type": "float"
     },
     {
@@ -2714,13 +2809,6 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__blanket__structure_factor"
-    },
-    {
-      "default_value": 1.074,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__blanket__tbr"
     },
     {
       "default_value": 600000.0,
@@ -4319,5 +4407,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0"
+  "semantic_fingerprint": "5f1fccf18967f8489cc48147b5277acb64212d2a1411d156e6693a168e099fbf"
 }

@@ -208,6 +208,19 @@ def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
                    case_inputs, package_inputs, channels) -> tuple[bool, int]:
     """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
     ir = json.loads(entry["predicate_ir"])
+    if ir.get("kind") == "operator" and ir.get("operator") == "and":
+        children = ir.get("operands", [])
+        if len(children) != 2:
+            raise VerifyError(f"{constraint_id}: conjunction requires exactly two operands")
+        # Evaluate both branches even when one is false: missing independent
+        # evidence must refuse verification rather than hide behind short circuit.
+        evaluated = [derive_verdict(constraint_id,
+                     {"predicate_ir": json.dumps(child), "is_negated": False},
+                     bindings, case_inputs, package_inputs, channels) for child in children]
+        result = all(value for value, _ in evaluated)
+        if entry.get("is_negated"):
+            result = not result
+        return result, sum(count for _, count in evaluated)
     if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
         raise VerifyError(
             f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "

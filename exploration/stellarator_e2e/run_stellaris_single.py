@@ -40,7 +40,8 @@ EXPECTED_VERDICTS = {
     "beta_ok": "satisfied",
     "net_positive": "satisfied",
     "recirc_ok": "satisfied",
-    "tbr_ok": "satisfied",
+    # WI-066: computed numerical lower estimate falls below the conditional fuel requirement.
+    "tbr_ok": "violated",
     # WI-041: the fence compares the computed PEAK (the circular-torus
     # average x the source-anchored calibration 1.316441) with the printed
     # 4.05; at the WI-041 baseline it read 4.088 -- VIOLATED. WI-042: the

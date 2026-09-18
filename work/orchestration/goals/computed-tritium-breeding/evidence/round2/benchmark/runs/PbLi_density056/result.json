@@ -1,0 +1,25 @@
+{
+  "assembly": "PbLi",
+  "case": "density056",
+  "energy_eV": 14100000.0,
+  "li_density_g_cm3": 0.56,
+  "li6_atom_fraction": 0.0759,
+  "casing_cm": 0.0,
+  "seed": 981731,
+  "histories": 400000,
+  "Li6": 0.3126328734257374,
+  "Li7": 0.2225116938473885,
+  "total": 0.5351445672731252,
+  "std_dev": 0.00044032561425417355,
+  "isotope_sum_error": 6.661338147750939e-16,
+  "openmc_version": "0.15.2",
+  "experiment": 0.53,
+  "experiment_rsd": 0.06,
+  "C_over_E": 1.0097067307040097,
+  "z_diagnostic": 0.16176333823957895,
+  "artifacts_sha256": {
+    "summary.h5": "e244e8c1800a12ab4cf60f3749000bef2d6627de7d5f584211dcef8cb2ef92a8",
+    "model.xml": "0bd9ba05205c8e47945da7c58c9efc8a1f693d01da539227952e7e888d6983e6",
+    "statepoint.40.h5": "a6c1f03b02b68dac7d193e62edcb2be02b63a8ffba100980f9d31fe5894c589a"
+  }
+}

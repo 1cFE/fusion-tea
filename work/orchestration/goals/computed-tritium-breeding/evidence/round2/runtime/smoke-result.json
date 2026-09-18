@@ -1,0 +1,11 @@
+{
+  "openmc_version": "0.15.2",
+  "batches": 10,
+  "particles_per_batch": 1000,
+  "seed": 1739,
+  "score": "(n,Xt)",
+  "mean": 0.32904922245860607,
+  "std_dev": 0.0029366263602033224,
+  "scope": "runtime smoke only; not physics validation",
+  "model.xml_sha256": "9aef53116ce26a06ed1cd02544b0da275042bca26162536e45fcc76cb64f4633"
+}

@@ -1,0 +1,80 @@
+E
+==================================== ERRORS ====================================
+_______ ERROR at setup of test_the_summary_validates_against_its_schema ________
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12903/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12903/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12903/test_the_summary_validates_aga0')
+
+    @pytest.fixture
+    def summary(promoted_run, tmp_path):
+        out = tmp_path / "verification_summary.json"
+>       run_verify(promoted_run, out, expect=0)
+
+tests/study/test_verify.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+promoted_run = {'baseline_result': PosixPath('/tmp/pytest-of-reid/pytest-12903/stock_route_run0/baseline_result.json'), 'dir': PosixP...-12903/stock_route_run0/package_identity.json'), 'simkit': PosixPath('/home/reid/1cfe/teax/packages/teax-simkit'), ...}
+out = PosixPath('/tmp/pytest-of-reid/pytest-12903/test_the_summary_validates_aga0/verification_summary.json')
+expect = 0, extra = ()
+argv = ['--package', '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea', '--manifest', '/home/reid/...e/studies/manifest.json', '--identity', '/tmp/pytest-of-reid/pytest-12903/stock_route_run0/package_identity.json', ...]
+done = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...et_tritium_breeding_output.py\n?? exploration/stellarator_e2e/generated/schemas/tritium_breeding_adequacy_output.py\n')
+
+    def run_verify(promoted_run, out, *extra, expect=None):
+        argv = [
+            "--package", str(PACKAGE),
+            "--manifest", str(MANIFEST),
+            "--identity", str(promoted_run["identity"]),
+            "--store", str(promoted_run["store"]),
+            "--out", str(out),
+            *extra,
+        ]
+        done = subprocess.run(
+            [sys.executable, str(VERIFY), *argv],
+            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
+        )
+        if expect is not None:
+>           assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
+E           AssertionError: exit 1
+E             package tree is not git-clean: exploration/stellarator_e2e/generated
+E             M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E              M exploration/stellarator_e2e/generated/__init__.py
+E              M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E              M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E              M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E              M exploration/stellarator_e2e/generated/handwritten/mfe_fuel_cycle/fuel_cycle_flows_impl.py
+E              M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E              M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E              M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py
+E              M exploration/stellarator_e2e/generated/modules/constraints/predicates.py
+E              M exploration/stellarator_e2e/generated/modules/mfe_fuel_cycle/fuel_cycle_flows.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E              M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaristbrokconstraintmodule.py
+E              M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E              M exploration/stellarator_e2e/generated/schemas/fuel_cycle_flows_output.py
+E              M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E              M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_tritium_breeding/__init__.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_tritium_breeding/blanket_tritium_breeding_impl.py
+E             ?? exploration/stellarator_e2e/generated/handwritten/mfe_tritium_breeding/tritium_breeding_adequacy_impl.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_tritium_breeding/__init__.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_tritium_breeding/blanket_tritium_breeding.py
+E             ?? exploration/stellarator_e2e/generated/modules/mfe_tritium_breeding/tritium_breeding_adequacy.py
+E             ?? exploration/stellarator_e2e/generated/schemas/blanket_tritium_breeding_output.py
+E             ?? exploration/stellarator_e2e/generated/schemas/tritium_breeding_adequacy_output.py
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/home/reid/1cfe/fusion-tea/.venv/bin/python3', '/home/reid/1cfe/fusion-tea/scripts/study/verif...et_tritium_breeding_output.py\n?? exploration/stellarator_e2e/generated/schemas/tritium_breeding_adequacy_output.py\n').returncode
+
+tests/study/test_verify.py:62: AssertionError
+=============================== warnings summary ===============================
+tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 warning, 1 error in 37.54s

@@ -1,0 +1,242 @@
+[
+  {
+    "nuclide": "B10",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/B10.h5",
+    "bytes": 2461120,
+    "sha256": "a4ff422b1fca80fa0bef8257501b271bbc4d5a2506e506fc7ec73037af77a597"
+  },
+  {
+    "nuclide": "B11",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/B11.h5",
+    "bytes": 4112720,
+    "sha256": "bef13144361b1baa84275bf1a1377c1f674341d54de3f4bbacbbbccba2b2eb9e"
+  },
+  {
+    "nuclide": "C12",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/C12.h5",
+    "bytes": 2555816,
+    "sha256": "cf2e36412ece9c5e730ed10da56247fe068249659a1862588f0831f814b9d386"
+  },
+  {
+    "nuclide": "C13",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/C13.h5",
+    "bytes": 2185496,
+    "sha256": "5fbbb4794b18de15fa1395f2908cf16476b6387a168997e02c11b60eb8911b3d"
+  },
+  {
+    "nuclide": "Cr50",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Cr50.h5",
+    "bytes": 12522920,
+    "sha256": "4f52b06a1a1133cfab98e03404d96bde4a48a8d93d6106d8c6515d83b413b543"
+  },
+  {
+    "nuclide": "Cr52",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Cr52.h5",
+    "bytes": 12524200,
+    "sha256": "1c431abbe5063ff6820c46ca8239a4adf88e348bca3df12ebc1cd9b2afd84cfb"
+  },
+  {
+    "nuclide": "Cr53",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Cr53.h5",
+    "bytes": 10549640,
+    "sha256": "693b30a2241e1c1f74e8f25c251b32570ce593c7c28c692b2d5a92fcac33f0eb"
+  },
+  {
+    "nuclide": "Cr54",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Cr54.h5",
+    "bytes": 6821800,
+    "sha256": "40cfb6225e169ac2572c3c69114f5719dbbdd020c68167beca8c7faeb9ba7b85"
+  },
+  {
+    "nuclide": "Fe54",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Fe54.h5",
+    "bytes": 44368272,
+    "sha256": "4ba04cd0c8810e3c8efbb775e2cb4c52292819c9a58578a0e1dd4c4974bf1ff0"
+  },
+  {
+    "nuclide": "Fe56",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Fe56.h5",
+    "bytes": 57405104,
+    "sha256": "c9757aeb4dbf0cc560a04cd4ba395dc2d797d8dce2c2bc5f62d177b5be8561eb"
+  },
+  {
+    "nuclide": "Fe57",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Fe57.h5",
+    "bytes": 22030176,
+    "sha256": "5568f95057b38abae110cd8876597aedb118b6e96eb4cdda6f0c16544a8f5427"
+  },
+  {
+    "nuclide": "Fe58",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Fe58.h5",
+    "bytes": 24452440,
+    "sha256": "30c7672fde0f672f5cdad33e2ec54610f59fc82852fa0416301d608a772f6550"
+  },
+  {
+    "nuclide": "H1",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/H1.h5",
+    "bytes": 328056,
+    "sha256": "6b639ad552dfbb83042fd2705408ab8be2d3b346c7750c2afe4b67e9f48bcfe5"
+  },
+  {
+    "nuclide": "H2",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/H2.h5",
+    "bytes": 605176,
+    "sha256": "14e092509d270ed7191113fd1e6de62100cc67fd631c1202fcd15888203781d5"
+  },
+  {
+    "nuclide": "He4",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/He4.h5",
+    "bytes": 295776,
+    "sha256": "2361ccfb51592cc659861849b5dc0ea47101dfca8f4923454954f63c436d06dc"
+  },
+  {
+    "nuclide": "Li6",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Li6.h5",
+    "bytes": 1386016,
+    "sha256": "3e85c1a46c73ddf8e49f14ac3da0f48b9540bcc1fc17a55f9582fbe605212e7a"
+  },
+  {
+    "nuclide": "Li7",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Li7.h5",
+    "bytes": 1198568,
+    "sha256": "c0f0908c935dffc6f9f4745cac0fde06bd3efbdf1092a1b570c793eaebeafc9c"
+  },
+  {
+    "nuclide": "Mn55",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Mn55.h5",
+    "bytes": 14109376,
+    "sha256": "19d74add58be6b84c2c6a9ef5e9dad026aee4e66dbccea3294c8cf13b36afe3f"
+  },
+  {
+    "nuclide": "O16",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/O16.h5",
+    "bytes": 8650648,
+    "sha256": "86d87c47de9260c887c3574a0d12fefc365326931934e4d24c081719a5379b3a"
+  },
+  {
+    "nuclide": "O17",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/O17.h5",
+    "bytes": 741832,
+    "sha256": "111c44db0d7b7249f1d0050f3361b1be6d66555bf1dd10da688ad5c6b95db991"
+  },
+  {
+    "nuclide": "O18",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/O18.h5",
+    "bytes": 645416,
+    "sha256": "f116042acb3d5e281b99518a9793eff61307679155b211a24122812cf5f7207f"
+  },
+  {
+    "nuclide": "Pb204",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Pb204.h5",
+    "bytes": 19371760,
+    "sha256": "756fecc96982c420be5930d7b5ca9e4c63c7f0fc68e28eca8f4931dd4c931eca"
+  },
+  {
+    "nuclide": "Pb206",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Pb206.h5",
+    "bytes": 41331200,
+    "sha256": "fe0255a39fa6e11be06e7f0886c990b6ef1cc4eee49ed36db1b1002c8b409474"
+  },
+  {
+    "nuclide": "Pb207",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Pb207.h5",
+    "bytes": 16359680,
+    "sha256": "db04f02bf3e1f0ceefbfb48d8c4ec3389d4a408f9ba55910f4ce82620f5bad08"
+  },
+  {
+    "nuclide": "Pb208",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Pb208.h5",
+    "bytes": 12180760,
+    "sha256": "ed340d6d5f20651f41f7b454cd3fd31dc1d542eea236ffe7a9833bf6c5e5c6c1"
+  },
+  {
+    "nuclide": "Si28",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Si28.h5",
+    "bytes": 8036808,
+    "sha256": "2b8a5195649c2d7bdfd503db933a6c7b39cca4945daca15023c8854ec1ed82f8"
+  },
+  {
+    "nuclide": "Si29",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Si29.h5",
+    "bytes": 7794520,
+    "sha256": "9e0b2597cec49565801e98021e541f7e5eb1d437621b23c81feaee781da38958"
+  },
+  {
+    "nuclide": "Si30",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Si30.h5",
+    "bytes": 4892920,
+    "sha256": "d4b1b000312cf1ee3818e6ef86e24f5a9f640f97be0e1416b118d44b2a56b53a"
+  },
+  {
+    "nuclide": "V50",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/V50.h5",
+    "bytes": 5225072,
+    "sha256": "c58041602a79ef818bb93c03a495821c76c9ae8829a42ef6bc6dc3ea75b50d80"
+  },
+  {
+    "nuclide": "V51",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/V51.h5",
+    "bytes": 12475864,
+    "sha256": "5d35f75f0935f0a81ca0be5b33485bf3a51ec887d043b6a1c50777767b5db34c"
+  },
+  {
+    "nuclide": "W180",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/W180.h5",
+    "bytes": 13224256,
+    "sha256": "927a3385b325156c765a832e82e8564a71d751d32bf6d1d3421eb94ceee4c2f0"
+  },
+  {
+    "nuclide": "W182",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/W182.h5",
+    "bytes": 30027328,
+    "sha256": "60b686215134788ee3d050e3dc7b5b27f4e8240e2641bed4ea9f2a3502c9ded7"
+  },
+  {
+    "nuclide": "W183",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/W183.h5",
+    "bytes": 51768312,
+    "sha256": "5c434b6c49880e0653ad39672274be93e3109ee508bb86a0f100d1718430da73"
+  },
+  {
+    "nuclide": "W184",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/W184.h5",
+    "bytes": 18631224,
+    "sha256": "a2e97d5db19214f96848a7b94fafa44d48766b2776cac8b860bf0e63dd81142c"
+  },
+  {
+    "nuclide": "W186",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/W186.h5",
+    "bytes": 19449512,
+    "sha256": "ce253a17f396dd5d86833ad4f5a51a2032c418fa00de18357544a1757622ec0b"
+  },
+  {
+    "nuclide": "Ni58",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Ni58.h5",
+    "bytes": 21306872,
+    "sha256": "8e8822ace56a5464251b7101dfe09a0f06304880e0f22cfa559c9afc8545dc5e"
+  },
+  {
+    "nuclide": "Ni60",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Ni60.h5",
+    "bytes": 17719584,
+    "sha256": "476c29f186d3a887c6dcd36faa75df1006204c01c3dac3e10a57705d3f0653b8"
+  },
+  {
+    "nuclide": "Ni61",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Ni61.h5",
+    "bytes": 9341184,
+    "sha256": "94d8d87f87d72c5d4ff27fe81d34de166e03f807bcaa5503494a0bb044aa828a"
+  },
+  {
+    "nuclide": "Ni62",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Ni62.h5",
+    "bytes": 9166576,
+    "sha256": "633abb5c89d6f3f6e27638417a40271c14da4fbb8f40e12d1c44943298969811"
+  },
+  {
+    "nuclide": "Ni64",
+    "url": "https://raw.githubusercontent.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d/h5_files/neutron/Ni64.h5",
+    "bytes": 8444704,
+    "sha256": "ae4a15868433e8253893332335f96f489588ba5eade15bd8dcd7f2a51e6f22e1"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-computed-tritium-breeding-03",
+  "request_key": "233a5fb064f70eb6a051924425adc71c36120e2f09c41b512c54e7a3b81c7b2f",
+  "request_path": "knowledge/research/requests/REQ-computed-tritium-breeding-03.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 8,
+    "max_captures": 4
+  },
+  "opened_at": "2026-09-18T20:16:03.776013+00:00",
+  "override_reason": null
+}

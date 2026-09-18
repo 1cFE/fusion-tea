@@ -1,5 +1,6 @@
 """WI-050 native operating-state, independent conservation and consumer regressions."""
 from __future__ import annotations
+from tests.models.current_mfe_regressions import WI065_PARAMETERS, WI065_CHANNELS, WI066_RETIRED, WI066_CHANNELS
 from tests.models.current_mfe_regressions import WI063_PARAMETERS, WI063_CHANNELS, WI064_PARAMETERS, WI064_CHANNELS
 from tests.models.current_mfe_regressions import WI060_PARAMETERS, WI059_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES, WI059_REPLAY_LOCAL
 
@@ -38,7 +39,16 @@ def renamed_ref(ref):
 
 def load(name):
     spec=importlib.util.spec_from_file_location('wi050_'+name,SUPPORT/(name+'.py'))
-    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    module=importlib.util.module_from_spec(spec)
+    if name == 'check_results':
+        # Current-only adapter: one newly violated TBR predicate, independently checked below.
+        from tests.models.current_mfe_regressions import replace_once
+        source = replace_once((SUPPORT/(name+'.py')).read_text(),
+            "assert len(violated)==(2 if case=='efficiency' else 1)",
+            "assert len(violated)==(3 if case=='efficiency' else 2)")
+        exec(compile(source, str(SUPPORT/(name+'.py')), 'exec'), module.__dict__)
+    else:
+        spec.loader.exec_module(module)
     return module
 
 @pytest.fixture(scope='module')
@@ -123,7 +133,7 @@ def test_heating_efficiency_scalar_consumers(native,boundaries):
 def test_stellarator_operating_heat_has_no_public_demand_input(native):
     scratch,results,_,_=native
     contract=json.loads((scratch/'generated/contracts/model_contract.json').read_text())
-    assert len(contract['parameters'])==265 + len(WI059_PARAMETERS | WI060_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI064_PARAMETERS)  # WI-059 adds21public inputs and3native-only literals.
+    assert len(contract['parameters'])==265 + len(WI059_PARAMETERS | WI060_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI064_PARAMETERS | WI065_PARAMETERS) - len(WI066_RETIRED)  # WI-059 adds21public inputs and3native-only literals.
     assert not any('p_operating_coupled_heat' in str(p) for p in contract['parameters'])
     modules=yaml.safe_load((scratch/'generated/pipelines/pipeline.yaml').read_text())['modules']
     expected={'operating_heat':{'p_required_in':'sustain.p_aux_required'},'source_heat':{'p_input_in':'operating_heat.p_coupled'},'pb':{'p_input_in':'operating_heat.p_coupled','p_wallplug_in':'operating_heat.p_wallplug'},'divheat':{'p_coupled_in':'operating_heat.p_coupled','p_installed_coupled_in':'heat.p_coupled'},'primary_loop':{'q_source_in':'source_heat.q_source.root'},'heating_cost':{'p_ecrh_in':'heat.p_delivered'}}
@@ -138,6 +148,15 @@ def test_operating_heat_reserve_invariance(native):
     _,results,inputs,_=native
     # Frozen WI-050 checker retains its original eighteen-predicate scope.
     historical = {name: (dict(row, responses={k: v for k, v in row['responses'].items() if 'wp_fit_ok' not in k and 'reference_conductor_current_ok' not in k}) if 'responses' in row else row) for name, row in results.items()}
+    import sys
+    sys.path.insert(0, str(ROOT / 'exploration/stellarator_e2e/studies'))
+    import oracle_entry
+    from tests.models.current_mfe_regressions import WI059_REPLAY, WI066_PREDICATE, wi066_evaluation
+    for name, change in load('run_acceptance').CASES.items():
+        if 'responses' not in results[name]:
+            continue
+        channels = oracle_entry.evaluate(WI059_REPLAY | {renamed(P+k): v for k, v in change.items()})
+        assert results[name]['responses'][WI066_PREDICATE] == wi066_evaluation(channels)['status'] == 'violated'
     load('check_results').check(historical,inputs)
     for case,expected in [('baseline',-.920399212073221),('reserve',-10.920399212073221)]:
         assert results[case]['outputs'][P+'divheat__p_heat_operating_minus_installed']==pytest.approx(expected,rel=1e-9,abs=1e-9)

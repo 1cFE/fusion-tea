@@ -5,6 +5,7 @@ package mfe_subsystems {
     private import mfe_power_balance::*;
     private import mfe_account_costs::*;
     private import mfe_cryo_inventory::*;
+    private import mfe_tritium_breeding::*;
     private import cas_hierarchy::*;
     private import economic_parameter::'CAS Scope';
     private import mfe_radial_build_parts::*;
@@ -93,6 +94,40 @@ package mfe_subsystems {
             in p_input_in = p_coupled;
             in mn_in = mn;
         }
+    }
+
+    part def 'Transport Calculated Blanket' :> 'Blanket' {
+        doc /* Blanket specialization with its own computed breeding response. The base Blanket keeps its held tbr interface for other concepts. Geometry owned by sibling parts enters through explicit attributes; material/source assumptions remain in the immutable response manifest. All breeding-derived outputs and raw downstream fuel margins are undefined when breeding_defined is zero.
+        **Source**: work/active/WI-066_computed-tritium-breeding/design.md
+        **Reference**: work/active/WI-066_computed-tritium-breeding/evidence/interface-probe.md
+        **Last Updated**: 2026-09-18 */
+        attribute breeding_R : Real;
+        attribute breeding_a : Real;
+        attribute breeding_kappa : Real;
+        attribute breeding_ht_shield_t : Real;
+        attribute breeding_structure_t : Real;
+        attribute breeding_gap1_t : Real;
+        attribute breeding_vessel_t : Real;
+        calc breeding : 'Blanket Tritium Breeding' {
+            in blanket_t_in = blanket_t;
+            in R_in = breeding_R;
+            in a_in = breeding_a;
+            in kappa_in = breeding_kappa;
+            in vacuum_t_in = first_wall.vacuum_t;
+            in firstwall_t_in = first_wall.firstwall_t;
+            in reflector_t_in = reflector_t;
+            in ht_shield_t_in = breeding_ht_shield_t;
+            in structure_t_in = breeding_structure_t;
+            in gap1_t_in = breeding_gap1_t;
+            in vessel_t_in = breeding_vessel_t;
+        }
+        :>> tbr = breeding.tbr_mean;
+        attribute tbr_li6 : Real = breeding.tbr_li6;
+        attribute tbr_li7 : Real = breeding.tbr_li7;
+        attribute tbr_std_error : Real = breeding.tbr_std_error;
+        attribute interpolation_allowance : Real = breeding.interpolation_allowance;
+        attribute tbr_lower : Real = breeding.tbr_lower;
+        attribute breeding_defined : Real = breeding.defined_flag;
     }
 
     part def 'Shield' :> 'CAS22 Power Core' {

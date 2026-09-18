@@ -27,7 +27,8 @@ without one. TEAx execution is out of scope here (`tests/test_*_teax.py`).
 """
 
 from __future__ import annotations
-from tests.models.current_mfe_regressions import WI063_PARAMETERS, WI063_CHANNELS, WI064_PARAMETERS, WI064_CHANNELS, WI065_PARAMETERS, WI065_CHANNELS
+from tests.models.current_mfe_regressions import WI065_PARAMETERS, WI065_CHANNELS, WI066_RETIRED, WI066_CHANNELS
+from tests.models.current_mfe_regressions import WI063_PARAMETERS, WI063_CHANNELS, WI064_PARAMETERS, WI064_CHANNELS
 
 from tests.models.current_mfe_regressions import WI060_PARAMETERS, WI059_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES
 
@@ -107,7 +108,7 @@ CAS28_CONSUMERS = {
     (f"{P}cas2x_pre_contingency", "cas28_capital"),
 }
 BLANKET_T_SOURCE = ("stellarator_plant_params", f"{P}blanket__blanket_t")
-BLANKET_T_CONSUMERS = {(f"{P}rb", "blanket_t_in")}
+BLANKET_T_CONSUMERS = {(f"{P}rb", "blanket_t_in"), (f"{P}blanket__breeding", "blanket_t_in")}
 
 
 @pytest.fixture(scope="module", autouse=True)
@@ -364,7 +365,7 @@ def test_mfe_census_matches_current_generated_public_contract(baselines) -> None
     assert _contract(output)["semantic_fingerprint"] == (
         expected["derived_against_semantic_fingerprint"]
     ), "model meaning moved — re-derive tests/models/data/mfe_census.json from the new package"
-    assert len(_contract(output)["parameters"]) == expected["entry_points"] == 265 + len(WI059_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI064_PARAMETERS | WI065_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS)  # WI-040/038: 17 cost inputs and 2 conductor references.
+    assert len(_contract(output)["parameters"]) == expected["entry_points"] == 265 + len(WI059_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI064_PARAMETERS | WI065_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS) - len(WI066_RETIRED)  # WI-040/038: 17 cost inputs and 2 conductor references.
     assert not any("p_operating_coupled_heat" in str(p) for p in _contract(output)["parameters"])
     assert {k: sorted(v) for k, v in _by_entry_type(output).items()} == expected["by_entry_type"]
     _entry_sources(output)  # identity uniqueness both ways
@@ -438,10 +439,10 @@ def test_mfe_cas28_capital_mutation_reaches_every_and_only_its_two_rollups(
     _assert_every_and_only(baselines["mfe"], mutated, CAS28_SOURCE, 6000000.0, CAS28_CONSUMERS)
 
 
-def test_mfe_blanket_thickness_mutation_reaches_the_radial_build_and_nothing_else(
+def test_mfe_blanket_thickness_mutation_reaches_radial_build_and_breeding(
     baselines, tmp_path: Path
 ) -> None:
-    """A nested occurrence: the blanket layer thickness feeds the radial build alone;
+    """A nested occurrence: thickness feeds radial build and WI066 breeding directly;
     everything downstream (blanket volume, CAS27, the outward layers) reaches it through
     the radial build's outputs, not through a second binding of the source."""
     mutated = tmp_path / "package"

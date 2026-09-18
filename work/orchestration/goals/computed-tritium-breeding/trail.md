@@ -63,3 +63,62 @@ T-001 · native research and current-model trace · evidence report and method p
 ### Evidence checkpoint — 2026-09-18
 
 Native research, registrations, probe, reviews and answer are committed at `f61c0b92`. Cite those paths at this revision to resolve the earlier unpinned-at-review evidence. The current model remains at the entering revision; no model/generated-package diff exists. Source-registry verification reports zero faults and three pre-existing legacy entries. Unrelated working-tree edits remain preserved; the new CURRENT_WORK entry is left unstaged with the owner's existing changes. No merge or push.
+
+### Owner delegation — 2026-09-18
+
+The owner delegates research and scientific judgment within the goal; see goal.md amendment. The previous physical-target gate no longer blocks execution. Round1 remains closed. Its finding that direct surrogate transfer is unsupported remains valid; the next strategy addresses that evidence gap.
+
+## Round 2 — calculate-retained-blanket
+
+### Strategy revision — 2026-09-18
+
+- **Approach:** [AGENT] Retain helium/PbLi and the actual generic radial build. Pursue a reproducible fixed-source neutron-transport calculation with explicit materials and geometry, using source-domain benchmarks to measure physical approximation error before integrating the model.
+- **Assumptions:** A public transport engine and evaluated nuclear data can be provisioned independently of the sealed plant runtime; sources can specify representative helium/PbLi internals. The current model's geometric abstraction may permit a bounded transport representation with measurable approximation error.
+- **Abandonment conditions:** Benchmarks fail without defensible resolution, missing nuclear data/geometry prevents an attributable calculation, or approximation errors cannot justify any supported configuration.
+- **Intended model increment:** Calculated breeding driven by actual blanket inputs, separately reported applicability/uncertainty, and an explicit conditional adequacy constraint using the retained fuel balance and design floor.
+- **Intended study question:** How do supported thickness/enrichment/material choices change breeding adequacy and the affected build/cost/power quantities, including insufficient cases?
+
+### T-002 scope
+
+- **Objective:** Establish a reproducible transport route and a source-supported retained-blanket/benchmark specification.
+- **Why now:** Round1 recovered a surrogate but demonstrated its domain excludes the current build. Owner delegates the next scientific choice.
+- **Scope:** Research prototype only: isolate public transport tooling and nuclear data; recover source benchmark/material/geometry inputs; run bounded benchmark calculations if specification permits. Preserve sealed runtime, production models and archives.
+- **Inputs:** goal.md amended authority; Round1 registered sources, method review and runtime probe; native research/source procedures.
+- **Done when:** A runnable transport setup and reviewable benchmark/current-assembly method, or a concrete technical obstacle with attempted remedies.
+- **Stop when:** Prerequisite, strategy blocker, genuine reserved gate or declared limit.
+
+### T-002 start — 2026-09-18
+
+T-002 · native research prototypes · transport setup and physical-method specification. Runtime provisioning and source/benchmark recovery are independent: tooling worker owns only isolated runtime/provisioning evidence; physics worker owns only source specification evidence; coordinator owns registrations, goal records and later integration.
+
+### Round 2 execution note — 2026-09-18
+
+T-002 continues. Isolated OpenMC 0.15.2 and pinned ENDF/B-VIII.0 processed data pass a plumbing smoke test (`evidence/round2/transport-runtime.md`); this is not physical validation. Fresh independent `method-precheck.md` releases transport prototype implementation with material, geometry/source/tally and benchmark acceptance conditions. The outer torus transmits into exterior void, avoiding erroneous loss of neutrons crossing the central hole. Research request03 acquires original IAEA sphere evidence and preserves two retrieval limitations: a migrated landing-page capture and unsupported text/plain resolved by a transparent mechanical PDF rendering. The native return retains a stale queued URL failure; the original text is now acquired and no owner retrieval is required.
+
+[AGENT] WI-066 is registered with requirements and a persistent execution checklist at `work/active/WI-066_computed-tritium-breeding/spec.md`. Production implementation remains dependent on the scientific prototype acceptance. No model, generated package or historical result has changed.
+
+### T-002 return — 2026-09-18
+
+- **Outcome:** SUCCESS for the bounded method/runtime/benchmark task, not breeding-gap completion.
+- **Evidence:** `evidence/round2/transport-runtime.md`, `physical-method-proposal.md`, `material-manifest-proposal.md/.json`, `method-precheck.md`, `benchmark/report.md`, `benchmark-and-interface-review.md`; native requests03/04/06. The independent review accepts limited integral experimental consistency and the conditional interface design. Exact experimental casing/penetrations and shaped-stellarator bias remain unresolved.
+- **Results:** Approximate Li sphere0.697859 ±0.000489 versus measured0.685 ±0.03836; Pb/Li sphere0.504131 ±0.000478 versus measured0.530 ±0.03180. Errors are standard deviations with different meanings (Monte Carlo versus experiment). Eighteen cases retain the predeclared low-density Pb/Li comparison failure; no correction factor is fitted. These comparisons do not establish a plant uncertainty bound.
+- **Decision:** Use a source-defined finite-torus transport scenario and a narrow validated thickness response at fixed70% Li-6 · delegated scientific judgment · coordinator. Pilot throughput motivates one supported executable lever; enrichment remains direct-transport sensitivity. No blanket technology or acceptance requirement changes.
+
+### T-003 scope
+
+- **Objective:** Implement and verify configuration-derived breeding and conditional adequacy through native WI-066, then produce a separately identified integrated package.
+- **Why now:** Runtime, material cards, approximate independent integral checks and method/interface review are available. Numerical response release and plant applicability remain task acceptance conditions.
+- **Scope:** Freeze an explicit opening/material/source scenario; direct-transport thickness nodes and withheld validation; physical sensitivities; canonical/twin SysML, generated executable, independent software oracle, guarded applicability, production/recovery/loss account, current metadata and targeted regression; independent completion assessment and native integration.
+- **Inputs:** T-002 evidence and independent reviews; WI-066 spec/design; retained entering model and current consumers.
+- **Done when:** Reviewed model evidence and a native integration CANDIDATE identify the supported package, or a precise unresolved blocker prevents that result.
+- **Stop when:** Scientific validation fails without defensible remedy, applicable workflow prerequisite cannot be met, or a genuine reserved decision is encountered.
+
+### T-003 start — 2026-09-18
+
+T-003 · WI-066 native modeling · independently prechecked physics/interface. Transport author owns numerical evidence and immutable response data; model author owns canonical and twin SysML; coordinator owns generated/manual implementation, consumer integration and goal records. No transport result is accepted merely because the prototype executes. Expensive transport is bounded to the declared grid and sensitivities; failures are retained.
+
+### T-003 implementation checkpoint — 2026-09-18
+
+The independent physical/table release accepts the fixed-scenario thickness response; all five nodes and six withheld checks pass declared numerical criteria. Full scenario metadata travels inside the generated manual implementation and canonical asset. Strict fresh generation repeats exactly, with 27 prior manual implementations preserved and two added. The held achieved input retires; all 20 predicate identities remain. All 245 independent baseline oracle channels match; only the old fuel margin and TBR verdict change among existing baseline outputs. The reference numerical lower estimate1.186145581 fails the conditional1.190 requirement.
+
+Focused verification passes117 breeding tests,93 affected model/consumer checks,19 compound-predicate checks and3 dependency checks. Static validation remains failed at Levels2/6; all32 newly added Level6 diagnostic identities are explicitly checked against actual generated bindings by the independent reviewer. The study-tool prerequisite now traces and independently re-derives conjunctions; both branches must supply evidence. The precommit full-verifier probe refuses package dirtiness, correctly; its receipt is retained and clean-package verification follows the audited commit. Research report `knowledge/research/pending/20260918-140121_computed-tritium-breeding-transport.md` and requests03/04/06/07 preserve sources, quantitative evidence and acquisition failures. No P3 or integration claim yet.

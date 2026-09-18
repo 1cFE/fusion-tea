@@ -857,6 +857,134 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 6314d83642dcc41468213c1963cf00efedc914fd25e9d7470f920c18f6b8d4a7
 - **Date Added**: 2026-09-18
 
+### IAEA INDC NDS 281 Fusion neutron benchmark proceedings
+- **Type**: local_pdf
+- **Location**: knowledge/sources/iaea_indc_nds_281_fusion_neutron_benchmark_proceedings/
+- **Use for**: Reconstruct original OKTAVIAN lithium and lead lithium tritium breeding experiments and geometry
+- **Validation**: Primary IAEA report retrieved from https://www-nds.iaea.org/publications/indc/indc-nds-0281.pdf; inspect original tables and diagrams
+- **Caveat**: Integral spheres validate reaction transport, not stellarator geometry or plant self sufficiency; benchmark errors and reconstruction limitations retained
+
+#### Extended Metadata
+- **Origin Path**: /tmp/iaea-0281.pdf
+- **Source ID**: 3c7828e5ddbbfce35ba466fb3e2fc8bdf89511c849ce5a6e2fd3311b3d7ee62b
+- **Raw SHA256**: 3c7828e5ddbbfce35ba466fb3e2fc8bdf89511c849ce5a6e2fd3311b3d7ee62b
+- **Raw Artifact SHA256**: 3c7828e5ddbbfce35ba466fb3e2fc8bdf89511c849ce5a6e2fd3311b3d7ee62b
+- **Extracted Path**: knowledge/sources/iaea_indc_nds_281_fusion_neutron_benchmark_proceedings/
+- **Extract SHA256**: 2bddea9c61765486911805b8dba3eceb0847f25b4306f1f205c85152f0d0f6f6
+- **Date Added**: 2026-09-18
+
+### High Temperature Zirconium Alloys for Fusion Energy
+- **Type**: local_pdf
+- **Location**: knowledge/sources/high_temperature_zirconium_alloys_for_fusion_energy/
+- **Use for**: Appendix A material compositions and densities for EUROFER PbLi helium tungsten and SS316 in retained helium PbLi transport; serves computed-tritium-breeding RQ1.
+- **Validation**: Inspect original Appendix A tables and density temperature footnotes; distinguish weight fractions from isotope enrichment.
+- **Caveat**: UKAEA-CCFE-PR2183 preprint. Material simulation cards are not a specification of the current plant. Downloaded from https://scientific-publications.ukaea.uk/wp-content/uploads/UKAEA-CCFE-PR2183.PDF.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/breeding-materials-king2021.pdf
+- **Source ID**: 39b05af195768acec864478bc3a968102553968bf1b4caa106c717ca6fc41a54
+- **Raw SHA256**: 39b05af195768acec864478bc3a968102553968bf1b4caa106c717ca6fc41a54
+- **Raw Artifact SHA256**: 39b05af195768acec864478bc3a968102553968bf1b4caa106c717ca6fc41a54
+- **Extracted Path**: knowledge/sources/high_temperature_zirconium_alloys_for_fusion_energy/
+- **Extract SHA256**: fce54a060afc282263bfa4e286d35fb44abd091cefaecc7d2a95264a4ce0ab27
+- **Date Added**: 2026-09-18
+
+### IAEA INDC NDS 281 original neutron multiplication benchmark report
+- **Type**: local_pdf
+- **Location**: knowledge/sources/iaea_indc_nds_281_original_neutron_multiplication_benchmark/
+- **Use for**: Original experimental sphere specifications and independent breeding measurements; prior capture was only the migrated landing page
+- **Validation**: Downloaded original file via https://nds.iaea.org/records/frg42-4y059/files/indc-nds-0281.pdf?download=1; inspect source tables and drawings
+- **Caveat**: Benchmark transfer and reconstruction uncertainty must be assessed; no stellarator qualification implied
+
+#### Extended Metadata
+- **Origin Path**: /tmp/iaea-0281-original.pdf
+- **Source ID**: 6df35c07b049385d326f0a71cee069b464d9a4b848cc6ad7717fb4be8616a2c0
+- **Raw SHA256**: 6df35c07b049385d326f0a71cee069b464d9a4b848cc6ad7717fb4be8616a2c0
+- **Raw Artifact SHA256**: 6df35c07b049385d326f0a71cee069b464d9a4b848cc6ad7717fb4be8616a2c0
+- **Extracted Path**: knowledge/sources/iaea_indc_nds_281_original_neutron_multiplication_benchmark/
+- **Extract SHA256**: 6788d0fc08bc2462981399ded0dae1f6cc3c9b535705b9f5b28329e657c97aa9
+- **Date Added**: 2026-09-18
+
+### IAEA OKTAVIAN tritium breeding benchmark 1994 text rendering
+- **Type**: local_pdf
+- **Location**: knowledge/sources/iaea_oktavian_tritium_breeding_benchmark_1994_text_rendering/
+- **Use for**: Updated experimental integrated breeding ratios, uncertainties and radial reaction measurements
+- **Validation**: Mechanical rendering of public IAEA readme; original byte hash and rendering script retained in goal round2 evidence; compare original text
+- **Caveat**: Not original pagination; missing source figure remains missing; extraction rejects original text/plain; use separately registered original proceedings for geometry
+
+#### Extended Metadata
+- **Origin Path**: /tmp/oktavian-tbr-rendered.pdf
+- **Source ID**: 61c8428172731605e0eab86e6b429ae9970ec5e11f9ed3f0fde8aea719b0f36d
+- **Raw SHA256**: 61c8428172731605e0eab86e6b429ae9970ec5e11f9ed3f0fde8aea719b0f36d
+- **Raw Artifact SHA256**: 61c8428172731605e0eab86e6b429ae9970ec5e11f9ed3f0fde8aea719b0f36d
+- **Extracted Path**: knowledge/sources/iaea_oktavian_tritium_breeding_benchmark_1994_text_rendering/
+- **Extract SHA256**: 7c1818b25961fc74fea35f92dc7869b2f3a3525a0f77ad89f53edbbc3a195f3b
+- **Date Added**: 2026-09-18
+
+### Compendium of Material Composition Data for Radiation Transport Modeling PNNL 15870 Rev2
+- **Type**: local_pdf
+- **Location**: knowledge/sources/compendium_of_material_composition_data_for_radiation/
+- **Use for**: Representative elemental composition and density cards for SS316 boron and tungsten in retained helium PbLi transport; serves computed-tritium-breeding RQ1.
+- **Validation**: Inspect original material cards for Steel Stainless316 and Boron: densities, weight fractions and natural isotope conventions; report card page numbers.
+- **Caveat**: Representative transport recipes, not plant-specific alloy certificates or elevated-temperature density laws. Downloaded official LANL mirror https://mcnpx.lanl.gov/pdf_files/TechReport_2021_PNNL_PNNL-15870Rev.2_DetwilerMcConnEtAl.pdf after canonical PNNL URL returned403.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/breeding-materials-pnnl2021.pdf
+- **Source ID**: a34df48e1025cbd9649c8d7a635454ab57af9b0c59b5fb1faaaf4db1057dcb4b
+- **Raw SHA256**: a34df48e1025cbd9649c8d7a635454ab57af9b0c59b5fb1faaaf4db1057dcb4b
+- **Raw Artifact SHA256**: a34df48e1025cbd9649c8d7a635454ab57af9b0c59b5fb1faaaf4db1057dcb4b
+- **Extracted Path**: knowledge/sources/compendium_of_material_composition_data_for_radiation/
+- **Extract SHA256**: 66a011bc0459273c9a16148f011b19c6f645507b44f7784398842c483d7c9349
+- **Date Added**: 2026-09-18
+
+### ATSDR Tungsten Physical and Chemical Properties Table 4-2
+- **Type**: url
+- **Location**: knowledge/sources/atsdr_tungsten_physical_and_chemical_properties_table_4_2/
+- **Use for**: Pure WC representative density 15.6 g/cm3
+- **Validation**: Original official HTML table checked, WC column distinct from W2C
+- **Caveat**: Compiled HSDB2004 authority; density temperature unspecified; pure WC not cobalt cemented
+
+#### Extended Metadata
+- **Source URL**: https://www.ncbi.nlm.nih.gov/books/NBK598740/table/ch4.tab2/
+- **Source ID**: 7a3c2d9d1e16d87ef04b6cf28bac696055a524e4204c83fe3f8935e0926b56ed
+- **Raw SHA256**: 7a3c2d9d1e16d87ef04b6cf28bac696055a524e4204c83fe3f8935e0926b56ed
+- **Raw Artifact SHA256**: 7a3c2d9d1e16d87ef04b6cf28bac696055a524e4204c83fe3f8935e0926b56ed
+- **Extracted Path**: knowledge/sources/atsdr_tungsten_physical_and_chemical_properties_table_4_2/
+- **Extract SHA256**: d79771840700017f0a1055b71a94b6c83569a14c5bfc252bc3fed5618107529d
+- **Date Added**: 2026-09-18
+
+### OpenMC ENDF B VIII 0 NNDC processed HDF5 dataset pinned 466ab304
+- **Type**: url
+- **Location**: knowledge/sources/openmc_endf_b_viii_0_nndc_processed_hdf5_dataset_pinned/
+- **Use for**: Runtime processed neutron data provenance at immutable commit; individual file hashes in runtime manifests
+- **Validation**: Repository commit matches runtime data selection manifests
+- **Caveat**: Processed ENDF/B VIII.0 not FENDL; no independent processing or covariance validation; HDF5 files not downloaded again
+
+#### Extended Metadata
+- **Source URL**: https://github.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/tree/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d
+- **Source ID**: 734119a776d7ae81783a2b2c80ef1b203eea9d9da942ed3a030283c1c75cdee9
+- **Raw SHA256**: 734119a776d7ae81783a2b2c80ef1b203eea9d9da942ed3a030283c1c75cdee9
+- **Raw Artifact SHA256**: 734119a776d7ae81783a2b2c80ef1b203eea9d9da942ed3a030283c1c75cdee9
+- **Extracted Path**: knowledge/sources/openmc_endf_b_viii_0_nndc_processed_hdf5_dataset_pinned/
+- **Extract SHA256**: 360c1213e8e7a9517fde762dcd80905981a105463682d186596b170fb585fa9a
+- **Date Added**: 2026-09-18
+
+### OpenMC 0.15.2 tally scores and source normalization
+- **Type**: url
+- **Location**: knowledge/sources/openmc_0_15_2_tally_scores_and_source_normalization/
+- **Use for**: Official version matched tritium production scoring and per source particle normalization
+- **Validation**: Sections8.2 and8.3 inspected: H3-production is total tritium particles produced per source particle, integer scores select ENDF MT
+- **Caveat**: Documentation establishes tally semantics not nuclear data completeness or physical benchmark validity; nXt alias requires local implementation verification
+
+#### Extended Metadata
+- **Source URL**: https://docs.openmc.org/en/v0.15.2/usersguide/tallies.html
+- **Source ID**: 672e30ffc6e6847901a505e4a979338b6e1f2932448cb3d05e083098d19b58a1
+- **Raw SHA256**: 672e30ffc6e6847901a505e4a979338b6e1f2932448cb3d05e083098d19b58a1
+- **Raw Artifact SHA256**: 672e30ffc6e6847901a505e4a979338b6e1f2932448cb3d05e083098d19b58a1
+- **Extracted Path**: knowledge/sources/openmc_0_15_2_tally_scores_and_source_normalization/
+- **Extract SHA256**: 46fcb38cc1a545a063a40598ea1575ebda0f6d585a23fc907fe157938380321b
+- **Date Added**: 2026-09-18
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

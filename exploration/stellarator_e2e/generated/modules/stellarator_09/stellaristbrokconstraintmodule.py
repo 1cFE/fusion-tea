@@ -9,13 +9,13 @@ from simkit.config.schema import MultiOutput
 from simkit.core.base import ModuleBase, ModuleResult
 
 from stellarator_tea.schemas.constraint_types import ConstraintEvaluation
-from stellarator_tea.modules.constraints.predicates import _finalize_assertion, constraint_pred_definition_mfe_viability__tbr_floor
+from stellarator_tea.modules.constraints.predicates import _finalize_assertion, constraint_pred_definition_mfe_tritium_breeding__computed_tbr_adequacy
 
 
 class StellarisTbrOkConstraintInput(BaseModel):
     """Exact input schema: one field per resolved formal."""
-    tbr_floor_in: float
-    tbr_in: float
+    defined_in: float
+    numerical_margin_in: float
 
 
 class StellarisTbrOkConstraintOutput(MultiOutput):
@@ -28,9 +28,9 @@ class StellarisTbrOkConstraintModule(ModuleBase[StellarisTbrOkConstraintInput, S
 
     CONSTRAINT_ID = "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4"
 
-    def run(self, tbr_floor_in: float, tbr_in: float) -> ModuleResult[StellarisTbrOkConstraintOutput]:
-        StellarisTbrOkConstraintInput(tbr_floor_in=tbr_floor_in, tbr_in=tbr_in)  # validate every resolved formal
-        body = constraint_pred_definition_mfe_viability__tbr_floor(tbr_in=tbr_in, tbr_floor_in=tbr_floor_in)
+    def run(self, defined_in: float, numerical_margin_in: float) -> ModuleResult[StellarisTbrOkConstraintOutput]:
+        StellarisTbrOkConstraintInput(defined_in=defined_in, numerical_margin_in=numerical_margin_in)  # validate every resolved formal
+        body = constraint_pred_definition_mfe_tritium_breeding__computed_tbr_adequacy(defined_in=defined_in, numerical_margin_in=numerical_margin_in)
         verdict = _finalize_assertion(
             body,
             is_negated=False,
@@ -43,7 +43,7 @@ class StellarisTbrOkConstraintModule(ModuleBase[StellarisTbrOkConstraintInput, S
                     actual_value=verdict.actual_value,
                     status=verdict.status,
                     margin=verdict.margin,
-                    observed={"tbr_in": float(tbr_in), "tbr_floor_in": float(tbr_floor_in)},
+                    observed={"defined_in": float(defined_in), "numerical_margin_in": float(numerical_margin_in)},
                 )
             )
         )

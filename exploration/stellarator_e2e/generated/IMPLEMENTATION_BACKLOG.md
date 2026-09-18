@@ -9,7 +9,7 @@ Complete all stages in order for a production-ready system.
 
 **Objective**: Implement each calculation definition in its handwritten file.
 
-**Total**: 23 functions to implement
+**Total**: 25 functions to implement
 
 **Instructions for each function**:
 1. Open the SysML source file at the line number shown below
@@ -26,12 +26,14 @@ Complete all stages in order for a production-ready system.
 
 | Status | Module | Function | SysML Source | Complexity |
 |--------|--------|----------|--------------|------------|
+| [ ] | Blanket_Tritium_Breeding | `run_blanket_tritium_breeding` | `root-0/analyses/mfe_tritium_breeding.sysml:4` | High |
 | [ ] | Plasma_Sustainment | `run_plasma_sustainment` | `root-0/analyses/mfe_plasma_sustainment.sysml:4` | High |
 | [ ] | DT_Fusion_Power | `run_dt_fusion_power` | `root-0/analyses/mfe_plasma_scaling.sysml:147` | High |
 | [ ] | Conductor_Field_Capability | `run_conductor_field_capability` | `root-0/analyses/mfe_conductor_grade.sysml:4` | High |
 | [ ] | Divertor_Heat_Ledger | `run_divertor_heat_ledger` | `root-0/analyses/mfe_divertor_heat.sysml:4` | High |
 | [ ] | Primary_Coolant_Loop | `run_primary_coolant_loop` | `root-0/analyses/mfe_primary_loop.sysml:4` | High |
 | [ ] | Power_Cycle_Efficiency | `run_power_cycle_efficiency` | `root-0/analyses/mfe_power_cycle.sysml:4` | High |
+| [ ] | Tritium_Breeding_Adequacy | `run_tritium_breeding_adequacy` | `root-0/analyses/mfe_tritium_breeding.sysml:30` | High |
 | [ ] | Conductor_Peak_Field | `run_conductor_peak_field` | `root-0/analyses/mfe_plasma_scaling.sysml:419` | High |
 | [ ] | Current_Driven_Pack_Sizing | `run_current_driven_pack_sizing` | `root-0/analyses/mfe_conductor_current.sysml:39` | High |
 | [ ] | Winding_Pack_Sizing | `run_winding_pack_sizing` | `root-0/analyses/mfe_magnet_field.sysml:91` | High |
@@ -75,7 +77,7 @@ pytest tests/test_implementations_runnable.py -v
 All tests should pass (or pytest.skip for NotImplementedError stubs)
 
 **Test Coverage**:
-- 23 implementation functions
+- 25 implementation functions
 - Each function tested for: imports, signature, return type
 - Tests tolerate NotImplementedError (pass before implementation)
 - Tests verify return types (pass after implementation)
@@ -110,7 +112,7 @@ All tests should pass (or pytest.skip for NotImplementedError stubs)
 ## Completion Criteria
 
 The implementation is complete when:
-- Stage 1: All 23 functions implemented
+- Stage 1: All 25 functions implemented
 - Stage 2: All validations pass
 - Stage 3: Integration tests pass
 

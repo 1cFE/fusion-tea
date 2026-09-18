@@ -125,10 +125,10 @@ def constraint_pred_definition_mfe_viability__neutron_wall_load_limit(wall_load,
     value = _cmp('<=', wall_load, wall_load_limit_in)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((wall_load_limit_in - wall_load)) if (_fin(wall_load) and _fin(wall_load_limit_in)) else None))
 
-# definition:mfe_viability::'TBR Floor'
-def constraint_pred_definition_mfe_viability__tbr_floor(tbr_in, tbr_floor_in):
-    value = _cmp('>=', tbr_in, tbr_floor_in)
-    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((tbr_in - tbr_floor_in)) if (_fin(tbr_in) and _fin(tbr_floor_in)) else None))
+# definition:mfe_tritium_breeding::'Computed TBR Adequacy'
+def constraint_pred_definition_mfe_tritium_breeding__computed_tbr_adequacy(defined_in, numerical_margin_in):
+    value = _and(_cmp('>=', defined_in, 1.0), _cmp('>=', numerical_margin_in, 0.0))
+    return _PredicateBodyResult(actual_value=value, source_margin=None)
 
 # definition:mfe_viability::'Conductor Peak Field Limit'
 def constraint_pred_definition_mfe_viability__conductor_peak_field_limit(B_peak, B_max_in):

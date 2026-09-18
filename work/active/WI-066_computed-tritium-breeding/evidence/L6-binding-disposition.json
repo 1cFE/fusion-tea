@@ -1,0 +1,235 @@
+{
+  "probe": "/tmp/wi066-interface-probe/production-generated",
+  "pipeline_sha256": "2370b9912226053abb4769866683c2b7b964d197bff8a455f0f0aa536d764992",
+  "contract_sha256": "0f0df46c918eb9e315b824a70d8e21a032fae15c9c0d6e7af0d54c0a12d50a5e",
+  "rows": [
+    {
+      "attribute": "breeding_R",
+      "diagnostics": 1,
+      "formal": "R_in",
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__plasma__R",
+      "classification": "Definition formal has no default; concrete instance resolves to existing owner parameter"
+    },
+    {
+      "attribute": "breeding_a",
+      "diagnostics": 1,
+      "formal": "a_in",
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__plasma__a",
+      "classification": "Definition formal has no default; concrete instance resolves to existing owner parameter"
+    },
+    {
+      "attribute": "breeding_kappa",
+      "diagnostics": 1,
+      "formal": "kappa_in",
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__plasma__kappa",
+      "classification": "Definition formal has no default; concrete instance resolves to existing owner parameter"
+    },
+    {
+      "attribute": "breeding_ht_shield_t",
+      "diagnostics": 1,
+      "formal": "ht_shield_t_in",
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__shield__ht_shield_t",
+      "classification": "Definition formal has no default; concrete instance resolves to existing owner parameter"
+    },
+    {
+      "attribute": "breeding_structure_t",
+      "diagnostics": 1,
+      "formal": "structure_t_in",
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__structure__structure_t",
+      "classification": "Definition formal has no default; concrete instance resolves to existing owner parameter"
+    },
+    {
+      "attribute": "breeding_gap1_t",
+      "diagnostics": 1,
+      "formal": "gap1_t_in",
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__vessel__gap1_t",
+      "classification": "Definition formal has no default; concrete instance resolves to existing owner parameter"
+    },
+    {
+      "attribute": "breeding_vessel_t",
+      "diagnostics": 1,
+      "formal": "vessel_t_in",
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__vessel__vessel_t",
+      "classification": "Definition formal has no default; concrete instance resolves to existing owner parameter"
+    },
+    {
+      "attribute": "tbr_li6",
+      "diagnostics": 2,
+      "channel": "stellarator_09__stellaris__blanket__breeding__tbr_li6",
+      "classification": "Dynamic output alias resolved to generated calc channel; not a static numeric default"
+    },
+    {
+      "attribute": "tbr_li7",
+      "diagnostics": 2,
+      "channel": "stellarator_09__stellaris__blanket__breeding__tbr_li7",
+      "classification": "Dynamic output alias resolved to generated calc channel; not a static numeric default"
+    },
+    {
+      "attribute": "tbr_std_error",
+      "diagnostics": 2,
+      "channel": "stellarator_09__stellaris__blanket__breeding__tbr_std_error",
+      "classification": "Dynamic output alias resolved to generated calc channel; not a static numeric default"
+    },
+    {
+      "attribute": "interpolation_allowance",
+      "diagnostics": 2,
+      "channel": "stellarator_09__stellaris__blanket__breeding__interpolation_allowance",
+      "classification": "Dynamic output alias resolved to generated calc channel; not a static numeric default"
+    },
+    {
+      "attribute": "tbr_lower",
+      "diagnostics": 2,
+      "channel": "stellarator_09__stellaris__blanket__breeding__tbr_lower",
+      "classification": "Dynamic output alias resolved to generated calc channel; not a static numeric default"
+    },
+    {
+      "attribute": "breeding_defined",
+      "diagnostics": 2,
+      "channel": "stellarator_09__stellaris__blanket__breeding__defined_flag",
+      "classification": "Dynamic output alias resolved to generated calc channel; not a static numeric default"
+    },
+    {
+      "attribute": "breeding_requirement",
+      "diagnostics": 2,
+      "channel": "stellarator_09__stellaris__breeding_adequacy__required_tbr",
+      "classification": "Dynamic output alias resolved to generated calc channel; not a static numeric default"
+    },
+    {
+      "attribute": "breeding_design_margin",
+      "diagnostics": 2,
+      "channel": "stellarator_09__stellaris__breeding_adequacy__design_margin",
+      "classification": "Dynamic output alias resolved to generated calc channel; not a static numeric default"
+    },
+    {
+      "attribute": "breeding_fuel_margin",
+      "diagnostics": 2,
+      "channel": "stellarator_09__stellaris__breeding_adequacy__fuel_margin",
+      "classification": "Dynamic output alias resolved to generated calc channel; not a static numeric default"
+    },
+    {
+      "attribute": "breeding_numerical_margin",
+      "diagnostics": 2,
+      "channel": "stellarator_09__stellaris__breeding_adequacy__numerical_margin",
+      "classification": "Dynamic output alias resolved to generated calc channel; not a static numeric default"
+    },
+    {
+      "attribute": "breeding_adequacy_defined",
+      "diagnostics": 2,
+      "channel": "stellarator_09__stellaris__breeding_adequacy__defined_flag",
+      "classification": "Dynamic output alias resolved to generated calc channel; not a static numeric default"
+    },
+    {
+      "attribute": "loss_rate",
+      "diagnostics": 1,
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel__loss_rate",
+      "classification": "Dynamic output alias resolved to generated calc channel; not a static numeric default"
+    },
+    {
+      "attribute": "tbr_required",
+      "diagnostics": 1,
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel__tbr_required",
+      "classification": "Dynamic output alias resolved to generated calc channel; not a static numeric default"
+    },
+    {
+      "attribute": "tbr_margin",
+      "diagnostics": 1,
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin",
+      "classification": "Dynamic output alias resolved to generated calc channel; not a static numeric default"
+    }
+  ],
+  "selected_modules": {
+    "stellarator_09__stellaris__blanket__breeding": {
+      "module_type": "mfe_tritium_breeding.Blanket_Tritium_BreedingModule",
+      "inputs": {
+        "vessel_t_in": "float stellarator_plant_params.stellarator_09__stellaris__vessel__vessel_t",
+        "reflector_t_in": "float stellarator_plant_params.stellarator_09__stellaris__blanket__reflector_t",
+        "firstwall_t_in": "float stellarator_plant_params.stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+        "vacuum_t_in": "float stellarator_plant_params.stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+        "kappa_in": "float stellarator_plant_params.stellarator_09__stellaris__plasma__kappa",
+        "structure_t_in": "float stellarator_plant_params.stellarator_09__stellaris__structure__structure_t",
+        "blanket_t_in": "float stellarator_plant_params.stellarator_09__stellaris__blanket__blanket_t",
+        "R_in": "float stellarator_plant_params.stellarator_09__stellaris__plasma__R",
+        "gap1_t_in": "float stellarator_plant_params.stellarator_09__stellaris__vessel__gap1_t",
+        "a_in": "float stellarator_plant_params.stellarator_09__stellaris__plasma__a",
+        "ht_shield_t_in": "float stellarator_plant_params.stellarator_09__stellaris__shield__ht_shield_t"
+      },
+      "outputs": {
+        "interpolation_allowance": "float stellarator_09__stellaris__blanket__breeding__interpolation_allowance",
+        "tbr_lower": "float stellarator_09__stellaris__blanket__breeding__tbr_lower",
+        "defined_flag": "float stellarator_09__stellaris__blanket__breeding__defined_flag",
+        "tbr_li6": "float stellarator_09__stellaris__blanket__breeding__tbr_li6",
+        "tbr_std_error": "float stellarator_09__stellaris__blanket__breeding__tbr_std_error",
+        "tbr_li7": "float stellarator_09__stellaris__blanket__breeding__tbr_li7",
+        "tbr_mean": "float stellarator_09__stellaris__blanket__breeding__tbr_mean"
+      }
+    },
+    "stellarator_09__stellaris__fuel_cycle__fuel": {
+      "module_type": "mfe_fuel_cycle.Fuel_Cycle_FlowsModule",
+      "inputs": {
+        "eta_extract_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__eta_extract",
+        "s_per_fpy_in": "float mfe_fuel_cycle_params.stellarator_09__stellaris__fuel_cycle__fuel__s_per_fpy_in",
+        "tbr_available_in": "float stellarator_09__stellaris__blanket__breeding__tbr_mean",
+        "lambda_T_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__lambda_T",
+        "p_fus_in": "float stellarator_09__stellaris__plasma__fusion__p_fus.root",
+        "q_eff_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__fuel_q_eff",
+        "burn_fraction_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__burn_fraction",
+        "G_stock_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__G_stock",
+        "t_recycle_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__t_recycle",
+        "m_T_kg_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__m_T_kg",
+        "mev_to_joules_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__mev_to_joules",
+        "I_total_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__I_total"
+      },
+      "outputs": {
+        "burn_kg_per_fpy": "float stellarator_09__stellaris__fuel_cycle__fuel__burn_kg_per_fpy",
+        "inject_rate": "float stellarator_09__stellaris__fuel_cycle__fuel__inject_rate",
+        "burn_rate": "float stellarator_09__stellaris__fuel_cycle__fuel__burn_rate",
+        "tbr_margin": "float stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin",
+        "tbr_required": "float stellarator_09__stellaris__fuel_cycle__fuel__tbr_required",
+        "loss_rate": "float stellarator_09__stellaris__fuel_cycle__fuel__loss_rate",
+        "exhaust_rate": "float stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate"
+      }
+    },
+    "stellarator_09__stellaris__breeding_adequacy": {
+      "module_type": "mfe_tritium_breeding.Tritium_Breeding_AdequacyModule",
+      "inputs": {
+        "loss_rate_in": "float stellarator_09__stellaris__fuel_cycle__fuel__loss_rate",
+        "I_total_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__I_total",
+        "eta_extract_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__eta_extract",
+        "burn_rate_in": "float stellarator_09__stellaris__fuel_cycle__fuel__burn_rate",
+        "tbr_lower_in": "float stellarator_09__stellaris__blanket__breeding__tbr_lower",
+        "defined_in": "float stellarator_09__stellaris__blanket__breeding__defined_flag",
+        "tbr_floor_in": "float stellarator_plant_params.stellarator_09__stellaris__tbr_floor",
+        "G_stock_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__G_stock",
+        "lambda_T_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__lambda_T",
+        "tbr_mean_in": "float stellarator_09__stellaris__blanket__breeding__tbr_mean",
+        "t_recycle_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__t_recycle",
+        "tbr_required_in": "float stellarator_09__stellaris__fuel_cycle__fuel__tbr_required",
+        "burn_fraction_in": "float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__burn_fraction"
+      },
+      "outputs": {
+        "design_margin": "float stellarator_09__stellaris__breeding_adequacy__design_margin",
+        "decay_rate": "float stellarator_09__stellaris__breeding_adequacy__decay_rate",
+        "fuel_margin": "float stellarator_09__stellaris__breeding_adequacy__fuel_margin",
+        "extracted_supply_rate": "float stellarator_09__stellaris__breeding_adequacy__extracted_supply_rate",
+        "recycle_loss_rate": "float stellarator_09__stellaris__breeding_adequacy__recycle_loss_rate",
+        "defined_flag": "float stellarator_09__stellaris__breeding_adequacy__defined_flag",
+        "required_tbr": "float stellarator_09__stellaris__breeding_adequacy__required_tbr",
+        "balance_rate": "float stellarator_09__stellaris__breeding_adequacy__balance_rate",
+        "extraction_loss_rate": "float stellarator_09__stellaris__breeding_adequacy__extraction_loss_rate",
+        "stock_growth_rate": "float stellarator_09__stellaris__breeding_adequacy__stock_growth_rate",
+        "numerical_margin": "float stellarator_09__stellaris__breeding_adequacy__numerical_margin",
+        "production_rate": "float stellarator_09__stellaris__breeding_adequacy__production_rate"
+      }
+    },
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": {
+      "module_type": "stellarator_09.StellarisTbrOkConstraintModule",
+      "inputs": {
+        "defined_in": "float stellarator_09__stellaris__breeding_adequacy__defined_flag",
+        "numerical_margin_in": "float stellarator_09__stellaris__breeding_adequacy__numerical_margin"
+      },
+      "outputs": {
+        "evaluation": "ConstraintEvaluation stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation"
+      }
+    }
+  }
+}

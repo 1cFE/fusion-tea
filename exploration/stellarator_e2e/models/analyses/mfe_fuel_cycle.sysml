@@ -21,10 +21,11 @@ package mfe_fuel_cycle {
         is the tritium that must be bred per atom burned to replace burn, permanent
         loss, decay of the held inventory and any stock growth, divided by the
         extraction efficiency from breeder to usable supply. The margin against the
-        ACHIEVED ratio a concept binds is a REPORTED adequacy quantity: no fence reads
-        it (the achieved ratio is a source-conditioned input at the source's own
-        geometry, and the recovery semantics are an open owner decision -- see the
-        instance binding of t_recycle).
+        ACHIEVED ratio a concept binds is a reported margin. In the WI-066
+        stellarator, a separate adequacy calculation compares computed breeding
+        with this requirement and the retained design floor. Its validity flag
+        also governs interpretation of this raw margin when transport is undefined.
+        Recovery remains an explicit conditional scenario, not a measured efficiency.
 
         Inventory and startup stock are NOT computed here: I_total, G_stock and
         eta_extract are dormant (0, 0, 1) until residence times, extraction
@@ -33,8 +34,8 @@ package mfe_fuel_cycle {
         and flows in the plant (the calendar's productive time); stock decays through
         calendar time too -- the two clocks are the lifecycle calc's, not this one's.
 
-        This calc computes REQUIRED breeding, never achieved neutronics: rubric Row
-        2c stays bounded at the source geometry. 'DT Fuel Cost' (mfe_account_costs)
+        This calc computes REQUIRED breeding; achieved neutronics comes through
+        the blanket-owned tbr interface. 'DT Fuel Cost' (mfe_account_costs)
         keeps its own burn correction on the same burn_fraction and the same
         recovery number read as a feedstock cost factor; the two calcs read the
         same inputs and mean different things, and say so.
@@ -61,7 +62,7 @@ package mfe_fuel_cycle {
         in attribute burn_fraction_in : Real;
         // recovery fraction of the unburned tritium stream [1], 0 <= t_recycle_in <= 1
         in attribute t_recycle_in : Real;
-        // achieved tritium breeding ratio [1] (a concept's source-conditioned value)
+        // achieved tritium breeding ratio [1]; source/transport applicability belongs to the producer
         in attribute tbr_available_in : Real;
         // breeder-to-supply extraction efficiency [1], 0 < eta_extract_in <= 1 (dormant 1.0)
         in attribute eta_extract_in : Real;

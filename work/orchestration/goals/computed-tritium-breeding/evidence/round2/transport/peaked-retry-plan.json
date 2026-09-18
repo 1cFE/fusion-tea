@@ -1,0 +1,18 @@
+{
+  "scope": "100k-history direct sensitivities; no physical acceptance or fitted correction; fixed single opening unless stated",
+  "cases": [
+    {
+      "name": "sensitivity-peaked-r2",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.8,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 2523648,
+        "particles": 2000,
+        "batches": 50,
+        "source_profile": "peaked"
+      }
+    }
+  ]
+}

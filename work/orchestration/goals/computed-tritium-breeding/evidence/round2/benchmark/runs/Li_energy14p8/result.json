@@ -1,0 +1,25 @@
+{
+  "assembly": "Li",
+  "case": "energy14p8",
+  "energy_eV": 14800000.0,
+  "li_density_g_cm3": 0.534,
+  "li6_atom_fraction": 0.0759,
+  "casing_cm": 0.0,
+  "seed": 981731,
+  "histories": 400000,
+  "Li6": 0.1303061834976601,
+  "Li7": 0.558423739164621,
+  "total": 0.6887299226622824,
+  "std_dev": 0.00047363605678690123,
+  "isotope_sum_error": -1.3322676295501878e-15,
+  "openmc_version": "0.15.2",
+  "experiment": 0.685,
+  "experiment_rsd": 0.056,
+  "C_over_E": 1.005445142572675,
+  "z_diagnostic": 0.09722727784754433,
+  "artifacts_sha256": {
+    "summary.h5": "0a76dced6275a64b934f05923908bfd6a8f54616a0152b96f084b1a1d379666f",
+    "model.xml": "d086dcac723e9363c5489ac9b3ea1aa233bafd856c2693952b07092effddd065",
+    "statepoint.40.h5": "8960247b77d3672e35b42886fd0c1e3de040175db7f36e835e0773168cbcd784"
+  }
+}

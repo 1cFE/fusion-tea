@@ -1,0 +1,236 @@
+{
+  "status": "PENDING_REFINEMENT",
+  "nodes": [
+    {
+      "name": "table-node-t0.6",
+      "role": "node",
+      "thickness_m": 0.6,
+      "histories": 400000,
+      "mean": 1.0914469148529022,
+      "tbr_li6": 1.088116480899035,
+      "tbr_li7": 0.0033304339538673773,
+      "std_error": 0.0016243382548869433,
+      "target": 0.002,
+      "precision_pass": true,
+      "run_paths": [
+        "results/table-node-t0.6/result.json"
+      ]
+    },
+    {
+      "name": "table-node-t0.7",
+      "role": "node",
+      "thickness_m": 0.7,
+      "histories": 400000,
+      "mean": 1.154022288827684,
+      "tbr_li6": 1.1506688439561357,
+      "tbr_li7": 0.003353444871548617,
+      "std_error": 0.0015620714665053248,
+      "target": 0.002,
+      "precision_pass": true,
+      "run_paths": [
+        "results/table-node-t0.7/result.json"
+      ]
+    },
+    {
+      "name": "table-node-t0.8",
+      "role": "node",
+      "thickness_m": 0.8,
+      "histories": 1200000,
+      "mean": 1.1980739195540364,
+      "tbr_li6": 1.1947266274106922,
+      "tbr_li7": 0.0033472921433443455,
+      "std_error": 0.0009641692758224518,
+      "target": 0.001,
+      "precision_pass": true,
+      "run_paths": [
+        "results/table-node-t0.8/result.json"
+      ]
+    },
+    {
+      "name": "table-node-t0.9",
+      "role": "node",
+      "thickness_m": 0.9,
+      "histories": 400000,
+      "mean": 1.2309590288834722,
+      "tbr_li6": 1.2276026074272819,
+      "tbr_li7": 0.003356421456190367,
+      "std_error": 0.001830689602313662,
+      "target": 0.002,
+      "precision_pass": true,
+      "run_paths": [
+        "results/table-node-t0.9/result.json"
+      ]
+    },
+    {
+      "name": "table-node-t1",
+      "role": "node",
+      "thickness_m": 1.0,
+      "histories": 400000,
+      "mean": 1.2524487800795292,
+      "tbr_li6": 1.2490901192043666,
+      "tbr_li7": 0.0033586608751626874,
+      "std_error": 0.0016469771483325153,
+      "target": 0.002,
+      "precision_pass": true,
+      "run_paths": [
+        "results/table-node-t1/result.json"
+      ]
+    }
+  ],
+  "withheld": [
+    {
+      "name": "table-withheld-t0.65",
+      "role": "withheld",
+      "thickness_m": 0.65,
+      "histories": 400000,
+      "mean": 1.1230881808317112,
+      "tbr_li6": 1.119748019246802,
+      "tbr_li7": 0.0033401615849093296,
+      "std_error": 0.001603869653961197,
+      "target": 0.002,
+      "precision_pass": true,
+      "run_paths": [
+        "results/table-withheld-t0.65/result.json"
+      ]
+    },
+    {
+      "name": "table-withheld-t0.75",
+      "role": "withheld",
+      "thickness_m": 0.75,
+      "histories": 400000,
+      "mean": 1.180395157894502,
+      "tbr_li6": 1.177053292806081,
+      "tbr_li7": 0.0033418650884209644,
+      "std_error": 0.001780696254497012,
+      "target": 0.001,
+      "precision_pass": false,
+      "run_paths": [
+        "results/table-withheld-t0.75/result.json"
+      ]
+    },
+    {
+      "name": "table-withheld-t0.85",
+      "role": "withheld",
+      "thickness_m": 0.85,
+      "histories": 600000,
+      "mean": 1.2141094087861615,
+      "tbr_li6": 1.2107556799901995,
+      "tbr_li7": 0.0033537287959620687,
+      "std_error": 0.0016933572418706016,
+      "target": 0.002,
+      "precision_pass": true,
+      "run_paths": [
+        "results/table-withheld-t0.85/result.json",
+        "results/table-withheld-t0.85-refine1/result.json"
+      ]
+    },
+    {
+      "name": "table-withheld-t0.95",
+      "role": "withheld",
+      "thickness_m": 0.95,
+      "histories": 400000,
+      "mean": 1.2465381156928201,
+      "tbr_li6": 1.2431730818806352,
+      "tbr_li7": 0.003365033812184862,
+      "std_error": 0.0018751677921711664,
+      "target": 0.002,
+      "precision_pass": true,
+      "run_paths": [
+        "results/table-withheld-t0.95/result.json"
+      ]
+    },
+    {
+      "name": "table-withheld-t0.625",
+      "role": "withheld",
+      "thickness_m": 0.625,
+      "histories": 400000,
+      "mean": 1.1107677575241919,
+      "tbr_li6": 1.1074269930318819,
+      "tbr_li7": 0.003340764492310069,
+      "std_error": 0.00142480818910247,
+      "target": 0.002,
+      "precision_pass": true,
+      "run_paths": [
+        "results/table-withheld-t0.625/result.json"
+      ]
+    },
+    {
+      "name": "table-withheld-t0.925",
+      "role": "withheld",
+      "thickness_m": 0.925,
+      "histories": 400000,
+      "mean": 1.2340111730841463,
+      "tbr_li6": 1.2306576350707443,
+      "tbr_li7": 0.0033535380134020005,
+      "std_error": 0.002024537550107752,
+      "target": 0.002,
+      "precision_pass": false,
+      "run_paths": [
+        "results/table-withheld-t0.925/result.json"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "thickness_m": 0.65,
+      "prediction": 1.1227346018402933,
+      "direct": 1.1230881808317112,
+      "residual": -0.0003535789914179688,
+      "combined_std_error": 0.001960110551751463,
+      "conservative_discrepancy": 0.004273800094920894,
+      "tolerance": 0.01,
+      "passes": true
+    },
+    {
+      "thickness_m": 0.75,
+      "prediction": 1.1760481041908601,
+      "direct": 1.180395157894502,
+      "residual": -0.004347053703641857,
+      "combined_std_error": 0.0020033226314069355,
+      "conservative_discrepancy": 0.008353698966455728,
+      "tolerance": 0.01,
+      "passes": true
+    },
+    {
+      "thickness_m": 0.85,
+      "prediction": 1.2145164742187542,
+      "direct": 1.2141094087861615,
+      "residual": 0.00040706543259272365,
+      "combined_std_error": 0.001984369031130663,
+      "conservative_discrepancy": 0.004375803494854049,
+      "tolerance": 0.01,
+      "passes": true
+    },
+    {
+      "thickness_m": 0.95,
+      "prediction": 1.2417039044815006,
+      "direct": 1.2465381156928201,
+      "residual": -0.00483421121131955,
+      "combined_std_error": 0.0022432663206991945,
+      "conservative_discrepancy": 0.009320743852717939,
+      "tolerance": 0.01,
+      "passes": true
+    },
+    {
+      "thickness_m": 0.625,
+      "prediction": 1.1070907583465979,
+      "direct": 1.1107677575241919,
+      "residual": -0.003676999177594009,
+      "combined_std_error": 0.0019148693521818907,
+      "conservative_discrepancy": 0.007506737881957791,
+      "tolerance": 0.01,
+      "passes": true
+    },
+    {
+      "thickness_m": 0.925,
+      "prediction": 1.2363314666824865,
+      "direct": 1.2340111730841463,
+      "residual": 0.002320293598340184,
+      "combined_std_error": 0.002480617238915101,
+      "conservative_discrepancy": 0.007281528076170386,
+      "tolerance": 0.01,
+      "passes": true
+    }
+  ],
+  "physical_scope": "conditional single-opening toroidal assembly, fixed uniform source and frozen cards; no shaped-stellarator accuracy bound"
+}

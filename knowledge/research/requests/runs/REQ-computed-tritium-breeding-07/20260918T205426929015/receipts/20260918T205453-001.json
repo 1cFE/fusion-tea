@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://github.com/openmc-data-storage/ENDF-B-VIII.0-NNDC/tree/466ab3042f70e60b693fbbd3f6f15f30dba7cd1d",
+  "slug": "openmc_endf_b_viii_0_nndc_processed_hdf5_dataset_pinned",
+  "path": "knowledge/sources/openmc_endf_b_viii_0_nndc_processed_hdf5_dataset_pinned/",
+  "source_id": "734119a776d7ae81783a2b2c80ef1b203eea9d9da942ed3a030283c1c75cdee9",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T20:54:53.536720+00:00"
+}

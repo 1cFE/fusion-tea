@@ -1,0 +1,115 @@
+{
+  "scope": "100k-history direct sensitivities; no physical acceptance or fitted correction; fixed single opening unless stated",
+  "cases": [
+    {
+      "name": "sensitivity-wc-low",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/wc-low-cards.json",
+        "thickness": 0.8,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 2000003,
+        "particles": 2000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "sensitivity-wc-high",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/wc-high-cards.json",
+        "thickness": 0.8,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 2104732,
+        "particles": 2000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "sensitivity-low-steel-he",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/low-steel-he-cards.json",
+        "thickness": 0.8,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 2209461,
+        "particles": 2000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "sensitivity-high-steel-he",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/high-steel-he-cards.json",
+        "thickness": 0.8,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 2314190,
+        "particles": 2000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "sensitivity-ideal-he",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/ideal-he-cards.json",
+        "thickness": 0.8,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 2418919,
+        "particles": 2000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "sensitivity-peaked",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.8,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 2523648,
+        "particles": 2000,
+        "batches": 50,
+        "source_profile": "peaked"
+      }
+    },
+    {
+      "name": "sensitivity-external-steel",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.8,
+        "enrichment": 0.7,
+        "openings": "single",
+        "seed": 2628377,
+        "particles": 2000,
+        "batches": 50,
+        "external_steel": true
+      }
+    },
+    {
+      "name": "sensitivity-enrichment60",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.8,
+        "enrichment": 0.6,
+        "openings": "single",
+        "seed": 2733106,
+        "particles": 2000,
+        "batches": 50
+      }
+    },
+    {
+      "name": "sensitivity-enrichment90",
+      "arguments": {
+        "cards": "work/orchestration/goals/computed-tritium-breeding/evidence/round2/transport/material-cards.json",
+        "thickness": 0.8,
+        "enrichment": 0.9,
+        "openings": "single",
+        "seed": 2837835,
+        "particles": 2000,
+        "batches": 50
+      }
+    }
+  ]
+}

@@ -12,6 +12,7 @@ read from stellarator_plant.sysml.
 import math
 
 import oracle_finance as finance
+import oracle_breeding as breeding_oracle
 
 # WI-022 discretization contract — EXACT mirror of the handwritten impl
 # (generated/handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py). The
@@ -477,7 +478,7 @@ IN = dict(
     # inventory terms are dormant (residence times unsourced); the divertor case is
     # the source's pessimistic transport case at fixed geometry; p_exhaust 1.0 Pa is
     # DECLARED, not sourced (the required speed is the throughput's own value).
-    tbr=1.074,  # the achieved TBR the instance binds (Table 6); the oracle never needed it before WI-047 -- tbr_ok binds package inputs directly
+    tbr_floor=1.05,  # WI-066: achieved breeding is computed; this policy floor is retained
     t_recycle=0.99, eta_extract=1.0, lambda_T=1.782785958230312e-09, I_total=0.0,
     G_stock=0.0, m_T_kg=5.008267663228036e-27,
     f_rad_total=0.9, q_target_ref=9.5, p_nonrad_ref=50.0, q_target_limit=10.0,
@@ -947,6 +948,8 @@ def _conductor_current(p, field, tape_length, conductor_length):
 def compute():
     if "magnet_R0" in IN:
         raise ValueError("retired oracle input magnet_R0; use plant R")
+    if "tbr" in IN:
+        raise ValueError("retired oracle input tbr; achieved breeding is computed")
     p = IN
     # --- Plasma Geometry ---
     V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
@@ -1337,7 +1340,15 @@ def compute():
     fuel_loss_rate = (1.0 - p["t_recycle"]) * fuel_exhaust_rate
     fuel_tbr_required = ((fuel_burn_rate + fuel_loss_rate + p["lambda_T"] * p["I_total"] + p["G_stock"])
                          / (p["eta_extract"] * fuel_burn_rate))
-    fuel_tbr_margin = p["tbr"] - fuel_tbr_required
+    breeding = breeding_oracle.response(p)
+    # Raw margin is undefined whenever the coupled adequacy flag is zero.
+    fuel_tbr_margin = breeding['tbr_mean'] - fuel_tbr_required
+    breeding_adequacy = breeding_oracle.adequacy(
+        mean=breeding['tbr_mean'], lower=breeding['tbr_lower'], defined=breeding['defined_flag'],
+        floor=p['tbr_floor'], required=fuel_tbr_required, burn=fuel_burn_rate,
+        loss=fuel_loss_rate, extraction=p['eta_extract'], decay_constant=p['lambda_T'],
+        inventory=p['I_total'], growth=p['G_stock'], burn_fraction=p['burn_fraction'],
+        recycle=p['t_recycle'])
     fuel_burn_kg_per_fpy = fuel_burn_rate * p["m_T_kg"] * p["s_per_fpy"]
     divheat = divertor_account(
         alpha=sust["p_alpha_heat"], auxiliary=operating_heat_coupled,
@@ -1471,6 +1482,8 @@ def compute():
         fuel_exhaust_rate=fuel_exhaust_rate, fuel_loss_rate=fuel_loss_rate,
         fuel_tbr_required=fuel_tbr_required, fuel_tbr_margin=fuel_tbr_margin,
         fuel_burn_kg_per_fpy=fuel_burn_kg_per_fpy,
+        **{'breeding_' + name: value for name, value in breeding.items()},
+        **{'breeding_adequacy_' + name: value for name, value in breeding_adequacy.items()},
         **{"divheat_" + name: value for name, value in divheat.items()},
         vacuum_n_molecules=vacuum_n_molecules, vacuum_Q_total=vacuum_Q_total,
         vacuum_S_eff_required=vacuum_S_eff_required,

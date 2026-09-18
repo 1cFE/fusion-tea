@@ -57,3 +57,9 @@
 [OWNER] Only the owner formally closes this goal after considering the technical answer and independent evidence. A documented blocker does not close the breeding gap.
 
 ## Amendments
+
+### Amendment 2026-09-18 — amends Reserved gates
+
+[OWNER-VERBATIM] “listen, you are in charge here. you have the goal -- use research to collect data as needed, and otherwise use your best judgement”. This delegates selection of the physical method and documented modeling assumptions within the original goal. The pending blanket-target question is released; the coordinator proceeds using evidence and judgment. Original quarantine, unchanged rubric/limits, preservation of r2, no merge/push and owner-held formal closure remain in force.
+
+[AGENT] Retain the existing helium/PbLi concept and current radial build. Specify missing neutronics inputs openly from appropriate sources and evaluate the actual assembly with transport if the existing surrogate cannot cover it. Do not change the build merely to fit a surrogate. This is a coordinator choice under the new delegation, not an owner-originated material specification.

@@ -1,0 +1,33 @@
+{
+  "candidate_samples": 1000000,
+  "accepted_samples": 785577,
+  "acceptance": 0.785577,
+  "expected_acceptance": 0.7853981633974483,
+  "moments": {
+    "z": {
+      "mean": 0.0015361527858367837,
+      "expected": 0.0,
+      "standard_error": 0.07336808237663842,
+      "standardized_residual": 0.020937616686652283
+    },
+    "z_squared": {
+      "mean": 4228.657815280244,
+      "expected": 4225.0,
+      "standard_error": 4.773704661556758,
+      "standardized_residual": 0.7662424761424474
+    },
+    "cylindrical_radius": {
+      "mean": 1273.3126166090574,
+      "expected": 1273.3267716535433,
+      "standard_error": 0.07322806116468551,
+      "standardized_residual": -0.19330082294718337
+    },
+    "minor_radius_squared": {
+      "mean": 8452.163876491459,
+      "expected": 8450.0,
+      "standard_error": 5.504897785994064,
+      "standardized_residual": 0.393082047220605
+    }
+  },
+  "sampled_surface_membership": "PASS"
+}

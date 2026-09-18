@@ -1,0 +1,4 @@
+{"kind": "search", "query": "UKAEA-CCFE-PR2183 Appendix A transport materials", "at": "2026-09-18T20:22:45.230843+00:00"}
+{"kind": "candidate", "ref": "https://scientific-publications.ukaea.uk/wp-content/uploads/UKAEA-CCFE-PR2183.PDF", "triage": "keeper", "note": "UKAEA original preprint with Appendix A neutronics material recipes", "at": "2026-09-18T20:22:45.290818+00:00"}
+{"kind": "search", "query": "PNNL 15870 stainless steel 316 tungsten carbide density material compendium pdf", "at": "2026-09-18T20:23:44.322137+00:00"}
+{"kind": "candidate", "ref": "https://mcnpx.lanl.gov/pdf_files/TechReport_2021_PNNL_PNNL-15870Rev.2_DetwilerMcConnEtAl.pdf", "triage": "keeper", "note": "Official LANL mirror of PNNL15870Rev2; canonical PNNL PDF returned403, same report available at LANL", "at": "2026-09-18T20:24:21.844114+00:00"}

@@ -5,6 +5,8 @@ package stellarator_09 {
     private import mfe_viability::*;
     private import mfe_winding_pack_fit::*;
     private import mfe_conductor_current::*;
+    private import mfe_tritium_breeding::*;
+    private import mfe_subsystems::'Transport Calculated Blanket';
 
     // =========================================================================
     // CONCRETE INSTANCE -- concept-09 Proxima "Stellaris" QI stellarator
@@ -561,7 +563,14 @@ package stellarator_09 {
         // Volumes from costingfe.layers.geometry.compute_geometry(STELLARATOR)
         // at the Stellaris radial build; unit costs are 1costingFE M$ x 1e6.
         // ---------------------------------------------------------------------
-        part :>> blanket {
+        part :>> blanket : 'Transport Calculated Blanket' {
+            :>> breeding_R = stellaris.plasma.R;
+            :>> breeding_a = stellaris.plasma.a;
+            :>> breeding_kappa = stellaris.plasma.kappa;
+            :>> breeding_ht_shield_t = stellaris.shield.ht_shield_t;
+            :>> breeding_structure_t = stellaris.structure.structure_t;
+            :>> breeding_gap1_t = stellaris.vessel.gap1_t;
+            :>> breeding_vessel_t = stellaris.vessel.vessel_t;
             doc /*
             PbLi blanket cost account in the retained helium-primary alternative.
             unit_cost: costing_constants.yaml:37 (blanket_unit_cost_dt = 0.60 M$/m^3) x 1e6.
@@ -592,11 +601,8 @@ package stellarator_09 {
             :>> mn = 1.2 {        // blanket neutron energy multiplier.
                 doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf **Ref**: section 2.8, water/PbLi neutronics **Basis**: held source neutron multiplication transferred conditionally to this helium/generic-build scenario; no validated coolant/geometry equivalence */
             }
-            // TBR.
-            // achieved tritium breeding ratio.
-            :>> tbr = 1.074 {
-                doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf **Ref**: section 2.8 (TBR = 1.074), source water/PbLi blanket **Basis**: held source 3D-neutronics result transferred conditionally to this helium/generic-build scenario. Fuel Cycle Flows reports its margin; a raw pass does not establish breeding in the altered blanket. */
-            }
+            // WI-066: tbr is inherited from Transport Calculated Blanket's transport response.
+            // The former source-conditioned 1.074 water/PbLi value is historical context, not this scenario's prediction.
             part :>> first_wall {
                 :>> firstwall_t = 0.05 {
                     doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py **Ref**: geometry.py:30 (RadialBuild.firstwall_t = 0.05 default) **Basis**: radial-build first-wall default */
@@ -1358,14 +1364,13 @@ package stellarator_09 {
                 of the unburned tritium stream. It was sourced as a NOAK feedstock cost
                 factor (1costingFE steady_state_stellarator.yaml:65), not as an isotope-
                 recovery measurement. Under this reading, at a 5 % single-pass burn the
-                required breeding ratio is 1 + 0.95/0.05 x 0.01 = 1.19 against the
-                source-conditioned achieved 1.074: a margin of -0.116, published as
-                fuel.tbr_margin and asserted by NOTHING. The zero-margin recovery is
-                1 - (1.074 - 1) x 0.05/0.95 = 0.99611. This is a conditional semantics
-                conflict put to the owner (goal plant-closure, goal.md section Reserved
-                gates 5; basis packet section 6), not a proven physical deficit; a
-                separate physical-recovery input, if minted, replaces this binding, and
-                the value is never raised to erase the finding.
+                required breeding ratio is 1 + 0.95/0.05 x 0.01 = 1.19.
+                WI-066 compares computed breeding against this conditional requirement
+                and the retained 1.05 floor. This recovery reading is not a measured
+                isotope-recovery efficiency. It remains 0.99 without tuning.
+                The raw fuel.tbr_margin is undefined whenever breeding applicability
+                or fuel-account validity fails; breeding_adequacy.defined_flag carries
+                that status. Zero transport carriers are not physical predictions.
                 **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml
                 **Ref**: steady_state_stellarator.yaml:65 (fuel_recovery = 0.99); knowledge/research/pending/20260907-163520_demo-breadth-disposition-prework.md:23, :60
                 **Basis**: The existing 0.99 read as physical recovery, disclosed as a reading
@@ -1778,9 +1783,29 @@ package stellarator_09 {
             in wall_load = blanket.wall_load_peak;
             in wall_load_limit_in = wall_load_limit;
         }
-        assert constraint tbr_ok : 'TBR Floor' {
-            in tbr_in = blanket.tbr;
+        calc breeding_adequacy : 'Tritium Breeding Adequacy' {
+            in tbr_mean_in = blanket.tbr;
+            in tbr_lower_in = blanket.tbr_lower;
+            in defined_in = blanket.breeding_defined;
             in tbr_floor_in = tbr_floor;
+            in tbr_required_in = fuel_cycle.tbr_required;
+            in burn_rate_in = fuel_cycle.burn_rate;
+            in loss_rate_in = fuel_cycle.loss_rate;
+            in eta_extract_in = fuel_cycle.eta_extract;
+            in lambda_T_in = fuel_cycle.lambda_T;
+            in I_total_in = fuel_cycle.I_total;
+            in G_stock_in = fuel_cycle.G_stock;
+            in burn_fraction_in = fuel_cycle.burn_fraction;
+            in t_recycle_in = fuel_cycle.t_recycle;
+        }
+        attribute breeding_requirement : Real = breeding_adequacy.required_tbr;
+        attribute breeding_design_margin : Real = breeding_adequacy.design_margin;
+        attribute breeding_fuel_margin : Real = breeding_adequacy.fuel_margin;
+        attribute breeding_numerical_margin : Real = breeding_adequacy.numerical_margin;
+        attribute breeding_adequacy_defined : Real = breeding_adequacy.defined_flag;
+        assert constraint tbr_ok : 'Computed TBR Adequacy' {
+            in defined_in = breeding_adequacy_defined;
+            in numerical_margin_in = breeding_numerical_margin;
         }
         // Sustainment (WI-037): required sustained plasma-coupled heating vs
         // installed. The operand is fully computed (ISS04 closed form, composed

@@ -40,7 +40,17 @@ WI038_CHANNELS = {P + 'magnet__conductor_grade__' + name for name in (
 K_COIL_RETIRED = 1.968503937007874  # the retired WI-036 k_coil (25.0 / 12.7), the float the old oracle carried
 WI058_PARAMETERS = {P + 'magnet__coil__c_coil_ref'}
 WI058_RETIRED = {P + 'magnet__coil__k_coil'}
-RECEIPT_EVIDENCE = ROOT / 'work/active/WI-065_divertor-deposited-power-and-peak-area-account/evidence'
+RECEIPT_EVIDENCE = ROOT / 'work/active/WI-066_computed-tritium-breeding/evidence'
+WI066_RETIRED = {P + 'blanket__tbr'}
+WI066_PREDICATE = P + 'tbr_ok__2cd198f674d413e4'
+WI066_CHANGED = {P + 'fuel_cycle__fuel__tbr_margin'}
+WI066_CHANNELS = {P + 'blanket__breeding__' + name for name in (
+    'tbr_li6', 'tbr_li7', 'tbr_mean', 'tbr_std_error', 'interpolation_allowance',
+    'tbr_lower', 'defined_flag')} | {P + 'breeding_adequacy__' + name for name in (
+    'required_tbr', 'design_margin', 'fuel_margin', 'numerical_margin', 'production_rate',
+    'extracted_supply_rate', 'extraction_loss_rate', 'recycle_loss_rate', 'decay_rate',
+    'stock_growth_rate', 'balance_rate', 'defined_flag')}
+
 WI065_PARAMETERS = {P + 'divertor__target_capture_fraction'}
 WI065_CHANNELS = {P + 'divertor__divheat__' + name for name in (
     'p_rad_total', 'p_rad_edge', 'p_target_deposited', 'p_nonrad_uncaptured',
@@ -176,6 +186,52 @@ def restate_wi040_radius_costs(translated):
     return changed | WI040_CHANNELS | WI059_CHANNELS | WI060_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS | WI065_CHANNELS
 
 
+def wi066_evaluation(channels):
+    """Independent compound predicate; report margins are absent for compound roots."""
+    observed = {'defined_in': channels[P + 'breeding_adequacy__defined_flag'],
+                'numerical_margin_in': channels[P + 'breeding_adequacy__numerical_margin']}
+    value = observed['defined_in'] >= 1.0 and observed['numerical_margin_in'] >= 0.0
+    return dict(constraint_id=WI066_PREDICATE, actual_value=value,
+                status='satisfied' if value else 'violated', margin=None, observed=observed)
+
+
+def restate_wi066_breeding(translated):
+    """Restate only new breeding outputs, fuel margin and its predicate in TEMP copies.
+
+    R14 is outside the response domain: zero carrier outputs and a violated predicate
+    are compared explicitly. Frozen archives and every other predicate stay unchanged.
+    """
+    import sys
+    sys.path.insert(0, str(ROOT / 'exploration/stellarator_e2e/studies'))
+    import oracle_entry
+    frozen = json.loads((translated / 'frozen-results.json').read_text())
+    direct = json.loads((translated / 'direct-entering.json').read_text())
+    for name, ref, change in [('baseline', 'baseline', {}), ('R14', 'tied_R14', {
+            P + 'plasma__R': 14.0, P + 'magnet__coil__c_coil_ref': K_COIL_RETIRED * 14.0})]:
+        channels = oracle_entry.evaluate(WI059_REPLAY | change)
+        replacement = {key: channels[key] for key in WI066_CHANNELS | WI066_CHANGED}
+        evaluation = wi066_evaluation(channels)
+        native = frozen['cases'][ref]['native']
+        native['outputs'].update(replacement)
+        native['responses'][WI066_PREDICATE] = evaluation['status']
+        raw = direct['results'][name]['single']['outputs']
+        raw.update(replacement)
+        raw[WI066_PREDICATE + '__evaluation'] = evaluation
+        for report in (native['report'], raw['constraint_report']):
+            matches = [i for i, row in enumerate(report['results']) if row['constraint_id'] == WI066_PREDICATE]
+            assert len(matches) == 1
+            report['results'][matches[0]] = evaluation
+            # The historical cases already contain unrelated violations; keep their headline.
+            assert report['headline'] == 'violation'
+    (translated / 'frozen-results.json').write_text(json.dumps(frozen, indent=2) + '\n')
+    (translated / 'direct-entering.json').write_text(json.dumps(direct, indent=2) + '\n')
+    path = translated / 'expectations.json'
+    expected = json.loads(path.read_text())
+    expected['channels'] = sorted(set(expected['channels']) | WI066_CHANNELS)
+    path.write_text(json.dumps(expected, indent=2) + '\n')
+    return WI066_CHANNELS | WI066_CHANGED
+
+
 def structure_ledger():
     """WI-057 (2026-09-13): the rename ledger of the structural decomposition, old entry-point and
     channel names -> the names carrying the owning part's path. The frozen WI-050 drivers speak the
@@ -235,7 +291,7 @@ def translate_frozen_radius_evidence(historical, destination, forward):
     # holds under the scaled reference the replays bind at R14.
     expectations['edges'].pop(modules.get('coil_length', 'coil_length'))
     expectations['contract_delta']['remove'] = sorted(
-        expectations['contract_delta']['remove'] + [['stellarator_plant_params', P + 'magnet__coil__k_coil']])
+        expectations['contract_delta']['remove'] + [['stellarator_plant_params', k] for k in sorted(WI058_RETIRED | WI066_RETIRED)])
     # Refuse a translation the live package cannot honour: every translated name must resolve.
     live = json.loads((ROOT / 'exploration/stellarator_e2e/generated/contracts/model_contract.json').read_text())
     live_params = {x['qualified_name'] for x in live['parameters']}; live_channels = {x['channel_name'] for x in live['outputs']}
@@ -264,7 +320,7 @@ def current_generation():
 
 def operating_acceptance(destination, historical):
     # Keep all historical scenario execution and assertions. Replace its generator
-    # dependency with the current reviewed WI-065 completion inventory.
+    # dependency with the current reviewed WI-066 completion inventory.
     spec = importlib.util.spec_from_file_location('wi052_operating_scenarios', FINANCE_EVIDENCE / 'current_regressions.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -333,6 +389,7 @@ def radius_acceptance(destination, historical):
     # Current economic expectations are independently recomputed; baseline arithmetic may
     # differ by roundoff. This is a bounded tolerance, never omission of these comparisons.
     finance |= restate_wi040_radius_costs(translated)
+    finance |= restate_wi066_breeding(translated)
     for name in ('native', 'direct', 'standalone', 'cli_checks'):
         text = (historical / (name + '.py')).read_text()
         if "Path(__file__).resolve().parent.parent/'prototype'" in text:

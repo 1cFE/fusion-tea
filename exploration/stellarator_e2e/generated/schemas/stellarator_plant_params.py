@@ -23,7 +23,6 @@ class StellaratorPlantParams(BaseModel):
     stellarator_09__stellaris__blanket__mn: float = Field(default=1.2, description="Entry point: mn")
     stellarator_09__stellaris__blanket__reflector_t: float = Field(default=0.2, description="Entry point: reflector_t")
     stellarator_09__stellaris__blanket__structure_factor: float = Field(default=1.0, description="Entry point: structure_factor")
-    stellarator_09__stellaris__blanket__tbr: float = Field(default=1.074, description="Entry point: tbr")
     stellarator_09__stellaris__blanket__unit_cost: float = Field(default=600000.0, description="Entry point: unit_cost")
     stellarator_09__stellaris__buildings__bldg_et_base: float = Field(default=29000000.0, description="Entry point: bldg_et_base")
     stellarator_09__stellaris__buildings__bldg_fixed_base: float = Field(default=168500000.0, description="Entry point: bldg_fixed_base")

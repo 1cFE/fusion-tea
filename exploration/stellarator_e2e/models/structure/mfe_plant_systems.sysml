@@ -243,8 +243,8 @@ package mfe_plant_systems {
         attribute burn_fraction : Real;
         attribute fuel_recovery : Real;
         // ---- Fuel-cycle flows (WI-047): conservation on the same reactions the
-        // cost prices; the margin is reported, never asserted (the recovery
-        // semantics are an owner decision -- see the instance). Dormant-safe by
+        // cost prices; transport-driven instances add a separate conditional
+        // adequacy assertion using the exposed requirement. Dormant-safe by
         // the WI-024 pattern: a concept binding nothing gets a lossless loop.
         // recovery fraction of the unburned tritium stream [1]
         attribute t_recycle : Real default 1.0;
@@ -271,6 +271,10 @@ package mfe_plant_systems {
         // ---- EXPOSEs (WI-057): this part's calc outputs, readable outside as <part>.<name> ----
         attribute annual_fuel : Real = fuel_calc.annual_fuel;
         attribute burn_rate : Real = fuel.burn_rate;
+        attribute loss_rate : Real = fuel.loss_rate;
+        attribute tbr_required : Real = fuel.tbr_required;
+        // For computed blankets this raw margin is defined only when the owning plant adequacy flag is 1.
+        attribute tbr_margin : Real = fuel.tbr_margin;
         attribute exhaust_rate : Real = fuel.exhaust_rate;
         attribute fuel_handling_cost : Real = fuel_handling.cost;
         // ---- template calcs (WI-057): the analyses this part owns ----

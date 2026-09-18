@@ -1,0 +1,52 @@
+............F                                                            [100%]
+=================================== FAILURES ===================================
+_ test_mfe_blanket_thickness_mutation_reaches_the_radial_build_and_nothing_else _
+
+baselines = {'ife': PosixPath('/tmp/pytest-of-reid/pytest-12898/baseline-ife0/package'), 'mfe': PosixPath('/tmp/pytest-of-reid/pytest-12898/baseline-mfe0/package')}
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-12898/test_mfe_blanket_thickness_mut0')
+
+    def test_mfe_blanket_thickness_mutation_reaches_the_radial_build_and_nothing_else(
+        baselines, tmp_path: Path
+    ) -> None:
+        """A nested occurrence: the blanket layer thickness feeds the radial build alone;
+        everything downstream (blanket volume, CAS27, the outward layers) reaches it through
+        the radial build's outputs, not through a second binding of the source."""
+        mutated = tmp_path / "package"
+        assert _generate(
+            _mutated_subset(
+                tmp_path, FAMILIES["mfe"], "designs/stellarator_09/stellarator_plant.sysml",
+                ":>> blanket_t = 0.80 {", ":>> blanket_t = 0.90 {",
+            ),
+            mutated, FAMILIES["mfe"].package_name,
+        )
+>       _assert_every_and_only(
+            baselines["mfe"], mutated, BLANKET_T_SOURCE, 0.9, BLANKET_T_CONSUMERS
+        )
+
+tests/models/test_model_family_spines.py:456: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+baseline = PosixPath('/tmp/pytest-of-reid/pytest-12898/baseline-mfe0/package')
+mutated = PosixPath('/tmp/pytest-of-reid/pytest-12898/test_mfe_blanket_thickness_mut0/package')
+source = ('stellarator_plant_params', 'stellarator_09__stellaris__blanket__blanket_t')
+value = 0.9, consumers = {('stellarator_09__stellaris__rb', 'blanket_t_in')}
+
+    def _assert_every_and_only(
+        baseline: Path, mutated: Path, source: tuple[str, str], value: float, consumers: set
+    ) -> None:
+        before, after = _entry_sources(baseline), _entry_sources(mutated)
+        assert set(before) == set(after)
+        changed = {identity for identity in before if before[identity] != after[identity]}
+        assert changed == {source}
+        assert after[source] == value
+>       assert _consumers_of(mutated, source) == consumers
+E       AssertionError: assert {('stellarato...lanket_t_in')} == {('stellarato...lanket_t_in')}
+E         
+E         Extra items in the left set:
+E         ('stellarator_09__stellaris__blanket__breeding', 'blanket_t_in')
+E         Use -v to get more diff
+
+tests/models/test_model_family_spines.py:245: AssertionError
+=========================== short test summary info ============================
+FAILED tests/models/test_model_family_spines.py::test_mfe_blanket_thickness_mutation_reaches_the_radial_build_and_nothing_else
+1 failed, 12 passed in 30.84s

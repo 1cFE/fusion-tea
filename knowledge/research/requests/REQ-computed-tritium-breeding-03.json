@@ -1,0 +1,9 @@
+{
+ "request_id":"REQ-computed-tritium-breeding-03",
+ "question":"Which public PbLi integral neutron-transport benchmark provides reconstructible geometry, source, material densities/isotope compositions and measured or independently calculated tritium production, and what authoritative HCLL material definitions support the retained helium PbLi assembly?",
+ "consumer":"work/orchestration/goals/computed-tritium-breeding/goal.md",
+ "gap_type":"transport_benchmark_and_material_cards",
+ "priority":"P1",
+ "where_to_look":["IAEA FENDL benchmark specifications","UKAEA OpenMC fusion benchmark repositories","KIT EUROfusion material compendium EFDA_D_2MM3A6","FNG HCLL lithium lead tritium benchmark publications"],
+ "limits":{"max_searches":8,"max_captures":4}
+}

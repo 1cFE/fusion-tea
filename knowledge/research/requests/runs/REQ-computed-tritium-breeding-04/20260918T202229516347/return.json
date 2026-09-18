@@ -1,0 +1,23 @@
+{
+  "request_id": "REQ-computed-tritium-breeding-04",
+  "run": "knowledge/research/requests/runs/REQ-computed-tritium-breeding-04/20260918T202229516347",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "high_temperature_zirconium_alloys_for_fusion_energy",
+      "path": "knowledge/sources/high_temperature_zirconium_alloys_for_fusion_energy/",
+      "source_id": "39b05af195768acec864478bc3a968102553968bf1b4caa106c717ca6fc41a54",
+      "pre_existing": false
+    },
+    {
+      "slug": "compendium_of_material_composition_data_for_radiation",
+      "path": "knowledge/sources/compendium_of_material_composition_data_for_radiation/",
+      "source_id": "a34df48e1025cbd9649c8d7a635454ab57af9b0c59b5fb1faaaf4db1057dcb4b",
+      "pre_existing": false
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

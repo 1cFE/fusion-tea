@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "/tmp/iaea-0281.pdf",
+  "slug": "iaea_indc_nds_281_fusion_neutron_benchmark_proceedings",
+  "path": "knowledge/sources/iaea_indc_nds_281_fusion_neutron_benchmark_proceedings/",
+  "source_id": "3c7828e5ddbbfce35ba466fb3e2fc8bdf89511c849ce5a6e2fd3311b3d7ee62b",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T20:22:38.894798+00:00"
+}

@@ -1,0 +1,9 @@
+{
+ "request_id":"REQ-computed-tritium-breeding-04",
+ "question":"What published isotope and elemental compositions, densities and temperatures can define the retained helium PbLi transport assembly without changing blanket technology?",
+ "consumer":"work/orchestration/goals/computed-tritium-breeding/goal.md",
+ "gap_type":"transport_material_cards",
+ "priority":"P1",
+ "where_to_look":["UKAEA-CCFE-PR2183 Appendix A","UKAEA neutronics materials papers"],
+ "limits":{"max_searches":3,"max_captures":2}
+}

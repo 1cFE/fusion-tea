@@ -1,0 +1,27 @@
+{
+  "generic_held_input_preserved": true,
+  "no_phantom_held_breeding_occurrence": true,
+  "geometry_bindings": {
+    "blanket_t_in": "blanket__blanket_t",
+    "R_in": "plasma__R",
+    "a_in": "plasma__a",
+    "kappa_in": "plasma__kappa",
+    "vacuum_t_in": "blanket__first_wall__vacuum_t",
+    "firstwall_t_in": "blanket__first_wall__firstwall_t",
+    "reflector_t_in": "blanket__reflector_t",
+    "ht_shield_t_in": "shield__ht_shield_t",
+    "structure_t_in": "structure__structure_t",
+    "gap1_t_in": "vessel__gap1_t",
+    "vessel_t_in": "vessel__vessel_t"
+  },
+  "fuel_uses_computed_tbr": true,
+  "constraint_identity": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+  "constraint_count_before": 20,
+  "constraint_count_after": 20,
+  "new_modules": [
+    "stellarator_09__stellaris__blanket__breeding",
+    "stellarator_09__stellaris__breeding_adequacy"
+  ],
+  "twins_identical": true,
+  "numerical_implementation_executed": false
+}

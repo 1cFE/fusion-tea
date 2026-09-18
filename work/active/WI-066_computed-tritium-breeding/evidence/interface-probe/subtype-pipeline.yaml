@@ -1,0 +1,86 @@
+# Generated Pipeline Configuration for probe_pkg
+#
+# Auto-generated from SysML calc def dependency analysis
+# DO NOT EDIT - Regenerate using code generator
+
+metadata:
+  run_description: "Generated pipeline for probe_pkg"
+  output_folder: "probe_pkg_results"
+
+modules:
+  # Entry point - load inputs from JSON
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      probe_params: ProbeParams ../inputs/probe_params.json
+
+
+  # probe.FuelModule
+  probe__held__fuel_cycle__fuel:
+    module_type: probe.FuelModule
+    inputs:
+      achieved: float probe_params.probe__held__blanket__tbr
+    outputs:
+      required: float probe__held__fuel_cycle__fuel__required
+      margin: float probe__held__fuel_cycle__fuel__margin
+
+  # probe.BreedModule
+  probe__stellaris__blanket__breeding:
+    module_type: probe.BreedModule
+    inputs:
+      R_in: float probe_params.probe__stellaris__plasma__R
+      t_in: float probe_params.probe__stellaris__blanket__t
+      shield_in: float probe_params.probe__stellaris__shield__t
+    outputs:
+      total: float probe__stellaris__blanket__breeding__total
+      valid: float probe__stellaris__blanket__breeding__valid
+
+  # probe.FuelModule
+  probe__stellaris__fuel_cycle__fuel:
+    module_type: probe.FuelModule
+    inputs:
+      achieved: float probe__stellaris__blanket__breeding__total
+    outputs:
+      required: float probe__stellaris__fuel_cycle__fuel__required
+      margin: float probe__stellaris__fuel_cycle__fuel__margin
+
+  # probe.AdequacyModule
+  probe__stellaris__adequacy:
+    module_type: probe.AdequacyModule
+    inputs:
+      achieved: float probe__stellaris__blanket__breeding__total
+      required: float probe__stellaris__fuel_cycle__fuel__required
+    outputs:
+      root: RootModel[float] probe__stellaris__adequacy__margin
+
+  # probe.StellarisTbrOkConstraintModule
+  probe__stellaris__tbr_ok__4d7371e522b53d61:
+    module_type: probe.StellarisTbrOkConstraintModule
+    inputs:
+      actual: float probe__stellaris__blanket__breeding__total
+      limit: float probe__stellaris__fuel_cycle__fuel__required
+    outputs:
+      evaluation: ConstraintEvaluation probe__stellaris__tbr_ok__4d7371e522b53d61__evaluation
+
+  # constraints.ConstraintReportAggregatorModule
+  constraint_report_aggregator:
+    module_type: constraints.ConstraintReportAggregatorModule
+    inputs:
+      probe_stellaris_tbr_ok_4d7371e522b53d61: ConstraintEvaluation probe__stellaris__tbr_ok__4d7371e522b53d61__evaluation
+    outputs:
+      constraint_report: ConstraintReport constraint_report
+
+
+  # Exit point - capture all results
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      probe__held__fuel_cycle__fuel__required: float held__fuel_cycle__required.json
+      probe__held__fuel_cycle__fuel__margin: float probe__held__fuel_cycle__fuel__margin.json
+      probe__stellaris__blanket__breeding__total: float stellaris__blanket__computed_tbr.json
+      probe__stellaris__blanket__breeding__valid: float stellaris__blanket__computed_defined.json
+      probe__stellaris__fuel_cycle__fuel__required: float stellaris__fuel_cycle__required.json
+      probe__stellaris__fuel_cycle__fuel__margin: float probe__stellaris__fuel_cycle__fuel__margin.json
+      probe__stellaris__adequacy__margin: RootModel[float] probe__stellaris__adequacy__margin.json
+      probe__stellaris__tbr_ok__4d7371e522b53d61__evaluation: ConstraintEvaluation probe__stellaris__tbr_ok__4d7371e522b53d61__evaluation.json
+      constraint_report: ConstraintReport constraint_report.json

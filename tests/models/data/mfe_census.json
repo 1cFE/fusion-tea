@@ -1,6 +1,6 @@
 {
-  "derived_against_semantic_fingerprint": "8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0",
-  "entry_points": 313,
+  "derived_against_semantic_fingerprint": "5f1fccf18967f8489cc48147b5277acb64212d2a1411d156e6693a168e099fbf",
+  "entry_points": 312,
   "by_entry_type": {
     "library_default": [
       "stellarator_09__stellaris__blanket__blanket_cost__alpha",
@@ -90,7 +90,6 @@
       "stellarator_09__stellaris__blanket__mn",
       "stellarator_09__stellaris__blanket__reflector_t",
       "stellarator_09__stellaris__blanket__structure_factor",
-      "stellarator_09__stellaris__blanket__tbr",
       "stellarator_09__stellaris__blanket__unit_cost",
       "stellarator_09__stellaris__buildings__bldg_et_base",
       "stellarator_09__stellaris__buildings__bldg_fixed_base",

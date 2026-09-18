@@ -1,0 +1,16 @@
+{
+  "single": {
+    "points_checked": 8000,
+    "geometric_removed_fraction": 0.03,
+    "sampled_angle_fraction": 0.0307,
+    "first_wall_retained": true,
+    "removed_breeder_m3": 22.261090118745063
+  },
+  "split": {
+    "points_checked": 8000,
+    "geometric_removed_fraction": 0.03,
+    "sampled_angle_fraction": 0.0294,
+    "first_wall_retained": true,
+    "removed_breeder_m3": 22.261090118745063
+  }
+}

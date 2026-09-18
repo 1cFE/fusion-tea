@@ -1,0 +1,102 @@
+{
+  "cases": 18,
+  "histories": 7200000,
+  "max_isotope_sum_error": 7.438494264988549e-15,
+  "assemblies": {
+    "Li": {
+      "min": 0.6543888612412804,
+      "max": 0.7315492461496395,
+      "max_abs_z": 1.2133808258619543,
+      "repeat_difference_combined_standard_deviations": 0.6216382943058839,
+      "ideal_lithium_volume_cm3": 900589.894029074,
+      "global_tallies": [
+        {
+          "name": "b'k-collision'",
+          "sum": 0.0,
+          "sum_sq": 0.0,
+          "mean": 0.0,
+          "std_dev": 0.0
+        },
+        {
+          "name": "b'k-absorption'",
+          "sum": 0.0,
+          "sum_sq": 0.0,
+          "mean": 0.0,
+          "std_dev": 0.0
+        },
+        {
+          "name": "b'k-tracklength'",
+          "sum": 0.0,
+          "sum_sq": 0.0,
+          "mean": 0.0,
+          "std_dev": 0.0
+        },
+        {
+          "name": "b'leakage'",
+          "sum": 37.0114,
+          "sum_sq": 34.24666696,
+          "mean": 0.925285,
+          "std_dev": 0.0006064350431321526
+        }
+      ]
+    },
+    "PbLi": {
+      "min": 0.4643937826353109,
+      "max": 0.5351445672731252,
+      "max_abs_z": 2.0628668912490893,
+      "repeat_difference_combined_standard_deviations": 0.18944356475253865,
+      "ideal_lithium_volume_cm3": 871268.3625955692,
+      "global_tallies": [
+        {
+          "name": "b'k-collision'",
+          "sum": 0.0,
+          "sum_sq": 0.0,
+          "mean": 0.0,
+          "std_dev": 0.0
+        },
+        {
+          "name": "b'k-absorption'",
+          "sum": 0.0,
+          "sum_sq": 0.0,
+          "mean": 0.0,
+          "std_dev": 0.0
+        },
+        {
+          "name": "b'k-tracklength'",
+          "sum": 0.0,
+          "sum_sq": 0.0,
+          "mean": 0.0,
+          "std_dev": 0.0
+        },
+        {
+          "name": "b'leakage'",
+          "sum": 50.175199852014785,
+          "sum_sq": 62.93991514848556,
+          "mean": 1.2543799963003697,
+          "std_dev": 0.000857898350674372
+        }
+      ]
+    }
+  },
+  "data_sha256": {
+    "Cr50.h5": "4f52b06a1a1133cfab98e03404d96bde4a48a8d93d6106d8c6515d83b413b543",
+    "Cr52.h5": "1c431abbe5063ff6820c46ca8239a4adf88e348bca3df12ebc1cd9b2afd84cfb",
+    "Cr53.h5": "693b30a2241e1c1f74e8f25c251b32570ce593c7c28c692b2d5a92fcac33f0eb",
+    "Cr54.h5": "40cfb6225e169ac2572c3c69114f5719dbbdd020c68167beca8c7faeb9ba7b85",
+    "Fe54.h5": "4ba04cd0c8810e3c8efbb775e2cb4c52292819c9a58578a0e1dd4c4974bf1ff0",
+    "Fe56.h5": "c9757aeb4dbf0cc560a04cd4ba395dc2d797d8dce2c2bc5f62d177b5be8561eb",
+    "Fe57.h5": "5568f95057b38abae110cd8876597aedb118b6e96eb4cdda6f0c16544a8f5427",
+    "Fe58.h5": "30c7672fde0f672f5cdad33e2ec54610f59fc82852fa0416301d608a772f6550",
+    "Li6.h5": "3e85c1a46c73ddf8e49f14ac3da0f48b9540bcc1fc17a55f9582fbe605212e7a",
+    "Li7.h5": "c0f0908c935dffc6f9f4745cac0fde06bd3efbdf1092a1b570c793eaebeafc9c",
+    "Ni58.h5": "8e8822ace56a5464251b7101dfe09a0f06304880e0f22cfa559c9afc8545dc5e",
+    "Ni60.h5": "476c29f186d3a887c6dcd36faa75df1006204c01c3dac3e10a57705d3f0653b8",
+    "Ni61.h5": "94d8d87f87d72c5d4ff27fe81d34de166e03f807bcaa5503494a0bb044aa828a",
+    "Ni62.h5": "633abb5c89d6f3f6e27638417a40271c14da4fbb8f40e12d1c44943298969811",
+    "Ni64.h5": "ae4a15868433e8253893332335f96f489588ba5eade15bd8dcd7f2a51e6f22e1",
+    "Pb204.h5": "756fecc96982c420be5930d7b5ca9e4c63c7f0fc68e28eca8f4931dd4c931eca",
+    "Pb206.h5": "fe0255a39fa6e11be06e7f0886c990b6ef1cc4eee49ed36db1b1002c8b409474",
+    "Pb207.h5": "db04f02bf3e1f0ceefbfb48d8c4ec3389d4a408f9ba55910f4ce82620f5bad08",
+    "Pb208.h5": "ed340d6d5f20651f41f7b454cd3fd31dc1d542eea236ffe7a9833bf6c5e5c6c1"
+  }
+}
