@@ -82,3 +82,7 @@ T-002 · native modeling PM · registered equipment-cost spec. Runs independentl
 ### Verification note — 2026-09-18
 
 [AGENT] After accepted disposition rows were appended, the native join test returned 26 passes and one failure on the unchanged computed-tritium-breeding record, whose finding IDs the existing parser does not recognize before it reaches log membership. Both touched prior study records pass. `evidence/discovery-join-tests.log` preserves this separate existing consumer failure; no parser or breeding-record change was made. Two goal-contract tests pass. The answer discloses all three distinct scoped batches; none is reported as a clean full suite.
+
+### Evidence checkpoint — 2026-09-18
+
+The Round 1 evidence is committed at `1031e7ff`: `work/orchestration/goals/installed-cooling-equipment-costs/@1031e7ff`, `work/active/WI-067_installed-cooling-equipment-costs/spec.md@1031e7ff`, `knowledge/research/pending/20260918-143536_installed-helium-cooling-cost-methods.md@1031e7ff`, both `REQ-COOL-INSTALL-01` request/run trees at that revision, the registered INL source and native index/manifest at that revision, and accepted discovery-log rows at that revision. This supplies pinned citations for the earlier explicitly unpinned entries. It is a research/diagnostic checkpoint, not a promoted executable pin or committed equipment-cost study. Source-extraction and test-log whitespace is retained verbatim. The context note in `.project/CURRENT_WORK.md` remains uncommitted with the owner's pre-existing edits. No goal/item closure, merge or push occurred.
