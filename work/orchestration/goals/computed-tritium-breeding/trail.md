@@ -59,3 +59,7 @@ T-001 · native research and current-model trace · evidence report and method p
 - **Checks:** `evidence/round1-review-and-grade.md` verifies original source evidence, task scope, acquisition-recovery classification, native request returns, unchanged model/generated consumers, absence of plant study claims, and accepted learning delta. No consumed discovery rows needed disposition. The fresh unchanged-rubric grade is R2c.P1; P2 and P3 are both unmet.
 - **Evidence reuse:** `evidence/method-review.md` and its source-probe addendum; reproducible original-C++ comparison at `evidence/verify_hcll_original_cpp.py` and `evidence/hcll-original-cpp-verification.json`.
 - **Next:** Owner physical-target decision, then a new round with a matching strategy. No goal closure recommendation and no blanket substitution by the coordinator.
+
+### Evidence checkpoint — 2026-09-18
+
+Native research, registrations, probe, reviews and answer are committed at `f61c0b92`. Cite those paths at this revision to resolve the earlier unpinned-at-review evidence. The current model remains at the entering revision; no model/generated-package diff exists. Source-registry verification reports zero faults and three pre-existing legacy entries. Unrelated working-tree edits remain preserved; the new CURRENT_WORK entry is left unstaged with the owner's existing changes. No merge or push.
