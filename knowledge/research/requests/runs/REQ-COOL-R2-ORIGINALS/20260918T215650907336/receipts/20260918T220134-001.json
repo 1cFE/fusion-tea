@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/cool-r2-originals/mit194.pdf",
+  "slug": "mit_canes_capital_cost_evaluation_of_advanced_water_cooled",
+  "path": "knowledge/sources/mit_canes_capital_cost_evaluation_of_advanced_water_cooled/",
+  "source_id": "59f2305b0322a6969a2108335ee178459cbc729d46b6784b5323c0e7027c3c6b",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T22:01:34.246638+00:00"
+}

@@ -51,3 +51,7 @@
 [OWNER] Only the owner formally closes the goal. Recommend closure only with evidence satisfying the answer contract; report an unresolved blocker as a gap, never completion.
 
 ## Amendments
+
+### Amendment 2026-09-18 — amends execution interpretation of Reserved gates
+
+[OWNER-VERBATIM] “next time, do not pause between rounds”. Continue automatically across rounds while authorized useful work remains; an ordinary round boundary does not require owner confirmation. Reserved scientific/scope decisions and formal closure remain owner-held.

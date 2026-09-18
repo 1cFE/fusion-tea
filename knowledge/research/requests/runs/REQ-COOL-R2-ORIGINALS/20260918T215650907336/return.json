@@ -1,0 +1,28 @@
+{
+  "request_id": "REQ-COOL-R2-ORIGINALS",
+  "run": "knowledge/research/requests/runs/REQ-COOL-R2-ORIGINALS/20260918T215650907336",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "mit_canes_capital_cost_evaluation_of_advanced_water_cooled",
+      "path": "knowledge/sources/mit_canes_capital_cost_evaluation_of_advanced_water_cooled/",
+      "source_id": "59f2305b0322a6969a2108335ee178459cbc729d46b6784b5323c0e7027c3c6b",
+      "pre_existing": false
+    },
+    {
+      "slug": "inl_ngnp_pre_conceptual_design_report_revision1_2007",
+      "path": "knowledge/sources/inl_ngnp_pre_conceptual_design_report_revision1_2007/",
+      "source_id": "6745eb812feaca31c967cf0047bce964135fdac2cc712a01a77a81ecbd9d7734",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://nift.mit.edu/people/w-robb-stewart/",
+      "reason": "MIT author page unreachable via web and direct original retrieval; no exact Stewart2021 original obtained."
+    }
+  ],
+  "negative": null,
+  "limit_reached": "max_searches",
+  "reason": "at least one source is registered and citable"
+}

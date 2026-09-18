@@ -1,0 +1,18 @@
+{"kind": "search", "query": "helium circulator cost estimate million 5 MW HTGR manufacturer", "at": "2026-09-18T22:07:54.470697+00:00"}
+{"kind": "search", "query": "site:osti.gov helium circulator procurement cost", "at": "2026-09-18T22:07:54.534121+00:00"}
+{"kind": "search", "query": "helium circulator compressor cost high pressure casing low pressure ratio estimate", "at": "2026-09-18T22:07:54.593082+00:00"}
+{"kind": "search", "query": "\"911107r0.pdf\" -site:art.inl.gov", "at": "2026-09-18T22:08:34.343257+00:00"}
+{"kind": "search", "query": "\"circulator\" \"757\" \"19\" million", "at": "2026-09-18T22:08:34.401918+00:00"}
+{"kind": "search", "query": "\"How pressure affects costs of power conversion machinery\" compressor pdf", "at": "2026-09-18T22:08:34.460455+00:00"}
+{"kind": "search", "query": "\"Improving cost estimation for compressors\" pdf", "at": "2026-09-18T22:09:17.624731+00:00"}
+{"kind": "search", "query": "\"helium circulator\" \"cost\" \"Howden\"", "at": "2026-09-18T22:09:17.684316+00:00"}
+{"kind": "search", "query": "\"helium circulator\" \"million\" \"estimate\" -site:art.inl.gov -aries", "at": "2026-09-18T22:09:17.742827+00:00"}
+{"kind": "search", "query": "\"911107\" \"pdf\" \"NGNP\" -site:art.inl.gov", "at": "2026-09-18T22:10:31.495573+00:00"}
+{"kind": "search", "query": "\"helium circulator\" \"cost\" \"19 million\" -site:art.inl.gov", "at": "2026-09-18T22:10:31.554413+00:00"}
+{"kind": "search", "query": "\"helium circulator\" \"cost\" \"MW\" site:osti.gov/servlets", "at": "2026-09-18T22:10:31.613367+00:00"}
+{"kind": "candidate", "ref": "https://www.osti.gov/servlets/purl/5714353", "triage": "keeper", "note": "Original BNL manufacturer helium-machine quote and pressure/material transfer assumptions; image checked.", "at": "2026-09-18T22:12:36.068883+00:00"}
+{"kind": "candidate", "ref": "https://www.osti.gov/servlets/purl/5706252", "triage": "keeper", "note": "Original MW-class helium circulator vendor anchor, image checked separate installation/engineering.", "at": "2026-09-18T22:12:36.128696+00:00"}
+{"kind": "candidate", "ref": "https://www.osti.gov/servlets/purl/4785937", "triage": "keeper", "note": "Original manufacturer helium circulator capacity scaling0.6 and separate development costs.", "at": "2026-09-18T22:12:36.186950+00:00"}
+{"kind": "candidate", "ref": "https://inldigitallibrary.inl.gov/sites/sti/sti/7363960.pdf", "triage": "rejected", "note": "Screened original engineering maturity summary; no standalone cost coefficient; capture budget prioritized price and scaling sources.", "at": "2026-09-18T22:12:36.245861+00:00"}
+{"kind": "candidate", "ref": "https://pure-oai.bham.ac.uk/ws/portalfiles/portal/230787257/1-s2.0-S2352152X24013768-main.pdf", "triage": "rejected", "note": "Original downloaded screened. Equal-power/equal-ratio/equal-fluid compressor similarity method does not resolve cross-fluid/low-ratio hermetic package transfer; capture budget prioritized direct helium evidence.", "at": "2026-09-18T22:12:36.304743+00:00"}
+{"kind": "failure", "ref": "https://art.inl.gov/NGNP/Subcontractors%20Documents/General%20Atomics/911107r0.pdf", "reason": "New full GA original route returned404; potential alternate original still useful; no cached price admitted.", "disposition": "queued", "at": "2026-09-18T22:12:36.362872+00:00"}

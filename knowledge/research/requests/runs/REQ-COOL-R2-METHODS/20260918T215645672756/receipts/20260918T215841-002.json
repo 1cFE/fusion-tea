@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "/tmp/cooling-netl.pdf",
+  "slug": "doe_netl_2002_process_equipment_cost_estimation_final_report",
+  "path": "knowledge/sources/doe_netl_2002_process_equipment_cost_estimation_final_report/",
+  "source_id": "bf97fa70c13e3036b83f94a678ca1f17abd89192fb219fc39939e01094b5bb2b",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T21:58:41.504109+00:00"
+}

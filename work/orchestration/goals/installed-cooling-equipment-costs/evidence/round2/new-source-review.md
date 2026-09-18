@@ -1,0 +1,57 @@
+# Independent review of new exchanger and helium-circulator sources
+
+Reviewer: `equipment_review`, 2026-09-18. Non-author source-method review; no implementation authored. Read `hx-method-check.md`; independently checked ANL original printed pages 30 and 61, extraction §4.1.7/Table 58 and §3.6.3; BNL original printed pages 6, 20–22; ORNL original printed pages 18 and 24. Source identities and image locations below. This review initially precedes the researcher's `circulator-transfer.md`; conclusions are from inspected originals, not that pending report.
+
+## Verdict
+
+**Source-method candidates accepted for a concrete conditional design. Production integration remains pending that design's arithmetic, scope and price-year review.** ANL directly supports a material-and-component-mass nuclear exchanger estimate plus a separately stated installation allowance. BNL and ORNL supply actual helium-circulator reference costs. No vendor qualification or complete stellarator layout is required before proposing an auditable conceptual estimate. None of these sources alone establishes the target's complete installed cost or lifecycle schedule.
+
+## Exchanger method: direct support
+
+ANL printed page 30 explicitly recommends $310000/metric tonne for finished stainless steam-generator construction, forged or plate-built. Section 4.1.7.1 demonstrates the analogous IHX method: component geometry gives 14.9 tonnes, 9Cr-1Mo construction is priced at $140000/tonne, and four units total about $8.33 million factory cost. Original printed page 61 gives site labor `0.024*factory` and site material `0.002*factory`, reaching $8.55 million installed. The same installation convention is used for its much larger steam generators. These are published conceptual estimating assumptions, not invented factors or evidence that all installation costs scale universally this way.
+
+The $310/kg stainless route is therefore a stronger fit than forcing the source exchanger into a generic area correlation. Its 304-derived basis transferred unchanged to assumed 316L(N) remains an explicit fabrication analogy. The source rate represents finished fabrication and delivery, not raw alloy; do not add a second generic fabrication or shipping charge. Component installation is narrower than full plant installation: primary/secondary piping, buildings, support services and indirects retain separately reconciled ownership. Use either this source's component installation route or an alternative, without stacking both.
+
+### Minimum adequate conceptual quantity description
+
+Keep the source's two-pass tube outside diameter, count per pass and bundle length. Declare tube wall, exchanger material/density, shell bore and length, shell wall, tube-sheet count/thickness, head form/thickness, and nozzle/internal/support quantities. These are allowed design assumptions, not source facts. They may be approximate geometry and explicit allowances; no detailed drawing or qualified vessel design is required. An unitemized whole-exchanger mass multiplier would conceal the very construction being priced.
+
+Basic checks should establish positive tube bore, enough shell cross-section for all physical tube legs with stated pitch/packing, consistent pass counting, plausible sheet/head placement and no double counting of overlapping metal. Tube-metal mass follows the exact annular-cylinder geometry; the independent identity `M=rho*Aoutside*t*(1-t/Do)` is valid for straight active tubes. Keep return chambers, bends and nozzle metal separate if the quoted bundle length excludes them. Tube sheets can use net perforated area or a declared conservative gross-plate approximation; say which.
+
+Distinguish tube-side and shell-side design pressure. Eight MPa primary pressure is a source operating condition, not automatically the salt-shell pressure or an approved design rating. Thickness can be explicitly chosen and varied, or derived from a declared preliminary stress/joint model. If pressure adequacy is claimed, its temperature-dependent allowable stress and pressure cases need a basis. A chosen thickness without that basis is a costing scenario, not a rated component; it need not block the scenario. Differential pressure, external-pressure/buckling cases and tube-sheet loads remain outside a simple hoop-stress screen.
+
+Required thermal area and installed geometry must remain separate. Retaining the source tube geometry with new assumed wall dimensions is a representative-layout costing case; it does not newly prove that the existing hydraulic coefficient belongs to that selected bore. Declare that calibration seam. A plausible fixed-hydraulics sensitivity is acceptable, but a redesigned-flow performance claim needs a corresponding loss calculation. Source helium inventory cannot determine bore: its reported total volume exceeds the outside tube-envelope volume and includes other scope.
+
+## Helium circulator anchors: independently verified
+
+### BNL NUREG/CR-1006
+
+Original printed page 6 specifies a proposed single-stage centrifugal helium compressor with gas bearings in a stainless pressure vessel, helium-cooled 140 hp motor, 735 psia inlet, 760 psia discharge, 1000 °F inlet and 600 inlet cfm. This directly establishes that a low-ratio, high-casing-pressure helium centrifugal concept is plausible. The manufacturer budget estimate separates $550000 circulator/motor, $110000 power supply and $130000 engineering design. Fabrication, assembly, testing and delivery belong to the first two amounts. Printed page 21 excludes loop assembly/installation and operational labor/engineering/administration/overhead from the component capital table.
+
+Table 5.1 lists nominal loop pumping duty 50 hp, not the 140 hp motor rating. Do not select whichever denominator gives the desired scaled price. Printed pages 21–22 use a 0.28 power exponent only in the **material half** of an approximate low-pressure alternative; they do not establish `total_cost~power^0.28` for a much larger machine. The other half is held under that particular comparison. A proposed target scaling law may be an explicit analyst assumption, but must not be attributed to this limited source calculation as a validated all-size correlation. Repeated production may amortize first-design engineering under a stated assumption; it cannot simply be omitted or charged once per machine without explanation.
+
+### ORNL FEDC-87/1
+
+Original printed page 18 gives 12 kg/s helium circulation, 7 to 8 atm pressure rise, near-room-temperature suction and approximately 1.25 MW input. Printed page 24 assigns $1 million vendor cost to the circulator, identified as the high side of vendor quotes. This is a closer motor-power anchor but a much lower absolute-pressure and lower-temperature application than the target.
+
+The table separately applies 15.5% procurement to vendor subtotal, 27% installation to resulting hardware, 35% engineering to hardware, and 27.5% contingency to their subtotal. These are **whole cooling-system conventions**, not independently quoted circulator installation. They can inform a declared package-level installation analogy, with their bases preserved and overlapping CAS charges removed. They cannot silently prove dedicated installation at the target conditions. The target-to-reference pressure/temperature and construction differences need explicit treatment or an uncalibrated transfer statement, not an invented helium uplift.
+
+## Minimum next reviewable artifact
+
+Provide one concrete source-linked quantity and price ledger. For HX, show tube/shell/sheet/head/internal masses, the ANL delivered fabrication subtotal and selected component installation scope. For circulators, select a named reference boundary, power definition, count and openly assumed scaling rule; compare the alternative anchor as a scenario rather than a confidence interval. Include price-year attribution/escalation, first-design versus repeated-unit handling, dedicated drives/controls and excluded auxiliaries. Add pipe quantities, disjoint shared installation ownership and explicit lifecycle scenarios. The originals need not supply every chosen dimension or maintenance interval, but every assumption must remain visible and testable in the resulting estimate.
+
+## Evidence locations
+
+- ANL: `knowledge/sources/anl_2018_report_on_the_update_of_fuel_cycle_cost_algorithms/output.md`, §3.8.1 and §4.1.7; original `/tmp/cooling-anl.pdf`, PDF pages 50 and 81 (printed 30 and 61), independently rendered for this review.
+- BNL: `knowledge/sources/bnl_nureg_cr1006_preliminary_design_study_of_a_large_scale/`; original SHA256 `c28be58088c7153bbe95da784bb735dc3cb740812e806af594031543c4f41952`; retained `circulator-images/heliumloop1980-15.png`, `-29.png`, `-30.png`, `-31.png`.
+- ORNL: `knowledge/sources/ornl_fedc87_1_cooldown_of_the_compact_ignition_tokamak_1987/`; original SHA256 `600c6ad7048753e0b7932ee3e6e9fa9772c5e6254666abad68fe20739fb427d8`; retained `circulator-images/cit-23.png` and `cit-29.png`.
+
+### Coordinator's proposed assembly and scaling scenario
+
+Applying ORNL's 27% hardware installation factor to circulator hardware alone is an acceptable **declared assembly analogy**, with target scope explicitly restricted to package setting and local connections. The original excludes additional buildings but does not itemize machine setting, connections, shared services and pipe-installation labor. Therefore this restricted ownership is an analyst accounting assumption, not a source-proven decomposition. Separate main-pipe field labor and ANL HX installation may coexist if the design assigns each activity once. Do not claim that ORNL validates the resulting category split. Procurement, engineering and contingency must each have an explicit owner; omitting ORNL's separate percentages because existing CAS allowances are retained requires a stated coverage assumption, not an assertion that identically named fractions have identical scope.
+
+The BNL half-material pressure/power relation may define one openly extrapolated scenario: half of the quoted circulator/motor cost responds to pressure and duty to the 0.28 exponent, and the other half follows the source comparison's held fabrication assumption. Reproducing its nominal-to-low-pressure table comparison should precede target use. The source comparison's 50 hp is loop duty; 140 hp belongs to the proposed motor rating and must remain separately identified. The $110000 power supply has no general transfer law in those passages and needs its own explicit assumption. Charging $130000 first-design engineering once per distinct machine design is a reasonable amortization scenario, with repeat-unit treatment exposed. None of these assumptions establishes a statistical bound or validates extrapolation to multi-MW machines.
+
+### Corrected ORNL installation transcription
+
+Independent reread of original Table 3.2 corrects this review's initial installation transcription: **27% of hardware**, not 35%; engineering is the separate 35% row. Hardware is vendor cost plus procurement: $2116000 + $328000 = $2444000. Installation is `0.27*2444000 = $659880`, matching the printed rounded $660000. Engineering is approximately $860000. The installed-scope analogy discussion above now uses the corrected 27%. If procurement is assigned to another account, the source factor's denominator must still be preserved or its changed base explicitly declared.

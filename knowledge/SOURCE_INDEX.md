@@ -1001,6 +1001,150 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 54a6dd34f550ee81c8885648a824f58b143bf4ab40971b77c4333901402ca234
 - **Date Added**: 2026-09-18
 
+### IDAES 2.7 SSLW equipment costing implementation
+- **Type**: url
+- **Location**: knowledge/sources/idaes_2_7_sslw_equipment_costing_implementation/
+- **Use for**: Independent purchased compressor and shell-tube exchanger equations, material and pressure factors, currency basis.
+- **Validation**: Compare registered extraction with version 2.7.0 source functions cost_heat_exchanger and cost_compressor.
+- **Caveat**: Generic chemical equipment purchase correlations; helium nuclear casing applicability and installed scope require explicit treatment.
+
+#### Extended Metadata
+- **Source URL**: https://idaes-pse.readthedocs.io/en/2.7.0/_modules/idaes/models/costing/SSLW.html
+- **Source ID**: 961acb44344737d31c895f07e8b7f55fb5d8256ddab1dc1b09762e9d665f4c8b
+- **Raw SHA256**: 961acb44344737d31c895f07e8b7f55fb5d8256ddab1dc1b09762e9d665f4c8b
+- **Raw Artifact SHA256**: 961acb44344737d31c895f07e8b7f55fb5d8256ddab1dc1b09762e9d665f4c8b
+- **Extracted Path**: knowledge/sources/idaes_2_7_sslw_equipment_costing_implementation/
+- **Extract SHA256**: 586a62807c6ced9e7aca2bac05e33615da9bdcb5ea79ddd423b8b04d6bd89f4f
+- **Date Added**: 2026-09-18
+
+### DOE NETL 2002 Process Equipment Cost Estimation Final Report
+- **Type**: local_pdf
+- **Location**: knowledge/sources/doe_netl_2002_process_equipment_cost_estimation_final_report/
+- **Use for**: Independent purchased and installed gas compressor and shell-tube exchanger costs and explicit installation scope.
+- **Validation**: Check equipment design conditions and purchased versus installed cost tables in Appendix B against original PDF.
+- **Caveat**: 1998 chemical plant estimates with carbon steel and limited pressure domains; no helium nuclear qualification or direct large stainless piping coverage.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/cooling-netl.pdf
+- **Source ID**: bf97fa70c13e3036b83f94a678ca1f17abd89192fb219fc39939e01094b5bb2b
+- **Raw SHA256**: bf97fa70c13e3036b83f94a678ca1f17abd89192fb219fc39939e01094b5bb2b
+- **Raw Artifact SHA256**: bf97fa70c13e3036b83f94a678ca1f17abd89192fb219fc39939e01094b5bb2b
+- **Extracted Path**: knowledge/sources/doe_netl_2002_process_equipment_cost_estimation_final_report/
+- **Extract SHA256**: e3de193a5dd91c82918651081aaf8e54fdfd65c66787b77c3af2e12d84ef5f59
+- **Date Added**: 2026-09-18
+
+### MIT CANES Capital Cost Evaluation of Advanced Water Cooled Reactor Designs with Consideration of Uncertainty and Risk 2022
+- **Type**: local_pdf
+- **Location**: knowledge/sources/mit_canes_capital_cost_evaluation_of_advanced_water_cooled/
+- **Use for**: Original nuclear-adjusted component cost scaling equations 2.1 and 2.2 and Table2.6; conceptual cost method boundary for installed cooling equipment research.
+- **Validation**: Image-check PDF pages37-38 printed36-37 for equations and Table2.6. Full 167-page text pre-screen found no barred terms. Download URL retained in T-003 evidence.
+- **Caveat**: Public mirror of MIT-ANP-TR194; water-reactor calibration not helium equipment pricing. Nuclear factors include extrapolation effects; 2018 cost basis. No 8MPa helium installation or lifecycle transfer established.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/cool-r2-originals/mit194.pdf
+- **Source ID**: 59f2305b0322a6969a2108335ee178459cbc729d46b6784b5323c0e7027c3c6b
+- **Raw SHA256**: 59f2305b0322a6969a2108335ee178459cbc729d46b6784b5323c0e7027c3c6b
+- **Raw Artifact SHA256**: 59f2305b0322a6969a2108335ee178459cbc729d46b6784b5323c0e7027c3c6b
+- **Extracted Path**: knowledge/sources/mit_canes_capital_cost_evaluation_of_advanced_water_cooled/
+- **Extract SHA256**: c8bbb186abe9476e90ccbed3b0354f6d8ccfc863d39e0d9dfd75a16f40fe973d
+- **Date Added**: 2026-09-18
+
+### ANL 2018 Report on the Update of Fuel Cycle Cost Algorithms
+- **Type**: local_pdf
+- **Location**: knowledge/sources/anl_2018_report_on_the_update_of_fuel_cycle_cost_algorithms/
+- **Use for**: Original nuclear-grade stainless fabrication cost per mass and explicit reactor coolant piping application with installation scope exclusions.
+- **Validation**: Verify printed sections 3.6.3,3.20,4.1.18 and Table47 against PDF images; resolve ton basis using explicit geometry and reported mass.
+- **Caveat**: 2017 USD nuclear fission component analogy; sodium piping pressure differs from8MPa helium; fabrication excludes field installation and pipe hangers.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/cooling-anl.pdf
+- **Source ID**: b2bb0fd652d5d88ddad289ce96b51302761a00159e9786572214b90979ae4a3f
+- **Raw SHA256**: b2bb0fd652d5d88ddad289ce96b51302761a00159e9786572214b90979ae4a3f
+- **Raw Artifact SHA256**: b2bb0fd652d5d88ddad289ce96b51302761a00159e9786572214b90979ae4a3f
+- **Extracted Path**: knowledge/sources/anl_2018_report_on_the_update_of_fuel_cycle_cost_algorithms/
+- **Extract SHA256**: d0d0a27ed1dd025c0caa207e9714075e5a5727cb41fda75dafb38842c8f0caef
+- **Date Added**: 2026-09-18
+
+### INL NGNP Pre Conceptual Design Report Revision1 2007
+- **Type**: local_pdf
+- **Location**: knowledge/sources/inl_ngnp_pre_conceptual_design_report_revision1_2007/
+- **Use for**: Original INL compilation including GA PC-000544 heat transport study summary and Table5-1 construction scope, to distinguish helium evidence and equipment versus project costs.
+- **Validation**: Full 637-page PDF term screen clean; image-check PDF page591 Table5-1 printed113, with GA heat-transport discussion at PDF491 and INL whitepaper at221.
+- **Caveat**: 2007 preconceptual compilation. Original GA911105 equations and separable circulator prices are not reproduced in inspected summary; project totals cannot price retained 8MPa300-500C equipment.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/cool-r2-originals/ngnp.pdf
+- **Source ID**: 6745eb812feaca31c967cf0047bce964135fdac2cc712a01a77a81ecbd9d7734
+- **Raw SHA256**: 6745eb812feaca31c967cf0047bce964135fdac2cc712a01a77a81ecbd9d7734
+- **Raw Artifact SHA256**: 6745eb812feaca31c967cf0047bce964135fdac2cc712a01a77a81ecbd9d7734
+- **Extracted Path**: knowledge/sources/inl_ngnp_pre_conceptual_design_report_revision1_2007/
+- **Extract SHA256**: 3eab52151c5486611e98b63e62fd460f36fdf6a5d073e693d0e63fe2481f27bd
+- **Date Added**: 2026-09-18
+
+### Seider Seader Lewin Widagdo Product and Process Design Principles third edition 2009
+- **Type**: local_pdf
+- **Location**: knowledge/sources/seider_seader_lewin_widagdo_product_and_process_design/
+- **Use for**: Original compressor and exchanger purchase equations, stated validity domains, motor scope, and bare-module installation boundaries.
+- **Validation**: Verify original printed pages 549-550 and 569-571 and parallel exchanger example on page 649 against PDF images; compare IDAES coefficients.
+- **Caveat**: Textbook chemical-process conceptual method, unofficial accessible mirror; 8 MPa low-ratio helium-specific premium and nuclear piping remain unestablished.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/cooling-seider.pdf
+- **Source ID**: a39c4f31bc9ca6825e63785070ddfe6332ec5573ae973cca7d5fee9e284cc33d
+- **Raw SHA256**: a39c4f31bc9ca6825e63785070ddfe6332ec5573ae973cca7d5fee9e284cc33d
+- **Raw Artifact SHA256**: a39c4f31bc9ca6825e63785070ddfe6332ec5573ae973cca7d5fee9e284cc33d
+- **Extracted Path**: knowledge/sources/seider_seader_lewin_widagdo_product_and_process_design/
+- **Extract SHA256**: 53706a0ccc198e933a87c601980c975044b69df8a204f1ae062ab645b0af021e
+- **Date Added**: 2026-09-18
+
+### BNL NUREG CR1006 Preliminary Design Study of a Large Scale Graphite Oxidation Loop 1979
+- **Type**: local_pdf
+- **Location**: knowledge/sources/bnl_nureg_cr1006_preliminary_design_study_of_a_large_scale/
+- **Use for**: Manufacturer budget helium circulator package at735to760psia1000F600ACFM140hp with separate machine motor power supply engineering and pressure-sensitive cost approximation; circulator transfer research.
+- **Validation**: Original OSTI5714353 PDF38pages screened clean before reading. Image-check PDF15 printed6 quotation and PDF31 printed22 Table6.1; PDF30 printed21 defines delivered-component scope and scaling assumptions.
+- **Caveat**: 1979 budget quote not purchase.140hp much smaller than retained equipment; gas bearings not magnetic. Pressure and power scaling in report is a low-pressure alternative assumption, not validated large-machine correlation.1979 dollar-year inferred from report date unless explicit original quote date recovered.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/cool-circ-transfer/heliumloop1980.pdf
+- **Source ID**: c28be58088c7153bbe95da784bb735dc3cb740812e806af594031543c4f41952
+- **Raw SHA256**: c28be58088c7153bbe95da784bb735dc3cb740812e806af594031543c4f41952
+- **Raw Artifact SHA256**: c28be58088c7153bbe95da784bb735dc3cb740812e806af594031543c4f41952
+- **Extracted Path**: knowledge/sources/bnl_nureg_cr1006_preliminary_design_study_of_a_large_scale/
+- **Extract SHA256**: 8ad6dea8d6f27612f7c2d7b79c54654621cec33672fd709318a9e1fe9bc0fdad
+- **Date Added**: 2026-09-18
+
+### ORNL FEDC87 1 Cooldown of the Compact Ignition Tokamak 1987
+- **Type**: local_pdf
+- **Location**: knowledge/sources/ornl_fedc87_1_cooldown_of_the_compact_ignition_tokamak_1987/
+- **Use for**: Independent1.25MW helium circulator vendor-price anchor at7to8atm12kg/s with equipment procurement installation engineering and contingency separately identified; cooling circulator cost transfer.
+- **Validation**: Original OSTI5706252 PDF89pages screened clean before reading. Image-check PDF23 printed18 conditions and PDF29 printed24 Table3.2 vendor quote.
+- **Caveat**: Near-room-temperature low-casing-pressure1987 conceptual cooling system.1millionUSD circulator line is high side of three quotes but drive controls bearing and seal package detail not explicit; report-date price-year assumption and8MPa hot-service transfer remain uncertain.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/cool-circ-transfer/cit.pdf
+- **Source ID**: 600c6ad7048753e0b7932ee3e6e9fa9772c5e6254666abad68fe20739fb427d8
+- **Raw SHA256**: 600c6ad7048753e0b7932ee3e6e9fa9772c5e6254666abad68fe20739fb427d8
+- **Raw Artifact SHA256**: 600c6ad7048753e0b7932ee3e6e9fa9772c5e6254666abad68fe20739fb427d8
+- **Extracted Path**: knowledge/sources/ornl_fedc87_1_cooldown_of_the_compact_ignition_tokamak_1987/
+- **Extract SHA256**: 8cf8e1d182e9d8006e8f735695deebc289c558949dfbe82e7eac4dcf8ffe0959
+- **Date Added**: 2026-09-18
+
+### General Atomic GA8439 Reactor Arrangement Studies for a Large HTGR Plant 1969
+- **Type**: local_pdf
+- **Location**: knowledge/sources/general_atomic_ga8439_reactor_arrangement_studies_for_a/
+- **Use for**: Original manufacturer conceptual helium circulator production-cost scaling with capacity exponent0.6; separates machine capital from bearing seal testing and design-development costs.
+- **Validation**: Original OSTI4785937 48-page PDF screened clean. Image-check PDF36 printed32 scaling statement. Printed11 machine class and printed34 research development table define transfer limitations.
+- **Caveat**: Steam-turbine axial helium machines with water-lubricated bearings, not electrical hermetic target. Capacity exponent applies original doubled-capacity designs; use across140to8000hp is an explicit extrapolation, not validated power scaling.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/cool-circ-transfer/ga-pcrv.pdf
+- **Source ID**: b8baa2fa5b4098bbc7a5c2a22540927b8939aae3093126aedeb560af0c3b4cfb
+- **Raw SHA256**: b8baa2fa5b4098bbc7a5c2a22540927b8939aae3093126aedeb560af0c3b4cfb
+- **Raw Artifact SHA256**: b8baa2fa5b4098bbc7a5c2a22540927b8939aae3093126aedeb560af0c3b4cfb
+- **Extracted Path**: knowledge/sources/general_atomic_ga8439_reactor_arrangement_studies_for_a/
+- **Extract SHA256**: 1aa521346a7283474afbaa5e3a995b85dbf9c42d5a2deacc92889ad475307573
+- **Date Added**: 2026-09-18
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

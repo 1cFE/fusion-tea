@@ -1,0 +1,34 @@
+{
+  "request_id": "REQ-COOL-CIRCULATOR-TRANSFER",
+  "run": "knowledge/research/requests/runs/REQ-COOL-CIRCULATOR-TRANSFER/20260918T220746639517",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "bnl_nureg_cr1006_preliminary_design_study_of_a_large_scale",
+      "path": "knowledge/sources/bnl_nureg_cr1006_preliminary_design_study_of_a_large_scale/",
+      "source_id": "c28be58088c7153bbe95da784bb735dc3cb740812e806af594031543c4f41952",
+      "pre_existing": false
+    },
+    {
+      "slug": "ornl_fedc87_1_cooldown_of_the_compact_ignition_tokamak_1987",
+      "path": "knowledge/sources/ornl_fedc87_1_cooldown_of_the_compact_ignition_tokamak_1987/",
+      "source_id": "600c6ad7048753e0b7932ee3e6e9fa9772c5e6254666abad68fe20739fb427d8",
+      "pre_existing": false
+    },
+    {
+      "slug": "general_atomic_ga8439_reactor_arrangement_studies_for_a",
+      "path": "knowledge/sources/general_atomic_ga8439_reactor_arrangement_studies_for_a/",
+      "source_id": "b8baa2fa5b4098bbc7a5c2a22540927b8939aae3093126aedeb560af0c3b4cfb",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://art.inl.gov/NGNP/Subcontractors%20Documents/General%20Atomics/911107r0.pdf",
+      "reason": "New full GA original route returned404; potential alternate original still useful; no cached price admitted."
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

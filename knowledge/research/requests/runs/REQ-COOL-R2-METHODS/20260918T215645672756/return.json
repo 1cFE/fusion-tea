@@ -1,0 +1,35 @@
+{
+  "request_id": "REQ-COOL-R2-METHODS",
+  "run": "knowledge/research/requests/runs/REQ-COOL-R2-METHODS/20260918T215645672756",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "idaes_2_7_sslw_equipment_costing_implementation",
+      "path": "knowledge/sources/idaes_2_7_sslw_equipment_costing_implementation/",
+      "source_id": "961acb44344737d31c895f07e8b7f55fb5d8256ddab1dc1b09762e9d665f4c8b",
+      "pre_existing": false
+    },
+    {
+      "slug": "doe_netl_2002_process_equipment_cost_estimation_final_report",
+      "path": "knowledge/sources/doe_netl_2002_process_equipment_cost_estimation_final_report/",
+      "source_id": "bf97fa70c13e3036b83f94a678ca1f17abd89192fb219fc39939e01094b5bb2b",
+      "pre_existing": false
+    },
+    {
+      "slug": "anl_2018_report_on_the_update_of_fuel_cycle_cost_algorithms",
+      "path": "knowledge/sources/anl_2018_report_on_the_update_of_fuel_cycle_cost_algorithms/",
+      "source_id": "b2bb0fd652d5d88ddad289ce96b51302761a00159e9786572214b90979ae4a3f",
+      "pre_existing": false
+    },
+    {
+      "slug": "seider_seader_lewin_widagdo_product_and_process_design",
+      "path": "knowledge/sources/seider_seader_lewin_widagdo_product_and_process_design/",
+      "source_id": "a39c4f31bc9ca6825e63785070ddfe6332ec5573ae973cca7d5fee9e284cc33d",
+      "pre_existing": false
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

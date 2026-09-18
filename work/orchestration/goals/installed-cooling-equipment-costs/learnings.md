@@ -1,7 +1,5 @@
 # Learnings: Installed cooling equipment costs
 
-No accepted round learnings yet.
-
 ## L-001 — Replacing cooling aggregates requires explicit installation and lifecycle boundaries
 
 - **Evidence:** `evidence/account-boundary-map.md`, `evidence/accounting-preimplementation-review.md`, `evidence/final-review-and-grade.md` (new artifacts unpinned; no native digest until checkpoint).
@@ -25,3 +23,27 @@ No accepted round learnings yet.
 - **Implication:** Future matched equipment-cost studies must label the executable version and retain current breeding failures independently of cooling performance.
 - **Supersedes:** none.
 - **Accepted by:** Round 1 review, 2026-09-18.
+
+## L-004 — Original component methods now support a conceptual cooling estimate
+
+- **Evidence:** Round2 `circulator-transfer.md`, `hx-method-check.md`, `new-source-review.md`, `candidate-review.md`; native registered source receipts. Reports unpinned; no native digest until checkpoint.
+- **Scope:** Historical helium-machine references and finished nuclear stainless fabrication/installation methods support declared conceptual transfers. Pressure/scale/material and package uncertainties remain explicit, without a calibrated confidence band.
+- **Implication:** Proceed through a concrete quantity/accounting/lifecycle design; recovery of the original four queued reports is no longer the only route forward.
+- **Supersedes:** L-002's source-access-only next step, not its distinction between physical requirements and complete installed prices.
+- **Accepted by:** Round2 review,2026-09-18.
+
+## L-005 — Preserve source rating, price year and installation denominators
+
+- **Evidence:** Round2 `circulator-transfer.md`, `new-source-review.md` and `candidate-review.md`.
+- **Scope:** BNL50hp nominal pumping duty differs from140hp motor rating; its quote is December1978 despite the1979 report. ORNL installation is27%of hardware including procurement, while35%is engineering. Seider's descriptive compressor ratio statement is not its explicit equation bound.
+- **Implication:** Use original images and component definitions; none of these quantities or factors may be silently interchanged in implementation. Preserve raw source amounts alongside any declared CPI comparison.
+- **Supersedes:** Corrected provisional readings within Round2, as recorded in its reviews; no production parameter was adopted from them.
+- **Accepted by:** Round2 review,2026-09-18.
+
+## L-006 — Intermediate technology and allowance scope need an explicit decision
+
+- **Evidence:** WI-067 `primary-candidate.md`, Round2 `candidate-review.md`, goal trail material-decision entry.
+- **Scope:** Current primary helium is selected; the existing intermediate aggregate has no selected coolant or equipment bill. Reference HITEC terminals were a conditional thermal calculation, not an owner-selected plant architecture.
+- **Implication:** Ask the reserved material technology question and then reconcile equipment ownership. Relabeling C220202 cannot establish that its cost excludes the newly priced exchanger. Keep total cooling and lifecycle amounts unresolved until that work is complete.
+- **Supersedes:** none.
+- **Accepted by:** Round2 review,2026-09-18.

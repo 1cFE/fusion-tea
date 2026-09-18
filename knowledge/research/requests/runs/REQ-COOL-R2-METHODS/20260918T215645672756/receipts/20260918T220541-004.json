@@ -1,0 +1,13 @@
+{
+  "attempt": 4,
+  "outcome": "registered",
+  "candidate": "/tmp/cooling-seider.pdf",
+  "slug": "seider_seader_lewin_widagdo_product_and_process_design",
+  "path": "knowledge/sources/seider_seader_lewin_widagdo_product_and_process_design/",
+  "source_id": "a39c4f31bc9ca6825e63785070ddfe6332ec5573ae973cca7d5fee9e284cc33d",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T22:05:41.699009+00:00"
+}

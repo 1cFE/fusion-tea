@@ -86,3 +86,143 @@ T-002 · native modeling PM · registered equipment-cost spec. Runs independentl
 ### Evidence checkpoint — 2026-09-18
 
 The Round 1 evidence is committed at `1031e7ff`: `work/orchestration/goals/installed-cooling-equipment-costs/@1031e7ff`, `work/active/WI-067_installed-cooling-equipment-costs/spec.md@1031e7ff`, `knowledge/research/pending/20260918-143536_installed-helium-cooling-cost-methods.md@1031e7ff`, both `REQ-COOL-INSTALL-01` request/run trees at that revision, the registered INL source and native index/manifest at that revision, and accepted discovery-log rows at that revision. This supplies pinned citations for the earlier explicitly unpinned entries. It is a research/diagnostic checkpoint, not a promoted executable pin or committed equipment-cost study. Source-extraction and test-log whitespace is retained verbatim. The context note in `.project/CURRENT_WORK.md` remains uncommitted with the owner's pre-existing edits. No goal/item closure, merge or push occurred.
+
+## Round 2 — independent-conceptual-cost-method
+
+### Strategy revision — 2026-09-18
+
+- **Approach:** [AGENT] Pursue original helium-reactor estimates and independently published equipment-based methods in parallel. Build a concrete conceptual reference estimate where source applicability supports it; use explicit justified layout/topology/lifecycle scenarios instead of demanding a qualified plant design.
+- **Assumptions:** Failure to retrieve particular reports does not establish absence of an admissible conceptual cost method. A different reference technology may be useful only with a defensible transfer.
+- **Abandonment conditions:** Neither route provides an applicable source basis, or a required technology/scope choice reaches an owner gate. Ordinary round closure alone is not a reason to pause.
+- **Intended model increment:** Reviewed independent pump, piping and exchanger cost accounts with installation/lifecycle boundaries, if the concrete estimate survives review.
+- **Intended study question:** Separate the effect of missing costs from changed circuit count, demand and layout on the retained reference and selected-design cases.
+
+### T-003 scope
+
+- **Objective:** Recover original helium equipment cost methods through genuinely alternate routes and assess applicability.
+- **Why now:** Four known reports were inaccessible in Round 1, but conceptual methods remain untested.
+- **Scope:** Native source acquisition, original-table checks, evidence report; no model changes or external messaging. Own REQ-COOL-R2-ORIGINALS request/run and evidence/round2/originals report.
+- **Inputs:** Round 1 source-methods and queue at1031e7ff; goal.md and quarantine protocol.
+- **Done when:** Checked original method with boundaries or precise retained acquisition/application gap.
+- **Stop when:** Declared search/capture limits, material gate or source contamination.
+
+### T-003 start — 2026-09-18
+
+Native research · alternate original recovery · new source/method evidence. Parallel with T-004: separate requests and report ownership, no shared model edits; source registry writes coordinated through native lock.
+
+### T-004 scope
+
+- **Objective:** Establish an independent published conceptual estimating route for gas circulators, high-pressure exchangers and fabricated installed piping.
+- **Why now:** This route tests whether the particular inaccessible reactor reports are actually necessary.
+- **Scope:** Native research and source applicability; explicit pressure/temperature/material/scale and installation/lifecycle treatment. Own REQ-COOL-R2-METHODS and evidence/round2/methods report. No model changes.
+- **Inputs:** goal.md; existing account map and sizing-source-review at1031e7ff; quarantine protocol.
+- **Done when:** One concrete reference estimate can be assembled, or exact missing terms and investigated methods are documented.
+- **Stop when:** Declared acquisition limits, material gate or source contamination.
+
+### T-004 start — 2026-09-18
+
+Native research · independent published estimating methods · source-supported candidate equations, domains and price boundaries. Coordinator owns integration, target equipment assumptions, goal trail and reviewer dispatch.
+
+### T-005 scope
+
+- **Objective:** Turn reviewed thermal requirements into a concrete conceptual equipment specification and account/verification design for source-method comparison.
+- **Why now:** Cost-source applicability cannot be judged from thermal duty alone.
+- **Scope:** Native WI-067 design and diagnostic arithmetic; no production equations or installed prices. Coordinator owns WI-067 design and evidence/round2/reference-sizing files. Parallel source work cannot invalidate retained demand inputs; competing source technologies remain alternatives, not silently adopted choices.
+- **Inputs:** WI-067 spec; reviewed Round1 sizing source and entering replay at1031e7ff.
+- **Done when:** Per-machine requirements and conditional exchanger sizing are explicit; pipe/layout and lifecycle missing inputs are named; concrete source methods can be matched against this basis.
+- **Stop when:** A material scientific choice is unavoidable, or unsupported source quantities would be needed to claim a result.
+
+### T-005 start — 2026-09-18
+
+Native design-model workflow · WI-067 design and reference specification · conditional physical sizing and account/test contract, with cost acceptance pending T-003/T-004.
+
+### T-003 return — 2026-09-18
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `evidence/round2/originals.md`; native `REQ-COOL-R2-ORIGINALS` registered return; two registered original reports, paths and source hashes in that report. New evidence unpinned; no native digest for report.
+- **Reading:** Original sources clarify conceptual cost-transfer and replaceable-internals boundaries; they do not establish an isolated helium circulator price. Source registration is not equipment-cost acceptance.
+
+### T-004 return — 2026-09-18
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `evidence/round2/methods.md`, `methods-diagnostic.json`; native `REQ-COOL-R2-METHODS` registered return with four sources. New reports unpinned; no native digest.
+- **Reading:** Independent methods supply explicit nuclear stainless fabrication and process installation categories. Generic gas-machine and modular-exchanger prices remain conditional/off-family diagnostics. Source applicability and overlap normalization require independent review before scientific implementation.
+
+### T-005 return — 2026-09-18
+
+- **Outcome:** COMPLETE.
+- **Evidence:** WI-067 `design.md`; `evidence/round2/reference-sizing.json`, `reference_sizing.py`, `reference-review.md`. New records unpinned; no native digest.
+- **Reading:** Independent arithmetic matches the four cases. The design now distinguishes required exchanger area from installed geometry and prevents a silent price reduction under unchanged hydraulic losses. This is a reviewed reference specification, not a released cost implementation.
+
+### T-006 scope
+
+- **Objective:** Resolve the remaining low-ratio/high-casing helium circulator price-method applicability gap through novel primary-source routes.
+- **Why now:** The independent handbook route has a concrete service-family mismatch, and original whole-system estimates cannot isolate a machine price.
+- **Scope:** New bounded native research request; no model changes. Researcher owns request/run and `evidence/round2/circulator-transfer.md`; coordinator owns design integration. Independent reviewer concurrently assesses the acquired method transfers.
+- **Inputs:** `evidence/round2/circulator-followup-brief.md`, methods/originals reports and registered originals, exact retained machine specifications.
+- **Done when:** A defensible conceptual machine estimate is available or the remaining acquisition/engineering blocker is precisely established.
+- **Stop when:** Prospective15-query/3-capture limit, contamination or material owner gate.
+
+### T-006 start — 2026-09-18
+
+Native research · helium circulator transfer · narrower source-applicability question following T-003/T-004. Previously registered PROCESS acc2261 was inspected: its combined pumps/pipes thermal-power allowance cannot supply separate equipment estimates. No additional source fetch was needed for that rejection. This task continues the current conceptual-method strategy without a routine approval pause.
+
+### T-007 scope
+
+- **Objective:** Assemble the independently requested conditional quantity/price ledger and expose exactly which installed estimate terms are still unsupported.
+- **Why now:** The fresh source review accepts explicit conceptual analogies rather than requiring vendor qualification, but the acquired methods have not yet been reconciled into a concrete scope ledger.
+- **Scope:** WI-067 design supplement and diagnostic ledger only. No production price replacement or generated package. Coordinator owns these files while T-006 searches the remaining machinery gap.
+- **Inputs:** `evidence/round2/method-review.md`, corrected methods report, registered ANL/NETL/Seider/CPI sources and reference sizing.
+- **Done when:** Four-case machine purchase and explicit pipe-layout quantities are priced where supported, raw years preserved, installation categories assigned, and omitted scope is null rather than silently zero.
+- **Stop when:** Reviewer rejects a transfer or source evidence cannot price a necessary term.
+
+### T-007 start — 2026-09-18
+
+Native design-model workflow · conditional quantity and accounting ledger · focused independent source/design review follows. Existing source equations and deliberately assumed layout sensitivities are diagnostic; this task does not claim an installed plant result.
+
+### T-006 return — 2026-09-18
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `evidence/round2/circulator-transfer.md`, native `REQ-COOL-CIRCULATOR-TRANSFER` registered return, three original sources and image checks; `evidence/round2/new-source-review.md`. New reports unpinned; registered source hashes are in the native receipts.
+- **Reading:** Original helium price anchors now exist. Independent review accepts explicit conceptual transfer methods for a concrete design, with historical scale/package uncertainties. The prior absence of an inspectable helium component price is resolved; no calibrated target quote or complete installation claim follows.
+- **Decision:** Trigger: source research and fresh review found usable component methods. Decision and reason: continue into a concrete quantity and accounting design; no routine round pause. Tier: execution detail. Decided by: coordinator. Changed: WI-067 candidate design and T-007 scope continuation.
+
+### T-007 evidence and material decision — 2026-09-18
+
+[AGENT] Additional existing-source inspection found an explicit ANL exchanger component-mass and installation method (`evidence/round2/hx-method-check.md`, accepted in `new-source-review.md`). This resolves the need to force a large exchanger into a small-equipment area correlation. `conditional-ledger.json` retains the earlier partial machine/main-pipe diagnostic; unresolved entries are null. WI-067 `primary-candidate.md` now specifies a reviewable construction and price scope; it is not an implementation release.
+
+**Decision:** Trigger: completing intermediate pumps, pipes and inventory requires a coolant choice absent from the current plant model; source HITEC temperatures were only a conditional thermal reference. Decision and reason: ask the owner whether to adopt a HITEC270–465°C intermediate scenario while preserving primary helium. This is a material scientific choice reserved in the initiating prompt. Tier: reserved gate. Decided by: pending owner. Changed: asynchronous owner question; dependent intermediate-technology adoption is parked. Independent primary equipment design/review continues.
+
+[AGENT] A source-reading correction was resolved before adopting installation parameters: ORNL Table3.2 installation is27%of hardware including procurement, not35%;35%is its separate engineering row. The independent reviewer corrected `new-source-review.md` against the original image. No production parameter had been written from the mistaken reading.
+
+### T-007 return — 2026-09-18
+
+- **Outcome:** OWNER_GATE.
+- **Evidence:** WI-067 `primary-candidate.md`; `evidence/round2/conditional-ledger.json`, `primary-hardware-estimate.json`, associated diagnostic scripts and `candidate-review.md`; current `answer.md`. New artifacts unpinned; no native digest for reports.
+- **Reading:** The concrete primary candidate and source transfers are independently checked and remain partial. The current model has no selected intermediate coolant, and its aggregate cannot be declared disjoint from the new exchanger price by relabeling. The requested material technology choice is pending; dependent full account reconciliation and production replacement remain parked. Other explicit primary quantity/lifecycle omissions are retained for the next design task, not asserted complete.
+- **Decision:** Trigger: completing the intermediate equipment requires an architecture absent from the existing model. Decision and reason: retain the current model and ask for the explicitly recommended HITEC scenario, under the owner's scientific-decision reservation. Tier: reserved gate. Decided by: owner, pending. Changed: asynchronous question and documented candidate; no model/package change.
+
+### Round 2 result — 2026-09-18
+
+- **Intent:** Research/design strategy materially advanced; goal remains unmet. Usable original helium references and finished nuclear exchanger/pipe methods replace the prior source-access-only blockage. No cost replacement, promoted pin or native equipment-cost study occurred.
+- **Task sequence:** T-003 original recovery COMPLETE; T-004 independent methods COMPLETE; T-005 concrete specification COMPLETE; T-006 helium transfer COMPLETE; T-007 conditional ledger OWNER_GATE after independent source, arithmetic and accounting review.
+- **Last semantic outcome:** OWNER_GATE: select or leave undecided the intermediate coolant before a complete equipment/accounting design is adopted.
+- **Stop reason:** An unresolved owner-held scientific decision, not an ordinary round boundary. The asynchronous question recommends HITEC270–465°C secondary service with primary helium retained. No automatic owner answer or approval is inferred from elapsed time.
+- **Evidence refs:** WI-067 `design.md` and `primary-candidate.md`; `evidence/round2/{originals,methods,hx-method-check,circulator-transfer,reference-review,method-review,new-source-review,candidate-review}.md`; diagnostic ledgers; three new native research request/run trees; current `answer.md`. New records unpinned; registered source identities are in native receipts.
+- **Learning delta:** Proposed in `evidence/round2/dispositions.md`: usable conceptual source transfer is now possible; original equipment/rating/installation boundaries matter; intermediate technology and allowance scope cannot be silently settled. No claim of qualified equipment, calibrated uncertainty, complete installed cost or new plant economics.
+- **Finding dispositions:** Six prior IDs are addressed in `evidence/round2/dispositions.md`; retain first sightings and append accepted updates only. No finding is marked fixed and no study ID is minted.
+- **Cited-ref liveness:** Coordinator inspected current model/package/historical path changes; none occurred during this research round. New native source registrations and candidate records are intended task writes. The frozen comparison and existing scientific inputs remain unchanged; no external mutation invalidated the evidence.
+- **Carry forward:** Owner's no-routine-pause instruction remains in force. After the scientific decision, continue the concrete design, complete equipment/lifecycle scope, obtain ledger release, implement and run the focused native study. Current independent R7.S2 assessment remains applicable. Formal goal/item closure, reveal, frozen replacement, merge and push remain untouched.
+
+### Round 2 review — 2026-09-18
+
+- **Reviewer:** Continuing fresh non-author `equipment_review`; focused coverage in `reference-review.md`, `method-review.md`, `new-source-review.md`, `candidate-review.md`, and post-result `closure-review.md` under `evidence/round2/`.
+- **Verdict:** FINDINGS. Conditional methods/candidate and the bounded round result are accepted. Production replacement remains held; the intermediate technology is a material owner decision and other scope/lifecycle gaps remain explicit. Goal closure is not recommended.
+- **Checks:** Original image and independent arithmetic reviews cover source interpretation, sizing, price years, source/extrapolation boundaries and installation denominators. Coordinator confirms unchanged production/historical paths and archive in `evidence/round2/preservation.json`. The answer and six proposed prior-finding dispositions were checked after the round result. No mechanical task retry, independent implementation pass or native equipment-cost study is claimed.
+- **Accepted dispositions:** `evidence/round2/dispositions.md`; append its six updates under the existing IDs. No cooling gap is marked fixed. Other unrelated findings remain unchanged.
+- **Accepted learning delta:** Append the three proposals from `dispositions.md` to `learnings.md`. They supersede source-access-only next steps without claiming complete costing.
+- **Next:** Owner answers the intermediate-fluid choice; next round continues within existing authorization. No routine round confirmation, formal goal/item closure, reveal, merge or push.
+
+### Round 2 verification note — 2026-09-18
+
+[AGENT] After appending accepted disposition rows, the native discovery join check returns26passes and the same existing breeding-record parse failure as Round1. Both touched historical studies pass. `evidence/round2/discovery-join-tests.log` retains the result. The two checks in `tests/orchestration/test_goal_contract.py` pass, but their actual coverage is repository ADR/register coherence and narrative links, not this equipment model. Local answer links were separately checked. `preservation.json` confirms the unchanged frozen archive and scientific paths. No full-suite result is claimed.

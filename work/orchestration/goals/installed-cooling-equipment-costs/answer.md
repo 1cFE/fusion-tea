@@ -1,66 +1,84 @@
-# Cooling equipment costs: source and accounting gap remains
+# Cooling equipment costs: usable methods found; implementation remains open
 
-The cooling-cost gap is not closed. The model calculates helium flow, pressure loss, pumping electricity and exchanger duty, but it still prices heat transport through aggregate plant-power relationships. No new equipment price has been admitted or substituted. Independent preimplementation review holds the change pending applicable cost evidence and a concrete equipment/accounting design. The [fresh independent assessment](evidence/final-review-and-grade.md) assigns **R7.S2, unchanged; S3 is not met**. The goal remains open.
+The additional research found usable conceptual methods for helium circulators, fabricated piping and heat exchangers. A fresh reviewer checked their original sources and a concrete primary-equipment candidate. The executable still uses its old aggregate cooling costs: **R7.S2 remains unchanged; S3 is not met**. The remaining work is a complete, reconciled equipment and lifecycle design, followed by implementation and a native study. This is progress beyond Round 1’s source-access blocker, not closure.
 
-## What is established
+The original question is whether pumps, pipes and exchangers can be sized and separately costed from calculated heat-removal requirements, including installation and appropriate lifecycle costs. **There is now a defensible conceptual estimating route. There is not yet a complete integrated result.**
 
-The [account-boundary map](evidence/account-boundary-map.md) traces current physics, cost accounts and lifecycle. The [retained-case extraction](evidence/starting-cases.json) confirms the owner's starting facts from native results. A [fresh replay](evidence/entering-replay.json) executes those exact overrides on today's model and reproduces all 23 selected historical cooling/economic channels for each case exactly.
+## Equipment requirements verified
 
-The latest selected design has eighteen representative helium circuits, implying 36 circulators and eighteen intermediate heat exchangers (IHXs). Its total required exchanger duty is 3,013.915 MW, or 167.440 MW per circuit. The matched fourteen-circuit design also passed the earlier model's checks. These are calculated requirements under a representative-circuit assumption, not equipment selections or an optimum.
+The [starting-case extraction](evidence/starting-cases.json) and [current executable replay](evidence/entering-replay.json) confirm the retained records. The selected eighteen-circuit design requires36 circulators and18 intermediate heat exchangers under the existing representative-circuit convention. Total exchanger duty is3013.915 MW, or167.440 MW per circuit. Eighteen circuits is not an equipment or cost optimum.
 
-Today's model includes a newer calculated tritium-breeding check. Both selected designs now fail that check. The saved r2 controls retain their previous three failures and also fail breeding. Their cooling/economic values remain unchanged. This work preserves those failures and the historical records.
+The [independent sizing review](evidence/round2/reference-review.md) recomputes all four cases. With two equally loaded parallel circulators per circuit, the selected design requires78.288 kg/s,11.764 m³/s inlet flow,159.303 kPa pressure rise and2.410 MW per machine. Suction is7.841 MPa at567.221 K. Equal parallel loading is a declared conceptual arrangement, not a topology proved by the original source.
+
+Flow comes from heat duty divided by helium heat capacity and temperature rise. Circuit count divides that flow; the existing squared-flow pressure-loss law and compressor calculation determine pumping electricity. The exchanger removes reactor heat plus recovered compression work. Under the reference secondary temperatures, its conditional required area is5824 m² per selected circuit. A retained source-capacity exchanger has10310.691 m² installed area; the candidate prices that installed geometry rather than silently reducing its area and keeping the same pressure loss.
 
 | Current replay of retained inputs | Circuits | Pump electricity, MW | Net electricity, MW | Existing coolant allowance, $million | Total modeled capital, $million | LCOE, $/MWh |
 |---|---:|---:|---:|---:|---:|---:|
-| Selected design | 18 | 86.776 | 1,010.112 | 205.073 | 9,465.696 | 150.430 |
-| Same design, fourteen circuits | 14 | 143.796 | 975.844 | 199.772 | 9,490.637 | 156.052 |
-| Saved r2 forward control | 14 | 166.241 | 1,003.739 | 205.518 | 10,204.510 | 162.871 |
-| Saved r2 Table 5-conditioned control | 14 | 164.995 | 1,003.767 | 205.464 | 10,214.050 | 162.947 |
+| Selected design |18|86.776|1010.112|205.073|9465.696|150.430|
+| Same design, fourteen circuits |14|143.796|975.844|199.772|9490.637|156.052|
+| Saved r2 forward |14|166.241|1003.739|205.518|10204.510|162.871|
+| Saved r2 Table 5 control |14|164.995|1003.767|205.464|10214.050|162.947|
 
-LCOE means levelized cost of electricity. These are the existing mixed-basis model estimates, not complete installed plant prices. No cost or LCOE change is attributable to this goal: the model and executable have not changed. That does not mean the missing equipment is free. The eighteen-versus-fourteen differences come from existing hydraulic and aggregate-cost relationships, not newly priced equipment.
+LCOE means levelized cost of electricity. These are existing mixed-price-basis model results. The selected eighteen/fourteen cases passed the older represented checks, but both now fail the newer tritium-breeding check. The r2 controls retain their earlier three failures and also fail breeding. All23 selected historical cooling/economic channels per case replay exactly. These failures remain in the evidence.
 
-## What determines the equipment requirements
+## What is now priced in the research candidate
 
-The current model calculates total helium mass flow from source heat divided by helium heat capacity and temperature rise. Circuit count divides the flow; a reference squared-flow law determines circuit pressure loss. A compressor calculation determines fluid work and electricity use. The exchanger must remove reactor heat plus recovered compressor work. These dependencies already affect net electricity and engineering checks.
+The [candidate construction and accounting basis](../../../active/WI-067_installed-cooling-equipment-costs/primary-candidate.md), [machine-source report](evidence/round2/circulator-transfer.md), [exchanger method check](evidence/round2/hx-method-check.md) and [independent candidate review](evidence/round2/candidate-review.md) distinguish source facts from assumptions. The [executable diagnostic ledger](evidence/round2/primary-hardware-estimate.json) prices primary components independently. It is not the generated plant model or a native plant study.
 
-The [independent physical-source review](evidence/sizing-source-review.md) verifies a useful exchanger-area anchor: approximately 87,277 m² across the source's nine unequal circuits, consistent with its rounded 87,300 m². Its implied heat-transfer coefficient includes an unknown multipass correction. Transferring it near the source conditions could support a stated conceptual assumption, but it is not a complete exchanger design or a price.
+| Component | Price basis | Included | Remaining limits |
+|---|---|---|---|
+| Helium circulator | December1978 BNL/MTI reference:550000 USD machine/motor,110000 USD power supply,130000 USD first-design engineering | Hermetic gas-bearing stainless machine, motor, fabrication/testing/delivery; power supply separately identified | Large scale extrapolation; source-specific pressure/power allocation; power-supply scaling assumed; target accessories not fully priced |
+| Circulator assembly | ORNL’s27% of hardware, whose source denominator includes15.5% procurement services | Declared component setting/local-connection analogy | Original factor covers a whole helium system; procurement ownership versus existing indirects remains unresolved |
+| Exchanger | ANL310 USD2017/kg finished stainless nuclear construction | Fabrication and delivery of a component-mass bill; separate2.4% site labor and0.2% site material | Geometry/material/service transfer is conceptual; no mechanical-code qualification |
+| Main piping and fittings | ANL310 USD2017/kg finished stainless construction | Explicit cylindrical steel mass and reference fitting-mass ratio; delivery included | Branches, valves, external supports and insulation remain unpriced |
+| Pipe field labor | NETL50% of pipe material cost | Explicit field-labor analogy applied to the fabricated pipe bill | Nuclear fabrication transfer uncalibrated; not combined with NETL’s equipment-percentage pipe allowance |
 
-Important inputs remain unresolved:
+The BNL source is a real low-pressure-ratio helium reference, but much smaller than the target. Its nominal50 hp pumping duty is distinct from its140 hp motor rating. Its0.28 exponent applies only to an assumed pressure-sensitive material half during a low-pressure comparison. The diagnostic preserves that distinction; it does not claim a universal large-machine cost law. Seider’s conventional gas-compressor method and an independent ORNL1.25 MW helium quote remain comparison methods, not calibrated uncertainty bounds.
 
-- **Circulators:** the source establishes two machines per loop; its energy balance supports both operating but does not establish their series/parallel arrangement. A stated equal-parallel assumption would give half the circuit flow and full circuit pressure rise per machine. Applicable pricing still needs pressure, inlet temperature/density, power, construction and drive/package inclusions.
-- **Exchangers:** pricing needs the secondary fluid/conditions, pressure boundary, material and exchanger technology. The source helium-to-salt design is not interchangeable with a helium-to-helium printed-circuit exchanger. Actual terminal temperatures must determine the temperature driving force.
-- **Piping:** the source supplies selected nominal diameters, material, a maximum hot-leg wall thickness and total network length. It does not supply a complete bill of quantities. Applying the largest pipe section to the entire network would invent its mass. Layout allowances and their hydraulic consequences need explicit treatment.
+The exchanger candidate retains the source tube count, diameter and active length. Explicit assumed walls, shell, heads, gross tubesheets and a10 tonne accessory allowance yield481.541 tonnes per unit. The shell alone contributes222.173 tonnes. These are inspectable assumptions, not recovered manufacturing drawings. Gross unperforated tubesheets overstate net metal; the reviewer identifies approximately40.638 tonnes of bore-hole material. No complete layout or pressure qualification is implied.
 
-No pumps, pipes or exchangers are newly priced in the executable.
+## Actual conditional costs and sensitivities
 
-## What would be replaced and how double counting was checked
+The following figures are **partial component estimates**, converted to2025 general purchasing-power equivalents with the registered annual Consumer Price Index (CPI). Raw source amounts and years remain in the ledger. CPI is not a nuclear-equipment escalation index, and this conversion does not normalize the whole plant.
 
-The Cost Account Structure (CAS) is the hierarchy that totals plant costs. Its coolant account, C220200, currently combines a primary estimate proportional to net electrical power and an intermediate estimate proportional to thermal power raised to 0.55. Neither term depends directly on circulator count, exchanger area or pipe quantity.
+| Primary candidate, $million2025 CPI equivalents | Selected18 circuits | Matched14 circuits | Saved r2 forward14 circuits |
+|---|---:|---:|---:|
+| Circulator hardware, assembly, one design fee and one spare; procurement charge unresolved |469.858|434.832|448.945|
+| Exchanger finished fabrication and component installation |3620.700|2816.100|2816.100|
+| Main pipes/fittings and field-labor analogy,50 m each hot/cold leg |2480.412|1929.210|1929.210|
 
-A supported equipment estimate must replace its overlapping part of that allowance. Adding it on top would duplicate unknown scope. The [independent accounting review](evidence/accounting-preimplementation-review.md) checked the actual equations and identified further boundaries:
+These rows are deliberately **not summed into a complete cooling price**. Procurement, accessories, the full pipe network, inventory, intermediate equipment and lifecycle remain unresolved. They cannot replace the old allowance yet. Their magnitude is not a reason to adjust them toward that allowance.
 
-- Reactor equipment installation excludes cooling; it does not supply an installation basis for the replacement account.
-- Contingency, indirects, shipping, tax and insurance already propagate through the capital hierarchy. An inclusive source estimate needs reconciliation before entry.
-- Buildings, electrical services, instrumentation, auxiliary cooling, turbine equipment and ultimate heat rejection have separate allowances. Dedicated equipment inclusions must be distinguished from shared plant services.
-- Existing coolant fill prices breeder material, not primary helium inventory. Cooling spares and equipment replacement are absent from their respective accounts. General staffing-based O&M does not establish a cooling maintenance allocation.
-- Pump electricity already reduces net generation. Charging it again as purchased operating electricity would duplicate its effect.
+For the selected design,20/50/100 m per main leg gives992.165/2480.412/4960.825 millionUSD2025 for the main-pipe/fitting/labor analogy. This is an explicit layout-cost sensitivity at fixed hydraulic requirements, not a prediction of a redesigned loop. A100/200/300 mm assumed exchanger shell wall gives140.518/201.150/266.024 millionUSD2025 per installed component. Tube-wall and accessory-mass sensitivities are retained separately in the ledger. These are assumed scenarios, not probability intervals.
 
-These checks locate omissions and overlap risks; they do not establish a complete reconciled installed estimate. No old allowance has yet been removed.
+Circuit-count effects differ by method: fixed exchanger and pipe modules cost more when more circuits are installed; individual circulator duty falls, but each additional pressure-contained machine still costs money. The BNL-based candidate therefore does not assume that eighteen circuits is cheaper. No optimum is claimed.
 
-## Research and implementation gate
+## Accounts, omissions and double counting
 
-The [native research summary](evidence/source-methods.md) records the methods investigated, source retrieval outcomes and applicability limits. Existing DEMO evidence reports preliminary supplier offers but does not supply a transferable installed price and excludes large piping. The continuation ended with four original reports queued after retrieval failures: General Atomics 911105 (helium heat transport), Dominion M-6914-00-04 (major equipment costs), General Atomics 911120 (steam-generator alternatives), and Stewart et al. 2021 (compact HTGR economics). Original institutional downloads returned 404; publisher/author-copy routes returned access errors. Cached numerical snippets were not admitted as model prices. The accessible 2024 INL follow-up supplied no equipment-specific method. This is a bounded acquisition failure, not evidence that the literature contains no suitable method. The registered low-temperature INL installation methodology describes equipment-based estimation; its water-system prices do not establish 8 MPa, 300–500 °C helium costs.
+The [account-boundary map](evidence/account-boundary-map.md) traces the Cost Account Structure (CAS), the hierarchy used to total the plant. C220200 combines primary and intermediate aggregate estimates; neither independently prices equipment. **No old estimate has yet been replaced.** Adding the new component figures to unchanged C220200 would be unjustified.
 
-A vendor quotation is not mandatory. An original conceptual estimate or documented estimating method can suffice if its equipment domain, scaling, price year, fabrication/installation boundaries and uncertainty can be checked. The missing requirement is that defensible bridge, not a particular commercial document format.
+The independent accounting reviews identify these required ownership decisions:
 
-[WI-067](../../../active/WI-067_installed-cooling-equipment-costs/spec.md) records the native implementation contract. Substantial model changes, a new generated package and the requested equipment-cost study remain unperformed while the source/design gate is held. The four-case replay is a diagnostic continuity check, not that study.
+- Assign the primary-to-secondary exchanger once. The old intermediate allowance has insufficient scope evidence to declare it disjoint merely by relabeling it.
+- Keep turbine/power conversion, ultimate heat rejection, magnet cryogenics and buildings in their existing accounts. Component connection labor and shared services need explicit boundaries.
+- ANL and BNL prices include delivery. The existing CAS50 shipping charge must exclude overlapping delivered scope. Manufacturing is already included in the ANL rate; no second fabrication factor belongs on it.
+- Keep component installation separate from existing project engineering, indirects and contingency. ORNL procurement and engineering rows cannot be silently dropped or automatically added twice.
+- Count spares physically. The candidate’s one uninstalled spare circulator is an assumption, not a source-established redundancy policy. Cooling replacements and maintenance need distinct cash-flow treatment; a long-lived exchanger vessel does not establish equally long-lived internals.
+- Primary helium inventory is distinct from breeder-material fill and magnet helium. Its complete system volume and replenishment remain unpriced.
+- Pumping electricity already reduces net generation. Do not charge it again as purchased operating electricity.
 
-## Verification and next step
+## Decision and implementation status
 
-The entering targeted batch returned **131 passes and six failures**. The failures are existing consumer mapping/output-contract mismatches. Several tests stop before their later heat-balance or parity assertions, so those later assertions are not certified by this batch. The [full log](evidence/entering-cooling-tests.log) is retained. The supplied reassessment's eight failures are a separate earlier batch; no full-suite pass is claimed.
+A material scientific choice is pending: the current plant specifies primary helium but not its intermediate coolant. The thermal reference uses HITEC molten salt at270–465°C. The coordinator recommends an explicit HITEC intermediate scenario, retaining primary helium, and has requested the owner’s decision under the original reserved-decision rule. Retaining the intermediate technology as undecided leaves that equipment gap open. A routine round boundary does not require permission.
 
-The next useful deliverable is a checked equipment estimate basis containing original prices or estimating equations, actual price years, operating/material/size ranges, installed-scope inclusions, a pipe layout allowance and lifecycle treatment. It must then pass the already commissioned source/accounting review before integration and a matched native study. The concrete first step is to acquire and image-check the queued original tables, especially 911120’s installed heat-transport breakdown and 911105’s separate equipment estimates, then determine whether their technology and cost boundaries transfer. An equivalent accessible published estimating method can replace that route. The goal and WI-067 remain open; formal closure remains the owner's decision.
+[WI-067](../../../active/WI-067_installed-cooling-equipment-costs/spec.md) retains the implementation contract, draft design and concrete primary candidate. After the technology decision, complete the branch/valve/support/inventory and lifecycle estimates, settle account ownership, obtain release of that full ledger, implement the separate model children and annual replacement interface, regenerate, and run matched native cases. Source-method acceptance is not approval of an incomplete plant total.
 
-The [preservation check](evidence/preservation.json) confirms unchanged models, generated package and both cited historical studies, and the published r2 archive retains SHA256 `fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21`. Two goal-contract checks pass. ARIES remains sealed; unrelated changes were preserved.
+**Total plant cost and electricity-cost change from this work: zero implemented change.** No production model, generated package or historical study was modified. The conditional component figures above do not establish a new plant LCOE. The exact row-specific S3 criterion remains “Pumps, piping, heat exchangers as separately sized subaccounts.” Independent review confirms that the unchanged executable remains S2.
 
-The discovery-log join check returned **26 passes and one unrelated existing failure**: the current parser finds no finding IDs in the unchanged `20260918-computed-tritium-breeding` record. The two studies receiving this round's six disposition rows pass. The failure occurs while parsing that other record, before checking log membership; neither its record nor the parser was changed here. See [join-check log](evidence/discovery-join-tests.log).
+## Verification and preservation
+
+Independent review checked original source images, the four-case sizing, all 24 partial-ledger rows, the exchanger mass/sensitivity calculations and the new circulator candidate arithmetic. It separately assessed applicability and scope, so software agreement is not presented as validation of equipment prices.
+
+The entering targeted regression batch remains 131 passes/six existing failures; some consumer tests stop before later numerical assertions. Two repository ADR/register and narrative-link checks also pass after Round 2; they do not validate equipment physics. The discovery-log join batch returns 26 passes/one existing failure in the unchanged breeding record’s parser interface. These are separate scoped checks, not a clean full suite. No production changes warranted repeating the full model suite during research.
+
+ARIES remains sealed, the frozen r2 archive and historical studies are preserved, and no merge or push occurred. The goal is open; formal closure remains the owner’s decision. Round 1’s archived answer remains available at commit `1031e7ff`; current source and review evidence supersedes its source-access-only conclusion.

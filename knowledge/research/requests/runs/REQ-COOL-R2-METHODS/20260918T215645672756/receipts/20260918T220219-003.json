@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "/tmp/cooling-anl.pdf",
+  "slug": "anl_2018_report_on_the_update_of_fuel_cycle_cost_algorithms",
+  "path": "knowledge/sources/anl_2018_report_on_the_update_of_fuel_cycle_cost_algorithms/",
+  "source_id": "b2bb0fd652d5d88ddad289ce96b51302761a00159e9786572214b90979ae4a3f",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T22:02:19.034954+00:00"
+}
