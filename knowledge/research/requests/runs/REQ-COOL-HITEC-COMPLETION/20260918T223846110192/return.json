@@ -1,0 +1,40 @@
+{
+  "request_id": "REQ-COOL-HITEC-COMPLETION",
+  "run": "knowledge/research/requests/runs/REQ-COOL-HITEC-COMPLETION/20260918T223846110192",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "inl_2022_thermal_storage_coupling_for_advanced_nuclear",
+      "path": "knowledge/sources/inl_2022_thermal_storage_coupling_for_advanced_nuclear/",
+      "source_id": "a1ad92aa282d21d41da30b68dede8c46577eca76552e18408a0e49308b2755bd",
+      "pre_existing": false
+    },
+    {
+      "slug": "ornl_tm3777_heat_transfer_salt_for_high_temperature_steam",
+      "path": "knowledge/sources/ornl_tm3777_heat_transfer_salt_for_high_temperature_steam/",
+      "source_id": "1f402caae10c2ef9a59189a9cc7257375ee7a439814059ad67a8181d705ea98d",
+      "pre_existing": false
+    },
+    {
+      "slug": "mcdonnell_douglas_1979_small_power_system_volume5",
+      "path": "knowledge/sources/mcdonnell_douglas_1979_small_power_system_volume5/",
+      "source_id": "fe432a2fb34bd8c11fa08331d4720d47d51c0910ae9d06ff7bf74dacf09ac9ec",
+      "pre_existing": false
+    },
+    {
+      "slug": "nrel_ssc_heat_transfer_fluid_property_implementation",
+      "path": "knowledge/sources/nrel_ssc_heat_transfer_fluid_property_implementation/",
+      "source_id": "e5355b5fcc0e1e87cb830360f0d30fd32ef74d0522d08aa3b9508b65688f6dfb",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://raw.githubusercontent.com/NREL/ssc/develop/tcs/htf_props.cpp",
+      "reason": "extract exited 1"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

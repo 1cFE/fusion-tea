@@ -230,3 +230,74 @@ Native design-model workflow · conditional quantity and accounting ledger · fo
 ### Round 2 evidence checkpoint — 2026-09-18
 
 Round2 evidence is committed at `05737d88`: goal records and `evidence/round2/`, WI-067 design/candidate, three new native request/run trees, nine registered source extractions and their native index/manifest entries, and accepted discovery dispositions. This pins the previously unpinned references above. Original image/extraction artifacts are retained without rewriting their source content. The checkpoint contains no production model or package change and is not a promoted study pin. `.project/CURRENT_WORK.md` retains the context update alongside unrelated uncommitted owner work. No merge, push, reveal, archive or formal goal closure occurred.
+
+### Owner ruling — 2026-09-18
+
+[OWNER-VERBATIM] “yes. proceed”. The owner approves the proposed HITEC270–465°C intermediate scenario with primary helium retained. The Round2 material gate is resolved. Existing authority covers further source work, implementation, generation, studies and independent review without routine round confirmation. Prior evidence remains at05737d88; no intervening scientific model/package changes were found.
+
+## Round 3 — integrated-helium-hitec-equipment
+
+### Strategy revision — 2026-09-18
+
+- **Approach:** [AGENT] Complete a simple explicit helium/HITEC equipment and accounting design using the reviewed component methods, replace both aggregate cooling allowances without overlap, and test the generated cost/performance response.
+- **Assumptions:** The approved secondary scenario and existing conceptual fabrication methods can support equipment estimates with explicit uncertainty and lifecycle assumptions; vendor qualification is not the target.
+- **Abandonment conditions:** A necessary transfer lacks defensible evidence after bounded review, the integration seam has an independent prerequisite, or a newly material owner decision arises.
+- **Intended model increment:** Separately sized primary circulators, secondary pumps, piping, exchanger and inventory accounts; installation, spares/replacement and preserved energy coupling.
+- **Intended study question:** At matched retained plant inputs, how much do separately accounted cooling equipment and lifecycle costs change capital and electricity cost, and how do circuit count, demand and stated assumptions affect requirements, costs and checks?
+
+### T-008 scope
+
+- **Objective:** Complete the approved HITEC scenario's thermophysical, pump/pipe/inventory and remaining lifecycle source basis.
+- **Why now:** Round2 methods were primary-only; the owner has selected the intermediate fluid.
+- **Scope:** Native bounded research and explicit candidate equations; no production model edits. Researcher owns round3 secondary-methods evidence and its request/run. Coordinator owns combined account design; independent reviewer retains non-author status.
+- **Inputs:** Owner ruling; Round2 source/candidate reviews; current account map; registered clean sources.
+- **Done when:** One concrete conceptual secondary-loop and remaining equipment/lifecycle method is reviewable, with raw price boundaries and explicit assumptions.
+- **Stop when:** Prospective source limits, unsupported critical transfer or material owner gate.
+
+### T-008 start — 2026-09-18
+
+Native research · helium/HITEC completion · secondary-methods and residual primary scopes. Parallel with coordinator accounting/interface design because files are separate; unresolved source assumptions are not adopted before review.
+
+### T-009 scope
+
+- **Objective:** Complete the combined helium/HITEC equipment, accounting and lifecycle design and obtain independent implementation release.
+- **Why now:** Owner selected HITEC and the primary conceptual methods have independent source checks; remaining decisions are concrete account ownership and secondary interfaces.
+- **Scope:** WI-067 design/plan and diagnostic equations only before release; coordinator owns these files. T-008 owns separate source research and does not edit models. Preserve scientific and historical production outputs.
+- **Inputs:** Goal and owner ruling; Round2 primary candidate and reviews; Round3 criterion guidance, secondary source methods and CAS23 implementation trace.
+- **Done when:** Reviewer can accept a specific equipment ledger and its model/study verification contract or identify a bounded prerequisite.
+- **Stop when:** Material owner decision, unsupported principal equipment method, or unavailable required independent review.
+
+### T-009 start — 2026-09-18
+
+Native design-model and plan-model · WI-067 combined design, accounting convention, persistent implementation checklist and independent preimplementation review.
+
+### T-008 return — 2026-09-18
+
+- **Outcome:** COMPLETE. Registered four clean original sources and supplied HITEC properties, exact generic-liquid pump/motor equations and ranges, salt inventory price scope, industrial operating/maintenance observations and a salt-to-steam thermal reference. Evidence: `evidence/round3/secondary-methods.md`; `REQ-COOL-HITEC-COMPLETION` native request/run.
+- **Reading:** A conceptual secondary equipment estimate is possible. Hot-salt pump construction and procurement-scale transfer remain assumptions. Salt-to-steam evidence is retained for Row8, not silently charged within the new Row7 total.
+- **Decision:** Failed text/plain extraction triggered one additional capture of the same screened code as renderedHTML. Reason: recover authoritative equations without another research question. Tier: execution detail. Decider: coordinator. Changed: request/run amendment and registered SSC source, with extraction limitation retained.
+- **Decision:** Independent boundary review supports Row7 ending at the salt supply/return interface. Reason: preserve cooling scope and single equipment owner without unsupported CAS23 deductions or turbine redesign. Tier: execution detail with explicit inherited price uncertainty. Decider: coordinator after non-author review. Changed: WI-067 combined design and `evidence/round3/accounting-convention-review.md`; steam generator assigned Row8 with price inclusion unverified.
+- **Decision:** Existing480°C efficiency-fit argument exceeds465°C salt supply. Reason: the new intermediate scenario does not validate that inherited conversion fit. Tier: premise surprise, surfaced in commentary and design. Decider: coordinator retains the numerical fit solely as a labeled surrogate and requires a failed physical-interface screen. Changed: combined design; physical whole-plant feasibility conclusions remain parked.
+
+### T-009 return — 2026-09-18
+
+- **Outcome:** COMPLETE. Fresh non-author review released the corrected Row7 conceptual design. Evidence: WI-067 `combined-design.md`, `plan.md`, and `evidence/round3/combined-design-review.md`.
+- **Reading:** Principal independently sized equipment and lifecycle coverage are adequate to implement. Auxiliary omissions, unresolved conversion interface and source applicability remain explicit limits; S3 awaits executable evidence.
+- **Decision:** Corrected inventory boundary, CPI2021 value, exact pump ranges, secondary energy identities and conversion-surrogate meaning after review. Reason: reproducible quantities and honest operating/price scope. Tier: execution detail, with conversion premise surprise already surfaced. Decider: coordinator with independent corrective release. Changed: combined design; no production model change yet.
+
+### T-010 scope
+
+- **Objective:** Implement and verify the released equipment and lifecycle accounts in the native model and generated executable.
+- **Why now:** T-009 obtained the required preimplementation release.
+- **Scope:** WI-067 canonical models, generated package, oracle, affected consumers and targeted tests. Delegate new equipment analysis/manual implementation separately from coordinator-owned plant wiring, generation, regression and records. Preserve unrelated work and historical studies.
+- **Inputs:** Released combined design and corrections, T-008 methods, primary source reviews, entering package and test evidence.
+- **Done when:** Independent quantities/source checks, native generation, account/energy identities and relevant regressions support a reviewable implementation and integration pin.
+- **Stop when:** Unsupported semantic premise, native tooling prerequisite, material owner gate or exhausted mechanical retry limit.
+
+### T-010 start — 2026-09-18
+
+Native implement-model · canonical cooling equipment/lifecycle accounts and generated executable. Separate analysis/manual-body authorship from plant wiring and generation because their interface can be fixed before integration; coordinator integrates sequentially.
+
+### T-010 progress — 2026-09-18
+
+[AGENT] Canonical child equipment accounts, native manual implementation, plant energy/cost/lifecycle consumers and independent oracle are implemented. Fresh native generation is repeatable. The98-test targeted batch passed; the expanded consumer batch has71passes and the same six entering stale-contract failures, with new four-case native coverage reaching all358 mapped outputs. Evidence: WI-067 `evidence/verification-status.md` and its linked logs. Independent implementation review found one invalid-mode defect; the new scenario guard is tested and awaits narrow corrective review. No study pin has been promoted and no S3 grade is claimed yet. Study preparation is delegated to `r2_originals`, owning only the new study directory while the coordinator finishes the audited pin. No study points may run before the native integration release.

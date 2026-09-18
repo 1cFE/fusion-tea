@@ -41,7 +41,7 @@ Preceding external citations are inherited and not reverified in WI-052.
 *Basis**: equivalent rate-limit arithmetic; independent 100-digit factor and public-wrapper tests passed 2026-09-12
 *Last Updated**: 2026-09-12 (native equation and numerical method verification)
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:686
+SysML Source: root-0/analyses/mfe_account_costs.sysml:692
     """
     levelized: float = Field(description="levelized output")
     crf: float = Field(description="crf output")

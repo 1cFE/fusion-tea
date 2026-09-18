@@ -9,6 +9,10 @@ CAS50 supplementary account:
           + startup*(n_mod*p_net/ref) + decom*(n_mod*p_net/ref))
 (1 + contingency_rate)
 
+WI-067 subtracts explicitly delivered initial cooling purchases from the
+shipping base only. This does not subtract field labor or future replacement.
+Default zero preserves generic designs.
+
 cas20 is CAS20 WITH contingency; cas23_to_28 is c23+c24+c25+c26+c27+c28
 (1cfe's param is misnamed cas22_to_28 but model.py:1492 feeds c23..c28 --
 WI-028 finding F-1). c59 internal contingency applies to the CAS50
@@ -29,6 +33,7 @@ Inputs:
     - decom_base: decom_base parameter
     - cas20: cas20 parameter
     - n_mod_in: n_mod_in parameter
+    - delivered_shipping_exclusion_in: delivered_shipping_exclusion_in parameter
     - insurance_frac: insurance_frac parameter
     - startup_fuel_base: startup_fuel_base parameter
     - contingency_rate_in: contingency_rate_in parameter
@@ -64,6 +69,7 @@ class Supplementary_CostInput(BaseModel):
         decom_base: decom_base input
         cas20: cas20 input
         n_mod_in: n_mod_in input
+        delivered_shipping_exclusion_in: delivered_shipping_exclusion_in input
         insurance_frac: insurance_frac input
         startup_fuel_base: startup_fuel_base input
         contingency_rate_in: contingency_rate_in input
@@ -78,6 +84,7 @@ class Supplementary_CostInput(BaseModel):
     decom_base: float = Field(..., description="decom_base input")
     cas20: float = Field(..., description="cas20 input")
     n_mod_in: float = Field(..., description="n_mod_in input")
+    delivered_shipping_exclusion_in: float = Field(..., description="delivered_shipping_exclusion_in input")
     insurance_frac: float = Field(..., description="insurance_frac input")
     startup_fuel_base: float = Field(..., description="startup_fuel_base input")
     contingency_rate_in: float = Field(..., description="contingency_rate_in input")
@@ -92,6 +99,10 @@ CAS50 supplementary account:
           + insurance*(cas20+cas30)
           + startup*(n_mod*p_net/ref) + decom*(n_mod*p_net/ref))
 (1 + contingency_rate)
+
+WI-067 subtracts explicitly delivered initial cooling purchases from the
+shipping base only. This does not subtract field labor or future replacement.
+Default zero preserves generic designs.
 
 cas20 is CAS20 WITH contingency; cas23_to_28 is c23+c24+c25+c26+c27+c28
 (1cfe's param is misnamed cas22_to_28 but model.py:1492 feeds c23..c28 --
@@ -113,6 +124,7 @@ Inputs:
     - decom_base: decom_base parameter
     - cas20: cas20 parameter
     - n_mod_in: n_mod_in parameter
+    - delivered_shipping_exclusion_in: delivered_shipping_exclusion_in parameter
     - insurance_frac: insurance_frac parameter
     - startup_fuel_base: startup_fuel_base parameter
     - contingency_rate_in: contingency_rate_in parameter
@@ -126,12 +138,13 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:599
 
     Calculation Specification:
         n_mod_in = 1.0
+        delivered_shipping_exclusion_in = 0.0
         shipping_frac = 0.015
         tax_frac = 0.01
         insurance_frac = 0.015
         contingency_rate_in = 0.0
         ref_net_power = 1000.0
-        cost = (shipping_frac * cas20 + spares_frac * cas23_to_28 + tax_frac * cas20 + insurance_frac * (cas20 + cas30) + startup_fuel_base * (n_mod_in * p_net / ref_net_power) + decom_base * (n_mod_in * p_net / ref_net_power)) * (1.0 + contingency_rate_in)
+        cost = (shipping_frac * (cas20 - delivered_shipping_exclusion_in) + spares_frac * cas23_to_28 + tax_frac * cas20 + insurance_frac * (cas20 + cas30) + startup_fuel_base * (n_mod_in * p_net / ref_net_power) + decom_base * (n_mod_in * p_net / ref_net_power)) * (1.0 + contingency_rate_in)
         
 Documentation:
 CAS50 supplementary account:
@@ -140,6 +153,10 @@ CAS50 supplementary account:
           + insurance*(cas20+cas30)
           + startup*(n_mod*p_net/ref) + decom*(n_mod*p_net/ref))
 (1 + contingency_rate)
+
+WI-067 subtracts explicitly delivered initial cooling purchases from the
+shipping base only. This does not subtract field labor or future replacement.
+Default zero preserves generic designs.
 
 cas20 is CAS20 WITH contingency; cas23_to_28 is c23+c24+c25+c26+c27+c28
 (1cfe's param is misnamed cas22_to_28 but model.py:1492 feeds c23..c28 --
@@ -160,7 +177,7 @@ subtotal (NOAK 0).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, spares_frac: float, cas23_to_28: float, ref_net_power: float, cas30: float, shipping_frac: float, p_net: float, tax_frac: float, decom_base: float, cas20: float, n_mod_in: float, insurance_frac: float, startup_fuel_base: float, contingency_rate_in: float    ) -> Supplementary_CostInput:
+        self, spares_frac: float, cas23_to_28: float, ref_net_power: float, cas30: float, shipping_frac: float, p_net: float, tax_frac: float, decom_base: float, cas20: float, n_mod_in: float, delivered_shipping_exclusion_in: float, insurance_frac: float, startup_fuel_base: float, contingency_rate_in: float    ) -> Supplementary_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
@@ -174,6 +191,7 @@ subtotal (NOAK 0).
             decom_base: decom_base input
             cas20: cas20 input
             n_mod_in: n_mod_in input
+            delivered_shipping_exclusion_in: delivered_shipping_exclusion_in input
             insurance_frac: insurance_frac input
             startup_fuel_base: startup_fuel_base input
             contingency_rate_in: contingency_rate_in input
@@ -181,10 +199,10 @@ subtotal (NOAK 0).
         Returns:
             Validated input model
         """
-        return Supplementary_CostInput(spares_frac=spares_frac, cas23_to_28=cas23_to_28, ref_net_power=ref_net_power, cas30=cas30, shipping_frac=shipping_frac, p_net=p_net, tax_frac=tax_frac, decom_base=decom_base, cas20=cas20, n_mod_in=n_mod_in, insurance_frac=insurance_frac, startup_fuel_base=startup_fuel_base, contingency_rate_in=contingency_rate_in)
+        return Supplementary_CostInput(spares_frac=spares_frac, cas23_to_28=cas23_to_28, ref_net_power=ref_net_power, cas30=cas30, shipping_frac=shipping_frac, p_net=p_net, tax_frac=tax_frac, decom_base=decom_base, cas20=cas20, n_mod_in=n_mod_in, delivered_shipping_exclusion_in=delivered_shipping_exclusion_in, insurance_frac=insurance_frac, startup_fuel_base=startup_fuel_base, contingency_rate_in=contingency_rate_in)
 
     def run(
-        self, spares_frac: float, cas23_to_28: float, ref_net_power: float, cas30: float, shipping_frac: float, p_net: float, tax_frac: float, decom_base: float, cas20: float, n_mod_in: float, insurance_frac: float, startup_fuel_base: float, contingency_rate_in: float    ) -> ModuleResult[Float]:
+        self, spares_frac: float, cas23_to_28: float, ref_net_power: float, cas30: float, shipping_frac: float, p_net: float, tax_frac: float, decom_base: float, cas20: float, n_mod_in: float, delivered_shipping_exclusion_in: float, insurance_frac: float, startup_fuel_base: float, contingency_rate_in: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
@@ -198,6 +216,7 @@ subtotal (NOAK 0).
             decom_base: decom_base input
             cas20: cas20 input
             n_mod_in: n_mod_in input
+            delivered_shipping_exclusion_in: delivered_shipping_exclusion_in input
             insurance_frac: insurance_frac input
             startup_fuel_base: startup_fuel_base input
             contingency_rate_in: contingency_rate_in input
@@ -206,7 +225,7 @@ subtotal (NOAK 0).
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(spares_frac, cas23_to_28, ref_net_power, cas30, shipping_frac, p_net, tax_frac, decom_base, cas20, n_mod_in, insurance_frac, startup_fuel_base, contingency_rate_in)
+        validated_inputs = self.validate_and_fill_default(spares_frac, cas23_to_28, ref_net_power, cas30, shipping_frac, p_net, tax_frac, decom_base, cas20, n_mod_in, delivered_shipping_exclusion_in, insurance_frac, startup_fuel_base, contingency_rate_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.supplementary_cost_impl import (

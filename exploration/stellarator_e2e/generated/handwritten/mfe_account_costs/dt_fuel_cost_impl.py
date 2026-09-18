@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:743
+SysML Source: root-0/analyses/mfe_account_costs.sysml:749
 
 SysML Expressions:
     n_mod_in = 1.0
@@ -82,7 +82,7 @@ generate the fuel arithmetic directly.
 physics.py:31 (Q_DT = 17.58 MeV)
 *Basis**: Reaction-rate-priced annual fuel with burn-up recovery correction
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:743
+SysML Source: root-0/analyses/mfe_account_costs.sysml:749
 
 SysML Expressions:
     n_mod_in = 1.0

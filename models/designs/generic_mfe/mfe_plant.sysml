@@ -19,6 +19,7 @@ package mfe_plant {
     private import mfe_account_costs::*;
     private import mfe_lcoe_dcf::*;
     private import mfe_lifecycle::*;
+    private import mfe_cooling_accounts::*;
     private import mfe_fuel_cycle::*;
     private import mfe_divertor_heat::*;
     private import mfe_vacuum::*;
@@ -73,6 +74,9 @@ package mfe_plant {
             :>> p_net = pb.p_net;
             :>> p_th = pb.p_th;
             :>> q_source = blanket.q_source;
+            :>> cooling_years = operational_years;
+            :>> cooling_discount = discount_rate;
+            :>> cooling_cycle_argument = turbine.cycle_argument;
         }
         part cryoplant : 'Cryoplant' {
             // WI-057: inputs the plant wires from the parts and calcs that produce them
@@ -528,6 +532,7 @@ package mfe_plant {
             in cas20 = cas20_capital;
             in cas23_to_28 = cas23_to_28_capital;
             in cas30 = indirect.cost;    // read the CAS30 producer directly (cas30_capital is expose_pure)
+            in delivered_shipping_exclusion_in = heat_transport.shipping_exclusion;
             in p_net = pb.p_net;
             in n_mod_in = n_mod;
         }
@@ -572,9 +577,16 @@ package mfe_plant {
         // Escalation rate g for the levelization (instance binds; 1cfe 0.02).
         attribute inflation_rate : Real;
 
+        // WI-067: consumables enter raw O&M; cooling replacements are already annualized.
+        calc cooling_annual : 'Cooling Annual Addition' {
+            in existing_om_in = om_cost.annual_om;
+            in cooling_consumables_in = heat_transport.consumables_annual;
+            in existing_replacements_in = calendar.cas72_annual;
+            in cooling_replacements_in = heat_transport.replacement_annual;
+        }
         // CAS71 -- levelized annual O&M [$/yr]. Tc = construction_years (NOAK).
         calc cas71_calc : 'Levelized Annual Cost' {
-            in annual_cost = om_cost.annual_om;
+            in annual_cost = cooling_annual.annual_om;
             in interest_rate = discount_rate;
             in inflation_rate_in = inflation_rate;
             in operational_years_in = operational_years;
@@ -630,11 +642,11 @@ package mfe_plant {
             in availability_direct_in = availability_direct;
         }
         // expose_pure channel for A-2
-        attribute cas72_annual : Real = calendar.cas72_annual;
+        attribute cas72_annual : Real = cooling_annual.cas72_total;
 
         calc cas70_calc : 'Annual Cost Rollup' {
             in cas71 = cas71_calc.levelized;
-            in cas72 = calendar.cas72_annual;
+            in cas72 = cooling_annual.cas72_total;
             in cas80 = cas80_calc.levelized;
         }
         // expose_pure channel for A-2

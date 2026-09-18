@@ -13,6 +13,7 @@ import math
 
 import oracle_finance as finance
 import oracle_breeding as breeding_oracle
+import oracle_cooling as cooling_oracle
 
 # WI-022 discretization contract — EXACT mirror of the handwritten impl
 # (generated/handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py). The
@@ -945,12 +946,39 @@ def _conductor_current(p, field, tape_length, conductor_length):
     return result
 
 
+# WI-067 explicit current equipment scenario; legacy comparisons override both selectors.
+IN.update({
+    'cooling_enabled': True,
+    'cooling_layout_multiplier': 1,
+    'cooling_tube_wall': 0.0015,
+    'cooling_shell_wall': 0.2,
+    'cooling_accessory_mass': 10000,
+    'cooling_secondary_head': 40,
+    'cooling_eta_p': 0.75,
+    'cooling_eta_motor': 0.95,
+    'cooling_machine_life': 10,
+    'cooling_bundle_life': 15,
+    'cooling_makeup_fraction': 0.001,
+    'cooling_inventory_reserve': 0.1,
+    'cooling_removal_multiplier': 1,
+    'cooling_saltprice_source_choice': 0,
+    'cooling_costscale': 1,
+    'cooling_cost_mode': 1.0,
+    'cooling_energy_mode': 1.0,
+})
+
+
 def compute():
     if "magnet_R0" in IN:
         raise ValueError("retired oracle input magnet_R0; use plant R")
     if "tbr" in IN:
         raise ValueError("retired oracle input tbr; achieved breeding is computed")
     p = IN
+    for mode in ('cooling_cost_mode', 'cooling_energy_mode'):
+        if not math.isfinite(p[mode]) or p[mode] not in (0., 1.):
+            raise ValueError('oracle cooling modes must be finite binary selectors')
+    if (p['cooling_cost_mode'] or p['cooling_energy_mode']) and not p['cooling_enabled']:
+        raise ValueError('oracle selected cooling effects require enabled equipment')
     # --- Plasma Geometry ---
     V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
     # --- MFE Radial Build (WI-021; geometry.py torus branch) ---
@@ -1139,11 +1167,39 @@ def compute():
     cycle_eta_fit = (p["a_fit"] * math.log(cycle_T2_C + p["T_offset_fit"])
                      - p["b_fit"] - p["delta_eta"])
     cycle_eta_th = p["cycle_live"] * cycle_eta_fit + p["eta_th_direct"]
+    # Independent WI-067 equipment oracle, upstream of all cost/performance consumers.
+    cooling = cooling_oracle.calculate({
+        'enabled': p['cooling_enabled'],
+        'layout_multiplier': p['cooling_layout_multiplier'],
+        'tube_wall': p['cooling_tube_wall'],
+        'shell_wall': p['cooling_shell_wall'],
+        'accessory_mass': p['cooling_accessory_mass'],
+        'secondary_head': p['cooling_secondary_head'],
+        'eta_p': p['cooling_eta_p'],
+        'eta_motor': p['cooling_eta_motor'],
+        'machine_life': p['cooling_machine_life'],
+        'bundle_life': p['cooling_bundle_life'],
+        'makeup_fraction': p['cooling_makeup_fraction'],
+        'inventory_reserve': p['cooling_inventory_reserve'],
+        'removal_multiplier': p['cooling_removal_multiplier'],
+        'saltprice_source_choice': p['cooling_saltprice_source_choice'],
+        'costscale': p['cooling_costscale'],
+        'n_mod': p['n_mod'], 'n_loops': p['n_loops'],
+        'mdot_loop': loop_mdot_loop, 'dp_loop': loop_dp_loop,
+        'helium_suction_K': loop_T_comp_in, 'helium_discharge_Pa': p['loop_p'],
+        'helium_hot_K': loop_T_out, 'helium_cp': p['loop_cp'], 'helium_gamma': p['loop_gamma'],
+        'primary_shaft_MW': loop_w_fluid, 'primary_electric_MW': loop_p_elec,
+        'q_ihx_MW': loop_q_ihx, 'years': p['operational_years'],
+        'discount': p['discount_rate'], 'sourcefitargument_C': cycle_T2_C,
+    })
+    cooling_electric_total = loop_p_pump_total + p['cooling_energy_mode'] * cooling['salt_electric_MW']
+    cooling_recovered_total = loop_q_recovered_total + p['cooling_energy_mode'] * cooling['salt_shaft_MW']
+
     cycle_margin_low = cycle_T2_C - p["T2_min"]
     cycle_margin_high = p["T2_max"] - cycle_T2_C
     cycle_domain_product = cycle_margin_low * cycle_margin_high
     p_th = (p["mn"] * p_neutron + p_alpha + operating_heat_coupled
-            + loop_q_recovered_total)
+            + cooling_recovered_total)
     p_the = cycle_eta_th * p_th
     p_et = p_the
     p_sub = p["f_sub"] * p_et
@@ -1158,7 +1214,7 @@ def compute():
     p_cryo_shield = (thermal['q_shield']*1e-6*(p['T_amb_cryo']-p['T_shield_cryo'])
                      /(p['f_carnot_shield']*p['T_shield_cryo'])) if p['cryo_inventory_enabled'] else 0.0
     p_cryo = p_cryo_cold+p_cryo_shield
-    recirculating = (p_coils + loop_p_pump_total + p_sub + p_aux + p_cool + p_cryo
+    recirculating = (p_coils + cooling_electric_total + p_sub + p_aux + p_cool + p_cryo
                      + operating_heat_wallplug)
     q_eng = p_et / recirculating
     rec_frac = 1.0 / q_eng
@@ -1230,6 +1286,8 @@ def compute():
     # WI-035 D7: the aux and cryoplant terms as their own channels; sum bit-identical.
     aux_cost = p["aux_per_mw"] * (n * p_th)
     cryo_cost = p["aux_cryo_base"] * (p_cryo / p["aux_p_cryo_ref"]) ** p["aux_alpha"]
+    coolant_legacy = coolant
+    coolant = (1 - p['cooling_cost_mode']) * coolant_legacy + p['cooling_cost_mode'] * cooling['installed_total']
     aux_cooling = aux_cost + cryo_cost
     waste = p["waste_base"] * (n * p_th / p["waste_ref"]) ** p["waste_alpha"]
     fuel_handling = p["fuel_handling_base"] * (n * p_net / p["fuel_ref"]) ** p["fuel_alpha"]
@@ -1249,7 +1307,7 @@ def compute():
     cas23_to_28_capital = bop_capital + special_materials_capital + cas28_capital
     # CAS40 owner + CAS50 supplementary at overnight (no CAS29/CAS30 on them)
     owner = p["owner_base"] * (n * p_net / p["owner_ref"]) ** p["owner_alpha"]
-    supplementary = ((p["supp_shipping_frac"] * cas20_capital
+    supplementary = ((p["supp_shipping_frac"] * (cas20_capital - p["cooling_cost_mode"] * cooling["delivered_total"])
                       + p["supp_spares_frac"] * cas23_to_28_capital
                       + p["supp_tax_frac"] * cas20_capital
                       + p["supp_insurance_frac"] * (cas20_capital + cas30_capital)
@@ -1283,7 +1341,8 @@ def compute():
         """economics.py:13-50 — growing-annuity PV annuitized by CRF."""
         return finance.annuity(annual_cost, i_rate, g_infl, n_life, t_c)
 
-    cas71_annual = _levelized_annual_cost(annual_om_unlevelized)
+    cooling_om_total = annual_om_unlevelized + p["cooling_cost_mode"] * cooling["consumables_annual"]
+    cas71_annual = _levelized_annual_cost(cooling_om_total)
 
 
     # --- Neutron wall load: average, source-anchored calibration, peak (WI-041) ---
@@ -1310,7 +1369,7 @@ def compute():
         coil_life_fpy=p["coil_life_fpy"], availability_direct=p["availability_direct"],
     )
     availability = cal["availability"]
-    cas72_annual = cal["cas72_annual"]
+    cas72_annual = cal["cas72_annual"] + p["cooling_cost_mode"] * cooling["replacement_annual"]
     # (WI-046: the fuel block moved below the calendar -- it reads the calendar's availability)
     # CAS80 raw annual DT fuel (costs.py:476-544, DT branch), then levelized.
     annual_fuel_raw = (n * p_fus * (3600.0 * 8760.0) * 1.0e6 * availability
@@ -1449,7 +1508,10 @@ def compute():
         powercore_capital=powercore_capital, bop_capital=bop_capital,
         # WI-028 CAS22 tail + CAS40 + CAS50 + CAS60 accounts ($)
         remote_handling=remote_handling, installation=installation,
-        coolant=coolant, aux_cooling=aux_cooling, waste=waste,
+        coolant=coolant, coolant_legacy=coolant_legacy, aux_cooling=aux_cooling, waste=waste,
+        cooling_electric_total=cooling_electric_total, cooling_recovered_total=cooling_recovered_total,
+        cooling_om_total=cooling_om_total,
+        **{'cooling_' + name: value for name, value in cooling.items()},
         fuel_handling=fuel_handling, other_rpe=other_rpe, inc=inc,
         owner=owner, supplementary=supplementary, idc_capital=idc_capital,
         reactor_equipment_subtotal=reactor_equipment_subtotal,

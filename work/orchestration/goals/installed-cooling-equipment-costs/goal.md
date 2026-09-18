@@ -55,3 +55,7 @@
 ### Amendment 2026-09-18 — amends execution interpretation of Reserved gates
 
 [OWNER-VERBATIM] “next time, do not pause between rounds”. Continue automatically across rounds while authorized useful work remains; an ordinary round boundary does not require owner confirmation. Reserved scientific/scope decisions and formal closure remain owner-held.
+
+### Amendment 2026-09-18 — intermediate coolant decision
+
+[OWNER-VERBATIM] “yes. proceed”, replying to the explicit request to adopt HITEC molten salt at270–465°C in the intermediate loop while retaining primary helium. [AGENT] The proposed HITEC scenario is ratified by the owner; its detailed geometry, pressure, price and lifecycle assumptions still require engineering review. This resolves the Round2 material gate and does not authorize reveal, frozen-comparison replacement or formal goal closure.

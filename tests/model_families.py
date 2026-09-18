@@ -72,6 +72,8 @@ MFE = Family(
         "analyses/mfe_plasma_sustainment.sysml",
         "analyses/mfe_power_balance.sysml",
         "analyses/mfe_power_cycle.sysml",  # WI-045 (2026-09-08): the cycle fit, handwritten stage
+        "analyses/mfe_cooling_accounts.sysml",
+        "analyses/mfe_cooling_equipment.sysml",
         "analyses/mfe_primary_loop.sysml",  # WI-045 (2026-09-08): the representative helium circuit
         "analyses/mfe_lifecycle.sysml",  # WI-046 (2026-09-08): the lifecycle calendar, handwritten stage
         "analyses/mfe_fuel_cycle.sysml",  # WI-047 (2026-09-08): the tritium flows and the required breeding ratio

@@ -4,9 +4,56 @@ package mfe_plant_systems {
     private import mfe_interfaces::*;
     private import mfe_vacuum::*;
     private import mfe_primary_loop::*;
+    private import mfe_cooling_equipment::*;
+    private import mfe_cooling_accounts::*;
     private import mfe_fuel_cycle::*;
     private import mfe_cryo_plant::*;
     private import mfe_account_costs::*;
+
+    part def 'Cooling Machine Account' {
+        doc /* Active cooling machines, with independently computed flow, shaft duty and installed package cost.
+        Source: work/active/WI-067_installed-cooling-equipment-costs/combined-design.md
+        Ref: Equipment and account boundary; Basis: separately engineered child account. */
+        attribute count : Real; // active machines
+        attribute mass_flow : Real; // kg/s per machine
+        attribute shaft_power : Real; // MW per machine
+        attribute capital_cost : Real; // installed USD2025 CPI proxy
+    }
+
+    part def 'Cooling Pipe Account' {
+        doc /* Representative ex-vessel pipe and fitting mass, fabricated price and site installation.
+        Source: work/active/WI-067_installed-cooling-equipment-costs/combined-design.md
+        Ref: Equipment and account boundary; Basis: separately engineered child account. */
+        attribute steel_mass : Real; // kg installed pipe and fittings, plant total
+        attribute capital_cost : Real; // installed USD2025 CPI proxy
+    }
+
+    part def 'Cooling Exchanger Account' {
+        doc /* Fixed geometry helium-to-HITEC exchanger modules and separately calculated required thermal area.
+        Source: work/active/WI-067_installed-cooling-equipment-costs/combined-design.md
+        Ref: Equipment and account boundary; Basis: separately engineered child account. */
+        attribute count : Real; // installed exchanger modules
+        attribute installed_area : Real; // m2 per module
+        attribute required_area : Real; // m2 per module
+        attribute duty : Real; // MW per module
+        attribute capital_cost : Real; // installed USD2025 CPI proxy
+    }
+
+    part def 'Cooling Inventory Account' {
+        doc /* Explicit initial coolant inventory subset; unmeasured in-vessel and conversion inventory remain outside the price.
+        Source: work/active/WI-067_installed-cooling-equipment-costs/combined-design.md
+        Ref: Equipment and account boundary; Basis: separately engineered child account. */
+        attribute helium_mass : Real; // kg priced ex-vessel subset
+        attribute salt_mass : Real; // kg priced intermediate subset
+        attribute capital_cost : Real; // initial fluid purchases USD2025 CPI proxy
+    }
+
+    part def 'Cooling Spares Account' {
+        doc /* One initial spare primary package and one salt pump per supported single-module plant; scheduled replacements are separate.
+        Source: work/active/WI-067_installed-cooling-equipment-costs/combined-design.md
+        Ref: Equipment and account boundary; Basis: separately engineered child account. */
+        attribute capital_cost : Real; // uninstalled initial spare purchases USD2025 CPI proxy
+    }
 
     part def 'Primary Heat Transport' {
         doc /*
@@ -47,7 +94,31 @@ package mfe_plant_systems {
         attribute f_loss : Real default 1.0;
         attribute eta_is : Real;
         attribute eta_drive : Real default 1.0;
-        // C220200 coolant (two-term, plant-total).
+        // WI-067: selected equipment scenario, independently switched cost and energy effects.
+        attribute equipment_enabled : Boolean default false;
+        attribute equipment_cost_mode : Real default 0.0;
+        attribute secondary_energy_mode : Real default 0.0;
+        attribute cooling_years : Real default 30.0;
+        attribute cooling_discount : Real default 0.07;
+        attribute cooling_cycle_argument : Real default 480.0;
+        attribute equipment_layout_multiplier : Real default 1.0; // 1
+        attribute equipment_tube_wall : Real default 0.0015; // m
+        attribute equipment_shell_wall : Real default 0.2; // m
+        attribute equipment_accessory_mass : Real default 10000.0; // kg
+        attribute equipment_secondary_head : Real default 40.0; // m
+        attribute equipment_eta_p : Real default 0.75; // 1
+        attribute equipment_eta_motor : Real default 0.95; // 1
+        attribute equipment_machine_life : Real default 10.0; // year
+        attribute equipment_bundle_life : Real default 15.0; // year
+        attribute equipment_makeup_fraction : Real default 0.001; // 1/year
+        attribute equipment_inventory_reserve : Real default 0.1; // 1
+        attribute equipment_removal_multiplier : Real default 1.0; // 1
+        attribute equipment_saltprice_source_choice : Real default 0.0; // 1
+        attribute equipment_costscale : Real default 1.0; // 1
+        attribute shipping_exclusion : Real = cooling_selection.shipping_exclusion;
+        attribute replacement_annual : Real = cooling_selection.replacement_annual;
+        attribute consumables_annual : Real = cooling_selection.consumables_annual;
+        // C220200 coolant (two-term, plant-total; retained comparison mode).
         // 166.0 M$ -> $
         attribute coolant_primary_base : Real;
         // 40.6 M$ -> $
@@ -59,11 +130,11 @@ package mfe_plant_systems {
         attribute q_source : Real;   // <- blanket.q_source
         // ---- EXPOSEs (WI-057): this part's calc outputs, readable outside as <part>.<name> ----
         attribute T_out : Real = primary_loop.T_out;
-        attribute coolant_cost : Real = coolant.cost;
+        attribute coolant_cost : Real = cooling_selection.cost;
         attribute mdot_loop : Real = primary_loop.mdot_loop;
         attribute p_loop_margin : Real = primary_loop.p_loop_margin;
-        attribute p_pump_total : Real = primary_loop.p_pump_total;
-        attribute q_recovered_total : Real = primary_loop.q_recovered_total;
+        attribute p_pump_total : Real = cooling_energy.electric_total;
+        attribute q_recovered_total : Real = cooling_energy.recovered_total;
         // ---- template calcs (WI-057): the analyses this part owns ----
         calc primary_loop : 'Primary Coolant Loop' {
             in q_source_in = q_source;
@@ -81,6 +152,93 @@ package mfe_plant_systems {
             in loop_live_in = loop_live;
             in p_pump_direct_in = p_pump_direct;
             in eta_p_direct_in = eta_p_direct;
+        }
+        calc equipment : 'Cooling Equipment' {
+            in enabled_in = equipment_enabled;
+            in n_mod_in = 'Primary Heat Transport'::n_mod;
+            in n_loops_in = 'Primary Heat Transport'::n_loops;
+            in mdot_loop_in = primary_loop.mdot_loop;
+            in dp_loop_in = primary_loop.dp_loop;
+            in helium_suction_K_in = primary_loop.T_comp_in;
+            in helium_discharge_Pa_in = loop_p;
+            in helium_hot_K_in = primary_loop.T_out;
+            in helium_cp_in = loop_cp;
+            in helium_gamma_in = loop_gamma;
+            in primary_shaft_MW_in = primary_loop.w_fluid;
+            in primary_electric_MW_in = primary_loop.p_elec;
+            in q_ihx_MW_in = primary_loop.q_ihx;
+            in layout_multiplier_in = equipment_layout_multiplier;
+            in tube_wall_in = equipment_tube_wall;
+            in shell_wall_in = equipment_shell_wall;
+            in accessory_mass_in = equipment_accessory_mass;
+            in secondary_head_in = equipment_secondary_head;
+            in eta_p_in = equipment_eta_p;
+            in eta_motor_in = equipment_eta_motor;
+            in machine_life_in = equipment_machine_life;
+            in bundle_life_in = equipment_bundle_life;
+            in years_in = cooling_years;
+            in discount_in = cooling_discount;
+            in makeup_fraction_in = equipment_makeup_fraction;
+            in inventory_reserve_in = equipment_inventory_reserve;
+            in removal_multiplier_in = equipment_removal_multiplier;
+            in saltprice_source_choice_in = equipment_saltprice_source_choice;
+            in costscale_in = equipment_costscale;
+            in sourcefitargument_C_in = cooling_cycle_argument;
+        }
+        calc cooling_guard : 'Cooling Scenario Guard' {
+            in equipment_enabled_in = equipment_enabled;
+            in cost_mode_in = equipment_cost_mode;
+            in energy_mode_in = secondary_energy_mode;
+        }
+        calc cooling_selection : 'Cooling Account Selection' {
+            in cost_mode_in = cooling_guard.cost_mode;
+            in legacy_cost_in = coolant.cost;
+            in equipment_cost_in = equipment.installed_total;
+            in delivered_in = equipment.delivered_total;
+            in replacements_in = equipment.replacement_annual;
+            in consumables_in = equipment.consumables_annual;
+        }
+        calc cooling_energy : 'Cooling Energy Addition' {
+            in secondary_mode_in = cooling_guard.energy_mode;
+            in primary_electric_in = primary_loop.p_pump_total;
+            in primary_recovered_in = primary_loop.q_recovered_total;
+            in salt_electric_in = equipment.salt_electric_MW;
+            in salt_shaft_in = equipment.salt_shaft_MW;
+        }
+        part primary_circulators : 'Cooling Machine Account' {
+            :>> count = equipment.circulator_count;
+            :>> mass_flow = equipment.circulator_flow;
+            :>> shaft_power = equipment.circulator_shaft_MW;
+            :>> capital_cost = equipment.primary_circulators_cost;
+        }
+        part primary_pipes : 'Cooling Pipe Account' {
+            :>> steel_mass = equipment.primary_pipe_mass;
+            :>> capital_cost = equipment.primary_piping_cost;
+        }
+        part intermediate_exchangers : 'Cooling Exchanger Account' {
+            :>> count = equipment.ihx_count;
+            :>> installed_area = equipment.ihx_installed_area;
+            :>> required_area = equipment.ihx_required_area;
+            :>> duty = equipment.ihx_duty_MW;
+            :>> capital_cost = equipment.exchangers_cost;
+        }
+        part salt_pumps : 'Cooling Machine Account' {
+            :>> count = equipment.salt_pump_count;
+            :>> mass_flow = equipment.salt_pump_flow;
+            :>> shaft_power = equipment.salt_pump_shaft_MW;
+            :>> capital_cost = equipment.secondary_pumps_cost;
+        }
+        part salt_pipes : 'Cooling Pipe Account' {
+            :>> steel_mass = equipment.secondary_pipe_mass;
+            :>> capital_cost = equipment.secondary_piping_cost;
+        }
+        part coolant_inventory : 'Cooling Inventory Account' {
+            :>> helium_mass = equipment.helium_inventory_mass;
+            :>> salt_mass = equipment.salt_inventory_mass;
+            :>> capital_cost = equipment.inventory_cost;
+        }
+        part initial_spares : 'Cooling Spares Account' {
+            :>> capital_cost = equipment.spares_cost;
         }
         calc coolant : 'Coolant Cost' {
             in primary_base = coolant_primary_base;

@@ -1031,6 +1031,16 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__cooling_guard__energy_mode",
+      "field_name": "energy_mode",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__cooling_guard__cost_mode",
+      "field_name": "cost_mode",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required",
       "field_name": "S_eff_required",
       "python_type": "float"
@@ -1243,6 +1253,561 @@
     {
       "channel_name": "stellarator_09__stellaris__turbine__cycle__domain_product",
       "field_name": "domain_product",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_pump_flow",
+      "field_name": "salt_pump_flow",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__ihx_hot_approach",
+      "field_name": "ihx_hot_approach",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__exchangers_cost",
+      "field_name": "exchangers_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__pressure_qualified",
+      "field_name": "pressure_qualified",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__ihx_installed_area",
+      "field_name": "ihx_installed_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__pump_flow_gpm",
+      "field_name": "pump_flow_gpm",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__secondary_piping_cost",
+      "field_name": "secondary_piping_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__secondary_installation",
+      "field_name": "secondary_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__cycle_interface_ok",
+      "field_name": "cycle_interface_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_price_raw",
+      "field_name": "salt_price_raw",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_velocity_cold",
+      "field_name": "salt_velocity_cold",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__primary_circulators_cost",
+      "field_name": "primary_circulators_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__inventory_cost",
+      "field_name": "inventory_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_expansion_ratio",
+      "field_name": "salt_expansion_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_straight_loss",
+      "field_name": "salt_straight_loss",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__primary_pipe_installation",
+      "field_name": "primary_pipe_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_unit_price",
+      "field_name": "salt_unit_price",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_electric_MW",
+      "field_name": "salt_electric_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__secondary_pipe_purchase",
+      "field_name": "secondary_pipe_purchase",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__hx_installation",
+      "field_name": "hx_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_inventory_mass",
+      "field_name": "salt_inventory_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_inventory_volume",
+      "field_name": "helium_inventory_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__replacement_annual",
+      "field_name": "replacement_annual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_makeup_annual",
+      "field_name": "salt_makeup_annual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_makeup_annual",
+      "field_name": "helium_makeup_annual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__inventory_complete",
+      "field_name": "inventory_complete",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__heads_mass",
+      "field_name": "heads_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__primary_design",
+      "field_name": "primary_design",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_head_remaining",
+      "field_name": "salt_head_remaining",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__installation_total",
+      "field_name": "installation_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_return_C",
+      "field_name": "salt_return_C",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__circulator_shaft_MW",
+      "field_name": "circulator_shaft_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__circulator_flow",
+      "field_name": "circulator_flow",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__source_volume_ratio",
+      "field_name": "source_volume_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__purchased_total",
+      "field_name": "purchased_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__delivered_total",
+      "field_name": "delivered_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__primary_pipe_volume",
+      "field_name": "primary_pipe_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__bundle_event_purchase",
+      "field_name": "bundle_event_purchase",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__bundle_mass",
+      "field_name": "bundle_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_standard_volume",
+      "field_name": "helium_standard_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_shaft_MW",
+      "field_name": "salt_shaft_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_inventory_cost",
+      "field_name": "helium_inventory_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_Re_hot",
+      "field_name": "salt_Re_hot",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_hx_volume",
+      "field_name": "salt_hx_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__inventory_source_volume_ok",
+      "field_name": "inventory_source_volume_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__pump_shaft_hp",
+      "field_name": "pump_shaft_hp",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_pipe_volume",
+      "field_name": "salt_pipe_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__cycle_temperature_gap",
+      "field_name": "cycle_temperature_gap",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__primary_piping_cost",
+      "field_name": "primary_piping_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__hx_purchase",
+      "field_name": "hx_purchase",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__circulator_volume",
+      "field_name": "circulator_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_flow",
+      "field_name": "salt_flow",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__ihx_required_area",
+      "field_name": "ihx_required_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__machine_event_purchase",
+      "field_name": "machine_event_purchase",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__shell_mass",
+      "field_name": "shell_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__primary_pipe_mass",
+      "field_name": "primary_pipe_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_pump_transfer_validated",
+      "field_name": "salt_pump_transfer_validated",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__pump_size_ok",
+      "field_name": "pump_size_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_inventory_cost",
+      "field_name": "salt_inventory_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__conversion_heat_MW",
+      "field_name": "conversion_heat_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__ihx_cold_approach",
+      "field_name": "ihx_cold_approach",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_bulk_scale_ok",
+      "field_name": "salt_bulk_scale_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__pump_size_factor",
+      "field_name": "pump_size_factor",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_inventory_volume",
+      "field_name": "salt_inventory_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__primary_installation",
+      "field_name": "primary_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__circulator_count",
+      "field_name": "circulator_count",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_hx_volume",
+      "field_name": "helium_hx_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__tube_mass",
+      "field_name": "tube_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__consumables_annual",
+      "field_name": "consumables_annual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__secondary_pipe_installation",
+      "field_name": "secondary_pipe_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__machine_event_installation",
+      "field_name": "machine_event_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__secondary_vendor",
+      "field_name": "secondary_vendor",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__machine_event_removal",
+      "field_name": "machine_event_removal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_Re_cold",
+      "field_name": "salt_Re_cold",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__machine_events",
+      "field_name": "machine_events",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__primary_pipe_purchase",
+      "field_name": "primary_pipe_purchase",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__primary_vendor",
+      "field_name": "primary_vendor",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__primary_spare",
+      "field_name": "primary_spare",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__secondary_spare",
+      "field_name": "secondary_spare",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__pump_head_ft",
+      "field_name": "pump_head_ft",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__secondary_pipe_mass",
+      "field_name": "secondary_pipe_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__pump_type_ok",
+      "field_name": "pump_type_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_price_year",
+      "field_name": "helium_price_year",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__ihx_count",
+      "field_name": "ihx_count",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_flow_regime_ok",
+      "field_name": "salt_flow_regime_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__bundle_event_installation",
+      "field_name": "bundle_event_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__bundle_event_removal",
+      "field_name": "bundle_event_removal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_price_raw",
+      "field_name": "helium_price_raw",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__ihx_lmtd",
+      "field_name": "ihx_lmtd",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_velocity_hot",
+      "field_name": "salt_velocity_hot",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__hx_mass",
+      "field_name": "hx_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_inventory_mass",
+      "field_name": "helium_inventory_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_pump_count",
+      "field_name": "salt_pump_count",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__motor_electric_hp",
+      "field_name": "motor_electric_hp",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__secondary_pumps_cost",
+      "field_name": "secondary_pumps_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__motor_factor_ok",
+      "field_name": "motor_factor_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__sheets_mass",
+      "field_name": "sheets_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__spares_cost",
+      "field_name": "spares_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_head_ok",
+      "field_name": "salt_head_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_price_year",
+      "field_name": "salt_price_year",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__circulator_electric_MW",
+      "field_name": "circulator_electric_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__ihx_capacity_ok",
+      "field_name": "ihx_capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_pump_shaft_MW",
+      "field_name": "salt_pump_shaft_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__ihx_duty_MW",
+      "field_name": "ihx_duty_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__installed_total",
+      "field_name": "installed_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__bundle_events",
+      "field_name": "bundle_events",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_price_transfer_validated",
+      "field_name": "helium_price_transfer_validated",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__circulator_suction_Pa",
+      "field_name": "circulator_suction_Pa",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__motor_base_ok",
+      "field_name": "motor_base_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__cooling_energy__electric_total",
+      "field_name": "electric_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__cooling_energy__recovered_total",
+      "field_name": "recovered_total",
       "python_type": "float"
     },
     {
@@ -1866,6 +2431,26 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__cooling_selection__cost",
+      "field_name": "cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__cooling_selection__shipping_exclusion",
+      "field_name": "shipping_exclusion",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__cooling_selection__consumables_annual",
+      "field_name": "consumables_annual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__cooling_selection__replacement_annual",
+      "field_name": "replacement_annual",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__electric_plant__electric_cost__cost",
       "field_name": "root",
       "python_type": "float"
@@ -1913,16 +2498,6 @@
     {
       "channel_name": "stellarator_09__stellaris__om_cost__annual_om",
       "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__cas71_calc__levelized",
-      "field_name": "levelized",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__cas71_calc__crf",
-      "field_name": "crf",
       "python_type": "float"
     },
     {
@@ -2028,6 +2603,26 @@
     {
       "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel",
       "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cooling_annual__cas72_total",
+      "field_name": "cas72_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cooling_annual__annual_om",
+      "field_name": "annual_om",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cas71_calc__levelized",
+      "field_name": "levelized",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cas71_calc__crf",
+      "field_name": "crf",
       "python_type": "float"
     },
     {
@@ -3259,6 +3854,118 @@
       "qualified_name": "stellarator_09__stellaris__heat_transport__dp_loop_ref"
     },
     {
+      "default_value": 10000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_accessory_mass"
+    },
+    {
+      "default_value": 15.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_bundle_life"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_cost_mode"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_costscale"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "bool",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_enabled"
+    },
+    {
+      "default_value": 0.95,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_eta_motor"
+    },
+    {
+      "default_value": 0.75,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_eta_p"
+    },
+    {
+      "default_value": 0.1,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_inventory_reserve"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_layout_multiplier"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_machine_life"
+    },
+    {
+      "default_value": 0.001,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_makeup_fraction"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_removal_multiplier"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_saltprice_source_choice"
+    },
+    {
+      "default_value": 40.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_secondary_head"
+    },
+    {
+      "default_value": 0.2,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_shell_wall"
+    },
+    {
+      "default_value": 0.0015,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_tube_wall"
+    },
+    {
       "default_value": 1.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -3348,6 +4055,13 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__heat_transport__p_pump_direct"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__secondary_energy_mode"
     },
     {
       "default_value": 1.0,
@@ -4407,5 +5121,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "5f1fccf18967f8489cc48147b5277acb64212d2a1411d156e6693a168e099fbf"
+  "semantic_fingerprint": "7ecd02d1084a78c43bafff9c43f1e90f864f9c59406963f3c38554bb59b09d64"
 }

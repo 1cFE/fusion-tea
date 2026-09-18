@@ -51,7 +51,7 @@ Updated: 2026-09-18
 
 [INHERITED] Four diagnostic current replays preserve all 23 retained cooling/economic channels per case. The historical selected 18/14-circuit cases now fail computed breeding; both historical r2 controls also retain prior failures. Do not call those current full-plant passes. The entering cooling test batch has 131 passes and six existing consumer-contract failures; it is not a clean full suite.
 
-[INFERRED] Source acquisition must establish an admissible helium equipment method before equations or installation factors are chosen. Current work is specification and source review only. No equipment cost basis has been accepted.
+[INHERITED] Round2/3 source research and independent corrective review now support the conceptual equipment methods in `combined-design.md`. The owner approved HITEC270–465°C intermediate cooling with primary helium retained. Implementation is released under explicit source-transfer, auxiliary and conversion-interface limitations; executable S3 acceptance remains pending.
 
 ## Verification and study responsibilities
 

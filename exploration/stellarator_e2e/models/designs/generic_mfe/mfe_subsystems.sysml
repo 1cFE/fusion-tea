@@ -294,6 +294,8 @@ package mfe_subsystems {
         attribute p_the : Real;   // <- pb.p_the
         // ---- EXPOSEs (WI-057): this part's calc outputs, readable outside as <part>.<name> ----
         attribute domain_product : Real = cycle.domain_product;
+        // WI-067: inherited fit argument, not a solved salt/steam inlet state.
+        attribute cycle_argument : Real = cycle.T2_C;
         attribute eta_th : Real = cycle.eta_th;
         :>> capital_cost = turbine_cost.cost;
         // ---- template calcs (WI-057): the analyses this part owns ----

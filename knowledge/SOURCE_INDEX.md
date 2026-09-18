@@ -1145,6 +1145,70 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 1aa521346a7283474afbaa5e3a995b85dbf9c42d5a2deacc92889ad475307573
 - **Date Added**: 2026-09-18
 
+### INL 2022 Thermal Storage Coupling for Advanced Nuclear Reactors
+- **Type**: local_pdf
+- **Location**: knowledge/sources/inl_2022_thermal_storage_coupling_for_advanced_nuclear/
+- **Use for**: HITEC initial inventory price year and quantity-grade dependence, original method and lifecycle scope cautions.
+- **Validation**: Check printed30 Figure20 and source price discussion; keep quoted data distinct from extrapolated2021industrial-grade values.
+- **Caveat**: LWR equipment cost functions are not transferred to HTGR; salt property polynomial units require independent validation; noHITEC current vendor quotation.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/cooling-salt-cost.pdf
+- **Source ID**: a1ad92aa282d21d41da30b68dede8c46577eca76552e18408a0e49308b2755bd
+- **Raw SHA256**: a1ad92aa282d21d41da30b68dede8c46577eca76552e18408a0e49308b2755bd
+- **Raw Artifact SHA256**: a1ad92aa282d21d41da30b68dede8c46577eca76552e18408a0e49308b2755bd
+- **Extracted Path**: knowledge/sources/inl_2022_thermal_storage_coupling_for_advanced_nuclear/
+- **Extract SHA256**: 505c14d0fd8895933aa628b7c6552c38d2f633264695827c8976835e142c942e
+- **Date Added**: 2026-09-18
+
+### ORNL TM3777 Heat Transfer Salt for High Temperature Steam Generation
+- **Type**: local_pdf
+- **Location**: knowledge/sources/ornl_tm3777_heat_transfer_salt_for_high_temperature_steam/
+- **Use for**: Original assessment of HITEC high-temperature stability corrosion and DuPont manufacturer properties including density viscosity and heat capacity.
+- **Validation**: Check printed23-28 original graphs and quoted manufacturer appendix against PDF; distinguish measured viscosity interval from extrapolated curve.
+- **Caveat**: 1972 report and older manufacturer data; thermalstability discussion must not imply material qualification or measured lifetime at465C.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/cooling-hitec-ornl.pdf
+- **Source ID**: 1f402caae10c2ef9a59189a9cc7257375ee7a439814059ad67a8181d705ea98d
+- **Raw SHA256**: 1f402caae10c2ef9a59189a9cc7257375ee7a439814059ad67a8181d705ea98d
+- **Raw Artifact SHA256**: 1f402caae10c2ef9a59189a9cc7257375ee7a439814059ad67a8181d705ea98d
+- **Extracted Path**: knowledge/sources/ornl_tm3777_heat_transfer_salt_for_high_temperature_steam/
+- **Extract SHA256**: 7f9bf756e5b5a89536b8a6c64a1ec5b6c84570eb52bf911b1d2d74a9cee87fb7
+- **Date Added**: 2026-09-18
+
+### McDonnell Douglas 1979 Small Power System Volume5 Supporting Analyses
+- **Type**: local_pdf
+- **Location**: knowledge/sources/mcdonnell_douglas_1979_small_power_system_volume5/
+- **Use for**: Original industrial HITEC equipment and maintenance canvass, tabulated physical properties and steam-generator secondary boundary.
+- **Validation**: Check section10 Tables10-1 and10.2 pump maintenance and piping statements against originalPDF; reject obsolete asbestos detail as current material guidance.
+- **Caveat**: 1979industrial survey rather than nuclear qualification; historical plant evidence provides no presentvendor pump price or general component lifetime.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/cooling-hitec-nasa.pdf
+- **Source ID**: fe432a2fb34bd8c11fa08331d4720d47d51c0910ae9d06ff7bf74dacf09ac9ec
+- **Raw SHA256**: fe432a2fb34bd8c11fa08331d4720d47d51c0910ae9d06ff7bf74dacf09ac9ec
+- **Raw Artifact SHA256**: fe432a2fb34bd8c11fa08331d4720d47d51c0910ae9d06ff7bf74dacf09ac9ec
+- **Extracted Path**: knowledge/sources/mcdonnell_douglas_1979_small_power_system_volume5/
+- **Extract SHA256**: f501153004540ff5c17f9025504924987e77500a04c1a3065b411ff88eda8ece
+- **Date Added**: 2026-09-18
+
+### NREL SSC Heat Transfer Fluid Property Implementation
+- **Type**: url
+- **Location**: knowledge/sources/nrel_ssc_heat_transfer_fluid_property_implementation/
+- **Use for**: Explicit HITEC cp density viscosity equations with Celsius versus Kelvin units for conceptual pump sizing.
+- **Validation**: Inspect Hitec branches in Cp dens visc and compare manufacturergraphs; rawcapturehash pins mutabledevelopsource.
+- **Caveat**: Simulationcode empiricalpropertymodel; not newmeasurement or currentvendorquote. RenderedHTMLretry of same screened source following textplaincapturefailure.
+
+#### Extended Metadata
+- **Source URL**: https://github.com/NREL/ssc/blob/develop/tcs/htf_props.cpp
+- **Source ID**: e5355b5fcc0e1e87cb830360f0d30fd32ef74d0522d08aa3b9508b65688f6dfb
+- **Raw SHA256**: e5355b5fcc0e1e87cb830360f0d30fd32ef74d0522d08aa3b9508b65688f6dfb
+- **Raw Artifact SHA256**: e5355b5fcc0e1e87cb830360f0d30fd32ef74d0522d08aa3b9508b65688f6dfb
+- **Extracted Path**: knowledge/sources/nrel_ssc_heat_transfer_fluid_property_implementation/
+- **Extract SHA256**: 79be5ff806f3243f70bc26ef580c4d8fe9707e3f0e48270574ad87164249326d
+- **Date Added**: 2026-09-18
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

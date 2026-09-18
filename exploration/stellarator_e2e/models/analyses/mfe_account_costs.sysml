@@ -605,6 +605,10 @@ package mfe_account_costs {
                   + startup*(n_mod*p_net/ref) + decom*(n_mod*p_net/ref))
                  * (1 + contingency_rate)
 
+        WI-067 subtracts explicitly delivered initial cooling purchases from the
+        shipping base only. This does not subtract field labor or future replacement.
+        Default zero preserves generic designs.
+
         cas20 is CAS20 WITH contingency; cas23_to_28 is c23+c24+c25+c26+c27+c28
         (1cfe's param is misnamed cas22_to_28 but model.py:1492 feeds c23..c28 --
         WI-028 finding F-1). c59 internal contingency applies to the CAS50
@@ -628,6 +632,8 @@ package mfe_account_costs {
         in attribute cas30 : Real;
         in attribute p_net : Real;
         in attribute n_mod_in : Real default 1.0;
+        // WI-067: optional bound formal precedes skipped defaults on the exact route.
+        in attribute delivered_shipping_exclusion_in : Real default 0.0;
         // Defaulted formals declared last: usages bind the formals above by name
         // and leave these at their defaults; a skipped default must not precede
         // a bound formal on the exact route (migration ledger).
@@ -638,7 +644,7 @@ package mfe_account_costs {
         in attribute contingency_rate_in : Real default 0.0;
         in attribute ref_net_power : Real default 1000.0;
         out attribute cost : Real =
-            (shipping_frac * cas20
+            (shipping_frac * (cas20 - delivered_shipping_exclusion_in)
              + spares_frac * cas23_to_28
              + tax_frac * cas20
              + insurance_frac * (cas20 + cas30)

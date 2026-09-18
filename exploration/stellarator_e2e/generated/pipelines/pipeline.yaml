@@ -226,6 +226,17 @@ modules:
       quantity_factor: float stellarator_09__stellaris__magnet__conductor_grade__quantity_factor
       j_wp_effective: float stellarator_09__stellaris__magnet__conductor_grade__j_wp_effective
 
+  # mfe_cooling_accounts.Cooling_Scenario_GuardModule
+  stellarator_09__stellaris__heat_transport__cooling_guard:
+    module_type: mfe_cooling_accounts.Cooling_Scenario_GuardModule
+    inputs:
+      equipment_enabled_in: bool stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_enabled
+      energy_mode_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__secondary_energy_mode
+      cost_mode_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_cost_mode
+    outputs:
+      energy_mode: float stellarator_09__stellaris__heat_transport__cooling_guard__energy_mode
+      cost_mode: float stellarator_09__stellaris__heat_transport__cooling_guard__cost_mode
+
   # mfe_vacuum.Vacuum_Gas_LoadModule
   stellarator_09__stellaris__vacuum_pumping__vacuum:
     module_type: mfe_vacuum.Vacuum_Gas_LoadModule
@@ -353,6 +364,164 @@ modules:
       eta_th: float stellarator_09__stellaris__turbine__cycle__eta_th
       eta_fit: float stellarator_09__stellaris__turbine__cycle__eta_fit
       domain_product: float stellarator_09__stellaris__turbine__cycle__domain_product
+
+  # mfe_cooling_equipment.Cooling_EquipmentModule
+  stellarator_09__stellaris__heat_transport__equipment:
+    module_type: mfe_cooling_equipment.Cooling_EquipmentModule
+    inputs:
+      bundle_life_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_bundle_life
+      n_mod_in: float mfe_plant_params.stellarator_09__stellaris__n_mod
+      primary_electric_MW_in: float stellarator_09__stellaris__heat_transport__primary_loop__p_elec
+      q_ihx_MW_in: float stellarator_09__stellaris__heat_transport__primary_loop__q_ihx
+      n_loops_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__n_loops
+      helium_gamma_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__loop_gamma
+      accessory_mass_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_accessory_mass
+      enabled_in: bool stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_enabled
+      mdot_loop_in: float stellarator_09__stellaris__heat_transport__primary_loop__mdot_loop
+      eta_motor_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_eta_motor
+      years_in: float stellarator_plant_params.stellarator_09__stellaris__operational_years
+      tube_wall_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_tube_wall
+      helium_cp_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__loop_cp
+      machine_life_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_machine_life
+      inventory_reserve_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_inventory_reserve
+      discount_in: float stellarator_plant_params.stellarator_09__stellaris__discount_rate
+      removal_multiplier_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_removal_multiplier
+      primary_shaft_MW_in: float stellarator_09__stellaris__heat_transport__primary_loop__w_fluid
+      costscale_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_costscale
+      shell_wall_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_shell_wall
+      makeup_fraction_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_makeup_fraction
+      helium_hot_K_in: float stellarator_09__stellaris__heat_transport__primary_loop__T_out
+      eta_p_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_eta_p
+      secondary_head_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_secondary_head
+      sourcefitargument_C_in: float stellarator_09__stellaris__turbine__cycle__T2_C
+      helium_suction_K_in: float stellarator_09__stellaris__heat_transport__primary_loop__T_comp_in
+      layout_multiplier_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_layout_multiplier
+      saltprice_source_choice_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_saltprice_source_choice
+      dp_loop_in: float stellarator_09__stellaris__heat_transport__primary_loop__dp_loop
+      helium_discharge_Pa_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__loop_p
+    outputs:
+      salt_pump_flow: float stellarator_09__stellaris__heat_transport__equipment__salt_pump_flow
+      ihx_hot_approach: float stellarator_09__stellaris__heat_transport__equipment__ihx_hot_approach
+      exchangers_cost: float stellarator_09__stellaris__heat_transport__equipment__exchangers_cost
+      pressure_qualified: bool stellarator_09__stellaris__heat_transport__equipment__pressure_qualified
+      ihx_installed_area: float stellarator_09__stellaris__heat_transport__equipment__ihx_installed_area
+      pump_flow_gpm: float stellarator_09__stellaris__heat_transport__equipment__pump_flow_gpm
+      secondary_piping_cost: float stellarator_09__stellaris__heat_transport__equipment__secondary_piping_cost
+      secondary_installation: float stellarator_09__stellaris__heat_transport__equipment__secondary_installation
+      cycle_interface_ok: bool stellarator_09__stellaris__heat_transport__equipment__cycle_interface_ok
+      salt_price_raw: float stellarator_09__stellaris__heat_transport__equipment__salt_price_raw
+      salt_velocity_cold: float stellarator_09__stellaris__heat_transport__equipment__salt_velocity_cold
+      primary_circulators_cost: float stellarator_09__stellaris__heat_transport__equipment__primary_circulators_cost
+      inventory_cost: float stellarator_09__stellaris__heat_transport__equipment__inventory_cost
+      salt_expansion_ratio: float stellarator_09__stellaris__heat_transport__equipment__salt_expansion_ratio
+      salt_straight_loss: float stellarator_09__stellaris__heat_transport__equipment__salt_straight_loss
+      primary_pipe_installation: float stellarator_09__stellaris__heat_transport__equipment__primary_pipe_installation
+      salt_unit_price: float stellarator_09__stellaris__heat_transport__equipment__salt_unit_price
+      salt_electric_MW: float stellarator_09__stellaris__heat_transport__equipment__salt_electric_MW
+      secondary_pipe_purchase: float stellarator_09__stellaris__heat_transport__equipment__secondary_pipe_purchase
+      hx_installation: float stellarator_09__stellaris__heat_transport__equipment__hx_installation
+      salt_inventory_mass: float stellarator_09__stellaris__heat_transport__equipment__salt_inventory_mass
+      helium_inventory_volume: float stellarator_09__stellaris__heat_transport__equipment__helium_inventory_volume
+      replacement_annual: float stellarator_09__stellaris__heat_transport__equipment__replacement_annual
+      salt_makeup_annual: float stellarator_09__stellaris__heat_transport__equipment__salt_makeup_annual
+      helium_makeup_annual: float stellarator_09__stellaris__heat_transport__equipment__helium_makeup_annual
+      inventory_complete: bool stellarator_09__stellaris__heat_transport__equipment__inventory_complete
+      heads_mass: float stellarator_09__stellaris__heat_transport__equipment__heads_mass
+      primary_design: float stellarator_09__stellaris__heat_transport__equipment__primary_design
+      salt_head_remaining: float stellarator_09__stellaris__heat_transport__equipment__salt_head_remaining
+      installation_total: float stellarator_09__stellaris__heat_transport__equipment__installation_total
+      salt_return_C: float stellarator_09__stellaris__heat_transport__equipment__salt_return_C
+      circulator_shaft_MW: float stellarator_09__stellaris__heat_transport__equipment__circulator_shaft_MW
+      circulator_flow: float stellarator_09__stellaris__heat_transport__equipment__circulator_flow
+      source_volume_ratio: float stellarator_09__stellaris__heat_transport__equipment__source_volume_ratio
+      purchased_total: float stellarator_09__stellaris__heat_transport__equipment__purchased_total
+      delivered_total: float stellarator_09__stellaris__heat_transport__equipment__delivered_total
+      primary_pipe_volume: float stellarator_09__stellaris__heat_transport__equipment__primary_pipe_volume
+      bundle_event_purchase: float stellarator_09__stellaris__heat_transport__equipment__bundle_event_purchase
+      bundle_mass: float stellarator_09__stellaris__heat_transport__equipment__bundle_mass
+      helium_standard_volume: float stellarator_09__stellaris__heat_transport__equipment__helium_standard_volume
+      salt_shaft_MW: float stellarator_09__stellaris__heat_transport__equipment__salt_shaft_MW
+      helium_inventory_cost: float stellarator_09__stellaris__heat_transport__equipment__helium_inventory_cost
+      salt_Re_hot: float stellarator_09__stellaris__heat_transport__equipment__salt_Re_hot
+      salt_hx_volume: float stellarator_09__stellaris__heat_transport__equipment__salt_hx_volume
+      inventory_source_volume_ok: bool stellarator_09__stellaris__heat_transport__equipment__inventory_source_volume_ok
+      pump_shaft_hp: float stellarator_09__stellaris__heat_transport__equipment__pump_shaft_hp
+      salt_pipe_volume: float stellarator_09__stellaris__heat_transport__equipment__salt_pipe_volume
+      cycle_temperature_gap: float stellarator_09__stellaris__heat_transport__equipment__cycle_temperature_gap
+      primary_piping_cost: float stellarator_09__stellaris__heat_transport__equipment__primary_piping_cost
+      hx_purchase: float stellarator_09__stellaris__heat_transport__equipment__hx_purchase
+      circulator_volume: float stellarator_09__stellaris__heat_transport__equipment__circulator_volume
+      salt_flow: float stellarator_09__stellaris__heat_transport__equipment__salt_flow
+      ihx_required_area: float stellarator_09__stellaris__heat_transport__equipment__ihx_required_area
+      machine_event_purchase: float stellarator_09__stellaris__heat_transport__equipment__machine_event_purchase
+      shell_mass: float stellarator_09__stellaris__heat_transport__equipment__shell_mass
+      primary_pipe_mass: float stellarator_09__stellaris__heat_transport__equipment__primary_pipe_mass
+      salt_pump_transfer_validated: bool stellarator_09__stellaris__heat_transport__equipment__salt_pump_transfer_validated
+      pump_size_ok: bool stellarator_09__stellaris__heat_transport__equipment__pump_size_ok
+      salt_inventory_cost: float stellarator_09__stellaris__heat_transport__equipment__salt_inventory_cost
+      conversion_heat_MW: float stellarator_09__stellaris__heat_transport__equipment__conversion_heat_MW
+      ihx_cold_approach: float stellarator_09__stellaris__heat_transport__equipment__ihx_cold_approach
+      salt_bulk_scale_ok: bool stellarator_09__stellaris__heat_transport__equipment__salt_bulk_scale_ok
+      pump_size_factor: float stellarator_09__stellaris__heat_transport__equipment__pump_size_factor
+      salt_inventory_volume: float stellarator_09__stellaris__heat_transport__equipment__salt_inventory_volume
+      primary_installation: float stellarator_09__stellaris__heat_transport__equipment__primary_installation
+      circulator_count: float stellarator_09__stellaris__heat_transport__equipment__circulator_count
+      helium_hx_volume: float stellarator_09__stellaris__heat_transport__equipment__helium_hx_volume
+      tube_mass: float stellarator_09__stellaris__heat_transport__equipment__tube_mass
+      consumables_annual: float stellarator_09__stellaris__heat_transport__equipment__consumables_annual
+      secondary_pipe_installation: float stellarator_09__stellaris__heat_transport__equipment__secondary_pipe_installation
+      machine_event_installation: float stellarator_09__stellaris__heat_transport__equipment__machine_event_installation
+      secondary_vendor: float stellarator_09__stellaris__heat_transport__equipment__secondary_vendor
+      machine_event_removal: float stellarator_09__stellaris__heat_transport__equipment__machine_event_removal
+      salt_Re_cold: float stellarator_09__stellaris__heat_transport__equipment__salt_Re_cold
+      machine_events: float stellarator_09__stellaris__heat_transport__equipment__machine_events
+      primary_pipe_purchase: float stellarator_09__stellaris__heat_transport__equipment__primary_pipe_purchase
+      primary_vendor: float stellarator_09__stellaris__heat_transport__equipment__primary_vendor
+      primary_spare: float stellarator_09__stellaris__heat_transport__equipment__primary_spare
+      secondary_spare: float stellarator_09__stellaris__heat_transport__equipment__secondary_spare
+      pump_head_ft: float stellarator_09__stellaris__heat_transport__equipment__pump_head_ft
+      secondary_pipe_mass: float stellarator_09__stellaris__heat_transport__equipment__secondary_pipe_mass
+      pump_type_ok: bool stellarator_09__stellaris__heat_transport__equipment__pump_type_ok
+      helium_price_year: float stellarator_09__stellaris__heat_transport__equipment__helium_price_year
+      ihx_count: float stellarator_09__stellaris__heat_transport__equipment__ihx_count
+      salt_flow_regime_ok: bool stellarator_09__stellaris__heat_transport__equipment__salt_flow_regime_ok
+      bundle_event_installation: float stellarator_09__stellaris__heat_transport__equipment__bundle_event_installation
+      bundle_event_removal: float stellarator_09__stellaris__heat_transport__equipment__bundle_event_removal
+      helium_price_raw: float stellarator_09__stellaris__heat_transport__equipment__helium_price_raw
+      ihx_lmtd: float stellarator_09__stellaris__heat_transport__equipment__ihx_lmtd
+      salt_velocity_hot: float stellarator_09__stellaris__heat_transport__equipment__salt_velocity_hot
+      hx_mass: float stellarator_09__stellaris__heat_transport__equipment__hx_mass
+      helium_inventory_mass: float stellarator_09__stellaris__heat_transport__equipment__helium_inventory_mass
+      salt_pump_count: float stellarator_09__stellaris__heat_transport__equipment__salt_pump_count
+      motor_electric_hp: float stellarator_09__stellaris__heat_transport__equipment__motor_electric_hp
+      secondary_pumps_cost: float stellarator_09__stellaris__heat_transport__equipment__secondary_pumps_cost
+      motor_factor_ok: bool stellarator_09__stellaris__heat_transport__equipment__motor_factor_ok
+      sheets_mass: float stellarator_09__stellaris__heat_transport__equipment__sheets_mass
+      spares_cost: float stellarator_09__stellaris__heat_transport__equipment__spares_cost
+      salt_head_ok: bool stellarator_09__stellaris__heat_transport__equipment__salt_head_ok
+      salt_price_year: float stellarator_09__stellaris__heat_transport__equipment__salt_price_year
+      circulator_electric_MW: float stellarator_09__stellaris__heat_transport__equipment__circulator_electric_MW
+      ihx_capacity_ok: bool stellarator_09__stellaris__heat_transport__equipment__ihx_capacity_ok
+      salt_pump_shaft_MW: float stellarator_09__stellaris__heat_transport__equipment__salt_pump_shaft_MW
+      ihx_duty_MW: float stellarator_09__stellaris__heat_transport__equipment__ihx_duty_MW
+      installed_total: float stellarator_09__stellaris__heat_transport__equipment__installed_total
+      bundle_events: float stellarator_09__stellaris__heat_transport__equipment__bundle_events
+      helium_price_transfer_validated: bool stellarator_09__stellaris__heat_transport__equipment__helium_price_transfer_validated
+      circulator_suction_Pa: float stellarator_09__stellaris__heat_transport__equipment__circulator_suction_Pa
+      motor_base_ok: bool stellarator_09__stellaris__heat_transport__equipment__motor_base_ok
+
+  # mfe_cooling_accounts.Cooling_Energy_AdditionModule
+  stellarator_09__stellaris__heat_transport__cooling_energy:
+    module_type: mfe_cooling_accounts.Cooling_Energy_AdditionModule
+    inputs:
+      primary_recovered_in: float stellarator_09__stellaris__heat_transport__primary_loop__q_recovered_total
+      secondary_mode_in: float stellarator_09__stellaris__heat_transport__cooling_guard__energy_mode
+      primary_electric_in: float stellarator_09__stellaris__heat_transport__primary_loop__p_pump_total
+      salt_shaft_in: float stellarator_09__stellaris__heat_transport__equipment__salt_shaft_MW
+      salt_electric_in: float stellarator_09__stellaris__heat_transport__equipment__salt_electric_MW
+    outputs:
+      electric_total: float stellarator_09__stellaris__heat_transport__cooling_energy__electric_total
+      recovered_total: float stellarator_09__stellaris__heat_transport__cooling_energy__recovered_total
 
   # mfe_tritium_breeding.Tritium_Breeding_AdequacyModule
   stellarator_09__stellaris__breeding_adequacy:
@@ -871,10 +1040,10 @@ modules:
       p_pfcool_in: float stellarator_plant_params.stellarator_09__stellaris__cryoplant__p_pfcool
       p_pf_in: float stellarator_plant_params.stellarator_09__stellaris__power_supplies__p_pf
       p_wallplug_in: float stellarator_09__stellaris__operating_heat__p_wallplug
-      p_pump_total_in: float stellarator_09__stellaris__heat_transport__primary_loop__p_pump_total
+      p_pump_total_in: float stellarator_09__stellaris__heat_transport__cooling_energy__electric_total
       p_house_in: float stellarator_plant_params.stellarator_09__stellaris__p_house
       mn_in: float stellarator_plant_params.stellarator_09__stellaris__blanket__mn
-      q_recovered_in: float stellarator_09__stellaris__heat_transport__primary_loop__q_recovered_total
+      q_recovered_in: float stellarator_09__stellaris__heat_transport__cooling_energy__recovered_total
       eta_th_in: float stellarator_09__stellaris__turbine__cycle__eta_th
       p_tf_in: float stellarator_09__stellaris__power_supplies__tf_power__total.root
       p_input_in: float stellarator_09__stellaris__operating_heat__p_coupled
@@ -999,6 +1168,22 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__heat_transport__coolant__cost
 
+  # mfe_cooling_accounts.Cooling_Account_SelectionModule
+  stellarator_09__stellaris__heat_transport__cooling_selection:
+    module_type: mfe_cooling_accounts.Cooling_Account_SelectionModule
+    inputs:
+      legacy_cost_in: float stellarator_09__stellaris__heat_transport__coolant__cost.root
+      replacements_in: float stellarator_09__stellaris__heat_transport__equipment__replacement_annual
+      consumables_in: float stellarator_09__stellaris__heat_transport__equipment__consumables_annual
+      delivered_in: float stellarator_09__stellaris__heat_transport__equipment__delivered_total
+      cost_mode_in: float stellarator_09__stellaris__heat_transport__cooling_guard__cost_mode
+      equipment_cost_in: float stellarator_09__stellaris__heat_transport__equipment__installed_total
+    outputs:
+      cost: float stellarator_09__stellaris__heat_transport__cooling_selection__cost
+      shipping_exclusion: float stellarator_09__stellaris__heat_transport__cooling_selection__shipping_exclusion
+      consumables_annual: float stellarator_09__stellaris__heat_transport__cooling_selection__consumables_annual
+      replacement_annual: float stellarator_09__stellaris__heat_transport__cooling_selection__replacement_annual
+
   # mfe_account_costs.Linear_Power_CostModule
   stellarator_09__stellaris__electric_plant__electric_cost:
     module_type: mfe_account_costs.Linear_Power_CostModule
@@ -1115,19 +1300,6 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__om_cost__annual_om
 
-  # mfe_account_costs.Levelized_Annual_CostModule
-  stellarator_09__stellaris__cas71_calc:
-    module_type: mfe_account_costs.Levelized_Annual_CostModule
-    inputs:
-      project_time: float stellarator_plant_params.stellarator_09__stellaris__construction_years
-      interest_rate: float stellarator_plant_params.stellarator_09__stellaris__discount_rate
-      operational_years_in: float stellarator_plant_params.stellarator_09__stellaris__operational_years
-      inflation_rate_in: float stellarator_plant_params.stellarator_09__stellaris__inflation_rate
-      annual_cost: float stellarator_09__stellaris__om_cost__annual_om.root
-    outputs:
-      levelized: float stellarator_09__stellaris__cas71_calc__levelized
-      crf: float stellarator_09__stellaris__cas71_calc__crf
-
   # mfe_account_costs.Preconstruction_CostModule
   stellarator_09__stellaris__precon_cost:
     module_type: mfe_account_costs.Preconstruction_CostModule
@@ -1205,7 +1377,7 @@ modules:
       powercore_capital: float stellarator_09__stellaris__powercore_capital__powercore_capital.root
       remote_handling_capital: float stellarator_09__stellaris__remote_handling__cost.root
       installation_capital: float stellarator_09__stellaris__installation__cost.root
-      coolant_capital: float stellarator_09__stellaris__heat_transport__coolant__cost.root
+      coolant_capital: float stellarator_09__stellaris__heat_transport__cooling_selection__cost
       aux_cooling_capital: float stellarator_09__stellaris__cryoplant__aux_cooling__cost
       waste_capital: float stellarator_09__stellaris__waste__cost.root
       fuel_handling_capital: float stellarator_09__stellaris__fuel_cycle__fuel_handling__cost.root
@@ -1276,6 +1448,31 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel
 
+  # mfe_cooling_accounts.Cooling_Annual_AdditionModule
+  stellarator_09__stellaris__cooling_annual:
+    module_type: mfe_cooling_accounts.Cooling_Annual_AdditionModule
+    inputs:
+      existing_om_in: float stellarator_09__stellaris__om_cost__annual_om.root
+      cooling_consumables_in: float stellarator_09__stellaris__heat_transport__cooling_selection__consumables_annual
+      existing_replacements_in: float stellarator_09__stellaris__calendar__cas72_annual
+      cooling_replacements_in: float stellarator_09__stellaris__heat_transport__cooling_selection__replacement_annual
+    outputs:
+      cas72_total: float stellarator_09__stellaris__cooling_annual__cas72_total
+      annual_om: float stellarator_09__stellaris__cooling_annual__annual_om
+
+  # mfe_account_costs.Levelized_Annual_CostModule
+  stellarator_09__stellaris__cas71_calc:
+    module_type: mfe_account_costs.Levelized_Annual_CostModule
+    inputs:
+      project_time: float stellarator_plant_params.stellarator_09__stellaris__construction_years
+      interest_rate: float stellarator_plant_params.stellarator_09__stellaris__discount_rate
+      operational_years_in: float stellarator_plant_params.stellarator_09__stellaris__operational_years
+      inflation_rate_in: float stellarator_plant_params.stellarator_09__stellaris__inflation_rate
+      annual_cost: float stellarator_09__stellaris__cooling_annual__annual_om
+    outputs:
+      levelized: float stellarator_09__stellaris__cas71_calc__levelized
+      crf: float stellarator_09__stellaris__cas71_calc__crf
+
   # mfe_account_costs.Levelized_Annual_CostModule
   stellarator_09__stellaris__cas80_calc:
     module_type: mfe_account_costs.Levelized_Annual_CostModule
@@ -1294,7 +1491,7 @@ modules:
     module_type: mfe_account_costs.Annual_Cost_RollupModule
     inputs:
       cas71: float stellarator_09__stellaris__cas71_calc__levelized
-      cas72: float stellarator_09__stellaris__calendar__cas72_annual
+      cas72: float stellarator_09__stellaris__cooling_annual__cas72_total
       cas80: float stellarator_09__stellaris__cas80_calc__levelized
     outputs:
       cas70: float stellarator_09__stellaris__cas70_calc__cas70
@@ -1373,6 +1570,7 @@ modules:
       decom_base: float stellarator_plant_params.stellarator_09__stellaris__supplementary_decom_base
       cas20: float stellarator_09__stellaris__cas20_capital__cas20_capital.root
       n_mod_in: float mfe_plant_params.stellarator_09__stellaris__n_mod
+      delivered_shipping_exclusion_in: float stellarator_09__stellaris__heat_transport__cooling_selection__shipping_exclusion
       insurance_frac: float mfe_account_costs_params.stellarator_09__stellaris__supplementary__insurance_frac
       startup_fuel_base: float stellarator_plant_params.stellarator_09__stellaris__supplementary_startup_base
       contingency_rate_in: float mfe_account_costs_params.stellarator_09__stellaris__supplementary__contingency_rate_in
@@ -1696,6 +1894,8 @@ modules:
       stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate: float stellaris__fuel_cycle__exhaust_rate.json
       stellarator_09__stellaris__magnet__conductor_grade__quantity_factor: float stellaris__magnet__winding_pack__conductor_quantity_factor.json
       stellarator_09__stellaris__magnet__conductor_grade__j_wp_effective: float stellarator_09__stellaris__magnet__conductor_grade__j_wp_effective.json
+      stellarator_09__stellaris__heat_transport__cooling_guard__energy_mode: float stellarator_09__stellaris__heat_transport__cooling_guard__energy_mode.json
+      stellarator_09__stellaris__heat_transport__cooling_guard__cost_mode: float stellarator_09__stellaris__heat_transport__cooling_guard__cost_mode.json
       stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required: float stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required.json
       stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total: float stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total.json
       stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules: float stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules.json
@@ -1721,9 +1921,9 @@ modules:
       stellarator_09__stellaris__divertor__divheat__p_sep: float stellarator_09__stellaris__divertor__divheat__p_sep.json
       stellarator_09__stellaris__divertor__divheat__q_target_peak: float stellaris__divertor__q_target_peak.json
       stellarator_09__stellaris__heat_transport__primary_loop__p_loop_margin: float stellaris__heat_transport__p_loop_margin.json
-      stellarator_09__stellaris__heat_transport__primary_loop__q_recovered_total: float stellaris__heat_transport__q_recovered_total.json
+      stellarator_09__stellaris__heat_transport__primary_loop__q_recovered_total: float stellarator_09__stellaris__heat_transport__primary_loop__q_recovered_total.json
       stellarator_09__stellaris__heat_transport__primary_loop__p_elec: float stellarator_09__stellaris__heat_transport__primary_loop__p_elec.json
-      stellarator_09__stellaris__heat_transport__primary_loop__p_pump_total: float stellaris__heat_transport__p_pump_total.json
+      stellarator_09__stellaris__heat_transport__primary_loop__p_pump_total: float stellarator_09__stellaris__heat_transport__primary_loop__p_pump_total.json
       stellarator_09__stellaris__heat_transport__primary_loop__T_out: float stellaris__heat_transport__T_out.json
       stellarator_09__stellaris__heat_transport__primary_loop__T_comp_in: float stellarator_09__stellaris__heat_transport__primary_loop__T_comp_in.json
       stellarator_09__stellaris__heat_transport__primary_loop__dp_loop: float stellarator_09__stellaris__heat_transport__primary_loop__dp_loop.json
@@ -1734,11 +1934,122 @@ modules:
       stellarator_09__stellaris__heat_transport__primary_loop__mdot: float stellarator_09__stellaris__heat_transport__primary_loop__mdot.json
       stellarator_09__stellaris__heat_transport__primary_loop__r_comp: float stellarator_09__stellaris__heat_transport__primary_loop__r_comp.json
       stellarator_09__stellaris__turbine__cycle__margin_low: float stellarator_09__stellaris__turbine__cycle__margin_low.json
-      stellarator_09__stellaris__turbine__cycle__T2_C: float stellarator_09__stellaris__turbine__cycle__T2_C.json
+      stellarator_09__stellaris__turbine__cycle__T2_C: float stellaris__heat_transport__cooling_cycle_argument.json
       stellarator_09__stellaris__turbine__cycle__margin_high: float stellarator_09__stellaris__turbine__cycle__margin_high.json
       stellarator_09__stellaris__turbine__cycle__eta_th: float stellaris__turbine__eta_th.json
       stellarator_09__stellaris__turbine__cycle__eta_fit: float stellarator_09__stellaris__turbine__cycle__eta_fit.json
       stellarator_09__stellaris__turbine__cycle__domain_product: float stellaris__turbine__domain_product.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_pump_flow: float stellaris__heat_transport__salt_pumps__mass_flow.json
+      stellarator_09__stellaris__heat_transport__equipment__ihx_hot_approach: float stellarator_09__stellaris__heat_transport__equipment__ihx_hot_approach.json
+      stellarator_09__stellaris__heat_transport__equipment__exchangers_cost: float stellaris__heat_transport__intermediate_exchangers__capital_cost.json
+      stellarator_09__stellaris__heat_transport__equipment__pressure_qualified: bool stellarator_09__stellaris__heat_transport__equipment__pressure_qualified.json
+      stellarator_09__stellaris__heat_transport__equipment__ihx_installed_area: float stellaris__heat_transport__intermediate_exchangers__installed_area.json
+      stellarator_09__stellaris__heat_transport__equipment__pump_flow_gpm: float stellarator_09__stellaris__heat_transport__equipment__pump_flow_gpm.json
+      stellarator_09__stellaris__heat_transport__equipment__secondary_piping_cost: float stellaris__heat_transport__salt_pipes__capital_cost.json
+      stellarator_09__stellaris__heat_transport__equipment__secondary_installation: float stellarator_09__stellaris__heat_transport__equipment__secondary_installation.json
+      stellarator_09__stellaris__heat_transport__equipment__cycle_interface_ok: bool stellarator_09__stellaris__heat_transport__equipment__cycle_interface_ok.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_price_raw: float stellarator_09__stellaris__heat_transport__equipment__salt_price_raw.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_velocity_cold: float stellarator_09__stellaris__heat_transport__equipment__salt_velocity_cold.json
+      stellarator_09__stellaris__heat_transport__equipment__primary_circulators_cost: float stellaris__heat_transport__primary_circulators__capital_cost.json
+      stellarator_09__stellaris__heat_transport__equipment__inventory_cost: float stellaris__heat_transport__coolant_inventory__capital_cost.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_expansion_ratio: float stellarator_09__stellaris__heat_transport__equipment__salt_expansion_ratio.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_straight_loss: float stellarator_09__stellaris__heat_transport__equipment__salt_straight_loss.json
+      stellarator_09__stellaris__heat_transport__equipment__primary_pipe_installation: float stellarator_09__stellaris__heat_transport__equipment__primary_pipe_installation.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_unit_price: float stellarator_09__stellaris__heat_transport__equipment__salt_unit_price.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_electric_MW: float stellarator_09__stellaris__heat_transport__equipment__salt_electric_MW.json
+      stellarator_09__stellaris__heat_transport__equipment__secondary_pipe_purchase: float stellarator_09__stellaris__heat_transport__equipment__secondary_pipe_purchase.json
+      stellarator_09__stellaris__heat_transport__equipment__hx_installation: float stellarator_09__stellaris__heat_transport__equipment__hx_installation.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_inventory_mass: float stellaris__heat_transport__coolant_inventory__salt_mass.json
+      stellarator_09__stellaris__heat_transport__equipment__helium_inventory_volume: float stellarator_09__stellaris__heat_transport__equipment__helium_inventory_volume.json
+      stellarator_09__stellaris__heat_transport__equipment__replacement_annual: float stellarator_09__stellaris__heat_transport__equipment__replacement_annual.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_makeup_annual: float stellarator_09__stellaris__heat_transport__equipment__salt_makeup_annual.json
+      stellarator_09__stellaris__heat_transport__equipment__helium_makeup_annual: float stellarator_09__stellaris__heat_transport__equipment__helium_makeup_annual.json
+      stellarator_09__stellaris__heat_transport__equipment__inventory_complete: bool stellarator_09__stellaris__heat_transport__equipment__inventory_complete.json
+      stellarator_09__stellaris__heat_transport__equipment__heads_mass: float stellarator_09__stellaris__heat_transport__equipment__heads_mass.json
+      stellarator_09__stellaris__heat_transport__equipment__primary_design: float stellarator_09__stellaris__heat_transport__equipment__primary_design.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_head_remaining: float stellarator_09__stellaris__heat_transport__equipment__salt_head_remaining.json
+      stellarator_09__stellaris__heat_transport__equipment__installation_total: float stellarator_09__stellaris__heat_transport__equipment__installation_total.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_return_C: float stellarator_09__stellaris__heat_transport__equipment__salt_return_C.json
+      stellarator_09__stellaris__heat_transport__equipment__circulator_shaft_MW: float stellaris__heat_transport__primary_circulators__shaft_power.json
+      stellarator_09__stellaris__heat_transport__equipment__circulator_flow: float stellaris__heat_transport__primary_circulators__mass_flow.json
+      stellarator_09__stellaris__heat_transport__equipment__source_volume_ratio: float stellarator_09__stellaris__heat_transport__equipment__source_volume_ratio.json
+      stellarator_09__stellaris__heat_transport__equipment__purchased_total: float stellarator_09__stellaris__heat_transport__equipment__purchased_total.json
+      stellarator_09__stellaris__heat_transport__equipment__delivered_total: float stellarator_09__stellaris__heat_transport__equipment__delivered_total.json
+      stellarator_09__stellaris__heat_transport__equipment__primary_pipe_volume: float stellarator_09__stellaris__heat_transport__equipment__primary_pipe_volume.json
+      stellarator_09__stellaris__heat_transport__equipment__bundle_event_purchase: float stellarator_09__stellaris__heat_transport__equipment__bundle_event_purchase.json
+      stellarator_09__stellaris__heat_transport__equipment__bundle_mass: float stellarator_09__stellaris__heat_transport__equipment__bundle_mass.json
+      stellarator_09__stellaris__heat_transport__equipment__helium_standard_volume: float stellarator_09__stellaris__heat_transport__equipment__helium_standard_volume.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_shaft_MW: float stellarator_09__stellaris__heat_transport__equipment__salt_shaft_MW.json
+      stellarator_09__stellaris__heat_transport__equipment__helium_inventory_cost: float stellarator_09__stellaris__heat_transport__equipment__helium_inventory_cost.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_Re_hot: float stellarator_09__stellaris__heat_transport__equipment__salt_Re_hot.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_hx_volume: float stellarator_09__stellaris__heat_transport__equipment__salt_hx_volume.json
+      stellarator_09__stellaris__heat_transport__equipment__inventory_source_volume_ok: bool stellarator_09__stellaris__heat_transport__equipment__inventory_source_volume_ok.json
+      stellarator_09__stellaris__heat_transport__equipment__pump_shaft_hp: float stellarator_09__stellaris__heat_transport__equipment__pump_shaft_hp.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_pipe_volume: float stellarator_09__stellaris__heat_transport__equipment__salt_pipe_volume.json
+      stellarator_09__stellaris__heat_transport__equipment__cycle_temperature_gap: float stellarator_09__stellaris__heat_transport__equipment__cycle_temperature_gap.json
+      stellarator_09__stellaris__heat_transport__equipment__primary_piping_cost: float stellaris__heat_transport__primary_pipes__capital_cost.json
+      stellarator_09__stellaris__heat_transport__equipment__hx_purchase: float stellarator_09__stellaris__heat_transport__equipment__hx_purchase.json
+      stellarator_09__stellaris__heat_transport__equipment__circulator_volume: float stellarator_09__stellaris__heat_transport__equipment__circulator_volume.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_flow: float stellarator_09__stellaris__heat_transport__equipment__salt_flow.json
+      stellarator_09__stellaris__heat_transport__equipment__ihx_required_area: float stellaris__heat_transport__intermediate_exchangers__required_area.json
+      stellarator_09__stellaris__heat_transport__equipment__machine_event_purchase: float stellarator_09__stellaris__heat_transport__equipment__machine_event_purchase.json
+      stellarator_09__stellaris__heat_transport__equipment__shell_mass: float stellarator_09__stellaris__heat_transport__equipment__shell_mass.json
+      stellarator_09__stellaris__heat_transport__equipment__primary_pipe_mass: float stellaris__heat_transport__primary_pipes__steel_mass.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_pump_transfer_validated: bool stellarator_09__stellaris__heat_transport__equipment__salt_pump_transfer_validated.json
+      stellarator_09__stellaris__heat_transport__equipment__pump_size_ok: bool stellarator_09__stellaris__heat_transport__equipment__pump_size_ok.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_inventory_cost: float stellarator_09__stellaris__heat_transport__equipment__salt_inventory_cost.json
+      stellarator_09__stellaris__heat_transport__equipment__conversion_heat_MW: float stellarator_09__stellaris__heat_transport__equipment__conversion_heat_MW.json
+      stellarator_09__stellaris__heat_transport__equipment__ihx_cold_approach: float stellarator_09__stellaris__heat_transport__equipment__ihx_cold_approach.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_bulk_scale_ok: bool stellarator_09__stellaris__heat_transport__equipment__salt_bulk_scale_ok.json
+      stellarator_09__stellaris__heat_transport__equipment__pump_size_factor: float stellarator_09__stellaris__heat_transport__equipment__pump_size_factor.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_inventory_volume: float stellarator_09__stellaris__heat_transport__equipment__salt_inventory_volume.json
+      stellarator_09__stellaris__heat_transport__equipment__primary_installation: float stellarator_09__stellaris__heat_transport__equipment__primary_installation.json
+      stellarator_09__stellaris__heat_transport__equipment__circulator_count: float stellaris__heat_transport__primary_circulators__count.json
+      stellarator_09__stellaris__heat_transport__equipment__helium_hx_volume: float stellarator_09__stellaris__heat_transport__equipment__helium_hx_volume.json
+      stellarator_09__stellaris__heat_transport__equipment__tube_mass: float stellarator_09__stellaris__heat_transport__equipment__tube_mass.json
+      stellarator_09__stellaris__heat_transport__equipment__consumables_annual: float stellarator_09__stellaris__heat_transport__equipment__consumables_annual.json
+      stellarator_09__stellaris__heat_transport__equipment__secondary_pipe_installation: float stellarator_09__stellaris__heat_transport__equipment__secondary_pipe_installation.json
+      stellarator_09__stellaris__heat_transport__equipment__machine_event_installation: float stellarator_09__stellaris__heat_transport__equipment__machine_event_installation.json
+      stellarator_09__stellaris__heat_transport__equipment__secondary_vendor: float stellarator_09__stellaris__heat_transport__equipment__secondary_vendor.json
+      stellarator_09__stellaris__heat_transport__equipment__machine_event_removal: float stellarator_09__stellaris__heat_transport__equipment__machine_event_removal.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_Re_cold: float stellarator_09__stellaris__heat_transport__equipment__salt_Re_cold.json
+      stellarator_09__stellaris__heat_transport__equipment__machine_events: float stellarator_09__stellaris__heat_transport__equipment__machine_events.json
+      stellarator_09__stellaris__heat_transport__equipment__primary_pipe_purchase: float stellarator_09__stellaris__heat_transport__equipment__primary_pipe_purchase.json
+      stellarator_09__stellaris__heat_transport__equipment__primary_vendor: float stellarator_09__stellaris__heat_transport__equipment__primary_vendor.json
+      stellarator_09__stellaris__heat_transport__equipment__primary_spare: float stellarator_09__stellaris__heat_transport__equipment__primary_spare.json
+      stellarator_09__stellaris__heat_transport__equipment__secondary_spare: float stellarator_09__stellaris__heat_transport__equipment__secondary_spare.json
+      stellarator_09__stellaris__heat_transport__equipment__pump_head_ft: float stellarator_09__stellaris__heat_transport__equipment__pump_head_ft.json
+      stellarator_09__stellaris__heat_transport__equipment__secondary_pipe_mass: float stellaris__heat_transport__salt_pipes__steel_mass.json
+      stellarator_09__stellaris__heat_transport__equipment__pump_type_ok: bool stellarator_09__stellaris__heat_transport__equipment__pump_type_ok.json
+      stellarator_09__stellaris__heat_transport__equipment__helium_price_year: float stellarator_09__stellaris__heat_transport__equipment__helium_price_year.json
+      stellarator_09__stellaris__heat_transport__equipment__ihx_count: float stellaris__heat_transport__intermediate_exchangers__count.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_flow_regime_ok: bool stellarator_09__stellaris__heat_transport__equipment__salt_flow_regime_ok.json
+      stellarator_09__stellaris__heat_transport__equipment__bundle_event_installation: float stellarator_09__stellaris__heat_transport__equipment__bundle_event_installation.json
+      stellarator_09__stellaris__heat_transport__equipment__bundle_event_removal: float stellarator_09__stellaris__heat_transport__equipment__bundle_event_removal.json
+      stellarator_09__stellaris__heat_transport__equipment__helium_price_raw: float stellarator_09__stellaris__heat_transport__equipment__helium_price_raw.json
+      stellarator_09__stellaris__heat_transport__equipment__ihx_lmtd: float stellarator_09__stellaris__heat_transport__equipment__ihx_lmtd.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_velocity_hot: float stellarator_09__stellaris__heat_transport__equipment__salt_velocity_hot.json
+      stellarator_09__stellaris__heat_transport__equipment__hx_mass: float stellarator_09__stellaris__heat_transport__equipment__hx_mass.json
+      stellarator_09__stellaris__heat_transport__equipment__helium_inventory_mass: float stellaris__heat_transport__coolant_inventory__helium_mass.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_pump_count: float stellaris__heat_transport__salt_pumps__count.json
+      stellarator_09__stellaris__heat_transport__equipment__motor_electric_hp: float stellarator_09__stellaris__heat_transport__equipment__motor_electric_hp.json
+      stellarator_09__stellaris__heat_transport__equipment__secondary_pumps_cost: float stellaris__heat_transport__salt_pumps__capital_cost.json
+      stellarator_09__stellaris__heat_transport__equipment__motor_factor_ok: bool stellarator_09__stellaris__heat_transport__equipment__motor_factor_ok.json
+      stellarator_09__stellaris__heat_transport__equipment__sheets_mass: float stellarator_09__stellaris__heat_transport__equipment__sheets_mass.json
+      stellarator_09__stellaris__heat_transport__equipment__spares_cost: float stellaris__heat_transport__initial_spares__capital_cost.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_head_ok: bool stellarator_09__stellaris__heat_transport__equipment__salt_head_ok.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_price_year: float stellarator_09__stellaris__heat_transport__equipment__salt_price_year.json
+      stellarator_09__stellaris__heat_transport__equipment__circulator_electric_MW: float stellarator_09__stellaris__heat_transport__equipment__circulator_electric_MW.json
+      stellarator_09__stellaris__heat_transport__equipment__ihx_capacity_ok: bool stellarator_09__stellaris__heat_transport__equipment__ihx_capacity_ok.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_pump_shaft_MW: float stellaris__heat_transport__salt_pumps__shaft_power.json
+      stellarator_09__stellaris__heat_transport__equipment__ihx_duty_MW: float stellaris__heat_transport__intermediate_exchangers__duty.json
+      stellarator_09__stellaris__heat_transport__equipment__installed_total: float stellarator_09__stellaris__heat_transport__equipment__installed_total.json
+      stellarator_09__stellaris__heat_transport__equipment__bundle_events: float stellarator_09__stellaris__heat_transport__equipment__bundle_events.json
+      stellarator_09__stellaris__heat_transport__equipment__helium_price_transfer_validated: bool stellarator_09__stellaris__heat_transport__equipment__helium_price_transfer_validated.json
+      stellarator_09__stellaris__heat_transport__equipment__circulator_suction_Pa: float stellarator_09__stellaris__heat_transport__equipment__circulator_suction_Pa.json
+      stellarator_09__stellaris__heat_transport__equipment__motor_base_ok: bool stellarator_09__stellaris__heat_transport__equipment__motor_base_ok.json
+      stellarator_09__stellaris__heat_transport__cooling_energy__electric_total: float stellaris__heat_transport__p_pump_total.json
+      stellarator_09__stellaris__heat_transport__cooling_energy__recovered_total: float stellaris__heat_transport__q_recovered_total.json
       stellarator_09__stellaris__breeding_adequacy__design_margin: float stellaris__breeding_design_margin.json
       stellarator_09__stellaris__breeding_adequacy__decay_rate: float stellarator_09__stellaris__breeding_adequacy__decay_rate.json
       stellarator_09__stellaris__breeding_adequacy__fuel_margin: float stellaris__breeding_fuel_margin.json
@@ -1862,7 +2173,11 @@ modules:
       stellarator_09__stellaris__heat_rejection__heat_rejection_cost__cost: RootModel[float] stellaris__heat_rejection_capital.json
       stellarator_09__stellaris__shield__shield_cost__cost: RootModel[float] stellaris__shield_capital.json
       stellarator_09__stellaris__fuel_cycle__fuel_handling__cost: RootModel[float] stellaris__fuel_handling_capital.json
-      stellarator_09__stellaris__heat_transport__coolant__cost: RootModel[float] stellaris__coolant_capital.json
+      stellarator_09__stellaris__heat_transport__coolant__cost: RootModel[float] stellarator_09__stellaris__heat_transport__coolant__cost.json
+      stellarator_09__stellaris__heat_transport__cooling_selection__cost: float stellaris__coolant_capital.json
+      stellarator_09__stellaris__heat_transport__cooling_selection__shipping_exclusion: float stellaris__heat_transport__shipping_exclusion.json
+      stellarator_09__stellaris__heat_transport__cooling_selection__consumables_annual: float stellaris__heat_transport__consumables_annual.json
+      stellarator_09__stellaris__heat_transport__cooling_selection__replacement_annual: float stellaris__heat_transport__replacement_annual.json
       stellarator_09__stellaris__electric_plant__electric_cost__cost: RootModel[float] stellaris__electric_capital.json
       stellarator_09__stellaris__power_supplies__power_supplies_cost__cost: RootModel[float] stellaris__power_supplies_capital.json
       stellarator_09__stellaris__misc_plant__misc_cost__cost: RootModel[float] stellaris__misc_capital.json
@@ -1873,8 +2188,6 @@ modules:
       stellarator_09__stellaris__other_rpe__cost: RootModel[float] stellaris__other_rpe_capital.json
       stellarator_09__stellaris__remote_handling__cost: RootModel[float] stellaris__remote_handling_capital.json
       stellarator_09__stellaris__om_cost__annual_om: RootModel[float] stellarator_09__stellaris__om_cost__annual_om.json
-      stellarator_09__stellaris__cas71_calc__levelized: float stellaris__cas71_annual.json
-      stellarator_09__stellaris__cas71_calc__crf: float stellarator_09__stellaris__cas71_calc__crf.json
       stellarator_09__stellaris__precon_cost__cost: RootModel[float] stellaris__preconstruction_capital.json
       stellarator_09__stellaris__waste__cost: RootModel[float] stellaris__waste_capital.json
       stellarator_09__stellaris__inc_cost__cost: RootModel[float] stellaris__inc_capital.json
@@ -1892,10 +2205,14 @@ modules:
       stellarator_09__stellaris__calendar__unplanned_downtime_yr: float stellarator_09__stellaris__calendar__unplanned_downtime_yr.json
       stellarator_09__stellaris__calendar__productive_fpy: float stellarator_09__stellaris__calendar__productive_fpy.json
       stellarator_09__stellaris__calendar__dated_energy_ratio: float stellarator_09__stellaris__calendar__dated_energy_ratio.json
-      stellarator_09__stellaris__calendar__cas72_annual: float stellaris__cas72_annual.json
+      stellarator_09__stellaris__calendar__cas72_annual: float stellarator_09__stellaris__calendar__cas72_annual.json
       stellarator_09__stellaris__calendar__n_replacements: float stellarator_09__stellaris__calendar__n_replacements.json
       stellarator_09__stellaris__calendar__physical_life_fpy: float stellarator_09__stellaris__calendar__physical_life_fpy.json
       stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel: RootModel[float] stellaris__fuel_cycle__annual_fuel.json
+      stellarator_09__stellaris__cooling_annual__cas72_total: float stellaris__cas72_annual.json
+      stellarator_09__stellaris__cooling_annual__annual_om: float stellarator_09__stellaris__cooling_annual__annual_om.json
+      stellarator_09__stellaris__cas71_calc__levelized: float stellaris__cas71_annual.json
+      stellarator_09__stellaris__cas71_calc__crf: float stellarator_09__stellaris__cas71_calc__crf.json
       stellarator_09__stellaris__cas80_calc__levelized: float stellaris__cas80_annual.json
       stellarator_09__stellaris__cas80_calc__crf: float stellarator_09__stellaris__cas80_calc__crf.json
       stellarator_09__stellaris__cas70_calc__cas70: float stellaris__cas70_annual.json

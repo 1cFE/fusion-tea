@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "capture_failed",
+  "candidate": "https://raw.githubusercontent.com/NREL/ssc/develop/tcs/htf_props.cpp",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "extract exited 1",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T22:43:10.360439+00:00"
+}

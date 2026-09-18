@@ -1,0 +1,13 @@
+{
+  "request_id": "REQ-COOL-HITEC-COMPLETION",
+  "request_key": "f4b83935b6d6e0d175a5949b92fd1871c21413a3d4f89501b54556e7e1c4557e",
+  "request_path": "knowledge/research/requests/REQ-COOL-HITEC-COMPLETION.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 18,
+    "max_captures": 5
+  },
+  "opened_at": "2026-09-18T22:38:46.110364+00:00",
+  "override_reason": null,
+  "budget_amendment": "Coordinator approved fifth capture on2026-09-18 solely to retry same screened SSC source in renderedHTML format after text/plain extractor failure."
+}

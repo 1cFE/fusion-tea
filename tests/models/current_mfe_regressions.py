@@ -40,7 +40,18 @@ WI038_CHANNELS = {P + 'magnet__conductor_grade__' + name for name in (
 K_COIL_RETIRED = 1.968503937007874  # the retired WI-036 k_coil (25.0 / 12.7), the float the old oracle carried
 WI058_PARAMETERS = {P + 'magnet__coil__c_coil_ref'}
 WI058_RETIRED = {P + 'magnet__coil__k_coil'}
-RECEIPT_EVIDENCE = ROOT / 'work/active/WI-066_computed-tritium-breeding/evidence'
+RECEIPT_EVIDENCE = ROOT / 'work/active/WI-067_installed-cooling-equipment-costs/evidence'
+WI067_PARAMETERS = {P + 'heat_transport__' + name for name in (
+    'equipment_enabled', 'equipment_cost_mode', 'secondary_energy_mode',
+    'equipment_layout_multiplier', 'equipment_tube_wall', 'equipment_shell_wall',
+    'equipment_accessory_mass', 'equipment_secondary_head', 'equipment_eta_p',
+    'equipment_eta_motor', 'equipment_machine_life', 'equipment_bundle_life',
+    'equipment_makeup_fraction', 'equipment_inventory_reserve',
+    'equipment_removal_multiplier', 'equipment_saltprice_source_choice', 'equipment_costscale')}
+WI067_REPLAY = {P + 'heat_transport__equipment_enabled': False,
+               P + 'heat_transport__equipment_cost_mode': 0.,
+               P + 'heat_transport__secondary_energy_mode': 0.}
+WI067_REPLAY_LOCAL = dict(cooling_enabled=False, cooling_cost_mode=0., cooling_energy_mode=0.)
 WI066_RETIRED = {P + 'blanket__tbr'}
 WI066_PREDICATE = P + 'tbr_ok__2cd198f674d413e4'
 WI066_CHANGED = {P + 'fuel_cycle__fuel__tbr_margin'}
@@ -111,11 +122,11 @@ WI059_CHANNELS = WI059_THERMAL_CHANNELS | {
     P + 'magnet__support_mass__m_support', P + 'cryoplant__cold_load__q_structure_nuclear',
     P + 'structure__structure_cost__legacy_cost'}
 WI059_ORACLE_ADDED_CHANNELS = (WI059_CHANNELS - {P + 'cryoplant__refrigeration_sum__total'}) | {P + 'cryoplant__cryo_elec__p_elec'}
-WI059_REPLAY = WI063_REPLAY | {
+WI059_REPLAY = WI067_REPLAY | WI063_REPLAY | {
     P + 'cryoplant__inventory_enabled': False, P + 'magnet__c_support': 0.0,
     P + 'magnet__legacy_casing_fraction': 1.0, P + 'structure__residual_fraction': 1.0,
     P + 'cryoplant__joint_drive_fraction': 0.0, P + 'cryoplant__q_nuc_structure': 0.0}
-WI059_REPLAY_LOCAL = WI063_REPLAY_LOCAL | dict(cryo_inventory_enabled=False, magnet_support_coefficient=0.0,
+WI059_REPLAY_LOCAL = WI067_REPLAY_LOCAL | WI063_REPLAY_LOCAL | dict(cryo_inventory_enabled=False, magnet_support_coefficient=0.0,
     magnet_legacy_casing_fraction=1.0, structure_residual_fraction=1.0,
     cryo_joint_drive_fraction=0.0, cryo_q_nuc_structure=0.0)
 
@@ -320,7 +331,7 @@ def current_generation():
 
 def operating_acceptance(destination, historical):
     # Keep all historical scenario execution and assertions. Replace its generator
-    # dependency with the current reviewed WI-066 completion inventory.
+    # dependency with the current reviewed WI-067 completion inventory.
     spec = importlib.util.spec_from_file_location('wi052_operating_scenarios', FINANCE_EVIDENCE / 'current_regressions.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

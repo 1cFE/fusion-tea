@@ -1071,6 +1071,25 @@ package stellarator_09 {
             }
         }
         part :>> heat_transport {
+            // WI-067 released conceptual helium/HITEC scenario. Conversion fit remains
+            // an inherited surrogate; steam-generator price ownership is Row8/unverified.
+            :>> equipment_layout_multiplier = 1.0;
+            :>> equipment_tube_wall = 0.0015;
+            :>> equipment_shell_wall = 0.2;
+            :>> equipment_accessory_mass = 10000.0;
+            :>> equipment_secondary_head = 40.0;
+            :>> equipment_eta_p = 0.75;
+            :>> equipment_eta_motor = 0.95;
+            :>> equipment_machine_life = 10.0;
+            :>> equipment_bundle_life = 15.0;
+            :>> equipment_makeup_fraction = 0.001;
+            :>> equipment_inventory_reserve = 0.1;
+            :>> equipment_removal_multiplier = 1.0;
+            :>> equipment_saltprice_source_choice = 0.0;
+            :>> equipment_costscale = 1.0;
+            :>> equipment_enabled = true;
+            :>> equipment_cost_mode = 1.0;
+            :>> secondary_energy_mode = 1.0;
             // LIVE: the loop and the fit feed the power balance. The compatibility
             // arm of the round's study sets loop_live 0, cycle_live 0, p_pump_direct
             // 195.0, eta_p_direct 0.5, eta_th_direct 0.333 and reproduces the

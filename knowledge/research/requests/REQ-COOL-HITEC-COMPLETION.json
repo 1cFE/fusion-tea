@@ -1,0 +1,16 @@
+{
+  "request_id": "REQ-COOL-HITEC-COMPLETION",
+  "question": "What original HITEC properties and liquid-service equipment, inventory and residual cost methods support a conceptual270\u2013465C intermediate loop?",
+  "consumer": "installed-cooling-equipment-costs/T-008",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": [
+    "HITEC manufacturer technical bulletins",
+    "original liquid pump costing methods",
+    "published molten salt inventory and equipment cost methods"
+  ],
+  "limits": {
+    "max_searches": 18,
+    "max_captures": 5
+  }
+}

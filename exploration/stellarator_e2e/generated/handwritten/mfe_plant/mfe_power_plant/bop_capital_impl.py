@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:392
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:396
 
 SysML Expressions:
 """
@@ -15,7 +15,7 @@ from stellarator_tea.modules.mfe_plant.mfe_power_plant.bop_capital import bop_ca
 def run_bop_capital(inputs: bop_capitalInput) -> float:
     """Execute bop_capital calculation.
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:392
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:396
 
 Args:
     inputs: Input parameters validated against bop_capitalInput schema
