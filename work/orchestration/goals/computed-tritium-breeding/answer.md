@@ -2,7 +2,7 @@
 
 The model now calculates tritium production from a supported blanket configuration and makes inadequate breeding fail a design constraint. The current 0.80 m blanket fails the declared numerical adequacy screen. Increasing thickness improves breeding but raises cost and, in the studied cases, violates the peak magnetic-field limit. No case in this study is a feasible whole plant.
 
-**The fresh independent grade is R2c.P3**, against the unchanged rubric. P2 is met because TBR is computed from blanket configuration and verified; P3 is met because computed adequacy changes the accepted blanket/build choices. This meets the modeling target, not physical plant qualification. Formal goal closure remains the owner's decision.
+**The fresh independent grade is R2c.P3**, against the unchanged rubric. P2 is met because TBR is computed from blanket configuration and verified; P3 is met because computed adequacy changes the accepted blanket/build choices. This meets the modeling target, not physical plant qualification. The owner formally closed this goal on 2026-09-18 on that reviewed result.
 
 ## What is calculated
 

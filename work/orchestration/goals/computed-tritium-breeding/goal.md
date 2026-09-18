@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — 2026-09-18. [OWNER] The initiating prompt specifies the slug and authorizes grounding and research, implementation, generation, targeted studies and independent review. Formal closure remains owner-held.
+`closed` — 2026-09-18, by explicit owner authorization recorded below. Closed on the reviewed R2c.P3 modeling result and its stated physical limitations.
 
 ## Question
 
@@ -63,3 +63,7 @@
 [OWNER-VERBATIM] “listen, you are in charge here. you have the goal -- use research to collect data as needed, and otherwise use your best judgement”. This delegates selection of the physical method and documented modeling assumptions within the original goal. The pending blanket-target question is released; the coordinator proceeds using evidence and judgment. Original quarantine, unchanged rubric/limits, preservation of r2, no merge/push and owner-held formal closure remain in force.
 
 [AGENT] Retain the existing helium/PbLi concept and current radial build. Specify missing neutronics inputs openly from appropriate sources and evaluate the actual assembly with transport if the existing surrogate cannot cover it. Do not change the build merely to fit a surrogate. This is a coordinator choice under the new delegation, not an owner-originated material specification.
+
+### Amendment 2026-09-18 — owner closure
+
+[OWNER-VERBATIM] “ok please close the goal”. [OWNER] Formally close computed-tritium-breeding on the reviewed answer and independent R2c.P3 assessment. Accepted evidence: model `d2e29237`, immutable study `5347d5a3`, final answer/review `58e292c3`. Physical self-sufficiency remains conditional; closure accepts the achieved modeling target and retained uncertainties. Reveal and replacement of the frozen comparison remain separate decisions.

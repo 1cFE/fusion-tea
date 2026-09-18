@@ -171,3 +171,9 @@ T-004 · native run-study · coordinator releases the accepted package to the co
 - **Dispositions:** All three study findings accepted as proposed; joined discovery rows append their current dispositions without editing first sightings. No follow-up semantic work executes from them.
 - **Answer:** `answer.md` now reports calculated quantities, supported design choices, physical/software checks, P3, actual adequacy results and remaining uncertainty for an engineer. Numerical screen failure and conditional thicker passes do not establish actual physical self-sufficiency or its absence.
 - **Recommendation:** The technical modeling target is met. The goal remains grounded until the owner formally closes it. ARIES stays sealed; frozen r2 and historical studies are preserved. No reveal, replacement, merge or push occurred.
+
+### Owner closure — 2026-09-18
+
+[OWNER-VERBATIM] “ok please close the goal”. [OWNER] Formally close the goal on the reviewed R2c.P3 answer, with both P2 and P3 satisfied under the unchanged rubric. Evidence: audited implementation `d2e29237`, immutable native study `5347d5a3`, accepted answer and independent final review `58e292c3`. Accepted learnings L-001–L-005 retain their recorded scopes and supersessions. The reference blanket fails the numerical adequacy screen; conditional thicker passes do not establish actual plant self-sufficiency or whole-plant feasibility. No further task or round is opened.
+
+Coordinator check: this is an administrative closure under explicit owner authority. Existing independent coverage remains valid because no model, source, limit, calculation or study result changes. ARIES remains sealed and frozen r2 is preserved; reveal and frozen-comparison replacement remain separate owner decisions. No merge or push.
