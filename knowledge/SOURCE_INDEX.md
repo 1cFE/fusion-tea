@@ -985,6 +985,22 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 46fcb38cc1a545a063a40598ea1575ebda0f6d585a23fc907fe157938380321b
 - **Date Added**: 2026-09-18
 
+### INL Markets and Economics for Thermal Power Extraction from Nuclear Power Plants 2020
+- **Type**: local_pdf
+- **Location**: knowledge/sources/inl_markets_and_economics_for_thermal_power_extraction_from/
+- **Use for**: Original installed thermal delivery cost estimation method and installation boundaries; method comparison for REQ-COOL-INSTALL-01.
+- **Validation**: Check section 6.2 installed APEA method and 6.2.1 exchanger area pipe and pump sizing against original PDF.
+- **Caveat**: Low temperature LWR thermal delivery loops; does not qualify helium equipment costs at 8 MPa or 500 C. Original URL https://inldigitallibrary.inl.gov/sites/sti/sti/Sort_26712.pdf.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/cooling-inl-tdl.pdf
+- **Source ID**: fec51bddcae7f50089196c288cabda8b29aa44905b53d14c933e04a534a3044b
+- **Raw SHA256**: fec51bddcae7f50089196c288cabda8b29aa44905b53d14c933e04a534a3044b
+- **Raw Artifact SHA256**: fec51bddcae7f50089196c288cabda8b29aa44905b53d14c933e04a534a3044b
+- **Extracted Path**: knowledge/sources/inl_markets_and_economics_for_thermal_power_extraction_from/
+- **Extract SHA256**: 54a6dd34f550ee81c8885648a824f58b143bf4ab40971b77c4333901402ca234
+- **Date Added**: 2026-09-18
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

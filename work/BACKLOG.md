@@ -344,6 +344,12 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-067
+  name: installed-cooling-equipment-costs
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -434,3 +440,4 @@ standalone:
 | WI-064 | Current-driven magnet inventory sizing | standard | P1 | backlog |  |
 | WI-065 | Divertor deposited-power and peak-area account | standard | P1 | backlog |  |
 | WI-066 | computed-tritium-breeding | standard | P1 | backlog |  |
+| WI-067 | installed-cooling-equipment-costs | standard | P1 | backlog |  |

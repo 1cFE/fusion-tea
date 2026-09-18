@@ -1,0 +1,8 @@
+{
+  "archive_path": ".project/active/aries-comparison-preparation/package/freeze/r2/comparison-freeze.tar.gz",
+  "archive_sha256": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21",
+  "archive_matches_retained": true,
+  "changed_model_package_historical_paths": [],
+  "compared_to": "58e292c38a715ce34f0bc3df8af8ab81948f19af",
+  "head": "af226462c8f72ee1425eae4239c8617b25e1432e"
+}

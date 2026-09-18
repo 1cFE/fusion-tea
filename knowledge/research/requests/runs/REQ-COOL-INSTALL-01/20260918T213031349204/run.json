@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-COOL-INSTALL-01",
+  "request_key": "f6757b7d43e8312845ec7ae2c1b9d8993aaef515a91f6091713456deb13f6abf",
+  "request_path": "knowledge/research/requests/REQ-COOL-INSTALL-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-18T21:30:31.349388+00:00",
+  "override_reason": null
+}

@@ -1,0 +1,53 @@
+# Goal: Installed cooling equipment costs
+
+## Status
+
+`grounded` — 2026-09-18. [OWNER] The initiating prompt supplies the slug, question, evidence, acceptance conditions and authority to proceed.
+
+## Question
+
+[OWNER-VERBATIM] “Can we size and separately cost the cooling system’s pumps, piping and heat exchangers from the plant’s calculated heat-removal requirements, including installation and appropriate lifecycle costs?”
+
+## Consumer
+
+[OWNER] The project owner needs the existing R7.S3 target met before the ARIES comparison, with a plain engineering account of quantities, costs, boundaries and uncertainty.
+
+## Answered when
+
+[OWNER] A fresh independent assessment applies unchanged R7.S3 at `.project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d`: “Pumps, piping, heat exchangers as separately sized subaccounts.” Source-supported procurement, fabrication, installation and appropriate lifecycle treatment must feed the executable Cost Account Structure and electricity cost. Physical sizing, source applicability, account ownership and generated execution must be verified. A focused native study must retain reference, selected design, matched demand/circuit comparisons, sensitivities and failures. A documented source/tool blocker is useful but does not satisfy this answer contract.
+
+## Invariants
+
+- [OWNER] Keep ARIES sealed; follow `knowledge/holdout/aries-cs/PROTOCOL.md`. Exclude `.project/concepts/stellarator-mbse-demo.md` and all barred derivatives.
+- [OWNER] Preserve the published r2 archive and historical results. Identify new packages and studies separately. Keep helium cooling, rubric targets, physical limits and acceptance requirements unchanged.
+- [OWNER] Separate equipment requirements from qualified equipment; calculated quantities from layout assumptions; purchased prices from installed scope; missing costs from design changes. Assign each cost once. Do not infer an optimum from added circuits or lower LCOE.
+- [OWNER] Scope is cooling equipment and necessary interfaces, not turbine redesign, facilities-gap closure or complete plant-layout qualification. Preserve unrelated work. No merge or push.
+- [OWNER] Use native research, modeling, integration and study workflows with `.codex-test/run`. Obtain a fresh source/sizing/accounting/verification-plan review before substantial implementation and a fresh final R7.S assessment.
+
+## Grounding evidence
+
+- [OWNER] `.project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d` is the target authority.
+- [OWNER] `work/analysis/20260918-192403_stellarator-depth-reassessment.md` and companion `.cells.json` — unpinned; no native digest. Starting assessment reports P3/S2 and existing consumer-check failures.
+- [OWNER] `work/orchestration/goals/primary-loop-sizing/` and `exploration/stellarator_e2e/studies/20260916-primary-loop-sizing/` at entering checkout `58e292c38a715ce34f0bc3df8af8ab81948f19af` retain calculated cooling requirements and the unresolved installed-price gap.
+- [OWNER] `work/orchestration/goals/pre-reveal-feasible-neighborhood/` and `exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/` at entering checkout `58e292c38a715ce34f0bc3df8af8ab81948f19af` retain the latest selected design and fourteen-circuit control. Confirm numerical claims from records before use.
+
+## Limits
+
+[AGENT] Runbook defaults adopted as execution limits, not owner-originated scientific constraints.
+
+| Limit | This goal |
+|---|---|
+| Retry cap | 2 retries (3 attempts) |
+| Checkpoint revision cap | 2 revisions (3 submissions) |
+| Round limit | 6 rounds |
+| Time or iteration limit | None beyond declared bounded tasks |
+
+## Reserved gates
+
+[OWNER] Material scientific or scope decisions, coolant technology changes, reveal, replacement of the frozen comparison, major scope changes and formal goal closure remain owner-held. Native item close/archive remain owner-held under the runbook. Research, implementation, generation, targeted studies and independent review are authorized.
+
+## Close rule
+
+[OWNER] Only the owner formally closes the goal. Recommend closure only with evidence satisfying the answer contract; report an unresolved blocker as a gap, never completion.
+
+## Amendments

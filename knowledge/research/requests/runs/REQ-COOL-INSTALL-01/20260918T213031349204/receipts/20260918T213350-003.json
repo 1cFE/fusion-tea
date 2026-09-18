@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "capture_failed",
+  "candidate": "https://art.inl.gov/NGNP/INL%20Documents/Year%202011/Independent%20Evaluation%20of%20Costs%20of%20Major%20Capital%20Items%20for%20High%20Temperature%20Gas%20Cooled%20Reactors.pdf",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "extract exited 1",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T21:33:50.162903+00:00"
+}
