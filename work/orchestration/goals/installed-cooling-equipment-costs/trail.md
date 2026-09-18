@@ -305,3 +305,52 @@ Native implement-model · canonical cooling equipment/lifecycle accounts and gen
 ### T-010 integration retry — 2026-09-18
 
 [AGENT] Reviewed implementation committed locally at `c6906cbe`. Native integration attempt1 passed dependency, runtime revision, regeneration, manual preservation, census, model-family spine, manifest and preflight gates. Generic verification refused because the independent oracle map omitted the original calendar replacement output after adding the cooling-inclusive total. The existing independent calendar value is now mapped separately; no model or price equation changed. Attempt1 evidence remains in `evidence/round3/integration/`. This is mechanical retry1 of2, not a promoted study pin. The frozen r2 archive still matches Round2 SHA256 `fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21`.
+
+### T-010 return — 2026-09-18
+
+- **Outcome:** COMPLETE. Independent implementation and narrow oracle-coverage correction reviews pass. Local model/evidence checkpoint `c6906cbe`, coverage correction `03e45168`; native retry1 returns CANDIDATE with all ten gates passing. Evidence: `evidence/round3/integration-retry1/integration_return.json`.
+- **Reading:** The generated package implements independently sized equipment, separate installed accounts, dated replacements and selected energy effects. Native verification now covers359 independent mapped channels. Existing static L2/L6 failures, six stale consumer failures and the untested assert read-set gate remain explicit; no full-suite pass is claimed.
+- **Decision:** Promote this single Round3 candidate for the focused sensitivity study. Tier: authorized execution detail. Decider: coordinator. No equipment equation changed after independent release.
+
+### T-011 scope
+
+- **Objective:** Execute and interpret the focused cooling equipment study at the single accepted Round3 pin.
+- **Scope:**34 native candidates plus default baseline; four retained inputs in legacy, cost-only and full-energy modes, count/demand/layout/construction/lifecycle sensitivities; all adverse cases kept. Worker r2_originals owns the new study directory and discovery first-sighting rows; coordinator owns goal records and integration. No model edits.
+- **Inputs:** Accepted candidate and explicit execution release, reviewed combined design, retained case provenance, owner-authorized important cost/layout sensitivities. Numeric scenario levels are agent choices.
+- **Done when:** Native preflight, all-point verification, immutable study record and independently reviewed interpretation support the exact R7 assessment.
+- **Stop when:** Native refusal exceeds retry limit, material scientific/scope gate, or unavailable required independent review.
+
+### T-011 start — 2026-09-18
+
+Native run-study. Executor must judge generated indicators before baseline, record actual owner sensitivity authority, retain all engineering failures and obtain coordinator review before freezing the record.
+
+### T-011 verification correction — 2026-09-18
+
+[AGENT] All34 native cases completed with unchanged inputs and predicates. The first verification preparation corrected numeric-key normalization and a numeric-versus-Boolean output-set assumption. Actual verification then identified six inherited r2 conductor-current boundary disagreements: native tiny negative values versus oracle zero. Original results and refusals are preserved. A read-only diagnosis traced independent algebraic simplification versus authored floating-point order. The proposed oracle-only correction retains the expanded quantity cross-check and all native failed verdicts; no package pin, physical limit or model equation changes. Evidence: WI-067 `evidence/oracle-boundary-correction.md`. Independent review and targeted regressions are required before verification retry; the study will not be frozen with a waived refusal.
+
+### T-011 return — 2026-09-18
+
+- **Outcome:** COMPLETE. The native study retains34 unique candidates plus its separately executed default baseline. All12,206 mapped scalar and680 exact predicate comparisons pass; the generic verifier also passes. Corrected-oracle baseline verification adds359 scalar and20 predicate comparisons without rerunning native cases.
+- **Evidence:** Study `exploration/stellarator_e2e/studies/20260918-installed-cooling-equipment-costs/` committed at `5b956a8271f3ebc52c7ae9722359284e45558598` (initial record af7de9ea plus explicit native-store custody). Snapshot SHA256 `9aadbccbef9cbcf66cb0f97206d2a8323fe80bf55fbeea1853d5207e3a58fd35`. All124 listed artifact hashes were checked. The repository ignores `_work`, so required stores and artifacts were explicitly added; frozen evidence bytes did not change.
+- **Reading:** Separately installed equipment and lifecycle costs raise selected18 LCOE150.429542→309.554789$/MWh at fixed performance; salt energy then raises it to310.632663. Fourteen circuits costs less but fails salt-machine source ranges. All34 cases fail current breeding. No optimum, passing plant or complete installed price is claimed.
+- **Review:** Non-author final assessment assigns R7.S=3, PASS, against the unchanged pinned rubric. Source applicability and lifecycle assumptions are conceptual and explicit. Evidence: `evidence/round3/final-review-and-grade.md`; accepted reading and proposed learning delta in `evidence/round3/study-reading.md`.
+- **Correction:** Oracle-only commit450f4eab restores authored floating-point order while retaining the independent expanded quantity check. Native inputs, results, failed margins and acceptance predicates are unchanged. Original failed verification remains in the immutable study. Targeted regression batch258passes; prior six stale consumer failures and static L2/L6 failures remain disclosed.
+
+### Round 3 result — 2026-09-18
+
+- **Intent:** MET. Owner-approved helium/HITEC equipment design, separate installed accounts and appropriate lifecycle treatment are implemented, generated, integrated, studied and independently assessed at R7.S3.
+- **Task sequence:** T-008 completed source methods; T-009 combined design and fresh release; T-010 implementation/assurance and one native pin; T-011 one focused study, exact verification correction, frozen record and independent grade.
+- **Last semantic outcome:** Valid committed-study reading answers the grounded question affirmatively at the scoped conceptual S3 level.
+- **Stop reason:** Goal answered and valid study reading closes this round under the runbook. Formal native goal closure remains owner-held.
+- **Evidence:** `answer.md`, `evidence/round3/study-reading.md`, `evidence/round3/final-review-and-grade.md`, WI-067 design/verification and study commit `5b956a8271f3ebc52c7ae9722359284e45558598`.
+- **Finding dispositions:** Accept study#1–4 as explicit cost/layout/source/lifecycle limitations without immediate semantic follow-up. Accept#5 as resolved verification reproducibility defect with unchanged native failures and retained original evidence. Joined discovery dispositions and L-007–009 will be recorded with final closure coverage.
+- **Constraints carried forward:** No ARIES reveal or frozen-comparison replacement; no target/limit relaxation; no optimum or pressure-qualified/full-plant cost claim; no merge/push. Steam-generator scope, conversion-temperature mismatch, auxiliary omissions and uncertainty remain attached to results.
+
+### Round 3 review — 2026-09-18
+
+- **Reviewer and verdict:** `equipment_review`, fresh non-author; PASS. Exact R7.S=3 grade stands after final frozen-artifact assurance.
+- **Coverage:** Reused original-source, combined-design, implementation, oracle-correction and final study assurance. The narrow final review confirms all124 snapshot-listed artifacts are committed at5b956a82, match their hashes and remain unchanged. It accepts the final answer, T-011 return, round result, finding dispositions#1–5 and L-007–009. Evidence: final addendum in `evidence/round3/final-review-and-grade.md`.
+- **Retry judgment:** Integration's missing oracle-channel correction and study record normalization were verification repairs. The exact current-boundary discrepancy required a reviewed semantic correction to the independent oracle, not an acceptance waiver or mechanical relabeling. Package pin, native cases and physical limits remained unchanged. Failed attempts are preserved.
+- **Disposition landing:** Append joined rows under the same five discovery ids; accept L-007–009 below. No follow-up semantic task is scheduled within the closed round. Scope and preservation checks pass.
+- **Remaining uncertainty:** Conceptual source transfers, assumed layout/walls/lives, missing auxiliary/inventory scope, routine-service/outage coverage and the Row8 thermal/price interfaces remain stated limits. No S4, plant-feasibility or complete-price claim.
+- **Recommendation:** Technical goal is answered at the requested S3 target. Formal goal closure, reveal, frozen-comparison replacement and native work-item archival remain owner decisions. No merge or push.

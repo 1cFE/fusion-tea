@@ -4,6 +4,8 @@
 
 `grounded` — 2026-09-18. [OWNER] The initiating prompt supplies the slug, question, evidence, acceptance conditions and authority to proceed.
 
+[AGENT] Technical answer completed on 2026-09-18: independent R7.S=3, PASS; see `answer.md`, frozen study `5b956a82`, and `evidence/round3/final-review-and-grade.md`. The native goal remains grounded/open for the owner's formal closure.
+
 ## Question
 
 [OWNER-VERBATIM] “Can we size and separately cost the cooling system’s pumps, piping and heat exchangers from the plant’s calculated heat-removal requirements, including installation and appropriate lifecycle costs?”

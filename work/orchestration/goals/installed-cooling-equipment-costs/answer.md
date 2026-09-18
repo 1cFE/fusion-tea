@@ -1,84 +1,107 @@
-# Cooling equipment costs: usable methods found; implementation remains open
+# Cooling equipment costs: implemented conceptual estimate
 
-The additional research found usable conceptual methods for helium circulators, fabricated piping and heat exchangers. A fresh reviewer checked their original sources and a concrete primary-equipment candidate. The executable still uses its old aggregate cooling costs: **R7.S2 remains unchanged; S3 is not met**. The remaining work is a complete, reconciled equipment and lifecycle design, followed by implementation and a native study. This is progress beyond Round 1’s source-access blocker, not closure.
+The executable now sizes and separately prices helium circulators, intermediate salt pumps, piping and helium-to-salt heat exchangers. Installation, initial spares, coolant inventories and scheduled replacements feed the plant cost accounts and electricity cost. The focused study passes native verification, and the [fresh independent assessment](evidence/round3/final-review-and-grade.md) confirms **R7.S3 is met** against the unchanged rubric.
 
-The original question is whether pumps, pipes and exchangers can be sized and separately costed from calculated heat-removal requirements, including installation and appropriate lifecycle costs. **There is now a defensible conceptual estimating route. There is not yet a complete integrated result.**
+This is a conceptual equipment estimate with declared construction and price transfers. It is not a quotation, a pressure-qualified equipment selection or a complete installed-plant price. The newly priced scope substantially increases estimated cost.
 
-## Equipment requirements verified
+## Scope and equipment
 
-The [starting-case extraction](evidence/starting-cases.json) and [current executable replay](evidence/entering-replay.json) confirm the retained records. The selected eighteen-circuit design requires36 circulators and18 intermediate heat exchangers under the existing representative-circuit convention. Total exchanger duty is3013.915 MW, or167.440 MW per circuit. Eighteen circuits is not an equipment or cost optimum.
+The owner-approved intermediate coolant is HITEC, a molten-salt mixture, operating at 270–465°C. Primary helium remains at the existing nominal 8 MPa and 300–500°C conditions. The [account-boundary map](evidence/round3/account-boundary-map.md) identifies one owner for every modeled item. The [combined design](../../../active/WI-067_installed-cooling-equipment-costs/combined-design.md) records the quantities, raw source prices and assumptions.
 
-The [independent sizing review](evidence/round2/reference-review.md) recomputes all four cases. With two equally loaded parallel circulators per circuit, the selected design requires78.288 kg/s,11.764 m³/s inlet flow,159.303 kPa pressure rise and2.410 MW per machine. Suction is7.841 MPa at567.221 K. Equal parallel loading is a declared conceptual arrangement, not a topology proved by the original source.
+For the retained selected eighteen-circuit design, the generated executable gives:
 
-Flow comes from heat duty divided by helium heat capacity and temperature rise. Circuit count divides that flow; the existing squared-flow pressure-loss law and compressor calculation determine pumping electricity. The exchanger removes reactor heat plus recovered compression work. Under the reference secondary temperatures, its conditional required area is5824 m² per selected circuit. A retained source-capacity exchanger has10310.691 m² installed area; the candidate prices that installed geometry rather than silently reducing its area and keeping the same pressure loss.
+| Equipment | Quantity and engineered requirement | Sizing or layout basis |
+|---|---|---|
+| Primary helium circulators | 36 active; each 78.288 kg/s, 11.764 m³/s at suction, 159.303 kPa rise and 2.410 MW shaft power | Two parallel machines per circuit. Existing thermal flow and hydraulic pressure-loss calculation; suction 7.841 MPa at about 294°C. |
+| Intermediate salt pumps | 36 active; each 275.213 kg/s, 2,317.752 US gal/min, 40 m developed head and 143.942 kW shaft power | Calculated exchanger duty, salt heat capacity and 195 K temperature rise determine flow. Head and efficiencies are explicit assumptions. Cold-side suction is assumed 0.20 MPa absolute; calculated discharge is about 0.938 MPa. |
+| Helium-to-salt exchangers | 18; 3,013.915 MW total, 167.440 MW each; 5,824.089 m² required versus 10,310.691 m² installed area each | Duty includes recovered primary compression work. Thermal approaches and source effective heat-transfer coefficient determine required area. A fixed source-scale exchanger geometry is priced; shell, tube-sheet and tube thicknesses are conceptual construction assumptions. |
+| Primary piping and fittings | 6,261.253 tonnes of modeled stainless fabrication | Per circuit: 50 m hot and cold mains, 1.3/1.1 m outside diameters, 65 mm walls; nine hot and nine cold branches with 30 mm walls and assumed routing. Source fitting mass ratio added once. |
+| Salt piping and fittings | 462.448 tonnes | Per circuit: 50 m hot plus 50 m cold, 0.40 m inside diameter, 20 mm wall. Calculated straight-pipe head loss is 0.905 m; the remaining 39.095 m is an unallocated allowance, not a solved exchanger/fitting pressure loss. |
+| Initial inventory and spares | 21.269 tonnes helium and 2,068.394 tonnes salt, including 10% mass reserve; one uninstalled spare of each machine type | Inventories cover explicitly modeled ex-vessel pipe and exchanger volumes. They exclude unmeasured in-vessel, tank and conversion volumes. |
 
-| Current replay of retained inputs | Circuits | Pump electricity, MW | Net electricity, MW | Existing coolant allowance, $million | Total modeled capital, $million | LCOE, $/MWh |
-|---|---:|---:|---:|---:|---:|---:|
-| Selected design |18|86.776|1010.112|205.073|9465.696|150.430|
-| Same design, fourteen circuits |14|143.796|975.844|199.772|9490.637|156.052|
-| Saved r2 forward |14|166.241|1003.739|205.518|10204.510|162.871|
-| Saved r2 Table 5 control |14|164.995|1003.767|205.464|10214.050|162.947|
+The starting records confirm eighteen circuits, 36 helium machines and eighteen exchangers; saved r2 controls use fourteen circuits. Eighteen was never established as an optimum. [Retained input extraction](evidence/starting-cases.json), [entering replay](evidence/entering-replay.json), and [native study](../../../../exploration/stellarator_e2e/studies/20260918-installed-cooling-equipment-costs/record.md) retain the exact input precision and historical/current distinction.
 
-LCOE means levelized cost of electricity. These are existing mixed-price-basis model results. The selected eighteen/fourteen cases passed the older represented checks, but both now fail the newer tritium-breeding check. The r2 controls retain their earlier three failures and also fail breeding. All23 selected historical cooling/economic channels per case replay exactly. These failures remain in the evidence.
+## Purchased and installed costs
 
-## What is now priced in the research candidate
+The following selected-design figures are million US dollars expressed using a **2025 annual-CPI purchasing-power proxy**. CPI is not an equipment escalation index. The inherited rest of the plant remains on its prior mixed price basis; these are not uniformly rebased 2025 plant costs. Source currency, year, equations and inclusion boundaries remain in the [primary source assessment](evidence/round2/circulator-transfer.md), [exchanger source assessment](evidence/round2/hx-method-check.md), and [secondary methods](evidence/round3/secondary-methods.md).
 
-The [candidate construction and accounting basis](../../../active/WI-067_installed-cooling-equipment-costs/primary-candidate.md), [machine-source report](evidence/round2/circulator-transfer.md), [exchanger method check](evidence/round2/hx-method-check.md) and [independent candidate review](evidence/round2/candidate-review.md) distinguish source facts from assumptions. The [executable diagnostic ledger](evidence/round2/primary-hardware-estimate.json) prices primary components independently. It is not the generated plant model or a native plant study.
-
-| Component | Price basis | Included | Remaining limits |
-|---|---|---|---|
-| Helium circulator | December1978 BNL/MTI reference:550000 USD machine/motor,110000 USD power supply,130000 USD first-design engineering | Hermetic gas-bearing stainless machine, motor, fabrication/testing/delivery; power supply separately identified | Large scale extrapolation; source-specific pressure/power allocation; power-supply scaling assumed; target accessories not fully priced |
-| Circulator assembly | ORNL’s27% of hardware, whose source denominator includes15.5% procurement services | Declared component setting/local-connection analogy | Original factor covers a whole helium system; procurement ownership versus existing indirects remains unresolved |
-| Exchanger | ANL310 USD2017/kg finished stainless nuclear construction | Fabrication and delivery of a component-mass bill; separate2.4% site labor and0.2% site material | Geometry/material/service transfer is conceptual; no mechanical-code qualification |
-| Main piping and fittings | ANL310 USD2017/kg finished stainless construction | Explicit cylindrical steel mass and reference fitting-mass ratio; delivery included | Branches, valves, external supports and insulation remain unpriced |
-| Pipe field labor | NETL50% of pipe material cost | Explicit field-labor analogy applied to the fabricated pipe bill | Nuclear fabrication transfer uncalibrated; not combined with NETL’s equipment-percentage pipe allowance |
-
-The BNL source is a real low-pressure-ratio helium reference, but much smaller than the target. Its nominal50 hp pumping duty is distinct from its140 hp motor rating. Its0.28 exponent applies only to an assumed pressure-sensitive material half during a low-pressure comparison. The diagnostic preserves that distinction; it does not claim a universal large-machine cost law. Seider’s conventional gas-compressor method and an independent ORNL1.25 MW helium quote remain comparison methods, not calibrated uncertainty bounds.
-
-The exchanger candidate retains the source tube count, diameter and active length. Explicit assumed walls, shell, heads, gross tubesheets and a10 tonne accessory allowance yield481.541 tonnes per unit. The shell alone contributes222.173 tonnes. These are inspectable assumptions, not recovered manufacturing drawings. Gross unperforated tubesheets overstate net metal; the reviewer identifies approximately40.638 tonnes of bore-hole material. No complete layout or pressure qualification is implied.
-
-## Actual conditional costs and sensitivities
-
-The following figures are **partial component estimates**, converted to2025 general purchasing-power equivalents with the registered annual Consumer Price Index (CPI). Raw source amounts and years remain in the ledger. CPI is not a nuclear-equipment escalation index, and this conversion does not normalize the whole plant.
-
-| Primary candidate, $million2025 CPI equivalents | Selected18 circuits | Matched14 circuits | Saved r2 forward14 circuits |
+| Account | Purchased/fabricated supply | Site installation | Account total |
 |---|---:|---:|---:|
-| Circulator hardware, assembly, one design fee and one spare; procurement charge unresolved |469.858|434.832|448.945|
-| Exchanger finished fabrication and component installation |3620.700|2816.100|2816.100|
-| Main pipes/fittings and field-labor analogy,50 m each hot/cold leg |2480.412|1929.210|1929.210|
+| Active helium circulator packages | 350.259 | 109.228 | 460.129, including 0.642 one-time supplier design |
+| Primary pipes and fittings | 2,549.181 | 1,274.590 | 3,823.771 |
+| Heat exchangers | 3,528.947 | 91.753 | 3,620.700 |
+| Active salt pump/motor packages | 2.346 | 0.732 | 3.077 |
+| Salt pipes and fittings | 188.279 | 94.140 | 282.419 |
+| Initial coolant inventories | 5.446 | Not separately estimated | 5.446 |
+| Uninstalled spare machines | 9.795 | None at initial purchase | 9.795 |
+| **Total** | **6,634.894 including supplier design, inventories and spares** | **1,570.442** | **8,205.337** |
 
-These rows are deliberately **not summed into a complete cooling price**. Procurement, accessories, the full pipe network, inventory, intermediate equipment and lifecycle remain unresolved. They cannot replace the old allowance yet. Their magnitude is not a reason to adjust them toward that allowance.
+The helium price relation transfers the BNL supplier reference of $550,000 per machine, $110,000 power supply and $130,000 first-design engineering in December 1978 dollars. It responds to suction pressure and shaft duty; transfer to multi-megawatt machines is uncalibrated. The source includes fabrication, testing and delivery. Salt pump/motor prices use the Seider generic liquid-pump and motor equations in the CE500/2006 basis, with explicit material/type factors and operating-range checks. Their transfer to hot-salt construction remains unvalidated.
 
-For the selected design,20/50/100 m per main leg gives992.165/2480.412/4960.825 millionUSD2025 for the main-pipe/fitting/labor analogy. This is an explicit layout-cost sensitivity at fixed hydraulic requirements, not a prediction of a redesigned loop. A100/200/300 mm assumed exchanger shell wall gives140.518/201.150/266.024 millionUSD2025 per installed component. Tube-wall and accessory-mass sensitivities are retained separately in the ledger. These are assumed scenarios, not probability intervals.
+Pipe and exchanger prices use the ANL $310/kg in 2017 dollars for finished nuclear stainless fabrication and delivery. It is not a raw-steel price. Component steel mass determines the bill. Exchanger installation adds the source 2.4% labor and 0.2% material; piping uses the separately identified NETL field-labor transfer of 50% of the fabricated bill. Pump setting uses the reviewed ORNL installation analogy, with its procurement-inclusive denominator reproduced but no second procurement-services charge. These conceptual transfers dominate uncertainty; the study's alternatives are scenarios, not a calibrated confidence interval.
 
-Circuit-count effects differ by method: fixed exchanger and pipe modules cost more when more circuits are installed; individual circulator duty falls, but each additional pressure-contained machine still costs money. The BNL-based candidate therefore does not assume that eighteen circuits is cheaper. No optimum is claimed.
+## Replacement of the old accounts
 
-## Accounts, omissions and double counting
+The Cost Account Structure (CAS) is the hierarchy that totals plant costs. Equipment mode **replaces both old C220200 cooling terms completely**: the primary net-power relation and the intermediate thermal-power relation. It does not add the equipment bill on top of either old allowance. Seven separately calculated child accounts roll into the one existing heat-transport consumer.
 
-The [account-boundary map](evidence/account-boundary-map.md) traces the Cost Account Structure (CAS), the hierarchy used to total the plant. C220200 combines primary and intermediate aggregate estimates; neither independently prices equipment. **No old estimate has yet been replaced.** Adding the new component figures to unchanged C220200 would be unjustified.
+In-vessel blanket structures, turbine/power conversion, ultimate heat rejection, magnet cryogenics and buildings retain their separate homes. The cooling boundary ends at the salt supply/return interface to power conversion. The steam generator belongs to Row8/CAS23; its inclusion in the inherited price is **unverified**, not established free or fully paid for.
 
-The independent accounting reviews identify these required ownership decisions:
+Fabrication is already included in finished component prices. Delivered initial purchases are removed from the existing shipping base. Procurement and project engineering remain CAS30; supplier first-design work is distinct and charged once. Initial cooling spares are outside the inherited spare fraction's CAS23–28 base. Account identity tests check these boundaries and their effects on contingency, indirects, shipping and total capital. The inherited shipping charge on contingency remains a disclosed approximation.
 
-- Assign the primary-to-secondary exchanger once. The old intermediate allowance has insufficient scope evidence to declare it disjoint merely by relabeling it.
-- Keep turbine/power conversion, ultimate heat rejection, magnet cryogenics and buildings in their existing accounts. Component connection labor and shared services need explicit boundaries.
-- ANL and BNL prices include delivery. The existing CAS50 shipping charge must exclude overlapping delivered scope. Manufacturing is already included in the ANL rate; no second fabrication factor belongs on it.
-- Keep component installation separate from existing project engineering, indirects and contingency. ORNL procurement and engineering rows cannot be silently dropped or automatically added twice.
-- Count spares physically. The candidate’s one uninstalled spare circulator is an assumption, not a source-established redundancy policy. Cooling replacements and maintenance need distinct cash-flow treatment; a long-lived exchanger vessel does not establish equally long-lived internals.
-- Primary helium inventory is distinct from breeder-material fill and magnet helium. Its complete system volume and replenishment remain unpriced.
-- Pumping electricity already reduces net generation. Do not charge it again as purchased operating electricity.
+## Lifecycle treatment
 
-## Decision and implementation status
+The default 30-year scenario replaces active machines in years 10 and 20, and tube bundles in year 15. Pipes and exchanger vessels have assumed 60-year lives, so no replacement occurs during this horizon. These are assumed service lives, not measured reliability. Replacement purchases, installation and an explicit removal-labor proxy are discounted and annualized into CAS72, the replacement-expense account. Initial spares and first-design fees are not repurchased at every event.
 
-A material scientific choice is pending: the current plant specifies primary helium but not its intermediate coolant. The thermal reference uses HITEC molten salt at270–465°C. The coordinator recommends an explicit HITEC intermediate scenario, retaining primary helium, and has requested the owner’s decision under the original reserved-decision rule. Retaining the intermediate technology as undecided leaves that equipment gap open. A routine round boundary does not require permission.
+For the selected eighteen-circuit design, the added equivalent annual replacement expense is **$63.243 million/year**. Coolant make-up adds **$5,446/year before existing expense levelization**, assuming annual loss of 0.1% of the priced inventory. Existing CAS71 routine operation and maintenance is assumed to cover service labor. Replacements are assumed to coincide with existing outages, leaving availability unchanged. Extra outages, disposal and dedicated handling are unpriced. The study varies machine/bundle life, make-up, inventory reserve and removal cost explicitly.
 
-[WI-067](../../../active/WI-067_installed-cooling-equipment-costs/spec.md) retains the implementation contract, draft design and concrete primary candidate. After the technology decision, complete the branch/valve/support/inventory and lifecycle estimates, settle account ownership, obtain release of that full ledger, implement the separate model children and annual replacement interface, regenerate, and run matched native cases. Source-method acceptance is not approval of an incomplete plant total.
+## Matched plant results
 
-**Total plant cost and electricity-cost change from this work: zero implemented change.** No production model, generated package or historical study was modified. The conditional component figures above do not establish a new plant LCOE. The exact row-specific S3 criterion remains “Pumps, piping, heat exchangers as separately sized subaccounts.” Independent review confirms that the unchanged executable remains S2.
+LCOE means levelized cost of electricity. “Legacy” uses the old cooling allowances and no added salt-pump energy; “cost only” replaces costs and adds lifecycle expense at identical plant performance; “full” also adds salt-pump electricity and recovered shaft heat. Equipment diagnostics run in every mode, but their costs and energy enter plant totals only when selected.
 
-## Verification and preservation
+| Retained input case | Mode | Total capital, $billion | Net electricity, MW | LCOE, $/MWh |
+|---|---|---:|---:|---:|
+| Selected, 18 circuits | Legacy | 9.466 | 1,010.112 | 150.430 |
+| Same inputs | Cost only | 20.901 | 1,010.112 | 309.555 |
+| Same inputs | Full | 20.903 | 1,006.725 | 310.633 |
+| Selected, 14 circuits | Legacy | 9.491 | 975.844 | 156.052 |
+| Same inputs | Cost only | 18.426 | 975.844 | 285.388 |
+| Same inputs | Full | 18.429 | 972.393 | 286.438 |
+| Saved r2 forward, 14 circuits | Legacy | 10.205 | 1,003.739 | 162.871 |
+| Same inputs | Full | 19.155 | 1,000.101 | 289.997 |
+| Saved r2 Table5 control, 14 circuits | Legacy | 10.214 | 1,003.767 | 162.947 |
+| Same inputs | Full | 19.164 | 1,000.139 | 290.047 |
 
-Independent review checked original source images, the four-case sizing, all 24 partial-ledger rows, the exchanger mass/sensitivity calculations and the new circulator candidate arithmetic. It separately assessed applicability and scope, so software agreement is not presented as validation of equipment prices.
+For selected eighteen circuits, the old $205.073 million allowance becomes an $8,205.337 million equipment estimate. The direct increase is $8,000.263 million. Existing plant-level factors turn that into $11,434.850 million additional capital in the cost-only comparison; lifecycle expense also contributes to the $159.125/MWh LCOE increase. Adding salt energy then increases capital by $2.846 million and LCOE by $1.078/MWh. Salt pumps draw 5.455 MW and return 5.182 MW shaft heat to conversion; after the retained efficiency calculation, net electricity falls 3.387 MW. Total primary-plus-salt pumping electricity is 92.231 MW.
 
-The entering targeted regression batch remains 131 passes/six existing failures; some consumer tests stop before later numerical assertions. Two repository ADR/register and narrative-link checks also pass after Round 2; they do not validate equipment physics. The discovery-log join batch returns 26 passes/one existing failure in the unchanged breeding record’s parser interface. These are separate scoped checks, not a clean full suite. No production changes warranted repeating the full model suite during research.
+Fourteen circuits costs less than eighteen under these assumptions, while requiring more pumping electricity and larger individual salt machines. Its liquid-pump cost applicability checks fail. This is not an optimum or a qualified cheaper design. The full study retains all 34 scenarios, including count, demand, layout, construction and lifecycle sensitivities. Its [report](../../../../exploration/stellarator_e2e/studies/20260918-installed-cooling-equipment-costs/report.md) provides the complete comparisons.
 
-ARIES remains sealed, the frozen r2 archive and historical studies are preserved, and no merge or push occurred. The goal is open; formal closure remains the owner’s decision. Round 1’s archived answer remains available at commit `1031e7ff`; current source and review evidence supersedes its source-access-only conclusion.
+## Sensitivity and what drives the estimate
+
+Primary pipes and exchangers dominate the new cost. Their fixed representative geometry is purchased once per circuit, so increasing circuit count adds metal and installation even as individual machine flow and pressure rise fall. Heat demand changes flow, required exchanger area and machine prices; this implementation checks the installed exchanger capacity rather than inventing a resized exchanger pressure-loss law.
+
+| One change from selected eighteen-circuit full mode | LCOE, $/MWh | Interpretation |
+|---|---:|---|
+| Half / twice assumed pipe length | 271.612 / 388.673 | Layout uncertainty dominates; this is an accounting sensitivity, not a recalculated primary hydraulic layout. |
+| Exchanger shell wall 0.10 / 0.30 m, versus 0.20 m | 289.968 / 332.743 | Strong construction-mass effect; thinner is not established structurally acceptable. |
+| Tube wall 1.0 / 2.0 mm, versus 1.5 mm | 304.520 / 316.376 | Construction and future bundle replacement both change. |
+| Machine life 20 / 30 years, versus 10 years | 307.687 / 306.189 | Fewer replacements; the longer lives are assumptions. |
+| Bundle life 30 years, versus 15 years | 307.133 | No bundle replacement strictly inside the 30-year horizon. |
+| Twelve / sixteen / twenty circuits | 277.964 / 297.757 / 324.443 | Twelve fails loop capacity; lower counts also fail salt-machine price ranges. No optimum follows. |
+| Plasma density −2% / +2% | 319.342 / 302.498 | Supported demand change propagates through heat, flow, machine sizing, electricity and cost. |
+
+These are separate one-at-a-time scenarios. They are not joint uncertainty bounds or recommendations to use thinner walls, longer lives or fewer circuits.
+
+## Engineering limits and verification
+
+All current scenarios fail the tritium-breeding acceptance check. The historical selected designs passed their earlier represented checks; that history does not establish current feasibility. The eighteen-circuit case passes exchanger area, salt pump/motor equation ranges and straight-pipe head screens, but still has major declared gaps:
+
+- The inherited efficiency-fit argument is 480°C while salt supply is 465°C. Its physical-interface check fails. Full-mode electricity results retain an explicitly labeled surrogate rather than a thermodynamically solved salt/steam cycle.
+- Pressure boundaries, allowable stresses, material life and hot-salt machine construction are not qualified. Thick walls are cost geometry assumptions with sensitivities.
+- The assumed primary pipe-plus-exchanger volume is 1.91 times the source reference inventory volume. This is retained as a layout warning, not hidden by an invented residual.
+- The salt inventory is below the source industrial-bulk procurement category. Detailed valves, local supports/insulation, expansion/drain tanks, trace heating, nitrogen cover and additional inventory remain unpriced. Their cost significance is not established negligible.
+
+Native integration passes all ten gates at the reviewed pin. All 34 study cases pass software verification: 12,206 scalar comparisons and 680 exact predicate comparisons, with the generic verifier also passing. The separately recorded default baseline passes another 359 scalar and 20 predicate comparisons. An inherited current-margin oracle operation-order discrepancy was corrected without changing any native result, input or threshold; the original failed verification remains retained. Separate original-source reviews establish the conceptual transfer basis; generated/oracle agreement checks software, not physical applicability. Targeted tests include the 98-test batch, later equipment checks, and 258 passing equipment/current-sizing/manufacturing-oracle tests after the exact-boundary correction. The expanded consumer batch has 71 passes and the same six pre-existing stale-contract failures. Static validation retains Level2/6 failures; new diagnostics and their runtime bindings are explicitly dispositioned. The integration seam does not test assertion read-set coverage. This is not a clean full-suite claim. See [verification status](../../../active/WI-067_installed-cooling-equipment-costs/evidence/verification-status.md).
+
+## R7 result and project status
+
+**R7.S = 3, independently assessed PASS.** The exact unchanged target is “Pumps, piping, heat exchangers as separately sized subaccounts,” with appropriate lifecycle logic. The reviewer checked original source scope, actual executable results and account/lifecycle identities. This closes the technical structural-cost gap at S3; it does not award S4, regrade physics or eliminate the stated engineering and price gaps. The complete study is committed at `5b956a82`; the snapshot and all124 artifact hashes are retained. The frozen r2 archive, historical studies and requested rubric revision remain unchanged. ARIES stays sealed. No merge or push occurred. Formal goal closure remains the owner's decision.

@@ -47,3 +47,27 @@
 - **Implication:** Ask the reserved material technology question and then reconcile equipment ownership. Relabeling C220202 cannot establish that its cost excludes the newly priced exchanger. Keep total cooling and lifecycle amounts unresolved until that work is complete.
 - **Supersedes:** none.
 - **Accepted by:** Round2 review,2026-09-18.
+
+## L-007 — Separate cooling equipment and lifecycle accounts meet the structural target
+
+- **Evidence:** Independent `evidence/round3/final-review-and-grade.md`; reviewed modelc6906cbe; frozen study5b956a82; exact rubricdc0f0b6dc6512b29e1307da647f3a508a1f5356d.
+- **Scope:** R7.S=3 for independently sized principal pumps/circulators, pipes and exchangers with declared installation, initial spares, replacement and routine-maintenance coverage. Both old aggregate cooling terms are replaced. This does not establish complete equipment scope, pressure qualification, S4 or another row's grade.
+- **Implication:** The specific cooling structure/cost gap is closed technically. Carry residual scope and source-transfer uncertainty into downstream comparisons.
+- **Supersedes:** Earlier S2 status as the current implementation assessment; earlier evidence remains historical.
+- **Accepted by:** Round3 non-author review and final frozen-artifact assurance,2026-09-18.
+
+## L-008 — Missing equipment cost dominates the matched economic change
+
+- **Evidence:** Study5b956a82 retained-case mode comparisons and `evidence/round3/study-reading.md`.
+- **Scope:** Selected18 LCOE150.429542→309.554789$/MWh from costing/lifecycle alone at unchanged net power; salt electricity and recovered shaft heat then give310.632663. Fixed per-circuit fabrication can outweigh reduced machine pumping duty when circuit count increases. Fourteen circuits is numerically cheaper but fails salt-machine price ranges; no optimum follows.
+- **Implication:** Separate added scope from changed design or performance in any comparison. Lower estimated price does not establish equipment applicability or physical feasibility.
+- **Supersedes:** None.
+- **Accepted by:** Round3 non-author review and final frozen-artifact assurance,2026-09-18.
+
+## L-009 — Layout and conversion interfaces remain material limits
+
+- **Evidence:** Study5b956a82 layout/construction sensitivities and equipment flags; combined design; final independent review.
+- **Scope:** Half/twice pipe length gives271.612338/388.673313$/MWh for the selected full scenario; walls and service lives are assumed. Primary inventory geometry exceeds the reference envelope. The retained480°C efficiency-fit argument exceeds465°C salt supply, so full-mode electricity uses a declared conversion surrogate. Auxiliary inventories/equipment and steam-generator price inclusion remain incomplete.
+- **Implication:** A justified layout, design-pressure/material construction, auxiliary bill and physically consistent Row8 interface are concrete next steps for a more mature estimate. They are not silently commissioned or treated as negligible by S3 acceptance.
+- **Supersedes:** None.
+- **Accepted by:** Round3 non-author review and final frozen-artifact assurance,2026-09-18.

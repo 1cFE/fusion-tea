@@ -1,0 +1,6 @@
+_backup/
+_work/pkg_link/
+__pycache__/
+*.pyc
+*.db-shm
+*.db-wal
