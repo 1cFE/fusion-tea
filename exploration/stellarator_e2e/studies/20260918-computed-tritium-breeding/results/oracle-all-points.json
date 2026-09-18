@@ -1,0 +1,10 @@
+{
+  "outcome": "pass",
+  "scalar_comparisons": 3185,
+  "predicate_comparisons": 260,
+  "relative_tolerance": 1e-09,
+  "absolute_tolerance": 1e-09,
+  "strict_relative_misses": [],
+  "failures": [],
+  "limits": "Transport table data shared; this verifies independent implementation, not physical accuracy.16 native channels outside oracle map remain native evidence only."
+}

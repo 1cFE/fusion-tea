@@ -1,0 +1,107 @@
+[
+  {
+    "id": "thickness-0.6",
+    "family": "supported-thickness",
+    "point": {
+      "stellarator_09__stellaris__blanket__blanket_t": 0.6
+    },
+    "expected_breeding_defined": true
+  },
+  {
+    "id": "thickness-0.65",
+    "family": "supported-thickness",
+    "point": {
+      "stellarator_09__stellaris__blanket__blanket_t": 0.65
+    },
+    "expected_breeding_defined": true
+  },
+  {
+    "id": "thickness-0.7",
+    "family": "supported-thickness",
+    "point": {
+      "stellarator_09__stellaris__blanket__blanket_t": 0.7
+    },
+    "expected_breeding_defined": true
+  },
+  {
+    "id": "thickness-0.75",
+    "family": "supported-thickness",
+    "point": {
+      "stellarator_09__stellaris__blanket__blanket_t": 0.75
+    },
+    "expected_breeding_defined": true
+  },
+  {
+    "id": "thickness-0.8",
+    "family": "supported-thickness",
+    "point": {
+      "stellarator_09__stellaris__blanket__blanket_t": 0.8
+    },
+    "expected_breeding_defined": true
+  },
+  {
+    "id": "thickness-0.825",
+    "family": "supported-thickness",
+    "point": {
+      "stellarator_09__stellaris__blanket__blanket_t": 0.825
+    },
+    "expected_breeding_defined": true
+  },
+  {
+    "id": "thickness-0.85",
+    "family": "supported-thickness",
+    "point": {
+      "stellarator_09__stellaris__blanket__blanket_t": 0.85
+    },
+    "expected_breeding_defined": true
+  },
+  {
+    "id": "thickness-0.9",
+    "family": "supported-thickness",
+    "point": {
+      "stellarator_09__stellaris__blanket__blanket_t": 0.9
+    },
+    "expected_breeding_defined": true
+  },
+  {
+    "id": "thickness-0.95",
+    "family": "supported-thickness",
+    "point": {
+      "stellarator_09__stellaris__blanket__blanket_t": 0.95
+    },
+    "expected_breeding_defined": true
+  },
+  {
+    "id": "thickness-1",
+    "family": "supported-thickness",
+    "point": {
+      "stellarator_09__stellaris__blanket__blanket_t": 1.0
+    },
+    "expected_breeding_defined": true
+  },
+  {
+    "id": "undefined-thickness-0.55",
+    "family": "undefined-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__blanket__blanket_t": 0.55
+    },
+    "expected_breeding_defined": false
+  },
+  {
+    "id": "undefined-thickness-1.05",
+    "family": "undefined-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__blanket__blanket_t": 1.05
+    },
+    "expected_breeding_defined": false
+  },
+  {
+    "id": "undefined-radius-12.71",
+    "family": "undefined-diagnostic",
+    "point": {
+      "stellarator_09__stellaris__blanket__blanket_t": 0.8,
+      "stellarator_09__stellaris__plasma__R": 12.71
+    },
+    "expected_breeding_defined": false
+  }
+]

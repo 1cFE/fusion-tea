@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "package_identity.v1.schema.json",
+  "title": "Study package identity document",
+  "description": "What a study route executed, and the identity it earned. A route that bypasses part of a package's seal must not report the sealed executable_fingerprint as the identity of what ran: an edit to a bypassed file would change the numbers and change nothing about the identity, and teax's lineage refusal would never fire. This document declares the three inputs to an effective executable fingerprint — the sealed fingerprint, the files the route was allowed to have modified, and the route's own source files — so a generic gate can recompute the digest from the bytes on disk rather than trust the value asserted here. kind 'sealed' is the degenerate member for a route that bypassed nothing: both file lists are empty and the digest is defined to be the sealed fingerprint itself, so one gate covers both cases and deleting a route's adapter changes no gate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "package", "identity", "glue_ledger"],
+  "properties": {
+    "schema_version": {"const": "study-package-identity/v1"},
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "path"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Repo-relative POSIX path to the package root. Never absolute, so two agents invoking from different working directories produce identical bytes for identical facts."
+        }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "recipe",
+        "sealed_executable_fingerprint",
+        "allowed_modified_files",
+        "adapter_sources",
+        "adapter_source_digest",
+        "digest"
+      ],
+      "properties": {
+        "kind": {
+          "enum": ["effective", "sealed"],
+          "description": "'effective' when the route bypassed part of the seal; 'sealed' when it bypassed nothing."
+        },
+        "recipe": {"const": "effective-executable-fingerprint/v1"},
+        "sealed_executable_fingerprint": {
+          "$ref": "#/$defs/sha256",
+          "description": "The executable_fingerprint from the package's own contracts/package_contract.json."
+        },
+        "allowed_modified_files": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/fileDigest"},
+          "description": "Sealed artifacts this route is permitted to differ on, package-relative, with their ACTUAL digests on disk. Every sealed artifact outside this list must still match the seal — that is what keeps a scoped exception from widening into a blanket bypass."
+        },
+        "adapter_sources": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/fileDigest"},
+          "description": "Repo-relative source files whose content can change a value the route feeds into a run, or change what the route accepts. A file that moves a number and sits outside this list makes the digest look earned while being blind to it."
+        },
+        "adapter_source_digest": {
+          "$ref": "#/$defs/sha256",
+          "description": "sha256 over just the sorted 'adapter <path> <sha256>' lines of the recipe's canonical text. The single value a record snapshot copies; adapter_sources keeps it auditable."
+        },
+        "digest": {
+          "$ref": "#/$defs/sha256",
+          "description": "The effective executable fingerprint: sha256 of the recipe's canonical text — line 1 the recipe id, then 'sealed <hex>', then one 'modified <path> <sha256>' line per allowed-modified file and one 'adapter <path> <sha256>' line per declared source, each sorted by path, trailing newline. For kind 'sealed' this is defined to be sealed_executable_fingerprint. A gate recomputes this; it never trusts it."
+        }
+      }
+    },
+    "glue_ledger": {
+      "type": "array",
+      "description": "What the route supplies that the model does not. Never a manifest fact: deleting the route must not require a manifest edit.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rung", "keys", "supplies", "independently_verified"],
+        "properties": {
+          "rung": {"type": "string", "minLength": 1},
+          "keys": {"type": "array", "items": {"type": "string", "minLength": 1}},
+          "supplies": {"type": "string", "minLength": 1},
+          "independently_verified": {
+            "type": "boolean",
+            "description": "false when the value is fed identically to both the package and the oracle. Oracle parity then verifies the package's arithmetic GIVEN that value, and the verification summary must say so."
+          },
+          "note": {"type": "string"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "fileDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "study_id": "20260918-computed-tritium-breeding",
+  "executable_fingerprint": "5cbec23bcb96913ccacfb3ea30e8a94bdabf37a03899c9c88997e9cf4f064e41",
+  "model_contract_fingerprint": "5f1fccf18967f8489cc48147b5277acb64212d2a1411d156e6693a168e099fbf",
+  "study_definition_fingerprint": "f07158e74de26616a96a176fd7f1f3587099f4f0830d716e9ad5ffec2b0ef3f2",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "fa1c3b06a01f312b6b24ed490a2c5a5956a2a88736580b553c7973caad596a14"
+}

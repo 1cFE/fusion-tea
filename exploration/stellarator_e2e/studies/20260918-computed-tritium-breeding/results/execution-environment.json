@@ -1,0 +1,26 @@
+{
+  "repo_revision": "d2e292379c3ac82b68d40f237f46358d5db9249e",
+  "launcher": ".codex-test/run",
+  "runtime_import_fix": "workflow.py adds STOP_PARSER_TEAX_ROOT/packages/teax-simkit to sys.path and PYTHONPATH and sets STUDY_REQUIRE_TEAX=1",
+  "phases_completed": [
+    "prepare",
+    "baseline",
+    "scan",
+    "execute",
+    "verify",
+    "export"
+  ],
+  "failed_phase_attempts": [],
+  "warnings": [
+    {
+      "phases": [
+        "baseline",
+        "execute"
+      ],
+      "source": "pydantic serializer",
+      "message": "PydanticSerializationUnexpectedValue(Expected bool; field cryoplant inventory_enabled; input_value=1.0, input_type=float)",
+      "disposition": "Existing authored numeric carrier; all native execution and verification passed; no model edit."
+    }
+  ],
+  "export_correction": "Keep required_tbr, recycle_loss_rate, decay_rate and stock_growth_rate defined when breeding is undefined; null only breeding-derived diagnostics. Raw results unchanged."
+}

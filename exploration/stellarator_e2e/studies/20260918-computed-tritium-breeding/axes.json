@@ -1,0 +1,25 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "blanket__blanket_t",
+      "note": "One authored blanket thickness entry with complete model fan-out; both supported sensitivity and expressly undefined edge diagnostics.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__blanket__blanket_t",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__R",
+      "note": "One authored radius entry; one expressly unsupported-domain diagnostic only, not a radius search.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__R",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}
