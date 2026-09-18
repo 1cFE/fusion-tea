@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/breeding-hcll-thesis.pdf",
+  "slug": "neutronic_fusion_thesis_martinez_arroyo_javier",
+  "path": "knowledge/sources/neutronic_fusion_thesis_martinez_arroyo_javier/",
+  "source_id": "0fd38e685a68e751f8d21f0b3248cb4ac3b1d406d8b1d22ea8229b0689102abc",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T19:58:14.886703+00:00"
+}

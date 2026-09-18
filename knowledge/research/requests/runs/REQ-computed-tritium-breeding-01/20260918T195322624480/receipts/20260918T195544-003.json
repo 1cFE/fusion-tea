@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "/tmp/breeding-shimwell2019.pdf",
+  "slug": "multiphysics_analysis_with_cad_based_parametric_breeding",
+  "path": "knowledge/sources/multiphysics_analysis_with_cad_based_parametric_breeding/",
+  "source_id": "36a35c9c10ff51ac2647c85ea74318658a1556f6fd329d84f0385a8dfdeab0cf",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-18T19:55:44.415653+00:00"
+}

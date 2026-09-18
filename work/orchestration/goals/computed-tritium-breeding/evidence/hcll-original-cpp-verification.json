@@ -1,0 +1,43 @@
+{
+  "source_sha256": "0fd38e685a68e751f8d21f0b3248cb4ac3b1d406d8b1d22ea8229b0689102abc",
+  "array_exact_matches": {
+    "MININPUT": 26,
+    "MAXINPUT": 26,
+    "MINOUPUT": 1,
+    "MAXOUPUT": 1,
+    "VALW": 253
+  },
+  "cases": [
+    {
+      "case": "reference",
+      "original_cpp": 1.135285378841514,
+      "python": 1.135285378841514,
+      "difference": 0.0
+    },
+    {
+      "case": "input_9=0.7",
+      "original_cpp": 1.0828576244889225,
+      "python": 1.0828576244889223,
+      "difference": 2.220446049250313e-16
+    },
+    {
+      "case": "input_9=0.8",
+      "original_cpp": 1.1113864481405142,
+      "python": 1.1113864481405142,
+      "difference": 0.0
+    },
+    {
+      "case": "input_4=35",
+      "original_cpp": 1.1053023248757545,
+      "python": 1.1053023248757545,
+      "difference": 0.0
+    },
+    {
+      "case": "input_4=55",
+      "original_cpp": 1.1583014259458506,
+      "python": 1.1583014259458506,
+      "difference": 0.0
+    }
+  ],
+  "scope": "Appendix example execution only; final-module statistics and stellarator applicability unvalidated."
+}

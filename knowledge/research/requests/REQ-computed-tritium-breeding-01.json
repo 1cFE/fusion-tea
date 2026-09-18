@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-computed-tritium-breeding-01",
+  "question": "What published parametric neutronics model or reproducible benchmark can compute TBR from helium-cooled PbLi blanket thickness, composition and lithium enrichment, with validation and applicability adequate for the retained stellarator scenario?",
+  "consumer": "work/orchestration/goals/computed-tritium-breeding/goal.md",
+  "gap_type": "physical_method_and_validation",
+  "priority": "P1",
+  "where_to_look": ["UKAEA PROCESS official documentation and source", "EUROfusion KIT HCLL parametric neutronics publications", "OpenMC published PbLi benchmark studies"],
+  "limits": {"max_searches": 6, "max_captures": 3}
+}

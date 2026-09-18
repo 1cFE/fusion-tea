@@ -809,6 +809,54 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: e3b8d6ebff0bf8fddc1f5fb322e340a6bd00a74c0936f3b8f36949f05ec7374a
 - **Date Added**: 2026-09-17
 
+### Proof of principle of parametric stellarator neutronics modeling using Serpent2
+- **Type**: local_pdf
+- **Location**: knowledge/sources/proof_of_principle_of_parametric_stellarator_neutronics/
+- **Use for**: Assess published configuration-dependent stellarator TBR calculations and applicability to retained helium PbLi scenario. Publisher DOI 10.1088/1741-4326/ad4f9f; downloaded from Aalto university repository.
+- **Validation**: Inspect material definitions, thickness scan figures, transport benchmarks and geometry assumptions in original PDF.
+- **Caveat**: HELIAS parametric transport study; neither blanket technology nor topology transfers to Stellaris without evidence.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/breeding-serpent2.pdf
+- **Source ID**: 056e87c91c68a236ba34d59a071942a758bdd42908f9d203299f885580d29671
+- **Raw SHA256**: 056e87c91c68a236ba34d59a071942a758bdd42908f9d203299f885580d29671
+- **Raw Artifact SHA256**: 056e87c91c68a236ba34d59a071942a758bdd42908f9d203299f885580d29671
+- **Extracted Path**: knowledge/sources/proof_of_principle_of_parametric_stellarator_neutronics/
+- **Extract SHA256**: e09d1409608036e62d96fd425ab6f2ddcb5bc6a235efcfb55e54d2b6582ed11c
+- **Date Added**: 2026-09-18
+
+### Multiphysics analysis with CAD based parametric breeding blanket creation for rapid design iteration
+- **Type**: local_pdf
+- **Location**: knowledge/sources/multiphysics_analysis_with_cad_based_parametric_breeding/
+- **Use for**: Assess HCLL PbLi configuration-dependent TBR interpolation from enrichment and breeder plate geometry; source downloaded from UKAEA publications, Shimwell2019 Nuclear Fusion59 046019.
+- **Validation**: Verify composition, model geometry, TBR response surfaces, training points and independent validation on original PDF pages.
+- **Caveat**: Tokamak HCLL module and reactor calculations; transfer to generic stellarator blanket requires explicit geometry and material applicability evidence.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/breeding-shimwell2019.pdf
+- **Source ID**: 36a35c9c10ff51ac2647c85ea74318658a1556f6fd329d84f0385a8dfdeab0cf
+- **Raw SHA256**: 36a35c9c10ff51ac2647c85ea74318658a1556f6fd329d84f0385a8dfdeab0cf
+- **Raw Artifact SHA256**: 36a35c9c10ff51ac2647c85ea74318658a1556f6fd329d84f0385a8dfdeab0cf
+- **Extracted Path**: knowledge/sources/multiphysics_analysis_with_cad_based_parametric_breeding/
+- **Extract SHA256**: 87fbb5905dfd8c12342c9a74d46e0956e5e0280d7a24aefa3ddf0e7ca99ce55a
+- **Date Added**: 2026-09-18
+
+### Neutronic fusion thesis Martinez Arroyo Javier
+- **Type**: local_pdf
+- **Location**: knowledge/sources/neutronic_fusion_thesis_martinez_arroyo_javier/
+- **Use for**: Investigate candidate HCLL surrogate equations and benchmark availability for computed breeding. Retrieved from UPC institutional repository handle2099.1/17426.
+- **Validation**: Check original title, model inputs, surrogate coefficients, independent tests and applicable geometry before relying on any calculation.
+- **Caveat**: Candidate student thesis; source content not yet assessed and search snippet alone is not authority.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/breeding-hcll-thesis.pdf
+- **Source ID**: 0fd38e685a68e751f8d21f0b3248cb4ac3b1d406d8b1d22ea8229b0689102abc
+- **Raw SHA256**: 0fd38e685a68e751f8d21f0b3248cb4ac3b1d406d8b1d22ea8229b0689102abc
+- **Raw Artifact SHA256**: 0fd38e685a68e751f8d21f0b3248cb4ac3b1d406d8b1d22ea8229b0689102abc
+- **Extracted Path**: knowledge/sources/neutronic_fusion_thesis_martinez_arroyo_javier/
+- **Extract SHA256**: 6314d83642dcc41468213c1963cf00efedc914fd25e9d7470f920c18f6b8d4a7
+- **Date Added**: 2026-09-18
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md
