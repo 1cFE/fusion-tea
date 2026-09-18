@@ -226,3 +226,7 @@ Native design-model workflow · conditional quantity and accounting ledger · fo
 ### Round 2 verification note — 2026-09-18
 
 [AGENT] After appending accepted disposition rows, the native discovery join check returns26passes and the same existing breeding-record parse failure as Round1. Both touched historical studies pass. `evidence/round2/discovery-join-tests.log` retains the result. The two checks in `tests/orchestration/test_goal_contract.py` pass, but their actual coverage is repository ADR/register coherence and narrative links, not this equipment model. Local answer links were separately checked. `preservation.json` confirms the unchanged frozen archive and scientific paths. No full-suite result is claimed.
+
+### Round 2 evidence checkpoint — 2026-09-18
+
+Round2 evidence is committed at `05737d88`: goal records and `evidence/round2/`, WI-067 design/candidate, three new native request/run trees, nine registered source extractions and their native index/manifest entries, and accepted discovery dispositions. This pins the previously unpinned references above. Original image/extraction artifacts are retained without rewriting their source content. The checkpoint contains no production model or package change and is not a promoted study pin. `.project/CURRENT_WORK.md` retains the context update alongside unrelated uncommitted owner work. No merge, push, reveal, archive or formal goal closure occurred.
