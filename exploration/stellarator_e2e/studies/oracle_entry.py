@@ -567,9 +567,10 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "cycle_margin_low": f"{P}turbine__cycle__margin_low",
     "cycle_margin_high": f"{P}turbine__cycle__margin_high",
     "cycle_domain_product": f"{P}turbine__cycle__domain_product",
-    # WI-046: CAS72 is the lifecycle calendar's output (the retired cas72_calc__cost
-    # channel is gone); the other ten calendar channels beside it.
+    # WI-067: retain the WI-046 calendar amount independently beside the total
+    # replacement account, which also includes cooling replacements.
     "cas72_annual": f"{P}cooling_annual__cas72_total",
+    "calendar_cas72_annual": f"{P}calendar__cas72_annual",
     "calendar_availability": f"{P}calendar__availability",
     "calendar_coil_life_margin_fpy": f"{P}calendar__coil_life_margin_fpy",
     "calendar_replacement_pv": f"{P}calendar__replacement_pv",
