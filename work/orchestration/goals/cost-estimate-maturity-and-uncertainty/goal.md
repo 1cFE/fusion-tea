@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — 2026-09-19. [OWNER] Explicit grounding and execution authorization in `evidence/owner-prompt.md` (copied from `/tmp/run-goal-estimate-uncertainty-prompt.md`; unpinned; no native digest).
+`closed` — 2026-09-19. [OWNER-VERBATIM] “great. please close the goal”. Closed on the independently reviewed R12.S = 3, PASS result in `answer.md` and `evidence/final-review-and-grade.md`, committed at `cd712fc4`. Initial grounding authorization is retained in `evidence/owner-prompt.md@b1effd24`.
 
 ## Question
 
@@ -53,3 +53,5 @@
 ## Amendments
 
 [AGENT] 2026-09-19 technical completion: fresh independent R12.S = 3, PASS; see `answer.md`, `evidence/final-review-and-grade.md` and Round 1 result/review. Grounding/source evidence is committed at `b1effd24`; audited candidate `fe720553`; frozen study/integration/reproduction `82bf78f8`. Status remains `grounded` because the owner retains formal closure. No requirement, invariant or reserved gate changed.
+
+[OWNER-VERBATIM] 2026-09-19: “great. please close the goal”. This resolves the formal goal-closure gate on the reviewed result. Remaining scientific limitations and separate reserved gates retain their recorded dispositions.

@@ -100,4 +100,4 @@ The major exclusions are fabrication-analogy transfer, pressure/material qualifi
 
 The largest useful next step is scope-matched exchanger and piping fabrication evidence, followed by qualified geometry and pressure/material design. Magnet procurement/manufacturing quotations and reliability evidence would address other major gaps. These are follow-up needs, not amounts hidden inside the conditional interval.
 
-Formal goal closure remains the owner's decision. ARIES remains sealed, the published r2 comparison is preserved, and no merge or push is authorized by this result.
+[OWNER-VERBATIM] “great. please close the goal”. **Formally closed on 2026-09-19** on the independently reviewed R12.S = 3, PASS result. The limitations above remain part of that result. ARIES remains sealed, the published r2 comparison is preserved, and no merge or push is authorized by this closure.
