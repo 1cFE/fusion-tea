@@ -1,6 +1,6 @@
 # Fuel-processing capital now follows operating exhaust flow
 
-**The requested R10.S2 target is met.** The [fresh independent grade](evidence/final-review-and-grade.md) assigns **R10.S = 2** against the unchanged rubric. The adopted conventional estimate follows calculated running D+T exhaust through a source-supported relationship into plant capital and electricity cost. Audited model `2a50d3ec` and frozen study `2bae7fb7` preserve the exact result. Formal goal closure remains owner-held.
+**The requested R10.S2 target is met.** The [fresh independent grade](evidence/final-review-and-grade.md) assigns **R10.S = 2** against the unchanged rubric. The adopted conventional estimate follows calculated running D+T exhaust through a source-supported relationship into plant capital and electricity cost. Audited model `2a50d3ec` and frozen study `2bae7fb7` preserve the exact result. **Closed by the owner on 2026-09-19:** “Please close the goal”.
 
 ## Included processing and capacity
 
@@ -46,4 +46,4 @@ The [focused study report](../../../../exploration/stellarator_e2e/studies/20260
 
 The first attempt admitted 15 active cases and rejected five legacy controls before evaluation because of Boolean input encoding. Its original store and evidence remain. The successful retry used the equivalent accepted numeric encoding in a fresh store, with no case filtering or model change. The immutable study is committed at `2bae7fb7`; cold reproduction passes all 20 cases and 19,120 native scalar comparisons. The independent final review passes the frozen evidence, interpretation and all seven finding dispositions. Its four-case cold check reproduces 3,824 native scalar values and every predicate.
 
-ARIES remains sealed, published r2 and historical studies are preserved, and no merge or push occurred. Formal goal closure remains the owner's decision.
+ARIES remains sealed, published r2 and historical studies are preserved, and no merge or push occurred. The owner formally closed this goal on 2026-09-19; see the [closure record](trail.md#goal-closure--2026-09-19).

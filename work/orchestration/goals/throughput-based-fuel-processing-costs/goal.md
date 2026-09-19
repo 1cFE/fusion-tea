@@ -2,7 +2,7 @@
 
 ## Status
 
-Grounded, 2026-09-19. [OWNER] The retained owner prompt authorizes grounding and execution using this slug.
+`closed` — 2026-09-19. [OWNER-VERBATIM] “Please close the goal”. Closed on the independently reviewed R10.S2 result, audited model `2a50d3ec` and committed study `2bae7fb7`. See [closure record](trail.md#goal-closure--2026-09-19) and [independent grade](evidence/final-review-and-grade.md). The conditional processing scope and remaining limitations are retained.
 
 ## Question
 
@@ -56,3 +56,7 @@ Grounded, 2026-09-19. [OWNER] The retained owner prompt authorizes grounding and
 ### Amendment 2026-09-19 — resolves process-adoption gate
 
 [OWNER-VERBATIM] “yes, adopt and continue”. The owner authorizes adopting the reviewed conditional conventional cleanup/cryogenic-separation cost basis and continuing implementation. [AGENT] (ratified by owner, 2026-09-19) The process/feed and four-row pricing assumptions retain their agent provenance and the limitations in evidence/proposed-cost-scope.md; approval does not certify feed purity, recovery, completeness or commercial qualification. All other reserved gates and invariants remain unchanged.
+
+### Amendment 2026-09-19 — owner closes the goal
+
+[OWNER-VERBATIM] “Please close the goal”. The owner exercises the close rule after the delivered answer and independent R10.S2 PASS. The status above records this closure; other reserved decisions remain separate.
