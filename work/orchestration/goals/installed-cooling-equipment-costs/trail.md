@@ -354,3 +354,7 @@ Native run-study. Executor must judge generated indicators before baseline, reco
 - **Disposition landing:** Append joined rows under the same five discovery ids; accept L-007–009 below. No follow-up semantic task is scheduled within the closed round. Scope and preservation checks pass.
 - **Remaining uncertainty:** Conceptual source transfers, assumed layout/walls/lives, missing auxiliary/inventory scope, routine-service/outage coverage and the Row8 thermal/price interfaces remain stated limits. No S4, plant-feasibility or complete-price claim.
 - **Recommendation:** Technical goal is answered at the requested S3 target. Formal goal closure, reveal, frozen-comparison replacement and native work-item archival remain owner decisions. No merge or push.
+
+### Owner closure — 2026-09-18
+
+[OWNER-VERBATIM] “ok close the goal”. [OWNER] Formally close the goal on the independently reviewed R7.S3 result under the unchanged rubric. Evidence: `answer.md`, `evidence/round3/final-review-and-grade.md`, final evidence commit `a89809de`, and frozen study `5b956a82`. All three rounds are closed and the accepted findings and learnings are recorded. Conceptual source transfers, layout and construction assumptions, unpriced auxiliary scope and the unresolved conversion interface remain explicit limitations. ARIES remains sealed and frozen r2 is preserved; reveal, comparison replacement and work-item archival remain separate actions. No merge or push.

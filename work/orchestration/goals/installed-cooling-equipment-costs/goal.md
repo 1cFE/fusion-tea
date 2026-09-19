@@ -2,9 +2,9 @@
 
 ## Status
 
-`grounded` — 2026-09-18. [OWNER] The initiating prompt supplies the slug, question, evidence, acceptance conditions and authority to proceed.
+`closed` — 2026-09-18, by explicit owner authorization recorded below. Closed on the independently reviewed R7.S3 result and its stated engineering and cost limitations.
 
-[AGENT] Technical answer completed on 2026-09-18: independent R7.S=3, PASS; see `answer.md`, frozen study `5b956a82`, and `evidence/round3/final-review-and-grade.md`. The native goal remains grounded/open for the owner's formal closure.
+[AGENT] Technical answer completed on 2026-09-18: independent R7.S=3, PASS; see `answer.md`, frozen study `5b956a82`, and `evidence/round3/final-review-and-grade.md`. The owner has formally closed the goal.
 
 ## Question
 
@@ -61,3 +61,7 @@
 ### Amendment 2026-09-18 — intermediate coolant decision
 
 [OWNER-VERBATIM] “yes. proceed”, replying to the explicit request to adopt HITEC molten salt at270–465°C in the intermediate loop while retaining primary helium. [AGENT] The proposed HITEC scenario is ratified by the owner; its detailed geometry, pressure, price and lifecycle assumptions still require engineering review. This resolves the Round2 material gate and does not authorize reveal, frozen-comparison replacement or formal goal closure.
+
+### Amendment 2026-09-18 — owner closure
+
+[OWNER-VERBATIM] “ok close the goal”. [OWNER] Formally close installed-cooling-equipment-costs on the reviewed R7.S3 answer. The accepted limitations remain part of that answer. See the owner closure entry in `trail.md`; final evidence commit `a89809de`, frozen study `5b956a82`.
