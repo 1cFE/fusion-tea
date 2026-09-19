@@ -238,3 +238,23 @@ def test_cooling_aisle_changes_do_not_resize_fourteen_internal_door_apertures(ai
     net_wall=x['cooling_annex_super_concrete']-gross*f.DEFAULTS['conventional_roof']
     aperture_area=(solid_wall-net_wall)/f.DEFAULTS['conventional_wall']
     assert aperture_area==pytest.approx((14*6+2*17)*height)
+
+
+def test_native_fluence_owner_drives_calendar_and_facility_demand():
+    from exploration.stellarator_e2e.studies import oracle_entry as seam
+
+    key=seam.P+'blanket__first_wall__fluence_limit'
+    defaults=seam._compute({})
+    default_point=seam._oracle_overrides({key:18.})
+    assert default_point=={'fluence_limit':18.}
+    assert seam._compute(default_point)==defaults
+    no_replacements=seam._compute(seam._oracle_overrides({key:180.}))
+    assert all(math.isfinite(no_replacements[k]) for k in seam.ORACLE_OUTPUT_TO_CHANNEL)
+    assert defaults['calendar_n_replacements']>0
+    assert no_replacements['calendar_n_replacements']==0
+    assert no_replacements['calendar_cas72_annual']==0
+    assert no_replacements['facility_calendar_event_count']==0
+    assert no_replacements['facility_dirty_store_required']==0
+    assert no_replacements['facility_initial_clean_required']>0
+    assert no_replacements['facility_initial_margin_days']>0
+    assert seam.vs.IN['fluence_limit']==18.

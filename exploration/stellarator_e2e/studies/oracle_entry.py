@@ -49,6 +49,7 @@ P = "stellarator_09__stellaris__"
 #: are bound by the `_in` convention, so codegen projects one entry point per
 #: authored attribute). Plant R also owns the live magnet radius.
 ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
+    f"{P}blanket__first_wall__fluence_limit": "fluence_limit",
     f"{P}heat_transport__equipment_enabled": "cooling_enabled",
     f"{P}heat_transport__equipment_layout_multiplier": "cooling_layout_multiplier",
     f"{P}heat_transport__equipment_tube_wall": "cooling_tube_wall",
