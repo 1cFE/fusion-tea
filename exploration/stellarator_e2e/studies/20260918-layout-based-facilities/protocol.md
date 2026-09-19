@@ -1,0 +1,9 @@
+# Study protocol and reproduction
+
+[AGENT executor account] Read `record.md` for the 17-section record and `report.md` for the engineering reading. Exact owner intake/rulings, copied source/design/assurance evidence, manifest, package contracts, defaults and proposals are retained in `preparation/`. The accepted integration receipt and execution release govern the native run; no historical comparison is replaced.
+
+The executed route is `study.py` plus `execution/workflow.py`: prepare → baseline/preflight → independent scan → coordinator window selection → native execution → verification → export. All points use the stock prepared-list lifecycle and preserve failed predicates. `execution/facility_artifacts.py` reconstructs the diagnostic helper’s inputs from captured pipeline bindings and native outputs/defaults, checks every diagnostic scalar against its native case, then exports ledgers and the site plot. Those artifacts are production replay evidence, not an independent source of physics.
+
+`execution/record_results.py` only reads retained artifacts and writes this protocol, report, record and proposed findings. It refuses missing evidence, failed oracle verification or an existing frozen snapshot. It never evaluates points, alters results or writes DISCOVERY_LOG. The coordinator owns final review, source/record completeness, discovery registration and write-once snapshot/freeze.
+
+To reproduce, use the frozen package and toolchain identities resolved in snapshot.json, the captured entry keys and the project sealed `.codex-test/run` environment. Do not substitute a later live package or silently regenerate old evidence. The indicators cannot establish monotonicity, same-quantity identity across names or intra-module dependency. Both sound-negative price/unit axes require the captured owner ruling; their scientific gaps remain despite that ruling.

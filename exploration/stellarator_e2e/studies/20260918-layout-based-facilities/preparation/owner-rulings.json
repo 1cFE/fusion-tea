@@ -1,0 +1,18 @@
+[
+  {
+    "axis": "buildings__civil_rate_multiplier",
+    "authority": "OWNER",
+    "ruling": "sensitivity",
+    "evidence": "preparation/owner-ruling.md",
+    "quote": "yes run both",
+    "date": "2026-09-19"
+  },
+  {
+    "axis": "buildings__tonne_interpretation_kg",
+    "authority": "OWNER",
+    "ruling": "sensitivity",
+    "evidence": "preparation/owner-ruling.md",
+    "quote": "yes run both",
+    "date": "2026-09-19"
+  }
+]

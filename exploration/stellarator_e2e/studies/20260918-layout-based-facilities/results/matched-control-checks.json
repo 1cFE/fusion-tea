@@ -1,0 +1,165 @@
+{
+  "outcome": "pass",
+  "pairs": [
+    {
+      "pair": "default14",
+      "legacy_case": "20260918-layout-based-facilities:c0000",
+      "layout_case": "20260918-layout-based-facilities:c0001",
+      "entering_comparisons": 380,
+      "entering_mismatches": [],
+      "identical_physical_channels": 662,
+      "all_predicates_identical": true,
+      "changed_channels": {
+        "stellarator_09__stellaris__buildings__facility_accounts__cost": {
+          "legacy": 652635305.4726406,
+          "layout": 799758795.94032
+        },
+        "stellarator_09__stellaris__buildings__layout__cost_mode": {
+          "legacy": 0.0,
+          "layout": 1.0
+        },
+        "stellarator_09__stellaris__cas20_capital__cas20_capital": {
+          "legacy": 13387161736.232565,
+          "layout": 13548997575.747013
+        },
+        "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency": {
+          "legacy": 12170147032.938696,
+          "layout": 12317270523.406376
+        },
+        "stellarator_09__stellaris__cas90_1cfe_calc__cas90": {
+          "legacy": 1845908016.331101,
+          "layout": 1866444684.5447419
+        },
+        "stellarator_09__stellaris__contingency__cost": {
+          "legacy": 1217014703.2938697,
+          "layout": 1231727052.3406377
+        },
+        "stellarator_09__stellaris__facility_preconstruction__cost": {
+          "legacy": 18511098.37210757,
+          "layout": 16901536.908759248
+        },
+        "stellarator_09__stellaris__facility_shipping__exclusion": {
+          "legacy": 0.0,
+          "layout": 786234675.5343521
+        },
+        "stellarator_09__stellaris__idc__cost": {
+          "legacy": 5045216136.872569,
+          "layout": 5101346739.780397
+        },
+        "stellarator_09__stellaris__indirect__cost": {
+          "legacy": 3569909796.3286843,
+          "layout": 3613066020.1992035
+        },
+        "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe": {
+          "legacy": 265.71491521905386,
+          "layout": 268.2888502744632
+        },
+        "stellarator_09__stellaris__lcoe_calc__lcoe": {
+          "legacy": 270.82387460276726,
+          "layout": 273.4546494372188
+        },
+        "stellarator_09__stellaris__overnight_capital__overnight_capital": {
+          "legacy": 17860732458.743668,
+          "layout": 18059442217.470905
+        },
+        "stellarator_09__stellaris__shipping_scope__facility_exclusion": {
+          "legacy": 0.0,
+          "layout": 786234675.5343521
+        },
+        "stellarator_09__stellaris__shipping_scope__remaining_shipping_base": {
+          "legacy": 8164696557.5424595,
+          "layout": 7540297721.522555
+        },
+        "stellarator_09__stellaris__supplementary__cost": {
+          "legacy": 843766926.6379764,
+          "layout": 839094183.4435968
+        },
+        "stellarator_09__stellaris__total_capital__total_capital": {
+          "legacy": 17860732458.743668,
+          "layout": 18059442217.470905
+        }
+      }
+    },
+    {
+      "pair": "selected18",
+      "legacy_case": "20260918-layout-based-facilities:c0002",
+      "layout_case": "20260918-layout-based-facilities:c0003",
+      "entering_comparisons": 380,
+      "entering_mismatches": [],
+      "identical_physical_channels": 662,
+      "all_predicates_identical": true,
+      "changed_channels": {
+        "stellarator_09__stellaris__buildings__facility_accounts__cost": {
+          "legacy": 619666447.4702593,
+          "layout": 814704648.6220894
+        },
+        "stellarator_09__stellaris__buildings__layout__cost_mode": {
+          "legacy": 0.0,
+          "layout": 1.0
+        },
+        "stellarator_09__stellaris__cas20_capital__cas20_capital": {
+          "legacy": 15726413726.703478,
+          "layout": 15940955747.970491
+        },
+        "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency": {
+          "legacy": 14296739751.548616,
+          "layout": 14491777952.700447
+        },
+        "stellarator_09__stellaris__cas90_1cfe_calc__cas90": {
+          "legacy": 2160367142.6362176,
+          "layout": 2188017965.813947
+        },
+        "stellarator_09__stellaris__contingency__cost": {
+          "legacy": 1429673975.1548617,
+          "layout": 1449177795.2700448
+        },
+        "stellarator_09__stellaris__facility_preconstruction__cost": {
+          "legacy": 18508392.5366243,
+          "layout": 16900711.423865624
+        },
+        "stellarator_09__stellaris__facility_shipping__exclusion": {
+          "legacy": 0.0,
+          "layout": 802675113.4842983
+        },
+        "stellarator_09__stellaris__idc__cost": {
+          "legacy": 5904692472.8466425,
+          "layout": 5980267408.357984
+        },
+        "stellarator_09__stellaris__indirect__cost": {
+          "legacy": 4193710327.120928,
+          "layout": 4250921532.7921314
+        },
+        "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe": {
+          "legacy": 304.6404616794097,
+          "layout": 308.11352031932773
+        },
+        "stellarator_09__stellaris__lcoe_calc__lcoe": {
+          "legacy": 310.63266320418484,
+          "layout": 314.1824168194784
+        },
+        "stellarator_09__stellaris__overnight_capital__overnight_capital": {
+          "legacy": 20903392371.61906,
+          "layout": 21170937639.678
+        },
+        "stellarator_09__stellaris__shipping_scope__facility_exclusion": {
+          "legacy": 0.0,
+          "layout": 802675113.4842983
+        },
+        "stellarator_09__stellaris__shipping_scope__remaining_shipping_base": {
+          "legacy": 9100018258.928528,
+          "layout": 8511885166.711243
+        },
+        "stellarator_09__stellaris__supplementary__cost": {
+          "legacy": 923421616.254463,
+          "layout": 920821338.4879472
+        },
+        "stellarator_09__stellaris__total_capital__total_capital": {
+          "legacy": 20903392371.61906,
+          "layout": 21170937639.678
+        }
+      }
+    }
+  ],
+  "failures": [],
+  "scope": "Matched cost selection and entering replay parity. Does not qualify unchanged physical assumptions."
+}
