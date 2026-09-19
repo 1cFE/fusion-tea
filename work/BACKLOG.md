@@ -350,6 +350,12 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-068
+  name: layout-based-facilities
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -441,3 +447,4 @@ standalone:
 | WI-065 | Divertor deposited-power and peak-area account | standard | P1 | backlog |  |
 | WI-066 | computed-tritium-breeding | standard | P1 | backlog |  |
 | WI-067 | installed-cooling-equipment-costs | standard | P1 | backlog |  |
+| WI-068 | layout-based-facilities | standard | P1 | backlog |  |
