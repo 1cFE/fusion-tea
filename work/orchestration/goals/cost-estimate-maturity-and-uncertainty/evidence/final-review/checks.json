@@ -1,0 +1,22 @@
+{
+  "verdict": "PASS",
+  "commit": "82bf78f8",
+  "snapshot_sha256": "75fcaad1c0b01659235973d323d0e01871ce1c8949bbf10515f07419453bb0dd",
+  "committed_artifacts_verified": 565,
+  "current_artifacts_identical": 565,
+  "numeric_equalities": 71442,
+  "export_native_comparisons": 69708,
+  "cases": 74,
+  "contingency_pairs": 36,
+  "source_LCOE_bounds": [
+    244.8821006354374,
+    290.3758373902396
+  ],
+  "source_overnight_bounds": [
+    15947609141.758432,
+    19304453007.558083
+  ],
+  "repair_existing_cells_unchanged": true,
+  "rubric_unchanged": true,
+  "scope": "Committed custody and independently authored arithmetic/export checks; reuse prior audited execution and frozen reproduction, no new physical/source validation."
+}

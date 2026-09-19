@@ -100,3 +100,49 @@ Study author will own only the new study record and native first-sighting discov
 ### Evidence checkpoint — 2026-09-19
 
 Source, account, maturity/method, independent review and uncertainty-register evidence are committed at `b1effd24`. Native research acquisition custody is clarified in `evidence/research-custody.md`: the original18R capture failure remains; three later standalone native registrations supply the adopted generic framework. The original request has a durable copy without rewriting its run history. This is a coordinator custody check, not a new scientific verdict.
+
+### T-004 audit checkpoint — 2026-09-19
+
+Independent implementation PASS is committed with the candidate at `fe720553`. `work/active/WI-071_shared-fabrication-rate-for-estimate-uncertainty/audit.md@fe720553` checks exact package/model identities, source units, four-bill propagation, replacement cash flows, delivered exclusions, contingency, baseline preservation and affected evidence. Author test failures and their caller-only corrections remain recorded; static diagnostic identities are unchanged. The native integration invocation is `evidence/integrate-candidate.sh fe720553`, with output under `evidence/integration/`. No study execution release has occurred.
+
+### T-004 return — 2026-09-19
+
+Outcome: COMPLETE. Audited WI-071 candidate `fe720553` passes all ten native integration gates; `evidence/integration/integration_return.json` names semantic `ea1555ea133db8ed7ba1c638b29ddf540ba99d811bfcf7d9ef9454b626d3a28a`, executable `b032da4a3971979792bc024bf9cd1a41a2d83d340bad5b59ef3e1a9aeaa77236` and pin `e48d5218b6e3be2775a94269a461dccd259fccc5fc41fed7c135dc1336bfe284`. The seam explicitly did not run manifest read-set coverage; inherited static failures and22 unmapped numeric channels remain limitations.
+
+Finding: one verified study-ready candidate preserves the nominal estimate and propagates the reviewed shared source input. Decision/reason: promote this single pin for T-005, with actual axis/indicator and oracle-window checks before native study execution. Tier: execution detail. Decider: coordinator on audited/integrated evidence. Changed: `evidence/study-execution-release.json`; scientific default and financial policy unchanged.
+
+### T-005 axis ruling — 2026-09-19
+
+Finding: all six owner-level input groups trace through the actual released package; four have no constraint response and retain native finding IDs1–4. Decision/reason: authorize reviewed sensitivity framing under the owner's explicit study authority, preserving source/convention/stress populations and all four gaps. Tier: execution detail. Decider: coordinator using prior independent method and74-case scope review. Changed: native `reviews/axis-rulings.json`; baseline/preflight and full oracle scan released, full study execution still awaits its window check.
+
+### T-005 window ruling — 2026-09-19
+
+Finding: all six native baseline/preflight gates pass and the independent oracle evaluates all74 proposed cases without refusal; every case retains the same four failed plant predicates. Decision/reason: run the entire reviewed finite list without filtering or changing its source, diagnostic or stress populations. Tier: execution detail. Decider: coordinator. Changed: native `reviews/window-release.json`; preliminary oracle prices remain scan evidence rather than final study results. Snapshot freeze waits for the completed result check.
+
+### T-005 pre-commit record correction — 2026-09-19
+
+Finding: coordinator native record checks found a missing `arm_id` CSV column after the first candidate snapshot was written, before any study commit. Two other record checks passed. Decision/reason: repair only export metadata and preserve original snapshot/CSV/failure evidence in `evidence/precommit-record-repair/`. The study runbook §15 starts immutability at commit; this correction is to an uncommitted candidate. Tier: execution detail, mechanical record-format correction. Decider: coordinator. No candidate inputs, model, numerical results or interpretation change. A passing record check and new snapshot custody check are required before commit; the original failure is not erased.
+
+### T-005 return — 2026-09-19
+
+Outcome: COMPLETE. Native study `exploration/stellarator_e2e/studies/20260919-cost-estimate-maturity-and-uncertainty/record.md@82bf78f8` retains all 74 cases: 36 source/interpretation alternatives, 36 matched contingency diagnostics and two separate downtime stresses. No native execution was rejected or failed; none passes all plant constraints. The four existing failures persist. Verification passes 69,116 mapped scalar and 1,850 predicate comparisons plus 2,887 account/dependency checks. All three record checks pass after the documented pre-commit export-label correction. Retained-package reproduction passes 70,744 native output comparisons across all 74 cases and all verdicts.
+
+The final snapshot SHA256 is `75fcaad1c0b01659235973d323d0e01871ce1c8949bbf10515f07419453bb0dd`; all 565 listed artifacts are included in the scoped study commit. Source cases yield $15.948–19.304 billion overnight and $244.882–290.376/MWh. These are conditional partial ranges, excluding unbounded transfer, missing scope and unsupported reliability uncertainty. The native report/synthesis and `answer.md` preserve the same meaning.
+
+### Round 1 result — 2026-09-19
+
+Intent: the technical study and estimate basis are delivered; the explicit independent R12.S grade remains pending this round's fresh review. Task sequence: T-001 account/interface review; T-002 registered source and maturity/method research; T-003 fresh pre-implementation method review; T-004 WI-071 implementation, independent audit and ten-gate integration; T-005 reviewed finite native study, verification, correction of uncommitted CSV metadata and frozen reproduction. One promoted pin and one committed study were used.
+
+Last semantic outcome: valid study reading, with selected source uncertainty quantified and major exclusions/engineering failures preserved. Stop reason: a valid study reading closes the round under the runbook. No further scientific implementation is proposed within this round. Evidence: candidate `fe720553`, source/method evidence `b1effd24`, study/integration/reproduction `82bf78f8`, `answer.md`, and native study report/synthesis.
+
+Proposed learning delta and all six finding dispositions: `evidence/finding-dispositions.md`. Research gaps remain open with concrete next evidence and discipline ownership; declared seams retain financial and physical claim limits. Discovery updates will append under the committed study's existing IDs after acceptance. No follow-up semantic execution is released by these proposals. Fresh review will assess the unchanged R12.S target, final result, dispositions and round fidelity together. Formal goal closure remains owner-held.
+
+### Checkpoint C-001.r1 — 2026-09-19
+
+Reviewer: fresh non-author `final_grade`. Reading: completed native study/report/synthesis `82bf78f8`, coordinator answer and Round 1 result. Dispositions: all six entries and four proposed learnings in `evidence/finding-dispositions.md`. Verdict: PASS in `evidence/final-review-and-grade.md`; no further scientific implementation is required within this goal. The review accepts open research routes and declared limitations without claiming they are solved or commissioning dependent work. Changes: accepted dispositions appended under the same six committed native IDs; accepted learnings recorded below. Formal closure remains owner-held.
+
+### Round 1 review — 2026-09-19
+
+Fresh reviewer `final_grade`: PASS, **R12.S = 3** against the unchanged rubric. Coverage: functional account depth, provisional maturity, actual quantified uncertainty treatment, source-review reuse, identity/financial/monetary scope, full population and failures, all six dispositions, four learning entries, task fidelity and correction classification. Independent committed-blob custody checks cover all 565 snapshot artifacts. Independent arithmetic/export checks cover every case and all 36 contingency pairs, with 71,442 equalities. Prior source review, WI-071 audit, ten-gate integration, oracle checks and frozen reproduction are reused by matching identity and scope.
+
+The CSV correction is accepted as pre-commit mechanical metadata work with every original cell unchanged. Static L2/L6 failures, 22 unmapped numeric channels, omitted read-set coverage, significant unbounded uncertainty and missing equipment remain disclosed. S4 is not established and was not required. No required S3 element remains missing. Accepted learning delta is in `learnings.md`; all six discovery dispositions have landed under their original IDs. The technical question is answered. Recommendation: owner may formally close the goal on this qualified S3 result; no further round is warranted for the authorized target.

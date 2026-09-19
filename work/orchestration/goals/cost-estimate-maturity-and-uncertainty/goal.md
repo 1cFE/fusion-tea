@@ -51,3 +51,5 @@
 [OWNER] Only the owner formally closes the goal after receiving reviewed results and unresolved gaps.
 
 ## Amendments
+
+[AGENT] 2026-09-19 technical completion: fresh independent R12.S = 3, PASS; see `answer.md`, `evidence/final-review-and-grade.md` and Round 1 result/review. Grounding/source evidence is committed at `b1effd24`; audited candidate `fe720553`; frozen study/integration/reproduction `82bf78f8`. Status remains `grounded` because the owner retains formal closure. No requirement, invariant or reserved gate changed.
