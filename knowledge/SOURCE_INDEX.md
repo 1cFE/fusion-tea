@@ -1305,6 +1305,86 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: f4d23e656ea77471323ab8f7a9e6237f2328d06dd8660f1285109e03ffa0957f
 - **Date Added**: 2026-09-19
 
+### Bartlit 1983 Subsystem cost data for the tritium systems test assembly
+- **Type**: local_pdf
+- **Location**: knowledge/sources/bartlit_1983_subsystem_cost_data_for_the_tritium_systems/
+- **Use for**: Historical DT cleanup and isotope separation equipment costs and explicit scaling guidance for throughput-based-fuel-processing-costs.
+- **Validation**: Inspect original Tables I II III and IV; distinguish hydrogen isotope total mass flow from tritium flow and cost years per subsystem.
+- **Caveat**: Experimental 1977-1982 construction costs; similar-system extrapolation does not establish modern power-plant reliability or complete installed scope.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/fuel-tsta.pdf
+- **Source ID**: 9c70185c020dd5e3bca0163811d58ecc7d76258a95ac84753dfa839c5b33ebad
+- **Raw SHA256**: 9c70185c020dd5e3bca0163811d58ecc7d76258a95ac84753dfa839c5b33ebad
+- **Raw Artifact SHA256**: 9c70185c020dd5e3bca0163811d58ecc7d76258a95ac84753dfa839c5b33ebad
+- **Extracted Path**: knowledge/sources/bartlit_1983_subsystem_cost_data_for_the_tritium_systems/
+- **Extract SHA256**: 6d1dd0dd6a80bc5809ba5c36226e78469dba1c5cbebbbfebec2cb44e75d55a70
+- **Date Added**: 2026-09-19
+
+### Bartlit 1983 TSTA subsystem costs original OSTI paper
+- **Type**: local_pdf
+- **Location**: knowledge/sources/bartlit_1983_tsta_subsystem_costs_original_osti_paper/
+- **Use for**: Original costs and flow scaling for DT fuel cleanup and isotope separation.
+- **Validation**: Check original Tables I to IV visually and preserve component-specific expenditure years.
+- **Caveat**: Historical experimental plant; scaling limited to similar systems. Earlier UNT capture is an unusable challenge page.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/fuel-tsta-osti.pdf
+- **Source ID**: 01ee45acad5e8796c02df945102f364e1f237be39dc9e9adb3dfd5549254f9b3
+- **Raw SHA256**: 01ee45acad5e8796c02df945102f364e1f237be39dc9e9adb3dfd5549254f9b3
+- **Raw Artifact SHA256**: 01ee45acad5e8796c02df945102f364e1f237be39dc9e9adb3dfd5549254f9b3
+- **Extracted Path**: knowledge/sources/bartlit_1983_tsta_subsystem_costs_original_osti_paper/
+- **Extract SHA256**: ac13893ea56ee8699e98bf1e2ca662c3230e7e4d09529aa2cb01979c9eefbee2
+- **Date Added**: 2026-09-19
+
+### Bartlit Denton Sherman Hydrogen isotope distillation for TSTA
+- **Type**: local_pdf
+- **Location**: knowledge/sources/bartlit_denton_sherman_hydrogen_isotope_distillation_for/
+- **Use for**: Original DT feed composition pressure product streams refrigeration and redundant instrumentation for TSTA isotope separation cost applicability.
+- **Validation**: Check original PDF pages 2 3 5 and 6 visually; separate design refrigerator specification from later as-built cost paper.
+- **Caveat**: Prototype four-column design; no evidence for redundant processing trains or modern commercial plant qualification.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/fuel-tsta-iss.pdf
+- **Source ID**: 1f3833667dd103f8a25fa114794a811f0c74ffd2a08aecf0563c0cc08cb0fa81
+- **Raw SHA256**: 1f3833667dd103f8a25fa114794a811f0c74ffd2a08aecf0563c0cc08cb0fa81
+- **Raw Artifact SHA256**: 1f3833667dd103f8a25fa114794a811f0c74ffd2a08aecf0563c0cc08cb0fa81
+- **Extracted Path**: knowledge/sources/bartlit_denton_sherman_hydrogen_isotope_distillation_for/
+- **Extract SHA256**: f1e1b4d761c18a69b3af3ac20bfb24e1c05d9ec830adb8c7d4130348c0d6041c
+- **Date Added**: 2026-09-19
+
+### Ladd et al ITER Fuel Cycle conventional long pulse processing design
+- **Type**: local_pdf
+- **Location**: knowledge/sources/ladd_et_al_iter_fuel_cycle_conventional_long_pulse/
+- **Use for**: T-002 actual process capacity and nominal DT composition supporting conceptual transfer of conventional cleanup and isotope separation.
+- **Validation**: Inspect original pages1 3 and4 for50/50DT nominal scenario317mole per hour long-pulse duty and PdAg impurity separation with ISS.
+- **Caveat**: Historical ITER design and dynamic simulation; long-pulse operating capacity is not demonstrated continuous commercial reliability and source carries no applicable cost quote.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/fuel-iter-cycle.pdf
+- **Source ID**: 56880453c4bd069d62dd9db44e115ff07962f2dda5ebb1ff66e216063cd4a00a
+- **Raw SHA256**: 56880453c4bd069d62dd9db44e115ff07962f2dda5ebb1ff66e216063cd4a00a
+- **Raw Artifact SHA256**: 56880453c4bd069d62dd9db44e115ff07962f2dda5ebb1ff66e216063cd4a00a
+- **Extracted Path**: knowledge/sources/ladd_et_al_iter_fuel_cycle_conventional_long_pulse/
+- **Extract SHA256**: 8861512a552c5b4f4147ee45902e1dea8aedbe0736cf83f1b8acb55289d62935
+- **Date Added**: 2026-09-19
+
+### Iwai Yamanishi Nishi JAERI Tech 2000 002 ITER cryogenic isotope separation design
+- **Type**: local_pdf
+- **Location**: knowledge/sources/iwai_yamanishi_nishi_jaeri_tech_2000_002_iter_cryogenic/
+- **Use for**: T-002 conventional four-column design at320mol per hour plasma isotope gas with5percent protium and DT50:50 to75:25.
+- **Validation**: Inspect English abstract PDF index3 Japanese section3.1 index10 and Table1 index25; molecular molar feed composition and10000s duty must be preserved.
+- **Caveat**: Historical design simulation, Japanese main text with English abstract and table labels; not commercial operating validation or a capital cost source.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/fuel-jaeri-iss.pdf
+- **Source ID**: d595c231355e8a0365f1ff5e170b539776f55fb0aeb0c4116b444f33a999d61d
+- **Raw SHA256**: d595c231355e8a0365f1ff5e170b539776f55fb0aeb0c4116b444f33a999d61d
+- **Raw Artifact SHA256**: d595c231355e8a0365f1ff5e170b539776f55fb0aeb0c4116b444f33a999d61d
+- **Extracted Path**: knowledge/sources/iwai_yamanishi_nishi_jaeri_tech_2000_002_iter_cryogenic/
+- **Extract SHA256**: b0ed4488174c47ccd34dd4affca56e93e04b72a706934ffd3ad0fd12189e0c05
+- **Date Added**: 2026-09-19
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

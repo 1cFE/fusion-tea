@@ -1,0 +1,23 @@
+{
+  "request_id": "REQ-fuel-processing-transfer-02",
+  "run": "knowledge/research/requests/runs/REQ-fuel-processing-transfer-02/20260919T161649033371",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "ladd_et_al_iter_fuel_cycle_conventional_long_pulse",
+      "path": "knowledge/sources/ladd_et_al_iter_fuel_cycle_conventional_long_pulse/",
+      "source_id": "56880453c4bd069d62dd9db44e115ff07962f2dda5ebb1ff66e216063cd4a00a",
+      "pre_existing": false
+    },
+    {
+      "slug": "iwai_yamanishi_nishi_jaeri_tech_2000_002_iter_cryogenic",
+      "path": "knowledge/sources/iwai_yamanishi_nishi_jaeri_tech_2000_002_iter_cryogenic/",
+      "source_id": "d595c231355e8a0365f1ff5e170b539776f55fb0aeb0c4116b444f33a999d61d",
+      "pre_existing": false
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": "max_searches",
+  "reason": "at least one source is registered and citable"
+}

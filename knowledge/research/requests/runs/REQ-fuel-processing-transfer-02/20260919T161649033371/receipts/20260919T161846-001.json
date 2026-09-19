@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/fuel-iter-cycle.pdf",
+  "slug": "ladd_et_al_iter_fuel_cycle_conventional_long_pulse",
+  "path": "knowledge/sources/ladd_et_al_iter_fuel_cycle_conventional_long_pulse/",
+  "source_id": "56880453c4bd069d62dd9db44e115ff07962f2dda5ebb1ff66e216063cd4a00a",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-19T16:18:46.791613+00:00"
+}

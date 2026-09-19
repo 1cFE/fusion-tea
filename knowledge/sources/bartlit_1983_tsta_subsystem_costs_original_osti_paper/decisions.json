@@ -1,0 +1,69 @@
+[
+  {
+    "page_num": 0,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 2 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 1,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 12 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 2,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 2 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 3,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 8/42 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 4,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 49/54 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 5,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 0 chars (threshold: 200)"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 6,
+    "action": "strip_broken",
+    "reasons": [
+      "TABLE: <br> artifacts in 4/41 table rows",
+      "<br> artifacts in tables, no GMFT \u2014 stripping broken tables"
+    ],
+    "details": {}
+  },
+  {
+    "page_num": 7,
+    "action": "keep",
+    "reasons": [
+      "DENSITY: very low text density: 7 chars (threshold: 200)"
+    ],
+    "details": {}
+  }
+]

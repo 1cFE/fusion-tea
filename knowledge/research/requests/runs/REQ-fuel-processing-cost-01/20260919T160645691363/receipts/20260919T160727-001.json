@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "precondition_failed",
+  "candidate": "/tmp/fuel-tsta.pdf",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "input file not found: /tmp/fuel-tsta.pdf",
+  "rule_id": null,
+  "captured": false,
+  "at": "2026-09-19T16:07:27.893446+00:00"
+}
