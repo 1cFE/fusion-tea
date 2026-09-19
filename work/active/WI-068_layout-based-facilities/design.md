@@ -1,0 +1,84 @@
+---
+Status: proposed
+Created: 2026-09-18
+Updated: 2026-09-18
+Related Artifacts: spec.md; layout-capacity-design.md; plan.md
+---
+
+# Facility layout, capacity and accounts
+
+## Selected conceptual design
+
+[AGENT] Select the complete provisional facility set in `layout-capacity-design.md`, including its final construction handoff, rather than the residual hybrid described earlier in that document. The reactor, sector wings, component stores and cooling halls derive from actual equipment/campaign quantities. Conventional subsystem envelopes and occupancy remain explicit planning assumptions. This is a model of a proposed layout under stated assumptions, not a recovered or qualified plant layout. The fresh reviewer must assess whether this supported use is adequate for implementation toward R9.S3.
+
+The layout document owns the geometry, flow policy, component segmentation, calendar/event resource scheduling, explicit cooling annex and conventional campus. Its unscaled source diagram is a functional referent, not a geometric template. Its prototype is useful evidence but is not production implementation. Four straight controlled links connect separate reactor and sector-wing shells; sector modules remain on ground transport. Sector service/reassembly bays stay radiologically controlled throughout, while incoming unused components use a separate clean supply route.
+
+[AGENT] Use physical concrete, reinforcing steel and formwork quantities for the new structural price, based on the recovered MIT reference rows. This replaces the proposed historical enclosed-volume construction transfer. Retain the historical nuclear-ventilation equation only as an explicitly conditional service estimate, with its empirical units and omitted service scope visible. Do not combine a whole-building volume rate with the priced concrete/rebar/formwork scope.
+
+## Construction quantities and assumptions
+
+All following construction choices are [AGENT] conceptual quantity scenarios. No neutron/dose, geotechnical, structural load or seismic calculation qualifies them. The roughly7000-tonne source sector requires engineered supports and rails whose bearing/load-distribution design remains unknown. Construction quantities cannot be called a demonstrated safe structure.
+
+| Construction class | Wall/partition thickness | Floor/basemat thickness | Roof slab thickness | Reinforcement mass per concrete volume |
+|---|---:|---:|---:|---:|
+| Reactor hall, controlled sector/dirty areas, transfer links and fuel room |2 m|1 m|1 m|150 kg/m³|
+| Conventional and cooling buildings, clean-only annex allocation |0.30 m|0.30 m|0.20 m|100 kg/m³|
+
+For the shared three-strip sector wings, use the nuclear wall/partition and floor/roof construction for the entire shell. This intentionally prices clean space inside the same heavy building; it does not classify stored unused components as radioactive. Do not subtract an unsubstantiated construction credit. Conventional ground-level buildings are also represented by concrete slabs/walls under the table; a steel-frame alternative is outside this initial scenario. These thicknesses are round planning choices for a quantity-sensitive estimate, not sourced requirements. Study nuclear thickness0.5/1/1.5 times the declared scenario and rebar intensity0.5/1/1.5 independently, reporting unqualified alternatives without optimization.
+
+For clear rectangle L,W,H and exterior wall thickness t, external footprint is `(L+2t)*(W+2t)`. Exterior wall concrete volume is `((L+2t)*(W+2t)-L*W)*H`, less physically represented door/link apertures times t. Add each internal partition once from its thickness, height and length; adjust wing exterior dimensions for the two partitions as specified in the layout handoff. Floor and roof concrete volumes equal external footprint times their respective thicknesses. Transfer links have two side walls, floor and roof, and no end walls. Include wall and partition openings only where routes actually require them; active doors require shielding/containment equipment whose price remains unestablished.
+
+Formwork is contact area: both wall/partition faces (minus openings), exposed slab perimeter edges, and the roof underside. No bottom formwork is charged beneath ground-supported basemats. Slab-top finish and shoring design remain unitemized. Rebar mass equals the chosen intensity times concrete volume. Keep substructure floor/basemat quantities separate from superstructure wall/roof/partition quantities. This is a constant-intensity takeoff, not a structural reinforcement design.
+
+Export gross footprint, clear usable area, internal air volume, concrete volumes, formwork areas, rebar masses and opening areas. Count physically connected shells/links once. Recompute all external coordinates using the wall-expanded faces, retaining clear separation and access strips. The zero-wall prototype parcel is superseded by that computed outside envelope; no reduction of storage slots is allowed merely to make the site smaller.
+
+## Source rates and monetary basis
+
+Original source and exact rows are in goal `evidence/civil-cost-basis.md`, backed by the pinned MIT TIMCAT raw HTML with an exact recovered CSV digest. Use the coherent auxiliary-building A.215.13 and A.215.141 families for initial substructure/superstructure respectively. Each rate is `(Site Labor Cost + Site Material Cost + Factory Equipment Cost)/reference quantity`; the selected factory column is zero. Preserve source components rather than rounded Total Cost. Substructure concrete/formwork/rebar and superstructure concrete/formwork/rebar must not be summed with their parent accounts.
+
+[AGENT] Linear quantity scaling is a constant-unit-cost approximation, not a claim to have recovered TIMCAT's missing exponent spreadsheet. Use source CY→m³ and SF→m² conversions exactly. Interpret TN as907.18474 kg (US short ton) explicitly as a US-customary-data assumption, since the captured CSV does not expand TN. Include a1000 kg/TN sensitivity and retain the original TN amounts. The independent reviewer must approve this assumption or require an original glossary.
+
+[AGENT] Convert new2018 civil dollars and historical1990 ventilation dollars to2025 general purchasing power using the registered Minneapolis Fed annual CPI table:2018=251.1,1990=130.7,2025=321.9. This is a chosen general inflation proxy, not nuclear-construction escalation. Export original-year and normalized costs. The rest of the plant retains its existing mixed historical bases; total plant cost is not relabeled uniformly2025 or presented as a current procurement quote. Transfer scenarios using A.216 waste-building or A.212 reactor-interior rows are named alternatives, not statistical confidence limits. At minimum run a0.5/1/2 rate multiplier as an explicitly assumed sensitivity.
+
+Installed site labor and materials are already priced in these civil rows. No second construction installation multiplier applies. General engineering/construction management and plant contingency remain in existing CAS30/CAS29 once. Commodity scope omits liners, embedded steel, joints, waterproofing, structural frames, doors, cranes and special rail/support structures unless separately evidenced; quantities and omissions must be visible rather than a hidden zero-priced completeness claim.
+
+## Services and equipment boundaries
+
+[AGENT] Replace the old named ventilation/HVAC building allowance with the separate historical PROCESS nuclear-ventilation method: `C_USD1990 = 1000*(V_served_m3)^0.8`, first-of-kind factor1.0, followed by the stated CPI conversion. The coefficient has empirical USD/m^2.4 units; do not describe it as a linear $/m³ price. Source: registered original PROCESS code acc2274, checked by goal `evidence/source-review.md`. The served-volume convention is reactor hall, sector service and dirty annex air volumes, controlled links and fuel room; the extension to this explicit controlled-zone set is an [AGENT] functional transfer. Clean conventional areas are excluded. V=0 yields zero for dormant/empty scope. This is an estimate of nuclear ventilation cost, not a calculation of airflow, filter duty or125Pa adequacy.
+
+Ordinary HVAC, domestic services, emergency systems and all nuclear ventilation subfunctions are not demonstrated complete by that equation. MIT services totals have no recovered reference-volume denominator, so do not divide them by an invented volume. Report these missing quantities/prices explicitly. No additional whole-building factor covers the same structural commodity scope.
+
+Keep existing CAS22 remote-handling and radwaste equipment allowances separately identified. They are residual inherited allowances, not demonstrated purchases of the source's ground transporters, machine tools, containment doors, mobile services or waste containers. Do not add an unsupported second equipment allowance or assert those functions are free. The new facility layout exposes handling resources, routes, openings and capacity requirements; machine-specific procurement and complete handling installation remain unresolved. The original PROCESS overhead-crane inclusion applies only to that historical facility method and cannot prove what the current1costingFE allowance includes. Since the selected commodity method excludes cranes, crane price coverage is explicitly unresolved.
+
+## Account replacement map
+
+| Account | Active facility-mode treatment |
+|---|---|
+| CAS21 enclosed buildings | Replace all six old grouped building expressions with priced facility component occurrences and the separate ventilation estimate. Include reactor hall, four maintenance wings and links, cooling hall/annex, conventional provisional rooms and occupancy rooms; no retained hidden room-cost coefficient. |
+| CAS21 site improvements | Retain the identifiable85MUSD legacy site-improvement allowance once, explicitly unsized; the calculated parcel is not a full yardwork bill. Site-services building itself is dimensioned/priced separately, replacing its former5MUSD room allowance. |
+| CAS10 land and permits | Replace land's old power-related acreage with the computed conceptual parcel area at the inherited10000USD/acre coefficient. Retain fixed permit/study/licensing adders. Preserve raw cost-year uncertainty of this inherited land price. Legacy mode must reproduce the entering formula. |
+| CAS22 reactor shielding/structure/cooling | Retain unchanged; facility concrete is physically outside those equipment volumes. No second cooling installation or reactor-material purchase. |
+| CAS22 remote handling/radwaste | Retain visible residual allowances; no completeness or machine-qualified price claim. |
+| CAS29/CAS30 | Apply existing contingency/indirect convention once to resulting direct costs. |
+| CAS50 shipping | Exclude the new installed facility civil and ventilation subtotal from generic shipping base alongside the existing delivered-cooling exclusion. This is an explicit site-installed-scope accounting convention, not a recovered empirical shipping decomposition. Keep legacy mode unchanged and report this subtraction separately. |
+| CAS50 decommissioning | Preserve provision unchanged. No second demolition/disposal estimate. End-of-life stored inventory remains visible. |
+| CAS71 | Preserve routine staffing and cooling make-up; explicit facility crews/resources are capacity assumptions, not a new verified payroll model. Do not claim their incremental staffing is priced. |
+| CAS72 | Preserve blanket/divertor and cooling purchase schedules/costs. Facility capacity consumes their timing; no feedback changes availability, event quantities or dates. |
+
+## Model and executable architecture
+
+[AGENT] Keep the source-authoritative production tree and synchronized stellarator staging tree. Add reusable manual-completion calculations for facility schedule/occupancy/layout and commodity/site/selection accounting under library analyses, with normative equations, inputs, outputs and domain rules. Add meaningful physical facility components with own dimensions, function and capital_cost, using the existing costed interface. Aggregate from those occurrences, not a disconnected grand total. Expose controlled-zone volumes and civil cost components separately. Use established primitive/manual calculation pattern and source-traceable instance assumptions, not inline design calculations on foreign outputs.
+
+Cooling remains owner of actual shell/tube dimensions, counts and replacement lives; add only necessary pure EXPOSE interfaces. Radial build owns its layer dimensions/material volumes. Use the existing lifecycle implementation for exact event dates, with bindings that agree with its exposed physical life/count and plant horizon. Do not create an independently evolving calendar. The active facilities scenario requires the live bundled calendar and single-module/four-sector topology; unsupported held-calendar or topology selections must fail explicitly. Other MFE designs default to dormant legacy facility mode, preserving all old costs/interfaces.
+
+Maintain an enabled layout, a legacy/new cost selector and an explicit fixed-offer/resized-space selector. Baseline offered per-wing clean, buffer and storage capacities are36,18,36 positions, respectively, derived from the entering-default prototype rather than source logistics. Cooling offered counts derive from the reference14-circuit receipt/retirement batches. Fixed-offer mode keeps those configured positions; resized-space mode allocates the calculated required positions. The new stellarator default selects resized-space mode so maintenance demand changes calculated facility size/cost. Study fixed-offer contrasts retain the reference building capacity and show failures instead of presenting automatic resizing as proof that an existing building fits. Neither mode automatically adds service crews or lengthens the outage. Export offered and required counts and the capacity mode separately. In the new-cost selector, exported layout/demand results still calculate so old/new matched cases share identical physical outputs. Invalid selectors/nonfinite geometry fail loudly. Insufficient offered bays/storage/crews or path clearance produces finite diagnostic failure, not silently enlarged offered capacity. Required-space calculations may grow; distinguish a resized proposal from fixed offered-layout feasibility.
+
+The design implementation may consolidate proposed formulas into a small number of manual library calculations, but structural facility children, owning interfaces and account sums must remain inspectable. Coordinate the oracle separately from production implementation; use tests of independent identities and counterexamples, not only a formula mirror. Author may refine execution details under review, documenting consequential changes.
+
+## Verification and study
+
+First verify the recovered source bytes, selected row costs/units, CPI conversion, shell takeoff, external rectangle separation, opening/path clearance, resource non-overlap, persistent multi-campaign queues and stored inventory after shutdown. Independently test the default case, zero replacement events, insufficient crew/bay/store cases, coincident cooling events, long processing/backlog and clean readiness. Check every priced child's sum intoCAS21, land replacement, shipping subtraction, contingency/indirect totals and LCOE. For cost-only pairs, all old physical quantities, calendar dates, availability and predicates must remain identical.
+
+After native validation, affected-consumer checks and independent integration audit, promote one candidate. The focused study will retain actual default14 and informative selected18 points under legacy/new cost basis; vary R and a through supported model inputs, circuit count, task duration/crew resources, storage hold and component packaging demand. Distinguish required resizing from fixed offered-layout failure. Add separate provisional BOP-envelope, construction and rate scenarios with no optimization. Report all current plant-screen failures as well as facility capacity failures. No new result rewrites r2 or earlier studies.
+
+[AGENT] Initial scientific release is pending independent review of this concrete design plus sources. Meeting S3 remains a final fresh grading question; a priced civil subset, unqualified transport load and provisional conventional envelopes must not be disguised as full construction or maintenance qualification.

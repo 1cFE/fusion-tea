@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "https://github.com/mit-crpg/TIMCAT/blob/efd801ad7c1530d6c58b342c55765b523b67cc89/PWR12_ME_inflated_reduced.csv",
+  "slug": "mit_timcat_pwr12_me_civil_reference_cost_csv_pinned_html",
+  "path": "knowledge/sources/mit_timcat_pwr12_me_civil_reference_cost_csv_pinned_html/",
+  "source_id": "a555257877cb617788e7f9d56e763b7d9c8ada05e69f307d4b1358480a26f1db",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-19T01:24:15.472061+00:00"
+}

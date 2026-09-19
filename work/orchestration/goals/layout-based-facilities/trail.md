@@ -55,3 +55,30 @@ Facility cost-source acquisition · `knowledge/research/requests/REQ-LBF-01.json
 ### T-003 start — 2026-09-18
 
 Native facility modeling specification/design · new standard item under `work/active/` · spec, design, persistent implementation checklist and independent source/design review. Requirements can be captured while T-002 runs; cost-dependent conclusions remain provisional until its return.
+
+### T-002 return — 2026-09-18
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `evidence/cost-source-basis.md`; `knowledge/research/requests/runs/REQ-LBF-01/20260919T011531965807/return.json`; `knowledge/research/pending/20260918-182124_layout-based-facilities-cost-source-basis.md` (new records unpinned; no native digest).
+- **Reading:** Acquisition establishes historical methods and actual boundaries, including a million-fold documentation-unit trap. It does not establish calibrated absolute construction prices. The source reader recommends a commodity method whose reference rows remain missing; independent source review is pending.
+- **Decision:** [AGENT] Coordinator pursues the specific missing civil quantity/price rows while layout design continues. Tier: execution detail. Scientific interpretation of historical rates remains provisional; no price method released for implementation.
+
+### T-004 scope
+
+- **Objective:** Acquire original civil quantity/cost reference rows for an installed commodity-based facility estimate.
+- **Why now:** T-002 traced the MIT CANES method to missing EEDB/NCET supplemental Account21 data; these could price concrete, reinforcement and formwork without an arbitrary enclosed-volume multiplier.
+- **Scope:** Native bounded acquisition of reference quantities, material/labor prices, units, year and services/equipment exclusions. No model edits or resumption of exhausted historical-method searches.
+- **Inputs:** `goal.md`, T-002 source report and registered MIT CANES report; specific request REQ-LBF-02.
+- **Done when:** Applicable civil rows and exact scope are registered or a bounded specific evidence gap is returned.
+- **Stop when:** Request cap, barred candidate, unavailable primary data or required owner decision.
+
+### T-004 start — 2026-09-18
+
+Civil reference-data acquisition · `knowledge/research/requests/REQ-LBF-02.json` · native receipts and `evidence/civil-cost-basis.md`. Sole registry writer remains the cost researcher; independent design and review read stable sources and own different outputs.
+
+### T-004 return — 2026-09-18
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `evidence/civil-cost-basis.md`; `knowledge/research/requests/runs/REQ-LBF-02/20260919T012251395930/return.json`; pending services-addendum research report (unpinned; no native digest).
+- **Reading:** Exact primary civil quantity/labor/material rows are recovered from pinned source HTML and byte-verified against original CSV. Installed structural commodity rates are available; ordinary-services reference volumes and some unit/applicability details remain explicit gaps.
+- **Decision:** [AGENT] Coordinator selects the commodity method for proposed structural pricing in WI-068/design.md, subject to fresh review. Tier: execution detail. The historical whole-building-volume rate is superseded before implementation; the separately sourced ventilation transfer remains provisional.

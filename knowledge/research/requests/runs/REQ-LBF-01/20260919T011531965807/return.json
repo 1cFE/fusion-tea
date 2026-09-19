@@ -1,0 +1,34 @@
+{
+  "request_id": "REQ-LBF-01",
+  "run": "knowledge/research/requests/runs/REQ-LBF-01/20260919T011531965807",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "ukaea_process_cost_model_scope_and_historical_references",
+      "path": "knowledge/sources/ukaea_process_cost_model_scope_and_historical_references/",
+      "source_id": "cfe4932f30d7a6d445a2d3cc89964f44761d7651a1c2762308a160f34abf8d00",
+      "pre_existing": false
+    },
+    {
+      "slug": "ukaea_process_kovari_2014_cost_algorithm_building_and",
+      "path": "knowledge/sources/ukaea_process_kovari_2014_cost_algorithm_building_and/",
+      "source_id": "16d702b8e8aa78ec0b26aea14f548a0c4a5c9a8041261b36fe946c44c663fd1a",
+      "pre_existing": false
+    },
+    {
+      "slug": "etr_iter_systems_code_ornl_fedc_87_7_1988",
+      "path": "knowledge/sources/etr_iter_systems_code_ornl_fedc_87_7_1988/",
+      "source_id": "23e24fb7e722fbb74eb6cff7212881c199f6d9707c9c7b3f5c89ec5398ba3754",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://ukaea.github.io/PROCESS/cost-models/cost-models/",
+      "reason": "extract exited 1"
+    }
+  ],
+  "negative": null,
+  "limit_reached": "max_searches",
+  "reason": "at least one source is registered and citable"
+}

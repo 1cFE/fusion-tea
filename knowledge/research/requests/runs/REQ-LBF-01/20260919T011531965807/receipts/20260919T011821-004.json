@@ -1,0 +1,13 @@
+{
+  "attempt": 4,
+  "outcome": "registered",
+  "candidate": "https://engineering.purdue.edu/CMUXE/Publications/AHR/R88ORNL-FEDC-87-7.pdf",
+  "slug": "etr_iter_systems_code_ornl_fedc_87_7_1988",
+  "path": "knowledge/sources/etr_iter_systems_code_ornl_fedc_87_7_1988/",
+  "source_id": "23e24fb7e722fbb74eb6cff7212881c199f6d9707c9c7b3f5c89ec5398ba3754",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-19T01:18:21.838540+00:00"
+}

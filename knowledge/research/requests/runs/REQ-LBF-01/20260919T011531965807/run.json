@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-LBF-01",
+  "request_key": "9646f6e473891ff9e3985a18ff45be50fe36cb5dc7f25984938081f0d71b8d63",
+  "request_path": "knowledge/research/requests/REQ-LBF-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 8,
+    "max_captures": 4
+  },
+  "opened_at": "2026-09-19T01:15:31.965994+00:00",
+  "override_reason": null
+}

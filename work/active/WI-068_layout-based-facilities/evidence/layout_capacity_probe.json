@@ -1,0 +1,538 @@
+{
+  "basis": "Current-default native q/volume/calendar, agent-selected layout/task assumptions; standalone probe only",
+  "calendar": {
+    "physical_life_fpy": 4.5239260339489915,
+    "n_replacements": 5.0,
+    "productive_fpy": 27.083333333333336,
+    "planned_downtime_yr": 2.916666666666667,
+    "unplanned_downtime_yr": 0.0,
+    "terminal_downtime_yr": 0.0,
+    "availability": 0.9027777777777779,
+    "replacement_pv": 1716498053.6900802,
+    "cas72_annual": 138326404.7807058,
+    "coil_life_margin_fpy": -17.083333333333336,
+    "dated_energy_ratio": 1.0051616112988937,
+    "events": [
+      4.5239260339489915,
+      9.631185401231317,
+      14.738444768513641,
+      19.845704135795966,
+      24.95296350307829
+    ]
+  },
+  "baseline": {
+    "packages_per_sector": 36,
+    "blanket_packages_per_sector": 32,
+    "service_days": 50.0,
+    "sector_schedule": [
+      {
+        "sector": 0,
+        "start": 39.0,
+        "end": 89.0,
+        "team": 0,
+        "return": 91.0
+      },
+      {
+        "sector": 1,
+        "start": 41.0,
+        "end": 91.0,
+        "team": 1,
+        "return": 93.0
+      },
+      {
+        "sector": 2,
+        "start": 89.0,
+        "end": 139.0,
+        "team": 0,
+        "return": 141.0
+      },
+      {
+        "sector": 3,
+        "start": 91.0,
+        "end": 141.0,
+        "team": 1,
+        "return": 143.0
+      }
+    ],
+    "outage_required_days": 180.0,
+    "outage_offered_days": 213.0625,
+    "outage_ok": true,
+    "peak_buffer_per_wing": 18,
+    "peak_storage_per_wing": 36,
+    "peak_storage_total": 144,
+    "peak_clean_per_wing": 36,
+    "clean_ready": true,
+    "calendar_event_years": [
+      4.5239260339489915,
+      9.631185401231317,
+      14.738444768513641,
+      19.845704135795966,
+      24.95296350307829
+    ],
+    "availability_unchanged": 0.9027777777777779
+  },
+  "geometry": {
+    "sector_L": 18.25,
+    "sector_W": 25.809397513308987,
+    "sector_H": 11.1,
+    "hall_side": 93.809397513309,
+    "hall_area": 8800.203061810023,
+    "hall_height": 14.1,
+    "wing_length": 96,
+    "wing_width": 89.809397513309,
+    "wing_height": 14.1,
+    "clean_annex_area": 2688.0,
+    "dirty_annex_area": 2688.0,
+    "sector_lane_area": 3245.7021612776625,
+    "four_wings_area": 34486.80864511065,
+    "cooling_hall_L": 94.2,
+    "cooling_hall_W": 63.0,
+    "cooling_hall_area": 5934.6,
+    "cooling_hall_height": 9,
+    "cooling_annex_L": 126,
+    "cooling_annex_W": 113.20000000000002,
+    "cooling_annex_area": 14263.200000000003
+  },
+  "provisional_conventional_rooms": {
+    "turbine": {
+      "L": 64,
+      "W": 24,
+      "H": 18,
+      "provisional": true
+    },
+    "cryo_coldbox": {
+      "L": 24,
+      "W": 16,
+      "H": 13,
+      "provisional": true
+    },
+    "cryo_compressors": {
+      "L": 34,
+      "W": 16,
+      "H": 11,
+      "provisional": true
+    },
+    "fuel": {
+      "L": 34,
+      "W": 24,
+      "H": 11,
+      "provisional": true
+    },
+    "reactor_aux": {
+      "L": 34,
+      "W": 24,
+      "H": 13,
+      "provisional": true
+    },
+    "power_supply": {
+      "L": 24,
+      "W": 14,
+      "H": 11,
+      "provisional": true
+    },
+    "onsite_ac": {
+      "L": 20,
+      "W": 12,
+      "H": 9,
+      "provisional": true
+    },
+    "service_water": {
+      "L": 24,
+      "W": 19,
+      "H": 11,
+      "provisional": true
+    },
+    "conventional_shop": {
+      "L": 24,
+      "W": 19,
+      "H": 11,
+      "provisional": true
+    },
+    "site_services": {
+      "L": 24,
+      "W": 14,
+      "H": 9,
+      "provisional": true
+    },
+    "administration": {
+      "L": 78.99367063252599,
+      "W": 39.496835316262995,
+      "H": 4,
+      "provisional": true
+    },
+    "control": {
+      "L": 34.20526275297414,
+      "W": 17.10263137648707,
+      "H": 4,
+      "provisional": true
+    },
+    "security": {
+      "L": 17.663521732655695,
+      "W": 8.831760866327848,
+      "H": 4,
+      "provisional": true
+    }
+  },
+  "placement_rectangles": {
+    "turbine": [
+      -46.9046987566545,
+      -176.9046987566545,
+      17.095301243345503,
+      -152.9046987566545
+    ],
+    "cryo_coldbox": [
+      27.095301243345503,
+      -168.9046987566545,
+      51.0953012433455,
+      -152.9046987566545
+    ],
+    "cryo_compressors": [
+      61.0953012433455,
+      -168.9046987566545,
+      95.0953012433455,
+      -152.9046987566545
+    ],
+    "fuel": [
+      105.0953012433455,
+      -176.9046987566545,
+      139.0953012433455,
+      -152.9046987566545
+    ],
+    "reactor_aux": [
+      149.0953012433455,
+      -176.9046987566545,
+      183.0953012433455,
+      -152.9046987566545
+    ],
+    "power_supply": [
+      193.0953012433455,
+      -166.9046987566545,
+      217.0953012433455,
+      -152.9046987566545
+    ],
+    "onsite_ac": [
+      227.0953012433455,
+      -164.9046987566545,
+      247.0953012433455,
+      -152.9046987566545
+    ],
+    "service_water": [
+      257.0953012433455,
+      -171.9046987566545,
+      281.0953012433455,
+      -152.9046987566545
+    ],
+    "conventional_shop": [
+      291.0953012433455,
+      -171.9046987566545,
+      315.0953012433455,
+      -152.9046987566545
+    ],
+    "site_services": [
+      325.0953012433455,
+      -166.9046987566545,
+      349.0953012433455,
+      -152.9046987566545
+    ],
+    "administration": [
+      359.0953012433455,
+      -192.4015340729175,
+      438.0889718758715,
+      -152.9046987566545
+    ],
+    "control": [
+      448.0889718758715,
+      -170.00733013314158,
+      482.29423462884563,
+      -152.9046987566545
+    ],
+    "security": [
+      492.29423462884563,
+      -161.73645962298235,
+      509.9577563615013,
+      -152.9046987566545
+    ],
+    "heat_rejection_plot": [
+      519.9577563615013,
+      -212.9046987566545,
+      619.9577563615013,
+      -152.9046987566545
+    ],
+    "cooling_hall": [
+      152.9046987566545,
+      -31.5,
+      247.1046987566545,
+      31.5
+    ],
+    "cooling_annex": [
+      257.1046987566545,
+      -56.60000000000001,
+      383.1046987566545,
+      56.60000000000001
+    ]
+  },
+  "parcel_bounds": [
+    -154.9046987566545,
+    -224.9046987566545,
+    631.9577563615013,
+    154.9046987566545
+  ],
+  "parcel_area": 298857.75500426994,
+  "contrasts": {
+    "one_team": {
+      "packages_per_sector": 36,
+      "blanket_packages_per_sector": 32,
+      "service_days": 50.0,
+      "sector_schedule": [
+        {
+          "sector": 0,
+          "start": 39.0,
+          "end": 89.0,
+          "team": 0,
+          "return": 91.0
+        },
+        {
+          "sector": 1,
+          "start": 89.0,
+          "end": 139.0,
+          "team": 0,
+          "return": 141.0
+        },
+        {
+          "sector": 2,
+          "start": 139.0,
+          "end": 189.0,
+          "team": 0,
+          "return": 191.0
+        },
+        {
+          "sector": 3,
+          "start": 189.0,
+          "end": 239.0,
+          "team": 0,
+          "return": 241.0
+        }
+      ],
+      "outage_required_days": 278.0,
+      "outage_offered_days": 213.0625,
+      "outage_ok": false,
+      "peak_buffer_per_wing": 18,
+      "peak_storage_per_wing": 36,
+      "peak_storage_total": 144,
+      "peak_clean_per_wing": 36,
+      "clean_ready": true,
+      "calendar_event_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.738444768513641,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "availability_unchanged": 0.9027777777777779
+    },
+    "slow_tasks": {
+      "packages_per_sector": 36,
+      "blanket_packages_per_sector": 32,
+      "service_days": 68.0,
+      "sector_schedule": [
+        {
+          "sector": 0,
+          "start": 39.0,
+          "end": 107.0,
+          "team": 0,
+          "return": 109.0
+        },
+        {
+          "sector": 1,
+          "start": 41.0,
+          "end": 109.0,
+          "team": 1,
+          "return": 111.0
+        },
+        {
+          "sector": 2,
+          "start": 107.0,
+          "end": 175.0,
+          "team": 0,
+          "return": 177.0
+        },
+        {
+          "sector": 3,
+          "start": 109.0,
+          "end": 177.0,
+          "team": 1,
+          "return": 179.0
+        }
+      ],
+      "outage_required_days": 216.0,
+      "outage_offered_days": 213.0625,
+      "outage_ok": false,
+      "peak_buffer_per_wing": 9,
+      "peak_storage_per_wing": 36,
+      "peak_storage_total": 144,
+      "peak_clean_per_wing": 36,
+      "clean_ready": true,
+      "calendar_event_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.738444768513641,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "availability_unchanged": 0.9027777777777779
+    },
+    "double_material": {
+      "packages_per_sector": 68,
+      "blanket_packages_per_sector": 64,
+      "service_days": 82.0,
+      "sector_schedule": [
+        {
+          "sector": 0,
+          "start": 39.0,
+          "end": 121.0,
+          "team": 0,
+          "return": 123.0
+        },
+        {
+          "sector": 1,
+          "start": 41.0,
+          "end": 123.0,
+          "team": 1,
+          "return": 125.0
+        },
+        {
+          "sector": 2,
+          "start": 121.0,
+          "end": 203.0,
+          "team": 0,
+          "return": 205.0
+        },
+        {
+          "sector": 3,
+          "start": 123.0,
+          "end": 205.0,
+          "team": 1,
+          "return": 207.0
+        }
+      ],
+      "outage_required_days": 244.0,
+      "outage_offered_days": 213.0625,
+      "outage_ok": false,
+      "peak_buffer_per_wing": 34,
+      "peak_storage_per_wing": 68,
+      "peak_storage_total": 272,
+      "peak_clean_per_wing": 68,
+      "clean_ready": true,
+      "calendar_event_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.738444768513641,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "availability_unchanged": 0.9027777777777779
+    },
+    "six_year_storage": {
+      "packages_per_sector": 36,
+      "blanket_packages_per_sector": 32,
+      "service_days": 50.0,
+      "sector_schedule": [
+        {
+          "sector": 0,
+          "start": 39.0,
+          "end": 89.0,
+          "team": 0,
+          "return": 91.0
+        },
+        {
+          "sector": 1,
+          "start": 41.0,
+          "end": 91.0,
+          "team": 1,
+          "return": 93.0
+        },
+        {
+          "sector": 2,
+          "start": 89.0,
+          "end": 139.0,
+          "team": 0,
+          "return": 141.0
+        },
+        {
+          "sector": 3,
+          "start": 91.0,
+          "end": 141.0,
+          "team": 1,
+          "return": 143.0
+        }
+      ],
+      "outage_required_days": 180.0,
+      "outage_offered_days": 213.0625,
+      "outage_ok": true,
+      "peak_buffer_per_wing": 18,
+      "peak_storage_per_wing": 72,
+      "peak_storage_total": 288,
+      "peak_clean_per_wing": 36,
+      "clean_ready": true,
+      "calendar_event_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.738444768513641,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "availability_unchanged": 0.9027777777777779
+    },
+    "fast_tasks": {
+      "packages_per_sector": 36,
+      "blanket_packages_per_sector": 32,
+      "service_days": 32.0,
+      "sector_schedule": [
+        {
+          "sector": 0,
+          "start": 39.0,
+          "end": 71.0,
+          "team": 0,
+          "return": 73.0
+        },
+        {
+          "sector": 1,
+          "start": 41.0,
+          "end": 73.0,
+          "team": 1,
+          "return": 75.0
+        },
+        {
+          "sector": 2,
+          "start": 71.0,
+          "end": 103.0,
+          "team": 0,
+          "return": 105.0
+        },
+        {
+          "sector": 3,
+          "start": 73.0,
+          "end": 105.0,
+          "team": 1,
+          "return": 107.0
+        }
+      ],
+      "outage_required_days": 144.0,
+      "outage_offered_days": 213.0625,
+      "outage_ok": true,
+      "peak_buffer_per_wing": 27,
+      "peak_storage_per_wing": 36,
+      "peak_storage_total": 144,
+      "peak_clean_per_wing": 36,
+      "clean_ready": true,
+      "calendar_event_years": [
+        4.5239260339489915,
+        9.631185401231317,
+        14.738444768513641,
+        19.845704135795966,
+        24.95296350307829
+      ],
+      "availability_unchanged": 0.9027777777777779
+    }
+  }
+}

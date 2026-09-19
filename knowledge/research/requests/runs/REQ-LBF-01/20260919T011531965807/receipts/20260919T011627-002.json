@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "https://ukaea.github.io/PROCESS/cost-models/cost-models/",
+  "slug": "ukaea_process_cost_model_scope_and_historical_references",
+  "path": "knowledge/sources/ukaea_process_cost_model_scope_and_historical_references/",
+  "source_id": "cfe4932f30d7a6d445a2d3cc89964f44761d7651a1c2762308a160f34abf8d00",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-19T01:16:27.472566+00:00"
+}

@@ -1,0 +1,16 @@
+{
+  "request_id": "REQ-LBF-02",
+  "question": "Recover the actual Account21 concrete, reinforcing steel, formwork and building-services reference quantities and material/labor prices used by MIT CANES2022 NCET/TIMCAT, or their primary EEDB data, including units, price year and installed scope. Can these specific rows support a conceptual hot-cell/building commodity estimate?",
+  "consumer": "WI-068 LF-04",
+  "gap_type": "missing_reference_data",
+  "priority": "P1",
+  "where_to_look": [
+    "MIT CRPG TIMCAT NCET supplemental data and repository",
+    "MIT CANES report194 supplementary Account21 reference rows",
+    "US DOE Energy Economic Data Base nuclear plant civil commodity costs"
+  ],
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 3
+  }
+}

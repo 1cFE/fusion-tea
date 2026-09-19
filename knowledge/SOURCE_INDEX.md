@@ -1209,6 +1209,70 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 79be5ff806f3243f70bc26ef580c4d8fe9707e3f0e48270574ad87164249326d
 - **Date Added**: 2026-09-18
 
+### UKAEA PROCESS cost model scope and historical references
+- **Type**: url
+- **Location**: knowledge/sources/ukaea_process_cost_model_scope_and_historical_references/
+- **Use for**: REQ-LBF-01 cost-year distinction, historical method provenance and indirect-cost boundaries.
+- **Validation**: Read cost-model descriptions and reference list in output.md against raw.html.
+- **Caveat**: Official model documentation; historical calibrated rates and underlying estimate detail may remain unavailable. Title and topic screened against holdout protocol before fetch.
+
+#### Extended Metadata
+- **Source URL**: https://ukaea.github.io/PROCESS/cost-models/cost-models/
+- **Source ID**: cfe4932f30d7a6d445a2d3cc89964f44761d7651a1c2762308a160f34abf8d00
+- **Raw SHA256**: cfe4932f30d7a6d445a2d3cc89964f44761d7651a1c2762308a160f34abf8d00
+- **Raw Artifact SHA256**: cfe4932f30d7a6d445a2d3cc89964f44761d7651a1c2762308a160f34abf8d00
+- **Extracted Path**: knowledge/sources/ukaea_process_cost_model_scope_and_historical_references/
+- **Extract SHA256**: beb7b82eb58a482d637f36b3a50610860e479cf0e5b51ef6e6bfc11016c5af5e
+- **Date Added**: 2026-09-18
+
+### UKAEA PROCESS Kovari 2014 cost algorithm building and remote handling scope
+- **Type**: url
+- **Location**: knowledge/sources/ukaea_process_kovari_2014_cost_algorithm_building_and/
+- **Use for**: REQ-LBF-01 implemented ITER reference building-volume scaling, light building rates, remote handling and management cost separation.
+- **Validation**: Check calc_building_costs and calc_remote_handling_costs in output.md against captured raw.html; dimensional checks distinguish dollars from millions.
+- **Caveat**: Official code documentation screened as tokamak ITER costing; code coefficients do not establish original procurement scope or validated stellarator transfer.
+
+#### Extended Metadata
+- **Source URL**: https://ukaea.github.io/PROCESS/source/reference/process/models/costs/costs_2015/
+- **Source ID**: 16d702b8e8aa78ec0b26aea14f548a0c4a5c9a8041261b36fe946c44c663fd1a
+- **Raw SHA256**: 16d702b8e8aa78ec0b26aea14f548a0c4a5c9a8041261b36fe946c44c663fd1a
+- **Raw Artifact SHA256**: 16d702b8e8aa78ec0b26aea14f548a0c4a5c9a8041261b36fe946c44c663fd1a
+- **Extracted Path**: knowledge/sources/ukaea_process_kovari_2014_cost_algorithm_building_and/
+- **Extract SHA256**: 92d5f1fa0f7b2d4074047f31605e858566bd7f68eac42263a0884fa3337233a2
+- **Date Added**: 2026-09-18
+
+### ETR ITER Systems Code ORNL FEDC 87 7 1988
+- **Type**: url
+- **Location**: knowledge/sources/etr_iter_systems_code_ornl_fedc_87_7_1988/
+- **Use for**: REQ-LBF-01 original TETRA building-cost algorithms and rate provenance cited by PROCESS; examine cost-account chapter and historical dollars.
+- **Validation**: Inspect original cost tables and account-21 paragraphs against rendered PDF pages before adopting numbers.
+- **Caveat**: 1988 engineering systems-code report predates excluded concept and is screened by date and title; historical rates require scope and price-year conversion and cannot establish present procurement costs.
+
+#### Extended Metadata
+- **Source URL**: https://engineering.purdue.edu/CMUXE/Publications/AHR/R88ORNL-FEDC-87-7.pdf
+- **Source ID**: 23e24fb7e722fbb74eb6cff7212881c199f6d9707c9c7b3f5c89ec5398ba3754
+- **Raw SHA256**: 23e24fb7e722fbb74eb6cff7212881c199f6d9707c9c7b3f5c89ec5398ba3754
+- **Raw Artifact SHA256**: 23e24fb7e722fbb74eb6cff7212881c199f6d9707c9c7b3f5c89ec5398ba3754
+- **Extracted Path**: knowledge/sources/etr_iter_systems_code_ornl_fedc_87_7_1988/
+- **Extract SHA256**: 264791d54388655b4ca9421ef373287f752d492d50709ee6f884f3a51ce05519
+- **Date Added**: 2026-09-18
+
+### MIT TIMCAT PWR12 ME civil reference cost CSV pinned HTML view
+- **Type**: url
+- **Location**: knowledge/sources/mit_timcat_pwr12_me_civil_reference_cost_csv_pinned_html/
+- **Use for**: REQ-LBF-02 complete reference quantity and factory labor material cost table if preserved by GitHub captured HTML.
+- **Validation**: Inspect captured raw.html for complete embedded CSV rawLines and compare against primary raw CSV bytes; do not rely on rendered extraction if rows omitted.
+- **Caveat**: GitHub HTML transport may omit CSV data. Native raw text/plain capture is unsupported; completeness must be verified before using rows. EEDB historical2018 reference prices are not current quotes.
+
+#### Extended Metadata
+- **Source URL**: https://github.com/mit-crpg/TIMCAT/blob/efd801ad7c1530d6c58b342c55765b523b67cc89/PWR12_ME_inflated_reduced.csv
+- **Source ID**: a555257877cb617788e7f9d56e763b7d9c8ada05e69f307d4b1358480a26f1db
+- **Raw SHA256**: a555257877cb617788e7f9d56e763b7d9c8ada05e69f307d4b1358480a26f1db
+- **Raw Artifact SHA256**: a555257877cb617788e7f9d56e763b7d9c8ada05e69f307d4b1358480a26f1db
+- **Extracted Path**: knowledge/sources/mit_timcat_pwr12_me_civil_reference_cost_csv_pinned_html/
+- **Extract SHA256**: 73cde7bbe24d64b52067fba00fff82d25dfc7097b31149f601806136c7cbf339
+- **Date Added**: 2026-09-18
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md
