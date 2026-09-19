@@ -1,0 +1,27 @@
+{
+  "scope": "Source arithmetic only; not an applicable plant estimate, current-year price, native study or S2 achievement.",
+  "reference_kg_D_plus_T_per_running_second": 2.08e-05,
+  "reference_kg_D_plus_T_per_running_day": 1.79712,
+  "source_exponent": 0.3,
+  "raw_rows": [
+    {
+      "function": "fuel cleanup",
+      "raw_year": 1980,
+      "capital_usd": 1000000.0,
+      "installation_usd": 70000.0,
+      "reference_reproduced": true
+    },
+    {
+      "function": "cryogenic distiller",
+      "raw_year": 1978,
+      "capital_usd": 1237000.0,
+      "installation_usd": 63000.0,
+      "reference_reproduced": true
+    }
+  ],
+  "current_verified_exhaust_kg_D_plus_T_per_running_day": 12.911794045007683,
+  "current_to_reference_flow_ratio": 7.184714457024397,
+  "historical_formula_multiplier_at_current_flow": 1.8068531358090947,
+  "price_conversion": "Not performed. Raw years preserved separately; installation-year convention and index require explicit treatment.",
+  "applicability": "Unresolved under source-review.md; arithmetic does not approve engineering transfer."
+}

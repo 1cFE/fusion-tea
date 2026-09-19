@@ -1,0 +1,26 @@
+{
+  "checkout": "86333b0de799e2332c01d489d400f8028bdb6d87",
+  "producer_model": "956444b5d440238857911a0406e6d3f51ddcbf2e",
+  "producer_paths_unchanged": [
+    "models",
+    "exploration/stellarator_e2e/models",
+    "exploration/stellarator_e2e/generated",
+    "exploration/stellarator_e2e/oracle_fuel_inventory.py",
+    "exploration/stellarator_e2e/verify_stellaris.py",
+    "exploration/stellarator_e2e/studies/oracle_entry.py"
+  ],
+  "retained_native_record": "exploration/stellarator_e2e/studies/20260919-fuel-inventory-and-startup/results/baseline_result.json",
+  "values": {
+    "fuel_cycle__fuel_handling__cost": 120746472.201428,
+    "fuel_cycle__fuel_calc__annual_fuel": 550716.1814915092,
+    "fuel_cycle__inventory__exhaust_kg_day": 7.7426808958727396,
+    "fuel_cycle__inventory__dt_processor_kg_day": 12.911794045007683,
+    "fuel_cycle__inventory__production_kg_s": 5.650770010218331e-06,
+    "fuel_cycle__inventory__extracted_kg_s": 5.650770010218331e-06,
+    "fuel_cycle__inventory__startup_conservative_kg": 4.400124215703401,
+    "fuel_cycle__inventory__defined_flag": 1.0,
+    "lcoe_calc__lcoe": 273.4546494372188,
+    "lcoe_1cfe_calc__lcoe": 268.2888502744632
+  },
+  "note": "Retained upstream native results, not a new study. Current producer continuity plus fresh entering-fuel-tests.log verifies reuse."
+}
