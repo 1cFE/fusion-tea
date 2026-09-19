@@ -1,0 +1,15 @@
+{
+  "authority": "Coordinator authorized mechanical pre-commit correction; run-study/runbook.md section 15: Then commit. From here the evidence is immutable.",
+  "change": "Add arm_id=arm-native to all 74 points.csv rows; update exporter and dependent snapshot/tool hashes. No model or numerical changes.",
+  "original_snapshot_sha256": "8e5e31c5fc99c1f547db524b66ca168457ffddc11dac0dc6826cbd8f91f3ea80",
+  "corrected_snapshot_sha256": "75fcaad1c0b01659235973d323d0e01871ce1c8949bbf10515f07419453bb0dd",
+  "original_csv_sha256": "2f9816cbf8084e1f642e1998170b956c6068ececce8deb856293c7735b7d99db",
+  "corrected_csv_sha256": "f57d2bedac38e5c620dfdab1c7356ab197342b5f0221b1b7bc4a48651b27d86b",
+  "rows": 74,
+  "all_existing_csv_cells_exactly_equal": true,
+  "changed_results_paths": [
+    "results/points.csv"
+  ],
+  "verified_snapshot_artifact_hashes": 565,
+  "custody_path_count": 569
+}

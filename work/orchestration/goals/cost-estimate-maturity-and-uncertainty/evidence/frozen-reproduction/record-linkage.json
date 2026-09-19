@@ -1,0 +1,8 @@
+{
+  "snapshot_sha256": "75fcaad1c0b01659235973d323d0e01871ce1c8949bbf10515f07419453bb0dd",
+  "started_before_precommit_csv_metadata_repair": true,
+  "repair_receipt": "../precommit-record-repair/repair-receipt.json",
+  "native_results_unchanged": true,
+  "executable_fingerprint": "b032da4a3971979792bc024bf9cd1a41a2d83d340bad5b59ef3e1a9aeaa77236",
+  "scope": "The pre-commit correction changed CSV arm metadata only. Reproduction loaded identical sealed package, proposals, and raw native results. All 74 corrected-record cases are covered."
+}

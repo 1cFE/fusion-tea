@@ -42,7 +42,7 @@ Updated: 2026-09-19
 - [x] Regenerate and synchronize package, baseline manifest, census and snapshot using the pinned runtime.
 - [x] Run targeted source, four-bill, preservation, domain and affected model-family checks; report static diagnostics honestly.
 - [x] Obtain focused independent implementation assessment and resolve material findings; see `audit.md`.
-- [ ] Commit audited candidate, run native integration and report candidate or blocker.
+- [x] Commit audited candidate at `fe720553`; native integration returned CANDIDATE with all ten gates passing. See goal `evidence/integration/integration_return.json`; omitted read-set coverage remains disclosed.
 
 No separate design or plan document is needed for this single shared-input change. This specification carries the contract, interface and persistent checklist. The goal's focused native study owns combined uncertainty cases and final interpretation.
 
@@ -54,4 +54,4 @@ No separate design or plan document is needed for this single shared-input chang
 
 ## Implementation evidence
 
-[AGENT] Candidate implementation and checks are recorded in `implementation.md`. Two fresh generations match; the nominal result preserves all956 outputs and25 authored predicates. Targeted batches pass43 and89 tests; the six implementation cases pass5604 mapped scalar/Boolean comparisons and150 predicate comparisons. L2/L6 retain exactly their entering diagnostic identities. SV-119/SV-120 are registered and passing. Independent implementation assessment, commit and native integration remain coordinator-owned pending steps.
+[AGENT] Candidate implementation and checks are recorded in `implementation.md`. Two fresh generations match; the nominal result preserves all956 outputs and25 authored predicates. Targeted batches pass43 and89 tests; the six implementation cases pass5604 mapped scalar/Boolean comparisons and150 predicate comparisons. L2/L6 retain exactly their entering diagnostic identities. SV-119/SV-120 are registered and passing. Independent implementation assessment passed in `audit.md`; candidate `fe720553` passed all ten native integration gates. The study and final R12.S grade remain owned by the goal.

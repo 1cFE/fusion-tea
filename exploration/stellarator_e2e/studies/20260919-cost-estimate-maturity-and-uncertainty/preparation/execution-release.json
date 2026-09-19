@@ -1,0 +1,9 @@
+{
+  "authorized_by": "coordinator",
+  "candidate_pin": "e48d5218b6e3be2775a94269a461dccd259fccc5fc41fed7c135dc1336bfe284",
+  "audited_commit": "fe720553",
+  "integration_receipt": "work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/integration/integration_return.json",
+  "scope": "Reviewed fixed-design74-case proposal; prepare actual axes/indicators first; separate axis and window releases required before dependent evaluation.",
+  "authority": "work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/owner-prompt.md",
+  "method_review": "work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/method-review.md"
+}

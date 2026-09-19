@@ -1,0 +1,65 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "heat_transport__equipment_stainless_fabrication_usd2017_per_kg",
+      "note": "fabrication: single public owner input, complete fan-out checked at release; no cross-input tie.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "buildings__tonne_interpretation_kg",
+      "note": "tonne: single public owner input, complete fan-out checked at release; no cross-input tie.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__processing_containment_cpi",
+      "note": "containment: single public owner input, complete fan-out checked at release; no cross-input tie.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "magnet__winding_pack__insulation_sheet_price",
+      "note": "sheet: single public owner input, complete fan-out checked at release; no cross-input tie.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "contingency_rate",
+      "note": "contingency: single public owner input, complete fan-out checked at release; no cross-input tie.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__contingency_rate",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "unplanned_fraction",
+      "note": "downtime: single public owner input, complete fan-out checked at release; no cross-input tie.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__unplanned_fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

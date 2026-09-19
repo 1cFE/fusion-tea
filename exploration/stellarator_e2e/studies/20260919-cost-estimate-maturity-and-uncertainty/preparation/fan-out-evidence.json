@@ -1,0 +1,305 @@
+[
+  {
+    "axis": "heat_transport__equipment_stainless_fabrication_usd2017_per_kg",
+    "declared_keys": [
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg"
+    ],
+    "same_suffix_entry_keys": [
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg"
+    ],
+    "direct_consumers": [
+      {
+        "module": "stellarator_09__stellaris__heat_transport__equipment",
+        "input": "stainless_fabrication_usd2017_per_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 354
+      }
+    ],
+    "finding": "All direct consumers of the authored public key captured; no declared tie."
+  },
+  {
+    "axis": "buildings__tonne_interpretation_kg",
+    "declared_keys": [
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg"
+    ],
+    "same_suffix_entry_keys": [
+      "stellarator_09__stellaris__buildings__tonne_interpretation_kg"
+    ],
+    "direct_consumers": [
+      {
+        "module": "stellarator_09__stellaris__buildings__cooling_link__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2090
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__cooling_hall__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2116
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__sector_link_south__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2142
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__cryo_compressors__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2168
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__security__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2194
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__cryo_coldbox__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2220
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__control__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2246
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__sector_wing_east__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2272
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__sector_wing_west__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2298
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__service_water_building__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2324
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2350
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__sector_link_west__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2376
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__sector_wing_south__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2402
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__sector_wing_north__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2428
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__site_services_building__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2454
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__sector_link_east__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2480
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__maintenance_shop__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2506
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__fuel_building__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2532
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__sector_link_north__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2558
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__cooling_annex__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2584
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__power_supply_building__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2610
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__reactor_hall__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2636
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__administration__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2662
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__electrical_building__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2688
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__turbine_hall__civil",
+        "input": "tonne_interpretation_kg_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__buildings__tonne_interpretation_kg",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2714
+      }
+    ],
+    "finding": "All direct consumers of the authored public key captured; no declared tie."
+  },
+  {
+    "axis": "fuel_cycle__processing_containment_cpi",
+    "declared_keys": [
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi"
+    ],
+    "same_suffix_entry_keys": [
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi"
+    ],
+    "direct_consumers": [
+      {
+        "module": "stellarator_09__stellaris__fuel_cycle__processing_cost",
+        "input": "containment_cpi_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_containment_cpi",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 1509
+      }
+    ],
+    "finding": "All direct consumers of the authored public key captured; no declared tie."
+  },
+  {
+    "axis": "magnet__winding_pack__insulation_sheet_price",
+    "declared_keys": [
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price"
+    ],
+    "same_suffix_entry_keys": [
+      "stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price"
+    ],
+    "direct_consumers": [
+      {
+        "module": "stellarator_09__stellaris__magnet__insulation_inventory",
+        "input": "sheet_price",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 918
+      }
+    ],
+    "finding": "All direct consumers of the authored public key captured; no declared tie."
+  },
+  {
+    "axis": "contingency_rate",
+    "declared_keys": [
+      "stellarator_09__stellaris__contingency_rate"
+    ],
+    "same_suffix_entry_keys": [
+      "stellarator_09__stellaris__contingency_rate"
+    ],
+    "direct_consumers": [
+      {
+        "module": "stellarator_09__stellaris__facility_shipping",
+        "input": "contingency_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__contingency_rate",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2829
+      },
+      {
+        "module": "stellarator_09__stellaris__contingency",
+        "input": "contingency_rate_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__contingency_rate",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2965
+      },
+      {
+        "module": "stellarator_09__stellaris__shipping_scope",
+        "input": "contingency_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__contingency_rate",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 2993
+      }
+    ],
+    "finding": "All direct consumers of the authored public key captured; no declared tie."
+  },
+  {
+    "axis": "unplanned_fraction",
+    "declared_keys": [
+      "stellarator_09__stellaris__unplanned_fraction"
+    ],
+    "same_suffix_entry_keys": [
+      "stellarator_09__stellaris__unplanned_fraction"
+    ],
+    "direct_consumers": [
+      {
+        "module": "stellarator_09__stellaris__calendar",
+        "input": "unplanned_fraction_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__unplanned_fraction",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 1351
+      },
+      {
+        "module": "stellarator_09__stellaris__buildings__layout",
+        "input": "calendar_unplanned_in",
+        "ref": "stellarator_plant_params.stellarator_09__stellaris__unplanned_fraction",
+        "pipeline": "pipelines/pipeline.yaml",
+        "line": 1587
+      }
+    ],
+    "finding": "All direct consumers of the authored public key captured; no declared tie."
+  }
+]

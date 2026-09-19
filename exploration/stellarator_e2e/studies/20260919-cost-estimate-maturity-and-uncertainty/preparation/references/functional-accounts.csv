@@ -1,0 +1,24 @@
+account,function,channel,usd,direct_share
+CAS21,Facilities and site,buildings__facility_accounts__cost,799758795.94032,0.0654504041205571
+C220103,Magnet,magnet__magnet_capital_rollup__capital_cost,1707443242.2597551,0.13973319304031076
+C220101,Blanket and first wall,blanket__blanket_cost__cost,719155016.1966425,0.05885397781721733
+C220102,Shield,shield__shield_cost__cost,452529516.99448603,0.03703396563328302
+C220104,Heating,heating__heating_cost__cost,264145000.0,0.02161701388491469
+C220105,Nonmagnet structure,structure__structure_cost__cost,34184967.05270121,0.002797618381697906
+C220106,Vessel shell,vessel__vessel_cost__cost,120966520.85976116,0.009899619379641029
+C220107,Power supplies,power_supplies__power_supplies_cost__cost,92824312.97994801,0.007596526387193409
+C220108,Divertor,divertor__divertor_cost__cost,109109123.15593052,0.00892923746515216
+C220110,Remote handling,remote_handling__cost,166806873.48859897,0.013651087472040933
+C220111,Reactor installation,installation__cost,513403040.2182953,0.04201571352460317
+C220200,Heat transport,heat_transport__cooling_selection__cost,6471347145.807992,0.5296000344698344
+C220300,Cryoplant and auxiliary cooling,cryoplant__aux_cooling__cost,35116270.129820704,0.002873834064558289
+C220400,Waste handling,waste__cost,6481502.633743829,0.0005304311360379773
+C220500,Fuel processing,fuel_cycle__processing_cost__cost,22786229.403793395,0.0018647721418412358
+C220600,Other reactor equipment,other_rpe__cost,11581792.741575172,0.0009478270438843616
+C220700,Central instrumentation and controls,inc_cost__cost,81921417.18593018,0.006704258694202585
+CAS23,Turbine,turbine__turbine_cost__cost,275925382.69758147,0.022581093069995718
+CAS24,Electrical plant,electric_plant__electric_cost__cost,117530827.57380715,0.009618450213210561
+CAS25,Heat rejection,heat_rejection__heat_rejection_cost__cost,115939531.80564217,0.009488222259944635
+CAS26,Miscellaneous plant,misc_plant__misc_cost__cost,71538729.42252915,0.005854563619360456
+CAS27,Special materials,special_materials_capital__special_materials_capital,23815042.059888843,0.0019489677823863578
+CAS28,Digital twin,@cas28_capital,5000000.0,0.00040918839813198604

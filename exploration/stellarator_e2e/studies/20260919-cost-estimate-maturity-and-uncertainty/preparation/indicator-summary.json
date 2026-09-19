@@ -1,0 +1,48 @@
+[
+  {
+    "axis": "buildings__tonne_interpretation_kg",
+    "indicator": "no_constraint_response",
+    "constraints": []
+  },
+  {
+    "axis": "contingency_rate",
+    "indicator": "no_constraint_response",
+    "constraints": []
+  },
+  {
+    "axis": "fuel_cycle__processing_containment_cpi",
+    "indicator": "no_constraint_response",
+    "constraints": []
+  },
+  {
+    "axis": "heat_transport__equipment_stainless_fabrication_usd2017_per_kg",
+    "indicator": "constraints_reachable",
+    "constraints": [
+      "facility_capacity_ok",
+      "facility_initial_ready",
+      "facility_outage_ok",
+      "facility_replacement_ready",
+      "facility_routes_ok",
+      "net_positive",
+      "recirc_ok",
+      "tbr_ok"
+    ]
+  },
+  {
+    "axis": "magnet__winding_pack__insulation_sheet_price",
+    "indicator": "no_constraint_response",
+    "constraints": []
+  },
+  {
+    "axis": "unplanned_fraction",
+    "indicator": "constraints_reachable",
+    "constraints": [
+      "facility_capacity_ok",
+      "facility_initial_ready",
+      "facility_outage_ok",
+      "facility_replacement_ready",
+      "facility_routes_ok",
+      "tbr_ok"
+    ]
+  }
+]

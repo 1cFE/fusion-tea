@@ -1,0 +1,34 @@
+{
+  "authorized_by": "coordinator",
+  "authority": "Owner prompt required results4\u20138 and explicit authorization for justified targeted studies; independently reviewed method and74-case scope.",
+  "review": "work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/method-review.md@b1effd24",
+  "framing": "sensitivity",
+  "rulings": [
+    {
+      "axis": "heat_transport__equipment_stainless_fabrication_usd2017_per_kg",
+      "ruling": "execute reviewed conditional cases, no optimization or feasibility improvement claim"
+    },
+    {
+      "axis": "buildings__tonne_interpretation_kg",
+      "ruling": "execute reviewed conditional cases, no optimization or feasibility improvement claim"
+    },
+    {
+      "axis": "fuel_cycle__processing_containment_cpi",
+      "ruling": "execute reviewed conditional cases, no optimization or feasibility improvement claim"
+    },
+    {
+      "axis": "magnet__winding_pack__insulation_sheet_price",
+      "ruling": "execute reviewed conditional cases, no optimization or feasibility improvement claim"
+    },
+    {
+      "axis": "contingency_rate",
+      "ruling": "execute reviewed conditional cases, no optimization or feasibility improvement claim"
+    },
+    {
+      "axis": "unplanned_fraction",
+      "ruling": "execute reviewed conditional cases, no optimization or feasibility improvement claim"
+    }
+  ],
+  "interpretation": "Four no-constraint-response findings remain recorded. Source interpretation cases, financial diagnostic and unsupported reliability stress populations are separate. Reachability is not actual physical response.",
+  "next": "Run pinned baseline/preflight and all-candidate oracle scan; native study requires separate post-scan window release."
+}
