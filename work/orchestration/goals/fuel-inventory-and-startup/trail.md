@@ -65,3 +65,42 @@ T-002 · WI-069 model/native executable implementation · expected verified and 
 ### T-003 start — 2026-09-19
 
 T-003 · integration and native run-study · expected one verified pin and `exploration/stellarator_e2e/studies/20260919-fuel-inventory-and-startup/`. Coordinator owns commits/integration; study author may prepare records and scripts independently, but no study case executes before the integration candidate and framing release. No package or oracle changes are authorized inside this study task; route any discovered semantic fix back to a scoped native task.
+
+### T-003 integration and framing release — 2026-09-19
+
+- **Evidence:** Native `evidence/integration/integration_return.json` returns CANDIDATE with all ten gates passing for audited commit `956444b5d440238857911a0406e6d3f51ddcbf2e`, pin `9aaca3257606b22dd48d92b0074ee4076836e5b0fefd9b593369aa0915c4f1c2`. The manifest gate explicitly does not run read-set coverage. Baseline and all six study preflight gates pass; the independent oracle scan supports all 26 declared cases.
+- **Decision:** All 15 public axes have conservative graph paths to constraints, but graph reachability is not process qualification · retain all 26 finite assumption cases as sensitivities, including the grouped missing process-equipment/reliability/supply coupling finding · execution detail under owner authorization · coordinator, after reviewing `reviews/proposed-framing.md` and every candidate · study `reviews/coordinator-framing.md` and `preparation/execution-release.json`.
+- **Release:** One complete declared window, no optimization. Startup extension and shutdown duration are observation durations; ideal recovery, zero decay and online extraction are limiting diagnostics. Native execution follows the successful scan. Any unexpected refusal or premise conflict returns before repair.
+
+### T-003 mechanical verification retries — 2026-09-19
+
+- **Retry 1:** The reporting caller expected 914 scalar entries but the store also publishes 14 Boolean flags. Assert the exact declared numeric set and retain Boolean outputs. The original refusal is in the study's `results/verify-phase-before-count-fix.log`.
+- **Retry 2:** Stringified point keys distinguished declared integer times from runtime-normalized floats. Normalize numeric keys without rounding or changing point values. The original refusal is in `results/verify-phase-before-point-key-fix.log`.
+- **Classification:** Both repairs change only study verification/export joins. The same 26 cases, native store, model, package, window and objective remain fixed; native execution was not repeated. These are the two permitted mechanical retries. Final classification confirms 892 numeric outputs plus 14 Boolean flags in the 906-channel oracle map, with 22 inherited numeric outputs unmapped and every new inventory output mapped.
+
+### T-003 return — 2026-09-19
+
+- **Outcome:** COMPLETE.
+- **Evidence:** Study `exploration/stellarator_e2e/studies/20260919-fuel-inventory-and-startup/` frozen in local commit `3529f6c8`; `record.md`, `report.md`, `synthesis.md`, retained SQLite store and `snapshot.json` SHA256 `bcaf7f5723775c2e030be9635b0c3096bab43189b97ac5b3f94dd0cd6cae821a`. Integration evidence is in the same commit. Root `evidence/study-record-tests.log`: 3 passed; executor custody: 478 artifact hashes, 26 points and all 17 record sections resolve.
+- **Reading:** All 26 native cases completed, with 23,556 mapped scalar comparisons and 650 independently re-derived predicate comparisons passing. No case passes every whole-plant screen. Source/policy scenarios provide useful conditional stock and startup estimates; no qualified complete-plant inventory or self-sufficiency is inferred.
+- **Decision:** Retain all four study findings and proposed dispositions in record §15 · source/process coupling limits, distinct initial and recurring supply, running/calendar capacity, and preserved plant failures · proposed learning delta for final fresh review · coordinator · goal learnings after review, with existing costing interface retained.
+
+### Round 1 result — 2026-09-19
+
+- **Intent:** Met for the declared strategy: represented inventory, bounded startup requirement and processing throughput are forward-computed and independently verified. Final R10.P grade remains pending fresh review; formal goal closure remains owner-held.
+- **Task sequence:** T-001 established and independently reviewed source/accounting evidence; T-002 implemented and audited WI-069; T-003 integrated one candidate and froze one verified study.
+- **Last semantic outcome:** Valid committed study reading, including source uncertainty and adverse whole-plant screens.
+- **Stop reason:** A valid study reading closes this round under the runbook. No second pin, study or follow-up semantic implementation is opened.
+- **Answer evidence:** `answer.md` is the coordinator's draft synthesis; authoritative model candidate `956444b5`, study/integration `3529f6c8`, original-source/design review, implementation audit and native verification receipts cited above.
+- **Proposed learning delta:** (1) Explicit residence scenarios permit useful conditional represented-boundary estimates, but do not qualify actual PbLi residence, retention, supply or reserve reliability. (2) Reference working/reserve/total stocks are 2.380/2.038/4.418 kg T; conservative startup is 4.400 kg, without double-counting internally filled stages. (3) Reference running capacity is 7.743 kg T/day or 12.912 kg D+T/day; calendar downtime changes annual flow while maintained inventory decays throughout the year. (4) The selected cases span 1.091–10.531 kg held and 1.087–10.515 kg startup, not statistical bounds; ongoing deficit and failed whole-plant predicates remain visible.
+- **Finding dispositions:** Study findings `#1`–`#4` are proposed for acceptance as conditional scope, accounting and interpretation learnings. Their durable destination is `learnings.md` after review. They require no dependent implementation within this P2 goal. Costing receives `evidence/throughput-interface.md`; physical process qualification and P3 remain outside the authorized increment.
+- **Carried uncertainty:** Source transfer to helium/PbLi; unrepresented retention/permeation/bypass/detritiation; abstract decay-replenishment access; no external tritium procurement proof or complete process pricing. Static L2/L6 diagnostics and the native manifest read-set coverage limitation remain disclosed.
+
+### Round 1 review — 2026-09-19
+
+- **Reviewer and verdict:** Fresh non-author `fuel_final_grade`, PASS; unchanged rubric R10.P = 2. Evidence: `evidence/final-review-and-grade.md`. The reviewer independently checks the final administrative joins after accepting the scientific result and all four learning dispositions.
+- **Checks:** Source/accounting and implementation review reuse is valid for the unchanged candidate. Independent checks cover original equations/bindings, retained source boundaries, all 26 startup trajectories, 1,820 new-output CSV/native joins, 23,556 mapped scalar comparisons, 650 predicates, snapshot/audit hashes and unchanged model/package/study revisions. Native goal scopes, two mechanical study retries and one-pin/one-study bounds remain respected.
+- **Corrections:** The draft answer's stale required-breeding value is corrected to 1.191670 from the retained native reference. The current audit's stale unmapped count is corrected to 22 numeric outputs, with 892 numeric plus 14 Boolean mapped scalars. These are administrative evidence corrections; frozen study copies and all executable results remain unchanged.
+- **Learning disposition:** Accept all four Round 1 proposed learnings into `learnings.md`. Append joined `declared seam` dispositions under the committed study's four finding IDs in `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md`. No finding remains unrouted; no semantic follow-up is required for the stated P2 target.
+- **Remaining uncertainty:** The conditional physical boundary, source transfers, initial-state/decay-access assumptions, missing procurement evidence, static diagnostics and manifest read-set coverage limitation remain explicit. No P3 or complete-cost claim is accepted.
+- **Recommendation:** The reviewed answer supports owner-held goal closure on R10.P2. The goal remains grounded pending that decision. Reveal, frozen comparison replacement, merge and push are not performed.
