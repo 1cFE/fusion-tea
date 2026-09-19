@@ -82,3 +82,23 @@ Civil reference-data acquisition · `knowledge/research/requests/REQ-LBF-02.json
 - **Evidence:** `evidence/civil-cost-basis.md`; `knowledge/research/requests/runs/REQ-LBF-02/20260919T012251395930/return.json`; pending services-addendum research report (unpinned; no native digest).
 - **Reading:** Exact primary civil quantity/labor/material rows are recovered from pinned source HTML and byte-verified against original CSV. Installed structural commodity rates are available; ordinary-services reference volumes and some unit/applicability details remain explicit gaps.
 - **Decision:** [AGENT] Coordinator selects the commodity method for proposed structural pricing in WI-068/design.md, subject to fresh review. Tier: execution detail. The historical whole-building-volume rate is superseded before implementation; the separately sourced ventilation transfer remains provisional.
+
+### T-003 return — 2026-09-18
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `work/active/WI-068_layout-based-facilities/spec.md`, `design.md`, `layout-capacity-design.md`, `evidence/layout_capacity_probe.py` and its executed JSON, and `review.md` final preimplementation release. Source reports and native registrations are cited in those artifacts; new records unpinned at return, no native digest.
+- **Reading:** Independent review accepts the conceptual source transfers, capacity/event rules, route/opening geometry and account boundaries after B1–B3 repairs. Initial demand, shared cooling transport, late inventory, concrete/formwork ownership and loaded shipping subtraction are explicit. The released design does not qualify actual transport loads, shielding, nonaxisymmetric clashes or complete procurement scope.
+- **Decision:** Trigger: positive independent design release. [AGENT] Coordinator proceeds to native implementation because the required conceptual basis is now reviewable and the remaining uncertainties are declared claim limits. Tier: execution detail. Changed: WI-068 design, review and plan; implementation scope below. No owner-reserved gate is exercised.
+
+### T-005 scope
+
+- **Objective:** Implement and independently verify the released facility layout/capacity/commodity-cost design in the actual native model and executable accounts.
+- **Why now:** T-003's fresh review released the concrete design after its bounded capacity, route and accounting repairs.
+- **Scope:** Canonical/staging model, physical facility components, handwritten implementations, generation, independent oracle/consumer maps, affected regressions, substantive integrated review and a committed package ready for native integration. Study execution and formal closure are separate tasks.
+- **Inputs:** `goal.md`, owner prompt, WI-068 spec/design/layout/review/plan, original source registrations and the deposited implementation/oracle/generation briefs.
+- **Done when:** Reviewed integrated behavior satisfies the native item acceptance evidence and fixed-point generation/metadata prerequisites, with remaining qualification gaps explicit.
+- **Stop when:** A material premise/scope surprise, unresolvable native prerequisite or owner-held decision blocks faithful implementation.
+
+### T-005 start — 2026-09-18
+
+Native WI-068 facility implementation and verification · `work/active/WI-068_layout-based-facilities/`, canonical/staging models and executable package · exact contract, generation/validation evidence and independent integrated review. Continuing layout author owns production models/generation/spine contracts; source researcher owns independent oracle/consumer maps; coordinator owns study-route contract, commits and goal records. Parallel authoring follows a shared published interface and disjoint files; coordinator integrates sequentially. See `evidence/implementation-brief.md` and `evidence/oracle-brief.md` for ownership.

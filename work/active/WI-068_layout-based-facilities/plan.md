@@ -4,8 +4,8 @@
 
 - [x] Inventory entering facility/equipment/calendar accounts and admissible internal sources. Evidence: goal T-001 and its inventory reports.
 - [x] Register WI-068 and capture owner requirements in spec.md.
-- [ ] Establish source-cost basis and explicit layout/capacity design with assumption provenance.
-- [ ] Obtain fresh source/math, capacity and accounting/interface review before substantial implementation.
+- [x] Establish source-cost basis and explicit layout/capacity design with assumption provenance. Evidence: design.md, layout-capacity-design.md and registered-source reports.
+- [x] Obtain fresh source/math, capacity and accounting/interface review before substantial implementation. Evidence: review.md final release resolves B1–B3; production validation and final grading remain outstanding.
 - [ ] Implement reviewed library calculations, facility components, stellarator bindings and actual cost consumers; preserve generic instances and calendar behavior.
 - [ ] Generate executable package, update independent oracle/consumer contracts and test dimensions, capacity and account identities.
 - [ ] Record native validation and substantive independent integrated review; regenerate/re-pin and commit model work.
