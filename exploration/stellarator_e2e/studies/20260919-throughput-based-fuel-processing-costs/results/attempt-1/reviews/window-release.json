@@ -1,0 +1,9 @@
+{
+  "authorized_by": "coordinator",
+  "framing": "sensitivity",
+  "proposals_sha256": "1fb6a7b7567c3346cb4d1892474f4f60bca7497f4710dae231c633eb8dfe06df",
+  "cases": 20,
+  "decision": "Retain the exact complete engineered list after successful oracle scan. No cases removed; zero whole-plant-feasible cases disclosed.",
+  "scope": "Release stock native execution, full oracle/predicate verification and report preparation. Freeze after coordinator review of completed record.",
+  "authority": "Existing owner prompt result7 and adoption; axis-rulings.json applies. No new scientific premise or source range adopted."
+}

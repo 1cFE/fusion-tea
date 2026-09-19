@@ -1,0 +1,14 @@
+{
+  "authorized_by": "coordinator",
+  "decision": "Approve write-once snapshot after final prospective wording correction in record17: frozen producer/tool copies are included at freeze; subsequent coordinator commit and independent grade are recorded outside this immutable record.",
+  "checked": [
+    "report scientific attribution and matched controls",
+    "17-section record and seven findings",
+    "20 native admitted cases and exact proposal hash",
+    "18,680 scalar and500predicate PASS, generic PASS",
+    "source/design/audit reference copies and oracle coverage limits",
+    "attempt1 preservation and equivalent numeric retry",
+    "freeze source script including producer and oracle dependencies"
+  ],
+  "scope": "Complete immutable snapshot and integrity audit only; no further execution/model/interpretation changes. Return snapshot hash and tracked-artifact list for coordinator commit."
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "active": "reference",
+    "legacy": "legacy-reference",
+    "processing_selected": -97960242.7976346,
+    "CAS22": -97960242.79763412,
+    "CAS20": -107756267.0773964,
+    "supplementary": -4779932.11344409,
+    "total_capital": -141271203.744812,
+    "annual_fuel_raw": 0.0,
+    "LCOE": -1.8703295199239847,
+    "LCOE_1cfe": -1.8299197078578118
+  },
+  {
+    "active": "burn-0.025",
+    "legacy": "legacy-burn-0.025",
+    "processing_selected": -92473871.0054113,
+    "CAS22": -92473871.00541115,
+    "CAS20": -101721258.10595322,
+    "supplementary": -4523699.23380208,
+    "total_capital": -133370626.16801071,
+    "annual_fuel_raw": 0.0,
+    "LCOE": -1.7657315333941597,
+    "LCOE_1cfe": -1.7275816359223768
+  },
+  {
+    "active": "burn-0.1",
+    "legacy": "legacy-burn-0.1",
+    "processing_selected": -102536086.77016146,
+    "CAS22": -102536086.77016068,
+    "CAS20": -112789695.44717598,
+    "supplementary": -4993640.138032675,
+    "total_capital": -147860587.70445633,
+    "annual_fuel_raw": 0.0,
+    "LCOE": -1.9575682424033403,
+    "LCOE_1cfe": -1.9152735751058572
+  },
+  {
+    "active": "density-4.554e+20",
+    "legacy": "legacy-density-4.554e+20",
+    "processing_selected": -84199333.41953605,
+    "CAS22": -84199333.41953659,
+    "CAS20": -92619266.76148987,
+    "supplementary": -4111917.9103583097,
+    "total_capital": -121429655.80824661,
+    "annual_fuel_raw": 0.0,
+    "LCOE": -1.941272447705046,
+    "LCOE_1cfe": -1.8993298627513013
+  },
+  {
+    "active": "density-5.566e+20",
+    "legacy": "legacy-density-5.566e+20",
+    "processing_selected": -110700013.06093949,
+    "CAS22": -110700013.06093788,
+    "CAS20": -121770014.367033,
+    "supplementary": -5398407.81740725,
+    "total_capital": -159640426.0156517,
+    "annual_fuel_raw": 0.0,
+    "LCOE": -1.8498123458387,
+    "LCOE_1cfe": -1.8098458220488851
+  }
+]

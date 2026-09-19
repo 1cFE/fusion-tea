@@ -1,0 +1,122 @@
+[
+  {
+    "copy": "preparation/references/owner-prompt.md",
+    "source": "work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/owner-prompt.md",
+    "sha256": "9a6bfe4bf27c4e3e64fde6a4d2cd811786fe861242e13436aa69b43aa7d78779"
+  },
+  {
+    "copy": "preparation/references/current-trace.md",
+    "source": "work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/current-trace.md",
+    "sha256": "a3e4c2f21a69feb579cd17611d6ef48719f6e44a025663eae1615aa04e2d753e"
+  },
+  {
+    "copy": "preparation/references/interface-review.md",
+    "source": "work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/interface-review.md",
+    "sha256": "a2cbeadd600304845af6f8e63b3fc995d1e2fcb2be0e7b7ceed480a0b8bb42b4"
+  },
+  {
+    "copy": "preparation/references/source-review.md",
+    "source": "work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/source-review.md",
+    "sha256": "a604122c0670483a649fcf16e9b91989d63b44fe23eb8f5d60305411b6933393"
+  },
+  {
+    "copy": "preparation/references/source-review-r2.md",
+    "source": "work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/source-review-r2.md",
+    "sha256": "9b16381e16e580c1c8a357fab5f49ae2bc3beace0e18ffc6656a1eb88b9acc33"
+  },
+  {
+    "copy": "preparation/references/price-review.md",
+    "source": "work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/proposed-price-review.md",
+    "sha256": "2519c49587e4e0f16c9216730d8ba32d22bfeb4d92eac9db8667da660f2a14cf"
+  },
+  {
+    "copy": "preparation/references/cost-scope.md",
+    "source": "work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/proposed-cost-scope.md",
+    "sha256": "1b4649d944c57d873cfbd0b6cd1ddc732f4706a3ba390a57f4c753d2faca3448"
+  },
+  {
+    "copy": "preparation/references/price-example.json",
+    "source": "work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/proposed-price-example.json",
+    "sha256": "db01767f67e6efc45c5024e64fe3c587dcfce72c44f4b594ef26d0265322fa9b"
+  },
+  {
+    "copy": "preparation/references/controls-review.md",
+    "source": "work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/controls-review.md",
+    "sha256": "cd7d3dac42533545f1ef0ad049e3e3a7e85c4a8fa430ad922673fe72026bb61b"
+  },
+  {
+    "copy": "preparation/references/design-review.md",
+    "source": "work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/design-review.md",
+    "sha256": "f85b7e2bcf68bd2d60ac473127f5bee59a9d82e5000cd818135312f222a02c81"
+  },
+  {
+    "copy": "preparation/references/implementation-review.md",
+    "source": "work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/implementation-review.md",
+    "sha256": "7933f8b1b7bf81de5bc8652cd638c925b4bae91bb91eeada4044504b6842cdb1"
+  },
+  {
+    "copy": "preparation/references/design.md",
+    "source": "work/active/WI-070_throughput-based-fuel-processing-costs/design.md",
+    "sha256": "a1a6e4b8f5b88c17579cd75103874491352b53f143117ce8bccf58e144b01b26"
+  },
+  {
+    "copy": "preparation/references/spec.md",
+    "source": "work/active/WI-070_throughput-based-fuel-processing-costs/spec.md",
+    "sha256": "f4b776a8258ac1455762815f8480bcbd0fd17bbcf66a01a4c69333a0a73caa79"
+  },
+  {
+    "copy": "preparation/references/audit.md",
+    "source": "work/active/WI-070_throughput-based-fuel-processing-costs/audit.md",
+    "sha256": "4ffdc7e178d236bdb9bc203f63cfe499b43e75a321073074d5bc3eceede54baf"
+  },
+  {
+    "copy": "preparation/references/account-reconciliation.md",
+    "source": "work/active/WI-070_throughput-based-fuel-processing-costs/evidence/account-reconciliation.md",
+    "sha256": "1ca9456aaa3f123d011ef80584d5446fccf2db8933e8f966fd0a94e353274231"
+  },
+  {
+    "copy": "preparation/references/implementation-abi.json",
+    "source": "work/active/WI-070_throughput-based-fuel-processing-costs/evidence/implementation-abi.json",
+    "sha256": "65069c19696f30fb795999ddd55f41b0def352653647d1987bcb76891658ae7f"
+  },
+  {
+    "copy": "preparation/references/static-classification.md",
+    "source": "work/active/WI-070_throughput-based-fuel-processing-costs/evidence/static-classification.md",
+    "sha256": "993c4ed28bbee43bf11e87645411b488f6fc3576992798d1e4622469b975b7a1"
+  },
+  {
+    "copy": "preparation/references/author-validation.md",
+    "source": "work/active/WI-070_throughput-based-fuel-processing-costs/evidence/author-validation.md",
+    "sha256": "dd41e174efc114dd86c5ecb4e5a411896bca9cb71b9d3b2d11cc63360d8e3205"
+  },
+  {
+    "copy": "preparation/references/source-domain-tests.log",
+    "source": "work/active/WI-070_throughput-based-fuel-processing-costs/evidence/source-domain-tests.log",
+    "sha256": "bb448e91749993482c67d13be73e31b221c7bbf599b511910551e5d4b4497b31"
+  },
+  {
+    "copy": "preparation/references/targeted-review-tests.log",
+    "source": "work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/implementation-review/targeted-tests.log",
+    "sha256": "d044c8aa8afa4544b989d76da619613182c475fde417173b3ee644c3811a05f7"
+  },
+  {
+    "copy": "preparation/references/source-applicability-research.md",
+    "source": "knowledge/research/pending/20260919-091411_throughput-based-fuel-processing-cost-applicability.md",
+    "sha256": "086d586ea40dbc6a5fd069350868c84cb486559b13facb07552ae78454310aa1"
+  },
+  {
+    "copy": "preparation/references/process-transfer-research.md",
+    "source": "knowledge/research/pending/20260919-092112_conventional-reactor-fuel-processing-transfer.md",
+    "sha256": "0a83ca32c79cfb41709d3b5f22803f4f1e4afd1abbc9601c2e01574aecc7e475"
+  },
+  {
+    "copy": "preparation/references/upstream-throughput-interface.md",
+    "source": "work/orchestration/goals/fuel-inventory-and-startup/evidence/throughput-interface.md",
+    "sha256": "85639448fad62d20f4e00d8a0e53f5093059e343aa81b4fa333258db5a87754b"
+  },
+  {
+    "copy": "preparation/references/study-policy.md",
+    "source": "modeling_project/STUDY_POLICY.md",
+    "sha256": "51f773572c25708b7b32b9aec2ff0c78508447ced0b12658e6e04fb92132f4a9"
+  }
+]

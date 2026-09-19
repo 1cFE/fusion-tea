@@ -1,0 +1,9 @@
+fuel_cycle__burn_fraction: no_constraint_response=false constraints 1/25 objectives 4/14 modules_fired=23
+fuel_cycle__processing_capacity_margin: no_constraint_response=true constraints 0/25 objectives 3/14 modules_fired=14
+fuel_cycle__processing_containment_cpi: no_constraint_response=true constraints 0/25 objectives 3/14 modules_fired=14
+fuel_cycle__processing_enabled: no_constraint_response=true constraints 0/25 objectives 3/14 modules_fired=14
+fuel_cycle__processing_price_multiplier: no_constraint_response=true constraints 0/25 objectives 3/14 modules_fired=14
+fuel_cycle__t_recycle: no_constraint_response=false constraints 1/25 objectives 3/14 modules_fired=20
+plasma__n_e0: no_constraint_response=false constraints 16/25 objectives 11/14 modules_fired=115
+unplanned_fraction: no_constraint_response=false constraints 6/25 objectives 5/14 modules_fired=64
+A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds.

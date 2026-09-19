@@ -1,0 +1,7 @@
+{
+  "authorized_by": "coordinator",
+  "candidate_pin": "50c9d4b9b3bf16fdb00e5c726011f2b434bfa0ba8970569795372a12364c312b",
+  "audited_commit": "2a50d3ec40e587af25beadaa9bd26c305b9ac11d",
+  "scope": "Prepare actual groups and indicators only initially. Baseline/scan waits for axis ruling; native cases wait for window release.",
+  "authority": "Owner prompt required result7 and adoption yes, adopt and continue."
+}

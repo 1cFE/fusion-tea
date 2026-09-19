@@ -1,0 +1,308 @@
+{
+  "cases": 20,
+  "all_evaluated": true,
+  "all_breeding_defined": true,
+  "all_plant_satisfied": 0,
+  "rows": [
+    {
+      "id": "reference",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 1.0,
+      "flow_kg_day": 12.911794045007683,
+      "selected_cost": 22786229.403793395,
+      "lcoe": 271.58431991729486,
+      "violated": [
+        "divertor_heat_ok",
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "burn-0.025",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 1.0,
+      "flow_kg_day": 26.503156197647346,
+      "selected_cost": 28272601.196016695,
+      "lcoe": 271.705611625636,
+      "violated": [
+        "divertor_heat_ok",
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "burn-0.1",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 1.0,
+      "flow_kg_day": 6.116112968687849,
+      "selected_cost": 18210385.431266535,
+      "lcoe": 271.48873433390975,
+      "violated": [
+        "divertor_heat_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "recovery-0.999",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 1.0,
+      "flow_kg_day": 12.911794045007683,
+      "selected_cost": 22786229.403793395,
+      "lcoe": 271.58431991729486,
+      "violated": [
+        "divertor_heat_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "recovery-1",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 1.0,
+      "flow_kg_day": 12.911794045007683,
+      "selected_cost": 22786229.403793395,
+      "lcoe": 271.58431991729486,
+      "violated": [
+        "divertor_heat_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "density-4.554e+20",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 1.0,
+      "flow_kg_day": 10.829951546773044,
+      "selected_cost": 21615458.02115246,
+      "lcoe": 312.5797092240768,
+      "violated": [
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "sustainment_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "density-5.566e+20",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 1.0,
+      "flow_kg_day": 15.114883196423008,
+      "selected_cost": 23888997.610520426,
+      "lcoe": 250.57790992163785,
+      "violated": [
+        "divertor_heat_ok",
+        "wall_load_ok",
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "loop_capacity_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "downtime-0.1",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 1.0,
+      "flow_kg_day": 12.911794045007683,
+      "selected_cost": 22786229.403793395,
+      "lcoe": 300.2919092297147,
+      "violated": [
+        "divertor_heat_ok",
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "downtime-0.5",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 1.0,
+      "flow_kg_day": 12.911794045007683,
+      "selected_cost": 22786229.403793395,
+      "lcoe": 502.99550496627256,
+      "violated": [
+        "divertor_heat_ok",
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "price-0.5",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 1.0,
+      "flow_kg_day": 12.911794045007683,
+      "selected_cost": 11393114.701896697,
+      "lcoe": 271.36710954525796,
+      "violated": [
+        "divertor_heat_ok",
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "price-2",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 1.0,
+      "flow_kg_day": 12.911794045007683,
+      "selected_cost": 45572458.80758679,
+      "lcoe": 272.01874066136867,
+      "violated": [
+        "divertor_heat_ok",
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "margin-1.25",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 1.0,
+      "flow_kg_day": 12.911794045007683,
+      "selected_cost": 24363824.88187248,
+      "lcoe": 271.61439686373865,
+      "violated": [
+        "divertor_heat_ok",
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "margin-1.5",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 1.0,
+      "flow_kg_day": 12.911794045007683,
+      "selected_cost": 25733558.347790964,
+      "lcoe": 271.6405109092397,
+      "violated": [
+        "divertor_heat_ok",
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "containment-date-65.2",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 1.0,
+      "flow_kg_day": 12.911794045007683,
+      "selected_cost": 23180989.577015813,
+      "lcoe": 271.59184270554573,
+      "violated": [
+        "divertor_heat_ok",
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "containment-date-96.5",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 1.0,
+      "flow_kg_day": 12.911794045007683,
+      "selected_cost": 22567582.023116913,
+      "lcoe": 271.5801532407707,
+      "violated": [
+        "divertor_heat_ok",
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "legacy-reference",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 0.0,
+      "flow_kg_day": 12.911794045007683,
+      "selected_cost": 120746472.201428,
+      "lcoe": 273.4546494372188,
+      "violated": [
+        "divertor_heat_ok",
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "legacy-burn-0.025",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 0.0,
+      "flow_kg_day": 26.503156197647346,
+      "selected_cost": 120746472.201428,
+      "lcoe": 273.4713431590301,
+      "violated": [
+        "divertor_heat_ok",
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "legacy-burn-0.1",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 0.0,
+      "flow_kg_day": 6.116112968687849,
+      "selected_cost": 120746472.201428,
+      "lcoe": 273.4463025763132,
+      "violated": [
+        "divertor_heat_ok",
+        "reference_conductor_current_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "legacy-density-4.554e+20",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 0.0,
+      "flow_kg_day": 10.829951546773044,
+      "selected_cost": 105814791.4406885,
+      "lcoe": 314.52098167178184,
+      "violated": [
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "sustainment_ok",
+        "wp_fit_ok"
+      ]
+    },
+    {
+      "id": "legacy-density-5.566e+20",
+      "outcome": "evaluated",
+      "breeding_defined": true,
+      "processing_defined": 0.0,
+      "flow_kg_day": 15.114883196423008,
+      "selected_cost": 134589010.6714599,
+      "lcoe": 252.4277222674766,
+      "violated": [
+        "divertor_heat_ok",
+        "wall_load_ok",
+        "tbr_ok",
+        "reference_conductor_current_ok",
+        "loop_capacity_ok",
+        "wp_fit_ok"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "outcome": "pass",
+  "scalar_comparisons": 18680,
+  "predicate_comparisons": 500,
+  "relative_tolerance": 1e-09,
+  "absolute_tolerance": {
+    "inventory": 1e-18,
+    "inherited": 1e-09
+  },
+  "strict_relative_misses": [],
+  "failures": [],
+  "limits": "Transport data and source assumptions shared; this verifies independent implementation, not physical accuracy. Exact omitted native channels are in preparation/coverage.json.",
+  "mapped_channels": 934,
+  "authored_predicates": 25,
+  "unmapped_native_numeric": [
+    "stellarator_09__stellaris__cas70_calc__annual_total",
+    "stellarator_09__stellaris__cas70_calc__cas70",
+    "stellarator_09__stellaris__cas71_calc__crf",
+    "stellarator_09__stellaris__cas71_calc__levelized",
+    "stellarator_09__stellaris__cas80_calc__crf",
+    "stellarator_09__stellaris__cas80_calc__levelized",
+    "stellarator_09__stellaris__heat_transport__cooling_guard__cost_mode",
+    "stellarator_09__stellaris__heat_transport__cooling_guard__energy_mode",
+    "stellarator_09__stellaris__heat_transport__cooling_selection__consumables_annual",
+    "stellarator_09__stellaris__heat_transport__cooling_selection__replacement_annual",
+    "stellarator_09__stellaris__heat_transport__cooling_selection__shipping_exclusion",
+    "stellarator_09__stellaris__magnet__coil_length__c_coil",
+    "stellarator_09__stellaris__magnet__wp_sizing__wp_side",
+    "stellarator_09__stellaris__magnet__wp_volume__vol_cold_total",
+    "stellarator_09__stellaris__rb__blanket_vol",
+    "stellarator_09__stellaris__rb__outer_radius",
+    "stellarator_09__stellaris__rb__r_coil",
+    "stellarator_09__stellaris__rb__shield_vol",
+    "stellarator_09__stellaris__rb__structure_vol",
+    "stellarator_09__stellaris__rb__vessel_vol",
+    "stellarator_09__stellaris__rb__wall_area",
+    "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event"
+  ],
+  "oracle_semantic_names": 935
+}

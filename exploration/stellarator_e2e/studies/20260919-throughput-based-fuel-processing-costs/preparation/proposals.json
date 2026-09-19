@@ -1,0 +1,302 @@
+[
+  {
+    "id": "reference",
+    "family": "reference",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0
+    },
+    "note": "Released nominal defaults; no feasibility tuning."
+  },
+  {
+    "id": "burn-0.025",
+    "family": "burn",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.025,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0
+    },
+    "note": "One-factor sensitivity; reference duplicates execute once. Recurring fuel_recovery remains held."
+  },
+  {
+    "id": "burn-0.1",
+    "family": "burn",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.1,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0
+    },
+    "note": "One-factor sensitivity; reference duplicates execute once. Recurring fuel_recovery remains held."
+  },
+  {
+    "id": "recovery-0.999",
+    "family": "recovery",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.999,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0
+    },
+    "note": "One-factor sensitivity; reference duplicates execute once. Recurring fuel_recovery remains held."
+  },
+  {
+    "id": "recovery-1",
+    "family": "recovery",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 1.0,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0
+    },
+    "note": "One-factor sensitivity; reference duplicates execute once. Recurring fuel_recovery remains held."
+  },
+  {
+    "id": "density-4.554e+20",
+    "family": "density",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0
+    },
+    "note": "One-factor sensitivity; reference duplicates execute once. Recurring fuel_recovery remains held."
+  },
+  {
+    "id": "density-5.566e+20",
+    "family": "density",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.5660000000000007e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0
+    },
+    "note": "One-factor sensitivity; reference duplicates execute once. Recurring fuel_recovery remains held."
+  },
+  {
+    "id": "downtime-0.1",
+    "family": "downtime",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.1,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0
+    },
+    "note": "One-factor sensitivity; reference duplicates execute once. Recurring fuel_recovery remains held."
+  },
+  {
+    "id": "downtime-0.5",
+    "family": "downtime",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.5,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0
+    },
+    "note": "One-factor sensitivity; reference duplicates execute once. Recurring fuel_recovery remains held."
+  },
+  {
+    "id": "price-0.5",
+    "family": "price",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 0.5,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0
+    },
+    "note": "One-factor sensitivity; reference duplicates execute once. Recurring fuel_recovery remains held."
+  },
+  {
+    "id": "price-2",
+    "family": "price",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 2.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0
+    },
+    "note": "One-factor sensitivity; reference duplicates execute once. Recurring fuel_recovery remains held."
+  },
+  {
+    "id": "margin-1.25",
+    "family": "margin",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.25,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0
+    },
+    "note": "One-factor sensitivity; reference duplicates execute once. Recurring fuel_recovery remains held."
+  },
+  {
+    "id": "margin-1.5",
+    "family": "margin",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.5,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0
+    },
+    "note": "One-factor sensitivity; reference duplicates execute once. Recurring fuel_recovery remains held."
+  },
+  {
+    "id": "containment-date-65.2",
+    "family": "containment-date",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 65.2,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0
+    },
+    "note": "One-factor sensitivity; reference duplicates execute once. Recurring fuel_recovery remains held."
+  },
+  {
+    "id": "containment-date-96.5",
+    "family": "containment-date",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 96.5,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0
+    },
+    "note": "One-factor sensitivity; reference duplicates execute once. Recurring fuel_recovery remains held."
+  },
+  {
+    "id": "legacy-reference",
+    "family": "legacy-control",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 0.0
+    },
+    "note": "Same physical point with old account selected."
+  },
+  {
+    "id": "legacy-burn-0.025",
+    "family": "legacy-control",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.025,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 0.0
+    },
+    "note": "Matched control for burn-0.025; cost-method difference at identical physical inputs."
+  },
+  {
+    "id": "legacy-burn-0.1",
+    "family": "legacy-control",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.1,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.06e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 0.0
+    },
+    "note": "Matched control for burn-0.1; cost-method difference at identical physical inputs."
+  },
+  {
+    "id": "legacy-density-4.554e+20",
+    "family": "legacy-control",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 0.0
+    },
+    "note": "Matched control for density-4.554e+20; cost-method difference at identical physical inputs."
+  },
+  {
+    "id": "legacy-density-5.566e+20",
+    "family": "legacy-control",
+    "point": {
+      "stellarator_09__stellaris__fuel_cycle__burn_fraction": 0.05,
+      "stellarator_09__stellaris__fuel_cycle__t_recycle": 0.99,
+      "stellarator_09__stellaris__plasma__n_e0": 5.5660000000000007e+20,
+      "stellarator_09__stellaris__unplanned_fraction": 0.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+      "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+      "stellarator_09__stellaris__fuel_cycle__processing_enabled": 0.0
+    },
+    "note": "Matched control for density-5.566e+20; cost-method difference at identical physical inputs."
+  }
+]

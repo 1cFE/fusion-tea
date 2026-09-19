@@ -1,0 +1,70 @@
+{
+  "authorized_by": "coordinator",
+  "authority": {
+    "owner_quote": "Show how supported changes in burn fraction, recovery, operating power or other actual drivers affect processing demand, capital cost and electricity cost. Separate throughput effects from source-price uncertainty and process assumptions.",
+    "source": "work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/owner-prompt.md required result7",
+    "adoption": "yes, adopt and continue",
+    "interpretation_grade": "AGENT application of existing owner authorization; no new owner-originated ruling asserted"
+  },
+  "rulings": [
+    {
+      "axis": "fuel_cycle__burn_fraction",
+      "indicator": "constraints_reachable",
+      "framing": "sensitivity",
+      "proceed": true,
+      "finding_required": false
+    },
+    {
+      "axis": "fuel_cycle__processing_capacity_margin",
+      "indicator": "no_constraint_response",
+      "framing": "sensitivity",
+      "proceed": true,
+      "finding_required": true
+    },
+    {
+      "axis": "fuel_cycle__processing_containment_cpi",
+      "indicator": "no_constraint_response",
+      "framing": "sensitivity",
+      "proceed": true,
+      "finding_required": true
+    },
+    {
+      "axis": "fuel_cycle__processing_enabled",
+      "indicator": "no_constraint_response",
+      "framing": "sensitivity",
+      "proceed": true,
+      "finding_required": true
+    },
+    {
+      "axis": "fuel_cycle__processing_price_multiplier",
+      "indicator": "no_constraint_response",
+      "framing": "sensitivity",
+      "proceed": true,
+      "finding_required": true
+    },
+    {
+      "axis": "fuel_cycle__t_recycle",
+      "indicator": "constraints_reachable",
+      "framing": "sensitivity",
+      "proceed": true,
+      "finding_required": false
+    },
+    {
+      "axis": "plasma__n_e0",
+      "indicator": "constraints_reachable",
+      "framing": "sensitivity",
+      "proceed": true,
+      "finding_required": false
+    },
+    {
+      "axis": "unplanned_fraction",
+      "indicator": "constraints_reachable",
+      "framing": "sensitivity",
+      "proceed": true,
+      "finding_required": false
+    }
+  ],
+  "reason": "Owner explicitly requested demand and separate price/process-assumption sensitivities. Matched legacy controls establish method-only cost changes at the same physics. No optimization or constraint-based qualification of these assumptions.",
+  "review_coverage": "Reuse original-source, design and implementation audits at2a50d3ec; no new equations or source reinterpretation. Coordinator checked complete fan-out/indicator evidence; finite domain scan still required.",
+  "scope": "Release pinned baseline, preflight and independent oracle scan only; native points wait for window release."
+}

@@ -1,0 +1,8 @@
+{
+  "cases": 20,
+  "states": {
+    "completed": 20
+  },
+  "store": "results/study/retry-1/20260919-throughput-based-fuel-processing-costs.db",
+  "elapsed_seconds": 25.587190952152014
+}

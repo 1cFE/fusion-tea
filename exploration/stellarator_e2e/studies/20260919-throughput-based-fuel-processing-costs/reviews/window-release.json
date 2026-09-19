@@ -1,0 +1,12 @@
+{
+  "authorized_by": "coordinator",
+  "framing": "sensitivity",
+  "proposals_sha256": "e15b621d5709d499130987f10378dd4d922b70720340d0402d3221085a0cabfb",
+  "cases": 20,
+  "decision": "Retain the exact complete engineered list after successful oracle scan. No cases removed; zero whole-plant-feasible cases disclosed.",
+  "scope": "Release stock native execution, full oracle/predicate verification and report preparation. Freeze after coordinator review of completed record.",
+  "authority": "Existing owner prompt result7 and adoption; axis-rulings.json applies. No new scientific premise or source range adopted.",
+  "mechanical_retry": "Coordinator message: Authorized T004 mechanical retry1, preserve all original evidence; encode only legacy false as0.0; same20semantics/candidate; re-scan and execute in fresh store.",
+  "prior_release": "results/attempt-1/reviews/window-release.json",
+  "semantic_changes": "none; false represented as numeric0.0 for stock proposal validation"
+}
