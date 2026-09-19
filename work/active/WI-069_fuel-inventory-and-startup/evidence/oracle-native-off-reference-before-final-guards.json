@@ -1,0 +1,70 @@
+{
+  "command": [
+    ".codex-test/run",
+    "python",
+    "-m",
+    "pytest",
+    "tests/models/test_fuel_inventory_oracle.py",
+    "tests/models/test_computed_tritium_breeding.py",
+    "tests/study/test_breeding_predicate.py",
+    "-q",
+    "--junitxml=/home/reid/1cfe/fusion-tea/work/active/WI-069_fuel-inventory-and-startup/evidence/oracle-regressions.xml"
+  ],
+  "identity": {
+    "executable_fingerprint": "1da30476a821a4002321d6f225b1ab4570d68dd65320766277d18d3dc8194975",
+    "seal_sha256": "bd24e66f5fefd5e6cbf83fd7c00eee7428e725aba39c6636585a774a226ce923"
+  },
+  "seal_unchanged": true,
+  "exit_code": 0,
+  "relative_tolerance": 1e-09,
+  "absolute_tolerance": 1e-18,
+  "inventory_channels_per_case": 70,
+  "long_shutdown_absolute_tolerance": 0.0,
+  "native_cases": [
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[slow-processing-and-extraction]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[fast-processing-short-reserve]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[immediate-breeding-before-recycle]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[loss-and-burn-sensitivity]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[buffer-reserve-and-extension]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[availability]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[zero-decay]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[profile-shape]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[shutdown-duration]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[dormant-held-inventory]",
+      "passed": true
+    },
+    {
+      "name": "test_native_long_shutdown_keeps_positive_exponential_tail",
+      "passed": true
+    }
+  ],
+  "native_channel_comparisons": 700
+}

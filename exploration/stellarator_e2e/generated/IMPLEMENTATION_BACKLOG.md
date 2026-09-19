@@ -9,7 +9,7 @@ Complete all stages in order for a production-ready system.
 
 **Objective**: Implement each calculation definition in its handwritten file.
 
-**Total**: 54 functions to implement
+**Total**: 55 functions to implement
 
 **Instructions for each function**:
 1. Open the SysML source file at the line number shown below
@@ -35,7 +35,6 @@ Complete all stages in order for a production-ready system.
 | [ ] | Primary_Coolant_Loop | `run_primary_coolant_loop` | `root-0/analyses/mfe_primary_loop.sysml:4` | High |
 | [ ] | Power_Cycle_Efficiency | `run_power_cycle_efficiency` | `root-0/analyses/mfe_power_cycle.sysml:4` | High |
 | [ ] | Cooling_Equipment | `run_cooling_equipment` | `root-0/analyses/mfe_cooling_equipment.sysml:3` | High |
-| [ ] | Tritium_Breeding_Adequacy | `run_tritium_breeding_adequacy` | `root-0/analyses/mfe_tritium_breeding.sysml:30` | High |
 | [ ] | Conductor_Peak_Field | `run_conductor_peak_field` | `root-0/analyses/mfe_plasma_scaling.sysml:420` | High |
 | [ ] | Current_Driven_Pack_Sizing | `run_current_driven_pack_sizing` | `root-0/analyses/mfe_conductor_current.sysml:39` | High |
 | [ ] | Winding_Pack_Sizing | `run_winding_pack_sizing` | `root-0/analyses/mfe_magnet_field.sysml:91` | High |
@@ -49,6 +48,7 @@ Complete all stages in order for a production-ready system.
 | [ ] | Winding_Pack_Insulation_Inventory | `run_winding_pack_insulation_inventory` | `root-0/analyses/mfe_winding_pack_cost.sysml:71` | High |
 | [ ] | Winding_Pack_Stress | `run_winding_pack_stress` | `root-0/analyses/mfe_magnet_field.sysml:48` | High |
 | [ ] | Lifecycle_Calendar | `run_lifecycle_calendar` | `root-0/analyses/mfe_lifecycle.sysml:4` | High |
+| [ ] | Fuel_Inventory | `run_fuel_inventory` | `root-0/analyses/mfe_fuel_cycle.sysml:93` | High |
 | [ ] | Facility_Layout | `run_facility_layout` | `root-0/analyses/mfe_facilities.sysml:3` | Medium |
 | [ ] | Facility_Civil_Cost | `run_facility_civil_cost` | `root-0/analyses/mfe_facilities.sysml:504` | Medium |
 | [ ] | Facility_Civil_Cost | `run_facility_civil_cost` | `root-0/analyses/mfe_facilities.sysml:504` | Medium |
@@ -75,6 +75,7 @@ Complete all stages in order for a production-ready system.
 | [ ] | Facility_Civil_Cost | `run_facility_civil_cost` | `root-0/analyses/mfe_facilities.sysml:504` | Medium |
 | [ ] | Facility_Civil_Cost | `run_facility_civil_cost` | `root-0/analyses/mfe_facilities.sysml:504` | Medium |
 | [ ] | Facility_Civil_Cost | `run_facility_civil_cost` | `root-0/analyses/mfe_facilities.sysml:504` | Medium |
+| [ ] | Tritium_Breeding_Adequacy | `run_tritium_breeding_adequacy` | `root-0/analyses/mfe_tritium_breeding.sysml:30` | High |
 | [ ] | Levelized_Annual_Cost | `run_levelized_annual_cost` | `root-0/analyses/mfe_account_costs.sysml:693` | High |
 | [ ] | Levelized_Annual_Cost | `run_levelized_annual_cost` | `root-0/analyses/mfe_account_costs.sysml:693` | High |
 | [ ] | Facility_Shipping_Scope | `run_facility_shipping_scope` | `root-0/analyses/mfe_facilities.sysml:527` | Medium |
@@ -106,7 +107,7 @@ pytest tests/test_implementations_runnable.py -v
 All tests should pass (or pytest.skip for NotImplementedError stubs)
 
 **Test Coverage**:
-- 54 implementation functions
+- 55 implementation functions
 - Each function tested for: imports, signature, return type
 - Tests tolerate NotImplementedError (pass before implementation)
 - Tests verify return types (pass after implementation)
@@ -141,7 +142,7 @@ All tests should pass (or pytest.skip for NotImplementedError stubs)
 ## Completion Criteria
 
 The implementation is complete when:
-- Stage 1: All 54 functions implemented
+- Stage 1: All 55 functions implemented
 - Stage 2: All validations pass
 - Stage 3: Integration tests pass
 

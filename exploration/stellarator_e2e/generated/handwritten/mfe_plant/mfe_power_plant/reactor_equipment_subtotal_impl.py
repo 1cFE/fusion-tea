@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:459
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:462
 
 SysML Expressions:
 """
@@ -15,7 +15,7 @@ from stellarator_tea.modules.mfe_plant.mfe_power_plant.reactor_equipment_subtota
 def run_reactor_equipment_subtotal(inputs: reactor_equipment_subtotalInput) -> float:
     """Execute reactor_equipment_subtotal calculation.
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:459
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:462
 
 Args:
     inputs: Input parameters validated against reactor_equipment_subtotalInput schema

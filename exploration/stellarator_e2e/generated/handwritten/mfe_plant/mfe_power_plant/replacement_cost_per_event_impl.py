@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:668
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:671
 
 SysML Expressions:
 """
@@ -15,7 +15,7 @@ from stellarator_tea.modules.mfe_plant.mfe_power_plant.replacement_cost_per_even
 def run_replacement_cost_per_event(inputs: replacement_cost_per_eventInput) -> float:
     """Execute replacement_cost_per_event calculation.
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:668
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:671
 
 Args:
     inputs: Input parameters validated against replacement_cost_per_eventInput schema

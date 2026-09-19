@@ -1,0 +1,23 @@
+{
+  "request_id": "REQ-fuel-inventory-01",
+  "run": "knowledge/research/requests/runs/REQ-fuel-inventory-01/20260919T144518515876",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "lord_2024_step_sustained_fuelling_and_tritium_self",
+      "path": "knowledge/sources/lord_2024_step_sustained_fuelling_and_tritium_self/",
+      "source_id": "d51a392bca4dfd952dcf29c6bfc58ab16a29d042e8e88ee9fe5b8e221a46e349",
+      "pre_existing": false
+    },
+    {
+      "slug": "abdou_2021_dt_fuel_cycle_physics_technology_and_tritium",
+      "path": "knowledge/sources/abdou_2021_dt_fuel_cycle_physics_technology_and_tritium/",
+      "source_id": "5da6919cfb38971e71d719727c8b8f36d195c265d2deec6a25797fed18de2a78",
+      "pre_existing": false
+    }
+  ],
+  "queued": [],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "/tmp/fuel-abdou.pdf",
+  "slug": "abdou_2021_dt_fuel_cycle_physics_technology_and_tritium",
+  "path": "knowledge/sources/abdou_2021_dt_fuel_cycle_physics_technology_and_tritium/",
+  "source_id": "5da6919cfb38971e71d719727c8b8f36d195c265d2deec6a25797fed18de2a78",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-19T14:47:12.541103+00:00"
+}

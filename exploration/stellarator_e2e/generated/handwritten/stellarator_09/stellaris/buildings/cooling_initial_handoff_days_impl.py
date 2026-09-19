@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1464
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1495
 
 SysML Expressions:
 """
@@ -15,7 +15,7 @@ from stellarator_tea.modules.stellarator_09.stellaris.buildings.cooling_initial_
 def run_cooling_initial_handoff_days(inputs: cooling_initial_handoff_daysInput) -> float:
     """Execute cooling_initial_handoff_days calculation.
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1464
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1495
 
 Args:
     inputs: Input parameters validated against cooling_initial_handoff_daysInput schema

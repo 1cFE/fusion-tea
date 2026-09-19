@@ -1395,14 +1395,45 @@ package stellarator_09 {
                 **Basis**: The existing 0.99 read as physical recovery, disclosed as a reading
                 */
             }
-            :>> eta_extract = 1.0 {  // breeder-to-supply extraction efficiency [1] -- DORMANT, unsourced.
-                doc /* **Source**: none admissible **Ref**: knowledge/research/pending/20260907-163520_demo-breadth-disposition-prework.md:56, :64 (retrieval target: Lord et al., UKAEA-STEP-PR(24)12) **Basis**: lossless extraction as the declared dormant value; inventory and startup stock are not computed until residence times, extraction efficiency and a reserve policy are sourced */
+            :>> eta_extract = 1.0 {  // breeder-to-supply extraction efficiency [1] -- conditional ideal extraction.
+                doc /* **Source**: work/active/WI-069_fuel-inventory-and-startup/design.md **Reference**: Declared stellarator scenario. **Basis**: [ASSUMED] ideal extraction retained as a conditional sensitivity endpoint, not measured efficiency. **Last Updated**: 2026-09-19 */
             }
             :>> lambda_T = 1.782785958230312e-09 {  // tritium decay constant [1/s].
                 doc /* ln 2 / (4500 d x 86400 s/d) = 1.782785958230312e-09 s^-1; the half-life 4500 +/- 8 d (8 d a standard uncertainty). **Source**: Lucas and Unterweger, J. Res. NIST 105 (2000) 541 (https://nvlpubs.nist.gov/nistpubs/jres/105/4/j54luc2.pdf) **Ref**: p. 541, the evaluated half-life; cited via knowledge/research/pending/20260907-163520_demo-breadth-disposition-prework.md:56 **Basis**: NIST evaluated tritium half-life */
             }
-            :>> I_total = 0.0 {  // held tritium inventory [atoms] -- DORMANT, residence times unsourced.
-                doc /* **Source**: none admissible **Ref**: as eta_extract **Basis**: no inventory; the decay term is zero until residence times exist */
+            :>> breeding_defined = blanket.breeding_defined;
+            :>> inventory_enabled = true {
+                doc /* **Source**: knowledge/research/pending/20260919-074901_fuel-inventory-residence-startup.md **Reference**: Reviewed WI-069 scenario in work/active/WI-069_fuel-inventory-and-startup/design.md. **Basis**: [ASSUMED] source-scenario transfer or explicit storage policy, not qualified plant performance. D mass uses existing fuel_cost_per_rxn source chain; times are seconds. **Last Updated**: 2026-09-19 */
+            }
+            :>> m_D_kg = 3.3435837768e-27 {
+                doc /* **Source**: knowledge/research/pending/20260919-074901_fuel-inventory-residence-startup.md **Reference**: Reviewed WI-069 scenario in work/active/WI-069_fuel-inventory-and-startup/design.md. **Basis**: [ASSUMED] source-scenario transfer or explicit storage policy, not qualified plant performance. D mass uses existing fuel_cost_per_rxn source chain; times are seconds. **Last Updated**: 2026-09-19 */
+            }
+            :>> tau_feed = 1200.0 {
+                doc /* **Source**: knowledge/research/pending/20260919-074901_fuel-inventory-residence-startup.md **Reference**: Reviewed WI-069 scenario in work/active/WI-069_fuel-inventory-and-startup/design.md. **Basis**: [ASSUMED] source-scenario transfer or explicit storage policy, not qualified plant performance. D mass uses existing fuel_cost_per_rxn source chain; times are seconds. **Last Updated**: 2026-09-19 */
+            }
+            :>> tau_process = 14400.0 {
+                doc /* **Source**: knowledge/research/pending/20260919-074901_fuel-inventory-residence-startup.md **Reference**: Reviewed WI-069 scenario in work/active/WI-069_fuel-inventory-and-startup/design.md. **Basis**: [ASSUMED] source-scenario transfer or explicit storage policy, not qualified plant performance. D mass uses existing fuel_cost_per_rxn source chain; times are seconds. **Last Updated**: 2026-09-19 */
+            }
+            :>> tau_blanket = 86400.0 {
+                doc /* **Source**: knowledge/research/pending/20260919-074901_fuel-inventory-residence-startup.md **Reference**: Reviewed WI-069 scenario in work/active/WI-069_fuel-inventory-and-startup/design.md. **Basis**: [ASSUMED] source-scenario transfer or explicit storage policy, not qualified plant performance. D mass uses existing fuel_cost_per_rxn source chain; times are seconds. **Last Updated**: 2026-09-19 */
+            }
+            :>> tau_extract = 86400.0 {
+                doc /* **Source**: knowledge/research/pending/20260919-074901_fuel-inventory-residence-startup.md **Reference**: Reviewed WI-069 scenario in work/active/WI-069_fuel-inventory-and-startup/design.md. **Basis**: [ASSUMED] source-scenario transfer or explicit storage policy, not qualified plant performance. D mass uses existing fuel_cost_per_rxn source chain; times are seconds. **Last Updated**: 2026-09-19 */
+            }
+            :>> tau_buffer = 0.0 {
+                doc /* **Source**: knowledge/research/pending/20260919-074901_fuel-inventory-residence-startup.md **Reference**: Reviewed WI-069 scenario in work/active/WI-069_fuel-inventory-and-startup/design.md. **Basis**: [ASSUMED] source-scenario transfer or explicit storage policy, not qualified plant performance. D mass uses existing fuel_cost_per_rxn source chain; times are seconds. **Last Updated**: 2026-09-19 */
+            }
+            :>> reserve_fraction = 0.25 {
+                doc /* **Source**: knowledge/research/pending/20260919-074901_fuel-inventory-residence-startup.md **Reference**: Reviewed WI-069 scenario in work/active/WI-069_fuel-inventory-and-startup/design.md. **Basis**: [ASSUMED] source-scenario transfer or explicit storage policy, not qualified plant performance. D mass uses existing fuel_cost_per_rxn source chain; times are seconds. **Last Updated**: 2026-09-19 */
+            }
+            :>> tau_reserve = 86400.0 {
+                doc /* **Source**: knowledge/research/pending/20260919-074901_fuel-inventory-residence-startup.md **Reference**: Reviewed WI-069 scenario in work/active/WI-069_fuel-inventory-and-startup/design.md. **Basis**: [ASSUMED] source-scenario transfer or explicit storage policy, not qualified plant performance. D mass uses existing fuel_cost_per_rxn source chain; times are seconds. **Last Updated**: 2026-09-19 */
+            }
+            :>> startup_extension = 0.0 {
+                doc /* **Source**: knowledge/research/pending/20260919-074901_fuel-inventory-residence-startup.md **Reference**: Reviewed WI-069 scenario in work/active/WI-069_fuel-inventory-and-startup/design.md. **Basis**: [ASSUMED] source-scenario transfer or explicit storage policy, not qualified plant performance. D mass uses existing fuel_cost_per_rxn source chain; times are seconds. **Last Updated**: 2026-09-19 */
+            }
+            :>> shutdown_duration = 86400.0 {
+                doc /* **Source**: knowledge/research/pending/20260919-074901_fuel-inventory-residence-startup.md **Reference**: Reviewed WI-069 scenario in work/active/WI-069_fuel-inventory-and-startup/design.md. **Basis**: [ASSUMED] source-scenario transfer or explicit storage policy, not qualified plant performance. D mass uses existing fuel_cost_per_rxn source chain; times are seconds. **Last Updated**: 2026-09-19 */
             }
             :>> G_stock = 0.0 {  // required stock growth [atoms/s] -- a single mature plant.
                 doc /* **Source**: knowledge/research/pending/20260907-163520_demo-breadth-disposition-prework.md:56 **Ref**: "G_stock is a deliberately specified stock-growth requirement, zero for a single mature plant that only sustains itself" **Basis**: self-sustaining plant */

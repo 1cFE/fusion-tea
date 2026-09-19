@@ -1273,6 +1273,38 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 73cde7bbe24d64b52067fba00fff82d25dfc7097b31149f601806136c7cbf339
 - **Date Added**: 2026-09-18
 
+### Lord 2024 STEP sustained fuelling and tritium self sufficiency
+- **Type**: local_pdf
+- **Location**: knowledge/sources/lord_2024_step_sustained_fuelling_and_tritium_self/
+- **Use for**: Fuel cycle topology residence inventory reserve and startup semantics for fuel-inventory-and-startup.
+- **Validation**: Check original PDF fuel self sufficiency and architecture sections and distinguish design aspirations from demonstrated performance.
+- **Caveat**: UKAEA STEP preprint; helium cooled liquid lithium blanket, not PbLi. No stellarator qualification.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/fuel-step.pdf
+- **Source ID**: d51a392bca4dfd952dcf29c6bfc58ab16a29d042e8e88ee9fe5b8e221a46e349
+- **Raw SHA256**: d51a392bca4dfd952dcf29c6bfc58ab16a29d042e8e88ee9fe5b8e221a46e349
+- **Raw Artifact SHA256**: d51a392bca4dfd952dcf29c6bfc58ab16a29d042e8e88ee9fe5b8e221a46e349
+- **Extracted Path**: knowledge/sources/lord_2024_step_sustained_fuelling_and_tritium_self/
+- **Extract SHA256**: 72636036afc6d03697b73f522e23001fdabbec4d57b97a0afd453692dce987d4
+- **Date Added**: 2026-09-19
+
+### Abdou 2021 DT fuel cycle physics technology and tritium self sufficiency
+- **Type**: local_pdf
+- **Location**: knowledge/sources/abdou_2021_dt_fuel_cycle_physics_technology_and_tritium/
+- **Use for**: Residence-time ranges, isotope-specific inventory ODEs, reserve and startup definitions for fuel-inventory-and-startup.
+- **Validation**: Visually check original Tables 1 to 3 and equations 1 to 7; numerical values are analysis cases and literature estimates.
+- **Caveat**: Generic DT reactor lumped fuel cycle; ranges are scenario evidence, not measured performance of the retained helium PbLi stellarator.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/fuel-abdou.pdf
+- **Source ID**: 5da6919cfb38971e71d719727c8b8f36d195c265d2deec6a25797fed18de2a78
+- **Raw SHA256**: 5da6919cfb38971e71d719727c8b8f36d195c265d2deec6a25797fed18de2a78
+- **Raw Artifact SHA256**: 5da6919cfb38971e71d719727c8b8f36d195c265d2deec6a25797fed18de2a78
+- **Extracted Path**: knowledge/sources/abdou_2021_dt_fuel_cycle_physics_technology_and_tritium/
+- **Extract SHA256**: f4d23e656ea77471323ab8f7a9e6237f2328d06dd8660f1285109e03ffa0957f
+- **Date Added**: 2026-09-19
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

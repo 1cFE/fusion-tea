@@ -356,6 +356,12 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-069
+  name: Fuel inventory and startup
+  scale: standard
+  priority: P0
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -448,3 +454,4 @@ standalone:
 | WI-066 | computed-tritium-breeding | standard | P1 | backlog |  |
 | WI-067 | installed-cooling-equipment-costs | standard | P1 | backlog |  |
 | WI-068 | layout-based-facilities | standard | P1 | backlog |  |
+| WI-069 | Fuel inventory and startup | standard | P0 | backlog |  |

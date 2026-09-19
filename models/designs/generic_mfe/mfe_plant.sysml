@@ -105,6 +105,9 @@ package mfe_plant {
             :>> p_fus = plasma.p_fus;
             :>> p_net = pb.p_net;
             :>> tbr = blanket.tbr;
+            :>> plasma_volume = plasma.fuel_volume;
+            :>> n_T0 = plasma.n_T0;
+            :>> alpha_n = plasma.alpha_n;
         }
         part vacuum_pumping : 'Vacuum Pumping' {
             // WI-057: inputs the plant wires from the parts and calcs that produce them

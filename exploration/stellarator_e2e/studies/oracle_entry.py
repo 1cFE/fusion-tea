@@ -250,7 +250,6 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}fuel_cycle__t_recycle": "t_recycle",
     f"{P}fuel_cycle__eta_extract": "eta_extract",
     f"{P}fuel_cycle__lambda_T": "lambda_T",
-    f"{P}fuel_cycle__I_total": "I_total",
     f"{P}fuel_cycle__G_stock": "G_stock",
     f"{P}fuel_cycle__m_T_kg": "m_T_kg",
     f"{P}divertor__target_capture_fraction": "target_capture_fraction",
@@ -656,6 +655,15 @@ ORACLE_OUTPUT_TO_CHANNEL.update({
     'shipping_remaining_base': f'{P}shipping_scope__remaining_shipping_base',
 })
 
+# WI-069 fields are the reviewed public ABI, not introspected production code.
+ENTRY_KEY_TO_ORACLE_INPUT.update({
+    f'{P}fuel_cycle__{key}': 'inventory_'+key for key in vs.inventory_oracle.DEFAULTS
+})
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'inventory_'+key: f'{P}fuel_cycle__inventory__{key}'
+    for key in vs.inventory_oracle.OUTPUTS
+})
+
 OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
     # WI-068 IDs/formal read from the generated native contract.
     f"{P}facility_capacity_ok__8acbe7a714e6a4d9": {
@@ -807,9 +815,9 @@ def _oracle_overrides(point: Mapping[str, float]) -> dict[str, float]:
                 f"entry keys disagree on oracle input {name!r}: already {overrides[name]}, "
                 f"then {key!r} = {float(value)}"
             )
-        if name in ('cooling_enabled', 'facility_facilities_enabled'):
+        if name in ('cooling_enabled', 'facility_facilities_enabled', 'inventory_inventory_enabled'):
             if value not in (False, True, 0., 1.):
-                raise OracleSeamError('cooling_enabled must be Boolean or its stored zero/one representation')
+                raise OracleSeamError(f'{name} must be Boolean or its stored zero/one representation')
             overrides[name] = bool(value)
         else:
             overrides[name] = float(value)

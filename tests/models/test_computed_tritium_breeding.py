@@ -234,7 +234,11 @@ def test_native_thickness_changes_breeding_build_and_cost(evaluate):
     assert len(set(tbr)) == 3
     for row in rows:
         assert output(row, 'blanket__breeding__defined_flag') == 1
-        assert output(row, 'fuel_cycle__fuel__tbr_required') == pytest.approx(1.19)
+        # WI-069 computes stock; the existing 1.19 burn/recycle requirement now
+        # also replenishes decay of that represented inventory.
+        inventory = output(row, 'fuel_cycle__inventory__total_atoms')
+        burn = output(row, 'fuel_cycle__fuel__burn_rate')
+        assert output(row, 'fuel_cycle__fuel__tbr_required') == pytest.approx(1.19 + 1.782785958230312e-9 * inventory / burn)
         assert output(row, 'fuel_cycle__fuel__tbr_margin') == pytest.approx(output(row, 'blanket__breeding__tbr_mean') - output(row, 'fuel_cycle__fuel__tbr_required'))
         assert output(row, 'breeding_adequacy__production_rate') == pytest.approx(output(row, 'blanket__breeding__tbr_mean') * output(row, 'fuel_cycle__fuel__burn_rate'))
         verdict = next(v for k, v in row.responses.items() if '__tbr_ok__' in k)

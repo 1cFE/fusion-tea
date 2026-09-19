@@ -382,6 +382,13 @@ package mfe_plant_systems {
         }
     }
 
+    part def 'Fuel Stock' {
+        doc /* Tritium held by one fuel-cycle process or storage policy. atoms [T atoms] and mass_kg [kg T] are nominal stock, not throughput.
+        **Source**: work/active/WI-069_fuel-inventory-and-startup/design.md **Reference**: Components and stocks. **Last Updated**: 2026-09-19 */
+        attribute atoms : Real;
+        attribute mass_kg : Real;
+    }
+
     part def 'Fuel Cycle' {
         doc /*
         The tritium fuel cycle: the D-T fuel cost facts and the reduced flows of WI-047 (burn
@@ -418,7 +425,7 @@ package mfe_plant_systems {
         // tritium decay constant [1/s]
         attribute lambda_T : Real default 0.0;
         // held tritium inventory [atoms]
-        attribute I_total : Real default 0.0;
+        attribute I_total : Real = inventory.total_atoms;
         // required stock growth [atoms/s]
         attribute G_stock : Real default 0.0;
         // tritium atomic mass [kg]
@@ -443,6 +450,90 @@ package mfe_plant_systems {
         attribute exhaust_rate : Real = fuel.exhaust_rate;
         attribute fuel_handling_cost : Real = fuel_handling.cost;
         // ---- template calcs (WI-057): the analyses this part owns ----
+
+        // WI-069 dormant generic defaults; stellarator binds the reviewed scenario.
+        attribute inventory_enabled : Boolean default := false; // 1; activation
+        attribute held_inventory : Real default := 0.0; // T atoms; dormant legacy amount
+        attribute breeding_defined : Real default := 1.0; // 1; exact 0/1
+        attribute m_D_kg : Real default := 0.0; // kg/D atom
+        attribute plasma_volume : Real default := 0.0; // m^3
+        attribute n_T0 : Real default := 0.0; // T atoms/m^3
+        attribute alpha_n : Real default := 0.0; // 1; > -1
+        attribute tau_feed : Real default := 0.0; // s
+        attribute tau_process : Real default := 0.0; // s
+        attribute tau_blanket : Real default := 0.0; // s
+        attribute tau_extract : Real default := 0.0; // s
+        attribute tau_buffer : Real default := 0.0; // s
+        attribute tau_reserve : Real default := 0.0; // s
+        attribute startup_extension : Real default := 0.0; // s
+        attribute shutdown_duration : Real default := 0.0; // s
+        attribute reserve_fraction : Real default := 0.0; // 1; [0,1]
+        attribute s_per_year : Real default := 31536000.0; // s/year; existing model 8760-hour year
+        calc inventory : 'Fuel Inventory' {
+            in enabled_in = inventory_enabled;
+            in held_inventory_in = held_inventory;
+            in p_fus_in = p_fus;
+            in q_eff_in = fuel_q_eff;
+            in mev_to_joules_in = mev_to_joules;
+            in burn_fraction_in = burn_fraction;
+            in t_recycle_in = t_recycle;
+            in tbr_available_in = tbr;
+            in breeding_defined_in = breeding_defined;
+            in eta_extract_in = eta_extract;
+            in lambda_T_in = lambda_T;
+            in G_stock_in = G_stock;
+            in m_T_kg_in = m_T_kg;
+            in m_D_kg_in = m_D_kg;
+            in plasma_volume_in = plasma_volume;
+            in n_T0_in = n_T0;
+            in alpha_n_in = alpha_n;
+            in tau_feed_in = tau_feed;
+            in tau_process_in = tau_process;
+            in tau_blanket_in = tau_blanket;
+            in tau_extract_in = tau_extract;
+            in tau_buffer_in = tau_buffer;
+            in tau_reserve_in = tau_reserve;
+            in startup_extension_in = startup_extension;
+            in shutdown_duration_in = shutdown_duration;
+            in reserve_fraction_in = reserve_fraction;
+            in availability_in = availability;
+            in s_per_year_in = s_per_year;
+        }
+        part feed_equipment : 'Fuel Stock' {
+            doc /* Injection machinery; stream F, residence tau_feed, prefilled. **Source**: work/active/WI-069_fuel-inventory-and-startup/design.md **Reference**: Components and stocks. **Last Updated**: 2026-09-19 */
+            :>> atoms = inventory.feed_atoms;
+            :>> mass_kg = inventory.feed_kg;
+        }
+        part plasma_inventory : 'Fuel Stock' {
+            doc /* Plasma fuel content; density profile integral, prefilled; F=B+U. **Source**: work/active/WI-069_fuel-inventory-and-startup/design.md **Reference**: Components and stocks. **Last Updated**: 2026-09-19 */
+            :>> atoms = inventory.plasma_atoms;
+            :>> mass_kg = inventory.plasma_kg;
+        }
+        part exhaust_processor : 'Fuel Stock' {
+            doc /* Combined cleanup and isotope separation; inlet U, residence tau_process; R+L=U at outlet. **Source**: work/active/WI-069_fuel-inventory-and-startup/design.md **Reference**: Components and stocks. **Last Updated**: 2026-09-19 */
+            :>> atoms = inventory.processor_atoms;
+            :>> mass_kg = inventory.processor_kg;
+        }
+        part breeder_zone : 'Fuel Stock' {
+            doc /* Release from breeder zone; gross T stream J, residence tau_blanket; starts empty. **Source**: work/active/WI-069_fuel-inventory-and-startup/design.md **Reference**: Components and stocks. **Last Updated**: 2026-09-19 */
+            :>> atoms = inventory.blanket_atoms;
+            :>> mass_kg = inventory.blanket_kg;
+        }
+        part extraction_equipment : 'Fuel Stock' {
+            doc /* Extraction; gross T stream J, residence tau_extract; S plus extraction loss at outlet; starts empty. **Source**: work/active/WI-069_fuel-inventory-and-startup/design.md **Reference**: Components and stocks. **Last Updated**: 2026-09-19 */
+            :>> atoms = inventory.extraction_atoms;
+            :>> mass_kg = inventory.extraction_kg;
+        }
+        part working_storage : 'Fuel Stock' {
+            doc /* Usable supply buffer; inlet recycled and extracted T, stock F*tau_buffer; prefilled. **Source**: work/active/WI-069_fuel-inventory-and-startup/design.md **Reference**: Components and stocks. **Last Updated**: 2026-09-19 */
+            :>> atoms = inventory.buffer_atoms;
+            :>> mass_kg = inventory.buffer_kg;
+        }
+        part reserve_storage : 'Fuel Stock' {
+            doc /* Separate interruption reserve; F*q*tau_reserve, counted once; prefilled. **Source**: work/active/WI-069_fuel-inventory-and-startup/design.md **Reference**: Components and stocks. **Last Updated**: 2026-09-19 */
+            :>> atoms = inventory.reserve_atoms;
+            :>> mass_kg = inventory.reserve_kg;
+        }
         calc fuel : 'Fuel Cycle Flows' {
             in p_fus_in = p_fus;
             in q_eff_in = fuel_q_eff;

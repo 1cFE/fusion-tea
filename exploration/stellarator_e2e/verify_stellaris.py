@@ -15,6 +15,7 @@ import oracle_finance as finance
 import oracle_breeding as breeding_oracle
 import oracle_cooling as cooling_oracle
 import oracle_facilities as facilities_oracle
+import oracle_fuel_inventory as inventory_oracle
 
 # WI-022 discretization contract — EXACT mirror of the handwritten impl
 # (generated/handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py). The
@@ -477,11 +478,11 @@ IN = dict(
     # divertor heat ledger and the exhaust gas load -- the thirteen instance facts.
     # t_recycle READS the cost factor fuel_recovery as the physical recovery of the
     # unburned stream (an owner decision surfaced, goal.md Reserved gates 5); the
-    # inventory terms are dormant (residence times unsourced); the divertor case is
+    # inventory now follows the WI-069 conditional residence scenario; the divertor case is
     # the source's pessimistic transport case at fixed geometry; p_exhaust 1.0 Pa is
     # DECLARED, not sourced (the required speed is the throughput's own value).
     tbr_floor=1.05,  # WI-066: achieved breeding is computed; this policy floor is retained
-    t_recycle=0.99, eta_extract=1.0, lambda_T=1.782785958230312e-09, I_total=0.0,
+    t_recycle=0.99, eta_extract=1.0, lambda_T=1.782785958230312e-09,
     G_stock=0.0, m_T_kg=5.008267663228036e-27,
     f_rad_total=0.9, q_target_ref=9.5, p_nonrad_ref=50.0, q_target_limit=10.0,
     target_capture_fraction=0.99,  # paired with the high source profile; WI-065
@@ -975,12 +976,15 @@ IN.update({
 
 
 IN.update({'facility_'+key:value for key,value in facilities_oracle.DEFAULTS.items()})
+IN.update({'inventory_'+key:value for key,value in inventory_oracle.DEFAULTS.items()})
 
 def compute():
     if "magnet_R0" in IN:
         raise ValueError("retired oracle input magnet_R0; use plant R")
     if "tbr" in IN:
         raise ValueError("retired oracle input tbr; achieved breeding is computed")
+    if "I_total" in IN:
+        raise ValueError("retired oracle input I_total; inventory is computed")
     p = IN
     for mode in ('cooling_cost_mode', 'cooling_energy_mode'):
         if not math.isfinite(p[mode]) or p[mode] not in (0., 1.):
@@ -1430,16 +1434,26 @@ def compute():
     fuel_inject_rate = fuel_burn_rate / p["burn_fraction"]
     fuel_exhaust_rate = fuel_inject_rate - fuel_burn_rate
     fuel_loss_rate = (1.0 - p["t_recycle"]) * fuel_exhaust_rate
-    fuel_tbr_required = ((fuel_burn_rate + fuel_loss_rate + p["lambda_T"] * p["I_total"] + p["G_stock"])
-                         / (p["eta_extract"] * fuel_burn_rate))
     breeding = breeding_oracle.response(p)
+    inventory_parameters = {key: p['inventory_'+key] for key in inventory_oracle.DEFAULTS}
+    inventory_parameters['enabled'] = inventory_parameters.pop('inventory_enabled')
+    inventory_parameters.update(
+        p_fus=p_fus, q_eff=p['fuel_q_eff'], mev_to_joules=p['mev_to_joules'],
+        burn_fraction=p['burn_fraction'], t_recycle=p['t_recycle'],
+        tbr_available=breeding['tbr_mean'], breeding_defined=breeding['defined_flag'],
+        eta_extract=p['eta_extract'], lambda_T=p['lambda_T'], G_stock=p['G_stock'],
+        m_T_kg=p['m_T_kg'], plasma_volume=V, n_T0=sust['n_T0'],
+        alpha_n=p['alpha_n'], availability=availability)
+    fuel_inventory = inventory_oracle.evaluate(**inventory_parameters)
+    fuel_tbr_required = ((fuel_burn_rate + fuel_loss_rate + p['lambda_T']*fuel_inventory['total_atoms'] + p['G_stock'])
+                         / (p['eta_extract']*fuel_burn_rate))
     # Raw margin is undefined whenever the coupled adequacy flag is zero.
     fuel_tbr_margin = breeding['tbr_mean'] - fuel_tbr_required
     breeding_adequacy = breeding_oracle.adequacy(
         mean=breeding['tbr_mean'], lower=breeding['tbr_lower'], defined=breeding['defined_flag'],
         floor=p['tbr_floor'], required=fuel_tbr_required, burn=fuel_burn_rate,
         loss=fuel_loss_rate, extraction=p['eta_extract'], decay_constant=p['lambda_T'],
-        inventory=p['I_total'], growth=p['G_stock'], burn_fraction=p['burn_fraction'],
+        inventory=fuel_inventory['total_atoms'], growth=p['G_stock'], burn_fraction=p['burn_fraction'],
         recycle=p['t_recycle'])
     fuel_burn_kg_per_fpy = fuel_burn_rate * p["m_T_kg"] * p["s_per_fpy"]
     divheat = divertor_account(
@@ -1585,6 +1599,7 @@ def compute():
         fuel_exhaust_rate=fuel_exhaust_rate, fuel_loss_rate=fuel_loss_rate,
         fuel_tbr_required=fuel_tbr_required, fuel_tbr_margin=fuel_tbr_margin,
         fuel_burn_kg_per_fpy=fuel_burn_kg_per_fpy,
+        **{'inventory_' + name: value for name, value in fuel_inventory.items()},
         **{'breeding_' + name: value for name, value in breeding.items()},
         **{'breeding_adequacy_' + name: value for name, value in breeding_adequacy.items()},
         **{"divheat_" + name: value for name, value in divheat.items()},

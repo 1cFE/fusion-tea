@@ -90,6 +90,8 @@ package mfe_plasma {
         attribute p_alpha_heat : Real = sustain.p_alpha_heat;
         attribute p_aux_required : Real = sustain.p_aux_required;
         attribute p_fus : Real = fusion.p_fus;
+        attribute fuel_volume : Real = geom.V; // m^3; WI-069 fuel profile integral
+        attribute n_T0 : Real = sustain.n_T0; // T atoms/m^3; WI-069 plasma prefill
         attribute p_rad : Real = sustain.p_rad;
         // ---- template calcs (WI-057): the analyses this part owns ----
         calc geom : 'Plasma Geometry' {

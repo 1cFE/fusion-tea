@@ -26,10 +26,9 @@ with this requirement and the retained design floor. Its validity flag
 also governs interpretation of this raw margin when transport is undefined.
 Recovery remains an explicit conditional scenario, not a measured efficiency.
 
-Inventory and startup stock are NOT computed here: I_total, G_stock and
-eta_extract are dormant (0, 0, 1) until residence times, extraction
-efficiency and a reserve policy have an admissible source (retrieval target:
-Lord et al., UKAEA-STEP-PR(24)12). A duty factor multiplies operating burns
+Inventory is supplied through I_total. WI-069 computes the stellarator stock
+through the separate Fuel Inventory calculation; other instances may retain
+dormant held inventory. G_stock remains an explicit stock-growth input. A duty factor multiplies operating burns
 and flows in the plant (the calendar's productive time); stock decays through
 calendar time too -- the two clocks are the lifecycle calc's, not this one's.
 
@@ -144,10 +143,9 @@ with this requirement and the retained design floor. Its validity flag
 also governs interpretation of this raw margin when transport is undefined.
 Recovery remains an explicit conditional scenario, not a measured efficiency.
 
-Inventory and startup stock are NOT computed here: I_total, G_stock and
-eta_extract are dormant (0, 0, 1) until residence times, extraction
-efficiency and a reserve policy have an admissible source (retrieval target:
-Lord et al., UKAEA-STEP-PR(24)12). A duty factor multiplies operating burns
+Inventory is supplied through I_total. WI-069 computes the stellarator stock
+through the separate Fuel Inventory calculation; other instances may retain
+dormant held inventory. G_stock remains an explicit stock-growth input. A duty factor multiplies operating burns
 and flows in the plant (the calendar's productive time); stock decays through
 calendar time too -- the two clocks are the lifecycle calc's, not this one's.
 
@@ -229,10 +227,9 @@ with this requirement and the retained design floor. Its validity flag
 also governs interpretation of this raw margin when transport is undefined.
 Recovery remains an explicit conditional scenario, not a measured efficiency.
 
-Inventory and startup stock are NOT computed here: I_total, G_stock and
-eta_extract are dormant (0, 0, 1) until residence times, extraction
-efficiency and a reserve policy have an admissible source (retrieval target:
-Lord et al., UKAEA-STEP-PR(24)12). A duty factor multiplies operating burns
+Inventory is supplied through I_total. WI-069 computes the stellarator stock
+through the separate Fuel Inventory calculation; other instances may retain
+dormant held inventory. G_stock remains an explicit stock-growth input. A duty factor multiplies operating burns
 and flows in the plant (the calendar's productive time); stock decays through
 calendar time too -- the two clocks are the lifecycle calc's, not this one's.
 

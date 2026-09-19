@@ -1162,41 +1162,6 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__burn_kg_per_fpy",
-      "field_name": "burn_kg_per_fpy",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__inject_rate",
-      "field_name": "inject_rate",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__burn_rate",
-      "field_name": "burn_rate",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin",
-      "field_name": "tbr_margin",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__tbr_required",
-      "field_name": "tbr_required",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__loss_rate",
-      "field_name": "loss_rate",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate",
-      "field_name": "exhaust_rate",
-      "python_type": "float"
-    },
-    {
       "channel_name": "stellarator_09__stellaris__magnet__conductor_grade__quantity_factor",
       "field_name": "quantity_factor",
       "python_type": "float"
@@ -1224,21 +1189,6 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__initial_sector_start_days__initial_sector_start_days",
       "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required",
-      "field_name": "S_eff_required",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total",
-      "field_name": "Q_total",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules",
-      "field_name": "n_molecules",
       "python_type": "float"
     },
     {
@@ -2017,66 +1967,6 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__breeding_adequacy__design_margin",
-      "field_name": "design_margin",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__breeding_adequacy__decay_rate",
-      "field_name": "decay_rate",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__breeding_adequacy__fuel_margin",
-      "field_name": "fuel_margin",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__breeding_adequacy__extracted_supply_rate",
-      "field_name": "extracted_supply_rate",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__breeding_adequacy__recycle_loss_rate",
-      "field_name": "recycle_loss_rate",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__breeding_adequacy__defined_flag",
-      "field_name": "defined_flag",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__breeding_adequacy__required_tbr",
-      "field_name": "required_tbr",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__breeding_adequacy__balance_rate",
-      "field_name": "balance_rate",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__breeding_adequacy__extraction_loss_rate",
-      "field_name": "extraction_loss_rate",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__breeding_adequacy__stock_growth_rate",
-      "field_name": "stock_growth_rate",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__breeding_adequacy__numerical_margin",
-      "field_name": "numerical_margin",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__breeding_adequacy__production_rate",
-      "field_name": "production_rate",
-      "python_type": "float"
-    },
-    {
       "channel_name": "stellarator_09__stellaris__rb__wall_area",
       "field_name": "wall_area",
       "python_type": "float"
@@ -2814,6 +2704,391 @@
     {
       "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel",
       "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__recycle_kg_day",
+      "field_name": "recycle_kg_day",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__production_kg_s",
+      "field_name": "production_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__shutdown_remaining_kg",
+      "field_name": "shutdown_remaining_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__annual_recycle_loss_kg",
+      "field_name": "annual_recycle_loss_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__extraction_loss_kg_s",
+      "field_name": "extraction_loss_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__working_kg",
+      "field_name": "working_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__startup_deficit_atoms",
+      "field_name": "startup_deficit_atoms",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__injection_kg_s",
+      "field_name": "injection_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__annual_makeup_signed_kg",
+      "field_name": "annual_makeup_signed_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__max_decay_residence",
+      "field_name": "max_decay_residence",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__burn_kg_s",
+      "field_name": "burn_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__extracted_kg_day",
+      "field_name": "extracted_kg_day",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__plasma_atoms",
+      "field_name": "plasma_atoms",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__buffer_atoms",
+      "field_name": "buffer_atoms",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__blanket_kg",
+      "field_name": "blanket_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__extraction_atoms",
+      "field_name": "extraction_atoms",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__dt_injection_kg_s",
+      "field_name": "dt_injection_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__annual_recycle_kg",
+      "field_name": "annual_recycle_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__dt_injection_kg_day",
+      "field_name": "dt_injection_kg_day",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__buffer_kg",
+      "field_name": "buffer_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__exhaust_kg_day",
+      "field_name": "exhaust_kg_day",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__external_shortfall_kg_s",
+      "field_name": "external_shortfall_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__blanket_atoms",
+      "field_name": "blanket_atoms",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__injection_kg_day",
+      "field_name": "injection_kg_day",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__annual_production_kg",
+      "field_name": "annual_production_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__extraction_loss_kg_day",
+      "field_name": "extraction_loss_kg_day",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__startup_conservative_atoms",
+      "field_name": "startup_conservative_atoms",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__feed_atoms",
+      "field_name": "feed_atoms",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__recycle_delay_s",
+      "field_name": "recycle_delay_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__annual_extraction_loss_kg",
+      "field_name": "annual_extraction_loss_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__annual_extracted_kg",
+      "field_name": "annual_extracted_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__startup_decay_allowance_kg",
+      "field_name": "startup_decay_allowance_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__startup_conservative_kg",
+      "field_name": "startup_conservative_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__burn_kg_day",
+      "field_name": "burn_kg_day",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__total_kg",
+      "field_name": "total_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__startup_deficit_kg",
+      "field_name": "startup_deficit_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_day",
+      "field_name": "dt_processor_kg_day",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_s",
+      "field_name": "dt_processor_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__prefill_kg",
+      "field_name": "prefill_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__decay_kg_s",
+      "field_name": "decay_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__working_atoms",
+      "field_name": "working_atoms",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__breeding_delay_s",
+      "field_name": "breeding_delay_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__feed_kg",
+      "field_name": "feed_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__prefill_atoms",
+      "field_name": "prefill_atoms",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__reserve_atoms",
+      "field_name": "reserve_atoms",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__annual_external_shortfall_kg",
+      "field_name": "annual_external_shortfall_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__annual_injection_kg",
+      "field_name": "annual_injection_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__exhaust_kg_s",
+      "field_name": "exhaust_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__reserve_kg",
+      "field_name": "reserve_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__startup_horizon_s",
+      "field_name": "startup_horizon_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__processor_atoms",
+      "field_name": "processor_atoms",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__plasma_kg",
+      "field_name": "plasma_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__startup_decay_allowance_atoms",
+      "field_name": "startup_decay_allowance_atoms",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__production_kg_day",
+      "field_name": "production_kg_day",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__total_atoms",
+      "field_name": "total_atoms",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__annual_burn_kg",
+      "field_name": "annual_burn_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__processor_kg",
+      "field_name": "processor_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__extracted_kg_s",
+      "field_name": "extracted_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__extraction_kg",
+      "field_name": "extraction_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__annual_decay_kg",
+      "field_name": "annual_decay_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__startup_minimum_atoms",
+      "field_name": "startup_minimum_atoms",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__recycle_loss_kg_s",
+      "field_name": "recycle_loss_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__startup_minimum_kg",
+      "field_name": "startup_minimum_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__makeup_signed_kg_s",
+      "field_name": "makeup_signed_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__defined_flag",
+      "field_name": "defined_flag",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__shutdown_decay_loss_kg",
+      "field_name": "shutdown_decay_loss_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__recycle_kg_s",
+      "field_name": "recycle_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__recycle_loss_kg_day",
+      "field_name": "recycle_loss_kg_day",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__calendar_processor_kg_s",
+      "field_name": "calendar_processor_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__annual_exhaust_kg",
+      "field_name": "annual_exhaust_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__burn_kg_per_fpy",
+      "field_name": "burn_kg_per_fpy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__inject_rate",
+      "field_name": "inject_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__burn_rate",
+      "field_name": "burn_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin",
+      "field_name": "tbr_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__tbr_required",
+      "field_name": "tbr_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__loss_rate",
+      "field_name": "loss_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate",
+      "field_name": "exhaust_rate",
       "python_type": "float"
     },
     {
@@ -5147,6 +5422,21 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required",
+      "field_name": "S_eff_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total",
+      "field_name": "Q_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules",
+      "field_name": "n_molecules",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__facility_preconstruction__cost",
       "field_name": "root",
       "python_type": "float"
@@ -5164,6 +5454,66 @@
     {
       "channel_name": "stellarator_09__stellaris__cooling_annual__annual_om",
       "field_name": "annual_om",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__design_margin",
+      "field_name": "design_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__decay_rate",
+      "field_name": "decay_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__fuel_margin",
+      "field_name": "fuel_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__extracted_supply_rate",
+      "field_name": "extracted_supply_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__recycle_loss_rate",
+      "field_name": "recycle_loss_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__defined_flag",
+      "field_name": "defined_flag",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__required_tbr",
+      "field_name": "required_tbr",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__balance_rate",
+      "field_name": "balance_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__extraction_loss_rate",
+      "field_name": "extraction_loss_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__stock_growth_rate",
+      "field_name": "stock_growth_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__numerical_margin",
+      "field_name": "numerical_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__breeding_adequacy__production_rate",
+      "field_name": "production_rate",
       "python_type": "float"
     },
     {
@@ -5806,6 +6156,20 @@
       "param_group": "mfe_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__recirc_ok__threshold"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "mfe_plant_systems_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__held_inventory"
+    },
+    {
+      "default_value": 31536000.0,
+      "entry_type": "design_attribute",
+      "param_group": "mfe_plant_systems_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__s_per_year"
     },
     {
       "default_value": 0.2002,
@@ -7236,13 +7600,6 @@
       "qualified_name": "stellarator_09__stellaris__fuel_cycle__G_stock"
     },
     {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__fuel_cycle__I_total"
-    },
-    {
       "default_value": 0.05,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -7285,11 +7642,25 @@
       "qualified_name": "stellarator_09__stellaris__fuel_cycle__fuel_recovery"
     },
     {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "bool",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__inventory_enabled"
+    },
+    {
       "default_value": 1.782785958230312e-09,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__fuel_cycle__lambda_T"
+    },
+    {
+      "default_value": 3.3435837768e-27,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__m_D_kg"
     },
     {
       "default_value": 5.008267663228036e-27,
@@ -7313,11 +7684,74 @@
       "qualified_name": "stellarator_09__stellaris__fuel_cycle__p_trit"
     },
     {
+      "default_value": 0.25,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__reserve_fraction"
+    },
+    {
+      "default_value": 86400.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__shutdown_duration"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__startup_extension"
+    },
+    {
       "default_value": 0.99,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__fuel_cycle__t_recycle"
+    },
+    {
+      "default_value": 86400.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__tau_blanket"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__tau_buffer"
+    },
+    {
+      "default_value": 86400.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__tau_extract"
+    },
+    {
+      "default_value": 1200.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__tau_feed"
+    },
+    {
+      "default_value": 14400.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__tau_process"
+    },
+    {
+      "default_value": 86400.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__tau_reserve"
     },
     {
       "default_value": 35060.0,
@@ -8615,5 +9049,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "a913cbcf04a82403d8a7c51e13fc09718596d3dc1557b06c7b583481476cdc4d"
+  "semantic_fingerprint": "1d97071e32b40888ef206f0c403250a28a9ecfad7e921797546f0a3ddcc0c1ef"
 }

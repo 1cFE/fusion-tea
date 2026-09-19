@@ -18,6 +18,7 @@ modules:
       mfe_magnet_cost_params: MfeMagnetCostParams ../inputs/mfe_magnet_cost_params.json
       mfe_magnet_field_params: MfeMagnetFieldParams ../inputs/mfe_magnet_field_params.json
       mfe_plant_params: MfePlantParams ../inputs/mfe_plant_params.json
+      mfe_plant_systems_params: MfePlantSystemsParams ../inputs/mfe_plant_systems_params.json
       mfe_plasma_scaling_params: MfePlasmaScalingParams ../inputs/mfe_plasma_scaling_params.json
       mfe_plasma_sustainment_params: MfePlasmaSustainmentParams ../inputs/mfe_plasma_sustainment_params.json
       mfe_vacuum_params: MfeVacuumParams ../inputs/mfe_vacuum_params.json
@@ -189,31 +190,6 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__plasma__fusion__p_fus
 
-  # mfe_fuel_cycle.Fuel_Cycle_FlowsModule
-  stellarator_09__stellaris__fuel_cycle__fuel:
-    module_type: mfe_fuel_cycle.Fuel_Cycle_FlowsModule
-    inputs:
-      eta_extract_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__eta_extract
-      s_per_fpy_in: float mfe_fuel_cycle_params.stellarator_09__stellaris__fuel_cycle__fuel__s_per_fpy_in
-      tbr_available_in: float stellarator_09__stellaris__blanket__breeding__tbr_mean
-      lambda_T_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__lambda_T
-      p_fus_in: float stellarator_09__stellaris__plasma__fusion__p_fus.root
-      q_eff_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__fuel_q_eff
-      burn_fraction_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__burn_fraction
-      G_stock_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__G_stock
-      t_recycle_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__t_recycle
-      m_T_kg_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__m_T_kg
-      mev_to_joules_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__mev_to_joules
-      I_total_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__I_total
-    outputs:
-      burn_kg_per_fpy: float stellarator_09__stellaris__fuel_cycle__fuel__burn_kg_per_fpy
-      inject_rate: float stellarator_09__stellaris__fuel_cycle__fuel__inject_rate
-      burn_rate: float stellarator_09__stellaris__fuel_cycle__fuel__burn_rate
-      tbr_margin: float stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin
-      tbr_required: float stellarator_09__stellaris__fuel_cycle__fuel__tbr_required
-      loss_rate: float stellarator_09__stellaris__fuel_cycle__fuel__loss_rate
-      exhaust_rate: float stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate
-
   # mfe_conductor_grade.Conductor_Field_CapabilityModule
   stellarator_09__stellaris__magnet__conductor_grade:
     module_type: mfe_conductor_grade.Conductor_Field_CapabilityModule
@@ -248,21 +224,6 @@ modules:
     module_type: stellarator_09.stellaris.buildings.initial_sector_start_daysModule
     outputs:
       root: RootModel[float] stellarator_09__stellaris__buildings__initial_sector_start_days__initial_sector_start_days
-
-  # mfe_vacuum.Vacuum_Gas_LoadModule
-  stellarator_09__stellaris__vacuum_pumping__vacuum:
-    module_type: mfe_vacuum.Vacuum_Gas_LoadModule
-    inputs:
-      T_gas_in: float stellarator_plant_params.stellarator_09__stellaris__vacuum_pumping__T_gas
-      p_exhaust_in: float stellarator_plant_params.stellarator_09__stellaris__vacuum_pumping__p_exhaust
-      helium_rate_in: float stellarator_09__stellaris__fuel_cycle__fuel__burn_rate
-      exhaust_rate_T_in: float stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate
-      exhaust_rate_D_in: float stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate
-      k_B_in: float mfe_vacuum_params.stellarator_09__stellaris__vacuum_pumping__vacuum__k_B_in
-    outputs:
-      S_eff_required: float stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required
-      Q_total: float stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total
-      n_molecules: float stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules
 
   # mfe_heating_chain.Operating_Heating_PowerModule
   stellarator_09__stellaris__operating_heat:
@@ -538,37 +499,6 @@ modules:
     outputs:
       electric_total: float stellarator_09__stellaris__heat_transport__cooling_energy__electric_total
       recovered_total: float stellarator_09__stellaris__heat_transport__cooling_energy__recovered_total
-
-  # mfe_tritium_breeding.Tritium_Breeding_AdequacyModule
-  stellarator_09__stellaris__breeding_adequacy:
-    module_type: mfe_tritium_breeding.Tritium_Breeding_AdequacyModule
-    inputs:
-      loss_rate_in: float stellarator_09__stellaris__fuel_cycle__fuel__loss_rate
-      I_total_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__I_total
-      eta_extract_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__eta_extract
-      burn_rate_in: float stellarator_09__stellaris__fuel_cycle__fuel__burn_rate
-      tbr_lower_in: float stellarator_09__stellaris__blanket__breeding__tbr_lower
-      defined_in: float stellarator_09__stellaris__blanket__breeding__defined_flag
-      tbr_floor_in: float stellarator_plant_params.stellarator_09__stellaris__tbr_floor
-      G_stock_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__G_stock
-      lambda_T_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__lambda_T
-      tbr_mean_in: float stellarator_09__stellaris__blanket__breeding__tbr_mean
-      t_recycle_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__t_recycle
-      tbr_required_in: float stellarator_09__stellaris__fuel_cycle__fuel__tbr_required
-      burn_fraction_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__burn_fraction
-    outputs:
-      design_margin: float stellarator_09__stellaris__breeding_adequacy__design_margin
-      decay_rate: float stellarator_09__stellaris__breeding_adequacy__decay_rate
-      fuel_margin: float stellarator_09__stellaris__breeding_adequacy__fuel_margin
-      extracted_supply_rate: float stellarator_09__stellaris__breeding_adequacy__extracted_supply_rate
-      recycle_loss_rate: float stellarator_09__stellaris__breeding_adequacy__recycle_loss_rate
-      defined_flag: float stellarator_09__stellaris__breeding_adequacy__defined_flag
-      required_tbr: float stellarator_09__stellaris__breeding_adequacy__required_tbr
-      balance_rate: float stellarator_09__stellaris__breeding_adequacy__balance_rate
-      extraction_loss_rate: float stellarator_09__stellaris__breeding_adequacy__extraction_loss_rate
-      stock_growth_rate: float stellarator_09__stellaris__breeding_adequacy__stock_growth_rate
-      numerical_margin: float stellarator_09__stellaris__breeding_adequacy__numerical_margin
-      production_rate: float stellarator_09__stellaris__breeding_adequacy__production_rate
 
   # mfe_plasma_scaling.MFE_Radial_BuildModule
   stellarator_09__stellaris__rb:
@@ -1464,6 +1394,135 @@ modules:
       q_eff: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__fuel_q_eff
     outputs:
       root: RootModel[float] stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel
+
+  # mfe_fuel_cycle.Fuel_InventoryModule
+  stellarator_09__stellaris__fuel_cycle__inventory:
+    module_type: mfe_fuel_cycle.Fuel_InventoryModule
+    inputs:
+      enabled_in: bool stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__inventory_enabled
+      startup_extension_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__startup_extension
+      p_fus_in: float stellarator_09__stellaris__plasma__fusion__p_fus.root
+      tbr_available_in: float stellarator_09__stellaris__blanket__breeding__tbr_mean
+      burn_fraction_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__burn_fraction
+      breeding_defined_in: float stellarator_09__stellaris__blanket__breeding__defined_flag
+      q_eff_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__fuel_q_eff
+      alpha_n_in: float stellarator_plant_params.stellarator_09__stellaris__plasma__alpha_n
+      m_D_kg_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__m_D_kg
+      tau_buffer_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__tau_buffer
+      tau_blanket_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__tau_blanket
+      eta_extract_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__eta_extract
+      plasma_volume_in: float stellarator_09__stellaris__plasma__geom__V
+      n_T0_in: float stellarator_09__stellaris__plasma__sustain__n_T0
+      shutdown_duration_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__shutdown_duration
+      s_per_year_in: float mfe_plant_systems_params.stellarator_09__stellaris__fuel_cycle__s_per_year
+      tau_process_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__tau_process
+      held_inventory_in: float mfe_plant_systems_params.stellarator_09__stellaris__fuel_cycle__held_inventory
+      tau_extract_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__tau_extract
+      m_T_kg_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__m_T_kg
+      G_stock_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__G_stock
+      reserve_fraction_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__reserve_fraction
+      lambda_T_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__lambda_T
+      availability_in: float stellarator_09__stellaris__calendar__availability
+      t_recycle_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__t_recycle
+      tau_reserve_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__tau_reserve
+      mev_to_joules_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__mev_to_joules
+      tau_feed_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__tau_feed
+    outputs:
+      recycle_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__recycle_kg_day
+      production_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__production_kg_s
+      shutdown_remaining_kg: float stellarator_09__stellaris__fuel_cycle__inventory__shutdown_remaining_kg
+      annual_recycle_loss_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_recycle_loss_kg
+      extraction_loss_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__extraction_loss_kg_s
+      working_kg: float stellarator_09__stellaris__fuel_cycle__inventory__working_kg
+      startup_deficit_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__startup_deficit_atoms
+      injection_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__injection_kg_s
+      annual_makeup_signed_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_makeup_signed_kg
+      max_decay_residence: float stellarator_09__stellaris__fuel_cycle__inventory__max_decay_residence
+      burn_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__burn_kg_s
+      extracted_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__extracted_kg_day
+      plasma_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__plasma_atoms
+      buffer_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__buffer_atoms
+      blanket_kg: float stellarator_09__stellaris__fuel_cycle__inventory__blanket_kg
+      extraction_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__extraction_atoms
+      dt_injection_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__dt_injection_kg_s
+      annual_recycle_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_recycle_kg
+      dt_injection_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__dt_injection_kg_day
+      buffer_kg: float stellarator_09__stellaris__fuel_cycle__inventory__buffer_kg
+      exhaust_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__exhaust_kg_day
+      external_shortfall_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__external_shortfall_kg_s
+      blanket_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__blanket_atoms
+      injection_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__injection_kg_day
+      annual_production_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_production_kg
+      extraction_loss_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__extraction_loss_kg_day
+      startup_conservative_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__startup_conservative_atoms
+      feed_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__feed_atoms
+      recycle_delay_s: float stellarator_09__stellaris__fuel_cycle__inventory__recycle_delay_s
+      annual_extraction_loss_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_extraction_loss_kg
+      annual_extracted_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_extracted_kg
+      startup_decay_allowance_kg: float stellarator_09__stellaris__fuel_cycle__inventory__startup_decay_allowance_kg
+      startup_conservative_kg: float stellarator_09__stellaris__fuel_cycle__inventory__startup_conservative_kg
+      burn_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__burn_kg_day
+      total_kg: float stellarator_09__stellaris__fuel_cycle__inventory__total_kg
+      startup_deficit_kg: float stellarator_09__stellaris__fuel_cycle__inventory__startup_deficit_kg
+      dt_processor_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_day
+      dt_processor_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_s
+      prefill_kg: float stellarator_09__stellaris__fuel_cycle__inventory__prefill_kg
+      decay_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__decay_kg_s
+      working_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__working_atoms
+      breeding_delay_s: float stellarator_09__stellaris__fuel_cycle__inventory__breeding_delay_s
+      feed_kg: float stellarator_09__stellaris__fuel_cycle__inventory__feed_kg
+      prefill_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__prefill_atoms
+      reserve_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__reserve_atoms
+      annual_external_shortfall_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_external_shortfall_kg
+      annual_injection_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_injection_kg
+      exhaust_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__exhaust_kg_s
+      reserve_kg: float stellarator_09__stellaris__fuel_cycle__inventory__reserve_kg
+      startup_horizon_s: float stellarator_09__stellaris__fuel_cycle__inventory__startup_horizon_s
+      processor_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__processor_atoms
+      plasma_kg: float stellarator_09__stellaris__fuel_cycle__inventory__plasma_kg
+      startup_decay_allowance_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__startup_decay_allowance_atoms
+      production_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__production_kg_day
+      total_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__total_atoms
+      annual_burn_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_burn_kg
+      processor_kg: float stellarator_09__stellaris__fuel_cycle__inventory__processor_kg
+      extracted_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__extracted_kg_s
+      extraction_kg: float stellarator_09__stellaris__fuel_cycle__inventory__extraction_kg
+      annual_decay_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_decay_kg
+      startup_minimum_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__startup_minimum_atoms
+      recycle_loss_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__recycle_loss_kg_s
+      startup_minimum_kg: float stellarator_09__stellaris__fuel_cycle__inventory__startup_minimum_kg
+      makeup_signed_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__makeup_signed_kg_s
+      defined_flag: float stellarator_09__stellaris__fuel_cycle__inventory__defined_flag
+      shutdown_decay_loss_kg: float stellarator_09__stellaris__fuel_cycle__inventory__shutdown_decay_loss_kg
+      recycle_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__recycle_kg_s
+      recycle_loss_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__recycle_loss_kg_day
+      calendar_processor_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__calendar_processor_kg_s
+      annual_exhaust_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_exhaust_kg
+
+  # mfe_fuel_cycle.Fuel_Cycle_FlowsModule
+  stellarator_09__stellaris__fuel_cycle__fuel:
+    module_type: mfe_fuel_cycle.Fuel_Cycle_FlowsModule
+    inputs:
+      eta_extract_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__eta_extract
+      s_per_fpy_in: float mfe_fuel_cycle_params.stellarator_09__stellaris__fuel_cycle__fuel__s_per_fpy_in
+      tbr_available_in: float stellarator_09__stellaris__blanket__breeding__tbr_mean
+      lambda_T_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__lambda_T
+      p_fus_in: float stellarator_09__stellaris__plasma__fusion__p_fus.root
+      q_eff_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__fuel_q_eff
+      burn_fraction_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__burn_fraction
+      G_stock_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__G_stock
+      t_recycle_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__t_recycle
+      m_T_kg_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__m_T_kg
+      mev_to_joules_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__mev_to_joules
+      I_total_in: float stellarator_09__stellaris__fuel_cycle__inventory__total_atoms
+    outputs:
+      burn_kg_per_fpy: float stellarator_09__stellaris__fuel_cycle__fuel__burn_kg_per_fpy
+      inject_rate: float stellarator_09__stellaris__fuel_cycle__fuel__inject_rate
+      burn_rate: float stellarator_09__stellaris__fuel_cycle__fuel__burn_rate
+      tbr_margin: float stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin
+      tbr_required: float stellarator_09__stellaris__fuel_cycle__fuel__tbr_required
+      loss_rate: float stellarator_09__stellaris__fuel_cycle__fuel__loss_rate
+      exhaust_rate: float stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate
 
   # mfe_facilities.Facility_LayoutModule
   stellarator_09__stellaris__buildings__layout:
@@ -2695,6 +2754,21 @@ modules:
       cost: float stellarator_09__stellaris__buildings__facility_accounts__cost
       installed_facility_capital: float stellarator_09__stellaris__buildings__facility_accounts__installed_facility_capital
 
+  # mfe_vacuum.Vacuum_Gas_LoadModule
+  stellarator_09__stellaris__vacuum_pumping__vacuum:
+    module_type: mfe_vacuum.Vacuum_Gas_LoadModule
+    inputs:
+      T_gas_in: float stellarator_plant_params.stellarator_09__stellaris__vacuum_pumping__T_gas
+      p_exhaust_in: float stellarator_plant_params.stellarator_09__stellaris__vacuum_pumping__p_exhaust
+      helium_rate_in: float stellarator_09__stellaris__fuel_cycle__fuel__burn_rate
+      exhaust_rate_T_in: float stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate
+      exhaust_rate_D_in: float stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate
+      k_B_in: float mfe_vacuum_params.stellarator_09__stellaris__vacuum_pumping__vacuum__k_B_in
+    outputs:
+      S_eff_required: float stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required
+      Q_total: float stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total
+      n_molecules: float stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules
+
   # mfe_facilities.Facility_Preconstruction_SelectionModule
   stellarator_09__stellaris__facility_preconstruction:
     module_type: mfe_facilities.Facility_Preconstruction_SelectionModule
@@ -2727,6 +2801,37 @@ modules:
     outputs:
       cas72_total: float stellarator_09__stellaris__cooling_annual__cas72_total
       annual_om: float stellarator_09__stellaris__cooling_annual__annual_om
+
+  # mfe_tritium_breeding.Tritium_Breeding_AdequacyModule
+  stellarator_09__stellaris__breeding_adequacy:
+    module_type: mfe_tritium_breeding.Tritium_Breeding_AdequacyModule
+    inputs:
+      loss_rate_in: float stellarator_09__stellaris__fuel_cycle__fuel__loss_rate
+      I_total_in: float stellarator_09__stellaris__fuel_cycle__inventory__total_atoms
+      eta_extract_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__eta_extract
+      burn_rate_in: float stellarator_09__stellaris__fuel_cycle__fuel__burn_rate
+      tbr_lower_in: float stellarator_09__stellaris__blanket__breeding__tbr_lower
+      defined_in: float stellarator_09__stellaris__blanket__breeding__defined_flag
+      tbr_floor_in: float stellarator_plant_params.stellarator_09__stellaris__tbr_floor
+      G_stock_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__G_stock
+      lambda_T_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__lambda_T
+      tbr_mean_in: float stellarator_09__stellaris__blanket__breeding__tbr_mean
+      t_recycle_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__t_recycle
+      tbr_required_in: float stellarator_09__stellaris__fuel_cycle__fuel__tbr_required
+      burn_fraction_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__burn_fraction
+    outputs:
+      design_margin: float stellarator_09__stellaris__breeding_adequacy__design_margin
+      decay_rate: float stellarator_09__stellaris__breeding_adequacy__decay_rate
+      fuel_margin: float stellarator_09__stellaris__breeding_adequacy__fuel_margin
+      extracted_supply_rate: float stellarator_09__stellaris__breeding_adequacy__extracted_supply_rate
+      recycle_loss_rate: float stellarator_09__stellaris__breeding_adequacy__recycle_loss_rate
+      defined_flag: float stellarator_09__stellaris__breeding_adequacy__defined_flag
+      required_tbr: float stellarator_09__stellaris__breeding_adequacy__required_tbr
+      balance_rate: float stellarator_09__stellaris__breeding_adequacy__balance_rate
+      extraction_loss_rate: float stellarator_09__stellaris__breeding_adequacy__extraction_loss_rate
+      stock_growth_rate: float stellarator_09__stellaris__breeding_adequacy__stock_growth_rate
+      numerical_margin: float stellarator_09__stellaris__breeding_adequacy__numerical_margin
+      production_rate: float stellarator_09__stellaris__breeding_adequacy__production_rate
 
   # mfe_account_costs.Levelized_Annual_CostModule
   stellarator_09__stellaris__cas71_calc:
@@ -3185,7 +3290,7 @@ modules:
       stellarator_09__stellaris__blanket__breeding__tbr_li7: float stellaris__blanket__tbr_li7.json
       stellarator_09__stellaris__blanket__breeding__tbr_mean: float stellaris__blanket__tbr.json
       stellarator_09__stellaris__plasma__geom__A: float stellarator_09__stellaris__plasma__geom__A.json
-      stellarator_09__stellaris__plasma__geom__V: float stellarator_09__stellaris__plasma__geom__V.json
+      stellarator_09__stellaris__plasma__geom__V: float stellaris__fuel_cycle__plasma_volume.json
       stellarator_09__stellaris__heating__heat__p_wallplug_total: float stellaris__heating__p_wallplug_total.json
       stellarator_09__stellaris__heating__heat__p_delivered: float stellarator_09__stellaris__heating__heat__p_delivered.json
       stellarator_09__stellaris__heating__heat__p_coupled: float stellaris__divertor__p_installed_coupled.json
@@ -3193,7 +3298,7 @@ modules:
       stellarator_09__stellaris__heating__heating_cost__cost: RootModel[float] stellaris__heating_capital.json
       stellarator_09__stellaris__magnet__field_calc__B_axis: RootModel[float] stellaris__magnet__B.json
       stellarator_09__stellaris__plasma__sustain__n_bar19: float stellarator_09__stellaris__plasma__sustain__n_bar19.json
-      stellarator_09__stellaris__plasma__sustain__n_T0: float stellarator_09__stellaris__plasma__sustain__n_T0.json
+      stellarator_09__stellaris__plasma__sustain__n_T0: float stellaris__fuel_cycle__n_T0.json
       stellarator_09__stellaris__plasma__sustain__W_th: float stellarator_09__stellaris__plasma__sustain__W_th.json
       stellarator_09__stellaris__plasma__sustain__p_avg: float stellarator_09__stellaris__plasma__sustain__p_avg.json
       stellarator_09__stellaris__plasma__sustain__p_brems: float stellarator_09__stellaris__plasma__sustain__p_brems.json
@@ -3211,22 +3316,12 @@ modules:
       stellarator_09__stellaris__plasma__sustain__T_e0: float stellarator_09__stellaris__plasma__sustain__T_e0.json
       stellarator_09__stellaris__plasma__beta_calc__beta: RootModel[float] stellaris__plasma__beta.json
       stellarator_09__stellaris__plasma__fusion__p_fus: RootModel[float] stellaris__blanket__p_fus.json
-      stellarator_09__stellaris__fuel_cycle__fuel__burn_kg_per_fpy: float stellarator_09__stellaris__fuel_cycle__fuel__burn_kg_per_fpy.json
-      stellarator_09__stellaris__fuel_cycle__fuel__inject_rate: float stellarator_09__stellaris__fuel_cycle__fuel__inject_rate.json
-      stellarator_09__stellaris__fuel_cycle__fuel__burn_rate: float stellaris__fuel_cycle__burn_rate.json
-      stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin: float stellaris__fuel_cycle__tbr_margin.json
-      stellarator_09__stellaris__fuel_cycle__fuel__tbr_required: float stellaris__fuel_cycle__tbr_required.json
-      stellarator_09__stellaris__fuel_cycle__fuel__loss_rate: float stellaris__fuel_cycle__loss_rate.json
-      stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate: float stellaris__fuel_cycle__exhaust_rate.json
       stellarator_09__stellaris__magnet__conductor_grade__quantity_factor: float stellaris__magnet__winding_pack__conductor_quantity_factor.json
       stellarator_09__stellaris__magnet__conductor_grade__j_wp_effective: float stellarator_09__stellaris__magnet__conductor_grade__j_wp_effective.json
       stellarator_09__stellaris__heat_transport__cooling_guard__energy_mode: float stellarator_09__stellaris__heat_transport__cooling_guard__energy_mode.json
       stellarator_09__stellaris__heat_transport__cooling_guard__cost_mode: float stellarator_09__stellaris__heat_transport__cooling_guard__cost_mode.json
       stellarator_09__stellaris__buildings__cooling_initial_handoff_days__cooling_initial_handoff_days: RootModel[float] stellarator_09__stellaris__buildings__cooling_initial_handoff_days__cooling_initial_handoff_days.json
       stellarator_09__stellaris__buildings__initial_sector_start_days__initial_sector_start_days: RootModel[float] stellarator_09__stellaris__buildings__initial_sector_start_days__initial_sector_start_days.json
-      stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required: float stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required.json
-      stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total: float stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total.json
-      stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules: float stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules.json
       stellarator_09__stellaris__operating_heat__p_wallplug: float stellarator_09__stellaris__operating_heat__p_wallplug.json
       stellarator_09__stellaris__operating_heat__p_coupled: float stellaris__blanket__p_coupled.json
       stellarator_09__stellaris__operating_heat__p_delivered: float stellarator_09__stellaris__operating_heat__p_delivered.json
@@ -3382,18 +3477,6 @@ modules:
       stellarator_09__stellaris__heat_transport__equipment__motor_base_ok: bool stellarator_09__stellaris__heat_transport__equipment__motor_base_ok.json
       stellarator_09__stellaris__heat_transport__cooling_energy__electric_total: float stellaris__heat_transport__p_pump_total.json
       stellarator_09__stellaris__heat_transport__cooling_energy__recovered_total: float stellaris__heat_transport__q_recovered_total.json
-      stellarator_09__stellaris__breeding_adequacy__design_margin: float stellaris__breeding_design_margin.json
-      stellarator_09__stellaris__breeding_adequacy__decay_rate: float stellarator_09__stellaris__breeding_adequacy__decay_rate.json
-      stellarator_09__stellaris__breeding_adequacy__fuel_margin: float stellaris__breeding_fuel_margin.json
-      stellarator_09__stellaris__breeding_adequacy__extracted_supply_rate: float stellarator_09__stellaris__breeding_adequacy__extracted_supply_rate.json
-      stellarator_09__stellaris__breeding_adequacy__recycle_loss_rate: float stellarator_09__stellaris__breeding_adequacy__recycle_loss_rate.json
-      stellarator_09__stellaris__breeding_adequacy__defined_flag: float stellaris__breeding_adequacy_defined.json
-      stellarator_09__stellaris__breeding_adequacy__required_tbr: float stellaris__breeding_requirement.json
-      stellarator_09__stellaris__breeding_adequacy__balance_rate: float stellarator_09__stellaris__breeding_adequacy__balance_rate.json
-      stellarator_09__stellaris__breeding_adequacy__extraction_loss_rate: float stellarator_09__stellaris__breeding_adequacy__extraction_loss_rate.json
-      stellarator_09__stellaris__breeding_adequacy__stock_growth_rate: float stellarator_09__stellaris__breeding_adequacy__stock_growth_rate.json
-      stellarator_09__stellaris__breeding_adequacy__numerical_margin: float stellaris__breeding_numerical_margin.json
-      stellarator_09__stellaris__breeding_adequacy__production_rate: float stellarator_09__stellaris__breeding_adequacy__production_rate.json
       stellarator_09__stellaris__rb__wall_area: float stellaris__blanket__first_wall__wall_area.json
       stellarator_09__stellaris__rb__shield_vol: float stellaris__shield__shield_vol.json
       stellarator_09__stellaris__rb__structure_vol: float stellaris__structure__structure_vol.json
@@ -3542,6 +3625,83 @@ modules:
       stellarator_09__stellaris__calendar__n_replacements: float stellaris__buildings__calendar_count.json
       stellarator_09__stellaris__calendar__physical_life_fpy: float stellaris__buildings__calendar_life.json
       stellarator_09__stellaris__fuel_cycle__fuel_calc__annual_fuel: RootModel[float] stellaris__fuel_cycle__annual_fuel.json
+      stellarator_09__stellaris__fuel_cycle__inventory__recycle_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__recycle_kg_day.json
+      stellarator_09__stellaris__fuel_cycle__inventory__production_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__production_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__shutdown_remaining_kg: float stellarator_09__stellaris__fuel_cycle__inventory__shutdown_remaining_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__annual_recycle_loss_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_recycle_loss_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__extraction_loss_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__extraction_loss_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__working_kg: float stellarator_09__stellaris__fuel_cycle__inventory__working_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__startup_deficit_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__startup_deficit_atoms.json
+      stellarator_09__stellaris__fuel_cycle__inventory__injection_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__injection_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__annual_makeup_signed_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_makeup_signed_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__max_decay_residence: float stellarator_09__stellaris__fuel_cycle__inventory__max_decay_residence.json
+      stellarator_09__stellaris__fuel_cycle__inventory__burn_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__burn_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__extracted_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__extracted_kg_day.json
+      stellarator_09__stellaris__fuel_cycle__inventory__plasma_atoms: float stellaris__fuel_cycle__plasma_inventory__atoms.json
+      stellarator_09__stellaris__fuel_cycle__inventory__buffer_atoms: float stellaris__fuel_cycle__working_storage__atoms.json
+      stellarator_09__stellaris__fuel_cycle__inventory__blanket_kg: float stellaris__fuel_cycle__breeder_zone__mass_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__extraction_atoms: float stellaris__fuel_cycle__extraction_equipment__atoms.json
+      stellarator_09__stellaris__fuel_cycle__inventory__dt_injection_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__dt_injection_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__annual_recycle_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_recycle_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__dt_injection_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__dt_injection_kg_day.json
+      stellarator_09__stellaris__fuel_cycle__inventory__buffer_kg: float stellaris__fuel_cycle__working_storage__mass_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__exhaust_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__exhaust_kg_day.json
+      stellarator_09__stellaris__fuel_cycle__inventory__external_shortfall_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__external_shortfall_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__blanket_atoms: float stellaris__fuel_cycle__breeder_zone__atoms.json
+      stellarator_09__stellaris__fuel_cycle__inventory__injection_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__injection_kg_day.json
+      stellarator_09__stellaris__fuel_cycle__inventory__annual_production_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_production_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__extraction_loss_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__extraction_loss_kg_day.json
+      stellarator_09__stellaris__fuel_cycle__inventory__startup_conservative_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__startup_conservative_atoms.json
+      stellarator_09__stellaris__fuel_cycle__inventory__feed_atoms: float stellaris__fuel_cycle__feed_equipment__atoms.json
+      stellarator_09__stellaris__fuel_cycle__inventory__recycle_delay_s: float stellarator_09__stellaris__fuel_cycle__inventory__recycle_delay_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__annual_extraction_loss_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_extraction_loss_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__annual_extracted_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_extracted_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__startup_decay_allowance_kg: float stellarator_09__stellaris__fuel_cycle__inventory__startup_decay_allowance_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__startup_conservative_kg: float stellarator_09__stellaris__fuel_cycle__inventory__startup_conservative_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__burn_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__burn_kg_day.json
+      stellarator_09__stellaris__fuel_cycle__inventory__total_kg: float stellarator_09__stellaris__fuel_cycle__inventory__total_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__startup_deficit_kg: float stellarator_09__stellaris__fuel_cycle__inventory__startup_deficit_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_day.json
+      stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__prefill_kg: float stellarator_09__stellaris__fuel_cycle__inventory__prefill_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__decay_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__decay_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__working_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__working_atoms.json
+      stellarator_09__stellaris__fuel_cycle__inventory__breeding_delay_s: float stellarator_09__stellaris__fuel_cycle__inventory__breeding_delay_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__feed_kg: float stellaris__fuel_cycle__feed_equipment__mass_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__prefill_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__prefill_atoms.json
+      stellarator_09__stellaris__fuel_cycle__inventory__reserve_atoms: float stellaris__fuel_cycle__reserve_storage__atoms.json
+      stellarator_09__stellaris__fuel_cycle__inventory__annual_external_shortfall_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_external_shortfall_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__annual_injection_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_injection_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__exhaust_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__exhaust_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__reserve_kg: float stellaris__fuel_cycle__reserve_storage__mass_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__startup_horizon_s: float stellarator_09__stellaris__fuel_cycle__inventory__startup_horizon_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__processor_atoms: float stellaris__fuel_cycle__exhaust_processor__atoms.json
+      stellarator_09__stellaris__fuel_cycle__inventory__plasma_kg: float stellaris__fuel_cycle__plasma_inventory__mass_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__startup_decay_allowance_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__startup_decay_allowance_atoms.json
+      stellarator_09__stellaris__fuel_cycle__inventory__production_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__production_kg_day.json
+      stellarator_09__stellaris__fuel_cycle__inventory__total_atoms: float stellaris__fuel_cycle__I_total.json
+      stellarator_09__stellaris__fuel_cycle__inventory__annual_burn_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_burn_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__processor_kg: float stellaris__fuel_cycle__exhaust_processor__mass_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__extracted_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__extracted_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__extraction_kg: float stellaris__fuel_cycle__extraction_equipment__mass_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__annual_decay_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_decay_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__startup_minimum_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__startup_minimum_atoms.json
+      stellarator_09__stellaris__fuel_cycle__inventory__recycle_loss_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__recycle_loss_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__startup_minimum_kg: float stellarator_09__stellaris__fuel_cycle__inventory__startup_minimum_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__makeup_signed_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__makeup_signed_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__defined_flag: float stellarator_09__stellaris__fuel_cycle__inventory__defined_flag.json
+      stellarator_09__stellaris__fuel_cycle__inventory__shutdown_decay_loss_kg: float stellarator_09__stellaris__fuel_cycle__inventory__shutdown_decay_loss_kg.json
+      stellarator_09__stellaris__fuel_cycle__inventory__recycle_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__recycle_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__recycle_loss_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__recycle_loss_kg_day.json
+      stellarator_09__stellaris__fuel_cycle__inventory__calendar_processor_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__calendar_processor_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__annual_exhaust_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_exhaust_kg.json
+      stellarator_09__stellaris__fuel_cycle__fuel__burn_kg_per_fpy: float stellarator_09__stellaris__fuel_cycle__fuel__burn_kg_per_fpy.json
+      stellarator_09__stellaris__fuel_cycle__fuel__inject_rate: float stellarator_09__stellaris__fuel_cycle__fuel__inject_rate.json
+      stellarator_09__stellaris__fuel_cycle__fuel__burn_rate: float stellaris__fuel_cycle__burn_rate.json
+      stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin: float stellaris__fuel_cycle__tbr_margin.json
+      stellarator_09__stellaris__fuel_cycle__fuel__tbr_required: float stellaris__fuel_cycle__tbr_required.json
+      stellarator_09__stellaris__fuel_cycle__fuel__loss_rate: float stellaris__fuel_cycle__loss_rate.json
+      stellarator_09__stellaris__fuel_cycle__fuel__exhaust_rate: float stellaris__fuel_cycle__exhaust_rate.json
       stellarator_09__stellaris__buildings__layout__dirty_store_required: float stellaris__buildings__dirty_store_required.json
       stellarator_09__stellaris__buildings__layout__sector_link_north_clear_height: float stellaris__buildings__sector_link_north_clear_height.json
       stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_sub_formwork: float stellaris__buildings__reactor_auxiliaries_sub_formwork.json
@@ -4008,10 +4168,25 @@ modules:
       stellarator_09__stellaris__buildings__facility_accounts__layout_buildings_capital: float stellaris__buildings__layout_buildings_capital.json
       stellarator_09__stellaris__buildings__facility_accounts__cost: float stellaris__buildings_capital.json
       stellarator_09__stellaris__buildings__facility_accounts__installed_facility_capital: float stellaris__buildings__installed_facility_capital.json
+      stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required: float stellarator_09__stellaris__vacuum_pumping__vacuum__S_eff_required.json
+      stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total: float stellarator_09__stellaris__vacuum_pumping__vacuum__Q_total.json
+      stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules: float stellarator_09__stellaris__vacuum_pumping__vacuum__n_molecules.json
       stellarator_09__stellaris__facility_preconstruction__cost: RootModel[float] stellaris__preconstruction_capital.json
       stellarator_09__stellaris__facility_shipping__exclusion: RootModel[float] stellaris__facility_shipping_exclusion.json
       stellarator_09__stellaris__cooling_annual__cas72_total: float stellaris__cas72_annual.json
       stellarator_09__stellaris__cooling_annual__annual_om: float stellarator_09__stellaris__cooling_annual__annual_om.json
+      stellarator_09__stellaris__breeding_adequacy__design_margin: float stellaris__breeding_design_margin.json
+      stellarator_09__stellaris__breeding_adequacy__decay_rate: float stellarator_09__stellaris__breeding_adequacy__decay_rate.json
+      stellarator_09__stellaris__breeding_adequacy__fuel_margin: float stellaris__breeding_fuel_margin.json
+      stellarator_09__stellaris__breeding_adequacy__extracted_supply_rate: float stellarator_09__stellaris__breeding_adequacy__extracted_supply_rate.json
+      stellarator_09__stellaris__breeding_adequacy__recycle_loss_rate: float stellarator_09__stellaris__breeding_adequacy__recycle_loss_rate.json
+      stellarator_09__stellaris__breeding_adequacy__defined_flag: float stellaris__breeding_adequacy_defined.json
+      stellarator_09__stellaris__breeding_adequacy__required_tbr: float stellaris__breeding_requirement.json
+      stellarator_09__stellaris__breeding_adequacy__balance_rate: float stellarator_09__stellaris__breeding_adequacy__balance_rate.json
+      stellarator_09__stellaris__breeding_adequacy__extraction_loss_rate: float stellarator_09__stellaris__breeding_adequacy__extraction_loss_rate.json
+      stellarator_09__stellaris__breeding_adequacy__stock_growth_rate: float stellarator_09__stellaris__breeding_adequacy__stock_growth_rate.json
+      stellarator_09__stellaris__breeding_adequacy__numerical_margin: float stellaris__breeding_numerical_margin.json
+      stellarator_09__stellaris__breeding_adequacy__production_rate: float stellarator_09__stellaris__breeding_adequacy__production_rate.json
       stellarator_09__stellaris__cas71_calc__levelized: float stellaris__cas71_annual.json
       stellarator_09__stellaris__cas71_calc__crf: float stellarator_09__stellaris__cas71_calc__crf.json
       stellarator_09__stellaris__cas80_calc__levelized: float stellaris__cas80_annual.json
