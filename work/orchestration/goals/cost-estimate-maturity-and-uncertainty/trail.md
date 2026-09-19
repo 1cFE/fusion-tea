@@ -96,3 +96,7 @@ Stop when: Candidate identity/gates fail, source interpretation changes or a res
 ### T-005 start — 2026-09-19
 
 Study author will own only the new study record and native first-sighting discovery rows. Coordinator owns release and commit. Model worker owns all scientific/producer changes. Preparation and reporting can run independently; candidate execution remains sequential after integration.
+
+### Evidence checkpoint — 2026-09-19
+
+Source, account, maturity/method, independent review and uncertainty-register evidence are committed at `b1effd24`. Native research acquisition custody is clarified in `evidence/research-custody.md`: the original18R capture failure remains; three later standalone native registrations supply the adopted generic framework. The original request has a durable copy without rewriting its run history. This is a coordinator custody check, not a new scientific verdict.

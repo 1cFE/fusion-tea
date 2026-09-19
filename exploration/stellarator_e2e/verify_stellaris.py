@@ -971,6 +971,7 @@ IN.update({
     'cooling_removal_multiplier': 1,
     'cooling_saltprice_source_choice': 0,
     'cooling_costscale': 1,
+    'cooling_fabrication_rate_2017': 310,
     'cooling_cost_mode': 1.0,
     'cooling_energy_mode': 1.0,
 })
@@ -1203,6 +1204,7 @@ def compute():
         'removal_multiplier': p['cooling_removal_multiplier'],
         'saltprice_source_choice': p['cooling_saltprice_source_choice'],
         'costscale': p['cooling_costscale'],
+        'fabrication_rate_2017': p['cooling_fabrication_rate_2017'],
         'n_mod': p['n_mod'], 'n_loops': p['n_loops'],
         'mdot_loop': loop_mdot_loop, 'dp_loop': loop_dp_loop,
         'helium_suction_K': loop_T_comp_in, 'helium_discharge_Pa': p['loop_p'],

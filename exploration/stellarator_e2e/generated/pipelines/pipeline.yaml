@@ -351,6 +351,7 @@ modules:
       accessory_mass_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_accessory_mass
       enabled_in: bool stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_enabled
       mdot_loop_in: float stellarator_09__stellaris__heat_transport__primary_loop__mdot_loop
+      stainless_fabrication_usd2017_per_kg_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg
       eta_motor_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_eta_motor
       years_in: float stellarator_plant_params.stellarator_09__stellaris__operational_years
       tube_wall_in: float stellarator_plant_params.stellarator_09__stellaris__heat_transport__equipment_tube_wall

@@ -1,0 +1,11 @@
+{
+  "exact_output_count": 956,
+  "authored_predicate_count": 25,
+  "all_exact": true,
+  "all_mapped_count": 934,
+  "candidate": {
+    "semantic_fingerprint": "ea1555ea133db8ed7ba1c638b29ddf540ba99d811bfcf7d9ef9454b626d3a28a",
+    "executable_fingerprint": "b032da4a3971979792bc024bf9cd1a41a2d83d340bad5b59ef3e1a9aeaa77236"
+  },
+  "candidate_pin": "e48d5218b6e3be2775a94269a461dccd259fccc5fc41fed7c135dc1336bfe284"
+}

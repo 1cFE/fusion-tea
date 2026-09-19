@@ -1,0 +1,8 @@
+Warning: /home/reid/1cfe/fusion-tea/modeling_project/VALIDATION_MATRIX.md: Invalid Type 'rel dev', expected one of: reasonableness, baseline, physical, relationship, rollup
+Warning: /home/reid/1cfe/fusion-tea/modeling_project/VALIDATION_MATRIX.md: Invalid Type 'rel dev\', expected one of: reasonableness, baseline, physical, relationship, rollup
+Added verification SV-119: WI-071 shared USD2017/kg fabrication rate preserves source units and jointly changes initial exchanger, both pipe bills and replacement bundle with their existing installation/removal and freight bases
+Warning: /home/reid/1cfe/fusion-tea/modeling_project/VALIDATION_MATRIX.md: Invalid Type 'rel dev', expected one of: reasonableness, baseline, physical, relationship, rollup
+Warning: /home/reid/1cfe/fusion-tea/modeling_project/VALIDATION_MATRIX.md: Invalid Type 'rel dev\', expected one of: reasonableness, baseline, physical, relationship, rollup
+Added verification SV-120: WI-071 nominal310 preserves frozen WI-070 native outputs and25 predicates; active bad fabrication prices are refused and dormant calculation stays finite; native contingency0/0.10 matches independent oracle
+Updated SV-119 status to passing
+Updated SV-120 status to passing

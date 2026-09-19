@@ -7,7 +7,7 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "50c9d4b9b3bf16fdb00e5c726011f2b434bfa0ba8970569795372a12364c312b",
+      "digest": "e48d5218b6e3be2775a94269a461dccd259fccc5fc41fed7c135dc1336bfe284",
       "files": [
         "contracts/model_contract.json",
         "inputs/mfe_account_costs_params.json",
@@ -25,8 +25,8 @@
       ]
     },
     "recorded_provenance": {
-      "semantic_fingerprint": "37ca31ff0412f56a67301fa4e714b1dba2e74df6788348ce97dd5ee64d98d62f",
-      "executable_fingerprint": "3e3bf467fd98ad927cf12409f1c36807b92e9e8eaa4fd598a2fcd79c00ae698f"
+      "semantic_fingerprint": "ea1555ea133db8ed7ba1c638b29ddf540ba99d811bfcf7d9ef9454b626d3a28a",
+      "executable_fingerprint": "b032da4a3971979792bc024bf9cd1a41a2d83d340bad5b59ef3e1a9aeaa77236"
     }
   },
   "objective_catalog": [

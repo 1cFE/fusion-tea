@@ -1,0 +1,16 @@
+{
+  "pass": true,
+  "package_files_hash_checked": 370,
+  "model_hashes_and_twin_parity": true,
+  "nominal_outputs_exact": 956,
+  "authored_predicates_per_case": 25,
+  "off_reference_and_nominal_arithmetic_cases": 6,
+  "checks": [
+    "four bills from mass and raw rate",
+    "initial delivered exclusion components",
+    "seven disjoint cooling children",
+    "replacement present-value and annualization",
+    "direct contingency",
+    "fixed physics and unrelated purchases"
+  ]
+}

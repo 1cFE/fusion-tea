@@ -1,0 +1,9 @@
+# Research acquisition custody
+
+[AGENT] Coordinator check, 2026-09-19. The original request was opened from `/tmp/REQ-CEMU-01.json`; an identical durable copy is now `knowledge/research/requests/REQ-CEMU-01.json`. The original run record keeps its actual request path. No invocation history was rewritten.
+
+`knowledge/research/requests/runs/REQ-CEMU-01/20260919T181847381938/return.json` preserves the initial18R-97 capture failure and OPERATOR_QUEUE outcome. Subsequent applicability research rejected18R-97 for whole-plant classification because it excludes power generation. The question was answered through generic17R-97, with DOE's reproduced original criteria and115R-21's explicit fusion exclusion. No dependent scientific claim requires the failed18R capture or the separate failedPGD01 encoding capture.
+
+The three successful acquisitions used standalone `scripts/source_registry.py register`, permitted by `docs/research_seam_operator_guide.md` (“You can use the registry on its own”). They did not generate request-run receipts. Their authoritative raw/extract hashes, original URLs and registered paths are in `knowledge/MANIFEST.jsonl` and `knowledge/SOURCE_INDEX.md`, committed at `b1effd24`. Source files are `aace_17r97_generic_cost_estimate_classification_2020_public`, `aace_115r21_nuclear_power_estimate_classification_2022` and `doe_g4133_21a_cost_estimating_guide_2018`. Research acquisition provenance and original inspected-page images are in `evidence/method-research.md` and `evidence/method-source-images/`.
+
+This records a failed initial acquisition followed by successful native standalone registrations, not a successful REQ-CEMU-01 seam return. There is no remaining human acquisition dependency for the adopted framework. Native pending synthesis is `knowledge/research/pending/20260919-112349_cost-estimate-maturity-uncertainty-method.md`; its scientific conclusions received independent review in `evidence/method-review.md`.

@@ -260,6 +260,7 @@ class StellaratorPlantParams(BaseModel):
     stellarator_09__stellaris__heat_transport__equipment_saltprice_source_choice: float = Field(default=0.0, description="Entry point: equipment_saltprice_source_choice")
     stellarator_09__stellaris__heat_transport__equipment_secondary_head: float = Field(default=40.0, description="Entry point: equipment_secondary_head")
     stellarator_09__stellaris__heat_transport__equipment_shell_wall: float = Field(default=0.2, description="Entry point: equipment_shell_wall")
+    stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg: float = Field(default=310.0, description="Entry point: equipment_stainless_fabrication_usd2017_per_kg")
     stellarator_09__stellaris__heat_transport__equipment_tube_wall: float = Field(default=0.0015, description="Entry point: equipment_tube_wall")
     stellarator_09__stellaris__heat_transport__eta_drive: float = Field(default=1.0, description="Entry point: eta_drive")
     stellarator_09__stellaris__heat_transport__eta_is: float = Field(default=0.772796639536644, description="Entry point: eta_is")

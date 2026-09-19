@@ -42,6 +42,7 @@ DEFAULTS = {'enabled': False,
  'removal_multiplier': 1,
  'saltprice_source_choice': 0,
  'costscale': 1,
+ 'fabrication_rate_2017': 310,
  'sourcefitargument_C': 480}
 NUMERIC_OUTPUTS = ('primary_circulators_cost',
  'primary_piping_cost',
@@ -213,12 +214,14 @@ def calculate(inputs: Mapping) -> dict:
     for key in DEFAULTS:
         if key != 'enabled' and not math.isfinite(x[key]):
             raise ValueError(f'Nonfinite {key}')
+    if isinstance(x['fabrication_rate_2017'], bool):
+        raise ValueError('Fabrication rate must be numeric, not Boolean')
     n = x['n_loops']
     if x['n_mod'] != 1 or n < 1 or n != int(n):
         raise ValueError('Active equipment requires one module and integer positive circuits')
     for key in ('mdot_loop', 'dp_loop', 'helium_suction_K', 'helium_hot_K', 'helium_cp',
                 'primary_shaft_MW', 'primary_electric_MW', 'q_ihx_MW', 'layout_multiplier',
-                'tube_wall', 'shell_wall', 'secondary_head', 'machine_life', 'bundle_life', 'years'):
+                'tube_wall', 'shell_wall', 'secondary_head', 'machine_life', 'bundle_life', 'years', 'fabrication_rate_2017'):
         if x[key] <= 0:
             raise ValueError(f'Nonpositive {key}')
     if x['tube_wall'] >= .01905/2 or x['helium_gamma'] <= 1:
@@ -316,9 +319,9 @@ def calculate(inputs: Mapping) -> dict:
     vendor_p, vendor_s = primary_each*count, secondary_each*count
     assembly_factor=.27*1.155
     install_p,install_s = vendor_p*assembly_factor,vendor_s*assembly_factor
-    hx_purchase=money(310*hx_mass*n,2017)
-    pp=money(310*primary_pipe_mass,2017)
-    sp=money(310*salt_pipe_mass,2017)
+    hx_purchase=money(x['fabrication_rate_2017']*hx_mass*n,2017)
+    pp=money(x['fabrication_rate_2017']*primary_pipe_mass,2017)
+    sp=money(x['fabrication_rate_2017']*salt_pipe_mass,2017)
     price,year=(1.23,2011) if x['saltprice_source_choice']==0 else (2.53,2021)
     salt_unit=money(price,year)
     he_cost=money(14*he_std,2024)
@@ -340,7 +343,7 @@ def calculate(inputs: Mapping) -> dict:
     out['installation_total']=install_p+install_s+.026*hx_purchase+.5*(pp+sp)
     out['installed_total']=out['purchased_total']+out['installation_total']
     out['delivered_total']=vendor_p+primary_each+hx_purchase+pp+sp
-    bundle=money(310*(tube_mass+x['accessory_mass'])*n,2017)
+    bundle=money(x['fabrication_rate_2017']*(tube_mass+x['accessory_mass'])*n,2017)
     machine_install=install_p+install_s
     out.update(machine_event_purchase=vendor_p+vendor_s,machine_event_installation=machine_install,
                machine_event_removal=machine_install*x['removal_multiplier'],bundle_event_purchase=bundle,

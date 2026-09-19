@@ -32,6 +32,7 @@ def equipment(runtime):
     interface = json.loads((ROOT/'work/active/WI-067_installed-cooling-equipment-costs/evidence/equipment-interface.json').read_text())
     defaults = {i['name'] + '_in': i['default'] for i in interface['inputs']}
     defaults['enabled_in'] = True
+    defaults['stainless_fabrication_usd2017_per_kg_in'] = 310.0
     return lambda **changes: module.Cooling_EquipmentModule().run(**(defaults | changes)).data.model_dump()
 
 
@@ -131,6 +132,9 @@ def test_retained_primary_controls_reach_full_current_native_comparison(runtime,
     historical = json.loads((ROOT/'.project/active/primary-loop-current-consumers/implementation/oracle-before.json').read_text())['controls'][control_index]
     inverse = {v:k for k,v in oracle_entry.ENTRY_KEY_TO_ORACLE_INPUT.items()}
     point = WI059_REPLAY | {inverse[k]:v for k,v in historical['overrides'].items()}
+    # Stock finite-list proposal admission accepts numeric Boolean encoding.
+    # Preserve the same controls; the typed native bridge resolves them to bool.
+    point = {k: float(v) if isinstance(v, bool) else v for k, v in point.items()}
     cases, _ = study_route.run_points('cooling-primary-consumer-control', [point], tmp_path)
     case = cases[0]
     assert case.state == 'completed'

@@ -1,6 +1,6 @@
 {
-  "derived_against_semantic_fingerprint": "37ca31ff0412f56a67301fa4e714b1dba2e74df6788348ce97dd5ee64d98d62f",
-  "entry_points": 489,
+  "derived_against_semantic_fingerprint": "ea1555ea133db8ed7ba1c638b29ddf540ba99d811bfcf7d9ef9454b626d3a28a",
+  "entry_points": 490,
   "by_entry_type": {
     "library_default": [
       "stellarator_09__stellaris__blanket__blanket_cost__alpha",
@@ -329,6 +329,7 @@
       "stellarator_09__stellaris__heat_transport__equipment_saltprice_source_choice",
       "stellarator_09__stellaris__heat_transport__equipment_secondary_head",
       "stellarator_09__stellaris__heat_transport__equipment_shell_wall",
+      "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg",
       "stellarator_09__stellaris__heat_transport__equipment_tube_wall",
       "stellarator_09__stellaris__heat_transport__eta_drive",
       "stellarator_09__stellaris__heat_transport__eta_is",

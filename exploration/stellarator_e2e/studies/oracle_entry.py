@@ -65,6 +65,8 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}heat_transport__equipment_removal_multiplier": "cooling_removal_multiplier",
     f"{P}heat_transport__equipment_saltprice_source_choice": "cooling_saltprice_source_choice",
     f"{P}heat_transport__equipment_costscale": "cooling_costscale",
+    f"{P}heat_transport__equipment_stainless_fabrication_usd2017_per_kg": "cooling_fabrication_rate_2017",
+    f"{P}contingency_rate": "contingency_rate",
     f"{P}heat_transport__equipment_cost_mode": "cooling_cost_mode",
     f"{P}heat_transport__secondary_energy_mode": "cooling_energy_mode",
 

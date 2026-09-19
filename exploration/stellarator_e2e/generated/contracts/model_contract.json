@@ -8160,6 +8160,13 @@
       "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_shell_wall"
     },
     {
+      "default_value": 310.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg"
+    },
+    {
       "default_value": 0.0015,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -9322,5 +9329,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "37ca31ff0412f56a67301fa4e714b1dba2e74df6788348ce97dd5ee64d98d62f"
+  "semantic_fingerprint": "ea1555ea133db8ed7ba1c638b29ddf540ba99d811bfcf7d9ef9454b626d3a28a"
 }

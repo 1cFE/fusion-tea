@@ -116,6 +116,9 @@ package mfe_plant_systems {
         attribute equipment_removal_multiplier : Real default 1.0; // 1
         attribute equipment_saltprice_source_choice : Real default 0.0; // 1
         attribute equipment_costscale : Real default 1.0; // 1
+        attribute equipment_stainless_fabrication_usd2017_per_kg : Real default 310 {
+            doc /* **Source**: knowledge/sources/anl_2018_report_on_the_update_of_fuel_cycle_cost_algorithms/output.md **Ref**: sections 2.4, 3.6.2-3.6.3, printed 26-27. **Basis**: 310000 USD per metric tonne / 1000 kg per tonne = 310 USD2017/kg, delivered finished stainless fabrication. Shared by initial HX, both pipe bills and future bundle. January2017 source basis uses inherited annual CPI2017=245.1 to CPI2025=321.9 purchasing-power proxy, not equipment escalation. Conditional 240/360 source-family alternatives hold the carbon base fixed at 120 USD2017/kg times 2/3; target transfer and missing scope remain unbounded. **Last Updated**: 2026-09-19 */
+        }
         attribute shipping_exclusion : Real = cooling_selection.shipping_exclusion;
         attribute replacement_annual : Real = cooling_selection.replacement_annual;
         attribute consumables_annual : Real = cooling_selection.consumables_annual;
@@ -191,6 +194,7 @@ package mfe_plant_systems {
             in removal_multiplier_in = equipment_removal_multiplier;
             in saltprice_source_choice_in = equipment_saltprice_source_choice;
             in costscale_in = equipment_costscale;
+            in stainless_fabrication_usd2017_per_kg_in = equipment_stainless_fabrication_usd2017_per_kg;
             in sourcefitargument_C_in = cooling_cycle_argument;
         }
         calc cooling_guard : 'Cooling Scenario Guard' {

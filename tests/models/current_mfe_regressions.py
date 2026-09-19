@@ -40,7 +40,7 @@ WI038_CHANNELS = {P + 'magnet__conductor_grade__' + name for name in (
 K_COIL_RETIRED = 1.968503937007874  # the retired WI-036 k_coil (25.0 / 12.7), the float the old oracle carried
 WI058_PARAMETERS = {P + 'magnet__coil__c_coil_ref'}
 WI058_RETIRED = {P + 'magnet__coil__k_coil'}
-RECEIPT_EVIDENCE = ROOT / 'work/active/WI-070_throughput-based-fuel-processing-costs/evidence'
+RECEIPT_EVIDENCE = ROOT / 'work/active/WI-071_shared-fabrication-rate-for-estimate-uncertainty/evidence'
 # WI-069 reviewed ABI: thirteen controls replace the held I_total input.
 WI069_PARAMETERS = {P + 'fuel_cycle__' + name for name in (
     'held_inventory', 'inventory_enabled', 'm_D_kg', 'reserve_fraction',
@@ -482,3 +482,6 @@ def radius_acceptance(destination, historical):
 # WI-070 reviewed additions; source rows remain public instance parameters.
 WI070_PARAMETERS = {P + "fuel_cycle__processing_" + key for key in ['enabled', 'source_conditions', 'capacity_margin', 'price_multiplier', 'reference_flow', 'exponent', 'target_cpi', 'transfer_cpi', 'transfer_capital', 'transfer_installation', 'cleanup_cpi', 'cleanup_capital', 'cleanup_installation', 'distiller_cpi', 'distiller_capital', 'distiller_installation', 'containment_cpi', 'containment_capital', 'containment_installation']}
 WI070_CHANNELS = {P + "fuel_cycle__processing_cost__" + key for key in ['flow_kg_s', 'capacity_kg_s', 'plant_capacity_kg_s', 'flow_ratio', 'scaling_factor', 'transfer_reference_capital', 'transfer_reference_installation', 'transfer_capital', 'transfer_installation', 'cleanup_reference_capital', 'cleanup_reference_installation', 'cleanup_capital', 'cleanup_installation', 'distiller_reference_capital', 'distiller_reference_installation', 'distiller_capital', 'distiller_installation', 'containment_reference_capital', 'containment_reference_installation', 'containment_capital', 'containment_installation', 'equipment_total', 'installation_total', 'module_total', 'new_total', 'cost', 'defined_flag']} | {P + "shipping_scope__fuel_installation_exclusion"}
+
+# WI-071 one shared source-rate entry; no added output producer.
+WI071_PARAMETERS = {P + 'heat_transport__equipment_stainless_fabrication_usd2017_per_kg'}

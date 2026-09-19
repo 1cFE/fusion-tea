@@ -1087,6 +1087,9 @@ package stellarator_09 {
             :>> equipment_removal_multiplier = 1.0;
             :>> equipment_saltprice_source_choice = 0.0;
             :>> equipment_costscale = 1.0;
+            :>> equipment_stainless_fabrication_usd2017_per_kg = 310.0 {
+                doc /* **Source**: knowledge/sources/anl_2018_report_on_the_update_of_fuel_cycle_cost_algorithms/output.md **Ref**: sections 2.4, 3.6.2-3.6.3, printed 26-27. **Basis**: 310000 USD per metric tonne / 1000 kg per tonne = 310 USD2017/kg, delivered finished stainless fabrication. Shared by initial HX, both pipe bills and future bundle. January2017 source basis uses inherited annual CPI2017=245.1 to CPI2025=321.9 purchasing-power proxy, not equipment escalation. Conditional 240/360 source-family alternatives hold the carbon base fixed at 120 USD2017/kg times 2/3; target transfer and missing scope remain unbounded. **Last Updated**: 2026-09-19 */
+            }
             :>> equipment_enabled = true;
             :>> equipment_cost_mode = 1.0;
             :>> secondary_energy_mode = 1.0;

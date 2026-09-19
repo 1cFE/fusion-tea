@@ -368,6 +368,12 @@ standalone:
   priority: P0
   status: backlog
   completed: null
+- id: WI-071
+  name: Shared fabrication rate for estimate uncertainty
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -462,3 +468,4 @@ standalone:
 | WI-068 | layout-based-facilities | standard | P1 | backlog |  |
 | WI-069 | Fuel inventory and startup | standard | P0 | backlog |  |
 | WI-070 | Throughput-based fuel processing costs | standard | P0 | backlog |  |
+| WI-071 | Shared fabrication rate for estimate uncertainty | standard | P1 | backlog |  |
