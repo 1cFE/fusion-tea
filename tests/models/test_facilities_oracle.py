@@ -84,7 +84,7 @@ def test_zero_resource_is_domain_failure():
         f.cooling_inventory(machine_stations=0)
 
 
-def _layout(**overrides):
+def _layout(*,events=(5.,10.,15.,20.,25.),**overrides):
     physical=dict(n_mod=1,major_radius=21.4,minor_outer_radius=2.05235,
                   blanket_volume=1000,calendar_mode=0,calendar_years=30,calendar_outage=.5,
                   cooling_helium_count=28,cooling_salt_count=28,cooling_bundle_count=14,
@@ -93,7 +93,7 @@ def _layout(**overrides):
     p=dict(f.DEFAULTS)
     for key,value in overrides.items():
         (physical if key in physical else p)[key]=value
-    return f.layout(p,physical,[5.,10.,15.,20.,25.])
+    return f.layout(p,physical,events)
 
 
 def test_layout_shell_and_source_sums_are_closed():
@@ -255,6 +255,19 @@ def test_native_fluence_owner_drives_calendar_and_facility_demand():
     assert no_replacements['calendar_cas72_annual']==0
     assert no_replacements['facility_calendar_event_count']==0
     assert no_replacements['facility_dirty_store_required']==0
+    assert no_replacements['facility_outage_margin_days']==30*365.25
     assert no_replacements['facility_initial_clean_required']>0
     assert no_replacements['facility_initial_margin_days']>0
     assert seam.vs.IN['fluence_limit']==18.
+
+
+def test_no_sector_events_make_hypothetical_outage_nonbinding():
+    with_events=_layout(component_remove_days=20.)
+    without_events=_layout(events=(),component_remove_days=20.)
+    late_initial=_layout(events=(),component_remove_days=20.,initial_receipt_lead_days=20.)
+    assert with_events['outage_margin_days']<0
+    assert without_events['outage_required_days']==with_events['outage_required_days']
+    assert without_events['outage_margin_days']==30*365.25
+    assert without_events['initial_margin_days']>0
+    assert late_initial['initial_margin_days']<0
+    assert late_initial['outage_margin_days']==30*365.25

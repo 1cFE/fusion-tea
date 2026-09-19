@@ -404,7 +404,7 @@ def layout(p, physical, events):
         initial_clean_required=iv['clean_peak'],dirty_buffer_required=iv['queue_peak'],dirty_store_required=iv['storage_peak'],
         initial_ready_margin_days=iv['initial_margin'],replacement_ready_margin_days=iv['recurring_margin'],
         outage_required_days=iv['outage_days'],outage_allowed_days=physical['calendar_outage']*DAY_YEAR,
-        outage_margin_days=physical['calendar_outage']*DAY_YEAR-iv['outage_days'],calendar_event_count=len(events),
+        outage_margin_days=(physical['calendar_outage']*DAY_YEAR-iv['outage_days'] if events else years*DAY_YEAR),calendar_event_count=len(events),
         calendar_first_event_year=events[0] if events else 0.,calendar_last_event_year=events[-1] if events else 0.,
         cooling_initial_ready_margin_days=co['initial_margin'],cooling_replacement_ready_margin_days=co['recurring_margin'],
         cooling_jobs_after_shutdown=co['unfinished'],cooling_last_release_year=co['final_release']/DAY_YEAR,cooling_carrier_moves=len(co['movements']),
