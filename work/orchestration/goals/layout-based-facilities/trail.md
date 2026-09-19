@@ -134,3 +134,47 @@ The substantive reviewer then reproduced three acceptance gaps: waste-package yi
 [AGENT] Accepted native CANDIDATE on the first seam attempt, audited work `work/active/WI-068_layout-based-facilities@f1e70c48`. All ten gates pass. Integration pin `8ee44a9bd02728033cbfe707c024fd0511fd82dc33d22e88091ba45c8a9220aa`; executable `21d2bda3596ab0df38356bac9e404680ca6a836099a89dc0a2e8f6f73edb9208`; semantic `a913cbcf04a82403d8a7c51e13fc09718596d3dc1557b06c7b583481476cdc4d`; TEAx revision `8d877460ac4f6f264561d916e40c1708adb13397`. Evidence: `evidence/integration/integration_return.json` and its deposited baseline, verification and gate receipts. The seam explicitly does not check `assert_read_set_covered`; that known integration limitation remains disclosed.
 
 The study's final42-group indicators and48 candidate proposals are prepared at the accepted pin. Construction-price multiplier and source-ton interpretation remain the only `no_constraint_response` axes. Owner ruling is still pending; no study baseline, oracle scan or candidate execution has run. The definition guards point execution on that ruling. Other implementation, review and integration work is complete. Fresh R9.S grading follows the executed study, not this checkpoint.
+
+### T-006 owner ruling — 2026-09-19
+
+[OWNER-VERBATIM] “yes run both”. The owner approves construction-price and ton-unit sensitivity execution, following the explicit explanation that these affect costs without establishing physical feasibility or an optimum. The two required rulings are captured in the study preparation. [AGENT] Resume the accepted candidate through native study execution and independent grading; no model or physical requirement changes.
+
+### T-006 mechanical retry 1 — 2026-09-19
+
+The native study baseline and all preflight gates pass. Independent scan attempt1 evaluates47 of48 unchanged proposals and refuses `no-sector-replacement` because the supported first-wall fluence-limit input is absent from the oracle public override map. Classification: MECHANICAL_FAILURE, bounded verification-interface repair; scientific scope, package identity and cases remain unchanged. Original scan retained in `results/oracle-scan-attempt1.json`. The independent oracle author owns the added mapping and checks; no production model or accepted integration pin changes. Retry only after confirming the mapping reaches the existing lifetime operand.
+
+### T-006 start — 2026-09-19
+
+Verification retry2 after bounded checker correction. Trigger: one no-event outage-margin scalar disagreed among40128 comparisons; all1200 predicate statuses agreed. [AGENT] The independent reviewer accepts the existing production horizon sentinel when no recurring campaign exists, with required/allowed values retained as hypothetical and initial readiness still enforced. The coordinator accepts the oracle correction and explicit contract clarification; tier: execution detail. Package, native cases, inputs and physical criterion remain unchanged, so this is a MECHANICAL_FAILURE repair to the verification implementation. Failed evidence is retained; rerun the independent scan and verification only, not native execution. Evidence: study `reviews/no-event-verification-repair.md`, oracle42-test return, amended facility contract.
+
+### T-006 retry notation amendment — 2026-09-19
+
+[AGENT] The earlier “T-006 mechanical retry 1” entry records the first retry start, before the mapper repair. It should have used the canonical `T-006 start` heading. This amendment preserves chronology rather than rewriting it. Retry 1 repaired the supported operand map; retry 2 repaired the no-event checker branch. Both retained the same task, package, proposals and conceptual criterion. The pre-commit CSV arm-column correction was record assembly, not another native execution or verification retry; the rejected candidate snapshot and original export are retained.
+
+### T-006 return — 2026-09-19
+
+- **Outcome:** COMPLETE.
+- **Evidence:** Native candidate pin `8ee44a9bd02728033cbfe707c024fd0511fd82dc33d22e88091ba45c8a9220aa`; immutable study `exploration/stellarator_e2e/studies/20260918-layout-based-facilities/@5f97d5f2`; snapshot SHA256 `af668e7ac5f57041787b6e5d5c08aa3ccf5bc2de006062e681daf9323e547455`; substantive independent `evidence/final-review-and-grade.md`. The actual native execution used repository `3fa479ed`; checker correction `0e6a2b2b` changed no package or native case. The snapshot records both identities and source digests.
+- **Reading:** All 48 cases completed; 40,128 scalar and 1,200 predicate comparisons pass. Both matched controls reproduce 380 entering outputs and preserve 662 physical/calendar/layout outputs plus all 25 predicates. Twenty cases fail facility screens; no whole-plant pass is claimed. The independent unchanged-rubric grade is R9.S3, PASS. Price and historical-tonne assumptions were run only after the owner's explicit ruling.
+- **Decision:** Trigger: executed response and independent acceptance support the required conceptual increment. [AGENT] Coordinator accepts the study and seven finding dispositions because they retain demonstrated behavior, source uncertainty and failed cases without changing scientific scope. Tier: execution detail. Changed: committed study, `answer.md`, `study-reading.md`, WI-068 plan and joined discovery rows. Formal closure and archival remain owner-held.
+
+### C-001 disposition checkpoint — 2026-09-19
+
+[AGENT] PASS using the continuing independent non-author review in `evidence/final-review-and-grade.md`, also captured in the committed study. All seven proposed findings are accepted: procurement uncertainty, TN ambiguity, qualifications/provisionals, adverse logistics, unpriced scope and two resolved checker-interface defects. Every finding retains its original ID and concrete home; the discovery log receives joined disposition rows. No semantic follow-up is proposed. The three AGENT learning deltas are accepted for the round check. This review also covers the actual source/account/layout increment and executed response; another session would duplicate that coverage.
+
+### Round 1 result — 2026-09-19
+
+- **Intent:** Met. The unchanged R9.S3 target is independently supported by the actual layout-driven building set, hot-cell functions, handling routes/capacity, scoped sourced costs and executed response. The eight owner results are mapped in `evidence/completion-check.md`.
+- **Task sequence:** T-001 inventoried current accounts and upstream evidence; T-002 and T-004 acquired and examined original cost sources; T-003 specified and independently reviewed the design; T-005 implemented, generated and independently audited the native package; T-006 promoted one candidate and committed one focused study.
+- **Last semantic outcome:** COMPLETE. Stop reason derived from that outcome and the goal's answered-when criterion: the requested technical answer is demonstrated; recommend owner-held formal closure. No further technical round is required for this target.
+- **Evidence:** Model `f1e70c48`, integration checkpoint `517fb9a6`, checker repairs `3fa479ed` and `0e6a2b2b`, frozen study `5f97d5f2`, final independent grade, `answer.md` and preserved r2/rubric checks. No historical study, rubric, maintenance requirement or availability interface was rewritten.
+- **Finding dispositions:** Seven joined rows retain procurement/source/qualification/logistics/unpriced-scope limits and resolve the two checker defects. No open touched finding is left unrouted; continuing evidence homes are the goal, WI-068 and named oracle/contract files.
+- **Learning delta:** Accept proposed L-001 through L-003 after the closure coverage check: controlled cost comparisons, dated shared-resource logistics and behavioral counterexamples beyond equation agreement. These remain AGENT findings, not owner-originated requirements.
+
+### Round 1 review — 2026-09-19
+
+**Coordinator check; existing independent review reused, no additional review session required.** The continuing non-author reviewer supplied substantial original-source/design/account assurance, repaired native integration audit, final 48-case interpretation and fresh unchanged-rubric R9.S3 grading. The final custody addendum verifies committed study `5f97d5f2`, all 213 file hashes, the schema-only CSV repair and all 48 native-store joins. Source/model/scope/environment identities remain applicable; no uncovered scientific or integration change followed those reviews.
+
+The coordinator checked the written result against all six task scopes and the eight owner deliverables. Both execution/checker retries kept package, inputs, scope and scientific meaning; the pre-commit export correction changed metadata only. One pin and one study were promoted. Every touched finding has its accepted disposition and responsible home in the appended discovery rows. No native artifact moved outside its recorded task; historical studies, rubric and r2 remain unchanged. All three proposed AGENT learnings are accepted and appended to `learnings.md` now.
+
+The technical question is answered at the requested conceptual level. Recommend owner-held formal closure when the owner accepts the delivered answer. No next technical round is needed to support R9.S3. Physical qualification, source-unit resolution and complete installed handling/services procurement remain explicit future engineering work. No reveal, replacement-freeze, archival, merge or push was performed.
