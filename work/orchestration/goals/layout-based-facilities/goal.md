@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — 2026-09-18. [OWNER] Explicitly authorized grounding and execution under slug `layout-based-facilities`; original instruction preserved at `evidence/owner-prompt.md` (unpinned; no native digest). All five grounding field classes are populated. Scientific and scope decisions requiring owner judgment remain reserved.
+`closed` — 2026-09-19. [OWNER-VERBATIM] “please close the goal”. Closed on the independently reviewed R9.S3 result, delivered answer and committed study `5f97d5f2`. See [closure record](trail.md#goal-closure--2026-09-19) and [independent grade](evidence/final-review-and-grade.md). Remaining conceptual-design and procurement limitations are preserved in the answer.
 
 ## Question
 

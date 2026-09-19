@@ -60,4 +60,4 @@ All 48 native cases completed. Independent checks pass 40,128 scalar comparisons
 
 Unresolved work includes source-qualified conventional equipment envelopes, sector bearing/rail/support design, shielding and dose, contamination procedures, detailed nonaxisymmetric clashes, cooling field-replacement outages, and complete pricing for doors, cranes, carriers, rails and building services. The retained handling/radwaste allowances do not prove that missing procurement scope is covered. The next engineering step is to replace the provisional envelopes and maintenance-task assumptions with layout drawings, resource procedures and load/radiological calculations, then obtain scope-specific installed quotations.
 
-The frozen r2 archive and rubric hashes are unchanged; ARIES remains sealed. Formal goal closure and item archival remain owner-held. No merge or push was performed.
+The frozen r2 archive and rubric hashes are unchanged; ARIES remains sealed. The owner formally closed this goal on 2026-09-19; see the [closure record](trail.md#goal-closure--2026-09-19). Item archival remains separate. No merge or push was performed.
