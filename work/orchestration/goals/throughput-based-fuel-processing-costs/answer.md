@@ -1,51 +1,49 @@
-# Fuel-processing cost basis: adopted; implementation underway
+# Fuel-processing capital now follows operating exhaust flow
 
-The goal has a technically reviewed conditional cost basis, but it has not yet met R10.S2. The [fresh current-state grade](evidence/current-r10s-grade.md) remains **R10.S1** because the executed model still prices fuel handling from net electric power. The production model and generated package are unchanged so far; the new study record is in preparation.
+**The requested R10.S2 target is met.** The [fresh independent grade](evidence/final-review-and-grade.md) assigns **R10.S = 2** against the unchanged rubric. The adopted conventional estimate follows calculated running D+T exhaust through a source-supported relationship into plant capital and electricity cost. Audited model `2a50d3ec` and frozen study `2bae7fb7` preserve the exact result. Formal goal closure remains owner-held.
 
-## Adopted scenario
+## Included processing and capacity
 
-[AGENT] Adopt conventional palladium-alloy cleanup followed by cryogenic isotope separation as a conditional costing scenario for the represented plasma-exhaust processor. The [fresh source review](evidence/source-review-r2.md) accepts the engineering transfer at conceptual-estimate depth and recommends this choice. It identifies adoption as an owner-held scientific decision because a previously unspecified technology and an unverified feed-conditioning assumption would determine plant capital.
+The represented package covers palladium-alloy cleanup/impurity treatment, cryogenic isotope separation, internal transfer pumps and limited purchased secondary containment. It includes the local controls supplied with those source packages. It does not represent a complete fuel plant.
 
-The scenario assumes near-equimolar D/T, source-like minor impurities and cleanup to the separation reference's less-than 1 ppm noncondensibles. The model calculates isotope flow; it does not verify those feed conditions. Existing 99% recovery and all other fuel-loss assumptions stay unchanged. The scenario does not certify recovery, actual feed purity, year-round reliability or commercial equipment performance.
+The verified upstream fuel calculation supplies **12.911794 kg D+T per operating day**, including **7.742681 kg T/day**, at the reference point. This is plasma-exhaust inlet before recovery losses, per fusion module. Running flow determines equipment capacity; annual availability determines annual processed mass. Impurities, helium and carrier gas are not included in that isotope-mass number. The accepted process requires source-like minor impurities and cleaned separation feed below 1 ppm noncondensibles; the model declares these conditions rather than calculating purity or qualifying recovery.
 
-[OWNER-VERBATIM] “yes, adopt and continue”. The owner adopted this conditional scenario on 2026-09-19. Acceptance authorizes the modeling assumption; it does not by itself earn S2 or formally close the goal. The [trail](trail.md) records the ruling and Round 2 implementation.
+[Producer trace](evidence/current-trace.md), [adopted design](../../../../work/active/WI-070_throughput-based-fuel-processing-costs/design.md) and [independent implementation audit](../../../../work/active/WI-070_throughput-based-fuel-processing-costs/audit.md) identify the exact interface. The physical balance comes from audited WI-069 at `956444b5`; WI-070 consumes its output without changing fuel losses or residence assumptions.
 
-## What determines capacity
+## Capacity to price
 
-The existing verified fuel calculation produces **12.911794 kg D+T per operating day**, including **7.742681 kg T/day**, at the reference point. This is inlet flow before recovery losses, per modeled fusion module. Annual availability changes annual processed mass, not running equipment capacity. Total isotope mass does not include helium, carrier gases or impurities.
+ORNL's 1988 ETR/ITER systems-code method scales the four historical equipment rows with a common exponent of 0.3, relative to **1.79712 kg D+T/day**. Each row retains its raw capital and direct-installation amounts and expenditure-year assumptions. CPI converts those amounts to 2025 purchasing power; it is not a validated contemporary equipment-price index. Larger original ITER process designs support conventional service above the current demand, but do not empirically validate this economic exponent or year-round reliability. [Source applicability review](evidence/source-review-r2.md), [price review](evidence/proposed-price-review.md).
 
-The producer is the audited WI-069 model at `956444b5`, with its frozen study at `3529f6c8`. Producer files remain unchanged. Fresh targeted fuel-domain and independent-oracle tests pass **144 tests** with 13 serialization warnings. The [current trace](evidence/current-trace.md), [interface review](evidence/interface-review.md) and [identity evidence](evidence/entering-evidence.json) establish the exact consumption interface and accounting path.
+The calculation applies a separately declared capacity margin, scales each converted row by the capacity ratio to exponent 0.3, applies a separate price multiplier, and sums identical per-module packages. Both margin and multiplier default to one; no standby train is priced.
 
-## How the source prices that capacity
+| Reference result | Old account | Adopted account |
+|---|---:|---:|
+| Processing equipment and represented installation | $120.746 million | $22.786 million |
+| Total plant capital | $18.059 billion | $17.918 billion |
+| Headline electricity cost | $273.455/MWh | $271.584/MWh |
 
-ORNL's 1988 ETR/ITER systems-code method provides a flow relationship with exponent 0.3, referenced to 1.79712 kg D+T/day. It is a published reactor-oriented conceptual engineering method. Original TSTA expenditure data supply its historical equipment basis. Later primary ITER designs specify conventional cleanup and cryogenic separation above the present demand, including a 320 molecular-mol/hour plasma stream corresponding to approximately 36.48 kg D+T/day in the source's equal-D/T case. This larger process-design evidence resolves the initial small-facility scale concern; it does not empirically validate the economic exponent.
+The new subtotal consists of **$20.443 million equipment plus $2.343 million direct installation**, before generic project charges. The capital reduction is **$141.271 million** after those charges; the electricity-cost change is **−$1.870/MWh**. These are matched model results, not demonstrated procurement savings. [Exact baseline changes](../../../../work/active/WI-070_throughput-based-fuel-processing-costs/evidence/baseline-delta.json).
 
-The [first research report](../../../../knowledge/research/pending/20260919-091411_throughput-based-fuel-processing-cost-applicability.md) records source prices, inclusion boundaries and rejected alternatives. The [targeted transfer report](../../../../knowledge/research/pending/20260919-092112_conventional-reactor-fuel-processing-transfer.md) supplies the larger process-design basis. Both native acquisition records are committed at `66548f14`. Eighteen bounded searches were used across two different questions. A challenge-page registration is explicitly rejected as evidence; original papers supply the actual basis.
+## Accounting and remaining omissions
 
-## Reviewable price example
+The complete old C220500 allowance is replaced once. Source installation is absent from the generic equipment-installation base and is excluded, with its project contingency, from freight. Other tax, insurance, indirect and finance allowances retain their reviewed meanings. Included local controls belong only to C220500; distinct supervisory/plasma controls belong to retained C220700. That residual controls allowance has not been recalibrated from an itemized historical price. [Account reconciliation](../../../../work/active/WI-070_throughput-based-fuel-processing-costs/evidence/account-reconciliation.md), [controls review](evidence/controls-review.md).
 
-The [proposed scope](evidence/proposed-cost-scope.md) and [reproducible example](evidence/proposed-price-example.json) price four source rows at the actual running isotope flow. Raw expenditure years are preserved separately and converted using the registered annual CPI series to 2025 purchasing power. CPI is a general monetary proxy, not proof of modern tritium-equipment prices. Installation dates use the source capital-expenditure year as an explicit proxy; containment's 1978–1982 range uses 1980 centrally.
+Civil buildings/ventilation and annual fuel purchases remain separate. The startup-fuel allowance still uses its existing power proxy; this change does not price the calculated startup stock. Storage hardware, blanket extraction/conditioning, specialized additional fuel monitoring, broader containment and emergency/effluent systems, fueling hardware, torus vacuum pumps, full design/inspection, operating expense and replacements remain outside the new block. Generic project allowances do not establish detailed coverage of those omissions.
 
-| Included amount | 2025 purchasing-power example|
-|---|---:|
-| Purchased/fabricated equipment |$20.443 million|
-| Source direct installation |$2.343 million|
-| **Four-row total** |**$22.786 million**|
+## Verification and study results
 
-The rows cover cleanup, cryogenic separation, internal transfer pumps and limited purchased secondary containment. Some local instrumentation/control is included in those packages. The source supplied some containment boxes free; the estimate does not buy complete plant-area containment. Moving only the containment expenditure year across its source range changes the total to $22.568–23.181 million. That narrow range is a date sensitivity, not total cost uncertainty. No standby train or extra capacity margin is priced.
+Author checks pass 172 source/domain tests, 263 affected tests and 13 model-family tests; these suites overlap. Independent audit passes 176 tests and 6,538 comparisons over seven native cases. The original 25 constraint verdicts are preserved at the matched reference. [Audit](../../../../work/active/WI-070_throughput-based-fuel-processing-costs/audit.md), [integration receipt](evidence/round2/integration/integration_return.json).
 
-The [independent price review](evidence/proposed-price-review.md) reproduces the arithmetic and identifies no civil/vacuum duplication in the proposed four-row boundary. Its scope wording corrections are incorporated. The example is not an integrated plant estimate or a claim of total installed/EPC completeness.
+Static validation still fails L2 and L6. L2 retains ten issues; L6 adds three instances of the known public-alias dot-reference limitation, with separate generated-execution coverage. Integration did not run its manifest read-set coverage check. These limitations are not reported as passes.
 
-## What would be replaced and what remains unpriced
+The [focused study report](../../../../exploration/stellarator_e2e/studies/20260919-throughput-based-fuel-processing-costs/report.md) retains 20 native cases, with all **18,680 mapped comparisons and 500 predicate comparisons passing**. Exactly 22 inherited numeric channels remain outside the independent map and are named in the record. None of the cases satisfies every whole-plant screen.
 
-The new block would replace the full existing C220500 processing/containment allowance once through its current CAS22 consumer. That account currently evaluates to $120.746 million using net electric power. Its historical price basis is not established here; the difference from the proposed example is not a demonstrated procurement saving.
+- Changing single-pass burn from 2.5% to 10% changes inlet flow from **26.503 to 6.116 kg D+T/day** and process capital from **$28.273 to $18.210 million**. The report separates the existing annual-fuel effect from the new processing-capital effect.
+- Changing physical recovery preserves inlet capacity and its price. Its loss/breeding effect remains separate from the held annual fuel-pricing recovery input.
+- Changing unplanned downtime preserves running flow and equipment price while changing annual processing, electricity production and LCOE.
+- The independent price stress of 0.5–2 times changes process capital to **$11.393–45.572 million** and reference LCOE to **$271.367–272.019/MWh**. This is an engineered stress range, not a probability interval.
+- Capacity margins and actual containment expenditure-year alternatives are separate cases; matched old/new controls retain the same physical outputs and verdicts.
 
-Existing civil buildings/ventilation, recurring fuel purchases and the separate startup-stock purchase allowance remain separate. The startup allowance still follows a power proxy despite the computed startup quantity; this is disclosed rather than duplicated in processing capital. Blanket extraction remains a separate function. Its tritium mass flow is not a specification of PbLi circulation, carrier gas or extraction hardware.
+The first attempt admitted 15 active cases and rejected five legacy controls before evaluation because of Boolean input encoding. Its original store and evidence remain. The successful retry used the equivalent accepted numeric encoding in a fresh store, with no case filtering or model change. The immutable study is committed at `2bae7fb7`; cold reproduction passes all 20 cases and 19,120 native scalar comparisons. The independent final review passes the frozen evidence, interpretation and all seven finding dispositions. Its four-case cold check reproduces 3,824 native scalar values and every predicate.
 
-The [controls review](evidence/controls-review.md) proposes single ownership: source-included local controls in C220500 and distinct supervisory/plasma controls in retained C220700. Its inherited coefficient remains an uncalibrated residual allowance, not a source-proven numerical deduction. Storage equipment, additional specialized fuel analysis/monitoring, effluent and emergency systems, blanket extraction/conditioning, further safety/service scope, complete design/inspection work, OPEX and replacement schedules remain unpriced by the four-row block. Detailed fueling hardware and torus vacuum pumping are not bought by its internal-transfer-pump row. Omissions are not assumed physically unnecessary.
-
-## Remaining work and current result
-
-The owner decision is resolved. Native WI-070 design and independent accounting review are underway. The production change still needs native model requirements/design, final project-charge reconciliation, implementation, generated execution, integration verification, a focused native study and a fresh R10.S grade tracing cost through plant total and LCOE. The current plant and electricity costs are unchanged; no new LCOE effect or whole-plant feasibility claim is made.
-
-ARIES remains sealed, the published r2 archive is preserved, and unrelated work is untouched. Round 2 is executing the adopted scenario; the goal remains open. No merge or push was performed.
+ARIES remains sealed, published r2 and historical studies are preserved, and no merge or push occurred. Formal goal closure remains the owner's decision.

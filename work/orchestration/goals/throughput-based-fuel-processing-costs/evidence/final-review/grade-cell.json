@@ -1,0 +1,20 @@
+{
+  "cell_id": "R10.S",
+  "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+  "model_version": "2a50d3ec40e587af25beadaa9bd26c305b9ac11d",
+  "score": 2,
+  "anchor_satisfied": "Processing-plant cost follows computed throughput with source basis",
+  "model_evidence": [
+    "models/library/analyses/mfe_fuel_cycle.sysml:258",
+    "models/library/structure/mfe_plant_systems.sysml:459",
+    "models/library/structure/mfe_plant_systems.sysml:596",
+    "models/designs/generic_mfe/mfe_plant.sysml:509",
+    "models/designs/generic_mfe/mfe_plant.sysml:578"
+  ],
+  "runtime_evidence": "work/active/WI-070_throughput-based-fuel-processing-costs/audit.md; work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/final-review/frozen-sample.json",
+  "study_evidence": "exploration/stellarator_e2e/studies/20260919-throughput-based-fuel-processing-costs@2bae7fb7ffc204ca95e3daec16a349a5d7870f1b",
+  "why_not_next": "The historical cost rows share an aggregate throughput law; processing subsystems are not independently sized subaccounts.",
+  "grader": "/root/source_review",
+  "verdict": "PASS",
+  "closure": "owner-held"
+}

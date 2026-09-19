@@ -1,0 +1,8 @@
+{
+  "cases": 4,
+  "native_scalar_comparisons": 3824,
+  "predicates_equal": true,
+  "store": "/tmp/fuel-processing-review-sample-20260919/native/20260919-throughput-based-fuel-processing-costs.db",
+  "fingerprint": "3e3bf467fd98ad927cf12409f1c36807b92e9e8eaa4fd598a2fcd79c00ae698f",
+  "scope": "Frozen native-to-native reproduction, not independent physical validation."
+}

@@ -43,8 +43,8 @@ The item owns canonical/twin model changes, generated package, independent oracl
 - [x] Regenerate twice from reviewed strict seeds, preserving unrelated manual bodies; update oracle/adapter and verify all new outputs.
 - [x] Complete reference, domain, off-reference, physical-preservation, generic-consumer and accounting tests; compare static diagnostics by identity.
 - [x] Refresh package metadata/snapshot/census and verification records (SV-117/SV-118 passing).
-- [ ] Obtain independent implementation review before coordinator integration.
-- [ ] Coordinator executes native integration and focused study; author repairs affected findings and supplies exact evidence for fresh R10.S grading.
+- [x] Obtain independent implementation review before coordinator integration. See audit.md; candidate committed at 2a50d3ec.
+- [x] Coordinator executes native integration and focused study; author repairs affected findings and supplies exact evidence for fresh R10.S grading. Integration and 20-case study at 2bae7fb7 pass; fresh independent R10.S = 2 in the goal evidence/final-review-and-grade.md.
 
 ## Source and review references
 
@@ -54,4 +54,4 @@ The item owns canonical/twin model changes, generated package, independent oracl
 
 ## Current status
 
-Tested regenerated candidate ready for independent implementation audit. Source/domain tests: 172 passing; affected native/oracle/accounting tests: 263 passing; family generation/ABI tests: 13 passing. Static L2/L6 failures remain explicitly classified in evidence/author-validation.md. Coordinator integration and focused study remain pending. The controls allocation follows goal evidence/controls-review.md; its retained coefficient is not a historically disaggregated price.
+Independent implementation audit passed; native integration returned CANDIDATE with all ten gates passing at model commit 2a50d3ec. Source/domain tests: 172 passing; affected native/oracle/accounting tests: 263 passing; family generation/ABI tests: 13 passing. Static L2/L6 failures remain explicitly classified in evidence/author-validation.md. The frozen 20-case study passes all mapped checks and fresh independent review assigns R10.S = 2. Goal closure remains owner-held; this implemented item stays at its cited path for reproducibility. The controls allocation follows goal evidence/controls-review.md; its retained coefficient is not a historically disaggregated price.

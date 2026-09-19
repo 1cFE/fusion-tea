@@ -1,0 +1,24 @@
+{
+  "snapshot_sha256": "2dc662da935c99eefbe9ea127fba354cc1b3b0f3db0fd0f0b97034244fc2d069",
+  "indexed_commit_and_disk_hashes": 542,
+  "cases": 20,
+  "csv_native_joins": 700,
+  "all_cases_failed_plant": true,
+  "axis_formula_checks": "pass",
+  "frozen_tables": [
+    "compatibility",
+    "proposals",
+    "attempt_transitions",
+    "sqlite_sequence",
+    "cases",
+    "runner_lease"
+  ],
+  "cold_tables": [
+    "compatibility",
+    "proposals",
+    "attempt_transitions",
+    "sqlite_sequence",
+    "cases",
+    "runner_lease"
+  ]
+}
