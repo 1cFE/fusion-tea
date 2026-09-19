@@ -1,0 +1,21 @@
+{
+  "outcome": "pass",
+  "scalar_comparisons": 23556,
+  "predicate_comparisons": 650,
+  "relative_tolerance": 1e-09,
+  "absolute_tolerance": {
+    "inventory": 1e-18,
+    "inherited": 1e-09
+  },
+  "strict_relative_misses": [],
+  "failures": [],
+  "limits": "Transport data and source assumptions shared; this verifies independent implementation, not physical accuracy.22 native numeric channels outside oracle map remain native evidence only.",
+  "coverage": {
+    "native_numeric": 914,
+    "native_boolean": 14,
+    "mapped_numeric": 892,
+    "mapped_boolean": 14,
+    "unmapped_numeric": 22,
+    "inventory_numeric_mapped": 70
+  }
+}

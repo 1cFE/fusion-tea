@@ -1,0 +1,36 @@
+{
+  "repo_revision": "956444b5d440238857911a0406e6d3f51ddcbf2e",
+  "launcher": ".codex-test/run",
+  "runtime_import_setup": "STOP_PARSER_TEAX_ROOT/packages/teax-simkit on sys.path/PYTHONPATH; STUDY_REQUIRE_TEAX=1",
+  "execution_revision_scope": "candidate code revision, before study result commit",
+  "caller_correction": {
+    "original": "Verification expected exactly914 raw outputs; current store also publishes14 contract-declared Boolean flags.",
+    "repair": "Assert exact union of914 numeric and14 Boolean channels; export all914 numeric channels explicitly and retain all928 in native-cases.json.",
+    "evidence": "results/verify-phase-before-count-fix.log",
+    "native_reexecution": false
+  },
+  "warnings": [
+    "Existing Pydantic numeric-to-Boolean serializer warnings; retained native outputs and all predicates verified."
+  ],
+  "caller_point_join_correction": {
+    "original": "Integer candidate times and native float times produced different stringified keys.",
+    "repair": "Canonical numeric point-key conversion to float before JSON sorting; same values and all26 points.",
+    "evidence": "results/verify-phase-before-point-key-fix.log",
+    "native_reexecution": false
+  },
+  "coverage_classification": "906 mapped scalars include14 Boolean outputs;892/914 numeric outputs are independently mapped.22 inherited numeric outputs are native evidence only; all70 inventory numeric outputs are mapped.",
+  "mechanical_retries": [
+    {
+      "id": 1,
+      "phase": "verify/export",
+      "reason": "Exact raw output count omitted14 contract-declared Booleans",
+      "native_reexecution": false
+    },
+    {
+      "id": 2,
+      "phase": "verify/export",
+      "reason": "Numeric point-key normalization for int versus float scalar representations",
+      "native_reexecution": false
+    }
+  ]
+}

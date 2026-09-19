@@ -1,0 +1,155 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "fuel_cycle__burn_fraction",
+      "note": "Complete authored public key; sensitivity under explicit owner delegation. No tie to another independent physical quantity.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__burn_fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__eta_extract",
+      "note": "Complete authored public key; sensitivity under explicit owner delegation. No tie to another independent physical quantity.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__eta_extract",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__lambda_T",
+      "note": "Complete authored public key; sensitivity under explicit owner delegation. No tie to another independent physical quantity.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__lambda_T",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__reserve_fraction",
+      "note": "Complete authored public key; sensitivity under explicit owner delegation. No tie to another independent physical quantity.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__reserve_fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__shutdown_duration",
+      "note": "Complete authored public key; sensitivity under explicit owner delegation. No tie to another independent physical quantity.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__shutdown_duration",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__startup_extension",
+      "note": "Complete authored public key; sensitivity under explicit owner delegation. No tie to another independent physical quantity.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__startup_extension",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__t_recycle",
+      "note": "Complete authored public key; sensitivity under explicit owner delegation. No tie to another independent physical quantity.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__t_recycle",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__tau_blanket",
+      "note": "Complete authored public key; sensitivity under explicit owner delegation. No tie to another independent physical quantity.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__tau_blanket",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__tau_buffer",
+      "note": "Complete authored public key; sensitivity under explicit owner delegation. No tie to another independent physical quantity.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__tau_buffer",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__tau_extract",
+      "note": "Complete authored public key; sensitivity under explicit owner delegation. No tie to another independent physical quantity.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__tau_extract",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__tau_feed",
+      "note": "Complete authored public key; sensitivity under explicit owner delegation. No tie to another independent physical quantity.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__tau_feed",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__tau_process",
+      "note": "Complete authored public key; sensitivity under explicit owner delegation. No tie to another independent physical quantity.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__tau_process",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_cycle__tau_reserve",
+      "note": "Complete authored public key; sensitivity under explicit owner delegation. No tie to another independent physical quantity.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__tau_reserve",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "plasma__n_e0",
+      "note": "Complete authored public key; sensitivity under explicit owner delegation. No tie to another independent physical quantity.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__n_e0",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "unplanned_fraction",
+      "note": "Complete authored public key; sensitivity under explicit owner delegation. No tie to another independent physical quantity.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__unplanned_fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

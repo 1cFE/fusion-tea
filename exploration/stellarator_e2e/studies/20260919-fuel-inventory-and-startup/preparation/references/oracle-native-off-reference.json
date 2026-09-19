@@ -1,0 +1,76 @@
+{
+  "source_sha256": {
+    "exploration/stellarator_e2e/oracle_fuel_inventory.py": "8b4a2334e9a165f002ab4b4fabed052e90c6e9125631230f3db5e2433212d2ee",
+    "exploration/stellarator_e2e/verify_stellaris.py": "a81d015c65cead81e976a012cb7588c741851d6010b81e2e3880dd9f5732ee9d",
+    "exploration/stellarator_e2e/studies/oracle_entry.py": "b0151d5586159423eac71575bd6ea14246b165c52e12eeb4463924c0875e9be4",
+    "tests/models/test_fuel_inventory_oracle.py": "55136c96b64b96ed43819eea2dc0ba5a3919e475dba27a41ad84356189cf52c5"
+  },
+  "command": [
+    ".codex-test/run",
+    "python",
+    "-m",
+    "pytest",
+    "tests/models/test_fuel_inventory_oracle.py",
+    "tests/models/test_computed_tritium_breeding.py",
+    "tests/study/test_breeding_predicate.py",
+    "-q",
+    "--junitxml=/home/reid/1cfe/fusion-tea/work/active/WI-069_fuel-inventory-and-startup/evidence/oracle-regressions.xml"
+  ],
+  "identity": {
+    "executable_fingerprint": "e19b63a03be3a00ebd5cec4ce4ed06a082f5bb7ed89b736aed06feaea8d1e319",
+    "seal_sha256": "b87eaeea8939f5dc855d6abae4e992f2238dc827aa60929236b6c1b28c60a924"
+  },
+  "seal_unchanged": true,
+  "exit_code": 0,
+  "relative_tolerance": 1e-09,
+  "absolute_tolerance": 1e-18,
+  "inventory_channels_per_case": 70,
+  "long_shutdown_absolute_tolerance": 0.0,
+  "native_cases": [
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[slow-processing-and-extraction]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[fast-processing-short-reserve]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[immediate-breeding-before-recycle]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[loss-and-burn-sensitivity]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[buffer-reserve-and-extension]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[availability]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[zero-decay]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[profile-shape]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[shutdown-duration]",
+      "passed": true
+    },
+    {
+      "name": "test_native_off_reference_inventory_matches_independent_oracle[dormant-held-inventory]",
+      "passed": true
+    },
+    {
+      "name": "test_native_long_shutdown_keeps_positive_exponential_tail",
+      "passed": true
+    }
+  ],
+  "native_channel_comparisons": 700
+}

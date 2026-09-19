@@ -1,0 +1,10 @@
+{
+  "study_id": "20260919-fuel-inventory-and-startup",
+  "executable_fingerprint": "e19b63a03be3a00ebd5cec4ce4ed06a082f5bb7ed89b736aed06feaea8d1e319",
+  "model_contract_fingerprint": "1d97071e32b40888ef206f0c403250a28a9ecfad7e921797546f0a3ddcc0c1ef",
+  "study_definition_fingerprint": "f5054e9fea0970e9dd37a0155e217fabe86c7f60ba5439015a2650d311c5e61d",
+  "input_schema_version": "input-v1",
+  "evidence_schema_version": "v3",
+  "strategy_identity": "prepared-list/v1",
+  "strategy_config": "b5c9e7a81d2c2655eed6c6b81c95a166a37d92b78dd2e59ca8877690f47c3d45"
+}

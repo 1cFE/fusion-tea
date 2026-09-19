@@ -1,0 +1,107 @@
+[
+  {
+    "copy": "preparation/references/design.md",
+    "source": "work/active/WI-069_fuel-inventory-and-startup/design.md",
+    "sha256": "42c934d906047767b826178f9dc443e127a4ad8906ef8c7af4519ca125fee5a1"
+  },
+  {
+    "copy": "preparation/references/spec.md",
+    "source": "work/active/WI-069_fuel-inventory-and-startup/spec.md",
+    "sha256": "09c2743a7036f46c06276fd94ad2af5e0b3c48a3184c5d08696408c03f14c175"
+  },
+  {
+    "copy": "preparation/references/audit.md",
+    "source": "work/active/WI-069_fuel-inventory-and-startup/audit.md",
+    "sha256": "cd2d7d456599f18b965895f6d1fa2b67e072341865ae812a35407082d422aa89"
+  },
+  {
+    "copy": "preparation/references/authored-abi.json",
+    "source": "work/active/WI-069_fuel-inventory-and-startup/evidence/authored-abi.json",
+    "sha256": "f5af7eeb400392519f88b3498e48f432a6955fc06b95bd61efc6bb0262efa1a1"
+  },
+  {
+    "copy": "preparation/references/research.md",
+    "source": "knowledge/research/pending/20260919-074901_fuel-inventory-residence-startup.md",
+    "sha256": "7ace47313244990b0c8a4e4aa740905e8b5c8c6a0f147d6fc31d77c0b428998b"
+  },
+  {
+    "copy": "preparation/references/source-design-review.md",
+    "source": "work/orchestration/goals/fuel-inventory-and-startup/evidence/source-design-review.md",
+    "sha256": "40bdde810d7aaa632245cbb2b9e38c91f1b9310920a54ea94fd526c3ec6e21bc"
+  },
+  {
+    "copy": "preparation/references/audit-review.md",
+    "source": "work/orchestration/goals/fuel-inventory-and-startup/evidence/audit-review.md",
+    "sha256": "43192c9784d530c5fa36d219432caed8bae871172532d95b4c242c84e7078223"
+  },
+  {
+    "copy": "preparation/references/math-precheck.md",
+    "source": "work/orchestration/goals/fuel-inventory-and-startup/evidence/math-precheck.md",
+    "sha256": "35133d6256a2f2171108a34156e7d484f2c3d44dadd4d588b1f9197d8c47f5e5"
+  },
+  {
+    "copy": "preparation/references/study-policy.md",
+    "source": "modeling_project/STUDY_POLICY.md",
+    "sha256": "51f773572c25708b7b32b9aec2ff0c78508447ced0b12658e6e04fb92132f4a9"
+  },
+  {
+    "copy": "preparation/references/runbook.md",
+    "source": ".agents/skills/run-study/runbook.md",
+    "sha256": "ca118156dbde9770798aca621b82cfe8e6d6214afa2d55cd62ebb84574dd768d"
+  },
+  {
+    "copy": "preparation/references/ANNEX.md",
+    "source": "exploration/stellarator_e2e/studies/ANNEX.md",
+    "sha256": "179abba1f9b16afd6516307a79d23bd1940e0d8877ac8780b3f60c161f6e1d9a"
+  },
+  {
+    "copy": "preparation/references/abdou-source.md",
+    "source": "knowledge/sources/abdou_2021_dt_fuel_cycle_physics_technology_and_tritium/output.md",
+    "sha256": "f4d23e656ea77471323ab8f7a9e6237f2328d06dd8660f1285109e03ffa0957f"
+  },
+  {
+    "copy": "preparation/references/lord-source.md",
+    "source": "knowledge/sources/lord_2024_step_sustained_fuelling_and_tritium_self/output.md",
+    "sha256": "72636036afc6d03697b73f522e23001fdabbec4d57b97a0afd453692dce987d4"
+  },
+  {
+    "copy": "preparation/references/oracle-regressions.log",
+    "source": "work/active/WI-069_fuel-inventory-and-startup/evidence/oracle-regressions.log",
+    "sha256": "300f7153bdcb550781ccd3e2a7f5f2007f014e1163e79b452aa5e12c855a2a20"
+  },
+  {
+    "copy": "preparation/references/oracle-native-off-reference.json",
+    "source": "work/active/WI-069_fuel-inventory-and-startup/evidence/oracle-native-off-reference.json",
+    "sha256": "5b734456acafd86753ea651605a30b2d369e004252e610a0b9f5baaa9a72d3f9"
+  },
+  {
+    "copy": "preparation/references/fuel-abdou-11.png",
+    "source": "/tmp/fuel-abdou-11.png",
+    "sha256": "9237380257978c36ad1bc1de3dd299ebba192c598849ddedd362aa2ec4b9d0bb",
+    "basis": "Original registered PDF page rendered and inspected in source research/review."
+  },
+  {
+    "copy": "preparation/references/fuel-abdou-9.png",
+    "source": "/tmp/fuel-abdou-9.png",
+    "sha256": "607e77716074692e34ca3811859030f56892c0bf8ae7e565795348b679f0e170",
+    "basis": "Original registered PDF page rendered and inspected in source research/review."
+  },
+  {
+    "copy": "preparation/references/fuel-abdou-ode.png",
+    "source": "/tmp/fuel-abdou-ode.png",
+    "sha256": "28d613f2e2d280a968c2c71a47ef090d51c37b5b3d67a2f700a1024576ffc002",
+    "basis": "Original registered PDF page rendered and inspected in source research/review."
+  },
+  {
+    "copy": "preparation/references/fuel-step-10.png",
+    "source": "/tmp/fuel-step-10.png",
+    "sha256": "0944955de7e14a99359333548451978fc0db6f9294bc03445ac25f4effe3432c",
+    "basis": "Original registered PDF page rendered and inspected in source research/review."
+  },
+  {
+    "copy": "preparation/references/fuel-step-14.png",
+    "source": "/tmp/fuel-step-14.png",
+    "sha256": "5f91c5a8e8d7d14298ea75f646a6d5bf18881b5ae7ec8178a4533e58eea00cc4",
+    "basis": "Original registered PDF page rendered and inspected in source research/review."
+  }
+]
