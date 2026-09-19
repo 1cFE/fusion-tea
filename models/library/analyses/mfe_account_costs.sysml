@@ -461,7 +461,7 @@ package mfe_account_costs {
         Plant-wide account, linear-or-power-law in plant-total driving power.
         Covers C220400 waste (base 1.96, ref 1000, a=1.0), C220500 fuel
         handling (fuel base, ref 1000, a=0.7), C220600 other (11.5, ref 1000,
-        a=0.8), C220700 I&C (85.0, ref 3500, a=0.65), and CAS40 owner (owner
+        a=0.8), C220700 I&C (85.0, ref 3500, a=0.65; WI-070 allocates distinct plasma/central supervisory functions here, excluding C220500 package-local controls; inherited coefficient is an uncalibrated residual allowance, not a historical price decomposition), and CAS40 owner (owner
         base, ref 1000, a=0.5). base/ref_power/alpha are per-account concept
         inputs (MR-3, bound at the instance).
 
@@ -598,7 +598,7 @@ package mfe_account_costs {
     // ---- CAS50 supplementary (consumes cas20 / cas23..28 / cas30 aggregates) ----
     calc def 'Supplementary Cost' {
         doc /*
-        CAS50 supplementary account:
+        CAS50 supplementary account (WI-070 excludes direct process installation and its CAS29 contingency from freight):
 
           cost = (shipping*cas20 + spares*cas23_to_28 + tax*cas20
                   + insurance*(cas20+cas30)
@@ -635,6 +635,7 @@ package mfe_account_costs {
         // WI-067: optional bound formal precedes skipped defaults on the exact route.
         in attribute delivered_shipping_exclusion_in : Real default 0.0;
         in attribute facility_exclusion_in : Real default 0.0;
+        in attribute fuel_installation_exclusion_in : Real default 0.0;
         // Defaulted formals declared last: usages bind the formals above by name
         // and leave these at their defaults; a skipped default must not precede
         // a bound formal on the exact route (migration ledger).
@@ -645,7 +646,7 @@ package mfe_account_costs {
         in attribute contingency_rate_in : Real default 0.0;
         in attribute ref_net_power : Real default 1000.0;
         out attribute cost : Real =
-            (shipping_frac * (cas20 - delivered_shipping_exclusion_in - facility_exclusion_in)
+            (shipping_frac * (cas20 - delivered_shipping_exclusion_in - facility_exclusion_in - fuel_installation_exclusion_in)
              + spares_frac * cas23_to_28
              + tax_frac * cas20
              + insurance_frac * (cas20 + cas30)

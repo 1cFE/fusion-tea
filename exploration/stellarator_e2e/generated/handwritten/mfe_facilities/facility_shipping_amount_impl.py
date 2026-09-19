@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:611
+SysML Source: root-0/analyses/mfe_facilities.sysml:614
 
 SysML Expressions:
     exclusion = mode_in * (1.0 + contingency_in) * installed_in
@@ -21,7 +21,7 @@ def run_facility_shipping_amount(inputs: Facility_Shipping_AmountInput) -> float
 
 *Source**: work/active/WI-068_layout-based-facilities/design.md. **Ref**: account replacement map and component-owned aggregation. **Basis**: Exclude the entire contingency-loaded installed facility contribution from freight, without altering tax or insurance.
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:611
+SysML Source: root-0/analyses/mfe_facilities.sysml:614
 
 SysML Expressions:
     exclusion = mode_in * (1.0 + contingency_in) * installed_in

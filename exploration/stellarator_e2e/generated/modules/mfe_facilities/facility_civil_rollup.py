@@ -34,9 +34,9 @@ Inputs:
 Outputs:
     - civil_capital: civil_capital result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:551
+SysML Source: root-0/analyses/mfe_facilities.sysml:554
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:551
+SysML Source: root-0/analyses/mfe_facilities.sysml:554
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_facilities/facility_civil_rollup_impl.py
@@ -140,9 +140,9 @@ Inputs:
 Outputs:
     - civil_capital: civil_capital result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:551
+SysML Source: root-0/analyses/mfe_facilities.sysml:554
 
-    SysML Source: root-0/analyses/mfe_facilities.sysml:551
+    SysML Source: root-0/analyses/mfe_facilities.sysml:554
 
     Calculation Specification:
         civil_capital = reactor_hall_in + sector_wing_east_in + sector_wing_north_in + sector_wing_west_in + sector_wing_south_in + sector_link_east_in + sector_link_north_in + sector_link_west_in + sector_link_south_in + cooling_hall_in + cooling_annex_in + cooling_link_in + turbine_hall_in + cryo_coldbox_in + cryo_compressors_in + fuel_building_in + reactor_auxiliaries_in + power_supply_building_in + electrical_building_in + service_water_building_in + maintenance_shop_in + site_services_building_in + administration_in + control_in + security_in

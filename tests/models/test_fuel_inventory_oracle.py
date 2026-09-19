@@ -203,7 +203,7 @@ NATIVE_CASES = {
     'zero-decay': {'fuel_cycle__lambda_T':0.},
     'profile-shape': {'plasma__alpha_n':.8},
     'shutdown-duration': {'fuel_cycle__shutdown_duration':388800000.},
-    'dormant-held-inventory': {'fuel_cycle__inventory_enabled':False,'fuel_cycle__held_inventory':1e25},
+    'dormant-held-inventory': {'fuel_cycle__inventory_enabled':False,'fuel_cycle__processing_enabled':False,'fuel_cycle__held_inventory':1e25},
 }
 
 

@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:591
+SysML Source: root-0/analyses/mfe_facilities.sysml:594
 
 SysML Expressions:
     cost = parcel_area_in / 4046.8564224 * rate_per_acre_in
@@ -21,7 +21,7 @@ def run_facility_land_cost(inputs: Facility_Land_CostInput) -> float:
 
 *Source**: work/active/WI-068_layout-based-facilities/design.md. **Ref**: account replacement map and component-owned aggregation. **Basis**: Convert the computed parcel area in m^2 to acres at the explicit inherited land rate.
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:591
+SysML Source: root-0/analyses/mfe_facilities.sysml:594
 
 SysML Expressions:
     cost = parcel_area_in / 4046.8564224 * rate_per_acre_in

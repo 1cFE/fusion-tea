@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:551
+SysML Source: root-0/analyses/mfe_facilities.sysml:554
 
 SysML Expressions:
     civil_capital = reactor_hall_in + sector_wing_east_in + sector_wing_north_in + sector_wing_west_in + sector_wing_south_in + sector_link_east_in + sector_link_north_in + sector_link_west_in + sector_link_south_in + cooling_hall_in + cooling_annex_in + cooling_link_in + turbine_hall_in + cryo_coldbox_in + cryo_compressors_in + fuel_building_in + reactor_auxiliaries_in + power_supply_building_in + electrical_building_in + service_water_building_in + maintenance_shop_in + site_services_building_in + administration_in + control_in + security_in
@@ -21,7 +21,7 @@ def run_facility_civil_rollup(inputs: Facility_Civil_RollupInput) -> float:
 
 *Source**: work/active/WI-068_layout-based-facilities/design.md. **Ref**: account replacement map and component-owned aggregation. **Basis**: Sum the actual25 civil component costs once.
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:551
+SysML Source: root-0/analyses/mfe_facilities.sysml:554
 
 SysML Expressions:
     civil_capital = reactor_hall_in + sector_wing_east_in + sector_wing_north_in + sector_wing_west_in + sector_wing_south_in + sector_link_east_in + sector_link_north_in + sector_link_west_in + sector_link_south_in + cooling_hall_in + cooling_annex_in + cooling_link_in + turbine_hall_in + cryo_coldbox_in + cryo_compressors_in + fuel_building_in + reactor_auxiliaries_in + power_supply_building_in + electrical_building_in + service_water_building_in + maintenance_shop_in + site_services_building_in + administration_in + control_in + security_in

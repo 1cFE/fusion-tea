@@ -362,6 +362,12 @@ standalone:
   priority: P0
   status: backlog
   completed: null
+- id: WI-070
+  name: Throughput-based fuel processing costs
+  scale: standard
+  priority: P0
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -455,3 +461,4 @@ standalone:
 | WI-067 | installed-cooling-equipment-costs | standard | P1 | backlog |  |
 | WI-068 | layout-based-facilities | standard | P1 | backlog |  |
 | WI-069 | Fuel inventory and startup | standard | P0 | backlog |  |
+| WI-070 | Throughput-based fuel processing costs | standard | P0 | backlog |  |

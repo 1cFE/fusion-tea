@@ -2632,11 +2632,6 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__cas22_capital__cas22_capital",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
       "channel_name": "stellarator_09__stellaris__bop_capital__bop_capital",
       "field_name": "root",
       "python_type": "float"
@@ -3054,6 +3049,141 @@
     {
       "channel_name": "stellarator_09__stellaris__fuel_cycle__inventory__annual_exhaust_kg",
       "field_name": "annual_exhaust_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__containment_installation",
+      "field_name": "containment_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__cost",
+      "field_name": "cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_capital",
+      "field_name": "transfer_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_reference_installation",
+      "field_name": "cleanup_reference_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_capital",
+      "field_name": "cleanup_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__new_total",
+      "field_name": "new_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__containment_capital",
+      "field_name": "containment_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__containment_reference_installation",
+      "field_name": "containment_reference_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__scaling_factor",
+      "field_name": "scaling_factor",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_installation",
+      "field_name": "distiller_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_reference_capital",
+      "field_name": "cleanup_reference_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_capital",
+      "field_name": "distiller_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__capacity_kg_s",
+      "field_name": "capacity_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_reference_installation",
+      "field_name": "transfer_reference_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__plant_capacity_kg_s",
+      "field_name": "plant_capacity_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_reference_capital",
+      "field_name": "distiller_reference_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__installation_total",
+      "field_name": "installation_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__defined_flag",
+      "field_name": "defined_flag",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__flow_ratio",
+      "field_name": "flow_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_installation",
+      "field_name": "cleanup_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__equipment_total",
+      "field_name": "equipment_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__flow_kg_s",
+      "field_name": "flow_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__module_total",
+      "field_name": "module_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_reference_installation",
+      "field_name": "distiller_reference_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_reference_capital",
+      "field_name": "transfer_reference_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_installation",
+      "field_name": "transfer_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__containment_reference_capital",
+      "field_name": "containment_reference_capital",
       "python_type": "float"
     },
     {
@@ -5547,6 +5677,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__cas22_capital__cas22_capital",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
       "field_name": "root",
       "python_type": "float"
@@ -5584,6 +5719,11 @@
     {
       "channel_name": "stellarator_09__stellaris__shipping_scope__cooling_exclusion",
       "field_name": "cooling_exclusion",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__shipping_scope__fuel_installation_exclusion",
+      "field_name": "fuel_installation_exclusion",
       "python_type": "float"
     },
     {
@@ -7684,6 +7824,139 @@
       "qualified_name": "stellarator_09__stellaris__fuel_cycle__p_trit"
     },
     {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin"
+    },
+    {
+      "default_value": 1000000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_cleanup_capital"
+    },
+    {
+      "default_value": 82.4,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_cleanup_cpi"
+    },
+    {
+      "default_value": 70000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_cleanup_installation"
+    },
+    {
+      "default_value": 182000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_containment_capital"
+    },
+    {
+      "default_value": 82.4,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi"
+    },
+    {
+      "default_value": 30000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_containment_installation"
+    },
+    {
+      "default_value": 1237000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_distiller_capital"
+    },
+    {
+      "default_value": 65.2,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_distiller_cpi"
+    },
+    {
+      "default_value": 63000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_distiller_installation"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "bool",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_enabled"
+    },
+    {
+      "default_value": 0.3,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_exponent"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier"
+    },
+    {
+      "default_value": 2.08e-05,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_reference_flow"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "bool",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_source_conditions"
+    },
+    {
+      "default_value": 321.9,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_target_cpi"
+    },
+    {
+      "default_value": 111000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_transfer_capital"
+    },
+    {
+      "default_value": 60.6,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_transfer_cpi"
+    },
+    {
+      "default_value": 112000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_transfer_installation"
+    },
+    {
       "default_value": 0.25,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -9049,5 +9322,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "1d97071e32b40888ef206f0c403250a28a9ecfad7e921797546f0a3ddcc0c1ef"
+  "semantic_fingerprint": "37ca31ff0412f56a67301fa4e714b1dba2e74df6788348ce97dd5ee64d98d62f"
 }

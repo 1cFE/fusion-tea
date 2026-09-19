@@ -503,7 +503,8 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "coolant_legacy": f"{P}heat_transport__coolant__cost",
     "aux_cooling": f"{P}cryoplant__aux_cooling__cost",
     "waste": f"{P}waste__cost",
-    "fuel_handling": f"{P}fuel_cycle__fuel_handling__cost",
+    "fuel_handling_legacy": f"{P}fuel_cycle__fuel_handling__cost",
+    "fuel_handling": f"{P}fuel_cycle__processing_cost__cost",
     "other_rpe": f"{P}other_rpe__cost",
     "inc": f"{P}inc_cost__cost",
     "owner": f"{P}owner__cost",
@@ -664,6 +665,11 @@ ORACLE_OUTPUT_TO_CHANNEL.update({
     for key in vs.inventory_oracle.OUTPUTS
 })
 
+# WI-070 reviewed explicit processing ABI.
+ENTRY_KEY_TO_ORACLE_INPUT.update({f'{P}fuel_cycle__processing_'+key:'processing_'+key for key in ['enabled', 'source_conditions', 'capacity_margin', 'price_multiplier', 'reference_flow', 'exponent', 'target_cpi', 'transfer_cpi', 'transfer_capital', 'transfer_installation', 'cleanup_cpi', 'cleanup_capital', 'cleanup_installation', 'distiller_cpi', 'distiller_capital', 'distiller_installation', 'containment_cpi', 'containment_capital', 'containment_installation']})
+ORACLE_OUTPUT_TO_CHANNEL.update({'processing_'+key:f'{P}fuel_cycle__processing_cost__'+key for key in ['flow_kg_s', 'capacity_kg_s', 'plant_capacity_kg_s', 'flow_ratio', 'scaling_factor', 'transfer_reference_capital', 'transfer_reference_installation', 'transfer_capital', 'transfer_installation', 'cleanup_reference_capital', 'cleanup_reference_installation', 'cleanup_capital', 'cleanup_installation', 'distiller_reference_capital', 'distiller_reference_installation', 'distiller_capital', 'distiller_installation', 'containment_reference_capital', 'containment_reference_installation', 'containment_capital', 'containment_installation', 'equipment_total', 'installation_total', 'module_total', 'new_total', 'cost', 'defined_flag']})
+ORACLE_OUTPUT_TO_CHANNEL['shipping_fuel_installation_exclusion'] = f'{P}shipping_scope__fuel_installation_exclusion'
+
 OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
     # WI-068 IDs/formal read from the generated native contract.
     f"{P}facility_capacity_ok__8acbe7a714e6a4d9": {
@@ -815,7 +821,7 @@ def _oracle_overrides(point: Mapping[str, float]) -> dict[str, float]:
                 f"entry keys disagree on oracle input {name!r}: already {overrides[name]}, "
                 f"then {key!r} = {float(value)}"
             )
-        if name in ('cooling_enabled', 'facility_facilities_enabled', 'inventory_inventory_enabled'):
+        if name in ('cooling_enabled', 'facility_facilities_enabled', 'inventory_inventory_enabled', 'processing_enabled', 'processing_source_conditions'):
             if value not in (False, True, 0., 1.):
                 raise OracleSeamError(f'{name} must be Boolean or its stored zero/one representation')
             overrides[name] = bool(value)

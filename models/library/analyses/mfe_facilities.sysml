@@ -529,6 +529,9 @@ package mfe_facilities {
         in attribute cas20_in : Real;
         in attribute cooling_exclusion_in : Real;
         in attribute facility_exclusion_in : Real;
+        in attribute fuel_installation_in : Real default 0.0;
+        in attribute contingency_in : Real default 0.0;
+        out attribute fuel_installation_exclusion : Real;
         out attribute cooling_exclusion : Real;
         out attribute facility_exclusion : Real;
         out attribute remaining_shipping_base : Real;

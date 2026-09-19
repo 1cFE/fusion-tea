@@ -11,9 +11,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:597
+SysML Source: root-0/analyses/mfe_facilities.sysml:600
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:597
+SysML Source: root-0/analyses/mfe_facilities.sysml:600
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_facilities/facility_site_allowance_impl.py
@@ -48,9 +48,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:597
+SysML Source: root-0/analyses/mfe_facilities.sysml:600
 
-    SysML Source: root-0/analyses/mfe_facilities.sysml:597
+    SysML Source: root-0/analyses/mfe_facilities.sysml:600
 
     Calculation Specification:
         cost = active_in * amount_in

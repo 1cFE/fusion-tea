@@ -16,6 +16,7 @@ import oracle_breeding as breeding_oracle
 import oracle_cooling as cooling_oracle
 import oracle_facilities as facilities_oracle
 import oracle_fuel_inventory as inventory_oracle
+import oracle_fuel_processing as processing_oracle
 
 # WI-022 discretization contract — EXACT mirror of the handwritten impl
 # (generated/handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py). The
@@ -977,6 +978,8 @@ IN.update({
 
 IN.update({'facility_'+key:value for key,value in facilities_oracle.DEFAULTS.items()})
 IN.update({'inventory_'+key:value for key,value in inventory_oracle.DEFAULTS.items()})
+PROCESSING_DEFAULTS = {'enabled': True, 'source_conditions': True, 'capacity_margin': 1.0, 'price_multiplier': 1.0, 'reference_flow': 2.08e-05, 'exponent': 0.3, 'target_cpi': 321.9, 'transfer_capital': 111000.0, 'transfer_installation': 112000.0, 'transfer_cpi': 60.6, 'cleanup_capital': 1000000.0, 'cleanup_installation': 70000.0, 'cleanup_cpi': 82.4, 'distiller_capital': 1237000.0, 'distiller_installation': 63000.0, 'distiller_cpi': 65.2, 'containment_capital': 182000.0, 'containment_installation': 30000.0, 'containment_cpi': 82.4}
+IN.update({'processing_'+key:value for key,value in PROCESSING_DEFAULTS.items()})
 
 def compute():
     if "magnet_R0" in IN:
@@ -1334,6 +1337,18 @@ def compute():
                          + structure + vessel + power_supplies)
     bop_capital = turbine + electric + heat_rejection + misc
 
+    breeding = breeding_oracle.response(p)
+    inventory_parameters = {key: p['inventory_'+key] for key in inventory_oracle.DEFAULTS}
+    inventory_parameters['enabled'] = inventory_parameters.pop('inventory_enabled')
+    inventory_parameters.update(
+        p_fus=p_fus, q_eff=p['fuel_q_eff'], mev_to_joules=p['mev_to_joules'],
+        burn_fraction=p['burn_fraction'], t_recycle=p['t_recycle'],
+        tbr_available=breeding['tbr_mean'], breeding_defined=breeding['defined_flag'],
+        eta_extract=p['eta_extract'], lambda_T=p['lambda_T'], G_stock=p['G_stock'],
+        m_T_kg=p['m_T_kg'], plasma_volume=V, n_T0=sust['n_T0'],
+        alpha_n=p['alpha_n'], availability=cal["availability"])
+    fuel_inventory = inventory_oracle.evaluate(**inventory_parameters)
+
     # --- WI-028 rebuilt overnight assembly (mirrors mfe_plant.sysml D2) ---
     n = p["n_mod"]
     # CAS22 tail accounts ($)
@@ -1350,7 +1365,12 @@ def compute():
     coolant = (1 - p['cooling_cost_mode']) * coolant_legacy + p['cooling_cost_mode'] * cooling['installed_total']
     aux_cooling = aux_cost + cryo_cost
     waste = p["waste_base"] * (n * p_th / p["waste_ref"]) ** p["waste_alpha"]
-    fuel_handling = p["fuel_handling_base"] * (n * p_net / p["fuel_ref"]) ** p["fuel_alpha"]
+    fuel_handling_legacy = p["fuel_handling_base"] * (n * p_net / p["fuel_ref"]) ** p["fuel_alpha"]
+    processing = processing_oracle.calculate({key:p['processing_'+key] for key in PROCESSING_DEFAULTS} | dict(
+        flow=fuel_inventory['dt_processor_kg_s'], inventory_enabled=p['inventory_inventory_enabled'],
+        n_mod=n, legacy_cost=fuel_handling_legacy))
+    fuel_handling = processing['cost']
+    processing_exclusion = (1 + p['contingency_rate']) * processing['installation_total']
     other_rpe = p["other_rpe_base"] * (n * p_net / p["other_ref"]) ** p["other_alpha"]
     inc = p["inc_base"] * (n * p_th / p["inc_ref"]) ** p["inc_alpha"]
     cas22_tail_capital = (remote_handling + installation + coolant + aux_cooling
@@ -1367,7 +1387,7 @@ def compute():
     cas23_to_28_capital = bop_capital + special_materials_capital + cas28_capital
     # CAS40 owner + CAS50 supplementary at overnight (no CAS29/CAS30 on them)
     owner = p["owner_base"] * (n * p_net / p["owner_ref"]) ** p["owner_alpha"]
-    supplementary = ((p["supp_shipping_frac"] * (cas20_capital - p["cooling_cost_mode"] * cooling["delivered_total"] - facility_exclusion)
+    supplementary = ((p["supp_shipping_frac"] * (cas20_capital - p["cooling_cost_mode"] * cooling["delivered_total"] - facility_exclusion - processing_exclusion)
                       + p["supp_spares_frac"] * cas23_to_28_capital
                       + p["supp_tax_frac"] * cas20_capital
                       + p["supp_insurance_frac"] * (cas20_capital + cas30_capital)
@@ -1434,17 +1454,6 @@ def compute():
     fuel_inject_rate = fuel_burn_rate / p["burn_fraction"]
     fuel_exhaust_rate = fuel_inject_rate - fuel_burn_rate
     fuel_loss_rate = (1.0 - p["t_recycle"]) * fuel_exhaust_rate
-    breeding = breeding_oracle.response(p)
-    inventory_parameters = {key: p['inventory_'+key] for key in inventory_oracle.DEFAULTS}
-    inventory_parameters['enabled'] = inventory_parameters.pop('inventory_enabled')
-    inventory_parameters.update(
-        p_fus=p_fus, q_eff=p['fuel_q_eff'], mev_to_joules=p['mev_to_joules'],
-        burn_fraction=p['burn_fraction'], t_recycle=p['t_recycle'],
-        tbr_available=breeding['tbr_mean'], breeding_defined=breeding['defined_flag'],
-        eta_extract=p['eta_extract'], lambda_T=p['lambda_T'], G_stock=p['G_stock'],
-        m_T_kg=p['m_T_kg'], plasma_volume=V, n_T0=sust['n_T0'],
-        alpha_n=p['alpha_n'], availability=availability)
-    fuel_inventory = inventory_oracle.evaluate(**inventory_parameters)
     fuel_tbr_required = ((fuel_burn_rate + fuel_loss_rate + p['lambda_T']*fuel_inventory['total_atoms'] + p['G_stock'])
                          / (p['eta_extract']*fuel_burn_rate))
     # Raw margin is undefined whenever the coupled adequacy flag is zero.
@@ -1566,7 +1575,10 @@ def compute():
         facility_cooling_initial_handoff_days=p['facility_cooling_initial_handoff_days'],
         shipping_cooling_exclusion=p['cooling_cost_mode']*cooling['delivered_total'],
         shipping_facility_exclusion=facility_exclusion,
-        shipping_remaining_base=cas20_capital-p['cooling_cost_mode']*cooling['delivered_total']-facility_exclusion,
+        shipping_remaining_base=cas20_capital-p['cooling_cost_mode']*cooling['delivered_total']-facility_exclusion-processing_exclusion,
+        fuel_handling_legacy=fuel_handling_legacy,
+        shipping_fuel_installation_exclusion=processing_exclusion,
+        **{'processing_'+key:value for key,value in processing.items()},
         fuel_handling=fuel_handling, other_rpe=other_rpe, inc=inc,
         owner=owner, supplementary=supplementary, idc_capital=idc_capital,
         reactor_equipment_subtotal=reactor_equipment_subtotal,

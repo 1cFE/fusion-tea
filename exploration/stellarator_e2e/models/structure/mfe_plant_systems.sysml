@@ -1,5 +1,6 @@
 package mfe_plant_systems {
     private import ScalarValues::*;
+    private import costed_component::*;
     private import mfe_cryo_inventory::*;
     private import mfe_interfaces::*;
     private import mfe_vacuum::*;
@@ -389,6 +390,13 @@ package mfe_plant_systems {
         attribute mass_kg : Real;
     }
 
+    part def 'Fuel Processing Stock' :> 'Fuel Stock', 'Costed Component' {
+        doc /* Per-module tritium stock with a plant-total processing account attached for rollup. Source: work/active/WI-070_throughput-based-fuel-processing-costs/design.md. Basis: mass remains per module; capital is selected whole-plant C220500 including legacy mode, summed only by Fuel Cycle account. */
+        attribute equipment_cost : Real;
+        attribute installation_cost : Real;
+        :>> cas_code = "220500";
+    }
+
     part def 'Fuel Cycle' {
         doc /*
         The tritium fuel cycle: the D-T fuel cost facts and the reduced flows of WI-047 (burn
@@ -448,7 +456,10 @@ package mfe_plant_systems {
         // For computed blankets this raw margin is defined only when the owning plant adequacy flag is 1.
         attribute tbr_margin : Real = fuel.tbr_margin;
         attribute exhaust_rate : Real = fuel.exhaust_rate;
-        attribute fuel_handling_cost : Real = fuel_handling.cost;
+        attribute fuel_handling_cost : Real = processing_cost.cost;
+        attribute dt_processing_flow : Real = inventory.dt_processor_kg_s;
+        attribute fuel_processing_installation : Real = processing_cost.installation_total;
+        attribute fuel_processing_defined : Real = processing_cost.defined_flag;
         // ---- template calcs (WI-057): the analyses this part owns ----
 
         // WI-069 dormant generic defaults; stellarator binds the reviewed scenario.
@@ -509,10 +520,14 @@ package mfe_plant_systems {
             :>> atoms = inventory.plasma_atoms;
             :>> mass_kg = inventory.plasma_kg;
         }
-        part exhaust_processor : 'Fuel Stock' {
+        part exhaust_processor : 'Fuel Processing Stock' {
             doc /* Combined cleanup and isotope separation; inlet U, residence tau_process; R+L=U at outlet. **Source**: work/active/WI-069_fuel-inventory-and-startup/design.md **Reference**: Components and stocks. **Last Updated**: 2026-09-19 */
             :>> atoms = inventory.processor_atoms;
             :>> mass_kg = inventory.processor_kg;
+            // Per-module stock above; plant-total selected cost below, including dormant legacy.
+            :>> capital_cost = processing_cost.cost;
+            :>> equipment_cost = processing_cost.equipment_total;
+            :>> installation_cost = processing_cost.installation_total;
         }
         part breeder_zone : 'Fuel Stock' {
             doc /* Release from breeder zone; gross T stream J, residence tau_blanket; starts empty. **Source**: work/active/WI-069_fuel-inventory-and-startup/design.md **Reference**: Components and stocks. **Last Updated**: 2026-09-19 */
@@ -556,6 +571,52 @@ package mfe_plant_systems {
             in mev_to_joules_in = mev_to_joules;
             in burn_fraction_in = burn_fraction;
             in fuel_recovery_in = fuel_recovery;
+        }
+
+        // WI-070 dormant source placeholders; active source data belong to instance.
+        attribute processing_enabled : Boolean default := false;
+        attribute processing_source_conditions : Boolean default := false;
+        attribute processing_capacity_margin : Real default := 1.0;
+        attribute processing_price_multiplier : Real default := 1.0;
+        attribute processing_reference_flow : Real default := 0.0;
+        attribute processing_exponent : Real default := 0.0;
+        attribute processing_target_cpi : Real default := 0.0;
+        attribute processing_transfer_cpi : Real default := 0.0;
+        attribute processing_transfer_capital : Real default := 0.0;
+        attribute processing_transfer_installation : Real default := 0.0;
+        attribute processing_cleanup_cpi : Real default := 0.0;
+        attribute processing_cleanup_capital : Real default := 0.0;
+        attribute processing_cleanup_installation : Real default := 0.0;
+        attribute processing_distiller_cpi : Real default := 0.0;
+        attribute processing_distiller_capital : Real default := 0.0;
+        attribute processing_distiller_installation : Real default := 0.0;
+        attribute processing_containment_cpi : Real default := 0.0;
+        attribute processing_containment_capital : Real default := 0.0;
+        attribute processing_containment_installation : Real default := 0.0;
+        calc processing_cost : 'Fuel Processing Cost' {
+            in flow_in = dt_processing_flow;
+            in inventory_enabled_in = inventory_enabled;
+            in n_mod_in = n_mod;
+            in legacy_cost_in = fuel_handling.cost;
+            in enabled_in = processing_enabled;
+            in source_conditions_in = processing_source_conditions;
+            in capacity_margin_in = processing_capacity_margin;
+            in price_multiplier_in = processing_price_multiplier;
+            in reference_flow_in = processing_reference_flow;
+            in exponent_in = processing_exponent;
+            in target_cpi_in = processing_target_cpi;
+            in transfer_cpi_in = processing_transfer_cpi;
+            in transfer_capital_in = processing_transfer_capital;
+            in transfer_installation_in = processing_transfer_installation;
+            in cleanup_cpi_in = processing_cleanup_cpi;
+            in cleanup_capital_in = processing_cleanup_capital;
+            in cleanup_installation_in = processing_cleanup_installation;
+            in distiller_cpi_in = processing_distiller_cpi;
+            in distiller_capital_in = processing_distiller_capital;
+            in distiller_installation_in = processing_distiller_installation;
+            in containment_cpi_in = processing_containment_cpi;
+            in containment_capital_in = processing_containment_capital;
+            in containment_installation_in = processing_containment_installation;
         }
         calc fuel_handling : 'Plant Power-Law Cost' {
             in base = fuel_handling_base; in power = p_net; in n_mod_in = n_mod;

@@ -8,15 +8,16 @@ SysML Expressions:
     n_mod_in = 1.0
     delivered_shipping_exclusion_in = 0.0
     facility_exclusion_in = 0.0
+    fuel_installation_exclusion_in = 0.0
     shipping_frac = 0.015
     tax_frac = 0.01
     insurance_frac = 0.015
     contingency_rate_in = 0.0
     ref_net_power = 1000.0
-    cost = (shipping_frac * (cas20 - delivered_shipping_exclusion_in - facility_exclusion_in) + spares_frac * cas23_to_28 + tax_frac * cas20 + insurance_frac * (cas20 + cas30) + startup_fuel_base * (n_mod_in * p_net / ref_net_power) + decom_base * (n_mod_in * p_net / ref_net_power)) * (1.0 + contingency_rate_in)
+    cost = (shipping_frac * (cas20 - delivered_shipping_exclusion_in - facility_exclusion_in - fuel_installation_exclusion_in) + spares_frac * cas23_to_28 + tax_frac * cas20 + insurance_frac * (cas20 + cas30) + startup_fuel_base * (n_mod_in * p_net / ref_net_power) + decom_base * (n_mod_in * p_net / ref_net_power)) * (1.0 + contingency_rate_in)
     
 Documentation:
-CAS50 supplementary account:
+CAS50 supplementary account (WI-070 excludes direct process installation and its CAS29 contingency from freight):
 
   cost = (shipping*cas20 + spares*cas23_to_28 + tax*cas20
           + insurance*(cas20+cas30)
@@ -45,7 +46,7 @@ from stellarator_tea.modules.mfe_account_costs.supplementary_cost import Supplem
 def run_supplementary_cost(inputs: Supplementary_CostInput) -> float:
     """Execute Supplementary_Cost calculation.
 
-CAS50 supplementary account:
+CAS50 supplementary account (WI-070 excludes direct process installation and its CAS29 contingency from freight):
 
   cost = (shipping*cas20 + spares*cas23_to_28 + tax*cas20
           + insurance*(cas20+cas30)
@@ -71,15 +72,16 @@ SysML Expressions:
     n_mod_in = 1.0
     delivered_shipping_exclusion_in = 0.0
     facility_exclusion_in = 0.0
+    fuel_installation_exclusion_in = 0.0
     shipping_frac = 0.015
     tax_frac = 0.01
     insurance_frac = 0.015
     contingency_rate_in = 0.0
     ref_net_power = 1000.0
-    cost = (shipping_frac * (cas20 - delivered_shipping_exclusion_in - facility_exclusion_in) + spares_frac * cas23_to_28 + tax_frac * cas20 + insurance_frac * (cas20 + cas30) + startup_fuel_base * (n_mod_in * p_net / ref_net_power) + decom_base * (n_mod_in * p_net / ref_net_power)) * (1.0 + contingency_rate_in)
+    cost = (shipping_frac * (cas20 - delivered_shipping_exclusion_in - facility_exclusion_in - fuel_installation_exclusion_in) + spares_frac * cas23_to_28 + tax_frac * cas20 + insurance_frac * (cas20 + cas30) + startup_fuel_base * (n_mod_in * p_net / ref_net_power) + decom_base * (n_mod_in * p_net / ref_net_power)) * (1.0 + contingency_rate_in)
     
 Documentation:
-CAS50 supplementary account:
+CAS50 supplementary account (WI-070 excludes direct process installation and its CAS29 contingency from freight):
 
   cost = (shipping*cas20 + spares*cas23_to_28 + tax*cas20
           + insurance*(cas20+cas30)
@@ -109,4 +111,4 @@ Example:
     >>> inputs = Supplementary_CostInput(...)
     >>> result = run_supplementary_cost(inputs)
     """
-    return (((((((inputs.shipping_frac * ((inputs.cas20 - inputs.delivered_shipping_exclusion_in) - inputs.facility_exclusion_in)) + (inputs.spares_frac * inputs.cas23_to_28)) + (inputs.tax_frac * inputs.cas20)) + (inputs.insurance_frac * (inputs.cas20 + inputs.cas30))) + (inputs.startup_fuel_base * ((inputs.n_mod_in * inputs.p_net) / inputs.ref_net_power))) + (inputs.decom_base * ((inputs.n_mod_in * inputs.p_net) / inputs.ref_net_power))) * (1.0 + inputs.contingency_rate_in))
+    return (((((((inputs.shipping_frac * (((inputs.cas20 - inputs.delivered_shipping_exclusion_in) - inputs.facility_exclusion_in) - inputs.fuel_installation_exclusion_in)) + (inputs.spares_frac * inputs.cas23_to_28)) + (inputs.tax_frac * inputs.cas20)) + (inputs.insurance_frac * (inputs.cas20 + inputs.cas30))) + (inputs.startup_fuel_base * ((inputs.n_mod_in * inputs.p_net) / inputs.ref_net_power))) + (inputs.decom_base * ((inputs.n_mod_in * inputs.p_net) / inputs.ref_net_power))) * (1.0 + inputs.contingency_rate_in))

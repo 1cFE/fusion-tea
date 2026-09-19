@@ -187,8 +187,8 @@ def test_native_inventory_drives_existing_breeding_and_preserves_fuel_cost(evalu
 
 @pytest.mark.codegen_available
 def test_native_dormant_inventory_preserves_legacy_held_requirement(evaluate):
-    zero = evaluate({'fuel_cycle__inventory_enabled': False, 'fuel_cycle__held_inventory': 0.})
-    held = evaluate({'fuel_cycle__inventory_enabled': False, 'fuel_cycle__held_inventory': 1e26})
+    zero = evaluate({'fuel_cycle__inventory_enabled': False, 'fuel_cycle__processing_enabled': False, 'fuel_cycle__held_inventory': 0.})
+    held = evaluate({'fuel_cycle__inventory_enabled': False, 'fuel_cycle__processing_enabled': False, 'fuel_cycle__held_inventory': 1e26})
     assert output(zero, 'fuel_cycle__fuel__tbr_required') == pytest.approx(1.19)
     assert output(zero, 'fuel_cycle__inventory__defined_flag') == 0.
     assert output(held, 'fuel_cycle__inventory__total_atoms') == 1e26

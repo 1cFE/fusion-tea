@@ -5,9 +5,9 @@ TEAx module for initial_sector_start_days calculation.
 Outputs:
     - initial_sector_start_days: initial_sector_start_days result
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1486
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1544
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1486
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1544
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/stellarator_09/stellaris/buildings/initial_sector_start_days_impl.py
@@ -32,9 +32,9 @@ class initial_sector_start_daysModule(ModuleBase[initial_sector_start_daysInput,
 Outputs:
     - initial_sector_start_days: initial_sector_start_days result
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1486
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1544
 
-    SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1486
+    SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1544
 
     Calculation Specification:
 

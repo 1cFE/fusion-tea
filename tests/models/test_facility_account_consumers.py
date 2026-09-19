@@ -53,7 +53,7 @@ def test_installed_facility_shipping_exclusion_preserves_other_charges(
         cas30=50e6, shipping_frac=.015, p_net=600., tax_frac=.01,
         decom_base=20e6, cas20=cas20, n_mod_in=1.,
         delivered_shipping_exclusion_in=cooling_delivered,
-        facility_exclusion_in=facility_exclusion,
+        facility_exclusion_in=facility_exclusion, fuel_installation_exclusion_in=0.,
         insurance_frac=.015, startup_fuel_base=10e6,
         contingency_rate_in=supplementary_contingency)
     actual = module.run(**inputs).data.root
@@ -91,7 +91,8 @@ def test_native_facility_children_reconcile_to_total_without_calendar_change(
         evaluate, case_index, contingency):
     entering = json.loads((ROOT / 'work/orchestration/goals/layout-based-facilities'
                           '/evidence/entering-replay.json').read_text())['cases'][case_index]
-    point = entering['inputs'] | {P + 'contingency_rate': contingency}
+    # Frozen WI-068 monetary anchor predates throughput costing; replay its legacy selection.
+    point = entering['inputs'] | {P + 'contingency_rate': contingency, P + 'fuel_cycle__processing_enabled': False}
     old_case = evaluate(point | {P + 'buildings__facilities_cost_mode': 0.})
     new_case = evaluate(point | {P + 'buildings__facilities_cost_mode': 1.})
     old, new = old_case.outputs, new_case.outputs

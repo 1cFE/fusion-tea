@@ -483,7 +483,8 @@ package mfe_plant {
             in base = other_rpe_base; in power = pb.p_net; in n_mod_in = n_mod;
             in ref_power = 1000.0; in alpha = 0.8;
         }
-        // 85.0 M$ -> $  (I&C)
+        // WI-070: C220700 owns distinct plasma/central supervisory controls; C220500 owns its package-local controls.
+        // The unchanged 85 M$ coefficient is an uncalibrated residual allowance, not a historically disaggregated price.
         attribute inc_base : Real;
         calc inc_cost : 'Plant Power-Law Cost' {
             in base = inc_base; in power = p_th; in n_mod_in = n_mod;
@@ -574,6 +575,8 @@ package mfe_plant {
             in cas20_in = cas20_capital;
             in cooling_exclusion_in = heat_transport.shipping_exclusion;
             in facility_exclusion_in = facility_shipping_exclusion;
+            in fuel_installation_in = fuel_cycle.fuel_processing_installation;
+            in contingency_in = contingency_rate;
         }
         calc supplementary : 'Supplementary Cost' {
             in spares_frac = supplementary_spares_frac;
@@ -584,6 +587,7 @@ package mfe_plant {
             in cas30 = indirect.cost;    // read the CAS30 producer directly (cas30_capital is expose_pure)
             in delivered_shipping_exclusion_in = shipping_scope.cooling_exclusion;
             in facility_exclusion_in = shipping_scope.facility_exclusion;
+            in fuel_installation_exclusion_in = shipping_scope.fuel_installation_exclusion;
             in p_net = pb.p_net;
             in n_mod_in = n_mod;
         }

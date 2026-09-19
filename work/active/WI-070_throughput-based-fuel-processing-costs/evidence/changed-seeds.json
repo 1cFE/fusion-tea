@@ -1,0 +1,10 @@
+{
+  "handwritten/mfe_fuel_cycle/fuel_processing_cost_impl.py": {
+    "before": null,
+    "after": "e55b694c33553a08f795ef25cca709013c3c8e00d9fdd969a1d5ae0481f256e3"
+  },
+  "handwritten/mfe_facilities/facility_shipping_scope_impl.py": {
+    "before": "790289edc975e1b131076d2a015d687e8531c4253ed75ddfa47f106eda156ae3",
+    "after": "02e6dd8be34f124499dd49fe7ff728ff9a5a2ae076f2493b1d81443ad85a1b47"
+  }
+}

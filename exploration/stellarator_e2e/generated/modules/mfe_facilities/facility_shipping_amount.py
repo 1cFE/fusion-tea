@@ -12,9 +12,9 @@ Inputs:
 Outputs:
     - exclusion: exclusion result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:611
+SysML Source: root-0/analyses/mfe_facilities.sysml:614
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:611
+SysML Source: root-0/analyses/mfe_facilities.sysml:614
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_facilities/facility_shipping_amount_impl.py
@@ -52,9 +52,9 @@ Inputs:
 Outputs:
     - exclusion: exclusion result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:611
+SysML Source: root-0/analyses/mfe_facilities.sysml:614
 
-    SysML Source: root-0/analyses/mfe_facilities.sysml:611
+    SysML Source: root-0/analyses/mfe_facilities.sysml:614
 
     Calculation Specification:
         exclusion = mode_in * (1.0 + contingency_in) * installed_in

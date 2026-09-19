@@ -52,3 +52,7 @@ Grounded, 2026-09-19. [OWNER] The retained owner prompt authorizes grounding and
 [OWNER] Only the owner formally closes the goal after reviewing its independently supported answer.
 
 ## Amendments
+
+### Amendment 2026-09-19 — resolves process-adoption gate
+
+[OWNER-VERBATIM] “yes, adopt and continue”. The owner authorizes adopting the reviewed conditional conventional cleanup/cryogenic-separation cost basis and continuing implementation. [AGENT] (ratified by owner, 2026-09-19) The process/feed and four-row pricing assumptions retain their agent provenance and the limitations in evidence/proposed-cost-scope.md; approval does not certify feed purity, recovery, completeness or commercial qualification. All other reserved gates and invariants remain unchanged.

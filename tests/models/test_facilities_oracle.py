@@ -167,7 +167,7 @@ def test_disabled_full_map_preserves_legacy_accounts_and_zeroes_facilities():
         assert result[name]==expected,(name,channel,result[name])
     assert result['shipping_facility_exclusion']==0
     assert result['shipping_remaining_base']==pytest.approx(
-        result['cas20_capital']-result['shipping_cooling_exclusion'])
+        result['cas20_capital']-result['shipping_cooling_exclusion']-result['shipping_fuel_installation_exclusion'])
 
 
 @pytest.mark.parametrize('waste_yield',[0.,.5])

@@ -255,4 +255,60 @@ package mfe_fuel_cycle {
         out attribute shutdown_decay_loss_kg : Real; // kg T; passive shutdown, distinct from maintained design inventory
         out attribute defined_flag : Real; // 1; exact 0/1, conditional inventory interpretation
     }
+    calc def 'Fuel Processing Cost' {
+        doc /* Conditional conventional D+T exhaust processing, four subsystem rows and direct installation.
+        Source: knowledge/sources/bartlit_1983_tsta_subsystem_costs_original_osti_paper/output.md, Table II and Section III; knowledge/sources/etr_iter_systems_code_ornl_fedc_87_7_1988/output.md, fuel-processing relation.
+        Reference: work/active/WI-070_throughput-based-fuel-processing-costs/design.md and evidence/account-reconciliation.md; reviewed price and transfer records in goal evidence.
+        Basis: near-equimolar D/T, source-like impurities, cleaned feed below 1 ppm noncondensibles, atmospheric cryogenic separation and 20 K refrigeration. Conditional 99 percent functional recovery is inherited, not established by this price. CPI is purchasing power, not current procurement. Per-module running inlet, identical independent trains times module count; no shared discount or certified capacity. Source-like conditions are declared, not measured. Included local controls belong exclusively to C220500. Limited purchased containment; no full building, storage, blanket extraction, added specialized fuel instrumentation or source installation design/inspection claim. */
+        in attribute flow_in : Real;
+        in attribute inventory_enabled_in : Boolean;
+        in attribute n_mod_in : Real;
+        in attribute legacy_cost_in : Real;
+        in attribute enabled_in : Boolean;
+        in attribute source_conditions_in : Boolean;
+        in attribute capacity_margin_in : Real;
+        in attribute price_multiplier_in : Real;
+        in attribute reference_flow_in : Real;
+        in attribute exponent_in : Real;
+        in attribute target_cpi_in : Real;
+        in attribute transfer_cpi_in : Real;
+        in attribute transfer_capital_in : Real;
+        in attribute transfer_installation_in : Real;
+        in attribute cleanup_cpi_in : Real;
+        in attribute cleanup_capital_in : Real;
+        in attribute cleanup_installation_in : Real;
+        in attribute distiller_cpi_in : Real;
+        in attribute distiller_capital_in : Real;
+        in attribute distiller_installation_in : Real;
+        in attribute containment_cpi_in : Real;
+        in attribute containment_capital_in : Real;
+        in attribute containment_installation_in : Real;
+        out attribute flow_kg_s : Real;
+        out attribute capacity_kg_s : Real;
+        out attribute plant_capacity_kg_s : Real;
+        out attribute flow_ratio : Real;
+        out attribute scaling_factor : Real;
+        out attribute transfer_reference_capital : Real;
+        out attribute transfer_reference_installation : Real;
+        out attribute transfer_capital : Real;
+        out attribute transfer_installation : Real;
+        out attribute cleanup_reference_capital : Real;
+        out attribute cleanup_reference_installation : Real;
+        out attribute cleanup_capital : Real;
+        out attribute cleanup_installation : Real;
+        out attribute distiller_reference_capital : Real;
+        out attribute distiller_reference_installation : Real;
+        out attribute distiller_capital : Real;
+        out attribute distiller_installation : Real;
+        out attribute containment_reference_capital : Real;
+        out attribute containment_reference_installation : Real;
+        out attribute containment_capital : Real;
+        out attribute containment_installation : Real;
+        out attribute equipment_total : Real;
+        out attribute installation_total : Real;
+        out attribute module_total : Real;
+        out attribute new_total : Real;
+        out attribute cost : Real;
+        out attribute defined_flag : Real;
+    }
 }

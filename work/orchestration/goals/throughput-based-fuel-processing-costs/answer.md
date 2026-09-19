@@ -1,14 +1,14 @@
-# Fuel-processing cost basis: owner decision pending
+# Fuel-processing cost basis: adopted; implementation underway
 
-The goal has a technically reviewed conditional cost basis, but it has not yet met R10.S2. The [fresh current-state grade](evidence/current-r10s-grade.md) remains **R10.S1** because the executed model still prices fuel handling from net electric power. No model, generated package or study has been changed by this goal.
+The goal has a technically reviewed conditional cost basis, but it has not yet met R10.S2. The [fresh current-state grade](evidence/current-r10s-grade.md) remains **R10.S1** because the executed model still prices fuel handling from net electric power. The production model and generated package are unchanged so far; the new study record is in preparation.
 
-## Recommended decision
+## Adopted scenario
 
 [AGENT] Adopt conventional palladium-alloy cleanup followed by cryogenic isotope separation as a conditional costing scenario for the represented plasma-exhaust processor. The [fresh source review](evidence/source-review-r2.md) accepts the engineering transfer at conceptual-estimate depth and recommends this choice. It identifies adoption as an owner-held scientific decision because a previously unspecified technology and an unverified feed-conditioning assumption would determine plant capital.
 
 The scenario assumes near-equimolar D/T, source-like minor impurities and cleanup to the separation reference's less-than 1 ppm noncondensibles. The model calculates isotope flow; it does not verify those feed conditions. Existing 99% recovery and all other fuel-loss assumptions stay unchanged. The scenario does not certify recovery, actual feed purity, year-round reliability or commercial equipment performance.
 
-The owner may accept this conditional basis or require a different process/feed basis before replacing the account. Acceptance authorizes a modeling assumption; it does not by itself earn S2 or formally close the goal. The owner's original [prompt](evidence/owner-prompt.md) reserves material scientific and process-technology decisions.
+[OWNER-VERBATIM] “yes, adopt and continue”. The owner adopted this conditional scenario on 2026-09-19. Acceptance authorizes the modeling assumption; it does not by itself earn S2 or formally close the goal. The [trail](trail.md) records the ruling and Round 2 implementation.
 
 ## What determines capacity
 
@@ -42,10 +42,10 @@ The new block would replace the full existing C220500 processing/containment all
 
 Existing civil buildings/ventilation, recurring fuel purchases and the separate startup-stock purchase allowance remain separate. The startup allowance still follows a power proxy despite the computed startup quantity; this is disclosed rather than duplicated in processing capital. Blanket extraction remains a separate function. Its tritium mass flow is not a specification of PbLi circulation, carrier gas or extraction hardware.
 
-Storage equipment, additional plant-wide analysis/monitoring/control, effluent and emergency systems, blanket extraction/conditioning, further safety/service scope, complete design/inspection work, OPEX and replacement schedules remain unpriced by the four-row block. Detailed fueling hardware and torus vacuum pumping are not bought by its internal-transfer-pump row. Omissions are not assumed physically unnecessary.
+The [controls review](evidence/controls-review.md) proposes single ownership: source-included local controls in C220500 and distinct supervisory/plasma controls in retained C220700. Its inherited coefficient remains an uncalibrated residual allowance, not a source-proven numerical deduction. Storage equipment, additional specialized fuel analysis/monitoring, effluent and emergency systems, blanket extraction/conditioning, further safety/service scope, complete design/inspection work, OPEX and replacement schedules remain unpriced by the four-row block. Detailed fueling hardware and torus vacuum pumping are not bought by its internal-transfer-pump row. Omissions are not assumed physically unnecessary.
 
 ## Remaining work and current result
 
-The owner decision is pending. After adoption, the production change still needs native model requirements/design, final project-charge reconciliation, implementation, generated execution, integration verification, a focused native study and a fresh R10.S grade tracing cost through plant total and LCOE. The current plant and electricity costs are unchanged; no new LCOE effect or whole-plant feasibility claim is made.
+The owner decision is resolved. Native WI-070 design and independent accounting review are underway. The production change still needs native model requirements/design, final project-charge reconciliation, implementation, generated execution, integration verification, a focused native study and a fresh R10.S grade tracing cost through plant total and LCOE. The current plant and electricity costs are unchanged; no new LCOE effect or whole-plant feasibility claim is made.
 
-ARIES remains sealed, the published r2 archive is preserved, and unrelated work is untouched. This round ends at the scientific decision gate; the goal remains open. No merge or push was performed.
+ARIES remains sealed, the published r2 archive is preserved, and unrelated work is untouched. Round 2 is executing the adopted scenario; the goal remains open. No merge or push was performed.

@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:603
+SysML Source: root-0/analyses/mfe_facilities.sysml:606
 
 SysML Expressions:
     cost = (1.0 - mode_in) * legacy_in + mode_in * (fixed_in + land_in)
@@ -21,7 +21,7 @@ def run_facility_preconstruction_selection(inputs: Facility_Preconstruction_Sele
 
 *Source**: work/active/WI-068_layout-based-facilities/design.md. **Ref**: account replacement map and component-owned aggregation. **Basis**: Replace only land; keep the fixed preconstruction adders and legacy mode.
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:603
+SysML Source: root-0/analyses/mfe_facilities.sysml:606
 
 SysML Expressions:
     cost = (1.0 - mode_in) * legacy_in + mode_in * (fixed_in + land_in)

@@ -2,7 +2,7 @@
 
 TEAx module for Supplementary_Cost calculation.
 
-CAS50 supplementary account:
+CAS50 supplementary account (WI-070 excludes direct process installation and its CAS29 contingency from freight):
 
   cost = (shipping*cas20 + spares*cas23_to_28 + tax*cas20
           + insurance*(cas20+cas30)
@@ -32,6 +32,7 @@ Inputs:
     - tax_frac: tax_frac parameter
     - facility_exclusion_in: facility_exclusion_in parameter
     - decom_base: decom_base parameter
+    - fuel_installation_exclusion_in: fuel_installation_exclusion_in parameter
     - cas20: cas20 parameter
     - n_mod_in: n_mod_in parameter
     - delivered_shipping_exclusion_in: delivered_shipping_exclusion_in parameter
@@ -69,6 +70,7 @@ class Supplementary_CostInput(BaseModel):
         tax_frac: tax_frac input
         facility_exclusion_in: facility_exclusion_in input
         decom_base: decom_base input
+        fuel_installation_exclusion_in: fuel_installation_exclusion_in input
         cas20: cas20 input
         n_mod_in: n_mod_in input
         delivered_shipping_exclusion_in: delivered_shipping_exclusion_in input
@@ -85,6 +87,7 @@ class Supplementary_CostInput(BaseModel):
     tax_frac: float = Field(..., description="tax_frac input")
     facility_exclusion_in: float = Field(..., description="facility_exclusion_in input")
     decom_base: float = Field(..., description="decom_base input")
+    fuel_installation_exclusion_in: float = Field(..., description="fuel_installation_exclusion_in input")
     cas20: float = Field(..., description="cas20 input")
     n_mod_in: float = Field(..., description="n_mod_in input")
     delivered_shipping_exclusion_in: float = Field(..., description="delivered_shipping_exclusion_in input")
@@ -96,7 +99,7 @@ class Supplementary_CostInput(BaseModel):
 class Supplementary_CostModule(ModuleBase[Supplementary_CostInput, Float]):
     """TEAx module for Supplementary_Cost calculation.
 
-CAS50 supplementary account:
+CAS50 supplementary account (WI-070 excludes direct process installation and its CAS29 contingency from freight):
 
   cost = (shipping*cas20 + spares*cas23_to_28 + tax*cas20
           + insurance*(cas20+cas30)
@@ -126,6 +129,7 @@ Inputs:
     - tax_frac: tax_frac parameter
     - facility_exclusion_in: facility_exclusion_in parameter
     - decom_base: decom_base parameter
+    - fuel_installation_exclusion_in: fuel_installation_exclusion_in parameter
     - cas20: cas20 parameter
     - n_mod_in: n_mod_in parameter
     - delivered_shipping_exclusion_in: delivered_shipping_exclusion_in parameter
@@ -144,15 +148,16 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:599
         n_mod_in = 1.0
         delivered_shipping_exclusion_in = 0.0
         facility_exclusion_in = 0.0
+        fuel_installation_exclusion_in = 0.0
         shipping_frac = 0.015
         tax_frac = 0.01
         insurance_frac = 0.015
         contingency_rate_in = 0.0
         ref_net_power = 1000.0
-        cost = (shipping_frac * (cas20 - delivered_shipping_exclusion_in - facility_exclusion_in) + spares_frac * cas23_to_28 + tax_frac * cas20 + insurance_frac * (cas20 + cas30) + startup_fuel_base * (n_mod_in * p_net / ref_net_power) + decom_base * (n_mod_in * p_net / ref_net_power)) * (1.0 + contingency_rate_in)
+        cost = (shipping_frac * (cas20 - delivered_shipping_exclusion_in - facility_exclusion_in - fuel_installation_exclusion_in) + spares_frac * cas23_to_28 + tax_frac * cas20 + insurance_frac * (cas20 + cas30) + startup_fuel_base * (n_mod_in * p_net / ref_net_power) + decom_base * (n_mod_in * p_net / ref_net_power)) * (1.0 + contingency_rate_in)
         
 Documentation:
-CAS50 supplementary account:
+CAS50 supplementary account (WI-070 excludes direct process installation and its CAS29 contingency from freight):
 
   cost = (shipping*cas20 + spares*cas23_to_28 + tax*cas20
           + insurance*(cas20+cas30)
@@ -182,7 +187,7 @@ subtotal (NOAK 0).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, spares_frac: float, cas23_to_28: float, ref_net_power: float, cas30: float, shipping_frac: float, p_net: float, tax_frac: float, facility_exclusion_in: float, decom_base: float, cas20: float, n_mod_in: float, delivered_shipping_exclusion_in: float, insurance_frac: float, startup_fuel_base: float, contingency_rate_in: float    ) -> Supplementary_CostInput:
+        self, spares_frac: float, cas23_to_28: float, ref_net_power: float, cas30: float, shipping_frac: float, p_net: float, tax_frac: float, facility_exclusion_in: float, decom_base: float, fuel_installation_exclusion_in: float, cas20: float, n_mod_in: float, delivered_shipping_exclusion_in: float, insurance_frac: float, startup_fuel_base: float, contingency_rate_in: float    ) -> Supplementary_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
@@ -195,6 +200,7 @@ subtotal (NOAK 0).
             tax_frac: tax_frac input
             facility_exclusion_in: facility_exclusion_in input
             decom_base: decom_base input
+            fuel_installation_exclusion_in: fuel_installation_exclusion_in input
             cas20: cas20 input
             n_mod_in: n_mod_in input
             delivered_shipping_exclusion_in: delivered_shipping_exclusion_in input
@@ -205,10 +211,10 @@ subtotal (NOAK 0).
         Returns:
             Validated input model
         """
-        return Supplementary_CostInput(spares_frac=spares_frac, cas23_to_28=cas23_to_28, ref_net_power=ref_net_power, cas30=cas30, shipping_frac=shipping_frac, p_net=p_net, tax_frac=tax_frac, facility_exclusion_in=facility_exclusion_in, decom_base=decom_base, cas20=cas20, n_mod_in=n_mod_in, delivered_shipping_exclusion_in=delivered_shipping_exclusion_in, insurance_frac=insurance_frac, startup_fuel_base=startup_fuel_base, contingency_rate_in=contingency_rate_in)
+        return Supplementary_CostInput(spares_frac=spares_frac, cas23_to_28=cas23_to_28, ref_net_power=ref_net_power, cas30=cas30, shipping_frac=shipping_frac, p_net=p_net, tax_frac=tax_frac, facility_exclusion_in=facility_exclusion_in, decom_base=decom_base, fuel_installation_exclusion_in=fuel_installation_exclusion_in, cas20=cas20, n_mod_in=n_mod_in, delivered_shipping_exclusion_in=delivered_shipping_exclusion_in, insurance_frac=insurance_frac, startup_fuel_base=startup_fuel_base, contingency_rate_in=contingency_rate_in)
 
     def run(
-        self, spares_frac: float, cas23_to_28: float, ref_net_power: float, cas30: float, shipping_frac: float, p_net: float, tax_frac: float, facility_exclusion_in: float, decom_base: float, cas20: float, n_mod_in: float, delivered_shipping_exclusion_in: float, insurance_frac: float, startup_fuel_base: float, contingency_rate_in: float    ) -> ModuleResult[Float]:
+        self, spares_frac: float, cas23_to_28: float, ref_net_power: float, cas30: float, shipping_frac: float, p_net: float, tax_frac: float, facility_exclusion_in: float, decom_base: float, fuel_installation_exclusion_in: float, cas20: float, n_mod_in: float, delivered_shipping_exclusion_in: float, insurance_frac: float, startup_fuel_base: float, contingency_rate_in: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
@@ -221,6 +227,7 @@ subtotal (NOAK 0).
             tax_frac: tax_frac input
             facility_exclusion_in: facility_exclusion_in input
             decom_base: decom_base input
+            fuel_installation_exclusion_in: fuel_installation_exclusion_in input
             cas20: cas20 input
             n_mod_in: n_mod_in input
             delivered_shipping_exclusion_in: delivered_shipping_exclusion_in input
@@ -232,7 +239,7 @@ subtotal (NOAK 0).
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(spares_frac, cas23_to_28, ref_net_power, cas30, shipping_frac, p_net, tax_frac, facility_exclusion_in, decom_base, cas20, n_mod_in, delivered_shipping_exclusion_in, insurance_frac, startup_fuel_base, contingency_rate_in)
+        validated_inputs = self.validate_and_fill_default(spares_frac, cas23_to_28, ref_net_power, cas30, shipping_frac, p_net, tax_frac, facility_exclusion_in, decom_base, fuel_installation_exclusion_in, cas20, n_mod_in, delivered_shipping_exclusion_in, insurance_frac, startup_fuel_base, contingency_rate_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.supplementary_cost_impl import (

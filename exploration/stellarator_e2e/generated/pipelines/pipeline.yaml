@@ -1317,22 +1317,6 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__installation__cost
 
-  # source: computed_attribute (mfe_plant.mfe_power_plant.cas22_capitalModule)
-  stellarator_09__stellaris__cas22_capital:
-    module_type: mfe_plant.mfe_power_plant.cas22_capitalModule
-    inputs:
-      powercore_capital: float stellarator_09__stellaris__powercore_capital__powercore_capital.root
-      remote_handling_capital: float stellarator_09__stellaris__remote_handling__cost.root
-      installation_capital: float stellarator_09__stellaris__installation__cost.root
-      coolant_capital: float stellarator_09__stellaris__heat_transport__cooling_selection__cost
-      aux_cooling_capital: float stellarator_09__stellaris__cryoplant__aux_cooling__cost
-      waste_capital: float stellarator_09__stellaris__waste__cost.root
-      fuel_handling_capital: float stellarator_09__stellaris__fuel_cycle__fuel_handling__cost.root
-      other_rpe_capital: float stellarator_09__stellaris__other_rpe__cost.root
-      inc_capital: float stellarator_09__stellaris__inc_cost__cost.root
-    outputs:
-      root: RootModel[float] stellarator_09__stellaris__cas22_capital__cas22_capital
-
   # source: computed_attribute (mfe_plant.mfe_power_plant.bop_capitalModule)
   stellarator_09__stellaris__bop_capital:
     module_type: mfe_plant.mfe_power_plant.bop_capitalModule
@@ -1498,6 +1482,62 @@ modules:
       recycle_loss_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__recycle_loss_kg_day
       calendar_processor_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__calendar_processor_kg_s
       annual_exhaust_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_exhaust_kg
+
+  # mfe_fuel_cycle.Fuel_Processing_CostModule
+  stellarator_09__stellaris__fuel_cycle__processing_cost:
+    module_type: mfe_fuel_cycle.Fuel_Processing_CostModule
+    inputs:
+      distiller_installation_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_distiller_installation
+      cleanup_capital_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_cleanup_capital
+      exponent_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_exponent
+      enabled_in: bool stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_enabled
+      containment_installation_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_containment_installation
+      price_multiplier_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_price_multiplier
+      inventory_enabled_in: bool stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__inventory_enabled
+      cleanup_installation_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_cleanup_installation
+      flow_in: float stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_s
+      legacy_cost_in: float stellarator_09__stellaris__fuel_cycle__fuel_handling__cost.root
+      containment_capital_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_containment_capital
+      n_mod_in: float mfe_plant_params.stellarator_09__stellaris__n_mod
+      distiller_cpi_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_distiller_cpi
+      capacity_margin_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_capacity_margin
+      cleanup_cpi_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_cleanup_cpi
+      transfer_installation_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_transfer_installation
+      transfer_cpi_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_transfer_cpi
+      reference_flow_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_reference_flow
+      containment_cpi_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_containment_cpi
+      transfer_capital_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_transfer_capital
+      distiller_capital_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_distiller_capital
+      source_conditions_in: bool stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_source_conditions
+      target_cpi_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__processing_target_cpi
+    outputs:
+      containment_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__containment_installation
+      cost: float stellarator_09__stellaris__fuel_cycle__processing_cost__cost
+      transfer_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_capital
+      cleanup_reference_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_reference_installation
+      cleanup_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_capital
+      new_total: float stellarator_09__stellaris__fuel_cycle__processing_cost__new_total
+      containment_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__containment_capital
+      containment_reference_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__containment_reference_installation
+      scaling_factor: float stellarator_09__stellaris__fuel_cycle__processing_cost__scaling_factor
+      distiller_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_installation
+      cleanup_reference_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_reference_capital
+      distiller_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_capital
+      capacity_kg_s: float stellarator_09__stellaris__fuel_cycle__processing_cost__capacity_kg_s
+      transfer_reference_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_reference_installation
+      plant_capacity_kg_s: float stellarator_09__stellaris__fuel_cycle__processing_cost__plant_capacity_kg_s
+      distiller_reference_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_reference_capital
+      installation_total: float stellarator_09__stellaris__fuel_cycle__processing_cost__installation_total
+      defined_flag: float stellarator_09__stellaris__fuel_cycle__processing_cost__defined_flag
+      flow_ratio: float stellarator_09__stellaris__fuel_cycle__processing_cost__flow_ratio
+      cleanup_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_installation
+      equipment_total: float stellarator_09__stellaris__fuel_cycle__processing_cost__equipment_total
+      flow_kg_s: float stellarator_09__stellaris__fuel_cycle__processing_cost__flow_kg_s
+      module_total: float stellarator_09__stellaris__fuel_cycle__processing_cost__module_total
+      distiller_reference_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_reference_installation
+      transfer_reference_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_reference_capital
+      transfer_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_installation
+      containment_reference_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__containment_reference_capital
 
   # mfe_fuel_cycle.Fuel_Cycle_FlowsModule
   stellarator_09__stellaris__fuel_cycle__fuel:
@@ -2870,6 +2910,22 @@ modules:
       cas70: float stellarator_09__stellaris__cas70_calc__cas70
       annual_total: float stellarator_09__stellaris__cas70_calc__annual_total
 
+  # source: computed_attribute (mfe_plant.mfe_power_plant.cas22_capitalModule)
+  stellarator_09__stellaris__cas22_capital:
+    module_type: mfe_plant.mfe_power_plant.cas22_capitalModule
+    inputs:
+      powercore_capital: float stellarator_09__stellaris__powercore_capital__powercore_capital.root
+      remote_handling_capital: float stellarator_09__stellaris__remote_handling__cost.root
+      installation_capital: float stellarator_09__stellaris__installation__cost.root
+      coolant_capital: float stellarator_09__stellaris__heat_transport__cooling_selection__cost
+      aux_cooling_capital: float stellarator_09__stellaris__cryoplant__aux_cooling__cost
+      waste_capital: float stellarator_09__stellaris__waste__cost.root
+      fuel_handling_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__cost
+      other_rpe_capital: float stellarator_09__stellaris__other_rpe__cost.root
+      inc_capital: float stellarator_09__stellaris__inc_cost__cost.root
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__cas22_capital__cas22_capital
+
   # source: computed_attribute (stellarator_09.stellaris.special_materials_capitalModule)
   stellarator_09__stellaris__special_materials_capital:
     module_type: stellarator_09.stellaris.special_materials_capitalModule
@@ -2933,12 +2989,15 @@ modules:
   stellarator_09__stellaris__shipping_scope:
     module_type: mfe_facilities.Facility_Shipping_ScopeModule
     inputs:
+      contingency_in: float stellarator_plant_params.stellarator_09__stellaris__contingency_rate
       facility_exclusion_in: float stellarator_09__stellaris__facility_shipping__exclusion.root
       cooling_exclusion_in: float stellarator_09__stellaris__heat_transport__cooling_selection__shipping_exclusion
       cas20_in: float stellarator_09__stellaris__cas20_capital__cas20_capital.root
+      fuel_installation_in: float stellarator_09__stellaris__fuel_cycle__processing_cost__installation_total
     outputs:
       facility_exclusion: float stellarator_09__stellaris__shipping_scope__facility_exclusion
       cooling_exclusion: float stellarator_09__stellaris__shipping_scope__cooling_exclusion
+      fuel_installation_exclusion: float stellarator_09__stellaris__shipping_scope__fuel_installation_exclusion
       remaining_shipping_base: float stellarator_09__stellaris__shipping_scope__remaining_shipping_base
 
   # mfe_account_costs.Supplementary_CostModule
@@ -2954,6 +3013,7 @@ modules:
       tax_frac: float mfe_account_costs_params.stellarator_09__stellaris__supplementary__tax_frac
       facility_exclusion_in: float stellarator_09__stellaris__shipping_scope__facility_exclusion
       decom_base: float stellarator_plant_params.stellarator_09__stellaris__supplementary_decom_base
+      fuel_installation_exclusion_in: float stellarator_09__stellaris__shipping_scope__fuel_installation_exclusion
       cas20: float stellarator_09__stellaris__cas20_capital__cas20_capital.root
       n_mod_in: float mfe_plant_params.stellarator_09__stellaris__n_mod
       delivered_shipping_exclusion_in: float stellarator_09__stellaris__shipping_scope__cooling_exclusion
@@ -3588,7 +3648,7 @@ modules:
       stellarator_09__stellaris__cryoplant__aux_cooling__cost: float stellaris__aux_cooling_capital.json
       stellarator_09__stellaris__heat_rejection__heat_rejection_cost__cost: RootModel[float] stellaris__heat_rejection_capital.json
       stellarator_09__stellaris__shield__shield_cost__cost: RootModel[float] stellaris__shield_capital.json
-      stellarator_09__stellaris__fuel_cycle__fuel_handling__cost: RootModel[float] stellaris__fuel_handling_capital.json
+      stellarator_09__stellaris__fuel_cycle__fuel_handling__cost: RootModel[float] stellarator_09__stellaris__fuel_cycle__fuel_handling__cost.json
       stellarator_09__stellaris__heat_transport__coolant__cost: RootModel[float] stellarator_09__stellaris__heat_transport__coolant__cost.json
       stellarator_09__stellaris__heat_transport__cooling_selection__cost: float stellaris__coolant_capital.json
       stellarator_09__stellaris__heat_transport__cooling_selection__shipping_exclusion: float stellaris__heat_transport__shipping_exclusion.json
@@ -3610,7 +3670,6 @@ modules:
       stellarator_09__stellaris__powercore_capital__powercore_capital: RootModel[float] stellarator_09__stellaris__powercore_capital__powercore_capital.json
       stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal: RootModel[float] stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal.json
       stellarator_09__stellaris__installation__cost: RootModel[float] stellaris__installation_capital.json
-      stellarator_09__stellaris__cas22_capital__cas22_capital: RootModel[float] stellarator_09__stellaris__cas22_capital__cas22_capital.json
       stellarator_09__stellaris__bop_capital__bop_capital: RootModel[float] stellarator_09__stellaris__bop_capital__bop_capital.json
       stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event: RootModel[float] stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event.json
       stellarator_09__stellaris__calendar__availability: float stellaris__availability.json
@@ -3662,7 +3721,7 @@ modules:
       stellarator_09__stellaris__fuel_cycle__inventory__total_kg: float stellarator_09__stellaris__fuel_cycle__inventory__total_kg.json
       stellarator_09__stellaris__fuel_cycle__inventory__startup_deficit_kg: float stellarator_09__stellaris__fuel_cycle__inventory__startup_deficit_kg.json
       stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_day.json
-      stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__inventory__dt_processor_kg_s: float stellaris__fuel_cycle__dt_processing_flow.json
       stellarator_09__stellaris__fuel_cycle__inventory__prefill_kg: float stellarator_09__stellaris__fuel_cycle__inventory__prefill_kg.json
       stellarator_09__stellaris__fuel_cycle__inventory__decay_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__decay_kg_s.json
       stellarator_09__stellaris__fuel_cycle__inventory__working_atoms: float stellarator_09__stellaris__fuel_cycle__inventory__working_atoms.json
@@ -3695,6 +3754,33 @@ modules:
       stellarator_09__stellaris__fuel_cycle__inventory__recycle_loss_kg_day: float stellarator_09__stellaris__fuel_cycle__inventory__recycle_loss_kg_day.json
       stellarator_09__stellaris__fuel_cycle__inventory__calendar_processor_kg_s: float stellarator_09__stellaris__fuel_cycle__inventory__calendar_processor_kg_s.json
       stellarator_09__stellaris__fuel_cycle__inventory__annual_exhaust_kg: float stellarator_09__stellaris__fuel_cycle__inventory__annual_exhaust_kg.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__containment_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__containment_installation.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__cost: float stellaris__fuel_handling_capital.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_capital.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_reference_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_reference_installation.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_capital.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__new_total: float stellarator_09__stellaris__fuel_cycle__processing_cost__new_total.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__containment_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__containment_capital.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__containment_reference_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__containment_reference_installation.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__scaling_factor: float stellarator_09__stellaris__fuel_cycle__processing_cost__scaling_factor.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_installation.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_reference_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_reference_capital.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_capital.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__capacity_kg_s: float stellarator_09__stellaris__fuel_cycle__processing_cost__capacity_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_reference_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_reference_installation.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__plant_capacity_kg_s: float stellarator_09__stellaris__fuel_cycle__processing_cost__plant_capacity_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_reference_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_reference_capital.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__installation_total: float stellaris__fuel_cycle__fuel_processing_installation.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__defined_flag: float stellaris__fuel_cycle__fuel_processing_defined.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__flow_ratio: float stellarator_09__stellaris__fuel_cycle__processing_cost__flow_ratio.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_installation.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__equipment_total: float stellaris__fuel_cycle__exhaust_processor__equipment_cost.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__flow_kg_s: float stellarator_09__stellaris__fuel_cycle__processing_cost__flow_kg_s.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__module_total: float stellarator_09__stellaris__fuel_cycle__processing_cost__module_total.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_reference_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_reference_installation.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_reference_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_reference_capital.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_installation: float stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_installation.json
+      stellarator_09__stellaris__fuel_cycle__processing_cost__containment_reference_capital: float stellarator_09__stellaris__fuel_cycle__processing_cost__containment_reference_capital.json
       stellarator_09__stellaris__fuel_cycle__fuel__burn_kg_per_fpy: float stellarator_09__stellaris__fuel_cycle__fuel__burn_kg_per_fpy.json
       stellarator_09__stellaris__fuel_cycle__fuel__inject_rate: float stellarator_09__stellaris__fuel_cycle__fuel__inject_rate.json
       stellarator_09__stellaris__fuel_cycle__fuel__burn_rate: float stellaris__fuel_cycle__burn_rate.json
@@ -4193,6 +4279,7 @@ modules:
       stellarator_09__stellaris__cas80_calc__crf: float stellarator_09__stellaris__cas80_calc__crf.json
       stellarator_09__stellaris__cas70_calc__cas70: float stellaris__cas70_annual.json
       stellarator_09__stellaris__cas70_calc__annual_total: float stellaris__annual_om.json
+      stellarator_09__stellaris__cas22_capital__cas22_capital: RootModel[float] stellarator_09__stellaris__cas22_capital__cas22_capital.json
       stellarator_09__stellaris__special_materials_capital__special_materials_capital: RootModel[float] stellarator_09__stellaris__special_materials_capital__special_materials_capital.json
       stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital: RootModel[float] stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital.json
       stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency: RootModel[float] stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency.json
@@ -4201,6 +4288,7 @@ modules:
       stellarator_09__stellaris__indirect__cost: RootModel[float] stellaris__cas30_capital.json
       stellarator_09__stellaris__shipping_scope__facility_exclusion: float stellarator_09__stellaris__shipping_scope__facility_exclusion.json
       stellarator_09__stellaris__shipping_scope__cooling_exclusion: float stellarator_09__stellaris__shipping_scope__cooling_exclusion.json
+      stellarator_09__stellaris__shipping_scope__fuel_installation_exclusion: float stellarator_09__stellaris__shipping_scope__fuel_installation_exclusion.json
       stellarator_09__stellaris__shipping_scope__remaining_shipping_base: float stellarator_09__stellaris__shipping_scope__remaining_shipping_base.json
       stellarator_09__stellaris__supplementary__cost: RootModel[float] stellaris__supplementary_capital.json
       stellarator_09__stellaris__overnight_capital__overnight_capital: RootModel[float] stellarator_09__stellaris__overnight_capital__overnight_capital.json

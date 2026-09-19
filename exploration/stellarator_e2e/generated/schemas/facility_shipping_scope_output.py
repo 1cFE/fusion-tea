@@ -10,4 +10,5 @@ SysML Source: root-0/analyses/mfe_facilities.sysml:527
     """
     facility_exclusion: float = Field(description="facility_exclusion output")
     cooling_exclusion: float = Field(description="cooling_exclusion output")
+    fuel_installation_exclusion: float = Field(description="fuel_installation_exclusion output")
     remaining_shipping_base: float = Field(description="remaining_shipping_base output")

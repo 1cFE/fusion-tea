@@ -1,0 +1,50 @@
+{
+  "package_hashes": 370,
+  "models_hashes": 38,
+  "canonical_twin_count": 38,
+  "seeds": 36,
+  "fingerprints": {
+    "semantic": "37ca31ff0412f56a67301fa4e714b1dba2e74df6788348ce97dd5ee64d98d62f",
+    "executable": "3e3bf467fd98ad927cf12409f1c36807b92e9e8eaa4fd598a2fcd79c00ae698f",
+    "indicator": "50c9d4b9b3bf16fdb00e5c726011f2b434bfa0ba8970569795372a12364c312b"
+  },
+  "cases": 7,
+  "mapped_comparisons": 6538,
+  "unchanged_price_outputs": 929,
+  "price_changed_channels": [
+    "stellarator_09__stellaris__cas20_capital__cas20_capital",
+    "stellarator_09__stellaris__cas22_capital__cas22_capital",
+    "stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency",
+    "stellarator_09__stellaris__cas90_1cfe_calc__cas90",
+    "stellarator_09__stellaris__contingency__cost",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_capital",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost__cleanup_installation",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost__containment_capital",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost__containment_installation",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost__cost",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_capital",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost__distiller_installation",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost__equipment_total",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost__installation_total",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost__module_total",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost__new_total",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_capital",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost__transfer_installation",
+    "stellarator_09__stellaris__idc__cost",
+    "stellarator_09__stellaris__indirect__cost",
+    "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+    "stellarator_09__stellaris__lcoe_calc__lcoe",
+    "stellarator_09__stellaris__overnight_capital__overnight_capital",
+    "stellarator_09__stellaris__shipping_scope__fuel_installation_exclusion",
+    "stellarator_09__stellaris__shipping_scope__remaining_shipping_base",
+    "stellarator_09__stellaris__supplementary__cost",
+    "stellarator_09__stellaris__total_capital__total_capital"
+  ],
+  "account_delta": {
+    "c": 0.1,
+    "k": 0.26666666666666666,
+    "fuel": -97960242.7976346,
+    "supplementary": -4779932.113444181,
+    "overnight": -141271203.74481505
+  }
+}

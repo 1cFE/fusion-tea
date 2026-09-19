@@ -9,7 +9,7 @@ Complete all stages in order for a production-ready system.
 
 **Objective**: Implement each calculation definition in its handwritten file.
 
-**Total**: 55 functions to implement
+**Total**: 56 functions to implement
 
 **Instructions for each function**:
 1. Open the SysML source file at the line number shown below
@@ -49,6 +49,7 @@ Complete all stages in order for a production-ready system.
 | [ ] | Winding_Pack_Stress | `run_winding_pack_stress` | `root-0/analyses/mfe_magnet_field.sysml:48` | High |
 | [ ] | Lifecycle_Calendar | `run_lifecycle_calendar` | `root-0/analyses/mfe_lifecycle.sysml:4` | High |
 | [ ] | Fuel_Inventory | `run_fuel_inventory` | `root-0/analyses/mfe_fuel_cycle.sysml:93` | High |
+| [ ] | Fuel_Processing_Cost | `run_fuel_processing_cost` | `root-0/analyses/mfe_fuel_cycle.sysml:258` | High |
 | [ ] | Facility_Layout | `run_facility_layout` | `root-0/analyses/mfe_facilities.sysml:3` | Medium |
 | [ ] | Facility_Civil_Cost | `run_facility_civil_cost` | `root-0/analyses/mfe_facilities.sysml:504` | Medium |
 | [ ] | Facility_Civil_Cost | `run_facility_civil_cost` | `root-0/analyses/mfe_facilities.sysml:504` | Medium |
@@ -76,10 +77,10 @@ Complete all stages in order for a production-ready system.
 | [ ] | Facility_Civil_Cost | `run_facility_civil_cost` | `root-0/analyses/mfe_facilities.sysml:504` | Medium |
 | [ ] | Facility_Civil_Cost | `run_facility_civil_cost` | `root-0/analyses/mfe_facilities.sysml:504` | Medium |
 | [ ] | Tritium_Breeding_Adequacy | `run_tritium_breeding_adequacy` | `root-0/analyses/mfe_tritium_breeding.sysml:30` | High |
-| [ ] | Levelized_Annual_Cost | `run_levelized_annual_cost` | `root-0/analyses/mfe_account_costs.sysml:693` | High |
-| [ ] | Levelized_Annual_Cost | `run_levelized_annual_cost` | `root-0/analyses/mfe_account_costs.sysml:693` | High |
+| [ ] | Levelized_Annual_Cost | `run_levelized_annual_cost` | `root-0/analyses/mfe_account_costs.sysml:694` | High |
+| [ ] | Levelized_Annual_Cost | `run_levelized_annual_cost` | `root-0/analyses/mfe_account_costs.sysml:694` | High |
 | [ ] | Facility_Shipping_Scope | `run_facility_shipping_scope` | `root-0/analyses/mfe_facilities.sysml:527` | Medium |
-| [ ] | IDC_Closed_Form_Cost | `run_idc_closed_form_cost` | `root-0/analyses/mfe_account_costs.sysml:658` | High |
+| [ ] | IDC_Closed_Form_Cost | `run_idc_closed_form_cost` | `root-0/analyses/mfe_account_costs.sysml:659` | High |
 | [ ] | LCOE_DCF | `run_lcoe_dcf` | `root-0/analyses/mfe_lcoe_dcf.sysml:4` | High |
 
 **13 computed attribute module(s) auto-implemented** (not included in manual count above).
@@ -107,7 +108,7 @@ pytest tests/test_implementations_runnable.py -v
 All tests should pass (or pytest.skip for NotImplementedError stubs)
 
 **Test Coverage**:
-- 55 implementation functions
+- 56 implementation functions
 - Each function tested for: imports, signature, return type
 - Tests tolerate NotImplementedError (pass before implementation)
 - Tests verify return types (pass after implementation)
@@ -142,7 +143,7 @@ All tests should pass (or pytest.skip for NotImplementedError stubs)
 ## Completion Criteria
 
 The implementation is complete when:
-- Stage 1: All 55 functions implemented
+- Stage 1: All 56 functions implemented
 - Stage 2: All validations pass
 - Stage 3: Integration tests pass
 
