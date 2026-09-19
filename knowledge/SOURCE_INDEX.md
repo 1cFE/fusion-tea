@@ -1385,6 +1385,54 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: b0ed4488174c47ccd34dd4affca56e93e04b72a706934ffd3ad0fd12189e0c05
 - **Date Added**: 2026-09-19
 
+### AACE 17R97 Generic Cost Estimate Classification 2020 public sample
+- **Type**: local_pdf
+- **Location**: knowledge/sources/aace_17r97_generic_cost_estimate_classification_2020_public/
+- **Use for**: Applicable cross-industry maturity framework for conceptual fusion plant estimate; classify project definition rather than software completeness.
+- **Validation**: Official public PDF pages1-2 establish applicability and primary maturity criterion; sample omits complete class matrix.
+- **Caveat**: Public sample only; supports generic method but not complete detailed class certification or numerical plant accuracy bands.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/aace17r97.pdf
+- **Source ID**: 97f4f0a942d94eff934a75ac4cf0ef364c673399a1716082e5d3039f2a42210e
+- **Raw SHA256**: 97f4f0a942d94eff934a75ac4cf0ef364c673399a1716082e5d3039f2a42210e
+- **Raw Artifact SHA256**: 97f4f0a942d94eff934a75ac4cf0ef364c673399a1716082e5d3039f2a42210e
+- **Extracted Path**: knowledge/sources/aace_17r97_generic_cost_estimate_classification_2020_public/
+- **Extract SHA256**: 9fb127830dcbbd65b2c79e7b883bed91030e77dda20903bc31613766757fe96a
+- **Date Added**: 2026-09-19
+
+### AACE 115R21 Nuclear Power Estimate Classification 2022 public sample
+- **Type**: local_pdf
+- **Location**: knowledge/sources/aace_115r21_nuclear_power_estimate_classification_2022/
+- **Use for**: Check nuclear framework applicability and explicit fusion exclusion when selecting maturity method.
+- **Validation**: Official PDF printed3 states fusion exclusion; retain sample scope and limitations.
+- **Caveat**: Explicitly excludes fusion nuclear reactors; comparison only and cannot confer a fusion estimate class or accuracy range.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/aace115r21.pdf
+- **Source ID**: cada2b3af6fffa968ebb225e91f36b700af71027287b22274d0523c1f935b9c6
+- **Raw SHA256**: cada2b3af6fffa968ebb225e91f36b700af71027287b22274d0523c1f935b9c6
+- **Raw Artifact SHA256**: cada2b3af6fffa968ebb225e91f36b700af71027287b22274d0523c1f935b9c6
+- **Extracted Path**: knowledge/sources/aace_115r21_nuclear_power_estimate_classification_2022/
+- **Extract SHA256**: 3b975a0437805eebb536a13ea2cb4927950b4bbdd009615d341fa7f93ff4ecd5
+- **Date Added**: 2026-09-19
+
+### DOE G4133 21A Cost Estimating Guide 2018
+- **Type**: local_pdf
+- **Location**: knowledge/sources/doe_g4133_21a_cost_estimating_guide_2018/
+- **Use for**: Authoritative public reproduction of AACE generic estimate-class criteria and uncertainty principles for conceptual maturity assessment.
+- **Validation**: Whole PDF text screened for excluded terms before reading; verify AppendixG generic17R matrix and actual deliverable completeness against original pages.
+- **Caveat**: Nonmandatory DOE guide; historical AACE appendices and generic criteria do not establish fusion-specific numerical uncertainty.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/doe-cost-guide.pdf
+- **Source ID**: b6203643a110d5f82bfe7b10a8814ff7c180116f16e9d00a92466687f3dfc376
+- **Raw SHA256**: b6203643a110d5f82bfe7b10a8814ff7c180116f16e9d00a92466687f3dfc376
+- **Raw Artifact SHA256**: b6203643a110d5f82bfe7b10a8814ff7c180116f16e9d00a92466687f3dfc376
+- **Extracted Path**: knowledge/sources/doe_g4133_21a_cost_estimating_guide_2018/
+- **Extract SHA256**: e7724fe1a65bca24c31ef5feaa0b85b7ba51802fd4c45d6f689256d2563a0567
+- **Date Added**: 2026-09-19
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md
