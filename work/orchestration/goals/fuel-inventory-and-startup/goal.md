@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — 2026-09-19. [OWNER] Ground and proceed under the preserved [owner prompt](evidence/owner-prompt.md); slug explicitly supplied by owner.
+`closed` — 2026-09-19. [OWNER-VERBATIM] “great, please close the goal”. Closed on the independently reviewed R10.P2 result, delivered answer and committed study `3529f6c8`. See [closure record](trail.md#goal-closure--2026-09-19) and [independent grade](evidence/final-review-and-grade.md). The answer preserves the conditional physical boundary and remaining source, supply and process-design limitations.
 
 ## Question
 
