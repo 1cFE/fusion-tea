@@ -58,6 +58,8 @@ MFE = Family(
     twin=REPO / "exploration" / "stellarator_e2e" / "models",
     owned=(
         "analyses/mfe_account_costs.sysml",
+        "analyses/mfe_facilities.sysml",
+        "structure/mfe_facilities_parts.sysml",
         "analyses/mfe_cryo_plant.sysml",
         "analyses/mfe_cryo_inventory.sysml",
         "analyses/mfe_heating_chain.sysml",

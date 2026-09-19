@@ -115,6 +115,38 @@
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::divertor_heat_ok"
       },
       {
+        "constraint_id": "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9",
+        "declaration_id": "44f4b8b0-5b58-5f76-b3bf-26c3705d96f9",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "evaluation_channel": "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_facilities::'Facility Nonnegative Margin'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_facilities::'Facility Nonnegative Margin'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_capacity_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_capacity_ok"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722",
+        "declaration_id": "57ccf5c0-bf38-52f2-a947-2dee7a4fcf74",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "evaluation_channel": "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_facilities::'Facility Nonnegative Margin'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_facilities::'Facility Nonnegative Margin'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_outage_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_outage_ok"
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
         "declaration_id": "5b8b0e88-075c-5f00-9414-8e2052751df3",
         "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
@@ -243,6 +275,22 @@
         "usage_qualified_name": "stellarator_09::stellaris::reference_conductor_current_ok"
       },
       {
+        "constraint_id": "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b",
+        "declaration_id": "c8a2c1d0-0e7e-5fcc-b903-c41ca32cb43b",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "evaluation_channel": "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_facilities::'Facility Nonnegative Margin'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_facilities::'Facility Nonnegative Margin'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_routes_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_routes_ok"
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
         "declaration_id": "caff5e98-48b7-5fdb-a2c3-86bedb8c5846",
         "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
@@ -291,6 +339,22 @@
         "usage_qualified_name": "stellarator_09::stellaris::wp_fit_ok"
       },
       {
+        "constraint_id": "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938",
+        "declaration_id": "d907d9dd-c8db-5324-9047-699092076afc",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "evaluation_channel": "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_facilities::'Facility Nonnegative Margin'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_facilities::'Facility Nonnegative Margin'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_replacement_ready",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_replacement_ready"
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
         "declaration_id": "daaa4011-3841-5747-99ce-d8816cad782f",
         "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Positive'",
@@ -321,15 +385,37 @@
         "source_form": "definition_typed",
         "source_local_identity": "loop_pressure_ok",
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::loop_pressure_ok"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f",
+        "declaration_id": "f0d323a2-24f8-58d0-9ed8-bc11e16b4963",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "evaluation_channel": "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_facilities::'Facility Nonnegative Margin'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_facilities::'Facility Nonnegative Margin'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_initial_ready",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_initial_ready"
       }
     ],
     "excluded_records": [],
-    "fingerprint": "edc93be6efe2fa9615b9a7e125e416d115e30eab7f18773a06d0ac8ee91c8b3e",
+    "fingerprint": "3bb6bd28071209d8ec9f99c63e33d3935e48773f9cb082f876a8298be6bcf221",
     "source_records": [
       {
         "definition_qualified_name": "mfe_conductor_current::'Reference Conductor Current Margin'",
         "formal_names": [
           "margin_fraction_in"
+        ]
+      },
+      {
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "formal_names": [
+          "margin_in"
         ]
       },
       {
@@ -573,6 +659,42 @@
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::divertor_heat_ok"
       },
       {
+        "declaration_id": "44f4b8b0-5b58-5f76-b3bf-26c3705d96f9",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::facility_capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_capacity_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_capacity_ok"
+      },
+      {
+        "declaration_id": "57ccf5c0-bf38-52f2-a947-2dee7a4fcf74",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::facility_outage_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_outage_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_outage_ok"
+      },
+      {
         "declaration_id": "5b8b0e88-075c-5f00-9414-8e2052751df3",
         "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
         "disposition_detail": "mfe_plant::'MFE Power Plant'::heating_source_upper_ok profile eligibility admit",
@@ -717,6 +839,24 @@
         "usage_qualified_name": "stellarator_09::stellaris::reference_conductor_current_ok"
       },
       {
+        "declaration_id": "c8a2c1d0-0e7e-5fcc-b903-c41ca32cb43b",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::facility_routes_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_routes_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_routes_ok"
+      },
+      {
         "declaration_id": "caff5e98-48b7-5fdb-a2c3-86bedb8c5846",
         "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
         "disposition_detail": "stellarator_09::stellaris::sustainment_ok profile eligibility admit",
@@ -771,6 +911,24 @@
         "usage_qualified_name": "stellarator_09::stellaris::wp_fit_ok"
       },
       {
+        "declaration_id": "d907d9dd-c8db-5324-9047-699092076afc",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::facility_replacement_ready profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_replacement_ready",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_replacement_ready"
+      },
+      {
         "declaration_id": "daaa4011-3841-5747-99ce-d8816cad782f",
         "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Positive'",
         "disposition_detail": "mfe_plant::'MFE Power Plant'::heating_source_positive_ok profile eligibility admit",
@@ -805,6 +963,24 @@
         "source_form": "definition_typed",
         "source_local_identity": "loop_pressure_ok",
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::loop_pressure_ok"
+      },
+      {
+        "declaration_id": "f0d323a2-24f8-58d0-9ed8-bc11e16b4963",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::facility_initial_ready profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_initial_ready",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_initial_ready"
       }
     ]
   },
@@ -1038,6 +1214,16 @@
     {
       "channel_name": "stellarator_09__stellaris__heat_transport__cooling_guard__cost_mode",
       "field_name": "cost_mode",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cooling_initial_handoff_days__cooling_initial_handoff_days",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__initial_sector_start_days__initial_sector_start_days",
+      "field_name": "root",
       "python_type": "float"
     },
     {
@@ -1346,6 +1532,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__hx_tube_length",
+      "field_name": "hx_tube_length",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__secondary_pipe_purchase",
       "field_name": "secondary_pipe_purchase",
       "python_type": "float"
@@ -1476,6 +1667,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__hx_shell_bore",
+      "field_name": "hx_shell_bore",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__inventory_source_volume_ok",
       "field_name": "inventory_source_volume_ok",
       "python_type": "bool"
@@ -1521,6 +1717,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__hx_shell_wall",
+      "field_name": "hx_shell_wall",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__machine_event_purchase",
       "field_name": "machine_event_purchase",
       "python_type": "float"
@@ -1544,6 +1745,11 @@
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__pump_size_ok",
       "field_name": "pump_size_ok",
       "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__hx_shell_length",
+      "field_name": "hx_shell_length",
+      "python_type": "float"
     },
     {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_inventory_cost",
@@ -1898,6 +2104,11 @@
     {
       "channel_name": "stellarator_09__stellaris__rb__blanket_vol",
       "field_name": "blanket_vol",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__rb__outer_radius",
+      "field_name": "outer_radius",
       "python_type": "float"
     },
     {
@@ -2606,6 +2817,2346 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__dirty_store_required",
+      "field_name": "dirty_store_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_clear_height",
+      "field_name": "sector_link_north_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_sub_formwork",
+      "field_name": "reactor_auxiliaries_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_clear_height",
+      "field_name": "electrical_building_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__dirty_store_positions_allocated",
+      "field_name": "dirty_store_positions_allocated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_sub_formwork",
+      "field_name": "cryo_compressors_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_clear_length",
+      "field_name": "sector_wing_east_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_super_rebar",
+      "field_name": "sector_wing_east_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_air_volume",
+      "field_name": "fuel_building_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_super_formwork",
+      "field_name": "turbine_hall_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_clear_width",
+      "field_name": "sector_link_north_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_clear_area",
+      "field_name": "power_supply_building_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_clear_height",
+      "field_name": "cooling_hall_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__administration_sub_concrete",
+      "field_name": "administration_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_gross_area",
+      "field_name": "sector_wing_north_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_sub_rebar",
+      "field_name": "fuel_building_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__dirty_buffer_positions_allocated",
+      "field_name": "dirty_buffer_positions_allocated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_super_concrete",
+      "field_name": "sector_link_north_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_clear_length",
+      "field_name": "sector_wing_west_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_super_formwork",
+      "field_name": "sector_wing_south_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__control_clear_width",
+      "field_name": "control_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_gross_area",
+      "field_name": "sector_link_north_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_super_formwork",
+      "field_name": "electrical_building_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_gross_area",
+      "field_name": "cooling_annex_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__replacement_ready_margin_days",
+      "field_name": "replacement_ready_margin_days",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_sub_formwork",
+      "field_name": "cooling_annex_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__maintenance_shop_clear_area",
+      "field_name": "maintenance_shop_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_gross_area",
+      "field_name": "reactor_hall_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__control_air_volume",
+      "field_name": "control_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_sub_rebar",
+      "field_name": "site_services_building_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__calendar_first_event_year",
+      "field_name": "calendar_first_event_year",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_super_concrete",
+      "field_name": "site_services_building_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_gross_area",
+      "field_name": "reactor_auxiliaries_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_clear_height",
+      "field_name": "service_water_building_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_clear_area",
+      "field_name": "sector_link_west_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_gross_area",
+      "field_name": "power_supply_building_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_super_concrete",
+      "field_name": "electrical_building_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_super_concrete",
+      "field_name": "sector_link_south_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_sub_concrete",
+      "field_name": "site_services_building_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_sub_rebar",
+      "field_name": "sector_link_south_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_clear_area",
+      "field_name": "cryo_compressors_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_clear_width",
+      "field_name": "electrical_building_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_super_concrete",
+      "field_name": "sector_wing_east_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_carrier_moves",
+      "field_name": "cooling_carrier_moves",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_super_rebar",
+      "field_name": "cryo_coldbox_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_super_formwork",
+      "field_name": "cryo_coldbox_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_sub_formwork",
+      "field_name": "cryo_coldbox_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_sub_rebar",
+      "field_name": "sector_wing_east_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_sub_rebar",
+      "field_name": "power_supply_building_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_clear_height",
+      "field_name": "sector_link_south_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__dirty_buffer_required",
+      "field_name": "dirty_buffer_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_jobs_after_shutdown",
+      "field_name": "cooling_jobs_after_shutdown",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_super_rebar",
+      "field_name": "service_water_building_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_clear_area",
+      "field_name": "fuel_building_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_clear_width",
+      "field_name": "cooling_link_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_super_formwork",
+      "field_name": "cooling_annex_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_super_formwork",
+      "field_name": "reactor_auxiliaries_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_clear_height",
+      "field_name": "reactor_hall_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_air_volume",
+      "field_name": "sector_link_north_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__control_sub_rebar",
+      "field_name": "control_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_clear_area",
+      "field_name": "service_water_building_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_clear_height",
+      "field_name": "sector_wing_west_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_sub_rebar",
+      "field_name": "sector_wing_south_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_super_concrete",
+      "field_name": "sector_link_west_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__administration_sub_rebar",
+      "field_name": "administration_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_clear_width",
+      "field_name": "cooling_hall_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__exterior_envelope_qualified",
+      "field_name": "exterior_envelope_qualified",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__outage_required_days",
+      "field_name": "outage_required_days",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__security_clear_width",
+      "field_name": "security_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_super_formwork",
+      "field_name": "fuel_building_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_clear_width",
+      "field_name": "power_supply_building_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_sub_concrete",
+      "field_name": "service_water_building_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_super_formwork",
+      "field_name": "cryo_compressors_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_clear_length",
+      "field_name": "cryo_coldbox_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__control_clear_length",
+      "field_name": "control_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__calendar_last_event_year",
+      "field_name": "calendar_last_event_year",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_clear_width",
+      "field_name": "turbine_hall_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__controlled_air_volume",
+      "field_name": "controlled_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_replacement_ready_margin_days",
+      "field_name": "cooling_replacement_ready_margin_days",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_air_volume",
+      "field_name": "sector_link_west_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_clear_area",
+      "field_name": "sector_link_north_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__maintenance_shop_clear_length",
+      "field_name": "maintenance_shop_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__blanket_packages_per_sector",
+      "field_name": "blanket_packages_per_sector",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__maintenance_shop_clear_height",
+      "field_name": "maintenance_shop_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_super_formwork",
+      "field_name": "cooling_hall_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_clear_area",
+      "field_name": "sector_link_east_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_super_rebar",
+      "field_name": "sector_wing_north_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_clear_height",
+      "field_name": "turbine_hall_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_width",
+      "field_name": "sector_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_clear_length",
+      "field_name": "service_water_building_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__active",
+      "field_name": "active",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__maintenance_shop_sub_formwork",
+      "field_name": "maintenance_shop_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_air_volume",
+      "field_name": "sector_wing_west_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_clear_width",
+      "field_name": "site_services_building_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_sub_rebar",
+      "field_name": "cryo_compressors_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_sub_formwork",
+      "field_name": "sector_wing_north_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_super_concrete",
+      "field_name": "sector_wing_west_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_sub_formwork",
+      "field_name": "electrical_building_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_clear_width",
+      "field_name": "cryo_coldbox_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_sub_formwork",
+      "field_name": "sector_wing_east_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_air_volume",
+      "field_name": "reactor_auxiliaries_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_sub_rebar",
+      "field_name": "sector_link_east_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_sub_concrete",
+      "field_name": "cooling_link_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_clear_area",
+      "field_name": "sector_wing_east_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_clear_area",
+      "field_name": "site_services_building_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_super_rebar",
+      "field_name": "cooling_annex_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_sub_formwork",
+      "field_name": "power_supply_building_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_air_volume",
+      "field_name": "cooling_link_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_clear_height",
+      "field_name": "cryo_compressors_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__maintenance_shop_super_concrete",
+      "field_name": "maintenance_shop_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_sub_rebar",
+      "field_name": "cooling_hall_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_sub_concrete",
+      "field_name": "sector_wing_east_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_helium_queue_peak",
+      "field_name": "cooling_helium_queue_peak",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_clear_height",
+      "field_name": "fuel_building_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_clear_width",
+      "field_name": "service_water_building_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__administration_clear_area",
+      "field_name": "administration_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_clear_area",
+      "field_name": "cooling_link_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_sub_formwork",
+      "field_name": "site_services_building_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_super_rebar",
+      "field_name": "turbine_hall_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_salt_queue_peak",
+      "field_name": "cooling_salt_queue_peak",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_air_volume",
+      "field_name": "sector_link_south_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_dirty_bundle_required",
+      "field_name": "cooling_dirty_bundle_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_clear_width",
+      "field_name": "sector_wing_east_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_super_formwork",
+      "field_name": "sector_link_east_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__security_air_volume",
+      "field_name": "security_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_super_rebar",
+      "field_name": "reactor_auxiliaries_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_super_formwork",
+      "field_name": "service_water_building_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_clear_length",
+      "field_name": "reactor_hall_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_sub_formwork",
+      "field_name": "reactor_hall_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_clear_area",
+      "field_name": "cooling_hall_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_sub_rebar",
+      "field_name": "sector_wing_west_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__administration_air_volume",
+      "field_name": "administration_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_clear_length",
+      "field_name": "turbine_hall_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_clear_length",
+      "field_name": "sector_link_south_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_clear_height",
+      "field_name": "sector_wing_east_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_clear_area",
+      "field_name": "turbine_hall_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_sub_formwork",
+      "field_name": "sector_wing_west_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_super_rebar",
+      "field_name": "sector_link_south_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__control_gross_area",
+      "field_name": "control_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_gross_area",
+      "field_name": "fuel_building_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_length",
+      "field_name": "sector_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_sub_rebar",
+      "field_name": "cooling_annex_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_clear_area",
+      "field_name": "cooling_annex_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__calendar_event_count",
+      "field_name": "calendar_event_count",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_sub_formwork",
+      "field_name": "sector_link_west_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_clear_width",
+      "field_name": "sector_wing_west_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__security_sub_concrete",
+      "field_name": "security_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_super_concrete",
+      "field_name": "fuel_building_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_clean_salt_allocated",
+      "field_name": "cooling_clean_salt_allocated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_gross_area",
+      "field_name": "cryo_compressors_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_clear_length",
+      "field_name": "sector_link_east_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_air_volume",
+      "field_name": "cooling_annex_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_clear_area",
+      "field_name": "cryo_coldbox_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_gross_area",
+      "field_name": "sector_wing_south_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_outage_basis_resolved",
+      "field_name": "cooling_outage_basis_resolved",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_clear_length",
+      "field_name": "sector_wing_north_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_sub_concrete",
+      "field_name": "turbine_hall_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__contamination_procedure_qualified",
+      "field_name": "contamination_procedure_qualified",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_super_concrete",
+      "field_name": "cooling_hall_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_super_concrete",
+      "field_name": "turbine_hall_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__control_super_rebar",
+      "field_name": "control_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_sub_rebar",
+      "field_name": "sector_link_north_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__maintenance_shop_sub_concrete",
+      "field_name": "maintenance_shop_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_clear_width",
+      "field_name": "sector_link_south_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__parcel_area",
+      "field_name": "parcel_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_super_concrete",
+      "field_name": "sector_wing_south_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__administration_clear_length",
+      "field_name": "administration_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_air_volume",
+      "field_name": "sector_link_east_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__security_clear_height",
+      "field_name": "security_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_clear_height",
+      "field_name": "sector_wing_south_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_clear_height",
+      "field_name": "reactor_auxiliaries_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__packages_per_sector",
+      "field_name": "packages_per_sector",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__security_sub_rebar",
+      "field_name": "security_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_sub_concrete",
+      "field_name": "sector_link_east_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_gross_area",
+      "field_name": "sector_wing_east_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_super_rebar",
+      "field_name": "sector_link_east_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_clear_length",
+      "field_name": "fuel_building_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__security_super_rebar",
+      "field_name": "security_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_sub_concrete",
+      "field_name": "cryo_compressors_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_super_concrete",
+      "field_name": "service_water_building_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_sub_concrete",
+      "field_name": "reactor_hall_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_sub_formwork",
+      "field_name": "service_water_building_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_sub_formwork",
+      "field_name": "sector_link_east_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__security_sub_formwork",
+      "field_name": "security_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__security_super_concrete",
+      "field_name": "security_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_clear_area",
+      "field_name": "sector_wing_west_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_super_rebar",
+      "field_name": "cryo_compressors_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__control_clear_area",
+      "field_name": "control_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_super_concrete",
+      "field_name": "cooling_annex_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__control_super_formwork",
+      "field_name": "control_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_sub_formwork",
+      "field_name": "turbine_hall_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_air_volume",
+      "field_name": "electrical_building_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_air_volume",
+      "field_name": "cooling_hall_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_sub_rebar",
+      "field_name": "sector_link_west_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_air_volume",
+      "field_name": "sector_wing_east_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_clear_area",
+      "field_name": "sector_wing_south_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_gross_area",
+      "field_name": "sector_link_east_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__outage_allowed_days",
+      "field_name": "outage_allowed_days",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_clear_length",
+      "field_name": "cooling_annex_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_sub_rebar",
+      "field_name": "sector_wing_north_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_super_formwork",
+      "field_name": "sector_link_west_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__initial_margin_days",
+      "field_name": "initial_margin_days",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_sub_rebar",
+      "field_name": "service_water_building_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_clear_height",
+      "field_name": "site_services_building_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__administration_clear_width",
+      "field_name": "administration_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__maintenance_shop_clear_width",
+      "field_name": "maintenance_shop_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_last_release_year",
+      "field_name": "cooling_last_release_year",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_clear_height",
+      "field_name": "power_supply_building_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_dirty_salt_allocated",
+      "field_name": "cooling_dirty_salt_allocated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_sub_rebar",
+      "field_name": "reactor_hall_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_clear_height",
+      "field_name": "sector_link_east_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_super_rebar",
+      "field_name": "site_services_building_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_clear_width",
+      "field_name": "cryo_compressors_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_gross_area",
+      "field_name": "turbine_hall_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_clear_length",
+      "field_name": "sector_link_west_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__control_sub_concrete",
+      "field_name": "control_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_super_concrete",
+      "field_name": "power_supply_building_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_super_concrete",
+      "field_name": "reactor_auxiliaries_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_gross_area",
+      "field_name": "site_services_building_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_super_rebar",
+      "field_name": "fuel_building_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_initial_ready_margin_days",
+      "field_name": "cooling_initial_ready_margin_days",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_sub_concrete",
+      "field_name": "electrical_building_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__security_gross_area",
+      "field_name": "security_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_sub_concrete",
+      "field_name": "sector_link_north_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_sub_concrete",
+      "field_name": "sector_wing_south_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__readiness_margin_days",
+      "field_name": "readiness_margin_days",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_air_volume",
+      "field_name": "sector_wing_north_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_air_volume",
+      "field_name": "power_supply_building_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__total_gross_area",
+      "field_name": "total_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_sub_concrete",
+      "field_name": "sector_wing_north_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_clear_area",
+      "field_name": "sector_wing_north_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_bundle_queue_peak",
+      "field_name": "cooling_bundle_queue_peak",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_clear_height",
+      "field_name": "cooling_annex_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_clear_length",
+      "field_name": "cooling_link_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__initial_clean_required",
+      "field_name": "initial_clean_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_super_rebar",
+      "field_name": "power_supply_building_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__capacity_margin_units",
+      "field_name": "capacity_margin_units",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_sub_rebar",
+      "field_name": "cooling_link_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_clear_area",
+      "field_name": "reactor_hall_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_gross_area",
+      "field_name": "sector_link_south_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_super_rebar",
+      "field_name": "sector_link_north_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_super_rebar",
+      "field_name": "sector_wing_south_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_dirty_helium_required",
+      "field_name": "cooling_dirty_helium_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__total_air_volume",
+      "field_name": "total_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_clear_length",
+      "field_name": "cryo_compressors_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_air_volume",
+      "field_name": "site_services_building_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_sub_concrete",
+      "field_name": "sector_link_west_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__administration_super_rebar",
+      "field_name": "administration_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__security_super_formwork",
+      "field_name": "security_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_sub_rebar",
+      "field_name": "cryo_coldbox_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_sub_concrete",
+      "field_name": "sector_link_south_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_clean_bundle_required",
+      "field_name": "cooling_clean_bundle_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_clean_helium_allocated",
+      "field_name": "cooling_clean_helium_allocated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__route_margin_m",
+      "field_name": "route_margin_m",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_clear_width",
+      "field_name": "sector_link_west_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_clear_area",
+      "field_name": "electrical_building_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_super_rebar",
+      "field_name": "sector_link_west_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__clean_positions_allocated",
+      "field_name": "clean_positions_allocated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_sub_formwork",
+      "field_name": "cooling_link_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_air_volume",
+      "field_name": "cryo_coldbox_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_super_rebar",
+      "field_name": "cooling_hall_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_super_formwork",
+      "field_name": "sector_wing_west_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_clear_area",
+      "field_name": "reactor_auxiliaries_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_sub_concrete",
+      "field_name": "reactor_auxiliaries_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_sub_rebar",
+      "field_name": "reactor_auxiliaries_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_sub_concrete",
+      "field_name": "sector_wing_west_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_dirty_bundle_allocated",
+      "field_name": "cooling_dirty_bundle_allocated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_gross_area",
+      "field_name": "cooling_hall_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_sub_formwork",
+      "field_name": "sector_link_south_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_load_qualified",
+      "field_name": "sector_load_qualified",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_clear_height",
+      "field_name": "cryo_coldbox_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_sub_formwork",
+      "field_name": "sector_link_north_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_air_volume",
+      "field_name": "sector_wing_south_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__outage_margin_days",
+      "field_name": "outage_margin_days",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_super_concrete",
+      "field_name": "sector_wing_north_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_super_concrete",
+      "field_name": "cryo_coldbox_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__maintenance_shop_gross_area",
+      "field_name": "maintenance_shop_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_super_rebar",
+      "field_name": "sector_wing_west_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_clear_height",
+      "field_name": "sector_wing_north_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_super_formwork",
+      "field_name": "sector_link_south_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_gross_area",
+      "field_name": "sector_link_west_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_clear_length",
+      "field_name": "cooling_hall_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__administration_super_concrete",
+      "field_name": "administration_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_clear_length",
+      "field_name": "sector_link_north_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_super_concrete",
+      "field_name": "reactor_hall_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__administration_sub_formwork",
+      "field_name": "administration_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_sub_rebar",
+      "field_name": "turbine_hall_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_clear_length",
+      "field_name": "site_services_building_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_sub_concrete",
+      "field_name": "power_supply_building_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_air_volume",
+      "field_name": "reactor_hall_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_clear_length",
+      "field_name": "reactor_auxiliaries_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__administration_super_formwork",
+      "field_name": "administration_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_super_formwork",
+      "field_name": "site_services_building_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__administration_gross_area",
+      "field_name": "administration_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__material_capacity_volume",
+      "field_name": "material_capacity_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_clear_width",
+      "field_name": "cooling_annex_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_gross_area",
+      "field_name": "cooling_link_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cost_mode",
+      "field_name": "cost_mode",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_clean_helium_required",
+      "field_name": "cooling_clean_helium_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_clear_height",
+      "field_name": "cooling_link_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__maintenance_shop_super_formwork",
+      "field_name": "maintenance_shop_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_clear_width",
+      "field_name": "sector_link_east_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_clear_width",
+      "field_name": "sector_wing_north_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__maintenance_shop_sub_rebar",
+      "field_name": "maintenance_shop_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__total_clear_area",
+      "field_name": "total_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_air_volume",
+      "field_name": "cryo_compressors_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_super_rebar",
+      "field_name": "reactor_hall_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_dirty_helium_allocated",
+      "field_name": "cooling_dirty_helium_allocated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_super_concrete",
+      "field_name": "sector_link_east_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_air_volume",
+      "field_name": "turbine_hall_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__provisional_room_count",
+      "field_name": "provisional_room_count",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_clear_width",
+      "field_name": "sector_wing_south_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_clear_length",
+      "field_name": "sector_wing_south_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_sub_formwork",
+      "field_name": "cooling_hall_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_sub_concrete",
+      "field_name": "cryo_coldbox_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_super_formwork",
+      "field_name": "power_supply_building_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_sub_concrete",
+      "field_name": "fuel_building_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_clear_area",
+      "field_name": "sector_link_south_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__security_clear_length",
+      "field_name": "security_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_super_concrete",
+      "field_name": "cooling_link_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_clear_width",
+      "field_name": "reactor_auxiliaries_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_super_concrete",
+      "field_name": "cryo_compressors_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_gross_area",
+      "field_name": "cryo_coldbox_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_clear_width",
+      "field_name": "fuel_building_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__administration_clear_height",
+      "field_name": "administration_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_gross_area",
+      "field_name": "service_water_building_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_gross_area",
+      "field_name": "electrical_building_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__initial_ready_margin_days",
+      "field_name": "initial_ready_margin_days",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_clear_length",
+      "field_name": "power_supply_building_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_sub_concrete",
+      "field_name": "cooling_annex_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_sub_formwork",
+      "field_name": "fuel_building_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_clean_bundle_allocated",
+      "field_name": "cooling_clean_bundle_allocated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__capacity_mode",
+      "field_name": "capacity_mode",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__unused_material_capacity",
+      "field_name": "unused_material_capacity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_sub_concrete",
+      "field_name": "cooling_hall_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__maintenance_shop_super_rebar",
+      "field_name": "maintenance_shop_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_gross_area",
+      "field_name": "sector_wing_west_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_air_volume",
+      "field_name": "service_water_building_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_super_formwork",
+      "field_name": "sector_link_north_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_sub_formwork",
+      "field_name": "sector_wing_south_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_clear_width",
+      "field_name": "reactor_hall_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_height",
+      "field_name": "sector_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_super_formwork",
+      "field_name": "sector_wing_east_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_super_rebar",
+      "field_name": "cooling_link_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__control_sub_formwork",
+      "field_name": "control_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__maintenance_shop_air_volume",
+      "field_name": "maintenance_shop_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_dirty_salt_required",
+      "field_name": "cooling_dirty_salt_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__control_clear_height",
+      "field_name": "control_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__control_super_concrete",
+      "field_name": "control_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_super_formwork",
+      "field_name": "cooling_link_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_clear_height",
+      "field_name": "sector_link_west_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_super_rebar",
+      "field_name": "electrical_building_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_clean_salt_required",
+      "field_name": "cooling_clean_salt_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_clear_length",
+      "field_name": "electrical_building_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_sub_rebar",
+      "field_name": "electrical_building_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__security_clear_area",
+      "field_name": "security_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_super_formwork",
+      "field_name": "reactor_hall_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_super_formwork",
+      "field_name": "sector_wing_north_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cooling_link__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cooling_link__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cooling_link__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cooling_link__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cooling_hall__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cooling_hall__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cooling_hall__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cooling_hall__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_south__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_south__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_south__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_south__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cryo_compressors__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cryo_compressors__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cryo_compressors__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cryo_compressors__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__security__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__security__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__security__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__security__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cryo_coldbox__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cryo_coldbox__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cryo_coldbox__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cryo_coldbox__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__control__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__control__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__control__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__control__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_east__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_east__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_east__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_east__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_west__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_west__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_west__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_west__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__service_water_building__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__service_water_building__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__service_water_building__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__service_water_building__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_west__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_west__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_west__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_west__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_south__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_south__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_south__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_south__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_north__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_north__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_north__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_wing_north__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__site_services_building__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__site_services_building__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__site_services_building__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__site_services_building__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_east__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_east__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_east__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_east__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__maintenance_shop__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__maintenance_shop__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__maintenance_shop__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__maintenance_shop__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__fuel_building__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__fuel_building__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__fuel_building__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__fuel_building__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_north__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_north__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_north__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__sector_link_north__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cooling_annex__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cooling_annex__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cooling_annex__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__cooling_annex__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__power_supply_building__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__power_supply_building__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__power_supply_building__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__power_supply_building__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__reactor_hall__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__reactor_hall__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__reactor_hall__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__reactor_hall__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__administration__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__administration__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__administration__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__administration__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__electrical_building__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__electrical_building__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__electrical_building__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__electrical_building__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__turbine_hall__civil__sub_cost_2018",
+      "field_name": "sub_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__turbine_hall__civil__super_cost_2018",
+      "field_name": "super_cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__turbine_hall__civil__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__turbine_hall__civil__cost_2018",
+      "field_name": "cost_2018",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__facility_land__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__ventilation__cost_2025",
+      "field_name": "cost_2025",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__ventilation__cost_1990",
+      "field_name": "cost_1990",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__civil_rollup__civil_capital",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__site_allowance__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__facility_accounts__layout_buildings_capital",
+      "field_name": "layout_buildings_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__facility_accounts__cost",
+      "field_name": "cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__facility_accounts__installed_facility_capital",
+      "field_name": "installed_facility_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__facility_preconstruction__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__facility_shipping__exclusion",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__cooling_annual__cas72_total",
       "field_name": "cas72_total",
       "python_type": "float"
@@ -2673,6 +5224,21 @@
     {
       "channel_name": "stellarator_09__stellaris__indirect__cost",
       "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__shipping_scope__facility_exclusion",
+      "field_name": "facility_exclusion",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__shipping_scope__cooling_exclusion",
+      "field_name": "cooling_exclusion",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__shipping_scope__remaining_shipping_base",
+      "field_name": "remaining_shipping_base",
       "python_type": "float"
     },
     {
@@ -2746,6 +5312,16 @@
       "python_type": "ConstraintEvaluation"
     },
     {
+      "channel_name": "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
@@ -2786,6 +5362,11 @@
       "python_type": "ConstraintEvaluation"
     },
     {
+      "channel_name": "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
@@ -2801,12 +5382,22 @@
       "python_type": "ConstraintEvaluation"
     },
     {
+      "channel_name": "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
     {
       "channel_name": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
@@ -3413,6 +6004,20 @@
       "qualified_name": "stellarator_09__stellaris__blanket__unit_cost"
     },
     {
+      "default_value": 12.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__administration_area_per_person"
+    },
+    {
+      "default_value": 200.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__administration_occupants"
+    },
+    {
       "default_value": 29000000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -3453,6 +6058,895 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__buildings__bldg_the_base"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__building_separation"
+    },
+    {
+      "default_value": 1.2819593787335721,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__civil_cpi_ratio"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__civil_rate_multiplier"
+    },
+    {
+      "default_value": 36.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__clean_positions"
+    },
+    {
+      "default_value": 0.5,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__component_handling_margin"
+    },
+    {
+      "default_value": 2.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__component_height"
+    },
+    {
+      "default_value": 365.25,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__component_hold_days"
+    },
+    {
+      "default_value": 0.5,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__component_install_days"
+    },
+    {
+      "default_value": 2.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__component_length"
+    },
+    {
+      "default_value": 0.5,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__component_material_fraction"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__component_prepare_days"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__component_process_days"
+    },
+    {
+      "default_value": 90.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__component_receipt_lead_days"
+    },
+    {
+      "default_value": 0.5,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__component_remove_days"
+    },
+    {
+      "default_value": 4.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__component_width"
+    },
+    {
+      "default_value": 15.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__control_area_per_person"
+    },
+    {
+      "default_value": 30.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__control_occupants"
+    },
+    {
+      "default_value": 0.3,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__conventional_floor"
+    },
+    {
+      "default_value": 100.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__conventional_rebar_density"
+    },
+    {
+      "default_value": 0.2,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__conventional_roof"
+    },
+    {
+      "default_value": 8.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__conventional_shop_height"
+    },
+    {
+      "default_value": 20.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__conventional_shop_length"
+    },
+    {
+      "default_value": 15.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__conventional_shop_width"
+    },
+    {
+      "default_value": 0.3,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__conventional_wall"
+    },
+    {
+      "default_value": 30.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooldown_days"
+    },
+    {
+      "default_value": 17.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_airlock_length"
+    },
+    {
+      "default_value": 6.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_aisle_width"
+    },
+    {
+      "default_value": 5.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_bundle_process_days"
+    },
+    {
+      "default_value": 2.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_bundle_stations"
+    },
+    {
+      "default_value": 14.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_clean_bundle_positions"
+    },
+    {
+      "default_value": 29.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_clean_helium_positions"
+    },
+    {
+      "default_value": 29.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_clean_salt_positions"
+    },
+    {
+      "default_value": 17.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_cross_width"
+    },
+    {
+      "default_value": 14.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_dirty_bundle_positions"
+    },
+    {
+      "default_value": 28.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_dirty_helium_positions"
+    },
+    {
+      "default_value": 28.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_dirty_salt_positions"
+    },
+    {
+      "default_value": 0.2,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_field_cycle_days"
+    },
+    {
+      "default_value": 9.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_headroom"
+    },
+    {
+      "default_value": 365.25,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_hold_days"
+    },
+    {
+      "default_value": 180.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_initial_receipt_lead_days"
+    },
+    {
+      "default_value": 0.1,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_internal_move_days"
+    },
+    {
+      "default_value": 2.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_machine_process_days"
+    },
+    {
+      "default_value": 2.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_machine_stations"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_package_margin"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_prepare_bundle_days"
+    },
+    {
+      "default_value": 0.5,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_prepare_machine_days"
+    },
+    {
+      "default_value": 2.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_prepare_stations"
+    },
+    {
+      "default_value": 90.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cooling_receipt_lead_days"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cryo_coldbox_height"
+    },
+    {
+      "default_value": 20.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cryo_coldbox_length"
+    },
+    {
+      "default_value": 12.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cryo_coldbox_width"
+    },
+    {
+      "default_value": 8.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cryo_compressors_height"
+    },
+    {
+      "default_value": 30.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cryo_compressors_length"
+    },
+    {
+      "default_value": 12.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__cryo_compressors_width"
+    },
+    {
+      "default_value": 18.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__dirty_buffer_positions"
+    },
+    {
+      "default_value": 36.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__dirty_store_positions"
+    },
+    {
+      "default_value": 4.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__divertor_packages_per_sector"
+    },
+    {
+      "default_value": 2.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__exterior_allowance"
+    },
+    {
+      "default_value": 12.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__external_access_width"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__facilities_capacity_mode"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__facilities_cost_mode"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "bool",
+      "qualified_name": "stellarator_09__stellaris__buildings__facilities_enabled"
+    },
+    {
+      "default_value": 8.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__fuel_height"
+    },
+    {
+      "default_value": 30.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__fuel_length"
+    },
+    {
+      "default_value": 20.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__fuel_width"
+    },
+    {
+      "default_value": 100.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__heat_rejection_length"
+    },
+    {
+      "default_value": 60.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__heat_rejection_width"
+    },
+    {
+      "default_value": 4.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__helium_package_height"
+    },
+    {
+      "default_value": 6.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__helium_package_length"
+    },
+    {
+      "default_value": 3.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__helium_package_width"
+    },
+    {
+      "default_value": 2.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__hx_end_allowance"
+    },
+    {
+      "default_value": 180.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__initial_receipt_lead_days"
+    },
+    {
+      "default_value": 10000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__land_rate_per_acre"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__nuclear_floor"
+    },
+    {
+      "default_value": 150.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__nuclear_rebar_density"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__nuclear_roof"
+    },
+    {
+      "default_value": 2.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__nuclear_wall"
+    },
+    {
+      "default_value": 2.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__occupancy_aspect_ratio"
+    },
+    {
+      "default_value": 1.3,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__occupancy_circulation_factor"
+    },
+    {
+      "default_value": 4.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__occupancy_height"
+    },
+    {
+      "default_value": 6.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__onsite_ac_height"
+    },
+    {
+      "default_value": 16.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__onsite_ac_length"
+    },
+    {
+      "default_value": 8.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__onsite_ac_width"
+    },
+    {
+      "default_value": 8.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__power_supply_height"
+    },
+    {
+      "default_value": 20.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__power_supply_length"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__power_supply_width"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__provisional_envelope_scale"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__reactor_aux_height"
+    },
+    {
+      "default_value": 30.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__reactor_aux_length"
+    },
+    {
+      "default_value": 20.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__reactor_aux_width"
+    },
+    {
+      "default_value": 30.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__recommission_days"
+    },
+    {
+      "default_value": 85000000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__retained_site_improvements"
+    },
+    {
+      "default_value": 3.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__salt_package_height"
+    },
+    {
+      "default_value": 3.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__salt_package_length"
+    },
+    {
+      "default_value": 2.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__salt_package_width"
+    },
+    {
+      "default_value": 4.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__sector_bays"
+    },
+    {
+      "default_value": 7.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__sector_clean_days"
+    },
+    {
+      "default_value": 4.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__sector_count"
+    },
+    {
+      "default_value": 3.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__sector_headroom"
+    },
+    {
+      "default_value": 7.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__sector_join_days"
+    },
+    {
+      "default_value": 6.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__sector_route_clearance"
+    },
+    {
+      "default_value": 2.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__sector_service_teams"
+    },
+    {
+      "default_value": 7.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__sector_split_days"
+    },
+    {
+      "default_value": 7.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__sector_test_days"
+    },
+    {
+      "default_value": 2.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__sector_transport_days"
+    },
+    {
+      "default_value": 12.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__security_area_per_person"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__security_occupants"
+    },
+    {
+      "default_value": 8.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__service_water_height"
+    },
+    {
+      "default_value": 20.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__service_water_length"
+    },
+    {
+      "default_value": 15.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__service_water_width"
+    },
+    {
+      "default_value": 6.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__site_services_height"
+    },
+    {
+      "default_value": 20.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__site_services_length"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__site_services_width"
+    },
+    {
+      "default_value": 444.0233350945057,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__sub_concrete_rate"
+    },
+    {
+      "default_value": 700.0942889733001,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__sub_formwork_rate"
+    },
+    {
+      "default_value": 4.726624780628814,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__sub_rebar_rate"
+    },
+    {
+      "default_value": 611.6152342453729,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__super_concrete_rate"
+    },
+    {
+      "default_value": 716.6635281988968,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__super_formwork_rate"
+    },
+    {
+      "default_value": 5.4683224473628815,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__super_rebar_rate"
+    },
+    {
+      "default_value": 907.18474,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__tonne_interpretation_kg"
+    },
+    {
+      "default_value": 15.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__turbine_height"
+    },
+    {
+      "default_value": 60.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__turbine_length"
+    },
+    {
+      "default_value": 20.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__turbine_width"
+    },
+    {
+      "default_value": 1000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__ventilation_coefficient"
+    },
+    {
+      "default_value": 2.462892119357307,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__ventilation_cpi_ratio"
+    },
+    {
+      "default_value": 0.8,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__ventilation_exponent"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__waste_package_yield"
     },
     {
       "default_value": 5000000.0,
@@ -5121,5 +8615,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "7ecd02d1084a78c43bafff9c43f1e90f864f9c59406963f3c38554bb59b09d64"
+  "semantic_fingerprint": "a913cbcf04a82403d8a7c51e13fc09718596d3dc1557b06c7b583481476cdc4d"
 }

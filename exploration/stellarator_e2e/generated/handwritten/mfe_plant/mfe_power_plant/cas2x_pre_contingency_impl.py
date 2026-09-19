@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:480
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:516
 
 SysML Expressions:
 """
@@ -15,7 +15,7 @@ from stellarator_tea.modules.mfe_plant.mfe_power_plant.cas2x_pre_contingency imp
 def run_cas2x_pre_contingency(inputs: cas2x_pre_contingencyInput) -> float:
     """Execute cas2x_pre_contingency calculation.
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:480
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:516
 
 Args:
     inputs: Input parameters validated against cas2x_pre_contingencyInput schema

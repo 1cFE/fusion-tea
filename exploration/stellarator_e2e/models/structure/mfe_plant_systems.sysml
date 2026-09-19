@@ -131,6 +131,13 @@ package mfe_plant_systems {
         // ---- EXPOSEs (WI-057): this part's calc outputs, readable outside as <part>.<name> ----
         attribute T_out : Real = primary_loop.T_out;
         attribute coolant_cost : Real = cooling_selection.cost;
+        attribute hx_shell_bore : Real = equipment.hx_shell_bore;
+        attribute hx_shell_wall : Real = equipment.hx_shell_wall;
+        attribute hx_shell_length : Real = equipment.hx_shell_length;
+        attribute hx_tube_length : Real = equipment.hx_tube_length;
+        attribute helium_machine_count : Real = equipment.circulator_count;
+        attribute salt_machine_count : Real = equipment.salt_pump_count;
+        attribute exchanger_count : Real = equipment.ihx_count;
         attribute mdot_loop : Real = primary_loop.mdot_loop;
         attribute p_loop_margin : Real = primary_loop.p_loop_margin;
         attribute p_pump_total : Real = cooling_energy.electric_total;

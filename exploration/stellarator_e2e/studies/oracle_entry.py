@@ -328,6 +328,10 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "cooling_salt_inventory_volume": f"{P}heat_transport__equipment__salt_inventory_volume",
     "cooling_ihx_installed_area": f"{P}heat_transport__equipment__ihx_installed_area",
     "cooling_ihx_required_area": f"{P}heat_transport__equipment__ihx_required_area",
+    "cooling_hx_shell_bore": f"{P}heat_transport__equipment__hx_shell_bore",
+    "cooling_hx_shell_wall": f"{P}heat_transport__equipment__hx_shell_wall",
+    "cooling_hx_shell_length": f"{P}heat_transport__equipment__hx_shell_length",
+    "cooling_hx_tube_length": f"{P}heat_transport__equipment__hx_tube_length",
     "cooling_circulator_count": f"{P}heat_transport__equipment__circulator_count",
     "cooling_salt_pump_count": f"{P}heat_transport__equipment__salt_pump_count",
     "cooling_source_volume_ratio": f"{P}heat_transport__equipment__source_volume_ratio",
@@ -485,8 +489,8 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "electric": f"{P}electric_plant__electric_cost__cost",
     "heat_rejection": f"{P}heat_rejection__heat_rejection_cost__cost",
     "misc": f"{P}misc_plant__misc_cost__cost",
-    "buildings": f"{P}buildings__buildings_cost__cost",
-    "precon": f"{P}precon_cost__cost",
+    "buildings_legacy": f"{P}buildings__buildings_cost__cost",
+    "precon_legacy": f"{P}precon_cost__cost",
     # The package's om_cost channel is the *unlevelized* annual O&M; the oracle's
     # `annual_om` is the levelized one. Checked against the committed store, not
     # matched by name — the names agree and the numbers do not.
@@ -616,7 +620,58 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
 #: and no key by name at all (it is the `pb__p_net` channel), and the three that
 #: could be name-matched use three different composition rules. A tool that guessed
 #: would compare the wrong number and read as a pass.
+# WI-068 public contract: explicit registered scenario/quantity names in the
+# independent oracle, never discovered from production wrappers.
+ENTRY_KEY_TO_ORACLE_INPUT.update({
+    f'{P}buildings__{key}': 'facility_'+key for key in vs.facilities_oracle.DEFAULTS
+    if key not in ('initial_sector_start_days', 'cooling_initial_handoff_days')
+})
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'facility_'+key: f'{P}buildings__layout__{key}'
+    for key in (*vs.facilities_oracle.SCALARS,
+                *(child+'_'+quantity for child in vs.facilities_oracle.CHILDREN
+                  for quantity in vs.facilities_oracle.QUANTITIES))
+})
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'facility_'+child+'_'+quantity: f'{P}buildings__{child}__civil__{quantity}'
+    for child in vs.facilities_oracle.CHILDREN
+    for quantity in ('sub_cost_2018','super_cost_2018','cost_2018','cost_2025')
+})
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'buildings': f'{P}buildings__facility_accounts__cost',
+    'precon': f'{P}facility_preconstruction__cost',
+    'facility_civil_capital': f'{P}buildings__civil_rollup__civil_capital',
+    'facility_installed_facility_capital': f'{P}buildings__facility_accounts__installed_facility_capital',
+    'facility_layout_buildings_capital': f'{P}buildings__facility_accounts__layout_buildings_capital',
+    'facility_layout_land_cost': f'{P}buildings__facility_land__cost',
+    'facility_ventilation_1990': f'{P}buildings__ventilation__cost_1990',
+    'facility_ventilation_2025': f'{P}buildings__ventilation__cost_2025',
+    'facility_exclusion': f'{P}facility_shipping__exclusion',
+    'facility_initial_sector_start_days': f'{P}buildings__initial_sector_start_days__initial_sector_start_days',
+    'facility_cooling_initial_handoff_days': f'{P}buildings__cooling_initial_handoff_days__cooling_initial_handoff_days',
+    'facility_site_allowance': f'{P}buildings__site_allowance__cost',
+    'shipping_cooling_exclusion': f'{P}shipping_scope__cooling_exclusion',
+    'shipping_facility_exclusion': f'{P}shipping_scope__facility_exclusion',
+    'shipping_remaining_base': f'{P}shipping_scope__remaining_shipping_base',
+})
+
 OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
+    # WI-068 IDs/formal read from the generated native contract.
+    f"{P}facility_capacity_ok__8acbe7a714e6a4d9": {
+        "margin_in": {"kind": "channel", "key": f"{P}buildings__layout__capacity_margin_units"},
+    },
+    f"{P}facility_outage_ok__9b00e5bd8ea45722": {
+        "margin_in": {"kind": "channel", "key": f"{P}buildings__layout__outage_margin_days"},
+    },
+    f"{P}facility_routes_ok__a3dca4061c7bcc9b": {
+        "margin_in": {"kind": "channel", "key": f"{P}buildings__layout__route_margin_m"},
+    },
+    f"{P}facility_replacement_ready__00706bc8dbdf6938": {
+        "margin_in": {"kind": "channel", "key": f"{P}buildings__layout__readiness_margin_days"},
+    },
+    f"{P}facility_initial_ready__d3a5b04c428ef75f": {
+        "margin_in": {"kind": "channel", "key": f"{P}buildings__layout__initial_margin_days"},
+    },
     # WI-050 scalar domains, IDs and formal names read from the current contract.
     "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": {
         "efficiency": {"kind": "input", "key": f"{P}heating__eta_couple_heat"},
@@ -751,7 +806,7 @@ def _oracle_overrides(point: Mapping[str, float]) -> dict[str, float]:
                 f"entry keys disagree on oracle input {name!r}: already {overrides[name]}, "
                 f"then {key!r} = {float(value)}"
             )
-        if name == 'cooling_enabled':
+        if name in ('cooling_enabled', 'facility_facilities_enabled'):
             if value not in (False, True, 0., 1.):
                 raise OracleSeamError('cooling_enabled must be Boolean or its stored zero/one representation')
             overrides[name] = bool(value)

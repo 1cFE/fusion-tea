@@ -1,0 +1,57 @@
+{
+  "entering_revision": "1e7fd0d7",
+  "candidate_file_sha256": "ebc7030d130dbb20b94ec9e73ebcf04bcb3cf5c17eb06af5242e9e35fb4edf89",
+  "comparison": "Every prior calculate output is bit-identical; new geometry fields expose the actual pricing operands. Generated wrapper ABI is checked separately.",
+  "cases": [
+    {
+      "case": "default18",
+      "unchanged_output_count": 109,
+      "new_geometry": {
+        "hx_shell_bore": 3.2,
+        "hx_shell_wall": 0.2,
+        "hx_shell_length": 13.0,
+        "hx_tube_length": 11.6
+      }
+    },
+    {
+      "case": "circuits14",
+      "unchanged_output_count": 109,
+      "new_geometry": {
+        "hx_shell_bore": 3.2,
+        "hx_shell_wall": 0.2,
+        "hx_shell_length": 13.0,
+        "hx_tube_length": 11.6
+      }
+    },
+    {
+      "case": "shell_wall",
+      "unchanged_output_count": 109,
+      "new_geometry": {
+        "hx_shell_bore": 3.2,
+        "hx_shell_wall": 0.3,
+        "hx_shell_length": 13.0,
+        "hx_tube_length": 11.6
+      }
+    },
+    {
+      "case": "tube_wall",
+      "unchanged_output_count": 109,
+      "new_geometry": {
+        "hx_shell_bore": 3.2,
+        "hx_shell_wall": 0.2,
+        "hx_shell_length": 13.0,
+        "hx_tube_length": 11.6
+      }
+    },
+    {
+      "case": "dormant",
+      "unchanged_output_count": 109,
+      "new_geometry": {
+        "hx_shell_bore": 0.0,
+        "hx_shell_wall": 0.0,
+        "hx_shell_length": 0.0,
+        "hx_tube_length": 0.0
+      }
+    }
+  ]
+}

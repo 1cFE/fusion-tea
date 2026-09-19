@@ -1,4 +1,5 @@
 package mfe_plant {
+    private import mfe_facilities::*;
     private import ScalarValues::*;
     private import mfe_power_core::*;
     private import mfe_plasma::*;
@@ -62,6 +63,12 @@ package mfe_plant {
         // SUBSYSTEMS
         // =====================================================================
 
+        attribute radial_outer_radius : Real = rb.outer_radius;
+        assert constraint facility_initial_ready : 'Facility Nonnegative Margin' { in margin_in = buildings.initial_margin_days; }
+        assert constraint facility_replacement_ready : 'Facility Nonnegative Margin' { in margin_in = buildings.readiness_margin_days; }
+        assert constraint facility_outage_ok : 'Facility Nonnegative Margin' { in margin_in = buildings.outage_margin_days; }
+        assert constraint facility_capacity_ok : 'Facility Nonnegative Margin' { in margin_in = buildings.capacity_margin_units; }
+        assert constraint facility_routes_ok : 'Facility Nonnegative Margin' { in margin_in = buildings.route_margin_m; }
         // MFE-divergent power core (WI-009 mfe_power_core).
         // WI-057: the plasma and the plant systems the calcs already model, as parts.
         part plasma : 'Plasma' {
@@ -204,9 +211,32 @@ package mfe_plant {
             :>> p_et = pb.p_et;
         }
 
-        // Forward-computed direct accounts (WI-025): CAS21 via buildings_cost,
-        // CAS10 via precon_cost; CAS27 remains a pass-through (WI-011, in $).
+        // CAS21 uses the selected facility account (WI-068); legacy building and
+        // land formulas remain matched controls. CAS27 remains a pass-through.
         part buildings : 'Buildings' {
+            :>> n_mod = 'MFE Power Plant'::n_mod;
+            :>> major_radius = plasma.R;
+            :>> minor_outer_radius = radial_outer_radius;
+            :>> blanket_volume = rb.blanket_vol;
+            :>> calendar_q = blanket.wall_load_peak;
+            :>> calendar_fluence = blanket.first_wall.fluence_limit;
+            :>> calendar_years = operational_years;
+            :>> calendar_outage = outage_years;
+            :>> calendar_unplanned = unplanned_fraction;
+            :>> calendar_mode = availability_direct;
+            :>> calendar_life = calendar.physical_life_fpy;
+            :>> calendar_count = calendar.n_replacements;
+            :>> calendar_availability = calendar.availability;
+            :>> cooling_circuits = heat_transport.n_loops;
+            :>> cooling_helium_count = heat_transport.helium_machine_count;
+            :>> cooling_salt_count = heat_transport.salt_machine_count;
+            :>> cooling_bundle_count = heat_transport.exchanger_count;
+            :>> cooling_machine_life = heat_transport.equipment_machine_life;
+            :>> cooling_bundle_life = heat_transport.equipment_bundle_life;
+            :>> hx_shell_bore = heat_transport.hx_shell_bore;
+            :>> hx_shell_wall = heat_transport.hx_shell_wall;
+            :>> hx_shell_length = heat_transport.hx_shell_length;
+            :>> hx_tube_length = heat_transport.hx_tube_length;
             // WI-057: inputs the plant wires from the parts and calcs that produce them
             :>> p_et = pb.p_et;
             :>> p_fus = plasma.p_fus;
@@ -237,7 +267,13 @@ package mfe_plant {
         connect fuel_cycle.fuel_out to plasma.fuel_in;                  // fuel_cycle.p_fus <- plasma.p_fus (the burn the fuelling sustains)
         connect fuel_cycle.exhaust_out to vacuum_pumping.exhaust_in;    // vacuum_pumping.exhaust_rate, burn_rate <- fuel_cycle
 
-        attribute preconstruction_capital : Real = precon_cost.cost;
+        calc facility_preconstruction : 'Facility Preconstruction Selection' {
+            in mode_in = buildings.cost_mode;
+            in legacy_in = precon_cost.cost;
+            in fixed_in = precon_fixed_base;
+            in land_in = buildings.layout_land_cost;
+        }
+        attribute preconstruction_capital : Real = facility_preconstruction.cost;
         // CAS27 pass-through
         attribute special_materials_capital : Real;
 
@@ -525,6 +561,17 @@ package mfe_plant {
         attribute supplementary_startup_base : Real;
         // fuel-keyed [$]
         attribute supplementary_decom_base : Real;
+        calc facility_shipping : 'Facility Shipping Amount' {
+            in mode_in = buildings.cost_mode;
+            in contingency_in = contingency_rate;
+            in installed_in = buildings.installed_facility_capital;
+        }
+        attribute facility_shipping_exclusion : Real = facility_shipping.exclusion;
+        calc shipping_scope : 'Facility Shipping Scope' {
+            in cas20_in = cas20_capital;
+            in cooling_exclusion_in = heat_transport.shipping_exclusion;
+            in facility_exclusion_in = facility_shipping_exclusion;
+        }
         calc supplementary : 'Supplementary Cost' {
             in spares_frac = supplementary_spares_frac;
             in startup_fuel_base = supplementary_startup_base;
@@ -532,7 +579,8 @@ package mfe_plant {
             in cas20 = cas20_capital;
             in cas23_to_28 = cas23_to_28_capital;
             in cas30 = indirect.cost;    // read the CAS30 producer directly (cas30_capital is expose_pure)
-            in delivered_shipping_exclusion_in = heat_transport.shipping_exclusion;
+            in delivered_shipping_exclusion_in = shipping_scope.cooling_exclusion;
+            in facility_exclusion_in = shipping_scope.facility_exclusion;
             in p_net = pb.p_net;
             in n_mod_in = n_mod;
         }

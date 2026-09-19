@@ -1,0 +1,2608 @@
+{
+  "l2_added": [],
+  "l6_added_kinds": {
+    "dot reference": 371,
+    "numeric-default extraction": 364
+  },
+  "attributes": [
+    {
+      "attribute": "active",
+      "expressions": [
+        "layout.active"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "administration_air_volume",
+      "expressions": [
+        "layout.administration_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "administration_clear_area",
+      "expressions": [
+        "layout.administration_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "administration_clear_height",
+      "expressions": [
+        "layout.administration_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "administration_clear_length",
+      "expressions": [
+        "layout.administration_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "administration_clear_width",
+      "expressions": [
+        "layout.administration_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "administration_gross_area",
+      "expressions": [
+        "layout.administration_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "administration_sub_concrete",
+      "expressions": [
+        "layout.administration_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "administration_sub_formwork",
+      "expressions": [
+        "layout.administration_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "administration_sub_rebar",
+      "expressions": [
+        "layout.administration_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "administration_super_concrete",
+      "expressions": [
+        "layout.administration_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "administration_super_formwork",
+      "expressions": [
+        "layout.administration_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "administration_super_rebar",
+      "expressions": [
+        "layout.administration_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "blanket_packages_per_sector",
+      "expressions": [
+        "layout.blanket_packages_per_sector"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "calendar_event_count",
+      "expressions": [
+        "layout.calendar_event_count"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "calendar_first_event_year",
+      "expressions": [
+        "layout.calendar_first_event_year"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "calendar_last_event_year",
+      "expressions": [
+        "layout.calendar_last_event_year"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "capacity_margin_units",
+      "expressions": [
+        "layout.capacity_margin_units"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "capacity_mode",
+      "expressions": [
+        "layout.capacity_mode"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "civil_capital",
+      "expressions": [
+        "civil_rollup.civil_capital"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "clean_positions_allocated",
+      "expressions": [
+        "layout.clean_positions_allocated"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "contamination_procedure_qualified",
+      "expressions": [
+        "layout.contamination_procedure_qualified"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "control_air_volume",
+      "expressions": [
+        "layout.control_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "control_clear_area",
+      "expressions": [
+        "layout.control_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "control_clear_height",
+      "expressions": [
+        "layout.control_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "control_clear_length",
+      "expressions": [
+        "layout.control_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "control_clear_width",
+      "expressions": [
+        "layout.control_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "control_gross_area",
+      "expressions": [
+        "layout.control_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "control_sub_concrete",
+      "expressions": [
+        "layout.control_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "control_sub_formwork",
+      "expressions": [
+        "layout.control_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "control_sub_rebar",
+      "expressions": [
+        "layout.control_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "control_super_concrete",
+      "expressions": [
+        "layout.control_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "control_super_formwork",
+      "expressions": [
+        "layout.control_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "control_super_rebar",
+      "expressions": [
+        "layout.control_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "controlled_air_volume",
+      "expressions": [
+        "layout.controlled_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_annex_air_volume",
+      "expressions": [
+        "layout.cooling_annex_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_annex_clear_area",
+      "expressions": [
+        "layout.cooling_annex_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_annex_clear_height",
+      "expressions": [
+        "layout.cooling_annex_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_annex_clear_length",
+      "expressions": [
+        "layout.cooling_annex_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_annex_clear_width",
+      "expressions": [
+        "layout.cooling_annex_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_annex_gross_area",
+      "expressions": [
+        "layout.cooling_annex_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_annex_sub_concrete",
+      "expressions": [
+        "layout.cooling_annex_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_annex_sub_formwork",
+      "expressions": [
+        "layout.cooling_annex_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_annex_sub_rebar",
+      "expressions": [
+        "layout.cooling_annex_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_annex_super_concrete",
+      "expressions": [
+        "layout.cooling_annex_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_annex_super_formwork",
+      "expressions": [
+        "layout.cooling_annex_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_annex_super_rebar",
+      "expressions": [
+        "layout.cooling_annex_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_bundle_queue_peak",
+      "expressions": [
+        "layout.cooling_bundle_queue_peak"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_carrier_moves",
+      "expressions": [
+        "layout.cooling_carrier_moves"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_clean_bundle_allocated",
+      "expressions": [
+        "layout.cooling_clean_bundle_allocated"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_clean_bundle_required",
+      "expressions": [
+        "layout.cooling_clean_bundle_required"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_clean_helium_allocated",
+      "expressions": [
+        "layout.cooling_clean_helium_allocated"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_clean_helium_required",
+      "expressions": [
+        "layout.cooling_clean_helium_required"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_clean_salt_allocated",
+      "expressions": [
+        "layout.cooling_clean_salt_allocated"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_clean_salt_required",
+      "expressions": [
+        "layout.cooling_clean_salt_required"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_dirty_bundle_allocated",
+      "expressions": [
+        "layout.cooling_dirty_bundle_allocated"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_dirty_bundle_required",
+      "expressions": [
+        "layout.cooling_dirty_bundle_required"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_dirty_helium_allocated",
+      "expressions": [
+        "layout.cooling_dirty_helium_allocated"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_dirty_helium_required",
+      "expressions": [
+        "layout.cooling_dirty_helium_required"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_dirty_salt_allocated",
+      "expressions": [
+        "layout.cooling_dirty_salt_allocated"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_dirty_salt_required",
+      "expressions": [
+        "layout.cooling_dirty_salt_required"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_hall_air_volume",
+      "expressions": [
+        "layout.cooling_hall_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_hall_clear_area",
+      "expressions": [
+        "layout.cooling_hall_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_hall_clear_height",
+      "expressions": [
+        "layout.cooling_hall_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_hall_clear_length",
+      "expressions": [
+        "layout.cooling_hall_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_hall_clear_width",
+      "expressions": [
+        "layout.cooling_hall_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_hall_gross_area",
+      "expressions": [
+        "layout.cooling_hall_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_hall_sub_concrete",
+      "expressions": [
+        "layout.cooling_hall_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_hall_sub_formwork",
+      "expressions": [
+        "layout.cooling_hall_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_hall_sub_rebar",
+      "expressions": [
+        "layout.cooling_hall_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_hall_super_concrete",
+      "expressions": [
+        "layout.cooling_hall_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_hall_super_formwork",
+      "expressions": [
+        "layout.cooling_hall_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_hall_super_rebar",
+      "expressions": [
+        "layout.cooling_hall_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_helium_queue_peak",
+      "expressions": [
+        "layout.cooling_helium_queue_peak"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_initial_ready_margin_days",
+      "expressions": [
+        "layout.cooling_initial_ready_margin_days"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_jobs_after_shutdown",
+      "expressions": [
+        "layout.cooling_jobs_after_shutdown"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_last_release_year",
+      "expressions": [
+        "layout.cooling_last_release_year"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_link_air_volume",
+      "expressions": [
+        "layout.cooling_link_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_link_clear_area",
+      "expressions": [
+        "layout.cooling_link_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_link_clear_height",
+      "expressions": [
+        "layout.cooling_link_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_link_clear_length",
+      "expressions": [
+        "layout.cooling_link_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_link_clear_width",
+      "expressions": [
+        "layout.cooling_link_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_link_gross_area",
+      "expressions": [
+        "layout.cooling_link_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_link_sub_concrete",
+      "expressions": [
+        "layout.cooling_link_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_link_sub_formwork",
+      "expressions": [
+        "layout.cooling_link_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_link_sub_rebar",
+      "expressions": [
+        "layout.cooling_link_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_link_super_concrete",
+      "expressions": [
+        "layout.cooling_link_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_link_super_formwork",
+      "expressions": [
+        "layout.cooling_link_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_link_super_rebar",
+      "expressions": [
+        "layout.cooling_link_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_outage_basis_resolved",
+      "expressions": [
+        "layout.cooling_outage_basis_resolved"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_replacement_ready_margin_days",
+      "expressions": [
+        "layout.cooling_replacement_ready_margin_days"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cooling_salt_queue_peak",
+      "expressions": [
+        "layout.cooling_salt_queue_peak"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cost_mode",
+      "expressions": [
+        "layout.cost_mode"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_coldbox_air_volume",
+      "expressions": [
+        "layout.cryo_coldbox_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_coldbox_clear_area",
+      "expressions": [
+        "layout.cryo_coldbox_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_coldbox_clear_height",
+      "expressions": [
+        "layout.cryo_coldbox_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_coldbox_clear_length",
+      "expressions": [
+        "layout.cryo_coldbox_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_coldbox_clear_width",
+      "expressions": [
+        "layout.cryo_coldbox_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_coldbox_gross_area",
+      "expressions": [
+        "layout.cryo_coldbox_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_coldbox_sub_concrete",
+      "expressions": [
+        "layout.cryo_coldbox_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_coldbox_sub_formwork",
+      "expressions": [
+        "layout.cryo_coldbox_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_coldbox_sub_rebar",
+      "expressions": [
+        "layout.cryo_coldbox_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_coldbox_super_concrete",
+      "expressions": [
+        "layout.cryo_coldbox_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_coldbox_super_formwork",
+      "expressions": [
+        "layout.cryo_coldbox_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_coldbox_super_rebar",
+      "expressions": [
+        "layout.cryo_coldbox_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_compressors_air_volume",
+      "expressions": [
+        "layout.cryo_compressors_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_compressors_clear_area",
+      "expressions": [
+        "layout.cryo_compressors_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_compressors_clear_height",
+      "expressions": [
+        "layout.cryo_compressors_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_compressors_clear_length",
+      "expressions": [
+        "layout.cryo_compressors_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_compressors_clear_width",
+      "expressions": [
+        "layout.cryo_compressors_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_compressors_gross_area",
+      "expressions": [
+        "layout.cryo_compressors_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_compressors_sub_concrete",
+      "expressions": [
+        "layout.cryo_compressors_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_compressors_sub_formwork",
+      "expressions": [
+        "layout.cryo_compressors_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_compressors_sub_rebar",
+      "expressions": [
+        "layout.cryo_compressors_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_compressors_super_concrete",
+      "expressions": [
+        "layout.cryo_compressors_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_compressors_super_formwork",
+      "expressions": [
+        "layout.cryo_compressors_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "cryo_compressors_super_rebar",
+      "expressions": [
+        "layout.cryo_compressors_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "dirty_buffer_positions_allocated",
+      "expressions": [
+        "layout.dirty_buffer_positions_allocated"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "dirty_buffer_required",
+      "expressions": [
+        "layout.dirty_buffer_required"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "dirty_store_positions_allocated",
+      "expressions": [
+        "layout.dirty_store_positions_allocated"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "dirty_store_required",
+      "expressions": [
+        "layout.dirty_store_required"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "electrical_building_air_volume",
+      "expressions": [
+        "layout.electrical_building_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "electrical_building_clear_area",
+      "expressions": [
+        "layout.electrical_building_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "electrical_building_clear_height",
+      "expressions": [
+        "layout.electrical_building_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "electrical_building_clear_length",
+      "expressions": [
+        "layout.electrical_building_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "electrical_building_clear_width",
+      "expressions": [
+        "layout.electrical_building_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "electrical_building_gross_area",
+      "expressions": [
+        "layout.electrical_building_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "electrical_building_sub_concrete",
+      "expressions": [
+        "layout.electrical_building_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "electrical_building_sub_formwork",
+      "expressions": [
+        "layout.electrical_building_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "electrical_building_sub_rebar",
+      "expressions": [
+        "layout.electrical_building_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "electrical_building_super_concrete",
+      "expressions": [
+        "layout.electrical_building_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "electrical_building_super_formwork",
+      "expressions": [
+        "layout.electrical_building_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "electrical_building_super_rebar",
+      "expressions": [
+        "layout.electrical_building_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "exchanger_count",
+      "expressions": [
+        "equipment.ihx_count"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "exterior_envelope_qualified",
+      "expressions": [
+        "layout.exterior_envelope_qualified"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "facility_shipping_exclusion",
+      "expressions": [
+        "facility_shipping.exclusion"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "fuel_building_air_volume",
+      "expressions": [
+        "layout.fuel_building_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "fuel_building_clear_area",
+      "expressions": [
+        "layout.fuel_building_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "fuel_building_clear_height",
+      "expressions": [
+        "layout.fuel_building_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "fuel_building_clear_length",
+      "expressions": [
+        "layout.fuel_building_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "fuel_building_clear_width",
+      "expressions": [
+        "layout.fuel_building_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "fuel_building_gross_area",
+      "expressions": [
+        "layout.fuel_building_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "fuel_building_sub_concrete",
+      "expressions": [
+        "layout.fuel_building_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "fuel_building_sub_formwork",
+      "expressions": [
+        "layout.fuel_building_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "fuel_building_sub_rebar",
+      "expressions": [
+        "layout.fuel_building_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "fuel_building_super_concrete",
+      "expressions": [
+        "layout.fuel_building_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "fuel_building_super_formwork",
+      "expressions": [
+        "layout.fuel_building_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "fuel_building_super_rebar",
+      "expressions": [
+        "layout.fuel_building_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "helium_machine_count",
+      "expressions": [
+        "equipment.circulator_count"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "hx_shell_bore",
+      "expressions": [
+        "equipment.hx_shell_bore"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "hx_shell_length",
+      "expressions": [
+        "equipment.hx_shell_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "hx_shell_wall",
+      "expressions": [
+        "equipment.hx_shell_wall"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "hx_tube_length",
+      "expressions": [
+        "equipment.hx_tube_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "initial_clean_required",
+      "expressions": [
+        "layout.initial_clean_required"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "initial_margin_days",
+      "expressions": [
+        "layout.initial_margin_days"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "initial_ready_margin_days",
+      "expressions": [
+        "layout.initial_ready_margin_days"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "installed_facility_capital",
+      "expressions": [
+        "facility_accounts.installed_facility_capital"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "layout_buildings_capital",
+      "expressions": [
+        "facility_accounts.layout_buildings_capital"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "layout_land_cost",
+      "expressions": [
+        "facility_land.cost"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "maintenance_shop_air_volume",
+      "expressions": [
+        "layout.maintenance_shop_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "maintenance_shop_clear_area",
+      "expressions": [
+        "layout.maintenance_shop_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "maintenance_shop_clear_height",
+      "expressions": [
+        "layout.maintenance_shop_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "maintenance_shop_clear_length",
+      "expressions": [
+        "layout.maintenance_shop_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "maintenance_shop_clear_width",
+      "expressions": [
+        "layout.maintenance_shop_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "maintenance_shop_gross_area",
+      "expressions": [
+        "layout.maintenance_shop_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "maintenance_shop_sub_concrete",
+      "expressions": [
+        "layout.maintenance_shop_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "maintenance_shop_sub_formwork",
+      "expressions": [
+        "layout.maintenance_shop_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "maintenance_shop_sub_rebar",
+      "expressions": [
+        "layout.maintenance_shop_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "maintenance_shop_super_concrete",
+      "expressions": [
+        "layout.maintenance_shop_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "maintenance_shop_super_formwork",
+      "expressions": [
+        "layout.maintenance_shop_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "maintenance_shop_super_rebar",
+      "expressions": [
+        "layout.maintenance_shop_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "material_capacity_volume",
+      "expressions": [
+        "layout.material_capacity_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "outage_allowed_days",
+      "expressions": [
+        "layout.outage_allowed_days"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "outage_margin_days",
+      "expressions": [
+        "layout.outage_margin_days"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "outage_required_days",
+      "expressions": [
+        "layout.outage_required_days"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "packages_per_sector",
+      "expressions": [
+        "layout.packages_per_sector"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "parcel_area",
+      "expressions": [
+        "layout.parcel_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "power_supply_building_air_volume",
+      "expressions": [
+        "layout.power_supply_building_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "power_supply_building_clear_area",
+      "expressions": [
+        "layout.power_supply_building_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "power_supply_building_clear_height",
+      "expressions": [
+        "layout.power_supply_building_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "power_supply_building_clear_length",
+      "expressions": [
+        "layout.power_supply_building_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "power_supply_building_clear_width",
+      "expressions": [
+        "layout.power_supply_building_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "power_supply_building_gross_area",
+      "expressions": [
+        "layout.power_supply_building_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "power_supply_building_sub_concrete",
+      "expressions": [
+        "layout.power_supply_building_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "power_supply_building_sub_formwork",
+      "expressions": [
+        "layout.power_supply_building_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "power_supply_building_sub_rebar",
+      "expressions": [
+        "layout.power_supply_building_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "power_supply_building_super_concrete",
+      "expressions": [
+        "layout.power_supply_building_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "power_supply_building_super_formwork",
+      "expressions": [
+        "layout.power_supply_building_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "power_supply_building_super_rebar",
+      "expressions": [
+        "layout.power_supply_building_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "provisional_room_count",
+      "expressions": [
+        "layout.provisional_room_count"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "radial_outer_radius",
+      "expressions": [
+        "rb.outer_radius"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_auxiliaries_air_volume",
+      "expressions": [
+        "layout.reactor_auxiliaries_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_auxiliaries_clear_area",
+      "expressions": [
+        "layout.reactor_auxiliaries_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_auxiliaries_clear_height",
+      "expressions": [
+        "layout.reactor_auxiliaries_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_auxiliaries_clear_length",
+      "expressions": [
+        "layout.reactor_auxiliaries_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_auxiliaries_clear_width",
+      "expressions": [
+        "layout.reactor_auxiliaries_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_auxiliaries_gross_area",
+      "expressions": [
+        "layout.reactor_auxiliaries_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_auxiliaries_sub_concrete",
+      "expressions": [
+        "layout.reactor_auxiliaries_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_auxiliaries_sub_formwork",
+      "expressions": [
+        "layout.reactor_auxiliaries_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_auxiliaries_sub_rebar",
+      "expressions": [
+        "layout.reactor_auxiliaries_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_auxiliaries_super_concrete",
+      "expressions": [
+        "layout.reactor_auxiliaries_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_auxiliaries_super_formwork",
+      "expressions": [
+        "layout.reactor_auxiliaries_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_auxiliaries_super_rebar",
+      "expressions": [
+        "layout.reactor_auxiliaries_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_hall_air_volume",
+      "expressions": [
+        "layout.reactor_hall_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_hall_clear_area",
+      "expressions": [
+        "layout.reactor_hall_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_hall_clear_height",
+      "expressions": [
+        "layout.reactor_hall_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_hall_clear_length",
+      "expressions": [
+        "layout.reactor_hall_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_hall_clear_width",
+      "expressions": [
+        "layout.reactor_hall_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_hall_gross_area",
+      "expressions": [
+        "layout.reactor_hall_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_hall_sub_concrete",
+      "expressions": [
+        "layout.reactor_hall_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_hall_sub_formwork",
+      "expressions": [
+        "layout.reactor_hall_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_hall_sub_rebar",
+      "expressions": [
+        "layout.reactor_hall_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_hall_super_concrete",
+      "expressions": [
+        "layout.reactor_hall_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_hall_super_formwork",
+      "expressions": [
+        "layout.reactor_hall_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "reactor_hall_super_rebar",
+      "expressions": [
+        "layout.reactor_hall_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "readiness_margin_days",
+      "expressions": [
+        "layout.readiness_margin_days"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "replacement_ready_margin_days",
+      "expressions": [
+        "layout.replacement_ready_margin_days"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "route_margin_m",
+      "expressions": [
+        "layout.route_margin_m"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "salt_machine_count",
+      "expressions": [
+        "equipment.salt_pump_count"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_height",
+      "expressions": [
+        "layout.sector_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_length",
+      "expressions": [
+        "layout.sector_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_east_air_volume",
+      "expressions": [
+        "layout.sector_link_east_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_east_clear_area",
+      "expressions": [
+        "layout.sector_link_east_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_east_clear_height",
+      "expressions": [
+        "layout.sector_link_east_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_east_clear_length",
+      "expressions": [
+        "layout.sector_link_east_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_east_clear_width",
+      "expressions": [
+        "layout.sector_link_east_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_east_gross_area",
+      "expressions": [
+        "layout.sector_link_east_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_east_sub_concrete",
+      "expressions": [
+        "layout.sector_link_east_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_east_sub_formwork",
+      "expressions": [
+        "layout.sector_link_east_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_east_sub_rebar",
+      "expressions": [
+        "layout.sector_link_east_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_east_super_concrete",
+      "expressions": [
+        "layout.sector_link_east_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_east_super_formwork",
+      "expressions": [
+        "layout.sector_link_east_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_east_super_rebar",
+      "expressions": [
+        "layout.sector_link_east_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_north_air_volume",
+      "expressions": [
+        "layout.sector_link_north_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_north_clear_area",
+      "expressions": [
+        "layout.sector_link_north_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_north_clear_height",
+      "expressions": [
+        "layout.sector_link_north_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_north_clear_length",
+      "expressions": [
+        "layout.sector_link_north_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_north_clear_width",
+      "expressions": [
+        "layout.sector_link_north_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_north_gross_area",
+      "expressions": [
+        "layout.sector_link_north_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_north_sub_concrete",
+      "expressions": [
+        "layout.sector_link_north_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_north_sub_formwork",
+      "expressions": [
+        "layout.sector_link_north_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_north_sub_rebar",
+      "expressions": [
+        "layout.sector_link_north_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_north_super_concrete",
+      "expressions": [
+        "layout.sector_link_north_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_north_super_formwork",
+      "expressions": [
+        "layout.sector_link_north_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_north_super_rebar",
+      "expressions": [
+        "layout.sector_link_north_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_south_air_volume",
+      "expressions": [
+        "layout.sector_link_south_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_south_clear_area",
+      "expressions": [
+        "layout.sector_link_south_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_south_clear_height",
+      "expressions": [
+        "layout.sector_link_south_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_south_clear_length",
+      "expressions": [
+        "layout.sector_link_south_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_south_clear_width",
+      "expressions": [
+        "layout.sector_link_south_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_south_gross_area",
+      "expressions": [
+        "layout.sector_link_south_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_south_sub_concrete",
+      "expressions": [
+        "layout.sector_link_south_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_south_sub_formwork",
+      "expressions": [
+        "layout.sector_link_south_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_south_sub_rebar",
+      "expressions": [
+        "layout.sector_link_south_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_south_super_concrete",
+      "expressions": [
+        "layout.sector_link_south_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_south_super_formwork",
+      "expressions": [
+        "layout.sector_link_south_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_south_super_rebar",
+      "expressions": [
+        "layout.sector_link_south_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_west_air_volume",
+      "expressions": [
+        "layout.sector_link_west_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_west_clear_area",
+      "expressions": [
+        "layout.sector_link_west_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_west_clear_height",
+      "expressions": [
+        "layout.sector_link_west_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_west_clear_length",
+      "expressions": [
+        "layout.sector_link_west_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_west_clear_width",
+      "expressions": [
+        "layout.sector_link_west_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_west_gross_area",
+      "expressions": [
+        "layout.sector_link_west_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_west_sub_concrete",
+      "expressions": [
+        "layout.sector_link_west_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_west_sub_formwork",
+      "expressions": [
+        "layout.sector_link_west_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_west_sub_rebar",
+      "expressions": [
+        "layout.sector_link_west_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_west_super_concrete",
+      "expressions": [
+        "layout.sector_link_west_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_west_super_formwork",
+      "expressions": [
+        "layout.sector_link_west_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_link_west_super_rebar",
+      "expressions": [
+        "layout.sector_link_west_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_load_qualified",
+      "expressions": [
+        "layout.sector_load_qualified"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_width",
+      "expressions": [
+        "layout.sector_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_east_air_volume",
+      "expressions": [
+        "layout.sector_wing_east_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_east_clear_area",
+      "expressions": [
+        "layout.sector_wing_east_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_east_clear_height",
+      "expressions": [
+        "layout.sector_wing_east_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_east_clear_length",
+      "expressions": [
+        "layout.sector_wing_east_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_east_clear_width",
+      "expressions": [
+        "layout.sector_wing_east_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_east_gross_area",
+      "expressions": [
+        "layout.sector_wing_east_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_east_sub_concrete",
+      "expressions": [
+        "layout.sector_wing_east_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_east_sub_formwork",
+      "expressions": [
+        "layout.sector_wing_east_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_east_sub_rebar",
+      "expressions": [
+        "layout.sector_wing_east_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_east_super_concrete",
+      "expressions": [
+        "layout.sector_wing_east_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_east_super_formwork",
+      "expressions": [
+        "layout.sector_wing_east_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_east_super_rebar",
+      "expressions": [
+        "layout.sector_wing_east_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_north_air_volume",
+      "expressions": [
+        "layout.sector_wing_north_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_north_clear_area",
+      "expressions": [
+        "layout.sector_wing_north_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_north_clear_height",
+      "expressions": [
+        "layout.sector_wing_north_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_north_clear_length",
+      "expressions": [
+        "layout.sector_wing_north_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_north_clear_width",
+      "expressions": [
+        "layout.sector_wing_north_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_north_gross_area",
+      "expressions": [
+        "layout.sector_wing_north_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_north_sub_concrete",
+      "expressions": [
+        "layout.sector_wing_north_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_north_sub_formwork",
+      "expressions": [
+        "layout.sector_wing_north_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_north_sub_rebar",
+      "expressions": [
+        "layout.sector_wing_north_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_north_super_concrete",
+      "expressions": [
+        "layout.sector_wing_north_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_north_super_formwork",
+      "expressions": [
+        "layout.sector_wing_north_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_north_super_rebar",
+      "expressions": [
+        "layout.sector_wing_north_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_south_air_volume",
+      "expressions": [
+        "layout.sector_wing_south_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_south_clear_area",
+      "expressions": [
+        "layout.sector_wing_south_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_south_clear_height",
+      "expressions": [
+        "layout.sector_wing_south_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_south_clear_length",
+      "expressions": [
+        "layout.sector_wing_south_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_south_clear_width",
+      "expressions": [
+        "layout.sector_wing_south_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_south_gross_area",
+      "expressions": [
+        "layout.sector_wing_south_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_south_sub_concrete",
+      "expressions": [
+        "layout.sector_wing_south_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_south_sub_formwork",
+      "expressions": [
+        "layout.sector_wing_south_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_south_sub_rebar",
+      "expressions": [
+        "layout.sector_wing_south_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_south_super_concrete",
+      "expressions": [
+        "layout.sector_wing_south_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_south_super_formwork",
+      "expressions": [
+        "layout.sector_wing_south_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_south_super_rebar",
+      "expressions": [
+        "layout.sector_wing_south_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_west_air_volume",
+      "expressions": [
+        "layout.sector_wing_west_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_west_clear_area",
+      "expressions": [
+        "layout.sector_wing_west_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_west_clear_height",
+      "expressions": [
+        "layout.sector_wing_west_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_west_clear_length",
+      "expressions": [
+        "layout.sector_wing_west_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_west_clear_width",
+      "expressions": [
+        "layout.sector_wing_west_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_west_gross_area",
+      "expressions": [
+        "layout.sector_wing_west_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_west_sub_concrete",
+      "expressions": [
+        "layout.sector_wing_west_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_west_sub_formwork",
+      "expressions": [
+        "layout.sector_wing_west_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_west_sub_rebar",
+      "expressions": [
+        "layout.sector_wing_west_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_west_super_concrete",
+      "expressions": [
+        "layout.sector_wing_west_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_west_super_formwork",
+      "expressions": [
+        "layout.sector_wing_west_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "sector_wing_west_super_rebar",
+      "expressions": [
+        "layout.sector_wing_west_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "security_air_volume",
+      "expressions": [
+        "layout.security_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "security_clear_area",
+      "expressions": [
+        "layout.security_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "security_clear_height",
+      "expressions": [
+        "layout.security_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "security_clear_length",
+      "expressions": [
+        "layout.security_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "security_clear_width",
+      "expressions": [
+        "layout.security_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "security_gross_area",
+      "expressions": [
+        "layout.security_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "security_sub_concrete",
+      "expressions": [
+        "layout.security_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "security_sub_formwork",
+      "expressions": [
+        "layout.security_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "security_sub_rebar",
+      "expressions": [
+        "layout.security_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "security_super_concrete",
+      "expressions": [
+        "layout.security_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "security_super_formwork",
+      "expressions": [
+        "layout.security_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "security_super_rebar",
+      "expressions": [
+        "layout.security_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "service_water_building_air_volume",
+      "expressions": [
+        "layout.service_water_building_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "service_water_building_clear_area",
+      "expressions": [
+        "layout.service_water_building_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "service_water_building_clear_height",
+      "expressions": [
+        "layout.service_water_building_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "service_water_building_clear_length",
+      "expressions": [
+        "layout.service_water_building_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "service_water_building_clear_width",
+      "expressions": [
+        "layout.service_water_building_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "service_water_building_gross_area",
+      "expressions": [
+        "layout.service_water_building_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "service_water_building_sub_concrete",
+      "expressions": [
+        "layout.service_water_building_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "service_water_building_sub_formwork",
+      "expressions": [
+        "layout.service_water_building_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "service_water_building_sub_rebar",
+      "expressions": [
+        "layout.service_water_building_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "service_water_building_super_concrete",
+      "expressions": [
+        "layout.service_water_building_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "service_water_building_super_formwork",
+      "expressions": [
+        "layout.service_water_building_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "service_water_building_super_rebar",
+      "expressions": [
+        "layout.service_water_building_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "site_services_building_air_volume",
+      "expressions": [
+        "layout.site_services_building_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "site_services_building_clear_area",
+      "expressions": [
+        "layout.site_services_building_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "site_services_building_clear_height",
+      "expressions": [
+        "layout.site_services_building_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "site_services_building_clear_length",
+      "expressions": [
+        "layout.site_services_building_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "site_services_building_clear_width",
+      "expressions": [
+        "layout.site_services_building_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "site_services_building_gross_area",
+      "expressions": [
+        "layout.site_services_building_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "site_services_building_sub_concrete",
+      "expressions": [
+        "layout.site_services_building_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "site_services_building_sub_formwork",
+      "expressions": [
+        "layout.site_services_building_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "site_services_building_sub_rebar",
+      "expressions": [
+        "layout.site_services_building_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "site_services_building_super_concrete",
+      "expressions": [
+        "layout.site_services_building_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "site_services_building_super_formwork",
+      "expressions": [
+        "layout.site_services_building_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "site_services_building_super_rebar",
+      "expressions": [
+        "layout.site_services_building_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "total_air_volume",
+      "expressions": [
+        "layout.total_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "total_clear_area",
+      "expressions": [
+        "layout.total_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "total_gross_area",
+      "expressions": [
+        "layout.total_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "turbine_hall_air_volume",
+      "expressions": [
+        "layout.turbine_hall_air_volume"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "turbine_hall_clear_area",
+      "expressions": [
+        "layout.turbine_hall_clear_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "turbine_hall_clear_height",
+      "expressions": [
+        "layout.turbine_hall_clear_height"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "turbine_hall_clear_length",
+      "expressions": [
+        "layout.turbine_hall_clear_length"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "turbine_hall_clear_width",
+      "expressions": [
+        "layout.turbine_hall_clear_width"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "turbine_hall_gross_area",
+      "expressions": [
+        "layout.turbine_hall_gross_area"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "turbine_hall_sub_concrete",
+      "expressions": [
+        "layout.turbine_hall_sub_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "turbine_hall_sub_formwork",
+      "expressions": [
+        "layout.turbine_hall_sub_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "turbine_hall_sub_rebar",
+      "expressions": [
+        "layout.turbine_hall_sub_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "turbine_hall_super_concrete",
+      "expressions": [
+        "layout.turbine_hall_super_concrete"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "turbine_hall_super_formwork",
+      "expressions": [
+        "layout.turbine_hall_super_formwork"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "turbine_hall_super_rebar",
+      "expressions": [
+        "layout.turbine_hall_super_rebar"
+      ],
+      "pure_dotted_references": true
+    },
+    {
+      "attribute": "unused_material_capacity",
+      "expressions": [
+        "layout.unused_material_capacity"
+      ],
+      "pure_dotted_references": true
+    }
+  ],
+  "all_added_are_pure_exposes": true,
+  "limits": "Lexical classification of actual added issue identities; executable generation and oracle tests separately verify the resolved values."
+}

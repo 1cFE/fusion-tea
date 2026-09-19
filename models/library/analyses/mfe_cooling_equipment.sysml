@@ -298,5 +298,11 @@ Disabled returns finite zeros before active guards. Active requires finite numer
         out attribute salt_pump_shaft_MW : Real;
         // [1], per plant
         out attribute ihx_count : Real;
+        // WI-068 pure geometry interfaces [m]. These are the same quantities
+        // used by this calculation's installed exchanger pricing, not new inputs.
+        out attribute hx_shell_bore : Real;
+        out attribute hx_shell_wall : Real;
+        out attribute hx_shell_length : Real;
+        out attribute hx_tube_length : Real;
     }
 }

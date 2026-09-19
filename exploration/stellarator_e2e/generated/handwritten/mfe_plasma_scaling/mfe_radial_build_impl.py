@@ -28,6 +28,7 @@ SysML Expressions:
     structure_vol = C * (structure_or ** 2 - ht_shield_or ** 2)
     vessel_vol = C * (vessel_or ** 2 - gap1_or ** 2)
     wall_area = kappa_in * 4.0 * pi ** 2 * R_in * vacuum_or
+    outer_radius = lt_shield_or
     r_coil = vessel_or
     r_coil_centre = vessel_or + coil_t_in / 2.0
     
@@ -60,7 +61,7 @@ AUTO_IMPLEMENTED = True
 from stellarator_tea.modules.mfe_plasma_scaling.mfe_radial_build import MFE_Radial_BuildInput
 
 
-def run_mfe_radial_build(inputs: MFE_Radial_BuildInput) -> tuple[float, float, float, float, float, float, float]:
+def run_mfe_radial_build(inputs: MFE_Radial_BuildInput) -> tuple[float, float, float, float, float, float, float, float]:
     """Execute MFE_Radial_Build calculation.
 
 Forward radial build [m, m^2, m^3] for an MFE torus: cumulative layer
@@ -111,6 +112,7 @@ SysML Expressions:
     structure_vol = C * (structure_or ** 2 - ht_shield_or ** 2)
     vessel_vol = C * (vessel_or ** 2 - gap1_or ** 2)
     wall_area = kappa_in * 4.0 * pi ** 2 * R_in * vacuum_or
+    outer_radius = lt_shield_or
     r_coil = vessel_or
     r_coil_centre = vessel_or + coil_t_in / 2.0
     
@@ -141,11 +143,11 @@ Args:
     inputs: Input parameters validated against MFE_Radial_BuildInput schema
 
 Returns:
-    tuple[float, ...]: (wall_area, shield_vol, structure_vol, r_coil_centre, r_coil, blanket_vol, vessel_vol)
+    tuple[float, ...]: (wall_area, shield_vol, structure_vol, r_coil_centre, r_coil, blanket_vol, outer_radius, vessel_vol)
 
 Example:
     >>> inputs = MFE_Radial_BuildInput(...)
-    >>> wall_area, shield_vol, structure_vol, r_coil_centre, r_coil, blanket_vol, vessel_vol = run_mfe_radial_build(inputs)
+    >>> wall_area, shield_vol, structure_vol, r_coil_centre, r_coil, blanket_vol, outer_radius, vessel_vol = run_mfe_radial_build(inputs)
     """
     vacuum_or = (inputs.a_in + inputs.vacuum_t_in)
     firstwall_or = (vacuum_or + inputs.firstwall_t_in)
@@ -171,5 +173,6 @@ Example:
         (vessel_or + (inputs.coil_t_in / 2.0)),  # r_coil_centre
         vessel_or,  # r_coil
         ((firstwall_vol + blanket_layer_vol) + reflector_vol),  # blanket_vol
+        lt_shield_or,  # outer_radius
         (C * ((vessel_or ** 2) - (gap1_or ** 2))),  # vessel_vol
     )

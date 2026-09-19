@@ -102,3 +102,29 @@ Civil reference-data acquisition · `knowledge/research/requests/REQ-LBF-02.json
 ### T-005 start — 2026-09-18
 
 Native WI-068 facility implementation and verification · `work/active/WI-068_layout-based-facilities/`, canonical/staging models and executable package · exact contract, generation/validation evidence and independent integrated review. Continuing layout author owns production models/generation/spine contracts; source researcher owns independent oracle/consumer maps; coordinator owns study-route contract, commits and goal records. Parallel authoring follows a shared published interface and disjoint files; coordinator integrates sequentially. See `evidence/implementation-brief.md` and `evidence/oracle-brief.md` for ownership.
+
+### T-005 implementation checkpoint — 2026-09-18
+
+[AGENT] Canonical model and account wiring transferred to the coordinator during integration; the continuing layout author retained manual facility bodies, geometry tests and generation contracts. The independent oracle author retained separate equations and oracle/consumer maps. The generated candidate passed 836 scalar comparisons, 24 author tests and 39 facility-account/retained-cooling tests; the final spine/oracle run passed 31 tests. These checks are scoped software evidence, not a construction qualification.
+
+The substantive reviewer then reproduced three acceptance gaps: waste-package yield below one reduced storage without authorization; oversized cooling machines could pass a narrower common route; and late initial cooling field deliveries were absent from readiness. The candidate is held for bounded corrective implementation and independent recheck. Production defaults, calendar and physical requirements remain the authority. No native integration candidate or study result has been promoted.
+
+### T-006 scope
+
+- **Objective:** Promote one reviewed native integration candidate and execute the focused facility-response study against it.
+- **Why now:** Implementation and its substantive audit have reached bounded repairs; study preparation can proceed independently while release remains held.
+- **Scope:** Native integration, qualified axis declaration/indicators, owner-reserved framing ruling, matched and diagnostic cases, immutable native store, independent numerical verification and evidence-linked interpretation. No reveal, archive replacement or formal goal closure.
+- **Inputs:** WI-068 reviewed implementation and corrected audit release, actual package identities, owner prompt, study policy and native study runbook.
+- **Done when:** One accepted candidate and one committed focused study preserve all scalar/predicate outcomes and support fresh independent R9.S grading.
+- **Stop when:** Audit hold, native mechanical refusal, required owner framing decision or material scientific surprise prevents dependent execution.
+
+### T-006 start — 2026-09-18
+
+[AGENT] Study preparation opened at `exploration/stellarator_e2e/studies/20260918-layout-based-facilities/`. No study point has run. Provisional full-group indicators identify construction-rate and ton-unit assumptions as `no_constraint_response`; the coordinator asked the owner to permit those as cost sensitivities only or omit them. Their ruling remains pending. Dependent execution is held; T-005 corrective work continues.
+
+### T-005 return — 2026-09-18
+
+- **Outcome:** COMPLETE.
+- **Evidence:** WI-068 `audit.md` final release, `evidence/author-validation.md`, `evidence/final-affected-regressions.log`, complete static delta/classification and fresh-generation/repin receipts. Repaired executable `21d2bda3596ab0df38356bac9e404680ca6a836099a89dc0a2e8f6f73edb9208`; semantic `a913cbcf04a82403d8a7c51e13fc09718596d3dc1557b06c7b583481476cdc4d`.
+- **Reading:** Independent audit resolves A1–A3, including fixed door takeoff, actual failed native predicates and unchanged cost/physical control behavior. Forty-three author tests, 307 affected regressions, 836 independent scalar comparisons and exact fresh generation pass. Static L2/L6 failures remain classified; qualifications and missing procurement scope remain explicit.
+- **Decision:** [AGENT] Coordinator accepts the corrected implementation release and proceeds to the native integration seam under T-006. Tier: execution detail. The scoped model commit containing this return is the audited work reference. No study point, final grade or owner-held closure is implied.

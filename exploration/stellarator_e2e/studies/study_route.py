@@ -45,7 +45,7 @@ PACKAGE_DIR = E2E / "generated"
 MANIFEST_PATH = HERE / "manifest.json"
 P = "stellarator_09__stellaris__"
 BASELINE_RESULT_SCHEMA_VERSION = "study-baseline-result/v1"
-EXPECTED_CONSTRAINT_COUNT = 20  # WI-062 adds reference-conductor current margin.
+EXPECTED_CONSTRAINT_COUNT = 25  # WI-068 adds five facility readiness/capacity/route checks.
 
 # --- Axis declarations: SysML attribute -> complete entry-key expansion ------
 AXES: dict[str, list[str]] = {
@@ -103,9 +103,10 @@ def validate_proposal(raw):
         raise RouteError(f"retired entry key {P}magnet__R0; use plant R")
     out = {}
     for key, value in raw.items():
-        # WI-059/WI-067 authored Boolean entries retain their type. Boolean
+        # Authored Boolean entries retain their type. Boolean
         # proposals for numeric plant quantities retain their existing refusal.
-        if key in {f"{P}cryoplant__inventory_enabled", f"{P}heat_transport__equipment_enabled"} and isinstance(value, bool):
+        if key in {f"{P}cryoplant__inventory_enabled", f"{P}heat_transport__equipment_enabled",
+                   f"{P}buildings__facilities_enabled"} and isinstance(value, bool):
             out[key] = value
         elif not isinstance(value, (int, float)) or isinstance(value, bool):
             return None

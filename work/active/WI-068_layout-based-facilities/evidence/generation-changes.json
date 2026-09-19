@@ -1,0 +1,6 @@
+{
+  "contracts/package_contract.json": {
+    "before": "bb625c1c245b3409c79ac1472ff489595dbe7c6bf9d21c1c6abd1044071f6b3e",
+    "after": "b8bcb599af4aed22fae85f082faecaa10c7d03109bee84861a17f8847b560f8d"
+  }
+}

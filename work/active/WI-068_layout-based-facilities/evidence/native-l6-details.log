@@ -1,0 +1,55 @@
+
+======================================================================
+SysML Quality Validation
+Models path: exploration/stellarator_e2e/models
+Mode: Fail-fast
+Running: Level 6 only
+======================================================================
+
+Running: Level 6: Architecture & Pipeline Readiness...
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+
+❌ Level 6: Architecture & Pipeline Readiness
+   Calc defs checked: 87
+   Calc usages checked: 96
+   Bindings validated: 768
+   Design attrs checked: 696
+   Manifests checked: 0
+   L6_MISSING_QUALIFIED_NAME: 0
+   L6_INVALID_QUALIFIED_NAME: 0
+   L6_CALC_DEF_NO_OUTPUT: 0
+   L6_CALC_DEF_NO_DIRECTION: 0
+   L6_INVALID_BINDING_FORMAT: 0
+   L6_DESIGN_ATTR_INCOMPLETE: 83
+   L6_DESIGN_ATTR_UNEXTRACTABLE: 442
+   L6_ANONYMOUS_RETURN: 0
+   L6_BODY_ASSIGNMENT_IMPL_LOSS: 0
+   V4_STATIC_FUNCTION_INVOCATION: 0
+   L6_CONSTRAINT_MALFORMED_NUMERICAL: 0
+   L6_CONSTRAINT_NON_NUMERICAL: 0
+   L6_CALC_DEF_NO_INSTANTIATION: 0
+   L6_ATTR_REDEF_EXPR_DROPPED: 0
+
+   Issues found: 1076
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost'] at file:exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml:426
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'capital_cost', 'capital_cost', 'capital_cost'] at file:exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml:432
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'cas22_capital', 'bop_capital', 'special_materials_capital', 'cas28_capital'] at file:exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml:516
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'capital_cost', 'n_mod'] at file:exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml:668
+   - ERROR: Unsupported operator '.' in attribute 'mfe_power_core::'Magnet System'::B' at file:exploration/stellarator_e2e/models/cost_structure/mfe_power_core.sysml:105
+   ... and 1071 more
+
+❌ Stopping at first failure (Level 6)
+   Use --complete to run all levels regardless of failures
+
+======================================================================
+Summary
+======================================================================
+Checks run: 1
+✅ Passed: 0
+❌ Failed: 1
+
+❌ Quality checks failed
+   Review issues above and fix before proceeding

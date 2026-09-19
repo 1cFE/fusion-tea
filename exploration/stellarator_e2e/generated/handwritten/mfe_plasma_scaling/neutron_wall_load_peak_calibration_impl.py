@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:272
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:273
 
 SysML Expressions:
     ash_frac_in = 0.2002
@@ -91,7 +91,7 @@ calibration_direct. p_fus_ref must never be 0 (a dormant concept binds
 *Ref**: Table 2 image (images/page_002_table_0.png: peak neutron wall load, peak fusion power, radii); geometry.py:67-81 (torus surface area); work/orchestration/goals/wall-and-heating/evidence/round2_T-001_source_basis.md section 5 (the identity and its decomposition)
 *Basis**: a source's printed 3D peak per unit of the model's own circular-torus average at the source's design point; MFE-generic
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:272
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:273
 
 SysML Expressions:
     ash_frac_in = 0.2002

@@ -7,7 +7,7 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "ea2359115fb21fb1def3d3b6c88e72878faaf4218db226ffea62734e57979004",
+      "digest": "8ee44a9bd02728033cbfe707c024fd0511fd82dc33d22e88091ba45c8a9220aa",
       "files": [
         "contracts/model_contract.json",
         "inputs/mfe_account_costs_params.json",
@@ -24,8 +24,8 @@
       ]
     },
     "recorded_provenance": {
-      "semantic_fingerprint": "7ecd02d1084a78c43bafff9c43f1e90f864f9c59406963f3c38554bb59b09d64",
-      "executable_fingerprint": "02f2b0a94cda3f0dc763bedf120e2d192086cae374a9abd932909ae710870e92"
+      "semantic_fingerprint": "a913cbcf04a82403d8a7c51e13fc09718596d3dc1557b06c7b583481476cdc4d",
+      "executable_fingerprint": "21d2bda3596ab0df38356bac9e404680ca6a836099a89dc0a2e8f6f73edb9208"
     }
   },
   "objective_catalog": [
@@ -109,7 +109,7 @@
     },
     "headline": {
       "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
-      "value": 270.82387460276726
+      "value": 273.4546494372188
     },
     "verdicts": [
       {
@@ -131,6 +131,26 @@
       {
         "source_local_identity": "divertor_heat_ok",
         "expected": "violated"
+      },
+      {
+        "source_local_identity": "facility_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "facility_initial_ready",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "facility_outage_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "facility_replacement_ready",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "facility_routes_ok",
+        "expected": "satisfied"
       },
       {
         "source_local_identity": "heating_couple_positive_ok",

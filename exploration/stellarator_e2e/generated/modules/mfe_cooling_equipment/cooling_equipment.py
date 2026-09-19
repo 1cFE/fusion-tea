@@ -71,6 +71,7 @@ Outputs:
     - primary_pipe_installation: primary_pipe_installation result
     - salt_unit_price: salt_unit_price result
     - salt_electric_MW: salt_electric_MW result
+    - hx_tube_length: hx_tube_length result
     - secondary_pipe_purchase: secondary_pipe_purchase result
     - hx_installation: hx_installation result
     - salt_inventory_mass: salt_inventory_mass result
@@ -97,6 +98,7 @@ Outputs:
     - helium_inventory_cost: helium_inventory_cost result
     - salt_Re_hot: salt_Re_hot result
     - salt_hx_volume: salt_hx_volume result
+    - hx_shell_bore: hx_shell_bore result
     - inventory_source_volume_ok: inventory_source_volume_ok result
     - pump_shaft_hp: pump_shaft_hp result
     - salt_pipe_volume: salt_pipe_volume result
@@ -106,11 +108,13 @@ Outputs:
     - circulator_volume: circulator_volume result
     - salt_flow: salt_flow result
     - ihx_required_area: ihx_required_area result
+    - hx_shell_wall: hx_shell_wall result
     - machine_event_purchase: machine_event_purchase result
     - shell_mass: shell_mass result
     - primary_pipe_mass: primary_pipe_mass result
     - salt_pump_transfer_validated: salt_pump_transfer_validated result
     - pump_size_ok: pump_size_ok result
+    - hx_shell_length: hx_shell_length result
     - salt_inventory_cost: salt_inventory_cost result
     - conversion_heat_MW: conversion_heat_MW result
     - ihx_cold_approach: ihx_cold_approach result
@@ -317,6 +321,7 @@ Outputs:
     - primary_pipe_installation: primary_pipe_installation result
     - salt_unit_price: salt_unit_price result
     - salt_electric_MW: salt_electric_MW result
+    - hx_tube_length: hx_tube_length result
     - secondary_pipe_purchase: secondary_pipe_purchase result
     - hx_installation: hx_installation result
     - salt_inventory_mass: salt_inventory_mass result
@@ -343,6 +348,7 @@ Outputs:
     - helium_inventory_cost: helium_inventory_cost result
     - salt_Re_hot: salt_Re_hot result
     - salt_hx_volume: salt_hx_volume result
+    - hx_shell_bore: hx_shell_bore result
     - inventory_source_volume_ok: inventory_source_volume_ok result
     - pump_shaft_hp: pump_shaft_hp result
     - salt_pipe_volume: salt_pipe_volume result
@@ -352,11 +358,13 @@ Outputs:
     - circulator_volume: circulator_volume result
     - salt_flow: salt_flow result
     - ihx_required_area: ihx_required_area result
+    - hx_shell_wall: hx_shell_wall result
     - machine_event_purchase: machine_event_purchase result
     - shell_mass: shell_mass result
     - primary_pipe_mass: primary_pipe_mass result
     - salt_pump_transfer_validated: salt_pump_transfer_validated result
     - pump_size_ok: pump_size_ok result
+    - hx_shell_length: hx_shell_length result
     - salt_inventory_cost: salt_inventory_cost result
     - conversion_heat_MW: conversion_heat_MW result
     - ihx_cold_approach: ihx_cold_approach result
@@ -468,7 +476,7 @@ Disabled returns finite zeros before active guards. Active requires finite numer
     for manual implementation.
 
     NOTE: Uses MultiOutput pattern for type-safe multi-output support.
-    TEAx automatically extracts salt_pump_flow, ihx_hot_approach, exchangers_cost, pressure_qualified, ihx_installed_area, pump_flow_gpm, secondary_piping_cost, secondary_installation, cycle_interface_ok, salt_price_raw, salt_velocity_cold, primary_circulators_cost, inventory_cost, salt_expansion_ratio, salt_straight_loss, primary_pipe_installation, salt_unit_price, salt_electric_MW, secondary_pipe_purchase, hx_installation, salt_inventory_mass, helium_inventory_volume, replacement_annual, salt_makeup_annual, helium_makeup_annual, inventory_complete, heads_mass, primary_design, salt_head_remaining, installation_total, salt_return_C, circulator_shaft_MW, circulator_flow, source_volume_ratio, purchased_total, delivered_total, primary_pipe_volume, bundle_event_purchase, bundle_mass, helium_standard_volume, salt_shaft_MW, helium_inventory_cost, salt_Re_hot, salt_hx_volume, inventory_source_volume_ok, pump_shaft_hp, salt_pipe_volume, cycle_temperature_gap, primary_piping_cost, hx_purchase, circulator_volume, salt_flow, ihx_required_area, machine_event_purchase, shell_mass, primary_pipe_mass, salt_pump_transfer_validated, pump_size_ok, salt_inventory_cost, conversion_heat_MW, ihx_cold_approach, salt_bulk_scale_ok, pump_size_factor, salt_inventory_volume, primary_installation, circulator_count, helium_hx_volume, tube_mass, consumables_annual, secondary_pipe_installation, machine_event_installation, secondary_vendor, machine_event_removal, salt_Re_cold, machine_events, primary_pipe_purchase, primary_vendor, primary_spare, secondary_spare, pump_head_ft, secondary_pipe_mass, pump_type_ok, helium_price_year, ihx_count, salt_flow_regime_ok, bundle_event_installation, bundle_event_removal, helium_price_raw, ihx_lmtd, salt_velocity_hot, hx_mass, helium_inventory_mass, salt_pump_count, motor_electric_hp, secondary_pumps_cost, motor_factor_ok, sheets_mass, spares_cost, salt_head_ok, salt_price_year, circulator_electric_MW, ihx_capacity_ok, salt_pump_shaft_MW, ihx_duty_MW, installed_total, bundle_events, helium_price_transfer_validated, circulator_suction_Pa, motor_base_ok fields to separate channels.
+    TEAx automatically extracts salt_pump_flow, ihx_hot_approach, exchangers_cost, pressure_qualified, ihx_installed_area, pump_flow_gpm, secondary_piping_cost, secondary_installation, cycle_interface_ok, salt_price_raw, salt_velocity_cold, primary_circulators_cost, inventory_cost, salt_expansion_ratio, salt_straight_loss, primary_pipe_installation, salt_unit_price, salt_electric_MW, hx_tube_length, secondary_pipe_purchase, hx_installation, salt_inventory_mass, helium_inventory_volume, replacement_annual, salt_makeup_annual, helium_makeup_annual, inventory_complete, heads_mass, primary_design, salt_head_remaining, installation_total, salt_return_C, circulator_shaft_MW, circulator_flow, source_volume_ratio, purchased_total, delivered_total, primary_pipe_volume, bundle_event_purchase, bundle_mass, helium_standard_volume, salt_shaft_MW, helium_inventory_cost, salt_Re_hot, salt_hx_volume, hx_shell_bore, inventory_source_volume_ok, pump_shaft_hp, salt_pipe_volume, cycle_temperature_gap, primary_piping_cost, hx_purchase, circulator_volume, salt_flow, ihx_required_area, hx_shell_wall, machine_event_purchase, shell_mass, primary_pipe_mass, salt_pump_transfer_validated, pump_size_ok, hx_shell_length, salt_inventory_cost, conversion_heat_MW, ihx_cold_approach, salt_bulk_scale_ok, pump_size_factor, salt_inventory_volume, primary_installation, circulator_count, helium_hx_volume, tube_mass, consumables_annual, secondary_pipe_installation, machine_event_installation, secondary_vendor, machine_event_removal, salt_Re_cold, machine_events, primary_pipe_purchase, primary_vendor, primary_spare, secondary_spare, pump_head_ft, secondary_pipe_mass, pump_type_ok, helium_price_year, ihx_count, salt_flow_regime_ok, bundle_event_installation, bundle_event_removal, helium_price_raw, ihx_lmtd, salt_velocity_hot, hx_mass, helium_inventory_mass, salt_pump_count, motor_electric_hp, secondary_pumps_cost, motor_factor_ok, sheets_mass, spares_cost, salt_head_ok, salt_price_year, circulator_electric_MW, ihx_capacity_ok, salt_pump_shaft_MW, ihx_duty_MW, installed_total, bundle_events, helium_price_transfer_validated, circulator_suction_Pa, motor_base_ok fields to separate channels.
     """
 
     name: str = "Cooling_EquipmentModule"
@@ -552,7 +560,7 @@ Disabled returns finite zeros before active guards. Active requires finite numer
             helium_discharge_Pa_in: helium_discharge_Pa_in input
 
         Returns:
-            Module result with Cooling_EquipmentOutput (salt_pump_flow, ihx_hot_approach, exchangers_cost, pressure_qualified, ihx_installed_area, pump_flow_gpm, secondary_piping_cost, secondary_installation, cycle_interface_ok, salt_price_raw, salt_velocity_cold, primary_circulators_cost, inventory_cost, salt_expansion_ratio, salt_straight_loss, primary_pipe_installation, salt_unit_price, salt_electric_MW, secondary_pipe_purchase, hx_installation, salt_inventory_mass, helium_inventory_volume, replacement_annual, salt_makeup_annual, helium_makeup_annual, inventory_complete, heads_mass, primary_design, salt_head_remaining, installation_total, salt_return_C, circulator_shaft_MW, circulator_flow, source_volume_ratio, purchased_total, delivered_total, primary_pipe_volume, bundle_event_purchase, bundle_mass, helium_standard_volume, salt_shaft_MW, helium_inventory_cost, salt_Re_hot, salt_hx_volume, inventory_source_volume_ok, pump_shaft_hp, salt_pipe_volume, cycle_temperature_gap, primary_piping_cost, hx_purchase, circulator_volume, salt_flow, ihx_required_area, machine_event_purchase, shell_mass, primary_pipe_mass, salt_pump_transfer_validated, pump_size_ok, salt_inventory_cost, conversion_heat_MW, ihx_cold_approach, salt_bulk_scale_ok, pump_size_factor, salt_inventory_volume, primary_installation, circulator_count, helium_hx_volume, tube_mass, consumables_annual, secondary_pipe_installation, machine_event_installation, secondary_vendor, machine_event_removal, salt_Re_cold, machine_events, primary_pipe_purchase, primary_vendor, primary_spare, secondary_spare, pump_head_ft, secondary_pipe_mass, pump_type_ok, helium_price_year, ihx_count, salt_flow_regime_ok, bundle_event_installation, bundle_event_removal, helium_price_raw, ihx_lmtd, salt_velocity_hot, hx_mass, helium_inventory_mass, salt_pump_count, motor_electric_hp, secondary_pumps_cost, motor_factor_ok, sheets_mass, spares_cost, salt_head_ok, salt_price_year, circulator_electric_MW, ihx_capacity_ok, salt_pump_shaft_MW, ihx_duty_MW, installed_total, bundle_events, helium_price_transfer_validated, circulator_suction_Pa, motor_base_ok)
+            Module result with Cooling_EquipmentOutput (salt_pump_flow, ihx_hot_approach, exchangers_cost, pressure_qualified, ihx_installed_area, pump_flow_gpm, secondary_piping_cost, secondary_installation, cycle_interface_ok, salt_price_raw, salt_velocity_cold, primary_circulators_cost, inventory_cost, salt_expansion_ratio, salt_straight_loss, primary_pipe_installation, salt_unit_price, salt_electric_MW, hx_tube_length, secondary_pipe_purchase, hx_installation, salt_inventory_mass, helium_inventory_volume, replacement_annual, salt_makeup_annual, helium_makeup_annual, inventory_complete, heads_mass, primary_design, salt_head_remaining, installation_total, salt_return_C, circulator_shaft_MW, circulator_flow, source_volume_ratio, purchased_total, delivered_total, primary_pipe_volume, bundle_event_purchase, bundle_mass, helium_standard_volume, salt_shaft_MW, helium_inventory_cost, salt_Re_hot, salt_hx_volume, hx_shell_bore, inventory_source_volume_ok, pump_shaft_hp, salt_pipe_volume, cycle_temperature_gap, primary_piping_cost, hx_purchase, circulator_volume, salt_flow, ihx_required_area, hx_shell_wall, machine_event_purchase, shell_mass, primary_pipe_mass, salt_pump_transfer_validated, pump_size_ok, hx_shell_length, salt_inventory_cost, conversion_heat_MW, ihx_cold_approach, salt_bulk_scale_ok, pump_size_factor, salt_inventory_volume, primary_installation, circulator_count, helium_hx_volume, tube_mass, consumables_annual, secondary_pipe_installation, machine_event_installation, secondary_vendor, machine_event_removal, salt_Re_cold, machine_events, primary_pipe_purchase, primary_vendor, primary_spare, secondary_spare, pump_head_ft, secondary_pipe_mass, pump_type_ok, helium_price_year, ihx_count, salt_flow_regime_ok, bundle_event_installation, bundle_event_removal, helium_price_raw, ihx_lmtd, salt_velocity_hot, hx_mass, helium_inventory_mass, salt_pump_count, motor_electric_hp, secondary_pumps_cost, motor_factor_ok, sheets_mass, spares_cost, salt_head_ok, salt_price_year, circulator_electric_MW, ihx_capacity_ok, salt_pump_shaft_MW, ihx_duty_MW, installed_total, bundle_events, helium_price_transfer_validated, circulator_suction_Pa, motor_base_ok)
         """
         # Validate inputs
         validated_inputs = self.validate_and_fill_default(bundle_life_in, n_mod_in, primary_electric_MW_in, q_ihx_MW_in, n_loops_in, helium_gamma_in, accessory_mass_in, enabled_in, mdot_loop_in, eta_motor_in, years_in, tube_wall_in, helium_cp_in, machine_life_in, inventory_reserve_in, discount_in, removal_multiplier_in, primary_shaft_MW_in, costscale_in, shell_wall_in, makeup_fraction_in, helium_hot_K_in, eta_p_in, secondary_head_in, sourcefitargument_C_in, helium_suction_K_in, layout_multiplier_in, saltprice_source_choice_in, dp_loop_in, helium_discharge_Pa_in)
@@ -563,7 +571,7 @@ Disabled returns finite zeros before active guards. Active requires finite numer
         )
 
         # Execute implementation - returns tuple of values
-        salt_pump_flow, ihx_hot_approach, exchangers_cost, pressure_qualified, ihx_installed_area, pump_flow_gpm, secondary_piping_cost, secondary_installation, cycle_interface_ok, salt_price_raw, salt_velocity_cold, primary_circulators_cost, inventory_cost, salt_expansion_ratio, salt_straight_loss, primary_pipe_installation, salt_unit_price, salt_electric_MW, secondary_pipe_purchase, hx_installation, salt_inventory_mass, helium_inventory_volume, replacement_annual, salt_makeup_annual, helium_makeup_annual, inventory_complete, heads_mass, primary_design, salt_head_remaining, installation_total, salt_return_C, circulator_shaft_MW, circulator_flow, source_volume_ratio, purchased_total, delivered_total, primary_pipe_volume, bundle_event_purchase, bundle_mass, helium_standard_volume, salt_shaft_MW, helium_inventory_cost, salt_Re_hot, salt_hx_volume, inventory_source_volume_ok, pump_shaft_hp, salt_pipe_volume, cycle_temperature_gap, primary_piping_cost, hx_purchase, circulator_volume, salt_flow, ihx_required_area, machine_event_purchase, shell_mass, primary_pipe_mass, salt_pump_transfer_validated, pump_size_ok, salt_inventory_cost, conversion_heat_MW, ihx_cold_approach, salt_bulk_scale_ok, pump_size_factor, salt_inventory_volume, primary_installation, circulator_count, helium_hx_volume, tube_mass, consumables_annual, secondary_pipe_installation, machine_event_installation, secondary_vendor, machine_event_removal, salt_Re_cold, machine_events, primary_pipe_purchase, primary_vendor, primary_spare, secondary_spare, pump_head_ft, secondary_pipe_mass, pump_type_ok, helium_price_year, ihx_count, salt_flow_regime_ok, bundle_event_installation, bundle_event_removal, helium_price_raw, ihx_lmtd, salt_velocity_hot, hx_mass, helium_inventory_mass, salt_pump_count, motor_electric_hp, secondary_pumps_cost, motor_factor_ok, sheets_mass, spares_cost, salt_head_ok, salt_price_year, circulator_electric_MW, ihx_capacity_ok, salt_pump_shaft_MW, ihx_duty_MW, installed_total, bundle_events, helium_price_transfer_validated, circulator_suction_Pa, motor_base_ok = run_cooling_equipment(validated_inputs)
+        salt_pump_flow, ihx_hot_approach, exchangers_cost, pressure_qualified, ihx_installed_area, pump_flow_gpm, secondary_piping_cost, secondary_installation, cycle_interface_ok, salt_price_raw, salt_velocity_cold, primary_circulators_cost, inventory_cost, salt_expansion_ratio, salt_straight_loss, primary_pipe_installation, salt_unit_price, salt_electric_MW, hx_tube_length, secondary_pipe_purchase, hx_installation, salt_inventory_mass, helium_inventory_volume, replacement_annual, salt_makeup_annual, helium_makeup_annual, inventory_complete, heads_mass, primary_design, salt_head_remaining, installation_total, salt_return_C, circulator_shaft_MW, circulator_flow, source_volume_ratio, purchased_total, delivered_total, primary_pipe_volume, bundle_event_purchase, bundle_mass, helium_standard_volume, salt_shaft_MW, helium_inventory_cost, salt_Re_hot, salt_hx_volume, hx_shell_bore, inventory_source_volume_ok, pump_shaft_hp, salt_pipe_volume, cycle_temperature_gap, primary_piping_cost, hx_purchase, circulator_volume, salt_flow, ihx_required_area, hx_shell_wall, machine_event_purchase, shell_mass, primary_pipe_mass, salt_pump_transfer_validated, pump_size_ok, hx_shell_length, salt_inventory_cost, conversion_heat_MW, ihx_cold_approach, salt_bulk_scale_ok, pump_size_factor, salt_inventory_volume, primary_installation, circulator_count, helium_hx_volume, tube_mass, consumables_annual, secondary_pipe_installation, machine_event_installation, secondary_vendor, machine_event_removal, salt_Re_cold, machine_events, primary_pipe_purchase, primary_vendor, primary_spare, secondary_spare, pump_head_ft, secondary_pipe_mass, pump_type_ok, helium_price_year, ihx_count, salt_flow_regime_ok, bundle_event_installation, bundle_event_removal, helium_price_raw, ihx_lmtd, salt_velocity_hot, hx_mass, helium_inventory_mass, salt_pump_count, motor_electric_hp, secondary_pumps_cost, motor_factor_ok, sheets_mass, spares_cost, salt_head_ok, salt_price_year, circulator_electric_MW, ihx_capacity_ok, salt_pump_shaft_MW, ihx_duty_MW, installed_total, bundle_events, helium_price_transfer_validated, circulator_suction_Pa, motor_base_ok = run_cooling_equipment(validated_inputs)
 
 
         # Return MultiOutput container (TEAx auto-extracts to channels)
@@ -588,6 +596,7 @@ Disabled returns finite zeros before active guards. Active requires finite numer
                 primary_pipe_installation=primary_pipe_installation,
                 salt_unit_price=salt_unit_price,
                 salt_electric_MW=salt_electric_MW,
+                hx_tube_length=hx_tube_length,
                 secondary_pipe_purchase=secondary_pipe_purchase,
                 hx_installation=hx_installation,
                 salt_inventory_mass=salt_inventory_mass,
@@ -614,6 +623,7 @@ Disabled returns finite zeros before active guards. Active requires finite numer
                 helium_inventory_cost=helium_inventory_cost,
                 salt_Re_hot=salt_Re_hot,
                 salt_hx_volume=salt_hx_volume,
+                hx_shell_bore=hx_shell_bore,
                 inventory_source_volume_ok=inventory_source_volume_ok,
                 pump_shaft_hp=pump_shaft_hp,
                 salt_pipe_volume=salt_pipe_volume,
@@ -623,11 +633,13 @@ Disabled returns finite zeros before active guards. Active requires finite numer
                 circulator_volume=circulator_volume,
                 salt_flow=salt_flow,
                 ihx_required_area=ihx_required_area,
+                hx_shell_wall=hx_shell_wall,
                 machine_event_purchase=machine_event_purchase,
                 shell_mass=shell_mass,
                 primary_pipe_mass=primary_pipe_mass,
                 salt_pump_transfer_validated=salt_pump_transfer_validated,
                 pump_size_ok=pump_size_ok,
+                hx_shell_length=hx_shell_length,
                 salt_inventory_cost=salt_inventory_cost,
                 conversion_heat_MW=conversion_heat_MW,
                 ihx_cold_approach=ihx_cold_approach,

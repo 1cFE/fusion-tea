@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:366
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:367
 
 SysML Expressions:
     mu0 = 1.25663706212e-06
@@ -96,7 +96,7 @@ one <p> the model reads 2.53 % at point A, thermal)
 *Basis**: beta = 2*mu0*<p>/B^2 with <p> the volume-averaged thermal
 pressure of all species over the source's profile rules; MFE-generic
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:366
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:367
 
 SysML Expressions:
     mu0 = 1.25663706212e-06

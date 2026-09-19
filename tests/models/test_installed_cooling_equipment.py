@@ -110,8 +110,12 @@ def test_actual_native_cost_and_energy_selectors(evaluate):
 
 
 def test_native_replacement_reaches_lcoe_without_changing_capital(evaluate):
-    base = evaluate()
-    long = evaluate(heat_transport__equipment_machine_life=30., heat_transport__equipment_bundle_life=30.)
+    # Isolate cooling purchase accounting. WI-068 separately checks the capital
+    # response when changed retirement demand resizes facility storage.
+    base = evaluate(buildings__facilities_cost_mode=0.)
+    long = evaluate(buildings__facilities_cost_mode=0.,
+                    heat_transport__equipment_machine_life=30.,
+                    heat_transport__equipment_bundle_life=30.)
     assert long[P+'total_capital__total_capital'] == base[P+'total_capital__total_capital']
     assert long[P+'pb__p_net'] == base[P+'pb__p_net']
     assert long[P+'lcoe_calc__lcoe'] < base[P+'lcoe_calc__lcoe']

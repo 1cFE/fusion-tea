@@ -34,4 +34,5 @@ SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:52
     r_coil_centre: float = Field(description="r_coil_centre output")
     r_coil: float = Field(description="r_coil output")
     blanket_vol: float = Field(description="blanket_vol output")
+    outer_radius: float = Field(description="outer_radius output")
     vessel_vol: float = Field(description="vessel_vol output")

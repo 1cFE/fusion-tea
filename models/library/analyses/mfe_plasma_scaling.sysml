@@ -134,6 +134,7 @@ package mfe_plasma_scaling {
         // First-wall area [m^2] (standoff radius vacuum_or, not a) and
         // coil-bore radius [m] = vessel outer radius.
         out attribute wall_area : Real = kappa_in * 4.0 * (pi ** 2) * R_in * vacuum_or;
+        out attribute outer_radius : Real = lt_shield_or;
         out attribute r_coil : Real = vessel_or;
         // Coil-centre minor radius [m] = vessel_or + coil_t / 2 (WI-044): the
         // "average minor coil radius" a_coil of the sourced coil-bore shapes

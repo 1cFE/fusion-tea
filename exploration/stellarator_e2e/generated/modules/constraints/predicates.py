@@ -105,6 +105,11 @@ def constraint_pred_definition_mfe_viability__divertor_target_heat_limit(q_targe
     value = _cmp('<=', q_target_peak_in, q_target_limit_in)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((q_target_limit_in - q_target_peak_in)) if (_fin(q_target_peak_in) and _fin(q_target_limit_in)) else None))
 
+# definition:mfe_facilities::'Facility Nonnegative Margin'
+def constraint_pred_definition_mfe_facilities__facility_nonnegative_margin(margin_in):
+    value = _cmp('>=', margin_in, 0.0)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((margin_in - 0.0)) if (_fin(margin_in) and _fin(0.0)) else None))
+
 # definition:mfe_heating_chain::'Heating Efficiency Upper'
 def constraint_pred_definition_mfe_heating_chain__heating_efficiency_upper(efficiency):
     value = _cmp('<=', efficiency, 1.0)

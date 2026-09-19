@@ -634,6 +634,7 @@ package mfe_account_costs {
         in attribute n_mod_in : Real default 1.0;
         // WI-067: optional bound formal precedes skipped defaults on the exact route.
         in attribute delivered_shipping_exclusion_in : Real default 0.0;
+        in attribute facility_exclusion_in : Real default 0.0;
         // Defaulted formals declared last: usages bind the formals above by name
         // and leave these at their defaults; a skipped default must not precede
         // a bound formal on the exact route (migration ledger).
@@ -644,7 +645,7 @@ package mfe_account_costs {
         in attribute contingency_rate_in : Real default 0.0;
         in attribute ref_net_power : Real default 1000.0;
         out attribute cost : Real =
-            (shipping_frac * (cas20 - delivered_shipping_exclusion_in)
+            (shipping_frac * (cas20 - delivered_shipping_exclusion_in - facility_exclusion_in)
              + spares_frac * cas23_to_28
              + tax_frac * cas20
              + insurance_frac * (cas20 + cas30)

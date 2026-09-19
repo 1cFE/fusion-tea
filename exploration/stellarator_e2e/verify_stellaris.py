@@ -14,6 +14,7 @@ import math
 import oracle_finance as finance
 import oracle_breeding as breeding_oracle
 import oracle_cooling as cooling_oracle
+import oracle_facilities as facilities_oracle
 
 # WI-022 discretization contract — EXACT mirror of the handwritten impl
 # (generated/handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py). The
@@ -973,6 +974,8 @@ IN.update({
 })
 
 
+IN.update({'facility_'+key:value for key,value in facilities_oracle.DEFAULTS.items()})
+
 def compute():
     if "magnet_R0" in IN:
         raise ValueError("retired oracle input magnet_R0; use plant R")
@@ -1201,6 +1204,10 @@ def compute():
         'q_ihx_MW': loop_q_ihx, 'years': p['operational_years'],
         'discount': p['discount_rate'], 'sourcefitargument_C': cycle_T2_C,
     })
+    cooling.update(hx_shell_bore=3.2 if p['cooling_enabled'] else 0.,
+                   hx_shell_wall=p['cooling_shell_wall'] if p['cooling_enabled'] else 0.,
+                   hx_shell_length=13. if p['cooling_enabled'] else 0.,
+                   hx_tube_length=11.6 if p['cooling_enabled'] else 0.)
     cooling_electric_total = loop_p_pump_total + p['cooling_energy_mode'] * cooling['salt_electric_MW']
     cooling_recovered_total = loop_q_recovered_total + p['cooling_energy_mode'] * cooling['salt_shaft_MW']
 
@@ -1263,6 +1270,30 @@ def compute():
     heat_rejection = p["n_mod"] * p_th * p["heat_rej_per_mw"]
     misc = p["n_mod"] * p_et * p["misc_per_mw"]
 
+    # --- Neutron wall load: average, source-anchored calibration, peak (WI-041) ---
+    # Written from the WI-041 design's table, not transcribed from the generated
+    # modules: the average over the oracle's own wall_area; the calibration from
+    # the six reference facts through the oracle's own torus-area convention at
+    # the source's point; the peak as their product. The peak is what the fence
+    # compares and what CAS72's lifetime reads.
+    wall_load = p_fus * (1.0 - 0.2002) / wall_area
+    A_ref = (p["wall_peak_kappa_ref"] * 4.0 * (p["pi"] ** 2) * p["wall_peak_R_ref"]
+             * (p["wall_peak_a_ref"] + p["wall_peak_standoff_ref"]))
+    p_n_ref = p["wall_peak_p_fus_ref"] * (1.0 - 0.2002)
+    wall_peak_calibration = (p["wall_peak_q_ref"] * A_ref / p_n_ref
+                             + p["wall_peak_calibration_direct"])
+    wall_load_peak = wall_load * wall_peak_calibration
+
+    replacement_cost_per_event = (blanket + divertor) * p["n_mod"]
+    # WI-046: one lifecycle calendar produces availability and CAS72 (the closed form
+    # above); the periodic chain survives as its held mode.
+    cal = _oracle_lifecycle_calendar(
+        cost_per_event=replacement_cost_per_event, q_n=wall_load_peak,
+        fluence_limit=p["fluence_limit"], interest_rate=p["discount_rate"], operational_years=p["operational_years"],
+        outage_years=p["outage_years"], unplanned_fraction=p["unplanned_fraction"],
+        coil_life_fpy=p["coil_life_fpy"], availability_direct=p["availability_direct"],
+    )
+
     # Forward-computed direct accounts (WI-025) — mirror the generated
     # buildings_cost / precon_cost / om_cost impl statement forms verbatim
     # (bit-exact); p_the_ref = p_et_ref = 1100 (no DEC), n_mod frozen at 1.
@@ -1274,6 +1305,22 @@ def compute():
         + (p["bldg_et_base"] * ((p_et * p["n_mod"]) / p["p_et_ref"])))
     precon = (((p["land_intensity"] * (((p_net * p["n_mod"]) * p["ref_net_power"]) ** 0.5))
                * p["land_cost"]) + p["precon_fixed_base"])
+    # WI-068: independent facilities geometry and interval inventories.
+    facilities = facilities_oracle.layout(
+        {key:p['facility_'+key] for key in facilities_oracle.DEFAULTS},
+        dict(n_mod=p['n_mod'], major_radius=p['R'], minor_outer_radius=lt_shield_or,
+             blanket_volume=blanket_vol, calendar_mode=p['availability_direct'],
+             calendar_years=p['operational_years'], calendar_outage=p['outage_years'],
+             cooling_helium_count=cooling['circulator_count'], cooling_salt_count=cooling['salt_pump_count'],
+             cooling_bundle_count=cooling['ihx_count'], cooling_circuits=cooling['ihx_count'],
+             cooling_machine_life=p['cooling_machine_life'], cooling_bundle_life=p['cooling_bundle_life'],
+             hx_tube_length=11.6, hx_shell_bore=3.2, hx_shell_wall=p['cooling_shell_wall'], hx_shell_length=13.),
+        cal['events'])
+    buildings_legacy, precon_legacy = buildings, precon
+    facility_mode = p['facility_facilities_cost_mode']
+    buildings = (1-facility_mode)*buildings_legacy + facility_mode*facilities['layout_buildings_capital']
+    precon = (1-facility_mode)*precon_legacy + facility_mode*(p['precon_fixed_base']+facilities['layout_land_cost'])
+    facility_exclusion = facility_mode*(1+p['contingency_rate'])*facilities['installed_facility_capital']
     # Unlevelized annual O&M (WI-025). WI-029 levelizes it into CAS71 below;
     # it is no longer the DCF numerator itself.
     annual_om_unlevelized = ((p["om_annual_ref"] * (((p_net * p["n_mod"]) / p["ref_net_power"]) ** p["om_alpha"]))
@@ -1316,7 +1363,7 @@ def compute():
     cas23_to_28_capital = bop_capital + special_materials_capital + cas28_capital
     # CAS40 owner + CAS50 supplementary at overnight (no CAS29/CAS30 on them)
     owner = p["owner_base"] * (n * p_net / p["owner_ref"]) ** p["owner_alpha"]
-    supplementary = ((p["supp_shipping_frac"] * (cas20_capital - p["cooling_cost_mode"] * cooling["delivered_total"])
+    supplementary = ((p["supp_shipping_frac"] * (cas20_capital - p["cooling_cost_mode"] * cooling["delivered_total"] - facility_exclusion)
                       + p["supp_spares_frac"] * cas23_to_28_capital
                       + p["supp_tax_frac"] * cas20_capital
                       + p["supp_insurance_frac"] * (cas20_capital + cas30_capital)
@@ -1354,29 +1401,6 @@ def compute():
     cas71_annual = _levelized_annual_cost(cooling_om_total)
 
 
-    # --- Neutron wall load: average, source-anchored calibration, peak (WI-041) ---
-    # Written from the WI-041 design's table, not transcribed from the generated
-    # modules: the average over the oracle's own wall_area; the calibration from
-    # the six reference facts through the oracle's own torus-area convention at
-    # the source's point; the peak as their product. The peak is what the fence
-    # compares and what CAS72's lifetime reads.
-    wall_load = p_fus * (1.0 - 0.2002) / wall_area
-    A_ref = (p["wall_peak_kappa_ref"] * 4.0 * (p["pi"] ** 2) * p["wall_peak_R_ref"]
-             * (p["wall_peak_a_ref"] + p["wall_peak_standoff_ref"]))
-    p_n_ref = p["wall_peak_p_fus_ref"] * (1.0 - 0.2002)
-    wall_peak_calibration = (p["wall_peak_q_ref"] * A_ref / p_n_ref
-                             + p["wall_peak_calibration_direct"])
-    wall_load_peak = wall_load * wall_peak_calibration
-
-    replacement_cost_per_event = (blanket + divertor) * n
-    # WI-046: one lifecycle calendar produces availability and CAS72 (the closed form
-    # above); the periodic chain survives as its held mode.
-    cal = _oracle_lifecycle_calendar(
-        cost_per_event=replacement_cost_per_event, q_n=wall_load_peak,
-        fluence_limit=p["fluence_limit"], interest_rate=i_rate, operational_years=n_life,
-        outage_years=p["outage_years"], unplanned_fraction=p["unplanned_fraction"],
-        coil_life_fpy=p["coil_life_fpy"], availability_direct=p["availability_direct"],
-    )
     availability = cal["availability"]
     cas72_annual = cal["cas72_annual"] + p["cooling_cost_mode"] * cooling["replacement_annual"]
     # (WI-046: the fuel block moved below the calendar -- it reads the calendar's availability)
@@ -1521,6 +1545,14 @@ def compute():
         cooling_electric_total=cooling_electric_total, cooling_recovered_total=cooling_recovered_total,
         cooling_om_total=cooling_om_total,
         **{'cooling_' + name: value for name, value in cooling.items()},
+        **{'facility_' + name: value for name, value in facilities.items()},
+        buildings_legacy=buildings_legacy, precon_legacy=precon_legacy, facility_exclusion=facility_exclusion,
+        facility_site_allowance=facilities['active']*p['facility_retained_site_improvements'],
+        facility_initial_sector_start_days=p['facility_initial_sector_start_days'],
+        facility_cooling_initial_handoff_days=p['facility_cooling_initial_handoff_days'],
+        shipping_cooling_exclusion=p['cooling_cost_mode']*cooling['delivered_total'],
+        shipping_facility_exclusion=facility_exclusion,
+        shipping_remaining_base=cas20_capital-p['cooling_cost_mode']*cooling['delivered_total']-facility_exclusion,
         fuel_handling=fuel_handling, other_rpe=other_rpe, inc=inc,
         owner=owner, supplementary=supplementary, idc_capital=idc_capital,
         reactor_equipment_subtotal=reactor_equipment_subtotal,

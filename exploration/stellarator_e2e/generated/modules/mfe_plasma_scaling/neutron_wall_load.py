@@ -29,9 +29,9 @@ Inputs:
 Outputs:
     - wall_load: wall_load result
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:236
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:237
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:236
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:237
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_plasma_scaling/neutron_wall_load_impl.py
@@ -86,9 +86,9 @@ Inputs:
 Outputs:
     - wall_load: wall_load result
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:236
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:237
 
-    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:236
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:237
 
     Calculation Specification:
         ash_frac_in = 0.2002
