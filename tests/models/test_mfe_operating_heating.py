@@ -94,11 +94,17 @@ def test_heating_efficiency_scalar_consumers(native,boundaries):
     assert sum(len(verify.feature_refs(json.loads(e['predicate_ir']))) for e in entries if e['constraint_id'] not in FACILITY_PREDICATES | WI073_PREDICATES | MR7_PREDICATES)==30
     assert sum(len(verify.feature_refs(json.loads(e['predicate_ir']))) for e in entries if e['constraint_id'] in WI073_PREDICATES)==6
     assert all(len(verify.feature_refs(json.loads(e['predicate_ir'])))==1 for e in entries if e['constraint_id'] in FACILITY_PREDICATES)
+    from tests.models.current_mfe_regressions import ROUND2_DELTA
+    round2_predicates = set(ROUND2_DELTA["added_predicates"])
     assert {e['source_local_identity']: len(verify.feature_refs(json.loads(e['predicate_ir'])))
-            for e in entries if e['constraint_id'] in MR7_PREDICATES} == {
+            for e in entries if e['constraint_id'] in MR7_PREDICATES - round2_predicates} == {
         'facility_geometry_ok': 1, 'facility_material_capacity_ok': 1,
         'facility_occupancy_ok': 1, 'facility_parcel_ok': 1,
         'fuel_processing_capacity_ok': 2, 'represented_coolant_fill_ok': 3}
+    # Every new capacity assertion binds its actual definedness and signed margin.
+    assert {e['constraint_id'] for e in entries if e['constraint_id'] in round2_predicates} == round2_predicates
+    assert all(len(verify.feature_refs(json.loads(e['predicate_ir']))) == 2
+               for e in entries if e['constraint_id'] in round2_predicates)
     for entry in entries: indicators.predicate_operands(entry)
     new={e['source_local_identity']:e for e in entries if e['source_local_identity'].startswith('heating_')}
     assert set(new)=={'heating_source_positive_ok','heating_source_upper_ok','heating_couple_positive_ok','heating_couple_upper_ok'}
@@ -267,6 +273,45 @@ def test_operating_heat_complete_cost_operand_classification(native,monkeypatch)
             expected_inputs['capital_cost']='float '+P+'buildings__facility_accounts__cost'
         elif channel in {'overnight_capital__overnight_capital','total_capital__total_capital'}:
             expected_inputs['preconstruction_capital']='float '+P+'facility_preconstruction__cost.root'
+        # WI-079 exact released supplied-package/guarded-class edges. All other
+        # historical producer bindings retain their independent expected mapping.
+        class_edges = {
+            'blanket_cost__cost': {'p_th_in': 'blanket__cost_thermal_class_MW'},
+            'shield_cost__cost': {'p_th_in': 'shield__cost_thermal_class_MW'},
+            'structure_cost__cost': {'p_et_in': 'structure__cost_gross_class_MWe'},
+            'vessel_cost__cost': {'p_et_in': 'vessel__cost_gross_class_MWe'},
+            'misc_cost__cost': {'power': 'misc_plant__cost_gross_class_MWe'},
+            'remote_handling__cost': {'p_et_in': 'remote_handling_cost_gross_class_MWe'},
+            'waste__cost': {'power': 'waste_cost_thermal_class_MW'},
+            'other_rpe__cost': {'power': 'other_rpe_cost_net_class_MWe'},
+            'inc_cost__cost': {'power': 'inc_cost_thermal_class_MW'},
+            'owner__cost': {'power': 'owner_cost_net_class_MWe'},
+            'om_cost__annual_om': {'p_net': 'om_staffing_net_class_MWe'},
+            'precon_cost__cost': {'p_net': 'precon_legacy_cost_net_class_MWe'},
+            'coolant__cost': {'p_net': 'heat_transport__legacy_cost_net_class_MWe', 'p_th_in': 'heat_transport__legacy_cost_thermal_class_MW'},
+            'fuel_handling__cost': {'power': 'fuel_cycle__legacy_cost_net_class_MWe'},
+            'buildings_cost__cost': {'p_fus': 'buildings__legacy_cost_fusion_class_MW', 'p_et_in': 'buildings__legacy_cost_gross_class_MWe', 'p_the_in': 'buildings__legacy_cost_thermal_electric_class_MWe', 'p_th_in': 'buildings__legacy_cost_thermal_class_MW'},
+        }
+        for formal, source in class_edges.get(channel, {}).items():
+            expected_inputs[formal] = 'float ' + P + source + '_guard__value.root'
+        packages = {'turbine_cost__cost': 'turbine', 'heat_rejection_cost__cost': 'heat_rejection',
+                    'power_supplies_cost__cost': 'power_supplies', 'divertor_cost__cost': 'divertor'}
+        if channel in packages:
+            part = packages[channel]
+            count = ('float mfe_plant_params.' + P + 'n_mod' if part in ('turbine', 'heat_rejection')
+                     else 'float mfe_account_costs_params.' + P + part + '__' + channel.rsplit('__', 1)[0] + '__n_mod_in')
+            expected_inputs = {'purchase_cost_in': 'float stellarator_plant_params.' + P + part + '__purchase_cost_per_module', 'n_mod_in': count}
+        elif channel == 'electric_cost__cost':
+            expected_inputs['power'] = 'float stellarator_plant_params.' + P + 'electric_plant__installed_gross_rating_MWe'
+        elif channel == 'aux_cooling__cost':
+            expected_inputs = {'thermal_class_in': 'float ' + P + 'cryoplant__aux_cost_thermal_class_MW_guard__value.root',
+                               'purchase_cost_in': 'float stellarator_plant_params.' + P + 'cryoplant__purchase_cost_per_module',
+                               'n_mod_in': 'float mfe_plant_params.' + P + 'n_mod',
+                               'aux_per_mw_in': 'float stellarator_plant_params.' + P + 'aux_per_mw'}
+        elif channel == 'supplementary__cost':
+            del expected_inputs['p_net']
+            expected_inputs.update({formal: 'float ' + P + field + '_guard__value.root' for formal, field in (
+                ('startup_net_class_in', 'startup_cost_net_class_MWe'), ('decom_net_class_in', 'decom_cost_net_class_MWe'))})
         assert current[renamed_module(channel.rsplit('__',1)[0])]['inputs']==expected_inputs,module
     expected_loop_inputs = {k:renamed_ref(v) for k,v in old[P+'primary_loop']['inputs'].items()}
     # MR-7 separates installed rated capacity from the pressure-drop reference.

@@ -1,0 +1,329 @@
+{
+  "new_inputs": {
+    "turbine__purchase_cost_per_module": {
+      "oracle_key": "selected_turbine_purchase_cost_per_module",
+      "default": 247464428.83859593,
+      "native_channel": "stellarator_09__stellaris__turbine__turbine_cost__cost",
+      "entering_oracle_key": "turbine",
+      "units": "dollars/module",
+      "role": "supplied package assumption"
+    },
+    "heat_rejection__purchase_cost_per_module": {
+      "oracle_key": "selected_heat_rejection_purchase_cost_per_module",
+      "default": 115939531.80564217,
+      "native_channel": "stellarator_09__stellaris__heat_rejection__heat_rejection_cost__cost",
+      "entering_oracle_key": "heat_rejection",
+      "units": "dollars/module",
+      "role": "supplied package assumption"
+    },
+    "power_supplies__purchase_cost_per_module": {
+      "oracle_key": "selected_power_supplies_purchase_cost_per_module",
+      "default": 86013482.74180616,
+      "native_channel": "stellarator_09__stellaris__power_supplies__power_supplies_cost__cost",
+      "entering_oracle_key": "power_supplies",
+      "units": "dollars/module",
+      "role": "supplied package assumption"
+    },
+    "divertor__purchase_cost_per_module": {
+      "oracle_key": "selected_divertor_purchase_cost_per_module",
+      "default": 109109123.15593052,
+      "native_channel": "stellarator_09__stellaris__divertor__divertor_cost__cost",
+      "entering_oracle_key": "divertor",
+      "units": "dollars/module",
+      "role": "supplied package assumption"
+    },
+    "cryoplant__purchase_cost_per_module": {
+      "oracle_key": "selected_cryoplant_purchase_cost_per_module",
+      "default": 31478692.121086925,
+      "native_channel": "stellarator_09__stellaris__cryoplant__aux_cooling__cryo_cost",
+      "entering_oracle_key": "cryo_cost",
+      "units": "dollars/module",
+      "role": "supplied package assumption"
+    },
+    "blanket__cost_thermal_class_MW": {
+      "oracle_key": "selected_blanket_cost_thermal_class_MW",
+      "default": 3306.8890988488924,
+      "native_channel": "stellarator_09__stellaris__pb__p_th",
+      "entering_oracle_key": "p_th",
+      "units": "MW/module",
+      "role": "selected procurement class; not capability"
+    },
+    "shield__cost_thermal_class_MW": {
+      "oracle_key": "selected_shield_cost_thermal_class_MW",
+      "default": 3306.8890988488924,
+      "native_channel": "stellarator_09__stellaris__pb__p_th",
+      "entering_oracle_key": "p_th",
+      "units": "MW/module",
+      "role": "selected procurement class; not capability"
+    },
+    "structure__cost_gross_class_MWe": {
+      "oracle_key": "selected_structure_cost_gross_class_MWe",
+      "default": 1219.9981701764736,
+      "native_channel": "stellarator_09__stellaris__pb__p_et",
+      "entering_oracle_key": "p_et",
+      "units": "MWe/module",
+      "role": "selected procurement class; not capability"
+    },
+    "vessel__cost_gross_class_MWe": {
+      "oracle_key": "selected_vessel_cost_gross_class_MWe",
+      "default": 1219.9981701764736,
+      "native_channel": "stellarator_09__stellaris__pb__p_et",
+      "entering_oracle_key": "p_et",
+      "units": "MWe/module",
+      "role": "selected procurement class; not capability"
+    },
+    "misc_plant__cost_gross_class_MWe": {
+      "oracle_key": "selected_misc_plant_cost_gross_class_MWe",
+      "default": 1219.9981701764736,
+      "native_channel": "stellarator_09__stellaris__pb__p_et",
+      "entering_oracle_key": "p_et",
+      "units": "MWe/module",
+      "role": "selected procurement class; not capability"
+    },
+    "remote_handling_cost_gross_class_MWe": {
+      "oracle_key": "selected_remote_handling_cost_gross_class_MWe",
+      "default": 1219.9981701764736,
+      "native_channel": "stellarator_09__stellaris__pb__p_et",
+      "entering_oracle_key": "p_et",
+      "units": "MWe/module",
+      "role": "selected procurement class; not capability"
+    },
+    "cryoplant__aux_cost_thermal_class_MW": {
+      "oracle_key": "selected_cryoplant_aux_cost_thermal_class_MW",
+      "default": 3306.8890988488924,
+      "native_channel": "stellarator_09__stellaris__pb__p_th",
+      "entering_oracle_key": "p_th",
+      "units": "MW/module",
+      "role": "selected procurement class; not capability"
+    },
+    "waste_cost_thermal_class_MW": {
+      "oracle_key": "selected_waste_cost_thermal_class_MW",
+      "default": 3306.8890988488924,
+      "native_channel": "stellarator_09__stellaris__pb__p_th",
+      "entering_oracle_key": "p_th",
+      "units": "MW/module",
+      "role": "selected procurement class; not capability"
+    },
+    "other_rpe_cost_net_class_MWe": {
+      "oracle_key": "selected_other_rpe_cost_net_class_MWe",
+      "default": 850.0653006674999,
+      "native_channel": "stellarator_09__stellaris__pb__p_net",
+      "entering_oracle_key": "p_net",
+      "units": "MWe/module",
+      "role": "selected procurement class; not capability"
+    },
+    "inc_cost_thermal_class_MW": {
+      "oracle_key": "selected_inc_cost_thermal_class_MW",
+      "default": 3306.8890988488924,
+      "native_channel": "stellarator_09__stellaris__pb__p_th",
+      "entering_oracle_key": "p_th",
+      "units": "MW/module",
+      "role": "selected procurement class; not capability"
+    },
+    "owner_cost_net_class_MWe": {
+      "oracle_key": "selected_owner_cost_net_class_MWe",
+      "default": 850.0653006674999,
+      "native_channel": "stellarator_09__stellaris__pb__p_net",
+      "entering_oracle_key": "p_net",
+      "units": "MWe/module",
+      "role": "selected procurement class; not capability"
+    },
+    "startup_cost_net_class_MWe": {
+      "oracle_key": "selected_startup_cost_net_class_MWe",
+      "default": 850.0653006674999,
+      "native_channel": "stellarator_09__stellaris__pb__p_net",
+      "entering_oracle_key": "p_net",
+      "units": "MWe/module",
+      "role": "selected procurement class; not capability"
+    },
+    "decom_cost_net_class_MWe": {
+      "oracle_key": "selected_decom_cost_net_class_MWe",
+      "default": 850.0653006674999,
+      "native_channel": "stellarator_09__stellaris__pb__p_net",
+      "entering_oracle_key": "p_net",
+      "units": "MWe/module",
+      "role": "selected procurement class; not capability"
+    },
+    "om_staffing_net_class_MWe": {
+      "oracle_key": "selected_om_staffing_net_class_MWe",
+      "default": 850.0653006674999,
+      "native_channel": "stellarator_09__stellaris__pb__p_net",
+      "entering_oracle_key": "p_net",
+      "units": "MWe/module",
+      "role": "selected procurement class; not capability"
+    },
+    "buildings__legacy_cost_fusion_class_MW": {
+      "oracle_key": "selected_buildings_legacy_cost_fusion_class_MW",
+      "default": 2652.5632625175904,
+      "native_channel": "stellarator_09__stellaris__plasma__fusion__p_fus",
+      "entering_oracle_key": "p_fus",
+      "units": "MW/module",
+      "role": "selected procurement class; not capability"
+    },
+    "buildings__legacy_cost_gross_class_MWe": {
+      "oracle_key": "selected_buildings_legacy_cost_gross_class_MWe",
+      "default": 1219.9981701764736,
+      "native_channel": "stellarator_09__stellaris__pb__p_et",
+      "entering_oracle_key": "p_et",
+      "units": "MWe/module",
+      "role": "selected procurement class; not capability"
+    },
+    "buildings__legacy_cost_thermal_electric_class_MWe": {
+      "oracle_key": "selected_buildings_legacy_cost_thermal_electric_class_MWe",
+      "default": 1219.9981701764736,
+      "native_channel": "stellarator_09__stellaris__pb__p_the",
+      "entering_oracle_key": "p_the",
+      "units": "MWe/module",
+      "role": "selected procurement class; not capability"
+    },
+    "buildings__legacy_cost_thermal_class_MW": {
+      "oracle_key": "selected_buildings_legacy_cost_thermal_class_MW",
+      "default": 3306.8890988488924,
+      "native_channel": "stellarator_09__stellaris__pb__p_th",
+      "entering_oracle_key": "p_th",
+      "units": "MW/module",
+      "role": "selected procurement class; not capability"
+    },
+    "precon_legacy_cost_net_class_MWe": {
+      "oracle_key": "selected_precon_legacy_cost_net_class_MWe",
+      "default": 850.0653006674999,
+      "native_channel": "stellarator_09__stellaris__pb__p_net",
+      "entering_oracle_key": "p_net",
+      "units": "MWe/module",
+      "role": "selected procurement class; not capability"
+    },
+    "heat_transport__legacy_cost_net_class_MWe": {
+      "oracle_key": "selected_heat_transport_legacy_cost_net_class_MWe",
+      "default": 850.0653006674999,
+      "native_channel": "stellarator_09__stellaris__pb__p_net",
+      "entering_oracle_key": "p_net",
+      "units": "MWe/module",
+      "role": "selected procurement class; not capability"
+    },
+    "heat_transport__legacy_cost_thermal_class_MW": {
+      "oracle_key": "selected_heat_transport_legacy_cost_thermal_class_MW",
+      "default": 3306.8890988488924,
+      "native_channel": "stellarator_09__stellaris__pb__p_th",
+      "entering_oracle_key": "p_th",
+      "units": "MW/module",
+      "role": "selected procurement class; not capability"
+    },
+    "fuel_cycle__legacy_cost_net_class_MWe": {
+      "oracle_key": "selected_fuel_cycle_legacy_cost_net_class_MWe",
+      "default": 850.0653006674999,
+      "native_channel": "stellarator_09__stellaris__pb__p_net",
+      "entering_oracle_key": "p_net",
+      "units": "MWe/module",
+      "role": "selected procurement class; not capability"
+    }
+  },
+  "retired_parameter_suffixes": [
+    "cryoplant__aux_cooling__alpha",
+    "cryoplant__aux_cooling__p_cryo_ref",
+    "divertor__divertor_cost__alpha",
+    "divertor__divertor_cost__p_th_ref",
+    "power_supplies__power_supplies_cost__alpha",
+    "power_supplies__power_supplies_cost__p_et_ref",
+    "cryoplant__aux_cryo_base",
+    "divertor__divertor_base",
+    "heat_rejection__cost_per_mw",
+    "power_supplies__base",
+    "turbine__cost_per_mw"
+  ],
+  "new_output_suffix_to_oracle_key": {
+    "blanket__cost_thermal_class_MW_guard__value": "selected_blanket_cost_thermal_class_MW",
+    "shield__cost_thermal_class_MW_guard__value": "selected_shield_cost_thermal_class_MW",
+    "structure__cost_gross_class_MWe_guard__value": "selected_structure_cost_gross_class_MWe",
+    "vessel__cost_gross_class_MWe_guard__value": "selected_vessel_cost_gross_class_MWe",
+    "misc_plant__cost_gross_class_MWe_guard__value": "selected_misc_plant_cost_gross_class_MWe",
+    "remote_handling_cost_gross_class_MWe_guard__value": "selected_remote_handling_cost_gross_class_MWe",
+    "cryoplant__aux_cost_thermal_class_MW_guard__value": "selected_cryoplant_aux_cost_thermal_class_MW",
+    "waste_cost_thermal_class_MW_guard__value": "selected_waste_cost_thermal_class_MW",
+    "other_rpe_cost_net_class_MWe_guard__value": "selected_other_rpe_cost_net_class_MWe",
+    "inc_cost_thermal_class_MW_guard__value": "selected_inc_cost_thermal_class_MW",
+    "owner_cost_net_class_MWe_guard__value": "selected_owner_cost_net_class_MWe",
+    "startup_cost_net_class_MWe_guard__value": "selected_startup_cost_net_class_MWe",
+    "decom_cost_net_class_MWe_guard__value": "selected_decom_cost_net_class_MWe",
+    "om_staffing_net_class_MWe_guard__value": "selected_om_staffing_net_class_MWe",
+    "buildings__legacy_cost_fusion_class_MW_guard__value": "selected_buildings_legacy_cost_fusion_class_MW",
+    "buildings__legacy_cost_gross_class_MWe_guard__value": "selected_buildings_legacy_cost_gross_class_MWe",
+    "buildings__legacy_cost_thermal_electric_class_MWe_guard__value": "selected_buildings_legacy_cost_thermal_electric_class_MWe",
+    "buildings__legacy_cost_thermal_class_MW_guard__value": "selected_buildings_legacy_cost_thermal_class_MW",
+    "precon_legacy_cost_net_class_MWe_guard__value": "selected_precon_legacy_cost_net_class_MWe",
+    "heat_transport__legacy_cost_net_class_MWe_guard__value": "selected_heat_transport_legacy_cost_net_class_MWe",
+    "heat_transport__legacy_cost_thermal_class_MW_guard__value": "selected_heat_transport_legacy_cost_thermal_class_MW",
+    "fuel_cycle__legacy_cost_net_class_MWe_guard__value": "selected_fuel_cycle_legacy_cost_net_class_MWe"
+  },
+  "preserved_purchase_output_suffixes": [
+    "turbine__turbine_cost__cost",
+    "heat_rejection__heat_rejection_cost__cost",
+    "power_supplies__power_supplies_cost__cost",
+    "divertor__divertor_cost__cost",
+    "cryoplant__aux_cooling__aux_cost",
+    "cryoplant__aux_cooling__cryo_cost",
+    "cryoplant__aux_cooling__cost"
+  ],
+  "changed_oracle_formulas": {
+    "blanket": "blanket_unit_cost * blanket_structure_factor * blanket_vol * (selected_blanket_cost_thermal_class_MW / p_th_ref) ** alpha_06",
+    "shield": "shield_unit_cost * shield_vol * shield_scale * (selected_shield_cost_thermal_class_MW / p_th_ref) ** alpha_06",
+    "structure_legacy_cost": "structure_unit_cost * structure_vol * (selected_structure_cost_gross_class_MWe / p_et_ref) ** alpha_05",
+    "structure": "structure_residual_fraction * structure_legacy_cost",
+    "vessel": "vessel_unit_cost * vessel_vol * (selected_vessel_cost_gross_class_MWe / p_et_ref) ** alpha_06",
+    "power_supplies": "selected_power_supplies_purchase_cost_per_module",
+    "divertor": "selected_divertor_purchase_cost_per_module",
+    "turbine": "n_mod * selected_turbine_purchase_cost_per_module",
+    "electric": "n_mod * selected_electric_plant_installed_gross_rating_MWe * electric_per_mw",
+    "heat_rejection": "n_mod * selected_heat_rejection_purchase_cost_per_module",
+    "misc": "n_mod * selected_misc_plant_cost_gross_class_MWe * misc_per_mw",
+    "remote_handling": "remote_handling_base * concept_scale * (selected_remote_handling_cost_gross_class_MWe / rh_p_et_ref) ** rh_alpha",
+    "aux_cost": "aux_per_mw * n_mod * selected_cryoplant_aux_cost_thermal_class_MW",
+    "cryo_cost": "selected_cryoplant_purchase_cost_per_module",
+    "waste": "waste_base * (n_mod * selected_waste_cost_thermal_class_MW / waste_ref) ** waste_alpha",
+    "other_rpe": "other_rpe_base * (n_mod * selected_other_rpe_cost_net_class_MWe / other_ref) ** other_alpha",
+    "inc": "inc_base * (n_mod * selected_inc_cost_thermal_class_MW / inc_ref) ** inc_alpha",
+    "owner": "owner_base * (n_mod * selected_owner_cost_net_class_MWe / owner_ref) ** owner_alpha",
+    "annual_om_unlevelized": "om_annual_ref * (selected_om_staffing_net_class_MWe / ref_net_power) ** om_alpha + om_direct; existing om_cost n_mod_in default=1 retained",
+    "supplementary": "unchanged freight/spares/tax/insurance bases + supp_startup_base*(n_mod*selected_startup_cost_net_class_MWe/ref_net_power) + supp_decom_base*(n_mod*selected_decom_cost_net_class_MWe/ref_net_power); then existing supplementary contingency",
+    "buildings_legacy": "unchanged six-term grouping; p_fus,p_et,p_the,p_th replaced by selected_buildings_legacy_cost_fusion_class_MW, selected_buildings_legacy_cost_gross_class_MWe, selected_buildings_legacy_cost_thermal_electric_class_MWe, selected_buildings_legacy_cost_thermal_class_MW respectively; existing default n_mod=1 retained",
+    "precon_legacy": "land_intensity * (selected_precon_legacy_cost_net_class_MWe * ref_net_power)**0.5 * land_cost + precon_fixed_base; existing default n_mod=1 retained",
+    "coolant_legacy": "coolant_primary_base*(n_mod*selected_heat_transport_legacy_cost_net_class_MWe/coolant_ref_net) + coolant_intermediate_base*(n_mod*selected_heat_transport_legacy_cost_thermal_class_MW/coolant_p_th_ref)**coolant_alpha",
+    "fuel_handling_legacy": "fuel_handling_base*(n_mod*selected_fuel_cycle_legacy_cost_net_class_MWe/fuel_ref)**fuel_alpha"
+  },
+  "seeds": {
+    "supplied_purchase_cost": {
+      "path": "work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/seeds/supplied_purchase_cost_impl.py",
+      "inputs": [
+        "purchase_cost_in",
+        "n_mod_in"
+      ],
+      "outputs": [
+        "cost"
+      ]
+    },
+    "supplied_auxiliary_cooling_cost": {
+      "path": "work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/seeds/supplied_auxiliary_cooling_cost_impl.py",
+      "inputs": [
+        "aux_per_mw_in",
+        "thermal_class_in",
+        "purchase_cost_in",
+        "n_mod_in"
+      ],
+      "outputs": [
+        "aux_cost",
+        "cryo_cost",
+        "cost"
+      ]
+    },
+    "supplied_cost_class": {
+      "path": "work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/seeds/supplied_cost_class_impl.py",
+      "inputs": [
+        "class_in"
+      ],
+      "outputs": [
+        "value"
+      ]
+    }
+  },
+  "domain": "All new chosen amounts/classes finite nonnegative and not Boolean; package n_mod must equal 1. Ordinary operating fuel/energy/calendar responsive.",
+  "electric_field_owner": "WI-080 supplies installed_gross_rating_MWe, WI-079 consumes it"
+}

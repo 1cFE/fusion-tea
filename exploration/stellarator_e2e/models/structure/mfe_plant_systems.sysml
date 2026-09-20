@@ -1,5 +1,6 @@
 package mfe_plant_systems {
     private import ScalarValues::*;
+    private import mfe_viability::*;
     private import costed_component::*;
     private import mfe_cryo_inventory::*;
     private import mfe_interfaces::*;
@@ -57,6 +58,152 @@ package mfe_plant_systems {
     }
 
     part def 'Primary Heat Transport' {
+        attribute rated_helium_suction_K : Real default 0.0; // supplied [K]
+        attribute rated_helium_suction_Pa : Real default 0.0; // supplied [Pa]
+        attribute rated_helium_discharge_Pa : Real default 0.0; // supplied [Pa]
+        attribute rated_helium_hot_K : Real default 0.0; // supplied [K]
+        attribute rated_helium_cp : Real default 0.0; // supplied [J/kg/K]
+        attribute rated_helium_gamma : Real default 0.0; // supplied [1]
+        attribute rated_salt_hot_C : Real default 0.0; // supplied [degC]
+        attribute rated_salt_return_C : Real default 0.0; // supplied [degC]
+        attribute rated_salt_cp : Real default 0.0; // supplied [kJ/kg/K]
+        attribute helium_rated_dp_Pa : Real default 0.0; // supplied [Pa]
+        attribute helium_rated_electric_MW : Real default 0.0; // supplied [MWe]
+        calc helium_offered_conditions : 'Helium Offered Conditions' {
+            in enabled_in = equipment_enabled;
+            in mode_in = loop_live;
+            in actual_suction_K_in = primary_loop.T_comp_in;
+            in rated_suction_K_in = rated_helium_suction_K;
+            in actual_suction_Pa_in = equipment.circulator_suction_Pa;
+            in rated_suction_Pa_in = rated_helium_suction_Pa;
+            in actual_discharge_Pa_in = loop_p;
+            in rated_discharge_Pa_in = rated_helium_discharge_Pa;
+            in actual_hot_K_in = T_out;
+            in rated_hot_K_in = rated_helium_hot_K;
+            in actual_cp_in = loop_cp;
+            in rated_cp_in = rated_helium_cp;
+            in actual_gamma_in = loop_gamma;
+            in rated_gamma_in = rated_helium_gamma;
+        }
+        attribute helium_rating_applicable : Boolean = helium_offered_conditions.applicable;
+        attribute helium_rating_supported : Boolean = helium_offered_conditions.supported;
+        attribute helium_rating_defined : Real = helium_offered_conditions.evaluation_defined;
+        calc salt_offered_conditions : 'Salt Offered Conditions' {
+            in enabled_in = equipment_enabled;
+            in mode_in = secondary_energy_mode;
+            in actual_hot_C_in = salt_hot_C;
+            in rated_hot_C_in = rated_salt_hot_C;
+            in actual_return_C_in = salt_return_C;
+            in rated_return_C_in = rated_salt_return_C;
+            in actual_cp_in = salt_cp_kJ_kgK;
+            in rated_cp_in = rated_salt_cp;
+        }
+        attribute salt_rating_applicable : Boolean = salt_offered_conditions.applicable;
+        attribute salt_rating_supported : Boolean = salt_offered_conditions.supported;
+        attribute salt_rating_defined : Real = salt_offered_conditions.evaluation_defined;
+        calc helium_flow_capability : 'Offered Capacity Screen' {
+            in rating_in = mdot_loop_rated;
+            in demand_in = mdot_loop;
+            in applicable_in = helium_rating_applicable;
+            in conditions_supported_in = helium_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute helium_flow_margin : Real = helium_flow_capability.margin;
+        attribute helium_flow_applicable : Boolean = helium_flow_capability.applicable;
+        attribute helium_flow_supported : Boolean = helium_flow_capability.supported;
+        attribute helium_flow_defined : Real = helium_flow_capability.evaluation_defined;
+        attribute helium_flow_capacity_ok : Boolean = helium_flow_capability.capacity_ok;
+        calc helium_pumping_capability : 'Offered Capacity Screen' {
+            in rating_in = equipment_helium_design_shaft_MW;
+            in demand_in = equipment.circulator_shaft_MW;
+            in applicable_in = helium_rating_applicable;
+            in conditions_supported_in = helium_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute helium_pumping_margin : Real = helium_pumping_capability.margin;
+        attribute helium_pumping_applicable : Boolean = helium_pumping_capability.applicable;
+        attribute helium_pumping_supported : Boolean = helium_pumping_capability.supported;
+        attribute helium_pumping_defined : Real = helium_pumping_capability.evaluation_defined;
+        attribute helium_pumping_capacity_ok : Boolean = helium_pumping_capability.capacity_ok;
+        calc helium_pressure_rise_capability : 'Offered Capacity Screen' {
+            in rating_in = helium_rated_dp_Pa;
+            in demand_in = primary_loop.dp_loop;
+            in applicable_in = helium_rating_applicable;
+            in conditions_supported_in = helium_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute helium_pressure_rise_margin : Real = helium_pressure_rise_capability.margin;
+        attribute helium_pressure_rise_applicable : Boolean = helium_pressure_rise_capability.applicable;
+        attribute helium_pressure_rise_supported : Boolean = helium_pressure_rise_capability.supported;
+        attribute helium_pressure_rise_defined : Real = helium_pressure_rise_capability.evaluation_defined;
+        attribute helium_pressure_rise_capacity_ok : Boolean = helium_pressure_rise_capability.capacity_ok;
+        calc helium_electric_capability : 'Offered Capacity Screen' {
+            in rating_in = helium_rated_electric_MW;
+            in demand_in = equipment.circulator_electric_MW;
+            in applicable_in = helium_rating_applicable;
+            in conditions_supported_in = helium_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute helium_electric_margin : Real = helium_electric_capability.margin;
+        attribute helium_electric_applicable : Boolean = helium_electric_capability.applicable;
+        attribute helium_electric_supported : Boolean = helium_electric_capability.supported;
+        attribute helium_electric_defined : Real = helium_electric_capability.evaluation_defined;
+        attribute helium_electric_capacity_ok : Boolean = helium_electric_capability.capacity_ok;
+        calc salt_flow_capability : 'Offered Capacity Screen' {
+            in rating_in = equipment_salt_design_flow_kg_s;
+            in demand_in = equipment.salt_pump_flow;
+            in applicable_in = salt_rating_applicable;
+            in conditions_supported_in = salt_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute salt_flow_margin : Real = salt_flow_capability.margin;
+        attribute salt_flow_applicable : Boolean = salt_flow_capability.applicable;
+        attribute salt_flow_supported : Boolean = salt_flow_capability.supported;
+        attribute salt_flow_defined : Real = salt_flow_capability.evaluation_defined;
+        attribute salt_flow_capacity_ok : Boolean = salt_flow_capability.capacity_ok;
+        calc salt_head_capability : 'Offered Capacity Screen' {
+            in rating_in = equipment_salt_design_head_m;
+            in demand_in = equipment_secondary_head;
+            in applicable_in = salt_rating_applicable;
+            in conditions_supported_in = salt_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute salt_head_margin : Real = salt_head_capability.margin;
+        attribute salt_head_applicable : Boolean = salt_head_capability.applicable;
+        attribute salt_head_supported : Boolean = salt_head_capability.supported;
+        attribute salt_head_defined : Real = salt_head_capability.evaluation_defined;
+        attribute salt_head_capacity_ok : Boolean = salt_head_capability.capacity_ok;
+        calc salt_shaft_capability : 'Offered Capacity Screen' {
+            in rating_in = equipment.salt_design_shaft_MW;
+            in demand_in = equipment.salt_pump_shaft_MW;
+            in applicable_in = salt_rating_applicable;
+            in conditions_supported_in = salt_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute salt_shaft_margin : Real = salt_shaft_capability.margin;
+        attribute salt_shaft_applicable : Boolean = salt_shaft_capability.applicable;
+        attribute salt_shaft_supported : Boolean = salt_shaft_capability.supported;
+        attribute salt_shaft_defined : Real = salt_shaft_capability.evaluation_defined;
+        attribute salt_shaft_capacity_ok : Boolean = salt_shaft_capability.capacity_ok;
+        calc salt_electric_demand_conversion : 'Salt Machine Electric' {
+            in active_in = salt_rating_applicable;
+            in total_MW_in = equipment.salt_electric_MW;
+            in count_in = equipment.salt_pump_count;
+        }
+        attribute salt_electric_required : Real = salt_electric_demand_conversion.demand;
+        calc salt_electric_capability : 'Offered Capacity Screen' {
+            in rating_in = equipment.salt_design_electric_MW;
+            in demand_in = salt_electric_required;
+            in applicable_in = salt_rating_applicable;
+            in conditions_supported_in = salt_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute salt_electric_margin : Real = salt_electric_capability.margin;
+        attribute salt_electric_applicable : Boolean = salt_electric_capability.applicable;
+        attribute salt_electric_supported : Boolean = salt_electric_capability.supported;
+        attribute salt_electric_defined : Real = salt_electric_capability.evaluation_defined;
+        attribute salt_electric_capacity_ok : Boolean = salt_electric_capability.capacity_ok;
+
         doc /*
         The primary coolant loop between the blanket and the power cycle. WHAT THE MODEL
         COMPUTES: the representative helium primary circuit of WI-045 (Moscato et al. 2017, the
@@ -165,6 +312,8 @@ package mfe_plant_systems {
         attribute salt_represented_fill_margin_kg : Real = equipment.salt_represented_fill_margin_kg;
         attribute represented_fill_ok : Boolean = equipment.represented_fill_ok;
         attribute represented_fill_defined : Real = equipment.represented_fill_defined;
+        attribute ihx_capacity_margin_m2 : Real = equipment.ihx_capacity_margin_m2;
+        attribute ihx_capacity_defined : Real = equipment.ihx_capacity_defined;
         attribute machine_off_design_performance_qualified : Boolean = equipment.machine_off_design_performance_qualified;
         attribute p_loop_margin : Real = primary_loop.p_loop_margin;
         attribute p_pump_total : Real = cooling_energy.electric_total;
@@ -292,18 +441,87 @@ package mfe_plant_systems {
         part initial_spares : 'Cooling Spares Account' {
             :>> capital_cost = equipment.spares_cost;
         }
+        attribute legacy_cost_net_class_MWe : Real;
+        calc legacy_cost_net_class_MWe_guard : 'Supplied Cost Class' {
+            in class_in = legacy_cost_net_class_MWe;
+        }
+        attribute legacy_cost_net_class_MWe_checked : Real = legacy_cost_net_class_MWe_guard.value;
+        attribute legacy_cost_thermal_class_MW : Real;
+        calc legacy_cost_thermal_class_MW_guard : 'Supplied Cost Class' {
+            in class_in = legacy_cost_thermal_class_MW;
+        }
+        attribute legacy_cost_thermal_class_MW_checked : Real = legacy_cost_thermal_class_MW_guard.value;
         calc coolant : 'Coolant Cost' {
             in primary_base = coolant_primary_base;
-            in p_net = 'Primary Heat Transport'::p_net;
+            in p_net = legacy_cost_net_class_MWe_checked;
             in intermediate_base = coolant_intermediate_base;
-            in p_th_in = p_th;
+            in p_th_in = legacy_cost_thermal_class_MW_checked;
             in n_mod_in = n_mod;
         }
     }
 
     part def 'Cryoplant' {
+        attribute rated_cryogenic_cold_K : Real default 0.0; // supplied [K]
+        attribute rated_cryogenic_intercept_K : Real default 0.0; // supplied [K]
+        attribute rated_cryogenic_ambient_K : Real default 0.0; // supplied [K]
+        attribute rated_cold_W : Real default 0.0; // supplied [W]
+        attribute rated_intercept_W : Real default 0.0; // supplied [W]
+        attribute rated_direct_electric_MW : Real default 0.0; // supplied [MWe]
+        calc cryogenic_offered_conditions : 'Cryogenic Offered Conditions' {
+            in enabled_in = true;
+            in actual_cold_K_in = T_cold_cryo;
+            in rated_cold_K_in = rated_cryogenic_cold_K;
+            in actual_intercept_K_in = T_shield;
+            in rated_intercept_K_in = rated_cryogenic_intercept_K;
+            in actual_ambient_K_in = T_amb_cryo;
+            in rated_ambient_K_in = rated_cryogenic_ambient_K;
+        }
+        attribute cryogenic_rating_applicable : Boolean = cryogenic_offered_conditions.applicable;
+        attribute cryogenic_rating_supported : Boolean = cryogenic_offered_conditions.supported;
+        attribute cryogenic_rating_defined : Real = cryogenic_offered_conditions.evaluation_defined;
+        calc cold_load_W_demand_conversion : 'Cold Load Watts' {
+            in cold_MW_in = cold_load.p_cold;
+        }
+        attribute cold_load_W_required : Real = cold_load_W_demand_conversion.demand;
+        calc cold_stage_capability : 'Offered Capacity Screen' {
+            in rating_in = rated_cold_W;
+            in demand_in = cold_load_W_required;
+            in applicable_in = cryogenic_rating_applicable;
+            in conditions_supported_in = cryogenic_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute cold_stage_margin : Real = cold_stage_capability.margin;
+        attribute cold_stage_applicable : Boolean = cold_stage_capability.applicable;
+        attribute cold_stage_supported : Boolean = cold_stage_capability.supported;
+        attribute cold_stage_defined : Real = cold_stage_capability.evaluation_defined;
+        attribute cold_stage_capacity_ok : Boolean = cold_stage_capability.capacity_ok;
+        calc intercept_stage_capability : 'Offered Capacity Screen' {
+            in rating_in = rated_intercept_W;
+            in demand_in = inventory.q_inventory_shield;
+            in applicable_in = cryogenic_rating_applicable;
+            in conditions_supported_in = cryogenic_rating_supported;
+            in demand_available_in = inventory_enabled;
+        }
+        attribute intercept_stage_margin : Real = intercept_stage_capability.margin;
+        attribute intercept_stage_applicable : Boolean = intercept_stage_capability.applicable;
+        attribute intercept_stage_supported : Boolean = intercept_stage_capability.supported;
+        attribute intercept_stage_defined : Real = intercept_stage_capability.evaluation_defined;
+        attribute intercept_stage_capacity_ok : Boolean = intercept_stage_capability.capacity_ok;
+        calc direct_electric_capability : 'Offered Capacity Screen' {
+            in rating_in = rated_direct_electric_MW;
+            in demand_in = p_cryo;
+            in applicable_in = true;
+            in conditions_supported_in = true;
+            in demand_available_in = true;
+        }
+        attribute direct_electric_margin : Real = direct_electric_capability.margin;
+        attribute direct_electric_applicable : Boolean = direct_electric_capability.applicable;
+        attribute direct_electric_supported : Boolean = direct_electric_capability.supported;
+        attribute direct_electric_defined : Real = direct_electric_capability.evaluation_defined;
+        attribute direct_electric_capacity_ok : Boolean = direct_electric_capability.capacity_ok;
+
         doc /*
-        WI-078/MR-7 scope: aux_cooling_cost includes demand-matched cost proxies: auxiliary cooling scales with thermal power and cryogenic equipment scales with required wall-plug refrigeration power. Cold/intercept heat loads and COP determine operating electrical demand, not installed refrigeration capacity. The model does not price a supplied cryoplant rating or evaluate whether installed cold/intercept equipment can meet those loads.
+        WI-079/MR-7: auxiliary cooling uses an independently selected procurement class; cryogenic capital consumes the supplied package amount. Cold/intercept heat loads and COP determine operating electrical demand separately. Selected capability is evaluated by the companion WI-080 screens.
 
         The cryogenic plant that holds the magnet cold mass at its operating temperature
         (20 K in the source). Owns the cryoplant chain facts (WI-024: nuclear heating uplift,
@@ -350,7 +568,12 @@ package mfe_plant_systems {
         // PF coil cooling [MW]
         attribute p_pfcool : Real;
         // 200.0 M$ -> $
-        attribute aux_cryo_base : Real;
+        attribute purchase_cost_per_module : Real;
+        attribute aux_cost_thermal_class_MW : Real;
+        calc aux_cost_thermal_class_MW_guard : 'Supplied Cost Class' {
+            in class_in = aux_cost_thermal_class_MW;
+        }
+        attribute aux_cost_thermal_class_MW_checked : Real = aux_cost_thermal_class_MW_guard.value;
         // ---- inputs the plant wires (WI-057): values produced elsewhere, read here by name ----
         attribute aux_per_mw : Real;   // <- 'MFE Power Plant'::aux_per_mw
         attribute n_mod : Real;   // <- 'MFE Power Plant'::n_mod
@@ -420,11 +643,10 @@ package mfe_plant_systems {
             in f_carnot = f_carnot_cryo;
             in p_direct = p_cryo;
         }
-        calc aux_cooling : 'Aux Cooling Cost' {
+        calc aux_cooling : 'Supplied Auxiliary Cooling Cost' {
             in aux_per_mw_in = aux_per_mw;
-            in p_th_in = p_th;
-            in cryo_base = aux_cryo_base;
-            in p_cryo = refrigeration_sum.total;
+            in thermal_class_in = aux_cost_thermal_class_MW_checked;
+            in purchase_cost_in = purchase_cost_per_module;
             in n_mod_in = n_mod;
         }
     }
@@ -668,8 +890,13 @@ package mfe_plant_systems {
             in containment_capital_in = processing_containment_capital;
             in containment_installation_in = processing_containment_installation;
         }
+        attribute legacy_cost_net_class_MWe : Real;
+        calc legacy_cost_net_class_MWe_guard : 'Supplied Cost Class' {
+            in class_in = legacy_cost_net_class_MWe;
+        }
+        attribute legacy_cost_net_class_MWe_checked : Real = legacy_cost_net_class_MWe_guard.value;
         calc fuel_handling : 'Plant Power-Law Cost' {
-            in base = fuel_handling_base; in power = p_net; in n_mod_in = n_mod;
+            in base = fuel_handling_base; in power = legacy_cost_net_class_MWe_checked; in n_mod_in = n_mod;
             in ref_power = 1000.0; in alpha = 0.7;
         }
     }

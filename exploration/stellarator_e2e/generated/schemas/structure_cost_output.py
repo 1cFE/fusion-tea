@@ -18,7 +18,7 @@ scaling:
 *Ref**: cas22.py:501 (c220105), cas22.py:224 (P_ET_REF=ref_gross_power_mwe)
 *Basis**: Volume-based structure cost with gross-electric power law
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:81
+SysML Source: root-0/analyses/mfe_account_costs.sysml:131
     """
     cost: float = Field(description="cost output")
     legacy_cost: float = Field(description="legacy_cost output")

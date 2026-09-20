@@ -20,9 +20,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:261
+SysML Source: root-0/analyses/mfe_account_costs.sysml:311
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:261
+SysML Source: root-0/analyses/mfe_account_costs.sysml:311
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/contingency_cost_impl.py
@@ -66,9 +66,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:261
+SysML Source: root-0/analyses/mfe_account_costs.sysml:311
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:261
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:311
 
     Calculation Specification:
         cost = contingency_rate_in * direct_subtotal

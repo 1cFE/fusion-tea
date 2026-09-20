@@ -7,7 +7,7 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "84b82ef338093eb6d6f142360b3ded2b575b6f79397e6a719a6cb6dcf0154bc6",
+      "digest": "b60bcb940398d1df39bf779394ebab46ea309e31e8c00034d3dedee39832c9d3",
       "files": [
         "contracts/model_contract.json",
         "inputs/mfe_account_costs_params.json",
@@ -20,13 +20,14 @@
         "inputs/mfe_plasma_scaling_params.json",
         "inputs/mfe_plasma_sustainment_params.json",
         "inputs/mfe_vacuum_params.json",
+        "inputs/mfe_viability_params.json",
         "inputs/stellarator_plant_params.json",
         "pipelines/pipeline.yaml"
       ]
     },
     "recorded_provenance": {
-      "semantic_fingerprint": "5a76ffbe2c1457b8abd5e8e9203331959baf68af65d7e12f9f49bb09d0bf071c",
-      "executable_fingerprint": "04d3af1627885ce7a68d726b1d36026777eccc5d4976b15d693b6c8ec438f227"
+      "semantic_fingerprint": "6f51a9963348754694563855957d9bf9bfdfb90c61bd9228c9bd8868286fac90",
+      "executable_fingerprint": "1ba8c423983518416d4320155f465f88a37f37456d73b0b6e4cf73b5050900c9"
     }
   },
   "objective_catalog": [
@@ -122,7 +123,27 @@
         "expected": "satisfied"
       },
       {
+        "source_local_identity": "cold_stage_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
         "source_local_identity": "cond_strain_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "condensate_electric_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "condensate_flow_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "condensate_pressure_rise_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "condenser_rejection_capacity_ok",
         "expected": "satisfied"
       },
       {
@@ -134,8 +155,16 @@
         "expected": "satisfied"
       },
       {
+        "source_local_identity": "direct_electric_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
         "source_local_identity": "divertor_heat_ok",
         "expected": "violated"
+      },
+      {
+        "source_local_identity": "electric_gross_capacity_ok",
+        "expected": "satisfied"
       },
       {
         "source_local_identity": "facility_capacity_ok",
@@ -174,6 +203,18 @@
         "expected": "satisfied"
       },
       {
+        "source_local_identity": "feedwater_electric_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "feedwater_flow_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "feedwater_pressure_rise_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
         "source_local_identity": "fuel_processing_capacity_ok",
         "expected": "satisfied"
       },
@@ -194,11 +235,63 @@
         "expected": "satisfied"
       },
       {
+        "source_local_identity": "helium_electric_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "helium_flow_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "helium_pressure_rise_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "helium_pumping_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "hp_flow_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "hp_shaft_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "ihx_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "intercept_stage_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
         "source_local_identity": "loop_capacity_ok",
         "expected": "satisfied"
       },
       {
         "source_local_identity": "loop_pressure_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "lp_flow_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "lp_shaft_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "magnet_pf_electric_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "magnet_tf_electric_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "main_UA_capacity_ok",
         "expected": "satisfied"
       },
       {
@@ -226,7 +319,27 @@
         "expected": "violated"
       },
       {
+        "source_local_identity": "reheat_UA_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
         "source_local_identity": "represented_coolant_fill_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "salt_electric_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "salt_flow_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "salt_head_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "salt_shaft_capacity_ok",
         "expected": "satisfied"
       },
       {
@@ -238,7 +351,27 @@
         "expected": "violated"
       },
       {
+        "source_local_identity": "turbine_gross_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
         "source_local_identity": "wall_load_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "water_electric_capacity_ok",
+        "expected": "violated"
+      },
+      {
+        "source_local_identity": "water_flow_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "water_head_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "water_rejection_capacity_ok",
         "expected": "satisfied"
       },
       {

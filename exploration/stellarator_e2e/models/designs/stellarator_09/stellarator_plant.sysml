@@ -33,6 +33,15 @@ package stellarator_09 {
     // =========================================================================
 
     part stellaris : 'MFE Power Plant' {
+        :>> precon_legacy_cost_net_class_MWe = 850.0653006674999 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: precon_legacy_cost_net_class_MWe; entering checkpoint 53a0366a **Basis**: [AGENT] independently selected procurement class, not capacity; captured entering assumption. **Last Updated**: 2026-09-20 */ }
+        :>> om_staffing_net_class_MWe = 850.0653006674999 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: om_staffing_net_class_MWe; entering checkpoint 53a0366a **Basis**: [AGENT] independently selected procurement class, not capacity; captured entering assumption. **Last Updated**: 2026-09-20 */ }
+        :>> decom_cost_net_class_MWe = 850.0653006674999 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: decom_cost_net_class_MWe; entering checkpoint 53a0366a **Basis**: [AGENT] independently selected procurement class, not capacity; captured entering assumption. **Last Updated**: 2026-09-20 */ }
+        :>> startup_cost_net_class_MWe = 850.0653006674999 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: startup_cost_net_class_MWe; entering checkpoint 53a0366a **Basis**: [AGENT] independently selected procurement class, not capacity; captured entering assumption. **Last Updated**: 2026-09-20 */ }
+        :>> owner_cost_net_class_MWe = 850.0653006674999 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: owner_cost_net_class_MWe; entering checkpoint 53a0366a **Basis**: [AGENT] independently selected procurement class, not capacity; captured entering assumption. **Last Updated**: 2026-09-20 */ }
+        :>> inc_cost_thermal_class_MW = 3306.8890988488924 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: inc_cost_thermal_class_MW; entering checkpoint 53a0366a **Basis**: [AGENT] independently selected procurement class, not capacity; captured entering assumption. **Last Updated**: 2026-09-20 */ }
+        :>> other_rpe_cost_net_class_MWe = 850.0653006674999 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: other_rpe_cost_net_class_MWe; entering checkpoint 53a0366a **Basis**: [AGENT] independently selected procurement class, not capacity; captured entering assumption. **Last Updated**: 2026-09-20 */ }
+        :>> waste_cost_thermal_class_MW = 3306.8890988488924 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: waste_cost_thermal_class_MW; entering checkpoint 53a0366a **Basis**: [AGENT] independently selected procurement class, not capacity; captured entering assumption. **Last Updated**: 2026-09-20 */ }
+        :>> remote_handling_cost_gross_class_MWe = 1219.9981701764736 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: remote_handling_cost_gross_class_MWe; entering checkpoint 53a0366a **Basis**: [AGENT] independently selected procurement class, not capacity; captured entering assumption. **Last Updated**: 2026-09-20 */ }
         doc /*
         SOURCE LOCATORS used throughout this definition:
           stellaris-design-details.md =
@@ -549,6 +558,7 @@ package stellarator_09 {
         // at the Stellaris radial build; unit costs are 1costingFE M$ x 1e6.
         // ---------------------------------------------------------------------
         part :>> blanket : 'Transport Calculated Blanket' {
+            :>> cost_thermal_class_MW = 3306.8890988488924 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: blanket__cost_thermal_class_MW; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
             :>> breeding_R = stellaris.plasma.R;
             :>> breeding_a = stellaris.plasma.a;
             :>> breeding_kappa = stellaris.plasma.kappa;
@@ -649,6 +659,7 @@ package stellarator_09 {
             }
         }
         part :>> shield {
+            :>> cost_thermal_class_MW = 3306.8890988488924 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: shield__cost_thermal_class_MW; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
             doc /*
             unit_cost: costing_constants.yaml:43 (shield_unit_cost = 0.74 M$/m^3) x 1e6.
             shield_scale: cas22.py:262 (DT = 1.0).
@@ -669,6 +680,7 @@ package stellarator_09 {
             }
         }
         part :>> structure {
+            :>> cost_gross_class_MWe = 1219.9981701764736 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: structure__cost_gross_class_MWe; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
             :>> residual_fraction = 1.0 {
                 doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_structure_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
             }
@@ -688,6 +700,7 @@ package stellarator_09 {
             }
         }
         part :>> vessel {
+            :>> cost_gross_class_MWe = 1219.9981701764736 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: vessel__cost_gross_class_MWe; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
             doc /*
             unit_cost: costing_constants.yaml:83 (vessel_unit_cost = 0.72 M$/m^3) x 1e6.
             vessel_vol = 157.933 m^3 = vol(gap1_or, vessel_or). Forward-computed
@@ -706,13 +719,16 @@ package stellarator_09 {
             }
         }
         part :>> power_supplies {
+            :>> rated_tf_MWe = 0.050267327222555655 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_pf_MWe = 0.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> purchase_cost_per_module = 86013482.74180616 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: power_supplies__purchase_cost_per_module; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
             doc /*
             base: costing_constants.yaml:96 (power_supplies_base = 80.0 M$ at 1 GWe) x 1e6.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
             **Ref**: costing_constants.yaml:96
             **Basis**: power-scaled power-supply cost
             */
-            :>> base = 80000000.0;
+
             :>> p_tf = 0.0 {
                 doc /* **Source**: WI-059 D3: direct legacy allowance zero; computed lead/joint power enters separately through p_tf_extra and p_tf_total **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
             }
@@ -725,31 +741,54 @@ package stellarator_09 {
         // BALANCE OF PLANT (CAS23-26) -- per-MW rates ($/MW), Rankine steam cycle
         // ---------------------------------------------------------------------
         part :>> turbine {
+            :>> rated_steam_main_pressure_MPa = 6.2 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_steam_extraction_pressure_MPa = 0.8 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_steam_steam_C = 445.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_steam_reheat_C = 445.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_steam_condenser_C = 42.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_steam_salt_hot_C = 465.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_steam_salt_return_C = 269.6647299145299 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_steam_salt_cp = 1.56 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> selected_gross_MWe = 1219.9981701764736 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> purchase_cost_per_module = 247464428.83859593 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: turbine__purchase_cost_per_module; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
             :>> matched_cycle_enabled = 1.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
             :>> pump_motor_efficiency = 0.95 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
             part :>> main_steam_generator {
+                :>> installed_UA_MW_K = 41.07437838721364 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
             :>> pressure_MPa = 6.2 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
             :>> outlet_temperature_C = 445.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
             }
             part :>> reheater {
+                :>> installed_UA_MW_K = 11.18676341684029 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
             :>> outlet_temperature_C = 445.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
             }
             part :>> open_feedwater_heater {
             :>> pressure_MPa = 0.8 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
             }
             part :>> hp_turbine {
+                :>> rated_flow_kg_s = 1108.5733942490049 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+                :>> rated_shaft_MW = 507.1088862154872 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
             :>> efficiency = 0.9 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
             }
             part :>> lp_turbine {
+                :>> rated_flow_kg_s = 881.3051322292799 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+                :>> rated_shaft_MW = 750.3619138014925 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
             :>> efficiency = 0.9 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
             }
             part :>> condenser {
+                :>> rated_rejection_MW = 2058.639911447174 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
             :>> temperature_C = 42.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
             }
             part :>> condensate_pump {
+                :>> rated_flow_kg_s = 881.3051322292799 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+                :>> rated_dp_MPa = 0.7917904366 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+                :>> rated_electric_MW = 0.9261383157389033 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
             :>> efficiency = 0.8 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
             }
             part :>> feedwater_pump {
+                :>> rated_flow_kg_s = 1108.5733942490049 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+                :>> rated_dp_MPa = 5.4 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+                :>> rated_electric_MW = 8.780822331904837 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
             :>> efficiency = 0.8 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
             }
             part :>> generator {
@@ -768,7 +807,7 @@ package stellarator_09 {
             **Ref**: defaults.py:578-581 (RANKINE preset)
             **Basis**: turbine plant linear in thermal-electric power
             */
-            :>> cost_per_mw = 202840.0;
+
             :>> cycle_live = 1.0;
             :>> eta_th_direct = 0.0 {  // the held 0.333 lives here in the dormant mode.
                 doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md **Ref**: line 251 (single-element conversion efficiency 1/3) **Basis**: the source's simple 1/3 assumption -- it names no cycle (the earlier comment's "steam-cycle" overstated it); the pre-WI-045 held efficiency, kept for the attribution bridge */
@@ -797,6 +836,7 @@ package stellarator_09 {
             }
         }
         part :>> electric_plant {
+            :>> installed_gross_rating_MWe = 1219.9981701764736 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
             doc /*
             cost_per_mw: costing_constants.yaml:222 (electric_per_mw = 0.08640 M$/MW) x 1e6.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
@@ -806,6 +846,14 @@ package stellarator_09 {
             :>> cost_per_mw = 86400.0;
         }
         part :>> heat_rejection {
+            :>> rated_water_inlet_C = 25.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_water_outlet_C = 35.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_water_condenser_C = 42.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_rejection_MW = 2109.621069383624 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_water_flow_kg_s = 50463.801850311946 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_water_head_m = 20.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_water_electric_MW = 13.023180063562146 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> purchase_cost_per_module = 115939531.80564217 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: heat_rejection__purchase_cost_per_module; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
             :>> cooling_water_enabled = 1.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
             :>> water_inlet_C = 25.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
             :>> water_outlet_C = 35.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
@@ -821,9 +869,10 @@ package stellarator_09 {
             **Ref**: defaults.py:578-581 (RANKINE preset)
             **Basis**: heat rejection linear in total thermal power
             */
-            :>> cost_per_mw = 35060.0;
+
         }
         part :>> misc_plant {
+            :>> cost_gross_class_MWe = 1219.9981701764736 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: misc_plant__cost_gross_class_MWe; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
             doc /*
             cost_per_mw: costing_constants.yaml:223 (misc_per_mw = 0.05259 M$/MW) x 1e6.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
@@ -1070,6 +1119,7 @@ package stellarator_09 {
             }
         }
         part :>> divertor {
+            :>> purchase_cost_per_module = 109109123.15593052 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: divertor__purchase_cost_per_module; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
             :>> target_capture_fraction = 0.99 {
                 doc /* Reference-profile capture paired with q_target_ref 9.5 MW/m^2 at p_nonrad_ref 50 MW; not an independent mitigation lever.
                 **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
@@ -1077,9 +1127,7 @@ package stellarator_09 {
                 **Basis**: simulated aggregate target capture for the selected source profile. */
             }
             // Divertor (CAS22.1.8) driver.
-            :>> divertor_base = 60000000.0 {  // divertor cost at 1 GWth [$].
-                doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:97 (divertor_base = 60.0 M$) x 1e6 **Basis**: power-scaled divertor cost */
-            }
+
             :>> f_rad_total = 0.9 {  // total radiated fraction of the absorbed heating [1].
                 doc /* "we assume that 90% of the net heating power in the plasma core is radiated before reaching the divertor region" -- a TOTAL fraction (core plus edge); the first-wall cooling case on the same page assumes 100 % and is a different load case, never summed with this one. **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md **Ref**: lines 1219-1222; page render work/orchestration/goals/plant-closure/evidence/grounding_sources/stellaris_p15_divertor.png **Basis**: Stellaris section 2.6 operating assumption */
             }
@@ -1097,6 +1145,19 @@ package stellarator_09 {
             }
         }
         part :>> heat_transport {
+            :>> rated_helium_suction_K = 561.9353658449644 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_helium_suction_Pa = 7699680.103536234 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_helium_discharge_Pa = 8000000.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_helium_hot_K = 773.15 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_helium_cp = 5193.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_helium_gamma = 1.6666666666666667 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_salt_hot_C = 465.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_salt_return_C = 269.6647299145299 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_salt_cp = 1.56 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> helium_rated_dp_Pa = 300319.8964637657 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> helium_rated_electric_MW = 6.26003337158886 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> legacy_cost_thermal_class_MW = 3306.8890988488924 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: heat_transport__legacy_cost_thermal_class_MW; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
+            :>> legacy_cost_net_class_MWe = 850.0653006674999 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: heat_transport__legacy_cost_net_class_MWe; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
             // WI-067 released conceptual helium/HITEC scenario. Conversion fit remains
             // an inherited surrogate; steam-generator price ownership is Row8/unverified.
             :>> equipment_helium_design_shaft_MW = 6.26003337158886 { doc /* Source: work/orchestration/goals/preserve-model-design-choices/evidence/entering-native-baseline.json. Ref: entering selected operating point and stock; cooling-binding-plan.md. Basis: [AGENT] explicit entering design, independent of subsequent demand; unqualified equipment transfer. */ }
@@ -1279,6 +1340,14 @@ package stellarator_09 {
             }
         }
         part :>> cryoplant {
+            :>> rated_cryogenic_cold_K = 20.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_cryogenic_intercept_K = 77.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_cryogenic_ambient_K = 300.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_cold_W = 21933.902368719853 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_intercept_W = 41599.953939961626 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> rated_direct_electric_MW = 0.0 { doc /* **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */ }
+            :>> aux_cost_thermal_class_MW = 3306.8890988488924 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: cryoplant__aux_cost_thermal_class_MW; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
+            :>> purchase_cost_per_module = 31478692.121086925 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: cryoplant__purchase_cost_per_module; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
             :>> inventory_enabled = true {
                 doc /* **Source**: work/orchestration/goals/magnet-coil-realism/evidence/T-005_cryo_basis.md **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
             }
@@ -1383,11 +1452,10 @@ package stellarator_09 {
             :>> p_pfcool = 0.0 {
                 doc /* **Source**: stellaris-design-details.md **Ref**: line 249 (modular coils only) **Basis**: no PF coil set to cool */
             }
-            :>> aux_cryo_base = 200000000.0 {  // C220300 cryoplant [$].
-                doc /* 200.0 M$ x 1e6 (power-law in per-module p_cryo, ref 30, a=0.7). **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py **Ref**: cas22.py:694 (c220302 = 200.0 * (p_cryo/30)**0.7) **Basis**: cryoplant base at 30 MW */
-            }
+
         }
         part :>> fuel_cycle {
+            :>> legacy_cost_net_class_MWe = 850.0653006674999 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: fuel_cycle__legacy_cost_net_class_MWe; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
             :>> fuel_cost_per_rxn = 1.7260641119988767e-23 {  // $/reaction.
                 doc /*
                 M_DEUTERIUM_KG * u_deuterium + M_LI6_KG * u_li6
@@ -1553,6 +1621,10 @@ package stellarator_09 {
             }
         }
         part :>> buildings {
+            :>> legacy_cost_thermal_class_MW = 3306.8890988488924 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: buildings__legacy_cost_thermal_class_MW; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
+            :>> legacy_cost_thermal_electric_class_MWe = 1219.9981701764736 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: buildings__legacy_cost_thermal_electric_class_MWe; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
+            :>> legacy_cost_gross_class_MWe = 1219.9981701764736 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: buildings__legacy_cost_gross_class_MWe; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
+            :>> legacy_cost_fusion_class_MW = 2652.5632625175904 { doc /* **Source**: work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/public-defaults.json **Reference**: buildings__legacy_cost_fusion_class_MW; entering checkpoint 53a0366a **Basis**: [AGENT] captured supplied-design assumption; not a vendor quote or a qualified rating; independent of subsequent operating demand. **Last Updated**: 2026-09-20 */ }
             :>> parcel_origin_x_offset = 0.0; // m, signed supplied translation; fixed datum below is entering coordinate convention.
             :>> parcel_origin_y_offset = 0.0; // m; see WI-076 evidence/origin-interface.md.
 
@@ -2131,6 +2203,138 @@ package stellarator_09 {
         assert constraint fuel_processing_capacity_ok : 'Fuel Processing Capacity' {
             in defined_in = fuel_cycle.processing_capacity_evaluation_defined;
             in margin_in = fuel_cycle.processing_capacity_margin_kg_s;
+        }
+        assert constraint helium_flow_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = heat_transport.helium_flow_defined;
+            in margin_in = heat_transport.helium_flow_margin;
+        }
+        assert constraint helium_pumping_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = heat_transport.helium_pumping_defined;
+            in margin_in = heat_transport.helium_pumping_margin;
+        }
+        assert constraint helium_pressure_rise_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = heat_transport.helium_pressure_rise_defined;
+            in margin_in = heat_transport.helium_pressure_rise_margin;
+        }
+        assert constraint helium_electric_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = heat_transport.helium_electric_defined;
+            in margin_in = heat_transport.helium_electric_margin;
+        }
+        assert constraint salt_flow_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = heat_transport.salt_flow_defined;
+            in margin_in = heat_transport.salt_flow_margin;
+        }
+        assert constraint salt_head_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = heat_transport.salt_head_defined;
+            in margin_in = heat_transport.salt_head_margin;
+        }
+        assert constraint salt_shaft_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = heat_transport.salt_shaft_defined;
+            in margin_in = heat_transport.salt_shaft_margin;
+        }
+        assert constraint salt_electric_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = heat_transport.salt_electric_defined;
+            in margin_in = heat_transport.salt_electric_margin;
+        }
+        assert constraint turbine_gross_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = turbine.turbine_gross_defined;
+            in margin_in = turbine.turbine_gross_margin;
+        }
+        assert constraint hp_flow_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = turbine.hp_flow_defined;
+            in margin_in = turbine.hp_flow_margin;
+        }
+        assert constraint hp_shaft_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = turbine.hp_shaft_defined;
+            in margin_in = turbine.hp_shaft_margin;
+        }
+        assert constraint lp_flow_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = turbine.lp_flow_defined;
+            in margin_in = turbine.lp_flow_margin;
+        }
+        assert constraint lp_shaft_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = turbine.lp_shaft_defined;
+            in margin_in = turbine.lp_shaft_margin;
+        }
+        assert constraint main_UA_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = turbine.main_UA_defined;
+            in margin_in = turbine.main_UA_margin;
+        }
+        assert constraint reheat_UA_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = turbine.reheat_UA_defined;
+            in margin_in = turbine.reheat_UA_margin;
+        }
+        assert constraint condenser_rejection_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = turbine.condenser_rejection_defined;
+            in margin_in = turbine.condenser_rejection_margin;
+        }
+        assert constraint condensate_flow_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = turbine.condensate_flow_defined;
+            in margin_in = turbine.condensate_flow_margin;
+        }
+        assert constraint condensate_pressure_rise_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = turbine.condensate_pressure_rise_defined;
+            in margin_in = turbine.condensate_pressure_rise_margin;
+        }
+        assert constraint condensate_electric_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = turbine.condensate_electric_defined;
+            in margin_in = turbine.condensate_electric_margin;
+        }
+        assert constraint feedwater_flow_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = turbine.feedwater_flow_defined;
+            in margin_in = turbine.feedwater_flow_margin;
+        }
+        assert constraint feedwater_pressure_rise_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = turbine.feedwater_pressure_rise_defined;
+            in margin_in = turbine.feedwater_pressure_rise_margin;
+        }
+        assert constraint feedwater_electric_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = turbine.feedwater_electric_defined;
+            in margin_in = turbine.feedwater_electric_margin;
+        }
+        assert constraint water_rejection_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = heat_rejection.water_rejection_defined;
+            in margin_in = heat_rejection.water_rejection_margin;
+        }
+        assert constraint water_flow_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = heat_rejection.water_flow_defined;
+            in margin_in = heat_rejection.water_flow_margin;
+        }
+        assert constraint water_head_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = heat_rejection.water_head_defined;
+            in margin_in = heat_rejection.water_head_margin;
+        }
+        assert constraint water_electric_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = heat_rejection.water_electric_defined;
+            in margin_in = heat_rejection.water_electric_margin;
+        }
+        assert constraint cold_stage_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = cryoplant.cold_stage_defined;
+            in margin_in = cryoplant.cold_stage_margin;
+        }
+        assert constraint intercept_stage_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = cryoplant.intercept_stage_defined;
+            in margin_in = cryoplant.intercept_stage_margin;
+        }
+        assert constraint direct_electric_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = cryoplant.direct_electric_defined;
+            in margin_in = cryoplant.direct_electric_margin;
+        }
+        assert constraint electric_gross_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = electric_plant.electric_gross_defined;
+            in margin_in = electric_plant.electric_gross_margin;
+        }
+        assert constraint magnet_tf_electric_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = power_supplies.magnet_tf_electric_defined;
+            in margin_in = power_supplies.magnet_tf_electric_margin;
+        }
+        assert constraint magnet_pf_electric_capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = power_supplies.magnet_pf_electric_defined;
+            in margin_in = power_supplies.magnet_pf_electric_margin;
+        }
+        assert constraint ihx_capacity_ok : 'Intermediate Exchanger Capacity' {
+            in defined_in = heat_transport.ihx_capacity_defined;
+            in margin_m2_in = heat_transport.ihx_capacity_margin_m2;
         }
         assert constraint represented_coolant_fill_ok : 'Represented Coolant Fill' {
             in defined_in = heat_transport.represented_fill_defined;

@@ -159,7 +159,7 @@ BOOLEAN_OUTPUTS = ('ihx_capacity_ok',
 NUMERIC_OUTPUTS += ('helium_design_shaft_MW', 'helium_design_suction_Pa', 'salt_design_flow_kg_s', 'salt_design_head_m', 'salt_design_shaft_MW', 'salt_design_electric_MW', 'design_pump_flow_gpm', 'design_pump_head_ft', 'design_pump_size_factor', 'design_pump_shaft_hp', 'design_motor_electric_hp', 'helium_required_fill_mass_kg', 'salt_required_fill_mass_kg', 'helium_inventory_target_mass_kg', 'salt_inventory_target_mass_kg', 'helium_represented_fill_margin_kg', 'salt_represented_fill_margin_kg')
 BOOLEAN_OUTPUTS += ('design_pump_size_ok', 'design_pump_type_ok', 'design_motor_base_ok', 'design_motor_factor_ok', 'machine_off_design_performance_qualified', 'represented_fill_ok')
 
-NUMERIC_OUTPUTS += ('represented_fill_defined',)
+NUMERIC_OUTPUTS += ('represented_fill_defined', 'ihx_capacity_margin_m2', 'ihx_capacity_defined')
 
 def _annulus(inside, wall, length):
     return math.pi * wall * (inside + wall) * length
@@ -264,7 +264,8 @@ def calculate(inputs: Mapping) -> dict:
     required_area = x['q_ihx_MW']*1e6/n/uf/lmtd
     out.update(ihx_hot_approach=hot, ihx_cold_approach=cold, ihx_lmtd=lmtd,
                ihx_installed_area=installed_area, ihx_required_area=required_area,
-               ihx_capacity_ok=required_area <= installed_area)
+               ihx_capacity_ok=required_area <= installed_area,
+               ihx_capacity_margin_m2=installed_area-required_area, ihx_capacity_defined=1.)
     tube_mass = 8000*_annulus(.01905-2*x['tube_wall'], x['tube_wall'], 14852*11.6)
     shell_mass = 8000*_annulus(3.2, x['shell_wall'], 13)
     heads_mass = 8000*4*pi/3*((1.6+x['shell_wall'])**3-1.6**3)

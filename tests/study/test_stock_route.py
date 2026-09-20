@@ -6,7 +6,7 @@ The package is sealed at runtime contract ``2.0.0`` by the pinned codegen; stock
 the sealed executable fingerprint itself (design D3, invariant I5), and the five values the
 era adapter used to inject must arrive from model source (invariant I6, bet B2):
 
-* g1 -- the four BOP ``power`` inputs are wired to power-balance outputs;
+* g1 -- current BOP prices read supplied package amounts or guarded design classes;
 * g2 -- ``cas28_capital`` (5.0 M$) and the replacement-schedule ``n_mod`` (1.0) are
   shipped entry-point inputs;
 * g3 -- ``special_materials_capital`` (CAS27) is produced in-package and consumed by both
@@ -147,15 +147,11 @@ def test_formerly_injected_values_come_from_model_source(real_package_path) -> N
             producer[0]
         )
 
-    # g1: every BOP power input reads a power-balance output, not a shipped input.
-    bop_power_sources = {
-        name: module["inputs"]["power"].split()[-1]
-        for name, module in modules.items()
-        if isinstance((module.get("inputs") or {}).get("power"), str)
-    }
-    assert bop_power_sources, "no module binds a `power` input"
-    for name, source in bop_power_sources.items():
-        assert "__pb__" in source, (name, source)
+    # WI-079: procurement consumes selected specifications, independently of operation.
+    for owner, calc in (("turbine", "turbine_cost"), ("heat_rejection", "heat_rejection_cost")):
+        assert _wired_input(modules, "__"+owner+"__"+calc, "purchase_cost_in").endswith("__"+owner+"__purchase_cost_per_module")
+    assert _wired_input(modules, "__electric_plant__electric_cost", "power").endswith("__electric_plant__installed_gross_rating_MWe")
+    assert _wired_input(modules, "__misc_plant__misc_cost", "power").endswith("__misc_plant__cost_gross_class_MWe_guard__value.root")
 
 
 import pytest
@@ -194,7 +190,7 @@ def test_invalid_batch_executes_nothing(tmp_path, stock_simkit_path, monkeypatch
     assert not out.exists()
 
 
-def test_all_six_booleans_survive_bridge_native_and_store(tmp_path, stock_simkit_path):
+def test_all_booleans_survive_bridge_native_and_store(tmp_path, stock_simkit_path):
     from simkit.study.bridge import CandidateBridge
     points = []
     for key in sorted(route.BOOLEAN_KEYS):
@@ -217,7 +213,7 @@ def test_all_six_booleans_survive_bridge_native_and_store(tmp_path, stock_simkit
         for key in point.keys() & route.BOOLEAN_KEYS:
             assert fields[key] is point[key]
     cases, _ = route.run_points('boolean-transport', points, tmp_path/'native')
-    assert len(cases) == len(points) == 12
+    assert len(cases) == len(points) == 2 * len(route.BOOLEAN_KEYS)
     assert all(case.state == 'completed' for case in cases)
     for point in points:
         case = next(case for case in cases if dict(case.inputs) == point)

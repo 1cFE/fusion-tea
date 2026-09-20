@@ -46,9 +46,9 @@ Inputs:
 Outputs:
     - annual_fuel: annual_fuel result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:751
+SysML Source: root-0/analyses/mfe_account_costs.sysml:804
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:751
+SysML Source: root-0/analyses/mfe_account_costs.sysml:804
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/dt_fuel_cost_impl.py
@@ -130,9 +130,9 @@ Inputs:
 Outputs:
     - annual_fuel: annual_fuel result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:751
+SysML Source: root-0/analyses/mfe_account_costs.sysml:804
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:751
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:804
 
     Calculation Specification:
         n_mod_in = 1.0

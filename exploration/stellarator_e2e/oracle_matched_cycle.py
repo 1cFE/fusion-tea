@@ -228,7 +228,7 @@ def cooling(tables, cycle_result, inlet=25., outlet=35., head=20., eta_pump=.8, 
     liquid = phase(tables['saturation'],'liquid')
     a,b = interp(liquid,'t',inlet),interp(liquid,'t',outlet)
     dh = b['h']-a['h']
-    shaft = 9.80665*head/1000/eta_pump
+    shaft = 9.80665*head/eta_pump/1000  # MW conversion follows the source-owned shaft-work operation order.
     elec = shaft/eta_motor
     denominator = dh-elec
     if denominator<=0:

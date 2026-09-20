@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1562
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1634
 
 SysML Expressions:
 """
@@ -15,7 +15,7 @@ from stellarator_tea.modules.stellarator_09.stellaris.buildings.selected_parcel_
 def run_selected_parcel_x_min(inputs: selected_parcel_x_minInput) -> float:
     """Execute selected_parcel_x_min calculation.
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1562
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1634
 
 Args:
     inputs: Input parameters validated against selected_parcel_x_minInput schema

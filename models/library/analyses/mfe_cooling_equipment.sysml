@@ -287,6 +287,10 @@ Disabled returns finite zeros before active guards. Active requires finite numer
         out attribute pump_head_ft : Real;
         // [1]
         out attribute ihx_capacity_ok : Boolean;
+        // [m^2] Raw installed-minus-required per-IHX area; no snapping.
+        out attribute ihx_capacity_margin_m2 : Real;
+        // [1] One only for an active valid calculation; dormant zero is undefined.
+        out attribute ihx_capacity_defined : Real;
         // [1]
         out attribute pump_size_ok : Boolean;
         // [1]

@@ -986,6 +986,11 @@ IN.update({
     'cw_eta_pump': .8, 'cw_eta_motor': .95,
 })
 
+import oracle_procurement
+import oracle_capability
+IN.update(oracle_procurement.DEFAULTS)
+IN.update(oracle_capability.DEFAULTS)
+
 def compute():
     if "magnet_R0" in IN:
         raise ValueError("retired oracle input magnet_R0; use plant R")
@@ -1000,6 +1005,7 @@ def compute():
     if obsolete:
         raise ValueError(f'retired magnet oracle inputs {obsolete}; supply side, reference turns and masses explicitly')
     p = IN
+    oracle_procurement.validate(p)
     for key in ('magnet_reference_turns', 'magnet_turn_current', 'magnet_wp_side'):
         if isinstance(p[key], bool) or not math.isfinite(p[key]) or p[key] <= 0:
             raise ValueError('oracle Winding Operating State: invalid ' + key)
@@ -1295,21 +1301,21 @@ def compute():
         raise ValueError("oracle support rate: nonfinite product")
     magnet_capital_rollup = winding_pack + magnet_structure + insulation["stock_cost"]
     blanket = (p["blanket_unit_cost"] * p["blanket_structure_factor"] * blanket_vol
-               * (p_th / p["p_th_ref"]) ** p["alpha_06"])
+               * (p["selected_blanket_cost_thermal_class_MW"] / p["p_th_ref"]) ** p["alpha_06"])
     shield = (p["shield_unit_cost"] * shield_vol * p["shield_scale"]
-              * (p_th / p["p_th_ref"]) ** p["alpha_06"])
+              * (p["selected_shield_cost_thermal_class_MW"] / p["p_th_ref"]) ** p["alpha_06"])
     structure_legacy_cost = (p["structure_unit_cost"] * structure_vol
-                 * (p_et / p["p_et_ref"]) ** p["alpha_05"])
+                 * (p["selected_structure_cost_gross_class_MWe"] / p["p_et_ref"]) ** p["alpha_05"])
     structure = p["structure_residual_fraction"] * structure_legacy_cost
     vessel = (p["vessel_unit_cost"] * vessel_vol
-              * (p_et / p["p_et_ref"]) ** p["alpha_06"])
-    power_supplies = p["power_supplies_base"] * (p_et / p["p_et_ref"]) ** p["alpha_07"]
-    divertor = p["divertor_base"] * (p_th / p["divertor_p_th_ref"]) ** p["divertor_alpha"]
+              * (p["selected_vessel_cost_gross_class_MWe"] / p["p_et_ref"]) ** p["alpha_06"])
+    power_supplies = p["selected_power_supplies_purchase_cost_per_module"]
+    divertor = p["selected_divertor_purchase_cost_per_module"]
     heating = p["heating_ecrh_per_mw"] * heat_delivered  # ECRH-only; others zero
-    turbine = p["n_mod"] * p_the * p["turbine_per_mw"]
-    electric = p["n_mod"] * p_et * p["electric_per_mw"]
-    heat_rejection = p["n_mod"] * p_th * p["heat_rej_per_mw"]
-    misc = p["n_mod"] * p_et * p["misc_per_mw"]
+    turbine = p["n_mod"] * p["selected_turbine_purchase_cost_per_module"]
+    electric = p["n_mod"] * p["selected_electric_plant_installed_gross_rating_MWe"] * p["electric_per_mw"]
+    heat_rejection = p["n_mod"] * p["selected_heat_rejection_purchase_cost_per_module"]
+    misc = p["n_mod"] * p["selected_misc_plant_cost_gross_class_MWe"] * p["misc_per_mw"]
 
     # --- Neutron wall load: average, source-anchored calibration, peak (WI-041) ---
     # Written from the WI-041 design's table, not transcribed from the generated
@@ -1339,12 +1345,12 @@ def compute():
     # buildings_cost / precon_cost / om_cost impl statement forms verbatim
     # (bit-exact); p_the_ref = p_et_ref = 1100 (no DEC), n_mod frozen at 1.
     buildings = (((((p["bldg_fixed_base"]
-        + (p["bldg_fus_base"] * ((p_fus * p["n_mod"]) / p["bldg_p_fus_ref"])))
-        + (p["bldg_staff_base"] * (((p_et * p["n_mod"]) / p["p_et_ref"]) ** 0.5)))
-        + (p["bldg_the_base"] * ((p_the * p["n_mod"]) / p["p_et_ref"])))
-        + (p["bldg_th_base"] * ((p_th * p["n_mod"]) / p["p_th_ref"])))
-        + (p["bldg_et_base"] * ((p_et * p["n_mod"]) / p["p_et_ref"])))
-    precon = (((p["land_intensity"] * (((p_net * p["n_mod"]) * p["ref_net_power"]) ** 0.5))
+        + (p["bldg_fus_base"] * ((p["selected_buildings_legacy_cost_fusion_class_MW"] * p["n_mod"]) / p["bldg_p_fus_ref"])))
+        + (p["bldg_staff_base"] * (((p["selected_buildings_legacy_cost_gross_class_MWe"] * p["n_mod"]) / p["p_et_ref"]) ** 0.5)))
+        + (p["bldg_the_base"] * ((p["selected_buildings_legacy_cost_thermal_electric_class_MWe"] * p["n_mod"]) / p["p_et_ref"])))
+        + (p["bldg_th_base"] * ((p["selected_buildings_legacy_cost_thermal_class_MW"] * p["n_mod"]) / p["p_th_ref"])))
+        + (p["bldg_et_base"] * ((p["selected_buildings_legacy_cost_gross_class_MWe"] * p["n_mod"]) / p["p_et_ref"])))
+    precon = (((p["land_intensity"] * (((p["selected_precon_legacy_cost_net_class_MWe"] * p["n_mod"]) * p["ref_net_power"]) ** 0.5))
                * p["land_cost"]) + p["precon_fixed_base"])
     # WI-068: independent facilities geometry and interval inventories.
     facilities = facilities_oracle.layout(
@@ -1364,7 +1370,7 @@ def compute():
     facility_exclusion = facility_mode*(1+p['contingency_rate'])*facilities['installed_facility_capital']
     # Unlevelized annual O&M (WI-025). WI-029 levelizes it into CAS71 below;
     # it is no longer the DCF numerator itself.
-    annual_om_unlevelized = ((p["om_annual_ref"] * (((p_net * p["n_mod"]) / p["ref_net_power"]) ** p["om_alpha"]))
+    annual_om_unlevelized = ((p["om_annual_ref"] * (((p["selected_om_staffing_net_class_MWe"] * p["n_mod"]) / p["ref_net_power"]) ** p["om_alpha"]))
                  + p["om_direct"])
 
     powercore_capital = (magnet_capital_rollup + heating + divertor + blanket + shield
@@ -1387,26 +1393,26 @@ def compute():
     n = p["n_mod"]
     # CAS22 tail accounts ($)
     remote_handling = (p["remote_handling_base"] * p["concept_scale"]
-                       * (p_et / p["rh_p_et_ref"]) ** p["rh_alpha"])
+                       * (p["selected_remote_handling_cost_gross_class_MWe"] / p["rh_p_et_ref"]) ** p["rh_alpha"])
     reactor_equipment_subtotal = powercore_capital + remote_handling
     installation = p["installation_frac"] * reactor_equipment_subtotal
-    coolant = (p["coolant_primary_base"] * (n * p_net / p["coolant_ref_net"])
-               + p["coolant_intermediate_base"] * (n * p_th / p["coolant_p_th_ref"]) ** p["coolant_alpha"])
+    coolant = (p["coolant_primary_base"] * (n * p["selected_heat_transport_legacy_cost_net_class_MWe"] / p["coolant_ref_net"])
+               + p["coolant_intermediate_base"] * (n * p["selected_heat_transport_legacy_cost_thermal_class_MW"] / p["coolant_p_th_ref"]) ** p["coolant_alpha"])
     # WI-035 D7: the aux and cryoplant terms as their own channels; sum bit-identical.
-    aux_cost = p["aux_per_mw"] * (n * p_th)
-    cryo_cost = p["aux_cryo_base"] * (p_cryo / p["aux_p_cryo_ref"]) ** p["aux_alpha"]
+    aux_cost = p["aux_per_mw"] * (n * p["selected_cryoplant_aux_cost_thermal_class_MW"])
+    cryo_cost = p["selected_cryoplant_purchase_cost_per_module"]
     coolant_legacy = coolant
     coolant = (1 - p['cooling_cost_mode']) * coolant_legacy + p['cooling_cost_mode'] * cooling['installed_total']
     aux_cooling = aux_cost + cryo_cost
-    waste = p["waste_base"] * (n * p_th / p["waste_ref"]) ** p["waste_alpha"]
-    fuel_handling_legacy = p["fuel_handling_base"] * (n * p_net / p["fuel_ref"]) ** p["fuel_alpha"]
+    waste = p["waste_base"] * (n * p["selected_waste_cost_thermal_class_MW"] / p["waste_ref"]) ** p["waste_alpha"]
+    fuel_handling_legacy = p["fuel_handling_base"] * (n * p["selected_fuel_cycle_legacy_cost_net_class_MWe"] / p["fuel_ref"]) ** p["fuel_alpha"]
     processing = processing_oracle.calculate({key:p['processing_'+key] for key in PROCESSING_DEFAULTS} | dict(
         flow=fuel_inventory['dt_processor_kg_s'], inventory_enabled=p['inventory_inventory_enabled'],
         n_mod=n, legacy_cost=fuel_handling_legacy))
     fuel_handling = processing['cost']
     processing_exclusion = (1 + p['contingency_rate']) * processing['installation_total']
-    other_rpe = p["other_rpe_base"] * (n * p_net / p["other_ref"]) ** p["other_alpha"]
-    inc = p["inc_base"] * (n * p_th / p["inc_ref"]) ** p["inc_alpha"]
+    other_rpe = p["other_rpe_base"] * (n * p["selected_other_rpe_cost_net_class_MWe"] / p["other_ref"]) ** p["other_alpha"]
+    inc = p["inc_base"] * (n * p["selected_inc_cost_thermal_class_MW"] / p["inc_ref"]) ** p["inc_alpha"]
     cas22_tail_capital = (remote_handling + installation + coolant + aux_cooling
                           + waste + fuel_handling + other_rpe + inc)
     cas22_capital = powercore_capital + cas22_tail_capital
@@ -1420,13 +1426,13 @@ def compute():
                      * (p["construction_years"] / p["reference_construction_time"]))
     cas23_to_28_capital = bop_capital + special_materials_capital + cas28_capital
     # CAS40 owner + CAS50 supplementary at overnight (no CAS29/CAS30 on them)
-    owner = p["owner_base"] * (n * p_net / p["owner_ref"]) ** p["owner_alpha"]
+    owner = p["owner_base"] * (n * p["selected_owner_cost_net_class_MWe"] / p["owner_ref"]) ** p["owner_alpha"]
     supplementary = ((p["supp_shipping_frac"] * (cas20_capital - p["cooling_cost_mode"] * cooling["delivered_total"] - facility_exclusion - processing_exclusion)
                       + p["supp_spares_frac"] * cas23_to_28_capital
                       + p["supp_tax_frac"] * cas20_capital
                       + p["supp_insurance_frac"] * (cas20_capital + cas30_capital)
-                      + p["supp_startup_base"] * (n * p_net / p["ref_net_power"])
-                      + p["supp_decom_base"] * (n * p_net / p["ref_net_power"]))
+                      + p["supp_startup_base"] * (n * p["selected_startup_cost_net_class_MWe"] / p["ref_net_power"])
+                      + p["supp_decom_base"] * (n * p["selected_decom_cost_net_class_MWe"] / p["ref_net_power"]))
                      * (1.0 + p["supp_contingency_rate"]))
     # CAS10 (precon) enters at overnight (no CAS29/CAS30)
     overnight_capital = (precon + cas20_capital + cas30_capital + owner + supplementary)
@@ -1533,7 +1539,7 @@ def compute():
     # WI-035: beta reads the computed axis field (B_peak computed above).
     beta = 2.0 * p["beta_mu0"] * sust["p_avg"] / (B_axis ** 2)
 
-    return dict(
+    result = dict(
         # WI-072: expose independently computed intermediates for complete
         # native-channel verification. No generated result supplies these values.
         coverage_annual_total=annual_om,
@@ -1680,6 +1686,11 @@ def compute():
         vacuum_n_molecules=vacuum_n_molecules, vacuum_Q_total=vacuum_Q_total,
         vacuum_S_eff_required=vacuum_S_eff_required,
     )
+
+
+    result.update(oracle_capability.evaluate(p, result))
+    result.update({"procurement_guard_" + suffix: p[name] for suffix,(name,value) in oracle_procurement.PUBLIC_DEFAULTS.items() if "class_" in suffix})
+    return result
 
 
 def reconstruct_divertor_source_case(f_rad_total=0.9, q_target_ref=9.5, p_nonrad_ref=50.0):

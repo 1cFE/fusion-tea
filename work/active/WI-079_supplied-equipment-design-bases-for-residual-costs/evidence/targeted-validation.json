@@ -1,0 +1,73 @@
+{
+  "date": "2026-09-20",
+  "scope": "WI079 cost native acceptance and bounded current-consumer migration; global integration/review remains coordinator-owned",
+  "runs": [
+    {
+      "tests": "test_supplied_residual_costs.py after corrected ABI and legacy-mode addition",
+      "passed": 38,
+      "failed": 0,
+      "warnings": 6,
+      "seconds": 17.84
+    },
+    {
+      "tests": "test_facility_account_consumers.py + test_coil_thermal_inventory.py after migration",
+      "passed": 46,
+      "failed": 0,
+      "warnings": 14,
+      "seconds": 30.11
+    },
+    {
+      "tests": "test_structure_translation.py",
+      "passed": 8,
+      "failed": 0,
+      "seconds": 5.81
+    },
+    {
+      "tests": "test_mfe_operating_heating.py::test_heating_efficiency_scalar_consumers + ::test_operating_heat_complete_cost_operand_classification after migration",
+      "passed": 2,
+      "failed": 0,
+      "warnings": 2,
+      "seconds": 67.13
+    },
+    {
+      "tests": "test_fuel_processing_oracle.py + test_mfe_major_radius.py after exact retirement identity and CLI diagnostic migration",
+      "passed": 85,
+      "failed": 0,
+      "log": "/tmp/wi079-fuel-radius-rerun.log",
+      "xfailed": 1,
+      "warnings": 36,
+      "seconds": 106.27
+    }
+  ],
+  "earlier_failures": [
+    {
+      "scope": "first generated auxiliary wrapper baseline parity",
+      "cause": "seed returned source-order tuple instead of generated output-schema order",
+      "correction": "wrapper indexes named amounts using output model_fields; actual public wrapper tested",
+      "fixed": true
+    },
+    {
+      "scope": "combined targeted historical-consumer run",
+      "passed": 91,
+      "failed": 9,
+      "causes": [
+        "six retired supplementary p_net formal uses",
+        "one old tape-only price increment expected unchanged CAS72",
+        "two old predicate/wiring expectations"
+      ],
+      "correction": "explicit startup/decom classes; bounded independent native-vs-oracle cost descendants; complete Round2 predicate arity and exact guarded procurement edges",
+      "fixed": true
+    },
+    {
+      "scope": "fuel/radius current consumer integration",
+      "causes": [
+        "three retired supplementary p_net formal uses",
+        "six library-default retired parameters incorrectly assigned to plant parameter group",
+        "historical CLI incompatibility diagnostic expected 34 current predicates instead of declared 67"
+      ],
+      "correction": "explicit startup/decom classes; retired parameter group/name pairs read from frozen entering contract; exact current count derived from Round2 predicate ledger",
+      "fixed": true
+    }
+  ],
+  "semantics": "No historical artifact edits, no numeric tolerance relaxation, no output/predicate inventory weakening. Pydantic input-loader float-as-Boolean warnings retained."
+}

@@ -1,6 +1,135 @@
 package mfe_viability {
     private import ScalarValues::*;
 
+    calc def 'Helium Offered Conditions' {
+        doc /* Point-rating applicability: finite actual/supplied values match when equal or separated by at most 8*max(ulp(actual),ulp(supplied)); fixed numerical identity only, no public tolerance or physical envelope. Disabled returns unsupported/undefined; no inferred envelope. **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */
+        in attribute enabled_in : Boolean;
+        in attribute mode_in : Real;
+        in attribute actual_suction_K_in : Real;
+        in attribute rated_suction_K_in : Real;
+        in attribute actual_suction_Pa_in : Real;
+        in attribute rated_suction_Pa_in : Real;
+        in attribute actual_discharge_Pa_in : Real;
+        in attribute rated_discharge_Pa_in : Real;
+        in attribute actual_hot_K_in : Real;
+        in attribute rated_hot_K_in : Real;
+        in attribute actual_cp_in : Real;
+        in attribute rated_cp_in : Real;
+        in attribute actual_gamma_in : Real;
+        in attribute rated_gamma_in : Real;
+        out attribute applicable : Boolean;
+        out attribute supported : Boolean;
+        out attribute evaluation_defined : Real;
+    }
+    calc def 'Salt Offered Conditions' {
+        doc /* Point-rating applicability: finite actual/supplied values match when equal or separated by at most 8*max(ulp(actual),ulp(supplied)); fixed numerical identity only, no public tolerance or physical envelope. Disabled returns unsupported/undefined; no inferred envelope. **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */
+        in attribute enabled_in : Boolean;
+        in attribute mode_in : Real;
+        in attribute actual_hot_C_in : Real;
+        in attribute rated_hot_C_in : Real;
+        in attribute actual_return_C_in : Real;
+        in attribute rated_return_C_in : Real;
+        in attribute actual_cp_in : Real;
+        in attribute rated_cp_in : Real;
+        out attribute applicable : Boolean;
+        out attribute supported : Boolean;
+        out attribute evaluation_defined : Real;
+    }
+    calc def 'Steam Offered Conditions' {
+        doc /* Point-rating applicability: finite actual/supplied values match when equal or separated by at most 8*max(ulp(actual),ulp(supplied)); fixed numerical identity only, no public tolerance or physical envelope. Disabled returns unsupported/undefined; no inferred envelope. **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */
+        in attribute enabled_in : Boolean;
+        in attribute actual_main_pressure_MPa_in : Real;
+        in attribute rated_main_pressure_MPa_in : Real;
+        in attribute actual_extraction_pressure_MPa_in : Real;
+        in attribute rated_extraction_pressure_MPa_in : Real;
+        in attribute actual_steam_C_in : Real;
+        in attribute rated_steam_C_in : Real;
+        in attribute actual_reheat_C_in : Real;
+        in attribute rated_reheat_C_in : Real;
+        in attribute actual_condenser_C_in : Real;
+        in attribute rated_condenser_C_in : Real;
+        in attribute actual_salt_hot_C_in : Real;
+        in attribute rated_salt_hot_C_in : Real;
+        in attribute actual_salt_return_C_in : Real;
+        in attribute rated_salt_return_C_in : Real;
+        in attribute actual_salt_cp_in : Real;
+        in attribute rated_salt_cp_in : Real;
+        out attribute applicable : Boolean;
+        out attribute supported : Boolean;
+        out attribute evaluation_defined : Real;
+    }
+    calc def 'Water Offered Conditions' {
+        doc /* Point-rating applicability: finite actual/supplied values match when equal or separated by at most 8*max(ulp(actual),ulp(supplied)); fixed numerical identity only, no public tolerance or physical envelope. Disabled returns unsupported/undefined; no inferred envelope. **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */
+        in attribute enabled_in : Boolean;
+        in attribute actual_inlet_C_in : Real;
+        in attribute rated_inlet_C_in : Real;
+        in attribute actual_outlet_C_in : Real;
+        in attribute rated_outlet_C_in : Real;
+        in attribute actual_condenser_C_in : Real;
+        in attribute rated_condenser_C_in : Real;
+        out attribute applicable : Boolean;
+        out attribute supported : Boolean;
+        out attribute evaluation_defined : Real;
+    }
+    calc def 'Cryogenic Offered Conditions' {
+        doc /* Point-rating applicability: finite actual/supplied values match when equal or separated by at most 8*max(ulp(actual),ulp(supplied)); fixed numerical identity only, no public tolerance or physical envelope. Disabled returns unsupported/undefined; no inferred envelope. **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */
+        in attribute enabled_in : Boolean;
+        in attribute actual_cold_K_in : Real;
+        in attribute rated_cold_K_in : Real;
+        in attribute actual_intercept_K_in : Real;
+        in attribute rated_intercept_K_in : Real;
+        in attribute actual_ambient_K_in : Real;
+        in attribute rated_ambient_K_in : Real;
+        out attribute applicable : Boolean;
+        out attribute supported : Boolean;
+        out attribute evaluation_defined : Real;
+    }
+    calc def 'Cold Load Watts' {
+        doc /* Cold load W = cold_MW * 1000000; fixed unit conversion. Finite active arithmetic is guarded. **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: MR-7 conditional rating contract. **Last Updated**: 2026-09-20 */
+        in attribute cold_MW_in : Real;
+        out attribute demand : Real;
+    }
+    calc def 'Pump Pressure Rise' {
+        doc /* Required pump pressure rise MPa = outlet minus inlet; inactive returns zero. Finite active arithmetic is guarded. **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: MR-7 conditional rating contract. **Last Updated**: 2026-09-20 */
+        in attribute active_in : Boolean;
+        in attribute outlet_MPa_in : Real;
+        in attribute inlet_MPa_in : Real;
+        out attribute demand : Real;
+    }
+    calc def 'Salt Machine Electric' {
+        doc /* Per-machine demand MW = total MW / machine count; inactive short circuits before division. Finite active arithmetic is guarded. **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: MR-7 conditional rating contract. **Last Updated**: 2026-09-20 */
+        in attribute active_in : Boolean;
+        in attribute total_MW_in : Real;
+        in attribute count_in : Real;
+        out attribute demand : Real;
+    }
+    calc def 'Offered Capacity Screen' {
+        doc /* Strict rating minus demand at separately checked offered conditions. The guarded native completion rejects nonfinite/negative ratings and active demands, reports undefined if inactive, unsupported or demand unavailable, and never snaps margins. No equipment qualification is implied. **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */
+        in attribute rating_in : Real;
+        in attribute demand_in : Real;
+        in attribute applicable_in : Boolean;
+        in attribute conditions_supported_in : Boolean;
+        in attribute demand_available_in : Boolean;
+        out attribute margin : Real;
+        out attribute applicable : Boolean;
+        out attribute supported : Boolean;
+        out attribute evaluation_defined : Real;
+        out attribute capacity_ok : Boolean;
+    }
+    constraint def 'Offered Equipment Capacity' {
+        doc /* Affirmative scalar capacity requires defined supported demand and nonnegative raw margin. Inspect separate applicable/supported outputs to distinguish inactive/unsupported from physical shortage. **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/capability-contract.json **Reference**: round2/architecture-review.md; entering-model checkpoint 53a0366a. **Basis**: [AGENT] assumed offered capability at declared conditions; captured design, not vendor qualification. **Last Updated**: 2026-09-20 */
+        in attribute defined_in : Real;
+        in attribute margin_in : Real;
+        defined_in >= 1.0 and margin_in >= 0.0
+    }
+
+    constraint def 'Intermediate Exchanger Capacity' {
+        doc /* Existing conditional exchanger-area screen. An inactive calculation is undefined, not physically adequate. Signed margin is installed minus required area per exchanger; no equipment qualification is implied. **Source**: work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/spec.md **Reference**: preserve-model-design-choices/trail.md T-007 partial review release; mfe_cooling_equipment existing area relation. **Last Updated**: 2026-09-20 */
+        in attribute defined_in : Real;
+        in attribute margin_m2_in : Real;
+        defined_in >= 1.0 and margin_m2_in >= 0.0
+    }
+
     constraint def 'Represented Coolant Fill' {
         doc /* Selected purchased helium and salt cover only the represented physical fill. Reserve targets are suggestions. This is not complete-system inventory or off-design machine qualification. **Source**: work/active/WI-078_supplied-cooling-design-point-evaluation/spec.md **Reference**: MR-7 architecture-review-r2.md **Last Updated**: 2026-09-20 */
         in attribute defined_in : Real;

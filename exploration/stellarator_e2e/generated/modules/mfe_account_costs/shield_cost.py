@@ -25,9 +25,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:52
+SysML Source: root-0/analyses/mfe_account_costs.sysml:102
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:52
+SysML Source: root-0/analyses/mfe_account_costs.sysml:102
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/shield_cost_impl.py
@@ -84,9 +84,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:52
+SysML Source: root-0/analyses/mfe_account_costs.sysml:102
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:52
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:102
 
     Calculation Specification:
         p_th_ref = 2500.0

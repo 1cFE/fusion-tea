@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:409
+SysML Source: root-0/analyses/mfe_account_costs.sysml:459
 
 SysML Expressions:
     n_mod_in = 1.0
@@ -13,7 +13,9 @@ SysML Expressions:
     
 Documentation:
 CAS70 UNLEVELIZED annual O&M: fuel-keyed staffing base (om_ref, a
-concept input) scaled by sqrt of plant-total net electric. CAS71
+concept input) scaled by sqrt of a supplied staffing procurement class.
+WI-079: p_net is a selected net-MWe class, never operating power; staffing
+expenditure stays fixed when the same supplied design changes output. CAS71
 inflation levelization and CAS72 scheduled replacement are documented
 Stage-3 refinements, not carried (convention preserved, MR-WI025-3).
 om_direct is an additive direct term for concepts that specify O&M
@@ -35,7 +37,9 @@ def run_annual_om_cost(inputs: Annual_OM_CostInput) -> float:
     """Execute Annual_OM_Cost calculation.
 
 CAS70 UNLEVELIZED annual O&M: fuel-keyed staffing base (om_ref, a
-concept input) scaled by sqrt of plant-total net electric. CAS71
+concept input) scaled by sqrt of a supplied staffing procurement class.
+WI-079: p_net is a selected net-MWe class, never operating power; staffing
+expenditure stays fixed when the same supplied design changes output. CAS71
 inflation levelization and CAS72 scheduled replacement are documented
 Stage-3 refinements, not carried (convention preserved, MR-WI025-3).
 om_direct is an additive direct term for concepts that specify O&M
@@ -47,7 +51,7 @@ exact identity, the handshake injection path -- WI-025 D5/D6).
 costing_constants.yaml:272 (om_cost_dt 54.9), :8 (ref 1000)
 *Basis**: staffing power-law O&M, unlevelized (CAS71/72 out of scope)
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:409
+SysML Source: root-0/analyses/mfe_account_costs.sysml:459
 
 SysML Expressions:
     n_mod_in = 1.0
@@ -58,7 +62,9 @@ SysML Expressions:
     
 Documentation:
 CAS70 UNLEVELIZED annual O&M: fuel-keyed staffing base (om_ref, a
-concept input) scaled by sqrt of plant-total net electric. CAS71
+concept input) scaled by sqrt of a supplied staffing procurement class.
+WI-079: p_net is a selected net-MWe class, never operating power; staffing
+expenditure stays fixed when the same supplied design changes output. CAS71
 inflation levelization and CAS72 scheduled replacement are documented
 Stage-3 refinements, not carried (convention preserved, MR-WI025-3).
 om_direct is an additive direct term for concepts that specify O&M

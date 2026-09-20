@@ -75,6 +75,11 @@ def constraint_pred_definition_mfe_viability__winding_pack_stress_limit(sigma_in
     value = _cmp('<=', sigma_in, sigma_allow_in)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((sigma_allow_in - sigma_in)) if (_fin(sigma_in) and _fin(sigma_allow_in)) else None))
 
+# definition:mfe_viability::'Offered Equipment Capacity'
+def constraint_pred_definition_mfe_viability__offered_equipment_capacity(defined_in, margin_in):
+    value = _and(_cmp('>=', defined_in, 1.0), _cmp('>=', margin_in, 0.0))
+    return _PredicateBodyResult(actual_value=value, source_margin=None)
+
 # definition:mfe_viability::'Conductor Strain Limit'
 def constraint_pred_definition_mfe_viability__conductor_strain_limit(eps_cond, eps_cond_allow_in):
     value = _cmp('<=', eps_cond, eps_cond_allow_in)
@@ -154,6 +159,11 @@ def constraint_pred_definition_mfe_tritium_breeding__computed_tbr_adequacy(defin
 def constraint_pred_definition_mfe_viability__conductor_peak_field_limit(B_peak, B_max_in):
     value = _cmp('<=', B_peak, B_max_in)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((B_max_in - B_peak)) if (_fin(B_peak) and _fin(B_max_in)) else None))
+
+# definition:mfe_viability::'Intermediate Exchanger Capacity'
+def constraint_pred_definition_mfe_viability__intermediate_exchanger_capacity(defined_in, margin_m2_in):
+    value = _and(_cmp('>=', defined_in, 1.0), _cmp('>=', margin_m2_in, 0.0))
+    return _PredicateBodyResult(actual_value=value, source_margin=None)
 
 # definition:mfe_conductor_current::'Reference Conductor Current Margin'
 def constraint_pred_definition_mfe_conductor_current__reference_conductor_current_margin(margin_fraction_in):

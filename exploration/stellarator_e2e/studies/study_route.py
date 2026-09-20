@@ -23,22 +23,24 @@ are plant-level design attributes, one key each — ``stellarator_09__stellaris_
 ``_in`` convention and codegen projects one entry point per authored attribute. The
 model binds all live magnet radius operands to plant R (WI-051).
 
-Cost-result interpretation (MR-7): LCOE and capital include retained demand-matched
-turbine, cryogenic, electrical, heat-rejection, power-supply, miscellaneous and
-divertor cost proxies. Those accounts
-assume equipment matched to computed operating duty; they do not evaluate
-independently supplied installed capacities. Steam/cooling-water flow, shaft work
-and cryogenic electrical demand are operating quantities, not installed ratings.
-Selected helium/salt machine price points likewise do not qualify off-design
-performance. A satisfied represented-coolant-fill check covers only modeled fluid
-volumes; inventory completeness remains false. Passing the exported plant screens
-does not establish adequacy of equipment omitted from those screens. Hybrid
-blanket/shield/vessel/structure prices retain declared geometry or mass inputs
-plus their calibrated cost assumptions. Remote-handling, other reactor equipment,
-instrumentation, owner, waste and O&M accounts retain aggregate power or capital
-scaling; dormant legacy buildings, preconstruction, fuel-handling and coolant
-accounts retain their documented cost proxies. None of these proxy amounts
-is an independently evaluated installed equipment capacity.
+Cost-result interpretation (MR-7, WI-079/080): evaluated turbine, heat-rejection,
+cryogenic, power-supply and divertor packages have independently supplied purchase
+amounts and specifications. An amount may be an explicitly assumed estimate;
+it is not necessarily a vendor quote. Changing a rating at fixed supplied price
+is a hypothetical offer, not a prediction of a free upgrade. Electrical plant
+uses its selected gross rating in the matching inherited price law. Material and
+broad allowance accounts use independent selected procurement classes; they do
+not reprice equipment from running demand. Legacy account modes use the same
+separation. Operating energy/fuel and replacement timing can still change.
+
+Capacity checks compare actual propagated demands with supplied capabilities at
+declared conditions. Inactive or unsupported evaluation is separately identified
+and receives no affirmative physical adequacy credit. These scalar checks are
+necessary screens, not off-design machine maps, detailed structural assessment,
+or vendor qualification. Selected helium/salt machine price points retain their
+explicit source limits. Represented coolant fill covers only modeled volumes;
+inventory completeness remains false. A passing plant screen cannot qualify
+omitted physics. Historical packages retain their original interfaces and costs.
 
 """
 
@@ -66,7 +68,7 @@ PACKAGE_DIR = E2E / "generated"
 MANIFEST_PATH = HERE / "manifest.json"
 P = "stellarator_09__stellaris__"
 BASELINE_RESULT_SCHEMA_VERSION = "study-baseline-result/v1"
-EXPECTED_CONSTRAINT_COUNT = 34  # MR-7 adds four facility, processor-capacity and partial-fill checks.
+EXPECTED_CONSTRAINT_COUNT = 67  # Round 2 adds 32 offered-capacity assertions and the existing IHX area assertion.
 
 # --- Axis declarations: SysML attribute -> complete entry-key expansion ------
 AXES: dict[str, list[str]] = {
@@ -124,6 +126,49 @@ BOOLEAN_KEYS = frozenset(P + suffix for suffix in (
     "fuel_cycle__inventory_enabled", "fuel_cycle__processing_enabled",
     "fuel_cycle__processing_source_conditions", "heat_transport__equipment_enabled",
 ))
+
+
+# WI-080 emitted administrative flags can only remove capability credit.
+BOOLEAN_KEYS |= frozenset(P + suffix for suffix in ('cryoplant__cold_stage_capability__demand_available_in',
+ 'cryoplant__cryogenic_offered_conditions__enabled_in',
+ 'cryoplant__direct_electric_capability__applicable_in',
+ 'cryoplant__direct_electric_capability__conditions_supported_in',
+ 'cryoplant__direct_electric_capability__demand_available_in',
+ 'electric_plant__electric_gross_capability__applicable_in',
+ 'electric_plant__electric_gross_capability__conditions_supported_in',
+ 'electric_plant__electric_gross_capability__demand_available_in',
+ 'heat_rejection__water_electric_capability__demand_available_in',
+ 'heat_rejection__water_flow_capability__demand_available_in',
+ 'heat_rejection__water_head_capability__demand_available_in',
+ 'heat_rejection__water_rejection_capability__demand_available_in',
+ 'heat_transport__helium_electric_capability__demand_available_in',
+ 'heat_transport__helium_flow_capability__demand_available_in',
+ 'heat_transport__helium_pressure_rise_capability__demand_available_in',
+ 'heat_transport__helium_pumping_capability__demand_available_in',
+ 'heat_transport__salt_electric_capability__demand_available_in',
+ 'heat_transport__salt_flow_capability__demand_available_in',
+ 'heat_transport__salt_head_capability__demand_available_in',
+ 'heat_transport__salt_shaft_capability__demand_available_in',
+ 'power_supplies__magnet_pf_electric_capability__applicable_in',
+ 'power_supplies__magnet_pf_electric_capability__conditions_supported_in',
+ 'power_supplies__magnet_pf_electric_capability__demand_available_in',
+ 'power_supplies__magnet_tf_electric_capability__applicable_in',
+ 'power_supplies__magnet_tf_electric_capability__conditions_supported_in',
+ 'power_supplies__magnet_tf_electric_capability__demand_available_in',
+ 'turbine__condensate_electric_capability__demand_available_in',
+ 'turbine__condensate_flow_capability__demand_available_in',
+ 'turbine__condensate_pressure_rise_capability__demand_available_in',
+ 'turbine__condenser_rejection_capability__demand_available_in',
+ 'turbine__feedwater_electric_capability__demand_available_in',
+ 'turbine__feedwater_flow_capability__demand_available_in',
+ 'turbine__feedwater_pressure_rise_capability__demand_available_in',
+ 'turbine__hp_flow_capability__demand_available_in',
+ 'turbine__hp_shaft_capability__demand_available_in',
+ 'turbine__lp_flow_capability__demand_available_in',
+ 'turbine__lp_shaft_capability__demand_available_in',
+ 'turbine__turbine_gross_capability__applicable_in',
+ 'turbine__turbine_gross_capability__conditions_supported_in',
+ 'turbine__turbine_gross_capability__demand_available_in'))
 
 
 def assert_boolean_declarations(package_dir):

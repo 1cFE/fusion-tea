@@ -1,0 +1,11 @@
+# Supplied package contract refinement
+
+[AGENT] Architecture alternative accepted in principle by the fresh reviewer on 2026-09-20; exact affected bindings remain subject to full review. This refines the thermal proposal where its aggregate cost-class association was unresolved.
+
+A selected package consists of its offered capability dimensions, the conditions under which those capabilities are offered, and its independently supplied purchase estimate. The component owns these together. The selected amount can be an engineering assumption or a supplied quote; a captured entering model estimate must be labeled as an assumption, never as a quote. Each default package record lists its specification, conditions, amount, units, per-module or plant-total basis, scope/exclusions, provenance and checkpoint. No runtime function may regenerate the amount or ratings from demand.
+
+Existing correlations may estimate a package on explicitly selected design bases where their meanings are valid. A correlation based on total plant thermal power cannot silently become a cooling-duty price law. Where no source-supported mapping exists, the supplied purchase amount is the supported evaluation direction. This preserves the ability to evaluate and cost an offered design; it does not predict prices of arbitrary changes to its specification.
+
+Acceptance has two distinct perturbations. Demand-only changes retain all package fields and purchase amount. A replacement offer changes selected specifications and supplied amount together; its represented capital and downstream rollups must follow. Rating-only changes at a fixed supplied amount are explicit hypothetical offers, not a prediction of cost-free equipment upgrades. Existing operating consumption, replacement frequency and financial discounting may respond to operating conditions; purchase price of the same package does not.
+
+No new empirical price coefficient, off-design map or equipment qualification follows from this contract. Native capacity verdicts require active, supported evaluation and signed capacity-minus-requirement margins. Support is checked against declared conditions rather than a single caller-supplied success switch. Missing or unsupported evaluation stays distinguishable from a physical shortfall. Existing source/domain flags remain visible.

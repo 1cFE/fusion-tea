@@ -10,7 +10,38 @@ DOMAIN_EVIDENCE = ROOT / 'work/completed/20260914_WI-038_conductor-grade-lever/e
 STRUCTURE_EVIDENCE = ROOT / 'work/active/WI-057_stellaris-structural-decomposition/evidence/merge_onto_demo_maturation'
 P = 'stellarator_09__stellaris__'
 MR7_EVIDENCE = ROOT / 'work/active/WI-075_supplied-magnet-design-evaluation/evidence'
-MR7_DELTA = json.loads((MR7_EVIDENCE / 'interface-delta.json').read_text())
+ROUND2_EVIDENCE = ROOT / 'work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence'
+
+
+def compose_interface_deltas(earlier, later):
+    """Compose reviewed sequential ABI changes without adopting generated membership."""
+    result = {}
+    for added, retired in (
+        ('added_parameters', 'retired_parameters'),
+        ('added_numeric_channels', 'retired_numeric_channels'),
+        ('added_structured_channels', 'retired_structured_channels'),
+        ('added_predicates', 'retired_predicates'),
+    ):
+        result[added] = sorted((set(earlier[added]) - set(later[retired])) | set(later[added]))
+        result[retired] = sorted((set(earlier[retired]) - set(later[added])) | set(later[retired]))
+        assert not set(result[added]) & set(result[retired])
+    result['added_local_bindings'] = {
+        key: value for key, value in earlier['added_local_bindings'].items()
+        if key not in later['retired_local_names']
+    } | later['added_local_bindings']
+    result['retired_local_names'] = sorted(
+        (set(earlier['retired_local_names']) - set(later['added_local_bindings']))
+        | set(later['retired_local_names']))
+    assert not set(result['added_local_bindings']) & set(result['retired_local_names'])
+    return result
+
+
+ROUND2_DELTA = json.loads((ROUND2_EVIDENCE / 'interface-delta.json').read_text())
+MR7_DELTA = compose_interface_deltas(
+    json.loads((MR7_EVIDENCE / 'interface-delta.json').read_text()), ROUND2_DELTA)
+COST_DESCENDANTS = json.loads((ROOT / 'work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/evidence/regression-descendants.json').read_text())
+ROUND2_CHANGED_CHANNELS = frozenset(COST_DESCENDANTS['changed_existing_numeric_channels'])
+ROUND2_CHANGED_LOCALS = frozenset(COST_DESCENDANTS['changed_existing_local_names'])
 MR7_PARAMETERS = frozenset(MR7_DELTA['added_parameters'])
 MR7_RETIRED_PARAMETERS = frozenset(MR7_DELTA['retired_parameters'])
 MR7_CHANNELS = frozenset(MR7_DELTA['added_numeric_channels'])
@@ -35,6 +66,16 @@ def extend_cycle_fixture(part):
         result['added_channels'] = sorted(set(result['added_channels']) | WI073_CHANNELS)
     if 'added_local_names' in result:
         result['added_local_names'] = sorted(set(result['added_local_names']) | WI073_LOCALS)
+    # Only documented procurement descendants leave exact historical comparison.
+    # Inputs select a fixed package now; physical timing and all other channels stay exact.
+    for unchanged_key, changed_key, affected in (
+        ('unaffected_exact_channels', 'changed_current_equation_channels', ROUND2_CHANGED_CHANNELS),
+        ('unaffected_exact_locals', 'changed_current_equation_locals', ROUND2_CHANGED_LOCALS),
+    ):
+        if unchanged_key in result:
+            moved = set(result[unchanged_key]) & affected
+            result[unchanged_key] = sorted(set(result[unchanged_key]) - moved)
+            result[changed_key] = sorted(set(result[changed_key]) | moved)
     return result
 
 # WI-040 (2026-09-13): explicit ABI additions, not whatever regeneration happens to emit.
@@ -69,7 +110,7 @@ MR7_RADIUS_CASING = 63000.0 * (12.7 / 14.0) ** 0.78  # Explicit optional legacy 
 K_COIL_RETIRED = 1.968503937007874  # the retired WI-036 k_coil (25.0 / 12.7), the float the old oracle carried
 WI058_PARAMETERS = {P + 'magnet__coil__c_coil_ref'}
 WI058_RETIRED = {P + 'magnet__coil__k_coil'}
-RECEIPT_EVIDENCE = ROOT / 'work/active/WI-075_supplied-magnet-design-evaluation/integration'
+RECEIPT_EVIDENCE = ROOT / 'work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration'
 # WI-069 reviewed ABI: thirteen controls replace the held I_total input.
 WI069_PARAMETERS = {P + 'fuel_cycle__' + name for name in (
     'held_inventory', 'inventory_enabled', 'm_D_kg', 'reserve_fraction',
@@ -337,9 +378,16 @@ def translate_frozen_radius_evidence(historical, destination, forward):
     # enters it (the added set is restated below). The coil_length__c_coil ratio expectation (14/12.7) still
     # holds under the scaled reference the replays bind at R14.
     expectations['edges'].pop(modules.get('coil_length', 'coil_length'))
-    entering_names = {x['qualified_name'] for x in json.loads(translate_names((historical / 'entering-package/contracts/model_contract.json').read_text(), forward))['parameters']}
+    entering_parameters = json.loads(translate_names(
+        (historical / 'entering-package/contracts/model_contract.json').read_text(), forward))['parameters']
+    # A parameter's group is part of its identity. Round 2 retires library-default
+    # price coefficients as well as instance literals; use the original declared
+    # group for each explicitly ledgered retirement, never a guessed plant group.
+    retired_identities = [[entry['param_group'], entry['qualified_name']]
+                          for entry in entering_parameters
+                          if entry['qualified_name'] in ALL_RETIRED_PARAMETERS]
     expectations['contract_delta']['remove'] = sorted(
-        expectations['contract_delta']['remove'] + [['stellarator_plant_params', k] for k in sorted(ALL_RETIRED_PARAMETERS & entering_names)])
+        expectations['contract_delta']['remove'] + retired_identities)
     # MR-7 explicitly retires derived selection outputs. Only temporary replay
     # copies project them out; every surviving frozen physical value is retained.
     expectations['channels'] = sorted(set(expectations['channels']) - MR7_RETIRED_CHANNELS)
@@ -378,7 +426,7 @@ def current_generation():
     spec = importlib.util.spec_from_file_location('wi038_current_generation', RECEIPT_EVIDENCE / 'regenerate.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    # WI-075 wrapper owns the seed receipt; historical tools also use inventory().
+    # The current WI-080 wrapper owns the seed receipt; historical tools also use inventory().
     module.inventory = module.recipe().inventory
     module.SEEDS = RECEIPT_EVIDENCE / "candidate-seeds.json"
     return module
@@ -519,9 +567,9 @@ def radius_acceptance(destination, historical):
                 "classes=['SustainmentError','ZeroDivisionError','SustainmentError','ZeroDivisionError','TypeError']",
                 "classes=['SustainmentError','SustainmentError','SustainmentError','ZeroDivisionError','TypeError']")
         if name == 'cli_checks':
-            text = replace_once(text, "    assert r.returncode==(1 if args else 0)", """    if not args:
+            text = replace_once(text, "    assert r.returncode==(1 if args else 0)", f"""    if not args:
         assert r.returncode == 1
-        assert 'assessed_entry_count 34 != 20' in r.stderr
+        assert 'assessed_entry_count {34 + len(ROUND2_DELTA['added_predicates']) - len(ROUND2_DELTA['retired_predicates'])} != 20' in r.stderr
         assert r.stdout.count('*** DEVIATION') == 8
         for anchor in ('total capital $', 'LCOE $/MWh', 'p_net MW', 'q_eng', 'rec_frac', 'magnet %', 'CAS70 $/yr', 'CAS80 $/yr', 'lcoe_1cfe $/MWh (comparison)'):
             assert anchor in r.stdout, anchor

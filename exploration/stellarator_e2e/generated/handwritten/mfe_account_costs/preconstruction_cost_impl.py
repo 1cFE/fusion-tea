@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:372
+SysML Source: root-0/analyses/mfe_account_costs.sysml:422
 
 SysML Expressions:
     n_mod_in = 1.0
@@ -53,7 +53,7 @@ applies no CAS10 contingency and that was already NOAK-correct.
 costing_constants.yaml:8, :15-23
 *Basis**: CAS10 subtotal, contingency deliberately omitted (CAS29)
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:372
+SysML Source: root-0/analyses/mfe_account_costs.sysml:422
 
 SysML Expressions:
     n_mod_in = 1.0

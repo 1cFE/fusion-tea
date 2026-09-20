@@ -134,3 +134,92 @@ The proposed learning delta is: inspect emitted roles as well as declarations; e
 Coordinator check after the round result, reusing fresh non-author broad integration coverage from `/root/implemented_review`, evidence/final-review.md: **PASS technical completion**. The reviewer independently covered inventory, actual bindings, native acceptance, residual dispositions, regression corrections, candidate identity and retained artifact hashes. No uncovered implementation risk requires repeating that review. Coordinator checked task scopes, the corrected-request classification, retained paths and result fidelity. No discovery-log rows were created or touched. Native documents retain original scratch paths with an explicit durable-copy map; no historical artifact was rewritten or moved.
 
 The four bounded learnings approved by the reviewer are accepted and appended to learnings.md now. Scientific and tooling limits in answer.md carry forward. Recommendation: return the completed technical result for owner-held formal goal closure. No next technical round is required by this evidence; the goal remains grounded.
+
+## Round 2 — supplied-equipment-capacity-and-cost
+
+### Strategy revision — 2026-09-20
+
+[OWNER] Remaining demand-priced equipment and missing capability checks are required fixes (evidence/round2-owner-extension.md). [AGENT] Carry forward accepted Round 1 source and tests; replace remaining active purchase-price dependence on operation with explicit supplied design bases, connect thermal requirements to independently supplied capability, and verify plasma/breeding/divertor propagation. No inverse sizing policy or unsupported performance map is authorized. Native package generation and integration stay coordinator-owned. The prior closed round is not reopened.
+
+### T-007 scope
+
+- **Objective:** Establish exact residual cost/capability binding contracts and obtain fresh independent review.
+- **Why now:** Owner makes the residual gaps mandatory repairs.
+- **Scope:** Current active costs, thermal equipment, plasma/breeding/divertor interfaces and relevant generic consumers. Preserve source quarantine and existing empirical domains.
+- **Inputs:** goal.md; evidence/round2-owner-extension.md; WI-074 residual dispositions; implementation checkpoint b11567eb and delivery 53a0366a.
+- **Done when:** Reviewed actual bindings and acceptance plan support implementation, or a concrete scientific/owner gate is recorded.
+- **Stop when:** Unsupported new physical relationship, owner gate or declared limit.
+
+### T-007 start — 2026-09-20
+
+T-007 · native residual repair contracts · expected scoped PM items and independent design review. Separate read-only cost and thermal investigations may run concurrently: they write only their own evidence files; neither may edit production or decide the other investigation's contract. Coordinator integrates conclusions before review.
+
+### T-007 partial review release — 2026-09-20
+
+Fresh reviewer `/root/round2_design_review` independently approves promoting the already calculated IHX installed-minus-required area to an explicit native adequacy verdict. This narrow existing-physics correction is separable from the outstanding package-price contract. Disabled equipment must remain not applicable or distinctly undefined, never receive physical adequacy credit from zero-valued carriers. Existing invalid thermal-state rejection and empirical qualification flags remain. The reviewer also accepts a supplied package specification plus its explicitly supplied purchase estimate as a coherent conditional evaluator; it does not predict marginal price for arbitrary rating changes. Full architecture review remains pending the exact cost contract.
+
+### T-008 scope
+
+- **Objective:** Make existing intermediate exchanger adequacy part of native plant verdicts.
+- **Why now:** Independent inspection found that the Boolean output is omitted from asserted constraints.
+- **Scope:** Existing per-IHX area comparison, explicit applicability, native model/twin/seed and targeted tests. No new exchanger physics or geometry.
+- **Inputs:** goal.md; WI-080 spec; evidence/round2/thermal-contract-proposal.md; T-007 partial review release.
+- **Done when:** Existing sufficient/insufficient and dormant behavior are exposed as native evidence with a signed margin and independent review.
+- **Stop when:** Unsupported physical relation or declared limit.
+
+### T-008 start — 2026-09-20
+
+T-008 · WI-080 IHX assertion · worker owns new seed and focused cooling analysis/Primary Heat Transport/stellarator assertion patches and their twins; coordinator retains global generation, oracle, route and registry ownership. Other proposal work writes separate evidence only.
+
+### T-007 return — 2026-09-20
+
+**COMPLETE.** Fresh architecture review is PASS for the resolved contract in evidence/round2/architecture-review.md. Independent supplied package purchase amounts replace runtime prices for turbine, heat rejection, cryoplant, power supplies and divertor. Electric gross rating retains the matching linear price law; material geometry and explicit broad allowances retain independently selected procurement classes. Thermal capabilities are offered specifications at checked conditions, with active/defined distinction and strict margins. No unsupported coefficient conversion or machine map is introduced. Native work is registered as WI-079/WI-080. The earlier disconnected-class alternative is superseded by the package contract.
+
+Decision: retained correlations do not price arbitrary multidimensional upgrades · use supplied specification/amount pairs and preserve only valid selected-class estimates · execution detail · coordinator after fresh review · WI-079/WI-080 and evidence/round2/package-contract-refinement.md. Numeric capture, native behavior and integration remain unverified until implementation acceptance.
+
+### T-009 scope
+
+- **Objective:** Implement supplied residual procurement prices and design-class estimates under WI-079.
+- **Why now:** Owner's extension and fresh architecture PASS release exact contract.
+- **Scope:** Reviewed active and reachable legacy cost bindings, selected package amounts, material/class allowances and staffing basis, with actual rollup consumers. No new physical performance or pricing laws.
+- **Inputs:** goal.md; WI-079 spec; evidence/round2/architecture-review.md and cost-implementation-brief.md.
+- **Done when:** Native fixed-design pricing and replacement-package propagation pass relevant checks and independent integration review.
+- **Stop when:** Source reinterpretation/owner gate or declared limit.
+
+### T-009 start — 2026-09-20
+
+T-009 · WI-079 · cost worker owns focused cost equations/bindings and selected price literals. Coordinator owns oracle, generation, registries and integration.
+
+### T-010 scope
+
+- **Objective:** Implement supplied thermal/electrical capability checks under WI-080, extending accepted T-008 IHX work.
+- **Why now:** Fresh architecture PASS releases actual rated dimensions, checked conditions and price association.
+- **Scope:** Reviewed primary/intermediate, steam, water-rejection, refrigeration and represented electrical demand screens. Preserve plasma/breeding/divertor operating propagation. No new off-design performance maps.
+- **Inputs:** goal.md; WI-080 spec; evidence/round2/architecture-review.md and thermal-implementation-brief.md.
+- **Done when:** Supplied insufficient/sufficient, condition support and fixed-hardware native behavior pass relevant checks and independent integration review.
+- **Stop when:** Unsupported new scientific relation, owner gate or declared limit.
+
+### T-010 start — 2026-09-20
+
+T-010 · WI-080 · thermal worker owns capability blocks, inputs, predicates and selected rating literals. Cost worker writes disjoint blocks in shared files using focused patches. Capability and price schemas were integrated before release; neither worker may silently change the other's contract. Coordinator integrates sequentially after returns.
+
+### T-009 / T-010 implementation progress — 2026-09-20
+
+[AGENT] Source authors returned their reviewed cost/capability implementations. Native regeneration with 52 normative handwritten bodies reproduces exactly on a second fresh generation. The explicit interface ledger checks 118 added and 11 retired public inputs, 203 new numeric channels and 33 new asserted predicates. Current totals are 704 inputs, 1,352 numeric channels and 67 predicates. Forty emitted Boolean formals are administrative flags that can only remove capability credit; independent and native false-flag tests pass for all forty.
+
+[AGENT] Integration found and corrected positional mode bindings, removed caller-controlled unit conversions, corrected auxiliary-cost output ABI, and aligned independent cooling-water division order with the source-owned equation. None changes supplied hardware or relaxes a physical margin. The declared point-state identity rule is limited to eight binary ULP; capacity comparisons remain strict. See WI-080/evidence/numerical-identity.md and the architecture correction review.
+
+[AGENT] Six native propagation cases preserve selected equipment prices and quantities while plasma and cryogenic demands change. Heating, breeding and divertor checks remain connected. Baseline numeric agreement and metadata repinning pass. Broad regression/stock-route migrations, final independent review and the committed native integration checkpoint remain pending; these progress checks are not a task return or whole-goal completion claim.
+
+### T-011 scope
+
+- **Objective:** Certify the integrated Round 2 supplied-equipment package through current regressions, independent review and the native integration seam.
+- **Why now:** WI-079/WI-080 source, generated interfaces and native capability/price acceptance have returned; the stock integration test passes after explicit current-consumer migration.
+- **Scope:** Current model and stock-route regressions, exact interface/census/snapshot receipts, explicit-file implementation checkpoint, native integration return and final independent review. No study or comparison run.
+- **Inputs:** WI-079/WI-080 contracts and retained acceptance; Round 2 architecture and integrated reviews; current semantic coverage and interface delta.
+- **Done when:** All applicable checks have passing current evidence or a specifically accepted historical incompatibility; committed candidate passes all ten native integration gates; independent review supports expanded technical completion.
+- **Stop when:** A genuine owner gate or declared goal limit applies.
+
+### T-011 start — 2026-09-20
+
+[AGENT] Coordinator owns certification and explicit checkpoint. Initial broad development sweep recorded 2,606 passes, 83 failures, 47 setup errors and thirteen existing skips. Its failures are being reconciled through current reruns without modifying historical evidence: strict water arithmetic order, IHX formal mapping, exact current predicate/census inventory, and documented cost/retirement consumer migrations. Stock-route checks and the stock integration test now pass. Initial failures remain recorded; this is not a claim that the first sweep was green.

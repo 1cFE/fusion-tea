@@ -1,0 +1,20 @@
+# Independent offered capability oracle
+
+[AGENT] Implemented `exploration/stellarator_e2e/oracle_capability.py` from the released architecture review and `capability-contract.json`. Static default literals identify assumed offers captured at checkpoint `53a0366a`. The oracle imports only Python's `math` module. It neither imports production/generated calculators nor reads work records during evaluation. Existing independent `verify_stellaris` results supply operating demands; no native result supplies an expected value.
+
+## Integration interface
+
+- `PUBLIC_DEFAULTS` maps each of 49 public input suffixes to `(oracle_parameter_key, literal_default)`. Prepend `stellarator_09__stellaris__` when joining public inputs. The electric-plant rating reuses `selected_electric_plant_installed_gross_rating_MWe` from the procurement oracle; other keys use `capability_` followed by the full public suffix.
+- `DEFAULTS` supplies those parameter defaults. Merge once into the verifier inputs, then call `evaluate(parameters, independently_computed_results)` after its existing independent result dictionary is complete.
+- `OUTPUT_MAP` maps all 179 returned result keys to native producer outputs: 32 dimensions each expose margin, definedness, applicability, support and capacity Boolean; five state checks each expose applicability, support and definedness; four demand conversions expose their independent converted demand. State calculation output `evaluation_defined` maps to oracle suffix `defined`. Screen margin and definedness bind generated producer outputs `__<name>_capability__margin` and `__<name>_capability__evaluation_defined`. Native formal predicate IDs remain coordinator-owned.
+- The existing IHX screen and its two new outputs remain separately owned by the coordinator's cooling oracle extension. This module does not duplicate those outputs or supply a second IHX verdict.
+
+## Semantics and limits
+
+Every active screen retains the raw signed subtraction. Exact equality passes; the representable value below demand fails. Nonfinite or negative ratings and active demands raise. Inactive screens have zero margin and false applicability/support/adequacy. Unavailable demand leaves the screen undefined, including zero placeholders for exchanger conductance and inactive cryogenic inventory. Each declared point state requires finite values and exact equality or a separation of at most eight times the larger binary ULP. This hard-coded numerical identity rule admits representation-scale roundoff only; it does not establish a physical operating envelope. It never changes raw capacity margins. Helium applicability requires live-loop mode one; salt applicability requires secondary-energy mode one. Invalid modes fail even when the equipment is disabled.
+
+The salt electrical demand divides independently computed total electrical demand by supplied assembly pump count when active. Condensate and feedwater pressure rises subtract independent outlet/inlet state pressures when the steam cycle is active. Cold-stage watts multiply independent cold MW by one million. Dormant conversions return zero before division/subtraction. The supplied ratings remain unchanged when demand changes. These conditional scalar checks do not establish equipment qualification, complete heat rejection, pump maps or a price law for hypothetical rating upgrades.
+
+## Verification
+
+`.codex-test/run python -m pytest tests/models/test_offered_capability_oracle.py -q`: 142 passed. Covers all 32 bound dimensions with insufficient/sufficient offers, exact and adjacent representable boundary arithmetic, zero demand, invalid values, each point-state mismatch, missing UA/intercept availability, legacy steam inactivity, and fixed cold-stage hardware under changed load. `tests/models/test_offered_capability_flag_native.py` adds forty native comparisons for the emitted Boolean administrative flags; all forty pass. These flags are separately enumerated in `FLAG_DEFAULTS` and can only remove capability credit. Native baseline agreement and predicate inventory are recorded by the coordinator; these isolated tests do not certify the final integration checkpoint.

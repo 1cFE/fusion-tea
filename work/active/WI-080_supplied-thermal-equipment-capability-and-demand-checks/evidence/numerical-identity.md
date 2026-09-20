@@ -1,0 +1,7 @@
+# Numerical identity and strict capacity comparisons
+
+[AGENT] Native baseline comparison found one categorical mismatch after auxiliary cost ABI correction: cooling-water electrical capacity was false natively and true independently. The native calculation retained a small negative margin; the independent calculation obtained zero. The offered rating was the captured entering estimate, so it lay on a floating-point boundary.
+
+The independent cooling-water calculation divided gravitational work by 1000 before dividing by pump efficiency. The native normative calculation divides by efficiency before converting units. These are equivalent in real arithmetic but differ in binary rounding. The independent formula in `exploration/stellarator_e2e/oracle_matched_cycle.py` now follows the source-owned operation order: `9.80665 * head / eta_pump / 1000`. It remains an independent implementation using its own property tables and balance calculation. All 1,352 native baseline numeric channels then agree, including the capacity Boolean. No offered rating changed, and raw margins and the `margin >= 0` comparison remain unchanged.
+
+The separate eight-ULP point-state identity rule was reviewed explicitly in the Round 2 architecture review. It applies only when comparing declared operating conditions with offered point conditions. It never alters demand, rating, capacity margin, or a capacity verdict.

@@ -28,9 +28,9 @@ Outputs:
     - cost: cost result
     - legacy_cost: legacy_cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:81
+SysML Source: root-0/analyses/mfe_account_costs.sysml:131
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:81
+SysML Source: root-0/analyses/mfe_account_costs.sysml:131
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/structure_cost_impl.py
@@ -91,9 +91,9 @@ Outputs:
     - cost: cost result
     - legacy_cost: legacy_cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:81
+SysML Source: root-0/analyses/mfe_account_costs.sysml:131
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:81
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:131
 
     Calculation Specification:
         residual_fraction = 1.0

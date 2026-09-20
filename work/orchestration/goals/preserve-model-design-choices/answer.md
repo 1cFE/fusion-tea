@@ -1,4 +1,6 @@
-# Preserve model design choices — technical answer
+# Preserve model design choices — Round 1 technical answer
+
+[OWNER] Superseded as a whole-goal completion claim on 2026-09-20 by evidence/round2-owner-extension.md. This remains the accepted Round 1 result; Round 2 must repair the remaining equipment cost and capability issues.
 
 [AGENT] **Technical completion criteria are met for the independently reviewed scope.** No confirmed MR-7 violation remains open in that scope. Fresh non-author [final review](evidence/final-review.md) is PASS. Formal goal closure remains owner-held; the goal stays grounded.
 

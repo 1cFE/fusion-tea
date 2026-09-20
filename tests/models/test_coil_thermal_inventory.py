@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 
 import pytest
+from tests.models.test_winding_pack_cost import evaluate, runtime_paths  # noqa: F401
 
 ROOT = Path(__file__).resolve().parents[2]
 EVIDENCE = ROOT / 'work/active/WI-059_coil-thermal-and-total-support-inventory/evidence'
@@ -53,7 +54,7 @@ def test_disabled_inventory_does_not_evaluate_new_domain(oracle):
     assert set(oracle._coil_thermal_inventory(p, 25, .5).values()) == {0.0}
 
 
-def test_legacy_replay_preserves_entering_physics_and_non_tape_accounts(oracle):
+def test_legacy_replay_preserves_entering_physics_and_non_tape_accounts(oracle, evaluate):
     entering = json.loads((EVIDENCE/'entering_oracle.json').read_text())
     from tests.models.current_mfe_regressions import WI059_REPLAY, oracle_local_overrides, assert_local_partition
     saved = oracle.IN.copy()
@@ -65,6 +66,15 @@ def test_legacy_replay_preserves_entering_physics_and_non_tape_accounts(oracle):
     changed=assert_local_partition('coil-thermal-local-0', actual, entering['outputs'])
     from tests.study.test_domain_consumers import wi040_expected
     expected,_=wi040_expected({'outputs':entering['outputs'],'overrides':{}})
+    # Round 2 independently selected prices cannot be reconstructed by the old
+    # tape-only increment. Check only those declared descendants against native
+    # execution at the identical explicit replay; preserve every other expectation.
+    from tests.models.current_mfe_regressions import COST_DESCENDANTS, ROUND2_CHANGED_LOCALS, P
+    native = evaluate({key.removeprefix(P): value for key, value in WI059_REPLAY.items()})
+    channels = COST_DESCENDANTS['oracle_local_to_channel']
+    aliases = COST_DESCENDANTS['local_aliases']
+    for key in changed & ROUND2_CHANGED_LOCALS:
+        expected[key] = native.outputs[channels[aliases.get(key, key)]]
     for key in changed-{'conductor_cost_per_kAm_effective','fuel_tbr_margin'}:
         assert actual[key] == pytest.approx(expected[key],rel=1e-12,abs=1e-9),key
     assert actual['fuel_tbr_margin'] == actual['breeding_tbr_mean']-actual['fuel_tbr_required']

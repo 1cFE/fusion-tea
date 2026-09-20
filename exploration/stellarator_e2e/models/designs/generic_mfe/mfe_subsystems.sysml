@@ -2,6 +2,7 @@ package mfe_subsystems {
     private import mfe_facilities::*;
     private import mfe_facilities_parts::*;
     private import ScalarValues::*;
+    private import mfe_viability::*;
     private import mfe_interfaces::*;
     private import mfe_power_cycle::*;
     private import mfe_matched_steam_cycle::*;
@@ -79,16 +80,18 @@ package mfe_subsystems {
         :>> capital_cost = blanket_cost.cost;
         // ---- template calcs (WI-057): the analyses this part owns ----
         // Blanket (CAS22.1.1).
-        // WI-050: retained power-scaled equipment costs are design-point sizing
-        // estimates, including blanket/shield/structure/vessel/supplies/divertor,
-        // turbine/electric/rejection/miscellaneous, buildings and CAS22 tail.
-        // Their operating-power operands are retained under the reviewed cost
-        // classification; heating procurement alone follows installed delivery.
+        // WI-079: procurement class is chosen independently of operating power.
+        // It prices the supplied geometry without asserting physical capability.
+        attribute cost_thermal_class_MW : Real;
+        calc cost_thermal_class_MW_guard : 'Supplied Cost Class' {
+            in class_in = cost_thermal_class_MW;
+        }
+        attribute cost_thermal_class_MW_checked : Real = cost_thermal_class_MW_guard.value;
         calc blanket_cost : 'Blanket Cost' {
             in unit_cost = 'Blanket'::unit_cost;
             in structure_factor = 'Blanket'::structure_factor;
             in blanket_vol = 'Blanket'::blanket_vol;
-            in p_th_in = p_th;
+            in p_th_in = cost_thermal_class_MW_checked;
         }
         // WI-045: the reactor's source heat (no pump credit), the representative
         // primary loop and the temperature-compatible cycle, upstream of the
@@ -157,11 +160,16 @@ package mfe_subsystems {
         :>> capital_cost = shield_cost.cost;
         // ---- template calcs (WI-057): the analyses this part owns ----
         // Shield (CAS22.1.2).
+        attribute cost_thermal_class_MW : Real;
+        calc cost_thermal_class_MW_guard : 'Supplied Cost Class' {
+            in class_in = cost_thermal_class_MW;
+        }
+        attribute cost_thermal_class_MW_checked : Real = cost_thermal_class_MW_guard.value;
         calc shield_cost : 'Shield Cost' {
             in unit_cost = 'Shield'::unit_cost;
             in shield_vol = 'Shield'::shield_vol;
             in shield_scale = 'Shield'::shield_scale;
-            in p_th_in = p_th;
+            in p_th_in = cost_thermal_class_MW_checked;
         }
     }
 
@@ -190,11 +198,16 @@ package mfe_subsystems {
         :>> capital_cost = structure_cost.cost;
         // ---- template calcs (WI-057): the analyses this part owns ----
         // Primary structure (CAS22.1.5).
+        attribute cost_gross_class_MWe : Real;
+        calc cost_gross_class_MWe_guard : 'Supplied Cost Class' {
+            in class_in = cost_gross_class_MWe;
+        }
+        attribute cost_gross_class_MWe_checked : Real = cost_gross_class_MWe_guard.value;
         calc structure_cost : 'Structure Cost' {
             in residual_fraction = 'Primary Structure'::residual_fraction;
             in unit_cost = 'Primary Structure'::unit_cost;
             in structure_vol = 'Primary Structure'::structure_vol;
-            in p_et_in = p_et;
+            in p_et_in = cost_gross_class_MWe_checked;
         }
     }
 
@@ -220,14 +233,46 @@ package mfe_subsystems {
         :>> capital_cost = vessel_cost.cost;
         // ---- template calcs (WI-057): the analyses this part owns ----
         // Vacuum vessel (CAS22.1.6, shell term).
+        attribute cost_gross_class_MWe : Real;
+        calc cost_gross_class_MWe_guard : 'Supplied Cost Class' {
+            in class_in = cost_gross_class_MWe;
+        }
+        attribute cost_gross_class_MWe_checked : Real = cost_gross_class_MWe_guard.value;
         calc vessel_cost : 'Vessel Cost' {
             in unit_cost = 'Vacuum Vessel'::unit_cost;
             in vessel_vol = 'Vacuum Vessel'::vessel_vol;
-            in p_et_in = p_et;
+            in p_et_in = cost_gross_class_MWe_checked;
         }
     }
 
     part def 'Power Supplies' :> 'CAS22 Power Core' {
+        attribute rated_tf_MWe : Real default 0.0; // supplied [MWe]
+        attribute rated_pf_MWe : Real default 0.0; // supplied [MWe]
+        calc magnet_tf_electric_capability : 'Offered Capacity Screen' {
+            in rating_in = rated_tf_MWe;
+            in demand_in = p_tf_total;
+            in applicable_in = true;
+            in conditions_supported_in = true;
+            in demand_available_in = true;
+        }
+        attribute magnet_tf_electric_margin : Real = magnet_tf_electric_capability.margin;
+        attribute magnet_tf_electric_applicable : Boolean = magnet_tf_electric_capability.applicable;
+        attribute magnet_tf_electric_supported : Boolean = magnet_tf_electric_capability.supported;
+        attribute magnet_tf_electric_defined : Real = magnet_tf_electric_capability.evaluation_defined;
+        attribute magnet_tf_electric_capacity_ok : Boolean = magnet_tf_electric_capability.capacity_ok;
+        calc magnet_pf_electric_capability : 'Offered Capacity Screen' {
+            in rating_in = rated_pf_MWe;
+            in demand_in = p_pf;
+            in applicable_in = true;
+            in conditions_supported_in = true;
+            in demand_available_in = true;
+        }
+        attribute magnet_pf_electric_margin : Real = magnet_pf_electric_capability.margin;
+        attribute magnet_pf_electric_applicable : Boolean = magnet_pf_electric_capability.applicable;
+        attribute magnet_pf_electric_supported : Boolean = magnet_pf_electric_capability.supported;
+        attribute magnet_pf_electric_defined : Real = magnet_pf_electric_capability.evaluation_defined;
+        attribute magnet_pf_electric_capacity_ok : Boolean = magnet_pf_electric_capability.capacity_ok;
+
         // ---- ports (WI-057): the exchanges this part takes part in; declarative, see mfe_interfaces ----
         port electric_in : ~'Electric Port';   // <- electric_plant.recirculating (pb.p_tf_in, p_pf_in)
         // WI-057: the power_supplies's own facts, moved from the plant (formerly plant-level inputs)
@@ -243,7 +288,7 @@ package mfe_subsystems {
         attribute p_pf : Real;
         doc /*
         CAS22.1.7 Power supplies (steady-state: high-current DC for SC magnets,
-        switchgear). Cost driver feeds 'Power Supplies Cost'. This is a demand-matched aggregate price proxy driven by gross electric output, not an evaluation of a supplied converter rating or installed power-supply adequacy.
+        switchgear). Capital consumes the supplied package purchase estimate. Its scope and specification are recorded together; the amount is not regenerated from operating gross power. Converter adequacy remains unqualified.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
         **Ref**: cas22.py:554 (c220107 steady-state)
@@ -251,21 +296,233 @@ package mfe_subsystems {
         */
         :>> scope = 'CAS Scope'::shared;
 
-        attribute base : Real;
+        attribute purchase_cost_per_module : Real;
         // ---- inputs the plant wires (WI-057): values produced elsewhere, read here by name ----
         attribute p_et : Real;   // <- pb.p_et
         :>> capital_cost = power_supplies_cost.cost;
         // ---- template calcs (WI-057): the analyses this part owns ----
         // Power supplies (CAS22.1.7).
-        calc power_supplies_cost : 'Power Supplies Cost' {
-            in base = 'Power Supplies'::base;
-            in p_et_in = p_et;
+        calc power_supplies_cost : 'Supplied Purchase Cost' {
+            in purchase_cost_in = purchase_cost_per_module;
+            in n_mod_in = 1.0;
         }
     }
 
     // --- Balance-of-plant accounts (CAS23-26, scope = shared) ---
 
     part def 'Turbine Plant' :> 'CAS23 Turbine Plant' {
+        attribute rated_steam_main_pressure_MPa : Real default 0.0; // supplied [MPa]
+        attribute rated_steam_extraction_pressure_MPa : Real default 0.0; // supplied [MPa]
+        attribute rated_steam_steam_C : Real default 0.0; // supplied [degC]
+        attribute rated_steam_reheat_C : Real default 0.0; // supplied [degC]
+        attribute rated_steam_condenser_C : Real default 0.0; // supplied [degC]
+        attribute rated_steam_salt_hot_C : Real default 0.0; // supplied [degC]
+        attribute rated_steam_salt_return_C : Real default 0.0; // supplied [degC]
+        attribute rated_steam_salt_cp : Real default 0.0; // supplied [kJ/kg/K]
+        attribute selected_gross_MWe : Real default 0.0; // supplied [MWe]
+        calc steam_offered_conditions : 'Steam Offered Conditions' {
+            in enabled_in = matched_active;
+            in actual_main_pressure_MPa_in = main_steam_generator.pressure_MPa;
+            in rated_main_pressure_MPa_in = rated_steam_main_pressure_MPa;
+            in actual_extraction_pressure_MPa_in = open_feedwater_heater.pressure_MPa;
+            in rated_extraction_pressure_MPa_in = rated_steam_extraction_pressure_MPa;
+            in actual_steam_C_in = main_steam_generator.outlet_temperature_C;
+            in rated_steam_C_in = rated_steam_steam_C;
+            in actual_reheat_C_in = reheater.outlet_temperature_C;
+            in rated_reheat_C_in = rated_steam_reheat_C;
+            in actual_condenser_C_in = condenser.temperature_C;
+            in rated_condenser_C_in = rated_steam_condenser_C;
+            in actual_salt_hot_C_in = cycle_salt_hot_C;
+            in rated_salt_hot_C_in = rated_steam_salt_hot_C;
+            in actual_salt_return_C_in = cycle_salt_return_C;
+            in rated_salt_return_C_in = rated_steam_salt_return_C;
+            in actual_salt_cp_in = cycle_salt_cp_kJ_kgK;
+            in rated_salt_cp_in = rated_steam_salt_cp;
+        }
+        attribute steam_rating_applicable : Boolean = steam_offered_conditions.applicable;
+        attribute steam_rating_supported : Boolean = steam_offered_conditions.supported;
+        attribute steam_rating_defined : Real = steam_offered_conditions.evaluation_defined;
+        calc turbine_gross_capability : 'Offered Capacity Screen' {
+            in rating_in = selected_gross_MWe;
+            in demand_in = p_the;
+            in applicable_in = true;
+            in conditions_supported_in = true;
+            in demand_available_in = true;
+        }
+        attribute turbine_gross_margin : Real = turbine_gross_capability.margin;
+        attribute turbine_gross_applicable : Boolean = turbine_gross_capability.applicable;
+        attribute turbine_gross_supported : Boolean = turbine_gross_capability.supported;
+        attribute turbine_gross_defined : Real = turbine_gross_capability.evaluation_defined;
+        attribute turbine_gross_capacity_ok : Boolean = turbine_gross_capability.capacity_ok;
+        calc hp_flow_capability : 'Offered Capacity Screen' {
+            in rating_in = hp_turbine.rated_flow_kg_s;
+            in demand_in = hp_turbine.flow_in_kg_s;
+            in applicable_in = steam_rating_applicable;
+            in conditions_supported_in = steam_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute hp_flow_margin : Real = hp_flow_capability.margin;
+        attribute hp_flow_applicable : Boolean = hp_flow_capability.applicable;
+        attribute hp_flow_supported : Boolean = hp_flow_capability.supported;
+        attribute hp_flow_defined : Real = hp_flow_capability.evaluation_defined;
+        attribute hp_flow_capacity_ok : Boolean = hp_flow_capability.capacity_ok;
+        calc hp_shaft_capability : 'Offered Capacity Screen' {
+            in rating_in = hp_turbine.rated_shaft_MW;
+            in demand_in = hp_turbine.shaft_MW;
+            in applicable_in = steam_rating_applicable;
+            in conditions_supported_in = steam_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute hp_shaft_margin : Real = hp_shaft_capability.margin;
+        attribute hp_shaft_applicable : Boolean = hp_shaft_capability.applicable;
+        attribute hp_shaft_supported : Boolean = hp_shaft_capability.supported;
+        attribute hp_shaft_defined : Real = hp_shaft_capability.evaluation_defined;
+        attribute hp_shaft_capacity_ok : Boolean = hp_shaft_capability.capacity_ok;
+        calc lp_flow_capability : 'Offered Capacity Screen' {
+            in rating_in = lp_turbine.rated_flow_kg_s;
+            in demand_in = lp_turbine.flow_in_kg_s;
+            in applicable_in = steam_rating_applicable;
+            in conditions_supported_in = steam_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute lp_flow_margin : Real = lp_flow_capability.margin;
+        attribute lp_flow_applicable : Boolean = lp_flow_capability.applicable;
+        attribute lp_flow_supported : Boolean = lp_flow_capability.supported;
+        attribute lp_flow_defined : Real = lp_flow_capability.evaluation_defined;
+        attribute lp_flow_capacity_ok : Boolean = lp_flow_capability.capacity_ok;
+        calc lp_shaft_capability : 'Offered Capacity Screen' {
+            in rating_in = lp_turbine.rated_shaft_MW;
+            in demand_in = lp_turbine.shaft_MW;
+            in applicable_in = steam_rating_applicable;
+            in conditions_supported_in = steam_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute lp_shaft_margin : Real = lp_shaft_capability.margin;
+        attribute lp_shaft_applicable : Boolean = lp_shaft_capability.applicable;
+        attribute lp_shaft_supported : Boolean = lp_shaft_capability.supported;
+        attribute lp_shaft_defined : Real = lp_shaft_capability.evaluation_defined;
+        attribute lp_shaft_capacity_ok : Boolean = lp_shaft_capability.capacity_ok;
+        calc main_UA_capability : 'Offered Capacity Screen' {
+            in rating_in = main_steam_generator.installed_UA_MW_K;
+            in demand_in = main_UA_MW_K;
+            in applicable_in = steam_rating_applicable;
+            in conditions_supported_in = steam_rating_supported;
+            in demand_available_in = matched_main_UA_available;
+        }
+        attribute main_UA_margin : Real = main_UA_capability.margin;
+        attribute main_UA_applicable : Boolean = main_UA_capability.applicable;
+        attribute main_UA_supported : Boolean = main_UA_capability.supported;
+        attribute main_UA_defined : Real = main_UA_capability.evaluation_defined;
+        attribute main_UA_capacity_ok : Boolean = main_UA_capability.capacity_ok;
+        calc reheat_UA_capability : 'Offered Capacity Screen' {
+            in rating_in = reheater.installed_UA_MW_K;
+            in demand_in = reheat_UA_MW_K;
+            in applicable_in = steam_rating_applicable;
+            in conditions_supported_in = steam_rating_supported;
+            in demand_available_in = matched_reheat_UA_available;
+        }
+        attribute reheat_UA_margin : Real = reheat_UA_capability.margin;
+        attribute reheat_UA_applicable : Boolean = reheat_UA_capability.applicable;
+        attribute reheat_UA_supported : Boolean = reheat_UA_capability.supported;
+        attribute reheat_UA_defined : Real = reheat_UA_capability.evaluation_defined;
+        attribute reheat_UA_capacity_ok : Boolean = reheat_UA_capability.capacity_ok;
+        calc condenser_rejection_capability : 'Offered Capacity Screen' {
+            in rating_in = condenser.rated_rejection_MW;
+            in demand_in = q_condenser_MW;
+            in applicable_in = steam_rating_applicable;
+            in conditions_supported_in = steam_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute condenser_rejection_margin : Real = condenser_rejection_capability.margin;
+        attribute condenser_rejection_applicable : Boolean = condenser_rejection_capability.applicable;
+        attribute condenser_rejection_supported : Boolean = condenser_rejection_capability.supported;
+        attribute condenser_rejection_defined : Real = condenser_rejection_capability.evaluation_defined;
+        attribute condenser_rejection_capacity_ok : Boolean = condenser_rejection_capability.capacity_ok;
+        calc condensate_flow_capability : 'Offered Capacity Screen' {
+            in rating_in = condensate_pump.rated_flow_kg_s;
+            in demand_in = condensate_pump.flow_in_kg_s;
+            in applicable_in = steam_rating_applicable;
+            in conditions_supported_in = steam_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute condensate_flow_margin : Real = condensate_flow_capability.margin;
+        attribute condensate_flow_applicable : Boolean = condensate_flow_capability.applicable;
+        attribute condensate_flow_supported : Boolean = condensate_flow_capability.supported;
+        attribute condensate_flow_defined : Real = condensate_flow_capability.evaluation_defined;
+        attribute condensate_flow_capacity_ok : Boolean = condensate_flow_capability.capacity_ok;
+        calc condensate_pressure_rise_demand_conversion : 'Pump Pressure Rise' {
+            in active_in = matched_active;
+            in outlet_MPa_in = condensate_pump.p_out_MPa;
+            in inlet_MPa_in = condensate_pump.p_in_MPa;
+        }
+        attribute condensate_pressure_rise_required : Real = condensate_pressure_rise_demand_conversion.demand;
+        calc condensate_pressure_rise_capability : 'Offered Capacity Screen' {
+            in rating_in = condensate_pump.rated_dp_MPa;
+            in demand_in = condensate_pressure_rise_required;
+            in applicable_in = steam_rating_applicable;
+            in conditions_supported_in = steam_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute condensate_pressure_rise_margin : Real = condensate_pressure_rise_capability.margin;
+        attribute condensate_pressure_rise_applicable : Boolean = condensate_pressure_rise_capability.applicable;
+        attribute condensate_pressure_rise_supported : Boolean = condensate_pressure_rise_capability.supported;
+        attribute condensate_pressure_rise_defined : Real = condensate_pressure_rise_capability.evaluation_defined;
+        attribute condensate_pressure_rise_capacity_ok : Boolean = condensate_pressure_rise_capability.capacity_ok;
+        calc condensate_electric_capability : 'Offered Capacity Screen' {
+            in rating_in = condensate_pump.rated_electric_MW;
+            in demand_in = condensate_pump.electric_MW;
+            in applicable_in = steam_rating_applicable;
+            in conditions_supported_in = steam_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute condensate_electric_margin : Real = condensate_electric_capability.margin;
+        attribute condensate_electric_applicable : Boolean = condensate_electric_capability.applicable;
+        attribute condensate_electric_supported : Boolean = condensate_electric_capability.supported;
+        attribute condensate_electric_defined : Real = condensate_electric_capability.evaluation_defined;
+        attribute condensate_electric_capacity_ok : Boolean = condensate_electric_capability.capacity_ok;
+        calc feedwater_flow_capability : 'Offered Capacity Screen' {
+            in rating_in = feedwater_pump.rated_flow_kg_s;
+            in demand_in = feedwater_pump.flow_in_kg_s;
+            in applicable_in = steam_rating_applicable;
+            in conditions_supported_in = steam_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute feedwater_flow_margin : Real = feedwater_flow_capability.margin;
+        attribute feedwater_flow_applicable : Boolean = feedwater_flow_capability.applicable;
+        attribute feedwater_flow_supported : Boolean = feedwater_flow_capability.supported;
+        attribute feedwater_flow_defined : Real = feedwater_flow_capability.evaluation_defined;
+        attribute feedwater_flow_capacity_ok : Boolean = feedwater_flow_capability.capacity_ok;
+        calc feedwater_pressure_rise_demand_conversion : 'Pump Pressure Rise' {
+            in active_in = matched_active;
+            in outlet_MPa_in = feedwater_pump.p_out_MPa;
+            in inlet_MPa_in = feedwater_pump.p_in_MPa;
+        }
+        attribute feedwater_pressure_rise_required : Real = feedwater_pressure_rise_demand_conversion.demand;
+        calc feedwater_pressure_rise_capability : 'Offered Capacity Screen' {
+            in rating_in = feedwater_pump.rated_dp_MPa;
+            in demand_in = feedwater_pressure_rise_required;
+            in applicable_in = steam_rating_applicable;
+            in conditions_supported_in = steam_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute feedwater_pressure_rise_margin : Real = feedwater_pressure_rise_capability.margin;
+        attribute feedwater_pressure_rise_applicable : Boolean = feedwater_pressure_rise_capability.applicable;
+        attribute feedwater_pressure_rise_supported : Boolean = feedwater_pressure_rise_capability.supported;
+        attribute feedwater_pressure_rise_defined : Real = feedwater_pressure_rise_capability.evaluation_defined;
+        attribute feedwater_pressure_rise_capacity_ok : Boolean = feedwater_pressure_rise_capability.capacity_ok;
+        calc feedwater_electric_capability : 'Offered Capacity Screen' {
+            in rating_in = feedwater_pump.rated_electric_MW;
+            in demand_in = feedwater_pump.electric_MW;
+            in applicable_in = steam_rating_applicable;
+            in conditions_supported_in = steam_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute feedwater_electric_margin : Real = feedwater_electric_capability.margin;
+        attribute feedwater_electric_applicable : Boolean = feedwater_electric_capability.applicable;
+        attribute feedwater_electric_supported : Boolean = feedwater_electric_capability.supported;
+        attribute feedwater_electric_defined : Real = feedwater_electric_capability.evaluation_defined;
+        attribute feedwater_electric_capacity_ok : Boolean = feedwater_electric_capability.capacity_ok;
+
         // ---- ports (WI-057): the exchanges this part takes part in; declarative, see mfe_interfaces ----
         port coolant : ~'Thermal Port';   // <- heat_transport.hot_out
         port gross_electric : 'Electric Port';   // -> electric_plant.gross_in (pb.eta_th_in -> p_et)
@@ -281,19 +538,17 @@ package mfe_subsystems {
         attribute T2_max : Real;
         attribute delta_eta : Real default 0.0;
         doc /*
-        WI-078/MR-7 scope: capital_cost is a demand-matched equipment cost proxy driven by computed gross thermal-electric output. It does not price an independently supplied turbine nameplate or evaluate installed turbine/steam-generator capacity. Matched-cycle steam flow, shaft work and required UA describe the operating point, not installed ratings; turbine and steam-generator equipment qualification remain absent.
+        WI-080/MR-7 scope: the independently supplied package specification is evaluated against actual gross power, steam flow, shaft work, pump demand, condenser duty and required UA. Point-condition mismatch is unsupported. WI-079 prices its independently supplied package amount. These scalar screens do not qualify the installed machine or exchanger geometry.
 
-        CAS23 Turbine plant equipment (steam TG, condenser, feedwater). Linear
-        in thermal-electric power; cost driver feeds 'Linear Power Cost' with
-        power = p_the.
+        CAS23 Turbine plant equipment (steam TG, condenser, feedwater) uses the supplied package purchase amount. The entering estimate used thermal-electric power to price this package; operation no longer changes its purchase amount.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
         **Ref**: costs.py:154 (cas23_turbine)
-        **Basis**: Concept-agnostic thermal conversion, power-cycle-set $/MW
+        **Basis**: Historical estimate provenance; current supplied package amount is an assumed offer, not a vendor quotation.
         */
         :>> scope = 'CAS Scope'::shared;
 
-        attribute cost_per_mw : Real;
+        attribute purchase_cost_per_module : Real;
         // ---- inputs the plant wires (WI-057): values produced elsewhere, read here by name ----
         attribute T_out : Real;   // <- heat_transport.T_out
         attribute n_mod : Real;   // <- 'MFE Power Plant'::n_mod
@@ -608,16 +863,29 @@ package mfe_subsystems {
         connect pump_electric_in to feedwater_pump.electric_in;
         connect salt_distributor.main_branch to main_steam_generator.salt;
         connect salt_distributor.reheat_branch to reheater.salt;
-        calc turbine_cost : 'Linear Power Cost' {
-            in power = p_the;
-            in cost_per_mw = 'Turbine Plant'::cost_per_mw;
+        calc turbine_cost : 'Supplied Purchase Cost' {
+            in purchase_cost_in = purchase_cost_per_module;
             in n_mod_in = n_mod;
         }
     }
 
     part def 'Electric Plant' :> 'CAS24 Electric Plant' {
+        attribute installed_gross_rating_MWe : Real default 0.0; // supplied [MWe]
+        calc electric_gross_capability : 'Offered Capacity Screen' {
+            in rating_in = installed_gross_rating_MWe;
+            in demand_in = p_et;
+            in applicable_in = true;
+            in conditions_supported_in = true;
+            in demand_available_in = true;
+        }
+        attribute electric_gross_margin : Real = electric_gross_capability.margin;
+        attribute electric_gross_applicable : Boolean = electric_gross_capability.applicable;
+        attribute electric_gross_supported : Boolean = electric_gross_capability.supported;
+        attribute electric_gross_defined : Real = electric_gross_capability.evaluation_defined;
+        attribute electric_gross_capacity_ok : Boolean = electric_gross_capability.capacity_ok;
+
         doc /*
-        WI-078/MR-7 scope: capital_cost is a demand-matched electrical equipment proxy driven by computed gross electric output. The model has no independently supplied switchyard, transformer or cable capacity and no installed electrical-equipment adequacy check. Operating electric power is not an installed rating.
+        WI-080/MR-7 scope: installed_gross_rating_MWe is the supplied real-power ceiling and WI-079 purchase basis. Compare actual gross power without resizing. Voltage, reactive power, fault duty and individual electrical equipment remain unqualified.
 
         CAS24 Electric plant equipment (switchyard, transformers, cabling).
         Linear in gross electric; feeds 'Linear Power Cost' with power = p_et.
@@ -639,15 +907,83 @@ package mfe_subsystems {
         :>> capital_cost = electric_cost.cost;
         // ---- template calcs (WI-057): the analyses this part owns ----
         calc electric_cost : 'Linear Power Cost' {
-            in power = p_et;
+            in power = installed_gross_rating_MWe;
             in cost_per_mw = 'Electric Plant'::cost_per_mw;
             in n_mod_in = n_mod;
         }
     }
 
     part def 'Heat Rejection' :> 'CAS25 Heat Rejection' {
+        attribute rated_water_inlet_C : Real default 0.0; // supplied [degC]
+        attribute rated_water_outlet_C : Real default 0.0; // supplied [degC]
+        attribute rated_water_condenser_C : Real default 0.0; // supplied [degC]
+        attribute rated_rejection_MW : Real default 0.0; // supplied [MWth]
+        attribute rated_water_flow_kg_s : Real default 0.0; // supplied [kg/s]
+        attribute rated_water_head_m : Real default 0.0; // supplied [m]
+        attribute rated_water_electric_MW : Real default 0.0; // supplied [MWe]
+        calc water_offered_conditions : 'Water Offered Conditions' {
+            in enabled_in = cooling_active;
+            in actual_inlet_C_in = water_inlet_C;
+            in rated_inlet_C_in = rated_water_inlet_C;
+            in actual_outlet_C_in = water_outlet_C;
+            in rated_outlet_C_in = rated_water_outlet_C;
+            in actual_condenser_C_in = cycle_condenser_C;
+            in rated_condenser_C_in = rated_water_condenser_C;
+        }
+        attribute water_rating_applicable : Boolean = water_offered_conditions.applicable;
+        attribute water_rating_supported : Boolean = water_offered_conditions.supported;
+        attribute water_rating_defined : Real = water_offered_conditions.evaluation_defined;
+        calc water_rejection_capability : 'Offered Capacity Screen' {
+            in rating_in = rated_rejection_MW;
+            in demand_in = q_total_rejection_MW;
+            in applicable_in = water_rating_applicable;
+            in conditions_supported_in = water_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute water_rejection_margin : Real = water_rejection_capability.margin;
+        attribute water_rejection_applicable : Boolean = water_rejection_capability.applicable;
+        attribute water_rejection_supported : Boolean = water_rejection_capability.supported;
+        attribute water_rejection_defined : Real = water_rejection_capability.evaluation_defined;
+        attribute water_rejection_capacity_ok : Boolean = water_rejection_capability.capacity_ok;
+        calc water_flow_capability : 'Offered Capacity Screen' {
+            in rating_in = rated_water_flow_kg_s;
+            in demand_in = water_flow_kg_s;
+            in applicable_in = water_rating_applicable;
+            in conditions_supported_in = water_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute water_flow_margin : Real = water_flow_capability.margin;
+        attribute water_flow_applicable : Boolean = water_flow_capability.applicable;
+        attribute water_flow_supported : Boolean = water_flow_capability.supported;
+        attribute water_flow_defined : Real = water_flow_capability.evaluation_defined;
+        attribute water_flow_capacity_ok : Boolean = water_flow_capability.capacity_ok;
+        calc water_head_capability : 'Offered Capacity Screen' {
+            in rating_in = rated_water_head_m;
+            in demand_in = circulating_water_pump.head_m;
+            in applicable_in = water_rating_applicable;
+            in conditions_supported_in = water_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute water_head_margin : Real = water_head_capability.margin;
+        attribute water_head_applicable : Boolean = water_head_capability.applicable;
+        attribute water_head_supported : Boolean = water_head_capability.supported;
+        attribute water_head_defined : Real = water_head_capability.evaluation_defined;
+        attribute water_head_capacity_ok : Boolean = water_head_capability.capacity_ok;
+        calc water_electric_capability : 'Offered Capacity Screen' {
+            in rating_in = rated_water_electric_MW;
+            in demand_in = p_cooling_pump_electric_MW;
+            in applicable_in = water_rating_applicable;
+            in conditions_supported_in = water_rating_supported;
+            in demand_available_in = true;
+        }
+        attribute water_electric_margin : Real = water_electric_capability.margin;
+        attribute water_electric_applicable : Boolean = water_electric_capability.applicable;
+        attribute water_electric_supported : Boolean = water_electric_capability.supported;
+        attribute water_electric_defined : Real = water_electric_capability.evaluation_defined;
+        attribute water_electric_capacity_ok : Boolean = water_electric_capability.capacity_ok;
+
         doc /*
-        WI-078/MR-7 scope: capital_cost is a demand-matched heat-rejection equipment proxy driven by total thermal power, not a price for a selected cooling-water pump or tower. Water flow and pump work solve the declared operating heat balance; they are not installed ratings. Installed heat-rejection capacity and site suitability are not evaluated.
+        WI-080/MR-7 scope: supplied rejected-duty, water-flow, head and electric-power ratings are evaluated at declared water/condenser temperatures. Operating heat balance stays independent. WI-079 prices the supplied package amount. Site suitability and complete auxiliary-heat coverage remain unqualified.
 
         CAS25 Heat rejection (cooling towers, circulating water). Linear in
         total thermal power; feeds 'Linear Power Cost' with power = p_th.
@@ -659,7 +995,7 @@ package mfe_subsystems {
         */
         :>> scope = 'CAS Scope'::shared;
 
-        attribute cost_per_mw : Real;
+        attribute purchase_cost_per_module : Real;
         // ---- inputs the plant wires (WI-057): values produced elsewhere, read here by name ----
         attribute n_mod : Real;   // <- 'MFE Power Plant'::n_mod
         attribute p_th : Real;   // <- pb.p_th
@@ -707,9 +1043,8 @@ package mfe_subsystems {
             in eta_pump_in = circulating_water_pump.efficiency;
             in eta_motor_in = circulating_water_pump.motor_efficiency;
         }
-        calc heat_rejection_cost : 'Linear Power Cost' {
-            in power = p_th;
-            in cost_per_mw = 'Heat Rejection'::cost_per_mw;
+        calc heat_rejection_cost : 'Supplied Purchase Cost' {
+            in purchase_cost_in = purchase_cost_per_module;
             in n_mod_in = n_mod;
         }
     }
@@ -718,7 +1053,7 @@ package mfe_subsystems {
         doc /*
         CAS26 Miscellaneous plant equipment (fire protection, compressed air,
         HVAC). Linear in gross electric; feeds 'Linear Power Cost' with
-        power = p_et. (1costingFE numbers this account CAS25 -- see header note.) This demand-matched aggregate price proxy does not select or evaluate independently supplied fire-protection, compressed-air or HVAC equipment capacities.
+        power = a selected gross-electric procurement class. (1costingFE numbers this account CAS25 -- see header note.) This broad budget assumption does not establish fire-protection, compressed-air or HVAC equipment adequacy.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
         **Ref**: costs.py:170 (cas25_misc)
@@ -732,8 +1067,13 @@ package mfe_subsystems {
         attribute p_et : Real;   // <- pb.p_et
         :>> capital_cost = misc_cost.cost;
         // ---- template calcs (WI-057): the analyses this part owns ----
+        attribute cost_gross_class_MWe : Real;
+        calc cost_gross_class_MWe_guard : 'Supplied Cost Class' {
+            in class_in = cost_gross_class_MWe;
+        }
+        attribute cost_gross_class_MWe_checked : Real = cost_gross_class_MWe_guard.value;
         calc misc_cost : 'Linear Power Cost' {
-            in power = p_et;
+            in power = cost_gross_class_MWe_checked;
             in cost_per_mw = 'Miscellaneous Plant'::cost_per_mw;
             in n_mod_in = n_mod;
         }
@@ -2329,6 +2669,26 @@ package mfe_subsystems {
         attribute p_the : Real;   // <- pb.p_the
         :>> capital_cost = facility_accounts.cost;
         // ---- template calcs (WI-057): the analyses this part owns ----
+        attribute legacy_cost_fusion_class_MW : Real;
+        calc legacy_cost_fusion_class_MW_guard : 'Supplied Cost Class' {
+            in class_in = legacy_cost_fusion_class_MW;
+        }
+        attribute legacy_cost_fusion_class_MW_checked : Real = legacy_cost_fusion_class_MW_guard.value;
+        attribute legacy_cost_thermal_electric_class_MWe : Real;
+        calc legacy_cost_thermal_electric_class_MWe_guard : 'Supplied Cost Class' {
+            in class_in = legacy_cost_thermal_electric_class_MWe;
+        }
+        attribute legacy_cost_thermal_electric_class_MWe_checked : Real = legacy_cost_thermal_electric_class_MWe_guard.value;
+        attribute legacy_cost_thermal_class_MW : Real;
+        calc legacy_cost_thermal_class_MW_guard : 'Supplied Cost Class' {
+            in class_in = legacy_cost_thermal_class_MW;
+        }
+        attribute legacy_cost_thermal_class_MW_checked : Real = legacy_cost_thermal_class_MW_guard.value;
+        attribute legacy_cost_gross_class_MWe : Real;
+        calc legacy_cost_gross_class_MWe_guard : 'Supplied Cost Class' {
+            in class_in = legacy_cost_gross_class_MWe;
+        }
+        attribute legacy_cost_gross_class_MWe_checked : Real = legacy_cost_gross_class_MWe_guard.value;
         calc buildings_cost : 'Buildings Cost' {
             in fixed_base = bldg_fixed_base;
             in fus_base = bldg_fus_base;
@@ -2336,10 +2696,10 @@ package mfe_subsystems {
             in the_base = bldg_the_base;
             in th_base = bldg_th_base;
             in et_base = bldg_et_base;
-            in p_fus = 'Buildings'::p_fus;
-            in p_the_in = p_the;
-            in p_th_in = p_th;
-            in p_et_in = p_et;
+            in p_fus = legacy_cost_fusion_class_MW_checked;
+            in p_the_in = legacy_cost_thermal_electric_class_MWe_checked;
+            in p_th_in = legacy_cost_thermal_class_MW_checked;
+            in p_et_in = legacy_cost_gross_class_MWe_checked;
         }
     }
 }

@@ -428,16 +428,26 @@ package mfe_plant {
 
         // CAS10 fixed preconstruction adders [$] (WI-025; instance binds -- fuel/FOAK-keyed).
         attribute precon_fixed_base : Real;
+        attribute precon_legacy_cost_net_class_MWe : Real;
+        calc precon_legacy_cost_net_class_MWe_guard : 'Supplied Cost Class' {
+            in class_in = precon_legacy_cost_net_class_MWe;
+        }
+        attribute precon_legacy_cost_net_class_MWe_checked : Real = precon_legacy_cost_net_class_MWe_guard.value;
         calc precon_cost : 'Preconstruction Cost' {
             in fixed_precon = precon_fixed_base;
-            in p_net = pb.p_net;
+            in p_net = precon_legacy_cost_net_class_MWe_checked;
         }
 
         // CAS70 annual O&M at reference power [$/yr] (WI-025; instance binds -- fuel-keyed).
         attribute om_annual_ref : Real;
+        attribute om_staffing_net_class_MWe : Real;
+        calc om_staffing_net_class_MWe_guard : 'Supplied Cost Class' {
+            in class_in = om_staffing_net_class_MWe;
+        }
+        attribute om_staffing_net_class_MWe_checked : Real = om_staffing_net_class_MWe_guard.value;
         calc om_cost : 'Annual OM Cost' {
             in om_ref = om_annual_ref;
-            in p_net = pb.p_net;
+            in p_net = om_staffing_net_class_MWe_checked;
         }
 
         // =====================================================================
@@ -469,10 +479,15 @@ package mfe_plant {
         attribute remote_handling_base : Real;
         // 1.0 toroidal / 0.55 end-access
         attribute concept_scale : Real;
+        attribute remote_handling_cost_gross_class_MWe : Real;
+        calc remote_handling_cost_gross_class_MWe_guard : 'Supplied Cost Class' {
+            in class_in = remote_handling_cost_gross_class_MWe;
+        }
+        attribute remote_handling_cost_gross_class_MWe_checked : Real = remote_handling_cost_gross_class_MWe_guard.value;
         calc remote_handling : 'Remote Handling Cost' {
             in base = remote_handling_base;
             in concept_scale_in = concept_scale;
-            in p_et_in = p_et;
+            in p_et_in = remote_handling_cost_gross_class_MWe_checked;
         }
         // expose for producer aggregation
         attribute remote_handling_capital : Real = remote_handling.cost;
@@ -495,21 +510,36 @@ package mfe_plant {
         // base bound at instance.
         // 1.96 M$ -> $
         attribute waste_base : Real;
+        attribute waste_cost_thermal_class_MW : Real;
+        calc waste_cost_thermal_class_MW_guard : 'Supplied Cost Class' {
+            in class_in = waste_cost_thermal_class_MW;
+        }
+        attribute waste_cost_thermal_class_MW_checked : Real = waste_cost_thermal_class_MW_guard.value;
         calc waste : 'Plant Power-Law Cost' {
-            in base = waste_base; in power = p_th; in n_mod_in = n_mod;
+            in base = waste_base; in power = waste_cost_thermal_class_MW_checked; in n_mod_in = n_mod;
             in ref_power = 1000.0; in alpha = 1.0;
         }
         // 11.5 M$ -> $
         attribute other_rpe_base : Real;
+        attribute other_rpe_cost_net_class_MWe : Real;
+        calc other_rpe_cost_net_class_MWe_guard : 'Supplied Cost Class' {
+            in class_in = other_rpe_cost_net_class_MWe;
+        }
+        attribute other_rpe_cost_net_class_MWe_checked : Real = other_rpe_cost_net_class_MWe_guard.value;
         calc other_rpe : 'Plant Power-Law Cost' {
-            in base = other_rpe_base; in power = pb.p_net; in n_mod_in = n_mod;
+            in base = other_rpe_base; in power = other_rpe_cost_net_class_MWe_checked; in n_mod_in = n_mod;
             in ref_power = 1000.0; in alpha = 0.8;
         }
         // WI-070: C220700 owns distinct plasma/central supervisory controls; C220500 owns its package-local controls.
         // The unchanged 85 M$ coefficient is an uncalibrated residual allowance, not a historically disaggregated price.
         attribute inc_base : Real;
+        attribute inc_cost_thermal_class_MW : Real;
+        calc inc_cost_thermal_class_MW_guard : 'Supplied Cost Class' {
+            in class_in = inc_cost_thermal_class_MW;
+        }
+        attribute inc_cost_thermal_class_MW_checked : Real = inc_cost_thermal_class_MW_guard.value;
         calc inc_cost : 'Plant Power-Law Cost' {
-            in base = inc_base; in power = p_th; in n_mod_in = n_mod;
+            in base = inc_base; in power = inc_cost_thermal_class_MW_checked; in n_mod_in = n_mod;
             in ref_power = 3500.0; in alpha = 0.65;
         }
 
@@ -575,8 +605,13 @@ package mfe_plant {
         // ---- CAS40 owner + CAS50 supplementary at overnight (no CAS29/CAS30) ----
         // owner_cost[fuel] [$]
         attribute owner_base : Real;
+        attribute owner_cost_net_class_MWe : Real;
+        calc owner_cost_net_class_MWe_guard : 'Supplied Cost Class' {
+            in class_in = owner_cost_net_class_MWe;
+        }
+        attribute owner_cost_net_class_MWe_checked : Real = owner_cost_net_class_MWe_guard.value;
         calc owner : 'Plant Power-Law Cost' {
-            in base = owner_base; in power = pb.p_net; in n_mod_in = n_mod;
+            in base = owner_base; in power = owner_cost_net_class_MWe_checked; in n_mod_in = n_mod;
             in ref_power = 1000.0; in alpha = 0.5;
         }
         // CAS40 (expose calc cost as sibling attr)
@@ -600,6 +635,16 @@ package mfe_plant {
             in fuel_installation_in = fuel_cycle.fuel_processing_installation;
             in contingency_in = contingency_rate;
         }
+        attribute startup_cost_net_class_MWe : Real;
+        calc startup_cost_net_class_MWe_guard : 'Supplied Cost Class' {
+            in class_in = startup_cost_net_class_MWe;
+        }
+        attribute startup_cost_net_class_MWe_checked : Real = startup_cost_net_class_MWe_guard.value;
+        attribute decom_cost_net_class_MWe : Real;
+        calc decom_cost_net_class_MWe_guard : 'Supplied Cost Class' {
+            in class_in = decom_cost_net_class_MWe;
+        }
+        attribute decom_cost_net_class_MWe_checked : Real = decom_cost_net_class_MWe_guard.value;
         calc supplementary : 'Supplementary Cost' {
             in spares_frac = supplementary_spares_frac;
             in startup_fuel_base = supplementary_startup_base;
@@ -610,7 +655,8 @@ package mfe_plant {
             in delivered_shipping_exclusion_in = shipping_scope.cooling_exclusion;
             in facility_exclusion_in = shipping_scope.facility_exclusion;
             in fuel_installation_exclusion_in = shipping_scope.fuel_installation_exclusion;
-            in p_net = pb.p_net;
+            in startup_net_class_in = startup_cost_net_class_MWe_checked;
+            in decom_net_class_in = decom_cost_net_class_MWe_checked;
             in n_mod_in = n_mod;
         }
         // CAS50 (expose calc cost as sibling attr)

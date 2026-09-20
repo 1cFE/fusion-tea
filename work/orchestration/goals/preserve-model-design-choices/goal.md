@@ -53,8 +53,8 @@ Can the stellarator model and shared dependencies evaluate and cost supplied des
 
 ## Technical result — 2026-09-20
 
-[AGENT] Round 1 meets the technical completion criteria for the independently reviewed scope. See [answer.md](answer.md) and [final independent review](evidence/final-review.md). The goal remains grounded pending owner-held formal closure.
+[AGENT] Round 1 completed its independently reviewed scope. The owner subsequently required repair of the residual demand-priced equipment and missing capability checks; technical completion of the expanded goal is open in Round 2. Earlier implementation and review remain valid for their scope.
 
 ## Amendments
 
-None.
+[OWNER] 2026-09-20: Remaining equipment price/capability issues discussed after Round 1 are required fixes. See evidence/round2-owner-extension.md for the exact instruction and bounded interpretation. The goal is not technically complete until these are repaired and independently verified, or a concrete owner gate is reported.

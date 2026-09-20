@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:282
+SysML Source: root-0/analyses/mfe_account_costs.sysml:332
 
 SysML Expressions:
     reference_construction_time = 6.0
@@ -42,7 +42,7 @@ construction time relative to a reference duration:
 *Ref**: costs.py:231-236 (cas30_indirect)
 *Basis**: Direct-cost fraction scaled by construction-time ratio
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:282
+SysML Source: root-0/analyses/mfe_account_costs.sysml:332
 
 SysML Expressions:
     reference_construction_time = 6.0

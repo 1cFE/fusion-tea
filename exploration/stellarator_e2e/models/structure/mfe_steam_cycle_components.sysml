@@ -13,6 +13,8 @@ package mfe_steam_cycle_components {
         attribute flow_out_kg_s : Real;
     }
     part def 'Steam Heat Exchanger' :> 'Steam State Component' {
+        attribute installed_UA_MW_K : Real default 0.0; // offered [MW/K]
+
         doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 No individual installed price is implied by this physical occurrence. */
         port salt : ~'Thermal Port';
         attribute pressure_MPa : Real;
@@ -23,6 +25,9 @@ package mfe_steam_cycle_components {
         attribute salt_flow_kg_s : Real;
     }
     part def 'Steam Expansion' :> 'Steam State Component' {
+        attribute rated_flow_kg_s : Real default 0.0; // offered [kg/s]
+        attribute rated_shaft_MW : Real default 0.0; // offered [MW]
+
         doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 No individual installed price is implied by this physical occurrence. */
         port shaft_out : 'Shaft Power Port';
         attribute efficiency : Real;
@@ -38,12 +43,18 @@ package mfe_steam_cycle_components {
         attribute energy_residual_MW : Real;
     }
     part def 'Steam Condenser' :> 'Steam State Component' {
+        attribute rated_rejection_MW : Real default 0.0; // offered [MWth]
+
         doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 No individual installed price is implied by this physical occurrence. */
         port rejection : 'Heat Duty Port';
         attribute temperature_C : Real;
         attribute rejected_MW : Real;
     }
     part def 'Steam Liquid Pump' :> 'Steam State Component' {
+        attribute rated_flow_kg_s : Real default 0.0; // offered [kg/s]
+        attribute rated_dp_MPa : Real default 0.0; // offered [MPa]
+        attribute rated_electric_MW : Real default 0.0; // offered [MWe]
+
         doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 No individual installed price is implied by this physical occurrence. */
         port electric_in : ~'Electric Port';
         attribute efficiency : Real;

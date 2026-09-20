@@ -416,6 +416,18 @@ standalone:
   priority: P0
   status: backlog
   completed: null
+- id: WI-079
+  name: Supplied equipment design bases for residual costs
+  scale: standard
+  priority: P0
+  status: backlog
+  completed: null
+- id: WI-080
+  name: Supplied thermal equipment capability and demand checks
+  scale: standard
+  priority: P0
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -518,3 +530,5 @@ standalone:
 | WI-076 | Supplied facility design evaluation | standard | P0 | backlog |  |
 | WI-077 | Supplied fuel-processing capacity evaluation | standard | P0 | backlog |  |
 | WI-078 | Supplied cooling design-point evaluation | standard | P0 | backlog |  |
+| WI-079 | Supplied equipment design bases for residual costs | standard | P0 | backlog |  |
+| WI-080 | Supplied thermal equipment capability and demand checks | standard | P0 | backlog |  |

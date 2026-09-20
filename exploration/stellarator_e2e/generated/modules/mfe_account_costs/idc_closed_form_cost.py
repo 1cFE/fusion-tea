@@ -35,9 +35,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:659
+SysML Source: root-0/analyses/mfe_account_costs.sysml:712
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:659
+SysML Source: root-0/analyses/mfe_account_costs.sysml:712
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/idc_closed_form_cost_impl.py
@@ -98,9 +98,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:659
+SysML Source: root-0/analyses/mfe_account_costs.sysml:712
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:659
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:712
 
     Calculation Specification:
         See documentation:

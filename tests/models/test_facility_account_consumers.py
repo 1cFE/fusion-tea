@@ -50,7 +50,7 @@ def test_installed_facility_shipping_exclusion_preserves_other_charges(
     ).Supplementary_CostModule()
     inputs = dict(
         spares_frac=.04, cas23_to_28=80e6, ref_net_power=1000.,
-        cas30=50e6, shipping_frac=.015, p_net=600., tax_frac=.01,
+        cas30=50e6, shipping_frac=.015, startup_net_class_in=600., decom_net_class_in=600., tax_frac=.01,
         decom_base=20e6, cas20=cas20, n_mod_in=1.,
         delivered_shipping_exclusion_in=cooling_delivered,
         facility_exclusion_in=facility_exclusion, fuel_installation_exclusion_in=0.,

@@ -434,7 +434,7 @@ package mfe_power_core {
         // WI-057: the divertor's own facts, moved from the plant (formerly plant-level inputs)
         // Divertor (CAS22.1.8) -- WI-009 carrier has no drivers; supplied here.
         // divertor cost at 1 GWth [$] (WI-011)
-        attribute divertor_base : Real;
+        attribute purchase_cost_per_module : Real;
         // ---- Divertor surface-heat ledger on sustained operating absorbed heating.
         // Dormant-safe: q_target_ref 0 and p_nonrad_ref 1 give a zero peak and a
         // satisfied fence for a concept binding nothing.
@@ -447,8 +447,8 @@ package mfe_power_core {
         attribute R_ref_divertor : Real default 1.0;
         doc /*
         Concept-agnostic divertor costed component. Carries `capital_cost`
-        (inherited from 'Costed Component'); the power-scaled divertor cost is
-        set per concept in WI-011. This demand-matched thermal-power price proxy does not select a divertor target geometry or evaluate its installed capacity. The separate deposited-heat and peak-load calculation is limited to its stated reference geometry; equivalent area is diagnostic, not selected hardware.
+        (inherited from 'Costed Component'); the supplied package purchase amount is
+        set per concept in WI-079. The recorded selected package retains the declared target profile; price is not regenerated from operating thermal demand. The separate deposited-heat and peak-load calculation is limited to its stated reference geometry; equivalent area is diagnostic, not selected hardware.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
         **Ref**: cas22.py:570 (C220108 divertor, power-scaled)
@@ -474,9 +474,9 @@ package mfe_power_core {
         attribute power_account_valid : Real = divheat.power_account_valid;
         :>> capital_cost = divertor_cost.cost;
         // ---- template calcs (WI-057): the analyses this part owns ----
-        calc divertor_cost : 'Divertor Cost' {
-            in base = divertor_base;
-            in p_th_in = p_th;
+        calc divertor_cost : 'Supplied Purchase Cost' {
+            in purchase_cost_in = purchase_cost_per_module;
+            in n_mod_in = 1.0;
         }
         calc divheat : 'Divertor Heat Ledger' {
             in target_capture_fraction_in = target_capture_fraction;

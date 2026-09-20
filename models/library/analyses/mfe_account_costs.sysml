@@ -1,6 +1,56 @@
 package mfe_account_costs {
     private import ScalarValues::*;
 
+    calc def 'Supplied Cost Class' {
+        doc /* Guarded identity for a selected procurement class. Native completion
+        rejects nonfinite, Boolean or negative quantities. The value is chosen,
+        not computed from operating demand and not a qualified physical capacity.
+        Its MW thermal/fusion or MWe interpretation belongs to the owning account.
+        **Source**: modeling_project/REQUIREMENTS.md
+        **Reference**: MR-7; work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/design.md
+        **Basis**: model-owned selected-input domain, preserving the supplied value
+        **Last Updated**: 2026-09-20 */
+        in attribute class_in : Real;
+        out attribute value : Real;
+    }
+
+    calc def 'Supplied Purchase Cost' {
+        doc /* WI-079 evaluates a supplied package purchase estimate, dollars per module.
+        cost = purchase_cost_in * n_mod_in. Native completion rejects nonfinite,
+        negative or Boolean amounts and any n_mod_in other than one: account
+        aggregation beyond the current single-module contract remains unsupported.
+        The amount and offered specification form one assumed package; demand does
+        not select either. No price law for hypothetical specification changes.
+        **Source**: modeling_project/REQUIREMENTS.md
+        **Reference**: MR-7; work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/design.md
+        **Basis**: independently reviewed supplied-package evaluation contract
+        **Last Updated**: 2026-09-20 */
+        in attribute purchase_cost_in : Real;
+        in attribute n_mod_in : Real;
+        out attribute cost : Real;
+    }
+
+    calc def 'Supplied Auxiliary Cooling Cost' {
+        doc /* WI-079 separate chosen auxiliary allowance and cryogenic package price.
+        aux_cost = aux_per_mw_in * thermal_class_in * n_mod_in;
+        cryo_cost = purchase_cost_in; cost = aux_cost + cryo_cost.
+        The class is thermal MW of the selected procurement scenario, never actual
+        rejected heat or cold-stage W. The cryo amount is dollars for the selected
+        package; current one-module scope preserves entering aggregation. Native
+        completion rejects nonfinite/negative inputs and n_mod_in other than one.
+        **Source**: modeling_project/REQUIREMENTS.md
+        **Reference**: MR-7; work/active/WI-079_supplied-equipment-design-bases-for-residual-costs/design.md
+        **Basis**: reviewed selected amount plus independent budget-class allowance
+        **Last Updated**: 2026-09-20 */
+        in attribute aux_per_mw_in : Real;
+        in attribute thermal_class_in : Real;
+        in attribute purchase_cost_in : Real;
+        in attribute n_mod_in : Real;
+        out attribute aux_cost : Real;
+        out attribute cryo_cost : Real;
+        out attribute cost : Real;
+    }
+
     // =========================================================================
     // Concept-agnostic steady-state CAS account cost scalings (MFE)
     //
@@ -390,7 +440,7 @@ package mfe_account_costs {
 
         // fixed adders, fuel/FOAK-keyed [$]
         in attribute fixed_precon : Real;
-        // net electric power [MW]
+        // Supplied net-electric procurement class [MW], not operating demand.
         in attribute p_net : Real;
 
         // Frozen n_mod = 1 (WI-025 ruling 1). Source: costs.py:64.
@@ -409,7 +459,9 @@ package mfe_account_costs {
     calc def 'Annual OM Cost' {
         doc /*
         CAS70 UNLEVELIZED annual O&M: fuel-keyed staffing base (om_ref, a
-        concept input) scaled by sqrt of plant-total net electric. CAS71
+        concept input) scaled by sqrt of a supplied staffing procurement class.
+        WI-079: p_net is a selected net-MWe class, never operating power; staffing
+        expenditure stays fixed when the same supplied design changes output. CAS71
         inflation levelization and CAS72 scheduled replacement are documented
         Stage-3 refinements, not carried (convention preserved, MR-WI025-3).
         om_direct is an additive direct term for concepts that specify O&M
@@ -424,7 +476,7 @@ package mfe_account_costs {
 
         // annual O&M at ref power, fuel-keyed [$/yr]
         in attribute om_ref : Real;
-        // net electric power [MW]
+        // Supplied net-electric procurement class [MW], not operating demand.
         in attribute p_net : Real;
 
         // Frozen n_mod = 1 (WI-025 ruling 1). Source: costs.py:353.
@@ -598,7 +650,7 @@ package mfe_account_costs {
     // ---- CAS50 supplementary (consumes cas20 / cas23..28 / cas30 aggregates) ----
     calc def 'Supplementary Cost' {
         doc /*
-        CAS50 supplementary account (WI-070 excludes direct process installation and its CAS29 contingency from freight):
+        CAS50 supplementary account (WI-079 uses independent startup/decommissioning procurement classes; WI-070 excludes direct process installation and its CAS29 contingency from freight):
 
           cost = (shipping*cas20 + spares*cas23_to_28 + tax*cas20
                   + insurance*(cas20+cas30)
@@ -630,7 +682,8 @@ package mfe_account_costs {
         in attribute cas23_to_28 : Real;
         // indirect [$]
         in attribute cas30 : Real;
-        in attribute p_net : Real;
+        in attribute startup_net_class_in : Real;
+        in attribute decom_net_class_in : Real;
         in attribute n_mod_in : Real default 1.0;
         // WI-067: optional bound formal precedes skipped defaults on the exact route.
         in attribute delivered_shipping_exclusion_in : Real default 0.0;
@@ -650,8 +703,8 @@ package mfe_account_costs {
              + spares_frac * cas23_to_28
              + tax_frac * cas20
              + insurance_frac * (cas20 + cas30)
-             + startup_fuel_base * (n_mod_in * p_net / ref_net_power)
-             + decom_base * (n_mod_in * p_net / ref_net_power))
+             + startup_fuel_base * (n_mod_in * startup_net_class_in / ref_net_power)
+             + decom_base * (n_mod_in * decom_net_class_in / ref_net_power))
             * (1.0 + contingency_rate_in);
     }
 

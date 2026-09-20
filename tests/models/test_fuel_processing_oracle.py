@@ -69,7 +69,7 @@ def test_actual_shipping_and_supplementary_consumers(runtime_paths,c,cs):
     assert r['fuel_installation_exclusion']==(1+c)*3e7
     assert r['remaining_shipping_base']==1e9-3e8-(1+c)*3e7
     module=importlib.import_module('stellarator_tea.modules.mfe_account_costs.supplementary_cost').Supplementary_CostModule()
-    args=dict(ref_net_power=1000.,shipping_frac=.015,tax_frac=.01,insurance_frac=.015,spares_frac=.04,startup_fuel_base=2e7,decom_base=3e7,cas20=1e9,cas23_to_28=1e8,cas30=2e8,p_net=1000.,n_mod_in=1.,delivered_shipping_exclusion_in=1e8,facility_exclusion_in=2e8,contingency_rate_in=cs)
+    args=dict(ref_net_power=1000.,shipping_frac=.015,tax_frac=.01,insurance_frac=.015,spares_frac=.04,startup_fuel_base=2e7,decom_base=3e7,cas20=1e9,cas23_to_28=1e8,cas30=2e8,startup_net_class_in=1000.,decom_net_class_in=1000.,n_mod_in=1.,delivered_shipping_exclusion_in=1e8,facility_exclusion_in=2e8,contingency_rate_in=cs)
     old=module.run(**args,fuel_installation_exclusion_in=0.).data.root
     new=module.run(**args,fuel_installation_exclusion_in=r['fuel_installation_exclusion']).data.root
     assert new-old==pytest.approx(-.015*(1+cs)*(1+c)*3e7,abs=1e-6)
