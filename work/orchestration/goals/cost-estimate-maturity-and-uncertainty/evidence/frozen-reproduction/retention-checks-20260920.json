@@ -1,0 +1,33 @@
+{
+  "scope": "Read-only retention checks; no scientific rerun. Credential scan covers selected files for private-key, AWS access-key and OpenAI token formats only.",
+  "stores": [
+    {
+      "store": "work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/frozen-reproduction/native/20260919-cost-estimate-maturity-and-uncertainty.db",
+      "sha256": "2f93283a66945f87d132d7fd4bc1206ba9ff112d243bc9e6f69e1d339fc20283",
+      "cases": 74,
+      "integrity": "ok",
+      "proposal_attempt_artifact_joins": "pass"
+    },
+    {
+      "store": "work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/integration/_work/stellarator-baseline-point-v1.db",
+      "sha256": "532728f3b576b435fd152da0b9708821c5bf17693e4ea3f2f85577507e68a378",
+      "cases": 1,
+      "integrity": "ok",
+      "proposal_attempt_artifact_joins": "pass"
+    },
+    {
+      "store": "work/orchestration/goals/fuel-inventory-and-startup/evidence/integration/_work/stellarator-baseline-point-v1.db",
+      "sha256": "00d1341e6ba6256a5bbb863520df714c1a1452eeb2b0672f4bed3ebe628e8aeb",
+      "cases": 1,
+      "integrity": "ok",
+      "proposal_attempt_artifact_joins": "pass"
+    },
+    {
+      "store": "work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/round2/integration/_work/stellarator-baseline-point-v1.db",
+      "sha256": "66137cb844a9c84375f74ce12d7a7156360c2057896e76ea301ba1d70dc4fc2b",
+      "cases": 1,
+      "integrity": "ok",
+      "proposal_attempt_artifact_joins": "pass"
+    }
+  ]
+}
