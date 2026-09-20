@@ -66,6 +66,7 @@ import os
 import shutil
 import subprocess
 import sys
+import tempfile
 import traceback
 from dataclasses import dataclass
 from importlib import metadata
@@ -1478,9 +1479,15 @@ def run(args: argparse.Namespace, argv: list[str]) -> tuple[dict, Path | None]:
         assert_environment(env)
         out_dir.mkdir(parents=True, exist_ok=True)
         assert_package_clean(request, env)
+        backup_dir = Path(tempfile.mkdtemp(prefix="fusion-tea-integration-backup-")) / "package"
+        # Keep rollback bytes outside the evidence tree, with an explicit recovery pointer.
+        (out_dir / "backup-location.json").write_text(
+            json.dumps({"package": str(request.package), "backup": str(backup_dir)}, indent=2) + "\n",
+            encoding="utf-8",
+        )
         state = SequenceState(
             entry_digests=package_digests(request.package),
-            backup_dir=backup(request.package, request.out_dir / "_backup"),
+            backup_dir=backup(request.package, backup_dir),
         )
         run_sequence(request, env, state, results)
         candidate = build_candidate(request, state)

@@ -1,0 +1,9 @@
+# Workspace cleanup completed — September 20, 2026
+
+[AGENT] Moved the reviewed 5,106 untracked files and symlinks to `/home/reid/fusion-tea-workspace-backups/20260920T172622Z/files/`. The adjacent `manifest.json` records every original repository-relative path and SHA256; `README.md` explains recovery. Verified all destination hashes and preserved symlinks without following their targets. The backup is outside the repository and system temporary storage. No tracked scientific evidence was removed.
+
+[AGENT] Live study preparation now puts process-local import aliases in the system temporary directory and removes them at normal process exit. Integration retains rollback copies externally and writes `backup-location.json` beside its evidence. Native databases, artifact JSON and reports remain retainable in Git. The operator guide directs pytest and historical reproduction copies to external directories. Narrow ignore rules cover historical import aliases, the one structure-probe alias and the original archive review's pytest copies. No broad evidence or `_work` exclusion was added.
+
+[AGENT] Validation: 110 tests passed with nine warnings in `tests/study/test_integrate_restore.py` and `tests/study/test_stock_route.py`. The new test checks external rollback location, the recovery pointer, restoration after mutation and backup retention. The published r3 archive still has SHA256 `34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19`. Frozen scripts and packages were not edited. All 125 paths retained by the preceding eight commits still match HEAD before this cleanup commit.
+
+[AGENT] An unrelated active change in `docs/write-up/sysml-codegen-model-evaluation.md` was present at cleanup start and remains untouched and uncommitted. A clean execution workspace does not mean discarding that active edit.

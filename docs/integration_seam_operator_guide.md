@@ -255,7 +255,7 @@ Record the candidate's `pin` and both fingerprints in the study record. They are
 
 ## What the seam writes, and where
 
-Everything lands under `--out-dir`. **Nothing is ever written into the tracked tree**, whatever the return class.
+Evidence lands under `--out-dir`. Rollback copies use the system temporary directory; `backup-location.json` records their location. They remain available after the invocation for recovery, subject to system temporary-file cleanup. Study import aliases also use temporary directories and are removed at normal process exit. Keep `TMPDIR` outside the repository. Native result stores and reports remain under `--out-dir`.
 
 | File | What it is |
 |---|---|
@@ -265,7 +265,7 @@ Everything lands under `--out-dir`. **Nothing is ever written into the tracked t
 | `recaptured.snapshot.json` | Gate 4's recapture. |
 | `package_identity.json`, `baseline_result.json`, `_work/*.db` | What executing the manifest's pinned baseline point deposited. |
 | `preflight_results.json`, `verification_summary.json`, `verify_stderr.txt` | The two stock study gates' own output. |
-| `_backup/` | The package tree as it stood before the first mutating gate. |
+| `backup-location.json` | Location of the external package copy made before the first mutating gate. |
 | `moved_files.txt` | Only on a byte-movement refusal: every path that moved. |
 | `seam_traceback.txt` | Only on exit 2. |
 
@@ -286,3 +286,7 @@ Stated so you do not assume otherwise.
 - `.project/adr/0009-integration-is-a-fixed-point-proof.md` — why the seam proves rather than performs.
 - `scripts/study/preflight.py`, `scripts/study/verify.py`, `scripts/study/manifest.py` — the producers, each with its own module docstring.
 - `tests/study/test_integrate_*.py` — the seam's own tests, including five real refusals from real producers.
+
+## Keep disposable execution files outside the repository
+
+Run pytest with its default temporary directory, or set `--basetemp` to a fresh external directory. Do not point it into an evidence directory. Keep JUnit XML and useful logs with the evidence. For historical reproduction scripts with an `--out` option, choose a new external directory; retain the resulting native stores, artifact JSON and verification receipts deliberately, rather than committing copied package/tool trees. Do not rewrite frozen scripts to change their temporary paths. Narrow ignore rules cover import aliases and the old archive review's pytest workspace if those historical scripts are replayed.

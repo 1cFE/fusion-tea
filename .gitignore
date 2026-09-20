@@ -56,3 +56,12 @@ exploration/stellarator_e2e/outputs/
 
 # Local Codex test installer and runtime launcher
 .codex-test/
+
+# Import aliases recreated by historical study and frozen comparison runners.
+/exploration/stellarator_e2e/studies/**/pkg_link/
+/work/orchestration/goals/**/pkg_link/
+/.project/active/aries-comparison-preparation/current-readiness/candidate/evidence/**/pkg_link/
+/work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/structure-probe/selector/probe_selector
+
+# Disposable test copies recreated by the historical archive review script.
+/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/run-1/pytest-temp/

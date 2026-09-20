@@ -96,3 +96,35 @@ def test_no_mtime_is_read_anywhere_in_the_seam():
     source = (REPO_ROOT / "scripts" / "integrate.py").read_text()
     assert "st_mtime" not in source
     assert "getmtime" not in source
+
+
+def test_run_retains_external_backup_and_recovery_pointer(integration_workspace, tmp_path, monkeypatch):
+    import json
+    from types import SimpleNamespace
+
+    package = integration_workspace.package
+    out = tmp_path / 'evidence'
+    request = SimpleNamespace(package=package, out_dir=out)
+    monkeypatch.setattr(integrate, 'build_request', lambda args: request)
+    monkeypatch.setattr(integrate, 'seam_env', lambda: {})
+    monkeypatch.setattr(integrate, 'assert_environment', lambda env: None)
+    monkeypatch.setattr(integrate, 'assert_package_clean', lambda request, env: None)
+
+    def sequence(request, env, state, results):
+        assert not state.backup_dir.is_relative_to(REPO_ROOT)
+        assert not state.backup_dir.is_relative_to(out)
+        pointer = json.loads((out / 'backup-location.json').read_text())
+        assert pointer['backup'] == str(state.backup_dir)
+        (integrate.resolve_package(package) / CONTRACT).write_text('{}')
+        integrate.restore(package, state.backup_dir, state.entry_digests)
+        assert integrate.package_digests(package) == state.entry_digests
+
+    monkeypatch.setattr(integrate, 'run_sequence', sequence)
+    monkeypatch.setattr(integrate, 'build_candidate', lambda request, state: {})
+    monkeypatch.setattr(integrate, 'build_return', lambda **kwargs: {'exit_code': 2 if kwargs['blocker'] else 0})
+    document, _ = integrate.run(SimpleNamespace(out_dir=str(out)), [])
+    assert document['exit_code'] == 0
+    backup = Path(json.loads((out / 'backup-location.json').read_text())['backup'])
+    assert (backup / CONTRACT).is_file()
+    import shutil
+    shutil.rmtree(backup.parent)

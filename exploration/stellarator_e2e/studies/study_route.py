@@ -26,10 +26,13 @@ model binds all live magnet radius operands to plant R (WI-051).
 
 from __future__ import annotations
 
+import atexit
 import csv
 import json
 import math
+import shutil
 import sys
+import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -167,8 +170,11 @@ def prepare(package_dir: Path, work_dir: Path):
     from simkit.study.model_contract import load_model_contract, ships_constraint_report
 
     contract = load_model_contract(Path(package_dir).resolve())
+    # Import aliases are process setup, not retained scientific evidence.
+    link_root = Path(tempfile.mkdtemp(prefix="fusion-tea-imports-"))
+    atexit.register(shutil.rmtree, link_root, ignore_errors=True)
     return PreparedEvaluator(
-        package_loader(package_dir, Path(work_dir) / "pkg_link"),
+        package_loader(package_dir, link_root),
         spec_path(package_dir),
         expects_constraint_report=ships_constraint_report(contract),
     )
