@@ -1,6 +1,6 @@
 """WI-050 native operating-state, independent conservation and consumer regressions."""
 from __future__ import annotations
-from tests.models.current_mfe_regressions import WI073_PREDICATES, CURRENT_PREDICATES, CURRENT_PARAMETERS, FACILITY_PREDICATES, oracle_local_overrides, WI059_REPLAY, WI061_PREDICATE, WI062_PREDICATE
+from tests.models.current_mfe_regressions import MR7_PREDICATES, WI073_PREDICATES, CURRENT_PREDICATES, CURRENT_PARAMETERS, FACILITY_PREDICATES, oracle_local_overrides, WI059_REPLAY, WI061_PREDICATE, WI062_PREDICATE
 from tests.models.current_mfe_regressions import WI065_PARAMETERS, WI065_CHANNELS, WI066_RETIRED, WI066_CHANNELS
 from tests.models.current_mfe_regressions import WI063_PARAMETERS, WI063_CHANNELS, WI064_PARAMETERS, WI064_CHANNELS
 from tests.models.current_mfe_regressions import WI060_PARAMETERS, WI059_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES, WI059_REPLAY_LOCAL
@@ -91,9 +91,14 @@ def test_heating_efficiency_scalar_consumers(native,boundaries):
     scratch,_,_,_=native
     entries=json.loads((scratch/'generated/contracts/model_contract.json').read_text())['constraint_catalog']['concrete_entries']
     assert {e["constraint_id"] for e in entries} == CURRENT_PREDICATES
-    assert sum(len(verify.feature_refs(json.loads(e['predicate_ir']))) for e in entries if e['constraint_id'] not in FACILITY_PREDICATES | WI073_PREDICATES)==30
+    assert sum(len(verify.feature_refs(json.loads(e['predicate_ir']))) for e in entries if e['constraint_id'] not in FACILITY_PREDICATES | WI073_PREDICATES | MR7_PREDICATES)==30
     assert sum(len(verify.feature_refs(json.loads(e['predicate_ir']))) for e in entries if e['constraint_id'] in WI073_PREDICATES)==6
     assert all(len(verify.feature_refs(json.loads(e['predicate_ir'])))==1 for e in entries if e['constraint_id'] in FACILITY_PREDICATES)
+    assert {e['source_local_identity']: len(verify.feature_refs(json.loads(e['predicate_ir'])))
+            for e in entries if e['constraint_id'] in MR7_PREDICATES} == {
+        'facility_geometry_ok': 1, 'facility_material_capacity_ok': 1,
+        'facility_occupancy_ok': 1, 'facility_parcel_ok': 1,
+        'fuel_processing_capacity_ok': 2, 'represented_coolant_fill_ok': 3}
     for entry in entries: indicators.predicate_operands(entry)
     new={e['source_local_identity']:e for e in entries if e['source_local_identity'].startswith('heating_')}
     assert set(new)=={'heating_source_positive_ok','heating_source_upper_ok','heating_couple_positive_ok','heating_couple_upper_ok'}
@@ -150,7 +155,7 @@ def test_stellarator_operating_heat_has_no_public_demand_input(native):
 def test_operating_heat_reserve_invariance(native):
     _,results,inputs,_=native
     # Frozen WI-050 checker retains its original eighteen-predicate scope.
-    historical = {name: (dict(row, responses={k: v for k, v in row['responses'].items() if k not in {WI061_PREDICATE,WI062_PREDICATE} | FACILITY_PREDICATES | WI073_PREDICATES}) if 'responses' in row else row) for name, row in results.items()}
+    historical = {name: (dict(row, responses={k: v for k, v in row['responses'].items() if k not in {WI061_PREDICATE,WI062_PREDICATE} | FACILITY_PREDICATES | WI073_PREDICATES | MR7_PREDICATES}) if 'responses' in row else row) for name, row in results.items()}
     import sys
     sys.path.insert(0, str(ROOT / 'exploration/stellarator_e2e/studies'))
     import oracle_entry
@@ -191,7 +196,7 @@ def test_operating_heat_direct_native_parity(native,monkeypatch):
         assert len(expected_verdicts)==20
         if case in ['baseline','reserve','demand','availability']:
             actual={key.split('__')[2]:value for key,value in results[case]['responses'].items() if key!='headline'}
-            assert {k:v for k,v in actual.items() if k not in {cid.split('__')[2] for cid in FACILITY_PREDICATES | WI073_PREDICATES}}==expected_verdicts
+            assert {k:v for k,v in actual.items() if k not in {cid.split('__')[2] for cid in FACILITY_PREDICATES | WI073_PREDICATES | MR7_PREDICATES}}==expected_verdicts
             assert all(actual[cid.split('__')[2]]=='satisfied' for cid in FACILITY_PREDICATES)
         gate=next(n for n in runner.body if isinstance(n,ast.FunctionDef) and n.name=='_oracle_gate')
         assignment=next(n for n in gate.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='compared' for t in n.targets))
@@ -263,7 +268,10 @@ def test_operating_heat_complete_cost_operand_classification(native,monkeypatch)
         elif channel in {'overnight_capital__overnight_capital','total_capital__total_capital'}:
             expected_inputs['preconstruction_capital']='float '+P+'facility_preconstruction__cost.root'
         assert current[renamed_module(channel.rsplit('__',1)[0])]['inputs']==expected_inputs,module
-    assert current[renamed_module('primary_loop')]['inputs'] == {k:renamed_ref(v) for k,v in old[P+'primary_loop']['inputs'].items()}
+    expected_loop_inputs = {k:renamed_ref(v) for k,v in old[P+'primary_loop']['inputs'].items()}
+    # MR-7 separates installed rated capacity from the pressure-drop reference.
+    expected_loop_inputs['mdot_loop_rated_in'] = 'float stellarator_plant_params.'+P+'heat_transport__mdot_loop_rated'
+    assert current[renamed_module('primary_loop')]['inputs'] == expected_loop_inputs
     assert current[renamed_module('primary_loop')]['outputs'] == {k:renamed_ref(v) for k,v in old[P+'primary_loop']['outputs'].items()}
     # WI-056 owns only the Primary Coolant Loop definition. Preserve the source
     # outside that exact boundary, alongside the independent cost/operand checks.

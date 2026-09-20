@@ -29,5 +29,9 @@ Updated: 2026-09-20
 - [x] At fixed capacity and prices, varying exhaust demand changes margin but not processing price; zero demand preserves price.
 - [x] Multiple identical modules scale demand/capacity/prices together without changing per-module margin sign.
 - [x] Source-condition false remains undefined pricing while preserving diagnostic values; cannot be reported as a certified price.
-- [ ] Invalid capacity/fractions fail explicitly, and native generated public names/migration are checked.
-- [ ] Affected regressions and independent integration review recorded.
+- [x] Invalid capacity/fractions fail explicitly, and native generated public names/migration are checked.
+- [x] Affected regressions and independent integration review recorded.
+
+## Final technical acceptance
+
+[AGENT] Technical acceptance passed fresh non-author [final integrated review](../../orchestration/goals/preserve-model-design-choices/evidence/final-review.md). Native integration returned CANDIDATE at implementation commit `b11567eb693a4fd6f45a487f75dc5244fb433774`, with all ten gates passing. The broad regression sweep and complete reruns of its two corrected test files are accepted composite evidence; see WI-075 `integration/regression-accounting.json`. Scientific limits and the existing unexecuted read-set coverage check remain disclosed in the goal answer. This active record is retained for provenance; formal goal closure and archival remain owner-held.

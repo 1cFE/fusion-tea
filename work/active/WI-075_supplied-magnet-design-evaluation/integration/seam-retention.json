@@ -1,0 +1,70 @@
+{
+  "authority": "Byte-identical retention of native execution evidence. Native documents retain original scratch paths; this index locates the same bytes durably. The recaptured snapshot equals the committed tracked snapshot.",
+  "files": [
+    {
+      "native_path": "/tmp/mr7-seam-current-6tg81mwk/_work/artifacts/55063575561438ff7dabf8eb73ca69eca2ca70b55ba4f162f048b469ae429301.json",
+      "retained_path": "work/active/WI-075_supplied-magnet-design-evaluation/integration/seam/_work/artifacts/55063575561438ff7dabf8eb73ca69eca2ca70b55ba4f162f048b469ae429301.json",
+      "sha256": "55063575561438ff7dabf8eb73ca69eca2ca70b55ba4f162f048b469ae429301"
+    },
+    {
+      "native_path": "/tmp/mr7-seam-current-6tg81mwk/_work/stellarator-baseline-point-v1.db",
+      "retained_path": "work/active/WI-075_supplied-magnet-design-evaluation/integration/seam/_work/stellarator-baseline-point-v1.db",
+      "sha256": "7aaac537a03b917e8d02caec72b3b88262627b6824edc327177f16fe74cf30b2"
+    },
+    {
+      "native_path": "/tmp/mr7-seam-current-6tg81mwk/backup-location.json",
+      "retained_path": "work/active/WI-075_supplied-magnet-design-evaluation/integration/seam/backup-location.json",
+      "sha256": "026651e7aa1a0de310c5c99cc372feea0afa990ab7a22b682274586b1ce1aee7"
+    },
+    {
+      "native_path": "/tmp/mr7-seam-current-6tg81mwk/baseline_result.json",
+      "retained_path": "work/active/WI-075_supplied-magnet-design-evaluation/integration/seam/baseline_result.json",
+      "sha256": "03a82f1dad8403d28d90539e3e1f57430fb980877f96cdc78096884252bcdfc1"
+    },
+    {
+      "native_path": "/tmp/mr7-seam-current-6tg81mwk/clean.json",
+      "retained_path": "work/active/WI-075_supplied-magnet-design-evaluation/integration/seam/clean.json",
+      "sha256": "6de0a2fadb7632c1d73eaf1121722a103d818245a92b2216094242c243fc83a6"
+    },
+    {
+      "native_path": "/tmp/mr7-seam-current-6tg81mwk/integration_return.json",
+      "retained_path": "work/active/WI-075_supplied-magnet-design-evaluation/integration/seam/integration_return.json",
+      "sha256": "2bc7f977b23c789b543d102bb0f8399a40dcab9aae648b27cd31365c6fa76811"
+    },
+    {
+      "native_path": "/tmp/mr7-seam-current-6tg81mwk/junit/model-family-spine.xml",
+      "retained_path": "work/active/WI-075_supplied-magnet-design-evaluation/integration/seam/junit/model-family-spine.xml",
+      "sha256": "fac15a7e94c79d0852ca8243c8a53c573d0a4a006bf26e9541ce6022b90f1c65"
+    },
+    {
+      "native_path": "/tmp/mr7-seam-current-6tg81mwk/junit/pinned-packages.xml",
+      "retained_path": "work/active/WI-075_supplied-magnet-design-evaluation/integration/seam/junit/pinned-packages.xml",
+      "sha256": "b66adf0d2b4eabca20334687de034a7734083e0819823905cbedfefcf146c50a"
+    },
+    {
+      "native_path": "/tmp/mr7-seam-current-6tg81mwk/package_identity.json",
+      "retained_path": "work/active/WI-075_supplied-magnet-design-evaluation/integration/seam/package_identity.json",
+      "sha256": "12a2a378c09e8f74f6f96952eab2579ab7e2232f165660bc05d81bb5ac9b8c85"
+    },
+    {
+      "native_path": "/tmp/mr7-seam-current-6tg81mwk/preflight_results.json",
+      "retained_path": "work/active/WI-075_supplied-magnet-design-evaluation/integration/seam/preflight_results.json",
+      "sha256": "6a24cbc08e66c07d05731e257f24373768d0153683c6120340e59b2d2245e60e"
+    },
+    {
+      "native_path": "/tmp/mr7-seam-current-6tg81mwk/recaptured.snapshot.json",
+      "retained_path": "exploration/stellarator_e2e/stellarator.snapshot.json",
+      "sha256": "8c1bc26fd54d5a1797514694ff5122303a09b8fc3dfebe52bc512ecb990a37bc"
+    },
+    {
+      "native_path": "/tmp/mr7-seam-current-6tg81mwk/verification_summary.json",
+      "retained_path": "work/active/WI-075_supplied-magnet-design-evaluation/integration/seam/verification_summary.json",
+      "sha256": "0ce3e07f1e69a10390e31ea7021cc60654f33fc6bc8a571a7a832bb7963daeba"
+    },
+    {
+      "native_path": "/tmp/mr7-seam-current-6tg81mwk/verify_stderr.txt",
+      "retained_path": "work/active/WI-075_supplied-magnet-design-evaluation/integration/seam/verify_stderr.txt",
+      "sha256": "c333987c2bb17a61118dcafa9a80a3e8a35f0ca98094fb3fe8fee99ce39f27e5"
+    }
+  ]
+}

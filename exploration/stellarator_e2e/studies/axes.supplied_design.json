@@ -1,0 +1,85 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "availability_direct",
+      "note": "Selected calendar scenario: zero uses live calendar; positive selects declared held availability.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__availability_direct",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "discount_rate",
+      "note": "Selected financial discount rate.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__discount_rate",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "R",
+      "note": "Selected major radius shared by plasma and magnet geometry.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__R",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "a",
+      "note": "Selected plasma minor radius.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__plasma__a",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "turn_current",
+      "note": "Operating amperes per turn; installed reference turns and pack remain independently selected. Replaces the former ampere-turn I_coil axis; this is a versioned interface, not an alias.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__coil__turn_current",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "pack_side",
+      "note": "Selected effective square winding side in metres.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__winding_pack__wp_side",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "processor_capacity",
+      "note": "Selected kg D+T/s processing rating per module.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__fuel_cycle__processing_capacity_kg_s",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "loop_flow_ceiling",
+      "note": "Selected scalar per-circuit flow ceiling in kg/s, distinct from loss-law calibration and full pump-map qualification.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__heat_transport__mdot_loop_rated",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

@@ -42,6 +42,8 @@ uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env \
     --out-dir        /tmp/integration-run
 ```
 
+For the current supplied-design stellarator interface (WI-075–078), use `--groups exploration/stellarator_e2e/studies/axes.supplied_design.json`. The older known-answer declaration in the historical example above contains the retired ampere-turn input; it belongs to its original interface. The current excitation axis supplies amperes per turn while installed turns and pack geometry remain independently chosen.
+
 A full run takes about 15–20 seconds. Most of it is the model-family spine suite and the baseline execution.
 
 ---

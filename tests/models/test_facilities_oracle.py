@@ -146,7 +146,7 @@ def test_extra_processing_stations_need_physical_room_capacity():
     assert bundle['cooling_annex_gross_area']>0
 
 
-def test_disabled_full_map_preserves_legacy_accounts_and_zeroes_facilities():
+def test_disabled_full_map_preserves_legacy_accounts_and_supplied_origin():
     from exploration.stellarator_e2e.studies import oracle_entry as seam
 
     result=seam._compute({'facility_facilities_enabled':False,
@@ -156,7 +156,9 @@ def test_disabled_full_map_preserves_legacy_accounts_and_zeroes_facilities():
     assert result['precon']==result['precon_legacy']
     unit_margins={'initial_margin_days','readiness_margin_days','capacity_margin_units',
                   'route_margin_m','outage_margin_days','unused_material_capacity','geometry_fit_margin_m','occupancy_area_margin_m2','parcel_fit_margin_m'}
-    fixed={'facility_initial_sector_start_days':-120.,'facility_cooling_initial_handoff_days':-30.}
+    fixed={'facility_initial_sector_start_days':-120.,'facility_cooling_initial_handoff_days':-30.,
+           'facility_selected_parcel_x_min':-186.9046987566545,
+           'facility_selected_parcel_y_min':-256.9046987566545}
     for name,channel in seam.ORACLE_OUTPUT_TO_CHANNEL.items():
         assert math.isfinite(result[name])
         if not name.startswith('facility_'):

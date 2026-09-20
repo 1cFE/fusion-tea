@@ -25,4 +25,8 @@ Subsystem investigations write the goal's evidence/magnet-inventory.md, cooling-
 
 ## Current evidence and review boundary
 
-[AGENT] `residual-dispositions.md` and the updated public-parameter coverage CSV cover all entering/current controls with explicit bounded meanings and actual consumers. Final generated census: 597 current, 609 union, 12 retired, 98 introduced, zero unconsumed. Source binding reviews precede WI-075–078 implementation. Residual row dispositions are independently approved; final integrated acceptance remains open; completing the inventory is not self-certification of remediation.
+[AGENT] `residual-dispositions.md` and the updated public-parameter coverage CSV cover all entering/current controls with explicit bounded meanings and actual consumers. Final generated census: 597 current, 609 union, 12 retired, 98 introduced, zero unconsumed. Source binding reviews precede WI-075–078 implementation. Residual row dispositions and final integrated acceptance are independently approved in the final review linked below.
+
+## Final technical acceptance
+
+[AGENT] Technical acceptance passed fresh non-author [final integrated review](../../orchestration/goals/preserve-model-design-choices/evidence/final-review.md). Native integration returned CANDIDATE at implementation commit `b11567eb693a4fd6f45a487f75dc5244fb433774`, with all ten gates passing. The broad regression sweep and complete reruns of its two corrected test files are accepted composite evidence; see WI-075 `integration/regression-accounting.json`. Scientific limits and the existing unexecuted read-set coverage check remain disclosed in the goal answer. This active record is retained for provenance; formal goal closure and archival remain owner-held.

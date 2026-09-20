@@ -99,3 +99,38 @@ Model-facing and study-route disclosures now distinguish retained demand-matched
 The final native interface has 597 public inputs, 1,149 scalar outputs, 35 structured outputs and 34 predicates. Independent review accepts the supported implementation/native behavior, residual R01–R15 meanings and test-only historical migration. It closed the near-zero-negative predicate gap after two supplied-pack native cases retained strictly negative native/oracle margins and exact violated verdicts. The native model-family spine passes 13 tests; the full current numeric/predicate comparison passes 13 tests across six scenarios; current stock-route and domain-consumer suites pass 102 and 36 tests. Detailed retained logs are under WI-075/integration; review is evidence/implementation-review.md.
 
 A local implementation checkpoint is authorized by the owner prompt. Broad stable regressions and the committed native integration seam remain pending; this checkpoint is not a completed round, a promoted candidate, formal goal closure or comparison freeze. The native register-decision operation refused because the existing architecture document lacks its expected Key Decisions heading; no registry was manually rewritten. The reviewed supported-direction contract remains durably recorded in WI-074 and the goal evidence. Native verification entries SV-123 and SV-124 record the applicable passed behavior.
+
+### T-006 scope and start — 2026-09-20
+
+- **Objective:** Prove the reviewed implementation checkpoint is a reproducible, oracle-verified native study package.
+- **Scope:** Native integration seam against WI-074–078 at `b11567eb693a4fd6f45a487f75dc5244fb433774`, current manifest/census, pinned runtime and expected fingerprints. No new comparison or study sweep.
+- **Done when:** The seam returns one CANDIDATE, or a concrete BLOCKER is recorded.
+
+### T-006 request correction — 2026-09-20
+
+The first seam attempt passed provenance, runtime revision, byte-stable regeneration, handwritten preservation, census/snapshot, model-family spine and manifest. Preflight refused the request because `tests/study/data/axes.known_answers.json` names retired `magnet.coil.I_coil`. No candidate was returned. The corrected request uses the versioned `exploration/stellarator_e2e/studies/axes.supplied_design.json`, which declares current independently selected controls and operating turn current. Independent preflight passes all six checks with this declaration, including all 34 baseline verdicts. No package byte or historical axis fixture changed. The native seam is running again against the same checkpoint and package fingerprints; both request receipts are retained under WI-075/integration.
+
+### T-002–T-005 returns — 2026-09-20
+
+- **T-002 / WI-075: COMPLETE.** Supplied magnet geometry, turns and structural masses propagate through native inventory, thermal loads and represented price. Supported fit/current limits preserve strict insufficient/sufficient results. Optional selection is outside the evaluator.
+- **T-003 / WI-076: COMPLETE.** Supplied facility dimensions, partitions, positions, packages and parcel propagate through native checks and cost. Signed offsets restore native parcel translation without demand-driven recentering.
+- **T-004 / WI-077: COMPLETE.** Supplied processor throughput controls price, with capacity adequacy and price-source applicability checked separately.
+- **T-005 / WI-078: COMPLETE.** Supplied cooling price points and stock remain distinct from operating demand; flow ceiling and hydraulic calibration are independent. Represented fill is checked without asserting full inventory or off-design qualification.
+
+All four returns use the reviewed contracts and acceptance evidence summarized in evidence/final-review.md and WI-075/integration/regression-accounting.json. No confirmed scoped repair remains open. Active work-item paths remain in place for provenance; archival is owner-held.
+
+### T-006 return — 2026-09-20
+
+**COMPLETE — CANDIDATE.** The corrected request passes all ten native integration gates at implementation checkpoint `b11567eb693a4fd6f45a487f75dc5244fb433774`. Candidate pin is `84b82ef338093eb6d6f142360b3ded2b575b6f79397e6a719a6cb6dcf0154bc6`. WI-075/integration/seam-retention.json records durable byte-identical copies independently checked against thirteen native artifacts. No sweep or reference comparison was run. The first refused obsolete-axis request and its correction are both retained. Read-set coverage is an explicit existing tooling gap, not claimed by the ten passing gates.
+
+### Round 1 result — 2026-09-20
+
+[AGENT] The technical question is answered within the reviewed scope. Whole-model inventory and actual consumer inspection led to four repaired design-choice paths and explicit residual dispositions. Native behavior, composite regressions, complete current numeric/predicate coverage and the reproducible integration candidate support completion. See answer.md for before/after choices, exact identity, migration and scientific limits. Five stale expectations in the broad sweep were corrected and their two whole files passed; the original sweep is not reported as green.
+
+The proposed learning delta is: inspect emitted roles as well as declarations; explicit selected-design evaluation can preserve bounded freedoms without a universal inverse solver; separate inadequacy, unsupported performance and conditional prices; carry missing scientific capabilities as named limits. Formal goal closure remains owner-held. One candidate was returned and no study committed. The request correction changed declared axes, so it is recorded as a corrected request rather than an identical-input mechanical retry; it stays within the declared cap.
+
+### Round 1 review — 2026-09-20
+
+Coordinator check after the round result, reusing fresh non-author broad integration coverage from `/root/implemented_review`, evidence/final-review.md: **PASS technical completion**. The reviewer independently covered inventory, actual bindings, native acceptance, residual dispositions, regression corrections, candidate identity and retained artifact hashes. No uncovered implementation risk requires repeating that review. Coordinator checked task scopes, the corrected-request classification, retained paths and result fidelity. No discovery-log rows were created or touched. Native documents retain original scratch paths with an explicit durable-copy map; no historical artifact was rewritten or moved.
+
+The four bounded learnings approved by the reviewer are accepted and appended to learnings.md now. Scientific and tooling limits in answer.md carry forward. Recommendation: return the completed technical result for owner-held formal goal closure. No next technical round is required by this evidence; the goal remains grounded.

@@ -51,6 +51,10 @@ Can the stellarator model and shared dependencies evaluate and cost supplied des
 
 [OWNER] Only the owner formally closes the goal after reviewing technical completion evidence or a bounded negative result.
 
+## Technical result — 2026-09-20
+
+[AGENT] Round 1 meets the technical completion criteria for the independently reviewed scope. See [answer.md](answer.md) and [final independent review](evidence/final-review.md). The goal remains grounded pending owner-held formal closure.
+
 ## Amendments
 
 None.
