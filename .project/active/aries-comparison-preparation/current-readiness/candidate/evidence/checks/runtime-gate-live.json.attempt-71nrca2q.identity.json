@@ -1,0 +1,8 @@
+{
+  "files": {
+    "input-0.raw": "1bbe8f8c0e42ab8eed0a22ea1c863e49247f01097a019186d035a7cd9905c319",
+    "produced.raw.json": "25b560e12652f1e5cd3feae547ec07e919008a85b19ee1d4a6386efdcc137e01",
+    "receipt.json": "626050ae6a17c1676d80f544da99899fde82c0d688134afb1e5c861873746351"
+  },
+  "result_directory": "runtime-gate-live.json.attempt-71nrca2q"
+}

@@ -1,0 +1,70 @@
+{
+  "authority": "Observed exact traceback classification; no gate bypass",
+  "cases": [
+    {
+      "nodeid": "tests.study.test_verify::test_the_summary_validates_against_its_schema",
+      "kind": "error",
+      "dirty_package_refusal": true
+    },
+    {
+      "nodeid": "tests.study.test_verify::test_the_summary_is_a_superset_of_the_committed_field_set",
+      "kind": "error",
+      "dirty_package_refusal": true
+    },
+    {
+      "nodeid": "tests.study.test_verify::test_parity_holds_at_the_committed_order_of_magnitude",
+      "kind": "error",
+      "dirty_package_refusal": true
+    },
+    {
+      "nodeid": "tests.study.test_verify::test_every_catalog_constraint_is_rederived_with_its_operand_count",
+      "kind": "error",
+      "dirty_package_refusal": true
+    },
+    {
+      "nodeid": "tests.study.test_verify::test_stratification_covers_every_observed_verdict_combination",
+      "kind": "error",
+      "dirty_package_refusal": true
+    },
+    {
+      "nodeid": "tests.study.test_verify::test_stratification_is_a_floor_not_a_cap",
+      "kind": "failure",
+      "dirty_package_refusal": true
+    },
+    {
+      "nodeid": "tests.study.test_verify::test_the_derived_seed_reproduces_from_the_recorded_fields",
+      "kind": "error",
+      "dirty_package_refusal": true
+    },
+    {
+      "nodeid": "tests.study.test_verify::test_an_explicit_seed_is_recorded_as_explicit",
+      "kind": "failure",
+      "dirty_package_refusal": true
+    },
+    {
+      "nodeid": "tests.study.test_verify::test_cas27_is_compared_and_nothing_is_undisclosed",
+      "kind": "error",
+      "dirty_package_refusal": true
+    },
+    {
+      "nodeid": "tests.study.test_verify::test_the_command_carries_no_absolute_paths",
+      "kind": "error",
+      "dirty_package_refusal": true
+    },
+    {
+      "nodeid": "tests.study.test_verify::test_the_operand_bindings_digest_is_the_documented_canonicalization",
+      "kind": "error",
+      "dirty_package_refusal": true
+    },
+    {
+      "nodeid": "tests.study.test_verify::test_the_stores_are_never_written",
+      "kind": "failure",
+      "dirty_package_refusal": true
+    },
+    {
+      "nodeid": "tests.study.test_verify::test_stored_operating_controls_preserve_procurement_and_signed_capacity",
+      "kind": "error",
+      "dirty_package_refusal": true
+    }
+  ]
+}

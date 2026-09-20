@@ -1,0 +1,721 @@
+{
+  "bytes": 27470925,
+  "different": [
+    {
+      "current_sha256": "a0c1402981893bffa18885ed06c140467743f137f89b5cd28b65803d0846ec1d",
+      "path": "exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md",
+      "saved_sha256": "d3a3193ccddc479d6f27069ba6683686c5d943c0bc4c2f62b40788af1f3f4533"
+    },
+    {
+      "current_sha256": "6fcdef989571c0b6cc873fe85636425bccfc4ce34ce8d7ad6a26ae94b4aaf646",
+      "path": "exploration/stellarator_e2e/generated/__init__.py",
+      "saved_sha256": "bfec9c63b175325b6ecf9bb36f7b8b59ac41d029ee0c2d65bd9720fae7f0bd11"
+    },
+    {
+      "current_sha256": "068d9934118c19870f7110ef2f61126f0200996a6a42073c407aa90c08d1b662",
+      "path": "exploration/stellarator_e2e/generated/contracts/generation_manifest.json",
+      "saved_sha256": "e72e7168902021655d3cb261e9b3f39fd1f7e83da0477990a0829d37654a150b"
+    },
+    {
+      "current_sha256": "b7fdb93770c90b9ae78805295160bc36312565721366c2eb9e3ce68bdee4d2e9",
+      "path": "exploration/stellarator_e2e/generated/contracts/model_contract.json",
+      "saved_sha256": "580aa74eee17a82e5c8a96e0e11aa33049d7048172600db28aacef60db2c5e5c"
+    },
+    {
+      "current_sha256": "2371b52f6d0bb5d3b452dc50867528455ea5a55eaf8208e26d32b8352a30527f",
+      "path": "exploration/stellarator_e2e/generated/contracts/package_contract.json",
+      "saved_sha256": "394700170ae465358c7e308e0d6bc19db814ed2fb1f69dc7b625013d59179ea2"
+    },
+    {
+      "current_sha256": "25c19710656768da0e3553b02e071f617b9a8cceb03d135f4ee70d47608e446a",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/annual_cost_rollup_impl.py",
+      "saved_sha256": "f595386cb1986df142a9cbad27a78396c68fe84ef43f465a1d364136426db3fb"
+    },
+    {
+      "current_sha256": "5aa8e996ffd09668ffc6ba5250efde7d37e458ec090774fad6888c25fb473eee",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/dt_fuel_cost_impl.py",
+      "saved_sha256": "037f64bc137dd74e31dabc58244f9aedc7e42dd6d29558984b282bab322d75a9"
+    },
+    {
+      "current_sha256": "417a34f0ff987aa7f4294d8630c344e3a41d890af93bf8b53d6f8e154ad9d303",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/n_1cfe_form_capital_charge_impl.py",
+      "saved_sha256": "0bdda737968776cda09a0c534cb8c7e841675f77511e40ce390af2da6a007d21"
+    },
+    {
+      "current_sha256": "142cc2d507a58a37688156ce07c31297c10eb1694f0e26c489ad921f4d4ebcde",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/n_1cfe_form_lcoe_impl.py",
+      "saved_sha256": "ae42cd2be178082224cf1e1535aaaf5f9bcd6dcb38696d45fb74440fdb8f7718"
+    },
+    {
+      "current_sha256": "aaadbb91d121a24cfb4a08346cd429f1f06e725fe4f8f83de248e06e5cdb8c80",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/plant_power_law_cost_impl.py",
+      "saved_sha256": "5b7e2a39ba6ff4560627aa3fb3f40c5e8b43c2ee6e058bec3cc4c9ead2969099"
+    },
+    {
+      "current_sha256": "1e912a13a17c38db7c5d9a32ba45fd94e97babf08de4e8c231556118e448c17d",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/supplementary_cost_impl.py",
+      "saved_sha256": "67f413055c73228746db5f10ad051433381b6183559ab6086892517ee0afd91c"
+    },
+    {
+      "current_sha256": "7c6540c7641dbddb08023aa503fad1584cdca8ac92538e8dcc775bb51325adf9",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_fuel_cycle/fuel_cycle_flows_impl.py",
+      "saved_sha256": "13f81a31bfa6017627366375853453eb10fbac42d8a7b9f8ae574900e833ed3d"
+    },
+    {
+      "current_sha256": "882da53dc568d480744597a81e0b29210135ebafb85f32c069c2758f67bc0420",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py",
+      "saved_sha256": "e14ee1340e0e8df2cd2b691029e72d99b46f701728aa940c74382c0fc884f537"
+    },
+    {
+      "current_sha256": "d315c98e07aa0c4b5d923f5dcddd5f799b3f4ea4ff6c8dec55f0936f940d0b4d",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py",
+      "saved_sha256": "a3308fe62f0e02808b60f764e38f36741c172f4335cf81159ff148268c6e598d"
+    },
+    {
+      "current_sha256": "027e7f4055d2b2f26e17c93d9d422d2c05c01266db19f223167bcb1cecb9aae6",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py",
+      "saved_sha256": "9c42ef65d5fe0d8455916b3459773f1e76edbe91f1ad1b9251cf097bd8f9a974"
+    },
+    {
+      "current_sha256": "5a38d5b11016ce4f2f842718979b37264c3a379a53f97f429d5ebda6105da612",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py",
+      "saved_sha256": "918e45641a6c252a638d0987c34ca6506b10f7177b6258a438d0fbec83157d4b"
+    },
+    {
+      "current_sha256": "39cfb9af84267ff9c29a922256a45955d3a357c9c681083fffe3b691c9e43659",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py",
+      "saved_sha256": "fe98f597b1ccc2112c71b5e516d37128aaa3be11d06f966b66914564876d5ff9"
+    },
+    {
+      "current_sha256": "5e0509589a488a976603c095ac30e7460903797a864a088aefba390b8cf83f98",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py",
+      "saved_sha256": "53e43b2f7e08dd977366aa24ebfbaa2e46fbcee3c6906cee07686deba4afc779"
+    },
+    {
+      "current_sha256": "301447129374e426b5c676d58c931891d6e03c5da80914f3fbbe276682464660",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py",
+      "saved_sha256": "af07489125913f438320c4c24d27cd122437cf0bd30c7936669124d74d1fb306"
+    },
+    {
+      "current_sha256": "cf7987a59d988ad4ee65511b4e720613e6a8c31fb10fb1858bca20f60964d123",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py",
+      "saved_sha256": "2eac469a8b04863829e60c56f0a57bc0266762c0c0808e935062b89b64d40125"
+    },
+    {
+      "current_sha256": "6f4b2870bc69942a3fa85c7a3cb0fed1b61d71cee23009a57902a82350dbfeec",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py",
+      "saved_sha256": "9fc0414b9bfcb11eb36826dd04a546de085dd963e1d870fd7c71a3e9407addec"
+    },
+    {
+      "current_sha256": "9816680db657b77a75ec9e89217a4f85544e1ebae1c22042de1edf1a670da74e",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py",
+      "saved_sha256": "730892edc5dfcff4bac50fa5f63d80ed3d08f70bee3a03fa895d82fbcb771fdc"
+    },
+    {
+      "current_sha256": "cd4ee6dc16068b0db2cec4cc6f49c202c5a58342c3eba43d6e6db201cf415ec4",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/mfe_radial_build_impl.py",
+      "saved_sha256": "d259c3129bb12d69cffd00c6791ebc4255fe2547aa072cde6f9bac344fb055e7"
+    },
+    {
+      "current_sha256": "4c1575306870f56944cb1085c1656783fae0f1089a9f706b09c791d16c6cf071",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/neutron_wall_load_impl.py",
+      "saved_sha256": "6cd951d2f08b08be03644a69fa161ee826abb6997ddc7e04baea733fe1549fdb"
+    },
+    {
+      "current_sha256": "2902ac5adcd7217bdd000aec84e5fdfbf06e3b6f94a87e414b6ca746463d2fa1",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/neutron_wall_load_peak_calibration_impl.py",
+      "saved_sha256": "941a86cf2d97cfd49b8a046a4d2b07db5493616932966ae656623899cc1262dc"
+    },
+    {
+      "current_sha256": "b80f9cbbceb91ab7788c3ead24c02a67a22539bed9f5e36372d919ce5d717b87",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/neutron_wall_load_peak_impl.py",
+      "saved_sha256": "1305b2a40cd39ce7d9d3a9103d7855ce9d3ca6807f90e43d7bc60f441ace7f0e"
+    },
+    {
+      "current_sha256": "f468578738e82229a997a5d5b9b3207a5a7e8bae578389627ee125296bec3ea9",
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/volume_averaged_beta_impl.py",
+      "saved_sha256": "a4f7499f19fb5e764365833c092db97bb8aa618c4c7b3a0913df7c96d43b26fd"
+    },
+    {
+      "current_sha256": "f3a030cedb3bf15a7ccad328aada8038e66522bbb4db12afd6b999c562b7e7e3",
+      "path": "exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py",
+      "saved_sha256": "133fa5664ab999e2824cbedbf88707ddc074bdefed0f13f96b7044d3e8af0828"
+    },
+    {
+      "current_sha256": "ebed292a07ebfe4e840927d27851809ffd005353a32360a2dfb0a09125ad3b15",
+      "path": "exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json",
+      "saved_sha256": "b9fc71a1d3e28908b4507f2d86669faa4b49daf9ed5dfb7ba45a37d5d7ac2207"
+    },
+    {
+      "current_sha256": "1feb5a063b1d81a4777adab1817b1b0aee931359a6d935acf1971a9b267b7093",
+      "path": "exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py",
+      "saved_sha256": "52605002ef556262b66eda7bb0cf51b7c7cef683fc1785b527c887c79b8a22fa"
+    },
+    {
+      "current_sha256": "8c215c57b145a149d088ffb6280e409327085a0350600a669750d0e58b89257c",
+      "path": "exploration/stellarator_e2e/generated/modules/constraints/predicates.py",
+      "saved_sha256": "edd712ed172aeedec63ec7e736dd7bdace134760f1aa8c6d2f2b6dbba53dc19a"
+    },
+    {
+      "current_sha256": "5eb395c220d6080c71f6f13e4e9aadac8d10d989a6ba3d4410795af21eb5be06",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_account_costs/annual_cost_rollup.py",
+      "saved_sha256": "001af6d77a604be26b203ecffd474c5099200e07a3e2ee47a1703b5c28786018"
+    },
+    {
+      "current_sha256": "f6adae57dfd4e3263f802c3aa9afdc2fe7734e0aa5cfcf2b8809f044969922ca",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_account_costs/dt_fuel_cost.py",
+      "saved_sha256": "4fdfe14d3674e88ddb784ce5452c68def102ba27eb2a2304f473cbce9837e299"
+    },
+    {
+      "current_sha256": "edb2595220aeb9ce4e90e252b7194c17469503022aaa02f3b83d9c3475386ea7",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_account_costs/idc_closed_form_cost.py",
+      "saved_sha256": "dc9e79464768749604b79cf8839e1803038bc23c22b43b99978030dc3016ddd1"
+    },
+    {
+      "current_sha256": "5eb1f1c4a3c586b14f1db2d281341ec762f53848581b6db18aa4ce4d244b2d4a",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_account_costs/levelized_annual_cost.py",
+      "saved_sha256": "36058b22d324c2ae1af4949a06415d32d4e4b5846e0d3281fa0e058ee64169a0"
+    },
+    {
+      "current_sha256": "99370c730a25ac021bb4c10c4af83d2cc6c8989551937e0fae642842905970a0",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_account_costs/n_1cfe_form_capital_charge.py",
+      "saved_sha256": "3ee442b1e398618403308208951f19fa81887045e7e796f0bc0c58e339b68603"
+    },
+    {
+      "current_sha256": "f3913131de9914cf736374fbe83edabca748ec99ed2efa39965cff2644ff1d38",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_account_costs/n_1cfe_form_lcoe.py",
+      "saved_sha256": "d1ba1e8c1bc30cd59c3ad80006a4409261881da07c59b94d75abde4ed79fe5ef"
+    },
+    {
+      "current_sha256": "dbb0bd304daed3f19260ab292e9564e1aef37135e26536d8f7de50730b2eb839",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_account_costs/plant_power_law_cost.py",
+      "saved_sha256": "5a9c9b5da2ba401e0bc2aa8475737248514d9bd82ed9df58444543a8673f066b"
+    },
+    {
+      "current_sha256": "c3adc2f5f042ad60c23baa69d002d61b2bd3fd88a7e94e9cb8701fb9273e8b0b",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_account_costs/supplementary_cost.py",
+      "saved_sha256": "301a2ae9f17b1856bca8d663a55bb5cfc30f4de77bc40479aba719a5382cf1e0"
+    },
+    {
+      "current_sha256": "f0c036265733ad2020e966653c1f9524e176db48c922d850b170b277f957a669",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_fuel_cycle/fuel_cycle_flows.py",
+      "saved_sha256": "054bbb62775473fdc1282146f5d5f401cf094608b3a79ae78a0135cce8723e67"
+    },
+    {
+      "current_sha256": "09413e7e21626483ebac8ae201d138f2fc2e83c07f927b50bdf10a37a75fecd6",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/bop_capital.py",
+      "saved_sha256": "a74d65e7c68fdcf58e44cfce653d2cfacbcdabd8ed16b09fa9dfcf8cdf7bb974"
+    },
+    {
+      "current_sha256": "a687e3e0ad8010823e5d0f510eee6a19307e8cb068fee39e1184cdfc02986ce3",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas20_capital.py",
+      "saved_sha256": "45592d7e5585fed20d10d6f4bc07c53f6b8d942b35df6f0b20dcd8312bb10808"
+    },
+    {
+      "current_sha256": "230eba73dc940e0a74963d39903ef859daefb89c0988ac10e40f9fe9fbfef563",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas22_capital.py",
+      "saved_sha256": "f6550d26f836a352a63347b4df243fc17ad12af3a19f13a3e638a45d31f06949"
+    },
+    {
+      "current_sha256": "c5cfe788226d29a9ac7a224da657b0de05c7fe65fe8bd2d171af91dcfb7f3f4f",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas23_to_28_capital.py",
+      "saved_sha256": "68070ff5158452c0b75743b7ceb71d576b892b1ddfdf73a03261602dba09a4a6"
+    },
+    {
+      "current_sha256": "04f74aea58baf5ddd83738ffd729cf67ec7d6b085f9f48a4a32d6ea395a89871",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas2x_pre_contingency.py",
+      "saved_sha256": "7f6753224673f43817fdeed3cadb4b68e9c1eee8d0a281fd0d6e2c5aed161a9c"
+    },
+    {
+      "current_sha256": "8e2211656afd4aac76798f4aceb8c9b22307f6cb510082fc9ad27899b9112cdb",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/overnight_capital.py",
+      "saved_sha256": "6d968d97bb8c89d188499f66c42f4e5bd0de4430da011c72162a18f0c167d231"
+    },
+    {
+      "current_sha256": "75ff9e94f278c55ea4e2df1c2e70fa2994657389c3fccf87f0d10cebef1126ae",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/powercore_capital.py",
+      "saved_sha256": "c7d5c76253b63bad5121d657b46317684ca630639995f85d5491f0fea0730b93"
+    },
+    {
+      "current_sha256": "ec02f4f6d5f57fca374409205dfb0e4116cb9a6130a77545ab8f49daf2f330b3",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/reactor_equipment_subtotal.py",
+      "saved_sha256": "6ae95f7d0f24b3c458b5487ddb475eba3510215c9f9669ec40cd312525e2dc57"
+    },
+    {
+      "current_sha256": "d487ad3f1f2afd9807e4dba244baa6ef4df09336a4934839ec5ba500c4bdbaa4",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/replacement_cost_per_event.py",
+      "saved_sha256": "8b02d185dd23e696144c48a5346a7b1ea919b53e096af09383320d1baea592e9"
+    },
+    {
+      "current_sha256": "ed3defb6a08c870e73f37979a69544d2161c0932e1a7715fe75c4bba24aae836",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/total_capital.py",
+      "saved_sha256": "e6c8bfe38e4c9434447cb72d4bebca42501b4d2392c5e08ca718cdb3f97cea7b"
+    },
+    {
+      "current_sha256": "4655b4af3b60d174d1052a73bce713af1943f2c875d4ba92b9f0ce40a40d0ddd",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plasma_scaling/conductor_peak_field.py",
+      "saved_sha256": "307dbf6f1ac0d9ec4f36057d0211f8b1f7a57018e790b55bb98a6c8444c8965d"
+    },
+    {
+      "current_sha256": "7ce1056383c054fc7de7313e2ff138727d62f1bf6518efbe4e510bb433563f07",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plasma_scaling/dt_fusion_power.py",
+      "saved_sha256": "1242cfe37f0b181050a1e3b9776ad5fa7111a10258693e93d99a3a7a11fe20af"
+    },
+    {
+      "current_sha256": "89a520d2c2e7c6af2937f96246c7866b25fe8ece0a956213aa4ced5c3f59d704",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plasma_scaling/mfe_radial_build.py",
+      "saved_sha256": "64d40b9017d19789c030dcd3057e25479b6d5a2095f1f6f41fcdbfad98c5b346"
+    },
+    {
+      "current_sha256": "17629b76e17a013292d0ecaf33692a5f8fb81925b6e692b74d69cf94a640a5a9",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plasma_scaling/neutron_wall_load.py",
+      "saved_sha256": "226f72355f84a793f9828d97e4346c64404a3cb333ef80ea94fa024f414c69e8"
+    },
+    {
+      "current_sha256": "05fe39576838df591fb965106e8ce607fe523a42d364012015b4f937aa9f9939",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plasma_scaling/neutron_wall_load_peak.py",
+      "saved_sha256": "de74c2b3a34cc867a42d8c67ab0eff3ed683fd8f5a3d84a9ad689caefcaa3f57"
+    },
+    {
+      "current_sha256": "ef29848e8966cc59c122cd8f2a9ef585e9adfd09eb0347d75bd024c579076782",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plasma_scaling/neutron_wall_load_peak_calibration.py",
+      "saved_sha256": "125a0e1441ed0db0823b98e89ea8b29e4be9dced9c31243857c0d3118da1dedb"
+    },
+    {
+      "current_sha256": "1190f0c39e7e61c7d4b1838ad89e8ca3c9a46ab1aba3d4d01d85888ed06b1e3f",
+      "path": "exploration/stellarator_e2e/generated/modules/mfe_plasma_scaling/volume_averaged_beta.py",
+      "saved_sha256": "d5a87f647d38a7f098ec54a28f0b66181c5a0d20a5b0d9aa200ef28c90386699"
+    },
+    {
+      "current_sha256": "f3e5c9b43d6afdaad02e5e1e60e8c43c07a7f681cbb69d1a07704fd5230fed96",
+      "path": "exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py",
+      "saved_sha256": "80a3f49a1c3a4f7210a254b07579a5ab2c02e249daf24d18820f5d62fee5c9fa"
+    },
+    {
+      "current_sha256": "f2c6c79e46329dda7bca2a27720e58e5b373271e7592fcfca3029487256b762a",
+      "path": "exploration/stellarator_e2e/generated/modules/stellarator_09/stellaristbrokconstraintmodule.py",
+      "saved_sha256": "3f3bec824ab92938e032930e8212f9c6f5b889bd131e7dc02f39f06772dba7f0"
+    },
+    {
+      "current_sha256": "0b81c80b449573724f44795903ae794bb9272fca01b4647a40bf477662bfd7ef",
+      "path": "exploration/stellarator_e2e/generated/pipelines/pipeline.yaml",
+      "saved_sha256": "df7a42ce2c9d0c572655bd52107103143791c323088e30b00dac91df8e78f2d1"
+    },
+    {
+      "current_sha256": "8d1cacab79fe0b6dca89a73193943d76cba00820485292d6f87b7f33e1e09064",
+      "path": "exploration/stellarator_e2e/generated/schemas/annual_cost_rollup_output.py",
+      "saved_sha256": "8608f3b082542a549667c380ffa8689881f31ac20a3724eef4fd500f44fe3820"
+    },
+    {
+      "current_sha256": "b2879c885f70eef30049be5d328d7de8af33a184901e9157c6cacc89aabc7b82",
+      "path": "exploration/stellarator_e2e/generated/schemas/fuel_cycle_flows_output.py",
+      "saved_sha256": "4882306119acff2ec8db8d178dabdc0979fd5665be4a98177dcace2b06c63df9"
+    },
+    {
+      "current_sha256": "7022f6a8130f3ee51a957eec95e86840d40e7cf5090f2517d3619858110784d4",
+      "path": "exploration/stellarator_e2e/generated/schemas/levelized_annual_cost_output.py",
+      "saved_sha256": "3da8c0bd543f54cc61ddce047f6e51b783c2e358435dd3bc7416a842b8cc89a9"
+    },
+    {
+      "current_sha256": "0c3eb4b59596b0c6fc50b05d259dcc2359c5094e0a0badc1ea7213de0ca7a247",
+      "path": "exploration/stellarator_e2e/generated/schemas/mfe_radial_build_output.py",
+      "saved_sha256": "f4a59ade412763fe0f293540f7e2d49fee1d2b1b28ff1e6005440451e20d9a0e"
+    },
+    {
+      "current_sha256": "016c87147fcc044986d2b20134aa4367b61ab1a42c17861344f1c207db595da7",
+      "path": "exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py",
+      "saved_sha256": "998f01f297b70cfc0208ec20f5b8bf7f4b5c30226690081e10aa7214cb287a2e"
+    },
+    {
+      "current_sha256": "3662ebf0ab84ddfcf0a679310752ea70240026635b6921b89b1c5f0685c9a428",
+      "path": "exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py",
+      "saved_sha256": "cc9ab717a831d7128440def1d95444f39121a45de91fe6f4ef2b26467f7dcb40"
+    },
+    {
+      "current_sha256": "fc3299989a8917f83e1b865a9e47ff608b2b107e73d0a4da115bb150a1775039",
+      "path": "exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml",
+      "saved_sha256": "67198cd4481a52b8e93b0e789d607eee68a81bc0a0ac80796b93ca30a6dfa5dd"
+    },
+    {
+      "current_sha256": "ba29646bd9d8450b4f726c7887b0f13a9cdc37397caca3618f3e05bded87c7e3",
+      "path": "exploration/stellarator_e2e/models/analyses/mfe_fuel_cycle.sysml",
+      "saved_sha256": "f0657c82258b80a1b59b9c7315f6d5da275b8f1226ebf86a7ad15582c89901cd"
+    },
+    {
+      "current_sha256": "b23b0484e3372d54534894a1d699d48c46010b9acc65db7c95760d1df3296e50",
+      "path": "exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml",
+      "saved_sha256": "7ee913cacc57acb5810310c25ef48473add1602e877a4a2e0e27ed3d5b31d4ae"
+    },
+    {
+      "current_sha256": "31db270a35a711a9085df9d7008658bd7c5380f8d9ebfac2e48368c2591f596d",
+      "path": "exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml",
+      "saved_sha256": "95ea927d5821355d33adb1050179708201235c716bebe9375396508e609f1778"
+    },
+    {
+      "current_sha256": "a649b7f14345768aaf83c62e6782cdab6e56ac6cd0e094ffb6cfed77162d954e",
+      "path": "exploration/stellarator_e2e/models/designs/generic_mfe/mfe_subsystems.sysml",
+      "saved_sha256": "43f33574b10b2e5fe3e8c2d2d5c1d11e13a4781d20e5646f09c804210b83cfb2"
+    },
+    {
+      "current_sha256": "a287de915afe917ccb47c3b0289b0ecdb3561519006e9ac8a7950a45e7491a93",
+      "path": "exploration/stellarator_e2e/models/designs/stellarator_09/stellarator_plant.sysml",
+      "saved_sha256": "52497361e29358b17d9057492e987baa9ab2fdc8e25dc4416f3aaa992b55cb1e"
+    },
+    {
+      "current_sha256": "d9471c9f61ac559d6307601871e53e75456cd70c348acc2b311fdbcedafead43",
+      "path": "exploration/stellarator_e2e/models/structure/mfe_plant_systems.sysml",
+      "saved_sha256": "c179ef2237fadcb5aa2231721f8dbc8a0be29527ab02b1846aac1e1c6d455638"
+    },
+    {
+      "current_sha256": "36bd1ac7e03ce25f6e74afd9ac0dffea9effd006e195146b05d0d555bee6073b",
+      "path": "exploration/stellarator_e2e/models/structure/mfe_plasma.sysml",
+      "saved_sha256": "6b7e4020b387c22bfde8383838b55d1fcc9aee71bf39e1534e8cb918e5470f67"
+    },
+    {
+      "current_sha256": "d718be2040de50750244da1cd20566c44702afc33605f5bad0ab8b4fc3070628",
+      "path": "exploration/stellarator_e2e/studies/oracle_entry.py",
+      "saved_sha256": "937dc667f69cb6c49dc09b80588ba0b5d1476e6a0988f99922a8472ac1d6e78a"
+    },
+    {
+      "current_sha256": "c7f023b1d7060ddb98aa8acfb3d6f7aa71a558bd408473c7a1982dfb51d47e8d",
+      "path": "exploration/stellarator_e2e/verify_stellaris.py",
+      "saved_sha256": "f95e1ef010e79663711d444956d5ac6cda0c37f0bbe57b7a0a4449c83bf19907"
+    },
+    {
+      "current_sha256": "31db270a35a711a9085df9d7008658bd7c5380f8d9ebfac2e48368c2591f596d",
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "saved_sha256": "95ea927d5821355d33adb1050179708201235c716bebe9375396508e609f1778"
+    },
+    {
+      "current_sha256": "a649b7f14345768aaf83c62e6782cdab6e56ac6cd0e094ffb6cfed77162d954e",
+      "path": "models/designs/generic_mfe/mfe_subsystems.sysml",
+      "saved_sha256": "43f33574b10b2e5fe3e8c2d2d5c1d11e13a4781d20e5646f09c804210b83cfb2"
+    },
+    {
+      "current_sha256": "a287de915afe917ccb47c3b0289b0ecdb3561519006e9ac8a7950a45e7491a93",
+      "path": "models/designs/stellarator_09/stellarator_plant.sysml",
+      "saved_sha256": "52497361e29358b17d9057492e987baa9ab2fdc8e25dc4416f3aaa992b55cb1e"
+    },
+    {
+      "current_sha256": "fc3299989a8917f83e1b865a9e47ff608b2b107e73d0a4da115bb150a1775039",
+      "path": "models/library/analyses/mfe_account_costs.sysml",
+      "saved_sha256": "67198cd4481a52b8e93b0e789d607eee68a81bc0a0ac80796b93ca30a6dfa5dd"
+    },
+    {
+      "current_sha256": "ba29646bd9d8450b4f726c7887b0f13a9cdc37397caca3618f3e05bded87c7e3",
+      "path": "models/library/analyses/mfe_fuel_cycle.sysml",
+      "saved_sha256": "f0657c82258b80a1b59b9c7315f6d5da275b8f1226ebf86a7ad15582c89901cd"
+    },
+    {
+      "current_sha256": "b23b0484e3372d54534894a1d699d48c46010b9acc65db7c95760d1df3296e50",
+      "path": "models/library/analyses/mfe_plasma_scaling.sysml",
+      "saved_sha256": "7ee913cacc57acb5810310c25ef48473add1602e877a4a2e0e27ed3d5b31d4ae"
+    },
+    {
+      "current_sha256": "d9471c9f61ac559d6307601871e53e75456cd70c348acc2b311fdbcedafead43",
+      "path": "models/library/structure/mfe_plant_systems.sysml",
+      "saved_sha256": "c179ef2237fadcb5aa2231721f8dbc8a0be29527ab02b1846aac1e1c6d455638"
+    },
+    {
+      "current_sha256": "36bd1ac7e03ce25f6e74afd9ac0dffea9effd006e195146b05d0d555bee6073b",
+      "path": "models/library/structure/mfe_plasma.sysml",
+      "saved_sha256": "6b7e4020b387c22bfde8383838b55d1fcc9aee71bf39e1534e8cb918e5470f67"
+    }
+  ],
+  "matching": [
+    "exploration/stellarator_e2e/generated/contracts/verify.py",
+    "exploration/stellarator_e2e/generated/handwritten/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/annual_om_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/aux_cooling_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/blanket_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/buildings_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/contingency_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/coolant_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/divertor_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/financial_factors.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/heating_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/idc_closed_form_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/indirect_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/installation_labor_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/levelized_annual_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/linear_power_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/power_supplies_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/preconstruction_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/remote_handling_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/shield_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/structure_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/vessel_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/current_driven_pack_sizing_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_conductor_grade/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_conductor_grade/conductor_field_capability_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_cryo_inventory/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_cryo_inventory/coil_thermal_inventory_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_cryo_inventory/cold_load_sum_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_cryo_inventory/electrical_power_sum_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_cryo_inventory/intercept_electrical_power_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_cryo_plant/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_cryo_plant/cryoplant_electrical_power_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_divertor_heat/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_divertor_heat/divertor_heat_ledger_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_fuel_cycle/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_heating_chain/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_heating_chain/heating_power_chain_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_heating_chain/operating_heating_power_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_lcoe_dcf/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_lcoe_dcf/lcoe_dcf_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_lifecycle/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_lifecycle/lifecycle_calendar_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_capital_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_casing_mass_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_coil_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/magnet_support_mass_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_cost/winding_pack_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_field/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_field/coil_set_axis_field_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_field/coil_set_stored_energy_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_field/coil_winding_length_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_field/conductor_strain_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_field/winding_pack_cold_volume_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_field/winding_pack_sizing_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_field/winding_pack_stress_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_plant/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/conductor_peak_field_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/plasma_geometry_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_sustainment/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_power_balance/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_power_balance/mfe_power_balance_calc_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_power_balance/reactor_source_heat_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_power_cycle/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_power_cycle/power_cycle_efficiency_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_primary_loop/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_primary_loop/primary_coolant_loop_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_vacuum/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_vacuum/vacuum_gas_load_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_material_inventory_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_procurement_cost_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_fit/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_fit/winding_pack_casing_fit_impl.py",
+    "exploration/stellarator_e2e/generated/handwritten/stellarator_09/__init__.py",
+    "exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/__init__.py",
+    "exploration/stellarator_e2e/generated/inputs/__init__.py",
+    "exploration/stellarator_e2e/generated/inputs/mfe_account_costs_params.json",
+    "exploration/stellarator_e2e/generated/inputs/mfe_cryo_plant_params.json",
+    "exploration/stellarator_e2e/generated/inputs/mfe_fuel_cycle_params.json",
+    "exploration/stellarator_e2e/generated/inputs/mfe_magnet_cost_params.json",
+    "exploration/stellarator_e2e/generated/inputs/mfe_magnet_field_params.json",
+    "exploration/stellarator_e2e/generated/inputs/mfe_plant_params.json",
+    "exploration/stellarator_e2e/generated/inputs/mfe_plasma_scaling_params.json",
+    "exploration/stellarator_e2e/generated/inputs/mfe_plasma_sustainment_params.json",
+    "exploration/stellarator_e2e/generated/inputs/mfe_vacuum_params.json",
+    "exploration/stellarator_e2e/generated/modules/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/constraints/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/annual_om_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/aux_cooling_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/blanket_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/buildings_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/contingency_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/coolant_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/divertor_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/heating_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/indirect_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/installation_labor_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/linear_power_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/power_supplies_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/preconstruction_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/remote_handling_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/shield_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/structure_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_account_costs/vessel_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_conductor_current/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_conductor_current/current_driven_pack_sizing.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_conductor_current/rebco_conductor_current.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_conductor_grade/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_conductor_grade/conductor_field_capability.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_cryo_inventory/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_cryo_inventory/coil_thermal_inventory.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_cryo_inventory/cold_load_sum.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_cryo_inventory/electrical_power_sum.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_cryo_inventory/intercept_electrical_power.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_cryo_plant/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_cryo_plant/cryoplant_electrical_power.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_divertor_heat/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_divertor_heat/divertor_heat_ledger.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_fuel_cycle/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_heating_chain/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_heating_chain/heating_power_chain.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_heating_chain/operating_heating_power.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_lcoe_dcf/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_lcoe_dcf/lcoe_dcf.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_lifecycle/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_lifecycle/lifecycle_calendar.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_capital.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_casing_mass.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_coil_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_structure_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/magnet_support_mass.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_magnet_cost/winding_pack_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_magnet_field/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_magnet_field/coil_set_axis_field.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_magnet_field/coil_set_stored_energy.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_magnet_field/coil_winding_length.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_magnet_field/conductor_strain.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_magnet_field/winding_pack_cold_volume.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_magnet_field/winding_pack_sizing.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_magnet_field/winding_pack_stress.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_plant/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_plasma_scaling/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_plasma_scaling/plasma_geometry.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_plasma_sustainment/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_plasma_sustainment/plasma_sustainment.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_power_balance/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_power_balance/mfe_power_balance_calc.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_power_balance/reactor_source_heat.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_power_cycle/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_power_cycle/power_cycle_efficiency.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_primary_loop/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_primary_loop/primary_coolant_loop.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_vacuum/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_vacuum/vacuum_gas_load.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_insulation_inventory.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_material_inventory.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_winding_pack_cost/winding_pack_procurement_cost.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_winding_pack_fit/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/mfe_winding_pack_fit/winding_pack_casing_fit.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/__init__.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisbetaokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisburnholdokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellariscondstrainokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellariscycledomainokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisdivertorheatokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisheatingcouplepositiveokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisheatingcoupleupperokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisheatingsourcepositiveokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisheatingsourceupperokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisloopcapacityokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellarislooppressureokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisnetpositiveconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellarispeakfieldokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisrecircokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellarisreferenceconductorcurrentokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellarissustainmentokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellariswallloadokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellariswpfitokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/modules/stellarator_09/stellariswpstressokconstraintmodule.py",
+    "exploration/stellarator_e2e/generated/pipelines/__init__.py",
+    "exploration/stellarator_e2e/generated/primitives.py",
+    "exploration/stellarator_e2e/generated/schemas/__init__.py",
+    "exploration/stellarator_e2e/generated/schemas/aux_cooling_cost_output.py",
+    "exploration/stellarator_e2e/generated/schemas/coil_thermal_inventory_output.py",
+    "exploration/stellarator_e2e/generated/schemas/cold_load_sum_output.py",
+    "exploration/stellarator_e2e/generated/schemas/conductor_field_capability_output.py",
+    "exploration/stellarator_e2e/generated/schemas/constraint_types.py",
+    "exploration/stellarator_e2e/generated/schemas/current_driven_pack_sizing_output.py",
+    "exploration/stellarator_e2e/generated/schemas/divertor_heat_ledger_output.py",
+    "exploration/stellarator_e2e/generated/schemas/heating_power_chain_output.py",
+    "exploration/stellarator_e2e/generated/schemas/lifecycle_calendar_output.py",
+    "exploration/stellarator_e2e/generated/schemas/magnet_structure_cost_output.py",
+    "exploration/stellarator_e2e/generated/schemas/mfe_account_costs_params.py",
+    "exploration/stellarator_e2e/generated/schemas/mfe_cryo_plant_params.py",
+    "exploration/stellarator_e2e/generated/schemas/mfe_fuel_cycle_params.py",
+    "exploration/stellarator_e2e/generated/schemas/mfe_magnet_cost_params.py",
+    "exploration/stellarator_e2e/generated/schemas/mfe_magnet_field_params.py",
+    "exploration/stellarator_e2e/generated/schemas/mfe_plant_params.py",
+    "exploration/stellarator_e2e/generated/schemas/mfe_plasma_scaling_params.py",
+    "exploration/stellarator_e2e/generated/schemas/mfe_plasma_sustainment_params.py",
+    "exploration/stellarator_e2e/generated/schemas/mfe_power_balance_calc_output.py",
+    "exploration/stellarator_e2e/generated/schemas/mfe_vacuum_params.py",
+    "exploration/stellarator_e2e/generated/schemas/operating_heating_power_output.py",
+    "exploration/stellarator_e2e/generated/schemas/plasma_geometry_output.py",
+    "exploration/stellarator_e2e/generated/schemas/plasma_sustainment_output.py",
+    "exploration/stellarator_e2e/generated/schemas/power_cycle_efficiency_output.py",
+    "exploration/stellarator_e2e/generated/schemas/primary_coolant_loop_output.py",
+    "exploration/stellarator_e2e/generated/schemas/rebco_conductor_current_output.py",
+    "exploration/stellarator_e2e/generated/schemas/structure_cost_output.py",
+    "exploration/stellarator_e2e/generated/schemas/vacuum_gas_load_output.py",
+    "exploration/stellarator_e2e/generated/schemas/winding_pack_casing_fit_output.py",
+    "exploration/stellarator_e2e/generated/schemas/winding_pack_cold_volume_output.py",
+    "exploration/stellarator_e2e/generated/schemas/winding_pack_insulation_inventory_output.py",
+    "exploration/stellarator_e2e/generated/schemas/winding_pack_material_inventory_output.py",
+    "exploration/stellarator_e2e/generated/schemas/winding_pack_procurement_cost_output.py",
+    "exploration/stellarator_e2e/generated/tests/__init__.py",
+    "exploration/stellarator_e2e/models/analyses/mfe_conductor_current.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_conductor_grade.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_cryo_inventory.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_cryo_plant.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_divertor_heat.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_heating_chain.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_lcoe_dcf.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_lifecycle.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_magnet_cost.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_magnet_field.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_plasma_sustainment.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_power_balance.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_power_cycle.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_primary_loop.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_vacuum.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_viability.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_winding_pack_cost.sysml",
+    "exploration/stellarator_e2e/models/analyses/mfe_winding_pack_fit.sysml",
+    "exploration/stellarator_e2e/models/cost_structure/cas_hierarchy.sysml",
+    "exploration/stellarator_e2e/models/cost_structure/mfe_power_core.sysml",
+    "exploration/stellarator_e2e/models/foundation/costed_component.sysml",
+    "exploration/stellarator_e2e/models/foundation/economic_parameter.sysml",
+    "exploration/stellarator_e2e/models/structure/mfe_interfaces.sysml",
+    "exploration/stellarator_e2e/models/structure/mfe_magnet_parts.sysml",
+    "exploration/stellarator_e2e/models/structure/mfe_radial_build_parts.sysml",
+    "models/README.md",
+    "models/designs/generic_ife/ife_plant.sysml",
+    "models/designs/generic_ife/ife_subsystems.sysml",
+    "models/designs/hif_ife/hif_driver.sysml",
+    "models/designs/hif_ife/hif_plant.sysml",
+    "models/library/analyses/fusion_cycle.sysml",
+    "models/library/analyses/hif_economics.sysml",
+    "models/library/analyses/ife_lcoe.sysml",
+    "models/library/analyses/mfe_conductor_current.sysml",
+    "models/library/analyses/mfe_conductor_grade.sysml",
+    "models/library/analyses/mfe_cryo_inventory.sysml",
+    "models/library/analyses/mfe_cryo_plant.sysml",
+    "models/library/analyses/mfe_divertor_heat.sysml",
+    "models/library/analyses/mfe_heating_chain.sysml",
+    "models/library/analyses/mfe_lcoe_dcf.sysml",
+    "models/library/analyses/mfe_lifecycle.sysml",
+    "models/library/analyses/mfe_magnet_cost.sysml",
+    "models/library/analyses/mfe_magnet_field.sysml",
+    "models/library/analyses/mfe_plasma_sustainment.sysml",
+    "models/library/analyses/mfe_power_balance.sysml",
+    "models/library/analyses/mfe_power_cycle.sysml",
+    "models/library/analyses/mfe_primary_loop.sysml",
+    "models/library/analyses/mfe_vacuum.sysml",
+    "models/library/analyses/mfe_viability.sysml",
+    "models/library/analyses/mfe_winding_pack_cost.sysml",
+    "models/library/analyses/mfe_winding_pack_fit.sysml",
+    "models/library/cost_structure/cas_hierarchy.sysml",
+    "models/library/cost_structure/ife_cost_parameters.sysml",
+    "models/library/cost_structure/mfe_power_core.sysml",
+    "models/library/foundation/costed_component.sysml",
+    "models/library/foundation/economic_parameter.sysml",
+    "models/library/structure/mfe_interfaces.sysml",
+    "models/library/structure/mfe_magnet_parts.sysml",
+    "models/library/structure/mfe_radial_build_parts.sysml",
+    "models/stellarator_migration_ledger.md"
+  ],
+  "missing_current": [],
+  "sha256_after": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21",
+  "sha256_before": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21"
+}

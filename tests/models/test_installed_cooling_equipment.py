@@ -97,9 +97,9 @@ def evaluate(runtime, tmp_path_factory):
 
 
 def test_actual_native_cost_and_energy_selectors(evaluate):
-    legacy = evaluate(heat_transport__equipment_cost_mode=0., heat_transport__secondary_energy_mode=0.)
-    cost = evaluate(heat_transport__equipment_cost_mode=1., heat_transport__secondary_energy_mode=0.)
-    full = evaluate(heat_transport__equipment_cost_mode=1., heat_transport__secondary_energy_mode=1.)
+    legacy = evaluate(turbine__matched_cycle_enabled=0., heat_rejection__cooling_water_enabled=0., heat_transport__equipment_cost_mode=0., heat_transport__secondary_energy_mode=0.)
+    cost = evaluate(turbine__matched_cycle_enabled=0., heat_rejection__cooling_water_enabled=0., heat_transport__equipment_cost_mode=1., heat_transport__secondary_energy_mode=0.)
+    full = evaluate(turbine__matched_cycle_enabled=0., heat_rejection__cooling_water_enabled=0., heat_transport__equipment_cost_mode=1., heat_transport__secondary_energy_mode=1.)
     assert cost[P+'pb__p_net'] == legacy[P+'pb__p_net']
     assert full[P+'pb__p_net'] < cost[P+'pb__p_net']
     new = cost[P+E+'installed_total']
@@ -184,8 +184,8 @@ def test_scenario_guard_prevents_free_cooling_and_negative_demand(runtime, enabl
 
 
 def test_matched_direct_delta_and_delivered_shipping_reach_total_capital(evaluate):
-    old = evaluate(heat_transport__equipment_cost_mode=0., heat_transport__secondary_energy_mode=0.)
-    new = evaluate(heat_transport__equipment_cost_mode=1., heat_transport__secondary_energy_mode=0.)
+    old = evaluate(turbine__matched_cycle_enabled=0., heat_rejection__cooling_water_enabled=0., heat_transport__equipment_cost_mode=0., heat_transport__secondary_energy_mode=0.)
+    new = evaluate(turbine__matched_cycle_enabled=0., heat_rejection__cooling_water_enabled=0., heat_transport__equipment_cost_mode=1., heat_transport__secondary_energy_mode=0.)
     direct_change = new[P+E+'installed_total'] - old[P+'heat_transport__coolant__cost']
     # Independent reconciliation using the declared FOAK10%, indirect20% at8/6years,
     # shipping1.5%, tax1%, insurance1.5%. Other equipment and net output are matched.

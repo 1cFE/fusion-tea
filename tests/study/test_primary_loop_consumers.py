@@ -15,6 +15,8 @@ from tests.models.current_mfe_regressions import WI059_PARAMETERS, WI059_EXISTIN
 from tests.models.current_mfe_regressions import WI060_PARAMETERS, LIVE_CONDUCTOR_CHANNELS
 
 import pytest
+from tests.models.current_mfe_regressions import PARTITION_PATH, extend_cycle_fixture, ADDITIONAL_MAPPING, CURRENT_NUMERIC, assert_current_predicates
+PRIMARY_PARTITIONS={k:extend_cycle_fixture(v) for k,v in json.loads((PARTITION_PATH.parent/"primary-loop-partitions.json").read_text())["fixture_partitions"].items()}
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'exploration/stellarator_e2e/studies'))
@@ -62,12 +64,15 @@ def test_valid_full_oracle_outputs_and_heat_accounting(row):
     # WI-040: independently derive only the additive-account cost increments;
     # all frozen physics and unrelated output values retain exact comparison.
     expected, changed = wi040_expected(row)
-    assert actual.keys() == expected.keys()
-    for name, value in expected.items():
-        if name in changed:
-            assert actual[name] == pytest.approx(value, rel=1e-12, abs=1e-9), name
-        else:
-            assert actual[name] == value, name
+    part=PRIMARY_PARTITIONS[str(BEFORE['controls'].index(row))]
+    unchanged=set(part['unaffected_exact_locals']); changed_names=set(part['changed_current_equation_locals'])
+    assert set(row['outputs'])==unchanged | changed_names
+    assert set(actual)==set(row['outputs']) | set(part['added_local_names'])
+    for name in unchanged:
+        assert actual[name]==row['outputs'][name],name
+    for name in changed | changed_names:
+        value=actual['breeding_tbr_mean']-actual['fuel_tbr_required'] if name=='fuel_tbr_margin' else expected[name]
+        assert actual[name]==pytest.approx(value,rel=1e-12,abs=1e-9),name
     p = {**oracle.vs.IN, **row['overrides']}
     assert actual['loop_mdot'] * p['loop_cp'] * p['loop_dT_blanket'] == pytest.approx(actual['q_source'] * 1e6, rel=1e-12)
     assert actual['loop_mdot_loop'] * p['n_loops'] == pytest.approx(actual['loop_mdot'], rel=1e-12)
@@ -82,18 +87,13 @@ def test_valid_full_oracle_outputs_and_heat_accounting(row):
 
 
 def test_adapter_coverage_remains_exact():
-    old_inputs = renamed_keys(BEFORE['input_mapping'])
-    # WI-058 (2026-09-14): the seam maps c_coil_ref in place of the retired k_coil.
-    assert WI058_RETIRED <= old_inputs.keys()
-    old_inputs = {k: v for k, v in old_inputs.items() if k not in WI058_RETIRED}
-    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS} == old_inputs
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS
-    old_outputs = renamed_values(BEFORE['output_mapping'])
-    old_outputs['winding_pack_legacy'] = old_outputs.pop('winding_pack')
-    old_outputs['p_cryo'] = oracle.P + 'cryoplant__refrigeration_sum__total'
-    extras = WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_ORACLE_ADDED_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
-    assert {k: v for k, v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v not in extras} == old_outputs
-    assert set(oracle.ORACLE_OUTPUT_TO_CHANNEL.values()) - set(old_outputs.values()) == extras
+    assert set(oracle.ENTRY_KEY_TO_ORACLE_INPUT)==set(ADDITIONAL_MAPPING['mapped_input_keys'])
+    for key,value in ADDITIONAL_MAPPING['unchanged_input_bindings'].items():
+        assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[key]==value,key
+    expected=ADDITIONAL_MAPPING['historical_output_bindings_after_explicit_alias_translation'] | ADDITIONAL_MAPPING['added_output_bindings']
+    assert oracle.ORACLE_OUTPUT_TO_CHANNEL==expected
+    assert set(expected.values())==CURRENT_NUMERIC
+    assert len(expected)==len(set(expected.values()))
     assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[oracle.P + 'heat_transport__loop_cp'] == 'loop_cp'
     assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[oracle.P + 'heat_transport__loop_dT_blanket'] == 'loop_dT_blanket'
     with pytest.raises(oracle.OracleSeamError, match='no declared oracle mapping'):
@@ -106,11 +106,13 @@ def test_current_native_primary_route_agrees_with_independent_oracle(tmp_path, s
     points = [WI059_REPLAY | {names[key]: value for key, value in row['overrides'].items()} for row in BEFORE['controls']]
     cases, _ = route.run_points('primary-loop-consumer-controls', points, tmp_path)
     assert len(cases) == len(points)
-    for case in cases:
+    from types import SimpleNamespace
+    for case,point in zip(cases,points):
         assert case.state == 'completed', (dict(case.inputs), case.state)
         expected = oracle.evaluate(case.inputs)
-        assert len(case.outputs) == 177 + len(WI059_CHANNELS) and len(expected) == 161 + len(WI059_CHANNELS)  # WI-038 adds three grade outputs
+        assert set(case.outputs)==set(expected)==CURRENT_NUMERIC  # WI-038 adds three grade outputs
         for key, value in expected.items():
             assert case.outputs[key] == pytest.approx(value, rel=1e-9, abs=1e-9), key
-        if dict(case.inputs) == WI059_REPLAY:
-            assert {key for key, value in route.short_verdicts(case).items() if value == 'violated'} == {'divertor_heat_ok'}
+        assert_current_predicates(SimpleNamespace(outputs=case.outputs,responses=dict(case.verdicts,headline=case.headline)),point)
+        if point == WI059_REPLAY:
+            assert {key for key, value in route.short_verdicts(case).items() if value == 'violated'} == {'divertor_heat_ok','wp_fit_ok','reference_conductor_current_ok','tbr_ok'}

@@ -1,0 +1,40 @@
+EFF                                                                      [100%]
+==================================== ERRORS ====================================
+______ ERROR at setup of test_complete_native_and_direct_parity[baseline] ______
+tests/models/test_mfe_major_radius.py:141: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:478: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: native failed: /tmp/pytest-of-reid/pytest-12959/wi0510/acceptance/native.log
+=================================== FAILURES ===================================
+___________ test_operating_heat_complete_cost_operand_classification ___________
+tests/models/test_mfe_operating_heating.py:235: in test_operating_heat_complete_cost_operand_classification
+    assert results[case]['outputs'][P+channel]==pytest.approx(direct[key],rel=1e-9,abs=1e-9),(case,channel)
+E   AssertionError: ('baseline', 'buildings_cost__cost')
+E   assert 652383020.902597 == 735864235.0709801 ± 0.735864
+E     
+E     comparison failed
+E     Obtained: 652383020.902597
+E     Expected: 735864235.0709801 ± 0.735864
+____________________ test_operating_heat_reserve_invariance ____________________
+tests/models/test_mfe_operating_heating.py:160: in test_operating_heat_reserve_invariance
+    load('check_results').check(historical,inputs)
+work/active/WI-050_mfe-coherent-operating-heating/implementation/check_results.py:93: in check
+    assert len(individual)==18
+           ^^^^^^^^^^^^^^^^^^^
+E   AssertionError
+=============================== warnings summary ===============================
+tests/models/test_mfe_operating_heating.py::test_operating_heat_complete_cost_operand_classification
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_mfe_operating_heating.py::test_operating_heat_complete_cost_operand_classification
+FAILED tests/models/test_mfe_operating_heating.py::test_operating_heat_reserve_invariance
+ERROR tests/models/test_mfe_major_radius.py::test_complete_native_and_direct_parity[baseline]
+2 failed, 1 warning, 1 error in 41.61s

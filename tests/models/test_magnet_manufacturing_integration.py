@@ -1,3 +1,4 @@
+from tests.models.current_mfe_regressions import (CURRENT_PREDICATES, historical_point, assert_historical_native, assert_current_predicates, PARTITIONS)
 """WI-063 full-route accounting identities, not a design-space study."""
 import json
 from pathlib import Path
@@ -36,10 +37,9 @@ def test_native_independent_oracle_and_subtotals(evaluate, changes):
 @pytest.mark.codegen_available
 def test_zero_charge_preserves_every_entering_output_and_predicate(evaluate):
     old=json.loads(Path('work/active/WI-062_absolute-conductor-current-margin/evidence/baseline.json').read_text())
-    row=evaluate({'magnet__winding_pack__insulation_sheet_price':0.})
-    for key,value in old['outputs'].items():
-        assert row.outputs[key] == value,key
-    assert dict(row.responses)==old['responses']
+    point=historical_point({P+'magnet__winding_pack__insulation_sheet_price':0.})
+    row=evaluate({k.removeprefix(P):v for k,v in point.items()})
+    assert_historical_native('manufacturing', row, old['outputs'], old['responses'], point)
     assert output(row,'magnet__insulation_inventory__internal_volume') > 0
     assert output(row,'magnet__wp_fit__minimum_margin') < 0
     assert output(row,'magnet__conductor_current__margin_current') < 0

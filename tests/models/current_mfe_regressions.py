@@ -9,6 +9,25 @@ ROOT = Path(__file__).resolve().parents[2]
 DOMAIN_EVIDENCE = ROOT / 'work/completed/20260914_WI-038_conductor-grade-lever/evidence'
 STRUCTURE_EVIDENCE = ROOT / 'work/active/WI-057_stellaris-structural-decomposition/evidence/merge_onto_demo_maturation'
 P = 'stellarator_09__stellaris__'
+CYCLE_PARTITION_PATH = ROOT / '.project/active/aries-comparison-preparation/current-readiness/regression-evidence/cycle-migration/contract-delta.json'
+CYCLE_PARTITION = json.loads(CYCLE_PARTITION_PATH.read_text())
+WI073_PARAMETERS = set(CYCLE_PARTITION['added_parameters'])
+WI073_CHANNELS = set(CYCLE_PARTITION['added_channels'])
+WI073_PREDICATES = set(CYCLE_PARTITION['added_predicates'])
+WI073_LOCALS = set(CYCLE_PARTITION['added_locals'])
+WI073_REPLAY = CYCLE_PARTITION['historical_controls']
+WI073_REPLAY_LOCAL = CYCLE_PARTITION['historical_local_controls']
+
+
+def extend_cycle_fixture(part):
+    """Explicit additive WI-073 membership; retain every pre-existing expectation."""
+    result = dict(part)
+    if 'added_channels' in result:
+        result['added_channels'] = sorted(set(result['added_channels']) | WI073_CHANNELS)
+    if 'added_local_names' in result:
+        result['added_local_names'] = sorted(set(result['added_local_names']) | WI073_LOCALS)
+    return result
+
 # WI-040 (2026-09-13): explicit ABI additions, not whatever regeneration happens to emit.
 WI040_PARAMETERS = {P + 'magnet__coil__turn_current'} | {
     P + 'magnet__winding_pack__' + name for name in (
@@ -40,7 +59,7 @@ WI038_CHANNELS = {P + 'magnet__conductor_grade__' + name for name in (
 K_COIL_RETIRED = 1.968503937007874  # the retired WI-036 k_coil (25.0 / 12.7), the float the old oracle carried
 WI058_PARAMETERS = {P + 'magnet__coil__c_coil_ref'}
 WI058_RETIRED = {P + 'magnet__coil__k_coil'}
-RECEIPT_EVIDENCE = ROOT / 'work/active/WI-071_shared-fabrication-rate-for-estimate-uncertainty/evidence'
+RECEIPT_EVIDENCE = ROOT / 'work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence'
 # WI-069 reviewed ABI: thirteen controls replace the held I_total input.
 WI069_PARAMETERS = {P + 'fuel_cycle__' + name for name in (
     'held_inventory', 'inventory_enabled', 'm_D_kg', 'reserve_fraction',
@@ -48,8 +67,8 @@ WI069_PARAMETERS = {P + 'fuel_cycle__' + name for name in (
     'tau_buffer', 'tau_extract', 'tau_feed', 'tau_process', 'tau_reserve')}
 WI069_RETIRED = {P + 'fuel_cycle__I_total'}
 WI068_PARAMETERS = {P + 'buildings__' + name for name in ('facilities_enabled', 'facilities_cost_mode', 'facilities_capacity_mode', 'sector_count', 'sector_bays', 'sector_service_teams', 'exterior_allowance', 'sector_route_clearance', 'sector_headroom', 'component_width', 'component_height', 'component_length', 'component_handling_margin', 'component_material_fraction', 'divertor_packages_per_sector', 'waste_package_yield', 'component_remove_days', 'component_install_days', 'sector_clean_days', 'sector_test_days', 'sector_split_days', 'sector_join_days', 'sector_transport_days', 'cooldown_days', 'recommission_days', 'initial_receipt_lead_days', 'component_receipt_lead_days', 'component_prepare_days', 'component_process_days', 'component_hold_days', 'clean_positions', 'dirty_buffer_positions', 'dirty_store_positions', 'cooling_initial_receipt_lead_days', 'cooling_receipt_lead_days', 'cooling_hold_days', 'cooling_prepare_stations', 'cooling_machine_stations', 'cooling_bundle_stations', 'cooling_prepare_machine_days', 'cooling_prepare_bundle_days', 'cooling_machine_process_days', 'cooling_bundle_process_days', 'cooling_field_cycle_days', 'cooling_internal_move_days', 'cooling_clean_helium_positions', 'cooling_clean_salt_positions', 'cooling_clean_bundle_positions', 'cooling_dirty_helium_positions', 'cooling_dirty_salt_positions', 'cooling_dirty_bundle_positions', 'helium_package_length', 'helium_package_width', 'helium_package_height', 'salt_package_length', 'salt_package_width', 'salt_package_height', 'hx_end_allowance', 'cooling_package_margin', 'cooling_aisle_width', 'cooling_cross_width', 'cooling_headroom', 'cooling_airlock_length', 'nuclear_wall', 'nuclear_floor', 'nuclear_roof', 'nuclear_rebar_density', 'conventional_wall', 'conventional_floor', 'conventional_roof', 'conventional_rebar_density', 'building_separation', 'external_access_width', 'provisional_envelope_scale', 'administration_occupants', 'control_occupants', 'security_occupants', 'administration_area_per_person', 'control_area_per_person', 'security_area_per_person', 'occupancy_circulation_factor', 'occupancy_height', 'occupancy_aspect_ratio', 'heat_rejection_length', 'heat_rejection_width', 'turbine_length', 'turbine_width', 'turbine_height', 'cryo_coldbox_length', 'cryo_coldbox_width', 'cryo_coldbox_height', 'cryo_compressors_length', 'cryo_compressors_width', 'cryo_compressors_height', 'fuel_length', 'fuel_width', 'fuel_height', 'reactor_aux_length', 'reactor_aux_width', 'reactor_aux_height', 'power_supply_length', 'power_supply_width', 'power_supply_height', 'onsite_ac_length', 'onsite_ac_width', 'onsite_ac_height', 'service_water_length', 'service_water_width', 'service_water_height', 'conventional_shop_length', 'conventional_shop_width', 'conventional_shop_height', 'site_services_length', 'site_services_width', 'site_services_height', 'sub_concrete_rate', 'sub_formwork_rate', 'sub_rebar_rate', 'super_concrete_rate', 'super_formwork_rate', 'super_rebar_rate', 'civil_cpi_ratio', 'civil_rate_multiplier', 'tonne_interpretation_kg', 'ventilation_coefficient', 'ventilation_exponent', 'ventilation_cpi_ratio', 'land_rate_per_acre', 'retained_site_improvements')}
-WI068_REPLAY = {P + 'fuel_cycle__processing_enabled': False, P + 'buildings__facilities_enabled': False, P + 'buildings__facilities_cost_mode': 0., P + 'buildings__facilities_capacity_mode': 0.}
-WI068_REPLAY_LOCAL = dict(processing_enabled=False, facilities_enabled=False, facilities_cost_mode=0., facilities_capacity_mode=0.)
+WI068_REPLAY = WI073_REPLAY | {P + 'fuel_cycle__inventory_enabled': False, P + 'fuel_cycle__held_inventory': 0.0, P + 'fuel_cycle__processing_enabled': False, P + 'buildings__facilities_enabled': False, P + 'buildings__facilities_cost_mode': 0., P + 'buildings__facilities_capacity_mode': 0.}
+WI068_REPLAY_LOCAL = WI073_REPLAY_LOCAL | dict(inventory_inventory_enabled=False, inventory_held_inventory=0., processing_enabled=False, facility_facilities_enabled=False, facility_facilities_cost_mode=0., facility_facilities_capacity_mode=0.)
 WI067_PARAMETERS = {P + 'heat_transport__' + name for name in (
     'equipment_enabled', 'equipment_cost_mode', 'secondary_energy_mode',
     'equipment_layout_multiplier', 'equipment_tube_wall', 'equipment_shell_wall',
@@ -141,7 +160,7 @@ WI059_REPLAY_LOCAL = WI067_REPLAY_LOCAL | WI063_REPLAY_LOCAL | dict(cryo_invento
 
 
 def wi059_replay(overrides):
-    return WI059_REPLAY_LOCAL | dict(overrides)
+    return oracle_local_overrides(WI059_REPLAY) | dict(overrides)
 
 
 def wi059_dormant_outputs(expected, parameters):
@@ -274,6 +293,7 @@ def alias_both_spellings(mapping, backward):
 def structure_modules(forward):
     """Old calc-module suffix -> its suffix under the owning part ('geom' -> 'plasma__geom')."""
     P = 'stellarator_09__stellaris__'
+
     modules = {}
     for old, new in forward.items():
         if old != new and old.startswith(P) and new.startswith(P) and '__' in old[len(P):]:
@@ -294,6 +314,7 @@ def translate_frozen_radius_evidence(historical, destination, forward):
     Constraint ids, parameter groups and every value are unchanged by the decomposition; only the names
     of the entry points and channels moved."""
     P = 'stellarator_09__stellaris__'
+
     modules = structure_modules(forward)
     stem = lambda k: forward.get(P + k, P + k)[len(P):]
     out = destination / 'frozen-translated'
@@ -311,7 +332,7 @@ def translate_frozen_radius_evidence(historical, destination, forward):
     # holds under the scaled reference the replays bind at R14.
     expectations['edges'].pop(modules.get('coil_length', 'coil_length'))
     expectations['contract_delta']['remove'] = sorted(
-        expectations['contract_delta']['remove'] + [['stellarator_plant_params', k] for k in sorted(WI058_RETIRED | WI066_RETIRED)])
+        expectations['contract_delta']['remove'] + [['stellarator_plant_params', k] for k in sorted(ALL_RETIRED_PARAMETERS)])
     # Refuse a translation the live package cannot honour: every translated name must resolve.
     live = json.loads((ROOT / 'exploration/stellarator_e2e/generated/contracts/model_contract.json').read_text())
     live_params = {x['qualified_name'] for x in live['parameters']}; live_channels = {x['channel_name'] for x in live['outputs']}
@@ -379,17 +400,20 @@ def replace_once(text, old, new):
 
 
 def pre_fit_report(report, reference):
-    """Project the two explicit added checks out of historical eighteen-check comparisons."""
+    """Project ten explicit added checks out of historical eighteen-check comparisons."""
     import copy
     result = copy.deepcopy(report)
-    added = [r for r in result['results'] if r['constraint_id'] in {WI061_PREDICATE, WI062_PREDICATE}]
-    assert len(added) == 2 and result['assessed_entry_count'] == reference['assessed_entry_count'] + 2
-    result['results'] = [r for r in result['results'] if r['constraint_id'] not in {WI061_PREDICATE, WI062_PREDICATE}]
-    result['assessed_entry_count'] -= 2
+    excluded = {WI061_PREDICATE, WI062_PREDICATE} | FACILITY_PREDICATES | WI073_PREDICATES
+    assert {r['constraint_id'] for r in result['results']} == CURRENT_PREDICATES
+    added = [r for r in result['results'] if r['constraint_id'] in excluded]
+    assert len(added) == len(excluded)
+    assert result['assessed_entry_count'] == reference['assessed_entry_count'] + len(excluded)
+    result['results'] = [r for r in result['results'] if r['constraint_id'] not in excluded]
+    result['assessed_entry_count'] -= len(excluded)
     for key in ('authored_usage_total', 'applicable_gate_total', 'assessed_gate_count'):
-        assert result['coverage'][key] == reference['coverage'][key] + 2
-        result['coverage'][key] -= 2
-    # Catalog identity necessarily differs when its two added entries are projected out.
+        assert result['coverage'][key] == reference['coverage'][key] + len(excluded)
+        result['coverage'][key] -= len(excluded)
+    # Catalog identity necessarily differs when its ten added entries are projected out.
     result['catalog_fingerprint'] = reference['catalog_fingerprint']
     return result
 
@@ -410,6 +434,7 @@ def radius_acceptance(destination, historical):
     # differ by roundoff. This is a bounded tolerance, never omission of these comparisons.
     finance |= restate_wi040_radius_costs(translated)
     finance |= restate_wi066_breeding(translated)
+    finance |= restate_current_radius_additions(translated)
     for name in ('native', 'direct', 'standalone', 'cli_checks'):
         text = (historical / (name + '.py')).read_text()
         if "Path(__file__).resolve().parent.parent/'prototype'" in text:
@@ -421,17 +446,17 @@ def radius_acceptance(destination, historical):
             text = replace_once(text, 'bridge.build(change)', f'bridge.build({WI059_REPLAY!r} | change)')
             text = replace_once(text, "'entering-package/contracts/model_contract.json'", repr(str(translated / 'entering-package/contracts/model_contract.json')))
             text = replace_once(text, "delta['added']==[]",
-                                f"{{x[1] for x in delta['added']}}=={WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI064_PARAMETERS | WI065_PARAMETERS!r}")
+                                f"{{x[1] for x in delta['added']}}=={ALL_ADDED_PARAMETERS!r}")
             # WI-058: evaluate R14 at the R-form's length (see K_COIL_RETIRED) so the frozen row stays exact.
             text = replace_once(text, "('R14',{P+'plasma__R':14.0})",
                                 f"('R14',{{P+'plasma__R':14.0,P+'magnet__coil__c_coil_ref':{K_COIL_RETIRED * 14.0!r}}})")
         if name in ('native', 'direct'):
-            text = 'from tests.models.current_mfe_regressions import pre_fit_report\n' + text
+            text = 'from tests.models.current_mfe_regressions import pre_fit_report, WI061_PREDICATE, WI062_PREDICATE, FACILITY_PREDICATES, WI073_PREDICATES, patch_historical_input_files\n' + text
         if name == 'native':
-            text = replace_once(text, "assert a['responses']==b['responses']", "assert {k:v for k,v in a['responses'].items() if 'wp_fit_ok' not in k and 'reference_conductor_current_ok' not in k}==b['responses']")
+            text = replace_once(text, "assert a['responses']==b['responses']", "assert {k:v for k,v in a['responses'].items() if k not in ({WI061_PREDICATE, WI062_PREDICATE} | FACILITY_PREDICATES | WI073_PREDICATES)}==b['responses']")
             text = text.replace("a['report']==b['report']", "pre_fit_report(a['report'], b['report'])==b['report']")
         if name == 'direct':
-            text = replace_once(text, "assert set(raw)==set(expected)", "assert set(raw)-{k for k in raw if 'wp_fit_ok' in k or 'reference_conductor_current_ok' in k}==set(expected)\n        raw['constraint_report'] = pre_fit_report(raw['constraint_report'], expected['constraint_report'])")
+            text = replace_once(text, "assert set(raw)==set(expected)", "assert set(raw)-{cid+'__evaluation' for cid in ({WI061_PREDICATE, WI062_PREDICATE} | FACILITY_PREDICATES | WI073_PREDICATES)}==set(expected)\n        raw['constraint_report'] = pre_fit_report(raw['constraint_report'], expected['constraint_report'])")
         if name == 'standalone':
             # WI-058: the winding length no longer takes R0 -- its R0-only check leaves the replay (its bore
             # response is tested in test_winding_length_bore.py); the other three magnet calcs keep theirs.
@@ -449,7 +474,7 @@ def radius_acceptance(destination, historical):
                 "        domain = 'reference' if name.startswith('reference') else 'live'\n"
                 "        assert domain + ' clearance' in component[name]['message']")
         if name == 'direct':
-            text = replace_once(text, 'values.update(change)', f'values.update({WI059_REPLAY!r} | change)')
+            text = replace_once(text, "f=scratch/'inputs/stellarator_plant_params.json'; values=json.loads(f.read_text()); values.update(change); f.write_text(json.dumps(values))", f"patch_historical_input_files(scratch/'inputs', {WI059_REPLAY!r} | change)")
             # WI-058: evaluate R14 at the R-form's length (see K_COIL_RETIRED) so the frozen row stays exact.
             text = replace_once(text, "'R14':{P+'plasma__R':14.0,",
                                 f"'R14':{{P+'plasma__R':14.0,P+'magnet__coil__c_coil_ref':{K_COIL_RETIRED * 14.0!r},")
@@ -468,6 +493,17 @@ def radius_acceptance(destination, historical):
             text = replace_once(text,
                 "classes=['SustainmentError','ZeroDivisionError','SustainmentError','ZeroDivisionError','TypeError']",
                 "classes=['SustainmentError','SustainmentError','SustainmentError','ZeroDivisionError','TypeError']")
+        if name == 'cli_checks':
+            text = replace_once(text, "    assert r.returncode==(1 if args else 0)", """    if not args:
+        assert r.returncode == 1
+        assert 'assessed_entry_count 28 != 20' in r.stderr
+        assert r.stdout.count('*** DEVIATION') == 8
+        for anchor in ('total capital $', 'LCOE $/MWh', 'p_net MW', 'q_eng', 'rec_frac', 'magnet %', 'CAS70 $/yr', 'CAS80 $/yr', 'lcoe_1cfe $/MWh (comparison)'):
+            assert anchor in r.stdout, anchor
+        rows[-1]['compatibility'] = 'unsupported historical nine-anchor/twenty-predicate calibration'
+    else:
+        assert r.returncode == 1""")
+            text = replace_once(text, "print('PASS actual CLI baseline and exact old-key alone/equal/conflicting/zero refusal')", "print('KNOWN INCOMPATIBILITY historical CLI baseline; PASS actual CLI old-key alone/equal/conflicting/zero refusal')")
         driver = drivers / (name + '.py')
         driver.write_text(text)
         command = [str(ROOT / '.codex-test/run'), 'bash', '-c',
@@ -485,3 +521,173 @@ WI070_CHANNELS = {P + "fuel_cycle__processing_cost__" + key for key in ['flow_kg
 
 # WI-071 one shared source-rate entry; no added output producer.
 WI071_PARAMETERS = {P + 'heat_transport__equipment_stainless_fabrication_usd2017_per_kg'}
+
+
+# Reviewed 2026-09-19 exact partitions: names/provenance only, never output snapshots.
+PARTITION_PATH = ROOT / '.project/active/aries-comparison-preparation/current-readiness/regression-evidence/partitions.json'
+PARTITIONS = json.loads(PARTITION_PATH.read_text())
+# The Round 1 fixture remains immutable; the reviewed additive ledger is applied in memory.
+PARTITIONS['fixture_partitions'] = {k: extend_cycle_fixture(v) for k,v in PARTITIONS['fixture_partitions'].items()}
+for key in ('current_numeric_channels', 'current_structured_channels', 'current_predicates'):
+    PARTITIONS[key] = CYCLE_PARTITION[key]
+CURRENT_NUMERIC = frozenset(PARTITIONS['current_numeric_channels'])
+CURRENT_STRUCTURED = frozenset(PARTITIONS['current_structured_channels'])
+CURRENT_PREDICATES = frozenset(PARTITIONS['current_predicates'])
+FACILITY_PREDICATES = frozenset(PARTITIONS['added_predicates']['WI-068'])
+POST_WI065_REPLAY = PARTITIONS['post_WI065_historical_controls'] | WI073_REPLAY
+CURRENT_ADDITIONS = WI073_CHANNELS | set().union(*(set(PARTITIONS['groups'][name]['channels']) for name in ('WI-066','WI-067','WI-068','WI-069','WI-070')))
+
+
+def historical_point(changes=None):
+    return POST_WI065_REPLAY | dict(changes or {})
+
+
+def oracle_local_overrides(point):
+    import sys
+    for directory in (ROOT / "exploration/stellarator_e2e", ROOT / "exploration/stellarator_e2e/studies"):
+        if str(directory) not in sys.path:
+            sys.path.insert(0, str(directory))
+    import oracle_entry
+    return oracle_entry._oracle_overrides(point)
+
+
+def assert_current_predicates(row, point, expected=None):
+    """All current predicates use exact operators on current independent/native operands."""
+    import oracle_entry
+    import study_route
+    from scripts.study.verify import derive_verdict, package_input_values
+    params = package_input_values(study_route.PACKAGE_DIR)
+    catalog = study_route._catalog_by_constraint_id(study_route.PACKAGE_DIR)
+    assert set(catalog) == CURRENT_PREDICATES
+    if expected is None:
+        expected = oracle_entry.evaluate(point)
+    bindings = oracle_entry.operand_bindings()
+    for values in (row.outputs, expected):
+        verdicts = {cid: 'satisfied' if derive_verdict(cid, entry, bindings, point, params, values)[0] else 'violated'
+                    for cid, entry in catalog.items()}
+        actual = {cid: row.responses[cid] for cid in CURRENT_PREDICATES}
+        assert verdicts == actual
+    assert set(row.responses) == CURRENT_PREDICATES | {'headline'}
+    assert row.responses['headline'] == ('satisfied' if all(v == 'satisfied' for v in actual.values()) else 'violated')
+
+
+def assert_historical_native(name, row, old_outputs, old_responses, point):
+    """Retain every unaffected native value; independently verify changed/new values."""
+    import math
+    import oracle_entry
+    part = PARTITIONS['fixture_partitions'][name]
+    unchanged = set(part['unaffected_exact_channels'])
+    changed = set(part['changed_current_equation_channels'])
+    added = set(part['added_channels'])
+    assert not unchanged & changed
+    assert set(old_outputs) == unchanged | changed
+    assert set(row.outputs) == CURRENT_NUMERIC == set(old_outputs) | added
+    for key in unchanged:
+        assert row.outputs[key] == old_outputs[key], (name, key, row.outputs[key], old_outputs[key])
+    expected = oracle_entry.evaluate(point)
+    assert changed | added <= expected.keys()
+    for key in expected:
+        assert math.isclose(row.outputs[key], expected[key], rel_tol=1e-9, abs_tol=1e-9), (name,key,row.outputs[key],expected[key])
+    for key, value in (old_responses or {}).items():
+        if key != WI066_PREDICATE and key != 'headline':
+            assert row.responses[key] == value, (name,key)
+    assert_current_predicates(row, point)
+
+
+# WI-072 exposes existing independent quantities without changing native outputs.
+WI072_LOCALS = {'coverage_' + name for name in (
+    'annual_total','cas70','cas71_crf','cas71_levelized','cas80_crf','cas80_levelized',
+    'cooling_cost_mode','cooling_energy_mode','cooling_consumables','cooling_replacements',
+    'cooling_shipping','coil_length','wp_side','cold_volume','blanket_volume','outer_radius',
+    'coil_inner_radius','shield_volume','structure_volume','vessel_volume','wall_area','replacement_event')}
+PROFILE_MAPPED = {P+'plasma__'+key for key in ('alpha_n','alpha_T','f_shape')}
+ALL_ADDED_PARAMETERS = (WI038_PARAMETERS | WI040_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS |
+    WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS |
+    WI063_PARAMETERS | WI064_PARAMETERS | WI065_PARAMETERS | WI067_PARAMETERS | WI068_PARAMETERS |
+    WI069_PARAMETERS | WI070_PARAMETERS | WI071_PARAMETERS | WI073_PARAMETERS)
+ALL_RETIRED_PARAMETERS = WI058_RETIRED | WI066_RETIRED | WI069_RETIRED
+_entering_contract = json.loads((STRUCTURE_EVIDENCE/'contract_before.json').read_text())
+_forward, _ = structure_ledger()
+CURRENT_PARAMETERS = ({_forward.get(x['qualified_name'], x['qualified_name']) for x in _entering_contract['parameters']}
+                      - ALL_RETIRED_PARAMETERS) | ALL_ADDED_PARAMETERS
+
+
+def assert_local_partition(name, actual, historical):
+    """Exact local membership and unchanged values; alias/changed equations checked separately."""
+    import math
+    part = PARTITIONS['fixture_partitions'][name]
+    changed=set(part['changed_current_equation_locals']); unchanged=set(part['unaffected_exact_locals'])
+    assert set(historical) == changed | unchanged
+    assert set(actual) == (set(historical) - {'conductor_cost_per_kAm_effective'}) | set(part['added_local_names']) | WI072_LOCALS | WI073_LOCALS
+    for key in unchanged:
+        if name == 'coil-thermal-local-0':
+            import pytest
+            assert actual[key] == pytest.approx(historical[key],rel=1e-12,abs=1e-12), (name,key,actual[key],historical[key])
+        else:
+            assert actual[key] == historical[key], (name,key,actual[key],historical[key])
+    for alias, canonical in PARTITIONS['local_alias_equalities'].items():
+        assert actual[alias] == actual[canonical]
+    return changed
+
+
+def restate_current_radius_additions(translated):
+    """Only reviewed changed/new names receive independent current expectations."""
+    import oracle_entry
+    frozen=json.loads((translated/'frozen-results.json').read_text())
+    direct=json.loads((translated/'direct-entering.json').read_text())
+    replaced=set()
+    for name,ref,change in [('baseline','baseline',{}),('R14','tied_R14',{P+'plasma__R':14.,P+'magnet__coil__c_coil_ref':K_COIL_RETIRED*14.})]:
+        part=PARTITIONS['fixture_partitions']['radius-'+ref]
+        keys=set(part['added_channels']) | set(part['changed_current_equation_channels'])
+        independent=oracle_entry.evaluate(WI059_REPLAY | change)
+        assert keys <= independent.keys()
+        replacements={key:independent[key] for key in keys}
+        frozen['cases'][ref]['native']['outputs'].update(replacements)
+        direct['results'][name]['single']['outputs'].update(replacements)
+        replaced |= keys
+    (translated/'frozen-results.json').write_text(json.dumps(frozen,indent=2)+'\n')
+    (translated/'direct-entering.json').write_text(json.dumps(direct,indent=2)+'\n')
+    path=translated/'expectations.json'; expected=json.loads(path.read_text())
+    assert set(expected['channels']) | replaced == CURRENT_NUMERIC
+    expected['channels']=sorted(CURRENT_NUMERIC)
+    path.write_text(json.dumps(expected,indent=2)+'\n')
+    return replaced
+
+# WI-066 geometry/breeding and existing finance inputs newly admitted by the oracle.
+LATER_MAPPED_EXISTING = {P+key:local for key,local in {
+    'blanket__blanket_t':'blanket_t', 'blanket__first_wall__firstwall_t':'firstwall_t',
+    'blanket__first_wall__fluence_limit':'fluence_limit', 'blanket__first_wall__vacuum_t':'vacuum_t',
+    'blanket__reflector_t':'reflector_t', 'contingency_rate':'contingency_rate',
+    'plasma__kappa':'kappa', 'shield__ht_shield_t':'ht_shield_t', 'structure__structure_t':'structure_t',
+    'tbr_floor':'tbr_floor', 'vessel__gap1_t':'gap1_t', 'vessel__vessel_t':'vessel_t',
+}.items()}
+
+
+def patch_historical_input_files(directory, changes):
+    """Temporary replay copies: resolve each override's actual declared group."""
+    files={p:json.loads(p.read_text()) for p in Path(directory).glob('*.json')}
+    for key,value in changes.items():
+        owners=[path for path,data in files.items() if key in data]
+        if not owners:
+            # Historical retired-key probes deliberately exercise schema refusal.
+            owners=[Path(directory)/'stellarator_plant_params.json']
+        assert len(owners)==1,(key,owners)
+        files[owners[0]][key]=value
+    for path,data in files.items():
+        path.write_text(json.dumps(data)+'\n')
+
+# Additional consumer partitions independently reviewed after the complete scope run.
+ADDITIONAL_DOMAIN = {k: extend_cycle_fixture(v) for k,v in json.loads((PARTITION_PATH.parent / 'additional-domain-partitions.json').read_text())['fixture_partitions'].items()}
+ADDITIONAL_MAPPING = json.loads((PARTITION_PATH.parent / 'additional-domain-mapping-ledger.json').read_text())
+ADDITIONAL_MAPPING['mapped_input_keys'] = sorted(set(ADDITIONAL_MAPPING['mapped_input_keys']) | WI073_PARAMETERS)
+ADDITIONAL_MAPPING['added_input_keys'] = sorted(set(ADDITIONAL_MAPPING['added_input_keys']) | WI073_PARAMETERS)
+ADDITIONAL_MAPPING['unchanged_input_bindings'].update(CYCLE_PARTITION['added_input_bindings'])
+ADDITIONAL_MAPPING['added_output_bindings'].update(CYCLE_PARTITION['added_locals'])
+ADDITIONAL_MAPPING['mapped_numeric_channels'] = sorted(CURRENT_NUMERIC)
+ADDITIONAL_MAPPING['numeric_channel_count'] = len(CURRENT_NUMERIC)
+FINANCE_DEPENDENCIES = json.loads((PARTITION_PATH.parent / 'additional-financial-dependencies.json').read_text())
+FINANCE_DEPENDENCIES['unchanged_channels'] = sorted(set(FINANCE_DEPENDENCIES['unchanged_channels']) | set(CYCLE_PARTITION['new_rate_invariant_channels']))
+LEGACY_COOLING_FACILITIES = WI073_REPLAY | {P + key: value for key, value in {
+    'heat_transport__equipment_enabled': False, 'heat_transport__equipment_cost_mode': 0.0,
+    'heat_transport__secondary_energy_mode': 0.0, 'buildings__facilities_enabled': False,
+    'buildings__facilities_cost_mode': 0.0, 'buildings__facilities_capacity_mode': 0.0}.items()}

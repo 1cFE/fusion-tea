@@ -1,3 +1,4 @@
+from pathlib import Path
 """The output, manifest, and digest recipes as a fixed seam.
 
 Covers the recipes and the strict manifest validator (Phase 1), the real manifest
@@ -33,7 +34,7 @@ def test_fingerprint_read_set_is_the_three_legs(real_package_path):
     files = [f["path"] for f in manifest.indicator_input_fingerprint(real_package_path)["files"]]
     assert "pipelines/pipeline.yaml" in files
     assert "contracts/model_contract.json" in files
-    assert sum(1 for p in files if p.startswith("inputs/")) == 10  # WI-059 adds the magnet-cost input group.
+    assert {p for p in files if p.startswith('inputs/')} == set(json.loads((Path(__file__).resolve().parents[2]/'.project/active/aries-comparison-preparation/current-readiness/regression-evidence/input-read-set-ledger.json').read_text())['current_inputs'])  # WI-059 adds the magnet-cost input group.
     assert "inputs/mfe_magnet_cost_params.json" in files
     assert all(
         p.startswith(("pipelines/", "inputs/")) or p == "contracts/model_contract.json"

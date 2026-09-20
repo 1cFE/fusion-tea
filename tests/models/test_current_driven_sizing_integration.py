@@ -1,3 +1,4 @@
+from tests.models.current_mfe_regressions import (CURRENT_PREDICATES, historical_point, assert_historical_native, assert_current_predicates, PARTITIONS)
 """WI-064 independent inversion and full-route inventory/field/cost closure."""
 import json
 import math
@@ -35,10 +36,9 @@ def test_native_oracle_agreement(evaluate, changes):
 @pytest.mark.codegen_available
 def test_every_entering_native_output_and_predicate_preserved(evaluate):
     before = json.loads(Path('work/orchestration/goals/joint-magnet-sizing-feasibility/evidence/entering/native-reference.json').read_text())
-    row = evaluate()
-    for key,value in before['outputs'].items():
-        assert row.outputs[key] == value, key
-    assert dict(row.responses) == before['responses']
+    point = historical_point()
+    row = evaluate({k.removeprefix(P):v for k,v in point.items()})
+    assert_historical_native('current-sizing', row, before['outputs'], before['responses'], point)
 
 
 @pytest.mark.codegen_available

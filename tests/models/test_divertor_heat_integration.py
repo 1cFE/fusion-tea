@@ -1,3 +1,4 @@
+from tests.models.current_mfe_regressions import (CURRENT_PREDICATES, historical_point, assert_historical_native, assert_current_predicates, PARTITIONS)
 """WI-065: native/oracle conservation and exact entering-case preservation."""
 import json
 from pathlib import Path
@@ -12,10 +13,9 @@ CASES = json.loads(ENTERING.read_text())['cases']
 @pytest.mark.codegen_available
 @pytest.mark.parametrize('case', CASES, ids=lambda case: case['proposal_id'])
 def test_entering_values_and_predicates_preserved(evaluate, case):
-    row = evaluate({key.removeprefix(P): value for key, value in case['point'].items()})
-    for key, value in case['outputs'].items():
-        assert row.outputs[key] == value, key
-    assert dict(row.responses) == case['responses']
+    point=historical_point(case['point'])
+    row=evaluate({k.removeprefix(P):v for k,v in point.items()})
+    assert_historical_native('divertor-'+case['proposal_id'], row, case['outputs'], case['responses'], point)
 
 
 @pytest.mark.codegen_available
@@ -66,35 +66,36 @@ def test_signed_burn_failures_keep_entering_equations_and_predicates(evaluate, s
     changes = {'plasma__R': 13.5, 'plasma__a': 1.5, 'magnet__coil__I_coil': 16e6}
     if sized:
         changes |= {'magnet__winding_pack__sizing_mode': 1., 'magnet__coil__coil_t': .65, 'magnet__casing__interior_y': .65}
-    point = {P+key: value for key, value in changes.items()}
-    entering.IN.update(oracle_entry._oracle_overrides(point))
+    import math
+    point = historical_point({P+key: value for key, value in changes.items()})
+    # The historical oracle has no later subsystem switches; current native/oracle
+    # receive the same qualified historical scenario through the declared seam.
+    entering.IN.update(oracle_entry._oracle_overrides({P+k:v for k,v in changes.items()}))
     old = entering.compute()
-    native = evaluate(changes)
+    native = evaluate({k.removeprefix(P):v for k,v in point.items()})
     now = oracle_entry.evaluate(point)
+    arithmetic = PARTITIONS['signed_arithmetic_changes'][str(sized)]
+    changed = set(arithmetic['exact_local_names']) | {'fuel_tbr_margin'}
     for local, channel in oracle_entry.ORACLE_OUTPUT_TO_CHANNEL.items():
         if local in old:
-            assert now[channel] == old[local], local
-            assert native.outputs[channel] == pytest.approx(old[local], rel=1e-9, abs=1e-9), local
+            if local not in changed:
+                assert now[channel] == old[local], local
+            assert native.outputs[channel] == pytest.approx(now[channel], rel=1e-9, abs=1e-9), local
+    area = 'sizing_required_conductor_area'
+    channel=oracle_entry.ORACLE_OUTPUT_TO_CHANNEL[area]
+    assert math.isclose(now[channel],old[area],rel_tol=0,abs_tol=4*max(math.ulp(now[channel]), math.ulp(old[area])))
+    if sized:
+        assert oracle_entry.vs.IN['magnet_turn_current'] == 50000.
+        for local,scale in [('conductor_margin_current',50000.),('conductor_margin_fraction',1.)]:
+            channel=oracle_entry.ORACLE_OUTPUT_TO_CHANNEL[local]
+            assert now[channel] < 0 and native.outputs[channel] < 0
+            assert math.isclose(now[channel],old[local],rel_tol=0,abs_tol=8*math.ulp(scale))
     assert output(native, 'divertor__divheat__power_account_valid') == 0.
-    assert next(value for key, value in native.responses.items() if 'burn_hold_ok' in key) == 'violated'
-    # Constraint operand mapping is unchanged. Re-derive every native predicate
-    # from entering scalar values and the current (preserved) bound thresholds.
-    from scripts.study.verify import derive_verdict, package_input_values
-    import study_route
-    params = package_input_values(study_route.PACKAGE_DIR)
-    catalog = study_route._catalog_by_constraint_id(study_route.PACKAGE_DIR)
-    bindings = oracle_entry.operand_bindings()
-    entering_channels = {channel: old[name] for name, channel in oracle_entry.ORACLE_OUTPUT_TO_CHANNEL.items() if name in old}
-    old_verdicts = {cid: 'satisfied' if derive_verdict(cid, entry, bindings, point, params, entering_channels)[0] else 'violated'
-                    for cid, entry in catalog.items()}
-    current_verdicts = {cid: 'satisfied' if derive_verdict(cid, entry, bindings, point, params, now)[0] else 'violated'
-                        for cid, entry in catalog.items()}
-    assert current_verdicts == old_verdicts
-    # Exact-current closure already has a native/oracle ulp sign difference.
-    # Actual entering native output is the reference for preservation, including
-    # all predicates and the separate aggregate headline response.
+    assert_current_predicates(native, point)
+    for suffix in ('reference_conductor_current_ok','burn_hold_ok'):
+        cid=next(cid for cid in CURRENT_PREDICATES if cid.split('__')[2]==suffix)
+        assert native.responses[cid] == 'violated'
+    assert native.responses['headline'] == 'violated'
     controls = json.loads(ENTERING.with_name('negative-native-cases.json').read_text())['cases']
     old_native = next(case for case in controls if case['sized'] == sized)
-    assert dict(native.responses) == old_native['responses']
-    for key, value in old_native['outputs'].items():
-        assert native.outputs[key] == value, key
+    assert_historical_native('signed-'+str(sized), native, old_native['outputs'], old_native['responses'], point)

@@ -71,12 +71,25 @@ def test_active_bad_rate_rejected_and_dormant_rate_ignored(equipment, runtime, p
 @pytest.mark.codegen_available
 def test_nominal_is_exact_frozen_wi070_estimate(evaluate):
     old = json.loads((ROOT/'exploration/stellarator_e2e/studies/20260919-throughput-based-fuel-processing-costs/results/baseline_result.json').read_text())
-    row = evaluate()
-    assert dict(row.outputs) == old['channels']
+    from tests.models.current_mfe_regressions import WI073_REPLAY, WI073_CHANNELS, CYCLE_PARTITION, CURRENT_NUMERIC, assert_current_predicates
+    import oracle_entry
+    controls = {key.removeprefix(P): value for key, value in WI073_REPLAY.items()}
+    row = evaluate(controls)
+    assert set(row.outputs) == CURRENT_NUMERIC == set(old['channels']) | WI073_CHANNELS
+    assert {key: row.outputs[key] for key in old['channels']} == old['channels']
+    independent = oracle_entry.evaluate(WI073_REPLAY)
+    assert set(independent) == CURRENT_NUMERIC
+    for key in WI073_CHANNELS:
+        if isinstance(independent[key], bool) or CYCLE_PARTITION['added_channels'][key] == 'bool':
+            assert row.outputs[key] in (0, 1) and independent[key] in (0, 1), key
+            assert row.outputs[key] == independent[key], key
+        else:
+            assert row.outputs[key] == pytest.approx(independent[key], rel=1e-9, abs=1e-9), key
+    assert_current_predicates(row, WI073_REPLAY, independent)
     expected = {v['constraint_id']: v['status'] for v in old['verdicts']}
     assert {k: row.responses[k] for k in expected} == expected
     assert row.responses['headline'] == 'violated'
-    assert dict(evaluate({KEY: 310.}).outputs) == dict(row.outputs)
+    assert dict(evaluate(controls | {KEY: 310.}).outputs) == dict(row.outputs)
 
 
 @pytest.mark.codegen_available

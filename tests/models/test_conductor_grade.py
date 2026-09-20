@@ -1,3 +1,4 @@
+from tests.models.current_mfe_regressions import (CURRENT_PREDICATES, historical_point, assert_historical_native, assert_current_predicates, PARTITIONS)
 """WI-038 conditional field-envelope identities, distinct demand, and deliberate domains.
 
 These are arithmetic/accounting tests, not qualification of the extrapolated REBCO law.
@@ -124,15 +125,11 @@ def test_reference_preserves_audited_wi040_physics_and_verdicts(evaluate):
     assert len(baseline["channels"]) == 174
     assert len(baseline["verdicts"]) == 18
     row = evaluate({key.removeprefix(P): value for key, value in WI059_REPLAY.items()})
-    # WI-060 intentionally changes tape procurement and its declared cost descendants.
-    import oracle_entry
-    from tests.models.current_mfe_regressions import WI040_CHANGED_ECONOMICS
-    changed = {oracle_entry.ORACLE_OUTPUT_TO_CHANNEL[key] for key in WI040_CHANGED_ECONOMICS}
-    changed |= {P + 'magnet__winding_procurement__' + suffix for suffix in ('cost', 'tape_cost')}
-    retained = {key: value for key, value in baseline['channels'].items() if key not in changed}
-    assert len(retained) > 150
-    assert {key: row.outputs[key] for key in retained} == retained
-    assert {k: v for k, v in verdicts(row).items() if k != "wp_fit_ok"} == baseline["verdicts"]
+    assert_historical_native('conductor-grade', row, baseline['channels'], None, WI059_REPLAY)
+    actual=verdicts(row)
+    for key,value in baseline['verdicts'].items():
+        if key != 'tbr_ok':
+            assert actual[key] == value, key
     assert output(row, "magnet__conductor_grade__quantity_factor") == 1.
 
 

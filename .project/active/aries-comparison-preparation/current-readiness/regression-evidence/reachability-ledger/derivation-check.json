@@ -1,0 +1,65 @@
+{
+  "artifact_sha256": {
+    "current.expected.json": "9e48dd6ff84dcc331378b690f7b1c0aae5d31ef95d2c4badda7b95f9e1ffca2e",
+    "derive.py": "7ac3dc3ed977f8deefe0c530355092df4e3a678c8a9a557aad7927f265937815",
+    "graph-ledger.json": "a8a24f08d0e5ed630dcf02308d2f47ca1ba0dd91ceaebb9495d503ed92dafbe2"
+  },
+  "checks": [
+    "reverse ancestor searches agree for every module and channel on all eight axes",
+    "25 predicates and 35 nonliteral operand occurrences per axis",
+    "all operand reached flags and objective lists agree",
+    "source hashes unchanged",
+    "historical five fixture bytes and original fingerprint unchanged"
+  ],
+  "counts": {
+    "I_coil": {
+      "channels_tainted": 947,
+      "constraints_reached": 21,
+      "modules_fired": 145,
+      "objectives_reached": 13
+    },
+    "R": {
+      "channels_tainted": 966,
+      "constraints_reached": 21,
+      "modules_fired": 150,
+      "objectives_reached": 14
+    },
+    "a": {
+      "channels_tainted": 965,
+      "constraints_reached": 21,
+      "modules_fired": 149,
+      "objectives_reached": 14
+    },
+    "availability_direct": {
+      "channels_tainted": 630,
+      "constraints_reached": 6,
+      "modules_fired": 64,
+      "objectives_reached": 5
+    },
+    "eta_couple_heat": {
+      "channels_tainted": 839,
+      "constraints_reached": 15,
+      "modules_fired": 111,
+      "objectives_reached": 8
+    },
+    "eta_source_heat": {
+      "channels_tainted": 839,
+      "constraints_reached": 15,
+      "modules_fired": 111,
+      "objectives_reached": 8
+    },
+    "interest_rate": {
+      "channels_tainted": 787,
+      "constraints_reached": 8,
+      "modules_fired": 97,
+      "objectives_reached": 5
+    },
+    "p_wallplug_heat": {
+      "channels_tainted": 44,
+      "constraints_reached": 2,
+      "modules_fired": 22,
+      "objectives_reached": 3
+    }
+  },
+  "status": "pass"
+}

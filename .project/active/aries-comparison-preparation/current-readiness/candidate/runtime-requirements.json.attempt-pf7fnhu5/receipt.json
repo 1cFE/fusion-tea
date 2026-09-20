@@ -1,0 +1,8 @@
+{
+  "attempt_directory": "runtime-requirements.json.attempt-pf7fnhu5",
+  "inputs": [],
+  "producer_started": true,
+  "output": ".project/active/aries-comparison-preparation/current-readiness/candidate/runtime-requirements.json",
+  "output_sha256": "1bbe8f8c0e42ab8eed0a22ea1c863e49247f01097a019186d035a7cd9905c319",
+  "state": "completed"
+}

@@ -1,0 +1,116 @@
+........................................................................ [ 18%]
+........................................................................ [ 37%]
+........................................................................ [ 56%]
+........................................................................ [ 75%]
+........................................................................ [ 94%]
+......................                                                   [100%]
+=============================== warnings summary ===============================
+tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.0-default14]
+tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.0-selected18]
+tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.1-default14]
+tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.1-selected18]
+tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.3-default14]
+tests/models/test_facility_account_consumers.py::test_native_facility_children_reconcile_to_total_without_calendar_change[0.3-selected18]
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/models/test_installed_cooling_equipment.py: 5 warnings
+tests/models/test_shared_cooling_fabrication_rate.py: 7 warnings
+tests/study/test_numeric_evidence.py: 6 warnings
+tests/study/test_financial_consumers.py: 1 warning
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/models/test_installed_cooling_equipment.py::test_retained_primary_controls_reach_full_current_native_comparison[0]
+tests/models/test_installed_cooling_equipment.py::test_retained_primary_controls_reach_full_current_native_comparison[1]
+tests/models/test_installed_cooling_equipment.py::test_retained_primary_controls_reach_full_current_native_comparison[2]
+tests/models/test_installed_cooling_equipment.py::test_retained_primary_controls_reach_full_current_native_comparison[3]
+tests/models/test_mfe_operating_heating.py::test_operating_heat_signed_demand_bounds
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+tests/study/test_financial_consumers.py::test_current_rate_route_and_coverage
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_stock_route.py::test_all_six_booleans_survive_bridge_native_and_store
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+382 passed, 40 warnings in 399.14s (0:06:39)

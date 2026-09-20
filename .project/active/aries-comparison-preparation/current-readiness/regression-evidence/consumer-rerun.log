@@ -1,0 +1,180 @@
+........F.F.......................F...............F...............FF.... [ 33%]
+..F......F.......F...........................................F.......... [ 66%]
+.F........FF...F.................F...............FFFFF...........F...F.  [100%]
+=================================== FAILURES ===================================
+__________________________ test_exact_input_contract ___________________________
+tests/study/test_major_radius.py:56: in test_exact_input_contract
+    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS)
+E   AssertionError: assert 490 == (265 + 45)
+E    +  where 490 = len({'stellarator_09__stellaris__aux_per_mw': 1100.0, 'stellarator_09__stellaris__availability_direct': 0.0, 'stellarator_09__stellaris__beta_limit': 0.05, 'stellarator_09__stellaris__blanket__blanket_cost__alpha': 0.6, ...})
+E    +  and   45 = len(((((({'stellarator_09__stellaris__cryoplant__L0', 'stellarator_09__stellaris__cryoplant__T_shield', 'stellarator_09__stella...arnot_shield', 'stellarator_09__stellaris__cryoplant__f_lead', 'stellarator_09__stellaris__cryoplant__g_per_coil', ...} | {'stellarator_09__stellaris__cryoplant__cryo_elec__f_uplift', 'stellarator_09__stellaris__cryoplant__cryo_elec__q_nuc', 'stellarator_09__stellaris__cryoplant__cryo_elec__vol_cold'}) | {'stellarator_09__stellaris__magnet__winding_pack__tape_price_per_m', 'stellarator_09__stellaris__magnet__winding_pack__tape_thickness', 'stellarator_09__stellaris__magnet__winding_pack__tape_width'}) | {'stellarator_09__stellaris__magnet__casing__assembly_clearance', 'stellarator_09__stellaris__magnet__casing__interior...is__magnet__winding_pack__ground_insulation', 'stellarator_09__stellaris__magnet__winding_pack__internal_build_x', ...}) | {'stellarator_09__stellaris__magnet__winding_pack__allow_field_extrapolation', 'stellarator_09__stellaris__magnet__win...is__magnet__winding_pack__material_factor', 'stellarator_09__stellaris__magnet__winding_pack__orientation_factor', ...}) | {'stellarator_09__stellaris__magnet__winding_pack__f_wp_perimeter', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_price', 'stellarator_09__stellaris__magnet__winding_pack__insulation_sheet_thickness'}))
+____ test_current_radius_controls_match_frozen_model_and_independent_oracle ____
+tests/study/test_major_radius.py:98: in test_current_radius_controls_match_frozen_model_and_independent_oracle
+    results = controls.check_controls(tmp_path)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/study/financial_radius_controls.py:38: in check_controls
+    assert len(cases) == 2 and all(c.state == "completed" for c in cases)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__blanket_t] _
+tests/study/test_major_radius.py:144: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__contingency_rate] _
+tests/study/test_major_radius.py:144: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__firstwall_t] _
+tests/study/test_major_radius.py:144: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__fluence_limit] _
+tests/study/test_major_radius.py:144: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel__gap1_t] _
+tests/study/test_major_radius.py:144: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__shield__ht_shield_t] _
+tests/study/test_major_radius.py:144: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__plasma__kappa] _
+tests/study/test_major_radius.py:144: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__reflector_t] _
+tests/study/test_major_radius.py:144: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__structure__structure_t] _
+tests/study/test_major_radius.py:144: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__tbr_floor] _
+tests/study/test_major_radius.py:144: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__vacuum_t] _
+tests/study/test_major_radius.py:144: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel__vessel_t] _
+tests/study/test_major_radius.py:144: in test_unmapped_native_inputs_remain_explicitly_refused
+    with pytest.raises(oracle.OracleSeamError, match=key):
+E   Failed: DID NOT RAISE <class 'oracle_entry.OracleSeamError'>
+_ test_invalid_public_oracle_inputs_are_deliberate[overrides10-wp_side must be nonzero] _
+tests/study/test_winding_consumers.py:48: in test_invalid_public_oracle_inputs_are_deliberate
+    oracle.evaluate(WI059_REPLAY | {names[name]: value for name, value in overrides.items()})
+exploration/stellarator_e2e/studies/oracle_entry.py:855: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:842: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:1074: in compute
+    current_sizing = _current_driven_sizing(p, B_peak, grade['j_wp_effective'])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:838: in _current_driven_sizing
+    raise ValueError('oracle current sizing: invalid loading')
+E   ValueError: oracle current sizing: invalid loading
+
+During handling of the above exception, another exception occurred:
+tests/study/test_winding_consumers.py:47: in test_invalid_public_oracle_inputs_are_deliberate
+    with pytest.raises(ValueError, match=message):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: 'wp_side must be nonzero'
+E     Actual message: 'oracle current sizing: invalid loading'
+_______ test_valid_full_oracle_outputs_and_stress_units_preserved[row0] ________
+tests/study/test_winding_consumers.py:84: in test_valid_full_oracle_outputs_and_stress_units_preserved
+    assert actual.keys() == expected.keys() | added
+E   AssertionError: assert dict_keys(['c...ff_required']) == {'A', 'B_axis... 'W_mag', ...}
+E     
+E     Use -v to get more diff
+_______ test_valid_full_oracle_outputs_and_stress_units_preserved[row1] ________
+tests/study/test_winding_consumers.py:84: in test_valid_full_oracle_outputs_and_stress_units_preserved
+    assert actual.keys() == expected.keys() | added
+E   AssertionError: assert dict_keys(['c...ff_required']) == {'A', 'B_axis... 'W_mag', ...}
+E     
+E     Use -v to get more diff
+_______ test_valid_full_oracle_outputs_and_stress_units_preserved[row2] ________
+tests/study/test_winding_consumers.py:84: in test_valid_full_oracle_outputs_and_stress_units_preserved
+    assert actual.keys() == expected.keys() | added
+E   AssertionError: assert dict_keys(['c...ff_required']) == {'A', 'B_axis... 'W_mag', ...}
+E     
+E     Use -v to get more diff
+_____________________ test_adapter_coverage_remains_exact ______________________
+tests/study/test_winding_consumers.py:103: in test_adapter_coverage_remains_exact
+    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS} == old_inputs
+E   AssertionError: assert {'stellarator...e_limit', ...} == {'stellarator..._direct', ...}
+E     
+E     Omitting 96 identical items, use -vv to show
+E     Left contains 197 more items:
+E     {'stellarator_09__stellaris__blanket__blanket_t': 'blanket_t',
+E      'stellarator_09__stellaris__blanket__first_wall__firstwall_t': 'firstwall_t',
+E      'stellarator_09__stellaris__blanket__first_wall__fluence_limit': 'fluence_limit',
+E      'stellarator_09__stellaris__blanket__first_wall__vacuum_t': 'vacuum_t',...
+E     
+E     ...Full output truncated (197 lines hidden), use '-vv' to show
+_______ test_current_native_winding_route_agrees_with_independent_oracle _______
+tests/study/test_winding_consumers.py:122: in test_current_native_winding_route_agrees_with_independent_oracle
+    assert len(cases) == len(points)
+E   AssertionError: assert 0 == 3
+E    +  where 0 = len([])
+E    +  and   3 = len([{'stellarator_09__stellaris__buildings__facilities_capacity_mode': 0.0, 'stellarator_09__stellaris__buildings__facili...ellaris__buildings__facilities_enabled': False, 'stellarator_09__stellaris__cryoplant__inventory_enabled': False, ...}])
+_________ test_public_mapping_retains_legacy_and_maps_selected_account _________
+tests/models/test_wi040_oracle.py:58: in test_public_mapping_retains_legacy_and_maps_selected_account
+    assert len(set(mapping.values())) == len(mapping)
+E   AssertionError: assert 934 == 935
+E    +  where 934 = len({'stellarator_09__stellaris__blanket__blanket_cost__cost', 'stellarator_09__stellaris__blanket__breeding__defined_flag...stellarator_09__stellaris__blanket__breeding__tbr_li7', 'stellarator_09__stellaris__blanket__breeding__tbr_lower', ...})
+E    +    where {'stellarator_09__stellaris__blanket__blanket_cost__cost', 'stellarator_09__stellaris__blanket__breeding__defined_flag...stellarator_09__stellaris__blanket__breeding__tbr_li7', 'stellarator_09__stellaris__blanket__breeding__tbr_lower', ...} = set(dict_values(['stellarator_09__stellaris__heat_transport__equipment__primary_circulators_cost', 'stellarator_09__stella..._fuel_cycle__processing_cost__defined_flag', 'stellarator_09__stellaris__shipping_scope__fuel_installation_exclusion']))
+E    +      where dict_values(['stellarator_09__stellaris__heat_transport__equipment__primary_circulators_cost', 'stellarator_09__stella..._fuel_cycle__processing_cost__defined_flag', 'stellarator_09__stellaris__shipping_scope__fuel_installation_exclusion']) = <built-in method values of dict object at 0x79f1c9cf01c0>()
+E    +        where <built-in method values of dict object at 0x79f1c9cf01c0> = {'A': 'stellarator_09__stellaris__plasma__geom__A', 'B_axis': 'stellarator_09__stellaris__magnet__field_calc__B_axis',...rator_09__stellaris__magnet__peak_field_calc__B_peak', 'T_e0': 'stellarator_09__stellaris__plasma__sustain__T_e0', ...}.values
+E    +  and   935 = len({'A': 'stellarator_09__stellaris__plasma__geom__A', 'B_axis': 'stellarator_09__stellaris__magnet__field_calc__B_axis',...rator_09__stellaris__magnet__peak_field_calc__B_peak', 'T_e0': 'stellarator_09__stellaris__plasma__sustain__T_e0', ...})
+____ test_the_winding_chain_is_invariant_in_the_major_radius_at_fixed_bore _____
+tests/models/test_winding_length_bore.py:89: in test_the_winding_chain_is_invariant_in_the_major_radius_at_fixed_bore
+    other = _point(oracle, R, 1.3)
+            ^^^^^^^^^^^^^^^^^^^^^^
+tests/models/test_winding_length_bore.py:60: in _point
+    return oracle.evaluate(point)
+           ^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:855: in evaluate
+    result = _compute(_oracle_overrides(point))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/oracle_entry.py:842: in _compute
+    return vs.compute()
+           ^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:1074: in compute
+    current_sizing = _current_driven_sizing(p, B_peak, grade['j_wp_effective'])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:841: in _current_driven_sizing
+    capacity = _conductor_current(p, field, 1.0, 1.0)['tape_critical_current']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/verify_stellaris.py:921: in _conductor_current
+    raise ValueError('oracle conductor current: unsupported field')
+E   ValueError: oracle conductor current: unsupported field
+=========================== short test summary info ============================
+FAILED tests/study/test_major_radius.py::test_exact_input_contract - Assertio...
+FAILED tests/study/test_major_radius.py::test_current_radius_controls_match_frozen_model_and_independent_oracle
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__blanket_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__contingency_rate]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__firstwall_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__fluence_limit]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel__gap1_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__shield__ht_shield_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__plasma__kappa]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__reflector_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__structure__structure_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__tbr_floor]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__blanket__first_wall__vacuum_t]
+FAILED tests/study/test_major_radius.py::test_unmapped_native_inputs_remain_explicitly_refused[stellarator_09__stellaris__vessel__vessel_t]
+FAILED tests/study/test_winding_consumers.py::test_invalid_public_oracle_inputs_are_deliberate[overrides10-wp_side must be nonzero]
+FAILED tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row0]
+FAILED tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row1]
+FAILED tests/study/test_winding_consumers.py::test_valid_full_oracle_outputs_and_stress_units_preserved[row2]
+FAILED tests/study/test_winding_consumers.py::test_adapter_coverage_remains_exact
+FAILED tests/study/test_winding_consumers.py::test_current_native_winding_route_agrees_with_independent_oracle
+FAILED tests/models/test_wi040_oracle.py::test_public_mapping_retains_legacy_and_maps_selected_account
+FAILED tests/models/test_winding_length_bore.py::test_the_winding_chain_is_invariant_in_the_major_radius_at_fixed_bore
+22 failed, 193 passed in 32.43s

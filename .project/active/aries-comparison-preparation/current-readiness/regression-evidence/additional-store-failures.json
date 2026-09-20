@@ -1,0 +1,287 @@
+[
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.5,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.525,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.55,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.575,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.6,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.625,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.65,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.675,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.7,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.725,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.75,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.775,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.8,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.825,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.85,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.875,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.9,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.925,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  },
+  {
+    "state": "execution_failed",
+    "failure": {
+      "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+      "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    },
+    "inputs": {
+      "stellarator_09__stellaris__availability_direct": 0.95,
+      "stellarator_09__stellaris__plasma__R": 12.7,
+      "stellarator_09__stellaris__plasma__a": 1.3
+    }
+  }
+]

@@ -1,3 +1,4 @@
+from tests.models.current_mfe_regressions import (CURRENT_PREDICATES, historical_point, assert_historical_native, assert_current_predicates, PARTITIONS)
 """WI-062 analytic current capacity, domains and physical inventory propagation."""
 import importlib
 import json
@@ -69,7 +70,7 @@ def test_public_native_oracle(evaluate,changes):
     import oracle_entry
     row=evaluate(changes); expected=oracle_entry.evaluate({P+k:v for k,v in changes.items()})
     for key,value in expected.items():assert row.outputs[key]==pytest.approx(value,rel=1e-10,abs=1e-9),key
-    assert len(row.responses)==21
+    assert set(row.responses) == CURRENT_PREDICATES | {'headline'}
     assert output(row,'magnet__conductor_current__parallel_tapes_set')==pytest.approx(output(row,'magnet__winding_procurement__tape_length')/output(row,'magnet__winding_procurement__conductor_length'))
 
 @pytest.mark.codegen_available
@@ -82,10 +83,9 @@ def test_series_turn_repartition(evaluate):
 @pytest.mark.codegen_available
 def test_prior_native_reference_preserved(evaluate):
     old=json.loads(Path('work/orchestration/goals/absolute-conductor-current-margin/evidence/entering/native-reference.json').read_text())
-    row=evaluate({'magnet__winding_pack__insulation_sheet_price':0.})
-    for key,value in old['outputs'].items():
-        if isinstance(value,(float,int)):assert row.outputs[key]==value,key
-    for key,value in old['responses'].items():assert row.responses[key]==value,key
+    point=historical_point({P+'magnet__winding_pack__insulation_sheet_price':0.})
+    row=evaluate({k.removeprefix(P):v for k,v in point.items()})
+    assert_historical_native('conductor-current', row, old['outputs'], old['responses'], point)
 
 @pytest.mark.codegen_available
 def test_selected_field_predicate_independent(evaluate):

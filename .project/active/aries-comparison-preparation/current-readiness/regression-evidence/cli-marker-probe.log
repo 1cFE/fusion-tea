@@ -1,0 +1,18 @@
+xExF                                                                     [100%]
+==================================== ERRORS ====================================
+____________ ERROR at setup of test_dynamic_marker_preserves_guard _____________
+
+    @pytest.fixture
+    def wrong_signature():
+>       assert False, 'wrong signature must remain an error'
+E       AssertionError: wrong signature must remain an error
+E       assert False
+
+.project/active/aries-comparison-preparation/current-readiness/regression-evidence/cli-marker-probe.py:5: AssertionError
+=================================== FAILURES ===================================
+________________ test_dynamic_marker_rejects_unexpected_success ________________
+[XPASS(strict)] 
+=========================== short test summary info ============================
+FAILED .project/active/aries-comparison-preparation/current-readiness/regression-evidence/cli-marker-probe.py::test_dynamic_marker_rejects_unexpected_success
+ERROR .project/active/aries-comparison-preparation/current-readiness/regression-evidence/cli-marker-probe.py::test_dynamic_marker_preserves_guard
+1 failed, 2 xfailed, 1 error in 0.10s

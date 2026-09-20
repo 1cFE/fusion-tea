@@ -1,0 +1,41 @@
+{
+  "authority": "Independent native baseline receipt versus independent oracle; raw signed values retained",
+  "cases": [
+    {
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__salt_heat_residual_MW",
+      "native": 0.0,
+      "oracle": 0.0,
+      "absolute_difference": 0.0
+    },
+    {
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__heater_energy_residual_MW",
+      "native": 1.1641532182693482e-13,
+      "oracle": 1.1641532182693482e-13,
+      "absolute_difference": 0.0
+    },
+    {
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__cycle_electric_residual_MW",
+      "native": 4.547473508864641e-13,
+      "oracle": 4.547473508864641e-13,
+      "absolute_difference": 0.0
+    },
+    {
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__heater_mass_residual_kg_s",
+      "native": 0.0,
+      "oracle": -5.684341886080802e-14,
+      "absolute_difference": 5.684341886080802e-14
+    },
+    {
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__cycle_shaft_residual_MW",
+      "native": 0.0,
+      "oracle": 0.0,
+      "absolute_difference": 0.0
+    },
+    {
+      "channel": "stellarator_09__stellaris__heat_rejection__cooling_water__water_energy_residual_MW",
+      "native": 4.547473508864641e-13,
+      "oracle": 3.0375701953744283e-13,
+      "absolute_difference": 1.509903313490213e-13
+    }
+  ]
+}

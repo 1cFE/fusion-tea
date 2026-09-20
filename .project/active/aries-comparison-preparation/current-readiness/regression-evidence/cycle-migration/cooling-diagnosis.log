@@ -1,0 +1,39 @@
+F
+=================================== FAILURES ===================================
+_________________ test_actual_native_cost_and_energy_selectors _________________
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:173: in evaluate
+    result = self._executor.run(self._graph, context, persist_outputs=False)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:147: in run
+    self._execute_module(module_key, module_spec, context)
+../teax/packages/teax-simkit/simkit/core/pipeline_executor.py:213: in _execute_module
+    result = module.run(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^
+/tmp/pytest-of-reid/pytest-13034/cooling-native0/pkg_link/stellarator_tea/modules/mfe_matched_steam_cycle/matched_steam_cycle.py:371: in run
+    s_main_kJ_kgK, reheat_min_gap_K, mdot_heater_kg_s, h_hp_kJ_kg, s_lp_kJ_kgK, p_condensate_pumped_MPa, mdot_main_kg_s, mdot_reheat_kg_s, q_generator_loss_MW, t_feed_C, p_cycle_net_before_cooling_MW, main_UA_available, p_feedwater_electric_MW, q_rejection_before_cooling_MW, p_lp_MPa, lp_quality, h_condensate_pumped_kJ_kg, t_heater_C, p_cycle_pumps_MW, t_condensate_C, salt_reheat_flow_kg_s, s_reheat_kJ_kgK, salt_main_flow_kg_s, p_gross_MW, p_feedwater_shaft_MW, h_main_kJ_kg, t_reheat_C, installed_sg_capacity_qualified, p_hp_shaft_MW, p_main_MPa, t_hp_C, mdot_feed_kg_s, mdot_bleed_kg_s, p_condensate_MPa, salt_heat_residual_MW, p_hp_MPa, active, eta_gross, h_lp_kJ_kg, mdot_condensate_kg_s, h_feed_kJ_kg, heater_energy_residual_MW, lp_moisture_fraction, t_main_C, cycle_electric_residual_MW, p_feed_MPa, main_UA_MW_K, bleed_fraction, p_reheat_MPa, mdot_lp_kg_s, reheat_UA_MW_K, p_lp_shaft_MW, p_heater_MPa, q_main_MW, q_pump_motor_loss_MW, q_mechanical_loss_MW, p_condensate_electric_MW, main_min_gap_K, heater_mass_residual_kg_s, s_hp_kJ_kgK, h_heater_kJ_kg, main_admission_ok, q_condenser_MW, mdot_hp_kg_s, h_condensate_kJ_kg, p_condensate_shaft_MW, turbine_equipment_qualified, h_reheat_kJ_kg, cycle_shaft_residual_MW, reheat_admission_ok, s_heater_kJ_kgK, q_reheat_MW, s_feed_kJ_kgK, salt_flow_total_kg_s, reheat_UA_available, s_condensate_kJ_kgK, mdot_condensate_pumped_kg_s, t_lp_C = run_matched_steam_cycle(validated_inputs)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/tmp/pytest-of-reid/pytest-13034/cooling-native0/pkg_link/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:281: in run_matched_steam_cycle
+    result = calculate({name:getattr(inputs,name+'_in') for name in INPUT_NAMES})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/tmp/pytest-of-reid/pytest-13034/cooling-native0/pkg_link/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:177: in calculate
+    balance(heat-plant_heat, max(abs(heat),abs(plant_heat)), 'plant and cycle heat join')
+/tmp/pytest-of-reid/pytest-13034/cooling-native0/pkg_link/stellarator_tea/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py:75: in balance
+    raise ValueError(f'WI-073 {name}: balance residual {residual!r} exceeds arithmetic policy')
+E   ValueError: WI-073 plant and cycle heat join: balance residual 5.675887361898731 exceeds arithmetic policy
+
+The above exception was the direct cause of the following exception:
+tests/models/test_installed_cooling_equipment.py:100: in test_actual_native_cost_and_energy_selectors
+    legacy = evaluate(heat_transport__equipment_cost_mode=0., heat_transport__secondary_energy_mode=0.)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/test_installed_cooling_equipment.py:93: in run
+    row = engine.evaluate(bridge.build({P+k:v for k,v in changes.items()}))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:175: in evaluate
+    _normalize_run_failure(error, context)
+../teax/packages/teax-simkit/simkit/evaluation/evaluator.py:70: in _normalize_run_failure
+    raise EvaluationFailed(
+E   simkit.evaluation.failure.EvaluationFailed: module_execution: ValueError: WI-073 plant and cycle heat join: balance residual 5.675887361898731 exceeds arithmetic policy
+=========================== short test summary info ============================
+FAILED tests/models/test_installed_cooling_equipment.py::test_actual_native_cost_and_energy_selectors
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 25 deselected in 3.21s

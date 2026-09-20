@@ -1,0 +1,62 @@
+{
+  "structure_cost": {
+    "residual_fraction": {
+      "old": null,
+      "new": "float stellarator_plant_params.stellarator_09__stellaris__structure__residual_fraction"
+    }
+  },
+  "aux_cooling": {
+    "p_cryo": {
+      "old": "float stellarator_09__stellaris__cryoplant__cryo_elec__p_elec.root",
+      "new": "float stellarator_09__stellaris__cryoplant__refrigeration_sum__total.root"
+    }
+  },
+  "supplementary": {
+    "fuel_installation_exclusion_in": {
+      "old": null,
+      "new": "float stellarator_09__stellaris__shipping_scope__fuel_installation_exclusion"
+    },
+    "facility_exclusion_in": {
+      "old": null,
+      "new": "float stellarator_09__stellaris__shipping_scope__facility_exclusion"
+    },
+    "delivered_shipping_exclusion_in": {
+      "old": null,
+      "new": "float stellarator_09__stellaris__shipping_scope__cooling_exclusion"
+    }
+  },
+  "powercore_capital": {
+    "structure_capital_cost": {
+      "old": "float stellarator_09__stellaris__structure__structure_cost__cost.root",
+      "new": "float stellarator_09__stellaris__structure__structure_cost__cost"
+    }
+  },
+  "cas22_capital": {
+    "fuel_handling_capital": {
+      "old": "float stellarator_09__stellaris__fuel_cycle__fuel_handling__cost.root",
+      "new": "float stellarator_09__stellaris__fuel_cycle__processing_cost__cost"
+    },
+    "coolant_capital": {
+      "old": "float stellarator_09__stellaris__heat_transport__coolant__cost.root",
+      "new": "float stellarator_09__stellaris__heat_transport__cooling_selection__cost"
+    }
+  },
+  "cas2x_pre_contingency": {
+    "capital_cost": {
+      "old": "float stellarator_09__stellaris__buildings__buildings_cost__cost.root",
+      "new": "float stellarator_09__stellaris__buildings__facility_accounts__cost"
+    }
+  },
+  "overnight_capital": {
+    "preconstruction_capital": {
+      "old": "float stellarator_09__stellaris__precon_cost__cost.root",
+      "new": "float stellarator_09__stellaris__facility_preconstruction__cost.root"
+    }
+  },
+  "total_capital": {
+    "preconstruction_capital": {
+      "old": "float stellarator_09__stellaris__precon_cost__cost.root",
+      "new": "float stellarator_09__stellaris__facility_preconstruction__cost.root"
+    }
+  }
+}

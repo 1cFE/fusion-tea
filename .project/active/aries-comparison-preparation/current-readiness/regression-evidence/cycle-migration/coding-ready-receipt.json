@@ -1,0 +1,40 @@
+{
+  "status": "focused checks pass; integration and full regression pending",
+  "focused": {
+    "regression_passes": 382,
+    "final_nominal_status_passes": 1,
+    "candidate_passes": 121
+  },
+  "full_collection": 3601,
+  "source_sha256": {
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/build_freeze.py": "c10844cadb7b118163bd979224282fa26b008fd25ea6cb274f214b8bd56ac507",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/candidate_common.py": "4da243490df04111416e69583115ebe4e4660515084855075c066e031f9ac68d",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/check_accounting.py": "2d749428d338c079b74ddaba7a0df94e4cda4882073d4679c5b6a7da8788619c",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/check_lineage.py": "daa13a6af770102f7bf10d270943a0793efa9f4e4d3d4a25e3ba216c41131927",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/check_selected_mode.py": "57164a00bba2406e1d9828bb463526901288b17053989d48e5d51370e301a798",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/compare_candidate.py": "96eb08fc81205dabda8eacb9faa231efc92cd81348cd0be720c3a318f3bbee61",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/execute_frozen.py": "c5c34256a246086e9662750f7105429c4ba0ca7fb84061d4ecb49e5ef9a49719",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/export_model_values.py": "bdf83ff919d4a312a12a3a7946f2a0aac24edd832a0dbe49c75a7d6127627fd2",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/refresh_contract.py": "200dc03a73ae9236a522d976c06af7e1fa4a4837240247ffb961a1c18feecf27",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/report_custody.py": "549ce8136dd2ca34fd3742745ee95c56d319b3e7677f5bf6d2a01ff6e8880e92",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/runtime_identity.py": "b90119533a4159afcf3888ba1115e5da5c989270ec7a5f56b139e70c2ef9277b",
+    "exploration/stellarator_e2e/studies/study_route.py": "dc4b2fd10c7c5ac714e294ce6632fa7e5a10a2c939c38da27eb6ea53943045b6",
+    "scripts/study/verify.py": "042a47bb8b6b49b6f1addae6faa3cef58b9214535bf7a6a22438aeb0f323ed71",
+    "tests/models/current_mfe_regressions.py": "c0e49802615aac5be32ce662f1b9bb6742d32fddc39370365dfbf4cf34e49cbc",
+    "tests/models/test_facility_account_consumers.py": "74a1c78d11c8012438d47908ce954be8980df09416e8095b40ab1e61f00efdd8",
+    "tests/models/test_installed_cooling_equipment.py": "863a2d5a100f1dd9a6358121c05075461db05bf145cfdaa04e51c1c7a18d0f07",
+    "tests/models/test_mfe_operating_heating.py": "deaa70884a31b6e87ecc951a59052e8f06a21d2eb129acab24d20368036ff11c",
+    "tests/models/test_model_family_spines.py": "77585b8b8d7cddf074b1a32de4d0400f1e251c45533ddd25a960712a61f6b521",
+    "tests/models/test_shared_cooling_fabrication_rate.py": "01cc02172667591eec5354729da4df65a71694a030c4acc892f063c5a38a3eb6",
+    "tests/study/test_financial_consumers.py": "2f1a82211eca54a6b1e0fcca80d542574103578ba68bab759b687a8fe1059bda",
+    "tests/study/test_known_answers.py": "03253dc0ea40a261dd73187eb0021a9ec996c0f9c1115d44bdd781b1436500a1",
+    "tests/study/test_native_publication.py": "4374af89585606d783ee1d6ed47fbe5e9e4c4a056fd7c4d749cfa866ea3914db",
+    "tests/study/test_numeric_evidence.py": "7ab49e7dc4295ec8bb233ad12fdf1f08e9cf1f656999acbf41a33d7cf38b68f8",
+    "tests/study/test_operand_bindings.py": "c68b04a6bca40b9abb1fafe88799cf5fe62dc5ecc25862400e7104339fac6251",
+    "tests/study/test_single_point_gate.py": "7d27a84ed2bf2a078179191b29f996fdb0d10346f70cf824f2e5a63355542bc5",
+    "tests/study/test_stock_route.py": "599ce93fd8f486c94182628f5b9812ec34d3588bc9cf2a11139161602ad5e6d4",
+    "tests/study/test_verify.py": "2a87dc9403e63de6d1fbaba6e94cc426786c53e977765d599144cca2b93c3d10",
+    "tests/test_candidate_report_custody.py": "4ac6ee5d4dcb81565790895815c83c3f807a34f8c9fbbde2f196f08f6a637e5f",
+    "tests/test_current_comparison_candidate.py": "a967dc45261b986650b4a40c469aa1b3332073c962548c9e9c9fcf4582b643af"
+  }
+}

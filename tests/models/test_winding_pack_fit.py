@@ -1,3 +1,4 @@
+from tests.models.current_mfe_regressions import (CURRENT_PREDICATES, historical_point, assert_historical_native, assert_current_predicates, PARTITIONS)
 """WI-061 independent geometric witnesses and public fit behavior."""
 import importlib
 import math
@@ -68,7 +69,7 @@ def test_public_native_oracle_and_existing_predicates(evaluate,changes):
     expected=oracle_entry.evaluate({P+k:v for k,v in changes.items()})
     for key,value in expected.items():
         assert row.outputs[key]==pytest.approx(value,rel=1e-10,abs=1e-9),key
-    assert len([k for k in row.responses if k!='headline'])==20
+    assert set(row.responses) == CURRENT_PREDICATES | {'headline'}
     assert row.outputs[P+'magnet__wp_fit__cavity_x']==pytest.approx(changes.get('magnet__coil__coil_t',.3)-2*changes.get('magnet__casing__wall_thickness',.025))
     if not changes:
         assert output(row,'magnet__wp_fit__margin_x')==pytest.approx(-.120)
@@ -100,15 +101,17 @@ def test_entering_baseline_scalars_preserved(evaluate):
     import json
     from pathlib import Path
     entering=json.loads(Path('work/orchestration/goals/winding-pack-casing-fit/evidence/entering/comparison.json').read_text())['baseline']
-    row=evaluate({'magnet__winding_pack__insulation_sheet_price':0.})
+    point=historical_point({P+'magnet__winding_pack__insulation_sheet_price':0.})
+    row=evaluate({k.removeprefix(P):v for k,v in point.items()})
     assert len(entering)==179
     previous=json.loads(Path('work/active/WI-060_tape-procurement-quantity-basis/evidence/baseline.json').read_text())
-    for key,value in previous['outputs'].items():
-        if isinstance(value,(int,float)):
-            assert row.outputs[key] == value,key
-    assert {k: v for k, v in row.responses.items() if 'wp_fit_ok' not in k and 'reference_conductor_current_ok' not in k} == previous['responses']
+    assert_historical_native('winding-fit', row, previous['outputs'], previous['responses'], point)
+    import oracle_entry
+    current=oracle_entry.evaluate(point)
+    changed=set(PARTITIONS['fixture_partitions']['winding-fit']['changed_current_equation_channels'])
     for key,value in entering.items():
-        assert row.outputs[key]==pytest.approx(value,rel=1e-10,abs=1e-9),key
+        expected=current[key] if key in changed else value
+        assert row.outputs[key]==pytest.approx(expected,rel=1e-10,abs=1e-9),key
 
 @pytest.mark.parametrize('key', ['fit_aspect_ratio','fit_wall','fit_interior_y','coil_t',
     'fit_internal_x','fit_internal_y','fit_ground','fit_clearance'])

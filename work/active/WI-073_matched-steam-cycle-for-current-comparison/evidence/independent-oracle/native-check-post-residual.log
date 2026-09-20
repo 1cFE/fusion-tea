@@ -1,0 +1,26 @@
+/home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+  return self.__pydantic_serializer__.to_python(
+baseline scalar failures []
+baseline 1050 scalars 28 predicates 0 failures {'gross_MW': 1219.9981701764736, 'net_MW': 850.0653006674999, 'eta_selected': 0.3689262426735591, 'cycle_pumps_MW': 9.70696064764374, 'cooling_pump_MW': 13.02318006356215, 'total_capital': 17751224887.07979, 'overnight_capital': 17751224887.07979, 'lcoe': 318.7371704217041, 'lcoe_1cfe': 312.7107884134813, 'raw_legacy_cycle_interface_ok': 0.0}
+legacy scalar failures []
+legacy 1050 scalars 28 predicates 0 failures {'gross_MW': 1360.3105043264716, 'net_MW': 1008.898405504204, 'eta_selected': 0.41135655404954075, 'cycle_pumps_MW': 0.0, 'cooling_pump_MW': 0.0, 'total_capital': 17918171013.726093, 'overnight_capital': 17918171013.726093, 'lcoe': 271.5843199172948, 'lcoe_1cfe': 266.4589305666054, 'raw_legacy_cycle_interface_ok': 0.0}
+condenser40 scalar failures []
+condenser40 1050 scalars 28 predicates 0 failures {'gross_MW': 1229.1922926686984, 'net_MW': 859.0390415277026, 'eta_selected': 0.3717065362417423, 'cycle_pumps_MW': 9.70861831166485, 'cooling_pump_MW': 12.966080356796493, 'total_capital': 17761735330.281296, 'overnight_capital': 17761735330.281296, 'lcoe': 315.62743118060405, 'lcoe_1cfe': 309.6604713683325, 'raw_legacy_cycle_interface_ok': 0.0}
+condenser50 scalar failures []
+condenser50 1050 scalars 28 predicates 0 failures {'gross_MW': 1183.1299088724127, 'net_MW': 814.08158338032, 'eta_selected': 0.35777731683964026, 'cycle_pumps_MW': 9.699500748975172, 'cooling_pump_MW': 13.252143784471604, 'total_capital': 17708977025.29754, 'overnight_capital': 17708977025.29754, 'lcoe': 331.89062708278476, 'lcoe_1cfe': 325.6128460272734, 'raw_legacy_cycle_interface_ok': 0.0}
+steam435 scalar failures []
+steam435 1050 scalars 28 predicates 0 failures {'gross_MW': 1212.6276188241807, 'net_MW': 842.7746274797134, 'eta_selected': 0.36669739521845135, 'cycle_pumps_MW': 9.801827003796022, 'cooling_pump_MW': 13.069552083472137, 'total_capital': 17742758190.462475, 'overnight_capital': 17742758190.462475, 'lcoe': 321.31334572481916, 'lcoe_1cfe': 315.2377299355871, 'raw_legacy_cycle_interface_ok': 0.0}
+circuits18 scalar failures []
+circuits18 1050 scalars 28 predicates 0 failures {'gross_MW': 1194.2983224939421, 'net_MW': 895.2827705399473, 'eta_selected': 0.3689262426735591, 'cycle_pumps_MW': 9.502478857258197, 'cooling_pump_MW': 12.74884051768618, 'total_capital': 20251052384.991646, 'overnight_capital': 20251052384.991646, 'lcoe': 341.2560331826442, 'lcoe_1cfe': 334.7282158813527, 'raw_legacy_cycle_interface_ok': 0.0}
+cooling_disabled scalar failures []
+cooling_disabled 1050 scalars 28 predicates 0 failures {'gross_MW': 1219.9981701764736, 'net_MW': 863.088480731062, 'eta_selected': 0.3689262426735591, 'cycle_pumps_MW': 9.70696064764374, 'cooling_pump_MW': 0.0, 'total_capital': 17755756161.114056, 'overnight_capital': 17755756161.114056, 'lcoe': 314.0792923868102, 'lcoe_1cfe': 308.1423276067792, 'raw_legacy_cycle_interface_ok': 0.0}
+cooling_zero_approach scalar failures []
+cooling_zero_approach 1050 scalars 28 predicates 0 failures {'gross_MW': 1219.9981701764736, 'net_MW': 855.4469162254991, 'eta_selected': 0.3689262426735591, 'cycle_pumps_MW': 9.70696064764374, 'cooling_pump_MW': 7.641564505563002, 'total_capital': 17753097694.800922, 'overnight_capital': 17753097694.800922, 'lcoe': 316.79526585231855, 'lcoe_1cfe': 310.8061640046844, 'raw_legacy_cycle_interface_ok': 0.0}
+disabled_bad_properties scalar failures []
+disabled_bad_properties 1050 scalars 28 predicates 0 failures {'gross_MW': 1360.3105043264716, 'net_MW': 1008.898405504204, 'eta_selected': 0.41135655404954075, 'cycle_pumps_MW': 0.0, 'cooling_pump_MW': 0.0, 'total_capital': 17918171013.726093, 'overnight_capital': 17918171013.726093, 'lcoe': 271.5843199172948, 'lcoe_1cfe': 266.4589305666054, 'raw_legacy_cycle_interface_ok': 0.0}

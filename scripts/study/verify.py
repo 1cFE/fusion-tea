@@ -41,6 +41,7 @@ import argparse
 import hashlib
 import importlib
 import json
+import math
 import random
 import sys
 from pathlib import Path
@@ -208,16 +209,18 @@ def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
                    case_inputs, package_inputs, channels) -> tuple[bool, int]:
     """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
     ir = json.loads(entry["predicate_ir"])
-    if ir.get("kind") == "operator" and ir.get("operator") == "and":
+    if ir.get("kind") == "operator" and ir.get("operator") in ("and", "or"):
+        logical = ir["operator"]
         children = ir.get("operands", [])
         if len(children) != 2:
-            raise VerifyError(f"{constraint_id}: conjunction requires exactly two operands")
-        # Evaluate both branches even when one is false: missing independent
+            name = "conjunction" if logical == "and" else "disjunction"
+            raise VerifyError(f"{constraint_id}: {name} requires exactly two operands")
+        # Evaluate both branches even when the logical result is known: missing independent
         # evidence must refuse verification rather than hide behind short circuit.
         evaluated = [derive_verdict(constraint_id,
                      {"predicate_ir": json.dumps(child), "is_negated": False},
                      bindings, case_inputs, package_inputs, channels) for child in children]
-        result = all(value for value, _ in evaluated)
+        result = (all if logical == "and" else any)(value for value, _ in evaluated)
         if entry.get("is_negated"):
             result = not result
         return result, sum(count for _, count in evaluated)
@@ -236,6 +239,8 @@ def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
         value, count = evaluate_operand(
             constraint_id, operand, bindings, case_inputs, package_inputs, channels
         )
+        if not math.isfinite(value):
+            raise VerifyError(f"{constraint_id}: nonfinite predicate operand cannot be re-derived")
         values.append(value)
         resolved += count
     result = OPERATORS[ir["operator"]](values[0], values[1])

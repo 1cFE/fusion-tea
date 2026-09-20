@@ -1,0 +1,10 @@
+{
+  "finance-route-evidence.json": {
+    "source": "/tmp/pytest-of-reid/pytest-13017/test_current_rate_route_and_co0/finance-route-evidence.json",
+    "destination": ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/final-runtime-evidence/finance-route-evidence.json"
+  },
+  "historical-cli.log": {
+    "source": "/tmp/pytest-of-reid/pytest-13017/test_green_single_point_comman0/historical-cli.log",
+    "destination": ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/final-runtime-evidence/historical-cli.log"
+  }
+}

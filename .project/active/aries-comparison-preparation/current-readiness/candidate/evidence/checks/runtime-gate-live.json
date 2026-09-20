@@ -1,0 +1,9 @@
+{
+  "module_count": 4,
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "relocation": "Filesystem locations are recorded but are not content identities.",
+  "runtime_python_file_count": 205,
+  "sealed_wheel_count": 3,
+  "status": "pass",
+  "teax_commit": "8d877460ac4f6f264561d916e40c1708adb13397"
+}

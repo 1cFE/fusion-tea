@@ -1,0 +1,22 @@
+{
+  "tests/models/test_mfe_major_radius.py": {
+    "before_sha256": "ac52d77778a0941f920a665983995ebef556a7f63d9c2703281bfb147c419afc",
+    "after_sha256": "7043571f5ac1807d2600ab1a2c01ecb751b956422a1daf416f8457f71bf88098",
+    "removed": "@pytest.mark.xfail(strict=True, reason=\"Historical CLI nine-anchor/twenty-predicate calibration is incompatible with current plant; exact refusal evidence retained\")",
+    "added": [
+      "def test_historical_cli_baseline_success(acceptance, request):",
+      "    request.node.add_marker(pytest.mark.xfail(strict=True, reason='Historical nine-anchor/twenty-predicate CLI calibration is incompatible; exact refusal guards completed before this marker'))",
+      "    assert read_result(acceptance, 'cli-checks.json')[0]['exit'] == 0"
+    ]
+  },
+  "tests/study/test_single_point_gate.py": {
+    "before_sha256": "3a1b319f3e7f7e5f3f52141e63d46346c721c49eca98e6d50662b51fcfbcaa6c",
+    "after_sha256": "86f9c6fb2afada493f19be146140a1685d66d4a9e0c2e69e052e46ef44584a69",
+    "removed": "@pytest.mark.xfail(strict=True, reason='Historical nine-anchor/twenty-predicate CLI calibration is incompatible; exact signature checked by unmarked fixture')",
+    "added": [
+      "def test_green_single_point_command_exits_zero(historical_cli_result, request):",
+      "    request.node.add_marker(pytest.mark.xfail(strict=True, reason='Historical nine-anchor/twenty-predicate CLI calibration is incompatible; exact refusal guards completed before this marker'))",
+      "    done=historical_cli_result"
+    ]
+  }
+}

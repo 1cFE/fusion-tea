@@ -156,3 +156,70 @@ def test_formerly_injected_values_come_from_model_source(real_package_path) -> N
     assert bop_power_sources, "no module binds a `power` input"
     for name, source in bop_power_sources.items():
         assert "__pb__" in source, (name, source)
+
+
+import pytest
+from exploration.stellarator_e2e.studies import study_route as route
+
+
+@pytest.mark.parametrize('key', sorted(route.BOOLEAN_KEYS))
+@pytest.mark.parametrize('value', [True, False, 0, 1, 0.0, 1.0])
+def test_all_declared_boolean_values_normalize(key, value, real_package_path):
+    route.assert_boolean_declarations(real_package_path)
+    result = route.validate_proposal({key: value})
+    assert result[key] is bool(value)
+
+
+@pytest.mark.parametrize('key', sorted(route.BOOLEAN_KEYS))
+@pytest.mark.parametrize('value', [2, -1, float('nan'), float('inf'), '0', 'true', None, [], {}])
+def test_invalid_boolean_proposals_are_deliberate_refusals(key, value):
+    with pytest.raises(route.RouteError, match=key + ': Boolean'):
+        route.validate_proposal({key: value})
+
+
+@pytest.mark.parametrize('suffix', ['plasma__R', 'magnet__coil__I_coil', 'magnet__winding_pack__tape_price_per_m'])
+@pytest.mark.parametrize('value', [True, False])
+def test_boolean_numeric_controls_refuse(suffix, value):
+    with pytest.raises(route.RouteError, match='finite numeric'):
+        route.validate_proposal({route.P + suffix: value})
+
+
+def test_invalid_batch_executes_nothing(tmp_path, stock_simkit_path, monkeypatch):
+    def forbidden(*args, **kwargs):
+        pytest.fail('preparation must not run for a mixed invalid batch')
+    monkeypatch.setattr(route, 'prepare', forbidden)
+    out = tmp_path / 'not-created'
+    with pytest.raises(route.RouteError, match='Boolean'):
+        route.run_points('mixed', [{route.P+'plasma__R': 12.7}, {next(iter(route.BOOLEAN_KEYS)): 2}], out)
+    assert not out.exists()
+
+
+def test_all_six_booleans_survive_bridge_native_and_store(tmp_path, stock_simkit_path):
+    from simkit.study.bridge import CandidateBridge
+    points = []
+    for key in sorted(route.BOOLEAN_KEYS):
+        for value in (False, True):
+            point = {key: value, route.P+'plasma__R': 12.7 + len(points)*.001}
+            if not value:
+                if key == route.P+'heat_transport__equipment_enabled':
+                    point.update({route.P+'turbine__matched_cycle_enabled':0., route.P+'heat_rejection__cooling_water_enabled':0., route.P+'heat_transport__equipment_cost_mode':0., route.P+'heat_transport__secondary_energy_mode':0.,
+                                  route.P+'buildings__facilities_enabled':False, route.P+'buildings__facilities_cost_mode':0., route.P+'buildings__facilities_capacity_mode':0.})
+                if key == route.P+'buildings__facilities_enabled':
+                    point.update({route.P+'buildings__facilities_cost_mode':0., route.P+'buildings__facilities_capacity_mode':0.})
+                if key in {route.P+'fuel_cycle__inventory_enabled', route.P+'fuel_cycle__processing_source_conditions'}:
+                    point[route.P+'fuel_cycle__processing_enabled'] = False
+            points.append(route.validate_proposal(point))
+    prepared = route.prepare(route.PACKAGE_DIR, tmp_path/'bridge')
+    bridge = CandidateBridge(prepared.entry_models)
+    for point in points:
+        typed = bridge.build(point)
+        fields = {k:v for model in typed.values() for k,v in model.model_dump().items()}
+        for key in point.keys() & route.BOOLEAN_KEYS:
+            assert fields[key] is point[key]
+    cases, _ = route.run_points('boolean-transport', points, tmp_path/'native')
+    assert len(cases) == len(points) == 12
+    assert all(case.state == 'completed' for case in cases)
+    for point in points:
+        case = next(case for case in cases if dict(case.inputs) == point)
+        for key in point.keys() & route.BOOLEAN_KEYS:
+            assert case.inputs[key] is point[key]

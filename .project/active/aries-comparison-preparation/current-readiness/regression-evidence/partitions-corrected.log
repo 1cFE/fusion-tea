@@ -1,0 +1,3 @@
+groups 14 predicates 25 signed changed {'False': 27, 'True': 63}
+fixture partitions 12
+complete fixture partitions 18

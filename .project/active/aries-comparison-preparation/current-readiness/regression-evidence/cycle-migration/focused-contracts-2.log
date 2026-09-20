@@ -1,0 +1,1027 @@
+.......................EEEEEEEEEEEEEEEEEEEEEE........................... [ 49%]
+.........x.............................................................. [ 98%]
+.x                                                                       [100%]
+==================================== ERRORS ====================================
+_______ ERROR at setup of test_the_summary_validates_against_its_schema ________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+_ ERROR at setup of test_the_summary_is_a_superset_of_the_committed_field_set __
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+___ ERROR at setup of test_parity_holds_at_the_committed_order_of_magnitude ____
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+_ ERROR at setup of test_every_catalog_constraint_is_rederived_with_its_operand_count _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+_ ERROR at setup of test_stratification_covers_every_observed_verdict_combination _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+__________ ERROR at setup of test_stratification_is_a_floor_not_a_cap __________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+_ ERROR at setup of test_the_derived_seed_reproduces_from_the_recorded_fields __
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+_______ ERROR at setup of test_an_explicit_seed_is_recorded_as_explicit ________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+_____ ERROR at setup of test_cas27_is_compared_and_nothing_is_undisclosed ______
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+_________ ERROR at setup of test_the_command_carries_no_absolute_paths _________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+_ ERROR at setup of test_the_operand_bindings_digest_is_the_documented_canonicalization _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+_ ERROR at setup of test_a_planted_channel_deviation_fails_naming_case_and_channel _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+_ ERROR at setup of test_a_planted_verdict_mismatch_fails_naming_the_constraint _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+___ ERROR at setup of test_a_missing_operand_bindings_attribute_fails_closed ___
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+_ ERROR at setup of test_an_unresolvable_binding_fails_naming_the_constraint_and_operand _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+_____ ERROR at setup of test_a_store_bound_to_another_identity_is_refused ______
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+__ ERROR at setup of test_an_empty_result_is_a_broken_input_not_a_clean_pass ___
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+_____________ ERROR at setup of test_the_stores_are_never_written ______________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+_ ERROR at setup of test_stored_operating_controls_preserve_procurement_and_signed_capacity _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="module")
+    def operating_controls(tmp_path_factory, stock_simkit_session_path):
+        """Stored native baseline, installed reserve and physical demand controls."""
+        sys.path.insert(0, str(MANIFEST.parent))
+        import study_route
+    
+        out = tmp_path_factory.mktemp("operating-controls")
+        baseline = json.loads(MANIFEST.read_text())["baseline"]["point"]
+        P = study_route.P
+        proposals = [baseline, {**baseline, f"{P}heating__p_wallplug_heat": 120.0},
+                     {**baseline, f"{P}plasma__f_alpha_fast": 0.96}]
+        cases, db = study_route.run_points("operating-controls", proposals, out / "_work")
+        assert len(cases) == 3 and all(case.state == "completed" for case in cases)
+        ident = study_route.write_identity_document(study_route.PACKAGE_DIR, out / "identity.json")
+>       summary = verify.build_summary(PACKAGE, MANIFEST, ident, [db], 3, None, [])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify.py:319: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/study/verify.py:499: in build_summary
+    common.assert_tree_clean(package_root)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tree = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/pkg/stellarator_tea')
+
+    def assert_tree_clean(tree: Path | str) -> None:
+        """The gate: a package tree must be byte-untouched. Names every offending file."""
+        dirty = git_status_porcelain(tree)
+        if dirty:
+>           raise ToolError(
+                f"package tree is not git-clean: {manifest_mod.repo_relative_posix(tree)}\n{dirty}"
+            )
+E           scripts.study.common.ToolError: package tree is not git-clean: exploration/stellarator_e2e/generated
+E           M exploration/stellarator_e2e/generated/IMPLEMENTATION_BACKLOG.md
+E            M exploration/stellarator_e2e/generated/__init__.py
+E            M exploration/stellarator_e2e/generated/contracts/generation_manifest.json
+E            M exploration/stellarator_e2e/generated/contracts/model_contract.json
+E            M exploration/stellarator_e2e/generated/contracts/package_contract.json
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_power_balance/mfe_power_balance_calc_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/mfe_power_balance/reactor_source_heat_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/buildings/cooling_initial_handoff_days_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/buildings/initial_sector_start_days_impl.py
+E            M exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
+E            M exploration/stellarator_e2e/generated/inputs/mfe_plant_systems_params.json
+E            M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+E            M exploration/stellarator_e2e/generated/modules/constraints/constraintreportaggregatormodule.py
+E            M exploration/stellarator_e2e/generated/modules/constraints/predicates.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/bop_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas20_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas22_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas23_to_28_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/cas2x_pre_contingency.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/overnight_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/powercore_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/reactor_equipment_subtotal.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/replacement_cost_per_event.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_plant/mfe_power_plant/total_capital.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_power_balance/mfe_power_balance_calc.py
+E            M exploration/stellarator_e2e/generated/modules/mfe_power_balance/reactor_source_heat.py
+E            M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/buildings/cooling_initial_handoff_days.py
+E            M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/buildings/initial_sector_start_days.py
+E            M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+E            M exploration/stellarator_e2e/generated/pipelines/pipeline.yaml
+E            M exploration/stellarator_e2e/generated/schemas/mfe_plant_systems_params.py
+E            M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
+E            M exploration/stellarator_e2e/generated/tests/test_implementations_runnable.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/__init__.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/cooling_water_rejection_impl.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/cycle_mode_selection_impl.py
+E           ?? exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/__init__.py
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/cooling_water_rejection.py
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/cycle_mode_selection.py
+E           ?? exploration/stellarator_e2e/generated/modules/mfe_matched_steam_cycle/matched_steam_cycle.py
+E           ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellariscoolingwaterheatdirectionconstraintmodule.py
+E           ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarismatchedmainheatdirectionconstraintmodule.py
+E           ?? exploration/stellarator_e2e/generated/modules/stellarator_09/stellarismatchedreheatheatdirectionconstraintmodule.py
+E           ?? exploration/stellarator_e2e/generated/schemas/cooling_water_rejection_output.py
+E           ?? exploration/stellarator_e2e/generated/schemas/cycle_mode_selection_output.py
+E           ?? exploration/stellarator_e2e/generated/schemas/matched_steam_cycle_output.py
+
+scripts/study/common.py:81: ToolError
+___ ERROR at setup of test_operating_channel_deviation_is_refused[p_coupled] ___
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+__ ERROR at setup of test_operating_channel_deviation_is_refused[p_delivered] __
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+__ ERROR at setup of test_operating_channel_deviation_is_refused[p_wallplug] ___
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7150889da5d0>, _basetemp=PosixPath('/tmp/pytest-of-reid/pytest-13026'), _retention_count=3, _retention_policy='all')
+stock_simkit_session_path = PosixPath('/home/reid/1cfe/teax/packages/teax-simkit')
+
+    @pytest.fixture(scope="session")
+    def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+        """One stock-route execution per session: the availability sweep's store plus the
+        sealed identity document and baseline result the route deposits."""
+        studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+        if studies not in sys.path:
+            sys.path.insert(0, studies)
+        import study_route
+    
+        out = tmp_path_factory.mktemp("stock_route_run")
+        from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+>       study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
+
+tests/study/conftest.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+exploration/stellarator_e2e/studies/study_route.py:422: in run_availability_sweep
+    return export_csv(
+exploration/stellarator_e2e/studies/study_route.py:375: in export_csv
+    return write_csv(csv_rows(cases, axes, package_dir), path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+exploration/stellarator_e2e/studies/study_route.py:343: in csv_rows
+    catalog = _export_catalog(package_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_dir = PosixPath('/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/generated')
+
+    def _export_catalog(package_dir: Path) -> dict[str, dict]:
+        catalog = _catalog_by_constraint_id(package_dir)
+        if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+>           raise RouteError(
+                f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+                f"found {len(catalog)}"
+            )
+E           study_route.RouteError: expected exactly 25 catalogued checks, found 28
+
+exploration/stellarator_e2e/studies/study_route.py:278: RouteError
+=============================== warnings summary ===============================
+tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR tests/study/test_verify.py::test_the_summary_validates_against_its_schema
+ERROR tests/study/test_verify.py::test_the_summary_is_a_superset_of_the_committed_field_set
+ERROR tests/study/test_verify.py::test_parity_holds_at_the_committed_order_of_magnitude
+ERROR tests/study/test_verify.py::test_every_catalog_constraint_is_rederived_with_its_operand_count
+ERROR tests/study/test_verify.py::test_stratification_covers_every_observed_verdict_combination
+ERROR tests/study/test_verify.py::test_stratification_is_a_floor_not_a_cap - ...
+ERROR tests/study/test_verify.py::test_the_derived_seed_reproduces_from_the_recorded_fields
+ERROR tests/study/test_verify.py::test_an_explicit_seed_is_recorded_as_explicit
+ERROR tests/study/test_verify.py::test_cas27_is_compared_and_nothing_is_undisclosed
+ERROR tests/study/test_verify.py::test_the_command_carries_no_absolute_paths
+ERROR tests/study/test_verify.py::test_the_operand_bindings_digest_is_the_documented_canonicalization
+ERROR tests/study/test_verify.py::test_a_planted_channel_deviation_fails_naming_case_and_channel
+ERROR tests/study/test_verify.py::test_a_planted_verdict_mismatch_fails_naming_the_constraint
+ERROR tests/study/test_verify.py::test_a_missing_operand_bindings_attribute_fails_closed
+ERROR tests/study/test_verify.py::test_an_unresolvable_binding_fails_naming_the_constraint_and_operand
+ERROR tests/study/test_verify.py::test_a_store_bound_to_another_identity_is_refused
+ERROR tests/study/test_verify.py::test_an_empty_result_is_a_broken_input_not_a_clean_pass
+ERROR tests/study/test_verify.py::test_the_stores_are_never_written - study_r...
+ERROR tests/study/test_verify.py::test_stored_operating_controls_preserve_procurement_and_signed_capacity
+ERROR tests/study/test_verify.py::test_operating_channel_deviation_is_refused[p_coupled]
+ERROR tests/study/test_verify.py::test_operating_channel_deviation_is_refused[p_delivered]
+ERROR tests/study/test_verify.py::test_operating_channel_deviation_is_refused[p_wallplug]
+122 passed, 2 xfailed, 2 warnings, 22 errors in 88.93s (0:01:28)

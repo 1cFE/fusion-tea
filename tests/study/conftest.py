@@ -282,7 +282,8 @@ def stock_route_run(tmp_path_factory, stock_simkit_session_path):
     import study_route
 
     out = tmp_path_factory.mktemp("stock_route_run")
-    study_route.run_availability_sweep(out)
+    from tests.models.current_mfe_regressions import LEGACY_COOLING_FACILITIES
+    study_route.run_availability_sweep(out, scenario_overrides=LEGACY_COOLING_FACILITIES)
     study_route.execute_baseline(out)
     return {
         "dir": out,

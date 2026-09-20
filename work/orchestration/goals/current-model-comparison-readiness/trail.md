@@ -274,3 +274,28 @@ Native model design · `work/active/WI-073_matched-steam-cycle-for-current-compa
 ### Amendment to T-009 heat-account correction — 2026-09-19
 
 [AGENT] The preserved pre-correction domain receipt is `work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/independent-oracle/native-domain-pre-heat-guard.json`; the preceding entry's filename was transcribed incorrectly. Refreshed `native-check-results.json` and `native-domain-results.json` identify semantic989f6a4492157969ba4777347ab588f18547a5077161172be586e41310ad41a1 and executable7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f. All9450 numerical/status and252 predicate comparisons pass, and all seven invalid combinations refuse in both implementations.
+
+### T-009 scientific lineage checkpoint — 2026-09-19
+
+[AGENT] Local scientific commit `3093d1676d33fbb1e1677797f352c643de309d32` records canonical/staged models, the exact generated package, reviewed numerical seeds, independent oracle and source/validation evidence. The full verifier's clean-package prerequisite required this checkpoint before its regression scope could execute; the initial dirty-package refusals are retained. It is not a full item acceptance or replacement adoption. The generated tree is clean and unrelated pre-staged write-up documents remain staged unchanged. Full regression, committed depth assessment, integration and actual archive restoration remain required. No merge or push occurred.
+
+### T-009 fresh depth result — 2026-09-19
+
+[AGENT] Independent non-author review `evidence/round2/cycle-depth-review.md` and `cycle-depth-evidence/final-cells.json` assigns23/23 scored targets met, three N/A and zero ungraded at scientific commit `3093d1676d33fbb1e1677797f352c643de309d32`. Seven affected cells were regraded; sixteen scored mechanisms were checked for preserved implementation and evidence. Exact canonical/staged/generated file equality and the21 added-input census were verified. This closes the changed-model rubric question, not regression/integration/archive readiness or any owner-held decision.
+
+### T-009 resumption — 2026-09-20
+
+[OWNER-VERBATIM] “proceed”. [AGENT] Resume the authorized preparation after the session interruption. The completed first full scopes expose12 model failures (2296 passed,13 skipped,1 expected incompatibility) and14 study/candidate failures plus8 setup errors (1244 passed,1 skipped,1 expected incompatibility). Their original logs and XML remain in the coding item's `regression-evidence/cycle-migration/`. These are diagnostic runs, not passing completion evidence. The coordinator owns the WI-072 numeric-case historical-mode repair and reviewed residual-interface clarification; the coding author resumes remaining test/adapter repairs. Final full scopes, native integration and actual archive reproduction remain required. Scientific commit and r2 custody are unchanged.
+
+### T-010 scope — 2026-09-20
+
+- **Objective:** Prepare the separately archived replacement comparison candidate and its actual-restoration approval evidence.
+- **Why now:** The matched scientific implementation and depth assessment are independently reviewed. Final regression repairs are bounded to faithful interface/mode checks; finite archive dependency work can proceed without changing the model.
+- **Scope:** Final comparison contracts and assumptions, exact identity and runtime records, selected/control native cases, finite dependency closure, deterministic draft archive, actual-byte independent restoration and the approval packet. Archive execution/admission waits for T-009 regression and integration acceptance. No adoption, reveal or formal closure.
+- **Inputs:** Scientific commit3093d167, current model/executable fingerprints, native science/depth reviews, existing comparison specification and r2 contract, WI-073 finite archive dependency inventory, and final T-009 receipts when available.
+- **Done when:** Exact candidate bytes reproduce independently with complete reporting, unchanged formal criteria and explicit limitations, leaving owner approval as the final step.
+- **Stop when:** A material scientific/scope amendment is required, validation can affect an unexplained comparison claim, or the actual archive cannot be independently restored after the declared bounded corrections.
+
+### T-010 start — 2026-09-20
+
+[AGENT] Draft comparison preparation uses the coding item's reviewed adapter and finite dependency inventory. The coordinator owns final identity, archive membership and native task records; the coding author owns remaining adapter/test repairs; the fresh non-author reviewer will restore actual archive bytes. Read-only dependency preparation is parallel to T-009, but integration, final freezing and restoration remain sequential after their prerequisites.

@@ -1,0 +1,20 @@
+baseline executed
+R14 executed
+invalid_0 EvaluationFailed
+invalid_1 EvaluationFailed
+invalid_2 EvaluationFailed
+invalid_3 EvaluationFailed
+invalid_4 EvaluationFailed
+retired_0 EvaluationFailed
+retired_1 EvaluationFailed
+retired_2 EvaluationFailed
+retired_3 EvaluationFailed
+/home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+  return self.__pydantic_serializer__.to_python(
+Traceback (most recent call last):
+  File "/tmp/pytest-of-reid/pytest-12959/wi0510/acceptance/drivers/native.py", line 27, in <module>
+    a=out[name]; b=old['cases'][ref]['native']; assert set(a['outputs'])==set(e['channels'])==set(b['outputs'])
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,253 @@
+{
+  "authority": "AGENT independent non-author review; final depth only, not full regression or comparison readiness",
+  "scientific_commit": "3093d1676d33fbb1e1677797f352c643de309d32",
+  "rubric_version": ".project/active/demo-depth-rubric/rubric.md@dc0f0b6dc6512b29e1307da647f3a508a1f5356d",
+  "rubric_sha256": "49d4cb8bbf72a05ce74c72ce5beb202a95c7a651218df45df6ffeb6f87fdd592",
+  "semantic_fingerprint": "989f6a4492157969ba4777347ab588f18547a5077161172be586e41310ad41a1",
+  "executable_fingerprint": "7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f",
+  "summary": {
+    "targets_met": 23,
+    "scored": 23,
+    "not_applicable": 3,
+    "ungraded": 0,
+    "regraded_scored": 7,
+    "mechanism_preserved_scored": 16
+  },
+  "review_sha256": "08fbf466aabbb262b8e4cb0b2112f7819c72697016a2b00d61b318e92abee13e",
+  "cells": [
+    {
+      "cell_id": "R1.P",
+      "score": 3,
+      "target": 3,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "An achievable operating point: a confinement/transport relation links field and heating to density and temperature, and a beta, density, or power limit pushes back on the choice",
+      "prior_limit": "P4 requires operating point jointly closed with magnets and heating over a justified, independently checked range; the selected reduced-model search retains fixed profiles, empirical transport and unqualified conductor/geometry assumptions.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R1.S",
+      "score": "not_applicable",
+      "target": "not_applicable",
+      "disposition": "not_applicable",
+      "prior_anchor": "S is not applicable: the plasma has no hardware or cost account of its own; its structure is the calc spine, and its cost lives in rows 3/4.",
+      "prior_limit": "No next level applies: this dimension is explicitly not applicable in the pinned rubric.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R2.S",
+      "score": 3,
+      "target": 3,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "Replaceable units vs life-of-plant components separately sized; replacement logic follows computed life",
+      "prior_limit": "Component-specific design, fabrication and installation estimates with validated uncertainty remain absent; the plant-wide partial envelope does not supply them.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R2a.P",
+      "score": 3,
+      "target": 3,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "2a: wall-load limit pushes back on the design",
+      "prior_limit": "P4 requires neutronics/damage closure across the build, searched and independently checked; a held calibration on a simplified torus does not provide it.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R2b.P",
+      "score": 3,
+      "target": 3,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "2b: lifetime feeds replacement schedule and availability",
+      "prior_limit": "P4 requires material-specific neutronics and damage closure across the build; the shared in-vessel replacement clock does not calculate divertor erosion or shielding-dependent coil life.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R2c.P",
+      "score": 3,
+      "target": 3,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "2c: computed TBR vs floor pushes back on blanket/build choices",
+      "prior_limit": "No coupled neutronics/damage design closure across the build, design search with that closure, or justified physical uncertainty model is established.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R3.P",
+      "score": 3,
+      "target": 3,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "A stress or current-density limit pushes back on coil sizing and field choice",
+      "prior_limit": "P4 requires independently checked coil-set closure over a justified physical range; continuous reference-conductor sizing and local rectangular fit still lack qualified product/angle/strain data, full coil geometry and independently validated structural closure.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R3.S",
+      "score": 3,
+      "target": 3,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "Winding pack, structure, power supplies, cryoplant costed as separately sized sub-accounts",
+      "prior_limit": "The limited insulation alternative does not establish design-based fabrication/installation coverage, qualified manufacturing scope and uncertainty for the complete magnet estimate.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R4.P",
+      "score": 2,
+      "target": 2,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "Wall-plug \u2192 coupled-power chain computed with a stated deposition assumption, verified",
+      "prior_limit": "P3 requires both plasma-derived demand and a port, coupling or geometry limit; required demand exists, but generic efficiency-domain bounds and installed-power capacity do not establish that hardware constraint.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R4.S",
+      "score": 2,
+      "target": 2,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "Cost follows installed heating power with source basis",
+      "prior_limit": "Sources, transmission and launchers need separate equipment cost accounts and replaceable-component lives.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R5.P",
+      "score": 3,
+      "target": 3,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "A heat-flux or erosion limit pushes back on operation or geometry",
+      "prior_limit": "P4 needs exhaust and detachment closure, searched and independently checked; fixed reference transport/profile transfer plus an accounting identity is not that closure.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R5.S",
+      "score": 2,
+      "target": 2,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "Cost follows divertor thermal power or area with source basis",
+      "prior_limit": "Targets/cassettes need explicit replaceable units with replacement logic from their own computed life.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R6.P",
+      "score": 2,
+      "target": 2,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "Shell volume from the radial build and a computed gas-load/pumping estimate, verified",
+      "prior_limit": "P3 requires vessel structural or actual pumping-capacity constraints; required effective speed alone supplies neither a selected pumping train nor a capacity limit.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R6.S",
+      "score": 2,
+      "target": 2,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "Cost follows computed shell volume/mass with source basis",
+      "prior_limit": "Shell, ports and pumping train need separately sized cost subaccounts.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R7.P",
+      "score": 3,
+      "target": 3,
+      "disposition": "regraded",
+      "prior_anchor": "The computed loop feeds the recirculation/net-power constraints so coolant choices push back on feasibility",
+      "prior_limit": "P4 requires thermal-hydraulic state closure across the loop; imposed temperatures, transferred fixed-layout losses and unresolved salt/conversion state remain.",
+      "current_reason_reference": "../cycle-depth-review.md#affected-cells"
+    },
+    {
+      "cell_id": "R7.S",
+      "score": 3,
+      "target": 3,
+      "disposition": "regraded",
+      "prior_anchor": "Pumps, piping, heat exchangers as separately sized subaccounts",
+      "prior_limit": "S4 lacks qualified design/procurement boundaries and validation against an appropriate engineered reference; conditional partial uncertainty now exists but does not supply those missing elements.",
+      "current_reason_reference": "../cycle-depth-review.md#affected-cells"
+    },
+    {
+      "cell_id": "R8.P",
+      "score": 3,
+      "target": 2,
+      "disposition": "regraded",
+      "prior_anchor": "Cycle responds to blanket/coolant temperature with a materials or temperature limit pushing back",
+      "prior_limit": "P4 requires thermodynamic state closure with the primary loop; a source-fit correlation and failed salt/steam temperature interface do not provide it.",
+      "current_reason_reference": "../cycle-depth-review.md#affected-cells"
+    },
+    {
+      "cell_id": "R8.S",
+      "score": 2,
+      "target": 2,
+      "disposition": "regraded",
+      "prior_anchor": "Costs follow computed gross/net power with source basis",
+      "prior_limit": "S3 requires turbine island, electrical plant and heat sink as separately sized subaccounts; current power-rate aggregates do not provide that.",
+      "current_reason_reference": "../cycle-depth-review.md#affected-cells"
+    },
+    {
+      "cell_id": "R9.P",
+      "score": "not_applicable",
+      "target": "not_applicable",
+      "disposition": "not_applicable",
+      "prior_anchor": "Buildings carry no plasma physics; their depth is structural",
+      "prior_limit": "No next level applies to a dimension the pinned rubric declares not applicable.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R9.S",
+      "score": 3,
+      "target": 3,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "Building set sized by volume/function from layout drivers, incl. hot cell and remote-handling facilities",
+      "prior_limit": "S4 still lacks engineered/reference-validated layout and complete procurement/services boundaries; later conditional uncertainty in civil units does not cure those omissions.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R10.P",
+      "score": 2,
+      "target": 2,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "Tritium inventory, startup requirement, and processing throughput forward-computed, verified",
+      "prior_limit": "Computed stock and decay affect the running breeding requirement, but calendar-dependent annual makeup remains diagnostic. Availability, physical equipment limits and obtainable startup supply do not form the integrated self-sufficiency feasibility closure required for P3.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R10.S",
+      "score": 2,
+      "target": 2,
+      "disposition": "mechanism_preserved",
+      "prior_anchor": "Processing-plant cost follows computed throughput with source basis",
+      "prior_limit": "Four historical rows share an aggregate throughput law; processing subsystems are not independently sized subaccounts with appropriate lifecycle logic.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R11.P",
+      "score": 3,
+      "target": 3,
+      "disposition": "regraded",
+      "prior_anchor": "Availability derived from the maintenance/replacement schedule and feeds the economics, pushing back on design choices",
+      "prior_limit": "P4 lacks qualified maintenance sequence/logistics closure: new facilities screens use the existing calendar and preserve failed assumptions rather than close the schedule with all required outages.",
+      "current_reason_reference": "../cycle-depth-review.md#affected-cells"
+    },
+    {
+      "cell_id": "R11.S",
+      "score": 2,
+      "target": 2,
+      "disposition": "regraded",
+      "prior_anchor": "Levelized replacement follows computed component life",
+      "prior_limit": "S3 requires replacement per component class plus decomposed O&M and decommissioning; new cooling classes improve replacement detail but inherited staffing/power O&M and aggregate decommissioning still fail that full conjunction.",
+      "current_reason_reference": "../cycle-depth-review.md#affected-cells"
+    },
+    {
+      "cell_id": "R12.P",
+      "score": "not_applicable",
+      "target": "not_applicable",
+      "disposition": "not_applicable",
+      "prior_anchor": "The economics layer's depth is structural.",
+      "prior_limit": "Economics layer depth is structural; this rubric has no physics axis for R12.",
+      "current_reason_reference": "../cycle-depth-review.md#carry-forward-by-mechanism-not-package-identity"
+    },
+    {
+      "cell_id": "R12.S",
+      "score": 3,
+      "target": 3,
+      "disposition": "regraded",
+      "prior_anchor": "3-digit functional subaccounts where cost concentrates, plus a stated estimate class and uncertainty treatment",
+      "prior_limit": "Complete bottom-up procurement coverage, engineered risk/correlation/schedule treatment and suitable reference validation are absent.",
+      "current_reason_reference": "../cycle-depth-review.md#affected-cells"
+    }
+  ]
+}

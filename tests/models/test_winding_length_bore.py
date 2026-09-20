@@ -85,7 +85,13 @@ def test_the_winding_chain_follows_the_bore_at_fixed_major_radius(oracle):
 
 def test_the_winding_chain_is_invariant_in_the_major_radius_at_fixed_bore(oracle):
     base = _point(oracle, 12.7, 1.3)
-    for R in (11.43, 15.7):
+    with pytest.raises(ValueError, match='conductor current: unsupported field'):
+        _point(oracle, 15.7, 1.3)
+    # Preserve the original wide-radius claim at the winding-only boundary.
+    reference=oracle.vs._winding_procurement(oracle.vs.IN,25.,123.,12.2904)
+    for R in (11.43,15.7):
+        assert oracle.vs._winding_procurement(oracle.vs.IN | {'R':R},25.,123.,12.2904)==reference
+    for R in (11.43, 14.0):
         other = _point(oracle, R, 1.3)
         for channel in ("magnet__winding_procurement__conductor_length", "magnet__winding_procurement__cost",
                         "magnet__winding_pack_cost__cost", "magnet__wp_volume__vol_winding_pack", "cryoplant__cryo_elec__p_elec"):

@@ -1,0 +1,27 @@
+F...............................................................x        [100%]
+=================================== FAILURES ===================================
+_____ test_legacy_replay_preserves_entering_physics_and_non_tape_accounts ______
+
+oracle = <module 'verify_stellaris' from '/home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/verify_stellaris.py'>
+
+    def test_legacy_replay_preserves_entering_physics_and_non_tape_accounts(oracle):
+        entering = json.loads((EVIDENCE/'entering_oracle.json').read_text())
+        from tests.models.current_mfe_regressions import WI059_REPLAY, oracle_local_overrides, assert_local_partition
+        saved = oracle.IN.copy()
+        try:
+>           oracle.IN.update(oracle_local_overrides(WI059_REPLAY))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/models/test_coil_thermal_inventory.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+point = {'stellarator_09__stellaris__buildings__facilities_capacity_mode': 0.0, 'stellarator_09__stellaris__buildings__facilit...tellaris__buildings__facilities_enabled': False, 'stellarator_09__stellaris__cryoplant__inventory_enabled': False, ...}
+
+    def oracle_local_overrides(point):
+>       import oracle_entry
+E       ModuleNotFoundError: No module named 'oracle_entry'
+
+tests/models/current_mfe_regressions.py:521: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/models/test_coil_thermal_inventory.py::test_legacy_replay_preserves_entering_physics_and_non_tape_accounts
+1 failed, 63 passed, 1 xfailed in 43.81s

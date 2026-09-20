@@ -57,3 +57,16 @@ Add `mfe_steam_cycle_components.sysml` under `models/library/structure/`. Reuse 
 Water ports carry only always-supported pressure [MPa], specific enthalpy [kJ/kg] and mass flow [kg/s]. Temperature and entropy remain named component-state properties where supported, rather than universally promised port fields. Extend existing interfaces with a heat-duty port [MW] and shaft-power port [MW]; reuse Electric Port. Connect salt supply/return through explicit split/join ports on the matched assembly to SG/reheater, with each branch flow bound above. Connect turbine shafts to generator, condenser plus conversion-loss heat to rejection, and electric-plant recirculating supply to both cycle pump input and heat-rejection pump input. Physical ports are declarative; scalar bindings execute. No component result feeds back as a separate solver input.
 
 [AGENT; fresh-review released correction] Active matched mode requires admitted equipment heat to equal `source_heat_MW + selected_recovered_MW` under the existing arithmetic closure tolerance before property work. This prevents mixed historical/current heat modes from producing contradictory gross electricity. Inactive mode returns before reading these facts. No new entry-point facts, output channels or engineering acceptance bands are added. Native adversarial evidence and critic ruling are in the goal Round2 record.
+
+## Signed closure diagnostics — reviewed clarification, 2026-09-20
+
+[AGENT; independent critic approved] These six diagnostics measure arithmetic conservation residuals. Their signed definitions are explicit so independent implementations compare the same quantity. They are not additional engineering acceptance bands.
+
+- `salt_heat_residual_MW`: admitted heat minus salt mass flow times heat capacity times the hot-to-return temperature difference.
+- `heater_mass_residual_kg_s`: condensate inlet flow plus extraction inlet flow minus mixed outlet flow. The independent reference previously used the opposite sign; that interface error is corrected with compensated summation while preserving the raw prior receipt.
+- `heater_energy_residual_MW`: inlet condensate and extraction enthalpy flows minus mixed outlet enthalpy flow.
+- `cycle_shaft_residual_MW`: admitted heat plus pump shaft work minus turbine shaft work and condenser heat.
+- `cycle_electric_residual_MW`: admitted heat plus cycle pump electricity minus gross electricity and total cycle rejection before cooling-water pumping.
+- `water_energy_residual_MW`: cooling-water enthalpy rise minus total rejected heat including cooling-water pump electricity.
+
+[AGENT; independently reviewed numerical policy] The finance regression's six new near-zero diagnostics use relative tolerance1e-9 and absolute tolerance1e-9 in their stated MW or kg/s units. The general released scalar policy already permits absolute1e-6; this scoped finance comparison is stricter. All pre-existing finance channels retain their original relative-only comparison, rate invariance stays exact and engineering predicates stay strict. Production closure guards are unchanged. Independent operation order may leave small signed roundoff; no value is clipped to zero.

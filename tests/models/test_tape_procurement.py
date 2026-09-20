@@ -1,3 +1,4 @@
+from tests.models.current_mfe_regressions import (CURRENT_PREDICATES, historical_point, assert_historical_native, assert_current_predicates, PARTITIONS)
 """WI-060 physical tape inventory, independent geometry and public accounting."""
 import math
 import pytest
@@ -62,7 +63,7 @@ def test_tape_price_preserves_quantity_and_all_predicates(evaluate, price):
     for suffix in ('tape_length', 'conductor_length', 'winding_fabrication_cost'):
         assert output(changed, 'magnet__winding_procurement__' + suffix) == output(baseline, 'magnet__winding_procurement__' + suffix)
     assert output(changed, 'magnet__winding_procurement__tape_cost') == pytest.approx(output(baseline, 'magnet__winding_procurement__tape_cost') * price / 20)
-    assert len([k for k in baseline.responses if k != 'headline']) == 20
+    assert set(baseline.responses) == CURRENT_PREDICATES | {'headline'}
     assert baseline.responses == changed.responses
 
 

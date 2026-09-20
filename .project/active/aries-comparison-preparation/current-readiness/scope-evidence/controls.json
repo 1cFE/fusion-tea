@@ -1,0 +1,377 @@
+{
+  "changed_defaults": {
+    "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": {
+      "current_default": 0.0,
+      "r2_default": 0.0,
+      "r2_selected": 1.0
+    },
+    "stellarator_09__stellaris__plasma__alpha_T": {
+      "current_default": 1.19,
+      "r2_default": 1.19,
+      "r2_selected": 1.2
+    },
+    "stellarator_09__stellaris__plasma__alpha_n": {
+      "current_default": 0.33,
+      "r2_default": 0.33,
+      "r2_selected": 0.35
+    }
+  },
+  "conditioned_seams": [
+    {
+      "id": "held_cycle",
+      "keys": {
+        "stellarator_09__stellaris__turbine__cycle_live": 0.0,
+        "stellarator_09__stellaris__turbine__eta_th_direct": null
+      },
+      "reason": "Supply thermal efficiency instead of predicting cycle conversion.",
+      "scope": "separate conditioned diagnostic only; never replace blind result or earn independent credit"
+    },
+    {
+      "id": "held_pump",
+      "keys": {
+        "stellarator_09__stellaris__heat_transport__eta_p_direct": null,
+        "stellarator_09__stellaris__heat_transport__loop_live": 0.0,
+        "stellarator_09__stellaris__heat_transport__p_pump_direct": null
+      },
+      "reason": "Supply electrical pumping and recovered fraction instead of predicting hydraulic draw.",
+      "scope": "separate conditioned diagnostic only; never replace blind result or earn independent credit"
+    },
+    {
+      "id": "held_calendar",
+      "keys": {
+        "stellarator_09__stellaris__availability_direct": null
+      },
+      "reason": "Supply positive availability instead of predicting live outage calendar.",
+      "scope": "separate conditioned diagnostic only; never replace blind result or earn independent credit"
+    },
+    {
+      "id": "loop_accommodation",
+      "keys": {
+        "stellarator_09__stellaris__heat_transport__n_loops": null
+      },
+      "reason": "Change representative circuit count; installed price and layout remain unknown.",
+      "scope": "separate conditioned diagnostic only; never replace blind result or earn independent credit"
+    },
+    {
+      "id": "legacy_inventory",
+      "keys": {
+        "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 0.0
+      },
+      "reason": "Historical fixed-density inventory diagnostic.",
+      "scope": "separate conditioned diagnostic only; never replace blind result or earn independent credit"
+    },
+    {
+      "id": "finance_scenario",
+      "keys": {
+        "stellarator_09__stellaris__construction_years": null,
+        "stellarator_09__stellaris__discount_rate": null,
+        "stellarator_09__stellaris__inflation_rate": null,
+        "stellarator_09__stellaris__operational_years": null
+      },
+      "reason": "Separate declared finance/lifetime scenario, not a common-year conversion.",
+      "scope": "separate conditioned diagnostic only; never replace blind result or earn independent credit"
+    },
+    {
+      "derivations": {
+        "current": "15.4e6*(12.74/12.7)",
+        "shape": "425/(2*pi^2*12.74*1.3^2)"
+      },
+      "id": "table5_geometry_field",
+      "input_roles": {
+        "stellarator_09__stellaris__magnet__coil__I_coil": "derived_from_supplied_field",
+        "stellarator_09__stellaris__plasma__R": "supplied",
+        "stellarator_09__stellaris__plasma__a": "supplied",
+        "stellarator_09__stellaris__plasma__alpha_T": "supplied",
+        "stellarator_09__stellaris__plasma__alpha_n": "supplied",
+        "stellarator_09__stellaris__plasma__f_shape": "derived_from_supplied_volume"
+      },
+      "keys": {
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15448503.937007876,
+        "stellarator_09__stellaris__plasma__R": 12.74,
+        "stellarator_09__stellaris__plasma__a": 1.3,
+        "stellarator_09__stellaris__plasma__alpha_T": 1.2,
+        "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+        "stellarator_09__stellaris__plasma__f_shape": 1.0000070376114356
+      },
+      "output_roles": {
+        "stellarator_09__stellaris__magnet__field_calc__B_axis": "supplied",
+        "stellarator_09__stellaris__magnet__peak_field_calc__B_peak": "derived_from_supplied_field"
+      },
+      "reason": "Shape is derived from supplied volume and current from supplied field at supplied radius; historical magnetic anchors stay fixed.",
+      "scope": "separate supplied Stellaris Table 5 control; no independent prediction credit; no holdout data",
+      "source": "work/orchestration/goals/stellaris-plasma-power-balance/freeze-recommendation.md",
+      "supplied_quantities": {
+        "axis_field": {
+          "independent_prediction_credit": false,
+          "role": "supplied",
+          "unit": "T",
+          "value": 9.0
+        },
+        "plasma_volume": {
+          "independent_prediction_credit": false,
+          "role": "supplied",
+          "unit": "m^3",
+          "value": 425.0
+        }
+      }
+    }
+  ],
+  "current_count": 421,
+  "current_defaults_hash": "ebed292a07ebfe4e840927d27851809ffd005353a32360a2dfb0a09125ad3b15",
+  "forward_overrides": {
+    "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.0,
+    "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+    "stellarator_09__stellaris__plasma__alpha_T": 1.2,
+    "stellarator_09__stellaris__plasma__alpha_n": 0.35
+  },
+  "independent_inputs": [
+    {
+      "default": 12.7,
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs",
+      "key": "stellarator_09__stellaris__plasma__R",
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "reason": "Major radius using the model geometric definition; no equilibrium/topology substitution.",
+      "reference_value": null,
+      "unit": "m"
+    },
+    {
+      "default": 1.3,
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs",
+      "key": "stellarator_09__stellaris__plasma__a",
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "reason": "Minor radius using the model geometric definition; no optimized shape inference.",
+      "reference_value": null,
+      "unit": "m"
+    },
+    {
+      "default": 5.06e+20,
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs",
+      "key": "stellarator_09__stellaris__plasma__n_e0",
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "reason": "Peak electron density; average density is not interchangeable.",
+      "reference_value": null,
+      "unit": "m^-3"
+    },
+    {
+      "default": 14.63,
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs",
+      "key": "stellarator_09__stellaris__plasma__T_i0",
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "reason": "Peak ion temperature; electron or volume-average temperature is not interchangeable.",
+      "reference_value": null,
+      "unit": "keV"
+    },
+    {
+      "default": 15400000.0,
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs",
+      "key": "stellarator_09__stellaris__magnet__coil__I_coil",
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "reason": "Reference-coil ampere-turns; neither turn current nor coil-set aggregate.",
+      "reference_value": null,
+      "unit": "A-turn"
+    },
+    {
+      "default": 0.3,
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs",
+      "key": "stellarator_09__stellaris__magnet__coil__coil_t",
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "reason": "Independently specified radial exterior allocation, not solved from target fit.",
+      "reference_value": null,
+      "unit": "m"
+    },
+    {
+      "default": 0.4,
+      "evidence_required": "same design revision, exact quantity definition, source locator, uncertainty and units; no inference from desired outputs",
+      "key": "stellarator_09__stellaris__magnet__casing__interior_y",
+      "missing_policy": "retain_default_and_label_held; block fixed-reference-point claim for dependent rows",
+      "reason": "Independently specified transverse clear cavity, not exterior casing width.",
+      "reference_value": null,
+      "unit": "m"
+    }
+  ],
+  "new_current_keys": {
+    "stellarator_09__stellaris__buildings__administration_area_per_person": 12.0,
+    "stellarator_09__stellaris__buildings__administration_occupants": 200.0,
+    "stellarator_09__stellaris__buildings__building_separation": 10.0,
+    "stellarator_09__stellaris__buildings__civil_cpi_ratio": 1.2819593787335721,
+    "stellarator_09__stellaris__buildings__civil_rate_multiplier": 1.0,
+    "stellarator_09__stellaris__buildings__clean_positions": 36.0,
+    "stellarator_09__stellaris__buildings__component_handling_margin": 0.5,
+    "stellarator_09__stellaris__buildings__component_height": 2.0,
+    "stellarator_09__stellaris__buildings__component_hold_days": 365.25,
+    "stellarator_09__stellaris__buildings__component_install_days": 0.5,
+    "stellarator_09__stellaris__buildings__component_length": 2.0,
+    "stellarator_09__stellaris__buildings__component_material_fraction": 0.5,
+    "stellarator_09__stellaris__buildings__component_prepare_days": 1.0,
+    "stellarator_09__stellaris__buildings__component_process_days": 1.0,
+    "stellarator_09__stellaris__buildings__component_receipt_lead_days": 90.0,
+    "stellarator_09__stellaris__buildings__component_remove_days": 0.5,
+    "stellarator_09__stellaris__buildings__component_width": 4.0,
+    "stellarator_09__stellaris__buildings__control_area_per_person": 15.0,
+    "stellarator_09__stellaris__buildings__control_occupants": 30.0,
+    "stellarator_09__stellaris__buildings__conventional_floor": 0.3,
+    "stellarator_09__stellaris__buildings__conventional_rebar_density": 100.0,
+    "stellarator_09__stellaris__buildings__conventional_roof": 0.2,
+    "stellarator_09__stellaris__buildings__conventional_shop_height": 8.0,
+    "stellarator_09__stellaris__buildings__conventional_shop_length": 20.0,
+    "stellarator_09__stellaris__buildings__conventional_shop_width": 15.0,
+    "stellarator_09__stellaris__buildings__conventional_wall": 0.3,
+    "stellarator_09__stellaris__buildings__cooldown_days": 30.0,
+    "stellarator_09__stellaris__buildings__cooling_airlock_length": 17.0,
+    "stellarator_09__stellaris__buildings__cooling_aisle_width": 6.0,
+    "stellarator_09__stellaris__buildings__cooling_bundle_process_days": 5.0,
+    "stellarator_09__stellaris__buildings__cooling_bundle_stations": 2.0,
+    "stellarator_09__stellaris__buildings__cooling_clean_bundle_positions": 14.0,
+    "stellarator_09__stellaris__buildings__cooling_clean_helium_positions": 29.0,
+    "stellarator_09__stellaris__buildings__cooling_clean_salt_positions": 29.0,
+    "stellarator_09__stellaris__buildings__cooling_cross_width": 17.0,
+    "stellarator_09__stellaris__buildings__cooling_dirty_bundle_positions": 14.0,
+    "stellarator_09__stellaris__buildings__cooling_dirty_helium_positions": 28.0,
+    "stellarator_09__stellaris__buildings__cooling_dirty_salt_positions": 28.0,
+    "stellarator_09__stellaris__buildings__cooling_field_cycle_days": 0.2,
+    "stellarator_09__stellaris__buildings__cooling_headroom": 9.0,
+    "stellarator_09__stellaris__buildings__cooling_hold_days": 365.25,
+    "stellarator_09__stellaris__buildings__cooling_initial_receipt_lead_days": 180.0,
+    "stellarator_09__stellaris__buildings__cooling_internal_move_days": 0.1,
+    "stellarator_09__stellaris__buildings__cooling_machine_process_days": 2.0,
+    "stellarator_09__stellaris__buildings__cooling_machine_stations": 2.0,
+    "stellarator_09__stellaris__buildings__cooling_package_margin": 1.0,
+    "stellarator_09__stellaris__buildings__cooling_prepare_bundle_days": 1.0,
+    "stellarator_09__stellaris__buildings__cooling_prepare_machine_days": 0.5,
+    "stellarator_09__stellaris__buildings__cooling_prepare_stations": 2.0,
+    "stellarator_09__stellaris__buildings__cooling_receipt_lead_days": 90.0,
+    "stellarator_09__stellaris__buildings__cryo_coldbox_height": 10.0,
+    "stellarator_09__stellaris__buildings__cryo_coldbox_length": 20.0,
+    "stellarator_09__stellaris__buildings__cryo_coldbox_width": 12.0,
+    "stellarator_09__stellaris__buildings__cryo_compressors_height": 8.0,
+    "stellarator_09__stellaris__buildings__cryo_compressors_length": 30.0,
+    "stellarator_09__stellaris__buildings__cryo_compressors_width": 12.0,
+    "stellarator_09__stellaris__buildings__dirty_buffer_positions": 18.0,
+    "stellarator_09__stellaris__buildings__dirty_store_positions": 36.0,
+    "stellarator_09__stellaris__buildings__divertor_packages_per_sector": 4.0,
+    "stellarator_09__stellaris__buildings__exterior_allowance": 2.0,
+    "stellarator_09__stellaris__buildings__external_access_width": 12.0,
+    "stellarator_09__stellaris__buildings__facilities_capacity_mode": 1.0,
+    "stellarator_09__stellaris__buildings__facilities_cost_mode": 1.0,
+    "stellarator_09__stellaris__buildings__facilities_enabled": 1.0,
+    "stellarator_09__stellaris__buildings__fuel_height": 8.0,
+    "stellarator_09__stellaris__buildings__fuel_length": 30.0,
+    "stellarator_09__stellaris__buildings__fuel_width": 20.0,
+    "stellarator_09__stellaris__buildings__heat_rejection_length": 100.0,
+    "stellarator_09__stellaris__buildings__heat_rejection_width": 60.0,
+    "stellarator_09__stellaris__buildings__helium_package_height": 4.0,
+    "stellarator_09__stellaris__buildings__helium_package_length": 6.0,
+    "stellarator_09__stellaris__buildings__helium_package_width": 3.0,
+    "stellarator_09__stellaris__buildings__hx_end_allowance": 2.0,
+    "stellarator_09__stellaris__buildings__initial_receipt_lead_days": 180.0,
+    "stellarator_09__stellaris__buildings__land_rate_per_acre": 10000.0,
+    "stellarator_09__stellaris__buildings__nuclear_floor": 1.0,
+    "stellarator_09__stellaris__buildings__nuclear_rebar_density": 150.0,
+    "stellarator_09__stellaris__buildings__nuclear_roof": 1.0,
+    "stellarator_09__stellaris__buildings__nuclear_wall": 2.0,
+    "stellarator_09__stellaris__buildings__occupancy_aspect_ratio": 2.0,
+    "stellarator_09__stellaris__buildings__occupancy_circulation_factor": 1.3,
+    "stellarator_09__stellaris__buildings__occupancy_height": 4.0,
+    "stellarator_09__stellaris__buildings__onsite_ac_height": 6.0,
+    "stellarator_09__stellaris__buildings__onsite_ac_length": 16.0,
+    "stellarator_09__stellaris__buildings__onsite_ac_width": 8.0,
+    "stellarator_09__stellaris__buildings__power_supply_height": 8.0,
+    "stellarator_09__stellaris__buildings__power_supply_length": 20.0,
+    "stellarator_09__stellaris__buildings__power_supply_width": 10.0,
+    "stellarator_09__stellaris__buildings__provisional_envelope_scale": 1.0,
+    "stellarator_09__stellaris__buildings__reactor_aux_height": 10.0,
+    "stellarator_09__stellaris__buildings__reactor_aux_length": 30.0,
+    "stellarator_09__stellaris__buildings__reactor_aux_width": 20.0,
+    "stellarator_09__stellaris__buildings__recommission_days": 30.0,
+    "stellarator_09__stellaris__buildings__retained_site_improvements": 85000000.0,
+    "stellarator_09__stellaris__buildings__salt_package_height": 3.0,
+    "stellarator_09__stellaris__buildings__salt_package_length": 3.0,
+    "stellarator_09__stellaris__buildings__salt_package_width": 2.0,
+    "stellarator_09__stellaris__buildings__sector_bays": 4.0,
+    "stellarator_09__stellaris__buildings__sector_clean_days": 7.0,
+    "stellarator_09__stellaris__buildings__sector_count": 4.0,
+    "stellarator_09__stellaris__buildings__sector_headroom": 3.0,
+    "stellarator_09__stellaris__buildings__sector_join_days": 7.0,
+    "stellarator_09__stellaris__buildings__sector_route_clearance": 6.0,
+    "stellarator_09__stellaris__buildings__sector_service_teams": 2.0,
+    "stellarator_09__stellaris__buildings__sector_split_days": 7.0,
+    "stellarator_09__stellaris__buildings__sector_test_days": 7.0,
+    "stellarator_09__stellaris__buildings__sector_transport_days": 2.0,
+    "stellarator_09__stellaris__buildings__security_area_per_person": 12.0,
+    "stellarator_09__stellaris__buildings__security_occupants": 10.0,
+    "stellarator_09__stellaris__buildings__service_water_height": 8.0,
+    "stellarator_09__stellaris__buildings__service_water_length": 20.0,
+    "stellarator_09__stellaris__buildings__service_water_width": 15.0,
+    "stellarator_09__stellaris__buildings__site_services_height": 6.0,
+    "stellarator_09__stellaris__buildings__site_services_length": 20.0,
+    "stellarator_09__stellaris__buildings__site_services_width": 10.0,
+    "stellarator_09__stellaris__buildings__sub_concrete_rate": 444.0233350945057,
+    "stellarator_09__stellaris__buildings__sub_formwork_rate": 700.0942889733001,
+    "stellarator_09__stellaris__buildings__sub_rebar_rate": 4.726624780628814,
+    "stellarator_09__stellaris__buildings__super_concrete_rate": 611.6152342453729,
+    "stellarator_09__stellaris__buildings__super_formwork_rate": 716.6635281988968,
+    "stellarator_09__stellaris__buildings__super_rebar_rate": 5.4683224473628815,
+    "stellarator_09__stellaris__buildings__tonne_interpretation_kg": 907.18474,
+    "stellarator_09__stellaris__buildings__turbine_height": 15.0,
+    "stellarator_09__stellaris__buildings__turbine_length": 60.0,
+    "stellarator_09__stellaris__buildings__turbine_width": 20.0,
+    "stellarator_09__stellaris__buildings__ventilation_coefficient": 1000.0,
+    "stellarator_09__stellaris__buildings__ventilation_cpi_ratio": 2.462892119357307,
+    "stellarator_09__stellaris__buildings__ventilation_exponent": 0.8,
+    "stellarator_09__stellaris__buildings__waste_package_yield": 1.0,
+    "stellarator_09__stellaris__fuel_cycle__inventory_enabled": 1.0,
+    "stellarator_09__stellaris__fuel_cycle__m_D_kg": 3.3435837768e-27,
+    "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin": 1.0,
+    "stellarator_09__stellaris__fuel_cycle__processing_cleanup_capital": 1000000.0,
+    "stellarator_09__stellaris__fuel_cycle__processing_cleanup_cpi": 82.4,
+    "stellarator_09__stellaris__fuel_cycle__processing_cleanup_installation": 70000.0,
+    "stellarator_09__stellaris__fuel_cycle__processing_containment_capital": 182000.0,
+    "stellarator_09__stellaris__fuel_cycle__processing_containment_cpi": 82.4,
+    "stellarator_09__stellaris__fuel_cycle__processing_containment_installation": 30000.0,
+    "stellarator_09__stellaris__fuel_cycle__processing_distiller_capital": 1237000.0,
+    "stellarator_09__stellaris__fuel_cycle__processing_distiller_cpi": 65.2,
+    "stellarator_09__stellaris__fuel_cycle__processing_distiller_installation": 63000.0,
+    "stellarator_09__stellaris__fuel_cycle__processing_enabled": 1.0,
+    "stellarator_09__stellaris__fuel_cycle__processing_exponent": 0.3,
+    "stellarator_09__stellaris__fuel_cycle__processing_price_multiplier": 1.0,
+    "stellarator_09__stellaris__fuel_cycle__processing_reference_flow": 2.08e-05,
+    "stellarator_09__stellaris__fuel_cycle__processing_source_conditions": 1.0,
+    "stellarator_09__stellaris__fuel_cycle__processing_target_cpi": 321.9,
+    "stellarator_09__stellaris__fuel_cycle__processing_transfer_capital": 111000.0,
+    "stellarator_09__stellaris__fuel_cycle__processing_transfer_cpi": 60.6,
+    "stellarator_09__stellaris__fuel_cycle__processing_transfer_installation": 112000.0,
+    "stellarator_09__stellaris__fuel_cycle__reserve_fraction": 0.25,
+    "stellarator_09__stellaris__fuel_cycle__shutdown_duration": 86400.0,
+    "stellarator_09__stellaris__fuel_cycle__startup_extension": 0.0,
+    "stellarator_09__stellaris__fuel_cycle__tau_blanket": 86400.0,
+    "stellarator_09__stellaris__fuel_cycle__tau_buffer": 0.0,
+    "stellarator_09__stellaris__fuel_cycle__tau_extract": 86400.0,
+    "stellarator_09__stellaris__fuel_cycle__tau_feed": 1200.0,
+    "stellarator_09__stellaris__fuel_cycle__tau_process": 14400.0,
+    "stellarator_09__stellaris__fuel_cycle__tau_reserve": 86400.0,
+    "stellarator_09__stellaris__heat_transport__equipment_accessory_mass": 10000.0,
+    "stellarator_09__stellaris__heat_transport__equipment_bundle_life": 15.0,
+    "stellarator_09__stellaris__heat_transport__equipment_cost_mode": 1.0,
+    "stellarator_09__stellaris__heat_transport__equipment_costscale": 1.0,
+    "stellarator_09__stellaris__heat_transport__equipment_enabled": 1.0,
+    "stellarator_09__stellaris__heat_transport__equipment_eta_motor": 0.95,
+    "stellarator_09__stellaris__heat_transport__equipment_eta_p": 0.75,
+    "stellarator_09__stellaris__heat_transport__equipment_inventory_reserve": 0.1,
+    "stellarator_09__stellaris__heat_transport__equipment_layout_multiplier": 1.0,
+    "stellarator_09__stellaris__heat_transport__equipment_machine_life": 10.0,
+    "stellarator_09__stellaris__heat_transport__equipment_makeup_fraction": 0.001,
+    "stellarator_09__stellaris__heat_transport__equipment_removal_multiplier": 1.0,
+    "stellarator_09__stellaris__heat_transport__equipment_saltprice_source_choice": 0.0,
+    "stellarator_09__stellaris__heat_transport__equipment_secondary_head": 40.0,
+    "stellarator_09__stellaris__heat_transport__equipment_shell_wall": 0.2,
+    "stellarator_09__stellaris__heat_transport__equipment_stainless_fabrication_usd2017_per_kg": 310.0,
+    "stellarator_09__stellaris__heat_transport__equipment_tube_wall": 0.0015,
+    "stellarator_09__stellaris__heat_transport__secondary_energy_mode": 1.0
+  },
+  "r2_count": 246,
+  "r2_defaults_hash": "b9fc71a1d3e28908b4507f2d86669faa4b49daf9ed5dfb7ba45a37d5d7ac2207",
+  "removed_current_keys": [
+    "stellarator_09__stellaris__blanket__tbr",
+    "stellarator_09__stellaris__fuel_cycle__I_total"
+  ]
+}

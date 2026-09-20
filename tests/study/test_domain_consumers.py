@@ -16,6 +16,7 @@ from tests.models.current_mfe_regressions import (WI059_PARAMETERS, WI059_EXISTI
 from tests.models.current_mfe_regressions import WI060_PARAMETERS, LIVE_CONDUCTOR_CHANNELS
 
 import pytest
+from tests.models.current_mfe_regressions import ADDITIONAL_DOMAIN, ADDITIONAL_MAPPING, CURRENT_NUMERIC, CURRENT_PREDICATES, assert_current_predicates
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "exploration/stellarator_e2e/studies"))
@@ -109,15 +110,15 @@ def wi040_expected(row):
     ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
     ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
     ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
-    ({"T_cold_cryo": -1.0}, "0 < T_cold < T_amb"),
-    ({"T_cold_cryo": 0.0}, "0 < T_cold < T_amb"),
-    ({"T_cold_cryo": 300.0}, "0 < T_cold < T_amb"),
-    ({"T_cold_cryo": 301.0}, "0 < T_cold < T_amb"),
+    ({"T_cold_cryo": -1.0}, "oracle conductor current: invalid temperature"),
+    ({"T_cold_cryo": 0.0}, "oracle conductor current: invalid temperature"),
+    ({"T_cold_cryo": 300.0}, "oracle conductor current: unsupported temperature/construction"),
+    ({"T_cold_cryo": 301.0}, "oracle conductor current: unsupported temperature/construction"),
     ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
     ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
     ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
     ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
-      "p_cryo_direct": 2.0}, "0 < T_cold < T_amb"),
+      "p_cryo_direct": 2.0}, "oracle conductor current: invalid temperature"),
 ])
 def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
     saved = dict(oracle.vs.IN)
@@ -132,9 +133,9 @@ def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, messa
     ("plasma__R", COIL_RADIUS, "live magnet clearance"),
     ("magnet__coil__R_ref", COIL_RADIUS, "reference magnet clearance"),
     ("magnet__coil__a_coil_ref", 13.0, "reference magnet clearance"),
-    ("cryoplant__T_cold_cryo", 0.0, "0 < T_cold < T_amb"),
-    ("cryoplant__T_cold_cryo", 300.0, "0 < T_cold < T_amb"),
-    ("cryoplant__T_cold_cryo", 301.0, "0 < T_cold < T_amb"),
+    ("cryoplant__T_cold_cryo", 0.0, "oracle conductor current: invalid temperature"),
+    ("cryoplant__T_cold_cryo", 300.0, "oracle conductor current: unsupported temperature/construction"),
+    ("cryoplant__T_cold_cryo", 301.0, "oracle conductor current: unsupported temperature/construction"),
 ])
 def test_supported_adapter_inputs_propagate_deliberate_domain_error(suffix, value, message):
     with pytest.raises(ValueError, match=message):
@@ -151,13 +152,15 @@ def test_valid_outputs_exactly_preserved_and_physical_identities(row):
         return
     result = oracle._compute(overrides)
     expected, changed = wi040_expected(row)
-    added = {k for k,v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v in WI062_CHANNELS | WI063_CHANNELS}
-    assert result.keys() == expected.keys() | added
-    for name, value in expected.items():
-        if name in changed:
-            assert result[name] == pytest.approx(value, rel=1e-12, abs=1e-9), name
-        else:
-            assert result[name] == value, name
+    part=ADDITIONAL_DOMAIN[str(BEFORE['controls'].index(row))]
+    unchanged=set(part['unaffected_exact_locals']); changed_names=set(part['changed_current_equation_locals'])
+    assert set(row['outputs']) == unchanged | changed_names
+    assert set(result) == set(row['outputs']) | set(part['added_local_names'])
+    for name in unchanged:
+        assert result[name] == row['outputs'][name], name
+    for name in changed | changed_names:
+        value = result['breeding_tbr_mean'] - result['fuel_tbr_required'] if name == 'fuel_tbr_margin' else expected[name]
+        assert result[name] == pytest.approx(value, rel=1e-12, abs=1e-9), name
     p = {**oracle.vs.IN, **wi058_overrides(row)}
     # Multiply the field relation through by clearance; no division near its pole.
     lhs = result["B_peak"] * (p["R"] - result["r_coil_centre"]) * p["magnet_R_ref"]
@@ -175,23 +178,50 @@ def test_valid_outputs_exactly_preserved_and_physical_identities(row):
 
 
 def test_adapter_contract_and_ambient_limit_preserved():
-    from tests.models.current_mfe_regressions import (WI040_PARAMETERS, WI040_CHANNELS, WI038_PARAMETERS,
-                                                      WI058_PARAMETERS, WI058_RETIRED)
-    old_inputs = renamed_keys(BEFORE['input_mapping'])
-    # WI-058 (2026-09-14): the seam maps c_coil_ref in place of the retired k_coil; the count stays 118.
-    assert WI058_RETIRED <= old_inputs.keys()
-    old_inputs = {k: v for k, v in old_inputs.items() if k not in WI058_RETIRED}
-    assert {k: v for k, v in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items() if k not in WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS} == old_inputs
-    assert oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys() - old_inputs.keys() == WI040_PARAMETERS | WI038_PARAMETERS | WI058_PARAMETERS | WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS
-    old_outputs = renamed_values(BEFORE['output_mapping'])
-    # The old selected winding alias now denotes the additive account; preserve its
-    # previous channel under the explicit legacy name, and add the subtotal coverage.
-    old_outputs['winding_pack_legacy'] = old_outputs.pop('winding_pack')
-    old_outputs['p_cryo'] = oracle.P + 'cryoplant__refrigeration_sum__total'
-    extras = WI062_CHANNELS | WI063_CHANNELS | WI061_CHANNELS | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_ORACLE_ADDED_CHANNELS | {oracle.P + 'reactor_equipment_subtotal__reactor_equipment_subtotal'}
-    assert {k: v for k, v in oracle.ORACLE_OUTPUT_TO_CHANNEL.items() if v not in extras} == old_outputs
-    assert set(oracle.ORACLE_OUTPUT_TO_CHANNEL.values()) - set(old_outputs.values()) == extras
-    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 118 + len(WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS | WI061_MAPPED_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS)
-    for suffix in ("cryoplant__T_amb_cryo", "unknown_domain_input"):  # WI-057 (2026-09-13): the key carries its part's path
-        with pytest.raises(oracle.OracleSeamError, match="no declared oracle mapping"):
+    assert set(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == set(ADDITIONAL_MAPPING['mapped_input_keys'])
+    for key,value in ADDITIONAL_MAPPING['unchanged_input_bindings'].items():
+        assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[key] == value, key
+    expected = ADDITIONAL_MAPPING['historical_output_bindings_after_explicit_alias_translation'] | ADDITIONAL_MAPPING['added_output_bindings']
+    assert oracle.ORACLE_OUTPUT_TO_CHANNEL == expected
+    assert set(expected.values()) == CURRENT_NUMERIC
+    assert len(expected) == len(set(expected.values()))
+    for suffix in ('cryoplant__T_amb_cryo', 'unknown_domain_input'):
+        with pytest.raises(oracle.OracleSeamError, match='no declared oracle mapping'):
             oracle.evaluate({oracle.P + suffix: 300.0})
+
+
+@pytest.mark.parametrize('cold,dormant', [(-1.,False),(0.,False),(300.,False),(301.,False),(0.,True),(0.,False),(300.,False),(301.,False)])
+def test_original_cryoplant_domain_guard_remains(cold, dormant, stock_simkit_path):
+    sys.path.insert(0,str(ROOT/'exploration/stellarator_e2e/pkg'))
+    from stellarator_tea.modules.mfe_cryo_plant.cryoplant_electrical_power import Cryoplant_Electrical_PowerInput
+    from stellarator_tea.handwritten.mfe_cryo_plant.cryoplant_electrical_power_impl import run_cryoplant_electrical_power
+    inputs=Cryoplant_Electrical_PowerInput(T_cold=cold,T_amb=300.,q_nuc=0. if dormant else 1000.,vol_cold=1.,p_fixed=0. if dormant else .1,f_uplift=1.,f_carnot=.2,p_direct=2. if dormant else 0.)
+    with pytest.raises(ValueError, match='^Cryoplant Electrical Power: require 0 < T_cold < T_amb$'):
+        run_cryoplant_electrical_power(inputs)
+
+
+def test_three_qualified_domain_rows_have_complete_independent_native_coverage(tmp_path, stock_simkit_path):
+    import study_route as route
+    from types import SimpleNamespace
+    names={local:key for key,local in oracle.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+    names.update({'q_nuc_cryo':oracle.P+'magnet__winding_pack__q_nuc_cryo',
+                  'p_fixed_cryo':oracle.P+'cryoplant__p_fixed_cryo',
+                  'p_cryo_direct':oracle.P+'cryoplant__p_cryo'})
+    points=[]
+    expectations=[]
+    for index in (0,1,3):
+        row=BEFORE['controls'][index]
+        point=WI059_REPLAY | {names[k]:v for k,v in row['overrides'].items()}
+        if 'R' in row['overrides']:
+            point[names['magnet_c_coil_ref']]=K_COIL_RETIRED * row['overrides']['R']
+        points.append(point)
+        independent=oracle._compute(wi058_overrides(row))
+        expectations.append({channel:float(independent[name]) for name,channel in oracle.ORACLE_OUTPUT_TO_CHANNEL.items()})
+    cases,_=route.run_points('domain-historical-qualified',points,tmp_path)
+    assert len(cases)==3
+    for case,point,expected in zip(cases,points,expectations):
+        assert case.state=='completed'
+        assert set(case.outputs)==set(expected)==CURRENT_NUMERIC
+        for key,value in expected.items():
+            assert case.outputs[key]==pytest.approx(value,rel=1e-9,abs=1e-9),key
+        assert_current_predicates(SimpleNamespace(outputs=case.outputs,responses=dict(case.verdicts,headline=case.headline)),point,expected)

@@ -55,21 +55,21 @@ def test_disabled_inventory_does_not_evaluate_new_domain(oracle):
 
 def test_legacy_replay_preserves_entering_physics_and_non_tape_accounts(oracle):
     entering = json.loads((EVIDENCE/'entering_oracle.json').read_text())
+    from tests.models.current_mfe_regressions import WI059_REPLAY, oracle_local_overrides, assert_local_partition
     saved = oracle.IN.copy()
     try:
-        oracle.IN.update(magnet_insulation_sheet_price=0., cryo_inventory_enabled=False, magnet_support_coefficient=0,
-                         magnet_legacy_casing_fraction=1, cryo_joint_drive_fraction=0,
-                         cryo_q_nuc_structure=0, structure_residual_fraction=1)
+        oracle.IN.update(oracle_local_overrides(WI059_REPLAY))
         actual = oracle.compute()
     finally:
         oracle.IN.clear(); oracle.IN.update(saved)
-    # WI-060 changes the selected tape account and its declared capital descendants.
-    from tests.models.current_mfe_regressions import WI040_CHANGED_ECONOMICS
-    changed = set(WI040_CHANGED_ECONOMICS) | {'winding_pack', 'tape_procurement_cost',
-        'conductor_cost_per_kAm_effective', 'cas30_capital'}
-    for key, value in entering['outputs'].items():
-        if key not in changed:
-            assert actual[key] == pytest.approx(value, rel=1e-12, abs=1e-12), key
+    changed=assert_local_partition('coil-thermal-local-0', actual, entering['outputs'])
+    from tests.study.test_domain_consumers import wi040_expected
+    expected,_=wi040_expected({'outputs':entering['outputs'],'overrides':{}})
+    for key in changed-{'conductor_cost_per_kAm_effective','fuel_tbr_margin'}:
+        assert actual[key] == pytest.approx(expected[key],rel=1e-12,abs=1e-9),key
+    assert actual['fuel_tbr_margin'] == actual['breeding_tbr_mean']-actual['fuel_tbr_required']
+    # Changed economic values have independent complete native/oracle checks in
+    # current_mfe_regressions.assert_historical_native and the WI-040 delta test.
 
 
 @pytest.fixture(scope='module')
@@ -145,7 +145,8 @@ def test_study_route_preserves_the_authored_boolean_control():
     key=route.P+'cryoplant__inventory_enabled'
     assert route.validate_proposal({key:False}) == {key:False}
     assert route.validate_proposal({key:False})[key] is False
-    assert route.validate_proposal({route.P+'plasma__R':False}) is None
+    with pytest.raises(route.RouteError,match='finite numeric'):
+        route.validate_proposal({route.P+'plasma__R':False})
 
 
 def test_turn_current_changes_lead_heat_but_not_geometry_heat(native_inventory, oracle):

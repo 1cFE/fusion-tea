@@ -1,0 +1,13 @@
+E                                                                        [100%]
+==================================== ERRORS ====================================
+______ ERROR at setup of test_complete_native_and_direct_parity[baseline] ______
+tests/models/test_mfe_major_radius.py:147: in acceptance
+    return radius_acceptance(tmp_path_factory.mktemp('wi051')/'acceptance',H)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/current_mfe_regressions.py:482: in radius_acceptance
+    assert result.returncode == 0, f'{name} failed: {destination / (name + ".log")}'
+           ^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: direct failed: /tmp/pytest-of-reid/pytest-12966/wi0510/acceptance/direct.log
+=========================== short test summary info ============================
+ERROR tests/models/test_mfe_major_radius.py::test_complete_native_and_direct_parity[baseline]
+1 error in 24.03s

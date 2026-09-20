@@ -15,6 +15,7 @@ import jsonschema
 import pytest
 
 from scripts.study import verify
+from tests.models.current_mfe_regressions import CURRENT_PREDICATES
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 VERIFY = REPO_ROOT / "scripts" / "study" / "verify.py"
@@ -111,11 +112,19 @@ def test_every_catalog_constraint_is_rederived_with_its_operand_count(summary):
         "divertor_heat_ok",
         "heating_source_positive_ok", "heating_source_upper_ok",
         "heating_couple_positive_ok", "heating_couple_upper_ok",
+        "facility_capacity_ok", "facility_outage_ok", "facility_routes_ok",
+        "facility_replacement_ready", "facility_initial_ready",
+        "matched_main_heat_direction", "matched_reheat_heat_direction", "cooling_water_heat_direction",
     }
     assert rederived["wp_fit_ok"] == 1
     assert rederived["net_positive"] == 1  # the other operand is the literal 0.0
     assert rederived["burn_hold_ok"] == 1  # likewise: one computed operand against the literal 0.0
     assert all(count >= 1 for count in rederived.values())
+    for name in ('facility_capacity_ok','facility_outage_ok','facility_routes_ok','facility_replacement_ready','facility_initial_ready'):
+        assert rederived[name] == 1
+    for name in ("matched_main_heat_direction", "matched_reheat_heat_direction", "cooling_water_heat_direction"):
+        assert rederived[name] == 2
+    assert sum(rederived.values()) == 41  # Original 35 plus three active-mode/gap pairs.
 
 
 def test_stratification_covers_every_observed_verdict_combination(summary):
@@ -309,7 +318,7 @@ def operating_controls(tmp_path_factory, stock_simkit_session_path):
     ident = study_route.write_identity_document(study_route.PACKAGE_DIR, out / "identity.json")
     summary = verify.build_summary(PACKAGE, MANIFEST, ident, [db], 3, None, [])
     assert summary["worst_channel_rel_dev"] < 1e-9
-    assert len(summary["constraints_rederived"]) == 20
+    assert {row["constraint_id"] for row in summary["constraints_rederived"]} == CURRENT_PREDICATES
     return cases, summary
 
 
@@ -339,7 +348,7 @@ def test_stored_operating_controls_preserve_procurement_and_signed_capacity(oper
         -10.920399212073221
     )
     verdicts = study_route.short_verdicts(baseline)
-    assert len(verdicts) == 20
+    assert set(baseline.verdicts) == CURRENT_PREDICATES
     assert {name for name, status in verdicts.items() if status != "satisfied"} == {
         "divertor_heat_ok", "wp_fit_ok", "reference_conductor_current_ok", "tbr_ok"
     }  # WI-066: the baseline now fails calculated breeding adequacy.
@@ -378,3 +387,34 @@ def test_zero_efficiency_is_a_recorded_native_execution_failure(stock_simkit_pat
     assert cases[0].state == "execution_failed"
     with pytest.raises(study_route.RouteError):
         study_route.csv_rows(cases, [])
+
+
+@pytest.mark.parametrize("enabled,gap,expected", [(0.,-1.,True),(1.,1.,True),(1.,0.,False),(1.,-1.,False)])
+@pytest.mark.parametrize("negated", [False,True])
+def test_exact_active_heat_direction_disjunction(enabled,gap,expected,negated):
+    literal=lambda value:{"kind":"literal","literal":{"value":value}}
+    feature=lambda name:{"kind":"feature_ref","reference":{"source_name":name}}
+    ir={"kind":"operator","operator":"or","operands":[
+        {"kind":"operator","operator":"<=","operands":[feature("enabled"),literal(0.)]},
+        {"kind":"operator","operator":">","operands":[feature("gap"),literal(0.)]}]}
+    entry={"predicate_ir":json.dumps(ir),"is_negated":negated}
+    bindings={"heat":{"enabled":{"kind":"input","key":"mode"},"gap":{"kind":"channel","key":"raw_gap"}}}
+    result,count=verify.derive_verdict("heat",entry,bindings,{"mode":enabled},{},{"raw_gap":gap})
+    assert result is (not expected if negated else expected)
+    assert count==2
+
+
+@pytest.mark.parametrize("failure", ["missing","nonfinite","unsupported","wrong_arity"])
+def test_true_disjunction_cannot_hide_missing_or_invalid_evidence(failure):
+    literal=lambda value:{"kind":"literal","literal":{"value":value}}
+    left={"kind":"operator","operator":"<=","operands":[literal(0.),literal(0.)]}
+    right={"kind":"operator","operator":">","operands":[{"kind":"feature_ref","reference":{"source_name":"gap"}},literal(0.)]}
+    ir={"kind":"operator","operator":"or","operands":[left,right]}
+    channels={"raw_gap":1.}
+    if failure=="missing":channels={}
+    elif failure=="nonfinite":channels={"raw_gap":float("nan")}
+    elif failure=="unsupported":right["operator"]="xor"
+    else:ir["operands"].append(left)
+    with pytest.raises(verify.VerifyError):
+        verify.derive_verdict("heat",{"predicate_ir":json.dumps(ir)},
+            {"heat":{"gap":{"kind":"channel","key":"raw_gap"}}},{},{},channels)

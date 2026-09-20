@@ -1,3 +1,4 @@
+from tests.models.current_mfe_regressions import (CURRENT_PREDICATES, historical_point, assert_historical_native, assert_current_predicates, PARTITIONS)
 """WI-040: independent inventory identities, deliberate domains and public accounting seams."""
 import importlib
 import math
@@ -222,7 +223,7 @@ def test_accounting_levers_preserve_physics_and_operating_verdicts(evaluate, key
         unchanged += ['winding_procurement__tape_cost', 'material_inventory__material_cost']
     for suffix in unchanged:
         assert output(after, 'magnet__' + suffix) == output(before, 'magnet__' + suffix)
-    assert len([k for k in before.responses if k != 'headline']) == 20
+    assert set(before.responses) == CURRENT_PREDICATES | {'headline'}
     assert before.responses == after.responses
     # Explicit physical owners/calculations, not all channels with an economic name filtered out.
     physical = ('plasma__', 'magnet__field_calc__', 'magnet__peak_field_calc__',

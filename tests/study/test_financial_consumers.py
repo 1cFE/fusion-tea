@@ -15,6 +15,7 @@ import oracle_entry as oracle
 import oracle_finance as finance
 import study_route as route
 from tests.study.financial_channels import FINANCIAL_CHANNELS
+from tests.models.current_mfe_regressions import CURRENT_PARAMETERS, CURRENT_NUMERIC, CURRENT_PREDICATES, ADDITIONAL_MAPPING, FINANCE_DEPENDENCIES, LEGACY_COOLING_FACILITIES, assert_current_predicates, oracle_local_overrides
 
 RATES = [0.0, 0.02, 0.08] + [sign * magnitude for magnitude in (1e-4, 1e-8, 1e-12, 1e-16, 1e-18) for sign in (-1, 1)]
 
@@ -88,44 +89,86 @@ def test_calendar_dates_and_finance(rate, held):
 
 
 def test_current_rate_route_and_coverage(tmp_path, stock_simkit_path):
+    import sqlite3
+    from types import SimpleNamespace
     rates = [.07, .02, .02-1e-12, .02+1e-12, 0.] + [sign*magnitude for magnitude in (1e-4, 1e-8, 1e-12, 1e-16, 1e-18) for sign in (-1, 1)]
     proposals = [{route.P+'availability_direct': held, route.P+'discount_rate': rate}
                  for held in (0., .85) for rate in rates]
-    cases, _ = route.run_points('finance-current-contract', proposals, tmp_path / 'route')
-    assert len(cases) == len(proposals)
-    inputs = {}
+    current,db = route.run_points('finance-current-contract', proposals, tmp_path / 'current')
+    legacy,_ = route.run_points('finance-qualified-legacy-contract', [LEGACY_COOLING_FACILITIES | p for p in proposals], tmp_path / 'legacy')
+    assert len(current)==len(legacy)==len(proposals)==30
+    with sqlite3.connect(f'file:{db}?mode=ro',uri=True) as connection:
+        failures={candidate:json.loads(payload) if payload else None for candidate,payload in connection.execute('select candidate_id,failure_json from cases')}
+    for case in current:
+        rate=case.inputs[route.P+'discount_rate']; held=case.inputs[route.P+'availability_direct']
+        if rate < 0:
+            assert case.state=='execution_failed'
+            assert failures[case.candidate_id]['cause']=='ValueError: negative allowance or invalid makeup fraction'
+            assert failures[case.candidate_id]['module_or_channel']==route.P+'heat_transport__equipment'
+        elif held:
+            assert case.state=='execution_failed'
+            assert failures[case.candidate_id]['cause']=='ValueError: facilities requires one module, four sectors, live calendar'
+            assert failures[case.candidate_id]['module_or_channel']==route.P+'buildings__layout'
+        else:
+            assert case.state=='completed'
+    assert sum(c.state=='completed' for c in current)==10
+    assert all(c.state=='completed' for c in legacy)
+    inputs={}
     for path in (route.PACKAGE_DIR/'inputs').glob('*.json'):
         inputs.update(json.loads(path.read_text()))
-    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS)  # WI-038 adds two explicitly mapped grade inputs.
-    assert len(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == 118 + len(WI059_PARAMETERS | WI059_EXISTING_MAPPED_PARAMETERS | WI060_PARAMETERS)
-    assert len(set(inputs)-oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys()) == 147 + len(WI059_NATIVE_ONLY_PARAMETERS) - len(WI059_EXISTING_MAPPED_PARAMETERS)
-    controls = {}
-    rows = []
-    for case in cases:
-        assert case.state == 'completed', (dict(case.inputs), case.state)
-        if case.inputs[route.P+'discount_rate'] == .07:
-            controls[case.inputs[route.P+'availability_direct']] = case
-    for case in cases:
-        control = controls[case.inputs[route.P+'availability_direct']]
-        assert len(case.outputs) == 177 + len(WI059_CHANNELS)  # WI-038 adds three grade outputs.
-        assert case.verdicts == control.verdicts
-        assert len(case.verdicts) == 18
-        for channel in case.outputs.keys() - FINANCIAL_CHANNELS:
-            assert case.outputs[channel] == control.outputs[channel], channel
-        expected = oracle.evaluate(case.inputs)
-        covered_finance = set(expected) & FINANCIAL_CHANNELS
-        for channel in covered_finance:
-            relative(case.outputs[channel], expected[channel])
-        rows.append({'inputs': dict(case.inputs), 'finance': {
-            channel: {'native': case.outputs[channel], 'oracle': expected[channel]}
-            for channel in sorted(covered_finance)}, 'nonfinancial_exact': len(case.outputs.keys() - FINANCIAL_CHANNELS),
-            'verdicts': route.short_verdicts(case)})
-    evidence = {'native_inputs': sorted(inputs), 'mapping': oracle.ENTRY_KEY_TO_ORACLE_INPUT,
-                'unmapped': sorted(set(inputs)-oracle.ENTRY_KEY_TO_ORACLE_INPUT.keys()),
-                'native_outputs': sorted(cases[0].outputs), 'oracle_mapping': oracle.ORACLE_OUTPUT_TO_CHANNEL,
-                'uncovered_outputs': sorted(set(cases[0].outputs)-set(expected)),
-                'covered_finance': sorted(covered_finance), 'cases': rows}
-    (tmp_path/'finance-route-evidence.json').write_text(json.dumps(evidence, indent=2)+'\n')
+    assert set(inputs)==CURRENT_PARAMETERS
+    assert set(oracle.ENTRY_KEY_TO_ORACLE_INPUT)==set(ADDITIONAL_MAPPING['mapped_input_keys'])
+    assert set(inputs)-set(oracle.ENTRY_KEY_TO_ORACLE_INPUT)==CURRENT_PARAMETERS-set(ADDITIONAL_MAPPING['mapped_input_keys'])
+    financial=set(FINANCE_DEPENDENCIES['complete_channels']); unchanged=set(FINANCE_DEPENDENCIES['unchanged_channels'])
+    assert financial | unchanged == CURRENT_NUMERIC and not financial & unchanged
+    assert FINANCIAL_CHANNELS <= financial
+    rows=[]
+    for label,cases in [('current',[c for c in current if c.state=='completed']),('qualified-legacy',legacy)]:
+        controls={c.inputs[route.P+'availability_direct']:c for c in cases if c.inputs[route.P+'discount_rate']==.07}
+        for case in cases:
+            control=controls[case.inputs[route.P+'availability_direct']]
+            assert set(case.outputs)==CURRENT_NUMERIC
+            assert set(case.verdicts)==CURRENT_PREDICATES
+            assert case.verdicts==control.verdicts
+            for channel in unchanged:
+                assert case.outputs[channel]==control.outputs[channel],(label,channel)
+            expected=oracle.evaluate(case.inputs)
+            assert set(expected)==CURRENT_NUMERIC
+            closure_residuals = {route.P+suffix for suffix in (
+                'turbine__matched_cycle__salt_heat_residual_MW',
+                'turbine__matched_cycle__heater_mass_residual_kg_s',
+                'turbine__matched_cycle__heater_energy_residual_MW',
+                'turbine__matched_cycle__cycle_shaft_residual_MW',
+                'turbine__matched_cycle__cycle_electric_residual_MW',
+                'heat_rejection__cooling_water__water_energy_residual_MW')}
+            assert closure_residuals <= expected.keys()
+            for channel,value in expected.items():
+                if channel in closure_residuals:
+                    assert case.outputs[channel] == pytest.approx(value, rel=1e-9, abs=1e-9), channel
+                else:
+                    relative(case.outputs[channel],value)
+            assert_current_predicates(SimpleNamespace(outputs=case.outputs,responses=dict(case.verdicts,headline=case.headline)),case.inputs)
+            p=oracle.vs.IN | oracle_local_overrides(case.inputs)
+            equipment=route.P+'heat_transport__equipment__'
+            annual=0.
+            if p['cooling_enabled']:
+                with localcontext() as context:
+                    context.prec=100
+                    rate=Decimal(p['discount_rate']); years=Decimal(p['operational_years']); base=1+rate
+                    recovery=1/years if not rate else rate/(1-(-years*base.ln()).exp())
+                    pv=Decimal(0)
+                    for kind in ('machine','bundle'):
+                        life=Decimal(p['cooling_'+kind+'_life']); k=1
+                        cost=sum(Decimal(expected[equipment+kind+'_event_'+item]) for item in ('purchase','installation','removal'))
+                        while k*life < years:
+                            pv+=cost/(base**(k*life));k+=1
+                    annual=float(pv*recovery)
+            relative(case.outputs[equipment+'replacement_annual'],annual)
+            selected=p['cooling_cost_mode']*annual
+            relative(case.outputs[route.P+'heat_transport__cooling_selection__replacement_annual'],selected)
+            relative(case.outputs[route.P+'cooling_annual__cas72_total'],expected[route.P+'calendar__cas72_annual']+selected)
+            rows.append({'family':label,'inputs':dict(case.inputs),'financial':{k:{'native':case.outputs[k],'oracle':expected[k]} for k in sorted(financial)},'nonfinancial_exact':len(unchanged),'verdicts':route.short_verdicts(case)})
+    (tmp_path/'finance-route-evidence.json').write_text(json.dumps({'cases':rows,'current_failure_evidence':failures,'mapped_inputs':sorted(oracle.ENTRY_KEY_TO_ORACLE_INPUT),'unmapped_inputs':sorted(set(inputs)-set(oracle.ENTRY_KEY_TO_ORACLE_INPUT)),'financial_channels':sorted(financial),'unchanged_channels':sorted(unchanged)},indent=2)+'\n')
 
 
 @pytest.mark.parametrize('rate', RATES)

@@ -12,7 +12,7 @@ them as data and fails closed on anything unresolved.
 This test proves the publication is possible and correct against the real contract,
 before anything consumes it. It resolves all eight constraints — no sampling.
 """
-from tests.models.current_mfe_regressions import WI062_PARAMETERS, WI063_PARAMETERS, WI064_PARAMETERS
+from tests.models.current_mfe_regressions import WI062_PARAMETERS, WI063_PARAMETERS, WI064_PARAMETERS, CURRENT_PREDICATES, CURRENT_PARAMETERS, FACILITY_PREDICATES
 
 from tests.models.current_mfe_regressions import WI060_PARAMETERS, WI059_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES
 
@@ -95,13 +95,13 @@ def package_inputs(package_path):
 
 def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
     entries = catalog_entries(real_package_path)
-    assert len(entries) == 20
+    assert {entry['constraint_id'] for entry in entries} == CURRENT_PREDICATES
     bindings = oracle_entry.operand_bindings()
     channels = oracle_entry.evaluate(BASELINE_POINT)
     inputs = package_inputs(real_package_path)
 
     assert set(bindings) == {entry["constraint_id"] for entry in entries}
-    assert len(inputs) == 265 + len(WI059_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI064_PARAMETERS)  # WI-040 adds seventeen inputs; WI-038 adds two references.
+    assert set(inputs) == CURRENT_PARAMETERS  # WI-040 adds seventeen inputs; WI-038 adds two references.
     resolved = 0
     for entry in entries:
         cid = entry["constraint_id"]
@@ -118,7 +118,9 @@ def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
                 f"a package {binding['kind']}"
             )
             resolved += 1
-    assert resolved == 30
+    assert resolved == 41  # Original 35 plus two bound operands in each of three WI-073 predicates.
+    for cid in FACILITY_PREDICATES:
+        assert len(bindings[cid]) == 1
 
 
 def test_the_operand_that_resolves_to_nothing_by_name_is_bound_explicitly(
@@ -148,7 +150,8 @@ def test_the_bindings_are_a_copy_a_caller_cannot_corrupt(oracle_entry):
 
 
 def test_the_shim_reproduces_the_pinned_headline(oracle_entry):
-    lcoe = oracle_entry.evaluate(BASELINE_POINT)["stellarator_09__stellaris__lcoe_calc__lcoe"]
+    from tests.models.current_mfe_regressions import POST_WI065_REPLAY
+    lcoe = oracle_entry.evaluate(BASELINE_POINT | POST_WI065_REPLAY)["stellarator_09__stellaris__lcoe_calc__lcoe"]
     assert abs(lcoe - PINNED_LCOE) / PINNED_LCOE < 1e-9, lcoe
 
 

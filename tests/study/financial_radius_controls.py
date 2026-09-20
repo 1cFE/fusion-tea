@@ -1,3 +1,4 @@
+from tests.models.current_mfe_regressions import CURRENT_NUMERIC, CURRENT_PREDICATES, PARTITIONS, assert_historical_native
 """Current radius controls: exact frozen physics, independently checked finance roundoff."""
 
 from tests.models.current_mfe_regressions import WI061_PARAMETERS, WI061_MAPPED_PARAMETERS, WI061_CHANNELS, WI062_CHANNELS, WI063_CHANNELS
@@ -42,26 +43,20 @@ def check_controls(out):
         expected = frozen["cases"][old_name]["native"]
         # WI-057 (2026-09-13): the frozen WI-051 expectations under the new channel names.
         frozen_outputs = renamed_keys(expected["outputs"])
-        expected_outputs = dict(frozen_outputs)
-        channels = oracle.evaluate(proposal)
-        changed_costs = {oracle.ORACLE_OUTPUT_TO_CHANNEL[name] for name in WI040_CHANGED_ECONOMICS}
-        # Preserve every frozen physical/structured value. Only the named WI-040
-        # accounting descendants and new inventory channels use current expectations.
-        for key in changed_costs | WI040_CHANNELS | WI060_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS:
-            expected_outputs[key] = channels[key]
-        # Both controls retain the reference envelope: the two retained grade outputs are
-        # known exactly without replacing any frozen physical value.
-        expected_outputs.update({route.P + 'magnet__conductor_grade__' + k: v for k, v in {
-            'quantity_factor': 1.0, 'j_wp_effective': 118.8271604938272}.items()})
-        expected_outputs.update(wi059_native_additions(frozen_outputs, oracle.vs.IN))
-        assert set(case.outputs) == set(expected_outputs) == {renamed(c) for c in expectations["channels"]} | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS
-        for key, value in expected_outputs.items():
-            assert (
-                math.isclose(case.outputs[key], value, rel_tol=1e-9, abs_tol=0.0)
-                if key in WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | FINANCIAL_CHANNELS | changed_costs | WI040_CHANNELS | WI059_CHANNELS | WI060_CHANNELS
-                else case.outputs[key] == value
-            ), (name, key, case.outputs[key], value)
-        assert set(channels) == set(oracle.ORACLE_OUTPUT_TO_CHANNEL.values())
+        channels=oracle.evaluate(proposal)
+        partition=PARTITIONS['fixture_partitions']['radius-'+old_name]
+        changed=set(partition['changed_current_equation_channels'])
+        additions=set(partition['added_channels'])
+        assert set(frozen_outputs)==set(partition['unaffected_exact_channels']) | changed
+        expected_outputs=dict(frozen_outputs)
+        expected_outputs.update({k:channels[k] for k in changed | additions})
+        assert set(case.outputs)==set(expected_outputs)==CURRENT_NUMERIC
+        for key,value in expected_outputs.items():
+            if key in changed | additions | FINANCIAL_CHANNELS:
+                assert math.isclose(case.outputs[key],value,rel_tol=1e-9,abs_tol=0.0),(name,key,case.outputs[key],value)
+            else:
+                assert case.outputs[key]==value,(name,key,case.outputs[key],value)
+        assert set(channels)==CURRENT_NUMERIC
         rows = {}
         for key, value in channels.items():
             assert math.isclose(value, case.outputs[key], rel_tol=1e-9, abs_tol=1e-9), (
@@ -85,7 +80,7 @@ def check_controls(out):
             "verdicts": route.short_verdicts(case),
             "oracle_channels": rows,
         }
-        assert len(case.verdicts) == 20
+        assert set(case.verdicts) == CURRENT_PREDICATES
     ratios = {}
     for suffix, expected in expectations["ratios"].items():
         key = renamed(route.P + suffix)  # WI-057
@@ -96,7 +91,7 @@ def check_controls(out):
     summary = verify.build_summary(
         route.PACKAGE_DIR, route.MANIFEST_PATH, identity, [db], 2, None, []
     )
-    assert len(summary["constraints_rederived"]) == 20
+    assert {row["constraint_id"] for row in summary["constraints_rederived"]} == CURRENT_PREDICATES
     assert summary["worst_channel_rel_dev"] < 1e-9
     for filename, data in [
         ("controls.json", comparisons),

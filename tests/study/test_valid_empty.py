@@ -5,6 +5,7 @@ empty one, and it exits 0 with a full report.
 """
 
 import json
+from tests.models.current_mfe_regressions import CURRENT_PREDICATES
 
 from tests.study.conftest import DATA_DIR, REAL_MANIFEST, REAL_PACKAGE, run_tool_raw
 
@@ -40,8 +41,8 @@ def test_the_empty_result_still_carries_the_whole_catalog(tmp_path):
     rc, out, err = run_tool_raw(REAL_PACKAGE, REAL_MANIFEST, EXTRAS)
     assert rc == 0, err
     group = group_by_axis(json.loads(out), "land_cost")
-    assert len(group["bounds"]) == 20
-    assert len(group["constraints_unreachable"]) == 20
+    assert {entry["constraint_id"] for entry in group["bounds"]} == CURRENT_PREDICATES
+    assert {entry["constraint_id"] for entry in group["constraints_unreachable"]} == CURRENT_PREDICATES
     assert all(not any(o["reached"] for o in c["operands"]) for c in group["bounds"])
 
 

@@ -9,6 +9,8 @@ so the frozen expectation files are not the only thing guarding the trace.
 """
 
 import json
+import hashlib
+from pathlib import Path
 
 import pytest
 
@@ -19,6 +21,9 @@ from tests.study.conftest import DATA_DIR, run_tool
 # `availability_direct` -- the lifecycle calendar produces availability; the lever is its
 # held-mode switch (design D5). The known answer is re-derived, its no-response claim kept.
 CASES = ["availability_direct", "interest_rate", "R", "a", "I_coil"]
+CURRENT_LEDGER_PATH=Path(__file__).resolve().parents[2]/'.project/active/aries-comparison-preparation/current-readiness/regression-evidence/cycle-migration/current.expected.json'
+CURRENT_LEDGER=json.loads(CURRENT_LEDGER_PATH.read_text())
+
 
 # WI-059 (2026-09-15): re-derived from the completed package indicator report.
 EXPECTED_SEMANTIC_FINGERPRINT = '8ea7a4c353455698deaa1026d3d3d547d572e08c6ceb58c2bb9cfea26c0120e0'
@@ -153,10 +158,14 @@ def group_by_axis(doc, axis):
 def test_fixture_binding(real_package_path):
     """Fixtures are bound to the fingerprint they were derived against (spec)."""
     live = manifest.read_semantic_fingerprint(real_package_path)
-    assert live == EXPECTED_SEMANTIC_FINGERPRINT, (
+    assert live == CURRENT_LEDGER["derived_against_semantic_fingerprint"], (
         "package regenerated — re-derive the expectation files from the new package, "
         "never patch them to match"
     )
+
+    root=Path(__file__).resolve().parents[2]
+    for path,digest in (CURRENT_LEDGER['sources_sha256'] | CURRENT_LEDGER['historical_fixture_sha256']).items():
+        assert hashlib.sha256((root/path).read_bytes()).hexdigest()==digest,path
 
 
 @pytest.mark.parametrize("axis", CASES)
@@ -170,14 +179,15 @@ def test_known_answer(axis, report):
     """Field for field: operand class per reached operand, operator, bound_vs_bound,
     both objective lists, sibling candidates, and the module/channel counts."""
     got = group_by_axis(report, axis)
-    expected = json.loads((DATA_DIR / f"{axis}.expected.json").read_text())["group"]
+    expected = group_by_axis(CURRENT_LEDGER, axis)
     assert got == expected
 
 
 @pytest.mark.parametrize("axis", CASES)
 def test_matches_the_item_1_fixture_contract(axis, report):
     no_response, constraints, objectives, fired, tainted = FIXTURE_CONTRACT[axis]
-    group = group_by_axis(report, axis)
+    # Preserve the original historical contract against its unchanged historical files.
+    group = json.loads((DATA_DIR / f"{axis}.expected.json").read_text())["group"]
     assert group["group_valid"] is True
     assert group["no_constraint_response"] is no_response
     assert sorted(c["source_local_identity"] for c in group["constraints_reachable"]) == constraints
@@ -195,7 +205,7 @@ def test_availability_direct_reaches_no_constraint(report):
     retired periodic chain at that availability, so the sweep's response is the old one
     and still reaches no constraint; the live chain's response to design lives on the
     wall-load axes (`a`, `R`, `I_coil`), which now reach the eleven calendar channels."""
-    group = group_by_axis(report, "availability_direct")
+    group = json.loads((DATA_DIR / "availability_direct.expected.json").read_text())["group"]
     assert group["no_constraint_response"] is True
     assert group["constraints_reachable"] == []
     assert len(group["constraints_unreachable"]) == 20
@@ -232,6 +242,9 @@ def test_I_coil_reaches_the_field_constraints_through_calcs(report):
         "sustainment_ok", "net_positive", "recirc_ok", "wall_load_ok",
         "burn_hold_ok", "loop_pressure_ok", "loop_capacity_ok", "cycle_domain_ok",
         "divertor_heat_ok", "wp_fit_ok", "reference_conductor_current_ok",
+        "tbr_ok", "facility_capacity_ok", "facility_outage_ok", "facility_routes_ok",
+        "facility_replacement_ready", "facility_initial_ready",
+        "matched_main_heat_direction", "matched_reheat_heat_direction", "cooling_water_heat_direction",
     }
     # The limit side of each field constraint is a bound design value; sustainment_ok
     # is the one whose limit side is itself computed (WI-039 heating chain), so it
@@ -306,23 +319,35 @@ def test_current_heating_reachability(real_package_path, real_manifest_path, tmp
         for name in names
     ]}))
     doc = run_tool(real_package_path, real_manifest_path, axes)
+    for name in names:
+        assert group_by_axis(doc,name)==group_by_axis(CURRENT_LEDGER,name)
     reserve = group_by_axis(doc, "p_wallplug_heat")
     assert {c["source_local_identity"] for c in reserve["constraints_reachable"]} == {
         "sustainment_ok", "divertor_heat_ok"
     }
-    assert reserve["trace_size"] == {"modules_fired": 21, "channels_tainted": 40}
+    assert reserve["trace_size"] == group_by_axis(CURRENT_LEDGER,"p_wallplug_heat")["trace_size"]
     assert reserve["objectives_reachable"] == ["lcoe", "lcoe_1cfe", "total_capital"]
     for stage in ("source", "couple"):
         group = group_by_axis(doc, f"eta_{stage}_heat")
-        assert {c["source_local_identity"] for c in group["constraints_reachable"]} == {
+        historical_reached={
             "cycle_domain_ok", "divertor_heat_ok", "loop_capacity_ok", "loop_pressure_ok",
             "net_positive", "recirc_ok", "sustainment_ok",
             f"heating_{stage}_positive_ok", f"heating_{stage}_upper_ok",
         }
+        assert historical_reached <= {c["source_local_identity"] for c in group["constraints_reachable"]}
         # WI-065: unchanged modules; the shared ledger adds eight conservatively tainted diagnostics.
-        assert group["trace_size"] == {"modules_fired": 62, "channels_tainted": 121}
+        assert group["trace_size"] == group_by_axis(CURRENT_LEDGER,f"eta_{stage}_heat")["trace_size"]
         assert {
             "operating_heat_coupled", "operating_heat_delivered", "operating_heat_wallplug"
         } <= set(
             group["objectives_reachable"]
         )
+
+
+def test_current_availability_has_structural_breeding_and_facility_paths(report):
+    group=group_by_axis(report,'availability_direct')
+    assert group['no_constraint_response'] is False
+    assert {c['source_local_identity'] for c in group['constraints_reachable']} == {
+        'tbr_ok','facility_capacity_ok','facility_outage_ok','facility_routes_ok',
+        'facility_replacement_ready','facility_initial_ready'}
+    # These are conservative module paths, not numerical sensitivity or admission claims.

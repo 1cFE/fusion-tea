@@ -1,0 +1,758 @@
+FFFFFFFFFFF.                                                             [100%]
+=================================== FAILURES ===================================
+______ test_exact_active_heat_direction_disjunction[False-0.0--1.0-True] _______
+
+enabled = 0.0, gap = -1.0, expected = True, negated = False
+
+    @pytest.mark.parametrize("enabled,gap,expected", [(0.,-1.,True),(1.,1.,True),(1.,0.,False),(1.,-1.,False)])
+    @pytest.mark.parametrize("negated", [False,True])
+    def test_exact_active_heat_direction_disjunction(enabled,gap,expected,negated):
+        literal=lambda value:{"kind":"literal","literal":{"value":value}}
+        feature=lambda name:{"kind":"feature_ref","reference":{"source_name":name}}
+        ir={"kind":"operator","operator":"or","operands":[
+            {"kind":"operator","operator":"<=","operands":[feature("enabled"),literal(0.)]},
+            {"kind":"operator","operator":">","operands":[feature("gap"),literal(0.)]}]}
+        entry={"predicate_ir":json.dumps(ir),"is_negated":negated}
+        bindings={"heat":{"enabled":{"kind":"input","key":"mode"},"gap":{"kind":"channel","key":"raw_gap"}}}
+>       result,count=verify.derive_verdict("heat",entry,bindings,{"mode":enabled},{},{"raw_gap":gap})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify.py:399: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/study/verify.py:219: in derive_verdict
+    evaluated = [derive_verdict(constraint_id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+constraint_id = 'heat'
+entry = {'is_negated': False, 'predicate_ir': '{"kind": "operator", "operator": "<=", "operands": [{"kind": "feature_ref", "reference": {"source_name": "enabled"}}, {"kind": "literal", "literal": {"value": 0.0}}]}'}
+bindings = {'heat': {'enabled': {'key': 'mode', 'kind': 'input'}, 'gap': {'key': 'raw_gap', 'kind': 'channel'}}}
+case_inputs = {'mode': 0.0}, package_inputs = {}, channels = {'raw_gap': -1.0}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") == "operator" and ir.get("operator") in ("and", "or"):
+            logical = ir["operator"]
+            children = ir.get("operands", [])
+            if len(children) != 2:
+                name = "conjunction" if logical == "and" else "disjunction"
+                raise VerifyError(f"{constraint_id}: {name} requires exactly two operands")
+            # Evaluate both branches even when the logical result is known: missing independent
+            # evidence must refuse verification rather than hide behind short circuit.
+            evaluated = [derive_verdict(constraint_id,
+                         {"predicate_ir": json.dumps(child), "is_negated": False},
+                         bindings, case_inputs, package_inputs, channels) for child in children]
+            result = (all if logical == "and" else any)(value for value, _ in evaluated)
+            if entry.get("is_negated"):
+                result = not result
+            return result, sum(count for _, count in evaluated)
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            value, count = evaluate_operand(
+                constraint_id, operand, bindings, case_inputs, package_inputs, channels
+            )
+>           if not math.isfinite(value):
+                   ^^^^
+E           NameError: name 'math' is not defined. Did you forget to import 'math'
+
+scripts/study/verify.py:241: NameError
+_______ test_exact_active_heat_direction_disjunction[False-1.0-1.0-True] _______
+
+enabled = 1.0, gap = 1.0, expected = True, negated = False
+
+    @pytest.mark.parametrize("enabled,gap,expected", [(0.,-1.,True),(1.,1.,True),(1.,0.,False),(1.,-1.,False)])
+    @pytest.mark.parametrize("negated", [False,True])
+    def test_exact_active_heat_direction_disjunction(enabled,gap,expected,negated):
+        literal=lambda value:{"kind":"literal","literal":{"value":value}}
+        feature=lambda name:{"kind":"feature_ref","reference":{"source_name":name}}
+        ir={"kind":"operator","operator":"or","operands":[
+            {"kind":"operator","operator":"<=","operands":[feature("enabled"),literal(0.)]},
+            {"kind":"operator","operator":">","operands":[feature("gap"),literal(0.)]}]}
+        entry={"predicate_ir":json.dumps(ir),"is_negated":negated}
+        bindings={"heat":{"enabled":{"kind":"input","key":"mode"},"gap":{"kind":"channel","key":"raw_gap"}}}
+>       result,count=verify.derive_verdict("heat",entry,bindings,{"mode":enabled},{},{"raw_gap":gap})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify.py:399: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/study/verify.py:219: in derive_verdict
+    evaluated = [derive_verdict(constraint_id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+constraint_id = 'heat'
+entry = {'is_negated': False, 'predicate_ir': '{"kind": "operator", "operator": "<=", "operands": [{"kind": "feature_ref", "reference": {"source_name": "enabled"}}, {"kind": "literal", "literal": {"value": 0.0}}]}'}
+bindings = {'heat': {'enabled': {'key': 'mode', 'kind': 'input'}, 'gap': {'key': 'raw_gap', 'kind': 'channel'}}}
+case_inputs = {'mode': 1.0}, package_inputs = {}, channels = {'raw_gap': 1.0}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") == "operator" and ir.get("operator") in ("and", "or"):
+            logical = ir["operator"]
+            children = ir.get("operands", [])
+            if len(children) != 2:
+                name = "conjunction" if logical == "and" else "disjunction"
+                raise VerifyError(f"{constraint_id}: {name} requires exactly two operands")
+            # Evaluate both branches even when the logical result is known: missing independent
+            # evidence must refuse verification rather than hide behind short circuit.
+            evaluated = [derive_verdict(constraint_id,
+                         {"predicate_ir": json.dumps(child), "is_negated": False},
+                         bindings, case_inputs, package_inputs, channels) for child in children]
+            result = (all if logical == "and" else any)(value for value, _ in evaluated)
+            if entry.get("is_negated"):
+                result = not result
+            return result, sum(count for _, count in evaluated)
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            value, count = evaluate_operand(
+                constraint_id, operand, bindings, case_inputs, package_inputs, channels
+            )
+>           if not math.isfinite(value):
+                   ^^^^
+E           NameError: name 'math' is not defined. Did you forget to import 'math'
+
+scripts/study/verify.py:241: NameError
+______ test_exact_active_heat_direction_disjunction[False-1.0-0.0-False] _______
+
+enabled = 1.0, gap = 0.0, expected = False, negated = False
+
+    @pytest.mark.parametrize("enabled,gap,expected", [(0.,-1.,True),(1.,1.,True),(1.,0.,False),(1.,-1.,False)])
+    @pytest.mark.parametrize("negated", [False,True])
+    def test_exact_active_heat_direction_disjunction(enabled,gap,expected,negated):
+        literal=lambda value:{"kind":"literal","literal":{"value":value}}
+        feature=lambda name:{"kind":"feature_ref","reference":{"source_name":name}}
+        ir={"kind":"operator","operator":"or","operands":[
+            {"kind":"operator","operator":"<=","operands":[feature("enabled"),literal(0.)]},
+            {"kind":"operator","operator":">","operands":[feature("gap"),literal(0.)]}]}
+        entry={"predicate_ir":json.dumps(ir),"is_negated":negated}
+        bindings={"heat":{"enabled":{"kind":"input","key":"mode"},"gap":{"kind":"channel","key":"raw_gap"}}}
+>       result,count=verify.derive_verdict("heat",entry,bindings,{"mode":enabled},{},{"raw_gap":gap})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify.py:399: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/study/verify.py:219: in derive_verdict
+    evaluated = [derive_verdict(constraint_id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+constraint_id = 'heat'
+entry = {'is_negated': False, 'predicate_ir': '{"kind": "operator", "operator": "<=", "operands": [{"kind": "feature_ref", "reference": {"source_name": "enabled"}}, {"kind": "literal", "literal": {"value": 0.0}}]}'}
+bindings = {'heat': {'enabled': {'key': 'mode', 'kind': 'input'}, 'gap': {'key': 'raw_gap', 'kind': 'channel'}}}
+case_inputs = {'mode': 1.0}, package_inputs = {}, channels = {'raw_gap': 0.0}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") == "operator" and ir.get("operator") in ("and", "or"):
+            logical = ir["operator"]
+            children = ir.get("operands", [])
+            if len(children) != 2:
+                name = "conjunction" if logical == "and" else "disjunction"
+                raise VerifyError(f"{constraint_id}: {name} requires exactly two operands")
+            # Evaluate both branches even when the logical result is known: missing independent
+            # evidence must refuse verification rather than hide behind short circuit.
+            evaluated = [derive_verdict(constraint_id,
+                         {"predicate_ir": json.dumps(child), "is_negated": False},
+                         bindings, case_inputs, package_inputs, channels) for child in children]
+            result = (all if logical == "and" else any)(value for value, _ in evaluated)
+            if entry.get("is_negated"):
+                result = not result
+            return result, sum(count for _, count in evaluated)
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            value, count = evaluate_operand(
+                constraint_id, operand, bindings, case_inputs, package_inputs, channels
+            )
+>           if not math.isfinite(value):
+                   ^^^^
+E           NameError: name 'math' is not defined. Did you forget to import 'math'
+
+scripts/study/verify.py:241: NameError
+______ test_exact_active_heat_direction_disjunction[False-1.0--1.0-False] ______
+
+enabled = 1.0, gap = -1.0, expected = False, negated = False
+
+    @pytest.mark.parametrize("enabled,gap,expected", [(0.,-1.,True),(1.,1.,True),(1.,0.,False),(1.,-1.,False)])
+    @pytest.mark.parametrize("negated", [False,True])
+    def test_exact_active_heat_direction_disjunction(enabled,gap,expected,negated):
+        literal=lambda value:{"kind":"literal","literal":{"value":value}}
+        feature=lambda name:{"kind":"feature_ref","reference":{"source_name":name}}
+        ir={"kind":"operator","operator":"or","operands":[
+            {"kind":"operator","operator":"<=","operands":[feature("enabled"),literal(0.)]},
+            {"kind":"operator","operator":">","operands":[feature("gap"),literal(0.)]}]}
+        entry={"predicate_ir":json.dumps(ir),"is_negated":negated}
+        bindings={"heat":{"enabled":{"kind":"input","key":"mode"},"gap":{"kind":"channel","key":"raw_gap"}}}
+>       result,count=verify.derive_verdict("heat",entry,bindings,{"mode":enabled},{},{"raw_gap":gap})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify.py:399: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/study/verify.py:219: in derive_verdict
+    evaluated = [derive_verdict(constraint_id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+constraint_id = 'heat'
+entry = {'is_negated': False, 'predicate_ir': '{"kind": "operator", "operator": "<=", "operands": [{"kind": "feature_ref", "reference": {"source_name": "enabled"}}, {"kind": "literal", "literal": {"value": 0.0}}]}'}
+bindings = {'heat': {'enabled': {'key': 'mode', 'kind': 'input'}, 'gap': {'key': 'raw_gap', 'kind': 'channel'}}}
+case_inputs = {'mode': 1.0}, package_inputs = {}, channels = {'raw_gap': -1.0}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") == "operator" and ir.get("operator") in ("and", "or"):
+            logical = ir["operator"]
+            children = ir.get("operands", [])
+            if len(children) != 2:
+                name = "conjunction" if logical == "and" else "disjunction"
+                raise VerifyError(f"{constraint_id}: {name} requires exactly two operands")
+            # Evaluate both branches even when the logical result is known: missing independent
+            # evidence must refuse verification rather than hide behind short circuit.
+            evaluated = [derive_verdict(constraint_id,
+                         {"predicate_ir": json.dumps(child), "is_negated": False},
+                         bindings, case_inputs, package_inputs, channels) for child in children]
+            result = (all if logical == "and" else any)(value for value, _ in evaluated)
+            if entry.get("is_negated"):
+                result = not result
+            return result, sum(count for _, count in evaluated)
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            value, count = evaluate_operand(
+                constraint_id, operand, bindings, case_inputs, package_inputs, channels
+            )
+>           if not math.isfinite(value):
+                   ^^^^
+E           NameError: name 'math' is not defined. Did you forget to import 'math'
+
+scripts/study/verify.py:241: NameError
+_______ test_exact_active_heat_direction_disjunction[True-0.0--1.0-True] _______
+
+enabled = 0.0, gap = -1.0, expected = True, negated = True
+
+    @pytest.mark.parametrize("enabled,gap,expected", [(0.,-1.,True),(1.,1.,True),(1.,0.,False),(1.,-1.,False)])
+    @pytest.mark.parametrize("negated", [False,True])
+    def test_exact_active_heat_direction_disjunction(enabled,gap,expected,negated):
+        literal=lambda value:{"kind":"literal","literal":{"value":value}}
+        feature=lambda name:{"kind":"feature_ref","reference":{"source_name":name}}
+        ir={"kind":"operator","operator":"or","operands":[
+            {"kind":"operator","operator":"<=","operands":[feature("enabled"),literal(0.)]},
+            {"kind":"operator","operator":">","operands":[feature("gap"),literal(0.)]}]}
+        entry={"predicate_ir":json.dumps(ir),"is_negated":negated}
+        bindings={"heat":{"enabled":{"kind":"input","key":"mode"},"gap":{"kind":"channel","key":"raw_gap"}}}
+>       result,count=verify.derive_verdict("heat",entry,bindings,{"mode":enabled},{},{"raw_gap":gap})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify.py:399: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/study/verify.py:219: in derive_verdict
+    evaluated = [derive_verdict(constraint_id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+constraint_id = 'heat'
+entry = {'is_negated': False, 'predicate_ir': '{"kind": "operator", "operator": "<=", "operands": [{"kind": "feature_ref", "reference": {"source_name": "enabled"}}, {"kind": "literal", "literal": {"value": 0.0}}]}'}
+bindings = {'heat': {'enabled': {'key': 'mode', 'kind': 'input'}, 'gap': {'key': 'raw_gap', 'kind': 'channel'}}}
+case_inputs = {'mode': 0.0}, package_inputs = {}, channels = {'raw_gap': -1.0}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") == "operator" and ir.get("operator") in ("and", "or"):
+            logical = ir["operator"]
+            children = ir.get("operands", [])
+            if len(children) != 2:
+                name = "conjunction" if logical == "and" else "disjunction"
+                raise VerifyError(f"{constraint_id}: {name} requires exactly two operands")
+            # Evaluate both branches even when the logical result is known: missing independent
+            # evidence must refuse verification rather than hide behind short circuit.
+            evaluated = [derive_verdict(constraint_id,
+                         {"predicate_ir": json.dumps(child), "is_negated": False},
+                         bindings, case_inputs, package_inputs, channels) for child in children]
+            result = (all if logical == "and" else any)(value for value, _ in evaluated)
+            if entry.get("is_negated"):
+                result = not result
+            return result, sum(count for _, count in evaluated)
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            value, count = evaluate_operand(
+                constraint_id, operand, bindings, case_inputs, package_inputs, channels
+            )
+>           if not math.isfinite(value):
+                   ^^^^
+E           NameError: name 'math' is not defined. Did you forget to import 'math'
+
+scripts/study/verify.py:241: NameError
+_______ test_exact_active_heat_direction_disjunction[True-1.0-1.0-True] ________
+
+enabled = 1.0, gap = 1.0, expected = True, negated = True
+
+    @pytest.mark.parametrize("enabled,gap,expected", [(0.,-1.,True),(1.,1.,True),(1.,0.,False),(1.,-1.,False)])
+    @pytest.mark.parametrize("negated", [False,True])
+    def test_exact_active_heat_direction_disjunction(enabled,gap,expected,negated):
+        literal=lambda value:{"kind":"literal","literal":{"value":value}}
+        feature=lambda name:{"kind":"feature_ref","reference":{"source_name":name}}
+        ir={"kind":"operator","operator":"or","operands":[
+            {"kind":"operator","operator":"<=","operands":[feature("enabled"),literal(0.)]},
+            {"kind":"operator","operator":">","operands":[feature("gap"),literal(0.)]}]}
+        entry={"predicate_ir":json.dumps(ir),"is_negated":negated}
+        bindings={"heat":{"enabled":{"kind":"input","key":"mode"},"gap":{"kind":"channel","key":"raw_gap"}}}
+>       result,count=verify.derive_verdict("heat",entry,bindings,{"mode":enabled},{},{"raw_gap":gap})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify.py:399: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/study/verify.py:219: in derive_verdict
+    evaluated = [derive_verdict(constraint_id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+constraint_id = 'heat'
+entry = {'is_negated': False, 'predicate_ir': '{"kind": "operator", "operator": "<=", "operands": [{"kind": "feature_ref", "reference": {"source_name": "enabled"}}, {"kind": "literal", "literal": {"value": 0.0}}]}'}
+bindings = {'heat': {'enabled': {'key': 'mode', 'kind': 'input'}, 'gap': {'key': 'raw_gap', 'kind': 'channel'}}}
+case_inputs = {'mode': 1.0}, package_inputs = {}, channels = {'raw_gap': 1.0}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") == "operator" and ir.get("operator") in ("and", "or"):
+            logical = ir["operator"]
+            children = ir.get("operands", [])
+            if len(children) != 2:
+                name = "conjunction" if logical == "and" else "disjunction"
+                raise VerifyError(f"{constraint_id}: {name} requires exactly two operands")
+            # Evaluate both branches even when the logical result is known: missing independent
+            # evidence must refuse verification rather than hide behind short circuit.
+            evaluated = [derive_verdict(constraint_id,
+                         {"predicate_ir": json.dumps(child), "is_negated": False},
+                         bindings, case_inputs, package_inputs, channels) for child in children]
+            result = (all if logical == "and" else any)(value for value, _ in evaluated)
+            if entry.get("is_negated"):
+                result = not result
+            return result, sum(count for _, count in evaluated)
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            value, count = evaluate_operand(
+                constraint_id, operand, bindings, case_inputs, package_inputs, channels
+            )
+>           if not math.isfinite(value):
+                   ^^^^
+E           NameError: name 'math' is not defined. Did you forget to import 'math'
+
+scripts/study/verify.py:241: NameError
+_______ test_exact_active_heat_direction_disjunction[True-1.0-0.0-False] _______
+
+enabled = 1.0, gap = 0.0, expected = False, negated = True
+
+    @pytest.mark.parametrize("enabled,gap,expected", [(0.,-1.,True),(1.,1.,True),(1.,0.,False),(1.,-1.,False)])
+    @pytest.mark.parametrize("negated", [False,True])
+    def test_exact_active_heat_direction_disjunction(enabled,gap,expected,negated):
+        literal=lambda value:{"kind":"literal","literal":{"value":value}}
+        feature=lambda name:{"kind":"feature_ref","reference":{"source_name":name}}
+        ir={"kind":"operator","operator":"or","operands":[
+            {"kind":"operator","operator":"<=","operands":[feature("enabled"),literal(0.)]},
+            {"kind":"operator","operator":">","operands":[feature("gap"),literal(0.)]}]}
+        entry={"predicate_ir":json.dumps(ir),"is_negated":negated}
+        bindings={"heat":{"enabled":{"kind":"input","key":"mode"},"gap":{"kind":"channel","key":"raw_gap"}}}
+>       result,count=verify.derive_verdict("heat",entry,bindings,{"mode":enabled},{},{"raw_gap":gap})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify.py:399: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/study/verify.py:219: in derive_verdict
+    evaluated = [derive_verdict(constraint_id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+constraint_id = 'heat'
+entry = {'is_negated': False, 'predicate_ir': '{"kind": "operator", "operator": "<=", "operands": [{"kind": "feature_ref", "reference": {"source_name": "enabled"}}, {"kind": "literal", "literal": {"value": 0.0}}]}'}
+bindings = {'heat': {'enabled': {'key': 'mode', 'kind': 'input'}, 'gap': {'key': 'raw_gap', 'kind': 'channel'}}}
+case_inputs = {'mode': 1.0}, package_inputs = {}, channels = {'raw_gap': 0.0}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") == "operator" and ir.get("operator") in ("and", "or"):
+            logical = ir["operator"]
+            children = ir.get("operands", [])
+            if len(children) != 2:
+                name = "conjunction" if logical == "and" else "disjunction"
+                raise VerifyError(f"{constraint_id}: {name} requires exactly two operands")
+            # Evaluate both branches even when the logical result is known: missing independent
+            # evidence must refuse verification rather than hide behind short circuit.
+            evaluated = [derive_verdict(constraint_id,
+                         {"predicate_ir": json.dumps(child), "is_negated": False},
+                         bindings, case_inputs, package_inputs, channels) for child in children]
+            result = (all if logical == "and" else any)(value for value, _ in evaluated)
+            if entry.get("is_negated"):
+                result = not result
+            return result, sum(count for _, count in evaluated)
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            value, count = evaluate_operand(
+                constraint_id, operand, bindings, case_inputs, package_inputs, channels
+            )
+>           if not math.isfinite(value):
+                   ^^^^
+E           NameError: name 'math' is not defined. Did you forget to import 'math'
+
+scripts/study/verify.py:241: NameError
+______ test_exact_active_heat_direction_disjunction[True-1.0--1.0-False] _______
+
+enabled = 1.0, gap = -1.0, expected = False, negated = True
+
+    @pytest.mark.parametrize("enabled,gap,expected", [(0.,-1.,True),(1.,1.,True),(1.,0.,False),(1.,-1.,False)])
+    @pytest.mark.parametrize("negated", [False,True])
+    def test_exact_active_heat_direction_disjunction(enabled,gap,expected,negated):
+        literal=lambda value:{"kind":"literal","literal":{"value":value}}
+        feature=lambda name:{"kind":"feature_ref","reference":{"source_name":name}}
+        ir={"kind":"operator","operator":"or","operands":[
+            {"kind":"operator","operator":"<=","operands":[feature("enabled"),literal(0.)]},
+            {"kind":"operator","operator":">","operands":[feature("gap"),literal(0.)]}]}
+        entry={"predicate_ir":json.dumps(ir),"is_negated":negated}
+        bindings={"heat":{"enabled":{"kind":"input","key":"mode"},"gap":{"kind":"channel","key":"raw_gap"}}}
+>       result,count=verify.derive_verdict("heat",entry,bindings,{"mode":enabled},{},{"raw_gap":gap})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_verify.py:399: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/study/verify.py:219: in derive_verdict
+    evaluated = [derive_verdict(constraint_id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+constraint_id = 'heat'
+entry = {'is_negated': False, 'predicate_ir': '{"kind": "operator", "operator": "<=", "operands": [{"kind": "feature_ref", "reference": {"source_name": "enabled"}}, {"kind": "literal", "literal": {"value": 0.0}}]}'}
+bindings = {'heat': {'enabled': {'key': 'mode', 'kind': 'input'}, 'gap': {'key': 'raw_gap', 'kind': 'channel'}}}
+case_inputs = {'mode': 1.0}, package_inputs = {}, channels = {'raw_gap': -1.0}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") == "operator" and ir.get("operator") in ("and", "or"):
+            logical = ir["operator"]
+            children = ir.get("operands", [])
+            if len(children) != 2:
+                name = "conjunction" if logical == "and" else "disjunction"
+                raise VerifyError(f"{constraint_id}: {name} requires exactly two operands")
+            # Evaluate both branches even when the logical result is known: missing independent
+            # evidence must refuse verification rather than hide behind short circuit.
+            evaluated = [derive_verdict(constraint_id,
+                         {"predicate_ir": json.dumps(child), "is_negated": False},
+                         bindings, case_inputs, package_inputs, channels) for child in children]
+            result = (all if logical == "and" else any)(value for value, _ in evaluated)
+            if entry.get("is_negated"):
+                result = not result
+            return result, sum(count for _, count in evaluated)
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            value, count = evaluate_operand(
+                constraint_id, operand, bindings, case_inputs, package_inputs, channels
+            )
+>           if not math.isfinite(value):
+                   ^^^^
+E           NameError: name 'math' is not defined. Did you forget to import 'math'
+
+scripts/study/verify.py:241: NameError
+____ test_true_disjunction_cannot_hide_missing_or_invalid_evidence[missing] ____
+
+failure = 'missing'
+
+    @pytest.mark.parametrize("failure", ["missing","nonfinite","unsupported","wrong_arity"])
+    def test_true_disjunction_cannot_hide_missing_or_invalid_evidence(failure):
+        literal=lambda value:{"kind":"literal","literal":{"value":value}}
+        left={"kind":"operator","operator":"<=","operands":[literal(0.),literal(0.)]}
+        right={"kind":"operator","operator":">","operands":[{"kind":"feature_ref","reference":{"source_name":"gap"}},literal(0.)]}
+        ir={"kind":"operator","operator":"or","operands":[left,right]}
+        channels={"raw_gap":1.}
+        if failure=="missing":channels={}
+        elif failure=="nonfinite":channels={"raw_gap":float("nan")}
+        elif failure=="unsupported":right["operator"]="xor"
+        else:ir["operands"].append(left)
+        with pytest.raises(verify.VerifyError):
+>           verify.derive_verdict("heat",{"predicate_ir":json.dumps(ir)},
+                {"heat":{"gap":{"kind":"channel","key":"raw_gap"}}},{},{},channels)
+
+tests/study/test_verify.py:416: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/study/verify.py:219: in derive_verdict
+    evaluated = [derive_verdict(constraint_id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+constraint_id = 'heat'
+entry = {'is_negated': False, 'predicate_ir': '{"kind": "operator", "operator": "<=", "operands": [{"kind": "literal", "literal": {"value": 0.0}}, {"kind": "literal", "literal": {"value": 0.0}}]}'}
+bindings = {'heat': {'gap': {'key': 'raw_gap', 'kind': 'channel'}}}
+case_inputs = {}, package_inputs = {}, channels = {}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") == "operator" and ir.get("operator") in ("and", "or"):
+            logical = ir["operator"]
+            children = ir.get("operands", [])
+            if len(children) != 2:
+                name = "conjunction" if logical == "and" else "disjunction"
+                raise VerifyError(f"{constraint_id}: {name} requires exactly two operands")
+            # Evaluate both branches even when the logical result is known: missing independent
+            # evidence must refuse verification rather than hide behind short circuit.
+            evaluated = [derive_verdict(constraint_id,
+                         {"predicate_ir": json.dumps(child), "is_negated": False},
+                         bindings, case_inputs, package_inputs, channels) for child in children]
+            result = (all if logical == "and" else any)(value for value, _ in evaluated)
+            if entry.get("is_negated"):
+                result = not result
+            return result, sum(count for _, count in evaluated)
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            value, count = evaluate_operand(
+                constraint_id, operand, bindings, case_inputs, package_inputs, channels
+            )
+>           if not math.isfinite(value):
+                   ^^^^
+E           NameError: name 'math' is not defined. Did you forget to import 'math'
+
+scripts/study/verify.py:241: NameError
+___ test_true_disjunction_cannot_hide_missing_or_invalid_evidence[nonfinite] ___
+
+failure = 'nonfinite'
+
+    @pytest.mark.parametrize("failure", ["missing","nonfinite","unsupported","wrong_arity"])
+    def test_true_disjunction_cannot_hide_missing_or_invalid_evidence(failure):
+        literal=lambda value:{"kind":"literal","literal":{"value":value}}
+        left={"kind":"operator","operator":"<=","operands":[literal(0.),literal(0.)]}
+        right={"kind":"operator","operator":">","operands":[{"kind":"feature_ref","reference":{"source_name":"gap"}},literal(0.)]}
+        ir={"kind":"operator","operator":"or","operands":[left,right]}
+        channels={"raw_gap":1.}
+        if failure=="missing":channels={}
+        elif failure=="nonfinite":channels={"raw_gap":float("nan")}
+        elif failure=="unsupported":right["operator"]="xor"
+        else:ir["operands"].append(left)
+        with pytest.raises(verify.VerifyError):
+>           verify.derive_verdict("heat",{"predicate_ir":json.dumps(ir)},
+                {"heat":{"gap":{"kind":"channel","key":"raw_gap"}}},{},{},channels)
+
+tests/study/test_verify.py:416: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/study/verify.py:219: in derive_verdict
+    evaluated = [derive_verdict(constraint_id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+constraint_id = 'heat'
+entry = {'is_negated': False, 'predicate_ir': '{"kind": "operator", "operator": "<=", "operands": [{"kind": "literal", "literal": {"value": 0.0}}, {"kind": "literal", "literal": {"value": 0.0}}]}'}
+bindings = {'heat': {'gap': {'key': 'raw_gap', 'kind': 'channel'}}}
+case_inputs = {}, package_inputs = {}, channels = {'raw_gap': nan}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") == "operator" and ir.get("operator") in ("and", "or"):
+            logical = ir["operator"]
+            children = ir.get("operands", [])
+            if len(children) != 2:
+                name = "conjunction" if logical == "and" else "disjunction"
+                raise VerifyError(f"{constraint_id}: {name} requires exactly two operands")
+            # Evaluate both branches even when the logical result is known: missing independent
+            # evidence must refuse verification rather than hide behind short circuit.
+            evaluated = [derive_verdict(constraint_id,
+                         {"predicate_ir": json.dumps(child), "is_negated": False},
+                         bindings, case_inputs, package_inputs, channels) for child in children]
+            result = (all if logical == "and" else any)(value for value, _ in evaluated)
+            if entry.get("is_negated"):
+                result = not result
+            return result, sum(count for _, count in evaluated)
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            value, count = evaluate_operand(
+                constraint_id, operand, bindings, case_inputs, package_inputs, channels
+            )
+>           if not math.isfinite(value):
+                   ^^^^
+E           NameError: name 'math' is not defined. Did you forget to import 'math'
+
+scripts/study/verify.py:241: NameError
+__ test_true_disjunction_cannot_hide_missing_or_invalid_evidence[unsupported] __
+
+failure = 'unsupported'
+
+    @pytest.mark.parametrize("failure", ["missing","nonfinite","unsupported","wrong_arity"])
+    def test_true_disjunction_cannot_hide_missing_or_invalid_evidence(failure):
+        literal=lambda value:{"kind":"literal","literal":{"value":value}}
+        left={"kind":"operator","operator":"<=","operands":[literal(0.),literal(0.)]}
+        right={"kind":"operator","operator":">","operands":[{"kind":"feature_ref","reference":{"source_name":"gap"}},literal(0.)]}
+        ir={"kind":"operator","operator":"or","operands":[left,right]}
+        channels={"raw_gap":1.}
+        if failure=="missing":channels={}
+        elif failure=="nonfinite":channels={"raw_gap":float("nan")}
+        elif failure=="unsupported":right["operator"]="xor"
+        else:ir["operands"].append(left)
+        with pytest.raises(verify.VerifyError):
+>           verify.derive_verdict("heat",{"predicate_ir":json.dumps(ir)},
+                {"heat":{"gap":{"kind":"channel","key":"raw_gap"}}},{},{},channels)
+
+tests/study/test_verify.py:416: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/study/verify.py:219: in derive_verdict
+    evaluated = [derive_verdict(constraint_id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+constraint_id = 'heat'
+entry = {'is_negated': False, 'predicate_ir': '{"kind": "operator", "operator": "<=", "operands": [{"kind": "literal", "literal": {"value": 0.0}}, {"kind": "literal", "literal": {"value": 0.0}}]}'}
+bindings = {'heat': {'gap': {'key': 'raw_gap', 'kind': 'channel'}}}
+case_inputs = {}, package_inputs = {}, channels = {'raw_gap': 1.0}
+
+    def derive_verdict(constraint_id: str, entry: dict, bindings: dict,
+                       case_inputs, package_inputs, channels) -> tuple[bool, int]:
+        """Re-derive one constraint from its own IR. Returns (satisfied, operands resolved)."""
+        ir = json.loads(entry["predicate_ir"])
+        if ir.get("kind") == "operator" and ir.get("operator") in ("and", "or"):
+            logical = ir["operator"]
+            children = ir.get("operands", [])
+            if len(children) != 2:
+                name = "conjunction" if logical == "and" else "disjunction"
+                raise VerifyError(f"{constraint_id}: {name} requires exactly two operands")
+            # Evaluate both branches even when the logical result is known: missing independent
+            # evidence must refuse verification rather than hide behind short circuit.
+            evaluated = [derive_verdict(constraint_id,
+                         {"predicate_ir": json.dumps(child), "is_negated": False},
+                         bindings, case_inputs, package_inputs, channels) for child in children]
+            result = (all if logical == "and" else any)(value for value, _ in evaluated)
+            if entry.get("is_negated"):
+                result = not result
+            return result, sum(count for _, count in evaluated)
+        if ir.get("kind") != "operator" or ir.get("operator") not in OPERATORS:
+            raise VerifyError(
+                f"{constraint_id}: predicate IR is not a comparison this tool can re-derive "
+                f"(kind {ir.get('kind')!r}, operator {ir.get('operator')!r})"
+            )
+        operands = ir["operands"]
+        if len(operands) != 2:
+            raise VerifyError(
+                f"{constraint_id}: expected a two-operand comparison, found {len(operands)}"
+            )
+        values, resolved = [], 0
+        for operand in operands:
+            value, count = evaluate_operand(
+                constraint_id, operand, bindings, case_inputs, package_inputs, channels
+            )
+>           if not math.isfinite(value):
+                   ^^^^
+E           NameError: name 'math' is not defined. Did you forget to import 'math'
+
+scripts/study/verify.py:241: NameError
+=========================== short test summary info ============================
+FAILED tests/study/test_verify.py::test_exact_active_heat_direction_disjunction[False-0.0--1.0-True]
+FAILED tests/study/test_verify.py::test_exact_active_heat_direction_disjunction[False-1.0-1.0-True]
+FAILED tests/study/test_verify.py::test_exact_active_heat_direction_disjunction[False-1.0-0.0-False]
+FAILED tests/study/test_verify.py::test_exact_active_heat_direction_disjunction[False-1.0--1.0-False]
+FAILED tests/study/test_verify.py::test_exact_active_heat_direction_disjunction[True-0.0--1.0-True]
+FAILED tests/study/test_verify.py::test_exact_active_heat_direction_disjunction[True-1.0-1.0-True]
+FAILED tests/study/test_verify.py::test_exact_active_heat_direction_disjunction[True-1.0-0.0-False]
+FAILED tests/study/test_verify.py::test_exact_active_heat_direction_disjunction[True-1.0--1.0-False]
+FAILED tests/study/test_verify.py::test_true_disjunction_cannot_hide_missing_or_invalid_evidence[missing]
+FAILED tests/study/test_verify.py::test_true_disjunction_cannot_hide_missing_or_invalid_evidence[nonfinite]
+FAILED tests/study/test_verify.py::test_true_disjunction_cannot_hide_missing_or_invalid_evidence[unsupported]
+11 failed, 1 passed, 24 deselected in 0.42s

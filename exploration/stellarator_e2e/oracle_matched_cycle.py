@@ -211,7 +211,8 @@ def cycle(tables, condenser=42., steam=445., reheat=445., heat=3306.889098848892
     o['salt_main_flow_kg_s'] = salt_flow*o['q_main_MW']/heat
     o['salt_reheat_flow_kg_s'] = salt_flow*o['q_reheat_MW']/heat
     o['salt_heat_residual_MW'] = heat-salt_flow*salt_cp*(salt_hot-salt_cold)/1000
-    o['heater_mass_residual_kg_s'] = flow-lowflow-flow*bleed
+    # Signed interface: total inlet mass minus mixed outlet mass.
+    o['heater_mass_residual_kg_s'] = math.fsum((lowflow, flow*bleed, -flow))
     o['heater_energy_residual_MW'] = (lowflow*cp['h']+flow*bleed*hp['h']-flow*heater['h'])/1000
     o['cycle_shaft_residual_MW'] = heat+pumps-turbine-o['q_condenser_MW']
     o['cycle_electric_residual_MW'] = heat-o['p_cycle_net_before_cooling_MW']-o['q_rejection_before_cooling_MW']

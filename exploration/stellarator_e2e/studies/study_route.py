@@ -45,7 +45,7 @@ PACKAGE_DIR = E2E / "generated"
 MANIFEST_PATH = HERE / "manifest.json"
 P = "stellarator_09__stellaris__"
 BASELINE_RESULT_SCHEMA_VERSION = "study-baseline-result/v1"
-EXPECTED_CONSTRAINT_COUNT = 25  # WI-068 adds five facility readiness/capacity/route checks.
+EXPECTED_CONSTRAINT_COUNT = 28  # WI-073 adds three mode-aware heat-direction checks.
 
 # --- Axis declarations: SysML attribute -> complete entry-key expansion ------
 AXES: dict[str, list[str]] = {
@@ -98,18 +98,34 @@ def proposal_for(R: float, a: float, availability_direct: float) -> dict[str, fl
     return point
 
 
+BOOLEAN_KEYS = frozenset(P + suffix for suffix in (
+    "buildings__facilities_enabled", "cryoplant__inventory_enabled",
+    "fuel_cycle__inventory_enabled", "fuel_cycle__processing_enabled",
+    "fuel_cycle__processing_source_conditions", "heat_transport__equipment_enabled",
+))
+
+
+def assert_boolean_declarations(package_dir):
+    contract = json.loads((Path(package_dir) / "contracts/model_contract.json").read_text())
+    declared = {p["qualified_name"] for p in contract["parameters"] if p["python_type"] == "bool"}
+    if declared != BOOLEAN_KEYS:
+        raise RouteError(f"Boolean declaration drift: {sorted(declared ^ BOOLEAN_KEYS)}")
+
+
 def validate_proposal(raw):
+    if not isinstance(raw, dict):
+        raise RouteError("proposal must be a mapping of entry keys to values")
     if f"{P}magnet__R0" in raw:
         raise RouteError(f"retired entry key {P}magnet__R0; use plant R")
     out = {}
     for key, value in raw.items():
-        # Authored Boolean entries retain their type. Boolean
-        # proposals for numeric plant quantities retain their existing refusal.
-        if key in {f"{P}cryoplant__inventory_enabled", f"{P}heat_transport__equipment_enabled",
-                   f"{P}buildings__facilities_enabled"} and isinstance(value, bool):
-            out[key] = value
-        elif not isinstance(value, (int, float)) or isinstance(value, bool):
-            return None
+        if key in BOOLEAN_KEYS:
+            if isinstance(value, bool) or (isinstance(value, (int, float)) and value in (0, 1)):
+                out[key] = bool(value)
+            else:
+                raise RouteError(f"{key}: Boolean value or numeric zero/one required")
+        elif not isinstance(value, (int, float)) or isinstance(value, bool) or not math.isfinite(value):
+            raise RouteError(f"{key}: finite numeric value required; Boolean values are not numeric controls")
         else:
             out[key] = float(value)
     return out
@@ -214,7 +230,8 @@ def run_points(
     from simkit.study.store import StudyStore
 
     work_dir = Path(work_dir)
-    proposals = list(proposals)
+    proposals = [validate_proposal(point) for point in proposals]
+    assert_boolean_declarations(package_dir)
     if not proposals:
         raise RouteError("cannot run a study with no proposals")
     required_channels = dict(CHANNELS if required_channels is None else required_channels)
@@ -396,10 +413,10 @@ def run_design_search(out_dir: Path, package_dir: Path = PACKAGE_DIR) -> Path:
     )
 
 
-def run_availability_sweep(out_dir: Path, package_dir: Path = PACKAGE_DIR) -> Path:
+def run_availability_sweep(out_dir: Path, package_dir: Path = PACKAGE_DIR, *, scenario_overrides=None) -> Path:
     out_dir = Path(out_dir)
     cases, _ = run_points(
-        "stellarator-availability-sweep-v1", availability_sweep_proposals(), out_dir / "_work",
+        "stellarator-availability-sweep-v1", [dict(scenario_overrides or {}) | point for point in availability_sweep_proposals()], out_dir / "_work",
         package_dir,
     )
     return export_csv(

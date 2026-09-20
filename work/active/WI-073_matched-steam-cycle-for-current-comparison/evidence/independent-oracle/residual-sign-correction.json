@@ -1,0 +1,13 @@
+{
+  "change": "Correct only signed heater mass interface; compensated independent arithmetic remains. No production or predicate change.",
+  "files": {
+    "exploration/stellarator_e2e/oracle_matched_cycle.py": {
+      "before": "e5a8ce7f5657fef10944f6d1332457fa4a459d4bb472e72fa1297257074b9576",
+      "after": "a4d83d08df61265911785396055d8f2447fbed91cd5021bc7731928b801831be"
+    },
+    "work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/independent-oracle/reference.py": {
+      "before": "492489e9e74dc751d9caf1a72aec7e2dc36489cbcc8a4f28808a5c91f5b9583d",
+      "after": "060c6f8ab17efee8c71380fb7384f0c33e2d9c35be4fd7f7ed205c4d2932ed6b"
+    }
+  }
+}

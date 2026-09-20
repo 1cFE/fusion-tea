@@ -1,5 +1,6 @@
 """WI-050 native operating-state, independent conservation and consumer regressions."""
 from __future__ import annotations
+from tests.models.current_mfe_regressions import WI073_PREDICATES, CURRENT_PREDICATES, CURRENT_PARAMETERS, FACILITY_PREDICATES, oracle_local_overrides, WI059_REPLAY, WI061_PREDICATE, WI062_PREDICATE
 from tests.models.current_mfe_regressions import WI065_PARAMETERS, WI065_CHANNELS, WI066_RETIRED, WI066_CHANNELS
 from tests.models.current_mfe_regressions import WI063_PARAMETERS, WI063_CHANNELS, WI064_PARAMETERS, WI064_CHANNELS
 from tests.models.current_mfe_regressions import WI060_PARAMETERS, WI059_PARAMETERS, WI059_CHANNELS, WI059_NATIVE_ONLY_PARAMETERS, WI059_NATIVE_ONLY_VALUES, WI059_REPLAY_LOCAL
@@ -89,8 +90,10 @@ def test_heating_efficiency_scalar_consumers(native,boundaries):
     from scripts.study import indicators,verify
     scratch,_,_,_=native
     entries=json.loads((scratch/'generated/contracts/model_contract.json').read_text())['constraint_catalog']['concrete_entries']
-    assert len(entries)==20
-    assert sum(len(verify.feature_refs(json.loads(e['predicate_ir']))) for e in entries)==30
+    assert {e["constraint_id"] for e in entries} == CURRENT_PREDICATES
+    assert sum(len(verify.feature_refs(json.loads(e['predicate_ir']))) for e in entries if e['constraint_id'] not in FACILITY_PREDICATES | WI073_PREDICATES)==30
+    assert sum(len(verify.feature_refs(json.loads(e['predicate_ir']))) for e in entries if e['constraint_id'] in WI073_PREDICATES)==6
+    assert all(len(verify.feature_refs(json.loads(e['predicate_ir'])))==1 for e in entries if e['constraint_id'] in FACILITY_PREDICATES)
     for entry in entries: indicators.predicate_operands(entry)
     new={e['source_local_identity']:e for e in entries if e['source_local_identity'].startswith('heating_')}
     assert set(new)=={'heating_source_positive_ok','heating_source_upper_ok','heating_couple_positive_ok','heating_couple_upper_ok'}
@@ -133,7 +136,7 @@ def test_heating_efficiency_scalar_consumers(native,boundaries):
 def test_stellarator_operating_heat_has_no_public_demand_input(native):
     scratch,results,_,_=native
     contract=json.loads((scratch/'generated/contracts/model_contract.json').read_text())
-    assert len(contract['parameters'])==265 + len(WI059_PARAMETERS | WI060_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI064_PARAMETERS | WI065_PARAMETERS) - len(WI066_RETIRED)  # WI-059 adds21public inputs and3native-only literals.
+    assert {p['qualified_name'] for p in contract['parameters']} == CURRENT_PARAMETERS
     assert not any('p_operating_coupled_heat' in str(p) for p in contract['parameters'])
     modules=yaml.safe_load((scratch/'generated/pipelines/pipeline.yaml').read_text())['modules']
     expected={'operating_heat':{'p_required_in':'sustain.p_aux_required'},'source_heat':{'p_input_in':'operating_heat.p_coupled'},'pb':{'p_input_in':'operating_heat.p_coupled','p_wallplug_in':'operating_heat.p_wallplug'},'divheat':{'p_coupled_in':'operating_heat.p_coupled','p_installed_coupled_in':'heat.p_coupled'},'primary_loop':{'q_source_in':'source_heat.q_source.root'},'heating_cost':{'p_ecrh_in':'heat.p_delivered'}}
@@ -147,7 +150,7 @@ def test_stellarator_operating_heat_has_no_public_demand_input(native):
 def test_operating_heat_reserve_invariance(native):
     _,results,inputs,_=native
     # Frozen WI-050 checker retains its original eighteen-predicate scope.
-    historical = {name: (dict(row, responses={k: v for k, v in row['responses'].items() if 'wp_fit_ok' not in k and 'reference_conductor_current_ok' not in k}) if 'responses' in row else row) for name, row in results.items()}
+    historical = {name: (dict(row, responses={k: v for k, v in row['responses'].items() if k not in {WI061_PREDICATE,WI062_PREDICATE} | FACILITY_PREDICATES | WI073_PREDICATES}) if 'responses' in row else row) for name, row in results.items()}
     import sys
     sys.path.insert(0, str(ROOT / 'exploration/stellarator_e2e/studies'))
     import oracle_entry
@@ -180,7 +183,7 @@ def test_operating_heat_direct_native_parity(native,monkeypatch):
     channels=eval(compile(ast.Expression(assignment.value),'<channel-map>','eval'),{'P':P})
     for case in ['baseline','reserve','demand','efficiency','availability']:
         with monkeypatch.context() as context:
-            context.setattr(verify_stellaris,'IN',verify_stellaris.IN | WI059_REPLAY_LOCAL | load('run_acceptance').CASES[case])
+            context.setattr(verify_stellaris,'IN',verify_stellaris.IN | oracle_local_overrides(WI059_REPLAY | {renamed(P+k):v for k,v in load('run_acceptance').CASES[case].items()}))
             expected=verify_stellaris.compute()
         runner=ast.parse((ROOT/'exploration/stellarator_e2e/run_stellaris_single.py').read_text())
         verdict_assignment=next(n for n in runner.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='EXPECTED_VERDICTS' for t in n.targets))
@@ -188,7 +191,8 @@ def test_operating_heat_direct_native_parity(native,monkeypatch):
         assert len(expected_verdicts)==20
         if case in ['baseline','reserve','demand','availability']:
             actual={key.split('__')[2]:value for key,value in results[case]['responses'].items() if key!='headline'}
-            assert actual==expected_verdicts
+            assert {k:v for k,v in actual.items() if k not in {cid.split('__')[2] for cid in FACILITY_PREDICATES | WI073_PREDICATES}}==expected_verdicts
+            assert all(actual[cid.split('__')[2]]=='satisfied' for cid in FACILITY_PREDICATES)
         gate=next(n for n in runner.body if isinstance(n,ast.FunctionDef) and n.name=='_oracle_gate')
         assignment=next(n for n in gate.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='compared' for t in n.targets))
         values=results[case]['outputs']
@@ -214,10 +218,10 @@ def test_operating_heat_complete_cost_operand_classification(native,monkeypatch)
         'heating_cost__cost':'heating','blanket_cost__cost':'blanket','shield_cost__cost':'shield',
         'structure_cost__cost':'structure','vessel_cost__cost':'vessel','power_supplies_cost__cost':'power_supplies',
         'divertor_cost__cost':'divertor','turbine_cost__cost':'turbine','electric_cost__cost':'electric',
-        'heat_rejection_cost__cost':'heat_rejection','misc_cost__cost':'misc','buildings_cost__cost':'buildings',
-        'precon_cost__cost':'precon','om_cost__annual_om':'annual_om_unlevelized',
-        'remote_handling__cost':'remote_handling','coolant__cost':'coolant','aux_cooling__cost':'aux_cooling',
-        'waste__cost':'waste','fuel_handling__cost':'fuel_handling','other_rpe__cost':'other_rpe',
+        'heat_rejection_cost__cost':'heat_rejection','misc_cost__cost':'misc','buildings_cost__cost':'buildings_legacy',
+        'precon_cost__cost':'precon_legacy','om_cost__annual_om':'annual_om_unlevelized',
+        'remote_handling__cost':'remote_handling','coolant__cost':'coolant_legacy','aux_cooling__cost':'aux_cooling',
+        'waste__cost':'waste','fuel_handling__cost':'fuel_handling_legacy','other_rpe__cost':'other_rpe',
         'inc_cost__cost':'inc','owner__cost':'owner','supplementary__cost':'supplementary',
         'installation__cost':'installation','powercore_capital__powercore_capital':'powercore_capital',
         'bop_capital__bop_capital':'bop_capital','cas22_capital__cas22_capital':'cas22_capital',
@@ -229,7 +233,7 @@ def test_operating_heat_complete_cost_operand_classification(native,monkeypatch)
         'total_capital__total_capital':'total_capital','idc__cost':'idc_capital'}
     for case in ['baseline','reserve','demand','availability']:
         with monkeypatch.context() as context:
-            context.setattr(verify_stellaris,'IN',verify_stellaris.IN | WI059_REPLAY_LOCAL | load('run_acceptance').CASES[case])
+            context.setattr(verify_stellaris,'IN',verify_stellaris.IN | oracle_local_overrides(WI059_REPLAY | {renamed(P+k):v for k,v in load('run_acceptance').CASES[case].items()}))
             direct=verify_stellaris.compute()
         for channel,key in mapping.items():
             assert results[case]['outputs'][P+channel]==pytest.approx(direct[key],rel=1e-9,abs=1e-9),(case,channel)
@@ -245,6 +249,19 @@ def test_operating_heat_complete_cost_operand_classification(native,monkeypatch)
             expected_inputs['p_cryo']='float '+P+'cryoplant__refrigeration_sum__total.root'
         elif channel == 'powercore_capital__powercore_capital':
             expected_inputs['structure_capital_cost']='float '+P+'structure__structure_cost__cost'
+        elif channel == 'supplementary__cost':
+            expected_inputs.update({
+                'delivered_shipping_exclusion_in':'float '+P+'shipping_scope__cooling_exclusion',
+                'facility_exclusion_in':'float '+P+'shipping_scope__facility_exclusion',
+                'fuel_installation_exclusion_in':'float '+P+'shipping_scope__fuel_installation_exclusion'})
+        elif channel == 'cas22_capital__cas22_capital':
+            expected_inputs.update({
+                'coolant_capital':'float '+P+'heat_transport__cooling_selection__cost',
+                'fuel_handling_capital':'float '+P+'fuel_cycle__processing_cost__cost'})
+        elif channel == 'cas2x_pre_contingency__cas2x_pre_contingency':
+            expected_inputs['capital_cost']='float '+P+'buildings__facility_accounts__cost'
+        elif channel in {'overnight_capital__overnight_capital','total_capital__total_capital'}:
+            expected_inputs['preconstruction_capital']='float '+P+'facility_preconstruction__cost.root'
         assert current[renamed_module(channel.rsplit('__',1)[0])]['inputs']==expected_inputs,module
     assert current[renamed_module('primary_loop')]['inputs'] == {k:renamed_ref(v) for k,v in old[P+'primary_loop']['inputs'].items()}
     assert current[renamed_module('primary_loop')]['outputs'] == {k:renamed_ref(v) for k,v in old[P+'primary_loop']['outputs'].items()}

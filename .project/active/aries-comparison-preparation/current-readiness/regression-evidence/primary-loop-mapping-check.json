@@ -1,0 +1,7 @@
+{
+  "historical_input_mapping_identical_to_reviewed_domain": true,
+  "historical_output_mapping_identical_to_reviewed_domain": true,
+  "input_count": 99,
+  "output_count": 141,
+  "reviewed_ledger": "additional-domain-mapping-ledger.json"
+}

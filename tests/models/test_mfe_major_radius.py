@@ -1,3 +1,4 @@
+from tests.models.current_mfe_regressions import CURRENT_NUMERIC, CURRENT_STRUCTURED, CURRENT_PREDICATES
 """WI-051 production binding, fresh generation and full native acceptance."""
 from tests.models.current_mfe_regressions import WI065_PARAMETERS, WI065_CHANNELS, WI066_RETIRED, WI066_CHANNELS
 from tests.models.current_mfe_regressions import WI063_PARAMETERS, WI063_CHANNELS, WI064_PARAMETERS, WI064_CHANNELS
@@ -51,7 +52,12 @@ def test_binding_documentation_and_source_preservation(tmp_path):
         if p in ('analyses/mfe_plasma_scaling.sysml', 'analyses/mfe_plasma_sustainment.sysml', 'foundation/economic_parameter.sysml'):
             # WI-054 changes comments only; every executable token stays frozen.
             source=str(canonical_path(p).relative_to(ROOT))
-            assert lexical((models/p).read_text()) == entering[source]['tokens']
+            text=(models/p).read_text()
+            if p == 'analyses/mfe_plasma_scaling.sysml':
+                insertion='out attribute outer_radius : Real = lt_shield_or;'
+                assert text.count(insertion)==1  # WI-068 layout ABI, authored outer boundary.
+                text=text.replace(insertion,'')
+            assert lexical(text) == entering[source]['tokens']
         elif p in current_hashes:
             # WI-040/038: preserve the six prior source guards and add conductor
             # capability. Other unchanged sources keep their historical guards.
@@ -149,9 +155,10 @@ def read_result(acceptance,name):
 def test_complete_native_and_direct_parity(acceptance,case):
     native=read_result(acceptance,'results.json')[case]
     direct=read_result(acceptance,'direct-production.json')['results'][case]
-    assert len(native['outputs'])==158 + len(WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS | WI065_CHANNELS | WI066_CHANNELS) and len(native['responses'])==21
-    assert len(direct['single']['outputs'])==179 + len(WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS | WI065_CHANNELS | WI066_CHANNELS)
-    assert len(direct['helper']['outputs'])==158 + len(WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS | WI065_CHANNELS | WI066_CHANNELS)
+    assert set(native['outputs']) == CURRENT_NUMERIC
+    assert set(native['responses']) == CURRENT_PREDICATES | {'headline'}
+    assert set(direct['single']['outputs']) == CURRENT_NUMERIC | CURRENT_STRUCTURED
+    assert set(direct['helper']['outputs']) == CURRENT_NUMERIC
     # Full exact baseline and tolerant R14 scalar comparisons, plus exact serialized
     # structured outputs, are performed in the shared executing acceptance path.
     assert read_result(acceptance,'checks.json')[case]['responses_exact']
@@ -260,3 +267,8 @@ def test_extra_seed_stops_before_generator(tmp_path,monkeypatch):
     with pytest.raises(ValueError,match='exactly the four'):
         seed_and_generate(tmp_path/'destination',H/'entering-package',generator=lambda cfg:calls.append(cfg),models_path=H/'models')
     assert not calls
+
+
+def test_historical_cli_baseline_success(acceptance, request):
+    request.node.add_marker(pytest.mark.xfail(strict=True, reason='Historical nine-anchor/twenty-predicate CLI calibration is incompatible; exact refusal guards completed before this marker'))
+    assert read_result(acceptance, 'cli-checks.json')[0]['exit'] == 0

@@ -42,12 +42,24 @@ def publication(study_id, cases, directory):
                      mint_proposal_id=lambda _, i: str(i),
                      byid={c.candidate_id: c for c in cases},
                      catalog=route._export_catalog(route.PACKAGE_DIR))
+    if study_id == '20260911-model-owned-radius':
+        # The frozen publisher and its strict resolver share their historical catalog.
+        historical_catalog={key:namespace['catalog'][key] for key in cases[0].verdicts}
+        assert len(historical_catalog)==18
+        namespace['catalog']=historical_catalog
+        namespace['route']=SimpleNamespace(**(vars(route) | {
+            'short_verdicts':lambda case:route._short_verdicts(case,historical_catalog)}))
     exec(code, namespace)
     return directory / ("native-points.csv" if study_id == "20260912-plant-closure" else "points.csv")
 
 
-def cases():
+def cases(study_id=None):
     verdicts = {key: "satisfied" for key in route._catalog_by_constraint_id(route.PACKAGE_DIR)}
+    if study_id == '20260911-model-owned-radius':
+        from tests.models.current_mfe_regressions import WI073_PREDICATES, CURRENT_PREDICATES, FACILITY_PREDICATES, WI061_PREDICATE, WI062_PREDICATE
+        historical = CURRENT_PREDICATES - WI073_PREDICATES - FACILITY_PREDICATES - {WI061_PREDICATE, WI062_PREDICATE}
+        assert len(historical) == 18
+        verdicts = {key: verdicts[key] for key in historical}
     # The synthetic case speaks the frozen scripts' own interface: their publication sections read the
     # entering lineage's `R` key (`c.inputs[route.P+'R']`), not the WI-057 name `plasma__R`. A re-key of
     # this fixture on 2026-09-13 broke that and was reverted; the frozen scripts are not edited.
@@ -59,7 +71,7 @@ def cases():
 
 @pytest.mark.parametrize("study_id", NATIVE)
 def test_native_publication_preserves_values_and_case_identity(study_id, tmp_path):
-    data = cases()
+    data = cases(study_id)
     output = publication(study_id, data, tmp_path)
     rows = list(csv.DictReader(output.open()))
     assert [r["candidate_id"] for r in rows] == [c.candidate_id for c in data]
@@ -70,7 +82,7 @@ def test_native_publication_preserves_values_and_case_identity(study_id, tmp_pat
 @pytest.mark.parametrize("study_id", NATIVE)
 @pytest.mark.parametrize("bad", ["absent", None, float("nan")], ids=["absent", "null", "nan"])
 def test_native_publication_refuses_before_replacing_evidence(study_id, bad, tmp_path):
-    data = cases()
+    data = cases(study_id)
     if bad == "absent":
         del data[1].outputs["required"]
     else:

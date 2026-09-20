@@ -61,11 +61,16 @@ def unparseable_reference(copy):
 
 
 def corrupt_pipeline_line(copy):
-    copy.edit(
-        PIPELINE,
-        "R_in: float stellarator_plant_params.stellarator_09__stellaris__plasma__R",
-        "R_in: floatonly_one_token",
-    )
+    import yaml
+    path=copy.path / PIPELINE
+    text=path.read_text()
+    document=yaml.compose(text)
+    modules=next(value for key,value in document.value if key.value=='modules')
+    geometry=next(value for key,value in modules.value if key.value=='stellarator_09__stellaris__plasma__geom')
+    inputs=next(value for key,value in geometry.value if key.value=='inputs')
+    value=next(value for key,value in inputs.value if key.value=='R_in')
+    assert value.value=='float stellarator_plant_params.stellarator_09__stellaris__plasma__R'
+    path.write_text(text[:value.start_mark.index]+'floatonly_one_token'+text[value.end_mark.index:])
 
 
 def ghost_objective_channel(copy):
