@@ -1,6 +1,8 @@
 # Model evaluation domain readiness
 
-[AGENT] Technical work is complete with a reviewed bounded negative result for the desired scientific envelope. Formal closure remains owner-held. This is post-reveal development on `fix/modeling-intent-after-reveal` from the pre-reveal code baseline, not a restored blind test.
+[OWNER] Formally closed on the reviewed technical answer on 2026-09-20. Broad-envelope readiness is not established; verification and adapter preparation are complete within their documented limits. Unresolved scientific coverage and reference-mapping decisions remain open. Another comparison and replacement-package adoption are not authorized. See the closure record in trail.md.
+
+[AGENT] This is post-reveal development on `fix/modeling-intent-after-reveal` from the pre-reveal code baseline, not a restored blind test.
 
 ## Evaluation capability and limits
 
@@ -43,4 +45,4 @@ Entering HEAD was `d8b6c66a895f3037bac7dd7a7251a0d55e879e7b`; reviewed implement
 - Executed baseline read-dependency digest: `002f454aef425be6148c6795b94a45b62102523b206baf94bdd672bc872d078b`.
 - Adapter identity-file SHA-256: `1266a929e6057e7005538149ccfb15e4405ecad42a2813dc80bdec97fd8f23d6` (512 indexed files).
 
-The readiness decision is a bounded negative for broad-envelope evaluation and a positive technical result for scoped verification and synthetic adapter preparation. Further scientific evidence and reference mapping decisions are required before another comparison. Technical completion conveys neither plant feasibility, a lower LCOE, universal design coverage nor permission to repeat the reference comparison. The owner retains formal closure and subsequent comparison decisions.
+The readiness decision is a bounded negative for broad-envelope evaluation and a positive technical result for scoped verification and synthetic adapter preparation. Further scientific evidence and reference mapping decisions are required before another comparison. Technical completion conveys neither plant feasibility, a lower LCOE, universal design coverage nor permission to repeat the reference comparison. The owner has formally closed this goal; subsequent comparison and replacement-package adoption decisions remain owner-held.

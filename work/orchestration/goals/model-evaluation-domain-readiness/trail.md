@@ -134,3 +134,13 @@ The T-003 return's `SUCCESS` label means `COMPLETE`, the native six-outcome voca
 The coordinator checked scope, evidence paths, current source identities, task returns and preserved historical bytes. The final adapter ledger matches all 512 indexed files; all 941 protected historical files remain unchanged. The 96-test final selection overlaps earlier focused runs and is not summed. The first full seam's stale fixture failure and one corrected full-seam rerun remain distinct. Revised development probes changed implementation/setup, not scientific inputs to rescue a result; they are not relabeled identical mechanical retries. The interrupted broad suite remains incomplete, with its first failure recovered and attributed to the stale seed fixture. Review corrections stayed within the declared submission cap. No model/source/adapter meaning changed after acceptance.
 
 Accept the proposed learning delta with the stated scope limits. Remaining uncertainties are scientific joint applicability, equipment off-design qualification, broader filesystem observation and unresolved reference mappings. Recommend owner review of answer.md and formal closure as a bounded result; do not authorize another reference comparison. No additional goal round is needed to deliver this requested readiness assessment.
+
+### Owner closure — 2026-09-20
+
+[OWNER-VERBATIM] “Close model-evaluation-domain-readiness on the reviewed technical answer. Record broad-envelope readiness as not established, and verification/adapter preparation as complete within their documented limits. Preserve the unresolved scientific coverage and reference-mapping decisions. Do not authorize another comparison or replacement-package adoption.”
+
+- **Finding:** The reviewed technical answer and Round 1 review are recorded at `c6769c33118e3d3baa1a646c16378196650ed8ea`.
+- **Decision and reason:** Close on that reviewed answer. Broad-envelope readiness is not established; verification and adapter preparation are complete within their documented limits. Scientific coverage and reference-mapping decisions remain unresolved.
+- **Tier:** Reserved gate — formal goal closure only.
+- **Decider:** Owner, by the instruction quoted above; coordinator records the decision.
+- **Changed:** goal.md status, answer.md closure statement and .project/CURRENT_WORK.md. No model, executable, test evidence, scientific limit or mapping contract changes. Another comparison and replacement-package adoption remain unauthorized.

@@ -2,7 +2,7 @@
 
 ## Status
 
-grounded — 2026-09-20. [OWNER] Supplied this slug and authorized grounding and pursuit in the current request.
+closed — 2026-09-20. [OWNER] Closed on the reviewed technical answer at `c6769c33118e3d3baa1a646c16378196650ed8ea`. Broad-envelope readiness is not established. Verification and adapter preparation are complete within their documented limits. Unresolved scientific coverage and reference-mapping decisions remain open; another comparison and replacement-package adoption are not authorized. See the owner closure entry in trail.md.
 
 ## Question
 
