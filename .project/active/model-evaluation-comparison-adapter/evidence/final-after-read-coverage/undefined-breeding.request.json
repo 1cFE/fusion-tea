@@ -1,0 +1,13 @@
+{
+  "purpose": "synthetic_preparation",
+  "schema_version": "adapter-request/v1",
+  "values": {
+    "stellarator_09__stellaris__plasma__R": {
+      "definition": "major_radius",
+      "resolution": "matched",
+      "source": "synthetic fixture from model defaults; no reference observations",
+      "unit": "m",
+      "value": 12.6
+    }
+  }
+}

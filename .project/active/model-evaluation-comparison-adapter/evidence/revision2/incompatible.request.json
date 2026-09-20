@@ -1,0 +1,13 @@
+{
+  "purpose": "synthetic_preparation",
+  "schema_version": "adapter-request/v1",
+  "values": {
+    "stellarator_09__stellaris__plasma__n_e0": {
+      "definition": "volume_average_density",
+      "resolution": "matched",
+      "source": "synthetic fixture from model defaults; no reference observations",
+      "unit": "m^-3",
+      "value": 5e+20
+    }
+  }
+}

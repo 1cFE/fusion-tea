@@ -1,0 +1,13 @@
+{
+  "schema_version": "comparison-role-overlay/v1",
+  "authority": "AGENT explicit WI-075 supplied-mass migration; historical criteria unchanged",
+  "producer_overrides": {
+    "casing_mass": [
+      "stellarator_09__stellaris__magnet__casing__m_casing"
+    ],
+    "support_mass": [
+      "stellarator_09__stellaris__magnet__m_support"
+    ]
+  },
+  "policy": "current public input producers are supplied/held; numeric and predicate responses calculated; no independent credit"
+}

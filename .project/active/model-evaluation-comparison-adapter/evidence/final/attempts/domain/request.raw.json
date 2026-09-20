@@ -1,0 +1,13 @@
+{
+  "purpose": "synthetic_preparation",
+  "schema_version": "adapter-request/v1",
+  "values": {
+    "stellarator_09__stellaris__magnet__coil__turn_current": {
+      "definition": "per_turn_operating_current",
+      "resolution": "matched",
+      "source": "synthetic fixture from model defaults; no reference observations",
+      "unit": "A",
+      "value": 65000
+    }
+  }
+}

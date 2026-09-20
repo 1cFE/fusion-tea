@@ -1,0 +1,13 @@
+{
+  "artifacts": {
+    "exception.txt": "4cfd9d125614d62ca6916a050926ce5bd750e63827e54cef706e28b9cb1b5aa5",
+    "model-export.json": "dfa3d59e4bb51cde3ce9916af0f43061587c873e0a7a906031187f108d73c580",
+    "request.raw.json": "0b83a5a3770f6627a8da005a5bc0ede6f71692a42a80a367d39426027df81751",
+    "result.json": "d54083a4f833985eb050ea2e913ac7dad2ebfc34cf78e98a4b1a1371a1c4b59f"
+  },
+  "first_attempt": {
+    "attempt": "incompatible",
+    "pointer_sha256": "dc97b8c53d25ba693a6c5e79a157f8f328232ce222d4bc9a3ee899d65b7ed492",
+    "schema_version": "first-attempt/v1"
+  }
+}

@@ -1,0 +1,9 @@
+incompatible execution_refused ValueError: identity drift: scripts/study/read_coverage.py
+default execution_refused ValueError: identity drift: scripts/study/read_coverage.py
+missing execution_refused ValueError: identity drift: scripts/study/read_coverage.py
+domain execution_refused ValueError: identity drift: scripts/study/read_coverage.py
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/.project/active/model-evaluation-comparison-adapter/evidence/run_revision2.py", line 41, in <module>
+    assert results['default']['state'] == 'completed'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

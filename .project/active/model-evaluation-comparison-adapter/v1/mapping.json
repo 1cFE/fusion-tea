@@ -1,0 +1,98 @@
+{
+  "schema_version": "model-evaluation-mapping/v1",
+  "authority": "AGENT proposed synthetic preparation mapping, independently reviewed; not an adopted reference contract",
+  "inputs": [
+    {
+      "key": "stellarator_09__stellaris__plasma__R",
+      "definition": "major_radius",
+      "unit": "m",
+      "physical_definition": "Model geometric major radius; no equilibrium or shape substitution.",
+      "additional_information": "Geometric convention and design revision must match.",
+      "conversion": "Caller must explicitly preconvert units; adapter performs no conversion or inverse physics.",
+      "role": "chosen_design",
+      "missing_policy": "hold identified package default; block fully specified claim",
+      "incompatible_policy": "refuse ambiguous, unmatched, wrong-unit or wrong-definition records"
+    },
+    {
+      "key": "stellarator_09__stellaris__plasma__a",
+      "definition": "minor_radius",
+      "unit": "m",
+      "physical_definition": "Model geometric minor radius.",
+      "additional_information": "Effective, volume-equivalent and local radii need a separate interpretation.",
+      "conversion": "Caller must explicitly preconvert units; adapter performs no conversion or inverse physics.",
+      "role": "chosen_design",
+      "missing_policy": "hold identified package default; block fully specified claim",
+      "incompatible_policy": "refuse ambiguous, unmatched, wrong-unit or wrong-definition records"
+    },
+    {
+      "key": "stellarator_09__stellaris__plasma__n_e0",
+      "definition": "peak_electron_density",
+      "unit": "m^-3",
+      "physical_definition": "Peak electron number density.",
+      "additional_information": "Average density needs a documented profile; no profile inversion here.",
+      "conversion": "Caller must explicitly preconvert units; adapter performs no conversion or inverse physics.",
+      "role": "chosen_operating",
+      "missing_policy": "hold identified package default; block fully specified claim",
+      "incompatible_policy": "refuse ambiguous, unmatched, wrong-unit or wrong-definition records"
+    },
+    {
+      "key": "stellarator_09__stellaris__plasma__T_i0",
+      "definition": "peak_ion_temperature",
+      "unit": "keV",
+      "physical_definition": "Peak ion temperature.",
+      "additional_information": "Electron or volume-average temperatures need separate species/profile evidence.",
+      "conversion": "Caller must explicitly preconvert units; adapter performs no conversion or inverse physics.",
+      "role": "chosen_operating",
+      "missing_policy": "hold identified package default; block fully specified claim",
+      "incompatible_policy": "refuse ambiguous, unmatched, wrong-unit or wrong-definition records"
+    },
+    {
+      "key": "stellarator_09__stellaris__magnet__coil__coil_t",
+      "definition": "radial_coil_exterior_allocation",
+      "unit": "m",
+      "physical_definition": "Full radial exterior allocation of the coil layer.",
+      "additional_information": "Not local clear radial cavity; wall thickness and local geometry remain held.",
+      "conversion": "Caller must explicitly preconvert units; adapter performs no conversion or inverse physics.",
+      "role": "chosen_design",
+      "missing_policy": "hold identified package default; block fully specified claim",
+      "incompatible_policy": "refuse ambiguous, unmatched, wrong-unit or wrong-definition records"
+    },
+    {
+      "key": "stellarator_09__stellaris__magnet__casing__interior_y",
+      "definition": "full_transverse_clear_cavity",
+      "unit": "m",
+      "physical_definition": "Full transverse clear cavity inside the casing.",
+      "additional_information": "Not exterior casing width or half width; local section correspondence required.",
+      "conversion": "Caller must explicitly preconvert units; adapter performs no conversion or inverse physics.",
+      "role": "chosen_design",
+      "missing_policy": "hold identified package default; block fully specified claim",
+      "incompatible_policy": "refuse ambiguous, unmatched, wrong-unit or wrong-definition records"
+    },
+    {
+      "key": "stellarator_09__stellaris__magnet__coil__reference_turns",
+      "definition": "installed_reference_turns",
+      "unit": "1",
+      "physical_definition": "Supplied continuous installed turns of the reference coil.",
+      "additional_information": "Document reference coil identity; continuous turns do not establish a manufactured winding.",
+      "conversion": "Caller must explicitly preconvert units; adapter performs no conversion or inverse physics.",
+      "role": "chosen_design",
+      "missing_policy": "hold identified package default; block fully specified claim",
+      "incompatible_policy": "refuse ambiguous, unmatched, wrong-unit or wrong-definition records"
+    },
+    {
+      "key": "stellarator_09__stellaris__magnet__coil__turn_current",
+      "definition": "per_turn_operating_current",
+      "unit": "A",
+      "physical_definition": "Operating current through each series turn of the reference coil.",
+      "additional_information": "Neither reference-coil ampere-turns nor coil-set aggregate current.",
+      "conversion": "Caller must explicitly preconvert units; adapter performs no conversion or inverse physics.",
+      "role": "chosen_operating",
+      "missing_policy": "hold identified package default; block fully specified claim",
+      "incompatible_policy": "refuse ambiguous, unmatched, wrong-unit or wrong-definition records"
+    }
+  ],
+  "retired_product_input": "stellarator_09__stellaris__magnet__coil__I_coil",
+  "product_policy": "refuse; ampere-turns alone cannot choose installed turns and operating current",
+  "field_role": "calculated",
+  "reference_comparison_authorized": false
+}

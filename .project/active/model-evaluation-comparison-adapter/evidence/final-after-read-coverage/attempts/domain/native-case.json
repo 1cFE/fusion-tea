@@ -1,0 +1,20 @@
+{
+  "assessment": null,
+  "candidate_id": "adapter-preparation-v1:c0000",
+  "evidence_digest": null,
+  "executable_fingerprint": "83ea3b6cf99f5fda6045e7e03b5d430ede91abbe8aa41262c2f9f5aba8663d23",
+  "headline": null,
+  "native_failure_records": [
+    {
+      "cause": "ValueError: REBCO Conductor Current: B_peak outside 20..32 T; actual=32.37 T at 20.0 K",
+      "module_or_channel": "stellarator_09__stellaris__magnet__conductor_current",
+      "partial_artifacts": [],
+      "phase": "module_execution",
+      "retryable": false
+    }
+  ],
+  "outputs": {},
+  "state": "execution_failed",
+  "store": "native/adapter-preparation-v1.db",
+  "verdicts": {}
+}

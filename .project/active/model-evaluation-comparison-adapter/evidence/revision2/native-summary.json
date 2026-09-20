@@ -1,0 +1,62 @@
+{
+  "after_interruption": {
+    "candidate_id": null,
+    "error": "ValueError: identity drift: scripts/study/read_coverage.py",
+    "executable_fingerprint": null,
+    "first_attempt": {
+      "attempt": "interrupted",
+      "pointer_sha256": "b1fe48508c202ca9c06036baba8fe7a95205efd04b22c9eb3b5dafdd677e716c",
+      "schema_version": "first-attempt/v1"
+    },
+    "native_failure_records": null,
+    "state": "execution_refused"
+  },
+  "default": {
+    "candidate_id": null,
+    "error": "ValueError: identity drift: scripts/study/read_coverage.py",
+    "executable_fingerprint": null,
+    "first_attempt": {
+      "attempt": "incompatible",
+      "pointer_sha256": "dc97b8c53d25ba693a6c5e79a157f8f328232ce222d4bc9a3ee899d65b7ed492",
+      "schema_version": "first-attempt/v1"
+    },
+    "native_failure_records": null,
+    "state": "execution_refused"
+  },
+  "domain": {
+    "candidate_id": null,
+    "error": "ValueError: identity drift: scripts/study/read_coverage.py",
+    "executable_fingerprint": null,
+    "first_attempt": {
+      "attempt": "incompatible",
+      "pointer_sha256": "dc97b8c53d25ba693a6c5e79a157f8f328232ce222d4bc9a3ee899d65b7ed492",
+      "schema_version": "first-attempt/v1"
+    },
+    "native_failure_records": null,
+    "state": "execution_refused"
+  },
+  "incompatible": {
+    "candidate_id": null,
+    "error": "ValueError: identity drift: scripts/study/read_coverage.py",
+    "executable_fingerprint": null,
+    "first_attempt": {
+      "attempt": "incompatible",
+      "pointer_sha256": "dc97b8c53d25ba693a6c5e79a157f8f328232ce222d4bc9a3ee899d65b7ed492",
+      "schema_version": "first-attempt/v1"
+    },
+    "native_failure_records": null,
+    "state": "execution_refused"
+  },
+  "missing": {
+    "candidate_id": null,
+    "error": "ValueError: identity drift: scripts/study/read_coverage.py",
+    "executable_fingerprint": null,
+    "first_attempt": {
+      "attempt": "incompatible",
+      "pointer_sha256": "dc97b8c53d25ba693a6c5e79a157f8f328232ce222d4bc9a3ee899d65b7ed492",
+      "schema_version": "first-attempt/v1"
+    },
+    "native_failure_records": null,
+    "state": "execution_refused"
+  }
+}

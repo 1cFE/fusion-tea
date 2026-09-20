@@ -1,0 +1,17 @@
+{
+  "all_constraints_satisfied": false,
+  "attempt": "later-success",
+  "error": "ValueError: identity drift: scripts/study/read_coverage.py",
+  "first_attempt": {
+    "attempt": "interrupted",
+    "pointer_sha256": "b1fe48508c202ca9c06036baba8fe7a95205efd04b22c9eb3b5dafdd677e716c",
+    "schema_version": "first-attempt/v1"
+  },
+  "native_execution_started": false,
+  "publication_ready": false,
+  "raw_request_sha256": "0b83a5a3770f6627a8da005a5bc0ede6f71692a42a80a367d39426027df81751",
+  "reference_values_loaded": false,
+  "refusal_stage": "identity",
+  "schema_version": "adapter-result/v1",
+  "state": "execution_refused"
+}
