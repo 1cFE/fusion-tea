@@ -24,6 +24,15 @@ def calculate(inputs) -> dict[str, float]:
     mdot = ((inputs.q_source_in * 1000000.0) / (inputs.cp_in * inputs.dT_blanket_in))
     mdot_loop = (mdot / inputs.n_loops_in)
     dp_loop = ((inputs.f_loss_in * inputs.dp_loop_ref_in) * ((mdot_loop / inputs.mdot_loop_ref_in) ** 2))
+    suction = inputs.p_loop_in - dp_loop
+    if (not math.isfinite(inputs.p_loop_in) or inputs.p_loop_in <= 0
+            or not math.isfinite(dp_loop) or dp_loop < 0
+            or not math.isfinite(suction) or suction <= 0):
+        raise ValueError(
+            "Primary Coolant Loop: unsupported compressor pressure state; "
+            f"p_loop_in={inputs.p_loop_in!r} Pa, dp_loop={dp_loop!r} Pa, "
+            f"suction={suction!r} Pa; requires finite p_loop_in > dp_loop >= 0 Pa"
+        )
     r_comp = (inputs.p_loop_in / (inputs.p_loop_in - dp_loop))
     T_comp_in = (inputs.T_in_in / (1.0 + (((r_comp ** k_isen) - 1.0) / inputs.eta_is_in)))
     w_fluid = (((mdot * inputs.cp_in) * (inputs.T_in_in - T_comp_in)) / 1000000.0)

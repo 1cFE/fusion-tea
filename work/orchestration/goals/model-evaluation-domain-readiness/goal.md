@@ -52,3 +52,7 @@ grounded — 2026-09-20. [OWNER] Supplied this slug and authorized grounding and
 [OWNER] The owner alone formally closes on the reviewed technical answer or bounded negative result.
 
 ## Amendments
+
+### Amendment 2026-09-20 — clarifies Limits
+
+[AGENT] The 40-evaluation exploration limit applies to T-001's representative/boundary coverage probes, including interrupted native calls. It does not replace the separately required deterministic regression, diagnostic-repair acceptance, synthetic adapter tests or integration baseline. Those checks are recorded by invocation and case/node identity rather than counted as additional exploration samples. No additional T-001 exploration is authorized after its 40 calls.

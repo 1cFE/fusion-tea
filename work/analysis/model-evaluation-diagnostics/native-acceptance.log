@@ -1,0 +1,3 @@
+/home/reid/1cfe/fusion-tea/work/analysis/model-evaluation-diagnostics/native_acceptance.py:12: PydanticDeprecatedSince211: Accessing the 'model_fields' attribute on the instance is deprecated. Instead, you should access this attribute from the model class. Deprecated in Pydantic V2.11 to be removed in V3.0.
+  if hasattr(x,'model_fields'):return {k:clean(getattr(x,k)) for k in type(x).model_fields}
+PASS three native domain refusals with offending values; no completed outputs manufactured

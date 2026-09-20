@@ -96,3 +96,14 @@ def test_selected_field_predicate_independent(evaluate):
         for key,status in [('peak_field_ok',field_ok),('reference_conductor_current_ok',current_ok)]:
             value=next(v for k,v in row.responses.items() if key+'__' in k)
             assert value==status
+
+@pytest.mark.parametrize('change,fragments',[
+    ({'B_peak':19.9},['REBCO Conductor Current','20..32 T','actual=19.9 T']),
+    ({'temperature':21.},['temperature=21.0 K','expected 20.0 K']),
+    ({'tape_width':.007},['4..6 mm','actual=0.007 m']),
+    ({'B_peak':25.},['actual=25.0 T','supported without extrapolation=20..24 T']),
+])
+def test_domain_refusal_has_offending_value_and_supported_condition(current,change,fragments):
+    with pytest.raises(ValueError) as caught:
+        current(change)
+    assert all(fragment in str(caught.value) for fragment in fragments)

@@ -24,14 +24,15 @@ def run_rebco_conductor_current(inputs: REBCO_Conductor_CurrentInput) -> tuple[f
             raise ValueError(f'REBCO Conductor Current: {key} must be at most 1')
     for key, target in (('temperature', 20.0), ('tape_thickness', 56e-6)):
         if getattr(inputs, key) != target:
-            raise ValueError(f'REBCO Conductor Current: unsupported {key}; expected {target}')
+            unit = 'K' if key == 'temperature' else 'm'
+            raise ValueError(f'REBCO Conductor Current: unsupported {key}={getattr(inputs, key)!r} {unit}; expected {target} {unit}')
     if not 0.004 <= inputs.tape_width <= 0.006:
-        raise ValueError('REBCO Conductor Current: tape_width outside 4..6 mm')
+        raise ValueError(f'REBCO Conductor Current: tape_width outside 4..6 mm; actual={inputs.tape_width!r} m')
     if not 20 <= inputs.B_peak <= 32:
-        raise ValueError('REBCO Conductor Current: B_peak outside 20..32 T')
+        raise ValueError(f'REBCO Conductor Current: B_peak outside 20..32 T; actual={inputs.B_peak!r} T at {inputs.temperature!r} K')
     extrapolated = float(inputs.B_peak > 24)
     if extrapolated and not inputs.allow_field_extrapolation:
-        raise ValueError('REBCO Conductor Current: B_peak above 24 T requires allow_field_extrapolation')
+        raise ValueError(f'REBCO Conductor Current: B_peak above 24 T requires allow_field_extrapolation; actual={inputs.B_peak!r} T; supported without extrapolation=20..24 T')
     out = {}
     out['parallel_tapes_set'] = positive('parallel_tapes_set', inputs.tape_length / inputs.conductor_length)
     intermediate = positive('reference_count_numerator', out['parallel_tapes_set'] * inputs.f_set)

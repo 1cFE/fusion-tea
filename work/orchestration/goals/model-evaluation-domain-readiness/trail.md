@@ -52,3 +52,16 @@ T-003 · .project/active/model-evaluation-comparison-adapter/ · versioned adapt
 ### Parallel scope judgment — 2026-09-20
 
 [AGENT] T-001 owns analysis artifacts; T-002 owns integration/read tracing code and tests; T-003 owns a new adapter directory and its tests. They share read-only current model interfaces. The coordinator owns goal records, commits, package generation and final integration. No worker changes models, generated package, historical comparison files or another worker's files. Findings that invalidate another scope are returned before dependent work.
+
+### T-004 scope
+
+- **Objective:** Replace uncontrolled compressor arithmetic and incomplete conductor error messages with explicit domain diagnostics.
+- **Why now:** T-001 case 14 produced complex-valued compressor outputs when calculated loss exceeded supplied pressure; conductor refusals omitted offending values.
+- **Scope:** Quick-model correction of existing mathematical-domain enforcement and diagnostics only. No equations, empirical limits, variable roles, prices or hardware selection change.
+- **Inputs:** goal.md; work/analysis/model-evaluation-domain-readiness/case-14.json; primary-loop and conductor native definitions/manual completions.
+- **Done when:** Native unsupported cases report value/range/calculation, supported arithmetic remains unchanged, fresh generation and integration identify repaired executable.
+- **Stop when:** Repair requires a new scientific relationship, role change, reserved gate or declared limit.
+
+### T-004 start — 2026-09-20
+
+T-004 · work/analysis/model-evaluation-diagnostics/ · quick-model record, normative seed delta and native regression evidence. Coordinator owns generated/model changes after entering coverage probes have finished.

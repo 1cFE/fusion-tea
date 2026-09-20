@@ -69,3 +69,25 @@ def test_moscato_printed_anchor(module):
     result=module.run(**(BASE|{'cp_in':implied_cp})).data
     assert result.mdot==pytest.approx(2025.7,rel=1e-12)
     assert abs(implied_cp-5193.)/5193.<.0011
+
+@pytest.mark.parametrize('pressure',[0.,-1.,100000.,math.inf,math.nan])
+def test_unsupported_compressor_pressure_reports_state(module,pressure):
+    with pytest.raises(ValueError,match='Primary Coolant Loop: unsupported compressor pressure state') as caught:
+        module.run(**(BASE|{'p_loop_in':pressure}))
+    assert 'dp_loop=' in str(caught.value) and 'suction=' in str(caught.value)
+    assert 'requires finite p_loop_in > dp_loop >= 0 Pa' in str(caught.value)
+
+
+def test_zero_suction_refuses_before_division(module):
+    flow=BASE['q_source_in']*1e6/(BASE['cp_in']*BASE['dT_blanket_in'])
+    loss=BASE['f_loss_in']*BASE['dp_loop_ref_in']*((flow/BASE['n_loops_in'])/BASE['mdot_loop_ref_in'])**2
+    with pytest.raises(ValueError,match='suction=0.0 Pa'):
+        module.run(**(BASE|{'p_loop_in':loss}))
+    supported=module.run(**(BASE|{'p_loop_in':2*loss})).data
+    assert supported.r_comp==pytest.approx(2.)
+    assert supported.T_comp_in==pytest.approx(BASE['T_in_in']/(1+(2**((BASE['gamma_in']-1)/BASE['gamma_in'])-1)/BASE['eta_is_in']))
+
+
+def test_negative_calculated_loss_refuses(module):
+    with pytest.raises(ValueError,match='unsupported compressor pressure state'):
+        module.run(**(BASE|{'f_loss_in':-1.}))

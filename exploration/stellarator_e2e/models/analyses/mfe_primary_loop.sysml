@@ -59,6 +59,8 @@ package mfe_primary_loop {
         The thirteen outputs below require this guarded manual completion;
         the ordered equations above remain the normative valid calculation.
 
+        Compressor arithmetic also requires finite p_loop_in > dp_loop >= 0 Pa. Typed completion refuses nonpositive suction before division or fractional power and reports supplied pressure, calculated loss and suction. This mathematical prerequisite does not qualify the empirical loss law off its reference conditions. Unsupported execution supplies no completed plant evaluation.
+
         Constant ideal-gas helium properties (cp, gamma) over the reference
         window; the reference's own implied cp is 0.10 % under ideal helium.
 

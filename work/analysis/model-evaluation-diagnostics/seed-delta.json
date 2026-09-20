@@ -1,0 +1,10 @@
+{
+  "handwritten/mfe_conductor_current/rebco_conductor_current_impl.py": {
+    "before": "82da49e250d682f2ae9934805b98fb3b648b9707bf947c5e61c70d55f7578181",
+    "after": "6c0db1eeb028798059df104e75fdcc0af90bb86cea8fb5d9ad890d8f8e01134e"
+  },
+  "handwritten/mfe_primary_loop/primary_coolant_loop_impl.py": {
+    "before": "b39310fa9ea08734c9ed152f6af6be9573319549d01e096fab3d2a2c9a11a6b1",
+    "after": "1c2c97fdb9eb87378571b5554f83d85f4aaa359862bfc4fa3b09b1a6d1996f42"
+  }
+}

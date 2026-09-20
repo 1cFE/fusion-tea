@@ -1,0 +1,1593 @@
+{
+  "entry_fusion": [],
+  "stellarator_09__stellaris__blanket__first_wall__wall_peak_cal": [],
+  "stellarator_09__stellaris__blanket__cost_thermal_class_mw_guard": [],
+  "stellarator_09__stellaris__blanket__breeding": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__breeding_adequacy",
+    "stellarator_09__stellaris__cas22_capital",
+    "stellarator_09__stellaris__fuel_cycle__fuel",
+    "stellarator_09__stellaris__fuel_cycle__inventory",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost",
+    "stellarator_09__stellaris__fuel_processing_capacity_ok__ddb8525b2bda8f0a",
+    "stellarator_09__stellaris__shipping_scope",
+    "stellarator_09__stellaris__supplementary",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+    "stellarator_09__stellaris__vacuum_pumping__vacuum"
+  ],
+  "stellarator_09__stellaris__turbine__turbine_cost": [],
+  "stellarator_09__stellaris__plasma__geom": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__blanket__source_heat",
+    "stellarator_09__stellaris__breeding_adequacy",
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+    "stellarator_09__stellaris__cas22_capital",
+    "stellarator_09__stellaris__divertor__divheat",
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+    "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1",
+    "stellarator_09__stellaris__electric_plant__electric_gross_capability",
+    "stellarator_09__stellaris__fuel_cycle__fuel",
+    "stellarator_09__stellaris__fuel_cycle__inventory",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost",
+    "stellarator_09__stellaris__fuel_processing_capacity_ok__ddb8525b2bda8f0a",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "stellarator_09__stellaris__operating_heat",
+    "stellarator_09__stellaris__pb",
+    "stellarator_09__stellaris__plasma__beta_calc",
+    "stellarator_09__stellaris__plasma__fusion",
+    "stellarator_09__stellaris__plasma__sustain",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "stellarator_09__stellaris__shipping_scope",
+    "stellarator_09__stellaris__supplementary",
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+    "stellarator_09__stellaris__turbine__turbine_gross_capability",
+    "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4",
+    "stellarator_09__stellaris__vacuum_pumping__vacuum"
+  ],
+  "stellarator_09__stellaris__heating__heat": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__divertor__divheat",
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+    "stellarator_09__stellaris__heating__heating_cost",
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce"
+  ],
+  "stellarator_09__stellaris__heating__heating_cost": [],
+  "stellarator_09__stellaris__vessel__cost_gross_class_mwe_guard": [],
+  "stellarator_09__stellaris__divertor__divertor_cost": [],
+  "stellarator_09__stellaris__cryoplant__aux_cost_thermal_class_mw_guard": [],
+  "stellarator_09__stellaris__cryoplant__aux_cooling": [
+    "stellarator_09__stellaris__cas22_capital"
+  ],
+  "stellarator_09__stellaris__cryoplant__direct_electric_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__direct_electric_capacity_ok__5acaaed766dc1371"
+  ],
+  "stellarator_09__stellaris__cryoplant__cryogenic_offered_conditions": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__cold_stage_capacity_ok__93eb65dcc5b55e0b",
+    "stellarator_09__stellaris__cryoplant__cold_stage_capability",
+    "stellarator_09__stellaris__cryoplant__intercept_stage_capability",
+    "stellarator_09__stellaris__intercept_stage_capacity_ok__9025ac10e1f2a085"
+  ],
+  "stellarator_09__stellaris__heat_rejection__heat_rejection_cost": [],
+  "stellarator_09__stellaris__shield__cost_thermal_class_mw_guard": [],
+  "stellarator_09__stellaris__fuel_cycle__legacy_cost_net_class_mwe_guard": [],
+  "stellarator_09__stellaris__fuel_cycle__fuel_handling": [],
+  "stellarator_09__stellaris__magnet__wp_fit": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+  ],
+  "stellarator_09__stellaris__magnet__magnet_structure_cost": [
+    "stellarator_09__stellaris__magnet__magnet_capital_rollup"
+  ],
+  "stellarator_09__stellaris__magnet__winding_state": [
+    "stellarator_09__stellaris__magnet__field_calc",
+    "stellarator_09__stellaris__magnet__stored_energy",
+    "stellarator_09__stellaris__magnet__winding_pack_cost",
+    "stellarator_09__stellaris__magnet__wp_stress"
+  ],
+  "stellarator_09__stellaris__magnet__field_calc": [],
+  "stellarator_09__stellaris__plasma__sustain": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__blanket__source_heat",
+    "stellarator_09__stellaris__breeding_adequacy",
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+    "stellarator_09__stellaris__cas22_capital",
+    "stellarator_09__stellaris__divertor__divheat",
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+    "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1",
+    "stellarator_09__stellaris__electric_plant__electric_gross_capability",
+    "stellarator_09__stellaris__fuel_cycle__fuel",
+    "stellarator_09__stellaris__fuel_cycle__inventory",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost",
+    "stellarator_09__stellaris__fuel_processing_capacity_ok__ddb8525b2bda8f0a",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "stellarator_09__stellaris__operating_heat",
+    "stellarator_09__stellaris__pb",
+    "stellarator_09__stellaris__plasma__beta_calc",
+    "stellarator_09__stellaris__plasma__fusion",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "stellarator_09__stellaris__shipping_scope",
+    "stellarator_09__stellaris__supplementary",
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+    "stellarator_09__stellaris__turbine__turbine_gross_capability",
+    "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4",
+    "stellarator_09__stellaris__vacuum_pumping__vacuum"
+  ],
+  "stellarator_09__stellaris__plasma__beta_calc": [],
+  "stellarator_09__stellaris__plasma__fusion": [],
+  "stellarator_09__stellaris__heat_transport__legacy_cost_thermal_class_mw_guard": [],
+  "stellarator_09__stellaris__heat_transport__legacy_cost_net_class_mwe_guard": [],
+  "stellarator_09__stellaris__heat_transport__coolant": [],
+  "stellarator_09__stellaris__heat_transport__cooling_guard": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__cas22_capital",
+    "stellarator_09__stellaris__cas70_calc",
+    "stellarator_09__stellaris__cas71_calc",
+    "stellarator_09__stellaris__cas90_1cfe_calc",
+    "stellarator_09__stellaris__condensate_electric_capacity_ok__a5ca7c5129553d1f",
+    "stellarator_09__stellaris__condensate_flow_capacity_ok__252eeccf9b929ade",
+    "stellarator_09__stellaris__condensate_pressure_rise_capacity_ok__d996b8dad5b58894",
+    "stellarator_09__stellaris__condenser_rejection_capacity_ok__b5d2e6443913eb29",
+    "stellarator_09__stellaris__cooling_annual",
+    "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328",
+    "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1",
+    "stellarator_09__stellaris__electric_plant__electric_gross_capability",
+    "stellarator_09__stellaris__feedwater_electric_capacity_ok__2274a605654bb912",
+    "stellarator_09__stellaris__feedwater_flow_capacity_ok__3065124bba3fb314",
+    "stellarator_09__stellaris__feedwater_pressure_rise_capacity_ok__2e12db90b09ba458",
+    "stellarator_09__stellaris__heat_rejection__cooling_water",
+    "stellarator_09__stellaris__heat_rejection__water_electric_capability",
+    "stellarator_09__stellaris__heat_rejection__water_flow_capability",
+    "stellarator_09__stellaris__heat_rejection__water_head_capability",
+    "stellarator_09__stellaris__heat_rejection__water_offered_conditions",
+    "stellarator_09__stellaris__heat_rejection__water_rejection_capability",
+    "stellarator_09__stellaris__heat_transport__cooling_energy",
+    "stellarator_09__stellaris__heat_transport__cooling_selection",
+    "stellarator_09__stellaris__hp_flow_capacity_ok__f0b30eeb1c674ce4",
+    "stellarator_09__stellaris__hp_shaft_capacity_ok__a19eda5dff14e4c2",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc",
+    "stellarator_09__stellaris__lp_flow_capacity_ok__3e0e231ed626fd7d",
+    "stellarator_09__stellaris__lp_shaft_capacity_ok__70b40123e64ccdf5",
+    "stellarator_09__stellaris__main_ua_capacity_ok__86518fe643367961",
+    "stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87",
+    "stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "stellarator_09__stellaris__pb",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "stellarator_09__stellaris__reheat_ua_capacity_ok__e377a2da71f404d0",
+    "stellarator_09__stellaris__shipping_scope",
+    "stellarator_09__stellaris__supplementary",
+    "stellarator_09__stellaris__turbine__condensate_electric_capability",
+    "stellarator_09__stellaris__turbine__condensate_flow_capability",
+    "stellarator_09__stellaris__turbine__condensate_pressure_rise_capability",
+    "stellarator_09__stellaris__turbine__condensate_pressure_rise_demand_conversion",
+    "stellarator_09__stellaris__turbine__condenser_rejection_capability",
+    "stellarator_09__stellaris__turbine__cycle_selection",
+    "stellarator_09__stellaris__turbine__feedwater_electric_capability",
+    "stellarator_09__stellaris__turbine__feedwater_flow_capability",
+    "stellarator_09__stellaris__turbine__feedwater_pressure_rise_capability",
+    "stellarator_09__stellaris__turbine__feedwater_pressure_rise_demand_conversion",
+    "stellarator_09__stellaris__turbine__hp_flow_capability",
+    "stellarator_09__stellaris__turbine__hp_shaft_capability",
+    "stellarator_09__stellaris__turbine__lp_flow_capability",
+    "stellarator_09__stellaris__turbine__lp_shaft_capability",
+    "stellarator_09__stellaris__turbine__main_ua_capability",
+    "stellarator_09__stellaris__turbine__matched_cycle",
+    "stellarator_09__stellaris__turbine__reheat_ua_capability",
+    "stellarator_09__stellaris__turbine__steam_offered_conditions",
+    "stellarator_09__stellaris__turbine__turbine_gross_capability",
+    "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4",
+    "stellarator_09__stellaris__water_electric_capacity_ok__da93435fdb1e0e2d",
+    "stellarator_09__stellaris__water_flow_capacity_ok__a2c7af45d6a66edb",
+    "stellarator_09__stellaris__water_head_capacity_ok__7a7ee38c249ed7b7",
+    "stellarator_09__stellaris__water_rejection_capacity_ok__c6f88b0bf20410d2"
+  ],
+  "stellarator_09__stellaris__electric_plant__electric_cost": [],
+  "stellarator_09__stellaris__power_supplies__power_supplies_cost": [],
+  "stellarator_09__stellaris__power_supplies__magnet_pf_electric_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__magnet_pf_electric_capacity_ok__8a8fdad77b158738"
+  ],
+  "stellarator_09__stellaris__misc_plant__cost_gross_class_mwe_guard": [],
+  "stellarator_09__stellaris__misc_plant__misc_cost": [],
+  "stellarator_09__stellaris__buildings__legacy_cost_thermal_class_mw_guard": [],
+  "stellarator_09__stellaris__buildings__legacy_cost_fusion_class_mw_guard": [],
+  "stellarator_09__stellaris__buildings__legacy_cost_thermal_electric_class_mwe_guard": [],
+  "stellarator_09__stellaris__buildings__legacy_cost_gross_class_mwe_guard": [],
+  "stellarator_09__stellaris__buildings__buildings_cost": [],
+  "stellarator_09__stellaris__buildings__selected_parcel_y_min": [],
+  "stellarator_09__stellaris__buildings__selected_parcel_x_min": [],
+  "stellarator_09__stellaris__buildings__cooling_initial_handoff_days": [],
+  "stellarator_09__stellaris__buildings__initial_sector_start_days": [],
+  "stellarator_09__stellaris__structure__cost_gross_class_mwe_guard": [],
+  "stellarator_09__stellaris__startup_cost_net_class_mwe_guard": [],
+  "stellarator_09__stellaris__remote_handling_cost_gross_class_mwe_guard": [],
+  "stellarator_09__stellaris__owner_cost_net_class_mwe_guard": [],
+  "stellarator_09__stellaris__om_staffing_net_class_mwe_guard": [],
+  "stellarator_09__stellaris__operating_heat": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__blanket__source_heat",
+    "stellarator_09__stellaris__divertor__divheat",
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+    "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1",
+    "stellarator_09__stellaris__electric_plant__electric_gross_capability",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "stellarator_09__stellaris__pb",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "stellarator_09__stellaris__turbine__turbine_gross_capability",
+    "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4"
+  ],
+  "stellarator_09__stellaris__blanket__source_heat": [],
+  "stellarator_09__stellaris__divertor__divheat": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7"
+  ],
+  "stellarator_09__stellaris__heat_transport__primary_loop": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__buildings__administration__civil",
+    "stellarator_09__stellaris__buildings__civil_rollup",
+    "stellarator_09__stellaris__buildings__control__civil",
+    "stellarator_09__stellaris__buildings__cooling_annex__civil",
+    "stellarator_09__stellaris__buildings__cooling_hall__civil",
+    "stellarator_09__stellaris__buildings__cooling_link__civil",
+    "stellarator_09__stellaris__buildings__cryo_coldbox__civil",
+    "stellarator_09__stellaris__buildings__cryo_compressors__civil",
+    "stellarator_09__stellaris__buildings__electrical_building__civil",
+    "stellarator_09__stellaris__buildings__facility_accounts",
+    "stellarator_09__stellaris__buildings__facility_land",
+    "stellarator_09__stellaris__buildings__fuel_building__civil",
+    "stellarator_09__stellaris__buildings__layout",
+    "stellarator_09__stellaris__buildings__maintenance_shop__civil",
+    "stellarator_09__stellaris__buildings__power_supply_building__civil",
+    "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil",
+    "stellarator_09__stellaris__buildings__reactor_hall__civil",
+    "stellarator_09__stellaris__buildings__sector_link_east__civil",
+    "stellarator_09__stellaris__buildings__sector_link_north__civil",
+    "stellarator_09__stellaris__buildings__sector_link_south__civil",
+    "stellarator_09__stellaris__buildings__sector_link_west__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_east__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_north__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_south__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_west__civil",
+    "stellarator_09__stellaris__buildings__security__civil",
+    "stellarator_09__stellaris__buildings__service_water_building__civil",
+    "stellarator_09__stellaris__buildings__site_allowance",
+    "stellarator_09__stellaris__buildings__site_services_building__civil",
+    "stellarator_09__stellaris__buildings__turbine_hall__civil",
+    "stellarator_09__stellaris__buildings__ventilation",
+    "stellarator_09__stellaris__cas22_capital",
+    "stellarator_09__stellaris__cas2x_pre_contingency",
+    "stellarator_09__stellaris__cas70_calc",
+    "stellarator_09__stellaris__cas71_calc",
+    "stellarator_09__stellaris__cas90_1cfe_calc",
+    "stellarator_09__stellaris__condensate_electric_capacity_ok__a5ca7c5129553d1f",
+    "stellarator_09__stellaris__condensate_flow_capacity_ok__252eeccf9b929ade",
+    "stellarator_09__stellaris__condensate_pressure_rise_capacity_ok__d996b8dad5b58894",
+    "stellarator_09__stellaris__condenser_rejection_capacity_ok__b5d2e6443913eb29",
+    "stellarator_09__stellaris__cooling_annual",
+    "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328",
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+    "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1",
+    "stellarator_09__stellaris__electric_plant__electric_gross_capability",
+    "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9",
+    "stellarator_09__stellaris__facility_geometry_ok__e2729a4ee0257d98",
+    "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f",
+    "stellarator_09__stellaris__facility_material_capacity_ok__b02f74ca2b907a86",
+    "stellarator_09__stellaris__facility_occupancy_ok__2c505953d2466dad",
+    "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722",
+    "stellarator_09__stellaris__facility_parcel_ok__6c9b12b61636c539",
+    "stellarator_09__stellaris__facility_preconstruction",
+    "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938",
+    "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b",
+    "stellarator_09__stellaris__facility_shipping",
+    "stellarator_09__stellaris__feedwater_electric_capacity_ok__2274a605654bb912",
+    "stellarator_09__stellaris__feedwater_flow_capacity_ok__3065124bba3fb314",
+    "stellarator_09__stellaris__feedwater_pressure_rise_capacity_ok__2e12db90b09ba458",
+    "stellarator_09__stellaris__heat_rejection__cooling_water",
+    "stellarator_09__stellaris__heat_rejection__water_electric_capability",
+    "stellarator_09__stellaris__heat_rejection__water_flow_capability",
+    "stellarator_09__stellaris__heat_rejection__water_head_capability",
+    "stellarator_09__stellaris__heat_rejection__water_offered_conditions",
+    "stellarator_09__stellaris__heat_rejection__water_rejection_capability",
+    "stellarator_09__stellaris__heat_transport__cooling_energy",
+    "stellarator_09__stellaris__heat_transport__cooling_selection",
+    "stellarator_09__stellaris__heat_transport__equipment",
+    "stellarator_09__stellaris__heat_transport__helium_electric_capability",
+    "stellarator_09__stellaris__heat_transport__helium_flow_capability",
+    "stellarator_09__stellaris__heat_transport__helium_offered_conditions",
+    "stellarator_09__stellaris__heat_transport__helium_pressure_rise_capability",
+    "stellarator_09__stellaris__heat_transport__helium_pumping_capability",
+    "stellarator_09__stellaris__heat_transport__salt_electric_capability",
+    "stellarator_09__stellaris__heat_transport__salt_electric_demand_conversion",
+    "stellarator_09__stellaris__heat_transport__salt_flow_capability",
+    "stellarator_09__stellaris__heat_transport__salt_head_capability",
+    "stellarator_09__stellaris__heat_transport__salt_offered_conditions",
+    "stellarator_09__stellaris__heat_transport__salt_shaft_capability",
+    "stellarator_09__stellaris__helium_electric_capacity_ok__842a956a27b809da",
+    "stellarator_09__stellaris__helium_flow_capacity_ok__de4eed99bc4bea72",
+    "stellarator_09__stellaris__helium_pressure_rise_capacity_ok__7d12d01bc94dde7a",
+    "stellarator_09__stellaris__helium_pumping_capacity_ok__9e3c5d06ca11e640",
+    "stellarator_09__stellaris__hp_flow_capacity_ok__f0b30eeb1c674ce4",
+    "stellarator_09__stellaris__hp_shaft_capacity_ok__a19eda5dff14e4c2",
+    "stellarator_09__stellaris__ihx_capacity_ok__8118479d5c637061",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc",
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+    "stellarator_09__stellaris__lp_flow_capacity_ok__3e0e231ed626fd7d",
+    "stellarator_09__stellaris__lp_shaft_capacity_ok__70b40123e64ccdf5",
+    "stellarator_09__stellaris__main_ua_capacity_ok__86518fe643367961",
+    "stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87",
+    "stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "stellarator_09__stellaris__pb",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "stellarator_09__stellaris__reheat_ua_capacity_ok__e377a2da71f404d0",
+    "stellarator_09__stellaris__represented_coolant_fill_ok__e6341404f9f2ddda",
+    "stellarator_09__stellaris__salt_electric_capacity_ok__d353ed9e85c5a75b",
+    "stellarator_09__stellaris__salt_flow_capacity_ok__76ca6d6f7320b2d1",
+    "stellarator_09__stellaris__salt_head_capacity_ok__7996e19c3ac43d0d",
+    "stellarator_09__stellaris__salt_shaft_capacity_ok__9a14c3c81e97c1d0",
+    "stellarator_09__stellaris__shipping_scope",
+    "stellarator_09__stellaris__supplementary",
+    "stellarator_09__stellaris__turbine__condensate_electric_capability",
+    "stellarator_09__stellaris__turbine__condensate_flow_capability",
+    "stellarator_09__stellaris__turbine__condensate_pressure_rise_capability",
+    "stellarator_09__stellaris__turbine__condensate_pressure_rise_demand_conversion",
+    "stellarator_09__stellaris__turbine__condenser_rejection_capability",
+    "stellarator_09__stellaris__turbine__cycle",
+    "stellarator_09__stellaris__turbine__cycle_selection",
+    "stellarator_09__stellaris__turbine__feedwater_electric_capability",
+    "stellarator_09__stellaris__turbine__feedwater_flow_capability",
+    "stellarator_09__stellaris__turbine__feedwater_pressure_rise_capability",
+    "stellarator_09__stellaris__turbine__feedwater_pressure_rise_demand_conversion",
+    "stellarator_09__stellaris__turbine__hp_flow_capability",
+    "stellarator_09__stellaris__turbine__hp_shaft_capability",
+    "stellarator_09__stellaris__turbine__lp_flow_capability",
+    "stellarator_09__stellaris__turbine__lp_shaft_capability",
+    "stellarator_09__stellaris__turbine__main_ua_capability",
+    "stellarator_09__stellaris__turbine__matched_cycle",
+    "stellarator_09__stellaris__turbine__reheat_ua_capability",
+    "stellarator_09__stellaris__turbine__steam_offered_conditions",
+    "stellarator_09__stellaris__turbine__turbine_gross_capability",
+    "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4",
+    "stellarator_09__stellaris__water_electric_capacity_ok__da93435fdb1e0e2d",
+    "stellarator_09__stellaris__water_flow_capacity_ok__a2c7af45d6a66edb",
+    "stellarator_09__stellaris__water_head_capacity_ok__7a7ee38c249ed7b7",
+    "stellarator_09__stellaris__water_rejection_capacity_ok__c6f88b0bf20410d2"
+  ],
+  "stellarator_09__stellaris__turbine__cycle": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__buildings__administration__civil",
+    "stellarator_09__stellaris__buildings__civil_rollup",
+    "stellarator_09__stellaris__buildings__control__civil",
+    "stellarator_09__stellaris__buildings__cooling_annex__civil",
+    "stellarator_09__stellaris__buildings__cooling_hall__civil",
+    "stellarator_09__stellaris__buildings__cooling_link__civil",
+    "stellarator_09__stellaris__buildings__cryo_coldbox__civil",
+    "stellarator_09__stellaris__buildings__cryo_compressors__civil",
+    "stellarator_09__stellaris__buildings__electrical_building__civil",
+    "stellarator_09__stellaris__buildings__facility_accounts",
+    "stellarator_09__stellaris__buildings__facility_land",
+    "stellarator_09__stellaris__buildings__fuel_building__civil",
+    "stellarator_09__stellaris__buildings__layout",
+    "stellarator_09__stellaris__buildings__maintenance_shop__civil",
+    "stellarator_09__stellaris__buildings__power_supply_building__civil",
+    "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil",
+    "stellarator_09__stellaris__buildings__reactor_hall__civil",
+    "stellarator_09__stellaris__buildings__sector_link_east__civil",
+    "stellarator_09__stellaris__buildings__sector_link_north__civil",
+    "stellarator_09__stellaris__buildings__sector_link_south__civil",
+    "stellarator_09__stellaris__buildings__sector_link_west__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_east__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_north__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_south__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_west__civil",
+    "stellarator_09__stellaris__buildings__security__civil",
+    "stellarator_09__stellaris__buildings__service_water_building__civil",
+    "stellarator_09__stellaris__buildings__site_allowance",
+    "stellarator_09__stellaris__buildings__site_services_building__civil",
+    "stellarator_09__stellaris__buildings__turbine_hall__civil",
+    "stellarator_09__stellaris__buildings__ventilation",
+    "stellarator_09__stellaris__cas22_capital",
+    "stellarator_09__stellaris__cas2x_pre_contingency",
+    "stellarator_09__stellaris__cas70_calc",
+    "stellarator_09__stellaris__cas71_calc",
+    "stellarator_09__stellaris__cas90_1cfe_calc",
+    "stellarator_09__stellaris__condensate_electric_capacity_ok__a5ca7c5129553d1f",
+    "stellarator_09__stellaris__condensate_flow_capacity_ok__252eeccf9b929ade",
+    "stellarator_09__stellaris__condensate_pressure_rise_capacity_ok__d996b8dad5b58894",
+    "stellarator_09__stellaris__condenser_rejection_capacity_ok__b5d2e6443913eb29",
+    "stellarator_09__stellaris__cooling_annual",
+    "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328",
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+    "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1",
+    "stellarator_09__stellaris__electric_plant__electric_gross_capability",
+    "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9",
+    "stellarator_09__stellaris__facility_geometry_ok__e2729a4ee0257d98",
+    "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f",
+    "stellarator_09__stellaris__facility_material_capacity_ok__b02f74ca2b907a86",
+    "stellarator_09__stellaris__facility_occupancy_ok__2c505953d2466dad",
+    "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722",
+    "stellarator_09__stellaris__facility_parcel_ok__6c9b12b61636c539",
+    "stellarator_09__stellaris__facility_preconstruction",
+    "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938",
+    "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b",
+    "stellarator_09__stellaris__facility_shipping",
+    "stellarator_09__stellaris__feedwater_electric_capacity_ok__2274a605654bb912",
+    "stellarator_09__stellaris__feedwater_flow_capacity_ok__3065124bba3fb314",
+    "stellarator_09__stellaris__feedwater_pressure_rise_capacity_ok__2e12db90b09ba458",
+    "stellarator_09__stellaris__heat_rejection__cooling_water",
+    "stellarator_09__stellaris__heat_rejection__water_electric_capability",
+    "stellarator_09__stellaris__heat_rejection__water_flow_capability",
+    "stellarator_09__stellaris__heat_rejection__water_head_capability",
+    "stellarator_09__stellaris__heat_rejection__water_offered_conditions",
+    "stellarator_09__stellaris__heat_rejection__water_rejection_capability",
+    "stellarator_09__stellaris__heat_transport__cooling_energy",
+    "stellarator_09__stellaris__heat_transport__cooling_selection",
+    "stellarator_09__stellaris__heat_transport__equipment",
+    "stellarator_09__stellaris__heat_transport__helium_electric_capability",
+    "stellarator_09__stellaris__heat_transport__helium_flow_capability",
+    "stellarator_09__stellaris__heat_transport__helium_offered_conditions",
+    "stellarator_09__stellaris__heat_transport__helium_pressure_rise_capability",
+    "stellarator_09__stellaris__heat_transport__helium_pumping_capability",
+    "stellarator_09__stellaris__heat_transport__salt_electric_capability",
+    "stellarator_09__stellaris__heat_transport__salt_electric_demand_conversion",
+    "stellarator_09__stellaris__heat_transport__salt_flow_capability",
+    "stellarator_09__stellaris__heat_transport__salt_head_capability",
+    "stellarator_09__stellaris__heat_transport__salt_offered_conditions",
+    "stellarator_09__stellaris__heat_transport__salt_shaft_capability",
+    "stellarator_09__stellaris__helium_electric_capacity_ok__842a956a27b809da",
+    "stellarator_09__stellaris__helium_flow_capacity_ok__de4eed99bc4bea72",
+    "stellarator_09__stellaris__helium_pressure_rise_capacity_ok__7d12d01bc94dde7a",
+    "stellarator_09__stellaris__helium_pumping_capacity_ok__9e3c5d06ca11e640",
+    "stellarator_09__stellaris__hp_flow_capacity_ok__f0b30eeb1c674ce4",
+    "stellarator_09__stellaris__hp_shaft_capacity_ok__a19eda5dff14e4c2",
+    "stellarator_09__stellaris__ihx_capacity_ok__8118479d5c637061",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc",
+    "stellarator_09__stellaris__lp_flow_capacity_ok__3e0e231ed626fd7d",
+    "stellarator_09__stellaris__lp_shaft_capacity_ok__70b40123e64ccdf5",
+    "stellarator_09__stellaris__main_ua_capacity_ok__86518fe643367961",
+    "stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87",
+    "stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "stellarator_09__stellaris__pb",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "stellarator_09__stellaris__reheat_ua_capacity_ok__e377a2da71f404d0",
+    "stellarator_09__stellaris__represented_coolant_fill_ok__e6341404f9f2ddda",
+    "stellarator_09__stellaris__salt_electric_capacity_ok__d353ed9e85c5a75b",
+    "stellarator_09__stellaris__salt_flow_capacity_ok__76ca6d6f7320b2d1",
+    "stellarator_09__stellaris__salt_head_capacity_ok__7996e19c3ac43d0d",
+    "stellarator_09__stellaris__salt_shaft_capacity_ok__9a14c3c81e97c1d0",
+    "stellarator_09__stellaris__shipping_scope",
+    "stellarator_09__stellaris__supplementary",
+    "stellarator_09__stellaris__turbine__condensate_electric_capability",
+    "stellarator_09__stellaris__turbine__condensate_flow_capability",
+    "stellarator_09__stellaris__turbine__condensate_pressure_rise_capability",
+    "stellarator_09__stellaris__turbine__condensate_pressure_rise_demand_conversion",
+    "stellarator_09__stellaris__turbine__condenser_rejection_capability",
+    "stellarator_09__stellaris__turbine__cycle_selection",
+    "stellarator_09__stellaris__turbine__feedwater_electric_capability",
+    "stellarator_09__stellaris__turbine__feedwater_flow_capability",
+    "stellarator_09__stellaris__turbine__feedwater_pressure_rise_capability",
+    "stellarator_09__stellaris__turbine__feedwater_pressure_rise_demand_conversion",
+    "stellarator_09__stellaris__turbine__hp_flow_capability",
+    "stellarator_09__stellaris__turbine__hp_shaft_capability",
+    "stellarator_09__stellaris__turbine__lp_flow_capability",
+    "stellarator_09__stellaris__turbine__lp_shaft_capability",
+    "stellarator_09__stellaris__turbine__main_ua_capability",
+    "stellarator_09__stellaris__turbine__matched_cycle",
+    "stellarator_09__stellaris__turbine__reheat_ua_capability",
+    "stellarator_09__stellaris__turbine__steam_offered_conditions",
+    "stellarator_09__stellaris__turbine__turbine_gross_capability",
+    "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4",
+    "stellarator_09__stellaris__water_electric_capacity_ok__da93435fdb1e0e2d",
+    "stellarator_09__stellaris__water_flow_capacity_ok__a2c7af45d6a66edb",
+    "stellarator_09__stellaris__water_head_capacity_ok__7a7ee38c249ed7b7",
+    "stellarator_09__stellaris__water_rejection_capacity_ok__c6f88b0bf20410d2"
+  ],
+  "stellarator_09__stellaris__heat_transport__equipment": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__buildings__administration__civil",
+    "stellarator_09__stellaris__buildings__civil_rollup",
+    "stellarator_09__stellaris__buildings__control__civil",
+    "stellarator_09__stellaris__buildings__cooling_annex__civil",
+    "stellarator_09__stellaris__buildings__cooling_hall__civil",
+    "stellarator_09__stellaris__buildings__cooling_link__civil",
+    "stellarator_09__stellaris__buildings__cryo_coldbox__civil",
+    "stellarator_09__stellaris__buildings__cryo_compressors__civil",
+    "stellarator_09__stellaris__buildings__electrical_building__civil",
+    "stellarator_09__stellaris__buildings__facility_accounts",
+    "stellarator_09__stellaris__buildings__facility_land",
+    "stellarator_09__stellaris__buildings__fuel_building__civil",
+    "stellarator_09__stellaris__buildings__layout",
+    "stellarator_09__stellaris__buildings__maintenance_shop__civil",
+    "stellarator_09__stellaris__buildings__power_supply_building__civil",
+    "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil",
+    "stellarator_09__stellaris__buildings__reactor_hall__civil",
+    "stellarator_09__stellaris__buildings__sector_link_east__civil",
+    "stellarator_09__stellaris__buildings__sector_link_north__civil",
+    "stellarator_09__stellaris__buildings__sector_link_south__civil",
+    "stellarator_09__stellaris__buildings__sector_link_west__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_east__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_north__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_south__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_west__civil",
+    "stellarator_09__stellaris__buildings__security__civil",
+    "stellarator_09__stellaris__buildings__service_water_building__civil",
+    "stellarator_09__stellaris__buildings__site_allowance",
+    "stellarator_09__stellaris__buildings__site_services_building__civil",
+    "stellarator_09__stellaris__buildings__turbine_hall__civil",
+    "stellarator_09__stellaris__buildings__ventilation",
+    "stellarator_09__stellaris__cas22_capital",
+    "stellarator_09__stellaris__cas2x_pre_contingency",
+    "stellarator_09__stellaris__cas70_calc",
+    "stellarator_09__stellaris__cas71_calc",
+    "stellarator_09__stellaris__cas90_1cfe_calc",
+    "stellarator_09__stellaris__condensate_electric_capacity_ok__a5ca7c5129553d1f",
+    "stellarator_09__stellaris__condensate_flow_capacity_ok__252eeccf9b929ade",
+    "stellarator_09__stellaris__condensate_pressure_rise_capacity_ok__d996b8dad5b58894",
+    "stellarator_09__stellaris__condenser_rejection_capacity_ok__b5d2e6443913eb29",
+    "stellarator_09__stellaris__cooling_annual",
+    "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328",
+    "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1",
+    "stellarator_09__stellaris__electric_plant__electric_gross_capability",
+    "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9",
+    "stellarator_09__stellaris__facility_geometry_ok__e2729a4ee0257d98",
+    "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f",
+    "stellarator_09__stellaris__facility_material_capacity_ok__b02f74ca2b907a86",
+    "stellarator_09__stellaris__facility_occupancy_ok__2c505953d2466dad",
+    "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722",
+    "stellarator_09__stellaris__facility_parcel_ok__6c9b12b61636c539",
+    "stellarator_09__stellaris__facility_preconstruction",
+    "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938",
+    "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b",
+    "stellarator_09__stellaris__facility_shipping",
+    "stellarator_09__stellaris__feedwater_electric_capacity_ok__2274a605654bb912",
+    "stellarator_09__stellaris__feedwater_flow_capacity_ok__3065124bba3fb314",
+    "stellarator_09__stellaris__feedwater_pressure_rise_capacity_ok__2e12db90b09ba458",
+    "stellarator_09__stellaris__heat_rejection__cooling_water",
+    "stellarator_09__stellaris__heat_rejection__water_electric_capability",
+    "stellarator_09__stellaris__heat_rejection__water_flow_capability",
+    "stellarator_09__stellaris__heat_rejection__water_head_capability",
+    "stellarator_09__stellaris__heat_rejection__water_offered_conditions",
+    "stellarator_09__stellaris__heat_rejection__water_rejection_capability",
+    "stellarator_09__stellaris__heat_transport__cooling_energy",
+    "stellarator_09__stellaris__heat_transport__cooling_selection",
+    "stellarator_09__stellaris__heat_transport__helium_electric_capability",
+    "stellarator_09__stellaris__heat_transport__helium_flow_capability",
+    "stellarator_09__stellaris__heat_transport__helium_offered_conditions",
+    "stellarator_09__stellaris__heat_transport__helium_pressure_rise_capability",
+    "stellarator_09__stellaris__heat_transport__helium_pumping_capability",
+    "stellarator_09__stellaris__heat_transport__salt_electric_capability",
+    "stellarator_09__stellaris__heat_transport__salt_electric_demand_conversion",
+    "stellarator_09__stellaris__heat_transport__salt_flow_capability",
+    "stellarator_09__stellaris__heat_transport__salt_head_capability",
+    "stellarator_09__stellaris__heat_transport__salt_offered_conditions",
+    "stellarator_09__stellaris__heat_transport__salt_shaft_capability",
+    "stellarator_09__stellaris__helium_electric_capacity_ok__842a956a27b809da",
+    "stellarator_09__stellaris__helium_flow_capacity_ok__de4eed99bc4bea72",
+    "stellarator_09__stellaris__helium_pressure_rise_capacity_ok__7d12d01bc94dde7a",
+    "stellarator_09__stellaris__helium_pumping_capacity_ok__9e3c5d06ca11e640",
+    "stellarator_09__stellaris__hp_flow_capacity_ok__f0b30eeb1c674ce4",
+    "stellarator_09__stellaris__hp_shaft_capacity_ok__a19eda5dff14e4c2",
+    "stellarator_09__stellaris__ihx_capacity_ok__8118479d5c637061",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc",
+    "stellarator_09__stellaris__lp_flow_capacity_ok__3e0e231ed626fd7d",
+    "stellarator_09__stellaris__lp_shaft_capacity_ok__70b40123e64ccdf5",
+    "stellarator_09__stellaris__main_ua_capacity_ok__86518fe643367961",
+    "stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87",
+    "stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "stellarator_09__stellaris__pb",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "stellarator_09__stellaris__reheat_ua_capacity_ok__e377a2da71f404d0",
+    "stellarator_09__stellaris__represented_coolant_fill_ok__e6341404f9f2ddda",
+    "stellarator_09__stellaris__salt_electric_capacity_ok__d353ed9e85c5a75b",
+    "stellarator_09__stellaris__salt_flow_capacity_ok__76ca6d6f7320b2d1",
+    "stellarator_09__stellaris__salt_head_capacity_ok__7996e19c3ac43d0d",
+    "stellarator_09__stellaris__salt_shaft_capacity_ok__9a14c3c81e97c1d0",
+    "stellarator_09__stellaris__shipping_scope",
+    "stellarator_09__stellaris__supplementary",
+    "stellarator_09__stellaris__turbine__condensate_electric_capability",
+    "stellarator_09__stellaris__turbine__condensate_flow_capability",
+    "stellarator_09__stellaris__turbine__condensate_pressure_rise_capability",
+    "stellarator_09__stellaris__turbine__condensate_pressure_rise_demand_conversion",
+    "stellarator_09__stellaris__turbine__condenser_rejection_capability",
+    "stellarator_09__stellaris__turbine__cycle_selection",
+    "stellarator_09__stellaris__turbine__feedwater_electric_capability",
+    "stellarator_09__stellaris__turbine__feedwater_flow_capability",
+    "stellarator_09__stellaris__turbine__feedwater_pressure_rise_capability",
+    "stellarator_09__stellaris__turbine__feedwater_pressure_rise_demand_conversion",
+    "stellarator_09__stellaris__turbine__hp_flow_capability",
+    "stellarator_09__stellaris__turbine__hp_shaft_capability",
+    "stellarator_09__stellaris__turbine__lp_flow_capability",
+    "stellarator_09__stellaris__turbine__lp_shaft_capability",
+    "stellarator_09__stellaris__turbine__main_ua_capability",
+    "stellarator_09__stellaris__turbine__matched_cycle",
+    "stellarator_09__stellaris__turbine__reheat_ua_capability",
+    "stellarator_09__stellaris__turbine__steam_offered_conditions",
+    "stellarator_09__stellaris__turbine__turbine_gross_capability",
+    "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4",
+    "stellarator_09__stellaris__water_electric_capacity_ok__da93435fdb1e0e2d",
+    "stellarator_09__stellaris__water_flow_capacity_ok__a2c7af45d6a66edb",
+    "stellarator_09__stellaris__water_head_capacity_ok__7a7ee38c249ed7b7",
+    "stellarator_09__stellaris__water_rejection_capacity_ok__c6f88b0bf20410d2"
+  ],
+  "stellarator_09__stellaris__heat_transport__salt_offered_conditions": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__heat_transport__salt_electric_capability",
+    "stellarator_09__stellaris__heat_transport__salt_electric_demand_conversion",
+    "stellarator_09__stellaris__heat_transport__salt_flow_capability",
+    "stellarator_09__stellaris__heat_transport__salt_head_capability",
+    "stellarator_09__stellaris__heat_transport__salt_shaft_capability",
+    "stellarator_09__stellaris__salt_electric_capacity_ok__d353ed9e85c5a75b",
+    "stellarator_09__stellaris__salt_flow_capacity_ok__76ca6d6f7320b2d1",
+    "stellarator_09__stellaris__salt_head_capacity_ok__7996e19c3ac43d0d",
+    "stellarator_09__stellaris__salt_shaft_capacity_ok__9a14c3c81e97c1d0"
+  ],
+  "stellarator_09__stellaris__heat_transport__salt_electric_demand_conversion": [],
+  "stellarator_09__stellaris__heat_transport__salt_electric_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__salt_electric_capacity_ok__d353ed9e85c5a75b"
+  ],
+  "stellarator_09__stellaris__heat_transport__salt_flow_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__salt_flow_capacity_ok__76ca6d6f7320b2d1"
+  ],
+  "stellarator_09__stellaris__heat_transport__cooling_energy": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__condensate_electric_capacity_ok__a5ca7c5129553d1f",
+    "stellarator_09__stellaris__condensate_flow_capacity_ok__252eeccf9b929ade",
+    "stellarator_09__stellaris__condensate_pressure_rise_capacity_ok__d996b8dad5b58894",
+    "stellarator_09__stellaris__condenser_rejection_capacity_ok__b5d2e6443913eb29",
+    "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328",
+    "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1",
+    "stellarator_09__stellaris__electric_plant__electric_gross_capability",
+    "stellarator_09__stellaris__feedwater_electric_capacity_ok__2274a605654bb912",
+    "stellarator_09__stellaris__feedwater_flow_capacity_ok__3065124bba3fb314",
+    "stellarator_09__stellaris__feedwater_pressure_rise_capacity_ok__2e12db90b09ba458",
+    "stellarator_09__stellaris__heat_rejection__cooling_water",
+    "stellarator_09__stellaris__heat_rejection__water_electric_capability",
+    "stellarator_09__stellaris__heat_rejection__water_flow_capability",
+    "stellarator_09__stellaris__heat_rejection__water_head_capability",
+    "stellarator_09__stellaris__heat_rejection__water_offered_conditions",
+    "stellarator_09__stellaris__heat_rejection__water_rejection_capability",
+    "stellarator_09__stellaris__hp_flow_capacity_ok__f0b30eeb1c674ce4",
+    "stellarator_09__stellaris__hp_shaft_capacity_ok__a19eda5dff14e4c2",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc",
+    "stellarator_09__stellaris__lp_flow_capacity_ok__3e0e231ed626fd7d",
+    "stellarator_09__stellaris__lp_shaft_capacity_ok__70b40123e64ccdf5",
+    "stellarator_09__stellaris__main_ua_capacity_ok__86518fe643367961",
+    "stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87",
+    "stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "stellarator_09__stellaris__pb",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "stellarator_09__stellaris__reheat_ua_capacity_ok__e377a2da71f404d0",
+    "stellarator_09__stellaris__turbine__condensate_electric_capability",
+    "stellarator_09__stellaris__turbine__condensate_flow_capability",
+    "stellarator_09__stellaris__turbine__condensate_pressure_rise_capability",
+    "stellarator_09__stellaris__turbine__condensate_pressure_rise_demand_conversion",
+    "stellarator_09__stellaris__turbine__condenser_rejection_capability",
+    "stellarator_09__stellaris__turbine__cycle_selection",
+    "stellarator_09__stellaris__turbine__feedwater_electric_capability",
+    "stellarator_09__stellaris__turbine__feedwater_flow_capability",
+    "stellarator_09__stellaris__turbine__feedwater_pressure_rise_capability",
+    "stellarator_09__stellaris__turbine__feedwater_pressure_rise_demand_conversion",
+    "stellarator_09__stellaris__turbine__hp_flow_capability",
+    "stellarator_09__stellaris__turbine__hp_shaft_capability",
+    "stellarator_09__stellaris__turbine__lp_flow_capability",
+    "stellarator_09__stellaris__turbine__lp_shaft_capability",
+    "stellarator_09__stellaris__turbine__main_ua_capability",
+    "stellarator_09__stellaris__turbine__matched_cycle",
+    "stellarator_09__stellaris__turbine__reheat_ua_capability",
+    "stellarator_09__stellaris__turbine__steam_offered_conditions",
+    "stellarator_09__stellaris__turbine__turbine_gross_capability",
+    "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4",
+    "stellarator_09__stellaris__water_electric_capacity_ok__da93435fdb1e0e2d",
+    "stellarator_09__stellaris__water_flow_capacity_ok__a2c7af45d6a66edb",
+    "stellarator_09__stellaris__water_head_capacity_ok__7a7ee38c249ed7b7",
+    "stellarator_09__stellaris__water_rejection_capacity_ok__c6f88b0bf20410d2"
+  ],
+  "stellarator_09__stellaris__turbine__matched_cycle": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__condensate_electric_capacity_ok__a5ca7c5129553d1f",
+    "stellarator_09__stellaris__condensate_flow_capacity_ok__252eeccf9b929ade",
+    "stellarator_09__stellaris__condensate_pressure_rise_capacity_ok__d996b8dad5b58894",
+    "stellarator_09__stellaris__condenser_rejection_capacity_ok__b5d2e6443913eb29",
+    "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328",
+    "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1",
+    "stellarator_09__stellaris__electric_plant__electric_gross_capability",
+    "stellarator_09__stellaris__feedwater_electric_capacity_ok__2274a605654bb912",
+    "stellarator_09__stellaris__feedwater_flow_capacity_ok__3065124bba3fb314",
+    "stellarator_09__stellaris__feedwater_pressure_rise_capacity_ok__2e12db90b09ba458",
+    "stellarator_09__stellaris__heat_rejection__cooling_water",
+    "stellarator_09__stellaris__heat_rejection__water_electric_capability",
+    "stellarator_09__stellaris__heat_rejection__water_flow_capability",
+    "stellarator_09__stellaris__heat_rejection__water_head_capability",
+    "stellarator_09__stellaris__heat_rejection__water_offered_conditions",
+    "stellarator_09__stellaris__heat_rejection__water_rejection_capability",
+    "stellarator_09__stellaris__hp_flow_capacity_ok__f0b30eeb1c674ce4",
+    "stellarator_09__stellaris__hp_shaft_capacity_ok__a19eda5dff14e4c2",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc",
+    "stellarator_09__stellaris__lp_flow_capacity_ok__3e0e231ed626fd7d",
+    "stellarator_09__stellaris__lp_shaft_capacity_ok__70b40123e64ccdf5",
+    "stellarator_09__stellaris__main_ua_capacity_ok__86518fe643367961",
+    "stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87",
+    "stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "stellarator_09__stellaris__pb",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "stellarator_09__stellaris__reheat_ua_capacity_ok__e377a2da71f404d0",
+    "stellarator_09__stellaris__turbine__condensate_electric_capability",
+    "stellarator_09__stellaris__turbine__condensate_flow_capability",
+    "stellarator_09__stellaris__turbine__condensate_pressure_rise_capability",
+    "stellarator_09__stellaris__turbine__condensate_pressure_rise_demand_conversion",
+    "stellarator_09__stellaris__turbine__condenser_rejection_capability",
+    "stellarator_09__stellaris__turbine__cycle_selection",
+    "stellarator_09__stellaris__turbine__feedwater_electric_capability",
+    "stellarator_09__stellaris__turbine__feedwater_flow_capability",
+    "stellarator_09__stellaris__turbine__feedwater_pressure_rise_capability",
+    "stellarator_09__stellaris__turbine__feedwater_pressure_rise_demand_conversion",
+    "stellarator_09__stellaris__turbine__hp_flow_capability",
+    "stellarator_09__stellaris__turbine__hp_shaft_capability",
+    "stellarator_09__stellaris__turbine__lp_flow_capability",
+    "stellarator_09__stellaris__turbine__lp_shaft_capability",
+    "stellarator_09__stellaris__turbine__main_ua_capability",
+    "stellarator_09__stellaris__turbine__reheat_ua_capability",
+    "stellarator_09__stellaris__turbine__steam_offered_conditions",
+    "stellarator_09__stellaris__turbine__turbine_gross_capability",
+    "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4",
+    "stellarator_09__stellaris__water_electric_capacity_ok__da93435fdb1e0e2d",
+    "stellarator_09__stellaris__water_flow_capacity_ok__a2c7af45d6a66edb",
+    "stellarator_09__stellaris__water_head_capacity_ok__7a7ee38c249ed7b7",
+    "stellarator_09__stellaris__water_rejection_capacity_ok__c6f88b0bf20410d2"
+  ],
+  "stellarator_09__stellaris__turbine__condensate_pressure_rise_demand_conversion": [],
+  "stellarator_09__stellaris__turbine__feedwater_pressure_rise_demand_conversion": [],
+  "stellarator_09__stellaris__turbine__steam_offered_conditions": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__condensate_electric_capacity_ok__a5ca7c5129553d1f",
+    "stellarator_09__stellaris__condensate_flow_capacity_ok__252eeccf9b929ade",
+    "stellarator_09__stellaris__condensate_pressure_rise_capacity_ok__d996b8dad5b58894",
+    "stellarator_09__stellaris__condenser_rejection_capacity_ok__b5d2e6443913eb29",
+    "stellarator_09__stellaris__feedwater_electric_capacity_ok__2274a605654bb912",
+    "stellarator_09__stellaris__feedwater_flow_capacity_ok__3065124bba3fb314",
+    "stellarator_09__stellaris__feedwater_pressure_rise_capacity_ok__2e12db90b09ba458",
+    "stellarator_09__stellaris__hp_flow_capacity_ok__f0b30eeb1c674ce4",
+    "stellarator_09__stellaris__hp_shaft_capacity_ok__a19eda5dff14e4c2",
+    "stellarator_09__stellaris__lp_flow_capacity_ok__3e0e231ed626fd7d",
+    "stellarator_09__stellaris__lp_shaft_capacity_ok__70b40123e64ccdf5",
+    "stellarator_09__stellaris__main_ua_capacity_ok__86518fe643367961",
+    "stellarator_09__stellaris__reheat_ua_capacity_ok__e377a2da71f404d0",
+    "stellarator_09__stellaris__turbine__condensate_electric_capability",
+    "stellarator_09__stellaris__turbine__condensate_flow_capability",
+    "stellarator_09__stellaris__turbine__condensate_pressure_rise_capability",
+    "stellarator_09__stellaris__turbine__condenser_rejection_capability",
+    "stellarator_09__stellaris__turbine__feedwater_electric_capability",
+    "stellarator_09__stellaris__turbine__feedwater_flow_capability",
+    "stellarator_09__stellaris__turbine__feedwater_pressure_rise_capability",
+    "stellarator_09__stellaris__turbine__hp_flow_capability",
+    "stellarator_09__stellaris__turbine__hp_shaft_capability",
+    "stellarator_09__stellaris__turbine__lp_flow_capability",
+    "stellarator_09__stellaris__turbine__lp_shaft_capability",
+    "stellarator_09__stellaris__turbine__main_ua_capability",
+    "stellarator_09__stellaris__turbine__reheat_ua_capability"
+  ],
+  "stellarator_09__stellaris__turbine__feedwater_electric_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__feedwater_electric_capacity_ok__2274a605654bb912"
+  ],
+  "stellarator_09__stellaris__turbine__lp_shaft_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__lp_shaft_capacity_ok__70b40123e64ccdf5"
+  ],
+  "stellarator_09__stellaris__turbine__lp_flow_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__lp_flow_capacity_ok__3e0e231ed626fd7d"
+  ],
+  "stellarator_09__stellaris__turbine__condensate_pressure_rise_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__condensate_pressure_rise_capacity_ok__d996b8dad5b58894"
+  ],
+  "stellarator_09__stellaris__turbine__feedwater_flow_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__feedwater_flow_capacity_ok__3065124bba3fb314"
+  ],
+  "stellarator_09__stellaris__turbine__condensate_electric_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__condensate_electric_capacity_ok__a5ca7c5129553d1f"
+  ],
+  "stellarator_09__stellaris__turbine__reheat_ua_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__reheat_ua_capacity_ok__e377a2da71f404d0"
+  ],
+  "stellarator_09__stellaris__turbine__hp_flow_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__hp_flow_capacity_ok__f0b30eeb1c674ce4"
+  ],
+  "stellarator_09__stellaris__turbine__cycle_selection": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1",
+    "stellarator_09__stellaris__electric_plant__electric_gross_capability",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "stellarator_09__stellaris__pb",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "stellarator_09__stellaris__turbine__turbine_gross_capability",
+    "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4"
+  ],
+  "stellarator_09__stellaris__turbine__condensate_flow_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__condensate_flow_capacity_ok__252eeccf9b929ade"
+  ],
+  "stellarator_09__stellaris__turbine__main_ua_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__main_ua_capacity_ok__86518fe643367961"
+  ],
+  "stellarator_09__stellaris__turbine__feedwater_pressure_rise_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__feedwater_pressure_rise_capacity_ok__2e12db90b09ba458"
+  ],
+  "stellarator_09__stellaris__turbine__hp_shaft_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__hp_shaft_capacity_ok__a19eda5dff14e4c2"
+  ],
+  "stellarator_09__stellaris__turbine__condenser_rejection_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__condenser_rejection_capacity_ok__b5d2e6443913eb29"
+  ],
+  "stellarator_09__stellaris__heat_rejection__cooling_water": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328",
+    "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1",
+    "stellarator_09__stellaris__electric_plant__electric_gross_capability",
+    "stellarator_09__stellaris__heat_rejection__water_electric_capability",
+    "stellarator_09__stellaris__heat_rejection__water_flow_capability",
+    "stellarator_09__stellaris__heat_rejection__water_head_capability",
+    "stellarator_09__stellaris__heat_rejection__water_offered_conditions",
+    "stellarator_09__stellaris__heat_rejection__water_rejection_capability",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "stellarator_09__stellaris__pb",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "stellarator_09__stellaris__turbine__turbine_gross_capability",
+    "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4",
+    "stellarator_09__stellaris__water_electric_capacity_ok__da93435fdb1e0e2d",
+    "stellarator_09__stellaris__water_flow_capacity_ok__a2c7af45d6a66edb",
+    "stellarator_09__stellaris__water_head_capacity_ok__7a7ee38c249ed7b7",
+    "stellarator_09__stellaris__water_rejection_capacity_ok__c6f88b0bf20410d2"
+  ],
+  "stellarator_09__stellaris__heat_rejection__water_offered_conditions": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__heat_rejection__water_electric_capability",
+    "stellarator_09__stellaris__heat_rejection__water_flow_capability",
+    "stellarator_09__stellaris__heat_rejection__water_head_capability",
+    "stellarator_09__stellaris__heat_rejection__water_rejection_capability",
+    "stellarator_09__stellaris__water_electric_capacity_ok__da93435fdb1e0e2d",
+    "stellarator_09__stellaris__water_flow_capacity_ok__a2c7af45d6a66edb",
+    "stellarator_09__stellaris__water_head_capacity_ok__7a7ee38c249ed7b7",
+    "stellarator_09__stellaris__water_rejection_capacity_ok__c6f88b0bf20410d2"
+  ],
+  "stellarator_09__stellaris__heat_rejection__water_head_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__water_head_capacity_ok__7a7ee38c249ed7b7"
+  ],
+  "stellarator_09__stellaris__heat_rejection__water_rejection_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__water_rejection_capacity_ok__c6f88b0bf20410d2"
+  ],
+  "stellarator_09__stellaris__heat_rejection__water_electric_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__water_electric_capacity_ok__da93435fdb1e0e2d"
+  ],
+  "stellarator_09__stellaris__heat_rejection__water_flow_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__water_flow_capacity_ok__a2c7af45d6a66edb"
+  ],
+  "stellarator_09__stellaris__heat_transport__helium_offered_conditions": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__heat_transport__helium_electric_capability",
+    "stellarator_09__stellaris__heat_transport__helium_flow_capability",
+    "stellarator_09__stellaris__heat_transport__helium_pressure_rise_capability",
+    "stellarator_09__stellaris__heat_transport__helium_pumping_capability",
+    "stellarator_09__stellaris__helium_electric_capacity_ok__842a956a27b809da",
+    "stellarator_09__stellaris__helium_flow_capacity_ok__de4eed99bc4bea72",
+    "stellarator_09__stellaris__helium_pressure_rise_capacity_ok__7d12d01bc94dde7a",
+    "stellarator_09__stellaris__helium_pumping_capacity_ok__9e3c5d06ca11e640"
+  ],
+  "stellarator_09__stellaris__heat_transport__helium_electric_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__helium_electric_capacity_ok__842a956a27b809da"
+  ],
+  "stellarator_09__stellaris__heat_transport__helium_flow_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__helium_flow_capacity_ok__de4eed99bc4bea72"
+  ],
+  "stellarator_09__stellaris__heat_transport__helium_pressure_rise_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__helium_pressure_rise_capacity_ok__7d12d01bc94dde7a"
+  ],
+  "stellarator_09__stellaris__heat_transport__salt_head_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__salt_head_capacity_ok__7996e19c3ac43d0d"
+  ],
+  "stellarator_09__stellaris__heat_transport__cooling_selection": [
+    "stellarator_09__stellaris__cas22_capital",
+    "stellarator_09__stellaris__cas70_calc",
+    "stellarator_09__stellaris__cas71_calc",
+    "stellarator_09__stellaris__cas90_1cfe_calc",
+    "stellarator_09__stellaris__cooling_annual",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc",
+    "stellarator_09__stellaris__shipping_scope",
+    "stellarator_09__stellaris__supplementary"
+  ],
+  "stellarator_09__stellaris__heat_transport__salt_shaft_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__salt_shaft_capacity_ok__9a14c3c81e97c1d0"
+  ],
+  "stellarator_09__stellaris__heat_transport__helium_pumping_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__helium_pumping_capacity_ok__9e3c5d06ca11e640"
+  ],
+  "stellarator_09__stellaris__owner": [],
+  "stellarator_09__stellaris__other_rpe_cost_net_class_mwe_guard": [],
+  "stellarator_09__stellaris__other_rpe": [],
+  "stellarator_09__stellaris__decom_cost_net_class_mwe_guard": [],
+  "stellarator_09__stellaris__remote_handling": [],
+  "stellarator_09__stellaris__inc_cost_thermal_class_mw_guard": [],
+  "stellarator_09__stellaris__rb": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__blanket__blanket_cost",
+    "stellarator_09__stellaris__blanket__first_wall__wall_load_calc",
+    "stellarator_09__stellaris__buildings__administration__civil",
+    "stellarator_09__stellaris__buildings__civil_rollup",
+    "stellarator_09__stellaris__buildings__control__civil",
+    "stellarator_09__stellaris__buildings__cooling_annex__civil",
+    "stellarator_09__stellaris__buildings__cooling_hall__civil",
+    "stellarator_09__stellaris__buildings__cooling_link__civil",
+    "stellarator_09__stellaris__buildings__cryo_coldbox__civil",
+    "stellarator_09__stellaris__buildings__cryo_compressors__civil",
+    "stellarator_09__stellaris__buildings__electrical_building__civil",
+    "stellarator_09__stellaris__buildings__facility_accounts",
+    "stellarator_09__stellaris__buildings__facility_land",
+    "stellarator_09__stellaris__buildings__fuel_building__civil",
+    "stellarator_09__stellaris__buildings__layout",
+    "stellarator_09__stellaris__buildings__maintenance_shop__civil",
+    "stellarator_09__stellaris__buildings__power_supply_building__civil",
+    "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil",
+    "stellarator_09__stellaris__buildings__reactor_hall__civil",
+    "stellarator_09__stellaris__buildings__sector_link_east__civil",
+    "stellarator_09__stellaris__buildings__sector_link_north__civil",
+    "stellarator_09__stellaris__buildings__sector_link_south__civil",
+    "stellarator_09__stellaris__buildings__sector_link_west__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_east__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_north__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_south__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_west__civil",
+    "stellarator_09__stellaris__buildings__security__civil",
+    "stellarator_09__stellaris__buildings__service_water_building__civil",
+    "stellarator_09__stellaris__buildings__site_allowance",
+    "stellarator_09__stellaris__buildings__site_services_building__civil",
+    "stellarator_09__stellaris__buildings__turbine_hall__civil",
+    "stellarator_09__stellaris__buildings__ventilation",
+    "stellarator_09__stellaris__cas2x_pre_contingency",
+    "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9",
+    "stellarator_09__stellaris__facility_geometry_ok__e2729a4ee0257d98",
+    "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f",
+    "stellarator_09__stellaris__facility_material_capacity_ok__b02f74ca2b907a86",
+    "stellarator_09__stellaris__facility_occupancy_ok__2c505953d2466dad",
+    "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722",
+    "stellarator_09__stellaris__facility_parcel_ok__6c9b12b61636c539",
+    "stellarator_09__stellaris__facility_preconstruction",
+    "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938",
+    "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b",
+    "stellarator_09__stellaris__facility_shipping",
+    "stellarator_09__stellaris__magnet__coil_length",
+    "stellarator_09__stellaris__magnet__magnet_cost",
+    "stellarator_09__stellaris__magnet__peak_field_calc",
+    "stellarator_09__stellaris__magnet__stored_energy",
+    "stellarator_09__stellaris__powercore_capital",
+    "stellarator_09__stellaris__shield__shield_cost",
+    "stellarator_09__stellaris__special_materials_capital",
+    "stellarator_09__stellaris__structure__structure_cost",
+    "stellarator_09__stellaris__vessel__vessel_cost"
+  ],
+  "stellarator_09__stellaris__blanket__first_wall__wall_load_calc": [],
+  "stellarator_09__stellaris__blanket__first_wall__wall_peak_calc": [],
+  "stellarator_09__stellaris__blanket__blanket_cost": [],
+  "stellarator_09__stellaris__vessel__vessel_cost": [],
+  "stellarator_09__stellaris__shield__shield_cost": [],
+  "stellarator_09__stellaris__magnet__coil_length": [],
+  "stellarator_09__stellaris__cryoplant__inventory": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__cryoplant__cold_load",
+    "stellarator_09__stellaris__cryoplant__cold_load_w_demand_conversion",
+    "stellarator_09__stellaris__cryoplant__cryo_elec",
+    "stellarator_09__stellaris__cryoplant__intercept_stage_capability",
+    "stellarator_09__stellaris__cryoplant__shield_elec",
+    "stellarator_09__stellaris__intercept_stage_capacity_ok__9025ac10e1f2a085",
+    "stellarator_09__stellaris__power_supplies__tf_power"
+  ],
+  "stellarator_09__stellaris__cryoplant__shield_elec": [],
+  "stellarator_09__stellaris__cryoplant__intercept_stage_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__intercept_stage_capacity_ok__9025ac10e1f2a085"
+  ],
+  "stellarator_09__stellaris__magnet__wp_volume": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__cryoplant__cold_load",
+    "stellarator_09__stellaris__cryoplant__cold_load_w_demand_conversion",
+    "stellarator_09__stellaris__cryoplant__cryo_elec",
+    "stellarator_09__stellaris__magnet__conductor_current",
+    "stellarator_09__stellaris__magnet__insulation_inventory",
+    "stellarator_09__stellaris__magnet__magnet_capital_rollup",
+    "stellarator_09__stellaris__magnet__material_inventory",
+    "stellarator_09__stellaris__magnet__winding_procurement",
+    "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0"
+  ],
+  "stellarator_09__stellaris__cryoplant__cold_load": [
+    "stellarator_09__stellaris__cryoplant__cold_load_w_demand_conversion",
+    "stellarator_09__stellaris__cryoplant__cryo_elec"
+  ],
+  "stellarator_09__stellaris__cryoplant__cryo_elec": [],
+  "stellarator_09__stellaris__cryoplant__refrigeration_sum": [],
+  "stellarator_09__stellaris__cryoplant__cold_load_w_demand_conversion": [],
+  "stellarator_09__stellaris__cryoplant__cold_stage_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__cold_stage_capacity_ok__93eb65dcc5b55e0b"
+  ],
+  "stellarator_09__stellaris__magnet__material_inventory": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__magnet__conductor_current",
+    "stellarator_09__stellaris__magnet__magnet_capital_rollup",
+    "stellarator_09__stellaris__magnet__winding_procurement",
+    "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0"
+  ],
+  "stellarator_09__stellaris__magnet__winding_procurement": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__magnet__conductor_current",
+    "stellarator_09__stellaris__magnet__magnet_capital_rollup",
+    "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0"
+  ],
+  "stellarator_09__stellaris__magnet__winding_pack_cost": [],
+  "stellarator_09__stellaris__magnet__stored_energy": [],
+  "stellarator_09__stellaris__magnet__peak_field_calc": [],
+  "stellarator_09__stellaris__magnet__conductor_current": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0"
+  ],
+  "stellarator_09__stellaris__magnet__insulation_inventory": [
+    "stellarator_09__stellaris__magnet__magnet_capital_rollup"
+  ],
+  "stellarator_09__stellaris__magnet__magnet_capital_rollup": [],
+  "stellarator_09__stellaris__magnet__magnet_cost": [],
+  "stellarator_09__stellaris__magnet__wp_stress": [],
+  "stellarator_09__stellaris__magnet__cond_strain": [],
+  "stellarator_09__stellaris__power_supplies__tf_power": [],
+  "stellarator_09__stellaris__power_supplies__magnet_tf_electric_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__magnet_tf_electric_capacity_ok__23bdb2b2b84fef80"
+  ],
+  "stellarator_09__stellaris__structure__structure_cost": [
+    "stellarator_09__stellaris__powercore_capital"
+  ],
+  "stellarator_09__stellaris__pb": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1",
+    "stellarator_09__stellaris__electric_plant__electric_gross_capability",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc",
+    "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "stellarator_09__stellaris__turbine__turbine_gross_capability",
+    "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4"
+  ],
+  "stellarator_09__stellaris__turbine__turbine_gross_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4"
+  ],
+  "stellarator_09__stellaris__electric_plant__electric_gross_capability": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1"
+  ],
+  "stellarator_09__stellaris__om_cost": [],
+  "stellarator_09__stellaris__waste_cost_thermal_class_mw_guard": [],
+  "stellarator_09__stellaris__waste": [],
+  "stellarator_09__stellaris__inc_cost": [],
+  "stellarator_09__stellaris__precon_legacy_cost_net_class_mwe_guard": [],
+  "stellarator_09__stellaris__precon_cost": [],
+  "stellarator_09__stellaris__powercore_capital": [],
+  "stellarator_09__stellaris__reactor_equipment_subtotal": [],
+  "stellarator_09__stellaris__installation": [],
+  "stellarator_09__stellaris__bop_capital": [],
+  "stellarator_09__stellaris__replacement_cost_per_event": [],
+  "stellarator_09__stellaris__calendar": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__breeding_adequacy",
+    "stellarator_09__stellaris__buildings__administration__civil",
+    "stellarator_09__stellaris__buildings__civil_rollup",
+    "stellarator_09__stellaris__buildings__control__civil",
+    "stellarator_09__stellaris__buildings__cooling_annex__civil",
+    "stellarator_09__stellaris__buildings__cooling_hall__civil",
+    "stellarator_09__stellaris__buildings__cooling_link__civil",
+    "stellarator_09__stellaris__buildings__cryo_coldbox__civil",
+    "stellarator_09__stellaris__buildings__cryo_compressors__civil",
+    "stellarator_09__stellaris__buildings__electrical_building__civil",
+    "stellarator_09__stellaris__buildings__facility_accounts",
+    "stellarator_09__stellaris__buildings__facility_land",
+    "stellarator_09__stellaris__buildings__fuel_building__civil",
+    "stellarator_09__stellaris__buildings__layout",
+    "stellarator_09__stellaris__buildings__maintenance_shop__civil",
+    "stellarator_09__stellaris__buildings__power_supply_building__civil",
+    "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil",
+    "stellarator_09__stellaris__buildings__reactor_hall__civil",
+    "stellarator_09__stellaris__buildings__sector_link_east__civil",
+    "stellarator_09__stellaris__buildings__sector_link_north__civil",
+    "stellarator_09__stellaris__buildings__sector_link_south__civil",
+    "stellarator_09__stellaris__buildings__sector_link_west__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_east__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_north__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_south__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_west__civil",
+    "stellarator_09__stellaris__buildings__security__civil",
+    "stellarator_09__stellaris__buildings__service_water_building__civil",
+    "stellarator_09__stellaris__buildings__site_allowance",
+    "stellarator_09__stellaris__buildings__site_services_building__civil",
+    "stellarator_09__stellaris__buildings__turbine_hall__civil",
+    "stellarator_09__stellaris__buildings__ventilation",
+    "stellarator_09__stellaris__cas22_capital",
+    "stellarator_09__stellaris__cas2x_pre_contingency",
+    "stellarator_09__stellaris__cas70_calc",
+    "stellarator_09__stellaris__cas71_calc",
+    "stellarator_09__stellaris__cas90_1cfe_calc",
+    "stellarator_09__stellaris__cooling_annual",
+    "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9",
+    "stellarator_09__stellaris__facility_geometry_ok__e2729a4ee0257d98",
+    "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f",
+    "stellarator_09__stellaris__facility_material_capacity_ok__b02f74ca2b907a86",
+    "stellarator_09__stellaris__facility_occupancy_ok__2c505953d2466dad",
+    "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722",
+    "stellarator_09__stellaris__facility_parcel_ok__6c9b12b61636c539",
+    "stellarator_09__stellaris__facility_preconstruction",
+    "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938",
+    "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b",
+    "stellarator_09__stellaris__facility_shipping",
+    "stellarator_09__stellaris__fuel_cycle__fuel",
+    "stellarator_09__stellaris__fuel_cycle__fuel_calc",
+    "stellarator_09__stellaris__fuel_cycle__inventory",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost",
+    "stellarator_09__stellaris__fuel_processing_capacity_ok__ddb8525b2bda8f0a",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc",
+    "stellarator_09__stellaris__shipping_scope",
+    "stellarator_09__stellaris__supplementary",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+    "stellarator_09__stellaris__vacuum_pumping__vacuum"
+  ],
+  "stellarator_09__stellaris__fuel_cycle__fuel_calc": [],
+  "stellarator_09__stellaris__fuel_cycle__inventory": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__breeding_adequacy",
+    "stellarator_09__stellaris__cas22_capital",
+    "stellarator_09__stellaris__fuel_cycle__fuel",
+    "stellarator_09__stellaris__fuel_cycle__processing_cost",
+    "stellarator_09__stellaris__fuel_processing_capacity_ok__ddb8525b2bda8f0a",
+    "stellarator_09__stellaris__shipping_scope",
+    "stellarator_09__stellaris__supplementary",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+    "stellarator_09__stellaris__vacuum_pumping__vacuum"
+  ],
+  "stellarator_09__stellaris__fuel_cycle__processing_cost": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__cas22_capital",
+    "stellarator_09__stellaris__fuel_processing_capacity_ok__ddb8525b2bda8f0a",
+    "stellarator_09__stellaris__shipping_scope",
+    "stellarator_09__stellaris__supplementary"
+  ],
+  "stellarator_09__stellaris__fuel_cycle__fuel": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__breeding_adequacy",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+    "stellarator_09__stellaris__vacuum_pumping__vacuum"
+  ],
+  "stellarator_09__stellaris__buildings__layout": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__buildings__administration__civil",
+    "stellarator_09__stellaris__buildings__civil_rollup",
+    "stellarator_09__stellaris__buildings__control__civil",
+    "stellarator_09__stellaris__buildings__cooling_annex__civil",
+    "stellarator_09__stellaris__buildings__cooling_hall__civil",
+    "stellarator_09__stellaris__buildings__cooling_link__civil",
+    "stellarator_09__stellaris__buildings__cryo_coldbox__civil",
+    "stellarator_09__stellaris__buildings__cryo_compressors__civil",
+    "stellarator_09__stellaris__buildings__electrical_building__civil",
+    "stellarator_09__stellaris__buildings__facility_accounts",
+    "stellarator_09__stellaris__buildings__facility_land",
+    "stellarator_09__stellaris__buildings__fuel_building__civil",
+    "stellarator_09__stellaris__buildings__maintenance_shop__civil",
+    "stellarator_09__stellaris__buildings__power_supply_building__civil",
+    "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil",
+    "stellarator_09__stellaris__buildings__reactor_hall__civil",
+    "stellarator_09__stellaris__buildings__sector_link_east__civil",
+    "stellarator_09__stellaris__buildings__sector_link_north__civil",
+    "stellarator_09__stellaris__buildings__sector_link_south__civil",
+    "stellarator_09__stellaris__buildings__sector_link_west__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_east__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_north__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_south__civil",
+    "stellarator_09__stellaris__buildings__sector_wing_west__civil",
+    "stellarator_09__stellaris__buildings__security__civil",
+    "stellarator_09__stellaris__buildings__service_water_building__civil",
+    "stellarator_09__stellaris__buildings__site_allowance",
+    "stellarator_09__stellaris__buildings__site_services_building__civil",
+    "stellarator_09__stellaris__buildings__turbine_hall__civil",
+    "stellarator_09__stellaris__buildings__ventilation",
+    "stellarator_09__stellaris__cas2x_pre_contingency",
+    "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9",
+    "stellarator_09__stellaris__facility_geometry_ok__e2729a4ee0257d98",
+    "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f",
+    "stellarator_09__stellaris__facility_material_capacity_ok__b02f74ca2b907a86",
+    "stellarator_09__stellaris__facility_occupancy_ok__2c505953d2466dad",
+    "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722",
+    "stellarator_09__stellaris__facility_parcel_ok__6c9b12b61636c539",
+    "stellarator_09__stellaris__facility_preconstruction",
+    "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938",
+    "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b",
+    "stellarator_09__stellaris__facility_shipping"
+  ],
+  "stellarator_09__stellaris__buildings__cooling_link__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__cooling_hall__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__sector_link_south__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__cryo_compressors__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__security__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__cryo_coldbox__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__control__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__sector_wing_east__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__sector_wing_west__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__service_water_building__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__reactor_auxiliaries__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__sector_link_west__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__sector_wing_south__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__sector_wing_north__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__site_services_building__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__sector_link_east__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__maintenance_shop__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__fuel_building__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__sector_link_north__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__cooling_annex__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__power_supply_building__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__reactor_hall__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__administration__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__electrical_building__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__turbine_hall__civil": [
+    "stellarator_09__stellaris__buildings__civil_rollup"
+  ],
+  "stellarator_09__stellaris__buildings__facility_land": [],
+  "stellarator_09__stellaris__buildings__ventilation": [
+    "stellarator_09__stellaris__buildings__facility_accounts",
+    "stellarator_09__stellaris__cas2x_pre_contingency",
+    "stellarator_09__stellaris__facility_shipping"
+  ],
+  "stellarator_09__stellaris__buildings__civil_rollup": [],
+  "stellarator_09__stellaris__buildings__site_allowance": [],
+  "stellarator_09__stellaris__buildings__facility_accounts": [
+    "stellarator_09__stellaris__cas2x_pre_contingency",
+    "stellarator_09__stellaris__facility_shipping"
+  ],
+  "stellarator_09__stellaris__vacuum_pumping__vacuum": [],
+  "stellarator_09__stellaris__facility_preconstruction": [],
+  "stellarator_09__stellaris__facility_shipping": [],
+  "stellarator_09__stellaris__cooling_annual": [
+    "stellarator_09__stellaris__cas70_calc",
+    "stellarator_09__stellaris__cas71_calc",
+    "stellarator_09__stellaris__cas90_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc"
+  ],
+  "stellarator_09__stellaris__breeding_adequacy": [
+    "constraint_report_aggregator",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4"
+  ],
+  "stellarator_09__stellaris__cas71_calc": [
+    "stellarator_09__stellaris__cas70_calc",
+    "stellarator_09__stellaris__cas90_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc"
+  ],
+  "stellarator_09__stellaris__cas80_calc": [
+    "stellarator_09__stellaris__cas70_calc",
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc"
+  ],
+  "stellarator_09__stellaris__cas70_calc": [
+    "stellarator_09__stellaris__lcoe_1cfe_calc",
+    "stellarator_09__stellaris__lcoe_calc"
+  ],
+  "stellarator_09__stellaris__cas22_capital": [],
+  "stellarator_09__stellaris__special_materials_capital": [],
+  "stellarator_09__stellaris__cas23_to_28_capital": [],
+  "stellarator_09__stellaris__cas2x_pre_contingency": [],
+  "stellarator_09__stellaris__contingency": [],
+  "stellarator_09__stellaris__cas20_capital": [],
+  "stellarator_09__stellaris__indirect": [],
+  "stellarator_09__stellaris__shipping_scope": [
+    "stellarator_09__stellaris__supplementary"
+  ],
+  "stellarator_09__stellaris__supplementary": [],
+  "stellarator_09__stellaris__overnight_capital": [],
+  "stellarator_09__stellaris__idc": [],
+  "stellarator_09__stellaris__cas90_1cfe_calc": [],
+  "stellarator_09__stellaris__lcoe_1cfe_calc": [],
+  "stellarator_09__stellaris__total_capital": [],
+  "stellarator_09__stellaris__lcoe_calc": [],
+  "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__water_head_capacity_ok__7a7ee38c249ed7b7": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__water_rejection_capacity_ok__c6f88b0bf20410d2": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__feedwater_flow_capacity_ok__3065124bba3fb314": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__fuel_processing_capacity_ok__ddb8525b2bda8f0a": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__lp_flow_capacity_ok__3e0e231ed626fd7d": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__facility_occupancy_ok__2c505953d2466dad": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__cold_stage_capacity_ok__93eb65dcc5b55e0b": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__facility_material_capacity_ok__b02f74ca2b907a86": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__beta_ok__82b78aad420730d5": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__facility_parcel_ok__6c9b12b61636c539": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__helium_pressure_rise_capacity_ok__7d12d01bc94dde7a": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__hp_flow_capacity_ok__f0b30eeb1c674ce4": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__facility_geometry_ok__e2729a4ee0257d98": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__condensate_electric_capacity_ok__a5ca7c5129553d1f": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__water_electric_capacity_ok__da93435fdb1e0e2d": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__net_positive__484521d56c02667a": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__helium_pumping_capacity_ok__9e3c5d06ca11e640": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__salt_flow_capacity_ok__76ca6d6f7320b2d1": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__direct_electric_capacity_ok__5acaaed766dc1371": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__magnet_tf_electric_capacity_ok__23bdb2b2b84fef80": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__represented_coolant_fill_ok__e6341404f9f2ddda": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__salt_electric_capacity_ok__d353ed9e85c5a75b": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__condensate_flow_capacity_ok__252eeccf9b929ade": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__helium_electric_capacity_ok__842a956a27b809da": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__salt_shaft_capacity_ok__9a14c3c81e97c1d0": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__water_flow_capacity_ok__a2c7af45d6a66edb": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__magnet_pf_electric_capacity_ok__8a8fdad77b158738": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__feedwater_electric_capacity_ok__2274a605654bb912": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__condenser_rejection_capacity_ok__b5d2e6443913eb29": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__salt_head_capacity_ok__7996e19c3ac43d0d": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__hp_shaft_capacity_ok__a19eda5dff14e4c2": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__intercept_stage_capacity_ok__9025ac10e1f2a085": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__ihx_capacity_ok__8118479d5c637061": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__main_ua_capacity_ok__86518fe643367961": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__reheat_ua_capacity_ok__e377a2da71f404d0": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__helium_flow_capacity_ok__de4eed99bc4bea72": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__feedwater_pressure_rise_capacity_ok__2e12db90b09ba458": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__lp_shaft_capacity_ok__70b40123e64ccdf5": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__condensate_pressure_rise_capacity_ok__d996b8dad5b58894": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444": [
+    "constraint_report_aggregator"
+  ],
+  "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4": [
+    "constraint_report_aggregator"
+  ],
+  "constraint_report_aggregator": [],
+  "exit_point": []
+}
