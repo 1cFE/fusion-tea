@@ -66,3 +66,7 @@ The probe budget cannot numerically cover every scalar/range boundary or the ent
 ## Subsequent diagnostic work
 
 [INHERITED: coordinator message, 2026-09-20] After these entering-package probes ended, the coordinator generated a diagnostic-only correction for conductor refusal messages and the missing primary-suction guard under `work/analysis/model-evaluation-diagnostics/`. That later package and its tests have separate identity/evidence. This directory intentionally retains the entering executable, source hashes, failures and findings; it does not claim those later repairs have passed independent review.
+
+## Source-pointer correction — 2026-09-20
+
+[AGENT] Independent review found that the NREL SSC source's `output.md` contains page chrome rather than the property equations. The primary code payload is retained in `knowledge/sources/nrel_ssc_heat_transfer_fluid_property_implementation/raw.html`; its HITEC branches carry the cited cp, density, viscosity and clamps. The reviewer inspected that payload directly. The earlier intended-envelope pointer to the extraction is insufficient for these equations; this correction preserves the original pre-probe envelope bytes and its recorded hash. No numerical value or property-domain claim changes.
