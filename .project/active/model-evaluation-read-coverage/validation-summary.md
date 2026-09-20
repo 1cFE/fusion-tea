@@ -1,6 +1,6 @@
 # Author implementation handoff
 
-Status: implemented; independent implementation review and coordinator's final committed full seam remain pending. No model or parameter edits in this workstream. MR-7 quantity roles and consumers are unchanged.
+Status: completed for the documented bounded contract; independent final evidence acceptance and all ten corrected integration gates pass. No model or parameter edits in this workstream. MR-7 quantity roles and consumers are unchanged.
 
 ## Changes
 
@@ -44,3 +44,15 @@ Admission now follows current content location and revokes source/destination de
 Successive focused reruns use `.codex-test/run python -m pytest tests/study/test_read_coverage.py tests/study/test_integrate_guide_contract.py -q`: `lifecycle-after-fix.txt` has 49 passes; `lifecycle-sqlite-final.txt` has 52 passes; final `lifecycle-sqlite-sidecars-final.txt` has 55 passes in 19.42 seconds. Counts are not additive. `git diff --check` passes.
 
 Final stock probe 8 completes with the corrected observer and records the newly admitted SQLite store. Receipt: `stock-probe-8/read_coverage.json`; dependency digest `b953bc207be1060cd966f2df099d08fd3a3197389ed690b9e23823a8c22b3cb0`. Probe 7 is also retained but precedes the sidecar check. Earlier successful receipts describe their own tooling bytes and are not promoted as final evidence. Root owns refreshing adapter evidence and the committed full seam after independent release. No further tooling edits are planned before review.
+
+## Final checkpoint checks — 2026-09-20
+
+The continuing independent reviewer released the corrected observer after 55 focused passes and stock-probe-8 receipt verification; tooling is committed at `02925b74`. The first full seam, retained in `integration-final/`, stopped on a stale current-generation test seed selector (one failure and six fixture errors). The reviewer verified the replacement 52-entry inventory and unchanged native checks. That selector correction is committed at `d94f8774`; the historical WI-080 inventory is untouched. `corrected-invocation.json` names the distinct rerun and checkpoint.
+
+The broad `tests/study/test_integrate*.py` selection was interrupted because it repeatedly executes the expensive full seam. Its incomplete dot output and a failure marker remain in `final-regression.txt`; no completed pass total is claimed. `interrupted-regression.json` identifies the retained temporary workspace. Final focused command: `.codex-test/run python -m pytest tests/study/test_read_coverage.py tests/study/test_integrate_guide_contract.py tests/study/test_integrate_preconditions.py tests/study/test_integrate_internal_error.py tests/test_model_evaluation_adapter.py -q`. Result: **96 passed in 162.99 seconds**, recorded in `focused-final-regression.txt`. This count includes the same adapter and read-coverage tests already reported separately; counts must not be added.
+
+Development stock probes 1–8 changed implementation or test setup between attempts; they are retained implementation experiments, not eight identical goal retries. The committed full seam has one corrective rerun. Review submissions retained the original rejection and corrective same-reviewer acceptance. No failed attempt has been relabeled as a successful candidate.
+
+The corrected full seam at `d94f8774` completed as **CANDIDATE, exit 0, all ten gates pass**. `integration-corrected/integration_return.json` records tool-source digest `8ef5c6bdad4c34eb8a89029f74eac3398676bcae64dbd1d341c0537ca568b002`; `read_coverage.json` records baseline dependency digest `002f454aef425be6148c6795b94a45b62102523b206baf94bdd672bc872d078b`. The static manifest membership receipt and dynamic baseline receipt are both present. Verification re-derives every verdict and confirms numerical oracle parity. This is the final executed seam; independent evidence acceptance is recorded in implementation-review.md. The model still has failed engineering checks and scientific coverage limits.
+
+The retained interrupted broad-suite failure was recovered after final acceptance. interrupted-lineage-failure/ contains its exact native return and JUnit: all seven diagnostics identify the same stale seed fixture, before the intended lineage check. Independent review confirms that attribution. The broad suite and its negative-lineage case remain uncertified; this does not add a test pass.

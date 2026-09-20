@@ -22,7 +22,7 @@
 
 [AGENT] `.codex-test/run python -m pytest tests/models/test_primary_loop_domains.py tests/models/test_conductor_current.py -q` passes 157 tests; original float-as-Boolean warnings remain. `check_and_pin.py` confirms exact equality for all 1,352 numeric channels and 68 responses against the retained WI-080 baseline. `native_acceptance.py` exercises three unsupported conditions through the supported evaluator: nonpositive compressor suction, conductor field and conductor temperature. All refuse with offending values and calculation identity. Their native failure records expose no retained upstream partial artifacts; no partial values or completed plant result are invented. These are deterministic repair-acceptance checks, separate from the capped entering-domain exploration.
 
-[AGENT] No empirical extension or new performance model was introduced. A lower-pressure case remains unsupported; the repair replaces an uncontrolled complex-output schema error with an explicit domain refusal. Final independent coverage review and committed native seam acceptance remain pending.
+[AGENT] No empirical extension or new performance model was introduced. A lower-pressure case remains unsupported; the repair replaces an uncontrolled complex-output schema error with an explicit domain refusal. Final independent coverage review and corrected committed native seam acceptance passed; see the goal evidence/coverage-review.md and .project/active/model-evaluation-read-coverage/implementation-review.md.
 
 ## Current regression consumer correction
 

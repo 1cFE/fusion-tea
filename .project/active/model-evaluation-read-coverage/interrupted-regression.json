@@ -1,0 +1,8 @@
+{
+  "command": ".codex-test/run python -m pytest tests/study/test_integrate*.py tests/study/test_read_coverage.py tests/test_model_evaluation_adapter.py -q",
+  "exit_code": 130,
+  "reason": "Interrupted overbroad repetition of the expensive full seam; focused suite and separate committed full seam replace it for acceptance.",
+  "log": "final-regression.txt",
+  "partial_result": "13 dots and one failure marker; no completed report or pass total certified. First lineage test ran while stale seed fixture remained; no final traceback captured.",
+  "fixture_retained_at": "/tmp/interrupted-integration-regression-2nj93lgh/workspace"
+}
