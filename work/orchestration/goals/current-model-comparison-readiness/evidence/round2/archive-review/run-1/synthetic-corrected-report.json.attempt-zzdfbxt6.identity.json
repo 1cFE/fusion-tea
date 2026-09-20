@@ -1,0 +1,17 @@
+{
+  "files": {
+    "input-0.raw": "9987c7e3f4e4cbca9062ebfc53112e8813e7fa4f55dceac321705ce43a2e32a4",
+    "input-1.raw": "7cac4d19918a6705f61bbf4273f17a1d642aff61ad8804647be81a16462cec76",
+    "input-2.raw": "ff1f574cfdf8a53d19be0064a98144b492f897c9ed37fc1c8a946060c5fcccfa",
+    "input-3.raw": "7dcaf25ceef6ac80fc6f3f74f46c906227ff524d21f0b5deddf222d2e0be8e10",
+    "input-4.raw": "34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19",
+    "input-5.raw": "f29e8a2e9afdf6bfc344d8fc6fc6c83061caba01f05b95f212182f4e64f7153f",
+    "input-6.raw": "d253a273a944611ee5b49f5994029b061b26e6c753c7fd6c7d3373a0d702373e",
+    "input-7.raw": "9d1dec8fcad422ee94bf6fb2830d2a845a044614b67a7b9cc2f437da5d0b7216",
+    "input-8.raw": "0c583113515f6803116f9f41162c6f00ce27d4b1a7735570c0b198d512678276",
+    "input-9.raw": "b8d5b9935dbaefed6952400e2afcce097094863ec0dfcb8a8ffcbd3f856639bc",
+    "produced.raw.json": "a503a0d608cc118399f07caf29f992080205e3b3981aea2970c34bcedec33940",
+    "receipt.json": "455c01d6c86142f2f4b8893a35ec42ec178ad8af4a6d39b7ad278f96d8436bc3"
+  },
+  "result_directory": "synthetic-corrected-report.json.attempt-zzdfbxt6"
+}

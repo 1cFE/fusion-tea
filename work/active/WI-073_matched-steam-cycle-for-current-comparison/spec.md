@@ -4,7 +4,7 @@ Scale: standard
 Epic: standalone
 Owner: agent
 Created: 2026-09-19
-Updated: 2026-09-19
+Updated: 2026-09-20
 ---
 
 # WI-073: Matched steam cycle for current comparison
@@ -41,9 +41,9 @@ Updated: 2026-09-19
 - [x] Reviewed interface/design and persistent phased implementation plan.
 - [x] Canonical model and executable agree; independent property/state/work checks cover new outputs.
 - [x] Baseline and bounded cases preserve raw failures and demonstrate complete accounting.
-- [ ] Affected full regression/replay scopes finish with explicit residual consequences.
-- [ ] Fresh affected-cell depth assessment and integrated model audit.
+- [x] Affected full regression/replay scopes finish with explicit residual consequences.
+- [x] Fresh affected-cell depth assessment and integrated model audit.
 
-Research is T-008 under the goal, with its own native request and receipts. T-009 implemented the reviewed cycle and corrected an independently discovered mixed-mode heat-budget inconsistency. Fresh scientific audit passes R1–R5; full regression, final committed depth grading and integration custody remain open for R6–R7.
+Research is T-008 under the goal, with its own native request and receipts. T-009 implemented the reviewed cycle and corrected an independently discovered mixed-mode heat-budget inconsistency. Fresh scientific audit passes R1–R5; fresh depth grading meets all23 targets and native integration passes all ten gates. Final full regression and fresh independent audit now satisfy R6–R7; actual comparison archive restoration and owner adoption remain separate gates.
 
 SV-122 was updated to passing through the native PM operation after independent property, state, heat/work and failure checks. Evidence: `evidence/sv122-update.log`, `evidence/independent-oracle/README.md` and the goal `evidence/round2/cycle-native-science-review.md`. Numerical tolerances follow the reviewed design; strict engineering inequalities remain unchanged. The PM operation reported inherited malformed legacy Type cells and left them unchanged.

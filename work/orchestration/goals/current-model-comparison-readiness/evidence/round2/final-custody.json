@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "archive_sha256": "34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19",
+  "current_member_count": 1047,
+  "current_member_drift": [],
+  "r2_sha256": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21",
+  "operating_register_created": false,
+  "adopted": false,
+  "revealed": false,
+  "formal_goal_closed": false
+}

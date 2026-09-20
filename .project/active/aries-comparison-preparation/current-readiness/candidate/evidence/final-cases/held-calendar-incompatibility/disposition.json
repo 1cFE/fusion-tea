@@ -1,0 +1,12 @@
+{
+  "status": "expected_incompatibility_preserved",
+  "failure": {
+    "cause": "ValueError: facilities requires one module, four sectors, live calendar",
+    "module_or_channel": "stellarator_09__stellaris__buildings__layout",
+    "partial_artifacts": [],
+    "phase": "module_execution",
+    "retryable": false
+  },
+  "consequence": "Current live facilities cannot accept a supplied availability value; report this reference seam as incompatible rather than an independently predicted calendar.",
+  "store_sha256": "73ccda371a835ed2872589709c8722f44d2eeb14878fdf476722b859f4e7d58f"
+}

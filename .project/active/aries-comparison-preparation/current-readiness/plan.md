@@ -1,14 +1,14 @@
 # Current comparison readiness execution plan
 
-Status: active; owner selected coherent cycle work. Contract: `spec.md`. Native goal Round 2 and WI-073 own the matched-cycle work; WI-072 completed entering numerical coverage. Final comparison integration follows the independently reviewed scientific treatment.
+Status: coding, integration, full regression and independent archive restoration complete; owner adoption and reveal remain held. Contract: `spec.md`. Native goal Round 2 and WI-073 own the matched-cycle work; WI-072 completed entering numerical coverage.
 
 - [x] Record owner requirements and preserve existing contract/owner gates.
 - [x] Verify current scope, r2 differences, regression causes and coverage gaps.
 - [x] Obtain fresh review of public-interface/numerical-boundary repairs where triggered; implement faithful regression and replay repairs.
 - [x] Update separate candidate adapter, output/constraint inventories, account equations and explicit inputs after scientific treatment is reviewed.
-- [ ] Run independent numerical coverage, bounded native cases and relevant full regression; disposition every residual.
-- [ ] Verify coherent integration and targeted rubric preservation after model changes.
-- [ ] Build deterministic candidate archives and reproduction instructions; independently restore actual archive and reproduce required checks.
+- [x] Run independent numerical coverage, bounded native cases and relevant full regression; disposition every residual.
+- [x] Verify coherent integration and targeted rubric preservation after model changes.
+- [x] Build deterministic candidate archives and reproduction instructions; independently restore actual archive and reproduce required checks.
 - [ ] Produce owner approval packet identifying replacement bytes, unchanged comparison contract and mandatory first-report limitations.
 
 ## Entering evidence
@@ -21,4 +21,12 @@ Progress note, 2026-09-19: bounded regression and draft adapter work is complete
 
 The updated candidate captures 511 entries, 1,050 numeric/status outputs and 28 predicates. Held efficiency explicitly disables both new modes, raw legacy checks retain mode applicability, and accounting preserves gross/internal-net/export and heat-rejection meanings. Historical replays retain original anchors with explicit old modes. The first full WI-073 run had 26 failures and eight errors across 3,590 cases; every traceback and disposition is retained in `regression-evidence/cycle-migration/first-full-failure-inventory.json`. Fifteen integration failures/errors shared the omitted 21-parameter census membership.
 
-Focused coding repairs pass 382 tests, with one additional final exact-status-loop check and 121 candidate/custody tests. The coordinator separately owns the repaired WI-072 mode tests and independent oracle residual-sign clarification. The new full collection has 3,601 cases. Scoped coding commit, sequential native integration and the final full rerun remain pending; focused success does not close those gates. Actual archive construction/restoration and owner adoption remain unchecked. Receipts and stable code hashes are in `regression-evidence/cycle-migration/coding-ready-receipt.json`.
+Focused coding repairs pass 382 tests, with one additional final exact-status-loop check and 121 candidate/custody tests. The coordinator separately owns the repaired WI-072 mode tests and independent oracle residual-sign clarification. The new full collection has 3,601 cases. The scoped coding checkpoint, sequential native integration, final full rerun and actual archive construction/restoration are complete, as recorded below. Owner adoption and reveal remain held. Receipts and stable code hashes are in `regression-evidence/cycle-migration/coding-ready-receipt.json`.
+
+## Final coding validation, 2026-09-20
+
+All 3,601 cases executed with unchanged captured source bytes: 3,585 passed, zero failed, zero errors, 14 ordinary skips and two guarded strict expected failures. All 34 original WI-073 failures/errors now pass, with no original collected case removed. Exact source/node reconciliation and skip consequences are in `regression-evidence/cycle-migration/final-full-reconciliation.json` and `final-summary.md`. Native integration passed all ten gates before this run. The independent reviewer subsequently passed R1–R7, completing the integration/rubric phase.
+
+## Archive restoration checkpoint, 2026-09-20
+
+[INHERITED: coordinator report of independent archive review] The actual deterministic archive passed independent restoration and reproduction. Its SHA-256 is `34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19`. Review and execution evidence are in `work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/review.md` and `work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/run-1/summary.json`. This plan update is outside the frozen archive member set. The coordinator is preparing the owner approval packet; owner adoption and reveal remain held.

@@ -1,0 +1,443 @@
+{
+  "annual_energy_mwh": 6680868.685107013,
+  "checks": [
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 164.9947559711432,
+      "expected": 164.9947559711432,
+      "name": "selected_primary_pump_electric",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 164.9947559711432,
+      "expected": 164.9947559711432,
+      "name": "selected_primary_recovered_heat",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 170.8383696145604,
+      "expected": 170.8383696145604,
+      "name": "total_pump_electric_once",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 170.54618893238953,
+      "expected": 170.54618893238953,
+      "name": "total_recovered_shaft_heat_once",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 3234.3793969151698,
+      "expected": 3234.3793969151698,
+      "name": "thermal_balance",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 0.368926242673559,
+      "expected": 0.368926242673559,
+      "name": "selected_gross_efficiency",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 3234.3793969151698,
+      "expected": 3234.3793969151698,
+      "name": "matched_conversion_heat_join",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 3234.3793969151693,
+      "expected": 3234.3793969151698,
+      "name": "matched_branch_heat_sum",
+      "passed": true,
+      "residual": -4.547473508864641e-13
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 10614.161617205533,
+      "expected": 10614.161617205533,
+      "name": "matched_salt_total_flow",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 10614.161617205531,
+      "expected": 10614.161617205533,
+      "name": "matched_salt_branch_flow",
+      "passed": true,
+      "residual": -1.8189894035458565e-12
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 1193.2474382846854,
+      "expected": 1193.2474382846854,
+      "name": "matched_gross_matches_power_balance",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 9.494117458107075,
+      "expected": 9.494117458107075,
+      "name": "steam_pump_electric_sum",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 1193.2474382846854,
+      "expected": 1193.2474382846854,
+      "name": "matched_generator_conversion",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 3243.3988085003716,
+      "expected": 3243.3988085003707,
+      "name": "matched_shaft_balance",
+      "passed": true,
+      "residual": 9.094947017729282e-13
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 2050.6260760885907,
+      "expected": 2050.6260760885907,
+      "name": "matched_loss_sum",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 3243.873514373277,
+      "expected": 3243.873514373276,
+      "name": "matched_electric_balance",
+      "passed": true,
+      "residual": 9.094947017729282e-13
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 1183.7533208265781,
+      "expected": 1183.7533208265784,
+      "name": "matched_cycle_net_before_cooling",
+      "passed": true,
+      "residual": -2.2737367544323206e-13
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 2063.363698676105,
+      "expected": 2063.363698676105,
+      "name": "cooling_water_own_heat",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 0.6368811293757073,
+      "expected": 0.6368811293757073,
+      "name": "cooling_water_motor_loss",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 1193.2474382846854,
+      "expected": 1193.2474382846854,
+      "name": "gross_electric_conversion",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 348.45898495187043,
+      "expected": 348.45898495187043,
+      "name": "recirculating_power",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 844.788453332815,
+      "expected": 844.7884533328149,
+      "name": "net_electric_balance",
+      "passed": true,
+      "residual": 1.1368683772161603e-13
+    },
+    {
+      "absolute_tolerance": 1e-09,
+      "actual": 35.79742314854056,
+      "expected": 35.79742314854056,
+      "name": "historical_subsystem_allowance",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 242038310.3816656,
+      "expected": 242038310.3816656,
+      "name": "cas23_gross_power_driver",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 103096578.66779682,
+      "expected": 103096578.66779682,
+      "name": "cas24_gross_power_driver",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 113397341.65584585,
+      "expected": 113397341.65584585,
+      "name": "cas25_total_thermal_driver",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 62752882.7793916,
+      "expected": 62752882.7793916,
+      "name": "cas26_gross_power_driver",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 33720013.82085919,
+      "expected": 33720013.82085919,
+      "name": "materials",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 2332662706.4064727,
+      "expected": 2332662706.4064727,
+      "name": "procurement",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 2543147112.3143926,
+      "expected": 2543147112.3143926,
+      "name": "magnet",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 39011231.875834435,
+      "expected": 39011231.875834435,
+      "name": "aux_cooling",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 4304020672.345483,
+      "expected": 4304020672.345483,
+      "name": "core",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 4460249139.549492,
+      "expected": 4460249139.549492,
+      "name": "equipment",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 11708799101.568466,
+      "expected": 11708799101.568464,
+      "name": "cas22",
+      "passed": true,
+      "residual": 1.9073486328125e-06
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 521285113.4846999,
+      "expected": 521285113.48469985,
+      "name": "bop",
+      "passed": true,
+      "residual": 5.960464477539063e-08
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 13058994520.333212,
+      "expected": 13058994520.333214,
+      "name": "direct",
+      "passed": true,
+      "residual": -1.9073486328125e-06
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 14364893972.366533,
+      "expected": 14364893972.366533,
+      "name": "cas20",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 19072332328.66645,
+      "expected": 19072332328.66645,
+      "name": "overnight",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 19072332328.66645,
+      "expected": 19072332328.66645,
+      "name": "total",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 262609726.01672608,
+      "expected": 262609726.01672608,
+      "name": "annual70",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 263387544.4776956,
+      "expected": 263387544.4776956,
+      "name": "annual_total",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 13058994520.333212,
+      "expected": 13058994520.333212,
+      "name": "direct_disjoint_23",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 6465308062.961268,
+      "expected": 6465308062.961268,
+      "name": "cooling_equipment_children",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 800020255.2136705,
+      "expected": 800020255.2136703,
+      "name": "facilities_children",
+      "passed": true,
+      "residual": 2.384185791015625e-07
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 22658709.809438117,
+      "expected": 22658709.809438117,
+      "name": "fuel_processing_children",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 189989510.73998863,
+      "expected": 189989510.73998863,
+      "name": "cas72_selected_replacements",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 5217859947.881453,
+      "expected": 5217859947.881453,
+      "name": "shipping_cooling_exclusion",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 786522280.7350376,
+      "expected": 786522280.7350376,
+      "name": "shipping_facility_exclusion",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 2562668.5141008887,
+      "expected": 2562668.5141008887,
+      "name": "shipping_fuel_installation_exclusion",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 8357949075.235942,
+      "expected": 8357949075.235942,
+      "name": "remaining_shipping_base",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 822030413.6735392,
+      "expected": 822030413.6735392,
+      "name": "supplementary_shipping_and_other_costs",
+      "passed": true,
+      "residual": 0.0
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 340.979994096299,
+      "expected": 340.9799940962989,
+      "name": "headline_lcoe",
+      "passed": true,
+      "residual": 5.684341886080802e-14
+    },
+    {
+      "absolute_tolerance": 1e-05,
+      "actual": 334.4646635051293,
+      "expected": 334.4646635051293,
+      "name": "comparison_lcoe",
+      "passed": true,
+      "residual": 0.0
+    }
+  ],
+  "limitations": [
+    "Arithmetic consistency does not validate physical applicability or complete installed cost.",
+    "Steam-generator cost inclusion remains unverified; no duplicate allowance added.",
+    "Full historical subsystem allowance plus explicit steam/CW pumps retains unresolved overlap.",
+    "Cooling-water rejection is cycle-only and remains site-unqualified.",
+    "Mixed monetary years remain unresolved."
+  ],
+  "source_sha256": "76e5cf2791a4acb65bbd91cef5875b365f56bcdbf30437a12062b9bf79ca63b3",
+  "status": "pass",
+  "tolerance": {
+    "cost_absolute": 1e-05,
+    "power_mw_absolute": 1e-09,
+    "relative": 1e-12
+  }
+}

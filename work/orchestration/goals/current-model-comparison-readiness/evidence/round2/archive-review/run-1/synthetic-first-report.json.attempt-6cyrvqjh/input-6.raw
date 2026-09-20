@@ -1,0 +1,1849 @@
+{
+  "status": "WI-073 draft applicability and diagnostics; raw legacy results retained",
+  "diagnostics": [
+    {
+      "id": "ihx_capacity_ok",
+      "channel": "stellarator_09__stellaris__heat_transport__equipment__ihx_capacity_ok",
+      "unit": "1",
+      "kind": "physical_screen",
+      "meaning": "Installed primary heat-exchanger area meets calculated duty",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__heat_transport__equipment_enabled",
+      "source": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "affects": [
+        "coolant",
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "cycle_interface_ok",
+      "channel": "stellarator_09__stellaris__heat_transport__equipment__cycle_interface_ok",
+      "unit": "1",
+      "kind": "physical_screen",
+      "meaning": "Salt supply meets the currently represented cycle temperature plus approach (raw historical-fit diagnostic; applicable only with matched cycle disabled)",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__heat_transport__equipment_enabled",
+      "source": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "affects": [
+        "coolant",
+        "net_power",
+        "lcoe"
+      ],
+      "active_when": [
+        {
+          "input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+          "equals": 0
+        }
+      ]
+    },
+    {
+      "id": "salt_head_ok",
+      "channel": "stellarator_09__stellaris__heat_transport__equipment__salt_head_ok",
+      "unit": "1",
+      "kind": "physical_screen",
+      "meaning": "Specified salt-pump head covers modeled straight-pipe loss",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__heat_transport__equipment_enabled",
+      "source": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "affects": [
+        "coolant",
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "pump_size_ok",
+      "channel": "stellarator_09__stellaris__heat_transport__equipment__pump_size_ok",
+      "unit": "1",
+      "kind": "source_domain",
+      "meaning": "Pump size factor lies inside the cost-correlation range",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__heat_transport__equipment_enabled",
+      "source": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "affects": [
+        "coolant",
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "pump_type_ok",
+      "channel": "stellarator_09__stellaris__heat_transport__equipment__pump_type_ok",
+      "unit": "1",
+      "kind": "source_domain",
+      "meaning": "Pump flow, head and shaft power lie inside the selected pump-type range",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__heat_transport__equipment_enabled",
+      "source": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "affects": [
+        "coolant",
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "motor_base_ok",
+      "channel": "stellarator_09__stellaris__heat_transport__equipment__motor_base_ok",
+      "unit": "1",
+      "kind": "source_domain",
+      "meaning": "Motor power lies inside the base cost-correlation range",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__heat_transport__equipment_enabled",
+      "source": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "affects": [
+        "coolant",
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "motor_factor_ok",
+      "channel": "stellarator_09__stellaris__heat_transport__equipment__motor_factor_ok",
+      "unit": "1",
+      "kind": "source_domain",
+      "meaning": "Motor power lies inside the selected motor-factor range",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__heat_transport__equipment_enabled",
+      "source": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "affects": [
+        "coolant",
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "salt_flow_regime_ok",
+      "channel": "stellarator_09__stellaris__heat_transport__equipment__salt_flow_regime_ok",
+      "unit": "1",
+      "kind": "source_domain",
+      "meaning": "Flow is outside the unresolved transitional Reynolds range",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__heat_transport__equipment_enabled",
+      "source": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "affects": [
+        "coolant",
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "salt_bulk_scale_ok",
+      "channel": "stellarator_09__stellaris__heat_transport__equipment__salt_bulk_scale_ok",
+      "unit": "1",
+      "kind": "source_domain",
+      "meaning": "Salt inventory meets the cited bulk-price scale",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__heat_transport__equipment_enabled",
+      "source": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "affects": [
+        "coolant",
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "inventory_source_volume_ok",
+      "channel": "stellarator_09__stellaris__heat_transport__equipment__inventory_source_volume_ok",
+      "unit": "1",
+      "kind": "source_domain",
+      "meaning": "Inventory volume lies within the source-volume convention",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__heat_transport__equipment_enabled",
+      "source": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "affects": [
+        "coolant",
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "pressure_qualified",
+      "channel": "stellarator_09__stellaris__heat_transport__equipment__pressure_qualified",
+      "unit": "1",
+      "kind": "unvalidated_transfer",
+      "meaning": "Pressure/material suitability is qualified",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__heat_transport__equipment_enabled",
+      "source": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "affects": [
+        "coolant",
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "helium_price_transfer_validated",
+      "channel": "stellarator_09__stellaris__heat_transport__equipment__helium_price_transfer_validated",
+      "unit": "1",
+      "kind": "unvalidated_transfer",
+      "meaning": "Helium circulator price transfer is validated",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__heat_transport__equipment_enabled",
+      "source": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "affects": [
+        "coolant",
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "salt_pump_transfer_validated",
+      "channel": "stellarator_09__stellaris__heat_transport__equipment__salt_pump_transfer_validated",
+      "unit": "1",
+      "kind": "unvalidated_transfer",
+      "meaning": "Salt-pump price transfer is validated",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__heat_transport__equipment_enabled",
+      "source": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "affects": [
+        "coolant",
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "inventory_complete",
+      "channel": "stellarator_09__stellaris__heat_transport__equipment__inventory_complete",
+      "unit": "1",
+      "kind": "unvalidated_transfer",
+      "meaning": "Represented cooling inventory is complete",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__heat_transport__equipment_enabled",
+      "source": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "affects": [
+        "coolant",
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "coil_life_margin_fpy",
+      "channel": "stellarator_09__stellaris__calendar__coil_life_margin_fpy",
+      "unit": "full-power year",
+      "kind": "lifecycle_diagnostic",
+      "meaning": "Coil full-power life minus required service; authored diagnostic, explicitly not an acceptance fence",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "models/library/analyses/mfe_lifecycle.sysml:32",
+      "affects": [
+        "lcoe",
+        "availability"
+      ]
+    },
+    {
+      "id": "breeding_adequacy__design_margin",
+      "channel": "stellarator_09__stellaris__breeding_adequacy__design_margin",
+      "unit": "1",
+      "kind": "raw_margin",
+      "meaning": "breeding_adequacy / design_margin",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "breeding_adequacy__fuel_margin",
+      "channel": "stellarator_09__stellaris__breeding_adequacy__fuel_margin",
+      "unit": "1",
+      "kind": "raw_margin",
+      "meaning": "breeding_adequacy / fuel_margin",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "breeding_adequacy__numerical_margin",
+      "channel": "stellarator_09__stellaris__breeding_adequacy__numerical_margin",
+      "unit": "1",
+      "kind": "raw_margin",
+      "meaning": "breeding_adequacy / numerical_margin",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "buildings__layout__capacity_margin_units",
+      "channel": "stellarator_09__stellaris__buildings__layout__capacity_margin_units",
+      "unit": "1",
+      "kind": "raw_margin",
+      "meaning": "buildings / layout / capacity_margin_units",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "buildings__layout__cooling_initial_ready_margin_days",
+      "channel": "stellarator_09__stellaris__buildings__layout__cooling_initial_ready_margin_days",
+      "unit": "day",
+      "kind": "raw_margin",
+      "meaning": "buildings / layout / cooling_initial_ready_margin_days",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "buildings__layout__cooling_replacement_ready_margin_days",
+      "channel": "stellarator_09__stellaris__buildings__layout__cooling_replacement_ready_margin_days",
+      "unit": "day",
+      "kind": "raw_margin",
+      "meaning": "buildings / layout / cooling_replacement_ready_margin_days",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "buildings__layout__initial_margin_days",
+      "channel": "stellarator_09__stellaris__buildings__layout__initial_margin_days",
+      "unit": "day",
+      "kind": "raw_margin",
+      "meaning": "buildings / layout / initial_margin_days",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "buildings__layout__initial_ready_margin_days",
+      "channel": "stellarator_09__stellaris__buildings__layout__initial_ready_margin_days",
+      "unit": "day",
+      "kind": "raw_margin",
+      "meaning": "buildings / layout / initial_ready_margin_days",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "buildings__layout__outage_margin_days",
+      "channel": "stellarator_09__stellaris__buildings__layout__outage_margin_days",
+      "unit": "day",
+      "kind": "raw_margin",
+      "meaning": "buildings / layout / outage_margin_days",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "buildings__layout__readiness_margin_days",
+      "channel": "stellarator_09__stellaris__buildings__layout__readiness_margin_days",
+      "unit": "day",
+      "kind": "raw_margin",
+      "meaning": "buildings / layout / readiness_margin_days",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "buildings__layout__replacement_ready_margin_days",
+      "channel": "stellarator_09__stellaris__buildings__layout__replacement_ready_margin_days",
+      "unit": "day",
+      "kind": "raw_margin",
+      "meaning": "buildings / layout / replacement_ready_margin_days",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "buildings__layout__route_margin_m",
+      "channel": "stellarator_09__stellaris__buildings__layout__route_margin_m",
+      "unit": "m",
+      "kind": "raw_margin",
+      "meaning": "buildings / layout / route_margin_m",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "divertor__divheat__q_target_margin",
+      "channel": "stellarator_09__stellaris__divertor__divheat__q_target_margin",
+      "unit": "MW/m^2",
+      "kind": "raw_margin",
+      "meaning": "divertor / divheat / q_target_margin",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "fuel_cycle__fuel__tbr_margin",
+      "channel": "stellarator_09__stellaris__fuel_cycle__fuel__tbr_margin",
+      "unit": "1",
+      "kind": "raw_margin",
+      "meaning": "fuel_cycle / fuel / tbr_margin",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "heat_transport__primary_loop__capacity_margin",
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__capacity_margin",
+      "unit": "kg/s",
+      "kind": "raw_margin",
+      "meaning": "Reference loop mass-flow capacity minus calculated per-loop mass flow",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "models/library/analyses/mfe_primary_loop.sysml",
+      "affects": []
+    },
+    {
+      "id": "heat_transport__primary_loop__p_loop_margin",
+      "channel": "stellarator_09__stellaris__heat_transport__primary_loop__p_loop_margin",
+      "unit": "Pa",
+      "kind": "raw_margin",
+      "meaning": "heat_transport / primary_loop / p_loop_margin",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "magnet__conductor_current__margin_current",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_current",
+      "unit": "A",
+      "kind": "raw_margin",
+      "meaning": "magnet / conductor_current / margin_current",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "magnet__conductor_current__margin_fraction",
+      "channel": "stellarator_09__stellaris__magnet__conductor_current__margin_fraction",
+      "unit": "1",
+      "kind": "raw_margin",
+      "meaning": "magnet / conductor_current / margin_fraction",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "magnet__wp_fit__margin_x",
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__margin_x",
+      "unit": "m",
+      "kind": "raw_margin",
+      "meaning": "magnet / wp_fit / margin_x",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "magnet__wp_fit__margin_y",
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__margin_y",
+      "unit": "m",
+      "kind": "raw_margin",
+      "meaning": "magnet / wp_fit / margin_y",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "magnet__wp_fit__minimum_margin",
+      "channel": "stellarator_09__stellaris__magnet__wp_fit__minimum_margin",
+      "unit": "m",
+      "kind": "raw_margin",
+      "meaning": "magnet / wp_fit / minimum_margin",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": []
+    },
+    {
+      "id": "turbine__cycle__margin_high",
+      "channel": "stellarator_09__stellaris__turbine__cycle__margin_high",
+      "unit": "K",
+      "kind": "raw_margin",
+      "meaning": "turbine / cycle / margin_high (raw historical-fit diagnostic; applicable only with matched cycle disabled)",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": [],
+      "active_when": [
+        {
+          "input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+          "equals": 0
+        }
+      ]
+    },
+    {
+      "id": "turbine__cycle__margin_low",
+      "channel": "stellarator_09__stellaris__turbine__cycle__margin_low",
+      "unit": "K",
+      "kind": "raw_margin",
+      "meaning": "turbine / cycle / margin_low (raw historical-fit diagnostic; applicable only with matched cycle disabled)",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "contracts/model_contract.json",
+      "affects": [],
+      "active_when": [
+        {
+          "input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+          "equals": 0
+        }
+      ]
+    },
+    {
+      "id": "heat_rejection__cooling_water__active",
+      "channel": "stellarator_09__stellaris__heat_rejection__cooling_water__active",
+      "unit": "1",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 heat_rejection / cooling_water / active",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "heat_rejection__cooling_water__condenser_water_gap_K",
+      "channel": "stellarator_09__stellaris__heat_rejection__cooling_water__condenser_water_gap_K",
+      "unit": "K",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 heat_rejection / cooling_water / condenser_water_gap_K",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__heat_rejection__cooling_water_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "heat_rejection__cooling_water__cooling_approach_ok",
+      "channel": "stellarator_09__stellaris__heat_rejection__cooling_water__cooling_approach_ok",
+      "unit": "1",
+      "kind": "physical_screen",
+      "meaning": "Raw WI-073 heat_rejection / cooling_water / cooling_approach_ok",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__heat_rejection__cooling_water_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "heat_rejection__cooling_water__denominator_kJ_kg",
+      "channel": "stellarator_09__stellaris__heat_rejection__cooling_water__denominator_kJ_kg",
+      "unit": "kJ/kg",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 heat_rejection / cooling_water / denominator_kJ_kg",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__heat_rejection__cooling_water_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "heat_rejection__cooling_water__p_cooling_pump_electric_MW",
+      "channel": "stellarator_09__stellaris__heat_rejection__cooling_water__p_cooling_pump_electric_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 heat_rejection / cooling_water / p_cooling_pump_electric_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__heat_rejection__cooling_water_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "heat_rejection__cooling_water__p_cooling_pump_shaft_MW",
+      "channel": "stellarator_09__stellaris__heat_rejection__cooling_water__p_cooling_pump_shaft_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 heat_rejection / cooling_water / p_cooling_pump_shaft_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__heat_rejection__cooling_water_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "heat_rejection__cooling_water__q_cooling_motor_loss_MW",
+      "channel": "stellarator_09__stellaris__heat_rejection__cooling_water__q_cooling_motor_loss_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 heat_rejection / cooling_water / q_cooling_motor_loss_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__heat_rejection__cooling_water_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "heat_rejection__cooling_water__q_total_rejection_MW",
+      "channel": "stellarator_09__stellaris__heat_rejection__cooling_water__q_total_rejection_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 heat_rejection / cooling_water / q_total_rejection_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__heat_rejection__cooling_water_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "heat_rejection__cooling_water__reference_scenario",
+      "channel": "stellarator_09__stellaris__heat_rejection__cooling_water__reference_scenario",
+      "unit": "1",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 heat_rejection / cooling_water / reference_scenario",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__heat_rejection__cooling_water_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "heat_rejection__cooling_water__site_qualified",
+      "channel": "stellarator_09__stellaris__heat_rejection__cooling_water__site_qualified",
+      "unit": "1",
+      "kind": "qualification",
+      "meaning": "Raw WI-073 heat_rejection / cooling_water / site_qualified",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__heat_rejection__cooling_water_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "heat_rejection__cooling_water__water_energy_residual_MW",
+      "channel": "stellarator_09__stellaris__heat_rejection__cooling_water__water_energy_residual_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 heat_rejection / cooling_water / water_energy_residual_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__heat_rejection__cooling_water_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "heat_rejection__cooling_water__water_flow_kg_s",
+      "channel": "stellarator_09__stellaris__heat_rejection__cooling_water__water_flow_kg_s",
+      "unit": "kg/s",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 heat_rejection / cooling_water / water_flow_kg_s",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__heat_rejection__cooling_water_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "heat_rejection__cooling_water__water_pump_rise_K",
+      "channel": "stellarator_09__stellaris__heat_rejection__cooling_water__water_pump_rise_K",
+      "unit": "K",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 heat_rejection / cooling_water / water_pump_rise_K",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__heat_rejection__cooling_water_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__cycle_selection__eta_selected",
+      "channel": "stellarator_09__stellaris__turbine__cycle_selection__eta_selected",
+      "unit": "1",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / cycle_selection / eta_selected",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__cycle_selection__legacy_domain_applicable",
+      "channel": "stellarator_09__stellaris__turbine__cycle_selection__legacy_domain_applicable",
+      "unit": "1",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / cycle_selection / legacy_domain_applicable",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__cycle_selection__matched_domain_applicable",
+      "channel": "stellarator_09__stellaris__turbine__cycle_selection__matched_domain_applicable",
+      "unit": "1",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / cycle_selection / matched_domain_applicable",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__active",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__active",
+      "unit": "1",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / active",
+      "interpretation": "report_only",
+      "active_input": null,
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__bleed_fraction",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__bleed_fraction",
+      "unit": "1",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / bleed_fraction",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__cycle_electric_residual_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__cycle_electric_residual_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / cycle_electric_residual_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__cycle_shaft_residual_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__cycle_shaft_residual_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / cycle_shaft_residual_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__eta_gross",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__eta_gross",
+      "unit": "1",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / eta_gross",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__h_condensate_kJ_kg",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__h_condensate_kJ_kg",
+      "unit": "kJ/kg",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / h_condensate_kJ_kg",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__h_condensate_pumped_kJ_kg",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__h_condensate_pumped_kJ_kg",
+      "unit": "kJ/kg",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / h_condensate_pumped_kJ_kg",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__h_feed_kJ_kg",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__h_feed_kJ_kg",
+      "unit": "kJ/kg",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / h_feed_kJ_kg",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__h_heater_kJ_kg",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__h_heater_kJ_kg",
+      "unit": "kJ/kg",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / h_heater_kJ_kg",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__h_hp_kJ_kg",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__h_hp_kJ_kg",
+      "unit": "kJ/kg",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / h_hp_kJ_kg",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__h_lp_kJ_kg",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__h_lp_kJ_kg",
+      "unit": "kJ/kg",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / h_lp_kJ_kg",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__h_main_kJ_kg",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__h_main_kJ_kg",
+      "unit": "kJ/kg",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / h_main_kJ_kg",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__h_reheat_kJ_kg",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__h_reheat_kJ_kg",
+      "unit": "kJ/kg",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / h_reheat_kJ_kg",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__heater_energy_residual_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__heater_energy_residual_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / heater_energy_residual_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__heater_mass_residual_kg_s",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__heater_mass_residual_kg_s",
+      "unit": "kg/s",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / heater_mass_residual_kg_s",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__installed_sg_capacity_qualified",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__installed_sg_capacity_qualified",
+      "unit": "1",
+      "kind": "qualification",
+      "meaning": "Raw WI-073 turbine / matched_cycle / installed_sg_capacity_qualified",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__lp_moisture_fraction",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__lp_moisture_fraction",
+      "unit": "1",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / lp_moisture_fraction",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__lp_quality",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__lp_quality",
+      "unit": "1",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / lp_quality",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__main_UA_MW_K",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__main_UA_MW_K",
+      "unit": "MW/K",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / main_UA_MW_K",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__main_UA_available",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__main_UA_available",
+      "unit": "1",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / main_UA_available",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__main_admission_ok",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__main_admission_ok",
+      "unit": "1",
+      "kind": "physical_screen",
+      "meaning": "Raw WI-073 turbine / matched_cycle / main_admission_ok",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__main_min_gap_K",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__main_min_gap_K",
+      "unit": "K",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / main_min_gap_K",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__mdot_bleed_kg_s",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__mdot_bleed_kg_s",
+      "unit": "kg/s",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / mdot_bleed_kg_s",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__mdot_condensate_kg_s",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__mdot_condensate_kg_s",
+      "unit": "kg/s",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / mdot_condensate_kg_s",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__mdot_condensate_pumped_kg_s",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__mdot_condensate_pumped_kg_s",
+      "unit": "kg/s",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / mdot_condensate_pumped_kg_s",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__mdot_feed_kg_s",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__mdot_feed_kg_s",
+      "unit": "kg/s",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / mdot_feed_kg_s",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__mdot_heater_kg_s",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__mdot_heater_kg_s",
+      "unit": "kg/s",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / mdot_heater_kg_s",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__mdot_hp_kg_s",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__mdot_hp_kg_s",
+      "unit": "kg/s",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / mdot_hp_kg_s",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__mdot_lp_kg_s",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__mdot_lp_kg_s",
+      "unit": "kg/s",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / mdot_lp_kg_s",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__mdot_main_kg_s",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__mdot_main_kg_s",
+      "unit": "kg/s",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / mdot_main_kg_s",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__mdot_reheat_kg_s",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__mdot_reheat_kg_s",
+      "unit": "kg/s",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / mdot_reheat_kg_s",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_condensate_MPa",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_condensate_MPa",
+      "unit": "MPa",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_condensate_MPa",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_condensate_electric_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_condensate_electric_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_condensate_electric_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_condensate_pumped_MPa",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_condensate_pumped_MPa",
+      "unit": "MPa",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_condensate_pumped_MPa",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_condensate_shaft_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_condensate_shaft_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_condensate_shaft_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_cycle_net_before_cooling_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_cycle_net_before_cooling_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_cycle_net_before_cooling_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_cycle_pumps_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_cycle_pumps_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_cycle_pumps_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_feed_MPa",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_feed_MPa",
+      "unit": "MPa",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_feed_MPa",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_feedwater_electric_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_feedwater_electric_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_feedwater_electric_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_feedwater_shaft_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_feedwater_shaft_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_feedwater_shaft_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_gross_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_gross_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_gross_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_heater_MPa",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_heater_MPa",
+      "unit": "MPa",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_heater_MPa",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_hp_MPa",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_hp_MPa",
+      "unit": "MPa",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_hp_MPa",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_hp_shaft_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_hp_shaft_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_hp_shaft_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_lp_MPa",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_lp_MPa",
+      "unit": "MPa",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_lp_MPa",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_lp_shaft_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_lp_shaft_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_lp_shaft_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_main_MPa",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_main_MPa",
+      "unit": "MPa",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_main_MPa",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__p_reheat_MPa",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__p_reheat_MPa",
+      "unit": "MPa",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / p_reheat_MPa",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__q_condenser_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__q_condenser_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / q_condenser_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__q_generator_loss_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__q_generator_loss_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / q_generator_loss_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__q_main_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__q_main_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / q_main_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__q_mechanical_loss_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__q_mechanical_loss_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / q_mechanical_loss_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__q_pump_motor_loss_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__q_pump_motor_loss_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / q_pump_motor_loss_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__q_reheat_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__q_reheat_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / q_reheat_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__q_rejection_before_cooling_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__q_rejection_before_cooling_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / q_rejection_before_cooling_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__reheat_UA_MW_K",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__reheat_UA_MW_K",
+      "unit": "MW/K",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / reheat_UA_MW_K",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__reheat_UA_available",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__reheat_UA_available",
+      "unit": "1",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / reheat_UA_available",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__reheat_admission_ok",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__reheat_admission_ok",
+      "unit": "1",
+      "kind": "physical_screen",
+      "meaning": "Raw WI-073 turbine / matched_cycle / reheat_admission_ok",
+      "interpretation": "equal_one",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__reheat_min_gap_K",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__reheat_min_gap_K",
+      "unit": "K",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / reheat_min_gap_K",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__s_condensate_kJ_kgK",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__s_condensate_kJ_kgK",
+      "unit": "kJ/(kg K)",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / s_condensate_kJ_kgK",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__s_feed_kJ_kgK",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__s_feed_kJ_kgK",
+      "unit": "kJ/(kg K)",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / s_feed_kJ_kgK",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__s_heater_kJ_kgK",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__s_heater_kJ_kgK",
+      "unit": "kJ/(kg K)",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / s_heater_kJ_kgK",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__s_hp_kJ_kgK",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__s_hp_kJ_kgK",
+      "unit": "kJ/(kg K)",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / s_hp_kJ_kgK",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__s_lp_kJ_kgK",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__s_lp_kJ_kgK",
+      "unit": "kJ/(kg K)",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / s_lp_kJ_kgK",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__s_main_kJ_kgK",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__s_main_kJ_kgK",
+      "unit": "kJ/(kg K)",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / s_main_kJ_kgK",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__s_reheat_kJ_kgK",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__s_reheat_kJ_kgK",
+      "unit": "kJ/(kg K)",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / s_reheat_kJ_kgK",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__salt_flow_total_kg_s",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__salt_flow_total_kg_s",
+      "unit": "kg/s",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / salt_flow_total_kg_s",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__salt_heat_residual_MW",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__salt_heat_residual_MW",
+      "unit": "MW",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / salt_heat_residual_MW",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__salt_main_flow_kg_s",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__salt_main_flow_kg_s",
+      "unit": "kg/s",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / salt_main_flow_kg_s",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__salt_reheat_flow_kg_s",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__salt_reheat_flow_kg_s",
+      "unit": "kg/s",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / salt_reheat_flow_kg_s",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__t_condensate_C",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__t_condensate_C",
+      "unit": "degC",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / t_condensate_C",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__t_feed_C",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__t_feed_C",
+      "unit": "degC",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / t_feed_C",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__t_heater_C",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__t_heater_C",
+      "unit": "degC",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / t_heater_C",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__t_hp_C",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__t_hp_C",
+      "unit": "degC",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / t_hp_C",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__t_lp_C",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__t_lp_C",
+      "unit": "degC",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / t_lp_C",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__t_main_C",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__t_main_C",
+      "unit": "degC",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / t_main_C",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__t_reheat_C",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__t_reheat_C",
+      "unit": "degC",
+      "kind": "cycle_diagnostic",
+      "meaning": "Raw WI-073 turbine / matched_cycle / t_reheat_C",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    },
+    {
+      "id": "turbine__matched_cycle__turbine_equipment_qualified",
+      "channel": "stellarator_09__stellaris__turbine__matched_cycle__turbine_equipment_qualified",
+      "unit": "1",
+      "kind": "qualification",
+      "meaning": "Raw WI-073 turbine / matched_cycle / turbine_equipment_qualified",
+      "interpretation": "report_only",
+      "active_input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+      "source": "models/library/analyses/mfe_matched_steam_cycle.sysml",
+      "affects": [
+        "net_power",
+        "lcoe"
+      ]
+    }
+  ],
+  "unresolved_essential_evidence": [
+    "Installed steam-generator capacity and cost inclusion are unverified.",
+    "Matched-cycle integrated source/state/heat/work verification remains a prerequisite for adoption.",
+    "Turbine equipment and cooling-water site qualification remain unresolved.",
+    "The full historical 3% allowance plus explicit pumps retains unresolved auxiliary overlap."
+  ],
+  "interpretation": "Source-domain and transfer flags are not physical limit predicates. All adverse/missing relevant evidence withholds complete engineering qualification without changing formal numerical bands.",
+  "predicate_applicability": {
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": [
+      {
+        "input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+        "equals": 0
+      }
+    ],
+    "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328": [
+      {
+        "input": "stellarator_09__stellaris__heat_rejection__cooling_water_enabled",
+        "equals": 1
+      }
+    ],
+    "stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87": [
+      {
+        "input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+        "equals": 1
+      }
+    ],
+    "stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444": [
+      {
+        "input": "stellarator_09__stellaris__turbine__matched_cycle_enabled",
+        "equals": 1
+      }
+    ]
+  }
+}

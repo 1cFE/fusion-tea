@@ -1,0 +1,327 @@
+[
+  {
+    "columns": {
+      "attempt_transitions": [
+        "transition_seq",
+        "attempt_id",
+        "candidate_id",
+        "proposal_id",
+        "attempt_number",
+        "state"
+      ],
+      "cases": [
+        "commit_order",
+        "study_id",
+        "candidate_id",
+        "proposal_id",
+        "attempt_id",
+        "state",
+        "inputs_json",
+        "evidence_digest",
+        "failure_json",
+        "assessment_json"
+      ],
+      "compatibility": [
+        "singleton",
+        "study_id",
+        "executable_fingerprint",
+        "model_contract_fingerprint",
+        "study_definition_fingerprint",
+        "input_schema_version",
+        "evidence_schema_version",
+        "strategy_identity",
+        "strategy_config"
+      ],
+      "proposals": [
+        "proposal_id",
+        "raw_json",
+        "valid",
+        "reject_reason",
+        "candidate_id"
+      ],
+      "runner_lease": [
+        "singleton",
+        "lease_id",
+        "pid",
+        "hostname",
+        "acquired_at",
+        "heartbeat_at",
+        "released"
+      ],
+      "sqlite_sequence": [
+        "name",
+        "seq"
+      ]
+    },
+    "path": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-calendar-incompatibility/native/current-comparison-fixed-point.db",
+    "rows": {
+      "attempt_transitions": 2,
+      "cases": 1,
+      "compatibility": 1,
+      "proposals": 1,
+      "runner_lease": 1,
+      "sqlite_sequence": 2
+    },
+    "sha256": "73ccda371a835ed2872589709c8722f44d2eeb14878fdf476722b859f4e7d58f"
+  },
+  {
+    "columns": {
+      "attempt_transitions": [
+        "transition_seq",
+        "attempt_id",
+        "candidate_id",
+        "proposal_id",
+        "attempt_number",
+        "state"
+      ],
+      "cases": [
+        "commit_order",
+        "study_id",
+        "candidate_id",
+        "proposal_id",
+        "attempt_id",
+        "state",
+        "inputs_json",
+        "evidence_digest",
+        "failure_json",
+        "assessment_json"
+      ],
+      "compatibility": [
+        "singleton",
+        "study_id",
+        "executable_fingerprint",
+        "model_contract_fingerprint",
+        "study_definition_fingerprint",
+        "input_schema_version",
+        "evidence_schema_version",
+        "strategy_identity",
+        "strategy_config"
+      ],
+      "proposals": [
+        "proposal_id",
+        "raw_json",
+        "valid",
+        "reject_reason",
+        "candidate_id"
+      ],
+      "runner_lease": [
+        "singleton",
+        "lease_id",
+        "pid",
+        "hostname",
+        "acquired_at",
+        "heartbeat_at",
+        "released"
+      ],
+      "sqlite_sequence": [
+        "name",
+        "seq"
+      ]
+    },
+    "path": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/native/current-comparison-fixed-point.db",
+    "rows": {
+      "attempt_transitions": 2,
+      "cases": 1,
+      "compatibility": 1,
+      "proposals": 1,
+      "runner_lease": 1,
+      "sqlite_sequence": 2
+    },
+    "sha256": "acc0efbe112d3201e83320178d6726023d777e93b61380010f36e2c507b193b3"
+  },
+  {
+    "columns": {
+      "attempt_transitions": [
+        "transition_seq",
+        "attempt_id",
+        "candidate_id",
+        "proposal_id",
+        "attempt_number",
+        "state"
+      ],
+      "cases": [
+        "commit_order",
+        "study_id",
+        "candidate_id",
+        "proposal_id",
+        "attempt_id",
+        "state",
+        "inputs_json",
+        "evidence_digest",
+        "failure_json",
+        "assessment_json"
+      ],
+      "compatibility": [
+        "singleton",
+        "study_id",
+        "executable_fingerprint",
+        "model_contract_fingerprint",
+        "study_definition_fingerprint",
+        "input_schema_version",
+        "evidence_schema_version",
+        "strategy_identity",
+        "strategy_config"
+      ],
+      "proposals": [
+        "proposal_id",
+        "raw_json",
+        "valid",
+        "reject_reason",
+        "candidate_id"
+      ],
+      "runner_lease": [
+        "singleton",
+        "lease_id",
+        "pid",
+        "hostname",
+        "acquired_at",
+        "heartbeat_at",
+        "released"
+      ],
+      "sqlite_sequence": [
+        "name",
+        "seq"
+      ]
+    },
+    "path": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/native/current-comparison-fixed-point.db",
+    "rows": {
+      "attempt_transitions": 2,
+      "cases": 1,
+      "compatibility": 1,
+      "proposals": 1,
+      "runner_lease": 1,
+      "sqlite_sequence": 2
+    },
+    "sha256": "7137d55f1a53a73be3ec5f280c6f5019b2bc198a7bd7bf4868791cde4539e765"
+  },
+  {
+    "columns": {
+      "attempt_transitions": [
+        "transition_seq",
+        "attempt_id",
+        "candidate_id",
+        "proposal_id",
+        "attempt_number",
+        "state"
+      ],
+      "cases": [
+        "commit_order",
+        "study_id",
+        "candidate_id",
+        "proposal_id",
+        "attempt_id",
+        "state",
+        "inputs_json",
+        "evidence_digest",
+        "failure_json",
+        "assessment_json"
+      ],
+      "compatibility": [
+        "singleton",
+        "study_id",
+        "executable_fingerprint",
+        "model_contract_fingerprint",
+        "study_definition_fingerprint",
+        "input_schema_version",
+        "evidence_schema_version",
+        "strategy_identity",
+        "strategy_config"
+      ],
+      "proposals": [
+        "proposal_id",
+        "raw_json",
+        "valid",
+        "reject_reason",
+        "candidate_id"
+      ],
+      "runner_lease": [
+        "singleton",
+        "lease_id",
+        "pid",
+        "hostname",
+        "acquired_at",
+        "heartbeat_at",
+        "released"
+      ],
+      "sqlite_sequence": [
+        "name",
+        "seq"
+      ]
+    },
+    "path": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/native/current-comparison-fixed-point.db",
+    "rows": {
+      "attempt_transitions": 2,
+      "cases": 1,
+      "compatibility": 1,
+      "proposals": 1,
+      "runner_lease": 1,
+      "sqlite_sequence": 2
+    },
+    "sha256": "230cf0db0a5c55bd24b4e87c48e2cb532229865567bf71d4e08d94b10c51a21f"
+  },
+  {
+    "columns": {
+      "attempt_transitions": [
+        "transition_seq",
+        "attempt_id",
+        "candidate_id",
+        "proposal_id",
+        "attempt_number",
+        "state"
+      ],
+      "cases": [
+        "commit_order",
+        "study_id",
+        "candidate_id",
+        "proposal_id",
+        "attempt_id",
+        "state",
+        "inputs_json",
+        "evidence_digest",
+        "failure_json",
+        "assessment_json"
+      ],
+      "compatibility": [
+        "singleton",
+        "study_id",
+        "executable_fingerprint",
+        "model_contract_fingerprint",
+        "study_definition_fingerprint",
+        "input_schema_version",
+        "evidence_schema_version",
+        "strategy_identity",
+        "strategy_config"
+      ],
+      "proposals": [
+        "proposal_id",
+        "raw_json",
+        "valid",
+        "reject_reason",
+        "candidate_id"
+      ],
+      "runner_lease": [
+        "singleton",
+        "lease_id",
+        "pid",
+        "hostname",
+        "acquired_at",
+        "heartbeat_at",
+        "released"
+      ],
+      "sqlite_sequence": [
+        "name",
+        "seq"
+      ]
+    },
+    "path": "work/orchestration/goals/current-model-comparison-readiness/evidence/round2/integration/_work/stellarator-baseline-point-v1.db",
+    "rows": {
+      "attempt_transitions": 2,
+      "cases": 1,
+      "compatibility": 1,
+      "proposals": 1,
+      "runner_lease": 1,
+      "sqlite_sequence": 2
+    },
+    "sha256": "245a92bd330f1ec6e26736e1d811bb30dd5466c017ac3db52d2e4a9a42415bbe"
+  }
+]

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/check_stores_and_custody.py", line 28, in <module>
+    assert row['candidate_id']==n['candidate_id'] and row['attempt_id']==n['attempt_id'] and row['state']==n['state']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

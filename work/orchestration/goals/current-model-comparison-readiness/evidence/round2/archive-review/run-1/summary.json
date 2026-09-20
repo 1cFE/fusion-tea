@@ -1,0 +1,46 @@
+{
+  "archive": "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/candidate-archives/20260920-matched-cycle/comparison-freeze.tar.gz",
+  "archive_bytes": 5692124,
+  "archive_members": 1047,
+  "archive_sha256": "34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19",
+  "archived_databases": {
+    "bytes_unchanged": true,
+    "exact_case_result_joins": 4,
+    "immutable_integrity_checks": 5
+  },
+  "base_only_files": 0,
+  "base_revision": "5fc805015609d8cdc47f00b2f6e16866af6233a2",
+  "custody": {
+    "actual_archive_artifact_joins": 12,
+    "corrected_followup": "original retained",
+    "operating_register_created": false,
+    "second_forward": "refused"
+  },
+  "disposable_tamper": "content mismatch refused",
+  "limitations": [
+    "External licensed runtime remains a prerequisite.",
+    "Full historical regression reused as archived evidence, not rerun in this finite restoration.",
+    "Scientific equipment/cost/allowance limitations and four raw engineering violations remain.",
+    "No owner adoption, publication or reveal authorization."
+  ],
+  "native_cases": {
+    "account_identities_per_case": 53,
+    "archived_result_comparison": "exact equality",
+    "channels_per_case": 1050,
+    "export_rows_per_case": 276,
+    "fresh": 2,
+    "predicates_per_case": 28,
+    "raw_violations_per_case": 4
+  },
+  "pytest": {
+    "errors": 0,
+    "failed": 0,
+    "passed": 190,
+    "skipped": 0
+  },
+  "rebuilds_identical": 2,
+  "restored_member_postcheck": "all unchanged",
+  "restored_root": "/tmp/wi073-actual-archive-qvqi6313",
+  "reviewer_helper_correction": "Initial store join incorrectly equated outer adapter attempt directory name with native store attempt ID. Archived execute_frozen.py defines them separately; corrected review verifies each identity at its own boundary. First failed reviewer receipt retained; no candidate bytes changed.",
+  "status": "pass"
+}

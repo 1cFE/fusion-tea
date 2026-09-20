@@ -2,7 +2,7 @@
 
 [OWNER] Adoption/publication of a replacement freeze, reveal and formal goal closure remain owner decisions. r2 stays byte-for-byte unchanged. Its archive SHA256 is `fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21`.
 
-[AGENT] This draft is not ready to freeze. Complete final regression and targeted grading for the implemented and independently checked WI-073 matched cycle, then obtain a coherent native integration receipt. Populate `candidate-identity.json` with exact scientific/executable/input identities, the selected rules digest, native receipt, source-file hashes, runtime identity and recorded base revision. Do not use an earlier integration receipt to certify later oracle or model changes.
+[AGENT] Archive admission requires final regression, targeted grading and a coherent native integration receipt for the independently checked WI-073 matched cycle. Populate `candidate-identity.json` with exact scientific/executable/input identities, the selected rules digest, native receipt, source-file hashes, runtime identity and recorded base revision. Do not use an earlier integration receipt to certify later oracle or model changes.
 
 [AGENT] Run the selected-forward verification and fixed Table5 control through `execute_frozen.py` into fresh attempt directories. Independently check every numeric channel and strict native predicate, reconcile accounts, export complete engineering evidence, and record applicability/role limits. Keep native stores and every refusal. A raw-default baseline is a separate diagnostic. Finish/checkpoint every SQLite store before selecting archive members; database sidecars block archive admission.
 

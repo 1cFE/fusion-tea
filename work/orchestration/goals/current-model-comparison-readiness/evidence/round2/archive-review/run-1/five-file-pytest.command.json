@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "/home/reid/1cfe/fusion-tea/.venv/bin/python3",
+    "-m",
+    "pytest",
+    "tests/test_compare_fixed_point.py",
+    "tests/test_current_comparison_candidate.py",
+    "tests/test_candidate_report_custody.py",
+    "tests/test_dependency_provenance.py",
+    "tests/study/test_read_set_coverage.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/run-1/pytest-temp",
+    "--junitxml",
+    "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/run-1/five-file.xml"
+  ],
+  "cwd": "/tmp/wi073-actual-archive-qvqi6313",
+  "exit_code": 0,
+  "expected_exit": 0,
+  "log_sha256": "d9bff0a696ceb304627992981edd4f00e94caa2ed124624fce504c6cf2abcb66"
+}

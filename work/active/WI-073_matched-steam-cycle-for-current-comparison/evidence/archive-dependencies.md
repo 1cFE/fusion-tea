@@ -60,3 +60,7 @@ The read-set fixtures resolve `exploration/stellarator_e2e/pkg/stellarator_tea`.
 5. Keep the licensed interpreter, sealed wheels and complete recorded clean teax runtime external. Record their identities and restore through the documented environment procedure. Do not archive credentials, `.venv`, `.codex-test`, import symlinks or external checkouts.
 
 Only the quarantine protocol is listed under `knowledge/holdout/`. No held-out papers, barred sources or excluded demo concept were opened or admitted.
+
+## Coordinator refresh — 2026-09-20
+
+[AGENT] The same558-path dependency snapshot now records current bytes at coding checkpoint `5fc805015609d8cdc47f00b2f6e16866af6233a2`. The final candidate identity and native integration receipt exist. Selected-forward and Table5 requests, native stores, independent checks, account checks and exports exist under candidate `evidence/final-cases/`; bounded supplied-cycle and incompatible-calendar probes are separately retained. The candidate identity names534 source dependencies. Final archive membership additionally carries its explicit identity/source-file closure and validation receipts; it is the actual admission authority. No actual-archive reproduction is claimed by this snapshot or its refresh.

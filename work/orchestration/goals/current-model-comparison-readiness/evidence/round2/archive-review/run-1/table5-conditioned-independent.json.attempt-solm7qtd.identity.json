@@ -1,0 +1,8 @@
+{
+  "files": {
+    "input-0.raw": "76e5cf2791a4acb65bbd91cef5875b365f56bcdbf30437a12062b9bf79ca63b3",
+    "produced.raw.json": "bd6038d03d64c1dfaec5a459847306c52a87d0a2f0c1495aaa76c1a53c4cf487",
+    "receipt.json": "c47add4fa35aed99b2af7a74c9563ba6a55e3416c8fd78ee04db68611e864b15"
+  },
+  "result_directory": "table5-conditioned-independent.json.attempt-solm7qtd"
+}

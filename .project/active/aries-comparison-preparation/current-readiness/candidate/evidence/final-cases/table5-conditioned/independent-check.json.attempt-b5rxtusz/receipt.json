@@ -1,0 +1,14 @@
+{
+  "attempt_directory": "independent-check.json.attempt-b5rxtusz",
+  "inputs": [
+    {
+      "source": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/native-result.json",
+      "sha256": "bc6feb19c87b777b5d0659eff0ead8f563beb39f145707f94d111c2b13f87bb4",
+      "retained": "input-0.raw"
+    }
+  ],
+  "producer_started": true,
+  "output": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/independent-check.json",
+  "output_sha256": "f5840535df94557eceb448006d637a0f16d2e82e90a5b20950e0e9496073528f",
+  "state": "completed"
+}

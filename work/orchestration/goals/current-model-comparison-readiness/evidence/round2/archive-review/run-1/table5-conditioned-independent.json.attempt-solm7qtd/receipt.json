@@ -1,0 +1,14 @@
+{
+  "attempt_directory": "table5-conditioned-independent.json.attempt-solm7qtd",
+  "inputs": [
+    {
+      "source": "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/run-1/table5-conditioned/native-result.json",
+      "sha256": "76e5cf2791a4acb65bbd91cef5875b365f56bcdbf30437a12062b9bf79ca63b3",
+      "retained": "input-0.raw"
+    }
+  ],
+  "producer_started": true,
+  "output": "/home/reid/1cfe/fusion-tea/work/orchestration/goals/current-model-comparison-readiness/evidence/round2/archive-review/run-1/table5-conditioned-independent.json",
+  "output_sha256": "bd6038d03d64c1dfaec5a459847306c52a87d0a2f0c1495aaa76c1a53c4cf487",
+  "state": "completed"
+}

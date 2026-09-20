@@ -1,0 +1,19 @@
+{
+  "attempt_directory": "export.json.attempt-3go2k8sh",
+  "inputs": [
+    {
+      "source": ".project/active/aries-comparison-preparation/current-readiness/candidate/manifest.json",
+      "sha256": "d253a273a944611ee5b49f5994029b061b26e6c753c7fd6c7d3373a0d702373e",
+      "retained": "input-0.raw"
+    },
+    {
+      "source": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/native-result.json",
+      "sha256": "d92755fbf92956d7ec211622dea6d92cb30de5f95ecbc36937555dada70e742f",
+      "retained": "input-1.raw"
+    }
+  ],
+  "producer_started": true,
+  "output": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/export.json",
+  "output_sha256": "cc64565d7d1995265f2e44df3890a45030b2758fdd5ec265e0aaa059d95712dd",
+  "state": "completed"
+}

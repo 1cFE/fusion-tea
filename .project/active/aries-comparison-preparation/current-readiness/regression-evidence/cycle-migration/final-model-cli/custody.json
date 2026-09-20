@@ -1,0 +1,40 @@
+{
+  "meaning": "Final model run exact historical CLI refusal and all four argument refusals; baseline success remains strict xfail after guards",
+  "files": [
+    {
+      "source": "/tmp/pytest-of-reid/pytest-13057/wi0510/acceptance/cli-checks.json",
+      "retained": ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/cycle-migration/final-model-cli/cli-checks.json",
+      "sha256": "2535204eab8d73263dfb9403bd43500952f4a05a9a3ad20c43fd60ca4e1ddb67"
+    },
+    {
+      "source": "/tmp/pytest-of-reid/pytest-13057/wi0510/acceptance/cli_checks.log",
+      "retained": ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/cycle-migration/final-model-cli/cli_checks.log",
+      "sha256": "7a56e595d36aa89329921dca36b55bc5b665109823ab1caffbb484a2402b088a"
+    },
+    {
+      "source": "/tmp/pytest-of-reid/pytest-13057/wi0510/acceptance/cli-0.log",
+      "retained": ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/cycle-migration/final-model-cli/cli-0.log",
+      "sha256": "4ca8f831aea60507139f60330f2f8e6080bf245759de4d28016ec82347efb722"
+    },
+    {
+      "source": "/tmp/pytest-of-reid/pytest-13057/wi0510/acceptance/cli-1.log",
+      "retained": ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/cycle-migration/final-model-cli/cli-1.log",
+      "sha256": "4e744c8edf3377ccd9a18b30e2a9f5c864af60d4cc35b9db7aa9adfc7025cfe5"
+    },
+    {
+      "source": "/tmp/pytest-of-reid/pytest-13057/wi0510/acceptance/cli-2.log",
+      "retained": ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/cycle-migration/final-model-cli/cli-2.log",
+      "sha256": "6d69b92437b79c688192879c43598444e993f9ee6157269e850deac192b3c0a8"
+    },
+    {
+      "source": "/tmp/pytest-of-reid/pytest-13057/wi0510/acceptance/cli-3.log",
+      "retained": ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/cycle-migration/final-model-cli/cli-3.log",
+      "sha256": "07f7ace2247b14a8b89c2c6f4c897880ec5c5cf4878a73679bcfcf7b3510c739"
+    },
+    {
+      "source": "/tmp/pytest-of-reid/pytest-13057/wi0510/acceptance/cli-4.log",
+      "retained": ".project/active/aries-comparison-preparation/current-readiness/regression-evidence/cycle-migration/final-model-cli/cli-4.log",
+      "sha256": "1f458ee5e1e9445831c23eda61f180cbd8b3a9ccfd9da2b235482005b5c2a16b"
+    }
+  ]
+}

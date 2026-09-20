@@ -1,0 +1,26 @@
+[
+  {
+    "path": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-cycle-diagnostic/native/current-comparison-fixed-point.db",
+    "sha256": "acc0efbe112d3201e83320178d6726023d777e93b61380010f36e2c507b193b3",
+    "integrity": "ok",
+    "unchanged": true
+  },
+  {
+    "path": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/table5-conditioned/native/current-comparison-fixed-point.db",
+    "sha256": "230cf0db0a5c55bd24b4e87c48e2cb532229865567bf71d4e08d94b10c51a21f",
+    "integrity": "ok",
+    "unchanged": true
+  },
+  {
+    "path": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/selected-forward/native/current-comparison-fixed-point.db",
+    "sha256": "7137d55f1a53a73be3ec5f280c6f5019b2bc198a7bd7bf4868791cde4539e765",
+    "integrity": "ok",
+    "unchanged": true
+  },
+  {
+    "path": ".project/active/aries-comparison-preparation/current-readiness/candidate/evidence/final-cases/held-calendar-incompatibility/native/current-comparison-fixed-point.db",
+    "sha256": "73ccda371a835ed2872589709c8722f44d2eeb14878fdf476722b859f4e7d58f",
+    "integrity": "ok",
+    "unchanged": true
+  }
+]
