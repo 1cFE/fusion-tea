@@ -1,0 +1,15 @@
+[integrate] BLOCKER
+  pass         repo     pinned-packages: tests/test_dependency_provenance.py passed
+  pass         request  teax-revision: teax is at 8d877460ac4f6f264561d916e40c1708adb13397, matching the expected 8d877460ac4f6f264561d916e40c1708adb13397
+  pass         request  regeneration: regeneration through stellarator_tea rewrote no byte outside handwritten/
+  pass         request  handwritten-preservation: 148 file(s) under handwritten/ are byte-identical
+  pass         request  census-snapshot: the snapshot recaptures byte-identically and 704 entry points re-derive to the census as bound
+  did not run  repo     model-family-spine: tests/models/test_model_family_spines.py could not judge: pytest exited 1 with 6 error(s) and 1 failure(s)
+
+  not reached  request  manifest: the sequence stopped before this gate
+  not reached  request  preflight: the sequence stopped before this gate
+  not reached  request  verification: the sequence stopped before this gate
+  not reached  request  lineage: the sequence stopped before this gate
+[integrate] could_not_run at model-family-spine (tests/models/test_model_family_spines.py, env-missing): tests/models/test_model_family_spines.py could not judge: pytest exited 1 with 6 error(s) and 1 failure(s)
+
+             evidence: .project/active/model-evaluation-read-coverage/integration-final/junit/model-family-spine.xml

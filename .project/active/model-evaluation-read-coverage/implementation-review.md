@@ -44,3 +44,13 @@ The reviewer loaded `stock-probe-8/read_coverage.json`, independently recomputed
 The `validation-summary.md` correction section faithfully distinguishes successive test runs and final probe 8 from earlier failed and superseded attempts. The observer's dependency digest identifies declarations and observed bytes separately from the executable seal and manifest pin. Broad runtime declarations, first-observation bytecode identities, TOCTOU windows and post-observer execution retain their stated limits. No unresolved code blocker remains within that bounded contract.
 
 **Release:** coordinator may commit the corrected tooling and run the full seam at that exact checkpoint. Final goal acceptance still requires that committed seam and refreshed dependent adapter evidence. Earlier tool identities and receipts must remain attributed to their original attempts.
+
+## Current regression fixture correction — 2026-09-20
+
+**PASS for the narrow correction and a fresh committed seam attempt.** The full seam at `02925b74` failed before reaching read observation: retained `integration-final/junit/model-family-spine.xml` records one failure and six fixture errors, each with the old normative REBCO seed hash rejection. This is not evidence that the later gates passed.
+
+The reviewer inspected the corrective diff in `tests/models/current_mfe_regressions.py` and `work/analysis/model-evaluation-diagnostics/change.md`, the WI-080 wrapper and the native WI-040 recipe. The helper now returns that same native recipe with the diagnostic repair's explicit seed manifest. It does not weaken inventory equality, reject-symlink/hash checks, fresh-destination checks or post-generation seed preservation. Returning the native recipe also ensures its generation function reads the selected seed manifest; setting an attribute on the old wrapper alone would not change the recipe constructed inside its wrapper call.
+
+Independent read-only Python checks found 52 old and 52 corrected seed entries, exactly the two changes recorded in `seed-delta.json`, and all 52 corrected hashes matching their current generated bodies. The affected entries are the reviewed REBCO diagnostic body and primary-loop domain guard. The imported helper selects the retained WI-040 recipe, exposes the expected inventory/generation functions and points to the diagnostic seed file. No historical seed receipt, test assertion or scientific body changes in this narrow diff.
+
+The failed seam is retained separately. Approval here is for the fixture correction, not retroactive acceptance of that failed attempt. Commit the correction and rerun the full seam into a fresh evidence directory. Final integration acceptance remains pending its result.

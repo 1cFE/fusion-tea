@@ -426,10 +426,11 @@ def current_generation():
     spec = importlib.util.spec_from_file_location('wi038_current_generation', RECEIPT_EVIDENCE / 'regenerate.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    # The current WI-080 wrapper owns the seed receipt; historical tools also use inventory().
-    module.inventory = module.recipe().inventory
-    module.SEEDS = RECEIPT_EVIDENCE / "candidate-seeds.json"
-    return module
+    # Use the retained native recipe with the reviewed diagnostic-only seed delta.
+    # Historical WI-080 receipts stay unchanged.
+    recipe = module.recipe()
+    recipe.SEEDS = ROOT / 'work/analysis/model-evaluation-diagnostics/candidate-seeds.json'
+    return recipe
 
 
 def operating_acceptance(destination, historical):
