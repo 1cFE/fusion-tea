@@ -66,6 +66,14 @@ The subsequent [facilities study report](../../../exploration/stellarator_e2e/st
 
 The earlier [winding-pack fit record](../../../exploration/stellarator_e2e/studies/20260915-winding-pack-casing-fit/record.md) was considered but not selected. It contains 116 unique cases: 45 pass the old eighteen screens and twelve also pass the new fit screen. Its cheapest retained pass relies on an increased current-density assumption and extrapolated 30 T envelope, with absolute current margin still unknown. The joint-sizing study resolves the current/fit coupling more directly and avoids using those historical passes as the main illustration.
 
+## Study runner capabilities
+
+The current study runner evaluates grids and prepared candidate lists. An external optimizer can call the same prepared evaluator, but adaptive optimization within the native study runner requires further implementation. The article's examples demonstrate retained candidate evaluations, not a native adaptive optimization run.
+
+## Held inputs for the radius–current map
+
+For the illustrated slice, minor radius is held at about 1.491 m, peak ion temperature at 14.036 keV, and peak electron density at 4.892 × 10²⁰ m⁻³. The scenario also holds eighteen representative helium loops, 0.65 m radial allocation and transverse cavity, and a 1.01 conductor-inventory multiplier. The [study record](../../../exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/record.md) preserves the full-precision inputs and other held assumptions. The map's feasibility and cost results are conditional on those settings.
+
 ## Reproduction and verification scope
 
 Run `.codex-test/run python docs/write-up/sysml-codegen-assets/extract_study_evidence.py` from the repository root. It regenerates the two CSV files and metadata JSON from the retained source artifacts. Assertions verify candidate joins, 256 unique map coordinates, the 44/210/2 classifications, twenty native predicates per map case, unchanged explicit fixed inputs, native LCOE equality, and each magnet case's native LCOE and field values. The metadata includes SHA256 hashes of every JSON/CSV read by extraction. This is presentation-data verification; it does not repeat the original model validation or confer physical qualification.

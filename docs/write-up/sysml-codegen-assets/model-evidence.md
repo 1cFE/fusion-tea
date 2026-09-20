@@ -143,6 +143,20 @@ part :>> blanket : 'Transport Calculated Blanket' {
 
 These are exact opening declaration lines from three separate contexts, not one standalone code block. The specialization owns a `breeding` calculation using `'Blanket Tritium Breeding'` at `mfe_subsystems.sysml:113`, replacing a held breeding-ratio interface with a computed response. This demonstrates selection of a more specific component model. It does not establish interchangeable blanket materials or a runtime switch between helium and another primary coolant.
 
+## Implementation preservation
+
+Both translated and custom Python implementations live under `handwritten/` in the generated package. Preservation options can retain an existing body when its interface is unchanged, even if the SysML equation has changed. Generating a fresh package updates translated equations; retaining implementations requires checking them against the revised model.
+
+For a calculation whose expression cannot be translated, codegen can generate the function interface with a placeholder body that raises `NotImplementedError` until the author supplies the method. The declared inputs and outputs place that implementation in the plant's calculation network; broken plant wiring still blocks generation.
+
+## Input-generation details
+
+When a calculation reads an externally supplied attribute, such as the plasma radius, codegen exposes the supplying attribute as a public input. Several calculations that read that attribute share the same input. A value supplied by a calculation remains connected to its producing output.
+
+Authored values provide initial settings. A literal bound directly to a calculation input is also exposed with that literal as its initial value. A calculation input left unbound becomes a public input with its supported modeled default, or a `null` placeholder that must be filled before evaluation. A missing or ambiguous reference stops generation; it does not become a free parameter.
+
+Inputs are grouped into files, normally by their declaring model source. Keys within each file are flat and preserve component paths rather than reproducing the nested component tree. Schemas describe types and defaults. File-based runs load JSON, while studies can supply typed values in memory.
+
 ## Source SHA-256
 
 | File | SHA-256 |
