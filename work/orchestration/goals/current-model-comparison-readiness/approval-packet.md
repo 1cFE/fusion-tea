@@ -1,6 +1,6 @@
 # Replacement comparison approval packet
 
-[AGENT] **Recommendation: adopt this exact candidate for the agreed comparison, carrying the limitations below. Technical preparation and independent actual-archive reproduction are complete.** Adoption, publication, reveal authorization and formal goal closure remain owner decisions.
+[AGENT] **Recommendation: adopt this exact candidate for the agreed comparison, carrying the limitations below. Technical preparation and independent actual-archive reproduction are complete.** [OWNER] Adoption/publication and formal goal closure were authorized and completed on 2026-09-20; reveal remains separately owner-held. See [publication record](../../../../.project/active/aries-comparison-preparation/replacement-r3/publication.md).
 
 Candidate archive: `.project/active/aries-comparison-preparation/current-readiness/candidate-archives/20260920-matched-cycle/comparison-freeze.tar.gz`. SHA256: `34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19`. It contains 1,047 files and is 5,692,124 bytes. Two independent builder invocations produced identical bytes; see `evidence/round2/archive-build-custody.json`. Adjacent `freeze-record.json` records the index hash and full candidate identity.
 
@@ -42,10 +42,10 @@ Two reviewer rebuilds match the archive byte-for-byte. A corrupted copy is rejec
 
 The archived README and validation summary correctly describe archive review as an external gate. This external packet and review discharge it without modifying the reviewed archive. The exact predecessor r2 SHA256 remains `fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21`.
 
-## Owner decisions remaining
+## Owner decision and remaining gate
 
-1. Adopt and publish the exact independently reproduced candidate archive as the replacement for r2, with its stated limitations and unchanged comparison contract.
-2. Separately authorize ARIES reveal under `knowledge/holdout/aries-cs/PROTOCOL.md`. The sole operating first-result register will be `.project/active/aries-comparison-preparation/current-readiness/revealed-results/`; it does not exist before reveal. An adverse first result remains immutable, and conditioned/corrected reports link back to it.
-3. Decide formal goal closure. Technical readiness does not exercise this authority.
+[OWNER] The exact candidate above is adopted and published as r3; the goal is formally closed on 2026-09-20. The external publication record preserves the owner's exact instruction and verifies byte equality. All stated limitations and comparison criteria remain unchanged.
 
-No merge or push is part of this preparation.
+Separate owner authorization of ARIES reveal under `knowledge/holdout/aries-cs/PROTOCOL.md` remains required. The sole operating first-result register will be `.project/active/aries-comparison-preparation/current-readiness/revealed-results/`; it remains absent. An adverse first result remains immutable, and conditioned/corrected reports link back to it.
+
+No merge or push is part of this publication.

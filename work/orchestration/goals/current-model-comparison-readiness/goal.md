@@ -2,7 +2,7 @@
 
 ## Status
 
-grounded — 2026-09-19. [OWNER] The owner supplied the slug, question, evidence, authorization and gates and instructed autonomous grounding and execution.
+closed — 2026-09-20. [OWNER] The owner adopted and authorized publication of the exact independently reproduced candidate and explicitly closed this goal. ARIES reveal remains separately owner-held. See `approval-packet.md` and the appended closure entry in `trail.md`.
 
 ## Question
 

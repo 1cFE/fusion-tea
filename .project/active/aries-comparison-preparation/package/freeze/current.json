@@ -1,0 +1,8 @@
+{
+  "revision": "r3",
+  "archive": ".project/active/aries-comparison-preparation/package/freeze/r3/comparison-freeze.tar.gz",
+  "archive_sha256": "34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19",
+  "adoption_record": ".project/active/aries-comparison-preparation/replacement-r3/completion.json",
+  "instructions": ".project/active/aries-comparison-preparation/replacement-r3/publication.md",
+  "reveal_authorized": false
+}
