@@ -1,6 +1,6 @@
 # Preserve model design choices — current technical answer
 
-[AGENT] **The expanded technical goal is met.** Round 2 repairs the equipment-price and capability gaps the owner made mandatory after accepting Round 1. Independent [final review](evidence/round2/final-review.md) is PASS. Formal goal closure remains owner-held; the goal stays grounded.
+[AGENT] **The expanded technical goal is met.** Round 2 repairs the equipment-price and capability gaps the owner made mandatory after accepting Round 1. Independent [final review](evidence/round2/final-review.md) is PASS. [OWNER] Accepted and formally closed on 2026-09-20: “ok accepted, please close”. All stated modeling limits and adverse engineering results remain attached to the accepted result.
 
 ## What changed
 

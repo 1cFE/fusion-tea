@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — [OWNER] Execution of the deposited prompt authorizes grounding with this slug, 2026-09-20.
+`closed` — 2026-09-20. [OWNER-VERBATIM] “ok accepted, please close”. The owner accepted the independently reviewed expanded result and authorized formal closure. See the closure entry in trail.md.
 
 ## Question
 
@@ -53,7 +53,7 @@ Can the stellarator model and shared dependencies evaluate and cost supplied des
 
 ## Technical result — 2026-09-20
 
-[AGENT] Round 2 meets the expanded technical completion criteria at implementation checkpoint fce788412fa53384688642dbc7deee9ee66431f2. Required residual procurement/capability repairs and propagated-demand checks pass independent review and all ten native integration gates. See answer.md and evidence/round2/final-review.md. Round 1 remains accepted for its scope. Formal closure remains owner-held; status stays grounded.
+[AGENT] Round 2 meets the expanded technical completion criteria at implementation checkpoint fce788412fa53384688642dbc7deee9ee66431f2. Required residual procurement/capability repairs and propagated-demand checks pass independent review and all ten native integration gates. See answer.md and evidence/round2/final-review.md. Round 1 remains accepted for its scope. The owner accepted this result and formally closed the goal on 2026-09-20.
 
 ## Amendments
 
