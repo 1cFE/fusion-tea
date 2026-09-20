@@ -1,0 +1,387 @@
+[
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "q_source_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::q_source_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::q_source"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "T_in_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::T_in_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::loop_T_in"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "dT_blanket_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::dT_blanket_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::loop_dT_blanket"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "cp_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::cp_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::loop_cp"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "gamma_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::gamma_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::loop_gamma"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "p_loop_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::p_loop_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::loop_p"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "n_loops_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::n_loops_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::n_loops"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "mdot_loop_ref_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::mdot_loop_ref_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::mdot_loop_ref"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "mdot_loop_rated_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::mdot_loop_rated_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::mdot_loop_rated"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "dp_loop_ref_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::dp_loop_ref_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::dp_loop_ref"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "f_loss_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::f_loss_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::f_loss"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "eta_is_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::eta_is_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::eta_is"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "eta_drive_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::eta_drive_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::eta_drive"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "loop_live_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::loop_live_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::loop_live"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "p_pump_direct_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::p_pump_direct_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::p_pump_direct"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::primary_loop",
+    "input": "eta_p_direct_in",
+    "formal": "mfe_primary_loop::'Primary Coolant Loop'::eta_p_direct_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::eta_p_direct"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "helium_design_shaft_MW_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::helium_design_shaft_MW_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_helium_design_shaft_MW"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "helium_design_suction_Pa_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::helium_design_suction_Pa_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_helium_design_suction_Pa"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "salt_design_flow_kg_s_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::salt_design_flow_kg_s_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_salt_design_flow_kg_s"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "salt_design_head_m_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::salt_design_head_m_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_salt_design_head_m"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "salt_design_eta_p_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::salt_design_eta_p_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_salt_design_eta_p"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "salt_design_eta_motor_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::salt_design_eta_motor_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_salt_design_eta_motor"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "helium_purchased_mass_kg_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::helium_purchased_mass_kg_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_helium_purchased_mass_kg"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "salt_purchased_mass_kg_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::salt_purchased_mass_kg_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_salt_purchased_mass_kg"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "enabled_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::enabled_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_enabled"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "n_mod_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::n_mod_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::n_mod"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "n_loops_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::n_loops_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::n_loops"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "mdot_loop_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::mdot_loop_in",
+    "expression_type": "FeatureChainExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment::mdot_loop_in::(anonymous FeatureChainExpression)"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "dp_loop_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::dp_loop_in",
+    "expression_type": "FeatureChainExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment::dp_loop_in::(anonymous FeatureChainExpression)"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "helium_suction_K_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::helium_suction_K_in",
+    "expression_type": "FeatureChainExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment::helium_suction_K_in::(anonymous FeatureChainExpression)"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "helium_discharge_Pa_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::helium_discharge_Pa_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::loop_p"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "helium_hot_K_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::helium_hot_K_in",
+    "expression_type": "FeatureChainExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment::helium_hot_K_in::(anonymous FeatureChainExpression)"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "helium_cp_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::helium_cp_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::loop_cp"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "helium_gamma_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::helium_gamma_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::loop_gamma"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "primary_shaft_MW_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::primary_shaft_MW_in",
+    "expression_type": "FeatureChainExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment::primary_shaft_MW_in::(anonymous FeatureChainExpression)"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "primary_electric_MW_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::primary_electric_MW_in",
+    "expression_type": "FeatureChainExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment::primary_electric_MW_in::(anonymous FeatureChainExpression)"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "q_ihx_MW_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::q_ihx_MW_in",
+    "expression_type": "FeatureChainExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment::q_ihx_MW_in::(anonymous FeatureChainExpression)"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "layout_multiplier_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::layout_multiplier_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_layout_multiplier"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "tube_wall_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::tube_wall_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_tube_wall"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "shell_wall_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::shell_wall_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_shell_wall"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "accessory_mass_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::accessory_mass_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_accessory_mass"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "secondary_head_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::secondary_head_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_secondary_head"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "eta_p_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::eta_p_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_eta_p"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "eta_motor_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::eta_motor_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_eta_motor"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "machine_life_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::machine_life_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_machine_life"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "bundle_life_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::bundle_life_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_bundle_life"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "years_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::years_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::cooling_years"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "discount_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::discount_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::cooling_discount"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "makeup_fraction_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::makeup_fraction_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_makeup_fraction"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "inventory_reserve_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::inventory_reserve_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_inventory_reserve"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "removal_multiplier_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::removal_multiplier_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_removal_multiplier"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "saltprice_source_choice_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::saltprice_source_choice_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_saltprice_source_choice"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "costscale_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::costscale_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_costscale"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "stainless_fabrication_usd2017_per_kg_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::stainless_fabrication_usd2017_per_kg_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::equipment_stainless_fabrication_usd2017_per_kg"
+  },
+  {
+    "usage": "mfe_plant_systems::'Primary Heat Transport'::equipment",
+    "input": "sourcefitargument_C_in",
+    "formal": "mfe_cooling_equipment::'Cooling Equipment'::sourcefitargument_C_in",
+    "expression_type": "FeatureReferenceExpression",
+    "resolved_property": "mfe_plant_systems::'Primary Heat Transport'::cooling_cycle_argument"
+  }
+]

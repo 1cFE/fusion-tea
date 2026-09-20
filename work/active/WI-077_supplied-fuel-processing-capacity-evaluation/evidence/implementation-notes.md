@@ -1,0 +1,5 @@
+# WI-077 implementation notes
+
+[AGENT] Replaced automatic margin selection with supplied per-module processing_capacity_kg_s, propagated into the processing component and price. Added plant demand/capacity/margin and active-evaluation flag; the stellarator assertion checks that flag and signed margin. Source-price applicability remains separate. The explicit 0.00015 kg/s default is the reviewed engineering assumption, not a guarantee of adequacy.
+
+Native source, new normative seed, independent current oracle, price tests and active parameter mappings have been changed. Historical WI-070 seeds and evidence are unchanged. The independent Decimal/source/unit/domain suite passes 172 cases. Native generated acceptance awaits the combined package migration; test_supplied_design_native.py carries the public-input cases. Package generation has not yet succeeded because the first combined attempt exposed a facility formal-order issue; no existing live package was replaced by that failed attempt.

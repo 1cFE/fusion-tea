@@ -9,6 +9,15 @@ ROOT = Path(__file__).resolve().parents[2]
 DOMAIN_EVIDENCE = ROOT / 'work/completed/20260914_WI-038_conductor-grade-lever/evidence'
 STRUCTURE_EVIDENCE = ROOT / 'work/active/WI-057_stellaris-structural-decomposition/evidence/merge_onto_demo_maturation'
 P = 'stellarator_09__stellaris__'
+MR7_EVIDENCE = ROOT / 'work/active/WI-075_supplied-magnet-design-evaluation/evidence'
+MR7_DELTA = json.loads((MR7_EVIDENCE / 'interface-delta.json').read_text())
+MR7_PARAMETERS = frozenset(MR7_DELTA['added_parameters'])
+MR7_RETIRED_PARAMETERS = frozenset(MR7_DELTA['retired_parameters'])
+MR7_CHANNELS = frozenset(MR7_DELTA['added_numeric_channels'])
+MR7_RETIRED_CHANNELS = frozenset(MR7_DELTA['retired_numeric_channels'])
+MR7_PREDICATES = frozenset(MR7_DELTA['added_predicates'])
+MR7_LOCALS = frozenset(MR7_DELTA['added_local_bindings'])
+MR7_RETIRED_LOCALS = frozenset(MR7_DELTA['retired_local_names'])
 CYCLE_PARTITION_PATH = ROOT / '.project/active/aries-comparison-preparation/current-readiness/regression-evidence/cycle-migration/contract-delta.json'
 CYCLE_PARTITION = json.loads(CYCLE_PARTITION_PATH.read_text())
 WI073_PARAMETERS = set(CYCLE_PARTITION['added_parameters'])
@@ -56,10 +65,11 @@ WI038_CHANNELS = {P + 'magnet__conductor_grade__' + name for name in (
 # forms coincide under uniform scaling). The replays therefore evaluate R14 with that reference, which keeps
 # every frozen R14 value the exact expectation for the rest of the plant; the bore form's own response is
 # proven by tests/models/test_winding_length_bore.py and the WI-058 item evidence, never by these replays.
+MR7_RADIUS_CASING = 63000.0 * (12.7 / 14.0) ** 0.78  # Explicit optional legacy construction for frozen R14 replay.
 K_COIL_RETIRED = 1.968503937007874  # the retired WI-036 k_coil (25.0 / 12.7), the float the old oracle carried
 WI058_PARAMETERS = {P + 'magnet__coil__c_coil_ref'}
 WI058_RETIRED = {P + 'magnet__coil__k_coil'}
-RECEIPT_EVIDENCE = ROOT / 'work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence'
+RECEIPT_EVIDENCE = ROOT / 'work/active/WI-075_supplied-magnet-design-evaluation/integration'
 # WI-069 reviewed ABI: thirteen controls replace the held I_total input.
 WI069_PARAMETERS = {P + 'fuel_cycle__' + name for name in (
     'held_inventory', 'inventory_enabled', 'm_D_kg', 'reserve_fraction',
@@ -67,8 +77,8 @@ WI069_PARAMETERS = {P + 'fuel_cycle__' + name for name in (
     'tau_buffer', 'tau_extract', 'tau_feed', 'tau_process', 'tau_reserve')}
 WI069_RETIRED = {P + 'fuel_cycle__I_total'}
 WI068_PARAMETERS = {P + 'buildings__' + name for name in ('facilities_enabled', 'facilities_cost_mode', 'facilities_capacity_mode', 'sector_count', 'sector_bays', 'sector_service_teams', 'exterior_allowance', 'sector_route_clearance', 'sector_headroom', 'component_width', 'component_height', 'component_length', 'component_handling_margin', 'component_material_fraction', 'divertor_packages_per_sector', 'waste_package_yield', 'component_remove_days', 'component_install_days', 'sector_clean_days', 'sector_test_days', 'sector_split_days', 'sector_join_days', 'sector_transport_days', 'cooldown_days', 'recommission_days', 'initial_receipt_lead_days', 'component_receipt_lead_days', 'component_prepare_days', 'component_process_days', 'component_hold_days', 'clean_positions', 'dirty_buffer_positions', 'dirty_store_positions', 'cooling_initial_receipt_lead_days', 'cooling_receipt_lead_days', 'cooling_hold_days', 'cooling_prepare_stations', 'cooling_machine_stations', 'cooling_bundle_stations', 'cooling_prepare_machine_days', 'cooling_prepare_bundle_days', 'cooling_machine_process_days', 'cooling_bundle_process_days', 'cooling_field_cycle_days', 'cooling_internal_move_days', 'cooling_clean_helium_positions', 'cooling_clean_salt_positions', 'cooling_clean_bundle_positions', 'cooling_dirty_helium_positions', 'cooling_dirty_salt_positions', 'cooling_dirty_bundle_positions', 'helium_package_length', 'helium_package_width', 'helium_package_height', 'salt_package_length', 'salt_package_width', 'salt_package_height', 'hx_end_allowance', 'cooling_package_margin', 'cooling_aisle_width', 'cooling_cross_width', 'cooling_headroom', 'cooling_airlock_length', 'nuclear_wall', 'nuclear_floor', 'nuclear_roof', 'nuclear_rebar_density', 'conventional_wall', 'conventional_floor', 'conventional_roof', 'conventional_rebar_density', 'building_separation', 'external_access_width', 'provisional_envelope_scale', 'administration_occupants', 'control_occupants', 'security_occupants', 'administration_area_per_person', 'control_area_per_person', 'security_area_per_person', 'occupancy_circulation_factor', 'occupancy_height', 'occupancy_aspect_ratio', 'heat_rejection_length', 'heat_rejection_width', 'turbine_length', 'turbine_width', 'turbine_height', 'cryo_coldbox_length', 'cryo_coldbox_width', 'cryo_coldbox_height', 'cryo_compressors_length', 'cryo_compressors_width', 'cryo_compressors_height', 'fuel_length', 'fuel_width', 'fuel_height', 'reactor_aux_length', 'reactor_aux_width', 'reactor_aux_height', 'power_supply_length', 'power_supply_width', 'power_supply_height', 'onsite_ac_length', 'onsite_ac_width', 'onsite_ac_height', 'service_water_length', 'service_water_width', 'service_water_height', 'conventional_shop_length', 'conventional_shop_width', 'conventional_shop_height', 'site_services_length', 'site_services_width', 'site_services_height', 'sub_concrete_rate', 'sub_formwork_rate', 'sub_rebar_rate', 'super_concrete_rate', 'super_formwork_rate', 'super_rebar_rate', 'civil_cpi_ratio', 'civil_rate_multiplier', 'tonne_interpretation_kg', 'ventilation_coefficient', 'ventilation_exponent', 'ventilation_cpi_ratio', 'land_rate_per_acre', 'retained_site_improvements')}
-WI068_REPLAY = WI073_REPLAY | {P + 'fuel_cycle__inventory_enabled': False, P + 'fuel_cycle__held_inventory': 0.0, P + 'fuel_cycle__processing_enabled': False, P + 'buildings__facilities_enabled': False, P + 'buildings__facilities_cost_mode': 0., P + 'buildings__facilities_capacity_mode': 0.}
-WI068_REPLAY_LOCAL = WI073_REPLAY_LOCAL | dict(inventory_inventory_enabled=False, inventory_held_inventory=0., processing_enabled=False, facility_facilities_enabled=False, facility_facilities_cost_mode=0., facility_facilities_capacity_mode=0.)
+WI068_REPLAY = WI073_REPLAY | {P + 'fuel_cycle__inventory_enabled': False, P + 'fuel_cycle__held_inventory': 0.0, P + 'fuel_cycle__processing_enabled': False, P + 'buildings__facilities_enabled': False, P + 'buildings__facilities_cost_mode': 0.}
+WI068_REPLAY_LOCAL = WI073_REPLAY_LOCAL | dict(inventory_inventory_enabled=False, inventory_held_inventory=0., processing_enabled=False, facility_facilities_enabled=False, facility_facilities_cost_mode=0.)
 WI067_PARAMETERS = {P + 'heat_transport__' + name for name in (
     'equipment_enabled', 'equipment_cost_mode', 'secondary_energy_mode',
     'equipment_layout_multiplier', 'equipment_tube_wall', 'equipment_shell_wall',
@@ -151,10 +161,10 @@ WI059_CHANNELS = WI059_THERMAL_CHANNELS | {
     P + 'structure__structure_cost__legacy_cost'}
 WI059_ORACLE_ADDED_CHANNELS = (WI059_CHANNELS - {P + 'cryoplant__refrigeration_sum__total'}) | {P + 'cryoplant__cryo_elec__p_elec'}
 WI059_REPLAY = WI067_REPLAY | WI063_REPLAY | {
-    P + 'cryoplant__inventory_enabled': False, P + 'magnet__c_support': 0.0,
+    P + 'cryoplant__inventory_enabled': False, P + 'magnet__m_support': 0.0,
     P + 'magnet__legacy_casing_fraction': 1.0, P + 'structure__residual_fraction': 1.0,
     P + 'cryoplant__joint_drive_fraction': 0.0, P + 'cryoplant__q_nuc_structure': 0.0}
-WI059_REPLAY_LOCAL = WI067_REPLAY_LOCAL | WI063_REPLAY_LOCAL | dict(cryo_inventory_enabled=False, magnet_support_coefficient=0.0,
+WI059_REPLAY_LOCAL = WI067_REPLAY_LOCAL | WI063_REPLAY_LOCAL | dict(cryo_inventory_enabled=False, magnet_support_mass=0.0,
     magnet_legacy_casing_fraction=1.0, structure_residual_fraction=1.0,
     cryo_joint_drive_fraction=0.0, cryo_q_nuc_structure=0.0)
 
@@ -202,25 +212,21 @@ def restate_wi040_radius_costs(translated):
     import oracle_entry
     changed = {oracle_entry.ORACLE_OUTPUT_TO_CHANNEL[name] for name in WI040_CHANGED_ECONOMICS}
     oracle = {name: oracle_entry.evaluate(WI059_REPLAY | change) for name, change in (
-        ('baseline', {}), ('R14', {P + 'plasma__R': 14.0, P + 'magnet__coil__c_coil_ref': K_COIL_RETIRED * 14.0}))}  # WI-058: the R-form's length at R14
+        ('baseline', {}), ('R14', {P + 'plasma__R': 14.0, P + 'magnet__coil__c_coil_ref': K_COIL_RETIRED * 14.0, P + 'magnet__casing__m_casing': MR7_RADIUS_CASING}))}  # WI-058: the R-form's length at R14
     assert changed.isdisjoint(WI040_CHANNELS)
     for name in oracle:
         assert changed | WI040_CHANNELS <= oracle[name].keys()
     frozen = json.loads((translated / 'frozen-results.json').read_text())
     direct = json.loads((translated / 'direct-entering.json').read_text())
     for name, ref in (('baseline', 'baseline'), ('R14', 'tied_R14')):
-        replacement = {k: oracle[name][k] for k in changed | WI040_CHANNELS | WI060_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS | WI065_CHANNELS}
-        # WI-038 q=1 controls: exact independently stated additions, no changes to
-        # existing physical expectations or their comparison tolerance.
-        replacement.update({P + 'magnet__conductor_grade__quantity_factor': 1.0,
-                            P + 'magnet__conductor_grade__j_wp_effective': 118.8271604938272})
-        replacement.update(wi059_native_additions(frozen['cases'][ref]['native']['outputs'], oracle_entry.vs.IN))
+        replacement = {k: oracle[name][k] for k in (changed | WI040_CHANNELS | WI060_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS | WI065_CHANNELS) - MR7_RETIRED_CHANNELS}
+        replacement.update({k:v for k,v in wi059_native_additions(frozen['cases'][ref]['native']['outputs'], oracle_entry.vs.IN).items() if k not in MR7_RETIRED_CHANNELS})
         frozen['cases'][ref]['native']['outputs'].update(replacement)
         direct['results'][name]['single']['outputs'].update(replacement)
     (translated / 'frozen-results.json').write_text(json.dumps(frozen, indent=2) + '\n')
     (translated / 'direct-entering.json').write_text(json.dumps(direct, indent=2) + '\n')
     expected = json.loads((translated / 'expectations.json').read_text())
-    expected['channels'] = sorted(set(expected['channels']) | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS | WI065_CHANNELS)
+    expected['channels'] = sorted((set(expected['channels']) | WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS | WI065_CHANNELS) - MR7_RETIRED_CHANNELS)
     (translated / 'expectations.json').write_text(json.dumps(expected, indent=2) + '\n')
     return changed | WI040_CHANNELS | WI059_CHANNELS | WI060_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS | WI065_CHANNELS
 
@@ -246,7 +252,7 @@ def restate_wi066_breeding(translated):
     frozen = json.loads((translated / 'frozen-results.json').read_text())
     direct = json.loads((translated / 'direct-entering.json').read_text())
     for name, ref, change in [('baseline', 'baseline', {}), ('R14', 'tied_R14', {
-            P + 'plasma__R': 14.0, P + 'magnet__coil__c_coil_ref': K_COIL_RETIRED * 14.0})]:
+            P + 'plasma__R': 14.0, P + 'magnet__coil__c_coil_ref': K_COIL_RETIRED * 14.0, P + 'magnet__casing__m_casing': MR7_RADIUS_CASING})]:
         channels = oracle_entry.evaluate(WI059_REPLAY | change)
         replacement = {key: channels[key] for key in WI066_CHANNELS | WI066_CHANGED}
         evaluation = wi066_evaluation(channels)
@@ -331,9 +337,25 @@ def translate_frozen_radius_evidence(historical, destination, forward):
     # enters it (the added set is restated below). The coil_length__c_coil ratio expectation (14/12.7) still
     # holds under the scaled reference the replays bind at R14.
     expectations['edges'].pop(modules.get('coil_length', 'coil_length'))
+    entering_names = {x['qualified_name'] for x in json.loads(translate_names((historical / 'entering-package/contracts/model_contract.json').read_text(), forward))['parameters']}
     expectations['contract_delta']['remove'] = sorted(
-        expectations['contract_delta']['remove'] + [['stellarator_plant_params', k] for k in sorted(ALL_RETIRED_PARAMETERS)])
-    # Refuse a translation the live package cannot honour: every translated name must resolve.
+        expectations['contract_delta']['remove'] + [['stellarator_plant_params', k] for k in sorted(ALL_RETIRED_PARAMETERS & entering_names)])
+    # MR-7 explicitly retires derived selection outputs. Only temporary replay
+    # copies project them out; every surviving frozen physical value is retained.
+    expectations['channels'] = sorted(set(expectations['channels']) - MR7_RETIRED_CHANNELS)
+    expectations['ratios'] = {k:v for k,v in expectations['ratios'].items() if P+k not in MR7_RETIRED_CHANNELS}
+    expectations['anchors'] = [k for k in expectations['anchors'] if P+k not in MR7_RETIRED_PARAMETERS]
+    for filename in ('frozen-results.json', 'direct-entering.json'):
+        path = out / filename
+        doc = json.loads(path.read_text())
+        def project(value):
+            if isinstance(value, dict):
+                return {k:project(v) for k,v in value.items() if k not in MR7_RETIRED_CHANNELS}
+            if isinstance(value, list):
+                return [project(v) for v in value]
+            return value
+        path.write_text(json.dumps(project(doc), indent=2)+'\n')
+    # Refuse a translation the live package cannot honour: every surviving name must resolve.
     live = json.loads((ROOT / 'exploration/stellarator_e2e/generated/contracts/model_contract.json').read_text())
     live_params = {x['qualified_name'] for x in live['parameters']}; live_channels = {x['channel_name'] for x in live['outputs']}
     live_modules = {c[len(P):].rsplit('__', 1)[0] for c in live_channels if c.startswith(P)}
@@ -356,6 +378,9 @@ def current_generation():
     spec = importlib.util.spec_from_file_location('wi038_current_generation', RECEIPT_EVIDENCE / 'regenerate.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
+    # WI-075 wrapper owns the seed receipt; historical tools also use inventory().
+    module.inventory = module.recipe().inventory
+    module.SEEDS = RECEIPT_EVIDENCE / "candidate-seeds.json"
     return module
 
 
@@ -403,7 +428,7 @@ def pre_fit_report(report, reference):
     """Project ten explicit added checks out of historical eighteen-check comparisons."""
     import copy
     result = copy.deepcopy(report)
-    excluded = {WI061_PREDICATE, WI062_PREDICATE} | FACILITY_PREDICATES | WI073_PREDICATES
+    excluded = {WI061_PREDICATE, WI062_PREDICATE} | FACILITY_PREDICATES | WI073_PREDICATES | MR7_PREDICATES
     assert {r['constraint_id'] for r in result['results']} == CURRENT_PREDICATES
     added = [r for r in result['results'] if r['constraint_id'] in excluded]
     assert len(added) == len(excluded)
@@ -449,14 +474,14 @@ def radius_acceptance(destination, historical):
                                 f"{{x[1] for x in delta['added']}}=={ALL_ADDED_PARAMETERS!r}")
             # WI-058: evaluate R14 at the R-form's length (see K_COIL_RETIRED) so the frozen row stays exact.
             text = replace_once(text, "('R14',{P+'plasma__R':14.0})",
-                                f"('R14',{{P+'plasma__R':14.0,P+'magnet__coil__c_coil_ref':{K_COIL_RETIRED * 14.0!r}}})")
+                                f"('R14',{{P+'plasma__R':14.0,P+'magnet__coil__c_coil_ref':{K_COIL_RETIRED * 14.0!r},P+'magnet__casing__m_casing':{MR7_RADIUS_CASING!r}}})")
         if name in ('native', 'direct'):
-            text = 'from tests.models.current_mfe_regressions import pre_fit_report, WI061_PREDICATE, WI062_PREDICATE, FACILITY_PREDICATES, WI073_PREDICATES, patch_historical_input_files\n' + text
+            text = 'from tests.models.current_mfe_regressions import pre_fit_report, WI061_PREDICATE, WI062_PREDICATE, FACILITY_PREDICATES, WI073_PREDICATES, MR7_PREDICATES, patch_historical_input_files\n' + text
         if name == 'native':
-            text = replace_once(text, "assert a['responses']==b['responses']", "assert {k:v for k,v in a['responses'].items() if k not in ({WI061_PREDICATE, WI062_PREDICATE} | FACILITY_PREDICATES | WI073_PREDICATES)}==b['responses']")
+            text = replace_once(text, "assert a['responses']==b['responses']", "assert {k:v for k,v in a['responses'].items() if k not in ({WI061_PREDICATE, WI062_PREDICATE} | FACILITY_PREDICATES | WI073_PREDICATES | MR7_PREDICATES)}==b['responses']")
             text = text.replace("a['report']==b['report']", "pre_fit_report(a['report'], b['report'])==b['report']")
         if name == 'direct':
-            text = replace_once(text, "assert set(raw)==set(expected)", "assert set(raw)-{cid+'__evaluation' for cid in ({WI061_PREDICATE, WI062_PREDICATE} | FACILITY_PREDICATES | WI073_PREDICATES)}==set(expected)\n        raw['constraint_report'] = pre_fit_report(raw['constraint_report'], expected['constraint_report'])")
+            text = replace_once(text, "assert set(raw)==set(expected)", "assert set(raw)-{cid+'__evaluation' for cid in ({WI061_PREDICATE, WI062_PREDICATE} | FACILITY_PREDICATES | WI073_PREDICATES | MR7_PREDICATES)}==set(expected)\n        raw['constraint_report'] = pre_fit_report(raw['constraint_report'], expected['constraint_report'])")
         if name == 'standalone':
             # WI-058: the winding length no longer takes R0 -- its R0-only check leaves the replay (its bore
             # response is tested in test_winding_length_bore.py); the other three magnet calcs keep theirs.
@@ -477,7 +502,7 @@ def radius_acceptance(destination, historical):
             text = replace_once(text, "f=scratch/'inputs/stellarator_plant_params.json'; values=json.loads(f.read_text()); values.update(change); f.write_text(json.dumps(values))", f"patch_historical_input_files(scratch/'inputs', {WI059_REPLAY!r} | change)")
             # WI-058: evaluate R14 at the R-form's length (see K_COIL_RETIRED) so the frozen row stays exact.
             text = replace_once(text, "'R14':{P+'plasma__R':14.0,",
-                                f"'R14':{{P+'plasma__R':14.0,P+'magnet__coil__c_coil_ref':{K_COIL_RETIRED * 14.0!r},")
+                                f"'R14':{{P+'plasma__R':14.0,P+'magnet__coil__c_coil_ref':{K_COIL_RETIRED * 14.0!r},P+'magnet__casing__m_casing':{MR7_RADIUS_CASING!r},")
             text = replace_once(text, "if name=='baseline' or not isinstance(v,(int,float)):",
                                 f"if (name=='baseline' and k not in {finance!r}) or not isinstance(v,(int,float)):")
             text = replace_once(text, "scalar[k]==v if name=='baseline'", f"scalar[k]==v if name=='baseline' and k not in {finance!r}")
@@ -496,7 +521,7 @@ def radius_acceptance(destination, historical):
         if name == 'cli_checks':
             text = replace_once(text, "    assert r.returncode==(1 if args else 0)", """    if not args:
         assert r.returncode == 1
-        assert 'assessed_entry_count 28 != 20' in r.stderr
+        assert 'assessed_entry_count 34 != 20' in r.stderr
         assert r.stdout.count('*** DEVIATION') == 8
         for anchor in ('total capital $', 'LCOE $/MWh', 'p_net MW', 'q_eng', 'rec_frac', 'magnet %', 'CAS70 $/yr', 'CAS80 $/yr', 'lcoe_1cfe $/MWh (comparison)'):
             assert anchor in r.stdout, anchor
@@ -530,11 +555,12 @@ PARTITIONS = json.loads(PARTITION_PATH.read_text())
 PARTITIONS['fixture_partitions'] = {k: extend_cycle_fixture(v) for k,v in PARTITIONS['fixture_partitions'].items()}
 for key in ('current_numeric_channels', 'current_structured_channels', 'current_predicates'):
     PARTITIONS[key] = CYCLE_PARTITION[key]
-CURRENT_NUMERIC = frozenset(PARTITIONS['current_numeric_channels'])
-CURRENT_STRUCTURED = frozenset(PARTITIONS['current_structured_channels'])
-CURRENT_PREDICATES = frozenset(PARTITIONS['current_predicates'])
+CURRENT_NUMERIC = (frozenset(PARTITIONS['current_numeric_channels']) - MR7_RETIRED_CHANNELS) | MR7_CHANNELS
+CURRENT_STRUCTURED = (frozenset(PARTITIONS['current_structured_channels']) - set(MR7_DELTA['retired_structured_channels'])) | set(MR7_DELTA['added_structured_channels'])
+CURRENT_PREDICATES = (frozenset(PARTITIONS['current_predicates']) - set(MR7_DELTA['retired_predicates'])) | MR7_PREDICATES
 FACILITY_PREDICATES = frozenset(PARTITIONS['added_predicates']['WI-068'])
-POST_WI065_REPLAY = PARTITIONS['post_WI065_historical_controls'] | WI073_REPLAY
+# Retired mode zero was dormant in this historical replay; no selection is replayed.
+POST_WI065_REPLAY = {k:v for k,v in (PARTITIONS['post_WI065_historical_controls'] | WI073_REPLAY).items() if k != P+'buildings__facilities_capacity_mode'}
 CURRENT_ADDITIONS = WI073_CHANNELS | set().union(*(set(PARTITIONS['groups'][name]['channels']) for name in ('WI-066','WI-067','WI-068','WI-069','WI-070')))
 
 
@@ -576,12 +602,13 @@ def assert_historical_native(name, row, old_outputs, old_responses, point):
     import math
     import oracle_entry
     part = PARTITIONS['fixture_partitions'][name]
-    unchanged = set(part['unaffected_exact_channels'])
-    changed = set(part['changed_current_equation_channels'])
-    added = set(part['added_channels'])
+    retired = set(old_outputs) & MR7_RETIRED_CHANNELS
+    unchanged = set(part['unaffected_exact_channels']) - retired
+    changed = set(part['changed_current_equation_channels']) - retired
+    added = (set(part['added_channels']) - MR7_RETIRED_CHANNELS) | MR7_CHANNELS
     assert not unchanged & changed
-    assert set(old_outputs) == unchanged | changed
-    assert set(row.outputs) == CURRENT_NUMERIC == set(old_outputs) | added
+    assert set(old_outputs) == unchanged | changed | retired
+    assert set(row.outputs) == CURRENT_NUMERIC == (set(old_outputs) - retired) | added
     for key in unchanged:
         assert row.outputs[key] == old_outputs[key], (name, key, row.outputs[key], old_outputs[key])
     expected = oracle_entry.evaluate(point)
@@ -605,7 +632,8 @@ ALL_ADDED_PARAMETERS = (WI038_PARAMETERS | WI040_PARAMETERS | WI058_PARAMETERS |
     WI059_NATIVE_ONLY_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS |
     WI063_PARAMETERS | WI064_PARAMETERS | WI065_PARAMETERS | WI067_PARAMETERS | WI068_PARAMETERS |
     WI069_PARAMETERS | WI070_PARAMETERS | WI071_PARAMETERS | WI073_PARAMETERS)
-ALL_RETIRED_PARAMETERS = WI058_RETIRED | WI066_RETIRED | WI069_RETIRED
+ALL_ADDED_PARAMETERS = (ALL_ADDED_PARAMETERS - MR7_RETIRED_PARAMETERS) | MR7_PARAMETERS
+ALL_RETIRED_PARAMETERS = WI058_RETIRED | WI066_RETIRED | WI069_RETIRED | MR7_RETIRED_PARAMETERS
 _entering_contract = json.loads((STRUCTURE_EVIDENCE/'contract_before.json').read_text())
 _forward, _ = structure_ledger()
 CURRENT_PARAMETERS = ({_forward.get(x['qualified_name'], x['qualified_name']) for x in _entering_contract['parameters']}
@@ -618,7 +646,9 @@ def assert_local_partition(name, actual, historical):
     part = PARTITIONS['fixture_partitions'][name]
     changed=set(part['changed_current_equation_locals']); unchanged=set(part['unaffected_exact_locals'])
     assert set(historical) == changed | unchanged
-    assert set(actual) == (set(historical) - {'conductor_cost_per_kAm_effective'}) | set(part['added_local_names']) | WI072_LOCALS | WI073_LOCALS
+    assert set(actual) == ((set(historical) - {'conductor_cost_per_kAm_effective'}) | set(part['added_local_names']) | WI072_LOCALS | WI073_LOCALS | MR7_LOCALS) - MR7_RETIRED_LOCALS
+    changed -= MR7_RETIRED_LOCALS
+    unchanged -= MR7_RETIRED_LOCALS
     for key in unchanged:
         if name == 'coil-thermal-local-0':
             import pytest
@@ -636,9 +666,9 @@ def restate_current_radius_additions(translated):
     frozen=json.loads((translated/'frozen-results.json').read_text())
     direct=json.loads((translated/'direct-entering.json').read_text())
     replaced=set()
-    for name,ref,change in [('baseline','baseline',{}),('R14','tied_R14',{P+'plasma__R':14.,P+'magnet__coil__c_coil_ref':K_COIL_RETIRED*14.})]:
+    for name,ref,change in [('baseline','baseline',{}),('R14','tied_R14',{P+'plasma__R':14.,P+'magnet__coil__c_coil_ref':K_COIL_RETIRED*14., P+'magnet__casing__m_casing':MR7_RADIUS_CASING})]:
         part=PARTITIONS['fixture_partitions']['radius-'+ref]
-        keys=set(part['added_channels']) | set(part['changed_current_equation_channels'])
+        keys=(set(part['added_channels']) | set(part['changed_current_equation_channels']) | MR7_CHANNELS) - MR7_RETIRED_CHANNELS
         independent=oracle_entry.evaluate(WI059_REPLAY | change)
         assert keys <= independent.keys()
         replacements={key:independent[key] for key in keys}
@@ -690,4 +720,4 @@ FINANCE_DEPENDENCIES['unchanged_channels'] = sorted(set(FINANCE_DEPENDENCIES['un
 LEGACY_COOLING_FACILITIES = WI073_REPLAY | {P + key: value for key, value in {
     'heat_transport__equipment_enabled': False, 'heat_transport__equipment_cost_mode': 0.0,
     'heat_transport__secondary_energy_mode': 0.0, 'buildings__facilities_enabled': False,
-    'buildings__facilities_cost_mode': 0.0, 'buildings__facilities_capacity_mode': 0.0}.items()}
+    'buildings__facilities_cost_mode': 0.0}.items()}

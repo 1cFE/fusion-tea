@@ -1,4 +1,4 @@
-"""Independent WI-067 quantity oracle reconstructed from released design/source notes.
+"""Independent WI-078 selected-design quantity oracle reconstructed from released design/source notes.
 
 No production calculator is imported. Prices are USD2025 CPI proxies unless a
 source year is part of the output name. This verifies arithmetic, not equipment
@@ -44,6 +44,8 @@ DEFAULTS = {'enabled': False,
  'costscale': 1,
  'fabrication_rate_2017': 310,
  'sourcefitargument_C': 480}
+# WI-078 independently selected design-point and stock defaults.
+DEFAULTS.update({'helium_design_shaft_MW': 6.26003337158886, 'helium_design_suction_Pa': 7699680.103536234, 'salt_design_flow_kg_s': 387.575515577979, 'salt_design_head_m': 40.0, 'salt_design_eta_p': 0.75, 'salt_design_eta_motor': 0.95, 'helium_purchased_mass_kg': 16607.698111227022, 'salt_purchased_mass_kg': 1608750.9823889225})
 NUMERIC_OUTPUTS = ('primary_circulators_cost',
  'primary_piping_cost',
  'exchangers_cost',
@@ -154,6 +156,10 @@ BOOLEAN_OUTPUTS = ('ihx_capacity_ok',
  'salt_pump_transfer_validated',
  'inventory_complete')
 
+NUMERIC_OUTPUTS += ('helium_design_shaft_MW', 'helium_design_suction_Pa', 'salt_design_flow_kg_s', 'salt_design_head_m', 'salt_design_shaft_MW', 'salt_design_electric_MW', 'design_pump_flow_gpm', 'design_pump_head_ft', 'design_pump_size_factor', 'design_pump_shaft_hp', 'design_motor_electric_hp', 'helium_required_fill_mass_kg', 'salt_required_fill_mass_kg', 'helium_inventory_target_mass_kg', 'salt_inventory_target_mass_kg', 'helium_represented_fill_margin_kg', 'salt_represented_fill_margin_kg')
+BOOLEAN_OUTPUTS += ('design_pump_size_ok', 'design_pump_type_ok', 'design_motor_base_ok', 'design_motor_factor_ok', 'machine_off_design_performance_qualified', 'represented_fill_ok')
+
+NUMERIC_OUTPUTS += ('represented_fill_defined',)
 
 def _annulus(inside, wall, length):
     return math.pi * wall * (inside + wall) * length
@@ -216,6 +222,12 @@ def calculate(inputs: Mapping) -> dict:
             raise ValueError(f'Nonfinite {key}')
     if isinstance(x['fabrication_rate_2017'], bool):
         raise ValueError('Fabrication rate must be numeric, not Boolean')
+    for key in ('helium_design_shaft_MW','helium_design_suction_Pa','salt_design_flow_kg_s','salt_design_head_m'):
+        if isinstance(x[key], bool) or x[key] <= 0: raise ValueError(f'Invalid chosen {key}')
+    for key in ('salt_design_eta_p','salt_design_eta_motor'):
+        if isinstance(x[key], bool) or not 0 < x[key] <= 1: raise ValueError(f'Invalid chosen {key}')
+    for key in ('helium_purchased_mass_kg','salt_purchased_mass_kg'):
+        if isinstance(x[key], bool) or x[key] < 0: raise ValueError(f'Invalid stock {key}')
     n = x['n_loops']
     if x['n_mod'] != 1 or n < 1 or n != int(n):
         raise ValueError('Active equipment requires one module and integer positive circuits')
@@ -274,14 +286,20 @@ def calculate(inputs: Mapping) -> dict:
     reserve = 1+x['inventory_reserve']
     he_volume = (he_pipe+he_hx)*reserve
     he_mean = (x['helium_hot_K']+x['helium_suction_K'])/2
-    he_mass = he_volume*x['helium_discharge_Pa']/(R*he_mean)
+    he_fill = (he_pipe+he_hx)*x['helium_discharge_Pa']/(R*he_mean)
+    he_mass = x['helium_purchased_mass_kg']
     he_std = he_mass*R*288.15/101325
     salt_pipe = pi*.4**2/4*100*layout*n
     salt_hx = (pi*1.6**2*11.6 - pi*.01905**2/4*14852*11.6 - x['accessory_mass']/8000)*n
     if salt_hx <= 0:
         raise ValueError('Nonpositive salt exchanger void')
     salt_volume = (salt_pipe+salt_hx)*reserve
-    salt_mass = salt_volume*1882.09
+    salt_fill = (salt_pipe+salt_hx)*1882.09
+    salt_mass = x['salt_purchased_mass_kg']
+    out.update(represented_fill_defined=1.0,helium_required_fill_mass_kg=he_fill, salt_required_fill_mass_kg=salt_fill,
+               helium_inventory_target_mass_kg=he_fill*reserve, salt_inventory_target_mass_kg=salt_fill*reserve,
+               helium_represented_fill_margin_kg=he_mass-he_fill, salt_represented_fill_margin_kg=salt_mass-salt_fill,
+               represented_fill_ok=he_mass>=he_fill and salt_mass>=salt_fill)
     out.update(primary_pipe_mass=primary_pipe_mass, secondary_pipe_mass=salt_pipe_mass,
                primary_pipe_volume=he_pipe, helium_hx_volume=he_hx,
                helium_inventory_volume=he_pipe+he_hx, helium_inventory_mass=he_mass,
@@ -313,9 +331,21 @@ def calculate(inputs: Mapping) -> dict:
                cycle_temperature_gap=x['sourcefitargument_C']-465,
                cycle_interface_ok=x['sourcefitargument_C']<=465)
     money = lambda amount, year: amount*CPI[2025]/CPI[year]*x['costscale']
-    machine = 550000*(.5+.5*(suction/(735*6894.757293168))*(out['circulator_shaft_MW']*1e6/HP_W/50)**.28)
+    machine = 550000*(.5+.5*(x['helium_design_suction_Pa']/(735*6894.757293168))*(x['helium_design_shaft_MW']*1e6/HP_W/50)**.28)
     primary_each = money(1.2*machine,1978)
-    secondary_each = money(pump+motor,2006)
+    design_shaft_W=x['salt_design_flow_kg_s']*G*x['salt_design_head_m']/x['salt_design_eta_p']
+    design_electric_W=design_shaft_W/x['salt_design_eta_motor']
+    d_pump,d_motor,d_gpm,d_head,d_size=_pump_price(x['salt_design_flow_kg_s']/1882.09,x['salt_design_head_m'],design_electric_W)
+    d_shaft_hp=design_shaft_W/HP_W; d_motor_hp=design_electric_W/HP_W
+    out.update(helium_design_shaft_MW=x['helium_design_shaft_MW'],helium_design_suction_Pa=x['helium_design_suction_Pa'],
+               salt_design_flow_kg_s=x['salt_design_flow_kg_s'],salt_design_head_m=x['salt_design_head_m'],
+               salt_design_shaft_MW=design_shaft_W/1e6,salt_design_electric_MW=design_electric_W/1e6,
+               design_pump_flow_gpm=d_gpm,design_pump_head_ft=d_head,design_pump_size_factor=d_size,
+               design_pump_shaft_hp=d_shaft_hp,design_motor_electric_hp=d_motor_hp,
+               design_pump_size_ok=400<=d_size<=100000,
+               design_pump_type_ok=50<=d_gpm<=3500 and 50<=d_head<=200 and d_shaft_hp<=200,
+               design_motor_base_ok=1<=d_motor_hp<=700,design_motor_factor_ok=1<=d_motor_hp<=250)
+    secondary_each = money(d_pump+d_motor,2006)
     vendor_p, vendor_s = primary_each*count, secondary_each*count
     assembly_factor=.27*1.155
     install_p,install_s = vendor_p*assembly_factor,vendor_s*assembly_factor

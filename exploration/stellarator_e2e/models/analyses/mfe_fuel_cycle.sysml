@@ -259,14 +259,16 @@ package mfe_fuel_cycle {
         doc /* Conditional conventional D+T exhaust processing, four subsystem rows and direct installation.
         Source: knowledge/sources/bartlit_1983_tsta_subsystem_costs_original_osti_paper/output.md, Table II and Section III; knowledge/sources/etr_iter_systems_code_ornl_fedc_87_7_1988/output.md, fuel-processing relation.
         Reference: work/active/WI-070_throughput-based-fuel-processing-costs/design.md and evidence/account-reconciliation.md; reviewed price and transfer records in goal evidence.
-        Basis: near-equimolar D/T, source-like impurities, cleaned feed below 1 ppm noncondensibles, atmospheric cryogenic separation and 20 K refrigeration. Conditional 99 percent functional recovery is inherited, not established by this price. CPI is purchasing power, not current procurement. Per-module running inlet, identical independent trains times module count; no shared discount or certified capacity. Source-like conditions are declared, not measured. Included local controls belong exclusively to C220500. Limited purchased containment; no full building, storage, blanket extraction, added specialized fuel instrumentation or source installation design/inspection claim. */
+        Basis: near-equimolar D/T, source-like impurities, cleaned feed below 1 ppm noncondensibles, atmospheric cryogenic separation and 20 K refrigeration. Conditional 99 percent functional recovery is inherited, not established by this price. CPI is purchasing power, not current procurement. WI-077 independently supplied per-module rated throughput sets price; running inlet only sets demand and capacity margin. Identical independent trains times module count; no shared discount or certified process performance. Source-like conditions are declared, not measured. Included local controls belong exclusively to C220500. Limited purchased containment; no full building, storage, blanket extraction, added specialized fuel instrumentation or source installation design/inspection claim. */
         in attribute flow_in : Real;
         in attribute inventory_enabled_in : Boolean;
         in attribute n_mod_in : Real;
         in attribute legacy_cost_in : Real;
         in attribute enabled_in : Boolean;
         in attribute source_conditions_in : Boolean;
-        in attribute capacity_margin_in : Real;
+        // Independently supplied installed throughput [kg D+T/s per module].
+        // MR-7: price follows this choice, never operating flow times a margin.
+        in attribute capacity_in : Real;
         in attribute price_multiplier_in : Real;
         in attribute reference_flow_in : Real;
         in attribute exponent_in : Real;
@@ -286,6 +288,9 @@ package mfe_fuel_cycle {
         out attribute flow_kg_s : Real;
         out attribute capacity_kg_s : Real;
         out attribute plant_capacity_kg_s : Real;
+        out attribute plant_demand_kg_s : Real;
+        out attribute capacity_margin_kg_s : Real;
+        out attribute capacity_evaluation_defined : Real;
         out attribute flow_ratio : Real;
         out attribute scaling_factor : Real;
         out attribute transfer_reference_capital : Real;
@@ -310,5 +315,12 @@ package mfe_fuel_cycle {
         out attribute new_total : Real;
         out attribute cost : Real;
         out attribute defined_flag : Real;
+    }
+
+    constraint def 'Fuel Processing Capacity' {
+        doc /* Supplied processing capacity covers running D+T exhaust in the active represented process. Cost-source applicability remains separate. **Source**: work/active/WI-077_supplied-fuel-processing-capacity-evaluation/spec.md **Reference**: MR-7 reviewed binding contract **Last Updated**: 2026-09-20 */
+        in attribute defined_in : Real;
+        in attribute margin_in : Real;
+        defined_in >= 1.0 and margin_in >= 0.0
     }
 }

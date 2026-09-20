@@ -12,7 +12,7 @@ Domain: every input and intermediate/output finite; volume_in, ground_thickness 
 *Reference**: Stellaris Tables 7-8 and Figure 40; work/active/WI-063_magnet-manufacturing-account-completeness/design.md; goal evidence/source-design-review.md.
 *Last Updated**: 2026-09-15
 
-SysML Source: root-0/analyses/mfe_winding_pack_cost.sysml:71
+SysML Source: root-0/analyses/mfe_winding_pack_cost.sysml:70
     """
     ground_volume: float = Field(description="ground_volume output")
     stock_cost: float = Field(description="stock_cost output")

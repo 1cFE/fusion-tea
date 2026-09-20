@@ -386,6 +386,36 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-074
+  name: Design-choice inventory and evaluation contract
+  scale: standard
+  priority: P0
+  status: backlog
+  completed: null
+- id: WI-075
+  name: Supplied magnet design evaluation
+  scale: standard
+  priority: P0
+  status: backlog
+  completed: null
+- id: WI-076
+  name: Supplied facility design evaluation
+  scale: standard
+  priority: P0
+  status: backlog
+  completed: null
+- id: WI-077
+  name: Supplied fuel-processing capacity evaluation
+  scale: standard
+  priority: P0
+  status: backlog
+  completed: null
+- id: WI-078
+  name: Supplied cooling design-point evaluation
+  scale: standard
+  priority: P0
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -483,3 +513,8 @@ standalone:
 | WI-071 | Shared fabrication rate for estimate uncertainty | standard | P1 | backlog |  |
 | WI-072 | Current comparison numeric verification coverage | standard | P0 | backlog |  |
 | WI-073 | Matched steam cycle for current comparison | standard | P1 | backlog |  |
+| WI-074 | Design-choice inventory and evaluation contract | standard | P0 | backlog |  |
+| WI-075 | Supplied magnet design evaluation | standard | P0 | backlog |  |
+| WI-076 | Supplied facility design evaluation | standard | P0 | backlog |  |
+| WI-077 | Supplied fuel-processing capacity evaluation | standard | P0 | backlog |  |
+| WI-078 | Supplied cooling design-point evaluation | standard | P0 | backlog |  |

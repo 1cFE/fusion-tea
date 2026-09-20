@@ -14,9 +14,9 @@ Outputs:
     - cost_2025: cost_2025 result
     - cost_1990: cost_1990 result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:539
+SysML Source: root-0/analyses/mfe_facilities.sysml:702
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:539
+SysML Source: root-0/analyses/mfe_facilities.sysml:702
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_facilities/facility_ventilation_cost_impl.py
@@ -59,9 +59,9 @@ Outputs:
     - cost_2025: cost_2025 result
     - cost_1990: cost_1990 result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:539
+SysML Source: root-0/analyses/mfe_facilities.sysml:702
 
-    SysML Source: root-0/analyses/mfe_facilities.sysml:539
+    SysML Source: root-0/analyses/mfe_facilities.sysml:702
 
     Calculation Specification:
         cost_1990 = coefficient_in * served_volume_in ** exponent_in

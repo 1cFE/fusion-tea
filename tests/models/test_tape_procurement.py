@@ -31,14 +31,14 @@ def test_explicit_zero_volume_or_price_is_valid(calculations, key):
 
 @pytest.mark.codegen_available
 @pytest.mark.parametrize('overrides,tape_ratio,conductor_ratio', [
-    ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8}, 1/.8, 1.),
-    ({'magnet__winding_pack__j_wp': 118.8271604938272 * 1.2}, 1/1.2, 1.),
-    ({'magnet__winding_pack__j_wp': 118.8271604938272 * .8,
-      'magnet__winding_pack__B_max': 30.}, (30/24.9)**.6/.8, 1.),
+    ({'magnet__winding_pack__wp_side': .35999999999999993 / math.sqrt(.8)}, 1/.8, 1.),
+    ({'magnet__winding_pack__wp_side': .35999999999999993 / math.sqrt(1.2)}, 1/1.2, 1.),
+    ({'magnet__winding_pack__wp_side': .35999999999999993 / math.sqrt(.8),
+      'magnet__winding_pack__B_max': 30.}, 1/.8, 1.),
     ({'magnet__coil__f_set': .8701298701298701 * .8}, 1., .8),
     ({'magnet__winding_pack__f_wp_vol': .8780864197530865 * .8}, .8, 1.),
     ({'magnet__coil__n_coils': 48. * 1.1}, 1.1, 1.1),
-    ({'magnet__coil__I_coil': 15400000. * 1.01}, 1.01, 1.01),
+    ({'magnet__coil__turn_current': 50000. * 1.01}, 1., 1.),
 ])
 def test_native_quantity_scaling_and_expanded_oracle(evaluate, overrides, tape_ratio, conductor_ratio):
     import oracle_entry

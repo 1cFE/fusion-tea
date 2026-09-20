@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:621
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:623
 
 SysML Expressions:
 """
@@ -15,7 +15,7 @@ from stellarator_tea.modules.mfe_plant.mfe_power_plant.overnight_capital import 
 def run_overnight_capital(inputs: overnight_capitalInput) -> float:
     """Execute overnight_capital calculation.
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:621
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:623
 
 Args:
     inputs: Input parameters validated against overnight_capitalInput schema

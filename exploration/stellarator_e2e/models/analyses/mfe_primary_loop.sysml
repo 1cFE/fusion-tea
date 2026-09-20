@@ -86,8 +86,10 @@ package mfe_primary_loop {
         in attribute p_loop_in : Real;
         // number of parallel loops [1], an instance integer sized at the design point
         in attribute n_loops_in : Real;
-        // reference per-loop flow [kg/s] -- the loss law's anchor and the rated capacity
+        // reference per-loop flow [kg/s] -- the loss law's anchor only
         in attribute mdot_loop_ref_in : Real;
+        // [kg/s] Independent offered circuit flow ceiling; not a compressor map.
+        in attribute mdot_loop_rated_in : Real;
         // reference per-path pressure loss at the reference per-loop flow [Pa]
         in attribute dp_loop_ref_in : Real;
         // loss multiplier [1] (a study lever; 1.0 is the reference)
@@ -124,7 +126,7 @@ package mfe_primary_loop {
         out attribute p_elec : Real;
         // q_ihx = q_source_in + w_fluid;
         out attribute q_ihx : Real;
-        // capacity_margin = mdot_loop_ref_in - mdot_loop;
+        // capacity_margin = mdot_loop_rated_in - mdot_loop;
         out attribute capacity_margin : Real;
         // p_pump_total = loop_live_in * p_elec + p_pump_direct_in;
         out attribute p_pump_total : Real;

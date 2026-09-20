@@ -20,8 +20,7 @@ CASES = [
                   "heat_transport__secondary_energy_mode": 0.,
                   "heat_transport__equipment_enabled": False,
                   "buildings__facilities_enabled": False,
-                  "buildings__facilities_cost_mode": 0.,
-                  "buildings__facilities_capacity_mode": 0.}, id="disabled"),
+                  "buildings__facilities_cost_mode": 0.}, id="disabled"),
     pytest.param({"discount_rate": 0.}, id="zero-discount"),
     pytest.param({"plasma__R": 13.}, id="permitted-radius"),
 ]

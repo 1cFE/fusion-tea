@@ -108,18 +108,16 @@ def test_layout_shell_and_source_sums_are_closed():
     assert x['layout_land_cost']==pytest.approx(x['parcel_area']/4046.8564224*10000)
 
 
-def test_geometry_and_demand_contrasts_propagate():
+def test_geometry_and_demand_contrasts_preserve_supplied_facilities():
     base=_layout()
     radius=_layout(major_radius=24)
     demand=_layout(blanket_volume=3000)
-    assert radius['reactor_hall_gross_area']>base['reactor_hall_gross_area']
-    assert radius['civil_capital']>base['civil_capital']
-    assert demand['packages_per_sector']>base['packages_per_sector']
-    assert demand['outage_required_days']>base['outage_required_days']
-    assert demand['sector_wing_east_gross_area']>base['sector_wing_east_gross_area']
-    fixed=_layout(blanket_volume=3000,facilities_capacity_mode=0)
-    assert fixed['capacity_margin_units']<0
-    assert fixed['sector_wing_east_gross_area']<demand['sector_wing_east_gross_area']
+    assert radius['geometry_fit_margin_m'] < base['geometry_fit_margin_m']
+    for row in (radius,demand):
+        for key in ('reactor_hall_gross_area','civil_capital','packages_per_sector','sector_wing_east_gross_area'):
+            assert row[key] == base[key], key
+    # Packaging is independently selected; added material tests its offered capacity.
+    assert demand['unused_material_capacity'] < base['unused_material_capacity']
 
 
 def test_enabled_legacy_costs_keep_physical_diagnostics():
@@ -157,7 +155,7 @@ def test_disabled_full_map_preserves_legacy_accounts_and_zeroes_facilities():
     assert result['buildings']==result['buildings_legacy']
     assert result['precon']==result['precon_legacy']
     unit_margins={'initial_margin_days','readiness_margin_days','capacity_margin_units',
-                  'route_margin_m','outage_margin_days'}
+                  'route_margin_m','outage_margin_days','unused_material_capacity','geometry_fit_margin_m','occupancy_area_margin_m2','parcel_fit_margin_m'}
     fixed={'facility_initial_sector_start_days':-120.,'facility_cooling_initial_handoff_days':-30.}
     for name,channel in seam.ORACLE_OUTPUT_TO_CHANNEL.items():
         assert math.isfinite(result[name])
@@ -202,21 +200,22 @@ def test_every_cooling_carried_envelope_must_fit_common_route(changes):
     assert math.isfinite(x['civil_capital'])
 
 
-def test_longer_salt_machine_changes_installed_service_strip():
+def test_longer_salt_machine_tests_supplied_service_strip():
     baseline=_layout()
     longer=_layout(salt_package_length=10.)
-    assert longer['cooling_hall_clear_width']-baseline['cooling_hall_clear_width']==pytest.approx(16.)
-    assert longer['cooling_hall_gross_area']>baseline['cooling_hall_gross_area']
+    assert longer['geometry_fit_margin_m'] < baseline['geometry_fit_margin_m']
+    assert longer['cooling_hall_clear_width'] == baseline['cooling_hall_clear_width']
+    assert longer['cooling_hall_gross_area'] == baseline['cooling_hall_gross_area']
 
 
 def test_wider_cooling_aisle_does_not_enlarge_internal_doors():
     x=_layout(cooling_aisle_width=10.,helium_package_width=5.)
-    assert x['route_margin_m']==pytest.approx(-1.)
+    assert x['route_margin_m'] <= -1.  # Fixed room geometry can impose a tighter bottleneck than the door.
 
 
 def test_long_package_must_fit_airlock_even_when_cross_corridor_grows():
     x=_layout(cooling_cross_width=25.,salt_package_length=16.,building_separation=100.)
-    assert x['route_margin_m']==pytest.approx(-1.)
+    assert x['route_margin_m'] <= -1.  # Fixed room geometry can impose a tighter bottleneck than the door.
 
 
 @pytest.mark.parametrize('bank',['clean','dirty'])

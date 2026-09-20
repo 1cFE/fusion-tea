@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:539
+SysML Source: root-0/analyses/mfe_facilities.sysml:702
 
 SysML Expressions:
     cost_1990 = coefficient_in * served_volume_in ** exponent_in
@@ -22,7 +22,7 @@ def run_facility_ventilation_cost(inputs: Facility_Ventilation_CostInput) -> tup
 
 Source: work/active/WI-068_layout-based-facilities/design.md; layout-capacity-design.md; evidence/facility-contract.md. Ref: released geometry, capacity, exact civil takeoff and account boundary. Basis: conditional conceptual scenario; unqualified shielding/loading/transport and explicit provisional equipment envelopes. Historical PROCESS1990 empirical nuclear-ventilation relation; does not qualify airflow.
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:539
+SysML Source: root-0/analyses/mfe_facilities.sysml:702
 
 SysML Expressions:
     cost_1990 = coefficient_in * served_volume_in ** exponent_in

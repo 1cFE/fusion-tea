@@ -79,7 +79,7 @@ def test_the_winding_chain_follows_the_bore_at_fixed_major_radius(oracle):
         assert fat[f"{P}{channel}"] / base[f"{P}{channel}"] == pytest.approx(ratio, rel=1e-12), channel
     # the cryoplant sees the larger cold mass; the field chain does not read the length
     assert fat[f"{P}cryoplant__cryo_elec__p_elec"] > base[f"{P}cryoplant__cryo_elec__p_elec"]
-    for channel in ("magnet__peak_field_calc__B_peak", "magnet__stored_energy__W_mag", "magnet__casing_mass__m_casing"):
+    for channel in ("magnet__peak_field_calc__B_peak", "magnet__stored_energy__W_mag"):
         assert fat[f"{P}{channel}"] != base[f"{P}{channel}"]  # they move with the bore for their own reasons (WI-044)
 
 

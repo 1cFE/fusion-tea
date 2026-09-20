@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:583
+SysML Source: root-0/analyses/mfe_facilities.sysml:746
 
 SysML Expressions:
     installed_facility_capital = civil_in + ventilation_in
@@ -23,7 +23,7 @@ def run_facility_account_selection(inputs: Facility_Account_SelectionInput) -> t
 
 *Source**: work/active/WI-068_layout-based-facilities/design.md. **Ref**: account replacement map and component-owned aggregation. **Basis**: Select the complete priced facility account or the preserved grouped legacy account; layout validates the binary mode.
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:583
+SysML Source: root-0/analyses/mfe_facilities.sysml:746
 
 SysML Expressions:
     installed_facility_capital = civil_in + ventilation_in

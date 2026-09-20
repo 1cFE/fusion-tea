@@ -5,7 +5,6 @@ package mfe_power_core {
     private import mfe_magnet_field::*;
     private import mfe_magnet_cost::*;
     private import mfe_winding_pack_cost::*;
-    private import mfe_conductor_grade::*;
     private import mfe_winding_pack_fit::*;
     private import mfe_conductor_current::*;
     private import mfe_heating_chain::*;
@@ -79,9 +78,9 @@ package mfe_power_core {
         Concept-agnostic magnet/coil system, decomposed since WI-057 into the physical parts
         its calcs price -- 'Modular Coil', 'Winding Pack', 'Coil Casing' (mfe_magnet_parts) -- and
         carrying the coil-cost parameters
-        for the bilinear toroidal conductor model. All parameters are inputs --
-        WI-011 binds tokamak/stellarator values. `capital_cost` is populated by
-        the 'Magnet Coil Cost' calc (mfe_magnet_cost.sysml).
+        for the bilinear toroidal conductor model. Supplied winding geometry, turns and structural masses remain independent of
+        operating excitation (WI-075). `capital_cost` rolls up procurement,
+        structure and insulation; the ampere-metre estimate is comparison-only.
 
         Parameters (all concept-set, MR-WI009-8):
           B            -- field at the loop center (axis) [T]
@@ -106,38 +105,22 @@ package mfe_power_core {
         attribute r_coil : Real;
         attribute gap2_t : Real default 0.10;
         attribute vol_cold_cryo : Real default 0.0;
-        attribute c_support : Real default 0.0;
-        attribute e_support : Real default 0.78;
         attribute legacy_casing_fraction : Real default 1.0;
-        attribute m_support : Real = support_mass.m_support;
-        calc support_mass : 'Magnet Support Mass' {
-            in W_mag = stored_energy.W_mag;
-            in c_support = 'Magnet System'::c_support;
-            in e_support = 'Magnet System'::e_support;
-        }
+        // Supplied total electromagnetic support mass [kg]; no strength qualification.
+        attribute m_support : Real;
         // the physical parts the magnet calcs price (WI-057)
         part coil : 'Modular Coil' {
             :>> c_coil = coil_length.c_coil;
+            :>> I_coil = winding_state.I_coil;
         }
         part winding_pack : 'Winding Pack' {
-            :>> wp_side = wp_sizing.wp_side;
-            :>> conductor_quantity_factor = conductor_grade.quantity_factor;
-            :>> j_wp_effective = current_sizing.selected_effective_density;
+            :>> j_wp_effective = winding_state.j_wp_effective;
         }
-        part casing : 'Coil Casing' {
-            :>> m_casing = casing_mass.m_casing;
-        }
+        part casing : 'Coil Casing';
         // ---- inputs the plant wires (WI-057): values produced elsewhere, read here by name ----
         attribute r_coil_centre : Real;   // <- rb.r_coil_centre
         // ---- EXPOSEs (WI-057): this part's calc outputs, readable outside as <part>.<name> ----
         attribute B_peak : Real = peak_field_calc.B_peak;
-        attribute required_tapes : Real = current_sizing.required_tapes;
-        attribute required_conductor_area : Real = current_sizing.required_conductor_area;
-        attribute required_pack_area : Real = current_sizing.required_pack_area;
-        attribute required_effective_density : Real = current_sizing.required_effective_density;
-        attribute selected_effective_density : Real = current_sizing.selected_effective_density;
-        attribute tape_available_current : Real = current_sizing.tape_available_current;
-
         attribute capital_cost_1cfe : Real = magnet_cost.capital_cost;
         attribute eps_cond : Real = cond_strain.eps_cond;
         attribute sigma_wp : Real = wp_stress.sigma_wp;
@@ -200,50 +183,11 @@ package mfe_power_core {
             in a_coil_ref = coil.a_coil_ref;
             in R_ref = coil.R_ref;
         }
-        // WI-044: casing mass from stored energy (Lion 2021 eq. 56), anchored
-        // at the instance's reference mass; feeds 'Magnet Structure Cost'
-        // through magnet.casing.m_casing.
-        calc casing_mass : 'Magnet Casing Mass' {
-            in W_mag = stored_energy.W_mag;
-            in W_mag_ref = casing.W_mag_ref;
-            in m_casing_ref = casing.m_casing_ref;
-        }
-        // WI-038: installed envelope changes quantity; demand remains B_peak.
-        calc conductor_grade : 'Conductor Field Capability' {
-            in B_design = winding_pack.B_max;
-            in B_reference = winding_pack.B_grade_ref;
-            in field_exponent = winding_pack.field_exponent;
-            in j_reference = winding_pack.j_wp;
-        }
-        // WI-036: the winding pack is sized by the current it carries, so
-        // wp_side stops being an entry point and becomes a consequence of
-        // coil current and the chosen winding-pack current density.
-        calc current_sizing : 'Current Driven Pack Sizing' {
-            in sizing_mode = winding_pack.sizing_mode;
-            in inventory_multiplier = winding_pack.inventory_multiplier;
-            in legacy_effective_density = conductor_grade.j_wp_effective;
-            in I_coil = coil.I_coil;
+        // Supplied hardware and operating excitation meet only through identities.
+        calc winding_state : 'Winding Operating State' {
+            in reference_turns = coil.reference_turns;
             in turn_current = coil.turn_current;
-            in f_copper = winding_pack.f_copper;
-            in f_solder = winding_pack.f_solder;
-            in f_steel = winding_pack.f_steel;
-            in f_helium = winding_pack.f_helium;
-            in tape_width = winding_pack.tape_width;
-            in tape_thickness = winding_pack.tape_thickness;
-            in B_peak = 'Magnet System'::B_peak;
-            in temperature = winding_pack.T_inventory;
-            in reference_tape_current = winding_pack.reference_tape_current;
-            in material_factor = winding_pack.material_factor;
-            in orientation_factor = winding_pack.orientation_factor;
-            in cabling_factor = winding_pack.cabling_factor;
-            in degradation_factor = winding_pack.degradation_factor;
-            in sharing_factor = winding_pack.sharing_factor;
-            in allowable_fraction = winding_pack.allowable_fraction;
-            in allow_field_extrapolation = winding_pack.allow_field_extrapolation;
-        }
-        calc wp_sizing : 'Winding Pack Sizing' {
-            in I_coil = coil.I_coil;
-            in j_wp = winding_pack.j_wp_effective;
+            in wp_side = winding_pack.wp_side;
         }
         calc conductor_current : 'REBCO Conductor Current' {
             in B_peak = 'Magnet System'::B_peak;
@@ -303,11 +247,11 @@ package mfe_power_core {
             in c_coil_ref = coil.c_coil_ref;
             in a_coil_ref = coil.a_coil_ref;
         }
-        // WI-036: a wider winding pack now costs cold mass -- this feeds the
+        // Supplied winding geometry determines cold inventory and feeds the
         // WI-024 cryoplant chain, which already reaches cryoplant capital.
         calc wp_volume : 'Winding Pack Cold Volume' {
             in n_coils = coil.n_coils;
-            in wp_side = wp_sizing.wp_side;
+            in wp_side = winding_pack.wp_side;
             in c_coil = coil_length.c_coil;
             in f_wp_vol = winding_pack.f_wp_vol;
             // WI-036: vol_cold_cryo stays a live settable slot and enters here
@@ -316,11 +260,11 @@ package mfe_power_core {
             // retiring the input, not modelling the chain behind it).
             in vol_extra = vol_cold_cryo;
         }
-        // WI-035 stress operand, now consuming the WI-036 computed wp_side.
+        // Operating stress evaluated against the supplied effective pack side.
         calc wp_stress : 'Winding Pack Stress' {
             in I_coil = coil.I_coil;
             in B_peak_in = peak_field_calc.B_peak;
-            in wp_side = wp_sizing.wp_side;
+            in wp_side = winding_pack.wp_side;
             in k_sigma = winding_pack.k_sigma;
         }
         // WI-036: the conductor's own operand, checked separately from the
@@ -345,7 +289,7 @@ package mfe_power_core {
         // WI-040 explicit non-tape procurement: only geometric winding-pack volume.
         calc insulation_inventory : 'Winding Pack Insulation Inventory' {
             in volume_in = wp_volume.vol_winding_pack;
-            in wp_side = wp_sizing.wp_side;
+            in wp_side = winding_pack.wp_side;
             in aspect_ratio = winding_pack.fit_aspect_ratio;
             in internal_fraction_x = winding_pack.internal_build_x;
             in internal_fraction_y = winding_pack.internal_build_y;
@@ -379,14 +323,13 @@ package mfe_power_core {
         }
         calc winding_procurement : 'Winding Pack Procurement Cost' {
             in n_coils = coil.n_coils;
-            in I_coil = coil.I_coil;
+            in reference_turns = coil.reference_turns;
             in f_set = coil.f_set;
             in c_coil = coil.c_coil;
             in tape_volume_in = material_inventory.tape_volume;
             in tape_width = winding_pack.tape_width;
             in tape_thickness = winding_pack.tape_thickness;
             in tape_price_per_m = winding_pack.tape_price_per_m;
-            in turn_current = coil.turn_current;
             in winding_rate_1990 = winding_pack.winding_rate_1990;
             in cost_escalation = winding_pack.cost_escalation;
             in nonplanar_factor = winding_pack.nonplanar_factor;
@@ -408,7 +351,7 @@ package mfe_power_core {
             in m_support = 'Magnet System'::m_support;
             in legacy_casing_fraction = 'Magnet System'::legacy_casing_fraction;
             in n_coils = coil.n_coils;
-            in m_casing = casing.m_casing;   // WI-044: computed (casing_mass)
+            in m_casing = casing.m_casing; // supplied per-coil mass
             in steel_price = casing.steel_price;
             in f_steel_fab = casing.f_steel_fab;
         }
@@ -505,7 +448,7 @@ package mfe_power_core {
         doc /*
         Concept-agnostic divertor costed component. Carries `capital_cost`
         (inherited from 'Costed Component'); the power-scaled divertor cost is
-        set per concept in WI-011.
+        set per concept in WI-011. This demand-matched thermal-power price proxy does not select a divertor target geometry or evaluate its installed capacity. The separate deposited-heat and peak-load calculation is limited to its stated reference geometry; equivalent area is diagnostic, not selected hardware.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
         **Ref**: cas22.py:570 (C220108 divertor, power-scaled)

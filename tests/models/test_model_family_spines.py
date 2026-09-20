@@ -27,7 +27,7 @@ without one. TEAx execution is out of scope here (`tests/test_*_teax.py`).
 """
 
 from __future__ import annotations
-from tests.models.current_mfe_regressions import WI073_PARAMETERS, WI071_PARAMETERS, WI070_PARAMETERS, WI069_PARAMETERS, WI069_RETIRED
+from tests.models.current_mfe_regressions import MR7_EVIDENCE, CURRENT_PARAMETERS, WI073_PARAMETERS, WI071_PARAMETERS, WI070_PARAMETERS, WI069_PARAMETERS, WI069_RETIRED
 from tests.models.current_mfe_regressions import WI065_PARAMETERS, WI065_CHANNELS, WI066_RETIRED, WI067_PARAMETERS, WI068_PARAMETERS, WI066_CHANNELS
 from tests.models.current_mfe_regressions import WI063_PARAMETERS, WI063_CHANNELS, WI064_PARAMETERS, WI064_CHANNELS
 
@@ -362,11 +362,12 @@ def test_mfe_census_matches_current_generated_public_contract(baselines) -> None
     """Bound to the semantic fingerprint it was derived against: a regenerated model
     re-derives the fixture from the new package, never patches it to match."""
     output = baselines["mfe"]
-    expected = json.loads((DATA / "mfe_census.json").read_text())
+    expected = json.loads((MR7_EVIDENCE / "current-census.json").read_text())
     assert _contract(output)["semantic_fingerprint"] == (
         expected["derived_against_semantic_fingerprint"]
-    ), "model meaning moved — re-derive tests/models/data/mfe_census.json from the new package"
-    assert len(_contract(output)["parameters"]) == expected["entry_points"] == 265 + len(WI059_PARAMETERS | WI060_PARAMETERS | WI061_PARAMETERS | WI062_PARAMETERS | WI063_PARAMETERS | WI064_PARAMETERS | WI065_PARAMETERS | WI059_NATIVE_ONLY_PARAMETERS | WI067_PARAMETERS | WI068_PARAMETERS | WI069_PARAMETERS | WI070_PARAMETERS | WI071_PARAMETERS | WI073_PARAMETERS) - len(WI066_RETIRED | WI069_RETIRED)  # WI-040/038: 17 cost inputs and 2 conductor references.
+    ), "model meaning moved — independently verify WI-075 interface delta before updating its census receipt"
+    assert len(_contract(output)["parameters"]) == expected["entry_points"] == len(CURRENT_PARAMETERS)
+    assert {p['qualified_name'] for p in _contract(output)['parameters']} == CURRENT_PARAMETERS
     assert not any("p_operating_coupled_heat" in str(p) for p in _contract(output)["parameters"])
     assert {k: sorted(v) for k, v in _by_entry_type(output).items()} == expected["by_entry_type"]
     _entry_sources(output)  # identity uniqueness both ways

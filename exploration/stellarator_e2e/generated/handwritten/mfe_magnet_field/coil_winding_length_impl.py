@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:142
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:154
 
 SysML Expressions:
     c_coil = c_coil_ref * (a_coil / a_coil_ref)
@@ -119,7 +119,7 @@ coil-coil clearance d_min(C) scaling with R); WI-044 design D1
 *Basis**: fixed-shape coil scaled to its bore, anchored at the
 printed circumference; concept-agnostic (MR-3)
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:142
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:154
 
 SysML Expressions:
     c_coil = c_coil_ref * (a_coil / a_coil_ref)

@@ -1,4 +1,8 @@
-"""WI-067 equipment/source units and actual native accounting/energy consumers."""
+"""Current cooling units/accounts with WI-078 supplied design-point and stock fixtures.
+
+WI-067 historical files stay unchanged; current equipment fixtures explicitly choose
+a price point and procurement stocks independently of the operating test point.
+"""
 import importlib
 import json
 import math
@@ -31,6 +35,8 @@ def equipment(runtime):
     assert Path(module.__file__).resolve().is_relative_to(ROOT/'exploration/stellarator_e2e/generated')
     interface = json.loads((ROOT/'work/active/WI-067_installed-cooling-equipment-costs/evidence/equipment-interface.json').read_text())
     defaults = {i['name'] + '_in': i['default'] for i in interface['inputs']}
+    selected = json.loads((ROOT/'work/active/WI-078_supplied-cooling-design-point-evaluation/evidence/selected-defaults.json').read_text())['selected_inputs']
+    defaults.update({name + '_in': value for name, value in selected.items()})
     defaults['enabled_in'] = True
     defaults['stainless_fabrication_usd2017_per_kg_in'] = 310.0
     return lambda **changes: module.Cooling_EquipmentModule().run(**(defaults | changes)).data.model_dump()
@@ -65,6 +71,12 @@ def test_layout_inventory_and_horizon_sensitivities(equipment):
     assert long['primary_piping_cost'] == pytest.approx(2*base['primary_piping_cost'])
     assert long['salt_straight_loss'] == pytest.approx(2*base['salt_straight_loss'])
     assert long['exchangers_cost'] == base['exchangers_cost']
+    for gas in ('helium', 'salt'):
+        assert long[f'{gas}_required_fill_mass_kg'] > base[f'{gas}_required_fill_mass_kg']
+        assert long[f'{gas}_inventory_mass'] == base[f'{gas}_inventory_mass']
+        assert long[f'{gas}_inventory_cost'] == base[f'{gas}_inventory_cost']
+    assert not long['represented_fill_ok']
+    assert not long['inventory_complete']
     assert equipment(machine_life_in=30., bundle_life_in=30.)['replacement_annual'] == 0
     zero = equipment(discount_in=0.)
     machines = sum(base[n] for n in ('machine_event_purchase','machine_event_installation','machine_event_removal'))
@@ -111,8 +123,8 @@ def test_actual_native_cost_and_energy_selectors(evaluate):
 
 
 def test_native_replacement_reaches_lcoe_without_changing_capital(evaluate):
-    # Isolate cooling purchase accounting. WI-068 separately checks the capital
-    # response when changed retirement demand resizes facility storage.
+    # Isolate cooling purchase accounting from the separate facilities account.
+    # Supplied facilities geometry also stays fixed under retirement-demand changes.
     base = evaluate(buildings__facilities_cost_mode=0.)
     long = evaluate(buildings__facilities_cost_mode=0.,
                     heat_transport__equipment_machine_life=30.,
@@ -123,49 +135,39 @@ def test_native_replacement_reaches_lcoe_without_changing_capital(evaluate):
 
 
 @pytest.mark.parametrize('control_index', range(4))
-def test_retained_primary_controls_reach_full_current_native_comparison(runtime, tmp_path, control_index):
-    # Replaces the numerical coverage blocked by the six entering stale-keyset tests.
-    # The old records and failing test expectations remain untouched.
+def test_primary_controls_reach_current_native_comparison(runtime, tmp_path, control_index):
+    # Reuse the historical hydraulic perturbations on the current supplied design.
+    # This is a new evaluation, not a replay of retired magnet/facility selection.
     import oracle_entry
     import study_route
-    from tests.models.current_mfe_regressions import WI059_REPLAY
     historical = json.loads((ROOT/'.project/active/primary-loop-current-consumers/implementation/oracle-before.json').read_text())['controls'][control_index]
     inverse = {v:k for k,v in oracle_entry.ENTRY_KEY_TO_ORACLE_INPUT.items()}
-    point = WI059_REPLAY | {inverse[k]:v for k,v in historical['overrides'].items()}
-    # Stock finite-list proposal admission accepts numeric Boolean encoding.
-    # Preserve the same controls; the typed native bridge resolves them to bool.
-    point = {k: float(v) if isinstance(v, bool) else v for k, v in point.items()}
-    cases, _ = study_route.run_points('cooling-primary-consumer-control', [point], tmp_path)
+    point = {inverse[k]:v for k,v in historical['overrides'].items()}
+    # These controls explicitly exercise direct/legacy primary closure; disable
+    # the matched cycle, which requires its distinct live heat-boundary contract.
+    point.update({P+'turbine__matched_cycle_enabled':0., P+'heat_rejection__cooling_water_enabled':0.})
+    cases, _ = study_route.run_points('cooling-current-primary-control', [point], tmp_path)
     case = cases[0]
     assert case.state == 'completed'
     expected = oracle_entry.evaluate(case.inputs)
     assert set(expected) <= set(case.outputs)
     for key, value in expected.items():
         assert case.outputs[key] == pytest.approx(value, rel=1e-9, abs=1e-9), key
-    # These primary physical outputs have not changed since the retained control.
-    primary = ('loop_mdot','loop_mdot_loop','loop_dp_loop','loop_T_comp_in',
-               'loop_w_fluid','loop_p_elec','loop_q_ihx','loop_p_pump_total','loop_q_recovered_total')
-    for name in primary:
-        assert case.outputs[oracle_entry.ORACLE_OUTPUT_TO_CHANNEL[name]] == pytest.approx(historical['outputs'][name], rel=1e-12, abs=1e-10)
+    # Required flow and heat recovery retain their physical balance identities.
+    q = P+'heat_transport__primary_loop__'
+    assert case.outputs[q+'q_ihx'] == pytest.approx(case.outputs[P+'blanket__source_heat__q_source'] + case.outputs[q+'w_fluid'])
+    assert case.outputs[q+'mdot_loop'] == pytest.approx(case.outputs[q+'mdot']/case.outputs[P+E+'ihx_count'])
 
 
 @pytest.mark.parametrize('proposal_id', ['r2-forward', 'r2-table5'])
-def test_retained_zero_current_boundary_preserves_exact_predicate(runtime, tmp_path, proposal_id):
-    import oracle_entry
+def test_retired_current_selection_controls_are_rejected(runtime, tmp_path, proposal_id):
+    # Old zero-boundary proposals contain automatic magnet-selection inputs.
+    # Preserve them as historical evidence, and require explicit migration.
     import study_route
     records = json.loads((ROOT/'work/orchestration/goals/installed-cooling-equipment-costs/evidence/starting-cases.json').read_text())['cases']
     point = next(row['inputs'] for row in records if row['proposal_id'] == proposal_id)
-    cases, _ = study_route.run_points('cooling-retained-current-boundary', [point], tmp_path)
-    case = cases[0]
-    assert case.state == 'completed'
-    expected = oracle_entry.evaluate(case.inputs)
-    for name in ('margin_fraction', 'margin_current'):
-        channel = P + 'magnet__conductor_current__' + name
-        assert case.outputs[channel] < 0.0
-        assert expected[channel] == case.outputs[channel]
-    # No tolerance or zero snapping may turn this retained failing predicate into a pass.
-    channel = P + 'magnet__conductor_current__margin_fraction'
-    assert (expected[channel] >= 0.0) == (case.outputs[channel] >= 0.0)
+    with pytest.raises(study_route.RouteError, match='retired magnet entry keys'):
+        study_route.run_points('cooling-retired-selection-refusal', [point], tmp_path)
 
 
 @pytest.mark.parametrize('enabled,cost,energy,valid', [

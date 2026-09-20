@@ -13,9 +13,9 @@ NAMES = ('required_tapes', 'required_conductor_area', 'required_pack_area',
          'required_effective_density', 'selected_effective_density', 'tape_available_current')
 
 @pytest.fixture(scope='module', params=['wrapper', 'completion'])
-def sizing(runtime_paths, request):
-    module = importlib.import_module('stellarator_tea.modules.mfe_conductor_current.current_driven_pack_sizing')
-    impl = importlib.import_module('stellarator_tea.handwritten.mfe_conductor_current.current_driven_pack_sizing_impl')
+def sizing(runtime_paths, request, optional_analysis):
+    module = importlib.import_module('optional_magnet_tea.modules.mfe_conductor_current.current_driven_pack_sizing')
+    impl = importlib.import_module('optional_magnet_tea.handwritten.mfe_conductor_current.current_driven_pack_sizing_impl')
     if request.param == 'wrapper':
         return lambda changes={}: module.Current_Driven_Pack_SizingModule().run(**(BASE | changes)).data.model_dump()
     return lambda changes={}: dict(zip(NAMES, impl.run_current_driven_pack_sizing(module.Current_Driven_Pack_SizingInput(**(BASE | changes))), strict=True))

@@ -4,17 +4,17 @@ from simkit.config.schema import MultiOutput
 class Cooling_EquipmentOutput(MultiOutput):
     """Multi-output container for Cooling_Equipment.
 
-Conceptual helium/HITEC cooling equipment. Guarded manual completion implements the equations below; all costs are USD2025 annual-CPI purchasing-power proxies. This is a priced subset, with unpriced valves, supports, insulation, salt auxiliaries and conversion-side inventory. Pressure qualification and helium/salt machine technology transfers are unvalidated. Geometry and lifecycle assumptions are agent-selected scenarios.
+Conceptual helium/HITEC cooling equipment. WI-078: selected machine design-point pumping duty/pressure and salt flow/head/efficiencies price installed packages, spares and replacements independently of operating demand. The 50hp helium normalization is pumping duty, not motor nameplate. Purchased fluid stocks are supplied; required fill derives from represented volumes and operating density. Reserve targets are suggestions only. Signed represented-fill margins are purchased minus required kg; represented_fill_ok is their nonnegative conjunction, not complete inventory qualification. Off-design machine performance remains unqualified. Source: work/orchestration/goals/preserve-model-design-choices/evidence/cooling-binding-plan.md and architecture-review-r2.md. Basis: approved MR-7 interpretation; unchanged source price correlations, fixed HX/pipe geometry and operating closures. Guarded manual completion implements the equations below; all costs are USD2025 annual-CPI purchasing-power proxies. This is a priced subset, with unpriced valves, supports, insulation, salt auxiliaries and conversion-side inventory. Pressure qualification and helium/salt machine technology transfers are unvalidated. Geometry and lifecycle assumptions are agent-selected scenarios.
 
 Output basis: HX masses and duty per IHX; HX areas per IHX; salt_flow per circuit; all pipe and inventory quantities plant total; machine outputs per machine except counts.
 
 Normative equations: two parallel machines and one fixed OB exchanger per circuit. BNL machine1978=550000*(0.5+0.5*(p_suction/(735*6894.757293168))*(shaft_W/745.6998715822702/50)^0.28); package=1.2*machine. Design fee130000 once. Installation=0.27*1.155*vendor; procurement services remain CAS30. Tube count14852, OD0.01905m, length11.6m; area=pi*OD*length*count. Tube mass=8000*area*t*(1-t/OD). Shell bore3.2m, length13m; annular shell and spherical pair of heads; two gross0.6m tubesheets; explicit accessory mass. Required area=(Q_IHX/N)/(UF*LMTD), UF=267.8e6/[area*(35-19.3)/ln(35/19.3)]. Hot/cold approaches are helium hot minus738.15K and suction minus543.15K.
 
-Primary mains OD1.3/1.1m,65mm walls,50m each; nine branches per leg, ID=mainID/3,30mm wall, length=(4000/9-100)/18. Straight annular steel times(1+14440/66560) prices fittings. Secondary ID0.4m,20mm wall,50m each leg. All lengths scale with layout_multiplier. Delivered fabrication=stainless_fabrication_usd2017_per_kg_in (nominal310USD2017/kg); pipe field labor=0.50*fabrication. HX installation=0.024 labor+0.002 material. Salt shell void=pi*1.6^2*11.6-tube_outer_volume-accessory_mass/8000. Inventory volume is pipe+shell void only; cold density times(1+reserve) gives mass. Helium volume=pipe+61.5*N, pressure discharge, arithmetic-mean hot/suction temperature, ideal gas R=cp*(gamma-1)/gamma. Standard volume uses101325Pa/288.15K;14USD2024/m3. Source879m3/9circuit check is independent, never an added inventory.
+Primary mains OD1.3/1.1m,65mm walls,50m each; nine branches per leg, ID=mainID/3,30mm wall, length=(4000/9-100)/18. Straight annular steel times(1+14440/66560) prices fittings. Secondary ID0.4m,20mm wall,50m each leg. All lengths scale with layout_multiplier. Delivered fabrication=stainless_fabrication_usd2017_per_kg_in (nominal310USD2017/kg); pipe field labor=0.50*fabrication. HX installation=0.024 labor+0.002 material. Salt shell void=pi*1.6^2*11.6-tube_outer_volume-accessory_mass/8000. Inventory volume is pipe+shell void only; cold density gives required fill; times(1+reserve) gives an optional target. Purchased mass is independently supplied. Helium volume=pipe+61.5*N, pressure discharge, arithmetic-mean hot/suction temperature, ideal gas R=cp*(gamma-1)/gamma, supplies the required fill diagnostic. Standard volume uses101325Pa/288.15K;14USD2024/m3. Source879m3/9circuit check is independent, never an added inventory.
 
 Salt cp1560, density=max(2080-0.733*T_C,1000), viscosity=max(0.00622-1.02e-5*T_C,1e-6). Flow=Q_IHX*1e6/(1560*195); two pumps/circuit. Shaft=mdot*g*head/eta_p; electric=shaft/eta_motor. Pump CE500=3*exp(9.7171-0.6019*ln(S)+0.0519*ln(S)^2), S=Qgpm*sqrt(Hft). TEFC motor CE500=1.3*exp(5.8259+0.13141*l+0.053255*l^2+0.028628*l^3-0.0035549*l^4), l=ln(electric_hp). Pump domains S400..100000; type50..3500gpm,50..200ft,<=200shaft hp; motor base1..700hp, factor1..250hp. Salt pump installation repeats0.27*1.155. Straight losses sum f*L/D*v^2/(2g); f64/Re below2300, smooth Haaland(-1.8log10(6.9/Re))^-2 otherwise; transitional2300..4000 is flagged. Saltprice0=1.23USD2011/kg;1=2.53USD2021/kg; bulk category >=10millionkg.
 
-CPI1978=65.2,2006=201.6,2011=224.9,2017=245.1,2021=271.0,2024=313.7,2025=321.9. All prices multiply321.9/sourceCPI and costscale. One uninstalled spare of each machine per plant. Machine replacement repeats active purchases+installation+removal_multiplier*installation; bundle replacement repeats tube+accessory fabrication plus0.026 installation and0.024*removal_multiplier. Events k*life<years, discounted(1+r)^(-time), annualized r/(1-(1+r)^(-years)) or1/years at zero rate. Makeup=initial inventory cost*makeup_fraction. Delivered exclusion=active primary packages+primary spare+HX+both pipe fabrication bills; no installation, design fee, inventory, salt pumps or future replacement. Installed total=purchased total+installation total. Seven child costs sum installed total. Sourcefitargument above465C fails physical-interface screen.
+CPI1978=65.2,2006=201.6,2011=224.9,2017=245.1,2021=271.0,2024=313.7,2025=321.9. All prices multiply321.9/sourceCPI and costscale. One uninstalled spare of each machine per plant. Machine replacement repeats active purchases+installation+removal_multiplier*installation; bundle replacement repeats tube+accessory fabrication plus0.026 installation and0.024*removal_multiplier. Events k*life<years, discounted(1+r)^(-time), annualized r/(1-(1+r)^(-years)) or1/years at zero rate. Makeup=chosen initial inventory cost*makeup_fraction. Delivered exclusion=active primary packages+primary spare+HX+both pipe fabrication bills; no installation, design fee, inventory, salt pumps or future replacement. Installed total=purchased total+installation total. Seven child costs sum installed total. Sourcefitargument above465C fails physical-interface screen.
 
 Disabled returns finite zeros before active guards. Active requires finite numeric inputs, positive flows/temperatures/dimensions/lives, integer n_loops and n_mod=1, gamma>1,0<efficiencies<=1, shaft<=electric, tube wall<OD/2, suction pressure>0, positive terminal approaches and shell void; invalid arithmetic inputs raise ValueError. Range/capacity failures return false diagnostics with evaluable extrapolated prices.
 
@@ -25,17 +25,20 @@ Disabled returns finite zeros before active guards. Active requires finite numer
 SysML Source: root-0/analyses/mfe_cooling_equipment.sysml:3
     """
     salt_pump_flow: float = Field(description="salt_pump_flow output")
+    salt_represented_fill_margin_kg: float = Field(description="salt_represented_fill_margin_kg output")
     ihx_hot_approach: float = Field(description="ihx_hot_approach output")
     exchangers_cost: float = Field(description="exchangers_cost output")
     pressure_qualified: bool = Field(description="pressure_qualified output")
     ihx_installed_area: float = Field(description="ihx_installed_area output")
     pump_flow_gpm: float = Field(description="pump_flow_gpm output")
+    design_motor_electric_hp: float = Field(description="design_motor_electric_hp output")
     secondary_piping_cost: float = Field(description="secondary_piping_cost output")
     secondary_installation: float = Field(description="secondary_installation output")
     cycle_interface_ok: bool = Field(description="cycle_interface_ok output")
     salt_price_raw: float = Field(description="salt_price_raw output")
     salt_velocity_cold: float = Field(description="salt_velocity_cold output")
     primary_circulators_cost: float = Field(description="primary_circulators_cost output")
+    helium_represented_fill_margin_kg: float = Field(description="helium_represented_fill_margin_kg output")
     inventory_cost: float = Field(description="inventory_cost output")
     salt_expansion_ratio: float = Field(description="salt_expansion_ratio output")
     salt_straight_loss: float = Field(description="salt_straight_loss output")
@@ -50,29 +53,37 @@ SysML Source: root-0/analyses/mfe_cooling_equipment.sysml:3
     replacement_annual: float = Field(description="replacement_annual output")
     salt_makeup_annual: float = Field(description="salt_makeup_annual output")
     helium_makeup_annual: float = Field(description="helium_makeup_annual output")
+    salt_design_shaft_MW: float = Field(description="salt_design_shaft_MW output")
     inventory_complete: bool = Field(description="inventory_complete output")
     heads_mass: float = Field(description="heads_mass output")
+    helium_design_shaft_MW: float = Field(description="helium_design_shaft_MW output")
     primary_design: float = Field(description="primary_design output")
     salt_head_remaining: float = Field(description="salt_head_remaining output")
     installation_total: float = Field(description="installation_total output")
     salt_return_C: float = Field(description="salt_return_C output")
+    salt_design_electric_MW: float = Field(description="salt_design_electric_MW output")
     circulator_shaft_MW: float = Field(description="circulator_shaft_MW output")
     circulator_flow: float = Field(description="circulator_flow output")
     source_volume_ratio: float = Field(description="source_volume_ratio output")
+    represented_fill_defined: float = Field(description="represented_fill_defined output")
     purchased_total: float = Field(description="purchased_total output")
     delivered_total: float = Field(description="delivered_total output")
     primary_pipe_volume: float = Field(description="primary_pipe_volume output")
     bundle_event_purchase: float = Field(description="bundle_event_purchase output")
     bundle_mass: float = Field(description="bundle_mass output")
+    salt_inventory_target_mass_kg: float = Field(description="salt_inventory_target_mass_kg output")
     helium_standard_volume: float = Field(description="helium_standard_volume output")
     salt_shaft_MW: float = Field(description="salt_shaft_MW output")
+    helium_design_suction_Pa: float = Field(description="helium_design_suction_Pa output")
     helium_inventory_cost: float = Field(description="helium_inventory_cost output")
+    machine_off_design_performance_qualified: bool = Field(description="machine_off_design_performance_qualified output")
     salt_Re_hot: float = Field(description="salt_Re_hot output")
     salt_hx_volume: float = Field(description="salt_hx_volume output")
     hx_shell_bore: float = Field(description="hx_shell_bore output")
     inventory_source_volume_ok: bool = Field(description="inventory_source_volume_ok output")
     pump_shaft_hp: float = Field(description="pump_shaft_hp output")
     salt_pipe_volume: float = Field(description="salt_pipe_volume output")
+    design_motor_base_ok: bool = Field(description="design_motor_base_ok output")
     cycle_temperature_gap: float = Field(description="cycle_temperature_gap output")
     primary_piping_cost: float = Field(description="primary_piping_cost output")
     hx_purchase: float = Field(description="hx_purchase output")
@@ -87,6 +98,8 @@ SysML Source: root-0/analyses/mfe_cooling_equipment.sysml:3
     pump_size_ok: bool = Field(description="pump_size_ok output")
     hx_shell_length: float = Field(description="hx_shell_length output")
     salt_inventory_cost: float = Field(description="salt_inventory_cost output")
+    design_pump_type_ok: bool = Field(description="design_pump_type_ok output")
+    design_motor_factor_ok: bool = Field(description="design_motor_factor_ok output")
     conversion_heat_MW: float = Field(description="conversion_heat_MW output")
     ihx_cold_approach: float = Field(description="ihx_cold_approach output")
     salt_bulk_scale_ok: bool = Field(description="salt_bulk_scale_ok output")
@@ -97,9 +110,12 @@ SysML Source: root-0/analyses/mfe_cooling_equipment.sysml:3
     helium_hx_volume: float = Field(description="helium_hx_volume output")
     tube_mass: float = Field(description="tube_mass output")
     consumables_annual: float = Field(description="consumables_annual output")
+    design_pump_shaft_hp: float = Field(description="design_pump_shaft_hp output")
     secondary_pipe_installation: float = Field(description="secondary_pipe_installation output")
+    design_pump_flow_gpm: float = Field(description="design_pump_flow_gpm output")
     machine_event_installation: float = Field(description="machine_event_installation output")
     secondary_vendor: float = Field(description="secondary_vendor output")
+    salt_design_head_m: float = Field(description="salt_design_head_m output")
     machine_event_removal: float = Field(description="machine_event_removal output")
     salt_Re_cold: float = Field(description="salt_Re_cold output")
     machine_events: float = Field(description="machine_events output")
@@ -108,15 +124,21 @@ SysML Source: root-0/analyses/mfe_cooling_equipment.sysml:3
     primary_spare: float = Field(description="primary_spare output")
     secondary_spare: float = Field(description="secondary_spare output")
     pump_head_ft: float = Field(description="pump_head_ft output")
+    helium_required_fill_mass_kg: float = Field(description="helium_required_fill_mass_kg output")
     secondary_pipe_mass: float = Field(description="secondary_pipe_mass output")
     pump_type_ok: bool = Field(description="pump_type_ok output")
+    helium_inventory_target_mass_kg: float = Field(description="helium_inventory_target_mass_kg output")
+    salt_required_fill_mass_kg: float = Field(description="salt_required_fill_mass_kg output")
     helium_price_year: float = Field(description="helium_price_year output")
     ihx_count: float = Field(description="ihx_count output")
     salt_flow_regime_ok: bool = Field(description="salt_flow_regime_ok output")
     bundle_event_installation: float = Field(description="bundle_event_installation output")
+    design_pump_head_ft: float = Field(description="design_pump_head_ft output")
     bundle_event_removal: float = Field(description="bundle_event_removal output")
     helium_price_raw: float = Field(description="helium_price_raw output")
+    design_pump_size_ok: bool = Field(description="design_pump_size_ok output")
     ihx_lmtd: float = Field(description="ihx_lmtd output")
+    represented_fill_ok: bool = Field(description="represented_fill_ok output")
     salt_velocity_hot: float = Field(description="salt_velocity_hot output")
     hx_mass: float = Field(description="hx_mass output")
     helium_inventory_mass: float = Field(description="helium_inventory_mass output")
@@ -129,11 +151,13 @@ SysML Source: root-0/analyses/mfe_cooling_equipment.sysml:3
     salt_head_ok: bool = Field(description="salt_head_ok output")
     salt_price_year: float = Field(description="salt_price_year output")
     circulator_electric_MW: float = Field(description="circulator_electric_MW output")
+    design_pump_size_factor: float = Field(description="design_pump_size_factor output")
     ihx_capacity_ok: bool = Field(description="ihx_capacity_ok output")
     salt_pump_shaft_MW: float = Field(description="salt_pump_shaft_MW output")
     ihx_duty_MW: float = Field(description="ihx_duty_MW output")
     installed_total: float = Field(description="installed_total output")
     bundle_events: float = Field(description="bundle_events output")
     helium_price_transfer_validated: bool = Field(description="helium_price_transfer_validated output")
+    salt_design_flow_kg_s: float = Field(description="salt_design_flow_kg_s output")
     circulator_suction_Pa: float = Field(description="circulator_suction_Pa output")
     motor_base_ok: bool = Field(description="motor_base_ok output")

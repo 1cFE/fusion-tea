@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:600
+SysML Source: root-0/analyses/mfe_facilities.sysml:763
 
 SysML Expressions:
     cost = active_in * amount_in
@@ -21,7 +21,7 @@ def run_facility_site_allowance(inputs: Facility_Site_AllowanceInput) -> float:
 
 *Source**: work/active/WI-068_layout-based-facilities/design.md. **Ref**: account replacement map and component-owned aggregation. **Basis**: Retain the identified site-improvement allowance once in an active proposed layout; dormant contribution zero.
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:600
+SysML Source: root-0/analyses/mfe_facilities.sysml:763
 
 SysML Expressions:
     cost = active_in * amount_in

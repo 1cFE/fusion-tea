@@ -28,9 +28,9 @@ Outputs:
     - cost_2025: cost_2025 result
     - cost_2018: cost_2018 result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:504
+SysML Source: root-0/analyses/mfe_facilities.sysml:667
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:504
+SysML Source: root-0/analyses/mfe_facilities.sysml:667
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_facilities/facility_civil_cost_impl.py
@@ -111,9 +111,9 @@ Outputs:
     - cost_2025: cost_2025 result
     - cost_2018: cost_2018 result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:504
+SysML Source: root-0/analyses/mfe_facilities.sysml:667
 
-    SysML Source: root-0/analyses/mfe_facilities.sysml:504
+    SysML Source: root-0/analyses/mfe_facilities.sysml:667
 
     Calculation Specification:
         See documentation:

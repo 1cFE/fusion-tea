@@ -1,6 +1,7 @@
 from tests.models.current_mfe_regressions import (CURRENT_PREDICATES, historical_point, assert_historical_native, assert_current_predicates, PARTITIONS)
 """WI-062 analytic current capacity, domains and physical inventory propagation."""
 import importlib
+import math
 import json
 from pathlib import Path
 import pytest
@@ -62,9 +63,9 @@ def test_retention_allowance_and_distribution_are_distinct(current):
     assert row['parallel_tapes_reference']==16
 
 @pytest.mark.codegen_available
-@pytest.mark.parametrize('changes',[{}, {'magnet__coil__turn_current':25000.},
- {'magnet__coil__I_coil':15.4e6*1.05},{'magnet__winding_pack__B_max':30.},
- {'magnet__winding_pack__j_wp':150.},{'magnet__winding_pack__tape_width':.004},
+@pytest.mark.parametrize('changes',[{}, {'magnet__coil__turn_current':25000.,'magnet__coil__reference_turns':616.},
+ {'magnet__coil__turn_current':50000.*1.05},{'magnet__winding_pack__B_max':30.},
+ {'magnet__winding_pack__wp_side':math.sqrt(15.4e6/150.)/1000.},{'magnet__winding_pack__tape_width':.004},
  {'magnet__winding_pack__degradation_factor':.8},{'magnet__winding_pack__allowable_fraction':.6}])
 def test_public_native_oracle(evaluate,changes):
     import oracle_entry
@@ -75,7 +76,7 @@ def test_public_native_oracle(evaluate,changes):
 
 @pytest.mark.codegen_available
 def test_series_turn_repartition(evaluate):
-    a=evaluate();b=evaluate({'magnet__coil__turn_current':25000.})
+    a=evaluate();b=evaluate({'magnet__coil__turn_current':25000.,'magnet__coil__reference_turns':616.})
     for scope in ['reference','set']:
         assert output(b,'magnet__conductor_current__parallel_tapes_'+scope)==pytest.approx(output(a,'magnet__conductor_current__parallel_tapes_'+scope)/2)
         assert output(b,'magnet__conductor_current__operating_fraction_'+scope)==pytest.approx(output(a,'magnet__conductor_current__operating_fraction_'+scope))

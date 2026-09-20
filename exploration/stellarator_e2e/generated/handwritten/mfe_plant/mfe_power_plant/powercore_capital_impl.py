@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:449
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:451
 
 SysML Expressions:
 """
@@ -15,7 +15,7 @@ from stellarator_tea.modules.mfe_plant.mfe_power_plant.powercore_capital import 
 def run_powercore_capital(inputs: powercore_capitalInput) -> float:
     """Execute powercore_capital calculation.
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:449
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:451
 
 Args:
     inputs: Input parameters validated against powercore_capitalInput schema

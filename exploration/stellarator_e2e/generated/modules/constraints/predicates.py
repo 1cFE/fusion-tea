@@ -85,10 +85,20 @@ def constraint_pred_definition_mfe_viability__economic_recirculating_threshold(r
     value = _cmp('<=', rec_frac, threshold)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((threshold - rec_frac)) if (_fin(rec_frac) and _fin(threshold)) else None))
 
+# definition:mfe_fuel_cycle::'Fuel Processing Capacity'
+def constraint_pred_definition_mfe_fuel_cycle__fuel_processing_capacity(defined_in, margin_in):
+    value = _and(_cmp('>=', defined_in, 1.0), _cmp('>=', margin_in, 0.0))
+    return _PredicateBodyResult(actual_value=value, source_margin=None)
+
 # definition:mfe_viability::'Cycle Fit Domain'
 def constraint_pred_definition_mfe_viability__cycle_fit_domain(domain_product_in):
     value = _cmp('>=', domain_product_in, 0.0)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((domain_product_in - 0.0)) if (_fin(domain_product_in) and _fin(0.0)) else None))
+
+# definition:mfe_facilities::'Facility Nonnegative Margin'
+def constraint_pred_definition_mfe_facilities__facility_nonnegative_margin(margin_in):
+    value = _cmp('>=', margin_in, 0.0)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((margin_in - 0.0)) if (_fin(margin_in) and _fin(0.0)) else None))
 
 # definition:mfe_viability::'Beta Limit'
 def constraint_pred_definition_mfe_viability__beta_limit(beta_in, beta_limit_in):
@@ -105,11 +115,6 @@ def constraint_pred_definition_mfe_viability__divertor_target_heat_limit(q_targe
     value = _cmp('<=', q_target_peak_in, q_target_limit_in)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((q_target_limit_in - q_target_peak_in)) if (_fin(q_target_peak_in) and _fin(q_target_limit_in)) else None))
 
-# definition:mfe_facilities::'Facility Nonnegative Margin'
-def constraint_pred_definition_mfe_facilities__facility_nonnegative_margin(margin_in):
-    value = _cmp('>=', margin_in, 0.0)
-    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((margin_in - 0.0)) if (_fin(margin_in) and _fin(0.0)) else None))
-
 # definition:mfe_heating_chain::'Heating Efficiency Upper'
 def constraint_pred_definition_mfe_heating_chain__heating_efficiency_upper(efficiency):
     value = _cmp('<=', efficiency, 1.0)
@@ -123,6 +128,11 @@ def constraint_pred_definition_mfe_viability__net_power_positive(net_electric):
 # definition:mfe_matched_steam_cycle::'Active Steam Heat Direction'
 def constraint_pred_definition_mfe_matched_steam_cycle__active_steam_heat_direction(enabled_in, gap_in):
     value = _or(_cmp('<=', enabled_in, 0.0), _cmp('>', gap_in, 0.0))
+    return _PredicateBodyResult(actual_value=value, source_margin=None)
+
+# definition:mfe_viability::'Represented Coolant Fill'
+def constraint_pred_definition_mfe_viability__represented_coolant_fill(defined_in, helium_margin_in, salt_margin_in):
+    value = _and(_and(_cmp('>=', defined_in, 1.0), _cmp('>=', helium_margin_in, 0.0)), _cmp('>=', salt_margin_in, 0.0))
     return _PredicateBodyResult(actual_value=value, source_margin=None)
 
 # definition:mfe_viability::'Burn Hold'

@@ -70,8 +70,6 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}heat_transport__equipment_cost_mode": "cooling_cost_mode",
     f"{P}heat_transport__secondary_energy_mode": "cooling_energy_mode",
 
-    f"{P}magnet__winding_pack__sizing_mode": "magnet_sizing_mode",
-    f"{P}magnet__winding_pack__inventory_multiplier": "magnet_inventory_multiplier",
     **{f"{P}magnet__winding_pack__{name}": "magnet_" + name for name in (
         "reference_tape_current", "material_factor", "orientation_factor", "cabling_factor",
         "degradation_factor", "sharing_factor", "allowable_fraction", "allow_field_extrapolation",
@@ -96,8 +94,6 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
         'q_nuc_structure': 'cryo_q_nuc_structure', 'rho_structure': 'cryo_rho_structure',
         'joint_drive_fraction': 'cryo_joint_drive_fraction',
     }.items()},
-    f"{P}magnet__c_support": "magnet_support_coefficient",
-    f"{P}magnet__e_support": "magnet_support_exponent",
     f"{P}magnet__legacy_casing_fraction": "magnet_legacy_casing_fraction",
     f"{P}structure__residual_fraction": "structure_residual_fraction",
     f"{P}plasma__R": "R",
@@ -116,10 +112,12 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     # (WI-035 inversion — the field is a channel now); the coil-set current and
     # its facts are the entry keys.
     f"{P}magnet__coil__n_coils": "magnet_n_coils",
-    f"{P}magnet__coil__I_coil": "magnet_I_coil",
+    f"{P}magnet__coil__reference_turns": "magnet_reference_turns",
+    f"{P}magnet__winding_pack__wp_side": "magnet_wp_side",
+    f"{P}magnet__m_support": "magnet_support_mass",
+    f"{P}magnet__casing__m_casing": "magnet_m_casing",
     f"{P}magnet__coil__k_link": "magnet_k_link",
     f"{P}magnet__coil__f_set": "magnet_f_set",
-    f"{P}magnet__winding_pack__j_wp": "magnet_j_wp",
     # WI-058 (2026-09-14): the winding length follows the coil bore; the printed circumference
     # at the reference bore replaces the WI-036 shape factor over the major radius.
     f"{P}magnet__coil__c_coil_ref": "magnet_c_coil_ref",
@@ -140,9 +138,7 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
         "cost_escalation", "nonplanar_factor",
         "f_wp_perimeter", "insulation_sheet_thickness", "insulation_sheet_price",
     )},
-    # WI-044: magnet__m_casing retired (the casing mass is computed from the stored
-    # energy); the five coil-bore anchors are the entry keys that replaced it.
-    f"{P}magnet__casing__m_casing_ref": "magnet_m_casing_ref",
+    # Stored-energy reference anchors remain separate from supplied masses.
     f"{P}magnet__casing__W_mag_ref": "magnet_W_mag_ref",
     f"{P}magnet__coil__I_ref": "magnet_I_ref",
     f"{P}magnet__coil__R_ref": "magnet_R_ref",
@@ -150,8 +146,6 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}magnet__casing__steel_price": "magnet_steel_price",
     f"{P}magnet__casing__f_steel_fab": "magnet_f_steel_fab",
     f"{P}magnet__winding_pack__B_max": "magnet_B_max",
-    f"{P}magnet__winding_pack__B_grade_ref": "magnet_B_grade_ref",
-    f"{P}magnet__winding_pack__field_exponent": "magnet_field_exponent",
     f"{P}magnet__coil__peak_ratio": "magnet_peak_ratio",
     f"{P}plasma__n_e0": "n_e0",
     # WI-042: alpha_n_e retired as an entry key -- the electron profile is derived
@@ -393,9 +387,8 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
         'required_tbr', 'design_margin', 'fuel_margin', 'numerical_margin', 'production_rate',
         'extracted_supply_rate', 'extraction_loss_rate', 'recycle_loss_rate', 'decay_rate',
         'stock_growth_rate', 'balance_rate', 'defined_flag')},
-    **{"sizing_" + name: f"{P}magnet__current_sizing__{name}" for name in (
-        "required_tapes", "required_conductor_area", "required_pack_area",
-        "required_effective_density", "selected_effective_density", "tape_available_current")},
+    "winding_I_coil": f"{P}magnet__winding_state__I_coil",
+    "winding_j_wp_effective": f"{P}magnet__winding_state__j_wp_effective",
     **{"conductor_" + name: f"{P}magnet__conductor_current__{name}" for name in (
         "parallel_tapes_set", "parallel_tapes_reference", "tape_critical_current",
         "critical_current_reference", "critical_current_set", "operating_fraction_reference",
@@ -432,7 +425,6 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "p_cryo_shield": f"{P}cryoplant__shield_elec__p_elec",
     "p_tf_total": f"{P}power_supplies__tf_power__total",
     "p_cold": f"{P}cryoplant__cold_load__p_cold",
-    "support_mass": f"{P}magnet__support_mass__m_support",
     "structure_nuclear": f"{P}cryoplant__cold_load__q_structure_nuclear",
     "structure_legacy_cost": f"{P}structure__structure_cost__legacy_cost",
     **{f'thermal_{name}': f'{P}cryoplant__inventory__{channel}' for name, channel in {
@@ -455,14 +447,11 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "eps_cond": f"{P}magnet__cond_strain__eps_cond",  # WI-036 conductor strain operand
     # WI-044: the coil-bore channels
     "W_mag": f"{P}magnet__stored_energy__W_mag",  # stored magnetic energy (eq. 2.82 shape, anchored)
-    "m_casing": f"{P}magnet__casing_mass__m_casing",  # computed casing mass (eq. 56 shape, anchored)
     "r_coil_centre": f"{P}rb__r_coil_centre",  # the coil bore the shapes take
     "A": f"{P}plasma__geom__A",  # reported aspect ratio
     "winding_pack_legacy": f"{P}magnet__winding_pack_cost__cost",  # retained WI-035 comparison
     "winding_pack": f"{P}magnet__winding_procurement__cost",  # WI-040 selected account
     "vol_winding_pack": f"{P}magnet__wp_volume__vol_winding_pack",
-    **{'conductor_' + name: f'{P}magnet__conductor_grade__{name}' for name in (
-        'quantity_factor', 'j_wp_effective')},
     **{"winding_" + name: f"{P}magnet__material_inventory__{name}" for name in (
         "mass_copper", "mass_solder", "mass_steel", "mass_helium", "cost_copper",
         "cost_solder", "cost_steel", "cost_helium", "material_cost", "helium_density",
@@ -626,7 +615,7 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
 # independent oracle, never discovered from production wrappers.
 ENTRY_KEY_TO_ORACLE_INPUT.update({
     f'{P}buildings__{key}': 'facility_'+key for key in vs.facilities_oracle.DEFAULTS
-    if key not in ('initial_sector_start_days', 'cooling_initial_handoff_days')
+    if key not in ('initial_sector_start_days', 'cooling_initial_handoff_days', 'selected_parcel_x_min', 'selected_parcel_y_min')
 })
 ORACLE_OUTPUT_TO_CHANNEL.update({
     'facility_'+key: f'{P}buildings__layout__{key}'
@@ -657,6 +646,11 @@ ORACLE_OUTPUT_TO_CHANNEL.update({
     'shipping_remaining_base': f'{P}shipping_scope__remaining_shipping_base',
 })
 
+# WI-078 independently declared supplied design-point interface.
+ENTRY_KEY_TO_ORACLE_INPUT.update({f"{P}heat_transport__equipment_{key}": "cooling_"+key for key in ['helium_design_shaft_MW', 'helium_design_suction_Pa', 'salt_design_flow_kg_s', 'salt_design_head_m', 'salt_design_eta_p', 'salt_design_eta_motor', 'helium_purchased_mass_kg', 'salt_purchased_mass_kg']})
+ENTRY_KEY_TO_ORACLE_INPUT[f"{P}heat_transport__mdot_loop_rated"] = "mdot_loop_rated"
+ORACLE_OUTPUT_TO_CHANNEL.update({"cooling_"+key:f"{P}heat_transport__equipment__{key}" for key in (*vs.cooling_oracle.NUMERIC_OUTPUTS, *vs.cooling_oracle.BOOLEAN_OUTPUTS)})
+
 # WI-069 fields are the reviewed public ABI, not introspected production code.
 ENTRY_KEY_TO_ORACLE_INPUT.update({
     f'{P}fuel_cycle__{key}': 'inventory_'+key for key in vs.inventory_oracle.DEFAULTS
@@ -667,8 +661,8 @@ ORACLE_OUTPUT_TO_CHANNEL.update({
 })
 
 # WI-070 reviewed explicit processing ABI.
-ENTRY_KEY_TO_ORACLE_INPUT.update({f'{P}fuel_cycle__processing_'+key:'processing_'+key for key in ['enabled', 'source_conditions', 'capacity_margin', 'price_multiplier', 'reference_flow', 'exponent', 'target_cpi', 'transfer_cpi', 'transfer_capital', 'transfer_installation', 'cleanup_cpi', 'cleanup_capital', 'cleanup_installation', 'distiller_cpi', 'distiller_capital', 'distiller_installation', 'containment_cpi', 'containment_capital', 'containment_installation']})
-ORACLE_OUTPUT_TO_CHANNEL.update({'processing_'+key:f'{P}fuel_cycle__processing_cost__'+key for key in ['flow_kg_s', 'capacity_kg_s', 'plant_capacity_kg_s', 'flow_ratio', 'scaling_factor', 'transfer_reference_capital', 'transfer_reference_installation', 'transfer_capital', 'transfer_installation', 'cleanup_reference_capital', 'cleanup_reference_installation', 'cleanup_capital', 'cleanup_installation', 'distiller_reference_capital', 'distiller_reference_installation', 'distiller_capital', 'distiller_installation', 'containment_reference_capital', 'containment_reference_installation', 'containment_capital', 'containment_installation', 'equipment_total', 'installation_total', 'module_total', 'new_total', 'cost', 'defined_flag']})
+ENTRY_KEY_TO_ORACLE_INPUT.update({f'{P}fuel_cycle__processing_'+key:'processing_'+('capacity' if key == 'capacity_kg_s' else key) for key in ['enabled', 'source_conditions', 'capacity_kg_s', 'price_multiplier', 'reference_flow', 'exponent', 'target_cpi', 'transfer_cpi', 'transfer_capital', 'transfer_installation', 'cleanup_cpi', 'cleanup_capital', 'cleanup_installation', 'distiller_cpi', 'distiller_capital', 'distiller_installation', 'containment_cpi', 'containment_capital', 'containment_installation']})
+ORACLE_OUTPUT_TO_CHANNEL.update({'processing_'+key:f'{P}fuel_cycle__processing_cost__'+key for key in ['flow_kg_s', 'capacity_kg_s', 'plant_capacity_kg_s', 'plant_demand_kg_s', 'capacity_margin_kg_s', 'capacity_evaluation_defined', 'flow_ratio', 'scaling_factor', 'transfer_reference_capital', 'transfer_reference_installation', 'transfer_capital', 'transfer_installation', 'cleanup_reference_capital', 'cleanup_reference_installation', 'cleanup_capital', 'cleanup_installation', 'distiller_reference_capital', 'distiller_reference_installation', 'distiller_capital', 'distiller_installation', 'containment_reference_capital', 'containment_reference_installation', 'containment_capital', 'containment_installation', 'equipment_total', 'installation_total', 'module_total', 'new_total', 'cost', 'defined_flag']})
 ORACLE_OUTPUT_TO_CHANNEL['shipping_fuel_installation_exclusion'] = f'{P}shipping_scope__fuel_installation_exclusion'
 
 # WI-073 paths read from the stock-generated parameter and output contracts.
@@ -727,7 +721,6 @@ ORACLE_OUTPUT_TO_CHANNEL.update({
         'cooling_replacements': 'heat_transport__cooling_selection__replacement_annual',
         'cooling_shipping': 'heat_transport__cooling_selection__shipping_exclusion',
         'coil_length': 'magnet__coil_length__c_coil',
-        'wp_side': 'magnet__wp_sizing__wp_side',
         'cold_volume': 'magnet__wp_volume__vol_cold_total',
         'blanket_volume': 'rb__blanket_vol',
         'outer_radius': 'rb__outer_radius',
@@ -855,7 +848,7 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
     },
     f"{P}loop_capacity_ok__d77f6027ceb27852": {
         "mdot_loop_in": {"kind": "channel", "key": f"{P}heat_transport__primary_loop__mdot_loop"},
-        "mdot_loop_rated_in": {"kind": "input", "key": f"{P}heat_transport__mdot_loop_ref"},
+        "mdot_loop_rated_in": {"kind": "input", "key": f"{P}heat_transport__mdot_loop_rated"},
     },
     f"{P}cycle_domain_ok__ba3fa9c3653b3fd3": {
         "domain_product_in": {"kind": "channel", "key": f"{P}turbine__cycle__domain_product"},
@@ -884,12 +877,19 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
 }
 
 
+# MR-7 actual producer operands; stable IDs read from the regenerated catalog.
+OPERAND_BINDINGS.update({'stellarator_09__stellaris__facility_material_capacity_ok__b02f74ca2b907a86': {'margin_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__buildings__layout__unused_material_capacity'}}, 'stellarator_09__stellaris__facility_geometry_ok__e2729a4ee0257d98': {'margin_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__buildings__layout__geometry_fit_margin_m'}}, 'stellarator_09__stellaris__facility_occupancy_ok__2c505953d2466dad': {'margin_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__buildings__layout__occupancy_area_margin_m2'}}, 'stellarator_09__stellaris__facility_parcel_ok__6c9b12b61636c539': {'margin_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__buildings__layout__parcel_fit_margin_m'}}, 'stellarator_09__stellaris__fuel_processing_capacity_ok__ddb8525b2bda8f0a': {'defined_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__fuel_cycle__processing_cost__capacity_evaluation_defined'}, 'margin_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__fuel_cycle__processing_cost__capacity_margin_kg_s'}}, 'stellarator_09__stellaris__represented_coolant_fill_ok__e6341404f9f2ddda': {'defined_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__heat_transport__equipment__represented_fill_defined'}, 'helium_margin_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__heat_transport__equipment__helium_represented_fill_margin_kg'}, 'salt_margin_in': {'kind': 'channel', 'key': 'stellarator_09__stellaris__heat_transport__equipment__salt_represented_fill_margin_kg'}}})
+
 class OracleSeamError(Exception):
     """A point, key, or output this seam cannot map. Always a mechanical failure."""
 
 
 def _oracle_overrides(point: Mapping[str, float]) -> dict[str, float]:
     """Translate qualified current entry keys, refusing undeclared inputs."""
+    retired_magnet = {P + "magnet__" + name for name in ('coil__I_coil', 'winding_pack__j_wp', 'winding_pack__B_grade_ref', 'winding_pack__field_exponent', 'winding_pack__sizing_mode', 'winding_pack__inventory_multiplier', 'c_support', 'e_support', 'casing__m_casing_ref')}
+    obsolete = sorted(retired_magnet.intersection(point))
+    if obsolete:
+        raise OracleSeamError(f"retired magnet entry keys {obsolete}; migrate to supplied pack side, reference turns and masses")
     if f"{P}magnet__R0" in point:
         raise OracleSeamError(f"retired entry key {P}magnet__R0; use plant R")
     overrides: dict[str, float] = {}
@@ -951,3 +951,9 @@ def operand_bindings() -> dict[str, dict[str, dict[str, str]]]:
         cid: {name: dict(binding) for name, binding in ops.items()}
         for cid, ops in OPERAND_BINDINGS.items()
     }
+
+# WI-076 absolute parcel coordinates are identities of public signed offsets.
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    "facility_selected_parcel_"+axis+"_min": f"{P}buildings__selected_parcel_{axis}_min__selected_parcel_{axis}_min"
+    for axis in ("x", "y")
+})

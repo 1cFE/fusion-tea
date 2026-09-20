@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 @pytest.fixture(scope='module')
-def modules():
+def modules(optional_analysis):
     paths = [str(ROOT / 'exploration/stellarator_e2e/pkg')]
     if os.environ.get('STOP_PARSER_TEAX_ROOT'):
         paths.append(str(Path(os.environ['STOP_PARSER_TEAX_ROOT']) / 'packages/teax-simkit'))
@@ -19,11 +19,11 @@ def modules():
         sys.path.insert(0, path)
     result = {}
     for name in ('winding_pack_sizing', 'winding_pack_stress', 'coil_set_axis_field'):
-        module = importlib.import_module('stellarator_tea.modules.mfe_magnet_field.' + name)
+        module = importlib.import_module('optional_magnet_tea.modules.mfe_magnet_field.' + name)
         cls = {'winding_pack_sizing': 'Winding_Pack_SizingModule',
                'winding_pack_stress': 'Winding_Pack_StressModule',
                'coil_set_axis_field': 'Coil_Set_Axis_FieldModule'}[name]
-        assert Path(module.__file__).resolve().is_relative_to(ROOT / 'exploration/stellarator_e2e/generated')
+        assert Path(module.__file__).resolve().is_relative_to(optional_analysis)
         result[name] = getattr(module, cls)()
     yield result
     for path in paths:

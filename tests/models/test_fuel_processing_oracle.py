@@ -8,7 +8,7 @@ from tests.models.test_winding_pack_cost import runtime_paths, evaluate, output,
 
 CASES = [({},'base'),({'fuel_cycle__burn_fraction':.025},'burn'),
  ({'plasma__T_i0':16.},'power'),({'fuel_cycle__processing_price_multiplier':1.7},'price'),
- ({'fuel_cycle__processing_capacity_margin':1.4},'margin'),
+ ({'fuel_cycle__processing_capacity_kg_s':0.00021},'margin'),
  ({'fuel_cycle__processing_containment_cpi':65.2},'date'),
  ({'fuel_cycle__processing_source_conditions':False},'undeclared'),
  ({'fuel_cycle__processing_enabled':False},'legacy'),
@@ -24,7 +24,8 @@ def test_all_mapped_native_outputs_at_public_cases(evaluate,changes,label):
     for key,value in expected.items():
         assert row.outputs[key] == pytest.approx(value,rel=1e-9,abs=1e-18 if '__inventory__' in key else 1e-6),(label,key)
     if label=='base':
-        assert output(row,'fuel_cycle__processing_cost__cost')==pytest.approx(22786229.4037934,abs=1e-6)
+        assert output(row,'fuel_cycle__processing_cost__capacity_kg_s') == 0.00015
+        assert output(row,'fuel_cycle__processing_cost__scaling_factor') == pytest.approx((0.00015/2.08e-5)**.3)
     if label=='undeclared':
         assert output(row,'fuel_cycle__processing_cost__defined_flag')==0
         assert output(row,'fuel_cycle__processing_cost__cost')>0
@@ -33,7 +34,7 @@ def test_all_mapped_native_outputs_at_public_cases(evaluate,changes,label):
         assert output(row,'shipping_scope__fuel_installation_exclusion')==0
 
 @pytest.mark.codegen_available
-@pytest.mark.parametrize('change',[{'fuel_cycle__processing_price_multiplier':2.}, {'fuel_cycle__processing_containment_cpi':96.5},{'fuel_cycle__processing_capacity_margin':1.5}])
+@pytest.mark.parametrize('change',[{'fuel_cycle__processing_price_multiplier':2.}, {'fuel_cycle__processing_containment_cpi':96.5},{'fuel_cycle__processing_capacity_kg_s':0.000225}])
 def test_cost_controls_preserve_every_other_physical_output_and_verdict(evaluate,change):
     import oracle_entry as entry
     a=evaluate();b=evaluate(change)
@@ -45,7 +46,7 @@ def test_cost_controls_preserve_every_other_physical_output_and_verdict(evaluate
     ignored|={key for key in a.outputs if any(t in key for t in economic_names)}
     differing={key for key in a.outputs if a.outputs[key]!=b.outputs[key]}
     assert differing<=ignored,differing-ignored
-    assert a.responses==b.responses
+    assert {k:v for k,v in a.responses.items() if 'fuel_processing_capacity_ok' not in k} == {k:v for k,v in b.responses.items() if 'fuel_processing_capacity_ok' not in k}
     assert output(a,'fuel_cycle__inventory__dt_processor_kg_s')==output(b,'fuel_cycle__inventory__dt_processor_kg_s')
 
 @pytest.mark.codegen_available

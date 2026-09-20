@@ -1,6 +1,18 @@
 package mfe_magnet_field {
     private import ScalarValues::*;
 
+    calc def 'Winding Operating State' {
+        doc /* Evaluate supplied continuous reference turns and effective square pack at a positive operating turn current. I_coil=reference_turns*turn_current [A-turn]; j_wp_effective=I_coil/(wp_side*wp_side*1e6) [A/mm^2]. Inputs: turns dimensionless, turn current A, side m. Typed manual completion requires finite positive inputs and intermediate products/divisions; refuses overflow and positive underflow. This identity neither selects installed geometry nor qualifies a manufactured winding. The existing set distribution and conductor performance domain remain separate.
+        **Source**: work/active/WI-075_supplied-magnet-design-evaluation/spec.md
+        **Reference**: work/orchestration/goals/preserve-model-design-choices/evidence/magnet-binding-plan.md; models/library/analyses/mfe_winding_pack_cost.sysml
+        **Last Updated**: 2026-09-20 */
+        in attribute reference_turns : Real;
+        in attribute turn_current : Real;
+        in attribute wp_side : Real;
+        out attribute I_coil : Real;
+        out attribute j_wp_effective : Real;
+    }
+
     calc def 'Coil Set Axis Field' {
         doc /*
         Axis-averaged on-axis field [T] from the coil set's current and
@@ -95,8 +107,8 @@ package mfe_magnet_field {
 
           wp_side = sqrt(I_coil / j_wp) / 1000
 
-        The pack is sized by its current at a chosen winding-pack current
-        density, not held while current varies. The relation is the one the
+        This optional construction direction proposes pack area from current and
+        a chosen density. Supplied-design evaluation does not invoke it. The relation is the one the
         source's own coil set satisfies: across all six unique Stellaris
         coils, j_wp * side^2 reproduces the printed total amp-turns to
         better than 1% (-0.58% .. +0.52%). j_wp is the design lever -- the

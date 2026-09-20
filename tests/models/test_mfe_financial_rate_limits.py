@@ -181,9 +181,9 @@ def test_current_regeneration_refuses_nonfresh_without_mutation(tmp_path,kind):
     elif kind=='file':target.write_text('retain')
     else:
         target.mkdir();(target/('.hidden' if kind=='hidden' else 'entry')).write_text('retain')
-    before=target.readlink() if target.is_symlink() else target.read_bytes() if target.is_file() else module.hashes(target)
+    before=target.readlink() if target.is_symlink() else target.read_bytes() if target.is_file() else module.recipe().inventory(target)
     with pytest.raises(FileExistsError):module.seed_and_generate(target,generator=lambda _:pytest.fail('generator called'))
-    after=target.readlink() if target.is_symlink() else target.read_bytes() if target.is_file() else module.hashes(target)
+    after=target.readlink() if target.is_symlink() else target.read_bytes() if target.is_file() else module.recipe().inventory(target)
     assert before==after
 
 
@@ -192,12 +192,12 @@ def test_current_regeneration_refuses_bad_seed(tmp_path,kind):
     import shutil
     module=current_generation();source=tmp_path/'source'
     for name in json.loads(module.SEEDS.read_text()):
-        p=source/name;p.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(module.PRODUCTION/name,p)
+        p=source/name;p.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(module.PACKAGE/name,p)
     target=source/sorted(json.loads(module.SEEDS.read_text()))[0]
     if kind=='missing':target.unlink()
     elif kind=='mismatch':target.write_text('changed')
     elif kind=='extra':(source/'handwritten/extra.py').write_text('AUTO_IMPLEMENTED = False\n')
     else:
-        target.unlink();target.symlink_to(module.PRODUCTION/sorted(json.loads(module.SEEDS.read_text()))[0])
+        target.unlink();target.symlink_to(module.PACKAGE/sorted(json.loads(module.SEEDS.read_text()))[0])
     with pytest.raises(ValueError):module.seed_and_generate(tmp_path/'destination',source,generator=lambda _:pytest.fail('generator called'))
     assert not (tmp_path/'destination').exists() or not list((tmp_path/'destination').iterdir())

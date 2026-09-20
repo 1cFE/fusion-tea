@@ -13,9 +13,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:606
+SysML Source: root-0/analyses/mfe_facilities.sysml:769
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:606
+SysML Source: root-0/analyses/mfe_facilities.sysml:769
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_facilities/facility_preconstruction_selection_impl.py
@@ -56,9 +56,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:606
+SysML Source: root-0/analyses/mfe_facilities.sysml:769
 
-    SysML Source: root-0/analyses/mfe_facilities.sysml:606
+    SysML Source: root-0/analyses/mfe_facilities.sysml:769
 
     Calculation Specification:
         cost = (1.0 - mode_in) * legacy_in + mode_in * (fixed_in + land_in)

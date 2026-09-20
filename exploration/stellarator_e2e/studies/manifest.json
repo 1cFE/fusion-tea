@@ -7,7 +7,7 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "afe0dbbc1f8d0ae6d54eba2b7c969d964359978fb37cf6cbb8b0479bee1695dd",
+      "digest": "84b82ef338093eb6d6f142360b3ded2b575b6f79397e6a719a6cb6dcf0154bc6",
       "files": [
         "contracts/model_contract.json",
         "inputs/mfe_account_costs_params.json",
@@ -25,8 +25,8 @@
       ]
     },
     "recorded_provenance": {
-      "semantic_fingerprint": "989f6a4492157969ba4777347ab588f18547a5077161172be586e41310ad41a1",
-      "executable_fingerprint": "7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f"
+      "semantic_fingerprint": "5a76ffbe2c1457b8abd5e8e9203331959baf68af65d7e12f9f49bb09d0bf071c",
+      "executable_fingerprint": "04d3af1627885ce7a68d726b1d36026777eccc5d4976b15d693b6c8ec438f227"
     }
   },
   "objective_catalog": [
@@ -110,7 +110,7 @@
     },
     "headline": {
       "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
-      "value": 318.7371704217041
+      "value": 318.7377471541504
     },
     "verdicts": [
       {
@@ -142,11 +142,27 @@
         "expected": "satisfied"
       },
       {
+        "source_local_identity": "facility_geometry_ok",
+        "expected": "satisfied"
+      },
+      {
         "source_local_identity": "facility_initial_ready",
         "expected": "satisfied"
       },
       {
+        "source_local_identity": "facility_material_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "facility_occupancy_ok",
+        "expected": "violated"
+      },
+      {
         "source_local_identity": "facility_outage_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "facility_parcel_ok",
         "expected": "satisfied"
       },
       {
@@ -155,6 +171,10 @@
       },
       {
         "source_local_identity": "facility_routes_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "fuel_processing_capacity_ok",
         "expected": "satisfied"
       },
       {
@@ -204,6 +224,10 @@
       {
         "source_local_identity": "reference_conductor_current_ok",
         "expected": "violated"
+      },
+      {
+        "source_local_identity": "represented_coolant_fill_ok",
+        "expected": "satisfied"
       },
       {
         "source_local_identity": "sustainment_ok",

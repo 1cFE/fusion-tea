@@ -16,7 +16,7 @@ from tests.models.test_winding_pack_cost import runtime_paths, evaluate, output,
     {'magnet__casing__assembly_clearance':.004},
     {'magnet__winding_pack__nonplanar_factor':1.},
     {'magnet__casing__steel_price':12.},
-    {'magnet__coil__I_coil':16e6},
+    {'magnet__coil__turn_current':16e6/308.},
     {'plasma__a':1.7},
     {'magnet__winding_pack__fit_aspect_ratio':1.25}])
 def test_native_independent_oracle_and_subtotals(evaluate, changes):
@@ -52,7 +52,7 @@ def test_sheet_price_and_winding_rate_are_separate_from_physical_quantities(eval
     winding=evaluate({'magnet__winding_pack__nonplanar_factor':1.})
     for key in before.outputs:
         if any(group in key for group in ('__material_inventory__','__conductor_current__',
-                '__wp_fit__','__wp_sizing__','__wp_volume__','__support_mass__')):
+                '__wp_fit__','__winding_state__','__wp_volume__')):
             assert sheet.outputs[key]==before.outputs[key]==winding.outputs[key],key
     assert sheet.responses==before.responses==winding.responses
     assert output(winding,'magnet__insulation_inventory__stock_cost')==output(before,'magnet__insulation_inventory__stock_cost')

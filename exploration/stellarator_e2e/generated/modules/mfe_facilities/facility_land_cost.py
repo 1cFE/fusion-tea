@@ -11,9 +11,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:594
+SysML Source: root-0/analyses/mfe_facilities.sysml:757
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:594
+SysML Source: root-0/analyses/mfe_facilities.sysml:757
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_facilities/facility_land_cost_impl.py
@@ -48,9 +48,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:594
+SysML Source: root-0/analyses/mfe_facilities.sysml:757
 
-    SysML Source: root-0/analyses/mfe_facilities.sysml:594
+    SysML Source: root-0/analyses/mfe_facilities.sysml:757
 
     Calculation Specification:
         cost = parcel_area_in / 4046.8564224 * rate_per_acre_in

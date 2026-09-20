@@ -90,7 +90,17 @@ package mfe_plant_systems {
         attribute loop_gamma : Real;
         attribute loop_p : Real;
         attribute n_loops : Real;
-        attribute mdot_loop_ref : Real;
+        attribute mdot_loop_ref : Real; // hydraulic normalization, not capacity
+        attribute mdot_loop_rated : Real; // offered scalar circuit ceiling [kg/s]; not a machine map
+        attribute equipment_helium_design_shaft_MW : Real; // [MW] supplied price point/stock
+        attribute equipment_helium_design_suction_Pa : Real; // [Pa] supplied price point/stock
+        attribute equipment_salt_design_flow_kg_s : Real; // [kg/s] supplied price point/stock
+        attribute equipment_salt_design_head_m : Real; // [m] supplied price point/stock
+        attribute equipment_salt_design_eta_p : Real; // [1] supplied price point/stock
+        attribute equipment_salt_design_eta_motor : Real; // [1] supplied price point/stock
+        attribute equipment_helium_purchased_mass_kg : Real; // [kg] supplied price point/stock
+        attribute equipment_salt_purchased_mass_kg : Real; // [kg] supplied price point/stock
+
         attribute dp_loop_ref : Real;
         attribute f_loss : Real default 1.0;
         attribute eta_is : Real;
@@ -151,6 +161,11 @@ package mfe_plant_systems {
         attribute salt_machine_count : Real = equipment.salt_pump_count;
         attribute exchanger_count : Real = equipment.ihx_count;
         attribute mdot_loop : Real = primary_loop.mdot_loop;
+        attribute helium_represented_fill_margin_kg : Real = equipment.helium_represented_fill_margin_kg;
+        attribute salt_represented_fill_margin_kg : Real = equipment.salt_represented_fill_margin_kg;
+        attribute represented_fill_ok : Boolean = equipment.represented_fill_ok;
+        attribute represented_fill_defined : Real = equipment.represented_fill_defined;
+        attribute machine_off_design_performance_qualified : Boolean = equipment.machine_off_design_performance_qualified;
         attribute p_loop_margin : Real = primary_loop.p_loop_margin;
         attribute p_pump_total : Real = cooling_energy.electric_total;
         attribute q_recovered_total : Real = cooling_energy.recovered_total;
@@ -164,6 +179,7 @@ package mfe_plant_systems {
             in p_loop_in = loop_p;
             in n_loops_in = n_loops;
             in mdot_loop_ref_in = mdot_loop_ref;
+            in mdot_loop_rated_in = mdot_loop_rated;
             in dp_loop_ref_in = dp_loop_ref;
             in f_loss_in = f_loss;
             in eta_is_in = eta_is;
@@ -173,6 +189,15 @@ package mfe_plant_systems {
             in eta_p_direct_in = eta_p_direct;
         }
         calc equipment : 'Cooling Equipment' {
+            in helium_design_shaft_MW_in = equipment_helium_design_shaft_MW;
+            in helium_design_suction_Pa_in = equipment_helium_design_suction_Pa;
+            in salt_design_flow_kg_s_in = equipment_salt_design_flow_kg_s;
+            in salt_design_head_m_in = equipment_salt_design_head_m;
+            in salt_design_eta_p_in = equipment_salt_design_eta_p;
+            in salt_design_eta_motor_in = equipment_salt_design_eta_motor;
+            in helium_purchased_mass_kg_in = equipment_helium_purchased_mass_kg;
+            in salt_purchased_mass_kg_in = equipment_salt_purchased_mass_kg;
+
             in enabled_in = equipment_enabled;
             in n_mod_in = 'Primary Heat Transport'::n_mod;
             in n_loops_in = 'Primary Heat Transport'::n_loops;
@@ -226,6 +251,9 @@ package mfe_plant_systems {
             in salt_shaft_in = equipment.salt_shaft_MW;
         }
         part primary_circulators : 'Cooling Machine Account' {
+            // mass_flow and shaft_power below are operating demands, not installed ratings.
+            attribute design_shaft_power : Real = equipment.helium_design_shaft_MW;
+            attribute design_suction_pressure : Real = equipment.helium_design_suction_Pa;
             :>> count = equipment.circulator_count;
             :>> mass_flow = equipment.circulator_flow;
             :>> shaft_power = equipment.circulator_shaft_MW;
@@ -243,6 +271,10 @@ package mfe_plant_systems {
             :>> capital_cost = equipment.exchangers_cost;
         }
         part salt_pumps : 'Cooling Machine Account' {
+            // mass_flow and shaft_power below are operating demands, not installed ratings.
+            attribute design_mass_flow : Real = equipment.salt_design_flow_kg_s;
+            attribute design_head : Real = equipment.salt_design_head_m;
+            attribute design_shaft_power : Real = equipment.salt_design_shaft_MW;
             :>> count = equipment.salt_pump_count;
             :>> mass_flow = equipment.salt_pump_flow;
             :>> shaft_power = equipment.salt_pump_shaft_MW;
@@ -271,6 +303,8 @@ package mfe_plant_systems {
 
     part def 'Cryoplant' {
         doc /*
+        WI-078/MR-7 scope: aux_cooling_cost includes demand-matched cost proxies: auxiliary cooling scales with thermal power and cryogenic equipment scales with required wall-plug refrigeration power. Cold/intercept heat loads and COP determine operating electrical demand, not installed refrigeration capacity. The model does not price a supplied cryoplant rating or evaluate whether installed cold/intercept equipment can meet those loads.
+
         The cryogenic plant that holds the magnet cold mass at its operating temperature
         (20 K in the source). Owns the cryoplant chain facts (WI-024: nuclear heating uplift,
         fixed load, Carnot fraction, cold and ambient temperatures, the direct term), the coil
@@ -406,6 +440,7 @@ package mfe_plant_systems {
         doc /* Per-module tritium stock with a plant-total processing account attached for rollup. Source: work/active/WI-070_throughput-based-fuel-processing-costs/design.md. Basis: mass remains per module; capital is selected whole-plant C220500 including legacy mode, summed only by Fuel Cycle account. */
         attribute equipment_cost : Real;
         attribute installation_cost : Real;
+        attribute capacity_kg_s : Real; // supplied per-module D+T throughput
         :>> cas_code = "220500";
     }
 
@@ -472,6 +507,8 @@ package mfe_plant_systems {
         attribute dt_processing_flow : Real = inventory.dt_processor_kg_s;
         attribute fuel_processing_installation : Real = processing_cost.installation_total;
         attribute fuel_processing_defined : Real = processing_cost.defined_flag;
+        attribute processing_capacity_evaluation_defined : Real = processing_cost.capacity_evaluation_defined;
+        attribute processing_capacity_margin_kg_s : Real = processing_cost.capacity_margin_kg_s;
         // ---- template calcs (WI-057): the analyses this part owns ----
 
         // WI-069 dormant generic defaults; stellarator binds the reviewed scenario.
@@ -540,6 +577,7 @@ package mfe_plant_systems {
             :>> capital_cost = processing_cost.cost;
             :>> equipment_cost = processing_cost.equipment_total;
             :>> installation_cost = processing_cost.installation_total;
+            :>> capacity_kg_s = processing_cost.capacity_kg_s;
         }
         part breeder_zone : 'Fuel Stock' {
             doc /* Release from breeder zone; gross T stream J, residence tau_blanket; starts empty. **Source**: work/active/WI-069_fuel-inventory-and-startup/design.md **Reference**: Components and stocks. **Last Updated**: 2026-09-19 */
@@ -588,7 +626,7 @@ package mfe_plant_systems {
         // WI-070 dormant source placeholders; active source data belong to instance.
         attribute processing_enabled : Boolean default := false;
         attribute processing_source_conditions : Boolean default := false;
-        attribute processing_capacity_margin : Real default := 1.0;
+        attribute processing_capacity_kg_s : Real default := 0.0;
         attribute processing_price_multiplier : Real default := 1.0;
         attribute processing_reference_flow : Real default := 0.0;
         attribute processing_exponent : Real default := 0.0;
@@ -612,7 +650,7 @@ package mfe_plant_systems {
             in legacy_cost_in = fuel_handling.cost;
             in enabled_in = processing_enabled;
             in source_conditions_in = processing_source_conditions;
-            in capacity_margin_in = processing_capacity_margin;
+            in capacity_in = processing_capacity_kg_s;
             in price_multiplier_in = processing_price_multiplier;
             in reference_flow_in = processing_reference_flow;
             in exponent_in = processing_exponent;

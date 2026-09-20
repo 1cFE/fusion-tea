@@ -22,6 +22,24 @@ are plant-level design attributes, one key each — ``stellarator_09__stellaris_
 ``__a``, ``__availability_direct`` — because the library formals are now bound by the
 ``_in`` convention and codegen projects one entry point per authored attribute. The
 model binds all live magnet radius operands to plant R (WI-051).
+
+Cost-result interpretation (MR-7): LCOE and capital include retained demand-matched
+turbine, cryogenic, electrical, heat-rejection, power-supply, miscellaneous and
+divertor cost proxies. Those accounts
+assume equipment matched to computed operating duty; they do not evaluate
+independently supplied installed capacities. Steam/cooling-water flow, shaft work
+and cryogenic electrical demand are operating quantities, not installed ratings.
+Selected helium/salt machine price points likewise do not qualify off-design
+performance. A satisfied represented-coolant-fill check covers only modeled fluid
+volumes; inventory completeness remains false. Passing the exported plant screens
+does not establish adequacy of equipment omitted from those screens. Hybrid
+blanket/shield/vessel/structure prices retain declared geometry or mass inputs
+plus their calibrated cost assumptions. Remote-handling, other reactor equipment,
+instrumentation, owner, waste and O&M accounts retain aggregate power or capital
+scaling; dormant legacy buildings, preconstruction, fuel-handling and coolant
+accounts retain their documented cost proxies. None of these proxy amounts
+is an independently evaluated installed equipment capacity.
+
 """
 
 from __future__ import annotations
@@ -48,7 +66,7 @@ PACKAGE_DIR = E2E / "generated"
 MANIFEST_PATH = HERE / "manifest.json"
 P = "stellarator_09__stellaris__"
 BASELINE_RESULT_SCHEMA_VERSION = "study-baseline-result/v1"
-EXPECTED_CONSTRAINT_COUNT = 28  # WI-073 adds three mode-aware heat-direction checks.
+EXPECTED_CONSTRAINT_COUNT = 34  # MR-7 adds four facility, processor-capacity and partial-fill checks.
 
 # --- Axis declarations: SysML attribute -> complete entry-key expansion ------
 AXES: dict[str, list[str]] = {
@@ -79,7 +97,7 @@ CHANNELS = {
     "p_fus": f"{P}plasma__fusion__p_fus",
     "plasma_volume": f"{P}plasma__geom__V",
     "total_capital": f"{P}total_capital__total_capital",
-    "magnet_capital": f"{P}magnet__magnet_cost__capital_cost",
+    "magnet_capital": f"{P}magnet__magnet_capital_rollup__capital_cost",
     "overnight_capital": f"{P}overnight_capital__overnight_capital",
     "lcoe_1cfe": f"{P}lcoe_1cfe_calc__lcoe",
 }
@@ -118,6 +136,10 @@ def assert_boolean_declarations(package_dir):
 def validate_proposal(raw):
     if not isinstance(raw, dict):
         raise RouteError("proposal must be a mapping of entry keys to values")
+    retired_magnet = {P + "magnet__" + name for name in ('coil__I_coil', 'winding_pack__j_wp', 'winding_pack__B_grade_ref', 'winding_pack__field_exponent', 'winding_pack__sizing_mode', 'winding_pack__inventory_multiplier', 'c_support', 'e_support', 'casing__m_casing_ref')}
+    obsolete = sorted(retired_magnet.intersection(raw))
+    if obsolete:
+        raise RouteError(f"retired magnet entry keys {obsolete}; migrate to supplied pack side, reference turns and masses")
     if f"{P}magnet__R0" in raw:
         raise RouteError(f"retired entry key {P}magnet__R0; use plant R")
     out = {}

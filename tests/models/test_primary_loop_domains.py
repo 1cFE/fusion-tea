@@ -6,7 +6,7 @@ from pathlib import Path
 import sys
 import pytest
 ROOT=Path(__file__).resolve().parents[2]
-BASE=dict(q_source_in=2101.7,T_in_in=573.15,dT_blanket_in=200.,cp_in=5193.,gamma_in=1.6667,p_loop_in=8e6,n_loops_in=9.,mdot_loop_ref_in=2025.7/9,dp_loop_ref_in=550000.,f_loss_in=1.,eta_is_in=.9,eta_drive_in=.95,loop_live_in=1.,p_pump_direct_in=3.,eta_p_direct_in=.5)
+BASE=dict(q_source_in=2101.7,T_in_in=573.15,dT_blanket_in=200.,cp_in=5193.,gamma_in=1.6667,p_loop_in=8e6,n_loops_in=9.,mdot_loop_ref_in=2025.7/9,mdot_loop_rated_in=2025.7/9,dp_loop_ref_in=550000.,f_loss_in=1.,eta_is_in=.9,eta_drive_in=.95,loop_live_in=1.,p_pump_direct_in=3.,eta_p_direct_in=.5)
 
 @pytest.fixture(scope='module')
 def module():

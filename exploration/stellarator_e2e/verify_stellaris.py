@@ -360,21 +360,11 @@ IN = dict(
     magnet_G=78.95683520871486,
     magnet_tape_width=0.006, magnet_tape_thickness=0.000056, magnet_tape_price_per_m=20.0,
     magnet_cost_per_kAm=50.0, magnet_coil_markup=5.87,  # 1cfe-form comparison channel
-    magnet_n_coils=48.0, magnet_I_coil=15400000.0,
+    magnet_n_coils=48.0, magnet_reference_turns=308.0,
     magnet_k_link=0.7731331164622419, magnet_two_pi=6.283185307179586,
     magnet_f_set=0.8701298701298701, magnet_k_sigma=0.6102331403536223,
-    # WI-036: the winding pack is SIZED by the current it carries and the winding
-    # length follows machine scale, so wp_side and c_coil are computed here too --
-    # the oracle mirrors the model's chain independently. j_wp and c_coil_ref are the
-    # float64s of the printed pairs (15.4 MA / 360 mm; 25 m / 12.7 m).
-    # WI-058: the winding length follows the coil bore -- c_coil = c_coil_ref * (r_coil_centre /
-    # a_coil_ref), anchored at the printed 25 m at the reference bore; k_coil (25.0 / 12.7 over R,
-    # WI-036 D3) retires.
-    magnet_j_wp=118.8271604938272, magnet_c_coil_ref=25.0,
-    magnet_sizing_mode=0.0, magnet_inventory_multiplier=1.0,
-    # WI-038: conditional 20 K relative REBCO field law. Reference density is
-    # held fixed in the priced-transfer claim; 20–30 T is an extrapolative study window.
-    magnet_B_grade_ref=24.9, magnet_field_exponent=0.6,
+    # WI-075 chosen hardware preserves entering native design; no selection on excitation.
+    magnet_wp_side=0.35999999999999993, magnet_c_coil_ref=25.0,
     magnet_f_wp_vol=0.8780864197530865,
     # WI-036 conductor check: pack modulus, tape load-sharing (from the source's own
     # 600 MPa / <0.2% pair), and the axial irreversible-strain limit.
@@ -397,18 +387,16 @@ IN = dict(
     magnet_f_wp_perimeter=0.9351851851851851,
     magnet_insulation_sheet_thickness=0.0005,
     magnet_insulation_sheet_price=61.67720668774671,
-    # WI-059: total-support fit (MJ/tonne convention inferred from later thesis).
-    magnet_support_coefficient=1.348, magnet_support_exponent=0.78,
+    # WI-075 supplied total support mass, entering native inventory; no strength claim.
+    magnet_support_mass=11615604.482575215,
     magnet_legacy_casing_fraction=0.0, structure_residual_fraction=1.0,
     cryo_inventory_enabled=True, T_shield_cryo=77.0, f_carnot_shield=0.20,
     cryo_n_leads=12.0, cryo_L0=2.45e-8, cryo_sigma_SB=5.670374419e-8, cryo_f_lead=1.25, cryo_t_case=0.10,
     cryo_shield_area_ratio=1.2, cryo_emittance=0.05, cryo_q_mli=1.0,
     cryo_g_per_coil=0.04, cryo_k_cold=5.39362701769, cryo_k_shield=12.12875814211,
     cryo_joint_drive_fraction=1.0, cryo_q_nuc_structure=0.0, cryo_rho_structure=8000.0,
-    # WI-044 coil-bore anchors (the reference point at which the printed magnet facts
-    # were read; every sourced shape is normalised to exactly 1.0 there). The held
-    # magnet_m_casing is retired: the casing mass is computed from the stored energy.
-    magnet_m_casing_ref=63000.0,          # the printed cast-part floor (WI-035 D5 seam)
+    # Supplied casing mass remains independent of stored-energy reference anchors.
+    magnet_m_casing=63000.0,
     magnet_W_mag_ref=111000000000.0,      # Table 2: stored magnetic energy 111 GJ
     magnet_I_ref=15400000.0,              # Table 2: peak coil current 15.4 MA
     magnet_R_ref=12.7,                    # Table 2: major radius
@@ -694,17 +682,16 @@ def _winding_material_inventory(p, volume):
 
 def _winding_procurement(p, circumference, material_cost, tape_volume):
     """Direct volume/area purchase from independently computed material inventory."""
-    names = ("n_coils", "I_coil", "f_set", "tape_width", "tape_thickness", "tape_price_per_m", "turn_current",
+    names = ("n_coils", "reference_turns", "f_set", "tape_width", "tape_thickness", "tape_price_per_m",
              "winding_rate_1990", "cost_escalation", "nonplanar_factor")
     facts = {name: p["magnet_" + name] for name in names}
     facts.update(c_coil=circumference, material_cost_in=material_cost, tape_volume_in=tape_volume)
-    nonnegative = {"I_coil", "tape_volume_in", "tape_price_per_m", "winding_rate_1990", "material_cost_in"}
+    nonnegative = {"tape_volume_in", "tape_price_per_m", "winding_rate_1990", "material_cost_in"}
     for name, value in facts.items():
         if not math.isfinite(value) or (value < 0.0 if name in nonnegative else value <= 0.0):
             raise ValueError(f"oracle Winding Pack Procurement Cost: invalid {name}")
     if facts["f_set"] > 1.0:
         raise ValueError("oracle Winding Pack Procurement Cost: invalid f_set")
-    kam = facts["n_coils"] * facts["I_coil"] * facts["f_set"] * circumference / 1000.0
     area = facts['tape_width'] * facts['tape_thickness']
     if not math.isfinite(area) or area <= 0:
         raise ValueError('oracle Winding Pack Procurement Cost: invalid tape_area')
@@ -714,8 +701,12 @@ def _winding_procurement(p, circumference, material_cost, tape_volume):
     tape_cost = tape_length * facts['tape_price_per_m']
     if not math.isfinite(tape_cost) or (tape_length > 0 and facts['tape_price_per_m'] > 0 and tape_cost <= 0):
         raise ValueError('oracle Winding Pack Procurement Cost: invalid tape_cost')
-    length = kam * 1000.0 / facts["turn_current"]
+    length = facts["n_coils"] * facts["reference_turns"] * facts["f_set"] * circumference
+    if not math.isfinite(length) or length <= 0:
+        raise ValueError("oracle Winding Pack Procurement Cost: invalid conductor_length")
     fabrication = length * facts["winding_rate_1990"] * facts["cost_escalation"] * facts["nonplanar_factor"]
+    if facts['winding_rate_1990'] > 0 and fabrication <= 0:
+        raise ValueError('oracle Winding Pack Procurement Cost: fabrication underflow')
     result = dict(tape_length=tape_length, tape_cost=tape_cost, conductor_length=length,
                   winding_fabrication_cost=fabrication, cost=tape_cost + material_cost + fabrication)
     for name, value in result.items():
@@ -861,20 +852,16 @@ def _current_driven_sizing(p, field, legacy_density):
     return out
 
 
-def _winding_fit(p, selected_area=None):
-    """Independent area-demand construction and conditional available-space screen."""
+def _winding_fit(p):
+    """Evaluate supplied effective pack side against independently chosen cavity."""
     pos = ('fit_aspect_ratio', 'fit_wall', 'fit_interior_y', 'coil_t')
     nonneg = ('fit_internal_x', 'fit_internal_y', 'fit_ground', 'fit_clearance')
     for key in pos + nonneg:
         if not math.isfinite(p[key]) or (p[key] <= 0 if key in pos else p[key] < 0):
             raise ValueError('oracle winding fit: invalid ' + key)
-    # Reconstruct the demand directly rather than reading native sizing/fit intermediates.
-    factor = (p['magnet_B_max'] / p['magnet_B_grade_ref']) ** p['magnet_field_exponent']
-    area = (p['magnet_I_coil'] / (p['magnet_j_wp'] / factor) / 1e6
-            if selected_area is None else selected_area)
-    if not math.isfinite(area) or area <= 0:
-        raise ValueError('oracle winding fit: invalid nominal area')
-    side = math.sqrt(area)
+    side = p['magnet_wp_side']
+    if not math.isfinite(side) or side <= 0:
+        raise ValueError('oracle winding fit: invalid supplied pack side')
     orientation = math.sqrt(p['fit_aspect_ratio'])
     result = {'nominal_x': side * orientation, 'nominal_y': side / orientation,
               'cavity_x': p['coil_t'] - 2*p['fit_wall'], 'cavity_y': p['fit_interior_y'],
@@ -978,9 +965,12 @@ IN.update({
 })
 
 
+IN.update({"mdot_loop_rated": 225.07777777777778})
+IN.update({"cooling_"+key: cooling_oracle.DEFAULTS[key] for key in ['helium_design_shaft_MW', 'helium_design_suction_Pa', 'salt_design_flow_kg_s', 'salt_design_head_m', 'salt_design_eta_p', 'salt_design_eta_motor', 'helium_purchased_mass_kg', 'salt_purchased_mass_kg']})
+
 IN.update({'facility_'+key:value for key,value in facilities_oracle.DEFAULTS.items()})
 IN.update({'inventory_'+key:value for key,value in inventory_oracle.DEFAULTS.items()})
-PROCESSING_DEFAULTS = {'enabled': True, 'source_conditions': True, 'capacity_margin': 1.0, 'price_multiplier': 1.0, 'reference_flow': 2.08e-05, 'exponent': 0.3, 'target_cpi': 321.9, 'transfer_capital': 111000.0, 'transfer_installation': 112000.0, 'transfer_cpi': 60.6, 'cleanup_capital': 1000000.0, 'cleanup_installation': 70000.0, 'cleanup_cpi': 82.4, 'distiller_capital': 1237000.0, 'distiller_installation': 63000.0, 'distiller_cpi': 65.2, 'containment_capital': 182000.0, 'containment_installation': 30000.0, 'containment_cpi': 82.4}
+PROCESSING_DEFAULTS = {'enabled': True, 'source_conditions': True, 'capacity': 0.00015, 'price_multiplier': 1.0, 'reference_flow': 2.08e-05, 'exponent': 0.3, 'target_cpi': 321.9, 'transfer_capital': 111000.0, 'transfer_installation': 112000.0, 'transfer_cpi': 60.6, 'cleanup_capital': 1000000.0, 'cleanup_installation': 70000.0, 'cleanup_cpi': 82.4, 'distiller_capital': 1237000.0, 'distiller_installation': 63000.0, 'distiller_cpi': 65.2, 'containment_capital': 182000.0, 'containment_installation': 30000.0, 'containment_cpi': 82.4}
 IN.update({'processing_'+key:value for key,value in PROCESSING_DEFAULTS.items()})
 
 # WI-073 selected physical facts; current design defaults, not hidden solver constants.
@@ -1003,7 +993,24 @@ def compute():
         raise ValueError("retired oracle input tbr; achieved breeding is computed")
     if "I_total" in IN:
         raise ValueError("retired oracle input I_total; inventory is computed")
+    retired = {'magnet_I_coil', 'magnet_j_wp', 'magnet_B_grade_ref', 'magnet_field_exponent',
+               'magnet_sizing_mode', 'magnet_inventory_multiplier', 'magnet_support_coefficient',
+               'magnet_support_exponent', 'magnet_m_casing_ref'}
+    obsolete = sorted(retired.intersection(IN))
+    if obsolete:
+        raise ValueError(f'retired magnet oracle inputs {obsolete}; supply side, reference turns and masses explicitly')
     p = IN
+    for key in ('magnet_reference_turns', 'magnet_turn_current', 'magnet_wp_side'):
+        if isinstance(p[key], bool) or not math.isfinite(p[key]) or p[key] <= 0:
+            raise ValueError('oracle Winding Operating State: invalid ' + key)
+    I_coil = p['magnet_reference_turns'] * p['magnet_turn_current']
+    area = p['magnet_wp_side'] * p['magnet_wp_side']
+    area_mm2 = area * 1e6
+    if any(not math.isfinite(v) or v <= 0 for v in (I_coil, area, area_mm2)):
+        raise ValueError('oracle Winding Operating State: invalid current/area arithmetic')
+    effective_density = I_coil / area_mm2
+    if not math.isfinite(effective_density) or effective_density <= 0:
+        raise ValueError('oracle Winding Operating State: invalid density arithmetic')
     for mode in ('cooling_cost_mode', 'cooling_energy_mode'):
         if not math.isfinite(p[mode]) or p[mode] not in (0., 1.):
             raise ValueError('oracle cooling modes must be finite binary selectors')
@@ -1047,7 +1054,7 @@ def compute():
     special_materials_capital = blanket_vol * 0.50 * 9400.0 * 5.0
     # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
     # of the plasma chain at WI-037 because sustainment reads B_axis) ---
-    B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
+    B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * I_coil
               / (p["magnet_two_pi"] * p["R"]))
     # WI-044: the peak field sees the coil bore. Lion 2021 eq. 39 has the field on the
     # coil rising as R / (R - a_coil); with B_axis ~ N I / R the peak/axis ratio carries
@@ -1064,40 +1071,26 @@ def compute():
     B_peak = B_axis * p["magnet_peak_ratio"] * bore_norm
     # WI-044: stored magnetic energy from the coil-set inductance shape, thesis eq. 2.82
     # L = L(C) (a_coil/a_ref)^2 (R_ref/R) with W = 1/2 L I^2, anchored at the printed 111 GJ.
-    W_mag = (p["magnet_W_mag_ref"] * (p["magnet_I_coil"] / p["magnet_I_ref"]) ** 2
+    W_mag = (p["magnet_W_mag_ref"] * (I_coil / p["magnet_I_ref"]) ** 2
              * (r_coil_centre / p["magnet_a_coil_ref"]) ** 2 * (p["magnet_R_ref"] / p["R"]))
-    # WI-044: casing mass from stored energy, Lion 2021 eq. 56 M = 1.348 W^0.78 with the
-    # constant absorbed by the anchor (no units printed); the 63 t floor keeps its seam.
-    m_casing = p["magnet_m_casing_ref"] * (W_mag / p["magnet_W_mag_ref"]) ** 0.78
-    for key in ('magnet_support_coefficient', 'cryo_q_nuc_structure'):
+    # WI-075 supplied inventories; structural adequacy is not inferred from mass.
+    m_casing = p['magnet_m_casing']
+    support_mass = p['magnet_support_mass']
+    for key in ('magnet_m_casing', 'magnet_support_mass', 'cryo_q_nuc_structure'):
         if not math.isfinite(p[key]) or p[key] < 0:
-            raise ValueError('oracle coil support: nonnegative finite coefficient/heating required')
+            raise ValueError('oracle coil support: nonnegative finite mass/heating required')
     if not math.isfinite(p['cryo_rho_structure']) or p['cryo_rho_structure'] <= 0:
         raise ValueError('oracle coil support: positive finite structure density required')
-    if p['magnet_support_coefficient'] > 0 and (not math.isfinite(p['magnet_support_exponent']) or p['magnet_support_exponent'] <= 0):
-        raise ValueError('oracle coil support: positive finite active exponent required')
     for key in ('magnet_legacy_casing_fraction', 'structure_residual_fraction', 'cryo_joint_drive_fraction'):
         if not math.isfinite(p[key]) or not 0 <= p[key] <= 1:
             raise ValueError('oracle coil support: accounting fractions must lie in [0,1]')
-    support_mass = (1000*p["magnet_support_coefficient"]*(W_mag/1e6)**p["magnet_support_exponent"]) if p["magnet_support_coefficient"] else 0.0
-    if not math.isfinite(support_mass) or support_mass < 0:
-        raise ValueError('oracle coil support: nonnegative finite support mass required')
-    # WI-036: the pack sizes itself from the current; WI-058: the winding length follows
-    # the coil bore (WI-036 had it follow the major radius); both were held inputs before.
-    # Preserve existing public current/density diagnostic precedence. The reference
-    # density changes inventory conditionally; no absolute current margin is established.
-    _validate_winding_pack_magnitudes(p["magnet_I_coil"], p["magnet_j_wp"])
-    grade = _conductor_field_capability(p['magnet_B_max'], p['magnet_B_grade_ref'],
-                                       p['magnet_field_exponent'], p['magnet_j_wp'])
-    current_sizing = _current_driven_sizing(p, B_peak, grade['j_wp_effective'])
-    effective_density = current_sizing['selected_effective_density']
-    wp_side = _winding_pack_side(p["magnet_I_coil"], effective_density)
+    wp_side = p['magnet_wp_side']
     # WI-058 (design D2/D3): the printed circumference at the reference bore times the bore ratio;
     # exactly 25.0 at the design point (the same float over itself); R does not enter.
     c_coil = p["magnet_c_coil_ref"] * (r_coil_centre / p["magnet_a_coil_ref"])
     if wp_side == 0.0:
         raise ValueError("oracle Winding Pack Stress: wp_side must be nonzero")
-    sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / wp_side
+    sigma_wp = p["magnet_k_sigma"] * I_coil * B_peak / wp_side
     # WI-036: the conductor's own operand, checked separately from the structure's.
     eps_cond = p["magnet_f_cond"] * sigma_wp / p["magnet_E_wp"]
     # WI-036: a wider pack now costs cold mass, which reaches the cryoplant.
@@ -1109,17 +1102,9 @@ def compute():
     if not 0.0 < p["T_cold_cryo"] < p["T_amb_cryo"]:
         raise ValueError("oracle cryoplant: require 0 < T_cold < T_amb")
     inventory = _winding_material_inventory(p, vol_winding_pack)
-    # Independent expanded quantity path, avoiding the native square-root/volume chain.
-    tape_volume_direct = (p['magnet_I_coil'] * grade['quantity_factor']
-        * p['magnet_n_coils'] * p['magnet_f_wp_vol'] * c_coil
-        * (1 - sum(p['magnet_f_' + m] for m in ('copper', 'solder', 'steel', 'helium')))
-        / (1e6 * p['magnet_j_wp']))
-    if p['magnet_sizing_mode'] == 1:
-        tape_volume_direct = (current_sizing['required_pack_area'] * p['magnet_inventory_multiplier']
-            * p['magnet_n_coils'] * p['magnet_f_wp_vol'] * c_coil
-            * (1 - sum(p['magnet_f_' + m] for m in ('copper', 'solder', 'steel', 'helium'))))
-    # Retain the independently expanded quantity as a cross-check. Exact
-    # predicates use the authored sqrt/volume sequence, never a snapped margin.
+    # Independent expanded installed-area quantity cross-check.
+    tape_volume_direct = (wp_side**2 * p['magnet_n_coils'] * p['magnet_f_wp_vol'] * c_coil
+        * (1 - sum(p['magnet_f_' + m] for m in ('copper', 'solder', 'steel', 'helium'))))
     if not math.isclose(tape_volume_direct, inventory['tape_volume'], rel_tol=1e-12):
         raise ValueError('oracle expanded tape volume disagrees with inventory')
     procurement = _winding_procurement(p, c_coil, inventory['material_cost'], inventory['tape_volume'])
@@ -1197,7 +1182,7 @@ def compute():
     loop_w_fluid = loop_mdot * p["loop_cp"] * (p["loop_T_in"] - loop_T_comp_in) / 1.0e6
     loop_p_elec = loop_w_fluid / p["eta_drive"]
     loop_q_ihx = q_source + loop_w_fluid
-    loop_capacity_margin = p["mdot_loop_ref"] - loop_mdot_loop
+    loop_capacity_margin = p["mdot_loop_rated"] - loop_mdot_loop
     loop_p_pump_total = p["loop_live"] * loop_p_elec + p["p_pump_direct"]
     loop_q_recovered_total = (p["loop_live"] * loop_w_fluid
                               + p["eta_p_direct"] * p["p_pump_direct"])
@@ -1207,6 +1192,7 @@ def compute():
     cycle_eta_th = p["cycle_live"] * cycle_eta_fit + p["eta_th_direct"]
     # Independent WI-067 equipment oracle, upstream of all cost/performance consumers.
     cooling = cooling_oracle.calculate({
+        **{key:p['cooling_'+key] for key in ['helium_design_shaft_MW', 'helium_design_suction_Pa', 'salt_design_flow_kg_s', 'salt_design_head_m', 'salt_design_eta_p', 'salt_design_eta_motor', 'helium_purchased_mass_kg', 'salt_purchased_mass_kg']},
         'enabled': p['cooling_enabled'],
         'layout_multiplier': p['cooling_layout_multiplier'],
         'tube_wall': p['cooling_tube_wall'],
@@ -1297,7 +1283,7 @@ def compute():
     magnet = total_kAm * p["magnet_cost_per_kAm"] * p["magnet_coil_markup"]
     # WI-035 decomposed magnet accounts (design D4/D5/D6); `magnet` above stays
     # the 1cfe-form comparison channel, the rollup enters the powercore sum.
-    kAm_wind = p["magnet_n_coils"] * p["magnet_I_coil"] * p["magnet_f_set"] * c_coil / 1000.0
+    kAm_wind = p["magnet_n_coils"] * I_coil * p["magnet_f_set"] * c_coil / 1000.0
     winding_pack_legacy = kAm_wind * p["magnet_cost_per_kAm"] * p["magnet_f_wp_fab"]
     winding_pack = procurement["cost"]
     magnet_structure = (p["magnet_legacy_casing_fraction"]*p["magnet_n_coils"]*m_casing+support_mass)*p["magnet_steel_price"]*p["magnet_f_steel_fab"]
@@ -1573,8 +1559,8 @@ def compute():
         coverage_wall_area=wall_area,
         coverage_replacement_event=replacement_cost_per_event,
         **{"conductor_" + key: value for key, value in conductor.items()},
-        **{"fit_" + key: value for key, value in _winding_fit(p, None if p["magnet_sizing_mode"] == 0 else current_sizing["required_pack_area"] * p["magnet_inventory_multiplier"]).items()},
-        **{"sizing_" + key: value for key, value in current_sizing.items()},
+        **{"fit_" + key: value for key, value in _winding_fit(p).items()},
+        winding_I_coil=I_coil, winding_j_wp_effective=effective_density,
         V=V, p_fus=p_fus, p_th=p_th, p_the=p_the, p_et=p_et,
         p_cryo=p_cryo, p_cryo_cold=p_cryo_cold, p_cryo_shield=p_cryo_shield,
         support_mass=support_mass, p_tf_total=p_tf_total, p_cold=p_cold,
@@ -1585,7 +1571,7 @@ def compute():
         beta=beta, B_peak=B_peak,  # WI-030 physics channels
         B_axis=B_axis, sigma_wp=sigma_wp,  # WI-035 field + stress channels
         eps_cond=eps_cond,  # WI-036 conductor strain operand
-        # WI-044 coil-bore channels: the stored energy, the computed casing mass, the
+        # WI-044 coil-bore channels: the stored energy, the supplied casing mass, the
         # coil-centre radius the shapes take, and the reported aspect ratio
         W_mag=W_mag, m_casing=m_casing, r_coil_centre=r_coil_centre, A=A,
         # WI-037 sustainment channels
@@ -1621,7 +1607,6 @@ def compute():
         support_effective_all_in_rate=support_effective_all_in_rate,
         **{"insulation_" + name: value for name, value in insulation.items()},
         winding_pack_legacy=winding_pack_legacy, vol_winding_pack=vol_winding_pack,
-        **{'conductor_' + name: value for name, value in grade.items()},
         **{"winding_" + name: value for name, value in inventory.items()},
         tape_length=procurement["tape_length"],
         tape_procurement_cost=procurement["tape_cost"],
@@ -1646,6 +1631,8 @@ def compute():
         **{'facility_' + name: value for name, value in facilities.items()},
         buildings_legacy=buildings_legacy, precon_legacy=precon_legacy, facility_exclusion=facility_exclusion,
         facility_site_allowance=facilities['active']*p['facility_retained_site_improvements'],
+        facility_selected_parcel_x_min=p['facility_selected_parcel_x_min']+p['facility_parcel_origin_x_offset'],
+        facility_selected_parcel_y_min=p['facility_selected_parcel_y_min']+p['facility_parcel_origin_y_offset'],
         facility_initial_sector_start_days=p['facility_initial_sector_start_days'],
         facility_cooling_initial_handoff_days=p['facility_cooling_initial_handoff_days'],
         shipping_cooling_exclusion=p['cooling_cost_mode']*cooling['delivered_total'],

@@ -18,7 +18,8 @@ package mfe_magnet_parts {
         // number of field coils [1]
         attribute n_coils : Real;
         // peak single-coil current [A]
-        attribute I_coil : Real;
+        attribute I_coil : Real; // calculated operating ampere-turns
+        attribute reference_turns : Real; // supplied continuous installed reference turns [1]
         // coil-set transfer fact [1] (set distribution x axis linkage, WI-035)
         attribute k_link : Real;
         // set-mean over peak coil current ratio [1]
@@ -55,8 +56,8 @@ package mfe_magnet_parts {
     part def 'Winding Pack' {
         doc /*
         The coil's winding pack: REBCO tape stacks in a copper jacket (9 % tape, 35 % Cu,
-        12 % solder, 36 % steel, 8 % helium by volume in the Table 7 image), sized by the
-        current it carries (WI-036). Owns the current density, the pack-volume distribution
+        12 % solder, 36 % steel, 8 % helium by volume in the Table 7 image), supplied independently of operating
+        current (WI-075). Owns the actual current density, the pack-volume distribution
         and fabrication factors, the conductor's modulus, load share and strain limit, the
         conductor field ceiling, the peak-stress transfer fact and the mean nuclear heating the
         cryoplant removes. WI-057: regrouped from 'Magnet System' without change of meaning.
@@ -85,16 +86,8 @@ package mfe_magnet_parts {
         attribute winding_rate_1990 : Real; // dollars1990/m of composite conductor
         attribute cost_escalation : Real; // dimensionless year conversion
         attribute nonplanar_factor : Real; // dimensionless transfer assumption
-        // Reference winding-pack current density [A/mm^2] at B_grade_ref.
-        // Fixed-construction changes alter operating current per tape; absolute margin remains unknown.
-        attribute j_wp : Real;
-        attribute B_grade_ref : Real; // reference purchased envelope [T]
-        attribute field_exponent : Real; // positive relative field exponent [1]
-        // Derived capability quantities, bound by the magnet-owned analysis.
-        attribute conductor_quantity_factor : Real;
-        attribute j_wp_effective : Real; // selected physical sizing density [A/mm^2]
-        attribute sizing_mode : Real default 0.0; // WI-064: legacy0, current-driven1
-        attribute inventory_multiplier : Real default 1.0; // WI-064 additional physical inventory >=1
+        // Actual density of supplied pack at the operating point [A/mm^2].
+        attribute j_wp_effective : Real;
         attribute tape_width : Real; // full purchased tape width [m]
         attribute tape_thickness : Real; // full composite thickness, including stabilizer [m]
         attribute reference_tape_current : Real default 200.0; // WI-062 conditional performance scenario
@@ -131,7 +124,7 @@ package mfe_magnet_parts {
         // stress concentration transfer fact [1] (coil-set structural fact)
         attribute k_sigma : Real;
         // Purchased conductor field envelope [T]; checked against actual peak field.
-        // WI-038 prices a relative quantity consequence, not a certified critical field.
+        // Conditional ceiling only; does not select inventory or certify critical field.
         attribute B_max : Real;
         // Cryoplant heat-load chain (WI-024). Dormant by default: a concept that
         // knows its cryo electrical directly binds p_cryo (the direct term) and
@@ -149,23 +142,15 @@ package mfe_magnet_parts {
         The cast steel casing around each winding pack (AISI 316LN, 63-200 t each in the
         source). WI-059 nominal pricing uses total electromagnetic supports exclusively;
         this casing mass is a reference-floor diagnostic, not an additional charge.
-        Owns the casing mass (computed since WI-044), its reference anchors, the steel price,
+        Owns supplied casing mass (WI-075), the stored-energy reference, the steel price,
         the fabrication markup and the structural allowable stress. WI-057: regrouped from
         'Magnet System' without change of meaning.
         **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/output.md
         **Ref**: sec. 2.10 (casings; the 800 MPa design limit)
         **Basis**: the casing as the owner of the structural-mass and steel-cost facts
         */
-        // casing steel mass per coil [kg] -- COMPUTED since WI-044 by
-        // 'Magnet Casing Mass' from the stored energy (the generic plant binds
-        // it by reference, the WI-036 wp_side pattern); m_casing_ref below is
-        // the settable anchor
+        // Supplied casing steel mass per coil [kg]; no mass-based structural qualification.
         attribute m_casing : Real;
-        // ------- WI-044 coil-bore anchors: the reference point at which the
-        // peak/axis ratio, the stored energy and the casing mass were read;
-        // every sourced shape is normalised to exactly 1.0 there -------
-        // reference casing steel mass per coil [kg] at W_mag_ref
-        attribute m_casing_ref : Real;
         // reference coil-set stored magnetic energy [J] at (I_ref, a_coil_ref, R_ref)
         attribute W_mag_ref : Real;
         // Historical all-in rate component [$/kg]; unknown price year/qualification.

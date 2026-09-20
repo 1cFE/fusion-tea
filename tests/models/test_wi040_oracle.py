@@ -33,7 +33,7 @@ def test_procurement_no_material_tape_or_fabrication_overlap():
     tape = oracle.vs._winding_procurement(p | {"magnet_tape_price_per_m": 40.0}, 25.0, 123.0, 12.2904)
     assert tape["tape_cost"] == 2 * base["tape_cost"]
     assert tape["winding_fabrication_cost"] == base["winding_fabrication_cost"]
-    turn = oracle.vs._winding_procurement(p | {"magnet_turn_current": 25000.0}, 25.0, 123.0, 12.2904)
+    turn = oracle.vs._winding_procurement(p | {"magnet_reference_turns": 616.0}, 25.0, 123.0, 12.2904)
     assert turn["conductor_length"] == 2 * base["conductor_length"]
     assert turn["winding_fabrication_cost"] == 2 * base["winding_fabrication_cost"]
     assert turn["tape_cost"] == base["tape_cost"]
@@ -45,7 +45,7 @@ def test_inventory_invalid_facts(name, value):
         oracle.vs._winding_material_inventory(oracle.vs.IN | {name: value}, 10.0)
 
 
-@pytest.mark.parametrize("name,value", [("magnet_turn_current", 0.0), ("magnet_f_set", 1.1), ("magnet_winding_rate_1990", -1.0), ("magnet_nonplanar_factor", float("inf"))])
+@pytest.mark.parametrize("name,value", [("magnet_reference_turns", 0.0), ("magnet_f_set", 1.1), ("magnet_winding_rate_1990", -1.0), ("magnet_nonplanar_factor", float("inf"))])
 def test_procurement_invalid_facts(name, value):
     with pytest.raises(ValueError, match="Winding Pack Procurement Cost"):
         oracle.vs._winding_procurement(oracle.vs.IN | {name: value}, 25.0, 100.0, 12.2904)

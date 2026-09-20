@@ -56,8 +56,8 @@ def test_arithmetic_domain(fit,change,diagnosis):
 
 @pytest.mark.codegen_available
 @pytest.mark.parametrize('changes', [
-    {}, {'magnet__winding_pack__j_wp':118.8271604938272*.8},
-    {'magnet__coil__I_coil':15.4e6*1.1}, {'magnet__winding_pack__B_max':30.},
+    {}, {'magnet__winding_pack__wp_side':.35999999999999993/math.sqrt(.8)},
+    {'magnet__coil__turn_current':50000.*1.1}, {'magnet__winding_pack__B_max':30.},
     {'magnet__winding_pack__internal_build_y':0.},
     {'magnet__winding_pack__fit_aspect_ratio':1.25},
     {'magnet__casing__wall_thickness':.035},
@@ -109,7 +109,11 @@ def test_entering_baseline_scalars_preserved(evaluate):
     import oracle_entry
     current=oracle_entry.evaluate(point)
     changed=set(PARTITIONS['fixture_partitions']['winding-fit']['changed_current_equation_channels'])
+    from tests.models.current_mfe_regressions import MR7_RETIRED_CHANNELS
     for key,value in entering.items():
+        if key in MR7_RETIRED_CHANNELS:
+            assert key not in row.outputs  # Explicit ABI retirement, not an evaluated output.
+            continue
         expected=current[key] if key in changed else value
         assert row.outputs[key]==pytest.approx(expected,rel=1e-10,abs=1e-9),key
 

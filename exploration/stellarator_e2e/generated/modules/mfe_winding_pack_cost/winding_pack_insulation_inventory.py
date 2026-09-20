@@ -29,9 +29,9 @@ Outputs:
     - internal_volume: internal_volume result
     - sheet_area: sheet_area result
 
-SysML Source: root-0/analyses/mfe_winding_pack_cost.sysml:71
+SysML Source: root-0/analyses/mfe_winding_pack_cost.sysml:70
 
-SysML Source: root-0/analyses/mfe_winding_pack_cost.sysml:71
+SysML Source: root-0/analyses/mfe_winding_pack_cost.sysml:70
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_winding_pack_cost/winding_pack_insulation_inventory_impl.py
@@ -103,9 +103,9 @@ Outputs:
     - internal_volume: internal_volume result
     - sheet_area: sheet_area result
 
-SysML Source: root-0/analyses/mfe_winding_pack_cost.sysml:71
+SysML Source: root-0/analyses/mfe_winding_pack_cost.sysml:70
 
-    SysML Source: root-0/analyses/mfe_winding_pack_cost.sysml:71
+    SysML Source: root-0/analyses/mfe_winding_pack_cost.sysml:70
 
     Calculation Specification:
         See documentation:

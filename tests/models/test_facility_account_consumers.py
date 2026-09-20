@@ -89,11 +89,10 @@ def evaluate(runtime, tmp_path_factory):
 @pytest.mark.parametrize('contingency', [0., .1, .3])
 def test_native_facility_children_reconcile_to_total_without_calendar_change(
         evaluate, case_index, contingency):
-    entering = json.loads((ROOT / 'work/orchestration/goals/layout-based-facilities'
-                          '/evidence/entering-replay.json').read_text())['cases'][case_index]
-    # Frozen WI-068 monetary anchor predates throughput costing; replay its legacy selection.
-    from tests.models.current_mfe_regressions import WI073_REPLAY
-    point = entering['inputs'] | WI073_REPLAY | {P + 'contingency_rate': contingency, P + 'fuel_cycle__processing_enabled': False}
+    # Compare account modes on the current explicit design, at two supplied
+    # circuit counts. This no longer claims a replay of auto-sized WI-068 costs.
+    point = {P+'heat_transport__n_loops': (14.,18.)[case_index],
+             P+'contingency_rate':contingency}
     old_case = evaluate(point | {P + 'buildings__facilities_cost_mode': 0.})
     new_case = evaluate(point | {P + 'buildings__facilities_cost_mode': 1.})
     old, new = old_case.outputs, new_case.outputs
@@ -134,6 +133,3 @@ def test_native_facility_children_reconcile_to_total_without_calendar_change(
         assert new[key] == old[key], key
     assert new_case.responses == old_case.responses
     assert (new[P + 'lcoe_calc__lcoe'] - old[P + 'lcoe_calc__lcoe']) * expected_capital_change > 0
-    if contingency == .1:
-        assert old[P + 'total_capital__total_capital'] == pytest.approx(
-            entering['outputs'][P + 'total_capital__total_capital'], rel=1e-12)

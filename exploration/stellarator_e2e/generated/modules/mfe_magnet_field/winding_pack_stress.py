@@ -36,9 +36,9 @@ Inputs:
 Outputs:
     - sigma_wp: sigma_wp result
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:48
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:60
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:48
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:60
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_magnet_field/winding_pack_stress_impl.py
@@ -102,9 +102,9 @@ Inputs:
 Outputs:
     - sigma_wp: sigma_wp result
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:48
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:60
 
-    SysML Source: root-0/analyses/mfe_magnet_field.sysml:48
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:60
 
     Calculation Specification:
         See documentation:

@@ -1,4 +1,4 @@
-"""Independent WI-070 limited exhaust-processing price arithmetic.
+"""Independent WI-077 supplied-capacity processing price arithmetic.
 
 Authority: WI-070/design.md, proposed-abi.md and reviewed four-row price evidence.
 No production implementation or defaults are imported. All costs express the
@@ -9,12 +9,12 @@ import math
 ROWS = ('transfer', 'cleanup', 'distiller', 'containment')
 FLAGS = ('enabled', 'inventory_enabled', 'source_conditions')
 NUMERIC_INPUTS = (
-    'flow', 'n_mod', 'legacy_cost', 'capacity_margin', 'price_multiplier',
+    'flow', 'n_mod', 'legacy_cost', 'capacity', 'price_multiplier',
     'reference_flow', 'exponent', 'target_cpi',
     *(f'{row}_{field}' for row in ROWS for field in ('cpi', 'capital', 'installation')),
 )
 OUTPUTS = (
-    'flow_kg_s', 'capacity_kg_s', 'plant_capacity_kg_s', 'flow_ratio', 'scaling_factor',
+    'flow_kg_s', 'capacity_kg_s', 'plant_capacity_kg_s', 'plant_demand_kg_s', 'capacity_margin_kg_s', 'capacity_evaluation_defined', 'flow_ratio', 'scaling_factor',
     *(f'{row}_{field}' for row in ROWS for field in
       ('reference_capital', 'reference_installation', 'capital', 'installation')),
     'equipment_total', 'installation_total', 'module_total', 'new_total', 'cost', 'defined_flag',
@@ -43,8 +43,8 @@ def calculate(x: dict) -> dict:
         return result
     if not x['inventory_enabled']:
         raise ValueError('processing oracle: active pricing requires active inventory')
-    if x['flow'] < 0 or x['capacity_margin'] < 1:
-        raise ValueError('processing oracle: invalid flow or capacity margin')
+    if x['flow'] < 0 or x['capacity'] <= 0:
+        raise ValueError('processing oracle: invalid flow or supplied capacity')
     n = x['n_mod']
     if isinstance(n, bool) or n < 1 or int(n) != n:
         raise ValueError('processing oracle: modules must be a positive integer')
@@ -62,13 +62,14 @@ def calculate(x: dict) -> dict:
         return value
 
     try:
-        capacity = finite(x['flow'] * x['capacity_margin'])
+        capacity = x['capacity']
         ratio = finite(capacity / x['reference_flow'])
         scale = finite(math.pow(ratio, x['exponent']))
         per_module_factor = finite(x['price_multiplier'] * scale)
         plant_factor = finite(n * per_module_factor)
         result.update(flow_kg_s=x['flow'], capacity_kg_s=capacity,
-                      plant_capacity_kg_s=finite(n * capacity), flow_ratio=ratio,
+                      plant_capacity_kg_s=finite(n * capacity), plant_demand_kg_s=finite(n * x['flow']),
+                      capacity_margin_kg_s=finite(n * (capacity - x['flow'])), capacity_evaluation_defined=1.0, flow_ratio=ratio,
                       scaling_factor=scale, defined_flag=float(x['source_conditions']))
         for row in ROWS:
             escalation = finite(x['target_cpi'] / x[row + '_cpi'])

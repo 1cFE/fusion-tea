@@ -1,6 +1,14 @@
 package mfe_viability {
     private import ScalarValues::*;
 
+    constraint def 'Represented Coolant Fill' {
+        doc /* Selected purchased helium and salt cover only the represented physical fill. Reserve targets are suggestions. This is not complete-system inventory or off-design machine qualification. **Source**: work/active/WI-078_supplied-cooling-design-point-evaluation/spec.md **Reference**: MR-7 architecture-review-r2.md **Last Updated**: 2026-09-20 */
+        in attribute defined_in : Real;
+        in attribute helium_margin_in : Real;
+        in attribute salt_margin_in : Real;
+        defined_in >= 1.0 and helium_margin_in >= 0.0 and salt_margin_in >= 0.0
+    }
+
     constraint def 'Net Power Positive' {
         doc /*
         Hard physics bound: the plant must produce positive net electric power

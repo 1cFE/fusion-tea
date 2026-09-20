@@ -1,0 +1,139 @@
+...........FFFF............                                              [100%]
+=================================== FAILURES ===================================
+___________ test_primary_controls_reach_current_native_comparison[0] ___________
+
+runtime = None
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13080/test_primary_controls_reach_cu0')
+control_index = 0
+
+    @pytest.mark.parametrize('control_index', range(4))
+    def test_primary_controls_reach_current_native_comparison(runtime, tmp_path, control_index):
+        # Reuse the historical hydraulic perturbations on the current supplied design.
+        # This is a new evaluation, not a replay of retired magnet/facility selection.
+        import oracle_entry
+        import study_route
+        historical = json.loads((ROOT/'.project/active/primary-loop-current-consumers/implementation/oracle-before.json').read_text())['controls'][control_index]
+        inverse = {v:k for k,v in oracle_entry.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+        point = {inverse[k]:v for k,v in historical['overrides'].items()}
+        cases, _ = study_route.run_points('cooling-current-primary-control', [point], tmp_path)
+        case = cases[0]
+        assert case.state == 'completed'
+        expected = oracle_entry.evaluate(case.inputs)
+        assert set(expected) <= set(case.outputs)
+        for key, value in expected.items():
+            assert case.outputs[key] == pytest.approx(value, rel=1e-9, abs=1e-9), key
+        # Required flow and heat recovery retain their physical balance identities.
+        q = P+'heat_transport__primary_loop__'
+        assert case.outputs[q+'q_ihx'] == pytest.approx(case.outputs[P+'blanket__source_heat__q_source'] + case.outputs[q+'w_fluid'])
+>       assert case.outputs[q+'mdot_loop'] == pytest.approx(case.outputs[q+'mdot']/case.inputs[P+'heat_transport__n_loops'])
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'stellarator_09__stellaris__heat_transport__n_loops'
+
+tests/models/test_installed_cooling_equipment.py:156: KeyError
+___________ test_primary_controls_reach_current_native_comparison[1] ___________
+
+runtime = None
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13080/test_primary_controls_reach_cu1')
+control_index = 1
+
+    @pytest.mark.parametrize('control_index', range(4))
+    def test_primary_controls_reach_current_native_comparison(runtime, tmp_path, control_index):
+        # Reuse the historical hydraulic perturbations on the current supplied design.
+        # This is a new evaluation, not a replay of retired magnet/facility selection.
+        import oracle_entry
+        import study_route
+        historical = json.loads((ROOT/'.project/active/primary-loop-current-consumers/implementation/oracle-before.json').read_text())['controls'][control_index]
+        inverse = {v:k for k,v in oracle_entry.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+        point = {inverse[k]:v for k,v in historical['overrides'].items()}
+        cases, _ = study_route.run_points('cooling-current-primary-control', [point], tmp_path)
+        case = cases[0]
+        assert case.state == 'completed'
+        expected = oracle_entry.evaluate(case.inputs)
+        assert set(expected) <= set(case.outputs)
+        for key, value in expected.items():
+            assert case.outputs[key] == pytest.approx(value, rel=1e-9, abs=1e-9), key
+        # Required flow and heat recovery retain their physical balance identities.
+        q = P+'heat_transport__primary_loop__'
+        assert case.outputs[q+'q_ihx'] == pytest.approx(case.outputs[P+'blanket__source_heat__q_source'] + case.outputs[q+'w_fluid'])
+>       assert case.outputs[q+'mdot_loop'] == pytest.approx(case.outputs[q+'mdot']/case.inputs[P+'heat_transport__n_loops'])
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'stellarator_09__stellaris__heat_transport__n_loops'
+
+tests/models/test_installed_cooling_equipment.py:156: KeyError
+___________ test_primary_controls_reach_current_native_comparison[2] ___________
+
+runtime = None
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13080/test_primary_controls_reach_cu2')
+control_index = 2
+
+    @pytest.mark.parametrize('control_index', range(4))
+    def test_primary_controls_reach_current_native_comparison(runtime, tmp_path, control_index):
+        # Reuse the historical hydraulic perturbations on the current supplied design.
+        # This is a new evaluation, not a replay of retired magnet/facility selection.
+        import oracle_entry
+        import study_route
+        historical = json.loads((ROOT/'.project/active/primary-loop-current-consumers/implementation/oracle-before.json').read_text())['controls'][control_index]
+        inverse = {v:k for k,v in oracle_entry.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+        point = {inverse[k]:v for k,v in historical['overrides'].items()}
+        cases, _ = study_route.run_points('cooling-current-primary-control', [point], tmp_path)
+        case = cases[0]
+        assert case.state == 'completed'
+        expected = oracle_entry.evaluate(case.inputs)
+        assert set(expected) <= set(case.outputs)
+        for key, value in expected.items():
+            assert case.outputs[key] == pytest.approx(value, rel=1e-9, abs=1e-9), key
+        # Required flow and heat recovery retain their physical balance identities.
+        q = P+'heat_transport__primary_loop__'
+        assert case.outputs[q+'q_ihx'] == pytest.approx(case.outputs[P+'blanket__source_heat__q_source'] + case.outputs[q+'w_fluid'])
+>       assert case.outputs[q+'mdot_loop'] == pytest.approx(case.outputs[q+'mdot']/case.inputs[P+'heat_transport__n_loops'])
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'stellarator_09__stellaris__heat_transport__n_loops'
+
+tests/models/test_installed_cooling_equipment.py:156: KeyError
+___________ test_primary_controls_reach_current_native_comparison[3] ___________
+
+runtime = None
+tmp_path = PosixPath('/tmp/pytest-of-reid/pytest-13080/test_primary_controls_reach_cu3')
+control_index = 3
+
+    @pytest.mark.parametrize('control_index', range(4))
+    def test_primary_controls_reach_current_native_comparison(runtime, tmp_path, control_index):
+        # Reuse the historical hydraulic perturbations on the current supplied design.
+        # This is a new evaluation, not a replay of retired magnet/facility selection.
+        import oracle_entry
+        import study_route
+        historical = json.loads((ROOT/'.project/active/primary-loop-current-consumers/implementation/oracle-before.json').read_text())['controls'][control_index]
+        inverse = {v:k for k,v in oracle_entry.ENTRY_KEY_TO_ORACLE_INPUT.items()}
+        point = {inverse[k]:v for k,v in historical['overrides'].items()}
+        cases, _ = study_route.run_points('cooling-current-primary-control', [point], tmp_path)
+        case = cases[0]
+>       assert case.state == 'completed'
+E       AssertionError: assert 'execution_failed' == 'completed'
+E         
+E         - completed
+E         + execution_failed
+
+tests/models/test_installed_cooling_equipment.py:148: AssertionError
+=============================== warnings summary ===============================
+tests/models/test_installed_cooling_equipment.py::test_actual_native_cost_and_energy_selectors
+tests/models/test_installed_cooling_equipment.py::test_native_replacement_reaches_lcoe_without_changing_capital
+tests/models/test_installed_cooling_equipment.py::test_primary_controls_reach_current_native_comparison[0]
+tests/models/test_installed_cooling_equipment.py::test_primary_controls_reach_current_native_comparison[1]
+tests/models/test_installed_cooling_equipment.py::test_primary_controls_reach_current_native_comparison[2]
+tests/models/test_installed_cooling_equipment.py::test_matched_direct_delta_and_delivered_shipping_reach_total_capital
+  /home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+    PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+    return self.__pydantic_serializer__.to_python(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/models/test_installed_cooling_equipment.py::test_primary_controls_reach_current_native_comparison[0]
+FAILED tests/models/test_installed_cooling_equipment.py::test_primary_controls_reach_current_native_comparison[1]
+FAILED tests/models/test_installed_cooling_equipment.py::test_primary_controls_reach_current_native_comparison[2]
+FAILED tests/models/test_installed_cooling_equipment.py::test_primary_controls_reach_current_native_comparison[3]
+4 failed, 23 passed, 6 warnings in 21.83s

@@ -1,0 +1,17 @@
+SysML parsing failed: Failed to load SysML models: root-0/designs/generic_mfe/mfe_subsystems.sysml:979:50: (type-error) mfe_subsystems::Buildings::selected_reactor_hall_length does not conform to ScalarValues::Boolean; root-0/designs/generic_mfe/mfe_subsystems.sysml:1064:40: (type-error) mfe_subsystems::Buildings::facilities_enabled does not conform to ScalarValues::Real
+[ERROR] /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_subsystems.sysml:979:50: error (type-error): mfe_subsystems::Buildings::selected_reactor_hall_length does not conform to ScalarValues::Boolean
+[ERROR] /home/reid/1cfe/fusion-tea/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_subsystems.sysml:1064:40: error (type-error): mfe_subsystems::Buildings::facilities_enabled does not conform to ScalarValues::Real
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/work/active/WI-075_supplied-magnet-design-evaluation/integration/regenerate.py", line 72, in <module>
+    if __name__=='__main__':generate()
+                            ^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/work/active/WI-075_supplied-magnet-design-evaluation/integration/regenerate.py", line 55, in generate
+    fresh=seed_and_generate(Path(scratch)/'fresh',source,models_path=MFE.twin)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/work/active/WI-075_supplied-magnet-design-evaluation/integration/regenerate.py", line 35, in seed_and_generate
+    return recipe().seed_and_generate(path,source,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/work/completed/20260914_WI-040_winding-pack-mass-cost/evidence/regenerate.py", line 39, in seed_and_generate
+    assert (generator or run_codegen)(GenerationConfig(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

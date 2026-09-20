@@ -292,6 +292,13 @@ CHILDREN=('reactor_hall',*(f'sector_wing_{x}' for x in ('east','north','west','s
     'cooling_hall','cooling_annex','cooling_link',*ROOM_NAMES,'administration','control','security')
 QUANTITIES=('clear_length','clear_width','clear_height','clear_area','gross_area','air_volume',
             'sub_concrete','super_concrete','sub_formwork','super_formwork','sub_rebar','super_rebar')
+# WI-076 explicit entering-design migration; no runtime design-selection policy.
+DEFAULTS.pop("facilities_capacity_mode", None)
+DEFAULTS.pop("occupancy_aspect_ratio", None)
+DEFAULTS.update({'selected_reactor_hall_length': 105.809397513309, 'selected_reactor_hall_width': 105.809397513309, 'selected_reactor_hall_height': 14.100000000000001, 'selected_sector_wing_east_length': 106.0, 'selected_sector_wing_east_width': 97.809397513309, 'selected_sector_wing_east_height': 14.100000000000001, 'selected_sector_wing_north_length': 106.0, 'selected_sector_wing_north_width': 97.809397513309, 'selected_sector_wing_north_height': 14.100000000000001, 'selected_sector_wing_west_length': 106.0, 'selected_sector_wing_west_width': 97.809397513309, 'selected_sector_wing_west_height': 14.100000000000001, 'selected_sector_wing_south_length': 106.0, 'selected_sector_wing_south_width': 97.809397513309, 'selected_sector_wing_south_height': 14.100000000000001, 'selected_sector_link_east_length': 10.0, 'selected_sector_link_east_width': 37.80939751330899, 'selected_sector_link_east_height': 14.100000000000001, 'selected_sector_link_north_length': 10.0, 'selected_sector_link_north_width': 37.80939751330899, 'selected_sector_link_north_height': 14.100000000000001, 'selected_sector_link_west_length': 10.0, 'selected_sector_link_west_width': 37.80939751330899, 'selected_sector_link_west_height': 14.100000000000001, 'selected_sector_link_south_length': 10.0, 'selected_sector_link_south_width': 37.80939751330899, 'selected_sector_link_south_height': 14.100000000000001, 'selected_cooling_hall_length': 92.39999999999999, 'selected_cooling_hall_width': 114.2, 'selected_cooling_hall_height': 9.0, 'selected_cooling_annex_length': 67.7, 'selected_cooling_annex_width': 296.2, 'selected_cooling_annex_height': 9.0, 'selected_cooling_link_length': 10.0, 'selected_cooling_link_width': 17.0, 'selected_cooling_link_height': 9.0, 'selected_turbine_hall_length': 64.0, 'selected_turbine_hall_width': 24.0, 'selected_turbine_hall_height': 18.0, 'selected_cryo_coldbox_length': 24.0, 'selected_cryo_coldbox_width': 16.0, 'selected_cryo_coldbox_height': 13.0, 'selected_cryo_compressors_length': 34.0, 'selected_cryo_compressors_width': 16.0, 'selected_cryo_compressors_height': 11.0, 'selected_fuel_building_length': 34.0, 'selected_fuel_building_width': 24.0, 'selected_fuel_building_height': 11.0, 'selected_reactor_auxiliaries_length': 34.0, 'selected_reactor_auxiliaries_width': 24.0, 'selected_reactor_auxiliaries_height': 13.0, 'selected_power_supply_building_length': 24.0, 'selected_power_supply_building_width': 14.0, 'selected_power_supply_building_height': 11.0, 'selected_electrical_building_length': 20.0, 'selected_electrical_building_width': 12.0, 'selected_electrical_building_height': 9.0, 'selected_service_water_building_length': 24.0, 'selected_service_water_building_width': 19.0, 'selected_service_water_building_height': 11.0, 'selected_maintenance_shop_length': 24.0, 'selected_maintenance_shop_width': 19.0, 'selected_maintenance_shop_height': 11.0, 'selected_site_services_building_length': 24.0, 'selected_site_services_building_width': 14.0, 'selected_site_services_building_height': 9.0, 'selected_administration_length': 78.99367063252599, 'selected_administration_width': 39.496835316262995, 'selected_administration_height': 4.0, 'selected_control_length': 34.20526275297414, 'selected_control_width': 17.10263137648707, 'selected_control_height': 4.0, 'selected_security_length': 17.663521732655695, 'selected_security_width': 8.831760866327848, 'selected_security_height': 4.0, 'selected_cooling_helium_store_width': 16.0, 'selected_cooling_salt_store_width': 14.0, 'selected_cooling_bundle_store_width': 16.4, 'selected_cooling_annex_north_depth': 152.1, 'selected_blanket_packages_per_sector': 32, 'selected_parcel_x_min': -186.9046987566545, 'selected_parcel_y_min': -256.9046987566545, 'selected_parcel_length': 822.0624551181559, 'selected_parcel_width': 443.809397513309, 'clean_positions': 36, 'dirty_buffer_positions': 18, 'dirty_store_positions': 36, 'cooling_clean_helium_positions': 29, 'cooling_clean_salt_positions': 29, 'cooling_clean_bundle_positions': 14, 'cooling_dirty_helium_positions': 28, 'cooling_dirty_salt_positions': 28, 'cooling_dirty_bundle_positions': 14})
+
+DEFAULTS.update(parcel_origin_x_offset=0.,parcel_origin_y_offset=0.)
+
 SCALARS=('active cost_mode capacity_mode sector_length sector_width sector_height parcel_area '
  'controlled_air_volume total_clear_area total_gross_area total_air_volume '
  'blanket_packages_per_sector packages_per_sector material_capacity_volume unused_material_capacity '
@@ -309,6 +316,8 @@ SCALARS=('active cost_mode capacity_mode sector_length sector_width sector_heigh
  'exterior_envelope_qualified sector_load_qualified contamination_procedure_qualified '
  'cooling_outage_basis_resolved provisional_room_count').split()
 
+
+SCALARS=tuple(k for k in SCALARS if k != "capacity_mode") + ('geometry_fit_margin_m', 'occupancy_area_margin_m2', 'parcel_fit_margin_m', 'blanket_packages_required_per_sector', 'required_parcel_x_min', 'required_parcel_y_min', 'required_parcel_x_max', 'required_parcel_y_max', 'reactor_hall_required_length', 'reactor_hall_required_width', 'reactor_hall_required_height', 'sector_wing_east_required_length', 'sector_wing_east_required_width', 'sector_wing_east_required_height', 'sector_wing_north_required_length', 'sector_wing_north_required_width', 'sector_wing_north_required_height', 'sector_wing_west_required_length', 'sector_wing_west_required_width', 'sector_wing_west_required_height', 'sector_wing_south_required_length', 'sector_wing_south_required_width', 'sector_wing_south_required_height', 'sector_link_east_required_length', 'sector_link_east_required_width', 'sector_link_east_required_height', 'sector_link_north_required_length', 'sector_link_north_required_width', 'sector_link_north_required_height', 'sector_link_west_required_length', 'sector_link_west_required_width', 'sector_link_west_required_height', 'sector_link_south_required_length', 'sector_link_south_required_width', 'sector_link_south_required_height', 'cooling_hall_required_length', 'cooling_hall_required_width', 'cooling_hall_required_height', 'cooling_annex_required_length', 'cooling_annex_required_width', 'cooling_annex_required_height', 'cooling_link_required_length', 'cooling_link_required_width', 'cooling_link_required_height', 'turbine_hall_required_length', 'turbine_hall_required_width', 'turbine_hall_required_height', 'cryo_coldbox_required_length', 'cryo_coldbox_required_width', 'cryo_coldbox_required_height', 'cryo_compressors_required_length', 'cryo_compressors_required_width', 'cryo_compressors_required_height', 'fuel_building_required_length', 'fuel_building_required_width', 'fuel_building_required_height', 'reactor_auxiliaries_required_length', 'reactor_auxiliaries_required_width', 'reactor_auxiliaries_required_height', 'power_supply_building_required_length', 'power_supply_building_required_width', 'power_supply_building_required_height', 'electrical_building_required_length', 'electrical_building_required_width', 'electrical_building_required_height', 'service_water_building_required_length', 'service_water_building_required_width', 'service_water_building_required_height', 'maintenance_shop_required_length', 'maintenance_shop_required_width', 'maintenance_shop_required_height', 'site_services_building_required_length', 'site_services_building_required_width', 'site_services_building_required_height', 'administration_required_area', 'administration_required_height', 'control_required_area', 'control_required_height', 'security_required_area', 'security_required_height')
 
 def rectangle_union(rectangles):
     """Exact area and exposed perimeter by elementary cell adjacency."""
@@ -349,26 +358,31 @@ def room_takeoff(length,width,height,t,floor,roof,density,partitions=(),openings
 
 def layout(p, physical, events):
     """Contract-level independent geometry and logistics; costs joined separately."""
+    # Public translation coordinates; absolute helper inputs retain the fixed entering datum.
+    p=dict(p)
+    p['selected_parcel_x_min']+=p.get('parcel_origin_x_offset',0.)
+    p['selected_parcel_y_min']+=p.get('parcel_origin_y_offset',0.)
+
     out={k:0. for k in SCALARS}
     out.update({c+'_'+q:0. for c in CHILDREN for q in QUANTITIES})
     out.update({key:0. for c in CHILDREN for key in (c+'_sub_cost_2018',c+'_super_cost_2018',c+'_cost_2018',c+'_cost_2025')})
     out.update({k:0. for k in ('civil_capital','installed_facility_capital','layout_buildings_capital','layout_land_cost','ventilation_1990','ventilation_2025')})
-    if p['facilities_cost_mode'] not in (0,1) or p['facilities_capacity_mode'] not in (0,1):raise ValueError('facility selectors must be binary')
+    if p['facilities_cost_mode'] not in (0,1):raise ValueError('facility selectors must be binary')
     if not p['facilities_enabled']:
         if p['facilities_cost_mode']:raise ValueError('facility cost requires enabled layout')
-        out.update({k:1. for k in ('initial_margin_days','readiness_margin_days','capacity_margin_units','route_margin_m','outage_margin_days')})
+        out.update({k:1. for k in ('initial_margin_days','readiness_margin_days','capacity_margin_units','route_margin_m','outage_margin_days','geometry_fit_margin_m','occupancy_area_margin_m2','parcel_fit_margin_m','unused_material_capacity')})
         return out
     if physical['n_mod']!=1 or p['sector_count']!=4 or physical['calendar_mode']!=0:raise ValueError('unsupported facility topology/calendar')
     for key,value in p.items():
         if not math.isfinite(value):raise ValueError('nonfinite facility input '+key)
     for key,value in p.items():
-        if key not in ('initial_sector_start_days','cooling_initial_handoff_days') and value<0:
+        if key not in ('initial_sector_start_days','cooling_initial_handoff_days','selected_parcel_x_min','selected_parcel_y_min','parcel_origin_x_offset','parcel_origin_y_offset') and value<0:
             raise ValueError('negative facility input '+key)
     for key in ('component_width','component_height','component_length','component_material_fraction',
                 'sector_service_teams','cooling_prepare_stations','cooling_machine_stations','cooling_bundle_stations',
-                'nuclear_wall','conventional_wall','occupancy_aspect_ratio','tonne_interpretation_kg'):
+                'nuclear_wall','conventional_wall','tonne_interpretation_kg'):
         if p[key]<=0:raise ValueError('positive facility input required '+key)
-    integer_keys=('sector_count','sector_bays','sector_service_teams','divertor_packages_per_sector',
+    integer_keys=('selected_blanket_packages_per_sector','sector_count','sector_bays','sector_service_teams','divertor_packages_per_sector',
         'clean_positions','dirty_buffer_positions','dirty_store_positions',
         'cooling_prepare_stations','cooling_machine_stations','cooling_bundle_stations')
     integer_keys+=tuple(k for k in p if k.startswith('cooling_') and k.endswith('_positions'))
@@ -380,7 +394,8 @@ def layout(p, physical, events):
     years=physical['calendar_years'];t=p['nuclear_wall'];tc=p['conventional_wall']
     c=p['sector_route_clearance'];H=2*(r+p['exterior_allowance'])+p['sector_headroom']
     Ls=R+r+p['exterior_allowance'];Ws=math.sqrt(2)*Ls;Wlane=Ws+2*c
-    nb=math.ceil(V/(4*p['component_material_fraction']*p['component_width']*p['component_height']*p['component_length']))
+    needed_packages=math.ceil(V/(4*p['component_material_fraction']*p['component_width']*p['component_height']*p['component_length']))
+    nb=p['selected_blanket_packages_per_sector']
     packages=nb+p['divertor_packages_per_sector']
     iv=sector_inventory(events,packages,years,teams=p['sector_service_teams'],remove=p['component_remove_days'],
         install=p['component_install_days'],process=p['component_process_days'],prepare=p['component_prepare_days'],
@@ -395,10 +410,9 @@ def layout(p, physical, events):
         machine_process=p['cooling_machine_process_days'],bundle_process=p['cooling_bundle_process_days'],
         initial_handoff=p['cooling_initial_handoff_days'],prepare_machine=p['cooling_prepare_machine_days'],prepare_bundle=p['cooling_prepare_bundle_days'],
         field_cycle=p['cooling_field_cycle_days'],internal_move=p['cooling_internal_move_days'])
-    resize=p['facilities_capacity_mode']==1
-    ac=iv['clean_peak'] if resize else p['clean_positions']; ab=iv['queue_peak'] if resize else p['dirty_buffer_positions']; ast=iv['storage_peak'] if resize else p['dirty_store_positions']
-    cool_alloc={kind:tuple(co[kind][i] if resize else p['cooling_'+kind+'_'+name+'_positions'] for i,name in enumerate(('helium','salt','bundle'))) for kind in ('clean','dirty')}
-    out.update(active=1.,cost_mode=p['facilities_cost_mode'],capacity_mode=p['facilities_capacity_mode'],
+    ac=p['clean_positions']; ab=p['dirty_buffer_positions']; ast=p['dirty_store_positions']
+    cool_alloc={kind:tuple(p['cooling_'+kind+'_'+name+'_positions'] for i,name in enumerate(('helium','salt','bundle'))) for kind in ('clean','dirty')}
+    out.update(active=1.,cost_mode=p['facilities_cost_mode'],blanket_packages_required_per_sector=needed_packages,
         sector_length=Ls,sector_width=Ws,sector_height=H-p['sector_headroom'],blanket_packages_per_sector=nb,packages_per_sector=packages,
         material_capacity_volume=4*nb*p['component_material_fraction']*p['component_width']*p['component_height']*p['component_length'],
         initial_clean_required=iv['clean_peak'],dirty_buffer_required=iv['queue_peak'],dirty_store_required=iv['storage_peak'],
@@ -423,30 +437,34 @@ def layout(p, physical, events):
     buildings={};positions={}
     def add(name,L,W,h,nuclear=False,parts=(),doors=(),link=False):
         prefix='nuclear_' if nuclear else 'conventional_'
+        L,W,h=(p['selected_'+name+'_'+axis] for axis in ('length','width','height'))
         q=room_takeoff(L,W,h,p[prefix+'wall'],p[prefix+'floor'],p[prefix+'roof'],p[prefix+'rebar_density'],parts,doors,link)
         buildings[name]=q
     wingL=max(Ls+2*c,6*math.ceil((ac+2)/4)+12+2*t,6*math.ceil((ab+ast+4)/4)+12+2*t)
     wingW=Wlane+56+2*t
-    partitions=[(0,28,wingL,28+t),(0,28+t+Wlane,wingL,28+2*t+Wlane)]
-    # Clean lower annex and dirty upper annex each have a U-shaped6m clear airlock.
-    partitions.extend([(0,28-6-t,t,28),(t+6,28-6-t,2*t+6,28),(t,28-6-t,t+6,28-6)])
-    edge=28+2*t+Wlane
-    partitions.extend([(0,edge,t,edge+6+t),(t+6,edge,2*t+6,edge+6+t),(t,edge+6,t+6,edge+6+t)])
-    half=max(2*Ls+2, (wingW+2*t)/2+2)
-    add('reactor_hall',2*half,2*half,H,True,doors=[(Wlane,H)]*4)
+    def offered(name):
+        return tuple(p['selected_'+name+'_'+axis] for axis in ('length','width','height'))
+    hall_L,hall_W,hall_H=offered('reactor_hall')
+    add('reactor_hall',0,0,0,True,doors=[(offered('sector_link_'+d)[1],min(hall_H,offered('sector_link_'+d)[2])) for d in ('east','north','west','south')])
     for direction in ('east','north','west','south'):
-        add('sector_wing_'+direction,wingL,wingW,H,True,partitions,[(Wlane,H)]+[(6,6)]*6)
-        add('sector_link_'+direction,p['building_separation'],Wlane,H,True,link=True)
+        name='sector_wing_'+direction
+        L,W,h=offered(name);lane=W-56-2*t
+        partitions=[(0,28,L,28+t),(0,28+t+lane,L,28+2*t+lane)]
+        partitions.extend([(0,28-6-t,t,28),(t+6,28-6-t,2*t+6,28),(t,28-6-t,t+6,28-6)])
+        edge=28+2*t+lane
+        partitions.extend([(0,edge,t,edge+6+t),(t+6,edge,2*t+6,edge+6+t),(t,edge+6,t+6,edge+6+t)])
+        add(name,L,W,h,True,partitions,[(lane,h)]+[(6,6)]*6)
+        add('sector_link_'+direction,0,0,0,True,link=True)
     # Cooling cell envelopes follow actual shell/tube geometry and fixed-orientation carrier.
     aisle=p['cooling_aisle_width'];cross=p['cooling_cross_width'];margin=p['cooling_package_margin']
     bundleL=physical['hx_tube_length']+2*margin; bundleW=physical['hx_shell_bore']+2*margin
     shellL=physical['hx_shell_length']+2*p['hx_end_allowance']
     shellW=physical['hx_shell_bore']+2*physical['hx_shell_wall']
-    cellW=aisle+2*max(p['helium_package_width']+.6,p['salt_package_width']+.6,shellW)
+    cellW=aisle+2*(max(p['helium_package_width'],p['salt_package_width'])+.6)
     machineL=2*(max(p['helium_package_length'],p['salt_package_length'])+2*margin)
-    cellL=shellL+bundleL+2+machineL
+    cellL=shellL+bundleL+2*margin+machineL
     hallL=math.ceil(physical['cooling_circuits']/2)*cellW; hallW=2*cellL+cross
-    add('cooling_hall',hallL,hallW,p['cooling_headroom'],doors=[(cross,p['cooling_headroom'])])
+    add('cooling_hall',hallL,hallW,p['cooling_headroom'],doors=[(cross,offered('cooling_hall')[2])])
     widths=(2*(p['helium_package_width']+2*margin)+aisle,
         2*(p['salt_package_width']+2*margin)+aisle,2*(physical['hx_shell_bore']+2*margin)+aisle,
         2*(max(p['helium_package_width']+2*margin,p['salt_package_width']+2*margin,bundleW)+2*margin)+aisle)
@@ -456,8 +474,12 @@ def layout(p, physical, events):
     clean_depth=max(math.ceil(cool_alloc['clean'][i]/2)*pitches[i]+aisle for i in range(3))
     dirty_depth=max(max(math.ceil(cool_alloc['dirty'][i]/2)*pitches[i]+aisle for i in range(3)),
                     machineL/2+bundleL+10*margin)
-    north=reserve+clean_depth;south=reserve+dirty_depth
-    annexL=sum(widths)+3*tc;annexW=north+south
+    required_north=reserve+clean_depth;required_south=reserve+dirty_depth
+    required_widths=widths
+    annexL,annexW,annexH=offered('cooling_annex')
+    north=p['selected_cooling_annex_north_depth'];south=annexW-north
+    widths=tuple(p['selected_cooling_'+k+'_store_width'] for k in ('helium','salt','bundle'))
+    widths=widths+(annexL-sum(widths)-3*tc,)
     transverse=[south-cross/2-tc,south+cross/2,south-cross/2-p['cooling_airlock_length']-2*tc,south+cross/2+p['cooling_airlock_length']+tc]
     parts=[(0,y,annexL,y+tc) for y in transverse]
     x=0.
@@ -466,7 +488,7 @@ def layout(p, physical, events):
         parts.extend([(x,0,x+tc,south-cross/2-tc),(x,south+cross/2+tc,x+tc,annexW)])
         x+=tc
     add('cooling_annex',annexL,annexW,p['cooling_headroom'],parts=parts,
-        doors=[(6,p['cooling_headroom'])]*14+[(cross,p['cooling_headroom'])]*2)
+        doors=[(6,annexH)]*14+[(cross,annexH)]*2)
     add('cooling_link',p['building_separation'],cross,p['cooling_headroom'],link=True)
     for stem,name in zip(ENVELOPES,ROOM_NAMES):
         scale=p['provisional_envelope_scale']
@@ -474,30 +496,34 @@ def layout(p, physical, events):
         add(name,dims[0]+4,dims[1]+4,dims[2]+3,name=='fuel_building')
     for name in ('administration','control','security'):
         area=p[name+'_occupants']*p[name+'_area_per_person']*p['occupancy_circulation_factor']
-        add(name,math.sqrt(area*p['occupancy_aspect_ratio']),math.sqrt(area/p['occupancy_aspect_ratio']),p['occupancy_height'])
-    # Placement uses actual outside faces, not clear-room dimensions.
-    h=half+t;sep=p['building_separation'];wel=wingL+2*t;wew=wingW+2*t
-    positions['reactor_hall']=(-h,-h,h,h)
-    base=(h+sep,-wew/2,h+sep+wel,wew/2)
-    for turn,direction in enumerate(('east','north','west','south')):
-        x0,y0,x1,y1=base
-        corners=[(x,y) for x in (x0,x1) for y in (y0,y1)]
-        for _ in range(turn):corners=[(-y,x) for x,y in corners]
-        positions['sector_wing_'+direction]=(min(x for x,y in corners),min(y for x,y in corners),max(x for x,y in corners),max(y for x,y in corners))
-    cw=hallL+2*tc;ch=hallW+2*tc
-    x=h+sep+wel+sep
-    positions['cooling_hall']=(x,-ch/2,x+cw,ch/2)
-    ax=x+cw+sep
+        add(name,0,0,0)
+    # Independent rotated-rectangle placement of the declared supplied layout.
+    hx=(hall_L+2*t)/2;hy=(hall_W+2*t)/2;sep=p['building_separation']
+    positions['reactor_hall']=(-hx,-hy,hx,hy)
+    directions=('east','north','west','south')
+    for turn,direction in enumerate(directions):
+        L,W,h=offered('sector_wing_'+direction);ll,lw,lh=offered('sector_link_'+direction)
+        face=hx if turn%2==0 else hy
+        boxes={'sector_wing_':(face+ll,-W/2-t,face+ll+L+2*t,W/2+t),'sector_link_':(face,-lw/2-t,face+ll,lw/2+t)}
+        for stem,box in boxes.items():
+            vertices=[(x,y) for x in (box[0],box[2]) for y in (box[1],box[3])]
+            for _ in range(turn):vertices=[(-y,x) for x,y in vertices]
+            positions[stem+direction]=(min(x for x,y in vertices),min(y for x,y in vertices),max(x for x,y in vertices),max(y for x,y in vertices))
+    xx=max(v[2] for v in positions.values())+sep
+    hL,hW,hH=offered('cooling_hall');lL,lW,lH=offered('cooling_link');ax=xx+hL+2*tc+lL
+    positions['cooling_hall']=(xx,-hW/2-tc,xx+hL+2*tc,hW/2+tc)
+    positions['cooling_link']=(xx+hL+2*tc,-lW/2-tc,ax,lW/2+tc)
     positions['cooling_annex']=(ax,-south-tc,ax+annexL+2*tc,north+tc)
-    # Reviewed campus row starts at the reactor hall's west exterior face.
-    x=-h;top=-(h+sep+wel)-sep
+    xx=-hx;top=min(positions[n][1] for n in ('reactor_hall',)+tuple('sector_wing_'+d for d in directions))-sep
     for name in (*ROOM_NAMES,'administration','control','security'):
-        q=buildings[name];wt=t if name=='fuel_building' else tc
-        el=q['clear_length']+2*wt;ew=q['clear_width']+2*wt
-        positions[name]=(x,top-ew,x+el,top);x+=el+sep
-    positions['heat_rejection_plot']=(x,top-p['heat_rejection_width'],x+p['heat_rejection_length'],top)
-    bounds=(min(v[0] for v in positions.values()),min(v[1] for v in positions.values()),max(v[2] for v in positions.values()),max(v[3] for v in positions.values()))
-    out['parcel_area']=(bounds[2]-bounds[0]+2*p['external_access_width'])*(bounds[3]-bounds[1]+2*p['external_access_width'])
+        L,W,h=offered(name);wt=t if name=='fuel_building' else tc
+        positions[name]=(xx,top-W-2*wt,xx+L+2*wt,top);xx+=L+2*wt+sep
+    positions['heat_rejection_plot']=(xx,top-p['heat_rejection_width'],xx+p['heat_rejection_length'],top)
+    access=p['external_access_width']
+    bounds=(min(v[0] for v in positions.values())-access,min(v[1] for v in positions.values())-access,max(v[2] for v in positions.values())+access,max(v[3] for v in positions.values())+access)
+    out['parcel_area']=p['selected_parcel_length']*p['selected_parcel_width']
+    out.update(zip(('required_parcel_x_min','required_parcel_y_min','required_parcel_x_max','required_parcel_y_max'),bounds))
+    out['parcel_fit_margin_m']=min(bounds[0]-p['selected_parcel_x_min'],bounds[1]-p['selected_parcel_y_min'],p['selected_parcel_x_min']+p['selected_parcel_length']-bounds[2],p['selected_parcel_y_min']+p['selected_parcel_width']-bounds[3])
     for name,q in buildings.items():
         out.update({name+'_'+k:v for k,v in q.items()})
         subtotal={}
@@ -506,35 +532,53 @@ def layout(p, physical, events):
             out[name+'_'+level+'_cost_2018']=subtotal[level]
         out[name+'_cost_2018']=sum(subtotal.values());out[name+'_cost_2025']=sum(subtotal.values())*p['civil_cpi_ratio']
     out['civil_capital']=sum(out[name+'_cost_2025'] for name in CHILDREN)
-    out['controlled_air_volume']=buildings['reactor_hall']['air_volume']+4*((Wlane+28)*wingL-(18*t+2*t*t))*H+4*buildings['sector_link_east']['air_volume']+buildings['fuel_building']['air_volume']
+    out['controlled_air_volume']=buildings['reactor_hall']['air_volume']+buildings['fuel_building']['air_volume']
+    for direction in directions:
+        L,W,h=offered('sector_wing_'+direction)
+        out['controlled_air_volume']+=((W-28-2*t)*L-(18*t+2*t*t))*h+buildings['sector_link_'+direction]['air_volume']
     for output,key in [('total_clear_area','clear_area'),('total_gross_area','gross_area'),('total_air_volume','air_volume')]:out[output]=sum(q[key] for q in buildings.values())
     out['ventilation_1990']=p['ventilation_coefficient']*out['controlled_air_volume']**p['ventilation_exponent']
     out['ventilation_2025']=out['ventilation_1990']*p['ventilation_cpi_ratio']
     out['installed_facility_capital']=out['civil_capital']+out['ventilation_2025']
     out['layout_buildings_capital']=out['installed_facility_capital']+p['retained_site_improvements']
     out['layout_land_cost']=out['parcel_area']/4046.8564224*p['land_rate_per_acre']
-    envelope_w=p['component_width']+2*p['component_handling_margin'];envelope_l=p['component_length']+2*p['component_handling_margin']
-    envelope_h=p['component_height']+2*p['component_handling_margin']
-    bundleH=physical['hx_shell_bore']+margin
-    machine_side=max(p['helium_package_width']+.6,p['salt_package_width']+.6,shellW)
-    out['route_margin_m']=min(5-envelope_w,3-envelope_h,c-math.hypot(envelope_w,envelope_l),
-        6-envelope_w,6-envelope_h,c-6,p['sector_headroom'],aisle-bundleW,cross-bundleL,
-        p['cooling_airlock_length']-bundleL,
-        p['cooling_headroom']-max(bundleH,p['helium_package_height']+margin,p['salt_package_height']+margin),
-        machine_side-max(p['helium_package_width'],p['salt_package_width']),
-        cellW-shellW,wingL-Ls-2*c)
-    carried=((p['helium_package_length']+2*margin,p['helium_package_width']+2*margin,p['helium_package_height']+margin),
-             (p['salt_package_length']+2*margin,p['salt_package_width']+2*margin,p['salt_package_height']+margin),
-             (bundleL,bundleW,bundleH))
-    service_slot_width=(widths[3]-aisle)/2
-    for length,width,height in carried:
-        out['route_margin_m']=min(out['route_margin_m'],aisle-width,6-width,
-            cross-length,p['cooling_airlock_length']-length,p['cooling_headroom']-height,
-            service_slot_width-width)
+    # Independently compare the selected room boxes with represented requirements.
+    need={'reactor_hall':(4*Ls+4,4*Ls+4,H)}
+    for direction in directions:
+        need['sector_wing_'+direction]=(wingL,wingW,H)
+        need['sector_link_'+direction]=(0.,Wlane,H)
+    need.update(cooling_hall=(hallL,hallW,max(p['cooling_headroom'],physical['hx_shell_bore']+margin,p['helium_package_height']+margin,p['salt_package_height']+margin)),
+                cooling_annex=(sum(required_widths)+3*tc,required_north+required_south,max(p['cooling_headroom'],physical['hx_shell_bore']+margin,p['helium_package_height']+margin,p['salt_package_height']+margin)),
+                cooling_link=(0.,cross,max(p['cooling_headroom'],physical['hx_shell_bore']+margin,p['helium_package_height']+margin,p['salt_package_height']+margin)))
+    for stem,name in zip(ENVELOPES,ROOM_NAMES):
+        need[name]=tuple(p[stem+'_'+axis]*p['provisional_envelope_scale']+extra for axis,extra in zip(('length','width','height'),(4,4,3)))
+    fit=[]
+    for name,dimensions in need.items():
+        for axis,actual,minimum in zip(('length','width','height'),offered(name),dimensions):
+            out[name+'_required_'+axis]=minimum;fit.append(actual-minimum)
+    for direction in directions:
+        wl,ww,wh=offered('sector_wing_'+direction);ll,lw,lh=offered('sector_link_'+direction)
+        fit.extend(((hall_W if direction in ('east','west') else hall_L)-lw,ww-56-2*t-lw,hall_H-lh,wh-lh))
+    fit.extend((cross-lW,min(hH,annexH)-lH))
+    # Internal allocated-slot accommodation is independent of calendar occupancy.
+    for i in range(3):
+        fit.extend((widths[i]-required_widths[i],north-reserve-(math.ceil(cool_alloc['clean'][i]/2)*pitches[i]+aisle),south-reserve-(math.ceil(cool_alloc['dirty'][i]/2)*pitches[i]+aisle)))
+    fit.extend((widths[3]-required_widths[3],south-reserve-(machineL/2+bundleL+10*margin)))
+    occupancy=[]
+    for name in ('administration','control','security'):
+        area=p[name+'_occupants']*p[name+'_area_per_person']*p['occupancy_circulation_factor']
+        out[name+'_required_area']=area;out[name+'_required_height']=p['occupancy_height']
+        occupancy.append(buildings[name]['clear_area']-area);fit.append(offered(name)[2]-p['occupancy_height'])
+    out['occupancy_area_margin_m2']=min(occupancy)
     boxes=list(positions.values())
-    for i,a in enumerate(boxes):
-        for b in boxes[i+1:]:
-            overlap_x=min(a[2],b[2])-max(a[0],b[0]); overlap_y=min(a[3],b[3])-max(a[1],b[1])
-            if min(overlap_x,overlap_y)>1e-9:
-                out['route_margin_m']=min(out['route_margin_m'],-min(overlap_x,overlap_y))
+    for i,first in enumerate(boxes):
+        for second in boxes[i+1:]:
+            dx=min(first[2],second[2])-max(first[0],second[0]);dy=min(first[3],second[3])-max(first[1],second[1])
+            if dx>1e-9 and dy>1e-9:fit.append(-min(dx,dy))
+    out['geometry_fit_margin_m']=min(fit)
+    ew=p['component_width']+2*p['component_handling_margin'];el=p['component_length']+2*p['component_handling_margin'];eh=p['component_height']+2*p['component_handling_margin']
+    route=[5-ew,3-eh,c-math.hypot(ew,el),6-ew,6-eh,c-6]
+    carried=((p['helium_package_length']+2*margin,p['helium_package_width']+2*margin,p['helium_package_height']+margin),(p['salt_package_length']+2*margin,p['salt_package_width']+2*margin,p['salt_package_height']+margin),(bundleL,bundleW,physical['hx_shell_bore']+margin))
+    for length,width,height in carried:route.extend((aisle-width,6-width,cross-length,p['cooling_airlock_length']-length,min(hH,annexH)-height,(widths[3]-aisle)/2-width))
+    out['route_margin_m']=min(route)
     return out

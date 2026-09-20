@@ -1,4 +1,4 @@
-from tests.models.current_mfe_regressions import CURRENT_PARAMETERS, CURRENT_NUMERIC, CURRENT_STRUCTURED, ALL_RETIRED_PARAMETERS
+from tests.models.current_mfe_regressions import MR7_RETIRED_CHANNELS, CURRENT_PARAMETERS, CURRENT_NUMERIC, CURRENT_STRUCTURED, ALL_RETIRED_PARAMETERS
 """WI-057 (2026-09-13): the boundary translation the frozen WI-050/WI-051 regression drivers run through.
 
 The drivers and their evidence keep the pre-decomposition key dialect; `current_mfe_regressions` translates at
@@ -77,7 +77,7 @@ def test_translation_changes_identifiers_only():
     assert numbers(before) == numbers(after)
     old_outputs = before['cases']['baseline']['native']['outputs']; new_outputs = after['cases']['baseline']['native']['outputs']
     assert {forward.get(k, k): v for k, v in old_outputs.items()} == new_outputs
-    assert set(new_outputs) <= LIVE_CHANNELS
+    assert set(new_outputs) - MR7_RETIRED_CHANNELS <= LIVE_CHANNELS
 
 
 def test_translation_preserves_a_planted_defect(tmp_path):
@@ -129,7 +129,7 @@ def test_wi040_restatement_changes_only_declared_cost_descendants(tmp_path):
         before = doc['cases'][case]['native']
         after = revised['cases'][case]['native']
         assert {k: v for k, v in after.items() if k != 'outputs'} == {k: v for k, v in before.items() if k != 'outputs'}
-        assert set(after['outputs']) - set(before['outputs']) == WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS | WI065_CHANNELS
+        assert set(after['outputs']) - set(before['outputs']) == (WI040_CHANNELS | LIVE_CONDUCTOR_CHANNELS | WI059_CHANNELS | WI061_CHANNELS | WI062_CHANNELS | WI063_CHANNELS | WI064_CHANNELS | WI065_CHANNELS) - MR7_RETIRED_CHANNELS
         for key, value in before['outputs'].items():
             if key not in changed:
                 assert after['outputs'][key] == value

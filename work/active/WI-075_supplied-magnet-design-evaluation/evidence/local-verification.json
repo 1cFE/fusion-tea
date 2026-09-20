@@ -1,0 +1,51 @@
+{
+  "tests": {
+    "command": ".codex-test/run python -m pytest tests/models/test_supplied_magnet_design.py -q",
+    "passed": 51,
+    "failed": 0,
+    "scope": "Normative seed and independent live oracle acceptance; regenerated/native acceptance pending"
+  },
+  "parser": {
+    "command": "syside.try_load_model(all canonical models/*.sysml)",
+    "files": 48,
+    "errors": 0,
+    "detail": "parser.json"
+  },
+  "twins": [
+    {
+      "canonical": "models/library/analyses/mfe_magnet_field.sysml",
+      "staged": "exploration/stellarator_e2e/models/analyses/mfe_magnet_field.sysml",
+      "sha256": "b665bdeb65ee81bc07fd47d72132570dcbb04a20e257247c58d7033c101d831a",
+      "equal": true
+    },
+    {
+      "canonical": "models/library/analyses/mfe_winding_pack_cost.sysml",
+      "staged": "exploration/stellarator_e2e/models/analyses/mfe_winding_pack_cost.sysml",
+      "sha256": "1458390ecbd1ebe29edf44746fbb302f6835d5410650ad72eb328cb45e7e28bb",
+      "equal": true
+    },
+    {
+      "canonical": "models/library/structure/mfe_magnet_parts.sysml",
+      "staged": "exploration/stellarator_e2e/models/structure/mfe_magnet_parts.sysml",
+      "sha256": "cf65361c1e70410a8116159e9d08f9b47e01d79e23a2c6c14c15a2d8f0d98887",
+      "equal": true
+    },
+    {
+      "canonical": "models/library/cost_structure/mfe_power_core.sysml",
+      "staged": "exploration/stellarator_e2e/models/cost_structure/mfe_power_core.sysml",
+      "sha256": "9f6c64b66153c9367f9ff8ffd06dd38818aecb3ea56a78aec2357cccaa9c4eb1",
+      "equal": true
+    }
+  ],
+  "pending": [
+    "regeneration and typed adapter execution",
+    "native MR-7 acceptance",
+    "affected regression migration",
+    "independent implementation review"
+  ],
+  "oracle_seam": {
+    "mapped_channels": 1123,
+    "new_parameterization": "independent evaluate(point) executed successfully",
+    "retired_keys_rejected": 5
+  }
+}

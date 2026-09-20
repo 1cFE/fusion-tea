@@ -49,34 +49,23 @@ def test_invalid_intermediate_or_output_is_deliberate(overrides, quantity):
 
 
 @pytest.mark.parametrize('field', [20., 30.])
-def test_priced_transfer_at_fixed_reference_density(field):
-    assert oracle.vs.IN['magnet_j_wp'] == BASE['j_reference']
+def test_ceiling_does_not_reselect_supplied_inventory(field):
     before = oracle._compute({})
     after = oracle._compute({'magnet_B_max': field})
-    q = (field / 24.9) ** .6
-    for name in ('vol_winding_pack', 'winding_tape_volume', 'winding_material_cost', 'tape_procurement_cost'):
-        assert after[name] == pytest.approx(before[name] * q, rel=1e-12), name
-    for m in ('copper', 'solder', 'steel', 'helium'):
-        for prefix in ('winding_mass_', 'winding_cost_'):
-            assert after[prefix + m] == pytest.approx(before[prefix + m] * q, rel=1e-12)
-    for name in ('sigma_wp', 'eps_cond'):
-        assert after[name] == pytest.approx(before[name] / math.sqrt(q), rel=1e-12)
-    for name in ('B_axis', 'B_peak', 'W_mag', 'm_casing', 'magnet', 'winding_pack_legacy', 'conductor_length', 'winding_fabrication_cost'):
-        assert after[name] == before[name], name
-    assert after['conductor_quantity_factor'] == pytest.approx(q)
+    assert before == after
 
 
-def test_operating_field_and_selected_capability_are_distinct():
+def test_operating_field_and_installed_inventory_are_distinct():
     before = oracle._compute({})
-    after = oracle._compute({'magnet_I_coil': oracle.vs.IN['magnet_I_coil'] * 1.01})
+    after = oracle._compute({'magnet_turn_current': oracle.vs.IN['magnet_turn_current'] * 1.01})
     assert after['B_peak'] > before['B_peak']
-    for name in ('conductor_quantity_factor', 'conductor_j_wp_effective'):
+    for name in ('vol_winding_pack', 'winding_material_cost', 'tape_procurement_cost', 'conductor_length'):
         assert after[name] == before[name]
 
 
-def test_public_grade_inputs_refuse_and_restore_state():
+def test_retired_public_grade_inputs_refuse_and_restore_state():
     saved = dict(oracle.vs.IN)
     for suffix in ('B_grade_ref', 'field_exponent'):
-        with pytest.raises(ValueError, match='Conductor Field Capability'):
+        with pytest.raises(oracle.OracleSeamError, match='retired'):
             oracle.evaluate({oracle.P + 'magnet__winding_pack__' + suffix: 0.})
         assert oracle.vs.IN == saved

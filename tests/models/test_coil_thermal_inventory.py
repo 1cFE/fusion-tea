@@ -120,7 +120,7 @@ def test_native_inventory_dormant_early_exit(native_inventory, oracle):
 
 @pytest.mark.parametrize('change', [
     {'cryo_rho_structure': 0}, {'cryo_q_nuc_structure': -1},
-    {'magnet_support_coefficient': -1}, {'magnet_support_exponent': 0},
+    {'magnet_support_mass': -1}, {'magnet_support_mass': float('nan')},
     {'magnet_legacy_casing_fraction': 1.1}, {'structure_residual_fraction': -1},
 ])
 def test_new_support_inputs_refuse_nonphysical_domain(oracle, change):

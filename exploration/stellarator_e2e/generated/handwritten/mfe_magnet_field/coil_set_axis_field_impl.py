@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:4
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:16
 
 SysML Expressions:
     mu0 = 1.25663706212e-06
@@ -69,7 +69,7 @@ WI-032 spec sec. "What G is" (the linkage decomposition)
 *Basis**: Ampere's law on the axis with a held, sourced coil-set
 linkage fact; concept-agnostic (MR-3) -- all values bound by instances
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:4
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:16
 
 SysML Expressions:
     mu0 = 1.25663706212e-06

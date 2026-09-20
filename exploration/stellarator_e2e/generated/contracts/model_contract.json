@@ -51,6 +51,22 @@
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::recirc_ok"
       },
       {
+        "constraint_id": "stellarator_09__stellaris__fuel_processing_capacity_ok__ddb8525b2bda8f0a",
+        "declaration_id": "174797c6-1835-516b-9315-22be7220d0fc",
+        "definition_qualified_name": "mfe_fuel_cycle::'Fuel Processing Capacity'",
+        "evaluation_channel": "stellarator_09__stellaris__fuel_processing_capacity_ok__ddb8525b2bda8f0a__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "stellarator_09::stellaris",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_fuel_cycle::'Fuel Processing Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_fuel_cycle::'Fuel Processing Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_fuel_cycle::'Fuel Processing Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "fuel_processing_capacity_ok",
+        "usage_qualified_name": "stellarator_09::stellaris::fuel_processing_capacity_ok"
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
         "declaration_id": "175d07f0-ebac-54a9-9fd8-d23a422f7397",
         "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
@@ -67,6 +83,38 @@
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::cycle_domain_ok"
       },
       {
+        "constraint_id": "stellarator_09__stellaris__facility_occupancy_ok__2c505953d2466dad",
+        "declaration_id": "1aebd9b2-1e21-52c9-801c-2ac061f33a44",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "evaluation_channel": "stellarator_09__stellaris__facility_occupancy_ok__2c505953d2466dad__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_facilities::'Facility Nonnegative Margin'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_facilities::'Facility Nonnegative Margin'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_occupancy_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_occupancy_ok"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__facility_material_capacity_ok__b02f74ca2b907a86",
+        "declaration_id": "2eff29d5-0f39-516d-84ce-737e3071c5e6",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "evaluation_channel": "stellarator_09__stellaris__facility_material_capacity_ok__b02f74ca2b907a86__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_facilities::'Facility Nonnegative Margin'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_facilities::'Facility Nonnegative Margin'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_material_capacity_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_material_capacity_ok"
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
         "declaration_id": "2fd7cd64-c865-5076-84ef-2557cba212a3",
         "definition_qualified_name": "mfe_viability::'Beta Limit'",
@@ -81,6 +129,22 @@
         "source_form": "definition_typed",
         "source_local_identity": "beta_ok",
         "usage_qualified_name": "stellarator_09::stellaris::beta_ok"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__facility_parcel_ok__6c9b12b61636c539",
+        "declaration_id": "35611139-b0a9-5edc-8b1f-4c5bce362fd0",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "evaluation_channel": "stellarator_09__stellaris__facility_parcel_ok__6c9b12b61636c539__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_facilities::'Facility Nonnegative Margin'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_facilities::'Facility Nonnegative Margin'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_parcel_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_parcel_ok"
       },
       {
         "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
@@ -129,6 +193,22 @@
         "source_form": "definition_typed",
         "source_local_identity": "facility_capacity_ok",
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_capacity_ok"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__facility_geometry_ok__e2729a4ee0257d98",
+        "declaration_id": "48dd600e-3752-5905-afa9-356fd42f4c3d",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "evaluation_channel": "stellarator_09__stellaris__facility_geometry_ok__e2729a4ee0257d98__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_facilities::'Facility Nonnegative Margin'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_facilities::'Facility Nonnegative Margin'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_geometry_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_geometry_ok"
       },
       {
         "constraint_id": "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722",
@@ -193,6 +273,22 @@
         "source_form": "definition_typed",
         "source_local_identity": "cooling_water_heat_direction",
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::cooling_water_heat_direction"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__represented_coolant_fill_ok__e6341404f9f2ddda",
+        "declaration_id": "7ad9cea0-95ef-5760-bee0-194009574156",
+        "definition_qualified_name": "mfe_viability::'Represented Coolant Fill'",
+        "evaluation_channel": "stellarator_09__stellaris__represented_coolant_fill_ok__e6341404f9f2ddda__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "stellarator_09::stellaris",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Represented Coolant Fill'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"helium_margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"helium_margin_in\",\"qualified_name\":\"mfe_viability::'Represented Coolant Fill'::helium_margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"salt_margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"salt_margin_in\",\"qualified_name\":\"mfe_viability::'Represented Coolant Fill'::salt_margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Represented Coolant Fill'",
+        "source_form": "definition_typed",
+        "source_local_identity": "represented_coolant_fill_ok",
+        "usage_qualified_name": "stellarator_09::stellaris::represented_coolant_fill_ok"
       },
       {
         "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
@@ -452,7 +548,7 @@
       }
     ],
     "excluded_records": [],
-    "fingerprint": "ac55f48f9d10ccf5d0db4ba6915690cc1369827da79acb72c3c382bc64ecff50",
+    "fingerprint": "492eb1a87d466af27c7be3b217ff547318f4fa77c8d5020e8d3c3006665e7183",
     "source_records": [
       {
         "definition_qualified_name": "mfe_conductor_current::'Reference Conductor Current Margin'",
@@ -463,6 +559,13 @@
       {
         "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
         "formal_names": [
+          "margin_in"
+        ]
+      },
+      {
+        "definition_qualified_name": "mfe_fuel_cycle::'Fuel Processing Capacity'",
+        "formal_names": [
+          "defined_in",
           "margin_in"
         ]
       },
@@ -566,6 +669,14 @@
         ]
       },
       {
+        "definition_qualified_name": "mfe_viability::'Represented Coolant Fill'",
+        "formal_names": [
+          "defined_in",
+          "helium_margin_in",
+          "salt_margin_in"
+        ]
+      },
+      {
         "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
         "formal_names": [
           "p_aux_installed_in",
@@ -642,6 +753,24 @@
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::recirc_ok"
       },
       {
+        "declaration_id": "174797c6-1835-516b-9315-22be7220d0fc",
+        "definition_qualified_name": "mfe_fuel_cycle::'Fuel Processing Capacity'",
+        "disposition_detail": "stellarator_09::stellaris::fuel_processing_capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "stellarator_09::stellaris",
+        "source_form": "definition_typed",
+        "source_local_identity": "fuel_processing_capacity_ok",
+        "usage_qualified_name": "stellarator_09::stellaris::fuel_processing_capacity_ok"
+      },
+      {
         "declaration_id": "175d07f0-ebac-54a9-9fd8-d23a422f7397",
         "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
         "disposition_detail": "mfe_plant::'MFE Power Plant'::cycle_domain_ok profile eligibility admit",
@@ -660,6 +789,42 @@
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::cycle_domain_ok"
       },
       {
+        "declaration_id": "1aebd9b2-1e21-52c9-801c-2ac061f33a44",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::facility_occupancy_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_occupancy_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_occupancy_ok"
+      },
+      {
+        "declaration_id": "2eff29d5-0f39-516d-84ce-737e3071c5e6",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::facility_material_capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_material_capacity_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_material_capacity_ok"
+      },
+      {
         "declaration_id": "2fd7cd64-c865-5076-84ef-2557cba212a3",
         "definition_qualified_name": "mfe_viability::'Beta Limit'",
         "disposition_detail": "stellarator_09::stellaris::beta_ok profile eligibility admit",
@@ -676,6 +841,24 @@
         "source_form": "definition_typed",
         "source_local_identity": "beta_ok",
         "usage_qualified_name": "stellarator_09::stellaris::beta_ok"
+      },
+      {
+        "declaration_id": "35611139-b0a9-5edc-8b1f-4c5bce362fd0",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::facility_parcel_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_parcel_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_parcel_ok"
       },
       {
         "declaration_id": "3915d148-9609-5752-9262-7a5c2edad4f2",
@@ -730,6 +913,24 @@
         "source_form": "definition_typed",
         "source_local_identity": "facility_capacity_ok",
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_capacity_ok"
+      },
+      {
+        "declaration_id": "48dd600e-3752-5905-afa9-356fd42f4c3d",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::facility_geometry_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "facility_geometry_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_geometry_ok"
       },
       {
         "declaration_id": "57ccf5c0-bf38-52f2-a947-2dee7a4fcf74",
@@ -802,6 +1003,24 @@
         "source_form": "definition_typed",
         "source_local_identity": "cooling_water_heat_direction",
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::cooling_water_heat_direction"
+      },
+      {
+        "declaration_id": "7ad9cea0-95ef-5760-bee0-194009574156",
+        "definition_qualified_name": "mfe_viability::'Represented Coolant Fill'",
+        "disposition_detail": "stellarator_09::stellaris::represented_coolant_fill_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "stellarator_09::stellaris",
+        "source_form": "definition_typed",
+        "source_local_identity": "represented_coolant_fill_ok",
+        "usage_qualified_name": "stellarator_09::stellaris::represented_coolant_fill_ok"
       },
       {
         "declaration_id": "7b8980c5-1176-5a84-ba5e-040ab0715d9a",
@@ -1171,6 +1390,111 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__required_y",
+      "field_name": "required_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__nominal_y",
+      "field_name": "nominal_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__minimum_margin",
+      "field_name": "minimum_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__margin_x",
+      "field_name": "margin_x",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__internal_y",
+      "field_name": "internal_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__pack_x",
+      "field_name": "pack_x",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__exterior_x",
+      "field_name": "exterior_x",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__cavity_x",
+      "field_name": "cavity_x",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__nominal_x",
+      "field_name": "nominal_x",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__cavity_y",
+      "field_name": "cavity_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__exterior_y",
+      "field_name": "exterior_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__insulated_y",
+      "field_name": "insulated_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__margin_y",
+      "field_name": "margin_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__internal_x",
+      "field_name": "internal_x",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__pack_y",
+      "field_name": "pack_y",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__required_x",
+      "field_name": "required_x",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__insulated_x",
+      "field_name": "insulated_x",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__magnet_structure_cost__cost",
+      "field_name": "cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__magnet_structure_cost__effective_all_in_rate",
+      "field_name": "effective_all_in_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__winding_state__I_coil",
+      "field_name": "I_coil",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__winding_state__j_wp_effective",
+      "field_name": "j_wp_effective",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__magnet__field_calc__B_axis",
       "field_name": "root",
       "python_type": "float"
@@ -1271,16 +1595,6 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__magnet__conductor_grade__quantity_factor",
-      "field_name": "quantity_factor",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__conductor_grade__j_wp_effective",
-      "field_name": "j_wp_effective",
-      "python_type": "float"
-    },
-    {
       "channel_name": "stellarator_09__stellaris__heat_transport__cooling_guard__energy_mode",
       "field_name": "energy_mode",
       "python_type": "float"
@@ -1288,6 +1602,16 @@
     {
       "channel_name": "stellarator_09__stellaris__heat_transport__cooling_guard__cost_mode",
       "field_name": "cost_mode",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__selected_parcel_y_min__selected_parcel_y_min",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__selected_parcel_x_min__selected_parcel_x_min",
+      "field_name": "root",
       "python_type": "float"
     },
     {
@@ -1506,6 +1830,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_represented_fill_margin_kg",
+      "field_name": "salt_represented_fill_margin_kg",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__ihx_hot_approach",
       "field_name": "ihx_hot_approach",
       "python_type": "float"
@@ -1528,6 +1857,11 @@
     {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__pump_flow_gpm",
       "field_name": "pump_flow_gpm",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__design_motor_electric_hp",
+      "field_name": "design_motor_electric_hp",
       "python_type": "float"
     },
     {
@@ -1558,6 +1892,11 @@
     {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__primary_circulators_cost",
       "field_name": "primary_circulators_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_represented_fill_margin_kg",
+      "field_name": "helium_represented_fill_margin_kg",
       "python_type": "float"
     },
     {
@@ -1631,6 +1970,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_design_shaft_MW",
+      "field_name": "salt_design_shaft_MW",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__inventory_complete",
       "field_name": "inventory_complete",
       "python_type": "bool"
@@ -1638,6 +1982,11 @@
     {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__heads_mass",
       "field_name": "heads_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_design_shaft_MW",
+      "field_name": "helium_design_shaft_MW",
       "python_type": "float"
     },
     {
@@ -1661,6 +2010,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_design_electric_MW",
+      "field_name": "salt_design_electric_MW",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__circulator_shaft_MW",
       "field_name": "circulator_shaft_MW",
       "python_type": "float"
@@ -1673,6 +2027,11 @@
     {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__source_volume_ratio",
       "field_name": "source_volume_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__represented_fill_defined",
+      "field_name": "represented_fill_defined",
       "python_type": "float"
     },
     {
@@ -1701,6 +2060,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_inventory_target_mass_kg",
+      "field_name": "salt_inventory_target_mass_kg",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_standard_volume",
       "field_name": "helium_standard_volume",
       "python_type": "float"
@@ -1711,9 +2075,19 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_design_suction_Pa",
+      "field_name": "helium_design_suction_Pa",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_inventory_cost",
       "field_name": "helium_inventory_cost",
       "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__machine_off_design_performance_qualified",
+      "field_name": "machine_off_design_performance_qualified",
+      "python_type": "bool"
     },
     {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_Re_hot",
@@ -1744,6 +2118,11 @@
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_pipe_volume",
       "field_name": "salt_pipe_volume",
       "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__design_motor_base_ok",
+      "field_name": "design_motor_base_ok",
+      "python_type": "bool"
     },
     {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__cycle_temperature_gap",
@@ -1816,6 +2195,16 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__design_pump_type_ok",
+      "field_name": "design_pump_type_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__design_motor_factor_ok",
+      "field_name": "design_motor_factor_ok",
+      "python_type": "bool"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__conversion_heat_MW",
       "field_name": "conversion_heat_MW",
       "python_type": "float"
@@ -1866,8 +2255,18 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__design_pump_shaft_hp",
+      "field_name": "design_pump_shaft_hp",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__secondary_pipe_installation",
       "field_name": "secondary_pipe_installation",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__design_pump_flow_gpm",
+      "field_name": "design_pump_flow_gpm",
       "python_type": "float"
     },
     {
@@ -1878,6 +2277,11 @@
     {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__secondary_vendor",
       "field_name": "secondary_vendor",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_design_head_m",
+      "field_name": "salt_design_head_m",
       "python_type": "float"
     },
     {
@@ -1921,6 +2325,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_required_fill_mass_kg",
+      "field_name": "helium_required_fill_mass_kg",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__secondary_pipe_mass",
       "field_name": "secondary_pipe_mass",
       "python_type": "float"
@@ -1929,6 +2338,16 @@
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__pump_type_ok",
       "field_name": "pump_type_ok",
       "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_inventory_target_mass_kg",
+      "field_name": "helium_inventory_target_mass_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_required_fill_mass_kg",
+      "field_name": "salt_required_fill_mass_kg",
+      "python_type": "float"
     },
     {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_price_year",
@@ -1951,6 +2370,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__design_pump_head_ft",
+      "field_name": "design_pump_head_ft",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__bundle_event_removal",
       "field_name": "bundle_event_removal",
       "python_type": "float"
@@ -1961,9 +2385,19 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__design_pump_size_ok",
+      "field_name": "design_pump_size_ok",
+      "python_type": "bool"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__ihx_lmtd",
       "field_name": "ihx_lmtd",
       "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__represented_fill_ok",
+      "field_name": "represented_fill_ok",
+      "python_type": "bool"
     },
     {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_velocity_hot",
@@ -2026,6 +2460,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__design_pump_size_factor",
+      "field_name": "design_pump_size_factor",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__ihx_capacity_ok",
       "field_name": "ihx_capacity_ok",
       "python_type": "bool"
@@ -2054,6 +2493,11 @@
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__helium_price_transfer_validated",
       "field_name": "helium_price_transfer_validated",
       "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_transport__equipment__salt_design_flow_kg_s",
+      "field_name": "salt_design_flow_kg_s",
+      "python_type": "float"
     },
     {
       "channel_name": "stellarator_09__stellaris__heat_transport__equipment__circulator_suction_Pa",
@@ -2601,76 +3045,6 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__magnet__winding_pack_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__stored_energy__W_mag",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__casing_mass__m_casing",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__support_mass__m_support",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__magnet_structure_cost__cost",
-      "field_name": "cost",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__magnet_structure_cost__effective_all_in_rate",
-      "field_name": "effective_all_in_rate",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__peak_field_calc__B_peak",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__current_sizing__required_tapes",
-      "field_name": "required_tapes",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__current_sizing__required_conductor_area",
-      "field_name": "required_conductor_area",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__current_sizing__required_pack_area",
-      "field_name": "required_pack_area",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__current_sizing__required_effective_density",
-      "field_name": "required_effective_density",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__current_sizing__selected_effective_density",
-      "field_name": "selected_effective_density",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__current_sizing__tape_available_current",
-      "field_name": "tape_available_current",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_sizing__wp_side",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
       "channel_name": "stellarator_09__stellaris__cryoplant__inventory__q_rad_cold",
       "field_name": "q_rad_cold",
       "python_type": "float"
@@ -2728,91 +3102,6 @@
     {
       "channel_name": "stellarator_09__stellaris__cryoplant__shield_elec__p_elec",
       "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__required_y",
-      "field_name": "required_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__nominal_y",
-      "field_name": "nominal_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__minimum_margin",
-      "field_name": "minimum_margin",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__margin_x",
-      "field_name": "margin_x",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__internal_y",
-      "field_name": "internal_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__pack_x",
-      "field_name": "pack_x",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__exterior_x",
-      "field_name": "exterior_x",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__cavity_x",
-      "field_name": "cavity_x",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__nominal_x",
-      "field_name": "nominal_x",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__cavity_y",
-      "field_name": "cavity_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__exterior_y",
-      "field_name": "exterior_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__insulated_y",
-      "field_name": "insulated_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__margin_y",
-      "field_name": "margin_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__internal_x",
-      "field_name": "internal_x",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__pack_y",
-      "field_name": "pack_y",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__required_x",
-      "field_name": "required_x",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet__wp_fit__insulated_x",
-      "field_name": "insulated_x",
       "python_type": "float"
     },
     {
@@ -2923,6 +3212,21 @@
     {
       "channel_name": "stellarator_09__stellaris__magnet__winding_procurement__conductor_length",
       "field_name": "conductor_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__winding_pack_cost__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__stored_energy__W_mag",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet__peak_field_calc__B_peak",
+      "field_name": "root",
       "python_type": "float"
     },
     {
@@ -3631,6 +3935,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__capacity_margin_kg_s",
+      "field_name": "capacity_margin_kg_s",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__containment_installation",
       "field_name": "containment_installation",
       "python_type": "float"
@@ -3761,6 +4070,16 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__plant_demand_kg_s",
+      "field_name": "plant_demand_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__capacity_evaluation_defined",
+      "field_name": "capacity_evaluation_defined",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__fuel_cycle__processing_cost__containment_reference_capital",
       "field_name": "containment_reference_capital",
       "python_type": "float"
@@ -3806,6 +4125,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_required_length",
+      "field_name": "electrical_building_required_length",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_clear_height",
       "field_name": "sector_link_north_clear_height",
       "python_type": "float"
@@ -3823,6 +4147,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__dirty_store_positions_allocated",
       "field_name": "dirty_store_positions_allocated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_required_length",
+      "field_name": "sector_wing_west_required_length",
       "python_type": "float"
     },
     {
@@ -3856,8 +4185,18 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_required_width",
+      "field_name": "sector_wing_north_required_width",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_clear_area",
       "field_name": "power_supply_building_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__control_required_height",
+      "field_name": "control_required_height",
       "python_type": "float"
     },
     {
@@ -3876,8 +4215,18 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__administration_required_area",
+      "field_name": "administration_required_area",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_sub_rebar",
       "field_name": "fuel_building_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_required_height",
+      "field_name": "sector_link_south_required_height",
       "python_type": "float"
     },
     {
@@ -3893,6 +4242,21 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_clear_length",
       "field_name": "sector_wing_west_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_required_height",
+      "field_name": "cryo_coldbox_required_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_required_width",
+      "field_name": "fuel_building_required_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__required_parcel_x_min",
+      "field_name": "required_parcel_x_min",
       "python_type": "float"
     },
     {
@@ -3946,6 +4310,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_required_length",
+      "field_name": "sector_wing_south_required_length",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_sub_rebar",
       "field_name": "site_services_building_sub_rebar",
       "python_type": "float"
@@ -3966,13 +4335,28 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_required_height",
+      "field_name": "reactor_hall_required_height",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_clear_height",
       "field_name": "service_water_building_clear_height",
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_required_width",
+      "field_name": "sector_link_south_required_width",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_clear_area",
       "field_name": "sector_link_west_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__occupancy_area_margin_m2",
+      "field_name": "occupancy_area_margin_m2",
       "python_type": "float"
     },
     {
@@ -3983,6 +4367,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_super_concrete",
       "field_name": "electrical_building_super_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__required_parcel_y_max",
+      "field_name": "required_parcel_y_max",
       "python_type": "float"
     },
     {
@@ -4081,6 +4470,16 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_required_width",
+      "field_name": "site_services_building_required_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_required_height",
+      "field_name": "cooling_annex_required_height",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_super_formwork",
       "field_name": "reactor_auxiliaries_super_formwork",
       "python_type": "float"
@@ -4093,6 +4492,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_air_volume",
       "field_name": "sector_link_north_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_required_width",
+      "field_name": "sector_wing_south_required_width",
       "python_type": "float"
     },
     {
@@ -4113,6 +4517,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_sub_rebar",
       "field_name": "sector_wing_south_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_required_height",
+      "field_name": "sector_wing_south_required_height",
       "python_type": "float"
     },
     {
@@ -4171,6 +4580,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_required_length",
+      "field_name": "cryo_compressors_required_length",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__control_clear_length",
       "field_name": "control_clear_length",
       "python_type": "float"
@@ -4188,6 +4602,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__controlled_air_volume",
       "field_name": "controlled_air_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_required_length",
+      "field_name": "service_water_building_required_length",
       "python_type": "float"
     },
     {
@@ -4223,6 +4642,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_super_formwork",
       "field_name": "cooling_hall_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__maintenance_shop_required_width",
+      "field_name": "maintenance_shop_required_width",
       "python_type": "float"
     },
     {
@@ -4271,13 +4695,28 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_required_height",
+      "field_name": "reactor_auxiliaries_required_height",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_sub_rebar",
       "field_name": "cryo_compressors_sub_rebar",
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_required_length",
+      "field_name": "cooling_link_required_length",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_sub_formwork",
       "field_name": "sector_wing_north_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_required_width",
+      "field_name": "power_supply_building_required_width",
       "python_type": "float"
     },
     {
@@ -4288,6 +4727,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_sub_formwork",
       "field_name": "electrical_building_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_required_height",
+      "field_name": "turbine_hall_required_height",
       "python_type": "float"
     },
     {
@@ -4316,6 +4760,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__security_required_height",
+      "field_name": "security_required_height",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_clear_area",
       "field_name": "sector_wing_east_clear_area",
       "python_type": "float"
@@ -4323,6 +4772,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_clear_area",
       "field_name": "site_services_building_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_required_height",
+      "field_name": "sector_link_north_required_height",
       "python_type": "float"
     },
     {
@@ -4376,8 +4830,18 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_required_length",
+      "field_name": "sector_link_south_required_length",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__administration_clear_area",
       "field_name": "administration_clear_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_required_width",
+      "field_name": "cryo_coldbox_required_width",
       "python_type": "float"
     },
     {
@@ -4446,6 +4910,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_required_length",
+      "field_name": "sector_link_east_required_length",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_clear_area",
       "field_name": "cooling_hall_clear_area",
       "python_type": "float"
@@ -4481,8 +4950,18 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_required_height",
+      "field_name": "sector_link_east_required_height",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_sub_formwork",
       "field_name": "sector_wing_west_sub_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_required_height",
+      "field_name": "service_water_building_required_height",
       "python_type": "float"
     },
     {
@@ -4576,8 +5055,18 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_required_width",
+      "field_name": "turbine_hall_required_width",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_clear_length",
       "field_name": "sector_wing_north_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_required_height",
+      "field_name": "cryo_compressors_required_height",
       "python_type": "float"
     },
     {
@@ -4631,6 +5120,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_required_length",
+      "field_name": "cryo_coldbox_required_length",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__administration_clear_length",
       "field_name": "administration_clear_length",
       "python_type": "float"
@@ -4663,6 +5157,16 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__security_sub_rebar",
       "field_name": "security_sub_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__maintenance_shop_required_length",
+      "field_name": "maintenance_shop_required_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__administration_required_height",
+      "field_name": "administration_required_height",
       "python_type": "float"
     },
     {
@@ -4771,6 +5275,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_required_height",
+      "field_name": "cooling_hall_required_height",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_air_volume",
       "field_name": "sector_wing_east_air_volume",
       "python_type": "float"
@@ -4783,6 +5292,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_gross_area",
       "field_name": "sector_link_east_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_required_width",
+      "field_name": "cooling_link_required_width",
       "python_type": "float"
     },
     {
@@ -4811,6 +5325,16 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_required_height",
+      "field_name": "sector_wing_east_required_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_required_length",
+      "field_name": "sector_wing_east_required_length",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_sub_rebar",
       "field_name": "service_water_building_sub_rebar",
       "python_type": "float"
@@ -4836,8 +5360,18 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_required_height",
+      "field_name": "sector_wing_north_required_height",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_clear_height",
       "field_name": "power_supply_building_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_required_length",
+      "field_name": "reactor_hall_required_length",
       "python_type": "float"
     },
     {
@@ -4856,8 +5390,18 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_required_width",
+      "field_name": "cooling_hall_required_width",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_super_rebar",
       "field_name": "site_services_building_super_rebar",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_required_width",
+      "field_name": "sector_link_north_required_width",
       "python_type": "float"
     },
     {
@@ -4868,6 +5412,16 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_gross_area",
       "field_name": "turbine_hall_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_required_width",
+      "field_name": "reactor_hall_required_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_north_required_length",
+      "field_name": "sector_link_north_required_length",
       "python_type": "float"
     },
     {
@@ -4886,6 +5440,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_required_height",
+      "field_name": "electrical_building_required_height",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_super_concrete",
       "field_name": "reactor_auxiliaries_super_concrete",
       "python_type": "float"
@@ -4896,13 +5455,28 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_required_length",
+      "field_name": "reactor_auxiliaries_required_length",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_super_rebar",
       "field_name": "fuel_building_super_rebar",
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_required_height",
+      "field_name": "fuel_building_required_height",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_initial_ready_margin_days",
       "field_name": "cooling_initial_ready_margin_days",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_east_required_width",
+      "field_name": "sector_link_east_required_width",
       "python_type": "float"
     },
     {
@@ -4923,6 +5497,21 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_sub_concrete",
       "field_name": "sector_wing_south_sub_concrete",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_required_length",
+      "field_name": "cooling_annex_required_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_required_length",
+      "field_name": "turbine_hall_required_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__geometry_fit_margin_m",
+      "field_name": "geometry_fit_margin_m",
       "python_type": "float"
     },
     {
@@ -4951,6 +5540,21 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_required_width",
+      "field_name": "cooling_annex_required_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_required_width",
+      "field_name": "cryo_compressors_required_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__required_parcel_x_max",
+      "field_name": "required_parcel_x_max",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_clear_area",
       "field_name": "sector_wing_north_clear_area",
       "python_type": "float"
@@ -4963,6 +5567,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_annex_clear_height",
       "field_name": "cooling_annex_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_required_length",
+      "field_name": "power_supply_building_required_length",
       "python_type": "float"
     },
     {
@@ -4996,6 +5605,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__parcel_fit_margin_m",
+      "field_name": "parcel_fit_margin_m",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_south_gross_area",
       "field_name": "sector_link_south_gross_area",
       "python_type": "float"
@@ -5011,8 +5625,18 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__blanket_packages_required_per_sector",
+      "field_name": "blanket_packages_required_per_sector",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_dirty_helium_required",
       "field_name": "cooling_dirty_helium_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__maintenance_shop_required_height",
+      "field_name": "maintenance_shop_required_height",
       "python_type": "float"
     },
     {
@@ -5023,6 +5647,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_clear_length",
       "field_name": "cryo_compressors_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__service_water_building_required_width",
+      "field_name": "service_water_building_required_width",
       "python_type": "float"
     },
     {
@@ -5121,6 +5750,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_required_length",
+      "field_name": "fuel_building_required_length",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_sub_rebar",
       "field_name": "reactor_auxiliaries_sub_rebar",
       "python_type": "float"
@@ -5186,6 +5820,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_required_height",
+      "field_name": "site_services_building_required_height",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_super_rebar",
       "field_name": "sector_wing_west_super_rebar",
       "python_type": "float"
@@ -5208,6 +5847,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_clear_length",
       "field_name": "cooling_hall_clear_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_required_width",
+      "field_name": "sector_wing_west_required_width",
       "python_type": "float"
     },
     {
@@ -5281,6 +5925,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_required_height",
+      "field_name": "cooling_link_required_height",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_link_gross_area",
       "field_name": "cooling_link_gross_area",
       "python_type": "float"
@@ -5293,6 +5942,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_clean_helium_required",
       "field_name": "cooling_clean_helium_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__control_required_area",
+      "field_name": "control_required_area",
       "python_type": "float"
     },
     {
@@ -5331,6 +5985,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_west_required_height",
+      "field_name": "sector_wing_west_required_height",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_super_rebar",
       "field_name": "reactor_hall_super_rebar",
       "python_type": "float"
@@ -5346,6 +6005,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_north_required_length",
+      "field_name": "sector_wing_north_required_length",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__turbine_hall_air_volume",
       "field_name": "turbine_hall_air_volume",
       "python_type": "float"
@@ -5358,6 +6022,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_south_clear_width",
       "field_name": "sector_wing_south_clear_width",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_required_height",
+      "field_name": "sector_link_west_required_height",
       "python_type": "float"
     },
     {
@@ -5406,13 +6075,38 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__site_services_building_required_length",
+      "field_name": "site_services_building_required_length",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_compressors_super_concrete",
       "field_name": "cryo_compressors_super_concrete",
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__required_parcel_y_min",
+      "field_name": "required_parcel_y_min",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_wing_east_required_width",
+      "field_name": "sector_wing_east_required_width",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__cryo_coldbox_gross_area",
       "field_name": "cryo_coldbox_gross_area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_hall_required_length",
+      "field_name": "cooling_hall_required_length",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_required_width",
+      "field_name": "electrical_building_required_width",
       "python_type": "float"
     },
     {
@@ -5423,6 +6117,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__administration_clear_height",
       "field_name": "administration_clear_height",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__security_required_area",
+      "field_name": "security_required_area",
       "python_type": "float"
     },
     {
@@ -5451,18 +6150,23 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_required_length",
+      "field_name": "sector_link_west_required_length",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__fuel_building_sub_formwork",
       "field_name": "fuel_building_sub_formwork",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_clean_bundle_allocated",
-      "field_name": "cooling_clean_bundle_allocated",
+      "channel_name": "stellarator_09__stellaris__buildings__layout__power_supply_building_required_height",
+      "field_name": "power_supply_building_required_height",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__buildings__layout__capacity_mode",
-      "field_name": "capacity_mode",
+      "channel_name": "stellarator_09__stellaris__buildings__layout__cooling_clean_bundle_allocated",
+      "field_name": "cooling_clean_bundle_allocated",
       "python_type": "float"
     },
     {
@@ -5571,6 +6275,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_auxiliaries_required_width",
+      "field_name": "reactor_auxiliaries_required_width",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__buildings__layout__electrical_building_sub_rebar",
       "field_name": "electrical_building_sub_rebar",
       "python_type": "float"
@@ -5583,6 +6292,11 @@
     {
       "channel_name": "stellarator_09__stellaris__buildings__layout__reactor_hall_super_formwork",
       "field_name": "reactor_hall_super_formwork",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__buildings__layout__sector_link_west_required_width",
+      "field_name": "sector_link_west_required_width",
       "python_type": "float"
     },
     {
@@ -6361,12 +7075,32 @@
       "python_type": "ConstraintEvaluation"
     },
     {
+      "channel_name": "stellarator_09__stellaris__fuel_processing_capacity_ok__ddb8525b2bda8f0a__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
     {
+      "channel_name": "stellarator_09__stellaris__facility_occupancy_ok__2c505953d2466dad__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__facility_material_capacity_ok__b02f74ca2b907a86__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__beta_ok__82b78aad420730d5__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__facility_parcel_ok__6c9b12b61636c539__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
@@ -6382,6 +7116,11 @@
     },
     {
       "channel_name": "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__facility_geometry_ok__e2729a4ee0257d98__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
@@ -6402,6 +7141,11 @@
     },
     {
       "channel_name": "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__represented_coolant_fill_ok__e6341404f9f2ddda__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
@@ -7589,13 +8333,6 @@
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__buildings__facilities_capacity_mode"
-    },
-    {
-      "default_value": 1.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__buildings__facilities_cost_mode"
     },
     {
@@ -7711,13 +8448,6 @@
       "qualified_name": "stellarator_09__stellaris__buildings__nuclear_wall"
     },
     {
-      "default_value": 2.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__buildings__occupancy_aspect_ratio"
-    },
-    {
       "default_value": 1.3,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -7751,6 +8481,20 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__buildings__onsite_ac_width"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__parcel_origin_x_offset"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__parcel_origin_y_offset"
     },
     {
       "default_value": 8.0,
@@ -7919,6 +8663,580 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__buildings__security_occupants"
+    },
+    {
+      "default_value": 4.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_administration_height"
+    },
+    {
+      "default_value": 78.99367063252599,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_administration_length"
+    },
+    {
+      "default_value": 39.496835316262995,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_administration_width"
+    },
+    {
+      "default_value": 32.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_blanket_packages_per_sector"
+    },
+    {
+      "default_value": 4.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_control_height"
+    },
+    {
+      "default_value": 34.20526275297414,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_control_length"
+    },
+    {
+      "default_value": 17.10263137648707,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_control_width"
+    },
+    {
+      "default_value": 9.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cooling_annex_height"
+    },
+    {
+      "default_value": 67.7,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cooling_annex_length"
+    },
+    {
+      "default_value": 152.1,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cooling_annex_north_depth"
+    },
+    {
+      "default_value": 296.2,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cooling_annex_width"
+    },
+    {
+      "default_value": 16.4,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cooling_bundle_store_width"
+    },
+    {
+      "default_value": 9.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cooling_hall_height"
+    },
+    {
+      "default_value": 92.39999999999999,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cooling_hall_length"
+    },
+    {
+      "default_value": 114.2,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cooling_hall_width"
+    },
+    {
+      "default_value": 16.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cooling_helium_store_width"
+    },
+    {
+      "default_value": 9.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cooling_link_height"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cooling_link_length"
+    },
+    {
+      "default_value": 17.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cooling_link_width"
+    },
+    {
+      "default_value": 14.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cooling_salt_store_width"
+    },
+    {
+      "default_value": 13.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cryo_coldbox_height"
+    },
+    {
+      "default_value": 24.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cryo_coldbox_length"
+    },
+    {
+      "default_value": 16.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cryo_coldbox_width"
+    },
+    {
+      "default_value": 11.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cryo_compressors_height"
+    },
+    {
+      "default_value": 34.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cryo_compressors_length"
+    },
+    {
+      "default_value": 16.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_cryo_compressors_width"
+    },
+    {
+      "default_value": 9.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_electrical_building_height"
+    },
+    {
+      "default_value": 20.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_electrical_building_length"
+    },
+    {
+      "default_value": 12.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_electrical_building_width"
+    },
+    {
+      "default_value": 11.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_fuel_building_height"
+    },
+    {
+      "default_value": 34.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_fuel_building_length"
+    },
+    {
+      "default_value": 24.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_fuel_building_width"
+    },
+    {
+      "default_value": 11.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_maintenance_shop_height"
+    },
+    {
+      "default_value": 24.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_maintenance_shop_length"
+    },
+    {
+      "default_value": 19.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_maintenance_shop_width"
+    },
+    {
+      "default_value": 822.0624551181559,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_parcel_length"
+    },
+    {
+      "default_value": 443.809397513309,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_parcel_width"
+    },
+    {
+      "default_value": 11.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_power_supply_building_height"
+    },
+    {
+      "default_value": 24.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_power_supply_building_length"
+    },
+    {
+      "default_value": 14.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_power_supply_building_width"
+    },
+    {
+      "default_value": 13.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_reactor_auxiliaries_height"
+    },
+    {
+      "default_value": 34.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_reactor_auxiliaries_length"
+    },
+    {
+      "default_value": 24.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_reactor_auxiliaries_width"
+    },
+    {
+      "default_value": 14.100000000000001,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_reactor_hall_height"
+    },
+    {
+      "default_value": 105.809397513309,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_reactor_hall_length"
+    },
+    {
+      "default_value": 105.809397513309,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_reactor_hall_width"
+    },
+    {
+      "default_value": 14.100000000000001,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_link_east_height"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_link_east_length"
+    },
+    {
+      "default_value": 37.80939751330899,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_link_east_width"
+    },
+    {
+      "default_value": 14.100000000000001,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_link_north_height"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_link_north_length"
+    },
+    {
+      "default_value": 37.80939751330899,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_link_north_width"
+    },
+    {
+      "default_value": 14.100000000000001,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_link_south_height"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_link_south_length"
+    },
+    {
+      "default_value": 37.80939751330899,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_link_south_width"
+    },
+    {
+      "default_value": 14.100000000000001,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_link_west_height"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_link_west_length"
+    },
+    {
+      "default_value": 37.80939751330899,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_link_west_width"
+    },
+    {
+      "default_value": 14.100000000000001,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_wing_east_height"
+    },
+    {
+      "default_value": 106.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_wing_east_length"
+    },
+    {
+      "default_value": 97.809397513309,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_wing_east_width"
+    },
+    {
+      "default_value": 14.100000000000001,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_wing_north_height"
+    },
+    {
+      "default_value": 106.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_wing_north_length"
+    },
+    {
+      "default_value": 97.809397513309,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_wing_north_width"
+    },
+    {
+      "default_value": 14.100000000000001,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_wing_south_height"
+    },
+    {
+      "default_value": 106.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_wing_south_length"
+    },
+    {
+      "default_value": 97.809397513309,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_wing_south_width"
+    },
+    {
+      "default_value": 14.100000000000001,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_wing_west_height"
+    },
+    {
+      "default_value": 106.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_wing_west_length"
+    },
+    {
+      "default_value": 97.809397513309,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_sector_wing_west_width"
+    },
+    {
+      "default_value": 4.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_security_height"
+    },
+    {
+      "default_value": 17.663521732655695,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_security_length"
+    },
+    {
+      "default_value": 8.831760866327848,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_security_width"
+    },
+    {
+      "default_value": 11.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_service_water_building_height"
+    },
+    {
+      "default_value": 24.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_service_water_building_length"
+    },
+    {
+      "default_value": 19.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_service_water_building_width"
+    },
+    {
+      "default_value": 9.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_site_services_building_height"
+    },
+    {
+      "default_value": 24.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_site_services_building_length"
+    },
+    {
+      "default_value": 14.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_site_services_building_width"
+    },
+    {
+      "default_value": 18.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_turbine_hall_height"
+    },
+    {
+      "default_value": 64.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_turbine_hall_length"
+    },
+    {
+      "default_value": 24.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__buildings__selected_turbine_hall_width"
     },
     {
       "default_value": 8.0,
@@ -8432,11 +9750,11 @@
       "qualified_name": "stellarator_09__stellaris__fuel_cycle__p_trit"
     },
     {
-      "default_value": 1.0,
+      "default_value": 0.00015,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_capacity_margin"
+      "qualified_name": "stellarator_09__stellaris__fuel_cycle__processing_capacity_kg_s"
     },
     {
       "default_value": 1000000.0,
@@ -8754,6 +10072,27 @@
       "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_eta_p"
     },
     {
+      "default_value": 6.26003337158886,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_helium_design_shaft_MW"
+    },
+    {
+      "default_value": 7699680.103536234,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_helium_design_suction_Pa"
+    },
+    {
+      "default_value": 16607.698111227022,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_helium_purchased_mass_kg"
+    },
+    {
       "default_value": 0.1,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -8787,6 +10126,41 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_removal_multiplier"
+    },
+    {
+      "default_value": 0.95,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_salt_design_eta_motor"
+    },
+    {
+      "default_value": 0.75,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_salt_design_eta_p"
+    },
+    {
+      "default_value": 387.575515577979,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_salt_design_flow_kg_s"
+    },
+    {
+      "default_value": 40.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_salt_design_head_m"
+    },
+    {
+      "default_value": 1608750.9823889225,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__equipment_salt_purchased_mass_kg"
     },
     {
       "default_value": 0.0,
@@ -8892,6 +10266,13 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__heat_transport__loop_p"
+    },
+    {
+      "default_value": 225.07777777777778,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__mdot_loop_rated"
     },
     {
       "default_value": 225.07777777777778,
@@ -9034,13 +10415,6 @@
       "qualified_name": "stellarator_09__stellaris__installation_frac"
     },
     {
-      "default_value": 1.348,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__c_support"
-    },
-    {
       "default_value": 111000000000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -9073,7 +10447,7 @@
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__casing__m_casing_ref"
+      "qualified_name": "stellarator_09__stellaris__magnet__casing__m_casing"
     },
     {
       "default_value": 800000000.0,
@@ -9102,13 +10476,6 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__magnet__coil__G"
-    },
-    {
-      "default_value": 15400000.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__coil__I_coil"
     },
     {
       "default_value": 15400000.0,
@@ -9195,18 +10562,18 @@
       "qualified_name": "stellarator_09__stellaris__magnet__coil__peak_ratio"
     },
     {
+      "default_value": 308.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__coil__reference_turns"
+    },
+    {
       "default_value": 50000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__magnet__coil__turn_current"
-    },
-    {
-      "default_value": 0.78,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__e_support"
     },
     {
       "default_value": 0.1,
@@ -9223,18 +10590,18 @@
       "qualified_name": "stellarator_09__stellaris__magnet__legacy_casing_fraction"
     },
     {
+      "default_value": 11615604.482575215,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__m_support"
+    },
+    {
       "default_value": 0.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__magnet__vol_cold_cryo"
-    },
-    {
-      "default_value": 24.9,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__B_grade_ref"
     },
     {
       "default_value": 24.9,
@@ -9349,13 +10716,6 @@
       "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__f_wp_vol"
     },
     {
-      "default_value": 0.6,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__field_exponent"
-    },
-    {
       "default_value": 1.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -9410,20 +10770,6 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__internal_build_y"
-    },
-    {
-      "default_value": 1.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier"
-    },
-    {
-      "default_value": 118.8271604938272,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__j_wp"
     },
     {
       "default_value": 0.6102331403536223,
@@ -9524,13 +10870,6 @@
       "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__sharing_factor"
     },
     {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__sizing_mode"
-    },
-    {
       "default_value": 20.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -9557,6 +10896,13 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__winding_rate_1990"
+    },
+    {
+      "default_value": 0.35999999999999993,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__winding_pack__wp_side"
     },
     {
       "default_value": 52590.0,
@@ -10070,5 +11416,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "989f6a4492157969ba4777347ab588f18547a5077161172be586e41310ad41a1"
+  "semantic_fingerprint": "5a76ffbe2c1457b8abd5e8e9203331959baf68af65d7e12f9f49bb09d0bf071c"
 }

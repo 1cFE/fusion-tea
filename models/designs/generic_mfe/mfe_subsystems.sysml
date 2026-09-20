@@ -243,7 +243,7 @@ package mfe_subsystems {
         attribute p_pf : Real;
         doc /*
         CAS22.1.7 Power supplies (steady-state: high-current DC for SC magnets,
-        switchgear). Cost driver feeds 'Power Supplies Cost'.
+        switchgear). Cost driver feeds 'Power Supplies Cost'. This is a demand-matched aggregate price proxy driven by gross electric output, not an evaluation of a supplied converter rating or installed power-supply adequacy.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
         **Ref**: cas22.py:554 (c220107 steady-state)
@@ -281,6 +281,8 @@ package mfe_subsystems {
         attribute T2_max : Real;
         attribute delta_eta : Real default 0.0;
         doc /*
+        WI-078/MR-7 scope: capital_cost is a demand-matched equipment cost proxy driven by computed gross thermal-electric output. It does not price an independently supplied turbine nameplate or evaluate installed turbine/steam-generator capacity. Matched-cycle steam flow, shaft work and required UA describe the operating point, not installed ratings; turbine and steam-generator equipment qualification remain absent.
+
         CAS23 Turbine plant equipment (steam TG, condenser, feedwater). Linear
         in thermal-electric power; cost driver feeds 'Linear Power Cost' with
         power = p_the.
@@ -615,6 +617,8 @@ package mfe_subsystems {
 
     part def 'Electric Plant' :> 'CAS24 Electric Plant' {
         doc /*
+        WI-078/MR-7 scope: capital_cost is a demand-matched electrical equipment proxy driven by computed gross electric output. The model has no independently supplied switchyard, transformer or cable capacity and no installed electrical-equipment adequacy check. Operating electric power is not an installed rating.
+
         CAS24 Electric plant equipment (switchyard, transformers, cabling).
         Linear in gross electric; feeds 'Linear Power Cost' with power = p_et.
 
@@ -643,6 +647,8 @@ package mfe_subsystems {
 
     part def 'Heat Rejection' :> 'CAS25 Heat Rejection' {
         doc /*
+        WI-078/MR-7 scope: capital_cost is a demand-matched heat-rejection equipment proxy driven by total thermal power, not a price for a selected cooling-water pump or tower. Water flow and pump work solve the declared operating heat balance; they are not installed ratings. Installed heat-rejection capacity and site suitability are not evaluated.
+
         CAS25 Heat rejection (cooling towers, circulating water). Linear in
         total thermal power; feeds 'Linear Power Cost' with power = p_th.
         (1costingFE numbers this account CAS26 -- see file header note.)
@@ -712,7 +718,7 @@ package mfe_subsystems {
         doc /*
         CAS26 Miscellaneous plant equipment (fire protection, compressed air,
         HVAC). Linear in gross electric; feeds 'Linear Power Cost' with
-        power = p_et. (1costingFE numbers this account CAS25 -- see header note.)
+        power = p_et. (1costingFE numbers this account CAS25 -- see header note.) This demand-matched aggregate price proxy does not select or evaluate independently supplied fire-protection, compressed-air or HVAC equipment capacities.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
         **Ref**: costs.py:170 (cas25_misc)
@@ -738,8 +744,96 @@ package mfe_subsystems {
     part def 'Buildings' :> 'CAS21 Structures' {
         // WI-068: Source: work/active/WI-068_layout-based-facilities/design.md; layout-capacity-design.md; evidence/facility-contract.md. Ref: released geometry, capacity, exact civil takeoff and account boundary. Basis: conditional conceptual scenario; unqualified shielding/loading/transport and explicit provisional equipment envelopes.
         attribute facilities_enabled : Boolean default false;
+        // WI-076 supplied design interface: m, except selected package count.
+        attribute selected_reactor_hall_length : Real default 0.0;
+        attribute selected_reactor_hall_width : Real default 0.0;
+        attribute selected_reactor_hall_height : Real default 0.0;
+        attribute selected_sector_wing_east_length : Real default 0.0;
+        attribute selected_sector_wing_east_width : Real default 0.0;
+        attribute selected_sector_wing_east_height : Real default 0.0;
+        attribute selected_sector_wing_north_length : Real default 0.0;
+        attribute selected_sector_wing_north_width : Real default 0.0;
+        attribute selected_sector_wing_north_height : Real default 0.0;
+        attribute selected_sector_wing_west_length : Real default 0.0;
+        attribute selected_sector_wing_west_width : Real default 0.0;
+        attribute selected_sector_wing_west_height : Real default 0.0;
+        attribute selected_sector_wing_south_length : Real default 0.0;
+        attribute selected_sector_wing_south_width : Real default 0.0;
+        attribute selected_sector_wing_south_height : Real default 0.0;
+        attribute selected_sector_link_east_length : Real default 0.0;
+        attribute selected_sector_link_east_width : Real default 0.0;
+        attribute selected_sector_link_east_height : Real default 0.0;
+        attribute selected_sector_link_north_length : Real default 0.0;
+        attribute selected_sector_link_north_width : Real default 0.0;
+        attribute selected_sector_link_north_height : Real default 0.0;
+        attribute selected_sector_link_west_length : Real default 0.0;
+        attribute selected_sector_link_west_width : Real default 0.0;
+        attribute selected_sector_link_west_height : Real default 0.0;
+        attribute selected_sector_link_south_length : Real default 0.0;
+        attribute selected_sector_link_south_width : Real default 0.0;
+        attribute selected_sector_link_south_height : Real default 0.0;
+        attribute selected_cooling_hall_length : Real default 0.0;
+        attribute selected_cooling_hall_width : Real default 0.0;
+        attribute selected_cooling_hall_height : Real default 0.0;
+        attribute selected_cooling_annex_length : Real default 0.0;
+        attribute selected_cooling_annex_width : Real default 0.0;
+        attribute selected_cooling_annex_height : Real default 0.0;
+        attribute selected_cooling_link_length : Real default 0.0;
+        attribute selected_cooling_link_width : Real default 0.0;
+        attribute selected_cooling_link_height : Real default 0.0;
+        attribute selected_turbine_hall_length : Real default 0.0;
+        attribute selected_turbine_hall_width : Real default 0.0;
+        attribute selected_turbine_hall_height : Real default 0.0;
+        attribute selected_cryo_coldbox_length : Real default 0.0;
+        attribute selected_cryo_coldbox_width : Real default 0.0;
+        attribute selected_cryo_coldbox_height : Real default 0.0;
+        attribute selected_cryo_compressors_length : Real default 0.0;
+        attribute selected_cryo_compressors_width : Real default 0.0;
+        attribute selected_cryo_compressors_height : Real default 0.0;
+        attribute selected_fuel_building_length : Real default 0.0;
+        attribute selected_fuel_building_width : Real default 0.0;
+        attribute selected_fuel_building_height : Real default 0.0;
+        attribute selected_reactor_auxiliaries_length : Real default 0.0;
+        attribute selected_reactor_auxiliaries_width : Real default 0.0;
+        attribute selected_reactor_auxiliaries_height : Real default 0.0;
+        attribute selected_power_supply_building_length : Real default 0.0;
+        attribute selected_power_supply_building_width : Real default 0.0;
+        attribute selected_power_supply_building_height : Real default 0.0;
+        attribute selected_electrical_building_length : Real default 0.0;
+        attribute selected_electrical_building_width : Real default 0.0;
+        attribute selected_electrical_building_height : Real default 0.0;
+        attribute selected_service_water_building_length : Real default 0.0;
+        attribute selected_service_water_building_width : Real default 0.0;
+        attribute selected_service_water_building_height : Real default 0.0;
+        attribute selected_maintenance_shop_length : Real default 0.0;
+        attribute selected_maintenance_shop_width : Real default 0.0;
+        attribute selected_maintenance_shop_height : Real default 0.0;
+        attribute selected_site_services_building_length : Real default 0.0;
+        attribute selected_site_services_building_width : Real default 0.0;
+        attribute selected_site_services_building_height : Real default 0.0;
+        attribute selected_administration_length : Real default 0.0;
+        attribute selected_administration_width : Real default 0.0;
+        attribute selected_administration_height : Real default 0.0;
+        attribute selected_control_length : Real default 0.0;
+        attribute selected_control_width : Real default 0.0;
+        attribute selected_control_height : Real default 0.0;
+        attribute selected_security_length : Real default 0.0;
+        attribute selected_security_width : Real default 0.0;
+        attribute selected_security_height : Real default 0.0;
+        attribute selected_cooling_helium_store_width : Real default 0.0;
+        attribute selected_cooling_salt_store_width : Real default 0.0;
+        attribute selected_cooling_bundle_store_width : Real default 0.0;
+        attribute selected_cooling_annex_north_depth : Real default 0.0;
+        attribute selected_blanket_packages_per_sector : Real default 0.0;
+        // WI-076 signed translation from the documented entering coordinate datum [m].
+        attribute parcel_origin_x_offset : Real default 0.0;
+        attribute parcel_origin_y_offset : Real default 0.0;
+        attribute selected_parcel_x_min : Real default 0.0;
+        attribute selected_parcel_y_min : Real default 0.0;
+        attribute selected_parcel_length : Real default 0.0;
+        attribute selected_parcel_width : Real default 0.0;
+
         attribute facilities_cost_mode : Real default 0.0;
-        attribute facilities_capacity_mode : Real default 0.0;
         attribute sector_count : Real default 4.0;
         attribute sector_bays : Real default 4.0;
         attribute sector_service_teams : Real default 2.0;
@@ -821,7 +915,6 @@ package mfe_subsystems {
         attribute security_area_per_person : Real default 12.0;
         attribute occupancy_circulation_factor : Real default 1.3;
         attribute occupancy_height : Real default 4.0;
-        attribute occupancy_aspect_ratio : Real default 2.0;
         attribute heat_rejection_length : Real default 100.0;
         attribute heat_rejection_width : Real default 60.0;
         attribute turbine_length : Real default 60.0;
@@ -892,9 +985,9 @@ package mfe_subsystems {
         attribute hx_shell_length : Real default 0.0;
         attribute hx_tube_length : Real default 0.0;
         calc layout : 'Facility Layout' {
+
             in facilities_enabled_in = facilities_enabled;
             in facilities_cost_mode_in = facilities_cost_mode;
-            in facilities_capacity_mode_in = facilities_capacity_mode;
             in sector_count_in = sector_count;
             in sector_bays_in = sector_bays;
             in sector_service_teams_in = sector_service_teams;
@@ -976,7 +1069,6 @@ package mfe_subsystems {
             in security_area_per_person_in = security_area_per_person;
             in occupancy_circulation_factor_in = occupancy_circulation_factor;
             in occupancy_height_in = occupancy_height;
-            in occupancy_aspect_ratio_in = occupancy_aspect_ratio;
             in heat_rejection_length_in = heat_rejection_length;
             in heat_rejection_width_in = heat_rejection_width;
             in turbine_length_in = turbine_length;
@@ -1032,10 +1124,174 @@ package mfe_subsystems {
             in hx_shell_wall_in = hx_shell_wall;
             in hx_shell_length_in = hx_shell_length;
             in hx_tube_length_in = hx_tube_length;
+            in selected_reactor_hall_length_in = selected_reactor_hall_length;
+            in selected_reactor_hall_width_in = selected_reactor_hall_width;
+            in selected_reactor_hall_height_in = selected_reactor_hall_height;
+            in selected_sector_wing_east_length_in = selected_sector_wing_east_length;
+            in selected_sector_wing_east_width_in = selected_sector_wing_east_width;
+            in selected_sector_wing_east_height_in = selected_sector_wing_east_height;
+            in selected_sector_wing_north_length_in = selected_sector_wing_north_length;
+            in selected_sector_wing_north_width_in = selected_sector_wing_north_width;
+            in selected_sector_wing_north_height_in = selected_sector_wing_north_height;
+            in selected_sector_wing_west_length_in = selected_sector_wing_west_length;
+            in selected_sector_wing_west_width_in = selected_sector_wing_west_width;
+            in selected_sector_wing_west_height_in = selected_sector_wing_west_height;
+            in selected_sector_wing_south_length_in = selected_sector_wing_south_length;
+            in selected_sector_wing_south_width_in = selected_sector_wing_south_width;
+            in selected_sector_wing_south_height_in = selected_sector_wing_south_height;
+            in selected_sector_link_east_length_in = selected_sector_link_east_length;
+            in selected_sector_link_east_width_in = selected_sector_link_east_width;
+            in selected_sector_link_east_height_in = selected_sector_link_east_height;
+            in selected_sector_link_north_length_in = selected_sector_link_north_length;
+            in selected_sector_link_north_width_in = selected_sector_link_north_width;
+            in selected_sector_link_north_height_in = selected_sector_link_north_height;
+            in selected_sector_link_west_length_in = selected_sector_link_west_length;
+            in selected_sector_link_west_width_in = selected_sector_link_west_width;
+            in selected_sector_link_west_height_in = selected_sector_link_west_height;
+            in selected_sector_link_south_length_in = selected_sector_link_south_length;
+            in selected_sector_link_south_width_in = selected_sector_link_south_width;
+            in selected_sector_link_south_height_in = selected_sector_link_south_height;
+            in selected_cooling_hall_length_in = selected_cooling_hall_length;
+            in selected_cooling_hall_width_in = selected_cooling_hall_width;
+            in selected_cooling_hall_height_in = selected_cooling_hall_height;
+            in selected_cooling_annex_length_in = selected_cooling_annex_length;
+            in selected_cooling_annex_width_in = selected_cooling_annex_width;
+            in selected_cooling_annex_height_in = selected_cooling_annex_height;
+            in selected_cooling_link_length_in = selected_cooling_link_length;
+            in selected_cooling_link_width_in = selected_cooling_link_width;
+            in selected_cooling_link_height_in = selected_cooling_link_height;
+            in selected_turbine_hall_length_in = selected_turbine_hall_length;
+            in selected_turbine_hall_width_in = selected_turbine_hall_width;
+            in selected_turbine_hall_height_in = selected_turbine_hall_height;
+            in selected_cryo_coldbox_length_in = selected_cryo_coldbox_length;
+            in selected_cryo_coldbox_width_in = selected_cryo_coldbox_width;
+            in selected_cryo_coldbox_height_in = selected_cryo_coldbox_height;
+            in selected_cryo_compressors_length_in = selected_cryo_compressors_length;
+            in selected_cryo_compressors_width_in = selected_cryo_compressors_width;
+            in selected_cryo_compressors_height_in = selected_cryo_compressors_height;
+            in selected_fuel_building_length_in = selected_fuel_building_length;
+            in selected_fuel_building_width_in = selected_fuel_building_width;
+            in selected_fuel_building_height_in = selected_fuel_building_height;
+            in selected_reactor_auxiliaries_length_in = selected_reactor_auxiliaries_length;
+            in selected_reactor_auxiliaries_width_in = selected_reactor_auxiliaries_width;
+            in selected_reactor_auxiliaries_height_in = selected_reactor_auxiliaries_height;
+            in selected_power_supply_building_length_in = selected_power_supply_building_length;
+            in selected_power_supply_building_width_in = selected_power_supply_building_width;
+            in selected_power_supply_building_height_in = selected_power_supply_building_height;
+            in selected_electrical_building_length_in = selected_electrical_building_length;
+            in selected_electrical_building_width_in = selected_electrical_building_width;
+            in selected_electrical_building_height_in = selected_electrical_building_height;
+            in selected_service_water_building_length_in = selected_service_water_building_length;
+            in selected_service_water_building_width_in = selected_service_water_building_width;
+            in selected_service_water_building_height_in = selected_service_water_building_height;
+            in selected_maintenance_shop_length_in = selected_maintenance_shop_length;
+            in selected_maintenance_shop_width_in = selected_maintenance_shop_width;
+            in selected_maintenance_shop_height_in = selected_maintenance_shop_height;
+            in selected_site_services_building_length_in = selected_site_services_building_length;
+            in selected_site_services_building_width_in = selected_site_services_building_width;
+            in selected_site_services_building_height_in = selected_site_services_building_height;
+            in selected_administration_length_in = selected_administration_length;
+            in selected_administration_width_in = selected_administration_width;
+            in selected_administration_height_in = selected_administration_height;
+            in selected_control_length_in = selected_control_length;
+            in selected_control_width_in = selected_control_width;
+            in selected_control_height_in = selected_control_height;
+            in selected_security_length_in = selected_security_length;
+            in selected_security_width_in = selected_security_width;
+            in selected_security_height_in = selected_security_height;
+            in selected_cooling_helium_store_width_in = selected_cooling_helium_store_width;
+            in selected_cooling_salt_store_width_in = selected_cooling_salt_store_width;
+            in selected_cooling_bundle_store_width_in = selected_cooling_bundle_store_width;
+            in selected_cooling_annex_north_depth_in = selected_cooling_annex_north_depth;
+            in selected_blanket_packages_per_sector_in = selected_blanket_packages_per_sector;
+            in selected_parcel_x_min_in = selected_parcel_x_min;
+            in selected_parcel_y_min_in = selected_parcel_y_min;
+            in selected_parcel_length_in = selected_parcel_length;
+            in selected_parcel_width_in = selected_parcel_width;
         }
         attribute active : Real = layout.active;
+        attribute geometry_fit_margin_m : Real = layout.geometry_fit_margin_m;
+        attribute occupancy_area_margin_m2 : Real = layout.occupancy_area_margin_m2;
+        attribute parcel_fit_margin_m : Real = layout.parcel_fit_margin_m;
+        attribute blanket_packages_required_per_sector : Real = layout.blanket_packages_required_per_sector;
+        attribute required_parcel_x_min : Real = layout.required_parcel_x_min;
+        attribute required_parcel_y_min : Real = layout.required_parcel_y_min;
+        attribute required_parcel_x_max : Real = layout.required_parcel_x_max;
+        attribute required_parcel_y_max : Real = layout.required_parcel_y_max;
+        attribute reactor_hall_required_length : Real = layout.reactor_hall_required_length;
+        attribute reactor_hall_required_width : Real = layout.reactor_hall_required_width;
+        attribute reactor_hall_required_height : Real = layout.reactor_hall_required_height;
+        attribute sector_wing_east_required_length : Real = layout.sector_wing_east_required_length;
+        attribute sector_wing_east_required_width : Real = layout.sector_wing_east_required_width;
+        attribute sector_wing_east_required_height : Real = layout.sector_wing_east_required_height;
+        attribute sector_wing_north_required_length : Real = layout.sector_wing_north_required_length;
+        attribute sector_wing_north_required_width : Real = layout.sector_wing_north_required_width;
+        attribute sector_wing_north_required_height : Real = layout.sector_wing_north_required_height;
+        attribute sector_wing_west_required_length : Real = layout.sector_wing_west_required_length;
+        attribute sector_wing_west_required_width : Real = layout.sector_wing_west_required_width;
+        attribute sector_wing_west_required_height : Real = layout.sector_wing_west_required_height;
+        attribute sector_wing_south_required_length : Real = layout.sector_wing_south_required_length;
+        attribute sector_wing_south_required_width : Real = layout.sector_wing_south_required_width;
+        attribute sector_wing_south_required_height : Real = layout.sector_wing_south_required_height;
+        attribute sector_link_east_required_length : Real = layout.sector_link_east_required_length;
+        attribute sector_link_east_required_width : Real = layout.sector_link_east_required_width;
+        attribute sector_link_east_required_height : Real = layout.sector_link_east_required_height;
+        attribute sector_link_north_required_length : Real = layout.sector_link_north_required_length;
+        attribute sector_link_north_required_width : Real = layout.sector_link_north_required_width;
+        attribute sector_link_north_required_height : Real = layout.sector_link_north_required_height;
+        attribute sector_link_west_required_length : Real = layout.sector_link_west_required_length;
+        attribute sector_link_west_required_width : Real = layout.sector_link_west_required_width;
+        attribute sector_link_west_required_height : Real = layout.sector_link_west_required_height;
+        attribute sector_link_south_required_length : Real = layout.sector_link_south_required_length;
+        attribute sector_link_south_required_width : Real = layout.sector_link_south_required_width;
+        attribute sector_link_south_required_height : Real = layout.sector_link_south_required_height;
+        attribute cooling_hall_required_length : Real = layout.cooling_hall_required_length;
+        attribute cooling_hall_required_width : Real = layout.cooling_hall_required_width;
+        attribute cooling_hall_required_height : Real = layout.cooling_hall_required_height;
+        attribute cooling_annex_required_length : Real = layout.cooling_annex_required_length;
+        attribute cooling_annex_required_width : Real = layout.cooling_annex_required_width;
+        attribute cooling_annex_required_height : Real = layout.cooling_annex_required_height;
+        attribute cooling_link_required_length : Real = layout.cooling_link_required_length;
+        attribute cooling_link_required_width : Real = layout.cooling_link_required_width;
+        attribute cooling_link_required_height : Real = layout.cooling_link_required_height;
+        attribute turbine_hall_required_length : Real = layout.turbine_hall_required_length;
+        attribute turbine_hall_required_width : Real = layout.turbine_hall_required_width;
+        attribute turbine_hall_required_height : Real = layout.turbine_hall_required_height;
+        attribute cryo_coldbox_required_length : Real = layout.cryo_coldbox_required_length;
+        attribute cryo_coldbox_required_width : Real = layout.cryo_coldbox_required_width;
+        attribute cryo_coldbox_required_height : Real = layout.cryo_coldbox_required_height;
+        attribute cryo_compressors_required_length : Real = layout.cryo_compressors_required_length;
+        attribute cryo_compressors_required_width : Real = layout.cryo_compressors_required_width;
+        attribute cryo_compressors_required_height : Real = layout.cryo_compressors_required_height;
+        attribute fuel_building_required_length : Real = layout.fuel_building_required_length;
+        attribute fuel_building_required_width : Real = layout.fuel_building_required_width;
+        attribute fuel_building_required_height : Real = layout.fuel_building_required_height;
+        attribute reactor_auxiliaries_required_length : Real = layout.reactor_auxiliaries_required_length;
+        attribute reactor_auxiliaries_required_width : Real = layout.reactor_auxiliaries_required_width;
+        attribute reactor_auxiliaries_required_height : Real = layout.reactor_auxiliaries_required_height;
+        attribute power_supply_building_required_length : Real = layout.power_supply_building_required_length;
+        attribute power_supply_building_required_width : Real = layout.power_supply_building_required_width;
+        attribute power_supply_building_required_height : Real = layout.power_supply_building_required_height;
+        attribute electrical_building_required_length : Real = layout.electrical_building_required_length;
+        attribute electrical_building_required_width : Real = layout.electrical_building_required_width;
+        attribute electrical_building_required_height : Real = layout.electrical_building_required_height;
+        attribute service_water_building_required_length : Real = layout.service_water_building_required_length;
+        attribute service_water_building_required_width : Real = layout.service_water_building_required_width;
+        attribute service_water_building_required_height : Real = layout.service_water_building_required_height;
+        attribute maintenance_shop_required_length : Real = layout.maintenance_shop_required_length;
+        attribute maintenance_shop_required_width : Real = layout.maintenance_shop_required_width;
+        attribute maintenance_shop_required_height : Real = layout.maintenance_shop_required_height;
+        attribute site_services_building_required_length : Real = layout.site_services_building_required_length;
+        attribute site_services_building_required_width : Real = layout.site_services_building_required_width;
+        attribute site_services_building_required_height : Real = layout.site_services_building_required_height;
+        attribute administration_required_area : Real = layout.administration_required_area;
+        attribute administration_required_height : Real = layout.administration_required_height;
+        attribute control_required_area : Real = layout.control_required_area;
+        attribute control_required_height : Real = layout.control_required_height;
+        attribute security_required_area : Real = layout.security_required_area;
+        attribute security_required_height : Real = layout.security_required_height;
+
         attribute cost_mode : Real = layout.cost_mode;
-        attribute capacity_mode : Real = layout.capacity_mode;
         attribute sector_length : Real = layout.sector_length;
         attribute sector_width : Real = layout.sector_width;
         attribute sector_height : Real = layout.sector_height;

@@ -41,6 +41,8 @@ package mfe_plant {
         the family density closure. All parameters here are inputs or defaulted
         calibration constants -- no concept-specific values (MR-3).
 
+        MR-7 COST INTERPRETATION: Hybrid blanket, shield, vessel and structure prices combine selected geometry/mass with declared calibration assumptions. Remote handling, other reactor equipment, instrumentation, owner, waste and O&M amounts retain aggregate power/capital scaling; dormant legacy buildings, preconstruction, fuel handling and coolant accounts retain their documented proxies. These amounts are cost estimates, not independently evaluated installed equipment capacities. See the current study route for the matching result interpretation and WI-074 residual-dispositions.md for supported roles and limits.
+
         MONEY UNIT: the whole rollup and LCOE are in DOLLARS ($). WI-009's
         'Magnet Coil Cost' omits the 1costingFE /1e6 M$ conversion, so it yields
         $; to stay consistent, every account unit-cost input (blanket unit cost,
@@ -70,6 +72,10 @@ package mfe_plant {
         assert constraint facility_outage_ok : 'Facility Nonnegative Margin' { in margin_in = buildings.outage_margin_days; }
         assert constraint facility_capacity_ok : 'Facility Nonnegative Margin' { in margin_in = buildings.capacity_margin_units; }
         assert constraint facility_routes_ok : 'Facility Nonnegative Margin' { in margin_in = buildings.route_margin_m; }
+        assert constraint facility_material_capacity_ok : 'Facility Nonnegative Margin' { in margin_in = buildings.unused_material_capacity; }
+        assert constraint facility_geometry_ok : 'Facility Nonnegative Margin' { in margin_in = buildings.geometry_fit_margin_m; }
+        assert constraint facility_occupancy_ok : 'Facility Nonnegative Margin' { in margin_in = buildings.occupancy_area_margin_m2; }
+        assert constraint facility_parcel_ok : 'Facility Nonnegative Margin' { in margin_in = buildings.parcel_fit_margin_m; }
         // MFE-divergent power core (WI-009 mfe_power_core).
         // WI-057: the plasma and the plant systems the calcs already model, as parts.
         part plasma : 'Plasma' {
@@ -120,14 +126,10 @@ package mfe_plant {
                 :>> T_inventory = cryoplant.T_cold_cryo;
             }
             :>> r_coil = rb.r_coil;   // coil bore = radial-build vessel_or (WI-021)
-            // WI-036: the winding-pack side and the winding length are now
-            // COMPUTED too -- the pack is sized by the current it carries and
-            // the length follows the coil bore (WI-058; WI-036 had it follow
-            // the major radius). j_wp and c_coil_ref are the settable levers
-            // that replaced them.
-            // WI-044: the casing mass is COMPUTED from the coil set's stored
-            // energy (which sees the coil bore); m_casing_ref is the settable
-            // anchor that replaced the held mass.
+            // WI-075: supplied pack side, turns and casing/support masses remain
+            // fixed when operating excitation changes. Circumference retains
+            // the WI-058 fixed-shape bore scaling; temperature is shared above.
+            // Supplied structural mass does not establish strength qualification.
             // WI-057: inputs the plant wires from the parts and calcs that produce them
             :>> r_coil_centre = rb.r_coil_centre;
             // T-021 (2026-09-11): the coil's major radius rides with the plasma's. WI-057 owns R0 on
@@ -833,7 +835,7 @@ package mfe_plant {
         }
         assert constraint loop_capacity_ok : 'Loop Capacity' {
             in mdot_loop_in = heat_transport.mdot_loop;
-            in mdot_loop_rated_in = heat_transport.mdot_loop_ref;
+            in mdot_loop_rated_in = heat_transport.mdot_loop_rated;
         }
         assert constraint matched_main_heat_direction : 'Active Steam Heat Direction' {
             in enabled_in = turbine.matched_cycle_enabled;

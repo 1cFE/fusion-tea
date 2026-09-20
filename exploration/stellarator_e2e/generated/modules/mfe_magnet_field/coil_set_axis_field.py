@@ -38,9 +38,9 @@ Inputs:
 Outputs:
     - B_axis: B_axis result
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:4
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:16
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:4
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:16
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_magnet_field/coil_set_axis_field_impl.py
@@ -110,9 +110,9 @@ Inputs:
 Outputs:
     - B_axis: B_axis result
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:4
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:16
 
-    SysML Source: root-0/analyses/mfe_magnet_field.sysml:4
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:16
 
     Calculation Specification:
         mu0 = 1.25663706212e-06

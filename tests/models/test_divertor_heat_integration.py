@@ -1,5 +1,9 @@
-from tests.models.current_mfe_regressions import (CURRENT_PREDICATES, historical_point, assert_historical_native, assert_current_predicates, PARTITIONS)
-"""WI-065: native/oracle conservation and exact entering-case preservation."""
+from tests.models.current_mfe_regressions import assert_current_predicates
+"""Current supplied-design divertor conservation at retained plasma scenarios.
+
+The old automatic magnet selection is explicitly replaced by the current supplied
+pack and fixed reference turns. These are new evaluations, not frozen replays.
+"""
 import json
 from pathlib import Path
 
@@ -10,12 +14,32 @@ ENTERING = Path('work/orchestration/goals/divertor-peak-heat-load/evidence/enter
 CASES = json.loads(ENTERING.read_text())['cases']
 
 
+def selected_point(old):
+    """Retain plasma/excitation controls, explicitly choose current fixed hardware."""
+    defaults=json.loads(Path('exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json').read_text())
+    point=dict(old)
+    for key in ('magnet__winding_pack__sizing_mode','magnet__winding_pack__inventory_multiplier',
+                'magnet__winding_pack__j_wp'):
+        point.pop(P+key,None)
+    turns=defaults[P+'magnet__coil__reference_turns']
+    point[P+'magnet__coil__reference_turns']=turns
+    point[P+'magnet__winding_pack__wp_side']=defaults[P+'magnet__winding_pack__wp_side']
+    excitation=point.pop(P+'magnet__coil__I_coil',None)
+    if excitation is not None:
+        point[P+'magnet__coil__turn_current']=excitation/turns
+    return point
+
+
 @pytest.mark.codegen_available
 @pytest.mark.parametrize('case', CASES, ids=lambda case: case['proposal_id'])
-def test_entering_values_and_predicates_preserved(evaluate, case):
-    point=historical_point(case['point'])
+def test_retained_plasma_scenarios_evaluate_supplied_design(evaluate, case):
+    import oracle_entry
+    point=selected_point(case['point'])
     row=evaluate({k.removeprefix(P):v for k,v in point.items()})
-    assert_historical_native('divertor-'+case['proposal_id'], row, case['outputs'], case['responses'], point)
+    expected=oracle_entry.evaluate(point)
+    for key,value in expected.items():
+        assert row.outputs[key]==pytest.approx(value,rel=1e-9,abs=1e-9),key
+    assert_current_predicates(row,point,expected)
 
 
 @pytest.mark.codegen_available
@@ -23,7 +47,7 @@ def test_entering_values_and_predicates_preserved(evaluate, case):
 @pytest.mark.parametrize('profile', [{}, {'divertor__q_target_ref': 5., 'divertor__target_capture_fraction': .97}])
 def test_coupled_account_and_independent_oracle(evaluate, index, profile):
     import oracle_entry
-    overrides = {key.removeprefix(P): value for key, value in CASES[index]['point'].items()} | profile
+    overrides = {key.removeprefix(P): value for key, value in selected_point(CASES[index]['point']).items()} | profile
     row = evaluate(overrides)
     expected = oracle_entry.evaluate({P + key: value for key, value in overrides.items()})
     for key, value in expected.items():
@@ -38,7 +62,7 @@ def test_coupled_account_and_independent_oracle(evaluate, index, profile):
 
 @pytest.mark.codegen_available
 def test_paired_transport_does_not_create_or_remove_plant_heat(evaluate):
-    base = {key.removeprefix(P): value for key, value in CASES[2]['point'].items()}
+    base = {key.removeprefix(P): value for key, value in selected_point(CASES[2]['point']).items()}
     high = evaluate(base)
     low = evaluate(base | {'divertor__q_target_ref': 5., 'divertor__target_capture_fraction': .97})
     for key, value in high.outputs.items():
@@ -55,47 +79,19 @@ def test_paired_transport_does_not_create_or_remove_plant_heat(evaluate):
 
 
 @pytest.mark.codegen_available
-@pytest.mark.parametrize('sized', [False, True])
-def test_signed_burn_failures_keep_entering_equations_and_predicates(evaluate, sized):
-    import importlib.util
+@pytest.mark.parametrize('pack_side',[.5,.65])
+def test_signed_burn_failures_preserve_heat_equations(evaluate, pack_side):
     import oracle_entry
-    entering_file = ENTERING.with_name('verify_stellaris.py')
-    spec = importlib.util.spec_from_file_location('wi065_frozen_entering', entering_file)
-    entering = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(entering)
-    changes = {'plasma__R': 13.5, 'plasma__a': 1.5, 'magnet__coil__I_coil': 16e6}
-    if sized:
-        changes |= {'magnet__winding_pack__sizing_mode': 1., 'magnet__coil__coil_t': .65, 'magnet__casing__interior_y': .65}
-    import math
-    point = historical_point({P+key: value for key, value in changes.items()})
-    # The historical oracle has no later subsystem switches; current native/oracle
-    # receive the same qualified historical scenario through the declared seam.
-    entering.IN.update(oracle_entry._oracle_overrides({P+k:v for k,v in changes.items()}))
-    old = entering.compute()
-    native = evaluate({k.removeprefix(P):v for k,v in point.items()})
-    now = oracle_entry.evaluate(point)
-    arithmetic = PARTITIONS['signed_arithmetic_changes'][str(sized)]
-    changed = set(arithmetic['exact_local_names']) | {'fuel_tbr_margin'}
-    for local, channel in oracle_entry.ORACLE_OUTPUT_TO_CHANNEL.items():
-        if local in old:
-            if local not in changed:
-                assert now[channel] == old[local], local
-            assert native.outputs[channel] == pytest.approx(now[channel], rel=1e-9, abs=1e-9), local
-    area = 'sizing_required_conductor_area'
-    channel=oracle_entry.ORACLE_OUTPUT_TO_CHANNEL[area]
-    assert math.isclose(now[channel],old[area],rel_tol=0,abs_tol=4*max(math.ulp(now[channel]), math.ulp(old[area])))
-    if sized:
-        assert oracle_entry.vs.IN['magnet_turn_current'] == 50000.
-        for local,scale in [('conductor_margin_current',50000.),('conductor_margin_fraction',1.)]:
-            channel=oracle_entry.ORACLE_OUTPUT_TO_CHANNEL[local]
-            assert now[channel] < 0 and native.outputs[channel] < 0
-            assert math.isclose(now[channel],old[local],rel_tol=0,abs_tol=8*math.ulp(scale))
-    assert output(native, 'divertor__divheat__power_account_valid') == 0.
-    assert_current_predicates(native, point)
-    for suffix in ('reference_conductor_current_ok','burn_hold_ok'):
-        cid=next(cid for cid in CURRENT_PREDICATES if cid.split('__')[2]==suffix)
-        assert native.responses[cid] == 'violated'
-    assert native.responses['headline'] == 'violated'
-    controls = json.loads(ENTERING.with_name('negative-native-cases.json').read_text())['cases']
-    old_native = next(case for case in controls if case['sized'] == sized)
-    assert_historical_native('signed-'+str(sized), native, old_native['outputs'], old_native['responses'], point)
+    point=selected_point({P+'plasma__R':13.5,P+'plasma__a':1.5,P+'magnet__coil__I_coil':16e6})
+    point[P+'magnet__winding_pack__wp_side']=pack_side
+    native=evaluate({k.removeprefix(P):v for k,v in point.items()})
+    now=oracle_entry.evaluate(point)
+    for channel,value in now.items():
+        assert native.outputs[channel]==pytest.approx(value,rel=1e-9,abs=1e-9),channel
+    assert output(native,'divertor__divheat__power_account_valid')==0.
+    assert_current_predicates(native,point,now)
+    assert native.responses['headline']=='violated'
+    # The sustainment failure remains exact; pack selection does not repair burn.
+    catalog=json.loads(Path('exploration/stellarator_e2e/generated/contracts/model_contract.json').read_text())['constraint_catalog']['concrete_entries']
+    burn=next(e['constraint_id'] for e in catalog if e['source_local_identity']=='burn_hold_ok')
+    assert native.responses[burn]=='violated'

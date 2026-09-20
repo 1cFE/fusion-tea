@@ -17,9 +17,9 @@ Outputs:
     - fuel_installation_exclusion: fuel_installation_exclusion result
     - remaining_shipping_base: remaining_shipping_base result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:527
+SysML Source: root-0/analyses/mfe_facilities.sysml:690
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:527
+SysML Source: root-0/analyses/mfe_facilities.sysml:690
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_facilities/facility_shipping_scope_impl.py
@@ -67,9 +67,9 @@ Outputs:
     - fuel_installation_exclusion: fuel_installation_exclusion result
     - remaining_shipping_base: remaining_shipping_base result
 
-SysML Source: root-0/analyses/mfe_facilities.sysml:527
+SysML Source: root-0/analyses/mfe_facilities.sysml:690
 
-    SysML Source: root-0/analyses/mfe_facilities.sysml:527
+    SysML Source: root-0/analyses/mfe_facilities.sysml:690
 
     Calculation Specification:
         fuel_installation_in = 0.0

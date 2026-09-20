@@ -17,7 +17,7 @@ RAW = ((111000, 112000, 60.6), (1000000, 70000, 82.4),
        (1237000, 63000, 65.2), (182000, 30000, 82.4))
 CASE = dict(enabled=True, source_conditions=True, inventory_enabled=True,
             flow=12.911794045007683 / 86400, n_mod=1., legacy_cost=120746472.201428,
-            capacity_margin=1., price_multiplier=1., reference_flow=2.08e-5,
+            capacity=0.00015, price_multiplier=1., reference_flow=2.08e-5,
             exponent=.3, target_cpi=321.9)
 for row, (capital, installation, cpi) in zip(ROWS, RAW):
     CASE.update({row + '_capital': capital, row + '_installation': installation, row + '_cpi': cpi})
@@ -27,7 +27,7 @@ for row, (capital, installation, cpi) in zip(ROWS, RAW):
 def calculate(request):
     if request.param == 'oracle':
         return oracle.calculate
-    path = ROOT / 'work/active/WI-070_throughput-based-fuel-processing-costs/seeds/fuel_processing_cost_impl.py'
+    path = ROOT / 'work/active/WI-077_supplied-fuel-processing-capacity-evaluation/seeds/fuel_processing_cost_impl.py'
     spec = importlib.util.spec_from_file_location('processing_seed_under_test', path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -39,12 +39,15 @@ def decimal_reference(case):
     with localcontext() as context:
         context.prec = 60
         d = {key: Decimal(str(value)) for key, value in case.items() if type(value) is not bool}
-        capacity = d['flow'] * d['capacity_margin']
+        capacity = d['capacity']
         ratio = capacity / d['reference_flow']
         scale = ratio ** d['exponent']
         values = dict(flow_kg_s=d['flow'], capacity_kg_s=capacity,
                       plant_capacity_kg_s=capacity * d['n_mod'], flow_ratio=ratio,
-                      scaling_factor=scale, defined_flag=Decimal(int(case['source_conditions'])))
+                      scaling_factor=scale, defined_flag=Decimal(int(case['source_conditions'])),
+                      plant_demand_kg_s=d['flow'] * d['n_mod'],
+                      capacity_margin_kg_s=(capacity - d['flow']) * d['n_mod'],
+                      capacity_evaluation_defined=Decimal(1))
         for row in ROWS:
             for field in ('capital', 'installation'):
                 reference = d[row + '_' + field] * d['target_cpi'] / d[row + '_cpi']
@@ -61,56 +64,50 @@ def decimal_reference(case):
 @pytest.mark.parametrize('changes', [
     {}, {'flow': 2.08e-5}, {'flow': 0.}, {'containment_cpi': 65.2},
     {'containment_cpi': 96.5}, {'n_mod': 2.}, {'price_multiplier': .5},
-    {'capacity_margin': 1.5}, {'source_conditions': False},
-    {'n_mod': 3., 'price_multiplier': 2., 'capacity_margin': 1.25},
+    {'capacity': 0.000225}, {'source_conditions': False},
+    {'n_mod': 3., 'price_multiplier': 2., 'capacity': 0.0001875},
 ])
 def test_every_output_against_high_precision_source_equations(calculate, changes):
     case = CASE | changes
     actual, expected = calculate(case), decimal_reference(case)
-    assert len(actual) == 27
+    assert len(actual) == 30
     assert set(actual) == set(expected)
     for name, value in expected.items():
         assert actual[name] == pytest.approx(value, rel=2e-13, abs=1e-18), name
 
 
-def test_reviewed_current_flow_and_expenditure_date_anchors(calculate):
-    current = calculate(CASE)
-    assert current['equipment_total'] == pytest.approx(20443419.583268173, rel=0, abs=1e-7)
-    assert current['installation_total'] == pytest.approx(2342809.8205252266, rel=0, abs=1e-7)
-    assert current['cost'] == pytest.approx(22786229.4037934, rel=0, abs=1e-7)
-    for cpi, total in ((65.2, 23180989.577015813), (96.5, 22567582.023116916)):
-        changed = calculate(CASE | {'containment_cpi': cpi})
-        assert changed['cost'] == pytest.approx(total, rel=0, abs=1e-7)
-        for row in ROWS[:-1]:
-            for field in ('capital', 'installation', 'reference_capital', 'reference_installation'):
-                assert changed[row + '_' + field] == current[row + '_' + field]
+def test_supplied_capacity_and_expenditure_date_anchors(calculate):
+    for changes in ({}, {'containment_cpi': 65.2}, {'containment_cpi': 96.5}):
+        x = CASE | changes
+        actual = calculate(x)
+        expected = decimal_reference(x)
+        for field in ('equipment_total', 'installation_total', 'cost'):
+            assert actual[field] == pytest.approx(expected[field], rel=2e-13)
 
 
 def test_reference_rows_recover_raw_expenditures_in_each_original_year(calculate):
     for row, (capital, installation, cpi) in zip(ROWS, RAW):
-        result = calculate(CASE | {'flow': CASE['reference_flow'], 'target_cpi': cpi})
+        result = calculate(CASE | {'capacity': CASE['reference_flow'], 'target_cpi': cpi})
         assert result[row + '_capital'] == pytest.approx(capital, rel=1e-14)
         assert result[row + '_installation'] == pytest.approx(installation, rel=1e-14)
 
 
-def test_zero_exhaust_has_zero_actual_price_but_retains_reference_anchors(calculate):
+def test_zero_exhaust_keeps_selected_hardware_and_price(calculate):
     zero = calculate(CASE | {'flow': 0.})
     reference = calculate(CASE)
-    for name, value in zero.items():
-        if '_reference_' in name:
-            assert value == reference[name] > 0
-        elif name == 'defined_flag':
-            assert value == 1.
-        else:
-            assert value == 0.
+    for name in ('capacity_kg_s', 'cost', 'equipment_total', 'installation_total'):
+        assert zero[name] == reference[name] > 0
+    assert zero['plant_demand_kg_s'] == 0
+    assert zero['capacity_margin_kg_s'] == zero['plant_capacity_kg_s']
 
 
 def test_identical_modules_price_and_margin_are_distinct_scalings(calculate):
     one = calculate(CASE)
     two = calculate(CASE | {'n_mod': 2.})
     expensive = calculate(CASE | {'price_multiplier': 2.})
-    margin = calculate(CASE | {'capacity_margin': 1.5})
-    assert two['flow_kg_s'] == two['capacity_kg_s'] == one['flow_kg_s']
+    margin = calculate(CASE | {'capacity': 0.000225})
+    assert two['flow_kg_s'] == one['flow_kg_s']
+    assert two['capacity_kg_s'] == one['capacity_kg_s']
     assert two['module_total'] == one['module_total']
     assert two['plant_capacity_kg_s'] == 2 * one['capacity_kg_s']
     assert two['cost'] == pytest.approx(2 * one['cost'])
@@ -139,7 +136,7 @@ def test_disabled_mode_preserves_exact_legacy_and_accepts_zero_source_placeholde
 
 @pytest.mark.parametrize('changes', [
     {'inventory_enabled': False}, {'flow': -1e-9}, {'n_mod': 0}, {'n_mod': 1.5},
-    {'capacity_margin': .99}, {'price_multiplier': 0.}, {'reference_flow': 0.},
+    {'capacity': 0.}, {'price_multiplier': 0.}, {'reference_flow': 0.},
     {'exponent': 0.}, {'target_cpi': 0.},
     *({row + '_cpi': 0.} for row in ROWS),
     *({row + '_' + field: -1.} for row in ROWS for field in ('capital', 'installation')),
@@ -179,8 +176,8 @@ def test_flags_require_exact_boolean_declarations(calculate, key):
 
 
 @pytest.mark.parametrize('changes', [
-    {'flow': 1e308, 'capacity_margin': 2.},
-    {'flow': 1e200, 'exponent': 20.},
+    {'flow': 1e308, 'n_mod': 2.},
+    {'capacity': 1e200, 'exponent': 20.},
     {'price_multiplier': 1e308},
     {'transfer_capital': 1e308, 'target_cpi': 1e308},
 ])

@@ -6,6 +6,7 @@ package stellarator_09 {
     private import mfe_winding_pack_fit::*;
     private import mfe_conductor_current::*;
     private import mfe_tritium_breeding::*;
+    private import mfe_fuel_cycle::'Fuel Processing Capacity';
     private import mfe_subsystems::'Transport Calculated Blanket';
 
     // =========================================================================
@@ -103,12 +104,10 @@ package stellarator_09 {
         // MAGNET SUBSYSTEM (CAS22.1.3)
         // ---------------------------------------------------------------------
         part :>> magnet {
-            :>> c_support = 1.348 {
-                doc /* **Source**: knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/ Eq56; Lion2023 MJ/tonne convention inferred **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
+            :>> m_support = 11615604.482575215 {
+                doc /* Supplied total electromagnetic supports [kg], no mass-based strength qualification. **Source**: work/orchestration/goals/preserve-model-design-choices/evidence/entering-native-baseline.json **Reference**: output magnet__support_mass__m_support; WI-075 reviewed binding plan. **Basis**: [AGENT] preserve entering native modeled inventory; migration is not new empirical evidence. **Last Updated**: 2026-09-20 */
             }
-            :>> e_support = 0.78 {
-                doc /* **Source**: knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/ Eq56; Lion2023 MJ/tonne convention inferred **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
-            }
+
             :>> legacy_casing_fraction = 0.0 {
                 doc /* **Source**: knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/ Eq56; Lion2023 MJ/tonne convention inferred **Reference**: work/active/WI-059_coil-thermal-and-total-support-inventory/design.md. **Basis**: [AGENT] reviewed engineering scenario; source facts and sensitivities in T-005_cryo_basis.md/T-005_structure_basis.md. **Last Updated**: 2026-09-15 */
             }
@@ -157,7 +156,7 @@ package stellarator_09 {
             :>> vol_cold_cryo = 0.0 {  // ADDITIONAL cold volume [m^3] beyond the winding pack.
                 doc /*
                 WI-036: the winding-pack cold volume is now COMPUTED IN THE MODEL
-                (mfe_magnet_field 'Winding Pack Cold Volume'), from the sized pack
+                (mfe_magnet_field 'Winding Pack Cold Volume'), from the supplied pack
                 cross-section, the computed winding length and the held set-distribution
                 factor f_wp_vol -- reproducing the 136.56 m^3 this slot previously held
                 as a literal. The arithmetic below was correct; it lived in this doc
@@ -242,9 +241,9 @@ package stellarator_09 {
                 :>> R_ref = 12.7 {
                     doc /* **Source**: stellaris-design-details.md **Ref**: images/page_002_table_0.png (Table 2: major plasma radius 12.7 m) **Basis**: the reference geometry of the WI-044 anchors */
                 }
-                // Peak single-coil current [A].
-                :>> I_coil = 15400000.0 {
-                    doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: "Peak coil current (single coil) [MA] 15.4"); Table 8 image (images/page_022_table_0.png: coil 0, I = 15.4 MA) **Basis**: Stellaris peak coil current -- the WI-035 design lever */
+                // Installed continuous reference winding turns [1].
+                :>> reference_turns = 308.0 {
+                    doc /* Supplied continuous installed reference turns [1], derived as entering ampere-turns/turn_current. **Source**: work/orchestration/goals/preserve-model-design-choices/evidence/entering-native-baseline.json **Reference**: WI-075 reviewed binding plan and entering native output capture. **Basis**: [AGENT] preserve existing evaluated design without automatic selection; no new empirical evidence. **Last Updated**: 2026-09-20 */
                 }
                 // Stellarator conductor->installed markup. Source: costing_constants.
                 //   yaml:75 (coil_markup.stellarator = 5.87).
@@ -310,8 +309,6 @@ package stellarator_09 {
             }
             }
             part :>> winding_pack {
-                :>> sizing_mode = 0.0; // WI-064 entering legacy scenario
-                :>> inventory_multiplier = 1.0; // WI-064 no additional inventory
                 :>> reference_tape_current = 200.0 {
                     doc /* **Source**: work/orchestration/goals/absolute-conductor-current-margin/evidence/performance-research.md **Reference**: WI-062 reviewed design. **Basis**: [AGENT] rounded lot-average lift inference A/4mm at20T; 56um construction transfer. **Last Updated**: 2026-09-15 */
                 }
@@ -357,12 +354,6 @@ package stellarator_09 {
                 }
                 :>> tape_price_per_m = 20.0 {
                     doc /* Assumed dollars per metre of the selected 6 mm x 56 micrometre complete tape. **Source**: work/active/WI-060_tape-procurement-quantity-basis/design.md **Reference**: Parameters and provenance; goal evidence/tape-basis-research.md. **Basis**: [AGENT] independent illustrative engineering price, not a supplier quote or a fit to entering costs; 10/20/40 dollars/m sensitivity. No critical-current rating conversion or whole-plant price-year normalization is claimed. **Last Updated**: 2026-09-15 */
-                }
-                :>> B_grade_ref = 24.9 {
-                    doc /* Reference purchased field envelope [T]. **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_002_table_0.png **Reference**: Table 2, peak conductor magnetic field strength 24.9 T. **Basis**: [AGENT] normalize WI-038 to the inherited design envelope. This exceeds the approximately 24 T endpoint visible for Molodyk's 20 K measurements in Fig. 1a; equality at the anchor does not qualify the conductor. Hold this field reference fixed for the relative quantity interpretation. **Last Updated**: 2026-09-13 */
-                }
-                :>> field_exponent = 0.6 {
-                    doc /* Relative field exponent [1]. **Source**: knowledge/sources/development_and_large_volume_production_of_extremely_high/raw.pdf **Reference**: Molodyk et al. (2021), printed p. 5: approximate critical-current field exponent 0.6 at 20 K. **Basis**: [AGENT] inverse relative-current-density law for tape quantity at fixed operating fraction, tape family and angular assumption. The paragraph reports no fit interval. The 20-30 T window is an extrapolative sensitivity choice, not source-validated capability. Keep temperature at 20 K for this interpretation; exponent changes are explicit scenarios. **Last Updated**: 2026-09-13 */
                 }
                 doc /* WI-040 procurement parameter basis. **Source**: Stellaris Table 7; registered supplier, USGS, NIST and PROCESS captures. **Reference**: individual attributes below. **Basis**: [AGENT] fixed composition outside the source point; nominal solid densities neglect cryogenic contraction. Solder alloy and procurement form are proxies. No quantified inter-pancake insulation, unresolved fixed cable charge, delivery or production learning is included. Estimates do not establish complete manufactured-magnet cost or normalize the whole plant's price year. **Last Updated**: 2026-09-13 */
                 :>> f_copper = 0.35 {
@@ -434,7 +425,7 @@ package stellarator_09 {
                 // exceeds by 1.9 T; the disagreement is disclosed, the design value
                 // is bound (WI-030).
                 :>> B_max = 24.9 {
-                    doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_002_table_0.png; /home/reid/1cfe/1costingfe/src/costingfe/defaults.py (pin 0254385) **Ref**: Table 2, peak conductor magnetic field strength 24.9 T; defaults.py:605-612 (MAGNET_TABLE rebco_hts b_max = 23.0, not bound -- owner ruling 2026-08-21). **Basis**: Stellaris design envelope retained. WI-038 adds an agent-derived relative quantity cost for the selected envelope; the existing actual-peak-field verdict does not become a certified critical-field or absolute operating-margin test. **Last Updated**: 2026-09-13 */
+                    doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_002_table_0.png; /home/reid/1cfe/1costingfe/src/costingfe/defaults.py (pin 0254385) **Ref**: Table 2, peak conductor magnetic field strength 24.9 T; defaults.py:605-612 (MAGNET_TABLE rebco_hts b_max = 23.0, not bound -- owner ruling 2026-08-21). **Basis**: Stellaris design envelope retained. WI-075 preserves this ceiling independently of supplied inventory; the existing actual-peak-field verdict does not become a certified critical-field or absolute operating-margin test. **Last Updated**: 2026-09-13 */
                 }
                 // Winding fabrication markup [1] = 3.5 (winding/insulation/cooling/jointing/test)
                 // x 1.9 (documented NCSX non-planar production penalty). Content-mapped: no casing,
@@ -443,15 +434,9 @@ package stellarator_09 {
                 :>> f_wp_fab = 6.65 {
                     doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:50 (coil_cu_fab_markup 3.5, content list); :60-72 (stellarator 5.87 = 3.09 x 1.9 NCSX overrun; winding path handled separately) **Basis**: content-mapped fabrication build-up on the conductor base (WI-035 D4) */
                 }
-                // Reference winding-pack current density [A/mm^2], worst coil (coil 0).
-                // Bound as the float64 of the printed pair (15.4 MA, 360 mm) so
-                // that wp_side reproduces 0.360000 m exactly; the printed j_WP is
-                // 119 A/mm^2 (Table 8), and the design range across the six unique
-                // coils is 112-124. WI-060 holds tape construction and material fractions
-                // fixed: lower density buys more tape at lower operating current per tape.
-                // Higher density consumes unknown current margin; no manufacturing claim.
-                :>> j_wp = 118.8271604938272 {
-                    doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_022_table_0.png **Ref**: Table 8, image-verified: j_WP 119/112/120/112/122/124 A/mm^2; total amp-turns 15.4/14.6/13.8/12.9/12.5/11.2 MA; cross-section sides 360/360/340/340/320/300 mm. **Basis**: calibrated worst-coil reference density from 15.4 MA and 0.36 m, 118.8271604938272 A/mm^2. WI-060 fixed-construction density changes vary physical tape inventory and operating current per tape; set-effective loading includes f_set/f_wp_vol. Absolute current margin remains unqualified. **Last Updated**: 2026-09-13 */
+                // Supplied geometry remains unchanged when operating current varies.
+                :>> wp_side = 0.35999999999999993 {
+                    doc /* Supplied effective square-pack side [m], entering native wp_sizing.wp_side. **Source**: work/orchestration/goals/preserve-model-design-choices/evidence/entering-native-baseline.json **Reference**: WI-075 reviewed binding plan and entering native output capture. **Basis**: [AGENT] preserve existing evaluated design without automatic selection; no new empirical evidence. **Last Updated**: 2026-09-20 */
                 }
                 // Winding-pack set-distribution factor [1] = printed total winding-pack
                 // volume over the worst-coil-uniform reference = 136.56 / (48 * 0.36^2 * 25)
@@ -521,14 +506,14 @@ package stellarator_09 {
                 // Inherited63t per-coil casing-floor diagnostic, not a measured
                 // casing/intercoil split. Total support mass is priced exclusively
                 // when legacy_casing_fraction=0; this diagnostic adds no cost.
-                :>> m_casing_ref = 63000.0 {
-                    doc /* **Source**: stellaris-design-details.md; WI-035 design ruling D5 (2026-08-30); knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/ **Ref**: raw.pdf sec. 2.10 ("cast with parts weighing between 63 tons and 200 tons"); images/lion_2021_nf_stellarator_process.pdf-0012-18.png (eq. 56, the shape the reference is scaled by) **Basis**: explicit lower-bound assumption parameter -- printed floor, seam named; the WI-044 anchor of the casing-mass shape */
+                :>> m_casing = 63000.0 {
+                    doc /* Supplied per-coil casing mass [kg], entering native casing_mass.m_casing; no strength qualification. **Source**: work/orchestration/goals/preserve-model-design-choices/evidence/entering-native-baseline.json **Reference**: WI-075 reviewed binding plan and entering native output capture. **Basis**: [AGENT] preserve existing evaluated design without automatic selection; no new empirical evidence. **Last Updated**: 2026-09-20 */
                 }
                 // magnet facts were read. Each sourced shape -- eq. 39 (peak field), eq. 2.82
-                // with W = 1/2 L I^2 (stored energy), eq. 56 (casing mass) -- is normalised
+                // with W = 1/2 L I^2 (stored energy) -- is normalised
                 // to exactly 1.0 here, so the design point reproduces its anchors to the
                 // double and only the bore dependence responds away from it. The
-                // configuration coefficients a0(C), a1(C), L(C) and eq. 56's constant are
+                // configuration coefficients a0(C), a1(C), L(C) are
                 // not printed for Stellaris; the anchors carry them (the WI-041 calibration
                 // pattern). What is NOT modelled, disclosed here once: (i) the sourced bound
                 // on the minor radius -- the coil-plasma distance inside a fixed coil set
@@ -1114,6 +1099,15 @@ package stellarator_09 {
         part :>> heat_transport {
             // WI-067 released conceptual helium/HITEC scenario. Conversion fit remains
             // an inherited surrogate; steam-generator price ownership is Row8/unverified.
+            :>> equipment_helium_design_shaft_MW = 6.26003337158886 { doc /* Source: work/orchestration/goals/preserve-model-design-choices/evidence/entering-native-baseline.json. Ref: entering selected operating point and stock; cooling-binding-plan.md. Basis: [AGENT] explicit entering design, independent of subsequent demand; unqualified equipment transfer. */ }
+            :>> equipment_helium_design_suction_Pa = 7699680.103536234 { doc /* Source: work/orchestration/goals/preserve-model-design-choices/evidence/entering-native-baseline.json. Ref: entering selected operating point and stock; cooling-binding-plan.md. Basis: [AGENT] explicit entering design, independent of subsequent demand; unqualified equipment transfer. */ }
+            :>> equipment_salt_design_flow_kg_s = 387.575515577979 { doc /* Source: work/orchestration/goals/preserve-model-design-choices/evidence/entering-native-baseline.json. Ref: entering selected operating point and stock; cooling-binding-plan.md. Basis: [AGENT] explicit entering design, independent of subsequent demand; unqualified equipment transfer. */ }
+            :>> equipment_salt_design_head_m = 40.0 { doc /* Source: work/orchestration/goals/preserve-model-design-choices/evidence/entering-native-baseline.json. Ref: entering selected operating point and stock; cooling-binding-plan.md. Basis: [AGENT] explicit entering design, independent of subsequent demand; unqualified equipment transfer. */ }
+            :>> equipment_salt_design_eta_p = 0.75 { doc /* Source: work/orchestration/goals/preserve-model-design-choices/evidence/entering-native-baseline.json. Ref: entering selected operating point and stock; cooling-binding-plan.md. Basis: [AGENT] explicit entering design, independent of subsequent demand; unqualified equipment transfer. */ }
+            :>> equipment_salt_design_eta_motor = 0.95 { doc /* Source: work/orchestration/goals/preserve-model-design-choices/evidence/entering-native-baseline.json. Ref: entering selected operating point and stock; cooling-binding-plan.md. Basis: [AGENT] explicit entering design, independent of subsequent demand; unqualified equipment transfer. */ }
+            :>> equipment_helium_purchased_mass_kg = 16607.698111227022 { doc /* Source: work/orchestration/goals/preserve-model-design-choices/evidence/entering-native-baseline.json. Ref: entering selected operating point and stock; cooling-binding-plan.md. Basis: [AGENT] explicit entering design, independent of subsequent demand; unqualified equipment transfer. */ }
+            :>> equipment_salt_purchased_mass_kg = 1608750.9823889225 { doc /* Source: work/orchestration/goals/preserve-model-design-choices/evidence/entering-native-baseline.json. Ref: entering selected operating point and stock; cooling-binding-plan.md. Basis: [AGENT] explicit entering design, independent of subsequent demand; unqualified equipment transfer. */ }
+            :>> mdot_loop_rated = 225.07777777777778 { doc /* Source: existing circuit reference scenario; cooling-binding-plan.md. Ref: WI-078 independent ceiling. Basis: [AGENT] offered scalar flow limit, not machine-map qualification. */ }
             :>> equipment_layout_multiplier = 1.0;
             :>> equipment_tube_wall = 0.0015;
             :>> equipment_shell_wall = 0.2;
@@ -1221,15 +1215,15 @@ package stellarator_09 {
                 (per-loop 215.05 kg/s, 4.5 % under the rating). A settable input and a
                 study lever, never a computed ceil (outside the codegen envelope and a
                 size optimizer the goal does not authorize). Off the design point a
-                bigger plant exceeds the rating at this count and must add loops:
-                the committed cheapest machine c2823 needs 27.
+                bigger plant can fail the offered scalar flow screen at this count;
+                evaluation preserves the supplied count and does not add loops.
                 **Source**: work/active/WI-045_primary-loop-and-cycle/prototype/proto.py (the sizing rule on the reference's 2025.7 kg/s over 9 loops)
                 **Ref**: Moscato output.md:81, :89-91
                 **Basis**: capacity by count, sized once at the design point
                 */
             }
-            :>> mdot_loop_ref = 225.07777777777778 {  // 2025.7 / 9 [kg/s], the rated per-loop flow.
-                doc /* **Source**: knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/output.md **Ref**: output.md:81 (2025.7 kg/s), :89-91 (9 loops) **Basis**: the reference per-loop flow; the loss law's anchor and 'Loop Capacity''s rating */
+            :>> mdot_loop_ref = 225.07777777777778 {  // 2025.7 / 9 [kg/s], hydraulic reference flow; offered ceiling is separate.
+                doc /* **Source**: knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/output.md **Ref**: output.md:81 (2025.7 kg/s), :89-91 (9 loops) **Basis**: the reference per-loop flow, used only as the loss law anchor; mdot_loop_rated independently sets the offered scalar ceiling */
             }
             :>> dp_loop_ref = 329187.1856931558 {  // flow-weighted per-path loss [Pa].
                 doc /*
@@ -1453,8 +1447,8 @@ package stellarator_09 {
             :>> processing_source_conditions = true {
                 doc /* **Source**: work/active/WI-070_throughput-based-fuel-processing-costs/design.md; work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/proposed-price-review.md and source-review-r2.md. **Reference**: Bartlit Table II/Section III, ORNL fuel-processing relation; reviewed CPI conversion and conditional conventional process transfer. **Basis**: Four limited package rows including local controls and direct installation; source conditions declared, not measured. 1980 containment date and installation capital-year matching are explicit assumptions; CPI is 2025 purchasing power. **Last Updated**: 2026-09-19 */
             }
-            :>> processing_capacity_margin = 1.0 {
-                doc /* **Source**: work/active/WI-070_throughput-based-fuel-processing-costs/design.md; work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/proposed-price-review.md and source-review-r2.md. **Reference**: Bartlit Table II/Section III, ORNL fuel-processing relation; reviewed CPI conversion and conditional conventional process transfer. **Basis**: Four limited package rows including local controls and direct installation; source conditions declared, not measured. 1980 containment date and installation capital-year matching are explicit assumptions; CPI is 2025 purchasing power. **Last Updated**: 2026-09-19 */
+            :>> processing_capacity_kg_s = 0.00015 {
+                doc /* Independently supplied per-module processing throughput [kg D+T/s]. **Source**: work/active/WI-077_supplied-fuel-processing-capacity-evaluation/spec.md **Reference**: Proposed exact binding plan **Basis**: [ASSUMED] round selected rating, not a guaranteed adequacy margin or fitted reference value. **Last Updated**: 2026-09-20 */
             }
             :>> processing_price_multiplier = 1.0 {
                 doc /* **Source**: work/active/WI-070_throughput-based-fuel-processing-costs/design.md; work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/proposed-price-review.md and source-review-r2.md. **Reference**: Bartlit Table II/Section III, ORNL fuel-processing relation; reviewed CPI conversion and conditional conventional process transfer. **Basis**: Four limited package rows including local controls and direct installation; source conditions declared, not measured. 1980 containment date and installation capital-year matching are explicit assumptions; CPI is 2025 purchasing power. **Last Updated**: 2026-09-19 */
@@ -1559,9 +1553,95 @@ package stellarator_09 {
             }
         }
         part :>> buildings {
+            :>> parcel_origin_x_offset = 0.0; // m, signed supplied translation; fixed datum below is entering coordinate convention.
+            :>> parcel_origin_y_offset = 0.0; // m; see WI-076 evidence/origin-interface.md.
+
+            :>> selected_parcel_width = 443.809397513309 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_parcel_length = 822.0624551181559 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_parcel_y_min = parcel_origin_y_offset - 256.9046987566545 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_parcel_x_min = parcel_origin_x_offset - 186.9046987566545 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_blanket_packages_per_sector = 32.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cooling_annex_north_depth = 152.1 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cooling_bundle_store_width = 16.4 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cooling_salt_store_width = 14.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cooling_helium_store_width = 16.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_security_height = 4.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_security_width = 8.831760866327848 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_security_length = 17.663521732655695 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_control_height = 4.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_control_width = 17.10263137648707 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_control_length = 34.20526275297414 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_administration_height = 4.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_administration_width = 39.496835316262995 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_administration_length = 78.99367063252599 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_site_services_building_height = 9.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_site_services_building_width = 14.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_site_services_building_length = 24.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_maintenance_shop_height = 11.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_maintenance_shop_width = 19.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_maintenance_shop_length = 24.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_service_water_building_height = 11.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_service_water_building_width = 19.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_service_water_building_length = 24.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_electrical_building_height = 9.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_electrical_building_width = 12.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_electrical_building_length = 20.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_power_supply_building_height = 11.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_power_supply_building_width = 14.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_power_supply_building_length = 24.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_reactor_auxiliaries_height = 13.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_reactor_auxiliaries_width = 24.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_reactor_auxiliaries_length = 34.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_fuel_building_height = 11.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_fuel_building_width = 24.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_fuel_building_length = 34.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cryo_compressors_height = 11.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cryo_compressors_width = 16.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cryo_compressors_length = 34.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cryo_coldbox_height = 13.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cryo_coldbox_width = 16.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cryo_coldbox_length = 24.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_turbine_hall_height = 18.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_turbine_hall_width = 24.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_turbine_hall_length = 64.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cooling_link_height = 9.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cooling_link_width = 17.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cooling_link_length = 10.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cooling_annex_height = 9.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cooling_annex_width = 296.2 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cooling_annex_length = 67.7 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cooling_hall_height = 9.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cooling_hall_width = 114.2 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_cooling_hall_length = 92.39999999999999 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_link_south_height = 14.100000000000001 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_link_south_width = 37.80939751330899 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_link_south_length = 10.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_link_west_height = 14.100000000000001 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_link_west_width = 37.80939751330899 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_link_west_length = 10.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_link_north_height = 14.100000000000001 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_link_north_width = 37.80939751330899 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_link_north_length = 10.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_link_east_height = 14.100000000000001 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_link_east_width = 37.80939751330899 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_link_east_length = 10.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_wing_south_height = 14.100000000000001 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_wing_south_width = 97.809397513309 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_wing_south_length = 106.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_wing_west_height = 14.100000000000001 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_wing_west_width = 97.809397513309 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_wing_west_length = 106.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_wing_north_height = 14.100000000000001 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_wing_north_width = 97.809397513309 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_wing_north_length = 106.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_wing_east_height = 14.100000000000001 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_wing_east_width = 97.809397513309 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_sector_wing_east_length = 106.0 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_reactor_hall_height = 14.100000000000001 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_reactor_hall_width = 105.809397513309 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
+            :>> selected_reactor_hall_length = 105.809397513309 { doc /* Source: work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json. Ref: entering native design capture; architecture-review-r2.md. Basis: supplied design preserved from entering model, not physical qualification. */ }
             :>> facilities_enabled = true { doc /* Source: work/active/WI-068_layout-based-facilities/design.md; layout-capacity-design.md; evidence/facility-contract.md. Ref: released geometry, capacity, exact civil takeoff and account boundary. Basis: conditional conceptual scenario; unqualified shielding/loading/transport and explicit provisional equipment envelopes. */ }
             :>> facilities_cost_mode = 1.0 { doc /* Source: work/active/WI-068_layout-based-facilities/design.md; layout-capacity-design.md; evidence/facility-contract.md. Ref: released geometry, capacity, exact civil takeoff and account boundary. Basis: conditional conceptual scenario; unqualified shielding/loading/transport and explicit provisional equipment envelopes. */ }
-            :>> facilities_capacity_mode = 1.0 { doc /* Source: work/active/WI-068_layout-based-facilities/design.md; layout-capacity-design.md; evidence/facility-contract.md. Ref: released geometry, capacity, exact civil takeoff and account boundary. Basis: conditional conceptual scenario; unqualified shielding/loading/transport and explicit provisional equipment envelopes. */ }
             :>> sector_count = 4.0 { doc /* Source: work/active/WI-068_layout-based-facilities/design.md; layout-capacity-design.md; evidence/facility-contract.md. Ref: released geometry, capacity, exact civil takeoff and account boundary. Basis: conditional conceptual scenario; unqualified shielding/loading/transport and explicit provisional equipment envelopes. */ }
             :>> sector_bays = 4.0 { doc /* Source: work/active/WI-068_layout-based-facilities/design.md; layout-capacity-design.md; evidence/facility-contract.md. Ref: released geometry, capacity, exact civil takeoff and account boundary. Basis: conditional conceptual scenario; unqualified shielding/loading/transport and explicit provisional equipment envelopes. */ }
             :>> sector_service_teams = 2.0 { doc /* Source: work/active/WI-068_layout-based-facilities/design.md; layout-capacity-design.md; evidence/facility-contract.md. Ref: released geometry, capacity, exact civil takeoff and account boundary. Basis: conditional conceptual scenario; unqualified shielding/loading/transport and explicit provisional equipment envelopes. */ }
@@ -1643,7 +1723,6 @@ package stellarator_09 {
             :>> security_area_per_person = 12.0 { doc /* Source: work/active/WI-068_layout-based-facilities/design.md; layout-capacity-design.md; evidence/facility-contract.md. Ref: released geometry, capacity, exact civil takeoff and account boundary. Basis: conditional conceptual scenario; unqualified shielding/loading/transport and explicit provisional equipment envelopes. */ }
             :>> occupancy_circulation_factor = 1.3 { doc /* Source: work/active/WI-068_layout-based-facilities/design.md; layout-capacity-design.md; evidence/facility-contract.md. Ref: released geometry, capacity, exact civil takeoff and account boundary. Basis: conditional conceptual scenario; unqualified shielding/loading/transport and explicit provisional equipment envelopes. */ }
             :>> occupancy_height = 4.0 { doc /* Source: work/active/WI-068_layout-based-facilities/design.md; layout-capacity-design.md; evidence/facility-contract.md. Ref: released geometry, capacity, exact civil takeoff and account boundary. Basis: conditional conceptual scenario; unqualified shielding/loading/transport and explicit provisional equipment envelopes. */ }
-            :>> occupancy_aspect_ratio = 2.0 { doc /* Source: work/active/WI-068_layout-based-facilities/design.md; layout-capacity-design.md; evidence/facility-contract.md. Ref: released geometry, capacity, exact civil takeoff and account boundary. Basis: conditional conceptual scenario; unqualified shielding/loading/transport and explicit provisional equipment envelopes. */ }
             :>> heat_rejection_length = 100.0 { doc /* Source: work/active/WI-068_layout-based-facilities/design.md; layout-capacity-design.md; evidence/facility-contract.md. Ref: released geometry, capacity, exact civil takeoff and account boundary. Basis: conditional conceptual scenario; unqualified shielding/loading/transport and explicit provisional equipment envelopes. */ }
             :>> heat_rejection_width = 60.0 { doc /* Source: work/active/WI-068_layout-based-facilities/design.md; layout-capacity-design.md; evidence/facility-contract.md. Ref: released geometry, capacity, exact civil takeoff and account boundary. Basis: conditional conceptual scenario; unqualified shielding/loading/transport and explicit provisional equipment envelopes. */ }
             :>> turbine_length = 60.0 { doc /* Source: work/active/WI-068_layout-based-facilities/design.md; layout-capacity-design.md; evidence/facility-contract.md. Ref: released geometry, capacity, exact civil takeoff and account boundary. Basis: conditional conceptual scenario; unqualified shielding/loading/transport and explicit provisional equipment envelopes. */ }
@@ -2048,6 +2127,15 @@ package stellarator_09 {
         // WI-061 additive local geometric screen; old eighteen predicates retained.
         assert constraint reference_conductor_current_ok : 'Reference Conductor Current Margin' {
             in margin_fraction_in = magnet.conductor_margin_fraction;
+        }
+        assert constraint fuel_processing_capacity_ok : 'Fuel Processing Capacity' {
+            in defined_in = fuel_cycle.processing_capacity_evaluation_defined;
+            in margin_in = fuel_cycle.processing_capacity_margin_kg_s;
+        }
+        assert constraint represented_coolant_fill_ok : 'Represented Coolant Fill' {
+            in defined_in = heat_transport.represented_fill_defined;
+            in helium_margin_in = heat_transport.helium_represented_fill_margin_kg;
+            in salt_margin_in = heat_transport.salt_represented_fill_margin_kg;
         }
         assert constraint wp_fit_ok : 'Winding Pack Fits Casing' {
             in minimum_margin_in = magnet.fit_minimum_margin;

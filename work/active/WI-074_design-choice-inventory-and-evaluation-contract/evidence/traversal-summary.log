@@ -1,0 +1,3 @@
+files 48 errors 0 elements 4160
+{'AssertConstraintUsage': 36, 'CalculationDefinition': 101, 'PartDefinition': 57, 'AttributeUsage': 3714, 'CalculationUsage': 106, 'PartUsage': 121, 'ConstraintDefinition': 25}
+parameters 597 modules 173 outputs 1184 unconsumed 0

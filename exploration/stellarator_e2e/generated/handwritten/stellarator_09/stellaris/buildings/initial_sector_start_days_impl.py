@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1588
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1668
 
 SysML Expressions:
 """
@@ -15,7 +15,7 @@ from stellarator_tea.modules.stellarator_09.stellaris.buildings.initial_sector_s
 def run_initial_sector_start_days(inputs: initial_sector_start_daysInput) -> float:
     """Execute initial_sector_start_days calculation.
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1588
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1668
 
 Args:
     inputs: Input parameters validated against initial_sector_start_daysInput schema

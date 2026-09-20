@@ -1,5 +1,5 @@
 """Current independent oracle domain rejection and unchanged valid arithmetic."""
-from tests.models.current_mfe_regressions import WI063_PARAMETERS, WI063_CHANNELS
+from tests.models.current_mfe_regressions import WI063_PARAMETERS, WI063_CHANNELS, MR7_LOCALS, MR7_RETIRED_LOCALS, MR7_PARAMETERS, MR7_RETIRED_PARAMETERS, MR7_RETIRED_CHANNELS, MR7_DELTA
 
 from tests.models.current_mfe_regressions import WI062_PARAMETERS, WI062_CHANNELS
 
@@ -37,6 +37,8 @@ def wi058_overrides(row):
     overrides = wi059_replay(row["overrides"])
     if "R" in overrides:
         overrides["magnet_c_coil_ref"] = K_COIL_RETIRED * overrides["R"]
+        # Explicit test-only construction of the frozen radius-selected casing.
+        overrides["magnet_m_casing"] = 63000. * (12.7 / overrides["R"])**.78
     return overrides
 
 
@@ -54,12 +56,9 @@ def wi040_expected(row):
     old = row['outputs']
     c_coil = wi058_length(p, old['r_coil_centre'])  # WI-058: the bore form
     expected = dict(old)
-    # WI-038 entering controls are at q=1. Preserve old outputs and add the exact
-    # effective reference values; off-reference grade claims have separate tests.
-    assert p['magnet_B_max'] == p['magnet_B_grade_ref']
-    expected.update(conductor_quantity_factor=1.0,
-                    conductor_j_wp_effective=p['magnet_j_wp'])
-    volume = p['magnet_f_wp_vol'] * p['magnet_n_coils'] * p['magnet_I_coil'] / p['magnet_j_wp'] / 1e6 * c_coil
+    # MR-7: current explicit hardware, with independent material/price identities.
+    # Frozen rows remain the financial base; no hidden field-grade construction.
+    volume = p['magnet_f_wp_vol'] * p['magnet_n_coils'] * p['magnet_wp_side']**2 * c_coil
     rho = p['magnet_helium_pressure'] / p['magnet_helium_gas_constant'] / p['T_cold_cryo']
     materials = ('copper', 'solder', 'steel', 'helium')
     for m in materials:
@@ -67,11 +66,10 @@ def wi040_expected(row):
         expected['winding_mass_' + m] = mass
         expected['winding_cost_' + m] = mass * p['magnet_price_' + m]
     material_cost = sum(expected['winding_cost_' + m] for m in materials)
-    kam = p['magnet_n_coils'] * p['magnet_I_coil'] * p['magnet_f_set'] * c_coil / 1000
     tape_volume = volume * (1 - sum(p['magnet_f_' + m] for m in materials))
     tape_length = tape_volume / (p['magnet_tape_width'] * p['magnet_tape_thickness'])
     tape = tape_length * p['magnet_tape_price_per_m']
-    length = 1000 * kam / p['magnet_turn_current']
+    length = p['magnet_n_coils'] * p['magnet_reference_turns'] * p['magnet_f_set'] * c_coil
     fabrication = length * p['magnet_winding_rate_1990'] * p['magnet_cost_escalation'] * p['magnet_nonplanar_factor']
     expected.update(vol_winding_pack=volume, winding_helium_density=rho,
                     winding_tape_volume=volume * (1 - sum(p['magnet_f_' + m] for m in materials)),
@@ -110,15 +108,15 @@ def wi040_expected(row):
     ({"magnet_R_ref": COIL_RADIUS}, "reference magnet clearance"),
     ({"magnet_a_coil_ref": 13.0}, "reference magnet clearance"),
     ({"magnet_a_coil_ref": 12.7}, "reference magnet clearance"),
-    ({"T_cold_cryo": -1.0}, "oracle conductor current: invalid temperature"),
-    ({"T_cold_cryo": 0.0}, "oracle conductor current: invalid temperature"),
-    ({"T_cold_cryo": 300.0}, "oracle conductor current: unsupported temperature/construction"),
-    ({"T_cold_cryo": 301.0}, "oracle conductor current: unsupported temperature/construction"),
+    ({"T_cold_cryo": -1.0}, "oracle cryoplant: require 0 < T_cold < T_amb"),
+    ({"T_cold_cryo": 0.0}, "oracle cryoplant: require 0 < T_cold < T_amb"),
+    ({"T_cold_cryo": 300.0}, "oracle cryoplant: require 0 < T_cold < T_amb"),
+    ({"T_cold_cryo": 301.0}, "oracle cryoplant: require 0 < T_cold < T_amb"),
     ({"T_amb_cryo": 20.0}, "0 < T_cold < T_amb"),
     ({"T_amb_cryo": 19.0}, "0 < T_cold < T_amb"),
     ({"T_amb_cryo": 0.0}, "0 < T_cold < T_amb"),
     ({"T_cold_cryo": 0.0, "q_nuc_cryo": 0.0, "p_fixed_cryo": 0.0,
-      "p_cryo_direct": 2.0}, "oracle conductor current: invalid temperature"),
+      "p_cryo_direct": 2.0}, "oracle cryoplant: require 0 < T_cold < T_amb"),
 ])
 def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, message):
     saved = dict(oracle.vs.IN)
@@ -133,9 +131,9 @@ def test_oracle_rejects_invalid_domains_and_restores_parameters(overrides, messa
     ("plasma__R", COIL_RADIUS, "live magnet clearance"),
     ("magnet__coil__R_ref", COIL_RADIUS, "reference magnet clearance"),
     ("magnet__coil__a_coil_ref", 13.0, "reference magnet clearance"),
-    ("cryoplant__T_cold_cryo", 0.0, "oracle conductor current: invalid temperature"),
-    ("cryoplant__T_cold_cryo", 300.0, "oracle conductor current: unsupported temperature/construction"),
-    ("cryoplant__T_cold_cryo", 301.0, "oracle conductor current: unsupported temperature/construction"),
+    ("cryoplant__T_cold_cryo", 0.0, "oracle cryoplant: require 0 < T_cold < T_amb"),
+    ("cryoplant__T_cold_cryo", 300.0, "oracle cryoplant: require 0 < T_cold < T_amb"),
+    ("cryoplant__T_cold_cryo", 301.0, "oracle cryoplant: require 0 < T_cold < T_amb"),
 ])
 def test_supported_adapter_inputs_propagate_deliberate_domain_error(suffix, value, message):
     with pytest.raises(ValueError, match=message):
@@ -155,7 +153,10 @@ def test_valid_outputs_exactly_preserved_and_physical_identities(row):
     part=ADDITIONAL_DOMAIN[str(BEFORE['controls'].index(row))]
     unchanged=set(part['unaffected_exact_locals']); changed_names=set(part['changed_current_equation_locals'])
     assert set(row['outputs']) == unchanged | changed_names
-    assert set(result) == set(row['outputs']) | set(part['added_local_names'])
+    assert set(result) == (set(row['outputs']) | set(part['added_local_names']) | MR7_LOCALS) - MR7_RETIRED_LOCALS
+    unchanged -= MR7_RETIRED_LOCALS
+    changed -= MR7_RETIRED_LOCALS
+    changed_names -= MR7_RETIRED_LOCALS
     for name in unchanged:
         assert result[name] == row['outputs'][name], name
     for name in changed | changed_names:
@@ -169,7 +170,7 @@ def test_valid_outputs_exactly_preserved_and_physical_identities(row):
     assert lhs == pytest.approx(rhs, rel=1e-12)
     # Refrigerator electrical work times cold temperature equals heat times lift.
     cold_volume = (p["magnet_f_wp_vol"] * p["magnet_n_coils"]
-                   * p["magnet_I_coil"] / p["magnet_j_wp"] / 1e6
+                   * p["magnet_wp_side"]**2
                    * wi058_length(p, result["r_coil_centre"]) + p["vol_cold_cryo"])  # WI-058: the bore form
     heat = (p["q_nuc_cryo"] * cold_volume * 1e-6 + p["p_fixed_cryo"]) * p["f_uplift_cryo"]
     lhs = (result["p_cryo"] - p["p_cryo_direct"]) * p["f_carnot_cryo"] * p["T_cold_cryo"]
@@ -178,10 +179,14 @@ def test_valid_outputs_exactly_preserved_and_physical_identities(row):
 
 
 def test_adapter_contract_and_ambient_limit_preserved():
-    assert set(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == set(ADDITIONAL_MAPPING['mapped_input_keys'])
+    assert set(oracle.ENTRY_KEY_TO_ORACLE_INPUT) == (set(ADDITIONAL_MAPPING['mapped_input_keys']) - MR7_RETIRED_PARAMETERS) | MR7_PARAMETERS
     for key,value in ADDITIONAL_MAPPING['unchanged_input_bindings'].items():
+        if key in MR7_RETIRED_PARAMETERS:
+            continue
         assert oracle.ENTRY_KEY_TO_ORACLE_INPUT[key] == value, key
     expected = ADDITIONAL_MAPPING['historical_output_bindings_after_explicit_alias_translation'] | ADDITIONAL_MAPPING['added_output_bindings']
+    expected = {key:value for key,value in expected.items() if value not in MR7_RETIRED_CHANNELS}
+    expected.update(MR7_DELTA['added_local_bindings'])
     assert oracle.ORACLE_OUTPUT_TO_CHANNEL == expected
     assert set(expected.values()) == CURRENT_NUMERIC
     assert len(expected) == len(set(expected.values()))
@@ -214,6 +219,7 @@ def test_three_qualified_domain_rows_have_complete_independent_native_coverage(t
         point=WI059_REPLAY | {names[k]:v for k,v in row['overrides'].items()}
         if 'R' in row['overrides']:
             point[names['magnet_c_coil_ref']]=K_COIL_RETIRED * row['overrides']['R']
+            point[names['magnet_m_casing']]=63000. * (12.7 / row['overrides']['R'])**.78
         points.append(point)
         independent=oracle._compute(wi058_overrides(row))
         expectations.append({channel:float(independent[name]) for name,channel in oracle.ORACLE_OUTPUT_TO_CHANNEL.items()})

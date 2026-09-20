@@ -34,10 +34,10 @@ def runtime_paths():
 
 
 @pytest.fixture(scope="module")
-def calculation(runtime_paths):
-    module = importlib.import_module("stellarator_tea.modules.mfe_conductor_grade.conductor_field_capability")
-    impl = importlib.import_module("stellarator_tea.handwritten.mfe_conductor_grade.conductor_field_capability_impl")
-    assert Path(module.__file__).resolve().is_relative_to(ROOT / "exploration/stellarator_e2e/generated")
+def calculation(runtime_paths, optional_analysis):
+    module = importlib.import_module("optional_magnet_tea.modules.mfe_conductor_grade.conductor_field_capability")
+    impl = importlib.import_module("optional_magnet_tea.handwritten.mfe_conductor_grade.conductor_field_capability_impl")
+    assert Path(module.__file__).resolve().is_relative_to(optional_analysis)
     assert impl.AUTO_IMPLEMENTED is False
     fields = tuple(module.Conductor_Field_CapabilityOutput.model_fields)
     assert set(fields) == {"quantity_factor", "j_wp_effective"}
@@ -119,65 +119,37 @@ def verdicts(row):
 
 
 @pytest.mark.codegen_available
-def test_reference_preserves_audited_wi040_physics_and_verdicts(evaluate):
-    from tests.models.current_mfe_regressions import WI059_REPLAY
-    baseline = json.loads((ROOT / "work/completed/20260914_WI-038_conductor-grade-lever/baseline-before.json").read_text())
-    assert len(baseline["channels"]) == 174
-    assert len(baseline["verdicts"]) == 18
-    row = evaluate({key.removeprefix(P): value for key, value in WI059_REPLAY.items()})
-    assert_historical_native('conductor-grade', row, baseline['channels'], None, WI059_REPLAY)
-    actual=verdicts(row)
-    for key,value in baseline['verdicts'].items():
-        if key != 'tbr_ok':
-            assert actual[key] == value, key
-    assert output(row, "magnet__conductor_grade__quantity_factor") == 1.
+def test_supplied_reference_inventory_matches_independent_oracle(evaluate):
+    import oracle_entry
+    row = evaluate()
+    expected = oracle_entry.evaluate({})
+    for key, value in expected.items():
+        assert row.outputs[key] == pytest.approx(value, rel=1e-9, abs=1e-9), key
+    assert not any('__conductor_grade__' in key for key in row.outputs)
 
 
 @pytest.mark.codegen_available
 @pytest.mark.parametrize("field", [27.5, 30.])
-def test_purchased_envelope_prices_each_volume_once_and_keeps_demand_separate(evaluate, field):
-    # Freeze reference j, family, price anchor, composition, geometry and 20 K state.
+def test_ceiling_changes_no_purchased_inventory_or_operating_demand(evaluate, field):
     before = evaluate()
     after = evaluate({"magnet__winding_pack__B_max": field})
-    q = (field / 24.9) ** .6
-    assert output(after, "magnet__conductor_grade__quantity_factor") == pytest.approx(q)
-    assert output(after, "magnet__conductor_grade__j_wp_effective") == pytest.approx(118.8271604938272 / q)
-    proportional = ["wp_volume__vol_winding_pack", "material_inventory__tape_volume",
-                    "material_inventory__material_cost", "winding_procurement__tape_cost"]
-    proportional += ["material_inventory__" + kind + material
-                     for kind in ("mass_", "cost_") for material in ("copper", "solder", "steel", "helium")]
-    for suffix in proportional:
-        assert output(after, "magnet__" + suffix) == pytest.approx(q * output(before, "magnet__" + suffix), rel=1e-12)
-    for suffix, factor in (("wp_sizing__wp_side", math.sqrt(q)),
-                           ("wp_stress__sigma_wp", 1 / math.sqrt(q)),
-                           ("cond_strain__eps_cond", 1 / math.sqrt(q))):
-        assert output(after, "magnet__" + suffix) == pytest.approx(factor * output(before, "magnet__" + suffix), rel=1e-12)
-    for suffix in ("field_calc__B_axis", "peak_field_calc__B_peak", "winding_pack_cost__cost",
-                   "magnet_cost__capital_cost", "winding_procurement__conductor_length",
-                   "winding_procurement__winding_fabrication_cost", "material_inventory__helium_density"):
-        assert output(after, "magnet__" + suffix) == output(before, "magnet__" + suffix)
-    # Additive account catches q applied twice to inventory or to the full pack cost.
-    procurement = sum(output(after, "magnet__" + suffix) for suffix in (
-        "winding_procurement__tape_cost", "material_inventory__material_cost",
-        "winding_procurement__winding_fabrication_cost"))
-    assert output(after, "magnet__winding_procurement__cost") == pytest.approx(procurement, rel=1e-14)
-    for suffix in ("cryoplant__cryo_elec__p_elec", "cryoplant__aux_cooling__cryo_cost",
-                   "cryoplant__aux_cooling__cost", "total_capital__total_capital"):
-        assert output(after, suffix) > output(before, suffix)
+    # MR-7: the former field-grade selection remains an optional helper above.
+    # The direct evaluator changes only its ceiling verdict.
+    assert before.outputs == after.outputs
     assert verdicts(after)["peak_field_ok"] == "satisfied"
 
 
 @pytest.mark.codegen_available
-def test_crossed_operating_current_and_envelope_verdicts(evaluate):
+def test_crossed_operating_current_and_ceiling_verdicts(evaluate):
     low_capacity = evaluate({"magnet__winding_pack__B_max": 24.})
-    high_current = evaluate({"magnet__coil__I_coil": 17e6})
-    purchased = evaluate({"magnet__coil__I_coil": 17e6, "magnet__winding_pack__B_max": 30.})
+    high_current = evaluate({"magnet__coil__turn_current": 17e6/308.})
+    ceiling = evaluate({"magnet__coil__turn_current": 17e6/308., "magnet__winding_pack__B_max": 30.})
     reference = evaluate()
     assert verdicts(low_capacity)["peak_field_ok"] == "violated"
     assert verdicts(high_current)["peak_field_ok"] == "violated"
-    assert verdicts(purchased)["peak_field_ok"] == "satisfied"
+    assert verdicts(ceiling)["peak_field_ok"] == "satisfied"
     assert output(low_capacity, "magnet__peak_field_calc__B_peak") == output(reference, "magnet__peak_field_calc__B_peak")
     assert output(high_current, "magnet__peak_field_calc__B_peak") > output(reference, "magnet__peak_field_calc__B_peak")
-    assert output(purchased, "magnet__peak_field_calc__B_peak") == output(high_current, "magnet__peak_field_calc__B_peak")
-    assert output(high_current, "magnet__conductor_grade__quantity_factor") == 1.
-    assert output(purchased, "magnet__winding_procurement__cost") > output(high_current, "magnet__winding_procurement__cost")
+    assert output(ceiling, "magnet__peak_field_calc__B_peak") == output(high_current, "magnet__peak_field_calc__B_peak")
+    for row in (low_capacity, high_current, ceiling):
+        assert output(row, "magnet__winding_procurement__cost") == output(reference, "magnet__winding_procurement__cost")

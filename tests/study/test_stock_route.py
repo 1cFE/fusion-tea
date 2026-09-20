@@ -177,7 +177,7 @@ def test_invalid_boolean_proposals_are_deliberate_refusals(key, value):
         route.validate_proposal({key: value})
 
 
-@pytest.mark.parametrize('suffix', ['plasma__R', 'magnet__coil__I_coil', 'magnet__winding_pack__tape_price_per_m'])
+@pytest.mark.parametrize('suffix', ['plasma__R', 'magnet__coil__reference_turns', 'magnet__winding_pack__tape_price_per_m'])
 @pytest.mark.parametrize('value', [True, False])
 def test_boolean_numeric_controls_refuse(suffix, value):
     with pytest.raises(route.RouteError, match='finite numeric'):
@@ -203,9 +203,9 @@ def test_all_six_booleans_survive_bridge_native_and_store(tmp_path, stock_simkit
             if not value:
                 if key == route.P+'heat_transport__equipment_enabled':
                     point.update({route.P+'turbine__matched_cycle_enabled':0., route.P+'heat_rejection__cooling_water_enabled':0., route.P+'heat_transport__equipment_cost_mode':0., route.P+'heat_transport__secondary_energy_mode':0.,
-                                  route.P+'buildings__facilities_enabled':False, route.P+'buildings__facilities_cost_mode':0., route.P+'buildings__facilities_capacity_mode':0.})
+                                  route.P+'buildings__facilities_enabled':False, route.P+'buildings__facilities_cost_mode':0.})
                 if key == route.P+'buildings__facilities_enabled':
-                    point.update({route.P+'buildings__facilities_cost_mode':0., route.P+'buildings__facilities_capacity_mode':0.})
+                    point.update({route.P+'buildings__facilities_cost_mode':0.})
                 if key in {route.P+'fuel_cycle__inventory_enabled', route.P+'fuel_cycle__processing_source_conditions'}:
                     point[route.P+'fuel_cycle__processing_enabled'] = False
             points.append(route.validate_proposal(point))

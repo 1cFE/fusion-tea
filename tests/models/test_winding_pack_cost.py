@@ -15,8 +15,8 @@ INVENTORY = dict(volume_in=40., f_copper=.35, f_solder=.12, f_steel=.36,
                  price_copper=11., price_solder=29.23/.45359237, price_steel=6.,
                  price_helium=88.1604045, helium_pressure=1.5e6,
                  temperature=20., helium_gas_constant=2077.2644)
-PROCUREMENT = dict(n_coils=48., I_coil=15.4e6, f_set=.5, c_coil=43.5,
-                   tape_volume_in=3.6, tape_width=.006, tape_thickness=.000056, tape_price_per_m=20., turn_current=50000., winding_rate_1990=480.,
+PROCUREMENT = dict(n_coils=48., reference_turns=308., f_set=.5, c_coil=43.5,
+                   tape_volume_in=3.6, tape_width=.006, tape_thickness=.000056, tape_price_per_m=20., winding_rate_1990=480.,
                    cost_escalation=334.4/130.7, nonplanar_factor=1.9,
                    material_cost_in=2e6)
 INVENTORY_OUTPUTS = ('mass_copper', 'mass_solder', 'mass_steel', 'mass_helium',
@@ -125,7 +125,7 @@ def test_finite_inputs_cannot_silently_overflow(calculations):
     with pytest.raises(ValueError):
         calculations[0](INVENTORY | {'volume_in': 1e308})
     with pytest.raises(ValueError):
-        calculations[1](PROCUREMENT | {'I_coil': 1e308})
+        calculations[1](PROCUREMENT | {'reference_turns': 1e308})
     with pytest.raises(ValueError):
         calculations[0](INVENTORY | {'temperature': 1e-300, 'helium_gas_constant': 1e-300})
 
@@ -140,10 +140,10 @@ def test_tape_length_and_fabrication_are_separate(calculations):
     expensive = calculations[1](PROCUREMENT | {'tape_price_per_m': 40.})
     assert expensive['tape_cost'] == 2 * before['tape_cost']
     assert expensive['winding_fabrication_cost'] == before['winding_fabrication_cost']
-    lower_current = calculations[1](PROCUREMENT | {'turn_current': 25000.})
-    assert lower_current['conductor_length'] == 2 * before['conductor_length']
-    assert lower_current['winding_fabrication_cost'] == 2 * before['winding_fabrication_cost']
-    assert lower_current['tape_cost'] == before['tape_cost']
+    more_turns = calculations[1](PROCUREMENT | {'reference_turns': 616.})
+    assert more_turns['conductor_length'] == 2 * before['conductor_length']
+    assert more_turns['winding_fabrication_cost'] == 2 * before['winding_fabrication_cost']
+    assert more_turns['tape_cost'] == before['tape_cost']
 
 
 @pytest.mark.parametrize('key', list(PROCUREMENT))
@@ -154,8 +154,8 @@ def test_procurement_refuses_every_nonfinite_input(calculations, key, value):
 
 
 @pytest.mark.parametrize('key,value', [
-    *[(k, v) for k in ('n_coils', 'c_coil', 'turn_current', 'tape_width', 'tape_thickness', 'cost_escalation', 'nonplanar_factor') for v in (0., -1.)],
-    *[(k, -1.) for k in ('I_coil', 'tape_volume_in', 'tape_price_per_m', 'winding_rate_1990', 'material_cost_in')],
+    *[(k, v) for k in ('n_coils', 'reference_turns', 'c_coil', 'tape_width', 'tape_thickness', 'cost_escalation', 'nonplanar_factor') for v in (0., -1.)],
+    *[(k, -1.) for k in ('tape_volume_in', 'tape_price_per_m', 'winding_rate_1990', 'material_cost_in')],
     ('f_set', 0.), ('f_set', -1.), ('f_set', 1.01),
 ])
 def test_procurement_refuses_nonphysical_inputs(calculations, key, value):
@@ -166,8 +166,9 @@ def test_procurement_refuses_nonphysical_inputs(calculations, key, value):
 def test_zero_magnitudes_and_zero_prices_are_allowed_locally(calculations):
     row = calculations[0](INVENTORY | {k: 0. for k in INVENTORY if k.startswith('price_')})
     assert row['material_cost'] == 0.
-    row = calculations[1](PROCUREMENT | {'I_coil': 0., 'tape_volume_in': 0., 'material_cost_in': 0.})
-    assert set(row.values()) == {0.}
+    row = calculations[1](PROCUREMENT | {'winding_rate_1990': 0., 'tape_volume_in': 0., 'material_cost_in': 0.})
+    assert row['cost'] == row['tape_length'] == row['winding_fabrication_cost'] == 0.
+    assert row['conductor_length'] > 0.
     assert calculations[1](PROCUREMENT | {'f_set': 1.})['cost'] > 0.
 
 
@@ -204,14 +205,10 @@ def test_extra_cold_volume_does_not_purchase_winding_material(evaluate):
 @pytest.mark.parametrize('key,value,component,factor', [
     ('magnet__winding_pack__price_copper', 22., 'material_inventory__cost_copper', 2.),
     ('magnet__winding_pack__tape_price_per_m', 40., 'winding_procurement__tape_cost', 2.),
-    ('magnet__coil__turn_current', 25000., 'winding_procurement__winding_fabrication_cost', 2.),
 ])
 def test_accounting_levers_preserve_physics_and_operating_verdicts(evaluate, key, value, component, factor):
-    from tests.models.current_mfe_regressions import WI059_REPLAY
-    # Historical accounting isolation: with inventory enabled, turn current also
-    # drives lead heat and direct electrical power (tested by the inventory suite).
-    replay = {name.removeprefix(P): setting for name, setting in WI059_REPLAY.items()}
-    before, after = evaluate(replay), evaluate(replay | {key: value})
+    # Procurement prices change no supplied hardware or operating state.
+    before, after = evaluate(), evaluate({key: value})
     assert output(after, 'magnet__' + component) == pytest.approx(factor * output(before, 'magnet__' + component))
     unchanged = ['material_inventory__mass_' + material for material in ('copper', 'solder', 'steel', 'helium')]
     if key.endswith('price_copper'):
@@ -227,7 +224,7 @@ def test_accounting_levers_preserve_physics_and_operating_verdicts(evaluate, key
     assert before.responses == after.responses
     # Explicit physical owners/calculations, not all channels with an economic name filtered out.
     physical = ('plasma__', 'magnet__field_calc__', 'magnet__peak_field_calc__',
-                'magnet__wp_sizing__', 'magnet__wp_stress__', 'magnet__wp_volume__',
+                'magnet__winding_state__', 'magnet__wp_stress__', 'magnet__wp_volume__',
                 'cryoplant__', 'primary_loop__', 'operating_heat__')
     keys = [k for k in before.outputs if k.startswith(tuple(P + prefix for prefix in physical))]
     assert len(keys) > 20

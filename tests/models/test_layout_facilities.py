@@ -24,7 +24,9 @@ def inputs():
     # Direct-helper scenario uses a0.1m HX shell wall. Native cases below use
     # the actual modeled0.2m default through captured entry models.
     m=json.loads((ROOT/'work/active/WI-068_layout-based-facilities/evidence/facility-contract.json').read_text())
-    return m['parameters']|dict(n_mod=1,major_radius=12.7,minor_outer_radius=3.55,blanket_volume=1013.4060451016529,calendar_q=18/4.5239260339489915,calendar_fluence=18,calendar_years=30,calendar_outage=7/12,calendar_unplanned=0,calendar_mode=0,calendar_life=4.5239260339489915,calendar_count=5,calendar_availability=.9027777777777779,cooling_circuits=14,cooling_helium_count=28,cooling_salt_count=28,cooling_bundle_count=14,cooling_machine_life=10,cooling_bundle_life=15,hx_shell_bore=3.2,hx_shell_wall=.1,hx_shell_length=13,hx_tube_length=11.6)
+    selected=json.loads((ROOT/'work/active/WI-076_supplied-facility-design-evaluation/evidence/selected-design-migration.json').read_text())['selected_inputs']
+    parameters={k:v for k,v in m['parameters'].items() if k not in ('facilities_capacity_mode','occupancy_aspect_ratio')}
+    return parameters|selected|dict(n_mod=1,major_radius=12.7,minor_outer_radius=3.55,blanket_volume=1013.4060451016529,calendar_q=18/4.5239260339489915,calendar_fluence=18,calendar_years=30,calendar_outage=7/12,calendar_unplanned=0,calendar_mode=0,calendar_life=4.5239260339489915,calendar_count=5,calendar_availability=.9027777777777779,cooling_circuits=14,cooling_helium_count=28,cooling_salt_count=28,cooling_bundle_count=14,cooling_machine_life=10,cooling_bundle_life=15,hx_shell_bore=3.2,hx_shell_wall=.1,hx_shell_length=13,hx_tube_length=11.6)
 
 def test_baseline_persistent_resources(inputs):
     d=load('facility_layout').diagnostics(inputs);o=d['outputs'];assert o['packages_per_sector']==36;assert o['outage_required_days']==180
@@ -42,7 +44,7 @@ def test_initial_without_replacements_retains_late_stock(inputs):
     assert [o['cooling_clean_'+k+'_required'] for k in ('helium','salt','bundle')]==[29,29,14]
     assert o['calendar_event_count']==0;assert o['cooling_last_release_year']==0
 
-@pytest.mark.parametrize('changes,key', [({'sector_service_teams':1},'outage_margin_days'),({'component_remove_days':.75,'component_install_days':.75},'outage_margin_days'),({'component_hold_days':365.25*6,'facilities_capacity_mode':0},'capacity_margin_units'),({'cooling_hold_days':365.25*16,'facilities_capacity_mode':0},'capacity_margin_units'),({'cooling_receipt_lead_days':1},'readiness_margin_days'),({'cooling_aisle_width':5},'route_margin_m'),({'cooling_cross_width':13},'route_margin_m')])
+@pytest.mark.parametrize('changes,key', [({'sector_service_teams':1},'outage_margin_days'),({'component_remove_days':.75,'component_install_days':.75},'outage_margin_days'),({'component_hold_days':365.25*6},'capacity_margin_units'),({'cooling_hold_days':365.25*16},'capacity_margin_units'),({'cooling_receipt_lead_days':1},'readiness_margin_days'),({'cooling_aisle_width':5},'route_margin_m'),({'cooling_cross_width':13},'route_margin_m')])
 def test_counterexamples_fail_native_operands(inputs,changes,key):
     assert load('facility_layout').calculate(inputs|changes)[key]<0
 
@@ -103,7 +105,7 @@ def test_civil_overflow_cannot_emit_nonfinite_cost():
         load('facility_civil_cost').calculate(x)
 
 
-@pytest.mark.parametrize("changes", [dict(facilities_enabled=False,facilities_cost_mode=1),dict(facilities_enabled=False,facilities_cost_mode=0,facilities_capacity_mode=2)])
+@pytest.mark.parametrize("changes", [dict(facilities_enabled=False,facilities_cost_mode=1),dict(facilities_enabled=False,facilities_cost_mode=.5)])
 def test_dormant_rejects_invalid_selectors_before_unused_geometry(inputs,changes):
     with pytest.raises(ValueError):load("facility_layout").calculate(inputs|changes|dict(major_radius=float("nan")))
 
@@ -121,10 +123,12 @@ def test_all_machine_envelopes_reach_routes(inputs,kind):
     assert d['geometry']['route_checks'][kind+'_aisle'] == -4
 
 @pytest.mark.parametrize('kind',['helium','salt'])
-def test_both_machine_lengths_drive_hall_and_service(inputs,kind):
+def test_machine_lengths_change_requirements_without_resizing_hall(inputs,kind):
     f=load('facility_layout');base=f.diagnostics(inputs);d=f.diagnostics(inputs|{kind+'_package_length':10})
-    assert d['outputs']['cooling_hall_clear_width']-base['outputs']['cooling_hall_clear_width']==pytest.approx(16)
-    assert d['geometry']['cooling_service_depth']-base['geometry']['cooling_service_depth']==pytest.approx(4)
+    assert d['outputs']['cooling_hall_clear_width']==base['outputs']['cooling_hall_clear_width']
+    assert d['outputs']['cooling_hall_required_width'] > base['outputs']['cooling_hall_required_width']
+    assert d['outputs']['geometry_fit_margin_m'] < 0
+    assert d['outputs']['cooling_hall_sub_concrete']==base['outputs']['cooling_hall_sub_concrete']
 
 
 def test_initial_carrier_must_return_before_commissioning(inputs):
@@ -139,7 +143,7 @@ def test_initial_carrier_must_return_before_commissioning(inputs):
 @pytest.mark.parametrize("zone",["clean","dirty"])
 def test_cooling_position_offers_are_integer_counts(inputs,kind,zone):
     with pytest.raises(ValueError,match="integer"):
-        load("facility_layout").calculate(inputs|{"facilities_capacity_mode":0,"cooling_"+zone+"_"+kind+"_positions":.5})
+        load("facility_layout").calculate(inputs|{"cooling_"+zone+"_"+kind+"_positions":.5})
 
 
 @pytest.mark.parametrize("aisle",[5,8])

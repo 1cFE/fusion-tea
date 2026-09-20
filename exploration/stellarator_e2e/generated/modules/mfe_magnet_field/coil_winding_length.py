@@ -61,9 +61,9 @@ Inputs:
 Outputs:
     - c_coil: c_coil result
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:142
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:154
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:142
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:154
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_magnet_field/coil_winding_length_impl.py
@@ -150,9 +150,9 @@ Inputs:
 Outputs:
     - c_coil: c_coil result
 
-SysML Source: root-0/analyses/mfe_magnet_field.sysml:142
+SysML Source: root-0/analyses/mfe_magnet_field.sysml:154
 
-    SysML Source: root-0/analyses/mfe_magnet_field.sysml:142
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:154
 
     Calculation Specification:
         c_coil = c_coil_ref * (a_coil / a_coil_ref)
