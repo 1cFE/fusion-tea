@@ -19,7 +19,7 @@ The motivation: how much useful feedback can we get before we start building? Ca
 This post has five parts.
 
 1. Why SysMLv2? 
-* We use SysMLv2 as the language and specification for representing the system. While there may be some residual benefits from this (like bootstrapping your systems engineering when you do build hardware), the main motivation is actually what makes it harder to work with: strict semantics. I will argue that strong patterns and established semantics are critical for fighting the natural entropy (i.e. slop) of AI. 
+* We use SysMLv2 as the language and specification for representing the system. While there may be some residual benefits from this (like bootstrapping your systems engineering when you do build hardware), the main motivation is actually what makes it harder to work with: strict semantics. I will argue that strong patterns and established semantics are critical for fighting the natural entropy (i.e. slop) of AI. ag
 
 * As discussed in the prior post, SysMLv2 supports very convenient patterns around composability, which can be leveraged trade studies. E.g. vary categorical decisions (Material A v B, Component C v D) in addition to numerical parameters. 
 

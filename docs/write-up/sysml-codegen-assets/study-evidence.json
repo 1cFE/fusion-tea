@@ -1,0 +1,124 @@
+{
+  "reading": "Agent-authored presentation extraction from retained study records; no model execution or independent physical qualification.",
+  "feasibility_map": {
+    "study_id": "20260917-pre-reveal-feasible-neighborhood",
+    "package": {
+      "path": "exploration/stellarator_e2e/pkg/stellarator_tea",
+      "package_name": "stellarator_tea",
+      "repo_commit": "d53d6ec5748442833ff44bc179bb988bce726486",
+      "git_clean": true
+    },
+    "integration_candidate_pin": "6e427038e8515501e9c42c39823f85e3b0bcbd9f54f830b2779a792851f02551",
+    "rows": 256,
+    "counts": {
+      "fail": 210,
+      "invalid-account": 2,
+      "pass": 44
+    },
+    "passing_lcoe_range_dollars_MWh": [
+      149.7651481181168,
+      152.35650863683938
+    ],
+    "fixed_explicit_inputs": {
+      "stellarator_09__stellaris__heat_transport__n_loops": 18.0,
+      "stellarator_09__stellaris__magnet__casing__interior_y": 0.65,
+      "stellarator_09__stellaris__magnet__coil__coil_t": 0.65,
+      "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01,
+      "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+      "stellarator_09__stellaris__plasma__T_i0": 14.035595515748351,
+      "stellarator_09__stellaris__plasma__a": 1.4908855301929713,
+      "stellarator_09__stellaris__plasma__alpha_T": 1.2,
+      "stellarator_09__stellaris__plasma__alpha_n": 0.35,
+      "stellarator_09__stellaris__plasma__n_e0": 4.8924678194274265e+20
+    },
+    "other_defaults_source": "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/preparation/resolved-defaults.json",
+    "interpretation": "Historical 20-screen snapshot. Passing means all then-implemented screens and valid power account, not a qualified plant or complete cost estimate. Show individual samples; no interpolation or global optimum claim."
+  },
+  "magnet_comparison": {
+    "study_id": "20260915-joint-magnet-sizing",
+    "package": {
+      "path": "exploration/stellarator_e2e/pkg/stellarator_tea",
+      "package_name": "stellarator_tea",
+      "repo_commit": "a8589d6b5aebbb42c525f7bab9a036a474fc8e6b",
+      "git_clean": true
+    },
+    "integration_candidate_pin": "0a1c038663c848e11cff933215a8d15eb96b6650319003b9cf092ecbbc40e52c",
+    "selected_rows": 3,
+    "unique_native_cases_in_study": 347,
+    "selected_explicit_inputs": {
+      "reference": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__cabling_factor": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__degradation_factor": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__material_factor": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__orientation_factor": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__sharing_factor": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 0.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "reference-sized": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.4,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.3,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__cabling_factor": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__degradation_factor": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__material_factor": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__orientation_factor": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__sharing_factor": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      },
+      "reference-accommodated": {
+        "stellarator_09__stellaris__magnet__casing__assembly_clearance": 0.002,
+        "stellarator_09__stellaris__magnet__casing__interior_y": 0.6,
+        "stellarator_09__stellaris__magnet__casing__wall_thickness": 0.025,
+        "stellarator_09__stellaris__magnet__coil__I_coil": 15400000.0,
+        "stellarator_09__stellaris__magnet__coil__coil_t": 0.6,
+        "stellarator_09__stellaris__magnet__winding_pack__B_max": 24.9,
+        "stellarator_09__stellaris__magnet__winding_pack__cabling_factor": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__degradation_factor": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__fit_aspect_ratio": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__ground_insulation": 0.003,
+        "stellarator_09__stellaris__magnet__winding_pack__internal_build_y": 0.025,
+        "stellarator_09__stellaris__magnet__winding_pack__inventory_multiplier": 1.01,
+        "stellarator_09__stellaris__magnet__winding_pack__j_wp": 118.8271604938272,
+        "stellarator_09__stellaris__magnet__winding_pack__material_factor": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__orientation_factor": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__sharing_factor": 1.0,
+        "stellarator_09__stellaris__magnet__winding_pack__sizing_mode": 1.0,
+        "stellarator_09__stellaris__plasma__R": 12.7,
+        "stellarator_09__stellaris__plasma__a": 1.3
+      }
+    },
+    "interpretation": "Three matched reference examples from one historical executable. First change enables current sizing with 1% physical inventory reserve; second enlarges both independent allocations. All three fail the full plant screen."
+  },
+  "source_sha256": {
+    "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/native-cases.json": "68b50b22d00cf25f3e4a9ace566f5c293808d13a9a7c6b1f924ce76354580f06",
+    "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/analysis.json": "1e81225522981ce5dd42a794d2ebfcf6457645325373aac31d5bb53cf30dc4ba",
+    "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/results/map-data.csv": "41ba773c578fe81147e8f4f59d131b599f8c3660911582d0391d3f71ea1d056a",
+    "exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/snapshot.json": "faaae353f5d5f7cb91c39ae0d87d65714fffae2c34f93d2e4e846c07031a3c13",
+    "exploration/stellarator_e2e/studies/20260915-joint-magnet-sizing/results/native-cases.json": "81a962e440ac4322076a36effd7028e24dbc2c7f19107f0dc983b48829af8862",
+    "exploration/stellarator_e2e/studies/20260915-joint-magnet-sizing/results/analysis.json": "5ffc355d03a5124b90f82619e3b170dfdc902c7c4932d7be050cf9f029a836c7",
+    "exploration/stellarator_e2e/studies/20260915-joint-magnet-sizing/snapshot.json": "330e0ac2411ce50ff59bd109bcce8c18a5c3d97141cb013a7b870c1689990154"
+  }
+}

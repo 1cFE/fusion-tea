@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="838.361109pt" height="343.404206pt" viewBox="0 0 838.361109 343.404206" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-19T10:11:18.538018</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 343.404206 
+L 838.361109 343.404206 
+L 838.361109 0 
+L 0 0 
+z
+" style="fill: #f7f9fc"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 38.4948 212.914286 
+L 243.1692 212.914286 
+Q 257.2308 212.914286 257.2308 207.425726 
+L 257.2308 106.192286 
+Q 257.2308 100.703726 243.1692 100.703726 
+L 38.4948 100.703726 
+Q 24.4332 100.703726 24.4332 106.192286 
+L 24.4332 207.425726 
+Q 24.4332 212.914286 38.4948 212.914286 
+z
+" clip-path="url(#p69bd44912c)" style="fill: #ffffff; stroke: #2463a5; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 300.1968 212.914286 
+L 504.8712 212.914286 
+Q 518.9328 212.914286 518.9328 207.425726 
+L 518.9328 106.192286 
+Q 518.9328 100.703726 504.8712 100.703726 
+L 300.1968 100.703726 
+Q 286.1352 100.703726 286.1352 106.192286 
+L 286.1352 207.425726 
+Q 286.1352 212.914286 300.1968 212.914286 
+z
+" clip-path="url(#p69bd44912c)" style="fill: #ffffff; stroke: #2463a5; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 561.8988 212.914286 
+L 766.5732 212.914286 
+Q 780.6348 212.914286 780.6348 207.425726 
+L 780.6348 106.192286 
+Q 780.6348 100.703726 766.5732 100.703726 
+L 561.8988 100.703726 
+Q 547.8372 100.703726 547.8372 106.192286 
+L 547.8372 207.425726 
+Q 547.8372 212.914286 561.8988 212.914286 
+z
+" clip-path="url(#p69bd44912c)" style="fill: #ffffff; stroke: #087e83; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 256.102962 156.809006 
+Q 270.89945 156.809006 283.907083 156.809006 
+" clip-path="url(#p69bd44912c)" style="fill: none; stroke: #52677a; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 277.107083 153.409006 
+L 283.907083 156.809006 
+L 277.107083 160.209006 
+z
+" clip-path="url(#p69bd44912c)" style="fill: #52677a; stroke: #52677a; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 517.804962 156.809006 
+Q 532.60145 156.809006 545.609083 156.809006 
+" clip-path="url(#p69bd44912c)" style="fill: none; stroke: #52677a; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 538.809083 153.409006 
+L 545.609083 156.809006 
+L 538.809083 160.209006 
+z
+" clip-path="url(#p69bd44912c)" style="fill: #52677a; stroke: #52677a; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 23px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #152b40" x="27.558" y="33.316406" transform="rotate(-0 27.558 33.316406)">One model, two kinds of iteration</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #52677a" x="27.558" y="59.234606" transform="rotate(-0 27.558 59.234606)">Stellarator component changes regenerate the program. Parameter studies reuse it.</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #2463a5" x="54.9" y="128.571975" transform="rotate(-0 54.9 128.571975)">AUTHOR THE PLANT</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #152b40" transform="translate(54.9 146.107331)">SysML parts and connections</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #152b40" transform="translate(54.9 162.73605)">Magnet, blanket, plasma, cooling</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #152b40" transform="translate(54.9 179.364769)">Equations + engineering checks</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #2463a5" x="316.602" y="128.571975" transform="rotate(-0 316.602 128.571975)">GENERATE THE PROGRAM</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #152b40" transform="translate(316.602 146.107331)">Resolve calculation inputs</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #152b40" transform="translate(316.602 162.73605)">Translate equations to Python</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #152b40" transform="translate(316.602 179.364769)">Write the TEAx connections</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #087e83" x="578.304" y="128.571975" transform="rotate(-0 578.304 128.571975)">EVALUATE A CANDIDATE</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #152b40" transform="translate(578.304 146.107331)">Set radius and ampere-turns</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #152b40" transform="translate(578.304 162.73605)">Calculate outputs and cost</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #152b40" transform="translate(578.304 179.364769)">Record constraint results</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #2463a5" x="35.37" y="252.858806" transform="rotate(-0 35.37 252.858806)">Change the model</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; fill: #52677a" transform="translate(35.37 284.466009)">Example: replace the blanket’s held breeding value</text>
+    <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; fill: #52677a" transform="translate(35.37 297.343494)">with a transport-response calculation.</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #087e83" x="558.774" y="252.858806" transform="rotate(-0 558.774 252.858806)">Change the parameters</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; fill: #52677a" transform="translate(558.774 284.466009)">Example: sweep radius and coil ampere-turns</text>
+    <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; fill: #52677a" transform="translate(558.774 297.343494)">using the same generated package.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p69bd44912c">
+   <rect x="15.84" y="22.644206" width="781.2" height="304.92"/>
+  </clipPath>
+ </defs>
+</svg>
