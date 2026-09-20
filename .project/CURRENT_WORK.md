@@ -1,3 +1,9 @@
+# Modeling-intent enforcement and repair branch — 2026-09-20
+
+[OWNER] Requested enforcement of design-choice preservation across goal and modeling agents, followed by a prompt to repair existing violations. [AGENT] MR-7 in `modeling_project/REQUIREMENTS.md` now supplies the authoritative requirement; CLAUDE.md, the modeling process, run-goal and its templates carry the review and acceptance obligations. [Enforcement work](active/modeling-intent-enforcement/spec.md), [repair prompt](active/modeling-intent-enforcement/repair-goal-prompt.md). No physics model or empirical range has been changed by this enforcement task.
+
+This branch, `fix/modeling-intent-after-reveal`, starts from pre-reveal checkpoint `86712a0d`. The [results note](active/aries-comparison-preparation/current-readiness/revealed-results/post-reveal-repair-results-note.md) records the actual reveal and preserved experiment. Earlier sealed/readiness statuses below describe historical checkpoints; they do not establish that this repair work is unexposed. Model repair has not started.
+
 # Current-model comparison readiness — r3 published; goal closed — 2026-09-20
 
 [OWNER] Exact candidate `34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19` adopted and published as r3; native goal formally closed. All limitations and four legitimate engineering failures carry forward. r2 remains byte-identical. ARIES stays sealed pending separate reveal authorization. [Publication and operating instructions](active/aries-comparison-preparation/replacement-r3/publication.md), [decision report](../work/orchestration/goals/current-model-comparison-readiness/answer.md). Technical evidence remains: 3585 regression passes, zero failures/errors, 14 skips, two historical incompatibilities; 190 actual-archive tests pass; all 23 depth targets met. No merge or push. Pre-existing status records below are preserved.

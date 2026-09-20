@@ -50,6 +50,8 @@ Follow the runbook’s task parallelism and freshness rules. In Codex, read `.ag
 
 ### Model changes
 
+Read `modeling_project/REQUIREMENTS.md`, including MR-7, before grounding or dispatching a model-changing goal. Follow the MR-7 checks in `GOAL_RUNBOOK.md` and `MODELING_PROCESS.md`; carry the requirement and intended design choices into worker/reviewer briefs. Automatic sizing and changes to which quantities are chosen or calculated require explicit design reasoning and applicable review, even when pursuing an already approved depth target.
+
 For a single work item, follow `modeling_project/MODELING_PROCESS.md`. Read only the stage instructions needed for the current task: `.claude/commands/<stage>.md` in Claude Code or `.agents/skills/<stage>/SKILL.md` in Codex. Any stage can be brief or skipped when its responsibility is already satisfied or does not apply; cite that evidence or reason in the native record. Keep native PM metadata and applicable executable validation, using the project’s prescribed launcher (`.codex-test/run` in this test worktree; otherwise `uv run`). Review triggers are in the runbook.
 
 The main agent may execute directly or delegate bounded work. For eligible parallel tasks, use fresh workers with self-contained briefs: Claude Code `Agent` with `subagent_type: "general-purpose"`; Codex `spawn_agent` with `fork_turns: "none"`. Supply the exact task, entry files/sections, original evidence, shared interfaces, file ownership, and expected return. Workers preserve each other’s edits. The round agent owns the trail and integrates sequentially after workers return. Deposit briefs under `evidence/`; do not load the whole goal or all stages into each worker.

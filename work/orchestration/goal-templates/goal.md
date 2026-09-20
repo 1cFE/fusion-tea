@@ -26,6 +26,7 @@ What a comparison must preserve for results from different rounds to mean the sa
 
 - **Package:** the pin, the package identity, whatever must not move under the comparison.
 - **Comparison:** what "better" means, and what would change it.
+- **Modeling requirements:** applicable entries from `modeling_project/REQUIREMENTS.md`. For MR-7, identify the design choices this goal preserves or investigates and any explicitly authorized design-selection policy; do not inherit a variable's role merely because the current implementation uses it.
 
 ## Grounding evidence
 

@@ -14,6 +14,8 @@ Optional stages: `/research`, `/spec-model`, `/design-model`, `/review-model`, `
 
 ## Process Selection
 
+For changes to design variables, equipment/capacity bindings, sizing, operating-point closure or demand-based costing, apply [REQUIREMENTS.md MR-7](REQUIREMENTS.md#mr-7-preserve-design-choices-separate-evaluation-from-design-selection) before selecting a process. This applies to direct edits and inherited patterns as well as new work. Stage compression does not waive its evidence or review obligations.
+
 Before editing, record the intended behavior, affected definitions and consumers, source basis, and selected checks/reviews in the existing work record. A few sentences suffice. Search references and inspect inherited definitions and bindings; a local edit can affect other instances. Unknown impact calls for a bounded dependency investigation before choosing the final scope.
 
 | Evidence about the change | Required response |
@@ -28,6 +30,8 @@ Before editing, record the intended behavior, affected definitions and consumers
 Combine related review questions in one independent session when the evidence overlaps. A completed source/design review does not automatically require a second completion audit. Complex work needs positive independent assessment of its consequential design choices and integrated behavior; one continuing reviewer can cover both. Report unverified behavior explicitly instead of declaring completion on a missing check.
 
 ## Artifact Contracts
+
+For MR-7 work, the spec identifies the design choices the consumer must retain. The design records the affected variable roles, physical relationships, selection policies, authority and actual binding paths. The implementation preserves those choices through generated/native execution and downstream costs. Review checks those bindings rather than inferring compliance from names such as `required`, `selected` or `sizing_mode`. Acceptance includes MR-7's applicable insufficient/sufficient design tests and explicit validity limits. Carry the MR-7 evidence into the handoff; do not call a repair complete on depth scores or baseline reproduction alone. Prospective depth assessments also follow `.project/active/demo-depth-rubric/application-policy.md`; historical rubric bytes and grades remain unchanged.
 
 Preserve native PM registration and required `spec.md` frontmatter for tracked items. Keep the intended outcome, supported use, source authority, acceptance conditions, decisions, and verification results in that record or linked existing evidence. `/spec-model` captures missing requirements; `/design-model` resolves design uncertainty; `/plan-model` supplies a checklist when sequencing or interruption recovery needs it. A short change can use one record. Larger work can use separate `design.md` and `plan.md` documents. Cite decisions instead of restating them.
 

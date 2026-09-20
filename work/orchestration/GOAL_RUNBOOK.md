@@ -81,6 +81,8 @@ Reuse verified results when the revision, scope, and environment remain valid; c
 
 ## Grounding a goal
 
+For a model-changing goal, read `modeling_project/REQUIREMENTS.md` and carry applicable requirements into its invariants. MR-7 governs design-variable assignment, automatic equipment selection and demand-versus-installed-capacity meaning. Grounding must identify the choices the goal is intended to preserve or investigate, not assume the current input/output split is authoritative. An existing grounded goal needs a dated amendment when a newly surfaced requirement changes its strategy; do not rewrite its historical contract.
+
 **Do:** sit with the operator and write `goal.md` from the template. Everything in it is meant to be stable for the life of the goal, so take the time.
 
 **Write:** the question, in one sentence, as a question. The consumer — who is asking and what they will do with the answer. Answered when — the condition that ends the goal, concrete enough that two people would agree it had been met. The invariants a comparison must preserve, so a later round cannot drift the meaning of "better". The grounding evidence — repository paths for what is already known. The limits (see § Limits). The reserved gates the owner keeps. The close rule, which is owner-held.
@@ -94,6 +96,8 @@ Reuse verified results when the revision, scope, and environment remain valid; c
 Revisions to a grounded goal are rare and are written as dated amendments, never by editing what is there.
 
 ## Opening and closing a round
+
+Before a strategy changes a design quantity's role, record its MR-7 justification and affected binding/consumer paths. Treat an automatic sizing policy or removal of a design choice as a modeling/interface decision, not routine arithmetic. Existing authorized choices can proceed; a premise conflict or an unresolved material owner choice stops only dependent work. Depth-target attainment and numerical regression success cannot substitute for the MR-7 assessment. For prospective depth work, also read `.project/active/demo-depth-rubric/application-policy.md`.
 
 **Do:** open a round by writing one strategy revision. Then run tasks under it until the round closes.
 
@@ -131,6 +135,8 @@ Scope is a reviewable record, not a technical sandbox. The coordinator checks sc
 **2. Write the start line, before the first native side effect.** `### T-00N start — YYYY-MM-DD`, one line: the task, the native target, and the artifact you expect. This is written *ahead* of the work so that an interruption leaves a trace of what was in flight.
 
 **3. Do the work through the native workflow.** Routine native stage changes stay in native artifacts and create no goal entries. A spec being written, a plan phase being checked off, a validation running — none of that is a goal event.
+
+For tasks affecting MR-7, include the requirement and intended design choices in every delegated modeling/review brief. At return, inspect the design-role record and applicable behavior-test evidence. Record compliance as compliant, violated or unverified; a modeled component, passing baseline or rubric score alone cannot establish it. Required independent design review covers the actual variable assignment and downstream bindings before dependent implementation; its integration recheck covers the executed behavior.
 
 **4. Write the return.** `### T-00N return — YYYY-MM-DD` with the outcome, one of six:
 

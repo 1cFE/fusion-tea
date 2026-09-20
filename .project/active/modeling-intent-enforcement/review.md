@@ -1,0 +1,7 @@
+# Independent instruction review — September 20, 2026
+
+[AGENT] Reviewer `/root/review_modeling_enforcement`, a fresh non-author context with a bounded read-only brief. Verdict: PASS for instruction coherence and enforcement coverage; no load-bearing fixes identified. This is not certification of current model compliance.
+
+The reviewer inspected MR-7, its goal/model entry paths, the prospective rubric policy and repair prompt. Findings: actual binding inspection and native insufficient/sufficient supplied-design tests prevent relabeling automatic sizing as remediation; discovery covers goal grounding, strategy, delegated briefs and returned evidence; calculation direction is scoped without requiring a universal solver; historical rubric and experiment records are preserved; owner intent and agent interpretation are distinguished. The prompt requires all scoped confirmed violations to be repaired and keeps deferred/unverified violations open.
+
+No model, holdout source or unrelated writeup was read or changed by the reviewer. The coordinator subsequently verified local Markdown link targets, unchanged model/rubric files, and the unchanged published r3 archive SHA256 `34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19`. No model tests were run for these instruction-only changes. The prescribed behavioral tests are obligations for the repair goal, not completed evidence here.
