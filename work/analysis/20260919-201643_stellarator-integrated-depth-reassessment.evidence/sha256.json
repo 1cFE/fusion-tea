@@ -1,0 +1,15 @@
+{
+  "heating-controls.json": "36f7cd7e9c66d58ba9e6af88acaf56670919d17ca1619e6013fda2c93b787a5c",
+  "consumer-tests.log": "c2b2d8c105b435d3071e9bec57b368441f5775125cd1975233d484ce257b7428",
+  "intake-status.txt": "635df9d61658d606cd081abfa230ba4b197cd94e09760a8ca0c2e16a3dab151b",
+  "cooling-facilities-checks.json": "c32e05a56b3130628ef00c472257917e7c7b3b8c98685189bfda47ca0f35d7d4",
+  "failure-triage-radius.md": "26530bd97390eeed1ec8aeadea9102b02414ba2412502c80b2cdb17a77e73998",
+  "failure-triage-cooling.md": "46c5f5a02c4b02e0c64e0d652ca91bd778786f9ef3a04bdd37e02a862fe8c286",
+  "package_identity.json": "ade544b52d050893679ef539c0c513d5fd4b29af9ca9d5f6d107f8277f07fb52",
+  "radius-channel-diff.json": "d9ca1d06619fc96574fcdbc2b7b4634ed8b2cf21cb223eaa32c067a1ecbda7d1",
+  "r2-comparison.json": "e48957804dafdeb135c4d2676f6a1bab5f44db24740cb11c17e7ec63684202e8",
+  "radius-native.log": "d0327b8977a1ac175ce7109c7a2eb57455bf7c6a2fe6fcedd966163aa556db18",
+  "model-tests.log": "ccdba9e8769e25a15a721684fcb85dc40dac0792c1eaba6e8377f9d0a149fc6d",
+  "baseline_result.json": "cdd4f90d9aedfc901aaf1ff428f76efec0d2d21ea38e5d821581fc1d5b8470eb",
+  "identity.json": "152175380eefe2996fd924ae0db527bc1d868cd4624651f8031496d27af5fada"
+}

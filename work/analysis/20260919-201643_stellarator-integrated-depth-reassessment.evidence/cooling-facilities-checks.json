@@ -1,0 +1,12 @@
+{
+  "scoped_checks": {
+    "cooling_cases": 34,
+    "seven_child_rollup_mismatches": [],
+    "facilities_cases": 48,
+    "current_exact_subsystem_matches": 622
+  },
+  "source_assurance": "Reused admitted original-source independent review records, including source-temperature, civil labor/material, procurement, installation and shipping boundaries. No fresh PDF/image verification claimed.",
+  "custody_assurance": "Read cooling final addendum (124 committed artifact checks), facilities final addendum (213 files), both preservation receipts and latest maturity final review (565 artifact checks). Did not rehash all snapshots independently; parent identity checks are separate.",
+  "current_applicability": "Current integration executable b032da4a; latest scientific commit fe720553. 622 shared relevant outputs exactly match the completed facilities default case; earlier dollar totals retain historical pins.",
+  "grades": "R7.P3/S3; R8.P3/S2; R9.P NA/S3; R11.P3/S2"
+}

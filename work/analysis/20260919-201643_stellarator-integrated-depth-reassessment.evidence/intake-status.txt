@@ -1,0 +1,46 @@
+ M .project/CURRENT_WORK.md
+ M .project/active/aries-comparison-preparation/draft.md
+ M .project/execution/ENTRIES.md
+ M .project/feedback/ENTRIES.md
+M  docs/write-up/fusion-tea-exploratory-modeling.md
+AM docs/write-up/sysml-codegen-model-evaluation.md
+ M knowledge/holdout/aries-cs/PROTOCOL.md
+?? .project/TRIAGE_MEMORIES.md
+?? .project/active/aries-comparison-preparation/draft-review-20260917.md
+?? .project/active/aries-comparison-preparation/execution-prompt.md
+?? .project/mental-alignment-v2/runs/20260917-153751_aries-readiness.md
+?? .project/mental-alignment-v2/runs/20260917-153751_aries-readiness.review-2.md
+?? .project/mental-alignment-v2/runs/20260917-153751_aries-readiness.review-3.md
+?? .project/mental-alignment-v2/runs/20260917-153751_aries-readiness.review-4.md
+?? .project/mental-alignment-v2/runs/20260917-153751_aries-readiness.review-5.md
+?? .project/mental-alignment-v2/runs/20260917-153751_aries-readiness.review-6.md
+?? .project/mental-alignment-v2/runs/20260917-153751_aries-readiness.review.md
+?? .project/mental-alignment-v2/runs/20260918-020945_aries-readiness-refreshed.md
+?? .project/mental-alignment-v2/runs/20260918-020945_aries-readiness-refreshed.review-2.md
+?? .project/mental-alignment-v2/runs/20260918-020945_aries-readiness-refreshed.review.md
+?? .project/mental-alignment-v2/runs/20260918-020945_aries-readiness-refreshed_resumed.html
+?? .project/mental-alignment-v2/runs/20260918-020945_aries-readiness-refreshed_resumed.review-2.md
+?? .project/mental-alignment-v2/runs/20260918-020945_aries-readiness-refreshed_resumed.review-3.md
+?? .project/mental-alignment-v2/runs/20260918-020945_aries-readiness-refreshed_resumed.review.md
+?? docs/write-up/sysml-codegen-assets/
+?? exploration/stellarator_e2e/studies/20260918-layout-based-facilities/results/entry-model-inspection/
+?? exploration/stellarator_e2e/studies/20260919-cost-estimate-maturity-and-uncertainty/results/entry-model-inspection/
+?? exploration/stellarator_e2e/studies/20260919-cost-estimate-maturity-and-uncertainty/results/study/run-1/pkg_link/
+?? exploration/stellarator_e2e/studies/20260919-throughput-based-fuel-processing-costs/results/entry-model-inspection/
+?? exploration/stellarator_e2e/studies/20260919-throughput-based-fuel-processing-costs/results/study/retry-1/pkg_link/
+?? work/analysis/20260918-192403_stellarator-depth-reassessment.cells.json
+?? work/analysis/20260918-192403_stellarator-depth-reassessment.md
+?? work/narratives/20260917-234914Z-pre-reveal-feasible-neighborhood.md
+?? work/orchestration/goals/computed-tritium-breeding/evidence/round2/integration/_work/pkg_link/
+?? work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/frozen-reproduction/native/
+?? work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/frozen-reproduction/package/
+?? work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/frozen-reproduction/tools/
+?? work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/integration/_backup/
+?? work/orchestration/goals/cost-estimate-maturity-and-uncertainty/evidence/integration/_work/
+?? work/orchestration/goals/fuel-inventory-and-startup/evidence/integration/_backup/
+?? work/orchestration/goals/fuel-inventory-and-startup/evidence/integration/_work/
+?? work/orchestration/goals/layout-based-facilities/evidence/entering-replay/pkg_link/
+?? work/orchestration/goals/layout-based-facilities/evidence/integration/_backup/
+?? work/orchestration/goals/layout-based-facilities/evidence/integration/_work/pkg_link/
+?? work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/round2/integration/_backup/
+?? work/orchestration/goals/throughput-based-fuel-processing-costs/evidence/round2/integration/_work/
