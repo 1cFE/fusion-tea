@@ -1,0 +1,14 @@
+{
+  "attempt_directory": "selected-forward-independent.json.attempt-fohe6id4",
+  "inputs": [
+    {
+      "source": "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/selected-forward/native-result.json",
+      "sha256": "60dee214255c0a9dd3483d2503a4324573c38f38b6eac8abf771dc294930d903",
+      "retained": "input-0.raw"
+    }
+  ],
+  "producer_started": true,
+  "output": "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/selected-forward-independent.json",
+  "output_sha256": "7c98c7d86fdf397d6ad365eac36d121688f7762d9baf593fe64bdac0eda9fc0a",
+  "state": "completed"
+}

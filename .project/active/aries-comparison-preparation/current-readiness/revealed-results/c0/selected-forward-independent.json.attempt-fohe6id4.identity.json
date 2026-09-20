@@ -1,0 +1,8 @@
+{
+  "files": {
+    "input-0.raw": "60dee214255c0a9dd3483d2503a4324573c38f38b6eac8abf771dc294930d903",
+    "produced.raw.json": "7c98c7d86fdf397d6ad365eac36d121688f7762d9baf593fe64bdac0eda9fc0a",
+    "receipt.json": "60577ffd8580a3cd0b7ca212841781d80727e5360ada6b88e09f6aa446d7bfec"
+  },
+  "result_directory": "selected-forward-independent.json.attempt-fohe6id4"
+}

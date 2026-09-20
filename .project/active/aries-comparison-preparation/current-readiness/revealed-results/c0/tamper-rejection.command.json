@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/home/reid/1cfe/fusion-tea/.venv/bin/python3",
+    "/tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/build_freeze.py",
+    "--verify",
+    "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/tampered.tar.gz"
+  ],
+  "command": "/home/reid/1cfe/fusion-tea/.venv/bin/python3 /tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/build_freeze.py --verify /home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/tampered.tar.gz",
+  "cwd": "/tmp/aries-r3-execution-20260920",
+  "ended_utc": "2026-09-20T17:51:40.102231+00:00",
+  "exit_code": 1,
+  "expected_exit": 1,
+  "log": "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/tamper-rejection.log",
+  "log_sha256": "8f080327278441dfece222f917c2eea46e749048f17c25f6441e2a1db975545a",
+  "started_utc": "2026-09-20T17:51:39.806024+00:00"
+}

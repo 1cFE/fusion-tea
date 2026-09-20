@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "/home/reid/1cfe/fusion-tea/.venv/bin/python3",
+    "-m",
+    "pytest",
+    "tests/test_compare_fixed_point.py",
+    "tests/test_current_comparison_candidate.py",
+    "tests/test_candidate_report_custody.py",
+    "tests/test_dependency_provenance.py",
+    "tests/study/test_read_set_coverage.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp",
+    "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/pytest-temp",
+    "--junitxml",
+    "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/five-file.xml"
+  ],
+  "command": "/home/reid/1cfe/fusion-tea/.venv/bin/python3 -m pytest tests/test_compare_fixed_point.py tests/test_current_comparison_candidate.py tests/test_candidate_report_custody.py tests/test_dependency_provenance.py tests/study/test_read_set_coverage.py -q -p no:cacheprovider --basetemp /home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/pytest-temp --junitxml /home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/five-file.xml",
+  "cwd": "/tmp/aries-r3-execution-20260920",
+  "ended_utc": "2026-09-20T17:51:26.394063+00:00",
+  "exit_code": 0,
+  "expected_exit": 0,
+  "log": "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/five-file-pytest.log",
+  "log_sha256": "9e7f2e0d11b3f3fc47ef6eb08f696e169c9d68de7d74f72e205d0d7672ce86ec",
+  "started_utc": "2026-09-20T17:51:18.229529+00:00"
+}

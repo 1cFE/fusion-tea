@@ -1,0 +1,56 @@
+{
+  "status": "pass",
+  "scope": "C0 preparation only; no reveal, no first-forward registration",
+  "archive_sha256": "34526b8b4587a306453a1f01fa73e6803e4eddf04c3ae0d0f3e647b69a9dbd19",
+  "archive_bytes": 5692124,
+  "indexed_files": 1047,
+  "base_only_files": 0,
+  "restored_root": "/tmp/aries-r3-execution-20260920",
+  "tests": {
+    "passed": 190,
+    "failed": 0,
+    "skipped": 0
+  },
+  "runtime": {
+    "module_count": 4,
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "relocation": "Filesystem locations are recorded but are not content identities.",
+    "runtime_python_file_count": 205,
+    "sealed_wheel_count": 3,
+    "status": "pass",
+    "teax_commit": "8d877460ac4f6f264561d916e40c1708adb13397"
+  },
+  "cases": {
+    "selected-forward": {
+      "state": "completed",
+      "numeric_channels": 1050,
+      "predicates": 28,
+      "raw_violations": [
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "accounting_check": "pass",
+      "export_rows": 276
+    },
+    "table5-conditioned": {
+      "state": "completed",
+      "numeric_channels": 1050,
+      "predicates": 28,
+      "raw_violations": [
+        "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+        "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+      ],
+      "accounting_check": "pass",
+      "export_rows": 276
+    }
+  },
+  "archived_immutable_stores": 5,
+  "rebuilds_byte_identical": 2,
+  "tamper_expected_exit": 1,
+  "blockers": [],
+  "archived_case_stores_joined": 4
+}

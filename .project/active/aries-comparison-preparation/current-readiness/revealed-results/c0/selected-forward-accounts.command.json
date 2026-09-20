@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/home/reid/1cfe/fusion-tea/.venv/bin/python3",
+    "/tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/check_accounting.py",
+    "--root",
+    "/tmp/aries-r3-execution-20260920",
+    "--native-result",
+    "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/selected-forward/native-result.json",
+    "--out",
+    "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/selected-forward-accounts.json"
+  ],
+  "command": "/home/reid/1cfe/fusion-tea/.venv/bin/python3 /tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/check_accounting.py --root /tmp/aries-r3-execution-20260920 --native-result /home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/selected-forward/native-result.json --out /home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/selected-forward-accounts.json",
+  "cwd": "/tmp/aries-r3-execution-20260920",
+  "ended_utc": "2026-09-20T17:51:25.032590+00:00",
+  "exit_code": 0,
+  "expected_exit": 0,
+  "log": "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/selected-forward-accounts.log",
+  "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "started_utc": "2026-09-20T17:51:24.975369+00:00"
+}

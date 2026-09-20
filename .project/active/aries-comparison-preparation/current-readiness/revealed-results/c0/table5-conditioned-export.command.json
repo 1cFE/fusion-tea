@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/home/reid/1cfe/fusion-tea/.venv/bin/python3",
+    "/tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/export_model_values.py",
+    "--root",
+    "/tmp/aries-r3-execution-20260920",
+    "--manifest",
+    "/tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/manifest.json",
+    "--native-result",
+    "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/table5-conditioned/native-result.json",
+    "--out",
+    "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/table5-conditioned-export.json"
+  ],
+  "command": "/home/reid/1cfe/fusion-tea/.venv/bin/python3 /tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/export_model_values.py --root /tmp/aries-r3-execution-20260920 --manifest /tmp/aries-r3-execution-20260920/.project/active/aries-comparison-preparation/current-readiness/candidate/manifest.json --native-result /home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/table5-conditioned/native-result.json --out /home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/table5-conditioned-export.json",
+  "cwd": "/tmp/aries-r3-execution-20260920",
+  "ended_utc": "2026-09-20T17:51:38.829740+00:00",
+  "exit_code": 0,
+  "expected_exit": 0,
+  "log": "/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/current-readiness/revealed-results/c0/table5-conditioned-export.log",
+  "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "started_utc": "2026-09-20T17:51:38.769794+00:00"
+}

@@ -1,0 +1,9 @@
+{
+  "files": {
+    "input-0.raw": "27f6d982abcc7383919a631e6a6b24b26b989ea38e94414c45ce1807d0e5d345",
+    "input-1.raw": "d253a273a944611ee5b49f5994029b061b26e6c753c7fd6c7d3373a0d702373e",
+    "produced.raw.json": "cfc3020e5d9464f48ef0c12aa2591ae7a03248b3c7079f451f6d9f2ddecc3b8a",
+    "receipt.json": "35d474d2e51fd28ff53c466a3cd464c9577099313134d9946a78015a5a0be7dd"
+  },
+  "result_directory": "table5-conditioned-accounts.json.attempt-y9odgq5i"
+}
