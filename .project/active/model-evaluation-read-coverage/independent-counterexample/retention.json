@@ -1,0 +1,32 @@
+[
+  {
+    "original": "/tmp/read-review-9fd7khh9/manifest.json",
+    "retained": ".project/active/model-evaluation-read-coverage/independent-counterexample/manifest.json",
+    "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "original": "/tmp/read-review-9fd7khh9/out/final.json",
+    "retained": ".project/active/model-evaluation-read-coverage/independent-counterexample/out/final.json",
+    "sha256": "11507a0e2f5e69d5dfa40a62a1bd7b6ee57e6bcd85c67c9b8431b36fff21c437"
+  },
+  {
+    "original": "/tmp/read-review-9fd7khh9/out/read_coverage.json",
+    "retained": ".project/active/model-evaluation-read-coverage/independent-counterexample/out/read_coverage.json",
+    "sha256": "cf91870ec6fc36980b290a8ab991c4f49aa54f90871fd5dc13f5111160410c49"
+  },
+  {
+    "original": "/tmp/read-review-9fd7khh9/out/temp.json",
+    "retained": ".project/active/model-evaluation-read-coverage/independent-counterexample/out/temp.json",
+    "sha256": "f5fcfc213ac88d511210a7457ee8bd9ef86e5e954129e0d76dc858f45142e473"
+  },
+  {
+    "original": "/tmp/read-review-9fd7khh9/pkg/contracts/package_contract.json",
+    "retained": ".project/active/model-evaluation-read-coverage/independent-counterexample/pkg/contracts/package_contract.json",
+    "sha256": "8dd2cf580d57f780484a46e2da4f3c83b8dbdeda8d3991efb63052ad194a4f64"
+  },
+  {
+    "original": "/tmp/read-review-9fd7khh9/route/probe.py",
+    "retained": ".project/active/model-evaluation-read-coverage/independent-counterexample/route/probe.py",
+    "sha256": "c32fdd0e721ced383fcc7629620d03227f36ea9da198606e062d981329bbd848"
+  }
+]

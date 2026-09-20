@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/home/reid/1cfe/fusion-tea/scripts/integrate.py", line 1268, in execute_baseline
+    raise SeamBlocker(
+scripts.integrate.SeamBlocker: ['undeclared dependency read: /home/reid/1cfe/fusion-tea/.project/active/model-evaluation-read-coverage/stock-probe-4/_work/artifacts/ea4fc6e16802ac1a1b99b492c4b538627c68ed8c499ac1dce3d73c694e304abe.json']

@@ -183,7 +183,7 @@ The sequence stops at the first gate that is not a pass. The numbering is the re
 | 3 | `handwritten-preservation` | request | The same comparison over `handwritten/`, which regeneration must never open. |
 | 4 | `census-snapshot` | request | Snapshot recapture against the tracked file, byte for byte; and the entry-point census re-derived from the sealed package against `--census-file`. |
 | 5 | `model-family-spine` | repo | `tests/models/test_model_family_spines.py` — the canonical tree, the family twins, the tracked census. |
-| 6 | `manifest` | request | `scripts/study/manifest.py` — the manifest is this package's and its pin recomputes over the live package. |
+| 6 | `manifest` | request | `scripts/study/manifest.py` — the manifest is this package's, its pin recomputes, and resolved pipeline references are covered. |
 | 7 | `preflight` | request | `scripts/study/preflight.py gates` — the six mechanical gates a study passes. Baseline execution happens just before this, and its failure is reported here as *could not run*. |
 | 8 | `verification` | request | `scripts/study/verify.py` — oracle parity and re-derived verdicts, over the store this run executed. |
 | 9 | `lineage` | request | The seam: the live fingerprints against the pair the request named. Last, because a package that failed an earlier gate has no lineage worth reporting. |
@@ -208,7 +208,7 @@ Gate 5 reads the **tracked** `tests/models/data/mfe_census.json` whatever you pa
 
 ---
 
-## The fourteen conditions, and what to do about each
+## The fifteen conditions, and what to do about each
 
 The right-hand column is the class a goal-layer caller maps the slug to. That mapping lives here, not in the seam: it is the goal layer's vocabulary and a native tool should not depend on it.
 
@@ -224,6 +224,7 @@ The right-hand column is the class a goal-layer caller maps the slug to. That ma
 | `snapshot-drift` | The recaptured snapshot is not the tracked one, byte for byte. | Check the toolchain-pin gate's result first — the snapshot pins toolchain versions as well as model content. If the pin is clean, the model state moved and the snapshot needs recapturing in the modeling item. | `PREREQUISITE` |
 | `repo-lineage-broken` | The model-family spine suite refused: the canonical tree, the twins, or the tracked census. | Read the junit file the blocker cites. Check `scope` — this is about the repository, not your package. | `STRATEGY_BLOCKER` |
 | `manifest-stale` | The manifest is not this package's, or its pin does not recompute over the live package. | Re-pin the manifest against the package, in the modeling item that changed it. | `STRATEGY_BLOCKER` |
+| `read-coverage-refused` | Baseline Python-observable file reads lacked a fresh successful receipt, read an undeclared dependency, changed a dependency, or attempted unsupported child/descriptor access. | Inspect `read_coverage.json`; repair dependency declarations or route behavior. Do not bypass the check. | `STRATEGY_BLOCKER` |
 | `preflight-refused` | One or more of preflight's six checks failed. | Open the whole `preflight_results.json` the blocker cites — it reports all six whatever happened, and more than one may have failed. | `STRATEGY_BLOCKER` |
 | `verification-refused` | `verify.py` returned non-zero. | Read `verify_stderr.txt` in the out-dir. See the caveat below. | `STRATEGY_BLOCKER` |
 | `lineage-mismatch` | The package verifies cleanly but is not the lineage you named. | Compare `expected` and `actual` in the blocker. Either you named the wrong lineage or you are integrating the wrong package. | `STRATEGY_BLOCKER` |
@@ -265,6 +266,7 @@ Evidence lands under `--out-dir`. Rollback copies use the system temporary direc
 | `clean.json` | `preflight.py clean`'s own result over the package tree. |
 | `junit/*.xml` | The two pytest producers' junit reports, one per gate. |
 | `recaptured.snapshot.json` | Gate 4's recapture. |
+| `manifest_read_coverage.json`, `read_coverage.json` | Static resolved-reference membership and the baseline Python read receipt, respectively. The latter includes source declarations, observed hashes, violations and limits. |
 | `package_identity.json`, `baseline_result.json`, `_work/*.db` | What executing the manifest's pinned baseline point deposited. |
 | `preflight_results.json`, `verification_summary.json`, `verify_stderr.txt` | The two stock study gates' own output. |
 | `backup-location.json` | Location of the external package copy made before the first mutating gate. |
@@ -277,7 +279,7 @@ Evidence lands under `--out-dir`. Rollback copies use the system temporary direc
 
 Stated so you do not assume otherwise.
 
-- **`assert_read_set_covered` is not run.** Gate 6 runs three of the manifest's four assertions. The fourth needs the paths the indicator reader opened from the pipeline's own refs, which exist only inside that reader — so the seam cannot run it, and **nothing else in the repository runs it either**. The gate's own passing detail says so. Filed.
+- **File coverage is scoped to the baseline's Python-observable opens.** Gate 6 resolves pipeline references and calls `assert_read_set_covered`; the indicator report also calls this assertion. Gate 7 observes the route from import through baseline execution and requires a fresh successful `read_coverage.json` before preflight. Package seal and manifest identities cover package artifacts; exact declarations cover route/scripts/teax Python sources and teax installation metadata. The receipt has a canonical `dependency_digest` over declared and observed identities, also recorded in gate 7 detail; it is separate from the sealed executable and indicator pin. Baseline scratch files use a fresh `TMPDIR` under the output directory. Atomic rename admission follows only newly created regular files to absent output destinations. Moves and deletions revoke admission at the source and descendants; incoming undeclared contents revoke destination admission. Hardlinks do not establish new-output admission. SQLite connections must start with an absent output database and absent WAL/SHM/journal sidecars; reconnects may use only that invocation's newly admitted store. This prevents stock baseline reuse of old cases without claiming observation of native SQLite bytes. Actual imported bytecode hashes are recorded alongside source identity; this does not prove source equivalence. Runtime files are hashed at first observed access and rechecked, not attested as an installation image. Newly created output files may be reread; pre-existing outputs are not automatically admitted. Audited subprocess/fork/exec attempts and integer-descriptor read-opens refuse. Native C/SQLite reads, directory metadata, mmap/direct syscalls, pre-opened handles, environment/network reads and post-observer execution remain outside observation. Hash checks have TOCTOU gaps, including transient restored mutations. One baseline establishes no coverage for other points or unexecuted branches. This is a cooperative check, not a sandbox.
 - **Gate 5's refusal path is not covered by a test.** Its pass path and its could-not-run path are; driving a real refusal out of it would need an edit to a tracked file or to a frozen producer. The shared junit-to-refusal mapping *is* proven, by gate 1a's wheel-hash fixture.
 - **`verify.py` records `teax.revision: "unrecorded"`.** Stock teax exposes no `__version__`. The seam records the checkout's git revision in the return's `toolchain` block, but that does **not** discharge the open row against `verify.py`.
 

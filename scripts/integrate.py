@@ -68,6 +68,7 @@ import subprocess
 import sys
 import tempfile
 import traceback
+import uuid
 from dataclasses import dataclass
 from importlib import metadata
 from pathlib import Path
@@ -76,7 +77,7 @@ from xml.etree import ElementTree
 if __package__ in (None, ""):  # invoked as a script: put the repo root on sys.path
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from scripts.study import common, preflight  # noqa: E402
+from scripts.study import common, preflight, indicators, read_coverage  # noqa: E402
 from scripts.study import manifest as manifest_mod  # noqa: E402
 
 RETURN_SCHEMA_VERSION = "integration-seam-return/v1"
@@ -91,6 +92,8 @@ TOOL_SOURCE_FILES = (
     "scripts/study/identity.py",
     "scripts/study/manifest.py",
     "scripts/study/preflight.py",
+    "scripts/study/indicators.py",
+    "scripts/study/read_coverage.py",
 )
 
 #: The fourth status, beside ``preflight``'s three. A gate after the stop is *not reached*,
@@ -140,7 +143,7 @@ TEAX_SIMKIT_SUBPATH = "packages/teax-simkit"
 SIMKIT_PROBE_SOURCE = "import simkit, pathlib; print(pathlib.Path(simkit.__file__).parent)"
 
 #: The closed set of ``blocker.condition`` slugs. Detail, not a third return class: the
-#: seam stays two-class and two-mode. The operator guide enumerates all fourteen with one
+#: seam stays two-class and two-mode. The operator guide enumerates all fifteen with one
 #: operator action each and the goal-side class each maps to; that mapping is the goal
 #: layer's and deliberately does not live here.
 CONDITIONS = (
@@ -154,6 +157,7 @@ CONDITIONS = (
     "snapshot-drift",
     "repo-lineage-broken",
     "manifest-stale",
+    "read-coverage-refused",
     "preflight-refused",
     "verification-refused",
     "lineage-mismatch",
@@ -833,6 +837,7 @@ class BaselineEvidence:
     identity: Path
     baseline_result: Path
     store: Path
+    read_coverage_digest: str
 
 
 @dataclass
@@ -1170,10 +1175,8 @@ def gate_manifest(request: Request, env: dict[str, str],
                   state: SequenceState) -> GateOutcome:
     """Gate 6: the manifest is this package's, and its pin recomputes to what it records.
 
-    Three of R-B1.6's four assertions. The fourth, ``assert_read_set_covered``, needs the
-    paths the indicator reader opened from the pipeline's own refs, which exist only inside
-    that reader — so it is **not run here and is covered by nothing else in the repository**.
-    Named in the return rather than left silent, and filed against its own home.
+    Resolve the pipeline's own EntryPoint references and check membership in the pin.
+    Baseline Python-observable reads are separately checked during gate 7.
     """
     try:
         loaded = manifest_mod.load(request.manifest)
@@ -1188,17 +1191,21 @@ def gate_manifest(request: Request, env: dict[str, str],
         manifest_mod.assert_pin_matches(
             loaded, manifest_mod.indicator_input_fingerprint(request.package)
         )
-    except manifest_mod.ManifestError as exc:
+        root = resolve_package(request.package)
+        paths = indicators.read_pipelines(root).artifact_paths + [root / "contracts/model_contract.json"]
+        manifest_mod.assert_read_set_covered(paths, root, loaded)
+    except (manifest_mod.ManifestError, indicators.IndicatorError) as exc:
         raise SeamBlocker(
             gate=GATES[6].name, producer=GATES[6].producer, scope=GATES[6].scope,
             mode=REFUSED, condition="manifest-stale", detail=str(exc),
             evidence=(manifest_mod.repo_relative_posix(request.manifest),),
         ) from exc
+    receipt = request.out_dir / "manifest_read_coverage.json"
+    common.write_document({"outcome": "pass", "scope": "static pipeline references and model contract",
+                           "paths": sorted(str(p) for p in paths)}, receipt)
     return GateOutcome(
-        f"the manifest is {loaded.data['package']['name']}'s and its pin "
-        f"{loaded.pinned_digest} recomputes over the live package; assert_read_set_covered "
-        f"was NOT run — it is out of reach here and covered by nothing else (filed)",
-        (manifest_mod.repo_relative_posix(request.manifest),),
+        f"manifest identity, pin {loaded.pinned_digest} and resolved reference coverage pass",
+        (manifest_mod.repo_relative_posix(request.manifest), manifest_mod.repo_relative_posix(receipt)),
     )
 
 
@@ -1207,16 +1214,10 @@ def gate_manifest(request: Request, env: dict[str, str],
 #: package from importing one — and so it runs under the same environment every other
 #: producer gets.
 ROUTE_DRIVER_SOURCE = """
-import importlib, json, sys
-from pathlib import Path
-
-sys_path, module_name, callable_name, out_dir, package_dir, manifest_path = sys.argv[1:]
-sys.path.insert(0, sys_path)
-module = importlib.import_module(module_name)
-deposited = getattr(module, callable_name)(
-    Path(out_dir), package_dir=Path(package_dir), manifest_path=Path(manifest_path)
-)
-print(json.dumps({key: str(value) for key, value in deposited.items()}))
+import json, sys
+from scripts.study.read_coverage import run_route
+result = run_route(*sys.argv[1:])
+print(json.dumps({key: str(value) for key, value in result.items()}))
 """
 
 
@@ -1246,16 +1247,36 @@ def execute_baseline(request: Request, env: dict[str, str]) -> BaselineEvidence:
     failure is reported as gate 7 could-not-run rather than as a refusal about the package.
     """
     sys_path, module_name, callable_name = request.route
+    token = uuid.uuid4().hex
+    receipt_path = request.out_dir / "read_coverage.json"
+    receipt_path.unlink(missing_ok=True)
+    scratch = request.out_dir / f"read-coverage-tmp-{token}"
+    scratch.mkdir()
+    route_env = {**env, "TMPDIR": str(scratch.resolve())}
     done = run_producer(
         [sys.executable, "-c", ROUTE_DRIVER_SOURCE, str(sys_path), module_name, callable_name,
-         str(request.out_dir), str(resolve_package(request.package)), str(request.manifest)],
-        env,
+         str(request.out_dir), str(resolve_package(request.package)), str(request.manifest), token],
+        route_env,
     )
-    if done.returncode != 0:
+    try:
+        receipt = json.loads(receipt_path.read_text())
+        valid = read_coverage.valid_receipt(receipt, token, allow_route_error=True)
+        detail = str(receipt.get("violations") or receipt.get("route_error") or "invalid receipt")
+    except (OSError, ValueError, AttributeError):
+        valid = False
+        detail = "missing or malformed read-coverage receipt"
+    if not valid:
+        raise SeamBlocker(
+            gate=GATES[7].name, producer="scripts/study/read_coverage.py", scope=GATES[7].scope,
+            mode=REFUSED, condition="read-coverage-refused", detail=detail,
+            evidence=(manifest_mod.repo_relative_posix(receipt_path),) if receipt_path.is_file() else (),
+        )
+    if done.returncode != 0 or receipt.get("route_error"):
         raise producer_could_not_run(
             GATES[7],
             f"the route {module_name}.{callable_name} could not execute the manifest's "
-            f"pinned baseline point\n{done.stderr.strip()[-2000:]}",
+            f"pinned baseline point\n{receipt.get('route_error') or done.stderr.strip()[-2000:]}",
+            evidence=(manifest_mod.repo_relative_posix(receipt_path),),
         )
     deposited = json.loads(done.stdout)
     baseline_result = Path(deposited["baseline_result"])
@@ -1264,7 +1285,8 @@ def execute_baseline(request: Request, env: dict[str, str]) -> BaselineEvidence:
     except common.ToolError as exc:
         raise producer_could_not_run(GATES[7], str(exc)) from exc
     return BaselineEvidence(
-        identity=Path(deposited["identity"]), baseline_result=baseline_result, store=store
+        identity=Path(deposited["identity"]), baseline_result=baseline_result, store=store,
+        read_coverage_digest=receipt["dependency_digest"],
     )
 
 
@@ -1287,7 +1309,9 @@ def gate_preflight(request: Request, env: dict[str, str],
     )
     if done.returncode == 0:
         return GateOutcome(
-            "all six preflight gates pass", (manifest_mod.repo_relative_posix(results),)
+            f"baseline Python read coverage {state.baseline.read_coverage_digest} and all six preflight gates pass",
+            (manifest_mod.repo_relative_posix(request.out_dir / "read_coverage.json"),
+             manifest_mod.repo_relative_posix(results))
         )
     if not results.is_file():
         raise producer_could_not_run(
