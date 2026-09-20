@@ -1,0 +1,74 @@
+{
+  "pb__p_th": {
+    "before": 3306.8890988488924,
+    "after": 3306.8890988488924,
+    "delta": 0.0
+  },
+  "pb__p_et": {
+    "before": 1360.3105043264716,
+    "after": 1219.9981701764736,
+    "delta": -140.31233414999792
+  },
+  "pb__p_net": {
+    "before": 1008.898405504204,
+    "after": 850.0653006674999,
+    "delta": -158.83310483670414
+  },
+  "pb__rec_frac": {
+    "before": 0.2583322687758423,
+    "after": 0.30322411832426166,
+    "delta": 0.04489184954841935
+  },
+  "heat_transport__primary_loop__p_pump_total": {
+    "before": 175.28093440448808,
+    "after": 175.28093440448808,
+    "delta": 0.0
+  },
+  "overnight_capital__overnight_capital": {
+    "before": 17918171013.726093,
+    "after": 17751224887.07979,
+    "delta": -166946126.64630508
+  },
+  "lcoe_calc__lcoe": {
+    "before": 271.5843199172948,
+    "after": 318.7371704217041,
+    "delta": 47.15285050440929
+  },
+  "lcoe_1cfe_calc__lcoe": {
+    "before": 266.4589305666054,
+    "after": 312.7107884134813,
+    "delta": 46.25185784687591
+  },
+  "gross_efficiency": {
+    "before": 0.41135655404954075,
+    "after": 0.3689262426735591
+  },
+  "new_explicit_pumps_MW": 22.73014071120589,
+  "unchanged_subsystem_fraction": 0.03,
+  "subsystem_allowance_MW": {
+    "before": 40.80931512979414,
+    "after": 36.59994510529421
+  },
+  "overlap_hypotheses": [
+    {
+      "assumed_overlap_fraction": 0,
+      "assumed_overlap_MW": 0.0,
+      "hypothetical_net_MW": 850.0653006674999,
+      "fixed_cost_model_lcoe_USD_MWh": 318.7371704217041
+    },
+    {
+      "assumed_overlap_fraction": 0.5,
+      "assumed_overlap_MW": 11.365070355602946,
+      "hypothetical_net_MW": 861.4303710231028,
+      "fixed_cost_model_lcoe_USD_MWh": 314.5319897261522
+    },
+    {
+      "assumed_overlap_fraction": 1,
+      "assumed_overlap_MW": 22.73014071120589,
+      "hypothetical_net_MW": 872.7954413787057,
+      "fixed_cost_model_lcoe_USD_MWh": 310.4363242095235
+    }
+  ],
+  "overlap_caveat": "Diagnostic hypotheses, not qualified uncertainty or adopted corrections. Costs and other loads fixed; main model retains full 3% allowance plus explicit pumps. Unknown scope overlap remains.",
+  "scope": "Raw default plant; unchanged source heat and helium/salt conditions. Lower gross power changes retained gross-scaled capital drivers. Steam generator/reheater/cooling capacity and installed cost remain unqualified."
+}

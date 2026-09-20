@@ -5,9 +5,9 @@ TEAx module for cooling_initial_handoff_days calculation.
 Outputs:
     - cooling_initial_handoff_days: cooling_initial_handoff_days result
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1556
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1597
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1556
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1597
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/stellarator_09/stellaris/buildings/cooling_initial_handoff_days_impl.py
@@ -32,9 +32,9 @@ class cooling_initial_handoff_daysModule(ModuleBase[cooling_initial_handoff_days
 Outputs:
     - cooling_initial_handoff_days: cooling_initial_handoff_days result
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1556
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1597
 
-    SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1556
+    SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:1597
 
     Calculation Specification:
 

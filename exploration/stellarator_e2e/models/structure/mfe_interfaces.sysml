@@ -55,4 +55,16 @@ package mfe_interfaces {
         doc /* A cold mass handing its heat load to the cryoplant. */
         out item heat_load : 'Cryogenic Heat Load';
     }
+
+    item def 'Water State Stream' {
+        doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Supported water boundary: pressure MPa, enthalpy kJ/kg, mass flow kg/s. Component state properties expose temperature/entropy only where evaluated. */
+        attribute pressure_MPa : Real;
+        attribute enthalpy_kJ_kg : Real;
+        attribute mass_flow_kg_s : Real;
+    }
+    port def 'Water State Port' { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Water or steam leaving a component. */ out item stream : 'Water State Stream'; }
+    item def 'Heat Duty' { doc /* Thermal energy transfer rate in MW, WI-073 cycle heat balance. */ attribute power_MW : Real; }
+    item def 'Shaft Work' { doc /* Mechanical energy transfer rate in MW, WI-073 turbine shaft balance. */ attribute power_MW : Real; }
+    port def 'Heat Duty Port' { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Heat duty MW. */ out item heat : 'Heat Duty'; }
+    port def 'Shaft Power Port' { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Mechanical shaft work MW; type carries power only, not electrical ownership. */ out item shaft : 'Shaft Work'; }
 }

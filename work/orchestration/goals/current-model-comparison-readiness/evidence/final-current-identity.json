@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "seal_diagnostics": [],
+  "semantic_fingerprint": "ea1555ea133db8ed7ba1c638b29ddf540ba99d811bfcf7d9ef9454b626d3a28a",
+  "executable_fingerprint": "b032da4a3971979792bc024bf9cd1a41a2d83d340bad5b59ef3e1a9aeaa77236",
+  "indicator_fingerprint": "e48d5218b6e3be2775a94269a461dccd259fccc5fc41fed7c135dc1336bfe284",
+  "input_files": 11,
+  "read_set_count": 13,
+  "scientific_tree_status": "",
+  "head": "9e07184f1301ad0d4ebdba5ae9bbe5fa97f1f1ef",
+  "r2_sha256": "fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21",
+  "meaning": "Current scientific/executable/input identities remain unchanged; oracle, tests and separate tooling changes are uncommitted and do not constitute a new native integration."
+}

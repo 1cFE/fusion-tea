@@ -1,0 +1,92 @@
+[
+  {
+    "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py",
+    "executable_ast_unchanged": true,
+    "before_sha256": "882da53dc568d480744597a81e0b29210135ebafb85f32c069c2758f67bc0420",
+    "after_sha256": "df8d435deb7222089baeeebfb12559524febf2612cb59b291c21d4485e28a966"
+  },
+  {
+    "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas20_capital_impl.py",
+    "executable_ast_unchanged": true,
+    "before_sha256": "d315c98e07aa0c4b5d923f5dcddd5f799b3f4ea4ff6c8dec55f0936f940d0b4d",
+    "after_sha256": "37ad0458ae2d312635dc8756a166d16704c55b572e9491198e09aae534db7913"
+  },
+  {
+    "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py",
+    "executable_ast_unchanged": true,
+    "before_sha256": "027e7f4055d2b2f26e17c93d9d422d2c05c01266db19f223167bcb1cecb9aae6",
+    "after_sha256": "654993dad08c945b129accdf11d6e64a0c4379cca131f1a89978e9c628c84605"
+  },
+  {
+    "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py",
+    "executable_ast_unchanged": true,
+    "before_sha256": "5a38d5b11016ce4f2f842718979b37264c3a379a53f97f429d5ebda6105da612",
+    "after_sha256": "601b163bd6597c29b0330259e4620370925f40fb2a93988245e2df471b3bd2ce"
+  },
+  {
+    "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py",
+    "executable_ast_unchanged": true,
+    "before_sha256": "39cfb9af84267ff9c29a922256a45955d3a357c9c681083fffe3b691c9e43659",
+    "after_sha256": "632fd9ae0b611160e68f12738561b3758958a9f81096f8c47db44d1d1d5e1f59"
+  },
+  {
+    "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py",
+    "executable_ast_unchanged": true,
+    "before_sha256": "5e0509589a488a976603c095ac30e7460903797a864a088aefba390b8cf83f98",
+    "after_sha256": "b5c06bfcb088f29821a08bc08df7045384adb3a3bd57186ebf8aee977a41417b"
+  },
+  {
+    "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py",
+    "executable_ast_unchanged": true,
+    "before_sha256": "301447129374e426b5c676d58c931891d6e03c5da80914f3fbbe276682464660",
+    "after_sha256": "d03aa25320260c240bc74ea40719fca7f53e361b000a171546dabf19400bcbdf"
+  },
+  {
+    "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py",
+    "executable_ast_unchanged": true,
+    "before_sha256": "cf7987a59d988ad4ee65511b4e720613e6a8c31fb10fb1858bca20f60964d123",
+    "after_sha256": "3a842016830bdd4cbdf956a23542f7678724e6d63e690226e34b0c8cb086cc68"
+  },
+  {
+    "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py",
+    "executable_ast_unchanged": true,
+    "before_sha256": "6f4b2870bc69942a3fa85c7a3cb0fed1b61d71cee23009a57902a82350dbfeec",
+    "after_sha256": "065531ed2329f352fa1c1ff3d36d830552d98b1e0620cf9d89603336add8cd48"
+  },
+  {
+    "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py",
+    "executable_ast_unchanged": true,
+    "before_sha256": "9816680db657b77a75ec9e89217a4f85544e1ebae1c22042de1edf1a670da74e",
+    "after_sha256": "037cdadd0a4a6236c64ce1f5df61b18f88ade0dc659c54592fe4889d2a86b3e6"
+  },
+  {
+    "path": "exploration/stellarator_e2e/generated/handwritten/mfe_power_balance/mfe_power_balance_calc_impl.py",
+    "executable_ast_unchanged": false,
+    "before_sha256": "4e8f6eb6b02d37ebc2b51be22c4311c6573fee34596f8642e084057e431ef8bb",
+    "after_sha256": "1e4ccab4ce339f435c6b8891d08a042f67d3f528e40af4143a051187a0068925"
+  },
+  {
+    "path": "exploration/stellarator_e2e/generated/handwritten/mfe_power_balance/reactor_source_heat_impl.py",
+    "executable_ast_unchanged": true,
+    "before_sha256": "a44860398f548b94d90a08856db3be6ef1eba1f5a2291b630434f507e3fea6d7",
+    "after_sha256": "2fcd78e132969a3583613cb142f93bb4b322571b2c95c9c6ff97923ab303794a"
+  },
+  {
+    "path": "exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/buildings/cooling_initial_handoff_days_impl.py",
+    "executable_ast_unchanged": true,
+    "before_sha256": "32c7bdff27b51509545086323fdcf3301f2eab85bc1f7cc15f5a3a3dc92a8ced",
+    "after_sha256": "6f0f1f1a79b9af7ab7d68356f66479419d6fabcd904bb6b649f3720af50a1b98"
+  },
+  {
+    "path": "exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/buildings/initial_sector_start_days_impl.py",
+    "executable_ast_unchanged": true,
+    "before_sha256": "34971f19f67339c099d1b2646d895b489f801b3403814e777a15977cfa1e7dbb",
+    "after_sha256": "386f294309d1e1ce9e69470414461496e9366a89e11755f1056eb298bb8347bb"
+  },
+  {
+    "path": "exploration/stellarator_e2e/generated/handwritten/stellarator_09/stellaris/special_materials_capital_impl.py",
+    "executable_ast_unchanged": true,
+    "before_sha256": "f3a030cedb3bf15a7ccad328aada8038e66522bbb4db12afd6b999c562b7e7e3",
+    "after_sha256": "1c52deccb34492cdadcc6e5331b46931985c2c1098f583941e88e5c9ad37c09e"
+  }
+]

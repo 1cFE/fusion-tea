@@ -84,6 +84,9 @@ package mfe_power_balance {
         // Primary pump electrical draw entering the recirculating sum [MW]
         // (WI-045): loop_live * p_elec + p_pump_direct, formed in the loop calc.
         in attribute p_pump_total_in : Real;
+        // WI-073 explicit water-cycle and cooling-water electricity, each counted once [MW].
+        in attribute p_cycle_pumps_in : Real default 0.0;
+        in attribute p_cooling_water_in : Real default 0.0;
         // Subsystem and control fraction
         in attribute f_sub_in : Real;
 
@@ -155,7 +158,7 @@ package mfe_power_balance {
         // Source: physics.py:321-323
         attribute recirculating : Real =
             p_coils + p_pump_total_in + p_sub + p_aux + p_cool + p_cryo
-            + p_wallplug_in;
+            + p_wallplug_in + p_cycle_pumps_in + p_cooling_water_in;
 
         // === OUTPUTS ===
 

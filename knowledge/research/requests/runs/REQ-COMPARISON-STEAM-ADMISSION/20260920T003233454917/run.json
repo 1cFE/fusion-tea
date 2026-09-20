@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-COMPARISON-STEAM-ADMISSION",
+  "request_key": "603aa21f322146ac9a2601099dde20368cc9f91d41505e26768fe21298258299",
+  "request_path": "knowledge/research/requests/REQ-COMPARISON-STEAM-ADMISSION.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 3,
+    "max_captures": 2
+  },
+  "opened_at": "2026-09-20T00:32:33.455084+00:00",
+  "override_reason": null
+}

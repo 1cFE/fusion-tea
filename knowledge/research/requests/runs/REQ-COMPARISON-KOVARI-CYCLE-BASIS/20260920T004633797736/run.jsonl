@@ -1,0 +1,7 @@
+{"kind": "search", "query": "site.mit.edu Dostal Driscoll Hejzlar MIT-ANP-TR-100 2004 pdf", "at": "2026-09-20T00:46:49.736146+00:00"}
+{"kind": "search", "query": "Porton 2M4XFP helium balance plant", "at": "2026-09-20T00:46:49.796696+00:00"}
+{"kind": "search", "query": "A Supercritical Carbon Dioxide Cycle Dostal pdf restrictedmit.edu", "at": "2026-09-20T00:46:49.859369+00:00"}
+{"kind": "search", "query": "Assessment of DEMO relevant helium-cooled balance of plant technology exacttitle", "at": "2026-09-20T00:46:49.918196+00:00"}
+{"kind": "candidate", "ref": "https://web.mit.edu/22.33/www/dostal.pdf", "triage": "keeper", "note": "Original MIT ANP-TR-100 report matching Kovari reference10; metadata screened as2004 nuclear-cycle primary. Content-free holdout screen required before substantive reading.", "at": "2026-09-20T00:47:15.773947+00:00"}
+{"kind": "candidate", "ref": "https://user.efda.org/?uid=2M4XFP", "triage": "keeper", "note": "Original EFDA identifier from Kovari bibliography; attempt record retrieval, not presumed accessible.", "at": "2026-09-20T00:47:15.834528+00:00"}
+{"kind": "failure", "ref": "https://user.efda.org/?uid=2M4XFP", "reason": "Original document endpoint connection timed out after30s, HTTP000, curl28; four targeted searches found bibliography citations but no accessible original Porton report.", "disposition": "queued", "at": "2026-09-20T00:48:05.965909+00:00"}

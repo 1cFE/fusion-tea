@@ -1,0 +1,17 @@
+{
+  "request_id": "REQ-COMPARISON-MATCHED-CYCLE",
+  "question": "What defensible steam Rankine topology and sourced component assumptions can receive the existing 465 C to 269.66473 C salt heat, close regeneration, turbine moisture, pumping and rejection, and compute electricity without the unmatched Kovari fit?",
+  "consumer": "current-model-comparison-readiness T-008 matched-cycle prototype",
+  "gap_type": "missing_physics",
+  "priority": "P1",
+  "where_to_look": [
+    "registered MIT Dostal2004 cycle report",
+    "NIST WebBook water properties",
+    "IAPWS official formulations",
+    "US DOE steam turbine technical characterization"
+  ],
+  "limits": {
+    "max_searches": 3,
+    "max_captures": 1
+  }
+}

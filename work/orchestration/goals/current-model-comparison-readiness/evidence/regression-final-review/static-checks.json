@@ -1,0 +1,32 @@
+{
+  "cli_guard_actual_source_cases": {
+    "known": {
+      "accepted": true,
+      "expected": true
+    },
+    "wrong_exit": {
+      "accepted": false,
+      "expected": false
+    },
+    "wrong_gate": {
+      "accepted": false,
+      "expected": false
+    },
+    "seven_deviations": {
+      "accepted": false,
+      "expected": false
+    },
+    "missing_anchor": {
+      "accepted": false,
+      "expected": false
+    }
+  },
+  "historical_scalar_policy_example": {
+    "channel": "stellarator_09__stellaris__cryoplant__cold_load__q_structure_nuclear",
+    "expected": 0.0,
+    "hypothetical_actual": 5e-10,
+    "old_abs0_accepts": false,
+    "new_abs1e9_accepts": true,
+    "purpose": "Synthetic comparison-policy witness, not observed model output."
+  }
+}

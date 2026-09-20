@@ -1,0 +1,23 @@
+# WI-073 integrated scientific review
+
+[AGENT; independent non-author `/root/cycle_physical_critic`; 2026-09-19] **PASS for the implemented conditional cycle and accounting boundary.** This releases the scientific implementation for integration and commit. It does not certify an installed steam island, full item completion, owner adoption or comparison readiness.
+
+The reviewed corrected native identity is semantic `989f6a4492157969ba4777347ab588f18547a5077161172be586e41310ad41a1`, executable `7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f`. Evidence: WI-073 `evidence/independent-oracle/native-check-results.json`, `native-domain-results.json`, `generation-v3.log`, and this directory's `cycle-depth-evidence/account-check.json`. Nine native cases cover 9,450 primitive/status comparisons and 252 exact predicates; seven adversarial cases refuse in both implementations. The independent reviewer reconstructed heat, gross, all recirculating loads, net, rejection, salt splitting and CAS23–26 driver arithmetic for all nine retained cases. The legacy arm preserves all 956 entering shared channels exactly.
+
+## Findings and corrections
+
+The first verified candidate had a real boundary defect: equipment heat could differ from plant-accounted heat under changed upstream modes. The correction binds the source and selected recovered heat from acyclic upstream producers and rejects disagreement before active state evaluation. Code inspection confirms the inactive branch occurs before property/domain evaluation. Native and independent refusals now cover the 5.675887 MW secondary and 175.280934 MW primary mismatch examples. This is a corrected pass, not a first-pass approval.
+
+Earlier reviews required removal of an unsupported LP quality acceptance fence, retention of the historical 20 K admission screen and its 10 K failure, unchanged numerical tolerance policy, and explicit physical splitting/delegation. Those corrections remain present. Raw moisture is informative; reheat reduces moisture without proving that no-reheat is physically invalid. Strict positive heat-direction checks are necessary conditions, not qualified equipment minimum approaches. The unused fit's raw failure remains visible but cannot govern matched-cycle applicability.
+
+The computed water-pump apparent temperature rise uses electrical specific pump work divided by mean liquid heat capacity. This diagnostic is consistent with the reviewed accounting approximation; it is not a newly resolved local thermodynamic state. The optional cooling-water calculation includes its own pump heat and rejects a nonpositive available enthalpy-rise denominator. Its site water, head, motor-loss deposition and capacity assumptions remain conditional.
+
+The 3% inherited subsystem allowance remains intact while explicit cycle/CW pump electricity is added once. Arithmetic closes, but historical coverage of that allowance remains unknown. Zero/half/full pump overlap scenarios are accounting hypotheses, not an uncertainty distribution. No reduction of the allowance is justified by this review.
+
+## Physical and cost consequences
+
+At the reviewed baseline, 3,306.889099 MW thermal produces 1,219.998170 MW gross. Explicit water-cycle and cooling-water pumps consume 9.706961 and 13.023180 MW. Total recirculating load is 369.932870 MW and export is 850.065301 MW. The retained gross/thermal account drivers give $17.751225 billion overnight and $318.737/MWh. These replace the previous 1,008.898406 MW export and $271.584/MWh within this conditional model.
+
+The water properties have original-table provenance and independent parsing. Efficiencies, pressure-loss simplifications, pump approximations and selected state choices are agent/inherited assumptions with recorded applicability limits. The split salt branches, steam extraction, feedwater heating, condensation, shaft generation and auxiliary ownership agree with the released design. No invented condensate-pumped temperature/entropy is exposed. Named equipment does not supply independently sized installed costs; existing primary-IHX ownership does not establish SG/reheater coverage. No complete procurement, lifecycle, material, wetness or cooling-site qualification follows from numerical agreement.
+
+Four unrelated baseline engineering violations remain, and the zero cooling-water approach is an exact raw violation. The prior partial LCOE uncertainty envelope cannot be carried onto this changed electrical identity. Full regression, actual entry-point/read-set accounting, integration custody and the committed-version depth gate remain separate completion requirements.

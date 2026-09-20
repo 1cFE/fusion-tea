@@ -1,0 +1,30 @@
+[
+  {
+    "case": "coherent upstream heat",
+    "completed": true
+  },
+  {
+    "case": "source mismatch",
+    "refused": "WI-073 plant and cycle heat join: balance residual 1.0 exceeds arithmetic policy"
+  },
+  {
+    "case": "recovered mismatch",
+    "refused": "WI-073 plant and cycle heat join: balance residual 1.0 exceeds arithmetic policy"
+  },
+  {
+    "case": "source_heat_MW nan",
+    "refused": "WI-073 source_heat_MW: finite real required"
+  },
+  {
+    "case": "source_heat_MW disabled invalid",
+    "inactive": true
+  },
+  {
+    "case": "selected_recovered_MW nan",
+    "refused": "WI-073 selected_recovered_MW: finite real required"
+  },
+  {
+    "case": "selected_recovered_MW disabled invalid",
+    "inactive": true
+  }
+]

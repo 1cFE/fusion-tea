@@ -6,6 +6,8 @@ SysML Source: root-0/analyses/mfe_power_balance.sysml:4
 
 SysML Expressions:
     p_wallplug_in = 0.0
+    p_cycle_pumps_in = 0.0
+    p_cooling_water_in = 0.0
     p_alpha = 3.52 / 17.58 * p_nrl
     p_neutron = p_nrl - p_alpha
     p_cool = p_tfcool_in + p_pfcool_in
@@ -15,7 +17,7 @@ SysML Expressions:
     p_the = eta_th_in * p_th
     p_et = p_the
     p_sub = f_sub_in * p_et
-    recirculating = p_coils + p_pump_total_in + p_sub + p_aux + p_cool + p_cryo + p_wallplug_in
+    recirculating = p_coils + p_pump_total_in + p_sub + p_aux + p_cool + p_cryo + p_wallplug_in + p_cycle_pumps_in + p_cooling_water_in
     q_eng = p_et / recirculating
     rec_frac = 1.0 / q_eng
     p_net = (1.0 - rec_frac) * p_et
@@ -142,6 +144,8 @@ SysML Source: root-0/analyses/mfe_power_balance.sysml:4
 
 SysML Expressions:
     p_wallplug_in = 0.0
+    p_cycle_pumps_in = 0.0
+    p_cooling_water_in = 0.0
     p_alpha = 3.52 / 17.58 * p_nrl
     p_neutron = p_nrl - p_alpha
     p_cool = p_tfcool_in + p_pfcool_in
@@ -151,7 +155,7 @@ SysML Expressions:
     p_the = eta_th_in * p_th
     p_et = p_the
     p_sub = f_sub_in * p_et
-    recirculating = p_coils + p_pump_total_in + p_sub + p_aux + p_cool + p_cryo + p_wallplug_in
+    recirculating = p_coils + p_pump_total_in + p_sub + p_aux + p_cool + p_cryo + p_wallplug_in + p_cycle_pumps_in + p_cooling_water_in
     q_eng = p_et / recirculating
     rec_frac = 1.0 / q_eng
     p_net = (1.0 - rec_frac) * p_et
@@ -230,7 +234,7 @@ Example:
     p_the = (inputs.eta_th_in * p_th)
     p_et = p_the
     p_sub = (inputs.f_sub_in * p_et)
-    recirculating = ((((((p_coils + inputs.p_pump_total_in) + p_sub) + p_aux) + p_cool) + inputs.p_cryo) + inputs.p_wallplug_in)
+    recirculating = ((((((((p_coils + inputs.p_pump_total_in) + p_sub) + p_aux) + p_cool) + inputs.p_cryo) + inputs.p_wallplug_in) + inputs.p_cycle_pumps_in) + inputs.p_cooling_water_in)
     q_eng = (p_et / recirculating)
     rec_frac = (1.0 / q_eng)
     return (

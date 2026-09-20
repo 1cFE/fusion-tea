@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-COMPARISON-KOVARI-CYCLE-BASIS",
+  "request_key": "7af5cbabdc8302984668a5c7c046411900074365ac4fe6773cdce5deb705adcc",
+  "request_path": "knowledge/research/requests/REQ-COMPARISON-KOVARI-CYCLE-BASIS.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 4,
+    "max_captures": 2
+  },
+  "opened_at": "2026-09-20T00:46:33.797909+00:00",
+  "override_reason": null
+}

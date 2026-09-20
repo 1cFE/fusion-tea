@@ -1,0 +1,9 @@
+SysML parsing failed: Failed to load SysML models: root-0/probe.sysml:29:22: (feature-value-overriding) Cannot override a binding feature value
+SysML parsing failed: Failed to load SysML models: root-0/probe.sysml:9:2: (redefinition-direction-conformance) Redefining feature must have a compatible direction; root-0/probe.sysml:29:17: (feature-value-overriding) Cannot override a binding feature value; root-0/probe.sysml:30:3: (redefinition-direction-conformance) Redefining feature must have a compatible direction; root-0/probe.sysml:30:16: (feature-value-overriding) Cannot override a binding feature value
+[ERROR] /home/reid/1cfe/fusion-tea/work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/structure-probe/specialized/models/probe.sysml:29:22: error (feature-value-overriding): Cannot override a binding feature value
+{"selector": true, "specialized": false}
+[ERROR] /home/reid/1cfe/fusion-tea/work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/structure-probe/replacement/models/probe.sysml:9:2: error (redefinition-direction-conformance): Redefining feature must have a compatible direction
+[ERROR] /home/reid/1cfe/fusion-tea/work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/structure-probe/replacement/models/probe.sysml:29:17: error (feature-value-overriding): Cannot override a binding feature value
+[ERROR] /home/reid/1cfe/fusion-tea/work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/structure-probe/replacement/models/probe.sysml:30:3: error (redefinition-direction-conformance): Redefining feature must have a compatible direction
+[ERROR] /home/reid/1cfe/fusion-tea/work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/structure-probe/replacement/models/probe.sysml:30:16: error (feature-value-overriding): Cannot override a binding feature value
+{"selector": true, "specialized": false, "replacement": false}

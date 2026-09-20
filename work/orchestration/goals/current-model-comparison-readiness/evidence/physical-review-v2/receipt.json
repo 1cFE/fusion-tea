@@ -1,0 +1,136 @@
+{
+  "Q_IHX_MW": 3301.2132114869937,
+  "Q_SG_MW": 3306.8890988488924,
+  "shaft_MW": 5.675887361898563,
+  "salt_return_C": 269.6647299145299,
+  "cases": [
+    {
+      "grid": "1K",
+      "approach_K": 10,
+      "duties_MW": [
+        637.6956297295599,
+        1991.5636850498247,
+        677.6297840695075
+      ],
+      "UA_MW_per_K": [
+        11.44355449407266,
+        27.159500612210472,
+        11.711231492828082
+      ],
+      "UA_relative_error": -8.110806692940287e-09,
+      "min_gap_K": 10.0,
+      "max_single_phase_gap_slope": -0.11526168652032442,
+      "water_exergy_MW": 1422.350156879972,
+      "salt_exergy_MW": 1666.9396699650426,
+      "fit_to_water_exergy": 0.9422366042717133
+    },
+    {
+      "grid": "1K",
+      "approach_K": 20,
+      "duties_MW": [
+        643.7990590490608,
+        2010.6250798913431,
+        652.464959908489
+      ],
+      "UA_MW_per_K": [
+        11.495276963577696,
+        27.124602557176654,
+        9.16703471737786
+      ],
+      "UA_relative_error": -4.440147249873405e-09,
+      "min_gap_K": 20.0,
+      "max_single_phase_gap_slope": -0.11453868382396462,
+      "water_exergy_MW": 1418.106737789542,
+      "salt_exergy_MW": 1666.9396699650426,
+      "fit_to_water_exergy": 0.9392439570349257
+    },
+    {
+      "grid": "1K",
+      "approach_K": 30,
+      "duties_MW": [
+        650.0706761300537,
+        2030.2117357232817,
+        626.606686995557
+      ],
+      "UA_MW_per_K": [
+        11.548177123784946,
+        27.089534679479566,
+        7.684443812144727
+      ],
+      "UA_relative_error": -3.762358202763494e-09,
+      "min_gap_K": 30.0,
+      "max_single_phase_gap_slope": -0.11379575786828808,
+      "water_exergy_MW": 1413.9432886370796,
+      "salt_exergy_MW": 1666.9396699650426,
+      "fit_to_water_exergy": 0.9360986355801995
+    },
+    {
+      "grid": "0.5K",
+      "approach_K": 10,
+      "duties_MW": [
+        637.6956297295602,
+        1991.5636850498247,
+        677.629784069508
+      ],
+      "UA_MW_per_K": [
+        11.443588519760063,
+        27.159500612210472,
+        11.71119991385297
+      ],
+      "UA_relative_error": -3.622842359440881e-09,
+      "min_gap_K": 10.0,
+      "max_single_phase_gap_slope": -0.11508738624477069,
+      "water_exergy_MW": 1422.350156879972,
+      "salt_exergy_MW": 1666.9396699650426,
+      "fit_to_water_exergy": 0.9422366042717133
+    },
+    {
+      "grid": "0.5K",
+      "approach_K": 20,
+      "duties_MW": [
+        643.799059049061,
+        2010.6250798913431,
+        652.464959908489
+      ],
+      "UA_MW_per_K": [
+        11.495310812514807,
+        27.124602557176654,
+        9.167012774659653
+      ],
+      "UA_relative_error": -2.780562113890994e-09,
+      "min_gap_K": 20.0,
+      "max_single_phase_gap_slope": -0.11436438354841089,
+      "water_exergy_MW": 1418.106737789542,
+      "salt_exergy_MW": 1666.9396699650426,
+      "fit_to_water_exergy": 0.9392439570349257
+    },
+    {
+      "grid": "0.5K",
+      "approach_K": 30,
+      "duties_MW": [
+        650.0706761300537,
+        2030.2117357232817,
+        626.6066869955565
+      ],
+      "UA_MW_per_K": [
+        11.548210794763218,
+        27.089534679479566,
+        7.684425398968707
+      ],
+      "UA_relative_error": -2.6546683740136245e-09,
+      "min_gap_K": 30.0,
+      "max_single_phase_gap_slope": -0.11362145759273434,
+      "water_exergy_MW": 1413.9432886370796,
+      "salt_exergy_MW": 1666.9396699650426,
+      "fit_to_water_exergy": 0.9360986355801995
+    }
+  ],
+  "hashes": {
+    "nist-original-1K.tsv": "da89a06ef62c524e9666c7e74a1cb2084117fc515431f3e46b7e41ea14ad14f7",
+    "nist_webbook_water6_2mpa171to455c_state_table/raw.html": "2ce732b34c9b483369f8d4cb00a9c742f48f4d23b7bc3e3bef19725904600230",
+    "nist-original-halfK.tsv": "1313950cfe9e11823c253c0a216211898d226e37390c83cb2ab0a6a63d33fb9e",
+    "nist_webbook_water6_2mpa171to455c_halfk_state_table/raw.html": "46fc6b313bb2a25fee3cc161b8de989a1601dbc549b27f07b0f28f437c432234"
+  },
+  "1K_all14column_rows_match": 287,
+  "0.5K_all14column_rows_match": 571
+}

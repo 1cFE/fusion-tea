@@ -1,0 +1,33 @@
+{
+  "outputs": 956,
+  "verdicts": 25,
+  "output_differences": {},
+  "missing_outputs": [],
+  "verdicts_exact": true,
+  "failed_verdicts": [
+    {
+      "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+      "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+      "source_local_identity": "divertor_heat_ok",
+      "status": "violated"
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "definition_qualified_name": "mfe_conductor_current::'Reference Conductor Current Margin'",
+      "source_local_identity": "reference_conductor_current_ok",
+      "status": "violated"
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+      "definition_qualified_name": "mfe_tritium_breeding::'Computed TBR Adequacy'",
+      "source_local_identity": "tbr_ok",
+      "status": "violated"
+    },
+    {
+      "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+      "definition_qualified_name": "mfe_winding_pack_fit::'Winding Pack Fits Casing'",
+      "source_local_identity": "wp_fit_ok",
+      "status": "violated"
+    }
+  ]
+}

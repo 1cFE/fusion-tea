@@ -1,0 +1,388 @@
+{
+  "table5_nonempty_independent_values_accepted": [
+    "stellarator_09__stellaris__plasma__n_e0"
+  ],
+  "undeclared_fixed_override_accepted": {
+    "stellarator_09__stellaris__discount_rate": 0.02
+  },
+  "existing_document_after_refusal": {
+    "bytes": "original",
+    "files": [
+      "existing.json"
+    ]
+  },
+  "barred_path_strings_accepted": [
+    "knowledge/sources/overview_of_the_helios_design_a_practical_planar_coil/example.txt",
+    "exploration/concept_analysis/analyses/09-qi-stellarator-hts/example.txt",
+    "knowledge/sources/aries_cost_account_documentation/example.txt",
+    "knowledge/research/pending/20260912-115614_stellaris-structural-behavioral-modeling.md"
+  ],
+  "baseline_accounting": {
+    "status": "pass",
+    "source_sha256": "5298b7940c4fc0b058ac1fcb6b8cd61374c39f0a54d793c0b83bf8404a8a76f0",
+    "checks": [
+      {
+        "name": "materials",
+        "actual": 15954709.374417959,
+        "expected": 15954709.374417959,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "procurement",
+        "actual": 1497941229.6061373,
+        "expected": 1497941229.6061375,
+        "residual": -2.384185791015625e-07,
+        "passed": true
+      },
+      {
+        "name": "magnet",
+        "actual": 1707443242.2597551,
+        "expected": 1707443242.2597551,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "aux_cooling",
+        "actual": 35116270.129820704,
+        "expected": 35116270.129820704,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "core",
+        "actual": 3500357699.499224,
+        "expected": 3500357699.4992247,
+        "residual": -4.76837158203125e-07,
+        "passed": true
+      },
+      {
+        "name": "equipment",
+        "actual": 3667164572.987823,
+        "expected": 3667164572.987823,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "cas22",
+        "actual": 10809801971.108973,
+        "expected": 10809801971.108974,
+        "residual": -1.9073486328125e-06,
+        "passed": true
+      },
+      {
+        "name": "bop",
+        "actual": 580934471.49956,
+        "expected": 580934471.4995599,
+        "residual": 1.1920928955078125e-07,
+        "passed": true
+      },
+      {
+        "name": "direct",
+        "actual": 12219310280.608742,
+        "expected": 12219310280.608742,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "cas20",
+        "actual": 13441241308.669617,
+        "expected": 13441241308.669617,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "overnight",
+        "actual": 17918171013.726093,
+        "expected": 17918171013.726093,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "total",
+        "actual": 17918171013.726093,
+        "expected": 17918171013.726093,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "annual70",
+        "actual": 273360371.15999794,
+        "expected": 273360371.15999794,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "annual_total",
+        "actual": 274152877.1251124,
+        "expected": 274152877.1251124,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "cooling_equipment_children",
+        "actual": 6471347145.807992,
+        "expected": 6471347145.807993,
+        "residual": -9.5367431640625e-07,
+        "passed": true
+      },
+      {
+        "name": "facilities_children",
+        "actual": 799758795.94032,
+        "expected": 799758795.9403197,
+        "residual": 3.5762786865234375e-07,
+        "passed": true
+      },
+      {
+        "name": "fuel_processing_children",
+        "actual": 22786229.403793395,
+        "expected": 22786229.403793395,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "cas72_selected_replacements",
+        "actual": 193999912.5748553,
+        "expected": 193999912.5748553,
+        "residual": 0.0,
+        "passed": true
+      },
+      {
+        "name": "headline_lcoe",
+        "actual": 271.58431991729486,
+        "expected": 271.5843199172948,
+        "residual": 5.684341886080802e-14,
+        "passed": true
+      },
+      {
+        "name": "comparison_lcoe",
+        "actual": 266.45893056660543,
+        "expected": 266.4589305666054,
+        "residual": 5.684341886080802e-14,
+        "passed": true
+      }
+    ],
+    "annual_energy_mwh": 7978704.890195747,
+    "tolerance": {
+      "relative": 1e-12,
+      "absolute": 1e-05
+    },
+    "limitations": [
+      "Arithmetic consistency does not validate physical applicability or complete installed cost.",
+      "Steam-generator cost inclusion remains unverified; no duplicate allowance added.",
+      "Mixed monetary years remain unresolved."
+    ]
+  },
+  "extra_zero_facility_child_accounting_status": "pass",
+  "actual_schema_declaration_count": 490,
+  "baseline_selected_check": {
+    "status": "pass",
+    "result_sha256": "f66e6b5457ceb2ac0b7d583188989177253de88f4aecb2f88180db0d8678894e",
+    "numeric_channels": 956,
+    "numeric_discrepancies": [],
+    "predicate_checks": [
+      {
+        "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "native_verdict": "violated",
+        "native_operands": "violated",
+        "independent_operands": "violated",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+        "native_verdict": "violated",
+        "native_operands": "violated",
+        "independent_operands": "violated",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "native_verdict": "violated",
+        "native_operands": "violated",
+        "independent_operands": "violated",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+        "native_verdict": "violated",
+        "native_operands": "violated",
+        "independent_operands": "violated",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f",
+        "native_verdict": "satisfied",
+        "native_operands": "satisfied",
+        "independent_operands": "satisfied",
+        "passed": true
+      }
+    ],
+    "violated_constraints": [
+      "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+      "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+      "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+      "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339"
+    ],
+    "meaning": "Scalar comparison tolerance is separate from exact physical predicate evaluation. Input identity and aliases receive no independent physics credit."
+  },
+  "reviewed_hashes": {
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/candidate_common.py": "886839c30fdee18202047c6f028b4a20d4a832d91ec2e2c4d0445eb11ff23081",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/execute_frozen.py": "d58d67bf9fd43c939ee42064283cbc24b728d427de580b92421300baf9464ed3",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/refresh_contract.py": "dbee2ba5bc5be63670a2b5deb29df95bd68cc3cfa09b576543cd067a67f7f4b6",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/check_lineage.py": "705b493e6fe950d7c75c8054d2931ba11c97064d38a772601a4654ee5bfb66cd",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/export_model_values.py": "0a2a60f7081d99945bf6dc5ecb165c70995047b6137084cbab0d8d2861cb5de0",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/check_accounting.py": "cbfc10af9301b48c0cee555711709f503d494a145f4a6b2d7639ebe173fe8264",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/check_selected_mode.py": "5e9baf5a263f47b77d811d7a147ee5bef9a3a4f202a357a5736dfcb679f0b233",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/build_freeze.py": "828104d4a5fad3d9b05f3fc899957bff5160e3b42a1d712a0de9765d0afaf476",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/input-rules.json": "bd293abb6986c09dcd7b17d42fa9ff9bc46f1f99294fb0ee1437faf02aae778b",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/manifest.json": "253e9d53e369f48dfd7b25391180ea06ae5c1273f46da4e78d302a1bdf6a7432",
+    ".project/active/aries-comparison-preparation/current-readiness/candidate/constraint-inventory.json": "d9821474866f7670e33ad5b5abbbe990e723f72c9b285833cd30a74f539a9eef",
+    "tests/test_current_comparison_candidate.py": "ff57c7dc68f2a942c067353075456280f2859e07cbd68cfb353e6bb45a9d3b42"
+  },
+  "nonfinite_native_serialization_failure": {
+    "error": "ValueError: Out of range float values are not JSON compliant: nan",
+    "result_bytes": "",
+    "identity_receipt_exists": false,
+    "native_execution": "stubbed; no physical model run"
+  }
+}

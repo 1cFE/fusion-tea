@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_power_balance.sysml:171
+SysML Source: root-0/analyses/mfe_power_balance.sysml:174
 
 SysML Expressions:
     p_alpha = 3.52 / 17.58 * p_nrl
@@ -43,7 +43,7 @@ equals the power balance's own partial sum to the bit.
 *Ref**: WI-019 collapse p_th = mn*p_neutron + p_alpha + p_input + (recovered pump heat)
 *Basis**: reactor source heat before the loop's own recovered work; the heat ledger's one source (packet § 5)
 
-SysML Source: root-0/analyses/mfe_power_balance.sysml:171
+SysML Source: root-0/analyses/mfe_power_balance.sysml:174
 
 SysML Expressions:
     p_alpha = 3.52 / 17.58 * p_nrl

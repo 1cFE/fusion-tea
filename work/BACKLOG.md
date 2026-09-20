@@ -374,6 +374,18 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-072
+  name: Current comparison numeric verification coverage
+  scale: standard
+  priority: P0
+  status: backlog
+  completed: null
+- id: WI-073
+  name: Matched steam cycle for current comparison
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -469,3 +481,5 @@ standalone:
 | WI-069 | Fuel inventory and startup | standard | P0 | backlog |  |
 | WI-070 | Throughput-based fuel processing costs | standard | P0 | backlog |  |
 | WI-071 | Shared fabrication rate for estimate uncertainty | standard | P1 | backlog |  |
+| WI-072 | Current comparison numeric verification coverage | standard | P0 | backlog |  |
+| WI-073 | Matched steam cycle for current comparison | standard | P1 | backlog |  |

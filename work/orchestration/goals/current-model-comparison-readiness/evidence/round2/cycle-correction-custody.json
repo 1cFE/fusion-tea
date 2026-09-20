@@ -1,0 +1,25 @@
+{
+  "authority": "author revision custody; original reviewed bytes preserved",
+  "files": {
+    "cycle-proposal.md": "476c6db47b9060e70f028ab36c10484cde4b4928e7b2711079e2f55448bdf5e3",
+    "cycle-prototype.py": "2c1af0e3d050602f1a49ee75c73e638e312b76f42a2abefd43f5930dc3c1ace5",
+    "cycle-results.json": "2f40da9c9d99eb774177a7144c41d1bdab58019bcd0305e8de7df46d72fdfdb5",
+    "cycle-author-checks.json": "c2704176ff4cabc611f499a6034cffe12e82043d481225a5441225b407b52a95",
+    "cycle-proposal-v2.md": "b34354d44bb670b4750d86d9b642e54e1a55d5804fa1929513a05bf2954fbc77"
+  },
+  "supersedes_interpretation": "cycle-proposal.md",
+  "corrected": "cycle-proposal-v2.md",
+  "findings": [
+    "no numerical moisture fence",
+    "3 percent historical overlap unresolved",
+    "conditional cooling water guards"
+  ],
+  "native_pending": "knowledge/research/pending/20260919-203209_comparison-matched-rankine-cycle-v2-final.md",
+  "original_reviewed_identity_checks": {
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal.md": true,
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-prototype.py": true,
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-results.json": true,
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-author-checks.json": true
+  },
+  "native_pending_previous": "knowledge/research/pending/20260919-202540_comparison-matched-rankine-cycle-v2.md"
+}

@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://webbook.nist.gov/cgi/fluid.cgi?Action=Load&Wide=on&ID=C7732185&Type=SatP&Digits=8&TLow=20&THigh=60&TInc=0.5&RefState=DEF&TUnit=C&PUnit=MPa&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm",
+  "slug": "nist_water_temperature_grid_saturation_20to60c_corrected",
+  "path": "knowledge/sources/nist_water_temperature_grid_saturation_20to60c_corrected/",
+  "source_id": "02e0f7034a6268168646b428bdc7f977e6a8d7340c0dffc816721bee788e4ae3",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-20T03:06:28.134871+00:00"
+}

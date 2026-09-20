@@ -1,0 +1,24 @@
+# WI-073 regression-contract review
+
+[AGENT; independent non-author `/root/cycle_physical_critic`; 2026-09-19] **PASS after two corrections for the bounded migration contract, mode handling and exact predicate extension.** Full regression completion remains a separate gate. The reviewer changed no tool, model, test or fixture.
+
+## Ledger derivation
+
+Reviewed `.project/active/aries-comparison-preparation/current-readiness/regression-evidence/cycle-migration/{derive_contract.py,derive_reachability.py,contract-delta.json,current.expected.json,graph-ledger.json}`. All recorded source and historical-fixture hashes match the inspected files. The contract adds 94 primitive/status outputs and three predicates without removing entering outputs or predicates. A separate fixed-point traversal over the ledger, after checking every module binding against actual YAML, reproduces the 83 potentially changed existing outputs and 873 outside that fanout. Together they partition all 956 entering channels. This is conservative module dependency reachability, not a numerical changed-value oracle.
+
+The same independent traversal reproduces all eight axis traces and objective partitions: availability_direct 64/630, interest_rate 103/884, R 156/1063, a 155/1062, I_coil 151/1044, p_wallplug_heat 22/44, eta_source_heat 117/936 and eta_couple_heat 117/936 (modules/channels). Predicate leaves and reached classifications agree. Aggregate module fanout can be broad; reachability does not establish sign, monotonicity, actual response or operand-level dependence. Both the authored algorithm and ledger state that limit. The derivation consumes raw bindings and published predicate IR, not the indicator implementation it checks.
+
+Historical expectation files under `tests/study/data` have no git diff, and their hashes remain pinned. The named historical fixture assertions still compare against those unchanged historical files; current field-for-field assertions use the separately derived ledger. This preserves both claims rather than replacing old anchors with current output snapshots. The WI-073 receipt reference supplies the same `inventory` and `seed_and_generate` interfaces; their availability was executed. Existing strict historical scalar checks remain present, including rel1e-12/abs1e-12 and rel1e-12/abs1e-9 where previously specified. No tolerance change was needed for the new exact logical predicates. This review does not substitute for executing every migrated historical driver.
+
+## Findings corrected during review
+
+1. Repeated WI-073 block insertion had split `structure_modules` and `translate_frozen_radius_evidence`, leaving both returning None and their original bodies unreachable. The author removed both duplicate blocks. Fresh AST inspection confirms one additive fixture helper and restored function bodies; a concrete structure-name translation now passes.
+2. Historical eighteen-predicate projection initially removed only seven later predicates and omitted the three new cycle predicates. The author added the exact ledger-derived `WI073_PREDICATES` set to report projection and native/direct filters. The projection now requires the full current catalog and removes exactly the ten later predicates; it retains the original eighteen assertions. Full driver execution remains in the author's pending regression scope.
+
+## Mode and verdict behavior
+
+The held-efficiency seam sets historical cycle-live, matched-cycle and cooling-water modes to zero together. It labels supplied efficiency and conservatively dependent quantities, while inactive state placeholders export as unavailable predictions with raw values retained. Exact mode applicability preserves the raw legacy fit failure, marks it inactive only for matched mode one, and blocks missing/fractional mode evidence. This does not suppress unrelated engineering failures or unresolved equipment/allowance qualification.
+
+The verifier extends its exact predicate evaluator to binary OR, evaluates both branches, preserves outer negation and rejects missing, unsupported or nonfinite operands even when the other branch is true. A recorded Unknown cannot equal its reconstructed satisfied/violated result and therefore fails verification. No engineering threshold is approximated. The mode-domain guard remains the reason `enabled <= 0 or gap > 0` is valid for the supported zero/one encoding.
+
+Independent focused execution: `.codex-test/run python -m pytest -q tests/study/test_verify.py tests/test_current_comparison_candidate.py -k 'exact_active_heat_direction_disjunction or true_disjunction_cannot_hide or held_efficiency_disables or inactive_cycle_placeholders or raw_legacy_failure'` passed **18 tests**, with 96 deselected. Independent ledger/hash/closure and restored-helper checks also passed. Earlier failed focused receipts remain evidence of corrected defects; they must not be represented as clean first-pass results.

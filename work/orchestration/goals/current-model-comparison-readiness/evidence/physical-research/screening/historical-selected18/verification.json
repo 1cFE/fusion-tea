@@ -1,0 +1,40 @@
+{
+  "1K_all14columns_exact": 287,
+  "0.5K_all14columns_exact": 571,
+  "cases": [
+    {
+      "approach": 10,
+      "quadrature_UA_relative_error": 1.6497914145929826e-13,
+      "entropy_integral_error_kJkgK": -2.598459225566785e-09,
+      "nonboiling_gap_slopes_min_max": [
+        -0.33379236009896335,
+        -0.11508738624477069
+      ],
+      "cycle_to_water_exergy_ratio": 0.9422366042717133
+    },
+    {
+      "approach": 20,
+      "quadrature_UA_relative_error": 1.6764367671839864e-13,
+      "entropy_integral_error_kJkgK": -7.59631992863774e-08,
+      "nonboiling_gap_slopes_min_max": [
+        -0.3300424369029673,
+        -0.11436438354841089
+      ],
+      "cycle_to_water_exergy_ratio": 0.939243957034926
+    },
+    {
+      "approach": 30,
+      "quadrature_UA_relative_error": 1.680877659282487e-13,
+      "entropy_integral_error_kJkgK": -1.2253364900516317e-07,
+      "nonboiling_gap_slopes_min_max": [
+        -0.3258296090855204,
+        -0.11362145759273434
+      ],
+      "cycle_to_water_exergy_ratio": 0.9360986355801997
+    }
+  ],
+  "criterion_failures_retained": [
+    "10Khot fails20Kminimum"
+  ],
+  "nonpositive_gap_guard": "nonpositive temperature difference"
+}

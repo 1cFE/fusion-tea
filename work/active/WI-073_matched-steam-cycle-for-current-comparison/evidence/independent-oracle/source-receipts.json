@@ -1,0 +1,133 @@
+{
+  "main": {
+    "path": "knowledge/sources/nist_webbook_water6_2mpa171to455c_halfk_state_table/raw.html",
+    "sha256": "46fc6b313bb2a25fee3cc161b8de989a1601dbc549b27f07b0f28f437c432234",
+    "rows": 571,
+    "liquid_rows": 215,
+    "max_h_minus_u_minus_pv_kJ_kg": 9.600000009868381e-05,
+    "anchors": [
+      {
+        "t": 171.0,
+        "p": 6.2,
+        "rho": 899.80471,
+        "v": 0.0011113523,
+        "u": 719.51841,
+        "h": 726.4088,
+        "s": 2.0446026,
+        "phase": "liquid"
+      },
+      {
+        "t": 455.0,
+        "p": 6.2,
+        "rho": 19.68017,
+        "v": 0.05081257,
+        "u": 2997.2083,
+        "h": 3312.2463,
+        "s": 6.7205477,
+        "phase": "vapor"
+      }
+    ],
+    "saturation_endpoints": [
+      {
+        "t": 277.73289,
+        "p": 6.2,
+        "rho": 754.26867,
+        "v": 0.0013257875,
+        "u": 1216.838,
+        "h": 1225.0579,
+        "s": 3.0475566,
+        "phase": "liquid"
+      },
+      {
+        "t": 277.73289,
+        "p": 6.2,
+        "rho": 31.939528,
+        "v": 0.031309166,
+        "u": 2588.2536,
+        "h": 2782.3705,
+        "s": 5.874496,
+        "phase": "vapor"
+      }
+    ]
+  },
+  "extraction": {
+    "path": "knowledge/sources/nist_water0_8mpa42to455c_matched_cycle_table/raw.html",
+    "sha256": "89d012276680d93be9f5bf58fa61426f9167a57f7db4c15b8b164975c5dfe8d4",
+    "rows": 603,
+    "liquid_rows": 188,
+    "max_h_minus_u_minus_pv_kJ_kg": 9.199999988140917e-05,
+    "anchors": [
+      {
+        "t": 42.0,
+        "p": 0.8,
+        "rho": 991.7425,
+        "v": 0.0010083263,
+        "u": 175.7843,
+        "h": 176.59096,
+        "s": 0.59869146,
+        "phase": "liquid"
+      },
+      {
+        "t": 455.0,
+        "p": 0.8,
+        "rho": 2.3990049,
+        "v": 0.4168395,
+        "u": 3051.0947,
+        "h": 3384.5663,
+        "s": 7.7403808,
+        "phase": "vapor"
+      }
+    ],
+    "saturation_endpoints": [
+      {
+        "t": 170.40649,
+        "p": 0.8,
+        "rho": 897.03505,
+        "v": 0.0011147836,
+        "u": 719.97187,
+        "h": 720.8637,
+        "s": 2.0456512,
+        "phase": "liquid"
+      },
+      {
+        "t": 170.40649,
+        "p": 0.8,
+        "rho": 4.1607711,
+        "v": 0.24034006,
+        "u": 2576.0313,
+        "h": 2768.3033,
+        "s": 6.6616126,
+        "phase": "vapor"
+      }
+    ]
+  },
+  "saturation": {
+    "path": "knowledge/sources/nist_water_temperature_grid_saturation_20to60c_corrected/raw.html",
+    "sha256": "02e0f7034a6268168646b428bdc7f977e6a8d7340c0dffc816721bee788e4ae3",
+    "rows": 162,
+    "liquid_rows": 81,
+    "max_h_minus_u_minus_pv_kJ_kg": 8.940825139802655e-05,
+    "anchors": [
+      {
+        "t": 20.0,
+        "p": 0.0023393182,
+        "rho": 998.1618,
+        "v": 0.0010018416,
+        "u": 83.911801,
+        "h": 83.914145,
+        "s": 0.29648334,
+        "phase": "liquid"
+      },
+      {
+        "t": 60.0,
+        "p": 0.019946434,
+        "rho": 0.13042522,
+        "v": 7.6672286,
+        "u": 2455.901,
+        "h": 2608.8349,
+        "s": 7.9081489,
+        "phase": "vapor"
+      }
+    ]
+  }
+}

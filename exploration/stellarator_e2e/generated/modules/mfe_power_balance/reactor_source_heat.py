@@ -22,9 +22,9 @@ Inputs:
 Outputs:
     - q_source: q_source result
 
-SysML Source: root-0/analyses/mfe_power_balance.sysml:171
+SysML Source: root-0/analyses/mfe_power_balance.sysml:174
 
-SysML Source: root-0/analyses/mfe_power_balance.sysml:171
+SysML Source: root-0/analyses/mfe_power_balance.sysml:174
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_power_balance/reactor_source_heat_impl.py
@@ -72,9 +72,9 @@ Inputs:
 Outputs:
     - q_source: q_source result
 
-SysML Source: root-0/analyses/mfe_power_balance.sysml:171
+SysML Source: root-0/analyses/mfe_power_balance.sysml:174
 
-    SysML Source: root-0/analyses/mfe_power_balance.sysml:171
+    SysML Source: root-0/analyses/mfe_power_balance.sysml:174
 
     Calculation Specification:
         p_alpha = 3.52 / 17.58 * p_nrl

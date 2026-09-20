@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "/tmp/physical-dostal2004.pdf",
+  "slug": "dostal_driscoll_hejzlar2004_mit_anp_tr100_cycle_report",
+  "path": "knowledge/sources/dostal_driscoll_hejzlar2004_mit_anp_tr100_cycle_report/",
+  "source_id": "80401528cc9af65f0f3b873b9f31c50d65710f12ecb0bd3c586f9cee87e16d7c",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-20T00:49:19.089069+00:00"
+}

@@ -4,6 +4,8 @@ package mfe_subsystems {
     private import ScalarValues::*;
     private import mfe_interfaces::*;
     private import mfe_power_cycle::*;
+    private import mfe_matched_steam_cycle::*;
+    private import mfe_steam_cycle_components::*;
     private import mfe_power_balance::*;
     private import mfe_account_costs::*;
     private import mfe_cryo_inventory::*;
@@ -298,7 +300,7 @@ package mfe_subsystems {
         attribute domain_product : Real = cycle.domain_product;
         // WI-067: inherited fit argument, not a solved salt/steam inlet state.
         attribute cycle_argument : Real = cycle.T2_C;
-        attribute eta_th : Real = cycle.eta_th;
+        attribute eta_th : Real = cycle_selection.eta_selected;
         :>> capital_cost = turbine_cost.cost;
         // ---- template calcs (WI-057): the analyses this part owns ----
         calc cycle : 'Power Cycle Efficiency' {
@@ -313,6 +315,297 @@ package mfe_subsystems {
             in cycle_live_in = cycle_live;
             in eta_th_direct_in = eta_th_direct;
         }
+        // WI-073 matched state calculation; generic inactive before property evaluation.
+        attribute matched_cycle_enabled : Real default 0.0;
+        attribute pump_motor_efficiency : Real default 0.0;
+        port pump_electric_in : ~'Electric Port';
+        port cycle_rejection : 'Heat Duty Port';
+        port conversion_losses : 'Heat Duty Port';
+        // Conversion-loss boundary collects mechanical, generator and pump-motor losses.
+        // Total rejection is q_rejection_before_cooling_MW, not condenser duty alone.
+        attribute cycle_heat_available_MW : Real default 0.0;
+        attribute cycle_source_heat_MW : Real default 0.0;
+        attribute cycle_selected_recovered_MW : Real default 0.0;
+        attribute cycle_salt_flow_per_circuit : Real default 0.0;
+        attribute cycle_salt_circuit_count : Real default 0.0;
+        attribute cycle_salt_hot_C : Real default 0.0;
+        attribute cycle_salt_return_C : Real default 0.0;
+        attribute cycle_salt_cp_kJ_kgK : Real default 0.0;
+        attribute p_feed_MPa : Real = matched_cycle.p_feed_MPa;
+        attribute h_feed_kJ_kg : Real = matched_cycle.h_feed_kJ_kg;
+        attribute mdot_feed_kg_s : Real = matched_cycle.mdot_feed_kg_s;
+        attribute t_feed_C : Real = matched_cycle.t_feed_C;
+        attribute s_feed_kJ_kgK : Real = matched_cycle.s_feed_kJ_kgK;
+        attribute p_main_MPa : Real = matched_cycle.p_main_MPa;
+        attribute h_main_kJ_kg : Real = matched_cycle.h_main_kJ_kg;
+        attribute mdot_main_kg_s : Real = matched_cycle.mdot_main_kg_s;
+        attribute t_main_C : Real = matched_cycle.t_main_C;
+        attribute s_main_kJ_kgK : Real = matched_cycle.s_main_kJ_kgK;
+        attribute p_hp_MPa : Real = matched_cycle.p_hp_MPa;
+        attribute h_hp_kJ_kg : Real = matched_cycle.h_hp_kJ_kg;
+        attribute mdot_hp_kg_s : Real = matched_cycle.mdot_hp_kg_s;
+        attribute t_hp_C : Real = matched_cycle.t_hp_C;
+        attribute s_hp_kJ_kgK : Real = matched_cycle.s_hp_kJ_kgK;
+        attribute p_reheat_MPa : Real = matched_cycle.p_reheat_MPa;
+        attribute h_reheat_kJ_kg : Real = matched_cycle.h_reheat_kJ_kg;
+        attribute mdot_reheat_kg_s : Real = matched_cycle.mdot_reheat_kg_s;
+        attribute t_reheat_C : Real = matched_cycle.t_reheat_C;
+        attribute s_reheat_kJ_kgK : Real = matched_cycle.s_reheat_kJ_kgK;
+        attribute p_lp_MPa : Real = matched_cycle.p_lp_MPa;
+        attribute h_lp_kJ_kg : Real = matched_cycle.h_lp_kJ_kg;
+        attribute mdot_lp_kg_s : Real = matched_cycle.mdot_lp_kg_s;
+        attribute t_lp_C : Real = matched_cycle.t_lp_C;
+        attribute s_lp_kJ_kgK : Real = matched_cycle.s_lp_kJ_kgK;
+        attribute p_condensate_MPa : Real = matched_cycle.p_condensate_MPa;
+        attribute h_condensate_kJ_kg : Real = matched_cycle.h_condensate_kJ_kg;
+        attribute mdot_condensate_kg_s : Real = matched_cycle.mdot_condensate_kg_s;
+        attribute t_condensate_C : Real = matched_cycle.t_condensate_C;
+        attribute s_condensate_kJ_kgK : Real = matched_cycle.s_condensate_kJ_kgK;
+        attribute p_condensate_pumped_MPa : Real = matched_cycle.p_condensate_pumped_MPa;
+        attribute h_condensate_pumped_kJ_kg : Real = matched_cycle.h_condensate_pumped_kJ_kg;
+        attribute mdot_condensate_pumped_kg_s : Real = matched_cycle.mdot_condensate_pumped_kg_s;
+        attribute p_heater_MPa : Real = matched_cycle.p_heater_MPa;
+        attribute h_heater_kJ_kg : Real = matched_cycle.h_heater_kJ_kg;
+        attribute mdot_heater_kg_s : Real = matched_cycle.mdot_heater_kg_s;
+        attribute t_heater_C : Real = matched_cycle.t_heater_C;
+        attribute s_heater_kJ_kgK : Real = matched_cycle.s_heater_kJ_kgK;
+        attribute bleed_fraction : Real = matched_cycle.bleed_fraction;
+        attribute mdot_bleed_kg_s : Real = matched_cycle.mdot_bleed_kg_s;
+        attribute salt_flow_total_kg_s : Real = matched_cycle.salt_flow_total_kg_s;
+        attribute salt_main_flow_kg_s : Real = matched_cycle.salt_main_flow_kg_s;
+        attribute salt_reheat_flow_kg_s : Real = matched_cycle.salt_reheat_flow_kg_s;
+        attribute q_main_MW : Real = matched_cycle.q_main_MW;
+        attribute q_reheat_MW : Real = matched_cycle.q_reheat_MW;
+        attribute q_condenser_MW : Real = matched_cycle.q_condenser_MW;
+        attribute p_hp_shaft_MW : Real = matched_cycle.p_hp_shaft_MW;
+        attribute p_lp_shaft_MW : Real = matched_cycle.p_lp_shaft_MW;
+        attribute p_condensate_shaft_MW : Real = matched_cycle.p_condensate_shaft_MW;
+        attribute p_feedwater_shaft_MW : Real = matched_cycle.p_feedwater_shaft_MW;
+        attribute p_condensate_electric_MW : Real = matched_cycle.p_condensate_electric_MW;
+        attribute p_feedwater_electric_MW : Real = matched_cycle.p_feedwater_electric_MW;
+        attribute p_cycle_pumps_MW : Real = matched_cycle.p_cycle_pumps_MW;
+        attribute p_gross_MW : Real = matched_cycle.p_gross_MW;
+        attribute eta_gross : Real = matched_cycle.eta_gross;
+        attribute p_cycle_net_before_cooling_MW : Real = matched_cycle.p_cycle_net_before_cooling_MW;
+        attribute q_mechanical_loss_MW : Real = matched_cycle.q_mechanical_loss_MW;
+        attribute q_generator_loss_MW : Real = matched_cycle.q_generator_loss_MW;
+        attribute q_pump_motor_loss_MW : Real = matched_cycle.q_pump_motor_loss_MW;
+        attribute q_rejection_before_cooling_MW : Real = matched_cycle.q_rejection_before_cooling_MW;
+        attribute lp_quality : Real = matched_cycle.lp_quality;
+        attribute lp_moisture_fraction : Real = matched_cycle.lp_moisture_fraction;
+        attribute main_min_gap_K : Real = matched_cycle.main_min_gap_K;
+        attribute reheat_min_gap_K : Real = matched_cycle.reheat_min_gap_K;
+        attribute main_UA_MW_K : Real = matched_cycle.main_UA_MW_K;
+        attribute reheat_UA_MW_K : Real = matched_cycle.reheat_UA_MW_K;
+        attribute salt_heat_residual_MW : Real = matched_cycle.salt_heat_residual_MW;
+        attribute heater_mass_residual_kg_s : Real = matched_cycle.heater_mass_residual_kg_s;
+        attribute heater_energy_residual_MW : Real = matched_cycle.heater_energy_residual_MW;
+        attribute cycle_shaft_residual_MW : Real = matched_cycle.cycle_shaft_residual_MW;
+        attribute cycle_electric_residual_MW : Real = matched_cycle.cycle_electric_residual_MW;
+        attribute matched_active : Boolean = matched_cycle.active;
+        attribute matched_main_UA_available : Boolean = matched_cycle.main_UA_available;
+        attribute matched_reheat_UA_available : Boolean = matched_cycle.reheat_UA_available;
+        attribute matched_main_admission_ok : Boolean = matched_cycle.main_admission_ok;
+        attribute matched_reheat_admission_ok : Boolean = matched_cycle.reheat_admission_ok;
+        attribute matched_turbine_equipment_qualified : Boolean = matched_cycle.turbine_equipment_qualified;
+        attribute matched_installed_sg_capacity_qualified : Boolean = matched_cycle.installed_sg_capacity_qualified;
+        part main_steam_generator : 'Steam Heat Exchanger' {
+            attribute temperature_in_C : Real = 'Turbine Plant'::t_feed_C;
+            attribute entropy_in_kJ_kgK : Real = 'Turbine Plant'::s_feed_kJ_kgK;
+            attribute temperature_out_C : Real = 'Turbine Plant'::t_main_C;
+            attribute entropy_out_kJ_kgK : Real = 'Turbine Plant'::s_main_kJ_kgK;
+            :>> p_in_MPa = 'Turbine Plant'::p_feed_MPa;
+            :>> h_in_kJ_kg = 'Turbine Plant'::h_feed_kJ_kg;
+            :>> flow_in_kg_s = 'Turbine Plant'::mdot_feed_kg_s;
+            :>> p_out_MPa = 'Turbine Plant'::p_main_MPa;
+            :>> h_out_kJ_kg = 'Turbine Plant'::h_main_kJ_kg;
+            :>> flow_out_kg_s = 'Turbine Plant'::mdot_main_kg_s;
+            :>> heat_MW = 'Turbine Plant'::q_main_MW;
+            :>> minimum_gap_K = 'Turbine Plant'::main_min_gap_K;
+            :>> required_UA_MW_K = 'Turbine Plant'::main_UA_MW_K;
+            :>> salt_flow_kg_s = 'Turbine Plant'::salt_main_flow_kg_s;
+            :>> pressure_MPa default 0.0;
+            :>> outlet_temperature_C default 0.0;
+        }
+        part hp_turbine : 'Steam Expansion' {
+            attribute temperature_in_C : Real = 'Turbine Plant'::t_main_C;
+            attribute entropy_in_kJ_kgK : Real = 'Turbine Plant'::s_main_kJ_kgK;
+            attribute temperature_out_C : Real = 'Turbine Plant'::t_hp_C;
+            attribute entropy_out_kJ_kgK : Real = 'Turbine Plant'::s_hp_kJ_kgK;
+            :>> p_in_MPa = 'Turbine Plant'::p_main_MPa;
+            :>> h_in_kJ_kg = 'Turbine Plant'::h_main_kJ_kg;
+            :>> flow_in_kg_s = 'Turbine Plant'::mdot_main_kg_s;
+            :>> p_out_MPa = 'Turbine Plant'::p_hp_MPa;
+            :>> h_out_kJ_kg = 'Turbine Plant'::h_hp_kJ_kg;
+            :>> flow_out_kg_s = 'Turbine Plant'::mdot_hp_kg_s;
+            :>> shaft_MW = 'Turbine Plant'::p_hp_shaft_MW;
+            :>> efficiency default 0.0;
+        }
+        part reheater : 'Steam Heat Exchanger' {
+            attribute temperature_in_C : Real = 'Turbine Plant'::t_hp_C;
+            attribute entropy_in_kJ_kgK : Real = 'Turbine Plant'::s_hp_kJ_kgK;
+            attribute temperature_out_C : Real = 'Turbine Plant'::t_reheat_C;
+            attribute entropy_out_kJ_kgK : Real = 'Turbine Plant'::s_reheat_kJ_kgK;
+            :>> p_in_MPa = 'Turbine Plant'::p_hp_MPa;
+            :>> h_in_kJ_kg = 'Turbine Plant'::h_hp_kJ_kg;
+            :>> flow_in_kg_s = 'Turbine Plant'::mdot_reheat_kg_s;
+            :>> p_out_MPa = 'Turbine Plant'::p_reheat_MPa;
+            :>> h_out_kJ_kg = 'Turbine Plant'::h_reheat_kJ_kg;
+            :>> flow_out_kg_s = 'Turbine Plant'::mdot_reheat_kg_s;
+            :>> heat_MW = 'Turbine Plant'::q_reheat_MW;
+            :>> minimum_gap_K = 'Turbine Plant'::reheat_min_gap_K;
+            :>> required_UA_MW_K = 'Turbine Plant'::reheat_UA_MW_K;
+            :>> salt_flow_kg_s = 'Turbine Plant'::salt_reheat_flow_kg_s;
+            :>> pressure_MPa = 'Turbine Plant'::p_reheat_MPa;
+            :>> outlet_temperature_C default 0.0;
+        }
+        part lp_turbine : 'Steam Expansion' {
+            attribute temperature_in_C : Real = 'Turbine Plant'::t_reheat_C;
+            attribute entropy_in_kJ_kgK : Real = 'Turbine Plant'::s_reheat_kJ_kgK;
+            attribute temperature_out_C : Real = 'Turbine Plant'::t_lp_C;
+            attribute entropy_out_kJ_kgK : Real = 'Turbine Plant'::s_lp_kJ_kgK;
+            :>> p_in_MPa = 'Turbine Plant'::p_reheat_MPa;
+            :>> h_in_kJ_kg = 'Turbine Plant'::h_reheat_kJ_kg;
+            :>> flow_in_kg_s = 'Turbine Plant'::mdot_reheat_kg_s;
+            :>> p_out_MPa = 'Turbine Plant'::p_lp_MPa;
+            :>> h_out_kJ_kg = 'Turbine Plant'::h_lp_kJ_kg;
+            :>> flow_out_kg_s = 'Turbine Plant'::mdot_lp_kg_s;
+            :>> shaft_MW = 'Turbine Plant'::p_lp_shaft_MW;
+            :>> efficiency default 0.0;
+        }
+        part open_feedwater_heater : 'Steam Feed Heater' {
+            attribute temperature_out_C : Real = 'Turbine Plant'::t_heater_C;
+            attribute entropy_out_kJ_kgK : Real = 'Turbine Plant'::s_heater_kJ_kgK;
+            :>> p_in_MPa = 'Turbine Plant'::p_condensate_pumped_MPa;
+            :>> h_in_kJ_kg = 'Turbine Plant'::h_condensate_pumped_kJ_kg;
+            :>> flow_in_kg_s = 'Turbine Plant'::mdot_condensate_pumped_kg_s;
+            :>> p_out_MPa = 'Turbine Plant'::p_heater_MPa;
+            :>> h_out_kJ_kg = 'Turbine Plant'::h_heater_kJ_kg;
+            :>> flow_out_kg_s = 'Turbine Plant'::mdot_heater_kg_s;
+            :>> bleed_flow_kg_s = 'Turbine Plant'::mdot_bleed_kg_s;
+            :>> bleed_h_kJ_kg = 'Turbine Plant'::h_hp_kJ_kg;
+            :>> mass_residual_kg_s = 'Turbine Plant'::heater_mass_residual_kg_s;
+            :>> energy_residual_MW = 'Turbine Plant'::heater_energy_residual_MW;
+            :>> pressure_MPa default 0.0;
+        }
+        part condenser : 'Steam Condenser' {
+            attribute temperature_in_C : Real = 'Turbine Plant'::t_lp_C;
+            attribute entropy_in_kJ_kgK : Real = 'Turbine Plant'::s_lp_kJ_kgK;
+            attribute temperature_out_C : Real = 'Turbine Plant'::t_condensate_C;
+            attribute entropy_out_kJ_kgK : Real = 'Turbine Plant'::s_condensate_kJ_kgK;
+            :>> p_in_MPa = 'Turbine Plant'::p_lp_MPa;
+            :>> h_in_kJ_kg = 'Turbine Plant'::h_lp_kJ_kg;
+            :>> flow_in_kg_s = 'Turbine Plant'::mdot_lp_kg_s;
+            :>> p_out_MPa = 'Turbine Plant'::p_condensate_MPa;
+            :>> h_out_kJ_kg = 'Turbine Plant'::h_condensate_kJ_kg;
+            :>> flow_out_kg_s = 'Turbine Plant'::mdot_condensate_kg_s;
+            :>> rejected_MW = 'Turbine Plant'::q_condenser_MW;
+            :>> temperature_C default 0.0;
+        }
+        part condensate_pump : 'Steam Liquid Pump' {
+            attribute temperature_in_C : Real = 'Turbine Plant'::t_condensate_C;
+            attribute entropy_in_kJ_kgK : Real = 'Turbine Plant'::s_condensate_kJ_kgK;
+            :>> p_in_MPa = 'Turbine Plant'::p_condensate_MPa;
+            :>> h_in_kJ_kg = 'Turbine Plant'::h_condensate_kJ_kg;
+            :>> flow_in_kg_s = 'Turbine Plant'::mdot_condensate_kg_s;
+            :>> p_out_MPa = 'Turbine Plant'::p_condensate_pumped_MPa;
+            :>> h_out_kJ_kg = 'Turbine Plant'::h_condensate_pumped_kJ_kg;
+            :>> flow_out_kg_s = 'Turbine Plant'::mdot_condensate_pumped_kg_s;
+            :>> shaft_MW = 'Turbine Plant'::p_condensate_shaft_MW;
+            :>> electric_MW = 'Turbine Plant'::p_condensate_electric_MW;
+            :>> efficiency default 0.0;
+        }
+        part feedwater_pump : 'Steam Liquid Pump' {
+            attribute temperature_in_C : Real = 'Turbine Plant'::t_heater_C;
+            attribute entropy_in_kJ_kgK : Real = 'Turbine Plant'::s_heater_kJ_kgK;
+            attribute temperature_out_C : Real = 'Turbine Plant'::t_feed_C;
+            attribute entropy_out_kJ_kgK : Real = 'Turbine Plant'::s_feed_kJ_kgK;
+            :>> p_in_MPa = 'Turbine Plant'::p_heater_MPa;
+            :>> h_in_kJ_kg = 'Turbine Plant'::h_heater_kJ_kg;
+            :>> flow_in_kg_s = 'Turbine Plant'::mdot_heater_kg_s;
+            :>> p_out_MPa = 'Turbine Plant'::p_feed_MPa;
+            :>> h_out_kJ_kg = 'Turbine Plant'::h_feed_kJ_kg;
+            :>> flow_out_kg_s = 'Turbine Plant'::mdot_feed_kg_s;
+            :>> shaft_MW = 'Turbine Plant'::p_feedwater_shaft_MW;
+            :>> electric_MW = 'Turbine Plant'::p_feedwater_electric_MW;
+            :>> efficiency default 0.0;
+        }
+        part generator : 'Steam Generator Machine' {
+            :>> hp_shaft_MW = 'Turbine Plant'::p_hp_shaft_MW;
+            :>> lp_shaft_MW = 'Turbine Plant'::p_lp_shaft_MW;
+            :>> gross_MW = 'Turbine Plant'::p_gross_MW;
+            :>> mechanical_loss_MW = 'Turbine Plant'::q_mechanical_loss_MW;
+            :>> generator_loss_MW = 'Turbine Plant'::q_generator_loss_MW;
+            :>> mechanical_efficiency default 0.0;
+            :>> generator_efficiency default 0.0;
+        }
+        part extraction_splitter : 'Steam Extraction Splitter' {
+            :>> total_flow_kg_s = 'Turbine Plant'::mdot_hp_kg_s;
+            :>> reheat_flow_kg_s = 'Turbine Plant'::mdot_reheat_kg_s;
+            :>> bleed_flow_kg_s = 'Turbine Plant'::mdot_bleed_kg_s;
+            :>> pressure_MPa = 'Turbine Plant'::p_hp_MPa;
+            :>> enthalpy_kJ_kg = 'Turbine Plant'::h_hp_kJ_kg;
+        }
+        part salt_distributor : 'Salt Branch Distributor' {
+            :>> total_flow_kg_s = 'Turbine Plant'::salt_flow_total_kg_s;
+            :>> main_flow_kg_s = 'Turbine Plant'::salt_main_flow_kg_s;
+            :>> reheat_flow_kg_s = 'Turbine Plant'::salt_reheat_flow_kg_s;
+            :>> hot_C = 'Turbine Plant'::cycle_salt_hot_C;
+            :>> return_C = 'Turbine Plant'::cycle_salt_return_C;
+        }
+        calc matched_cycle : 'Matched Steam Cycle' {
+            in enabled_in = matched_cycle_enabled;
+            in heat_available_MW_in = cycle_heat_available_MW;
+            in source_heat_MW_in = cycle_source_heat_MW;
+            in selected_recovered_MW_in = cycle_selected_recovered_MW;
+            in salt_flow_per_circuit_in = cycle_salt_flow_per_circuit;
+            in salt_circuit_count_in = cycle_salt_circuit_count;
+            in salt_hot_C_in = cycle_salt_hot_C;
+            in salt_return_C_in = cycle_salt_return_C;
+            in salt_cp_kJ_kgK_in = cycle_salt_cp_kJ_kgK;
+            in main_pressure_MPa_in = main_steam_generator.pressure_MPa;
+            in extraction_pressure_MPa_in = open_feedwater_heater.pressure_MPa;
+            in steam_temperature_C_in = main_steam_generator.outlet_temperature_C;
+            in reheat_temperature_C_in = reheater.outlet_temperature_C;
+            in condenser_temperature_C_in = condenser.temperature_C;
+            in eta_hp_in = hp_turbine.efficiency;
+            in eta_lp_in = lp_turbine.efficiency;
+            in eta_condensate_pump_in = condensate_pump.efficiency;
+            in eta_feedwater_pump_in = feedwater_pump.efficiency;
+            in eta_pump_motor_in = pump_motor_efficiency;
+            in eta_mechanical_in = generator.mechanical_efficiency;
+            in eta_generator_in = generator.generator_efficiency;
+        }
+        calc cycle_selection : 'Cycle Mode Selection' {
+            in matched_enabled_in = matched_cycle_enabled;
+            in legacy_eta_in = cycle.eta_th;
+            in matched_eta_in = matched_cycle.eta_gross;
+            in legacy_domain_product_in = cycle.domain_product;
+        }
+        attribute legacy_domain_applicable : Boolean = cycle_selection.legacy_domain_applicable;
+        attribute matched_domain_applicable : Boolean = cycle_selection.matched_domain_applicable;
+        connect main_steam_generator.outlet to hp_turbine.inlet;
+        connect hp_turbine.outlet to extraction_splitter.inlet;
+        connect extraction_splitter.reheat_out to reheater.inlet;
+        connect extraction_splitter.bleed_out to open_feedwater_heater.bleed_in;
+        connect reheater.outlet to lp_turbine.inlet;
+        connect lp_turbine.outlet to condenser.inlet;
+        connect condenser.outlet to condensate_pump.inlet;
+        connect condensate_pump.outlet to open_feedwater_heater.inlet;
+        connect open_feedwater_heater.outlet to feedwater_pump.inlet;
+        connect feedwater_pump.outlet to main_steam_generator.inlet;
+        connect hp_turbine.shaft_out to generator.hp_shaft;
+        connect lp_turbine.shaft_out to generator.lp_shaft;
+        // Parallel salt branches share hot/return conditions; solver conserves their mass and heat.
+        connect coolant to salt_distributor.supply_return;
+        connect generator.electric_out to gross_electric;
+        // Total boundary rejection includes condenser and conversion losses exactly once.
+        connect condenser.rejection to cycle_rejection;
+        connect conversion_losses to cycle_rejection;
+        connect pump_electric_in to condensate_pump.electric_in;
+        connect pump_electric_in to feedwater_pump.electric_in;
+        connect salt_distributor.main_branch to main_steam_generator.salt;
+        connect salt_distributor.reheat_branch to reheater.salt;
         calc turbine_cost : 'Linear Power Cost' {
             in power = p_the;
             in cost_per_mw = 'Turbine Plant'::cost_per_mw;
@@ -366,6 +659,48 @@ package mfe_subsystems {
         attribute p_th : Real;   // <- pb.p_th
         :>> capital_cost = heat_rejection_cost.cost;
         // ---- template calcs (WI-057): the analyses this part owns ----
+        attribute cooling_water_enabled : Real default 0.0;
+        attribute matched_cycle_mode : Real default 0.0;
+        attribute cycle_rejection_MW : Real default 0.0;
+        attribute cycle_condenser_C : Real default 0.0;
+        attribute water_inlet_C : Real default 0.0;
+        attribute water_outlet_C : Real default 0.0;
+        attribute water_flow_kg_s : Real = cooling_water.water_flow_kg_s;
+        attribute p_cooling_pump_shaft_MW : Real = cooling_water.p_cooling_pump_shaft_MW;
+        attribute p_cooling_pump_electric_MW : Real = cooling_water.p_cooling_pump_electric_MW;
+        attribute q_cooling_motor_loss_MW : Real = cooling_water.q_cooling_motor_loss_MW;
+        attribute q_total_rejection_MW : Real = cooling_water.q_total_rejection_MW;
+        attribute water_pump_rise_K : Real = cooling_water.water_pump_rise_K;
+        attribute condenser_water_gap_K : Real = cooling_water.condenser_water_gap_K;
+        attribute water_energy_residual_MW : Real = cooling_water.water_energy_residual_MW;
+        attribute denominator_kJ_kg : Real = cooling_water.denominator_kJ_kg;
+        attribute cooling_active : Boolean = cooling_water.active;
+        attribute cooling_reference_scenario : Boolean = cooling_water.reference_scenario;
+        attribute cooling_site_qualified : Boolean = cooling_water.site_qualified;
+        attribute cooling_cooling_approach_ok : Boolean = cooling_water.cooling_approach_ok;
+        port cycle_heat_in : ~'Heat Duty Port';
+        port environmental_heat : 'Heat Duty Port';
+        port electric_in : ~'Electric Port';
+        part circulating_water_pump : 'Circulating Water Pump' {
+            :>> head_m default 0.0;
+            :>> efficiency default 0.0;
+            :>> motor_efficiency default 0.0;
+            :>> flow_kg_s = 'Heat Rejection'::water_flow_kg_s;
+            :>> shaft_MW = 'Heat Rejection'::p_cooling_pump_shaft_MW;
+            :>> electric_MW = 'Heat Rejection'::p_cooling_pump_electric_MW;
+        }
+        connect electric_in to circulating_water_pump.electric_in;
+        calc cooling_water : 'Cooling Water Rejection' {
+            in enabled_in = cooling_water_enabled;
+            in cycle_active_in = matched_cycle_mode;
+            in q_rejection_before_cooling_MW_in = cycle_rejection_MW;
+            in condenser_temperature_C_in = cycle_condenser_C;
+            in water_inlet_C_in = water_inlet_C;
+            in water_outlet_C_in = water_outlet_C;
+            in head_m_in = circulating_water_pump.head_m;
+            in eta_pump_in = circulating_water_pump.efficiency;
+            in eta_motor_in = circulating_water_pump.motor_efficiency;
+        }
         calc heat_rejection_cost : 'Linear Power Cost' {
             in power = p_th;
             in cost_per_mw = 'Heat Rejection'::cost_per_mw;

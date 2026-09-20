@@ -1,0 +1,225 @@
+/home/reid/1cfe/fusion-tea/.venv/lib/python3.12/site-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__buildings__facilities_enabled', input_value=1.0, input_type=float])
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__cryoplant__inventory_enabled', input_value=1.0, input_type=float])
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__inventory_enabled', input_value=1.0, input_type=float])
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_enabled', input_value=1.0, input_type=float])
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__fuel_cycle__processing_source_conditions', input_value=1.0, input_type=float])
+  PydanticSerializationUnexpectedValue(Expected `bool` - serialized value may not be as expected [field_name='stellarator_09__stellaris__heat_transport__equipment_enabled', input_value=1.0, input_type=float])
+  return self.__pydantic_serializer__.to_python(
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 38 SysML files
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+{
+  "baseline": {
+    "outputs": 956,
+    "verdicts": 25,
+    "output_differences": {},
+    "missing_outputs": [],
+    "verdicts_exact": true,
+    "failed_verdicts": [
+      {
+        "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+        "definition_qualified_name": "mfe_viability::'Beta Limit'",
+        "source_local_identity": "beta_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+        "definition_qualified_name": "mfe_viability::'Burn Hold'",
+        "source_local_identity": "burn_hold_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+        "source_local_identity": "cond_strain_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+        "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+        "source_local_identity": "cycle_domain_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+        "source_local_identity": "divertor_heat_ok",
+        "status": "violated"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "source_local_identity": "facility_capacity_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "source_local_identity": "facility_initial_ready",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "source_local_identity": "facility_outage_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "source_local_identity": "facility_replacement_ready",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b",
+        "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
+        "source_local_identity": "facility_routes_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+        "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Positive'",
+        "source_local_identity": "heating_couple_positive_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+        "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
+        "source_local_identity": "heating_couple_upper_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+        "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Positive'",
+        "source_local_identity": "heating_source_positive_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+        "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
+        "source_local_identity": "heating_source_upper_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+        "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+        "source_local_identity": "loop_capacity_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+        "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+        "source_local_identity": "loop_pressure_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+        "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+        "source_local_identity": "net_positive",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+        "source_local_identity": "peak_field_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+        "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+        "source_local_identity": "recirc_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0",
+        "definition_qualified_name": "mfe_conductor_current::'Reference Conductor Current Margin'",
+        "source_local_identity": "reference_conductor_current_ok",
+        "status": "violated"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce",
+        "definition_qualified_name": "mfe_viability::'Sustainment Limit'",
+        "source_local_identity": "sustainment_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+        "definition_qualified_name": "mfe_tritium_breeding::'Computed TBR Adequacy'",
+        "source_local_identity": "tbr_ok",
+        "status": "violated"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+        "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+        "source_local_identity": "wall_load_ok",
+        "status": "satisfied"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339",
+        "definition_qualified_name": "mfe_winding_pack_fit::'Winding Pack Fits Casing'",
+        "source_local_identity": "wp_fit_ok",
+        "status": "violated"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+        "source_local_identity": "wp_stress_ok",
+        "status": "satisfied"
+      }
+    ]
+  },
+  "static": {
+    "2": {
+      "success": false,
+      "metrics": {
+        "Unused definitions": 0,
+        "Unbound inputs": 0,
+        "Undefined bindings": 0,
+        "Placeholder bindings": 10,
+        "Self-named bindings": 0,
+        "Orphaned elements": 0
+      },
+      "categories": {
+        "WARN": 10
+      },
+      "added": [],
+      "removed": []
+    },
+    "6": {
+      "success": false,
+      "metrics": {
+        "Calc defs checked": 89,
+        "Calc usages checked": 98,
+        "Bindings validated": 823,
+        "Design attrs checked": 696,
+        "Manifests checked": 0,
+        "L6_MISSING_QUALIFIED_NAME": 0,
+        "L6_INVALID_QUALIFIED_NAME": 0,
+        "L6_CALC_DEF_NO_OUTPUT": 0,
+        "L6_CALC_DEF_NO_DIRECTION": 0,
+        "L6_INVALID_BINDING_FORMAT": 0,
+        "L6_DESIGN_ATTR_INCOMPLETE": 83,
+        "L6_DESIGN_ATTR_UNEXTRACTABLE": 442,
+        "L6_ANONYMOUS_RETURN": 0,
+        "L6_BODY_ASSIGNMENT_IMPL_LOSS": 0,
+        "V4_STATIC_FUNCTION_INVOCATION": 0,
+        "L6_CONSTRAINT_MALFORMED_NUMERICAL": 0,
+        "L6_CONSTRAINT_NON_NUMERICAL": 0,
+        "L6_CALC_DEF_NO_INSTANTIATION": 0,
+        "L6_ATTR_REDEF_EXPR_DROPPED": 0
+      },
+      "categories": {
+        "ERROR": 1082
+      },
+      "added": [],
+      "removed": []
+    }
+  }
+}

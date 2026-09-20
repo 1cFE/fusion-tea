@@ -120,6 +120,11 @@ def constraint_pred_definition_mfe_viability__net_power_positive(net_electric):
     value = _cmp('>', net_electric, 0.0)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((net_electric - 0.0)) if (_fin(net_electric) and _fin(0.0)) else None))
 
+# definition:mfe_matched_steam_cycle::'Active Steam Heat Direction'
+def constraint_pred_definition_mfe_matched_steam_cycle__active_steam_heat_direction(enabled_in, gap_in):
+    value = _or(_cmp('<=', enabled_in, 0.0), _cmp('>', gap_in, 0.0))
+    return _PredicateBodyResult(actual_value=value, source_margin=None)
+
 # definition:mfe_viability::'Burn Hold'
 def constraint_pred_definition_mfe_viability__burn_hold(p_aux_required_in):
     value = _cmp('>=', p_aux_required_in, 0.0)

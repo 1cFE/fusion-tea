@@ -506,7 +506,6 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "aux_cooling": f"{P}cryoplant__aux_cooling__cost",
     "waste": f"{P}waste__cost",
     "fuel_handling_legacy": f"{P}fuel_cycle__fuel_handling__cost",
-    "fuel_handling": f"{P}fuel_cycle__processing_cost__cost",
     "other_rpe": f"{P}other_rpe__cost",
     "inc": f"{P}inc_cost__cost",
     "owner": f"{P}owner__cost",
@@ -672,6 +671,75 @@ ENTRY_KEY_TO_ORACLE_INPUT.update({f'{P}fuel_cycle__processing_'+key:'processing_
 ORACLE_OUTPUT_TO_CHANNEL.update({'processing_'+key:f'{P}fuel_cycle__processing_cost__'+key for key in ['flow_kg_s', 'capacity_kg_s', 'plant_capacity_kg_s', 'flow_ratio', 'scaling_factor', 'transfer_reference_capital', 'transfer_reference_installation', 'transfer_capital', 'transfer_installation', 'cleanup_reference_capital', 'cleanup_reference_installation', 'cleanup_capital', 'cleanup_installation', 'distiller_reference_capital', 'distiller_reference_installation', 'distiller_capital', 'distiller_installation', 'containment_reference_capital', 'containment_reference_installation', 'containment_capital', 'containment_installation', 'equipment_total', 'installation_total', 'module_total', 'new_total', 'cost', 'defined_flag']})
 ORACLE_OUTPUT_TO_CHANNEL['shipping_fuel_installation_exclusion'] = f'{P}shipping_scope__fuel_installation_exclusion'
 
+# WI-073 paths read from the stock-generated parameter and output contracts.
+# Keep the existing cycle_eta_th mapping on the raw historical fit producer.
+ENTRY_KEY_TO_ORACLE_INPUT.update({
+    f'{P}turbine__matched_cycle_enabled': 'matched_cycle_enabled',
+    f'{P}heat_rejection__cooling_water_enabled': 'cooling_water_enabled',
+    f'{P}heat_transport__salt_hot_C': 'matched_salt_hot_C',
+    f'{P}heat_transport__salt_cp_kJ_kgK': 'matched_salt_cp_kJ_kgK',
+    **{f'{P}turbine__{path}': 'matched_'+name for name,path in {
+        'main_pressure_MPa': 'main_steam_generator__pressure_MPa',
+        'extraction_pressure_MPa': 'open_feedwater_heater__pressure_MPa',
+        'steam_temperature_C': 'main_steam_generator__outlet_temperature_C',
+        'reheat_temperature_C': 'reheater__outlet_temperature_C',
+        'condenser_temperature_C': 'condenser__temperature_C',
+        'eta_hp': 'hp_turbine__efficiency', 'eta_lp': 'lp_turbine__efficiency',
+        'eta_condensate_pump': 'condensate_pump__efficiency',
+        'eta_feedwater_pump': 'feedwater_pump__efficiency',
+        'eta_pump_motor': 'pump_motor_efficiency',
+        'eta_mechanical': 'generator__mechanical_efficiency',
+        'eta_generator': 'generator__generator_efficiency',
+    }.items()},
+    **{f'{P}heat_rejection__{path}': 'cw_'+name for name,path in {
+        'water_inlet_C': 'water_inlet_C', 'water_outlet_C': 'water_outlet_C',
+        'head_m': 'circulating_water_pump__head_m',
+        'eta_pump': 'circulating_water_pump__efficiency',
+        'eta_motor': 'circulating_water_pump__motor_efficiency',
+    }.items()},
+})
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'matched_'+name: f'{P}turbine__matched_cycle__{name}'
+    for name in vs.matched_cycle_oracle.MATCHED_REALS + vs.matched_cycle_oracle.MATCHED_BOOLS
+})
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'cw_'+name: f'{P}heat_rejection__cooling_water__{name}'
+    for name in vs.matched_cycle_oracle.COOLING_REALS + vs.matched_cycle_oracle.COOLING_BOOLS
+})
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'cycle_selection_'+name: f'{P}turbine__cycle_selection__{name}'
+    for name in ('eta_selected','legacy_domain_applicable','matched_domain_applicable')
+})
+
+# WI-072 reviewed producer inventory. These values are computed independently
+# by verify_stellaris, including aliases of separately emitted native producers.
+ORACLE_OUTPUT_TO_CHANNEL.update({
+    'coverage_' + name: P + suffix for name, suffix in {
+        'annual_total': 'cas70_calc__annual_total',
+        'cas70': 'cas70_calc__cas70',
+        'cas71_crf': 'cas71_calc__crf',
+        'cas71_levelized': 'cas71_calc__levelized',
+        'cas80_crf': 'cas80_calc__crf',
+        'cas80_levelized': 'cas80_calc__levelized',
+        'cooling_cost_mode': 'heat_transport__cooling_guard__cost_mode',
+        'cooling_energy_mode': 'heat_transport__cooling_guard__energy_mode',
+        'cooling_consumables': 'heat_transport__cooling_selection__consumables_annual',
+        'cooling_replacements': 'heat_transport__cooling_selection__replacement_annual',
+        'cooling_shipping': 'heat_transport__cooling_selection__shipping_exclusion',
+        'coil_length': 'magnet__coil_length__c_coil',
+        'wp_side': 'magnet__wp_sizing__wp_side',
+        'cold_volume': 'magnet__wp_volume__vol_cold_total',
+        'blanket_volume': 'rb__blanket_vol',
+        'outer_radius': 'rb__outer_radius',
+        'coil_inner_radius': 'rb__r_coil',
+        'shield_volume': 'rb__shield_vol',
+        'structure_volume': 'rb__structure_vol',
+        'vessel_volume': 'rb__vessel_vol',
+        'wall_area': 'rb__wall_area',
+        'replacement_event': 'replacement_cost_per_event__replacement_cost_per_event',
+    }.items()
+})
+
 OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
     # WI-068 IDs/formal read from the generated native contract.
     f"{P}facility_capacity_ok__8acbe7a714e6a4d9": {
@@ -791,6 +859,20 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
     },
     f"{P}cycle_domain_ok__ba3fa9c3653b3fd3": {
         "domain_product_in": {"kind": "channel", "key": f"{P}turbine__cycle__domain_product"},
+    },
+    # Active Steam Heat Direction predicates keep the generated `(enabled <= 0)
+    # or (gap > 0)` expression. The solver separately refuses non-binary modes.
+    f'{P}matched_main_heat_direction__0768c1b90a9f4f87': {
+        'enabled_in': {'kind':'input','key':f'{P}turbine__matched_cycle_enabled'},
+        'gap_in': {'kind':'channel','key':f'{P}turbine__matched_cycle__main_min_gap_K'},
+    },
+    f'{P}matched_reheat_heat_direction__31add2a272bf6444': {
+        'enabled_in': {'kind':'input','key':f'{P}turbine__matched_cycle_enabled'},
+        'gap_in': {'kind':'channel','key':f'{P}turbine__matched_cycle__reheat_min_gap_K'},
+    },
+    f'{P}cooling_water_heat_direction__6719109cbd7ec328': {
+        'enabled_in': {'kind':'input','key':f'{P}heat_rejection__cooling_water_enabled'},
+        'gap_in': {'kind':'channel','key':f'{P}heat_rejection__cooling_water__condenser_water_gap_K'},
     },
     # WI-047: the divertor target peak (computed, the fixed-geometry pessimistic
     # case scaled in load) against the adopted threshold (an instance input).

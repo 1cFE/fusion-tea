@@ -1,0 +1,8 @@
+{
+  "ledger_sha256": "c3482d5e8a8e5acb4f27d30500f8db675a1f65de5bdc3d4b1588504572343ef6",
+  "historical_pipeline": "exploration/stellarator_e2e/generated/pipelines/pipeline.yaml",
+  "historical_count": 10,
+  "current_count": 11,
+  "added": "inputs/mfe_plant_systems_params.json",
+  "removed": []
+}

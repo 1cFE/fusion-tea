@@ -134,6 +134,14 @@ package mfe_plant_systems {
         attribute q_source : Real;   // <- blanket.q_source
         // ---- EXPOSEs (WI-057): this part's calc outputs, readable outside as <part>.<name> ----
         attribute T_out : Real = primary_loop.T_out;
+        // WI-073: expose existing salt-boundary scenario, not a new technology.
+        attribute conversion_heat_MW : Real = equipment.conversion_heat_MW;
+        attribute salt_flow_per_circuit : Real = equipment.salt_flow;
+        attribute salt_circuit_count : Real = equipment.ihx_count;
+        attribute salt_return_C : Real = equipment.salt_return_C;
+        attribute salt_hot_C : Real = 465.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Existing WI-067 equipment scenario hot state. */ }
+        attribute salt_cp_kJ_kgK : Real = 1.560 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Existing WI-067 constant salt heat capacity1560J/kg/K, expressed kJ/kg/K. */ }
+
         attribute coolant_cost : Real = cooling_selection.cost;
         attribute hx_shell_bore : Real = equipment.hx_shell_bore;
         attribute hx_shell_wall : Real = equipment.hx_shell_wall;

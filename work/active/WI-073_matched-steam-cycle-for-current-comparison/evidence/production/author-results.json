@@ -1,0 +1,1666 @@
+{
+  "status": "author checks pass; independent verification and native generation pending",
+  "checks": [
+    {
+      "name": "exact released steam output membership",
+      "passed": true,
+      "count": 78
+    },
+    {
+      "name": "exact released cooling and selection output membership",
+      "passed": true,
+      "cooling_count": 13,
+      "selection_count": 3
+    },
+    {
+      "name": "canonical embedded and original row identities",
+      "passed": true,
+      "sha256": "62394f5d29b54b511aa3b093bb9a1251fe52ac8d23d50f7da61f272e38628d39",
+      "rows": 1336
+    },
+    {
+      "name": "reheat_baseline: p_gross_MW",
+      "passed": true,
+      "actual": 1219.9981701764734,
+      "expected": 1219.9981701764734,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_baseline: eta_gross",
+      "passed": true,
+      "actual": 0.36892624267355906,
+      "expected": 0.36892624267355906,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_baseline: p_cycle_pumps_MW",
+      "passed": true,
+      "actual": 9.706960647643738,
+      "expected": 9.706960647643738,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_baseline: bleed_fraction",
+      "passed": true,
+      "actual": 0.20500966665692555,
+      "expected": 0.20500966665692555,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_baseline: lp_quality",
+      "passed": true,
+      "actual": 0.9728093554034173,
+      "expected": 0.9728093554034173,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_baseline: t_feed_C",
+      "passed": true,
+      "actual": 171.45500475761446,
+      "expected": 171.45500475761446,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_baseline: q_condenser_MW",
+      "passed": true,
+      "actual": 2058.6399114471737,
+      "expected": 2058.6399114471737,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_baseline: q_main_MW",
+      "passed": true,
+      "actual": 2837.219790133844,
+      "expected": 2837.219790133844,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_baseline: q_reheat_MW",
+      "passed": true,
+      "actual": 469.66930871504724,
+      "expected": 469.66930871504724,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_baseline: q_rejection_before_cooling_MW",
+      "passed": true,
+      "actual": 2096.597889320062,
+      "expected": 2096.5978893200618,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_baseline: p_cooling_pump_electric_MW",
+      "passed": true,
+      "actual": 13.02318006356215,
+      "expected": 13.023180063562142,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_baseline: water_flow_kg_s",
+      "passed": true,
+      "actual": 50463.801850311946,
+      "expected": 50463.80185031193,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_baseline: water_pump_rise_K",
+      "passed": true,
+      "actual": 0.06173231891055762,
+      "expected": 0.0617323189105576,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_baseline: net after cooling",
+      "passed": true,
+      "actual": 1197.2680294652675,
+      "expected": 1197.2680294652675,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_baseline: main gap",
+      "passed": true,
+      "actual": 20.0,
+      "expected": 20.0,
+      "relative_tolerance": 0,
+      "absolute_tolerance": 1e-12
+    },
+    {
+      "name": "reheat_baseline: analytic versus author quadrature main",
+      "passed": true,
+      "actual": 41.07437838721358,
+      "expected": 41.07438391129078,
+      "relative_tolerance": 1e-06,
+      "absolute_tolerance": 0
+    },
+    {
+      "name": "reheat_baseline: reheat gap",
+      "passed": true,
+      "actual": 20.0,
+      "expected": 20.000000000000114,
+      "relative_tolerance": 0,
+      "absolute_tolerance": 1e-12
+    },
+    {
+      "name": "reheat_baseline: analytic versus author quadrature reheat",
+      "passed": true,
+      "actual": 11.186763416840277,
+      "expected": 11.18676346646296,
+      "relative_tolerance": 1e-06,
+      "absolute_tolerance": 0
+    },
+    {
+      "name": "reheat_baseline: raw balances and qualification statuses",
+      "passed": true
+    },
+    {
+      "name": "reheat_cold40: p_gross_MW",
+      "passed": true,
+      "actual": 1229.1922926686984,
+      "expected": 1229.1922926686984,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_cold40: eta_gross",
+      "passed": true,
+      "actual": 0.3717065362417424,
+      "expected": 0.3717065362417424,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_cold40: p_cycle_pumps_MW",
+      "passed": true,
+      "actual": 9.70861831166485,
+      "expected": 9.708618311664853,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_cold40: bleed_fraction",
+      "passed": true,
+      "actual": 0.2075065507360933,
+      "expected": 0.2075065507360933,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_cold40: lp_quality",
+      "passed": true,
+      "actual": 0.9690172302295074,
+      "expected": 0.9690172302295074,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_cold40: t_feed_C",
+      "passed": true,
+      "actual": 171.45500475761446,
+      "expected": 171.45500475761446,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_cold40: q_condenser_MW",
+      "passed": true,
+      "actual": 2049.164963354128,
+      "expected": 2049.164963354128,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_cold40: q_main_MW",
+      "passed": true,
+      "actual": 2838.4859712593957,
+      "expected": 2838.4859712593952,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_cold40: q_reheat_MW",
+      "passed": true,
+      "actual": 468.40312758949653,
+      "expected": 468.40312758949653,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_cold40: q_rejection_before_cooling_MW",
+      "passed": true,
+      "actual": 2087.405424491858,
+      "expected": 2087.405424491858,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_cold40: p_cooling_pump_electric_MW",
+      "passed": true,
+      "actual": 12.966080356796493,
+      "expected": 12.96608035679649,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_cold40: water_flow_kg_s",
+      "passed": true,
+      "actual": 50242.54496268009,
+      "expected": 50242.54496268009,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_cold40: water_pump_rise_K",
+      "passed": true,
+      "actual": 0.06173231891055762,
+      "expected": 0.0617323189105576,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_cold40: net after cooling",
+      "passed": true,
+      "actual": 1206.517594000237,
+      "expected": 1206.517594000237,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_cold40: main gap",
+      "passed": true,
+      "actual": 20.0,
+      "expected": 20.0,
+      "relative_tolerance": 0,
+      "absolute_tolerance": 1e-12
+    },
+    {
+      "name": "reheat_cold40: analytic versus author quadrature main",
+      "passed": true,
+      "actual": 41.09270886793224,
+      "expected": 41.09271439447469,
+      "relative_tolerance": 1e-06,
+      "absolute_tolerance": 0
+    },
+    {
+      "name": "reheat_cold40: reheat gap",
+      "passed": true,
+      "actual": 20.0,
+      "expected": 20.000000000000114,
+      "relative_tolerance": 0,
+      "absolute_tolerance": 1e-12
+    },
+    {
+      "name": "reheat_cold40: analytic versus author quadrature reheat",
+      "passed": true,
+      "actual": 11.156605030010283,
+      "expected": 11.156605079499188,
+      "relative_tolerance": 1e-06,
+      "absolute_tolerance": 0
+    },
+    {
+      "name": "reheat_cold40: raw balances and qualification statuses",
+      "passed": true
+    },
+    {
+      "name": "reheat_warm50: p_gross_MW",
+      "passed": true,
+      "actual": 1183.1299088724124,
+      "expected": 1183.1299088724127,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_warm50: eta_gross",
+      "passed": true,
+      "actual": 0.35777731683964026,
+      "expected": 0.3577773168396403,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_warm50: p_cycle_pumps_MW",
+      "passed": true,
+      "actual": 9.69950074897517,
+      "expected": 9.699500748975172,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_warm50: bleed_fraction",
+      "passed": true,
+      "actual": 0.1948607004022808,
+      "expected": 0.1948607004022808,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_warm50: lp_quality",
+      "passed": true,
+      "actual": 0.9879652096414684,
+      "expected": 0.9879652096414684,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_warm50: t_feed_C",
+      "passed": true,
+      "actual": 171.45500475761446,
+      "expected": 171.45500475761446,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_warm50: q_condenser_MW",
+      "passed": true,
+      "actual": 2096.6335061596633,
+      "expected": 2096.6335061596633,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_warm50: q_main_MW",
+      "passed": true,
+      "actual": 2832.084810018231,
+      "expected": 2832.084810018231,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_warm50: q_reheat_MW",
+      "passed": true,
+      "actual": 474.80428883066077,
+      "expected": 474.80428883066077,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_warm50: q_rejection_before_cooling_MW",
+      "passed": true,
+      "actual": 2133.4586907254543,
+      "expected": 2133.4586907254547,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_warm50: p_cooling_pump_electric_MW",
+      "passed": true,
+      "actual": 13.252143784471599,
+      "expected": 13.2521437844716,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_warm50: water_flow_kg_s",
+      "passed": true,
+      "actual": 51351.0183202134,
+      "expected": 51351.018320213414,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_warm50: water_pump_rise_K",
+      "passed": true,
+      "actual": 0.06173231891055762,
+      "expected": 0.0617323189105576,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_warm50: net after cooling",
+      "passed": true,
+      "actual": 1160.1782643389656,
+      "expected": 1160.1782643389658,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_warm50: main gap",
+      "passed": true,
+      "actual": 20.0,
+      "expected": 20.0,
+      "relative_tolerance": 0,
+      "absolute_tolerance": 1e-12
+    },
+    {
+      "name": "reheat_warm50: analytic versus author quadrature main",
+      "passed": true,
+      "actual": 41.00003937512401,
+      "expected": 41.00004488920339,
+      "relative_tolerance": 1e-06,
+      "absolute_tolerance": 0
+    },
+    {
+      "name": "reheat_warm50: reheat gap",
+      "passed": true,
+      "actual": 20.0,
+      "expected": 20.000000000000114,
+      "relative_tolerance": 0,
+      "absolute_tolerance": 1e-12
+    },
+    {
+      "name": "reheat_warm50: analytic versus author quadrature reheat",
+      "passed": true,
+      "actual": 11.309070339259172,
+      "expected": 11.309070389424388,
+      "relative_tolerance": 1e-06,
+      "absolute_tolerance": 0
+    },
+    {
+      "name": "reheat_warm50: raw balances and qualification statuses",
+      "passed": true
+    },
+    {
+      "name": "reheat_steam435: p_gross_MW",
+      "passed": true,
+      "actual": 1212.6276188241804,
+      "expected": 1212.6276188241804,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_steam435: eta_gross",
+      "passed": true,
+      "actual": 0.3666973952184513,
+      "expected": 0.3666973952184513,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_steam435: p_cycle_pumps_MW",
+      "passed": true,
+      "actual": 9.801827003796019,
+      "expected": 9.80182700379602,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_steam435: bleed_fraction",
+      "passed": true,
+      "actual": 0.20628095718853784,
+      "expected": 0.20628095718853784,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_steam435: lp_quality",
+      "passed": true,
+      "actual": 0.9683924899174956,
+      "expected": 0.9683924899174956,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_steam435: t_feed_C",
+      "passed": true,
+      "actual": 171.45500475761446,
+      "expected": 171.45500475761446,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_steam435: q_condenser_MW",
+      "passed": true,
+      "actual": 2066.326974654858,
+      "expected": 2066.326974654858,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_steam435: q_main_MW",
+      "passed": true,
+      "actual": 2837.719732401018,
+      "expected": 2837.719732401018,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_steam435: q_reheat_MW",
+      "passed": true,
+      "actual": 469.16936644787415,
+      "expected": 469.1693664478742,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_steam435: q_rejection_before_cooling_MW",
+      "passed": true,
+      "actual": 2104.0633070285076,
+      "expected": 2104.0633070285076,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_steam435: p_cooling_pump_electric_MW",
+      "passed": true,
+      "actual": 13.069552083472134,
+      "expected": 13.069552083472132,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_steam435: water_flow_kg_s",
+      "passed": true,
+      "actual": 50643.489792328786,
+      "expected": 50643.489792328786,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_steam435: water_pump_rise_K",
+      "passed": true,
+      "actual": 0.06173231891055762,
+      "expected": 0.0617323189105576,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_steam435: net after cooling",
+      "passed": true,
+      "actual": 1189.7562397369122,
+      "expected": 1189.7562397369122,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "reheat_steam435: main gap",
+      "passed": true,
+      "actual": 30.0,
+      "expected": 30.0,
+      "relative_tolerance": 0,
+      "absolute_tolerance": 1e-12
+    },
+    {
+      "name": "reheat_steam435: analytic versus author quadrature main",
+      "passed": true,
+      "actual": 39.823407899789814,
+      "expected": 39.823410907463696,
+      "relative_tolerance": 1e-06,
+      "absolute_tolerance": 0
+    },
+    {
+      "name": "reheat_steam435: reheat gap",
+      "passed": true,
+      "actual": 30.0,
+      "expected": 30.000000000000057,
+      "relative_tolerance": 0,
+      "absolute_tolerance": 1e-12
+    },
+    {
+      "name": "reheat_steam435: analytic versus author quadrature reheat",
+      "passed": true,
+      "actual": 8.95407104013888,
+      "expected": 8.954071059824575,
+      "relative_tolerance": 1e-06,
+      "absolute_tolerance": 0
+    },
+    {
+      "name": "reheat_steam435: raw balances and qualification statuses",
+      "passed": true
+    },
+    {
+      "name": "disabled modes and wrappers perform zero property lookups with invalid unused facts",
+      "passed": true
+    },
+    {
+      "name": "seed wrappers follow explicitly designated output order; generated order still pending",
+      "passed": true
+    },
+    {
+      "name": "steam refusal main_pressure_MPa 6.3",
+      "passed": true,
+      "error": "WI-073 pressure domain: main/extraction must equal 6.2/0.8 MPa"
+    },
+    {
+      "name": "steam refusal extraction_pressure_MPa 0.9",
+      "passed": true,
+      "error": "WI-073 pressure domain: main/extraction must equal 6.2/0.8 MPa"
+    },
+    {
+      "name": "steam refusal steam_temperature_C 455.00001",
+      "passed": true,
+      "error": "WI-073 main steam: superheated supported temperature required"
+    },
+    {
+      "name": "steam refusal steam_temperature_C 277.73289",
+      "passed": true,
+      "error": "WI-073 main steam: superheated supported temperature required"
+    },
+    {
+      "name": "steam refusal reheat_temperature_C 170.40649",
+      "passed": true,
+      "error": "WI-073 reheat steam: superheated supported temperature required"
+    },
+    {
+      "name": "steam refusal condenser_temperature_C 19.999",
+      "passed": true,
+      "error": "WI-073 condenser: temperature outside 20..60 C"
+    },
+    {
+      "name": "steam refusal condenser_temperature_C 60.001",
+      "passed": true,
+      "error": "WI-073 condenser: temperature outside 20..60 C"
+    },
+    {
+      "name": "steam refusal eta_hp 0.0",
+      "passed": true,
+      "error": "WI-073 eta_hp: efficiency must satisfy 0 < eta <= 1"
+    },
+    {
+      "name": "steam refusal eta_lp 1.01",
+      "passed": true,
+      "error": "WI-073 eta_lp: efficiency must satisfy 0 < eta <= 1"
+    },
+    {
+      "name": "steam refusal salt_flow_per_circuit 0.0",
+      "passed": true,
+      "error": "WI-073 salt_flow_per_circuit: positive value required"
+    },
+    {
+      "name": "steam refusal heat_available_MW -1.0",
+      "passed": true,
+      "error": "WI-073 heat_available_MW: positive value required"
+    },
+    {
+      "name": "steam refusal salt_circuit_count 0.0",
+      "passed": true,
+      "error": "WI-073 salt_circuit_count: positive value required"
+    },
+    {
+      "name": "steam refusal heat_available_MW 3307.889098848892",
+      "passed": true,
+      "error": "WI-073 salt input heat join: balance residual 1.0000000000013642 exceeds arithmetic policy"
+    },
+    {
+      "name": "steam refusal salt_circuit_count 28.0",
+      "passed": true,
+      "error": "WI-073 salt input heat join: balance residual -3306.8890988488893 exceeds arithmetic policy"
+    },
+    {
+      "name": "nonfinite steam enabled",
+      "passed": true,
+      "error": "WI-073 matched enabled: finite real required"
+    },
+    {
+      "name": "nonfinite steam heat_available_MW",
+      "passed": true,
+      "error": "WI-073 heat_available_MW: finite real required"
+    },
+    {
+      "name": "nonfinite steam source_heat_MW",
+      "passed": true,
+      "error": "WI-073 source_heat_MW: finite real required"
+    },
+    {
+      "name": "nonfinite steam selected_recovered_MW",
+      "passed": true,
+      "error": "WI-073 selected_recovered_MW: finite real required"
+    },
+    {
+      "name": "nonfinite steam salt_flow_per_circuit",
+      "passed": true,
+      "error": "WI-073 salt_flow_per_circuit: finite real required"
+    },
+    {
+      "name": "nonfinite steam salt_circuit_count",
+      "passed": true,
+      "error": "WI-073 salt_circuit_count: finite real required"
+    },
+    {
+      "name": "nonfinite steam salt_hot_C",
+      "passed": true,
+      "error": "WI-073 salt_hot_C: finite real required"
+    },
+    {
+      "name": "nonfinite steam salt_return_C",
+      "passed": true,
+      "error": "WI-073 salt_return_C: finite real required"
+    },
+    {
+      "name": "nonfinite steam salt_cp_kJ_kgK",
+      "passed": true,
+      "error": "WI-073 salt_cp_kJ_kgK: finite real required"
+    },
+    {
+      "name": "nonfinite steam main_pressure_MPa",
+      "passed": true,
+      "error": "WI-073 main_pressure_MPa: finite real required"
+    },
+    {
+      "name": "nonfinite steam extraction_pressure_MPa",
+      "passed": true,
+      "error": "WI-073 extraction_pressure_MPa: finite real required"
+    },
+    {
+      "name": "nonfinite steam steam_temperature_C",
+      "passed": true,
+      "error": "WI-073 steam_temperature_C: finite real required"
+    },
+    {
+      "name": "nonfinite steam reheat_temperature_C",
+      "passed": true,
+      "error": "WI-073 reheat_temperature_C: finite real required"
+    },
+    {
+      "name": "nonfinite steam condenser_temperature_C",
+      "passed": true,
+      "error": "WI-073 condenser_temperature_C: finite real required"
+    },
+    {
+      "name": "nonfinite steam eta_hp",
+      "passed": true,
+      "error": "WI-073 eta_hp: finite real required"
+    },
+    {
+      "name": "nonfinite steam eta_lp",
+      "passed": true,
+      "error": "WI-073 eta_lp: finite real required"
+    },
+    {
+      "name": "nonfinite steam eta_condensate_pump",
+      "passed": true,
+      "error": "WI-073 eta_condensate_pump: finite real required"
+    },
+    {
+      "name": "nonfinite steam eta_feedwater_pump",
+      "passed": true,
+      "error": "WI-073 eta_feedwater_pump: finite real required"
+    },
+    {
+      "name": "nonfinite steam eta_pump_motor",
+      "passed": true,
+      "error": "WI-073 eta_pump_motor: finite real required"
+    },
+    {
+      "name": "nonfinite steam eta_mechanical",
+      "passed": true,
+      "error": "WI-073 eta_mechanical: finite real required"
+    },
+    {
+      "name": "nonfinite steam eta_generator",
+      "passed": true,
+      "error": "WI-073 eta_generator: finite real required"
+    },
+    {
+      "name": "invalid steam mode -1.0",
+      "passed": true,
+      "error": "WI-073 matched enabled: mode must be exactly zero or one"
+    },
+    {
+      "name": "invalid cooling mode -1.0",
+      "passed": true,
+      "error": "WI-073 cooling-water enabled: mode must be exactly zero or one"
+    },
+    {
+      "name": "invalid steam mode 0.5",
+      "passed": true,
+      "error": "WI-073 matched enabled: mode must be exactly zero or one"
+    },
+    {
+      "name": "invalid cooling mode 0.5",
+      "passed": true,
+      "error": "WI-073 cooling-water enabled: mode must be exactly zero or one"
+    },
+    {
+      "name": "invalid steam mode 2.0",
+      "passed": true,
+      "error": "WI-073 matched enabled: mode must be exactly zero or one"
+    },
+    {
+      "name": "invalid cooling mode 2.0",
+      "passed": true,
+      "error": "WI-073 cooling-water enabled: mode must be exactly zero or one"
+    },
+    {
+      "name": "invalid steam mode inf",
+      "passed": true,
+      "error": "WI-073 matched enabled: finite real required"
+    },
+    {
+      "name": "invalid cooling mode inf",
+      "passed": true,
+      "error": "WI-073 cooling-water enabled: finite real required"
+    },
+    {
+      "name": "cooling refusal cycle_active 0.0",
+      "passed": true,
+      "error": "WI-073 cooling water: enabled cooling requires matched cycle enabled"
+    },
+    {
+      "name": "cooling refusal cycle_active 0.5",
+      "passed": true,
+      "error": "WI-073 cooling-water cycle active: mode must be exactly zero or one"
+    },
+    {
+      "name": "cooling refusal head_m -1.0",
+      "passed": true,
+      "error": "WI-073 cooling water: nonnegative pump head required"
+    },
+    {
+      "name": "cooling refusal head_m 10000000.0",
+      "passed": true,
+      "error": "WI-073 cooling-water energy denominator: positive value required"
+    },
+    {
+      "name": "cooling refusal water_inlet_C 35.0",
+      "passed": true,
+      "error": "WI-073 cooling water: require 20 <= inlet < outlet <= 60 C"
+    },
+    {
+      "name": "cooling refusal water_outlet_C 60.1",
+      "passed": true,
+      "error": "WI-073 cooling water: require 20 <= inlet < outlet <= 60 C"
+    },
+    {
+      "name": "cooling refusal eta_pump 0.0",
+      "passed": true,
+      "error": "WI-073 eta_pump: efficiency must satisfy 0 < eta <= 1"
+    },
+    {
+      "name": "cooling refusal eta_motor 1.1",
+      "passed": true,
+      "error": "WI-073 eta_motor: efficiency must satisfy 0 < eta <= 1"
+    },
+    {
+      "name": "cooling refusal q_rejection_before_cooling_MW 0.0",
+      "passed": true,
+      "error": "WI-073 cycle rejection heat: positive value required"
+    },
+    {
+      "name": "nonfinite cooling enabled",
+      "passed": true,
+      "error": "WI-073 cooling-water enabled: finite real required"
+    },
+    {
+      "name": "nonfinite cooling cycle_active",
+      "passed": true,
+      "error": "WI-073 cooling-water cycle active: finite real required"
+    },
+    {
+      "name": "nonfinite cooling q_rejection_before_cooling_MW",
+      "passed": true,
+      "error": "WI-073 q_rejection_before_cooling_MW: finite real required"
+    },
+    {
+      "name": "nonfinite cooling condenser_temperature_C",
+      "passed": true,
+      "error": "WI-073 condenser_temperature_C: finite real required"
+    },
+    {
+      "name": "nonfinite cooling water_inlet_C",
+      "passed": true,
+      "error": "WI-073 water_inlet_C: finite real required"
+    },
+    {
+      "name": "nonfinite cooling water_outlet_C",
+      "passed": true,
+      "error": "WI-073 water_outlet_C: finite real required"
+    },
+    {
+      "name": "nonfinite cooling head_m",
+      "passed": true,
+      "error": "WI-073 head_m: finite real required"
+    },
+    {
+      "name": "nonfinite cooling eta_pump",
+      "passed": true,
+      "error": "WI-073 eta_pump: finite real required"
+    },
+    {
+      "name": "nonfinite cooling eta_motor",
+      "passed": true,
+      "error": "WI-073 eta_motor: finite real required"
+    },
+    {
+      "name": "finite adverse/10 K historical-screen distinction 445.0",
+      "passed": true,
+      "main_gap": 0.0,
+      "reheat_gap": 0.0,
+      "UA_available": false
+    },
+    {
+      "name": "finite adverse/10 K historical-screen distinction 444.0",
+      "passed": true,
+      "main_gap": -1.0,
+      "reheat_gap": -1.0,
+      "UA_available": false
+    },
+    {
+      "name": "finite adverse/10 K historical-screen distinction 455.0",
+      "passed": true,
+      "main_gap": 10.0,
+      "reheat_gap": 10.0,
+      "UA_available": true
+    },
+    {
+      "name": "adverse finite cooling approach 42.0",
+      "passed": true,
+      "raw_gap": 0.0
+    },
+    {
+      "name": "adverse finite cooling approach 43.0",
+      "passed": true,
+      "raw_gap": -1.0
+    },
+    {
+      "name": "nondefault circuit flow 10.0",
+      "passed": true,
+      "actual": 7751.510311559579,
+      "expected": 7751.510311559579,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "nondefault circuit heat 10.0",
+      "passed": true,
+      "actual": 2362.063642034923,
+      "expected": 2362.063642034923,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "nondefault circuit gross 10.0",
+      "passed": true,
+      "actual": 871.4272644117667,
+      "expected": 871.4272644117667,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "nondefault circuit flow 18.0",
+      "passed": true,
+      "actual": 13952.718560807243,
+      "expected": 13952.718560807243,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "nondefault circuit heat 18.0",
+      "passed": true,
+      "actual": 4251.714555662861,
+      "expected": 4251.714555662861,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "nondefault circuit gross 18.0",
+      "passed": true,
+      "actual": 1568.5690759411805,
+      "expected": 1568.5690759411802,
+      "relative_tolerance": 1e-09,
+      "absolute_tolerance": 1e-06
+    },
+    {
+      "name": "phase plateau main h",
+      "passed": true,
+      "actual": 277.73289,
+      "expected": 277.73289,
+      "relative_tolerance": 0,
+      "absolute_tolerance": 1e-10
+    },
+    {
+      "name": "no extrapolation main h low",
+      "passed": true,
+      "error": "WI-073 property domain: h=726.4087999999999 outside supported [726.4088]..[1225.0579]"
+    },
+    {
+      "name": "no extrapolation main h high",
+      "passed": true,
+      "error": "WI-073 property domain: h=3312.2463000000002 outside supported [2782.3705]..[3312.2463]"
+    },
+    {
+      "name": "phase plateau main s",
+      "passed": true,
+      "actual": 277.73289,
+      "expected": 277.73289,
+      "relative_tolerance": 0,
+      "absolute_tolerance": 1e-10
+    },
+    {
+      "name": "no extrapolation main s low",
+      "passed": true,
+      "error": "WI-073 property domain: s=2.0446025999999997 outside supported [2.0446026]..[3.0475566]"
+    },
+    {
+      "name": "no extrapolation main s high",
+      "passed": true,
+      "error": "WI-073 property domain: s=6.720547700000001 outside supported [5.874496]..[6.7205477]"
+    },
+    {
+      "name": "phase plateau extraction h",
+      "passed": true,
+      "actual": 170.40649,
+      "expected": 170.40649,
+      "relative_tolerance": 0,
+      "absolute_tolerance": 1e-10
+    },
+    {
+      "name": "no extrapolation extraction h low",
+      "passed": true,
+      "error": "WI-073 property domain: h=176.59095999999997 outside supported [176.59096]..[720.8637]"
+    },
+    {
+      "name": "no extrapolation extraction h high",
+      "passed": true,
+      "error": "WI-073 property domain: h=3384.5663000000004 outside supported [2768.3033]..[3384.5663]"
+    },
+    {
+      "name": "phase plateau extraction s",
+      "passed": true,
+      "actual": 170.40649,
+      "expected": 170.40649,
+      "relative_tolerance": 0,
+      "absolute_tolerance": 1e-10
+    },
+    {
+      "name": "no extrapolation extraction s low",
+      "passed": true,
+      "error": "WI-073 property domain: s=0.5986914599999998 outside supported [0.59869146]..[2.0456512]"
+    },
+    {
+      "name": "no extrapolation extraction s high",
+      "passed": true,
+      "error": "WI-073 property domain: s=7.7403808000000005 outside supported [6.6616126]..[7.7403808]"
+    },
+    {
+      "name": "both saturation endpoints and closed inversion domains",
+      "passed": true
+    },
+    {
+      "name": "constant/near-constant gap limit 0.0",
+      "passed": true,
+      "actual": 0.15000000000000002,
+      "expected": 0.15,
+      "relative_tolerance": 1e-11,
+      "absolute_tolerance": 0
+    },
+    {
+      "name": "constant/near-constant gap limit 1e-10",
+      "passed": true,
+      "actual": 0.14999999999962504,
+      "expected": 0.15,
+      "relative_tolerance": 1e-11,
+      "absolute_tolerance": 0
+    },
+    {
+      "name": "strict representable endpoint 444.99999999999994",
+      "passed": true,
+      "gap": -5.684341886080802e-14
+    },
+    {
+      "name": "strict representable endpoint 445.0",
+      "passed": true,
+      "gap": 0.0
+    },
+    {
+      "name": "strict representable endpoint 445.00000000000006",
+      "passed": true,
+      "gap": 5.684341886080802e-14
+    },
+    {
+      "name": "efficiency upper endpoint eta_hp",
+      "passed": true
+    },
+    {
+      "name": "efficiency upper endpoint eta_lp",
+      "passed": true
+    },
+    {
+      "name": "efficiency upper endpoint eta_condensate_pump",
+      "passed": true
+    },
+    {
+      "name": "efficiency upper endpoint eta_feedwater_pump",
+      "passed": true
+    },
+    {
+      "name": "efficiency upper endpoint eta_pump_motor",
+      "passed": true
+    },
+    {
+      "name": "efficiency upper endpoint eta_mechanical",
+      "passed": true
+    },
+    {
+      "name": "efficiency upper endpoint eta_generator",
+      "passed": true
+    },
+    {
+      "name": "condenser lower table endpoint",
+      "passed": true
+    },
+    {
+      "name": "temperature support does not imply LP phase support",
+      "passed": true,
+      "error": "WI-073 LP actual endpoint: outside supported two-phase enthalpy domain"
+    },
+    {
+      "name": "zero cooling head exact zero work",
+      "passed": true
+    },
+    {
+      "name": "tampered embedded asset",
+      "passed": true,
+      "error": "WI-073 embedded property asset identity mismatch"
+    },
+    {
+      "name": "selection retains negative raw historical domain without green substitute",
+      "passed": true
+    },
+    {
+      "name": "selection mixed mode",
+      "passed": true,
+      "error": "WI-073 matched selection: mode must be exactly zero or one"
+    },
+    {
+      "name": "tampered staged asset",
+      "passed": true,
+      "error": "WI-073 source property asset identity mismatch"
+    },
+    {
+      "name": "missing staged asset refuses",
+      "passed": true
+    }
+  ],
+  "cases": {
+    "reheat_baseline": {
+      "inputs": {
+        "enabled": 1.0,
+        "heat_available_MW": 3306.889098848892,
+        "salt_flow_per_circuit": 775.151031155958,
+        "salt_circuit_count": 14.0,
+        "salt_hot_C": 465.0,
+        "salt_return_C": 269.66472991453,
+        "salt_cp_kJ_kgK": 1.56,
+        "main_pressure_MPa": 6.2,
+        "extraction_pressure_MPa": 0.8,
+        "steam_temperature_C": 445.0,
+        "reheat_temperature_C": 445.0,
+        "condenser_temperature_C": 42.0,
+        "eta_hp": 0.9,
+        "eta_lp": 0.9,
+        "eta_condensate_pump": 0.8,
+        "eta_feedwater_pump": 0.8,
+        "eta_pump_motor": 0.95,
+        "eta_mechanical": 0.99,
+        "eta_generator": 0.98,
+        "source_heat_MW": 3306.889098848892,
+        "selected_recovered_MW": 0.0
+      },
+      "steam": {
+        "p_feed_MPa": 6.2,
+        "h_feed_kJ_kg": 728.3884893,
+        "mdot_feed_kg_s": 1108.5733942490047,
+        "t_feed_C": 171.45500475761446,
+        "s_feed_kJ_kgK": 2.0490573695799004,
+        "p_main_MPa": 6.2,
+        "h_main_kJ_kg": 3287.7317,
+        "mdot_main_kg_s": 1108.5733942490047,
+        "t_main_C": 445.0,
+        "s_main_kJ_kgK": 6.6866472,
+        "p_hp_MPa": 0.8,
+        "h_hp_kJ_kg": 2830.288928194147,
+        "mdot_hp_kg_s": 1108.5733942490047,
+        "t_hp_C": 195.90861756356085,
+        "s_hp_kJ_kgK": 6.797557321733462,
+        "p_reheat_MPa": 0.8,
+        "h_reheat_kJ_kg": 3363.213668490404,
+        "mdot_reheat_kg_s": 881.3051322292797,
+        "t_reheat_C": 445.0,
+        "s_reheat_kJ_kgK": 7.710852878282219,
+        "p_lp_MPa": 0.0082095634,
+        "h_lp_kJ_kg": 2511.792422476057,
+        "mdot_lp_kg_s": 881.3051322292797,
+        "t_lp_C": 42.0,
+        "s_lp_kJ_kgK": 8.01103489567639,
+        "p_condensate_MPa": 0.0082095634,
+        "h_condensate_kJ_kg": 175.89327,
+        "mdot_condensate_kg_s": 881.3051322292797,
+        "t_condensate_C": 42.0,
+        "s_condensate_kJ_kgK": 0.5990114,
+        "p_condensate_pumped_MPa": 0.8,
+        "h_condensate_pumped_kJ_kg": 176.89159778430147,
+        "mdot_condensate_pumped_kg_s": 881.3051322292797,
+        "p_heater_MPa": 0.8,
+        "h_heater_kJ_kg": 720.8637,
+        "mdot_heater_kg_s": 1108.5733942490047,
+        "t_heater_C": 170.40649,
+        "s_heater_kJ_kgK": 2.0456512,
+        "bleed_fraction": 0.20500966665692555,
+        "mdot_bleed_kg_s": 227.26826201972494,
+        "salt_flow_total_kg_s": 10852.114436183412,
+        "salt_main_flow_kg_s": 9310.815368393973,
+        "salt_reheat_flow_kg_s": 1541.2990677894368,
+        "q_main_MW": 2837.219790133844,
+        "q_reheat_MW": 469.66930871504724,
+        "q_condenser_MW": 2058.6399114471737,
+        "p_hp_shaft_MW": 507.1088862154871,
+        "p_lp_shaft_MW": 750.3619138014923,
+        "p_condensate_shaft_MW": 0.8798313999519578,
+        "p_feedwater_shaft_MW": 8.341781215309593,
+        "p_condensate_electric_MW": 0.926138315738903,
+        "p_feedwater_electric_MW": 8.780822331904835,
+        "p_cycle_pumps_MW": 9.706960647643738,
+        "p_gross_MW": 1219.9981701764734,
+        "eta_gross": 0.36892624267355906,
+        "p_cycle_net_before_cooling_MW": 1210.2912095288298,
+        "q_mechanical_loss_MW": 12.574708000169721,
+        "q_generator_loss_MW": 24.897921840336267,
+        "q_pump_motor_loss_MW": 0.4853480323821877,
+        "q_rejection_before_cooling_MW": 2096.597889320062,
+        "lp_quality": 0.9728093554034173,
+        "lp_moisture_fraction": 0.027190644596582714,
+        "main_min_gap_K": 20.0,
+        "reheat_min_gap_K": 20.0,
+        "main_UA_MW_K": 41.07437838721358,
+        "reheat_UA_MW_K": 11.186763416840277,
+        "salt_heat_residual_MW": 1.3642420526593924e-12,
+        "heater_mass_residual_kg_s": 0.0,
+        "heater_energy_residual_MW": 1.1641532182693482e-13,
+        "cycle_shaft_residual_MW": 4.547473508864641e-13,
+        "cycle_electric_residual_MW": 4.547473508864641e-13,
+        "active": true,
+        "main_UA_available": true,
+        "reheat_UA_available": true,
+        "main_admission_ok": true,
+        "reheat_admission_ok": true,
+        "turbine_equipment_qualified": false,
+        "installed_sg_capacity_qualified": false
+      },
+      "cooling_water": {
+        "water_flow_kg_s": 50463.801850311946,
+        "p_cooling_pump_shaft_MW": 12.372021060384041,
+        "p_cooling_pump_electric_MW": 13.02318006356215,
+        "q_cooling_motor_loss_MW": 0.6511590031781083,
+        "q_total_rejection_MW": 2109.621069383624,
+        "water_pump_rise_K": 0.06173231891055762,
+        "condenser_water_gap_K": 7.0,
+        "water_energy_residual_MW": 4.547473508864641e-13,
+        "denominator_kJ_kg": 41.54657026315789,
+        "active": true,
+        "reference_scenario": true,
+        "site_qualified": false,
+        "cooling_approach_ok": true
+      }
+    },
+    "reheat_cold40": {
+      "inputs": {
+        "enabled": 1.0,
+        "heat_available_MW": 3306.889098848892,
+        "salt_flow_per_circuit": 775.151031155958,
+        "salt_circuit_count": 14.0,
+        "salt_hot_C": 465.0,
+        "salt_return_C": 269.66472991453,
+        "salt_cp_kJ_kgK": 1.56,
+        "main_pressure_MPa": 6.2,
+        "extraction_pressure_MPa": 0.8,
+        "steam_temperature_C": 445.0,
+        "reheat_temperature_C": 445.0,
+        "condenser_temperature_C": 40,
+        "eta_hp": 0.9,
+        "eta_lp": 0.9,
+        "eta_condensate_pump": 0.8,
+        "eta_feedwater_pump": 0.8,
+        "eta_pump_motor": 0.95,
+        "eta_mechanical": 0.99,
+        "eta_generator": 0.98,
+        "source_heat_MW": 3306.889098848892,
+        "selected_recovered_MW": 0.0
+      },
+      "steam": {
+        "p_feed_MPa": 6.2,
+        "h_feed_kJ_kg": 728.3884893,
+        "mdot_feed_kg_s": 1109.068123177996,
+        "t_feed_C": 171.45500475761446,
+        "s_feed_kJ_kgK": 2.0490573695799004,
+        "p_main_MPa": 6.2,
+        "h_main_kJ_kg": 3287.7317,
+        "mdot_main_kg_s": 1109.068123177996,
+        "t_main_C": 445.0,
+        "s_main_kJ_kgK": 6.6866472,
+        "p_hp_MPa": 0.8,
+        "h_hp_kJ_kg": 2830.288928194147,
+        "mdot_hp_kg_s": 1109.068123177996,
+        "t_hp_C": 195.90861756356085,
+        "s_hp_kJ_kgK": 6.797557321733462,
+        "p_reheat_MPa": 0.8,
+        "h_reheat_kJ_kg": 3363.213668490404,
+        "mdot_reheat_kg_s": 878.9292224059774,
+        "t_reheat_C": 445.0,
+        "s_reheat_kJ_kgK": 7.710852878282219,
+        "p_lp_MPa": 0.0073849382,
+        "h_lp_kJ_kg": 2498.9664604803793,
+        "mdot_lp_kg_s": 878.9292224059774,
+        "t_lp_C": 40.0,
+        "s_lp_kJ_kgK": 8.01750294521512,
+        "p_condensate_MPa": 0.0073849382,
+        "h_condensate_kJ_kg": 167.53304,
+        "mdot_condensate_kg_s": 878.9292224059774,
+        "t_condensate_C": 40.0,
+        "s_condensate_kJ_kgK": 0.57240174,
+        "p_condensate_pumped_MPa": 0.8,
+        "h_condensate_pumped_kJ_kg": 168.531622624683,
+        "mdot_condensate_pumped_kg_s": 878.9292224059774,
+        "p_heater_MPa": 0.8,
+        "h_heater_kJ_kg": 720.8637,
+        "mdot_heater_kg_s": 1109.068123177996,
+        "t_heater_C": 170.40649,
+        "s_heater_kJ_kgK": 2.0456512,
+        "bleed_fraction": 0.2075065507360933,
+        "mdot_bleed_kg_s": 230.13890077201862,
+        "salt_flow_total_kg_s": 10852.114436183412,
+        "salt_main_flow_kg_s": 9314.970555356911,
+        "salt_reheat_flow_kg_s": 1537.143880826501,
+        "q_main_MW": 2838.4859712593957,
+        "q_reheat_MW": 468.40312758949653,
+        "q_condenser_MW": 2049.164963354128,
+        "p_hp_shaft_MW": 507.3351963880575,
+        "p_lp_shaft_MW": 759.6121265027879,
+        "p_condensate_shaft_MW": 0.8776834498207403,
+        "p_feedwater_shaft_MW": 8.345503946260868,
+        "p_condensate_electric_MW": 0.9238773156007793,
+        "p_feedwater_electric_MW": 8.784740996064071,
+        "p_cycle_pumps_MW": 9.70861831166485,
+        "p_gross_MW": 1229.1922926686984,
+        "eta_gross": 0.3717065362417424,
+        "p_cycle_net_before_cooling_MW": 1219.4836743570336,
+        "q_mechanical_loss_MW": 12.669473228908373,
+        "q_generator_loss_MW": 25.085556993238697,
+        "q_pump_motor_loss_MW": 0.48543091558324214,
+        "q_rejection_before_cooling_MW": 2087.405424491858,
+        "lp_quality": 0.9690172302295074,
+        "lp_moisture_fraction": 0.030982769770492635,
+        "main_min_gap_K": 20.0,
+        "reheat_min_gap_K": 20.0,
+        "main_UA_MW_K": 41.09270886793224,
+        "reheat_UA_MW_K": 11.156605030010283,
+        "salt_heat_residual_MW": 1.3642420526593924e-12,
+        "heater_mass_residual_kg_s": 0.0,
+        "heater_energy_residual_MW": -1.1641532182693482e-13,
+        "cycle_shaft_residual_MW": 4.547473508864641e-13,
+        "cycle_electric_residual_MW": 4.547473508864641e-13,
+        "active": true,
+        "main_UA_available": true,
+        "reheat_UA_available": true,
+        "main_admission_ok": true,
+        "reheat_admission_ok": true,
+        "turbine_equipment_qualified": false,
+        "installed_sg_capacity_qualified": false
+      },
+      "cooling_water": {
+        "water_flow_kg_s": 50242.54496268009,
+        "p_cooling_pump_shaft_MW": 12.317776338956666,
+        "p_cooling_pump_electric_MW": 12.966080356796493,
+        "q_cooling_motor_loss_MW": 0.6483040178398269,
+        "q_total_rejection_MW": 2100.3715048486542,
+        "water_pump_rise_K": 0.06173231891055762,
+        "condenser_water_gap_K": 5.0,
+        "water_energy_residual_MW": 0.0,
+        "denominator_kJ_kg": 41.54657026315789,
+        "active": true,
+        "reference_scenario": true,
+        "site_qualified": false,
+        "cooling_approach_ok": true
+      }
+    },
+    "reheat_warm50": {
+      "inputs": {
+        "enabled": 1.0,
+        "heat_available_MW": 3306.889098848892,
+        "salt_flow_per_circuit": 775.151031155958,
+        "salt_circuit_count": 14.0,
+        "salt_hot_C": 465.0,
+        "salt_return_C": 269.66472991453,
+        "salt_cp_kJ_kgK": 1.56,
+        "main_pressure_MPa": 6.2,
+        "extraction_pressure_MPa": 0.8,
+        "steam_temperature_C": 445.0,
+        "reheat_temperature_C": 445.0,
+        "condenser_temperature_C": 50,
+        "eta_hp": 0.9,
+        "eta_lp": 0.9,
+        "eta_condensate_pump": 0.8,
+        "eta_feedwater_pump": 0.8,
+        "eta_pump_motor": 0.95,
+        "eta_mechanical": 0.99,
+        "eta_generator": 0.98,
+        "source_heat_MW": 3306.889098848892,
+        "selected_recovered_MW": 0.0
+      },
+      "steam": {
+        "p_feed_MPa": 6.2,
+        "h_feed_kJ_kg": 728.3884893,
+        "mdot_feed_kg_s": 1106.5670278913606,
+        "t_feed_C": 171.45500475761446,
+        "s_feed_kJ_kgK": 2.0490573695799004,
+        "p_main_MPa": 6.2,
+        "h_main_kJ_kg": 3287.7317,
+        "mdot_main_kg_s": 1106.5670278913606,
+        "t_main_C": 445.0,
+        "s_main_kJ_kgK": 6.6866472,
+        "p_hp_MPa": 0.8,
+        "h_hp_kJ_kg": 2830.288928194147,
+        "mdot_hp_kg_s": 1106.5670278913606,
+        "t_hp_C": 195.90861756356085,
+        "s_hp_kJ_kgK": 6.797557321733462,
+        "p_reheat_MPa": 0.8,
+        "h_reheat_kJ_kg": 3363.213668490404,
+        "mdot_reheat_kg_s": 890.9406017943799,
+        "t_reheat_C": 445.0,
+        "s_reheat_kJ_kgK": 7.710852878282219,
+        "p_lp_MPa": 0.012351946,
+        "h_lp_kJ_kg": 2562.622665524996,
+        "mdot_lp_kg_s": 890.9406017943799,
+        "t_lp_C": 50.0,
+        "s_lp_kJ_kgK": 7.986126144113322,
+        "p_condensate_MPa": 0.012351946,
+        "h_condensate_kJ_kg": 209.34176,
+        "mdot_condensate_kg_s": 890.9406017943799,
+        "t_condensate_C": 50.0,
+        "s_condensate_kJ_kgK": 0.70380863,
+        "p_condensate_pumped_MPa": 0.8,
+        "h_condensate_pumped_kJ_kg": 210.3382820784961,
+        "mdot_condensate_pumped_kg_s": 890.9406017943799,
+        "p_heater_MPa": 0.8,
+        "h_heater_kJ_kg": 720.8637,
+        "mdot_heater_kg_s": 1106.5670278913606,
+        "t_heater_C": 170.40649,
+        "s_heater_kJ_kgK": 2.0456512,
+        "bleed_fraction": 0.1948607004022808,
+        "mdot_bleed_kg_s": 215.6264260969807,
+        "salt_flow_total_kg_s": 10852.114436183412,
+        "salt_main_flow_kg_s": 9293.964064894997,
+        "salt_reheat_flow_kg_s": 1558.1503712884146,
+        "q_main_MW": 2832.084810018231,
+        "q_reheat_MW": 474.80428883066077,
+        "q_condenser_MW": 2096.6335061596633,
+        "p_hp_shaft_MW": 506.19108842758834,
+        "p_lp_shaft_MW": 713.2790299731666,
+        "p_condensate_shaft_MW": 0.8878419803166996,
+        "p_feedwater_shaft_MW": 8.326683731209712,
+        "p_condensate_electric_MW": 0.9345705055965259,
+        "p_feedwater_electric_MW": 8.764930243378645,
+        "p_cycle_pumps_MW": 9.69950074897517,
+        "p_gross_MW": 1183.1299088724124,
+        "eta_gross": 0.35777731683964026,
+        "p_cycle_net_before_cooling_MW": 1173.4304081234372,
+        "q_mechanical_loss_MW": 12.1947011840075,
+        "q_generator_loss_MW": 24.145508344334985,
+        "q_pump_motor_loss_MW": 0.48497503744875914,
+        "q_rejection_before_cooling_MW": 2133.4586907254543,
+        "lp_quality": 0.9879652096414684,
+        "lp_moisture_fraction": 0.01203479035853161,
+        "main_min_gap_K": 20.0,
+        "reheat_min_gap_K": 20.0,
+        "main_UA_MW_K": 41.00003937512401,
+        "reheat_UA_MW_K": 11.309070339259172,
+        "salt_heat_residual_MW": 1.3642420526593924e-12,
+        "heater_mass_residual_kg_s": 0.0,
+        "heater_energy_residual_MW": -1.1641532182693482e-13,
+        "cycle_shaft_residual_MW": 4.547473508864641e-13,
+        "cycle_electric_residual_MW": 9.094947017729282e-13,
+        "active": true,
+        "main_UA_available": true,
+        "reheat_UA_available": true,
+        "main_admission_ok": true,
+        "reheat_admission_ok": true,
+        "turbine_equipment_qualified": false,
+        "installed_sg_capacity_qualified": false
+      },
+      "cooling_water": {
+        "water_flow_kg_s": 51351.0183202134,
+        "p_cooling_pump_shaft_MW": 12.589536595248017,
+        "p_cooling_pump_electric_MW": 13.252143784471599,
+        "q_cooling_motor_loss_MW": 0.6626071892235821,
+        "q_total_rejection_MW": 2146.710834509926,
+        "water_pump_rise_K": 0.06173231891055762,
+        "condenser_water_gap_K": 15.0,
+        "water_energy_residual_MW": -4.547473508864641e-13,
+        "denominator_kJ_kg": 41.54657026315789,
+        "active": true,
+        "reference_scenario": true,
+        "site_qualified": false,
+        "cooling_approach_ok": true
+      }
+    },
+    "reheat_steam435": {
+      "inputs": {
+        "enabled": 1.0,
+        "heat_available_MW": 3306.889098848892,
+        "salt_flow_per_circuit": 775.151031155958,
+        "salt_circuit_count": 14.0,
+        "salt_hot_C": 465.0,
+        "salt_return_C": 269.66472991453,
+        "salt_cp_kJ_kgK": 1.56,
+        "main_pressure_MPa": 6.2,
+        "extraction_pressure_MPa": 0.8,
+        "steam_temperature_C": 435,
+        "reheat_temperature_C": 435,
+        "condenser_temperature_C": 42.0,
+        "eta_hp": 0.9,
+        "eta_lp": 0.9,
+        "eta_condensate_pump": 0.8,
+        "eta_feedwater_pump": 0.8,
+        "eta_pump_motor": 0.95,
+        "eta_mechanical": 0.99,
+        "eta_generator": 0.98,
+        "source_heat_MW": 3306.889098848892,
+        "selected_recovered_MW": 0.0
+      },
+      "steam": {
+        "p_feed_MPa": 6.2,
+        "h_feed_kJ_kg": 728.3884893,
+        "mdot_feed_kg_s": 1119.5783248513137,
+        "t_feed_C": 171.45500475761446,
+        "s_feed_kJ_kgK": 2.0490573695799004,
+        "p_main_MPa": 6.2,
+        "h_main_kJ_kg": 3263.0211,
+        "mdot_main_kg_s": 1119.5783248513137,
+        "t_main_C": 435.0,
+        "s_main_kJ_kgK": 6.6519964,
+        "p_hp_MPa": 0.8,
+        "h_hp_kJ_kg": 2813.9362849413224,
+        "mdot_hp_kg_s": 1119.5783248513137,
+        "t_hp_C": 188.9352404095322,
+        "s_hp_kJ_kgK": 6.762431929218236,
+        "p_reheat_MPa": 0.8,
+        "h_reheat_kJ_kg": 3341.9052151744077,
+        "mdot_reheat_kg_s": 888.630636353445,
+        "t_reheat_C": 435.0,
+        "s_reheat_kJ_kgK": 7.680973336584197,
+        "p_lp_MPa": 0.0082095634,
+        "h_lp_kJ_kg": 2501.186693524276,
+        "mdot_lp_kg_s": 888.630636353445,
+        "t_lp_C": 42.0,
+        "s_lp_kJ_kgK": 7.97738193934219,
+        "p_condensate_MPa": 0.0082095634,
+        "h_condensate_kJ_kg": 175.89327,
+        "mdot_condensate_kg_s": 888.630636353445,
+        "t_condensate_C": 42.0,
+        "s_condensate_kJ_kgK": 0.5990114,
+        "p_condensate_pumped_MPa": 0.8,
+        "h_condensate_pumped_kJ_kg": 176.89159778430147,
+        "mdot_condensate_pumped_kg_s": 888.630636353445,
+        "p_heater_MPa": 0.8,
+        "h_heater_kJ_kg": 720.8637,
+        "mdot_heater_kg_s": 1119.5783248513137,
+        "t_heater_C": 170.40649,
+        "s_heater_kJ_kgK": 2.0456512,
+        "bleed_fraction": 0.20628095718853784,
+        "mdot_bleed_kg_s": 230.94768849786874,
+        "salt_flow_total_kg_s": 10852.114436183412,
+        "salt_main_flow_kg_s": 9312.456013281866,
+        "salt_reheat_flow_kg_s": 1539.6584229015461,
+        "q_main_MW": 2837.719732401018,
+        "q_reheat_MW": 469.16936644787415,
+        "q_condenser_MW": 2066.326974654858,
+        "p_hp_shaft_MW": 502.7856249595563,
+        "p_lp_shaft_MW": 747.088234888084,
+        "p_condensate_shaft_MW": 0.8871446542531268,
+        "p_feedwater_shaft_MW": 8.424590999353091,
+        "p_condensate_electric_MW": 0.9338364781611862,
+        "p_feedwater_electric_MW": 8.867990525634832,
+        "p_cycle_pumps_MW": 9.801827003796019,
+        "p_gross_MW": 1212.6276188241804,
+        "eta_gross": 0.3666973952184513,
+        "p_cycle_net_before_cooling_MW": 1202.8257918203844,
+        "q_mechanical_loss_MW": 12.498738598476393,
+        "q_generator_loss_MW": 24.747502424983395,
+        "q_pump_motor_loss_MW": 0.4900913501898003,
+        "q_rejection_before_cooling_MW": 2104.0633070285076,
+        "lp_quality": 0.9683924899174956,
+        "lp_moisture_fraction": 0.0316075100825044,
+        "main_min_gap_K": 30.0,
+        "reheat_min_gap_K": 30.0,
+        "main_UA_MW_K": 39.823407899789814,
+        "reheat_UA_MW_K": 8.95407104013888,
+        "salt_heat_residual_MW": 1.3642420526593924e-12,
+        "heater_mass_residual_kg_s": 0.0,
+        "heater_energy_residual_MW": 0.0,
+        "cycle_shaft_residual_MW": 0.0,
+        "cycle_electric_residual_MW": 0.0,
+        "active": true,
+        "main_UA_available": true,
+        "reheat_UA_available": true,
+        "main_admission_ok": true,
+        "reheat_admission_ok": true,
+        "turbine_equipment_qualified": false,
+        "installed_sg_capacity_qualified": false
+      },
+      "cooling_water": {
+        "water_flow_kg_s": 50643.489792328786,
+        "p_cooling_pump_shaft_MW": 12.416074479298526,
+        "p_cooling_pump_electric_MW": 13.069552083472134,
+        "q_cooling_motor_loss_MW": 0.6534776041736077,
+        "q_total_rejection_MW": 2117.1328591119795,
+        "water_pump_rise_K": 0.06173231891055762,
+        "condenser_water_gap_K": 7.0,
+        "water_energy_residual_MW": -4.547473508864641e-13,
+        "denominator_kJ_kg": 41.54657026315789,
+        "active": true,
+        "reference_scenario": true,
+        "site_qualified": false,
+        "cooling_approach_ok": true
+      }
+    }
+  },
+  "source_asset_sha256": "62394f5d29b54b511aa3b093bb9a1251fe52ac8d23d50f7da61f272e38628d39",
+  "seed_sha256": {
+    "cooling_water_rejection_impl.py": "95839a70cea810576fe6d3ee8ffcb5b1c9a4cdbeafac26133b72ac2512cc43e0",
+    "cycle_mode_selection_impl.py": "05eb2e367c16b91597b1644e96240546ffe7d54f048eb45e4dcb574dedd0883c",
+    "matched_steam_cycle_impl.py": "ac94dacb5e7c60b46a437fd8e3bf87dd8ec08600e383e6644be37c9ec88a3c06"
+  },
+  "non_reheat_cases": "The two retained prototype references remain unchanged; production has no no-reheat selector."
+}

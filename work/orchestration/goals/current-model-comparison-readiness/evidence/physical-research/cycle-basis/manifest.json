@@ -1,0 +1,18 @@
+{
+  "files_sha256": {
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/cycle-basis/dostal-p1.png": "e00a0e4df2ff765d10e5cd3edbf92762edbbcfca975806b3a97560f7ba02446d",
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/cycle-basis/dostal-p273.png": "2846ad055471318c3fb5de4acb8bde4c64992164abfdf4c087c2f3f752b34d35",
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/cycle-basis/dostal-p282.png": "1f105ed2771285303c1ae0169b1d3527833d91a70c52adf708a602956084b43d",
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/cycle-basis/dostal-p283.png": "6c2a94c0708e1237cc0550166efb2149975b8ee381d5db395440201e58213c55",
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/cycle-basis/dostal-p284.png": "548390e71976ce4dfd86f307b35f27f9181195828e0300f96a0394a38efcb4dc",
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/cycle-basis/dostal-p285.png": "282c55b4b229923b83eac8505bb3fd79d7542a0f65347a7447c709652563d4e9",
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/cycle-basis/dostal-p286.png": "c0ab53c3e02b9d88cfc7a462bb434472f5e12dea6c7ee0ed5122d87f4fc71f19",
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/cycle-basis/dostal-p319.png": "ef934348b04f67b1ad7c55352662bc7d9e86278147ae2a6f2e445955f905d7e8",
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/cycle-basis/dostal-screen.json": "f92d65291c91287a19386bf457c815e2ba1ccd6f01a61e1de7d1f86d07d2a3ab",
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/cycle-basis/original-page-locators.json": "d74a89c81653ffdac59f60459033c0892c3b723b4c281c2db324becd73b1c928",
+    "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/cycle-basis/report.md": "0c32f3ef5a42cd84a23edca56604295c28b3c4a3f756cb22b3eac84f44999cf2"
+  },
+  "native_research": "knowledge/research/pending/20260919-175601_comparison-kovari-cycle-basis.md",
+  "request_run": "knowledge/research/requests/runs/REQ-COMPARISON-KOVARI-CYCLE-BASIS/20260920T004633797736",
+  "scope": "Research evidence only; no canonical assumptions adopted."
+}

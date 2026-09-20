@@ -73,6 +73,8 @@ MFE = Family(
         "analyses/mfe_plasma_scaling.sysml",
         "analyses/mfe_plasma_sustainment.sysml",
         "analyses/mfe_power_balance.sysml",
+        "analyses/mfe_matched_steam_cycle.sysml",
+        "structure/mfe_steam_cycle_components.sysml",
         "analyses/mfe_power_cycle.sysml",  # WI-045 (2026-09-08): the cycle fit, handwritten stage
         "analyses/mfe_cooling_accounts.sysml",
         "analyses/mfe_cooling_equipment.sysml",

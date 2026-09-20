@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/production/check_seeds.py", line 189, in <module>
+    if __name__=='__main__':run()
+                            ^^^^^
+  File "/home/reid/1cfe/fusion-tea/work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/production/check_seeds.py", line 129, in run
+    r=steam.calculate(p)
+      ^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/work/active/WI-073_matched-steam-cycle-for-current-comparison/seeds/matched_steam_cycle_impl.py", line 177, in calculate
+    balance(heat-plant_heat, max(abs(heat),abs(plant_heat)), 'plant and cycle heat join')
+  File "/home/reid/1cfe/fusion-tea/work/active/WI-073_matched-steam-cycle-for-current-comparison/seeds/matched_steam_cycle_impl.py", line 75, in balance
+    raise ValueError(f'WI-073 {name}: balance residual {residual!r} exceeds arithmetic policy')
+ValueError: WI-073 plant and cycle heat join: balance residual -944.8254568139691 exceeds arithmetic policy

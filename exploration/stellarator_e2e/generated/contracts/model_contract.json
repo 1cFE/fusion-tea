@@ -179,6 +179,22 @@
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::net_positive"
       },
       {
+        "constraint_id": "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328",
+        "declaration_id": "687b5ff0-b488-5ab0-a5cf-ff1d2ad981f7",
+        "definition_qualified_name": "mfe_matched_steam_cycle::'Active Steam Heat Direction'",
+        "evaluation_channel": "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"enabled_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"enabled_in\",\"qualified_name\":\"mfe_matched_steam_cycle::'Active Steam Heat Direction'::enabled_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"gap_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"gap_in\",\"qualified_name\":\"mfe_matched_steam_cycle::'Active Steam Heat Direction'::gap_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"or\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_matched_steam_cycle::'Active Steam Heat Direction'",
+        "source_form": "definition_typed",
+        "source_local_identity": "cooling_water_heat_direction",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::cooling_water_heat_direction"
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
         "declaration_id": "7b8980c5-1176-5a84-ba5e-040ab0715d9a",
         "definition_qualified_name": "mfe_viability::'Burn Hold'",
@@ -387,6 +403,22 @@
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::loop_pressure_ok"
       },
       {
+        "constraint_id": "stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87",
+        "declaration_id": "dd052548-165f-5002-bcbc-96e26b7b646c",
+        "definition_qualified_name": "mfe_matched_steam_cycle::'Active Steam Heat Direction'",
+        "evaluation_channel": "stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"enabled_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"enabled_in\",\"qualified_name\":\"mfe_matched_steam_cycle::'Active Steam Heat Direction'::enabled_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"gap_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"gap_in\",\"qualified_name\":\"mfe_matched_steam_cycle::'Active Steam Heat Direction'::gap_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"or\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_matched_steam_cycle::'Active Steam Heat Direction'",
+        "source_form": "definition_typed",
+        "source_local_identity": "matched_main_heat_direction",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::matched_main_heat_direction"
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f",
         "declaration_id": "f0d323a2-24f8-58d0-9ed8-bc11e16b4963",
         "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
@@ -401,10 +433,26 @@
         "source_form": "definition_typed",
         "source_local_identity": "facility_initial_ready",
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_initial_ready"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444",
+        "declaration_id": "f13b593d-bd86-5d07-8369-9763a9a1c906",
+        "definition_qualified_name": "mfe_matched_steam_cycle::'Active Steam Heat Direction'",
+        "evaluation_channel": "stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"enabled_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"enabled_in\",\"qualified_name\":\"mfe_matched_steam_cycle::'Active Steam Heat Direction'::enabled_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"gap_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"gap_in\",\"qualified_name\":\"mfe_matched_steam_cycle::'Active Steam Heat Direction'::gap_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"or\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_matched_steam_cycle::'Active Steam Heat Direction'",
+        "source_form": "definition_typed",
+        "source_local_identity": "matched_reheat_heat_direction",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::matched_reheat_heat_direction"
       }
     ],
     "excluded_records": [],
-    "fingerprint": "3bb6bd28071209d8ec9f99c63e33d3935e48773f9cb082f876a8298be6bcf221",
+    "fingerprint": "ac55f48f9d10ccf5d0db4ba6915690cc1369827da79acb72c3c382bc64ecff50",
     "source_records": [
       {
         "definition_qualified_name": "mfe_conductor_current::'Reference Conductor Current Margin'",
@@ -428,6 +476,13 @@
         "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
         "formal_names": [
           "efficiency"
+        ]
+      },
+      {
+        "definition_qualified_name": "mfe_matched_steam_cycle::'Active Steam Heat Direction'",
+        "formal_names": [
+          "enabled_in",
+          "gap_in"
         ]
       },
       {
@@ -731,6 +786,24 @@
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::net_positive"
       },
       {
+        "declaration_id": "687b5ff0-b488-5ab0-a5cf-ff1d2ad981f7",
+        "definition_qualified_name": "mfe_matched_steam_cycle::'Active Steam Heat Direction'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::cooling_water_heat_direction profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "cooling_water_heat_direction",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::cooling_water_heat_direction"
+      },
+      {
         "declaration_id": "7b8980c5-1176-5a84-ba5e-040ab0715d9a",
         "definition_qualified_name": "mfe_viability::'Burn Hold'",
         "disposition_detail": "stellarator_09::stellaris::burn_hold_ok profile eligibility admit",
@@ -965,6 +1038,24 @@
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::loop_pressure_ok"
       },
       {
+        "declaration_id": "dd052548-165f-5002-bcbc-96e26b7b646c",
+        "definition_qualified_name": "mfe_matched_steam_cycle::'Active Steam Heat Direction'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::matched_main_heat_direction profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "matched_main_heat_direction",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::matched_main_heat_direction"
+      },
+      {
         "declaration_id": "f0d323a2-24f8-58d0-9ed8-bc11e16b4963",
         "definition_qualified_name": "mfe_facilities::'Facility Nonnegative Margin'",
         "disposition_detail": "mfe_plant::'MFE Power Plant'::facility_initial_ready profile eligibility admit",
@@ -981,6 +1072,24 @@
         "source_form": "definition_typed",
         "source_local_identity": "facility_initial_ready",
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::facility_initial_ready"
+      },
+      {
+        "declaration_id": "f13b593d-bd86-5d07-8369-9763a9a1c906",
+        "definition_qualified_name": "mfe_matched_steam_cycle::'Active Steam Heat Direction'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::matched_reheat_heat_direction profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "matched_reheat_heat_direction",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::matched_reheat_heat_direction"
       }
     ]
   },
@@ -1964,6 +2073,476 @@
     {
       "channel_name": "stellarator_09__stellaris__heat_transport__cooling_energy__recovered_total",
       "field_name": "recovered_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__s_main_kJ_kgK",
+      "field_name": "s_main_kJ_kgK",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__reheat_min_gap_K",
+      "field_name": "reheat_min_gap_K",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__mdot_heater_kg_s",
+      "field_name": "mdot_heater_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__h_hp_kJ_kg",
+      "field_name": "h_hp_kJ_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__s_lp_kJ_kgK",
+      "field_name": "s_lp_kJ_kgK",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_condensate_pumped_MPa",
+      "field_name": "p_condensate_pumped_MPa",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__mdot_main_kg_s",
+      "field_name": "mdot_main_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__mdot_reheat_kg_s",
+      "field_name": "mdot_reheat_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__q_generator_loss_MW",
+      "field_name": "q_generator_loss_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__t_feed_C",
+      "field_name": "t_feed_C",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_cycle_net_before_cooling_MW",
+      "field_name": "p_cycle_net_before_cooling_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__main_UA_available",
+      "field_name": "main_UA_available",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_feedwater_electric_MW",
+      "field_name": "p_feedwater_electric_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__q_rejection_before_cooling_MW",
+      "field_name": "q_rejection_before_cooling_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_lp_MPa",
+      "field_name": "p_lp_MPa",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__lp_quality",
+      "field_name": "lp_quality",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__h_condensate_pumped_kJ_kg",
+      "field_name": "h_condensate_pumped_kJ_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__t_heater_C",
+      "field_name": "t_heater_C",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_cycle_pumps_MW",
+      "field_name": "p_cycle_pumps_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__t_condensate_C",
+      "field_name": "t_condensate_C",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__salt_reheat_flow_kg_s",
+      "field_name": "salt_reheat_flow_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__s_reheat_kJ_kgK",
+      "field_name": "s_reheat_kJ_kgK",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__salt_main_flow_kg_s",
+      "field_name": "salt_main_flow_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_gross_MW",
+      "field_name": "p_gross_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_feedwater_shaft_MW",
+      "field_name": "p_feedwater_shaft_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__h_main_kJ_kg",
+      "field_name": "h_main_kJ_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__t_reheat_C",
+      "field_name": "t_reheat_C",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__installed_sg_capacity_qualified",
+      "field_name": "installed_sg_capacity_qualified",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_hp_shaft_MW",
+      "field_name": "p_hp_shaft_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_main_MPa",
+      "field_name": "p_main_MPa",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__t_hp_C",
+      "field_name": "t_hp_C",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__mdot_feed_kg_s",
+      "field_name": "mdot_feed_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__mdot_bleed_kg_s",
+      "field_name": "mdot_bleed_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_condensate_MPa",
+      "field_name": "p_condensate_MPa",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__salt_heat_residual_MW",
+      "field_name": "salt_heat_residual_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_hp_MPa",
+      "field_name": "p_hp_MPa",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__active",
+      "field_name": "active",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__eta_gross",
+      "field_name": "eta_gross",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__h_lp_kJ_kg",
+      "field_name": "h_lp_kJ_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__mdot_condensate_kg_s",
+      "field_name": "mdot_condensate_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__h_feed_kJ_kg",
+      "field_name": "h_feed_kJ_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__heater_energy_residual_MW",
+      "field_name": "heater_energy_residual_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__lp_moisture_fraction",
+      "field_name": "lp_moisture_fraction",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__t_main_C",
+      "field_name": "t_main_C",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__cycle_electric_residual_MW",
+      "field_name": "cycle_electric_residual_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_feed_MPa",
+      "field_name": "p_feed_MPa",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__main_UA_MW_K",
+      "field_name": "main_UA_MW_K",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__bleed_fraction",
+      "field_name": "bleed_fraction",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_reheat_MPa",
+      "field_name": "p_reheat_MPa",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__mdot_lp_kg_s",
+      "field_name": "mdot_lp_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__reheat_UA_MW_K",
+      "field_name": "reheat_UA_MW_K",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_lp_shaft_MW",
+      "field_name": "p_lp_shaft_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_heater_MPa",
+      "field_name": "p_heater_MPa",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__q_main_MW",
+      "field_name": "q_main_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__q_pump_motor_loss_MW",
+      "field_name": "q_pump_motor_loss_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__q_mechanical_loss_MW",
+      "field_name": "q_mechanical_loss_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_condensate_electric_MW",
+      "field_name": "p_condensate_electric_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__main_min_gap_K",
+      "field_name": "main_min_gap_K",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__heater_mass_residual_kg_s",
+      "field_name": "heater_mass_residual_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__s_hp_kJ_kgK",
+      "field_name": "s_hp_kJ_kgK",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__h_heater_kJ_kg",
+      "field_name": "h_heater_kJ_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__main_admission_ok",
+      "field_name": "main_admission_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__q_condenser_MW",
+      "field_name": "q_condenser_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__mdot_hp_kg_s",
+      "field_name": "mdot_hp_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__h_condensate_kJ_kg",
+      "field_name": "h_condensate_kJ_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__p_condensate_shaft_MW",
+      "field_name": "p_condensate_shaft_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__turbine_equipment_qualified",
+      "field_name": "turbine_equipment_qualified",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__h_reheat_kJ_kg",
+      "field_name": "h_reheat_kJ_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__cycle_shaft_residual_MW",
+      "field_name": "cycle_shaft_residual_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__reheat_admission_ok",
+      "field_name": "reheat_admission_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__s_heater_kJ_kgK",
+      "field_name": "s_heater_kJ_kgK",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__q_reheat_MW",
+      "field_name": "q_reheat_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__s_feed_kJ_kgK",
+      "field_name": "s_feed_kJ_kgK",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__salt_flow_total_kg_s",
+      "field_name": "salt_flow_total_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__reheat_UA_available",
+      "field_name": "reheat_UA_available",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__s_condensate_kJ_kgK",
+      "field_name": "s_condensate_kJ_kgK",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__mdot_condensate_pumped_kg_s",
+      "field_name": "mdot_condensate_pumped_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__matched_cycle__t_lp_C",
+      "field_name": "t_lp_C",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__cycle_selection__matched_domain_applicable",
+      "field_name": "matched_domain_applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__cycle_selection__legacy_domain_applicable",
+      "field_name": "legacy_domain_applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__turbine__cycle_selection__eta_selected",
+      "field_name": "eta_selected",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_rejection__cooling_water__site_qualified",
+      "field_name": "site_qualified",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_rejection__cooling_water__cooling_approach_ok",
+      "field_name": "cooling_approach_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_rejection__cooling_water__q_cooling_motor_loss_MW",
+      "field_name": "q_cooling_motor_loss_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_rejection__cooling_water__water_flow_kg_s",
+      "field_name": "water_flow_kg_s",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_rejection__cooling_water__water_energy_residual_MW",
+      "field_name": "water_energy_residual_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_rejection__cooling_water__reference_scenario",
+      "field_name": "reference_scenario",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_rejection__cooling_water__condenser_water_gap_K",
+      "field_name": "condenser_water_gap_K",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_rejection__cooling_water__q_total_rejection_MW",
+      "field_name": "q_total_rejection_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_rejection__cooling_water__p_cooling_pump_electric_MW",
+      "field_name": "p_cooling_pump_electric_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_rejection__cooling_water__p_cooling_pump_shaft_MW",
+      "field_name": "p_cooling_pump_shaft_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_rejection__cooling_water__water_pump_rise_K",
+      "field_name": "water_pump_rise_K",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_rejection__cooling_water__active",
+      "field_name": "active",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat_rejection__cooling_water__denominator_kJ_kg",
+      "field_name": "denominator_kJ_kg",
       "python_type": "float"
     },
     {
@@ -5822,6 +6401,11 @@
       "python_type": "ConstraintEvaluation"
     },
     {
+      "channel_name": "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
@@ -5887,7 +6471,17 @@
       "python_type": "ConstraintEvaluation"
     },
     {
+      "channel_name": "stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
@@ -6310,6 +6904,20 @@
       "param_group": "mfe_plant_systems_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__fuel_cycle__s_per_year"
+    },
+    {
+      "default_value": 1.56,
+      "entry_type": "design_attribute",
+      "param_group": "mfe_plant_systems_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__salt_cp_kJ_kgK"
+    },
+    {
+      "default_value": 465.0,
+      "entry_type": "design_attribute",
+      "param_group": "mfe_plant_systems_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_transport__salt_hot_C"
     },
     {
       "default_value": 0.2002,
@@ -8027,11 +8635,53 @@
       "qualified_name": "stellarator_09__stellaris__fuel_cycle__tau_reserve"
     },
     {
+      "default_value": 0.8,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_rejection__circulating_water_pump__efficiency"
+    },
+    {
+      "default_value": 20.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_rejection__circulating_water_pump__head_m"
+    },
+    {
+      "default_value": 0.95,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_rejection__circulating_water_pump__motor_efficiency"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_rejection__cooling_water_enabled"
+    },
+    {
       "default_value": 35060.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__heat_rejection__cost_per_mw"
+    },
+    {
+      "default_value": 25.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_rejection__water_inlet_C"
+    },
+    {
+      "default_value": 35.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__heat_rejection__water_outlet_C"
     },
     {
       "default_value": 40600000.0,
@@ -9238,6 +9888,20 @@
       "qualified_name": "stellarator_09__stellaris__turbine__b_fit"
     },
     {
+      "default_value": 0.8,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__condensate_pump__efficiency"
+    },
+    {
+      "default_value": 42.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__condenser__temperature_C"
+    },
+    {
       "default_value": 202840.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -9271,6 +9935,83 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__turbine__eta_th_direct"
+    },
+    {
+      "default_value": 0.8,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__feedwater_pump__efficiency"
+    },
+    {
+      "default_value": 0.98,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__generator__generator_efficiency"
+    },
+    {
+      "default_value": 0.99,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__generator__mechanical_efficiency"
+    },
+    {
+      "default_value": 0.9,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__hp_turbine__efficiency"
+    },
+    {
+      "default_value": 0.9,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__lp_turbine__efficiency"
+    },
+    {
+      "default_value": 445.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__main_steam_generator__outlet_temperature_C"
+    },
+    {
+      "default_value": 6.2,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__main_steam_generator__pressure_MPa"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__matched_cycle_enabled"
+    },
+    {
+      "default_value": 0.8,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__open_feedwater_heater__pressure_MPa"
+    },
+    {
+      "default_value": 0.95,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__pump_motor_efficiency"
+    },
+    {
+      "default_value": 445.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__turbine__reheater__outlet_temperature_C"
     },
     {
       "default_value": 0.0,
@@ -9329,5 +10070,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "ea1555ea133db8ed7ba1c638b29ddf540ba99d811bfcf7d9ef9454b626d3a28a"
+  "semantic_fingerprint": "989f6a4492157969ba4777347ab588f18547a5077161172be586e41310ad41a1"
 }

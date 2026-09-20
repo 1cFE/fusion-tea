@@ -501,6 +501,152 @@ modules:
       electric_total: float stellarator_09__stellaris__heat_transport__cooling_energy__electric_total
       recovered_total: float stellarator_09__stellaris__heat_transport__cooling_energy__recovered_total
 
+  # mfe_matched_steam_cycle.Matched_Steam_CycleModule
+  stellarator_09__stellaris__turbine__matched_cycle:
+    module_type: mfe_matched_steam_cycle.Matched_Steam_CycleModule
+    inputs:
+      enabled_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__matched_cycle_enabled
+      eta_hp_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__hp_turbine__efficiency
+      steam_temperature_C_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__main_steam_generator__outlet_temperature_C
+      salt_return_C_in: float stellarator_09__stellaris__heat_transport__equipment__salt_return_C
+      eta_condensate_pump_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__condensate_pump__efficiency
+      salt_circuit_count_in: float stellarator_09__stellaris__heat_transport__equipment__ihx_count
+      eta_lp_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__lp_turbine__efficiency
+      eta_mechanical_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__generator__mechanical_efficiency
+      extraction_pressure_MPa_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__open_feedwater_heater__pressure_MPa
+      heat_available_MW_in: float stellarator_09__stellaris__heat_transport__equipment__conversion_heat_MW
+      eta_pump_motor_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__pump_motor_efficiency
+      eta_feedwater_pump_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__feedwater_pump__efficiency
+      salt_flow_per_circuit_in: float stellarator_09__stellaris__heat_transport__equipment__salt_flow
+      salt_hot_C_in: float mfe_plant_systems_params.stellarator_09__stellaris__heat_transport__salt_hot_C
+      source_heat_MW_in: float stellarator_09__stellaris__blanket__source_heat__q_source.root
+      condenser_temperature_C_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__condenser__temperature_C
+      main_pressure_MPa_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__main_steam_generator__pressure_MPa
+      eta_generator_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__generator__generator_efficiency
+      salt_cp_kJ_kgK_in: float mfe_plant_systems_params.stellarator_09__stellaris__heat_transport__salt_cp_kJ_kgK
+      selected_recovered_MW_in: float stellarator_09__stellaris__heat_transport__cooling_energy__recovered_total
+      reheat_temperature_C_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__reheater__outlet_temperature_C
+    outputs:
+      s_main_kJ_kgK: float stellarator_09__stellaris__turbine__matched_cycle__s_main_kJ_kgK
+      reheat_min_gap_K: float stellarator_09__stellaris__turbine__matched_cycle__reheat_min_gap_K
+      mdot_heater_kg_s: float stellarator_09__stellaris__turbine__matched_cycle__mdot_heater_kg_s
+      h_hp_kJ_kg: float stellarator_09__stellaris__turbine__matched_cycle__h_hp_kJ_kg
+      s_lp_kJ_kgK: float stellarator_09__stellaris__turbine__matched_cycle__s_lp_kJ_kgK
+      p_condensate_pumped_MPa: float stellarator_09__stellaris__turbine__matched_cycle__p_condensate_pumped_MPa
+      mdot_main_kg_s: float stellarator_09__stellaris__turbine__matched_cycle__mdot_main_kg_s
+      mdot_reheat_kg_s: float stellarator_09__stellaris__turbine__matched_cycle__mdot_reheat_kg_s
+      q_generator_loss_MW: float stellarator_09__stellaris__turbine__matched_cycle__q_generator_loss_MW
+      t_feed_C: float stellarator_09__stellaris__turbine__matched_cycle__t_feed_C
+      p_cycle_net_before_cooling_MW: float stellarator_09__stellaris__turbine__matched_cycle__p_cycle_net_before_cooling_MW
+      main_UA_available: bool stellarator_09__stellaris__turbine__matched_cycle__main_UA_available
+      p_feedwater_electric_MW: float stellarator_09__stellaris__turbine__matched_cycle__p_feedwater_electric_MW
+      q_rejection_before_cooling_MW: float stellarator_09__stellaris__turbine__matched_cycle__q_rejection_before_cooling_MW
+      p_lp_MPa: float stellarator_09__stellaris__turbine__matched_cycle__p_lp_MPa
+      lp_quality: float stellarator_09__stellaris__turbine__matched_cycle__lp_quality
+      h_condensate_pumped_kJ_kg: float stellarator_09__stellaris__turbine__matched_cycle__h_condensate_pumped_kJ_kg
+      t_heater_C: float stellarator_09__stellaris__turbine__matched_cycle__t_heater_C
+      p_cycle_pumps_MW: float stellarator_09__stellaris__turbine__matched_cycle__p_cycle_pumps_MW
+      t_condensate_C: float stellarator_09__stellaris__turbine__matched_cycle__t_condensate_C
+      salt_reheat_flow_kg_s: float stellarator_09__stellaris__turbine__matched_cycle__salt_reheat_flow_kg_s
+      s_reheat_kJ_kgK: float stellarator_09__stellaris__turbine__matched_cycle__s_reheat_kJ_kgK
+      salt_main_flow_kg_s: float stellarator_09__stellaris__turbine__matched_cycle__salt_main_flow_kg_s
+      p_gross_MW: float stellarator_09__stellaris__turbine__matched_cycle__p_gross_MW
+      p_feedwater_shaft_MW: float stellarator_09__stellaris__turbine__matched_cycle__p_feedwater_shaft_MW
+      h_main_kJ_kg: float stellarator_09__stellaris__turbine__matched_cycle__h_main_kJ_kg
+      t_reheat_C: float stellarator_09__stellaris__turbine__matched_cycle__t_reheat_C
+      installed_sg_capacity_qualified: bool stellarator_09__stellaris__turbine__matched_cycle__installed_sg_capacity_qualified
+      p_hp_shaft_MW: float stellarator_09__stellaris__turbine__matched_cycle__p_hp_shaft_MW
+      p_main_MPa: float stellarator_09__stellaris__turbine__matched_cycle__p_main_MPa
+      t_hp_C: float stellarator_09__stellaris__turbine__matched_cycle__t_hp_C
+      mdot_feed_kg_s: float stellarator_09__stellaris__turbine__matched_cycle__mdot_feed_kg_s
+      mdot_bleed_kg_s: float stellarator_09__stellaris__turbine__matched_cycle__mdot_bleed_kg_s
+      p_condensate_MPa: float stellarator_09__stellaris__turbine__matched_cycle__p_condensate_MPa
+      salt_heat_residual_MW: float stellarator_09__stellaris__turbine__matched_cycle__salt_heat_residual_MW
+      p_hp_MPa: float stellarator_09__stellaris__turbine__matched_cycle__p_hp_MPa
+      active: bool stellarator_09__stellaris__turbine__matched_cycle__active
+      eta_gross: float stellarator_09__stellaris__turbine__matched_cycle__eta_gross
+      h_lp_kJ_kg: float stellarator_09__stellaris__turbine__matched_cycle__h_lp_kJ_kg
+      mdot_condensate_kg_s: float stellarator_09__stellaris__turbine__matched_cycle__mdot_condensate_kg_s
+      h_feed_kJ_kg: float stellarator_09__stellaris__turbine__matched_cycle__h_feed_kJ_kg
+      heater_energy_residual_MW: float stellarator_09__stellaris__turbine__matched_cycle__heater_energy_residual_MW
+      lp_moisture_fraction: float stellarator_09__stellaris__turbine__matched_cycle__lp_moisture_fraction
+      t_main_C: float stellarator_09__stellaris__turbine__matched_cycle__t_main_C
+      cycle_electric_residual_MW: float stellarator_09__stellaris__turbine__matched_cycle__cycle_electric_residual_MW
+      p_feed_MPa: float stellarator_09__stellaris__turbine__matched_cycle__p_feed_MPa
+      main_UA_MW_K: float stellarator_09__stellaris__turbine__matched_cycle__main_UA_MW_K
+      bleed_fraction: float stellarator_09__stellaris__turbine__matched_cycle__bleed_fraction
+      p_reheat_MPa: float stellarator_09__stellaris__turbine__matched_cycle__p_reheat_MPa
+      mdot_lp_kg_s: float stellarator_09__stellaris__turbine__matched_cycle__mdot_lp_kg_s
+      reheat_UA_MW_K: float stellarator_09__stellaris__turbine__matched_cycle__reheat_UA_MW_K
+      p_lp_shaft_MW: float stellarator_09__stellaris__turbine__matched_cycle__p_lp_shaft_MW
+      p_heater_MPa: float stellarator_09__stellaris__turbine__matched_cycle__p_heater_MPa
+      q_main_MW: float stellarator_09__stellaris__turbine__matched_cycle__q_main_MW
+      q_pump_motor_loss_MW: float stellarator_09__stellaris__turbine__matched_cycle__q_pump_motor_loss_MW
+      q_mechanical_loss_MW: float stellarator_09__stellaris__turbine__matched_cycle__q_mechanical_loss_MW
+      p_condensate_electric_MW: float stellarator_09__stellaris__turbine__matched_cycle__p_condensate_electric_MW
+      main_min_gap_K: float stellarator_09__stellaris__turbine__matched_cycle__main_min_gap_K
+      heater_mass_residual_kg_s: float stellarator_09__stellaris__turbine__matched_cycle__heater_mass_residual_kg_s
+      s_hp_kJ_kgK: float stellarator_09__stellaris__turbine__matched_cycle__s_hp_kJ_kgK
+      h_heater_kJ_kg: float stellarator_09__stellaris__turbine__matched_cycle__h_heater_kJ_kg
+      main_admission_ok: bool stellarator_09__stellaris__turbine__matched_cycle__main_admission_ok
+      q_condenser_MW: float stellarator_09__stellaris__turbine__matched_cycle__q_condenser_MW
+      mdot_hp_kg_s: float stellarator_09__stellaris__turbine__matched_cycle__mdot_hp_kg_s
+      h_condensate_kJ_kg: float stellarator_09__stellaris__turbine__matched_cycle__h_condensate_kJ_kg
+      p_condensate_shaft_MW: float stellarator_09__stellaris__turbine__matched_cycle__p_condensate_shaft_MW
+      turbine_equipment_qualified: bool stellarator_09__stellaris__turbine__matched_cycle__turbine_equipment_qualified
+      h_reheat_kJ_kg: float stellarator_09__stellaris__turbine__matched_cycle__h_reheat_kJ_kg
+      cycle_shaft_residual_MW: float stellarator_09__stellaris__turbine__matched_cycle__cycle_shaft_residual_MW
+      reheat_admission_ok: bool stellarator_09__stellaris__turbine__matched_cycle__reheat_admission_ok
+      s_heater_kJ_kgK: float stellarator_09__stellaris__turbine__matched_cycle__s_heater_kJ_kgK
+      q_reheat_MW: float stellarator_09__stellaris__turbine__matched_cycle__q_reheat_MW
+      s_feed_kJ_kgK: float stellarator_09__stellaris__turbine__matched_cycle__s_feed_kJ_kgK
+      salt_flow_total_kg_s: float stellarator_09__stellaris__turbine__matched_cycle__salt_flow_total_kg_s
+      reheat_UA_available: bool stellarator_09__stellaris__turbine__matched_cycle__reheat_UA_available
+      s_condensate_kJ_kgK: float stellarator_09__stellaris__turbine__matched_cycle__s_condensate_kJ_kgK
+      mdot_condensate_pumped_kg_s: float stellarator_09__stellaris__turbine__matched_cycle__mdot_condensate_pumped_kg_s
+      t_lp_C: float stellarator_09__stellaris__turbine__matched_cycle__t_lp_C
+
+  # mfe_matched_steam_cycle.Cycle_Mode_SelectionModule
+  stellarator_09__stellaris__turbine__cycle_selection:
+    module_type: mfe_matched_steam_cycle.Cycle_Mode_SelectionModule
+    inputs:
+      legacy_domain_product_in: float stellarator_09__stellaris__turbine__cycle__domain_product
+      legacy_eta_in: float stellarator_09__stellaris__turbine__cycle__eta_th
+      matched_eta_in: float stellarator_09__stellaris__turbine__matched_cycle__eta_gross
+      matched_enabled_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__matched_cycle_enabled
+    outputs:
+      matched_domain_applicable: bool stellarator_09__stellaris__turbine__cycle_selection__matched_domain_applicable
+      legacy_domain_applicable: bool stellarator_09__stellaris__turbine__cycle_selection__legacy_domain_applicable
+      eta_selected: float stellarator_09__stellaris__turbine__cycle_selection__eta_selected
+
+  # mfe_matched_steam_cycle.Cooling_Water_RejectionModule
+  stellarator_09__stellaris__heat_rejection__cooling_water:
+    module_type: mfe_matched_steam_cycle.Cooling_Water_RejectionModule
+    inputs:
+      q_rejection_before_cooling_MW_in: float stellarator_09__stellaris__turbine__matched_cycle__q_rejection_before_cooling_MW
+      head_m_in: float stellarator_plant_params.stellarator_09__stellaris__heat_rejection__circulating_water_pump__head_m
+      water_outlet_C_in: float stellarator_plant_params.stellarator_09__stellaris__heat_rejection__water_outlet_C
+      condenser_temperature_C_in: float stellarator_09__stellaris__turbine__matched_cycle__t_condensate_C
+      eta_pump_in: float stellarator_plant_params.stellarator_09__stellaris__heat_rejection__circulating_water_pump__efficiency
+      eta_motor_in: float stellarator_plant_params.stellarator_09__stellaris__heat_rejection__circulating_water_pump__motor_efficiency
+      enabled_in: float stellarator_plant_params.stellarator_09__stellaris__heat_rejection__cooling_water_enabled
+      cycle_active_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__matched_cycle_enabled
+      water_inlet_C_in: float stellarator_plant_params.stellarator_09__stellaris__heat_rejection__water_inlet_C
+    outputs:
+      site_qualified: bool stellarator_09__stellaris__heat_rejection__cooling_water__site_qualified
+      cooling_approach_ok: bool stellarator_09__stellaris__heat_rejection__cooling_water__cooling_approach_ok
+      q_cooling_motor_loss_MW: float stellarator_09__stellaris__heat_rejection__cooling_water__q_cooling_motor_loss_MW
+      water_flow_kg_s: float stellarator_09__stellaris__heat_rejection__cooling_water__water_flow_kg_s
+      water_energy_residual_MW: float stellarator_09__stellaris__heat_rejection__cooling_water__water_energy_residual_MW
+      reference_scenario: bool stellarator_09__stellaris__heat_rejection__cooling_water__reference_scenario
+      condenser_water_gap_K: float stellarator_09__stellaris__heat_rejection__cooling_water__condenser_water_gap_K
+      q_total_rejection_MW: float stellarator_09__stellaris__heat_rejection__cooling_water__q_total_rejection_MW
+      p_cooling_pump_electric_MW: float stellarator_09__stellaris__heat_rejection__cooling_water__p_cooling_pump_electric_MW
+      p_cooling_pump_shaft_MW: float stellarator_09__stellaris__heat_rejection__cooling_water__p_cooling_pump_shaft_MW
+      water_pump_rise_K: float stellarator_09__stellaris__heat_rejection__cooling_water__water_pump_rise_K
+      active: bool stellarator_09__stellaris__heat_rejection__cooling_water__active
+      denominator_kJ_kg: float stellarator_09__stellaris__heat_rejection__cooling_water__denominator_kJ_kg
+
   # mfe_plasma_scaling.MFE_Radial_BuildModule
   stellarator_09__stellaris__rb:
     module_type: mfe_plasma_scaling.MFE_Radial_BuildModule
@@ -981,6 +1127,8 @@ modules:
   stellarator_09__stellaris__pb:
     module_type: mfe_power_balance.MFE_Power_Balance_CalcModule
     inputs:
+      p_cycle_pumps_in: float stellarator_09__stellaris__turbine__matched_cycle__p_cycle_pumps_MW
+      p_cooling_water_in: float stellarator_09__stellaris__heat_rejection__cooling_water__p_cooling_pump_electric_MW
       p_tfcool_in: float stellarator_plant_params.stellarator_09__stellaris__cryoplant__p_tfcool
       p_cryo: float stellarator_09__stellaris__cryoplant__refrigeration_sum__total.root
       p_nrl: float stellarator_09__stellaris__plasma__fusion__p_fus.root
@@ -992,7 +1140,7 @@ modules:
       p_house_in: float stellarator_plant_params.stellarator_09__stellaris__p_house
       mn_in: float stellarator_plant_params.stellarator_09__stellaris__blanket__mn
       q_recovered_in: float stellarator_09__stellaris__heat_transport__cooling_energy__recovered_total
-      eta_th_in: float stellarator_09__stellaris__turbine__cycle__eta_th
+      eta_th_in: float stellarator_09__stellaris__turbine__cycle_selection__eta_selected
       p_tf_in: float stellarator_09__stellaris__power_supplies__tf_power__total.root
       p_input_in: float stellarator_09__stellaris__operating_heat__p_coupled
       p_trit_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_cycle__p_trit
@@ -3188,6 +3336,15 @@ modules:
     outputs:
       evaluation: ConstraintEvaluation stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation
 
+  # stellarator_09.StellarisCoolingWaterHeatDirectionConstraintModule
+  stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328:
+    module_type: stellarator_09.StellarisCoolingWaterHeatDirectionConstraintModule
+    inputs:
+      enabled_in: float stellarator_plant_params.stellarator_09__stellaris__heat_rejection__cooling_water_enabled
+      gap_in: float stellarator_09__stellaris__heat_rejection__cooling_water__condenser_water_gap_K
+    outputs:
+      evaluation: ConstraintEvaluation stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328__evaluation
+
   # stellarator_09.StellarisBurnHoldOkConstraintModule
   stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58:
     module_type: stellarator_09.StellarisBurnHoldOkConstraintModule
@@ -3297,6 +3454,15 @@ modules:
     outputs:
       evaluation: ConstraintEvaluation stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945__evaluation
 
+  # stellarator_09.StellarisMatchedMainHeatDirectionConstraintModule
+  stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87:
+    module_type: stellarator_09.StellarisMatchedMainHeatDirectionConstraintModule
+    inputs:
+      enabled_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__matched_cycle_enabled
+      gap_in: float stellarator_09__stellaris__turbine__matched_cycle__main_min_gap_K
+    outputs:
+      evaluation: ConstraintEvaluation stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87__evaluation
+
   # stellarator_09.StellarisFacilityInitialReadyConstraintModule
   stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f:
     module_type: stellarator_09.StellarisFacilityInitialReadyConstraintModule
@@ -3304,6 +3470,15 @@ modules:
       margin_in: float stellarator_09__stellaris__buildings__layout__initial_margin_days
     outputs:
       evaluation: ConstraintEvaluation stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f__evaluation
+
+  # stellarator_09.StellarisMatchedReheatHeatDirectionConstraintModule
+  stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444:
+    module_type: stellarator_09.StellarisMatchedReheatHeatDirectionConstraintModule
+    inputs:
+      enabled_in: float stellarator_plant_params.stellarator_09__stellaris__turbine__matched_cycle_enabled
+      gap_in: float stellarator_09__stellaris__turbine__matched_cycle__reheat_min_gap_K
+    outputs:
+      evaluation: ConstraintEvaluation stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444__evaluation
 
   # constraints.ConstraintReportAggregatorModule
   constraint_report_aggregator:
@@ -3320,6 +3495,7 @@ modules:
       stellarator_09_stellaris_facility_outage_ok_9b00e5bd8ea45722: ConstraintEvaluation stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722__evaluation
       stellarator_09_stellaris_heating_source_upper_ok_14ddae450a8eda6f: ConstraintEvaluation stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f__evaluation
       stellarator_09_stellaris_net_positive_484521d56c02667a: ConstraintEvaluation stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation
+      stellarator_09_stellaris_cooling_water_heat_direction_6719109cbd7ec328: ConstraintEvaluation stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328__evaluation
       stellarator_09_stellaris_burn_hold_ok_03c3f94b878e5b58: ConstraintEvaluation stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58__evaluation
       stellarator_09_stellaris_wall_load_ok_ab2c790419af93bb: ConstraintEvaluation stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation
       stellarator_09_stellaris_tbr_ok_2cd198f674d413e4: ConstraintEvaluation stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation
@@ -3333,7 +3509,9 @@ modules:
       stellarator_09_stellaris_facility_replacement_ready_00706bc8dbdf6938: ConstraintEvaluation stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938__evaluation
       stellarator_09_stellaris_heating_source_positive_ok_1e184791591370e5: ConstraintEvaluation stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5__evaluation
       stellarator_09_stellaris_loop_pressure_ok_5905ab54f5e8a945: ConstraintEvaluation stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945__evaluation
+      stellarator_09_stellaris_matched_main_heat_direction_0768c1b90a9f4f87: ConstraintEvaluation stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87__evaluation
       stellarator_09_stellaris_facility_initial_ready_d3a5b04c428ef75f: ConstraintEvaluation stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f__evaluation
+      stellarator_09_stellaris_matched_reheat_heat_direction_31add2a272bf6444: ConstraintEvaluation stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444__evaluation
     outputs:
       constraint_report: ConstraintReport constraint_report
 
@@ -3420,7 +3598,7 @@ modules:
       stellarator_09__stellaris__turbine__cycle__margin_low: float stellarator_09__stellaris__turbine__cycle__margin_low.json
       stellarator_09__stellaris__turbine__cycle__T2_C: float stellaris__heat_transport__cooling_cycle_argument.json
       stellarator_09__stellaris__turbine__cycle__margin_high: float stellarator_09__stellaris__turbine__cycle__margin_high.json
-      stellarator_09__stellaris__turbine__cycle__eta_th: float stellaris__turbine__eta_th.json
+      stellarator_09__stellaris__turbine__cycle__eta_th: float stellarator_09__stellaris__turbine__cycle__eta_th.json
       stellarator_09__stellaris__turbine__cycle__eta_fit: float stellarator_09__stellaris__turbine__cycle__eta_fit.json
       stellarator_09__stellaris__turbine__cycle__domain_product: float stellaris__turbine__domain_product.json
       stellarator_09__stellaris__heat_transport__equipment__salt_pump_flow: float stellaris__heat_transport__salt_pumps__mass_flow.json
@@ -3454,7 +3632,7 @@ modules:
       stellarator_09__stellaris__heat_transport__equipment__primary_design: float stellarator_09__stellaris__heat_transport__equipment__primary_design.json
       stellarator_09__stellaris__heat_transport__equipment__salt_head_remaining: float stellarator_09__stellaris__heat_transport__equipment__salt_head_remaining.json
       stellarator_09__stellaris__heat_transport__equipment__installation_total: float stellarator_09__stellaris__heat_transport__equipment__installation_total.json
-      stellarator_09__stellaris__heat_transport__equipment__salt_return_C: float stellarator_09__stellaris__heat_transport__equipment__salt_return_C.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_return_C: float stellaris__heat_transport__salt_return_C.json
       stellarator_09__stellaris__heat_transport__equipment__circulator_shaft_MW: float stellaris__heat_transport__primary_circulators__shaft_power.json
       stellarator_09__stellaris__heat_transport__equipment__circulator_flow: float stellaris__heat_transport__primary_circulators__mass_flow.json
       stellarator_09__stellaris__heat_transport__equipment__source_volume_ratio: float stellarator_09__stellaris__heat_transport__equipment__source_volume_ratio.json
@@ -3476,7 +3654,7 @@ modules:
       stellarator_09__stellaris__heat_transport__equipment__primary_piping_cost: float stellaris__heat_transport__primary_pipes__capital_cost.json
       stellarator_09__stellaris__heat_transport__equipment__hx_purchase: float stellarator_09__stellaris__heat_transport__equipment__hx_purchase.json
       stellarator_09__stellaris__heat_transport__equipment__circulator_volume: float stellarator_09__stellaris__heat_transport__equipment__circulator_volume.json
-      stellarator_09__stellaris__heat_transport__equipment__salt_flow: float stellarator_09__stellaris__heat_transport__equipment__salt_flow.json
+      stellarator_09__stellaris__heat_transport__equipment__salt_flow: float stellaris__heat_transport__salt_flow_per_circuit.json
       stellarator_09__stellaris__heat_transport__equipment__ihx_required_area: float stellaris__heat_transport__intermediate_exchangers__required_area.json
       stellarator_09__stellaris__heat_transport__equipment__hx_shell_wall: float stellaris__buildings__hx_shell_wall.json
       stellarator_09__stellaris__heat_transport__equipment__machine_event_purchase: float stellarator_09__stellaris__heat_transport__equipment__machine_event_purchase.json
@@ -3486,7 +3664,7 @@ modules:
       stellarator_09__stellaris__heat_transport__equipment__pump_size_ok: bool stellarator_09__stellaris__heat_transport__equipment__pump_size_ok.json
       stellarator_09__stellaris__heat_transport__equipment__hx_shell_length: float stellaris__buildings__hx_shell_length.json
       stellarator_09__stellaris__heat_transport__equipment__salt_inventory_cost: float stellarator_09__stellaris__heat_transport__equipment__salt_inventory_cost.json
-      stellarator_09__stellaris__heat_transport__equipment__conversion_heat_MW: float stellarator_09__stellaris__heat_transport__equipment__conversion_heat_MW.json
+      stellarator_09__stellaris__heat_transport__equipment__conversion_heat_MW: float stellaris__heat_transport__conversion_heat_MW.json
       stellarator_09__stellaris__heat_transport__equipment__ihx_cold_approach: float stellarator_09__stellaris__heat_transport__equipment__ihx_cold_approach.json
       stellarator_09__stellaris__heat_transport__equipment__salt_bulk_scale_ok: bool stellarator_09__stellaris__heat_transport__equipment__salt_bulk_scale_ok.json
       stellarator_09__stellaris__heat_transport__equipment__pump_size_factor: float stellarator_09__stellaris__heat_transport__equipment__pump_size_factor.json
@@ -3538,6 +3716,100 @@ modules:
       stellarator_09__stellaris__heat_transport__equipment__motor_base_ok: bool stellarator_09__stellaris__heat_transport__equipment__motor_base_ok.json
       stellarator_09__stellaris__heat_transport__cooling_energy__electric_total: float stellaris__heat_transport__p_pump_total.json
       stellarator_09__stellaris__heat_transport__cooling_energy__recovered_total: float stellaris__heat_transport__q_recovered_total.json
+      stellarator_09__stellaris__turbine__matched_cycle__s_main_kJ_kgK: float stellaris__turbine__s_main_kJ_kgK.json
+      stellarator_09__stellaris__turbine__matched_cycle__reheat_min_gap_K: float stellaris__turbine__reheat_min_gap_K.json
+      stellarator_09__stellaris__turbine__matched_cycle__mdot_heater_kg_s: float stellaris__turbine__mdot_heater_kg_s.json
+      stellarator_09__stellaris__turbine__matched_cycle__h_hp_kJ_kg: float stellaris__turbine__h_hp_kJ_kg.json
+      stellarator_09__stellaris__turbine__matched_cycle__s_lp_kJ_kgK: float stellaris__turbine__s_lp_kJ_kgK.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_condensate_pumped_MPa: float stellaris__turbine__p_condensate_pumped_MPa.json
+      stellarator_09__stellaris__turbine__matched_cycle__mdot_main_kg_s: float stellaris__turbine__mdot_main_kg_s.json
+      stellarator_09__stellaris__turbine__matched_cycle__mdot_reheat_kg_s: float stellaris__turbine__mdot_reheat_kg_s.json
+      stellarator_09__stellaris__turbine__matched_cycle__q_generator_loss_MW: float stellaris__turbine__q_generator_loss_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__t_feed_C: float stellaris__turbine__t_feed_C.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_cycle_net_before_cooling_MW: float stellaris__turbine__p_cycle_net_before_cooling_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__main_UA_available: bool stellaris__turbine__matched_main_UA_available.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_feedwater_electric_MW: float stellaris__turbine__p_feedwater_electric_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__q_rejection_before_cooling_MW: float stellaris__heat_rejection__cycle_rejection_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_lp_MPa: float stellaris__turbine__p_lp_MPa.json
+      stellarator_09__stellaris__turbine__matched_cycle__lp_quality: float stellaris__turbine__lp_quality.json
+      stellarator_09__stellaris__turbine__matched_cycle__h_condensate_pumped_kJ_kg: float stellaris__turbine__h_condensate_pumped_kJ_kg.json
+      stellarator_09__stellaris__turbine__matched_cycle__t_heater_C: float stellaris__turbine__t_heater_C.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_cycle_pumps_MW: float stellaris__turbine__p_cycle_pumps_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__t_condensate_C: float stellaris__heat_rejection__cycle_condenser_C.json
+      stellarator_09__stellaris__turbine__matched_cycle__salt_reheat_flow_kg_s: float stellaris__turbine__salt_reheat_flow_kg_s.json
+      stellarator_09__stellaris__turbine__matched_cycle__s_reheat_kJ_kgK: float stellaris__turbine__s_reheat_kJ_kgK.json
+      stellarator_09__stellaris__turbine__matched_cycle__salt_main_flow_kg_s: float stellaris__turbine__salt_main_flow_kg_s.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_gross_MW: float stellaris__turbine__p_gross_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_feedwater_shaft_MW: float stellaris__turbine__p_feedwater_shaft_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__h_main_kJ_kg: float stellaris__turbine__h_main_kJ_kg.json
+      stellarator_09__stellaris__turbine__matched_cycle__t_reheat_C: float stellaris__turbine__t_reheat_C.json
+      stellarator_09__stellaris__turbine__matched_cycle__installed_sg_capacity_qualified: bool stellaris__turbine__matched_installed_sg_capacity_qualified.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_hp_shaft_MW: float stellaris__turbine__p_hp_shaft_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_main_MPa: float stellaris__turbine__p_main_MPa.json
+      stellarator_09__stellaris__turbine__matched_cycle__t_hp_C: float stellaris__turbine__t_hp_C.json
+      stellarator_09__stellaris__turbine__matched_cycle__mdot_feed_kg_s: float stellaris__turbine__mdot_feed_kg_s.json
+      stellarator_09__stellaris__turbine__matched_cycle__mdot_bleed_kg_s: float stellaris__turbine__mdot_bleed_kg_s.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_condensate_MPa: float stellaris__turbine__p_condensate_MPa.json
+      stellarator_09__stellaris__turbine__matched_cycle__salt_heat_residual_MW: float stellaris__turbine__salt_heat_residual_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_hp_MPa: float stellaris__turbine__p_hp_MPa.json
+      stellarator_09__stellaris__turbine__matched_cycle__active: bool stellaris__turbine__matched_active.json
+      stellarator_09__stellaris__turbine__matched_cycle__eta_gross: float stellaris__turbine__eta_gross.json
+      stellarator_09__stellaris__turbine__matched_cycle__h_lp_kJ_kg: float stellaris__turbine__h_lp_kJ_kg.json
+      stellarator_09__stellaris__turbine__matched_cycle__mdot_condensate_kg_s: float stellaris__turbine__mdot_condensate_kg_s.json
+      stellarator_09__stellaris__turbine__matched_cycle__h_feed_kJ_kg: float stellaris__turbine__h_feed_kJ_kg.json
+      stellarator_09__stellaris__turbine__matched_cycle__heater_energy_residual_MW: float stellaris__turbine__heater_energy_residual_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__lp_moisture_fraction: float stellaris__turbine__lp_moisture_fraction.json
+      stellarator_09__stellaris__turbine__matched_cycle__t_main_C: float stellaris__turbine__t_main_C.json
+      stellarator_09__stellaris__turbine__matched_cycle__cycle_electric_residual_MW: float stellaris__turbine__cycle_electric_residual_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_feed_MPa: float stellaris__turbine__p_feed_MPa.json
+      stellarator_09__stellaris__turbine__matched_cycle__main_UA_MW_K: float stellaris__turbine__main_UA_MW_K.json
+      stellarator_09__stellaris__turbine__matched_cycle__bleed_fraction: float stellaris__turbine__bleed_fraction.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_reheat_MPa: float stellaris__turbine__p_reheat_MPa.json
+      stellarator_09__stellaris__turbine__matched_cycle__mdot_lp_kg_s: float stellaris__turbine__mdot_lp_kg_s.json
+      stellarator_09__stellaris__turbine__matched_cycle__reheat_UA_MW_K: float stellaris__turbine__reheat_UA_MW_K.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_lp_shaft_MW: float stellaris__turbine__p_lp_shaft_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_heater_MPa: float stellaris__turbine__p_heater_MPa.json
+      stellarator_09__stellaris__turbine__matched_cycle__q_main_MW: float stellaris__turbine__q_main_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__q_pump_motor_loss_MW: float stellaris__turbine__q_pump_motor_loss_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__q_mechanical_loss_MW: float stellaris__turbine__q_mechanical_loss_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_condensate_electric_MW: float stellaris__turbine__p_condensate_electric_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__main_min_gap_K: float stellaris__turbine__main_min_gap_K.json
+      stellarator_09__stellaris__turbine__matched_cycle__heater_mass_residual_kg_s: float stellaris__turbine__heater_mass_residual_kg_s.json
+      stellarator_09__stellaris__turbine__matched_cycle__s_hp_kJ_kgK: float stellaris__turbine__s_hp_kJ_kgK.json
+      stellarator_09__stellaris__turbine__matched_cycle__h_heater_kJ_kg: float stellaris__turbine__h_heater_kJ_kg.json
+      stellarator_09__stellaris__turbine__matched_cycle__main_admission_ok: bool stellaris__turbine__matched_main_admission_ok.json
+      stellarator_09__stellaris__turbine__matched_cycle__q_condenser_MW: float stellaris__turbine__q_condenser_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__mdot_hp_kg_s: float stellaris__turbine__mdot_hp_kg_s.json
+      stellarator_09__stellaris__turbine__matched_cycle__h_condensate_kJ_kg: float stellaris__turbine__h_condensate_kJ_kg.json
+      stellarator_09__stellaris__turbine__matched_cycle__p_condensate_shaft_MW: float stellaris__turbine__p_condensate_shaft_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__turbine_equipment_qualified: bool stellaris__turbine__matched_turbine_equipment_qualified.json
+      stellarator_09__stellaris__turbine__matched_cycle__h_reheat_kJ_kg: float stellaris__turbine__h_reheat_kJ_kg.json
+      stellarator_09__stellaris__turbine__matched_cycle__cycle_shaft_residual_MW: float stellaris__turbine__cycle_shaft_residual_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__reheat_admission_ok: bool stellaris__turbine__matched_reheat_admission_ok.json
+      stellarator_09__stellaris__turbine__matched_cycle__s_heater_kJ_kgK: float stellaris__turbine__s_heater_kJ_kgK.json
+      stellarator_09__stellaris__turbine__matched_cycle__q_reheat_MW: float stellaris__turbine__q_reheat_MW.json
+      stellarator_09__stellaris__turbine__matched_cycle__s_feed_kJ_kgK: float stellaris__turbine__s_feed_kJ_kgK.json
+      stellarator_09__stellaris__turbine__matched_cycle__salt_flow_total_kg_s: float stellaris__turbine__salt_flow_total_kg_s.json
+      stellarator_09__stellaris__turbine__matched_cycle__reheat_UA_available: bool stellaris__turbine__matched_reheat_UA_available.json
+      stellarator_09__stellaris__turbine__matched_cycle__s_condensate_kJ_kgK: float stellaris__turbine__s_condensate_kJ_kgK.json
+      stellarator_09__stellaris__turbine__matched_cycle__mdot_condensate_pumped_kg_s: float stellaris__turbine__mdot_condensate_pumped_kg_s.json
+      stellarator_09__stellaris__turbine__matched_cycle__t_lp_C: float stellaris__turbine__t_lp_C.json
+      stellarator_09__stellaris__turbine__cycle_selection__matched_domain_applicable: bool stellaris__turbine__matched_domain_applicable.json
+      stellarator_09__stellaris__turbine__cycle_selection__legacy_domain_applicable: bool stellaris__turbine__legacy_domain_applicable.json
+      stellarator_09__stellaris__turbine__cycle_selection__eta_selected: float stellaris__turbine__eta_th.json
+      stellarator_09__stellaris__heat_rejection__cooling_water__site_qualified: bool stellaris__heat_rejection__cooling_site_qualified.json
+      stellarator_09__stellaris__heat_rejection__cooling_water__cooling_approach_ok: bool stellaris__heat_rejection__cooling_cooling_approach_ok.json
+      stellarator_09__stellaris__heat_rejection__cooling_water__q_cooling_motor_loss_MW: float stellaris__heat_rejection__q_cooling_motor_loss_MW.json
+      stellarator_09__stellaris__heat_rejection__cooling_water__water_flow_kg_s: float stellaris__heat_rejection__water_flow_kg_s.json
+      stellarator_09__stellaris__heat_rejection__cooling_water__water_energy_residual_MW: float stellaris__heat_rejection__water_energy_residual_MW.json
+      stellarator_09__stellaris__heat_rejection__cooling_water__reference_scenario: bool stellaris__heat_rejection__cooling_reference_scenario.json
+      stellarator_09__stellaris__heat_rejection__cooling_water__condenser_water_gap_K: float stellaris__heat_rejection__condenser_water_gap_K.json
+      stellarator_09__stellaris__heat_rejection__cooling_water__q_total_rejection_MW: float stellaris__heat_rejection__q_total_rejection_MW.json
+      stellarator_09__stellaris__heat_rejection__cooling_water__p_cooling_pump_electric_MW: float stellaris__heat_rejection__p_cooling_pump_electric_MW.json
+      stellarator_09__stellaris__heat_rejection__cooling_water__p_cooling_pump_shaft_MW: float stellaris__heat_rejection__p_cooling_pump_shaft_MW.json
+      stellarator_09__stellaris__heat_rejection__cooling_water__water_pump_rise_K: float stellaris__heat_rejection__water_pump_rise_K.json
+      stellarator_09__stellaris__heat_rejection__cooling_water__active: bool stellaris__heat_rejection__cooling_active.json
+      stellarator_09__stellaris__heat_rejection__cooling_water__denominator_kJ_kg: float stellaris__heat_rejection__denominator_kJ_kg.json
       stellarator_09__stellaris__rb__wall_area: float stellaris__blanket__first_wall__wall_area.json
       stellarator_09__stellaris__rb__shield_vol: float stellaris__shield__shield_vol.json
       stellarator_09__stellaris__rb__structure_vol: float stellaris__structure__structure_vol.json
@@ -4309,6 +4581,7 @@ modules:
       stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722__evaluation: ConstraintEvaluation stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722__evaluation.json
       stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f__evaluation: ConstraintEvaluation stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f__evaluation.json
       stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation: ConstraintEvaluation stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation.json
+      stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328__evaluation: ConstraintEvaluation stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328__evaluation.json
       stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58__evaluation: ConstraintEvaluation stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58__evaluation.json
       stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation: ConstraintEvaluation stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation.json
       stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation: ConstraintEvaluation stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation.json
@@ -4322,5 +4595,7 @@ modules:
       stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938__evaluation: ConstraintEvaluation stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938__evaluation.json
       stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5__evaluation: ConstraintEvaluation stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5__evaluation.json
       stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945__evaluation: ConstraintEvaluation stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945__evaluation.json
+      stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87__evaluation: ConstraintEvaluation stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87__evaluation.json
       stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f__evaluation: ConstraintEvaluation stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f__evaluation.json
+      stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444__evaluation: ConstraintEvaluation stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444__evaluation.json
       constraint_report: ConstraintReport constraint_report.json

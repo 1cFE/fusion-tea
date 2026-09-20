@@ -9,7 +9,7 @@ Complete all stages in order for a production-ready system.
 
 **Objective**: Implement each calculation definition in its handwritten file.
 
-**Total**: 56 functions to implement
+**Total**: 59 functions to implement
 
 **Instructions for each function**:
 1. Open the SysML source file at the line number shown below
@@ -35,6 +35,9 @@ Complete all stages in order for a production-ready system.
 | [ ] | Primary_Coolant_Loop | `run_primary_coolant_loop` | `root-0/analyses/mfe_primary_loop.sysml:4` | High |
 | [ ] | Power_Cycle_Efficiency | `run_power_cycle_efficiency` | `root-0/analyses/mfe_power_cycle.sysml:4` | High |
 | [ ] | Cooling_Equipment | `run_cooling_equipment` | `root-0/analyses/mfe_cooling_equipment.sysml:3` | High |
+| [ ] | Matched_Steam_Cycle | `run_matched_steam_cycle` | `root-0/analyses/mfe_matched_steam_cycle.sysml:3` | High |
+| [ ] | Cycle_Mode_Selection | `run_cycle_mode_selection` | `root-0/analyses/mfe_matched_steam_cycle.sysml:130` | High |
+| [ ] | Cooling_Water_Rejection | `run_cooling_water_rejection` | `root-0/analyses/mfe_matched_steam_cycle.sysml:105` | High |
 | [ ] | Conductor_Peak_Field | `run_conductor_peak_field` | `root-0/analyses/mfe_plasma_scaling.sysml:420` | High |
 | [ ] | Current_Driven_Pack_Sizing | `run_current_driven_pack_sizing` | `root-0/analyses/mfe_conductor_current.sysml:39` | High |
 | [ ] | Winding_Pack_Sizing | `run_winding_pack_sizing` | `root-0/analyses/mfe_magnet_field.sysml:91` | High |
@@ -108,7 +111,7 @@ pytest tests/test_implementations_runnable.py -v
 All tests should pass (or pytest.skip for NotImplementedError stubs)
 
 **Test Coverage**:
-- 56 implementation functions
+- 59 implementation functions
 - Each function tested for: imports, signature, return type
 - Tests tolerate NotImplementedError (pass before implementation)
 - Tests verify return types (pass after implementation)
@@ -143,7 +146,7 @@ All tests should pass (or pytest.skip for NotImplementedError stubs)
 ## Completion Criteria
 
 The implementation is complete when:
-- Stage 1: All 56 functions implemented
+- Stage 1: All 59 functions implemented
 - Stage 2: All validations pass
 - Stage 3: Integration tests pass
 

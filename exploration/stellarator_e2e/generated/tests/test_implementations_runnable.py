@@ -8,7 +8,7 @@ Tests verify that handwritten implementation functions:
 4. Tolerate NotImplementedError (before agent implements)
 5. Validate return types (after agent implements)
 
-Generated from 122 calculation definitions.
+Generated from 125 calculation definitions.
 """
 
 import importlib
@@ -544,7 +544,7 @@ class TestOperating_Heating_PowerRunnable:
 class TestReactor_Source_HeatRunnable:
     """Verify reactor_source_heat implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_power_balance.sysml:171
+    SysML Source: root-0/analyses/mfe_power_balance.sysml:174
     """
 
     def test_import_and_run(self):
@@ -785,6 +785,132 @@ class TestCooling_Energy_AdditionRunnable:
             # If implemented, verify return type
             assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
             assert len(result) == 2, f"Expected 2 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestMatched_Steam_CycleRunnable:
+    """Verify matched_steam_cycle implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_matched_steam_cycle.sysml:3
+    """
+
+    def test_import_and_run(self):
+        """Test that run_matched_steam_cycle can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_matched_steam_cycle.matched_steam_cycle_impl")
+        func = getattr(impl, "run_matched_steam_cycle")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_matched_steam_cycle.matched_steam_cycle")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 78, f"Expected 78 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestCycle_Mode_SelectionRunnable:
+    """Verify cycle_mode_selection implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_matched_steam_cycle.sysml:130
+    """
+
+    def test_import_and_run(self):
+        """Test that run_cycle_mode_selection can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_matched_steam_cycle.cycle_mode_selection_impl")
+        func = getattr(impl, "run_cycle_mode_selection")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_matched_steam_cycle.cycle_mode_selection")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 3, f"Expected 3 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestCooling_Water_RejectionRunnable:
+    """Verify cooling_water_rejection implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_matched_steam_cycle.sysml:105
+    """
+
+    def test_import_and_run(self):
+        """Test that run_cooling_water_rejection can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_matched_steam_cycle.cooling_water_rejection_impl")
+        func = getattr(impl, "run_cooling_water_rejection")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_matched_steam_cycle.cooling_water_rejection")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 13, f"Expected 13 outputs"
             assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
 
         except NotImplementedError:

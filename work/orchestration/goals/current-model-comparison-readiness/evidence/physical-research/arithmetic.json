@@ -1,0 +1,37 @@
+{
+  "status": "conditional research arithmetic; no steam property solution or native plant evaluation",
+  "eta_by_steam_C": {
+    "480": 0.41135655404954075,
+    "465": 0.40773067719300515,
+    "455": 0.4052722488850429,
+    "445": 0.40277981634249005,
+    "435": 0.4002524256836082,
+    "427": 0.3982046763748215
+  },
+  "pump_temperature_rise_K": 0.3352700854700854,
+  "SG_return_C": 269.6647299145299,
+  "IHX_cold_in_C": 270,
+  "SG_salt_span_K": 195.33527008547009,
+  "SG_hot_margin_at445_K": 20,
+  "IHX_hot_margin_default500_K": 35,
+  "IHX_hot_margin_scenario520_K": 55,
+  "minimum_economizer_heat_fraction_for_20K_pinch_at62bar": 0.14369279072432056,
+  "source_duty_fractions": [
+    0.20990566037735847,
+    0.6297169811320754,
+    0.16037735849056603
+  ],
+  "illustrative_salt_breakpoints_C_using_source_fractions": [
+    269.6647299145299,
+    310.6667087768102,
+    433.67264536365104,
+    465
+  ],
+  "illustrative_terminal_gaps_K_at_feed171_sat277733_steam445": [
+    98.66472991452991,
+    32.93370877681019,
+    155.93964536365104,
+    20
+  ],
+  "warning": "Source heat fractions belong to a conflicting source temperature diagram. Illustrative gaps are NOT a thermodynamically solved or accepted candidate."
+}

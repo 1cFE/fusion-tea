@@ -1,0 +1,91 @@
+{
+  "session": "steam-properties-verified",
+  "out_dir": "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/screening/source-images-verified",
+  "base": "",
+  "viewport": {
+    "width": 1800,
+    "height": 1000
+  },
+  "dpr": 2,
+  "duration_ms": 3172,
+  "steps": [
+    {
+      "i": 0,
+      "kind": "goto",
+      "value": "file:///home/reid/1cfe/fusion-tea/knowledge/sources/nist_webbook_water6_2mpa171to455c_state_table/raw.html",
+      "ok": true,
+      "ms": 2142,
+      "note": ""
+    },
+    {
+      "i": 1,
+      "kind": "scroll_to",
+      "value": "tr:has-text(\"277.73289\")",
+      "ok": true,
+      "ms": 2231,
+      "note": ""
+    },
+    {
+      "i": 2,
+      "kind": "shot_vp",
+      "value": "saturation",
+      "ok": true,
+      "ms": 2564,
+      "note": ""
+    },
+    {
+      "i": 3,
+      "kind": "scroll_to",
+      "value": "tr:has-text(\"445.00000\")",
+      "ok": true,
+      "ms": 2597,
+      "note": ""
+    },
+    {
+      "i": 4,
+      "kind": "shot_vp",
+      "value": "steam445",
+      "ok": true,
+      "ms": 2871,
+      "note": ""
+    },
+    {
+      "i": 5,
+      "kind": "scroll_to",
+      "value": "tr:has-text(\"171.00000\")",
+      "ok": true,
+      "ms": 2914,
+      "note": ""
+    },
+    {
+      "i": 6,
+      "kind": "shot_vp",
+      "value": "feedwater171",
+      "ok": true,
+      "ms": 3172,
+      "note": ""
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "saturation",
+      "png": "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/screening/source-images-verified/saturation.png",
+      "json": "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/screening/source-images-verified/saturation.json"
+    },
+    {
+      "name": "steam445",
+      "png": "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/screening/source-images-verified/steam445.png",
+      "json": "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/screening/source-images-verified/steam445.json"
+    },
+    {
+      "name": "feedwater171",
+      "png": "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/screening/source-images-verified/feedwater171.png",
+      "json": "work/orchestration/goals/current-model-comparison-readiness/evidence/physical-research/screening/source-images-verified/feedwater171.json"
+    }
+  ],
+  "reads_count": 0,
+  "evals_count": 0,
+  "console_count": 13,
+  "page_errors_count": 1,
+  "exit_code": 0
+}

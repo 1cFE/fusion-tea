@@ -14,6 +14,7 @@ import math
 import oracle_finance as finance
 import oracle_breeding as breeding_oracle
 import oracle_cooling as cooling_oracle
+import oracle_matched_cycle as matched_cycle_oracle
 import oracle_facilities as facilities_oracle
 import oracle_fuel_inventory as inventory_oracle
 import oracle_fuel_processing as processing_oracle
@@ -982,6 +983,19 @@ IN.update({'inventory_'+key:value for key,value in inventory_oracle.DEFAULTS.ite
 PROCESSING_DEFAULTS = {'enabled': True, 'source_conditions': True, 'capacity_margin': 1.0, 'price_multiplier': 1.0, 'reference_flow': 2.08e-05, 'exponent': 0.3, 'target_cpi': 321.9, 'transfer_capital': 111000.0, 'transfer_installation': 112000.0, 'transfer_cpi': 60.6, 'cleanup_capital': 1000000.0, 'cleanup_installation': 70000.0, 'cleanup_cpi': 82.4, 'distiller_capital': 1237000.0, 'distiller_installation': 63000.0, 'distiller_cpi': 65.2, 'containment_capital': 182000.0, 'containment_installation': 30000.0, 'containment_cpi': 82.4}
 IN.update({'processing_'+key:value for key,value in PROCESSING_DEFAULTS.items()})
 
+# WI-073 selected physical facts; current design defaults, not hidden solver constants.
+IN.update({
+    'matched_cycle_enabled': 1.0, 'cooling_water_enabled': 1.0,
+    'matched_main_pressure_MPa': 6.2, 'matched_extraction_pressure_MPa': .8,
+    'matched_steam_temperature_C': 445., 'matched_reheat_temperature_C': 445.,
+    'matched_condenser_temperature_C': 42., 'matched_eta_hp': .9, 'matched_eta_lp': .9,
+    'matched_eta_condensate_pump': .8, 'matched_eta_feedwater_pump': .8,
+    'matched_eta_pump_motor': .95, 'matched_eta_mechanical': .99, 'matched_eta_generator': .98,
+    'matched_salt_hot_C': 465., 'matched_salt_cp_kJ_kgK': 1.560,
+    'cw_water_inlet_C': 25., 'cw_water_outlet_C': 35., 'cw_head_m': 20.,
+    'cw_eta_pump': .8, 'cw_eta_motor': .95,
+})
+
 def compute():
     if "magnet_R0" in IN:
         raise ValueError("retired oracle input magnet_R0; use plant R")
@@ -995,6 +1009,10 @@ def compute():
             raise ValueError('oracle cooling modes must be finite binary selectors')
     if (p['cooling_cost_mode'] or p['cooling_energy_mode']) and not p['cooling_enabled']:
         raise ValueError('oracle selected cooling effects require enabled equipment')
+    # WI-072: active facility layout requires positive cooling inventories,
+    # as its existing native domain does; disabled equipment supplies zeros.
+    if p['facility_facilities_enabled'] and not p['cooling_enabled']:
+        raise ValueError('oracle active facilities require enabled cooling equipment')
     # --- Plasma Geometry ---
     V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"] * p["f_shape"]
     # --- MFE Radial Build (WI-021; geometry.py torus branch) ---
@@ -1223,9 +1241,34 @@ def compute():
     cycle_margin_low = cycle_T2_C - p["T2_min"]
     cycle_margin_high = p["T2_max"] - cycle_T2_C
     cycle_domain_product = cycle_margin_low * cycle_margin_high
+    # Original-table independent state calculation follows the salt producer.
+    matched_cycle = matched_cycle_oracle.matched_interface({
+        'enabled': p['matched_cycle_enabled'],
+        'heat_available_MW': cooling['conversion_heat_MW'],
+        'source_heat_MW': q_source,
+        'selected_recovered_MW': cooling_recovered_total,
+        'salt_flow_per_circuit': cooling['salt_flow'],
+        'salt_circuit_count': cooling['ihx_count'],
+        'salt_return_C': cooling['salt_return_C'],
+        **{name: p['matched_'+name] for name in (
+            'salt_hot_C', 'salt_cp_kJ_kgK', 'main_pressure_MPa', 'extraction_pressure_MPa',
+            'steam_temperature_C', 'reheat_temperature_C', 'condenser_temperature_C',
+            'eta_hp', 'eta_lp', 'eta_condensate_pump', 'eta_feedwater_pump',
+            'eta_pump_motor', 'eta_mechanical', 'eta_generator')},
+    })
+    cooling_water = matched_cycle_oracle.cooling_interface({
+        'enabled': p['cooling_water_enabled'], 'cycle_active': p['matched_cycle_enabled'],
+        'q_rejection_before_cooling_MW': matched_cycle['q_rejection_before_cooling_MW'],
+        'condenser_temperature_C': p['matched_condenser_temperature_C'],
+        **{name:p['cw_'+name] for name in ('water_inlet_C','water_outlet_C','head_m','eta_pump','eta_motor')},
+    })
+    cycle_selection = matched_cycle_oracle.selection_interface({
+        'matched_enabled': p['matched_cycle_enabled'], 'legacy_eta': cycle_eta_th,
+        'matched_eta': matched_cycle['eta_gross'], 'legacy_domain_product': cycle_domain_product,
+    })
     p_th = (p["mn"] * p_neutron + p_alpha + operating_heat_coupled
             + cooling_recovered_total)
-    p_the = cycle_eta_th * p_th
+    p_the = cycle_selection['eta_selected'] * p_th
     p_et = p_the
     p_sub = p["f_sub"] * p_et
     # Cryoplant electrical chain (WI-024) — mirrors the generated
@@ -1241,6 +1284,9 @@ def compute():
     p_cryo = p_cryo_cold+p_cryo_shield
     recirculating = (p_coils + cooling_electric_total + p_sub + p_aux + p_cool + p_cryo
                      + operating_heat_wallplug)
+    # Zero-demand branch preserves the historical floating-point expression.
+    if matched_cycle['p_cycle_pumps_MW'] != 0 or cooling_water['p_cooling_pump_electric_MW'] != 0:
+        recirculating += matched_cycle['p_cycle_pumps_MW'] + cooling_water['p_cooling_pump_electric_MW']
     q_eng = p_et / recirculating
     rec_frac = 1.0 / q_eng
     p_net = (1.0 - rec_frac) * p_et
@@ -1502,6 +1548,30 @@ def compute():
     beta = 2.0 * p["beta_mu0"] * sust["p_avg"] / (B_axis ** 2)
 
     return dict(
+        # WI-072: expose independently computed intermediates for complete
+        # native-channel verification. No generated result supplies these values.
+        coverage_annual_total=annual_om,
+        coverage_cas70=cas70_annual,
+        coverage_cas71_crf=crf_71,
+        coverage_cas71_levelized=cas71_annual,
+        coverage_cas80_crf=crf_71,
+        coverage_cas80_levelized=cas80_annual,
+        coverage_cooling_cost_mode=p['cooling_cost_mode'],
+        coverage_cooling_energy_mode=p['cooling_energy_mode'],
+        coverage_cooling_consumables=p['cooling_cost_mode'] * cooling['consumables_annual'],
+        coverage_cooling_replacements=p['cooling_cost_mode'] * cooling['replacement_annual'],
+        coverage_cooling_shipping=p['cooling_cost_mode'] * cooling['delivered_total'],
+        coverage_coil_length=c_coil,
+        coverage_wp_side=wp_side,
+        coverage_cold_volume=vol_cold_total,
+        coverage_blanket_volume=blanket_vol,
+        coverage_outer_radius=lt_shield_or,
+        coverage_coil_inner_radius=r_coil,
+        coverage_shield_volume=shield_vol,
+        coverage_structure_volume=structure_vol,
+        coverage_vessel_volume=vessel_vol,
+        coverage_wall_area=wall_area,
+        coverage_replacement_event=replacement_cost_per_event,
         **{"conductor_" + key: value for key, value in conductor.items()},
         **{"fit_" + key: value for key, value in _winding_fit(p, None if p["magnet_sizing_mode"] == 0 else current_sizing["required_pack_area"] * p["magnet_inventory_multiplier"]).items()},
         **{"sizing_" + key: value for key, value in current_sizing.items()},
@@ -1544,6 +1614,9 @@ def compute():
         cycle_T2_C=cycle_T2_C, cycle_eta_fit=cycle_eta_fit, cycle_eta_th=cycle_eta_th,
         cycle_margin_low=cycle_margin_low, cycle_margin_high=cycle_margin_high,
         cycle_domain_product=cycle_domain_product,
+        **{'matched_'+name:value for name,value in matched_cycle.items()},
+        **{'cw_'+name:value for name,value in cooling_water.items()},
+        **{'cycle_selection_'+name:value for name,value in cycle_selection.items()},
         winding_pack=winding_pack, magnet_structure=magnet_structure,
         support_effective_all_in_rate=support_effective_all_in_rate,
         **{"insulation_" + name: value for name, value in insulation.items()},

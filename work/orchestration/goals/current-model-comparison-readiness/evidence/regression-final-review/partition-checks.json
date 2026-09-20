@@ -1,0 +1,58 @@
+{
+  "conductor-current": {
+    "disjoint": true,
+    "complete_current": true
+  },
+  "conductor-grade": {
+    "disjoint": true,
+    "complete_current": true
+  },
+  "current-sizing": {
+    "disjoint": true,
+    "complete_current": true
+  },
+  "manufacturing": {
+    "disjoint": true,
+    "complete_current": true
+  },
+  "winding-fit": {
+    "disjoint": true,
+    "complete_current": true
+  },
+  "divertor-reference": {
+    "disjoint": true,
+    "complete_current": true
+  },
+  "divertor-r-12.7-1.35-1.62e+07": {
+    "disjoint": true,
+    "complete_current": true
+  },
+  "divertor-r-13.1-1.45-1.54e+07": {
+    "disjoint": true,
+    "complete_current": true
+  },
+  "divertor-current-sized-reference": {
+    "disjoint": true,
+    "complete_current": true
+  },
+  "divertor-allocated-current-sized-reference": {
+    "disjoint": true,
+    "complete_current": true
+  },
+  "signed-False": {
+    "disjoint": true,
+    "complete_current": true
+  },
+  "signed-True": {
+    "disjoint": true,
+    "complete_current": true
+  },
+  "radius-baseline": {
+    "disjoint": true,
+    "complete_current": true
+  },
+  "radius-tied_R14": {
+    "disjoint": true,
+    "complete_current": true
+  }
+}

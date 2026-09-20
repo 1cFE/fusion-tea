@@ -1,0 +1,18 @@
+{
+  "status": "author seed checks passed; generated output order and native integration pending",
+  "seeds": {
+    "cooling_water_rejection_impl.py": {
+      "sha256": "af3486303b555c7009785624cc7da49e464f4a5a5ddab76e91d68bc0aefb79f5",
+      "bytes": 3497
+    },
+    "cycle_mode_selection_impl.py": {
+      "sha256": "9995105309d4a436ad59ae0e6b30b01d8faa0aa2107f84d02c473631f39cb87f",
+      "bytes": 1346
+    },
+    "matched_steam_cycle_impl.py": {
+      "sha256": "56bc00b0696e546463ec8355f3568bbb933f72445074268c2926b9109c54957d",
+      "bytes": 1168935
+    }
+  },
+  "canonical_asset_sha256": "62394f5d29b54b511aa3b093bb9a1251fe52ac8d23d50f7da61f272e38628d39"
+}

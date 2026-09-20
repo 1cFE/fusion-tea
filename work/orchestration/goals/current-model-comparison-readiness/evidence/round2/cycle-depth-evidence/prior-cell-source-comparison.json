@@ -1,0 +1,553 @@
+{
+  "R1.P": [
+    {
+      "path": "models/library/analyses/mfe_plasma_sustainment.sysml",
+      "unchanged": true,
+      "sha256": "e8acc70a0c4ce4ba6af67b136dc9a146ae7da332d0b56d512c2d1cb1817becf6"
+    },
+    {
+      "path": "models/library/structure/mfe_plasma.sysml",
+      "unchanged": true,
+      "sha256": "36bd1ac7e03ce25f6e74afd9ac0dffea9effd006e195146b05d0d555bee6073b"
+    },
+    {
+      "path": "models/designs/stellarator_09/stellarator_plant.sysml",
+      "unchanged": false,
+      "sha256": "942edb2c8185a7b1b0f8a34187c0add2a93a57f028ac7259e2126563e47a468e"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py",
+      "unchanged": true,
+      "sha256": "e81dd70e400f6c82a8ab38feecaf122cc2ce39a1c56f9bb471eda09524cf3783"
+    }
+  ],
+  "R1.S": [
+    {
+      "path": "models/library/structure/mfe_plasma.sysml",
+      "unchanged": true,
+      "sha256": "36bd1ac7e03ce25f6e74afd9ac0dffea9effd006e195146b05d0d555bee6073b"
+    },
+    {
+      "path": "models/library/cost_structure/mfe_power_core.sysml",
+      "unchanged": true,
+      "sha256": "83b321a3314abf65cb143566630a4a736e07fc248c8f8de687b9ec8361c196ef"
+    }
+  ],
+  "R2.S": [
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "models/library/analyses/mfe_account_costs.sysml",
+      "unchanged": true,
+      "sha256": "fc3299989a8917f83e1b865a9e47ff608b2b107e73d0a4da115bb150a1775039"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/blanket_cost_impl.py",
+      "unchanged": true,
+      "sha256": "56e33e3e3f9b1d2c0b639880d8b286db71a04389ab13c39dd233d1e70b93430a"
+    }
+  ],
+  "R2a.P": [
+    {
+      "path": "models/library/analyses/mfe_plasma_scaling.sysml",
+      "unchanged": true,
+      "sha256": "b23b0484e3372d54534894a1d699d48c46010b9acc65db7c95760d1df3296e50"
+    },
+    {
+      "path": "models/library/analyses/mfe_plasma_scaling.sysml",
+      "unchanged": true,
+      "sha256": "b23b0484e3372d54534894a1d699d48c46010b9acc65db7c95760d1df3296e50"
+    },
+    {
+      "path": "models/designs/stellarator_09/stellarator_plant.sysml",
+      "unchanged": false,
+      "sha256": "942edb2c8185a7b1b0f8a34187c0add2a93a57f028ac7259e2126563e47a468e"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/mfe_radial_build_impl.py",
+      "unchanged": true,
+      "sha256": "cd4ee6dc16068b0db2cec4cc6f49c202c5a58342c3eba43d6e6db201cf415ec4"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/neutron_wall_load_peak_impl.py",
+      "unchanged": true,
+      "sha256": "b80f9cbbceb91ab7788c3ead24c02a67a22539bed9f5e36372d919ce5d717b87"
+    }
+  ],
+  "R2b.P": [
+    {
+      "path": "models/library/analyses/mfe_lifecycle.sysml",
+      "unchanged": true,
+      "sha256": "a1b873e9ce13d6f673b1e5eac94f7ad88bdc02a3bd426290027258751f22b4a5"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_lifecycle/lifecycle_calendar_impl.py",
+      "unchanged": true,
+      "sha256": "c9158621c67af5e66619393ec19bb938df19ee7dc92ce242e343d33b7c369d63"
+    }
+  ],
+  "R2c.P": [
+    {
+      "path": "models/library/analyses/mfe_tritium_breeding.sysml",
+      "unchanged": true,
+      "sha256": "9fdeb805fa2a14ec558af948b9abb39dd4ea9da2c590986d4767d5e35f887cd4"
+    },
+    {
+      "path": "models/library/analyses/mfe_tritium_breeding.sysml",
+      "unchanged": true,
+      "sha256": "9fdeb805fa2a14ec558af948b9abb39dd4ea9da2c590986d4767d5e35f887cd4"
+    },
+    {
+      "path": "models/library/analyses/mfe_tritium_breeding.sysml",
+      "unchanged": true,
+      "sha256": "9fdeb805fa2a14ec558af948b9abb39dd4ea9da2c590986d4767d5e35f887cd4"
+    },
+    {
+      "path": "models/designs/stellarator_09/stellarator_plant.sysml",
+      "unchanged": false,
+      "sha256": "942edb2c8185a7b1b0f8a34187c0add2a93a57f028ac7259e2126563e47a468e"
+    },
+    {
+      "path": "models/designs/stellarator_09/stellarator_plant.sysml",
+      "unchanged": false,
+      "sha256": "942edb2c8185a7b1b0f8a34187c0add2a93a57f028ac7259e2126563e47a468e"
+    }
+  ],
+  "R3.P": [
+    {
+      "path": "models/library/analyses/mfe_conductor_current.sysml",
+      "unchanged": true,
+      "sha256": "33798f86ab0cbd927f9d03aa2d1403c20e9846038b34ff2c64ab85bd97281af7"
+    },
+    {
+      "path": "models/library/analyses/mfe_winding_pack_fit.sysml",
+      "unchanged": true,
+      "sha256": "8de45020c7efe4d6b03ed43615f7743967c2c5e7a681d8f462d7b0a3e358a8ca"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "models/designs/stellarator_09/stellarator_plant.sysml",
+      "unchanged": false,
+      "sha256": "942edb2c8185a7b1b0f8a34187c0add2a93a57f028ac7259e2126563e47a468e"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/current_driven_pack_sizing_impl.py",
+      "unchanged": true,
+      "sha256": "27ee1006c086b91ba202e9ddaaa2fe313808767d7b75a0de5d6cd69095160c68"
+    }
+  ],
+  "R3.S": [
+    {
+      "path": "models/library/analyses/mfe_winding_pack_cost.sysml",
+      "unchanged": true,
+      "sha256": "5bd61a82526d3585ea611f4a09ff1bf7284a5c1907679f3e2f02220b23134ab0"
+    },
+    {
+      "path": "models/library/cost_structure/mfe_power_core.sysml",
+      "unchanged": true,
+      "sha256": "83b321a3314abf65cb143566630a4a736e07fc248c8f8de687b9ec8361c196ef"
+    },
+    {
+      "path": "models/library/cost_structure/mfe_power_core.sysml",
+      "unchanged": true,
+      "sha256": "83b321a3314abf65cb143566630a4a736e07fc248c8f8de687b9ec8361c196ef"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_winding_pack_cost/winding_pack_procurement_cost_impl.py",
+      "unchanged": true,
+      "sha256": "5467ce10fc9a5ecbb229114a442e1c7f55fd50d61f6d58ea12ddbe4baded1fe1"
+    }
+  ],
+  "R4.P": [
+    {
+      "path": "models/library/analyses/mfe_heating_chain.sysml",
+      "unchanged": true,
+      "sha256": "1d05adfe7502305ed6dce125af83108d0223a6e24c2fc77d48712cf63fd346ac"
+    },
+    {
+      "path": "models/library/analyses/mfe_heating_chain.sysml",
+      "unchanged": true,
+      "sha256": "1d05adfe7502305ed6dce125af83108d0223a6e24c2fc77d48712cf63fd346ac"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_heating_chain/operating_heating_power_impl.py",
+      "unchanged": true,
+      "sha256": "8b97fefff5af0547727d9f22eac023049d3af1ea1909057bb2bc48e423c529ea"
+    }
+  ],
+  "R4.S": [
+    {
+      "path": "models/library/cost_structure/mfe_power_core.sysml",
+      "unchanged": true,
+      "sha256": "83b321a3314abf65cb143566630a4a736e07fc248c8f8de687b9ec8361c196ef"
+    },
+    {
+      "path": "models/library/analyses/mfe_account_costs.sysml",
+      "unchanged": true,
+      "sha256": "fc3299989a8917f83e1b865a9e47ff608b2b107e73d0a4da115bb150a1775039"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/heating_cost_impl.py",
+      "unchanged": true,
+      "sha256": "93211436d8b47684c542e502465b1c4ffc7239cf63b60fe05c7f71bc9dacaf34"
+    }
+  ],
+  "R5.P": [
+    {
+      "path": "models/library/analyses/mfe_divertor_heat.sysml",
+      "unchanged": true,
+      "sha256": "b32dd85844ad71a89ee5a61d37eefe4914d266303d885b7299c8f1c522332441"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_divertor_heat/divertor_heat_ledger_impl.py",
+      "unchanged": true,
+      "sha256": "3b354d65d75a40df57f5673ddbba1c376c05dbe3e2bfa804ce9c805854287296"
+    }
+  ],
+  "R5.S": [
+    {
+      "path": "models/library/cost_structure/mfe_power_core.sysml",
+      "unchanged": true,
+      "sha256": "83b321a3314abf65cb143566630a4a736e07fc248c8f8de687b9ec8361c196ef"
+    },
+    {
+      "path": "models/library/analyses/mfe_account_costs.sysml",
+      "unchanged": true,
+      "sha256": "fc3299989a8917f83e1b865a9e47ff608b2b107e73d0a4da115bb150a1775039"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/divertor_cost_impl.py",
+      "unchanged": true,
+      "sha256": "ba440494d275915e7f37ffa2ac334fa828b36d7a7ddb79bc7edad7374f76383d"
+    }
+  ],
+  "R6.P": [
+    {
+      "path": "models/library/analyses/mfe_vacuum.sysml",
+      "unchanged": true,
+      "sha256": "016dbe4d5c8c7d9b67c739e14b052a173c342d67617ea77c9fe82a6c7fd4d340"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_vacuum/vacuum_gas_load_impl.py",
+      "unchanged": true,
+      "sha256": "1956c0a4161c354b9935d053d61c178a719657f8bf3a35a877ba48abc9eff4ad"
+    }
+  ],
+  "R6.S": [
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "models/library/analyses/mfe_account_costs.sysml",
+      "unchanged": true,
+      "sha256": "fc3299989a8917f83e1b865a9e47ff608b2b107e73d0a4da115bb150a1775039"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/vessel_cost_impl.py",
+      "unchanged": true,
+      "sha256": "8f2270fbb4ec2e904b0fbd498a27becedf0e52fba9699b179723da518631c21e"
+    }
+  ],
+  "R7.P": [
+    {
+      "path": "models/library/analyses/mfe_primary_loop.sysml",
+      "unchanged": true,
+      "sha256": "f35bc5e9e388e697bc8e2af3545f355e8fea0e68449b57a7388cd15c29cb5f94"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_primary_loop/primary_coolant_loop_impl.py",
+      "unchanged": true,
+      "sha256": "2433fa6272e125bf426e389cfd772aa4dce5a88bc8be98bff4379e2edb6a45e7"
+    },
+    {
+      "path": "models/library/analyses/mfe_cooling_accounts.sysml",
+      "unchanged": true,
+      "sha256": "0792776f681084424eb39b8b4b6b6b809d638583081f23849a6ff5599099bd2b"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    }
+  ],
+  "R7.S": [
+    {
+      "path": "models/library/structure/mfe_plant_systems.sysml",
+      "unchanged": false,
+      "sha256": "cac594f5d82cb9c23295ef36241f74073ad069f14aa93195b111c0a10dddc3f8"
+    },
+    {
+      "path": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "unchanged": true,
+      "sha256": "fae23d1995af4c0415823a90a9c755dc3b6525910c66d72a2e0fe958c77d038d"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_cooling_equipment/cooling_equipment_impl.py",
+      "unchanged": true,
+      "sha256": "6d26c152415c644089104e03aa49764bdb746624c360cb44e3670744ab63ced6"
+    },
+    {
+      "path": "models/library/analyses/mfe_cooling_accounts.sysml",
+      "unchanged": true,
+      "sha256": "0792776f681084424eb39b8b4b6b6b809d638583081f23849a6ff5599099bd2b"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    }
+  ],
+  "R8.P": [
+    {
+      "path": "models/library/analyses/mfe_power_cycle.sysml",
+      "unchanged": true,
+      "sha256": "d086af8a9fab2d4e3d516a302d9fea9be4e2630c3a7407a5d18d550d79f20117"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_subsystems.sysml",
+      "unchanged": false,
+      "sha256": "e823bc16e0b93128428d6bfde831e4b20aa6a8786de2cb3da093151bfb9a8151"
+    },
+    {
+      "path": "models/designs/stellarator_09/stellarator_plant.sysml",
+      "unchanged": false,
+      "sha256": "942edb2c8185a7b1b0f8a34187c0add2a93a57f028ac7259e2126563e47a468e"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    }
+  ],
+  "R8.S": [
+    {
+      "path": "models/designs/generic_mfe/mfe_subsystems.sysml",
+      "unchanged": false,
+      "sha256": "e823bc16e0b93128428d6bfde831e4b20aa6a8786de2cb3da093151bfb9a8151"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_subsystems.sysml",
+      "unchanged": false,
+      "sha256": "e823bc16e0b93128428d6bfde831e4b20aa6a8786de2cb3da093151bfb9a8151"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_subsystems.sysml",
+      "unchanged": false,
+      "sha256": "e823bc16e0b93128428d6bfde831e4b20aa6a8786de2cb3da093151bfb9a8151"
+    },
+    {
+      "path": "models/library/analyses/mfe_account_costs.sysml",
+      "unchanged": true,
+      "sha256": "fc3299989a8917f83e1b865a9e47ff608b2b107e73d0a4da115bb150a1775039"
+    }
+  ],
+  "R9.P": [],
+  "R9.S": [
+    {
+      "path": "models/library/structure/mfe_facilities_parts.sysml",
+      "unchanged": true,
+      "sha256": "051d28f42d263091710e97199854bdf9d290f2d92d185becdcd5ca545f3490bc"
+    },
+    {
+      "path": "models/library/analyses/mfe_facilities.sysml",
+      "unchanged": true,
+      "sha256": "9a1ef31c5c6a29a75f453874bf3e25b7d3d79fb091b4ac1ca4d60bea33705534"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_subsystems.sysml",
+      "unchanged": false,
+      "sha256": "e823bc16e0b93128428d6bfde831e4b20aa6a8786de2cb3da093151bfb9a8151"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_facilities/facility_layout_impl.py",
+      "unchanged": true,
+      "sha256": "7e81ea14ccdc4a6f76cc6eacac6de968ba19d5bfa12a0a6ee5e5d8755d8a8321"
+    }
+  ],
+  "R10.P": [
+    {
+      "path": "models/library/analyses/mfe_fuel_cycle.sysml",
+      "unchanged": true,
+      "sha256": "ba29646bd9d8450b4f726c7887b0f13a9cdc37397caca3618f3e05bded87c7e3"
+    },
+    {
+      "path": "models/library/analyses/mfe_fuel_cycle.sysml",
+      "unchanged": true,
+      "sha256": "ba29646bd9d8450b4f726c7887b0f13a9cdc37397caca3618f3e05bded87c7e3"
+    },
+    {
+      "path": "models/library/structure/mfe_plant_systems.sysml",
+      "unchanged": false,
+      "sha256": "cac594f5d82cb9c23295ef36241f74073ad069f14aa93195b111c0a10dddc3f8"
+    },
+    {
+      "path": "models/library/structure/mfe_plant_systems.sysml",
+      "unchanged": false,
+      "sha256": "cac594f5d82cb9c23295ef36241f74073ad069f14aa93195b111c0a10dddc3f8"
+    },
+    {
+      "path": "models/library/structure/mfe_plant_systems.sysml",
+      "unchanged": false,
+      "sha256": "cac594f5d82cb9c23295ef36241f74073ad069f14aa93195b111c0a10dddc3f8"
+    },
+    {
+      "path": "models/library/structure/mfe_plant_systems.sysml",
+      "unchanged": false,
+      "sha256": "cac594f5d82cb9c23295ef36241f74073ad069f14aa93195b111c0a10dddc3f8"
+    }
+  ],
+  "R10.S": [
+    {
+      "path": "models/library/analyses/mfe_fuel_cycle.sysml",
+      "unchanged": true,
+      "sha256": "ba29646bd9d8450b4f726c7887b0f13a9cdc37397caca3618f3e05bded87c7e3"
+    },
+    {
+      "path": "models/library/structure/mfe_plant_systems.sysml",
+      "unchanged": false,
+      "sha256": "cac594f5d82cb9c23295ef36241f74073ad069f14aa93195b111c0a10dddc3f8"
+    },
+    {
+      "path": "models/library/structure/mfe_plant_systems.sysml",
+      "unchanged": false,
+      "sha256": "cac594f5d82cb9c23295ef36241f74073ad069f14aa93195b111c0a10dddc3f8"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    }
+  ],
+  "R11.P": [
+    {
+      "path": "models/library/analyses/mfe_lifecycle.sysml",
+      "unchanged": true,
+      "sha256": "a1b873e9ce13d6f673b1e5eac94f7ad88bdc02a3bd426290027258751f22b4a5"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_lifecycle/lifecycle_calendar_impl.py",
+      "unchanged": true,
+      "sha256": "c9158621c67af5e66619393ec19bb938df19ee7dc92ce242e343d33b7c369d63"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "models/designs/stellarator_09/stellarator_plant.sysml",
+      "unchanged": false,
+      "sha256": "942edb2c8185a7b1b0f8a34187c0add2a93a57f028ac7259e2126563e47a468e"
+    }
+  ],
+  "R11.S": [
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_lifecycle/lifecycle_calendar_impl.py",
+      "unchanged": true,
+      "sha256": "c9158621c67af5e66619393ec19bb938df19ee7dc92ce242e343d33b7c369d63"
+    },
+    {
+      "path": "exploration/stellarator_e2e/generated/handwritten/mfe_cooling_equipment/cooling_equipment_impl.py",
+      "unchanged": true,
+      "sha256": "6d26c152415c644089104e03aa49764bdb746624c360cb44e3670744ab63ced6"
+    },
+    {
+      "path": "models/library/analyses/mfe_account_costs.sysml",
+      "unchanged": true,
+      "sha256": "fc3299989a8917f83e1b865a9e47ff608b2b107e73d0a4da115bb150a1775039"
+    },
+    {
+      "path": "models/designs/stellarator_09/stellarator_plant.sysml",
+      "unchanged": false,
+      "sha256": "942edb2c8185a7b1b0f8a34187c0add2a93a57f028ac7259e2126563e47a468e"
+    }
+  ],
+  "R12.P": [
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    }
+  ],
+  "R12.S": [
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "models/designs/generic_mfe/mfe_plant.sysml",
+      "unchanged": false,
+      "sha256": "f8086cd465c549d4ddc31f496327b0e3b362b417e65c3641ab6cda55653230f1"
+    },
+    {
+      "path": "models/library/analyses/mfe_cooling_equipment.sysml",
+      "unchanged": true,
+      "sha256": "fae23d1995af4c0415823a90a9c755dc3b6525910c66d72a2e0fe958c77d038d"
+    },
+    {
+      "path": "models/designs/stellarator_09/stellarator_plant.sysml",
+      "unchanged": false,
+      "sha256": "942edb2c8185a7b1b0f8a34187c0add2a93a57f028ac7259e2126563e47a468e"
+    }
+  ]
+}

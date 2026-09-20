@@ -1,0 +1,14 @@
+{
+  "handwritten/mfe_matched_steam_cycle/cycle_mode_selection_impl.py": {
+    "before": null,
+    "after": "0295fac3fc755e3b75e0a456245b53490ffd1503cc2c95d8b894df9cbf7ca09e"
+  },
+  "handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py": {
+    "before": null,
+    "after": "9c383880fef56c24f2135929552cb5e1bb28348520b1b9f30ffeb19fb9820af7"
+  },
+  "handwritten/mfe_matched_steam_cycle/cooling_water_rejection_impl.py": {
+    "before": null,
+    "after": "dfcc01064652de7894f9cdc7dda3349544551dc5cea881df92bdf8d861f589a3"
+  }
+}

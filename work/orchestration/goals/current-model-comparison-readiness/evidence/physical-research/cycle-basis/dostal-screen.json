@@ -1,0 +1,14 @@
+{
+  "source": "https://web.mit.edu/22.33/www/dostal.pdf",
+  "raw_sha256": "80401528cc9af65f0f3b873b9f31c50d65710f12ecb0bd3c586f9cee87e16d7c",
+  "pages": 326,
+  "content_free_screen_counts": {
+    "aries_cs": 0,
+    "najmabadi": 0,
+    "waganer": 0,
+    "helios": 0,
+    "sealed_hosts": 0,
+    "sealed_stems": 0
+  },
+  "rule": "No suspect lines emitted; stop candidate on any hit pending independent admissibility resolution."
+}

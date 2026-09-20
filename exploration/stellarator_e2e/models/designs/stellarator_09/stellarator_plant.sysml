@@ -740,11 +740,43 @@ package stellarator_09 {
         // BALANCE OF PLANT (CAS23-26) -- per-MW rates ($/MW), Rankine steam cycle
         // ---------------------------------------------------------------------
         part :>> turbine {
+            :>> matched_cycle_enabled = 1.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            :>> pump_motor_efficiency = 0.95 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            part :>> main_steam_generator {
+            :>> pressure_MPa = 6.2 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            :>> outlet_temperature_C = 445.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            }
+            part :>> reheater {
+            :>> outlet_temperature_C = 445.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            }
+            part :>> open_feedwater_heater {
+            :>> pressure_MPa = 0.8 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            }
+            part :>> hp_turbine {
+            :>> efficiency = 0.9 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            }
+            part :>> lp_turbine {
+            :>> efficiency = 0.9 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            }
+            part :>> condenser {
+            :>> temperature_C = 42.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            }
+            part :>> condensate_pump {
+            :>> efficiency = 0.8 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            }
+            part :>> feedwater_pump {
+            :>> efficiency = 0.8 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            }
+            part :>> generator {
+            :>> mechanical_efficiency = 0.99 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            :>> generator_efficiency = 0.98 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            }
+
             doc /*
             cost_per_mw: defaults.py:580 (POWER_CYCLE_DEFAULTS RANKINE turbine_per_mw
             = 0.20284 M$/MW) x 1e6. The per-MW rate is the 1costingFE RANKINE
-            preset's; the cycle's efficiency is computed by 'Power Cycle
-            Efficiency' on Kovari 2016's helium-primary Rankine row (WI-045) --
+            preset's; selected efficiency now comes from the WI-073 matched extraction/reheat cycle.
+            The Kovari 2016 helium-primary Rankine fit remains a legacy diagnostic (WI-045) --
             the Stellaris paper assumes a simple 1/3 and names no cycle
             (details.md line 251).
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/defaults.py
@@ -789,6 +821,15 @@ package stellarator_09 {
             :>> cost_per_mw = 86400.0;
         }
         part :>> heat_rejection {
+            :>> cooling_water_enabled = 1.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            :>> water_inlet_C = 25.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            :>> water_outlet_C = 35.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            part :>> circulating_water_pump {
+            :>> head_m = 20.0 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            :>> efficiency = 0.80 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            :>> motor_efficiency = 0.95 { doc /* **Source**: work/orchestration/goals/current-model-comparison-readiness/evidence/round2/cycle-proposal-v2.md **Reference**: WI-073 design.md and interface-inventory.md; original NIST tables and independent physical review. **Basis**: [AGENT] reviewed reduced extraction/reheat cycle and conditional cooling-water scenario; equipment and installed cost unqualified. **Last Updated**: 2026-09-19 Explicit selected reference assumption; no vendor/site qualification. */ }
+            }
+
             doc /*
             cost_per_mw: defaults.py:581 (RANKINE heat_rej_per_mw = 0.03506 M$/MW) x 1e6.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/defaults.py

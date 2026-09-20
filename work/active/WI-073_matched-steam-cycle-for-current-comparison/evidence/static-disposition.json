@@ -1,0 +1,30 @@
+{
+  "level2": {
+    "success": false,
+    "issues": 10,
+    "added": [],
+    "removed": [],
+    "disposition": "Same ten inherited literal-binding warnings; no new undefined or unbound calculation input."
+  },
+  "level6": {
+    "success": false,
+    "issues": 1328,
+    "added": 247,
+    "removed": [
+      "ERROR: Design attribute 'mfe_subsystems::'Turbine Plant'::eta_th' has expression but codegen cannot extract a numeric default: Feature reference 'eta_th' found in static expression. This violates ADR-002 Rule 3. Run 'agentic-mbse validate' to identify and fix the violation."
+    ],
+    "added_categories": {
+      "component property aliases to evaluated parent states": 28,
+      "feature dereference in pure output exposure": 97,
+      "dynamic output aliases cannot be evaluated as static defaults": 122
+    },
+    "disposition": "General validator interprets dynamic aliases as unsupported/static expressions. Actual stock generator resolves them and native execution agrees with independent expectations. This is scoped disposition, not a clean validator claim."
+  },
+  "execution_evidence": [
+    "generation-v3.log",
+    "input-census-check.json",
+    "independent-oracle/native-check-results.json",
+    "independent-oracle/native-domain-results.json"
+  ],
+  "scope_limit": "Only changed diagnostics and comparison execution path are dispositioned here; inherited general-validator limitations remain documented in prior assessment."
+}

@@ -7,7 +7,7 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "e48d5218b6e3be2775a94269a461dccd259fccc5fc41fed7c135dc1336bfe284",
+      "digest": "afe0dbbc1f8d0ae6d54eba2b7c969d964359978fb37cf6cbb8b0479bee1695dd",
       "files": [
         "contracts/model_contract.json",
         "inputs/mfe_account_costs_params.json",
@@ -25,8 +25,8 @@
       ]
     },
     "recorded_provenance": {
-      "semantic_fingerprint": "ea1555ea133db8ed7ba1c638b29ddf540ba99d811bfcf7d9ef9454b626d3a28a",
-      "executable_fingerprint": "b032da4a3971979792bc024bf9cd1a41a2d83d340bad5b59ef3e1a9aeaa77236"
+      "semantic_fingerprint": "989f6a4492157969ba4777347ab588f18547a5077161172be586e41310ad41a1",
+      "executable_fingerprint": "7a9d297dbd8961b9e1dc15656360933d38871d93ee727e3173f7d73a171fa61f"
     }
   },
   "objective_catalog": [
@@ -110,7 +110,7 @@
     },
     "headline": {
       "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
-      "value": 271.5843199172948
+      "value": 318.7371704217041
     },
     "verdicts": [
       {
@@ -123,6 +123,10 @@
       },
       {
         "source_local_identity": "cond_strain_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "cooling_water_heat_direction",
         "expected": "satisfied"
       },
       {
@@ -175,6 +179,14 @@
       },
       {
         "source_local_identity": "loop_pressure_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "matched_main_heat_direction",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "matched_reheat_heat_direction",
         "expected": "satisfied"
       },
       {

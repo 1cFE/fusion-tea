@@ -15,6 +15,7 @@ package mfe_plant {
     private import mfe_heating_chain::*;
     private import mfe_primary_loop::*;
     private import mfe_power_cycle::*;
+    private import mfe_matched_steam_cycle::*;
     private import mfe_magnet_cost::*;
     private import mfe_magnet_field::*;
     private import mfe_account_costs::*;
@@ -195,6 +196,14 @@ package mfe_plant {
         part turbine : 'Turbine Plant' {
             // WI-057: inputs the plant wires from the parts and calcs that produce them
             :>> T_out = heat_transport.T_out;
+            :>> cycle_heat_available_MW = heat_transport.conversion_heat_MW;
+            :>> cycle_source_heat_MW = heat_transport.q_source;
+            :>> cycle_selected_recovered_MW = heat_transport.q_recovered_total;
+            :>> cycle_salt_flow_per_circuit = heat_transport.salt_flow_per_circuit;
+            :>> cycle_salt_circuit_count = heat_transport.salt_circuit_count;
+            :>> cycle_salt_hot_C = heat_transport.salt_hot_C;
+            :>> cycle_salt_return_C = heat_transport.salt_return_C;
+            :>> cycle_salt_cp_kJ_kgK = heat_transport.salt_cp_kJ_kgK;
             :>> n_mod = 'MFE Power Plant'::n_mod;
             :>> p_the = pb.p_the;
         }
@@ -204,6 +213,10 @@ package mfe_plant {
             :>> p_et = pb.p_et;
         }
         part heat_rejection : 'Heat Rejection' {
+            :>> matched_cycle_mode = turbine.matched_cycle_enabled;
+            :>> cycle_rejection_MW = turbine.q_rejection_before_cooling_MW;
+            :>> cycle_condenser_C = turbine.t_condensate_C;
+
             // WI-057: inputs the plant wires from the parts and calcs that produce them
             :>> n_mod = 'MFE Power Plant'::n_mod;
             :>> p_th = pb.p_th;
@@ -259,6 +272,11 @@ package mfe_plant {
             doc /* heat_transport.q_source <- blanket.q_source (primary_loop.q_source_in). the connection where the coolant premise lives structurally: the model's loop is WI-045's representative helium circuit (Moscato 2017, EU DEMO HCLL balance of plant); the Stellaris source cools the breeding zone with water at PWR conditions and the first wall with helium at 8 MPa (stellaris-design-details output.md lines 1490-1491, 1534-1536) -- goal structural-decomposition fact 6, surfaced and carried as a follow-on, not changed by WI-057. */
         }
         connect heat_transport.hot_out to turbine.coolant;              // turbine.T_out <- heat_transport.T_out (cycle); pb.q_recovered_in
+        // WI-073 explicit cycle loads and rejection; scalar bindings execute these exchanges.
+        connect electric_plant.recirculating to turbine.pump_electric_in;
+        connect electric_plant.recirculating to heat_rejection.electric_in;
+        // Condenser heat and ancillary conversion losses join inside turbine.cycle_rejection.
+        connect turbine.cycle_rejection to heat_rejection.cycle_heat_in;
         connect turbine.gross_electric to electric_plant.gross_in;      // pb.eta_th_in = turbine.eta_th -> p_et; electric_plant.p_et
         connect electric_plant.recirculating to heating.electric_in;    // pb.p_wallplug_in = operating_heat.p_wallplug (WI-050)
         connect electric_plant.recirculating to heat_transport.electric_in;   // pb.p_pump_total_in = heat_transport.p_pump_total
@@ -363,6 +381,8 @@ package mfe_plant {
             in q_recovered_in = heat_transport.q_recovered_total;
             in p_wallplug_in = operating_heat.p_wallplug;
             in p_pump_total_in = heat_transport.p_pump_total;
+            in p_cycle_pumps_in = turbine.p_cycle_pumps_MW;
+            in p_cooling_water_in = heat_rejection.p_cooling_pump_electric_MW;
             in f_sub_in = f_sub;
             in p_tf_in = power_supplies.p_tf_total;
             in p_pf_in = power_supplies.p_pf;
@@ -814,6 +834,18 @@ package mfe_plant {
         assert constraint loop_capacity_ok : 'Loop Capacity' {
             in mdot_loop_in = heat_transport.mdot_loop;
             in mdot_loop_rated_in = heat_transport.mdot_loop_ref;
+        }
+        assert constraint matched_main_heat_direction : 'Active Steam Heat Direction' {
+            in enabled_in = turbine.matched_cycle_enabled;
+            in gap_in = turbine.main_min_gap_K;
+        }
+        assert constraint matched_reheat_heat_direction : 'Active Steam Heat Direction' {
+            in enabled_in = turbine.matched_cycle_enabled;
+            in gap_in = turbine.reheat_min_gap_K;
+        }
+        assert constraint cooling_water_heat_direction : 'Active Steam Heat Direction' {
+            in enabled_in = heat_rejection.cooling_water_enabled;
+            in gap_in = heat_rejection.condenser_water_gap_K;
         }
         assert constraint cycle_domain_ok : 'Cycle Fit Domain' {
             in domain_product_in = turbine.domain_product;

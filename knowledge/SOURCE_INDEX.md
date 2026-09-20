@@ -1433,6 +1433,134 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: e7724fe1a65bca24c31ef5feaa0b85b7ba51802fd4c45d6f689256d2563a0567
 - **Date Added**: 2026-09-19
 
+### NISTIR5078 Table2 Water Saturation Pressure
+- **Type**: local_pdf
+- **Location**: knowledge/sources/nistir5078_table2_water_saturation_pressure/
+- **Use for**: Resolve steam pressure versus boiling-temperature compatibility for cooling-to-electricity interface.
+- **Validation**: Inspect original saturation-pressure table rows around4to7MPa against renderedPDF.
+- **Caveat**: Equilibrium pure-water properties only; no turbine efficiency or heat-exchanger qualification.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/physical-nist-tab2.pdf
+- **Source ID**: 8e10fee5d5e358b2cb4d03b2fd1e838959177354677c6f206340eb811e9adc5b
+- **Raw SHA256**: 8e10fee5d5e358b2cb4d03b2fd1e838959177354677c6f206340eb811e9adc5b
+- **Raw Artifact SHA256**: 8e10fee5d5e358b2cb4d03b2fd1e838959177354677c6f206340eb811e9adc5b
+- **Extracted Path**: knowledge/sources/nistir5078_table2_water_saturation_pressure/
+- **Extract SHA256**: b1e73c00d85add81a317e80768991d129a087565f038801776d358d3bd3a632f
+- **Date Added**: 2026-09-19
+
+### NIST WebBook Water6.2MPa171to455C State Table
+- **Type**: url
+- **Location**: knowledge/sources/nist_webbook_water6_2mpa171to455c_state_table/
+- **Use for**: Consistent enthalpy entropy and heat capacity at6.2MPa including saturated liquid and vapor for segmented steam-generator screening.
+- **Validation**: Compare original HTML table against official downloadable TSV and NISTIR5078 printed14 saturation row; inspect endpoints and both phase-transition rows.
+- **Caveat**: Equilibrium pure-water properties from NIST WebBook; no steam-cycle efficiency or exchanger qualification. Query parameters and raw hash pin exact table.
+
+#### Extended Metadata
+- **Source URL**: https://webbook.nist.gov/cgi/fluid.cgi?Action=Load&Wide=on&ID=C7732185&Type=IsoBar&Digits=8&P=6.2&TLow=171&THigh=455&TInc=1&RefState=DEF&TUnit=C&PUnit=MPa&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm
+- **Source ID**: 2ce732b34c9b483369f8d4cb00a9c742f48f4d23b7bc3e3bef19725904600230
+- **Raw SHA256**: 2ce732b34c9b483369f8d4cb00a9c742f48f4d23b7bc3e3bef19725904600230
+- **Raw Artifact SHA256**: 2ce732b34c9b483369f8d4cb00a9c742f48f4d23b7bc3e3bef19725904600230
+- **Extracted Path**: knowledge/sources/nist_webbook_water6_2mpa171to455c_state_table/
+- **Extract SHA256**: 3535b250269e3e1a180111c8633d3f9b29753f2c615335a11aad4cf38557dee2
+- **Date Added**: 2026-09-19
+
+### NIST WebBook Water6.2MPa171to455C HalfK State Table
+- **Type**: url
+- **Location**: knowledge/sources/nist_webbook_water6_2mpa171to455c_halfk_state_table/
+- **Use for**: HalfKelvin refinement of fixed6.2MPa pure-water enthalpy entropy and heat-capacity table for steam-generator temperature-profile and finite-UA screening.
+- **Validation**: Compare all common rows and midpoint-interpolation differences against separately captured1K table; inspect saturation and endpoint rows in original HTML.
+- **Caveat**: Equilibrium properties only; refined tabulation quantifies interpolation sensitivity not physical design uncertainty or turbine efficiency.
+
+#### Extended Metadata
+- **Source URL**: https://webbook.nist.gov/cgi/fluid.cgi?Action=Load&Wide=on&ID=C7732185&Type=IsoBar&Digits=8&P=6.2&TLow=171&THigh=455&TInc=0.5&RefState=DEF&TUnit=C&PUnit=MPa&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm
+- **Source ID**: 46fc6b313bb2a25fee3cc161b8de989a1601dbc549b27f07b0f28f437c432234
+- **Raw SHA256**: 46fc6b313bb2a25fee3cc161b8de989a1601dbc549b27f07b0f28f437c432234
+- **Raw Artifact SHA256**: 46fc6b313bb2a25fee3cc161b8de989a1601dbc549b27f07b0f28f437c432234
+- **Extracted Path**: knowledge/sources/nist_webbook_water6_2mpa171to455c_halfk_state_table/
+- **Extract SHA256**: a084104b2b6f160007402ebf8b8eefcda007fb10ba7a7595c238db9c586a0b39
+- **Date Added**: 2026-09-19
+
+### Dostal Driscoll Hejzlar2004 MIT ANP TR100 Cycle Report
+- **Type**: local_pdf
+- **Location**: knowledge/sources/dostal_driscoll_hejzlar2004_mit_anp_tr100_cycle_report/
+- **Use for**: Original Kovari2016 reference10 power-cycle modeling; identify steam Rankine pressure regeneration feedwater condenser and heat-source assumptions for fit applicability.
+- **Validation**: Inspect original title and Chapter6 steam-cycle tables and diagrams; distinguish its cycle family from Kovari one-point benchmark correction.
+- **Caveat**: Conceptual2004 nuclear-cycle calculations, not target HITEC or62bar cycle validation; original Porton2012 benchmark remains separate.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/physical-dostal2004.pdf
+- **Source ID**: 80401528cc9af65f0f3b873b9f31c50d65710f12ecb0bd3c586f9cee87e16d7c
+- **Raw SHA256**: 80401528cc9af65f0f3b873b9f31c50d65710f12ecb0bd3c586f9cee87e16d7c
+- **Raw Artifact SHA256**: 80401528cc9af65f0f3b873b9f31c50d65710f12ecb0bd3c586f9cee87e16d7c
+- **Extracted Path**: knowledge/sources/dostal_driscoll_hejzlar2004_mit_anp_tr100_cycle_report/
+- **Extract SHA256**: 7b25fda4bdb3e8e072d8565ceee0f802c3ccec37c21f533528c3ccce036d20c7
+- **Date Added**: 2026-09-19
+
+### NIST Water0.8MPa42to455C Matched Cycle Table
+- **Type**: url
+- **Location**: knowledge/sources/nist_water0_8mpa42to455c_matched_cycle_table/
+- **Use for**: Independent equilibrium properties for regenerative steam extraction and expansion at 0.8 MPa; includes saturation states.
+- **Validation**: Inspect original HTML endpoints and saturation rows; invert entropy and enthalpy within single-phase branches only.
+- **Caveat**: IAPWS95 equilibrium property table, not turbine efficiency, pressure-drop, or equipment qualification evidence.
+
+#### Extended Metadata
+- **Source URL**: https://webbook.nist.gov/cgi/fluid.cgi?Action=Load&Wide=on&ID=C7732185&Type=IsoBar&Digits=8&P=0.8&TLow=42&THigh=455&TInc=0.5&RefState=DEF&TUnit=C&PUnit=MPa&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm
+- **Source ID**: 89d012276680d93be9f5bf58fa61426f9167a57f7db4c15b8b164975c5dfe8d4
+- **Raw SHA256**: 89d012276680d93be9f5bf58fa61426f9167a57f7db4c15b8b164975c5dfe8d4
+- **Raw Artifact SHA256**: 89d012276680d93be9f5bf58fa61426f9167a57f7db4c15b8b164975c5dfe8d4
+- **Extracted Path**: knowledge/sources/nist_water0_8mpa42to455c_matched_cycle_table/
+- **Extract SHA256**: 9d31e93e910bf5c7e6f7b707a46951111472a8a0e950c7a87fee04cb4a31c97f
+- **Date Added**: 2026-09-19
+
+### NIST Water Saturation20to60C Matched Cycle Table
+- **Type**: url
+- **Location**: knowledge/sources/nist_water_saturation20to60c_matched_cycle_table/
+- **Use for**: Condenser equilibrium liquid and vapor states, pressure and entropy at 20 to60 C for matched Rankine prototype.
+- **Validation**: Inspect original HTML liquid/vapor paired rows at30,42,50 C; preserve phase ordering and enthalpy/entropy units.
+- **Caveat**: Equilibrium pure water properties; no condenser approach, site cooling, heat rejection parasitic or turbine qualification evidence.
+
+#### Extended Metadata
+- **Source URL**: https://webbook.nist.gov/cgi/fluid.cgi?Action=Load&Wide=on&ID=C7732185&Type=SatT&Digits=8&TLow=20&THigh=60&TInc=0.5&RefState=DEF&TUnit=C&PUnit=MPa&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm
+- **Source ID**: 9403fa902e2663a1189793ee9e476db63bae76c1a767e44f64ec2082ba1d0fd6
+- **Raw SHA256**: 9403fa902e2663a1189793ee9e476db63bae76c1a767e44f64ec2082ba1d0fd6
+- **Raw Artifact SHA256**: 9403fa902e2663a1189793ee9e476db63bae76c1a767e44f64ec2082ba1d0fd6
+- **Extracted Path**: knowledge/sources/nist_water_saturation20to60c_matched_cycle_table/
+- **Extract SHA256**: d69dc7abc019c459e1e79856e3d8b4f3e41b90be54ec10fa19c7b6537130b3f2
+- **Date Added**: 2026-09-19
+
+### EPA2014 Steam Turbine Technology Characterization
+- **Type**: url
+- **Location**: knowledge/sources/epa2014_steam_turbine_technology_characterization/
+- **Use for**: Steam turbine isentropic efficiency and generator performance ranges, extraction/condensing arrangements and moisture limitations for matched-cycle assumptions.
+- **Validation**: Read original efficiency discussion and tables with capacity basis; distinguish isentropic, generator and overall fuel efficiency.
+- **Caveat**: CHP equipment characterization, not qualification or vendor guarantee for this approximately gigawatt Rankine island; pump and loss assumptions require separate disclosure.
+
+#### Extended Metadata
+- **Source URL**: https://www.epa.gov/sites/default/files/2015-07/documents/catalog_of_chp_technologies_section_4._technology_characterization_-_steam_turbines.pdf
+- **Source ID**: 0e8f91f8f6c9513caabe184bd4558850fe6b434e33352a0016930d50ee26a648
+- **Raw SHA256**: 0e8f91f8f6c9513caabe184bd4558850fe6b434e33352a0016930d50ee26a648
+- **Raw Artifact SHA256**: 0e8f91f8f6c9513caabe184bd4558850fe6b434e33352a0016930d50ee26a648
+- **Extracted Path**: knowledge/sources/epa2014_steam_turbine_technology_characterization/
+- **Extract SHA256**: 4e654dfe3f3514a3579c5028f6cdb5323db9608d985812bfeafd2bd5c3d5c22e
+- **Date Added**: 2026-09-19
+
+### NIST Water Temperature Grid Saturation 20to60C Corrected Query
+- **Type**: url
+- **Location**: knowledge/sources/nist_water_temperature_grid_saturation_20to60c_corrected/
+- **Use for**: Condenser pressure, saturation enthalpy entropy and liquid volume at 42 C and nearby diagnostic states.
+- **Validation**: Inspect original temperatures and units; Type SatP requested temperature grid after prior SatT query returned pressure grid.
+- **Caveat**: Properties only; no turbine qualification or component performance. Fifth total capture authorized continuation, original run retained.
+
+#### Extended Metadata
+- **Source URL**: https://webbook.nist.gov/cgi/fluid.cgi?Action=Load&Wide=on&ID=C7732185&Type=SatP&Digits=8&TLow=20&THigh=60&TInc=0.5&RefState=DEF&TUnit=C&PUnit=MPa&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm
+- **Source ID**: 02e0f7034a6268168646b428bdc7f977e6a8d7340c0dffc816721bee788e4ae3
+- **Raw SHA256**: 02e0f7034a6268168646b428bdc7f977e6a8d7340c0dffc816721bee788e4ae3
+- **Raw Artifact SHA256**: 02e0f7034a6268168646b428bdc7f977e6a8d7340c0dffc816721bee788e4ae3
+- **Extracted Path**: knowledge/sources/nist_water_temperature_grid_saturation_20to60c_corrected/
+- **Extract SHA256**: 5c25013f7ae14300d8c93f016169c9247b85c1d412b596c405dc47e238ff8cc4
+- **Date Added**: 2026-09-19
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

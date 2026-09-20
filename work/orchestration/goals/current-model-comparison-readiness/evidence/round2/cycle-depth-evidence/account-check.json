@@ -1,0 +1,160 @@
+{
+  "scope": "independent heat/gross/net/rejection and CAS23-26 driver arithmetic on retained native cases, not full cost-completeness or physical qualification",
+  "native_receipt_sha256": "a9e433cb0868e3d7be78fb42921e09d2c5d7f170fce5b081caabbd02571e53eb",
+  "pipeline_sha256": "3a701e906107b413ebe6c484d6df38cfbf4949cd8d76197f831b13d7893f2af4",
+  "cases": [
+    {
+      "case": "baseline",
+      "source_heat_MW": 3125.9322770825056,
+      "recovered_heat_MW": 180.95682176638664,
+      "gross_MW": 1219.9981701764736,
+      "recirculating_MW": 369.9328695089737,
+      "net_MW": 850.0653006675,
+      "subsystem_allowance_MW": 36.59994510529421,
+      "cycle_pumps_MW": 9.70696064764374,
+      "cw_pump_MW": 13.02318006356215,
+      "costs": {
+        "turbine": 247464428.83859593,
+        "electric_plant": 105407841.90324733,
+        "heat_rejection": 115939531.80564217,
+        "misc_plant": 64159703.76958075
+      }
+    },
+    {
+      "case": "legacy",
+      "source_heat_MW": 3125.9322770825056,
+      "recovered_heat_MW": 180.95682176638664,
+      "gross_MW": 1360.3105043264716,
+      "recirculating_MW": 351.41209882226775,
+      "net_MW": 1008.8984055042038,
+      "subsystem_allowance_MW": 40.80931512979414,
+      "cycle_pumps_MW": 0.0,
+      "cw_pump_MW": 0.0,
+      "costs": {
+        "turbine": 275925382.69758147,
+        "electric_plant": 117530827.57380715,
+        "heat_rejection": 115939531.80564217,
+        "misc_plant": 71538729.42252915
+      }
+    },
+    {
+      "case": "condenser40",
+      "source_heat_MW": 3125.9322770825056,
+      "recovered_heat_MW": 180.95682176638664,
+      "gross_MW": 1229.1922926686984,
+      "recirculating_MW": 370.15325114099585,
+      "net_MW": 859.0390415277026,
+      "subsystem_allowance_MW": 36.87576878006095,
+      "cycle_pumps_MW": 9.70861831166485,
+      "cw_pump_MW": 12.966080356796493,
+      "costs": {
+        "turbine": 249329364.6449188,
+        "electric_plant": 106202214.08657554,
+        "heat_rejection": 115939531.80564217,
+        "misc_plant": 64643222.67144685
+      }
+    },
+    {
+      "case": "condenser50",
+      "source_heat_MW": 3125.9322770825056,
+      "recovered_heat_MW": 180.95682176638664,
+      "gross_MW": 1183.1299088724127,
+      "recirculating_MW": 369.0483254920928,
+      "net_MW": 814.0815833803199,
+      "subsystem_allowance_MW": 35.493897266172375,
+      "cycle_pumps_MW": 9.699500748975172,
+      "cw_pump_MW": 13.252143784471604,
+      "costs": {
+        "turbine": 239986070.71568018,
+        "electric_plant": 102222424.12657645,
+        "heat_rejection": 115939531.80564217,
+        "misc_plant": 62220801.90760018
+      }
+    },
+    {
+      "case": "steam435",
+      "source_heat_MW": 3125.9322770825056,
+      "recovered_heat_MW": 180.95682176638664,
+      "gross_MW": 1212.6276188241807,
+      "recirculating_MW": 369.8529913444672,
+      "net_MW": 842.7746274797134,
+      "subsystem_allowance_MW": 36.37882856472542,
+      "cycle_pumps_MW": 9.801827003796022,
+      "cw_pump_MW": 13.069552083472137,
+      "costs": {
+        "turbine": 245969386.2022968,
+        "electric_plant": 104771026.2664092,
+        "heat_rejection": 115939531.80564217,
+        "misc_plant": 63772086.47396366
+      }
+    },
+    {
+      "case": "circuits18",
+      "source_heat_MW": 3125.9322770825056,
+      "recovered_heat_MW": 111.29561388838877,
+      "gross_MW": 1194.2983224939421,
+      "recirculating_MW": 299.01555195399476,
+      "net_MW": 895.2827705399474,
+      "subsystem_allowance_MW": 35.82894967481826,
+      "cycle_pumps_MW": 9.502478857258197,
+      "cw_pump_MW": 12.74884051768618,
+      "costs": {
+        "turbine": 242251471.73467124,
+        "electric_plant": 103187375.06347659,
+        "heat_rejection": 113497209.85743956,
+        "misc_plant": 62808148.779956415
+      }
+    },
+    {
+      "case": "cooling_disabled",
+      "source_heat_MW": 3125.9322770825056,
+      "recovered_heat_MW": 180.95682176638664,
+      "gross_MW": 1219.9981701764736,
+      "recirculating_MW": 356.9096894454116,
+      "net_MW": 863.0884807310621,
+      "subsystem_allowance_MW": 36.59994510529421,
+      "cycle_pumps_MW": 9.70696064764374,
+      "cw_pump_MW": 0.0,
+      "costs": {
+        "turbine": 247464428.83859593,
+        "electric_plant": 105407841.90324733,
+        "heat_rejection": 115939531.80564217,
+        "misc_plant": 64159703.76958075
+      }
+    },
+    {
+      "case": "cooling_zero_approach",
+      "source_heat_MW": 3125.9322770825056,
+      "recovered_heat_MW": 180.95682176638664,
+      "gross_MW": 1219.9981701764736,
+      "recirculating_MW": 364.55125395097457,
+      "net_MW": 855.4469162254991,
+      "subsystem_allowance_MW": 36.59994510529421,
+      "cycle_pumps_MW": 9.70696064764374,
+      "cw_pump_MW": 7.641564505563002,
+      "costs": {
+        "turbine": 247464428.83859593,
+        "electric_plant": 105407841.90324733,
+        "heat_rejection": 115939531.80564217,
+        "misc_plant": 64159703.76958075
+      }
+    },
+    {
+      "case": "disabled_bad_properties",
+      "source_heat_MW": 3125.9322770825056,
+      "recovered_heat_MW": 180.95682176638664,
+      "gross_MW": 1360.3105043264716,
+      "recirculating_MW": 351.41209882226775,
+      "net_MW": 1008.8984055042038,
+      "subsystem_allowance_MW": 40.80931512979414,
+      "cycle_pumps_MW": 0.0,
+      "cw_pump_MW": 0.0,
+      "costs": {
+        "turbine": 275925382.69758147,
+        "electric_plant": 117530827.57380715,
+        "heat_rejection": 115939531.80564217,
+        "misc_plant": 71538729.42252915
+      }
+    }
+  ]
+}
