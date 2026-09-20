@@ -1,102 +1,72 @@
-# ARIES comparison preparation and design-point checks
+# ARIES comparison: readiness and proposed reveal procedure
 
-**Status:** Draft for owner review. **Date:** 2026-09-14. **Inspected branch:** `feat/integrated`, HEAD `3dda522e56b8c0a3cb57932b9903a9fb36554c60`. This document proposes preparation work; it does not open a modeling goal, approve residuals, change acceptance bands, or authorize reveal.
+**Historical snapshot:** September 17, 2026, describing r2 readiness. Superseded for execution by [r3 publication](replacement-r3/publication.md) and the [r3 execution prompt](execution-prompt.md). The results below retain their original date and scope; this document does not authorize reveal.
 
 ## Purpose and authority
 
-[OWNER-VERBATIM] “Get a good defensible model that can reasonably be scaled/adapted to test against ARIES design points (physics and costing)” and “Then do the ARIES test.” [OWNER] Draft the comparison preparation and include some design-point checking.
+[OWNER-VERBATIM] “Get a good defensible model that can reasonably be scaled/adapted to test against ARIES design points (physics and costing)” and “Then do the ARIES test.”
 
-[AGENT] Prepare a defensible fixed-design-point comparison: identify independent predictions, reconcile their physical and accounting meanings, exercise a few informative points, and explain where the model cannot support the comparison. Recommendations and proposed checks below are agent-originated, not settled requirements.
+[OWNER] The initial conditional helium comparison scope is accepted, with unsupported coolant/blanket correspondence and affected downstream quantities retained as unresolved or incompatible. Source: [owner scope decision](../../../work/orchestration/goals/aries-fixed-point-comparison-readiness/readiness.md). The owner subsequently approved replacement freeze r2. Source: [publication and authorization record](replacement-r2/completion.json). Reveal remains a separate explicit owner act under the [quarantine protocol](../../../knowledge/holdout/aries-cs/PROTOCOL.md).
 
-**Required reading:** [quarantine protocol](../../../knowledge/holdout/aries-cs/PROTOCOL.md), [ratified acceptance specification](../../completed/20260821_demo-anchor-acceptance-spec/spec.md), [current magnet transfer claim](../../../work/orchestration/goals/magnet-design-transfer/transfer-claim.md), [remediation assessment](../../../work/analysis/20260913-171817_fusion-audit-current-assessment.md). The remediation assessment predates the magnet work; its residuals must be reassessed rather than copied as current verdicts.
+[AGENT] The reviewed evidence supports proceeding with that conditional comparison. The useful question is how well the frozen model transfers to the reference point, and where its predictions or applicability fail. Completing this comparison does not imply passing every acceptance criterion or qualifying a buildable plant.
 
-[INHERITED: acceptance specification B-0–B-8, ratified 2026-07-19] Structural correspondence, derived quantities and component costs remain the formal axes. Use model/reference ratios: derived quantities within [1/3, 3], component costs within [0.5, 2]. C220107 remains excluded or footnoted. Optimized sizing is a separate optional post-reveal exercise. A miss remains a finding; preparation cannot silently narrow the denominator of assessed quantities or change the bands. Use the explicit ratio endpoints for implementation; the specification's log10 shorthand is not exactly equivalent and should be flagged in any report-generator review.
+## What is ready
 
-[INHERITED: PROTOCOL §§3–6] Sealed content stays unread. This draft uses no ARIES-specific point values. After owner-triggered reveal, reference extraction and comparison-derived material belong only in the protocol's designated locations. Model corrections motivated by revealed content cannot improve the original frozen blind result.
+[INHERITED: replacement-r2/evidence/final-review.md] R2 has an independent PASS for archive integrity and the specified reproduction checks: 1,498 indexed files, 97 passing extracted tests, 1,022 accounting checks and 219 supplied/held alias checks. Its 174 comparison rows retain 166 mapped quantities, five absent producers and three structural evidence requirements. All twenty raw model constraints remain visible. The manifest, accounting bridge, input-selection rules, synthetic rehearsal and executable freeze are complete; they are no longer proposed preparation tasks.
 
-## Starting evidence
+The execution references are:
 
-[INHERITED: magnet transfer claim and study at `fa195fa4`] WI-040/038 have independently audited implementations and a 108-case transfer study. It establishes conditional numerical response at engineered points, not a source-qualified geometry interval or an engineering-qualified conductor range. Sixteen native outputs lack independent oracle computation. All five cases satisfying the eighteen modeled predicates use extrapolated conductor envelopes. Reuse this evidence with its actual pin and limits.
-
-[INHERITED: transfer claim] The reported reference LCOE is now about 142.507 $/MWh. The change from the earlier baseline includes replacing an unsplit magnet estimate with selected procurement and winding-operation terms; it is not demonstrated cost savings. Reconciliation of that accounting change is a useful first check before comparing costs externally.
-
-## 1. Comparison manifest
-
-[AGENT] Build one table before reveal with the following fields for each comparison quantity. Reference-specific fields remain empty until reveal. Bind output names and units from the selected package contract rather than copying old flat keys.
-
-| Field | Meaning |
+| Reference | Purpose |
 |---|---|
-| Axis and physical/account quantity | B-2, B-3 or B-4; precise quantity being compared |
-| Model producer | Package channel(s), units, owning subsystem and source basis |
-| Input or prediction | Whether the value is supplied, held, independently calculated, or derived from another compared value |
-| Boundary | Included equipment, heat/power boundary, capital versus annual expense, plant-total versus per-module |
-| Reference mapping | Publication location, units, included scope and extraction uncertainty; fill after reveal |
-| Basis adjustment | Explicit unit, currency-year or accounting transformation with its source and calculation |
-| Validity | Applicable configuration/technology, source range, extrapolation and held assumptions |
-| Evidence and outcome | Independent check, raw values, adjusted values, ratio, formal verdict or unresolved applicability |
+| [R2 freeze record](package/freeze/r2/freeze-record.json) and [independent review](replacement-r2/evidence/final-review.md) | Identify and verify the published archive |
+| [Frozen procedure](package/freeze-procedure.md) | Restore, verify, execute and preserve the comparison |
+| [Input rules and applicability](package/input-applicability.md) | Decide which reference quantities can be supplied and where correspondence is unsupported |
+| [Manifest](package/manifest.json) and [accounting/normalization](package/accounting-normalization.md) | Define quantities, disjoint account boundaries and allowed conversions |
+| [Reporting contract](package/reporting.md) | Assemble observations and produce the formal report |
+| [Ratified acceptance specification](../../completed/20260821_demo-anchor-acceptance-spec/spec.md) | Define the formal axes and unchanged bands |
 
-[AGENT] A quantity supplied to the model cannot also count as an independent successful prediction. For example, conditioning on reference fusion power may enable a useful downstream cost diagnostic, but it does not validate the fusion-power calculation. Keep raw observations alongside every adjustment. Missing scope or reference data stays visible; the existing contract does not authorize treating “not comparable” as a pass. An essential unresolved axis requires owner disposition before claiming criterion 4 met.
+[INHERITED: package/freeze/r2/freeze-record.json] The r2 archive SHA256 is `fa42cb32c1a51989871ba15a3bf2c51ca0a88c9a506b27c8e314c88b42960a21`. Execution uses the verified archive in an isolated checkout with its pinned runtime. The linked working-tree documents help navigation; the archived bytes define the frozen procedure.
 
-## 2. Cost and finance reconciliation
+## What the latest goal adds
 
-[AGENT] Start with the stellarator comparison path, using existing project accounting obligations. Broader IFE/general-MFE repairs are outside this proposed preparation unless the selected comparison actually needs them.
+[INHERITED: pre-reveal-feasible-neighborhood/answer.md and evidence/independent-review.md] The latest study found 103 passing cases among 334 selected native evaluations, including 43 of 45 neighborhood checks. These use the separately declared 1.01 conductor-inventory scenario. The field and divertor margins are narrow; the samples do not establish a continuous feasible region or physical qualification. See the [answer](../../../work/orchestration/goals/pre-reveal-feasible-neighborhood/answer.md) and [independent review](../../../work/orchestration/goals/pre-reveal-feasible-neighborhood/evidence/independent-review.md).
 
-1. Map subsystem components into disjoint accounting leaves. Sum the leaves to their parents and plant totals without adding both an aggregate and its children. Track procurement, fabrication, installation, spares, replacements and annual expenses separately, including unpriced scope.
-2. Reconstruct the current magnet estimate and explain the old-to-new baseline change as added, removed, replaced and retained terms. Do not fill missing manufacturing costs with an unexplained multiplier.
-3. Reconcile overnight capital, reported construction financing, annual operating costs, dated replacements and each LCOE calculation. Preserve the headline DCF and 1costingFE-form conventions as distinct channels; their difference alone is not evidence of double counting.
-4. Write the proposed common-basis fields: currency/year, real or nominal rates, escalation, construction timing, operating life, availability, module basis and account scope. Select values with the owner before reveal where possible. Specify the reference conversion procedure in advance; unknown reference conventions remain unknown rather than assumed equal.
-5. Keep published-basis and normalized results separately labeled. Account mapping cannot omit a poorly agreeing component. Document C220107's treatment and its effect on any displayed aggregate.
+[INHERITED: same answer and r2 independent review] That study reproduced the frozen r2 controls exactly and left the comparison package unchanged. R2 keeps inventory multiplier 1.0; its existing forward and Table 5 control points retain current-boundary, pack-fit and divertor failures. The sampled passing neighborhood is separate evidence about the model. It does not replace the reference inputs or held assumptions used for the blind comparison.
 
-[AGENT] LCOE is a supporting diagnostic in this preparation. It does not replace the ratified per-component cost axis or introduce a new formal LCOE pass band. Current mixed-module accounting needs either consistent treatment or an explicitly accepted single-module comparison scope.
+[AGENT] No further pre-reveal physics campaign is proposed here. Archive verification and the documented reproduction checks are execution preparation; they do not require another design-space search.
 
-## 3. Small pre-reveal design-point check
+## Proposed procedure
 
-[AGENT] Reuse the existing transfer study and validated baseline. Add at most twelve new full-model evaluations initially, only where the existing evidence does not cover the proposed check. This is a diagnostic budget, not a coverage theorem or a new two-hour sweep. Write exact points, predicted responses and tolerances before execution; a failure triggers investigation rather than silently enlarging the grid.
+### 1. Confirm the frozen package and record reveal
 
-| Check | Proposed selection | What it can establish |
-|---|---|---|
-| Reference reproduction | Reuse the accepted baseline; execute once only if the relevant model/package changed | Current channel mapping, quantities, verdicts and accounting totals reproduce their recorded meaning |
-| Geometry response | Reuse matched major-radius and minor-radius cases from the 108-case study | Dimensions, field demand, inventory and cost respond as their recorded equations predict; explicitly retain quantities that remain held |
-| Conductor response | Reuse matched envelope cases from that study | Relative sizing/cost response under the same REBCO construction; extrapolated envelopes remain labeled |
-| Coupled point | One smaller and one larger joint geometry/current point already present; add only a missing comparison | Wiring works when several inputs change; this does not establish a realizable equilibrium |
-| Engineering boundaries | Selected cases immediately inside/outside one applicable field, stress or loop-capacity limit | Correct crossing, deliberate invalid-domain handling and no false successful publication; numerical epsilon and physical tolerance are distinct |
-| Plant/cost response | Small matched changes in heat load or cycle temperature and one replacement-calendar transition, only if not already checked at this lineage | Equipment/cost responses, thermal identities, availability and replacement accounting are consistent or expose held proxies |
+[INHERITED: package/freeze-procedure.md and PROTOCOL §6] Verify r2's identity and restore the archived procedure. Before opening sealed papers, the owner explicitly triggers reveal and records the status, date and unsealed files under the quarantine protocol. Extraction belongs in `knowledge/holdout/aries-cs/extracted/`; comparison-derived material belongs in the designated comparison artifacts. Index registration is a separate recorded decision.
 
-[AGENT] Report each check in layers: execution completed/refused; independent numerical check; authored constraint verdicts; source applicability; remaining engineering qualifications. A completed evaluation is not a feasible plant. A refused point is not a numerical value to include in a ratio.
+### 2. Extract the reference point and establish what corresponds
 
-[AGENT] Independent spot checks should cover the comparison's load-bearing quantities: geometric dimensions/volumes, current-density-to-area identities with units, field/energy relations within their declared approximation, thermal/electric balance including pump-work conventions, availability-time accounting, material quantity × price, and capital/annual-cost reconciliation. Reusing the same generated expression twice is translation agreement, not an independent reference. Write absolute and relative tolerances based on units and numerical precision; do not use broad ARIES agreement bands to excuse arithmetic errors.
+[INHERITED: package/input-applicability.md] Retain page/table citations, raw values and units, definitions, design revision, uncertainty, account scope and monetary/finance conventions. Apply the frozen source-priority rules. Preserve unresolved conflicts rather than choosing the value that agrees best with the model.
 
-[AGENT] Before any expensive execution, show a compact table of existing evidence reused, new points needed, expected run count, and measured per-case runtime. Re-exporting a report or changing prose should not trigger model execution.
+[INHERITED: same source] Only seven independently reported quantities may replace the blind defaults: major radius, minor radius, peak electron density, peak ion temperature, reference-coil ampere-turns, radial exterior coil allocation and transverse clear cavity. Exact keys and units are in [input-rules.json](package/input-rules.json). Missing inputs retain visibly held defaults and block dependent claims that the result represents the reference fixed point. Unsupported geometry, technology, coolant or account correspondence remains explicit.
 
-## 4. A synthetic comparison rehearsal
+### 3. Run the frozen forward model first
 
-[AGENT] Test the report machinery with synthetic data in temporary fixtures, separately from physics execution. Include exact matches, ratios exactly at each band endpoint, just-outside ratios, missing quantities, zero/negative reference denominators, unit conversions, mismatched equipment scope and C220107 exclusion/footnoting. Check component sums and preserved raw observations. Synthetic reference values are test fixtures, never physical evidence or estimates of ARIES.
+[INHERITED: package/freeze-procedure.md] Supply the permitted, source-supported inputs and calculate the model's outputs without tuning coefficients to improve agreement. R2's held assumptions include exact profile exponents 0.35/1.2, current-driven sizing with inventory multiplier 1.0, fourteen representative helium circuits, and its existing material, cycle, calendar and finance choices. Retain all outputs, twenty constraint verdicts, extrapolations and execution failures. A supplied quantity earns no independent prediction credit.
 
-## 5. Actual design-point check after reveal
+### 4. Review the mapping and publish the original comparison
 
-[AGENT] Freeze the model, executable package, input-selection rules, comparison manifest and formal bands before the owner triggers reveal. Record source applicability and remaining gaps at that version. Use the following sequence in the designated comparison artifacts:
+[INHERITED: package/freeze-procedure.md and reporting.md] Map the model and reference quantities onto the complete manifest, then independently review the source-to-quantity correspondence before accepting verdicts. Preserve missing producers, missing reference values, unsupported scope and refused calculations. The reporter checks declared structure and arithmetic; a citation string alone cannot establish scientific equivalence.
 
-1. Extract the reference design-point inputs, uncertainties, component definitions and cost/finance conventions with page-level evidence. Reconcile contradictory values before execution and preserve the discrepancy record.
-2. Check representability: geometry convention, profiles, conductor technology, thermal cycle and module basis must have meaningful model counterparts. The current same-REBCO envelope study does not establish transfer to another superconductor; raising or lowering B_max alone is not a technology substitution. Unsupported reference technology/configuration becomes an explicit comparison limitation, not a silent surrogate.
-3. Execute the frozen forward model with the declared reference inputs. Compare its independent outputs for B-2/B-3/B-4, retaining all constraint violations and extrapolation flags. Do not tune held coefficients to improve ratios.
-4. If useful, run a separately labeled conditioned diagnostic: supply one reference subsystem output through a pre-existing supported input seam and examine downstream predictions. This can distinguish an upstream physics discrepancy from a cost discrepancy. It is not the blind forward result and cannot replace a failed formal verdict. No seam is invented after reveal to claim a better blind test.
-5. Report the fixed-point comparison first. Optimization, redesigned geometry and vintage-assumption searches remain the optional Item 9 exercise.
+[INHERITED: ratified acceptance specification B-2–B-8] Report structural correspondence, derived quantities and per-component costs separately. Derived model/reference ratios must lie within inclusive [1/3, 3]; component-cost ratios within inclusive [0.5, 2]. C220107 remains excluded or footnoted with its aggregate effects disclosed. LCOE is supporting information with no formal pass band. Unresolved essential axes cannot pass; an out-of-band result remains a finding. Preserve the first report immutably.
 
-## 6. Remaining limitations and proposed treatment
+[INHERITED: package/accounting-normalization.md] Apply only the frozen conversion rules and keep raw observations beside any converted values. R2 freezes no monetary-year adjustment algorithm and permits no such adjustment to the formal verdict. Mixed-year costs remain disclosed. A later evidence-supported common-year or common-finance comparison is a separately labeled diagnostic, not a replacement verdict.
 
-| Area | Proposed treatment before reveal | Why it matters |
-|---|---|---|
-| Magnet geometry and technology | Inventory supported inputs and source applicability; price selected component scope explicitly; seek additional evidence only for a declared transfer claim | The current conditional REBCO study cannot establish another conductor technology, pack/casing fit or arbitrary configuration validity |
-| Breeding | Distinguish required from achieved TBR; retain negative adequacy margins and held neutronics | A geometry-driven power/cost prediction can be reported conditionally; self-sufficiency is not established |
-| Coil lifetime | Show productive-life demand versus the retained allowance; identify absent shielding/replacement consequences | Lifecycle economics may omit a material replacement or operating restriction |
-| Thermal equipment | Check that changed heat duty has a corresponding equipment-cost response or label the retained proxy and unpriced scope | A physically responsive loop calculation can still underprice the larger plant |
-| Maintenance | Reconcile the implemented bundled calendar; disclose unmodeled equipment, access and reliability | Availability scenarios are assumptions, not reliability predictions |
-| Accounting and finance | Resolve mappings and comparison conventions; retain irreducible scope differences explicitly | Agreement can otherwise result from incompatible cost boundaries |
+### 5. Use separate diagnostics to explain discrepancies
 
-[AGENT] Fix errors in the existing comparison path before freezing it. Additional capability work should answer a specific missing comparison obligation. Owner acceptance is needed for residual scope and finance choices; merely listing an issue here does not resolve it. The reviewed magnet answer is conditional, and work-item closure does not convert its residuals into accepted engineering assumptions.
+[INHERITED: package/freeze-procedure.md] After preserving the original result, existing supported input seams can supply selected reference outputs to examine downstream responses. Each conditioned run has a separate report and no independent blind credit. The fixed Table 5 seam is a Stellaris control, not a holdout geometry substitution. Post-reveal corrections, alternative technologies, normalization amendments and optional optimization are separately versioned work.
 
-## Review decisions and delivery
+## Limits to carry into the report
 
-[AGENT] Recommended immediate deliverable: the filled model-side manifest, an accounting bridge for the current baseline, an evidence-reuse table plus the small check plan, and a residual/applicability table. Run the synthetic rehearsal and only the justified missing points after that plan is reviewed. Refresh the depth assessment at the chosen freeze when relevant evidence has changed; reuse unaffected checks.
+[INHERITED: package/readiness.md and the latest goal answer] Passing the implemented screens does not establish breeding self-sufficiency, a qualified conductor/cavity design, a new magnetic equilibrium, source-faithful coolant performance or a complete installed price. Manufacturing and additional cooling installation remain partly unpriced. Financial and maintenance assumptions remain conditional. Sixteen native scalar channels remain outside the independent oracle mapping; the exact-current-boundary disagreement is retained explicitly.
 
-Owner decisions to make concrete from this packet: which conditional claims are acceptable for the demo; the common monetary/finance basis and normalization procedure; supported module/configuration/technology scope; and which essential gaps require work before freezing. Reveal remains a separate owner act. This draft does not require every engineering gap to be filled, and it does not imply that accepted limitations satisfy a formal comparison axis they prevent us from evaluating.
+[INHERITED: stellaris-plasma-power-balance/answer.md] Published source ignition remains unreproduced, with unresolved source energy/radiation implementation. The [reviewed plasma-balance answer](../../../work/orchestration/goals/stellaris-plasma-power-balance/answer.md) explains the quantified discrepancy. This limits the physical interpretation of power predictions; the preparation checks do not resolve it.
+
+[AGENT] The proposed deliverable is the original fixed-point comparison with an evidence-backed account of agreement, failure and unresolved applicability. The conditional scope and r2 freeze are already approved. Explicit reveal is the remaining owner act before extraction; any change to the formal comparison requires a separately recorded amendment.
