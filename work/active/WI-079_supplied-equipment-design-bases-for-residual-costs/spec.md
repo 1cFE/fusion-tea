@@ -15,11 +15,11 @@ Updated: 2026-09-20
 ## Acceptance
 
 - [x] Exact roles, units, source basis and bindings independently reviewed before implementation; numeric captures remain subject to integrated review.
-- [ ] Native source, twins and generated package preserve independently selected inputs.
-- [ ] Fixed design retains purchase prices under changed operating demand; changing selected design or price affects intended costs and rollups.
-- [ ] Current oracle/study route and affected historical test consumers explicitly migrated; frozen evidence preserved.
-- [ ] Relevant regression, integration and independent final review passed.
+- [x] Native source, twins and generated package preserve independently selected inputs.
+- [x] Fixed design retains purchase prices under changed operating demand; changing selected design or price affects intended costs and rollups.
+- [x] Current oracle/study route and affected historical test consumers explicitly migrated; frozen evidence preserved.
+- [x] Relevant regression, integration and independent final review passed.
 
 ## Preparation
 
-[AGENT] Fresh design review passed: ../../orchestration/goals/preserve-model-design-choices/evidence/round2/architecture-review.md. The supplied package contract supersedes disconnected price-class alternatives. Implementation and numeric capture acceptance are in progress.
+[AGENT] Fresh design review passed: ../../orchestration/goals/preserve-model-design-choices/evidence/round2/architecture-review.md. The supplied package contract supersedes disconnected price-class alternatives. Implementation, numeric capture and committed native integration pass; final independent round assurance is PASS in the goal evidence/round2/final-review.md.

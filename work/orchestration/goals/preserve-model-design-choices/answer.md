@@ -1,46 +1,43 @@
-# Preserve model design choices — Round 1 technical answer
+# Preserve model design choices — current technical answer
 
-[OWNER] Superseded as a whole-goal completion claim on 2026-09-20 by evidence/round2-owner-extension.md. This remains the accepted Round 1 result; Round 2 must repair the remaining equipment cost and capability issues.
+[AGENT] **The expanded technical goal is met.** Round 2 repairs the equipment-price and capability gaps the owner made mandatory after accepting Round 1. Independent [final review](evidence/round2/final-review.md) is PASS. Formal goal closure remains owner-held; the goal stays grounded.
 
-[AGENT] **Technical completion criteria are met for the independently reviewed scope.** No confirmed MR-7 violation remains open in that scope. Fresh non-author [final review](evidence/final-review.md) is PASS. Formal goal closure remains owner-held; the goal stays grounded.
+## What changed
 
-## Preserved choices
+- **Equipment prices follow the chosen purchase.** Turbine, heat-rejection, cryoplant, power-supply and divertor costs now use supplied package amounts. Other affected allowances use independent procurement classes. Electrical-plant cost uses its selected gross-power rating. Operating demand no longer silently selects these purchase amounts.
+- **Thermal requirements are checked against supplied ratings.** Primary and intermediate loops, steam equipment, cooling-water equipment, refrigeration and represented electrical loads have explicit capacity comparisons. The existing intermediate-exchanger area margin is now a native assertion. The repair adds 33 asserted predicates, for 67 total.
+- **Calculated loads reach downstream equipment.** Six native perturbation cases demonstrate plasma heat reaching the cooling/steam/rejection chain, cryogenic loads reaching refrigeration/electrical checks, and heating, breeding and divertor verdicts remaining connected. Equipment ratings and purchase amounts remain fixed during those demand changes.
+- **Round 1 choices remain preserved.** Supplied magnet geometry/inventory/masses, facility geometry/allocations, processor throughput and cooling purchase points/stocks survive evaluation. Accepted Round 1 evidence remains at its original checkpoint and under [the prior review](evidence/final-review.md).
 
-| Area | Before | Current supported evaluation |
-|---|---|---|
-| Magnets | Current and adequacy policies selected pack geometry, inventory and structural masses. | Supplied pack side, installed turns, support mass and casing mass survive evaluation. Operating turn current determines excitation; selected geometry and inventory determine represented material, thermal loads and cost. |
-| Facilities | Demand could select room dimensions, storage positions, parcel and package segmentation. | Supplied dimensions, positions, packages per sector, partitions and parcel survive evaluation. Requirements and signed fit/capacity margins remain separate. Signed parcel offsets preserve translation within the declared coordinate frame. |
-| Processor | Exhaust demand times a margin set installed throughput and price. | Supplied per-module throughput determines price. Running exhaust determines capacity margin; price-source applicability is separate. |
-| Cooling | Running duty set procurement price points and purchased coolant stock. | Selected machine price points and purchased stocks remain fixed as demand changes. Offered loop flow ceiling is separate from hydraulic calibration; represented fill is checked against supplied stock. |
+A capacity pass means the represented requirement is no greater than the supplied rating at supported conditions. A changed or unsupported operating state gets no affirmative capacity credit. Raw capacity margins remain strict; the small floating-point allowance for identifying an otherwise identical state never relaxes capacity.
 
-These are explicit, reviewed calculation directions. Optional magnet selection helpers remain separate from the mandatory plant evaluator. Residual geometry identities, scenario policies and demand-based cost proxies have specific reviewed meanings in [WI-074 residual dispositions](../../../active/WI-074_design-choice-inventory-and-evaluation-contract/residual-dispositions.md).
+## Evidence and interface
 
-## Interface and migration
+The current interface has 704 public inputs, 1,352 numeric outputs, 68 structured outputs and 67 predicates. Round 2 adds 118 inputs and retires 11; all current inputs have actual consumers across 1,121 direct edges. The [migration and coverage receipts](../../../active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/interface-migration.md) preserve exact identities. Historical packages and old study axes are unchanged.
 
-The current package has 597 public inputs, 1,149 numeric outputs, 35 structured outputs and 34 predicates. The inventory reconciles 609 entering/current rows: 499 retained, 98 introduced and 12 retired, with zero unconsumed current inputs. [Interface migration](../../../active/WI-074_design-choice-inventory-and-evaluation-contract/interface-migration.md) records the changed controls. Current study axes are `exploration/stellarator_e2e/studies/axes.supplied_design.json`; the old axis declaration and frozen packages remain unchanged. Retired automatic-selection controls are explicitly refused by the current route.
+- All ten native integration gates pass and return CANDIDATE at implementation checkpoint `fce788412fa53384688642dbc7deee9ee66431f2`. [Retained integration evidence](../../../active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/seam-retention.json) maps original scratch paths to hashed durable copies.
+- Current model regression evidence reconciles to **2,738 passed, 13 existing skips and one existing expected historical CLI failure**, with no unresolved failure/error. The initial broad run had 83 failures and 47 setup errors; all 130 exact nodes are accounted for by corrections and reruns. This is composite evidence, not one clean initial sweep. [Validation accounting](../../../active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/validation-summary.json).
+- Stock-route evidence reconciles to 704 passing checks. Native and independent calculations agree for all 1,352 baseline numeric channels and all 67 predicates. All 1,095 prior non-cost numeric channels are exactly unchanged. Focused tests cover insufficient/sufficient offers, unsupported conditions, fixed hardware under changing loads and all forty administrative flags.
+- Fresh native generation with 52 normative manual bodies reproduces exactly on a second generation. Source/package identities are bound to the committed integration return. The seam checks its declared 112 scalar channels and all 67 predicates; the 1,352-channel numeric comparison is separate development evidence.
 
-## Evidence
+## What remains assumed
 
-- All ten native integration gates pass and return CANDIDATE. The first attempt correctly rejected an obsolete axis request; the corrected request uses the same source/package checkpoint. [Retained integration evidence](../../../active/WI-075_supplied-magnet-design-evaluation/integration/seam-retention.json) maps native scratch paths to independently hashed durable copies.
-- The broad model sweep returned 2,440 passed, five failed, 13 skipped and one existing expected failure. All five stale-test failures were corrected; complete affected-file reruns passed 42 and nine tests. Independent review accepts this composite evidence with zero unresolved failures. The original full sweep was not green. [Exact accounting](../../../active/WI-075_supplied-magnet-design-evaluation/integration/regression-accounting.json) preserves the node mapping.
-- Separate native/independent checks compare all 1,149 numeric channels and 34 predicates across six scenarios. Supplied insufficient/sufficient designs, fixed hardware under changed demand, unsupported conductor conditions and strictly negative near-zero margins are exercised. Counts from overlapping suites are not added.
-- The seam's single baseline has no checked verdict mismatches or unverified listed predicates; worst checked relative deviation is `2.409591420195442e-15`. It is not the six-scenario coverage suite.
+The supplied package amounts and ratings describe hypothetical offers. Their captured defaults are assumptions, not vendor quotations. Increasing a rating while retaining its price describes a different assumed offer; the model does not predict the price of that upgrade.
 
-## Limits
+Capability checks cover declared operating points. Full pump/compressor/refrigerator maps, complete heat-sink allocation, tower/site qualification, pressure design and detailed electrical qualification remain absent. Equipment qualification flags do not claim those omissions are resolved. Plasma transport, bounded breeding interpolation and divertor heat descriptions retain their existing physical approximations. Vacuum pumping hardware and offered active fuel/tank inventories remain unmodeled. The complete current interpretation is in [residual dispositions](../../../active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/residual-dispositions.md).
 
-The model does not qualify arbitrary pump/compressor off-design performance, full coolant inventory, arbitrary exchanger/pipe performance, supplied support strength, arbitrary facility topology, offered active fuel stock or actual vacuum equipment. Generic direct-heating consistency remains outside the active stellarator contract. Demand-based and hybrid cost estimates retain explicit disclosure; they do not certify independently supplied equipment capacity.
+The baseline still fails six engineering screens: facility occupancy, divertor heat, breeding, conductor current, winding fit and the new cooling-water electrical rating comparison. The last margin is `-3.552713678800501e-15`; native and independent arithmetic both retain that strict failure. Passing verification means the calculations and verdicts agree, not that the plant is adequate. Existing conductor validity limits remain unchanged.
 
-Conductor validity remains 20–32 T, with explicit extrapolation permission required above 24 T and existing temperature/source conditions retained. Physical inadequacy, unsupported performance conditions and conditional prices remain distinct. Baseline facility occupancy, divertor heat, breeding, conductor current and winding fit screens fail; whole-plant feasibility and lower cost were not acceptance conditions. No tolerance snapped the small negative occupancy margin to zero.
-
-Existing integration tooling does not execute `assert_read_set_covered`; the ten-gate result does not prove read-set completeness. The verification summary does not locally record TEAx revision, while the enclosing seam checks revision `8d877460ac4f6f264561d916e40c1708adb13397`.
+Existing integration tooling does not execute `assert_read_set_covered`; the ten-gate result does not prove read-set completeness. Generated float-as-Boolean warnings remain visible. The historical CLI expected failure is disclosed separately from current equipment acceptance.
 
 ## Exact identity and disposition
 
 - Pre-reveal code baseline: `86712a0d080d745802c1bcc57a30d3eca00458c3`.
-- Entering enforcement checkpoint: `0223c73785713400633b857183e6a7f5f103aa95`.
-- Implemented and integrated source checkpoint: `b11567eb693a4fd6f45a487f75dc5244fb433774`.
-- Candidate pin: `84b82ef338093eb6d6f142360b3ded2b575b6f79397e6a719a6cb6dcf0154bc6`.
-- Semantic fingerprint: `5a76ffbe2c1457b8abd5e8e9203331959baf68af65d7e12f9f49bb09d0bf071c`.
-- Executable fingerprint: `04d3af1627885ce7a68d726b1d36026777eccc5d4976b15d693b6c8ec438f227`.
+- Accepted Round 1 implementation: `b11567eb693a4fd6f45a487f75dc5244fb433774`.
+- Round 2 implementation/integration checkpoint: `fce788412fa53384688642dbc7deee9ee66431f2`.
+- Candidate pin: `b60bcb940398d1df39bf779394ebab46ea309e31e8c00034d3dedee39832c9d3`.
+- Semantic fingerprint: `6f51a9963348754694563855957d9bf9bfdfb90c61bd9228c9bd8868286fac90`.
+- Executable fingerprint: `1ba8c423983518416d4320155f465f88a37f37456d73b0b6e4cf73b5050900c9`.
+- Checked TEAx revision: `8d877460ac4f6f264561d916e40c1708adb13397`.
 
-The delivery-record commit is the commit introducing this answer; it includes the two tested regression corrections and retained integration evidence, without changing the integrated model/package bytes. Concurrent unrelated write-up commit `35c0fd15` is preserved. No reference comparison, reference-based tuning, replacement freeze, push or merge was performed. This is post-reveal repair from pre-reveal code, not a restored blind test.
+The delivery-record commit retains final reviews, evidence and status without changing the integrated model/package bytes. The pre-checkpoint review's final PASS text was written after its earlier draft had been staged; it is retained in the delivery record, with final checkpoint review separately binding the committed implementation. This is post-reveal repair from pre-reveal code. No reference comparison, reference-derived tuning, replacement freeze, push or merge was performed.

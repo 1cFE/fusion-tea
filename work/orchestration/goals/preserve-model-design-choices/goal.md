@@ -53,7 +53,7 @@ Can the stellarator model and shared dependencies evaluate and cost supplied des
 
 ## Technical result — 2026-09-20
 
-[AGENT] Round 1 completed its independently reviewed scope. The owner subsequently required repair of the residual demand-priced equipment and missing capability checks; technical completion of the expanded goal is open in Round 2. Earlier implementation and review remain valid for their scope.
+[AGENT] Round 2 meets the expanded technical completion criteria at implementation checkpoint fce788412fa53384688642dbc7deee9ee66431f2. Required residual procurement/capability repairs and propagated-demand checks pass independent review and all ten native integration gates. See answer.md and evidence/round2/final-review.md. Round 1 remains accepted for its scope. Formal closure remains owner-held; status stays grounded.
 
 ## Amendments
 

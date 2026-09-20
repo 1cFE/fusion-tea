@@ -1,5 +1,5 @@
 ---
-Verdict: concerns
+Verdict: pass
 Created: 2026-09-20
 Related Artifacts:
   Architecture: ./architecture-review.md
@@ -8,7 +8,7 @@ Related Artifacts:
 
 # Round 2 independent integrated review
 
-**PENDING final native evidence.** The inspected source and seed implementation follow the released MR-7 architecture. No material source-binding defect was found. The auxiliary-cost output-order correction and incremental native acceptance are now reviewed below. Final package identity and broad validation evidence remain pending.
+**PASS — integrated implementation before the committed goal checkpoint.** The inspected source, generated-contract evidence, native acceptance and reconciled development checks satisfy the released MR-7 repair contract. No material implementation finding remains. This verdict permits the committed goal-seam/checkpoint step; it does not certify that still-pending step or close the goal.
 
 ## Source and interface assessment
 
@@ -46,6 +46,18 @@ The [current residual dispositions](../../../../../active/WI-080_supplied-therma
 
 The current oracle IHX predicate map now names `margin_m2_in`, matching the actual native formal. The coordinator reports agreement for all 67 baseline predicates. Stock-route stale-name/census repairs and broad-suite completion still require their final receipts below.
 
-## Remaining final gate
+## Reconciled development validation
 
-Provide the final package/checkpoint identity, completed native offer/state tests, broad regression results, stock study-route results and required integration evidence. Confirm the deposited acceptance records apply to that package. Until then, final native/integration MR-7 compliance remains **unverified**. This reviewer did not rerun full tests or open reference material/comparisons.
+Reviewed [validation-summary.json](../../../../../active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/validation-summary.json), its eight retained gzip logs, [rerun selection](../../../../../active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/evidence/regression-rerun-selection.json) and WI-079's targeted receipt. Every compressed and uncompressed log hash matches. Independently extracted all 130 initial failed/error node names from the full log; they exactly equal the declared set and partition into 61 coordinator reruns plus 69 owning-worker/spine reruns without overlap or omission.
+
+The initial full model run totals 2,749: 2,606 passes, 83 failures, 47 errors and 13 skips. The 61-node rerun passed 58, with its exact three remaining catalog cases passing the subsequent rerun. The remaining nodes are covered by the recorded coil/facility, operating-heating, fuel/radius and spine checks. One existing historical CLI incompatibility remains a strict expected failure after its refusal/diagnostic assertions succeed. Three subsequently added acceptance tests also pass. Thus the current composite result is **2,738 passes + 13 existing skips + 1 existing expected failure = 2,752**, not a claim that the initial full invocation passed.
+
+Stock-route evidence reconciles **704 passing checks**: 702 initial passes plus the corrected binding and integration failures. The successful two-test integration rerun also repeats one previously passing test; it is not an additional 705th check. The receipt reports the complete thirteen spine checks and ten integration gates.
+
+Reviewed corrected consumers retain exact input/output/predicate inventories and unchanged-value assertions. Retirement identities preserve original parameter groups. Startup/decommissioning tests now explicitly supply the two chosen classes. The historical CLI diagnostic expects the ledger-derived 67 predicates without weakening its other refusal/anchor assertions. No new capacity tolerance, skipped equipment acceptance, or self-derived native numeric expectation was introduced.
+
+Current evidence records 704 inputs, agreement for all 1,352 mapped baseline numeric channels and all 67 independently evaluated predicates, with 61 satisfied and six violated. The 1,095 unaffected prior channels remain exact. These passing verification checks preserve the adverse engineering results; they do not establish whole-plant adequacy. Fresh generation and its 52 manual completions are coordinator-provided integration evidence, not a second generation run by this reviewer.
+
+## Remaining goal checkpoint
+
+The actual committed native goal integration seam and final checkpoint review remain pending. Bind this accepted implementation and its evidence to that checkpoint, execute the authorized seam, then review its returned identity/results. Formal goal closure remains owner-held. No full-suite tests were rerun by this reviewer, and no reference comparison or quarantined material was opened.

@@ -1,0 +1,71 @@
+{
+  "authority": "Byte-identical retention of native execution evidence. Native documents retain original scratch paths; this index locates the same bytes durably. The recaptured snapshot equals the committed tracked snapshot.",
+  "checkpoint": "fce788412fa53384688642dbc7deee9ee66431f2",
+  "files": [
+    {
+      "native_path": "/tmp/mr7-r2-seam-tka7vgbs/_work/artifacts/8a8838258de971e3868602a72158ceaa0b611e00213570fa9ab4c3ff7746555b.json",
+      "retained_path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/seam/_work/artifacts/8a8838258de971e3868602a72158ceaa0b611e00213570fa9ab4c3ff7746555b.json",
+      "sha256": "8a8838258de971e3868602a72158ceaa0b611e00213570fa9ab4c3ff7746555b"
+    },
+    {
+      "native_path": "/tmp/mr7-r2-seam-tka7vgbs/_work/stellarator-baseline-point-v1.db",
+      "retained_path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/seam/_work/stellarator-baseline-point-v1.db",
+      "sha256": "c06db7edd8195bc6e2a70447126193f122cdd914e631f14f785e88944c3d05f8"
+    },
+    {
+      "native_path": "/tmp/mr7-r2-seam-tka7vgbs/backup-location.json",
+      "retained_path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/seam/backup-location.json",
+      "sha256": "ce1a1bb89283d6157427aaf929fb3677c4b5c636850a9375ec72b3697d784153"
+    },
+    {
+      "native_path": "/tmp/mr7-r2-seam-tka7vgbs/baseline_result.json",
+      "retained_path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/seam/baseline_result.json",
+      "sha256": "0e5f0e4bf7d6392d62d8ebc8803d8917634f3e8412f9cbc464260a92ec07b9dd"
+    },
+    {
+      "native_path": "/tmp/mr7-r2-seam-tka7vgbs/clean.json",
+      "retained_path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/seam/clean.json",
+      "sha256": "6de0a2fadb7632c1d73eaf1121722a103d818245a92b2216094242c243fc83a6"
+    },
+    {
+      "native_path": "/tmp/mr7-r2-seam-tka7vgbs/integration_return.json",
+      "retained_path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/seam/integration_return.json",
+      "sha256": "0bbce25cd4292f6169a9e6fc76308dedfa8b835a4240d2e553e0870a80328079"
+    },
+    {
+      "native_path": "/tmp/mr7-r2-seam-tka7vgbs/junit/model-family-spine.xml",
+      "retained_path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/seam/junit/model-family-spine.xml",
+      "sha256": "c1ddffba11d98e47949f61e46d344b740a14ec2c3f5690e9f00ae57bd1cd2074"
+    },
+    {
+      "native_path": "/tmp/mr7-r2-seam-tka7vgbs/junit/pinned-packages.xml",
+      "retained_path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/seam/junit/pinned-packages.xml",
+      "sha256": "33adb7774c9575e9a2d49992582a98144e7de61ec7421d02fcda2a14069d72e7"
+    },
+    {
+      "native_path": "/tmp/mr7-r2-seam-tka7vgbs/package_identity.json",
+      "retained_path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/seam/package_identity.json",
+      "sha256": "b401104eecf7a46ff859ae2ec93bd86f52c1506e5ed9d101337f9d97e56c3f16"
+    },
+    {
+      "native_path": "/tmp/mr7-r2-seam-tka7vgbs/preflight_results.json",
+      "retained_path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/seam/preflight_results.json",
+      "sha256": "e1204c311cb29fb46db2645522c9b1865759b7df57986d7a827fb3372a23d4c2"
+    },
+    {
+      "native_path": "/tmp/mr7-r2-seam-tka7vgbs/recaptured.snapshot.json",
+      "retained_path": "exploration/stellarator_e2e/stellarator.snapshot.json",
+      "sha256": "a525d9e9ee471f64779435d47da0f7a586017d80be3f8750d433705ca1a995b7"
+    },
+    {
+      "native_path": "/tmp/mr7-r2-seam-tka7vgbs/verification_summary.json",
+      "retained_path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/seam/verification_summary.json",
+      "sha256": "fa0d5f9e71f7fbb9ce0033fd40731c2173794500074d3742bf37d412b5f08b86"
+    },
+    {
+      "native_path": "/tmp/mr7-r2-seam-tka7vgbs/verify_stderr.txt",
+      "retained_path": "work/active/WI-080_supplied-thermal-equipment-capability-and-demand-checks/integration/seam/verify_stderr.txt",
+      "sha256": "4d93654e95737857b05c5732ad480e6747a2d3b07085b637262248569ec486b0"
+    }
+  ]
+}

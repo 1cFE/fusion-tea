@@ -1,6 +1,6 @@
 # Current Round 2 residual dispositions
 
-[AGENT] This is the current interpretation of the repaired interface, based on the independently released Round 2 architecture and the generated contract. It supersedes the current-use interpretation of affected R09–R12/R14 descriptions in the accepted WI-074 record. It does not rewrite that historical record or upgrade an inherited decision into an owner-originated requirement. Final integrated acceptance remains coordinator-owned.
+[AGENT] This is the current interpretation of the repaired interface, based on the independently released Round 2 architecture and the generated contract. It supersedes the current-use interpretation of affected R09–R12/R14 descriptions in the accepted WI-074 record. It does not rewrite that historical record or upgrade an inherited decision into an owner-originated requirement. Final integrated acceptance is PASS at checkpoint fce788412fa53384688642dbc7deee9ee66431f2; see the goal answer and evidence/round2/final-review.md.
 
 [INHERITED: WI-074 residual-dispositions.md] The prior physical assumptions and scientific limits remain unless this document identifies a specific implemented replacement. A direct consumer proves that an input reaches a calculation; it does not prove empirical validity, equipment qualification or adequate capacity.
 
@@ -112,4 +112,4 @@
 
 ## Acceptance boundary
 
-[AGENT] This census establishes complete current input-to-consumer coverage and records the revised semantic limits. The targeted propagation and public-mask tests provide bounded native evidence. Full regression results, frozen-package operation, complete native/oracle verification and final independent integrated acceptance belong to the coordinator's final evidence. This document does not mark the goal complete or claim that every plant screen passes.
+[AGENT] This census establishes complete current input-to-consumer coverage and records the revised semantic limits. The targeted propagation and public-mask tests provide bounded native evidence. Full regression accounting and complete native/oracle verification are retained in evidence/validation-summary.json; all ten committed native integration gates pass in integration/seam/integration_return.json. Final independent integrated acceptance is PASS in the goal evidence/round2/final-review.md. This document does not mark the goal complete or claim that every plant screen passes.
