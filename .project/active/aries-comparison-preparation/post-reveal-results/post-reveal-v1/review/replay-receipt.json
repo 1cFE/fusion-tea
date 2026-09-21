@@ -1,0 +1,89 @@
+{
+  "all_independent_prediction_credit_false": true,
+  "all_ratios_null": true,
+  "archive_members": 588,
+  "archive_sha256": "d65d6ea44517dba3d9012d06706e74fe3006247e2809f6b4bdd64edd85ab5a7a",
+  "blocked_accounting_count": 14,
+  "constraints_complete": false,
+  "current_predicates_exact": true,
+  "database_case_count": 1,
+  "database_copy_sha256": "2e3d380f3d160a83c5c604be2f6f46e3f478eeac513758263f3ed1f988ca70e1",
+  "database_proposal_count": 1,
+  "database_tables": [
+    "compatibility",
+    "proposals",
+    "attempt_transitions",
+    "sqlite_sequence",
+    "cases",
+    "runner_lease"
+  ],
+  "database_transition_states": [
+    "started",
+    "execution_failed"
+  ],
+  "execution_state": "execution_failed",
+  "export_reproduced_byte_identically": true,
+  "export_rows": 276,
+  "export_status_counts": {
+    "execution_not_completed": 276
+  },
+  "first_attempt": {
+    "attempt": "first-forward",
+    "pointer_sha256": "8a27f20df4817abf8d6a859e5bdd51e3a6e6ccf642b36fe83556872d987b7825",
+    "schema_version": "first-attempt/v1"
+  },
+  "held_inputs": 701,
+  "identity_sha256": "a63cf7ae1d497f0f74375ebcbf693f26d8cd1a9cc8c2c3c7d9407f64f8765dff",
+  "input_evidence_identity_exact": true,
+  "new_physical_evaluations": 0,
+  "observations_sha256": "e4305c2dafef62f5e0d0151dd11eb3c82b3d530ba50fe108632b5c9fd30a958e",
+  "original_artifact_hashes": {
+    "model-export.json": "3b874cf6963b1a50a12641195939fb23b6b7d6eaecd9bf5173b2af9f63881500",
+    "native-case.json": "b5e12876250be32f552d8d693df81ae76a75984b8fccbc210b7fdef9ac8d519a",
+    "native/adapter-preparation-v1.db": "2e3d380f3d160a83c5c604be2f6f46e3f478eeac513758263f3ed1f988ca70e1",
+    "native/adapter-preparation-v1.db-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "native/adapter-preparation-v1.db-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "receipt.json": "f44138458b45b2603afffd9fa44e394c19265374c06d91453cc4ec0d069c72fb",
+    "request.raw.json": "d5cdb3751ceb00ed52851ce5f232ada5f0f2dbf1b97adf9157d5dfb530a05560",
+    "result.json": "8a0e2385b3305ef746d78f9feac262c24b62e46010ca9ed71b81d9eeb98751de",
+    "selection.json": "31907140d87bfe39bcdfd969b5210f2fdd64251275dcb62cb96d21b4f71f382d"
+  },
+  "original_attempt_unchanged": true,
+  "original_attempt_unchanged_after_report": true,
+  "original_receipt_verified": true,
+  "original_report_receipt_verified": true,
+  "original_report_sha256": "0e0efc96b9343c8139cd42645a9c612197aa198d6e4ffb3dfb81f7d32deaf551",
+  "output_count": 0,
+  "physical_attempt_directories": [
+    "first-forward"
+  ],
+  "pinned_files_verified": 587,
+  "replayed_report_sha256": "30cdf8f54dde3d90fd4d20732306df25d5047312d8c585032bc9fee821f2b9fc",
+  "report_differences": {
+    "first_report_attempt": {
+      "original": {
+        "attempt": "first-forward",
+        "pointer_sha256": "8a27f20df4817abf8d6a859e5bdd51e3a6e6ccf642b36fe83556872d987b7825",
+        "schema_version": "first-attempt/v1"
+      },
+      "replay": {
+        "attempt": "independent-replay",
+        "pointer_sha256": "896598ca83a6fa3676371a9f00ea2ae8d01cecae7c7470f35a46d76ac47631e7",
+        "schema_version": "first-attempt/v1"
+      }
+    }
+  },
+  "report_replay": "passed",
+  "report_status_counts": {
+    "blocked": 276
+  },
+  "request_sha256": "d5cdb3751ceb00ed52851ce5f232ada5f0f2dbf1b97adf9157d5dfb530a05560",
+  "required_predicate_count": 67,
+  "restored_root": "/tmp/aries-independent-replay-vo908i0m",
+  "returned_predicate_count": 0,
+  "review_disposition": "PASS",
+  "schema_version": "independent-replay-custody/v1",
+  "scientific_comparison_exact": true,
+  "selection_reproduced": true,
+  "supplied_inputs": 3
+}

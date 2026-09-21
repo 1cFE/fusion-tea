@@ -1,0 +1,64 @@
+{
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "interpreter": "/home/reid/1cfe/fusion-tea/.venv/bin/python",
+  "resolved_interpreter": "/usr/bin/python3.12",
+  "interpreter_sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+  "packages": {
+    "sysml-codegen": {
+      "version": "0.1.1",
+      "metadata_hashes": {
+        "sysml_codegen-0.1.1.dist-info/METADATA": "a1c53c2720e20a6314c79065c09e439e8de07adb5bdb8fd770b68e15cfca44c2",
+        "sysml_codegen-0.1.1.dist-info/RECORD": "3ff7612dcaa47fa398e8514c5ba1ec4aa192551ec763896d161e8fb1eb50bf9a",
+        "sysml_codegen-0.1.1.dist-info/direct_url.json": "318181aec8cee826cfc6dc69f9502f6662fb08ed842d9d405740d5264409f9fe"
+      }
+    },
+    "agentic-mbse": {
+      "version": "0.1.3",
+      "metadata_hashes": {
+        "agentic_mbse-0.1.3.dist-info/METADATA": "663c6c1922c020680a57e702782bc5f44159947dfb358b50c3604c21d5f3adc9",
+        "agentic_mbse-0.1.3.dist-info/RECORD": "f3109f7dfba8110b01ad6bbb0d031acaab9a79599550038ce85149347e73c798",
+        "agentic_mbse-0.1.3.dist-info/direct_url.json": "a010e29bbe796cf0b687923e3d13a442011fc7b69281464f72d6fc4e5730a7d7"
+      }
+    },
+    "syside": {
+      "version": "0.8.4",
+      "metadata_hashes": {
+        "syside-0.8.4.dist-info/METADATA": "1e1602df630494896a049f66db4de27744bfb105724ff7dbed4c7dc07f81bbf4",
+        "syside-0.8.4.dist-info/RECORD": "c3c7a587ec4f826e5b46d5d9e283ebcdb0ef8a28d76730d1a06be98a679bbc87"
+      }
+    },
+    "costingfe": {
+      "version": "0.1.0",
+      "metadata_hashes": {
+        "costingfe-0.1.0.dist-info/METADATA": "472399128b2c65cc58db07a202a9cf9788ed75c43a20cd24536e2cdeaa7c8857",
+        "costingfe-0.1.0.dist-info/RECORD": "534b1d0f55925af9bd7ac3c09bc56f2493a80fe83963cb5dd7514ca164bf1610",
+        "costingfe-0.1.0.dist-info/direct_url.json": "a941f6fe31bb766cc6e48f3e881710d4ff30ca6e73da910d8beaed7fb676ea2b"
+      }
+    },
+    "pydantic": {
+      "version": "2.12.5",
+      "metadata_hashes": {
+        "pydantic-2.12.5.dist-info/METADATA": "a3ba23e895191fed69b8323cbcbcdc82984ca0b6a3cdc62c48a2341886a9c08d",
+        "pydantic-2.12.5.dist-info/RECORD": "2ab80676388a6e636b16d377f7754d674e3418ce28dca0416ab80c34fa7d7ace"
+      }
+    },
+    "numpy": {
+      "version": "2.4.4",
+      "metadata_hashes": {
+        "numpy-2.4.4.dist-info/METADATA": "8f9e04338ffa930868a2d157ce44f6e4cb7ac524b968fb13d04187a6ac575282",
+        "numpy-2.4.4.dist-info/RECORD": "d1262d5841fe96f01d050f6e861d8b7f1b87ab9b4686b8f07517eca611276363"
+      }
+    },
+    "scipy": {
+      "version": "1.17.1",
+      "metadata_hashes": {
+        "scipy-1.17.1.dist-info/METADATA": "7cdd5544eb610b86e000b6f0a21e86f84423faf0aacbb99990f3d41f25e1f314",
+        "scipy-1.17.1.dist-info/RECORD": "bebd5a00dcf3d8fd96b1f5d18d985564b891d893de7584d65ccea6902888a7a8"
+      }
+    },
+    "pint": {
+      "installed_under_this_name": false
+    }
+  },
+  "scope": "Interpreter and installed distribution metadata identities, not a complete runtime read audit; license/environment contents omitted."
+}
