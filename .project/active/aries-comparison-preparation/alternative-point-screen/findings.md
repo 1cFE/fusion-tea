@@ -13,3 +13,7 @@ This continues final-assessment findings F022–F027 and the [LCOE follow-up](..
 ## F030 — Financial accounting can be tested separately, but needs an explicit basis mapping
 
 [AGENT] The published total-capital multiplier already includes construction financing; the model DCF expects overnight capital and applies its own construction-interest factor. A direct capital injection would misidentify those bases. A finance-only reconciliation is possible without coil data, but would test accounting under supplied inputs rather than predict an ARIES plant. [Economic screen](economics-screen.md).
+
+## Independent verification and completion
+
+[AGENT] Independent review accepted the bounded screen with no remaining material findings. Source images, fixed geometry rules and per-point classifications were checked. Domain and combined JSON/CSV replay match exactly; all 1,350 protected files are unchanged. An interim Table X label error was corrected by consuming the source inventory directly before final review. The recommendation is to report the coverage limitation rather than run another unsupported full-plant point. [Review](evidence/review.md).

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "scope": "Bounded Lyon Tables VII, IX, X operating-point screen; repeated reference rows retained. Table VIII is a component recipe. Not exhaustive ARIES literature or plot digitization.",
   "source_sha256": "d49c15ae8e47d8ab3c7df985a523c94bc003c0ffc19107ff8f95ff4343ec6ddf",
-  "domain_sha256": "5463b42e07260c83d7c3af4c9d950ca23d31153d1473f1a511290a7523264d3e",
+  "domain_sha256": "48fdb4d08750d267be9ea0c32fcd239e7fa0cbf0d3b0a0c7520225913a1f77bb",
   "table_entries": 17,
   "unique_design_count": "not claimed; overlapping reference and alternative entries retained",
   "supported_whole_plant_candidates": 0,
