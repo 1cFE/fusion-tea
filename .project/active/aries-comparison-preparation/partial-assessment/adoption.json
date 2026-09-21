@@ -1,0 +1,27 @@
+{
+  "archive_sha256": "d65d6ea44517dba3d9012d06706e74fe3006247e2809f6b4bdd64edd85ab5a7a",
+  "authority": "AGENT implementation decision ratified by owner instruction to proceed with the proposed next steps, 2026-09-20",
+  "files": {
+    ".project/active/aries-comparison-preparation/partial-assessment/tools/assess.py": "9ad0ec38d5f02592b1544caf6c4e2e8498952bf3ecd9493a225a4fa61fdabbbd",
+    ".project/active/aries-comparison-preparation/partial-assessment/tools/definedness.py": "4c5fe6deba9b19e92ce757052c4cd4967ce556973b957b934b34dfdfecc1591d",
+    ".project/active/aries-comparison-preparation/partial-assessment/tools/qualification.py": "9cb57440b5c9bb8ae49e5c222158ba676ad95e99926026f234abff5142799b31",
+    ".project/active/aries-comparison-preparation/partial-assessment/tools/replay.py": "ce43b6be75daf100ca6da28593004e46214d52e3a4dc2c3e6e3eeaa2fbec5b2f",
+    ".project/active/aries-comparison-preparation/partial-assessment/tools/reporting.py": "931fef4e9ebb6ef4ac7b6ec08bf38152a2af9034940201fbf33537aef1c515e2",
+    ".project/active/aries-comparison-preparation/partial-assessment/tools/test_qualification.py": "2add52f5d7a4d9a8bb69e81b35851e41dfc348d556995109e50afa8abc75cfd1",
+    ".project/active/aries-comparison-preparation/partial-assessment/tools/test_reporting.py": "60e020741c5eb33c387942e5a8594e64d81f4ee8d967ea1d5b7ccf32c6c53902",
+    ".project/active/aries-comparison-preparation/partial-assessment/tools/test_runner.py": "823b33f86e266b4b04ba57f70de1e189eac14183f40f17f0c1d223a45a19d69d",
+    ".project/active/aries-comparison-preparation/post-reveal-investigation/failure-propagation/implementation-identity.json": "9e06f8df1ddb359debfa65a96debb95f5440a72fc74c2c6f91c3c3f79d1ba4d4",
+    ".project/active/aries-comparison-preparation/post-reveal-investigation/failure-propagation/implementation-review.md": "9b90e8121aa9e3d5057c38a2eedef730a14fde57c3efe909b43479373b62ad70",
+    ".project/active/aries-comparison-preparation/post-reveal-investigation/field-audit/audit.md": "af5bd7dcd1821eb36ffa6b285486b34dca3a2f96cc9813285f1022fe22937da9",
+    ".project/active/aries-comparison-preparation/post-reveal-investigation/source-review/field-audit-review.md": "9dccb837aa6f13a4a1df6ca54928381d28cf6f663636fe6366073a8b5eb93e7a",
+    ".project/active/aries-comparison-preparation/post-reveal-preparation/package/post-reveal-v1.tar.gz": "d65d6ea44517dba3d9012d06706e74fe3006247e2809f6b4bdd64edd85ab5a7a",
+    ".project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/attempts/first-forward/receipt.json": "f44138458b45b2603afffd9fa44e394c19265374c06d91453cc4ec0d069c72fb",
+    ".project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/attempts/first-forward/request.raw.json": "d5cdb3751ceb00ed52851ce5f232ada5f0f2dbf1b97adf9157d5dfb530a05560",
+    ".project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/attempts/first-forward/result.json": "8a0e2385b3305ef746d78f9feac262c24b62e46010ca9ed71b81d9eeb98751de",
+    ".project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/attempts/first-forward/selection.json": "31907140d87bfe39bcdfd969b5210f2fdd64251275dcb62cb96d21b4f71f382d",
+    ".project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/observations.json": "e4305c2dafef62f5e0d0151dd11eb3c82b3d530ba50fe108632b5c9fd30a958e"
+  },
+  "native_source_digest": "a758517d400f32a49318119f9b832df5e97f3bb417c0a8fbeb900cdfb7b48ba7",
+  "schema_version": "partial-diagnostic-adoption/v1",
+  "scope": "Dedicated partial-assessment runner only; ordinary/frozen comparison and shared runtime unchanged"
+}

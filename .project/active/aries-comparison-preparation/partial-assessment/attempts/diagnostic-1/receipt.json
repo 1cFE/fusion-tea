@@ -1,0 +1,14 @@
+{
+  "adoption_sha256": "520cb2fbfdcdb9c8681bc8a07f0387ef4ba498e33d932609abcfb732ad141170",
+  "artifacts": {
+    "execution-started.json": "ce2e074c0fd5c1631b6cbb648d3e3697f29fea5538b4257db5fbfb41f626dbcd",
+    "field-qualification.json": "3677dfe3878e327def2fd226589545f33f4cba1c1f5483344927efdc6648ba6c",
+    "model-definedness.json": "7563803d7aa9dbaa082c081f24ab6df4f56c29e965ec16f80dd4db098584f860",
+    "native-diagnostic.json": "fb6a8ce10de2e8ddb23d14d1c176cf0101ee243fdd4ef3dbd47b8eae096e2239",
+    "report.json": "25a779df33560e33171f61b1c5fe598c78fba5af8b8b7d1db9851a8af0d0d529",
+    "request.raw.json": "d5cdb3751ceb00ed52851ce5f232ada5f0f2dbf1b97adf9157d5dfb530a05560",
+    "reservation.json": "e10c1956ab6c2feff9ed51afcb70678266f97927e629f699136422b6328c7312",
+    "result.json": "8c53f482a268a4a5ba539c87c45491d0f276fa3b41a3c71517e77e0220f0add3",
+    "selection.json": "31907140d87bfe39bcdfd969b5210f2fdd64251275dcb62cb96d21b4f71f382d"
+  }
+}

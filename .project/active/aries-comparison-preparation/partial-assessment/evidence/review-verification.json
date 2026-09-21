@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "physical_evaluations": 0,
+  "preserved_files": 876,
+  "exact_effective_inputs": 704,
+  "exact_manifest_rows": 276,
+  "exact_catalog_predicates": 67,
+  "supported_predictions": 0,
+  "undefined_or_unknown_diagnostic_values_suppressed": true,
+  "native_violations_with_observed_defined_in_zero": [
+    "stellarator_09__stellaris__helium_electric_capacity_ok__842a956a27b809da",
+    "stellarator_09__stellaris__helium_flow_capacity_ok__de4eed99bc4bea72",
+    "stellarator_09__stellaris__helium_pressure_rise_capacity_ok__7d12d01bc94dde7a",
+    "stellarator_09__stellaris__helium_pumping_capacity_ok__9e3c5d06ca11e640",
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4"
+  ],
+  "adoption_sha256": "520cb2fbfdcdb9c8681bc8a07f0387ef4ba498e33d932609abcfb732ad141170",
+  "receipt_sha256": "a588bdb2f3ff7e96c2be7108b02ab9813f50e7a3fdcef34aff6e737e13eca932"
+}

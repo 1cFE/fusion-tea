@@ -1,0 +1,800 @@
+{
+  "counts": {
+    "native_satisfied_without_engineering_acceptance": 50,
+    "not_evaluable_under_model_conditions": 6,
+    "strict_boundary_violation_requires_numerical_review": 1,
+    "unavailable": 1,
+    "violated_field_unqualified": 6,
+    "violated_unaffected_by_field_finding": 3
+  },
+  "predicates": {
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "beta_in": 0.005725630606461091,
+        "beta_limit_in": 0.05
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "p_aux_required_in": 68.3114045904749
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__cold_stage_capacity_ok__93eb65dcc5b55e0b": {
+      "engineering_acceptance": false,
+      "field_applicability": "unaffected_by_field_finding",
+      "interpretation": "violated_unaffected_by_field_finding",
+      "native_status": "violated",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": -649.4681115234926
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "violated_field_unqualified",
+      "native_status": "violated",
+      "observed": {
+        "eps_cond": 0.004926587301587302,
+        "eps_cond_allow_in": 0.004
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__condensate_electric_capacity_ok__a5ca7c5129553d1f": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.7115035405506716
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__condensate_flow_capacity_ok__252eeccf9b929ade": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 677.0605548117596
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__condensate_pressure_rise_capacity_ok__d996b8dad5b58894": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.0
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__condenser_rejection_capacity_ok__b5d2e6443913eb29": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 1581.545176159758
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__cooling_water_heat_direction__6719109cbd7ec328": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "enabled_in": 1.0,
+        "gap_in": 7.0
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "domain_product_in": 15552.0
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__direct_electric_capacity_ok__5acaaed766dc1371": {
+      "engineering_acceptance": false,
+      "field_applicability": "unaffected_by_field_finding",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.0
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "q_target_limit_in": 10.0,
+        "q_target_peak_in": 3.460637972162881
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__electric_gross_capacity_ok__80f1c3ed362e90b1": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 937.2606691618807
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__facility_capacity_ok__8acbe7a714e6a4d9": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "margin_in": 0.0
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__facility_geometry_ok__e2729a4ee0257d98": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "violated_field_unqualified",
+      "native_status": "violated",
+      "observed": {
+        "margin_in": -0.8000000000000007
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__facility_initial_ready__d3a5b04c428ef75f": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "margin_in": 16.00000000000005
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__facility_material_capacity_ok__b02f74ca2b907a86": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "margin_in": 277.0806759310599
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__facility_occupancy_ok__2c505953d2466dad": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "strict_boundary_violation_requires_numerical_review",
+      "native_status": "violated",
+      "observed": {
+        "margin_in": -4.547473508864641e-13
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__facility_outage_ok__9b00e5bd8ea45722": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "margin_in": 33.0625
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__facility_parcel_ok__6c9b12b61636c539": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "margin_in": 0.0
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__facility_replacement_ready__00706bc8dbdf6938": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "margin_in": 54.0
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__facility_routes_ok__a3dca4061c7bcc9b": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "margin_in": 0.0
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__feedwater_electric_capacity_ok__2274a605654bb912": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 6.745845703524497
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__feedwater_flow_capacity_ok__3065124bba3fb314": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 851.6588522084295
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__feedwater_pressure_rise_capacity_ok__2e12db90b09ba458": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.0
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__fuel_processing_capacity_ok__ddb8525b2bda8f0a": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "not_evaluable_under_model_conditions",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.00011628164550891941
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "undefined"
+    },
+    "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": {
+      "engineering_acceptance": false,
+      "field_applicability": "unaffected_by_field_finding",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "efficiency": 1.0
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": {
+      "engineering_acceptance": false,
+      "field_applicability": "unaffected_by_field_finding",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "efficiency": 1.0
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": {
+      "engineering_acceptance": false,
+      "field_applicability": "unaffected_by_field_finding",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "efficiency": 0.5
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": {
+      "engineering_acceptance": false,
+      "field_applicability": "unaffected_by_field_finding",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "efficiency": 0.5
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__helium_electric_capacity_ok__842a956a27b809da": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "not_evaluable_under_model_conditions",
+      "native_status": "violated",
+      "observed": {
+        "defined_in": 0.0,
+        "margin_in": 6.169758089435823
+      },
+      "observed_defined_in": 0.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__helium_flow_capacity_ok__de4eed99bc4bea72": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "not_evaluable_under_model_conditions",
+      "native_status": "violated",
+      "observed": {
+        "defined_in": 0.0,
+        "margin_in": 172.6351786144917
+      },
+      "observed_defined_in": 0.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__helium_pressure_rise_capacity_ok__7d12d01bc94dde7a": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "not_evaluable_under_model_conditions",
+      "native_status": "violated",
+      "observed": {
+        "defined_in": 0.0,
+        "margin_in": 282449.00982747634
+      },
+      "observed_defined_in": 0.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__helium_pumping_capacity_ok__9e3c5d06ca11e640": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "not_evaluable_under_model_conditions",
+      "native_status": "violated",
+      "observed": {
+        "defined_in": 0.0,
+        "margin_in": 6.169758089435823
+      },
+      "observed_defined_in": 0.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__hp_flow_capacity_ok__f0b30eeb1c674ce4": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 851.6588522084295
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__hp_shaft_capacity_ok__a19eda5dff14e4c2": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 389.5851859872151
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__ihx_capacity_ok__8118479d5c637061": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_m2_in": 8581.087017924921
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__intercept_stage_capacity_ok__9025ac10e1f2a085": {
+      "engineering_acceptance": false,
+      "field_applicability": "unaffected_by_field_finding",
+      "interpretation": "violated_unaffected_by_field_finding",
+      "native_status": "violated",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": -375.73569800030964
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "mdot_loop_in": 52.44259916328607,
+        "mdot_loop_rated_in": 225.07777777777778
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "p_loop_margin_in": 7982129.11336371
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__lp_flow_capacity_ok__3e0e231ed626fd7d": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 677.0605548117596
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__lp_shaft_capacity_ok__70b40123e64ccdf5": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 576.4637412049935
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__magnet_pf_electric_capacity_ok__8a8fdad77b158738": {
+      "engineering_acceptance": false,
+      "field_applicability": "unaffected_by_field_finding",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.0
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__magnet_tf_electric_capacity_ok__23bdb2b2b84fef80": {
+      "engineering_acceptance": false,
+      "field_applicability": "unaffected_by_field_finding",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.0
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__main_UA_capacity_ok__86518fe643367961": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 31.555292715758313
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "defined"
+    },
+    "stellarator_09__stellaris__matched_main_heat_direction__0768c1b90a9f4f87": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "enabled_in": 1.0,
+        "gap_in": 20.0
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__matched_reheat_heat_direction__31add2a272bf6444": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "enabled_in": 1.0,
+        "gap_in": 20.0
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "net_electric": 97.21352913262642
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "violated_field_unqualified",
+      "native_status": "violated",
+      "observed": {
+        "B_max_in": 24.9,
+        "B_peak": 56.61785714285713
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "violated_field_unqualified",
+      "native_status": "violated",
+      "observed": {
+        "rec_frac": 0.6561703743444738,
+        "threshold": 0.5
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__reference_conductor_current_ok__3cf239a7cdc0f2f0": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "unavailable",
+      "native_status": "unavailable",
+      "observed": {},
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__reheat_UA_capacity_ok__e377a2da71f404d0": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 8.59420417352489
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "defined"
+    },
+    "stellarator_09__stellaris__represented_coolant_fill_ok__e6341404f9f2ddda": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "helium_margin_in": 1628.179269091299,
+        "salt_margin_in": 146250.089308084
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__salt_electric_capacity_ok__d353ed9e85c5a75b": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.1639280773395152
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__salt_flow_capacity_ok__76ca6d6f7320b2d1": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 297.75396058899975
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__salt_head_capacity_ok__7996e19c3ac43d0d": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.0
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__salt_shaft_capacity_ok__9a14c3c81e97c1d0": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.15573167347253944
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "violated_field_unqualified",
+      "native_status": "violated",
+      "observed": {
+        "p_aux_installed_in": 50.0,
+        "p_aux_required_in": 68.3114045904749
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "not_evaluable_under_model_conditions",
+      "native_status": "violated",
+      "observed": {
+        "defined_in": 0.0,
+        "numerical_margin_in": 0.0
+      },
+      "observed_defined_in": 0.0,
+      "propagated_guard_status": "undefined"
+    },
+    "stellarator_09__stellaris__turbine_gross_capacity_ok__1668a7a2950bf2c4": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 937.2606691618807
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "wall_load": 1.1442161759933647,
+        "wall_load_limit_in": 4.05
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__water_electric_capacity_ok__da93435fdb1e0e2d": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 10.005026859363484
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__water_flow_capacity_ok__a2c7af45d6a66edb": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 38768.69477913584
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__water_head_capacity_ok__7a7ee38c249ed7b7": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.0
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__water_rejection_capacity_ok__c6f88b0bf20410d2": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "native_satisfied_without_engineering_acceptance",
+      "native_status": "satisfied",
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 1620.711328511653
+      },
+      "observed_defined_in": 1.0,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__wp_fit_ok__a25ca6a0161f6339": {
+      "engineering_acceptance": false,
+      "field_applicability": "unaffected_by_field_finding",
+      "interpretation": "violated_unaffected_by_field_finding",
+      "native_status": "violated",
+      "observed": {
+        "minimum_margin_in": -0.11999999999999994
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    },
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": {
+      "engineering_acceptance": false,
+      "field_applicability": "unknown_unqualified",
+      "interpretation": "violated_field_unqualified",
+      "native_status": "violated",
+      "observed": {
+        "sigma_allow_in": 800000000.0,
+        "sigma_in": 1477976190.4761906
+      },
+      "observed_defined_in": null,
+      "propagated_guard_status": "no_guard_in_scope"
+    }
+  },
+  "schema_version": "predicate-interpretation/v1",
+  "scope": "Supplement to unchanged diagnostic-1. Native observed defined_in is considered in addition to the six propagated guard families. Strict occupancy-boundary violation is retained; no numerical tolerance is introduced.",
+  "script_sha256": "b89abd8a8646bb647abef2157377fe9e9293da1a0f94ef1935f815017201c749",
+  "source_report_sha256": "25a779df33560e33171f61b1c5fe598c78fba5af8b8b7d1db9851a8af0d0d529"
+}
