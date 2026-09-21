@@ -14,8 +14,8 @@
 - [x] Establish scope, assignments and preservation baseline; commit plan.
 - [x] Complete structural correspondence and record findings; commit evidence.
 - [x] Complete quantities and cost review, retain machine-readable dispositions; commit evidence.
-- [ ] Assemble a complete row-disposition register and readable assessment; independently review and resolve findings.
-- [ ] Verify preservation, update status/log, and commit final reviewed assessment.
+- [x] Assemble a complete row-disposition register and readable assessment; independently review and resolve findings.
+- [x] Verify preservation, update status/log, and commit final reviewed assessment.
 
 ## Responsibilities
 
@@ -24,3 +24,7 @@ The structural agent owns structure.md and structure-* evidence. The cost agent 
 ## Progress
 
 Structural and quantity reviews are complete and submitted for independent review. Quantity review checked all 35 calculated field-independent derived rows and six frozen model definitions. Structural review checked all 52 frozen model files and four source images. No plant execution occurred.
+
+## Completion
+
+Independent review passed for reporting completion, with no unresolved material findings. All 276 original rows are preserved. All 70 quantity/cost dispositions were reviewed; 52 frozen model files and 1,322 protected files are unchanged. Quantity/combined reporting replay is exact, and cost outputs replay byte-for-byte. The comparison itself does not pass, and no supported LCOE is established. Checkpoints: plan 2b8341ce; structural/quantities 85c1b470; costs 5f8658b6; final report checkpoint follows this record. See [review](evidence/review.md) and [report](report.md).

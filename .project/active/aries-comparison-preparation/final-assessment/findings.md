@@ -25,3 +25,11 @@ This continues [F019–F021](../geometry-acquisition/findings.md). Findings are 
 ## F026 — Selected purchases and source numbering affect apparent agreement
 
 [AGENT] Turbine and heat-rejection amounts are supplied purchases; several other accounts price selected equipment classes. They do not validate achieved plant output. Source papers also number heat rejection and special materials differently, so an account-number-only join can compare the wrong equipment. The semantic crosswalk preserves each paper's actual meaning. [Frozen producer evidence](evidence/cost-frozen-excerpts.json), [crosswalk](structure.md).
+
+## F027 — The original comparison can be concluded without another plant run
+
+[AGENT] The reviewed evidence supports a structural failure from missing ARIES heat-removal correspondence, a qualitative radial-order pass, and unresolved full account equivalence. Numerical accuracy remains unestablished, with descriptive geometry and price differences preserved. The original full comparison therefore does not pass. The result does not require changing the field, selecting new equipment or discarding unavailable rows. [Integrated report](report.md), [all 276 rows](evidence/comparison-rows.csv).
+
+## Completion and verification
+
+[AGENT] Fresh independent review accepts the completed reporting scope with no material findings outstanding. Exact replay preserves all 276 original rows; all 52 frozen model files and 1,322 protected files remain unchanged. This is acceptance of the assessment's accuracy and completeness within its declared scope, not an engineering or numerical-comparison pass. [Review and pinned evidence](evidence/review.md). Checkpoints: plan 2b8341ce, structural/quantities 85c1b470, costs 5f8658b6; final reviewed reporting is committed separately.
