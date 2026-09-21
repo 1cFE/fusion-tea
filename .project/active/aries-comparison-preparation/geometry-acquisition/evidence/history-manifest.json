@@ -1,0 +1,40 @@
+{
+  "repository": "PedroFranciscoGil/simsopt",
+  "branch": "auglag_coils",
+  "branch_sha": "a79006b0bc1e6df8ab48de284e3457d39a49b995",
+  "capture_date_utc": "2026-09-21",
+  "scope": "Exact-path commits API queries starting at the pinned author branch SHA. No alternate refs, renamed paths, unreachable commits or other repositories inspected.",
+  "requests": [
+    {
+      "url": "https://api.github.com/repos/PedroFranciscoGil/simsopt/branches/auglag_coils",
+      "response_body": "history-branch.json",
+      "body_bytes": 4544,
+      "body_sha256": "25ca939fab8bbb679e67f6017d7bdd0e21d82f91a5730a9c1b64f349b23732ba",
+      "response_headers": "history-branch.headers",
+      "headers_sha256": "6895ac83f7bf057287a5e04f8d72bc4d323e540b055f7bba331d01fe355ece36",
+      "http_status": 200,
+      "pagination_link_present": false
+    },
+    {
+      "url": "https://api.github.com/repos/PedroFranciscoGil/simsopt/commits?sha=a79006b0bc1e6df8ab48de284e3457d39a49b995&path=tests%2Ftest_files%2Finput.stellaris&per_page=100&page=1",
+      "response_body": "history-input.stellaris.json",
+      "body_bytes": 5,
+      "body_sha256": "2ba33ca0557f1bb5b7ba88d67f9d0093c7185a36ec51fe2b7bd9372d3e001d6d",
+      "response_headers": "history-input.stellaris.headers",
+      "headers_sha256": "c69a647051efa5855f169c51329103781635e9277668cc9b2fa54e58287e1c78",
+      "http_status": 200,
+      "pagination_link_present": false
+    },
+    {
+      "url": "https://api.github.com/repos/PedroFranciscoGil/simsopt/commits?sha=a79006b0bc1e6df8ab48de284e3457d39a49b995&path=tests%2Ftest_files%2Fcoils.stellaris&per_page=100&page=1",
+      "response_body": "history-coils.stellaris.json",
+      "body_bytes": 5,
+      "body_sha256": "2ba33ca0557f1bb5b7ba88d67f9d0093c7185a36ec51fe2b7bd9372d3e001d6d",
+      "response_headers": "history-coils.stellaris.headers",
+      "headers_sha256": "a0789e9f7e6867f26a1b0411e34546b2b19a922f96c71d670378c38dc35da47f",
+      "http_status": 200,
+      "pagination_link_present": false
+    }
+  ],
+  "result": "Both exact-path queries returned empty arrays; no geometry recovered."
+}

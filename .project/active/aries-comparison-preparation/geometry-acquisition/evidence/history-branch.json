@@ -1,0 +1,103 @@
+{
+  "name": "auglag_coils",
+  "commit": {
+    "sha": "a79006b0bc1e6df8ab48de284e3457d39a49b995",
+    "node_id": "C_kwDOOslgVdoAKGE3OTAwNmIwYmMxZTZkZjhhYjQ4ZGUyODRlMzQ1N2QzOWE0OWI5OTU",
+    "commit": {
+      "author": {
+        "name": "Alan Kaptanoglu",
+        "email": "alanakaptanoglu@gmail.com",
+        "date": "2026-02-20T21:41:17Z"
+      },
+      "committer": {
+        "name": "Alan Kaptanoglu",
+        "email": "alanakaptanoglu@gmail.com",
+        "date": "2026-02-20T21:41:17Z"
+      },
+      "message": "Remove constrained line search, do linting, merge with latest main changes.",
+      "tree": {
+        "sha": "54379ab063a89869fd746c7a257fe33eae04c01b",
+        "url": "https://api.github.com/repos/PedroFranciscoGil/simsopt/git/trees/54379ab063a89869fd746c7a257fe33eae04c01b"
+      },
+      "url": "https://api.github.com/repos/PedroFranciscoGil/simsopt/git/commits/a79006b0bc1e6df8ab48de284e3457d39a49b995",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/PedroFranciscoGil/simsopt/commits/a79006b0bc1e6df8ab48de284e3457d39a49b995",
+    "html_url": "https://github.com/PedroFranciscoGil/simsopt/commit/a79006b0bc1e6df8ab48de284e3457d39a49b995",
+    "comments_url": "https://api.github.com/repos/PedroFranciscoGil/simsopt/commits/a79006b0bc1e6df8ab48de284e3457d39a49b995/comments",
+    "author": {
+      "login": "akaptano",
+      "id": 37751714,
+      "node_id": "MDQ6VXNlcjM3NzUxNzE0",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37751714?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/akaptano",
+      "html_url": "https://github.com/akaptano",
+      "followers_url": "https://api.github.com/users/akaptano/followers",
+      "following_url": "https://api.github.com/users/akaptano/following{/other_user}",
+      "gists_url": "https://api.github.com/users/akaptano/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/akaptano/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/akaptano/subscriptions",
+      "organizations_url": "https://api.github.com/users/akaptano/orgs",
+      "repos_url": "https://api.github.com/users/akaptano/repos",
+      "events_url": "https://api.github.com/users/akaptano/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/akaptano/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "akaptano",
+      "id": 37751714,
+      "node_id": "MDQ6VXNlcjM3NzUxNzE0",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37751714?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/akaptano",
+      "html_url": "https://github.com/akaptano",
+      "followers_url": "https://api.github.com/users/akaptano/followers",
+      "following_url": "https://api.github.com/users/akaptano/following{/other_user}",
+      "gists_url": "https://api.github.com/users/akaptano/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/akaptano/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/akaptano/subscriptions",
+      "organizations_url": "https://api.github.com/users/akaptano/orgs",
+      "repos_url": "https://api.github.com/users/akaptano/repos",
+      "events_url": "https://api.github.com/users/akaptano/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/akaptano/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "78f4ecc2c33c43b393b169d9eba0a703fd60be20",
+        "url": "https://api.github.com/repos/PedroFranciscoGil/simsopt/commits/78f4ecc2c33c43b393b169d9eba0a703fd60be20",
+        "html_url": "https://github.com/PedroFranciscoGil/simsopt/commit/78f4ecc2c33c43b393b169d9eba0a703fd60be20"
+      }
+    ]
+  },
+  "_links": {
+    "self": "https://api.github.com/repos/PedroFranciscoGil/simsopt/branches/auglag_coils",
+    "html": "https://github.com/PedroFranciscoGil/simsopt/tree/auglag_coils"
+  },
+  "protected": false,
+  "protection": {
+    "enabled": false,
+    "required_status_checks": {
+      "enforcement_level": "off",
+      "contexts": [
+
+      ],
+      "checks": [
+
+      ]
+    }
+  },
+  "protection_url": "https://api.github.com/repos/PedroFranciscoGil/simsopt/branches/auglag_coils/protection"
+}
