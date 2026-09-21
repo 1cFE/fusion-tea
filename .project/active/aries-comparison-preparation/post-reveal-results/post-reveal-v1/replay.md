@@ -1,0 +1,7 @@
+# Replay from retained evidence
+
+Restore `../../post-reveal-preparation/package/post-reveal-v1.tar.gz` into an empty directory after verifying its adopted SHA256 `d65d6ea44517dba3d9012d06706e74fe3006247e2809f6b4bdd64edd85ab5a7a`. Follow the adopted `package/reproduce.md` for the licensed Python 3.12 sealed environment. Credentials are external prerequisites and are not retained here.
+
+Run the restored adapter's `--verify` before using it. Reporting replay consumes the original retained attempt and observations; do not invoke `adapter.py --request` for replay. Original attempt/report receipts must be checked against retained bytes first. Export can be reproduced through the archived adapter's pure `export` function using the retained result, historical manifest and current model contract. Report replay uses restored `report.py`, original attempt, reviewed observations and a new verification store.
+
+The original extraction root was `/tmp/post-reveal-execution.OIh9Gv`; its files are reproducible from the adopted archive. The durable evidence root is `/home/reid/1cfe/fusion-tea/.project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1`. Detailed replay commands and independent results will be recorded after execution. Report comparisons must include all scientific rows, ratios, statuses, accounting, predicates and evidence identities. Absolute restoration/store paths and pointer identities may differ and must be disclosed.
