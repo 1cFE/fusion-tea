@@ -1,0 +1,32 @@
+{
+  "archive_sha256": "9dc3a17496a019635396c23a2f1e5c92e7f0798c511db6f4cb58a7fb18b309c0",
+  "identity_sha256": "162a9fc253efb99f4a9adb9018fb134206b9ee4538fb8073ff51963f72027c22",
+  "restore_root": "/tmp/post-reveal-v1-final-restore",
+  "execution_state": "completed",
+  "numeric_outputs": 1352,
+  "predicate_count": 67,
+  "violated": 6,
+  "report_state": "reported",
+  "report_rows": 276,
+  "constraints_complete": true,
+  "pytest": "7 passed in 0.45s; restored tools/test_tools.py -q -p no:cacheprovider",
+  "reference_request_executed": false,
+  "evidence": {
+    "restoration-evidence/attempts/baseline/model-export.json": "56b60ab639de65ed22319e0dcfc1ad520f5896e18f1c37c413ea5b2b5539e8df",
+    "restoration-evidence/attempts/baseline/native/adapter-preparation-v1.db": "02c87ea59be36505878c4ae2f6262e23bdbc74f79fa4d17abcf82b461eaa500f",
+    "restoration-evidence/attempts/baseline/native/adapter-preparation-v1.db-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "restoration-evidence/attempts/baseline/native/adapter-preparation-v1.db-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "restoration-evidence/attempts/baseline/native/artifacts/ea4fc6e16802ac1a1b99b492c4b538627c68ed8c499ac1dce3d73c694e304abe.json": "ea4fc6e16802ac1a1b99b492c4b538627c68ed8c499ac1dce3d73c694e304abe",
+    "restoration-evidence/attempts/baseline/native-case.json": "b7c37e4d5f8293dbd3ca7b17f2cf459c509e57ae7a30a2493a25bd3ddfda5a23",
+    "restoration-evidence/attempts/baseline/receipt.json": "f22d6c6c2b9b91b95054a16d3d381e8dd75820ed43dd0d0364951d1ef5b15fcf",
+    "restoration-evidence/attempts/baseline/request.raw.json": "f84507714536c76d3a439121757a2ef4e0af72cbde231fa7fbe573a40902324f",
+    "restoration-evidence/attempts/baseline/result.json": "7823845f023fb4406f3b3b7f3c42cc93eea809e9cd49079a8a319de863ccd8ef",
+    "restoration-evidence/attempts/baseline/selection.json": "8b437d3f7084cc963465d71d584693da9a5a61e2ba6af365eb7092a30621ded2",
+    "restoration-evidence/attempts/first-attempt.json": "09b952d93a606d6270009848bec17c683899b93809b111879193f110b8eef01a",
+    "restoration-evidence/native.log": "213978b29847851c28a56c7d92f72fd7c97ad52f69bb83c2e537cb109dc43ee0",
+    "restoration-evidence/reports/baseline/observations.raw.json": "5789d2b70b665b52690ee80e032469867677c72b78b9dd4774c8e422fe292195",
+    "restoration-evidence/reports/baseline/receipt.json": "d997a1cab3f6167871ad5935870f06ce612d9e1755c0f21d9aff264e9e960a4a",
+    "restoration-evidence/reports/baseline/report.json": "906be1d622a5674022163ac92e8d90a9d94d545d7f4df0fc1d64f581f1619ec0",
+    "restoration-evidence/reports/first-attempt.json": "09b952d93a606d6270009848bec17c683899b93809b111879193f110b8eef01a"
+  }
+}

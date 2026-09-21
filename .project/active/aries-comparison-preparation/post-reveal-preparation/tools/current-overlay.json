@@ -1,0 +1,41 @@
+{
+  "schema_version": "comparison-role-overlay/v1",
+  "authority": "AGENT explicit WI-075 supplied-mass migration; historical criteria unchanged",
+  "producer_overrides": {
+    "casing_mass": [
+      "stellarator_09__stellaris__magnet__casing__m_casing"
+    ],
+    "support_mass": [
+      "stellarator_09__stellaris__magnet__m_support"
+    ]
+  },
+  "policy": "current public input producers are supplied/held; numeric and predicate responses calculated; no independent credit",
+  "defined_when": {
+    "achieved_tbr": [
+      "stellarator_09__stellaris__blanket__breeding__defined_flag"
+    ],
+    "required_tbr": [
+      "stellarator_09__stellaris__fuel_cycle__inventory__defined_flag"
+    ],
+    "tbr_margin": [
+      "stellarator_09__stellaris__blanket__breeding__defined_flag",
+      "stellarator_09__stellaris__fuel_cycle__inventory__defined_flag"
+    ],
+    "fuel_handling": [
+      "stellarator_09__stellaris__fuel_cycle__processing_cost__defined_flag"
+    ],
+    "turbine__matched_cycle__main_UA_MW_K": [
+      "stellarator_09__stellaris__turbine__matched_cycle__main_UA_available"
+    ],
+    "turbine__matched_cycle__reheat_UA_MW_K": [
+      "stellarator_09__stellaris__turbine__matched_cycle__reheat_UA_available"
+    ]
+  },
+  "definedness_policy": "All named flags must be present and exactly 1/true; zero is undefined, missing/malformed is unknown. Preserve raw carriers; flags themselves remain reported diagnostics. This is model-defined availability, not broader empirical qualification.",
+  "references": [
+    "models/library/analyses/mfe_tritium_breeding.sysml",
+    "models/library/analyses/mfe_fuel_cycle.sysml",
+    "models/library/analyses/mfe_matched_steam_cycle.sysml",
+    "models/library/analyses/mfe_account_costs.sysml"
+  ]
+}

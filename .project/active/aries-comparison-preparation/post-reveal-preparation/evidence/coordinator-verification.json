@@ -1,0 +1,11 @@
+{
+  "archive_sha256": "d65d6ea44517dba3d9012d06706e74fe3006247e2809f6b4bdd64edd85ab5a7a",
+  "identity_sha256": "a63cf7ae1d497f0f74375ebcbf693f26d8cd1a9cc8c2c3c7d9407f64f8765dff",
+  "archive_members": 588,
+  "all_members_safe_regular_files": true,
+  "all_indexed_member_hashes_verified": true,
+  "live_mapping_request_and_tool_bytes_match_archive": true,
+  "reference_request_executed": false,
+  "preservation_receipt": "preservation-after.json",
+  "scope": "Coordinator archive and preservation checks; independent native restoration/review recorded separately."
+}

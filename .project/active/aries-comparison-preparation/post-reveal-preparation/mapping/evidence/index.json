@@ -1,0 +1,47 @@
+{
+  "commit": "829539f5eb7fde217d18318d1646a5e47103812c",
+  "files": [
+    {
+      "file": "lyon-p708.png",
+      "git_path": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/input-page-14.png",
+      "sha256": "2e2f25ee55f4537160fa5d5ec7906a7981f15ff6a584fa117c79357df2a9ada4",
+      "directly_reinspected_image": true
+    },
+    {
+      "file": "lyon-p701.png",
+      "git_path": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/input-page-07.png",
+      "sha256": "a4bed69ae431d6f2192dd0aa3821f186092d434c439c5e1096f520c5b19f7b01",
+      "directly_reinspected_image": true
+    },
+    {
+      "file": "lyon-p702.png",
+      "git_path": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/input-page-08.png",
+      "sha256": "14a1455bc4874ab482ed92537064010370ed625c253ec6ec48a7c0097e0d23ee",
+      "directly_reinspected_image": true
+    },
+    {
+      "file": "najmabadi-p657.png",
+      "git_path": "knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Najmabadi/input-page-02.png",
+      "sha256": "d155be592ece6a71ad3bd49a2415b42ffc308d54ba515a86ad1456a7e13ed529",
+      "directly_reinspected_image": true
+    },
+    {
+      "file": "original-source-input-findings.md",
+      "git_path": ".project/active/aries-comparison-preparation/current-readiness/revealed-results/c2-input-review/source-input-findings.md",
+      "sha256": "a2611827e8d21dfc70d44a53e82d7858d7a2b91fb9c7d0a5420df8a65f52cde2",
+      "directly_reinspected_image": false
+    },
+    {
+      "file": "original-independent-input-review.md",
+      "git_path": ".project/active/aries-comparison-preparation/current-readiness/revealed-results/c4-review/interim-input-review.md",
+      "sha256": "42a4cd1b2de1ed9ce42200dbfc877002afc61e440505ba890788a213916a6984",
+      "directly_reinspected_image": false
+    },
+    {
+      "file": "original-input-records.json",
+      "git_path": ".project/active/aries-comparison-preparation/current-readiness/revealed-results/c2-input-review/suggested-input-records.json",
+      "sha256": "720972c4e49467d4f84106efa28ea4ca5abba9f656ac4ad71e654386e941ebe8",
+      "directly_reinspected_image": false
+    }
+  ]
+}

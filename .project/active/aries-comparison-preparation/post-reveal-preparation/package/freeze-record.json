@@ -1,0 +1,9 @@
+{
+  "archive": "post-reveal-v1.tar.gz",
+  "executable_fingerprint": "83ea3b6cf99f5fda6045e7e03b5d430ede91abbe8aa41262c2f9f5aba8663d23",
+  "files": 588,
+  "identity_sha256": "a63cf7ae1d497f0f74375ebcbf693f26d8cd1a9cc8c2c3c7d9407f64f8765dff",
+  "reference_executed": false,
+  "schema_version": "post-reveal-freeze/v1",
+  "sha256": "d65d6ea44517dba3d9012d06706e74fe3006247e2809f6b4bdd64edd85ab5a7a"
+}

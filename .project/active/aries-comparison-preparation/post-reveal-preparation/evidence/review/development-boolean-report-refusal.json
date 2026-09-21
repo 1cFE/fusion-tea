@@ -1,0 +1,12 @@
+{
+  "blind": false,
+  "error": "ValueError: model observation differs from retained output: constraint_wp_stress_ok",
+  "first_report_attempt": {
+    "attempt": "baseline",
+    "pointer_sha256": "09b952d93a606d6270009848bec17c683899b93809b111879193f110b8eef01a",
+    "schema_version": "first-attempt/v1"
+  },
+  "publication_ready": false,
+  "report_kind": "post_reveal_comparison",
+  "state": "report_refused"
+}

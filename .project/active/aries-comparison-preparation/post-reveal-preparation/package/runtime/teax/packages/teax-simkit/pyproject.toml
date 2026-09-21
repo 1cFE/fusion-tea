@@ -1,0 +1,33 @@
+[project]
+name = "teax-simkit"
+version = "0.1.0"
+description = "Generic simulation pipeline framework for techno-economic analysis"
+requires-python = ">=3.10"
+dependencies = [
+  "pydantic>=2.5",
+  "numpy>=1.23",
+  "pandas>=1.5",
+  "pyarrow>=12",
+  "PyYAML>=6.0",
+  "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.3",
+]
+
+[project.scripts]
+teax-study = "simkit.study.cli:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["simkit/tests"]
+addopts = "-q"

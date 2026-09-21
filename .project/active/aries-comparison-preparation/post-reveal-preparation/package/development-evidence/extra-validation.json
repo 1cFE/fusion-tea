@@ -1,0 +1,12 @@
+{
+  "malformed_first_report": {
+    "state": "reported",
+    "rows": 276,
+    "all_blocked": true
+  },
+  "fabricated_undefined": {
+    "state": "report_refused",
+    "error": "ValueError: unavailable native prediction must remain unavailable: achieved_tbr"
+  },
+  "note": "Supplemental synthetic custody tests against final restored tools. Undefined test is fabricated native carrier evidence, not a model execution; original restoration baseline unchanged."
+}
