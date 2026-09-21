@@ -1,0 +1,10 @@
+{
+  "source_image": ".project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/source-evidence/retained/knowledge/holdout/aries-cs/extracted/20260920-r3/08-FST-Lyon/outputs-page-13.png",
+  "source_image_sha256": "3827c70f0823a86fd2e77d6fa4bddfa971f633b78f602a803f730fb52f14e0a5",
+  "visually_checked": "Lyon printed p707 Eq7 and cost/account conventions",
+  "model": "models/library/analyses/mfe_lcoe_dcf.sysml",
+  "model_sha256": "4ca6c46646074f81671efbf02fe6229759e3fbcdfb136371ea3ffe8ad0e6f960",
+  "frozen_live_equal": true,
+  "observation": "Reference Ccap already includes 1.93 total/direct multiplier with interest and escalation during construction. Model DCF expects overnight capital and applies its own midpoint construction multiplier. Direct source capital injection would not preserve financing basis.",
+  "plant_evaluations": 0
+}

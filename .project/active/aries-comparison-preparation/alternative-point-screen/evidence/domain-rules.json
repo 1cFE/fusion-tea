@@ -1,0 +1,344 @@
+{
+  "method": "Static AST literal extraction and exact scalar comparison; no model functions imported/executed; no plant run",
+  "archive": ".project/active/aries-comparison-preparation/post-reveal-preparation/package/post-reveal-v1.tar.gz",
+  "archive_sha256": "d65d6ea44517dba3d9012d06706e74fe3006247e2809f6b4bdd64edd85ab5a7a",
+  "source_values_authority": ".project/active/aries-comparison-preparation/alternative-point-screen/evidence/source-points.json",
+  "source_points_sha256": "74b147e827017cd7c9292503630ad835c1d0687ad70fc754b2ed919c13559d5e",
+  "files": {
+    "breeding": {
+      "archive_member": "exploration/stellarator_e2e/generated/handwritten/mfe_tritium_breeding/blanket_tritium_breeding_impl.py",
+      "sha256": "2ab24cf8b6a7c3c0bf929f284a880e2998401451366c6727f9d619be2a904bdc",
+      "live_file_matches_archive": true,
+      "excerpts": [
+        {
+          "line_start": 17,
+          "line_end": 30,
+          "text": "def run_blanket_tritium_breeding(inputs: Blanket_Tritium_BreedingInput) -> tuple[float, float, float, float, float, float, float]:\n    invalid = (0.0,) * 7\n    if not all(math.isfinite(getattr(inputs, name)) for name in type(inputs).model_fields):\n        return invalid\n    if any(getattr(inputs, name) != value for name, value in TABLE['fixed_geometry'].items()):\n        return invalid\n    nodes = TABLE['nodes']\n    thicknesses = [node['thickness_m'] for node in nodes]\n    thickness = inputs.blanket_t_in\n    if not thicknesses[0] <= thickness <= thicknesses[-1]:\n        return invalid\n    index = min(bisect.bisect_right(thicknesses, thickness) - 1, len(nodes) - 2)\n    left, right = nodes[index:index+2]\n    fraction = (thickness - left['thickness_m']) / (right['thickness_m'] - left['thickness_m'])"
+        }
+      ]
+    },
+    "conductor": {
+      "archive_member": "exploration/stellarator_e2e/generated/handwritten/mfe_conductor_current/rebco_conductor_current_impl.py",
+      "sha256": "6c0db1eeb028798059df104e75fdcc0af90bb86cea8fb5d9ad890d8f8e01134e",
+      "live_file_matches_archive": true,
+      "excerpts": [
+        {
+          "line_start": 9,
+          "line_end": 38,
+          "text": "def run_rebco_conductor_current(inputs: REBCO_Conductor_CurrentInput) -> tuple[float, float, float, float, float, float, float, float, float, float, float]:\n    def positive(key, value):\n        if not math.isfinite(value) or value <= 0:\n            raise ValueError(f'REBCO Conductor Current: {key} must be finite and positive')\n        return value\n\n    for key in type(inputs).model_fields:\n        value = getattr(inputs, key)\n        if key == 'allow_field_extrapolation':\n            if value not in (0.0, 1.0):\n                raise ValueError('REBCO Conductor Current: allow_field_extrapolation must be 0 or 1')\n        else:\n            positive(key, value)\n    for key in ('cabling_factor', 'degradation_factor', 'sharing_factor', 'allowable_fraction'):\n        if getattr(inputs, key) > 1:\n            raise ValueError(f'REBCO Conductor Current: {key} must be at most 1')\n    for key, target in (('temperature', 20.0), ('tape_thickness', 56e-6)):\n        if getattr(inputs, key) != target:\n            unit = 'K' if key == 'temperature' else 'm'\n            raise ValueError(f'REBCO Conductor Current: unsupported {key}={getattr(inputs, key)!r} {unit}; expected {target} {unit}')\n    if not 0.004 <= inputs.tape_width <= 0.006:\n        raise ValueError(f'REBCO Conductor Current: tape_width outside 4..6 mm; actual={inputs.tape_width!r} m')\n    if not 20 <= inputs.B_peak <= 32:\n        raise ValueError(f'REBCO Conductor Current: B_peak outside 20..32 T; actual={inputs.B_peak!r} T at {inputs.temperature!r} K')\n    extrapolated = float(inputs.B_peak > 24)\n    if extrapolated and not inputs.allow_field_extrapolation:\n        raise ValueError(f'REBCO Conductor Current: B_peak above 24 T requires allow_field_extrapolation; actual={inputs.B_peak!r} T; supported without extrapolation=20..24 T')\n    out = {}\n    out['parallel_tapes_set'] = positive('parallel_tapes_set', inputs.tape_length / inputs.conductor_length)\n    intermediate = positive('reference_count_numerator', out['parallel_tapes_set'] * inputs.f_set)"
+        }
+      ]
+    },
+    "peak_field": {
+      "archive_member": "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/conductor_peak_field_impl.py",
+      "sha256": "d910b83372e0e990b0504831c0b8370741b043e1c38b8c012011a3ddd8ea2f26",
+      "live_file_matches_archive": true,
+      "excerpts": [
+        {
+          "line_start": 13,
+          "line_end": 22,
+          "text": "def run_conductor_peak_field(inputs: Conductor_Peak_FieldInput) -> float:\n    \"\"\"Return signed conductor field, refusing invalid clearance first.\"\"\"\n    if not inputs.R_in - inputs.a_coil_in > 0:\n        raise ValueError('Conductor Peak Field: live clearance R_in - a_coil_in must be > 0')\n    if not inputs.R_ref_in - inputs.a_coil_ref_in > 0:\n        raise ValueError('Conductor Peak Field: reference clearance R_ref_in - a_coil_ref_in must be > 0')\n    bore_factor = inputs.R_in / (inputs.R_in - inputs.a_coil_in)\n    bore_factor_ref = inputs.R_ref_in / (inputs.R_ref_in - inputs.a_coil_ref_in)\n    bore_norm = bore_factor / bore_factor_ref\n    return (inputs.B_axis_in * inputs.peak_ratio_in) * bore_norm"
+        }
+      ]
+    },
+    "primary_loop": {
+      "archive_member": "exploration/stellarator_e2e/generated/handwritten/mfe_primary_loop/primary_coolant_loop_impl.py",
+      "sha256": "1c2c97fdb9eb87378571b5554f83d85f4aaa359862bfc4fa3b09b1a6d1996f42",
+      "live_file_matches_archive": true,
+      "excerpts": [
+        {
+          "line_start": 15,
+          "line_end": 39,
+          "text": "def calculate(inputs) -> dict[str, float]:\n    \"\"\"Evaluate the always-active chain after checking its two heating operands.\"\"\"\n    if not math.isfinite(inputs.cp_in) or inputs.cp_in <= 0:\n        raise ValueError(\"Primary Coolant Loop: cp_in must be finite and positive\")\n    if not math.isfinite(inputs.dT_blanket_in) or inputs.dT_blanket_in <= 0:\n        raise ValueError(\"Primary Coolant Loop: dT_blanket_in must be finite and positive\")\n    if not math.isfinite(inputs.mdot_loop_rated_in) or inputs.mdot_loop_rated_in <= 0:\n        raise ValueError(\"Primary Coolant Loop: offered flow ceiling must be finite and positive\")\n    k_isen = ((inputs.gamma_in - 1.0) / inputs.gamma_in)\n    mdot = ((inputs.q_source_in * 1000000.0) / (inputs.cp_in * inputs.dT_blanket_in))\n    mdot_loop = (mdot / inputs.n_loops_in)\n    dp_loop = ((inputs.f_loss_in * inputs.dp_loop_ref_in) * ((mdot_loop / inputs.mdot_loop_ref_in) ** 2))\n    suction = inputs.p_loop_in - dp_loop\n    if (not math.isfinite(inputs.p_loop_in) or inputs.p_loop_in <= 0\n            or not math.isfinite(dp_loop) or dp_loop < 0\n            or not math.isfinite(suction) or suction <= 0):\n        raise ValueError(\n            \"Primary Coolant Loop: unsupported compressor pressure state; \"\n            f\"p_loop_in={inputs.p_loop_in!r} Pa, dp_loop={dp_loop!r} Pa, \"\n            f\"suction={suction!r} Pa; requires finite p_loop_in > dp_loop >= 0 Pa\"\n        )\n    r_comp = (inputs.p_loop_in / (inputs.p_loop_in - dp_loop))\n    T_comp_in = (inputs.T_in_in / (1.0 + (((r_comp ** k_isen) - 1.0) / inputs.eta_is_in)))\n    w_fluid = (((mdot * inputs.cp_in) * (inputs.T_in_in - T_comp_in)) / 1000000.0)\n    p_elec = (w_fluid / inputs.eta_drive_in)"
+        }
+      ]
+    },
+    "helium_offer": {
+      "archive_member": "exploration/stellarator_e2e/generated/handwritten/mfe_viability/helium_offered_conditions_impl.py",
+      "sha256": "642866599c84f49b62f5fc6594e302964d07b16cc1c42b26b49930c58951d9fe",
+      "live_file_matches_archive": true,
+      "excerpts": [
+        {
+          "line_start": 8,
+          "line_end": 25,
+          "text": "FIELDS = ['actual_suction_K', 'rated_suction_K', 'actual_suction_Pa', 'rated_suction_Pa', 'actual_discharge_Pa', 'rated_discharge_Pa', 'actual_hot_K', 'rated_hot_K', 'actual_cp', 'rated_cp', 'actual_gamma', 'rated_gamma']\nPAIRS = ['suction_K', 'suction_Pa', 'discharge_Pa', 'hot_K', 'cp', 'gamma']\ndef same_state(a, b):\n    # Reviewed binary representation identity; never a physical operating envelope.\n    return math.isfinite(a) and math.isfinite(b) and (\n        a == b or abs(a-b) <= 8 * max(math.ulp(a), math.ulp(b)))\ndef calculate(x):\n    if not isinstance(x['enabled'], bool):\n        raise ValueError('enabled must be Boolean')\n    if isinstance(x['mode'],bool) or x['mode'] not in (0.0,1.0):\n        raise ValueError('mode must be exactly zero or one')\n    if not x['enabled'] or x['mode'] == 0.0:\n        return dict(applicable=False, supported=False, evaluation_defined=0.0)\n    for key in FIELDS:\n        if isinstance(x[key], bool) or not math.isfinite(x[key]):\n            raise ValueError(key + ' must be finite numeric')\n    supported = all(same_state(x['actual_'+key], x['rated_'+key]) for key in PAIRS)\n    return dict(applicable=True, supported=supported, evaluation_defined=1.0 if supported else 0.0)"
+        }
+      ]
+    },
+    "steam_cycle": {
+      "archive_member": "exploration/stellarator_e2e/generated/handwritten/mfe_matched_steam_cycle/matched_steam_cycle_impl.py",
+      "sha256": "ac94dacb5e7c60b46a437fd8e3bf87dd8ec08600e383e6644be37c9ec88a3c06",
+      "live_file_matches_archive": true,
+      "excerpts": [
+        {
+          "line_start": 165,
+          "line_end": 227,
+          "text": "    for name in INPUT_NAMES:\n        if name.startswith('eta_'):\n            efficiency(p[name], name)\n    for name in ('heat_available_MW','salt_flow_per_circuit','salt_circuit_count','salt_cp_kJ_kgK'):\n        positive(p[name], name)\n    if p['main_pressure_MPa'] != 6.2 or p['extraction_pressure_MPa'] != .8:\n        raise ValueError('WI-073 pressure domain: main/extraction must equal 6.2/0.8 MPa')\n    if p['salt_hot_C'] <= p['salt_return_C']:\n        raise ValueError('WI-073 salt boundary: hot temperature must exceed return temperature')\n    salt_flow = p['salt_flow_per_circuit'] * p['salt_circuit_count']\n    heat = p['heat_available_MW']\n    plant_heat = p['source_heat_MW'] + p['selected_recovered_MW']\n    balance(heat-plant_heat, max(abs(heat),abs(plant_heat)), 'plant and cycle heat join')\n    salt_heat = salt_flow*p['salt_cp_kJ_kgK']*(p['salt_hot_C']-p['salt_return_C'])/1000\n    salt_residual = heat-salt_heat\n    balance(salt_residual, max(heat,salt_heat), 'salt input heat join')\n    tables = property_tables()\n    main_rows, extraction_rows, condenser_rows = (tables[k] for k in ('main','extraction','saturation'))\n    heater_liquid, _ = saturation_endpoints(extraction_rows)\n    _, main_vapor = saturation_endpoints(main_rows)\n    if not main_vapor['T'] < p['steam_temperature_C'] <= 455:\n        raise ValueError('WI-073 main steam: superheated supported temperature required')\n    if not heater_liquid['T'] < p['reheat_temperature_C'] <= 455:\n        raise ValueError('WI-073 reheat steam: superheated supported temperature required')\n    if not 20 <= p['condenser_temperature_C'] <= 60:\n        raise ValueError('WI-073 condenser: temperature outside 20..60 C')\n    main = state_temperature(main_rows, p['steam_temperature_C'], 'vapor')\n    reheated = state_temperature(extraction_rows, p['reheat_temperature_C'], 'vapor')\n    condensate = state_temperature(condenser_rows, p['condenser_temperature_C'], 'liquid')\n    condenser_vapor = state_temperature(condenser_rows, p['condenser_temperature_C'], 'vapor')\n    if not condensate['P'] < .8 or not condensate['T'] < heater_liquid['T']:\n        raise ValueError('WI-073 condensate pump: positive pressure rise required')\n    wp_condensate = condensate['v']*(.8-condensate['P'])*1000/p['eta_condensate_pump']\n    pumped_h = condensate['h']+wp_condensate\n    hp_ideal = state_at(extraction_rows, 's', main['s'])\n    hp_h = main['h']-p['eta_hp']*(main['h']-hp_ideal['h'])\n    hp = state_at(extraction_rows, 'h', hp_h)\n    if main['h'] <= hp_h:\n        raise ValueError('WI-073 HP turbine: positive expansion work required')\n    mixing_denominator = hp_h-pumped_h\n    if mixing_denominator <= 0:\n        raise ValueError('WI-073 open heater: nonpositive mixing enthalpy denominator')\n    bleed = (heater_liquid['h']-pumped_h)/mixing_denominator\n    if not 0 < bleed < 1:\n        raise ValueError('WI-073 open heater: bleed fraction must lie strictly between zero and one')\n    wp_feed = heater_liquid['v']*(6.2-.8)*1000/p['eta_feedwater_pump']\n    feed = state_at(main_rows, 'h', heater_liquid['h']+wp_feed)\n    ideal_quality = (reheated['s']-condensate['s'])/(condenser_vapor['s']-condensate['s'])\n    if not 0 <= ideal_quality <= 1:\n        raise ValueError('WI-073 LP ideal endpoint: outside supported two-phase entropy domain')\n    ideal_lp_h = condensate['h']+ideal_quality*(condenser_vapor['h']-condensate['h'])\n    lp_h = reheated['h']-p['eta_lp']*(reheated['h']-ideal_lp_h)\n    quality = (lp_h-condensate['h'])/(condenser_vapor['h']-condensate['h'])\n    if not 0 <= quality <= 1:\n        raise ValueError('WI-073 LP actual endpoint: outside supported two-phase enthalpy domain')\n    if reheated['h'] <= lp_h:\n        raise ValueError('WI-073 LP turbine: positive expansion work required')\n    lp = {'T':condensate['T'], 'P':condensate['P'], 'h':lp_h,\n          's':condensate['s']+quality*(condenser_vapor['s']-condensate['s'])}\n    q_main_specific = main['h']-feed['h']\n    q_reheat_specific = reheated['h']-hp_h\n    if q_main_specific <= 0 or q_reheat_specific <= 0:\n        raise ValueError('WI-073 heat admission: both steam-generator and reheat duties must be positive')"
+        }
+      ]
+    }
+  },
+  "rules": {
+    "breeding": {
+      "required_fixed_geometry": {
+        "R_in": 12.7,
+        "a_in": 1.3,
+        "kappa_in": 1.0,
+        "vacuum_t_in": 0.1,
+        "firstwall_t_in": 0.05,
+        "reflector_t_in": 0.2,
+        "ht_shield_t_in": 0.2,
+        "structure_t_in": 0.15,
+        "gap1_t_in": 0.1,
+        "vessel_t_in": 0.1
+      },
+      "comparison": "Python != against every coordinate; exact equality required; no nonzero tolerance",
+      "blanket_thickness_m_inclusive": [
+        0.6,
+        1.0
+      ],
+      "finite_all_inputs": true,
+      "failure_result": "seven zero carriers including defined_flag=0; not zero physical breeding",
+      "interpretation": "necessary model-domain conditions only; meeting them does not establish material/shape validity or adequacy"
+    },
+    "conductor": {
+      "temperature_K_exact": 20.0,
+      "tape_thickness_m_exact": 5.6e-05,
+      "tape_width_m_inclusive": [
+        0.004,
+        0.006
+      ],
+      "B_peak_T_inclusive": [
+        20,
+        32
+      ],
+      "above_24T_requires_explicit_extrapolation": true,
+      "interpretation": "product-specific approximate REBCO support; arithmetic admission not field-model qualification; published axis field is not B_peak"
+    },
+    "magnetic_field": {
+      "executable_clearances": "R-a_coil>0 and R_ref-a_coil_ref>0",
+      "scientific_qualification": "unqualified for published alternative geometries; full coil geometry/current distribution/finite pack required; scalar radius proximity is insufficient"
+    },
+    "primary_loop": {
+      "required_pressure_state": "finite p_loop > dp_loop >= 0 Pa",
+      "adequacy": "separate supplied rating-demand comparison"
+    },
+    "helium_offer": {
+      "point_identity": "finite exact equality OR absolute difference <=8*max(ulp(actual),ulp(rated)) for suction temperature/pressure, discharge pressure, hot temperature, cp, gamma",
+      "interpretation": "binary identity tolerance; no physical off-design envelope"
+    },
+    "steam_cycle": {
+      "pressure_MPa_exact": [
+        6.2,
+        0.8
+      ],
+      "steam_reheat_max_C": 455,
+      "condenser_C_inclusive": [
+        20,
+        60
+      ],
+      "additional_coupled_guards": "positive work/duties; bleed strictly0..1; ideal LP endpoint in supported two-phase entropy domain and actual LP endpoint in enthalpy domain"
+    },
+    "economics": {
+      "status": "no supported comparable whole-plant LCOE follows from arithmetic admission",
+      "limits": [
+        "undefined breeding/fuel consequences",
+        "unqualified field/plasma dependence",
+        "equipment point ratings and absent off-design maps",
+        "supplied prices and unresolved money-year/scope/technology",
+        "steam Rankine versus reference Brayton",
+        "separate reference PbLi heat-removal branch absent"
+      ]
+    }
+  },
+  "family_point_rows": [
+    {
+      "source_point_id": "VII-Reference",
+      "source_table": "VII",
+      "label": "Reference",
+      "R_m": 7.75,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 4.949999999999999,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "VII-ARE-1",
+      "source_table": "VII",
+      "label": "ARE-1",
+      "R_m": 10.13,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 2.5699999999999985,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "VII-ARE-2",
+      "source_table": "VII",
+      "label": "ARE-2",
+      "R_m": 7.75,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 4.949999999999999,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "VII-ARE-3",
+      "source_table": "VII",
+      "label": "ARE-3",
+      "R_m": 7.9,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 4.799999999999999,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "IX-Reference",
+      "source_table": "IX",
+      "label": "Reference",
+      "R_m": 7.75,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 4.949999999999999,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "IX-SNS",
+      "source_table": "IX",
+      "label": "SNS",
+      "R_m": 8.96,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 3.7399999999999984,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "IX-MHH2",
+      "source_table": "IX",
+      "label": "MHH2",
+      "R_m": 9.25,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 3.4499999999999993,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "X-LiPb-FS-He-1.00GW",
+      "source_table": "X",
+      "label": "LiPb-FS-He-1.00GW",
+      "R_m": 7.75,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 4.949999999999999,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "X-LiPb-FS-He-1.25GW",
+      "source_table": "X",
+      "label": "LiPb-FS-He-1.25GW",
+      "R_m": 8.55,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 4.149999999999999,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "X-LiPb-FS-He-1.50GW",
+      "source_table": "X",
+      "label": "LiPb-FS-He-1.50GW",
+      "R_m": 9.32,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 3.379999999999999,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "X-LiPb-FS-He-1.75GW",
+      "source_table": "X",
+      "label": "LiPb-FS-He-1.75GW",
+      "R_m": 10.11,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 2.59,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "X-LiPb-FS-He-2.00GW",
+      "source_table": "X",
+      "label": "LiPb-FS-He-2.00GW",
+      "R_m": 10.9,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 1.799999999999999,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "X-LiPb-SiC-1.00GW",
+      "source_table": "X",
+      "label": "LiPb-SiC-1.00GW",
+      "R_m": 7.75,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 4.949999999999999,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "X-LiPb-SiC-1.25GW",
+      "source_table": "X",
+      "label": "LiPb-SiC-1.25GW",
+      "R_m": 7.75,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 4.949999999999999,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "X-LiPb-SiC-1.50GW",
+      "source_table": "X",
+      "label": "LiPb-SiC-1.50GW",
+      "R_m": 8.1,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 4.6,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "X-LiPb-SiC-1.75GW",
+      "source_table": "X",
+      "label": "LiPb-SiC-1.75GW",
+      "R_m": 8.74,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 3.959999999999999,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    },
+    {
+      "source_point_id": "X-LiPb-SiC-2.00GW",
+      "source_table": "X",
+      "label": "LiPb-SiC-2.00GW",
+      "R_m": 9.42,
+      "R_matches_required_geometry": false,
+      "distance_to_required_R_m": 3.2799999999999994,
+      "breeding_domain": "excluded_by_R_alone",
+      "missing_other_inputs_can_change_this_exclusion": false,
+      "whole_plant_feasibility": "not_evaluated"
+    }
+  ],
+  "conclusion": "All 17 tabulated geometry occurrences fail the breeding R guard, including repeated reference entries. This is not a count of 17 unique designs and not evidence of ARIES physical infeasibility."
+}

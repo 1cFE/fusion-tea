@@ -3,8 +3,8 @@
 [OWNER] Authorized the proposed bounded screen for source completeness and model-domain overlap. [INHERITED] Keep supplied design choices separate from predictions, preserve original results and log findings, and commit completed work. [AGENT] This screen evaluates whether an additional numerical comparison is justified; it does not run another plant scenario or alter the model.
 
 - [x] Record scope and preserve the current assessment baseline; commit plan.
-- [ ] Inventory published alternative point families and inspect source tables/definitions.
-- [ ] Check frozen model domain rules against available point data; separate numerical execution, scientific applicability and engineering adequacy.
+- [x] Inventory published alternative point families and inspect source tables/definitions.
+- [x] Check frozen model domain rules against available point data; separate numerical execution, scientific applicability and engineering adequacy.
 - [ ] Produce per-point/family dispositions and identify any useful narrower comparison.
 - [ ] Independently review, verify preservation, update findings/status and commit result.
 
