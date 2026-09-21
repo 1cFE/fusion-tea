@@ -11,3 +11,5 @@
 [AGENT] Started archived identity verification, focused tests and a synthetic baseline in a separate temporary store. Independent input review and source-observation preparation proceed separately. No reference evaluation has started at this checkpoint.
 
 [AGENT] Restoration verified all 587 indexed files; nine focused tests passed. The separate synthetic baseline completed with 1,352 outputs, 67 predicates and six violations. Its retained receipt/native evidence is under `receipts/synthetic-verification/`, separate from operating `attempts/`. All adoption artifact hashes match.
+
+[AGENT] Independent input review passed; four source images, original evidence Git objects, input definitions and complete held partition verified. Exact adopted request copied unchanged (SHA256 `d5cdb3751ceb00ed52851ce5f232ada5f0f2dbf1b97adf9157d5dfb530a05560`). Source-selection contract, held inventory and evidence are retained in `input-evidence/`, with hashes in `receipts/input-hashes.json`. Preparation checkpoint: `24ee1d45`.
