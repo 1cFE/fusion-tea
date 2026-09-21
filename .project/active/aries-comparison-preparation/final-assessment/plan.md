@@ -12,7 +12,7 @@
 ## Execution plan
 
 - [x] Establish scope, assignments and preservation baseline; commit plan.
-- [ ] Complete structural correspondence and record findings; commit evidence.
+- [x] Complete structural correspondence and record findings; commit evidence.
 - [ ] Complete quantities and cost review, retain machine-readable dispositions; commit evidence.
 - [ ] Assemble a complete row-disposition register and readable assessment; independently review and resolve findings.
 - [ ] Verify preservation, update status/log, and commit final reviewed assessment.
@@ -20,3 +20,7 @@
 ## Responsibilities
 
 The structural agent owns structure.md and structure-* evidence. The cost agent owns costs.md and cost-* evidence. The coordinator owns quantity review, combined reporting, findings, plan and preservation. A fresh reviewer checks the completed result. All work stays in this directory except the project status update; prior comparison packages and results remain unchanged.
+
+## Progress
+
+Structural and quantity reviews are complete and submitted for independent review. Quantity review checked all 35 calculated field-independent derived rows and six frozen model definitions. Structural review checked all 52 frozen model files and four source images. No plant execution occurred.
