@@ -1,0 +1,43 @@
+............F.                                                           [100%]
+=================================== FAILURES ===================================
+______________ test_structured_numeric_field_cannot_mask_infinity ______________
+
+    def test_structured_numeric_field_cannot_mask_infinity():
+        from pydantic import BaseModel
+        class Payload(BaseModel):
+            amount: float
+        executor,context,graph,calls=setup([('source',[],lambda:Payload(amount=float('inf')),['payload']),('mask',['payload'],lambda **kw:0.,['masked']),('independent',[],lambda:7.,['seven'])])
+>       graph.spec.modules['source'].outputs['payload'].type_name='Payload'
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.project/active/aries-comparison-preparation/post-reveal-investigation/failure-propagation/native-teax/tests/test_partial_diagnostics.py:100: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/pydantic/main.py:1032: in __setattr__
+    elif (setattr_handler := self._setattr_handler(name, value)) is not None:
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/pydantic/main.py:1068: in _setattr_handler
+    _check_frozen(cls, name, value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+model_cls = <class 'simkit.config.pipeline_schema.PipelineChannelBinding'>
+name = 'type_name', value = 'Payload'
+
+    def _check_frozen(model_cls: type[BaseModel], name: str, value: Any) -> None:
+        if model_cls.model_config.get('frozen'):
+            error_type = 'frozen_instance'
+        elif getattr(model_cls.__pydantic_fields__.get(name), 'frozen', False):
+            error_type = 'frozen_field'
+        else:
+            return
+    
+>       raise ValidationError.from_exception_data(
+            model_cls.__name__, [{'type': error_type, 'loc': (name,), 'input': value}]
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for PipelineChannelBinding
+E       type_name
+E         Instance is frozen [type=frozen_instance, input_value='Payload', input_type=str]
+E           For further information visit https://errors.pydantic.dev/2.12/v/frozen_instance
+
+.venv/lib/python3.12/site-packages/pydantic/main.py:89: ValidationError
+=========================== short test summary info ============================
+FAILED .project/active/aries-comparison-preparation/post-reveal-investigation/failure-propagation/native-teax/tests/test_partial_diagnostics.py::test_structured_numeric_field_cannot_mask_infinity

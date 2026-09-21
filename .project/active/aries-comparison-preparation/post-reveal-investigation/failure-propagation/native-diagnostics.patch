@@ -1,0 +1,222 @@
+--- a/simkit/core/pipeline_executor.py
++++ b/simkit/core/pipeline_executor.py
+@@ -2,6 +2,8 @@
+ from __future__ import annotations
+ 
+ import json
++import math
++from numbers import Real
+ from dataclasses import dataclass
+ from datetime import datetime, timezone
+ from pathlib import Path
+@@ -118,7 +120,10 @@
+         run_name: str | None = None,
+         pipeline_metadata: object | None = None,
+         persist_outputs: bool = True,
++        _diagnostics: dict | None = None,
+     ) -> RunResult:
++        if _diagnostics is not None and persist_outputs:
++            raise ValueError("diagnostics cannot persist ordinary pipeline outputs")
+         context.failed_module_key = None
+         spec = graph.spec
+         exit_spec = next((m for m in spec.modules.values() if m.is_exit), None)
+@@ -131,10 +136,20 @@
+         exit_outputs: Dict[str, Any] | None = None
+         for module_key in graph.topological_order:
+             module_spec = spec.modules[module_key]
++            dependencies = tuple(sorted(graph.dependencies[module_key]))
++            roots = tuple(sorted({root for dep in dependencies
++                                  for root in (_diagnostics[dep]["root_causes"] if _diagnostics is not None else ())}))
+             if module_spec.is_entry:
+                 self._execute_entry(module_spec, spec, context)
++                if _diagnostics is not None:
++                    _diagnostics[module_key] = dict(status="completed", dependencies=dependencies, root_causes=())
++                continue
++            if _diagnostics is not None and roots and not module_spec.is_exit:
++                _diagnostics[module_key] = dict(status="blocked_dependency", dependencies=dependencies, root_causes=roots)
+                 continue
+             if module_spec.is_exit:
++                if _diagnostics is not None:
++                    _diagnostics[module_key] = dict(status="blocked_dependency" if roots else "completed", dependencies=dependencies, root_causes=roots)
+                 exit_outputs = {}
+                 for field, binding in module_spec.outputs.items():
+                     try:
+@@ -144,10 +159,53 @@
+                         continue
+                 break
+             try:
++                if _diagnostics is not None:
++                    invalid_inputs = []
++                    for binding in module_spec.inputs.values():
++                        if binding.source is ChannelSource.DEFAULT or binding.type_name not in (
++                            "float", "int", "bool", "RootModel[float]", "RootModel[int]", "RootModel[bool]"
++                        ):
++                            continue
++                        value = _resolve_input(binding, context)
++                        scalar = getattr(value, "root", value)
++                        if not isinstance(scalar, Real) or not math.isfinite(scalar):
++                            invalid_inputs.append((binding.channel_name, binding.field_path, repr(scalar)))
++                    if invalid_inputs:
++                        _diagnostics[module_key] = dict(status="unavailable_numeric_input", dependencies=dependencies,
++                            root_causes=(module_key,), invalid_inputs=tuple(invalid_inputs))
++                        continue
+                 self._execute_module(module_key, module_spec, context)
+-            except Exception:
++            except Exception as error:
+                 context.failed_module_key = module_key
+-                raise
++                if _diagnostics is None:
++                    raise
++                for binding in module_spec.outputs.values():
++                    context.channels.pop(binding.channel_name, None)
++                context.module_versions.pop(module_key, None)
++                _diagnostics[module_key] = dict(status="execution_error", dependencies=dependencies,
++                    root_causes=(module_key,), exception_type=type(error).__name__, cause=str(error))
++                continue
++            if _diagnostics is not None:
++                invalid = []
++                for binding in module_spec.outputs.values():
++                    value = context.channels.get(binding.channel_name)
++                    scalar = getattr(value, "root", value)
++                    declared_numeric = binding.type_name in ("float", "int", "bool", "RootModel[float]", "RootModel[int]", "RootModel[bool]")
++                    if isinstance(scalar, Real):
++                        if not math.isfinite(scalar):
++                            invalid.append((binding.channel_name, "nonfinite_result", repr(scalar)))
++                    elif isinstance(scalar, complex) and binding.type_name not in ("complex", "RootModel[complex]"):
++                        invalid.append((binding.channel_name, "unsupported_numeric_type", repr(scalar)))
++                    elif declared_numeric:
++                        invalid.append((binding.channel_name, "unsupported_numeric_type", repr(scalar)))
++                if invalid:
++                    for binding in module_spec.outputs.values():
++                        context.channels.pop(binding.channel_name, None)
++                    context.module_versions.pop(module_key, None)
++                    _diagnostics[module_key] = dict(status="unavailable_numeric_output", dependencies=dependencies,
++                        root_causes=(module_key,), invalid_outputs=tuple(invalid))
++                else:
++                    _diagnostics[module_key] = dict(status="completed", dependencies=dependencies, root_causes=())
+         else:  # pragma: no cover - spec validator guarantees an exit node
+             raise RuntimeError("Pipeline specification is missing an exit module")
+ 
+@@ -177,6 +235,14 @@
+             manifest=router_manifest,
+             module_versions=dict(context.module_versions),
+         )
++
++    def run_diagnostic(self, graph: PipelineGraph, context: PipelineExecutionContext):
++        """Separate in-memory observation; does not complete a study or persist outputs."""
++        if context.channels or context.module_versions:
++            raise ValueError("diagnostic execution requires a fresh context")
++        records = {}
++        result = self.run(graph, context, persist_outputs=False, _diagnostics=records)
++        return result, records
+ 
+     # ------------------------------------------------------------------
+     # Execution helpers
+--- a/simkit/evaluation/diagnostics.py
++++ b/simkit/evaluation/diagnostics.py
+@@ -0,0 +1,86 @@
++"""Immutable diagnostic observations, deliberately separate from ModelEvidence."""
++from __future__ import annotations
++
++from dataclasses import dataclass
++import hashlib
++import math
++from numbers import Real
++from pathlib import Path
++from typing import Any, Mapping
++
++from .evidence import _freeze
++
++
++def plain(value: Any) -> Any:
++    if isinstance(value, Mapping):
++        return {key: plain(item) for key, item in value.items()}
++    if isinstance(value, (list, tuple)):
++        return [plain(item) for item in value]
++    if isinstance(value, Real):
++        return value if math.isfinite(value) else {"unavailable_nonfinite": repr(value)}
++    if isinstance(value, complex):
++        return {"unsupported_complex": repr(value)}
++    return value
++
++
++@dataclass(frozen=True)
++class DiagnosticEvidence:
++    schema_version: str
++    state: str
++    provenance: Mapping[str, Any]
++    modules: Mapping[str, Mapping[str, Any]]
++    publications: Mapping[str, Mapping[str, Any]]
++    numeric_outputs: Mapping[str, float]
++
++    def __post_init__(self):
++        for name in ("provenance", "modules", "publications", "numeric_outputs"):
++            object.__setattr__(self, name, _freeze(getattr(self, name)))
++
++    def to_document(self):
++        return {name: plain(getattr(self, name)) for name in self.__dataclass_fields__}
++
++
++def source_digest() -> str:
++    root = Path(__file__).resolve().parents[1]
++    entries = [(str(path.relative_to(root)), hashlib.sha256(path.read_bytes()).hexdigest())
++               for path in sorted(root.rglob('*.py')) if '__pycache__' not in path.parts]
++    return hashlib.sha256(repr(entries).encode()).hexdigest()
++
++
++def project_diagnostic(graph, result, modules, *, fingerprint, input_digest):
++    publications = {}
++    numbers = {}
++    exit_spec = next(spec for spec in graph.spec.modules.values() if spec.is_exit)
++    for key, binding in exit_spec.outputs.items():
++        producer = graph.channel_providers[binding.channel_name]
++        module = modules[producer]
++        record = dict(channel=binding.channel_name, producer=producer,
++                      root_causes=module['root_causes'])
++        if module['status'] != 'completed':
++            record['status'] = {'execution_error': 'unavailable_module_error',
++                                'unavailable_numeric_output': 'unavailable_numeric_output',
++                                'unavailable_numeric_input': 'unavailable_numeric_input',
++                                'blocked_dependency': 'blocked_dependency'}[module['status']]
++        elif key not in result.outputs:
++            record['status'] = 'missing_publication'
++        else:
++            value = result.outputs[key]
++            scalar = getattr(value, 'root', value)
++            if isinstance(scalar, Real) and math.isfinite(scalar):
++                record.update(status='available_numeric', value=float(scalar))
++                numbers[key] = float(scalar)
++            elif isinstance(scalar, Real):
++                record.update(status='nonfinite_result', representation=repr(scalar))
++            elif hasattr(value, 'model_dump'):
++                record.update(status='available_structured', structured_value=plain(value.model_dump(mode='python')))
++            else:
++                record.update(status='unsupported_numeric_type', representation=repr(value))
++        publications[key] = record
++    partial = any(m['status'] != 'completed' for m in modules.values()) or any(
++        p['status'] not in ('available_numeric', 'available_structured') for p in publications.values())
++    return DiagnosticEvidence(
++        schema_version='native-diagnostic/v1', state='partial' if partial else 'complete_diagnostic',
++        provenance={'executable_fingerprint': fingerprint, 'input_digest': input_digest,
++                    'diagnostic_evaluator_version': 'v1', 'native_source_digest': source_digest()},
++        modules=modules, publications=publications, numeric_outputs=numbers,
++    )
+--- a/simkit/evaluation/evaluator.py
++++ b/simkit/evaluation/evaluator.py
+@@ -181,6 +181,16 @@
+         )
+         return project(result, provenance=provenance, expects_report=self._expects_report)
+ 
++    def diagnose(self, typed_inputs: Mapping[str, BaseModel]):
++        """Observe independent branches after faults; never returns study ModelEvidence."""
++        from .diagnostics import project_diagnostic
++
++        validated = self._source.validate(typed_inputs)
++        context = _MappingContext(self._registry, validated)
++        result, modules = self._executor.run_diagnostic(self._graph, context)
++        return project_diagnostic(self._graph, result, modules, fingerprint=self.fingerprint,
++                                  input_digest=_input_digest(typed_inputs))
++
+ 
+ class FileBackedEvaluator:
+     """Audit backend: file entry, real (persisting) router, `persist_outputs=True`.

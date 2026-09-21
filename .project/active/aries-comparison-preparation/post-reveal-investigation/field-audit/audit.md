@@ -1,0 +1,57 @@
+# Field-model audit
+
+[AGENT] **Arithmetic PASS; scientific applicability unverified at the transferred geometry.** The reported 56.61785714285713 T is exactly the frozen implementation's result. It is not an established field prediction for this design. Both the axis-field transfer and peak-field scaling require qualification before their dependent results can claim scientific support. This is an intentionally simplified model with an unsupported transfer, not a discovered multiplication or unit-conversion error.
+
+Scope: HEAD `411fb416010b224291bfd796dd7f1e565830f884`, adopted archive `d65d6ea44517dba3d9012d06706e74fe3006247e2809f6b4bdd64edd85ab5a7a`, and retained first-forward inputs. Relevant live model, binding, pipeline and implementation files are byte-identical to the archive. [reconstruct.py](reconstruct.py) executes only four extracted arithmetic functions and an independent reduced identity. It does not run the plant or change the frozen attempt. [receipt.json](receipt.json) retains exact inputs, roles, bindings, intermediates and hashes. [source-evidence.json](source-evidence.json) identifies inspected evidence.
+
+## Reconstruction
+
+Reference-supplied major radius is 7.75 m and plasma minor radius is 1.70 m. The third supplied scalar, ion temperature, does not enter these field formulas. All current, coil, pack, layer and calibration quantities below are held model choices. Separate supplied turns and current remain unchanged.
+
+| Step | Equation and result |
+|---|---|
+| Reference-coil ampere-turns | 308 × 50,000 A = 15,400,000 A-turn |
+| Installed effective pack | Side 0.35999999999999993 m; area 0.12959999999999994 m²; effective current density 118.82716049382721 A/mm² |
+| Axis field | μ₀ × 0.7731331164622419 × 48 × 15,400,000 / (2π × 7.75) = 14.748387096774191 T |
+| Coil-centre proxy | 1.70 + 0.10 vacuum + 0.05 wall + 0.80 blanket + 0.20 reflector + 0.20 shield + 0.15 structure + 0.10 gap + 0.10 vessel + 0.30/2 coil = 3.5500000000000007 m in executed order |
+| Live/reference clearance | 4.199999999999999 m / 9.549999999999999 m |
+| Normalized bore factor | [7.75/(7.75−3.55)] / [12.7/(12.7−3.15)] = 1.3875609298837646 |
+| Peak field | Axis field × 2.7666666666666666 × normalized bore factor = 56.61785714285713 T |
+
+The reduced identity at unchanged ampere-turns is approximately `24.9 × (12.7−3.15)/(7.75−3.55)`, agreeing within floating-point rounding. Thus the larger number follows the model's smaller inboard clearance, not accidental use of 50 kA as 50 MA or double-counting turns. μ₀ has units T·m/A; coil count, turns, linkage and bore ratios are dimensionless. The resulting field is in tesla. The cumulative-radius calculation and the published failure agree exactly.
+
+Bindings: `mfe_power_core.sysml:157` and `:167` connect current, axis field and peak field; `mfe_plant.sysml:313` connects the layer build. The frozen pipeline retains these edges. Canonical equations are `mfe_magnet_field.sysml:57` and `mfe_plasma_scaling.sysml:420`; the latter's only executable domain check is positive live/reference clearance.
+
+## Findings
+
+**High — F1: fixed shape/linkage coefficients were transferred across changed coil geometry.** Lion 2021 section 2 holds the coil count and shapes fixed while scaling overall coil size. Its independently variable plasma minor radius changes at fixed coil radius; it does not instruct the coil to follow the plasma's radial build. Section 3.5 derives configuration-specific field coefficients from the actual coil geometry. In this model, changing plasma radius moves the coil-centre proxy and changing major radius independently deforms its dimensionless geometry. R/Rref is 0.610236220472441 while the coil-centre ratio is 1.126984126984127. The coil-radius/R ratio changes by 1.8467997951868922. This is not geometric similarity.
+
+WI-035 design D2 derives the linkage factor from Stellaris's 9 T, 12.7 m, 48-coil, 15.4 MA anchor. Directly inspected Stellaris Tables 2 and 8 support the aggregate ampere-turn anchor and current-family structure. Table 2 reports 24.9 T peak, while Table 8 reports 24.6 T for coil family 0; those printed quantities remain distinct. Table 8 gives 324 turns and 47.6 kA for that family, rather than the model's held 308 turns and 50 kA. Reproducing the 15.4 MA-turn anchor does not reconstruct the source winding. These tables do not establish a fixed linkage for the changed geometry. Table 3's centre-filament convention does not establish that a circular layer-stack radius equals the nonplanar set's average minor coil radius. WI-044 D1 chooses that proxy; it is a modeling assumption, not a source-established equality.
+
+**High — F2: the omitted winding-pack term cannot generally be absorbed into one constant anchor.** The primary image of Lion 2021 Eq. 39 gives `Bmax = μ₀ I N/(R−a_coil) × [a0(C) + R a1(C)/sqrt(Awp)]`. Its surrounding text describes fitting a0 and a1 after finite-pack Biot–Savart calculations at varied pack areas. WI-044 design D2 explicitly omits the second term because the coefficients are unavailable. Disclosure establishes provenance; it does not establish that the missing dependence is negligible.
+
+A single reference value determines one combination of two coefficients. If λ denotes the unknown reference fraction contributed by the second term, the missing normalized bracket is `(1−λ) + λ × (R/Rref) × sqrt(Awp_ref/Awp)`, even assuming the same configuration C. No value of λ is inferred here. The held pack side leaves R/sqrt(Awp) changing from 35.277777777777786 to 21.527777777777782. The bracket therefore is not known to remain constant. The current peak-field function has no pack-area input at all. Independent pack selection can change current density without changing the calculated peak field. Lyon 2008 p697 Table I independently demonstrates substantial pack-size dependence for its own configurations; it is evidence of the missing mechanism, not a correction curve transferable to Stellaris.
+
+**Medium — F3: existing checks do not establish off-design applicability.** SV-038 and SV-060–062 establish anchor reproduction, binding response and agreement with the chosen equations. They do not identify a0/a1, validate non-similar coil deformation, or bound off-design field error. The existing positive-clearance guard checks arithmetic admissibility. It does not certify physical applicability. Historical validation records should remain intact; any new supported-use assessment must state this narrower coverage.
+
+## Design-choice boundary
+
+This audit does not classify the radial build itself as a newly confirmed MR-7 violation. It is an explicit contiguous-layer geometry parameterization: chosen plasma radius and chosen thicknesses determine a coil-centre proxy. It does not solve required magnetic performance and then enlarge equipment to make a constraint pass. WI-044 D1 and WI-058's spec record the intended coupling. Whether that restricted representation supports the owner's required independent coil/plasma choices needs a separate supported-interface decision. Existing authority for the coupling does not establish its scientific field-transfer accuracy.
+
+The restriction has real hardware consequences. `models/designs/generic_mfe/mfe_plant.sysml:134` binds the magnet centre radius to the radial build; `models/library/cost_structure/mfe_power_core.sysml:245` derives winding circumference from that radius and `:113` binds it into the coil. The circumference then reaches cold inventory (`:252`) and procurement (`:324`). The declared relation changes the 25 m anchor to approximately 28.17460317460318 m at the retained point. Supplied turns, pack side and layer thicknesses are not overwritten, but changing plasma radius changes derived coil geometry, winding inventory and associated costs. The present interface therefore cannot represent the source-described operation of varying plasma size inside an independently held coil through the plasma-radius input alone. That is a design-representation restriction, distinct from automatic adequacy and from the unqualified field transfer. A repair must expose the intended supported choices rather than silently replace this assignment with another one.
+
+## Supported use and repair recommendation
+
+A baseline-only restriction would be unnecessarily arbitrary. Electromagnetic similarity supports proportional current changes for the same coil/current distribution and supports homothetic scaling when actual coil, magnetic-axis and winding-pack geometries scale together. Coil count, normalized shape and current distribution must remain fixed. Under full geometric similarity, a_coil/R and R/sqrt(Awp) stay constant, so the omitted bracket also stays constant. These are physical conditions, not a promise that the present one-dimensional geometry representation proves them. Changing plasma size within fixed coils is another source-described operation; it must not silently resize those coils.
+
+For this transferred case, record **axis-field applicability unknown/unqualified and peak-field applicability unknown/unqualified**. Retain the exact numbers only as explicitly labeled diagnostics of the implemented approximation. Preserve the conductor refusal separately: the conductor received 56.61785714285713 T outside its supported range. That observation neither validates the field model nor establishes a physically impossible reactor. No error bound or corrected field can be supplied from one anchor.
+
+A justified repair has two parts. First, represent field applicability and propagate it separately from numerical execution and engineering predicates. Preserve independently selected equipment and geometry; do not enforce similarity by silently changing inputs. Second, qualify the required field surface using actual coil geometry/current families and finite-pack magnetic calculations, or a configuration-specific surrogate fitted to those calculations with held-out validation and a stated domain. Retain both a0/a1 behavior when using Eq. 39. If only similarity-based evaluation is supportable, expose that capability and its limits explicitly. Changes to coil count, shape or current distribution need their own supported configuration. Do not choose coefficients, currents or geometry to reproduce the ARIES field.
+
+The published approximately 15 T ARIES peak is a different design's observation; its documented current families, winding geometry and technology do not match the held 48-coil design. [Source review](../source-review/source-review.md) records the distinctions. The numerical gap is not a same-design model-error measurement.
+
+## Recovery consequence
+
+Results independent of the conductor calculation are not automatically independent of the unqualified field model. The frozen axis field feeds plasma sustainment and beta (`pipeline.yaml:319`, `:355`), while peak field feeds conductor evaluation, winding stress and its field predicate (`:1991`, `:2056`, `:4604`). A diagnostic executor may recover arithmetic on other branches, but scientific validity requires its own dependency/assumption assessment. In particular, numerical availability of LCOE does not establish a scientifically supported or feasible plant price.
+
+No model, empirical range, historical result, validation registry or reference request was changed. The broader field-model repair remains proposed work requiring applicable MR-7 design and scientific review. This audit does not certify the rest of the plant.

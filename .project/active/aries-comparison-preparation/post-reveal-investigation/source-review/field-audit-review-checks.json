@@ -1,0 +1,14 @@
+{
+  "review": "independent arithmetic and file identity check",
+  "B_axis_T": 14.748387096774191,
+  "B_peak_T": 56.61785714285713,
+  "relative_tolerance": 1e-15,
+  "all_receipt_source_hashes_match": true,
+  "all_source_evidence_hashes_match": true,
+  "native_execution": false,
+  "primary_images_inspected": [
+    "Lion2021Eq39",
+    "StellarisTables2,3,8"
+  ],
+  "limitations": "Primary Eq39 image available; original full Lion PDF absent at registered source location. Context checked against retained extraction."
+}

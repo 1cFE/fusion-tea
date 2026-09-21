@@ -1,0 +1,14 @@
+{
+  "source_digest": "a758517d400f32a49318119f9b832df5e97f3bb417c0a8fbeb900cdfb7b48ba7",
+  "calls": [
+    "producer"
+  ],
+  "numeric_outputs": {},
+  "state": "partial",
+  "module_statuses": {
+    "entry": "completed",
+    "producer": "completed",
+    "mask": "unavailable_numeric_input",
+    "exit": "blocked_dependency"
+  }
+}

@@ -1,0 +1,320 @@
+{
+  "kind": "isolated frozen arithmetic diagnostic; not native plant outputs",
+  "archive_sha256": "d65d6ea44517dba3d9012d06706e74fe3006247e2809f6b4bdd64edd85ab5a7a",
+  "attempt_result_sha256": "8a0e2385b3305ef746d78f9feac262c24b62e46010ca9ed71b81d9eeb98751de",
+  "source_files_sha256": {
+    "exploration/stellarator_e2e/generated/pipelines/pipeline.yaml": "cc4c5942ac1e5e1a0b378daeeb2ea1c0702e21283beecbbae9bc530afc3e42bf",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_field/winding_operating_state_impl.py": "4b02d81c7a0e216799be619e8ab94a730bbaca7a474c760e93223b0e7237d241",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_magnet_field/coil_set_axis_field_impl.py": "bb04e32cf5dd374c8a8dc5ca9375ed3a582d2032a9abb3779b5cf7b060cf7497",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/mfe_radial_build_impl.py": "cd4ee6dc16068b0db2cec4cc6f49c202c5a58342c3eba43d6e6db201cf415ec4",
+    "exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/conductor_peak_field_impl.py": "d910b83372e0e990b0504831c0b8370741b043e1c38b8c012011a3ddd8ea2f26",
+    "models/library/analyses/mfe_magnet_field.sysml": "b665bdeb65ee81bc07fd47d72132570dcbb04a20e257247c58d7033c101d831a",
+    "models/library/analyses/mfe_plasma_scaling.sysml": "b23b0484e3372d54534894a1d699d48c46010b9acc65db7c95760d1df3296e50",
+    "models/library/cost_structure/mfe_power_core.sysml": "05365f8d9245e42aa4116ed4f15890aa1110a79330a586900b6b861436624133",
+    "models/designs/generic_mfe/mfe_plant.sysml": "c51f2b3d29676512b2340f1cddcb1f0093c57ec7c5184b1ea389e8d678a0520a"
+  },
+  "native_outputs_remain_empty": true,
+  "native_verdicts_remain_empty": true,
+  "inputs": {
+    "stellarator_09__stellaris__blanket__blanket_t": {
+      "value": 0.8,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__blanket__first_wall__firstwall_t": {
+      "value": 0.05,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__blanket__first_wall__vacuum_t": {
+      "value": 0.1,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__blanket__reflector_t": {
+      "value": 0.2,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__magnet__coil__R_ref": {
+      "value": 12.7,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__magnet__coil__a_coil_ref": {
+      "value": 3.1500000000000004,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__magnet__coil__coil_t": {
+      "value": 0.3,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__magnet__coil__k_link": {
+      "value": 0.7731331164622419,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__magnet__coil__n_coils": {
+      "value": 48.0,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__magnet__coil__peak_ratio": {
+      "value": 2.7666666666666666,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__magnet__coil__reference_turns": {
+      "value": 308.0,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__magnet__coil__turn_current": {
+      "value": 50000.0,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__magnet__field_calc__mu0": {
+      "value": 1.25663706212e-06,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__magnet__field_calc__two_pi": {
+      "value": 6.283185307179586,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__magnet__gap2_t": {
+      "value": 0.1,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__magnet__winding_pack__wp_side": {
+      "value": 0.35999999999999993,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__plasma__R": {
+      "value": 7.75,
+      "role": "supplied"
+    },
+    "stellarator_09__stellaris__plasma__a": {
+      "value": 1.7,
+      "role": "supplied"
+    },
+    "stellarator_09__stellaris__plasma__kappa": {
+      "value": 1.0,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__rb__pi": {
+      "value": 3.14159265358979,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__shield__ht_shield_t": {
+      "value": 0.2,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__shield__lt_shield_t": {
+      "value": 0.15,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__structure__structure_t": {
+      "value": 0.15,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__vessel__gap1_t": {
+      "value": 0.1,
+      "role": "held"
+    },
+    "stellarator_09__stellaris__vessel__vessel_t": {
+      "value": 0.1,
+      "role": "held"
+    }
+  },
+  "bindings": {
+    "magnet__winding_state.turn_current": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__turn_current",
+      "value": 50000.0
+    },
+    "magnet__winding_state.reference_turns": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__reference_turns",
+      "value": 308.0
+    },
+    "magnet__winding_state.wp_side": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__magnet__winding_pack__wp_side",
+      "value": 0.35999999999999993
+    },
+    "magnet__field_calc.two_pi": {
+      "binding": "float mfe_magnet_field_params.stellarator_09__stellaris__magnet__field_calc__two_pi",
+      "value": 6.283185307179586
+    },
+    "magnet__field_calc.I_coil": {
+      "binding": "float stellarator_09__stellaris__magnet__winding_state__I_coil",
+      "value": 15400000.0
+    },
+    "magnet__field_calc.R0": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__plasma__R",
+      "value": 7.75
+    },
+    "magnet__field_calc.n_coils": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__n_coils",
+      "value": 48.0
+    },
+    "magnet__field_calc.k_link": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__k_link",
+      "value": 0.7731331164622419
+    },
+    "magnet__field_calc.mu0": {
+      "binding": "float mfe_magnet_field_params.stellarator_09__stellaris__magnet__field_calc__mu0",
+      "value": 1.25663706212e-06
+    },
+    "rb.reflector_t_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__blanket__reflector_t",
+      "value": 0.2
+    },
+    "rb.lt_shield_t_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__shield__lt_shield_t",
+      "value": 0.15
+    },
+    "rb.gap2_t_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__magnet__gap2_t",
+      "value": 0.1
+    },
+    "rb.vacuum_t_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__blanket__first_wall__vacuum_t",
+      "value": 0.1
+    },
+    "rb.gap1_t_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__vessel__gap1_t",
+      "value": 0.1
+    },
+    "rb.vessel_t_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__vessel__vessel_t",
+      "value": 0.1
+    },
+    "rb.kappa_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__plasma__kappa",
+      "value": 1.0
+    },
+    "rb.blanket_t_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__blanket__blanket_t",
+      "value": 0.8
+    },
+    "rb.R_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__plasma__R",
+      "value": 7.75
+    },
+    "rb.firstwall_t_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__blanket__first_wall__firstwall_t",
+      "value": 0.05
+    },
+    "rb.coil_t_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__coil_t",
+      "value": 0.3
+    },
+    "rb.structure_t_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__structure__structure_t",
+      "value": 0.15
+    },
+    "rb.a_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__plasma__a",
+      "value": 1.7
+    },
+    "rb.pi": {
+      "binding": "float mfe_plasma_scaling_params.stellarator_09__stellaris__rb__pi",
+      "value": 3.14159265358979
+    },
+    "rb.ht_shield_t_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__shield__ht_shield_t",
+      "value": 0.2
+    },
+    "magnet__peak_field_calc.B_axis_in": {
+      "binding": "float stellarator_09__stellaris__magnet__field_calc__B_axis.root",
+      "value": 14.748387096774191
+    },
+    "magnet__peak_field_calc.peak_ratio_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__peak_ratio",
+      "value": 2.7666666666666666
+    },
+    "magnet__peak_field_calc.a_coil_ref_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__a_coil_ref",
+      "value": 3.1500000000000004
+    },
+    "magnet__peak_field_calc.R_ref_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__magnet__coil__R_ref",
+      "value": 12.7
+    },
+    "magnet__peak_field_calc.R_in": {
+      "binding": "float stellarator_plant_params.stellarator_09__stellaris__plasma__R",
+      "value": 7.75
+    },
+    "magnet__peak_field_calc.a_coil_in": {
+      "binding": "float stellarator_09__stellaris__rb__r_coil_centre",
+      "value": 3.5500000000000007
+    }
+  },
+  "layers": [
+    {
+      "layer": "vacuum_t_in",
+      "thickness_m": 0.1,
+      "outer_radius_m": 1.8
+    },
+    {
+      "layer": "firstwall_t_in",
+      "thickness_m": 0.05,
+      "outer_radius_m": 1.85
+    },
+    {
+      "layer": "blanket_t_in",
+      "thickness_m": 0.8,
+      "outer_radius_m": 2.6500000000000004
+    },
+    {
+      "layer": "reflector_t_in",
+      "thickness_m": 0.2,
+      "outer_radius_m": 2.8500000000000005
+    },
+    {
+      "layer": "ht_shield_t_in",
+      "thickness_m": 0.2,
+      "outer_radius_m": 3.0500000000000007
+    },
+    {
+      "layer": "structure_t_in",
+      "thickness_m": 0.15,
+      "outer_radius_m": 3.2000000000000006
+    },
+    {
+      "layer": "gap1_t_in",
+      "thickness_m": 0.1,
+      "outer_radius_m": 3.3000000000000007
+    },
+    {
+      "layer": "vessel_t_in",
+      "thickness_m": 0.1,
+      "outer_radius_m": 3.400000000000001
+    }
+  ],
+  "intermediates": {
+    "reference_turns": 308.0,
+    "turn_current_A": 50000.0,
+    "I_coil_Aturn": 15400000.0,
+    "pack_side_m": 0.35999999999999993,
+    "pack_area_m2": 0.12959999999999994,
+    "j_wp_effective_A_per_mm2": 118.82716049382721,
+    "n_coils": 48.0,
+    "B_axis_T": 14.748387096774191,
+    "a_coil_m": 3.5500000000000007,
+    "R_m": 7.75,
+    "live_clearance_m": 4.199999999999999,
+    "reference_clearance_m": 9.549999999999999,
+    "bore_factor": 1.8452380952380956,
+    "reference_bore_factor": 1.329842931937173,
+    "normalized_bore_factor": 1.3875609298837646,
+    "peak_ratio_reference": 2.7666666666666666,
+    "peak_over_axis_effective": 3.8389185726784154,
+    "B_peak_T": 56.61785714285713,
+    "reduced_identity_T": 56.61785714285714,
+    "R_over_Rref": 0.610236220472441,
+    "coil_radius_over_reference": 1.126984126984127,
+    "coil_aspect_change_factor": 1.8467997951868922,
+    "plasma_aspect": 4.5588235294117645,
+    "plasma_aspect_reference": 9.769230769230768,
+    "R_over_pack_side": 21.527777777777782,
+    "Rref_over_pack_side": 35.277777777777786
+  },
+  "checks": {
+    "exact_reported_value_reconstructed": true,
+    "frozen_and_live_files_identical": true,
+    "independent_reduced_identity_relative_tolerance": 1e-15,
+    "peak_kernel_has_no_pack_area_input": true
+  },
+  "unidentified_eq39_factor": "(1-lambda)+lambda*(R/R_ref)*(sqrt(A_wp_ref)/sqrt(A_wp)); lambda unknown; assumes same C, itself unestablished",
+  "scientific_status": "axis and peak field unqualified at changed geometry; retained values are implementation diagnostics, not validated predictions"
+}
