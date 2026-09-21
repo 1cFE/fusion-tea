@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-STELLARIS-FIELD-GEOMETRY-01",
+  "request_key": "35880dfc9ef4a3ae261681953d86a8e063b1d38a50fce77b1074bedfc18e6acd",
+  "request_path": "knowledge/research/requests/REQ-STELLARIS-FIELD-GEOMETRY-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-21T02:45:56.981856+00:00",
+  "override_reason": null
+}

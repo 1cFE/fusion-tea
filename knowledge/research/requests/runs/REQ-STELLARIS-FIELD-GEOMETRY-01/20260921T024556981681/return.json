@@ -1,0 +1,32 @@
+{
+  "request_id": "REQ-STELLARIS-FIELD-GEOMETRY-01",
+  "run": "knowledge/research/requests/runs/REQ-STELLARIS-FIELD-GEOMETRY-01/20260921T024556981681",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "coilsets_and_scripts_from_augmented_lagrangian_methods_for",
+      "path": "knowledge/sources/coilsets_and_scripts_from_augmented_lagrangian_methods_for/",
+      "source_id": "4af47472e14c982c34b16c1fd4a836154dd40e8ca417b129f987fdb89942e42e",
+      "pre_existing": false
+    },
+    {
+      "slug": "proxima_fusion_public_simplified_stellarator_cad_models",
+      "path": "knowledge/sources/proxima_fusion_public_simplified_stellarator_cad_models/",
+      "source_id": "fbe19b2ab852fb7910324aaf51a4e2edbd62377220805bb67573d2e04a7d5a39",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://github.com/proximafusion/open_stellarator_models",
+      "reason": "extract exited 1"
+    },
+    {
+      "candidate": "https://zenodo.org/records/18497939/preview/zenodo_repository_auglag.zip?include_deleted=0",
+      "reason": "Landing page registered, archive unregistered and uninspected beyond filename triage. Mixed archive preview includes quarantine-related filenames. Requires narrowly scoped screened acquisition and confirmed Stellaris baseline identity before data use; no archive downloaded."
+    }
+  ],
+  "negative": null,
+  "limit_reached": "max_searches",
+  "reason": "at least one source is registered and citable"
+}

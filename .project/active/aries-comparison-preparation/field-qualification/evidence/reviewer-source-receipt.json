@@ -1,0 +1,9 @@
+{
+  "reviewer": "field_science_review",
+  "raw_html_sha256": "1a638e56f3d7bf6a45c0c918a335bef855727c3da130e532292a245be1880fcc",
+  "derived_text_sha256": "cc19f351b3f68b3011da8dbdd0f5c55423d593cce36ad0effa7c9efe24c89d3d",
+  "rawLines_arrays": 1,
+  "source_lines": 276,
+  "exact_derived_text_equality": true,
+  "source_code_executed": false
+}

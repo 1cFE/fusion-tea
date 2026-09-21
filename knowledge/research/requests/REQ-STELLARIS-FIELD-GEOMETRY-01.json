@@ -1,0 +1,9 @@
+{
+  "request_id": "REQ-STELLARIS-FIELD-GEOMETRY-01",
+  "question": "Are machine-readable coil curves, current-family normalization, winding-pack frames and dimensions, and a matching axis or equilibrium publicly available for the named Stellaris baseline, sufficient for independent pointwise magnetic-field and conductor-peak qualification?",
+  "consumer": ".project/active/aries-comparison-preparation/field-qualification/spec.md",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": ["Stellaris Lion et al. 2025 doi:10.1016/j.fusengdes.2025.114868 and data availability", "Proxima Fusion official publications and author repositories", "Zenodo Stellaris datasets", "public coil/equilibrium repositories with explicit Stellaris baseline identity"],
+  "limits": {"max_searches": 6, "max_captures": 3}
+}

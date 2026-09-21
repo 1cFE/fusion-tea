@@ -1561,6 +1561,54 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 5c25013f7ae14300d8c93f016169c9247b85c1d412b596c405dc47e238ff8cc4
 - **Date Added**: 2026-09-19
 
+### Coilsets and Scripts from Augmented Lagrangian Methods for Stellarator Coils dataset landing page
+- **Type**: url
+- **Location**: knowledge/sources/coilsets_and_scripts_from_augmented_lagrangian_methods_for/
+- **Use for**: Identify available coil datasets associated with the author study and determine whether they identify the named Stellaris baseline for REQ-STELLARIS-FIELD-GEOMETRY-01.
+- **Validation**: Inspect captured dataset description, archive link, author list and related paper identifier; landing-page capture does not validate archive contents.
+- **Caveat**: Dataset landing page only; alternative coil designs must not be treated as the original Stellaris winding-pack model.
+
+#### Extended Metadata
+- **Source URL**: https://zenodo.org/records/18497939
+- **Source ID**: 4af47472e14c982c34b16c1fd4a836154dd40e8ca417b129f987fdb89942e42e
+- **Raw SHA256**: 4af47472e14c982c34b16c1fd4a836154dd40e8ca417b129f987fdb89942e42e
+- **Raw Artifact SHA256**: 4af47472e14c982c34b16c1fd4a836154dd40e8ca417b129f987fdb89942e42e
+- **Extracted Path**: knowledge/sources/coilsets_and_scripts_from_augmented_lagrangian_methods_for/
+- **Extract SHA256**: 37b1d6edf2f1e1b1ae087066eb57e5d95ac805667a63dcf9aa84fb8fc2617183
+- **Date Added**: 2026-09-20
+
+### Proxima Fusion public simplified stellarator CAD models
+- **Type**: url
+- **Location**: knowledge/sources/proxima_fusion_public_simplified_stellarator_cad_models/
+- **Use for**: Determine whether the author public CAD repository supplies named Stellaris coil geometry for REQ-STELLARIS-FIELD-GEOMETRY-01.
+- **Validation**: Check captured README model descriptions and file links for baseline identity, coil curves, current definitions and winding-pack frames.
+- **Caveat**: Repository landing-page snapshot, not a certification of CAD geometry or pointwise field solution; simplified public models may describe other machines.
+
+#### Extended Metadata
+- **Source URL**: https://github.com/proximafusion/open_stellarator_models
+- **Source ID**: fbe19b2ab852fb7910324aaf51a4e2edbd62377220805bb67573d2e04a7d5a39
+- **Raw SHA256**: fbe19b2ab852fb7910324aaf51a4e2edbd62377220805bb67573d2e04a7d5a39
+- **Raw Artifact SHA256**: fbe19b2ab852fb7910324aaf51a4e2edbd62377220805bb67573d2e04a7d5a39
+- **Extracted Path**: knowledge/sources/proxima_fusion_public_simplified_stellarator_cad_models/
+- **Extract SHA256**: 1af5e6d19a1e2912c029c6904f2f12290b544bc3ca6f7a5ff58f0743a14861f1
+- **Date Added**: 2026-09-20
+
+### Author Stellaris augmented Lagrangian script at a79006b
+- **Type**: url
+- **Location**: knowledge/sources/author_stellaris_augmented_lagrangian_script_at_a79006b/
+- **Use for**: Identify explicitly Stellaris coil and equilibrium file dependencies, current normalization and geometry representation for REQ-STELLARIS-FIELD-GEOMETRY-02.
+- **Validation**: Read the pinned script source and exact input filenames; distinguish external input dependencies from actual included geometry data.
+- **Caveat**: Author development script, not executed here; existence of named local dependencies does not establish their public availability or finite-pack qualification.
+
+#### Extended Metadata
+- **Source URL**: https://github.com/PedroFranciscoGil/simsopt/blob/a79006b0bc1e6df8ab48de284e3457d39a49b995/examples/3_Advanced/auglag/auglag_stellaris.py
+- **Source ID**: 1a638e56f3d7bf6a45c0c918a335bef855727c3da130e532292a245be1880fcc
+- **Raw SHA256**: 1a638e56f3d7bf6a45c0c918a335bef855727c3da130e532292a245be1880fcc
+- **Raw Artifact SHA256**: 1a638e56f3d7bf6a45c0c918a335bef855727c3da130e532292a245be1880fcc
+- **Extracted Path**: knowledge/sources/author_stellaris_augmented_lagrangian_script_at_a79006b/
+- **Extract SHA256**: b09de07ca67b04a136b07a659c928ac1ac0a76bea9e834d748c4b47ea7a30694
+- **Date Added**: 2026-09-20
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

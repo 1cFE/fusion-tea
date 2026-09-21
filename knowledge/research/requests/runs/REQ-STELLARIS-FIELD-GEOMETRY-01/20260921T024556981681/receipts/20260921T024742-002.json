@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "https://zenodo.org/records/18497939",
+  "slug": "coilsets_and_scripts_from_augmented_lagrangian_methods_for",
+  "path": "knowledge/sources/coilsets_and_scripts_from_augmented_lagrangian_methods_for/",
+  "source_id": "4af47472e14c982c34b16c1fd4a836154dd40e8ca417b129f987fdb89942e42e",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-21T02:47:42.116398+00:00"
+}

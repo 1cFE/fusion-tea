@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "capture_failed",
+  "candidate": "https://github.com/proximafusion/open_stellarator_models",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "extract exited 1",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-21T02:46:46.468021+00:00"
+}
