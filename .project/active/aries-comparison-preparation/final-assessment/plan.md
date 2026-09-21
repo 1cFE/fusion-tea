@@ -13,7 +13,7 @@
 
 - [x] Establish scope, assignments and preservation baseline; commit plan.
 - [x] Complete structural correspondence and record findings; commit evidence.
-- [ ] Complete quantities and cost review, retain machine-readable dispositions; commit evidence.
+- [x] Complete quantities and cost review, retain machine-readable dispositions; commit evidence.
 - [ ] Assemble a complete row-disposition register and readable assessment; independently review and resolve findings.
 - [ ] Verify preservation, update status/log, and commit final reviewed assessment.
 

@@ -17,3 +17,11 @@ This continues [F019–F021](../geometry-acquisition/findings.md). Findings are 
 ## F024 — Structural comparison now has explicit verdicts
 
 [AGENT] The radial-order checklist passes at its stated qualitative level. The subsystem checklist fails because the selected plant lacks the separate PbLi heat-removal branch shown in the ARIES engineering design. Complete account coverage remains unresolved despite recognizable cost families. These verdicts are submitted for independent review. [Structural evidence and mapping](structure.md).
+
+## F025 — Component prices can be compared descriptively, but not scored as accuracy passes
+
+[AGENT] All 35 field-independent calculated cost rows are reviewed, including 21 source-value pairs checked against primary images. Eight nominal ratios are inside the original band, three below and ten above, with excluded C220107 among the eight. Different money years, technologies and account boundaries prevent scientific pass/fail. Values are now visible with individual reasons rather than a generic field blocker. [Cost review](costs.md).
+
+## F026 — Selected purchases and source numbering affect apparent agreement
+
+[AGENT] Turbine and heat-rejection amounts are supplied purchases; several other accounts price selected equipment classes. They do not validate achieved plant output. Source papers also number heat rejection and special materials differently, so an account-number-only join can compare the wrong equipment. The semantic crosswalk preserves each paper's actual meaning. [Frozen producer evidence](evidence/cost-frozen-excerpts.json), [crosswalk](structure.md).
