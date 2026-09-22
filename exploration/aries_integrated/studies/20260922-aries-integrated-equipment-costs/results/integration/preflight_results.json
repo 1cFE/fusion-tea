@@ -1,0 +1,104 @@
+{
+  "schema_version": "study-preflight-results/v1",
+  "tool": {
+    "path": "scripts/study/preflight.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "52c3a709175a3aaded006bb96576aa2407689f598fa13528b8c2f8db493900be",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        },
+        {
+          "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+          "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+          "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+        }
+      ]
+    }
+  },
+  "subcommand": "gates",
+  "inputs": {
+    "package": "exploration/aries_integrated/aries_integrated",
+    "manifest": "exploration/aries_integrated/studies/manifest.json",
+    "axis_declaration": "exploration/aries_integrated/studies/axes.json",
+    "identity_document": "work/orchestration/goals/aries-integrated-equipment-costs/evidence/integration-attempt1/package_identity.json",
+    "baseline_result": "work/orchestration/goals/aries-integrated-equipment-costs/evidence/integration-attempt1/baseline_result.json"
+  },
+  "input_digests": {
+    "axis_declaration": "1eacbf033b662d7d0fa6989cfde295c6c710fd55f035a26802d24b24374f8ea6",
+    "baseline_result": "ac4aab1347cf40864271780699a3000c59f0805932e9d1eb8d22930f2313fae4",
+    "identity_document": "a88a91923a5c123182313c5c9253a758385fe343d10d7511cd91cb478e9657f3",
+    "manifest": "a1cf37a16f74586aaaa73d1c92e01f683797ea3160d3b295ea612d2a6a41b1a4"
+  },
+  "gates": [
+    {
+      "gate": "declared_keys",
+      "status": "pass",
+      "checked": "declared axis keys against the package's inputs",
+      "detail": "32 declared keys across 28 groups, all package inputs"
+    },
+    {
+      "gate": "sibling_scan",
+      "status": "pass",
+      "checked": "undeclared suffix siblings (advisory)",
+      "detail": "warnings: 9",
+      "warnings": [
+        "helium_partition: undeclared suffix-sibling aries_cs_plasma_integration__plasma__helium_fraction",
+        "common_compressor_efficiency: undeclared suffix-sibling aries_integrated_plant__divertor_pump__efficiency",
+        "common_compressor_efficiency: undeclared suffix-sibling aries_integrated_plant__pbli_pump__efficiency",
+        "he_pump_efficiency: undeclared suffix-sibling aries_integrated_plant__divertor_pump__efficiency",
+        "he_pump_efficiency: undeclared suffix-sibling aries_integrated_plant__pbli_pump__efficiency",
+        "he_hx_area: undeclared suffix-sibling aries_integrated_plant__divertor_hx__selected_area",
+        "he_hx_area: undeclared suffix-sibling aries_integrated_plant__pbli_hx__selected_area",
+        "he_pump_capacity: undeclared suffix-sibling aries_integrated_plant__divertor_pump__selected_flow_capacity",
+        "he_pump_capacity: undeclared suffix-sibling aries_integrated_plant__pbli_pump__selected_flow_capacity"
+      ]
+    },
+    {
+      "gate": "identity",
+      "status": "pass",
+      "checked": "the executable identity, recomputed",
+      "detail": "kind sealed, digest 01f8f89c42a98621ff4c6868156d9b7938b7c80102f1c8321b35504ffcc7a021 recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches"
+    },
+    {
+      "gate": "manifest_currency",
+      "status": "pass",
+      "checked": "the manifest's recorded package facts",
+      "detail": "both recorded package fingerprints match the package on disk"
+    },
+    {
+      "gate": "baseline_headline",
+      "status": "pass",
+      "checked": "the pinned headline and verdicts",
+      "detail": "aries_integrated_plant__plant_ledger__evaluate__net_electric reproduces at relative deviation 0.000e+00; 2/2 pinned verdicts match"
+    },
+    {
+      "gate": "package_clean",
+      "status": "pass",
+      "checked": "the committed package tree",
+      "detail": "package tree is byte-untouched (git clean)"
+    }
+  ],
+  "outcome": "pass"
+}

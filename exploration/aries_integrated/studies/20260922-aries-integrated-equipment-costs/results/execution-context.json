@@ -1,0 +1,13 @@
+{
+  "repo_commit_at_execution": "e8f9cc1d59a0583fb1b2b2ca4eaa51d87b891c2f",
+  "recorded_at_utc": "2026-09-22T16:23:13.333608+00:00",
+  "execution_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m exploration.aries_integrated.studies.execute_study --record exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs --integration-return work/orchestration/goals/aries-integrated-equipment-costs/evidence/integration-attempt1/integration_return.json'",
+  "verification_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m scripts.study.verify --package exploration/aries_integrated/aries_integrated --manifest exploration/aries_integrated/studies/manifest.json --identity exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/results/package_identity.json --store exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/results/native/20260922-aries-integrated-equipment-costs.db --sample-size 64 --out exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/results/verification_summary.json'",
+  "analysis_command": ".codex-test/run python exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/analyze_results.py",
+  "execution_invocations": 1,
+  "proposed_points": 64,
+  "completed_points": 64,
+  "package_mutations": false,
+  "coordinator_release": "T-006 explicit release after native integration CANDIDATE, all ten gates passed",
+  "no_runtime_physical_adapter": true
+}

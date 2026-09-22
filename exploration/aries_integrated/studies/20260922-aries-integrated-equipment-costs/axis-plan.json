@@ -1,0 +1,428 @@
+{
+  "axes": [
+    {
+      "axis": "recuperator_effectiveness",
+      "keys": [
+        "aries_integrated_plant__cycle__recuperator_effectiveness"
+      ],
+      "values": [
+        0.6,
+        0.95
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Purchased recuperator geometry, pressure loss and effectiveness relation absent",
+      "units": "dimensionless",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "he_hot_limit",
+      "keys": [
+        "aries_integrated_plant__heat_exchangers__he_limit"
+      ],
+      "values": [
+        679.15,
+        779.15
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Bulk limit is not a qualified material temperature",
+      "units": "K",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "pbli_hot_limit",
+      "keys": [
+        "aries_integrated_plant__heat_exchangers__pbli_limit"
+      ],
+      "values": [
+        961.15,
+        1061.15
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Bulk limit is not a qualified material temperature",
+      "units": "K",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "divertor_hot_limit",
+      "keys": [
+        "aries_integrated_plant__heat_exchangers__divertor_limit"
+      ],
+      "values": [
+        923.15,
+        1023.15
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Bulk limit is not a qualified material temperature",
+      "units": "K",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "cycle_flow",
+      "keys": [
+        "aries_integrated_plant__cycle__selected_flow"
+      ],
+      "values": [
+        1000.0,
+        1800.0
+      ],
+      "role": "operating",
+      "framing": "sensitivity",
+      "missing_response": "Machine maps and flow-specific purchased capability absent",
+      "units": "kg/s",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "he_operating_flow",
+      "keys": [
+        "aries_integrated_plant__heat_exchangers__he_flow"
+      ],
+      "values": [
+        1630.5,
+        4891.5
+      ],
+      "role": "operating",
+      "framing": "sensitivity",
+      "missing_response": "Cubic fixed-path pump proxy does not qualify gas or MHD hydraulics",
+      "units": "kg/s",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "pbli_operating_flow",
+      "keys": [
+        "aries_integrated_plant__heat_exchangers__pbli_flow"
+      ],
+      "values": [
+        13430.0,
+        40290.0
+      ],
+      "role": "operating",
+      "framing": "sensitivity",
+      "missing_response": "Cubic fixed-path pump proxy does not qualify gas or MHD hydraulics",
+      "units": "kg/s",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "divertor_operating_flow",
+      "keys": [
+        "aries_integrated_plant__heat_exchangers__divertor_flow"
+      ],
+      "values": [
+        250.0,
+        750.0
+      ],
+      "role": "operating",
+      "framing": "sensitivity",
+      "missing_response": "Cubic fixed-path pump proxy does not qualify gas or MHD hydraulics",
+      "units": "kg/s",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "he_u",
+      "keys": [
+        "aries_integrated_plant__he_hx__assumed_u"
+      ],
+      "values": [
+        500.0,
+        1500.0
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Fixed-area U uncertainty lacks geometry, pressure-drop and real-fluid qualification",
+      "units": "W/(m2 K)",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "pbli_u",
+      "keys": [
+        "aries_integrated_plant__pbli_hx__assumed_u"
+      ],
+      "values": [
+        500.0,
+        1500.0
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Fixed-area U uncertainty lacks geometry, pressure-drop and real-fluid qualification",
+      "units": "W/(m2 K)",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "divertor_u",
+      "keys": [
+        "aries_integrated_plant__divertor_hx__assumed_u"
+      ],
+      "values": [
+        500.0,
+        1500.0
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Fixed-area U uncertainty lacks geometry, pressure-drop and real-fluid qualification",
+      "units": "W/(m2 K)",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "neutron_multiplier",
+      "keys": [
+        "aries_integrated_plant__deposition__neutron_multiplier"
+      ],
+      "values": [
+        1.0,
+        1.25
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "No qualified neutron, radiation or inter-coolant transport response",
+      "units": "dimensionless",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "helium_partition",
+      "keys": [
+        "aries_integrated_plant__deposition__helium_fraction"
+      ],
+      "values": [
+        0.3,
+        0.46
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "No qualified neutron, radiation or inter-coolant transport response",
+      "units": "dimensionless",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "radiation_partition",
+      "keys": [
+        "aries_integrated_plant__deposition__radiation_fraction"
+      ],
+      "values": [
+        0.1,
+        0.4
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "No qualified neutron, radiation or inter-coolant transport response",
+      "units": "dimensionless",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "intercoolant_exchange",
+      "keys": [
+        "aries_integrated_plant__deposition__exchange_fraction"
+      ],
+      "values": [
+        0.02,
+        0.06
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "No qualified neutron, radiation or inter-coolant transport response",
+      "units": "dimensionless",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "pbli_cp",
+      "keys": [
+        "aries_integrated_plant__heat_exchangers__pbli_cp"
+      ],
+      "values": [
+        170.0,
+        220.0
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Constant-property sensitivity lacks real-fluid qualification",
+      "units": "J/(kg K)",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "common_cold_sink",
+      "keys": [
+        "aries_integrated_plant__cycle__low_temperature",
+        "aries_integrated_plant__intercooler_1__target_temperature",
+        "aries_integrated_plant__intercooler_2__target_temperature"
+      ],
+      "values": [
+        298.15,
+        318.15
+      ],
+      "role": "operating",
+      "framing": "sensitivity",
+      "missing_response": "Common operating sink is an executor-declared tie; weather and sink equipment response absent",
+      "units": "K",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "pressure_loss",
+      "keys": [
+        "aries_integrated_plant__pressure_loss__loss_fraction"
+      ],
+      "values": [
+        0.02,
+        0.08
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Pressure loss is not derived from selected geometry",
+      "units": "dimensionless",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "turbine_efficiency",
+      "keys": [
+        "aries_integrated_plant__cycle__turbine_efficiency"
+      ],
+      "values": [
+        0.88,
+        0.95
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Machine-map and purchased quality response absent",
+      "units": "dimensionless",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "common_compressor_efficiency",
+      "keys": [
+        "aries_integrated_plant__compressor_1__efficiency",
+        "aries_integrated_plant__compressor_2__efficiency",
+        "aries_integrated_plant__compressor_3__efficiency"
+      ],
+      "values": [
+        0.84,
+        0.92
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Common assumed efficiency is an executor-declared tie; machine-map and purchase-quality response absent",
+      "units": "dimensionless",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "he_pump_efficiency",
+      "keys": [
+        "aries_integrated_plant__he_pump__efficiency"
+      ],
+      "values": [
+        0.6,
+        0.9
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Efficiency is assumed at fixed installed flow capacity; qualification and price premium absent",
+      "units": "dimensionless",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "heating_efficiency",
+      "keys": [
+        "aries_integrated_plant__generator_auxiliaries__heating_efficiency"
+      ],
+      "values": [
+        0.4,
+        0.7
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Heating efficiency has no purchased equipment or performance-map response",
+      "units": "dimensionless",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "cryo_load",
+      "keys": [
+        "aries_integrated_plant__generator_auxiliaries__cryo"
+      ],
+      "values": [
+        5.0,
+        15.0
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Supplied auxiliary demand lacks subsystem physics",
+      "units": "MW",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "control_load",
+      "keys": [
+        "aries_integrated_plant__generator_auxiliaries__control"
+      ],
+      "values": [
+        2.5,
+        7.5
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Supplied auxiliary demand lacks subsystem physics",
+      "units": "MW",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "other_electric_load",
+      "keys": [
+        "aries_integrated_plant__generator_auxiliaries__other_electric"
+      ],
+      "values": [
+        2.5,
+        7.5
+      ],
+      "role": "assumed",
+      "framing": "sensitivity",
+      "missing_response": "Supplied auxiliary demand lacks subsystem physics",
+      "units": "MW",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "density_amplitude",
+      "keys": [
+        "aries_cs_plasma_integration__plasma__amplitude"
+      ],
+      "values": [
+        4.5e+20,
+        5.5e+20
+      ],
+      "role": "demand",
+      "framing": "sensitivity",
+      "missing_response": "Calculated source sensitivity does not qualify confinement",
+      "units": "m^-3",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "he_hx_area",
+      "keys": [
+        "aries_integrated_plant__he_hx__selected_area"
+      ],
+      "values": [
+        5000.0,
+        75000.0
+      ],
+      "role": "purchased",
+      "framing": "sensitivity",
+      "missing_response": "Low-area point is a flagged linear-price extrapolation allowed by E2",
+      "units": "m2",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "he_pump_capacity",
+      "keys": [
+        "aries_integrated_plant__he_pump__selected_flow_capacity"
+      ],
+      "values": [
+        1630.5,
+        4891.5
+      ],
+      "role": "purchased",
+      "framing": "sensitivity",
+      "missing_response": "Offered scalar flow capacity is not hydraulic qualification",
+      "units": "kg/s",
+      "window_provenance": "engineered"
+    }
+  ]
+}

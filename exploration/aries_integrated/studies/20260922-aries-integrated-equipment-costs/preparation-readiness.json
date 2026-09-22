@@ -1,0 +1,72 @@
+{
+  "status": "ready_for_native_integration_and_review; stored study execution not released",
+  "package_checkpoint": "36cb6aedcde8367461ba466b8e0ff229db11e12b",
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "c023c3f9fb82d26533dd1c0025bdbc4cf978598cee01b58d59219539f6c3babb",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/integrated_equipment_costs_params.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_viability_params.json",
+        "inputs/plant_params.json",
+        "inputs/plasma_integration_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "01f8f89c42a98621ff4c6868156d9b7938b7c80102f1c8321b35504ffcc7a021",
+      "semantic_fingerprint": "10ea8ab0c94ef4bd126465b2bf664a86bc3a38fa892b39591aa3057069f13a6f"
+    }
+  },
+  "entry_fields": 411,
+  "declared_axes": 28,
+  "proposed_points": 64,
+  "independent_channels_per_case": 278,
+  "canonical_scalar_comparisons": 1112,
+  "canonical_predicate_comparisons": 56,
+  "canonical_all_pass": true,
+  "oracle_scan_points": 64,
+  "oracle_scan_refusals": 0,
+  "indicator_warnings": [],
+  "native_study_points_executed": 0,
+  "pending": [
+    "independent preparation acceptance if required",
+    "native integration baseline/preflight and CANDIDATE",
+    "coordinator study execution release",
+    "stored execution and verification",
+    "thermal interpretation before economic ranking"
+  ],
+  "artifacts": [
+    {
+      "path": "exploration/aries_integrated/studies/manifest.json",
+      "sha256": "a1cf37a16f74586aaaa73d1c92e01f683797ea3160d3b295ea612d2a6a41b1a4"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/axes.json",
+      "sha256": "1eacbf033b662d7d0fa6989cfde295c6c710fd55f035a26802d24b24374f8ea6"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/interface_data.py",
+      "sha256": "1e4d200e2a9e4764b0fd090d39a4b9571edb3df4e32aaeaa28f8a01556bfbd1b"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/proposed-points.json",
+      "sha256": "253ac5795aab781e457bdd73edb1bdadfdb60e86070eae0dafc137ffda781784"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/development-canonical-check.json",
+      "sha256": "47194235c7d4e2429f8bb81958e74f209ee2daf04a4990deda358bab4a99f929"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/oracle-window-scan.json",
+      "sha256": "22151f3aa89833823d8c0ed1023a2df6bb9f6111dbedecefb92a1040cccdd6c0"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/indicators.json",
+      "sha256": "599db0cf61fe49a304f2446c45c352f30911842ace4c237d16656374cba4dff9"
+    }
+  ]
+}
