@@ -267,6 +267,11 @@ epics:
     scale: standard
     status: backlog
     completed: null
+  - id: WI-085
+    name: ARIES calculated plasma to fuel integration
+    scale: standard
+    status: backlog
+    completed: null
 standalone:
 - id: WI-026
   name: Pytest Baseline Re-Record
@@ -533,6 +538,7 @@ standalone:
 | WI-082 | ARIES existing-component transfer proof | standard | backlog |  |
 | WI-083 | ARIES supplied-profile plasma integration | standard | backlog |  |
 | WI-084 | ARIES sector constituent inventory | standard | backlog |  |
+| WI-085 | ARIES calculated plasma to fuel integration | standard | backlog |  |
 
 ## Standalone Items
 
