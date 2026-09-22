@@ -1,0 +1,75 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "he_area",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_hx__selected_area",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Coordinator-selected modest local OAT window; dependency-audit.md and audit-bindings.json record native bindings and inherited scope."
+    },
+    {
+      "axis": "pbli_area",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_hx__selected_area",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Coordinator-selected modest local OAT window; dependency-audit.md and audit-bindings.json record native bindings and inherited scope."
+    },
+    {
+      "axis": "density",
+      "keys": [
+        {
+          "key": "aries_cs_plasma_integration__plasma__amplitude",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Coordinator-selected modest local OAT window; dependency-audit.md and audit-bindings.json record native bindings and inherited scope."
+    },
+    {
+      "axis": "cycle_flow",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cycle__selected_flow",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Coordinator-selected modest local OAT window; dependency-audit.md and audit-bindings.json record native bindings and inherited scope."
+    },
+    {
+      "axis": "compressor_1_ratio",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__compressor_1__selected_ratio",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Coordinator-selected modest local OAT window; dependency-audit.md and audit-bindings.json record native bindings and inherited scope."
+    },
+    {
+      "axis": "compressor_2_ratio",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__compressor_2__selected_ratio",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Coordinator-selected modest local OAT window; dependency-audit.md and audit-bindings.json record native bindings and inherited scope."
+    },
+    {
+      "axis": "compressor_3_ratio",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__compressor_3__selected_ratio",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Coordinator-selected modest local OAT window; dependency-audit.md and audit-bindings.json record native bindings and inherited scope."
+    }
+  ]
+}

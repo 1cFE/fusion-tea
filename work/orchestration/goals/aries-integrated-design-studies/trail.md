@@ -68,3 +68,14 @@ T-002 · new native study support files · bounded author return. Parallel with 
 ### T-003 start — 2026-09-22
 
 T-003 · exploration/aries_integrated/studies/20260922-aries-integrated-local-response · native results, verification, plots and committed record. Coordinator executes/freezes; study author finishes reporting support only, with disjoint writes.
+
+### T-003 return — 2026-09-22
+
+- **Outcome:** MECHANICAL_FAILURE at final reporting/freeze check; all native execution and numerical verification succeeded.
+- **Evidence:** evidence/local-freeze-attempt1 preserves the first uncommitted snapshot/report/accounting archive.
+- **Reading:** The reporting field/header mislabeled native UA values as W/K rather than MW/K. Native values and their actual generated units are unchanged. The record had not been committed or accepted as immutable.
+- **Decision:** Correct the presentation label, preserve the failed draft and recreate the snapshot; do not rerun any model case · execution detail · coordinator · reporting field/header and freeze metadata only.
+
+### T-003 start — 2026-09-22
+
+Retry 1 of 2; task, inputs, scope and meaning identical. Finalize the same 24 native cases after correcting the UA unit label to MW/K. No evaluator retry or scientific change.

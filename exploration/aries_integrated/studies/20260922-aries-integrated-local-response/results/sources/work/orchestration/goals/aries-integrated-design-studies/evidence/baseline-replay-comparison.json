@@ -1,0 +1,7 @@
+{
+  "exact_match": true,
+  "differences": {},
+  "numeric_outputs": 546,
+  "predicates": 14,
+  "reference": "exploration/aries_integrated/studies/20260922-aries-integrated-lcoe/preparation/baseline_result.json"
+}
