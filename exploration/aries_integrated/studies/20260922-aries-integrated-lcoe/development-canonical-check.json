@@ -1,0 +1,85 @@
+{
+  "kind": "independent-check-of-existing-author-evidence",
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "cbce7125673b74e8636791b88ee576c642b53529de374d4a6d03ac6d357075e0",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/integrated_equipment_costs_params.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_viability_params.json",
+        "inputs/plant_params.json",
+        "inputs/plasma_integration_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "d13f4153accc48a3d6533a2d29a8e8b6b7cecd86644c322bb64f59fa402e419b",
+      "semantic_fingerprint": "419e6e3d7ba46320a1f88b5f478d36abb5ead85d2ecb6fcdb7aff5fcb2c1e131"
+    }
+  },
+  "cases": [
+    {
+      "case": "no-breeding-credit",
+      "status": "pass",
+      "comparisons": 364,
+      "verdicts": 14,
+      "worst": [
+        8288.25,
+        "no-breeding-credit",
+        "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+        7.539028956671245e-09
+      ]
+    },
+    {
+      "case": "assumed-new-tritium-feed-100",
+      "status": "pass",
+      "comparisons": 364,
+      "verdicts": 14,
+      "worst": [
+        8288.25,
+        "assumed-new-tritium-feed-100",
+        "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+        7.539028956671245e-09
+      ]
+    },
+    {
+      "case": "nominal-source-assumed",
+      "status": "pass",
+      "comparisons": 364,
+      "verdicts": 14,
+      "worst": [
+        1892.3333333333333,
+        "nominal-source-assumed",
+        "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+        1.291482476517558e-09
+      ]
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "status": "pass",
+      "comparisons": 364,
+      "verdicts": 14,
+      "worst": [
+        12869.0,
+        "literal-Lyon-source-input",
+        "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+        5.852598405908793e-09
+      ]
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "status": "pass",
+      "comparisons": 364,
+      "verdicts": 14,
+      "worst": [
+        5.1042361830294445e-12,
+        "literal-Raffray-accounting",
+        "aries_integrated_plant__heat_exchangers__evaluate__he_unmet",
+        216.1152710908649
+      ]
+    }
+  ]
+}

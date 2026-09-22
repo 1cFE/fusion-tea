@@ -21,7 +21,7 @@ How do explicitly selected finance and net-new-tritium assumptions change comple
 | Construction | T=0,4,10 years for both supply scenarios; nominal6 already present | 6 |
 | Calendar life | N=20,30,60 years for both supply scenarios; nominal40 already present | 6 |
 | Availability | A=.60,.75,.95 for both supply scenarios; R and supply-service charge held fixed within each scenario | 6 |
-| Major cost assumptions | Selected nuclear-island price, unallocated source-scope price, tritium price, routine O&M, consumables: two endpoints each on no-credit baseline | 10 |
+| Major cost assumptions | Selected magnet-inventory price, unallocated source-scope price, tritium price, routine O&M, consumables: two endpoints each on no-credit baseline | 10 |
 | Terminal/overhaul | Gross terminal fraction .05,.20; salvage0,.05; overhaul fraction0,.10; overhaul year15,30 | 8 |
 | Blanket replacement | Lifetime2,8 FPY and event factor .5,2; reserve remains excluded | 4 |
 | New feed and service | R=50,110 kg/y at fixed30m service; service10m,100m at fixed100kg/y | 4 |
@@ -29,7 +29,7 @@ How do explicitly selected finance and net-new-tritium assumptions change comple
 | Purchased equipment | Helium exchanger selected area5000,75000 m2 on no-credit case; demand unchanged; retain engineering violations and actual purchase-cost response | 2 |
 | Joint analytic limit | r=0 and T=0 on no-credit baseline | 1 |
 
-[AGENT] Provisional total is64 before exact canonical deduplication. Exact nuclear-island price owner and all key names will be checked against the actual generated interface; an absent planned owner must be resolved explicitly before preparation. Existing predecessor endpoints for T price are10m/100m USD2004/kg, routine O&M35m/140m USD2004/year, consumables1m/15m USD2004/year, ordinary purchase factors.5/1.5 and unallocated source scope.5/2. The existing published input `fuel_inventory.annual_recovery_kg` now means net NEW extracted supply outside the internal exhaust recycling loop; inherited99% internal exhaust recovery stays fixed. Missing production capability and service-price response are recorded as development gaps, not inferred improvements.
+[AGENT] Provisional total is64 before exact canonical deduplication. The selected capital sensitivity uses the actual magnet_inventory.price_factor owner; no aggregate nuclear-island price input exists. Existing predecessor endpoints for T price are10m/100m USD2004/kg, routine O&M35m/140m USD2004/year, consumables1m/15m USD2004/year, ordinary purchase factors.5/1.5 and unallocated source scope.5/2. The existing published input `fuel_inventory.annual_recovery_kg` now means net NEW extracted supply outside the internal exhaust recycling loop; inherited99% internal exhaust recovery stays fixed. Missing production capability and service-price response are recorded as development gaps, not inferred improvements.
 
 [AGENT] Source-conditioned finance is calculated by the separately named native branch at every supported point. It substitutes already-financed inclusive capital, supplied1000MW and T=0; recurring expenses and blanket events are held relative to that point, while terminal/salvage/overhaul fractions scale the substituted capital. Its price is a scope comparison, not a source reconstruction. The original terminal figure in USD1992 remains unmatched.
 

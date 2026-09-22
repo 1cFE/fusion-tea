@@ -96,3 +96,23 @@ A development experiment shows the generator lifts literal zero bindings into mu
 The independent checker initially mapped the positive PV salvage magnitude as a negative credit; the financial per-MWh credit and total equations were already negative as intended. The worker corrected that output binding before any declared study execution, retaining the first failed check. The first native preflight schema check lacked units/basis metadata; the corrected preflight passes and both receipts are retained. Count that mechanical preparation retry as1of2 for T-004. Comparison meaning and model equations are unchanged.
 
 The tiny-rate scan quantifies cancellation in the native IDC diagnostic (financed capital minus overnight): at r=1e-12, error is4.0761e-7 USD2004 at the tested capital scale. Independent reviewer accepts an absolute allowance of two capital ULP (1.9073486328125e-6 USD2004) on that one channel only, before study execution. All other financial comparison thresholds remain unchanged; evidence is the study's tiny-rate-tolerance.json and implementation-review.md.
+
+### T-004 return — 2026-09-22
+
+- **Outcome:** COMPLETE.
+- **Evidence:** Study `20260922-aries-integrated-lcoe` preparation:64full maps/19axes, oracle-window-scan.json, canonical check, final preflight, indicators/rulings, diagnostic copies and export-matching-check.json.
+- **Reading:** The new exact package has a study-ready baseline and declared sensitivity ranges; no declared study point has run. Independent canonical checks cover364channels and14predicates per case. Actual separate refusal diagnostics retain full inputs, output availability and14predicate records.
+- **Decision:** Trigger: predecessor export used JSON spelling rather than numeric-map equality. Decision: new record-local executor matches unique complete numeric maps, preserves stock StudyRunner and checks original persistent evidence hashes; synthetic int/float and changed-key checks pass. Tier: execution detail. Decided by: study worker/coordinator. Changed: new study executor only, no shared tool or evaluator semantics.
+
+### T-005 scope
+
+- **Objective:** Prove one native integrated candidate for the independently accepted lifecycle package.
+- **Why now:** T-003 behavior review and T-004 preparation pass.
+- **Scope:** Invoke the existing integration seam with exact accepted WI-091/package/manifest/groups/census identities; retain all gates. No semantic repair or second package promotion.
+- **Inputs:** goal.md, WI-091@54cce30b, package e44a0ded, current study metadata and evidence/integrate.py.
+- **Done when:** Native CANDIDATE with all required gates, or named preserved blocker.
+- **Stop when:** Discovered prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-005 start — 2026-09-22
+
+Coordinator commits the stable live metadata and preparation, then invokes the native integration seam into evidence/integration-attempt1. The final study record/snapshot remain uncommitted until executed, interpreted and frozen.

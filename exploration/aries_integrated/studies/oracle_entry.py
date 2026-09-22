@@ -12,7 +12,7 @@ from scipy.integrate import quad
 from scipy.optimize import brentq
 
 from exploration.aries_integrated.studies import study_route
-from exploration.aries_integrated.studies import equipment_bindings
+from exploration.aries_integrated.studies import equipment_bindings, lifecycle_bindings
 
 P = "aries_integrated_plant__"
 A = "aries_cs_plasma_integration__plasma__"
@@ -159,6 +159,7 @@ def evaluate(point):
         put("deposition", branch+"_friction", friction[branch])
     put("deposition", "pump_electric", pump)
     result.update(equipment_bindings.evaluate(point, power, exhaust, net))
+    result.update(lifecycle_bindings.evaluate(point, result))
     if not all(isfinite(value) for value in result.values()):
         raise ValueError("development checker produced nonfinite output")
     return result
@@ -199,4 +200,4 @@ def comparison_catalog():
                       ('heat_exchangers',branch+'_unmet'),('deposition',branch+'_friction')])
     for owner in ('he','pbli','divertor','fuel','compressor','turbine','generator','rejection'):
         pairs.extend([(owner+'_capacity','evaluation_defined'),(owner+'_capacity','margin')])
-    return sorted(set(output(*pair) for pair in pairs)|set(equipment_bindings.comparison_catalog()))
+    return sorted(set(output(*pair) for pair in pairs)|set(equipment_bindings.comparison_catalog())|set(lifecycle_bindings.comparison_catalog()))
