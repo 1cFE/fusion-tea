@@ -3,6 +3,22 @@
   "constraint_catalog": {
     "concrete_entries": [
       {
+        "constraint_id": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c",
+        "declaration_id": "036e0572-7f05-5899-926a-1206abc1fd97",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_integrated_plant__divertor_pump",
+        "owner_qualified_name": "aries_integrated_plant::divertor_pump",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::divertor_pump::capacity_ok"
+      },
+      {
         "constraint_id": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
         "declaration_id": "717eff92-93c6-5922-80ef-2d321071c452",
         "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
@@ -51,6 +67,22 @@
         "usage_qualified_name": "aries_integrated_plant::compressor_capacity::capacity_ok"
       },
       {
+        "constraint_id": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0",
+        "declaration_id": "e5e9bbbc-b28f-591f-8d8d-e7b39a0d452c",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_integrated_plant__fuel_inventory",
+        "owner_qualified_name": "aries_integrated_plant::fuel_inventory",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::fuel_inventory::capacity_ok"
+      },
+      {
         "constraint_id": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
         "declaration_id": "05f62bc3-c5af-58a4-9fe3-ff099cee6a4d",
         "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
@@ -83,6 +115,22 @@
         "usage_qualified_name": "aries_integrated_plant::divertor_capacity::capacity_ok"
       },
       {
+        "constraint_id": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180",
+        "declaration_id": "bb1b6f41-f223-542e-ae5f-8ac1fedaa633",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_integrated_plant__he_pump",
+        "owner_qualified_name": "aries_integrated_plant::he_pump",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::he_pump::capacity_ok"
+      },
+      {
         "constraint_id": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
         "declaration_id": "abf3cf06-b8c2-5fda-b0e0-43f3e507922f",
         "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
@@ -113,6 +161,22 @@
         "source_form": "definition_typed",
         "source_local_identity": "capacity_ok",
         "usage_qualified_name": "aries_integrated_plant::he_capacity::capacity_ok"
+      },
+      {
+        "constraint_id": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb",
+        "declaration_id": "e428d511-40f7-5184-991b-22dd43706cd7",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_integrated_plant__pbli_pump",
+        "owner_qualified_name": "aries_integrated_plant::pbli_pump",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::pbli_pump::capacity_ok"
       },
       {
         "constraint_id": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
@@ -164,7 +228,7 @@
       }
     ],
     "excluded_records": [],
-    "fingerprint": "975e21712d3854a64e5fc59e3daa3953e72eab68614632809990f9efce85e1f7",
+    "fingerprint": "b2fdfd4e0b31a376f963243a06c935cdb4295e916d307d31cfaddc9ade75ce5f",
     "source_records": [
       {
         "definition_qualified_name": "integrated_heat_electricity::'Heat Removal Adequate'",
@@ -206,6 +270,24 @@
         "source_form": "definition_typed",
         "source_local_identity": "capacity_ok",
         "usage_qualified_name": "aries_integrated_plant::compressor_capacity::capacity_ok"
+      },
+      {
+        "declaration_id": "036e0572-7f05-5899-926a-1206abc1fd97",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_integrated_plant::divertor_pump::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_integrated_plant::divertor_pump",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::divertor_pump::capacity_ok"
       },
       {
         "declaration_id": "05f62bc3-c5af-58a4-9fe3-ff099cee6a4d",
@@ -316,6 +398,24 @@
         "usage_qualified_name": "aries_integrated_plant::fuel_capacity::capacity_ok"
       },
       {
+        "declaration_id": "bb1b6f41-f223-542e-ae5f-8ac1fedaa633",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_integrated_plant::he_pump::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_integrated_plant::he_pump",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::he_pump::capacity_ok"
+      },
+      {
         "declaration_id": "c71c51f0-bf35-5df7-919f-860c77cb2ac3",
         "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
         "disposition_detail": "aries_integrated_plant::generator_capacity::capacity_ok profile eligibility admit",
@@ -332,6 +432,42 @@
         "source_form": "definition_typed",
         "source_local_identity": "capacity_ok",
         "usage_qualified_name": "aries_integrated_plant::generator_capacity::capacity_ok"
+      },
+      {
+        "declaration_id": "e428d511-40f7-5184-991b-22dd43706cd7",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_integrated_plant::pbli_pump::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_integrated_plant::pbli_pump",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::pbli_pump::capacity_ok"
+      },
+      {
+        "declaration_id": "e5e9bbbc-b28f-591f-8d8d-e7b39a0d452c",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_integrated_plant::fuel_inventory::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_integrated_plant::fuel_inventory",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::fuel_inventory::capacity_ok"
       },
       {
         "declaration_id": "f8126fb1-d7f6-5c20-b9fa-b4e9d545dc45",
@@ -374,6 +510,546 @@
   "evaluation_semantics": "kleene-three-valued",
   "outputs": [
     {
+      "channel_name": "aries_integrated_plant__pbli_hx__evaluate__area",
+      "field_name": "area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_hx__evaluate__ua",
+      "field_name": "ua",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_hx__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_hx__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_hx__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_hx__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_hx__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__impurity_control__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__impurity_control__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_hx__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_hx__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_hx__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_hx__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_hx__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_hx__evaluate__area",
+      "field_name": "area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_hx__evaluate__ua",
+      "field_name": "ua",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_pump__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_pump__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_pump__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_pump__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_pump__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_pump__evaluate__electric",
+      "field_name": "electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_pump__evaluate__operating_flow",
+      "field_name": "operating_flow",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_pump__evaluate__mode",
+      "field_name": "mode",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_pump__evaluate__hydraulic_supported",
+      "field_name": "hydraulic_supported",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_pump__screen__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_pump__screen__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_pump__screen__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_pump__screen__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_pump__screen__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__unallocated_source_scope__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__unallocated_source_scope__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__magnet_inventory__inventory__total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__magnet_inventory__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__magnet_inventory__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__magnet_inventory__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__magnet_inventory__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__magnet_inventory__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__site_land__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__site_land__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lipb_inventory__inventory__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lipb_inventory__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lipb_inventory__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lipb_inventory__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lipb_inventory__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lipb_inventory__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__conversion_services__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__conversion_services__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__waste_equipment__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__waste_equipment__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__magnet_power_supplies__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__magnet_power_supplies__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__vacuum_equipment__inventory__total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__vacuum_equipment__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__vacuum_equipment__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__vacuum_equipment__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__vacuum_equipment__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__vacuum_equipment__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_processing_equipment__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_processing_equipment__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_processing_equipment__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_processing_equipment__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_processing_equipment__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__secondary_transport__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__secondary_transport__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__vf_coils__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__vf_coils__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__purchase__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__atoms__stock_kg",
+      "field_name": "stock_kg",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__atoms__atoms",
+      "field_name": "atoms",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__deuterium_rate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_rejection_equipment__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_rejection_equipment__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_rejection_equipment__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_rejection_equipment__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_rejection_equipment__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_hx__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_hx__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_hx__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_hx__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_hx__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_hx__evaluate__area",
+      "field_name": "area",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_hx__evaluate__ua",
+      "field_name": "ua",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_budget__evaluate__direct_total",
+      "field_name": "direct_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_budget__evaluate__inclusive_addition",
+      "field_name": "inclusive_addition",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_budget__evaluate__inclusive_capital",
+      "field_name": "inclusive_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__facilities__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__facilities__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_equipment__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_equipment__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_equipment__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_equipment__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_equipment__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__miscellaneous_equipment__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__miscellaneous_equipment__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_services__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_services__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_equipment__evaluate__total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_duty_equipment__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_duty_equipment__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_duty_equipment__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_duty_equipment__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_duty_equipment__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_duty_equipment__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_duty_equipment__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_duty_equipment__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_duty_equipment__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_duty_equipment__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
       "channel_name": "aries_integrated_plant__compressor_1__evaluate__pressure_out",
       "field_name": "pressure_out",
       "python_type": "float"
@@ -386,6 +1062,81 @@
     {
       "channel_name": "aries_integrated_plant__compressor_1__evaluate__temperature_out",
       "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_pump__evaluate__electric",
+      "field_name": "electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_pump__evaluate__operating_flow",
+      "field_name": "operating_flow",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_pump__evaluate__mode",
+      "field_name": "mode",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_pump__evaluate__hydraulic_supported",
+      "field_name": "hydraulic_supported",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_pump__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_pump__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_pump__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_pump__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_pump__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_pump__screen__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_pump__screen__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_pump__screen__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_pump__screen__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_pump__screen__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__replacement_lipb__evaluate__amount",
+      "field_name": "root",
       "python_type": "float"
     },
     {
@@ -454,6 +1205,56 @@
       "python_type": "float"
     },
     {
+      "channel_name": "aries_integrated_plant__blanket_inventory__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__blanket_inventory__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__blanket_inventory__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__blanket_inventory__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__blanket_inventory__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__turbine_equipment__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__turbine_equipment__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__turbine_equipment__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__turbine_equipment__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__turbine_equipment__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
       "channel_name": "aries_cs_plasma_integration__plasma__edge_density__edge_density",
       "field_name": "root",
       "python_type": "float"
@@ -509,6 +1310,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "aries_integrated_plant__fuel_inventory__deuterium__annual_fuel",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
       "channel_name": "aries_integrated_plant__fuel__evaluate__burn_kg_per_fpy",
       "field_name": "burn_kg_per_fpy",
       "python_type": "float"
@@ -544,6 +1350,71 @@
       "python_type": "float"
     },
     {
+      "channel_name": "aries_integrated_plant__fuel_inventory__annual__annual_loss",
+      "field_name": "annual_loss",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__annual__annual_cost",
+      "field_name": "annual_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__annual__annual_burn",
+      "field_name": "annual_burn",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__annual__annual_recovery",
+      "field_name": "annual_recovery",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__annual__annual_decay",
+      "field_name": "annual_decay",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__annual__annual_external",
+      "field_name": "annual_external",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__annual__required_stock",
+      "field_name": "required_stock",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__annual__breeding_supported",
+      "field_name": "breeding_supported",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__screen__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__screen__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__screen__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__screen__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_inventory__screen__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
       "channel_name": "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined",
       "field_name": "evaluation_defined",
       "python_type": "float"
@@ -567,6 +1438,151 @@
       "channel_name": "aries_integrated_plant__fuel_capacity__evaluate__capacity_ok",
       "field_name": "capacity_ok",
       "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_cs_plasma_integration__plasma__density_sample__density",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_cs_plasma_integration__plasma__beta_calculation__beta",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_inventory__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_inventory__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_equipment__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_equipment__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_equipment__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_equipment__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_equipment__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__shield_inventory__inventory__total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__shield_inventory__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__shield_inventory__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__shield_inventory__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__shield_inventory__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__shield_inventory__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_duty_equipment__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_duty_equipment__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_duty_equipment__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_duty_equipment__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_duty_equipment__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_pump__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_pump__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_pump__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_pump__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_pump__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_pump__evaluate__electric",
+      "field_name": "electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_pump__evaluate__operating_flow",
+      "field_name": "operating_flow",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_pump__evaluate__mode",
+      "field_name": "mode",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_pump__evaluate__hydraulic_supported",
+      "field_name": "hydraulic_supported",
+      "python_type": "float"
     },
     {
       "channel_name": "aries_integrated_plant__deposition__evaluate__divertor_deposition",
@@ -702,16 +1718,6 @@
       "channel_name": "aries_integrated_plant__divertor_capacity__evaluate__capacity_ok",
       "field_name": "capacity_ok",
       "python_type": "bool"
-    },
-    {
-      "channel_name": "aries_cs_plasma_integration__plasma__density_sample__density",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_cs_plasma_integration__plasma__beta_calculation__beta",
-      "field_name": "root",
-      "python_type": "float"
     },
     {
       "channel_name": "aries_integrated_plant__he_coolant__evaluate__delivered_heat",
@@ -1114,6 +2120,66 @@
       "python_type": "bool"
     },
     {
+      "channel_name": "aries_integrated_plant__pbli_pump__screen__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_pump__screen__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_pump__screen__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_pump__screen__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_pump__screen__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__conversion_equipment__evaluate__total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__instrumentation_control__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__instrumentation_control__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__auxiliary_cooling__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__auxiliary_cooling__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heating_equipment__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heating_equipment__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
       "channel_name": "aries_integrated_plant__plant_ledger__evaluate__supported_hydraulics",
       "field_name": "supported_hydraulics",
       "python_type": "float"
@@ -1429,6 +2495,246 @@
       "python_type": "bool"
     },
     {
+      "channel_name": "aries_integrated_plant__annual_om__evaluate__annual_om",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__replacement_scope__evaluate__total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__replacement_price__evaluate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__replacement__evaluate__lifetime_total",
+      "field_name": "lifetime_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__replacement__evaluate__interval_years",
+      "field_name": "interval_years",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__replacement__evaluate__event_cost",
+      "field_name": "event_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__replacement__evaluate__last_event_year",
+      "field_name": "last_event_year",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__replacement__evaluate__annual_reserve",
+      "field_name": "annual_reserve",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__replacement__evaluate__first_event_year",
+      "field_name": "first_event_year",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__replacement__evaluate__event_count",
+      "field_name": "event_count",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__primary_piping__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__primary_piping__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__primary_heat_cost__evaluate__total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_transport_cost__evaluate__total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__electrical_equipment__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__electrical_equipment__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__primary_support__purchase__purchased_quantity",
+      "field_name": "purchased_quantity",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__primary_support__purchase__source_budget",
+      "field_name": "source_budget",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__primary_support__purchase__quantity_ratio",
+      "field_name": "quantity_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__primary_support__purchase__capital",
+      "field_name": "capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__primary_support__purchase__extrapolated",
+      "field_name": "extrapolated",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__core_first__evaluate__total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__core_cost__evaluate__total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__other_reactor_equipment__estimate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__other_reactor_equipment__purchase__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__reactor_cost__evaluate__total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__direct_source_scope__evaluate__total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__direct_cost__evaluate__total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__owner_commissioning__evaluate__amount",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__indirect_cost__evaluate__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__contingency_basis__evaluate__total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__contingency__evaluate__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__cost_ledger__evaluate__annual_operating",
+      "field_name": "annual_operating",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__cost_ledger__evaluate__source_inclusive",
+      "field_name": "source_inclusive",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__cost_ledger__evaluate__direct",
+      "field_name": "direct",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__cost_ledger__evaluate__source_reactor_gap",
+      "field_name": "source_reactor_gap",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__cost_ledger__evaluate__direct_difference",
+      "field_name": "direct_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__cost_ledger__evaluate__annual_export_mwh",
+      "field_name": "annual_export_mwh",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__cost_ledger__evaluate__source_direct",
+      "field_name": "source_direct",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__cost_ledger__evaluate__source_coil_excess",
+      "field_name": "source_coil_excess",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__cost_ledger__evaluate__annual_import_cost",
+      "field_name": "annual_import_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__cost_ledger__evaluate__annual_replacement_reserve",
+      "field_name": "annual_replacement_reserve",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__cost_ledger__evaluate__source_core_excess",
+      "field_name": "source_core_excess",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__cost_ledger__evaluate__overnight",
+      "field_name": "overnight",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__cost_ledger__evaluate__annual_import_mwh",
+      "field_name": "annual_import_mwh",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__cost_ledger__evaluate__lifetime_replacement",
+      "field_name": "lifetime_replacement",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__cost_ledger__evaluate__currency_year",
+      "field_name": "currency_year",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
       "channel_name": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
@@ -1444,6 +2750,11 @@
       "python_type": "ConstraintEvaluation"
     },
     {
+      "channel_name": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
       "channel_name": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
@@ -1454,12 +2765,22 @@
       "python_type": "ConstraintEvaluation"
     },
     {
+      "channel_name": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
       "channel_name": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
     {
       "channel_name": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
@@ -1486,11 +2807,606 @@
   ],
   "parameters": [
     {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__contingency_basis__evaluate__amount3_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__contingency_basis__evaluate__amount4_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__contingency_basis__evaluate__amount5_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__contingency_basis__evaluate__amount6_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__contingency_basis__evaluate__amount7_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__contingency_basis__evaluate__amount8_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__conversion_equipment__evaluate__amount5_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__conversion_equipment__evaluate__amount6_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__conversion_equipment__evaluate__amount7_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__conversion_equipment__evaluate__amount8_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__core_cost__evaluate__amount4_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__core_cost__evaluate__amount5_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__core_cost__evaluate__amount6_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__core_cost__evaluate__amount7_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__core_cost__evaluate__amount8_in"
+    },
+    {
+      "default_value": 2004.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cost_ledger__evaluate__currency_year_in"
+    },
+    {
+      "default_value": 5287000.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cost_ledger__evaluate__source_coil_excess_in"
+    },
+    {
+      "default_value": 31000.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cost_ledger__evaluate__source_core_excess_in"
+    },
+    {
+      "default_value": 28396000.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cost_ledger__evaluate__source_reactor_gap_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__direct_cost__evaluate__amount3_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__direct_cost__evaluate__amount4_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__direct_cost__evaluate__amount5_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__direct_cost__evaluate__amount6_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__direct_cost__evaluate__amount7_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__direct_cost__evaluate__amount8_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_equipment__evaluate__amount3_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_equipment__evaluate__amount4_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_equipment__evaluate__amount5_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_equipment__evaluate__amount6_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_equipment__evaluate__amount7_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_equipment__evaluate__amount8_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_transport_cost__evaluate__amount6_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_transport_cost__evaluate__amount7_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_transport_cost__evaluate__amount8_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__magnet_inventory__inventory__amount3_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__magnet_inventory__inventory__amount4_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__magnet_inventory__inventory__amount5_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__magnet_inventory__inventory__amount6_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__magnet_inventory__inventory__amount7_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__magnet_inventory__inventory__amount8_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__primary_heat_cost__evaluate__amount8_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__replacement_scope__evaluate__amount4_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__replacement_scope__evaluate__amount5_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__replacement_scope__evaluate__amount6_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__replacement_scope__evaluate__amount7_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__replacement_scope__evaluate__amount8_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__shield_inventory__inventory__amount3_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__shield_inventory__inventory__amount4_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__shield_inventory__inventory__amount5_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__shield_inventory__inventory__amount6_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__shield_inventory__inventory__amount7_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__shield_inventory__inventory__amount8_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__vacuum_equipment__inventory__amount3_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__vacuum_equipment__inventory__amount4_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__vacuum_equipment__inventory__amount5_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__vacuum_equipment__inventory__amount6_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__vacuum_equipment__inventory__amount7_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "integrated_equipment_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__vacuum_equipment__inventory__amount8_in"
+    },
+    {
+      "default_value": 0.5,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_account_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__annual_om__evaluate__alpha"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_account_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__annual_om__evaluate__n_mod_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_account_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__annual_om__evaluate__om_ref"
+    },
+    {
+      "default_value": 1000.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_account_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__annual_om__evaluate__p_net"
+    },
+    {
+      "default_value": 1000.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_account_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__annual_om__evaluate__ref_net_power"
+    },
+    {
+      "default_value": 6.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_account_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__indirect_cost__evaluate__construction_time"
+    },
+    {
+      "default_value": 6.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_account_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__indirect_cost__evaluate__reference_construction_time"
+    },
+    {
       "default_value": 1.25663706212e-06,
       "entry_type": "library_default",
       "param_group": "mfe_plasma_scaling_params",
       "python_type": "float",
       "qualified_name": "aries_cs_plasma_integration__plasma__beta_calculation__mu0"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_viability_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__divertor_pump__screen__applicable_in"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_viability_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__divertor_pump__screen__conditions_supported_in"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_viability_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__divertor_pump__screen__demand_available_in"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_viability_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__fuel_inventory__screen__applicable_in"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_viability_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__fuel_inventory__screen__conditions_supported_in"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_viability_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__fuel_inventory__screen__demand_available_in"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_viability_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__he_pump__screen__applicable_in"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_viability_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__he_pump__screen__conditions_supported_in"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_viability_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__he_pump__screen__demand_available_in"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_viability_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__pbli_pump__screen__applicable_in"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_viability_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__pbli_pump__screen__conditions_supported_in"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_viability_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__pbli_pump__screen__demand_available_in"
+    },
+    {
+      "default_value": 70000000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__annual_om__selected_amount"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__auxiliary_cooling__price_factor"
+    },
+    {
+      "default_value": 3735000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__auxiliary_cooling__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__auxiliary_cooling__selected_quantity"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__blanket_inventory__price_factor"
+    },
+    {
+      "default_value": 59347000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__blanket_inventory__reference_cost"
+    },
+    {
+      "default_value": 662500.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__blanket_inventory__reference_quantity"
+    },
+    {
+      "default_value": 662500.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__blanket_inventory__selected_mass"
     },
     {
       "default_value": 0.89,
@@ -1563,6 +3479,118 @@
       "qualified_name": "aries_integrated_plant__compressor_capacity__selected_rating"
     },
     {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__compressor_equipment__price_factor"
+    },
+    {
+      "default_value": 78639500.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__compressor_equipment__reference_cost"
+    },
+    {
+      "default_value": 1600.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__compressor_equipment__reference_quantity"
+    },
+    {
+      "default_value": 0.2,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__contingency__fraction"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__conversion_services__price_factor"
+    },
+    {
+      "default_value": 62911600.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__conversion_services__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__conversion_services__selected_quantity"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cost_accounts__estimate_mode"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cost_accounts__one_module"
+    },
+    {
+      "default_value": 5000000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cost_ledger__consumables"
+    },
+    {
+      "default_value": 50.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cost_ledger__import_price"
+    },
+    {
+      "default_value": 0.85,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cost_schedule__availability"
+    },
+    {
+      "default_value": 0.05,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cost_schedule__lipb_makeup_fraction"
+    },
+    {
+      "default_value": 40.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cost_schedule__plant_years"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cost_schedule__replacement_factor"
+    },
+    {
+      "default_value": 5.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cost_schedule__replacement_life_fpy"
+    },
+    {
       "default_value": 5193.0,
       "entry_type": "design_attribute",
       "param_group": "plant_params",
@@ -1619,13 +3647,6 @@
       "qualified_name": "aries_integrated_plant__deposition__auxiliary_heat"
     },
     {
-      "default_value": 10.0,
-      "entry_type": "design_attribute",
-      "param_group": "plant_params",
-      "python_type": "float",
-      "qualified_name": "aries_integrated_plant__deposition__divertor_pump"
-    },
-    {
       "default_value": 0.9,
       "entry_type": "design_attribute",
       "param_group": "plant_params",
@@ -1638,13 +3659,6 @@
       "param_group": "plant_params",
       "python_type": "float",
       "qualified_name": "aries_integrated_plant__deposition__exchange_fraction"
-    },
-    {
-      "default_value": 156.0,
-      "entry_type": "design_attribute",
-      "param_group": "plant_params",
-      "python_type": "float",
-      "qualified_name": "aries_integrated_plant__deposition__he_pump"
     },
     {
       "default_value": 0.9038461538461539,
@@ -1703,13 +3717,6 @@
       "qualified_name": "aries_integrated_plant__deposition__neutron_multiplier"
     },
     {
-      "default_value": 0.01,
-      "entry_type": "design_attribute",
-      "param_group": "plant_params",
-      "python_type": "float",
-      "qualified_name": "aries_integrated_plant__deposition__pbli_pump"
-    },
-    {
       "default_value": 0.0,
       "entry_type": "design_attribute",
       "param_group": "plant_params",
@@ -1756,6 +3763,195 @@
       "entry_type": "design_attribute",
       "param_group": "plant_params",
       "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_duty_equipment__price_factor"
+    },
+    {
+      "default_value": 32403166.66666667,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_duty_equipment__reference_cost"
+    },
+    {
+      "default_value": 800.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_duty_equipment__reference_quantity"
+    },
+    {
+      "default_value": 1000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_hx__assumed_u"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_hx__price_factor"
+    },
+    {
+      "default_value": 58325700.00000001,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_hx__reference_cost"
+    },
+    {
+      "default_value": 50000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_hx__reference_quantity"
+    },
+    {
+      "default_value": 50000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_hx__selected_area"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_inventory__price_factor"
+    },
+    {
+      "default_value": 5318000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_inventory__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_inventory__selected_quantity"
+    },
+    {
+      "default_value": 0.8,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_pump__efficiency"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_pump__fixed_power"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_pump__price_factor"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_pump__pump_mode"
+    },
+    {
+      "default_value": 19441900.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_pump__reference_cost"
+    },
+    {
+      "default_value": 0.8,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_pump__reference_efficiency"
+    },
+    {
+      "default_value": 500.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_pump__reference_flow"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_pump__reference_power"
+    },
+    {
+      "default_value": 500.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_pump__reference_quantity"
+    },
+    {
+      "default_value": 500.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_pump__selected_flow_capacity"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__electrical_equipment__price_factor"
+    },
+    {
+      "default_value": 138764000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__electrical_equipment__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__electrical_equipment__selected_quantity"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__facilities__price_factor"
+    },
+    {
+      "default_value": 336133000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__facilities__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__facilities__selected_quantity"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
       "qualified_name": "aries_integrated_plant__fuel__assumed_extraction"
     },
     {
@@ -1764,13 +3960,6 @@
       "param_group": "plant_params",
       "python_type": "float",
       "qualified_name": "aries_integrated_plant__fuel__decay_constant_s"
-    },
-    {
-      "default_value": 0.0,
-      "entry_type": "design_attribute",
-      "param_group": "plant_params",
-      "python_type": "float",
-      "qualified_name": "aries_integrated_plant__fuel__dormant_inventory_atoms"
     },
     {
       "default_value": 0.0,
@@ -1855,6 +4044,90 @@
       "param_group": "plant_params",
       "python_type": "float",
       "qualified_name": "aries_integrated_plant__fuel_capacity__selected_rating"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_inventory__annual_recovery_kg"
+    },
+    {
+      "default_value": 3.3435837724e-27,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_inventory__deuterium_atom_kg"
+    },
+    {
+      "default_value": 1000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_inventory__deuterium_price"
+    },
+    {
+      "default_value": 1000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_inventory__process_residence_s"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_inventory__selected_tritium_kg"
+    },
+    {
+      "default_value": 30000000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_inventory__tritium_price"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_processing_equipment__price_factor"
+    },
+    {
+      "default_value": 16590000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_processing_equipment__reference_cost"
+    },
+    {
+      "default_value": 3e+22,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_processing_equipment__reference_quantity"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_services__price_factor"
+    },
+    {
+      "default_value": 38689000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_services__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_services__selected_quantity"
     },
     {
       "default_value": 5.0,
@@ -1944,6 +4217,27 @@
       "default_value": 1.0,
       "entry_type": "design_attribute",
       "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__generator_equipment__price_factor"
+    },
+    {
+      "default_value": 47183699.99999999,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__generator_equipment__reference_cost"
+    },
+    {
+      "default_value": 1800.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__generator_equipment__reference_quantity"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
       "python_type": "bool",
       "qualified_name": "aries_integrated_plant__he_capacity__assumed_supported"
     },
@@ -1969,6 +4263,132 @@
       "qualified_name": "aries_integrated_plant__he_capacity__selected_rating"
     },
     {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_duty_equipment__price_factor"
+    },
+    {
+      "default_value": 32403166.66666667,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_duty_equipment__reference_cost"
+    },
+    {
+      "default_value": 1500.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_duty_equipment__reference_quantity"
+    },
+    {
+      "default_value": 1000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_hx__assumed_u"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_hx__price_factor"
+    },
+    {
+      "default_value": 58325700.00000001,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_hx__reference_cost"
+    },
+    {
+      "default_value": 50000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_hx__reference_quantity"
+    },
+    {
+      "default_value": 50000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_hx__selected_area"
+    },
+    {
+      "default_value": 0.8,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_pump__efficiency"
+    },
+    {
+      "default_value": 156.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_pump__fixed_power"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_pump__price_factor"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_pump__pump_mode"
+    },
+    {
+      "default_value": 19441900.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_pump__reference_cost"
+    },
+    {
+      "default_value": 0.8,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_pump__reference_efficiency"
+    },
+    {
+      "default_value": 3261.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_pump__reference_flow"
+    },
+    {
+      "default_value": 156.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_pump__reference_power"
+    },
+    {
+      "default_value": 3261.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_pump__reference_quantity"
+    },
+    {
+      "default_value": 3261.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_pump__selected_flow_capacity"
+    },
+    {
       "default_value": 5193.0,
       "entry_type": "design_attribute",
       "param_group": "plant_params",
@@ -1988,13 +4408,6 @@
       "param_group": "plant_params",
       "python_type": "float",
       "qualified_name": "aries_integrated_plant__heat_exchangers__divertor_limit"
-    },
-    {
-      "default_value": 50.0,
-      "entry_type": "design_attribute",
-      "param_group": "plant_params",
-      "python_type": "float",
-      "qualified_name": "aries_integrated_plant__heat_exchangers__divertor_ua"
     },
     {
       "default_value": 5193.0,
@@ -2018,13 +4431,6 @@
       "qualified_name": "aries_integrated_plant__heat_exchangers__he_limit"
     },
     {
-      "default_value": 50.0,
-      "entry_type": "design_attribute",
-      "param_group": "plant_params",
-      "python_type": "float",
-      "qualified_name": "aries_integrated_plant__heat_exchangers__he_ua"
-    },
-    {
       "default_value": 190.0,
       "entry_type": "design_attribute",
       "param_group": "plant_params",
@@ -2046,11 +4452,95 @@
       "qualified_name": "aries_integrated_plant__heat_exchangers__pbli_limit"
     },
     {
-      "default_value": 50.0,
+      "default_value": 1.0,
       "entry_type": "design_attribute",
       "param_group": "plant_params",
       "python_type": "float",
-      "qualified_name": "aries_integrated_plant__heat_exchangers__pbli_ua"
+      "qualified_name": "aries_integrated_plant__heat_rejection_equipment__price_factor"
+    },
+    {
+      "default_value": 56086000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_rejection_equipment__reference_cost"
+    },
+    {
+      "default_value": 2500.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_rejection_equipment__reference_quantity"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heating_equipment__price_factor"
+    },
+    {
+      "default_value": 66427000.00000001,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heating_equipment__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heating_equipment__selected_quantity"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__impurity_control__price_factor"
+    },
+    {
+      "default_value": 6561000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__impurity_control__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__impurity_control__selected_quantity"
+    },
+    {
+      "default_value": 0.2,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__indirect_cost__fraction"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__instrumentation_control__price_factor"
+    },
+    {
+      "default_value": 44558000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__instrumentation_control__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__instrumentation_control__selected_quantity"
     },
     {
       "default_value": 0.0,
@@ -2081,6 +4571,146 @@
       "qualified_name": "aries_integrated_plant__intercooler_2__target_temperature"
     },
     {
+      "default_value": 2.5,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__lipb_inventory__external_mass_factor"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__lipb_inventory__price_factor"
+    },
+    {
+      "default_value": 151327000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__lipb_inventory__reference_cost"
+    },
+    {
+      "default_value": 8830000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__lipb_inventory__reference_quantity"
+    },
+    {
+      "default_value": 3532000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__lipb_inventory__selected_core_mass"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__magnet_inventory__price_factor"
+    },
+    {
+      "default_value": 204208000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__magnet_inventory__reference_cost"
+    },
+    {
+      "default_value": 4092200.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__magnet_inventory__reference_quantity"
+    },
+    {
+      "default_value": 3465000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__magnet_inventory__selected_structure_mass"
+    },
+    {
+      "default_value": 627200.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__magnet_inventory__selected_winding_mass"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__magnet_power_supplies__price_factor"
+    },
+    {
+      "default_value": 70624000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__magnet_power_supplies__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__magnet_power_supplies__selected_quantity"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__miscellaneous_equipment__price_factor"
+    },
+    {
+      "default_value": 70958000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__miscellaneous_equipment__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__miscellaneous_equipment__selected_quantity"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__other_reactor_equipment__price_factor"
+    },
+    {
+      "default_value": 60723000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__other_reactor_equipment__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__other_reactor_equipment__selected_quantity"
+    },
+    {
+      "default_value": 0.05,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__owner_commissioning__fraction"
+    },
+    {
       "default_value": 1.0,
       "entry_type": "design_attribute",
       "param_group": "plant_params",
@@ -2107,6 +4737,132 @@
       "param_group": "plant_params",
       "python_type": "float",
       "qualified_name": "aries_integrated_plant__pbli_capacity__selected_rating"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_duty_equipment__price_factor"
+    },
+    {
+      "default_value": 32403166.66666667,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_duty_equipment__reference_cost"
+    },
+    {
+      "default_value": 1800.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_duty_equipment__reference_quantity"
+    },
+    {
+      "default_value": 1000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_hx__assumed_u"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_hx__price_factor"
+    },
+    {
+      "default_value": 58325700.00000001,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_hx__reference_cost"
+    },
+    {
+      "default_value": 50000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_hx__reference_quantity"
+    },
+    {
+      "default_value": 50000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_hx__selected_area"
+    },
+    {
+      "default_value": 0.8,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_pump__efficiency"
+    },
+    {
+      "default_value": 0.01,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_pump__fixed_power"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_pump__price_factor"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_pump__pump_mode"
+    },
+    {
+      "default_value": 19441900.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_pump__reference_cost"
+    },
+    {
+      "default_value": 0.8,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_pump__reference_efficiency"
+    },
+    {
+      "default_value": 26860.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_pump__reference_flow"
+    },
+    {
+      "default_value": 0.01,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_pump__reference_power"
+    },
+    {
+      "default_value": 26860.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_pump__reference_quantity"
+    },
+    {
+      "default_value": 26860.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_pump__selected_flow_capacity"
     },
     {
       "default_value": 2496.0,
@@ -2168,6 +4924,55 @@
       "default_value": 1.0,
       "entry_type": "design_attribute",
       "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__primary_piping__price_factor"
+    },
+    {
+      "default_value": 58325700.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__primary_piping__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__primary_piping__selected_quantity"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__primary_support__price_factor"
+    },
+    {
+      "default_value": 73126000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__primary_support__reference_cost"
+    },
+    {
+      "default_value": 2909000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__primary_support__reference_quantity"
+    },
+    {
+      "default_value": 2909000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__primary_support__selected_mass"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
       "python_type": "bool",
       "qualified_name": "aries_integrated_plant__rejection_capacity__assumed_supported"
     },
@@ -2191,6 +4996,83 @@
       "param_group": "plant_params",
       "python_type": "float",
       "qualified_name": "aries_integrated_plant__rejection_capacity__selected_rating"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__secondary_transport__price_factor"
+    },
+    {
+      "default_value": 85933000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__secondary_transport__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__secondary_transport__selected_quantity"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__shield_inventory__price_factor"
+    },
+    {
+      "default_value": 228627000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__shield_inventory__reference_cost"
+    },
+    {
+      "default_value": 4585000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__shield_inventory__reference_quantity"
+    },
+    {
+      "default_value": 1305000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__shield_inventory__selected_manifold_mass"
+    },
+    {
+      "default_value": 3280000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__shield_inventory__selected_shield_mass"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__site_land__price_factor"
+    },
+    {
+      "default_value": 12929000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__site_land__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__site_land__selected_quantity"
     },
     {
       "default_value": 0.0,
@@ -2233,6 +5115,125 @@
       "param_group": "plant_params",
       "python_type": "float",
       "qualified_name": "aries_integrated_plant__turbine_capacity__selected_rating"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__turbine_equipment__price_factor"
+    },
+    {
+      "default_value": 125823200.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__turbine_equipment__reference_cost"
+    },
+    {
+      "default_value": 3500.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__turbine_equipment__reference_quantity"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__unallocated_source_scope__price_factor"
+    },
+    {
+      "default_value": 28396000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__unallocated_source_scope__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__unallocated_source_scope__selected_quantity"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__vacuum_equipment__price_factor"
+    },
+    {
+      "default_value": 137135000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__vacuum_equipment__reference_cost"
+    },
+    {
+      "default_value": 2773000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__vacuum_equipment__reference_quantity"
+    },
+    {
+      "default_value": 1333000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__vacuum_equipment__selected_cryostat_mass"
+    },
+    {
+      "default_value": 1440000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__vacuum_equipment__selected_vessel_mass"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__vf_coils__price_factor"
+    },
+    {
+      "default_value": 13358000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__vf_coils__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__vf_coils__selected_quantity"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__waste_equipment__price_factor"
+    },
+    {
+      "default_value": 6655000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__waste_equipment__reference_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__waste_equipment__selected_quantity"
     },
     {
       "default_value": 5e+20,
@@ -2338,7 +5339,70 @@
       "param_group": "plasma_integration_params",
       "python_type": "float",
       "qualified_name": "aries_cs_plasma_integration__plasma__volume_exponent"
+    },
+    {
+      "default_value": 12929000.0,
+      "entry_type": "usage_literal",
+      "param_group": "source_budget_accounting_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__source_budget__evaluate__account_1_in"
+    },
+    {
+      "default_value": 336133000.0,
+      "entry_type": "usage_literal",
+      "param_group": "source_budget_accounting_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__source_budget__evaluate__account_2_in"
+    },
+    {
+      "default_value": 1538817000.0,
+      "entry_type": "usage_literal",
+      "param_group": "source_budget_accounting_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__source_budget__evaluate__account_3_in"
+    },
+    {
+      "default_value": 314558000.0,
+      "entry_type": "usage_literal",
+      "param_group": "source_budget_accounting_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__source_budget__evaluate__account_4_in"
+    },
+    {
+      "default_value": 138764000.0,
+      "entry_type": "usage_literal",
+      "param_group": "source_budget_accounting_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__source_budget__evaluate__account_5_in"
+    },
+    {
+      "default_value": 70958000.0,
+      "entry_type": "usage_literal",
+      "param_group": "source_budget_accounting_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__source_budget__evaluate__account_6_in"
+    },
+    {
+      "default_value": 151327000.0,
+      "entry_type": "usage_literal",
+      "param_group": "source_budget_accounting_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__source_budget__evaluate__account_7_in"
+    },
+    {
+      "default_value": 56086000.0,
+      "entry_type": "usage_literal",
+      "param_group": "source_budget_accounting_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__source_budget__evaluate__account_8_in"
+    },
+    {
+      "default_value": 1.93,
+      "entry_type": "usage_literal",
+      "param_group": "source_budget_accounting_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__source_budget__evaluate__inclusive_multiplier_in"
     }
   ],
-  "semantic_fingerprint": "35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97"
+  "semantic_fingerprint": "1a076482cb5f319094d97547bb35da8531e51b4ea09838bf6a4127869670b004"
 }

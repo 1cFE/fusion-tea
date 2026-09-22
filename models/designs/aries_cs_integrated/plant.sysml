@@ -1,5 +1,9 @@
 package aries_integrated_plant {
     private import ScalarValues::*;
+    private import integrated_equipment_costs::*;
+    private import integrated_equipment_parts::*;
+    private import mfe_account_costs::*;
+    private import source_budget_accounting::*;
     private import aries_cs_plasma_integration::*;
     private import integrated_heat_electricity::*;
     private import mfe_fuel_cycle::*;
@@ -26,9 +30,9 @@ package aries_integrated_plant {
         attribute helium_fraction : Real = 0.38;
         attribute exchange_fraction : Real = 0.04;
         attribute auxiliary_heat : Real = 20.0;
-        attribute he_pump : Real = 156.0;
-        attribute pbli_pump : Real = 0.01;
-        attribute divertor_pump : Real = 10.0;
+        attribute he_pump : Real = aries_integrated_plant::he_pump.electric;
+        attribute pbli_pump : Real = aries_integrated_plant::pbli_pump.electric;
+        attribute divertor_pump : Real = aries_integrated_plant::divertor_pump.electric;
         attribute he_recovery : Real = 0.9038461538461539;
         attribute pbli_recovery : Real = 0.0;
         attribute divertor_recovery : Real = 0.9;
@@ -111,7 +115,6 @@ package aries_integrated_plant {
         attribute decay_constant_s : Real = 1.782785958230312e-09;
         attribute unused_tbr_placeholder : Real = 0.0;
         attribute assumed_extraction : Real = 1.0;
-        attribute dormant_inventory_atoms : Real = 0.0;
         attribute dormant_stock_growth_atoms_s : Real = 0.0;
         attribute seconds_per_year : Real = 31536000.0;
         calc evaluate : 'Fuel Cycle Flows' {
@@ -123,7 +126,7 @@ package aries_integrated_plant {
             in tbr_available_in = unused_tbr_placeholder;
             in eta_extract_in = assumed_extraction;
             in lambda_T_in = decay_constant_s;
-            in I_total_in = dormant_inventory_atoms;
+            in I_total_in = fuel_inventory.selected_tritium_atoms;
             in G_stock_in = dormant_stock_growth_atoms_s;
             in m_T_kg_in = tritium_atom_kg;
             in s_per_fpy_in = seconds_per_year;
@@ -132,6 +135,7 @@ package aries_integrated_plant {
         attribute inject_rate : Real = evaluate.inject_rate;
         attribute exhaust_rate : Real = evaluate.exhaust_rate;
         attribute loss_rate : Real = evaluate.loss_rate;
+        attribute tbr_required : Real = evaluate.tbr_required;
     }
     part cycle {
         doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: A3/S3 selected operating conditions, ideal helium. **Last Updated**: 2026-09-22. */
@@ -239,15 +243,15 @@ package aries_integrated_plant {
         doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: heat_exchangers owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute he_flow : Real = 3261.0;
         attribute he_cp : Real = 5193.0;
-        attribute he_ua : Real = 50.0;
+        attribute he_ua : Real = he_hx.ua;
         attribute he_limit : Real = 729.15;
         attribute divertor_flow : Real = 500.0;
         attribute divertor_cp : Real = 5193.0;
-        attribute divertor_ua : Real = 50.0;
+        attribute divertor_ua : Real = divertor_hx.ua;
         attribute divertor_limit : Real = 973.15;
         attribute pbli_flow : Real = 26860.0;
         attribute pbli_cp : Real = 190.0;
-        attribute pbli_ua : Real = 50.0;
+        attribute pbli_ua : Real = pbli_hx.ua;
         attribute pbli_limit : Real = 1011.15;
         calc evaluate : 'Heat Driven Closure' {
             in cold_temperature_in = compressor_3.temperature_out;
@@ -690,5 +694,1247 @@ package aries_integrated_plant {
             in defined_in = evaluation_defined;
             in margin_in = margin;
         }
+    }
+    // WI-090 selected inventory and cost ownership
+    part cost_accounts {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        attribute estimate_mode : Real = 0.0;
+        attribute one_module : Real = 1.0;
+    }
+    part cost_schedule {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        attribute availability : Real = 0.85;
+        attribute plant_years : Real = 40.0;
+        attribute replacement_life_fpy : Real = 5.0;
+        attribute replacement_factor : Real = 1.0;
+        attribute lipb_makeup_fraction : Real = 0.05;
+    }
+    part he_hx : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.2";
+        attribute reference_quantity : Real = 50000.0;
+        attribute reference_cost : Real = 58325700.00000001;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = selected_area;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+        attribute selected_area : Real = 50000.0;
+        attribute assumed_u : Real = 1000.0;
+        calc evaluate : 'Exchanger Area Conductance' {
+            in area_in = selected_area;
+            in u_in = assumed_u;
+        }
+        attribute ua : Real = evaluate.ua;
+        attribute area : Real = evaluate.area;
+    }
+    part he_pump : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.2";
+        attribute reference_quantity : Real = 3261.0;
+        attribute reference_cost : Real = 19441900.0;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = selected_flow_capacity;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+        attribute selected_flow_capacity : Real = 3261.0;
+        attribute efficiency : Real = 0.8;
+        attribute reference_flow : Real = 3261.0;
+        attribute reference_power : Real = 156.0;
+        attribute reference_efficiency : Real = 0.8;
+        attribute pump_mode : Real = 0.0;
+        attribute fixed_power : Real = 156.0;
+        calc evaluate : 'Selected Flow Pump' {
+            in flow_in = aries_integrated_plant::heat_exchangers.he_flow;
+            in reference_flow_in = reference_flow;
+            in reference_power_in = reference_power;
+            in efficiency_in = efficiency;
+            in reference_efficiency_in = reference_efficiency;
+            in mode_in = pump_mode;
+            in fixed_power_in = fixed_power;
+        }
+        attribute electric : Real = evaluate.electric;
+        attribute operating_flow : Real = evaluate.operating_flow;
+        attribute hydraulic_supported : Real = evaluate.hydraulic_supported;
+        calc screen : 'Offered Capacity Screen' {
+            in rating_in = selected_flow_capacity;
+            in demand_in = operating_flow;
+            in applicable_in = true;
+            in conditions_supported_in = true;
+            in demand_available_in = true;
+        }
+        attribute margin : Real = screen.margin;
+        attribute evaluation_defined : Real = screen.evaluation_defined;
+        assert constraint capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = evaluation_defined;
+            in margin_in = margin;
+        }
+    }
+    part he_duty_equipment : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.2";
+        attribute reference_quantity : Real = 1500.0;
+        attribute reference_cost : Real = 32403166.66666667;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = aries_integrated_plant::he_capacity.selected_rating;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+    }
+    part pbli_hx : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.2";
+        attribute reference_quantity : Real = 50000.0;
+        attribute reference_cost : Real = 58325700.00000001;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = selected_area;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+        attribute selected_area : Real = 50000.0;
+        attribute assumed_u : Real = 1000.0;
+        calc evaluate : 'Exchanger Area Conductance' {
+            in area_in = selected_area;
+            in u_in = assumed_u;
+        }
+        attribute ua : Real = evaluate.ua;
+        attribute area : Real = evaluate.area;
+    }
+    part pbli_pump : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.2";
+        attribute reference_quantity : Real = 26860.0;
+        attribute reference_cost : Real = 19441900.0;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = selected_flow_capacity;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+        attribute selected_flow_capacity : Real = 26860.0;
+        attribute efficiency : Real = 0.8;
+        attribute reference_flow : Real = 26860.0;
+        attribute reference_power : Real = 0.01;
+        attribute reference_efficiency : Real = 0.8;
+        attribute pump_mode : Real = 0.0;
+        attribute fixed_power : Real = 0.01;
+        calc evaluate : 'Selected Flow Pump' {
+            in flow_in = aries_integrated_plant::heat_exchangers.pbli_flow;
+            in reference_flow_in = reference_flow;
+            in reference_power_in = reference_power;
+            in efficiency_in = efficiency;
+            in reference_efficiency_in = reference_efficiency;
+            in mode_in = pump_mode;
+            in fixed_power_in = fixed_power;
+        }
+        attribute electric : Real = evaluate.electric;
+        attribute operating_flow : Real = evaluate.operating_flow;
+        attribute hydraulic_supported : Real = evaluate.hydraulic_supported;
+        calc screen : 'Offered Capacity Screen' {
+            in rating_in = selected_flow_capacity;
+            in demand_in = operating_flow;
+            in applicable_in = true;
+            in conditions_supported_in = true;
+            in demand_available_in = true;
+        }
+        attribute margin : Real = screen.margin;
+        attribute evaluation_defined : Real = screen.evaluation_defined;
+        assert constraint capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = evaluation_defined;
+            in margin_in = margin;
+        }
+    }
+    part pbli_duty_equipment : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.2";
+        attribute reference_quantity : Real = 1800.0;
+        attribute reference_cost : Real = 32403166.66666667;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = aries_integrated_plant::pbli_capacity.selected_rating;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+    }
+    part divertor_hx : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.2";
+        attribute reference_quantity : Real = 50000.0;
+        attribute reference_cost : Real = 58325700.00000001;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = selected_area;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+        attribute selected_area : Real = 50000.0;
+        attribute assumed_u : Real = 1000.0;
+        calc evaluate : 'Exchanger Area Conductance' {
+            in area_in = selected_area;
+            in u_in = assumed_u;
+        }
+        attribute ua : Real = evaluate.ua;
+        attribute area : Real = evaluate.area;
+    }
+    part divertor_pump : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.2";
+        attribute reference_quantity : Real = 500.0;
+        attribute reference_cost : Real = 19441900.0;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = selected_flow_capacity;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+        attribute selected_flow_capacity : Real = 500.0;
+        attribute efficiency : Real = 0.8;
+        attribute reference_flow : Real = 500.0;
+        attribute reference_power : Real = 10.0;
+        attribute reference_efficiency : Real = 0.8;
+        attribute pump_mode : Real = 0.0;
+        attribute fixed_power : Real = 10.0;
+        calc evaluate : 'Selected Flow Pump' {
+            in flow_in = aries_integrated_plant::heat_exchangers.divertor_flow;
+            in reference_flow_in = reference_flow;
+            in reference_power_in = reference_power;
+            in efficiency_in = efficiency;
+            in reference_efficiency_in = reference_efficiency;
+            in mode_in = pump_mode;
+            in fixed_power_in = fixed_power;
+        }
+        attribute electric : Real = evaluate.electric;
+        attribute operating_flow : Real = evaluate.operating_flow;
+        attribute hydraulic_supported : Real = evaluate.hydraulic_supported;
+        calc screen : 'Offered Capacity Screen' {
+            in rating_in = selected_flow_capacity;
+            in demand_in = operating_flow;
+            in applicable_in = true;
+            in conditions_supported_in = true;
+            in demand_available_in = true;
+        }
+        attribute margin : Real = screen.margin;
+        attribute evaluation_defined : Real = screen.evaluation_defined;
+        assert constraint capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = evaluation_defined;
+            in margin_in = margin;
+        }
+    }
+    part divertor_duty_equipment : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.2";
+        attribute reference_quantity : Real = 800.0;
+        attribute reference_cost : Real = 32403166.66666667;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = aries_integrated_plant::divertor_capacity.selected_rating;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+    }
+    part primary_piping : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.2";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 58325700.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part secondary_transport : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.2";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 85933000.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part compressor_equipment : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "23";
+        attribute reference_quantity : Real = 1600.0;
+        attribute reference_cost : Real = 78639500.0;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = aries_integrated_plant::compressor_capacity.selected_rating;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+    }
+    part turbine_equipment : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "23";
+        attribute reference_quantity : Real = 3500.0;
+        attribute reference_cost : Real = 125823200.0;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = aries_integrated_plant::turbine_capacity.selected_rating;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+    }
+    part generator_equipment : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "23";
+        attribute reference_quantity : Real = 1800.0;
+        attribute reference_cost : Real = 47183699.99999999;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = aries_integrated_plant::generator_capacity.selected_rating;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+    }
+    part heat_rejection_equipment : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "27";
+        attribute reference_quantity : Real = 2500.0;
+        attribute reference_cost : Real = 56086000.0;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = aries_integrated_plant::rejection_capacity.selected_rating;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+    }
+    part fuel_processing_equipment : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.5";
+        attribute reference_quantity : Real = 3e+22;
+        attribute reference_cost : Real = 16590000.0;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = aries_integrated_plant::fuel_capacity.selected_rating;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+    }
+    part conversion_services : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "23";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 62911600.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part magnet_inventory : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.1.3";
+        attribute reference_quantity : Real = 4092200.0;
+        attribute reference_cost : Real = 204208000.0;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = selected_mass;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+        attribute selected_winding_mass : Real = 627200.0;
+        attribute selected_structure_mass : Real = 3465000.0;
+        calc inventory : 'Eight Amount Sum' {
+            in amount1_in = selected_winding_mass;
+            in amount2_in = selected_structure_mass;
+            in amount3_in = 0.0;
+            in amount4_in = 0.0;
+            in amount5_in = 0.0;
+            in amount6_in = 0.0;
+            in amount7_in = 0.0;
+            in amount8_in = 0.0;
+        }
+        attribute selected_mass : Real = inventory.total;
+    }
+    part vf_coils : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.1.3";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 13358000.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part divertor_inventory : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.1.3";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 5318000.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part blanket_inventory : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.1.1";
+        attribute selected_mass : Real = 662500.0;
+        attribute reference_quantity : Real = 662500.0;
+        attribute reference_cost : Real = 59347000.0;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = selected_mass;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+    }
+    part shield_inventory : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.1.2";
+        attribute reference_quantity : Real = 4585000.0;
+        attribute reference_cost : Real = 228627000.0;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = selected_mass;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+        attribute selected_shield_mass : Real = 3280000.0;
+        attribute selected_manifold_mass : Real = 1305000.0;
+        calc inventory : 'Eight Amount Sum' {
+            in amount1_in = selected_shield_mass;
+            in amount2_in = selected_manifold_mass;
+            in amount3_in = 0.0;
+            in amount4_in = 0.0;
+            in amount5_in = 0.0;
+            in amount6_in = 0.0;
+            in amount7_in = 0.0;
+            in amount8_in = 0.0;
+        }
+        attribute selected_mass : Real = inventory.total;
+    }
+    part primary_support : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.1.5";
+        attribute selected_mass : Real = 2909000.0;
+        attribute reference_quantity : Real = 2909000.0;
+        attribute reference_cost : Real = 73126000.0;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = selected_mass;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+    }
+    part vacuum_equipment : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.1.6";
+        attribute reference_quantity : Real = 2773000.0;
+        attribute reference_cost : Real = 137135000.0;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = selected_mass;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+        attribute selected_vessel_mass : Real = 1440000.0;
+        attribute selected_cryostat_mass : Real = 1333000.0;
+        calc inventory : 'Eight Amount Sum' {
+            in amount1_in = selected_vessel_mass;
+            in amount2_in = selected_cryostat_mass;
+            in amount3_in = 0.0;
+            in amount4_in = 0.0;
+            in amount5_in = 0.0;
+            in amount6_in = 0.0;
+            in amount7_in = 0.0;
+            in amount8_in = 0.0;
+        }
+        attribute selected_mass : Real = inventory.total;
+    }
+    part site_land : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "20";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 12929000.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part facilities : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "21";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 336133000.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part heating_equipment : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.1.4";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 66427000.00000001;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part magnet_power_supplies : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.1.7";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 70624000.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part impurity_control : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.1.8";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 6561000.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part auxiliary_cooling : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.3";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 3735000.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part waste_equipment : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.4";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 6655000.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part fuel_services : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.5";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 38689000.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part other_reactor_equipment : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.6";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 60723000.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part instrumentation_control : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22.7";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 44558000.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part unallocated_source_scope : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "22";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 28396000.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part electrical_equipment : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "24";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 138764000.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part miscellaneous_equipment : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "25";
+        attribute selected_quantity : Real = 1.0;
+        attribute reference_cost : Real = 70958000.0;
+        attribute price_factor : Real = 1.0;
+        calc estimate : 'Scaled Amount' {
+            in amount_in = reference_cost;
+            in factor_in = price_factor;
+        }
+        attribute supplied_budget : Real = estimate.amount;
+        calc purchase : 'Supplied Purchase Cost' {
+            in purchase_cost_in = supplied_budget;
+            in n_mod_in = selected_quantity;
+        }
+        attribute estimated_cost : Real = purchase.cost;
+        :>> capital_cost = purchase.cost;
+    }
+    part lipb_inventory : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "26";
+        attribute reference_quantity : Real = 8830000.0;
+        attribute reference_cost : Real = 151327000.0;
+        attribute price_factor : Real = 1.0;
+        calc purchase : 'Selected Inventory Purchase' {
+            in quantity_in = total_mass;
+            in reference_quantity_in = reference_quantity;
+            in reference_cost_in = reference_cost;
+            in price_factor_in = price_factor;
+            in mode_in = aries_integrated_plant::cost_accounts.estimate_mode;
+        }
+        attribute inventory_quantity : Real = purchase.purchased_quantity;
+        attribute quantity_ratio : Real = purchase.quantity_ratio;
+        attribute estimated_cost : Real = purchase.capital;
+        attribute cost_extrapolated : Real = purchase.extrapolated;
+        :>> capital_cost = purchase.capital;
+        attribute selected_core_mass : Real = 3532000.0;
+        attribute external_mass_factor : Real = 2.5;
+        calc inventory : 'Scaled Amount' {
+            in amount_in = selected_core_mass;
+            in factor_in = external_mass_factor;
+        }
+        attribute total_mass : Real = inventory.amount;
+    }
+    part fuel_inventory : 'Selected Equipment' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        :>> cas_code = "26.fuel";
+        attribute selected_tritium_kg : Real = 10.0;
+        attribute process_residence_s : Real = 1000.0;
+        attribute annual_recovery_kg : Real = 0.0;
+        attribute tritium_price : Real = 30000000.0;
+        attribute deuterium_price : Real = 1000.0;
+        attribute deuterium_atom_kg : Real = 3.3435837724e-27;
+        calc atoms : 'Selected Stock Atoms' {
+            in stock_kg_in = selected_tritium_kg;
+            in atom_mass_in = aries_integrated_plant::fuel.tritium_atom_kg;
+        }
+        attribute selected_tritium_atoms : Real = atoms.atoms;
+        calc purchase : 'Scaled Amount' {
+            in amount_in = selected_tritium_kg;
+            in factor_in = tritium_price;
+        }
+        attribute initial_stock_cost : Real = purchase.amount;
+        :>> capital_cost = purchase.amount;
+        calc annual : 'Annual Selected Fuel' {
+            in stock_kg_in = selected_tritium_kg;
+            in atom_mass_in = aries_integrated_plant::fuel.tritium_atom_kg;
+            in decay_in = aries_integrated_plant::fuel.decay_constant_s;
+            in seconds_in = aries_integrated_plant::fuel.seconds_per_year;
+            in availability_in = aries_integrated_plant::cost_schedule.availability;
+            in burn_in = aries_integrated_plant::fuel.burn_rate;
+            in loss_in = aries_integrated_plant::fuel.loss_rate;
+            in exhaust_in = aries_integrated_plant::fuel.exhaust_rate;
+            in residence_in = process_residence_s;
+            in annual_recovery_in = annual_recovery_kg;
+            in tritium_price_in = tritium_price;
+        }
+        attribute annual_burn : Real = annual.annual_burn;
+        attribute annual_loss : Real = annual.annual_loss;
+        attribute annual_decay : Real = annual.annual_decay;
+        attribute annual_recovery : Real = annual.annual_recovery;
+        attribute annual_external : Real = annual.annual_external;
+        attribute annual_cost : Real = annual.annual_cost;
+        attribute required_stock : Real = annual.required_stock;
+        attribute breeding_supported : Real = annual.breeding_supported;
+        calc screen : 'Offered Capacity Screen' {
+            in rating_in = selected_tritium_kg;
+            in demand_in = required_stock;
+            in applicable_in = true;
+            in conditions_supported_in = true;
+            in demand_available_in = true;
+        }
+        attribute margin : Real = screen.margin;
+        attribute evaluation_defined : Real = screen.evaluation_defined;
+        assert constraint capacity_ok : 'Offered Equipment Capacity' {
+            in defined_in = evaluation_defined;
+            in margin_in = margin;
+        }
+        calc deuterium_rate : 'Scaled Amount' {
+            in amount_in = deuterium_atom_kg;
+            in factor_in = deuterium_price;
+        }
+        attribute deuterium_per_reaction : Real = deuterium_rate.amount;
+        calc deuterium : 'DT Fuel Cost' {
+            in p_fus = aries_integrated_plant::source.selected_power;
+            in n_mod_in = aries_integrated_plant::cost_accounts.one_module;
+            in availability_in = aries_integrated_plant::cost_schedule.availability;
+            in cost_per_rxn = deuterium_per_reaction;
+            in q_eff = aries_integrated_plant::fuel.reaction_energy_mev;
+            in mev_to_joules_in = aries_integrated_plant::fuel.mev_joules;
+            in burn_fraction_in = aries_integrated_plant::fuel.pass_burn_fraction;
+            in fuel_recovery_in = aries_integrated_plant::fuel.exhaust_recovery;
+        }
+        attribute annual_deuterium_cost : Real = deuterium.annual_fuel;
+    }
+    part source_budget {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Disjoint Capital Budget' {
+            in account_1_in = 12929000.0;
+            in account_2_in = 336133000.0;
+            in account_3_in = 1538817000.0;
+            in account_4_in = 314558000.0;
+            in account_5_in = 138764000.0;
+            in account_6_in = 70958000.0;
+            in account_7_in = 151327000.0;
+            in account_8_in = 56086000.0;
+            in inclusive_multiplier_in = 1.93;
+        }
+        attribute direct_total : Real = evaluate.direct_total;
+        attribute inclusive_capital : Real = evaluate.inclusive_capital;
+    }
+    part core_first {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = aries_integrated_plant::blanket_inventory.capital_cost;
+            in amount2_in = aries_integrated_plant::shield_inventory.capital_cost;
+            in amount3_in = aries_integrated_plant::magnet_inventory.capital_cost;
+            in amount4_in = aries_integrated_plant::vf_coils.capital_cost;
+            in amount5_in = aries_integrated_plant::divertor_inventory.capital_cost;
+            in amount6_in = aries_integrated_plant::heating_equipment.capital_cost;
+            in amount7_in = aries_integrated_plant::primary_support.capital_cost;
+            in amount8_in = aries_integrated_plant::vacuum_equipment.capital_cost;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part core_cost {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = aries_integrated_plant::core_first.total;
+            in amount2_in = aries_integrated_plant::magnet_power_supplies.capital_cost;
+            in amount3_in = aries_integrated_plant::impurity_control.capital_cost;
+            in amount4_in = 0.0;
+            in amount5_in = 0.0;
+            in amount6_in = 0.0;
+            in amount7_in = 0.0;
+            in amount8_in = 0.0;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part primary_heat_cost {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = aries_integrated_plant::he_hx.capital_cost;
+            in amount2_in = aries_integrated_plant::pbli_hx.capital_cost;
+            in amount3_in = aries_integrated_plant::divertor_hx.capital_cost;
+            in amount4_in = aries_integrated_plant::he_pump.capital_cost;
+            in amount5_in = aries_integrated_plant::pbli_pump.capital_cost;
+            in amount6_in = aries_integrated_plant::divertor_pump.capital_cost;
+            in amount7_in = aries_integrated_plant::primary_piping.capital_cost;
+            in amount8_in = 0.0;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part heat_transport_cost {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = aries_integrated_plant::primary_heat_cost.total;
+            in amount2_in = aries_integrated_plant::he_duty_equipment.capital_cost;
+            in amount3_in = aries_integrated_plant::pbli_duty_equipment.capital_cost;
+            in amount4_in = aries_integrated_plant::divertor_duty_equipment.capital_cost;
+            in amount5_in = aries_integrated_plant::secondary_transport.capital_cost;
+            in amount6_in = 0.0;
+            in amount7_in = 0.0;
+            in amount8_in = 0.0;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part fuel_equipment {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = aries_integrated_plant::fuel_processing_equipment.capital_cost;
+            in amount2_in = aries_integrated_plant::fuel_services.capital_cost;
+            in amount3_in = 0.0;
+            in amount4_in = 0.0;
+            in amount5_in = 0.0;
+            in amount6_in = 0.0;
+            in amount7_in = 0.0;
+            in amount8_in = 0.0;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part reactor_cost {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = aries_integrated_plant::core_cost.total;
+            in amount2_in = aries_integrated_plant::heat_transport_cost.total;
+            in amount3_in = aries_integrated_plant::auxiliary_cooling.capital_cost;
+            in amount4_in = aries_integrated_plant::waste_equipment.capital_cost;
+            in amount5_in = aries_integrated_plant::fuel_equipment.total;
+            in amount6_in = aries_integrated_plant::other_reactor_equipment.capital_cost;
+            in amount7_in = aries_integrated_plant::instrumentation_control.capital_cost;
+            in amount8_in = aries_integrated_plant::unallocated_source_scope.capital_cost;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part conversion_equipment {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = aries_integrated_plant::compressor_equipment.capital_cost;
+            in amount2_in = aries_integrated_plant::turbine_equipment.capital_cost;
+            in amount3_in = aries_integrated_plant::generator_equipment.capital_cost;
+            in amount4_in = aries_integrated_plant::conversion_services.capital_cost;
+            in amount5_in = 0.0;
+            in amount6_in = 0.0;
+            in amount7_in = 0.0;
+            in amount8_in = 0.0;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part direct_source_scope {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = aries_integrated_plant::site_land.capital_cost;
+            in amount2_in = aries_integrated_plant::facilities.capital_cost;
+            in amount3_in = aries_integrated_plant::reactor_cost.total;
+            in amount4_in = aries_integrated_plant::conversion_equipment.total;
+            in amount5_in = aries_integrated_plant::electrical_equipment.capital_cost;
+            in amount6_in = aries_integrated_plant::miscellaneous_equipment.capital_cost;
+            in amount7_in = aries_integrated_plant::lipb_inventory.capital_cost;
+            in amount8_in = aries_integrated_plant::heat_rejection_equipment.capital_cost;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part direct_cost {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = aries_integrated_plant::direct_source_scope.total;
+            in amount2_in = aries_integrated_plant::fuel_inventory.capital_cost;
+            in amount3_in = 0.0;
+            in amount4_in = 0.0;
+            in amount5_in = 0.0;
+            in amount6_in = 0.0;
+            in amount7_in = 0.0;
+            in amount8_in = 0.0;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part indirect_cost {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        attribute fraction : Real = 0.2;
+        calc evaluate : 'Indirect Cost' {
+            in indirect_fraction_in = fraction;
+            in direct_cost = aries_integrated_plant::direct_cost.total;
+            in construction_time = 6.0;
+            in reference_construction_time = 6.0;
+        }
+        attribute amount : Real = evaluate.cost;
+    }
+    part contingency_basis {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = aries_integrated_plant::direct_cost.total;
+            in amount2_in = aries_integrated_plant::indirect_cost.amount;
+            in amount3_in = 0.0;
+            in amount4_in = 0.0;
+            in amount5_in = 0.0;
+            in amount6_in = 0.0;
+            in amount7_in = 0.0;
+            in amount8_in = 0.0;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part contingency {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        attribute fraction : Real = 0.2;
+        calc evaluate : 'Contingency Cost' {
+            in contingency_rate_in = fraction;
+            in direct_subtotal = aries_integrated_plant::contingency_basis.total;
+        }
+        attribute amount : Real = evaluate.cost;
+    }
+    part owner_commissioning {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        attribute fraction : Real = 0.05;
+        calc evaluate : 'Scaled Amount' {
+            in amount_in = aries_integrated_plant::direct_cost.total;
+            in factor_in = fraction;
+        }
+        attribute amount : Real = evaluate.amount;
+    }
+    part annual_om {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        attribute selected_amount : Real = 70000000.0;
+        calc evaluate : 'Annual OM Cost' {
+            in om_ref = 0.0;
+            in p_net = 1000.0;
+            in n_mod_in = 1.0;
+            in ref_net_power = 1000.0;
+            in alpha = 0.5;
+            in om_direct = selected_amount;
+        }
+        attribute amount : Real = evaluate.annual_om;
+    }
+    part replacement_lipb {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Scaled Amount' {
+            in amount_in = aries_integrated_plant::lipb_inventory.capital_cost;
+            in factor_in = aries_integrated_plant::cost_schedule.lipb_makeup_fraction;
+        }
+        attribute amount : Real = evaluate.amount;
+    }
+    part replacement_scope {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = aries_integrated_plant::blanket_inventory.capital_cost;
+            in amount2_in = aries_integrated_plant::divertor_inventory.capital_cost;
+            in amount3_in = aries_integrated_plant::replacement_lipb.amount;
+            in amount4_in = 0.0;
+            in amount5_in = 0.0;
+            in amount6_in = 0.0;
+            in amount7_in = 0.0;
+            in amount8_in = 0.0;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part replacement_price {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Scaled Amount' {
+            in amount_in = aries_integrated_plant::replacement_scope.total;
+            in factor_in = aries_integrated_plant::cost_schedule.replacement_factor;
+        }
+        attribute amount : Real = evaluate.amount;
+    }
+    part replacement {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Replacement Events' {
+            in event_cost_in = aries_integrated_plant::replacement_price.amount;
+            in life_fpy_in = aries_integrated_plant::cost_schedule.replacement_life_fpy;
+            in availability_in = aries_integrated_plant::cost_schedule.availability;
+            in plant_years_in = aries_integrated_plant::cost_schedule.plant_years;
+        }
+        attribute event_cost : Real = evaluate.event_cost;
+        attribute interval_years : Real = evaluate.interval_years;
+        attribute event_count : Real = evaluate.event_count;
+        attribute lifetime_total : Real = evaluate.lifetime_total;
+        attribute annual_reserve : Real = evaluate.annual_reserve;
+        attribute first_event_year : Real = evaluate.first_event_year;
+        attribute last_event_year : Real = evaluate.last_event_year;
+    }
+    part cost_ledger {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        attribute consumables : Real = 5000000.0;
+        attribute import_price : Real = 50.0;
+        calc evaluate : 'Equipment Cost Ledger' {
+            in direct_in = aries_integrated_plant::direct_cost.total;
+            in source_direct_in = aries_integrated_plant::source_budget.direct_total;
+            in source_inclusive_in = aries_integrated_plant::source_budget.inclusive_capital;
+            in indirect_in = aries_integrated_plant::indirect_cost.amount;
+            in contingency_in = aries_integrated_plant::contingency.amount;
+            in owner_in = aries_integrated_plant::owner_commissioning.amount;
+            in om_in = aries_integrated_plant::annual_om.amount;
+            in tritium_in = aries_integrated_plant::fuel_inventory.annual_cost;
+            in deuterium_in = aries_integrated_plant::fuel_inventory.annual_deuterium_cost;
+            in consumables_in = consumables;
+            in replacement_reserve_in = aries_integrated_plant::replacement.annual_reserve;
+            in replacement_total_in = aries_integrated_plant::replacement.lifetime_total;
+            in net_power_in = aries_integrated_plant::plant_ledger.net_electric;
+            in availability_in = aries_integrated_plant::cost_schedule.availability;
+            in import_price_in = import_price;
+            in source_reactor_gap_in = 28396000.0;
+            in source_core_excess_in = 31000.0;
+            in source_coil_excess_in = 5287000.0;
+            in currency_year_in = 2004.0;
+        }
+        attribute direct : Real = evaluate.direct;
+        attribute source_direct : Real = evaluate.source_direct;
+        attribute source_inclusive : Real = evaluate.source_inclusive;
+        attribute direct_difference : Real = evaluate.direct_difference;
+        attribute overnight : Real = evaluate.overnight;
+        attribute annual_operating : Real = evaluate.annual_operating;
+        attribute annual_replacement_reserve : Real = evaluate.annual_replacement_reserve;
+        attribute lifetime_replacement : Real = evaluate.lifetime_replacement;
+        attribute annual_export_mwh : Real = evaluate.annual_export_mwh;
+        attribute annual_import_mwh : Real = evaluate.annual_import_mwh;
+        attribute annual_import_cost : Real = evaluate.annual_import_cost;
+        attribute source_reactor_gap : Real = evaluate.source_reactor_gap;
+        attribute source_core_excess : Real = evaluate.source_core_excess;
+        attribute source_coil_excess : Real = evaluate.source_coil_excess;
+        attribute currency_year : Real = evaluate.currency_year;
     }
 }

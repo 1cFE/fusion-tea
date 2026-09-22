@@ -12,10 +12,567 @@ modules:
   entry_fusion:
     module_type: EntryPoint
     inputs:
+      integrated_equipment_costs_params: IntegratedEquipmentCostsParams ../inputs/integrated_equipment_costs_params.json
+      mfe_account_costs_params: MfeAccountCostsParams ../inputs/mfe_account_costs_params.json
       mfe_plasma_scaling_params: MfePlasmaScalingParams ../inputs/mfe_plasma_scaling_params.json
+      mfe_viability_params: MfeViabilityParams ../inputs/mfe_viability_params.json
       plant_params: PlantParams ../inputs/plant_params.json
       plasma_integration_params: PlasmaIntegrationParams ../inputs/plasma_integration_params.json
+      source_budget_accounting_params: SourceBudgetAccountingParams ../inputs/source_budget_accounting_params.json
 
+
+  # integrated_equipment_costs.Exchanger_Area_ConductanceModule
+  aries_integrated_plant__pbli_hx__evaluate:
+    module_type: integrated_equipment_costs.Exchanger_Area_ConductanceModule
+    inputs:
+      area_in: float plant_params.aries_integrated_plant__pbli_hx__selected_area
+      u_in: float plant_params.aries_integrated_plant__pbli_hx__assumed_u
+    outputs:
+      area: float aries_integrated_plant__pbli_hx__evaluate__area
+      ua: float aries_integrated_plant__pbli_hx__evaluate__ua
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__pbli_hx__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      quantity_in: float plant_params.aries_integrated_plant__pbli_hx__selected_area
+      reference_quantity_in: float plant_params.aries_integrated_plant__pbli_hx__reference_quantity
+      price_factor_in: float plant_params.aries_integrated_plant__pbli_hx__price_factor
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      reference_cost_in: float plant_params.aries_integrated_plant__pbli_hx__reference_cost
+    outputs:
+      purchased_quantity: float aries_integrated_plant__pbli_hx__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__pbli_hx__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__pbli_hx__purchase__quantity_ratio
+      capital: float aries_integrated_plant__pbli_hx__purchase__capital
+      extrapolated: float aries_integrated_plant__pbli_hx__purchase__extrapolated
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__impurity_control__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float plant_params.aries_integrated_plant__impurity_control__price_factor
+      amount_in: float plant_params.aries_integrated_plant__impurity_control__reference_cost
+    outputs:
+      root: RootModel[float] aries_integrated_plant__impurity_control__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__impurity_control__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      purchase_cost_in: float aries_integrated_plant__impurity_control__estimate__amount.root
+      n_mod_in: float plant_params.aries_integrated_plant__impurity_control__selected_quantity
+    outputs:
+      root: RootModel[float] aries_integrated_plant__impurity_control__purchase__cost
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__he_hx__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      price_factor_in: float plant_params.aries_integrated_plant__he_hx__price_factor
+      reference_cost_in: float plant_params.aries_integrated_plant__he_hx__reference_cost
+      reference_quantity_in: float plant_params.aries_integrated_plant__he_hx__reference_quantity
+      quantity_in: float plant_params.aries_integrated_plant__he_hx__selected_area
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+    outputs:
+      purchased_quantity: float aries_integrated_plant__he_hx__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__he_hx__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__he_hx__purchase__quantity_ratio
+      capital: float aries_integrated_plant__he_hx__purchase__capital
+      extrapolated: float aries_integrated_plant__he_hx__purchase__extrapolated
+
+  # integrated_equipment_costs.Exchanger_Area_ConductanceModule
+  aries_integrated_plant__he_hx__evaluate:
+    module_type: integrated_equipment_costs.Exchanger_Area_ConductanceModule
+    inputs:
+      area_in: float plant_params.aries_integrated_plant__he_hx__selected_area
+      u_in: float plant_params.aries_integrated_plant__he_hx__assumed_u
+    outputs:
+      area: float aries_integrated_plant__he_hx__evaluate__area
+      ua: float aries_integrated_plant__he_hx__evaluate__ua
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__divertor_pump__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      price_factor_in: float plant_params.aries_integrated_plant__divertor_pump__price_factor
+      quantity_in: float plant_params.aries_integrated_plant__divertor_pump__selected_flow_capacity
+      reference_cost_in: float plant_params.aries_integrated_plant__divertor_pump__reference_cost
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      reference_quantity_in: float plant_params.aries_integrated_plant__divertor_pump__reference_quantity
+    outputs:
+      purchased_quantity: float aries_integrated_plant__divertor_pump__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__divertor_pump__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__divertor_pump__purchase__quantity_ratio
+      capital: float aries_integrated_plant__divertor_pump__purchase__capital
+      extrapolated: float aries_integrated_plant__divertor_pump__purchase__extrapolated
+
+  # integrated_equipment_costs.Selected_Flow_PumpModule
+  aries_integrated_plant__divertor_pump__evaluate:
+    module_type: integrated_equipment_costs.Selected_Flow_PumpModule
+    inputs:
+      flow_in: float plant_params.aries_integrated_plant__heat_exchangers__divertor_flow
+      reference_power_in: float plant_params.aries_integrated_plant__divertor_pump__reference_power
+      reference_efficiency_in: float plant_params.aries_integrated_plant__divertor_pump__reference_efficiency
+      fixed_power_in: float plant_params.aries_integrated_plant__divertor_pump__fixed_power
+      reference_flow_in: float plant_params.aries_integrated_plant__divertor_pump__reference_flow
+      mode_in: float plant_params.aries_integrated_plant__divertor_pump__pump_mode
+      efficiency_in: float plant_params.aries_integrated_plant__divertor_pump__efficiency
+    outputs:
+      electric: float aries_integrated_plant__divertor_pump__evaluate__electric
+      operating_flow: float aries_integrated_plant__divertor_pump__evaluate__operating_flow
+      mode: float aries_integrated_plant__divertor_pump__evaluate__mode
+      hydraulic_supported: float aries_integrated_plant__divertor_pump__evaluate__hydraulic_supported
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_integrated_plant__divertor_pump__screen:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      rating_in: float plant_params.aries_integrated_plant__divertor_pump__selected_flow_capacity
+      demand_in: float aries_integrated_plant__divertor_pump__evaluate__operating_flow
+      applicable_in: bool mfe_viability_params.aries_integrated_plant__divertor_pump__screen__applicable_in
+      demand_available_in: bool mfe_viability_params.aries_integrated_plant__divertor_pump__screen__demand_available_in
+      conditions_supported_in: bool mfe_viability_params.aries_integrated_plant__divertor_pump__screen__conditions_supported_in
+    outputs:
+      evaluation_defined: float aries_integrated_plant__divertor_pump__screen__evaluation_defined
+      margin: float aries_integrated_plant__divertor_pump__screen__margin
+      applicable: bool aries_integrated_plant__divertor_pump__screen__applicable
+      supported: bool aries_integrated_plant__divertor_pump__screen__supported
+      capacity_ok: bool aries_integrated_plant__divertor_pump__screen__capacity_ok
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__unallocated_source_scope__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float plant_params.aries_integrated_plant__unallocated_source_scope__reference_cost
+      factor_in: float plant_params.aries_integrated_plant__unallocated_source_scope__price_factor
+    outputs:
+      root: RootModel[float] aries_integrated_plant__unallocated_source_scope__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__unallocated_source_scope__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      purchase_cost_in: float aries_integrated_plant__unallocated_source_scope__estimate__amount.root
+      n_mod_in: float plant_params.aries_integrated_plant__unallocated_source_scope__selected_quantity
+    outputs:
+      root: RootModel[float] aries_integrated_plant__unallocated_source_scope__purchase__cost
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__magnet_inventory__inventory:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount4_in: float integrated_equipment_costs_params.aries_integrated_plant__magnet_inventory__inventory__amount4_in
+      amount5_in: float integrated_equipment_costs_params.aries_integrated_plant__magnet_inventory__inventory__amount5_in
+      amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__magnet_inventory__inventory__amount6_in
+      amount1_in: float plant_params.aries_integrated_plant__magnet_inventory__selected_winding_mass
+      amount7_in: float integrated_equipment_costs_params.aries_integrated_plant__magnet_inventory__inventory__amount7_in
+      amount2_in: float plant_params.aries_integrated_plant__magnet_inventory__selected_structure_mass
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__magnet_inventory__inventory__amount8_in
+      amount3_in: float integrated_equipment_costs_params.aries_integrated_plant__magnet_inventory__inventory__amount3_in
+    outputs:
+      root: RootModel[float] aries_integrated_plant__magnet_inventory__inventory__total
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__magnet_inventory__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      quantity_in: float aries_integrated_plant__magnet_inventory__inventory__total.root
+      reference_quantity_in: float plant_params.aries_integrated_plant__magnet_inventory__reference_quantity
+      reference_cost_in: float plant_params.aries_integrated_plant__magnet_inventory__reference_cost
+      price_factor_in: float plant_params.aries_integrated_plant__magnet_inventory__price_factor
+    outputs:
+      purchased_quantity: float aries_integrated_plant__magnet_inventory__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__magnet_inventory__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__magnet_inventory__purchase__quantity_ratio
+      capital: float aries_integrated_plant__magnet_inventory__purchase__capital
+      extrapolated: float aries_integrated_plant__magnet_inventory__purchase__extrapolated
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__site_land__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float plant_params.aries_integrated_plant__site_land__price_factor
+      amount_in: float plant_params.aries_integrated_plant__site_land__reference_cost
+    outputs:
+      root: RootModel[float] aries_integrated_plant__site_land__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__site_land__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      purchase_cost_in: float aries_integrated_plant__site_land__estimate__amount.root
+      n_mod_in: float plant_params.aries_integrated_plant__site_land__selected_quantity
+    outputs:
+      root: RootModel[float] aries_integrated_plant__site_land__purchase__cost
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__lipb_inventory__inventory:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float plant_params.aries_integrated_plant__lipb_inventory__selected_core_mass
+      factor_in: float plant_params.aries_integrated_plant__lipb_inventory__external_mass_factor
+    outputs:
+      root: RootModel[float] aries_integrated_plant__lipb_inventory__inventory__amount
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__lipb_inventory__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      reference_quantity_in: float plant_params.aries_integrated_plant__lipb_inventory__reference_quantity
+      quantity_in: float aries_integrated_plant__lipb_inventory__inventory__amount.root
+      reference_cost_in: float plant_params.aries_integrated_plant__lipb_inventory__reference_cost
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      price_factor_in: float plant_params.aries_integrated_plant__lipb_inventory__price_factor
+    outputs:
+      purchased_quantity: float aries_integrated_plant__lipb_inventory__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__lipb_inventory__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__lipb_inventory__purchase__quantity_ratio
+      capital: float aries_integrated_plant__lipb_inventory__purchase__capital
+      extrapolated: float aries_integrated_plant__lipb_inventory__purchase__extrapolated
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__conversion_services__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float plant_params.aries_integrated_plant__conversion_services__price_factor
+      amount_in: float plant_params.aries_integrated_plant__conversion_services__reference_cost
+    outputs:
+      root: RootModel[float] aries_integrated_plant__conversion_services__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__conversion_services__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      n_mod_in: float plant_params.aries_integrated_plant__conversion_services__selected_quantity
+      purchase_cost_in: float aries_integrated_plant__conversion_services__estimate__amount.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__conversion_services__purchase__cost
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__waste_equipment__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float plant_params.aries_integrated_plant__waste_equipment__reference_cost
+      factor_in: float plant_params.aries_integrated_plant__waste_equipment__price_factor
+    outputs:
+      root: RootModel[float] aries_integrated_plant__waste_equipment__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__waste_equipment__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      n_mod_in: float plant_params.aries_integrated_plant__waste_equipment__selected_quantity
+      purchase_cost_in: float aries_integrated_plant__waste_equipment__estimate__amount.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__waste_equipment__purchase__cost
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__magnet_power_supplies__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float plant_params.aries_integrated_plant__magnet_power_supplies__reference_cost
+      factor_in: float plant_params.aries_integrated_plant__magnet_power_supplies__price_factor
+    outputs:
+      root: RootModel[float] aries_integrated_plant__magnet_power_supplies__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__magnet_power_supplies__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      purchase_cost_in: float aries_integrated_plant__magnet_power_supplies__estimate__amount.root
+      n_mod_in: float plant_params.aries_integrated_plant__magnet_power_supplies__selected_quantity
+    outputs:
+      root: RootModel[float] aries_integrated_plant__magnet_power_supplies__purchase__cost
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__vacuum_equipment__inventory:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount2_in: float plant_params.aries_integrated_plant__vacuum_equipment__selected_cryostat_mass
+      amount5_in: float integrated_equipment_costs_params.aries_integrated_plant__vacuum_equipment__inventory__amount5_in
+      amount7_in: float integrated_equipment_costs_params.aries_integrated_plant__vacuum_equipment__inventory__amount7_in
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__vacuum_equipment__inventory__amount8_in
+      amount4_in: float integrated_equipment_costs_params.aries_integrated_plant__vacuum_equipment__inventory__amount4_in
+      amount3_in: float integrated_equipment_costs_params.aries_integrated_plant__vacuum_equipment__inventory__amount3_in
+      amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__vacuum_equipment__inventory__amount6_in
+      amount1_in: float plant_params.aries_integrated_plant__vacuum_equipment__selected_vessel_mass
+    outputs:
+      root: RootModel[float] aries_integrated_plant__vacuum_equipment__inventory__total
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__vacuum_equipment__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      reference_cost_in: float plant_params.aries_integrated_plant__vacuum_equipment__reference_cost
+      reference_quantity_in: float plant_params.aries_integrated_plant__vacuum_equipment__reference_quantity
+      price_factor_in: float plant_params.aries_integrated_plant__vacuum_equipment__price_factor
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      quantity_in: float aries_integrated_plant__vacuum_equipment__inventory__total.root
+    outputs:
+      purchased_quantity: float aries_integrated_plant__vacuum_equipment__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__vacuum_equipment__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__vacuum_equipment__purchase__quantity_ratio
+      capital: float aries_integrated_plant__vacuum_equipment__purchase__capital
+      extrapolated: float aries_integrated_plant__vacuum_equipment__purchase__extrapolated
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__fuel_processing_equipment__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      reference_cost_in: float plant_params.aries_integrated_plant__fuel_processing_equipment__reference_cost
+      reference_quantity_in: float plant_params.aries_integrated_plant__fuel_processing_equipment__reference_quantity
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      quantity_in: float plant_params.aries_integrated_plant__fuel_capacity__selected_rating
+      price_factor_in: float plant_params.aries_integrated_plant__fuel_processing_equipment__price_factor
+    outputs:
+      purchased_quantity: float aries_integrated_plant__fuel_processing_equipment__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__fuel_processing_equipment__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__fuel_processing_equipment__purchase__quantity_ratio
+      capital: float aries_integrated_plant__fuel_processing_equipment__purchase__capital
+      extrapolated: float aries_integrated_plant__fuel_processing_equipment__purchase__extrapolated
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__secondary_transport__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float plant_params.aries_integrated_plant__secondary_transport__price_factor
+      amount_in: float plant_params.aries_integrated_plant__secondary_transport__reference_cost
+    outputs:
+      root: RootModel[float] aries_integrated_plant__secondary_transport__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__secondary_transport__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      purchase_cost_in: float aries_integrated_plant__secondary_transport__estimate__amount.root
+      n_mod_in: float plant_params.aries_integrated_plant__secondary_transport__selected_quantity
+    outputs:
+      root: RootModel[float] aries_integrated_plant__secondary_transport__purchase__cost
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__vf_coils__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float plant_params.aries_integrated_plant__vf_coils__price_factor
+      amount_in: float plant_params.aries_integrated_plant__vf_coils__reference_cost
+    outputs:
+      root: RootModel[float] aries_integrated_plant__vf_coils__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__vf_coils__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      purchase_cost_in: float aries_integrated_plant__vf_coils__estimate__amount.root
+      n_mod_in: float plant_params.aries_integrated_plant__vf_coils__selected_quantity
+    outputs:
+      root: RootModel[float] aries_integrated_plant__vf_coils__purchase__cost
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__fuel_inventory__purchase:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float plant_params.aries_integrated_plant__fuel_inventory__selected_tritium_kg
+      factor_in: float plant_params.aries_integrated_plant__fuel_inventory__tritium_price
+    outputs:
+      root: RootModel[float] aries_integrated_plant__fuel_inventory__purchase__amount
+
+  # integrated_equipment_costs.Selected_Stock_AtomsModule
+  aries_integrated_plant__fuel_inventory__atoms:
+    module_type: integrated_equipment_costs.Selected_Stock_AtomsModule
+    inputs:
+      stock_kg_in: float plant_params.aries_integrated_plant__fuel_inventory__selected_tritium_kg
+      atom_mass_in: float plant_params.aries_integrated_plant__fuel__tritium_atom_kg
+    outputs:
+      stock_kg: float aries_integrated_plant__fuel_inventory__atoms__stock_kg
+      atoms: float aries_integrated_plant__fuel_inventory__atoms__atoms
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__fuel_inventory__deuterium_rate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float plant_params.aries_integrated_plant__fuel_inventory__deuterium_atom_kg
+      factor_in: float plant_params.aries_integrated_plant__fuel_inventory__deuterium_price
+    outputs:
+      root: RootModel[float] aries_integrated_plant__fuel_inventory__deuterium_rate__amount
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__heat_rejection_equipment__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      reference_cost_in: float plant_params.aries_integrated_plant__heat_rejection_equipment__reference_cost
+      reference_quantity_in: float plant_params.aries_integrated_plant__heat_rejection_equipment__reference_quantity
+      quantity_in: float plant_params.aries_integrated_plant__rejection_capacity__selected_rating
+      price_factor_in: float plant_params.aries_integrated_plant__heat_rejection_equipment__price_factor
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+    outputs:
+      purchased_quantity: float aries_integrated_plant__heat_rejection_equipment__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__heat_rejection_equipment__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__heat_rejection_equipment__purchase__quantity_ratio
+      capital: float aries_integrated_plant__heat_rejection_equipment__purchase__capital
+      extrapolated: float aries_integrated_plant__heat_rejection_equipment__purchase__extrapolated
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__divertor_hx__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      reference_quantity_in: float plant_params.aries_integrated_plant__divertor_hx__reference_quantity
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      reference_cost_in: float plant_params.aries_integrated_plant__divertor_hx__reference_cost
+      price_factor_in: float plant_params.aries_integrated_plant__divertor_hx__price_factor
+      quantity_in: float plant_params.aries_integrated_plant__divertor_hx__selected_area
+    outputs:
+      purchased_quantity: float aries_integrated_plant__divertor_hx__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__divertor_hx__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__divertor_hx__purchase__quantity_ratio
+      capital: float aries_integrated_plant__divertor_hx__purchase__capital
+      extrapolated: float aries_integrated_plant__divertor_hx__purchase__extrapolated
+
+  # integrated_equipment_costs.Exchanger_Area_ConductanceModule
+  aries_integrated_plant__divertor_hx__evaluate:
+    module_type: integrated_equipment_costs.Exchanger_Area_ConductanceModule
+    inputs:
+      u_in: float plant_params.aries_integrated_plant__divertor_hx__assumed_u
+      area_in: float plant_params.aries_integrated_plant__divertor_hx__selected_area
+    outputs:
+      area: float aries_integrated_plant__divertor_hx__evaluate__area
+      ua: float aries_integrated_plant__divertor_hx__evaluate__ua
+
+  # source_budget_accounting.Disjoint_Capital_BudgetModule
+  aries_integrated_plant__source_budget__evaluate:
+    module_type: source_budget_accounting.Disjoint_Capital_BudgetModule
+    inputs:
+      inclusive_multiplier_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__inclusive_multiplier_in
+      account_2_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_2_in
+      account_8_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_8_in
+      account_1_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_1_in
+      account_4_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_4_in
+      account_3_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_3_in
+      account_5_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_5_in
+      account_6_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_6_in
+      account_7_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_7_in
+    outputs:
+      direct_total: float aries_integrated_plant__source_budget__evaluate__direct_total
+      inclusive_addition: float aries_integrated_plant__source_budget__evaluate__inclusive_addition
+      inclusive_capital: float aries_integrated_plant__source_budget__evaluate__inclusive_capital
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__facilities__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float plant_params.aries_integrated_plant__facilities__reference_cost
+      factor_in: float plant_params.aries_integrated_plant__facilities__price_factor
+    outputs:
+      root: RootModel[float] aries_integrated_plant__facilities__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__facilities__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      n_mod_in: float plant_params.aries_integrated_plant__facilities__selected_quantity
+      purchase_cost_in: float aries_integrated_plant__facilities__estimate__amount.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__facilities__purchase__cost
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__generator_equipment__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      price_factor_in: float plant_params.aries_integrated_plant__generator_equipment__price_factor
+      reference_cost_in: float plant_params.aries_integrated_plant__generator_equipment__reference_cost
+      reference_quantity_in: float plant_params.aries_integrated_plant__generator_equipment__reference_quantity
+      quantity_in: float plant_params.aries_integrated_plant__generator_capacity__selected_rating
+    outputs:
+      purchased_quantity: float aries_integrated_plant__generator_equipment__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__generator_equipment__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__generator_equipment__purchase__quantity_ratio
+      capital: float aries_integrated_plant__generator_equipment__purchase__capital
+      extrapolated: float aries_integrated_plant__generator_equipment__purchase__extrapolated
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__miscellaneous_equipment__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float plant_params.aries_integrated_plant__miscellaneous_equipment__price_factor
+      amount_in: float plant_params.aries_integrated_plant__miscellaneous_equipment__reference_cost
+    outputs:
+      root: RootModel[float] aries_integrated_plant__miscellaneous_equipment__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__miscellaneous_equipment__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      purchase_cost_in: float aries_integrated_plant__miscellaneous_equipment__estimate__amount.root
+      n_mod_in: float plant_params.aries_integrated_plant__miscellaneous_equipment__selected_quantity
+    outputs:
+      root: RootModel[float] aries_integrated_plant__miscellaneous_equipment__purchase__cost
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__fuel_services__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float plant_params.aries_integrated_plant__fuel_services__reference_cost
+      factor_in: float plant_params.aries_integrated_plant__fuel_services__price_factor
+    outputs:
+      root: RootModel[float] aries_integrated_plant__fuel_services__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__fuel_services__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      n_mod_in: float plant_params.aries_integrated_plant__fuel_services__selected_quantity
+      purchase_cost_in: float aries_integrated_plant__fuel_services__estimate__amount.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__fuel_services__purchase__cost
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__fuel_equipment__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount4_in: float integrated_equipment_costs_params.aries_integrated_plant__fuel_equipment__evaluate__amount4_in
+      amount3_in: float integrated_equipment_costs_params.aries_integrated_plant__fuel_equipment__evaluate__amount3_in
+      amount2_in: float aries_integrated_plant__fuel_services__purchase__cost.root
+      amount7_in: float integrated_equipment_costs_params.aries_integrated_plant__fuel_equipment__evaluate__amount7_in
+      amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__fuel_equipment__evaluate__amount6_in
+      amount5_in: float integrated_equipment_costs_params.aries_integrated_plant__fuel_equipment__evaluate__amount5_in
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__fuel_equipment__evaluate__amount8_in
+      amount1_in: float aries_integrated_plant__fuel_processing_equipment__purchase__capital
+    outputs:
+      root: RootModel[float] aries_integrated_plant__fuel_equipment__evaluate__total
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__divertor_duty_equipment__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      reference_quantity_in: float plant_params.aries_integrated_plant__divertor_duty_equipment__reference_quantity
+      price_factor_in: float plant_params.aries_integrated_plant__divertor_duty_equipment__price_factor
+      reference_cost_in: float plant_params.aries_integrated_plant__divertor_duty_equipment__reference_cost
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      quantity_in: float plant_params.aries_integrated_plant__divertor_capacity__selected_rating
+    outputs:
+      purchased_quantity: float aries_integrated_plant__divertor_duty_equipment__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__divertor_duty_equipment__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__divertor_duty_equipment__purchase__quantity_ratio
+      capital: float aries_integrated_plant__divertor_duty_equipment__purchase__capital
+      extrapolated: float aries_integrated_plant__divertor_duty_equipment__purchase__extrapolated
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__pbli_duty_equipment__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      reference_cost_in: float plant_params.aries_integrated_plant__pbli_duty_equipment__reference_cost
+      quantity_in: float plant_params.aries_integrated_plant__pbli_capacity__selected_rating
+      reference_quantity_in: float plant_params.aries_integrated_plant__pbli_duty_equipment__reference_quantity
+      price_factor_in: float plant_params.aries_integrated_plant__pbli_duty_equipment__price_factor
+    outputs:
+      purchased_quantity: float aries_integrated_plant__pbli_duty_equipment__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__pbli_duty_equipment__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__pbli_duty_equipment__purchase__quantity_ratio
+      capital: float aries_integrated_plant__pbli_duty_equipment__purchase__capital
+      extrapolated: float aries_integrated_plant__pbli_duty_equipment__purchase__extrapolated
 
   # ideal_gas_brayton_components.Ideal_Gas_CompressorModule
   aries_integrated_plant__compressor_1__evaluate:
@@ -32,6 +589,64 @@ modules:
       pressure_out: float aries_integrated_plant__compressor_1__evaluate__pressure_out
       shaft_demand: float aries_integrated_plant__compressor_1__evaluate__shaft_demand
       temperature_out: float aries_integrated_plant__compressor_1__evaluate__temperature_out
+
+  # integrated_equipment_costs.Selected_Flow_PumpModule
+  aries_integrated_plant__he_pump__evaluate:
+    module_type: integrated_equipment_costs.Selected_Flow_PumpModule
+    inputs:
+      reference_power_in: float plant_params.aries_integrated_plant__he_pump__reference_power
+      mode_in: float plant_params.aries_integrated_plant__he_pump__pump_mode
+      reference_flow_in: float plant_params.aries_integrated_plant__he_pump__reference_flow
+      reference_efficiency_in: float plant_params.aries_integrated_plant__he_pump__reference_efficiency
+      flow_in: float plant_params.aries_integrated_plant__heat_exchangers__he_flow
+      fixed_power_in: float plant_params.aries_integrated_plant__he_pump__fixed_power
+      efficiency_in: float plant_params.aries_integrated_plant__he_pump__efficiency
+    outputs:
+      electric: float aries_integrated_plant__he_pump__evaluate__electric
+      operating_flow: float aries_integrated_plant__he_pump__evaluate__operating_flow
+      mode: float aries_integrated_plant__he_pump__evaluate__mode
+      hydraulic_supported: float aries_integrated_plant__he_pump__evaluate__hydraulic_supported
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__he_pump__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      price_factor_in: float plant_params.aries_integrated_plant__he_pump__price_factor
+      quantity_in: float plant_params.aries_integrated_plant__he_pump__selected_flow_capacity
+      reference_cost_in: float plant_params.aries_integrated_plant__he_pump__reference_cost
+      reference_quantity_in: float plant_params.aries_integrated_plant__he_pump__reference_quantity
+    outputs:
+      purchased_quantity: float aries_integrated_plant__he_pump__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__he_pump__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__he_pump__purchase__quantity_ratio
+      capital: float aries_integrated_plant__he_pump__purchase__capital
+      extrapolated: float aries_integrated_plant__he_pump__purchase__extrapolated
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_integrated_plant__he_pump__screen:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      rating_in: float plant_params.aries_integrated_plant__he_pump__selected_flow_capacity
+      demand_in: float aries_integrated_plant__he_pump__evaluate__operating_flow
+      demand_available_in: bool mfe_viability_params.aries_integrated_plant__he_pump__screen__demand_available_in
+      applicable_in: bool mfe_viability_params.aries_integrated_plant__he_pump__screen__applicable_in
+      conditions_supported_in: bool mfe_viability_params.aries_integrated_plant__he_pump__screen__conditions_supported_in
+    outputs:
+      evaluation_defined: float aries_integrated_plant__he_pump__screen__evaluation_defined
+      margin: float aries_integrated_plant__he_pump__screen__margin
+      applicable: bool aries_integrated_plant__he_pump__screen__applicable
+      supported: bool aries_integrated_plant__he_pump__screen__supported
+      capacity_ok: bool aries_integrated_plant__he_pump__screen__capacity_ok
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__replacement_lipb__evaluate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float plant_params.aries_integrated_plant__cost_schedule__lipb_makeup_fraction
+      amount_in: float aries_integrated_plant__lipb_inventory__purchase__capital
+    outputs:
+      root: RootModel[float] aries_integrated_plant__replacement_lipb__evaluate__amount
 
   # ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
   aries_integrated_plant__intercooler_1__evaluate:
@@ -104,6 +719,38 @@ modules:
     outputs:
       root: RootModel[float] aries_integrated_plant__pressure_loss__evaluate__pressure_out
 
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__blanket_inventory__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      reference_quantity_in: float plant_params.aries_integrated_plant__blanket_inventory__reference_quantity
+      price_factor_in: float plant_params.aries_integrated_plant__blanket_inventory__price_factor
+      quantity_in: float plant_params.aries_integrated_plant__blanket_inventory__selected_mass
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      reference_cost_in: float plant_params.aries_integrated_plant__blanket_inventory__reference_cost
+    outputs:
+      purchased_quantity: float aries_integrated_plant__blanket_inventory__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__blanket_inventory__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__blanket_inventory__purchase__quantity_ratio
+      capital: float aries_integrated_plant__blanket_inventory__purchase__capital
+      extrapolated: float aries_integrated_plant__blanket_inventory__purchase__extrapolated
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__turbine_equipment__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      reference_quantity_in: float plant_params.aries_integrated_plant__turbine_equipment__reference_quantity
+      reference_cost_in: float plant_params.aries_integrated_plant__turbine_equipment__reference_cost
+      quantity_in: float plant_params.aries_integrated_plant__turbine_capacity__selected_rating
+      price_factor_in: float plant_params.aries_integrated_plant__turbine_equipment__price_factor
+    outputs:
+      purchased_quantity: float aries_integrated_plant__turbine_equipment__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__turbine_equipment__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__turbine_equipment__purchase__quantity_ratio
+      capital: float aries_integrated_plant__turbine_equipment__purchase__capital
+      extrapolated: float aries_integrated_plant__turbine_equipment__purchase__extrapolated
+
   # source: computed_attribute (aries_cs_plasma_integration.plasma.edge_densityModule)
   aries_cs_plasma_integration__plasma__edge_density:
     module_type: aries_cs_plasma_integration.plasma.edge_densityModule
@@ -152,13 +799,28 @@ modules:
       selected_power: float aries_integrated_plant__source__evaluate__selected_power
       selected_mode: float aries_integrated_plant__source__evaluate__selected_mode
 
+  # mfe_account_costs.DT_Fuel_CostModule
+  aries_integrated_plant__fuel_inventory__deuterium:
+    module_type: mfe_account_costs.DT_Fuel_CostModule
+    inputs:
+      p_fus: float aries_integrated_plant__source__evaluate__selected_power
+      mev_to_joules_in: float plant_params.aries_integrated_plant__fuel__mev_joules
+      availability_in: float plant_params.aries_integrated_plant__cost_schedule__availability
+      cost_per_rxn: float aries_integrated_plant__fuel_inventory__deuterium_rate__amount.root
+      fuel_recovery_in: float plant_params.aries_integrated_plant__fuel__exhaust_recovery
+      q_eff: float plant_params.aries_integrated_plant__fuel__reaction_energy_mev
+      n_mod_in: float plant_params.aries_integrated_plant__cost_accounts__one_module
+      burn_fraction_in: float plant_params.aries_integrated_plant__fuel__pass_burn_fraction
+    outputs:
+      root: RootModel[float] aries_integrated_plant__fuel_inventory__deuterium__annual_fuel
+
   # mfe_fuel_cycle.Fuel_Cycle_FlowsModule
   aries_integrated_plant__fuel__evaluate:
     module_type: mfe_fuel_cycle.Fuel_Cycle_FlowsModule
     inputs:
       eta_extract_in: float plant_params.aries_integrated_plant__fuel__assumed_extraction
       s_per_fpy_in: float plant_params.aries_integrated_plant__fuel__seconds_per_year
-      I_total_in: float plant_params.aries_integrated_plant__fuel__dormant_inventory_atoms
+      I_total_in: float aries_integrated_plant__fuel_inventory__atoms__atoms
       q_eff_in: float plant_params.aries_integrated_plant__fuel__reaction_energy_mev
       p_fus_in: float aries_integrated_plant__source__evaluate__selected_power
       t_recycle_in: float plant_params.aries_integrated_plant__fuel__exhaust_recovery
@@ -177,6 +839,47 @@ modules:
       loss_rate: float aries_integrated_plant__fuel__evaluate__loss_rate
       exhaust_rate: float aries_integrated_plant__fuel__evaluate__exhaust_rate
 
+  # integrated_equipment_costs.Annual_Selected_FuelModule
+  aries_integrated_plant__fuel_inventory__annual:
+    module_type: integrated_equipment_costs.Annual_Selected_FuelModule
+    inputs:
+      availability_in: float plant_params.aries_integrated_plant__cost_schedule__availability
+      stock_kg_in: float plant_params.aries_integrated_plant__fuel_inventory__selected_tritium_kg
+      annual_recovery_in: float plant_params.aries_integrated_plant__fuel_inventory__annual_recovery_kg
+      tritium_price_in: float plant_params.aries_integrated_plant__fuel_inventory__tritium_price
+      decay_in: float plant_params.aries_integrated_plant__fuel__decay_constant_s
+      burn_in: float aries_integrated_plant__fuel__evaluate__burn_rate
+      exhaust_in: float aries_integrated_plant__fuel__evaluate__exhaust_rate
+      seconds_in: float plant_params.aries_integrated_plant__fuel__seconds_per_year
+      atom_mass_in: float plant_params.aries_integrated_plant__fuel__tritium_atom_kg
+      loss_in: float aries_integrated_plant__fuel__evaluate__loss_rate
+      residence_in: float plant_params.aries_integrated_plant__fuel_inventory__process_residence_s
+    outputs:
+      annual_loss: float aries_integrated_plant__fuel_inventory__annual__annual_loss
+      annual_cost: float aries_integrated_plant__fuel_inventory__annual__annual_cost
+      annual_burn: float aries_integrated_plant__fuel_inventory__annual__annual_burn
+      annual_recovery: float aries_integrated_plant__fuel_inventory__annual__annual_recovery
+      annual_decay: float aries_integrated_plant__fuel_inventory__annual__annual_decay
+      annual_external: float aries_integrated_plant__fuel_inventory__annual__annual_external
+      required_stock: float aries_integrated_plant__fuel_inventory__annual__required_stock
+      breeding_supported: float aries_integrated_plant__fuel_inventory__annual__breeding_supported
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_integrated_plant__fuel_inventory__screen:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      conditions_supported_in: bool mfe_viability_params.aries_integrated_plant__fuel_inventory__screen__conditions_supported_in
+      rating_in: float plant_params.aries_integrated_plant__fuel_inventory__selected_tritium_kg
+      demand_available_in: bool mfe_viability_params.aries_integrated_plant__fuel_inventory__screen__demand_available_in
+      applicable_in: bool mfe_viability_params.aries_integrated_plant__fuel_inventory__screen__applicable_in
+      demand_in: float aries_integrated_plant__fuel_inventory__annual__required_stock
+    outputs:
+      evaluation_defined: float aries_integrated_plant__fuel_inventory__screen__evaluation_defined
+      margin: float aries_integrated_plant__fuel_inventory__screen__margin
+      applicable: bool aries_integrated_plant__fuel_inventory__screen__applicable
+      supported: bool aries_integrated_plant__fuel_inventory__screen__supported
+      capacity_ok: bool aries_integrated_plant__fuel_inventory__screen__capacity_ok
+
   # mfe_viability.Offered_Capacity_ScreenModule
   aries_integrated_plant__fuel_capacity__evaluate:
     module_type: mfe_viability.Offered_Capacity_ScreenModule
@@ -193,6 +896,143 @@ modules:
       supported: bool aries_integrated_plant__fuel_capacity__evaluate__supported
       capacity_ok: bool aries_integrated_plant__fuel_capacity__evaluate__capacity_ok
 
+  # radial_density_profile.Radial_Density_ProfileModule
+  aries_cs_plasma_integration__plasma__density_sample:
+    module_type: radial_density_profile.Radial_Density_ProfileModule
+    inputs:
+      hollowness_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__hollowness
+      edge_density_in: float aries_cs_plasma_integration__plasma__edge_density__edge_density.root
+      rho_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__sample_rho
+      radial_exponent_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__density_radial_exponent
+      amplitude_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__amplitude
+      profile_exponent_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__density_profile_exponent
+    outputs:
+      root: RootModel[float] aries_cs_plasma_integration__plasma__density_sample__density
+
+  # mfe_plasma_scaling.Volume_Averaged_BetaModule
+  aries_cs_plasma_integration__plasma__beta_calculation:
+    module_type: mfe_plasma_scaling.Volume_Averaged_BetaModule
+    inputs:
+      mu0: float mfe_plasma_scaling_params.aries_cs_plasma_integration__plasma__beta_calculation__mu0
+      B_in: float aries_cs_plasma_integration__plasma__integration__field_for_beta
+      p_avg_in: float aries_cs_plasma_integration__plasma__integration__thermal_pressure
+    outputs:
+      root: RootModel[float] aries_cs_plasma_integration__plasma__beta_calculation__beta
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__divertor_inventory__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float plant_params.aries_integrated_plant__divertor_inventory__price_factor
+      amount_in: float plant_params.aries_integrated_plant__divertor_inventory__reference_cost
+    outputs:
+      root: RootModel[float] aries_integrated_plant__divertor_inventory__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__divertor_inventory__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      purchase_cost_in: float aries_integrated_plant__divertor_inventory__estimate__amount.root
+      n_mod_in: float plant_params.aries_integrated_plant__divertor_inventory__selected_quantity
+    outputs:
+      root: RootModel[float] aries_integrated_plant__divertor_inventory__purchase__cost
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__compressor_equipment__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      reference_cost_in: float plant_params.aries_integrated_plant__compressor_equipment__reference_cost
+      quantity_in: float plant_params.aries_integrated_plant__compressor_capacity__selected_rating
+      price_factor_in: float plant_params.aries_integrated_plant__compressor_equipment__price_factor
+      reference_quantity_in: float plant_params.aries_integrated_plant__compressor_equipment__reference_quantity
+    outputs:
+      purchased_quantity: float aries_integrated_plant__compressor_equipment__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__compressor_equipment__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__compressor_equipment__purchase__quantity_ratio
+      capital: float aries_integrated_plant__compressor_equipment__purchase__capital
+      extrapolated: float aries_integrated_plant__compressor_equipment__purchase__extrapolated
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__shield_inventory__inventory:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount5_in: float integrated_equipment_costs_params.aries_integrated_plant__shield_inventory__inventory__amount5_in
+      amount4_in: float integrated_equipment_costs_params.aries_integrated_plant__shield_inventory__inventory__amount4_in
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__shield_inventory__inventory__amount8_in
+      amount1_in: float plant_params.aries_integrated_plant__shield_inventory__selected_shield_mass
+      amount2_in: float plant_params.aries_integrated_plant__shield_inventory__selected_manifold_mass
+      amount7_in: float integrated_equipment_costs_params.aries_integrated_plant__shield_inventory__inventory__amount7_in
+      amount3_in: float integrated_equipment_costs_params.aries_integrated_plant__shield_inventory__inventory__amount3_in
+      amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__shield_inventory__inventory__amount6_in
+    outputs:
+      root: RootModel[float] aries_integrated_plant__shield_inventory__inventory__total
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__shield_inventory__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      quantity_in: float aries_integrated_plant__shield_inventory__inventory__total.root
+      reference_quantity_in: float plant_params.aries_integrated_plant__shield_inventory__reference_quantity
+      reference_cost_in: float plant_params.aries_integrated_plant__shield_inventory__reference_cost
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      price_factor_in: float plant_params.aries_integrated_plant__shield_inventory__price_factor
+    outputs:
+      purchased_quantity: float aries_integrated_plant__shield_inventory__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__shield_inventory__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__shield_inventory__purchase__quantity_ratio
+      capital: float aries_integrated_plant__shield_inventory__purchase__capital
+      extrapolated: float aries_integrated_plant__shield_inventory__purchase__extrapolated
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__he_duty_equipment__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      quantity_in: float plant_params.aries_integrated_plant__he_capacity__selected_rating
+      price_factor_in: float plant_params.aries_integrated_plant__he_duty_equipment__price_factor
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      reference_quantity_in: float plant_params.aries_integrated_plant__he_duty_equipment__reference_quantity
+      reference_cost_in: float plant_params.aries_integrated_plant__he_duty_equipment__reference_cost
+    outputs:
+      purchased_quantity: float aries_integrated_plant__he_duty_equipment__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__he_duty_equipment__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__he_duty_equipment__purchase__quantity_ratio
+      capital: float aries_integrated_plant__he_duty_equipment__purchase__capital
+      extrapolated: float aries_integrated_plant__he_duty_equipment__purchase__extrapolated
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__pbli_pump__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      quantity_in: float plant_params.aries_integrated_plant__pbli_pump__selected_flow_capacity
+      price_factor_in: float plant_params.aries_integrated_plant__pbli_pump__price_factor
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      reference_cost_in: float plant_params.aries_integrated_plant__pbli_pump__reference_cost
+      reference_quantity_in: float plant_params.aries_integrated_plant__pbli_pump__reference_quantity
+    outputs:
+      purchased_quantity: float aries_integrated_plant__pbli_pump__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__pbli_pump__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__pbli_pump__purchase__quantity_ratio
+      capital: float aries_integrated_plant__pbli_pump__purchase__capital
+      extrapolated: float aries_integrated_plant__pbli_pump__purchase__extrapolated
+
+  # integrated_equipment_costs.Selected_Flow_PumpModule
+  aries_integrated_plant__pbli_pump__evaluate:
+    module_type: integrated_equipment_costs.Selected_Flow_PumpModule
+    inputs:
+      fixed_power_in: float plant_params.aries_integrated_plant__pbli_pump__fixed_power
+      efficiency_in: float plant_params.aries_integrated_plant__pbli_pump__efficiency
+      reference_flow_in: float plant_params.aries_integrated_plant__pbli_pump__reference_flow
+      flow_in: float plant_params.aries_integrated_plant__heat_exchangers__pbli_flow
+      mode_in: float plant_params.aries_integrated_plant__pbli_pump__pump_mode
+      reference_efficiency_in: float plant_params.aries_integrated_plant__pbli_pump__reference_efficiency
+      reference_power_in: float plant_params.aries_integrated_plant__pbli_pump__reference_power
+    outputs:
+      electric: float aries_integrated_plant__pbli_pump__evaluate__electric
+      operating_flow: float aries_integrated_plant__pbli_pump__evaluate__operating_flow
+      mode: float aries_integrated_plant__pbli_pump__evaluate__mode
+      hydraulic_supported: float aries_integrated_plant__pbli_pump__evaluate__hydraulic_supported
+
   # integrated_heat_electricity.Integrated_Heat_SourceModule
   aries_integrated_plant__deposition__evaluate:
     module_type: integrated_heat_electricity.Integrated_Heat_SourceModule
@@ -204,16 +1044,16 @@ modules:
       heat_mode_in: float plant_params.aries_integrated_plant__deposition__heat_mode
       auxiliary_heat_in: float plant_params.aries_integrated_plant__deposition__auxiliary_heat
       divertor_recovery_in: float plant_params.aries_integrated_plant__deposition__divertor_recovery
-      pbli_pump_in: float plant_params.aries_integrated_plant__deposition__pbli_pump
+      pbli_pump_in: float aries_integrated_plant__pbli_pump__evaluate__electric
       exchange_fraction_in: float plant_params.aries_integrated_plant__deposition__exchange_fraction
       radiation_fraction_in: float plant_params.aries_integrated_plant__deposition__radiation_fraction
       he_recovery_in: float plant_params.aries_integrated_plant__deposition__he_recovery
       literal_pbli_in: float plant_params.aries_integrated_plant__deposition__literal_pbli
-      he_pump_in: float plant_params.aries_integrated_plant__deposition__he_pump
+      he_pump_in: float aries_integrated_plant__he_pump__evaluate__electric
       pbli_recovery_in: float plant_params.aries_integrated_plant__deposition__pbli_recovery
       neutron_multiplier_in: float plant_params.aries_integrated_plant__deposition__neutron_multiplier
       helium_fraction_in: float plant_params.aries_integrated_plant__deposition__helium_fraction
-      divertor_pump_in: float plant_params.aries_integrated_plant__deposition__divertor_pump
+      divertor_pump_in: float aries_integrated_plant__divertor_pump__evaluate__electric
     outputs:
       divertor_deposition: float aries_integrated_plant__deposition__evaluate__divertor_deposition
       topology_zero: float aries_integrated_plant__deposition__evaluate__topology_zero
@@ -285,29 +1125,6 @@ modules:
       supported: bool aries_integrated_plant__divertor_capacity__evaluate__supported
       capacity_ok: bool aries_integrated_plant__divertor_capacity__evaluate__capacity_ok
 
-  # radial_density_profile.Radial_Density_ProfileModule
-  aries_cs_plasma_integration__plasma__density_sample:
-    module_type: radial_density_profile.Radial_Density_ProfileModule
-    inputs:
-      hollowness_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__hollowness
-      edge_density_in: float aries_cs_plasma_integration__plasma__edge_density__edge_density.root
-      rho_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__sample_rho
-      radial_exponent_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__density_radial_exponent
-      amplitude_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__amplitude
-      profile_exponent_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__density_profile_exponent
-    outputs:
-      root: RootModel[float] aries_cs_plasma_integration__plasma__density_sample__density
-
-  # mfe_plasma_scaling.Volume_Averaged_BetaModule
-  aries_cs_plasma_integration__plasma__beta_calculation:
-    module_type: mfe_plasma_scaling.Volume_Averaged_BetaModule
-    inputs:
-      mu0: float mfe_plasma_scaling_params.aries_cs_plasma_integration__plasma__beta_calculation__mu0
-      B_in: float aries_cs_plasma_integration__plasma__integration__field_for_beta
-      p_avg_in: float aries_cs_plasma_integration__plasma__integration__thermal_pressure
-    outputs:
-      root: RootModel[float] aries_cs_plasma_integration__plasma__beta_calculation__beta
-
   # dual_circuit_heat_accounting.Coolant_Branch_HeatModule
   aries_integrated_plant__he_coolant__evaluate:
     module_type: dual_circuit_heat_accounting.Coolant_Branch_HeatModule
@@ -325,7 +1142,7 @@ modules:
     inputs:
       pbli_cp_in: float plant_params.aries_integrated_plant__heat_exchangers__pbli_cp
       divertor_available_in: float aries_integrated_plant__divertor_coolant__evaluate__delivered_heat.root
-      pbli_ua_in: float plant_params.aries_integrated_plant__heat_exchangers__pbli_ua
+      pbli_ua_in: float aries_integrated_plant__pbli_hx__evaluate__ua
       cp_in: float plant_params.aries_integrated_plant__cycle__cp
       pbli_limit_in: float plant_params.aries_integrated_plant__heat_exchangers__pbli_limit
       divertor_flow_in: float plant_params.aries_integrated_plant__heat_exchangers__divertor_flow
@@ -342,9 +1159,9 @@ modules:
       divertor_limit_in: float plant_params.aries_integrated_plant__heat_exchangers__divertor_limit
       recuperator_effectiveness_in: float plant_params.aries_integrated_plant__cycle__recuperator_effectiveness
       flow_in: float plant_params.aries_integrated_plant__cycle__selected_flow
-      he_ua_in: float plant_params.aries_integrated_plant__heat_exchangers__he_ua
+      he_ua_in: float aries_integrated_plant__he_hx__evaluate__ua
       he_cp_in: float plant_params.aries_integrated_plant__heat_exchangers__he_cp
-      divertor_ua_in: float plant_params.aries_integrated_plant__heat_exchangers__divertor_ua
+      divertor_ua_in: float aries_integrated_plant__divertor_hx__evaluate__ua
       he_flow_in: float plant_params.aries_integrated_plant__heat_exchangers__he_flow
     outputs:
       he_return: float aries_integrated_plant__heat_exchangers__evaluate__he_return
@@ -507,6 +1324,91 @@ modules:
       supported: bool aries_integrated_plant__he_capacity__evaluate__supported
       capacity_ok: bool aries_integrated_plant__he_capacity__evaluate__capacity_ok
 
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_integrated_plant__pbli_pump__screen:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      conditions_supported_in: bool mfe_viability_params.aries_integrated_plant__pbli_pump__screen__conditions_supported_in
+      demand_available_in: bool mfe_viability_params.aries_integrated_plant__pbli_pump__screen__demand_available_in
+      applicable_in: bool mfe_viability_params.aries_integrated_plant__pbli_pump__screen__applicable_in
+      demand_in: float aries_integrated_plant__pbli_pump__evaluate__operating_flow
+      rating_in: float plant_params.aries_integrated_plant__pbli_pump__selected_flow_capacity
+    outputs:
+      evaluation_defined: float aries_integrated_plant__pbli_pump__screen__evaluation_defined
+      margin: float aries_integrated_plant__pbli_pump__screen__margin
+      applicable: bool aries_integrated_plant__pbli_pump__screen__applicable
+      supported: bool aries_integrated_plant__pbli_pump__screen__supported
+      capacity_ok: bool aries_integrated_plant__pbli_pump__screen__capacity_ok
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__conversion_equipment__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount3_in: float aries_integrated_plant__generator_equipment__purchase__capital
+      amount1_in: float aries_integrated_plant__compressor_equipment__purchase__capital
+      amount7_in: float integrated_equipment_costs_params.aries_integrated_plant__conversion_equipment__evaluate__amount7_in
+      amount4_in: float aries_integrated_plant__conversion_services__purchase__cost.root
+      amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__conversion_equipment__evaluate__amount6_in
+      amount2_in: float aries_integrated_plant__turbine_equipment__purchase__capital
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__conversion_equipment__evaluate__amount8_in
+      amount5_in: float integrated_equipment_costs_params.aries_integrated_plant__conversion_equipment__evaluate__amount5_in
+    outputs:
+      root: RootModel[float] aries_integrated_plant__conversion_equipment__evaluate__total
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__instrumentation_control__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float plant_params.aries_integrated_plant__instrumentation_control__reference_cost
+      factor_in: float plant_params.aries_integrated_plant__instrumentation_control__price_factor
+    outputs:
+      root: RootModel[float] aries_integrated_plant__instrumentation_control__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__instrumentation_control__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      purchase_cost_in: float aries_integrated_plant__instrumentation_control__estimate__amount.root
+      n_mod_in: float plant_params.aries_integrated_plant__instrumentation_control__selected_quantity
+    outputs:
+      root: RootModel[float] aries_integrated_plant__instrumentation_control__purchase__cost
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__auxiliary_cooling__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float plant_params.aries_integrated_plant__auxiliary_cooling__reference_cost
+      factor_in: float plant_params.aries_integrated_plant__auxiliary_cooling__price_factor
+    outputs:
+      root: RootModel[float] aries_integrated_plant__auxiliary_cooling__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__auxiliary_cooling__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      n_mod_in: float plant_params.aries_integrated_plant__auxiliary_cooling__selected_quantity
+      purchase_cost_in: float aries_integrated_plant__auxiliary_cooling__estimate__amount.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__auxiliary_cooling__purchase__cost
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__heating_equipment__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float plant_params.aries_integrated_plant__heating_equipment__price_factor
+      amount_in: float plant_params.aries_integrated_plant__heating_equipment__reference_cost
+    outputs:
+      root: RootModel[float] aries_integrated_plant__heating_equipment__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__heating_equipment__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      purchase_cost_in: float aries_integrated_plant__heating_equipment__estimate__amount.root
+      n_mod_in: float plant_params.aries_integrated_plant__heating_equipment__selected_quantity
+    outputs:
+      root: RootModel[float] aries_integrated_plant__heating_equipment__purchase__cost
+
   # integrated_heat_electricity.Integrated_Plant_LedgerModule
   aries_integrated_plant__plant_ledger__evaluate:
     module_type: integrated_heat_electricity.Integrated_Plant_LedgerModule
@@ -666,6 +1568,328 @@ modules:
       supported: bool aries_integrated_plant__generator_capacity__evaluate__supported
       capacity_ok: bool aries_integrated_plant__generator_capacity__evaluate__capacity_ok
 
+  # mfe_account_costs.Annual_OM_CostModule
+  aries_integrated_plant__annual_om__evaluate:
+    module_type: mfe_account_costs.Annual_OM_CostModule
+    inputs:
+      om_direct: float plant_params.aries_integrated_plant__annual_om__selected_amount
+      p_net: float mfe_account_costs_params.aries_integrated_plant__annual_om__evaluate__p_net
+      om_ref: float mfe_account_costs_params.aries_integrated_plant__annual_om__evaluate__om_ref
+      n_mod_in: float mfe_account_costs_params.aries_integrated_plant__annual_om__evaluate__n_mod_in
+      alpha: float mfe_account_costs_params.aries_integrated_plant__annual_om__evaluate__alpha
+      ref_net_power: float mfe_account_costs_params.aries_integrated_plant__annual_om__evaluate__ref_net_power
+    outputs:
+      root: RootModel[float] aries_integrated_plant__annual_om__evaluate__annual_om
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__replacement_scope__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount3_in: float aries_integrated_plant__replacement_lipb__evaluate__amount.root
+      amount1_in: float aries_integrated_plant__blanket_inventory__purchase__capital
+      amount4_in: float integrated_equipment_costs_params.aries_integrated_plant__replacement_scope__evaluate__amount4_in
+      amount7_in: float integrated_equipment_costs_params.aries_integrated_plant__replacement_scope__evaluate__amount7_in
+      amount5_in: float integrated_equipment_costs_params.aries_integrated_plant__replacement_scope__evaluate__amount5_in
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__replacement_scope__evaluate__amount8_in
+      amount2_in: float aries_integrated_plant__divertor_inventory__purchase__cost.root
+      amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__replacement_scope__evaluate__amount6_in
+    outputs:
+      root: RootModel[float] aries_integrated_plant__replacement_scope__evaluate__total
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__replacement_price__evaluate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float plant_params.aries_integrated_plant__cost_schedule__replacement_factor
+      amount_in: float aries_integrated_plant__replacement_scope__evaluate__total.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__replacement_price__evaluate__amount
+
+  # integrated_equipment_costs.Replacement_EventsModule
+  aries_integrated_plant__replacement__evaluate:
+    module_type: integrated_equipment_costs.Replacement_EventsModule
+    inputs:
+      life_fpy_in: float plant_params.aries_integrated_plant__cost_schedule__replacement_life_fpy
+      plant_years_in: float plant_params.aries_integrated_plant__cost_schedule__plant_years
+      availability_in: float plant_params.aries_integrated_plant__cost_schedule__availability
+      event_cost_in: float aries_integrated_plant__replacement_price__evaluate__amount.root
+    outputs:
+      lifetime_total: float aries_integrated_plant__replacement__evaluate__lifetime_total
+      interval_years: float aries_integrated_plant__replacement__evaluate__interval_years
+      event_cost: float aries_integrated_plant__replacement__evaluate__event_cost
+      last_event_year: float aries_integrated_plant__replacement__evaluate__last_event_year
+      annual_reserve: float aries_integrated_plant__replacement__evaluate__annual_reserve
+      first_event_year: float aries_integrated_plant__replacement__evaluate__first_event_year
+      event_count: float aries_integrated_plant__replacement__evaluate__event_count
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__primary_piping__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float plant_params.aries_integrated_plant__primary_piping__price_factor
+      amount_in: float plant_params.aries_integrated_plant__primary_piping__reference_cost
+    outputs:
+      root: RootModel[float] aries_integrated_plant__primary_piping__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__primary_piping__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      purchase_cost_in: float aries_integrated_plant__primary_piping__estimate__amount.root
+      n_mod_in: float plant_params.aries_integrated_plant__primary_piping__selected_quantity
+    outputs:
+      root: RootModel[float] aries_integrated_plant__primary_piping__purchase__cost
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__primary_heat_cost__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount5_in: float aries_integrated_plant__pbli_pump__purchase__capital
+      amount4_in: float aries_integrated_plant__he_pump__purchase__capital
+      amount2_in: float aries_integrated_plant__pbli_hx__purchase__capital
+      amount6_in: float aries_integrated_plant__divertor_pump__purchase__capital
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__primary_heat_cost__evaluate__amount8_in
+      amount7_in: float aries_integrated_plant__primary_piping__purchase__cost.root
+      amount3_in: float aries_integrated_plant__divertor_hx__purchase__capital
+      amount1_in: float aries_integrated_plant__he_hx__purchase__capital
+    outputs:
+      root: RootModel[float] aries_integrated_plant__primary_heat_cost__evaluate__total
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__heat_transport_cost__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount5_in: float aries_integrated_plant__secondary_transport__purchase__cost.root
+      amount4_in: float aries_integrated_plant__divertor_duty_equipment__purchase__capital
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__heat_transport_cost__evaluate__amount8_in
+      amount2_in: float aries_integrated_plant__he_duty_equipment__purchase__capital
+      amount3_in: float aries_integrated_plant__pbli_duty_equipment__purchase__capital
+      amount1_in: float aries_integrated_plant__primary_heat_cost__evaluate__total.root
+      amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__heat_transport_cost__evaluate__amount6_in
+      amount7_in: float integrated_equipment_costs_params.aries_integrated_plant__heat_transport_cost__evaluate__amount7_in
+    outputs:
+      root: RootModel[float] aries_integrated_plant__heat_transport_cost__evaluate__total
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__electrical_equipment__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float plant_params.aries_integrated_plant__electrical_equipment__reference_cost
+      factor_in: float plant_params.aries_integrated_plant__electrical_equipment__price_factor
+    outputs:
+      root: RootModel[float] aries_integrated_plant__electrical_equipment__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__electrical_equipment__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      n_mod_in: float plant_params.aries_integrated_plant__electrical_equipment__selected_quantity
+      purchase_cost_in: float aries_integrated_plant__electrical_equipment__estimate__amount.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__electrical_equipment__purchase__cost
+
+  # integrated_equipment_costs.Selected_Inventory_PurchaseModule
+  aries_integrated_plant__primary_support__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      mode_in: float plant_params.aries_integrated_plant__cost_accounts__estimate_mode
+      quantity_in: float plant_params.aries_integrated_plant__primary_support__selected_mass
+      price_factor_in: float plant_params.aries_integrated_plant__primary_support__price_factor
+      reference_quantity_in: float plant_params.aries_integrated_plant__primary_support__reference_quantity
+      reference_cost_in: float plant_params.aries_integrated_plant__primary_support__reference_cost
+    outputs:
+      purchased_quantity: float aries_integrated_plant__primary_support__purchase__purchased_quantity
+      source_budget: float aries_integrated_plant__primary_support__purchase__source_budget
+      quantity_ratio: float aries_integrated_plant__primary_support__purchase__quantity_ratio
+      capital: float aries_integrated_plant__primary_support__purchase__capital
+      extrapolated: float aries_integrated_plant__primary_support__purchase__extrapolated
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__core_first__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount6_in: float aries_integrated_plant__heating_equipment__purchase__cost.root
+      amount3_in: float aries_integrated_plant__magnet_inventory__purchase__capital
+      amount7_in: float aries_integrated_plant__primary_support__purchase__capital
+      amount4_in: float aries_integrated_plant__vf_coils__purchase__cost.root
+      amount2_in: float aries_integrated_plant__shield_inventory__purchase__capital
+      amount1_in: float aries_integrated_plant__blanket_inventory__purchase__capital
+      amount8_in: float aries_integrated_plant__vacuum_equipment__purchase__capital
+      amount5_in: float aries_integrated_plant__divertor_inventory__purchase__cost.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__core_first__evaluate__total
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__core_cost__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount5_in: float integrated_equipment_costs_params.aries_integrated_plant__core_cost__evaluate__amount5_in
+      amount3_in: float aries_integrated_plant__impurity_control__purchase__cost.root
+      amount7_in: float integrated_equipment_costs_params.aries_integrated_plant__core_cost__evaluate__amount7_in
+      amount2_in: float aries_integrated_plant__magnet_power_supplies__purchase__cost.root
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__core_cost__evaluate__amount8_in
+      amount4_in: float integrated_equipment_costs_params.aries_integrated_plant__core_cost__evaluate__amount4_in
+      amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__core_cost__evaluate__amount6_in
+      amount1_in: float aries_integrated_plant__core_first__evaluate__total.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__core_cost__evaluate__total
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__other_reactor_equipment__estimate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float plant_params.aries_integrated_plant__other_reactor_equipment__reference_cost
+      factor_in: float plant_params.aries_integrated_plant__other_reactor_equipment__price_factor
+    outputs:
+      root: RootModel[float] aries_integrated_plant__other_reactor_equipment__estimate__amount
+
+  # mfe_account_costs.Supplied_Purchase_CostModule
+  aries_integrated_plant__other_reactor_equipment__purchase:
+    module_type: mfe_account_costs.Supplied_Purchase_CostModule
+    inputs:
+      n_mod_in: float plant_params.aries_integrated_plant__other_reactor_equipment__selected_quantity
+      purchase_cost_in: float aries_integrated_plant__other_reactor_equipment__estimate__amount.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__other_reactor_equipment__purchase__cost
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__reactor_cost__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount8_in: float aries_integrated_plant__unallocated_source_scope__purchase__cost.root
+      amount3_in: float aries_integrated_plant__auxiliary_cooling__purchase__cost.root
+      amount6_in: float aries_integrated_plant__other_reactor_equipment__purchase__cost.root
+      amount7_in: float aries_integrated_plant__instrumentation_control__purchase__cost.root
+      amount5_in: float aries_integrated_plant__fuel_equipment__evaluate__total.root
+      amount1_in: float aries_integrated_plant__core_cost__evaluate__total.root
+      amount4_in: float aries_integrated_plant__waste_equipment__purchase__cost.root
+      amount2_in: float aries_integrated_plant__heat_transport_cost__evaluate__total.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__reactor_cost__evaluate__total
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__direct_source_scope__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount7_in: float aries_integrated_plant__lipb_inventory__purchase__capital
+      amount2_in: float aries_integrated_plant__facilities__purchase__cost.root
+      amount6_in: float aries_integrated_plant__miscellaneous_equipment__purchase__cost.root
+      amount8_in: float aries_integrated_plant__heat_rejection_equipment__purchase__capital
+      amount5_in: float aries_integrated_plant__electrical_equipment__purchase__cost.root
+      amount3_in: float aries_integrated_plant__reactor_cost__evaluate__total.root
+      amount1_in: float aries_integrated_plant__site_land__purchase__cost.root
+      amount4_in: float aries_integrated_plant__conversion_equipment__evaluate__total.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__direct_source_scope__evaluate__total
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__direct_cost__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount5_in: float integrated_equipment_costs_params.aries_integrated_plant__direct_cost__evaluate__amount5_in
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__direct_cost__evaluate__amount8_in
+      amount2_in: float aries_integrated_plant__fuel_inventory__purchase__amount.root
+      amount1_in: float aries_integrated_plant__direct_source_scope__evaluate__total.root
+      amount7_in: float integrated_equipment_costs_params.aries_integrated_plant__direct_cost__evaluate__amount7_in
+      amount3_in: float integrated_equipment_costs_params.aries_integrated_plant__direct_cost__evaluate__amount3_in
+      amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__direct_cost__evaluate__amount6_in
+      amount4_in: float integrated_equipment_costs_params.aries_integrated_plant__direct_cost__evaluate__amount4_in
+    outputs:
+      root: RootModel[float] aries_integrated_plant__direct_cost__evaluate__total
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__owner_commissioning__evaluate:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float aries_integrated_plant__direct_cost__evaluate__total.root
+      factor_in: float plant_params.aries_integrated_plant__owner_commissioning__fraction
+    outputs:
+      root: RootModel[float] aries_integrated_plant__owner_commissioning__evaluate__amount
+
+  # mfe_account_costs.Indirect_CostModule
+  aries_integrated_plant__indirect_cost__evaluate:
+    module_type: mfe_account_costs.Indirect_CostModule
+    inputs:
+      indirect_fraction_in: float plant_params.aries_integrated_plant__indirect_cost__fraction
+      construction_time: float mfe_account_costs_params.aries_integrated_plant__indirect_cost__evaluate__construction_time
+      reference_construction_time: float mfe_account_costs_params.aries_integrated_plant__indirect_cost__evaluate__reference_construction_time
+      direct_cost: float aries_integrated_plant__direct_cost__evaluate__total.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__indirect_cost__evaluate__cost
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__contingency_basis__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount1_in: float aries_integrated_plant__direct_cost__evaluate__total.root
+      amount7_in: float integrated_equipment_costs_params.aries_integrated_plant__contingency_basis__evaluate__amount7_in
+      amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__contingency_basis__evaluate__amount6_in
+      amount4_in: float integrated_equipment_costs_params.aries_integrated_plant__contingency_basis__evaluate__amount4_in
+      amount5_in: float integrated_equipment_costs_params.aries_integrated_plant__contingency_basis__evaluate__amount5_in
+      amount2_in: float aries_integrated_plant__indirect_cost__evaluate__cost.root
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__contingency_basis__evaluate__amount8_in
+      amount3_in: float integrated_equipment_costs_params.aries_integrated_plant__contingency_basis__evaluate__amount3_in
+    outputs:
+      root: RootModel[float] aries_integrated_plant__contingency_basis__evaluate__total
+
+  # mfe_account_costs.Contingency_CostModule
+  aries_integrated_plant__contingency__evaluate:
+    module_type: mfe_account_costs.Contingency_CostModule
+    inputs:
+      direct_subtotal: float aries_integrated_plant__contingency_basis__evaluate__total.root
+      contingency_rate_in: float plant_params.aries_integrated_plant__contingency__fraction
+    outputs:
+      root: RootModel[float] aries_integrated_plant__contingency__evaluate__cost
+
+  # integrated_equipment_costs.Equipment_Cost_LedgerModule
+  aries_integrated_plant__cost_ledger__evaluate:
+    module_type: integrated_equipment_costs.Equipment_Cost_LedgerModule
+    inputs:
+      replacement_reserve_in: float aries_integrated_plant__replacement__evaluate__annual_reserve
+      direct_in: float aries_integrated_plant__direct_cost__evaluate__total.root
+      consumables_in: float plant_params.aries_integrated_plant__cost_ledger__consumables
+      om_in: float aries_integrated_plant__annual_om__evaluate__annual_om.root
+      source_reactor_gap_in: float integrated_equipment_costs_params.aries_integrated_plant__cost_ledger__evaluate__source_reactor_gap_in
+      replacement_total_in: float aries_integrated_plant__replacement__evaluate__lifetime_total
+      indirect_in: float aries_integrated_plant__indirect_cost__evaluate__cost.root
+      source_coil_excess_in: float integrated_equipment_costs_params.aries_integrated_plant__cost_ledger__evaluate__source_coil_excess_in
+      availability_in: float plant_params.aries_integrated_plant__cost_schedule__availability
+      tritium_in: float aries_integrated_plant__fuel_inventory__annual__annual_cost
+      owner_in: float aries_integrated_plant__owner_commissioning__evaluate__amount.root
+      source_core_excess_in: float integrated_equipment_costs_params.aries_integrated_plant__cost_ledger__evaluate__source_core_excess_in
+      net_power_in: float aries_integrated_plant__plant_ledger__evaluate__net_electric
+      contingency_in: float aries_integrated_plant__contingency__evaluate__cost.root
+      source_direct_in: float aries_integrated_plant__source_budget__evaluate__direct_total
+      currency_year_in: float integrated_equipment_costs_params.aries_integrated_plant__cost_ledger__evaluate__currency_year_in
+      source_inclusive_in: float aries_integrated_plant__source_budget__evaluate__inclusive_capital
+      import_price_in: float plant_params.aries_integrated_plant__cost_ledger__import_price
+      deuterium_in: float aries_integrated_plant__fuel_inventory__deuterium__annual_fuel.root
+    outputs:
+      annual_operating: float aries_integrated_plant__cost_ledger__evaluate__annual_operating
+      source_inclusive: float aries_integrated_plant__cost_ledger__evaluate__source_inclusive
+      direct: float aries_integrated_plant__cost_ledger__evaluate__direct
+      source_reactor_gap: float aries_integrated_plant__cost_ledger__evaluate__source_reactor_gap
+      direct_difference: float aries_integrated_plant__cost_ledger__evaluate__direct_difference
+      annual_export_mwh: float aries_integrated_plant__cost_ledger__evaluate__annual_export_mwh
+      source_direct: float aries_integrated_plant__cost_ledger__evaluate__source_direct
+      source_coil_excess: float aries_integrated_plant__cost_ledger__evaluate__source_coil_excess
+      annual_import_cost: float aries_integrated_plant__cost_ledger__evaluate__annual_import_cost
+      annual_replacement_reserve: float aries_integrated_plant__cost_ledger__evaluate__annual_replacement_reserve
+      source_core_excess: float aries_integrated_plant__cost_ledger__evaluate__source_core_excess
+      overnight: float aries_integrated_plant__cost_ledger__evaluate__overnight
+      annual_import_mwh: float aries_integrated_plant__cost_ledger__evaluate__annual_import_mwh
+      lifetime_replacement: float aries_integrated_plant__cost_ledger__evaluate__lifetime_replacement
+      currency_year: float aries_integrated_plant__cost_ledger__evaluate__currency_year
+
+  # aries_integrated_plant.DivertorPumpCapacityOkConstraintModule
+  aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c:
+    module_type: aries_integrated_plant.DivertorPumpCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_integrated_plant__divertor_pump__screen__margin
+      defined_in: float aries_integrated_plant__divertor_pump__screen__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation
+
   # aries_integrated_plant.RejectionCapacityCapacityOkConstraintModule
   aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608:
     module_type: aries_integrated_plant.RejectionCapacityCapacityOkConstraintModule
@@ -693,6 +1917,15 @@ modules:
     outputs:
       evaluation: ConstraintEvaluation aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation
 
+  # aries_integrated_plant.FuelInventoryCapacityOkConstraintModule
+  aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0:
+    module_type: aries_integrated_plant.FuelInventoryCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_integrated_plant__fuel_inventory__screen__margin
+      defined_in: float aries_integrated_plant__fuel_inventory__screen__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation
+
   # aries_integrated_plant.PbliCapacityCapacityOkConstraintModule
   aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395:
     module_type: aries_integrated_plant.PbliCapacityCapacityOkConstraintModule
@@ -711,6 +1944,15 @@ modules:
     outputs:
       evaluation: ConstraintEvaluation aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation
 
+  # aries_integrated_plant.HePumpCapacityOkConstraintModule
+  aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180:
+    module_type: aries_integrated_plant.HePumpCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_integrated_plant__he_pump__screen__margin
+      defined_in: float aries_integrated_plant__he_pump__screen__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation
+
   # aries_integrated_plant.FuelCapacityCapacityOkConstraintModule
   aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64:
     module_type: aries_integrated_plant.FuelCapacityCapacityOkConstraintModule
@@ -728,6 +1970,15 @@ modules:
       defined_in: float aries_integrated_plant__he_capacity__evaluate__evaluation_defined
     outputs:
       evaluation: ConstraintEvaluation aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation
+
+  # aries_integrated_plant.PbliPumpCapacityOkConstraintModule
+  aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb:
+    module_type: aries_integrated_plant.PbliPumpCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_integrated_plant__pbli_pump__screen__margin
+      defined_in: float aries_integrated_plant__pbli_pump__screen__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation
 
   # aries_integrated_plant.GeneratorCapacityCapacityOkConstraintModule
   aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161:
@@ -760,13 +2011,17 @@ modules:
   constraint_report_aggregator:
     module_type: constraints.ConstraintReportAggregatorModule
     inputs:
+      aries_integrated_plant_divertor_pump_capacity_ok_d6730c7060447f4c: ConstraintEvaluation aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation
       aries_integrated_plant_rejection_capacity_capacity_ok_295420bc9fb25608: ConstraintEvaluation aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation
       aries_integrated_plant_turbine_capacity_capacity_ok_089f9e8e61919ec1: ConstraintEvaluation aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation
       aries_integrated_plant_compressor_capacity_capacity_ok_a45f9cf05e8aa7ab: ConstraintEvaluation aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation
+      aries_integrated_plant_fuel_inventory_capacity_ok_37f4667fbfb616d0: ConstraintEvaluation aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation
       aries_integrated_plant_pbli_capacity_capacity_ok_55a012a287da9395: ConstraintEvaluation aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation
       aries_integrated_plant_divertor_capacity_capacity_ok_be7081920ad8e8ed: ConstraintEvaluation aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation
+      aries_integrated_plant_he_pump_capacity_ok_fcee5ee009fe5180: ConstraintEvaluation aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation
       aries_integrated_plant_fuel_capacity_capacity_ok_8eb5888bfe62cd64: ConstraintEvaluation aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation
       aries_integrated_plant_he_capacity_capacity_ok_db2733d1d5baf3cf: ConstraintEvaluation aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation
+      aries_integrated_plant_pbli_pump_capacity_ok_79d116aa320dd4fb: ConstraintEvaluation aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation
       aries_integrated_plant_generator_capacity_capacity_ok_60b43f15d48ff161: ConstraintEvaluation aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation
       aries_integrated_plant_plant_ledger_heat_removal_ok_695378663bcd8d07: ConstraintEvaluation aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation
       aries_integrated_plant_plant_ledger_balances_ok_9af2e85b5e4e5535: ConstraintEvaluation aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation
@@ -778,9 +2033,132 @@ modules:
   exit_point:
     module_type: ExitPoint
     outputs:
+      aries_integrated_plant__pbli_hx__evaluate__area: float pbli_hx__area.json
+      aries_integrated_plant__pbli_hx__evaluate__ua: float heat_exchangers__pbli_ua.json
+      aries_integrated_plant__pbli_hx__purchase__purchased_quantity: float pbli_hx__inventory_quantity.json
+      aries_integrated_plant__pbli_hx__purchase__source_budget: float aries_integrated_plant__pbli_hx__purchase__source_budget.json
+      aries_integrated_plant__pbli_hx__purchase__quantity_ratio: float pbli_hx__quantity_ratio.json
+      aries_integrated_plant__pbli_hx__purchase__capital: float pbli_hx__capital_cost.json
+      aries_integrated_plant__pbli_hx__purchase__extrapolated: float pbli_hx__cost_extrapolated.json
+      aries_integrated_plant__impurity_control__estimate__amount: RootModel[float] impurity_control__supplied_budget.json
+      aries_integrated_plant__impurity_control__purchase__cost: RootModel[float] impurity_control__capital_cost.json
+      aries_integrated_plant__he_hx__purchase__purchased_quantity: float he_hx__inventory_quantity.json
+      aries_integrated_plant__he_hx__purchase__source_budget: float aries_integrated_plant__he_hx__purchase__source_budget.json
+      aries_integrated_plant__he_hx__purchase__quantity_ratio: float he_hx__quantity_ratio.json
+      aries_integrated_plant__he_hx__purchase__capital: float he_hx__capital_cost.json
+      aries_integrated_plant__he_hx__purchase__extrapolated: float he_hx__cost_extrapolated.json
+      aries_integrated_plant__he_hx__evaluate__area: float he_hx__area.json
+      aries_integrated_plant__he_hx__evaluate__ua: float he_hx__ua.json
+      aries_integrated_plant__divertor_pump__purchase__purchased_quantity: float divertor_pump__inventory_quantity.json
+      aries_integrated_plant__divertor_pump__purchase__source_budget: float aries_integrated_plant__divertor_pump__purchase__source_budget.json
+      aries_integrated_plant__divertor_pump__purchase__quantity_ratio: float divertor_pump__quantity_ratio.json
+      aries_integrated_plant__divertor_pump__purchase__capital: float divertor_pump__capital_cost.json
+      aries_integrated_plant__divertor_pump__purchase__extrapolated: float divertor_pump__cost_extrapolated.json
+      aries_integrated_plant__divertor_pump__evaluate__electric: float deposition__divertor_pump.json
+      aries_integrated_plant__divertor_pump__evaluate__operating_flow: float divertor_pump__operating_flow.json
+      aries_integrated_plant__divertor_pump__evaluate__mode: float aries_integrated_plant__divertor_pump__evaluate__mode.json
+      aries_integrated_plant__divertor_pump__evaluate__hydraulic_supported: float divertor_pump__hydraulic_supported.json
+      aries_integrated_plant__divertor_pump__screen__evaluation_defined: float divertor_pump__evaluation_defined.json
+      aries_integrated_plant__divertor_pump__screen__margin: float divertor_pump__margin.json
+      aries_integrated_plant__divertor_pump__screen__applicable: bool aries_integrated_plant__divertor_pump__screen__applicable.json
+      aries_integrated_plant__divertor_pump__screen__supported: bool aries_integrated_plant__divertor_pump__screen__supported.json
+      aries_integrated_plant__divertor_pump__screen__capacity_ok: bool aries_integrated_plant__divertor_pump__screen__capacity_ok.json
+      aries_integrated_plant__unallocated_source_scope__estimate__amount: RootModel[float] unallocated_source_scope__supplied_budget.json
+      aries_integrated_plant__unallocated_source_scope__purchase__cost: RootModel[float] unallocated_source_scope__capital_cost.json
+      aries_integrated_plant__magnet_inventory__inventory__total: RootModel[float] magnet_inventory__selected_mass.json
+      aries_integrated_plant__magnet_inventory__purchase__purchased_quantity: float magnet_inventory__inventory_quantity.json
+      aries_integrated_plant__magnet_inventory__purchase__source_budget: float aries_integrated_plant__magnet_inventory__purchase__source_budget.json
+      aries_integrated_plant__magnet_inventory__purchase__quantity_ratio: float magnet_inventory__quantity_ratio.json
+      aries_integrated_plant__magnet_inventory__purchase__capital: float magnet_inventory__capital_cost.json
+      aries_integrated_plant__magnet_inventory__purchase__extrapolated: float magnet_inventory__cost_extrapolated.json
+      aries_integrated_plant__site_land__estimate__amount: RootModel[float] site_land__supplied_budget.json
+      aries_integrated_plant__site_land__purchase__cost: RootModel[float] site_land__capital_cost.json
+      aries_integrated_plant__lipb_inventory__inventory__amount: RootModel[float] lipb_inventory__total_mass.json
+      aries_integrated_plant__lipb_inventory__purchase__purchased_quantity: float lipb_inventory__inventory_quantity.json
+      aries_integrated_plant__lipb_inventory__purchase__source_budget: float aries_integrated_plant__lipb_inventory__purchase__source_budget.json
+      aries_integrated_plant__lipb_inventory__purchase__quantity_ratio: float lipb_inventory__quantity_ratio.json
+      aries_integrated_plant__lipb_inventory__purchase__capital: float lipb_inventory__capital_cost.json
+      aries_integrated_plant__lipb_inventory__purchase__extrapolated: float lipb_inventory__cost_extrapolated.json
+      aries_integrated_plant__conversion_services__estimate__amount: RootModel[float] conversion_services__supplied_budget.json
+      aries_integrated_plant__conversion_services__purchase__cost: RootModel[float] conversion_services__capital_cost.json
+      aries_integrated_plant__waste_equipment__estimate__amount: RootModel[float] waste_equipment__supplied_budget.json
+      aries_integrated_plant__waste_equipment__purchase__cost: RootModel[float] waste_equipment__capital_cost.json
+      aries_integrated_plant__magnet_power_supplies__estimate__amount: RootModel[float] magnet_power_supplies__supplied_budget.json
+      aries_integrated_plant__magnet_power_supplies__purchase__cost: RootModel[float] magnet_power_supplies__capital_cost.json
+      aries_integrated_plant__vacuum_equipment__inventory__total: RootModel[float] vacuum_equipment__selected_mass.json
+      aries_integrated_plant__vacuum_equipment__purchase__purchased_quantity: float vacuum_equipment__inventory_quantity.json
+      aries_integrated_plant__vacuum_equipment__purchase__source_budget: float aries_integrated_plant__vacuum_equipment__purchase__source_budget.json
+      aries_integrated_plant__vacuum_equipment__purchase__quantity_ratio: float vacuum_equipment__quantity_ratio.json
+      aries_integrated_plant__vacuum_equipment__purchase__capital: float vacuum_equipment__capital_cost.json
+      aries_integrated_plant__vacuum_equipment__purchase__extrapolated: float vacuum_equipment__cost_extrapolated.json
+      aries_integrated_plant__fuel_processing_equipment__purchase__purchased_quantity: float fuel_processing_equipment__inventory_quantity.json
+      aries_integrated_plant__fuel_processing_equipment__purchase__source_budget: float aries_integrated_plant__fuel_processing_equipment__purchase__source_budget.json
+      aries_integrated_plant__fuel_processing_equipment__purchase__quantity_ratio: float fuel_processing_equipment__quantity_ratio.json
+      aries_integrated_plant__fuel_processing_equipment__purchase__capital: float fuel_processing_equipment__capital_cost.json
+      aries_integrated_plant__fuel_processing_equipment__purchase__extrapolated: float fuel_processing_equipment__cost_extrapolated.json
+      aries_integrated_plant__secondary_transport__estimate__amount: RootModel[float] secondary_transport__supplied_budget.json
+      aries_integrated_plant__secondary_transport__purchase__cost: RootModel[float] secondary_transport__capital_cost.json
+      aries_integrated_plant__vf_coils__estimate__amount: RootModel[float] vf_coils__supplied_budget.json
+      aries_integrated_plant__vf_coils__purchase__cost: RootModel[float] vf_coils__capital_cost.json
+      aries_integrated_plant__fuel_inventory__purchase__amount: RootModel[float] fuel_inventory__capital_cost.json
+      aries_integrated_plant__fuel_inventory__atoms__stock_kg: float aries_integrated_plant__fuel_inventory__atoms__stock_kg.json
+      aries_integrated_plant__fuel_inventory__atoms__atoms: float fuel_inventory__selected_tritium_atoms.json
+      aries_integrated_plant__fuel_inventory__deuterium_rate__amount: RootModel[float] fuel_inventory__deuterium_per_reaction.json
+      aries_integrated_plant__heat_rejection_equipment__purchase__purchased_quantity: float heat_rejection_equipment__inventory_quantity.json
+      aries_integrated_plant__heat_rejection_equipment__purchase__source_budget: float aries_integrated_plant__heat_rejection_equipment__purchase__source_budget.json
+      aries_integrated_plant__heat_rejection_equipment__purchase__quantity_ratio: float heat_rejection_equipment__quantity_ratio.json
+      aries_integrated_plant__heat_rejection_equipment__purchase__capital: float heat_rejection_equipment__capital_cost.json
+      aries_integrated_plant__heat_rejection_equipment__purchase__extrapolated: float heat_rejection_equipment__cost_extrapolated.json
+      aries_integrated_plant__divertor_hx__purchase__purchased_quantity: float divertor_hx__inventory_quantity.json
+      aries_integrated_plant__divertor_hx__purchase__source_budget: float aries_integrated_plant__divertor_hx__purchase__source_budget.json
+      aries_integrated_plant__divertor_hx__purchase__quantity_ratio: float divertor_hx__quantity_ratio.json
+      aries_integrated_plant__divertor_hx__purchase__capital: float divertor_hx__capital_cost.json
+      aries_integrated_plant__divertor_hx__purchase__extrapolated: float divertor_hx__cost_extrapolated.json
+      aries_integrated_plant__divertor_hx__evaluate__area: float divertor_hx__area.json
+      aries_integrated_plant__divertor_hx__evaluate__ua: float divertor_hx__ua.json
+      aries_integrated_plant__source_budget__evaluate__direct_total: float source_budget__direct_total.json
+      aries_integrated_plant__source_budget__evaluate__inclusive_addition: float aries_integrated_plant__source_budget__evaluate__inclusive_addition.json
+      aries_integrated_plant__source_budget__evaluate__inclusive_capital: float source_budget__inclusive_capital.json
+      aries_integrated_plant__facilities__estimate__amount: RootModel[float] facilities__supplied_budget.json
+      aries_integrated_plant__facilities__purchase__cost: RootModel[float] facilities__capital_cost.json
+      aries_integrated_plant__generator_equipment__purchase__purchased_quantity: float generator_equipment__inventory_quantity.json
+      aries_integrated_plant__generator_equipment__purchase__source_budget: float aries_integrated_plant__generator_equipment__purchase__source_budget.json
+      aries_integrated_plant__generator_equipment__purchase__quantity_ratio: float generator_equipment__quantity_ratio.json
+      aries_integrated_plant__generator_equipment__purchase__capital: float generator_equipment__capital_cost.json
+      aries_integrated_plant__generator_equipment__purchase__extrapolated: float generator_equipment__cost_extrapolated.json
+      aries_integrated_plant__miscellaneous_equipment__estimate__amount: RootModel[float] miscellaneous_equipment__supplied_budget.json
+      aries_integrated_plant__miscellaneous_equipment__purchase__cost: RootModel[float] miscellaneous_equipment__capital_cost.json
+      aries_integrated_plant__fuel_services__estimate__amount: RootModel[float] fuel_services__supplied_budget.json
+      aries_integrated_plant__fuel_services__purchase__cost: RootModel[float] fuel_services__capital_cost.json
+      aries_integrated_plant__fuel_equipment__evaluate__total: RootModel[float] fuel_equipment__total.json
+      aries_integrated_plant__divertor_duty_equipment__purchase__purchased_quantity: float divertor_duty_equipment__inventory_quantity.json
+      aries_integrated_plant__divertor_duty_equipment__purchase__source_budget: float aries_integrated_plant__divertor_duty_equipment__purchase__source_budget.json
+      aries_integrated_plant__divertor_duty_equipment__purchase__quantity_ratio: float divertor_duty_equipment__quantity_ratio.json
+      aries_integrated_plant__divertor_duty_equipment__purchase__capital: float divertor_duty_equipment__capital_cost.json
+      aries_integrated_plant__divertor_duty_equipment__purchase__extrapolated: float divertor_duty_equipment__cost_extrapolated.json
+      aries_integrated_plant__pbli_duty_equipment__purchase__purchased_quantity: float pbli_duty_equipment__inventory_quantity.json
+      aries_integrated_plant__pbli_duty_equipment__purchase__source_budget: float aries_integrated_plant__pbli_duty_equipment__purchase__source_budget.json
+      aries_integrated_plant__pbli_duty_equipment__purchase__quantity_ratio: float pbli_duty_equipment__quantity_ratio.json
+      aries_integrated_plant__pbli_duty_equipment__purchase__capital: float pbli_duty_equipment__capital_cost.json
+      aries_integrated_plant__pbli_duty_equipment__purchase__extrapolated: float pbli_duty_equipment__cost_extrapolated.json
       aries_integrated_plant__compressor_1__evaluate__pressure_out: float compressor_1__pressure_out.json
       aries_integrated_plant__compressor_1__evaluate__shaft_demand: float compressor_1__shaft_demand.json
       aries_integrated_plant__compressor_1__evaluate__temperature_out: float compressor_1__temperature_out.json
+      aries_integrated_plant__he_pump__evaluate__electric: float deposition__he_pump.json
+      aries_integrated_plant__he_pump__evaluate__operating_flow: float he_pump__operating_flow.json
+      aries_integrated_plant__he_pump__evaluate__mode: float aries_integrated_plant__he_pump__evaluate__mode.json
+      aries_integrated_plant__he_pump__evaluate__hydraulic_supported: float he_pump__hydraulic_supported.json
+      aries_integrated_plant__he_pump__purchase__purchased_quantity: float he_pump__inventory_quantity.json
+      aries_integrated_plant__he_pump__purchase__source_budget: float aries_integrated_plant__he_pump__purchase__source_budget.json
+      aries_integrated_plant__he_pump__purchase__quantity_ratio: float he_pump__quantity_ratio.json
+      aries_integrated_plant__he_pump__purchase__capital: float he_pump__capital_cost.json
+      aries_integrated_plant__he_pump__purchase__extrapolated: float he_pump__cost_extrapolated.json
+      aries_integrated_plant__he_pump__screen__evaluation_defined: float he_pump__evaluation_defined.json
+      aries_integrated_plant__he_pump__screen__margin: float he_pump__margin.json
+      aries_integrated_plant__he_pump__screen__applicable: bool aries_integrated_plant__he_pump__screen__applicable.json
+      aries_integrated_plant__he_pump__screen__supported: bool aries_integrated_plant__he_pump__screen__supported.json
+      aries_integrated_plant__he_pump__screen__capacity_ok: bool aries_integrated_plant__he_pump__screen__capacity_ok.json
+      aries_integrated_plant__replacement_lipb__evaluate__amount: RootModel[float] replacement_lipb__amount.json
       aries_integrated_plant__intercooler_1__evaluate__heat_into_fluid: float intercooler_1__heat_into_fluid.json
       aries_integrated_plant__intercooler_1__evaluate__temperature_out: float intercooler_1__temperature_out.json
       aries_integrated_plant__intercooler_1__evaluate__pressure_out: float intercooler_1__pressure_out.json
@@ -794,6 +2172,16 @@ modules:
       aries_integrated_plant__compressor_3__evaluate__shaft_demand: float compressor_3__shaft_demand.json
       aries_integrated_plant__compressor_3__evaluate__temperature_out: float compressor_3__temperature_out.json
       aries_integrated_plant__pressure_loss__evaluate__pressure_out: RootModel[float] pressure_loss__pressure_out.json
+      aries_integrated_plant__blanket_inventory__purchase__purchased_quantity: float blanket_inventory__inventory_quantity.json
+      aries_integrated_plant__blanket_inventory__purchase__source_budget: float aries_integrated_plant__blanket_inventory__purchase__source_budget.json
+      aries_integrated_plant__blanket_inventory__purchase__quantity_ratio: float blanket_inventory__quantity_ratio.json
+      aries_integrated_plant__blanket_inventory__purchase__capital: float blanket_inventory__capital_cost.json
+      aries_integrated_plant__blanket_inventory__purchase__extrapolated: float blanket_inventory__cost_extrapolated.json
+      aries_integrated_plant__turbine_equipment__purchase__purchased_quantity: float turbine_equipment__inventory_quantity.json
+      aries_integrated_plant__turbine_equipment__purchase__source_budget: float aries_integrated_plant__turbine_equipment__purchase__source_budget.json
+      aries_integrated_plant__turbine_equipment__purchase__quantity_ratio: float turbine_equipment__quantity_ratio.json
+      aries_integrated_plant__turbine_equipment__purchase__capital: float turbine_equipment__capital_cost.json
+      aries_integrated_plant__turbine_equipment__purchase__extrapolated: float turbine_equipment__cost_extrapolated.json
       aries_cs_plasma_integration__plasma__edge_density__edge_density: RootModel[float] aries_cs_plasma_integration__plasma__edge_density__edge_density.json
       aries_cs_plasma_integration__plasma__integration__thermal_pressure: float plasma__thermal_pressure.json
       aries_cs_plasma_integration__plasma__integration__field_for_beta: float plasma__field_for_beta.json
@@ -805,18 +2193,61 @@ modules:
       aries_cs_plasma_integration__plasma__integration__stored_thermal_MJ: float plasma__stored_thermal_MJ.json
       aries_integrated_plant__source__evaluate__selected_power: float source__selected_power.json
       aries_integrated_plant__source__evaluate__selected_mode: float source__selected_mode.json
+      aries_integrated_plant__fuel_inventory__deuterium__annual_fuel: RootModel[float] fuel_inventory__annual_deuterium_cost.json
       aries_integrated_plant__fuel__evaluate__burn_kg_per_fpy: float aries_integrated_plant__fuel__evaluate__burn_kg_per_fpy.json
       aries_integrated_plant__fuel__evaluate__inject_rate: float fuel__inject_rate.json
       aries_integrated_plant__fuel__evaluate__burn_rate: float fuel__burn_rate.json
       aries_integrated_plant__fuel__evaluate__tbr_margin: float aries_integrated_plant__fuel__evaluate__tbr_margin.json
-      aries_integrated_plant__fuel__evaluate__tbr_required: float aries_integrated_plant__fuel__evaluate__tbr_required.json
+      aries_integrated_plant__fuel__evaluate__tbr_required: float fuel__tbr_required.json
       aries_integrated_plant__fuel__evaluate__loss_rate: float fuel__loss_rate.json
       aries_integrated_plant__fuel__evaluate__exhaust_rate: float fuel__exhaust_rate.json
+      aries_integrated_plant__fuel_inventory__annual__annual_loss: float fuel_inventory__annual_loss.json
+      aries_integrated_plant__fuel_inventory__annual__annual_cost: float fuel_inventory__annual_cost.json
+      aries_integrated_plant__fuel_inventory__annual__annual_burn: float fuel_inventory__annual_burn.json
+      aries_integrated_plant__fuel_inventory__annual__annual_recovery: float fuel_inventory__annual_recovery.json
+      aries_integrated_plant__fuel_inventory__annual__annual_decay: float fuel_inventory__annual_decay.json
+      aries_integrated_plant__fuel_inventory__annual__annual_external: float fuel_inventory__annual_external.json
+      aries_integrated_plant__fuel_inventory__annual__required_stock: float fuel_inventory__required_stock.json
+      aries_integrated_plant__fuel_inventory__annual__breeding_supported: float fuel_inventory__breeding_supported.json
+      aries_integrated_plant__fuel_inventory__screen__evaluation_defined: float fuel_inventory__evaluation_defined.json
+      aries_integrated_plant__fuel_inventory__screen__margin: float fuel_inventory__margin.json
+      aries_integrated_plant__fuel_inventory__screen__applicable: bool aries_integrated_plant__fuel_inventory__screen__applicable.json
+      aries_integrated_plant__fuel_inventory__screen__supported: bool aries_integrated_plant__fuel_inventory__screen__supported.json
+      aries_integrated_plant__fuel_inventory__screen__capacity_ok: bool aries_integrated_plant__fuel_inventory__screen__capacity_ok.json
       aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined: float fuel_capacity__evaluation_defined.json
       aries_integrated_plant__fuel_capacity__evaluate__margin: float fuel_capacity__margin.json
       aries_integrated_plant__fuel_capacity__evaluate__applicable: bool aries_integrated_plant__fuel_capacity__evaluate__applicable.json
       aries_integrated_plant__fuel_capacity__evaluate__supported: bool aries_integrated_plant__fuel_capacity__evaluate__supported.json
       aries_integrated_plant__fuel_capacity__evaluate__capacity_ok: bool aries_integrated_plant__fuel_capacity__evaluate__capacity_ok.json
+      aries_cs_plasma_integration__plasma__density_sample__density: RootModel[float] aries_cs_plasma_integration__plasma__density_sample__density.json
+      aries_cs_plasma_integration__plasma__beta_calculation__beta: RootModel[float] plasma__beta.json
+      aries_integrated_plant__divertor_inventory__estimate__amount: RootModel[float] divertor_inventory__supplied_budget.json
+      aries_integrated_plant__divertor_inventory__purchase__cost: RootModel[float] divertor_inventory__capital_cost.json
+      aries_integrated_plant__compressor_equipment__purchase__purchased_quantity: float compressor_equipment__inventory_quantity.json
+      aries_integrated_plant__compressor_equipment__purchase__source_budget: float aries_integrated_plant__compressor_equipment__purchase__source_budget.json
+      aries_integrated_plant__compressor_equipment__purchase__quantity_ratio: float compressor_equipment__quantity_ratio.json
+      aries_integrated_plant__compressor_equipment__purchase__capital: float compressor_equipment__capital_cost.json
+      aries_integrated_plant__compressor_equipment__purchase__extrapolated: float compressor_equipment__cost_extrapolated.json
+      aries_integrated_plant__shield_inventory__inventory__total: RootModel[float] shield_inventory__selected_mass.json
+      aries_integrated_plant__shield_inventory__purchase__purchased_quantity: float shield_inventory__inventory_quantity.json
+      aries_integrated_plant__shield_inventory__purchase__source_budget: float aries_integrated_plant__shield_inventory__purchase__source_budget.json
+      aries_integrated_plant__shield_inventory__purchase__quantity_ratio: float shield_inventory__quantity_ratio.json
+      aries_integrated_plant__shield_inventory__purchase__capital: float shield_inventory__capital_cost.json
+      aries_integrated_plant__shield_inventory__purchase__extrapolated: float shield_inventory__cost_extrapolated.json
+      aries_integrated_plant__he_duty_equipment__purchase__purchased_quantity: float he_duty_equipment__inventory_quantity.json
+      aries_integrated_plant__he_duty_equipment__purchase__source_budget: float aries_integrated_plant__he_duty_equipment__purchase__source_budget.json
+      aries_integrated_plant__he_duty_equipment__purchase__quantity_ratio: float he_duty_equipment__quantity_ratio.json
+      aries_integrated_plant__he_duty_equipment__purchase__capital: float he_duty_equipment__capital_cost.json
+      aries_integrated_plant__he_duty_equipment__purchase__extrapolated: float he_duty_equipment__cost_extrapolated.json
+      aries_integrated_plant__pbli_pump__purchase__purchased_quantity: float pbli_pump__inventory_quantity.json
+      aries_integrated_plant__pbli_pump__purchase__source_budget: float aries_integrated_plant__pbli_pump__purchase__source_budget.json
+      aries_integrated_plant__pbli_pump__purchase__quantity_ratio: float pbli_pump__quantity_ratio.json
+      aries_integrated_plant__pbli_pump__purchase__capital: float pbli_pump__capital_cost.json
+      aries_integrated_plant__pbli_pump__purchase__extrapolated: float pbli_pump__cost_extrapolated.json
+      aries_integrated_plant__pbli_pump__evaluate__electric: float deposition__pbli_pump.json
+      aries_integrated_plant__pbli_pump__evaluate__operating_flow: float pbli_pump__operating_flow.json
+      aries_integrated_plant__pbli_pump__evaluate__mode: float aries_integrated_plant__pbli_pump__evaluate__mode.json
+      aries_integrated_plant__pbli_pump__evaluate__hydraulic_supported: float pbli_pump__hydraulic_supported.json
       aries_integrated_plant__deposition__evaluate__divertor_deposition: float deposition__divertor_deposition.json
       aries_integrated_plant__deposition__evaluate__topology_zero: float deposition__topology_zero.json
       aries_integrated_plant__deposition__evaluate__pump_electric: float deposition__pump_electric.json
@@ -844,8 +2275,6 @@ modules:
       aries_integrated_plant__divertor_capacity__evaluate__applicable: bool aries_integrated_plant__divertor_capacity__evaluate__applicable.json
       aries_integrated_plant__divertor_capacity__evaluate__supported: bool aries_integrated_plant__divertor_capacity__evaluate__supported.json
       aries_integrated_plant__divertor_capacity__evaluate__capacity_ok: bool aries_integrated_plant__divertor_capacity__evaluate__capacity_ok.json
-      aries_cs_plasma_integration__plasma__density_sample__density: RootModel[float] aries_cs_plasma_integration__plasma__density_sample__density.json
-      aries_cs_plasma_integration__plasma__beta_calculation__beta: RootModel[float] plasma__beta.json
       aries_integrated_plant__he_coolant__evaluate__delivered_heat: RootModel[float] he_coolant__delivered_heat.json
       aries_integrated_plant__heat_exchangers__evaluate__he_return: float heat_exchangers__he_return.json
       aries_integrated_plant__heat_exchangers__evaluate__he_unmet: float heat_exchangers__he_unmet.json
@@ -926,6 +2355,18 @@ modules:
       aries_integrated_plant__he_capacity__evaluate__applicable: bool aries_integrated_plant__he_capacity__evaluate__applicable.json
       aries_integrated_plant__he_capacity__evaluate__supported: bool aries_integrated_plant__he_capacity__evaluate__supported.json
       aries_integrated_plant__he_capacity__evaluate__capacity_ok: bool aries_integrated_plant__he_capacity__evaluate__capacity_ok.json
+      aries_integrated_plant__pbli_pump__screen__evaluation_defined: float pbli_pump__evaluation_defined.json
+      aries_integrated_plant__pbli_pump__screen__margin: float pbli_pump__margin.json
+      aries_integrated_plant__pbli_pump__screen__applicable: bool aries_integrated_plant__pbli_pump__screen__applicable.json
+      aries_integrated_plant__pbli_pump__screen__supported: bool aries_integrated_plant__pbli_pump__screen__supported.json
+      aries_integrated_plant__pbli_pump__screen__capacity_ok: bool aries_integrated_plant__pbli_pump__screen__capacity_ok.json
+      aries_integrated_plant__conversion_equipment__evaluate__total: RootModel[float] conversion_equipment__total.json
+      aries_integrated_plant__instrumentation_control__estimate__amount: RootModel[float] instrumentation_control__supplied_budget.json
+      aries_integrated_plant__instrumentation_control__purchase__cost: RootModel[float] instrumentation_control__capital_cost.json
+      aries_integrated_plant__auxiliary_cooling__estimate__amount: RootModel[float] auxiliary_cooling__supplied_budget.json
+      aries_integrated_plant__auxiliary_cooling__purchase__cost: RootModel[float] auxiliary_cooling__capital_cost.json
+      aries_integrated_plant__heating_equipment__estimate__amount: RootModel[float] heating_equipment__supplied_budget.json
+      aries_integrated_plant__heating_equipment__purchase__cost: RootModel[float] heating_equipment__capital_cost.json
       aries_integrated_plant__plant_ledger__evaluate__supported_hydraulics: float plant_ledger__supported_hydraulics.json
       aries_integrated_plant__plant_ledger__evaluate__fuel_base_electric: float plant_ledger__fuel_base_electric.json
       aries_integrated_plant__plant_ledger__evaluate__comparison_fusion_difference: float plant_ledger__comparison_fusion_difference.json
@@ -989,13 +2430,64 @@ modules:
       aries_integrated_plant__generator_capacity__evaluate__applicable: bool aries_integrated_plant__generator_capacity__evaluate__applicable.json
       aries_integrated_plant__generator_capacity__evaluate__supported: bool aries_integrated_plant__generator_capacity__evaluate__supported.json
       aries_integrated_plant__generator_capacity__evaluate__capacity_ok: bool aries_integrated_plant__generator_capacity__evaluate__capacity_ok.json
+      aries_integrated_plant__annual_om__evaluate__annual_om: RootModel[float] annual_om__amount.json
+      aries_integrated_plant__replacement_scope__evaluate__total: RootModel[float] replacement_scope__total.json
+      aries_integrated_plant__replacement_price__evaluate__amount: RootModel[float] replacement_price__amount.json
+      aries_integrated_plant__replacement__evaluate__lifetime_total: float replacement__lifetime_total.json
+      aries_integrated_plant__replacement__evaluate__interval_years: float replacement__interval_years.json
+      aries_integrated_plant__replacement__evaluate__event_cost: float replacement__event_cost.json
+      aries_integrated_plant__replacement__evaluate__last_event_year: float replacement__last_event_year.json
+      aries_integrated_plant__replacement__evaluate__annual_reserve: float replacement__annual_reserve.json
+      aries_integrated_plant__replacement__evaluate__first_event_year: float replacement__first_event_year.json
+      aries_integrated_plant__replacement__evaluate__event_count: float replacement__event_count.json
+      aries_integrated_plant__primary_piping__estimate__amount: RootModel[float] primary_piping__supplied_budget.json
+      aries_integrated_plant__primary_piping__purchase__cost: RootModel[float] primary_piping__capital_cost.json
+      aries_integrated_plant__primary_heat_cost__evaluate__total: RootModel[float] primary_heat_cost__total.json
+      aries_integrated_plant__heat_transport_cost__evaluate__total: RootModel[float] heat_transport_cost__total.json
+      aries_integrated_plant__electrical_equipment__estimate__amount: RootModel[float] electrical_equipment__supplied_budget.json
+      aries_integrated_plant__electrical_equipment__purchase__cost: RootModel[float] electrical_equipment__capital_cost.json
+      aries_integrated_plant__primary_support__purchase__purchased_quantity: float primary_support__inventory_quantity.json
+      aries_integrated_plant__primary_support__purchase__source_budget: float aries_integrated_plant__primary_support__purchase__source_budget.json
+      aries_integrated_plant__primary_support__purchase__quantity_ratio: float primary_support__quantity_ratio.json
+      aries_integrated_plant__primary_support__purchase__capital: float primary_support__capital_cost.json
+      aries_integrated_plant__primary_support__purchase__extrapolated: float primary_support__cost_extrapolated.json
+      aries_integrated_plant__core_first__evaluate__total: RootModel[float] core_first__total.json
+      aries_integrated_plant__core_cost__evaluate__total: RootModel[float] core_cost__total.json
+      aries_integrated_plant__other_reactor_equipment__estimate__amount: RootModel[float] other_reactor_equipment__supplied_budget.json
+      aries_integrated_plant__other_reactor_equipment__purchase__cost: RootModel[float] other_reactor_equipment__capital_cost.json
+      aries_integrated_plant__reactor_cost__evaluate__total: RootModel[float] reactor_cost__total.json
+      aries_integrated_plant__direct_source_scope__evaluate__total: RootModel[float] direct_source_scope__total.json
+      aries_integrated_plant__direct_cost__evaluate__total: RootModel[float] direct_cost__total.json
+      aries_integrated_plant__owner_commissioning__evaluate__amount: RootModel[float] owner_commissioning__amount.json
+      aries_integrated_plant__indirect_cost__evaluate__cost: RootModel[float] indirect_cost__amount.json
+      aries_integrated_plant__contingency_basis__evaluate__total: RootModel[float] contingency_basis__total.json
+      aries_integrated_plant__contingency__evaluate__cost: RootModel[float] contingency__amount.json
+      aries_integrated_plant__cost_ledger__evaluate__annual_operating: float cost_ledger__annual_operating.json
+      aries_integrated_plant__cost_ledger__evaluate__source_inclusive: float cost_ledger__source_inclusive.json
+      aries_integrated_plant__cost_ledger__evaluate__direct: float cost_ledger__direct.json
+      aries_integrated_plant__cost_ledger__evaluate__source_reactor_gap: float cost_ledger__source_reactor_gap.json
+      aries_integrated_plant__cost_ledger__evaluate__direct_difference: float cost_ledger__direct_difference.json
+      aries_integrated_plant__cost_ledger__evaluate__annual_export_mwh: float cost_ledger__annual_export_mwh.json
+      aries_integrated_plant__cost_ledger__evaluate__source_direct: float cost_ledger__source_direct.json
+      aries_integrated_plant__cost_ledger__evaluate__source_coil_excess: float cost_ledger__source_coil_excess.json
+      aries_integrated_plant__cost_ledger__evaluate__annual_import_cost: float cost_ledger__annual_import_cost.json
+      aries_integrated_plant__cost_ledger__evaluate__annual_replacement_reserve: float cost_ledger__annual_replacement_reserve.json
+      aries_integrated_plant__cost_ledger__evaluate__source_core_excess: float cost_ledger__source_core_excess.json
+      aries_integrated_plant__cost_ledger__evaluate__overnight: float cost_ledger__overnight.json
+      aries_integrated_plant__cost_ledger__evaluate__annual_import_mwh: float cost_ledger__annual_import_mwh.json
+      aries_integrated_plant__cost_ledger__evaluate__lifetime_replacement: float cost_ledger__lifetime_replacement.json
+      aries_integrated_plant__cost_ledger__evaluate__currency_year: float cost_ledger__currency_year.json
+      aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation: ConstraintEvaluation aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation.json
       aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation: ConstraintEvaluation aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation.json
       aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation: ConstraintEvaluation aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation.json
       aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation: ConstraintEvaluation aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation.json
+      aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation: ConstraintEvaluation aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0__evaluation.json
       aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation: ConstraintEvaluation aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation.json
       aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation: ConstraintEvaluation aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation.json
+      aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation: ConstraintEvaluation aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180__evaluation.json
       aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation: ConstraintEvaluation aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation.json
       aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation: ConstraintEvaluation aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation.json
+      aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation: ConstraintEvaluation aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb__evaluation.json
       aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation: ConstraintEvaluation aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation.json
       aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation: ConstraintEvaluation aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation.json
       aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation: ConstraintEvaluation aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation.json

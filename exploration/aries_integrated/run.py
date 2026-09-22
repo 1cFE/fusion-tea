@@ -1,4 +1,5 @@
 """Execute canonical or development scenarios through the generated native graph."""
+import traceback
 import argparse
 import json
 from pathlib import Path
@@ -7,13 +8,13 @@ import yaml
 ROOT=Path(__file__).resolve().parents[2]
 HERE=Path(__file__).resolve().parent
 PACKAGE=HERE/'aries_integrated'
-EVIDENCE=ROOT/'work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/evidence'
+EVIDENCE=ROOT/'work/active/WI-090_aries-integrated-equipment-and-costs/evidence'
 PREFIX='aries_integrated_plant__'
 SCENARIOS={
     'nominal-source-assumed':{},
     'nominal-calculated':{PREFIX+'source__producer_mode':1.},
-    'literal-Lyon-source-input':{PREFIX+'cycle__recuperator_effectiveness':.95},
-    'literal-Raffray-accounting':{PREFIX+'source__reference_fusion_mw':2365.,PREFIX+'deposition__heat_mode':1.,PREFIX+'cycle__recuperator_effectiveness':.95},
+    'literal-Lyon-source-input':{**{PREFIX+b+'_pump__pump_mode':1. for b in ('he','pbli','divertor')},PREFIX+'cycle__recuperator_effectiveness':.95},
+    'literal-Raffray-accounting':{**{PREFIX+b+'_pump__pump_mode':1. for b in ('he','pbli','divertor')},PREFIX+'source__reference_fusion_mw':2365.,PREFIX+'deposition__heat_mode':1.,PREFIX+'cycle__recuperator_effectiveness':.95},
 }
 
 
@@ -26,7 +27,7 @@ def load_runtime():
 def execute_case(name, changes, runtime, root=None):
     from simkit.core.pipeline import execute_pipeline
     module,registry,fingerprint=runtime
-    folder=(root or HERE/'native_runs')/name
+    folder=(root or EVIDENCE/'native_runs')/name
     folder.mkdir(parents=True,exist_ok=True)
     pipeline=yaml.safe_load((PACKAGE/'pipelines/pipeline.yaml').read_text())
     effective={}
@@ -52,7 +53,7 @@ def execute_case(name, changes, runtime, root=None):
         result=execute_pipeline(path,folder/'outputs',registry=registry,custom_schema_types=module.CUSTOM_SCHEMA_TYPES)
         row.update(status='evaluated',outputs={k:v.model_dump(mode='json') if hasattr(v,'model_dump') else v for k,v in result.outputs.items()})
     except Exception as error:
-        row.update(status='refused',error=str(error))
+        row.update(status='refused',error=str(error),exception_type=type(error).__name__,traceback=traceback.format_exc())
     (folder/'result.json').write_text(json.dumps(row,indent=2)+'\n')
     return row
 

@@ -109,6 +109,11 @@ FAMILIES: dict[str, Family] = {IFE.name: IFE, MFE.name: MFE}
 SOURCE_COLLECTIONS: dict[str, tuple[str, ...]] = {
     "aries_integrated": (
         "analyses/integrated_heat_electricity.sysml",
+        "analyses/integrated_equipment_costs.sysml",
+        "structure/integrated_equipment_parts.sysml",
+        "foundation/costed_component.sysml",
+        "analyses/mfe_account_costs.sysml",
+        "analyses/source_budget_accounting.sysml",
         "analyses/radial_density_profile.sysml",
         "analyses/supplied_profile_plasma.sysml",
         "analyses/mfe_plasma_scaling.sysml",

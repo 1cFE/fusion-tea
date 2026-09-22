@@ -15,26 +15,30 @@ from aries_integrated.schemas.constraint_types import (
     CoverageAccount,
 )
 
-EXPECTED_IDS = ('aries_integrated_plant_rejection_capacity_capacity_ok_295420bc9fb25608', 'aries_integrated_plant_turbine_capacity_capacity_ok_089f9e8e61919ec1', 'aries_integrated_plant_compressor_capacity_capacity_ok_a45f9cf05e8aa7ab', 'aries_integrated_plant_pbli_capacity_capacity_ok_55a012a287da9395', 'aries_integrated_plant_divertor_capacity_capacity_ok_be7081920ad8e8ed', 'aries_integrated_plant_fuel_capacity_capacity_ok_8eb5888bfe62cd64', 'aries_integrated_plant_he_capacity_capacity_ok_db2733d1d5baf3cf', 'aries_integrated_plant_generator_capacity_capacity_ok_60b43f15d48ff161', 'aries_integrated_plant_plant_ledger_heat_removal_ok_695378663bcd8d07', 'aries_integrated_plant_plant_ledger_balances_ok_9af2e85b5e4e5535')
+EXPECTED_IDS = ('aries_integrated_plant_divertor_pump_capacity_ok_d6730c7060447f4c', 'aries_integrated_plant_rejection_capacity_capacity_ok_295420bc9fb25608', 'aries_integrated_plant_turbine_capacity_capacity_ok_089f9e8e61919ec1', 'aries_integrated_plant_compressor_capacity_capacity_ok_a45f9cf05e8aa7ab', 'aries_integrated_plant_fuel_inventory_capacity_ok_37f4667fbfb616d0', 'aries_integrated_plant_pbli_capacity_capacity_ok_55a012a287da9395', 'aries_integrated_plant_divertor_capacity_capacity_ok_be7081920ad8e8ed', 'aries_integrated_plant_he_pump_capacity_ok_fcee5ee009fe5180', 'aries_integrated_plant_fuel_capacity_capacity_ok_8eb5888bfe62cd64', 'aries_integrated_plant_he_capacity_capacity_ok_db2733d1d5baf3cf', 'aries_integrated_plant_pbli_pump_capacity_ok_79d116aa320dd4fb', 'aries_integrated_plant_generator_capacity_capacity_ok_60b43f15d48ff161', 'aries_integrated_plant_plant_ledger_heat_removal_ok_695378663bcd8d07', 'aries_integrated_plant_plant_ledger_balances_ok_9af2e85b5e4e5535')
 
 #: The coverage account, derived at generation from the sealed catalog by
 #: `generation/coverage.py::coverage_account` and baked here exactly the way
 #: CATALOG_FINGERPRINT and EXPECTED_IDS are. Which gates are applicable and which were
 #: assessed depends on the model, never on this candidate's input values, so recomputing it
 #: per evaluation would recompute a constant.
-COVERAGE = {'authored_usage_total': 10, 'applicable_gate_total': 10, 'assessed_gate_count': 10, 'unassessed_gate_count': 0, 'inapplicable_gate_count': 0, 'unassessed_reasons': {}, 'coverage_state': 'complete'}
+COVERAGE = {'authored_usage_total': 14, 'applicable_gate_total': 14, 'assessed_gate_count': 14, 'unassessed_gate_count': 0, 'inapplicable_gate_count': 0, 'unassessed_reasons': {}, 'coverage_state': 'complete'}
 
 
 class ConstraintReportAggregatorInput(BaseModel):
     model_config = {"extra": "forbid"}
 
+    aries_integrated_plant_divertor_pump_capacity_ok_d6730c7060447f4c: ConstraintEvaluation
     aries_integrated_plant_rejection_capacity_capacity_ok_295420bc9fb25608: ConstraintEvaluation
     aries_integrated_plant_turbine_capacity_capacity_ok_089f9e8e61919ec1: ConstraintEvaluation
     aries_integrated_plant_compressor_capacity_capacity_ok_a45f9cf05e8aa7ab: ConstraintEvaluation
+    aries_integrated_plant_fuel_inventory_capacity_ok_37f4667fbfb616d0: ConstraintEvaluation
     aries_integrated_plant_pbli_capacity_capacity_ok_55a012a287da9395: ConstraintEvaluation
     aries_integrated_plant_divertor_capacity_capacity_ok_be7081920ad8e8ed: ConstraintEvaluation
+    aries_integrated_plant_he_pump_capacity_ok_fcee5ee009fe5180: ConstraintEvaluation
     aries_integrated_plant_fuel_capacity_capacity_ok_8eb5888bfe62cd64: ConstraintEvaluation
     aries_integrated_plant_he_capacity_capacity_ok_db2733d1d5baf3cf: ConstraintEvaluation
+    aries_integrated_plant_pbli_pump_capacity_ok_79d116aa320dd4fb: ConstraintEvaluation
     aries_integrated_plant_generator_capacity_capacity_ok_60b43f15d48ff161: ConstraintEvaluation
     aries_integrated_plant_plant_ledger_heat_removal_ok_695378663bcd8d07: ConstraintEvaluation
     aries_integrated_plant_plant_ledger_balances_ok_9af2e85b5e4e5535: ConstraintEvaluation
@@ -50,7 +54,7 @@ class ConstraintReportAggregatorModule(
     name: str = "constraint_report_aggregator"
     version: str = "v0.1"
 
-    CATALOG_FINGERPRINT = "975e21712d3854a64e5fc59e3daa3953e72eab68614632809990f9efce85e1f7"
+    CATALOG_FINGERPRINT = "b2fdfd4e0b31a376f963243a06c935cdb4295e916d307d31cfaddc9ade75ce5f"
 
     def run(self, **evaluations) -> ModuleResult[ConstraintReportAggregatorOutput]:
         validated = ConstraintReportAggregatorInput(**evaluations)

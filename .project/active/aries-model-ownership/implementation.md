@@ -9,3 +9,7 @@
 ## Integrated source registration
 
 [AGENT] The coordinator registered the new integrated source collection after both canonical files and `exploration/aries_integrated/build.py` existed. The ten paths match `build.py:SOURCES` in exact order; `integrated-staging-match.json` records the check. The focused canonical coverage and missing/unregistered-file cases pass (three tests, `integrated-coverage.log`). The continuing reviewer accepted this bounded delta in `work/orchestration/goals/aries-integrated-heat-electricity/evidence/ownership-review.md`. Original family membership and test behavior remain unchanged. Native integration will rerun the full repository spine gate against the final package checkpoint.
+
+## Equipment extension source registration — 2026-09-22
+
+[AGENT] The integrated source collection now matches the fifteen actual sources in the equipment extension's `exploration/aries_integrated/build.py`, including two new generic model files and three reused dependencies. `equipment-staging-match.json` records the exact list and unchanged original IFE/MFE constructor expressions. The focused coverage and missing/unregistered-path checks pass in `equipment-coverage.log`. This is declarative registration through the existing source-ownership mechanism; no gate implementation or original family membership changes. The full native integration spine will assess the final package checkpoint.

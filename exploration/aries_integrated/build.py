@@ -9,9 +9,14 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 PACKAGE = HERE / 'aries_integrated'
-EVIDENCE = ROOT / 'work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/evidence'
+EVIDENCE = ROOT / 'work/active/WI-090_aries-integrated-equipment-and-costs/evidence'
 SOURCES = [ROOT / path for path in [
     'models/library/analyses/integrated_heat_electricity.sysml',
+    'models/library/analyses/integrated_equipment_costs.sysml',
+    'models/library/structure/integrated_equipment_parts.sysml',
+    'models/library/foundation/costed_component.sysml',
+    'models/library/analyses/mfe_account_costs.sysml',
+    'models/library/analyses/source_budget_accounting.sysml',
     'models/library/analyses/radial_density_profile.sysml',
     'models/library/analyses/supplied_profile_plasma.sysml',
     'models/library/analyses/mfe_plasma_scaling.sysml',
@@ -114,6 +119,10 @@ def build():
         copy(source,'dual_circuit_heat_accounting/'+source.name,'dual_heat_tea')
     for source in (HERE/'native_completions').glob('*.py'):
         copy(source,'integrated_heat_electricity/'+source.name)
+    for source in (HERE/'native_completions/equipment').glob('*.py'):
+        copy(source,'integrated_equipment_costs/'+source.name)
+    copy(ROOT/'exploration/aries_transfer/source_budget/native_completions/disjoint_capital_budget_impl.py', 'source_budget_accounting/disjoint_capital_budget_impl.py', 'budget_tea')
+    copy(ROOT/'exploration/stellarator_e2e/generated/handwritten/mfe_account_costs/supplied_purchase_cost_impl.py', 'mfe_account_costs/supplied_purchase_cost_impl.py', 'stellarator_tea')
     kernel = ROOT/'exploration/stellarator_e2e/generated/handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py'
     node = next(n for n in ast.parse(kernel.read_text()).body if isinstance(n,ast.FunctionDef) and n.name=='_sigv_dt')
     (PACKAGE/'handwritten/supplied_profile_plasma/reused_reactivity.py').write_text(

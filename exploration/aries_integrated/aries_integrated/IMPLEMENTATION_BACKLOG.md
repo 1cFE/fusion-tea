@@ -9,7 +9,7 @@ Complete all stages in order for a production-ready system.
 
 **Objective**: Implement each calculation definition in its handwritten file.
 
-**Total**: 26 functions to implement
+**Total**: 117 functions to implement
 
 **Instructions for each function**:
 1. Open the SysML source file at the line number shown below
@@ -26,15 +26,78 @@ Complete all stages in order for a production-ready system.
 
 | Status | Module | Function | SysML Source | Complexity |
 |--------|--------|----------|--------------|------------|
+| [ ] | Exchanger_Area_Conductance | `run_exchanger_area_conductance` | `root-0/integrated_equipment_costs.sysml:16` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Exchanger_Area_Conductance | `run_exchanger_area_conductance` | `root-0/integrated_equipment_costs.sysml:16` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Selected_Flow_Pump | `run_selected_flow_pump` | `root-0/integrated_equipment_costs.sysml:23` | High |
+| [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Selected_Stock_Atoms | `run_selected_stock_atoms` | `root-0/integrated_equipment_costs.sysml:37` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Exchanger_Area_Conductance | `run_exchanger_area_conductance` | `root-0/integrated_equipment_costs.sysml:16` | High |
+| [ ] | Disjoint_Capital_Budget | `run_disjoint_capital_budget` | `root-0/source_budget_accounting.sysml:3` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
 | [ ] | Ideal_Gas_Compressor | `run_ideal_gas_compressor` | `root-0/ideal_gas_brayton_components.sysml:3` | High |
+| [ ] | Selected_Flow_Pump | `run_selected_flow_pump` | `root-0/integrated_equipment_costs.sysml:23` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
 | [ ] | Fixed_Outlet_Conditioning | `run_fixed_outlet_conditioning` | `root-0/ideal_gas_brayton_components.sysml:29` | High |
 | [ ] | Ideal_Gas_Compressor | `run_ideal_gas_compressor` | `root-0/ideal_gas_brayton_components.sysml:3` | High |
 | [ ] | Fixed_Outlet_Conditioning | `run_fixed_outlet_conditioning` | `root-0/ideal_gas_brayton_components.sysml:29` | High |
 | [ ] | Ideal_Gas_Compressor | `run_ideal_gas_compressor` | `root-0/ideal_gas_brayton_components.sysml:3` | High |
 | [ ] | Fractional_Pressure_Loss | `run_fractional_pressure_loss` | `root-0/ideal_gas_brayton_components.sysml:52` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
 | [ ] | Supplied_Profile_Plasma | `run_supplied_profile_plasma` | `root-0/supplied_profile_plasma.sysml:4` | High |
 | [ ] | Fusion_Source_Selector | `run_fusion_source_selector` | `root-0/integrated_heat_electricity.sysml:3` | High |
+| [ ] | Annual_Selected_Fuel | `run_annual_selected_fuel` | `root-0/integrated_equipment_costs.sysml:44` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
+| [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Selected_Flow_Pump | `run_selected_flow_pump` | `root-0/integrated_equipment_costs.sysml:23` | High |
 | [ ] | Integrated_Heat_Source | `run_integrated_heat_source` | `root-0/integrated_heat_electricity.sysml:11` | High |
 | [ ] | Coolant_Branch_Heat | `run_coolant_branch_heat` | `root-0/dual_circuit_heat_accounting.sysml:4` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
@@ -48,10 +111,38 @@ Complete all stages in order for a production-ready system.
 | [ ] | Passive_Recuperator | `run_passive_recuperator` | `root-0/integrated_heat_electricity.sysml:112` | High |
 | [ ] | Fixed_Outlet_Conditioning | `run_fixed_outlet_conditioning` | `root-0/ideal_gas_brayton_components.sysml:29` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
+| [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
+| [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
 | [ ] | Integrated_Plant_Ledger | `run_integrated_plant_ledger` | `root-0/integrated_heat_electricity.sysml:162` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
+| [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Replacement_Events | `run_replacement_events` | `root-0/integrated_equipment_costs.sysml:66` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
+| [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Selected_Inventory_Purchase | `run_selected_inventory_purchase` | `root-0/integrated_equipment_costs.sysml:3` | High |
+| [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
+| [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
+| [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
+| [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
+| [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
+| [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
+| [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
+| [ ] | Equipment_Cost_Ledger | `run_equipment_cost_ledger` | `root-0/integrated_equipment_costs.sysml:98` | High |
 
 **1 computed attribute module(s) auto-implemented** (not included in manual count above).
 
@@ -78,7 +169,7 @@ pytest tests/test_implementations_runnable.py -v
 All tests should pass (or pytest.skip for NotImplementedError stubs)
 
 **Test Coverage**:
-- 26 implementation functions
+- 117 implementation functions
 - Each function tested for: imports, signature, return type
 - Tests tolerate NotImplementedError (pass before implementation)
 - Tests verify return types (pass after implementation)
@@ -113,7 +204,7 @@ All tests should pass (or pytest.skip for NotImplementedError stubs)
 ## Completion Criteria
 
 The implementation is complete when:
-- Stage 1: All 26 functions implemented
+- Stage 1: All 117 functions implemented
 - Stage 2: All validations pass
 - Stage 3: Integration tests pass
 

@@ -50,3 +50,40 @@ Continuing fresh non-author reviewer evaluates committed candidate8fd66334; expe
 ### T-002 review correction — 2026-09-22
 
 The fresh reviewer returned REVISE on one inventory-ownership finding in `evidence/design-review.md`: selected tritium stock must also supply the inherited required-breeding diagnostic. The author is correcting that binding contract and its migration/test evidence. Other reviewed source/math/account boundaries are accepted within their assumptions. This is a semantic design correction before implementation, not a mechanical retry and not a study-disposition checkpoint.
+
+### T-002 return — 2026-09-22
+
+- **Outcome:** COMPLETE.
+- **Evidence:** WI-090 design/plan and `evidence/design-review.md@1043ca8f`, including initial REVISE and corrective PASS.
+- **Reading:** Source/math and ownership risks are reviewed before implementation; actual generated behavior remains unverified.
+- **Decision:** Trigger: divergent stock consumers. Decision: use the selected stock and shared atomic-mass/decay constants for both annual expense and inherited breeding-demand calculation, retiring the dormant stock entry. Tier: execution detail. Decided by: author/coordinator, independently accepted. Changed: native design/plan and required perturbation test; thermal equations unchanged.
+
+### T-003 scope
+
+- **Objective:** Implement and verify the accepted selected-inventory and cost design in the existing native ARIES assembly.
+- **Why now:** T-002 resolves pre-implementation source/math/interface review.
+- **Scope:** Exact model/package ownership in `evidence/implementation-brief.md`; coordinator registers added source ownership. Preserve original definitions and frozen evidence. No study execution or promotion in this task.
+- **Inputs:** `goal.md`; WI-090 design/plan and corrective review at1043ca8f.
+- **Done when:** A generated, fixed-point stable package and native development evidence meet WI-090 behavioral/accounting checks and are ready for consequential integration review.
+- **Stop when:** Discovered prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-003 start — 2026-09-22
+
+Continuing model author implements WI-090; expected native artifacts are model sources, generated package, migration maps and development receipts. Coordinator owns source-family registration and commits.
+
+### T-004 scope
+
+- **Objective:** Prepare the thermal-first native study route, independent numerical checker and complete declared points for the changed package.
+- **Why now:** Accepted equations/ownership permit checker preparation independently of model authoring; actual keys and identities remain dependent on the author's frozen generated interface.
+- **Scope:** `evidence/study-implementation-brief.md`; live study tooling and one new record, excluding every prior frozen record. No study point execution before native CANDIDATE and coordinator release.
+- **Inputs:** `goal.md`; accepted WI-090 design; prior native route and `evidence/study-preparation.md@6ff5601c`.
+- **Done when:** Exact generated entry groups, canonical points, oracle checks, indicators/rulings and record preparation are ready for integration.
+- **Stop when:** Discovered prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-004 start — 2026-09-22
+
+Continuing study preparer owns only live study tooling/new record. Parallelism is safe because model/package writes belong solely to T-003; generated interface discovery and point preparation wait for the author's stable ABI. Coordinator integrates sequentially.
+
+### T-004 preparation scope refinement — 2026-09-22
+
+The study preparer reconciled proposed windows to the accepted design and identified four additional principal thermal assumptions explicitly present there: heating efficiency and cryogenic/control/other loads. Coordinator approved eight additional endpoints, yielding a proposed64-point single record before deduplication/domain scan. This is coverage within the same study question and execution detail, not a second study or an execution-cap change. Final generated keys and windows remain pre-execution obligations.
