@@ -34,6 +34,23 @@ def run(command, name):
                        stdout=log, stderr=subprocess.STDOUT)
 
 
+def write_census():
+    """Use the integration producer's classification and semantic-identity readers."""
+    code = """
+import json
+import sys
+from pathlib import Path
+from scripts.integrate import rederived_census
+from scripts.study.manifest import read_semantic_fingerprint
+package, target = map(Path, sys.argv[1:])
+census = rederived_census(package)
+census['derived_against_semantic_fingerprint'] = read_semantic_fingerprint(package)
+target.write_text(json.dumps(census, indent=2) + '\\n')
+print(json.dumps({'entry_points': census['entry_points'], 'semantic_fingerprint': census['derived_against_semantic_fingerprint']}))
+"""
+    run(['python', '-c', code, str(PACKAGE), str(HERE/'census.json')], 'census-generation.log')
+
+
 def build():
     EVIDENCE.mkdir(parents=True, exist_ok=True)
     staging = HERE / 'input_models'
@@ -108,6 +125,7 @@ def build():
     after = {str(p.relative_to(PACKAGE)):sha(p) for p in PACKAGE.rglob('*') if p.is_file() and '__pycache__' not in p.parts}
     assert before == after, sorted(key for key in set(before)|set(after) if before.get(key)!=after.get(key))
     run(['sysml-codegen','snapshot','--models',str(staging),'--output',str(HERE/'integrated.snapshot.json')], 'snapshot.log')
+    write_census()
     receipt = dict(sources={str(p.relative_to(ROOT)):sha(p) for p in SOURCES},
                    staged={str(p.relative_to(ROOT)):sha(staging/p.name) for p in SOURCES},
                    completions=receipts,fixed_point=True,reactivity_ast_sha256=hashlib.sha256(ast.dump(node).encode()).hexdigest())

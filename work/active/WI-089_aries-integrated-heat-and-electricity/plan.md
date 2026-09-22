@@ -38,6 +38,13 @@ Related Artifacts: spec.md; design.md
 - [x] Preserve first native integration refusal and reproduce exact smart-regeneration behavior in a scratch package.
 - [x] Add typed public adapters with original module/body AST identity retained; update build to verify the integration producer's exact flags.
 - [x] Verify all four native canonical scenarios match every old-seal output/input exactly; preserve original baseline and forty-case receipts.
-- [ ] Obtain focused corrective review and retry native integration under the new executable fingerprint.
+- [x] Focused corrective review passed in the goal evidence/packaging-review.md; integration attempt 2 passed regeneration and handwritten preservation before stopping on the separate incomplete census input.
 
 The normalized executable fingerprint is `cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd`. Source/model identity is unchanged. The fourteen-file package diff consists of thirteen typed adapters and the package contract; see report.md and evidence/smart-normalization-verification.json.
+
+## T-009 complete the integration census
+
+- [x] Regenerate all 122 entry classifications through `scripts.integrate.rederived_census`, add the actual `read_semantic_fingerprint` result, and verify both against fresh derivation.
+- [x] Make the normal build write this complete census automatically. The only census change is `derived_against_semantic_fingerprint`; package seal and classifications are unchanged. Evidence: `evidence/census-completion-verification.json`.
+
+Native integration retry and the committed study remain coordinator-owned.

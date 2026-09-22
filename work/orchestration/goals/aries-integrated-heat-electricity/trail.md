@@ -162,3 +162,43 @@ T-007 · WI-089 package normalization · exact mismatch explanation, stable rege
 ### Amendment — 2026-09-22
 
 T-006's moved-file report names only the contract because its regeneration gate excludes the handwritten subtree until the following gate. The scratch investigation found thirteen completions replaced with stubs as well. The native seam restored the original package; the T-007 explanation and retained probe supersede the initial metadata-only interpretation.
+
+### T-008 scope
+
+- **Objective:** obtain the round's native verified CANDIDATE from the corrected package.
+- **Why now:** T-007 is independently accepted and committed at `143a556c`.
+- **Scope:** full native integration seam with fixed reviewed lineage and updated consumer metadata. Preserve every gate outcome. No physical model changes or study sweep.
+- **Inputs:** WI-089@143a556c, executable `cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd`, unchanged semantic and TEAx identities, exact manifest/groups and package-owned baseline route.
+- **Done when:** CANDIDATE or a named native blocker is returned.
+- **Stop when:** the seam refuses, a reserved gate binds or a declared cap is reached.
+
+### T-008 start — 2026-09-22
+
+T-008 · goal `evidence/integrate.py` · full native integration after a changed, reviewed package, not an identical-task retry. Original T-006 refusal remains at its original identity.
+
+### T-008 return — 2026-09-22
+
+- **Outcome:** PREREQUISITE.
+- **Evidence:** `evidence/integration-attempt2/integration_return.json` and `seam_traceback.txt` (unpinned until next checkpoint).
+- **Reading:** regeneration and handwritten preservation now pass. Snapshot recapture passes its byte comparison, but the native census lacks its required `derived_against_semantic_fingerprint` field. The seam reports a KeyError rather than a structured invalid-input refusal. No candidate or study exists.
+- **Decision:** regenerate the complete native census metadata, including its semantic binding, without editing calculated classifications; execution detail; coordinator; T-009. Preserve the seam's diagnostic, but no shared-tool change is needed for this input correction.
+
+### T-009 scope
+
+- **Objective:** supply the complete native census contract from the sealed package.
+- **Why now:** T-008 identified a missing required field in newly authored metadata.
+- **Scope:** WI-089 census producer/metadata and verification only; no package or physical change. Re-derive the classification with the existing native helper and bind the actual semantic fingerprint.
+- **Inputs:** `goal.md`, package@143a556c, native `gate_census_snapshot` contract and T-008 receipt.
+- **Done when:** the complete census matches native derivation and carries the actual semantic identity.
+- **Stop when:** classification differs substantively, a separate prerequisite or reserved gate appears.
+
+### T-009 start — 2026-09-22
+
+T-009 · native WI-089 census metadata · complete derived census and repeatable producer expected.
+
+### T-009 return — 2026-09-22
+
+- **Outcome:** COMPLETE.
+- **Evidence:** WI-089 `evidence/census-completion-verification.json`, updated `exploration/aries_integrated/build.py` and `census.json` (pending checkpoint).
+- **Reading:** all 122 classifications remain identical under native recomputation; the complete census now includes the actual unchanged semantic fingerprint. The build repeats this derivation. Package contract and all executable files remain unchanged.
+- **Decision:** missing derived metadata is objectively repaired using native producers, so coordinator verification suffices without repeating physical review; execution detail; coordinator; census producer and receipt. This corrects an input artifact and therefore is not classified as an identical-input retry.

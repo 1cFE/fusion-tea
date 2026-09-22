@@ -1,0 +1,10 @@
+{
+  "entry_points": 122,
+  "semantic_fingerprint": "35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97",
+  "classifications_unchanged": true,
+  "recomputed_census_matches": true,
+  "package_contract_sha256_unchanged": "c3206439075299a5e63bd9f07616b50762f43a94f1bf958c87c5b2a1b2e698ec",
+  "added_fields": [
+    "derived_against_semantic_fingerprint"
+  ]
+}

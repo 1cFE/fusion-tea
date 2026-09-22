@@ -1,6 +1,6 @@
 # WI-089 implementation report
 
-Status: physical implementation independently accepted; packaging correction review and native goal study pending
+Status: physical implementation and packaging correction independently accepted; complete census ready for native integration/study retry
 Created: 2026-09-22
 Updated: 2026-09-22
 
@@ -55,4 +55,8 @@ The corrected build adds a typed public adapter around each affected completion.
 
 The new executable fingerprint is `cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd`. Exactly thirteen completion files and `contracts/package_contract.json` changed. Model semantic fingerprint `35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97`, canonical/staged sources, snapshot, input values, schemas, pipeline and census are unchanged. Four native canonical scenarios have exact parity for every output and effective input against the original reviewed seal. The original forty-case and baseline receipts remain untouched at that old identity. `evidence/smart-normalization-verification.json` records original-module AST equality, all changed file hashes, contract field differences and four complete parity runs. The old package can be recovered from commit `71b2867a`; the retained probe script names its temporary checkout used for this check.
 
-The original physical review remains applicable to unchanged calculation bodies and native outputs. A focused corrective review of these adapters and the exact regeneration result is required before the next integration attempt. No physical equation, operating input or engineering claim changed.
+The original physical review remains applicable to unchanged calculation bodies and native outputs. The focused corrective review passed in the goal evidence/packaging-review.md. Integration attempt 2 passed both regeneration and handwritten preservation. No physical equation, operating input or engineering claim changed.
+
+## T-009: Complete census identity
+
+The second integration attempt reached the census gate and found the missing `derived_against_semantic_fingerprint` field in the newly authored census. `build.py` now writes both the producer-derived classification and the actual semantic fingerprint using `scripts.integrate.rederived_census` and `scripts.study.manifest.read_semantic_fingerprint`. All 122 entry classifications are unchanged; the sole added field is bound to `35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97`. Fresh rederivation matches exactly and the package contract hash is unchanged. Evidence: `evidence/census-completion-verification.json`. No shared seam, source, equation or package bytes changed.
