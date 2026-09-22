@@ -1,0 +1,5 @@
+INFO: Generating code from exploration/aries_transfer/plasma_integration/staged_models
+INFO: Output to exploration/aries_transfer/plasma_integration/generated
+INFO: Package name: aries_plasma_tea
+INFO: Building pipeline context...
+ERROR: Code generation failed: exact graph projection failed: SI_RENDERING_COLLISION: entry point 'aries_cs_plasma_integration__plasma__amplitude' has conflicting projected metadata: reference='aries_cs_plasma_integration__plasma__amplitude' [root-0/plasma_integration.sysml:17]

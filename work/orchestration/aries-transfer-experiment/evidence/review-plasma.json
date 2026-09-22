@@ -1,0 +1,16 @@
+{
+  "fingerprint": "4559f1f7871e7b081fdd1e9fec41e4a65d3b78fa186f05fde1be1e984d6d895b",
+  "density": 3.5239999999993106e+20,
+  "expected_density": 3.524e+20,
+  "pressure": 570907.9751472746,
+  "expected_pressure": 570907.975147161,
+  "beta": 0.02241950376968591,
+  "fusion_MW": 882.7455303585865,
+  "expected_fusion_MW": 882.7455303585809,
+  "intervals": 4096.0,
+  "relative_change": 2.982016880630957e-12,
+  "kernel_ast_equal": true,
+  "density_prefix_only": true,
+  "protected_count": 1383,
+  "changed": []
+}

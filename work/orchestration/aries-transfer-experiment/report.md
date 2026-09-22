@@ -30,3 +30,9 @@
 [AGENT] Next, extend the source-supported plasma profile into explicitly defined density/temperature moments and reaction integration, after resolving the coordinate, species and normalization definitions. In parallel, develop the sector/material inventory from published geometry and recipes. Record inputs still missing before claiming source correspondence. Continue to treat field/conductor and breeding qualification as separate dependencies; do not feed published output targets into those checks to manufacture an independent prediction.
 
 [AGENT] The first implementation round is bounded to the two registered items. The full transfer epic and both full-plant milestones remain open. The plan, inventories, native models, reproduction scripts and continuing [log](log.md) provide the starting point for further increments.
+
+## Continued area T01: connected plasma integration
+
+[AGENT] WI-083 adds one forward integration calculation and case. It reuses the accepted density component, copies the existing reaction helper unchanged, and feeds calculated thermal pressure into the unchanged beta definition. Fourteen native supported cases pass and 25 invalid or numerically unresolved cases refuse. Independent review accepts the bounded result and nine named static EXPOSE exceptions; aggregate validation still exits 1 with L1–L5 passing.
+
+[AGENT] The selected scenario calculates 1835.451283 MW fusion power and 5.60649% thermal beta. Density amplitude, temperature sensitivity shape, local species and volume measure are explicit supplied choices, not fitted to reference outputs. This establishes a connected forward calculation; it does not establish actual ARIES profiles, confinement closure or numerical agreement with the reference. [Implementation and exact evidence](../../active/WI-083_aries-supplied-profile-plasma-integration/implementation.md), [independent review](evidence/plasma-integration-review.md).

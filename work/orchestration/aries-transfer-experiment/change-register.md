@@ -4,7 +4,7 @@
 
 | ID | Responsibility | Existing behavior that can carry over | Required adaptation or evidence | Current experiment |
 |---|---|---|---|---|
-| T01 | Plasma profiles and operating closure | D-T reaction kernel, basic pressure/energy relations | Hollow finite-edge density; compatible temperature/species/geometry integration and confinement | WI-081 executed one new local-profile calc and case (13 supported cases, 25 refusals); complete closure remains open |
+| T01 | Plasma profiles and operating closure | D-T reaction kernel, basic pressure/energy relations | Hollow finite-edge density; compatible temperature/species/geometry integration and confinement | WI-081 local profile plus reviewed WI-083 forward integration (14 supported cases, 25 refusals); reused density/kernel/beta. Actual reference profiles, geometry measure and closure remain open |
 | T02 | Radial sectors and constituent inventory | Geometry/mass identities | Full/tapered coverage, material constituents and their actual volumes; uniform shells do not encode this | Inventoried; source-supported sector model not yet built |
 | T03 | Magnetic field and mechanical loads | Explicit current/turn and pack arithmetic | Independent coil geometry/current-family inputs; qualified field/force/stress treatment | Missing scientific inputs; scalar rebinding insufficient |
 | T04 | Conductor performance | Capability-versus-demand pattern | Nb3Sn product/temperature/strain performance and winding definitions | Source qualification required; do not expand REBCO interval |

@@ -61,6 +61,8 @@ Updated: 2026-09-21
 - [x] Inspect primary density/temperature/species definitions, current kernel and downstream beta.
 - [x] Record supplied choices, source limits, equations, interfaces and focused checks.
 - [x] Receive independent source/design acceptance and resolve required changes.
-- [ ] Implement isolated new calc/case and unchanged reuse bodies through normal generation.
-- [ ] Run native forward, scaling, domain, convergence and complete scoped validation checks.
-- [ ] Record final evidence, independent review and coordinator tracking handoff.
+- [x] Implement isolated new calc/case and unchanged reuse bodies through normal generation.
+- [x] Run native forward, scaling, domain, convergence and complete scoped validation checks.
+- [x] Record final evidence, independent review and coordinator tracking handoff.
+
+[AGENT] Implementation results: 14 supported native cases and 25 refusals, seven exact reactivity-helper comparisons, successful parser and semantic checks. Complete scoped validation exits 1: levels 1–5 pass, level 6 reports nine EXPOSE diagnostics despite executed native outputs. Source/design acceptance and numerical clarification are retained in the experiment review evidence; final integrated review is pending. See `implementation.md` and `evidence/verification.json`.
