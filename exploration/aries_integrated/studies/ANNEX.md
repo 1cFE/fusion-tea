@@ -1,6 +1,6 @@
 # Package annex — aries_integrated
 
-[AGENT] Current completed studies are `20260922-aries-integrated-local-response/` (24 cases, sealed at a396a2e0), `20260922-aries-integrated-coupled-design/` (68 cases, sealed at d976da47) and `20260922-aries-integrated-design-robustness/` (174 cases, sealed at d57ee5cd). The accepted lifecycle and earlier thermal/equipment records remain immutable prerequisites. Final independent goal review passes; the records contain their actual review coverage and limitations. Formal closure remains owner-held.
+[AGENT] Current completed studies are `20260922-aries-integrated-local-response/` (24 cases, sealed at a396a2e0), `20260922-aries-integrated-coupled-design/` (68 cases, sealed at d976da47) and `20260922-aries-integrated-design-robustness/` (174 cases, sealed at d57ee5cd). The accepted lifecycle and earlier thermal/equipment records remain immutable prerequisites. Final independent goal review passes; the records contain their actual review coverage and limitations. [OWNER] The goal was closed on 2026-09-22.
 
 The unchanged executable is `d13f4153accc48a3d6533a2d29a8e8b6b7cecd86644c322bb64f59fa402e419b`, semantic fingerprint `419e6e3d7ba46320a1f88b5f478d36abb5ead85d2ecb6fcdb7aff5fcb2c1e131`. The original native CANDIDATE passes all ten integration gates. New study-local manifests, full axis groups, indicators and six-gate preflights preserve exact package identity. The live package manifest remains the reviewed lifecycle baseline; each new record's own manifest is the authority for its declared groups and ties.
 

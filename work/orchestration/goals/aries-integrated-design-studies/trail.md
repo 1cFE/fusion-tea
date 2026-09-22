@@ -224,3 +224,9 @@ T-005 · exploration/aries_integrated/studies/20260922-aries-integrated-design-r
 - **Retry/process coverage:** One presentation-only local freeze retry and the coupled record-deposition timing deviation remain retained. No native execution retry or new model/package change. The final review corrected one omitted deuterium attribution term in answer.md and stale learning introduction; frozen results were unchanged.
 - **Remaining uncertainty:** Scientific qualification, joint uncertainty and continuous optima remain unsupported. Full model validation retains its reviewed four-pass/two-fail result.
 - **Recommendation:** Ready for owner-held formal closure. The answer and complete candidate ledger satisfy the grounded contract; no push, merge or formal closure performed.
+
+### Owner closure — 2026-09-22
+
+[OWNER-VERBATIM] “please close”. The owner authorizes formal goal closure following the accepted answer and independent final PASS at `aa162cd4`.
+
+[AGENT coordinator] The goal is closed with its three frozen studies, accepted findings and learnings preserved. No native model work item was opened for this study-only goal, so no item archive operation is required. Current goal, answer, annex and project status record closure. Frozen evidence and scientific limitations remain unchanged.

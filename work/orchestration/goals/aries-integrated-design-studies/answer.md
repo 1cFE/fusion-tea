@@ -1,6 +1,6 @@
 # Conditional integrated ARIES design comparisons
 
-[AGENT] The studies answer the bounded design question under the declared model assumptions. [Independent final review](evidence/final-review.md) passes and accepts the positive conditional goal. Formal goal closure remains owner-held.
+[AGENT] The studies answer the bounded design question under the declared model assumptions. [Independent final review](evidence/final-review.md) passes and accepts the positive conditional goal. [OWNER] The goal was closed on 2026-09-22 following the accepted review.
 
 Reducing both selected exchanger areas from 50,000 to 45,000 m² lowers modeled overnight capital by 17.381059 million USD2004 and default LCOE by 0.381913 USD2004/MWh. Calculated net electricity and gross tritium makeup remain unchanged. This small purchased-equipment saving survives all 21 tested one-at-a-time assumption settings in both supply scenarios. It does not establish exchanger geometry, hydraulics or a minimum adequate area.
 

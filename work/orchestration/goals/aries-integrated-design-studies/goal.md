@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — 2026-09-22. Issuance of the retained owner brief authorizes this slug, grounding and execution; formal closure remains owner-held.
+`closed` — 2026-09-22. [OWNER] Closure authorized after the independent final PASS at `aa162cd4`. Grounding and execution were authorized by the retained owner brief.
 
 ## Question
 
