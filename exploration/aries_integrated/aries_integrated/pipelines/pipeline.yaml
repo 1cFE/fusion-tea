@@ -1,0 +1,1002 @@
+# Generated Pipeline Configuration for aries_integrated
+#
+# Auto-generated from SysML calc def dependency analysis
+# DO NOT EDIT - Regenerate using code generator
+
+metadata:
+  run_description: "Generated pipeline for aries_integrated"
+  output_folder: "aries_integrated_results"
+
+modules:
+  # Entry point - load inputs from JSON
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      mfe_plasma_scaling_params: MfePlasmaScalingParams ../inputs/mfe_plasma_scaling_params.json
+      plant_params: PlantParams ../inputs/plant_params.json
+      plasma_integration_params: PlasmaIntegrationParams ../inputs/plasma_integration_params.json
+
+
+  # ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+  aries_integrated_plant__compressor_1__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+    inputs:
+      ratio_in: float plant_params.aries_integrated_plant__compressor_1__selected_ratio
+      pressure_in: float plant_params.aries_integrated_plant__cycle__return_pressure
+      temperature_in: float plant_params.aries_integrated_plant__cycle__low_temperature
+      efficiency_in: float plant_params.aries_integrated_plant__compressor_1__efficiency
+      cp_in: float plant_params.aries_integrated_plant__cycle__cp
+      gamma_in: float plant_params.aries_integrated_plant__cycle__gamma
+      flow_in: float plant_params.aries_integrated_plant__cycle__selected_flow
+    outputs:
+      pressure_out: float aries_integrated_plant__compressor_1__evaluate__pressure_out
+      shaft_demand: float aries_integrated_plant__compressor_1__evaluate__shaft_demand
+      temperature_out: float aries_integrated_plant__compressor_1__evaluate__temperature_out
+
+  # ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+  aries_integrated_plant__intercooler_1__evaluate:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      flow_in: float plant_params.aries_integrated_plant__cycle__selected_flow
+      target_temperature_in: float plant_params.aries_integrated_plant__intercooler_1__target_temperature
+      temperature_in: float aries_integrated_plant__compressor_1__evaluate__temperature_out
+      pressure_in: float aries_integrated_plant__compressor_1__evaluate__pressure_out
+      heating_role_in: float plant_params.aries_integrated_plant__intercooler_1__heating_role
+      cp_in: float plant_params.aries_integrated_plant__cycle__cp
+    outputs:
+      heat_into_fluid: float aries_integrated_plant__intercooler_1__evaluate__heat_into_fluid
+      temperature_out: float aries_integrated_plant__intercooler_1__evaluate__temperature_out
+      pressure_out: float aries_integrated_plant__intercooler_1__evaluate__pressure_out
+
+  # ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+  aries_integrated_plant__compressor_2__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+    inputs:
+      ratio_in: float plant_params.aries_integrated_plant__compressor_2__selected_ratio
+      efficiency_in: float plant_params.aries_integrated_plant__compressor_2__efficiency
+      temperature_in: float aries_integrated_plant__intercooler_1__evaluate__temperature_out
+      cp_in: float plant_params.aries_integrated_plant__cycle__cp
+      pressure_in: float aries_integrated_plant__intercooler_1__evaluate__pressure_out
+      gamma_in: float plant_params.aries_integrated_plant__cycle__gamma
+      flow_in: float plant_params.aries_integrated_plant__cycle__selected_flow
+    outputs:
+      pressure_out: float aries_integrated_plant__compressor_2__evaluate__pressure_out
+      shaft_demand: float aries_integrated_plant__compressor_2__evaluate__shaft_demand
+      temperature_out: float aries_integrated_plant__compressor_2__evaluate__temperature_out
+
+  # ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+  aries_integrated_plant__intercooler_2__evaluate:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      heating_role_in: float plant_params.aries_integrated_plant__intercooler_2__heating_role
+      flow_in: float plant_params.aries_integrated_plant__cycle__selected_flow
+      cp_in: float plant_params.aries_integrated_plant__cycle__cp
+      pressure_in: float aries_integrated_plant__compressor_2__evaluate__pressure_out
+      target_temperature_in: float plant_params.aries_integrated_plant__intercooler_2__target_temperature
+      temperature_in: float aries_integrated_plant__compressor_2__evaluate__temperature_out
+    outputs:
+      heat_into_fluid: float aries_integrated_plant__intercooler_2__evaluate__heat_into_fluid
+      temperature_out: float aries_integrated_plant__intercooler_2__evaluate__temperature_out
+      pressure_out: float aries_integrated_plant__intercooler_2__evaluate__pressure_out
+
+  # ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+  aries_integrated_plant__compressor_3__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+    inputs:
+      gamma_in: float plant_params.aries_integrated_plant__cycle__gamma
+      cp_in: float plant_params.aries_integrated_plant__cycle__cp
+      ratio_in: float plant_params.aries_integrated_plant__compressor_3__selected_ratio
+      temperature_in: float aries_integrated_plant__intercooler_2__evaluate__temperature_out
+      efficiency_in: float plant_params.aries_integrated_plant__compressor_3__efficiency
+      flow_in: float plant_params.aries_integrated_plant__cycle__selected_flow
+      pressure_in: float aries_integrated_plant__intercooler_2__evaluate__pressure_out
+    outputs:
+      pressure_out: float aries_integrated_plant__compressor_3__evaluate__pressure_out
+      shaft_demand: float aries_integrated_plant__compressor_3__evaluate__shaft_demand
+      temperature_out: float aries_integrated_plant__compressor_3__evaluate__temperature_out
+
+  # ideal_gas_brayton_components.Fractional_Pressure_LossModule
+  aries_integrated_plant__pressure_loss__evaluate:
+    module_type: ideal_gas_brayton_components.Fractional_Pressure_LossModule
+    inputs:
+      pressure_in: float aries_integrated_plant__compressor_3__evaluate__pressure_out
+      loss_fraction_in: float plant_params.aries_integrated_plant__pressure_loss__loss_fraction
+    outputs:
+      root: RootModel[float] aries_integrated_plant__pressure_loss__evaluate__pressure_out
+
+  # source: computed_attribute (aries_cs_plasma_integration.plasma.edge_densityModule)
+  aries_cs_plasma_integration__plasma__edge_density:
+    module_type: aries_cs_plasma_integration.plasma.edge_densityModule
+    inputs:
+      amplitude: float plasma_integration_params.aries_cs_plasma_integration__plasma__amplitude
+      edge_ratio: float plasma_integration_params.aries_cs_plasma_integration__plasma__edge_ratio
+    outputs:
+      root: RootModel[float] aries_cs_plasma_integration__plasma__edge_density__edge_density
+
+  # supplied_profile_plasma.Supplied_Profile_PlasmaModule
+  aries_cs_plasma_integration__plasma__integration:
+    module_type: supplied_profile_plasma.Supplied_Profile_PlasmaModule
+    inputs:
+      deuterium_fraction_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__deuterium_fraction
+      hollowness_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__hollowness
+      volume_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__volume
+      temperature_edge_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__temperature_edge
+      helium_fraction_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__helium_fraction
+      temperature_radial_exponent_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__temperature_radial_exponent
+      temperature_axis_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__temperature_axis
+      temperature_profile_exponent_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__temperature_profile_exponent
+      amplitude_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__amplitude
+      density_profile_exponent_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__density_profile_exponent
+      density_radial_exponent_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__density_radial_exponent
+      field_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__field
+      edge_density_in: float aries_cs_plasma_integration__plasma__edge_density__edge_density.root
+      volume_exponent_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__volume_exponent
+    outputs:
+      thermal_pressure: float aries_cs_plasma_integration__plasma__integration__thermal_pressure
+      field_for_beta: float aries_cs_plasma_integration__plasma__integration__field_for_beta
+      density_weighted_temperature: float aries_cs_plasma_integration__plasma__integration__density_weighted_temperature
+      quadrature_relative_change: float aries_cs_plasma_integration__plasma__integration__quadrature_relative_change
+      fusion_power_MW: float aries_cs_plasma_integration__plasma__integration__fusion_power_MW
+      density_mean: float aries_cs_plasma_integration__plasma__integration__density_mean
+      quadrature_intervals: float aries_cs_plasma_integration__plasma__integration__quadrature_intervals
+      stored_thermal_MJ: float aries_cs_plasma_integration__plasma__integration__stored_thermal_MJ
+
+  # integrated_heat_electricity.Fusion_Source_SelectorModule
+  aries_integrated_plant__source__evaluate:
+    module_type: integrated_heat_electricity.Fusion_Source_SelectorModule
+    inputs:
+      mode_in: float plant_params.aries_integrated_plant__source__producer_mode
+      calculated_power_in: float aries_cs_plasma_integration__plasma__integration__fusion_power_MW
+      reference_power_in: float plant_params.aries_integrated_plant__source__reference_fusion_mw
+    outputs:
+      selected_power: float aries_integrated_plant__source__evaluate__selected_power
+      selected_mode: float aries_integrated_plant__source__evaluate__selected_mode
+
+  # mfe_fuel_cycle.Fuel_Cycle_FlowsModule
+  aries_integrated_plant__fuel__evaluate:
+    module_type: mfe_fuel_cycle.Fuel_Cycle_FlowsModule
+    inputs:
+      eta_extract_in: float plant_params.aries_integrated_plant__fuel__assumed_extraction
+      s_per_fpy_in: float plant_params.aries_integrated_plant__fuel__seconds_per_year
+      I_total_in: float plant_params.aries_integrated_plant__fuel__dormant_inventory_atoms
+      q_eff_in: float plant_params.aries_integrated_plant__fuel__reaction_energy_mev
+      p_fus_in: float aries_integrated_plant__source__evaluate__selected_power
+      t_recycle_in: float plant_params.aries_integrated_plant__fuel__exhaust_recovery
+      G_stock_in: float plant_params.aries_integrated_plant__fuel__dormant_stock_growth_atoms_s
+      tbr_available_in: float plant_params.aries_integrated_plant__fuel__unused_tbr_placeholder
+      lambda_T_in: float plant_params.aries_integrated_plant__fuel__decay_constant_s
+      burn_fraction_in: float plant_params.aries_integrated_plant__fuel__pass_burn_fraction
+      mev_to_joules_in: float plant_params.aries_integrated_plant__fuel__mev_joules
+      m_T_kg_in: float plant_params.aries_integrated_plant__fuel__tritium_atom_kg
+    outputs:
+      burn_kg_per_fpy: float aries_integrated_plant__fuel__evaluate__burn_kg_per_fpy
+      inject_rate: float aries_integrated_plant__fuel__evaluate__inject_rate
+      burn_rate: float aries_integrated_plant__fuel__evaluate__burn_rate
+      tbr_margin: float aries_integrated_plant__fuel__evaluate__tbr_margin
+      tbr_required: float aries_integrated_plant__fuel__evaluate__tbr_required
+      loss_rate: float aries_integrated_plant__fuel__evaluate__loss_rate
+      exhaust_rate: float aries_integrated_plant__fuel__evaluate__exhaust_rate
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_integrated_plant__fuel_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      conditions_supported_in: bool plant_params.aries_integrated_plant__fuel_capacity__assumed_supported
+      applicable_in: bool plant_params.aries_integrated_plant__fuel_capacity__scenario_applicable
+      demand_available_in: bool plant_params.aries_integrated_plant__fuel_capacity__demand_available
+      rating_in: float plant_params.aries_integrated_plant__fuel_capacity__selected_rating
+      demand_in: float aries_integrated_plant__fuel__evaluate__exhaust_rate
+    outputs:
+      evaluation_defined: float aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined
+      margin: float aries_integrated_plant__fuel_capacity__evaluate__margin
+      applicable: bool aries_integrated_plant__fuel_capacity__evaluate__applicable
+      supported: bool aries_integrated_plant__fuel_capacity__evaluate__supported
+      capacity_ok: bool aries_integrated_plant__fuel_capacity__evaluate__capacity_ok
+
+  # integrated_heat_electricity.Integrated_Heat_SourceModule
+  aries_integrated_plant__deposition__evaluate:
+    module_type: integrated_heat_electricity.Integrated_Heat_SourceModule
+    inputs:
+      fusion_power_in: float aries_integrated_plant__source__evaluate__selected_power
+      literal_he_in: float plant_params.aries_integrated_plant__deposition__literal_he
+      literal_divertor_in: float plant_params.aries_integrated_plant__deposition__literal_divertor
+      literal_exchange_in: float plant_params.aries_integrated_plant__deposition__literal_exchange
+      heat_mode_in: float plant_params.aries_integrated_plant__deposition__heat_mode
+      auxiliary_heat_in: float plant_params.aries_integrated_plant__deposition__auxiliary_heat
+      divertor_recovery_in: float plant_params.aries_integrated_plant__deposition__divertor_recovery
+      pbli_pump_in: float plant_params.aries_integrated_plant__deposition__pbli_pump
+      exchange_fraction_in: float plant_params.aries_integrated_plant__deposition__exchange_fraction
+      radiation_fraction_in: float plant_params.aries_integrated_plant__deposition__radiation_fraction
+      he_recovery_in: float plant_params.aries_integrated_plant__deposition__he_recovery
+      literal_pbli_in: float plant_params.aries_integrated_plant__deposition__literal_pbli
+      he_pump_in: float plant_params.aries_integrated_plant__deposition__he_pump
+      pbli_recovery_in: float plant_params.aries_integrated_plant__deposition__pbli_recovery
+      neutron_multiplier_in: float plant_params.aries_integrated_plant__deposition__neutron_multiplier
+      helium_fraction_in: float plant_params.aries_integrated_plant__deposition__helium_fraction
+      divertor_pump_in: float plant_params.aries_integrated_plant__deposition__divertor_pump
+    outputs:
+      divertor_deposition: float aries_integrated_plant__deposition__evaluate__divertor_deposition
+      topology_zero: float aries_integrated_plant__deposition__evaluate__topology_zero
+      pump_electric: float aries_integrated_plant__deposition__evaluate__pump_electric
+      neutron_power: float aries_integrated_plant__deposition__evaluate__neutron_power
+      charged_power: float aries_integrated_plant__deposition__evaluate__charged_power
+      pbli_friction: float aries_integrated_plant__deposition__evaluate__pbli_friction
+      other_heat: float aries_integrated_plant__deposition__evaluate__other_heat
+      nuclear_gain: float aries_integrated_plant__deposition__evaluate__nuclear_gain
+      he_deposition: float aries_integrated_plant__deposition__evaluate__he_deposition
+      source_residual: float aries_integrated_plant__deposition__evaluate__source_residual
+      he_friction: float aries_integrated_plant__deposition__evaluate__he_friction
+      exchange: float aries_integrated_plant__deposition__evaluate__exchange
+      pump_recovered: float aries_integrated_plant__deposition__evaluate__pump_recovered
+      pbli_deposition: float aries_integrated_plant__deposition__evaluate__pbli_deposition
+      divertor_friction: float aries_integrated_plant__deposition__evaluate__divertor_friction
+
+  # dual_circuit_heat_accounting.Coolant_Branch_HeatModule
+  aries_integrated_plant__pbli_coolant__evaluate:
+    module_type: dual_circuit_heat_accounting.Coolant_Branch_HeatModule
+    inputs:
+      deposited_heat_in: float aries_integrated_plant__deposition__evaluate__pbli_deposition
+      recovered_friction_in: float aries_integrated_plant__deposition__evaluate__pbli_friction
+      exported_exchange_in: float aries_integrated_plant__deposition__evaluate__exchange
+      received_exchange_in: float aries_integrated_plant__deposition__evaluate__topology_zero
+    outputs:
+      root: RootModel[float] aries_integrated_plant__pbli_coolant__evaluate__delivered_heat
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_integrated_plant__pbli_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      rating_in: float plant_params.aries_integrated_plant__pbli_capacity__selected_rating
+      demand_in: float aries_integrated_plant__pbli_coolant__evaluate__delivered_heat.root
+      demand_available_in: bool plant_params.aries_integrated_plant__pbli_capacity__demand_available
+      conditions_supported_in: bool plant_params.aries_integrated_plant__pbli_capacity__assumed_supported
+      applicable_in: bool plant_params.aries_integrated_plant__pbli_capacity__scenario_applicable
+    outputs:
+      evaluation_defined: float aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined
+      margin: float aries_integrated_plant__pbli_capacity__evaluate__margin
+      applicable: bool aries_integrated_plant__pbli_capacity__evaluate__applicable
+      supported: bool aries_integrated_plant__pbli_capacity__evaluate__supported
+      capacity_ok: bool aries_integrated_plant__pbli_capacity__evaluate__capacity_ok
+
+  # dual_circuit_heat_accounting.Coolant_Branch_HeatModule
+  aries_integrated_plant__divertor_coolant__evaluate:
+    module_type: dual_circuit_heat_accounting.Coolant_Branch_HeatModule
+    inputs:
+      recovered_friction_in: float aries_integrated_plant__deposition__evaluate__divertor_friction
+      deposited_heat_in: float aries_integrated_plant__deposition__evaluate__divertor_deposition
+      exported_exchange_in: float aries_integrated_plant__deposition__evaluate__topology_zero
+      received_exchange_in: float aries_integrated_plant__deposition__evaluate__topology_zero
+    outputs:
+      root: RootModel[float] aries_integrated_plant__divertor_coolant__evaluate__delivered_heat
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_integrated_plant__divertor_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_available_in: bool plant_params.aries_integrated_plant__divertor_capacity__demand_available
+      conditions_supported_in: bool plant_params.aries_integrated_plant__divertor_capacity__assumed_supported
+      applicable_in: bool plant_params.aries_integrated_plant__divertor_capacity__scenario_applicable
+      demand_in: float aries_integrated_plant__divertor_coolant__evaluate__delivered_heat.root
+      rating_in: float plant_params.aries_integrated_plant__divertor_capacity__selected_rating
+    outputs:
+      evaluation_defined: float aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined
+      margin: float aries_integrated_plant__divertor_capacity__evaluate__margin
+      applicable: bool aries_integrated_plant__divertor_capacity__evaluate__applicable
+      supported: bool aries_integrated_plant__divertor_capacity__evaluate__supported
+      capacity_ok: bool aries_integrated_plant__divertor_capacity__evaluate__capacity_ok
+
+  # radial_density_profile.Radial_Density_ProfileModule
+  aries_cs_plasma_integration__plasma__density_sample:
+    module_type: radial_density_profile.Radial_Density_ProfileModule
+    inputs:
+      hollowness_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__hollowness
+      edge_density_in: float aries_cs_plasma_integration__plasma__edge_density__edge_density.root
+      rho_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__sample_rho
+      radial_exponent_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__density_radial_exponent
+      amplitude_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__amplitude
+      profile_exponent_in: float plasma_integration_params.aries_cs_plasma_integration__plasma__density_profile_exponent
+    outputs:
+      root: RootModel[float] aries_cs_plasma_integration__plasma__density_sample__density
+
+  # mfe_plasma_scaling.Volume_Averaged_BetaModule
+  aries_cs_plasma_integration__plasma__beta_calculation:
+    module_type: mfe_plasma_scaling.Volume_Averaged_BetaModule
+    inputs:
+      mu0: float mfe_plasma_scaling_params.aries_cs_plasma_integration__plasma__beta_calculation__mu0
+      B_in: float aries_cs_plasma_integration__plasma__integration__field_for_beta
+      p_avg_in: float aries_cs_plasma_integration__plasma__integration__thermal_pressure
+    outputs:
+      root: RootModel[float] aries_cs_plasma_integration__plasma__beta_calculation__beta
+
+  # dual_circuit_heat_accounting.Coolant_Branch_HeatModule
+  aries_integrated_plant__he_coolant__evaluate:
+    module_type: dual_circuit_heat_accounting.Coolant_Branch_HeatModule
+    inputs:
+      deposited_heat_in: float aries_integrated_plant__deposition__evaluate__he_deposition
+      exported_exchange_in: float aries_integrated_plant__deposition__evaluate__topology_zero
+      recovered_friction_in: float aries_integrated_plant__deposition__evaluate__he_friction
+      received_exchange_in: float aries_integrated_plant__deposition__evaluate__exchange
+    outputs:
+      root: RootModel[float] aries_integrated_plant__he_coolant__evaluate__delivered_heat
+
+  # integrated_heat_electricity.Heat_Driven_ClosureModule
+  aries_integrated_plant__heat_exchangers__evaluate:
+    module_type: integrated_heat_electricity.Heat_Driven_ClosureModule
+    inputs:
+      pbli_cp_in: float plant_params.aries_integrated_plant__heat_exchangers__pbli_cp
+      divertor_available_in: float aries_integrated_plant__divertor_coolant__evaluate__delivered_heat.root
+      pbli_ua_in: float plant_params.aries_integrated_plant__heat_exchangers__pbli_ua
+      cp_in: float plant_params.aries_integrated_plant__cycle__cp
+      pbli_limit_in: float plant_params.aries_integrated_plant__heat_exchangers__pbli_limit
+      divertor_flow_in: float plant_params.aries_integrated_plant__heat_exchangers__divertor_flow
+      gamma_in: float plant_params.aries_integrated_plant__cycle__gamma
+      turbine_pressure_in: float aries_integrated_plant__pressure_loss__evaluate__pressure_out.root
+      cold_temperature_in: float aries_integrated_plant__compressor_3__evaluate__temperature_out
+      divertor_cp_in: float plant_params.aries_integrated_plant__heat_exchangers__divertor_cp
+      return_pressure_in: float plant_params.aries_integrated_plant__cycle__return_pressure
+      he_limit_in: float plant_params.aries_integrated_plant__heat_exchangers__he_limit
+      pbli_flow_in: float plant_params.aries_integrated_plant__heat_exchangers__pbli_flow
+      turbine_efficiency_in: float plant_params.aries_integrated_plant__cycle__turbine_efficiency
+      pbli_available_in: float aries_integrated_plant__pbli_coolant__evaluate__delivered_heat.root
+      he_available_in: float aries_integrated_plant__he_coolant__evaluate__delivered_heat.root
+      divertor_limit_in: float plant_params.aries_integrated_plant__heat_exchangers__divertor_limit
+      recuperator_effectiveness_in: float plant_params.aries_integrated_plant__cycle__recuperator_effectiveness
+      flow_in: float plant_params.aries_integrated_plant__cycle__selected_flow
+      he_ua_in: float plant_params.aries_integrated_plant__heat_exchangers__he_ua
+      he_cp_in: float plant_params.aries_integrated_plant__heat_exchangers__he_cp
+      divertor_ua_in: float plant_params.aries_integrated_plant__heat_exchangers__divertor_ua
+      he_flow_in: float plant_params.aries_integrated_plant__heat_exchangers__he_flow
+    outputs:
+      he_return: float aries_integrated_plant__heat_exchangers__evaluate__he_return
+      he_unmet: float aries_integrated_plant__heat_exchangers__evaluate__he_unmet
+      turbine_temperature: float aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature
+      he_hot: float aries_integrated_plant__heat_exchangers__evaluate__he_hot
+      accepted_heat: float aries_integrated_plant__heat_exchangers__evaluate__accepted_heat
+      divertor_return: float aries_integrated_plant__heat_exchangers__evaluate__divertor_return
+      divertor_transferred: float aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred
+      he_secondary_in: float aries_integrated_plant__heat_exchangers__evaluate__he_secondary_in
+      divertor_unmet: float aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet
+      he_state_defined: float aries_integrated_plant__heat_exchangers__evaluate__he_state_defined
+      divertor_hot_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference
+      pbli_hot: float aries_integrated_plant__heat_exchangers__evaluate__pbli_hot
+      he_capability: float aries_integrated_plant__heat_exchangers__evaluate__he_capability
+      divertor_cold_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference
+      unmet_heat: float aries_integrated_plant__heat_exchangers__evaluate__unmet_heat
+      iterations: float aries_integrated_plant__heat_exchangers__evaluate__iterations
+      he_secondary_out: float aries_integrated_plant__heat_exchangers__evaluate__he_secondary_out
+      pbli_return: float aries_integrated_plant__heat_exchangers__evaluate__pbli_return
+      pbli_capability: float aries_integrated_plant__heat_exchangers__evaluate__pbli_capability
+      pbli_unmet: float aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet
+      divertor_secondary_in: float aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_in
+      divertor_hot_bound_margin: float aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin
+      pbli_secondary_out: float aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_out
+      divertor_state_defined: float aries_integrated_plant__heat_exchangers__evaluate__divertor_state_defined
+      pbli_transferred: float aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred
+      he_hot_bound_margin: float aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin
+      divertor_capability: float aries_integrated_plant__heat_exchangers__evaluate__divertor_capability
+      pbli_secondary_in: float aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_in
+      heater_inlet: float aries_integrated_plant__heat_exchangers__evaluate__heater_inlet
+      closure_residual: float aries_integrated_plant__heat_exchangers__evaluate__closure_residual
+      he_hot_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference
+      pbli_hot_bound_margin: float aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin
+      pbli_hot_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference
+      divertor_hot: float aries_integrated_plant__heat_exchangers__evaluate__divertor_hot
+      pbli_state_defined: float aries_integrated_plant__heat_exchangers__evaluate__pbli_state_defined
+      divertor_secondary_out: float aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_out
+      he_transferred: float aries_integrated_plant__heat_exchangers__evaluate__he_transferred
+      pbli_cold_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_terminal_difference
+      he_cold_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__he_cold_terminal_difference
+      expansion_factor: float aries_integrated_plant__heat_exchangers__evaluate__expansion_factor
+
+  # ideal_gas_brayton_components.Ideal_Gas_ExpanderModule
+  aries_integrated_plant__turbine__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_ExpanderModule
+    inputs:
+      cp_in: float plant_params.aries_integrated_plant__cycle__cp
+      temperature_in: float aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature
+      efficiency_in: float plant_params.aries_integrated_plant__cycle__turbine_efficiency
+      gamma_in: float plant_params.aries_integrated_plant__cycle__gamma
+      exit_pressure_in: float plant_params.aries_integrated_plant__cycle__return_pressure
+      flow_in: float plant_params.aries_integrated_plant__cycle__selected_flow
+      pressure_in: float aries_integrated_plant__pressure_loss__evaluate__pressure_out.root
+    outputs:
+      pressure_out: float aries_integrated_plant__turbine__evaluate__pressure_out
+      shaft_produced: float aries_integrated_plant__turbine__evaluate__shaft_produced
+      temperature_out: float aries_integrated_plant__turbine__evaluate__temperature_out
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_integrated_plant__turbine_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      conditions_supported_in: bool plant_params.aries_integrated_plant__turbine_capacity__assumed_supported
+      rating_in: float plant_params.aries_integrated_plant__turbine_capacity__selected_rating
+      demand_in: float aries_integrated_plant__turbine__evaluate__shaft_produced
+      applicable_in: bool plant_params.aries_integrated_plant__turbine_capacity__scenario_applicable
+      demand_available_in: bool plant_params.aries_integrated_plant__turbine_capacity__demand_available
+    outputs:
+      evaluation_defined: float aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined
+      margin: float aries_integrated_plant__turbine_capacity__evaluate__margin
+      applicable: bool aries_integrated_plant__turbine_capacity__evaluate__applicable
+      supported: bool aries_integrated_plant__turbine_capacity__evaluate__supported
+      capacity_ok: bool aries_integrated_plant__turbine_capacity__evaluate__capacity_ok
+
+  # integrated_heat_electricity.Plant_Electrical_BalanceModule
+  aries_integrated_plant__generator_auxiliaries__evaluate:
+    module_type: integrated_heat_electricity.Plant_Electrical_BalanceModule
+    inputs:
+      fuel_base_in: float plant_params.aries_integrated_plant__generator_auxiliaries__fuel_base
+      cryo_in: float plant_params.aries_integrated_plant__generator_auxiliaries__cryo
+      pump_recovered_in: float aries_integrated_plant__deposition__evaluate__pump_recovered
+      turbine_work_in: float aries_integrated_plant__turbine__evaluate__shaft_produced
+      compressor_1_in: float aries_integrated_plant__compressor_1__evaluate__shaft_demand
+      generator_efficiency_in: float plant_params.aries_integrated_plant__generator_auxiliaries__generator_efficiency
+      other_electric_in: float plant_params.aries_integrated_plant__generator_auxiliaries__other_electric
+      compressor_2_in: float aries_integrated_plant__compressor_2__evaluate__shaft_demand
+      auxiliary_heat_in: float plant_params.aries_integrated_plant__deposition__auxiliary_heat
+      pump_electric_in: float aries_integrated_plant__deposition__evaluate__pump_electric
+      motor_efficiency_in: float plant_params.aries_integrated_plant__generator_auxiliaries__motor_efficiency
+      fuel_exhaust_in: float aries_integrated_plant__fuel__evaluate__exhaust_rate
+      control_in: float plant_params.aries_integrated_plant__generator_auxiliaries__control
+      heating_efficiency_in: float plant_params.aries_integrated_plant__generator_auxiliaries__heating_efficiency
+      compressor_3_in: float aries_integrated_plant__compressor_3__evaluate__shaft_demand
+      fuel_coefficient_in: float plant_params.aries_integrated_plant__generator_auxiliaries__fuel_coefficient
+    outputs:
+      fuel_base_electric: float aries_integrated_plant__generator_auxiliaries__evaluate__fuel_base_electric
+      other_electric_demand: float aries_integrated_plant__generator_auxiliaries__evaluate__other_electric_demand
+      dissipated_auxiliary: float aries_integrated_plant__generator_auxiliaries__evaluate__dissipated_auxiliary
+      net_electric: float aries_integrated_plant__generator_auxiliaries__evaluate__net_electric
+      generator_loss: float aries_integrated_plant__generator_auxiliaries__evaluate__generator_loss
+      net_shaft: float aries_integrated_plant__generator_auxiliaries__evaluate__net_shaft
+      heating_electric: float aries_integrated_plant__generator_auxiliaries__evaluate__heating_electric
+      cryo_electric: float aries_integrated_plant__generator_auxiliaries__evaluate__cryo_electric
+      fuel_variable_electric: float aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric
+      compressor_demand: float aries_integrated_plant__generator_auxiliaries__evaluate__compressor_demand
+      auxiliary_electric: float aries_integrated_plant__generator_auxiliaries__evaluate__auxiliary_electric
+      gross_electric: float aries_integrated_plant__generator_auxiliaries__evaluate__gross_electric
+      fuel_electric: float aries_integrated_plant__generator_auxiliaries__evaluate__fuel_electric
+      primary_pump_electric: float aries_integrated_plant__generator_auxiliaries__evaluate__primary_pump_electric
+      motor_loss: float aries_integrated_plant__generator_auxiliaries__evaluate__motor_loss
+      shaft_import: float aries_integrated_plant__generator_auxiliaries__evaluate__shaft_import
+      heating_loss: float aries_integrated_plant__generator_auxiliaries__evaluate__heating_loss
+      pump_loss: float aries_integrated_plant__generator_auxiliaries__evaluate__pump_loss
+      control_electric: float aries_integrated_plant__generator_auxiliaries__evaluate__control_electric
+
+  # integrated_heat_electricity.Passive_RecuperatorModule
+  aries_integrated_plant__recuperator__evaluate:
+    module_type: integrated_heat_electricity.Passive_RecuperatorModule
+    inputs:
+      effectiveness_in: float plant_params.aries_integrated_plant__cycle__recuperator_effectiveness
+      hot_temperature_in: float aries_integrated_plant__turbine__evaluate__temperature_out
+      flow_in: float plant_params.aries_integrated_plant__cycle__selected_flow
+      cold_temperature_in: float aries_integrated_plant__compressor_3__evaluate__temperature_out
+      cp_in: float plant_params.aries_integrated_plant__cycle__cp
+    outputs:
+      bypass_active: float aries_integrated_plant__recuperator__evaluate__bypass_active
+      cold_out: float aries_integrated_plant__recuperator__evaluate__cold_out
+      hot_out: float aries_integrated_plant__recuperator__evaluate__hot_out
+      recovered_heat: float aries_integrated_plant__recuperator__evaluate__recovered_heat
+
+  # ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+  aries_integrated_plant__precooler__evaluate:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      heating_role_in: float plant_params.aries_integrated_plant__precooler__heating_role
+      flow_in: float plant_params.aries_integrated_plant__cycle__selected_flow
+      target_temperature_in: float plant_params.aries_integrated_plant__cycle__low_temperature
+      temperature_in: float aries_integrated_plant__recuperator__evaluate__hot_out
+      cp_in: float plant_params.aries_integrated_plant__cycle__cp
+      pressure_in: float aries_integrated_plant__turbine__evaluate__pressure_out
+    outputs:
+      heat_into_fluid: float aries_integrated_plant__precooler__evaluate__heat_into_fluid
+      temperature_out: float aries_integrated_plant__precooler__evaluate__temperature_out
+      pressure_out: float aries_integrated_plant__precooler__evaluate__pressure_out
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_integrated_plant__he_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      rating_in: float plant_params.aries_integrated_plant__he_capacity__selected_rating
+      conditions_supported_in: bool plant_params.aries_integrated_plant__he_capacity__assumed_supported
+      demand_in: float aries_integrated_plant__he_coolant__evaluate__delivered_heat.root
+      demand_available_in: bool plant_params.aries_integrated_plant__he_capacity__demand_available
+      applicable_in: bool plant_params.aries_integrated_plant__he_capacity__scenario_applicable
+    outputs:
+      evaluation_defined: float aries_integrated_plant__he_capacity__evaluate__evaluation_defined
+      margin: float aries_integrated_plant__he_capacity__evaluate__margin
+      applicable: bool aries_integrated_plant__he_capacity__evaluate__applicable
+      supported: bool aries_integrated_plant__he_capacity__evaluate__supported
+      capacity_ok: bool aries_integrated_plant__he_capacity__evaluate__capacity_ok
+
+  # integrated_heat_electricity.Integrated_Plant_LedgerModule
+  aries_integrated_plant__plant_ledger__evaluate:
+    module_type: integrated_heat_electricity.Integrated_Plant_LedgerModule
+    inputs:
+      divertor_friction_in: float aries_integrated_plant__deposition__evaluate__divertor_friction
+      electric_motor_loss_in: float aries_integrated_plant__generator_auxiliaries__evaluate__motor_loss
+      producer_mode_in: float aries_integrated_plant__source__evaluate__selected_mode
+      reference_heater_temperature_in: float plant_params.aries_integrated_plant__plant_ledger__reference_heater_temperature
+      compressor_1_in: float aries_integrated_plant__compressor_1__evaluate__shaft_demand
+      auxiliary_heat_in: float plant_params.aries_integrated_plant__deposition__auxiliary_heat
+      turbine_exhaust_in: float aries_integrated_plant__turbine__evaluate__temperature_out
+      pump_electric_in: float aries_integrated_plant__deposition__evaluate__pump_electric
+      electric_cryo_electric_in: float aries_integrated_plant__generator_auxiliaries__evaluate__cryo_electric
+      electric_shaft_import_in: float aries_integrated_plant__generator_auxiliaries__evaluate__shaft_import
+      electric_auxiliary_electric_in: float aries_integrated_plant__generator_auxiliaries__evaluate__auxiliary_electric
+      pump_recovered_in: float aries_integrated_plant__deposition__evaluate__pump_recovered
+      unmet_heat_in: float aries_integrated_plant__heat_exchangers__evaluate__unmet_heat
+      intercooler_1_in: float aries_integrated_plant__intercooler_1__evaluate__heat_into_fluid
+      electric_control_electric_in: float aries_integrated_plant__generator_auxiliaries__evaluate__control_electric
+      divertor_available_in: float aries_integrated_plant__divertor_coolant__evaluate__delivered_heat.root
+      electric_fuel_electric_in: float aries_integrated_plant__generator_auxiliaries__evaluate__fuel_electric
+      electric_fuel_base_electric_in: float aries_integrated_plant__generator_auxiliaries__evaluate__fuel_base_electric
+      electric_primary_pump_electric_in: float aries_integrated_plant__generator_auxiliaries__evaluate__primary_pump_electric
+      reference_turbine_temperature_in: float plant_params.aries_integrated_plant__plant_ledger__reference_turbine_temperature
+      he_available_in: float aries_integrated_plant__he_coolant__evaluate__delivered_heat.root
+      electric_other_electric_demand_in: float aries_integrated_plant__generator_auxiliaries__evaluate__other_electric_demand
+      compressor_2_in: float aries_integrated_plant__compressor_2__evaluate__shaft_demand
+      expansion_factor_in: float aries_integrated_plant__heat_exchangers__evaluate__expansion_factor
+      reference_fusion_in: float plant_params.aries_integrated_plant__plant_ledger__reference_fusion
+      electric_fuel_variable_electric_in: float aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric
+      electric_heating_electric_in: float aries_integrated_plant__generator_auxiliaries__evaluate__heating_electric
+      reference_gross_in: float plant_params.aries_integrated_plant__plant_ledger__reference_gross
+      divertor_deposition_in: float aries_integrated_plant__deposition__evaluate__divertor_deposition
+      turbine_work_in: float aries_integrated_plant__turbine__evaluate__shaft_produced
+      electric_generator_loss_in: float aries_integrated_plant__generator_auxiliaries__evaluate__generator_loss
+      pbli_available_in: float aries_integrated_plant__pbli_coolant__evaluate__delivered_heat.root
+      reference_net_in: float plant_params.aries_integrated_plant__plant_ledger__reference_net
+      accepted_heat_in: float aries_integrated_plant__heat_exchangers__evaluate__accepted_heat
+      electric_compressor_demand_in: float aries_integrated_plant__generator_auxiliaries__evaluate__compressor_demand
+      electric_net_shaft_in: float aries_integrated_plant__generator_auxiliaries__evaluate__net_shaft
+      reference_blanket_deposition_in: float plant_params.aries_integrated_plant__plant_ledger__reference_blanket_deposition
+      closure_residual_in: float aries_integrated_plant__heat_exchangers__evaluate__closure_residual
+      he_friction_in: float aries_integrated_plant__deposition__evaluate__he_friction
+      recuperator_cold_out_in: float aries_integrated_plant__recuperator__evaluate__cold_out
+      pbli_deposition_in: float aries_integrated_plant__deposition__evaluate__pbli_deposition
+      heater_inlet_in: float aries_integrated_plant__heat_exchangers__evaluate__heater_inlet
+      electric_heating_loss_in: float aries_integrated_plant__generator_auxiliaries__evaluate__heating_loss
+      electric_dissipated_auxiliary_in: float aries_integrated_plant__generator_auxiliaries__evaluate__dissipated_auxiliary
+      other_heat_in: float aries_integrated_plant__deposition__evaluate__other_heat
+      he_deposition_in: float aries_integrated_plant__deposition__evaluate__he_deposition
+      source_residual_in: float aries_integrated_plant__deposition__evaluate__source_residual
+      compressor_3_in: float aries_integrated_plant__compressor_3__evaluate__shaft_demand
+      electric_pump_loss_in: float aries_integrated_plant__generator_auxiliaries__evaluate__pump_loss
+      nuclear_gain_in: float aries_integrated_plant__deposition__evaluate__nuclear_gain
+      intercooler_2_in: float aries_integrated_plant__intercooler_2__evaluate__heat_into_fluid
+      fusion_power_in: float aries_integrated_plant__source__evaluate__selected_power
+      pbli_friction_in: float aries_integrated_plant__deposition__evaluate__pbli_friction
+      electric_gross_electric_in: float aries_integrated_plant__generator_auxiliaries__evaluate__gross_electric
+      precooler_in: float aries_integrated_plant__precooler__evaluate__heat_into_fluid
+      electric_net_electric_in: float aries_integrated_plant__generator_auxiliaries__evaluate__net_electric
+      turbine_temperature_in: float aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature
+    outputs:
+      supported_hydraulics: float aries_integrated_plant__plant_ledger__evaluate__supported_hydraulics
+      fuel_base_electric: float aries_integrated_plant__plant_ledger__evaluate__fuel_base_electric
+      comparison_fusion_difference: float aries_integrated_plant__plant_ledger__evaluate__comparison_fusion_difference
+      heating_loss: float aries_integrated_plant__plant_ledger__evaluate__heating_loss
+      assumed_auxiliary_demands: float aries_integrated_plant__plant_ledger__evaluate__assumed_auxiliary_demands
+      control_electric: float aries_integrated_plant__plant_ledger__evaluate__control_electric
+      net_shaft: float aries_integrated_plant__plant_ledger__evaluate__net_shaft
+      fuel_variable_electric: float aries_integrated_plant__plant_ledger__evaluate__fuel_variable_electric
+      plant_residual: float aries_integrated_plant__plant_ledger__evaluate__plant_residual
+      fuel_electric: float aries_integrated_plant__plant_ledger__evaluate__fuel_electric
+      recuperator_state_residual: float aries_integrated_plant__plant_ledger__evaluate__recuperator_state_residual
+      auxiliary_electric: float aries_integrated_plant__plant_ledger__evaluate__auxiliary_electric
+      comparison_blanket_deposition_difference: float aries_integrated_plant__plant_ledger__evaluate__comparison_blanket_deposition_difference
+      net_electric: float aries_integrated_plant__plant_ledger__evaluate__net_electric
+      efficiency_defined: float aries_integrated_plant__plant_ledger__evaluate__efficiency_defined
+      conditional_net_result: float aries_integrated_plant__plant_ledger__evaluate__conditional_net_result
+      energy_tolerance: float aries_integrated_plant__plant_ledger__evaluate__energy_tolerance
+      heating_electric: float aries_integrated_plant__plant_ledger__evaluate__heating_electric
+      primary_pump_electric: float aries_integrated_plant__plant_ledger__evaluate__primary_pump_electric
+      comparison_turbine_temperature_difference: float aries_integrated_plant__plant_ledger__evaluate__comparison_turbine_temperature_difference
+      thermal_efficiency: float aries_integrated_plant__plant_ledger__evaluate__thermal_efficiency
+      cycle_residual: float aries_integrated_plant__plant_ledger__evaluate__cycle_residual
+      cryo_electric: float aries_integrated_plant__plant_ledger__evaluate__cryo_electric
+      unmatched_source_heat: float aries_integrated_plant__plant_ledger__evaluate__unmatched_source_heat
+      generator_loss: float aries_integrated_plant__plant_ledger__evaluate__generator_loss
+      residual_magnitude: float aries_integrated_plant__plant_ledger__evaluate__residual_magnitude
+      comparison_gross_difference: float aries_integrated_plant__plant_ledger__evaluate__comparison_gross_difference
+      supported_deposition: float aries_integrated_plant__plant_ledger__evaluate__supported_deposition
+      source_energy_residual: float aries_integrated_plant__plant_ledger__evaluate__source_energy_residual
+      motor_loss: float aries_integrated_plant__plant_ledger__evaluate__motor_loss
+      other_electric_demand: float aries_integrated_plant__plant_ledger__evaluate__other_electric_demand
+      supported_materials: float aries_integrated_plant__plant_ledger__evaluate__supported_materials
+      dissipated_auxiliary: float aries_integrated_plant__plant_ledger__evaluate__dissipated_auxiliary
+      gross_electric: float aries_integrated_plant__plant_ledger__evaluate__gross_electric
+      branch_residual: float aries_integrated_plant__plant_ledger__evaluate__branch_residual
+      supported_magnet: float aries_integrated_plant__plant_ledger__evaluate__supported_magnet
+      supported_machine_map: float aries_integrated_plant__plant_ledger__evaluate__supported_machine_map
+      pump_loss: float aries_integrated_plant__plant_ledger__evaluate__pump_loss
+      electrical_residual: float aries_integrated_plant__plant_ledger__evaluate__electrical_residual
+      cycle_rejection: float aries_integrated_plant__plant_ledger__evaluate__cycle_rejection
+      shaft_import: float aries_integrated_plant__plant_ledger__evaluate__shaft_import
+      comparison_heater_temperature_difference: float aries_integrated_plant__plant_ledger__evaluate__comparison_heater_temperature_difference
+      supported_breeding: float aries_integrated_plant__plant_ledger__evaluate__supported_breeding
+      turbine_state_residual: float aries_integrated_plant__plant_ledger__evaluate__turbine_state_residual
+      compressor_demand: float aries_integrated_plant__plant_ledger__evaluate__compressor_demand
+      total_available_heat: float aries_integrated_plant__plant_ledger__evaluate__total_available_heat
+      comparison_net_difference: float aries_integrated_plant__plant_ledger__evaluate__comparison_net_difference
+      net_result_producer_mode: float aries_integrated_plant__plant_ledger__evaluate__net_result_producer_mode
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_integrated_plant__rejection_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_available_in: bool plant_params.aries_integrated_plant__rejection_capacity__demand_available
+      rating_in: float plant_params.aries_integrated_plant__rejection_capacity__selected_rating
+      conditions_supported_in: bool plant_params.aries_integrated_plant__rejection_capacity__assumed_supported
+      demand_in: float aries_integrated_plant__plant_ledger__evaluate__cycle_rejection
+      applicable_in: bool plant_params.aries_integrated_plant__rejection_capacity__scenario_applicable
+    outputs:
+      evaluation_defined: float aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined
+      margin: float aries_integrated_plant__rejection_capacity__evaluate__margin
+      applicable: bool aries_integrated_plant__rejection_capacity__evaluate__applicable
+      supported: bool aries_integrated_plant__rejection_capacity__evaluate__supported
+      capacity_ok: bool aries_integrated_plant__rejection_capacity__evaluate__capacity_ok
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_integrated_plant__compressor_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_in: float aries_integrated_plant__plant_ledger__evaluate__compressor_demand
+      applicable_in: bool plant_params.aries_integrated_plant__compressor_capacity__scenario_applicable
+      rating_in: float plant_params.aries_integrated_plant__compressor_capacity__selected_rating
+      conditions_supported_in: bool plant_params.aries_integrated_plant__compressor_capacity__assumed_supported
+      demand_available_in: bool plant_params.aries_integrated_plant__compressor_capacity__demand_available
+    outputs:
+      evaluation_defined: float aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined
+      margin: float aries_integrated_plant__compressor_capacity__evaluate__margin
+      applicable: bool aries_integrated_plant__compressor_capacity__evaluate__applicable
+      supported: bool aries_integrated_plant__compressor_capacity__evaluate__supported
+      capacity_ok: bool aries_integrated_plant__compressor_capacity__evaluate__capacity_ok
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_integrated_plant__generator_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      applicable_in: bool plant_params.aries_integrated_plant__generator_capacity__scenario_applicable
+      demand_in: float aries_integrated_plant__plant_ledger__evaluate__gross_electric
+      conditions_supported_in: bool plant_params.aries_integrated_plant__generator_capacity__assumed_supported
+      rating_in: float plant_params.aries_integrated_plant__generator_capacity__selected_rating
+      demand_available_in: bool plant_params.aries_integrated_plant__generator_capacity__demand_available
+    outputs:
+      evaluation_defined: float aries_integrated_plant__generator_capacity__evaluate__evaluation_defined
+      margin: float aries_integrated_plant__generator_capacity__evaluate__margin
+      applicable: bool aries_integrated_plant__generator_capacity__evaluate__applicable
+      supported: bool aries_integrated_plant__generator_capacity__evaluate__supported
+      capacity_ok: bool aries_integrated_plant__generator_capacity__evaluate__capacity_ok
+
+  # aries_integrated_plant.RejectionCapacityCapacityOkConstraintModule
+  aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608:
+    module_type: aries_integrated_plant.RejectionCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_integrated_plant__rejection_capacity__evaluate__margin
+      defined_in: float aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation
+
+  # aries_integrated_plant.TurbineCapacityCapacityOkConstraintModule
+  aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1:
+    module_type: aries_integrated_plant.TurbineCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_integrated_plant__turbine_capacity__evaluate__margin
+      defined_in: float aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation
+
+  # aries_integrated_plant.CompressorCapacityCapacityOkConstraintModule
+  aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab:
+    module_type: aries_integrated_plant.CompressorCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_integrated_plant__compressor_capacity__evaluate__margin
+      defined_in: float aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation
+
+  # aries_integrated_plant.PbliCapacityCapacityOkConstraintModule
+  aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395:
+    module_type: aries_integrated_plant.PbliCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_integrated_plant__pbli_capacity__evaluate__margin
+      defined_in: float aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation
+
+  # aries_integrated_plant.DivertorCapacityCapacityOkConstraintModule
+  aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed:
+    module_type: aries_integrated_plant.DivertorCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_integrated_plant__divertor_capacity__evaluate__margin
+      defined_in: float aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation
+
+  # aries_integrated_plant.FuelCapacityCapacityOkConstraintModule
+  aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64:
+    module_type: aries_integrated_plant.FuelCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_integrated_plant__fuel_capacity__evaluate__margin
+      defined_in: float aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation
+
+  # aries_integrated_plant.HeCapacityCapacityOkConstraintModule
+  aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf:
+    module_type: aries_integrated_plant.HeCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_integrated_plant__he_capacity__evaluate__margin
+      defined_in: float aries_integrated_plant__he_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation
+
+  # aries_integrated_plant.GeneratorCapacityCapacityOkConstraintModule
+  aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161:
+    module_type: aries_integrated_plant.GeneratorCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_integrated_plant__generator_capacity__evaluate__margin
+      defined_in: float aries_integrated_plant__generator_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation
+
+  # aries_integrated_plant.PlantLedgerHeatRemovalOkConstraintModule
+  aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07:
+    module_type: aries_integrated_plant.PlantLedgerHeatRemovalOkConstraintModule
+    inputs:
+      tolerance_in: float aries_integrated_plant__plant_ledger__evaluate__energy_tolerance
+      unmet_in: float aries_integrated_plant__heat_exchangers__evaluate__unmet_heat
+    outputs:
+      evaluation: ConstraintEvaluation aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation
+
+  # aries_integrated_plant.PlantLedgerBalancesOkConstraintModule
+  aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535:
+    module_type: aries_integrated_plant.PlantLedgerBalancesOkConstraintModule
+    inputs:
+      magnitude_in: float aries_integrated_plant__plant_ledger__evaluate__residual_magnitude
+      tolerance_in: float aries_integrated_plant__plant_ledger__evaluate__energy_tolerance
+    outputs:
+      evaluation: ConstraintEvaluation aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation
+
+  # constraints.ConstraintReportAggregatorModule
+  constraint_report_aggregator:
+    module_type: constraints.ConstraintReportAggregatorModule
+    inputs:
+      aries_integrated_plant_rejection_capacity_capacity_ok_295420bc9fb25608: ConstraintEvaluation aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation
+      aries_integrated_plant_turbine_capacity_capacity_ok_089f9e8e61919ec1: ConstraintEvaluation aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation
+      aries_integrated_plant_compressor_capacity_capacity_ok_a45f9cf05e8aa7ab: ConstraintEvaluation aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation
+      aries_integrated_plant_pbli_capacity_capacity_ok_55a012a287da9395: ConstraintEvaluation aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation
+      aries_integrated_plant_divertor_capacity_capacity_ok_be7081920ad8e8ed: ConstraintEvaluation aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation
+      aries_integrated_plant_fuel_capacity_capacity_ok_8eb5888bfe62cd64: ConstraintEvaluation aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation
+      aries_integrated_plant_he_capacity_capacity_ok_db2733d1d5baf3cf: ConstraintEvaluation aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation
+      aries_integrated_plant_generator_capacity_capacity_ok_60b43f15d48ff161: ConstraintEvaluation aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation
+      aries_integrated_plant_plant_ledger_heat_removal_ok_695378663bcd8d07: ConstraintEvaluation aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation
+      aries_integrated_plant_plant_ledger_balances_ok_9af2e85b5e4e5535: ConstraintEvaluation aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation
+    outputs:
+      constraint_report: ConstraintReport constraint_report
+
+
+  # Exit point - capture all results
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      aries_integrated_plant__compressor_1__evaluate__pressure_out: float compressor_1__pressure_out.json
+      aries_integrated_plant__compressor_1__evaluate__shaft_demand: float compressor_1__shaft_demand.json
+      aries_integrated_plant__compressor_1__evaluate__temperature_out: float compressor_1__temperature_out.json
+      aries_integrated_plant__intercooler_1__evaluate__heat_into_fluid: float intercooler_1__heat_into_fluid.json
+      aries_integrated_plant__intercooler_1__evaluate__temperature_out: float intercooler_1__temperature_out.json
+      aries_integrated_plant__intercooler_1__evaluate__pressure_out: float intercooler_1__pressure_out.json
+      aries_integrated_plant__compressor_2__evaluate__pressure_out: float compressor_2__pressure_out.json
+      aries_integrated_plant__compressor_2__evaluate__shaft_demand: float compressor_2__shaft_demand.json
+      aries_integrated_plant__compressor_2__evaluate__temperature_out: float compressor_2__temperature_out.json
+      aries_integrated_plant__intercooler_2__evaluate__heat_into_fluid: float intercooler_2__heat_into_fluid.json
+      aries_integrated_plant__intercooler_2__evaluate__temperature_out: float intercooler_2__temperature_out.json
+      aries_integrated_plant__intercooler_2__evaluate__pressure_out: float intercooler_2__pressure_out.json
+      aries_integrated_plant__compressor_3__evaluate__pressure_out: float compressor_3__pressure_out.json
+      aries_integrated_plant__compressor_3__evaluate__shaft_demand: float compressor_3__shaft_demand.json
+      aries_integrated_plant__compressor_3__evaluate__temperature_out: float compressor_3__temperature_out.json
+      aries_integrated_plant__pressure_loss__evaluate__pressure_out: RootModel[float] pressure_loss__pressure_out.json
+      aries_cs_plasma_integration__plasma__edge_density__edge_density: RootModel[float] aries_cs_plasma_integration__plasma__edge_density__edge_density.json
+      aries_cs_plasma_integration__plasma__integration__thermal_pressure: float plasma__thermal_pressure.json
+      aries_cs_plasma_integration__plasma__integration__field_for_beta: float plasma__field_for_beta.json
+      aries_cs_plasma_integration__plasma__integration__density_weighted_temperature: float plasma__density_weighted_temperature.json
+      aries_cs_plasma_integration__plasma__integration__quadrature_relative_change: float plasma__quadrature_relative_change.json
+      aries_cs_plasma_integration__plasma__integration__fusion_power_MW: float plasma__fusion_power_MW.json
+      aries_cs_plasma_integration__plasma__integration__density_mean: float plasma__density_mean.json
+      aries_cs_plasma_integration__plasma__integration__quadrature_intervals: float plasma__quadrature_intervals.json
+      aries_cs_plasma_integration__plasma__integration__stored_thermal_MJ: float plasma__stored_thermal_MJ.json
+      aries_integrated_plant__source__evaluate__selected_power: float source__selected_power.json
+      aries_integrated_plant__source__evaluate__selected_mode: float source__selected_mode.json
+      aries_integrated_plant__fuel__evaluate__burn_kg_per_fpy: float aries_integrated_plant__fuel__evaluate__burn_kg_per_fpy.json
+      aries_integrated_plant__fuel__evaluate__inject_rate: float fuel__inject_rate.json
+      aries_integrated_plant__fuel__evaluate__burn_rate: float fuel__burn_rate.json
+      aries_integrated_plant__fuel__evaluate__tbr_margin: float aries_integrated_plant__fuel__evaluate__tbr_margin.json
+      aries_integrated_plant__fuel__evaluate__tbr_required: float aries_integrated_plant__fuel__evaluate__tbr_required.json
+      aries_integrated_plant__fuel__evaluate__loss_rate: float fuel__loss_rate.json
+      aries_integrated_plant__fuel__evaluate__exhaust_rate: float fuel__exhaust_rate.json
+      aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined: float fuel_capacity__evaluation_defined.json
+      aries_integrated_plant__fuel_capacity__evaluate__margin: float fuel_capacity__margin.json
+      aries_integrated_plant__fuel_capacity__evaluate__applicable: bool aries_integrated_plant__fuel_capacity__evaluate__applicable.json
+      aries_integrated_plant__fuel_capacity__evaluate__supported: bool aries_integrated_plant__fuel_capacity__evaluate__supported.json
+      aries_integrated_plant__fuel_capacity__evaluate__capacity_ok: bool aries_integrated_plant__fuel_capacity__evaluate__capacity_ok.json
+      aries_integrated_plant__deposition__evaluate__divertor_deposition: float deposition__divertor_deposition.json
+      aries_integrated_plant__deposition__evaluate__topology_zero: float deposition__topology_zero.json
+      aries_integrated_plant__deposition__evaluate__pump_electric: float deposition__pump_electric.json
+      aries_integrated_plant__deposition__evaluate__neutron_power: float deposition__neutron_power.json
+      aries_integrated_plant__deposition__evaluate__charged_power: float deposition__charged_power.json
+      aries_integrated_plant__deposition__evaluate__pbli_friction: float deposition__pbli_friction.json
+      aries_integrated_plant__deposition__evaluate__other_heat: float deposition__other_heat.json
+      aries_integrated_plant__deposition__evaluate__nuclear_gain: float deposition__nuclear_gain.json
+      aries_integrated_plant__deposition__evaluate__he_deposition: float deposition__he_deposition.json
+      aries_integrated_plant__deposition__evaluate__source_residual: float deposition__source_residual.json
+      aries_integrated_plant__deposition__evaluate__he_friction: float deposition__he_friction.json
+      aries_integrated_plant__deposition__evaluate__exchange: float deposition__exchange.json
+      aries_integrated_plant__deposition__evaluate__pump_recovered: float deposition__pump_recovered.json
+      aries_integrated_plant__deposition__evaluate__pbli_deposition: float deposition__pbli_deposition.json
+      aries_integrated_plant__deposition__evaluate__divertor_friction: float deposition__divertor_friction.json
+      aries_integrated_plant__pbli_coolant__evaluate__delivered_heat: RootModel[float] pbli_coolant__delivered_heat.json
+      aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined: float pbli_capacity__evaluation_defined.json
+      aries_integrated_plant__pbli_capacity__evaluate__margin: float pbli_capacity__margin.json
+      aries_integrated_plant__pbli_capacity__evaluate__applicable: bool aries_integrated_plant__pbli_capacity__evaluate__applicable.json
+      aries_integrated_plant__pbli_capacity__evaluate__supported: bool aries_integrated_plant__pbli_capacity__evaluate__supported.json
+      aries_integrated_plant__pbli_capacity__evaluate__capacity_ok: bool aries_integrated_plant__pbli_capacity__evaluate__capacity_ok.json
+      aries_integrated_plant__divertor_coolant__evaluate__delivered_heat: RootModel[float] divertor_coolant__delivered_heat.json
+      aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined: float divertor_capacity__evaluation_defined.json
+      aries_integrated_plant__divertor_capacity__evaluate__margin: float divertor_capacity__margin.json
+      aries_integrated_plant__divertor_capacity__evaluate__applicable: bool aries_integrated_plant__divertor_capacity__evaluate__applicable.json
+      aries_integrated_plant__divertor_capacity__evaluate__supported: bool aries_integrated_plant__divertor_capacity__evaluate__supported.json
+      aries_integrated_plant__divertor_capacity__evaluate__capacity_ok: bool aries_integrated_plant__divertor_capacity__evaluate__capacity_ok.json
+      aries_cs_plasma_integration__plasma__density_sample__density: RootModel[float] aries_cs_plasma_integration__plasma__density_sample__density.json
+      aries_cs_plasma_integration__plasma__beta_calculation__beta: RootModel[float] plasma__beta.json
+      aries_integrated_plant__he_coolant__evaluate__delivered_heat: RootModel[float] he_coolant__delivered_heat.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_return: float heat_exchangers__he_return.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_unmet: float heat_exchangers__he_unmet.json
+      aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature: float heat_exchangers__turbine_temperature.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_hot: float heat_exchangers__he_hot.json
+      aries_integrated_plant__heat_exchangers__evaluate__accepted_heat: float heat_exchangers__accepted_heat.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_return: float heat_exchangers__divertor_return.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred: float heat_exchangers__divertor_transferred.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_secondary_in: float heat_exchangers__he_secondary_in.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet: float heat_exchangers__divertor_unmet.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_state_defined: float heat_exchangers__he_state_defined.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference: float heat_exchangers__divertor_hot_terminal_difference.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_hot: float heat_exchangers__pbli_hot.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_capability: float heat_exchangers__he_capability.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference: float heat_exchangers__divertor_cold_terminal_difference.json
+      aries_integrated_plant__heat_exchangers__evaluate__unmet_heat: float heat_exchangers__unmet_heat.json
+      aries_integrated_plant__heat_exchangers__evaluate__iterations: float heat_exchangers__iterations.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_secondary_out: float heat_exchangers__he_secondary_out.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_return: float heat_exchangers__pbli_return.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_capability: float heat_exchangers__pbli_capability.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet: float heat_exchangers__pbli_unmet.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_in: float heat_exchangers__divertor_secondary_in.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin: float heat_exchangers__divertor_hot_bound_margin.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_out: float heat_exchangers__pbli_secondary_out.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_state_defined: float heat_exchangers__divertor_state_defined.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred: float heat_exchangers__pbli_transferred.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin: float heat_exchangers__he_hot_bound_margin.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_capability: float heat_exchangers__divertor_capability.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_in: float heat_exchangers__pbli_secondary_in.json
+      aries_integrated_plant__heat_exchangers__evaluate__heater_inlet: float heat_exchangers__heater_inlet.json
+      aries_integrated_plant__heat_exchangers__evaluate__closure_residual: float heat_exchangers__closure_residual.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference: float heat_exchangers__he_hot_terminal_difference.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin: float heat_exchangers__pbli_hot_bound_margin.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference: float heat_exchangers__pbli_hot_terminal_difference.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_hot: float heat_exchangers__divertor_hot.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_state_defined: float heat_exchangers__pbli_state_defined.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_out: float heat_exchangers__divertor_secondary_out.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_transferred: float heat_exchangers__he_transferred.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_terminal_difference: float heat_exchangers__pbli_cold_terminal_difference.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_cold_terminal_difference: float heat_exchangers__he_cold_terminal_difference.json
+      aries_integrated_plant__heat_exchangers__evaluate__expansion_factor: float heat_exchangers__expansion_factor.json
+      aries_integrated_plant__turbine__evaluate__pressure_out: float turbine__pressure_out.json
+      aries_integrated_plant__turbine__evaluate__shaft_produced: float turbine__shaft_produced.json
+      aries_integrated_plant__turbine__evaluate__temperature_out: float turbine__temperature_out.json
+      aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined: float turbine_capacity__evaluation_defined.json
+      aries_integrated_plant__turbine_capacity__evaluate__margin: float turbine_capacity__margin.json
+      aries_integrated_plant__turbine_capacity__evaluate__applicable: bool aries_integrated_plant__turbine_capacity__evaluate__applicable.json
+      aries_integrated_plant__turbine_capacity__evaluate__supported: bool aries_integrated_plant__turbine_capacity__evaluate__supported.json
+      aries_integrated_plant__turbine_capacity__evaluate__capacity_ok: bool aries_integrated_plant__turbine_capacity__evaluate__capacity_ok.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__fuel_base_electric: float generator_auxiliaries__fuel_base_electric.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__other_electric_demand: float generator_auxiliaries__other_electric_demand.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__dissipated_auxiliary: float generator_auxiliaries__dissipated_auxiliary.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__net_electric: float generator_auxiliaries__net_electric.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__generator_loss: float generator_auxiliaries__generator_loss.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__net_shaft: float generator_auxiliaries__net_shaft.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__heating_electric: float generator_auxiliaries__heating_electric.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__cryo_electric: float generator_auxiliaries__cryo_electric.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric: float generator_auxiliaries__fuel_variable_electric.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__compressor_demand: float generator_auxiliaries__compressor_demand.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__auxiliary_electric: float generator_auxiliaries__auxiliary_electric.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__gross_electric: float generator_auxiliaries__gross_electric.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__fuel_electric: float generator_auxiliaries__fuel_electric.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__primary_pump_electric: float generator_auxiliaries__primary_pump_electric.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__motor_loss: float generator_auxiliaries__motor_loss.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__shaft_import: float generator_auxiliaries__shaft_import.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__heating_loss: float generator_auxiliaries__heating_loss.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__pump_loss: float generator_auxiliaries__pump_loss.json
+      aries_integrated_plant__generator_auxiliaries__evaluate__control_electric: float generator_auxiliaries__control_electric.json
+      aries_integrated_plant__recuperator__evaluate__bypass_active: float recuperator__bypass_active.json
+      aries_integrated_plant__recuperator__evaluate__cold_out: float recuperator__cold_out.json
+      aries_integrated_plant__recuperator__evaluate__hot_out: float recuperator__hot_out.json
+      aries_integrated_plant__recuperator__evaluate__recovered_heat: float recuperator__recovered_heat.json
+      aries_integrated_plant__precooler__evaluate__heat_into_fluid: float precooler__heat_into_fluid.json
+      aries_integrated_plant__precooler__evaluate__temperature_out: float precooler__temperature_out.json
+      aries_integrated_plant__precooler__evaluate__pressure_out: float precooler__pressure_out.json
+      aries_integrated_plant__he_capacity__evaluate__evaluation_defined: float he_capacity__evaluation_defined.json
+      aries_integrated_plant__he_capacity__evaluate__margin: float he_capacity__margin.json
+      aries_integrated_plant__he_capacity__evaluate__applicable: bool aries_integrated_plant__he_capacity__evaluate__applicable.json
+      aries_integrated_plant__he_capacity__evaluate__supported: bool aries_integrated_plant__he_capacity__evaluate__supported.json
+      aries_integrated_plant__he_capacity__evaluate__capacity_ok: bool aries_integrated_plant__he_capacity__evaluate__capacity_ok.json
+      aries_integrated_plant__plant_ledger__evaluate__supported_hydraulics: float plant_ledger__supported_hydraulics.json
+      aries_integrated_plant__plant_ledger__evaluate__fuel_base_electric: float plant_ledger__fuel_base_electric.json
+      aries_integrated_plant__plant_ledger__evaluate__comparison_fusion_difference: float plant_ledger__comparison_fusion_difference.json
+      aries_integrated_plant__plant_ledger__evaluate__heating_loss: float plant_ledger__heating_loss.json
+      aries_integrated_plant__plant_ledger__evaluate__assumed_auxiliary_demands: float plant_ledger__assumed_auxiliary_demands.json
+      aries_integrated_plant__plant_ledger__evaluate__control_electric: float plant_ledger__control_electric.json
+      aries_integrated_plant__plant_ledger__evaluate__net_shaft: float plant_ledger__net_shaft.json
+      aries_integrated_plant__plant_ledger__evaluate__fuel_variable_electric: float plant_ledger__fuel_variable_electric.json
+      aries_integrated_plant__plant_ledger__evaluate__plant_residual: float plant_ledger__plant_residual.json
+      aries_integrated_plant__plant_ledger__evaluate__fuel_electric: float plant_ledger__fuel_electric.json
+      aries_integrated_plant__plant_ledger__evaluate__recuperator_state_residual: float plant_ledger__recuperator_state_residual.json
+      aries_integrated_plant__plant_ledger__evaluate__auxiliary_electric: float plant_ledger__auxiliary_electric.json
+      aries_integrated_plant__plant_ledger__evaluate__comparison_blanket_deposition_difference: float plant_ledger__comparison_blanket_deposition_difference.json
+      aries_integrated_plant__plant_ledger__evaluate__net_electric: float plant_ledger__net_electric.json
+      aries_integrated_plant__plant_ledger__evaluate__efficiency_defined: float plant_ledger__efficiency_defined.json
+      aries_integrated_plant__plant_ledger__evaluate__conditional_net_result: float plant_ledger__conditional_net_result.json
+      aries_integrated_plant__plant_ledger__evaluate__energy_tolerance: float plant_ledger__energy_tolerance.json
+      aries_integrated_plant__plant_ledger__evaluate__heating_electric: float plant_ledger__heating_electric.json
+      aries_integrated_plant__plant_ledger__evaluate__primary_pump_electric: float plant_ledger__primary_pump_electric.json
+      aries_integrated_plant__plant_ledger__evaluate__comparison_turbine_temperature_difference: float plant_ledger__comparison_turbine_temperature_difference.json
+      aries_integrated_plant__plant_ledger__evaluate__thermal_efficiency: float plant_ledger__thermal_efficiency.json
+      aries_integrated_plant__plant_ledger__evaluate__cycle_residual: float plant_ledger__cycle_residual.json
+      aries_integrated_plant__plant_ledger__evaluate__cryo_electric: float plant_ledger__cryo_electric.json
+      aries_integrated_plant__plant_ledger__evaluate__unmatched_source_heat: float plant_ledger__unmatched_source_heat.json
+      aries_integrated_plant__plant_ledger__evaluate__generator_loss: float plant_ledger__generator_loss.json
+      aries_integrated_plant__plant_ledger__evaluate__residual_magnitude: float plant_ledger__residual_magnitude.json
+      aries_integrated_plant__plant_ledger__evaluate__comparison_gross_difference: float plant_ledger__comparison_gross_difference.json
+      aries_integrated_plant__plant_ledger__evaluate__supported_deposition: float plant_ledger__supported_deposition.json
+      aries_integrated_plant__plant_ledger__evaluate__source_energy_residual: float plant_ledger__source_energy_residual.json
+      aries_integrated_plant__plant_ledger__evaluate__motor_loss: float plant_ledger__motor_loss.json
+      aries_integrated_plant__plant_ledger__evaluate__other_electric_demand: float plant_ledger__other_electric_demand.json
+      aries_integrated_plant__plant_ledger__evaluate__supported_materials: float plant_ledger__supported_materials.json
+      aries_integrated_plant__plant_ledger__evaluate__dissipated_auxiliary: float plant_ledger__dissipated_auxiliary.json
+      aries_integrated_plant__plant_ledger__evaluate__gross_electric: float plant_ledger__gross_electric.json
+      aries_integrated_plant__plant_ledger__evaluate__branch_residual: float plant_ledger__branch_residual.json
+      aries_integrated_plant__plant_ledger__evaluate__supported_magnet: float plant_ledger__supported_magnet.json
+      aries_integrated_plant__plant_ledger__evaluate__supported_machine_map: float plant_ledger__supported_machine_map.json
+      aries_integrated_plant__plant_ledger__evaluate__pump_loss: float plant_ledger__pump_loss.json
+      aries_integrated_plant__plant_ledger__evaluate__electrical_residual: float plant_ledger__electrical_residual.json
+      aries_integrated_plant__plant_ledger__evaluate__cycle_rejection: float plant_ledger__cycle_rejection.json
+      aries_integrated_plant__plant_ledger__evaluate__shaft_import: float plant_ledger__shaft_import.json
+      aries_integrated_plant__plant_ledger__evaluate__comparison_heater_temperature_difference: float plant_ledger__comparison_heater_temperature_difference.json
+      aries_integrated_plant__plant_ledger__evaluate__supported_breeding: float plant_ledger__supported_breeding.json
+      aries_integrated_plant__plant_ledger__evaluate__turbine_state_residual: float plant_ledger__turbine_state_residual.json
+      aries_integrated_plant__plant_ledger__evaluate__compressor_demand: float plant_ledger__compressor_demand.json
+      aries_integrated_plant__plant_ledger__evaluate__total_available_heat: float plant_ledger__total_available_heat.json
+      aries_integrated_plant__plant_ledger__evaluate__comparison_net_difference: float plant_ledger__comparison_net_difference.json
+      aries_integrated_plant__plant_ledger__evaluate__net_result_producer_mode: float plant_ledger__net_result_producer_mode.json
+      aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined: float rejection_capacity__evaluation_defined.json
+      aries_integrated_plant__rejection_capacity__evaluate__margin: float rejection_capacity__margin.json
+      aries_integrated_plant__rejection_capacity__evaluate__applicable: bool aries_integrated_plant__rejection_capacity__evaluate__applicable.json
+      aries_integrated_plant__rejection_capacity__evaluate__supported: bool aries_integrated_plant__rejection_capacity__evaluate__supported.json
+      aries_integrated_plant__rejection_capacity__evaluate__capacity_ok: bool aries_integrated_plant__rejection_capacity__evaluate__capacity_ok.json
+      aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined: float compressor_capacity__evaluation_defined.json
+      aries_integrated_plant__compressor_capacity__evaluate__margin: float compressor_capacity__margin.json
+      aries_integrated_plant__compressor_capacity__evaluate__applicable: bool aries_integrated_plant__compressor_capacity__evaluate__applicable.json
+      aries_integrated_plant__compressor_capacity__evaluate__supported: bool aries_integrated_plant__compressor_capacity__evaluate__supported.json
+      aries_integrated_plant__compressor_capacity__evaluate__capacity_ok: bool aries_integrated_plant__compressor_capacity__evaluate__capacity_ok.json
+      aries_integrated_plant__generator_capacity__evaluate__evaluation_defined: float generator_capacity__evaluation_defined.json
+      aries_integrated_plant__generator_capacity__evaluate__margin: float generator_capacity__margin.json
+      aries_integrated_plant__generator_capacity__evaluate__applicable: bool aries_integrated_plant__generator_capacity__evaluate__applicable.json
+      aries_integrated_plant__generator_capacity__evaluate__supported: bool aries_integrated_plant__generator_capacity__evaluate__supported.json
+      aries_integrated_plant__generator_capacity__evaluate__capacity_ok: bool aries_integrated_plant__generator_capacity__evaluate__capacity_ok.json
+      aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation: ConstraintEvaluation aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation.json
+      aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation: ConstraintEvaluation aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation.json
+      aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation: ConstraintEvaluation aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation.json
+      aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation: ConstraintEvaluation aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation.json
+      aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation: ConstraintEvaluation aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation.json
+      aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation: ConstraintEvaluation aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation.json
+      aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation: ConstraintEvaluation aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation.json
+      aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation: ConstraintEvaluation aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation.json
+      aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation: ConstraintEvaluation aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation.json
+      aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation: ConstraintEvaluation aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation.json
+      constraint_report: ConstraintReport constraint_report.json

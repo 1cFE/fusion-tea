@@ -29,3 +29,7 @@ Updated: 2026-09-22
 ## Design gate and acceptance
 
 The new source interpretations, exchanger/cycle closure, parameter roles and electrical boundary need independent review before implementation. The design and single assumption register are in `design.md`. The executable checklist is in `plan.md`. Tests must establish energy balance to `max(1e-6 MW, 1e-9 * total input MW)`, preserve all chosen hardware, distinguish capacity failure from unsupported qualification, and prove changed native dependency outputs under a supported input perturbation. The nominal assumed scenario must have finite connected results with thermal/electrical ledger closure; equipment shortages may remain explicitly failed. Exact claims of a thermally closed operating point additionally require zero unmet heat within tolerance.
+
+## Implementation evidence
+
+The additive native assembly and sealed package execute. See report.md and evidence/verification.json for 40 checked scenarios, exact boundaries, failed source cases and validation limitations. Design acceptance is recorded in `work/orchestration/goals/aries-integrated-heat-electricity/evidence/design-review.md`; consequential completion review and native goal study remain separate acceptance evidence. Formal closure is unchanged.

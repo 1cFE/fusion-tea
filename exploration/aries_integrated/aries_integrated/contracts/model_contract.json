@@ -1,0 +1,2344 @@
+{
+  "catalog_schema_version": "3.0.0",
+  "constraint_catalog": {
+    "concrete_entries": [
+      {
+        "constraint_id": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+        "declaration_id": "717eff92-93c6-5922-80ef-2d321071c452",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_integrated_plant__rejection_capacity",
+        "owner_qualified_name": "aries_integrated_plant::rejection_capacity",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::rejection_capacity::capacity_ok"
+      },
+      {
+        "constraint_id": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+        "declaration_id": "8f4fbbfe-4ba9-5a52-ad80-100e70740313",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_integrated_plant__turbine_capacity",
+        "owner_qualified_name": "aries_integrated_plant::turbine_capacity",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::turbine_capacity::capacity_ok"
+      },
+      {
+        "constraint_id": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+        "declaration_id": "0177fb0a-2787-5e13-bdf7-e575406e2cb5",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_integrated_plant__compressor_capacity",
+        "owner_qualified_name": "aries_integrated_plant::compressor_capacity",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::compressor_capacity::capacity_ok"
+      },
+      {
+        "constraint_id": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+        "declaration_id": "05f62bc3-c5af-58a4-9fe3-ff099cee6a4d",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_integrated_plant__pbli_capacity",
+        "owner_qualified_name": "aries_integrated_plant::pbli_capacity",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::pbli_capacity::capacity_ok"
+      },
+      {
+        "constraint_id": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+        "declaration_id": "a681a39a-a86a-5ef8-8634-cc66bf7e177b",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_integrated_plant__divertor_capacity",
+        "owner_qualified_name": "aries_integrated_plant::divertor_capacity",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::divertor_capacity::capacity_ok"
+      },
+      {
+        "constraint_id": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+        "declaration_id": "abf3cf06-b8c2-5fda-b0e0-43f3e507922f",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_integrated_plant__fuel_capacity",
+        "owner_qualified_name": "aries_integrated_plant::fuel_capacity",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::fuel_capacity::capacity_ok"
+      },
+      {
+        "constraint_id": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+        "declaration_id": "f8126fb1-d7f6-5c20-b9fa-b4e9d545dc45",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_integrated_plant__he_capacity",
+        "owner_qualified_name": "aries_integrated_plant::he_capacity",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::he_capacity::capacity_ok"
+      },
+      {
+        "constraint_id": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+        "declaration_id": "c71c51f0-bf35-5df7-919f-860c77cb2ac3",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_integrated_plant__generator_capacity",
+        "owner_qualified_name": "aries_integrated_plant::generator_capacity",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::generator_capacity::capacity_ok"
+      },
+      {
+        "constraint_id": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+        "declaration_id": "59aea0d3-1608-5982-8910-b841802e9b32",
+        "definition_qualified_name": "integrated_heat_electricity::'Heat Removal Adequate'",
+        "evaluation_channel": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_integrated_plant__plant_ledger",
+        "owner_qualified_name": "aries_integrated_plant::plant_ledger",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"unmet_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"unmet_in\",\"qualified_name\":\"integrated_heat_electricity::'Heat Removal Adequate'::unmet_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"tolerance_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"tolerance_in\",\"qualified_name\":\"integrated_heat_electricity::'Heat Removal Adequate'::tolerance_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:integrated_heat_electricity::'Heat Removal Adequate'",
+        "source_form": "definition_typed",
+        "source_local_identity": "heat_removal_ok",
+        "usage_qualified_name": "aries_integrated_plant::plant_ledger::heat_removal_ok"
+      },
+      {
+        "constraint_id": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+        "declaration_id": "fb5a4889-d559-58be-8536-6790750a5918",
+        "definition_qualified_name": "integrated_heat_electricity::'Integrated Ledger Balanced'",
+        "evaluation_channel": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_integrated_plant__plant_ledger",
+        "owner_qualified_name": "aries_integrated_plant::plant_ledger",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"magnitude_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"magnitude_in\",\"qualified_name\":\"integrated_heat_electricity::'Integrated Ledger Balanced'::magnitude_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"tolerance_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"tolerance_in\",\"qualified_name\":\"integrated_heat_electricity::'Integrated Ledger Balanced'::tolerance_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:integrated_heat_electricity::'Integrated Ledger Balanced'",
+        "source_form": "definition_typed",
+        "source_local_identity": "balances_ok",
+        "usage_qualified_name": "aries_integrated_plant::plant_ledger::balances_ok"
+      }
+    ],
+    "excluded_records": [],
+    "fingerprint": "975e21712d3854a64e5fc59e3daa3953e72eab68614632809990f9efce85e1f7",
+    "source_records": [
+      {
+        "definition_qualified_name": "integrated_heat_electricity::'Heat Removal Adequate'",
+        "formal_names": [
+          "tolerance_in",
+          "unmet_in"
+        ]
+      },
+      {
+        "definition_qualified_name": "integrated_heat_electricity::'Integrated Ledger Balanced'",
+        "formal_names": [
+          "magnitude_in",
+          "tolerance_in"
+        ]
+      },
+      {
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "formal_names": [
+          "defined_in",
+          "margin_in"
+        ]
+      }
+    ],
+    "usage_records": [
+      {
+        "declaration_id": "0177fb0a-2787-5e13-bdf7-e575406e2cb5",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_integrated_plant::compressor_capacity::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_integrated_plant::compressor_capacity",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::compressor_capacity::capacity_ok"
+      },
+      {
+        "declaration_id": "05f62bc3-c5af-58a4-9fe3-ff099cee6a4d",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_integrated_plant::pbli_capacity::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_integrated_plant::pbli_capacity",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::pbli_capacity::capacity_ok"
+      },
+      {
+        "declaration_id": "59aea0d3-1608-5982-8910-b841802e9b32",
+        "definition_qualified_name": "integrated_heat_electricity::'Heat Removal Adequate'",
+        "disposition_detail": "aries_integrated_plant::plant_ledger::heat_removal_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_integrated_plant::plant_ledger",
+        "source_form": "definition_typed",
+        "source_local_identity": "heat_removal_ok",
+        "usage_qualified_name": "aries_integrated_plant::plant_ledger::heat_removal_ok"
+      },
+      {
+        "declaration_id": "717eff92-93c6-5922-80ef-2d321071c452",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_integrated_plant::rejection_capacity::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_integrated_plant::rejection_capacity",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::rejection_capacity::capacity_ok"
+      },
+      {
+        "declaration_id": "8f4fbbfe-4ba9-5a52-ad80-100e70740313",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_integrated_plant::turbine_capacity::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_integrated_plant::turbine_capacity",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::turbine_capacity::capacity_ok"
+      },
+      {
+        "declaration_id": "a681a39a-a86a-5ef8-8634-cc66bf7e177b",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_integrated_plant::divertor_capacity::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_integrated_plant::divertor_capacity",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::divertor_capacity::capacity_ok"
+      },
+      {
+        "declaration_id": "abf3cf06-b8c2-5fda-b0e0-43f3e507922f",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_integrated_plant::fuel_capacity::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_integrated_plant::fuel_capacity",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::fuel_capacity::capacity_ok"
+      },
+      {
+        "declaration_id": "c71c51f0-bf35-5df7-919f-860c77cb2ac3",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_integrated_plant::generator_capacity::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_integrated_plant::generator_capacity",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::generator_capacity::capacity_ok"
+      },
+      {
+        "declaration_id": "f8126fb1-d7f6-5c20-b9fa-b4e9d545dc45",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_integrated_plant::he_capacity::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_integrated_plant::he_capacity",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_integrated_plant::he_capacity::capacity_ok"
+      },
+      {
+        "declaration_id": "fb5a4889-d559-58be-8536-6790750a5918",
+        "definition_qualified_name": "integrated_heat_electricity::'Integrated Ledger Balanced'",
+        "disposition_detail": "aries_integrated_plant::plant_ledger::balances_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_integrated_plant::plant_ledger",
+        "source_form": "definition_typed",
+        "source_local_identity": "balances_ok",
+        "usage_qualified_name": "aries_integrated_plant::plant_ledger::balances_ok"
+      }
+    ]
+  },
+  "evaluation_semantics": "kleene-three-valued",
+  "outputs": [
+    {
+      "channel_name": "aries_integrated_plant__compressor_1__evaluate__pressure_out",
+      "field_name": "pressure_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_1__evaluate__shaft_demand",
+      "field_name": "shaft_demand",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_1__evaluate__temperature_out",
+      "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__intercooler_1__evaluate__heat_into_fluid",
+      "field_name": "heat_into_fluid",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__intercooler_1__evaluate__temperature_out",
+      "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__intercooler_1__evaluate__pressure_out",
+      "field_name": "pressure_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_2__evaluate__pressure_out",
+      "field_name": "pressure_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_2__evaluate__shaft_demand",
+      "field_name": "shaft_demand",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_2__evaluate__temperature_out",
+      "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__intercooler_2__evaluate__heat_into_fluid",
+      "field_name": "heat_into_fluid",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__intercooler_2__evaluate__temperature_out",
+      "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__intercooler_2__evaluate__pressure_out",
+      "field_name": "pressure_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_3__evaluate__pressure_out",
+      "field_name": "pressure_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_3__evaluate__shaft_demand",
+      "field_name": "shaft_demand",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_3__evaluate__temperature_out",
+      "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pressure_loss__evaluate__pressure_out",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_cs_plasma_integration__plasma__edge_density__edge_density",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_cs_plasma_integration__plasma__integration__thermal_pressure",
+      "field_name": "thermal_pressure",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_cs_plasma_integration__plasma__integration__field_for_beta",
+      "field_name": "field_for_beta",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_cs_plasma_integration__plasma__integration__density_weighted_temperature",
+      "field_name": "density_weighted_temperature",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_cs_plasma_integration__plasma__integration__quadrature_relative_change",
+      "field_name": "quadrature_relative_change",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_cs_plasma_integration__plasma__integration__fusion_power_MW",
+      "field_name": "fusion_power_MW",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_cs_plasma_integration__plasma__integration__density_mean",
+      "field_name": "density_mean",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_cs_plasma_integration__plasma__integration__quadrature_intervals",
+      "field_name": "quadrature_intervals",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_cs_plasma_integration__plasma__integration__stored_thermal_MJ",
+      "field_name": "stored_thermal_MJ",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source__evaluate__selected_power",
+      "field_name": "selected_power",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source__evaluate__selected_mode",
+      "field_name": "selected_mode",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel__evaluate__burn_kg_per_fpy",
+      "field_name": "burn_kg_per_fpy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel__evaluate__inject_rate",
+      "field_name": "inject_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel__evaluate__burn_rate",
+      "field_name": "burn_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel__evaluate__tbr_margin",
+      "field_name": "tbr_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel__evaluate__tbr_required",
+      "field_name": "tbr_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel__evaluate__loss_rate",
+      "field_name": "loss_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel__evaluate__exhaust_rate",
+      "field_name": "exhaust_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_capacity__evaluate__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_capacity__evaluate__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_capacity__evaluate__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_capacity__evaluate__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__deposition__evaluate__divertor_deposition",
+      "field_name": "divertor_deposition",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__deposition__evaluate__topology_zero",
+      "field_name": "topology_zero",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__deposition__evaluate__pump_electric",
+      "field_name": "pump_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__deposition__evaluate__neutron_power",
+      "field_name": "neutron_power",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__deposition__evaluate__charged_power",
+      "field_name": "charged_power",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__deposition__evaluate__pbli_friction",
+      "field_name": "pbli_friction",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__deposition__evaluate__other_heat",
+      "field_name": "other_heat",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__deposition__evaluate__nuclear_gain",
+      "field_name": "nuclear_gain",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__deposition__evaluate__he_deposition",
+      "field_name": "he_deposition",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__deposition__evaluate__source_residual",
+      "field_name": "source_residual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__deposition__evaluate__he_friction",
+      "field_name": "he_friction",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__deposition__evaluate__exchange",
+      "field_name": "exchange",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__deposition__evaluate__pump_recovered",
+      "field_name": "pump_recovered",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__deposition__evaluate__pbli_deposition",
+      "field_name": "pbli_deposition",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__deposition__evaluate__divertor_friction",
+      "field_name": "divertor_friction",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_capacity__evaluate__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_capacity__evaluate__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_capacity__evaluate__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_capacity__evaluate__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_capacity__evaluate__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_capacity__evaluate__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_capacity__evaluate__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_capacity__evaluate__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_cs_plasma_integration__plasma__density_sample__density",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_cs_plasma_integration__plasma__beta_calculation__beta",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_coolant__evaluate__delivered_heat",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_return",
+      "field_name": "he_return",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_unmet",
+      "field_name": "he_unmet",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
+      "field_name": "turbine_temperature",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_hot",
+      "field_name": "he_hot",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
+      "field_name": "accepted_heat",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return",
+      "field_name": "divertor_return",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred",
+      "field_name": "divertor_transferred",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_secondary_in",
+      "field_name": "he_secondary_in",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet",
+      "field_name": "divertor_unmet",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_state_defined",
+      "field_name": "he_state_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference",
+      "field_name": "divertor_hot_terminal_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot",
+      "field_name": "pbli_hot",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_capability",
+      "field_name": "he_capability",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference",
+      "field_name": "divertor_cold_terminal_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+      "field_name": "unmet_heat",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__iterations",
+      "field_name": "iterations",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_secondary_out",
+      "field_name": "he_secondary_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return",
+      "field_name": "pbli_return",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability",
+      "field_name": "pbli_capability",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet",
+      "field_name": "pbli_unmet",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_in",
+      "field_name": "divertor_secondary_in",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
+      "field_name": "divertor_hot_bound_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_out",
+      "field_name": "pbli_secondary_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_state_defined",
+      "field_name": "divertor_state_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred",
+      "field_name": "pbli_transferred",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin",
+      "field_name": "he_hot_bound_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability",
+      "field_name": "divertor_capability",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_in",
+      "field_name": "pbli_secondary_in",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
+      "field_name": "heater_inlet",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "field_name": "closure_residual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference",
+      "field_name": "he_hot_terminal_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
+      "field_name": "pbli_hot_bound_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference",
+      "field_name": "pbli_hot_terminal_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot",
+      "field_name": "divertor_hot",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_state_defined",
+      "field_name": "pbli_state_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_out",
+      "field_name": "divertor_secondary_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_transferred",
+      "field_name": "he_transferred",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_terminal_difference",
+      "field_name": "pbli_cold_terminal_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_cold_terminal_difference",
+      "field_name": "he_cold_terminal_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__expansion_factor",
+      "field_name": "expansion_factor",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__turbine__evaluate__pressure_out",
+      "field_name": "pressure_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__turbine__evaluate__shaft_produced",
+      "field_name": "shaft_produced",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__turbine__evaluate__temperature_out",
+      "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__turbine_capacity__evaluate__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__turbine_capacity__evaluate__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__turbine_capacity__evaluate__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__turbine_capacity__evaluate__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_base_electric",
+      "field_name": "fuel_base_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__other_electric_demand",
+      "field_name": "other_electric_demand",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__dissipated_auxiliary",
+      "field_name": "dissipated_auxiliary",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__net_electric",
+      "field_name": "net_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__generator_loss",
+      "field_name": "generator_loss",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__net_shaft",
+      "field_name": "net_shaft",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__heating_electric",
+      "field_name": "heating_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__cryo_electric",
+      "field_name": "cryo_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric",
+      "field_name": "fuel_variable_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__compressor_demand",
+      "field_name": "compressor_demand",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__auxiliary_electric",
+      "field_name": "auxiliary_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__gross_electric",
+      "field_name": "gross_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_electric",
+      "field_name": "fuel_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__primary_pump_electric",
+      "field_name": "primary_pump_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__motor_loss",
+      "field_name": "motor_loss",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__shaft_import",
+      "field_name": "shaft_import",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__heating_loss",
+      "field_name": "heating_loss",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__pump_loss",
+      "field_name": "pump_loss",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_auxiliaries__evaluate__control_electric",
+      "field_name": "control_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__recuperator__evaluate__bypass_active",
+      "field_name": "bypass_active",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__recuperator__evaluate__cold_out",
+      "field_name": "cold_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__recuperator__evaluate__hot_out",
+      "field_name": "hot_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__recuperator__evaluate__recovered_heat",
+      "field_name": "recovered_heat",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__precooler__evaluate__heat_into_fluid",
+      "field_name": "heat_into_fluid",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__precooler__evaluate__temperature_out",
+      "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__precooler__evaluate__pressure_out",
+      "field_name": "pressure_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_capacity__evaluate__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_capacity__evaluate__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_capacity__evaluate__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_capacity__evaluate__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_capacity__evaluate__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__supported_hydraulics",
+      "field_name": "supported_hydraulics",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__fuel_base_electric",
+      "field_name": "fuel_base_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__comparison_fusion_difference",
+      "field_name": "comparison_fusion_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__heating_loss",
+      "field_name": "heating_loss",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__assumed_auxiliary_demands",
+      "field_name": "assumed_auxiliary_demands",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__control_electric",
+      "field_name": "control_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__net_shaft",
+      "field_name": "net_shaft",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__fuel_variable_electric",
+      "field_name": "fuel_variable_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__plant_residual",
+      "field_name": "plant_residual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__fuel_electric",
+      "field_name": "fuel_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__recuperator_state_residual",
+      "field_name": "recuperator_state_residual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__auxiliary_electric",
+      "field_name": "auxiliary_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__comparison_blanket_deposition_difference",
+      "field_name": "comparison_blanket_deposition_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__net_electric",
+      "field_name": "net_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__efficiency_defined",
+      "field_name": "efficiency_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__conditional_net_result",
+      "field_name": "conditional_net_result",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance",
+      "field_name": "energy_tolerance",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__heating_electric",
+      "field_name": "heating_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__primary_pump_electric",
+      "field_name": "primary_pump_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__comparison_turbine_temperature_difference",
+      "field_name": "comparison_turbine_temperature_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__thermal_efficiency",
+      "field_name": "thermal_efficiency",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__cycle_residual",
+      "field_name": "cycle_residual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__cryo_electric",
+      "field_name": "cryo_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__unmatched_source_heat",
+      "field_name": "unmatched_source_heat",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__generator_loss",
+      "field_name": "generator_loss",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+      "field_name": "residual_magnitude",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__comparison_gross_difference",
+      "field_name": "comparison_gross_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__supported_deposition",
+      "field_name": "supported_deposition",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__source_energy_residual",
+      "field_name": "source_energy_residual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__motor_loss",
+      "field_name": "motor_loss",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__other_electric_demand",
+      "field_name": "other_electric_demand",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__supported_materials",
+      "field_name": "supported_materials",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__dissipated_auxiliary",
+      "field_name": "dissipated_auxiliary",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__gross_electric",
+      "field_name": "gross_electric",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__branch_residual",
+      "field_name": "branch_residual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__supported_magnet",
+      "field_name": "supported_magnet",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__supported_machine_map",
+      "field_name": "supported_machine_map",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__pump_loss",
+      "field_name": "pump_loss",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__electrical_residual",
+      "field_name": "electrical_residual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__cycle_rejection",
+      "field_name": "cycle_rejection",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__shaft_import",
+      "field_name": "shaft_import",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__comparison_heater_temperature_difference",
+      "field_name": "comparison_heater_temperature_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__supported_breeding",
+      "field_name": "supported_breeding",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__turbine_state_residual",
+      "field_name": "turbine_state_residual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__compressor_demand",
+      "field_name": "compressor_demand",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__total_available_heat",
+      "field_name": "total_available_heat",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__comparison_net_difference",
+      "field_name": "comparison_net_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__evaluate__net_result_producer_mode",
+      "field_name": "net_result_producer_mode",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__rejection_capacity__evaluate__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__rejection_capacity__evaluate__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__rejection_capacity__evaluate__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__rejection_capacity__evaluate__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_capacity__evaluate__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_capacity__evaluate__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_capacity__evaluate__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_capacity__evaluate__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_capacity__evaluate__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_capacity__evaluate__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_capacity__evaluate__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_capacity__evaluate__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "constraint_report",
+      "field_name": "constraint_report",
+      "python_type": "ConstraintReport"
+    }
+  ],
+  "parameters": [
+    {
+      "default_value": 1.25663706212e-06,
+      "entry_type": "library_default",
+      "param_group": "mfe_plasma_scaling_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__beta_calculation__mu0"
+    },
+    {
+      "default_value": 0.89,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__compressor_1__efficiency"
+    },
+    {
+      "default_value": 1.5182944859378311,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__compressor_1__selected_ratio"
+    },
+    {
+      "default_value": 0.89,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__compressor_2__efficiency"
+    },
+    {
+      "default_value": 1.5182944859378311,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__compressor_2__selected_ratio"
+    },
+    {
+      "default_value": 0.89,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__compressor_3__efficiency"
+    },
+    {
+      "default_value": 1.5182944859378311,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__compressor_3__selected_ratio"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__compressor_capacity__assumed_supported"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__compressor_capacity__demand_available"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__compressor_capacity__scenario_applicable"
+    },
+    {
+      "default_value": 1600.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__compressor_capacity__selected_rating"
+    },
+    {
+      "default_value": 5193.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cycle__cp"
+    },
+    {
+      "default_value": 1.6666666666666667,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cycle__gamma"
+    },
+    {
+      "default_value": 308.15,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cycle__low_temperature"
+    },
+    {
+      "default_value": 0.8,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cycle__recuperator_effectiveness"
+    },
+    {
+      "default_value": 4.285714285714286,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cycle__return_pressure"
+    },
+    {
+      "default_value": 1400.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cycle__selected_flow"
+    },
+    {
+      "default_value": 0.93,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__cycle__turbine_efficiency"
+    },
+    {
+      "default_value": 20.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__auxiliary_heat"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__divertor_pump"
+    },
+    {
+      "default_value": 0.9,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__divertor_recovery"
+    },
+    {
+      "default_value": 0.04,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__exchange_fraction"
+    },
+    {
+      "default_value": 156.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__he_pump"
+    },
+    {
+      "default_value": 0.9038461538461539,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__he_recovery"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__heat_mode"
+    },
+    {
+      "default_value": 0.38,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__helium_fraction"
+    },
+    {
+      "default_value": 374.75,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__literal_divertor"
+    },
+    {
+      "default_value": 111.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__literal_exchange"
+    },
+    {
+      "default_value": 940.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__literal_he"
+    },
+    {
+      "default_value": 1555.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__literal_pbli"
+    },
+    {
+      "default_value": 1.16,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__neutron_multiplier"
+    },
+    {
+      "default_value": 0.01,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__pbli_pump"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__pbli_recovery"
+    },
+    {
+      "default_value": 0.25,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__deposition__radiation_fraction"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__divertor_capacity__assumed_supported"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__divertor_capacity__demand_available"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__divertor_capacity__scenario_applicable"
+    },
+    {
+      "default_value": 800.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__divertor_capacity__selected_rating"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel__assumed_extraction"
+    },
+    {
+      "default_value": 1.782785958230312e-09,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel__decay_constant_s"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel__dormant_inventory_atoms"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel__dormant_stock_growth_atoms_s"
+    },
+    {
+      "default_value": 0.99,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel__exhaust_recovery"
+    },
+    {
+      "default_value": 1.6021766339999998e-13,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel__mev_joules"
+    },
+    {
+      "default_value": 0.05,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel__pass_burn_fraction"
+    },
+    {
+      "default_value": 17.58,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel__reaction_energy_mev"
+    },
+    {
+      "default_value": 31536000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel__seconds_per_year"
+    },
+    {
+      "default_value": 5.008267663228036e-27,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel__tritium_atom_kg"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel__unused_tbr_placeholder"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__fuel_capacity__assumed_supported"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__fuel_capacity__demand_available"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__fuel_capacity__scenario_applicable"
+    },
+    {
+      "default_value": 3e+22,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__fuel_capacity__selected_rating"
+    },
+    {
+      "default_value": 5.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__generator_auxiliaries__control"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__generator_auxiliaries__cryo"
+    },
+    {
+      "default_value": 5.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__generator_auxiliaries__fuel_base"
+    },
+    {
+      "default_value": 1e-22,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__generator_auxiliaries__fuel_coefficient"
+    },
+    {
+      "default_value": 0.98,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__generator_auxiliaries__generator_efficiency"
+    },
+    {
+      "default_value": 0.5,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__generator_auxiliaries__heating_efficiency"
+    },
+    {
+      "default_value": 0.95,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__generator_auxiliaries__motor_efficiency"
+    },
+    {
+      "default_value": 5.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__generator_auxiliaries__other_electric"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__generator_capacity__assumed_supported"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__generator_capacity__demand_available"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__generator_capacity__scenario_applicable"
+    },
+    {
+      "default_value": 1800.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__generator_capacity__selected_rating"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__he_capacity__assumed_supported"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__he_capacity__demand_available"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__he_capacity__scenario_applicable"
+    },
+    {
+      "default_value": 1500.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__he_capacity__selected_rating"
+    },
+    {
+      "default_value": 5193.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_exchangers__divertor_cp"
+    },
+    {
+      "default_value": 500.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_exchangers__divertor_flow"
+    },
+    {
+      "default_value": 973.15,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_exchangers__divertor_limit"
+    },
+    {
+      "default_value": 50.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_exchangers__divertor_ua"
+    },
+    {
+      "default_value": 5193.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_exchangers__he_cp"
+    },
+    {
+      "default_value": 3261.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_exchangers__he_flow"
+    },
+    {
+      "default_value": 729.15,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_exchangers__he_limit"
+    },
+    {
+      "default_value": 50.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_exchangers__he_ua"
+    },
+    {
+      "default_value": 190.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_exchangers__pbli_cp"
+    },
+    {
+      "default_value": 26860.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_exchangers__pbli_flow"
+    },
+    {
+      "default_value": 1011.15,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_exchangers__pbli_limit"
+    },
+    {
+      "default_value": 50.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_exchangers__pbli_ua"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__intercooler_1__heating_role"
+    },
+    {
+      "default_value": 308.15,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__intercooler_1__target_temperature"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__intercooler_2__heating_role"
+    },
+    {
+      "default_value": 308.15,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__intercooler_2__target_temperature"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__pbli_capacity__assumed_supported"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__pbli_capacity__demand_available"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__pbli_capacity__scenario_applicable"
+    },
+    {
+      "default_value": 1800.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pbli_capacity__selected_rating"
+    },
+    {
+      "default_value": 2496.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__plant_ledger__reference_blanket_deposition"
+    },
+    {
+      "default_value": 2436.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__plant_ledger__reference_fusion"
+    },
+    {
+      "default_value": 1253.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__plant_ledger__reference_gross"
+    },
+    {
+      "default_value": 628.15,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__plant_ledger__reference_heater_temperature"
+    },
+    {
+      "default_value": 1000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__plant_ledger__reference_net"
+    },
+    {
+      "default_value": 980.15,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__plant_ledger__reference_turbine_temperature"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__precooler__heating_role"
+    },
+    {
+      "default_value": 0.045,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__pressure_loss__loss_fraction"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__rejection_capacity__assumed_supported"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__rejection_capacity__demand_available"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__rejection_capacity__scenario_applicable"
+    },
+    {
+      "default_value": 2500.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__rejection_capacity__selected_rating"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__source__producer_mode"
+    },
+    {
+      "default_value": 2436.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__source__reference_fusion_mw"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__turbine_capacity__assumed_supported"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__turbine_capacity__demand_available"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "bool",
+      "qualified_name": "aries_integrated_plant__turbine_capacity__scenario_applicable"
+    },
+    {
+      "default_value": 3500.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__turbine_capacity__selected_rating"
+    },
+    {
+      "default_value": 5e+20,
+      "entry_type": "design_attribute",
+      "param_group": "plasma_integration_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__amplitude"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plasma_integration_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__density_profile_exponent"
+    },
+    {
+      "default_value": 12.0,
+      "entry_type": "design_attribute",
+      "param_group": "plasma_integration_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__density_radial_exponent"
+    },
+    {
+      "default_value": 0.5,
+      "entry_type": "design_attribute",
+      "param_group": "plasma_integration_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__deuterium_fraction"
+    },
+    {
+      "default_value": 0.1,
+      "entry_type": "design_attribute",
+      "param_group": "plasma_integration_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__edge_ratio"
+    },
+    {
+      "default_value": 5.7,
+      "entry_type": "design_attribute",
+      "param_group": "plasma_integration_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__field"
+    },
+    {
+      "default_value": 0.0335,
+      "entry_type": "design_attribute",
+      "param_group": "plasma_integration_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__helium_fraction"
+    },
+    {
+      "default_value": 0.66,
+      "entry_type": "design_attribute",
+      "param_group": "plasma_integration_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__hollowness"
+    },
+    {
+      "default_value": 0.5,
+      "entry_type": "design_attribute",
+      "param_group": "plasma_integration_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__sample_rho"
+    },
+    {
+      "default_value": 11.83,
+      "entry_type": "design_attribute",
+      "param_group": "plasma_integration_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__temperature_axis"
+    },
+    {
+      "default_value": 0.2,
+      "entry_type": "design_attribute",
+      "param_group": "plasma_integration_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__temperature_edge"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "plasma_integration_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__temperature_profile_exponent"
+    },
+    {
+      "default_value": 2.0,
+      "entry_type": "design_attribute",
+      "param_group": "plasma_integration_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__temperature_radial_exponent"
+    },
+    {
+      "default_value": 444.0,
+      "entry_type": "design_attribute",
+      "param_group": "plasma_integration_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__volume"
+    },
+    {
+      "default_value": 2.0,
+      "entry_type": "design_attribute",
+      "param_group": "plasma_integration_params",
+      "python_type": "float",
+      "qualified_name": "aries_cs_plasma_integration__plasma__volume_exponent"
+    }
+  ],
+  "semantic_fingerprint": "35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97"
+}

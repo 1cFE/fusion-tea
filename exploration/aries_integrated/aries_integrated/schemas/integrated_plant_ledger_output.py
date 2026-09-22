@@ -1,0 +1,58 @@
+from pydantic import Field
+from simkit.config.schema import MultiOutput
+
+class Integrated_Plant_LedgerOutput(MultiOutput):
+    """Multi-output container for Integrated_Plant_Ledger.
+
+*Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic integrated plant ledger. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22.
+
+SysML Source: root-0/integrated_heat_electricity.sysml:162
+    """
+    supported_hydraulics: float = Field(description="supported_hydraulics output")
+    fuel_base_electric: float = Field(description="fuel_base_electric output")
+    comparison_fusion_difference: float = Field(description="comparison_fusion_difference output")
+    heating_loss: float = Field(description="heating_loss output")
+    assumed_auxiliary_demands: float = Field(description="assumed_auxiliary_demands output")
+    control_electric: float = Field(description="control_electric output")
+    net_shaft: float = Field(description="net_shaft output")
+    fuel_variable_electric: float = Field(description="fuel_variable_electric output")
+    plant_residual: float = Field(description="plant_residual output")
+    fuel_electric: float = Field(description="fuel_electric output")
+    recuperator_state_residual: float = Field(description="recuperator_state_residual output")
+    auxiliary_electric: float = Field(description="auxiliary_electric output")
+    comparison_blanket_deposition_difference: float = Field(description="comparison_blanket_deposition_difference output")
+    net_electric: float = Field(description="net_electric output")
+    efficiency_defined: float = Field(description="efficiency_defined output")
+    conditional_net_result: float = Field(description="conditional_net_result output")
+    energy_tolerance: float = Field(description="energy_tolerance output")
+    heating_electric: float = Field(description="heating_electric output")
+    primary_pump_electric: float = Field(description="primary_pump_electric output")
+    comparison_turbine_temperature_difference: float = Field(description="comparison_turbine_temperature_difference output")
+    thermal_efficiency: float = Field(description="thermal_efficiency output")
+    cycle_residual: float = Field(description="cycle_residual output")
+    cryo_electric: float = Field(description="cryo_electric output")
+    unmatched_source_heat: float = Field(description="unmatched_source_heat output")
+    generator_loss: float = Field(description="generator_loss output")
+    residual_magnitude: float = Field(description="residual_magnitude output")
+    comparison_gross_difference: float = Field(description="comparison_gross_difference output")
+    supported_deposition: float = Field(description="supported_deposition output")
+    source_energy_residual: float = Field(description="source_energy_residual output")
+    motor_loss: float = Field(description="motor_loss output")
+    other_electric_demand: float = Field(description="other_electric_demand output")
+    supported_materials: float = Field(description="supported_materials output")
+    dissipated_auxiliary: float = Field(description="dissipated_auxiliary output")
+    gross_electric: float = Field(description="gross_electric output")
+    branch_residual: float = Field(description="branch_residual output")
+    supported_magnet: float = Field(description="supported_magnet output")
+    supported_machine_map: float = Field(description="supported_machine_map output")
+    pump_loss: float = Field(description="pump_loss output")
+    electrical_residual: float = Field(description="electrical_residual output")
+    cycle_rejection: float = Field(description="cycle_rejection output")
+    shaft_import: float = Field(description="shaft_import output")
+    comparison_heater_temperature_difference: float = Field(description="comparison_heater_temperature_difference output")
+    supported_breeding: float = Field(description="supported_breeding output")
+    turbine_state_residual: float = Field(description="turbine_state_residual output")
+    compressor_demand: float = Field(description="compressor_demand output")
+    total_available_heat: float = Field(description="total_available_heat output")
+    comparison_net_difference: float = Field(description="comparison_net_difference output")
+    net_result_producer_mode: float = Field(description="net_result_producer_mode output")

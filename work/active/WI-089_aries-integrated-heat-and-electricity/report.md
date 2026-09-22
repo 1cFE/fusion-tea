@@ -1,0 +1,48 @@
+# WI-089 implementation report
+
+Status: implemented and independently accepted; native goal study handoff pending
+Created: 2026-09-22
+Updated: 2026-09-22
+
+## Result
+
+One generated native graph now connects selected fusion power to fuel demand, neutron/charged heat deposition, three coolant/exchanger paths, recuperated Brayton conversion and net electricity. The calculated-plasma nominal scenario produces 423.106794 MW net electricity with zero unmet heat and all ten scoped constraints satisfied. Its scientific status is conditional: deposition, hydraulic/material/machine-map, magnet and breeding qualifications remain unsupported. Auxiliary demands retain their named assumptions. This is an executed assumed configuration, not validation of the published ARIES plant.
+
+| Scenario | Selected fusion MW | Heat accepted MW | Unmet removal MW | Gross electric MW | Net electric MW | Main failed checks |
+|---|---:|---:|---:|---:|---:|---|
+| nominal-calculated | 1835.451283 | 2240.389047 | 0 | 655.354927 | 423.106794 | None of the ten scoped checks; scientific support remains conditional |
+| nominal-source-assumed | 2436 | 2759.082152 | 158.725848 | 1028.658530 | 796.005288 | Heat removal |
+| literal-Lyon-source-input | 2436 | 2518.899476 | 398.908524 | 1039.669902 | 807.016660 | Heat removal |
+| literal-Raffray-accounting | 2365 | 2517.615798 | 502.134202 | 1038.516213 | 805.910865 | Heat removal and source/whole-plant energy reconciliation |
+
+The raw baseline values, exact inputs, all ledger terms, native checks and sealed identity are in `evidence/baseline-execution.json`. Source cases' electrical numbers describe the modeled heat-removable subset; positive unmet removal prevents interpreting them as steady operation of the complete supplied source. No failed case was fitted into the calculated nominal.
+
+The Lyon reference supplies 2436 MW fusion, 1253 MW gross electricity and the table's 1-GW-electric basis. Those are comparison values, not calculation targets. Source-mode fusion is conditioned on its input; calculated-mode fusion comes from untouched WI-083 profile assumptions. Electrical results are independently calculated within the documented approximation, not independently validated against Lyon. Raffray branch reconstruction reproduces supplied accounting: 1192 MW helium and 1444 MW PbLi, with the retained -1 MW blanket deposition comparison residual. Its independently exposed full source-energy mismatch is +182.03 MW and whole-plant residual is -182.03 MW; neither is erased.
+
+## Files and identity
+
+The additive canonical files are `models/library/analyses/integrated_heat_electricity.sysml` and `models/designs/aries_cs_integrated/plant.sysml`. The stock generated package is `exploration/aries_integrated/aries_integrated`, package name `aries_integrated`. Its executable fingerprint is `469191fd32c624ccf70e0b4ebc1065b34920df8174c37a09e8f45ecfb241a7d7`. The ten-file staged root is `exploration/aries_integrated/input_models`; its unique adjacent snapshot is `integrated.snapshot.json`. `census.json` was derived by `scripts.integrate.rederived_census`, not authored by hand.
+
+`build.py` stages unchanged reused sources, installs the six new reviewed native calculations and exact reused component completions, copies the unchanged reaction kernel, regenerates with `--preserve-handwritten`, and verifies byte-for-byte fixed-point regeneration. `evidence/build-hashes.json` retains canonical/staged identity, sixteen completion-copy receipts and reaction-kernel AST identity. Reuse is import/staging for original definitions, package-prefix-only for reused completions, and equation lineage only for the new heat-driven closure/passive recuperator. The old dual-circuit ledger is staged but not instantiated; the new three-path ledger supplies the integrated boundary.
+
+The generated graph has a real `generator_auxiliaries` owner. Its calculated conversion/loss/demand outputs feed the separate plant ledger. The ledger exposes `conditional_net_result=1`, selected producer mode and unsupported scientific flags beside the net result. Independent low/high scalar equipment checks do not change those flags. Exchanger outputs include transferred/unmet heat, hot-bound margin, both counterflow terminal differences and state definedness. Zero-duty or bypass states have finite zero temperature carriers with definedness zero, never a claimed physical temperature.
+
+## Verification
+
+`evidence/verification.json` records 40 actual native scenarios: 30 evaluated cases and 10 expected refusals. The cases include all four named source/mode scenarios, fixed-hardware density changes, independent flow/ratio/UA changes, eight low/high equipment-rating pairs, unsupported capacity support, no-transfer exchanger states, a passive recuperator bypass with negative shaft work/motor import, and invalid/nonfinite domains. All supplied hardware remains fixed during density changes. Changing only a rating changes its capacity verdict while leaving demand and net electricity unchanged.
+
+Independent verification uses fuel/reaction-energy conservation, heat-capacity state differences on both exchanger sides, counterflow terminal ordering, separate electrical-load aggregation and signed whole-boundary energy identities. The calculated nominal whole-plant residual is -7.54e-9 MW against a declared tolerance greater than 1e-6 MW. The native zero-UA full assembly correctly refuses its cooling-only precooler domain. A separate typed-native ledger test confirms zero-heat efficiency definedness is zero and its deliberately inconsistent energy inputs fail balance; it is not presented as a valid operating point. A manufactured nonconvergence was not injected into the monotone bounded solver; every supported case converges within the hard 100-iteration limit, and the explicit refusal guard remains present.
+
+Three distinct development-harness mistakes were corrected without modifying the model or seal: a refusal-message substring, the generated input-class import location, and RootModel `.root` channel resolution in the direct-ledger probe. Logs and intermediate results are retained as `verification-attempt1.*`, `verification-attempt2.*` and `verification-attempt3.log`. Initial generation's reserved `flow` identifier was renamed `selected_flow`; `generation-attempt1.log` preserves that syntax failure. The direct runner requires the documented TEAx PYTHONPATH, as shown below; an initial invocation without it failed import before model execution.
+
+Complete scoped validation exits 1: levels 1–5 pass; level 6 reports 182 unsupported dotted EXPOSE operators. `evidence/validation.log` and `evidence/l6-issues.json` retain the scope and exact diagnostics. These are the known static EXPOSE limitation, not 182 unexecuted physical calculations; the corresponding generated native graph executes and exposes the tested values. No complete-validator green claim is made. Independent completion PASS is recorded in `work/orchestration/goals/aries-integrated-heat-electricity/evidence/implementation-review.md` against the fingerprint above. Source-preservation and independent behavior evidence are distinct: the completion reviewer independently rehashed all 8657 protected entry-manifest files unchanged and replayed an additional density perturbation against the sealed graph.
+
+## Replay
+
+From the repository root, build with `.codex-test/run python exploration/aries_integrated/build.py`. Execute scenarios with `PYTHONPATH=/home/reid/1cfe/fusion-tea:/home/reid/1cfe/teax/packages/teax-simkit .codex-test/run python exploration/aries_integrated/run.py`; add `--case nominal-calculated` for the thermally closed nominal. Execute development checks with the same PYTHONPATH followed by `.codex-test/run python exploration/aries_integrated/verify.py`. Run scoped validation with `.codex-test/run agentic-mbse validate --complete exploration/aries_integrated/input_models` and expect the documented level-6 failure.
+
+The supported native study/integration route, manifest/oracle and exact grouped entry map are coordinated under `exploration/aries_integrated/studies/`. Development executions above do not substitute for a committed native study. The owner retains formal item/goal closure.
+
+## Handoff
+
+The goal coordinator can promote this reviewed package and run the single committed study with explicit calculated-mode baseline overrides. Preserve the literal source failures and compare only matching source boundaries. Inventory/cost work receives fixed chosen flows, UA, temperature bounds, ratios and offered ratings; it still needs actual equipment geometry/materials, machine/hydraulic maps, cost/installation inventories and qualified breeding/magnet inputs. It must not price unmet demand as installed hardware.

@@ -1,0 +1,916 @@
+{
+  "plain_forwarding_count": 182,
+  "other_dotted_attribute_expressions": [],
+  "plain_forwarding": [
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 18,
+      "expression": "evaluate.selected_power"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 19,
+      "expression": "evaluate.selected_mode"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 58,
+      "expression": "evaluate.neutron_power"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 59,
+      "expression": "evaluate.charged_power"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 60,
+      "expression": "evaluate.nuclear_gain"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 61,
+      "expression": "evaluate.he_deposition"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 62,
+      "expression": "evaluate.pbli_deposition"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 63,
+      "expression": "evaluate.divertor_deposition"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 64,
+      "expression": "evaluate.exchange"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 65,
+      "expression": "evaluate.he_friction"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 66,
+      "expression": "evaluate.pbli_friction"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 67,
+      "expression": "evaluate.divertor_friction"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 68,
+      "expression": "evaluate.other_heat"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 69,
+      "expression": "evaluate.source_residual"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 70,
+      "expression": "evaluate.topology_zero"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 71,
+      "expression": "evaluate.pump_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 72,
+      "expression": "evaluate.pump_recovered"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 82,
+      "expression": "evaluate.delivered_heat"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 92,
+      "expression": "evaluate.delivered_heat"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 102,
+      "expression": "evaluate.delivered_heat"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 131,
+      "expression": "evaluate.burn_rate"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 132,
+      "expression": "evaluate.inject_rate"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 133,
+      "expression": "evaluate.exhaust_rate"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 134,
+      "expression": "evaluate.loss_rate"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 159,
+      "expression": "evaluate.temperature_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 160,
+      "expression": "evaluate.pressure_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 161,
+      "expression": "evaluate.shaft_demand"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 175,
+      "expression": "evaluate.temperature_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 176,
+      "expression": "evaluate.pressure_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 177,
+      "expression": "evaluate.heat_into_fluid"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 192,
+      "expression": "evaluate.temperature_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 193,
+      "expression": "evaluate.pressure_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 194,
+      "expression": "evaluate.shaft_demand"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 208,
+      "expression": "evaluate.temperature_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 209,
+      "expression": "evaluate.pressure_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 210,
+      "expression": "evaluate.heat_into_fluid"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 225,
+      "expression": "evaluate.temperature_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 226,
+      "expression": "evaluate.pressure_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 227,
+      "expression": "evaluate.shaft_demand"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 236,
+      "expression": "evaluate.pressure_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 277,
+      "expression": "evaluate.turbine_temperature"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 278,
+      "expression": "evaluate.heater_inlet"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 279,
+      "expression": "evaluate.expansion_factor"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 280,
+      "expression": "evaluate.accepted_heat"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 281,
+      "expression": "evaluate.unmet_heat"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 282,
+      "expression": "evaluate.closure_residual"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 283,
+      "expression": "evaluate.iterations"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 284,
+      "expression": "evaluate.he_transferred"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 285,
+      "expression": "evaluate.he_unmet"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 286,
+      "expression": "evaluate.he_capability"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 287,
+      "expression": "evaluate.he_hot"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 288,
+      "expression": "evaluate.he_return"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 289,
+      "expression": "evaluate.he_state_defined"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 290,
+      "expression": "evaluate.he_hot_terminal_difference"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 291,
+      "expression": "evaluate.he_cold_terminal_difference"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 292,
+      "expression": "evaluate.he_hot_bound_margin"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 293,
+      "expression": "evaluate.he_secondary_in"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 294,
+      "expression": "evaluate.he_secondary_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 295,
+      "expression": "evaluate.divertor_transferred"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 296,
+      "expression": "evaluate.divertor_unmet"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 297,
+      "expression": "evaluate.divertor_capability"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 298,
+      "expression": "evaluate.divertor_hot"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 299,
+      "expression": "evaluate.divertor_return"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 300,
+      "expression": "evaluate.divertor_state_defined"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 301,
+      "expression": "evaluate.divertor_hot_terminal_difference"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 302,
+      "expression": "evaluate.divertor_cold_terminal_difference"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 303,
+      "expression": "evaluate.divertor_hot_bound_margin"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 304,
+      "expression": "evaluate.divertor_secondary_in"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 305,
+      "expression": "evaluate.divertor_secondary_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 306,
+      "expression": "evaluate.pbli_transferred"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 307,
+      "expression": "evaluate.pbli_unmet"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 308,
+      "expression": "evaluate.pbli_capability"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 309,
+      "expression": "evaluate.pbli_hot"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 310,
+      "expression": "evaluate.pbli_return"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 311,
+      "expression": "evaluate.pbli_state_defined"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 312,
+      "expression": "evaluate.pbli_hot_terminal_difference"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 313,
+      "expression": "evaluate.pbli_cold_terminal_difference"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 314,
+      "expression": "evaluate.pbli_hot_bound_margin"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 315,
+      "expression": "evaluate.pbli_secondary_in"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 316,
+      "expression": "evaluate.pbli_secondary_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 329,
+      "expression": "evaluate.temperature_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 330,
+      "expression": "evaluate.pressure_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 331,
+      "expression": "evaluate.shaft_produced"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 342,
+      "expression": "evaluate.cold_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 343,
+      "expression": "evaluate.hot_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 344,
+      "expression": "evaluate.recovered_heat"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 345,
+      "expression": "evaluate.bypass_active"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 358,
+      "expression": "evaluate.temperature_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 359,
+      "expression": "evaluate.pressure_out"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 360,
+      "expression": "evaluate.heat_into_fluid"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 390,
+      "expression": "evaluate.compressor_demand"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 391,
+      "expression": "evaluate.net_shaft"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 392,
+      "expression": "evaluate.gross_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 393,
+      "expression": "evaluate.shaft_import"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 394,
+      "expression": "evaluate.generator_loss"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 395,
+      "expression": "evaluate.motor_loss"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 396,
+      "expression": "evaluate.heating_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 397,
+      "expression": "evaluate.heating_loss"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 398,
+      "expression": "evaluate.fuel_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 399,
+      "expression": "evaluate.fuel_base_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 400,
+      "expression": "evaluate.fuel_variable_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 401,
+      "expression": "evaluate.auxiliary_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 402,
+      "expression": "evaluate.net_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 403,
+      "expression": "evaluate.pump_loss"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 404,
+      "expression": "evaluate.dissipated_auxiliary"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 405,
+      "expression": "evaluate.cryo_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 406,
+      "expression": "evaluate.control_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 407,
+      "expression": "evaluate.other_electric_demand"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 408,
+      "expression": "evaluate.primary_pump_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 477,
+      "expression": "evaluate.compressor_demand"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 478,
+      "expression": "evaluate.net_shaft"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 479,
+      "expression": "evaluate.cycle_rejection"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 480,
+      "expression": "evaluate.gross_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 481,
+      "expression": "evaluate.shaft_import"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 482,
+      "expression": "evaluate.generator_loss"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 483,
+      "expression": "evaluate.motor_loss"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 484,
+      "expression": "evaluate.heating_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 485,
+      "expression": "evaluate.heating_loss"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 486,
+      "expression": "evaluate.fuel_base_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 487,
+      "expression": "evaluate.fuel_variable_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 488,
+      "expression": "evaluate.fuel_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 489,
+      "expression": "evaluate.auxiliary_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 490,
+      "expression": "evaluate.net_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 491,
+      "expression": "evaluate.pump_loss"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 492,
+      "expression": "evaluate.dissipated_auxiliary"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 493,
+      "expression": "evaluate.branch_residual"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 494,
+      "expression": "evaluate.cycle_residual"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 495,
+      "expression": "evaluate.electrical_residual"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 496,
+      "expression": "evaluate.plant_residual"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 497,
+      "expression": "evaluate.source_energy_residual"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 498,
+      "expression": "evaluate.unmatched_source_heat"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 499,
+      "expression": "evaluate.energy_tolerance"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 500,
+      "expression": "evaluate.residual_magnitude"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 501,
+      "expression": "evaluate.thermal_efficiency"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 502,
+      "expression": "evaluate.efficiency_defined"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 503,
+      "expression": "evaluate.total_available_heat"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 504,
+      "expression": "evaluate.comparison_fusion_difference"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 505,
+      "expression": "evaluate.comparison_gross_difference"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 506,
+      "expression": "evaluate.comparison_net_difference"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 507,
+      "expression": "evaluate.comparison_turbine_temperature_difference"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 508,
+      "expression": "evaluate.comparison_heater_temperature_difference"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 509,
+      "expression": "evaluate.comparison_blanket_deposition_difference"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 510,
+      "expression": "evaluate.turbine_state_residual"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 511,
+      "expression": "evaluate.recuperator_state_residual"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 512,
+      "expression": "evaluate.supported_magnet"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 513,
+      "expression": "evaluate.supported_breeding"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 514,
+      "expression": "evaluate.supported_deposition"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 515,
+      "expression": "evaluate.supported_hydraulics"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 516,
+      "expression": "evaluate.supported_materials"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 517,
+      "expression": "evaluate.supported_machine_map"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 518,
+      "expression": "evaluate.assumed_auxiliary_demands"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 519,
+      "expression": "evaluate.conditional_net_result"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 520,
+      "expression": "evaluate.net_result_producer_mode"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 521,
+      "expression": "evaluate.cryo_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 522,
+      "expression": "evaluate.control_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 523,
+      "expression": "evaluate.other_electric_demand"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 524,
+      "expression": "evaluate.primary_pump_electric"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 547,
+      "expression": "evaluate.margin"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 548,
+      "expression": "evaluate.evaluation_defined"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 567,
+      "expression": "evaluate.margin"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 568,
+      "expression": "evaluate.evaluation_defined"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 587,
+      "expression": "evaluate.margin"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 588,
+      "expression": "evaluate.evaluation_defined"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 607,
+      "expression": "evaluate.margin"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 608,
+      "expression": "evaluate.evaluation_defined"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 627,
+      "expression": "evaluate.margin"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 628,
+      "expression": "evaluate.evaluation_defined"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 647,
+      "expression": "evaluate.margin"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 648,
+      "expression": "evaluate.evaluation_defined"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 667,
+      "expression": "evaluate.margin"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 668,
+      "expression": "evaluate.evaluation_defined"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 687,
+      "expression": "evaluate.margin"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plant.sysml",
+      "line": 688,
+      "expression": "evaluate.evaluation_defined"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plasma_integration.sysml",
+      "line": 57,
+      "expression": "integration.density_mean"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plasma_integration.sysml",
+      "line": 58,
+      "expression": "integration.density_weighted_temperature"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plasma_integration.sysml",
+      "line": 59,
+      "expression": "integration.thermal_pressure"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plasma_integration.sysml",
+      "line": 60,
+      "expression": "integration.fusion_power_MW"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plasma_integration.sysml",
+      "line": 61,
+      "expression": "integration.stored_thermal_MJ"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plasma_integration.sysml",
+      "line": 62,
+      "expression": "integration.field_for_beta"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plasma_integration.sysml",
+      "line": 63,
+      "expression": "integration.quadrature_intervals"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plasma_integration.sysml",
+      "line": 64,
+      "expression": "integration.quadrature_relative_change"
+    },
+    {
+      "path": "exploration/aries_integrated/input_models/plasma_integration.sysml",
+      "line": 69,
+      "expression": "beta_calculation.beta"
+    }
+  ]
+}

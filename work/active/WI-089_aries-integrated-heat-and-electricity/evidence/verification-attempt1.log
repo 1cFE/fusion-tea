@@ -1,0 +1,22 @@
+nominal-source-assumed evaluated
+nominal-calculated evaluated
+literal-Lyon-source-input evaluated
+literal-Raffray-accounting evaluated
+density_lower evaluated
+density_higher evaluated
+one_ratio evaluated
+cycle_flow evaluated
+low_he_ua evaluated
+high_he_ua evaluated
+bypass_motor evaluated
+unsupported_capacity evaluated
+zero_he_ua evaluated
+low_he_hot_bound evaluated
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/exploration/aries_integrated/verify.py", line 157, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/reid/1cfe/fusion-tea/exploration/aries_integrated/verify.py", line 103, in main
+    assert error.lower() in row['error'].lower(),(name,row['error'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('zero_all_ua', 'cooler outlet must not exceed inlet')

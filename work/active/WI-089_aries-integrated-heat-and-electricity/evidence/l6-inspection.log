@@ -1,0 +1,6 @@
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+<class 'agentic_mbse.validation.common.QualityCheckResult'> dict_keys(['level', 'level_name', 'success', 'file_path', 'issues', 'warnings', 'metrics', 'structured_issues'])
+182 scoped dotted EXPOSE diagnostics; no other L6 diagnostic class

@@ -1,0 +1,47 @@
+nominal-source-assumed evaluated
+nominal-calculated evaluated
+literal-Lyon-source-input evaluated
+literal-Raffray-accounting evaluated
+density_lower evaluated
+density_higher evaluated
+one_ratio evaluated
+cycle_flow evaluated
+low_he_ua evaluated
+high_he_ua evaluated
+bypass_motor evaluated
+unsupported_capacity evaluated
+zero_he_ua evaluated
+low_he_hot_bound evaluated
+zero_all_ua refused
+zero_selected_power refused
+invalid_mode refused
+invalid_fraction refused
+negative_ua refused
+negative_flow refused
+invalid_recuperator refused
+invalid_heating_efficiency refused
+invalid_plasma_temperature refused
+he_capacity_low evaluated
+he_capacity_high evaluated
+pbli_capacity_low evaluated
+pbli_capacity_high evaluated
+divertor_capacity_low evaluated
+divertor_capacity_high evaluated
+compressor_capacity_low evaluated
+compressor_capacity_high evaluated
+turbine_capacity_low evaluated
+turbine_capacity_high evaluated
+rejection_capacity_low evaluated
+rejection_capacity_high evaluated
+generator_capacity_low evaluated
+generator_capacity_high evaluated
+fuel_capacity_low evaluated
+fuel_capacity_high evaluated
+nonfinite_ua refused
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/exploration/aries_integrated/verify.py", line 157, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/reid/1cfe/fusion-tea/exploration/aries_integrated/verify.py", line 138, in main
+    from aries_integrated.schemas.integrated_plant_ledger_input import Integrated_Plant_LedgerInput
+ModuleNotFoundError: No module named 'aries_integrated.schemas.integrated_plant_ledger_input'

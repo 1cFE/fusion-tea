@@ -80,3 +80,26 @@ T-003 · native study preparation at `exploration/aries_integrated/studies/20260
 ### T-004 start — 2026-09-22
 
 T-004 · WI-089 native implementation · additive assembly, sealed package and executable evidence expected. Model author owns model/package/build/tests; study consumer worker owns studies; coordinator owns registry/goal/commits. These write sets are disjoint; publication waits for integrated acceptance.
+
+### T-005 scope
+
+- **Objective:** determine and repair the native verifier's inability to compare independently calculated near-zero numerical residuals under a declared absolute accuracy.
+- **Why now:** T-003 inspection finds the verifier's relative-only denominator applies to the new model's balance predicate operand; the native candidate residual is approximately 7.54e-9 MW while its engineering balance tolerance exceeds 1e-6 MW.
+- **Scope:** separate coding prerequisite `.project/active/study-residual-tolerance/`; first preserve concrete independent-check mismatch, then optional explicit per-channel numerical comparison tolerances with native schema/reporting/tests. Default numerical behavior and exact independently derived constraint verdict agreement remain unchanged. No physical model or frozen evidence changes.
+- **Inputs:** `goal.md`, WI-089 reviewed numerical domains, actual native baseline, independent development checker, `scripts/study/verify.py` and manifest/schema contracts.
+- **Done when:** concrete mismatch is understood, scoped correction independently reviewed and tested, and explicit study declarations can use it without bypassing a check.
+- **Stop when:** evidence does not support the suspected gap, a broader seam repair is needed, or a reserved gate/cap binds.
+
+### T-005 start — 2026-09-22
+
+T-005 · native coding prerequisite · numerical mismatch evidence and reviewed additive verifier support expected. Coordinator owns this code/record; study worker owns independent checker, model author continues unchanged native verification. No dependent gate executes until this review completes.
+
+### T-004 return — 2026-09-22
+
+- **Outcome:** COMPLETE.
+- **Evidence:** WI-089 `report.md`, `evidence/verification.json`, `evidence/baseline-execution.json`, and `evidence/build-hashes.json`; goal `evidence/implementation-review.md`, `reviewer-native.json`, `reviewer-preservation.json` (pending implementation checkpoint commit). Executable fingerprint `469191fd32c624ccf70e0b4ebc1065b34920df8174c37a09e8f45ecfb241a7d7`.
+- **Reading:** one native graph now reaches net electricity. Calculated nominal supplies 1835.451283 MW fusion, accepts 2240.389047 MW heat with zero unmet duty, and produces 423.106794 MW net. Literal/source-conditioned scenarios remain thermally inadequate; Raffray accounting retains its energy mismatch. These are conditional approximations, not published-plant validation. MR-7 compliant for represented supplied hardware, independently checked under a density perturbation; inventory/cost unmodeled. All 8,657 protected files unchanged.
+- **Decision:** early implementation review found missing electrical component ownership, omitted outputs and undefined bypass primary states; restore reviewed owners/interfaces and explicit definedness before sealing; execution detail; model author with continuing reviewer; E1–E3 resolved in `evidence/implementation-review.md`.
+- **Decision:** complete validator reports 182 plain EXPOSE diagnostics at L6 despite executed native forwards; retain narrow reviewed static-tool exception with L1–L5 passing and full native evidence; execution detail; author/reviewer; WI-089 validation evidence and review. No complete-validator pass is claimed.
+- **Decision:** 40 native cases produced 30 evaluated results and 10 intended refusals; three development-harness fixes changed error matching/import/channel access but not the sealed model. These were native implementation-stage corrections, not retries of a returned failed goal task; preserve attempts and source identities; execution detail; author/coordinator with reviewer evidence; WI-089 retained attempt files. No goal task has returned MECHANICAL_FAILURE or consumed an identical-task retry.
+- **Decision:** native accepted behavior satisfies SV-133; mark passing through the owning PM; execution detail; coordinator; `modeling_project/VALIDATION_MATRIX.md`. Formal item closure remains owner-held.

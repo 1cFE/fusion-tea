@@ -107,6 +107,18 @@ FAMILIES: dict[str, Family] = {IFE.name: IFE, MFE.name: MFE}
 # Separate generation units, not exploration twins or a combined plant family.
 # Sources: exploration/aries_transfer/<name>/{build,verify}.py staging lists.
 SOURCE_COLLECTIONS: dict[str, tuple[str, ...]] = {
+    "aries_integrated": (
+        "analyses/integrated_heat_electricity.sysml",
+        "analyses/radial_density_profile.sysml",
+        "analyses/supplied_profile_plasma.sysml",
+        "analyses/mfe_plasma_scaling.sysml",
+        "analyses/mfe_fuel_cycle.sysml",
+        "analyses/mfe_viability.sysml",
+        "analyses/dual_circuit_heat_accounting.sysml",
+        "analyses/ideal_gas_brayton_components.sysml",
+        "designs/aries_cs_transfer/plasma_integration.sysml",
+        "designs/aries_cs_integrated/plant.sysml",
+    ),
     "aries_density_profile": (
         "analyses/radial_density_profile.sysml",
         "designs/aries_cs_transfer/density_profile.sysml",
