@@ -83,7 +83,7 @@ assert con.execute("select count(*) from cases where state='completed'").fetchon
 con.close()
 content = copy.deepcopy(manifest)
 content['fingerprint_names'] = ['indicator_inputs', 'recorded_provenance.executable_fingerprint', 'recorded_provenance.semantic_fingerprint']
-oracle_files = tuple((route.HERE / name).relative_to(ROOT).as_posix() for name in ('oracle_entry.py', 'equipment_oracle.py', 'equipment_bindings.py', 'interface_data.py'))
+oracle_files = tuple((route.HERE / name).relative_to(ROOT).as_posix() for name in ('oracle_entry.py', 'equipment_oracle.py', 'equipment_bindings.py', 'interface_data.py', 'study_route.py'))
 content['oracle']['source_digest'] = common.tool_source_digest(oracle_files)
 artifacts = []
 for path in sorted(record.rglob('*')):

@@ -116,3 +116,22 @@ At checkpoint `a24f9080`, canonical thermal/source behavior and independent sele
 ### T-005 start — 2026-09-22
 
 Coordinator invokes `evidence/integrate.py`; outputs go to `evidence/integration-attempt1/`. The audited-work argument pins the committed reviewed native item.
+
+### T-005 return — 2026-09-22
+
+- **Outcome:** COMPLETE — native CANDIDATE.
+- **Evidence:** `evidence/integration-attempt1/integration_return.json` and producer receipts. All ten native gates pass, including original family regression, unchanged regeneration,411-entry census, full preflight and independent baseline oracle.
+- **Reading:** Final executable01f8f89c and semantic10ea8ab0 are promoted for Round1. This establishes executable integration, not scientific qualification.
+
+### T-006 scope
+
+- **Objective:** Execute and verify the declared64-point thermal/equipment sensitivity study, then interpret thermal assumptions before equipment comparisons.
+- **Why now:** T-005 returns matching native CANDIDATE.
+- **Scope:** One new native record `20260922-aries-integrated-equipment-costs`; all points use stock TEAx lifecycle and exact full maps. Verify every point against independent oracle, retain all failures, complete record/findings and freeze evidence. No model changes or economic optimization.
+- **Inputs:** Promoted package; declared proposals/axes/indicators; integration-attempt1.
+- **Done when:** Stored results, full verification, thermal-first interpretation and self-contained immutable record are committed.
+- **Stop when:** Discovered prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-006 start — 2026-09-22
+
+Continuing study executor is released to run all64points after the committed CANDIDATE checkpoint. Coordinator owns final snapshot/commit and independent review. One arm contains canonical, thermal, demand and selected-hardware point families for the single dependency question.
