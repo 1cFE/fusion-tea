@@ -135,3 +135,20 @@ Coordinator invokes `evidence/integrate.py`; outputs go to `evidence/integration
 ### T-006 start — 2026-09-22
 
 Continuing study executor is released to run all64points after the committed CANDIDATE checkpoint. Coordinator owns final snapshot/commit and independent review. One arm contains canonical, thermal, demand and selected-hardware point families for the single dependency question.
+
+### T-006 return — 2026-09-22
+
+- **Outcome:** COMPLETE.
+- **Evidence:** Frozen study `exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/@494c329e`; snapshot894a81dd; `evidence/thermal-record-integrity.json`.
+- **Reading:** All64points completed once; all17,792scalar and896exact predicate comparisons pass. Eleven adverse points remain. All56thermal/demand points preserve upfront purchase accounts. Declared area/capacity changes affect their purchases and adequacy without hidden resizing. Thermal reading precedes equipment discussion; no optimum is claimed.
+- **Decision:** Trigger: incomplete economic uncertainty answer. Decision proposed: follow accepted thermal interpretation with the unchanged-package cost/supply sensitivity question in `evidence/round2-cost-question.md`. Tier: execution strategy under accepted assumption ranges. Decided by: coordinator, pending disposition review. No follow-up executed yet.
+
+### Round 1 result — 2026-09-22
+
+- **Intent:** Met for the round's thermal-assumption and selected-cost-ownership question. The broader goal remains unmet pending the assumption-ranked economic range and final handoff.
+- **Task sequence:** T-001 prepared source/design evidence; T-002 independently reviewed and corrected stock ownership before implementation; T-003 implemented and corrected source-comparison/stock tests with independent acceptance; T-004 prepared exact study metadata/oracle; T-005 passed all native integration gates; T-006 executed, verified and froze one64-point study.
+- **Last semantic outcome and stop reason:** Valid study reading closes Round1. One package was promoted and one study committed. Preparation corrections preceded promotion; there was no failed integration retry, semantic study repair or cap extension.
+- **Evidence:** Native report/review at a3309e03; CANDIDATE e8f9cc1d; frozen study494c329e; source interpretation/ownership reviews;8752-file preservation and isolated1352-output/68-response Stellaris replay.
+- **Proposed learning delta:** (1) Principal thermal assumptions materially affect export; cycle-flow endpoints both fail represented constraints, while finite net-flat U/limit/partition windows do not establish global irrelevance. (2)56thermal/demand points preserve purchases; selected area/pump capacity change cost and adequacy through owned inputs. (3) Source failures and scientific support limits remain; no qualified source plant or optimum is established. (4) Declared no-credit tritium supply dominates baseline annual expenses and needs the accepted supply/price sensitivity before financial use.
+- **Finding dispositions:** Study#1–3 retain declared scientific/proxy/extrapolation limits; #4–5 retain finite thermal outcomes without optimum/global-boundary claims; #6–7 accept bounded demand/purchase dependency evidence; #8 preserves source failures; #9 proposes the next cost/supply question on the same package; #10 preserves source discrepancies and disjoint accounting. These use the existing IDs, with joined disposition rows to land after review. No finding requests a model-equation change.
+- **Remaining review:** Continuing fresh non-author reviewer checks the frozen interpretation/identity and proposed dispositions under `evidence/thermal-study-review-brief.md`; existing source/math/MR-7/implementation coverage is reused. Formal goal/item closure remains owner-held.
