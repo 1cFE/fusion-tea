@@ -1,0 +1,62 @@
+{
+  "study_id": "20260922-aries-integrated-design-robustness",
+  "authority": "AGENT executor interpretation; first two development gaps recorded before execution",
+  "findings": [
+    {
+      "id": "20260922-aries-integrated-design-robustness#1",
+      "kind": "model",
+      "finding": "No modeled financing/credit-risk or capital-structure response qualifies the supplied real rate or couples it to delivery risk.",
+      "disposition": "Retain owner-authorized sensitivity-only finance framing; no economic optimum.",
+      "home": "record.md \u00a78; owner-brief.md"
+    },
+    {
+      "id": "20260922-aries-integrated-design-robustness#2",
+      "kind": "model",
+      "finding": "No sourced vendor quotation or equipment-quality/performance relationship constrains the correlated HX price multipliers.",
+      "disposition": "Retain owner-authorized sensitivity-only cost scenario; no physical improvement claim.",
+      "home": "record.md \u00a78; manifest.json"
+    },
+    {
+      "id": "20260922-aries-integrated-design-robustness#3",
+      "kind": "model",
+      "finding": "Reduced paired exchanger areas remain cheaper than matched baseline under every tested assumption/supply setting.",
+      "disposition": "Retain bounded purchased-equipment saving; hydraulic/geometry/MHD qualification remains absent.",
+      "home": "record.md \u00a76; results/matched-comparisons.json"
+    },
+    {
+      "id": "20260922-aries-integrated-design-robustness#4",
+      "kind": "model",
+      "finding": "Near-feed-floor feed-scenario advantage reverses at low neutron multiplication, low availability and low tritium price; high-density feed disadvantage reverses at low availability and low tritium price.",
+      "disposition": "Report matched rankings and fixed purchase-floor effects, not a robust operating optimum.",
+      "home": "record.md \u00a73 and \u00a76; results/robustness-findings.json"
+    },
+    {
+      "id": "20260922-aries-integrated-design-robustness#5",
+      "kind": "model",
+      "finding": "High-density demand stays cheaper without credit, and near-feed-floor demand stays more expensive, across the tested matched settings.",
+      "disposition": "Keep demand responses distinct from hardware savings and unqualified confinement/control.",
+      "home": "results/sources/work/orchestration/goals/aries-integrated-design-studies/evidence/dependency-audit.md; record.md \u00a76"
+    },
+    {
+      "id": "20260922-aries-integrated-design-robustness#6",
+      "kind": "model",
+      "finding": "Availability changes calendar-year gross makeup across fixed breeder feed; tritium price affects initial-stock capital as well as annual purchases.",
+      "disposition": "Retain both supply scenarios, gross/purchased/curtailed quantities and complete LCOE contributions.",
+      "home": "config.json; record.md \u00a76"
+    },
+    {
+      "id": "20260922-aries-integrated-design-robustness#7",
+      "kind": "model",
+      "finding": "Deposition, U, auxiliary-load, supply and other scientific assumptions remain unqualified even when a constraint is reachable or every evaluated check passes.",
+      "disposition": "Use conditional sensitivity scope; do not optimize unsupported efficiency or feed assumptions.",
+      "home": "results/sources/work/orchestration/goals/aries-integrated-design-studies/evidence/coupled-review-robustness.json; record.md \u00a78"
+    },
+    {
+      "id": "20260922-aries-integrated-design-robustness#8",
+      "kind": "model",
+      "finding": "All six inherited source controls retain heat-removal failures; literal Raffray also retains balance failure.",
+      "disposition": "Preserve adverse controls outside accepted-design rankings.",
+      "home": "record.md \u00a74; results/constraint_catalog.json"
+    }
+  ]
+}

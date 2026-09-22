@@ -1,0 +1,1398 @@
+{
+  "study_id": "20260922-aries-integrated-design-robustness",
+  "axes": [
+    {
+      "axis": "he_area",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_hx__selected_area",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "m2",
+      "role": "purchased",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Fixed physical design descriptor from accepted coupled-review-robustness.json; not an optimization variable in this study.",
+      "missing_response": "Area changes UA and purchase; geometry and hydraulics remain unqualified.",
+      "declined": false
+    },
+    {
+      "axis": "pbli_area",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_hx__selected_area",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "m2",
+      "role": "purchased",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Fixed physical design descriptor from accepted coupled-review-robustness.json; not an optimization variable in this study.",
+      "missing_response": "Area changes UA and purchase; geometry and hydraulics remain unqualified.",
+      "declined": false
+    },
+    {
+      "axis": "density",
+      "keys": [
+        {
+          "key": "aries_cs_plasma_integration__plasma__amplitude",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "m^-3",
+      "role": "demand",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Fixed physical design descriptor from accepted coupled-review-robustness.json; not an optimization variable in this study.",
+      "missing_response": "Fixed hardware; confinement and control unqualified; operating diagnostic only.",
+      "declined": false
+    },
+    {
+      "axis": "he_u",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_hx__assumed_u",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "W/(m2 K)",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only.",
+      "missing_response": "Exchanger U has no qualified geometry/hydraulic/material response."
+    },
+    {
+      "axis": "pbli_u",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_hx__assumed_u",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "W/(m2 K)",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only.",
+      "missing_response": "Exchanger U has no qualified geometry/hydraulic/material response."
+    },
+    {
+      "axis": "neutron_multiplier",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__deposition__neutron_multiplier",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only.",
+      "missing_response": "Neutron multiplier lacks qualified transport/breeding response."
+    },
+    {
+      "axis": "helium_fraction",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__deposition__helium_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only.",
+      "missing_response": "Deposition partition lacks qualified transport response."
+    },
+    {
+      "axis": "exchange_fraction",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__deposition__exchange_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only.",
+      "missing_response": "Intercoolant exchange lacks qualified transport response."
+    },
+    {
+      "axis": "other_load",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__generator_auxiliaries__other_electric",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "MW",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only.",
+      "missing_response": "Other auxiliary allowance lacks a demand/price model; cryogenic/control loads held."
+    },
+    {
+      "axis": "hx_price_factor",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_hx__price_factor",
+          "provenance": "tie"
+        },
+        {
+          "key": "aries_integrated_plant__pbli_hx__price_factor",
+          "provenance": "tie"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only.",
+      "missing_response": "Price multiplier lacks market/quality/calibration response."
+    },
+    {
+      "axis": "availability",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__availability",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "dimensionless",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only.",
+      "missing_response": "Availability lacks reliability/outage response."
+    },
+    {
+      "axis": "tritium_price",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__fuel_inventory__tritium_price",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "USD2004/kg",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only.",
+      "missing_response": "Tritium price lacks calibrated supply/market response; initial stock and annual purchases change."
+    },
+    {
+      "axis": "discount",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__discount_rate",
+          "provenance": "fan_out"
+        }
+      ],
+      "units": "real/year",
+      "role": "assumed",
+      "framing": "sensitivity",
+      "window_provenance": "engineered",
+      "basis": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only.",
+      "missing_response": "Discount rate lacks financing/credit-market response."
+    }
+  ],
+  "designs": [
+    {
+      "name": "baseline__he_u=500",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "he_u": 500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "he_u=500"
+    },
+    {
+      "name": "baseline__he_u=1500",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "he_u": 1500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "he_u=1500"
+    },
+    {
+      "name": "baseline__pbli_u=500",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "pbli_u": 500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "pbli_u=500"
+    },
+    {
+      "name": "baseline__pbli_u=1500",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "pbli_u": 1500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "pbli_u=1500"
+    },
+    {
+      "name": "baseline__neutron_multiplier=1",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "neutron_multiplier": 1
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "neutron_multiplier=1"
+    },
+    {
+      "name": "baseline__neutron_multiplier=1.25",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "neutron_multiplier": 1.25
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "neutron_multiplier=1.25"
+    },
+    {
+      "name": "baseline__helium_fraction=0.3",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "helium_fraction": 0.3
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "helium_fraction=0.3"
+    },
+    {
+      "name": "baseline__helium_fraction=0.46",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "helium_fraction": 0.46
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "helium_fraction=0.46"
+    },
+    {
+      "name": "baseline__exchange_fraction=0.02",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "exchange_fraction": 0.02
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "exchange_fraction=0.02"
+    },
+    {
+      "name": "baseline__exchange_fraction=0.06",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "exchange_fraction": 0.06
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "exchange_fraction=0.06"
+    },
+    {
+      "name": "baseline__other_load=2.5",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "other_load": 2.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "other_load=2.5"
+    },
+    {
+      "name": "baseline__other_load=7.5",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "other_load": 7.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "other_load=7.5"
+    },
+    {
+      "name": "baseline__hx_price_factor=0.5",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "hx_price_factor": 0.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "hx_price_factor=0.5"
+    },
+    {
+      "name": "baseline__hx_price_factor=1.5",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "hx_price_factor": 1.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "hx_price_factor=1.5"
+    },
+    {
+      "name": "baseline__availability=0.75",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "availability": 0.75
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "availability=0.75"
+    },
+    {
+      "name": "baseline__availability=0.95",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "availability": 0.95
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "availability=0.95"
+    },
+    {
+      "name": "baseline__tritium_price=10000000.0",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "tritium_price": 10000000.0
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "tritium_price=10000000.0"
+    },
+    {
+      "name": "baseline__tritium_price=100000000.0",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "tritium_price": 100000000.0
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "tritium_price=100000000.0"
+    },
+    {
+      "name": "baseline__discount=0.03",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "discount": 0.03
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "discount=0.03"
+    },
+    {
+      "name": "baseline__discount=0.08",
+      "values": {
+        "he_area": 50000,
+        "pbli_area": 50000,
+        "density": 5e+20,
+        "discount": 0.08
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "baseline",
+      "uncertainty_setting": "discount=0.08"
+    },
+    {
+      "name": "area45k__default",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "default"
+    },
+    {
+      "name": "area45k__he_u=500",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "he_u": 500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "he_u=500"
+    },
+    {
+      "name": "area45k__he_u=1500",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "he_u": 1500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "he_u=1500"
+    },
+    {
+      "name": "area45k__pbli_u=500",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "pbli_u": 500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "pbli_u=500"
+    },
+    {
+      "name": "area45k__pbli_u=1500",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "pbli_u": 1500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "pbli_u=1500"
+    },
+    {
+      "name": "area45k__neutron_multiplier=1",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "neutron_multiplier": 1
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "neutron_multiplier=1"
+    },
+    {
+      "name": "area45k__neutron_multiplier=1.25",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "neutron_multiplier": 1.25
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "neutron_multiplier=1.25"
+    },
+    {
+      "name": "area45k__helium_fraction=0.3",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "helium_fraction": 0.3
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "helium_fraction=0.3"
+    },
+    {
+      "name": "area45k__helium_fraction=0.46",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "helium_fraction": 0.46
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "helium_fraction=0.46"
+    },
+    {
+      "name": "area45k__exchange_fraction=0.02",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "exchange_fraction": 0.02
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "exchange_fraction=0.02"
+    },
+    {
+      "name": "area45k__exchange_fraction=0.06",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "exchange_fraction": 0.06
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "exchange_fraction=0.06"
+    },
+    {
+      "name": "area45k__other_load=2.5",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "other_load": 2.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "other_load=2.5"
+    },
+    {
+      "name": "area45k__other_load=7.5",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "other_load": 7.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "other_load=7.5"
+    },
+    {
+      "name": "area45k__hx_price_factor=0.5",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "hx_price_factor": 0.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "hx_price_factor=0.5"
+    },
+    {
+      "name": "area45k__hx_price_factor=1.5",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "hx_price_factor": 1.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "hx_price_factor=1.5"
+    },
+    {
+      "name": "area45k__availability=0.75",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "availability": 0.75
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "availability=0.75"
+    },
+    {
+      "name": "area45k__availability=0.95",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "availability": 0.95
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "availability=0.95"
+    },
+    {
+      "name": "area45k__tritium_price=10000000.0",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "tritium_price": 10000000.0
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "tritium_price=10000000.0"
+    },
+    {
+      "name": "area45k__tritium_price=100000000.0",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "tritium_price": 100000000.0
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "tritium_price=100000000.0"
+    },
+    {
+      "name": "area45k__discount=0.03",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "discount": 0.03
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "discount=0.03"
+    },
+    {
+      "name": "area45k__discount=0.08",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5e+20,
+        "discount": 0.08
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "area45k",
+      "uncertainty_setting": "discount=0.08"
+    },
+    {
+      "name": "near-feed-floor__default",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "default"
+    },
+    {
+      "name": "near-feed-floor__he_u=500",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "he_u": 500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "he_u=500"
+    },
+    {
+      "name": "near-feed-floor__he_u=1500",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "he_u": 1500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "he_u=1500"
+    },
+    {
+      "name": "near-feed-floor__pbli_u=500",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "pbli_u": 500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "pbli_u=500"
+    },
+    {
+      "name": "near-feed-floor__pbli_u=1500",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "pbli_u": 1500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "pbli_u=1500"
+    },
+    {
+      "name": "near-feed-floor__neutron_multiplier=1",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "neutron_multiplier": 1
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "neutron_multiplier=1"
+    },
+    {
+      "name": "near-feed-floor__neutron_multiplier=1.25",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "neutron_multiplier": 1.25
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "neutron_multiplier=1.25"
+    },
+    {
+      "name": "near-feed-floor__helium_fraction=0.3",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "helium_fraction": 0.3
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "helium_fraction=0.3"
+    },
+    {
+      "name": "near-feed-floor__helium_fraction=0.46",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "helium_fraction": 0.46
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "helium_fraction=0.46"
+    },
+    {
+      "name": "near-feed-floor__exchange_fraction=0.02",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "exchange_fraction": 0.02
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "exchange_fraction=0.02"
+    },
+    {
+      "name": "near-feed-floor__exchange_fraction=0.06",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "exchange_fraction": 0.06
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "exchange_fraction=0.06"
+    },
+    {
+      "name": "near-feed-floor__other_load=2.5",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "other_load": 2.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "other_load=2.5"
+    },
+    {
+      "name": "near-feed-floor__other_load=7.5",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "other_load": 7.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "other_load=7.5"
+    },
+    {
+      "name": "near-feed-floor__hx_price_factor=0.5",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "hx_price_factor": 0.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "hx_price_factor=0.5"
+    },
+    {
+      "name": "near-feed-floor__hx_price_factor=1.5",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "hx_price_factor": 1.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "hx_price_factor=1.5"
+    },
+    {
+      "name": "near-feed-floor__availability=0.75",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "availability": 0.75
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "availability=0.75"
+    },
+    {
+      "name": "near-feed-floor__availability=0.95",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "availability": 0.95
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "availability=0.95"
+    },
+    {
+      "name": "near-feed-floor__tritium_price=10000000.0",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "tritium_price": 10000000.0
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "tritium_price=10000000.0"
+    },
+    {
+      "name": "near-feed-floor__tritium_price=100000000.0",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "tritium_price": 100000000.0
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "tritium_price=100000000.0"
+    },
+    {
+      "name": "near-feed-floor__discount=0.03",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "discount": 0.03
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "discount=0.03"
+    },
+    {
+      "name": "near-feed-floor__discount=0.08",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 4.875e+20,
+        "discount": 0.08
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "near-feed-floor",
+      "uncertainty_setting": "discount=0.08"
+    },
+    {
+      "name": "high-density-demand__default",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "default"
+    },
+    {
+      "name": "high-density-demand__he_u=500",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "he_u": 500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "he_u=500"
+    },
+    {
+      "name": "high-density-demand__he_u=1500",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "he_u": 1500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "he_u=1500"
+    },
+    {
+      "name": "high-density-demand__pbli_u=500",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "pbli_u": 500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "pbli_u=500"
+    },
+    {
+      "name": "high-density-demand__pbli_u=1500",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "pbli_u": 1500
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "pbli_u=1500"
+    },
+    {
+      "name": "high-density-demand__neutron_multiplier=1",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "neutron_multiplier": 1
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "neutron_multiplier=1"
+    },
+    {
+      "name": "high-density-demand__neutron_multiplier=1.25",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "neutron_multiplier": 1.25
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "neutron_multiplier=1.25"
+    },
+    {
+      "name": "high-density-demand__helium_fraction=0.3",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "helium_fraction": 0.3
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "helium_fraction=0.3"
+    },
+    {
+      "name": "high-density-demand__helium_fraction=0.46",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "helium_fraction": 0.46
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "helium_fraction=0.46"
+    },
+    {
+      "name": "high-density-demand__exchange_fraction=0.02",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "exchange_fraction": 0.02
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "exchange_fraction=0.02"
+    },
+    {
+      "name": "high-density-demand__exchange_fraction=0.06",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "exchange_fraction": 0.06
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "exchange_fraction=0.06"
+    },
+    {
+      "name": "high-density-demand__other_load=2.5",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "other_load": 2.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "other_load=2.5"
+    },
+    {
+      "name": "high-density-demand__other_load=7.5",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "other_load": 7.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "other_load=7.5"
+    },
+    {
+      "name": "high-density-demand__hx_price_factor=0.5",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "hx_price_factor": 0.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "hx_price_factor=0.5"
+    },
+    {
+      "name": "high-density-demand__hx_price_factor=1.5",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "hx_price_factor": 1.5
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "hx_price_factor=1.5"
+    },
+    {
+      "name": "high-density-demand__availability=0.75",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "availability": 0.75
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "availability=0.75"
+    },
+    {
+      "name": "high-density-demand__availability=0.95",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "availability": 0.95
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "availability=0.95"
+    },
+    {
+      "name": "high-density-demand__tritium_price=10000000.0",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "tritium_price": 10000000.0
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "tritium_price=10000000.0"
+    },
+    {
+      "name": "high-density-demand__tritium_price=100000000.0",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "tritium_price": 100000000.0
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "tritium_price=100000000.0"
+    },
+    {
+      "name": "high-density-demand__discount=0.03",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "discount": 0.03
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "discount=0.03"
+    },
+    {
+      "name": "high-density-demand__discount=0.08",
+      "values": {
+        "he_area": 45000,
+        "pbli_area": 45000,
+        "density": 5.25e+20,
+        "discount": 0.08
+      },
+      "classification": "fixed physical design under OAT uncertainty",
+      "physical_design": "high-density-demand",
+      "uncertainty_setting": "discount=0.08"
+    },
+    {
+      "name": "nominal-source-assumed",
+      "canonical_base": "nominal-source-assumed",
+      "values": {},
+      "classification": "preserved source control",
+      "physical_design": "nominal-source-assumed",
+      "uncertainty_setting": "default-source-control"
+    },
+    {
+      "name": "literal-Lyon-source-input",
+      "canonical_base": "literal-Lyon-source-input",
+      "values": {},
+      "classification": "preserved source control",
+      "physical_design": "literal-Lyon-source-input",
+      "uncertainty_setting": "default-source-control"
+    },
+    {
+      "name": "literal-Raffray-accounting",
+      "canonical_base": "literal-Raffray-accounting",
+      "values": {},
+      "classification": "preserved source control",
+      "physical_design": "literal-Raffray-accounting",
+      "uncertainty_setting": "default-source-control"
+    }
+  ],
+  "physical_designs": [
+    {
+      "name": "baseline",
+      "values": {
+        "aries_integrated_plant__he_hx__selected_area": 50000,
+        "aries_integrated_plant__pbli_hx__selected_area": 50000,
+        "aries_cs_plasma_integration__plasma__amplitude": 5e+20
+      }
+    },
+    {
+      "name": "area45k",
+      "values": {
+        "aries_integrated_plant__he_hx__selected_area": 45000,
+        "aries_integrated_plant__pbli_hx__selected_area": 45000,
+        "aries_cs_plasma_integration__plasma__amplitude": 5e+20
+      }
+    },
+    {
+      "name": "near-feed-floor",
+      "values": {
+        "aries_integrated_plant__he_hx__selected_area": 45000,
+        "aries_integrated_plant__pbli_hx__selected_area": 45000,
+        "aries_cs_plasma_integration__plasma__amplitude": 4.875e+20
+      }
+    },
+    {
+      "name": "high-density-demand",
+      "values": {
+        "aries_integrated_plant__he_hx__selected_area": 45000,
+        "aries_integrated_plant__pbli_hx__selected_area": 45000,
+        "aries_cs_plasma_integration__plasma__amplitude": 5.25e+20
+      }
+    }
+  ],
+  "uncertainty_settings": [
+    {
+      "name": "default",
+      "values": {}
+    },
+    {
+      "name": "he_u=500",
+      "values": {
+        "he_u": 500
+      }
+    },
+    {
+      "name": "he_u=1500",
+      "values": {
+        "he_u": 1500
+      }
+    },
+    {
+      "name": "pbli_u=500",
+      "values": {
+        "pbli_u": 500
+      }
+    },
+    {
+      "name": "pbli_u=1500",
+      "values": {
+        "pbli_u": 1500
+      }
+    },
+    {
+      "name": "neutron_multiplier=1",
+      "values": {
+        "neutron_multiplier": 1
+      }
+    },
+    {
+      "name": "neutron_multiplier=1.25",
+      "values": {
+        "neutron_multiplier": 1.25
+      }
+    },
+    {
+      "name": "helium_fraction=0.3",
+      "values": {
+        "helium_fraction": 0.3
+      }
+    },
+    {
+      "name": "helium_fraction=0.46",
+      "values": {
+        "helium_fraction": 0.46
+      }
+    },
+    {
+      "name": "exchange_fraction=0.02",
+      "values": {
+        "exchange_fraction": 0.02
+      }
+    },
+    {
+      "name": "exchange_fraction=0.06",
+      "values": {
+        "exchange_fraction": 0.06
+      }
+    },
+    {
+      "name": "other_load=2.5",
+      "values": {
+        "other_load": 2.5
+      }
+    },
+    {
+      "name": "other_load=7.5",
+      "values": {
+        "other_load": 7.5
+      }
+    },
+    {
+      "name": "hx_price_factor=0.5",
+      "values": {
+        "hx_price_factor": 0.5
+      }
+    },
+    {
+      "name": "hx_price_factor=1.5",
+      "values": {
+        "hx_price_factor": 1.5
+      }
+    },
+    {
+      "name": "availability=0.75",
+      "values": {
+        "availability": 0.75
+      }
+    },
+    {
+      "name": "availability=0.95",
+      "values": {
+        "availability": 0.95
+      }
+    },
+    {
+      "name": "tritium_price=10000000.0",
+      "values": {
+        "tritium_price": 10000000.0
+      }
+    },
+    {
+      "name": "tritium_price=100000000.0",
+      "values": {
+        "tritium_price": 100000000.0
+      }
+    },
+    {
+      "name": "discount=0.03",
+      "values": {
+        "discount": 0.03
+      }
+    },
+    {
+      "name": "discount=0.08",
+      "values": {
+        "discount": 0.08
+      }
+    }
+  ],
+  "rules": [
+    "OAT ten groups; both HX price factors vary together as one explicit correlated scenario.",
+    "Hold each physical design and supply group fixed during all assumption comparisons.",
+    "Tritium price changes initial stock capital as well as annual purchases.",
+    "Other-load sensitivity covers only generator_auxiliaries.other_electric; cryogenic/control assumptions remain held.",
+    "Repeat six source controls at inherited assumption settings; preserve adverse status.",
+    "All scenarios are engineered sensitivity settings, not source boundaries, probabilities or optimized choices."
+  ],
+  "automatic_baseline_metadata": {
+    "physical_design": "baseline",
+    "uncertainty_setting": "default"
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "he_area",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_hx__selected_area",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Fixed physical design descriptor from accepted coupled-review-robustness.json; not an optimization variable in this study."
+    },
+    {
+      "axis": "pbli_area",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_hx__selected_area",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Fixed physical design descriptor from accepted coupled-review-robustness.json; not an optimization variable in this study."
+    },
+    {
+      "axis": "density",
+      "keys": [
+        {
+          "key": "aries_cs_plasma_integration__plasma__amplitude",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Fixed physical design descriptor from accepted coupled-review-robustness.json; not an optimization variable in this study."
+    },
+    {
+      "axis": "he_u",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_hx__assumed_u",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only."
+    },
+    {
+      "axis": "pbli_u",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_hx__assumed_u",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only."
+    },
+    {
+      "axis": "neutron_multiplier",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__deposition__neutron_multiplier",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only."
+    },
+    {
+      "axis": "helium_fraction",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__deposition__helium_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only."
+    },
+    {
+      "axis": "exchange_fraction",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__deposition__exchange_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only."
+    },
+    {
+      "axis": "other_load",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__generator_auxiliaries__other_electric",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only."
+    },
+    {
+      "axis": "hx_price_factor",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_hx__price_factor",
+          "provenance": "tie"
+        },
+        {
+          "key": "aries_integrated_plant__pbli_hx__price_factor",
+          "provenance": "tie"
+        }
+      ],
+      "note": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only."
+    },
+    {
+      "axis": "availability",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__availability",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only."
+    },
+    {
+      "axis": "tritium_price",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__fuel_inventory__tritium_price",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only."
+    },
+    {
+      "axis": "discount",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__finance__discount_rate",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Exact independently reviewed coupled-review-robustness.json OAT settings; conditional sensitivity only."
+    }
+  ]
+}

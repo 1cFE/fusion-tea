@@ -1,0 +1,203 @@
+{
+  "cases": 174,
+  "passes_evaluated_checks": 168,
+  "comparisons": 126,
+  "rankable_comparisons": 126,
+  "findings": {
+    "no-credit/area45k": {
+      "rankable": 21,
+      "not_ranked": 0,
+      "lower": [
+        "default",
+        "he_u=500",
+        "he_u=1500",
+        "pbli_u=500",
+        "pbli_u=1500",
+        "neutron_multiplier=1",
+        "neutron_multiplier=1.25",
+        "helium_fraction=0.3",
+        "helium_fraction=0.46",
+        "exchange_fraction=0.02",
+        "exchange_fraction=0.06",
+        "other_load=2.5",
+        "other_load=7.5",
+        "hx_price_factor=0.5",
+        "hx_price_factor=1.5",
+        "availability=0.75",
+        "availability=0.95",
+        "tritium_price=10000000.0",
+        "tritium_price=100000000.0",
+        "discount=0.03",
+        "discount=0.08"
+      ],
+      "higher": [],
+      "delta_range": [
+        -0.6361259685638743,
+        -0.19095651093357446
+      ]
+    },
+    "no-credit/near-feed-floor": {
+      "rankable": 21,
+      "not_ranked": 0,
+      "lower": [],
+      "higher": [
+        "default",
+        "he_u=500",
+        "he_u=1500",
+        "pbli_u=500",
+        "pbli_u=1500",
+        "neutron_multiplier=1",
+        "neutron_multiplier=1.25",
+        "helium_fraction=0.3",
+        "helium_fraction=0.46",
+        "exchange_fraction=0.02",
+        "exchange_fraction=0.06",
+        "other_load=2.5",
+        "other_load=7.5",
+        "hx_price_factor=0.5",
+        "hx_price_factor=1.5",
+        "availability=0.75",
+        "availability=0.95",
+        "tritium_price=10000000.0",
+        "tritium_price=100000000.0",
+        "discount=0.03",
+        "discount=0.08"
+      ],
+      "delta_range": [
+        74.07599447605907,
+        532.7961212275625
+      ]
+    },
+    "no-credit/high-density-demand": {
+      "rankable": 21,
+      "not_ranked": 0,
+      "lower": [
+        "default",
+        "he_u=500",
+        "he_u=1500",
+        "pbli_u=500",
+        "pbli_u=1500",
+        "neutron_multiplier=1",
+        "neutron_multiplier=1.25",
+        "helium_fraction=0.3",
+        "helium_fraction=0.46",
+        "exchange_fraction=0.02",
+        "exchange_fraction=0.06",
+        "other_load=2.5",
+        "other_load=7.5",
+        "hx_price_factor=0.5",
+        "hx_price_factor=1.5",
+        "availability=0.75",
+        "availability=0.95",
+        "tritium_price=10000000.0",
+        "tritium_price=100000000.0",
+        "discount=0.03",
+        "discount=0.08"
+      ],
+      "higher": [],
+      "delta_range": [
+        -670.6031299343304,
+        -94.24391052410726
+      ]
+    },
+    "feed100-service30m/area45k": {
+      "rankable": 21,
+      "not_ranked": 0,
+      "lower": [
+        "default",
+        "he_u=500",
+        "he_u=1500",
+        "pbli_u=500",
+        "pbli_u=1500",
+        "neutron_multiplier=1",
+        "neutron_multiplier=1.25",
+        "helium_fraction=0.3",
+        "helium_fraction=0.46",
+        "exchange_fraction=0.02",
+        "exchange_fraction=0.06",
+        "other_load=2.5",
+        "other_load=7.5",
+        "hx_price_factor=0.5",
+        "hx_price_factor=1.5",
+        "availability=0.75",
+        "availability=0.95",
+        "tritium_price=10000000.0",
+        "tritium_price=100000000.0",
+        "discount=0.03",
+        "discount=0.08"
+      ],
+      "higher": [],
+      "delta_range": [
+        -0.6361259685639311,
+        -0.190956510933745
+      ]
+    },
+    "feed100-service30m/near-feed-floor": {
+      "rankable": 21,
+      "not_ranked": 0,
+      "lower": [
+        "default",
+        "he_u=500",
+        "he_u=1500",
+        "pbli_u=500",
+        "pbli_u=1500",
+        "neutron_multiplier=1.25",
+        "helium_fraction=0.3",
+        "helium_fraction=0.46",
+        "exchange_fraction=0.02",
+        "exchange_fraction=0.06",
+        "other_load=2.5",
+        "other_load=7.5",
+        "hx_price_factor=0.5",
+        "hx_price_factor=1.5",
+        "availability=0.95",
+        "tritium_price=100000000.0",
+        "discount=0.03",
+        "discount=0.08"
+      ],
+      "higher": [
+        "neutron_multiplier=1",
+        "availability=0.75",
+        "tritium_price=10000000.0"
+      ],
+      "delta_range": [
+        -115.99823378078506,
+        30.86665229999528
+      ]
+    },
+    "feed100-service30m/high-density-demand": {
+      "rankable": 21,
+      "not_ranked": 0,
+      "lower": [
+        "availability=0.75",
+        "tritium_price=10000000.0"
+      ],
+      "higher": [
+        "default",
+        "he_u=500",
+        "he_u=1500",
+        "pbli_u=500",
+        "pbli_u=1500",
+        "neutron_multiplier=1",
+        "neutron_multiplier=1.25",
+        "helium_fraction=0.3",
+        "helium_fraction=0.46",
+        "exchange_fraction=0.02",
+        "exchange_fraction=0.06",
+        "other_load=2.5",
+        "other_load=7.5",
+        "hx_price_factor=0.5",
+        "hx_price_factor=1.5",
+        "availability=0.95",
+        "tritium_price=100000000.0",
+        "discount=0.03",
+        "discount=0.08"
+      ],
+      "delta_range": [
+        -25.331576056081246,
+        168.2464913883967
+      ]
+    }
+  },
+  "limits": "Engineered OAT windows only; no joint uncertainty coverage or probability."
+}

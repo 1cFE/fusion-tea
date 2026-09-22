@@ -17,3 +17,11 @@ Append-only. No accepted learning yet.
 - **Implication:** Examine a bounded interior interval while holding feed/service fixed; separate the zero-purchase floor from physical performance claims.
 - **Supersedes:** none.
 - **Accepted by:** Round1 review,2026-09-22.
+
+## L-003 — The interior demand benefit is conditional on fixed breeder feed
+
+- **Evidence:** Coupled-design record @ d976da47 and eight independent native replays.
+- **Scope:** The tested 4.875e20 density scenario with 45k/45k areas; imposed demand and supplied feed remain unqualified.
+- **Implication:** Compare the baseline and reduced-area demand candidates under identical uncertainty settings and both supply cases; report inventory savings separately from purchase-floor effects.
+- **Supersedes:** none.
+- **Accepted by:** Round 2 review, 2026-09-22.

@@ -1,6 +1,6 @@
 # Integrated ARIES design studies — active — 2026-09-22
 
-[OWNER] Issued prompt 04 and required paired no-credit/feed100 scenarios, complete electricity/fuel/LCOE accounting and separation of physical gains from supplied-fuel threshold effects. [AGENT] The [goal](../work/orchestration/goals/aries-integrated-design-studies/goal.md) is grounded under the retained brief. Round 1 is replaying the reviewed lifecycle baseline and auditing supported design axes; the [trail](../work/orchestration/goals/aries-integrated-design-studies/trail.md) owns ongoing decisions. Formal closure remains owner-held.
+[OWNER] Issued prompt 04 and required paired no-credit/feed100 scenarios, complete electricity/fuel/LCOE accounting and separation of physical gains from supplied-fuel threshold effects. [AGENT] The [goal](../work/orchestration/goals/aries-integrated-design-studies/goal.md) is grounded under the retained brief. The local 24-point study is sealed at `a396a2e0` and coupled 68-point study at `d976da47`, with independent selected-case replays and all-point verification. Round 3 is preparing the reviewed 174-case assumption study; the [trail](../work/orchestration/goals/aries-integrated-design-studies/trail.md) owns ongoing decisions. Formal closure remains owner-held.
 
 # Integrated ARIES LCOE — closed — 2026-09-22
 

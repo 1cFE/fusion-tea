@@ -1,0 +1,21 @@
+{
+  "rows": 266,
+  "sources": [
+    {
+      "study": "20260922-aries-integrated-local-response",
+      "accounting_sha256": "6a451273cd069ae869fe0eecb95cefb74fa7bd8c921afea623c5d5cdcdc42b2b",
+      "snapshot_sha256": "4b7599d76857631bd922a09bfaa75cb4d61c2174509b2fa605106aad6a763dd5"
+    },
+    {
+      "study": "20260922-aries-integrated-coupled-design",
+      "accounting_sha256": "ecd4751c454d6b1662b38c50552dc8251d0db9b79929e4cf22c50ab4fab39920",
+      "snapshot_sha256": "3fa1f9342decf55614bbc1d253a0d35156e4e4fdf6036664112a5dfa122f1a38"
+    },
+    {
+      "study": "20260922-aries-integrated-design-robustness",
+      "accounting_sha256": "43bb6002578f8bccfcfbac93768643d13eb91b8f0051461fcc46d0caaab79178",
+      "snapshot_sha256": "328c8fda45a91620683c1abe92eea6d051ce898bdc78474e26870d68c73f5999"
+    }
+  ],
+  "quantity_origin": "All engineering values selected unchanged from native-derived accounting.json; reporting does not evaluate a model."
+}
